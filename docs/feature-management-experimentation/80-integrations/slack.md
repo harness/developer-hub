@@ -5,19 +5,27 @@ description: ""
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020997851-Slack <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020997851-Slack </button>
 </p>
 
-**Note: The following Slack integration is in beta. If you'd like to be included in this, contact [support@split.io](mailto:support@split.io).**
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
+
+:::info[Note]
+The following Slack integration is in beta. If you'd like to be included in this, contact [support@split.io](mailto:support@split.io).
+:::
 
 The Slack integration allows teams to stay up to date on changes they care about in Split. By combining Split's rollout capabilities with Slack, you can:
 
 * Keep your team notified about feature flag and segment changes
-* Subscribe to the changes you care about by filtering notifications by Split project, environment, type (e.g., feature flag and segment), and action (e.g., create, update, delete)
+* Subscribe to the changes you care about by filtering notifications by Split project, environment, type (e.g. feature flag and segment), and action (e.g. create, update, delete)
 
 With this integration, as a Slack user, you can subscribe channels to notifications based on filters that they set. Once these filters are set up by that user, any Slack user in that channel can see any event that exists that meets the filter criteria in that channel. In addition, you can see notifications relevant to you, specifically in the Split Slack App on the messages tab.
 
-**Note: If you are having trouble completing the integration, contact [support@split.io](mailto:support@split.io).**
+:::tip
+If you are having trouble completing the integration, contact [support@split.io](mailto:support@split.io).
+:::
 
 ## Setting up in Split
 
@@ -28,17 +36,13 @@ To start, first set up in Split by doing the following:
 3. Locate Slack App in the integrations list and click **Add**.
 4. Click **Save**.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/10120239843853" alt="new-integration.png" />
-</p>
+   ![](./static/slack-new-integration.png)
 
 5. Navigate back to the newly created integration. The token and Add to Slack button display. 
 6. Click **Add to Slack** button. This takes you into the Slack OAuth flow.
 7. In the Slack authorization page, you see a page with the message explaining the permissions required by the Split Slack app. Click the **Allow** button. You’re prompted to open Slack. 
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/10120297377805" alt="slack-authorization.png" width="371" />
-  </p>
+   <div style={{maxWidth:500}}> ![](./static/slack-authorization.png) </div>
 
 The Slack installation flow is complete and Slack is now open with a new app installed.
 
@@ -48,21 +52,15 @@ To set up in Slack, do the following:
 
 1. When you open Slack, a welcome message indicating that you successfully installed the Split app on the Slack workspace appears in the App’s home section:
 
-   <p>
-     <img src="https://help.split.io/hc/article_attachments/10120358348813" alt="welcome-message.png" />
-   </p>
+   <div style={{maxWidth:700}}> ![](./static/slack-welcome-message.png) </div>
 
 2. Click the **Configure** button. The Configure Split App modal appears.
 
-   <p>
-      <img src="https://help.split.io/hc/article_attachments/10120454587149" alt="configure-split-app.png" width="523" />
-   </p>
+   <div style={{maxWidth:500}}> ![](./static/slack-configure-split-app.png) </div>
 
 3. Enter the Split token that you generated when you set up on the Split side and click the **Submit** button. Slack displays the following:
 
-   <p>
-     <img src="https://help.split.io/hc/article_attachments/9947575225613" alt="slack-notifications.png" />
-   </p>
+   <div style={{maxWidth:700}}> ![](./static/slack-notifications.png) </div>
 
 ## Using Split commands
 
@@ -86,11 +84,11 @@ Use the `/split configure` command to display the Configure Split app modal. Whe
 
 Use the `/split subscribe` command to create a channel subscription, which subscribes your Slack channel to Split notifications. The Channel menu list is pre-selected with the current channel. However, a user can select a different channel if desired. Optionally select your desired filter criteria and click **Submit** to create the channel subscription. 
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/10120218112525" alt="channel-subscription.png" />
-</p>
+   <div style={{maxWidth:500}}> ![](./static/slack-channel-subscription.png) </div>
 
-**Note: If you select a private channel, you get an error message indicating that the channel is private.**
+:::info[Note]
+If you select a private channel, you get an error message indicating that the channel is private.
+:::
 
 ## Managing subscriptions
 
@@ -119,27 +117,19 @@ Slack makes it easy to communicate with your team and keep your colleagues up to
 
 2. On this page, if you're an Owner of your Slack Workspace, click the **Add Configuration** button and proceed to step 3.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360021770532/slack1.png" alt="slack1.png" />
-</p>
+   ![](./static/slack-step1.png)
 
-2a. If you're not an Owner, click the **Request to Install** button and ask your Slack Workspace Owner to follow the rest of the steps in this doc.
+   2a. If you're not an Owner, click the **Request to Install** button and ask your Slack Workspace Owner to follow the rest of the steps in this doc.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360021770512/slack2.png" alt="slack2.png" />
-</p>
+     ![](./static/slack-step2.png)
 
 3. Select a channel where you would like the notifications from Split displayed and click the **Add Incoming WebHooks integration** button.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360021736211/slack3.png" alt="slack3.png" />
-</p>
+   ![](./static/slack-step3.png)
 
 4. On the Setup Instructions page, copy the Webhook URL.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360021736191/slack4.png" alt="slack4.png" />
-</p>
+   ![](./static/slack-step4.png)
 
 ## Setting up in Split
 
@@ -147,9 +137,7 @@ Slack makes it easy to communicate with your team and keep your colleagues up to
 
 2. Click **Add** next to Slack.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360021770552/slack7.png" alt="slack7.png" />
-</p>
+   ![](./static/slack-step-split.png)
 
 3. Paste the **Webhook URL** you copied in step 4 and click **Save**.
 

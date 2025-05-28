@@ -5,7 +5,7 @@ sidebar_position: 25
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360024852412-Building-JavaScript-SDK-using-polymer-cli-cause-error-ENOENT-no-such-file-or-directory </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360024852412-Building-JavaScript-SDK-using-polymer-cli-cause-error-ENOENT-no-such-file-or-directory </button>
 </p>
 
 

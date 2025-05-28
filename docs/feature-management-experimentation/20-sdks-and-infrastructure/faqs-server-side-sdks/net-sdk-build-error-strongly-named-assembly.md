@@ -5,7 +5,7 @@ sidebar_position: 19
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360018335892-Why-do-I-see-NET-SDK-Build-error-Split-3-4-2-0-cannot-be-loaded-since-it-needs-a-strongly-named-assembly </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360018335892-Why-do-I-see-NET-SDK-Build-error-Split-3-4-2-0-cannot-be-loaded-since-it-needs-a-strongly-named-assembly </button>
 </p>
 
 ## Problem

@@ -15,7 +15,7 @@ This topic describes chaos experiments, why it is required, the permissions requ
 
 ## Prerequisites
 
-Before creating a chaos experiment, [create an environment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-environment) and [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable). This is because a chaos experiment is executed on an infrastructure which is in turn housed in an environment.
+Before creating a chaos experiment, [create an environment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-environment) and [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/). This is because a chaos experiment is executed on an infrastructure which is in turn housed in an environment.
 
 ## Introduction
 Harness Chaos Engineering gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications.

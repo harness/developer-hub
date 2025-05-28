@@ -46,9 +46,9 @@ The only way you can achieve this is to store this first pipeline output variabl
 ### How to store filesize like we have dump for around 3GB to 5GB in the Harness file store?
 If your dump file is between 3GB to 5GB, you may need to split it into multiple files before uploading to Harness file storage.
 
-### Do we have a inline values override in next gen? 
+### Do we have a inline values override? 
 
-We do not have a separate option for inline values yaml override. However in Next gen we allow to use values override from Harness file store. So we can create the values yaml override in harness file store and add it in the values override configruation.
+We do not have a separate option for inline values yaml override. However, we allow you to use values override from the Harness file store. So we can create the values yaml override in harness file store and add it in the values override configuration.
 
 ### To store my shell script when I use Harness File Store I don't see any option like Bitbucket, or GitHub.
 

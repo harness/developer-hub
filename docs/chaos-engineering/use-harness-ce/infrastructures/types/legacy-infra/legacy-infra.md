@@ -8,6 +8,6 @@ Based on the target environments, you can install chaos infrastructure as a Kube
 
 There are different types of chaos infrastructure such as:
 - [Legacy Infrastructure (Kubernetes)](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes)
-    - OpenShift
+    - [OpenShift](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/openshift)
 - [Linux](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/linux)
-- Windows
+- [Windows](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/windows)

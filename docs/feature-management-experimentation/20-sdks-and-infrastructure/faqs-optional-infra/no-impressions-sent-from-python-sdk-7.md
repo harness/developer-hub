@@ -5,7 +5,7 @@ sidebar_position: 7
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360024851032-No-Impressions-sent-from-Synchronizer-1-x-and-Python-SDK-7-x </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360024851032-No-Impressions-sent-from-Synchronizer-1-x-and-Python-SDK-7-x </button>
 </p>
 
 ## Issue

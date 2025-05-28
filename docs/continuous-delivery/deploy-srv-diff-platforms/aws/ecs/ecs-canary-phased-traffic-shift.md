@@ -1,6 +1,6 @@
 ---
 title: ECS basic deployments with phased traffic shifting and scaling
-description: Incrementally deploy your new service using phased traffic shifting and scaling.
+description: Phased traffic shifting and scaling in ECS using basic deployment strategy and custom listener rules.
 sidebar_position: 4
 ---
 

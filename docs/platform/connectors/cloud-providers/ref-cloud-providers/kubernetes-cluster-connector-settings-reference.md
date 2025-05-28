@@ -208,8 +208,8 @@ Basic authentication has been removed in GKE 1.19 and later.
 
 Provide the credentials for the *cluster*, not the *platform*.
 
-* **Username:** Username for the Kubernetes cluster. For example, `admin` or `john@example.com`. You enter plaintext or use a Harness [Encrypted Text secret](../../../../first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
-* **Password:** Password for the Kubernetes cluster, such as a basic authentication password. You must select or create a Harness [Encrypted Text secret](../../../../first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
+* **Username:** Username for the Kubernetes cluster. For example, `admin` or `john@example.com`. You enter plaintext or use a Harness [Encrypted Text secret](/docs/platform/secrets/add-use-text-secrets).
+* **Password:** Password for the Kubernetes cluster, such as a basic authentication password. You must select or create a Harness [Encrypted Text secret](/docs/platform/secrets/add-use-text-secrets).
 
 #### Service account
 

@@ -219,8 +219,12 @@ The Git Clone step uses a containerized step group. For more information, refer 
 2. **Connector**: You can select a connector for the source control provider hosting the code repository that you want to clone.
 
 :::info
-- The connection type ``ssh`` is currently not supported for Connectors.
-- For credentials, only Username and Password types are supported.
+For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
+
+You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+This setup is only supported for **organization accounts**, not personal GitHub accounts.
 :::
 
 You can refer to the following resources for more information on creating code repo connectors:
@@ -405,11 +409,14 @@ Select the repository type you want to create, which could be public or private.
 #### Connector
 
 :::info
+For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
 
-![](./static/details-git-conector.png)
-![](./static/creds-git-connector.png)
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+This setup is only supported for **organization accounts**, not personal GitHub accounts.
+
+![](./static/github-app-1.png)
 
 ::: 
 
@@ -562,10 +569,14 @@ In the example provided for this step, we have used pipeline variables as input 
 
 :::info
 
-Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-![](./static/details-git-conector.png)
-![](./static/creds-git-connector.png)
+You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+This setup is only supported for **organization accounts**, not personal GitHub accounts.
+
+![](./static/github-app-1.png)
 
 ::: 
 
@@ -632,12 +643,14 @@ In the example provided for this step we have used pipeline variables as input f
 #### Connector
 
 :::info
+For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
 
-![](./static/details-git-conector.png)
-![](./static/creds-git-connector.png)
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+This setup is only supported for **organization accounts**, not personal GitHub accounts.
 
+![](./static/github-app-1.png)
 ::: 
 
 Select a connector for the git provider where your `catalog-info.yaml` is stored. 
@@ -678,6 +691,19 @@ Add the Org, Repo Name, Branch and the File path relative to the root of the rep
 
 </TabItem>
 </Tabs>
+
+#### API Key Support
+Harness IDP now supports the use of a **Harness API Key** in the **Register Catalog** step.
+
+With this feature, users can configure the **API Key** by selecting the **"API Token"** field in the Harness UI. This option is available under **Advanced Settings** in the **Pipelines** tab. Enabling this ensures that the API Key is utilized for catalog registration in IDP.
+
+By integrating the API Key, the pipeline execution remains seamless, ensuring it functions correctly when triggered from another pipeline or through a trigger.
+
+![](./static/api-key-ngui.png)
+
+This step is optional. You can proceed with executing your pipeline without an API key. In that case, the user context will be used for catalog registration.
+
+#### Output Variable
 
 Following is the output variable of this step.
 

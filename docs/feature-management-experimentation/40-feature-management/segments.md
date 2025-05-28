@@ -6,7 +6,7 @@ sidebar_position: 6
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment </button>
 </p>
 
 Segments are lists of user IDs that can you can create and share across your feature flags in an environment. You can segment your customer base and target these segments in your release process.
@@ -17,7 +17,7 @@ A segment is a pre-defined list of user IDs (user keys) that a feature flag can 
 * be created and edited via the Split API
 * [sync with any Amplitude Cohort](https://www.split.io/product/integrations/amplitude/)
 
-Segments are best for targeting relatively fixed or specific groups of users that you can easily identify, like individual accounts. If you would like to learn about more dynamic targeting, refer to the [Custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes) guide.
+Segments are best for targeting relatively fixed or specific groups of users that you can easily identify, like individual accounts. If you would like to learn about more dynamic targeting, refer to the [Custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes) guide.
 
 For feature releases, you can use segments to:
 
@@ -53,15 +53,11 @@ This article shows how to work with Standard segments and Large segments and exp
 
 The segment type is displayed at the top of each Segment page in Harness FME, as shown below.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/32099471950861" alt="create_a_segment_segment_type.png" width="450" />
-</p>
+<div style={{maxWidth:600}}> ![](./static/create-a-segment-segment-type.png) </div>
 
 In Harness FME, you can filter the segments listed on the Segments pane by segment type.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/32099444683149" alt="create_a_segment_filter.png" width="250" />
-</p>
+<div style={{maxWidth:400}}> ![](./static/create-a-segment-filter.png) </div>
 
 ## Creating a segment
 
@@ -71,7 +67,7 @@ To create a segment:
 
 1. From the navigation bar, click **Create segment**. The Create a segment page appears.
 
-  <img src="https://help.split.io/hc/article_attachments/32099844941197" alt="create_a_segment_page.png" width="700" />
+   <div style={{maxWidth:700}}> ![](./static/create-a-segment-page.png) </div>
     
 2. Fill in the fields as follows:
   * **Name.** Give your segment an easily recognizable name.
@@ -95,7 +91,7 @@ You need to add a segment definition for a given environment (this creates an em
 
 1. Select a segment in the Segments pane to open the segment page.
 
-   <img src="https://help.split.io/hc/article_attachments/32099444676493" alt="create_a_segment_add_definition.png" width="800" />
+   ![](./static/create-a-segment-add-definition.png)
 
 2. In the Environment dropdown, select a Harness FME environment where the segment will be defined.
 
@@ -103,7 +99,7 @@ You need to add a segment definition for a given environment (this creates an em
 
 4. In the User section, click **Add user**.
 
-    <img src="https://help.split.io/hc/article_attachments/32099471938189" alt="create_a_segment_add_user.png" width="800" />
+   ![](./static/create-a-segment-add-user.png)
 
     ___For Standard segments___ you can choose to individually add user IDs or to add them via file import.
 
@@ -123,11 +119,11 @@ To import user IDs into a Large segment you need to prepare a [CSV import file](
 
 1. On the segment page, click **Add user** and select **Import via API**.
 
-    <img src="https://help.split.io/hc/article_attachments/32099444685325" alt="create_a_segment_import_via_api.png" width="800" />
+   ![](./static/create-a-segment-import-via-api.png)
 
 2. On the Change summary page, click **Save** to generate an upload URL.
 
-    <img src="https://help.split.io/hc/article_attachments/32099471946893" alt="create_a_segment_upload_url.png" width="900" />
+   ![](./static/create-a-segment-upload-url.png)
 
     The upload URL will time out after 5 minutes, and the Large segment change request will be automatically withdrawn if the upload URL was not used.
 
@@ -149,11 +145,11 @@ Replace `filename.csv` with the name of your CSV file.
 
 4. Run the curl command from the location of your CSV file. You may need to wait a moment for the command to complete. During this time, the segment will show pending changes in Harness.
 
-    <img src="https://help.split.io/hc/article_attachments/32099471949069" alt="create_a_segment_pending.png" width="1000" />
+   ![](./static/create-a-segment-pending.png)
 
 5. Refresh the Segment page to see the segment size updated. You can search for a user ID to confirm that it is in the Large segment.
 
-    <img src="https://help.split.io/hc/article_attachments/32099471943309" alt="create_a_segment_search.png" width="1000" />
+   ![](./static/create-a-segment-search.png)
 
 :::info[How to append user IDs to a Large segment?]
 A segment is a list of user IDs. For a Large segment you can append new user IDs to the existing list, by following these steps:

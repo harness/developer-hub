@@ -5,7 +5,7 @@ sidebar_label: OpenVAS step configuration
 sidebar_position: 280
 ---
 
-<DocsTag   text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
+<DocsTag   text="DAST scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners#dynamic-application-security-testing---dast-scanners"/>
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
@@ -18,7 +18,7 @@ You can scan your application instances and ingest results from [OpenVAS](https:
 <details>
 <summary>Orchestration/extraction workflows</summary>
 
-import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+import CustomScanWorkflowRepo from './shared/custom-scan/workflow.md';
 
 <CustomScanWorkflowRepo />
 
@@ -27,7 +27,7 @@ import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
 <details>
 <summary>Ingestion workflows</summary>
 
-import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+import CustomScanWorkflowIngest from './shared/custom-scan/workflow-ingest-only.md';
 
 <CustomScanWorkflowIngest />
 
@@ -144,7 +144,7 @@ openvas-system-discovery
 ### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -190,7 +190,7 @@ product_access_token
 
 ### Instance
 
-import StoLegacyInstance from './shared/custom-scan/_dast.md';
+import StoLegacyInstance from './shared/custom-scan/dast.md';
 
 <StoLegacyInstance />
 
@@ -199,7 +199,7 @@ import StoLegacyInstance from './shared/custom-scan/_dast.md';
 ### Ingestion file
 
 
-import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
+import StoLegacyIngest from './shared/custom-scan/ingestion-file.md'; 
 
 
 <StoLegacyIngest />
@@ -207,6 +207,6 @@ import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md';
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/custom-scan/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />

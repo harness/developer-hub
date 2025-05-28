@@ -9,7 +9,7 @@ sidebar_position: 5
 import Link from "@docusaurus/Link";
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360039405371-Split-Boxes-Demo  <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360039405371-Split-Boxes-Demo </button>
 </p>
 
 The Split Boxes demo is a tool to help users understand the interaction between rules and the impact of various features. It's a simple visualization that allows you to see the impact of individually targeting, custom attribution, limit exposure, and dynamic configuration.
@@ -18,7 +18,7 @@ The Split Boxes demo is a tool to help users understand the interaction between 
 
 Each box represents a user ID.  
 
-![](https://help.split.io/hc/article_attachments/26801689779725)
+![](./static/split-boxes-demo.png)
 
 You can individually target using the cell location, such as b8 or j5.  You can also create a segment that includes any of the available values.
 
@@ -50,10 +50,10 @@ CreateBoxSplit Default Production user front_end_choose_boxes 9enxxxxxxxxxxxxxxx
 
 In Chrome, to see feature flag changes immediately you should Disable cache for the Network in the browser's Developer Tools.
 
-![](https://help.split.io/hc/article_attachments/360048654411)
+![](./static/split-boxes-chrome.png)
 
-[CreateBoxSplit.sh.zip](https://help.split.io/hc/en-us/article_attachments/360048733612)
+<br />
 
-[Boxes_split.txt](https://help.split.io/hc/en-us/article_attachments/10304905177869)
-
-[Boxes.htm](https://help.split.io/hc/en-us/article_attachments/26801650994957)
+[CreateBoxSplit.sh.zip](./shared/create-box-split.sh.zip) &emsp; | 1 KB<br />
+[Boxes_split.txt](./shared/boxes-split.txt) <font color='grey'> _(right-click > **Save Link As...**)_ </font> &emsp; | 658 Bytes<br />
+[Boxes.htm](./shared/boxes.htm) <font color='grey'> _(right-click > **Save Link As...**)_ </font> &emsp; | 8 KB<br />

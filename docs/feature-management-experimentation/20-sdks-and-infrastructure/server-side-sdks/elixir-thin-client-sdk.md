@@ -28,6 +28,7 @@ The package can be installed by adding `split_thin_sdk` to your list of dependen
 
 <Tabs>
 <TabItem value="mix.exs">
+
 ```elixir
 def deps do
   [
@@ -35,6 +36,7 @@ def deps do
   ]
 end
 ```
+
 </TabItem>
 </Tabs>
 
@@ -59,6 +61,7 @@ To start the Elixir Thin SDK, you need to start its supervisor, either in your A
 
 <Tabs>
 <TabItem value="Supervised Child">
+
 ```elixir
 defmodule MyApp.Application do
   use Application
@@ -74,8 +77,10 @@ defmodule MyApp.Application do
   end
 end
 ```
+
 </TabItem>
 <TabItem value="Independent Supervisor">
+
 ```elixir
 defmodule MyApp.Application do
   use Application
@@ -92,6 +97,7 @@ defmodule MyApp.Application do
   end
 end
 ```
+
 </TabItem>
 </Tabs>
 
@@ -101,7 +107,7 @@ end
 
 After you start the SDK, you can use the `Split.get_treatment/3` function to decide what version of your features your customers are served. The function requires the `FEATURE_FLAG_NAME` argument that you want to ask for a treatment and a unique `key` argument that corresponds to the end user that you want to serve the feature to.
 
-From there, you simply need to use an if-else-if or case statement block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+From there, you simply need to use an if-else-if or case statement block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 ```elixir title="Elixir"
 ## The key here represents the string ID of the user/account/etc you're trying to evaluate a treatment for
@@ -118,7 +124,7 @@ end
 
 ### Attribute syntax 
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `get_treatment` function needs to pass an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `get_treatment` function needs to pass an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call in a map. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -151,25 +157,31 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="get_treatments">
+
 ```elixir
 treatments = Split.get_treatments("key", ["FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2"], nil);
 
 IO.inspect(treatments);
 ```
+
 </TabItem>
 <TabItem value="get_treatments_by_flag_set">
+
 ```elixir
 treatments = Split.get_treatments_by_flag_set("key", "backend", nil);
 
 IO.inspect(treatments);
 ```
+
 </TabItem>
 <TabItem value="get_treatments_by_flag_sets">
+
 ```elixir
 treatments = Split.get_treatments_by_flag_sets("key", ["backend", "server_side"], nil);
 
 IO.inspect(treatments);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -177,7 +189,7 @@ You can also use the [Split Manager](#manager) to get all of your treatments at 
 
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `Split.get_treatment_with_config/3` function. This function returns an `Split.TreatmentWithConfig` struct containing the treatment and associated configuration.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `Split.get_treatment_with_config/3` function. This function returns an `Split.TreatmentWithConfig` struct containing the treatment and associated configuration.
 
 The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `nil` for the config parameter.
 

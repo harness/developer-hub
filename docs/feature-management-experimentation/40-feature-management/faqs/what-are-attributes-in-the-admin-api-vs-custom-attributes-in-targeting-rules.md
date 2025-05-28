@@ -5,7 +5,7 @@ sidebar_position: 15
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016744791-What-are-attributes-in-the-Admin-API-vs-custom-attributes-in-targeting-rules <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016744791-What-are-attributes-in-the-Admin-API-vs-custom-attributes-in-targeting-rules </button>
 </p>
 
 ### Question

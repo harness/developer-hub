@@ -17,6 +17,53 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 :::
 
+
+
+## May 2025
+
+### Version: 1.31.0
+
+#### New features and enhancements
+
+- SLSA generation and verification steps now support both image tag and digest, enhancing traceability and artifact integrity validation across pipelines.
+
+  **Note**: When modifying the existing SLSA steps, you must manually remove the digest from the YAML configuration to ensure compatibility with the updated functionality.
+
+- Added [API support](https://apidocs.harness.io/tag/Integration-Step-Config) for the VM to configure step resources and settings (e.g., syft, cdxgen, CycloneDX, SPDX) at the account, org, or project level.
+
+- Added support for Vault integration in Harness Cloud to securely manage secrets during pipeline executions.
+
+
+#### Fixed Issues
+
+- Fixed a bug where the license filters (e.g., contains, starts with) were not functioning as expected on the Artifacts page (SCS-3308).
+- Fixed an issue where manually edited and saved integrations were skipping their scheduled next Iterations.This has been resolved by updating next Iterations upon manual edits. ( [ZD-82987](https://support.harness.io/hc/en-us/requests/82987), [ZD-83068](https://support.harness.io/hc/en-us/requests/83068)) (SCS-3708).
+- Resolved issue where repositories onboarded via API were not being displayed on the integration page (SCS-3642).
+- Fixed issue in the SBOM Orchestration step where, if an image name included a digest, the Supply Chain tab and Artifacts page displayed the digest in the corresponding tag field(SCS-3675).
+
+## April 2025
+
+### Version: 1.29.0
+
+#### New features and enhancements
+
+- Artifact signing and verification steps now support non-container artifacts (such as Helm charts, JARs, WARs, and manifest files) enhancing artifact integrity and security before deployment.
+- Added [API support](https://apidocs.harness.io/tag/Integration-Step-Config) to configure step resources and settings (e.g., syft, cdxgen, CycloneDX, SPDX) at the account, org, or project level, with options to run steps in parallel or sequentially. 
+- Registry domain URLs for artifacts stored in JFrog and Kubernetes registries no longer need to be specified, as the domain is already included in the connector URL. In all SCS steps only the image name is required.
+ 
+Example:
+
+JFrog: `</your-repo/test-image>:tag`
+
+#### Fixed Issues
+
+- Resolved an issue where signing an artifact using image name and digest created a new entry with an `@sha256` suffix instead of updating the existing entry (SCS-3404).
+- Fixed a bug where the Delete Integration API responded with 200 OK even for invalid integration IDs; it now returns an appropriate error (SCS-3339).
+- Fixed artifact verification failures caused by `signatureId` being overwritten during the verification step, causing the system to look for signature files in the wrong location (SCS-3509 , ZD-78728).
+- Resolved CDXgen failures in restricted clusters by modifying the plugin to run in air-gapped mode, eliminating the need for external license fetch calls (SCS-3590).
+
+
+
 ## February 2025
 
 ### Version: 1.25.1

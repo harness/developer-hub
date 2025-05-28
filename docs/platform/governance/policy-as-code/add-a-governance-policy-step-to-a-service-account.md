@@ -1,7 +1,7 @@
 ---
-title: Use Harness Policy As Code for Service Account.
-description: Describes steps to add policies to Service Account.
-sidebar_position: 6
+title: Policy as Code for service accounts
+description: Learn how to use policy as code for a service account.
+sidebar_position: 80
 helpdocs_topic_id: 4kuokatvyw
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false

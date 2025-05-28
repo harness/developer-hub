@@ -5,7 +5,7 @@ sidebar_position: 24
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025154551-Running-bundle-using-React-Native-and-JavaScript-SDK-causes-an-error-Bundling-failed-Error-Unable-to-resolve-module-util </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025154551-Running-bundle-using-React-Native-and-JavaScript-SDK-causes-an-error-Bundling-failed-Error-Unable-to-resolve-module-util </button>
 </p>
 
 ## Issue
@@ -30,4 +30,4 @@ Install the class using the command below, this will fix the issue
 npm install util
 ```
 
-As of July 29th 2021, our [React Native SDK](https://help.split.io/hc/en-us/articles/4406066357901-React-Native-SDK) is available.
+As of July 29th 2021, our [React Native SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk) is available.

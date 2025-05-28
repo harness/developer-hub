@@ -83,10 +83,22 @@ The `apply-refresh-only` applies a state update without changing the infrastruct
 ---
 
 ### Detect Drift
-Although not an official command, `detect-drift` is typically executed using `plan` with specific flags to:
-- **Drift Detection**: Identifies discrepancies between the configured and actual states of the infrastructure.
----
+The `detect-drift` command is a built-in operation that compares the real infrastructure with your OpenTofu/Terraform state and highlights any discrepancies. While not an official Tofu/Terraform command, this step uses `plan` under the hood with specific flags to perform drift detection.
 
+This is useful for detecting infrastructure changes made outside IaC, such as resources added manually via a cloud console.
+
+:::tip Example use case
+Suppose your IaC configuration provisions an SQS queue. Later, someone manually creates an EC2 instance in the same environment. When `detect-drift` is run, Harness identifies the EC2 instance as drift and fails the pipeline. You can then:
+- Import the EC2 instance into your state.
+- Delete it if it's unintended.
+- Ignore it if it's intentionally unmanaged.
+:::
+
+Drift detection is typically used in scheduled pipelines or as a safeguard before provisioning operations.
+
+To learn more, including a full YAML example, visit the [Drift Detection documentation](/docs/infra-as-code-management/pipelines/operations/drift-detection).
+
+---
 ### Validate
 The `validate` command checks the configuration for errors:
 - **Syntax Checks**: Ensures all configuration files are syntactically correct.

@@ -323,4 +323,8 @@ Argo CD allows configuring Sync Windows to control when auto-sync occurs. This c
 Enhancement requests for GitOps RBAC improvements have been submitted, but currently, fine-grained GitOps RBAC controls are limited.
 
 ### How can a user manage Argo CD Application Sets using a single Argo CD Agent?
-Argo CD Application Sets are managed by a single Argo CD Agent, so a single AppSet cannot cover multiple clusters. Users can set up separate AppSets in different agents for different environments.
+ArgoCD ApplicationSets do not fully support project-scoped repositories. While you can create an ApplicationSet, the underlying applications may fail to fetch repository contents due to authentication issues.
+Workarounds:
+- Use an Organization-scoped or Account-scoped repository instead of a Project-scoped repository.
+- Configure repo-cred templates to manage authentication for project-level repositories.
+This is a known limitation in [ArgoCD](https://github.com/argoproj/argo-cd/issues/21016).

@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2025-03-04T10:00
+date: 2025-04-17T10:00
 sidebar_position: 5
 ---
 
@@ -19,6 +19,66 @@ The release notes describe recent changes to Harness Chaos Engineering.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## April 2025
+
+### Version 1.59.0
+
+#### Images required
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+
+- harness/chaos-ddcr:1.59.0
+- harness/chaos-log-watcher:1.59.0
+- harness/service-discovery-collector:0.39.0
+- harness/chaos-ddcr-faults:1.59.0
+
+#### New features and enhancements
+
+- Added support for Windows CPU stress on Windows dual socket servers. (CHAOS-7902)
+- Adds support for dynamic updates in Active Discovery and the Application Map after each discovery run—new services are added, removed services are marked accordingly, and resources from newly excluded namespaces are hidden, with their services shown as removed if referenced in the Application Map. (CHAOS-7745)
+- Added Windows global blackhole experiment to cause global blackhole chaos on a Windows VM. (CHAOS-7091)
+
+#### Fixed issues
+
+- Fixed an issue that was causing runtime input-based fault additions to fail in Kubernetes (Harness Infrastructure) experiments when using a private image registry with a secret. The system now correctly handles secrets during fault creation in these scenarios. (CHAOS-8006)
+
+- Added an index on the `environment_id` field to improve query performance and reduce latency for operations involving environment-specific data. (CHAOS-7726)
+
+- Updated the title header on the Getting Started page from a question format ("Create Chaos Experiments on your ______?") to a clear statement: "Create Chaos Experiments on your Infrastructure" for better readability and user experience. (CHAOS-7802)
+
+- Resolved a goroutine leak in chaos-manager by properly closing response bodies, preventing memory spikes and unbounded memory usage. (CHAOS-7972)
+
+- Corrected the experiment count display in Bulk Run on HCE-SaaS UI by replacing the hardcoded value with a dynamic variable to reflect the actual number of selected experiments. (CHAOS-7818)
+
+## March 2025
+
+### Version 1.57.2
+
+#### Images required
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+
+- harness/chaos-ddcr:1.57.0
+- harness/chaos-log-watcher:1.57.0
+- harness/service-discovery-collector:0.37.1
+- docker.io/harness/chaos-ddcr-faults:1.57.0
+
+#### New features and enhancements
+
+- Replaces the large text blocks in the pod details and probes tabs with concise tooltips and "Learn More" links, directing users to relevant content in the Harness Developer Hub for improved readability and navigation. (CHAOS-7621, CHAOS-7619)
+
+- Adds support for targeting multiple keys in the [Linux Redis Cache Expire](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/redis-cache-expire) and [Kubernetes Redis Cache Expire](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/redis-cache-expire) faults.(CHAOS-7283)
+
+#### Fixed issues
+
+- Fixed an issue where services were not appearing on the application map in the Chaos module when the discovery agent was created through the Discovery page. (CHAOS-7743)
+
+- Fixed scrolling issue with the ChaosHubs side navigation bar. (CHAOS-7728)
+
+- Resolved an issue with the timeline view for an experiment with multiple probes, which showed incorrect probe information when user clicked any probe. (CHAOS-7718)
+
+- Resolved an issue in the experiment timeline view where all timestamps were unnecessarily converted to Unix milliseconds, even when already in Unix millisecond format. (CHAOS-7719)
 
 ## February 2025
 

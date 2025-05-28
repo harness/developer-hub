@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025281872-Moving-Feature-Flags-to-a-Service </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025281872-Moving-Feature-Flags-to-a-Service </button>
 </p>
 
 
@@ -39,7 +39,7 @@ This approach has a number of advantages:
 
 ## Best practices for designing the service
 
-Harness FME provides the [Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator) as an out of the box solution for evaluating feature flags on the server-side, to both address potential client-side challenges and to split on applications written in languages for which there is no SDK.
+Harness FME provides the [Evaluator](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator) as an out of the box solution for evaluating feature flags on the server-side, to both address potential client-side challenges and to split on applications written in languages for which there is no SDK.
 
 The app should call home and retrieve a mapping of features to the treatment (aka variation, experience) to show the app user for those features. Assuming a service deployed at /splits, we recommend using the following REST API:
 

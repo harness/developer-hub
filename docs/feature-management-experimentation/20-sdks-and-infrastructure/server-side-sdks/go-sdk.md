@@ -23,7 +23,7 @@ The Go SDK supports Go language version 1.18 and above.
 The Go SDK can run in three different modes to fit in different infrastructure configurations.
 
 * **in-memory-standalone:** The default (if no mode is specified) and most straightforward operation mode uses an in-memory storage to keep feature flags, segments, and queued impressions/metrics, as well as its own synchronization tasks that periodically keep feature flags and segments up to date, while flushing impressions and metrics to the Harness servers.
-* **redis-consumer:** This mode uses Redis as a broker to retrieve feature flags and segments and store impressions and metrics. It also requires the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) to be running in the background, populating Redis with segments and feature flags, and flushing impressions and metrics to the Harness servers. This mode is useful if you have multiple instances of SDKs running (either in the same or a different language) and want to have a single synchronization point in your infrastructure.
+* **redis-consumer:** This mode uses Redis as a broker to retrieve feature flags and segments and store impressions and metrics. It also requires the [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) to be running in the background, populating Redis with segments and feature flags, and flushing impressions and metrics to the Harness servers. This mode is useful if you have multiple instances of SDKs running (either in the same or a different language) and want to have a single synchronization point in your infrastructure.
 * **localhost:** This mode should be used to stub the FME service when running local tests or development processes. It parses a file (either one specified by the user or `$HOME/.splits`) that defines feature flags and treatments to provide the developer with a predictable result of running `Treatment()` calls. 
 
 ### 1. Installing the SDK into your Go environment
@@ -73,7 +73,7 @@ Starting version 4.0.0, cfg.BlockUntilReady is deprecated and migrated to the fo
 
 When the SDK is instantiated in `inmemory-standalone` operation mode, it kicks off background tasks to update an in-memory or Redis cache.
 
-This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it is in this intermediate state, it may not have the data necessary to run the evaluation. In this circumstance, the SDK does not fail, but instead returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it is in this intermediate state, it may not have the data necessary to run the evaluation. In this circumstance, the SDK does not fail, but instead returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, you need to block until the SDK is ready. You can block by using the `BlockUntilReady(int)` method as part of the instantiation process of the SDK factory client as shown below. Do this as a part of the startup sequence of your application.
 
@@ -81,7 +81,7 @@ Instantiating two (or more) different factories results in multiple instances of
 
 In the most common scenario, you should instantiate and reuse a single SDK factory throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ```go title="Go"
 func main() {
@@ -110,7 +110,7 @@ Now you can start asking the SDK to evaluate treatments for your customers.
 
 After you instantiate the SDK factory client, you can start using the client's `Treatment` method to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you are serving the feature flag to.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 ```go title="Go"
 // The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
@@ -132,7 +132,7 @@ The arguments for the `Treatment()` call are:
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `Treatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `Treatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `Treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or off` treatment to this account.
 
@@ -163,6 +163,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="Treatments">
+
 ```go
 splitClient := factory.Client()
 treatments := splitClient.Treatments(
@@ -175,24 +176,29 @@ for featureFlag, treatment := range treatments {
 	fmt.Printf("Treatment for feature flag %s is %s\n", featureFlag, treatment)
 }
 ```
+
 </TabItem>
 <TabItem value="TreatmentsByFlagSet">
+
 ```go
 splitClient := factory.Client()
 treatments := splitClient.TreatmentsByFlagSet("KEY", "backend", nil)
 ```
+
 </TabItem>
 <TabItem value="TreatmentsByFlagSets">
+
 ```go
 splitClient := factory.Client()
 treatments := splitClient.TreatmentsByFlagSets("KEY", []string{"backend", "server_side"}, nil)
 ```
+
 </TabItem>
 </Tabs>
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `TreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `TreatmentWithConfig` method.
 
 This method will return an object containing the treatment and associated configuration.
 
@@ -216,6 +222,7 @@ If you need to get multiple evaluations at once, you can also use the `Treatment
 
 <Tabs>
 <TabItem value="TreatmentsWithConfig">
+
 ```go
 TreatmentResults := splitClient.TreatmentsWithConfig("KEY", []string{"FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2"}, attributes)
 // TreatmentResults will have the following form: 
@@ -226,16 +233,21 @@ TreatmentResults := splitClient.TreatmentsWithConfig("KEY", []string{"FEATURE_FL
 //                  config: "{ 'copy' : 'better copy'}}",
 // }	
 ```
+
 </TabItem>
 <TabItem value="TreatmentsWithConfigByFlagSet">
+
 ```go
 TreatmentResults := splitClient.TreatmentsWithConfigByFlagSet("KEY", "backend", attributes)
 ```
+
 </TabItem>
 <TabItem value="TreatmentsWithConfigByFlagSets">
+
 ```go
 TreatmentResults := splitClient.TreatmentsWithConfigByFlagSets("KEY", []string{"backend", "server_side"}, attributes)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -488,6 +500,7 @@ The following splitFile is a JSON that represents a SplitChange:
 
 <Tabs>
 <TabItem value="SplitChange Schema">
+
 ```go
 type SplitChangesDTO struct {
 	Till   int64      `json:"till"`
@@ -495,8 +508,10 @@ type SplitChangesDTO struct {
 	Splits []SplitDTO `json:"splits"`
 }
 ```
+
 </TabItem>
 <TabItem value="Split Schema">
+
 ```go
 type SplitDTO struct {
 	ChangeNumber          int64             `json:"changeNumber"`
@@ -513,8 +528,10 @@ type SplitDTO struct {
 	Configurations        map[string]string `json:"configurations"`
 }
 ```
+
 </TabItem>
 <TabItem value="JSON example">
+
 ```json
 {
   "splits": [
@@ -608,6 +625,7 @@ type SplitDTO struct {
   "till": 1660326991072
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -617,6 +635,7 @@ The provided segment directory must have the JSON files of the corresponding seg
 
 <Tabs>
 <TabItem value="SegmentChange Schema">
+
 ```go
 type SegmentChangesDTO struct {
 	Name    string   `json:"name"`
@@ -626,8 +645,10 @@ type SegmentChangesDTO struct {
 	Till    int64    `json:"till"`
 }
 ```
+
 </TabItem>
 <TabItem value="JSON example">
+
 ```json
 {
   "name": "segment_1",
@@ -640,6 +661,7 @@ type SegmentChangesDTO struct {
   "till": 1585948850110
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -698,7 +720,7 @@ factory, err := client.NewSplitFactory("localhost", sdkConf)
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given flag, the treatment specified in the file is returned for every customer. 
 
-`getTreatment` calls for a feature flag and only returns the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `featureFlag` map returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK is asked to evaluate them.
+`getTreatment` calls for a feature flag and only returns the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `featureFlag` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
 
 The format of this file is two columns separated by a whitespace. The left column is the feature flag name and the right column is the treatment name. The following is a sample `.split` file:
 

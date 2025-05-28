@@ -1,15 +1,30 @@
 export default function (context) {
-    return {
-      name: 'feedback-plugin',
-      injectHtmlTags() {
-        const { siteConfig } = context;
-        const { baseUrl } = siteConfig;
-  
-        return {
-          postBodyTags: [
-            `
+  return {
+    name: 'feedback-plugin',
+    injectHtmlTags() {
+      return {
+        postBodyTags: [
+          `
             <script>
-              function Feedback() {
+              function Feedback() {  
+              (function loadRefiner() {
+                  if (window._refinerLoaded) return; // Prevent multiple loads
+                  window._refinerLoaded = true;
+                
+                  // Initialize Refiner queue before script loads
+                  window._refinerQueue = window._refinerQueue || [];
+                
+                  const script = document.createElement("script");
+                  script.type = "text/javascript";
+                  script.async = true;
+                  script.src = "https://js.refiner.io/v001/client.js";
+                
+                  const firstScript = document.getElementsByTagName("script")[0];
+                  firstScript.parentNode.insertBefore(script, firstScript);
+                })();
+                function _refiner() {
+                  _refinerQueue.push(arguments)
+                }
                 const feedback = document.getElementsByClassName("feedback");
                 if (feedback[0]) return;
   
@@ -70,9 +85,8 @@ export default function (context) {
               observer.observe(document, { subtree: true, childList: true });
             </script>
             `,
-          ],
-        };
-      },
-    };
-  }
-  
+        ],
+      };
+    },
+  };
+}

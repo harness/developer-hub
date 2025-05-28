@@ -85,6 +85,18 @@ Harness supports the following methods for GCP authentication:
 - **Service Account**:  
    Create a GCP connector by providing a Service Account. For more details, refer to [Create a GCP connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp).  
 
+### Enable Cross-Project Access
+
+You can have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
+
+**Prerequisite** : For OIDC-based connectors, the associated service account (SA) must have cross-project access.
+
+- **Project** (required): It can refer to a **different project** than the one configured in the connector, or the **same project**
+- **Region** (required): It refers to the region where the container will be deployed.
+
+<div align="center">
+  <DocImage path={require('./static/oidc-cross-scope.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 ## Configure the Execution
 

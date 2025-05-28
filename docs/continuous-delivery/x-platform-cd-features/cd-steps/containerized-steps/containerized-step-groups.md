@@ -31,7 +31,7 @@ This option is disabled for deployment types that do not support containerized s
 - CD containerized step groups are supported in Deploy and Custom stages.
 - Not all steps are supported in containerized step groups. You can see which steps are supported when you try to add steps in the containerized step group.
 - You can use the same cluster to run the Harness Delegate and the containerized step group(s), but it is not required.
-- Permissions configuration are inherited by a step within a step group. This logic has been updated over the course of Harness NextGen's lifespan. This has caused breaking changes for some users. To learn more about it, go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step).
+- Permissions configuration are inherited by a step within a step group. This logic has been updated over the course of Harness lifespan. This has caused breaking changes for some users. To learn more about it, go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step).
 - A containerized step group may fail when using a cross-account role if the delegate responsible for execution lacks the necessary permissions to assume the role. To resolve this, ensure that the delegate has the required permissions to assume the cross-account role.
 
 ## Add a containerized step group
@@ -62,7 +62,82 @@ Enter shared directories or specific paths within the filesystem to have them sh
 
 ### Volumes
 
-This setting is the same as Kubernetes `volumes`. Harness supports Host Path (`hostPath`), Empty Directory (`emptyDir`), and Persistent Volume Claim (`persistentVolumeClaim`).
+This setting maps directly to Kubernetes volumes. Harness supports the following volume types:
+- Host Path (`hostPath`)
+- Empty Directory (`emptyDir`)
+- Persistent Volume Claim (`persistentVolumeClaim`)
+- ConfigMaps (`configMap`)
+- Kubernetes Secrets (`secret`)
+
+#### Use Config Maps and Secrets as Volumes
+
+:::note
+Currently, this feature is behind the feature flag `CDS_CONFIG_MAPS_AND_SECRETS_AS_VOLUME`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+**Mounting a ConfigMap as a Volume**
+
+To mount a Kubernetes ConfigMap as a volume in a pod:
+
+1. Under **Volumes**, click **Add**.
+2. Set the following values:
+- **Mount Path**: Path inside the container where the ConfigMap should be mounted.
+- **Type**: Select **Config Map** from the dropdown.
+- **Config Map Name**: Enter the name of the Kubernetes ConfigMap.
+- **Optional**: Check this box to make the ConfigMap optional (i.e., not cause failure if missing).
+
+Once configured, the specified ConfigMap will be mounted at the defined path in the pod.
+
+<details>
+<summary>Sample YAML for adding Config Maps in Volume</summary>
+
+```yaml
+volumes:
+  - mountPath: /dir
+    type: ConfigMap
+    spec:
+      name: test_config
+      optional: false
+```
+      
+</details>
+
+For more information, refer to the [Kubernetes documentation on mounting ConfigMaps as volumes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#add-configmap-data-to-a-volume)
+
+**Mounting a Kubernetes Secret as a Volume**
+
+To mount a Kubernetes Secret:
+
+1. Under **Volumes**, click **Add**.
+2. Set the following values:
+- **Mount Path**: Path inside the container where the secret should be mounted.
+- **Type**: Select **Secret** from the dropdown.
+- **Secret Name**: Enter the name of the Kubernetes Secret.
+- **Optional**: Check this box to make the Secret optional.
+
+Note: These are Kubernetes-native secrets, not Harness secrets. Therefore, masking or redacting of secret values is not handled by Harness in this case.
+
+For more information, refer to the [Kubernetes documentation on mounting Secrets as volumes](https://kubernetes.io/docs/concepts/configuration/secret/)
+
+<details>
+<summary>Sample YAML for Secret Volume</summary>
+
+```yaml
+volumes:
+  - mountPath: /dir/test
+    type: Secret
+    spec:
+      name: test
+      optional: false
+```
+
+</details>
+
+<div align="center">
+  <DocImage path={require('./static/mount-secrets-and-configmaps.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+**Additional Notes:** You can only mount one volume per mount path.
 
 ### Service Account Name
 

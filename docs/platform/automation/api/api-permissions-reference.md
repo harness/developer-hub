@@ -259,9 +259,9 @@ The following permissions allow an API key to interact with IDP Admin resources.
 
 The following permissions allow an API key to manage Input Sets. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
 
-* View input sets: `core_inputsets_view`
-* Create/edit input sets: `core_inputsets_edit`
-* Delete input sets: `core_inputsets_delete`
+* View input sets: `core_inputset_view`
+* Create/edit input sets: `core_inputset_edit`
+* Delete input sets: `core_inputset_delete`
 
 ## Organizations
 

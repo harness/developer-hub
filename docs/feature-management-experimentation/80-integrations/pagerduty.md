@@ -5,8 +5,12 @@ description: ""
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360046246631-PagerDuty <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360046246631-PagerDuty </button>
 </p>
+
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
 
 ## Split + PagerDuty
 
@@ -33,19 +37,15 @@ The following describe how to use PagerDuty with Split.
 
 3. Open the Incoming Event Source to find a screen like the one shown as follows:
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/10710174835341" alt="PagerDuty_1.png" />
-</p>
+   ![](./static/pagerduty-step1.png)
 
-A unique integration key and accompanying email address is shown. This is the email address you use with the Split alert policy. Copy the email address and save it for later.
+   A unique integration key and accompanying email address is shown. This is the email address you use with the Split alert policy. Copy the email address and save it for later.
 
 ### Create a rule in PagerDuty
 
 1. Create a new rule to process the email alerts from Split. The rule can be simple.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360061870832/image_2.png" alt="image_2.png" />
-</p>
+   ![](./static/pagerduty-step2.png)
 
 2. Enter the following: 
 
@@ -54,9 +54,8 @@ A unique integration key and accompanying email address is shown. This is the em
 
 3. Save the rule.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360061870892/image_3.png" alt="image_3.png" />
-</p>
+   ![](./static/pagerduty-step3.png)
+
 
 The actions performed by my rule are to route to an appropriate service -- “AB feature testing” -- set the severity to critical and label the incident with a note that “Split has detected a degradation in a key metric”. You can specify whatever action you think is most appropriate; PagerDuty is incredibly flexible in its response to the alerts.
 
@@ -64,9 +63,7 @@ The actions performed by my rule are to route to an appropriate service -- “AB
 
 1. Select a metric on which you would like to alert. The full details on configuring an alert policy are found in Split's [metric alerting guide](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting).
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/16366004432781" alt="alert_policy.png" />
-</p>
+   ![](./static/pagerduty-step4.png)
 
 2. Paste the email address you saved from PagerDuty containing your unique key as additional email save the changes.
 
@@ -78,17 +75,14 @@ Split does not have a test button to trigger an alert. The simplest approach is 
 
 ### Handle a Split incident in PagerDuty
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360062016591/image_5.png" alt="image_5.png" />
-</p>
+![](./static/pagerduty-step5.png)
 
 If the integration is configured properly, a new alert email from Split appears as incidents in PagerDuty, per your rules configuration.
 
 The full detail of the email message is also available in PagerDuty by drilling into the incident.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/10710339920653" alt="PagerDuty6.png" />
-</p>
+![](./static/pagerduty-step6.png)
+
 
 In this case, the test_split degraded the processing time by 30%.
 

@@ -48,6 +48,13 @@ import { MODULES } from "@site/src/constants"
           link: "/docs/feature-management-experimentation/feature-management",
         },
         {
+          title: "Release monitoring",
+          module: MODULES.fme,
+          description:
+            "Measure KPIs, performance metrics, and alerting for your feature variations",
+          link: "/docs/feature-management-experimentation/release-monitoring",
+        },
+        {
           title: "Experimentation",
           module: MODULES.fme,
           description:

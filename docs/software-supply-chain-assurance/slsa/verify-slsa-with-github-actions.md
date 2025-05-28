@@ -26,7 +26,7 @@ import GHActionReq from '/docs/software-supply-chain-assurance/shared/requiremen
 
 ```yaml
 - name: SLSA Verification
-  uses: harness/github-actions/slsa-verification
+  uses: harness/github-actions/slsa-verification@1.1.0
   with:
     HARNESS_ACCOUNT_URL: https://myaccount.harness.io
     HARNESS_ACCOUNT_ID: my_account_id_9YpRharzPs
@@ -54,63 +54,105 @@ Make sure to include the required configurations from the [Requirements](#requir
 Here's a sample workflow using the `harness/github-actions/slsa-verification`
 
 ```yaml
+
 name: SLSA Provenance Verification Workflow
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  slsa-verification-job:
-    runs-on: self-hosted
-
+  combined-workflow:
+    runs-on: ubuntu-latest
     env:
-      HARNESS_ACCOUNT_URL: 'https://myaccount.harness.io'
-      HARNESS_ACCOUNT_ID: '_myaccount_rzPs_JtWT7g'
+      HARNESS_ACCOUNT_URL: 'https://app.harness.io'
+      HARNESS_ACCOUNT_ID: '_mya_account_cbjhwbcw'
       HARNESS_ORG_ID: 'SCS'
       HARNESS_PROJECT_ID: 'SCS_ID'
       HARNESS_API_KEY: ${{ secrets.SCS_API_KEY }}
-      VAULT_ADDR: ${{ secrets.VAULT_URL }}
 
     steps:
       # Step 1: Checkout the main repository
       - name: Checkout Main Repository
         uses: actions/checkout@v3
 
-      # Step 2: Log in to Docker Hub
+      # Step 2: Clone Additional Repository
+      - name: Clone Additional Repository
+        run: |
+          git clone https://github.com/lavakush07/easybuggy-vulnerable-application
+          echo "Cloned additional repository: docker-nginx"
+
+      # Step 3: Log in to Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Step 3: Build and Tag Docker Image
+      - name: Set Vault Environment Variables
+        run: |
+          echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> $GITHUB_ENV
+          echo "DOCKER_PASSWORD=${{ secrets.DOCKER_PASSWORD }}" >> $GITHUB_ENV
+
+      # Step 4: Build and Tag Docker Image
       - name: Build and Tag Docker Image
         run: |
-          docker build -t harness/github-service:latest -f ./stable/alpine/Dockerfile .
-          echo "Docker image built and tagged as harness/github-service:latest."
+          cd <repo-name>
+          docker build -t <image-name>:<tag> .
+          echo "Docker image built and tagged as <image-name>:<tag>"
 
-      # Step 4: Push Docker Image to Docker Hub
+      # Step 5: Push the Docker Image to Docker Hub
       - name: Push Docker Image
         run: |
-          docker push harness/github-service:latest
-          echo "Docker image pushed to Docker Hub."
+          docker push <image-name>:<tag>
+          echo "Docker image pushed to Docker Hub"
 
-      # Step 5: Log in to Vault
+      # Step 6: Log in to Vault
       - name: Log in to Vault
         uses: hashicorp/vault-action@v2
+        id: vault_login
         with:
           url: ${{ secrets.VAULT_URL }}
           method: token
           token: ${{ secrets.VAULT_TOKEN }}
 
-      # Step 6: Run SLSA Verification
-      - name: Run SLSA Verification Action
-        uses: harness/github-actions/slsa-verification
-        with:
-          TARGET: 'harness/github-service:latest'
-          VERIFY: true
-          KMS_KEY: 'cosign'
+      # Step 7: Set Vault Environment Variables
+      - name: Set Vault Environment Variables
+        run: |
+          echo "VAULT_ADDR=${{ secrets.VAULT_URL }}" >> $GITHUB_ENV
+          echo "VAULT_TOKEN=${{ steps.vault_login.outputs.token }}" >> $GITHUB_ENV
+
+      # Step 8: Retrieve KMS key (Cosign) from Vault
+    
+      - name: Retrieve Cosign Public Key from Vault
+        run: |
+          export COSIGN_KEY=$(vault kv get -field=public_key -mount="secret1/cosign-key" "cosign-key")
+          echo "COSIGN_KEY=$COSIGN_KEY" >> $GITHUB_ENV
+
+      - name: Verify Vault Login and Print Token
+        run: |
+          echo "Vault login successful."
+          echo "Vault Token: ${{ steps.vault_login.outputs.token }}"
+        env:
+          VAULT_TOKEN: ${{ steps.vault_login.outputs.token }}  # Ensuring token is accessible
+
+      # Step 9: Set Vault Environment Variables
+      - name: Set Vault Environment Variables
+        run: |
+          echo "VAULT_ADDR=${{ secrets.VAULT_URL }}" >> $GITHUB_ENV
+          echo "VAULT_TOKEN=${{ secrets.VAULT_TOKEN }}" >> $GITHUB_ENV
+
+      # # Step 10: Run SBOM Orchestration Action
+      - name: SLSA Verification
+         uses: harness/github-actions/slsa-verification@1.1.0
+         with:
+           HARNESS_ACCOUNT_URL: https://app.harness.io
+           HARNESS_ACCOUNT_ID: vpCkHKsDSxK9_KYfjCTMKA
+           HARNESS_ORG_ID: SCS
+           HARNESS_PROJECT_ID: Exploratory
+           HARNESS_API_KEY: ${{ secrets.SCS_API_KEY }}
+           TARGET: <image-name>:<tag>
+           VERIFY: true
+           KMS_KEY: 'cosign'
 
 ```

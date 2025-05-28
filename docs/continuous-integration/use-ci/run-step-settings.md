@@ -14,6 +14,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import EnhancedOutVar from '/docs/continuous-integration/shared/enhanced-output-variables.md';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 You can use a **Run** step to run commands or scripts in a CI pipeline. Here are some examples of different ways you can use **Run** steps.
@@ -223,19 +224,19 @@ The stage's build infrastructure determines whether these fields are required or
 
 For **Container Registry**, provide a Harness container registry connector, such as a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/), that connects to a container registry, such as Docker Hub, where the **Image** is located.
 
-For **Image**, provide the FQN (fully-qualified name) or artifact name and tag of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image` or `maven:3.8-jdk-11`. If you don't include a tag, Harness uses the `latest` tag.
+For **Image**, provide the FQN (fully-qualified name) or artifact name and tag of the Docker image to use when this step runs commands, for example `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest` or `maven:3.8-jdk-11`. If you don't include a tag, Harness uses the `latest` tag.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats, for example:
 
 * **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
 * **ECR:** Input the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Input the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
+* **GAR:** Input the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest`.
 
 <figure>
 
 ![](./static/run-step-settings-03.png)
 
-<figcaption>Configuring a GCR Container Registry and Image settings.</figcaption>
+<figcaption>Configuring a Container Registry and Image settings.</figcaption>
 </figure>
 
 </details>
@@ -455,7 +456,7 @@ Variable values can be [fixed values, runtime inputs, or expressions](/docs/plat
 ### Output Variables
 
 <OutVar />
-
+<EnhancedOutVar/>
 <!--<details>
 <summary>Export output variables to stage or pipeline variables</summary>
 

@@ -7,7 +7,7 @@ sidebar_label: iOS Suite
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite </button>
 </p>
 
-This guide provides detailed information about our iOS Suite, an SDK designed to leverage the full power of FME. The iOS Suite is built on top of the [iOS SDK](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK) and the [iOS RUM Agent](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent), offering a unified solution, optimized for iOS development.
+This guide provides detailed information about our iOS Suite, an SDK designed to leverage the full power of FME. The iOS Suite is built on top of the [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) and the [iOS RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent), offering a unified solution, optimized for iOS development.
 
 The Suite provides the all-encompassing essential programming interface for working with your FME feature flags, as well as capabilities for automatically tracking performance measurements and user events. Code currently using iOS SDK or iOS RUM Agent can be easily upgraded to iOS Suite, which is designed as a drop-in replacement.
 
@@ -23,9 +23,9 @@ Set up FME in your code base with the following two steps:
 
 Add the SDK, Split RUM agent, and Split Suite into your project using Swift Package Manager by adding the following package dependencies:
 
-- [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.0.0`
+- [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.2.0`
 - [iOS RUM](https://github.com/splitio/ios-rum), latest version `0.4.0`
-- [iOS Suite](https://github.com/splitio/ios-suite), latest version `2.0.1`
+- [iOS Suite](https://github.com/splitio/ios-suite), latest version `2.1.0`
 
 :::info[Important!]
 When not using the last version of the Split Suite, it is important to take into account the compatibility matrix below.
@@ -39,6 +39,7 @@ When not using the last version of the Split Suite, it is important to take into
 | 1.3.0    | 2.26.1   | 0.4.0   |
 | 2.0.0    | 3.0.0   | 0.4.0   |
 | 2.0.1    | 3.0.0   | 0.4.0   |
+| 2.1.0    | 3.2.0   | 0.4.0   |
 
 Then import the Suite in your code.
 
@@ -76,13 +77,13 @@ When the Suite is instantiated, it starts synchronizing feature flag and segment
 
 We recommend instantiating the Suite once as a singleton and reusing it throughout your application.
 
-Configure the Suite with the SDK key for the Split environment that you would like to access. The SDK key is available in the Split UI, on your Admin settings page, API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the Suite with the SDK key for the Split environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ## Using the Suite
 
 ### Basic use
 
-When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 To make sure the Suite is properly loaded before asking it for a treatment, block until the Suite is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the Suite before asking for an evaluation.
 
@@ -107,7 +108,7 @@ client?.on(event: SplitEvent.sdkReady) {
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
 
@@ -217,7 +218,7 @@ let treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets, attributes: 
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
 
 The config element is a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the `result.config` property will be `nil`.
 
@@ -244,6 +245,27 @@ let treatmentsByFlagSets = client.getTreatmentsWithConfigByFlagSets(flagSets, at
 //   "FEATURE_FLAG_NAME_1": { "treatment": "on", "config": "{ \"color\":\"red\" }"},
 //   "FEATURE_FLAG_NAME_2": { "treatment": "visa", "config": "{ \"color\":\"red\" }"}
 // }
+```
+
+### Append properties to impressions
+
+[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Split's servers for feature monitoring and experimentation.
+
+You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+
+Three types of properties are supported: strings, numbers, and booleans.
+
+```swift title="Swift"
+
+let evaluationOptions: EvaluationOptions = EvaluationOptions(
+    properties: [
+        "package": "premium",
+        "admin": true,
+        "discount": 50
+    ]
+)
+
+let treatment = getTreatment("FEATURE_FLAG_NAME", attributes: nil, evaluationOptions: evaluationOptions)
 ```
 
 ### Track
@@ -645,9 +667,7 @@ To enable logging, the `logLevel` setting is available in `SplitClientConfig` cl
 
 The following shows example output:
 
-<p>
-  <img src="/hc/article_attachments/15254306501901" alt="ios_log_example.png" />
-</p>
+![](../static/ios-sdk-log-example.png)
 
 ## Advanced use cases
 

@@ -74,7 +74,7 @@ Runs the [jest](https://github.com/facebook/jest) test runner on your tests.
 No test cases have been added since this is an example app. If you're looking for how to test with SDK, you can:
 
 * mock the module import, see Jest documentation for that [here](https://facebook.github.io/jest/docs/en/jest-object.html#jestmockmodulename-factory-options)
-* use the localhost (offline) mode of the JavaScript SDK, more information [here](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#localhost-mode)
+* use the localhost (offline) mode of the JavaScript SDK, more information [here](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#localhost-mode)
 :::
 
 ### `npm run ios`

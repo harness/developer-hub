@@ -14,7 +14,7 @@
 | **4. Implementing and Managing Docker and Containerization in Harness CI** ||
 | Establish Docker connectivity and manage Docker connectors | [Build and Push to Docker](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) |
 | Develop and optimize Dockerfile configurations and image handling| [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) |
-| Diagnose and mitigate common Docker-related issues and errors | [Troubleshoot CI](/docs/category/troubleshoot-ci)|
+| Diagnose and mitigate common Docker-related issues and errors | [Troubleshoot CI](https://developer.harness.io/docs/category/troubleshoot-harness-ci)|
 | **5. Harness CI Configuration and Codebase Management** ||
 | Understand and implement the configuration of Harness CI Codebase | [Configure codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) |
 | Optimize and manage code repository, connectors, and trigger settings | [Optimization strategies](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components/#optimization-strategies) |
@@ -27,7 +27,7 @@
 | Implement strategies to improve and optimize test execution times                          | [Test step](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2) |
 | **8. Advanced CI Features and Troubleshooting in Harness** ||
 | Implement and utilize advanced features like caching and conditional executions in CI      | [Define conditional executions for stages and steps](/docs/platform/pipelines/step-skip-condition-settings) |
-| Diagnose, troubleshoot, and resolve common issues and errors in CI stages| [Troubleshoot CI](/docs/category/troubleshoot-ci) |
+| Diagnose, troubleshoot, and resolve common issues and errors in CI stages| [Troubleshoot CI](https://developer.harness.io/docs/category/troubleshoot-harness-ci) |
 | **9. Implementation of Plugins and Extensions in Harness CI**  | |
 | Understand, install, and manage plugins in the Harness CI environment | [Use Drone plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci)                                                                          |
 | Implement use-cases using various Harness CI and third-party plugins | [Explore plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins/) |

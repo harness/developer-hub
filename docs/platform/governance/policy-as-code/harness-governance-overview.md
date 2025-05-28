@@ -1,7 +1,7 @@
 ---
 title: Harness Policy As Code overview
 description: Harness uses Open Policy Agent (OPA) to store and enforce policies for the Harness platform.
-sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: 1d3lmhv4jl
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false
@@ -62,6 +62,10 @@ Policies are written in the OPA policy language, Rego.
 * **Highly recommend:** Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 * See [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA. The [Rego Cheatsheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/) is also helpful to have on hand.
 
+:::info note
+Harness platform uses the Open Policy Agent (OPA) library version **0.62.0**. For more details, you can refer to [OPA v0.62.0](https://github.com/open-policy-agent/opa/tree/v0.62.0).
+:::
+
 ### Policy Editor
 
 Harness policies are written and tested using the built-in policy editor.
@@ -91,6 +95,56 @@ In the Policy Editor, you can select sample entities to test your policy on. For
 The Testing Terminal lets you test the policy against real inputs while you're developing it. You can select input payloads from previous evaluations to test what will happen when your policy is evaluated.
 
 ![](./static/harness-governance-overview-10.png)
+
+### Policy Packages
+
+Harness Policy As Code uses Open Policy Agent (OPA) as the central service to store and enforce policies for the different entities and processes across the Harness platform. OPA uses Rego as its policy languages.
+
+Policies in this language are organized into [modules](https://www.openpolicyagent.org/docs/latest/policy-language/#modules) that can imported as [packages](https://www.openpolicyagent.org/docs/latest/policy-language/#packages) to other policies. 
+
+This feature is available in Harness and allows you to use and import policy packages from across scopes, including policies created in your project, org, or account. 
+
+#### Define a package
+
+To define a package, use the keyword `package` followed by your package name. For example:
+
+```
+package example1
+```
+
+#### Import a package
+
+To import a package, use the keyword `import` followed by `data.<package_name>`. For example:
+
+```
+import data.example1
+```
+
+You can import a package from any accessible scope.
+
+#### Policy Package Example
+
+For example, you can define a function in an policy in your org as follows:
+
+```
+package org1
+
+is_even_number(x) {
+  x % 2 == 0
+}
+```
+
+and then you can import this policy into your project's policy as follows:
+
+```
+package project1
+
+import data.org1
+
+deny["Number is even"] {
+  org1.is_even_number(10)
+}
+```
 
 ### Policy Input Payload User Metadata
 
@@ -221,6 +275,28 @@ You can define a policy with the entity type Custom.
 The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. See [Add a Governance Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline).
 
 Custom entity types are open ended. There is no pre-set JSON schema that is used for Custom policies. The payload that the policy is evaluated against is determined by you (defined in the Policy step).
+
+### Service 
+
+:::info note
+Currently this feature is behind the feature flag `CDS_ENABLE_SERVICE_ON_RUN_OPA_EVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Policies can be apploed to the Service entity during **On Run** and **On Save** events.
+
+Checkout this interactive guide for selecting **Service** entity on Policy set:-
+
+<iframe
+	src="https://app.tango.us/app/embed/560906e2-d5dc-4df1-8a47-8f9da89b5932"
+	style={{minHeight:'640px'}}
+	sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+	title="Creating a New ChaosHub and Connector in Harness"
+	width="100%"
+	height="100%"
+	referrerpolicy="strict-origin-when-cross-origin"
+	frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"
+	allowfullscreen="allowfullscreen"></iframe>
+
 
 ## Policy and Policy Set Hierarchy and Inheritance
 

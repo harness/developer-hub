@@ -26,18 +26,22 @@ Import the SDK into your project using one of the following two methods:
 
 <Tabs>
 <TabItem value="Maven">
+
 ```java
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>java-client</artifactId>
-    <version>4.14.0</version>
+    <version>4.15.0</version>
 </dependency>
 ```
+
 </TabItem>
 <TabItem value="Gradle">
+
 ```java
-compile 'io.split.client:java-client:4.14.0'
+compile 'io.split.client:java-client:4.15.0'
 ```
+
 </TabItem>
 </Tabs>
 
@@ -45,6 +49,7 @@ If you cannot find the dependency, it may be due to the lag in the sync time bet
 
 <Tabs>
 <TabItem value="XML">
+
 ```java
 <repositories>
   <repository>
@@ -53,6 +58,7 @@ If you cannot find the dependency, it may be due to the lag in the sync time bet
   </repository>
 </repositories>
 ```
+
 </TabItem>
 </Tabs>
 
@@ -64,16 +70,17 @@ Starting version 3.0.1, SplitClientConfig#ready(int) is deprecated and migrated 
 * Call `SplitClient#blockUntilReady()` or `SplitManager#blockUntilReady()`.
 :::
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready. Do this by setting the desired wait using `.setBlockUntilReadyTimeout()` in the configuration and calling `blockUntilReady()` on the client. Do this all as a part of the startup sequence of your application.
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Use the code snippet below with your own API key. Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Use the code snippet below with your own API key. Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.split.client.SplitClient;
 import io.split.client.SplitClientConfig;
@@ -92,8 +99,10 @@ try {
     // log & handle
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 import io.split.client.SplitClient
 import io.split.client.SplitClientConfig
@@ -111,6 +120,7 @@ try {
     // log & handle
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -122,10 +132,11 @@ Now you can start asking the SDK to evaluate treatments for your customers.
 
 After you instantiate the SDK factory client, you can start using the `getTreatment` method of the SDK factory client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you are serving the feature to.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
 String treatment = client.getTreatment("key","FEATURE_FLAG_NAME");
@@ -138,8 +149,10 @@ if (treatment.equals("on")) {
     // insert your control treatment code here
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
 val treatment = client.getTreatment("key","FEATURE_FLAG_NAME")
@@ -156,12 +169,13 @@ when (treatment) {
     }
 }
 ```
+
 </TabItem>
 </Tabs>
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -175,6 +189,7 @@ The `getTreatment` method supports five types of attributes: strings, numbers, d
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.codigo.client.SplitClient;
 import io.split.client.SplitFactory;
@@ -205,8 +220,10 @@ if (treatment.equals("on")) {
     // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 import io.split.client.SplitClient
 import io.split.client.SplitFactory
@@ -236,6 +253,7 @@ when (treatment) {
     }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -248,6 +266,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // getTreatments
 List<String> featureFlagNames = Arrays.asList("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2");
@@ -260,8 +279,10 @@ Map<String, String> treatmentsBySet = client.getTreatmentsByFlagSet("KEY", "back
 List<String> flagSetNames = Arrays.asList("backend", "server_side");
 Map<String, String> treatmentsBySets = client.getTreatmentsByFlagSets("KEY", flagSetNames);
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // getTreatments
 val featureFlagNames = listOf("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2")
@@ -274,12 +295,13 @@ val treatmentsBySet = client.getTreatmentsByFlagSet("KEY", "backend")
 val flagSetNames = listOf("backend", "server_side")
 val treatmentsBySets = client.getTreatmentsByFlagSets("KEY", flagSetNames)
 ```
+
 </TabItem>
 </Tabs>
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
 
 The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
 
@@ -287,6 +309,7 @@ This method takes the exact same set of arguments as the standard `getTreatment`
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitResult result = client.getTreatmentWithConfig("KEY", "FEATURE_FLAG_NAME");
 String treatment = result.treatment();
@@ -294,13 +317,16 @@ if (null != result.config()) {
     MyConfiguration config = gson.fromJson(result.config(), MyConfiguration.class);
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val result: SplitResult = client.getTreatmentWithConfig("KEY", "FEATURE_FLAG_NAME")
 val config: String = result.config()
 val treatment: String = result.treatment()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -308,6 +334,7 @@ If you need to get multiple evaluations at once, you can also use the `getTreatm
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // getTreatmentsWithConfig
 List<String> featureFlagNames = Arrays.asList("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2");
@@ -320,8 +347,10 @@ Map<String, SplitResult> treatmentsBySet = client.getTreatmentsWithConfigByFlagS
 List<String> flagSetNames = Arrays.asList("backend", "server_side");
 Map<String, SplitResult> treatmentsBySets = client.getTreatmentsWithConfigByFlagSets("KEY", flagSetNames);
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // getTreatmentsWithConfig
 val featureFlagNames = listOf("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2")
@@ -334,8 +363,23 @@ val treatmentsBySet: Map<String, SplitResult> = client.getTreatmentsWithConfigBy
 val flagSetNames = listOf("backend", "server_side")
 val treatmentsBySets: Map<String, SplitResult> = client.getTreatmentsWithConfigByFlagSets("KEY", flagSetNames)
 ```
+
 </TabItem>
 </Tabs>
+
+### Append properties to impressions
+
+[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Split's servers for feature monitoring and experimentation.
+
+You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+
+Three types of properties are supported: strings, numbers, and booleans.
+
+```java title="Java"
+EvaluationOptions evaluationOptions = new EvaluationOptions(new HashMap<String, Object>() {{ put("prop1", "val1"); }});
+
+String treatment = client.getTreatment("key", "FEATURE_FLAG_NAME", evaluationOptions);
+```
 
 ### Shutdown
 
@@ -345,14 +389,18 @@ In cases where you don't want our SDK to automatically destroy on shutdown, you 
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 client.destroy();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 client.destroy()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -386,6 +434,7 @@ In the case that a bad input has been provided, you can read more about our SDK'
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // If you would like to send an event without a value
 boolean trackEvent = client.track("key", "TRAFFIC_TYPE", "EVENT_TYPE");
@@ -417,8 +466,10 @@ properties.put("discount", 50);
 
 boolean trackEvent = client.track("john@doe.com", "user", "page_load_time", properties);
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // If you would like to send an event without a value
 val trackEvent: Boolean = client.track("key", "TRAFFIC_TYPE", "EVENT_TYPE")
@@ -448,6 +499,7 @@ val properties = mapOf("package" to "premium",
 
 val trackEvent: Boolean = client.track("john@doe.com", "user", "page_load_time", properties)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -486,6 +538,7 @@ To set each of the parameters defined above, use the following syntax:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.split.client.SplitClient;
 import io.split.client.SplitClientConfig;
@@ -505,8 +558,10 @@ SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY",config);
 SplitClient client = splitFactory.client();
 client.blockUntilReady();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 import io.split.client.SplitClient;
 import io.split.client.SplitClientConfig;
@@ -526,17 +581,19 @@ val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", confi
 val client: SplitClient = splitFactory.client()
 client.blockUntilReady()
 ```
+
 </TabItem>
 </Tabs>
 
 ## Connecting to a Split Proxy instance
 
-The SDK can connect to a Split Proxy instance as though it was connecting to our CDN, and the Proxy synchronizes the data and writes impressions and events back to Harness FME servers. Be sure to install the Split Proxy by following the steps in [Split Proxy guide](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy).
+The SDK can connect to a Split Proxy instance as though it was connecting to our CDN, and the Proxy synchronizes the data and writes impressions and events back to Harness FME servers. Be sure to install the Split Proxy by following the steps in [Split Proxy guide](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy).
 
 Use the `.endpoint()` property in the SplitClientConfig builder object to point the Java SDK to the Synchronizer, making sure to use the same port specified in the Proxy command line. When creating the `SplitFactory` object, use the custom API key specified in the `client-apikeys` parameter for the Proxy. The Proxy uses the SDK key when connecting to Harness FME servers. Refer to the following code example to connect to a Proxy instance:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.split.client.SplitClient;
 import io.split.client.SplitClientConfig;
@@ -569,8 +626,10 @@ public class SplitSD {
     }
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 import io.split.client.SplitFactoryBuilder
 import io.split.client.SplitClient
@@ -605,6 +664,7 @@ fun main (args: Array<String>){
     }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -636,6 +696,7 @@ The following splitFile is a JSON that represents a SplitChange:
 
 <Tabs>
 <TabItem value="Java SplitChange Schema">
+
 ```java
 public class SplitChange {
     public List<Split> splits;
@@ -643,8 +704,10 @@ public class SplitChange {
     public long till;
 }
 ```
+
 </TabItem>
 <TabItem value="Java Split Schema">
+
 ```java
 public class Split {
     public String name;
@@ -661,8 +724,10 @@ public class Split {
     public Map<String, String> configurations;
 }
 ```
+
 </TabItem>
 <TabItem value="Kotlin SplitChange Schema">
+
 ```kotlin
 class Split(
     var splits: List<Split>?,
@@ -670,8 +735,10 @@ class Split(
     var till: Long?,
 )
 ```
+
 </TabItem>
 <TabItem value="Kotlin Split Schema">
+
 ```kotlin
 class Split(
     var name: String?,
@@ -688,8 +755,10 @@ class Split(
     configurations: Map<String, String>?
 )
 ```
+
 </TabItem>
 <TabItem value="JSON example">
+
 ```json
 {
   "splits": [
@@ -783,6 +852,7 @@ class Split(
   "till": 1660326991072
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -792,6 +862,7 @@ The provided segment directory must have the json files of the corresponding seg
 
 <Tabs>
 <TabItem value="Java SegmentChange Schema">
+
 ```java
 public class SegmentChange {
     public String id;
@@ -802,8 +873,10 @@ public class SegmentChange {
     public long till;
 }
 ```
+
 </TabItem>
 <TabItem value="Kotlin SegmentChange Schema">
+
 ```kotlin
 class SegmentChange(
     var id: String,
@@ -814,8 +887,10 @@ class SegmentChange(
     var till: Long
 )
 ```
+
 </TabItem>
 <TabItem value="JSON example">
+
 ```json
 {
   "name": "segment_1",
@@ -828,11 +903,13 @@ class SegmentChange(
   "till": 1585948850110
 }
 ```
+
 </TabItem>
 </Tabs>
 
-<Tabs>
-<TabItem value="Java Init example">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java Init example">
+
 ```java
 SplitClientConfig config = SplitClientConfig.builder()
        .splitFile("parentRoot/featureFlags.json")
@@ -840,8 +917,10 @@ SplitClientConfig config = SplitClientConfig.builder()
        .setBlockUntilReadyTimeout(10000)
        .build();
 ```
+
 </TabItem>
-<TabItem value="Kotlin Init example">
+<TabItem value="kotlin" label="Kotlin Init example">
+
 ```kotlin
 val config: SplitClientConfig = SplitClientConfig.builder()
                 .splitFile("parentRoot/featureFlags.json")
@@ -849,6 +928,7 @@ val config: SplitClientConfig = SplitClientConfig.builder()
                 .setBlockUntilReadyTimeout(10000)
                 .build()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -858,6 +938,7 @@ Since version `3.1.0`, our SDK supports a type of localhost feature flag definit
 
 <Tabs>
 <TabItem value="YAML">
+
 ```yaml
 ## - feature_name:
 ##     treatment: "treatment_applied_to_this_entry"
@@ -877,6 +958,7 @@ Since version `3.1.0`, our SDK supports a type of localhost feature flag definit
     keys: ["key_1", "key_2"]
     config: "{\"desc\" : \"this overrides multiple keys and returns off treatment for those keys\"}"
 ```
+
 </TabItem>
 </Tabs>
 
@@ -889,8 +971,9 @@ In the example above, we have four entries:
 
 Use the SplitConfigBuilder object to set the location of the localhost YAML file as shown in the example below:
 
-<Tabs>
-<TabItem value="Java Init example">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java Init example">
+
 ```java
 import io.split.client.SplitClient;
 import io.split.client.SplitClientConfig;
@@ -902,8 +985,10 @@ SplitClientConfig config = SplitClientConfig.builder()
        .build();
 SplitClient client = SplitFactoryBuilder.build("localhost", config).client();
 ```
+
 </TabItem>
-<TabItem value="Kotlin Init example">
+<TabItem value="kotlin" label="Kotlin Init example">
+
 ```kotlin
 import io.split.client.SplitFactoryBuilder
 import io.split.client.SplitClient
@@ -915,6 +1000,7 @@ val config: SplitClientConfig = SplitClientConfig.builder()
             .build()
 val client: SplitClient = SplitFactoryBuilder.build("localhost", config).client()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -922,24 +1008,28 @@ val client: SplitClient = SplitFactoryBuilder.build("localhost", config).client(
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitClientConfig config = SplitClientConfig.builder().setBlockUntilReadyTimeout(10000).build();
 SplitFactory splitFactory = SplitFactoryBuilder.build("localhost", config);
 SplitClient client = splitFactory.client();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val config: SplitClientConfig = SplitClientConfig.builder().setBlockUntilReadyTimeout(10000).build()
 val splitFactory: SplitFactory = SplitFactoryBuilder.build("localhost", config)
 val client: SplitClient = splitFactory.client()
 ```
+
 </TabItem>
 </Tabs>
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given flag, the treatment specified in the file is returned for every customer.
 
-`getTreatment` calls for a feature flag and only returns the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature that is not provided in the `features` map returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK is asked to evaluate them.
+`getTreatment` calls for a feature flag and only returns the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
 
 The format of this file is two columns separated by a whitespace. The left column is the feature flag name and the right column is the treatment name. The following is a sample `.split` file:
 
@@ -957,6 +1047,7 @@ Since version `4.9.0`, the SDK supports InputStream to use localhost inside a JA
 
 <Tabs>
 <TabItem value="YAML">
+
 ```java
 import io.split.client.SplitClient;
 import io.split.client.SplitClientConfig;
@@ -973,8 +1064,10 @@ SplitClientConfig config = SplitClientConfig.builder()
        .build();
 SplitClient client = SplitFactoryBuilder.build("localhost", config).client();
 ```
+
 </TabItem>
 <TabItem value="JSON">
+
 ```java
 import io.split.client.SplitFactoryBuilder;
 import io.split.client.SplitClient;
@@ -991,8 +1084,10 @@ SplitClientConfig config = SplitClientConfig.builder()
        .build();
 SplitClient client = SplitFactoryBuilder.build("localhost", config).client();
 ```
+
 </TabItem>
 <TabItem value="Kotlin example">
+
 ```kotlin
 import io.split.client.SplitFactoryBuilder
 import io.split.client.SplitClient
@@ -1009,6 +1104,7 @@ val config: SplitClientConfig = SplitClientConfig.builder()
             .build()
 val client: SplitClient = SplitFactoryBuilder.build("localhost", config).client()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1022,6 +1118,7 @@ Import the Redis Wrapper into your project using one of the two methods below:
 
 <Tabs>
 <TabItem value="Maven">
+
 ```java
 <dependency>
     <groupId>io.split.client</groupId>
@@ -1029,17 +1126,20 @@ Import the Redis Wrapper into your project using one of the two methods below:
     <version>3.1.1</version>
 </dependency>
 ```
+
 </TabItem>
 <TabItem value="Gradle">
+
 ```java
 compile 'io.split.client:redis-wrapper:1.0.0'
 ```
+
 </TabItem>
 </Tabs>
 
 #### 2. Set up the Split Synchronizer
 
- Set up the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) to sync data to a Redis cache. Once you set up the synchronizer, go to the following step #3 to instantiate:
+ Set up the [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) to sync data to a Redis cache. Once you set up the synchronizer, go to the following step #3 to instantiate:
 
 #### 3. Instantiate the SDK factory client with Redis enabled
 
@@ -1047,6 +1147,7 @@ To run the SDK with Redis, you need to provide the Redis storage wrapper. Refer 
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // Building the Redis storage wrapper with some configurations of choice.
 CustomStorageWrapper redis = RedisInstance.builder()
@@ -1065,8 +1166,10 @@ SplitClientConfig splitConfig = SplitClientConfig.builder()
 // Then just build the factory as usual.
 SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_API_KEY", config);
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Building the Redis storage wrapper with some configurations of choice.
 val redis: CustomStorageWrapper = RedisInstance.builder()
@@ -1085,6 +1188,7 @@ val splitConfig: SplitClientConfig = SplitClientConfig.builder()
 // Then just build the factory as usual.
 val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_API_KEY", config)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1118,6 +1222,7 @@ Use the following configuration for Redis in Cluster mode.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // Building the Redis storage wrapper with some configurations of choice.
 Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
@@ -1139,8 +1244,10 @@ SplitClientConfig config = SplitClientConfig.builder()
                             .build();
 SplitFactory splitFactory =  SplitFactoryBuilder.build("apikey", config);
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Building the Redis storage wrapper with some configurations of choice.
 val jedisClusterNodes = setOf<HostAndPort>(
@@ -1160,6 +1267,7 @@ val jedisClusterNodes = setOf<HostAndPort>(
             .build()
 val splitFactory: SplitFactory = SplitFactoryBuilder.build("apikey", config)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1175,23 +1283,28 @@ To instantiate a Manager in your code base, use the same factory that you used f
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY");
 SplitManager manager = splitFactory.manager();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY")
 val manager: SplitManager = splitFactory.manager()
 ```
+
 </TabItem>
 </Tabs>
 
 The Manager then has the following methods available:
 
-<Tabs>
-<TabItem value="Java Manager interface">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java Manager interface">
+
 ```java
 /**
  * Retrieves the feature flags that are currently registered with the
@@ -1215,8 +1328,10 @@ SplitView split(String SplitName);
  */
 List<String> splitNames();
 ```
+
 </TabItem>
-<TabItem value="Kotlin Manager interface">
+<TabItem value="kotlin" label="Kotlin Manager interface">
+
 ```kotlin
 /**
 * Retrieves the feature flags that are currently registered with the
@@ -1235,13 +1350,15 @@ fun split(SplitName: String): SplitView
 fun splitNames(): List<String>
 
 ```
+
 </TabItem>
 </Tabs>
 
 The `SplitView` object that you see referenced above has the following structure:
 
-<Tabs>
-<TabItem value="Java SplitView">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java SplitView">
+
 ```java
 public class SplitView {
     public String name;
@@ -1255,8 +1372,10 @@ public class SplitView {
     public boolean impressionsDisabled;
 }
 ```
+
 </TabItem>
-<TabItem value="Kotlin SplitView">
+<TabItem value="kotlin" label="Kotlin SplitView">
+
 ```kotlin
 class SplitView(
     var name: String?,
@@ -1269,6 +1388,7 @@ class SplitView(
     var impressionsDisabled: boolean
 )
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1282,6 +1402,7 @@ If the impression listener is slow at processing the incoming data, the queue fi
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitClientConfig config = SplitClientConfig.builder()
     .integrations(
@@ -1308,8 +1429,10 @@ static class MyImpressionListener implements ImpressionListener {
   }
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val config: SplitClientConfig = SplitClientConfig.builder()
             .integrations(
@@ -1330,6 +1453,7 @@ class MyImpressionListener : ImpressionListener {
     }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1339,11 +1463,13 @@ The Java SDK uses slf4j-api for logging. If you do not provide an implementation
 
 <Tabs>
 <TabItem value="Text">
+
 ```java
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1351,6 +1477,7 @@ You can get the SDK to log by providing a concrete implementation for SLF4J. For
 
 <Tabs>
 <TabItem value="pom.xml">
+
 ```java
 <dependency>
   <groupId>org.slf4j</groupId>
@@ -1358,6 +1485,7 @@ You can get the SDK to log by providing a concrete implementation for SLF4J. For
   <version>1.7.21</version>
 </dependency>
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1365,20 +1493,24 @@ If you have a log4j.properties in your classpath, the SDK log is visible. The fo
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 log4j.rootLogger=DEBUG, A1
 log4j.appender.A1=org.apache.log4j.ConsoleAppender
 log4j.appender.A1.layout=org.apache.log4j.PatternLayout
 log4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 log4j.rootLogger=DEBUG, A1
 log4j.appender.A1=org.apache.log4j.ConsoleAppender
 log4j.appender.A1.layout=org.apache.log4j.PatternLayout
 log4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1386,6 +1518,7 @@ The following is an example of initializing the logger object in Java:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.split.client.SplitClient;
 import io.split.client.SplitClientConfig;
@@ -1403,8 +1536,10 @@ public class SplitSD {
 				   .enableDebug()
 				   .build();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 import io.split.client.SplitClient;
 import io.split.client.SplitClientConfig;
@@ -1416,6 +1551,7 @@ class SplitSD {
     inline fun <reified T:Any> logger() = LoggerFactory.getLogger(T::class.java)
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1425,6 +1561,7 @@ Since version `4.10.0`, the Java SDK provides support for Virtual Threads using 
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.split.client.SplitClient;
 import io.split.client.SplitClientConfig;
@@ -1443,8 +1580,10 @@ SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY",config);
 SplitClient client = splitFactory.client();
 client.blockUntilReady();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 import io.split.client.SplitClient;
 import io.split.client.SplitClientConfig;
@@ -1461,6 +1600,7 @@ val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", confi
 val client: SplitClient = splitFactory.client()
 client.blockUntilReady()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1470,8 +1610,9 @@ client.blockUntilReady()
 
 The New Relic integration annotates New Relic transactions with FME feature flags information that can be used to correlate application metrics with feature flag changes. This integration is implemented as a synchronous impression listener and it can be enabled as shown below:
 
-<Tabs>
-<TabItem value="Listener">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 SplitClientConfig config = SplitClientConfig.builder()
     .integrations(
@@ -1482,8 +1623,10 @@ SplitClientConfig config = SplitClientConfig.builder()
 
 SplitFactoryBuilder.build("YOUR_SDK_KEY", config).client();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val config: SplitClientConfig = SplitClientConfig.builder()
             .integrations(
@@ -1494,6 +1637,7 @@ val config: SplitClientConfig = SplitClientConfig.builder()
 
 SplitFactoryBuilder.build("YOUR_SDK_KEY", config).client()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1516,6 +1660,7 @@ Here is a sample of a **weblogic.xml** file that includes the previously mention
 
 <Tabs>
 <TabItem value="weblogic.xml">
+
 ```java
 <?xml version="1.0" encoding="UTF-8"?>
 <weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
@@ -1529,5 +1674,6 @@ Here is a sample of a **weblogic.xml** file that includes the previously mention
   </container-descriptor>
 </weblogic-web-app>
 ```
+
 </TabItem>
 </Tabs>

@@ -5,8 +5,12 @@ description: ""
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020742532-Segment <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020742532-Segment </button>
 </p>
+
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
 
 Segment allows you to easily manage integrations with multiple analytics services. By tracking events and users via Segment’s API and libraries, you can send your product’s data to all of your analytics and marketing platforms, with minimal instrumentation code. They offer support for most platforms, including iOS, Android, JavaScript, Node.js, PHP, and more.
  
@@ -30,9 +34,7 @@ If you use both the `anonymousId` and `userId` fields on Segment's `track` call 
 2. Enter a name.
 3. Copy the Write key provided for this new source.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360017439291/Segment_writekey_Copy.png" alt="Segment_writekey_Copy.png" />
-</p>
+   ![](./static/segment-writekey.png)
 
 ### In Split
 
@@ -43,17 +45,13 @@ If you use both the `anonymousId` and `userId` fields on Segment's `track` call 
 5. Select how you would like to map Split traffic types to Segment identities.
 6. Paste the write key you copied in step 3 of the _In Segment_ instructions and click **Save**.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360027193812/image1.png" alt="image1.png" />
-</p>
+   ![](./static/segment-step1.png)
 
 If you have different Split environments that correspond to different Segment workspaces, you can click **Add configuration** to configure the integration to send with a different write key.
 
 When configured properly, data begins flowing in Segment as a `track` type with the event name `get_treatment` as shown below.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360021770372/seg2.png" alt="seg2.png" />
-</p>
+![](./static/segment-step2.png)
 
 ## Split as a destination
 
@@ -70,14 +68,12 @@ When configured properly, data begins flowing in Segment as a `track` type with 
     * **Enable track**: When enabled, events captured in Segment is sent to Split. Map your event data using the field mapping below.
         * **eventTypeId**: This field can be customized, but is most likely maps to the event field in the segment track call.
         * **Value**: Optionally, if you want to create a sum or average metric, be sure to send this field.
-    * **Track named pages**: Track events to Split for page method calls that have a name associated with them, e.g., page(‘signup’) translated to view_signup_page.
-    * **Track named screens**: Tracks events to Split for screen method calls that have a name associated with them, e.g., screen(‘signup’) translated to viewed_signup_screen.
+    * **Track named pages**: Track events to Split for page method calls that have a name associated with them, e.g. page(‘signup’) translated to view_signup_page.
+    * **Track named screens**: Tracks events to Split for screen method calls that have a name associated with them, e.g. screen(‘signup’) translated to viewed_signup_screen.
 6. Once you’ve configured the above fields, click **Save**.
 7. Your integration is now configured. Copy the key or click **Enable with Segment**.
 
-<p>
-   <img src="https://help.split.io/hc/article_attachments/360045121112/Screen_Shot_2019-12-10_at_2.37.26_PM.png" alt="Screen_Shot_2019-12-10_at_2.37.26_PM.png" width="745" /><br />
-</p>
+    ![](./static/segment-step3.png)
 
 ### In Segment
 
@@ -86,9 +82,7 @@ When configured properly, data begins flowing in Segment as a `track` type with 
 3. Paste the key provided from Split within Segment in the API key field.
 4. Click **Save** and be sure to toggle the destination to on.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360022706052/destination_settings_in_segment.png" alt="destination_settings_in_segment.png" />
-</p>
+   ![](./static/segment-destination-settings.png)
 
 ## Split as a destination (via webhook)
 
@@ -105,14 +99,12 @@ When configured properly, data begins flowing in Segment as a `track` type with 
     * **Enable track**: When enabled, events captured in Segment are sent to Split.  Map your event data using the field mapping below.
         * **eventTypeId**: this field can be customized, but is most likely maps to the event field in the segment track call.
         * **Value**: Optionally, if you want to create a sum or average metric, be sure to send this field.
-    * **Track named pages**: Track events to Split for page method calls that have a name associated with them, e.g., page(‘signup’) translated to view_signup_page.
-    * **Track named screens**: Tracks events to Split for screen method calls that have a name associated with them, e.g., screen(‘signup’) translated to viewed_signup_screen.
+    * **Track named pages**: Track events to Split for page method calls that have a name associated with them, e.g. page(‘signup’) translated to view_signup_page.
+    * **Track named screens**: Tracks events to Split for screen method calls that have a name associated with them, e.g. screen(‘signup’) translated to viewed_signup_screen.
 6. Once you’ve configured the above fields, click **Save**.
 7. Your integration is now configured. Copy the webhook URL and secret provided.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360027194012/image2.png" alt="image2.png" />
-</p>
+    ![](./static/segment-step4.png)
 
 ### In Segment
 
@@ -122,9 +114,7 @@ When configured properly, data begins flowing in Segment as a `track` type with 
 4. Paste the secre* provided from Split within Segment under Headers as an Authorization.
 5. Click **Save**.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360021770332/seg4.png" alt="seg4.png" />
-</p>
+   <div style={{maxWidth:600}}> ![](./static/segment-webhook.png) </div>
 
 ## Segment spec details 
 

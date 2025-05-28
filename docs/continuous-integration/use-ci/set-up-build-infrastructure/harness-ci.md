@@ -49,18 +49,16 @@ Harness CI images are stored in a public container registry. If you don't want t
 
 ## Harness CI image updates
 
-Your organization has a one-month window to run security scans or other tests on new CI build images before you deploy them. Every two weeks, Harness publishes new versions of images required to run CI builds. Each image is backwards-compatible with the previous two releases.
+Every week, based on changes, CI images are updated and listed on the [CI release notes](https://developer.harness.io/release-notes/continuous-integration/) page. We recommend maintaining a one-month window to run security scans or other tests on new CI build images before deploying them.
 
 Harness updates `harness/ci-*` images, such as `harness/ci-addon` and `harness/ci-lite-engine`, according to the following release process:
 
-* Harness publishes updates for all CI images on the second and fourth Monday of each month.
-* Version numbers use an `x.y.z` format where `x` indicates the major release number, `y` indicates the minor release number, and `z` indicates a hotfix or patch release number.
-* All images are supported for the latest three releases: `latest`, `latest-1`, and `latest-2`. Each image release is backward-compatible with the previous two releases.
-* You can choose to deploy the latest containers immediately upon release, or you can download and scan them before deployment.
-* If your builds use containers that are more than two releases old, the Harness UI shows a warning that the image versions are no longer supported. Builds won't fail automatically.
-* If a hotfix or security fix is required for a specific image, Harness creates hotfixes for the latest three images and notifies customers when these hotfixes are available.
+- Harness publishes updates for all CI images weekly based on changes.
+- Version numbers follow the x.y.z format, where x represents the major release number, y represents the minor release number, and z represents a hotfix or patch release number.
+- You can choose to deploy the latest containers immediately upon release or download and scan them before deployment.
+- If issues are found, patches will be applied to the latest version.
 
-[Drone plugin images](https://console.cloud.google.com/gcr/images/gcr-prod/global/plugins) are updated as needed. All Drone image updates are backward-compatible. When you first deploy CI, Harness scans all `plugin` images you plan to use and addresses any vulnerabilities. After your initial deployment, Harness publishes updates to address new vulnerabilities based on our Service Level Agreement with your organization.
+[Harness plugin images](https://console.cloud.google.com/gcr/images/gcr-prod/global/plugins) for SMP are updated as needed. All Harness image updates are backward-compatible. When you first deploy CI, Harness scans all `plugin` images you plan to use and addresses any vulnerabilities. After your initial deployment, Harness publishes updates to address new vulnerabilities based on our Service Level Agreement with your organization.
 
 ## Specify the Harness CI images used in your pipelines
 

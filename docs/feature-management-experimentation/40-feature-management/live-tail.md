@@ -6,7 +6,7 @@ sidebar_position: 19
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044867032-Live-tail <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044867032-Live-tail </button>
 </p>
 
 The Live tail functionality within Data hub gives development teams a single place to view and query all impression and event data. With Live tail, development teams can:
@@ -17,9 +17,7 @@ The Live tail functionality within Data hub gives development teams a single pla
 
 This feature allows teams, for example, to check if a feature flag is being evaluated properly or events are being received from data integrations.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/15871798585613" alt="data-hub.png" />
-</p>
+![](./static/live-tail.png)
 
 ## Query impressions 
 
@@ -41,7 +39,7 @@ After installing Split’s SDKs and setting up a feature flag, impressions gener
 
 Live tail can also be accessed on the feature flag page under the Live tail tab, where impressions automatically filter down to that specific feature flag.
 
-Learn more about [impressions](https://help.split.io/hc/en-us/articles/360020585192-Impression-events) in FME.
+Learn more about [impressions](/docs/feature-management-experimentation/feature-management/impressions) in FME.
 
 ## Query events 
 

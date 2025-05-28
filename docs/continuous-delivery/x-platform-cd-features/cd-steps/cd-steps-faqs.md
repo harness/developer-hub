@@ -477,6 +477,13 @@ org.apache.http.client.HttpResponseException: status code: 500, reason phrase: S
 
 This can happen if the Jenkins Job is parameterized but no parameters are being passed. The reverse, where the Jenkins Job is not parameterized but parameters are being passed, can also cause this issue. To fix this, please make sure that the proper parameters are being passed to Jenkins.
 
+### Does Harness support dynamic runtime inputs like Jenkins scripted dropdowns?
+
+Harness does not currently support dynamically populated input fields (e.g. script-driven dropdowns) at runtime in the same way Jenkins does.
+
+The closest alternative is using Input Sets, which define values for all runtime inputs in advance. These can be provided when triggering a pipeline via the Execute Pipeline API:
+[Pipeline Execute API](https://apidocs.harness.io/tag/Pipeline-Execution#operation/execute-pipeline)
+
 ## Approvals
 
 ### How can I retrieve a list of approvers for approval stages in Harness pipelines?
@@ -513,3 +520,7 @@ To configure a retry strategy for a CD stage, add a failure strategy to the stag
 
 ### How can users automate rollback strategies in Harness pipelines?
 Rollbacks can be automated using failure strategies that trigger rollback steps when a deployment fails.
+
+### How does the rollback strategy for the e2e_stage behave when the stage is expiring due to timeout?
+
+When the e2e_stage is nearing its timeout, the configured failure strategy, potentially `EXPIRE_ALL`, is applied.  This results in a rollback to a previous stable state.  The specific behavior depends on the configured rollback strategy and the pipeline's implementation. Refer [Timeout settings](https://developer.harness.io/docs/platform/pipelines/failure-handling/timeout-settings/) for more information.

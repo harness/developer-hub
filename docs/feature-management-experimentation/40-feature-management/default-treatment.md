@@ -8,10 +8,10 @@ sidebar_position: 14
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020528192-Default-treatment <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020528192-Default-treatment </button>
 </p>
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020527672-Set-the-default-treatment <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020527672-Set-the-default-treatment </button>
 </p>
 
 The default treatment is returned by the SDK in the following scenarios:
@@ -38,7 +38,7 @@ your default treatment should always be one that exposes fully tested and safe c
 * At the start of a percentage rollout, we recommend choosing the safest treatment for your customers as the default treatment (that is, **'off'** or **'old version'**).
 * At the end of a percentage rollout (at 100% rolled out), you may want to make the new experience the default in case the feature is accidentally killed before being removed.
 
-To set this treatment, refer to the [Target customers](https://help.split.io/hc/en-us/articles/360020791591-Target-customers) guide.
+To set this treatment, refer to the [Target customers](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting) guide.
 :::
 
 -->

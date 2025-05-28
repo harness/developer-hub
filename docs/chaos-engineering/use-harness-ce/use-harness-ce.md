@@ -48,7 +48,7 @@ Listed below are features and their reference links that describe how you can im
 
 ## Chaos Infrastructure
 
-- [Enable and Disable Chaos Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable)
+- [Enable and Disable Chaos Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/)
 - [Centralized Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/centralized-delegate)
 - [Proxy Settings Configuration](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support)
 - [Upgrade Chaos Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra)

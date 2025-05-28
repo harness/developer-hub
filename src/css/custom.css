@@ -335,9 +335,9 @@
   --ifm-navbar-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.75);
   --ifm-navbar-height: 4.25rem;
 
-  --harness-font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --harness-font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
 
   /* here */
   --ifm-color-content-light: var(--gray-800);
@@ -793,8 +793,7 @@ a.card p.text--truncate {
 
 .horizontal-bar {
   margin-top: 15px;
-  padding: var(--ifm-menu-link-padding-vertical)
-    var(--ifm-menu-link-padding-horizontal);
+  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   font-weight: 600;
@@ -1011,6 +1010,8 @@ figure p {
   }
   #search-button {
     display: block;
+    color: black;
+    font-weight: bold;
   }
   [hover-tooltip]:hover::before {
     transform: translate(-30%);
@@ -1080,11 +1081,7 @@ figure p {
 
   --aida-btn-background: linear-gradient(96deg, #ede8fb 3.03%, #d8cbff 92.95%);
 
-  --aida-btn-background-hover: linear-gradient(
-      96deg,
-      #ede8fb 3.03%,
-      #d8cbff 92.95%
-    ),
+  --aida-btn-background-hover: linear-gradient(96deg, #ede8fb 3.03%, #d8cbff 92.95%),
     linear-gradient(96deg, #ede8fb 3.03%, #d8cbff 92.95%);
   --aida-btn-border: 1px solid #9681a7;
 
@@ -1149,6 +1146,17 @@ figure p {
   min-width: 24px;
   margin-right: 16px;
   background-image: url('/img/icon_artifact_registry.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-ata > div > a::before,
+.sidebar-ata > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/logo-ata.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1264,12 +1272,13 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-ir > div > a::before,.sidebar-ir > a::before{
-  content: " ";
+.sidebar-ir > div > a::before,
+.sidebar-ir > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
-   min-width: 24px;
-  margin-right:16px;
+  min-width: 24px;
+  margin-right: 16px;
   background-image: url('/img/icon-ir.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1576,6 +1585,9 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 }
 .opensource:hover {
   border-color: var(--mod-opensource-200) !important;
+}
+.ai-test-automation:hover {
+  border-color: var(--mod-aida-200) !important;
 }
 
 /***********************   navbar css ***********/

@@ -5,16 +5,18 @@ description: ""
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360059673711-Dynatrace <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360059673711-Dynatrace </button>
 </p>
+
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
 
 ## Split + Dynatrace
 
 Dynatrace is a versatile monitoring solution for applications, services, and infrastructures. This integration uses a feature flag audit trail webhook to post annotations on tagged Dynatrace hosts, services, applications, and more. Using this integration, Dynatrace users see a feature flag change reflected in Dynatrace and identify when a change has impacted an entity, including complete details about the change, and a link to Split for further investigation.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360092158631/overview.png" alt="overview.png" />
-</p>
+<div style={{maxWidth:800}}> ![Dynatrace overview](./static/dynatrace-overview.png) </div>
 
 ## Prerequisites
 
@@ -35,7 +37,9 @@ This integration is for deployment as an AWS Lambda. The lambda is a webhook for
 
 2. To install, edit the following src/main/java/split2dynatrace.config file:
 
-**File name:** split2dynatrace.config
+   **File name:** split2dynatrace.config
+
+<ul>
 
 ```javascript
 {
@@ -48,14 +52,18 @@ This integration is for deployment as an AWS Lambda. The lambda is a webhook for
     ]
 }
 ```
-  * dyntraceUrl : copied from your browser when logged into Dynatrace
-  * dynatraceApiKey : created and copied from Dynatrace; see Dynatrace manual; be sure to enable API V1 "Access problem and event feed, metrics, and topology"
-  * entities : host, application, service, or any on the list of meTypes under the TagMatchRule object found at this [Dynatrace URL](https://www.dynatrace.com/support/help/dynatrace-api/environment-api/events/post-event/#expand-the-element-can-hold-these-values-382)
 
+* `dyntraceUrl`: copied from your browser when logged into Dynatrace
+* `dynatraceApiKey`: created and copied from Dynatrace; see Dynatrace manual; be sure to enable API V1 "Access problem and event feed, metrics, and topology"
+* `entities`: host, application, service, or any on the list of meTypes under the TagMatchRule object found at this [Dynatrace URL](https://www.dynatrace.com/support/help/dynatrace-api/environment-api/events/post-event/#expand-the-element-can-hold-these-values-382)
+
+</ul>
 
 ### Deploy the AWS Lambda 
 
-**Note:** You need to be working with Java 8, because AWS does not support higher versions at this time.
+:::info[Note]
+You need to be working with Java 8, because AWS does not support higher versions at this time.
+:::
 
 When you deploy the lambda at the API Gateway, it should be a public REST API. Save the URL of your deployed lambda. The lambda logs include helpful information and debugging output to CloudWatch. For example, I used the [AWS Toolkit for Eclipse](https://aws.amazon.com/eclipse/). 
 
@@ -65,12 +73,9 @@ To register your AWS Lambda with Split, follow the Split instructions for creati
 
 **Advanced instructions:** Deploy a webhook for each of your environments separately. Tag dev, qa, and prod environments with unique tags. Environment-specific webhooks will annotate with changes only from that environment.
 
-
 ### Configure Dynatrace
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360092158651/tag.png" alt="tag.png" />
-</p>
+<div style={{maxWidth:400}}> ![Dynatrace tag](./static/dynatrace-tag.png) </div>
 
 In the Dynatrace user interface, find the hosts, services, applications, and other entities that you want to annotate.
 
@@ -78,14 +83,11 @@ For each entity, create a tag with `splitTag` as its key and the feature flag na
 
 Use Dynatrace's advanced tagging functionality to automatically apply tags to larger portions of your infrastructure. Tags on entities that are not of a type listed in split2dynatrace.config are ignored.
 
-
 ### Verify the Integration
 
 To indicate a rule change, charts show grey dots. Each annotation comes with details in the events table.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360092170452/chart.png" alt="chart.png" />
-</p>
+<div style={{maxWidth:700}}> ![Dynatrace chart](./static/dynatrace-chart.png) </div>
 
 ### How it works
 

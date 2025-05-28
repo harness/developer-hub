@@ -19,7 +19,7 @@ This topic describes how you can create chaos experiments that consist of chaos 
 
 ### Create Environment
 
-Before you create an experiment, you need an environment where you have to [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable).
+Before you create an experiment, you need an environment where you have to [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/).
 Therefore, [create an environment](/docs/chaos-engineering/getting-started/saas/#step-3-create-an-environment).
 
 

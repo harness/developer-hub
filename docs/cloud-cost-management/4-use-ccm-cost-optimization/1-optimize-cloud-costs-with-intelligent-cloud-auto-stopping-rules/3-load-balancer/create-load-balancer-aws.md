@@ -17,11 +17,6 @@ An Application Load Balancer (ALB) makes routing decisions at the application la
 This topic describes how to create a new application load balancer for creating AutoStopping Rules for AWS. 
 
 
-## Before You Begin
-
-* [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md)
-* [Create AutoStopping Rules for AWS](../4-create-auto-stopping-rules/create-autostopping-rules-aws.md)
-
 ## Why do You Need a Load Balancer?
 
 AutoStopping integrates with the cloud provider's native load balancing technologies (Application Load Balancer, Azure AppGateway, etc.) to provide start and stop capability for the AutoStopping-managed cloud services.
@@ -55,7 +50,7 @@ Perform the following steps to create a new Application Load Balancer in AWS.
    
      ![](./static/create-load-balancer-aws-15.png)
 3. If you have already linked your AWS account and want to use that account, then select the AWS account from the **Connect to your AWS account** drop-down list.
-4. If you have not added your cloud account, click **Connect to your AWS account** drop-down list and then click **New Connector**. For the detailed steps, see [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md).
+4. If you have not added your cloud account, click **Connect to your AWS account** drop-down list and then click **New Connector**. For the detailed steps, see [Connect to an AWS Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws).
    
      ![](./static/create-load-balancer-aws-17.png)
 5. Define an AutoStopping Rule. See [Step: Define an AutoStopping Rule](../4-create-auto-stopping-rules/create-autostopping-rules-aws.md#define-an-autostopping-rule).

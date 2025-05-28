@@ -10,7 +10,7 @@ sidebar_label: Flutter plugin
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide provides detailed information about our Flutter plugin which is built on top of our [Android SDK](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK) and [iOS](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK) mobile SDKs. The plugin provides you a way to interact with the native SDKs.
+This guide provides detailed information about our Flutter plugin which is built on top of our [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk) and [iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) mobile SDKs. The plugin provides you a way to interact with the native SDKs.
 
 All of our SDKs are open source. Go to our [Flutter GitHub repository](https://github.com/splitio/flutter-sdk-plugin) to see the source code.
 
@@ -47,13 +47,13 @@ final Splitio _split = Splitio('YOUR_SDK_KEY', 'KEY');
 
 We recommend instantiating the `Splitio` object once as a singleton and reusing it throughout your application.
 
-Configure the plugin with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the plugin with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ## Using the plugin
 
 ### Basic use
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, wait until the SDK is ready, as shown below. You can use the `onReady` parameter when creating the client to get notified when this happens.
 
@@ -76,7 +76,7 @@ _split.client(onReady: (client) async {
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), pass the client's `getTreatment` method as an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), pass the client's `getTreatment` method as an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account. The `getTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
@@ -162,6 +162,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="getTreatments">
+
 ```dart
 const featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
 var treatments = {};
@@ -170,8 +171,10 @@ _split.client(onReady: (client) async {
   treatments = await client.getTreatments(featureFlagNames);
 });
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsByFlagSet">
+
 ```dart
 var treatments = {};
 
@@ -179,8 +182,10 @@ _split.client(onReady: (client) async {
   treatments = await client.getTreatmentsByFlagSet('frontend');
 });
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsByFlagSets">
+
 ```dart
 var treatments = {};
 
@@ -188,12 +193,13 @@ _split.client(onReady: (client) async {
   treatments = await client.getTreatmentsByFlagSets('frontend', 'client_side');
 });
 ```
+
 </TabItem>
 </Tabs>
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), use the `getTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` method.
 
 This method returns an object containing the treatment and associated configuration:
 
@@ -226,6 +232,7 @@ If you need to get multiple evaluations at once, you can also use the `getTreatm
 
 <Tabs>
 <TabItem value="getTreatmentsWithConfig">
+
 ```dart
 SplitResult result = await client.getTreatmentsWithConfig('FEATURE_FLAG_NAME');
 var configs = result.config;
@@ -239,8 +246,10 @@ if (treatment == 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsWithConfigByFlagSet">
+
 ```dart
 SplitResult result = await client.getTreatmentsWithConfigByFlagSet('frontend');
 var configs = result.config;
@@ -254,8 +263,10 @@ if (treatment == 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsWithConfigByFlagSets">
+
 ```dart
 SplitResult result = await client.getTreatmentsWithConfigByFlagSets(['frontend', 'client_side']);
 var configs = result.config;
@@ -269,6 +280,7 @@ if (treatment == 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -602,6 +614,7 @@ public class CustomApplication extends Application {
         android:label="my_app"
         android:name=".CustomApplication"
         android:icon="@mipmap/ic_launcher">
+
 ```
 
 2. Add the Android SDK dependency to your project's `build.gradle` file.
