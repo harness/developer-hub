@@ -68,6 +68,13 @@ import { MODULES } from "@site/src/constants"
       description: "",
       list: [
         {
+          title: "Account settings",
+          module: MODULES.fme,
+          description:
+            "Manage projects, environments, and user access for scalable experimentation",
+          link: "/docs/feature-management-experimentation/account-settings",
+        },
+        {
           title: "Harness FME support",
           module: MODULES.fme,
           description: "Open a support ticket with us",
