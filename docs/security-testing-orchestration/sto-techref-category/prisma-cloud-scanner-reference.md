@@ -14,8 +14,7 @@ sidebar_position: 300
 
 You can scan container images and ingest results from [Prisma Cloud](https://docs.prismacloud.io/en) (formerly Twistlock).
 
-## Important notes for running Prisma Cloud scans in STO
-
+:::info
 - You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 - STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
@@ -23,6 +22,7 @@ You can scan container images and ingest results from [Prisma Cloud](https://doc
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
+:::
 
 ## Prisma Cloud step settings for STO
 
@@ -284,6 +284,12 @@ import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 import ProxySettings from './shared/proxy-settings.md';
 
 <ProxySettings />
+
+## Use scanner-provided Severity
+
+import ScannerProvidedSeverity from './shared/use-scanner-provided-severity.md';
+
+<ScannerProvidedSeverity />
 
 ## View Prisma Cloud compliance rule failures
 Prisma Cloud compliance rule failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures. Additionally, you can apply an OPA policy to fail the pipeline based on the compliance rule failures. This can be achieved using the [Security Tests - External Policy Failures](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-external-policy-failures) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).
