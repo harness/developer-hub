@@ -17,24 +17,7 @@ redirect_from:
   - /docs/get-started/self-managed-on-prem
 ---
 
-This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. Perform these tasks soon after you install Harness Self-Managed Enterprise Edition, before you move on to other configuration tasks.
-
-To install Harness Self-Managed Enterprise Edition in a Kubernetes cluster with Helm, go to [Install Harness Self-Managed Enterprise Edition Using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm).
-
-## Architecture overview
-You can install Harness Self-Managed Enterprise Edition in a Kubernetes cluster or on virtual machines.
-
-Review the following diagrams for your installation type.
-
-### Kubernetes cluster configuration
-
-Harness Self-Managed Enterprise Edition is installed in a Kubernetes cluster in the following configuration.
-
-![](./static/harness-self-managed-enterprise-edition-overview-00.png)
-
-**AWS architecture**
-
-![](./static/aws_architecture_smpOverview.png)
+Once you’ve completed the basic setup or installed the Self-Managed Enterprise Edition, the next step is to create your first account. This process begins by setting up the admin account, which will serve as the primary point of access and control for your system. 
 
 ## Create your Harness account
 
