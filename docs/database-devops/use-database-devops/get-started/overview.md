@@ -2,7 +2,7 @@
 title: Harness Database DevOps (DB DevOps) Overview
 sidebar_label: Overview
 description: Learn about Harness Database DevOps.
-sidebar_position: 10
+sidebar_position: 1
 ---
 
 # Harness DB DevOps Overview
