@@ -8,10 +8,6 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360059317892-Jira-Cloud </button>
 </p>
 
-import UpdateBanner from "./shared/_update-banner.mdx";
-
- <UpdateBanner integration={frontMatter.title} />
-
 Jira Software offers flexible issue and project tracking, and the Split for Jira integration allows you to connect feature flags and Jira issues from either Jira or Split, and view details in both Jira and Split. With this bidirectional connection, you can track rollouts with an associated issue in Jira and issues tied to a feature flag in Split. If you are tracking source code changes and deployments in Jira, you will be able to go from feature flag to issue to code change or deployment details in as few as three clicks.
 
 :::info[Jira Cloud only]

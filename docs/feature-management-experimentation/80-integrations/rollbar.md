@@ -8,10 +8,6 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020700732-Rollbar </button>
 </p>
 
-import UpdateBanner from "./shared/_update-banner.mdx";
-
- <UpdateBanner integration={frontMatter.title} />
-
 Rollbar is an error tracking software for development teams. Integrate Split data into Rollbar to get rollout events in Rollbar to gain insight on the causes of errors. 
 
 If you are having trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).

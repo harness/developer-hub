@@ -8,10 +8,6 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360039246411-SessionCam </button>
 </p>
 
-import UpdateBanner from "./shared/_update-banner.mdx";
-
- <UpdateBanner integration={frontMatter.title} />
-
 ### Example
 
 Basic code sample to use Split's JavaScript SDK to attach feature flag names and treatments as SesisonCam Custom Variable and enable Session Search via Field filter.

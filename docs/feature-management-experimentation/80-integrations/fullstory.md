@@ -8,10 +8,6 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360045937831-FullStory </button>
 </p>
 
-import UpdateBanner from "./shared/_update-banner.mdx";
-
- <UpdateBanner integration={frontMatter.title} />
-
 ## Split + FullStory
 
 FullStory is a digital experience analytics platform that records users’ sessions for playback and analysis. FullStory events allow FullStory customers to add additional information to a session while it is being recorded. Split leverages FullStory events to report feature flag impressions to the FullStory session, and as a source of events for measurement and experimentation in Split (there is a section below for both types of integration). 

@@ -8,10 +8,6 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020997851-Slack </button>
 </p>
 
-import UpdateBanner from "./shared/_update-banner.mdx";
-
- <UpdateBanner integration={frontMatter.title} />
-
 :::info[Note]
 The following Slack integration is in beta. If you'd like to be included in this, contact [support@split.io](mailto:support@split.io).
 :::

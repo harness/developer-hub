@@ -8,10 +8,6 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360040838752-Google-Analytics </button>
 </p>
 
-import UpdateBanner from "./shared/_update-banner.mdx";
-
- <UpdateBanner integration={frontMatter.title} />
-
 You can send JavaScript impressions and events to Google Analytics and send Google analytics events to Split. With this integration you can use the event data you already collect via Google Analytics to power analytics and experimentation within Split.
 
 ## Google Analytics 4 (GA4)

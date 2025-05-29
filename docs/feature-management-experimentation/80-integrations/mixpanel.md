@@ -8,10 +8,6 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360045503191-Mixpanel </button>
 </p>
 
-import UpdateBanner from "./shared/_update-banner.mdx";
-
- <UpdateBanner integration={frontMatter.title} />
-
 Mixpanel is a product analytics tool that enables you to explore user behavior data and analyze metrics like user adoption, growth, and retention. Split integrations can be configured to send impressions to Mixpanel, or extract Mixpanel events to be used as events in Split.
 
 :::info[Note]

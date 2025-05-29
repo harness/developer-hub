@@ -8,10 +8,6 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360059673711-Dynatrace </button>
 </p>
 
-import UpdateBanner from "./shared/_update-banner.mdx";
-
- <UpdateBanner integration={frontMatter.title} />
-
 ## Split + Dynatrace
 
 Dynatrace is a versatile monitoring solution for applications, services, and infrastructures. This integration uses a feature flag audit trail webhook to post annotations on tagged Dynatrace hosts, services, applications, and more. Using this integration, Dynatrace users see a feature flag change reflected in Dynatrace and identify when a change has impacted an entity, including complete details about the change, and a link to Split for further investigation.
