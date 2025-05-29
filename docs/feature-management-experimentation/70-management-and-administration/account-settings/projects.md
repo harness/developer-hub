@@ -21,7 +21,7 @@ When you onboard different business units to Harness FME, you can add up to 20 p
 
 To create a project, do the following: 
 
-1. From the left navigation, click on the **user’s initials** at the bottom.
+1. From the left navigation, click on the **profile button** at the bottom.
 2. Click **Admin settings**, then **Projects**. The Create a project appears.
 3. To create a project, click **Create project** at the top right. The Create project page appears.
    
@@ -46,7 +46,7 @@ You can set view permissions to your projects or projects you have administrator
 ## Editing a project
 
 When you are viewing a project, you can edit a project by doing the following:
-1. From the left navigation, click on the **user’s initials** at the bottom.
+1. From the left navigation, click on the **profile button** at the bottom.
 2. Click **Admin settings**, then **Projects**. A list of projects appears.
 3. On the selected project you want to edit, click **View** in the Action column.
 4. Click the **Actions** button and then **Edit project** from the menu list. The Edit project page appears. 
@@ -69,7 +69,7 @@ When you are viewing a project, you can edit a project by doing the following:
 
 To view projects, do the following:
 
-1. From the left navigation, click on the **user’s initials** at the bottom.
+1. From the left navigation, click on the **profile button** at the bottom.
 2. Click **Admin settings**, then **Projects**. A list of projects appears. 
 3. Select **View** on the desired project. From here, you can see the environment name, ID, type of project it is, permissions setting, and data export permission settings. 
 
@@ -83,7 +83,7 @@ If you have no access to a project, you need to request access from the administ
 
 You can navigate between projects by doing the following:
 
-1. From the left navigation, click on the **user's initials** at the top.
+1. From the left navigation, click on the **profile button** at the top.
 2. **Search or select the project** you would like to switch to. You can see the environments, feature flags, segments, and metrics under that project.
 
 ## Managing your projects

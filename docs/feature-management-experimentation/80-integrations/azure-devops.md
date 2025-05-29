@@ -30,7 +30,7 @@ The following flowchart shows how this integration works:
 
 To start, you need to first set up in Split by doing the following:
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Locate the Azure DevOps integration, click **Add** and select the Split project for which you would like to configure the integration. This allows you to map each instance of the integration to a Microsoft Azure DevOps project.
 4. Enter your Azure Org ID and optionally enter your Azure personal access token (PAT) and click **Save**. This takes you back to the marketplace.

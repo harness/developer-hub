@@ -33,7 +33,7 @@ You can configure which event properties you want to set as a dimension for your
 
 You can configure dimensions at the Admin level. You have a limit of twenty dimensions per account and twenty values per dimension. Harness FME automatically generates a bucketed “Others” dimension for any property values which are sent but not specified in this list. To configure your dimensions, do the following:
 
-1. From the left navigation, click the **user's initials** at the bottom and select **Admin settings**.
+1. From the left navigation, click the **profile button** at the bottom and select **Admin settings**.
 2. Under Experimentation settings, click **Metric dimensions**. The Metric dimensions table page appears.
 3. Click the **Add dimension** button. The Add a dimension area appears.
 4. Select the desired event property. You can optionally filter by an event type to narrow down the list of properties and values.

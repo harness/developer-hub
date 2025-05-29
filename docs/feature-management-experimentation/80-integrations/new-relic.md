@@ -34,7 +34,7 @@ If you have trouble completing the integration, contact us at [support@split.io]
 
 ## In Split
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 
    ![](./static/new-relic-splitadmin.png)

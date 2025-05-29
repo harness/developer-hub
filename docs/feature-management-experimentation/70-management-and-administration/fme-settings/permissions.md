@@ -20,7 +20,7 @@ An environment has the following three permission settings that you can set:
 
 To set up permissions, do the following:
 
-1. From the left navigation, click the **user's initials** at the bottom and then **Admin settings**. The Projects page displays.
+1. From the left navigation, click the **profile button** at the bottom and then **Admin settings**. The Projects page displays.
 2. In the desired project, click **View** in the Actions column. The project page with any associated environments appears.
 3. In the Environments tab, select the desired environment by clicking **Edit** in the Actions column. The Edit environment page appears. 
 
@@ -88,7 +88,7 @@ To set up permissions, do the following:
 
 You can optionally specify if admins can skip an approval flow for specific environments when feature flags and segments need updating. This prevents delays in necessary changes to feature flags and segments that need to quickly occur and remove adoption blockers. To set this up, do the following:
 
-1. From the left navigation pane, click the **user's initials** at the bottom, then select **Admin settings**. The Admin settings view appears.
+1. From the left navigation pane, click the **profile button** at the bottom, then select **Admin settings**. The Admin settings view appears.
 2. In the Projects page, click **View** to view the desired project.
 3. In the Environments tab, click **Edit** in the Actions column on the environment you want to update. The Edit environment page appears.
 4. In the Change permissions section, select the **Allow Administrators to skip approval** checkbox.

@@ -27,7 +27,7 @@ If you are having trouble completing the integration, contact [support@split.io]
 
 To start, first set up in Split by doing the following:
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Locate Slack App in the integrations list and click **Add**.
 4. Click **Save**.

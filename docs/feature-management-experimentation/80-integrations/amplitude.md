@@ -22,7 +22,7 @@ Within your Amplitude account, set up Split as a data source. Copy your Amplitud
 
 ### In Split
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Find Amplitude in the integrations list, click **Add** and select the Split project for which you would like to configure the integration.
 

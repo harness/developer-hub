@@ -56,7 +56,7 @@ You can create attributes individually or create multiple attributes using a CSV
 
 To create a custom attribute that will appear as a User Attribute in your feature flag targeting rules:
 
-1. In Harness FME, click your initials at the bottom of the left navigation panel and click **Admin settings**. The Projects page appears.
+1. In Harness FME, click the **profile button** at the bottom of the left navigation panel and click **Admin settings**. The Projects page appears.
 2. Click to **View** the desired project and click the Traffic types tab.
 3. Click to **View/Edit attributes** for a traffic type. (Your feature flags defined with this same traffic type will show the custom attributes in their attribute-based targeting rules in Harness FME.) The Attributes page appears.
 4. Click the **Actions** button and select **Create an attribute**. The Create Attribute panel appears.
@@ -94,7 +94,7 @@ You can create multiple custom attributes by performing a bulk upload of custom 
 
 To create multiple custom attributes that will appear as User Attributes in your feature flag targeting rules:
 
-1. In Harness FME, click your initials at the bottom of the left navigation panel and click **Admin settings**. The Projects page appears.
+1. In Harness FME, click the **profile button** at the bottom of the left navigation panel and click **Admin settings**. The Projects page appears.
 2. Click to **View** the desired project and click the Traffic types tab.
 3. Click to **View/Edit attributes** for a traffic type. (Your feature flags defined with this same traffic type will show the custom attributes in their attribute-based targeting rules in Harness FME.) The Attributes page appears.
 4. Click the **Actions** button and select **Create multiple attributes**. The Create multiple attributes page appears.

@@ -33,7 +33,7 @@ To manage your API keys, go to the **API keys** tab in your **Admin Settings** p
 
 To add one of these API keys, do the following: 
 
-1. From the left navigation, click the **user's initials** at the bottom, and then select **Admin settings**.
+1. From the left navigation, click the **profile button** at the bottom, and then select **Admin settings**.
 
 2. Click **API keys**. The API key page appears.
    
@@ -53,7 +53,7 @@ To add one of these API keys, do the following:
 
 ### Adding Admin API keys
 
-1. From the left navigation, click the **user's initials** at the bottom and then select Admin settings.
+1. From the left navigation, click the **profile button** at the bottom and then select Admin settings.
 
 2. Click **API keys**. The API key page appears.
 
@@ -73,7 +73,7 @@ To add one of these API keys, do the following:
 
 The Clone API keys action creates a new API key with access levels the same as the key being cloned. To clone an API key, do the following:
 
-1. From the left navigation, click the **user's initials** at the bottom and then select **Admin settings**.
+1. From the left navigation, click the **profile button** at the bottom and then select **Admin settings**.
 
 2. Click **API keys**. The API key page appears.
 

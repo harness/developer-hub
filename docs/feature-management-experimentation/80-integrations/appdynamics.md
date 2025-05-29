@@ -53,7 +53,7 @@ To connect Split to AppDynamics, create a role and a user within that role.
 
 ![](./static/appdynamics-splitadmin-step1.png)
 
-1. From the left navigation, click the **user's initials** at the bottom, select **Admin settings**, click **Integrations**, and navigate to the Marketplace.
+1. From the left navigation, click the **profile button** at the bottom, select **Admin settings**, click **Integrations**, and navigate to the Marketplace.
 
    ![](./static/appdynamics-splitadmin-step2.png)
 

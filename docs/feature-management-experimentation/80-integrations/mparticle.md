@@ -26,7 +26,7 @@ Before you begin, within your mParticle account, set up Split using the Integrat
 
 ### In Split 
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Find mParticle from the integration list, click **Add** and select the Split project for which you would like to configure the integration.
 4. Under Configure as a partner feed input in mParticle, select **Add configuration**.
@@ -55,7 +55,7 @@ Repeat this process for each environment and traffic type you want to configure.
 
 ### In Split 
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Find mParticle in the integration list, click **Add** and select the Split project for which you would like to configure the integration.
 4. Under Configure as an events output in mParticle, select **Add configuration**.

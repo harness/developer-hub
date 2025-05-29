@@ -180,6 +180,6 @@ The Amazon S3 integration requires infrastructure work of creating a new S3 buck
 
 ## Confirm events are being received
 
-To help verify that events are being received by Harness FME, from the left navigation pane, click the user's initials at the bottom, select **Admin settings**, and click **Event types**. There you can see event types and a stream of events per event type. Learn more about [events](https://help.split.io/hc/en-us/articles/360020585772-Track-events).
+To help verify that events are being received by Harness FME, from the left navigation pane, click the **profile button** at the bottom, select **Admin settings**, and click **Event types**. There you can see event types and a stream of events per event type. Learn more about [events](https://help.split.io/hc/en-us/articles/360020585772-Track-events).
 
 <img src="https://help.split.io/hc/article_attachments/30795551048589" alt="step_3_send_event_data.png" width="1000" />

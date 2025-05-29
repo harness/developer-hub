@@ -20,7 +20,7 @@ If you are having trouble completing the integration please contact us at [suppo
 
 To set up in Split, do the following:
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Locate the Jira Cloud integration, click **Add** and select the Split project and associated environments you want to connect to Jira Cloud.
 

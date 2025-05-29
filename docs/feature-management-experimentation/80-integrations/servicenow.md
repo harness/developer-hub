@@ -29,7 +29,7 @@ To start connecting the ServiceNow integration to the Split application, you nee
 
 To create your Split token, do the following:
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Find ServiceNow in the integrations list and click **Add**. The Connect to ServiceNow DevOps page appears.
 4. Enter a user friendly name for the integration and click **Save**. The Split token is created once you save the settings page. 
@@ -44,7 +44,7 @@ You can configure your Split environment so approvals only occur on the ServiceN
 
 To configure your Split environment, do the following:
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Select **Projects** to see the projects in your Split account. 
 3. For one of the projects, click **View**. The environments associated with this project display.
 4. Within the Environments tab, click **Edit** on the desired environment (e.g. Prod-client). The Edit environment page appears.

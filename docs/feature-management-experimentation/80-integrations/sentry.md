@@ -57,7 +57,7 @@ For each Sentry project that you want to integrate with Split, you will need cop
 
 ### In Split
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Find Sentry in the integration list, click **Add** and select the Split project for which you would like to configure the integration.
 

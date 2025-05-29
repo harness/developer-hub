@@ -34,7 +34,7 @@ If you use both the `anonymousId` and `userId` fields on Segment's `track` call 
 
 ### In Split
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Find Segment in the integration list, click **Add** and select the Split project for which you want to configure the integration.
 4. Select the environments that you want the data sent from.
@@ -53,7 +53,7 @@ When configured properly, data begins flowing in Segment as a `track` type with 
 
 ### In Split
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Find Segment in the integration list, click **Add** and select the Split project for which you want to configure the integration.
 4. Under Configure as a destination in Segment, click **Add configuration**.
@@ -84,7 +84,7 @@ When configured properly, data begins flowing in Segment as a `track` type with 
 
 ### In Split
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Find Segment in the integration list, click **Add** and select the Split project for which you want to configure the integration.
 4. Under Configure as a destination in Segment, click **Add configuration**.

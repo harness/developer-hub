@@ -34,7 +34,7 @@ To connect Visual Studio Code to your Split account, do the following:
 A Split admin needs to add the VSCode extension into the Split marketplace and generate the token that you need to complete this section. Contact your Split admin for a copy of the token.
 :::
 
-1. From the left navigation, click the **user's initials** at the bottom, click **Admin settings**, and then **Integrations**. The Integrations page appears.
+1. From the left navigation, click the **profile button** at the bottom, click **Admin settings**, and then **Integrations**. The Integrations page appears.
 2. Locate the VSCode selection and click **Add**.
 3. Save the integration and navigate back to the newly created integration. The token displays. Copy the token to authenticate the extension.
 4. Open your Visual Studio editor and download the [Split extension](https://marketplace.visualstudio.com/items?itemName=SplitSoftware.splitio).

@@ -39,7 +39,7 @@ FME allows you to have up to 10 traffic types per project. All environments with
 
 To create traffic types, do the following:
 
-1. From the left hand navigation, click the **user's initials** at the bottom and select **Admin settings**. The **Projects** page appears.
+1. From the left hand navigation, click the **profile button** at the bottom and select **Admin settings**. The **Projects** page appears.
 2. Select the project that you want to edit traffic types for. 
 3. To add more traffic types to the selected project, click **View** and then the **Traffic types** tab. 
 4. Click the **Actions** button and then **Add traffic types** in the list. The Create traffic type panel appears.

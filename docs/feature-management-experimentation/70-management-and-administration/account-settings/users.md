@@ -9,7 +9,7 @@ For increased login security, you can add two-factor authentication (2FA) for yo
  
 Set up 2FA in a few steps: 
 
-1. In the left navigation, click on the **user's initials** at the bottom, and go to **Personal Settings** > **Security**.
+1. In the left navigation, click on the **profile button** at the bottom, and go to **Personal Settings** > **Security**.
 2. Click **Enable Two-Factor Authentication**.
 3. Download an authenticator app like Google Authenticator.
 4. Scan the QR code on your screen.
@@ -43,14 +43,14 @@ Administrators can take a number of actions to help manage users in their Harnes
 
 ### Deactivate a user
 
-1. From the left navigation, click the **user's initials** at the bottom, select **Admin settings** and then **Users**.
+1. From the left navigation, click the **profile button** at the bottom, select **Admin settings** and then **Users**.
 1. Click **Deactivate** next to a user’s name. The user’s status changes to **Inactive**.
 
 When the user’s login is deactivated, they cannot access your account in Harness FME and cannot reactivate their own login.
 
 ### Reactivate a user
 
-1. From the left navigation, click the **user's initials** at the bottom, select **Admin settings** and then **Users**.
+1. From the left navigation, click the **profile button** at the bottom, select **Admin settings** and then **Users**.
 1. Click **Activate** next to a user’s name. The user’s status changes to **Active**.
 
 When the user’s login is activated, they can access your account in Harness FME.

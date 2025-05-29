@@ -117,7 +117,7 @@ Follow this step only if you do not already have an S3 bucket. If you already ha
 
 ### Configure integration in Split (inbound)
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Click **Add** next to Amazon S3, and select a Split project. You can also click Warehouse under Categories to filter to Amazon S3.
 4. Under Send events to Split, click **Add configuration**.
@@ -385,7 +385,7 @@ To connect your AWS S3 bucket to Split, you need:
 
 ### Configure integration in Split (outbound)
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Click **Add** next to Amazon S3, and select a Split project. You can also click Warehouse under Categories to filter to Amazon S3.
 4. Under Send impressions to S3, click **Add configuration**.
