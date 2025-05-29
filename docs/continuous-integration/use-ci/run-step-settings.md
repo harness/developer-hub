@@ -512,6 +512,21 @@ During and after pipeline runs, you can find step logs on the [Build details pag
 
 If your pipeline runs tests, you can [view test reports](./run-tests/viewing-tests.md) on the Build details page.
 
+## Hidden/Invisible Characters
+Customers may occasionally encounter unexplained behavior in their scripts caused by hidden or invisible characters. These characters often appear when copying and pasting from non-plain-text sources and can lead to unexpected script errors. Harness includes a feature to display invisible characters, which is enabled by default.
+
+When invisible characters are present, users will see a highlighted space in their scripts.
+![](./static/invisiblechr-01.png)
+
+They can hover over the highlight to view the character and click "Adjust settings" to manage the display.
+![](./static/invisiblechr-hover.png)
+
+If a selection was accidentally made, the user can right-click within the script area and open the **Command Palette**.
+![](./static/invisiblechr-cmdplt.png)
+
+A dialog box will appear, allowing the user to search for and toggle the setting that controls how invisible characters are highlighted.
+![](./static/invisiblechr-toggle.png)
+
 ## Troubleshoot script execution (Run steps)
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to script execution and using Run steps, such as:
