@@ -201,9 +201,9 @@ export const platformData: Horizon = {
           "Split Pipeline 'Create/Edit' permission into 'Create' and 'Edit' permissions",
       },
       {
-        title: "Granular RBAC Permissions for Dashboards",
+        title: "Advanced RBAC Permissions for Dashboards",
         description:
-          "Granular permissions for Dashboards to provide users more control while creating different roles.",
+          "Advanced permissions for Dashboards to provide users enhanced granularity and control while creating roles.",
         tag: [{ value: "Access Control" }, { value: "Dashboards" }],
       },
       {
@@ -308,9 +308,9 @@ export const platformData: Horizon = {
     description: "Q2 2025+, Aug 2025 & beyond",
     feature: [
       {
-        title: "Granular RBAC Permissions for User Groups",
+        title: "Advanced RBAC Permissions for User Groups",
         description:
-          "Granular permissions for User Groups to provide users more control while creating different roles.",
+          "Advanced permissions for User Groups to provide users enhanced granularity and control while creating roles.",
         tag: [{ value: "Access Control" }],
       },
       {
