@@ -8,8 +8,8 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044691592-Jenkins </button>
 </p>
 
-## Split Jenkins Plugin
-Jenkins plugin uses Split Admin REST API to create, update, and delete feature flags as part of test automation and build workflow. Reference to Split Admin API can be found [here](https://docs.split.io/reference).
+## Harness FME Jenkins Plugin
+Jenkins plugin uses Harness FME Admin REST API to create, update, and delete feature flags as part of test automation and build workflow. Reference to Harness FME Admin API can be found [here](https://docs.split.io/reference).
 
 ### Installation
 In Jenkins Plugin Manager page, under Available tab, enter **Split Admin** to find the plugin and install it.
@@ -18,7 +18,7 @@ In Jenkins Plugin Manager page, under Available tab, enter **Split Admin** to fi
 
 ### How to use
 
-1. Store the Split Admin API Key in Split Admin API Key edit box found in Manage Jenkins-> Configure System page.
+1. Store the Harness FME Admin API Key in Split Admin API Key edit box found in Manage Jenkins-> Configure System page.
 
    ![](./static/jenkins-configuration.png)
 
@@ -47,7 +47,7 @@ io.split.jenkins.plugins
 
 * **Create Feature Flag:** This task will create a new feature flag. The fields below are required. The plugin will check if the feature flag exists in the given project. If it exists, the task is skipped with no errors returned: `Project Name` `Split Name` `Traffic Type Name`.
 
-* **Add Feature Flag To Environment:** This task will add new definitions to an environment of an existing feature flag. The fields below are required. The plugin will check if feature flag definitions exist in the given environment. If it exists, the task is skipped with no errors returned: `Project Name` `Environment Name` `Split Name` `Split Definitions`. The definitions field should match the JSON structure accepted by Split Admin API, see the [API reference](https://docs.split.io/reference#create-split-definition-in-environment) for more info.
+* **Add Feature Flag To Environment:** This task will add new definitions to an environment of an existing feature flag. The fields below are required. The plugin will check if feature flag definitions exist in the given environment. If it exists, the task is skipped with no errors returned: `Project Name` `Environment Name` `Split Name` `Split Definitions`. The definitions field should match the JSON structure accepted by Harness FME Admin API, see the [API reference](https://docs.split.io/reference#create-split-definition-in-environment) for more info.
 
 * **Add Key To Individual target:** This task will add new key to a treatment's individual target section of an existing feature flag definitions. The fields below are required: `Project Name` `Environment Name` `Split Name` `Treatment Name` `Individual target Key`.
 

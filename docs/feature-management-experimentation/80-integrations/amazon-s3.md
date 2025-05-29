@@ -8,33 +8,33 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3 </button>
 </p>
 
-Amazon Simple Storage Service (Amazon S3) is an object storage service offered by Amazon as part of Amazon Web Services (AWS) that offers the ability to store and retrieve any amount of data, at any time, from anywhere on the web. With this integration you can easily and reliably send high volumes of event data to Split, as well as export your impression data.
+Amazon Simple Storage Service (Amazon S3) is an object storage service offered by Amazon as part of Amazon Web Services (AWS) that offers the ability to store and retrieve any amount of data, at any time, from anywhere on the web. With this integration you can easily and reliably send high volumes of event data to Harness FME, as well as export your impression data.
 
-## Send events to Split
+## Send events to Harness FME
 
-The following describes how to send events to Split.
+The following describes how to send events to Harness FME.
 
 ### Prepare your S3 bucket and event files
 
-To connect your AWS S3 bucket to Split, you need:
+To connect your AWS S3 bucket to Harness FME, you need:
 
 * An S3 bucket that contains files with supported file types and encodings, e.g. gzip, bzip2, snappy, or LZO compression. 
-* An AWS account with the ability to grant Split permission to read the folder with data in the bucket as well as read/put permission for the folder where the status is expected to be posted.
+* An AWS account with the ability to grant Harness FME permission to read the folder with data in the bucket as well as read/put permission for the folder where the status is expected to be posted.
 
 **File restrictions:**
 
 * Compression examples: gzip, bzip2, snappy, or LZO compression.
 * File format: _parquet only_
 * Schema:
-  * environmentId: \[String\] Identifier for the environment in Split
-  * trafficTypeId: \[String\] Identifier for the traffic type in Split
+  * environmentId: \[String\] Identifier for the environment in Harness FME
+  * trafficTypeId: \[String\] Identifier for the traffic type in Harness FME
   * eventTypeId: \[String\] Name for the type of event
   * key: \[String\] Identifier for the "user" or "system" triggering or associated with the event
   * timestamp: \[Long\] The time when the event took place, in milliseconds past epoch
   * value: \[Double, Nullable\] A numeric value associated with this event
   * properties: \[Map\<String,String\>, Nullable\] Arbitrary properties data providing context to the event
 
-To send the same event into multiple environments within Split, duplicate the events with different environment IDs.
+To send the same event into multiple environments within Harness FME, duplicate the events with different environment IDs.
 
 ### Create Amazon S3 bucket
 
@@ -57,9 +57,9 @@ Follow this step only if you do not already have an S3 bucket. If you already ha
    ![](./static/amazon-s3-topic1.png)
 
 2. Under Details, select **Type** and then **Standard**.
-3. Create a **Name** for your SNS topic, e.g. "split-events".
+3. Create a **Name** for your SNS topic, e.g. "fme-events".
 
-   ![](./static/amazon-s3-topic2.png)cle_attachments/360079550852/Create_Topic__2_.png" alt="Create_Topic__2_.png" />
+   ![](./static/amazon-s3-topic2.png)
 
 4. Click **Save**. Note the SNS Topic ARN.
 5. Navigate to your SNS topic and click **Edit**.
@@ -115,13 +115,13 @@ Follow this step only if you do not already have an S3 bucket. If you already ha
 
    ![](./static/amazon-s3-event-notification3.png)
 
-### Configure integration in Split (inbound)
+### Configure integration in Harness FME (inbound)
 
 1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
-3. Click **Add** next to Amazon S3, and select a Split project. You can also click Warehouse under Categories to filter to Amazon S3.
+3. Click **Add** next to Amazon S3, and select a project. You can also click Warehouse under Categories to filter to Amazon S3.
 4. Under Send events to Split, click **Add configuration**.
-5. Under Select environment, select the Split environments that receive S3 data.
+5. Under Select environment, select the Harness FME environments that receive S3 data.
 6. Under Paste S3 bucket name, provide the name of your unique S3 bucket from above. (The directory will be created if it does not exist.)
 7. Under Paste SNS topic ARN, provide the SNS topic ARN from above.
 8. Under Paste status folder location, provide the file path for status files.
@@ -129,12 +129,12 @@ Follow this step only if you do not already have an S3 bucket. If you already ha
    ![](./static/amazon-s3-integration.png)
 
 9. Click **Save**.
-10. Navigate back to your Amazon S3 integration. Split has generated the Notification endpoint URL and Role ARN fields.
+10. Navigate back to your Amazon S3 integration. Harness FME has generated the Notification endpoint URL and Role ARN fields.
 
-### Update S3 bucket policy for Split access (inbound)
+### Update S3 bucket policy for Harness FME access (inbound)
 
 1. In the Amazon S3 console, navigate to your S3 bucket.
-2. Under Edit bucket policy, select **Bucket policy** and replace the JSON with the following snippet. Update the Role ARN with the value generated by Split as well as your bucket name as appropriate.
+2. Under Edit bucket policy, select **Bucket policy** and replace the JSON with the following snippet. Update the Role ARN with the value generated by Harness FME as well as your bucket name as appropriate.
 
 <ul>
 
@@ -186,7 +186,7 @@ Follow this step only if you do not already have an S3 bucket. If you already ha
 
 2. Under Details, enter your Topic ARN.
 3. Under Protocol, select **HTTPS**.
-4. Under Endpoint, enter the Notification endpoint URL generated by Split.
+4. Under Endpoint, enter the Notification endpoint URL generated by Harness FME.
 5. Click **Create subscription**. On the confirmation page, confirm that Check status is "confirmed” and Protocol is “https."
 
    ![](./static/amazon-s3-subscription2.png)
@@ -195,11 +195,11 @@ Follow this step only if you do not already have an S3 bucket. If you already ha
 
 ### About the status file
 
-The status file path format is a consolidated file that includes information about all files with events that have been uploaded to Split during its latest batch. The following sections explain the path format and contents.
+The status file path format is a consolidated file that includes information about all files with events that have been uploaded to Harness FME during its latest batch. The following sections explain the path format and contents.
 
 #### Status file path format
 
-Each s3 bucket and status folder prefix has a consolidated status file that includes all files with events that are uploaded to Split during that latest batch. This means that if there are multiple different integrations set up, but the s3 bucket and status folder prefix are the same, the statuses of files uploaded for all integrations that have input from the same exact s3 bucket and status folder prefix are consolidated into one file per status report. This assumes that the files from different integrations are uploaded at nearly the same time (i.e., only minutes apart) and these integrations all share the same s3 bucket and status folder prefix.
+Each s3 bucket and status folder prefix has a consolidated status file that includes all files with events that are uploaded to Harness FME during that latest batch. This means that if there are multiple different integrations set up, but the s3 bucket and status folder prefix are the same, the statuses of files uploaded for all integrations that have input from the same exact s3 bucket and status folder prefix are consolidated into one file per status report. This assumes that the files from different integrations are uploaded at nearly the same time (i.e., only minutes apart) and these integrations all share the same s3 bucket and status folder prefix.
 
 The status files are saved to the following S3 key:
 
@@ -209,8 +209,8 @@ Expect the status files to display in the above location 15 minutes to an hour a
 
 | **Name** | **Description** | 
 | --- | --- |
-| S3 bucket name| Bucket used for the specific S3 inbound integration. Input by customer within the Split S3 integration creation user interface.| 
-| Status folder location prefix | Input by customer within the Split S3 integration creation user interface.|
+| S3 bucket name| Bucket used for the specific S3 inbound integration. Input by customer within the Harness FME S3 integration creation user interface.| 
+| Status folder location prefix | Input by customer within the Harness FME S3 integration creation user interface.|
 | UTC date string| When a particular status file is created. Use the following format: yyyy-MM-dd.| 
 | UTC time string | Exact time that status file is created using the following format  (hours are shown using a 24 hour format): HH-mm-ss.SSS.UTC.| 
 
@@ -225,7 +225,7 @@ this is what each segment of the S3 key means:
 * status file is created on: `2022-01-03 (UTC)`
 * status file is created at: `12-34-20.345 (UTC time)`
 
-Be aware that Split does not edit status files once they are generated and sent to your bucket. Subsequent status reports on files uploaded in the future are reported in newly generated files.
+Be aware that Harness FME does not edit status files once they are generated and sent to your bucket. Subsequent status reports on files uploaded in the future are reported in newly generated files.
 
 :::note 
 
@@ -236,7 +236,7 @@ Be aware that Split does not edit status files once they are generated and sent 
 
 #### Status file content
 
-Each JSON status file has an outer level of keys which are fileNames as described below. The content of each status file holds only incremental information and doesn’t have information that was already presented in a previous status file. Split aggregates our status information using the following on seven attributes. The corresponding value for each fileName key is a list of StatusEntry objects, which are in the following format:
+Each JSON status file has an outer level of keys which are fileNames as described below. The content of each status file holds only incremental information and doesn’t have information that was already presented in a previous status file. Harness FME aggregates our status information using the following on seven attributes. The corresponding value for each fileName key is a list of StatusEntry objects, which are in the following format:
 
 ```
 fileName
@@ -269,7 +269,7 @@ Every unique combination of the above constitutes an individual StatusEntry obje
 
   `originalCreationTime` and `entryId` are included for the following reasons:
 
-  * We only guarantee at least once delivery of each StatusEntry. In rare cases, between status files sent one after the other, there could be some duplicate entries. Split has added information to enable you to identify which ones are duplicates.
+  * We only guarantee at least once delivery of each StatusEntry. In rare cases, between status files sent one after the other, there could be some duplicate entries. Harness FME has added information to enable you to identify which ones are duplicates.
 
   * Every triplet of `fileName`, `originalCreationTime`, and `entryId` should be unique. If there are entries in status file 1 and status file 2 with duplicate triplets, then one of them is a duplicate status entry object. This is especially relevant if you have logic that ingests status files and sums the returned number of rows ingested or not ingested by filename.
 :::
@@ -360,36 +360,36 @@ Any rows with an error code associated with are not uploaded into our final data
 | --- | --- |
 | INVALID_ENVIRONMENT_ID| Event has an environmentId that is not found under the current integration.| 
 | REQUIRED_FIELDS_NULL | Required fields for an event that should be non-null are null.|
-| INTEGRATION_CONFIG_NOT_FOUND| Integration configuration not found in the database. Possible causes are: <br /> * An integration could have been deleted by another user. <br /> * There is an error internal to Split. | 
+| INTEGRATION_CONFIG_NOT_FOUND| Integration configuration not found in the database. Possible causes are: <br /> * An integration could have been deleted by another user. <br /> * There is an error internal to Harness FME. | 
 | INVALID_SCHEMA | Input file schema is incorrect. Possible causes are: <br /> * The required field not found in input filed. <br /> * Field within input file is incorrect data type. <br /> **Note: The schema validation checks are now more restrictive. Previously, there were scenarios where customers could upload files where a field was an int type but our spec calls for a double. To improve performance and reliability, we expect the types to be exact and will not do these type of conversions, and will instead not upload those rows and return this error code for the affected file.**|
 | INVALID_TIMESTAMP | Input timestamp in the uploaded event are not in milliseconds. |
 
 ### Additional status file information
 
-This information discusses additional considerations related to Split generated status files.
+This information discusses additional considerations related to Harness FME generated status files.
 
-**When you have multiple S3 Inbound integrations and the statuses are mixed together.** With the migration to v2, if the multiple S3 integrations use the same s3 bucket and status folder location, the status entries for each individual S3 inbound integrations that share those two properties now have their statuses consolidated into one file. If you want separate status reports for separate integrations - you will need to go to the Split user interface S3 Integrations page, and change either the S3 bucket of that integration or if you want to use the same bucket, then change the status folder location of that integration. Either, or both of these actions results in integrations having completely independent status report files.
+**When you have multiple S3 Inbound integrations and the statuses are mixed together.** With the migration to v2, if the multiple S3 integrations use the same s3 bucket and status folder location, the status entries for each individual S3 inbound integrations that share those two properties now have their statuses consolidated into one file. If you want separate status reports for separate integrations - you will need to go to the Harness FME user interface S3 Integrations page, and change either the S3 bucket of that integration or if you want to use the same bucket, then change the status folder location of that integration. Either, or both of these actions results in integrations having completely independent status report files.
 
 **A large range of when to expect status on any given file.** In most cases, status reports on any particular file should return to the customer within 15 minutes. However, if you upload pattern results in uploading many large files all at once, this causes an expected delay for a status on an input file to increase.
 
-## Send Split impressions to S3
+## Send Harness FME impressions to S3
 
-The following describes how to send Split impressions to S3. Impressions are sent in batches every 30 minutes.
+The following describes how to send Harness FME impressions to S3. Impressions are sent in batches every 30 minutes.
 
 ### Prepare your S3 bucket
 
-To connect your AWS S3 bucket to Split, you need:
+To connect your AWS S3 bucket to Harness FME, you need:
 
 * An S3 bucket destination already created.
-* An AWS account with the ability to grant Split permission to read, put, and remove data in the bucket. **Note: We only remove transactional files created during the transfer.**
+* An AWS account with the ability to grant Harness FME permission to read, put, and remove data in the bucket. **Note: We only remove transactional files created during the transfer.**
 
-### Configure integration in Split (outbound)
+### Configure integration in Harness FME (outbound)
 
 1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
-3. Click **Add** next to Amazon S3, and select a Split project. You can also click Warehouse under Categories to filter to Amazon S3.
+3. Click **Add** next to Amazon S3, and select a project. You can also click Warehouse under Categories to filter to Amazon S3.
 4. Under Send impressions to S3, click **Add configuration**.
-5. Under Select environment, select the Split environments that receive S3 data.
+5. Under Select environment, select the Harness FME environments that receive S3 data.
 6. Under Paste S3 bucket name, enter the name of your unique S3 bucket name.
 
    ![](./static/amazon-s3-outbound-s3-split-ui.png)
@@ -402,16 +402,16 @@ To connect your AWS S3 bucket to Split, you need:
    The list only displays compression methods that are compatible with your chosen file format.
    :::
 
-10. Click **Save**. Note your role ARN generated by Split.
+10. Click **Save**. Note your role ARN generated by Harness FME.
 
-### Update S3 bucket policy for Split access (outbound)
+### Update S3 bucket policy for Harness FME access (outbound)
 
 1. In the [Amazon S3 console](https://signin.aws.amazon.com/signin?redirect_uri=https://console.aws.amazon.com/s3/?state=hashArgs%2523&isauthcode=true&client_id=arn:aws:iam::015428540659:user/s3&forceMobileApp=0&code_challenge=ncyvgDnr9uUmgDd1AlgF-WOMiiEb7H_FL1qzwp_CKi8&code_challenge_method=SHA-256), navigate to your S3 bucket.
 2. Under Permissions, select **Edit bucket policy** and then **Bucket policy**.
 3. Replace the JSON with the snippet below. Be sure to replace the following parameters in the snippet:
-    * *\{role-ARN-to-be-provided-to-you-by-Split\}* with the _Role ARN_ generated by Split above.
+    * *\{role-ARN-to-be-provided-to-you-by-FME\}* with the _Role ARN_ generated by Harness FME above.
     * *\{bucketName\}* with your S3 bucket name.
-    * *\{writeLocationPrefix\}* with the write location prefix as appropriate. If you left the write location section blank in the Split configuration step, and intend to write to the root directory, you must update the following line:
+    * *\{writeLocationPrefix\}* with the write location prefix as appropriate. If you left the write location section blank in the Harness FME configuration step, and intend to write to the root directory, you must update the following line:
        * _“Resource": "arn:aws:s3:\:\:\{bucketName\}/\{writeLocationPrefix\}/*" > "Resource": "arn:aws:s3:\:\:\{bucketName\}/*”._
 4. Optionally, if you later update the integration to include a write location prefix, or change the write location in any way, we recommend changing the policy to the more restricted line provided below to include the *\{writeLocationPrefix__\}/* *:
 
@@ -422,7 +422,7 @@ To connect your AWS S3 bucket to Split, you need:
        {
            "Effect": "Allow",
            "Principal": {
-               "AWS": "{role-ARN-to-be-provided-to-you-by-Split}"
+               "AWS": "{role-ARN-to-be-provided-to-you-by-FME}"
            },
            "Action": "s3:ListBucket",
            "Resource": "arn:aws:s3:::{bucketName}"
@@ -430,7 +430,7 @@ To connect your AWS S3 bucket to Split, you need:
         {
            "Effect": "Allow",
            "Principal": {
-               "AWS": "{role-ARN-to-be-provided-to-you-by-Split}"
+               "AWS": "{role-ARN-to-be-provided-to-you-by-FME}"
            },
            "Action": [
                "s3:GetObject",
@@ -446,7 +446,7 @@ To connect your AWS S3 bucket to Split, you need:
 
 ### SSE_KMS support
 
-If your S3 bucket is encrypted using an AWS KMS key (SSE-KMS), optionally update the policy to allow Split's AWS ARN to encrypt data using the KMS key you have chosen. 
+If your S3 bucket is encrypted using an AWS KMS key (SSE-KMS), optionally update the policy to allow Harness FME's AWS ARN to encrypt data using the KMS key you have chosen. 
 
 :::tip
 If your S3 bucket is using an Amazon S3 key for encryption (SSE-S3), then the following is not necessary.
@@ -476,7 +476,7 @@ If your S3 bucket is using an Amazon S3 key for encryption (SSE-S3), then the fo
            "Sid": "KMSCrossAccount",
            "Effect": "Allow",
            "Principal": {
-               "AWS": "{role-ARN-to-be-provided-to-you-by-Split}"
+               "AWS": "{role-ARN-to-be-provided-to-you-by-FME}"
            },
            "Action": [
                "kms:DescribeKey",

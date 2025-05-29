@@ -8,18 +8,18 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360059673711-Dynatrace </button>
 </p>
 
-## Split + Dynatrace
+## Harness FME + Dynatrace
 
-Dynatrace is a versatile monitoring solution for applications, services, and infrastructures. This integration uses a feature flag audit trail webhook to post annotations on tagged Dynatrace hosts, services, applications, and more. Using this integration, Dynatrace users see a feature flag change reflected in Dynatrace and identify when a change has impacted an entity, including complete details about the change, and a link to Split for further investigation.
+Dynatrace is a versatile monitoring solution for applications, services, and infrastructures. This integration uses a feature flag audit trail webhook to post annotations on tagged Dynatrace hosts, services, applications, and more. Using this integration, Dynatrace users see a feature flag change reflected in Dynatrace and identify when a change has impacted an entity, including complete details about the change, and a link to Harness FME for further investigation.
 
 <div style={{maxWidth:800}}> ![Dynatrace overview](./static/dynatrace-overview.png) </div>
 
 ## Prerequisites
 
-To connect Dynatrace to Split, you need the following:
+To connect Dynatrace to Harness FME, you need the following:
 * Your Dynatrace URL
 * A Dynatrace API token (with API v1 rights to “Access problem and event feed, metrics, and topology”)
-* Administrator access to your Split account
+* Administrator access to your Harness account
 
 ## How to use this integration
 
@@ -27,7 +27,7 @@ The following explains how to use this integration
 
 ### Publish a webhook
 
-This integration is for deployment as an AWS Lambda. The lambda is a webhook for a feature flag audit trail of a specific Split environment. The webhook takes changes from Split and annotates tagged Dynatrace entities with these changes using Dynatrace APIs. The results are discoverable in the Dynatrace user interface. To publish a webhook, do the following:
+This integration is for deployment as an AWS Lambda. The lambda is a webhook for a feature flag audit trail of a specific Harness FME environment. The webhook takes changes from Harness FME and annotates tagged Dynatrace entities with these changes using Dynatrace APIs. The results are discoverable in the Dynatrace user interface. To publish a webhook, do the following:
 
 1. Clone the repository: https://github.com/dbmartin00/split2dynatraceAws
 
@@ -63,9 +63,9 @@ You need to be working with Java 8, because AWS does not support higher versions
 
 When you deploy the lambda at the API Gateway, it should be a public REST API. Save the URL of your deployed lambda. The lambda logs include helpful information and debugging output to CloudWatch. For example, I used the [AWS Toolkit for Eclipse](https://aws.amazon.com/eclipse/). 
 
-### Configure Split to use your webhook
+### Configure Harness FME to use your webhook
 
-To register your AWS Lambda with Split, follow the Split instructions for creating a webhook. Provide the URL you saved previously when you deployed your lambda. Select if you want changes to be passed from DEV, QA, or PROD environments (changes to other environments are ignored).
+To register your AWS Lambda with Harness FME, follow the Harness FME instructions for creating a webhook. Provide the URL you saved previously when you deployed your lambda. Select if you want changes to be passed from DEV, QA, or PROD environments (changes to other environments are ignored).
 
 **Advanced instructions:** Deploy a webhook for each of your environments separately. Tag dev, qa, and prod environments with unique tags. Environment-specific webhooks will annotate with changes only from that environment.
 
@@ -96,7 +96,7 @@ Make sure your webhook is unauthenticated on setup. This is an option when you f
 If the CloudWatch log displays the following, it should exit as 200. The time to finish depends on entity types defined and number of tags.
 
 * successfully parsed change
-* DEBUG of full JSON from Split
+* DEBUG of full JSON from Harness FME
 * "sending annotations to Dynatrace"
 
 If you see the following error, it means that no matching entities were found with the tag generated for this annotation ("splitTag:dynamic_boxes"):
@@ -111,12 +111,12 @@ INFO - post to dynatrace status code: 400 response body:
 }
 ```
 
-To resolve this, tag an entity in Dynatrace (as discussed above) and make a change to the corresponding feature flag in the Split user interface.
+To resolve this, tag an entity in Dynatrace (as discussed above) and make a change to the corresponding feature flag in Harness FME.
 
 ## Code
 
-This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, reach out to the [contibutor](mailto:david.martin@split.io).
+This is a third-party integration that has been tested by the Harness FME team. Harness does not own or maintain this integration. For more information, reach out to the [contibutor](mailto:david.martin@split.io).
 
 We encourage contribution for all third-party integrations. You can find the repo that backs this integration which is found in [GitHub](https://github.com/dbmartin00/split2DynatraceAws).
 
-To learn more about all our integrations, check out our [integrations](https://www.split.io/product/integrations) page. If you’d like a demo of Split, or help to implement any of our integrations, contact [support@split.io](mailto:support@split.io).
+If you’d like a demo of Harness FME, or help to implement any of our integrations, contact [support@split.io](mailto:support@split.io).

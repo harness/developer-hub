@@ -8,53 +8,53 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360046658932-Amplitude </button>
 </p>
 
-Amplitude is a product intelligence platform that helps teams convert, engage, and retain customers. Split provides multiple integration options to send impression data from the Split platform as a data source to Amplitude, export Amplitude cohorts to be used in Split for targeting, or extract Amplitude events to be used as events in Split.
+Amplitude is a product intelligence platform that helps teams convert, engage, and retain customers. Harness FME provides multiple integration options to send impression data from the FME as a data source to Amplitude, export Amplitude cohorts to be used in FME for targeting, or extract Amplitude events to be used as events in FME.
 
-## Sending Split impressions to Amplitude (Recommended)
+## Sending Harness FME impressions to Amplitude (Recommended)
 
-This integration will send impressions to Amplitude as events, mapped according to the configuration settings. It gives you the ability to connect Split to Amplitude and easily run deeper analysis on A/B and beta tests.
+This integration will send impressions to Amplitude as events, mapped according to the configuration settings. It gives you the ability to connect Harness FME to Amplitude and easily run deeper analysis on A/B and beta tests.
 
-Each call to **getTreatment** in a Split SDK is passed to Amplitude as a separate event.
+Each call to **getTreatment** in an FME SDK is passed to Amplitude as a separate event.
 
 ### In Amplitude
 
-Within your Amplitude account, set up Split as a data source. Copy your Amplitude project's API Key to be used in Split.
+Within your Amplitude account, set up Harness FME as a data source. Copy your Amplitude project's API Key to be used in FME.
 
-### In Split
+### In Harness FME
 
 1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
-3. Find Amplitude in the integrations list, click **Add** and select the Split project for which you would like to configure the integration.
+3. Find Amplitude in the integrations list, click **Add** and select the project for which you would like to configure the integration.
 
     ![Amplitude](./static/amplitude-for-default.png)
 
-4. Select the environment from where you want data sent and then select how you want to map Split traffic types to Amplitude identities. You can select either:
+4. Select the environment from where you want data sent and then select how you want to map Harness FME traffic types to Amplitude identities. You can select either:
     * user_id
     * device_id 
-5. Split impressions are shown as ‘get_treatment’ events in Amplitude by default. You can customize this event name, with a maximum of 1,024 characters.
+5. FME impressions are shown as ‘get_treatment’ events in Amplitude by default. You can customize this event name, with a maximum of 1,024 characters.
 6. Paste the API key and secret from your Amplitude account, copied above, and click **Save**.
 7. Select your Amplitude region. The default region is Standard.
-8. Once you save the configuration, send a test event from Split into Amplitude.
+8. Once you save the configuration, send a test event from Harness FME into Amplitude.
 
 You can repeat this process depending on how many environments and traffic types you want to configure.
 
-## Sending Split impressions to Amplitude (Alternative)
+## Sending Harness FME impressions to Amplitude (Alternative)
 
-There are some situations where the recommended approach to send Split impressions to Amplitude is not preferred. One example is when the same impression is expected to be sent frequently. Amplitude bills by event volume so each impression counts against your organization's event quota.
+There are some situations where the recommended approach to send FME impressions to Amplitude is not preferred. One example is when the same impression is expected to be sent frequently. Amplitude bills by event volume so each impression counts against your organization's event quota.
 
-Using Amplitude’s Identify API, you can leverage a **User Property** in Amplitude to store which Split treatments a user receives. If you have already instrumented your application with Amplitude, this approach should be seamless to configure, and the user properties can then be used in Amplitude for further analysis. This integration does not send events to Amplitude. This use case is discussed further in [Amplitude's documentation](https://help.amplitude.com/hc/en-us/articles/115001580108-Analyze-A-B-test-results-in-Amplitude) under **2) Identify API**. As Amplitude notes, be cautious that:
+Using Amplitude’s Identify API, you can leverage a **User Property** in Amplitude to store which FME feature flag treatments a user receives. If you have already instrumented your application with Amplitude, this approach should be seamless to configure, and the user properties can then be used in Amplitude for further analysis. This integration does not send events to Amplitude. This use case is discussed further in [Amplitude's documentation](https://help.amplitude.com/hc/en-us/articles/115001580108-Analyze-A-B-test-results-in-Amplitude) under **2) Identify API**. As Amplitude notes, be cautious that:
 
 *The user property will not take effect until the user takes an action.*
 
 ### How to implement
 
-If you have an existing Amplitude integration with Split, you will need to disable and remove the packaged Split to Amplitude integration from the Split Admin panel by selecting **Uninstall** from the dropdown menu at the top right.
+If you have an existing Amplitude integration with Harness FME, you will need to disable and remove the packaged Harness FME to Amplitude integration from the Harness FME Admin panel by selecting **Uninstall** from the dropdown menu at the top right.
 
-![Integrations Amplitude for Split App](./static/amplitude-for-default.png)
+![Integrations Amplitude for Harness FME](./static/amplitude-for-default.png)
 
-#### Step 1: Rationalize the Split traffic type with the Amplitude id
+#### Step 1: Rationalize the Harness FME traffic type with the Amplitude id
 
-If you are using an id in Amplitude other than that of a known user, you should not call the identity API to set a user_id with that id. The device_id may be an appropriate alternative in that scenario. If using the SDK, this may be already handled, but it is important to keep in mind which Amplitude id you are using and to which traffic type it maps to in Split.
+If you are using an id in Amplitude other than that of a known user, you should not call the identity API to set a user_id with that id. The device_id may be an appropriate alternative in that scenario. If using the SDK, this may be already handled, but it is important to keep in mind which Amplitude id you are using and to which traffic type it maps to in Harness FME.
 
 #### Step 2: Update your code to use the Amplitude Identify API
 
@@ -62,7 +62,7 @@ You have several options to do this. There are interfaces to the identify API in
 
 Below are three examples of using the [HTTP API](https://www.docs.developers.amplitude.com/analytics/apis/identify-api/#keys-for-the-event-argument) to do this. This can be called from any language, frontend or backend.
 
-1. This can be set up as an [impression listener](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator#impression-listener) that accepts the Amplitude API Key, the user ID, the Split feature flag name, and the treatment value. Other than the Amplitude API Key, these are all accessible as properties of the data object passed into the impression listener. `data.impression.keyName` is the name of the user ID being evaluated in the getTreatment call. `data.impression.feature` is the name of the feature flag, which will be used as the property. `data.impression.treatment` is the name of the treatment received. You will want to use an appropriate and easy to understand naming convention for the property, such as keeping the name being identical to the Split feature flag name. If there are only a subset of Split feature flags that you would like to attach as user properties, this could be run outside of the impression listener only for the Split feature flag treatments received.
+1. This can be set up as an [impression listener](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator#impression-listener) that accepts the Amplitude API Key, the user ID, the FME feature flag name, and the treatment value. Other than the Amplitude API Key, these are all accessible as properties of the data object passed into the impression listener. `data.impression.keyName` is the name of the user ID being evaluated in the getTreatment call. `data.impression.feature` is the name of the feature flag, which will be used as the property. `data.impression.treatment` is the name of the treatment received. You will want to use an appropriate and easy to understand naming convention for the property, such as keeping the name being identical to the FME feature flag name. If there are only a subset of FME feature flags that you would like to attach as user properties, this could be run outside of the impression listener only for the FME feature flag treatments received.
 
 <ul>
 
@@ -93,7 +93,7 @@ function amplitudeIdentify(amplitudeApiKey, userId, splitName, treatment) {
 
 </ul>
 
-2. Running as an impression listener should only be used for calling the identify API with additional properties that are available from the frontend that you need. The next option we will go over is a more robust approach. The code below outlines the creation of a service that can utilize Split's [impressions webhook](https://help.split.io/hc/en-us/articles/360020700232-Webhook-impressions) using a Node.js script.
+2. Running as an impression listener should only be used for calling the identify API with additional properties that are available from the frontend that you need. The next option we will go over is a more robust approach. The code below outlines the creation of a service that can utilize Harness FME's [impressions webhook](https://help.split.io/hc/en-us/articles/360020700232-Webhook-impressions) using a Node.js script.
 
    The piece of Node.js code below requires the express and axios libraries.
 
@@ -158,7 +158,7 @@ app.listen(port, () => {
 
 </ul>
 
-3. You could also implement this using a serverless function, such as AWS Lambda. This code below can be used as an AWS lambda function. Note that Lambdas are limited to running 15 minutes. Split webhooks run every 10 seconds. Each call of the Identify API takes around 250ms to run when the Lambda is warm. That means that if you have more than ~20,000 Split feature flags evaluated per minute during bursts, the Lambda may time out. Other more sophisticated approaches like queuing using SQS, or falling back to running your own service like the Node.js code above, may be more appropriate.
+3. You could also implement this using a serverless function, such as AWS Lambda. This code below can be used as an AWS lambda function. Note that Lambdas are limited to running 15 minutes. Harness FME webhooks run every 10 seconds. Each call of the Identify API takes around 250ms to run when the Lambda is warm. That means that if you have more than ~20,000 FME feature flags evaluated per minute during bursts, the Lambda may time out. Other more sophisticated approaches like queuing using SQS, or falling back to running your own service like the Node.js code above, may be more appropriate.
 
 <ul>
 
@@ -217,16 +217,16 @@ exports.handler = async (impressions) => {
 
 </ul>
 
-User properties will show up on the User Look-up screen to be used for further analysis and processing in Amplitude. You do not need to pass all of the properties at once. In the examples above, each Split feature flag sends a single property as individual Identify calls, but all properties sent to Amplitude will be associated with the user.
+User properties will show up on the User Look-up screen to be used for further analysis and processing in Amplitude. You do not need to pass all of the properties at once. In the examples above, each FME feature flag sends a single property as individual Identify calls, but all properties sent to Amplitude will be associated with the user.
 
-## Exporting Amplitude cohorts for Split targeting
+## Exporting Amplitude cohorts for FME feature flag targeting
 
-With Amplitude’s Split integration, you can export your Amplitude cohorts and use them for targeting in Split. For more information, refer to [Amplitude's documentation](https://www.docs.developers.amplitude.com/data/destinations/split-cohort/).
+With Amplitude’s Harness FME integration, you can export your Amplitude cohorts and use them for targeting in FME. For more information, refer to [Amplitude's documentation](https://www.docs.developers.amplitude.com/data/destinations/split-cohort/).
 
-## Sending Amplitude events to Split
+## Sending Amplitude events to Harness FME
 
 :::info[Note]
-This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, contact the [contributor](https://github.com/dbmartin00).
+This is a third-party integration that has been tested by the Harness FME team. Harness does not own or maintain this integration. For more information, contact the [contributor](https://github.com/dbmartin00).
 :::
 
-This integration extracts events from Amplitude via the API, transforms them to the Split event format, and then sends these events to Split via the API. Refer to the [Github repository](https://github.com/dbmartin00/amplitude2split) for instructions on how to install this integration.
+This integration extracts events from Amplitude via the API, transforms them to the Harness FME event format, and then sends these events to Harness FME via the API. Refer to the [Github repository](https://github.com/dbmartin00/amplitude2split) for instructions on how to install this integration.

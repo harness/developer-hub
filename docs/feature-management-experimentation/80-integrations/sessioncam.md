@@ -10,19 +10,19 @@ description: ""
 
 ### Example
 
-Basic code sample to use Split's JavaScript SDK to attach feature flag names and treatments as SesisonCam Custom Variable and enable Session Search via Field filter.
+Basic code sample to use the Harness FME JavaScript SDK to attach feature flag names and treatments as SesisonCam Custom Variable and enable Session Search via Field filter.
 
 ### Environment
 
-* Split JavaScript SDK 10.9.0
+* Harness FME JavaScript SDK 10.9.0
 * SessionCam Web JavaScript Snippet
 
 ### How to use
 
-* The code below implements both Split and SessionCam's JavaScript libraries, assuming both libraries are loaded in the header section
-* The Split SDK is wrapped with the class SplitIO
+* The code below implements both Harness FME and SessionCam's JavaScript libraries, assuming both libraries are loaded in the header section
+* The Harness FME SDK is wrapped with the class SplitIO
   * Make sure to update the key and authorizationKeyfields in the factory initialization
-* Split treatments are calculated for a list of feature flag names defined in an array variable splitNames
+* FME feature flag treatments are calculated for a list of feature flag names defined in an array variable splitNames
   * Make sure to update the array with the correct feature flag names
 * Once the treatments are fetched, the script use `window.sessioncamConfiguration.customDataObjects` to add the flag names as a custom variable name and the respective treatments as the value
   * A prefix of `split.` is added to each feature flag name in the below example
@@ -95,7 +95,7 @@ function calculateTreatments() {
 
 var mySplit = new SplitIO();
 if (!mySplit.isSDKReady) {
-    console.log("Split not ready yet");
+    console.log("FME not ready yet");
     mySplit.client.on(mySplit.client.Event.SDK_READY, () => {
         calculateTreatments();
     });

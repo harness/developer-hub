@@ -8,17 +8,17 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020898371-AppDynamics </button>
 </p>
 
-AppDynamics allows users to proactively monitor, manage, and optimize the most complex software environments. Split integrates with AppDynamics to provide custom events in AppDynamics highlighting Split changes.
+AppDynamics allows users to proactively monitor, manage, and optimize the most complex software environments. Harness FME integrates with AppDynamics to provide custom events in AppDynamics highlighting Harness FME changes.
 
 If you have trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 
 :::info[Integration requirements]
-The Split pre-built integration with AppDynamics does not support AppDynamics On-Premise (self-hosted) solution.
+The Harness FME pre-built integration with AppDynamics does not support AppDynamics On-Premise (self-hosted) solution.
 :::
 
 ## In AppDynamics
  
-To connect Split to AppDynamics, create a role and a user within that role.
+To connect Harness FME to AppDynamics, create a role and a user within that role.
 
 1. From AppDynamics top menu, select **Settings** > **Administration**.
 
@@ -32,7 +32,7 @@ To connect Split to AppDynamics, create a role and a user within that role.
 
    ![](./static/appdynamics-step2.png)
 
-7. Select **Configure Actions** as the minimal permission required for Split to be configured.
+7. Select **Configure Actions** as the minimal permission required for Harness FME to be configured.
 
    ![](./static/appdynamics-step3.png)
 
@@ -49,7 +49,7 @@ To connect Split to AppDynamics, create a role and a user within that role.
 12. Verify that the user belongs to the group you created in steps 1 through 8.
 13. Click **Save**. 
 
-## In Split
+## In Harness FME
 
 ![](./static/appdynamics-splitadmin-step1.png)
 
@@ -63,8 +63,8 @@ To connect Split to AppDynamics, create a role and a user within that role.
 
 3. Paste the URL you use to access AppDynamics Controller user interface in a browser.
       Typical value: **http://\<account\>.saas.appdynamics.com/controller**.
-4. Paste the application name (exactly as it appears) where you would like Split events added.
+4. Paste the application name (exactly as it appears) where you would like Harness FME events added.
 5.  Enter the username and password for the user you created in Step 9 through 13.
 6. Click **Save**.
 
-Split notifications should now be flowing into AppDynamics.  Of course, please contact [support@split.io](mailto:support@split.io) if you have any issues with this integration.
+Harness FME notifications should now be flowing into AppDynamics.  Of course, please contact [support@split.io](mailto:support@split.io) if you have any issues with this integration.

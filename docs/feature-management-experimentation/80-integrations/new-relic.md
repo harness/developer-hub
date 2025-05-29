@@ -8,7 +8,7 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020695432-New-Relic </button>
 </p>
 
-New Relic provides real-time application performance management. Integrate Split data into New Relic to monitor and measure the performance impact of Split changes.
+New Relic provides real-time application performance management. Integrate Harness FME data into New Relic to monitor and measure the performance impact of FME changes.
 
 If you have trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 
@@ -30,20 +30,20 @@ If you have trouble completing the integration, contact us at [support@split.io]
 
    <div style={{maxWidth:400}}> ![](./static/new-relic-step4.png) </div>
 
-5. Ensure you have copied down your Account ID (the number next to "**Account:**") and the key for use in Split.
+5. Ensure you have copied down your Account ID (the number next to "**Account:**") and the key for use in Harness FME.
 
-## In Split
+## In Harness FME
 
 1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 
    ![](./static/new-relic-splitadmin.png)
 
-3. Find New Relic in the integrations list, click **Add** and select the Split project for which you would like to configure the integration.
+3. Find New Relic in the integrations list, click **Add** and select the project for which you would like to configure the integration.
 
    ![](./static/new-relic-integration.png)
 
 4. Paste the **Account ID** and **Key** you copied in step 5 of the New Relic instructions.
 5. Click **Save**.
 
-Split notifications should now be flowing into New Relic. If you have any issues with this integration, contact [support@split.io](mailto:support@split.io).
+Harness FME notifications should now be flowing into New Relic. If you have any issues with this integration, contact [support@split.io](mailto:support@split.io).

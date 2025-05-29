@@ -8,7 +8,7 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020746172-Sumo-Logic </button>
 </p>
 
-Sumo Logic provides log monitoring, management, and analytics service. Integrate Split data into Sumo Logic to get rollout and rollback events in Sumo Logic. These events can be overlayed with any other log data to quickly detect and correlate application issues with feature flag changes.
+Sumo Logic provides log monitoring, management, and analytics service. Integrate Harness FME data into Sumo Logic to get rollout and rollback events in Sumo Logic. These events can be overlayed with any other log data to quickly detect and correlate application issues with feature flag changes.
 
 If you are having trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 
@@ -30,15 +30,15 @@ If you are having trouble completing the integration, contact us at [support@spl
 
    ![](./static/sumologic-configuresource.png)
 
-5. Copy the URL provided to configure the Sumo Logic integration in Split , and then click **Continue**. This URL contains the token/key used to identify your Sumo Logic account.
+5. Copy the URL provided to configure the Sumo Logic integration in Harness FME , and then click **Continue**. This URL contains the token/key used to identify your Sumo Logic account.
 
    ![](./static/sumologic-httpsource.png)
 
-## In Split
+## In Harness FME
 
 1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
-3. Find Sumo Logic in the integration list, click **Add** and select the Split project for which you would like to configure the integration.
+3. Find Sumo Logic in the integration list, click **Add** and select the project for which you would like to configure the integration.
 
    ![](./static/sumologic-splitadmin.png)
 
@@ -48,4 +48,4 @@ If you are having trouble completing the integration, contact us at [support@spl
 
 5. Click **Save**.
 
-Split notifications should now be flowing into Sumo Logic. If you have any issues with this integration, contact [support@split.io](mailto:support@split.io).
+Harness FME notifications should now be flowing into Sumo Logic. If you have any issues with this integration, contact [support@split.io](mailto:support@split.io).

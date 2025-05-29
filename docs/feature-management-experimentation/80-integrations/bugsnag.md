@@ -1,50 +1,50 @@
 ---
-title: Bugsnag
-sidebar_label: Bugsnag
+title: BugSnag
+sidebar_label: BugSnag
 description: ""
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/5709939011085-Bugsnag </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/5709939011085-BugSnag </button>
 </p>
 
-Split + Bugsnag is a community-supported integration. We do our best to ensure that we share only high-quality community integrations and solutions but we do not work on these projects directly, nor can we guarantee that they’re consistently maintained.
+Harness FME + BugSnag is a community-supported integration. We do our best to ensure that we share only high-quality community integrations and solutions but we do not work on these projects directly, nor can we guarantee that they’re consistently maintained.
 
 :::info[Note]
-The Bugsnag integration is built and managed by Bugsnag. For questions about the integration or for technical support, contact support@bugsnag.com.
+The BugSnag integration is built and managed by BugSnag. For questions about the integration or for technical support, contact support@bugsnag.com.
 :::
 
-The Bugsnag community integration with Split lets you identify which feature flags or experiment treatments are impacting the user experience within an application in real-time. With this integration, you can:
+The BugSnag community integration with Harness FME lets you identify which feature flags or experiment treatments are impacting the user experience within an application in real-time. With this integration, you can:
 
-**Correlate user impact with feature releases.** Once you configure Split with Bugsnag, you can set up alerts in Bugsnag to monitor how your feature flags and experiments are influencing user behavior in your application, allowing you to decide whether to roll out or roll back features in Split. 
-**Gain actionable insights.** Use Bugsnag’s Feature Dashboard to determine if unusual error activity in the application is connected to a feature flag. You can isolate errors that occur when a feature flag is enabled, so you can see what’s happening and troubleshoot your errors. Log into Split to adjust the feature flag definition.
+**Correlate user impact with feature releases.** Once you configure Harness FME with BugSnag, you can set up alerts in BugSnag to monitor how your feature flags and experiments are influencing user behavior in your application, allowing you to decide whether to roll out or roll back features in FME. 
+**Gain actionable insights.** Use Bugsnag’s Feature Dashboard to determine if unusual error activity in the application is connected to a feature flag. You can isolate errors that occur when a feature flag is enabled, so you can see what’s happening and troubleshoot your errors. Log into Harness FME to adjust the feature flag definition.
 
 ![BugSnag Error](./static/bugsnag-error.png)
 
 ## Supported SDKs
 
-Split SDKs support listeners so you can automatically declare the flags and their variations to Bugsnag whenever they are queried within your app. Bugsnag supports the following SDKs when declaring feature flags and experiments from Split: Android, iOS, Electron, Expo, JavaScript (browser and Node.js), and React Native. 
+Harness FME SDKs support listeners so you can automatically declare the flags and their variations to BugSnag whenever they are queried within your app. BugSnag supports the following SDKs when declaring feature flags and experiments from Harness FME: Android, iOS, Electron, Expo, JavaScript (browser and Node.js), and React Native. 
 
-## Integrating Split and Bugsnag
+## Integrating Harness FME and BugSnag
 
-For more information on integrating Bugsnag and Split, refer to the [Bugsnag](https://docs.bugsnag.com/product/integrations/feature-management/split) documentation. 
+For more information on integrating BugSnag and Harness FME, refer to the [Integrate BugSnag with Split](https://docs.bugsnag.com/product/integrations/feature-management/split) documentation. 
 
-## Integrating Bugsnag to Split
+## Integrating BugSnag to Harness FME
 
-This integration uses a BugSnag webhook to report errors to Split, where they become events eligible for inclusion in A/B test results. This integration uses a BugSnag webhook to report errors to Split, where they become events eligible for inclusion in A/B test results. There are two possible approaches to this integration: 
+This integration uses a BugSnag webhook to report errors to Harness FME, where they become events eligible for inclusion in A/B test results. This integration uses a BugSnag webhook to report errors to Harness FME, where they become events eligible for inclusion in A/B test results. There are two possible approaches to this integration: 
 
-* Sending Split feature flags to BugSnag. Involves using the Split SDK and is documented on BugSnag's site.
-* Using a webhook to pass BugSnag errors to Split. This is described in the following sections.
+* Sending FME feature flags to BugSnag. Involves using the FME SDK and is documented on BugSnag's site.
+* Using a webhook to pass BugSnag errors to Harness FME. This is described in the following sections.
 
 ### How it works
 
-BugSnag has built-in webhooks. When you create a webhook that reports errors, Split can provision a service to listen for errors. The service receives an error, transforms it into a Split event, and sends the event on to Split for use in metrics and experimentation.
+BugSnag has built-in webhooks. When you create a webhook that reports errors, Harness FME can provision a service to listen for errors. The service receives an error, transforms it into an FME event, and sends the event on to FME for use in metrics and experimentation.
 
-The BugSnag errors have rich property information, and not all of it is sent to Split. Some of the properties are flattened in order to be suitable for a Split event.
+The BugSnag errors have rich property information, and not all of it is sent to Harness FME. Some of the properties are flattened in order to be suitable for an FME event.
 
 ### Setting it up
 
-The Split service is expected to be an AWS node.js lambda. The lambda can also be provisioned as a serverless function in another cloud, but the instructions are not provided. The installer is expected to be a Git user, have access to AWS, and understand how to provision new lambdas. It is also assumed you have both Split and BugSnag accounts.
+The Harness FME service is expected to be an AWS node.js lambda. The lambda can also be provisioned as a serverless function in another cloud, but the instructions are not provided. The installer is expected to be a Git user, have access to AWS, and understand how to provision new lambdas. It is also assumed you have both Harness and BugSnag accounts.
 
 #### Installing the integration at the command line
 
@@ -62,7 +62,7 @@ Change into the new bugsnag2split directory. Create a new SPLIT_API_KEY file:
 touch SPLIT_API_KEY
 ```
 
-Create a new server-side API token in Split, and copy it into this file. There should be no spaces or carriage return arount it. This token is used to validate the integration when it sends an event to Split.
+Create a new server-side API token in Harness FME, and copy it into this file. There should be no spaces or carriage return arount it. This token is used to validate the integration when it sends an event to Harness FME.
 
 Run an npm install:
 
@@ -86,7 +86,7 @@ Under configuration, create a function URL for your lambda.
 * Configure CORS
 * Allow methods POST
 
-### Install on Bugsnag
+### Install on BugSnag
 
 1. From Projects, select Data forwarding, then  Webhook.
 2. Paste in the function URL from the previous step.
@@ -95,9 +95,9 @@ Under configuration, create a function URL for your lambda.
 5. Click the checkbox to **Notify me every time an error occurs**.
 6. Update your preferences. The integration install is now complete.
 
-### View BugSnag errors in Split
+### View BugSnag errors in Harness FME
 
-Using the Split Data hub, you can view errors as they arrive in Split. They have a lot of information available in properties. The following is an example error:
+Using the Harness FME Data hub, you can view errors as they arrive in Harness. They have a lot of information available in properties. The following is an example error:
 
 ```
 {
@@ -143,11 +143,11 @@ Using the Split Data hub, you can view errors as they arrive in Split. They have
 }
 ```
 
-### About the Split key
+### About the Harness FME traffic key
 
-The Split key of the error events must agree with the Split key of your impressions. In practice, you’ll want to configure the key in your BugSnag initialization. Use the same ‘id’ key for your Split SDK configuration.
+The FME traffic key of the error events must agree with the FME traffic key of your impressions. In practice, you’ll want to configure the key in your BugSnag initialization. Use the same ‘id’ key for your FME SDK configuration.
 ```
-  Bugsnag.start({
+  BugSnag.start({
 		apiKey: '<bugsnag spi key',
 		user: {
 		   id: 'dmartin-bugsnagger',
@@ -159,10 +159,10 @@ The Split key of the error events must agree with the Split key of your impressi
 
 ### A hint on triggering errors
 
-If you want to stimulate some errors from your JS app, you can use the notify function of Bugsnag. In this example, a buttons onclick has been passed a clickHandler that creates a new exception. If your integration is fully installed, you’ll see the event arrive at the Data hub “momentarily”.
+If you want to stimulate some errors from your JS app, you can use the notify function of BugSnag. In this example, a buttons onclick has been passed a clickHandler that creates a new exception. If your integration is fully installed, you’ll see the event arrive at the Data hub “momentarily”.
 ```
   function clickHandler() {
 		alert('click! (error trigger)');
-		Bugsnag.notify(new Error('error during test click handling'));
+		BugSnag.notify(new Error('error during test click handling'));
 	}
 ```

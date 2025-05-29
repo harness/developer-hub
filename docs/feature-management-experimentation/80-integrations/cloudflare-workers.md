@@ -22,7 +22,7 @@ The storage wrapper communicates with Cloudflare’s [Durable Object store](http
 
 In partial consumer mode, the SDK does not start the usual synchronization to keep internal definitions of feature flags and segments up to date. Instead, it uses the external cache to access them. A [cron trigger](https://developers.cloudflare.com/workers/platform/cron-triggers/) can be used in the Cloudflare Workers to periodically execute the synchronizer and then update the cache with the latest definitions of the feature flags and segments in your environment.
 
-In regards to tracked events and impressions data, in _partial consumer_ mode, the SDK automatically sends them to Split cloud instead of storing them in the external cache, keeping the implementation friendly to serverless environments. 
+In regards to tracked events and impressions data, in _partial consumer_ mode, the SDK automatically sends them to Harness servers instead of storing them in the external cache, keeping the implementation friendly to serverless environments. 
 
 The following data flow diagram shows an overall architecture of how the different components are orchestrated in the Cloudflare Workers serverless environment:
 

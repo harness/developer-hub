@@ -8,7 +8,7 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020700732-Rollbar </button>
 </p>
 
-Rollbar is an error tracking software for development teams. Integrate Split data into Rollbar to get rollout events in Rollbar to gain insight on the causes of errors. 
+Rollbar is an error tracking software for development teams. Integrate Harness FME data into Rollbar to get rollout events in Rollbar to gain insight on the causes of errors. 
 
 If you are having trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 
@@ -33,18 +33,18 @@ If you are having trouble completing the integration, contact us at [support@spl
 
    ![](./static/rollbar-tokens-copy.png)
 
-## In Split
+## In Harness FME
 
 1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 
    ![](./static/rollbar-splitadmin.png)
 
-3. Click **Add** next to Rollbar and select and select the Split project for which you would like to configure the integration.
+3. Click **Add** next to Rollbar and select and select the project for which you would like to configure the integration.
 
    ![](./static/rollbar-integration.png)
 
 4. Paste the token you copied in step 3 of the Rollbar instructions.
 5. Click **Save**.
 
-Split notifications should now be flowing into Rollbar. If you have any issues with this integration, contact [support@split.io](mailto:support@split.io).
+Harness FME notifications should now be flowing into Rollbar. If you have any issues with this integration, contact [support@split.io](mailto:support@split.io).
