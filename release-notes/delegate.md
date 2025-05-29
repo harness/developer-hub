@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## May 2025
 
+### Version 25.05.85904 <!--  May 29, 2025 -->
+
+#### Fixed issues
+
+- Fixed the issue with long project names in container steps [CDS-110662]
+
 ### Version 25.05.85903 <!--May 22, 2025-->
 
 #### Fixed issues
