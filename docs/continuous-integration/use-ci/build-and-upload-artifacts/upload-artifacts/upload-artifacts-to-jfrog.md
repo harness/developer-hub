@@ -79,6 +79,10 @@ If set to:
 - `true`: Artifacts or files are uploaded to the exact target path specified and their hierarchy in the source repository is ignored.
 - `false`: Artifacts are uploaded to the target path in artifactory while maintaining the hierarchy of the source repository.
 
+:::note
+This setting is available only if the feature flag `CI_ENABLE_UPLOAD_AS_FLAT` is enabled. When enabled, you will see the Upload As Flat option under Optional Configuration in the step configuration UI.
+:::
+
 ### Timeout
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
