@@ -12,16 +12,16 @@ The SDK validation checklist helps you ensure that the SDK is implemented accord
 
 * Architectural design principles
 * Safety checks for prevention of race conditions
-* Taking advantage of helpful Split features
+* Taking advantage of helpful FME features
 * Configuration validation exercises
 
-These areas each reflect best practices that come from our own experience at Split using the SDK, and the experiences of customers like you. In addition, they also convey an understanding of how SDK works beneath the surface.
+These areas each reflect best practices that come from our own experience at Harness FME using the SDK, and the experiences of customers like you. In addition, they also convey an understanding of how SDK works beneath the surface.
 
 You can use or adapt them to your needs. The primary objectives are to ensure resource optimization, maximum application responsiveness, appropriate security enforcements, and proactive issue detection in your project, team, organization, or company source code working with the SDK.
 
-## All SDKs
+## All Harness FME SDKs
 
-The following validation considerations are relevant for all of Split’s SDKs. 
+The following validation considerations are relevant for all FME SDKs. 
 
 * **Ensure that the SDK is implemented in a singleton pattern.** Using the SDK as a singleton ensures that the minimum number of threads are used to serve your application. If you don’t, you can overload your infrastructure with unnecessary network traffic and use up far more application threads than is required. Use multiple clients on the client side from a single factory if you need to get treatments for multiple different traffic type ids.
 
@@ -31,19 +31,19 @@ The following validation considerations are relevant for all of Split’s SDKs.
 
 * **Ensure any code calling getTreatment is able to handle when ‘CONTROL’ is returned.** The SDKs return ‘CONTROL’ as a treatment string when there is a connectivity error. Ensure that there is a fall through in the if-statement to support this.
 
-* **Validate SDK Versions are up to date.** Review the SDK tab on the Account usage data page. Ensure that the SDKs are up to date, or, at the minimum, they are on the same major version. It is helpful to establish and document a regular SDK update cadence, such as quarterly or biannually. Check the SDK CHANGES.txt on github for any SDKs you are using to see if anything may be relevant to your usage of Split.
+* **Validate SDK Versions are up to date.** Review the SDK tab on the Account usage data page. Ensure that the SDKs are up to date, or, at the minimum, they are on the same major version. It is helpful to establish and document a regular SDK update cadence, such as quarterly or biannually. Check the SDK CHANGES.txt on github for any SDKs you are using to see if anything may be relevant to your usage of Harness FME.
 
 * **Evaluate if you can take advantage of the SDK .destroy() method.** The .destroy() method of the SDK flushes all stored unpublished events and impressions. This is primarily advantageous for the client side SDKs where you have parts of the user journey that explicitly end their session. On the browser, .destroy() returns a promise. If it’s resolved, then you can be sure that all data is pushed to Harness. On the server side it also may be useful in the event that you need to shutdown a service running the FME SDK. Calling .destroy() ensures that data is posted back to Harness. 
 
-* **Validate 1 minute of impressions (and events) on the Split live tail.** Enable the Query for about a minute and ensure that the number of impressions received by Harness is about what you’d expect from SDK activity. 
+* **Validate 1 minute of impressions (and events) on the Harness FME live tail.** Enable the Query for about a minute and ensure that the number of impressions received by Harness is about what you’d expect from SDK activity. 
 
 * **If you have events coming in, validate them with a similar approach.** Ensure that events coming in have the event properties that you would expect them to have.
 
-* **Validate that all expected attributes are being passed to the SDK.** Split’s recommendation is to wrap the SDK to ensure that attributes are always passed to the SDK. A consistent attribute set is important to ensure that all targeting rules have access to the same list of attributes. Client Side SDKs also have the ability to bind attributes to the client itself. 
+* **Validate that all expected attributes are being passed to the SDK.** Our recommendation is to wrap the SDK to ensure that attributes are always passed to the SDK. A consistent attribute set is important to ensure that all targeting rules have access to the same list of attributes. Client Side SDKs also have the ability to bind attributes to the client itself. 
 
 * **Validate 24 hours of impressions (and events) from the Data hub.** Take a feature flag that has a known high activity and download all impressions for it from the previous 24 hour period. Ensure that the number of treatments and IDs all match with expectations. For events, take the previous full 24 hours of events, if applicable. With impressions, take note if you are seeing any ‘CONTROL’ treatments as those warrant further investigation to understand why those are happening.
 
-* **Evaluate if you can take advantage of Flag Sets**   You can use Split Flag sets for limiting the flags downloaded by an SDK. [Flag Sets](https://help.split.io/hc/en-us/articles/22256278916621-Using-flag-sets-to-boost-SDK-performance) allow you to control from Split's UI which flags are downloaded by an SDK. This means you can ensure that only the flags needed for a frontend SDK or a backend SDK are downloaded. This reduces the time for the SDK to get ready while also saving memory and bandwidth. 
+* **Evaluate if you can take advantage of Flag Sets**   You can use Flag Sets for limiting the flags downloaded by an SDK. [Flag Sets](https://help.split.io/hc/en-us/articles/22256278916621-Using-flag-sets-to-boost-SDK-performance) allow you to control from Harness FME which flags are downloaded by an SDK. This means you can ensure that only the flags needed for a frontend SDK or a backend SDK are downloaded. This reduces the time for the SDK to get ready while also saving memory and bandwidth. 
 
 ## Browser SDKs (including Angular, React, etc.)
 
@@ -84,7 +84,7 @@ The following items are specific to all client-side SDKs. This includes mobile- 
 
 The following items are specific to server-side SDKs. 
 
-* **Evaluate your traffic needs.** You may need to change the impressionsRefreshrate. The SDK has threads that sync the Split information from Harness FME servers to the cache, and posts all impressions and events created in the cache. Make sure the SDK can handle the incoming impressions load because the SDK drops impressions if the cap is reached in the impressionsQueue and impressions can’t be evicted.
+* **Evaluate your traffic needs.** You may need to change the impressionsRefreshrate. The SDK has threads that sync the FME definitions from Harness FME servers to the cache, and posts all impressions and events created in the cache. Make sure the SDK can handle the incoming impressions load because the SDK drops impressions if the cap is reached in the impressionsQueue and impressions can’t be evicted.
 
   The SDK has parameters to control the run frequency for these threads. We recommend to estimate the highest number of impressions created at peak time from incoming user sessions and divide that by the number of app servers that have the SDK to estimate the number of treatments per minute each SDK generates. Roughly, the SDK’s default impressionsQueue can handle 2000 treatments per minute. If the peak time generates higher impressions, we can reduce the value of scheduler.impressionsRefreshRate by half (for example, from 60 to 30 seconds).
 

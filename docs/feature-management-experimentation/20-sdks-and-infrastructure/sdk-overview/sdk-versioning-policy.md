@@ -8,7 +8,7 @@ sidebar_position: 1
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038143771-SDK-versioning-policy </button>
 </p>
 
-Split versions SDKs according to semantic versioning industry standards and actively support major versions for 12 months post release.
+Harness FME versions SDKs according to semantic versioning industry standards and actively support major versions for 12 months post release.
 
 ## What is semantic versioning?
 
@@ -30,7 +30,7 @@ Learn more at [Semantic Versioning 2.0.](https://semver.org)
 
 ## Adding new functionality
 
-When Split introduces new functionality, it qualifies as a minor release. If that functionality is a breaking change or represents an API compatibility change, it qualifies as a major version change.
+When Harness FME introduces new functionality, it qualifies as a minor release. If that functionality is a breaking change or represents an API compatibility change, it qualifies as a major version change.
 
 ## Fixing a bug
 
@@ -38,4 +38,4 @@ Bug fixes that preserve compatibility are released as a patch version. Depending
 
 ## Version support
 
-FME supports and patches prior major releases for up to 12 months following the version release date. If 12 months has elapsed, support and Split’s SDK engineering team may ask you to first upgrade to the current major release before attempting to patch old versions.
+FME supports and patches prior major releases for up to 12 months following the version release date. If 12 months has elapsed, support and the Harness FME SDK engineering team may ask you to first upgrade to the current major release before attempting to patch old versions.

@@ -21,14 +21,14 @@ Set up FME in your code base with the following two steps:
 
 ### 1. Import the Suite into your project
 
-Add the SDK, Split RUM agent, and Split Suite into your project using Swift Package Manager by adding the following package dependencies:
+Add the Harness FME SDK, RUM agent, and Suite into your project using Swift Package Manager by adding the following package dependencies:
 
 - [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.2.0`
 - [iOS RUM](https://github.com/splitio/ios-rum), latest version `0.4.0`
 - [iOS Suite](https://github.com/splitio/ios-suite), latest version `2.1.0`
 
 :::info[Important!]
-When not using the last version of the Split Suite, it is important to take into account the compatibility matrix below.
+When not using the last version of the SDK Suite, it is important to take into account the compatibility matrix below.
 :::
 
 | Suite | SDK | RUM |
@@ -65,7 +65,7 @@ let suite = SplitSuite.builder()
     .key(matchingKey)
     .config(config).build()
 
-// Get Split Client instance
+// Get Suite client instance
 let client = suite?.client;
 ```
 
@@ -77,7 +77,7 @@ When the Suite is instantiated, it starts synchronizing feature flag and segment
 
 We recommend instantiating the Suite once as a singleton and reusing it throughout your application.
 
-Configure the Suite with the SDK key for the Split environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the Suite with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ## Using the Suite
 
@@ -89,11 +89,11 @@ To make sure the Suite is properly loaded before asking it for a treatment, bloc
 
 After the `SDK_READY` event fires, you can use the `getTreatment` method to return the proper treatment based on the `FEATURE_FLAG_NAME` and the `key` variables you passed when instantiating the Suite.
 
-You can use an if-else statement as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember to handle the client returning control, for example, in the final else statement.
+You can use an if-else statement as shown below and insert the code for the different treatments that you defined in Harness FME. Remember to handle the client returning control, for example, in the final else statement.
 
 ```swift title="Swift"
 client?.on(event: SplitEvent.sdkReady) {
-  // Evaluate feature flag in Split
+  // Evaluate feature flag
   let treatment = client?.getTreatment("FEATURE_FLAG_NAME")
 
   if treatment == "on" {
@@ -110,7 +110,7 @@ client?.on(event: SplitEvent.sdkReady) {
 
 To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
 
-In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
 The `getTreatment` method has a number of variations that are described below. Each of these additionally has a variation that takes an attributes argument, which can defines attributes of the following types: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
@@ -220,7 +220,7 @@ let treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets, attributes: 
 
 To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
 
-The config element is a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the `result.config` property will be `nil`.
+The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the `result.config` property will be `nil`.
 
 This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
 
@@ -249,7 +249,7 @@ let treatmentsByFlagSets = client.getTreatmentsWithConfigByFlagSets(flagSets, at
 
 ### Append properties to impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Split's servers for feature monitoring and experimentation.
+[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness for feature monitoring and experimentation.
 
 You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
 
@@ -270,15 +270,15 @@ let treatment = getTreatment("FEATURE_FLAG_NAME", attributes: nil, evaluationOpt
 
 ### Track
 
-Tracking events is the first step to getting experimentation data into Split and allows you to measure the impact of your feature flags on your users' actions and metrics. See the [Events](https://help.split.io/hc/en-us/articles/360020585772) documentation for more information.
+Tracking events is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. See the [Events](https://help.split.io/hc/en-us/articles/360020585772) documentation for more information.
 
-The Suite automatically collects some RUM metrics and sends them to Split. Specifically, crashes, ANRs and app start time (see [Default events](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent#default-events-and-properties)) are automatically collected by the Suite. Learn more about these and other events in the [iOS RUM Agent](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent#events) documentation.
+The Suite automatically collects some RUM metrics and sends them to Harness FME. Specifically, crashes, ANRs and app start time (see [Default events](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent#default-events-and-properties)) are automatically collected by the Suite. Learn more about these and other events in the [iOS RUM Agent](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent#events) documentation.
 
 To track custom events, you can use the `client.track()` method or the `suite.track()` method. Both methods are demonstrated in the code examples below.
 
 The `client.track()` method sends events **_for the identity configured on the client instance_**. This `track` method can take up to four arguments. The proper data type and syntax for each are:
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is `String`. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in the Split UI.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is `String`. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is `String`. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
@@ -378,7 +378,7 @@ Feature flagging parameters:
 | offlineRefreshRate | The Suite periodically reloads the localhost mocked feature flags at this given rate in seconds. This can be turned off by setting it to -1 instead of a positive number. | -1 (off) |
 | sdkReadyTimeOut | Amount of time in milliseconds to wait before notifying a timeout. | -1 (not set) |
 | persistentAttributesEnabled | Enables saving attributes on persistent cache which is loaded as part of the SDK_READY_FROM_CACHE flow. All functions that mutate the stored attributes map affect the persistent cache.| `false` |
-| syncEnabled | Controls the Suite continuous synchronization flags. When `true`, a running Suite processes rollout plan updates performed in the Split user interface (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | `true` |
+| syncEnabled | Controls the Suite continuous synchronization flags. When `true`, a running Suite processes rollout plan updates performed in Harness FME (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | `true` |
 | userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See the [User consent](#user-consent) section for details. | `GRANTED` |
 | encryptionEnabled | Enables or disables encryption for cached data. | `false` |
 | httpsAuthenticator | If set, the Suite uses it to authenticate network requests. To set this value, an implementation of SplitHttpAuthenticator must be provided. | `nil` |
@@ -453,7 +453,7 @@ In the example above, we have four entries:
  * The third entry defines that `my_feature` always returns `off` for all keys that don't match another entry (in this case, any key other than `key`).
  * The fourth entry shows an example on how to override a treatment for a set of keys.
 
-In this mode, the Split Suite loads the yaml file from a resource bundle file at the assets' project `src/main/assets/splits.yaml`.
+In this mode, the SDK Suite loads the yaml file from a resource bundle file at the assets' project `src/main/assets/splits.yaml`.
 
 ```swift title="Swift"
 // SDK key must be "localhost"
@@ -572,7 +572,7 @@ public class SplitView: NSObject, Codable {
 
 ## Listener
 
-Split Suite sends impression data back to Harness servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression handler*.
+The FME SDK Suite sends impression data back to Harness servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression handler*.
 
 The Suite sends the generated impressions to the impression handler right away. As a result, be careful while implementing handling logic to avoid blocking the main thread. Generally speaking, you should create a separate thread to handle incoming impressions. Refer to the snippet below.
 
@@ -630,8 +630,8 @@ Background synchronization is available for devices having iOS 13+.
 To enable this feature, just follow the next 4 steps:
 
 1. Enable _[Background Mode Fetch](https://developer.apple.com/documentation/watchkit/background_execution/enabling_background_sessions)_ capability for your app.
-2. Add the Split Suite background sync task identifier *io.split.bg-sync.task* to the Permitted background task scheduler identifiers section of the Info.plist .
-3. Set the Split config flag _synchronizeInBackground_ to true .
+2. Add the SDK Suite background sync task identifier *io.split.bg-sync.task* to the Permitted background task scheduler identifiers section of the Info.plist .
+3. Set the config flag _synchronizeInBackground_ to true .
 
 ```swift title="Swift"
 let config = SplitClientConfig()
@@ -675,7 +675,7 @@ This section describes advanced use cases and features provided by the Suite.
 
 ### Instantiate multiple Suite clients
 
-Split Suite supports the ability to create multiple clients, one for each user ID. For example, if you need to roll out feature flags for different user IDs, you can instantiate multiple clients, one for each ID. You can then evaluate flags for each ID using the corresponding client. You can do this as shown in the example below:
+FME SDK Suite supports the ability to create multiple clients, one for each user ID. For example, if you need to roll out feature flags for different user IDs, you can instantiate multiple clients, one for each ID. You can then evaluate flags for each ID using the corresponding client. You can do this as shown in the example below:
 
 ```swift title="Swift"
 // Create factory
@@ -718,9 +718,9 @@ You can listen for four different events from the Suite.
 * `sdkReadyFromCache`: This event fires once the Suite is ready to evaluate treatments using a locally cached version of your rollout plan from a previous session (which might be stale). If there is data in the cache, this event fires almost immediately, since access to the cache is fast; otherwise, it doesn't fire.
 * ` sdkReady`: This event fires once the Suite is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
 * ` sdkReadyTimedOut`: This event fires if there is no cached version of your rollout plan in disk cache, and the Suite could not fully download the data from Harness servers within the time specified by the `sdkReadyTimeOut` property of the `SplitClientConfig` object. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `sdkReady` event when finished.  This delayed `sdkReady` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
-* `sdkUpdated`: This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in the Split user interface.
+* `sdkUpdated`: This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
-Split Suite event handling is done through the `on(event:execute:)` function, which receives a closure as an event handler. The code within the closure is executed on the main thread. For that reason, running code in the background must be done explicitly.
+FME SDK Suite event handling is done through the `on(event:execute:)` function, which receives a closure as an event handler. The code within the closure is executed on the main thread. For that reason, running code in the background must be done explicitly.
 
 The syntax to listen for an event is shown below.
 
@@ -743,7 +743,7 @@ client.on(event: SplitEvent.sdkReadyTimedOut) {
 }
 
 client.on(event: SplitEvent.sdkReadyFromCache) {
-  // Fired after the Suite confirms the presence of the Split data.
+  // Fired after the Suite confirms the presence of the FME data.
   // This event fires quickly, since there's no actual fetching of information.
   // Keep in mind that data might be stale, this is NOT a replacement of sdkReady.
 

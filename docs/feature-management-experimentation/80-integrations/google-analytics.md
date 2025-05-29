@@ -27,7 +27,7 @@ gtag('event', 'screen_view', {
 });
 ```
 
-If you are using a gtag.js tracker and want to track feature flag impressions as events on your page, you can use an impressions listener to send events to GA every time the FME SDK's `getTreatment` method is called. Note that there is no impression deduplication at the listener level, so counts of events sent to GA is not necessarily identical to the count of impressions in Harness FME back end. 
+If you are using a gtag.js tracker and want to track feature flag impressions as events on your page, you can use an impressions listener to send events to GA every time the FME SDK's `getTreatment` method is called. Note that there is no impression deduplication at the listener level, so counts of events sent to GA is not necessarily identical to the count of impressions in Harness FME backend. 
 
 An impression listener for tracking GA4 events may look like the following. This assumes you are using Google tags (gtag.js) to [track events into GA4](https://developers.google.com/analytics/devguides/collection/ga4/events?client_type=gtag) on the page and also uses a custom split_impression event in Google Analytics.
 

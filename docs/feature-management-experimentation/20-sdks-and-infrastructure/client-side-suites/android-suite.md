@@ -31,7 +31,7 @@ implementation 'io.split.client:android-suite:2.0.0'
 ```
 
 :::warning[Important]
-When upgrading from Split's Android SDK and/or Android RUM Agent to Android Suite, you need to remove individual project dependencies for the SDK and Agent. The dependency for the Suite replaces these dependencies.
+When upgrading from Android SDK and/or Android RUM Agent to Android Suite, you need to remove individual project dependencies for the SDK and Agent. The dependency for the Suite replaces these dependencies.
 :::
 
 ### 2. Instantiate the Suite and create a new SDK client
@@ -57,7 +57,7 @@ Key k = new Key(matchingKey);
 // Create Suite
 SplitSuite suite = SplitSuiteBuilder.build(sdkKey, k, config, getApplicationContext());
 
-// Get Split Client instance
+// Get SDK suite client instance
 SplitClient client = suite.client();
 ```
 
@@ -81,7 +81,7 @@ val key: Key = Key(matchingKey)
 val splitFactory: SplitSuite =
     SplitSuiteBuilder.build(sdkKey, key, config, applicationContext)
 
-// Get Split Client instance
+// Get SDK factory client instance
 val client: SplitClient = splitFactory.client()
 ```
 
@@ -96,7 +96,7 @@ When the Suite is instantiated, it starts synchronizing feature flag and segment
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the Suite with the SDK key for the Split environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the Suite with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ## Using the Suite
 
@@ -108,7 +108,7 @@ To make sure the Suite is properly loaded before asking it for a treatment, bloc
 
 After the `SDK_READY` event fires, you can use the `getTreatment` method to return the proper treatment based on the `FEATURE_FLAG_NAME` and the `key` variables you passed when instantiating the Suite.
 
-You can use an if-else statement as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember to handle the client returning control, for example, in the final else statement.
+You can use an if-else statement as shown below and insert the code for the different treatments that you defined in Harness FME. Remember to handle the client returning control, for example, in the final else statement.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
@@ -169,7 +169,7 @@ client.on(SplitEvent.SDK_READY, object : SplitEventTask() {
 
 To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
 
-In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
 The `getTreatment` method has a number of variations that are described below. Each of these additionally has a variation that takes an attributes argument, which can defines attributes of the following types: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
@@ -381,7 +381,7 @@ val treatment: String = result.treatment()
 </TabItem>
 </Tabs>
 
-As you can see from the object structure, the config is a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the Suite returns `null` for the config parameter. This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
+As you can see from the object structure, the config is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the Suite returns `null` for the config parameter. This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
@@ -475,15 +475,15 @@ val treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets)
 
 ### Track
 
-Tracking events is the first step to getting experimentation data into Split and allows you to measure the impact of your feature flags on your users' actions and metrics. See the [Events](https://help.split.io/hc/en-us/articles/360020585772) documentation for more information.
+Tracking events is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. See the [Events](https://help.split.io/hc/en-us/articles/360020585772) documentation for more information.
 
-The Suite automatically collects some RUM metrics and sends them to Split. Specifically, crashes, ANRs and app start time (see [Default events](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent#default-events)) are automatically collected by the Suite. Learn more about these and other events in the [Android RUM Agent](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent#events) documentation.
+The Suite automatically collects some RUM metrics and sends them to Harness FME. Specifically, crashes, ANRs and app start time (see [Default events](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent#default-events)) are automatically collected by the Suite. Learn more about these and other events in the [Android RUM Agent](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent#events) documentation.
 
 To track custom events, you can use the `client.track()` method or the `suite.track()` method. Both methods are demonstrated in the code examples below.
 
 The `client.track()` method sends events **_for the identity configured on the client instance_**. This `track` method can take up to four arguments. The proper data type and syntax for each are:
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Split.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
@@ -660,8 +660,8 @@ Feature flagging parameters:
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism when in foreground. In the event of an issue with streaming, the Suite will fallback to the polling mechanism. If false, the Suite will poll for changes as usual without attempting to use streaming. | true |
 | syncConfig | Optional SyncConfig instance. Use it to filter specific feature flags to be synced and evaluated by the Suite. These filters can be created with the `SplitFilter::bySet` static function (recommended, flag sets are available in all tiers), or `SplitFilter::byName` static function, and appended to this config using the `SyncConfig` builder. If not set or empty, all feature flags are downloaded by the Suite. | null |
 | persistentAttributesEnabled | Enables saving attributes on persistent cache which is loaded as part of the SDK_READY_FROM_CACHE flow. All functions that mutate the stored attributes map affect the persistent cache. | false |
-| syncEnabled | Controls the SDK continuous synchronization flags. When `true`, a running Suite processes rollout plan updates performed in the Split user interface (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
-| impressionsMode | This configuration defines how impressions (decisioning events) are queued on the Suite. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Harness; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
+| syncEnabled | Controls the SDK continuous synchronization flags. When `true`, a running Suite processes rollout plan updates performed in Harness FME (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
+| impressionsMode | This configuration defines how impressions (decisioning events) are queued on the Suite. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Harness; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
 | userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See [User consent](#user-consent) for details. | `GRANTED` |
 | encryptionEnabled | If set to `true`, the local database contents is encrypted. | false |
 | prefix | If set, the prefix will be prepended to the database name used by the Suite. | null |
@@ -765,7 +765,7 @@ In the example above, we have four entries:
  * The third entry defines that `my_feature` always returns `off` for all keys that don't match another entry (in this case, any key other than `key`).
  * The fourth entry shows an example on how to override a treatment for a set of keys.
 
-In this mode, the Split Suite loads the yaml file from a resource bundle file at the assets' project `src/main/assets/splits.yaml`.
+In this mode, the FME SDK Suite loads the yaml file from a resource bundle file at the assets' project `src/main/assets/splits.yaml`.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
@@ -854,7 +854,7 @@ SplitView split(String SplitName);
 /**
  * Returns the names of feature flags registered with the Suite.
  *
- * @return a List of String (Split feature names) or empty
+ * @return a List of String (FME feature flag names) or empty
  */
 List<String> splitNames();
 ```
@@ -928,7 +928,7 @@ class SplitView(
 
 ## Listener
 
-The Split Suite sends impression data back to Harness servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*.
+The FME Suite sends impression data back to Harness servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*.
 
 The Suite sends the generated impressions to the impression listener right away. Because of this, be careful while implementing handling logic to avoid blocking the thread. Generally speaking, you should create a separate thread to handle incoming impressions. Refer to the snippet below:
 
@@ -1148,7 +1148,7 @@ You can listen for four different events from the Suite.
 * `SDK_READY_FROM_CACHE`. This event fires once the Suite is ready to evaluate treatments using a locally cached version of your rollout plan from a previous session (which might be stale). If there is data in the cache, this event fires almost immediately, since access to the cache is fast; otherwise, it doesn't fire.
 * `SDK_READY`. This event fires once the Suite is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
 * `SDK_READY_TIMED_OUT`. This event fires if there is no cached version of your rollout plan in disk cache, and the Suite could not download the data from Harness servers within the time specified by the `ready` setting of the `SplitClientConfig` object. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
-* `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in the Split user interface.
+* `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 To define what is executed after each event, create an extension of `SplitEventTask`.
 
