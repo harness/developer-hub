@@ -51,7 +51,7 @@ Used for selecting values from dropdown lists.
 
 ![](./static/select.png)
 
-:::hint{type="info"}
+:::tip
 Click, Write, and Select are automatically detected by Harness AIT. Users don't need to select these commands from a list.
 :::
 

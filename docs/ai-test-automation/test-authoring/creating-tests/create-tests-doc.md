@@ -26,7 +26,7 @@ Follow these steps to create your first test:
    - **Tunnel**: *Enterprise Customers Only* - Select a tunnel to access environments behind a firewall
    - **Automatically login**: Disabled by default. When enabled, you'll need to create an auto-login task and update your test environment with login credentials
 
-:::hint{type="info"}
+:::info
 For more information about adding environments, see the [Adding a New Test Environment](../../test-environments/adding-application-environments.md) page.
 :::
 

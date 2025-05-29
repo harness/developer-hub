@@ -188,6 +188,12 @@ import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+## Use scanner-provided Severity
+
+import ScannerProvidedSeverity from '../shared/use-scanner-provided-severity.md';
+
+<ScannerProvidedSeverity />
+
 ## Proxy settings
 
 import ProxySettings from '../shared/proxy-settings.md';

@@ -1,7 +1,7 @@
 ---
 title: Code Repository release notes
 sidebar_label: Code Repository
-date: 2024-04-02T10:00
+date: 2025-05-23T10:00
 sidebar_position: 7
 ---
 
@@ -20,6 +20,27 @@ These release notes describe recent changes to Harness Code Repository.
 
 :::
 
+
+## May 2025
+
+<!-- May 20, 2025 -->
+
+### Version 1.42.x
+
+#### New features and enhancements 
+
+* Added support for partial and shallow Git clones to improve performance and reduce footprint when cloning large multi-service repositories.
+
+<!-- May 13, 2025 -->
+
+### Version 1.41.x
+
+#### New features and enhancements
+
+* Added support to display the merge method used when merging a pull request.
+
+* Added support to indicate if rules were bypassed during pull request merge.
+ 
 ## January 2025
 
 <!-- 24 Jan 24 -->

@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-04-23T10:00
+date: 2025-05-27T10:00
 sidebar_position: 10
 ---
 
@@ -41,38 +41,6 @@ If you have any questions or need assistance with the allowlisting process, plea
 
 :::
 
-:::warning
- 
-**Action Required: Avoid Docker Hub Rate Limits**
-
-**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
-on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
-
-* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
-* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
-* **Private registry**: Pull images from your own private registry.
-
-[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
-
-:::
-
-:::warning
-
-**Action Required: Migration from GCR to GAR**
-
-Google Container Registry (GCR) is being decommissioned. 
-
-* As part of this change, support for the **Build and Push to GCR step in Harness CI will be discontinued**. Customers currently using this step need to **transition to the Build and Push to Google Artifact Registry (GAR)** step to continue building and pushing container images without interruption.
-* Customers that have configured HarnessImage Connector to pull [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) form GCR, need to update the connector configurations to the [new Google Artifact Registry URL](http://us-docker.pkg.dev/gar-prod-setup/harness-public)
-
-To ensure uninterrupted service, we recommend completing these updates by April 22, 2025.
-* After March 18, 2025, writing images to Google Container Registry (GCR) will no longer be possible.
-* After April 22, 2025, reading images from GCR will also be disabled.
-
-For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
-:::
-
-
 :::note
 
 **New UI for License Management in Harness CI**
@@ -84,6 +52,54 @@ This update is currently being rolled out to customers, and we expect the rollou
 :::
 
 ## May 2025
+
+### Version 1.81
+
+<!-- 2025-05-26 -->
+
+#### New features and enhancements
+
+- The following features are now available in beta:
+
+    - [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) for the Maven build tool (version 3.9+). 
+
+    - [Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview) for JavaScript (Jest) and Kotest.
+
+  To join the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
+
+- Previously, CI stage timeouts for Kubernetes infrastructure were limited to a maximum of 24 hours. Some stages, however, require longer timeouts. Harness CI now supports stage timeouts of up to 35 days for Kubernetes-based CI stages. To enable this functionality, set the desired timeout value (greater than 24 hours) in the **Overview** section of the CI stage. (CI-15102, ZD-72737)
+
+  This feature is behind the feature flag `CI_ENABLE_LONG_TIMEOUTS`. 
+
+#### Fixed issues
+
+- Fixed an issue where pod cleanup requests were sent to an incorrect delegate when multiple delegates across clusters shared the same selector tag. This occurred specifically when pipelines were aborted during the init step, preventing Harness from receiving Pod IP information required for capability checks. The fix bypasses the connectivity check when no IP is available and introduces a dry-run pod deletion as a capability check. (CI-17241, ZD-83069)
+
+### Version 1.80
+
+<!-- 2025-05-19 -->
+
+#### New features and enhancements
+
+- **Adjustable VM Pool initialization timeout for Windows deployments** - Virtual machines may have differing startup and initialization durations across operating systems, which can lead to timeout errors in VM Pools. You can now adjust the VM initialization timeout to ensure sufficient time to initialize. (CI-15143, ZD-70731)
+
+#### Fixed issues
+
+- Fixed an issue where build stages misinterpreted environment variables containing commas, causing incorrect parsing of buildx options. The `plugins/buildx:1.3.1` plugin now supports the `PLUGIN_BUILDX_OPTIONS_SEMICOLON` variable to allow semicolon-delimited input for options containing commas. (CI-17379, ZD-83477)
+  
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/ci-addon`          | Added support to parse Maven build cache metrics for savings reporting.  | 1.16.87              | 1.16.88       |
+| `harness/ci-lite-engine`    |  Added support to parse Maven build cache metrics for savings reporting. | 1.16.87              | 1.16.88       |
+| `harness/drone-git`    |  Convert drone-git to binary to avoid cloning in containerless mode. | 1.6.8              | 1.6.9       |
+| `harness/harness-cache-server`    |  Added support to parse Maven build cache metrics for savings reporting. | 1.7.0              | 1.7.1       |
+| `plugins/buildx`    |  Updated buildx image version to support semi-colon delimited options. | 1.3.0              | 1.3.1       |
+| `plugins/buildx-ecr`    |  Updated buildx image version to support semi-colon delimited options. | 1.2.16              | 1.2.17       |
+| `plugins/buildx-acr`    |  Updated buildx image version to support semi-colon delimited options. | 1.2.16              | 1.2.17       |
+| `plugins/buildx-gar`    |  Updated buildx image version to support semi-colon delimited options. | 1.2.16              | 1.2.17       |
+| `kaniko-gar`    |  drone-kaniko gar plugin now supports push-only operation on an image.  | 1.10.1              | 1.11.1       |
 
 ### Version 1.79
 

@@ -35,7 +35,7 @@ helpdocs_is_published: true
 
 This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness.md). For API permissions, go to the [API permissions reference](/docs/platform/automation/api/api-permissions-reference).
 
-:::Note
+:::note
     **Types of Permission**:
 
         | **Status**       | **Description**                                               |

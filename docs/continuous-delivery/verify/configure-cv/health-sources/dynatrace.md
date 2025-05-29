@@ -7,6 +7,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import RiskProfile from '/docs/continuous-delivery/verify/shared/risk-profile.md'
 
 :::important
 When creating a Dynatrace query:
@@ -65,17 +66,35 @@ Depending on your feature choice, do the following configuration steps.
 11. If you click Add Metric, click **Map Metric(s) to Harness Services**.
 12. In **Metric Name**, enter the name of the metric.
 13. In **Group Name**, enter the group name of the metric.
-14. Click **Query Specifications and mapping**.
-15. In **Metric**, choose the desired metric from the list.
-16. Click **Fetch Records** to retrieve data for the provided query.
-17. In **Assign**, choose the services for which you want to apply the metric. Available options are:
-	* Continuous Verification
-	* Health Score
-	* SLI
-18. In **Risk Category**, select a risk type.
-19. In **Deviation Compared to Baseline**, select one of the options based on the selected risk type.
-    ![](./static/verify-deployments-with-dynatrace-17.png)
-20. Click **Submit**. The Health Source is displayed in the Verify step.
+14. Click **Query Specifications and mapping**. To build your query, do the following: 
+    1. In **Metric**, choose the desired metric from the list.
+    2. In **Select Metric Filter**, choose the desired entity from the list. This will filter your metrics using [entitySelectors](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-api/environment-api/entity-v2/entity-selector).
+
+    :::note
+
+    Selecting metric filters is behind the feature flag `CDS_CV_DYNATRACE_CANARY_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+    :::
+
+    3. Click **Fetch Records** to retrieve data for the provided query.
+15. In **Assign**, choose the services for which you want to apply the metric.
+    
+    If you select **Continuous Verification** or **Service Health**, you will need to configure a risk profile. Expand the following block to learn more. 
+
+   <details>
+   <summary><b>Risk Profile settings</b></summary>
+   
+   <RiskProfile />
+
+For Dynatrace, the only possible values of the SII are your entity selectors. 
+    :::note
+
+    The ability to set a SII is behind the feature flag `CDS_CV_DYNATRACE_CANARY_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+    
+    :::
+   </details>
+
+16. Click **Submit**. The Health Source is displayed in the Verify step.
 
 You can add one or more Health Sources for each APM or logging provider.
 
