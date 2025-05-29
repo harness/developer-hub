@@ -28,7 +28,7 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
 
 ## Install a delegate
 
-1. Install a Kubernetes delegate. For steps to install a Kubernetes delegate, go to [legacy kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate).
+1. Install a Kubernetes delegate. For steps to install a Kubernetes delegate, go to [install delegate](/docs/platform/get-started/tutorials/install-delegate).
 2. Download the YAML.
 3. Modify the `INIT_SCRIPT` section in the YAML to include the following value:
 
