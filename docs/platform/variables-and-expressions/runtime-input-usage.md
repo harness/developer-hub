@@ -189,6 +189,14 @@ Use allowed values to provide a fixed range of acceptable values for a runtime i
 3. For **Validation**, select **Allowed values**.
 4. Enter an allowed value, and then press the **Enter** key.
 5. Repeat until you have entered all allowed values.
+6. Optionally, enable **Include empty values in allowed value list**. This will allow this variable to be empty during a pipeline execution. 
+
+  :::info
+
+  This option is behind the feature flag `CDS_INCLUDE_EMPTY_VALUE`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
+
+  :::
+
 6. If you also specify a [default value](#default-values), you must include the default value in your allowed values.
 7. Select **Submit**.
 
@@ -201,8 +209,17 @@ If your values include commas, you must escape the value strings using the forma
 
 If you specify allowed values *and* a [default value](#default-values), the default value must be present in the list of allowed values. To specify both an allowed value and a default value, append both the `.default()` and `.allowedValues()` methods to `<+input>`, and make sure the list of allowed values includes the default value. For example: `<+input>.default(london).allowedValues(bengaluru,newyork,london)`.
 
+In order to allow empty values to be included in the allowed values list, add a comma followed by nothing. For example: `<+input>.allowedValues(bengaluru,newyork,)` will allow an empty value to be an input for this variable.
+
+  :::info
+
+  The option to allow empty values is behind the feature flag `CDS_INCLUDE_EMPTY_VALUE`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
+
+  :::
 </TabItem>
 </Tabs>
+
+---
 
 :::info allowed values in JSON
 

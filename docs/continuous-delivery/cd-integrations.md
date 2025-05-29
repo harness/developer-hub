@@ -170,3 +170,4 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_OPTIONAL_VALUES_YAML | When enabled, ​users can utilize an optional checkbox for Kubernetes and Helm deployment types while configuring manifest and overrides. **This is a Beta feature**. |
 | CDS_SNOW_IMPROVE_CONSOLE_LOGS | When enabled, ​users can see improved log messages in ServiceNow Approval that enhances clarity and helps in debugging **This is a Beta feature**. |
 | CDS_DEPLOYMENT_FREEZE_GRANULAR_RBAC | When enabled, users can manage Deployment Freeze Windows with granularity based on Environment Types, allowing for more fine-tuned control over deployment windows. **This is a Beta feature**. |
+| CDS_INCLUDE_EMPTY_VALUE | When enabled, this will allow empty values to be accepted as an allowed value for runtime inputs. **This is a Beta feature**. |
