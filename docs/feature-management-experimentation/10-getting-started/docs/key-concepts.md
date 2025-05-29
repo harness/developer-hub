@@ -82,7 +82,7 @@ Your company has one Harness account. Your account is the highest level containe
 ### Users
 A Harness user is someone with access to the Harness user interface. Administrators can invite new users to Harness. All paid plans include SSO for user authentication and can support either invites or just in time provisioning.
 
-### User Groups
+### User groups
 A group is a convenient way to manage a collection of users in your account. You can use groups to grant administrative controls and grant environment, feature flag, or segment-level controls. Refer to the [Manage user groups](https://help.split.io/hc/en-us/articles/360020812952-Manage-user-groups) guide for more information.
 
 ### Projects
@@ -91,7 +91,7 @@ Projects provide separation or partitioning of work to reduce clutter or to enfo
 ### Environment
 Within each project, you may have multiple environments, such as development, staging, and production. Refer to the [Environments](https://help.split.io/hc/en-us/articles/360019915771-Environments) guide for more information.
 
-### Feature Flags
+### Feature flags
 Feature flags are created at the project level where you specify the feature flag name, traffic type, owners, and description. Targeting rules are then created and managed at the environment level as part of the feature flag definition. Refer to the [Feature flag management](https://help.split.io/hc/en-us/articles/9650375859597-Feature-flag-management) guide for more information.
 
 ### Targeting rule

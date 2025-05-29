@@ -47,7 +47,7 @@ The following table lists the client-side FME SDKs that Harness supports.
 
 ## Supported RUM Agents and SDK Suites
 
-RUM Agents collect Real User Monitoring events and send these events to Harness. Harness FME also supports FME Suite SDKs that include RUM Agents. The following table lists the FME RUM Agents and FME Suite SDKs that Harness supports.
+RUM Agents collect Real User Monitoring events and send these events to Harness. Harness FME also supports FME SDK Suites that include RUM Agents. The following table lists the FME RUM Agents and FME SDK Suites that Harness supports.
 
 | FME SDK Suite | FME SDK Suite documentation | RUM Agent documentation |
 | ---- | --- | --- |
