@@ -408,13 +408,13 @@ To configure a Harness ASG service in the Harness Manager, do the following:
    
    This is the same as the **Automatic scaling** option in the ASG console setup:
 
-   ![Automatic scaling option in the ASG console setup](./static/ae598a44899643397e7ee9502a8fc6698bd8703bff7209fe7a4c95c4b82c3704.png)  
+   ![Automatic scaling option in the ASG console setup](../static/ae598a44899643397e7ee9502a8fc6698bd8703bff7209fe7a4c95c4b82c3704.png)  
 
    1. [Scheduled update group action](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html). This is optional.
    
    This is the same as the scheduled action in the ASG console setup:
    
-   ![Edit scheduled action](./static/5cfdb08c486ac86332089f793e1dbc0b011e1730c595d18e937370f6ca1587fc.png)  
+   ![Edit scheduled action](../static/5cfdb08c486ac86332089f793e1dbc0b011e1730c595d18e937370f6ca1587fc.png)  
    
    Next, in **Artifacts**, you add the private AMI image to use for the ASG instances.
 7. In **Artifacts**, select **Add Artifact Source**.
@@ -496,7 +496,7 @@ Currently, ASG Additional Configuration is behind the feature flag `CDS_ASG_ENAB
 
 :::
 
-![](./static/asg-additional-configuration.png)
+![](../static/asg-additional-configuration.png)
 
 **Enabling Metrics in ASG**
 
@@ -515,7 +515,7 @@ Steps to Configure ASG Metrics:
 Click **Submit** to save the configuration.
 
 
-![](./static/asg-additional-configuration-2.png)
+![](../static/asg-additional-configuration-2.png)
 
 
 
@@ -621,7 +621,7 @@ In the **Variables** section of the service, you can add service variables and t
 
 For example, you could create a variable named **desiredCapacity** and set its value as a [fixed value, runtime input, or expression](/docs/platform/variables-and-expressions/runtime-inputs/).
 
-![service variable](./static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
+![service variable](../static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
 
 Next, in your ASG configuration file, you could reference the variable like this (see `<+serviceVariables.desiredCapacity>`):
 
@@ -963,7 +963,7 @@ For ASG, Harness needs the following settings mapped to outputs:
 
 In the Harness Infrastructure Definition, in **Base ASG**, select the ASG to use as the base ASG.
 
-<DocImage path={require('./static/8705496ace1f6b040eccc5b1fe4d6dae3b21cedb37ab383680b39ad41510c417.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('../static/8705496ace1f6b040eccc5b1fe4d6dae3b21cedb37ab383680b39ad41510c417.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 
 ## Harness ASG pipelines
@@ -1218,7 +1218,7 @@ Here's a flowchart that explains how Harness performs rolling deployments:
 <details>
 <summary>Rolling deployments flowchart</summary>
 
-![ASG rolling flowchart](./static/ab01a5afe7406d7dad3496fbf0544cd304c512179589a24ae47eefa418fdc989.png)
+![ASG rolling flowchart](../static/ab01a5afe7406d7dad3496fbf0544cd304c512179589a24ae47eefa418fdc989.png)
 
 
 </details>
@@ -1356,7 +1356,7 @@ Currently, Asg Steady State Step is behind the feature flag `CDS_ASG_SKIP_INSTAN
 :::
 
 <div style={{ textAlign: "center" }}>
-  <DocImage path={require('./static/asg-steady-state-step.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('../static/asg-steady-state-step.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
 The **ASG Steady State Step** is an additional pipeline step designed to monitor the progress and completion of the Instance Refresh process in AWS Auto Scaling Groups (ASGs). It is introduced to ensure that, during an ASG rolling deployment, the deployment workflow proceeds as soon as the new instances are launched and have reached a healthy state.
@@ -1523,7 +1523,7 @@ The ASG canary deployment uses two step groups:
 
 Here's what the two step groups look like:
 
-![ASG canary step groups](./static/22f0a4be013dcf977b67e4f645941ce03ea5f63e6d9225a28f5efa383b5b5bdc.png)  
+![ASG canary step groups](../static/22f0a4be013dcf977b67e4f645941ce03ea5f63e6d9225a28f5efa383b5b5bdc.png)  
 
 
 
@@ -1624,13 +1624,13 @@ You can create a multi-phase workflow that progressively deploy your new instanc
 
 When you select the Canary execution strategy for your pipeline, make sure to select the **Add Multi Phase Canary Steps** to enable phased deployment. 
 
-![ASG phased execution](./static/asg-phased-execution.png)
+![ASG phased execution](../static/asg-phased-execution.png)
 
 A phased deployment uses two step groups:  
 1. A Canary phase containing steps that define your ASG, deploy a percentage or partial count of the ASG's instances, and verify this partial deployment. You can add more Canary phases that expand the partial deployment.
 2. A Primary phase that deploys your image to the full count of instances defined in your ASG.
    
-![ASG phased deploy](./static/asg-phased-deploy.png)
+![ASG phased deploy](../static/asg-phased-deploy.png)
 
 Here're the steps we build:  
 
@@ -1644,7 +1644,7 @@ There are two resize options:
 * Resize New First: Select to resize new ASG first and then downsize older ASG.
 * Downsize Old First: Select to downsize older ASG first and then resize new ASG.
 
-![ASG Setup step config](./static/asg-setup.png)
+![ASG Setup step config](../static/asg-setup.png)
 
 Here's a sample ASG Setup step YAML for the **Fixed Instances** option:  
 
@@ -1741,7 +1741,7 @@ Here's a flowchart that explains how Harness performs Blue Green deployments:
 <details>
 <summary>Blue Green deployments flowchart</summary>
 
-![blue green flowchart map](./static/65c67ea9418a480ee1fc97fce06fe551ac3afea9fb6e5297a2d70fcb7711ee0c.png)
+![blue green flowchart map](../static/65c67ea9418a480ee1fc97fce06fe551ac3afea9fb6e5297a2d70fcb7711ee0c.png)
 
 </details>
 
@@ -1750,10 +1750,10 @@ Here's a flowchart that explains how Harness performs Blue Green deployments:
 In addition to the requirements of the Harness ASG service and environment, an ASG Blue Green deployment requires you to set up the following resources up within AWS:
 
 - A security group that allows inbound access to your Application Load Balancer's listener ports.
-  ![SG for ALB listener](./static/aws-req-for-esg-2.png)
+  ![SG for ALB listener](../static/aws-req-for-esg-2.png)
 - A pair of target groups, typically staging (Stage) and production (Prod) both with the instance target type.
 - An Application Load Balancer (ALB) with one listener rule for both your target groups.
-  ![listener rule](./static/aws-req-for-esg-1.png)
+  ![listener rule](../static/aws-req-for-esg-1.png)
 
 Let's take a look at the first two deployments.
 
@@ -1870,44 +1870,15 @@ A Blue/Green deployment reliably deploys your ASGs by maintaining new and old ve
 
 In the first stage of deployment, the new ASG is attached to the stage target group:
 
-![first stage](./static/ea87f58fb9e638f26d1c0a7cefde20158f4ad3c88496b3de827121992dd0ba0a.png)  
+![first stage](../static/ea87f58fb9e638f26d1c0a7cefde20158f4ad3c88496b3de827121992dd0ba0a.png)  
 
 Blue/Green deployments are achieved by swapping routes between the target groups—always attaching the new ASG first to the stage target group, and then to the prod target group:
 
-![second stage](./static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)
+![second stage](../static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)
 
+For more information on how to configure blue-green traffic shifting, refer to [ASG Blue-Green Traffic Shifting Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-traffic-shift)
 
-#### Blue/Green with Incremental Traffic Shift Summary
-
-
-Here's a demo video of Blue Green with incremental traffic shift summary:  
-
-<!-- Video:
-https://www.loom.com/share/5193b65dafa34d63921efc6f0c7fa798?sid=0ea60fd7-376d-4c92-a2ee-dfe47af6075b-->
-<DocVideo src="https://www.loom.com/share/5193b65dafa34d63921efc6f0c7fa798?sid=0ea60fd7-376d-4c92-a2ee-dfe47af6075b" />
-
-
-This deployment method lets you add **ASG Shift Traffic** steps to incrementally shift traffic from the Target Group used by the previous ASG to the Target Group used by the new ASG you are deploying.
-
-With this strategy, you are not shifting traffic from stage and production environments. You are shifting traffic incrementally for a production environment. In this way, it is similar to a Canary strategy.
-
-However, in a Canary deployment, the percentage of traffic that goes to the new ASG is determined by the number of instances (for example, 25% of 4 instances) or the forwarding policy of the load balancer.
-
-With this Incremental Traffic Shift strategy, you are controlling the  percentage of traffic sent to the new ASG. For example, 25% of all traffic.
-
-To use incremental traffic shift, do the following:
-
-1. In the **ASG Blue Green Deploy** step, in **ASG Load Balancer**, select **Use Shift Traffic**.
-2. Next, add multiple **ASG Traffic Shift** steps. Typically, users can add Approval step between the ASG Traffic Shift step as checks.
-3. In the first ASG Traffic Shift step, in **New Autoscaling Group Weight**, enter the percentage of traffic you want shifted from the previous ASG to the new ASG you are deploying.
-4. Continue setting any subsequent ASG Traffic Shift steps.
-
-The **Downsize Old ASG at 0% weight** setting should only be selected for the ASG Traffic Weight step that shifts traffic to `100%` in its New Autoscaling Group Weight setting.
-
-When this setting is enabled, the old ASG is downsized.
-
-
-## Advanced settings for all steps
+## Advanced settings
 
 In the **Advanced** settings of all step, you can use the following options:
 
