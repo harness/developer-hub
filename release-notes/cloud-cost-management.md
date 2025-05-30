@@ -17,6 +17,27 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. In the new UI, go to Account Settings, Account Details, General, Account Details, and then Platform Service Versions. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+## May 2025 - Version 1.52.1
+
+### Feature Improvements
+
+- **New creation flow for AutoStopping Load Balancers and Proxies**: We’ve revamped the creation flow for Load Balancers and AutoStopping Proxies by moving it to a side panel for better input organization. The Custom URL is no longer a required step for Load Balancer creation—legacy LBs will still show it as a static field, and edits must be done via Route53. We’ve also introduced a new Internal/External toggle for ALBs to define access type. Additionally, there’s now a toggle for Encrypted EBS volumes. [CCM-21226]
+
+<DocImage path={require('./static/as-revamp.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **Sorting for Clusters List**: The Clusters List in Cluster Orchestrator Overview is now sorted with enabled connectors first (alphabetically), followed by AWS connectors that are not enabled (alphabetically), and then the rest. [CCM-23021]
+
+- **Improvements in Budgets and Perspectives home page**: We have now added support for showing “Modified By” in Perspectives, and both “Modified By” and “Created By” in Budgets. [CCM-22932]
+
+- **Standardized Region Format for Recommendations**: We are now normalizing region formats across all recommendations. Previously, EC2 recommendations used formats like `US_EAST_1`, while others used `us-east-1`, leading to inconsistencies. Going forward, only the standardized `us-east-1` format will be used, ensuring filters work consistently across all recommendation types. [CCM-22998]
+
+- **Cluster Orchestrator UI changes**: We’ve now moved the Base On-demand setting below the Spot/On-demand split. Additionally, if the On-demand percentage is set to 100%, the fields below will be disabled. [CCM-22759]
+
+<DocImage path={require('./static/cluster-improv.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Bug Fixes
+
+- **Improved Cloud Asset Governance Rule Saving Experience**: We've resolved an issue where saving a new Cloud Asset Governance rule incorrectly triggered a confirmation dialog to stay or leave the page. This dialog will now only appear when there are unsaved changes. [CCM-22995]
 
 ## May 2025 - Version 1.51.4
 
@@ -72,7 +93,6 @@ We have added support for replacement schedules with options: **Always, Never, o
 - **Improved Accuracy in Cost Category Anomaly Detection:** We’ve improved how cost category rules are applied to anomaly filters within Perspectives. This update ensures that anomalies tied to cost category rules ( combinations of AND/OR conditions) are shown more accurately. [CCM-21712]
 
 - **UI enhancement for Governance Recommendations**: We’ve resolved an issue in the Governance Recommendations’ Resource Breakdown tab where Azure Resource IDs were overflowing into adjacent cells. The text now wraps onto the next line to maintain proper layout. [CCM-22850]
-
 
 
 ## May 2025 - Version 1.50.2
