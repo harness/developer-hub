@@ -12,7 +12,7 @@ Marketplace link: [Harness Code Repository for JIRA](https://marketplace.atlassi
 
 Before configuring the integration, ensure you have:
 
-- [A Harness Access Token](/docs/platform/automation/api/add-and-manage-api-keys/).
+- [A Harness Access Token](/docs/platform/automation/api/add-and-manage-api-keys/). Note: The Harness user whose access token is being used must have **Account Admin** permissions on the account.
 - The Harness Base URL (e.g., `https://app.harness.io` or your custom domain).
 - JIRA Admin Permissions (You must be a JIRA admin or work with someone who has admin access to complete the integration).
 
@@ -26,12 +26,18 @@ After installation, you’ll be prompted to enter the following:
 - Harness Access Token
 - Harness Base URL
 3. Select Repository Scope
-After authentication, you can select a repository to link with JIRA. Scope options:
+After authentication, you can select a repository to link with JIRA. Use one of the following scope options:
 - Account-level
 - Organization-level
 - Project-level
 
 Once a repository is connected, you'll see it listed under the Harness Code Repository Configuration section. Use the `...` menu to either configure the connection or disconnect it.
+
+:::note
+While editing a configuration, you cannot change the scope (e.g., from project to org or account).
+If the configuration was created at the project scope, you can add or remove projects within that scope.
+To switch scopes entirely, you'll need to delete the existing configuration and create a new one with the desired scope.
+:::
 
 ## How it Works
 Once the integration is configured:
