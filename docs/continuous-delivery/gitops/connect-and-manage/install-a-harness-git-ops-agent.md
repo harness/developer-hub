@@ -683,11 +683,17 @@ The GitOps agent has 2 types of reconciliation on top of the ArgoCD’s reconcil
 1. On CRUD events, reconciliation runs every 10 seconds.
 2. The bulk reconciliation (to check if anything was removed/added in the cluster directly) runs every 100 seconds.
 
-#### Known problem
+#### Known problem (Fixed)
 
-Currently, the agents running with multiple replicas are not aware that more replicas are running and hence the reconciliation runs on all. 
+:::info
 
-Consequently, if there is an HA agent running 5 pods all of the pods will send the reconcile call (5 times in 1 cycle). This results in computing overhead.
+As of [GitOps Agent 0.89](/release-notes/continuous-delivery/#gitops-agent-version-0890) this has been fixed. If you are encountering this issue, please upgrade your GitOps Service to version 1.28 or higher, and agent to 0.89 or higher.
+
+:::
+
+In old agent versions, the agents running with multiple replicas are not aware that more replicas are running and hence the reconciliation runs on all. 
+
+Consequently, if there is was an HA agent running 5 pods all of the pods would send the reconcile call (5 times in 1 cycle). This resulted in computing overhead.
 
 ## References
 
