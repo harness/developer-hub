@@ -273,7 +273,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Amazon AMI/ASG</summary>
 
 - **Overview:**
-  - [AWS AMI/ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial)
+  - [AWS AMI/ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial)
 - **Supported connectors for deployment:**
   - AWS cloud connector
     - IRSA
