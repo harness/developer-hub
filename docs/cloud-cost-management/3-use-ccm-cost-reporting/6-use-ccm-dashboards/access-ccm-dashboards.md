@@ -18,6 +18,11 @@ Dashboards are a collection of charts and data tables with filters that you can 
 For information on core Dashboard functionality, go to [Create Dashboards](https://docs.harness.io/article/ardf4nbvcy-create-dashboards).
 :::
 
+:::warning Important
+
+We have deprecated the Dimensions Current CPU/Memory Avg(%), Current CPU/Memory Max(%), Current CPU/Memory Min(%) and introduced new Measures Average CPU Utilization (%), Minimum CPU Utilization (%), Maximum CPU Utilization (%), Average memory utilization percentage, Maximum memory utilization percentage, Minimum memory utilization percentage in Azure VM Inventory metrics.
+:::
+
 Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) dashboards to visualize cloud cost data across clusters and cloud accounts.
 
 
