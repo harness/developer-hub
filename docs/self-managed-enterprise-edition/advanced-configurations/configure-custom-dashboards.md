@@ -16,7 +16,7 @@ Dashboards application uses [Looker](https://cloud.google.com/looker), a third-p
 
 To set it up:  
 1. Create a DNS CNAME entry for Looker.  
-2. Configure this domain name in the parameter lookerPubDomain. This usually follows the format of looker.<company domain>, example- looker.companydomain.com  
+2. Configure this domain name in the parameter lookerPubDomain. This usually follows the format of `looker.<company-domain>`, example- looker.companydomain.com  
 3. Point the Looker CNAME to the existing A record for your installation.  
 
 ### Configuration 
@@ -33,7 +33,7 @@ Looker is required for custom dashboards but is not enabled by default. To enabl
       enabled: true
   ng-custom-dashboards:
     config:
-      lookerPubDomain: 'looker.<company domain>'
+      lookerPubDomain: `looker.<company-domain>`
   looker:
     secrets:
       lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
