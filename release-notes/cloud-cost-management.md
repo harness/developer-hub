@@ -17,6 +17,15 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. In the new UI, go to Account Settings, Account Details, General, Account Details, and then Platform Service Versions. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+## May 2025 - Version 1.53.3
+
+### Bug Fixes
+
+- **Missing Name in Enforcement Update Toast:** There was an issue where the name didn’t appear in the toast message after updating an enforcement rule. This has now been fixed, and the name will display correctly. [CCM-23256]
+
+- **Error Toast on Navigating Away from Perspective Details:** Navigating away from the Perspective Details page before it fully loaded triggered an error toast due to an aborted API call. This behavior has been fixed, and users will no longer see this error toast when navigating quickly.[CCM-23244]
+
 ## May 2025 - Version 1.52.1
 
 ### Feature Improvements
@@ -27,7 +36,7 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 - **Sorting for Clusters List**: The Clusters List in Cluster Orchestrator Overview is now sorted with enabled connectors first (alphabetically), followed by AWS connectors that are not enabled (alphabetically), and then the rest. [CCM-23021]
 
-- **Improvements in Budgets and Perspectives home page**: We have now added support for showing “Modified By” in Perspectives, and both “Modified By” and “Created By” in Budgets. [CCM-22932]
+- **Improvements in Budgets and Perspectives home page**: We have now added support for showing "Created By" and "Modified By" in Perspectives and in Budgets. [CCM-22932]
 
 - **Standardized Region Format for Recommendations**: We are now normalizing region formats across all recommendations. Previously, EC2 recommendations used formats like `US_EAST_1`, while others used `us-east-1`, leading to inconsistencies. Going forward, only the standardized `us-east-1` format will be used, ensuring filters work consistently across all recommendation types. [CCM-22998]
 
@@ -38,6 +47,7 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 ### Bug Fixes
 
 - **Improved Cloud Asset Governance Rule Saving Experience**: We've resolved an issue where saving a new Cloud Asset Governance rule incorrectly triggered a confirmation dialog to stay or leave the page. This dialog will now only appear when there are unsaved changes. [CCM-22995]
+
 
 ## May 2025 - Version 1.51.4
 
