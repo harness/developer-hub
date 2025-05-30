@@ -1073,8 +1073,6 @@ spec:
           value: YOUR_ACCOUNT_ID
         - name: MANAGER_HOST_AND_PORT
           value: https://app.harness.io
-        - name: DEPLOY_MODE
-          value: KUBERNETES_ONPREM
         - name: DELEGATE_NAME
           value: eks-test-new
         - name: DELEGATE_TYPE
@@ -1091,10 +1089,6 @@ spec:
           value: ""
         - name: NEXT_GEN
           value: "true"
-        - name: CLIENT_TOOLS_DOWNLOAD_DISABLED
-          value: "true"
-        - name: LOG_STREAMING_SERVICE_URL
-          value: "https://app.harness.io/log-service/"
         - name: DELEGATE_CPU_THRESHOLD
           value: "80"
 

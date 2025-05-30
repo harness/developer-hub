@@ -716,8 +716,6 @@ environment:
   - ACCOUNT_ID=XXXX
   - DELEGATE_TOKEN=XXXX
   - MANAGER_HOST_AND_PORT=https://app.harness.io
-  - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
-  - DEPLOY_MODE=KUBERNETES
   - DELEGATE_NAME=test
   - NEXT_GEN=true
   - DELEGATE_TYPE=DOCKER

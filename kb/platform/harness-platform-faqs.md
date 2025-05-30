@@ -1319,7 +1319,6 @@ docker run  --cpus=1 --memory=2g \
   -e ACCOUNT_ID=xxx \
   -e DELEGATE_TOKEN=xxx= \
   -e DELEGATE_TAGS="" \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.11.81406 -d
 ```
 
@@ -2047,8 +2046,6 @@ environment:
       - ACCOUNT_ID=XXXX
       - DELEGATE_TOKEN=XXXX
       - MANAGER_HOST_AND_PORT=https://app.harness.io
-      - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
-      - DEPLOY_MODE=KUBERNETES
       - DELEGATE_NAME=test
       - NEXT_GEN=true
       - DELEGATE_TYPE=DOCKER
@@ -3352,7 +3349,6 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
   -e DELEGATE_TOKEN=xxxx \
   -e JAVA_OPTS="-Dlogback.configurationFile=/opt/harness-delegate/custom-logback.xml" \
   -e DELEGATE_TAGS="" \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
 ```
 

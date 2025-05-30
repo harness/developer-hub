@@ -200,8 +200,6 @@ spec:
          value:   
        - name: MANAGER_HOST_AND_PORT  
          value: https://app.harness.io/gratis  
-       - name: DEPLOY_MODE  
-         value: KUBERNETES  
        - name: DELEGATE_NAME  
          value: custom-del  
        - name: DELEGATE_TYPE  
@@ -218,10 +216,6 @@ spec:
          value: ""  
        - name: NEXT_GEN  
          value: "true"  
-       - name: CLIENT_TOOLS_DOWNLOAD_DISABLED  
-         value: "true"  
-       - name: LOG_STREAMING_SERVICE_URL  
-         value: "https://app.harness.io/gratis/log-service/"  
 
 ---  
 

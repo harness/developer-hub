@@ -112,7 +112,6 @@ The following configurations were added by Harness to the default Logback XML.
                 <clientCertPath>${DELEGATE_CLIENT_CERTIFICATE_PATH:- }</clientCertPath>
                 <clientCertKey>${DELEGATE_CLIENT_CERTIFICATE_KEY_PATH:- }</clientCertKey>
                 <trustAllCerts>${TRUST_ALL_CERTIFICATES:-false}</trustAllCerts>
-                <logStreamingUrl>${LOG_STREAMING_SERVICE_URL:-${MANAGER_HOST_AND_PORT}/log-service/}</logStreamingUrl>
                 <delegateToken>${DELEGATE_TOKEN:-${ACCOUNT_SECRET}}</delegateToken>
                 <appName>delegate</appName>
             </appender>
