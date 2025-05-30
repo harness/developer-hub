@@ -209,6 +209,10 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
 /src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
 
+#FME Docs
+/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
+/docs/feature-management-experimentation/ @lenasano @alai97 @animcdowell
+
 # Open Source Docs
 /docs/open-source/ @dewan-ahmed @rustd @SushrutHarness
 /src/components/Docs/data/openSourceData.tsx @dewan-ahmed @rustd @SushrutHarness

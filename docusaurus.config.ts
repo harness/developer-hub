@@ -136,6 +136,10 @@ const config: Config = {
               to: 'docs/feature-flags',
             },
             {
+              label: 'Feature Management & Experimentation',
+              to: 'docs/feature-management-experimentation',
+            },
+            {
               label: 'Cloud Cost Management',
               to: 'docs/cloud-cost-management',
             },
@@ -464,7 +468,7 @@ const config: Config = {
     prism: {
       theme: themes.github,
       darkTheme: themes.vsDark,
-      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git'],
+      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git', 'java'],
     },
     colorMode: {
       defaultMode: 'light',
