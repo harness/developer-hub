@@ -69,10 +69,10 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
 
 # CODE Docs
-/docs/code-repository/ @hitesharinga @dewan-ahmed @johannesHarness
-/release-notes/code-repository.md @hitesharinga @dewan-ahmed @johannesHarness
-/src/components/Roadmap/data/codeData.ts @hitesharinga @dewan-ahmed @johannesHarness
-/src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed @johannesHarness
+/docs/code-repository/ @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
+/release-notes/code-repository.md @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
+/src/components/Roadmap/data/codeData.ts @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
+/src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
 
 # STO Docs
 /docs/security-testing-orchestration/ @tejakummarikuntla @BruceMcPhersonHarness
