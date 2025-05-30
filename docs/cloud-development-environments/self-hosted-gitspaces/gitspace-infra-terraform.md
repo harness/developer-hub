@@ -9,7 +9,7 @@ This is your second step to configuring self hosted Gitspaces. Once you have add
 
 ## Prerequisites
 - Ensure you've read through the fundamentals and prerequisites of self hosted gitspaces here. This helps you get a deeper understanding of all the basic concepts and steps involved with self hosted gitspaces. 
-- Please make sure you have completed the steps mentioned in configuring Gitspace Infrastructure in Harness UI. This step is a mandatory prerequisite as the YAML generated from this step is an essential input parameter for this step. 
+- Please make sure you have completed the steps mentioned in [configuring Gitspace Infrastructure in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md). This step is a mandatory prerequisite as the YAML generated from this step is an essential input parameter for this step. 
 - Please ensure that your GCP project (to be defined in the infra config) has the following APIs enabled:   <ul><li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) - api/cloudresourcemanager.googleapis.com</li><li>[Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1) - api/compute.googleapis.com</li><li>[Certificate Manager API](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest) - api/certificatemanager.googleapis.com</li><li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) - api/iam.googleapis.com</li><li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) - api/dns.googleapis.com</li></ul> 
 
 Here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project. 
@@ -108,6 +108,18 @@ Now that you have the Terraform Configuration ready, you need to initialize Terr
 2. **Plan Terraform**: Run **``terraform plan``** to create an execution plan. This allows you to preview the changes that Terraform plans to make to your infrastructure. To learn more about this command, refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/plan).
 3. **Apply Terraform**: Run **``terraform apply``** finally to execute the actions proposed in the Terraform plan. This will execute all your changes and will create your GCP infrastructure. To learn more about this command, refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/apply).
 
+This setup creates the required GCP infrastructure in your defined GCP project and also creates a **GCP VM instance** required to host your **Harness Delegate** and **Runner**.  
+
 ### Download the Pool YAML File
+Once you have applied the [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest), a specific **Pool YAML** (``pool.yaml``) file is generated in the same folder where you have your Terraform Configuration (``main.tf``). This ``pool.yaml`` file defines the VM spec for the VM instances used. 
+
+//more details on `pool.yaml` required
+
+You should download or have this YAML file handy somewhere as this will be used and required further in the next step. 
 
 ## Next Steps
+
+
+// gateway status and when does it go up
+
+// functions of gateway
