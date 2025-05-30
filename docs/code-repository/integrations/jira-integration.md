@@ -35,7 +35,7 @@ Once a repository is connected, you'll see it listed under the Harness Code Repo
 
 ## How it Works
 Once the integration is configured:
-- Use the JIRA issue key (e.g., PROJ-123) in the title of your pull request in Harness.
+- Use the JIRA issue key (e.g., PROJ-123) in the title or the description of your pull request in Harness.
 - The PR, along with any linked commits and branches, will automatically appear in the JIRA Development panel under:
     - Branches
     - Commits
