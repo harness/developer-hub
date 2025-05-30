@@ -39,6 +39,18 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 - **Improved Cloud Asset Governance Rule Saving Experience**: We've resolved an issue where saving a new Cloud Asset Governance rule incorrectly triggered a confirmation dialog to stay or leave the page. This dialog will now only appear when there are unsaved changes. [CCM-22995]
 
+## May 2025 - Version 1.53.3
+
+### Feature Improvements
+
+- **New Metadata in Perspectives and Budgets:** We’ve added support for displaying the **"Modified By"** field in **Perspectives**, and both **"Modified By"** and **"Created By"** fields in **Budgets** for improved visibility and traceability. [CCM-22932]
+
+### Bug Fixes
+
+- **Missing Name in Enforcement Update Toast:** There was an issue where the name didn’t appear in the toast message after updating an enforcement rule. This has now been fixed, and the name will display correctly. [CCM-23256]
+
+- **Error Toast on Navigating Away from Perspective Details:** Navigating away from the Perspective Details page before it fully loaded triggered an error toast due to an aborted API call. This behavior has been fixed, and users will no longer see this error toast when navigating quickly.[CCM-23244]
+
 ## May 2025 - Version 1.51.4
 
 ### [New Feature] Replacement Schedules
