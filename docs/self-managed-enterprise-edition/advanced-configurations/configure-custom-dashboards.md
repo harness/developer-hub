@@ -16,7 +16,7 @@ Dashboards application uses [Looker](https://cloud.google.com/looker), a third-p
 
 To set it up:  
 1. Create a DNS CNAME entry for Looker.  
-2. Use **looker.your-domain.tld** as the domain name.  
+2. Configure this domain name in the parameter lookerPubDomain. This usually follows the format of looker.<company domain>, example- looker.companydomain.com  
 3. Point the Looker CNAME to the existing A record for your installation.  
 
 ### Configuration 
@@ -33,7 +33,7 @@ Looker is required for custom dashboards but is not enabled by default. To enabl
       enabled: true
   ng-custom-dashboards:
     config:
-      lookerPubDomain: 'looker.domain.tld'
+      lookerPubDomain: 'looker.<company domain>'
   looker:
     secrets:
       lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
@@ -197,7 +197,7 @@ By selecting the appropriate method, you can ensure seamless integration of Look
 | `looker.config.clickhouseHost`             | string   | `"clickhouse"`                | Hostname of the ClickHouse database instance.                                                |
 | `looker.config.clickhousePort`             | string   | `"8123"`                      | HTTP port for ClickHouse queries.                                                            |
 | `looker.config.clickhouseUser`             | string   | `"default"`                   | Username for authenticating with ClickHouse.                                                 |
-| `looker.config.email`                      | string   | `"harnessSupport@harness.io"` | **Required.** Email address for Looker admin user.                                           |
+| `looker.config.email`                      | string   | `"harnessSupport@harness.io"` | **Required.** Replace default value with the email address for Looker admin user within your org. This is critical for events like password reset.                                           |
 | `looker.config.firstName`                  | string   | `"Harness"`                   | First name for the initial Looker admin user.                                                |
 | `looker.config.lastName`                   | string   | `"Support"`                   | Last name for the initial Looker admin user.                                                 |
 | `looker.config.projectName`                | string   | `"Harness"`                   | Name of the Looker project being created.                                                    |
