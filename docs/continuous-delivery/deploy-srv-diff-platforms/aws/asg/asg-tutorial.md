@@ -1,6 +1,8 @@
 ---
 title: AWS ASG
 description: Deploy an ASG using Harness CD.
+redirect_from:
+  - /docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial
 sidebar_position: 1
 ---
 
