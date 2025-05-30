@@ -46,6 +46,13 @@ export const moduleList: CardItem[] = [
     link: 'docs/feature-flags',
   },
   {
+    title: 'Feature Management & Experimentation',
+    module: MODULES.ata,
+    icon: 'img/icon_fme.svg',
+    description: <>Switch on data-driven features and releases.</>,
+    link: 'docs/feature-management-experimentation',
+  },
+  {
     title: 'Cloud Cost Management',
     module: MODULES.ccm,
     icon: "img/icon_ccm.svg",

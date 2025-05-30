@@ -58,7 +58,7 @@ export const featureList: CardItem[] = [
     module: MODULES.fme,
     icon: "img/icon_fme.svg",
     description: <>Switch on data-driven features and releases.</>,
-    link: "docs/feature-management-experimentation",
+    link: "docs/feature-management-experimentation/getting-started/docs/overview",
   },
   {
     title: "Optimize Cloud Costs",
