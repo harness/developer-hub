@@ -88,6 +88,11 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## May 2025
 
+### Version 25.05.85904 <!--May 30, 2025-->
+
+#### Fixed issues
+- Fixed an issue in AWS ASG Steady State step continues continues to poll InstanceRefresh and wait (until timeout) even if the status returned is Failed/Cancelled. Fix appied will ensure polling terminates and the step fails if status returned is Failed/Cancelled. [CDS-110706]
+
 ### Version 25.05.85903 <!--May 22, 2025-->
 
 #### Fixed issues
