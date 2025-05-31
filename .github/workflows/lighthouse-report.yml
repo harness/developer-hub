@@ -45,6 +45,7 @@ jobs:
         with:
           urls: |
             http://localhost:3000
+       
           configPath: ./.github/workflows/lighthouserc.json
           uploadArtifacts: true
           temporaryPublicStorage: true
@@ -53,7 +54,6 @@ jobs:
         id: format_lighthouse_score
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # 7.0.1
         with:
-          github-token: ${{ secrets.GH_TOKEN }}
           script: |
             const results = ${{ steps.lighthouse_audit.outputs.manifest }}
             const links = ${{ steps.lighthouse_audit.outputs.links }}
@@ -63,9 +63,8 @@ jobs:
 
       - name: Add Lighthouse stats as comment
         id: comment_to_pr
-        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # 2.9.2
+        uses: thollander/actions-comment-pull-request@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.GH_PERSONAL_TOKEN }}
-          number: ${{ github.event.pull_request.number }}
-          header: lighthouse
-          message: ${{ steps.format_lighthouse_score.outputs.comment }}
+          message:  ${{ steps.format_lighthouse_score.outputs.comment }}
+        
+       
