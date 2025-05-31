@@ -46,6 +46,14 @@ Harness CCM uses labels to process node pool recommendations. Make sure to add o
 
 ## How are node pool recommendations computed?
 
+:::note
+
+- Node pool recommendations do not support node pools with autoscalers enabled.
+- These recommendations should be treated as a nudge, not a source of accurate cost data in such cases.
+- Please note, cost data might be incorrect for autoscaled node pools. To hide node pool recommendations for autoscaled pools, kindly reach out to [Harness Support](mailto:support@harness.io)
+
+:::
+
 The node pool recommendations are computed by analyzing historical utilization data and requests metrics of Pods. CCM recommends the optimal resource configurations for the Spot and On-demand instances. It uses the following parameters to determine the maximum node counts:
 
 * Total CPUs
