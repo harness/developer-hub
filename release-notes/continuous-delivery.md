@@ -60,6 +60,14 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 #### New Features and Enhancements
 
 - This agent release includes an Argo upgrade. The packaged ArgoCD version has been upgraded from v2.13.5 to v2.14.9.
+- The following CVE's were addressed and fixed for Harness GitOps images:
+  - CVE-2025-22869
+  - CVE-2024-45338
+  - CVE-2025-22869
+  - CVE-2024-12797
+  - CVE-2024-45338
+  - CVE-2024-24790
+  - CVE-2024-45338
 
 #### Fixed Issues
 
