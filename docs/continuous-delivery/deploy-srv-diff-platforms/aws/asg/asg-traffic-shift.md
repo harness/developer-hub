@@ -19,13 +19,15 @@ A Blue/Green deployment ensures reliable updates by running both the new and exi
 ## Set up an ASG Blue-Green Traffic Shifting Step Group
 
 1. Add an ASG stage to your pipeline.  
-2. In that stage’s **Service** section, add a Harness ASG service. For more information, see [Adding an ECS Service](/docs/).  
-3. In the **Environment** section, add a Harness ASG environment and infrastructure. For more information, see [Adding an ECS Environment](/docs/).  
+2. In that stage’s **Service** section, add a Harness ASG service. For more information, see [Adding an ECS Service](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial#harness-asg-services).  
+3. In the **Environment** section, add a Harness ASG environment and infrastructure. For more information, see [Adding an ECS Environment](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial#harness-asg-environments).  
 4. On the **Execution strategies** tab, choose **Blue Green**, then select **Add Traffic Shifting Steps** under **Enable Traffic Shifting for ECS Deployment**.
 
    Your **Execution** tab now shows a Blue Green Deployment group containing both **ASG Blue Green Deploy Step** and **ASG Traffic Shift**.
 
-Image
+<div align="center">
+  <DocImage path={require('./static/asg-traffic-shift-1.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
    If you don’t select **Add Traffic Shifting Steps**, you’ll instead see **ASG Blue Green Deploy Step** and **ASG Swap Service** in the group.
 
@@ -50,7 +52,9 @@ Image
 If you do not select **Use Shift Traffic**, the **ASG Traffic Shift** step will be omitted from the pipeline.
 :::
 
-Image
+<div align="center">
+  <DocImage path={require('./static/asg-traffic-shift-2.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 You can define multiple **AWS Load Balancer Configuration** entries, each opting in or out of traffic shifting.
 
@@ -74,9 +78,9 @@ Yaml sample for the step
                               max: 1
                               desired: 1
                           loadBalancers:
-                            - loadBalancer: DoNotDelete-asg-ng-test-shft-trf
-                              prodListener: arn:aws:elasticloadbalancing:us-east-1:806630305776:listener/app/DoNotDelete-asg-ng-test-shft-trf/7280a731f6e79d90/dc32456ae35ef52c
-                              prodListenerRuleArn: arn:aws:elasticloadbalancing:us-east-1:806630305776:listener-rule/app/DoNotDelete-asg-ng-test-shft-trf/7280a731f6e79d90/dc32456ae35ef52c/9b9d7ea836d45e29
+                            - loadBalancer: -asg-test
+                              prodListener: arn:..
+                              prodListenerRuleArn: arn:...
 ```
 </details>
 
@@ -85,6 +89,10 @@ Yaml sample for the step
 - **Name**: Logical name for the step.
 - **Timeout**: Maximum execution duration.
 - **New Autoscaling Group Weight (%)**: Enter the percentage of traffic to shift to the new ASG.
+
+<div align="center">
+  <DocImage path={require('./static/asg-traffic-shift-3.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 Here's a demo video of Blue Green with incremental traffic shift summary:
 
