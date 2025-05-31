@@ -181,6 +181,10 @@ Create a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-
 
    ![](../static/connect-to-harness-container-image-registry-using-docker-connector-49.png)
 
+### Authentication Considerations for Amazon ECR Private Repositories
+
+You can configure a Docker connector in Harness to authenticate and pull images from your private registry. You can either create your own Docker connector or use the built-in account-level Harness Docker connector (`harnessImage`). When configuring a Docker connector to access an Amazon ECR private repository, you must provide a username and password for authentication. According to [AWS documentation](https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html#registry-auth-token), the authentication token obtained via the `aws ecr get-login-password` command is valid for 12 hours. Therefore, to maintain uninterrupted access, you need to update the connector with a new token every 12 hours. This requirement applies only to private ECR repositories. For public ECR repositories, you can configure the connector to use anonymous access, which does not require token-based authentication.
+
 ## Connector selection hierarchy
 
 <!-- CDS-82080/CI-11611 -->
