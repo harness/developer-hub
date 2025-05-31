@@ -16,7 +16,7 @@ concurrency:
 jobs:
   lighthouse-report:
     permissions:
-      pull-requests: write # for marocchino/sticky-pull-request-comment
+      pull-requests: write 
     name: Lighthouse Report
     runs-on: ubuntu-latest
     strategy:
