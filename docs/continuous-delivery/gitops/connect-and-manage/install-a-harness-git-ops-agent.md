@@ -691,9 +691,9 @@ As of [GitOps Agent 0.89](/release-notes/continuous-delivery/#gitops-agent-versi
 
 :::
 
-In old agent versions, the agents running with multiple replicas are not aware that more replicas are running and hence the reconciliation runs on all. 
+In older agent versions, when agents run with multiple replicas, each replica is unaware of the others. As a result, reconciliation runs on all replicas independently. 
 
-Consequently, if there is was an HA agent running 5 pods all of the pods would send the reconcile call (5 times in 1 cycle). This resulted in computing overhead.
+Consequently, if there is a HA agent running 5 pods, all of the pods would send the reconcile call (5 times in 1 cycle). This resulted in computing overhead.
 
 ## References
 
