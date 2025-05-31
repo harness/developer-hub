@@ -1,7 +1,7 @@
 ---
 title: Install in a demo/non-prod environment in AWS
 description: Learn how to install Harness Self-Managed Enterprise Edition in AWS.
-sidebar_position: 15
+sidebar_position: 1
 sidebar_label: Install in AWS
 ---
 
@@ -29,6 +29,7 @@ Before you install Harness Self-Managed Enterprise Edition, you must create a te
 To create a test cluster using eksctl, do the following:
 
 1. Install and configure eksctl. For more information, go to [Installation](https://eksctl.io/installation/) in the eksctl documentation.
+
 2. Save the following to a `sample-demo-cluster.yaml` file.
 
     ```yaml
@@ -38,9 +39,9 @@ To create a test cluster using eksctl, do the following:
      # Modify these to the region of interest
      # Might need to modify again if your eksctl command says an AZ is unavailable for EKS nodes
     availabilityZones:
-    - us-east-2a
-    - us-east-2b
-    - us-east-2c
+    - us-east-1a
+    - us-east-1b
+    - us-east-1c
     cloudWatch:
       clusterLogging: {}
     iam:

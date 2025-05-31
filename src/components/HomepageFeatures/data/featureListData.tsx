@@ -142,6 +142,6 @@ export const featureList: CardItem[] = [
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: <>Install Harness Platform on self-managed Kubernetes cluster.</>,
-    link: "docs/category/get-started-with-smp",
+    link: "docs/self-managed-enterprise-edition",
   },
 ];
