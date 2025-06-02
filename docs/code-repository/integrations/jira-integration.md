@@ -34,9 +34,11 @@ After authentication, you can select a repository to link with JIRA. Use one of 
 Once a repository is connected, you'll see it listed under the Harness Code Repository Configuration section. Use the `...` menu to either configure the connection or disconnect it.
 
 :::note
-While editing a configuration, you cannot change the scope (e.g., from project to org or account).
-If the configuration was created at the project scope, you can add or remove projects within that scope.
-To switch scopes entirely, you'll need to delete the existing configuration and create a new one with the desired scope.
+- One Account/Org/Project can only be integrated with a single Jira instance at a time.
+- To connect to a different Jira instance, delete the existing configuration and create a new one.
+- You cannot change the scope of an existing configuration (e.g., from project to org or account).
+- If the configuration was created at the project scope, you can still add or remove projects within that scope.
+- To change scopes entirely, delete the current configuration and create a new one at the desired scope.
 :::
 
 ## How it Works
@@ -46,5 +48,6 @@ Once the integration is configured:
     - Branches
     - Commits
     - Pull Requests
+- The PR author, PR summary, PR status, PR reviewer and other details will appear under the respective pull requests.
 - These entries will link back to the corresponding objects in the Harness Code Repository.
 - When a PR is merged or closed in Harness, the status will be reflected in JIRA.
