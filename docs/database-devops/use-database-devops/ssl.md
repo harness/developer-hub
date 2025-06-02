@@ -12,19 +12,22 @@ We support two types of cloning **depending on the DB Schema connector type**
 
 | Clone Type |	SSL Support |	Notes |
 | --- | --- | --- |
-| Git	| ✅ Yes	| Mounts cert at `/etc/ssl/certs/ca-bundle.crt`. [More Info](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/) |
+| Git	| ✅ Yes	| Mounts cert at `/etc/ssl/certs/ca-bundle.crt` [More Info](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/) |
 | Artifactory	| ❌ No	| SSL is not supported yet |
 
 ## 2. Pre-requisites
 Before proceeding, ensure you have the following components and versions in place:
-* CA Bundle - `ca.crt` (included in a file called `ca.bundle`)
+* CA Bundle - `ca.crt` (commonly contains `ca.crt`, used by both client and server)
     - Generate [CA certificate](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/#create-a-ca-certificate)
     - Manage [CA bundles and secrets](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/#enable-self-signed-certificates)
-
-* `client.crt` and `client.key` is available
-  - Generate [client certificates](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/#create-a-client-certificate)
+    :::info Important Note
+    In most setups, the same CA signs both ends of the connection. If your environment uses distinct CAs for client and server, ensure both are trusted in the CA bundle.
+    :::
+* Client Certificate - `client.crt` and `client.key` needs to be manually created by the user.
+  - Learn how to Generate [client certificates](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/#create-a-client-certificate)
 * `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` delegate environment variables
   - We cannot use `DESTINATION_CA_PATH` since we need to mount different certificates to the build pod
+*  Review supported configurations for your database type: [Set up Connectors for Database DevOps](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors)
 
 :::info note
 **Minimum versions**
