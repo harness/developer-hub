@@ -6,6 +6,6 @@
   "className": "red",
   "link": {
       "type": "generated-index",
-      "title": "AWS ECS"
+      "title": "AWS ASG"
   }
 }
