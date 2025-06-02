@@ -39,7 +39,7 @@ To get started, set up FME in your code base with the following two steps.
 Import the SDK into your project using the following line:
 
 ```java title="Gradle"
-implementation 'io.split.client:android-client:5.2.0'
+implementation 'io.split.client:android-client:5.3.0'
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
@@ -813,7 +813,7 @@ val trackEvent = client.track(
 The SDK has a number of knobs for configuring performance. Each knob is tuned to a reasonable default. However, you can override the value while instantiating the SDK. The parameters available for configuration are shown below.
 
 | **Configuration** | **Description** | **Default value** |
-| --- | --- | --- |
+|---|---|---|
 | featuresRefreshRate | The SDK polls Harness servers for changes to feature flags at this rate (in seconds). | 3600 seconds |
 | segmentsRefreshRate | The SDK polls Harness servers for changes to segments at this rate (in seconds). | 1800 seconds |
 | impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Harness servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds |
@@ -822,7 +822,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | eventFlushInterval | When using `.track`, how often is the events queue flushed to Harness servers. | 1800 seconds |
 | eventsPerPush | Maximum size of the batch to push events. | 2000 |
 | trafficType | When using `.track`, the default traffic type to be used. | not set |
-| connectionTimeout  | HTTP client connection timeout (in ms). | 10000 ms |
+| connectionTimeout | HTTP client connection timeout (in ms). | 10000 ms |
 | readTimeout | HTTP socket read timeout (in ms). | 10000 ms |
 | impressionsQueueSize | Default queue size for impressions. | 30K |
 | disableLabels | Disable labels from being sent to Harness servers. Labels may contain sensitive information. | true |
@@ -842,6 +842,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | encryptionEnabled | If set to `true`, the local database contents is encrypted. | false |
 | prefix | If set, the prefix will be prepended to the database name used by the SDK. | null |
 | certificatePinningConfiguration | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |
+| rolloutCacheConfiguration | Specifies how long rollout data is kept in local storage before expiring. | null |
 
 To set each of the parameters defined above, use the syntax below.
 
@@ -854,14 +855,20 @@ import java.util.Arrays;
 
 SplitFilter splitFilter = SplitFilter.bySet(Arrays.asList("frontend"));
 
+RolloutCacheConfiguration rolloutCacheConfig = RolloutCacheConfiguration.builder()
+    .expirationDays(5) // Override the default expiration of 10 days
+    .clearOnInit(true)
+    .build();
+
 SplitClientConfig config = SplitClientConfig.builder()
-                            .impressionsRefreshRate(60)
-                            .connectionTimeout(15000)
-                            .readTimeout(15000)
-                            .syncConfig(SyncConfig.builder()
-                                .addSplitFilter(splitFilter)
-                                .build())
-                            .build();
+    .impressionsRefreshRate(60)
+    .connectionTimeout(15000)
+    .readTimeout(15000)
+    .rolloutCacheConfiguration(rolloutCacheConfig)
+    .syncConfig(SyncConfig.builder()
+        .addSplitFilter(splitFilter)
+        .build())
+    .build();
 
 // SDK key
 String sdkKey = "YOUR_SDK_KEY";
@@ -884,10 +891,16 @@ SplitClient client = splitFactory.client();
 ```kotlin
 val splitFilter: SplitFilter = SplitFilter.bySet(listOf("frontend"))
 
+val rolloutCacheConfig = RolloutCacheConfiguration.builder()
+    .expirationDays(5) // Override the default expiration of 10 days
+    .clearOnInit(true)
+    .build()
+
 val config: SplitClientConfig = SplitClientConfig.builder()
     .impressionsRefreshRate(60)
     .connectionTimeout(15000)
     .readTimeout(15000)
+    .rolloutCacheConfiguration(rolloutCacheConfig)
     .syncConfig(
         SyncConfig.builder()
             .addSplitFilter(splitFilter)
@@ -908,6 +921,12 @@ val client: SplitClient = splitFactory.client()
 
 </TabItem>
 </Tabs>
+
+## Configure cache behavior
+
+The SDK stores rollout data locally to speed up initialization and support offline behavior. By default, the cache expires after 10 days. You can override this or force clear the cache on SDK initialization.
+
+The minimum value for cache expiration is 1 day. Any lower value will revert to the default of 10 days. Even if you enable the option to clear the cache on initialization, the SDK will only clear it once per day to avoid excessive network usage.
 
 ## Localhost mode
 
