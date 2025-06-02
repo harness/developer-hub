@@ -80,7 +80,7 @@ If set to:
 - `false`: Artifacts are uploaded to the target path in artifactory while maintaining the hierarchy of the source repository.
 
 :::note
-This setting is available only if the feature flag `CI_ENABLE_UPLOAD_AS_FLAT` is enabled. When enabled, you will see the Upload As Flat option under Optional Configuration in the step configuration UI. To enable the flag, contact [Harness Support](mailto:support@harneess.io).
+This setting is available only if the feature flag `CI_ENABLE_UPLOAD_AS_FLAT` is enabled. When enabled, you will see the Upload As Flat option under Optional Configuration in the step configuration UI. To enable the flag, contact [Harness Support](mailto:support@harness.io).
 :::
 
 ### Timeout
