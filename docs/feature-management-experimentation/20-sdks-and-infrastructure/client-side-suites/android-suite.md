@@ -666,6 +666,8 @@ Feature flagging parameters:
 | encryptionEnabled | If set to `true`, the local database contents is encrypted. | false |
 | prefix | If set, the prefix will be prepended to the database name used by the Suite. | null |
 | certificatePinningConfiguration | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |
+| expirationDays | Number of days to keep cached data before it is considered expired. | 10 days |
+| clearOnInit | If set to `true`, clears any previously stored rollout data when the SDK initializes. Useful to force fresh data fetch on startup. | false |
 | rolloutCacheConfiguration | Specifies how long rollout data is kept in local storage before expiring. | null |
 
 Suite RUM agent parameters:

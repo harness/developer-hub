@@ -842,6 +842,8 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | encryptionEnabled | If set to `true`, the local database contents is encrypted. | false |
 | prefix | If set, the prefix will be prepended to the database name used by the SDK. | null |
 | certificatePinningConfiguration | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |
+| expirationDays | Specifies how long rollout data is kept in local storage before expiring (in days). Used to speed up initialization and support offline behavior. | 10 days |
+| clearOnInit | If set to `true`, clears any previously stored rollout data when the SDK initializes. Useful to force fresh data fetch on startup. | false |   
 | rolloutCacheConfiguration | Specifies how long rollout data is kept in local storage before expiring. | null |
 
 To set each of the parameters defined above, use the syntax below.
