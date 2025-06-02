@@ -71,7 +71,7 @@ import FMEArchitectureObjectsImage from '@site/docs/feature-management-experimen
 <FMEArchitectureObjectsImage />
 
 :::info[Note: Split Legacy settings locations]
-Post migration to app.harness.io, Split legacy Project permissions,  Change permissions and Data export permissions (marked in purple above) will move out of their current locations and into Harness RBAC management.
+Post migration to app.harness.io, Split legacy Project permissions,  Change permissions and Data export permissions (marked in purple above) will move out of their current locations and into Harness RBAC management. The first to move will be Project permissions in "part one" of the migration.  Environment-level change and data export permissions will move in "part two" of the migration.
 
 New Admin API Key creation and management will move to Harness Service Accounts.  Existing Split legacy Admin API Keys will continue to operate until revoked in the Split legacy location.
 :::
