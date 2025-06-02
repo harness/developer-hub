@@ -51,6 +51,16 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 :::
 
+## June 2025
+
+### Version 1.82
+
+<!-- 2025-06-02 -->
+
+#### Fixes issues
+
+- Fixed an issue where step identifiers in flexible templates included the stage name, which caused unexpected behavior during stage insertion. The stage name is now removed from the identifier to ensure consistent behavior. This fix was deployed as a hotfix in `ci-manager` version `1.81.3`. (CI-17711)
+
 ## May 2025
 
 ### Version 1.81
