@@ -596,6 +596,17 @@ The Argo CD components upgrade must be done manually.
 
 If you need to uninstall a GitOps Agent, you can use `kubectl delete` with the same manifest you used to install it. For example, `kubectl delete -f gitops-agent.yml -n argocd`.
 
+### What happens if CRDs are removed when uninstalling a GitOps agent?
+
+If CRDs are removed, it could cause all the apps to be removed from the cluster. We need to document CRD removal behavior and how to delete/uninstall an agent properly to avoid this. In our GitOps-Helm charts, we made the CRD setting default to:
+
+```yaml
+crds:
+  # -- Keep CRDs on chart uninstall
+  keep: true
+```
+
+Agents older than this chart can run into issues if they do helm uninstall <releaseName>, since that will remove the CRDs and, in turn, remove all the apps for the account. We also saw some customers maintaining their own charts for the GitOps agent, so this should be set to true to avoid issues.
 
 ## High Availability GitOps Agent
 
