@@ -528,12 +528,12 @@ Here's an example of decrypted Terraform JSON output:
 {
   "test-output-name1": {
     "sensitive": false,
-    "type": string,
+    "type": "string",
     "value": "test-output-value1"
   },
   "test-output-name2": {
     "sensitive": false,
-    "type": string,
+    "type": "string",
     "value": "test-output-value2"
   }
 }
