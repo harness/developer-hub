@@ -153,9 +153,13 @@ We've given this role access to **All non-internal indexes**. However, we could 
 1. In the **Username** field, enter the username of your Splunk account.
 2. In **Password** field, you can choose **Create or Select a secret.**
 
-
-:::info note
+:::note
 For secrets and other sensitive settings, select or create a new [Text Secret.](/docs/platform/secrets/add-use-text-secrets)
+:::
+
+:::info
+
+You may need to use an HEC token. This token will be used only for data ingestion.
 
 :::
 
