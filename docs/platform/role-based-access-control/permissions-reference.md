@@ -218,6 +218,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | GnuPG Keys | <ul><li>View (`gitops_gpgkey_view`)</li><li>Create/Edit (`gitops_gpgkey_edit`)</li><li>Delete (`gitops_gpgkey_delete`)</li></ul> | Active |
 | Repository Certificates | <ul><li>View (`gitops_gpgkey_view`)</li><li>Create/Edit (`gitops_gpgkey_edit`)</li><li>Delete (`gitops_gpgkey_delete`)</li></ul> | Active |
 | Applications | <ul><li>View (`gitops_application_view`)</li><li>Create/Edit (`gitops_application_edit`)</li><li>Delete (`gitops_application_delete`)</li><li>Sync: Deploy applications (`gitops_application_sync`)</li></ul> | Active |
+| Application Sets | <ul><li>View (`gitops_applicationset_view`)</li><li>Create/Edit (`gitops_applicationset_edit`)</li><li>Delete (`gitops_applicationset_delete`)</li></ul> | Experimental |
 | Repositories | <ul><li>View (`gitops_repository_view`)</li><li>Create/Edit (`gitops_repository_edit`)</li><li>Delete (`gitops_repository_delete`)</li></ul> | Active |
 | Certificates | <ul><li>View (`gitops_cert_view`)</li><li>Create/Edit (`gitops_cert_edit`)</li><li>Delete (`gitops_cert_delete`)</li></ul> | Active |
 
