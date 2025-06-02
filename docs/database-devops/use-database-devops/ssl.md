@@ -1,5 +1,6 @@
 ---
-title: SSL
+title: Secure Database Connectivity with SSL
+sidebar_label: SSL Support
 description: Learn More about How to set up Databases with SSL Connection with Harness DBDevops
 sidebar_position: 11
 ---
