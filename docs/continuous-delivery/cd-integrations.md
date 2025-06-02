@@ -22,6 +22,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| `CDS_UI_ENABLE_DISALLOWED_USER_EMAILS_IN_APPROVAL_STEP` | Enables users to exclude the user who triggered a pipeline from approving it in the Approval Step. **This feature is in Limited GA.** |
 | `CDS_REFRESH_IN_JIRA_SERVICENOW_APPROVALS` | Enables users to manually trigger a status refresh for **Jira**, **ServiceNow**, and **Custom Approval** steps using the **Refresh** button in the UI. This enhancement supports on-demand evaluation of approval conditions, reducing reliance on scheduled polling intervals. **This feature is in Limited GA.**|
 | `PIPE_ENABLE_QUEUED_BASED_CUSTOM_TRIGGERS` | Harness now supports custom webhook trigger execution via the **Queue Service**, improving reliability and scalability. This ensures webhook triggers are processed efficiently even under high load, without one customer's activity impacting others. **This feature is in Limited GA.**|
 | `CDS_ENABLE_STEADY_STATE_CHECK_WITHOUT_MANAGED_WORKLOADS` | Enables users to run **Service PreHooks** for Kubernetes **CronJob** workloads during the **Wait for Steady State** phase. Previously, PreHooks did not trigger for CronJobs. This feature ensures PreHooks are executed consistently across workload types. **This feature is in Limited GA.** |
