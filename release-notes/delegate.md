@@ -91,7 +91,8 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 ### Version 25.05.85905 <!--June 03, 2025-->
 
 #### Fixed issues
-- Resolved an issue where the lambda deployments with custom artifacts were failing for second and subsequent deployments. With this fix, this issue will be resolved [CDS-110885]
+
+- Resolved an issue where the lambda deployments with custom artifacts were failing for second and subsequent deployments. [CDS-110885]
 
 ## May 2025
 
