@@ -59,7 +59,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### New features and enhancements
 
-- Added support for the `PLUGIN_STRICT_KEY_MATCHING` feature flag (default: `true`) to address issues with cache restoration when multiple entries share a common prefix. Previously, restoring with a partial key could lead to incorrect path construction and unpredictable restore behavior.
+- The `PLUGIN_STRICT_KEY_MATCHING` feature flag (default: `true`) now controls cache restore behavior when multiple entries share a common prefix. This ensures that partial key matches no longer result in incorrect path construction or unpredictable restore outcomes.
 
     - Strict Mode (default): Only restores from exact key matches, preventing collisions and ensuring reliable behavior.
 
