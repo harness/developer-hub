@@ -86,6 +86,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## Delegate image release notes
 
+## June 2025
+
+### Version 25.05.85905 <!--June 03, 2025-->
+
+#### Fixed issues
+- Resolved an issue where the lambda deployments with custom artifacts were failing for second and subsequent deployments. With this fix, this issue will be resolved [CDS-110885]
+
 ## May 2025
 
 ### Version 25.05.85904 <!--May 30, 2025-->
