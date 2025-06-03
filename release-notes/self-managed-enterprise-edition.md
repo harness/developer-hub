@@ -267,7 +267,7 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
             ```
 :::
 
-## May 29, 2025, Version 0.29.0 <!-- Draft : May 26, 2025 -->
+## June 03, 2025, Version 0.29.0 <!-- Draft : May 26, 2025 -->
 
 This release includes the following Harness module and component versions.
 
@@ -275,7 +275,7 @@ This release includes the following Harness module and component versions.
 |---------------------------|----------------------------------------------------------------------------------------------|
 | Helm Chart                | [0.29.0](https://github.com/harness/helm-charts/releases/tag/harness-0.29.0)                 |
 | Air Gap Bundle            | [0.29.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.29.0) |
-| NG Manager                | 1.89.5                                                                                       |
+| NG Manager                | 1.89.6                                                                                       |
 | CI Manager                | 1.79.1                                                                                       |
 | Pipeline Service          | 1.128.1                                                                                      |
 | Platform Service          | 1.66.0                                                                                       |
