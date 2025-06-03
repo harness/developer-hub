@@ -86,6 +86,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## Delegate image release notes
 
+## June 2025
+
+### Version 24.07.83408 <!--June 03, 2025-->
+
+#### Fixed issues
+- Fixed an issue where Delegate was removing readiness related attributes from Tanzu manifest [CDS-111262]
+
 ## May 2025
 
 ### Version 25.05.85904 <!--May 30, 2025-->
