@@ -70,7 +70,8 @@ This applies to both GCS and S3 cache storage backends. For details, check out t
 #### Fixes issues
 
 - Fixed an issue where step identifiers in flexible templates included the stage name, which caused unexpected behavior during stage insertion. The stage name is now removed from the identifier to ensure consistent behavior. This fix was deployed as a hotfix in `ci-manager` version `1.81.3`. (CI-17711)
-
+- Fixed an issue where removing a non-CI stage resulted in the removal of CI codebase configuration. (CI-17661, ZD-85176)
+  
 ## May 2025
 
 ### Version 1.81
