@@ -128,6 +128,20 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## June 2025
+
+### Version 1.92.x <!--June 3, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where users were not able to see "Variable" option in the Audit Filter dropdown list. [PL-63195]
+- Fixed an issue where user is lead to blank page when navigating to a role or resource group from the user role bindings. [PL-63154]
+- Fixed an issue where the Code Repository resource group was not appearing in the resource group list. It is now visible and functioning as expected. [PL-63120]
+
+#### New Feature and Enhancement 
+
+- Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance.. [PL-62957]
+
 ## May 2025
 
 ### Version 1.91.x <!-- May 27, 2025-->
