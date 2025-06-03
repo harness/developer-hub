@@ -140,7 +140,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New Feature and Enhancement 
 
-- Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance.. [PL-62957]
+- Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance. [PL-62957]
 
 ## May 2025
 
