@@ -27,7 +27,7 @@ Set up FME in your code base with the following two steps:
 Import the SDK into your project including the dependency as follows:
 
 ```java title="Gradle"
-implementation 'io.split.client:android-suite:2.0.0'
+implementation 'io.split.client:android-suite:2.1.0'
 ```
 
 :::warning[Important]
@@ -638,7 +638,7 @@ Feature flagging parameters:
 
 
 | **Configuration** | **Description** | **Default value** |
-| --- | --- | --- |
+|---|---|---|
 | featuresRefreshRate | The Suite polls Harness servers for changes to feature flags at this rate (in seconds). | 3600 seconds |
 | segmentsRefreshRate | The Suite polls Harness servers for changes to segments at this rate (in seconds). | 1800 seconds |
 | impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Harness servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds |
@@ -647,7 +647,7 @@ Feature flagging parameters:
 | eventFlushInterval | When using the `track` method, how often is the events queue flushed to Harness servers. | 1800 seconds |
 | eventsPerPush | Maximum size of the batch to push events. | 2000 |
 | trafficType | When using the `track` method, the default traffic type to be used. | not set |
-| connectionTimeout  | HTTP client connection timeout (in ms). | 10000 ms |
+| connectionTimeout | HTTP client connection timeout (in ms). | 10000 ms |
 | readTimeout | HTTP socket read timeout (in ms). | 10000 ms |
 | impressionsQueueSize | Default queue size for impressions. | 30K |
 | disableLabels | Disable labels from being sent to Harness servers. Labels may contain sensitive information. | true |
@@ -666,6 +666,9 @@ Feature flagging parameters:
 | encryptionEnabled | If set to `true`, the local database contents is encrypted. | false |
 | prefix | If set, the prefix will be prepended to the database name used by the Suite. | null |
 | certificatePinningConfiguration | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |
+| expirationDays | Number of days to keep cached data before it is considered expired. | 10 days |
+| clearOnInit | If set to `true`, clears any previously stored rollout data when the SDK initializes. Useful to force fresh data fetch on startup. | false |
+| rolloutCacheConfiguration | Specifies how long rollout data is kept in local storage before expiring. | null |
 
 Suite RUM agent parameters:
 
@@ -685,6 +688,11 @@ To set each of the parameters defined above, use the following syntax:
 <TabItem value="java" label="Java">
 
 ```java
+RolloutCacheConfiguration rolloutCacheConfig = RolloutCacheConfiguration.builder()
+    .expirationDays(5) // Override the default expiration of 10 days
+    .clearOnInit(true)
+    .build();
+
 SplitSuite suite = SplitSuiteBuilder.build(
     sdkKey,
     new Key("user_id"),
@@ -698,6 +706,7 @@ SplitSuite suite = SplitSuiteBuilder.build(
         .eventsQueueSize(500)
         .telemetryRefreshRate(3600)
         .logLevel(SplitLogLevel.VERBOSE)
+        .rolloutCacheConfiguration(rolloutCacheConfig)
         .build(),
     applicationContext);
 ```
@@ -706,6 +715,11 @@ SplitSuite suite = SplitSuiteBuilder.build(
 <TabItem value="kotlin" label="Kotlin">
 
 ```kotlin
+val rolloutCacheConfig = RolloutCacheConfiguration.builder()
+    .expirationDays(5) // Override the default expiration of 10 days
+    .clearOnInit(true)
+    .build()
+
 val suite: SplitSuite = SplitSuiteBuilder.build(
     sdkKey,
     Key("user_id"),
@@ -719,12 +733,19 @@ val suite: SplitSuite = SplitSuiteBuilder.build(
         .eventsQueueSize(500)
         .telemetryRefreshRate(3600)
         .logLevel(SplitLogLevel.VERBOSE)
+        .rolloutCacheConfiguration(rolloutCacheConfig)
         .build(),
     applicationContext)
 ```
 
 </TabItem>
 </Tabs>
+
+## Configure cache behavior
+
+The SDK stores rollout data locally to speed up initialization and support offline behavior. By default, the cache expires after 10 days. You can override this or force clear the cache on Suite initialization.
+
+The minimum value for cache expiration is 1 day. Any lower value will revert to the default of 10 days. Even if you enable the option to clear the cache on initialization, the Suite will only clear it once per day to avoid excessive network usage.
 
 ## Localhost mode
 
