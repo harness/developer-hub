@@ -96,7 +96,7 @@ Add a cluster to be managed by the AutoStopping Rule.
 3. Once you have finished selecting the Kubernetes cluster, click **Add selected**.  
 
 :::note
-If you have selected a Kubernetes cluster, follow the steps in [Create AutoStopping Rules for Kubernetes Cluster](create-autostopping-rules-for-kubernetes.md).
+If you have selected a Kubernetes cluster, follow the steps in [Create AutoStopping Rules for Kubernetes Cluster](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-for-kubernetes).
 
 :::
 
@@ -179,7 +179,7 @@ Now that you have the AutoStopping rule configured, define how you would want to
 
 * Set up Access for HTTP/HTTPS workload: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
 * Setup Access for TCP workload or SSH/RDP: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed via TCP, SSH, or RDP.
-* You could skip this step for now and use the CLI to set up access. Go to [Use the Harness CLI to access resources through SSH/RDP](create-auto-stopping-rules-for-azure.md#use-the-harness-cli-to-access-resources-through-sshrdp) for details.
+* You could skip this step for now and use the CLI to set up access. Go to [Use the Harness CLI to access resources through SSH/RDP](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/create-rule-cluster#use-the-harness-cli-to-access-resources-through-sshrdp) for details.
 
 ## Set up access for TCP workload or SSH/RDP 
 
@@ -187,7 +187,7 @@ Setting up access for TCP workload or SSH/RDP allows AutoStopping to detect acti
 If you need to access the resources managed by this AutoStopping rule using TCP or SSH/RDP HTTPS URL, you need to perform the following steps: 
 
 
-1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access. Go to [Create an AutoStopping Proxy for Azure](../3-load-balancer/create-azure-autoproxy-lb.md) to create an AutoStopping load balancer.
+1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access. Go to [Create an AutoStopping Proxy for Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/load-balancer) to create an AutoStopping load balancer.
 2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated.
 3. Specify the source port numbers and the target TCP ports your application is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port. Ensure that these ports are open and accessible.
 4. Click **Next**.
@@ -205,13 +205,13 @@ Choose an Application Gateway or an AutoStopping Proxy load balancer from the dr
 The rule requires an application gateway to detect traffic and shut down appropriate instances. Multiple instances and rules can use a single load balancer. It identifies instances based on hostnames and directs the HTTP traffic appropriately.
 
 #### Select an Application Gateway
-Select an application gateway from the dropdown list. If your application gateway is not added, click **New Application Gateway**. For detailed steps, see [Create an Application Gateway for Azure](../3-load-balancer/create-an-application-gateway-for-azure.md).
+Select an application gateway from the dropdown list. If your application gateway is not added, click **New Application Gateway**. For detailed steps, see [Create an Application Gateway for Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/load-balancer).
  
  
  
    ![](./static/create-auto-stopping-rules-for-azure-60.png)
    
-The list populates the application gateway if the application gateway has previously been created in your environment but not yet mapped to Harness. In that case, you must [configure the DNS mapping settings](../3-load-balancer/create-an-application-gateway-for-azure.md). 
+The list populates the application gateway if the application gateway has previously been created in your environment but not yet mapped to Harness. In that case, you must [configure the DNS mapping settings](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/load-balancer). 
 
 
  ![](./static/create-auto-stopping-rules-for-azure-61.png)
@@ -284,7 +284,7 @@ Select **Use the auto-generated URL to access the resources managed by this Auto
 
 
 ### Use an AutoStopping Proxy load balancer
-If you have not created an AutoStopping proxy load balancer already, go to [Create an AutoStopping Proxy load balancer](../3-load-balancer/create-azure-autoproxy-lb.md).
+If you have not created an AutoStopping proxy load balancer already, go to [Create an AutoStopping Proxy load balancer](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/load-balancer).
 
 
 :::note
@@ -329,7 +329,7 @@ You can use either of the following methods:
 **Auto-generated URL**
 You can use the auto-generated URL to access the resources managed by this AutoStopping Rule.
 
-Every AutoStopping rule has an auto-generated URL. This URL is a subdomain to the domain name specified for the [load balancer](../3-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL works automatically and points to the correct load balancer.
+Every AutoStopping rule has an auto-generated URL. This URL is a subdomain to the domain name specified for the [load balancer](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/load-balancer). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL works automatically and points to the correct load balancer.
 
 Select **Use the auto-generated URL to access the resources managed by this AutoStopping Rule**.
 
@@ -409,7 +409,7 @@ Click **Next**.
 
 In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.  
   
-Your AutoStopping rule is listed under the [AutoStopping Rules summary page](autostopping-dashboard.md).
+Your AutoStopping rule is listed under the [AutoStopping Rules summary page](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard).
 
 ## See also
 

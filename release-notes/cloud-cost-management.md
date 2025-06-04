@@ -1376,7 +1376,7 @@ The issue is resolved now.
 
 - AutoStopping Proxy for HTTPS and TCP connections.
 
-Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](/docs/category/add-load-balancers-for-autostopping-rules) and [Create AutoStopping rules](/docs/category/create-autostopping-rules).
+Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. 
 
 ##### Fixed issues
 
