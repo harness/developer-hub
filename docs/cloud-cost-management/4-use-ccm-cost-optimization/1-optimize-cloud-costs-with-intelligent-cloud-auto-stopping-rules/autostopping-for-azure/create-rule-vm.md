@@ -252,7 +252,7 @@ You can use either of the following methods:
 
 **Auto-generated URL**
 
-Every AutoStopping rule has an auto-generated URL. This URL is a subdomain to the domain name specified for the [load balancer](../3-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL works automatically and point to the correct load balancer.
+Every AutoStopping rule has an auto-generated URL. This URL is a subdomain to the domain name specified for the [load balancer](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/load-balancer). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL works automatically and point to the correct load balancer.
 
 Select **Use the auto-generated URL to access the resources managed by this AutoStopping Rule**.
 
@@ -267,7 +267,20 @@ Enter the custom URL currently used to access the instances. The domain name sho
 <!-- ![](./static/create-autostopping-rules-aws-108.png) -->
 
 </details>
----
+
+
+</TabItem>
+<TabItem value="review" label="Step 3: Review">
+
+
+In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
+
+Your AutoStopping rule is listed under the AutoStopping Rules dashboard.
+
+</TabItem>
+</Tabs>
+
+
 
 ### Use the Harness CLI to access resources through SSH/RDP 
 
@@ -325,15 +338,3 @@ Run the following command to connect via private IP:
 ```
 harness rdp --host default-test-rdp-1.abc1000test.lightwingtest.com --internal-ip
 ```
-
-
-</TabItem>
-<TabItem value="review" label="Step 3: Review">
-
-
-In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
-
-Your AutoStopping rule is listed under the AutoStopping Rules dashboard.
-
-</TabItem>
-</Tabs>

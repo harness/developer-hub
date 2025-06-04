@@ -552,7 +552,7 @@ The VMs can be accessed using any of the following methods:
 
 #### Do AutoStopping Rules need an Application Gateway or Azure Web Application Firewall (WAF) for non-prod workloads?
 
-Yes, you need to create an Application Gateway for Azure. See [Create an Application Gateway for Azure](../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-load-balancer/create-an-application-gateway-for-azure.md).
+Yes, you need to create an Application Gateway for Azure. See [Create an Application Gateway for Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/load-balancer).
 
 #### How AutoStopping Rules can help when I shut down my VMs during non-working hours?
 
@@ -567,7 +567,7 @@ Together, this helps customers achieve savings that are 2-3x that of any static 
 
 #### Can I use a front door designer with backend pools as a load balancer? Will AutoStopping Rules work?
 
-No. Currently, an Application Gateway is required for Azure AS to work. See [Create an Application Gateway for Azure](../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-load-balancer/create-an-application-gateway-for-azure.md).
+No. Currently, an Application Gateway is required for Azure AS to work. See [Create an Application Gateway for Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/load-balancer).
 
 ### AutoStopping Proxy load balancers
 
@@ -575,7 +575,7 @@ No. Currently, an Application Gateway is required for Azure AS to work. See [Cre
 
 It is a custom VM launched in the customer's cloud account which comes pre-installed with the necessary proxy and load balancing services. For more information, visit the following topics: 
 * [AutoStopping Proxy for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/autostopping-proxy) 
-* [AutoStopping Proxy for Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-azure-autoproxy-lb) 
+* [AutoStopping Proxy for Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/autostopping-proxy) 
 * [AutoStopping Proxy for GCP](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-gcp/autostopping-proxy)
 
 
