@@ -741,11 +741,25 @@ val suite: SplitSuite = SplitSuiteBuilder.build(
 </TabItem>
 </Tabs>
 
-## Configure cache behavior
+### Configure cache behavior
 
 The SDK stores rollout data locally to speed up initialization and support offline behavior. By default, the cache expires after 10 days. You can override this or force clear the cache on Suite initialization.
 
 The minimum value for cache expiration is 1 day. Any lower value will revert to the default of 10 days. Even if you enable the option to clear the cache on initialization, the Suite will only clear it once per day to avoid excessive network usage.
+
+You can configure cache behavior using the `rolloutCacheConfiguration` setting:
+
+```java
+{
+  "rolloutCacheConfiguration": {
+    "expirationDays": 10,
+    "clearOnInit": false
+  }
+}
+```
+
+- `expirationDays`: Number of days to keep cached data before it is considered expired. Default: 10 days.
+- `clearOnInit`: If set to `true`, clears previously stored rollout data when the SDK initializes. Default: `false`.
 
 ## Localhost mode
 

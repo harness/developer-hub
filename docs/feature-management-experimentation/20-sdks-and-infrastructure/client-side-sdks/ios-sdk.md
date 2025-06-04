@@ -526,6 +526,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | httpsAuthenticator | If set, the SDK uses it to authenticate network requests. To set this value, an implementation of SplitHttpAuthenticator must be provided. | `nil` |
 | prefix | Allows to use a prefix when naming the SDK storage. Use this when using multiple `SplitFactory` instances with the same SDK key. | `nil` |
 | certificatePinningConfig | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |
+| rolloutCacheConfiguration | Specifies how long rollout data is kept in local storage before expiring. | null |
 
 To set each of the parameters defined above, use the syntax below:
 
@@ -538,13 +539,21 @@ let sdkKey: String = "YOUR_SDK_KEY"
 //User Key
 let key: Key = Key(matchingKey: "key")
 
-//Configuration
+// Rollout Cache Configuration
+let rolloutCacheConfig = RolloutCacheConfiguration.builder()
+    .set(clearOnInit: true)
+    .set(expirationDays: 5) // Override the default expiration of 10 days
+    .build()
+
+//Split Configuration
 let config = SplitClientConfig()
 config.impressionRefreshRate = 30
 config.isDebugModeEnabled = false
+config.rolloutCacheConfiguration = rolloutCacheConfig
+
 let syncConfig = SyncConfig.builder()
-                    .addSplitFilter(SplitFilter.bySet(["frontend"]))
-                    .build()
+    .addSplitFilter(SplitFilter.bySet(["frontend"]))
+    .build()
 config.sync = syncConfig
 
 //SDK Factory
@@ -555,6 +564,24 @@ builder.setApiKey(sdkKey).setKey(key).setConfig(config).build()
 //SDK Client
 let client = factory?.client
 ```
+
+### Configure cache behavior
+
+The SDK stores rollout data locally to speed up initialization and support offline behavior. By default, the cache expires after 10 days. You can override this or force clear the cache on SDK initialization.
+
+The minimum value for cache expiration is 1 day. Any lower value will revert to the default of 10 days. Even if you enable the option to clear the cache on initialization, the SDK will only clear it once per day to avoid excessive network usage.
+
+You can configure cache behavior using the `rolloutCacheConfiguration` setting:
+
+```swift
+let rolloutCacheConfig = RolloutCacheConfiguration.builder()
+    .set(clearOnInit: true)
+    .set(expirationDays: 5) // Override the default expiration of 10 days
+    .build()
+```
+
+- `expirationDays`: Number of days to keep cached data before it is considered expired. Default: 10 days.
+- `clearOnInit`: If set to `true`, clears previously stored rollout data when the SDK initializes. Default: `false`.
 
 ## Localhost mode
 
