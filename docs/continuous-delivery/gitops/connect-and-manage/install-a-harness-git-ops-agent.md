@@ -598,7 +598,7 @@ If you need to uninstall a GitOps Agent, you can use `kubectl delete` with the s
 
 ### What happens if CRDs are removed when uninstalling a GitOps agent?
 
-If CRDs are removed, it could cause all the apps to be removed from the cluster. We need to document CRD removal behavior and how to `delete/uninstall` an agent properly to avoid this. In our GitOps-Helm charts, we made the CRD setting default to:
+When you uninstall the GitOps agent, deleting its CRDs will also delete all GitOps-managed apps in the cluster. To avoid accidental data loss, ensure CRDs are preserved:
 
 ```yaml
 crds:
@@ -606,7 +606,10 @@ crds:
   keep: true
 ```
 
-Agents older than this chart can run into issues if they do helm uninstall `<releaseName>`, since that will remove the CRDs and, in turn, remove all the apps for the account. We also saw some customers maintaining their own charts for the GitOps agent, so this should be set to true to avoid issues.
+This tells Helm not to delete CRDs when you run: `helm uninstall <releaseName>`
+
+If you installed the agent with an older or custom chart that doesn’t include `crds.keep: true`, Helm’s default behavior will delete CRDs (and all dependent apps) on uninstall. Either override that setting at uninstall time or update your chart to include it.
+
 
 ## High Availability GitOps Agent
 
