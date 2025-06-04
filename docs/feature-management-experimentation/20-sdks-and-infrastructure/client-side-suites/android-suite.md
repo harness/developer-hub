@@ -749,13 +749,11 @@ The minimum value for cache expiration is 1 day. Any lower value will revert to 
 
 You can configure cache behavior using the `rolloutCacheConfiguration` setting:
 
-```java
-{
-  "rolloutCacheConfiguration": {
-    "expirationDays": 10,
-    "clearOnInit": false
-  }
-}
+```kotlin
+val rolloutCacheConfig = RolloutCacheConfiguration.builder()
+    .expirationDays(5) // Override the default expiration of 10 days
+    .clearOnInit(true)
+    .build()
 ```
 
 - `expirationDays`: Number of days to keep cached data before it is considered expired. Default: 10 days.
