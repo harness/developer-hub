@@ -10,7 +10,7 @@ description: ""
 
 AppDynamics allows users to proactively monitor, manage, and optimize the most complex software environments. Harness FME integrates with AppDynamics to provide custom events in AppDynamics highlighting Harness FME changes.
 
-If you have trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
+If you have trouble completing the integration, contact us at [support@harness.io](mailto:support@split.io).
 
 :::info[Integration requirements]
 The Harness FME pre-built integration with AppDynamics does not support AppDynamics On-Premise (self-hosted) solution.
@@ -20,7 +20,7 @@ The Harness FME pre-built integration with AppDynamics does not support AppDynam
  
 To connect Harness FME to AppDynamics, create a role and a user within that role.
 
-1. From AppDynamics top menu, select **Settings** > **Administration**.
+1. From AppDynamics navigation menu, select **Settings** > **Administration**.
 
    ![](./static/appdynamics-step1.png)
 
