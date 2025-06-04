@@ -59,13 +59,15 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### New features and enhancements
 
-- The `PLUGIN_STRICT_KEY_MATCHING` feature flag (default: `true`) now controls cache restore behavior when multiple entries share a common prefix. This ensures that partial key matches no longer result in incorrect path construction or unpredictable restore outcomes.
+- Changed cache restore behavior when multiple cache key entries share a common prefix. This ensures that partial key matches no longer result in incorrect path construction or unpredictable restore outcomes.
 
     - Strict Mode (default): Only restores from exact key matches, preventing collisions and ensuring reliable behavior.
 
     - Flexible Mode (PLUGIN_STRICT_KEY_MATCHING=false): Allows restoring all entries that match the prefix, but may result in multiple paths being restored and potential conflicts.
 
-This applies to both GCS and S3 cache storage backends. For details, check out the [docs](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs/#avoiding-prefix-collisions-during-restore). (CI-17216, ZD-82800)
+This applies to both GCS and S3 cache storage backends. For details, check out the [docs](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs/#avoiding-prefix-collisions-during-restore). 
+
+This feature is behind the feature flag `PLUGIN_STRICT_KEY_MATCHING`. (CI-17216, ZD-82800)
 
 #### Fixes issues
 
