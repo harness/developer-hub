@@ -23,9 +23,9 @@ Set up FME in your code base with the following two steps:
 
 Add the Harness FME SDK, RUM agent, and Suite into your project using Swift Package Manager by adding the following package dependencies:
 
-- [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.2.0`
+- [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.3.0`
 - [iOS RUM](https://github.com/splitio/ios-rum), latest version `0.4.0`
-- [iOS Suite](https://github.com/splitio/ios-suite), latest version `2.1.0`
+- [iOS Suite](https://github.com/splitio/ios-suite), latest version `2.2.0`
 
 :::info[Important!]
 When not using the last version of the SDK Suite, it is important to take into account the compatibility matrix below.
@@ -40,6 +40,7 @@ When not using the last version of the SDK Suite, it is important to take into a
 | 2.0.0    | 3.0.0   | 0.4.0   |
 | 2.0.1    | 3.0.0   | 0.4.0   |
 | 2.1.0    | 3.2.0   | 0.4.0   |
+| 2.2.0    | 3.3.0   | 0.4.0   |
 
 Then import the Suite in your code.
 
