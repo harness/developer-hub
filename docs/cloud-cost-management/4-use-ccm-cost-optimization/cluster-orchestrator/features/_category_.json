@@ -1,11 +1,11 @@
 {
-    "label": "Spot Instance Management",
+    "label": "Features",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
-    "position": 2,
+    "position": 3,
     "link": {
         "type": "generated-index",
-        "title": "Spot Instance Management"
+        "title": "Features"
     }
 }

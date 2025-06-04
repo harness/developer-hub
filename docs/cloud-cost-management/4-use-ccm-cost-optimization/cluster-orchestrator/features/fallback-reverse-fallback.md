@@ -23,7 +23,7 @@ This process happens automatically, ensuring your applications remain available 
 
 The diagram illustrates how Cluster Orchestrator handles Spot Instance interruptions, from detection to workload migration, ensuring continuous application availability.
 
-<DocImage path={require('../static/working-spot.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/working-spot.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ## Reverse Fallback
 

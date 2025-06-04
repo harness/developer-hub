@@ -29,28 +29,4 @@ This feature is behind a feature flag. Contact [Harness Support](mailto:support@
 4. After this, your created connector will show up on the home page of Cluster Orchestrator.
 5. Choose an enablement method:
    - **kubectl**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-kubectl#kubectl-based-installation)
-   - **Helm**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co#helm-based-installation)
-
-## What to Expect After Enablement
-
-After successfully enabling Cluster Orchestrator for your cluster, you'll have access to three main views:
-
-### 1. Overview
-
-Provides comprehensive information about your cluster including:
-- Cluster spend 
-- Nodes breakdown (on-demand, spot, fallback)
-- CPU and memory utilization
-- Information about nodes and pods
-
-### 2. Workloads View
-
-Shows detailed information about all workloads running in your cluster:
-- Namespace distribution
-- Replica count and distribution (on-demand vs. spot)
-- Perspective related to the cluster
-- Resource requests and limits
-
-### 3. Nodes View
-
-Displays information about all nodes in your cluster like workloads, instance types, fulfillment, CPU, memory, age and status.
+   - **Helm**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co-helm)
