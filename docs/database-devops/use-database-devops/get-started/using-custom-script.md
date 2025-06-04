@@ -16,7 +16,7 @@ This guide provides a comprehensive overview of how to use a custom script for D
 
 This guide supports the following scenario:
 
-- The customer maintains a Liquibase changelog in a remote repository (e.g., GitHub, JFrog).
+- The customer maintains a Liquibase changelog in a remote repository (e.g., GitHub, JFrog). This is particularly useful when the changelog is stored in a repository for which Harness does not provide a native connector.
 - They want to download and extract this changelog dynamically via a custom shell script.
 - The script can reference **pipeline variables**, such as build versions or access tokens.
 
@@ -49,7 +49,7 @@ By following these steps, you can effectively manage your database changes and s
 5. Select the `DB Schema` and Click on the `Add New DB Instance` button.
 ![Create DB Instance for DB Schema](../static/custom-script/db-devops-custom-database-instance.png)
 - **Name of DB Instance**: The name of the DB Instance. This is the name that will be used in the pipeline to refer to this DB Instance.
-- **Tags (optional)**: Tags to be used for the DB Instance. This can be used to identify the DB Instance in the pipeline. If left blank, the tags will be automatically generated.
+- **Tags (optional)**: Tags to be used for the DB Instance. This can be used to change which instances are shown on the migration state dashboard. If left blank, the tags will be automatically generated.
 - **Connector**: The JDBC Connector to be used for the DB Instance. This is the connector that will be used to connect to the database instance.
 - **Context**: The context is used to control which changelogs are deployed to which environments. This is useful when you have multiple environments (e.g., dev, test, prod) and you want to deploy different changelogs to each environment.
 
