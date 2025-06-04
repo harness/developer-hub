@@ -110,9 +110,3 @@ native services?}
 
 11. Review your configuration and click **Save Load Balancer**.
 
-## Next Steps
-
-After creating your AutoStopping proxy, you can:
-
-- [Create AutoStopping rules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rule-ec2) for your AWS resources
-

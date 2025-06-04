@@ -52,7 +52,7 @@ You can create a Load Balancer in two ways:
 
 ### Option 1: Creating a Load Balancer During Rule Setup
 
-After following Step 1 from the [Create AutoStopping Rule](/docs/cloud-cost-management/use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rule-ec2) guide, you will be directed to the "Setup Access" screen:
+After following Step 1 from the [Create AutoStopping Rule](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rules-ectwo) guide, you will be directed to the "Setup Access" screen:
 
 1. Choose either **TCP Workload** or **HTTP/HTTPS Workload**
 2. Click **Create new AutoStopping Proxy** (or select an existing load balancer from the dropdown)

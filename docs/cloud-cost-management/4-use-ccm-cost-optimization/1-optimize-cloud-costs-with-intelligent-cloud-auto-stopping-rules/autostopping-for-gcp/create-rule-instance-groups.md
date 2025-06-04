@@ -95,7 +95,7 @@ To create a fixed schedule for your rule, do the following:
 </TabItem>
 <TabItem value="access" label="Step 2: Setup Access">
 
-1. In **Setup Access**, select **Proxy** from drop-down list or [create a new one](docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/autostopping-proxy).
+1. In **Setup Access**, select **Proxy** from drop-down list or [create a new one](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-gcp/autostopping-proxy).
 2. Click on Next.
 
 </TabItem>
