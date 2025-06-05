@@ -38,6 +38,8 @@ The following list is optional. You can allowlist these IPs if needed.
 34.160.153.7
 34.82.155.149
 34.168.179.66
+34.111.129.146
+34.49.130.243
 ```
 
 :::warning
