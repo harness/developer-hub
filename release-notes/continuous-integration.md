@@ -105,7 +105,8 @@ This feature is behind the feature flag `PLUGIN_STRICT_KEY_MATCHING`. (CI-17216,
 #### New features and enhancements
 
 - **Adjustable VM Pool initialization timeout for Windows deployments** - Virtual machines may have differing startup and initialization durations across operating systems, which can lead to timeout errors in VM Pools. You can now adjust the VM initialization timeout to ensure sufficient time to initialize. (CI-15143, ZD-70731)
-
+- Added support for [viewing all artifacts](/docs/continuous-integration/use-ci/viewing-builds#artifacts-tab) across stages in a grouped view, organized by the stage they were generated in. (CI-11987, ZD-61206)
+  
 #### Fixed issues
 
 - Fixed an issue where build stages misinterpreted environment variables containing commas, causing incorrect parsing of buildx options. The `plugins/buildx:1.3.1` plugin now supports the `PLUGIN_BUILDX_OPTIONS_SEMICOLON` variable to allow semicolon-delimited input for options containing commas. (CI-17379, ZD-83477)
