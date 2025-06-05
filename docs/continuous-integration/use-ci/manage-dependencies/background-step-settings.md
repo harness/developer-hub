@@ -202,7 +202,7 @@ In this example, the pulls a `python` image and executes a shell script (`Sh`) t
               - step:
                   ...
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |-

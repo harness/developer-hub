@@ -193,7 +193,7 @@ pipeline:
                   name: Run_Ruby_Tests
                   identifier: Run_Ruby_Tests
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: ruby:latest ## Specify if required by your build infrastructure.
                     language: Ruby
                     buildTool: Rspec

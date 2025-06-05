@@ -102,7 +102,7 @@ You can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) t
     identifier: dependencies
     name: Dependencies
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:7.0
       command: |-
         dotnet add package Newtonsoft.json --version 12.0.1
@@ -213,7 +213,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build 
     identifier: build_dotnet_app
     name: Build DotNet App
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:6.0
       shell: Sh
       command: |-
@@ -273,7 +273,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
     identifier: install_converter
     name: install converter
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:6.0
       shell: Sh
       command: |-
@@ -284,7 +284,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
     identifier: build_dotnet_app
     name: Build DotNet App
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:6.0
       shell: Sh
       command: |-
@@ -346,7 +346,7 @@ With this feature flag enabled, you can use **Run Tests** steps to [run unit tes
     identifier: runTestsWithIntelligence
     name: runTestsWithIntelligence
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:6.0
       language: Csharp
       buildEnvironment: Core
@@ -468,7 +468,7 @@ Specify the desired [.NET SDK image](https://mcr.microsoft.com/en-us/product/dot
     name: dotnet version
     identifier: dotnet_version
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:7.0
       shell: Sh
       command: |-
@@ -501,7 +501,7 @@ On Windows platforms, you might also need to [install Microsoft Build Tools into
     name: dotnet Version
     identifier: dotnet_version
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:<+stage.matrix.dotnetVersion>
       shell: Sh
       command: |-
@@ -654,7 +654,7 @@ pipeline:
                   name: dotnet version
                   identifier: dotnet_version
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: mcr.microsoft.com/dotnet/sdk:7.0
                     shell: Sh
                     command: |-
@@ -664,7 +664,7 @@ pipeline:
                   identifier: dependencies
                   name: Dependencies
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: mcr.microsoft.com/dotnet/sdk:7.0
                     command: |-
                       dotnet add package Newtonsoft.json -- version 12.0.1
@@ -673,7 +673,7 @@ pipeline:
                   identifier: install_converter
                   name: install converter
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: mcr.microsoft.com/dotnet/sdk:7.0
                     shell: Sh
                     command: |-
@@ -684,7 +684,7 @@ pipeline:
                   identifier: build_dotnet_app
                   name: Build DotNet App
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: mcr.microsoft.com/dotnet/sdk:7.0
                     shell: Sh
                     command: |-
