@@ -13,8 +13,24 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: May 23, 2025
+#### Last updated: June 5, 2025
 
+## June 2025
+### [New Feature] Control cache expiration for client-side SDKs
+----
+#### 2025-06-05
+
+The following SDKs now allow you to configure how long the rollout cache for feature flags and segment memberships persist: Browser, iOS, and Android. By default, the cache expires after 10 days. 
+
+This update introduces new configuration options for overriding that default and for explicitly clearing the cache on SDK initialization.
+
+#### Related documentation
+- [Browser SDK](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK#configuring-localstorage-cache-for-the-sdk)
+- [Browser SDK Suite](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite#configuring-localstorage-cache-for-the-suite)
+- [iOS SDK](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#configure-cache-behavior)
+- [iOS SDK Suite](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite#configure-cache-behavior)
+- [Android SDK](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#configure-cache-behavior)
+- [Android SDK Suite](https://help.split.io/hc/en-us/articles/22916666123277-Android-Suite#configure-cache-behavior)
 
 ## April 2025
 ### [New Feature] Experiments Dashboard
