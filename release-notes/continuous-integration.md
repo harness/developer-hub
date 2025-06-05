@@ -51,6 +51,29 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 :::
 
+## June 2025
+
+### Version 1.82
+
+<!-- 2025-06-02 -->
+
+#### New features and enhancements
+
+- Changed cache restore behavior when multiple cache key entries share a common prefix. This ensures that partial key matches no longer result in incorrect path construction or unpredictable restore outcomes.
+
+    - Strict Mode (default): Only restores from exact key matches, preventing collisions and ensuring reliable behavior.
+
+    - Flexible Mode (PLUGIN_STRICT_KEY_MATCHING=false): Allows restoring all entries that match the prefix, but may result in multiple paths being restored and potential conflicts.
+
+This applies to both GCS and S3 cache storage backends. For details, check out the [docs](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs/#avoiding-prefix-collisions-during-restore). 
+
+This feature is behind the feature flag `PLUGIN_STRICT_KEY_MATCHING`. (CI-17216, ZD-82800)
+
+#### Fixes issues
+
+- Fixed an issue where step identifiers in flexible templates included the stage name, which caused unexpected behavior during stage insertion. The stage name is now removed from the identifier to ensure consistent behavior. This fix was deployed as a hotfix in `ci-manager` version `1.81.3`. (CI-17711)
+- Fixed an issue where removing a non-CI stage resulted in the removal of CI codebase configuration. (CI-17661, ZD-85176)
+  
 ## May 2025
 
 ### Version 1.81
