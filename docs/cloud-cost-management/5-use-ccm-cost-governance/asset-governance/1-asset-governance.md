@@ -14,7 +14,7 @@ Cloud Asset Governance is built on top of the popular open source software Cloud
 
 Harness also offers a wide range of policies, which are available out of the box, which you can leverage on day 0 to optimize your cloud resources and set up guardrails against future wastage.
 
-### AWS Resource Coverage (Comprehensive list)
+### AWS Resource Coverage (Examples)
 
 - EC2 instances
 - S3 buckets
@@ -22,7 +22,9 @@ Harness also offers a wide range of policies, which are available out of the box
 - RDS (Relational Database Service) instances
 - CloudFormation stacks
 
-### Azure Resource Coverage (Comprehensive list)
+For a comprehensive list of all supported AWS resources, refer to the [AWS Resource Reference — Cloud Custodian documentation](https://cloudcustodian.io/docs/aws/resources/index.html).
+
+### Azure Resource Coverage (Examples)
 
 - Virtual Machines (VMs)
 - Storage accounts
@@ -30,13 +32,17 @@ Harness also offers a wide range of policies, which are available out of the box
 - Cosmos DB accounts
 - Key Vaults
 
-### GCP Resource Coverage (Comprehensive list)
+For a comprehensive list of all supported Azure resources, refer to the [Azure Resource Reference — Cloud Custodian documentation](https://cloudcustodian.io/docs/azure/resources/index.html).
+
+### GCP Resource Coverage (Examples)
 
 - Compute Engine instances
 - Cloud Storage buckets
 - App Engine applications
 - Cloud SQL instances
 - Cloud IAM policies
+
+For a comprehensive list of all supported GCP resources, refer to the [GCP Resource Reference — Cloud Custodian documentation](https://cloudcustodian.io/docs/gcp/resources/index.html).
 
 ## Use Cases
 
@@ -78,8 +84,8 @@ Harness Cloud Asset Governance streamlines cloud management processes, improves 
 ### Cloud-Custodian Versions at Harness
 
 The cloud-custodian versions utilised currently are as following:
-  - `c7n==0.9.41`
-  - `c7n_azure==0.7.40`
-  - `c7n_gcp==0.4.40 `
+  - `c7n==0.9.44`
+  - `c7n_azure==0.7.43`
+  - `c7n_gcp==0.4.43`
 
 
