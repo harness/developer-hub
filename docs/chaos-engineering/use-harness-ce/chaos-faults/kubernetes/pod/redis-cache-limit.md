@@ -20,10 +20,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: hce
-  name: pod-api-block
+  name: redis-cache-limit
 spec:
   definition:
-    scope: Cluster # Supports "Namespaced" mode too
+    scope: Namespaced
 permissions:
   - apiGroups: [""]
     resources: ["pods"]
@@ -36,9 +36,6 @@ permissions:
     verbs: ["get", "list", "watch"]
   - apiGroups: [""]
     resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
     verbs: ["get", "list"]
   - apiGroups: [""]
     resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
