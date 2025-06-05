@@ -26,12 +26,6 @@ export const FmeData: Horizon = {
         description:
           "Assign feature availability for user groups based on different conditions, with all the power of FME targeting.",
       },
-      {
-        tag: [{ value: "Targeting" }],
-        title: "Client side SDKs cache expiration",
-        description:
-          "Control when local cache on device expires.",
-      },
     ],
   },
   Next: {
@@ -89,6 +83,13 @@ export const FmeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Targeting" }],
+        title: "Client side SDKs cache expiration",
+        description:
+          "Control when local cache on device expires.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-control-cache-expiration-for-client-side-sdks",
+      },
       {
         tag: [{ value: "Targeting" }],
         title: "Flag impressions toggle",
