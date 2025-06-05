@@ -40,7 +40,7 @@ These release notes describe recent changes to Harness Code Repository.
 #### New features and enhancements
 
 * Added support for [Git Large File Storage (LFS)](/docs/code-repository/work-in-repos/git-lfs) to enable versioning of large binary files in repositories.
-* Added [Jira integration](/docs/code-repository/integrations/jira-integration) to enable visibility between your code repository and issue tracking workflows.
+* Added [Jira integration](/docs/code-repository/integrations/jira-integration) to enable visibility between code repository and issue tracking workflows.
   
 <!-- May 20, 2025 -->
 
