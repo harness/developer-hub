@@ -20,9 +20,10 @@ These release notes describe recent changes to Harness Code Repository.
 
 :::
 
+<!--
 ## June 2025
 
-<!-- June 03, 2025 -->
+ June 03, 2025 
 
 ### Version 1.44.x
 
@@ -30,7 +31,9 @@ These release notes describe recent changes to Harness Code Repository.
 
 * Added Audit logs for force push.
 * PR dashboard enhancement.
-  
+
+-->
+
 ## May 2025
 
 <!-- May 27, 2025 -->
