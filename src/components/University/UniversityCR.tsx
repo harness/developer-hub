@@ -106,7 +106,7 @@ export default function CertificationsCR() {
           </div>
           <h1>Code Repository</h1>
           <div>
-            Securly host Git repositories and collaborate with advanced access
+            Securely host Git repositories and collaborate with advanced access
             controls and governance.
           </div>
         </div>
