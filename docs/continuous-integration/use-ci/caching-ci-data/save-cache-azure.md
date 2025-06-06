@@ -42,7 +42,7 @@ To restore a cache from Azure, add a [Plugin step](../use-drone-plugins/plugin-s
                   name: restore cache from Azure
                   identifier: restore_cache_from_Azure
                   spec:
-                    connectorRef: account.harnessImage ## Specify a Docker connector to pull the plugin image.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR ## Specify a Docker connector to pull the plugin image.
                     image: plugins/cache ## Must be 'plugins/cache'. This is the Cache plugin image.
                     settings:
                       restore: true ## You must include 'restore: true' to use the Cache plugin to restore a cache.
@@ -85,7 +85,7 @@ To save a cache to Azure, add a [Plugin step](../use-drone-plugins/plugin-step-s
                   name: save cache to Azure
                   identifier: save_cache_to_Azure
                   spec:
-                    connectorRef: account.harnessImage ## Specify a Docker connector to pull the plugin image.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR ## Specify a Docker connector to pull the plugin image.
                     image: plugins/cache ## Must be 'plugins/cache'. This is the Cache plugin image.
                     settings:
                       rebuild: true ## You must include 'rebuild: true' to use the Cache plugin to save a cache.
@@ -216,7 +216,7 @@ Here's an example of a pipeline that builds and tests a Go app. It includes step
                   type: Plugin
                   name: Azure restore cache
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/cache
                     settings:
                       backend: azure
@@ -260,7 +260,7 @@ Here's an example of a pipeline that builds and tests a Go app. It includes step
                   type: Plugin
                   name: Azure write cache
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/cache
                     settings:
                       rebuild: true

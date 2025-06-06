@@ -38,7 +38,7 @@ Add the **Test** step to the [Build stage](/docs/continuous-integration/use-ci/s
                   spec:
                     command: mvn test  # Required. All other settings are optional.
                     shell: sh # Optional shell type.
-                    connectorRef: account.harnessImage # Container registry connector.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR # Container registry connector.
                     image: repo/image # Container image to use to run the commands.
                     privileged: false
                     intelligenceMode: true # Enable Test Intelligence.

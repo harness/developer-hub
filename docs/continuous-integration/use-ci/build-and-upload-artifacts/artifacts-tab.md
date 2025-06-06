@@ -29,7 +29,7 @@ For artifacts generated in the same pipeline, the Plugin step is usually placed 
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://domain.com/path/to/artifact
@@ -138,7 +138,7 @@ For example, this tutorial uses three **Run** steps to generate and prepare an a
     name: run maven tests
     identifier: run_maven_tests
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: openjdk:11
       shell: Sh
       command: ./mvnw clean test site
@@ -147,7 +147,7 @@ For example, this tutorial uses three **Run** steps to generate and prepare an a
     name: generate allure report
     identifier: generate_allure_report
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: solutis/allure:2.9.0
       command: |
         cd target
@@ -157,7 +157,7 @@ For example, this tutorial uses three **Run** steps to generate and prepare an a
     name: combine report
     identifier: combine_report
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: shubham149/allure-combine:latest
       command: |
         cd target/allure-report
@@ -165,12 +165,6 @@ For example, this tutorial uses three **Run** steps to generate and prepare an a
         cd ../..
         cp target/allure-report/complete.html .
 ```
-
-:::tip
-
-For `connectorRef`, you can use the built-in Docker connector, `account.harnessImage`, or use your own [Docker Hub connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-
-:::
 
 </details>
 
@@ -219,7 +213,7 @@ For example, this step publishes the URL for the combined Allure report on the A
     name: publish artifact metadata
     identifier: publish_artifact_metadata
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: plugins/artifact-metadata-publisher
       settings:
         file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
@@ -278,7 +272,7 @@ pipeline:
                   name: run maven tests
                   identifier: run_maven_tests
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: openjdk:11
                     shell: Sh
                     command: ./mvnw clean test site
@@ -287,7 +281,7 @@ pipeline:
                   name: generate allure report
                   identifier: generate_allure_report
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: solutis/allure:2.9.0
                     command: |
                       cd target
@@ -297,7 +291,7 @@ pipeline:
                   name: combine report
                   identifier: combine_report
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: shubham149/allure-combine:latest
                     command: |
                       cd target/allure-report
@@ -318,7 +312,7 @@ pipeline:
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html
@@ -365,7 +359,7 @@ pipeline:
                   name: run maven tests
                   identifier: run_maven_tests
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: openjdk:11
                     shell: Sh
                     command: ./mvnw clean test site
@@ -374,7 +368,7 @@ pipeline:
                   name: generate allure report
                   identifier: generate_allure_report
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: solutis/allure:2.9.0
                     command: |
                       cd target
@@ -384,7 +378,7 @@ pipeline:
                   name: combine report
                   identifier: combine_report
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: shubham149/allure-combine:latest
                     command: |
                       cd target/allure-report
@@ -405,7 +399,7 @@ pipeline:
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html

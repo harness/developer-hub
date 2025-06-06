@@ -30,7 +30,7 @@ This example runs `pytest`, includes [code coverage](./run-tests/code-coverage.m
                   name: Run pytest
                   identifier: Run_pytest
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |-
@@ -124,7 +124,7 @@ For example, this step produces [output variables](#output-variables) from Terra
                   name: Terraform Outputs
                   identifier: tf_outputs
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: kameshsampath/kube-dev-tools
                     shell: Sh
                     command: |-
@@ -178,7 +178,7 @@ In Harness, go to the pipeline where you want to add the `Run` step. In the `CI`
                   name: run pytest # Specify a name for the step.
                   identifier: run_pytest # Define a step ID, usually based on the name.
                   spec:
-                    connectorRef: account.harnessImage # Specify a container registry, if required.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: python:latest # Specify an image, if required.
                     shell: Sh
                     command: |- # Provide your commands
@@ -340,7 +340,7 @@ You can use the `Sh` option to run any shell script, provided the necessary bina
               - step:
                   ...
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |-

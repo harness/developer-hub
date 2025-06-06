@@ -101,7 +101,7 @@ You can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) t
     identifier: dependencies
     name: Dependencies
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:7.0
       shell: Powershell
       command: |-
@@ -211,7 +211,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build 
     identifier: build_dotnet_app
     name: Build DotNet App
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:6.0
       shell: Powershell
       command: |-
@@ -279,7 +279,7 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
     identifier: install_converter
     name: install converter
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:6.0
       shell: Powershell
       command: |-
@@ -290,7 +290,7 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
     identifier: build_dotnet_app
     name: Build DotNet App
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:6.0
       shell: Powershell
       command: |-
@@ -323,7 +323,7 @@ You can use a **Run** step to install a different version or edition of Visual S
     identifier: install_vs2022
     name: install vs2022
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/windows/servercore:ltsc2019
       shell: Powershell
       command: |-
@@ -341,7 +341,7 @@ If not already included on your build machine, you can specify a container image
     identifier: install_vs2022
     name: install vs2022
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/windows/servercore:ltsc2019
       shell: Powershell
       command: |-
@@ -384,7 +384,7 @@ In steps that allow you to supply your own commands, such as [**Run** steps](/do
     identifier: build_dotnet_app
     name: Build DotNet App
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: mcr.microsoft.com/dotnet/sdk:6.0
       shell: Powershell ## Set to Bash, Powershell, Pwsh (PowerShell Core), Python, or Sh.
       command: |- ## Enter your script as you would in a command line shell.
@@ -534,7 +534,7 @@ pipeline:
                   identifier: dependencies
                   name: Dependencies
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: mcr.microsoft.com/dotnet/sdk:7.0
                     shell: Powershell
                     command: |-
@@ -544,7 +544,7 @@ pipeline:
                   identifier: install_converter
                   name: install converter
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Powershell
                     command: |-
@@ -555,7 +555,7 @@ pipeline:
                   identifier: build_dotnet_app
                   name: Build DotNet App
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Powershell
                     command: |-

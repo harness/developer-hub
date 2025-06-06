@@ -174,7 +174,7 @@ pipeline:
                   name: Postgres-Dependency-Service
                   identifier: PostgresDependencyService
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: postgres:10.8
                     shell: Sh
                     envVariables:
@@ -186,7 +186,7 @@ pipeline:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: openjdk:17.0-jdk
                     shell: Bash
                     command: echo "this runs on openjdk"
@@ -209,7 +209,7 @@ pipeline:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: node:13.0.0
                     shell: Bash
                     command: |-
@@ -496,7 +496,7 @@ workflows:
                       name: step1
                       identifier: step1
                       spec:
-                        connectorRef: account.harnessImage
+                        connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                         image: node:13.0.0
                         shell: Bash
                         command: echo "Download file in parallel with stage 2 "
@@ -513,7 +513,7 @@ workflows:
                       name: step1
                       identifier: step1
                       spec:
-                        connectorRef: account.harnessImage
+                        connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                         image: node:13.0.0
                         shell: Bash
                         command: echo "step1"
@@ -530,7 +530,7 @@ workflows:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: node:13.0.0
                     shell: Bash
                     command: echo "step 1 in stage3 . stage 3 requires stage 1 and 2 "
@@ -547,7 +547,7 @@ workflows:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: node:13.0.0
                     shell: Bash
                     command: echo "step 1 in stage4 . stage 4 requires stage 3"

@@ -55,7 +55,7 @@ The following YAML example describes a [Plugin step](../../use-drone-plugins/plu
                   name: upload_sonatype
                   identifier: upload_sonatype
                   spec:
-                    connectorRef: account.harnessImage ## Docker Hub container registry connector
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: harnesscommunity/publish-nexus-repository:1.1.1
                     settings:
                       username: deploy-user ## Nexus Repository Manager username
@@ -128,7 +128,7 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://complete/url/to/artifact/on/nexus
@@ -199,7 +199,7 @@ pipeline:
                   name: upload_nexus
                   identifier: upload_nexus
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: harnesscommunity/publish-nexus-repository:1.1.1
                     settings:
                       username: test-user
@@ -214,7 +214,7 @@ pipeline:
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://repository.sonatype.org/content/sites/...

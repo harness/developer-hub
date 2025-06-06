@@ -33,7 +33,7 @@ To use the Helm Push plugin to upload Helm charts to GAR, [add a Plugin step](..
                   name: upload_helm_chart
                   identifier: upload_helm_chart
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/helm-push:ARCH_TAG
                     settings:
                       registry_url: LOCATION-docker.pkg.dev
@@ -48,7 +48,7 @@ To use the Helm Push plugin, configure the [Plugin step settings](../../use-dron
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
-| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). | `YOUR_IMAGE_REGISTRY_CONNECTOR` |
 | `image` | String | Enter `plugins/helm-push:ARCH_TAG` and replace `ARCH_TAG` with the relevant architecture tag to use. For a list of available tags, go to the [Helm Push plugin README](https://github.com/harness-community/drone-helm-chart-container-registry?tab=readme-ov-file#plugin-image). | `plugins/helm-push:linux-amd64` |
 | `registry_url` | String | Base URL for the Docker registry where the packaged chart will be published. For GAR, this must be `LOCATION-docker.pkg.dev`. Replace `LOCATION` with your GAR repository's regional or multi-regional [location](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations). | `us-east4-docker.pkg.dev` |
 | `registry_username` | String | For GAR, this must be `oauth2accesstoken` | `oauth2accesstoken` |
@@ -68,7 +68,7 @@ To use the Helm Push plugin to upload Helm charts to Docker Hub, [add a Plugin s
                   name: upload_helm_chart
                   identifier: upload_helm_chart
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/helm-push:ARCH_TAG
                     settings:
                       registry_url: registry.hub.docker.com
@@ -81,7 +81,7 @@ To use the Helm Push plugin, configure the [Plugin step settings](../../use-dron
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
-| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). | `YOUR_IMAGE_REGISTRY_CONNECTOR` |
 | `image` | String | Enter `plugins/helm-push:ARCH_TAG` and replace `ARCH_TAG` with the relevant architecture tag to use. For a list of available tags, go to the [Helm Push plugin README](https://github.com/harness-community/drone-helm-chart-container-registry?tab=readme-ov-file#plugin-image). | `plugins/helm-push:linux-amd64` |
 | `registry_url` | String | Base URL for the Docker registry where the packaged chart will be published. For Docker Hub, this must be `registry.hub.docker.com` | `registry.hub.docker.com` |
 | `registry_username` | String | Username to access your Docker Hub registry | `hubuser` |

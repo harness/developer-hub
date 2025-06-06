@@ -119,7 +119,7 @@ template:
   spec:
     type: Run
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: curlimages/curl:7.82.0
       shell: Sh
       command: |+

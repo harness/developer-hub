@@ -200,7 +200,7 @@ pipeline:
                   name: Run Python Tests
                   identifier: Run_Python_Tests
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: python:latest ## Specify if required by your build infrastructure.
                     language: Python
                     buildTool: Pytest ## Specify pytest or unittest.

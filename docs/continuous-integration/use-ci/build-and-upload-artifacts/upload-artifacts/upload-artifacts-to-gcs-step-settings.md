@@ -115,7 +115,7 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
    name: publish artifact metadata
    identifier: publish_artifact_metadata
    spec:
-     connectorRef: account.harnessImage
+     connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
      image: plugins/artifact-metadata-publisher
      settings:
        file_urls: https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION
@@ -208,7 +208,7 @@ pipeline:
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/surefure-reports/
@@ -277,7 +277,7 @@ pipeline:
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/surefire-reports/
@@ -359,7 +359,7 @@ The complete [Plugin step settings](../../use-drone-plugins/plugin-step-settings
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
-| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). | `YOUR_IMAGE_REGISTRY_CONNECTOR` |
 | `image` | String | Enter `plugins/gcs`. | `plugins/gcs` |
 | `token` | String | Reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a GCP service account token to connect and authenticate to GCS. | `<+secrets.getValue("gcpserviceaccounttoken")>` |
 | `source` | String | The directory to download from your GCS bucket, specified as `BUCKET_NAME/DIRECTORY`. | `my_cool_bucket/artifacts` |
@@ -406,7 +406,7 @@ Below is an example configuration:
     name: generate-token
     identifier: generate-token
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: plugins/gcp-oidc
       settings:
         project_id: 12345678

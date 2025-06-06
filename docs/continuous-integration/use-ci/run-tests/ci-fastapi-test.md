@@ -132,7 +132,7 @@ Add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to insta
     name: Install Dependencies
     identifier: Install_Dependencies
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: python:latest
       shell: Sh
       command: |-
@@ -177,7 +177,7 @@ This tutorial runs basic unit tests, but you can run all types of tests (such as
     name: Pytest
     identifier: Pytest
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: python:latest
       shell: Sh
       command: |-
@@ -302,7 +302,7 @@ pipeline:
                   name: Install Dependencies
                   identifier: Install_Dependencies
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |-
@@ -313,7 +313,7 @@ pipeline:
                   name: Pytest
                   identifier: Pytest
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |

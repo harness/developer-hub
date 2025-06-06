@@ -84,7 +84,7 @@ At the point in your pipeline where you want to build and upload an image, add a
                     name: buildah-docker
                     identifier: buildahdocker
                     spec:
-                      connectorRef: account.harnessImage
+                      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                       image: plugins/buildah-docker:1.1.0-linux-amd64
                       privileged: false
                       settings:

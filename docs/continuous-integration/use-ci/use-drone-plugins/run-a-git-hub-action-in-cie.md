@@ -119,7 +119,7 @@ In this example, two parallel `Plugin` steps run the same GitHub Action. Each st
                      name: gcsuploader
                      type: Plugin
                      spec:
-                       connectorRef: account.harnessImage
+                       connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                        image: plugins/github-actions
                        privileged: true
                        settings:
@@ -135,7 +135,7 @@ In this example, two parallel `Plugin` steps run the same GitHub Action. Each st
                      name: gcsuploader
                      type: Plugin
                      spec:
-                       connectorRef: account.harnessImage
+                       connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                        image: plugins/github-actions
                        privileged: true
                        settings:
@@ -162,7 +162,7 @@ Here's an example pipeline that demonstrates how to use GitHub Actions Drone Plu
                   type: Plugin
                   name: gha_plugin
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/github-actions:1.0.0
                     settings:
                       uses: Ompragash/maths-action@main
@@ -175,7 +175,7 @@ Here's an example pipeline that demonstrates how to use GitHub Actions Drone Plu
                   type: Run
                   name: Run_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: alpine
                     shell: Sh
                     command: |-
@@ -196,7 +196,7 @@ If this is required by the Action you want to run, and the Action offers a worki
     name: Action docker publish image
     identifier: Action_docker_publish_image
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: plugins/github-actions
       privileged: true
       settings:

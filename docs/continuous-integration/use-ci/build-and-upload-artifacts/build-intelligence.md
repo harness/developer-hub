@@ -123,7 +123,7 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: gradle:8.1.1-jdk17
                     shell: Sh
                     command: |-

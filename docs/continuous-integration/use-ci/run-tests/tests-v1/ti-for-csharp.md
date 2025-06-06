@@ -44,7 +44,7 @@ You must select **Run only selected tests** (`runOnlySelectedTests: true`) to en
                   identifier: runTestsWithIntelligence
                   name: runTestsWithIntelligence
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
                     language: Csharp
                     buildEnvironment: Core
@@ -215,7 +215,7 @@ pipeline:
                   identifier: runTestsWithIntelligence
                   name: runTestsWithIntelligence
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
                     language: Csharp
                     buildEnvironment: Core

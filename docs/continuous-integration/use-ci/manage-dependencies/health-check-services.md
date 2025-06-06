@@ -125,7 +125,7 @@ For a **Background** step to run a service, the build environment must have the 
                             type: Background
                             name: background service 1
                             spec: ## Configure specs for the service you want to run.
-                              connectorRef: account.harnessImage
+                              connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                               image: postgres
                               shell: Sh
                               envVariables:
@@ -145,7 +145,7 @@ For a **Background** step to run a service, the build environment must have the 
                             type: Background
                             name: Background service 2
                             spec: ## Configure specs for the service you want to run.
-                              connectorRef: account.harnessImage
+                              connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                               image: postgres
                               shell: Sh
                               envVariables:
@@ -265,7 +265,7 @@ For the **Run** step to run the health check commands, the build environment mus
                             type: Background
                             name: background service 1
                             spec:
-                              connectorRef: account.harnessImage
+                              connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                               image: postgres
                               shell: Sh
                               envVariables:
@@ -281,7 +281,7 @@ For the **Run** step to run the health check commands, the build environment mus
                             type: Run
                             name: health check 1
                             spec: ## Configure specs according to the service you're checking.
-                              connectorRef: account.harnessImage
+                              connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                               image: postgres:9-alpine
                               shell: Sh
                               command: |
@@ -296,7 +296,7 @@ For the **Run** step to run the health check commands, the build environment mus
                             type: Background
                             name: Background service 2
                             spec:
-                              connectorRef: account.harnessImage
+                              connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                               image: postgres
                               shell: Sh
                               envVariables:
@@ -312,7 +312,7 @@ For the **Run** step to run the health check commands, the build environment mus
                             name: health check 2
                             identifier: Run_2
                             spec: ## Configure specs according to the service you're checking.
-                              connectorRef: account.harnessImage
+                              connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                               image: postgres:9-alpine
                               shell: Sh
                               command: |-
@@ -477,7 +477,7 @@ pipeline:
                             type: Background
                             name: background service 1
                             spec: ## This example runs PostgreSQL. Configure your step's specs for the service you want to run.
-                              connectorRef: account.harnessImage
+                              connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                               image: postgres
                               shell: Sh
                               envVariables:
@@ -493,7 +493,7 @@ pipeline:
                             type: Run
                             name: health check 1
                             spec: ## This example uses PostgreSQL. Configure your step's specs according to the service you're checking.
-                              connectorRef: account.harnessImage
+                              connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                               image: postgres:9-alpine
                               shell: Sh
                               command: |
@@ -508,7 +508,7 @@ pipeline:
                             type: Background
                             name: Background service 2
                             spec: ## This example runs PostgreSQL. Configure your step's specs for the service you want to run.
-                              connectorRef: account.harnessImage
+                              connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                               image: postgres
                               shell: Sh
                               envVariables:
@@ -524,7 +524,7 @@ pipeline:
                             name: health check 2
                             identifier: Run_2
                             spec: ## This example uses PostgreSQL. Configure your step's specs according to the service you're checking.
-                              connectorRef: account.harnessImage
+                              connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                               image: postgres:9-alpine
                               shell: Sh
                               command: |-

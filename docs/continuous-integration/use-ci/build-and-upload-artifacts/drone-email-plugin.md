@@ -70,7 +70,7 @@ Here's an example of a Plugin step where the data is in the email body.
                   name: Plugin_1
                   identifier: Plugin_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/email
                     settings:
                       from: sender@mysite.com
@@ -94,7 +94,7 @@ Here's an example of a Plugin step where the data is sent as an attachment.
                   name: Plugin_1
                   identifier: Plugin_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/email
                     settings:
                       from: sender@mysite.com

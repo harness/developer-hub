@@ -168,7 +168,7 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to instal
     identifier: dependencies
     name: dependencies
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: fabernovel/android:api-30-v1.7.0
       shell: Sh
       command: |-
@@ -309,7 +309,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
     name: Test
     identifier: test
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: fabernovel/android:api-30-v1.7.0
       shell: Sh
       command: |-
@@ -325,7 +325,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
     name: Test
     identifier: test
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: fabernovel/android:api-30-v1.7.0
       shell: Sh
       command: |-
@@ -371,7 +371,7 @@ If you need to install additional versions, use a **Run** step. These examples u
     name: android version
     identifier: android_version
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: fabernovel/android:api-30-v1.7.0
       shell: Sh
       command: |-
@@ -404,7 +404,7 @@ If you need to install additional versions, use a **Run** step. These examples u
     name: android Version
     identifier: android_version
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: fabernovel/android:api-<+ stage.matrix.androidVersion >-v1.7.0
       shell: Sh
       command: |-
@@ -430,7 +430,7 @@ These examples use [faberNovel/docker-android](https://github.com/faberNovel/doc
     name: android version
     identifier: android_version
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: fabernovel/android:api-30-v1.7.0
       shell: Sh
       command: |-
@@ -463,7 +463,7 @@ These examples use [faberNovel/docker-android](https://github.com/faberNovel/doc
     name: android Version
     identifier: android_version
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: fabernovel/android:api-<+ stage.matrix.androidVersion >-v1.7.0
       shell: Sh
       command: |-
@@ -505,7 +505,7 @@ The following examples use [fastlane](https://docs.fastlane.tools/) to deploy an
     name: fastlane_deploy
     identifier: fastlane_deploy
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: fabernovel/android:api-<+ stage.matrix.androidVersion >-v1.7.0
       shell: Sh
       command: |-
@@ -651,7 +651,7 @@ pipeline:
                   identifier: dependencies
                   name: dependencies
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: fabernovel/android:api-30-v1.7.0
                     shell: Sh
                     command: |-
@@ -666,7 +666,7 @@ pipeline:
                   name: Test
                   identifier: test
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: fabernovel/android:api-30-v1.7.0
                     shell: Sh
                     command: |-
@@ -682,7 +682,7 @@ pipeline:
                   name: fastlane_deploy
                   identifier: fastlane_deploy
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: fabernovel/android:api-<+ stage.matrix.androidVersion >-v1.7.0
                     shell: Sh
                     command: |-
