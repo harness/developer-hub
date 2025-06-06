@@ -71,7 +71,24 @@ Please ensure you are installing the **Docker Delegate** in your VM instance. Fo
 
 4. Enter a **Delegate Name**.
 
-5. Copy the **delegate install command** and run it in your GCP VM.
+5. Copy the **Delegate install command** and run it in your GCP VM. Add this snippet into your delegate install command: ``-e RUNNER_URL="http://vm-runner:3000/" \`` to ensure the delegate has the runner url. Your final install command will look something like this: 
+
+```
+docker run -d \
+  --network harness \
+  --cpus=1 \
+  --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e DEPLOY_MODE=KUBERNETES_ONPREM \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=XxRn14tYSUKILSe3XU0R8w \
+  -e DELEGATE_TOKEN=<>= \
+  -e DELEGATE_TAGS="" \
+  -e RUNNER_URL="http://vm-runner:3000/" \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io \
+  us-west1-docker.pkg.dev/gar-setup/docker/delegate:25.03.85504
+```
 
 To learn more about delegates and delegate installation, go to [Delegate installation overview](https://developer.harness.io/docs/platform/delegates/install-delegates/overview).
 

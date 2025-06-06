@@ -41,4 +41,10 @@ You can add and configure regions for your Gitspaces. Ensure that users will be 
 ### Download the Infra Config YAML 
 Once you have added all the details, click on **Download and Apply YAML**. This generates an **Infra Config YAML** which is nothing but the entire Gitspace Infra specified above, stored in a YAML file. This YAML is a mandatory input parameter to [configure and setup the Harness Gitspaces Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md) (which in turn creates the GCP infrastructure in your specified project).
 
+## Managing your Gitspace Infrastructure 
+
+### Editing your Infra
+
+### Deleting your Infra
+
 ## Next Steps

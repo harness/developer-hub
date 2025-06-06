@@ -15,6 +15,9 @@ Concepts:
 - Runner
 - Delegate
 
+## Self Hosting your Gitspaces 
+
+
 ## Prerequisites
 You need to follow these prerequisites to get started with self hosted Gitspaces: 
 | **Prerequisite**    | **Description** | **Documentation Guide** | 
