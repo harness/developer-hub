@@ -1420,6 +1420,13 @@ By default, Harness uses anonymous Docker access to pull Harness-required images
 
 No. Pipeline initialization isn't included in your build minutes.
 
+### How can I fix the issue where the Git clone is being treated as a submodule?
+You can resolve this by setting the Submodules Strategy to False. This will prevent the repository from being initialized as a submodule. 
+
+You can either:
+- Through the UI: Go to the GitClone step in the Harness UI and set Submodules Strategy to False.
+- Through the YAML: Update the pipeline YAML file by setting submoduleStrategy: "false" in the GitClone step configuration.
+
 ## Build and push images
 
 ### Where does a pipeline get code for a build?
@@ -1776,6 +1783,13 @@ Yes, you can [split tests in Harness CI](https://developer.harness.io/docs/conti
 Test Intelligence doesn't split tests. Instead, Test Intelligence selects specific tests to run based on the changes made to your code. It can reduce the overall number of tests that run each time you make changes to your code.
 
 For additional time savings, you can [apply test splitting in addition to Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2). This can further reduce your test time by splitting the selected tests into parallel workloads.
+
+### How can I receive an execution report via email for our Test suite in Harness?
+In Harness, you can use the Email plugin in your CI pipeline to export reports and other artifacts via email. This allows you to send the execution report directly to your desired recipients without needing to push it to a Git repository.
+
+For more details on how to set up the email notifications, you can refer to these documents:
+[Using the Email Plugin in CI](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin/)
+[Exploring CI Plugins in Harness](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins/)
 
 ## Test Intelligence
 
