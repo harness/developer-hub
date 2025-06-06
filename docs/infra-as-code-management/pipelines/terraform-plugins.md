@@ -83,15 +83,18 @@ The `apply-refresh-only` applies a state update without changing the infrastruct
 ---
 
 ### Detect Drift
-The `detect-drift` command is a built-in operation that compares the real infrastructure with your OpenTofu/Terraform state and highlights any discrepancies. While not an official Tofu/Terraform command, this step uses `plan` under the hood with specific flags to perform drift detection.
+The `detect-drift` command is a built-in operation that compares the known infrastructure, as tracked in your OpenTofu/Terraform state file, with the actual state of those resources in the cloud environment. It highlights discrepancies where a tracked resource was changed or deleted outside of code.
 
-This is useful for detecting infrastructure changes made outside IaC, such as resources added manually via a cloud console.
+This is useful for detecting configuration drift caused by manual changes to managed resources, or by other systems that modify infrastructure outside of OpenTofu/Terraform. It does **not** detect resources that were never managed or imported into the state file.
+
+While not an official OpenTofu/Terraform command, this step uses the `plan` command with specific flags to surface drift.
 
 :::tip Example use case
-Suppose your IaC configuration provisions an SQS queue. Later, someone manually creates an EC2 instance in the same environment. When `detect-drift` is run, Harness identifies the EC2 instance as drift and fails the pipeline. You can then:
-- Import the EC2 instance into your state.
-- Delete it if it's unintended.
-- Ignore it if it's intentionally unmanaged.
+Suppose your IaC configuration provisions an **SQS queue**, and the queue is successfully created and tracked in the OpenTofu/Terraform state.
+
+Later, someone manually updates the queue’s configuration — for example, changing the message retention period — or deletes the queue directly in the cloud console. When `detect-drift` is run, Harness uses OpenTofu/Terraform to identify the mismatch between the actual resource and the expected state, and fails the pipeline.
+
+This allows you to catch unauthorized or unintended changes to resources already under management.
 :::
 
 Drift detection is typically used in scheduled pipelines or as a safeguard before provisioning operations.
