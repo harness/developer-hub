@@ -198,11 +198,9 @@ Select **Bash** or **Powershell**.
 
 When the script in the Shell Script step is run, Harness executes the script on the target host's or Delegate's operating system. Consequently, the behavior of the script depends on their system settings.
 
-If you select **Bash**, Harness will use `sh` because it is standardized and portable across POSIX systems.
+If you select **Bash**, Harness will use `sh` because it is standardized and portable across POSIX systems. 
 
-To support different host systems, or to explicit set the **Bash** option to use bash, you should begin your script with a shebang line that identifies the shell language, such as `#!/bin/sh` (shell), `#!/bin/bash` (bash), or `#!/bin/dash` (dash). 
-
-For more information, go to the [Bash manual](https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents) from the GNU project.
+If you are running the script on a remote VM via ssh, Harness will use the default shell of that machine. Importantly, shebangs in the script such as `#!/bin/sh` or `#!bin/bash` will not override the default setting.
 
 In case of PowerShell, if the script executes on Delegate it requires the powershell binary to be installed as it is not shipped with delegate tools, see the [Install PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.3) for installation instructions.
 
