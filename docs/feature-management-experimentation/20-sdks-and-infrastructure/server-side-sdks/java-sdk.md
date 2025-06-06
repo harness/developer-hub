@@ -31,7 +31,7 @@ Import the SDK into your project using one of the following two methods:
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>java-client</artifactId>
-    <version>4.15.0</version>
+    <version>4.16.0</version>
 </dependency>
 ```
 
@@ -39,7 +39,7 @@ Import the SDK into your project using one of the following two methods:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:java-client:4.15.0'
+compile 'io.split.client:java-client:4.16.0'
 ```
 
 </TabItem>
@@ -1370,6 +1370,17 @@ public class SplitView {
     public List<String> sets;
     public String defaultTreatment;
     public boolean impressionsDisabled;
+    public List<Prerequisites> prerequisites;
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java Prerequisites">
+
+```java
+public class Prerequisites {
+    public String featureFlagName;
+    public List<String> treatments;
 }
 ```
 
@@ -1385,7 +1396,8 @@ class SplitView(
     var changeNumber: Long,
     var sets: List<String>?,
     var defaultTreatment: String?,
-    var impressionsDisabled: boolean
+    var impressionsDisabled: boolean,
+    var prerequisites: List<Prerequisites>
 )
 ```
 
