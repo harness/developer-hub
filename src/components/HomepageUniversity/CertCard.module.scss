@@ -145,6 +145,22 @@
   border-color: var(--mod-ssca-200);
 }
 
+.idp:hover {
+  border-color: var(--mod-idp-200);
+}
+
+.sei:hover {
+  border-color: var(--mod-sei-200);
+}
+
+.iacm:hover {
+  border-color: var(--mod-iacm-200);
+}
+
+.code:hover {
+  border-color: var(--mod-code-200);
+}
+
 @media screen and (max-width: 1130px) {
 
   // @media screen and (max-width: 768px) {
