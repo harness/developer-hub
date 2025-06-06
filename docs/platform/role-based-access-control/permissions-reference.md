@@ -244,7 +244,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Issues | <ul><li>View (`sto_issue_view`)</li></ul> | Active |
 | Scans | <ul><li>View (`sto_scan_view`)</li></ul> | Active |
 | Test Targets | <ul><li>View (`sto_testtarget_view`)</li><li>Create/Edit (`sto_testtarget_edit`)</li></ul> | Active |
-| Exemptions | <ul><li>View (`sto_exemption_view`)</li><li>Create/Edit (`sto_exemption_edit`)</li><li>Approve/Reject (`sto_exemption_approve`)</li></ul> | Active |
+| Exemptions | <ul><li>View (`sto_exemption_view`)</li><li>Create/Edit (`sto_exemption_create`)</li><li>Approve/Reject (`sto_exemption_approve`)</li></ul> | Active |
 | External Tickets | <ul><li>View (`sto_ticket_view`)</li><li>Create/Edit (`sto_ticket_edit`)</li><li>Delete (`sto_ticket_delete`)</li></ul> | Active |
 
 ### Internal Developer Portal
