@@ -26,7 +26,7 @@ Learn intelligent software delivery skills at your own pace and in one place. Gu
 ## Contributing
 
 We welcome contributions. Check out the [Contributors Guide](CONTRIBUTING.md) for details
-on how to contribute.
+on how to contribute. 
 
 ## Style Guide
 
