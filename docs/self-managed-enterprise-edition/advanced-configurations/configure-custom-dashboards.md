@@ -75,7 +75,7 @@ Looker requires a dedicated domain name, which makes its Ingress/Istio configura
 Key considerations:  
 - The examples provided include only the additional configuration required for this chart. Ensure to merge them with existing `values.yaml` overrides.  
 - Pay close attention when merging the global sections to prevent conflicts.  
-- All examples assume TLS is enabled. To ensure `looker.domain.tld` functions correctly, update TLS certificates to include this domain.  
+- All examples assume TLS is enabled. To ensure `looker.<company-domain>` functions correctly, update TLS certificates to include this domain.  
 - Alternatively, try to generate a separate certificate and reference it in the configuration.  
 
 #### Ingress 
@@ -87,12 +87,12 @@ Key considerations:
 
     ng-custom-dashboards:
         config:
-            lookerPubDomain: 'looker.domain.tld'
+            lookerPubDomain: 'looker.<company-domain>'
 
     looker:
         ingress:
             hosts:
-            - 'looker.domain.tld'
+            - 'looker.<company-domain>'
             tls:
             secretName: 'looker-tls'
 
@@ -110,7 +110,7 @@ There are three ways to configure Istio for Looker:
 
 #### Using a Customer-Managed Istio Gateway  
 
-If you are managing your own Istio gateway, you will need to update your gateway configuration to route traffic for `looker.domain.tld`.
+If you are managing your own Istio gateway, you will need to update your gateway configuration to route traffic for `looker.<company-domain>`.
 
     ```yaml
     global:
@@ -125,7 +125,7 @@ If you are managing your own Istio gateway, you will need to update your gateway
             virtualService:
                 enabled: true
                 hosts:
-                - looker.domain.tld
+                - looker.<company-domain>
     ```
 
 ### Istio - Gateway Created by Harness  
@@ -140,7 +140,7 @@ global:
     gateway:
       create: true
     hosts:
-      - looker.domain.tld
+      - looker.<company-domain>
 looker:
   istio:
     gateway:
@@ -148,7 +148,7 @@ looker:
     virtualService:
       enabled: true
       hosts:
-        - looker.domain.tld
+        - looker.<company-domain>
 ```
 
 ### Istio - Gateway Created by This Chart  
@@ -165,14 +165,14 @@ looker:
       port: 443
       protocol: HTTPS
     hosts:
-      - looker.domain.tld
+      - looker.<company-domain>
     tls:
       mode: SIMPLE
       credentialName: 'looker-tls'
     virtualService:
       enabled: true
       hosts:
-        - looker.domain.tld
+        - looker.<company-domain>
 ```
 
 By selecting the appropriate method, you can ensure seamless integration of Looker with your existing Istio setup.
