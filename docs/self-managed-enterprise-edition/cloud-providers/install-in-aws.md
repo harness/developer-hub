@@ -174,7 +174,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
     If AWS config is not set, run the following command
 
       ```bash
-      aws eks --region=<YOUR-REGION> update-kubeconfig --cluster=<YOUR-CLUSTER-NAME>
+      aws eks --region=<YOUR-AWS-REGION> update-kubeconfig --cluster=<YOUR-CLUSTER-NAME>
       ```
 
 ### Step 3: Configure Amazon EBS CSI driver
@@ -187,60 +187,48 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
       kubectl create namespace <harness-namespace>
       ``` 
 
-   2. Create an IAM role for your EKS cluster to enable the use of the EBS CSI driver. You can do this either through the AWS Management Console or by using the `eksctl` command, as shown below.
-
-      ```bash
-        eksctl create iamserviceaccount \
-        --name ebs-csi-controller-sa \
-        --namespace <namespace-your-choice> \
-        --cluster <your-cluster-name> \
-        --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
-        --approve \
-        --role-name AmazonEKS_EBS_CSI_DriverRole \
-        --region <your-region>
-      ```
-
-   3. Enable the EBS CSI Driver for your EKS cluster.
-
-      3.1. Associate OIDC Provider (if not done yet)
-          
-          ```bash    
-            eksctl utils associate-iam-oidc-provider \
-            --region <your-region> \
-            --cluster <your-cluster-name> \
-            --approve
-          ```
-
-      3.2 Install EBS CSI Driver:
-
-        ```bash
-          eksctl create addon \
-          --name aws-ebs-csi-driver \
-          --cluster <your-cluster-name>  \
-          --service-account-role-arn arn:aws:iam::156272853481:role/AmazonEKS_EBS_CSI_DriverRole \
-          --force \
-          --region <your-region>
-        ```
-    
-      3.3 Update Trust Relationship in IAM
-
-        To enable a Kubernetes service account to assume an IAM role using OIDC authentication, you need to update the IAM role's trust policy, which can be done through the AWS CLI or AWS console by modifying the trust relationship.
-
-        Login to AWS Management Console, navigate to IAM, select the role you need to update within Roles move to Trust relationships tab and add the below json
-
-        ```json
-          {
+   2. Create an IAM role with a trust policy that allows EKS to assume the role via IRSA, and create a `trust-policy.json` file as shown below:
+      
+      ```json
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
               "Effect": "Allow",
               "Principal": {
-                  "Federated": "arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/<PROVIDER_ID>"
+                "Federated": "arn:aws:iam::<AWS-ACCOUNT-ID>:oidc-provider/<OIDC-PROVIDER>"
               },
               "Action": "sts:AssumeRoleWithWebIdentity",
               "Condition": {
-                  "StringEquals": {
-                      "oidc.eks.<YOUR-AWS-REGION>.amazonaws.com/id/<PROVIDER_ID>:sub": "system:serviceaccount:<namespace>:<service-account-name>"
-                  }
+                "StringEquals": {
+                  "<OIDC_PROVIDER>:sub": "system:serviceaccount:kube-system:ebs-csi-controller-sa"
+                }
               }
-          }
+            }
+          ]
+        }
+      ```
+
+      Once the `trust-policy.json` file is created, use the below command to create IAM role.
+
+      ```bash
+        aws iam create-role \
+        --role-name AmazonEKS_EBS_CSI_DriverRole \
+        --assume-role-policy-document file://trust-policy.json --region <YOUR-AWS-REGION>
+      ```
+
+    3. Get the OIDC provider using:
+    
+        ```bash
+        aws eks describe-cluster --name <AWS_CLUSTER_NAME> --region <YOUR-AWS-REGION> --query "cluster.identity.oidc.issuer" --output text 
+        ```
+
+    4. Attach the `AmazonEBSCSIDriverPolicy` to the IAM role:
+      
+        ```bash
+        aws iam attach-role-policy \
+        --role-name AmazonEKS_EBS_CSI_DriverRole \
+        --policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy --region <YOUR-AWS-REGION>
         ```
 
 ### Step 4: Install Self-Managed Enterprise Edition in AWS EKS
