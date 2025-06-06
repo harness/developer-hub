@@ -71,6 +71,10 @@ Learn more about the [Harness platform hierarchy](https://developer.harness.io/d
 
 ### Native Harness Git Experience
 
+:::info 
+**Native Harness Git Experience** feature will be available for use soon! You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** table. Please ensure that **no YAML files** are stored in **Git in IDP 2.0** until this feature is released.
+:::
+
 IDP 2.0 introduces native Git support for all catalog entities, enabling real-time, bi-directional sync:
 
 - Edit the entity YAML in Git, and the changes reflect in IDP.
@@ -126,6 +130,9 @@ All Catalog and Workflow APIs are now delivered directly through Harness Platfor
 We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
 
 ### Entity YAML Definition
+:::info
+Please ensure that **no entity YAML files** are stored in **Git in IDP 2.0** until the [Git Experience](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#native-harness-git-experience) feature is released. You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** table.
+:::
 
 IDP 2.0 implements a Harness-native entity schema featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
 
