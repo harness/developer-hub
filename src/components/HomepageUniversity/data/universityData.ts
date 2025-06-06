@@ -120,7 +120,7 @@ export const university: CardItem[] = [
     title: "Code Repository",
     module: MODULES.code,
     description:
-      "Securly host Git repositories and collaborate with advanced governance.",
+      "Securely host Git repositories and collaborate with advanced governance.",
     link: "/university/cr",
     SPT_available: true,
   },
