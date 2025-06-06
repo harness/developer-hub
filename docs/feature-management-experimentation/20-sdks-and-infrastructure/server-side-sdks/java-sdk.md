@@ -1375,7 +1375,7 @@ public class SplitView {
 ```
 
 </TabItem>
-<TabItem value="java" label="Java Prerequisites">
+<TabItem value="java-prerequisites" label="Java Prerequisites">
 
 ```java
 public class Prerequisites {
