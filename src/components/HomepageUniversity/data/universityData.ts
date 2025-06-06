@@ -107,7 +107,7 @@ export const university: CardItem[] = [
     SPT_available: true,
     ILT_available: true,
   },
-    {
+  {
     title: "Supply Chain Security",
     module: MODULES.ssca,
     description:
@@ -116,4 +116,13 @@ export const university: CardItem[] = [
     SPT_available: true,
     ILT_available: true,
   },
+  {
+    title: "Code Repository",
+    module: MODULES.code,
+    description:
+      "Securely host Git repositories and collaborate with advanced governance.",
+    link: "/university/cr",
+    SPT_available: true,
+  },
+
 ];
