@@ -71,7 +71,7 @@ Next, you'll need to set up a proxy or load balancer that will intercept and man
 <Tabs>
   <TabItem value="aws" label="AWS">
     <h4>Option 1: AutoStopping Proxy</h4>
-    <p>Best for: Amazon EC2, Auto Scaling Groups, Amazon ECS Services, and Amazon RDS Instances</p>
+    <p>Best for: Amazon EC2, and Amazon RDS Instances</p>
     <p>The AutoStopping Proxy acts as an intermediary that forwards traffic to your resources and automatically starts them when needed.</p>
     <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb">Set up AWS AutoStopping Proxy →</a></p>
     
