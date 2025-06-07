@@ -12,12 +12,6 @@ AutoStopping Rules make sure that your non-production resources run only when us
 
 This topic describes how to create AutoStopping Rules with Terraform using scripts.
 
-### Before You Begin
-
-* [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
-* [Create AutoStopping Rules for AWS](../4-create-auto-stopping-rules/create-autostopping-rules-aws.md)
-* [Create AutoStopping Rules for Azure](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
-
 Perform the following steps to create AutoStopping Rules for Terraform.
 
 ### Step 1: Install Terraform for AutoStopping Rules

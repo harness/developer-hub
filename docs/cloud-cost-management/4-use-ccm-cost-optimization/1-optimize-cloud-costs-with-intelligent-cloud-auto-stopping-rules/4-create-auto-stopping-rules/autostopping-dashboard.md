@@ -135,13 +135,12 @@ You can edit an AutoStopping rule from the Summary of Rules Page or from the det
 
    ![](./static/autostopping-dashboard-45.png)
 
-3. The AutoStopping Rules setting appears. Follow the steps in [Create AutoStopping Rules for AWS](create-autostopping-rules-aws.md) and [Create AutoStopping Rules for Azure](create-auto-stopping-rules-for-azure.md).
+3. The AutoStopping Rules setting appears. Follow the steps in [Create AutoStopping Rules for AWS](/docs/category/autostopping-for-aws) and [Create AutoStopping Rules for Azure](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/create-rule-vm).
 
 #### From the Details Page
 
 1. In **AutoStopping Rules**, in **Summary of Rules**, click the instance that you want to edit.
-2. Click the **Edit** button. The AutoStopping Rules setting appears. Follow the steps in [Create AutoStopping Rules for AWS](create-autostopping-rules-aws.md) and [Create AutoStopping Rules for Azure](create-auto-stopping-rules-for-azure.md).
-
+2. Click the **Edit** button. The AutoStopping Rules setting appears. You can edit details from here.
    ![](./static/rule-summary-page.png)
 
 ### Delete an AutoStopping Rule from the dashboard
