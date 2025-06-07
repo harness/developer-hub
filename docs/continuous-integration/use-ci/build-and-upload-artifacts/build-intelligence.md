@@ -164,6 +164,23 @@ When using bazel, Harness create a ~/.bazelrc file (if it does not exist), with 
 The config will look like:
 `build --remote_cache=http://endpoint:port/cache/bazel (endpoint is localhost:8082)`
 
+#### Maven Config
+For Maven builds, the following configuration files are injected into the environment:
+
+`.mvn/maven-build-cache-config.xml`
+
+`.mvn/extensions.xml`
+
+`~/.m2/settings.xml`
+
+There are two ways to apply settings.xml:
+
+- Maven installation-wide: `${maven.home}/conf/settings.xml`
+
+- User-specific: `${user.home}/.m2/settings.xml`
+
+These configurations enable build caching and repository access based on your pipeline’s setup.
+
 ### Using '--profile'
 Appending `--profile' to your build command, enables publishing Build Intelligence savings to Harness. This will allow you to clearly view the performance and benefits of using Build Intelligence. Note that even when omitted, Build Intelligence will continue to work and optimize your run as expected, but the savings will not be visible in the UI and relevant dashboards.
 
