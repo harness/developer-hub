@@ -1,7 +1,7 @@
 ---
-title: Introduction to Cluster Orchestrator for AWS EKS clusters (Beta)
+title: Overview
 description: This topic introduces Cluster Orchestrator
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
