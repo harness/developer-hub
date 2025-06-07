@@ -25,7 +25,7 @@ Select "EC2" .
 
 ### Step 2: Exclusion
 
-1Commitment Orchestrator provides you with an option to choose the child accounts and instances you would like to exclude when orchestrating for Compute Usage.
+Commitment Orchestrator provides you with an option to choose the child accounts and instances you would like to exclude when orchestrating for Compute Usage.
 
 
 <DocImage path={require('./static/steptwo.png')} width="80%" height="80%" title="Click to view full size image" />
