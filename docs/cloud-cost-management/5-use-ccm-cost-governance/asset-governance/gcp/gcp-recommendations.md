@@ -79,13 +79,13 @@ The scope can be either at:
   <DocImage path={require('../static/gcp-granular.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
-### Recommendation: delete-gcp-idle-compute-images
+### Recommendation: delete-idle-gcp-image
 **Description:** Delete GCP recommended idle images
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-gcp-idle-compute-images
+  - name: delete-idle-gcp-image
     description: |
       Delete GCP images which are not used to create a disk for at least 15 days and not used in any instance template. 
       These idle images are fetched from GCP recommender.
@@ -106,13 +106,13 @@ policies:
 
 ---
 
-### Recommendation: delete-gcp-never-attached-disks
+### Recommendation: delete-never-attached-gcp-disk
 **Description:** Delete GCP recommended idle persistent disks which were never attached to a VM and is blank
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-gcp-never-attached-disks
+  - name: delete-never-attached-gcp-disk
     description: |
       Delete GCP disks which are created at least 15 days ago and never attached to a VM and is blank. 
       These idle disks are fetched from GCP recommender.
@@ -138,13 +138,13 @@ policies:
 
 ---
 
-### Recommendation:  gcp-stop-forever-running-instance
+### Recommendation: stop-forever-running-gcp-instance
 **Description:** Stop the gcp instances that have an uptime greater than 30 days.
    
 **Policy Used:**
 ```yaml
 policies:
-  - name: gcp-stop-forever-running-instance
+  - name: stop-forever-running-gcp-instance
     description: |
       Stop the gcp instances that have an uptime greater than 30 days.
     resource: gcp.instance
@@ -176,13 +176,13 @@ policies:
 
 ---
 
-### Recommendation: gcp-delete-old-snapshot
+### Recommendation: delete-old-gcp-snapshot
 **Description:** Delete gcp snapshots older than 14 days.
   
 **Policy Used:**
 ```yaml
 policies:
-  - name:  gcp-delete-old-snapshot
+  - name: delete-old-gcp-snapshot
     resource: gcp.snapshot
     description: |
       Delete gcp snapshots older than 14 days.
@@ -208,13 +208,13 @@ policies:
 
 ---
 
-### Recommendation: stop-underutilized-instances
+### Recommendation: stop-underutilized-gcp-instance
 **Description:** Stop underutilised instances with average CPU utilisation less than 5% in last 3 days.
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: stop-underutilized-instances
+  - name: stop-underutilized-gcp-instance
     resource: gcp.instance
     description: Stop underutilised instances with average CPU utilisation less than 5% in last 3 days
     filters:
@@ -247,13 +247,13 @@ policies:
 ---
 
 
-### Recommendation: stop-underutilized-sql-instances
+### Recommendation: stop-underutilized-gcp-sql-instance
 **Description:** Stop underutilised sql instances with average CPU utilisation less than 5% in last 3 days
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: stop-underutilized-sql-instances
+  - name: stop-underutilized-gcp-sql-instance
     resource: gcp.sql-instance
     description: |
       Stop underutilised sql instances with average CPU utilisation less than 5% in last 3 days
@@ -282,13 +282,13 @@ policies:
 
 ---
 
-### Recommendation: snapshot-and-delete-gcp-unattached-disk
+### Recommendation: snapshot-and-delete-unattached-gcp-disk
 **Description:** Snapshot and delete GCP recommended idle persistent disks which are unattached
 
 **Policy Used:** 
 ```yaml
 policies:
-  - name: snapshot-and-delete-gcp-unattached-disk
+  - name: snapshot-and-delete-unattached-gcp-disk
     description: |
       Snapshot and delete GCP disks which are detached for at least 15 days.
       These idle disks are fetched from GCP recommender.
@@ -319,13 +319,13 @@ policies:
 
 ---
 
-### Recommendation: gcp-idle-gke-clusters
+### Recommendation: delete-idle-gcp-gke-cluster
 **Description:** List GCP Idle GKE Clusters Recommendations
 
 **Policy Used:** 
 ```yaml
 policies:
-  - name: gcp-idle-gke-clusters
+  - name: delete-idle-gcp-gke-cluster
     description: |
       List GCP Idle GKE Clusters Recommendations
     resource: gcp.gke-cluster
@@ -349,13 +349,13 @@ policies:
   - `container.clusters.delete`
 
 ---
-### Recommendation: gcp-cloud-run-cpu-allocation
+### Recommendation: list-cost-recommendations-gcp-cloud-run-service
 **Description:** 
 
 **Policy Used:** 
 ```yaml
 policies:
-  - name: gcp-cloud-run-cpu-allocation
+  - name: list-cost-recommendations-gcp-cloud-run-service
     resource: gcp.cloud-run-service
     description: |
       List Cloud Run CPU Allocation Recommendations
@@ -376,13 +376,13 @@ policies:
   - `run.services.list`
 
 ---
-### Recommendation: gcp-list-unused-bq-datasets
+### Recommendation: list-unused-gcp-bq-dataset
 **Description:** List BigQuery datasets that haven't been accessed in the last 7 days.
 
 **Policy Used:** 
 ```yaml
 policies:
-  - name: gcp-list-unused-bq-datasets
+  - name: list-unused-gcp-bq-dataset
     resource: gcp.bq-dataset
     description: |
       List BigQuery datasets that haven't been accessed in the last 7 days.
@@ -404,13 +404,13 @@ policies:
   - `bigquery.datasets.get`
 
 ---
-### Recommendation: gcp-delete-unused-cloud-functions
+### Recommendation: delete-unused-gcp-function
 **Description:** Delete Cloud Functions that haven't been invoked in the last 7 days to reduce costs.
 
 **Policy Used:** 
 ```yaml
 policies:
-  - name: gcp-delete-unused-cloud-functions
+  - name: delete-unused-gcp-function
     resource: gcp.function
     description: >
       Delete Cloud Functions that haven't been invoked in the last 7 days to
@@ -439,13 +439,13 @@ policies:
   - `cloudfunctions.functions.delete`
 
 ---
-### Recommendation: gcp-list-low-utilized-bucket
+### Recommendation: list-under-utilized-gcp-bucket
 **Description:** List low utilized gcp buckets in last 7 days.
 
 **Policy Used:** 
 ```yaml
 policies:
-  - name: gcp-list-low-utilized-bucket
+  - name: list-under-utilized-gcp-bucket
     description: |
       List low utilized gcp buckets in last 7 days.
     resource: gcp.bucket
@@ -478,13 +478,13 @@ policies:
   - `storage.buckets.list`
 
 ---
-### Recommendation: gcp-list-hanged-dataflow-jobs
+### Recommendation: list-hanged-gcp-dataflow-job
 **Description:** List Dataflow jobs that have been in an hanged state for more than 1 day.
 
 **Policy Used:** 
 ```yaml
 policies:
-  - name: gcp-list-hanged-dataflow-jobs
+  - name: list-hanged-gcp-dataflow-job
     resource: gcp.dataflow-job
     description: List Dataflow jobs that have been in an hanged state for more than 1 day.
     filters:
@@ -512,13 +512,13 @@ policies:
   - `dataflow.jobs.list`
 
 ---
-### Recommendation: gcp-delete-low-utilized-load-balancers
+### Recommendation: delete-under-utilized-gcp-loadbalancer-address
 **Description:** Delete all load balancers with low utilizations, where packet count is less than 1000 in the last 72 hours.
 
 **Policy Used:** 
 ```yaml
 policies:
-  - name: gcp-delete-low-utilized-load-balancers
+  - name: delete-under-utilized-gcp-loadbalancer-address
     resource: gcp.loadbalancer-address
     description: >
       Delete all low utilized load balancers where packet count is less than
@@ -549,13 +549,13 @@ policies:
   - `compute.addresses.delete`
 
 ---
-### Recommendation: gcp-list-unused-redis-instances
+### Recommendation: list-under-utilized-gcp-redis
 **Description:** List Redis instances with less than 5% CPU utilization over the last 7 days.
 
 **Policy Used:** 
 ```yaml
 policies:
-  - name: gcp-list-unused-redis-instances
+  - name: list-under-utilized-gcp-redis
     resource: gcp.redis
     description: List Redis instances with less than 5% CPU utilization in last 7 days
     filters:
