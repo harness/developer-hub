@@ -31,22 +31,16 @@ Cluster Orchestrator doesn't stop at fallback, it continues to optimize costs th
 
 - When Spot nodes are interrupted, they are automatically replaced with On-Demand nodes to maintain application stability
 - Once Spot capacity becomes available again, the system performs a reverse fallback, replacing the On-Demand node with a Spot node
-- Users can select the retry interval to define how often the system checks for Spot capacity and performs the reverse fallback
+- Users can select the retry interval (in hours) to define how often the system checks for Spot capacity and performs the reverse fallback
 
-## Configuring Fallback Policies
+## Configuring Fallback Settings
 
-### Retry Interval Settings
+To configure fallback and reverse fallback settings for your cluster:
 
-The retry interval determines how frequently Cluster Orchestrator checks for available Spot capacity after falling back to On-Demand instances. You can configure this interval based on your cost optimization goals and workload characteristics:
-
-- **Short intervals** (e.g., 15-30 minutes): More aggressive cost optimization, with more frequent attempts to return to Spot Instances
-- **Medium intervals** (e.g., 1-3 hours): Balanced approach that reduces API calls while still seeking cost savings
-- **Long intervals** (e.g., 12-24 hours): More conservative approach that prioritizes stability over frequent instance changes
-
-### Fallback Instance Types
-
-You can also configure which instance types Cluster Orchestrator should consider when falling back to On-Demand instances:
-
-- **Same instance family**: Ensures consistent performance characteristics
-- **Equivalent performance**: Allows for flexibility across instance families with similar capabilities
-- **Custom selection**: Specify exactly which instance types are acceptable for fallback
+1. Navigate to the **Cloud Cost Management** module in your Harness account
+2. Select **Cluster Orchestrator** from the left navigation menu
+3. Click on your cluster name in the list of available clusters
+4. If Cluster Orchestrator is not yet enabled, click **Enable** to begin the setup process
+5. In the setup wizard, navigate to the **Spot Preferences** tab
+6. Scroll to the **Reverse Fallback Retry** section
+7. Set the **Retry Interval** to determine how frequently Cluster Orchestrator checks for available Spot capacity after falling back to On-Demand instances. You can configure this interval based on your cost optimization goals and workload characteristics.
