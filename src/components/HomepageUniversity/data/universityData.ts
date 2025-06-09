@@ -123,6 +123,7 @@ export const university: CardItem[] = [
       "Securely host Git repositories and collaborate with advanced governance.",
     link: "/university/cr",
     SPT_available: true,
+    ILT_available: true,
   },
 
 ];
