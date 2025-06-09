@@ -1,7 +1,7 @@
 ---
 title: Enabling Cluster Orchestrator through kubectl
 description: This topic describes how to set up Cluster Orchestrator 
-sidebar_position: 3
+sidebar_position: 4
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
@@ -57,15 +57,22 @@ In this configuration screen, you'll customize how Cluster Orchestrator optimize
 The Cluster Preferences section is where you'll configure the core optimization behaviors of Cluster Orchestrator. These settings directly impact how your cluster resources are managed, scaled, and optimized for cost efficiency. 
 
 ### Enable Commitment Context
-This is an integration between our Commitment Orchestrator and Cluster Orchestrator. 
+
+<DocImage path={require('./static/ctl-one.png')} width="110%" height="110%" title="Click to view full size image" />
+
+This is an integration between Harness' Commitment Orchestrator and Cluster Orchestrator. 
 
 If enabled, Cluster Orchestrator will check existing commitments before provisioning spot instances to avoid duplicate coverage and maximize savings.
 
 ### Set the Time-To-Live (TTL) for Karpenter Nodes
 
+<DocImage path={require('./static/ctl-two.png')} width="110%" height="110%" title="Click to view full size image" />
+
 The Time-to-Live (TTL) setting for Karpenter nodes defines the maximum lifespan of a node before it is eligible for deletion, regardless of its resource utilization. By setting a TTL, users can ensure that idle or unnecessary nodes are automatically cleaned up after a specified time period, even if they are not underutilized or empty. This helps in avoiding resource sprawl, ensuring that unused nodes don't linger indefinitely, and optimizing the overall cost and resource usage within the cluster.
 
 ### Bin-packing
+
+<DocImage path={require('./static/ctl-three.png')} width="110%" height="110%" title="Click to view full size image" />
 
 **Pod Eviction by Harness**  
 To optimize resources, nodes may be evicted before consolidation. Enabling this ensures workloads are safely rescheduled to maintain performance and availability while freeing up underutilized resources.
@@ -79,6 +86,8 @@ This is used to set minimum CPU and memory usage levels to determine when a node
 - Minimum Memory Utilization: [configurable value]
 
 ### Node Disruption using Karpenter
+
+<DocImage path={require('./static/ctl-four.png')} width="110%" height="110%" title="Click to view full size image" />
 
 This option leverages Karpenter's advanced node management capabilities to intelligently disrupt and replace nodes based on your defined criteria. Unlike standard Kubernetes scaling, this feature provides fine-grained control over when and how nodes are removed from your cluster, helping maintain both cost efficiency and application stability.
 
@@ -118,8 +127,6 @@ If enabled, this feature will continuously monitor AWS Spot instance pricing acr
 
 Unlike basic Spot implementations that only react to interruptions, this proactive approach seeks out better deals even when your current Spot instances are stable. 
 
-<DocImage path={require('./static/step-two.png')} width="110%" height="110%" title="Click to view full size image" />
-
 </TabItem>
 <TabItem value="spot" label="Spot Preferences">
 
@@ -132,6 +139,9 @@ This section allows you to configure Cluster Orchestrator's advanced spot instan
 <DocImage path={require('./static/spot-preferences.gif')} width="90%" height="90%" title="Spot Preferences Configuration" />
 
 ### Spot/On-demand Split
+
+<DocImage path={require('./static/ctl-five.png')} width="110%" height="110%" title="Click to view full size image" />
+
 
 Define the optimal balance between cost savings and stability:
 
@@ -173,7 +183,6 @@ This feature provides automatic recovery from spot interruptions:
 Replacement Schedules give you precise control over *when* optimization activities can occur in your cluster. Rather than allowing Cluster Orchestrator to perform operations like bin-packing or pod evictions at any time, you can restrict these potentially disruptive activities to specific maintenance windows—such as nights, weekends, or periods of known low traffic. This ensures that cost-optimization efforts don't interfere with critical business operations or customer experience during peak hours.
 
 <DocImage path={require('./static/replacement-schedules.gif')} width="100%" title="Replacement Schedules Configuration" />
-
 
 ### Specify Replacement Window
 

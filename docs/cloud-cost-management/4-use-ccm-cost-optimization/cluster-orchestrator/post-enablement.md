@@ -1,7 +1,7 @@
 ---
 title: Monitoring Your Cluster After Enablement
 description: Learn how to interpret Cluster Orchestrator dashboards and metrics
-sidebar_position: 4
+sidebar_position: 6
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
@@ -17,8 +17,9 @@ Cluster Orchestrator provides four specialized views, each focusing on different
 
 ### 1. Overview
 
-This is your central page for monitoring overall cluster health, performance, and cost metrics. The dashboard is divided into several key sections:
+<DocImage path={require('./static/pe-one.png')} width="100%" title="Overview" />
 
+This is your central page for monitoring overall cluster health, performance, and cost metrics. The dashboard is divided into several key sections:
 
 - **Cluster Spend**: Track your total cluster costs over time, with breakdowns by instance type and spot vs. on-demand usage
 - **Cluster Details**: View essential information about your cluster including name, region, and identifier.
@@ -27,18 +28,18 @@ This is your central page for monitoring overall cluster health, performance, an
 - **Memory Breakdown**: Monitor memory allocation, usage, and available capacity
 - **Pod Distribution**: See how many pods are there as spot, on-demand scheduled and unsecheduled 
 
-<DocImage path={require('./static/overview-two.png')} width="90%" height="90%" title="Click to view full size image" />
-
 ### 2. Workloads screen
+
+<DocImage path={require('./static/pe-two.png')} width="100%" title="Overview" />
 
 This view focuses on the applications running in your cluster, helping you identify optimization opportunities at the workload level:
 
 - **Namespace Organization**: View workloads grouped by namespace for logical organization
 - **Replica Count**: Track the number of replicas for each workload
 
-<DocImage path={require('./static/workloads.png')} width="90%" height="90%" title="Click to view full size image" />
-
 ### 3. Nodes screen
+
+<DocImage path={require('./static/pe-three.png')} width="100%" title="Overview" />
 
 This view provides insights into your cluster's infrastructure. The table displays the following information for each node:
 
@@ -53,10 +54,9 @@ This view provides insights into your cluster's infrastructure. The table displa
 | **Age** | How long the node has been running (e.g., 2h) |
 | **Status** | Current node status (e.g., Ready or not ) |
 
-
-<DocImage path={require('./static/nodes.png')} width="90%" height="90%" title="Click to view full size image" />
-
 ### 4. Logs
+
+<DocImage path={require('./static/pe-four.png')} width="100%" title="Overview" />
 
 The Logs screen provides a chronological record of all cluster events and optimization activities. You can filter events by time period (e.g., Last 90 days) and event type.
 
@@ -68,6 +68,8 @@ The Logs screen provides a chronological record of all cluster events and optimi
 
 #### Event Types
 
+<DocImage path={require('./static/pe-five.png')} width="50%" title="Overview" />
+
 The logs track several types of events that help you understand cluster activity:
 
 - **NodeProvisioned**: When new instances are launched (e.g., "Instance i-0138fc81dc9c82e31 launched")
@@ -78,4 +80,3 @@ The logs track several types of events that help you understand cluster activity
 - **InstanceReplacementDueToInterruption**: When instances are replaced due to spot interruptions
 - **SpotInterruptionNotice**: When AWS sends a notification that a spot instance will be interrupted
 
-These logs are valuable for troubleshooting, auditing optimization activities, and understanding how Cluster Orchestrator is managing your resources over time.

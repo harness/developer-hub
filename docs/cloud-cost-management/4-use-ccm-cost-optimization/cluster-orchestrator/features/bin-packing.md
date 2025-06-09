@@ -42,6 +42,8 @@ From this configuration screen, you can adjust all bin-packing related settings 
 
 ## Key Features
 
+<DocImage path={require('../static/ctl-three.png')} width="100%" title="Spot Instance Management" />
+
 ### Pod Eviction by Harness
 
 To optimize resources effectively, Cluster Orchestrator may need to evict pods from underutilized nodes before consolidation. This feature ensures that workloads are safely rescheduled to maintain performance and availability while freeing up resources.

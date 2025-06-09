@@ -18,6 +18,8 @@ helpdocs_is_published: true
 
 ## Overview
 
+<DocImage path={require('../static/ctl-one.png')} width="100%" title="Commitment Orchestrator Integration" />
+
 The integration between Cluster Orchestrator and Commitment Orchestrator enables intelligent, cost-aware decisions when scaling your Kubernetes clusters. By considering your existing AWS Reserved Instances (RIs) and Savings Plans (SPs), Cluster Orchestrator can make more financially optimal decisions about instance selection and management.
 
 Without this integration, you might be paying for both unused commitment capacity AND new instances provisioned by Cluster Orchestrator - essentially paying twice for the same computing resources.

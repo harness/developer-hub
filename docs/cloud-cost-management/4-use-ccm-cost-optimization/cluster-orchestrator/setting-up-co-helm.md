@@ -1,7 +1,7 @@
 ---
 title: Enabling Cluster Orchestrator using Helm
 description: Learn how to set up and configure Harness Cluster Orchestrator for AWS EKS using Helm
-sidebar_position: 4
+sidebar_position: 5
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false

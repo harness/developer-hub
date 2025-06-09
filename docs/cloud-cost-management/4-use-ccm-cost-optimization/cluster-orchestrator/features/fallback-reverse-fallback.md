@@ -10,6 +10,7 @@ helpdocs_is_published: true
 
 Fallback policies in Cluster Orchestrator define how your workloads respond when AWS Spot Instances are interrupted. These policies ensure continuous application availability while maximizing cost savings through intelligent instance management.
 
+
 ## How Fallback Works
 
 When AWS issues a Spot Instance interruption notice (typically with a two-minute warning), Cluster Orchestrator implements a fallback strategy:
@@ -34,6 +35,8 @@ Cluster Orchestrator doesn't stop at fallback, it continues to optimize costs th
 - Users can select the retry interval (in hours) to define how often the system checks for Spot capacity and performs the reverse fallback
 
 ## Configuring Fallback Settings
+
+<DocImage path={require('./static/ctl-six.png')} width="100%" title="Spot Instance Management" />
 
 To configure fallback and reverse fallback settings for your cluster:
 

@@ -74,6 +74,8 @@ This strategy is better suited for production workloads where stability is impor
 
 ## Configuring Spot Management
 
+<DocImage path={require('../static/ctl-five.png')} width="100%" title="Spot Instance Management" />
+
 To configure Cluster Orchestrator's Spot instance management capabilities:
 
 1. Navigate to the **Cloud Cost Management** module in your Harness account
