@@ -31,7 +31,7 @@ By impersonating a user, Account admins can see exactly what that user sees and 
 3. For each impersonation session, you must provide a valid reason. Once entered, click **Start Impersonation** to begin the session.
 
         :::note
-        Once impersonation is initiated, an email will be sent to the user being impersonated.    
+        Once impersonation is initiated, an email will be sent to alert the user being impersonated.
         :::
 
     ![impersonate-reason](./static/reason-impersonate.png)
