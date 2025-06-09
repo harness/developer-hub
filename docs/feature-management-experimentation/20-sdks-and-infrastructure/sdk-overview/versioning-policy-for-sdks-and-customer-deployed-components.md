@@ -1,14 +1,21 @@
 ---
-title: SDK versioning policy
-sidebar_label: SDK versioning policy
+title: Versioning policy for SDKs and customer-deployed components
+sidebar_label: Versioning policy for SDKs and customer-deployed components
 sidebar_position: 1
+redirect_from:
+  - /feature-management-experimentation/sdks-and-infrastructure/sdk-overview/sdk-versioning-policy
 ---
 
 <p>
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038143771-SDK-versioning-policy </button>
 </p>
 
-Harness FME versions SDKs according to semantic versioning industry standards and actively support major versions for 12 months post release.
+Harness FME versions its SDKs and customer-deployed components (such as the Split Proxy, Evaluator, Synchronizer, and Split Daemon) according to semantic versioning industry standards. FME actively supports major versions of these components for 12 months following their release.
+
+:::note
+The versioning and support policy described here applies to all SDKs and customer-deployed components maintained by FME. This includes the Split Proxy, Evaluator, Synchronizer, Split Daemon (SplitD), JavaScript synchronizer tools, and any new tools released in the future.
+:::
+
 
 ## What is semantic versioning?
 
@@ -38,4 +45,4 @@ Bug fixes that preserve compatibility are released as a patch version. Depending
 
 ## Version support
 
-FME supports and patches prior major releases for up to 12 months following the version release date. If 12 months has elapsed, support and the Harness FME SDK engineering team may ask you to first upgrade to the current major release before attempting to patch old versions.
+FME supports and patches prior major releases of SDKs and customer-deployed components (such as the Split Proxy, Evaluator, Synchronizer, and Split Daemon) for up to 12 months following the version release date. If 12 months has elapsed, support and the Harness FME SDK engineering team may ask you to first upgrade to the current major release before attempting to patch old versions.
