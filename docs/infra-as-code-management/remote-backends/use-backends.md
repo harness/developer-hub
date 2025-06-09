@@ -15,7 +15,7 @@ This approach is ideal if you're onboarding to IaCM, already use remote backends
 ## Prerequisites
 - Your repository contains a valid `backends.tf` file.
 - Your existing remote state file (e.g., `.tfstate`) is accessible and versioned.
-- Harness has read/write access to the remote backend.
+- Harness has read/write access to the remote backend. Go to [Set environment variables](/docs/infra-as-code-management/remote-backends/init-configuration#set-environment-variables) for more information.  
 - You use the [Plan and Apply steps](https://developer.harness.io/docs/infra-as-code-management/workspaces/provision-workspace/) in your pipeline, not custom script steps.
 - Backend authentication credentials (e.g. for GCS, S3, Azure) are configured via environment variables in the Harness Workspace.
 
@@ -86,7 +86,10 @@ steps:
       identifier: Apply
 ```
 
-If your workspace requires OpenTofu/Terraform or environment variables, [add them in your workspace settings](/docs/infra-as-code-management/project-setup/input-variables).
+If your workspace requires OpenTofu/Terraform variables or environment variables, [add them in your workspace settings](/docs/infra-as-code-management/project-setup/input-variables).
+
+If no variables are specified, Harness uses any defaults defined in the source code (e.g. `variables.tf` files in your repo). Go to [Declaring variables](https://opentofu.org/docs/language/values/variables) to see how to define variables in your source code.
+
 
 **To test your setup:**  
 Run your pipeline to execute the `init`, `plan`, and `apply` steps (and any approval plugins you've configured). See [IaCM Setup pipeline](/docs/infra-as-code-management/get-started/#add-a-pipeline) for more details.
@@ -105,7 +108,7 @@ OpenTofu handles lock acquisition and release during pipeline execution. There i
 ## Troubleshooting & Best Practices
 | Issue                              | Recommendation                                                                                              |
 | ---------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `Error acquiring the state lock`   | Ensure no other process (e.g. local Terraform CLI) is holding a lock.                                       |
+| `Error acquiring the state lock`   | Ensure no other process (e.g. local Terraform CLI) is holding a lock. Retries, if any, are handled by OpenTofu/Terraform directly.                                      |
 | Permission denied                  | Check that your Harness connector or environment variables have full access to the backend bucket or table. |
 | Plan step fails with missing state | Confirm that the key or prefix in `backends.tf` matches the remote path.                                    |
 
