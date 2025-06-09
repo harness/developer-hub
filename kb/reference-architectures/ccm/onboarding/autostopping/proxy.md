@@ -17,7 +17,7 @@ If the traffic the proxy is receiving originates from a private network, you can
 
 ![](../../../static/proxy-setup-private.png)
 
-In both cases the proxy need access to the internet. It uses this access to be initialized when first provisioned (download envoy) and receive updates from Harness (new rules being created) and pass back usage metrics and activity for rules.
+In both cases the proxy needs access to the internet. It uses this access to be initialized when first provisioned (download envoy), receive updates from Harness (new rules being created), and pass back usage metrics and activity for rules.
 
 # Maintenance
 
