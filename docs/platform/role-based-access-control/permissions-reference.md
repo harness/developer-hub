@@ -129,13 +129,11 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | --- | --- | --- |
 | Network Map | <ul><li>View (`servicediscovery_networkmap_view`)</li><li>Create (`servicediscovery_networkmap_create`)</li><li>Edit (`servicediscovery_networkmap_edit`)</li><li>Delete (`servicediscovery_networkmap_delete`)</li></ul> | Active |
 
-## Supply Chain Assurance
+## Supply Chain Security
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
 | Remediation Tracker | <ul><li>View (`ssca_remediationtracker_view`)</li><li>Create/Edit (`ssca_remediationtracker_edit`)</li><li>Close (`ssca_remediationtracker_close`)</li></ul> | Active |
-| Exemption | <ul><li>Create (`sto_exemption_create`)</li></ul> | Active |
-| Enforcement Exemption | <ul><li>View (`ssca_enforcementexemption_view`)</li><li>Create/Edit (`ssca_enforcementexemption_edit`)</li><li>Delete (`ssca_enforcementexemption_delete`)</li><li>Review (`ssca_enforcementexemption_review`)</li></ul> | Inactive |
 
 ## Webhooks
 
