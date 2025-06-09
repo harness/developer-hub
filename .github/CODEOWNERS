@@ -85,13 +85,13 @@ static/  @rohanmaharjan100 @wei-harness
 
 # CCM Docs
 
-/docs/cloud-cost-management/3-use-ccm-cost-reporting @joeyouss @sdsingh07 @rajarshee-harness
-/docs/cloud-cost-management/4-use-ccm-cost-optimization @joeyouss @sandyydk @riyasyash @rajarshee-harness @josephdlopez @jyotiarora-harness @shalinlk
-/docs/cloud-cost-management/5-use-ccm-cost-governance @joeyouss @iamanmolm @rajarshee-harness @josephdlopez @sdsingh07
-/docs/cloud-cost-management/ @joeyouss @josephdlopez
-/release-notes/cloud-cost-management.md @joeyouss @rajarshee-harness @josephdlopez 
-/src/components/Roadmap/data/ccmData.ts @joeyouss @rajarshee-harness
-/src/components/Docs/data/cloudCostManagementData.ts @joeyouss @rajarshee-harness
+/docs/cloud-cost-management/3-use-ccm-cost-reporting @joeyouss @sdsingh07 @rajarshee-harness @karanshetty53
+/docs/cloud-cost-management/4-use-ccm-cost-optimization @joeyouss @sandyydk @riyasyash @rajarshee-harness @josephdlopez @jyotiarora-harness @shalinlk @karanshetty53
+/docs/cloud-cost-management/5-use-ccm-cost-governance @joeyouss @iamanmolm @rajarshee-harness @josephdlopez @sdsingh07 @karanshetty53
+/docs/cloud-cost-management/ @joeyouss @josephdlopez @karanshetty53 @rajarshee-harness @jyotiarora-harness
+/release-notes/cloud-cost-management.md @joeyouss @rajarshee-harness @josephdlopez  @karanshetty53
+/src/components/Roadmap/data/ccmData.ts @joeyouss @rajarshee-harness @karanshetty53
+/src/components/Docs/data/cloudCostManagementData.ts @joeyouss @rajarshee-harness @karanshetty53
 
 # FirstGen CCM Docs
 /docs/category/cloud-cost-management/ @josephdlopez @joeyouss
