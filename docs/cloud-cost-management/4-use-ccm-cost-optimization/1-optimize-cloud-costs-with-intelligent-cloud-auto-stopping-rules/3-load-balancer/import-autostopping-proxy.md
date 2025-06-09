@@ -1,5 +1,5 @@
 ---
-title: Import AutoStopping Proxy using API
+title: Import AutoStopping Proxy for AWS
 description: Describes how to import an AutoStopping proxy using API.
 # sidebar_position: 2
 helpdocs_is_private: false
@@ -162,5 +162,20 @@ echo ">>> Setup complete."
 ```
 </details>
 
-3. Post this, connect to your instance and upon successful connection, the proxy will show on the home page of Load Balancer Manager in AutoStopping.
+4. Before starting the instance, you need to replace the placeholder values in the cloud-init script with your actual Harness information:
+
+* **apiURL**: The Harness API URL for your environment
+   * For example, if your AutoStopping Rules UI URL is `https://app.harness.io/ng/account/Abc123-XyZ789LmNoPqr/module/ce/autostopping-rules`, the apiURL will be `https://app.harness.io/lw/api`
+
+* **accountID**: Your Harness account ID
+   * In the above example, your accountID would be `Abc123-XyZ789LmNoPqr`
+
+* **authToken**: Your Harness API key
+   * Enter a valid API key with CCM Admin permissions
+   * Choose **No Expiration** in the Expiration dropdown list while creating this API key
+   * For more information on creating API keys, see [Create an API Key](https://developer.harness.io/docs/platform/automation/api/api-quickstart)
+
+5. Once you've replaced all placeholder values, launch your instance.
+
+6. Post this, connect to your instance and upon successful connection, the proxy will show on the home page of Load Balancer Manager in AutoStopping.
 
