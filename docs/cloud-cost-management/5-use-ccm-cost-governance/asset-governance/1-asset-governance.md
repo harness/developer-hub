@@ -84,8 +84,8 @@ Harness Cloud Asset Governance streamlines cloud management processes, improves 
 ### Cloud-Custodian Versions at Harness
 
 The cloud-custodian versions utilised currently are as following:
-  - `c7n==0.9.41`
-  - `c7n_azure==0.7.40`
-  - `c7n_gcp==0.4.40 `
+  - `c7n==0.9.44`
+  - `c7n_azure==0.7.43`
+  - `c7n_gcp==0.4.43`
 
 
