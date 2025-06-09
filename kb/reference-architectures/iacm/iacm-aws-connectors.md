@@ -11,7 +11,7 @@ When defining authentication to AWS for Harness Infrastructure as Code there are
 
 Harness offers a [hosted execution environment](https://developer.harness.io/kb/continuous-integration/harness-cloud-faqs/) where your builds run on independent ephemeral machines. Using this environment requires that all the endpoints you are configuring using TF are exposed to the public internet.
 
-If you are using this environment, you can use Access Keys or OIDC in a Harness AWS connector to connect. It is recommended that you use OIDC over access keys and keys have to be rotated whereas OIDC uses a trust between Harness and your AWS account to do "serverless" authentication.
+If you are using this environment, you can use Access Keys or OIDC in a Harness AWS connector to connect. It is recommended that you use OIDC over access keys as keys have to be rotated whereas OIDC uses a trust between Harness and your AWS account to do "serverless" authentication.
 
 ## Kubernetes (self-hosted)
 
@@ -19,7 +19,7 @@ The other option for executing IaCM pipelines is to use a Kubernetes environment
 
 ### "Serverless" Auth
 
-If you are using this environment, you can use Access Keys or OIDC in a Harness AWS connector to connect. It is recommended that you use OIDC over access keys and keys have to be rotated whereas OIDC uses a trust between Harness and your AWS account to do "serverless" authentication.
+If you are using this environment, you can still use Access Keys or OIDC in a Harness AWS connector to connect. It is recommended that you use OIDC over access keys as keys have to be rotated whereas OIDC uses a trust between Harness and your AWS account to do "serverless" authentication.
 
 ### Execution Environment Auth
 
@@ -33,7 +33,9 @@ The first option is to use the "node role" or the instance profile of the Kubern
 
 You will have to select some delegate for the connector to be tied to. This selection does not matter as it will be ignored when used in an IaCM workspace. Select and delegate and save the connector. The healthcheck for this connector may fail if the delegate selected doesn't have an AWS instance profile associated with it so it may be helpful to select a delegate that does.
 
-This method allows you to define a "role to assume" in the connector which will be assumed for your in your IaCM execution.
+This does not require EKS to be used as the cluster type and could be ran on any self-hosted cluster using EC2 instances for the nodes, when there are instance profiles used.
+
+This method also allows you to define a "role to assume" in the connector which will be assumed for your in your IaCM execution.
 
 #### IRSA
 
@@ -47,4 +49,4 @@ Finally, in your IaCM stage you will need to add the required annotations for th
 
 ![SA Annotations](../static/iacm-aws-connector-irsa-sa-anno.png)
 
-This method allows you to define a "role to assume" in the connector which will be assumed for your in your IaCM execution.
+This method also allows you to define a "role to assume" in the connector which will be assumed for your in your IaCM execution.
