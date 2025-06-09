@@ -50,7 +50,7 @@ Harness CCM uses labels to process node pool recommendations. Make sure to add o
 
 - Node pool recommendations do not support node pools with autoscalers enabled.
 - These recommendations should be treated as a nudge, not a source of accurate cost data in such cases.
-- Please note, cost data might be incorrect for autoscaled node pools. To hide node pool recommendations for autoscaled pools, kindly reach out to [Harness Support](mailto:support@harness.io)
+- Please note: cost data might be incorrect for autoscaled node pools. To hide node pool recommendations for autoscaled pools, kindly reach out to [Harness Support](mailto:support@harness.io)
 
 :::
 
