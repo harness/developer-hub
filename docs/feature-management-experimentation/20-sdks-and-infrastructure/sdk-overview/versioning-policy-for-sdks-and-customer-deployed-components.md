@@ -3,7 +3,7 @@ title: Versioning policy for SDKs and customer-deployed components
 sidebar_label: Versioning policy for SDKs and customer-deployed components
 sidebar_position: 1
 redirect_from:
-  - /feature-management-experimentation/sdks-and-infrastructure/sdk-overview/sdk-versioning-policy
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/sdk-versioning-policy
 ---
 
 <p>
