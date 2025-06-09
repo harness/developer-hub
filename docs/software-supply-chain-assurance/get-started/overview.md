@@ -1,7 +1,7 @@
 ---
 title: Harness Supply Chain Security (SCS) overview
 sidebar_label: Overview
-description: Secure your software supply chain with Harness SCS.
+description: Secure your software supply chain with Harness SCS
 sidebar_position: 1
 ---
 
@@ -30,7 +30,7 @@ This comprehensive approach helps organizations maintain a secure and compliant 
 
 ## Supply Chain Security Features
 
-To realize the objectives, Harness SCS offers the following features:
+To realize the objectives, the SCS module offers the following features:
 
 
 
@@ -38,9 +38,9 @@ To realize the objectives, Harness SCS offers the following features:
 * Comply with security compliance standards
     * [CIS Benchmarks](https://www.cisecurity.org/benchmark/software-supply-chain-security)
     * [OWASP Top 10 CI/CD Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/)
-* [SLSA Build Level 1, Level 2 and Level 3.](docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-1)
-* [SBOM generation and management.](/docs/software-supply-chain-assurance/open-source-management/generate-sbom)
-* [Govern the usage of open source with SBOM policy enforcement.](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies)
+* [SLSA Build Level 1, Level 2 and Level 3.](https://developer.harness.io/docs/software-supply-chain-assurance/slsa/overview)
+* [SBOM generation and management.](/docs/software-supply-chain-assurance/sbom/generate-sbom.md)
+* [Govern the usage of open source with SBOM policy enforcement.](/docs/software-supply-chain-assurance/sbom-policies/overview)
 * [Remediate issues related to risk & compliance and zero-day exploits.](/docs/software-supply-chain-assurance/open-source-management/remediation-tracker/overview)
 
-For more information about these features and how SCS integrates with the Harness Platform, go to the [SCS key concepts](https://developer.harness.io/docs/software-supply-chain-assurance/get-started/key-concepts).
+For more information about these features and how SCS integrates with the Harness Platform, go to the [SCS key concepts](/docs/software-supply-chain-assurance/get-started/key-concepts).

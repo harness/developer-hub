@@ -1,7 +1,7 @@
 ---
 title: Overview
 description: Understanding the process of generate and manage SBOMs with Harness SCS
-sidebar_position: 9
+sidebar_position: 8
 sidebar_label: Overview
 redirect_from:
 
@@ -21,8 +21,8 @@ The Harness SCS module provides comprehensive capabilities for generating, manag
 
 
 * **Generate or Ingest SBOMs**: The step allows you to easily generate SBOMs for your software artifact or Ingest existing ones from external sources. Refer to the following docs for detailed implementation
-    * [Generate SBOM](/docs/software-supply-chain-assurance/sbom/generate-sbom)
-    * [Ingest SBOM](/docs/software-supply-chain-assurance/sbom/ingest-sbom-data)
+    * [Generate SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories)
+    * [Ingest SBOM](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data)
 * **SBOM Quality Score**: The step will generate a quality score for the SBOM which helps in assessing the completeness and quality of your SBOM.
 * **Attestation**: The step will sign the SBOM and securely store it in the artifact’s repository for added trust and verification.
 * **SBOM Drift Tracking**: You can use [SBOM Drfit](/docs/software-supply-chain-assurance/open-source-management/generate-sbom#configure-sbom-drift) feature to monitor changes in your software composition over time and identify potential security risks or licensing issues.

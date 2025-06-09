@@ -62,7 +62,7 @@ Here’s a detailed view of populating all the fields with sample data.
 <DocImage path={require('./static/remediation-form.png')} width="50%" height="20%" title="Click to view full size image" />
 
 
-Click on 'Confirm' to create the tracker, which will then be added to a remediation tracker list.
+Click on **Confirm** to create the tracker, which will then be added to a remediation tracker list.
 
 Each tracker in the list will present the provided details succinctly for quick and easy reference. Additionally, the status of the tracker will automatically be set to 'In-Progress' as it identifies the relevant artifacts.
 

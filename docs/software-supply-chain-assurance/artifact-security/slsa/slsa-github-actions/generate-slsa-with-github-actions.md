@@ -151,4 +151,4 @@ jobs:
 
 ```
 
-To verify the generated SLSA Provenance, refer to [Verify SLSA Provenance with GitHub Actions](/docs/software-supply-chain-assurance/slsa/verify-slsa-with-github-actions) documentation.
+To verify the generated SLSA Provenance, refer to [Verify SLSA Provenance with GitHub Actions](/docs/software-supply-chain-assurance/artifact-security/slsa/slsa-github-actions/verify-slsa-with-github-actions) documentation.

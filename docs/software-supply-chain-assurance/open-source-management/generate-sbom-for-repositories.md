@@ -1,7 +1,7 @@
 ---
 title: Generate SBOM for Repositories
 description: Generate SBOM for Repositories using Harness SCS
-sidebar_position: 10
+sidebar_position: 9
 sidebar_label: Generate SBOM for Repositories
 ---
 
