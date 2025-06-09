@@ -101,7 +101,7 @@ export const ilt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
-    {
+  {
     title: "Supply Chain Security",
     module: MODULES.ssca,
     type: type.user,
@@ -109,6 +109,17 @@ export const ilt: IltCardItem[] = [
       "Deep dive into supply chain security and concepts.",
     version: "Harness SCS Paid Plans",
     link: "https://university-registration.harness.io/ilt-harness-supply-chain-security",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
+  {
+    title: "Code Repository",
+    module: MODULES.code,
+    type: type.user,
+    description:
+      "Deep dive into software configuration management and concepts.",
+    version: "Harness Paid Plans",
+    link: "https://university-registration.harness.io/ilt-harness-code-repository",
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
