@@ -56,7 +56,7 @@ The database schema defines a set of SQL changes that can be deployed to one or 
 To learn more about Git connectors settings, reference this [Harness Git connector settings](../../../platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference.md) documentation for more.
 :::
 
-### 3.Connect wit h Database Instance 
+### 3.Connect with Database Instance 
 
 Before we can deploy our Database Schema, we need to connect a database instance to which we can deploy it. Here’s how:
 
@@ -89,40 +89,6 @@ A deployment pipeline deploys your database changes when it runs. In addition to
 7. Click `Apply Changes` and Save the Pipeline.
 8. Now, click on "Run" and wait for your pipeline to complete.
 ![dbops-running](./static/dbops-running.png)
-
-## Advanced Configuration
-
-### Configure your pipeline to automatically deploy when Git changes
-
- 1. Open the **Continuous Delivery & GitOps** module within Harness.
- 2. Open **Pipelines** then choose your pipeline.
- 3. Click **Triggers**, followed by **New Trigger**.
- 4. Choose the git connector to listen for. This git connector will match the configuration you provided in your DB Schema.
- 5. Under conditions, specify the branch name(s) that are used by DB Instance(s) updated by this pipeline.
- 6. Under **Changed Files**, enter the path to your changelog, and any other files it references. You can leverage regex to reference other changed files. 
- 7. Under the pipeline input, change **Tag** to **Expression**. After this step, enter the formula `<+trigger.commitSha>` which will read the `sha` from the triggering git commit.
-
-### Capacity Planning
-
-Capacity planning is critical for Harness Database DevOps because it ensures that the database infrastructure can handle current workloads while scaling efficiently to meet future demands. 
-
-During the execution, DB DevOps spins up pods on the specified kubernetes cluster in order to run various tasks, for example git clone, and liquibase commands. 
-
-In your pipeline, you can specify how many resources these pods use. Your cluster will need this many resources available per concurrent execution of the pipeline.
-
-Harness plans to increase the default values to 0.5 CPU, and 1 GB of RAM in the near future. Harness recommends setting this in the UI of Harness Database DevOps module.
-
-```
-spec:
-   connectorRef: account.harnessImage
-   dbSchema: db_devops_demo
-   dbInstance: ms_sql
-   tag: <+stage.variables.tag>
-   resources:
-      limits:
-         memory: 1Gi
-         cpu: "0.5"
-```
 
 ## Conclusion
 
