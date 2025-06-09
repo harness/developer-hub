@@ -8,12 +8,12 @@ sidebar_position: 11
 This document provides a comprehensive guide to configuring databases with SSL, including secret and delegate configurations, setting up for JDBC test connections, and pipeline permissions. It covers the necessary steps to set up and manage certificates for secure communication between database and other services.
 
 ## 1. Clone
-We support two types of cloning **depending on the DB Schema connector type**
-
-| Clone Type |	SSL Support |	Notes |
-| --- | --- | --- |
-| Git	| ✅ Yes	| Mounts cert at `/etc/ssl/certs/ca-bundle.crt` [More Info](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/) |
-| Artifactory	| ❌ No	| SSL is not supported yet |
+Harness Database DevOps supports multiple source types for schema cloning and connecting to databases. SSL support varies based on the source type and integration method. The table below outlines SSL compatibility and configuration requirements for each supported source:
+| Functionality Type | SSL Support | Transport Layer | Cert Management | Notes |
+| ------------ | ----------- | --------------- | ------------------ | ------------ |
+| Git (Schema Cloning)         | ✅ Yes       | HTTPS           | Mounted certs (`/etc/ssl/certs/ca-bundle.crt`) | [More Info](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/) |
+| Artifactory (Schema Cloning) | ❌ No        | HTTP            | N/A                                            | SSL not supported for Artifactory-based schema cloning                                                                                                                                               |
+| Database Connections (JDBC)  | ✅ Yes       | JDBC over SSL   | Requires importing DB certs into truststore    | See [Connector Setup Guide](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/)                                                                                |
 
 ## 2. Pre-requisites
 Before proceeding, ensure you have the following components and versions in place:
