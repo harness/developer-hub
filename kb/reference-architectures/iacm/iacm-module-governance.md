@@ -23,7 +23,7 @@ module_calls[call] {
 ```rego
 # Check if an array contains an element
 contains(arr, elem) {
-	arr[_] = elem
+  arr[_] = elem
 }
 ```
 
@@ -35,9 +35,9 @@ Here we collect module calls and throw a failure if the module source doesn't ma
 deny[msg] {
   call := module_calls[_]
 
-  not startswith(call.source, "../")                 	# allow local modules in parent directories
-  not startswith(call.source, "./")                  	# allow local modules in the current directory
-  not startswith(call.source, "app.harness.io/")     	# allow modules from harness module registry
+  not startswith(call.source, "../")                    # allow local modules in parent directories
+  not startswith(call.source, "./")                     # allow local modules in the current directory
+  not startswith(call.source, "app.harness.io/")        # allow modules from harness module registry
   not startswith(call.source, "terraform-aws-modules/") # allow offical modules from aws
 
   msg := sprintf(
@@ -53,13 +53,13 @@ If there are specific modules where you want to control the versions used you ca
 
 ```rego
 deny[msg] {
-	allowed_versions := ["2.2.0", "2.3.0"]
+  allowed_versions := ["2.2.0", "2.3.0"]
 
   call := module_calls[_]
 
   call.source == "terraform-aws-modules/kms/aws"
 
-	not contains(allowed_versions, call.version_constraint)
+  not contains(allowed_versions, call.version_constraint)
 
   msg := sprintf(
     "Module %s version %s is not allowed, must be one of: %s",
@@ -76,9 +76,9 @@ If there are certain sensitive resource types which you want to deny use of outs
 deny[msg] {
   disallowed_types := ["aws_instance"]
 
-	r = input.planned_values.root_module.resources[_]
+  r = input.planned_values.root_module.resources[_]
 
-	contains(disallowed_types, r.type)
+  contains(disallowed_types, r.type)
 
   msg := sprintf(
     "Resource of type %s is not allowed outside a module",
