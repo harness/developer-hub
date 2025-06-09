@@ -1223,7 +1223,7 @@ const sidebars: SidebarsConfig = {
           type: "link",
           label: "API Reference",
           className: "sidebar-API_Reference",
-          href: "https://apidocs.harness.io/",
+          href: "https://docs.split.io/reference/",
           customProps: {
             description: "Harness API Docs.",
           },
