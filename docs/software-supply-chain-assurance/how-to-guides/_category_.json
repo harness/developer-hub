@@ -1,11 +1,11 @@
 {
-    "label":"Dashboards and Reports",
-    "position": 59,
+    "label":"How to Guides",
+    "position": 110,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Reports"
+       "title":"How to Guides"
     }
  }

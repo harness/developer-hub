@@ -21,7 +21,7 @@ Here's a breakdown of the overall steps involved:
 
 Here’s the overview of SBOM Policy Enforcement step in Harness SCS:
 
-<DocImage path={require('./static/sbom-enforcement-overview.png')} width="100%" height="100%" />
+<!-- <DocImage path={require('./static/sbom-enforcement-overview.png')} width="100%" height="100%" /> -->
 
 
 :::info

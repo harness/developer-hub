@@ -1,8 +1,8 @@
 ---
-title: Standards and Rule Definitions
-sidebar_label: Standards and rule definitions
+title: Rule Definitions and Standards
+sidebar_label: Rule Definitions and Standards
 description: View and manage the standards and associated rules supported by Harness SCS
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 The **Rule Definitions** section offers a complete list of all the standards and associated rules supported by Harness SCS. These rules are applied to various target types, and the overall compliance posture is presented in the Compliance section of SCS. To learn more about managing the compliance status, refer to the document [Manage Compliance Posture](./manage-compliance-posture)
