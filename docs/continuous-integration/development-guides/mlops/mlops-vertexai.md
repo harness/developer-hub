@@ -120,7 +120,7 @@ This plugin executes a [notebook](https://cloud.google.com/vertex-ai/docs/vector
                   name: vertex
                   identifier: vertex
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: harnesscommunity/gcloud-vertex
                     settings:
                       allowlist: sample_notebook.ipynb

@@ -189,7 +189,7 @@ This example also uses [stage variables](../set-up-build-infrastructure/ci-stage
                                 name: git-clone-and-copy-dockerfile
                                 identifier: git-clone-and-copy-dockerfile
                                 spec:
-                                    connectorRef: account.harnessImage
+                                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                                     image: alpine:latest
                                     shell: Sh
                                     command: |+

@@ -52,7 +52,7 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to instal
     identifier: dependencies
     name: Dependencies
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: python:latest
       command: |-
         python -m pip install --upgrade pip
@@ -192,7 +192,7 @@ These examples run tests in a **Run** step.
     name: Test
     identifier: test
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: python:latest
       shell: Sh
       command: |-
@@ -229,7 +229,7 @@ reports:
                   name: runTestsWithIntelligence
                   identifier: runTestsWithIntelligence
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     command: |-
                       python3 -m venv .venv
@@ -322,7 +322,7 @@ Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag i
     name: Python Version
     identifier: pythonversion
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: python:3.10.10
       shell: Sh
       command: |-
@@ -353,7 +353,7 @@ Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag i
     name: Python Version
     identifier: pythonversion
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: python:<+ stage.matrix.pythonVersion >
       shell: Sh
       command: |-
@@ -557,7 +557,7 @@ pipeline:
                   name: Test
                   identifier: test
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:3.10.10
                     shell: Sh
                     command: |-
@@ -616,7 +616,7 @@ pipeline:
                   name: Test
                   identifier: test
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:<+ stage.matrix.pythonVersion >
                     shell: Sh
                     command: |-

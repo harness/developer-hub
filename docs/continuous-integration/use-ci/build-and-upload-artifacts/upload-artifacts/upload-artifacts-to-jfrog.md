@@ -142,7 +142,7 @@ For example:
     name: plugin
     identifier: plugin
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: plugins/artifactory
       settings:
         access_token: YOUR_JFROG_TOKEN
@@ -174,7 +174,7 @@ Example:
     name: AddBuildDependencyStep
     identifier: AddBuildDependencyStep
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: plugins/artifactory
       settings:
         command: add-build-dependencies
@@ -216,7 +216,7 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://complete/url/to/artifact/on/jfrog
