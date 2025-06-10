@@ -12,11 +12,15 @@ redirect_from:
 
 # Set up CCM for AWS
 
+## Overview
+
 Harness Cloud Cost Management (CCM) offers comprehensive solutions to manage and optimize the cloud costs of your Amazon Web Services (AWS) infrastructure. CCM provides visibility, governance, and optimization of AWS services such as EC2, S3, RDS, Lambda, and others. CCM provides recommendations to effectively right-size your cloud resources to match the workload demands and optimizes the auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
 
 > **☆ NOTE —** After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
 
-## AWS Connector requirements
+## Prerequisites
+
+### AWS Connector requirements
 
 - The same connector cannot be used in NextGen and FirstGen.
 - For CCM, AWS connectors are available only at the Account level in Harness.
@@ -59,7 +63,9 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 </Tabs>
 
-## Connect CCM to your AWS account
+## Implementation Guide
+
+### Step 1: Connect CCM to your AWS account
 
 To enable CCM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS accounts.
 
@@ -86,9 +92,11 @@ Perform the following steps to connect CCM to the AWS account.
 
 5. Perform the following tasks in the **AWS Connector** wizard.
 
-### Overview
+### Step 2: Configure Connector Overview
 
 1. Enter the following details and select **Continue**.
+
+#### Connector Details
 
 | **Field**                            | **Description**                                                                                                                                                                                                |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -96,13 +104,15 @@ Perform the following steps to connect CCM to the AWS account.
 | **Specify the AWS account ID**       | The Account ID of the AWS account to connect to. To find your AWS account ID, see [Finding your AWS account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#FindingYourAWSId). |
 | **Is this an AWS GovCloud account?** | Select **Yes** if connecting to a GovCloud account.                                                                                                                                                            |
 
-### Cost and Usage Report
+### Step 3: Set Up Cost and Usage Report
 
 Launch the AWS console and perform the following steps:
 
 1. Log into your AWS account if not already logged in.
-2. Select **Create Report**.
+2. Select **Create Report**.
 3. In the **Specify report details** step, enter the following values, and then select **Next**.
+
+#### Report Details
 
 | **Field**                      | **Description**                                                                                                                                 |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -133,7 +143,7 @@ Launch the AWS console and perform the following steps:
 | **Cost and Usage Report Name**    | Enter the report name you copied earlier.    |
 | **Cost and Usage S3 Bucket Name** | Enter the bucket name you specified earlier. |
 
-### Choose Requirements
+### Step 4: Choose Requirements
 
 Select your desired features, and then select **Continue**.
 
@@ -146,7 +156,7 @@ Details about the features are listed below. Note that the permissions required 
 | **Optimization by AutoStopping** (Optional)  | This feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances and auto-scaling groups. For more information, see [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard). <ul><li>Orchestrate VMs and ASGs based on idleness</li><li>Run your workloads on fully orchestrated spot instances</li><li>Granular savings visibility</li></ul>                                                                                                                                                                               |
 | **Cloud Governance** (Optional)              | This feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. For more information, see [Asset governance](../../5-use-ccm-cost-governance/asset-governance/1-asset-governance.md). <ul><li>Asset Management (EC2, EBS, RDS, S3)</li><li>Automated Actions</li></ul>                                                                                                                                                                                                                                                                                                                                                  |
 
-### Create Cross Account Role
+### Step 5: Create Cross Account Role
 
 Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy based on the features selected above.
 
@@ -167,7 +177,7 @@ Perform the following steps in the AWS Console.
 | **Cross Account Role ARN** | Enter the value that you copied in step 3.                                                                                                 |
 | **External ID**            | Do not modify. If you intend to create multiple AWS connectors via API, be sure to copy this value as you will need to reference it later. |
 
-### Connection Test
+### Step 6: Connection Test
 
 The connection is validated, and verified in this step. After successful validation, select **Finish**.
 
@@ -175,7 +185,9 @@ The connection is validated, and verified in this step. After successful validat
 Creating a new CUR (Cost and Usage Report) in AWS typically takes 6-8 hours. During this period, you might encounter an error message stating that Harness CCM is unable to find a CUR file.
 :::
 
-## Create Connectors for multiple AWS accounts
+## Advanced Configuration
+
+### Create Connectors for multiple AWS accounts
 
 Harness CCM also provides the ability to create connectors via API using a StackSet configured at the management account. It involves the following steps:
 
@@ -278,7 +290,7 @@ curl -i -X POST 'https://app.harness.io/gateway/ng/api/connectors' \
 }'
 ```
 
-## Enable EC2 recommendations
+### Enable EC2 recommendations
 
 :::note
 If you are an existing customer, you need to:
@@ -315,13 +327,29 @@ If the recommendations are not enabled, the following error message is displayed
 
 5. You must install the Amazon CloudWatch agent on your EC2 instance to enable memory metrics.
 
-## Reference - AWS access permissions
+## Reference Information
+
+### AWS access permissions
 
 CCM requires the following permissions which are automatically created via a StackSet based on the features you select during configuration.
 
 > **☆ NOTE —** If you don't have access to create a cost and usage report or run a CloudFormation template, contact your IT or security teams to provide the required permissions.
 
-### Cost visibility
+### Individual Feature Permissions
+
+This section details the specific AWS permissions required for each CCM feature:
+
+- [1. Cost Visibility Permissions](#1-cost-visibility-permissions)
+- [2. Resource Inventory Management Permissions](#2-resource-inventory-management-permissions)
+- [3. RDS Instance Visibility Permissions](#3-rds-instance-visibility-permissions)
+- [4. AutoStopping Rules Permissions](#4-autostopping-rules-permissions)
+- [5. Cloud Asset Governance Permissions](#5-cloud-asset-governance-permissions)
+
+### 1. Cost Visibility Permissions
+
+The Cost Visibility feature provides insights into AWS costs by services, accounts, and other dimensions. It enables root cost analysis, anomaly detection, budgeting, and notifications.
+
+#### Required Permissions
 
 The cost visibility policy grants the following permissions:
 
@@ -395,7 +423,11 @@ If the `cur:DescribeReportDefinitions`, `organizations:Describe`, and `organizat
 - `organizations:ListAccounts`: fetches a list of all the accounts present in the organization, and also fetches the accountID to Account Name mapping.
 - `organizations:ListTagsForResource`: fetches the AWS Account level tags. Harness supports account tags within CCM that can be used for reporting and analysis.
 
-### Resource inventory management
+### 2. Resource Inventory Management Permissions
+
+The Resource Inventory Management feature provides visibility into your AWS resources including EC2 instances, EBS volumes, and ECS clusters. This feature helps finance teams understand resource utilization across the organization.
+
+#### Required Permissions
 
 The inventory management policy performs the following actions:
 
@@ -435,20 +467,44 @@ HarnessEventsMonitoringPolicy:
       - "!Ref HarnessCloudFormationRole"
 ```
 
-### Insight into RDS instances
+### 3. RDS Instance Visibility Permissions
 
-This feature provides visibility into your EC2, EBS volumes, and ECS costs. The insights provided by inventory management can be consumed by finance teams to understand resource utilization across the board.
+This feature provides detailed visibility into your RDS instances and related resources, allowing for better cost management and optimization of database resources.
 
-- Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate).
-- Insight into EC2 instances and their utilization.
-- Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see [View AWS EC2 Inventory Cost Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md), [Orphaned EBS Volumes and Snapshots Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md), and [View AWS EC2 Instance Metrics Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-instance-metrics.md).
+#### Feature Capabilities
 
-### AutoStopping rules
+- Detailed breakdown of RDS instance costs and utilization
+- Insight into database clusters and snapshots
+- Integration with EC2, EBS volumes, and ECS cost data
+
+#### Dashboard Access
+
+This feature enables access to several dashboards:
+- Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate)
+- Insight into EC2 instances and their utilization
+- Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards
+
+For more information, see:
+- [View AWS EC2 Inventory Cost Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md)
+- [Orphaned EBS Volumes and Snapshots Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md)
+- [View AWS EC2 Instance Metrics Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-instance-metrics.md)
+
+### 4. AutoStopping Rules Permissions
+
+The AutoStopping feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances and auto-scaling groups, helping to reduce costs by automatically stopping idle resources.
+
+#### Feature Capabilities
+
+- Orchestrate VMs and ASGs based on idleness
+- Run workloads on fully orchestrated spot instances
+- Gain granular savings visibility
+
+#### Required Permissions
 
 The AutoStopping policy performs the following actions:
 
 - Create an IAM role for optimization
-- Permissions for creating AutoStopping Rules
+- Permissions for creating and managing AutoStopping Rules
 
 The following template illustrates the relevant permissions needed for AutoStopping to work seamlessly. 
 
@@ -566,7 +622,11 @@ HarnessOptimsationLambdaPolicy:
         - !Ref HarnessCloudFormationRole
 ```
 
-### Cloud asset governance rules
+### 5. Cloud Asset Governance Permissions
+
+The Cloud Asset Governance feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. This feature provides asset management for EC2, EBS, RDS, S3 resources and enables automated actions.
+
+#### Required Permissions
 
 Enable the following permissions in AWS to execute cloud governance rules:
 
