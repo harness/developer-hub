@@ -1673,7 +1673,7 @@ To avoid authentication issues, it's recommended to either use a PAT when config
 
 ### Authentication issues (toomanyrequests: You have reached your unauthenticated pull rate limit.) 
 #### Harness Cloud Setup with Build and Push Steps
-If you are utilizing Harness Cloud, please note that anonymous pulls would be tied to the IP pool that Harness has for the region for all Harness customers.  This means that all Harness customers would be utilizing from the [same pool of "rate limit" as defined by Docker](https://docs.docker.com/docker-hub/usage/).
+If you are using Harness Cloud, please note that anonymous pulls will be tied to the IP pool assigned to the region for all Harness customers.  This means that all Harness customers would utilize the [same pool of "rate limit" as defined by Docker](https://docs.docker.com/docker-hub/usage/).
 
 In order to resolve these issues, customers should look to enable `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature with our support team to allow teams to select the `Base Image connector` that would be utilized to pull the image.  Please keep in mind the rules regarding Docker API versions for the Docker Registry URL (Please see the above [information that goes into detail about how and why this occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls))
 
@@ -1684,10 +1684,8 @@ Customers may encounter the `toomanyrequests: You have reached your unauthentica
 This is due to utilizing the v2 registry API for a private repository pull.  The fallback will be that Docker will attempt an unauthorized request, which results in the above response.  Please see the above [information that goes into detail about how and why this 
 occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls).
 
-Please note that the key is the **unauthenticated** part of the message.  If you are hitting a rate limit with your credentials, then the message would not include the reference to an unauthenticated pull request.
+Please note that the key is located in the **unauthenticated** part of the message.  If you are hitting a rate limit with your credentials, the message will not include a reference to an unauthenticated pull request.
 
-#### Harness Cloud
-Harness Cloud utilizes our 
 
 ### How can user access the secrets as files in a Docker build without writing them to layers?
 The **build and push** steps used to build Docker images have a context field. Users can use the context field in the build and push steps to mount the current directory at `/harness`. By copying your files to a specific directory and then mounting them, you can avoid writing secrets into the Docker image layers.
