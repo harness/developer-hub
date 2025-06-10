@@ -189,7 +189,7 @@ If you do use the `Code:ImageUri` in the definition, Harness ignores it and inst
 
 **Lambda service with custom artifacts** 
 
-Harness Continuous Delivery (CG) supports AWS Lambda custom artifact sources only when they point to S3 resources in the same AWS account. When you specify `bucketName` and `key` for a Lambda Service, Harness treats the artifact as an S3 object, so you must upload or sync your ZIP file into that bucket before every run. 
+You can use AWS Lambda custom artifact sources only when they point to S3 resources in the same AWS account. When you specify `bucketName` and `key` for a Lambda Service, Harness treats the artifact as an S3 object, so you must upload or sync your ZIP file into that bucket before every run. 
 
 If you don’t, the first deployment succeeds but subsequent runs will fail with `Not Support ArtifactConfig Type`. To ensure repeatable Lambda deployments, include a pre-deployment step in your pipeline that copies or synchronizes your custom artifact into the designated S3 bucket. 
 
