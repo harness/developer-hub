@@ -52,28 +52,16 @@ native services?}
 ```
 
 
-
-
 ## Steps to create an AutoStopping proxy for AWS
+
+<DocImage path={require('./static/as-proxy-aws.png')} width="100%" height="100%" title="Click to view full-size image" />
 
 1. In **Harness**, go to the **Cloud Costs** module. Click on **AutoStopping Rules** from left Navbar.
 2. Click **Load Balancers**.
-3. Click **Create New Load Balancer**.
-4. Select **AWS**.
+3. Click **Create New Load Balancer**. Click **Create New AutoStopping Proxy**.
+4. Enter a name and select **AWS** in **Cloud Provider**.
 5. Choose an existing connector or [create a new one](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws).
-6. Click **Continue**.
-7. Click **Create AutoStopping Proxy**. 
-8. Click **Continue**.
-9. In the **Create a new AutoStopping Proxy** window, enter the following information:
-    1. Provide a name for the AutoStopping Proxy.
-    2. Select your preferred DNS provider and perform the mapping:
-        * If you select **Route 53**, you must choose a hosted zone from the available zones and enter the domain name. AutoStopping manages Route 53 configuration automatically. 
-        * If you select **Others**, enter the URL of the DNS provider. Make sure that you have updated the DNS mapping in your DNS provider.
-    3. Click **Continue**.
-
-<DocImage path={require('./static/aws-autoproxy-lb.png')} width="70%" height="70%" title="Click to view full-size image" />
-
-10. On the next screen, configure the following settings:
+6. Enter **Autostopping Proxy Configuration**.
     - **Region**: Select the AWS region where your target resources are hosted
     - **API Key**: Enter a Harness API key for authentication
       - Choose **No Expiration** when creating this key
@@ -92,11 +80,13 @@ native services?}
       - **TLS Private Key Secret Version**: Provide the ARN of your private key secret
         - Format: 'arn:aws:secretsmanager:[Region]:[AccountId]:secret:SecretName-6RandomCharacters'
         - See AWS documentation on [creating secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html)
+    - **[OPTIONAL] Encrypted EBS Volume**: Enable to encrypt the EBS volume
     - **[OPTIONAL] Allocate Static IP**: Enable to assign an elastic IP address
       - Makes the proxy publicly accessible
       - Remember to update your DNS records to point to this IP
 
-<DocImage path={require('./static/aws-proxy-two.png')} width="70%" height="70%" title="Click to view full-size image" />
+
+7. Click on "Save AutoStopping Proxy".
 
 ### AWS Secrets Manager Configuration
 
