@@ -97,7 +97,7 @@ Currently, this feature is behind the feature flag `PIPE_PROJECT_LEVEL_EXECUTION
 
 You can take fine-grained control of how many pipelines run concurrently in each of your projects. By splitting your account-wide concurrency limit into a **High-Priority** and **Low-Priority** partition, you guarantee reserved execution slots for critical projects while preventing any one project from consuming all available capacity.
 
-You can configure this at the account scope only. Navigate to **Account Settings** -> **Pipeline** -> **Concurrent Active Pipeline Executions**.
+You can configure this at the account scope only. Navigate to **Account Settings** -> **General** -> **Default Settings** -> **Pipeline** -> **CONCURRENCY MANAGEMENT**.
 
 #### How to Configure
 
@@ -123,19 +123,25 @@ You can configure this at the account scope only. Navigate to **Account Settings
 
 #### How It Works
 
-- **Define partitions**  
-  - You choose a **High** slot count (e.g. 200 of your 1000 total capacity).  
-  - The remainder becomes the **Low** partition (800 slots in this example).
+**Partition Approaches**  
+You have two options for carving up your total concurrency:
 
-- **Assign projects**  
-  - Provide **either** a list of High-Priority projects **or** a list of Low-Priority projects—others go to the opposite set.
+1. **High-Priority Partition (Whitelist)**  
+   - You define a **High** slot count and explicitly specify which projects belong there.  
+   - All remaining (and any newly created) projects automatically fall into Low-Priority.  
+   - **When to use**: reserve slots for a handful of critical projects (e.g. security fixes, patch releases), so they always start quickly.
+
+2. **Low-Priority Partition (Blacklist)**  
+   - You define a **Low** slot count and explicitly specify which projects belong there.  
+   - All remaining (and any newly created) projects automatically fall into High-Priority.  
+   - **When to use**: throttle noisy or build-heavy projects (e.g. CI pipelines) to free up capacity for everything else.
 
 - **Runtime behavior**  
   1. When both **High** (200) and **Low** (800) are full, new **High** executions queue—but start immediately as soon as **either** partition frees a slot (allowing High to spill over up to the full 1000 over time).  
   2. New **Low** executions consume only the Low partition; if those 800 are full, they queue until a Low slot opens.  
-  3. On dequeuing mixed queues:  
+  3. On dequeuing mixed queues:
      - **High** pipelines start on the first available slot in **High** or **Low**.  
-     - **Low** pipelines wait for the next available **Low** slot. 
+     - **Low** pipelines wait for the next available **Low** slot.  
 
 ### Pipeline Timeout and Stage Timeout (execution time limits)
 
