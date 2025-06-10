@@ -178,8 +178,8 @@ static/  @rohanmaharjan100 @wei-harness
 
 # FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john
-/docs/feature-management-experimentation/ @alai97 @animcdowell @audreydo1 @NicoZelaya @jliegl-split @dtk-DaveKarow 
-/release-notes/feature-management-experimentation.md @dtk-DaveKarow @alai97 @animcdowell @harness-john @kleinjoshuaa @deej-split @HarnessTheChaos
+/docs/feature-management-experimentation/ @alai97 @animcdowell @audreydo1 @NicoZelaya @jliegl-harness @sanzmauro @dtk-DaveKarow 
+/release-notes/feature-management-experimentation.md @alai97 @dtk-DaveKarow @animcdowell @harness-john @kleinjoshuaa @deej-split
 /release-notes/static/fme/ @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john 
 
 # SEI Docs
