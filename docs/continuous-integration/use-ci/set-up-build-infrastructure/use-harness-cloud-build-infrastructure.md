@@ -42,12 +42,7 @@ Free plans require credit card validation to use Harness Cloud. If you don't wan
 
 Harness Cloud offers Linux, macOS, and Windows platforms. To enable Windows and macOS for Harness Cloud, contact [Harness Support](mailto:support@harness.io).
 
-Review the following image specifications for information about image components and preinstalled software.
-
-* [Linux amd64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md)
-* [Linux arm64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md)
-* [macOS arm64 (M1) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md)
-* [Windows Server 2022 (Windows amd64) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md)
+For detailed information about image components and preinstalled software, check out [this page](/docs/platform/references/harness-cloud-vm-images).
 
 **You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
 
