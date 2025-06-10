@@ -6,7 +6,7 @@ redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/create-ssca-policies
 ---
 
-This document provides a step-by-step guide on how to create SBOM Policies. For guidance on how to write these policies, please refer to the section on [write policy definitions](./define-sbom-policies.md). To learn about implementing SBOM policies, follow the instructions in the section on [enforcing SBOM policies](./enforce-sbom-policies.md).
+This document provides a step-by-step guide on how to create SBOM Policies. For guidance on how to write these policies, please refer to the section on [write policy definitions](/docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies). To learn about implementing SBOM policies, follow the instructions in the section on [enforcing SBOM policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies).
 
 <DocVideo src="https://youtu.be/u1QxLMUvrPU?si=a7w8h-NJ58n34xW0" />
 

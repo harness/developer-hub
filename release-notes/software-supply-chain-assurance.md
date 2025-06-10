@@ -138,12 +138,12 @@ JFrog: `</your-repo/test-image>:tag`
 
 #### **Enhancements**
 
-[Artifact view](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-view) will now support the following views
+[Artifact view](/docs/software-supply-chain-assurance/artifact-security/overview#view-your-artifacts) will now support the following views
 
-* [Chain of Custody](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-view/#artifact-overview): Log the artifact's journey throughout the software supply chain.
-* [Artifact Listing](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-view/#digests-for-your-artifact): View all container images, including their digests and tags.
-* [Security Insights](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-view/#vulnerabilities-tab): Access detailed information on security vulnerabilities.
-* [SLSA Provenance](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-view/#artifact-overview): View the provenance and verification status of artifacts following the SLSA framework.
+* [Chain of Custody](/docs/software-supply-chain-assurance/artifact-security/overview#chain-of-custody): Log the artifact's journey throughout the software supply chain.
+* [Artifact Listing](/docs/software-supply-chain-assurance/artifact-security/overview#digests-for-your-artifact): View all container images, including their digests and tags.
+* [Security Insights](/docs/software-supply-chain-assurance/artifact-security/overview#vulnerabilities-tab): Access detailed information on security vulnerabilities.
+* [SLSA Provenance](/docs/software-supply-chain-assurance/artifact-security/overview#view-your-artifacts): View the provenance and verification status of artifacts following the SLSA framework.
 
 ## July 2024
 

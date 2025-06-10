@@ -21,7 +21,7 @@ The **Artifacts** section in the SCS module is a centralized hub for viewing all
 * **[Security Insights](#vulnerabilities-tab):** Access information on security vulnerabilities.
 * **[SLSA Provenance](#artifact-overview):** View the provenance and verification status of artifacts following the SLSA framework.
 
-Any artifacts that go through [SBOM Orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom), [SBOM Policy Enforcement](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies), or [SLSA Provenance](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa) will be listed here. Additionally, the Artifacts section integrates with the Harness CD (Continuous Deployment) and STO (Security Testing Orchestration) modules, providing details linked to deployments and security scanning results for images.
+Any artifacts that go through [SBOM Orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories), [SBOM Policy Enforcement](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies), or [SLSA Provenance](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa) will be listed here. Additionally, the Artifacts section integrates with the Harness CD (Continuous Deployment) and STO (Security Testing Orchestration) modules, providing details linked to deployments and security scanning results for images.
 
 
 ## View your artifacts

@@ -26,7 +26,7 @@ Here's a breakdown of the overall steps involved:
 1. Create an [OPA policy set](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)
 2. [Write policy definitions](/docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies)
 3. [Enforce the policies on SBOM](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies#policy-configuration)
-4. View [policy violations](/docs/software-supply-chain-assurance/ssca-view-results) and take actions
+4. View [policy violations](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies#view-policy-violations) and take actions
 
 ## Requirements
 
@@ -35,7 +35,7 @@ To enforce SBOM policies in a Harness pipeline, you need:
 * A pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), a [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage), or both. You'll add the SBOM Enforcement step to one of these stages.
 * [SBOM OPA policies that you want to enforce.](/docs/software-supply-chain-assurance/sbom-policies/create-sbom-policies#creating-an-sbom-policy)
 * SBOM to compare policies against. For example, you can [use SCS to generate SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom) or [import SBOM](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data).
-* A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom).
+* A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories).
 
 :::info
 For SBOM Policy Enforcement, an SBOM needs to be generated or ingested beforehand through the SBOM Orchestration step. Refer to the dedicated [SBOM generation document](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/generate-sbom) for further details.

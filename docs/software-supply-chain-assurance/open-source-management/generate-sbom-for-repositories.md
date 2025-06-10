@@ -3,6 +3,9 @@ title: Generate SBOM for Repositories
 description: Generate SBOM for Repositories using Harness SCS
 sidebar_position: 9
 sidebar_label: Generate SBOM for Repositories
+redirect_from:
+    - /docs/software-supply-chain-assurance/sbom/generate-sbom
+
 ---
 
 import Tabs from '@theme/Tabs';
