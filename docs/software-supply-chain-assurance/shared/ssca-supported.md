@@ -6,7 +6,7 @@ The Supply Chain Security (SCS) module is available on the following platforms:
 
 ### SCS on Harness SaaS
 - Repository Security Posture Management - [RSPM](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm)
-- [Generate](/docs/software-supply-chain-assurance/open-source-management/generate-sbom) or [ingest](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data) SBOM, followed by SBOM drift detection and scoring.
+- [Generate](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) or [ingest](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data) SBOM, followed by SBOM drift detection and scoring.
 - [Enforce OSS usage with SBOM governance policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies).
 - Generate [SLSA](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa) provenance and achieve Build [Levels 1](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-1), [2](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-2), and [3](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-3).
 - [Verify SLSA provenance](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa) with [SLSA governance policies](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa#enforce-policies-on-slsa-provenance).

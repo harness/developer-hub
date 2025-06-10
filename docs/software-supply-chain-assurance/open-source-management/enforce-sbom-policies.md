@@ -34,7 +34,7 @@ To enforce SBOM policies in a Harness pipeline, you need:
 
 * A pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), a [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage), or both. You'll add the SBOM Enforcement step to one of these stages.
 * [SBOM OPA policies that you want to enforce.](/docs/software-supply-chain-assurance/sbom-policies/create-sbom-policies#creating-an-sbom-policy)
-* SBOM to compare policies against. For example, you can [use SCS to generate SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom) or [import SBOM](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data).
+* SBOM to compare policies against. For example, you can [use SCS to generate SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) or [import SBOM](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data).
 * A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories).
 
 :::info
@@ -47,7 +47,7 @@ For SBOM Policy Enforcement, an SBOM needs to be generated or ingested beforehan
 
 You can add the **SBOM Policy Enforcement** step to either the **Build** or **Deploy** stage of a Harness pipeline.
 
-* In a **Build** stage, add the step after the [SBOM generation](/docs/software-supply-chain-assurance/open-source-management/generate-sbom) step.
+* In a **Build** stage, add the step after the [SBOM generation](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) step.
 * In a **Deploy** stage, add the step before the deployment step.
 
 :::info

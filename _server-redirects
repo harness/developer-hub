@@ -108,5 +108,8 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 
 # Added by Lavakush Biyani 
 
+/docs/category/comply-with-slsa /docs/category/slsa-compliance
+/docs/category/enforce-sbom-policies /docs/category/policies
+/docs/software-supply-chain-assurance/get-started/onboarding-guide /docs/software-supply-chain-assurance/get-started/
+/docs/software-supply-chain-assurance/sbom/generate-sbom /docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories
 
-/docs/software-supply-chain-assurance/artifact  /docs/software-supply-chain-assurance/artifact-security/
