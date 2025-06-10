@@ -70,7 +70,7 @@ Set the "On what event should the policy set be evaluated" option to "On Step" a
 
 Next, you can define what should happen if a policy fails, you can set it to 
 - **Warn and continue**: The step will warn about the policy violation and continues the execution.
-- **Error and exit**: The step throws and error and terminates the pipeline execution. You can handle this by setting a [failure strategy](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/).
+- **Error and exit**: The step throws and error and terminates the pipeline execution. You can handle this by setting a failure strategy.
 
 ![SBOM Policy evaluation criteria](./static/sbom-policy-criteria.png "SBOM Policy evaluation criteria")
 
@@ -81,4 +81,4 @@ Then, click on the "+ add policy" button to proceed with adding policies to your
 
 Select the necessary policies you wish to include in the set and add them. You have the option to specify the action to be taken if a policy fails, by choosing either “Error and exit” or “Warn and continue.” After making your selections, click "Apply" and then "Finish."
 
-This process will create a new policy set comprising all the selected policies. You can then select this policy set during the SBOM Enforcement step. For further details on how to enforce SBOM policies, please refer to the ["Enforce SBOM Policies"](./enforce-sbom-policies.md) section.
+This process will create a new policy set comprising all the selected policies. You can then select this policy set during the SBOM Enforcement step. For further details on how to enforce SBOM policies, please refer to the [Enforce SBOM Policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies) section.

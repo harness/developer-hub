@@ -5,7 +5,7 @@ description: View and manage the standards and associated rules supported by Har
 sidebar_position: 4
 ---
 
-The **Rule Definitions** section offers a complete list of all the standards and associated rules supported by Harness SCS. These rules are applied to various target types, and the overall compliance posture is presented in the Compliance section of SCS. To learn more about managing the compliance status, refer to the document [Manage Compliance Posture](./manage-compliance-posture)
+The **Rule Definitions** section offers a complete list of all the standards and associated rules supported by Harness SCS. These rules are applied to various target types, and the overall compliance posture is presented in the Compliance section of SCS. To learn more about managing the compliance status, refer to the [Compliance Summary](/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture) document.
 
 
 <DocImage path={require('./static/compliance-ruldefinitons.png')} width="100%" height="100%" title="Click to view full size image" />

@@ -46,7 +46,7 @@ To enable the SBOM Orchestration step to accurately identify the Base image of y
 
     ```
 
-2. Your pipeline should orchestrate the base image with [SBOM orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom) step.
+2. Your pipeline should orchestrate the base image with [SBOM orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) step.
 
 Incorporating these two steps allows the SBOM Orchestration step to delve deeper and effectively tag the component with the base image labels.
 
@@ -62,7 +62,7 @@ To incorporate base image labels into your Dockerfile and push the updated image
 
 
 
-Subsequently, add the script below into a "Run" step:
+Subsequently, add the script below into a **Run** step:
 
 
 

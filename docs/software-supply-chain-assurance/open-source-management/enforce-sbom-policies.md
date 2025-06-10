@@ -19,12 +19,21 @@ Enforce SBOM policies in the CI and CD stages of your Harness pipelines to ensur
 
 <DocImage path={require('./static/sbom-enforcement-overview.png')} width="100%" height="100%" />
 
+Here's a breakdown of the overall steps involved:
+
+
+
+1. Create an [OPA policy set](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)
+2. [Write policy definitions](/docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies)
+3. [Enforce the policies on SBOM](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies#policy-configuration)
+4. View [policy violations](/docs/software-supply-chain-assurance/ssca-view-results) and take actions
+
 ## Requirements
 
 To enforce SBOM policies in a Harness pipeline, you need:
 
 * A pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), a [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage), or both. You'll add the SBOM Enforcement step to one of these stages.
-* [SBOM OPA policies that you want to enforce.](./create-sbom-policies.md)
+* [SBOM OPA policies that you want to enforce.](/docs/software-supply-chain-assurance/sbom-policies/create-sbom-policies#creating-an-sbom-policy)
 * SBOM to compare policies against. For example, you can [use SCS to generate SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom) or [import SBOM](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data).
 * A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom).
 
@@ -82,7 +91,7 @@ When the pipeline runs, the **SBOM Policy Enforcement** step does the following:
 * If violations are detected based on the policy evaluation criteria, the pipeline may issue a warning and proceed, or it may generate an error and terminate.
 * Records policy violations and shows them on the **Supply Chain** tab on the **Execution details** page.
 
-SCS evaluates the components described in the artifact's SBOM against your [policy definitions](./define-sbom-policies.md). For a component to pass the evaluation, it must meet these conditions:
+SCS evaluates the components described in the artifact's SBOM against your [policy definitions](/docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies). For a component to pass the evaluation, it must meet these conditions:
 
 * The component *must not* be denied based on the rules in the `deny_list`.
 * The component *must* be allowed based on the rules in the `allow_list`.
@@ -90,7 +99,7 @@ SCS evaluates the components described in the artifact's SBOM against your [poli
 
 All components must meet the conditions described in *both* the `allow_list` and `deny_list` to fully pass the policy evaluation.
 
-You can review policy violations on the **Execution details** page in Harness. For more information, go to [view pipeline execution results](../ssca-view-results.md#view-policy-violations).
+
 
 
 ## View Policy Violations

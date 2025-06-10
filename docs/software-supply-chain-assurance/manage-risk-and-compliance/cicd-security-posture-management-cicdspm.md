@@ -64,4 +64,4 @@ The Plugins tab provides a list of all plugins used in the pipeline. The tab nam
 
 <DocImage path={require('./static/cicd-actions.png')} width="100%" height="100%" title="Click to view full size image" />
 
-For a complete overview of your supply chain's compliance posture, refer [Manage Compliance Posture](/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture) documentation.
+For a complete overview of your supply chain's compliance posture, refer [Compliance Summary](/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture) documentation.

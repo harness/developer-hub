@@ -56,7 +56,7 @@ Alternately, you can get the output path and output variable expression from a p
 
 ## Configure the SBOM Orchestration step
 
-Add an [SBOM Orchestration step](./generate-sbom.md#add-the-sbom-orchestration-step) and configure to ingest the SBOM.
+Add an [SBOM Orchestration step](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories#sbom-orchestration-step-configuration) and configure to ingest the SBOM.
 
 :::info
 **SBOM Orchestration** step in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
@@ -64,7 +64,7 @@ Add an [SBOM Orchestration step](./generate-sbom.md#add-the-sbom-orchestration-s
 
 * **Step Mode:** Set the step mode to **Ingestion**.
 * **SBOM File Path:** enter the SBOM file path that uses the `JOB_ID` value, as detailed in [Get the SBOM file path](#get-the-sbom-file-path).
-* **Source:** Set the source, which can be DockerHub, ECR, GCR, ACR or Repository. Depending on your selection, a unique set of fields will appear, each specific to the source you've chosen. Address these fields as required, this is similar to configuring the source in SBOM Orchestration step. For more details of what each field entails, please refer to the [documentation on SBOM Orchestration](./generate-sbom.md#add-the-sbom-orchestration-step). If you are using DockerHub, you can follow along.
+* **Source:** Set the source, which can be DockerHub, ECR, GCR, ACR or Repository. Depending on your selection, a unique set of fields will appear, each specific to the source you've chosen. Address these fields as required, this is similar to configuring the source in SBOM Orchestration step. For more details of what each field entails, please refer to the [documentation on SBOM Orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories#sbom-orchestration-step-configuration). If you are using DockerHub, you can follow along.
 * **Image:**, Enter the name of your image with tag, such as `my-docker-org/repo-name:tag`.
    <details>
       <summary>Generate key pairs using Cosign for SBOM Attestation</summary>

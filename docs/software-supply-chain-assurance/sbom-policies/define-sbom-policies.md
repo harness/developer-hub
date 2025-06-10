@@ -14,7 +14,7 @@ The SCS module supports deny list and allow list policies. Your policy files can
 
 Use deny list policies to block the use of specific components within your artifacts. If an artifact includes a component that is part of the deny list, the artifact's policy evaluation fails.
 
-For example, you can block a specific version of a component that has known vulnerabilities or doesn't meet your security standards. By adding that version of the component to the `deny_list` and [enforcing the policy](./enforce-sbom-policies.md) in your pipelines, any attempts to use this component version in your organization's artifacts will be blocked.
+For example, you can block a specific version of a component that has known vulnerabilities or doesn't meet your security standards. By adding that version of the component to the `deny_list` and [enforcing the policy](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies) in your pipelines, any attempts to use this component version in your organization's artifacts will be blocked.
 
 Your deny list rules can use any combination of the following attributes, in addition to the component `name`:
 

@@ -17,7 +17,7 @@ Harness SCS when used along with Harness CI Hosted Builds([Harness Cloud](https:
 1. Built-in infrastructure isolation for every build where new infrastructure is created for every run and deleted after the run completes. 
 2. OPA policy enforcement on CI stage templates with non-privileged, hosted containerized steps that do not use volume mounts. This disallows the build steps to access the provenance key information in compliance with SLSA specifications. 
 
-End result is that hackers cannot do tampering during the build process. This capability when coupled with open source governance through [SBOM lifecycle management](/docs/software-supply-chain-assurance/open-source-management/generate-sbom) provides the most advanced shift-left supply chain security solution in the market today.
+End result is that hackers cannot do tampering during the build process. This capability when coupled with open source governance through [SBOM lifecycle management](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) provides the most advanced shift-left supply chain security solution in the market today.
 
 In Harness SCS, you can use the **SLSA Generation** step to configure your pipeline to generate SLSA Provenance and optionally attest and sign the attestation. The generated provenance is saved in Harness and can be easily accessed from the [Artifact section](/docs/software-supply-chain-assurance/artifact-security/overview) in SCS. If the provenance is attested and signed with keys, the resulting attestation file (`.att`) is pushed to the container registry. Here's an overview of the workflow:
 

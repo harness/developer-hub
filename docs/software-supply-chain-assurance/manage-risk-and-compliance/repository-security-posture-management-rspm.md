@@ -111,4 +111,4 @@ The types of scans conducted include:
 
 Refer to [view security test results](/docs/security-testing-orchestration/view-security-test-results/view-scan-results/) in Harness STO documentation for more detailed information about the view and navigation.
 
-For a complete overview of your supply chain's compliance posture, refer [Manage Compliance Posture](/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture) documentation.
+For a complete overview of your supply chain's compliance posture, refer [Compliance Summary](/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture) documentation.
