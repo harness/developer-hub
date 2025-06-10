@@ -33,5 +33,5 @@ Cluster Orchestrator is designed for quick implementation with minimal configura
    - [Advanced](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
 4. After this, your created connector will show up on the home page of Cluster Orchestrator.
 5. Choose an enablement method and follow the steps listed on the respective pages:
-   - **kubectl**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-kubectl#kubectl-based-installation)
-   - **Helm**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co-helm)
+   - **kubectl**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co#installation-via-kubectl)
+   - **Helm**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co#helm-based-installation)
