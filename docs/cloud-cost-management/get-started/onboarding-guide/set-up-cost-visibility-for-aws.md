@@ -16,20 +16,21 @@ redirect_from:
 
 Harness Cloud Cost Management (CCM) offers comprehensive solutions to manage and optimize the cloud costs of your Amazon Web Services (AWS) infrastructure. CCM provides visibility, governance, and optimization of AWS services such as EC2, S3, RDS, Lambda, and others. CCM provides recommendations to effectively right-size your cloud resources to match the workload demands and optimizes the auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
 
-> **☆ NOTE —** After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
+:::info
+After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
+:::
 
 ## Prerequisites
 
 ### AWS Connector requirements
 
-- The same connector cannot be used in NextGen and FirstGen.
 - For CCM, AWS connectors are available only at the Account level in Harness.
 - If you have multiple AWS accounts, you may need to create multiple AWS connectors depending on desired functionality:
   - **Cost Visibility**: You may need to create one or multiple AWS connectors depending on the availability of consolidated billing. Go to **Cost and Usage Reports (CUR)** for more information.
   - **Resource Inventory Management**: You need to create an AWS connector for each account.
   - **Optimization by AutoStopping**: You need to create an AWS connector for each account.
 
-## Cost and Usage Reports (CUR)
+### Required- Cost and Usage Reports (CUR)
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -65,18 +66,52 @@ import TabItem from '@theme/TabItem';
 
 ## Implementation Guide
 
-### Step 1: Connect CCM to your AWS account
+### Connect CCM to your AWS account
 
 To enable CCM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS accounts.
+```mermaid
+flowchart TD
+    Start["Connect CCM to AWS"] --> Step1["Step 1: Configure Connector Overview"]
+    Step1 --> Step2["Step 2: Set Up Cost and Usage Report"]
+    Step2 --> Step3["Step 3: Choose Requirements"]
+    
+    Step3 --> F1["Cost Visibility\n(Required)"] 
+    Step3 --> F2["Resource Inventory\n(Optional)"] 
+    Step3 --> F3["AutoStopping\n(Optional)"] 
+    Step3 --> F4["Cloud Governance\n(Optional)"] 
+    Step3 --> F5["Commitment Orchestration\n(Optional)"]
+    
+    F1 --> Step4
+    F2 --> Step4
+    F3 --> Step4
+    F4 --> Step4
+    F5 --> Step4
+    
+    Step4["Step 4: Create Cross Account Role"] --> Step5["Step 5: Connection Test"]
+    Step5 --> Complete["AWS Connector Ready"]
+    
+    subgraph "Actions"
+    A1["Harness UI Actions"] --- style1[/"Blue boxes"/]
+    A2["AWS Console Actions"] --- style2[/"Orange boxes"/]
+    end
+    
+    classDef harness fill:#0078D4,color:white,stroke:#0078D4,stroke-width:2px
+    classDef aws fill:#FF9900,color:white,stroke:#FF9900,stroke-width:2px
+    classDef feature fill:#6B46C1,color:white,stroke:#6B46C1,stroke-width:2px
+    
+    class Start,Step1,Step3,Step5,Complete harness
+    class Step2,Step4 aws
+    class F1,F2,F3,F4,F5 feature
+```
 
-Perform the following steps to connect CCM to the AWS account.
+
 
 1. Create a new AWS connector using one of the two options below:
 
 <Tabs queryString="tab-number">
 <TabItem value="4" label="From Account Settings">
 
-2. Go to **Account Resources** > **Connectors**.
+2. Go to **Account Settings** > **Connectors**.
 3. Select **+ New Connector**.
 4. Under **Cloud Costs**, select **AWS**.
 
@@ -92,9 +127,10 @@ Perform the following steps to connect CCM to the AWS account.
 
 5. Perform the following tasks in the **AWS Connector** wizard.
 
-### Step 2: Configure Connector Overview
+### Step 1: Configure Connector Overview
 
-1. Enter the following details and select **Continue**.
+
+<DocImage path={require('./static/aws-connector-one.png')} width="100%" height="100%" title="Click to view full size image" />
 
 #### Connector Details
 
@@ -104,7 +140,7 @@ Perform the following steps to connect CCM to the AWS account.
 | **Specify the AWS account ID**       | The Account ID of the AWS account to connect to. To find your AWS account ID, see [Finding your AWS account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#FindingYourAWSId). |
 | **Is this an AWS GovCloud account?** | Select **Yes** if connecting to a GovCloud account.                                                                                                                                                            |
 
-### Step 3: Set Up Cost and Usage Report
+### Step 2: Set Up Cost and Usage Report
 
 Launch the AWS console and perform the following steps:
 
@@ -138,25 +174,33 @@ Launch the AWS console and perform the following steps:
 
 7. In the Harness connector dialog, enter the following values, and then select **Continue**.
 
+<DocImage path={require('./static/aws-connector-two.png')} width="100%" height="100%" title="Click to view full size image" />
+
 | **Field**                         | **Description**                              |
 | --------------------------------- | -------------------------------------------- |
 | **Cost and Usage Report Name**    | Enter the report name you copied earlier.    |
 | **Cost and Usage S3 Bucket Name** | Enter the bucket name you specified earlier. |
 
-### Step 4: Choose Requirements
+### Step 3: Choose Requirements
 
-Select your desired features, and then select **Continue**.
+Select the Cloud Cost Management features that you would like to enable, and then select **Continue**.
 
-Details about the features are listed below. Note that the permissions required as part of the AWS cross-account role will be based on your selections. Those permissions are listed out in the **Reference - AWS Access Permission** section below.
+> **☆ NOTE —** Selecting features will add the necessary permissions to the IAM role in the next step. Cost Visibility permissions are required by default.
 
-| **Features**                                 | **Capabilities**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Cost Visibility** (Required)               | This feature is available by default and requires access to the CUR report. Provides the following capabilities:<ul><li>Insights into AWS costs by services, accounts, etc. </li><li>Root cost analysis using cost perspectives</li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul> This feature will give you cost insights that are derived from the CUR. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](set-up-cost-visibility-for-kubernetes.md). |
-| **Resource Inventory Management** (Optional) | This feature provides visibility into your EC2, EBS volumes, and ECS costs. The insights provided by inventory management can be consumed by Finance teams to understand resource utilization across the board. <ul><li>Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate) </li><li>Insight into EC2 instances and their utilization</li><li>Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see View AWS EC2 Inventory Cost Dashboard, Orphaned EBS Volumes and Snapshots Dashboard, and View AWS EC2 Instance Metrics Dashboard.</li></ul>                                                                       |
-| **Optimization by AutoStopping** (Optional)  | This feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances and auto-scaling groups. For more information, see [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard). <ul><li>Orchestrate VMs and ASGs based on idleness</li><li>Run your workloads on fully orchestrated spot instances</li><li>Granular savings visibility</li></ul>                                                                                                                                                                               |
-| **Cloud Governance** (Optional)              | This feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. For more information, see [Asset governance](../../5-use-ccm-cost-governance/asset-governance/1-asset-governance.md). <ul><li>Asset Management (EC2, EBS, RDS, S3)</li><li>Automated Actions</li></ul>                                                                                                                                                                                                                                                                                                                                                  |
+<DocImage path={require('./static/aws-connector-features.png')} width="100%" height="100%" title="Click to view full size image" />
 
-### Step 5: Create Cross Account Role
+Details about each feature are provided below:
+
+| **Feature** | **Status** | **Permissions Involved** | **Permissions** |
+|------------|------------|-------------------------|----------------|
+| **Cost Visibility** | Required | • AWS costs by services, accounts, etc.<br/>• Cost perspective by various constructs<br/>• Cost anomaly detection<br/>• Budgets and forecasts<br/>• Email and Slack alerts<br/>• Savings plans coverage & utilization details<br/>• RI coverage & utilization details | Default from the Cost and Usage Report created in the previous step. This cannot be deselected. Please see [required permissions](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws?tab-number=4#1-cost-visibility-permissions) |
+| **Resource Inventory Management** | Optional | • Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate)<br/>• Insight into EC2 instances and their utilization<br/>• Access to AWS EC2 Inventory Cost, EBS Volumes and Snapshots inventory dashboards | Adding [these permissions](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws?tab-number=4#2-resource-inventory-management-permissions) to an IAM role in the next step. |
+| **Optimization by AutoStopping** | Optional | • Orchestrate VMs and ASGs based on idleness<br/>• Run on fully orchestrated spot instances<br/>• Set dependencies between VMs<br/>• Granular savings visibility<br/>• Simple one-time setup | Adding [these permissions](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws?tab-number=4#4-autostopping-rules-permissions) to an IAM role in the next step. Also, if this option is selected, you will be asked to set up AutoStopping Permissions in the next step. Please see [details here](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#granular-permissions-for-autostopping). |
+| **Cloud Governance** | Optional | • Asset Management (EC2, EBS, RDS, S3)<br/>• Automated Actions | Adding [these permissions](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws?tab-number=4#5-cloud-asset-governance-permissions) to an IAM role in the next step. |
+| **Commitment Orchestration** | Optional | • Purchase Reserved Instances offering<br/>• Get Reserved Instances Exchange Quote<br/>• Describe Instance type offerings<br/>• Accept RI exchange quote<br/>• Describe RI modifications<br/>• Modify Reserved Instances | |
+
+
+### Step 4: Create Cross Account Role
 
 Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy based on the features selected above.
 
@@ -172,12 +216,14 @@ Perform the following steps in the AWS Console.
 
 4. In the Harness connector dialog, enter the following values, and then select **Save and Continue**.
 
+<DocImage path={require('./static/aws-connector-four.png')} width="100%" height="100%" title="Click to view full size image" />
+
 | **Field**                  | **Description**                                                                                                                            |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Cross Account Role ARN** | Enter the value that you copied in step 3.                                                                                                 |
 | **External ID**            | Do not modify. If you intend to create multiple AWS connectors via API, be sure to copy this value as you will need to reference it later. |
 
-### Step 6: Connection Test
+### Step 5: Connection Test
 
 The connection is validated, and verified in this step. After successful validation, select **Finish**.
 
@@ -197,10 +243,16 @@ Harness CCM also provides the ability to create connectors via API using a Stack
 
 > **☆ NOTE —** You should manually create a connector via the UI for the management account before using the API method described here to create connectors for the member accounts.
 
+<Tabs>
+<TabItem value="step1" label="Step 1: Create a Service Account">
+
 ### Create a Service Account and API key in Harness
 
 1. At the Account level, [create a service account](/docs/platform/role-based-access-control/add-and-manage-service-account) with the **Admin** role for **All Account Level Resources** or **All Resources Including Child Scopes**.
 2. [Create a service account token](/docs/platform/automation/api/add-and-manage-api-keys#create-service-account-api-keys-and-tokens). Save the API Key, which will be used when creating AWS connectors via the API below.
+
+</TabItem>
+<TabItem value="step2" label="Step 2: Create a StackSet in AWS">
 
 ### Create a StackSet in AWS
 
@@ -245,9 +297,12 @@ Perform the following steps to create a StackSet in AWS:
 | **Add stacks to StackSet** | Select **Deploy new stacks**.                                            |
 | **Deployment locations**   | Configure the accounts or organization units that you want to deploy to. |
 | **Specify regions**        | Configure the regions that you want to deploy to.                        |
-| **Region Concurrency**     | Select **Sequential**.                                                   |
+| **Region Concurrency**     | Select **Sequential**.                                                   |
 
-6. In the **Review** step, select the acknowledgment, and then select **Submit**.
+6. In the **Review** step, select the acknowledgment, and then select **Submit**.
+
+</TabItem>
+<TabItem value="step3" label="Step 3: Create AWS Connector via API">
 
 ### Create an AWS Connector via API
 
@@ -290,6 +345,9 @@ curl -i -X POST 'https://app.harness.io/gateway/ng/api/connectors' \
 }'
 ```
 
+</TabItem>
+</Tabs>
+
 ### Enable EC2 recommendations
 
 :::note
@@ -329,13 +387,13 @@ If the recommendations are not enabled, the following error message is displayed
 
 ## Reference Information
 
-### AWS access permissions
+## AWS access permissions
 
 CCM requires the following permissions which are automatically created via a StackSet based on the features you select during configuration.
 
 > **☆ NOTE —** If you don't have access to create a cost and usage report or run a CloudFormation template, contact your IT or security teams to provide the required permissions.
 
-### Individual Feature Permissions
+## Individual Feature Permissions
 
 This section details the specific AWS permissions required for each CCM feature:
 
@@ -345,7 +403,7 @@ This section details the specific AWS permissions required for each CCM feature:
 - [4. AutoStopping Rules Permissions](#4-autostopping-rules-permissions)
 - [5. Cloud Asset Governance Permissions](#5-cloud-asset-governance-permissions)
 
-### 1. Cost Visibility Permissions
+## 1. Cost Visibility Permissions
 
 The Cost Visibility feature provides insights into AWS costs by services, accounts, and other dimensions. It enables root cost analysis, anomaly detection, budgeting, and notifications.
 
@@ -357,7 +415,10 @@ The cost visibility policy grants the following permissions:
 - Get objects from the S3 bucket configured in the CUR
 - Put objects into the Harness S3 bucket
 
-```
+<details>
+<summary><b>Click to view Cost Visibility Policy</b></summary>
+
+```yaml
   HarnessBillingMonitoringPolicy:
     "Type": "AWS::IAM::ManagedPolicy"
     "Condition": "CreatingHarnessBillingMonitoringPolicy"
@@ -401,6 +462,8 @@ The cost visibility policy grants the following permissions:
         - "!Ref HarnessCloudFormationRole"
 ```
 
+</details>
+
 If the `cur:DescribeReportDefinitions`, `organizations:Describe`, and `organizations:List*` permissions are too wide, you can modify these to the following:
 
 ```
@@ -423,7 +486,7 @@ If the `cur:DescribeReportDefinitions`, `organizations:Describe`, and `organizat
 - `organizations:ListAccounts`: fetches a list of all the accounts present in the organization, and also fetches the accountID to Account Name mapping.
 - `organizations:ListTagsForResource`: fetches the AWS Account level tags. Harness supports account tags within CCM that can be used for reporting and analysis.
 
-### 2. Resource Inventory Management Permissions
+## 2. Resource Inventory Management Permissions
 
 The Resource Inventory Management feature provides visibility into your AWS resources including EC2 instances, EBS volumes, and ECS clusters. This feature helps finance teams understand resource utilization across the organization.
 
@@ -467,7 +530,7 @@ HarnessEventsMonitoringPolicy:
       - "!Ref HarnessCloudFormationRole"
 ```
 
-### 3. RDS Instance Visibility Permissions
+## 3. RDS Instance Visibility Permissions
 
 This feature provides detailed visibility into your RDS instances and related resources, allowing for better cost management and optimization of database resources.
 
@@ -489,7 +552,7 @@ For more information, see:
 - [Orphaned EBS Volumes and Snapshots Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md)
 - [View AWS EC2 Instance Metrics Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-instance-metrics.md)
 
-### 4. AutoStopping Rules Permissions
+## 4. AutoStopping Rules Permissions
 
 The AutoStopping feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances and auto-scaling groups, helping to reduce costs by automatically stopping idle resources.
 
@@ -622,7 +685,572 @@ HarnessOptimsationLambdaPolicy:
         - !Ref HarnessCloudFormationRole
 ```
 
-### 5. Cloud Asset Governance Permissions
+### Granular Permissions for AutoStopping
+
+On this screen, you can select specific features and services for AutoStopping:
+
+<DocImage path={require('./static/granular-permissions.gif.gif')} width="100%" height="100%" title="Click to view full size image" />
+
+### EC2 Instances
+
+<details>
+<summary><b>Schedules only</b></summary>
+
+```
+# List VMs in Harness UI for rule creation and in rule details page
+ec2:DescribeInstances
+
+# Create tags on the EC2 while creating an AutoStopping rule
+ec2:CreateTags
+
+# Start EC2
+ec2:StartInstances
+
+# Stop EC2
+ec2:StopInstances
+```
+</details>
+
+
+<details>
+<summary><b>Spot Orchestration</b></summary>
+
+```
+# Creating Snapshot for Spot VM
+ec2:DescribeVolumes
+ec2:CreateImage
+ec2:DescribeImages
+
+# Spot VMs are terminated during cool down instead of stopping
+ec2:TerminateInstances
+
+# Delete snapshot after deleting AutoStopping rule
+ec2:DeregisterImage
+ec2:DeleteSnapshot
+
+# Create spot VM during warm up
+ec2:RequestSpotInstances
+ec2:DescribeSpotInstanceRequests
+ec2:DescribeAddresses
+
+# Create on demand instance in case spot VM creation fails
+ec2:RunInstances
+```
+</details>
+
+<details>
+<summary><b>with AWS ALB</b></summary>
+
+```
+# Describe certificates in create ALB flow
+acm:ListCertificates
+
+# List VPCs in create ALB flow
+ec2:DescribeVpcs
+
+# List security groups in create ALB flow
+ec2:DescribeSecurityGroups
+
+# Describe load balancers in create ALB flow
+elasticloadbalancing:DescribeLoadBalancers
+
+# Lambda requires a role to execute and push the logs to cloud watch
+iam:ListRoles
+
+# List subnets for the selected VPC while creating ALB
+ec2:DescribeSubnets
+
+# Create ALB (only if customer wants to create ALB from Harness)
+elasticloadbalancing:CreateLoadBalancer
+
+# Attach security groups to ALB
+elasticloadbalancing:SetSecurityGroups
+
+# Describe target group for lambda and EC2 target groups
+elasticloadbalancing:DescribeTargetGroups
+
+# Create lambda target group and health check target group
+elasticloadbalancing:CreateTargetGroup
+
+# Add tags to Harness created target groups
+elasticloadbalancing:AddTags
+
+# Get lambda function details
+lambda:GetFunction
+
+# Create lambda function
+lambda:CreateFunction
+
+# Pass role to lambda
+iam:PassRole
+
+# Allow lambda Target Group to execute the lambda
+lambda:AddPermission
+
+# Add lambda to target group
+elasticloadbalancing:RegisterTargets
+
+# Delete lambda while deleting the load balancer
+lambda:DeleteFunction
+
+# Delete load balancer (only if triggered from Harness UI)
+elasticloadbalancing:DeleteLoadBalancer
+
+# Get target group health check details
+elasticloadbalancing:DescribeTargetHealth
+
+# Get listeners of ALB
+elasticloadbalancing:DescribeListeners
+
+# Create new listener in ALB if doesn't exist
+elasticloadbalancing:CreateListener
+
+# Check existing rules and modify priority if required
+elasticloadbalancing:DescribeRules
+
+# Create ALB rule
+elasticloadbalancing:CreateRule
+
+# Get tags of rules
+elasticloadbalancing:DescribeTags
+
+# Delete target groups
+elasticloadbalancing:DeleteTargetGroup
+
+# Delete ALB rule while editing/deleting AutoStopping rules
+elasticloadbalancing:DeleteRule
+
+# Modify existing rules priorities
+elasticloadbalancing:SetRulePriorities
+
+# Modify target group
+elasticloadbalancing:ModifyTargetGroup
+
+# Modify ALB rule
+elasticloadbalancing:ModifyRule
+
+# Read cloud watch metrics for traffic detection
+cloudwatch:GetMetricStatistics
+
+# Read access log from S3 (only for custom exclusion)
+s3:ListBucket
+s3:GetObject
+s3:ListAllMyBuckets
+s3:GetBucketLocation
+
+# Get access logs details from ALB (only for custom exclusion)
+elasticloadbalancing:DescribeLoadBalancerAttributes
+
+# Push logs while running the lambda
+logs:CreateLogGroup
+logs:CreateLogStream
+logs:PutLogEvents
+```
+</details>
+
+<details>
+<summary><b>with AutoStopping Proxy</b></summary>
+
+```
+//List machine types available for Proxy
+ec2:DescribeInstanceTypeOfferings
+
+//List key pairs for Proxy
+ec2:DescribeKeyPairs
+
+//Create Proxy VM
+ec2:RunInstances
+
+//Permission to read TLS certificate and secret. Needed only if TLS is used.
+secretsmanager:GetSecretValue
+
+//Allocate static IP
+ec2:AllocateAddress
+
+//List VPCs in create proxy flow
+ec2:DescribeVpcs
+
+//List security groups in create proxy flow
+ec2:DescribeSecurityGroups
+
+//List subnets for the selected VPC while creating ALB.
+ec2:DescribeSubnets
+
+//Delete the Proxy VM while deleting proxy
+
+//Scope of this permission can be reduced to only proxy VMs.
+ec2:TerminateInstances
+
+//Describe the image for proxy
+ec2:DescribeImages
+
+//Associating address with VM
+ec2:AssociateAddress
+
+//Disassociate address while deleting proxy
+ec2:DisassociateAddress
+
+//Release address while deleting proxy
+ec2:ReleaseAddress
+
+//Modify security group of proxy VM if needed
+ec2:ModifyInstanceAttribute
+```
+</details>
+
+### Auto Scaling Groups
+<details>
+<summary><b>Schedules Only</b></summary>
+
+```
+//List ASG
+autoscaling:DescribeAutoScalingGroups
+
+//Set the desired capacity of ASG during warm up and cool down operations
+autoscaling:UpdateAutoScalingGroup
+
+//List ASG Policies
+autoscaling:DescribePolicies
+
+//Suspend ASG policies during cool down
+autoscaling:SuspendProcesses
+
+//Resume ASG policies during warm up
+autoscaling:ResumeProcesses
+```
+</details>
+
+<details>
+<summary><b>with AWS ALB</b></summary>
+
+```
+//Describe certificates in create ALB flow
+acm:ListCertificates
+
+//List VPCs in create ALB flow
+ec2:DescribeVpcs
+
+//List security groups in create ALB flow
+ec2:DescribeSecurityGroups
+
+//Describe load balancers in create ALB flow
+elasticloadbalancing:DescribeLoadBalancers
+
+//Lambda requires a role to execute and push the logs to cloud watch. We have a separate role for that. iam:ListRoles is used in code to list roles and identify the role created for lambda.
+iam:ListRoles
+
+//List subnets for the selected VPC while creating ALB.
+ec2:DescribeSubnets
+
+//Create ALB. Needed only if customer wants to create ALB from Harness
+elasticloadbalancing:CreateLoadBalancer
+
+//Attach security groups to ALB. Needed only if customer wants to create ALB from Harness.
+elasticloadbalancing:SetSecurityGroups
+
+//Describe target group. This is used to get details of lambda target group and EC2 target group
+elasticloadbalancing:DescribeTargetGroups
+
+//Create lambda target group and health check target group
+elasticloadbalancing:CreateTargetGroup
+
+//Add tags to Harness created target groups
+elasticloadbalancing:AddTags
+
+//Get lambda function details
+lambda:GetFunction
+
+//Create lambda function
+lambda:CreateFunction
+
+//We specify the lambda role when we try to create lambda. Create lambda with role in request will succeed only if this permission is present
+iam:PassRole
+
+//This is needed to allow the lambda Target Group to execute the lambda.
+lambda:AddPermission
+
+//Required to add lambda to target group
+elasticloadbalancing:RegisterTargets
+
+//Delete lambda while deleting the load balancer
+lambda:DeleteFunction
+
+//Only required if user trigger delete load balancer from Harness UI
+elasticloadbalancing:DeleteLoadBalancer
+
+//Get the target group health check details during warm up and to populate health check details in UI while creating rule.
+elasticloadbalancing:DescribeTargetHealth
+
+//Get listeners of ALB
+elasticloadbalancing:DescribeListeners
+
+//Create new listener in ALB if doesn't exist
+elasticloadbalancing:CreateListener
+
+//Needed while creating new rule. We check existing rules and modify priority if required.
+elasticloadbalancing:DescribeRules
+
+//Create ALB rule
+elasticloadbalancing:CreateRule
+
+//Get tags of rules. ALB rules created by Harness will have Harness specific tags
+elasticloadbalancing:DescribeTags
+
+//Delete target groups
+elasticloadbalancing:DeleteTargetGroup
+
+//Delete ALB rule while editing/deleting Autostopping rules
+elasticloadbalancing:DeleteRule
+
+//Modify existing rules priorities to make sure the ALB rules created by Harness get more priority
+elasticloadbalancing:SetRulePriorities
+
+//Modify target group
+elasticloadbalancing:ModifyTargetGroup
+
+//Modify ALB rule
+elasticloadbalancing:ModifyRule
+
+//Traffic detection read cloud watch metrics to check the usage on a target group.
+cloudwatch:GetMetricStatistics
+
+//Need only if custom exclusion is used. This is to read the access log from S3
+s3:ListBucket
+s3:GetObject
+s3:ListAllMyBuckets
+s3:GetBucketLocation
+
+//Need only if custom exclusion is used.Needed to get the access logs details from ALB.
+elasticloadbalancing:DescribeLoadBalancerAttributes
+
+//Permission assigned to the Lambda. This is to push the logs while running the lambda.
+logs:CreateLogGroup
+logs:CreateLogStream
+logs:PutLogEvents
+```
+</details>
+
+### RDS Databases
+<details>
+
+<summary><b>Schedules only</b></summary>
+
+```
+//List RDS instances
+rds:DescribeDBInstances
+
+//List RDS clusters
+rds:DescribeDBClusters
+
+//List tags associated with RDS
+rds:ListTagsForResource
+
+//Start RDS Instance
+rds:StartDBInstance
+
+//Start RDS Cluster
+rds:StartDBCluster
+
+//Stop RDS Instance
+rds:StopDBInstance
+
+//Stop RDS Cluster
+rds:StopDBCluster
+```
+</details>
+
+<details>
+<summary><b>with AutoStopping Proxy</b></summary>
+
+```
+//List machine types available for Proxy
+ec2:DescribeInstanceTypeOfferings
+
+//List key pairs for Proxy
+ec2:DescribeKeyPairs
+
+//Create Proxy VM
+ec2:RunInstances
+
+//Permission to read TLS certificate and secret. Needed only if TLS is used.
+secretsmanager:GetSecretValue
+
+//Allocate static IP
+ec2:AllocateAddress
+
+//List VPCs in create proxy flow
+ec2:DescribeVpcs
+
+//List security groups in create proxy flow
+ec2:DescribeSecurityGroups
+
+//List subnets for the selected VPC while creating ALB.
+ec2:DescribeSubnets
+
+//Delete the Proxy VM while deleting proxy
+
+//Scope of this permission can be reduced to only proxy VMs.
+ec2:TerminateInstances
+
+//Describe the image for proxy
+ec2:DescribeImages
+
+//Associating address with VM
+ec2:AssociateAddress
+
+//Disassociate address while deleting proxy
+ec2:DisassociateAddress
+
+//Release address while deleting proxy
+ec2:ReleaseAddress
+
+//Modify security group of proxy VM if needed
+ec2:ModifyInstanceAttribute
+```
+</details>
+
+### ECS Instances
+<details>
+<summary><b>Schedules only</b></summary>
+
+```
+//List ECS clusters
+ecs:ListClusters
+
+//List tags for selecting ECS service by tag
+tag:GetResources
+
+//List ECS services
+ecs:ListServices
+
+//List tasks for ECS service
+ecs:ListTasks
+
+//Describe ECS services
+ecs:DescribeServices
+
+//Needed set the desired task count while warming and cooling down
+ecs:UpdateService
+
+//Describe ECS Task
+ecs:DescribeTaskDefinition
+
+//Describe ECS Tasks
+ecs:DescribeTasks
+```
+</details>
+
+<details>
+<summary><b>with AWS ALB</b></summary>
+
+```
+//Describe certificates in create ALB flow
+acm:ListCertificates
+
+//List VPCs in create ALB flow
+ec2:DescribeVpcs
+
+//List security groups in create ALB flow
+ec2:DescribeSecurityGroups
+
+//Describe load balancers in create ALB flow
+elasticloadbalancing:DescribeLoadBalancers
+
+//Lambda requires a role to execute and push the logs to cloud watch. We have a separate role for that. iam:ListRoles is used in code to list roles and identify the role created for lambda.
+iam:ListRoles
+
+//List subnets for the selected VPC while creating ALB.
+ec2:DescribeSubnets
+
+//Create ALB. Needed only if customer wants to create ALB from Harness
+elasticloadbalancing:CreateLoadBalancer
+
+//Attach security groups to ALB. Needed only if customer wants to create ALB from Harness.
+elasticloadbalancing:SetSecurityGroups
+
+//Describe target group. This is used to get details of lambda target group and EC2 target group
+elasticloadbalancing:DescribeTargetGroups
+
+//Create lambda target group and health check target group
+elasticloadbalancing:CreateTargetGroup
+
+//Add tags to Harness created target groups
+elasticloadbalancing:AddTags
+
+//Get lambda function details
+lambda:GetFunction
+
+//Create lambda function
+lambda:CreateFunction
+
+//We specify the lambda role when we try to create lambda. Create lambda with role in request will succeed only if this permission is present
+iam:PassRole
+
+//This is needed to allow the lambda Target Group to execute the lambda.
+lambda:AddPermission
+
+//Required to add lambda to target group
+elasticloadbalancing:RegisterTargets
+
+//Delete lambda while deleting the load balancer
+lambda:DeleteFunction
+
+//Only required if user trigger delete load balancer from Harness UI
+elasticloadbalancing:DeleteLoadBalancer
+
+//Get the target group health check details during warm up and to populate health check details in UI while creating rule.
+elasticloadbalancing:DescribeTargetHealth
+
+//Get listeners of ALB
+elasticloadbalancing:DescribeListeners
+
+//Create new listener in ALB if doesn't exist
+elasticloadbalancing:CreateListener
+
+//Needed while creating new rule. We check existing rules and modify priority if required.
+elasticloadbalancing:DescribeRules
+
+//Create ALB rule
+elasticloadbalancing:CreateRule
+
+//Get tags of rules. ALB rules created by Harness will have Harness specific tags
+elasticloadbalancing:DescribeTags
+
+//Delete target groups
+elasticloadbalancing:DeleteTargetGroup
+
+//Delete ALB rule while editing/deleting Autostopping rules
+elasticloadbalancing:DeleteRule
+
+//Modify existing rules priorities to make sure the ALB rules created by Harness get more priority
+elasticloadbalancing:SetRulePriorities
+
+//Modify target group
+elasticloadbalancing:ModifyTargetGroup
+
+//Modify ALB rule
+elasticloadbalancing:ModifyRule
+
+//Traffic detection read cloud watch metrics to check the usage on a target group.
+cloudwatch:GetMetricStatistics
+
+//Need only if custom exclusion is used. This is to read the access log from S3
+s3:ListBucket
+s3:GetObject
+s3:ListAllMyBuckets
+s3:GetBucketLocation
+
+//Need only if custom exclusion is used.Needed to get the access logs details from ALB.
+elasticloadbalancing:DescribeLoadBalancerAttributes
+
+//Permission assigned to the Lambda. This is to push the logs while running the lambda.
+logs:CreateLogGroup
+logs:CreateLogStream
+logs:PutLogEvents
+```
+</details>
+
+## 5. Cloud Asset Governance Permissions
 
 The Cloud Asset Governance feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. This feature provides asset management for EC2, EBS, RDS, S3 resources and enables automated actions.
 
@@ -630,7 +1258,11 @@ The Cloud Asset Governance feature allows you to optimize your cloud spend and a
 
 Enable the following permissions in AWS to execute cloud governance rules:
 
-```
+
+<details>
+<summary><b>Click to view Cloud Asset Governance Policy</b></summary>
+
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -666,13 +1298,15 @@ Enable the following permissions in AWS to execute cloud governance rules:
 }
 ```
 
+</details>
+
 :::info
 
 - This is not an exhaustive list; you may require additional permissions to support custom rules.
 - A yellow underline in a custom policy indicates that you need permission to support the underlined filters and/or actions.
   :::
 
-#### Add permissions
+## Troubleshooting
 
 If you come across an error message indicating missing permissions, as displayed in the following screenshot, you need to add the missing permission [here](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles).
 
@@ -698,8 +1332,3 @@ For more information, go to [Editing IAM policies](https://docs.aws.amazon.com/I
 :::info 
 - If you are using permission boundaries to enforce restrictions, ensure that Harness permissions are explicitly allowed to enable the connectors and functionalities to operate correctly.
 :::
-
-## Next steps
-
-- [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
-- [Analyze Cost for AWS Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-aws.md)
