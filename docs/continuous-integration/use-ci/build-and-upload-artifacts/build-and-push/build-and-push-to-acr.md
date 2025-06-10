@@ -11,6 +11,7 @@ redirect_from:
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
+import KanikoNotice from '/docs/continuous-integration/shared/kaniko-deprecation.md';
 
 This topic explains how to configure the **Build and Push to ACR** step in a Harness CI pipeline. This step is used to build and push to [Azure Container Registry (ACR)](https://azure.microsoft.com/en-us/products/container-registry).
 
@@ -23,6 +24,10 @@ You need:
 ## Kubernetes cluster build infrastructure is required
 
 The **Build and Push to ACR** step is supported for Linux platforms on [Kubernetes cluster build infrastructures](../../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) only. For other platforms and build infrastructures, use the [Build and Push to Docker Registry step](./build-and-push-to-docker-registry.md) to push to ACR.
+
+### Kaniko Deprecation Notice
+
+<KanikoNotice />
 
 ## Root access is required
 

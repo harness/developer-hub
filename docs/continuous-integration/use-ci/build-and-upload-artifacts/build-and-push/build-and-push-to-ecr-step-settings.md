@@ -12,6 +12,7 @@ redirect_from:
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
+import KanikoNotice from '/docs/continuous-integration/shared/kaniko-deprecation.md';
 
 [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) is a fully managed service from AWS that you can use to store and manage Docker images securely and reliably. In addition, ECR provides a simple web-based interface for creating, managing, and sharing Docker images and integrating them with other AWS services. For more information, go to the AWS documentation on [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html).
 
@@ -32,6 +33,10 @@ With Kubernetes cluster build infrastructures, **Build and Push** steps use [kan
 If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
+
+### Kaniko Deprecation Notice
+
+<KanikoNotice />
 
 ## Add a Build and Push to ECR step
 

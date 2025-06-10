@@ -7,6 +7,7 @@ redirect_from:
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
+import KanikoNotice from '/docs/continuous-integration/shared/kaniko-deprecation.md';
 
 This topic explains how to use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-registry.md) to build and push an image to [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
 
@@ -23,6 +24,10 @@ With Kubernetes cluster build infrastructures, **Build and Push** steps use [kan
 If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](../build-and-push-nonroot.md).
+
+### Kaniko Deprecation Notice
+
+<KanikoNotice />
 
 ## Build and push to GitHub Container Registry
 
