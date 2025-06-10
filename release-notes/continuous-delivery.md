@@ -53,6 +53,52 @@ Google Container Registry (GCR) is deprecated and scheduled to shut down on **Ma
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+## June 2025
+
+### GitOps Version 1.34.1, GitOps Agent Version 0.95.0
+
+#### New Features and Enhancements
+
+- The GitOps Agent High Availability (HA) mode has been upgraded with increased minimum replicas. This improvement increases the minimum replicas for GitOps Agent in HA mode to two, to better handle pod shutdowns. (**CDS-110463**)
+
+- You can now use account-level and organization-level repository credentials with project-scoped repositories. This will help you to:
+
+  - Configure repository credentials once at the account or organization level and use them across multiple projects
+  - Reduce redundant credential configuration across your organization  
+
+  The system now correctly retrieves and matches repository credentials regardless of their scope level (account, organization, or project). Previously, account or organization-scoped credentials weren't available for project-scoped repositories due to overly restrictive query parameters.
+
+  Additionally, we've improved our Git URL matching algorithm to be more resilient to future changes. Instead of relying on the unstable `git.NormalizeGitURL` method (which according to documentation "may change over time and should not be considered stable from release to release"), we now use a more consistent approach to match repository URLs with their credentials.
+
+  Users with existing repository credentials at account or organization level should now see them automatically available for use with project-scoped repositories without any additional configuration.
+
+
+#### Fixed Issues
+
+- Agent Management Improvements and Fixes (**CDS-110199**)
+  - **Fixed Credential Retrieval Issue**: Resolved an issue where credentials were not retrieved correctly during agent authentication when both primary and secondary agents shared the same identifiers. A `drIdentifier` is now included in the query to ensure proper credential lookup.
+  - **Reconciliation Check for Secondary Agents**: Added safeguards in the reconcile methods to skip reconciliation for secondary agents. This logic ideally belongs on the agent side but is temporarily handled here.
+  - **Improved Secondary Agent Retrieval**: Previously, agent retrieval would always return the primary agent, even when fetching the secondary. Retrieval logic now respects the `drIdentifier` parameter to correctly return the secondary agent when specified.
+  - **Fixed Agent Deletion Behavior**: Updated the deletion logic to prevent cascade deletion of related entities when removing a secondary agent.
+
+- Service Instances Not Displayed When Using Server Names (**CDS-108124**)
+  - **Issue:** When applications were configured using server *names* instead of full *URLs*, the Harness UI failed to display associated Service instances. This was due to the GitOps Agent not sending server names during application pod reconciliation, preventing proper cluster identification. Pods without a valid `clusterId` were therefore ignored.
+  - **Resolution:** The GitOps Agent now sends both server names and URLs during reconciliation, allowing the system to match clusters correctly in either case.
+  - **Impact:** Users who previously experienced missing Service instances when using server names will now see them correctly displayed after upgrading—no additional changes required.
+
+- There was an issue with marshalling sync option. This is now fixed. (**CDS-109426**, **ZD-80067**)
+
+- The GitOps pane did not save labels correctly. Labels were not being persisted properly on the backend. This issue has been resolved. The GitOps pane now saves labels as expected. (**CDS-109869**)
+
+- The GitOps service agent validation interceptor did not handle deleted agents correctly
+  - When a GitOps agent was deleted, the service continued to check for its existence in each entity GET request through an interceptor used for all GitOps entities. This validation was incorrectly returning a 401 Authorization error, which caused Terraform Plan operations to fail for GitOps entities associated with the deleted agent.
+  - This issue has been resolved. The GitOps service now returns a 404 NotFound error when an agent is deleted, correctly indicating that the related resources have been cascade deleted. This allows Terraform Plan operations to complete successfully. (**CDS-110145**, **ZD-83461**)
+
+- The Disaster Recovery (DR) primary agent selection did not work correctly (**CDS-110190**).
+  - Previously, the system filtered out all secondary DR agents in the backend when retrieving the list of agents via the 'search' API call. This filtering was likely intended to prevent secondary DR agents from appearing in the agent picker list for PR pipelines, but it inadvertently broke the primary agent selection process.
+  - This issue has been resolved. The DR primary agent selection now functions correctly. We have introduced a new field, `includeSecondary`, which, when set to true, allows secondary DR agents to be included in the list, thus removing the restriction.
+  - (Optional) Users should ensure that they set `includeSecondary` to true if they wish to include secondary DR agents in their environment.
+
 ## May 2025
 
 ### GitOps Version 1.33.1, GitOps Agent Version 0.94
