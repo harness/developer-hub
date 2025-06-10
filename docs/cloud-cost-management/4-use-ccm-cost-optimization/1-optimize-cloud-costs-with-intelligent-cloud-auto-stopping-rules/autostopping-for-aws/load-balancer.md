@@ -78,27 +78,20 @@ Your load balancer is now ready to use with AutoStopping rules.
 
 ### Option 2: Creating a Load Balancer from the AutoStopping Homepage
 
+<DocImage path={require('./static/as-lb-aws.png')} width="100%" height="100%" title="Click to view full size image" />
+
 1. In the AutoStopping overview page, click **Load Balancers** in the top right
-2. Select cloud provider **AWS**
-3. Choose a cloud connector or create a new one
-4. Click **Create Application Load Balancer**
-5. Fill in the required details:
-   - Select your DNS provider: **Route 53** (must be in the same AWS account as your resources) or **Others**
-   - Enter a domain name for your load balancer
-
-<DocImage path={require('./static/alb-one.png')} width="50%" height="50%" title="Click to view full size image" />
-
-6. Configure additional settings:
+2. Enter a name and select **AWS** in **Cloud Provider**
+3. Choose a cloud connector or create a [new one](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws). 
+4. Enter **Load Balancer Configuration**.
+   - Choose access type as **Internal** or **External**
    - Select the AWS region for deployment
    - Choose an SSL certificate
    - Select the VPC for deployment
    - Choose appropriate security groups
 
-<DocImage path={require('./static/alb-two.png')} width="50%" height="50%" title="Click to view full size image" />
-
 7. Click **Save Load Balancer**
 
-   ![Save load balancer](./static/create-load-balancer-aws-22.png)
 
 Your load balancer is now ready to use with AutoStopping rules.
 
