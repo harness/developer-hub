@@ -195,9 +195,9 @@ Details about each feature are provided below:
 |------------|------------|-------------------------|----------------|
 | **Cost Visibility** | Required | • AWS costs by services, accounts, etc.<br/>• Cost perspective by various constructs<br/>• Cost anomaly detection<br/>• Budgets and forecasts<br/>• Email and Slack alerts<br/>• Savings plans coverage & utilization details<br/>• RI coverage & utilization details | Default from the Cost and Usage Report created in the previous step. This cannot be deselected. Please see [required permissions](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws?tab-number=4#1-cost-visibility-permissions) |
 | **Resource Inventory Management** | Optional | • Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate)<br/>• Insight into EC2 instances and their utilization<br/>• Access to AWS EC2 Inventory Cost, EBS Volumes and Snapshots inventory dashboards | Adding [these permissions](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws?tab-number=4#2-resource-inventory-management-permissions) to an IAM role in the next step. |
-| **Optimization by AutoStopping** | Optional | • Orchestrate VMs and ASGs based on idleness<br/>• Run on fully orchestrated spot instances<br/>• Set dependencies between VMs<br/>• Granular savings visibility<br/>• Simple one-time setup | Adding [these permissions](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws?tab-number=4#4-autostopping-rules-permissions) to an IAM role in the next step. Also, if this option is selected, you will be asked to set up AutoStopping Permissions in the next step. Please see [details here](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#granular-permissions-for-autostopping). |
+| **Optimization by AutoStopping** | Optional | • Orchestrate VMs and ASGs based on idleness<br/>• Run on fully orchestrated spot instances<br/>• Set dependencies between VMs<br/>• Granular savings visibility<br/>• Simple one-time setup | Adding [these permissions](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws?tab-number=4#4-autostopping-rules-permissions) to an IAM role in the next step. Also, if this option is selected, you can set up **Granular AutoStopping Permissions** in the next step. Please see [details here](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#granular-permissions-for-autostopping). |
 | **Cloud Governance** | Optional | • Asset Management (EC2, EBS, RDS, S3)<br/>• Automated Actions | Adding [these permissions](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws?tab-number=4#5-cloud-asset-governance-permissions) to an IAM role in the next step. |
-| **Commitment Orchestration** | Optional | • Purchase Reserved Instances offering<br/>• Get Reserved Instances Exchange Quote<br/>• Describe Instance type offerings<br/>• Accept RI exchange quote<br/>• Describe RI modifications<br/>• Modify Reserved Instances | |
+| **Commitment Orchestration** | Optional | • Purchase Reserved Instances offering<br/>• Get Reserved Instances Exchange Quote<br/>• Describe Instance type offerings<br/>• Accept RI exchange quote<br/>• Describe RI modifications<br/>• Modify Reserved Instances | Adding [these permissions](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#6-commitment-orchestrator-permissions) to an IAM role in the next step. |
 
 
 ### Step 4: Create Cross Account Role
@@ -397,11 +397,12 @@ CCM requires the following permissions which are automatically created via a Sta
 
 This section details the specific AWS permissions required for each CCM feature:
 
-- [1. Cost Visibility Permissions](#1-cost-visibility-permissions)
-- [2. Resource Inventory Management Permissions](#2-resource-inventory-management-permissions)
-- [3. RDS Instance Visibility Permissions](#3-rds-instance-visibility-permissions)
-- [4. AutoStopping Rules Permissions](#4-autostopping-rules-permissions)
-- [5. Cloud Asset Governance Permissions](#5-cloud-asset-governance-permissions)
+- [Cost Visibility Permissions](#1-cost-visibility-permissions)
+- [Resource Inventory Management Permissions](#2-resource-inventory-management-permissions)
+- [RDS Instance Visibility Permissions](#3-rds-instance-visibility-permissions)
+- [AutoStopping Rules Permissions](#4-autostopping-rules-permissions)
+- [Cloud Asset Governance Permissions](#5-cloud-asset-governance-permissions)
+- [Commitment Orchestrator Permissions](#6-commitment-orchestrator-permissions)
 
 ## 1. Cost Visibility Permissions
 
@@ -1305,6 +1306,44 @@ Enable the following permissions in AWS to execute cloud governance rules:
 - This is not an exhaustive list; you may require additional permissions to support custom rules.
 - A yellow underline in a custom policy indicates that you need permission to support the underlined filters and/or actions.
   :::
+
+## 6. Commitment Orchestrator Permissions
+
+Step 1: Visibility
+
+To enable visibility, in the master account connector, you need to add the following permissions.
+
+```
+"ec2:DescribeReservedInstancesOfferings",
+"ce:GetSavingsPlansUtilization",
+"ce:GetReservationUtilization",
+"ec2:DescribeInstanceTypeOfferings",
+"ce:GetDimensionValues",
+"ce:GetSavingsPlansUtilizationDetails",
+"ec2:DescribeReservedInstances",
+"ce:GetReservationCoverage",
+"ce:GetSavingsPlansCoverage",
+"savingsplans:DescribeSavingsPlans",
+"organizations:DescribeOrganization"
+"ce:GetCostAndUsage"
+```
+
+
+Step 2: Setup flow (to enable actual orchestration)
+
+```
+"ec2:PurchaseReservedInstancesOffering",
+"ec2:GetReservedInstancesExchangeQuote",
+"ec2:DescribeInstanceTypeOfferings",
+"ec2:AcceptReservedInstancesExchangeQuote",
+"ec2:DescribeReservedInstancesModifications",
+"ec2:ModifyReservedInstances"
+"ce:GetCostAndUsage"
+savingsplans:DescribeSavingsPlansOfferings
+savingsplans:CreateSavingsPlan
+
+```
+
 
 ## Troubleshooting
 
