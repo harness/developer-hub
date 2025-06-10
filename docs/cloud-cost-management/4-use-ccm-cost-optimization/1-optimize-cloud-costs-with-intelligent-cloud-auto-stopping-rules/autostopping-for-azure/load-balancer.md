@@ -1,9 +1,7 @@
 ---
 title: Azure Application Gateway 
 description: Describes how to create a new Application Gateway for Azure.
-# sidebar_position: 2
-helpdocs_topic_id: d43tsblpma
-helpdocs_category_id: k8xq40kf08
+sidebar_position: 2
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -11,10 +9,6 @@ helpdocs_is_published: true
 
 Azure Application Gateway is a web traffic load balancer that enables you to manage traffic to your web applications. Application Gateway can make routing decisions based on additional attributes of an HTTP request, for example, URI path or host headers.
 
-### Before You Begin
-
-* [Connect to an Azure Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure)
-* [Create AutoStopping Rules for Azure](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
 
 ## Create a New Application Gateway
 
