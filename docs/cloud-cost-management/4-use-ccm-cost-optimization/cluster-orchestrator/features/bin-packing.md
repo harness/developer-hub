@@ -112,6 +112,3 @@ Unlike basic Spot implementations that only react to interruptions, this proacti
 - **Broader instance selection**: Considers all compatible instance families, not just your current types
 - **Automatic workload migration**: Handles the complexity of moving workloads between instance types
 
-
-For detailed monitoring information, refer to the [Post-Enablement Monitoring](/docs/cloud-cost-management/4-use-ccm-cost-optimization/cluster-orchestrator/post-enablement) documentation.
-
