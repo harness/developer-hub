@@ -39,7 +39,7 @@ To realize the objectives, the SCS module offers the following features:
     * [CIS Benchmarks](https://www.cisecurity.org/benchmark/software-supply-chain-security)
     * [OWASP Top 10 CI/CD Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/)
 * [SLSA Build Level 1, Level 2 and Level 3.](https://developer.harness.io/docs/software-supply-chain-assurance/slsa/overview)
-* [SBOM generation and management.](/docs/software-supply-chain-assurance/sbom/generate-sbom.md)
+* [SBOM generation and management.](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories)
 * [Govern the usage of open source with SBOM policy enforcement.](/docs/software-supply-chain-assurance/sbom-policies/overview)
 * [Remediate issues related to risk & compliance and zero-day exploits.](/docs/software-supply-chain-assurance/open-source-management/remediation-tracker/overview)
 

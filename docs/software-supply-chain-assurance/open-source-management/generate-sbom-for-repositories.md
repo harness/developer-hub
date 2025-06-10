@@ -8,7 +8,7 @@ sidebar_label: Generate SBOM for Repositories
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-A Software Bill of Materials (SBOM) is a comprehensive list of all components, libraries, and dependencies used in a software application. The **SBOM Orchestration** step in Harness Software Supply Chain (SCS) allows you to generate SBOMs for both code repositories and [software artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom), providing visibility into the components that make up your software.
+A Software Bill of Materials (SBOM) is a comprehensive list of all components, libraries, and dependencies used in a software application. The **SBOM Orchestration** step in Harness Software Supply Chain (SCS) allows you to generate SBOMs for both code repositories and [software artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts), providing visibility into the components that make up your software.
 
 
 If you already possess an SBOM and wish to ingest it, please refer to the [Ingest SBOM](./ingest-sbom-data.md) section.

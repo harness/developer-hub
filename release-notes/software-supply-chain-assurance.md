@@ -71,7 +71,7 @@ JFrog: `</your-repo/test-image>:tag`
 #### New features and enhancements
 
 - Added [Dashboards for License and Compliance Reports](/docs/software-supply-chain-assurance/reports/view-license-reports) to easily access detailed information about the licenses and compliance status associated with your software components at one place.
-- Added [Artifact Signing and Verification](/docs/software-supply-chain-assurance/artifact/sign-artifacts) steps to sign artifacts and verify the signed artifacts before it gets deployed to ensure integrity and prevent tampering.
+- Added [Artifact Signing and Verification](/docs/software-supply-chain-assurance/artifact-security/sign-verify/sign-artifacts) steps to sign artifacts and verify the signed artifacts before it gets deployed to ensure integrity and prevent tampering.
 - With Harness Internal Developer Portal (IDP) workflow now you can use a single GitHub connector at the account level and selectively onboard repositories to the project of your choice and automatically create scan pipelines to scan those repositories.
 - Secure attestation with Cosign using HashiCorp Vault, now supported via Vault Proxy with GCP Auth for enhanced security.
 - Enabled SBOM and SLSA generation and verification via Harness GitHub Actions, integrating seamlessly with GitHub CI workflows.
@@ -88,7 +88,7 @@ JFrog: `</your-repo/test-image>:tag`
 
 #### New features and enhancements
 - Launched a dedicated **SLSA Generation** step under the Supply Chain Security section in the step palette; removed the **SLSA Provenance** section from the stage Overview. You can now perform SLSA provenance generation and attestation using the new SLSA Generation step.
-- [Chain of Custody](/docs/software-supply-chain-assurance/artifact-view#artifact-overview) in the Artifact section now logs events from the Security Testing Orchestration (STO) module.
+- [Chain of Custody](/docs/software-supply-chain-assurance/artifact-security/overview#chain-of-custody) in the Artifact section now logs events from the Security Testing Orchestration (STO) module.
 - [Rule Definitions](/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions) section now has an expandable view, showing rule descriptions upon expansion; replaced the **Type** column with **Applicable On** to display the entity types to which rules apply, such as Code Repository or CI/CD, along with platform/Integration logo. For example, GitHub, GitHub Actions.
 
 ##### Enhancements in CI/CD section
@@ -124,7 +124,7 @@ JFrog: `</your-repo/test-image>:tag`
 #### **New features**
 
 * **Repository Security Posture Management**:
-    * Connect your GitHub with Harness SCS to identify insecure configurations in code repositories and organization settings for comprehensive risk, compliance, and security posture management. Use the [Harness SCS GitHub app](https://github.com/apps/harness-ssca) for integration. Learn more in our [RSPM](https://developer.harness.io/docs/software-supply-chain-assurance/repository-security-posture-management-rspm) documentation.
+    * Connect your GitHub with Harness SCS to identify insecure configurations in code repositories and organization settings for comprehensive risk, compliance, and security posture management. Use the [Harness SCS GitHub app](https://github.com/apps/harness-ssca) for integration. Learn more in our [RSPM](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm) documentation.
 * **Manage Risk and Compliance**
     * **Compliance Section**: A new Compliance section to assess and understand the risk posture of your entire supply chain. Detailed information is available in the [Manage Compliance Posture](https://developer.harness.io/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture) documentation.
     * **Rule Definitions Section**: Access a complete list of all standards and associated rules supported by Harness SCS, including:
@@ -133,7 +133,7 @@ JFrog: `</your-repo/test-image>:tag`
     
         More details can be found in the [Standards and Rule Definitions](https://developer.harness.io/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions) documentation.
 * **Integrations and Permissions**
-    * A new interface to manage your integrations with Harness SCS. Learn more about this in the [Integrations and Permissions](https://developer.harness.io/docs/software-supply-chain-assurance/integrations-and-permissions) document.
+    * A new interface to manage your integrations with Harness SCS. Learn more about this in the Integrations and Permissions.
 
 
 #### **Enhancements**

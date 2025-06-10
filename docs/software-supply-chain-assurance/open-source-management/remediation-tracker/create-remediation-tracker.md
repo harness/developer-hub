@@ -13,7 +13,7 @@ The instructions provided in this document will guide you through the process of
 
 ## Prerequisites
 
-Before creating a remediation tracker, it is crucial to ensure that your deployment pipelines incorporate and successfully complete the [SBOM Orchestration step](../sbom/generate-sbom#generate-sbom-in-harness). Additionally, all artifacts must be listed in the [Artifacts view](../artifact-view) page in the SCS module, as the tracker can only screen through those deployed artifacts available in this view.
+Before creating a remediation tracker, it is crucial to ensure that your deployment pipelines incorporate and successfully complete the [SBOM Orchestration step](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories#sbom-orchestration-step-configuration). Additionally, all artifacts must be listed in the [Artifacts view](/docs/software-supply-chain-assurance/artifact-security/overview) page in the SCS module, as the tracker can only screen through those deployed artifacts available in this view.
 
 
 ## Setting up the remediation tracker
