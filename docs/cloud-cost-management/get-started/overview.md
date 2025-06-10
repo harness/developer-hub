@@ -65,7 +65,7 @@ Enables financial control through:
 
 
 </div>
-![](./static/continuous-efficiency-overview-04.png)
+
 </div>
 
 ## The Cloud Cost Challenge
