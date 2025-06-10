@@ -151,7 +151,7 @@ JFrog: `</your-repo/test-image>:tag`
 
 #### New features and enhancements
 
-- The "Repositories" tab previously located in the [Artifact View](/docs/software-supply-chain-assurance/artifact-view) has been relocated and expanded into a separate section titled "[Code Repositories](https://developer.harness.io/docs/software-supply-chain-assurance/code-repositories-view)". All repository data will now be accessible from the [Code Repositories](https://developer.harness.io/docs/software-supply-chain-assurance/code-repositories-view) section, providing a more streamlined interface for managing repository  information.
+- The "Repositories" tab previously located in the [Artifact View](/docs/software-supply-chain-assurance/artifact-security/overview) has been relocated and expanded into a separate section titled "[Code Repositories](https://developer.harness.io/docs/software-supply-chain-assurance/code-repositories-view)". All repository data will now be accessible from the [Code Repositories](https://developer.harness.io/docs/software-supply-chain-assurance/code-repositories-view) section, providing a more streamlined interface for managing repository  information.
 
 ## September 2023
 

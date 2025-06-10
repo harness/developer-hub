@@ -158,4 +158,4 @@ jobs:
 
 ```
 
-To verify the generated SBOM and enforce policies on it, refer to [Enforce SBOM Policies with GitHub Actions](/docs/software-supply-chain-assurance/sbom-policies/enforce-sbom-policies-with-github-actions) documentation.
+To verify the generated SBOM and enforce policies on it, refer to [Enforce SBOM Policies with GitHub Actions](/docs/software-supply-chain-assurance/open-source-management/sbom-github-actions/enforce-sbom-policies-with-github-actions) documentation.

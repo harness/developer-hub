@@ -26,7 +26,7 @@ All features of '[SCS on Harness SaaS](#scs-on-harness-saas)' are available in a
 All features of '[SCS on Harness SaaS](#scs-on-harness-saas)' are available in an air-gapped or offline environment, with the following exceptions:
 
 - Repository Security Posture Management is not supported in air-gapped environments.
-- In the generated SBOMs, the license data for certain dependencies will be marked as "NOASSERTION", leading to a reduced SBOM quality score. However, this does not impact the SBOM generation or any other features of [SBOM Orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom).
+- In the generated SBOMs, the license data for certain dependencies will be marked as "NOASSERTION", leading to a reduced SBOM quality score. However, this does not impact the SBOM generation or any other features of [SBOM Orchestration](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories).
 - Logging the attestation record in the Sigstore public [Rekor](https://docs.sigstore.dev/logging/overview/) will not be performed during the SBOM and SLSA Provenance attestation process, but this will not impact the attestation itself.
 - Creating a Remediation tracker will require manually adding the CVE details as auto-population is linked with STO module. However, if you are using Harness STO SMP, this limitation does not apply.
 - Achieving [SLSA Level 3](/docs/software-supply-chain-assurance/artifact-security/slsa/overview#how-to-comply-with-slsa-level-3) compliance is not possible in SMP, as it requires Harness hosted build infrastructure. This capability is available through '[SCS on Harness SaaS](#scs-on-harness-saas)'.

@@ -38,7 +38,7 @@ To enforce SBOM policies in a Harness pipeline, you need:
 * A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories).
 
 :::info
-For SBOM Policy Enforcement, an SBOM needs to be generated or ingested beforehand through the SBOM Orchestration step. Refer to the dedicated [SBOM generation document](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/generate-sbom) for further details.
+For SBOM Policy Enforcement, an SBOM needs to be generated or ingested beforehand through the SBOM Orchestration step. Refer to the dedicated [SBOM generation document](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) for further details.
 :::
 
 ## Add SBOM Policy Enforcement step
