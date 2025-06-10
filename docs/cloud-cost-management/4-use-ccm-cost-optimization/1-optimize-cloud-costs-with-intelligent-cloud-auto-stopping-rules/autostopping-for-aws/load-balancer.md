@@ -46,37 +46,7 @@ Each load balancer requires a domain name (e.g., `*.autostopping.example.com`) t
 - A domain name you can configure (either in Route 53 or another DNS provider)
 - [AWS Connector configured in Harness](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
 
-You can create a Load Balancer in two ways:
-1. During the AutoStopping rule setup flow
-2. From the AutoStopping overview page
-
-### Option 1: Creating a Load Balancer During Rule Setup
-
-After following Step 1 from the [Create AutoStopping Rule](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rules-ectwo) guide, you will be directed to the "Setup Access" screen:
-
-1. Choose either **TCP Workload** or **HTTP/HTTPS Workload**
-2. Click **Create new AutoStopping Proxy** (or select an existing load balancer from the dropdown)
-3. Fill in the required details:
-   - Select your DNS provider: **Route 53** (must be in the same AWS account as your resources) or **Others**
-   - Enter a domain name for your load balancer
-
-<DocImage path={require('./static/alb-one.png')} width="50%" height="50%" title="Click to view full size image" />
-
-4. Configure additional settings:
-   - Select the AWS region for deployment
-   - Choose an SSL certificate
-   - Select the VPC for deployment
-   - Choose appropriate security groups
-
-<DocImage path={require('./static/alb-two.png')} width="50%" height="50%" title="Click to view full size image" />
-
-5. Click **Save Load Balancer**
-
-   ![Save load balancer](./static/create-load-balancer-aws-22.png)
-   
-Your load balancer is now ready to use with AutoStopping rules.
-
-### Option 2: Creating a Load Balancer from the AutoStopping Homepage
+### Creating a Load Balancer from the AutoStopping Homepage
 
 <DocImage path={require('./static/as-lb-aws.png')} width="100%" height="100%" title="Click to view full size image" />
 

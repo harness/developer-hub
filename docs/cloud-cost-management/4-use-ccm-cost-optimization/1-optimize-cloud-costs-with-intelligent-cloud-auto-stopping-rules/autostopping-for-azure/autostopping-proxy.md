@@ -18,38 +18,27 @@ The AutoStopping proxy runs in a VM and uses the Envoy proxy, an open-source sol
   ![](./static/autostopping-proxy-architecture-diagram.png)
 
 
-Perform the following steps to create an AutoStopping proxy for your cloud resources in Azure:
+## Create a New AutoStopping Proxy 
 
+You can either create a new application gateway when creating a new Autostopping rule or you can do so from Load Balancer Manager page. By using the second option, you can easily import the created gateway into your rule.
 
+<DocImage path={require('./static/as-proxy-azure.png')} width="100%" height="100%" title="Click to view full size image" />
 
-1. In the **Harness** application, go to **Cloud Costs**.
-2. Under **Setup**, click **Load Balancers**.
-3. Select **Create New Load Balancer**.
-4. Select **Azure**. 
-5. Choose an existing connector or create a new one.
-6. Select **Continue**.
-7. Select **Create AutoStopping Proxy**. 
-8. Select **Continue**.
-9. In the **Create a new AutoStopping Proxy** window, enter the following information:
-    1. Provide a name for the AutoStopping Proxy.
-    2. Enter the URL to specify the domain. Make sure that you have updated the DNS mapping in your DNS provider.
-    3. Select **Continue**.
-
-      ![](./static/azure-autoproxy-creation.png)
-
-10. Select the **Region** where you have your cloud resources hosted.
-11. Select the **Resource Group** to which the resource belongs.
-12. Select the **Virtual Network**.
-13. Select the **Subnet**.
-14. Select the **Security Group** to define the security rules that determine the inbound and outbound traffic.
-15. **TLS Certificate Secret Version**: Enter the value displayed in the **Secret Identifier** field on the Azure console. 
-On your Azure console, go to **Key Vaults**. Under **Objects**, Select **Secrets**. 
-
+1. In the AutoStopping overview page, click **Load Balancers** in the top right. Click on **Create Load Balancer** and then **Create AutoStopping Proxy**.
+2. Enter a name and select **Azure** in **Cloud Provider**
+3. Choose a cloud connector or create a [new one](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure). 
+4. Enter **Application Gateway Configuration**.
+   - Region: The region where your target VM or the cloud resource is hosted.
+   - Resource Group: A Resource Group (RG) in Azure is a logical container that holds related resources for a solution. In the context of an Azure Application Gateway, the resource group serves as the container for the various resources associated with the Application Gateway, such as: Virtual Machines (VMs), Storage Accounts, Networking Resources, etc.
+   - Virtual Network: Azure Virtual Network is a service that provides the fundamental building block for your private network in Azure. VNet allows you to create and manage virtual private networks (VPNs) in the Azure cloud. 
+   - Subnet: AppGateway subnet should only contain AppGateway, no other resources can be placed in this subnet.
+   - Security Group to define the security rules that determine the inbound and outbound traffic.
+   - **TLS Certificate Configuration**:
+      - **TLS Certificate Secret Version**: Enter the value displayed in the **Secret Identifier** field on the Azure console. 
+      - **TLS Private Key Secret Version**: Create another secret for the private key and enter the value in this field.
 
 :::note
 It is recommended to create the secret using the Azure CLI, and not using the Generate/Import option on the UI. This is to avoid some unwanted characters that get added to the certificate value. For more information, go to [Set and retrieve a secret from Azure Key Vault using Azure CLI](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-cli).
-:::
-
 
 Example:
        
@@ -96,11 +85,15 @@ sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-
 
 ```
 
+:::
 
-16. **TLS Private Key Secret Version**: Create another secret for the private key and enter the value in this field.
-17. **Machine type**: Select the type of VM that you want to set the AutoStopping rule for.
-18. **Key Pair**: Enter the SSH key pair.
-    1. This key can be used to access the machine over SSH with the *ubuntu* user
-19. **API Key**: Enter the NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/automation/api/api-quickstart) for more information.
-20. Enable **Allocate Static IP** if you need to access the VM outside the Resource Group. Update the DNS route to point to the public IP. You don't need to enable this field it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the Resource Group.
-21. Select **Save**.
+    - **Machine type**: Select the type of VM that you want to set the AutoStopping rule for.
+    - **Key Pair**: Enter the SSH key pair.
+      - This key can be used to access the machine over SSH with the *ubuntu* user
+    - **API Key**: Enter the NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/automation/api/api-quickstart) for more information.
+    - **[OPTIONAL] Allocate Static IP**: Enable to assign an elastic IP address
+      - Makes the proxy publicly accessible
+      - Remember to update your DNS records to point to this IP
+
+5. Click on **Save AutoStopping Proxy**.
+

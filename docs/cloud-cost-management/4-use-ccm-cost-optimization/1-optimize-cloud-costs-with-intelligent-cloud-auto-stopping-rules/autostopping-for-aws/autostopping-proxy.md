@@ -52,11 +52,9 @@ native services?}
 ```
 
 
-
-
 ## Steps to create an AutoStopping proxy for AWS
 
-<DocImage path={require('./static/as-proxy-aws.png')} width="70%" height="70%" title="Click to view full-size image" />
+<DocImage path={require('./static/as-proxy-aws.png')} width="100%" height="100%" title="Click to view full-size image" />
 
 1. In **Harness**, go to the **Cloud Costs** module. Click on **AutoStopping Rules** from left Navbar.
 2. Click **Load Balancers**.
