@@ -1,4 +1,4 @@
-To create a rule by using the Harness AIDA, perform the following steps: 
+To create a rule by using the Harness AI, perform the following steps: 
 
 1. In the Harness application, go to **Cloud Costs**.
 2. Select **Asset Governance**. You can create a new rule from either of the following pages: 
@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="tab-number">
 <TabItem value="4" label="Overview">
 
-3. Select **Create a new rule with AIDA**.
+3. Select **Create a new rule with AI**.
 
     <DocImage path={require('./static/aida-overview.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -22,8 +22,8 @@ import TabItem from '@theme/TabItem';
 5. Select a resource type displayed based on the cloud provider selected. For example: azure.vm, ec2.
 6. Use one of the following options: 
 
-  * Select a rule from a list of examples. Harness AIDA presents a curated list of rule examples from which you can choose one that is relevant to your requirement. The list covers a wide range of common governance scenarios. Adapt your selection to suit your specific requirements.
-  * Type your requirement and select the **Return** key. Alternatively, you can directly enter your governance requirement into the UI. Type your desired rule in a clear and concise manner and select the **Return** key. For example, you could specify a rule such as "Delete EC2 instances older than 90 days." Harness AIDA processes your input and generates a corresponding rule.
+  * Select a rule from a list of examples. Harness AI presents a curated list of rule examples from which you can choose one that is relevant to your requirement. The list covers a wide range of common governance scenarios. Adapt your selection to suit your specific requirements.
+  * Type your requirement and select the **Return** key. Alternatively, you can directly enter your governance requirement into the UI. Type your desired rule in a clear and concise manner and select the **Return** key. For example, you could specify a rule such as "Delete EC2 instances older than 90 days." Harness AI processes your input and generates a corresponding rule.
 
 7.   Select **Apply script on Rule Editor**.
 8.   Select **Validate Rule**.
@@ -42,14 +42,14 @@ import TabItem from '@theme/TabItem';
 5. Select the cloud service provider. For example: AWS, Azure.
 6. Optionally, enter a description for the rule.
 7. Select **Apply**.
-8. Select **Create with AIDA**.
+8. Select **Create with AI**.
 
-  The Harness AIDA pane opens.
+  The Harness AI pane opens.
 9. Select a resource type displayed based on the cloud provider selected. For example: azure.vm, ec2.
 10. Use one of the following options: 
 
-  * Select a rule from a list of examples. Harness AIDA presents a curated list of rule examples from which you can choose one that is relevant to your requirement. The list covers a wide range of common governance scenarios. Adapt your selection to suit your specific requirements.
-  * Type your requirement and select the **Return** key. Alternatively, you can directly enter your governance requirement into the UI. Type your desired rule in a clear and concise manner and select the **Return** key. For example, you could specify a rule such as "Delete EC2 instances older than 90 days." Harness AIDA processes your input and generates a corresponding rule.
+  * Select a rule from a list of examples. Harness AI presents a curated list of rule examples from which you can choose one that is relevant to your requirement. The list covers a wide range of common governance scenarios. Adapt your selection to suit your specific requirements.
+  * Type your requirement and select the **Return** key. Alternatively, you can directly enter your governance requirement into the UI. Type your desired rule in a clear and concise manner and select the **Return** key. For example, you could specify a rule such as "Delete EC2 instances older than 90 days." Harness AI processes your input and generates a corresponding rule.
 
 11. Select **Apply script on Rule Editor**.
 12. Select **Validate Rule**.

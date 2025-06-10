@@ -1,6 +1,8 @@
 ---
 id: pod-jvm-method-latency
 title: Pod JVM method latency
+redirect_from:
+- /docs/chaos-engineering/technical-reference/chaos-faults/spring-boot/spring-boot-latency
 ---
 
 Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.

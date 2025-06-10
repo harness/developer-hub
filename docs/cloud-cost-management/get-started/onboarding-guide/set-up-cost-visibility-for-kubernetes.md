@@ -248,7 +248,7 @@ You need to provide different permissions depending on the features that you ena
 | Feature | Capabilities |
 | --- | --- |
 | **Cost Visibility** (Required)| This feature is available by default. Provides the following capabilities:<ul><li>Insights into cluster costs by pods, namespace, workloads, etc.</li><li>Idle and unallocated cluster costs</li><li><li>Workload recommendations</li>Root cost analysis using cost perspectives </li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul>|
-| **Kubernetes optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for Kubernetes. For more information, see [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws).<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
+| **Kubernetes optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for Kubernetes. For more information, see [Create AutoStopping Rules for AWS](/docs/category/autostopping-for-aws).<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
 
 :::note
 
@@ -264,7 +264,7 @@ Make your selection and select **Continue**.
 
 The secret creation settings appear only if you have selected **Kubernetes Optimization by AutoStopping** feature when selecting features.
 
-In this step, you provide permissions for intelligent cloud AutoStopping rules. For more information, go to [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws).
+In this step, you provide permissions for intelligent cloud AutoStopping rules. For more information, go to [Create AutoStopping Rules for AWS](/docs/category/autostopping-for-aws).
 
 1. In **Secret creation**, select create an API key here and create an API key. Go to [Create an API Key](/docs/platform/automation/api/add-and-manage-api-keys) for more information.
 2. Run the following commands in your Kubernetes cluster:

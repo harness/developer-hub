@@ -14,7 +14,7 @@ canonical_url: https://www.harness.io/blog/github-actions-support-harness-ci
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-For most settings in Harness pipelines, you can use fixed values, runtime inputs, or expressions. These options are also sometimes available for other entities, such as connectors and triggers.
+For most settings in Harness pipelines, you can use fixed values, runtime inputs, or expressions. These options are also sometimes available for other entities, such as connectors and triggers. We can also explicitly export variables as [Harness Secrets](/docs/open-source/pipelines/secrets) if you are transmitting sensitive information across steps.  
 
 <Tabs>
   <TabItem value="Visual" label="Visual">

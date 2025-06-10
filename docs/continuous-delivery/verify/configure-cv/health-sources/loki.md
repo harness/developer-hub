@@ -91,7 +91,7 @@ To add a health source:
    
     A sample record in the **Records** field. This helps you confirm the accuracy of the query you've constructed.
    
-2. In the **Field Mapping** section, select **+** to map the **service instance identifiers** to select the data that you want to be displayed from the logs. For more information, go to [Service Instance Identifier (SII)](/docs/continuous-delivery/verify/cv-concepts/cvfg-cvng/#service-instance-identifier-sii).
+2. In the **Field Mapping** section, select **+** to map the **service instance identifiers** to select the data that you want to be displayed from the logs. For more information, go to [Service Instance Identifier (SII)](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step#service-instance-identifier-sii).
 
 3. Select **Get sample log messages**.  
    

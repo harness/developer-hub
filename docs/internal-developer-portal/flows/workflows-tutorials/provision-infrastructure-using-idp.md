@@ -1,7 +1,7 @@
 ---
 title: Provision Infrastructure using IDP and IaCM
 description: Create a basic infrastructure provisioning pipeline using Harness IDP
-sidebar_position: 7
+sidebar_position: 8
 redirect_from:
   - /docs/internal-developer-portal/flows/provision-infrastructure-using-idp
 ---
@@ -19,9 +19,9 @@ Before you begin this tutorial, make sure that you have completed the following 
 - Enable Harness IDP and Harness IaCM for your account.
 - Make sure you are assigned the **[IDP Admin Role](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin)** or another role that has full access to all IDP resources along with the **IACM Workspace**. 
 - Create a [Service Now](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-service-now/) and [JIRA connector](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira) with access to the projects where you want to create the tickets for provisioning the pipeline. 
-- Create a [Connector for AWS](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors).
-- Create a [connector for git provider](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors)
-- Create a [Workspace](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-a-new-workspace) using the AWS Connector created above. Also use the following [repository](https://github.com/luisredda/terraform-aws-ec2-instance) for the workspace and add the **branch** as `master` and **file path** as `.`
+- Create a [Connector for AWS](/docs/infra-as-code-management/get-started/#add-connectors).
+- Create a [connector for git provider](/docs/infra-as-code-management/get-started/#add-connectors)
+- Create a [Workspace](/docs/infra-as-code-management/get-started/#add-a-new-workspace) using the AWS Connector created above. Also use the following [repository](https://github.com/luisredda/terraform-aws-ec2-instance) for the workspace and add the **branch** as `master` and **file path** as `.`
 
 ![](./static/iacm-workspace.png)
 
@@ -43,7 +43,7 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 ![](./static/add-a-pipeline.png)
 
-3. The YAML below defines an IaCM stage with a number of steps [as described here](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-a-pipeline) that will perform the actions provision the infrastructure. Copy the YAML below, then in the Harness Pipeline Studio go to the YAML view and paste below the existing YAML.
+3. The YAML below defines an IaCM stage with a number of steps [as described here](/docs/infra-as-code-management/get-started/#add-a-pipeline) that will perform the actions provision the infrastructure. Copy the YAML below, then in the Harness Pipeline Studio go to the YAML view and paste below the existing YAML.
 
 :::info
 
@@ -438,7 +438,7 @@ That token is then used as part of `steps` as `apikey`
 
 ### Register the Workflow in IDP
 
-Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/catalog-2o.md).
 
 ## Use the Self Service Workflows
 

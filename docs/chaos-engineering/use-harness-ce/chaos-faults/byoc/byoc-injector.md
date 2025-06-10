@@ -28,9 +28,9 @@ BYOC injector:
         <th> Notes </th>
       </tr>
       <tr>
-        <td> LIB_IMAGE </td>
+        <td> BYOC_HELPER_IMAGE </td>
         <td> Image of the helper pod that contains the business logic for the custom fault. </td>
-        <td> For more information, go to <a href="#chaos-script-in-lib_image"> lib image </a></td>
+        <td> For more information, go to <a href="#chaos-script-in-lib_image"> byoc helper image </a></td>
       </tr>
       <tr>
         <td> COMMAND </td>
@@ -52,11 +52,6 @@ BYOC injector:
         <th> Notes </th>
       </tr>
       <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 60s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
-      </tr>
-      <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
         <td> For example, 30s. For more information, go to <a href= "/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
@@ -67,8 +62,8 @@ BYOC injector:
 
 BYOC injector supports two modes of execution:
 
-1. `Chaos script contained LIB_IMAGE`: The chaos script is included in the `LIB_IMAGE`.
-2. `Chaos script mounted as volume`: The script is not be included in the `LIB_IMAGE`. Instead, it is mounted as a volume inside the helper pod, and `COMMAND` and `ARGS` will be used to execute the script.
+1. `Chaos script contained BYOC_HELPER_IMAGE`: The chaos script is included in the `BYOC_HELPER_IMAGE`.
+2. `Chaos script mounted as volume`: The script is not be included in the `BYOC_HELPER_IMAGE`. Instead, it is mounted as a volume inside the helper pod, and `COMMAND` and `ARGS` will be used to execute the script.
 
 #### Chaos script in LIB_IMAGE
 
@@ -112,7 +107,7 @@ spec:
               value: "2"
             - name: DURATION
               value: "120"
-            - name: LIB_IMAGE
+            - name: BYOC_HELPER_IMAGE
               value: "<lib image with chaos script>"
             - name: COMMAND
               value: "/bin/sh"
@@ -122,7 +117,7 @@ spec:
 
 #### Mounted chaos script
 
-The script is not included in the `LIB_IMAGE`. Instead, it is mounted as a volume inside the helper pod, and `COMMAND` and `ARGS` will be used to execute the script.
+The script is not included in the `BYOC_HELPER_IMAGE`. Instead, it is mounted as a volume inside the helper pod, and `COMMAND` and `ARGS` will be used to execute the script.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -166,7 +161,7 @@ spec:
               value: "2"
             - name: DURATION
               value: "120"
-            - name: LIB_IMAGE
+            - name: BYOC_HELPER_IMAGE
               value: "<lib image with ssh binary>"
             - name: COMMAND
               value: "/bin/sh"
@@ -256,7 +251,7 @@ spec:
               value: "2"
             - name: DURATION
               value: "120"
-            - name: LIB_IMAGE
+            - name: BYOC_HELPER_IMAGE
               value: "<lib image with ssh binary>"
             - name: COMMAND
               value: "/bin/sh"

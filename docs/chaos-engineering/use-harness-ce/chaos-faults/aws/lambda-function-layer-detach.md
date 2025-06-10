@@ -1,6 +1,8 @@
 ---
 id: lambda-function-layer-detach
 title: Lambda function layer detach
+redirect_from:
+- /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-function-layer-detach
 ---
 
 Lambda function layer detach is an AWS fault that detaches the Lambda layer associated with the function, thereby causing dependency-related issues or breaking the Lambda function that relies on the layer's content.

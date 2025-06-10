@@ -280,7 +280,7 @@ Here are examples of Run steps configured for CodeCov code coverage in the Visua
     name: Pytest code coverage
     identifier: pytest_code_coverage
     spec:
-      connectorRef: account.harnessImage ## Provide a Docker connector ID, if required for your build infrastructure.
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
       image: python:latest ## Specify an image, if required for your build infrastructure.
       shell: Sh
       command: |-
@@ -424,7 +424,7 @@ The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifa
                      name: publish artifact metadata
                      identifier: publish_artifact_metadata
                      spec:
-                       connectorRef: account.harnessImage
+                       connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                        image: plugins/artifact-metadata-publisher
                        settings:
                          file_urls: ## Provide the URL to the code coverage artifact that was uploaded in the Upload Artifacts step. If you uploaded multiple artifacts, you can provide a list of URLs.
@@ -470,7 +470,7 @@ The [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3
                      name: s3-upload-publish
                      identifier: custom_plugin
                      spec:
-                       connectorRef: account.harnessImage
+                       connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                        image: harnesscommunity/drone-s3-upload-publish
                        settings:
                          aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference your AWS access ID.
@@ -498,3 +498,17 @@ If you want to upload a compressed file, you must use a [Run step](../run-step-s
 Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab. You can [publish any URL to the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab).
 
 :::
+
+## Code Coverage and Test Intelligence (TI)
+Customers utilizing [Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview) in steps before Code Coverage reports may find that Test Intelligence will affect the overall code coverage.  This is due to the nature of how Test Intelligence works in that it executes **fewer tests** in order to speed up the overall testing process.
+
+Because Test Intelligence is anticipated to execute fewer tests, customers will experience lower Code Coverage numbers and may conflict with expected test code coverage metrics. The recommended approach is to disable **Test Intelligence** if you wish to run Code Coverage. 
+
+Alternatively, you can execute it in a separate pipeline on a daily or weekly basis. Test Intelligence and Testing Code Coverage are conflicting objectives to achieve so you will have to pick one or the other.
+
+Below is a sample of what can happen:
+As you can see from the below screenshot, with Test Intelligence off, all tests were executed, and Code Coverage shows that it had a score of **69.9**.  
+![Code Coverage without Test Intelligence](./static/codecoverage-tioff.png)
+
+Once the Test Intelligence was engaged, many of the tests were skipped because of the initial testing.  As a result, almost no tests were run and were skipped, so the test step completed quickly.  As a result, the coverage for this execution is much lower (**9.6**), because the actual tests executed were significantly fewer.
+![Code Coverage with Test Intelligence](./static/codecoverage-tion.png)

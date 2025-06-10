@@ -16,7 +16,7 @@ spec:
           value: '100'
         # tag of the EBS volume
         - name: EBS_VOLUME_TAG
-          value: 'key:value'
+          value: 'key=value'
         # region for the EBS volume
         - name: REGION
           value: 'us-east-1'

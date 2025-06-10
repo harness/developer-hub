@@ -9,7 +9,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info
+:::warning
 This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
 
 While **Run Tests** step remains backwards compatible, Harness recommends using the newer [**Test** ](../tests-v2.md) step (Test Intelligence v2) for simplified user experience.
@@ -18,6 +18,12 @@ While **Run Tests** step remains backwards compatible, Harness recommends using 
 
 
 ## Enable TI for Python
+
+:::note
+
+* To use TI for Python, the image for the step must have Python 3 installed and accessible. Additionally, Virtual Environments for Python (`venv`) are not supported by TI.
+* Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
+:::
 
 You can enable TI for Python in three steps:
 
@@ -30,11 +36,7 @@ You can enable TI for Python in three steps:
 
 Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 
-:::info
 
-To use TI for Python, your codebase must be Python 3.
-
-:::
 
 In the Run Tests step, you must select **Run only selected tests** (`runOnlySelectedTests: true`). For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
 
@@ -198,7 +200,7 @@ pipeline:
                   name: Run Python Tests
                   identifier: Run_Python_Tests
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: python:latest ## Specify if required by your build infrastructure.
                     language: Python
                     buildTool: Pytest ## Specify pytest or unittest.
@@ -258,7 +260,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 * **Docker Registry:** Enter the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
 * **ECR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
+* **GAR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest`.
 
 </details>
 

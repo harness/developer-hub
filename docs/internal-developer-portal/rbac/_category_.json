@@ -2,7 +2,7 @@
     "label": "RBAC",
     "collapsible": "true",
     "collapsed": "true",
-    "position": 90,
+    "position": 60,
     "link": {
       "type": "generated-index",
       "title": "RBAC"

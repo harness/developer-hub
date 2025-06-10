@@ -273,7 +273,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Amazon AMI/ASG</summary>
 
 - **Overview:**
-  - [AWS AMI/ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial)
+  - [AWS AMI/ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial)
 - **Supported connectors for deployment:**
   - AWS cloud connector
     - IRSA
@@ -447,7 +447,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Spot Instances</summary>
 
 - **Overview:**
-  - [Spot Elastigroup deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
+  - [Spot Elastigroup deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment)
 - **Supported connectors for deployment:**
   - Spot Connector
     - AccountID + API Token
@@ -772,7 +772,7 @@ The maximum number of artifact image tags fetched by Harness that is 10000.
 
 The following table lists Harness integrations and their artifact source support:
 
-|                              | **Docker Hub** | **ECR** | **GCR** | **GCS** | **ACR** | **Artifactory** | **Nexus 3** | **Custom** | **Google Artifact Registry** | **Github Artifact Registry** | **Jenkins** | **AWS S3** |
+|                              | **Docker Hub** | **ECR** | **GCR** [:warning: Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)| **GCS** | **ACR** | **Artifactory** | **Nexus 3** | **Custom** | **Google Artifact Registry** | **Github Artifact Registry** | **Jenkins** | **AWS S3** |
 | ---------------------------- | -------------- | ------- | ------- | --- | ------- | --------------- | ----------- | ---------- | ---------------------------- | ---------------------------- | ----------- | ---------- |
 | **Kubernetes**               | ✅             | ✅      | ✅      |     | ✅      | ✅              | ✅          | ✅         | ✅                           | ✅                           |             |            |
 | **Helm**                     | ✅             | ✅      | ✅      |     | ✅      | ✅              | ✅          | ✅         |                              |                              |             |            |
@@ -905,7 +905,7 @@ You can use the failure strategy to move the pipeline forward if the approval st
 On the approval step's advance section, go to failure strategy and use the mark as success to make the step successful and the pipeline will move to the next step.
 
 
-#### How does Harness NG rollback if something goes wrong in Production. Will it be automatically done or do we need to trigger anything manually?
+#### How does Harness rollback if something goes wrong in Production. Will it be automatically done or do we need to trigger anything manually?
 
 You can perform rollbacks manually, automatically, or use a hybrid option (triggering it automatically but requiring approval before it happens).
 Post-deployment rollback: This can be considered a manual approach, allowing you to rollback deployments that succeeded on technical criteria but that you want to roll back for other reasons. 
@@ -944,9 +944,9 @@ deny[msg] {
 Yes, you can update Jira issues and add Jira approval stages and steps using Harness.
 
 
-#### Does Harness provide Pause/Resume Pipeline functionality in NextGen ?
+#### Does Harness provide Pause/Resume Pipeline functionality?
 
-Yes, the Pause/Resume Pipeline functionality is provided behind the `FF: PIE_DEPRECATE_PAUSE_INTERRUPT_NG`. It is not planned to depricate the feature but due to feature complexity it is advisable to use the Harness Approval steps. 
+Yes, the Pause/Resume Pipeline functionality is provided behind the `FF: PIE_DEPRECATE_PAUSE_INTERRUPT_NG`. It is not planned to deprecate the feature but due to feature complexity it is advisable to use the Harness Approval steps. 
 Please read more on how to use Automated Harness Approval steps in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#prevent-approval-by-pipeline-executor)
 
 

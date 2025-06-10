@@ -243,7 +243,7 @@ Harness provides detailed log information for pods and container during the Wait
 
 :::note
 
-Currently, this feature is behind the feature flag `CDS_K8S_DETAILED_POD_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `CDS_K8S_DETAILED_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 

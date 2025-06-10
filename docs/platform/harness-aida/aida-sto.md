@@ -1,6 +1,6 @@
 ---
-title: Fix security vulnerabilities using AIDA
-description: Enhanced remediation using Harness AI Development Assistant (AIDA)
+title: Fix security vulnerabilities using AI
+description: Enhanced remediation using Harness AI
 sidebar_position: 40
 ---
 

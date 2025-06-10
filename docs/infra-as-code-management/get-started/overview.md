@@ -1,6 +1,6 @@
 ---
 title: Harness Infrastructure as Code Management (IaCM) Overview
-sidebar_label: Overview & key concepts
+sidebar_label: Overview & Key Concepts
 description: Learn about Harness Infrastructure as Code Management.
 sidebar_position: 10
 ---
@@ -29,7 +29,7 @@ For a more detailed demo, check out the [IaCM overview video](https://youtu.be/I
 Infrastructure as Code (IaC) is the ability to define cloud resources as code, allowing for repeatable infrastructure configuration. Examples of IaC tools include HashiCorp Terraform and Amazon CloudFormation.
 
 ### Workspace
-Your workspace is a container for your infrastructure resources, integrating IaC code, variables, cloud provider connections, state files, and workflows. [Go to the create workspace guide](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#create-a-workspace) to learn more.
+Your workspace is a container for your infrastructure resources, integrating IaC code, variables, cloud provider connections, state files, and workflows. [Go to the create workspace guide](https://developer.harness.io/docs/infra-as-code-management/get-started/#create-a-workspace) to learn more.
 
 ### Operations
 Operations are actions taken to manage and maintain your infrastructure using IaC tools.
@@ -47,5 +47,5 @@ Resources are components and services managed by your IaC tool and cloud provide
 - **Terraform State Backend:** Manages access to and changes in a shared Terraform state file. [Understand state backend](https://developer.harness.io/docs/category/remote-backends).
 - **Variables:** Elements used to extend and customize IaC code. [Learn about pipeline variables](https://developer.harness.io/docs/infra-as-code-management/project-setup/input-variables).
 
-Go to [the IaCM onboarding guide](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide) to get started or continue your IaCM journey!
+Go to [the IaCM onboarding guide](/docs/infra-as-code-management/get-started/) to get started or continue your IaCM journey!
 

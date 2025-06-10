@@ -31,69 +31,67 @@ All features of '[SCS on Harness SaaS](#scs-on-harness-saas)' are available in a
 - Creating a Remediation tracker will require manually adding the CVE details as auto-population is linked with STO module. However, if you are using Harness STO SMP, this limitation does not apply.
 - Achieving [SLSA Level 3](../slsa/overview.md#how-to-comply-with-slsa-level-3) compliance is not possible in SMP, as it requires Harness hosted build infrastructure. This capability is available through '[SCS on Harness SaaS](#scs-on-harness-saas)'.
 
-## Integrations
-### Code Repositories
+### SCS Steps Support Across Stages
 
-* Harness Code Repository
-
-The following code repository providers are integrated using 3rd party Git Connectors:
-
-* GitHub 
-* GitLab
-* BitBucket
-* Azure Code Repos
-
-### CI/CD Pipelines
-
-* Harness CI - as native steps in Harness Pipeline's Build Stage
-* Harness CD & GitOps - as native steps in Harness Pipeline's Deploy Stage
-* SCS steps are also available in Harness Pipeline's Security stage
-
-The following CI/CD pipeline providers are integrated using [Pipeline Triggers](/docs/platform/triggers/triggering-pipelines.md).
-
-* GitHub
-* GitLab
-* BitBucket 
-* Azure Code Repos
-
-### Artifact Repositories
-
-* Docker Hub
-* GCR
-* Amazon ECR
-* Microsoft ACR
-* GAR
-
-### SBOM Generation Tools
-
-* [Syft](/docs/software-supply-chain-assurance/sbom/generate-sbom.md)
-* [Cdxgen](https://github.com/CycloneDX/cdxgen/)
-* [Blackduck](/docs/software-supply-chain-assurance/sbom/generate-sbom-blackduck.md)
-* [Aqua Trivy](/docs/software-supply-chain-assurance/sbom/generate-sbom-aqua-trivy.md)
-* [Snyk](/docs/software-supply-chain-assurance/sbom/generate-sbom-snyk.md)
-
-### SBOM Formats
-
-* SPDX 
-* CycloneDX
-
-### SLSA Build Level
-You can achieve SLSA Build Level 1, Level 2 and Level 3 using Harness SCS. Refer to [SLSA Overview](../slsa/overview.md)
-* [SLSA Build L1](../slsa/overview.md#how-to-comply-with-slsa-level-1)
-* [SLSA Build L2](../slsa/overview.md#how-to-comply-with-slsa-level-2)
-* [SLSA Build L3](../slsa/overview.md#how-to-comply-with-slsa-level-3)
+| Step                     | Build Stage | Security Stage | Deploy Stage |
+|--------------------------|-------------|----------------|--------------|
+| SBOM Orchestration        | Yes         | Yes            | Yes          |
+| SBOM Policy Enforcement          | Yes         | Yes            | Yes          |
+| SLSA Generation           | Yes         | No             | No           |
+| SLSA Verification         | Yes         | Yes            | Yes          |
+| SCS Compliance            | Yes         | Yes            | No           |
+| Artifact Signing          | Yes         | Yes            | No           |
+| Artifact Verification     | Yes         | Yes            | Yes          |
 
 
-### Attestation/Provenance Generation & Verification Tools
 
-* [Sigstore Cosign with built-in in-toto attestations](https://docs.sigstore.dev/cosign/verifying/attestation/)
+### Build Infrastructure
 
-### Policy Enforcement Attributes
+The following table shows SCS support for each infrastructure type.
 
-* Component name
-* Component version
-* License
-* Supplier
-* PURL
-
-
+<table>
+    <thead>
+        <tr>
+            <th>Operating System</th>
+            <th>Architecture</th>
+            <th>Harness Cloud</th>
+            <th>Self-managed local runner</th>
+            <th>Self-managed AWS/GCP/Azure VMs</th>
+            <th>Self-managed Kubernetes cluster</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Linux</td>
+            <td>amd64</td>
+            <td align="center">✅ Supported</td>
+            <td align="center">✅ Supported</td>
+            <td align="center">✅ Supported</td>
+            <td align="center">✅ Supported</td>
+        </tr>
+        <tr>
+            <td>Linux</td>
+            <td>arm64</td>
+            <td align="center">✅ Supported</td>
+            <td align="center">✅ Supported</td>
+            <td align="center">✅ Supported</td>
+            <td align="center">✅ Supported</td>
+        </tr>
+        <tr>
+            <td>Windows</td>
+            <td>amd64</td>
+            <td align="center">❌ Not supported</td>
+            <td align="center">❌ Not supported</td>
+            <td align="center">❌ Not supported</td>
+            <td align="center">❌ Not supported</td>
+        </tr>
+        <tr>
+            <td>MacOS</td>
+            <td>arm64</td>
+            <td align="center">❌ Not supported</td>
+            <td align="center">✅ Supported</td>
+            <td align="center">❌ Not supported</td>
+            <td align="center">❌ Not supported</td>
+        </tr>
+    </tbody>
+</table>

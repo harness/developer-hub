@@ -18,6 +18,10 @@ In the Harness Service, in addition to the manifest(s) for the primary artifact 
 
 The containers in the manifest can be hardcoded or you can add artifact streams to Harness as Artifacts and reference them in your manifests using the `<+artifacts.sidecars.[sidecar_identifier].imagePath>` expression.
 
+:::info 
+To deploy workloads utilizing Kubernetes sidecar containers (introduced in Kubernetes 1.28), ensure the feature flag `CDS_K8S_CUSTOM_YAML_PARSER` is enabled. This activates a custom YAML parser in Harness, facilitating proper handling of sidecar configurations not supported by the current Kubernetes Java SDK version 18.0.0, enabling successful parsing and deployment of sidecar configurations.
+:::
+
 This topic provides an example of a simple sidecar deployment.
 
 ## Before you begin

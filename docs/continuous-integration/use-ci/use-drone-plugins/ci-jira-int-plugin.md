@@ -51,7 +51,7 @@ The following YAML example describes a [Plugin step](./plugin-step-settings-refe
                   name: Update Jira Build #Step name
                   identifier: updateJiraBuild #Step ID
                   spec:
-                    connectorRef: account.harnessImage #Docker Hub container registry connector
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: plugins/jira
                     settings:
                       PROJECT: MYT #Your Jira project key

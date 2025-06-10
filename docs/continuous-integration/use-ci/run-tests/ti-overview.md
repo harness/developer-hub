@@ -1,5 +1,5 @@
 ---
-title: Test Intelligence (TI) overview
+title: Test Intelligence™ overview
 description: Reduce unit test time by running only relevant unit tests.
 sidebar_position: 2
 helpdocs_topic_id: 428cs02e6u
@@ -21,11 +21,13 @@ Testing is an important part of Continuous Integration (CI). Testing safeguards 
 
 Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use parallelism (test splitting) with TI to further optimize your test times.
 
-You can used Test Intelligence with  **Python**, **Java** , **Ruby**, **C#**, **Kotlin**, or **Scala** programming languages
+You can used Test Intelligence with  **Python**, **Java** , **Ruby**, **C#**, **Kotlin**, or **Scala** programming languages.
+
+:::tip Test Intelligence Beta
+Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in **beta**. If you're interested in joining the beta program, please contact Harness support or your account representative.
+:::
 
 :::info
-- Test Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 
 - Test Intelligence applies to unit testing only. For other types of tests, [use Run steps](../run-step-settings.md).
 
@@ -42,7 +44,13 @@ When you perform a pull request, TI uses the following metrics to select tests:
 - **Changed tests:** When a test is changed, TI selects and runs that test, even if the code the test covers hasn't changed.
 - **New tests:** When you add a new test, TI selects and runs that test. This ensures that the test is running successfully and also finds correlations between the new test and new/existing code.
 
-TI is always up to date and syncs when you merge code to any branch.
+TI is always up to date and syncs when you merge code to any branch. To ensure TI functions correctly for pull requests, the [Git webhook trigger](/docs/platform/triggers/triggers-reference/) must include at least the **Synchronize** and **merge** and/or **close** events. These events are critical for TI to update its call graph and commit data accurately after a pull request is finalized, and to rerun the pipeline when additional commits are pushed to the PR. The terminology and behavior vary slightly across SCM providers:
+
+- In Harness Code and GitHub, the **close** event covers both merged and non-merged pull requests.
+
+- In GitLab, you must explicitly enable both **merge** and **close** events since they are treated as separate triggers. **Sync** is the **Synchronize** equivalent event in GitLab.
+
+For a full list of event and actions for different supported Git providers, check out [the documentation](/docs/platform/triggers/triggers-reference#event-and-actions).
 
 After a build runs, TI gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. You can find the Test results and the TI call graph visualization on the **Build details** page. The call graph visualization shows the changed classes and methods that caused each test to be selected.
 
@@ -63,13 +71,13 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **T
 
 :::tip
 
-We recommend using [**Test**](./tests-v2.md) Step (Test Intelligence v2) to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
+**We recommend using [**Test**](./tests-v2.md) Step (Test Intelligence v2)** to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
 
 :::
 
 
 
-For instructions on using the Test Intelligence (v2), go to: [Test Intelligence step](./tests-v2.md)
+**For instructions on using the Test Intelligence (v2), go to: [Test Intelligence step](./tests-v2.md)**
 
 For instructions on using the Test Intelligence (v1), go to:
 
@@ -104,10 +112,9 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 
 * [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
 * [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
+* [Why did Test Intelligence Skip Analysis](/kb/continuous-integration/continuous-integration-faqs/#why-did-test-intelligence-skip-analysis)
 * [Ruby Test Intelligence can't find rspec helper file.](/kb/continuous-integration/continuous-integration-faqs/#ruby-test-intelligence-cant-find-rspec-helper-file)
 * [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
 * [Does Test Intelligence support dynamic code?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-support-dynamic-code)
 * [Errors when running TI on Python code.](/kb/continuous-integration/continuous-integration-faqs/#python-test-intelligence-errors)
 * [Test Intelligence fails with error 'Unable to get changed files list'.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-with-error-unable-to-get-changed-files-list)
-
-

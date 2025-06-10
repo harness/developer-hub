@@ -1,6 +1,3 @@
-import gs from "./components/Docs/GetStarted";
-
-
 export enum MODULES {
   gs = 'gs',
   ci = 'ci',
@@ -19,14 +16,15 @@ export enum MODULES {
   code = 'code',
   platform = 'platform',
   cv = 'cv',
-  smp = "smp",
-  aida = "aida",
-  dbdevops = "dbdevops",
-  ar = "ar",
-  cde = "cde",
-  armory = "armory",
-  opensource = "opensource",
-  fme = "fme"
+  smp = 'smp',
+  aida = 'aida',
+  dbdevops = 'dbdevops',
+  ar = 'ar',
+  cde = 'cde',
+  armory = 'armory',
+  opensource = 'opensource',
+  fme = 'fme',
+  ata = 'ata',
 }
 
 export const MODULE_DISPLAY_NAME = {
@@ -53,7 +51,8 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.cde]: 'Cloud Development Environments',
     [MODULES.armory]: 'Armory',
     [MODULES.opensource]: 'Open Source',
-    [MODULES.fme]: 'Feature Mgmt & Experimentation'
+    [MODULES.fme]: 'Feature Management & Experimentation',
+    [MODULES.ata]: 'AI Test Automation',
 }
 
 export const MODULE_ICON = {
@@ -76,8 +75,9 @@ export const MODULE_ICON = {
     [MODULES.aida]: 'img/icon_aida.svg',
     [MODULES.dbdevops]: 'img/icon_dbdevops.svg',
     [MODULES.ar]: 'img/icon_artifact_registry.svg',
-    [MODULES.cde]: 'img/cde_icon.svg',
+    [MODULES.cde]: 'img/icon-cde.svg',
     [MODULES.armory]: 'img/icon_armory.svg',
     [MODULES.opensource]: 'img/icon_opensource.svg',
-    [MODULES.fme]: 'img/icon_fme.svg'
+    [MODULES.fme]: 'img/icon_fme.svg',
+    [MODULES.ata]: 'img/logo-ata.svg',
 }

@@ -24,6 +24,10 @@ By selecting a pipeline from the **CI/CD** page, you can view all the details or
 
 The overview page provides a comprehensive summary of a specific pipeline’s risk posture. This page compiles all the crucial details in one place, offering a clear and concise view.
 
+:::note
+Scans will not run if **Git Experience** is enforced and the **Default Store Type for Entities** is set to remote in the account settings. Make sure these settings are configured correctly to enable scan execution.
+:::
+
 ### What is an Evaluation?
 
 Before diving into the details, it's essential to understand what an "evaluation" means in this context. An evaluation refers to applying specific compliance rules to the repository and obtaining the results of these checks. Each evaluation assesses the repository against these predefined rules and provides a pass or fail status.

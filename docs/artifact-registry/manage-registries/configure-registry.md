@@ -1,7 +1,7 @@
 ---
 title: Configure Registries
 description: Learn how to configure your artifact registries. 
-sidebar_position: 20
+sidebar_position: 30
 ---
 
 Use this page to learn about all the configuration options for your artifact registries. 

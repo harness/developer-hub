@@ -1,21 +1,9 @@
 ---
-title: Workspace statuses
+title: Workspace Statuses
 description: Learn about IaCM workspace status
 sidebar_position: 70
 ---
 
-<CTABanner
-  buttonText="Learn More"
-  title="Pending release"
-  tagline="The IaCM Workspace Statuses panel is currently pending release and will be available soon!"
-  link="https://developer.harness.io/roadmap/#iacm"
-  closable={true}
-  target="_self"
-/>
-
-:::warning pending release
-The IaCM Workspace Statuses panel is currently pending release and will be available soon!
-:::
 
 This document provides an overview of workspace statuses, offering a quick glance at the number of workspaces in each status. It helps streamline workflow management by enabling users to filter and identify workspaces based on their current status.
 

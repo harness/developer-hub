@@ -1,5 +1,5 @@
 ---
-title: Cost estimation
+title: Cost Estimation
 description: Learn how to get cost estimation for infrastructure changes.
 sidebar_position: 40
 ---

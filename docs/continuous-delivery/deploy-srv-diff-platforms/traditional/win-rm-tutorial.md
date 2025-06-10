@@ -34,6 +34,8 @@ Supported security protocols for WinRM include Kerberos and Windows New Technolo
 * Credentials and other details for the EC2 Instance 
   * To configure and authenticate your WinRM credentials by using NTLM, you should have the domain name, username and password for the EC2 instance.
 * To use Harness execution strategies, make sure you should have [IIS service](https://learn.microsoft.com/en-us/iis/application-frameworks/scenario-build-an-aspnet-website-on-iis/configuring-step-1-install-iis-and-asp-net-modules#to-install-iis-and-aspnet-modules-on-windows-server-2012-using-the-ui) installed on your machine.
+* We support using WinRM with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. For more information, refer to [AWS OIDC connector reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+
 ## Objectives
 
 You will learn how to:
@@ -131,6 +133,151 @@ The **Map Dynamically Provisioned Infrastructure** option is used when your are 
 Write down hosts as a comma separated list. 
 
 :::
+
+### Filtering Hosts by Attributes
+
+This setting is available when you pick **Select preconfigured hosts from Physical Data Center** under **Select hosts** and select **Filter by host attributes**
+
+:::note
+Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can control whether multiple host‑attribute filters are combined with **OR (match any)** or **AND (match all)** logic.
+
+**Any (default)** – a host is selected if at least one filter condition matches (existing behavior).
+
+**All** – a host is selected only if every filter condition matches.
+
+Specific Attribute: This is where you specify the condition on which the match criteria is checked with. You can specify attributes like region, type, name, etc.
+
+<div align="center">
+  <DocImage path={require('./static/pdc-specify-host.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+<details>
+<summary>Example of how filtering hosts by attributes works</summary>
+
+Suppose you have two hosts specified in your physical data center
+
+```json
+// Host‑1
+{
+  "hostname": "ec2-00-00-01.compute-1.amazonaws.com",
+  "hostAttribute": {
+    "region": "us-east-1",
+    "name": "node-1"
+  }
+}
+
+// Host‑2
+{
+  "hostname": "ec2-00-00-02.compute-1.amazonaws.com",
+  "hostAttribute": {
+    "region": "us-west",
+    "name": "node-5"
+  }
+}
+```
+
+Scenario 1: `matchCriteria: ALL`
+
+**YAML Example for `matchCriteria: ALL`**
+
+```yaml
+infrastructureDefinition:
+  name: pdc
+  identifier: pdc
+  orgIdentifier: default
+  projectIdentifier: project_id
+  environmentRef: env_id
+  deploymentType: Ssh
+  type: Pdc
+  spec:
+    connectorRef: abc
+    credentialsRef: credentials_ref
+    hostFilter:
+      type: HostAttributes
+      spec:
+        value:
+          region: us-east-1
+          name: node-1
+        matchCriteria: ALL
+  allowSimultaneousDeployments: false
+```
+
+- **matchCriteria: ALL** means that **both** conditions must be true for the host to be selected (both `region=us-east-1` **and** `name=node-1`).
+
+**Host‑1**
+- `region`: us-east-1 (matches)
+- `name`: node-1 (matches)
+
+**Selected**: Host‑1 meets both conditions, so it **matches**.
+
+**Host‑2**
+- `region`: us-west (does not match `us-east-1`)
+- `name`: node-5 (does not match `node-1`)
+
+**Not Selected**: Host‑2 does not meet **both** conditions, so it **does not match**.
+
+**Summary for `ALL`**:  
+- **Host‑1** is selected because both `region` and `name` match.  
+- **Host‑2** is not selected because neither `region` nor `name` match.
+
+---
+
+Scenario 2: `matchCriteria: ANY`
+
+**YAML Example for `matchCriteria: ANY`**
+
+```yaml
+infrastructureDefinition:
+  name: pdc
+  identifier: pdc
+  orgIdentifier: default
+  projectIdentifier: project_id
+  environmentRef: env_ref
+  deploymentType: Ssh
+  type: Pdc
+  spec:
+    connectorRef: abc
+    credentialsRef: credentials_ref
+    hostFilter:
+      type: HostAttributes
+      spec:
+        value:
+          region: us-east-1
+          name: node-1
+        matchCriteria: ANY
+  allowSimultaneousDeployments: false
+
+```
+
+- **matchCriteria: ANY** means that **either** condition must be true for the host to be selected (either `region=us-east-1` **or** `name=node-1`).
+
+**Host‑1**
+- `region`: us-east-1 (matches)
+- `name`: node-1 (matches)
+
+**Selected**: Host‑1 meets both conditions, so it **matches**.
+
+**Host‑2**
+- `region`: us-west (does not match `us-east-1`)
+- `name`: node-5 (does not match `node-1`)
+
+**Not Selected**: Host‑2 does not meet either condition, so it **does not match**.
+
+**Summary for `ANY`**:  
+- **Host‑1** is selected because **both** `region` and `name` match.  
+- **Host‑2** is not selected because neither `region` nor `name` matches.
+
+---
+
+Key Takeaways:
+
+- **matchCriteria: ALL**: The host is selected only if **both** conditions are true.
+- **matchCriteria: ANY**: The host is selected if **either** of the conditions is true.
+
+</details>
 
 ### Pre-existing infrastructure
 
@@ -397,6 +544,14 @@ After selecting the Execution Strategy, we are now ready to run the pipeline.
 
 You have now successfully created and completed the steps for running a pipeline by using WinRM.
 
+## Selective Rerun and Skipping Hosts with Same Artifact
+
+You can do a **selective rerun** for traditional deployments. These improvements ensure:
+- **Efficient reruns**: Redeploy only on failed hosts instead of all hosts.
+- **Expressions for failed hosts**: Retrieve failed hosts dynamically for debugging and retry logic.
+
+For more information, goto [Selective Rerun and Skipping Hosts with Same Artifact](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#selective-rerun-and-skipping-hosts-with-same-artifact)
+
 ## Permission to perform WinRM Deployments in AWS
 
 We use the WinRM Credentials to connect to hosts to perform deployment.
@@ -428,6 +583,10 @@ For Microsoft Azure or AWS:
 * `<+instance.host.publicIp>`
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+
+## Limitations  
+
+The **Copy** command for artifacts is not supported in **WinRM deployments**. As an alternative, users can use the **Download Artifact** command.  
 
 ## FAQs
 

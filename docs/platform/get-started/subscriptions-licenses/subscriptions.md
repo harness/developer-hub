@@ -16,7 +16,7 @@ You can view and manage module subscription details as well as license informati
 
 ## Developer 360 subscriptions
 
-You can subscribe to Harness modules using the [Developer 360](https://www.harness.io/pricing) subscription model. The Developer 360 subscription offers three plans: **Free**, **Startup**, and **Enterprise**. All plans include [Harness AIDA](/docs/category/harness-aida), our AI Development Assistant.
+You can subscribe to Harness modules using the [Developer 360](https://www.harness.io/pricing) subscription model. The Developer 360 subscription offers two plans: **Free** and **Enterprise**. All plans include [Harness AI](/docs/category/harness-ai), our AI Development Assistant.
 
 :::info
 This model spans all modules except Cloud Cost Management, which is on a *Cloud Spend* model.
@@ -30,7 +30,7 @@ A **Developer**  contributes to code development, deployment, security, maintena
 
 These users leverage Harness to create code repositories, build, test, secure, and deploy software, conduct chaos experiments, manage SLOs, handle feature flags, and more.
 
-The definition of a **Developer** (and any associated consumption entitlements) remains consistent across all plans: **Free**, **Startup**, and **Enterprise**.
+The definition of a **Developer** (and any associated consumption entitlements) remains consistent for **Free** and **Enterprise** plans.
 
 ### Modules with direct developer tracking
 
@@ -92,7 +92,7 @@ SRM tracks **Service** license consumption, instead of **Developers**. All Servi
 <details>
 <summary>Chaos Engineering (CE) Services</summary>
 
-Chaos Engineering (CE) makes it easy to run chaos experiments across diverse services within an R&D organization, aimed at enhancing their resilience. A **Service** represents an autonomous software unit managed and tracked through Harness CD and GitOps. This typically maps to:
+Chaos Engineering (CE) makes it easy to run chaos experiments across diverse services within an R&D organization, aimed at enhancing their resilience. A **Service** represents an autonomous software unit managed and tracked through Harness CE. This typically maps to:
 
 - A service in Kubernetes.
 - A containerized service on a cloud (such as AWS ECS, Azure ACS, or Google Container Engine).
@@ -100,6 +100,8 @@ Chaos Engineering (CE) makes it easy to run chaos experiments across diverse ser
 - Five serverless functions in serverless environments.
 
 CE tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
+
+For more information about CE services and how they are tracked, go to [Service licensing for CE](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/license-consumption/).
 
 </details>
 

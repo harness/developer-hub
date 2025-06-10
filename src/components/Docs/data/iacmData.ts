@@ -19,7 +19,7 @@ export const docsCards: CardSections = [
         title: "Onboarding",
         module: MODULES.iacm,
         description: "Get onboarded with Harness Infrastructure as Code Management.",
-        link: "/docs/infra-as-code-management/get-started/onboarding-guide",
+        link: "/docs/infra-as-code-management/get-started/",
       },
       {
         title: "Overview & key concepts",

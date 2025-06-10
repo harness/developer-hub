@@ -16,7 +16,7 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 <br/>
 <br/>
 
-You can easily set up a Wiz step to run automated scans in your Harness pipeline. This step scans the IaC repository you specify using the Wiz CLI. Then it correlates, deduplicates, and ingests the scan results into Harness. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results) tab of the pipeline execution.  
+You can easily set up a Wiz step to run automated scans in your Harness pipeline. This step scans the IaC repository you specify using the Wiz CLI. Then it correlates, deduplicates, and ingests the scan results into Harness. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) tab of the pipeline execution.  
 
 ## Important notes for running Wiz scans in STO 
 
@@ -25,7 +25,7 @@ You can easily set up a Wiz step to run automated scans in your Harness pipeline
 - You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
 
@@ -132,8 +132,8 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
 #### Scan Mode
 
-import StoSettingScanModeOrch from '../shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeOrch from '../shared/step-palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from '../shared/step-palette/scan/mode/ingestion.md';
 
 <!-- For container images: -->
 
@@ -158,15 +158,15 @@ Select **Wiz IaC**.
 
 #### Type
 
-import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeRepo from '../shared/step-palette/target/type/repo.md';
 
 <StoSettingScanTypeRepo />
 
 
 #### Target and Variant Detection 
 
-import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from '../shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectNote/>
@@ -182,14 +182,14 @@ It is good practice to [specify a baseline](/docs/security-testing-orchestration
 
 #### Variant
 
-import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
 
 #### Workspace
 
-import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '../shared/step-palette/target/workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -226,14 +226,14 @@ You should create a Harness text secret with your encrypted token and reference 
 
 ### Log Level
 
-import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
 
 ### Additional CLI flags
 
-import StoSettingCliFlags from '../shared/step_palette/all/_cli-flags.md';
+import StoSettingCliFlags from '../shared/step-palette/all/cli-flags.md';
 
 <StoSettingCliFlags />
 
@@ -245,7 +245,7 @@ Passing CLI flags is an advanced feature. Some flags might not work in the conte
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
@@ -255,14 +255,14 @@ You can add more settings to the scan step as needed.
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '../shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

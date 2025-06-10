@@ -249,9 +249,8 @@ Follow these steps to register components using the Harness Catalog API endpoint
 - Follow the following cURL command with the request body to register your component. The body takes two input at present `type` and `target`.
 
 ```cURL
-curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' \
---header 'x-api-key: {X_API_KEY}' \
---header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
+curl --location 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations' \
+--header 'x-api-key: <HARNESS_TOKEN>' \
  --data-raw '{"type":"url","target":"https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml"}'
 ```
 
@@ -291,7 +290,7 @@ function usage {
 while getopts a:x:u:l:h flag
 do
     case "${flag}" in
-        a) ACCOUNT_IDENTIFIER=${OPTARG};;
+        a) ACCOUNT_ID=${OPTARG};;
         x) X_API_KEY=${OPTARG};;
         u) BEARER_AUTHORIZATION=${OPTARG};;
         l) CATALOG_LOCATIONS=${OPTARG};;
@@ -306,16 +305,16 @@ CATALOG_LOCATION_REGISTER_DATA='{"type":"url","target":"CATALOG_LOCATION_TARGET"
 for LOCATION in ${CATALOG_LOCATIONS//,/ }
 do
     echo -e "\n--------"
-    echo "Registering $LOCATION catalog location in Harness IDP account $ACCOUNT_IDENTIFIER"
+    echo "Registering $LOCATION catalog location in Harness IDP account $ACCOUNT_ID"
 
     POST_DATA=${CATALOG_LOCATION_REGISTER_DATA/CATALOG_LOCATION_TARGET/$LOCATION}
 
-    RESULT_HTTP_CODE=$(curl --write-out %{http_code} -s --output /dev/null -H "Content-Type: application/json" -H "Harness-Account: ${ACCOUNT_IDENTIFIER}" -H "x-api-key: ${X_API_KEY}" -H "Authorization: Bearer ${BEARER_AUTHORIZATION}" -X POST --data "${POST_DATA}" "https://idp.harness.io/${ACCOUNT_IDENTIFIER}/idp/api/catalog/locations")
+    RESULT_HTTP_CODE=$(curl --write-out %{http_code} -s --output /dev/null -H "Content-Type: application/json" -H "Harness-Account: $<ACCOUNT_ID>" -H "x-api-key: ${X_API_KEY}" -H "Authorization: Bearer ${BEARER_AUTHORIZATION}" -X POST --data "${POST_DATA}" "https://idp.harness.io/$<ACCOUNT_ID>/idp/api/catalog/locations")
 
     if [[ "$RESULT_HTTP_CODE" -ne 201 ]] ; then
-        echo "Failed registering $LOCATION catalog location in Harness IDP account $ACCOUNT_IDENTIFIER"
+        echo "Failed registering $LOCATION catalog location in Harness IDP account $ACCOUNT_ID"
     else
-        echo "Successfully registerd $LOCATION catalog location in Harness IDP account $ACCOUNT_IDENTIFIER"
+        echo "Successfully registered $LOCATION catalog location in Harness IDP account $ACCOUNT_ID"
     fi
 
     echo "--------"

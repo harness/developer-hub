@@ -1,0 +1,123 @@
+.dynamic-markdown-selector {
+  padding: 0;
+}
+
+.selector-divider {
+  border: none;
+  border-top: 1.5px solid #e0e0e0;
+  margin: 0 0 24px 0;
+}
+
+.selector-divider:last-child {
+  margin: 32px 0 0 0;
+}
+
+.selector-panel {
+  background: #fafbfc;
+  border: 1px solid #f3f3fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+.format-search {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.selector-grid {
+  display: grid;
+  gap: 16px;
+  justify-items: stretch;
+}
+
+.selector-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #1f2937;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+  min-height: 48px;
+}
+
+.selector-card:hover {
+  background-color: #f3f3fa;
+  border-color: #d9dae5;
+}
+
+.selector-card.selected {
+  background-color: #e8f0fe;
+  color: #0478d4;
+  border: 2px solid #3b82f6;
+}
+
+.selector-entry {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.selector-entry.no-logo {
+  justify-content: center;
+}
+
+.selector-icon {
+  height: 1em;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dynamic-markdown-selector .markdown-content {
+  margin: 32px 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.runtime-toc {
+  margin: 24px 0;
+  padding-left: 0;
+}
+
+.runtime-toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.runtime-toc li {
+  margin-bottom: 6px;
+}
+
+.runtime-toc li.level-3 {
+  padding-left: 16px;
+  font-size: 0.95em;
+}
+
+.runtime-toc a {
+  text-decoration: none;
+  color: #1976d2;
+}
+
+.runtime-toc a:hover {
+  text-decoration: underline;
+}
+
+.dynamic-markdown-selector .markdown-content h2[id],
+.dynamic-markdown-selector .markdown-content h3[id],
+.dynamic-markdown-selector .markdown-content h4[id] {
+  scroll-margin-top: var(--ifm-navbar-height, 70px);
+}

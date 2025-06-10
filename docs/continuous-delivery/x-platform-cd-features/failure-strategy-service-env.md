@@ -631,3 +631,11 @@ These strategies can be configured in the **Advanced Configuration** section of 
 
 - **Excluded Strategies for Service Failures**:  
   Strategies such as **Manual Intervention**, **Ignore Failure**, **Mark as Success**, and **Proceed with Default Values** are not supported as they are not applicable to service failures.
+
+- **Stage-Level Failure Strategy vs. Service/Environment-Level Failures**
+If a failure strategy is defined at the stage level, it will only apply if the failure occurs at a level that supports the chosen strategy.
+
+  For example:
+  - Suppose a failure occurs at the service or environment level, but the stage-level failure strategy is set to Mark as Success.
+  - Since the service level only supports Rollback Pipeline, Retry Step, Abort, and Mark as Failure, the Mark as Success strategy will not be applicable in this scenario.
+  This means failure strategies must be aligned with the supported failure-handling mechanisms at each level.

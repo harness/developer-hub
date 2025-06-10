@@ -1,6 +1,6 @@
 ---
-title: Generate PR summaries with AIDA
-description: Create PR summaries with AIDA.
+title: Generate PR summaries with Harness AI
+description: Create PR summaries with Harness AI.
 sidebar_position: 51
 ---
 

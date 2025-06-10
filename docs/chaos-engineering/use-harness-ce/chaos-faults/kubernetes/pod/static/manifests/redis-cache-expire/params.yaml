@@ -14,7 +14,7 @@ spec:
               value: ""
             - name: ADDRESS
               value: ""
-            - name: KEY
+            - name: KEYS
               value: ""
             - name: DATABASE
               value: "0"

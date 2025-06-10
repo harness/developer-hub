@@ -1,66 +1,32 @@
 ---
 sidebar_position: 1
 title: Application Maps
-redirect_from:
-- /docs/chaos-engineering/features/app-maps/intro-app-map
-- /docs/category/application-maps
-- /docs/chaos-engineering/concepts/explore-concepts/app-maps
 ---
 
-This topic describes application maps, their significance, and how to create, edit, and delete them.
+This topic describes how application maps are used in the context of Harness chaos engineering.
 
 ### Before you begin
 
-- [Service discovery](/docs/chaos-engineering/use-harness-ce/service-discovery)
+- [Service discovery](/docs/platform/service-discovery/)
+- [How Harness CE leverages Service Discovery?](/docs/chaos-engineering/use-harness-ce/service-discovery#how-does-harness-ce-leverage-discovered-services)
+- [Create Discovery Agent](/docs/platform/service-discovery/customize-agent#create-discovery-agent)
+- [What is Application Map?](/docs/platform/application-map)
 
-### What is an application map?
 
-An application map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/use-harness-ce/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
+### Create Application Map
 
-### Why is an application map required?
+Go to [create an application map](/docs/platform/application-map#create-application-map) and follow the steps, except, navigate to **Chaos** module, and select **Project Settings**, and then select **Discovery**.
 
-Application maps help:
+:::info note
+Alternatively, navigate to **Chaos** module -> **Application Maps** -> **Manage Discovery in Project Settings**. This also leads you to the page in step 2.
 
-- Test and monitor a group of services.
-- Determine the resilience coverage and resilience score for the overall application map and its constituent services.
-- Manage experiments associated with them.
-- Perform trend analysis.
+    ![app map navigation](./static/app-maps/app-map-nav.png)
+:::
 
-### How is an application map used?
-
-Once you have a list of discovered services, HCE creates an application map (using [auto-suggestion or manual service selection](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding#create-application-maps)) based on your requirements. You can refer to the real-time topology view to get the connectivity representation.
-
-You can [create](#create-application-map), [edit](#edit-application-map), and [delete](#delete-application-map) application maps.
-
-### Create an application map
-
-1. To create an application map, navigate to **Chaos** module, select **Project Settings**, and then select **Discovery**.
-
-    ![](./static/app-maps/create-agent-1.png)
-
-2. Select one of the discovery agents or [create a new discovery agent](/docs/chaos-engineering/use-harness-ce/service-discovery#customize-discovery-agent).
-
-    ![](./static/app-maps/select-agent-2.png)
-
-3. Once you select or create a discovery agent, navigate to the **Application Maps** tab and select **New Application Map**.
-
-    ![](./static/app-maps/navigate-3.png)
-
-4. Specify a name, description (optional), and tags (optional). Select **Continue**.
-
-    ![](./static/app-maps/name-np-2.png)
-
-5. Select one or more discovered services and select **Next**.
+In the step where you select one or more discovered services, choose a specific service on which you want to inject chaos, and click **Next**.
 
     ![](./static/app-maps/select-service-3.png)
 
-6. Optionally, add service relationship details and select **Save Changes**.
-
-    ![](./static/app-maps/service-rel-4.png)
-
-7. Select **Save**.
-
-    ![](./static/app-maps/save-nw-5.png)
 
 :::info note
 - To view chaos-enabled experiment map, navigate to **Chaos** module and select **Application Maps**.
@@ -70,19 +36,9 @@ You can [create](#create-application-map), [edit](#edit-application-map), and [d
 - To manually associate the experiment as a part of an application map, specify the tag `applicationmap=<application map identity>` in the experiment.
 :::
 
-### Edit application map
+## Next Steps
 
-To edit an application map, select **More Options** (&vellip;), then select **Edit**. Make the necessary changes and select **Save**.
+- [Edit Application Map](/docs/platform/application-map#edit-application-map)
+- [Delete Application Map](/docs/platform/application-map#delete-application-map)
 
-![](./static/app-maps/edit-8.png)
-
-### Delete application map
-
-1. To delete an application map, select **More Options** (&vellip;), then select **Delete**.
-
-    ![](./static/app-maps/delete-6.png)
-
-2. To confirm the deletion, select **Delete**.
-
-    ![](./static/app-maps/confirm-delete-7.png)
 

@@ -270,6 +270,22 @@ This fault evaluates the application's resilience to lossy (or flaky) API reques
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod API modify response custom
+
+Pod API modify response custom is a Kubernetes pod-level chaos fault that consolidates the **pod-api-modify-body**, **pod-api-modify-header**, and **pod-api-status-code** faults.
+
+- It modifies the headers, body, and status code of both request and response for the APIs of the service specified by the `TARGET_SERVICE_PORT` environment variable.
+- It assesses the application's resilience to modified or corrupted API requests and responses.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+This fault assesses the application's resilience to modified or corrupted API requests and responses.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod API Status Code
 
 Pod API status code is a Kubernetes pod-level chaos fault that change the API response status code and optionally api response body through path filtering.
@@ -610,6 +626,38 @@ Pod JVM modify return modifies the return value of a method in a Java applicatio
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM Solace Latency
+
+Pod JVM Solace Latency injects chaos into a Java application executing in a Kubernetes pod by invoking latency in solace queries.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulate solace calls latency to evaluate how the application handles slower solace calls
+- Test the impact of message queue latency on the end-user experience, ensuring the application behaves gracefully under slower response times.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM Solace Exception
+
+Pod JVM Solace exception injects chaos into a Java application executing in a Kubernetes pod by invoking an solace query exception.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulates solace calls exceptions to ensure if application can recover gracefully
+- Assess if the monitoring systems and alerting mechanisms can accurately detect and report solace calls exceptions in real-time.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod JVM trigger gc
 
 Pod JVM trigger gc triggers the garbage collector for a Java process executing in a Kubernetes pod. This causes unused (or out of scope) objects and variables to be garbage collected and recycled, thereby freeing up memory space.
@@ -634,6 +682,38 @@ Pod JVM sql exception injects chaos into a Java application executing in a Kuber
 - Determines the performance bottlenecks of the application
 - Simulates SQL exceptions to ensure if application can recover gracefully
 - Assess if the monitoring systems and alerting mechanisms can accurately detect and report SQL query exceptions in real-time.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM mongo latency
+
+Pod JVM mongo latency injects chaos into a Java application executing in a Kubernetes pod by invoking latency in mongodb calls.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulate database latency to evaluate how the application handles slower database queries
+- Test the impact of mongodb calls latency on the end-user experience, ensuring the application behaves gracefully under slower response times.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM mongo exception
+
+Pod JVM mongo exception injects chaos into a Java application executing in a Kubernetes pod by invoking an mongodb exception.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulates mongodb exceptions to ensure if application can recover gracefully
+- Assess if the monitoring systems and alerting mechanisms can accurately detect and report mongodb query exceptions in real-time.
 - Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
 </Accordion>
 

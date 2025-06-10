@@ -40,6 +40,8 @@ To create a GitHub personal access token to configure the SEI GitHub integration
 
    ![The admin:org scope selections for a GitHub personal access token.](../static/github-token-scope2.png)
 
+   * The `read:user` & `user:email` scope under `user`.
+
 3. Copy the token somewhere that you can retrieve it when you configure the integration.
 4. If your GitHub organization uses SAML SSO, enable SSO for your personal access token. For instructions, go to the GitHub documentation on [Authorizing a personal access token for use with SAML SSO](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
 

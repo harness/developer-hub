@@ -2,7 +2,7 @@
 title: Create a workspace
 description: Learn how to create a workspace.
 sidebar_position: 10
-sidebar_label: Create/clone a workspace
+sidebar_label: Create/Clone Workspace
 ---
 
 import Tabs from '@theme/Tabs';
@@ -16,23 +16,33 @@ For example, you can have a single configuration of a Kubernetes cluster and cre
 
 ## Workspace statuses
 A workspace can have one of the following statuses:
+- **Active:** Successfully deployed and running.
+- **Inactive:** Successfully destroyed or was not provisioned.
+- **Drifted:** Drift was detected.
+- **Provisioning:** Currently being provisioned.
+- **Destroying:** Currently being destroyed.
+- **Failed:** Errors were encountered during provisioning or destroying.
+- **Unknown:** Changes were made outside the product.
 
-* **Active:** Successfully deployed and running.
-* **Inactive:** Successfully destroyed or was not provisioned.
-* **Drifted:** Drift was detected.
-* **Provisioning:** Currently being provisioned.
-* **Destroying:** Currently being destroyed.
-* **Failed:** Errors were encountered during provisioning or destroying.
-* **Unknown:** Changes were made outside the product.
+Go to [workspace statuses](/docs/infra-as-code-management/workspaces/worksace-statuses) to find out more about filtering workspace by status.
 
 ## Create a new workspace
+<Tabs>
+<TabItem value="Interactive guide">
+:::warning pending release
+The new workspace wizard is currently pending release and will be available soon!
+:::
+<DocVideo src="https://app.tango.us/app/embed/cfb68b54-eb46-42af-a622-5b76c9270598?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create a IaCM Workspace in Harness" />
+</TabItem>
+<TabItem value="Step-by-step">
+
 To create a new workspace, follow these steps:
 1. Sign in to [app.harness.io](https://app.harness.io).
 2. In the module pane, select **Infrastructures**.
 3. Select an existing project or create a new project.
 4. Select **Workspaces**, and then select **+New Workspace**.
 
-   ![Create new workspace](static/create-workspace.png)
+![Create new workspace](static/create-workspace.png)
 
 5. Complete the fields as follows:
    * **Name** - Type a unique name to identify the workspace.
@@ -45,34 +55,31 @@ To create a new workspace, follow these steps:
    ![Add workspace details](static/new-workspace.png)
 
 6. Select **Save**.
-7. If you need to use either environment or Terraform variables during execution, select the **Variables** tab to define the variables.
-   * **Environment Variables** can be either String, [Secret](/docs/category/secrets), or a reference to another variable using [JEXL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) (it can be in the same or a different workspace or from the pipeline).
-   * **Terraform Variables** Can be provided in the following ways:
-      * **Inline** Users can define Terraform variables within the workspace. Variables can be either String, [hcl](https://developer.hashicorp.com/terraform/language/syntax/configuration), [Secret](/docs/category/secrets), or a reference to another variable, using [JEXL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) (can be in the same or a different workspace, or from the pipeline).
-      * **From Git Repo (Implicit)** Users can store ``.tfvar`` in the same folder as the Terraform code for the workspace.
-      * **From Git Repo (Explicit)** Users can define a specific folder for ``.tfvar`` files (which can be different from the Terraform code's location). These files can be in the same or different repository as the Terraform code.
+</TabItem>
+</Tabs>
+---
 
-   The values defined in line with the workspace will take precedence over the git configuration.
+If you need to use either environment or Terraform variables during execution, select the **Variables** tab to define the variables.
+- **Environment Variables** can be either String, [Secret](/docs/category/secrets), or a reference to another variable using [JEXL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) (it can be in the same or a different workspace or from the pipeline).
+- **Terraform Variables** Can be provided in the following ways:
+- **Inline** Users can define Terraform variables within the workspace. Variables can be either String, [hcl](https://developer.hashicorp.com/terraform/language/syntax/configuration), [Secret](/docs/category/secrets), or a reference to another variable, using [JEXL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) (can be in the same or a different workspace, or from the pipeline).
+- **From Git Repo (Implicit)** Users can store ``.tfvar`` in the same folder as the Terraform code for the workspace.
+- **From Git Repo (Explicit)** Users can define a specific folder for ``.tfvar`` files (which can be different from the Terraform code's location). These files can be in the same or different repository as the Terraform code.
 
-   ![Workspace variables](static/workspace-variables.png)
+:::info tfvar jexl support
+[JEXL expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) cannot be used to reference `tfvar` files.
+:::
+
+The values defined in line with the workspace will take precedence over the git configuration.
+
+![Workspace variables](static/workspace-variables.png)
 
 ## Clone a workspace
 Harness supports workspace cloning for quick setup of new workspaces with the same or similar configuration as existing workspaces.
 
 <Tabs>
 <TabItem value="Interactive guide">
-<iframe 
-    src="https://app.tango.us/app/embed/64cc1d48-a7c5-451e-aaa8-98d3888027d4" 
-    title="Harness: Cloning workspaces in Infrastructure as Code Management" 
-    style={{ minHeight: '640px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
+<DocVideo src="https://app.tango.us/app/embed/64cc1d48-a7c5-451e-aaa8-98d3888027d4" title="Clone your workspace" />
 </TabItem>
 <TabItem value="Step-by-step">
    1. Navigate to your IaCM workspaces
@@ -86,4 +93,4 @@ Harness supports workspace cloning for quick setup of new workspaces with the sa
 </TabItem>
 </Tabs>
 
-Go to [provision workspace](https://developer.harness.io/docs/infra-as-code-management/use-iacm/provision-workspace) to learn how to provision workspaces.
+Go to [provision workspace](/docs/infra-as-code-management/workspaces/provision-workspace) to learn how to provision workspaces.

@@ -9,7 +9,7 @@ redirect_from:
 
 This tutorial describes how to create chaos experiments using Harness Chaos Engineering (HCE) and run them in Jenkins pipelines. Chaos experiments in Harness are created the same way in the chaos engineering module, irrespective of where they are invoked from.
 
-1. [Create a chaos experiment in the Harness Chaos Engineering module.](#construct-a-chaos-experiment) Execute this experiment to verify the configuration and ensure that the resilience probes are working as expected. The experiment ID and resilience score determined from this experiment run will be used to integrate the experiment with Jenkins.
+1. [Create a chaos experiment in the Harness Chaos Engineering module.](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) Execute this experiment to verify the configuration and ensure that the resilience probes are working as expected. The experiment ID and resilience score determined from this experiment run will be used to integrate the experiment with Jenkins.
 
    ![chaos experiment with ID and resilience score](./static/chaos-experiments-with-id.png)
 

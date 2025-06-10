@@ -34,7 +34,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ### For more information
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
 
@@ -47,9 +47,9 @@ The recommended workflow is to add an OSV step to a Security or Build stage and 
 
 #### Scan Mode
 
-import StoSettingScanMode from './shared/step_palette/scan/_mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanMode from './shared/step-palette/scan/mode.md';
+import StoSettingScanModeOrch from './shared/step-palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
@@ -58,7 +58,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from './shared/step-palette/scan/config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -67,28 +67,28 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeRepo from './shared/step-palette/target/type/repo.md';
 
 <StoSettingScanTypeRepo />
 
 #### Target and Variant Detection 
 
-import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from './shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectNote/>
 
 #### Name 
 
-import StoSettingProductID from './shared/step_palette/target/_name.md';
+import StoSettingProductID from './shared/step-palette/target/name.md';
 
 <StoSettingProductID />
 
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -97,13 +97,13 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 #### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
 ### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
@@ -118,40 +118,40 @@ Use this field to run the [`osv`](https://google.github.io/osv-scanner/usage/) s
 With these flags, the `osv` scanner scans vulnerabilities in the two specified lockfiles. 
 
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
 ### Settings
 
-import StoSettingSettings from './shared/step_palette/all/_settings.md';
+import StoSettingSettings from './shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
 ## Configure OSV as a Built-in Scanner  
 
-The OSV scanner is available as a [built-in scanner](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
+The OSV scanner is available as a [built-in scanner](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
 
 1. Search for **SCA** in the step palette or navigate to the **Built-in Scanners** section and select the **SCA** step.  
 2. Select **OSV** from the list of scanners.  

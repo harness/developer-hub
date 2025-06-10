@@ -18,7 +18,7 @@ The diagram below describes how the TKGi control plane interacts with JVM applic
 
 ![](./static/control-plane-1.png)
 
-### Chaos components in TKGi-based fault
+## Chaos components in TKGi-based fault
 
 You will learn about the Kubernetes chaos infrastructure components involved in fault injection against:
 1. Microservices hosted in the cluster;
@@ -30,7 +30,7 @@ You will also learn how the components mentioned earlier can be leveraged to inj
 Components involved in chaos against the TKGi control plane, that is, the VMs, are the same ones as described in [deployment model for Cloud Foundry chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances).
 :::
 
-#### Subscriber
+### Subscriber
 A stateless deployment that runs continuously within a dedicated namespace on your Kubernetes cluster.
     - It is responsible for claiming experiment tasks from the Harness control plane, starting the experiment process, and reporting the status and the outcome back to the control plane.
     - It helps with asset discovery, that is, provides the list of workloads in the cluster when you request it, thereby facilitating chaos target selection while creating an experiment.
@@ -38,7 +38,7 @@ A stateless deployment that runs continuously within a dedicated namespace on yo
     - It does not need any open ports on the cluster side.
     - The subscriber's requests to the control plane are authenticated using a unique combination of cluster ID and access token.
 
-#### Custom controllers
+### Custom controllers
 Stateless deployments that watch for CRUD events on the chaos custom resources (CRs) and reconcile them.
     - These CRs contain the fault and hypothesis validation, that is, the probe specification.
     - There are two types of controllers:
@@ -48,12 +48,12 @@ Stateless deployments that watch for CRUD events on the chaos custom resources (
     - The controllers also patch the status and results of the experiment (or fault) execution into the custom resources.
     - These events serve as the basis and trigger the subscriber's information relay to the control plane.
 
-#### Transient chaos pods
+### Transient chaos pods
 Pods that are launched just in time with the desired privileges to inject the chaos processes into the target containers.
     - These pods exist only for the period specified in the `CHAOS_DURATION` fault parameter.
     - The number of transient pods is determined by the nature of the fault you inject and the blast radius for the fault.
     - Typically, the upper limit for the number of transient pods is the number of nodes in the cluster.
 
-#### Exporter
+### Exporter
 Optional stateless deployment that generates Prometheus metrics on the chaos actions in the cluster.
 For example, the status of the current fault injection, probe success percentages for executed faults, aggregate fault count, and so on.

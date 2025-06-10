@@ -247,29 +247,9 @@ Check for more info in [Documentation](https://developer.harness.io/docs/platfor
 
 During the "Wait for Steady State" phase, Harness uses the ```kubectl rollout status``` command to retrieve information directly from the Kubernetes API server. Harness continuously polls the Kubernetes API server while a rollout is in progress, ensuring that it remains updated until the rollout is either completed or encounters an error.
 
-### When migrating from FirstGen to NextGen, will the release number of ConfigMaps and Secrets stored in a Kubernetes cluster be reset to 1?
-
-In the case of migrating from Harness FirstGen to Harness NextGen, the numbering of `ConfigMaps` and `Secrets` in Kubernetes will not be automatically reset to start from 1 again. The numbering is based on the release history and is incremented based on the latest release number.
-
-When you migrate your application to Harness NextGen and continue to use the same release name as before, the versioning will not be reset. Harness will fetch the `ConfigMap` in the cluster that stores all the Harness releases with their respective numbers. It will retrieve the latest release number from the `ConfigMap` and increment it by 1 for the next deployment. If versioning is enabled, Harness will append `-<release-number>` to each `ConfigMap`/`Secret` declared in the manifest.
-
-Therefore, if you migrate to Harness NextGen and use the same cluster and release name, the release number will not break. The numbering will continue based on the existing release history.
-
-It's important to note that Harness provides a declarative rollback feature, which eliminates the need for resource versioning. This means that even if you don't maintain the numbering scheme, you can still perform rollbacks effectively using the declarative rollback feature provided by Harness.
-
-For more information, go to [Harness Declarative Rollback](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback).
-
-
 ### If I delete an infrastructure definition after deployments are done to it, what are the implications other than potential dashboard data loss for those deployments?
 
 At the moment there is no dependency on the instance sync and infrastructure definition. Infrastructure definition is used only to generate infrastructure details. The instance sync is done for service and environment. Only in case if any these are deleted, the instance sync will stop and delete instances.
-
-:::info
-
-If you are using the default release name format in Harness FirstGen as `release-${infra.kubernetes.infraId}`, it's important to note that when migrating to Harness NextGen, you will need to replace `${infra.kubernetes.infraId}` with the new expression. In Harness NextGen, a similar expression `<+INFRA_KEY>` is available for defining release names. However, it's crucial to understand that these expressions will resolve to completely different values compared to the expressions used in Harness FirstGen.
-
-:::
-
 
 ### Error when the release name in a infrastructure definition is too long for a Kubernetes deployment.
 
@@ -359,9 +339,9 @@ You can take a specific file from the manifest and execute it separately (before
 No, Versioning is not done when declarative rollback is enabled. Please refer more on this in following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning/)
 
 
-###  Do we have the export manifests option in Next Gen like we have in First Gen?
+###  Do we have an export manifests option?
 
-No, we have a dry-run step, that will export manifest for customer to use in other steps, but there is no option to inherit manifest. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-dry-run/).
+No, we have a dry-run step, that will export manifest for customer to use in other steps, but there is no option to inherit manifest. Please refer more on this in the following [Documentation](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-dry-run/).
 
 ### How do I save the dry-run step rendered manifest?
 
@@ -471,9 +451,9 @@ You can skip the versioning, it can be skipped by using these two ways:
 Yes, we have it documentated for the steps. Please refer to the following documentations on [Shell script include infrastructure](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#include-infrastructure-selectors) and [Shell script run K8s](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#running-kubernetes-commands-in-the-shell-script)
 
 
-### What is the oldest version of Kubernetes we support for the delegates for FirstGen and NextGen?
+### What is the oldest version of Kubernetes we support for the delegates?
 
-Oldest Kubectl Client version being used is `1.16`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations/)
+Oldest Kubectl Client version being used is `1.16`. For more information, go to [What's Supported](/docs/continuous-delivery/cd-integrations/)
 
 ### How the order or precedence of file in the k8sdeploy component is used when multiple values YAML were used?
 When using multiple values YAML files in Harness Kubernetes Services, the highest priority is given to the last file, and the lowest priority to the first file.
@@ -685,19 +665,7 @@ Error: UPGRADE FAILED: unable to build kubernetes objects from current release m
 
 This error happens if you have recently upgraded your Kuberenetes Cluster without ensuring that your Helm Releases' API Versions are supported in the new Kubernetes Cluster version. When attempting to upgrade them after, Helm will throw the above error due to the deprecated API no longer existing in the current Kubernetes Cluster. To fix this, you'll need to upgrade the API Version on the Helm Release manually by following the steps in the [Helm Documentation](https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest).
 
-To avoid this in the future, please make sure to perform any Helm Release upgrades prior to upgrading your Kubernetes Cluster. A detailed list of deprecated and supported Kubernetes APIs can be found in the [Kubernetes Documentation](https://kubernetes.io/docs/reference/using-api/deprecation-guide/).
-
-
-### Does Harness support Helm hooks (excluding service hooks) similar to the support provided in First Gen?
-
-No, Harness does not support Helm hooks in Kubernetes deployments in the same way as in First Gen.
-
-The recommended approach in both First Gen and NextGen is to remove Helm hooks and integrate them as shell script steps within the workflow. This method is applicable in both generations of Harness.
-
-For unchanged utilization of Helm hooks, native Helm deployment can be chosen. However, native Helm's ability to process hooks and deploy simultaneously is limited. This limitation stems from Helm's post-render functionality, which prevents Harness from processing hooks effectively.
-
-For detailed instructions on integrating Helm charts in Kubernetes deployments with Harness, please refer to the Harness [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/kubernetes-deployments/use-helm-chart-hooks-in-kubernetes-deployments/).
-
+To avoid this in the future, please make sure to perform any Helm Release upgrades prior to upgrading your Kubernetes Cluster. A detailed list of deprecated and supported Kubernetes APIs can be found in the [Kubernetes Documentation](https://kubernetes.io/docs/reference/using-api/deprecation-guide/)
 
 ### Why aren't my old Kubernetes Resources not deleted when deploying a new version?
 
@@ -903,3 +871,27 @@ Increasing CPU and memory resources on delegates can improve monitoring performa
 
 ### How to handle old release files in OpenShift under the configMap section when versioning deployments?
 Old config maps can be cleaned up without affecting rollbacks, but keeping the latest two versions is recommended.
+
+### How can I handle SSL verification issues in Git & SCM for Kubernetes deployments?
+
+If your **Kubernetes manifests** or **GitOps configurations** fail due to **SSL certificate errors**, you can disable SSL verification using the following flags:  
+
+**1. `GIT_SSL_NO_VERIFY`**  
+- **Purpose:** Disables SSL verification for Git operations.  
+- **Use Case:** Use this flag when **fetching manifests from a Git repository** with **self-signed SSL certificates**.  
+
+**2. `SCM_SKIP_SSL`**  
+- **Purpose:** Skips SSL verification for SCM (Source Code Management) interactions.  
+- **Use Case:** Use this flag when **connecting to SCM providers like GitHub/GitLab** with **invalid SSL certificates**.  
+
+Note: Disabling SSL verification reduces security, so use these flags only in trusted environments
+
+### How does Harness handle Kubernetes resource querying today?
+
+Harness uses the delegate to query Kubernetes resources using the built-in Kubernetes SDK. No in-cluster agent is required. If the delegate’s role is restricted and cannot list or describe resources, Harness cannot fetch pod logs, status, or metrics. Most users grant the necessary access to the delegate. If access is removed, resource querying will not work.
+
+### How are Kubernetes resource query limitations handled in Harness?
+
+Harness queries Kubernetes resources using the delegate and the built-in Kubernetes SDK—no in-cluster agent is required. This allows Harness to retrieve deployment logs, pod statuses, restart counts, and related data.
+
+If resource querying fails, it's typically because the delegate's Kubernetes service account lacks sufficient permissions. Most users grant read access to pods, events, and namespaces for this reason.

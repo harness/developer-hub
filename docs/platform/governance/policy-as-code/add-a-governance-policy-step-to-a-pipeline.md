@@ -1,7 +1,7 @@
 ---
-title: Add a policy step to a pipeline
+title: Policy step
 description: Add a Policy step to your Stage.
-sidebar_position: 6
+sidebar_position: 4
 helpdocs_topic_id: xy8zsn8fa3
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can enforce policies in two ways:
 
-- **Account, Org, and** **Project-specific:** you can create the policy and apply it to all Pipelines in your Account, Org, and Project. The policy is evaluated on Pipeline-level events like On Run and On Save. Go to [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
+- **Account, Org, and** **Project-specific:** you can create the policy and apply it to all Pipelines in your Account, Org, and Project. The policy is evaluated on Pipeline-level events like On Run, On Save and On Step Start. Go to [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 - **Stage-specific:** you can add a Policy step, add a new/existing Policy Set to it, and then provide a JSON payload to evaluate.
   - The policy is evaluated whenever the Pipeline reaches the Policy step.
   - Policy evaluation can be performed on data generated when the Pipeline is running, such as resolved expressions.
@@ -205,6 +205,127 @@ As you can see in the above **Policy** step, in **Payload**, we reference the ou
 ```
 
 Now when we run the Pipeline, the Policy Step will evaluate the JSON in Payload and see that it passes.
+
+### Runtime Inputs Evaluation
+
+:::info note
+Currently, this feature is behind the feature flag `PIPE_IS_PRE_STEP_OPA_POLICY_EVALUATION_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Runtime inputs are evaluated when the step starts. Consider the following example:
+
+Policy:-
+
+```
+package shellscript
+
+is_docker_delegate_present {
+   some i
+   input.spec.delegateSelectors[i].delegateSelectors != "docker-delegate"
+}
+
+deny[message] {
+    is_docker_delegate_present
+    message = "Usage of delegate other than 'docker-delegate' is not allowed."
+}
+```
+Pipeline YAML:
+
+```yaml
+pipeline:
+  name: PipelineOPA
+  identifier: PipelineOPA
+  projectIdentifier: Krishika_test
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: s1
+        identifier: s1
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    delegateSelectors:
+                      - <+pipeline.variables.Delegate_selector>
+                  timeout: 10m
+  variables:
+    - name: Delegate_selector
+      type: String
+      required: true
+      value: <+input>
+```
+
+Let's suppose we give input value test-delegate, the evaluation will fail, and the JSON payload received will be:
+
+```json
+{
+  "identifier": "ShellScript_1",
+  "metadata": {
+    "action": "onstepstart",
+    "principalIdentifier": "",
+    "principalType": "",
+    "projectMetadata": {
+      "description": "",
+      "identifier": "Krishika_test",
+      "modules": [
+        "CD",
+        "CI",
+        "CV",
+        "CF",
+        "CE",
+        "STO",
+        "CHAOS",
+        "SRM",
+        "IACM",
+        "CET",
+        "IDP",
+        "CODE",
+        "SSCA",
+        "CORE",
+        "PMS",
+        "TEMPLATESERVICE",
+        "SEI",
+        "HAR"
+      ],
+      "name": "Krishika_test",
+      "orgIdentifier": "default",
+      "tags": {}
+    },
+    "timestamp": 1739868956,
+    "type": "pipeline"
+  },
+  "name": "ShellScript_1",
+  "spec": {
+    "delegateSelectors": [
+      {
+        "delegateSelectors": "test-delegate",
+        "origin": "step"
+      }
+    ],
+    "environmentVariables": {},
+    "executionTarget": {},
+    "outputVariables": {},
+    "secretOutputVariables": [],
+    "shell": "Bash",
+    "source": {
+      "spec": {
+        "script": "sleep 10"
+      },
+      "type": "Inline",
+      "uuid": "Qo-zXU4STBehlORMY3po_A"
+    }
+  },
+  "timeout": "10m",
+  "type": "ShellScript",
+  "uuid": "bjlvBvxVS0qWkEO3vEMHzg"
+}
+```
 
 ### Policy Step Expressions
 

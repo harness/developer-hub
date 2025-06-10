@@ -45,7 +45,7 @@ The following steps describe the workflow:
 - This workflow has the following prerequisites:
 
   - Harness STO and CI module licenses.
-  - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
+  - You must have a [Security Testing Developer or AppSec role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
   - A basic understanding of key STO concepts and good practices is recommended. [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline) is a good introduction.
   - GitHub requirements:
 
@@ -210,7 +210,7 @@ At this point, you might want to run a scan and view the detected issues.
       - Target name : **dvpwa** (= the repo name)
       - Target variant : **master** (= the branch name)
 
-3. Run the pipeline. When the execution finishes, select [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results) to view the scan results.
+3. Run the pipeline. When the execution finishes, select [**Security Tests**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) to view the scan results.
 
 ## Build and push a test image
 
@@ -370,7 +370,7 @@ This is a good time to run your pipeline and verify that it can scan the image.
 
    :::
 
-2. Click **Run Pipeline** and view the results in [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
+2. Click **Run Pipeline** and view the results in [**Security Tests**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 ## Build and push the prod image
 

@@ -1,25 +1,12 @@
 ---
 title: Registered module settings
 description: Explore each tab of a registered module to understand its data, settings, and usage in detail.
-sidebar_position: 20
-sidebar_label: Registered module settings
+sidebar_position: 40
+sidebar_label: Registered Module Settings
 ---
-
-<CTABanner
-  buttonText="Learn More"
-  title="Pending release"
-  tagline="The IaCM Module Registry feature is currently pending release and will be available soon!"
-  link="https://www.harness.io/blog/harness-iacm-module-registry"
-  closable={true}
-  target="_self"
-/>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-:::warning pending release
-IaCM Module Registry is currently pending release and will be available soon! [Learn more](https://www.harness.io/blog/harness-iacm-module-registry).
-:::
 
 ## Prerequisites
 - A registered *tf* modules, to register a new module, go to [Register a module](https://developer.harness.io/docs/infra-as-code-management/iacm-features/module-registry#register-a-module)
@@ -126,18 +113,7 @@ Submodules can provide users with the flexibility to override or customize certa
 ## Top level overview
 <Tabs>
 <TabItem value="Interactive guide">
-<iframe 
-    src="https://app.tango.us/app/embed/338cf3be-ddf5-4272-9178-fe3f84d815d4" 
-    title="Harness IaCM registered module overview" 
-    style={{ minHeight: '640px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
+<DocVideo src="https://app.tango.us/app/embed/338cf3be-ddf5-4272-9178-fe3f84d815d4" title="Harness IaCM registered module overview" />
 </TabItem>
 <TabItem value="Step-by-step">
 

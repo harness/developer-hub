@@ -5,6 +5,9 @@ sidebar_position: 20
 sidebar_label: Understand Dynamic Workflow Picker
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 It is quite common to create a UI field in [IDP Workflow](http://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#specparameters---formstep--formstep) forms which shows a static list options to the user. For example -
 
 ```yaml
@@ -81,23 +84,23 @@ In the `headers` you can add an Authorization header. Ensure you use a unique to
 
 ![](./static/example-proxy-backend-config.png)
 
-Configure a Delegate HTTP Proxy to route traffic through an HTTP proxy using Delegate. This is useful when we need to access private endpoints not publicly accessible. 
+Configure a Delegate HTTP Proxy to route traffic through an HTTP proxy using Delegate. This is useful when we need to access private endpoints not publicly accessible.
 
 :::warning
-Endpoints targeting the `harness.io` domain should **not** be configured behind a **Delegate HTTP Proxy**, as you are already in the Harness infrastructure. Using a Delegate HTTP Proxy in this case is unnecessary, as direct access is inherently available. 
+Endpoints targeting the `harness.io` domain should **not** be configured behind a **Delegate HTTP Proxy**, as you are already in the Harness infrastructure. Using a Delegate HTTP Proxy in this case is unnecessary, as direct access is inherently available.
 :::
 
 ![](./static/delegate-proxy.png)
 
 Hit "Save Configuration" and now our backend proxy is ready to use!
 
-You can verify this endpoint by making requests to the `proxy` endpoint at `https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/proxy/`. For example in order to test the GitHub example above, you can make a request to
+You can verify this endpoint by making requests to the `proxy` endpoint at `https://idp.harness.io/<ACCOUNT_ID>/idp/api/proxy/`. For example in order to test the GitHub example above, you can make a request to
 
 ```
-https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/proxy/github-api/user
+https://idp.harness.io/<ACCOUNT_ID>/idp/api/proxy/github-api/user
 ```
 
-Here `https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/proxy/github-api/` can be seen exactly as `https://api.github.com/`. So all the endpoint paths on the GitHub API can be used after the proxy endpoint URL. You can learn more about how to consume Harness IDP APIs on our [API Docs](/docs/internal-developer-portal/api-refernces/public-api).
+Here `https://idp.harness.io/<ACCOUNT_ID>/idp/api/proxy/github-api/` can be seen exactly as `https://api.github.com/`. So all the endpoint paths on the GitHub API can be used after the proxy endpoint URL. You can learn more about how to consume Harness IDP APIs on our [API Docs](/docs/internal-developer-portal/api-refernces/public-api).
 
 ### Step 2: Create the Dropdown Picker in Workflows Form
 
@@ -176,11 +179,11 @@ parameters:
 #### With Conditional API Requests
 By enabling conditional API requests, users can create dependencies between input fields.
 - API URLs can now include **dynamic query parameters** derived from user input.
-- Users can **interactively** use Workflows. 
+- Users can **interactively** use Workflows.
 
 **For example**, if users need to specify their GitHub organization to fetch repositories dynamically, the UI Picker would be updated as follows:
 ```YAML {13}
-parameters: 
+parameters:
   properties:
     github_org:
       type: string
@@ -192,7 +195,7 @@ parameters:
         title: GitHub Repository
         description: Pick one of the GitHub Repositories
         placeholder: "Choose a Repository"
-        path: proxy/github-api/orgs/{{ parameters.github_org }}/repos
+        path: proxy/github-api/orgs/{{parameters.github_org}}/repos
         valueSelector: full_name
 ```
 **Benefits**
@@ -204,11 +207,11 @@ parameters:
 
 Let's deep dive into the details of how this feature can be implemented.
 
-### Form Context
+### Implementing Conditional API Requests
 When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields, typically read-only, can subscribe to this context and automatically update based on the latest information.
 
 #### Implementation
-- With Dynamic Workflow UI Pickers, users can reference previously entered form data using the following format in the ``path`` field: 
+- With Dynamic Workflow UI Pickers, users can reference previously entered form data using the following format in the ``path`` field:
 
   **``{{ parameters.[propertyId] }}``**
 
@@ -217,7 +220,7 @@ When a user selects or provides input in a form field, the **Form Context** upda
 - This enables **dynamic values** in the ``path`` field of the Dynamic Picker, where variables retrieve values from other input fields.
 
 :::info
-You can also use conditional API requests across **multiple pages** using the **same format and references**. Please note these references only work with values provided through Dynamic UI pickers. 
+You can also use conditional API requests across **multiple pages** using the **same format and references**. Please note these references only work with values provided through Dynamic UI pickers.
 :::
 
 ### Example YAML
@@ -230,7 +233,7 @@ Below is the YAML configuration for this setup:
   parameters:
     - title: Fill in some steps
       properties:
-        gitusername:
+        gitUsername:
           title: Github username
           description: Username
           type: string
@@ -241,7 +244,7 @@ Below is the YAML configuration for this setup:
             title: GitHub Repository
             description: Pick one of the GitHub Repositories
             placeholder: "Choose a Repository"
-            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            path: proxy/github-api/users/{{parameters.gitUsername}}/repos
             valueSelector: full_name
   steps:
     - id: trigger
@@ -261,13 +264,316 @@ Below is the YAML configuration for this setup:
 ```
 
 #### YAML Breakdown
-- In the above YAML, we have referenced the ```gitusername``` variable in the ``path`` of the dynamic picker field. 
-- This helps the dynamic picker field retrieve the input value to the ``gitusername`` field and show all the repositories associated with that username. 
+- In the above YAML, we have referenced the ```gitusername``` variable in the ``path`` of the dynamic picker field.
+- This helps the dynamic picker field retrieve the input value to the ``gitusername`` field and show all the repositories associated with that username.
 
-**Example API Path**  
+**Example API Path**
 ``path: proxy/github-api/users/{{ parameters.gitusername }}/repos``
 
 ![](./static/dynamic-picker-2.png)
+
+
+## Updating Fields using Form Context
+
+:::info
+Please note that the following feature **"Updating Fields using Form Context"** is behind a **Feature Flag**: `IDP_ENABLE_WORKFLOW_FORM_CONTEXT`. 
+Ensure that it is **enabled in your account** before use. To enable this feature, contact [**Harness Support**](mailto:support@harness.io). 
+
+Also, please note that this feature flag is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/worflowyaml.md#workflows-playground). You won't be able to implement or test this feature in the playground.
+:::
+
+With conditional API requests in **Dynamic Pickers**, you can create a **Workflow** with dependent input fields. This also allows you to configure a **Workflow** with a **Dynamic Picker** to automatically update other data fields in your **Workflow's frontend** based on previous input. All relevant information in your **Workflow's frontend** can be auto-filled from third-party sources based on your selection/input.
+
+This functionality is powered by a global [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker.md#understanding-form-context). This global Form Context is **active per Workflow session**.
+When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields—typically read-only—can subscribe to this context and automatically update based on the latest information.
+
+This release also includes a comprehensive **tutorial** designed to help you understand and **implement these features** effectively. Check it out here: [**Use Dynamic Pickers for a Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md)
+
+#### Example
+If you are using a [**Repository Picker Workflow**](/docs/internal-developer-portal/flows/dynamic-picker.md#example-yaml-1) and enter your **GitHub Username**, the form dynamically fetches and displays all repositories linked to that username. Once entered, other dependent fields in the form can be auto-updated based on this selection.
+
+### Understanding Form Context
+
+1. Whenever you use a **Dynamic Picker**, an API call runs in the background to fetch relevant data. This data (returned in the **API Picker response**) is displayed in the form as picker dropdown options.
+2. The **Form Context** is then updated with all the required data retrieved from the **API Picker Response Object**. You can configure which fields should be stored in **Form Context** from the API Picker response in the **Workflow YAML**.
+3. The input fields in the **Workflow frontend** can then be auto-updated using **Form Context**.
+
+### Implementing Form Context
+
+You can follow these steps to implement **Form Context**:
+
+#### 1. Choose Data Fields to Store in Form Context
+Decide which API response fields should be stored in **Form Context** for your **Dynamic Picker field**. For instance, in a repository picker workflow, we need to extract the **repository name** and **branch** from the API response object. Based on this [API](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-the-authenticated-user), we will define these values in the form context as retrieved from the API response: ``name`` and ``default_branch``.
+
+#### 2. Set Context Data in Your Workflow YAML
+You can define **Form Context** in the ``ui:options`` section using the ```setContextData``` field within the **Dynamic Picker field definition** in **Workflow YAML**:
+
+```YAML {5}
+dynamic-picker-name:
+  ui:field: SelectFieldFromApi
+  ui:options:
+    path: dynamic-picker-field-path
+    setContextData:
+      repoName: name
+      branchName: default_branch
+      ...
+```
+
+#### **Syntax Breakdown**
+- Define a **Dynamic Picker** using: ```ui:field: SelectFieldFromApi```
+- ```repoName``` and ```branchName``` are identifiers in **Form Context** referring to API field values from the API Picker response.
+- ```name``` and ```default_branch``` represent actual API response object field values.
+- ```setContextData``` is used to define and store certain API response object fields in **Form Context**.
+
+#### 3. Auto-Update Input Fields Using `getContextData`
+Once **Context Data** is set, define **input fields** and use ```getContextData``` to auto-update these fields with values from the API response based on user input.
+
+```YAML {12}
+dynamic-picker-name:
+  ui:field: SelectFieldFromApi
+  ui:options:
+    path: dynamic-picker-field-path
+    setContextData:
+      repoName: name
+      branchName: default_branch
+repositoryName:
+  ui:field: ContextViewer
+  readonly: true
+  ui:options:
+    getContextData: {{formContext.repoName}}
+originBranchName:
+  ui:field: ContextViewer
+  ui:options:
+    getContextData: {{formContext.branchName}}
+    ...
+```
+
+:::info
+We can make certain fields **non-editable** by adding `readonly: true` in their field definition, just like `repositoryName`. Conversely, to make fields **editable**, we simply omit this property, as seen with `originBranchName`. This allows users to validate the auto-fetched data, edit it if needed, and update the form context with the modified values.
+:::
+
+#### **Syntax Breakdown**
+- ```repositoryName``` and ```originBranchName``` are input field names in the **Workflow frontend**.
+- Define **Form Context** for these fields using: ```ui:field: ContextViewer```
+- ```getContextData``` retrieves and auto-updates the input field with data from the API response.
+- Reference values stored in **Form Context** using: ```formContext.repoName```
+
+#### 4. Show Form Context Live in the Workflow Frontend
+At any time, if you need to display the **Form Context** live in your Workflow Frontend for debugging purposes, you can use the following format:
+
+```YAML {7}
+formContext:
+  title: Live Form Context
+  description: DEBUG Context
+  type: string
+  ui:field: ContextViewer
+  ui:options:
+    getContextData: {{formContext}}
+```
+
+#### **Syntax Breakdown**
+- `formContext` is the **field name** used to define the Form Context in your YAML.
+- `ui:field` for this field should be set to `ContextViewer`.
+- To display the Form Context **live in your frontend**, use `getContextData: {{formContext}}` under the `ui:options` property.
+
+This ensures that the **current Form Context state** is visible in the Workflow UI for debugging.
+
+### Example YAML
+<Tabs>
+<TabItem value="YAML" label="YAML" default>
+
+```YAML {14,16,27,35,43,50}
+parameters:
+    - title: Repo Picker
+      properties:
+        gitUsername:
+          title: Github username
+          description: Enter your Github username
+          type: string
+        repoPicker:
+          title: GitHub Repositories
+          type: string
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: proxy/github-api/users/{{parameters.gitUsername}}/repos
+            valueSelector: full_name
+            setContextData:
+              repoName: name
+              branch: default_branch
+              type: visibility
+        repositoryName:
+          title: Repo Name
+          readonly: true
+          description: Repository Name
+          type: string
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {{formContext.repoName}}
+        branchName:
+          title: Default Branch
+          readonly: true
+          description: Default Branch
+          type: string
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {{formContext.branch}}
+        typeName:
+          title: Visibility
+          readonly: true
+          description: Visibility
+          type: string
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {{formContext.type}}
+        formContext:
+          title: Live Form Context
+          description: DEBUG Context
+          type: string
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {{formContext}}
+```
+</TabItem>
+<TabItem value="Workflow Frontend" label="Workflow Frontend">
+
+![](./static/final-yaml-1.png)
+
+</TabItem>
+</Tabs>
+
+
+## Live User Validation using API Requests
+
+:::info
+Please note that the following feature **"Live User Validation using API Requests"** is behind a **Feature Flag**: `IDP_ENABLE_WORKFLOW_FORM_CONTEXT`.
+Ensure that it is **enabled in your account** before use. To enable this feature, contact [**Harness Support**](mailto:support@harness.io). 
+
+Also, please note that this feature flag is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/worflowyaml.md#workflows-playground). You won't be able to implement or test this feature in the playground.
+:::
+
+You can configure Workflows to enable **user validation** for input form fields. If you want users to manually enter details and validate them instead of selecting from a drop-down, you can use this feature in your Workflow.
+
+This functionality allows users to:
+- Manually enter input field details for **live validation** (instead of selecting from a dynamic picker drop-down).
+- Provide **feedback and validate auto-updated** input field details retrieved from [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context).
+
+This process triggers an API call in the background with the user-provided details, parses the response, and **updates the Form Context** with the validated information. It ensures that input form fields are dynamically updated while enabling real-time validation of user inputs.
+
+This feature release also includes a comprehensive **tutorial** designed to help you understand and **implement these features** effectively. Check it out here:  [**Use Dynamic Pickers for a Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md)
+
+**Example**
+
+In a [**Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md), you need the user to enter the name of the branch where changes are implemented. Additionally, you require a repository picker field that fetches repository details and updates the Form Context dynamically as selections are made.
+
+To achieve this, you can add a **button** (e.g., "Create a PR"). When clicked, this button triggers an API call in the background using the user-provided branch details, stores additional data from the API response object in the Form Context, and sends a POST request to create a pull request. This helps users **validate their details** for the given use case.
+
+### Implementing User Validation
+
+You can implement user validation by adding a custom button using the following steps:
+
+#### 1. Define the Button
+
+A custom button allows users to manually enter their input details and validate them by clicking the button. You can define this button in your `workflow.yaml` as follows:
+
+```YAML {3,5}
+customValidationName:
+  type: string
+  ui:field: ValidateAndFetch
+  ui:options:
+    button:
+      title: Title to be displayed on the button
+    path: API call path
+    request:
+    ...
+    setContextData:
+      fieldname: value
+```
+
+#### 2. Configuration Details
+
+1. **`ui:field`**
+  For this feature, `ui:field` must be set to `ValidateAndFetch`.
+
+2. **`ui:options`**
+   You can configure various options under this field:
+   - **`button`**: Defines and adds a button.
+   - **`path`**: Specifies the API endpoint path that will be called when the button is clicked.
+   - **`request`**: Defines the API request details. [Read more about making a POST API request here](/docs/internal-developer-portal/flows/dynamic-picker#post-method-support)
+   - **`setContextData`**: Stores context data in **Form Context** while making the API call. [Learn more here](/docs/internal-developer-portal/flows/dynamic-picker#2-set-context-data-in-your-workflow-yaml)
+
+### Example YAML
+<Tabs>
+<TabItem value="YAML" label="YAML" default>
+
+```YAML {12,14,16,25,27,34,43,45,49,52}
+parameters:
+    - title: Enter your details
+      properties:
+        gitUsername:
+          title: Repository Owner Username
+          description: Enter the repository owner username
+          type: string
+        repoPicker:
+          title: GitHub Repositories
+          type: string
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: proxy/github-api/users/{{parameters.gitUsername}}/repos
+            valueSelector: full_name
+            setContextData:
+              repoName: name
+              branch: default_branch
+              type: visibility
+        repositoryName:
+          title: Repository Name
+          readonly: true
+          description: Check your Repository Name
+          type: string
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {{formContext.repoName}}
+        originBranchName:
+          title: Origin Branch Name
+          description: Check your origin Branch Name
+          type: string
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {{formContext.branch}}
+        titlePR:
+          title: Title of PR
+          description: Enter the Title of your Pull Request
+          type: string
+        newBranch:
+          title: Branch Name for PR
+          description: Enter the name of the branch where your changes are implemented
+          type: string
+        customValidate:
+          type: string
+          ui:field: ValidateAndFetch
+          ui:options:
+            button:
+              title: Create a Pull Request
+            path: proxy/github-api/repos/{{parameters.gitUsername}}/{{parameters.repositoryName}}/pulls
+            contextData:
+              prURL: html_url
+            request:
+              method: POST
+              headers:
+                Content-Type: application/json
+              body:
+                title: "{{parameters.titlePR}}"
+                head: "{{parameters.newBranch}}"
+                base: "{{parameters.originBranchName}}"
+```
+</TabItem>
+<TabItem value="Workflow Frontend" label="Workflow Frontend">
+
+![](./static/pr-creator.png)
+
+</TabItem>
+</Tabs>
 
 ## Supported Filters to parse API response
 
@@ -289,7 +595,7 @@ properties:
         method: POST
         headers:
           Content-Type: text/plain
-        # Indicates the format of the request body being sent. 
+        # Indicates the format of the request body being sent.
         body: This is a simple plain text message
       # The Path on the Harness IDP backend API and the parameters to fetch the data for the dropdown
       path: "proxy/proxy-endpoint/api-path"
@@ -311,18 +617,23 @@ properties:
 
 You can find the detailed docs on the [project's README](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/scaffolder-field-extensions/scaffolder-frontend-module-http-request-field).
 
-### POST Method Support
+### POST and PUT Method Support
 
-The **POST method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc. 
+The **POST/PUT method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc. 
+
+:::info
+Kindly note that there are no restrictions on **HTTP methods**, except for the **DELETE** method, which is currently unsupported.
+:::
 
 #### Key Elements:
-- **`method` field** - Used to specify the **POST** request method.
-- **`headers` field - `Content-Type`**: Specifies the request body's type. 
-  - In case of structured data (e.g., JSON) - `application/json` is used. 
-  - In case of plain text - `text/plain` is used. 
+- **`method` field** - Used to specify the **POST** or **PUT** request method. 
+- **`headers` field - `Content-Type`**: Specifies the request body's type.
+  - In case of structured data (e.g., JSON) - `application/json` is used.
+  - In case of plain text - `text/plain` is used.
 - **`body` field**: Contains the data sent to the API.
 
-Here's how the POST method is used to fetch and populate dynamic pickers within forms:
+#### POST Method Example: 
+Here's how the **POST method** is used to fetch and populate dynamic pickers within forms:
 
 ```YAML {10}
 custom1:
@@ -338,10 +649,34 @@ custom1:
       headers:
         Content-Type: application/json
       body:
-        secret: { { parameters.formdata } }
+        secret: "{{parameters.formdata}}"
 ```
 
-Using POST is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
+#### PUT Method Example: 
+```YAML {10}
+custom1:
+  title: Repository Topics
+  type: string
+  description: Select or update repository topics
+  ui:field: SelectFieldFromApi
+  ui:options:
+    path: proxy/github-api/repos/{{parameters.gitusername}}/{{parameters.repoName}}/topics
+    arraySelector: names
+    request:
+      method: PUT
+      headers:
+        Accept: application/vnd.github+json
+        Content-Type: application/json
+      body:
+        names:
+          - ci
+          - harness
+          - devops
+          - monitoring
+          - github
+```
+
+Using these methods is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
 
 ### Parsing API Response using filters
 
@@ -456,7 +791,7 @@ If the filters here are not sufficient for your use case, and you require additi
 
 1. Configure the [Backend Proxy](#step-1-create-a-backend-proxy)
 
-Set up a backend proxy in the plugin configuration to enable API calls to Harness. 
+Set up a backend proxy in the plugin configuration to enable API calls to Harness.
 
 ```YAML
 proxy:
@@ -470,7 +805,7 @@ proxy:
 ```
 
 - `/harness-api-endpoint`: Proxy path for the Harness API.
-- `x-api-key`: Add your Harness Personal Access Token as an environment variable(covered in the next step).. 
+- `x-api-key`: Add your Harness Personal Access Token as an environment variable(covered in the next step)..
 
 2. Add the [Harness Personal Access Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens) as a variable. Save the token as an environment variable named `PROXY_HARNESS_TOKEN`.
 
@@ -499,4 +834,5 @@ properties:
 - `arraySelector`: Extracts the array containing the services
 
 For a complete example, refer to the [sample Workflows YAML](https://github.com/harness-community/idp-samples/blob/main/tutorial-dynamic-picker-examples.yaml).
+
 

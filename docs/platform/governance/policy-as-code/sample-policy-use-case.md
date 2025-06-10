@@ -1,7 +1,7 @@
 ---
 title: Policy samples
 description: See sample policies and when to use them.
-sidebar_position: 6
+sidebar_position: 100
 canonical_url: https://www.harness.io/blog/feature-flags-best-practices
 ---
 
@@ -24,6 +24,8 @@ This topic provides sample policies you can use in policy steps and on pipeline-
 <!-- https://ecotrust-canada.github.io/markdown-toc/ -->
 
 - [Policy samples](#policy-samples)
+	- [Root policy samples](#root-policy-samples)
+		- [Evaluate secrets in pipeline and only allow secrets that are at the account level](#evaluate-secrets-in-pipeline-and-only-allow-secrets-that-are-at-the-account-level)
 	- [Connector policy samples](#connector-policy-samples)
 		- [Enforce authorization type while configuring a Kubernetes connector](#enforce-authorization-type-while-configuring-a-kubernetes-connector)
 		- [Enforce access control for a specific connector at runtime while configuring the pipeline](#enforce-access-control-for-a-specific-connector-at-runtime-while-configuring-the-pipeline)
@@ -63,6 +65,29 @@ This topic provides sample policies you can use in policy steps and on pipeline-
 		- [Block the pipeline based on the code coverage results](#block-the-pipeline-based-on-the-code-coverage-results)
 
 ## Policy samples
+
+### Root policy samples
+* [Evaluate secrets in pipeline and only allow secrets that are at the account level](#evaluate-secrets-in-pipeline-and-only-allow-secrets-that-are-at-the-account-level)
+#### Evaluate secrets in pipeline and only allow secrets that are at the account level
+This rule is set in place to ensure the pipeline yaml does not include secrets at the project level, but will allow secrets at the account level.  
+
+```json
+package policy
+
+# Rule to check if any value in the input contains the secret substring
+has_secret_value {
+    walk(input, [_, value])
+    is_string(value)
+    contains(value, "<+secrets.getValue")
+    not contains(value,"<+secrets.getValue(\"account.")
+}
+
+# Main denial rule
+deny[msg] {
+    has_secret_value
+    msg := "Found potentially sensitive value containing 'secret.getValues' in the input"
+}
+```
 
 ### Connector policy samples
 

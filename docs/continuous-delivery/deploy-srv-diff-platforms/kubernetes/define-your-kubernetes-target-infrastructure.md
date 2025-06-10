@@ -81,7 +81,25 @@ For details on using OpenShift, go to [Using OpenShift with Harness Kubernetes](
 Enter the following settings.
 
 <Tabs>
-  <TabItem value="YAML" label="YAML" default>
+
+  <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+To add an Infrastructure Definition with the Direct connection method, do the following:
+
+1. In your Harness project, select **Environments**.
+2. Select or create an environment.
+3. In the environment, select **Infrastructure Definitions**.
+4. Select **Infrastructure Definition** to create the new infrastructure definition.
+5. Enter a name for the infrastructure definition.
+6. In **Deployment Type**, select **Kubernetes**.
+7. In **Select Infrastructure Type**, select **Direct Connection**.
+8. In **Cluster Details**, select or add a Harness Kubernetes Cluster connector.
+9. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
+10. Select **Save**.
+
+</TabItem>
+
+  <TabItem value="YAML" label="YAML" >
 
 Here is the YAML for the Harness Kubernetes Cluster connector used in the Infrastructure Definition.
 
@@ -133,9 +151,19 @@ Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infr
 Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
 
 </TabItem>
-  <TabItem value="Pipeline Studio" label="Pipeline Studio">
+</Tabs>
 
-To add an Infrastructure Definition with the Direct connection method, do the following:
+---
+
+### Google Kubernetes Engine (GKE)
+
+- **GCP Workload Identity:** if you installed the Harness Kubernetes Delegate in a GCP Kubernetes cluster (GKE) that has GCP Workload Identity enabled, the GCP Connector will use the GCP Workload Identity if it inherits its credentials from that Delegate (using the **Use the credentials of a specific Harness Delegate** option).
+
+<Tabs>
+
+  <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+To add an Infrastructure Definition with the GKE connection method, do the following:
 
 1. In your Harness project, select **Environments**.
 2. Select or create an environment.
@@ -143,20 +171,34 @@ To add an Infrastructure Definition with the Direct connection method, do the fo
 4. Select **Infrastructure Definition** to create the new infrastructure definition.
 5. Enter a name for the infrastructure definition.
 6. In **Deployment Type**, select **Kubernetes**.
-7. In **Select Infrastructure Type**, select **Direct Connection**.
-8. In **Cluster Details**, select or add a Harness Kubernetes Cluster connector.
-9. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
-10. Select **Save**.
+7. In **Select Infrastructure Type**, select **Google Kubernetes Engine**.
+8. In **Cluster Details**, select or add a Harness GCP connector.
+9. In **Cluster**, select or enter the name of the target cluster.
+10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
+11. Select **Save**.
+
+#### Enable Cross-Project Access
+
+You can now have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
+
+:::note
+Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+For more information on GCP OIDC connector configuration, refer [GCP OIDC Connector Settings](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#enable-cross-project-access).
+
+With the feature flag  enabled, you will have the option to select the **Project** in the **Cluster details** in the **Infrastructure configuration**.
+
+**Project** is an optional field. 
+- If the project is selected, in the **Cluster** dropdown, only the clusters associated with the selected project will be listed.
+- If the project field is left blank, the **Cluster** dropdown will list all the clusters associated with the **Project Number** configured at the Connector Level.
+
+<div align="center">
+  <DocImage path={require('./static/cross-project-access-gke.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 </TabItem>
-</Tabs>
-
-### Google Kubernetes Engine (GKE)
-
-- **GCP Workload Identity:** if you installed the Harness Kubernetes Delegate in a GCP Kubernetes cluster (GKE) that has GCP Workload Identity enabled, the GCP Connector will use the GCP Workload Identity if it inherits its credentials from that Delegate (using the **Use the credentials of a specific Harness Delegate** option).
-
-<Tabs>
-  <TabItem value="YAML" label="YAML" default>
+  <TabItem value="YAML" label="YAML">
 
 Here is the YAML for the GCP connector used in the Infrastructure Definition.
 
@@ -197,6 +239,28 @@ infrastructureDefinition:
   allowSimultaneousDeployments: false
 ```
 
+Here is the YAML for a GKE Infrastructure Definition with Cross-Project Access. In this example, the **Project** field is an additional configuration option. This feature is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. For more information on how to use this feature, navigate to the **Pipeline Studio** tab.
+
+```yaml
+infrastructureDefinition:
+  name: K8s GKE
+  identifier: K8s_GKE
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  environmentRef: k8s_env
+  deploymentType: Kubernetes
+  type: KubernetesGcp
+  spec:
+    connectorRef: kubernetesdelegate
+    project: <+input>
+    cluster: <+input>
+    namespace: test
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
+```
+
 </TabItem>
   <TabItem value="API" label="API">
 
@@ -208,9 +272,16 @@ Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infr
 Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
 
 </TabItem>
-  <TabItem value="Pipeline Studio" label="Pipeline Studio">
+</Tabs>
 
-To add an Infrastructure Definition with the GKE connection method, do the following:
+---
+
+### Microsoft Azure Kubernetes Service (AKS)
+
+<Tabs>
+  <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+To add an Infrastructure Definition with the AKS connection method, do the following:
 
 1. In your Harness project, select **Environments**.
 2. Select or create an environment.
@@ -218,19 +289,15 @@ To add an Infrastructure Definition with the GKE connection method, do the follo
 4. Select **Infrastructure Definition** to create the new infrastructure definition.
 5. Enter a name for the infrastructure definition.
 6. In **Deployment Type**, select **Kubernetes**.
-7. In **Select Infrastructure Type**, select **Google Kubernetes Engine**.
-8. In **Cluster Details**, select or add a Harness GCP connector.
-9. In **Cluster**, select or enter the name of the target cluster.
-10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
-11. Select **Save**.
+7. In **Select Infrastructure Type**, select **Microsoft Azure**.
+8. In **Subscription Id**, select or add a subscription Id for the subscription you want to use.
+9. In **Resource Group**, select or add the resource group to use.
+10. In **Cluster**, select or enter the name of the target cluster.
+11. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
+12. Select **Save**.
 
 </TabItem>
-</Tabs>
-
-### Microsoft Azure Kubernetes Service (AKS)
-
-<Tabs>
-  <TabItem value="YAML" label="YAML" default>
+  <TabItem value="YAML" label="YAML">
 
 Here is the YAML for a AKS Infrastructure Definition. In this example, AKS parameters are set as runtime inputs so you can select the cluster to use when you deploy.
 
@@ -266,9 +333,17 @@ Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infr
 Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
 
 </TabItem>
-  <TabItem value="Pipeline Studio" label="Pipeline Studio">
+</Tabs>
 
-To add an Infrastructure Definition with the AKS connection method, do the following:
+---
+
+### AWS Elastic Kubernetes Service (EKS)
+
+<Tabs>
+
+  <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+To add an Infrastructure Definition with the EKS connection method, do the following:
 
 1. In your Harness project, select **Environments**.
 2. Select or create an environment.
@@ -276,20 +351,27 @@ To add an Infrastructure Definition with the AKS connection method, do the follo
 4. Select **Infrastructure Definition** to create the new infrastructure definition.
 5. Enter a name for the infrastructure definition.
 6. In **Deployment Type**, select **Kubernetes**.
-7. In **Select Infrastructure Type**, select **Microsoft Azure**.
-8. In **Subscription Id**, select or add a subscription Id for the subscription you want to use.
-9. In **Resource Group**, select or add the resource group to use.
-10. In **Cluster**, select or enter the name of the target cluster.
-11. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
-12. Select **Save**.
+7. In **Select Infrastructure Type**, select **Elastic Kubernetes Service**.
+8. In **Connector**, select your AWS connector. 
+9. In **Cluster**, select or enter the name of the target cluster.
+10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
+11. Select **Save**.
+
+:::tip
+
+If these connection settings don't work for your setup, try using **Manual Configuration**. To do so, enable the feature flag `CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION` by contacting [Harness Support](mailto:support@harness.io).
+
+Once enabled, do the following:
+
+1. Above **Cluster**, check the checkbox labeled **Manual Configuration**. This reveals new options.
+2. In **Endpoint**, select your cluster endpoint. 
+3. In **CA Certification Data**, select the certificate associated with your cluster, if you have one.
+4. Select your **Cluster** and **Namespace** as described above. 
+
+:::
 
 </TabItem>
-</Tabs>
-
-### AWS Elastic Kubernetes Service (EKS)
-
-<Tabs>
-  <TabItem value="YAML" label="YAML" default>
+  <TabItem value="YAML" label="YAML">
 
 Here is the YAML for an EKS Infrastructure Definition.
 
@@ -323,37 +405,24 @@ Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infr
 Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
 
 </TabItem>
-  <TabItem value="Pipeline Studio" label="Pipeline Studio">
+</Tabs>
 
-To add an Infrastructure Definition with the EKS connection method, do the following:
+:::info
+**EKS Execution Authentication Token Refresh**
 
-1. In your Harness project, select **Environments**.
-2. Select or create an environment.
-3. In the environment, select **Infrastructure Definitions**.
-4. Select **Infrastructure Definition** to create the new infrastructure definition.
-5. Enter a name for the infrastructure definition.
-6. In **Deployment Type**, select **Kubernetes**.
-7. In **Select Infrastructure Type**, select **Elastic Kubernetes Service**.
-8. In **Connector**, select your AWS connector. 
-9. In **Cluster**, select or enter the name of the target cluster.
-10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
-11. Select **Save**.
+By default, AWS EKS issues an authentication token with a 15-minute time-to-live. Long-running API calls will fail once this token expires because the `aws-iam-authenticator` does not automatically refresh it. For more info, refer [kubernetes-client/java/issues/2438](https://github.com/kubernetes-client/java/issues/2438)
 
-:::tip
+Harness provides an opt-in fix via the feature flag `CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
-If these connection settings don't work for your setup, try using **Manual Configuration**. To do so, enable the feature flag `CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION` by contacting [Harness Support](mailto:support@harness.io).
+- **What it does**  
+  Checks the token’s expiration timestamp in the `ExecCredential` response and automatically refreshes the token.
+- **Why it matters**  
+  Prevents unexpected failures on long-running Kubernetes executions against EKS clusters.
 
-Once enabled, do the following:
-
-1. Above **Cluster**, check the checkbox labeled **Manual Configuration**. This reveals new options.
-2. In **Endpoint**, select your cluster endpoint. 
-3. In **CA Certification Data**, select the certificate associated with your cluster, if you have one.
-4. Select your **Cluster** and **Namespace** as described above. 
-
+With this flag enabled, your EKS-based workflows will seamlessly refresh expired tokens and continue without interruption.  
 :::
 
-</TabItem>
-</Tabs>
+---
 
 ### Rancher
 
@@ -380,7 +449,37 @@ To set up a Harness Rancher connector you need:
   - If you set an expiration period for the token, make sure that its expiration date will not impact your Harness deployments.
 
 <Tabs>
-  <TabItem value="YAML" label="YAML" default>
+
+<TabItem value="Harness Manager" label="Harness Manager" default>
+
+To create the Harness Rancher connector, do the following:
+
+1. In your Harness project, select **Connectors**.
+2. Select **New Connector**, and then select **Rancher cluster**.
+3. In **Rancher Connector Details**, enter a name for the connector, and then select **Continue**. You will select this name when you select a connector in the infrastructure definition.
+4. In **Details**, select **Specify rancher URL and credentials**.
+5. In **Rancher URL**, enter the URL to the Rancher server.
+6. In **Authentication**, select **Bearer Token**, and select or add a Harness secret containing the token.
+7. Select **Continue**.
+8. In **Delegates Setup**, select or add a Harness Delegate to use when performing this connection, or let Harness select the delegate.
+9. Select **Continue**.
+
+To add an **Infrastructure Definition** with the Rancher connection method, do the following:
+
+1. In your Harness project, select **Environments**.
+2. Select or create an environment.
+3. In the environment, select **Infrastructure Definitions**.
+4. Select **Infrastructure Definition** to create the new infrastructure definition.
+5. Enter a name for the infrastructure definition.
+6. In **Deployment Type**, select **Kubernetes**.
+7. In **Select Infrastructure Type**, select **Rancher**.
+8. In **Cluster Details**, select or add a Harness Rancher connector.
+9. In **Cluster**, select or enter the name of the target cluster.
+10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
+11. Select **Save**.
+
+</TabItem>
+  <TabItem value="YAML" label="YAML">
 
 Here is the YAML for the Rancher connector used in the Infrastructure Definition.
 
@@ -436,36 +535,10 @@ Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infr
 Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the **Infrastructure Definition**.
 
 </TabItem>
-  <TabItem value="Harness Manager" label="Harness Manager">
-
-To create the Harness Rancher connector, do the following:
-
-1. In your Harness project, select **Connectors**.
-2. Select **New Connector**, and then select **Rancher cluster**.
-3. In **Rancher Connector Details**, enter a name for the connector, and then select **Continue**. You will select this name when you select a connector in the infrastructure definition.
-4. In **Details**, select **Specify rancher URL and credentials**.
-5. In **Rancher URL**, enter the URL to the Rancher server.
-6. In **Authentication**, select **Bearer Token**, and select or add a Harness secret containing the token.
-7. Select **Continue**.
-8. In **Delegates Setup**, select or add a Harness Delegate to use when performing this connection, or let Harness select the delegate.
-9. Select **Continue**.
-
-To add an **Infrastructure Definition** with the Rancher connection method, do the following:
-
-1. In your Harness project, select **Environments**.
-2. Select or create an environment.
-3. In the environment, select **Infrastructure Definitions**.
-4. Select **Infrastructure Definition** to create the new infrastructure definition.
-5. Enter a name for the infrastructure definition.
-6. In **Deployment Type**, select **Kubernetes**.
-7. In **Select Infrastructure Type**, select **Rancher**.
-8. In **Cluster Details**, select or add a Harness Rancher connector.
-9. In **Cluster**, select or enter the name of the target cluster.
-10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
-11. Select **Save**.
-
-</TabItem>
+  
 </Tabs>
+
+---
 
 :::info
 
@@ -911,6 +984,34 @@ For more information about manifests in Harness, see [Add Kubernetes Manifests](
 If you omit the `namespace` key and value from a manifest in your Service Definition, Harness automatically uses the namespace you entered in the Harness Environment  **Infrastructure Definition** settings **Namespace** field.
 
 :::
+
+### Enforcing Namespace Consistency
+
+Kubernetes deployments in Harness give you more built-in control when it comes to namespace consistency. If used correctly, you can prevent users from deploying resources into namespaces other than the one defined in the Infrastructure.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This feature requires delegate version `856xx` or later.
+:::
+
+To enable this setting, go to:
+**Account** / **Org** / **Project Settings** → **Default Settings**
+Under the **Continuous Delivery** section, set the value to **True** for:
+**Enable Namespace validation from different sources with infrastructure level namespace**
+
+**How it's handled**
+
+Fortunately, Harness offers a way to enforce namespace checks—but it requires a bit of setup.
+
+If you configure the namespace explicitly in the deployment step (e.g., in a Rollout or Apply step), and this namespace conflicts with the one hardcoded in the manifest, Harness will fail the deployment. This acts as a validation layer.
+
+In other words:
+
+- You define the namespace in the Infra: `team-infra`
+- Someone hardcodes `rogue-namespace` in their manifest
+- You override the namespace again in the step: `team-infra`
+- Harness catches the mismatch and blocks the deployment
 
 ## Release Name
 

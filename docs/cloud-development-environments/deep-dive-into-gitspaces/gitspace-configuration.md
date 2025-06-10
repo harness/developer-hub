@@ -5,12 +5,6 @@ sidebar_position: 1
 sidebar_label: Gitspace Configuration
 ---
 
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io
-
-:::
-
 This guide will walk you through the Gitspace configuration in detail. 
 
 Each time a new Gitspace is created, a dedicated Development Container is provisioned on a separate Virtual Machine (VM), providing an isolated and secure development environment.

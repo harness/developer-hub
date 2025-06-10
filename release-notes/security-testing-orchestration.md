@@ -22,7 +22,82 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## May 2025
+
+### Version v1.140.1
+
+<!-- 2025-05-17 -->
+
+#### New Features and Enhancements
+- Added support for the setting `ingest_tool_severity: true` in the **[Checkmarx One](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference#use-scanner-provided-severity)**, **[Anchore](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#use-scanner-provided-severity)**, and **[Prisma Cloud](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference#use-scanner-provided-severity)** steps. When added, STO will use the severity provided directly by the scanner instead of calculating it based on CVSS scores (STO-8776, STO-8778, STO-8779).
+- Renamed the built-in STO role from `Security Testing SecOps` to `Security Testing AppSec`. This is not a breaking change and remains fully backward compatible (STO-7392).
+- Added support for the SonarQube step to include privileges for creating and using the Sonar cache (STO-8889).
+
+#### Fixed Issues
+- Fixed an issue in the Snyk step where the filename and upgrade version were missing in some cases (STO-8914).
+- Fixed an issue in the Veracode step where files with modification dates earlier than 1980 caused the scan to fail (STO-8910).
+
+## April 2025
+
+### Version v1.136.1
+
+<!-- 2025-04-18 -->
+
+#### New Features and Enhancements  
+- Updated the Jira ticket creation dialog to dynamically fetch and display all required fields for ticket creation (STO-8521).
+
+#### Fixed Issues  
+- Fixed an issue where the CVSS score of issues did not match the severity label in some cases (STO-8807).
+- Fixed an issue where Harness AI failed to present remediation details if the cloned codebase did not match the ingested scan result’s repository; remediation is now shown correctly for the ingested repo (STO-8664).
+
+### Version v1.134.1
+
+<!-- 2025-04-05 -->
+
+#### New Features and Enhancements  
+- Switched to using the Harness GAR registry as the default source instead of DockerHub to avoid rate-limiting issues (STO-8669).
+
+#### Fixed Issues  
+- Fixed a bug where the `ListTickets` endpoint did not respect `projectID` and `orgID` scopes (STO-8628).
+- Fixed an issue in `Local OCI/Docker archive in this stage` image scans where the tar file name was incorrectly passed to the CLI instead of the image name (STO-8690, ZD-80330).
+- Resolved an issue where STO failed to parse the latest results from BlackDuckHub (STO-8718, ZD-81315).
+
+## March 2025
+
+### Version v1.130.6
+
+<!-- 2025-03-25 -->
+
+#### New Features and Enhancements  
+- Enhanced **[Security Tests Dashboard](/docs/security-testing-orchestration/dashboards/security-testing-dashboard)** performance by optimizing queries for faster and more efficient data loading; data load times are now significantly reduced (STO-8584).
+  <DocImage path={require('./static/sto-security-testing-dashboard-11306.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- Improved **Harness AI** error responses with additional context for better understanding (STO-8570).  
+
+#### Fixed Issues  
+- Fixed a regression that could cause early-access STO features, enabled for specific customers, to be disabled or hidden (STO-8624).  
+- Fixed an issue where the Gitleaks scanner was running in the wrong mode, causing Docker authentication to be ignored and leading to rate limit issues (STO-8611).  
+- Resolved a permission denied error that occurred when running STO steps in parallel with different users (STO-8560, ZD-77709).  
+- Fixed an issue where the **Request Exemption** button on the scan results page appeared disabled (STO-8596).
+
 ## February 2025
+
+### Version 1.127.5
+
+<!-- 2025-02-15 -->
+
+#### New Features and Enhancements
+- CheckmarxOne is now available as an STO step, currently behind the feature flag `STO_STEP_PALETTE_CHECKMARX_ONE` (STO-5747).  
+- Checkmarx step now supports scan configurations for Checkmarx SCA and Checkmarx OSA. These can be used by setting the **Scan Configuration** field to `CxSCA` or `CxOSA` (STO-7891).  
+
+#### Fixed Issues
+- Fixed an issue where unsupported connectors were listed when configuring the Container Registry field in STO steps; the list now only displays supported connectors for selection (STO-8398, ZD-75006).
+- Fixed an issue where remediation calculations were skipped due to an internal race condition; this now ensures accurate remediation trends in the **Remediation Over Time** graph on the **Security Testing Dashboard** (STO-8456).
+
+  <DocImage path={require('./static/sto-11275-remediation-fix.png')} width="50%" height="50%" title="Click to view full size image" />
+
+- Fixed AI remediation steps failing with a 403 error when triggered by a project admin; added support for eligible scopes like project and org (STO-8483, ZD-76591).  
+- Fixed an issue preventing users from canceling an issue exemption; users with the necessary privileges can now cancel issue exemptions without issues.
 
 ### Version 1.125.0
 
@@ -179,7 +254,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 <!-- 2024-07-19 -->
 
 #### New features and enhancements
-- In the [Checkmarx step](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) under the **Scan Tool**, the fields **Team Name** and **Project Name** are now mandatory for step configuration. Previously, these fields were optional. (STO-7681)
+- In the [Checkmarx step](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference) under the **Scan Tool**, the fields **Team Name** and **Project Name** are now mandatory for step configuration. Previously, these fields were optional. (STO-7681)
 - We now track the number of occurrences for a given issue/scan combination independently of the associated occurrence IDs. Newly created issues will only store up to 1,000 occurrences, with the total number of occurrences being stored separately. Occurrences are stored based on severity, with higher-severity occurrences given priority. (STO-5979)
 
   These following endpoints now include `numOccurrences` at the issue level, showing the total number of occurrences for the issues:
@@ -226,11 +301,11 @@ The setting **Users can approve their own exemptions** is behind the feature fla
 The following features are now generally available:
 
 - Built-in scans:
-  - [SAST](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners)
-  - [SCA](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners)
-  - [Secret Detection](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners)
-  - [Container](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners)
-  - [DAST](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners)
+  - [SAST](/docs/security-testing-orchestration/set-up-scans/built-in-scanners)
+  - [SCA](/docs/security-testing-orchestration/set-up-scans/built-in-scanners)
+  - [Secret Detection](/docs/security-testing-orchestration/set-up-scans/built-in-scanners)
+  - [Container](/docs/security-testing-orchestration/set-up-scans/built-in-scanners)
+  - [DAST](/docs/security-testing-orchestration/set-up-scans/built-in-scanners)
 - [Default baselines based on regular expressions](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-baselines-based-on-regular-expressions)
 - [Jira tickets for detected vulnerabilities](/docs/security-testing-orchestration/jira-integrations)
 - Wiz support for scanning [artifacts](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz), [code repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz), and [IaC repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz)
@@ -416,7 +491,7 @@ Harness introduced a back-end dashboard change to support features that are curr
 
 #### New feature: Built-in SAST scans
 
-This release introduces a new [built-in SAST step](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) that adds a preconfigured [Semgrep step](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. (STO-7180) 
+This release introduces a new [built-in SAST step](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) that adds a preconfigured [Semgrep step](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. (STO-7180) 
 
 <!--
 This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
@@ -538,17 +613,17 @@ The following features are now generally available:
   You can add built-in scanners for the following scan types:
 
     <!-- 
-    - [**SAST**](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) Add a Semgrep scan to detect vulnerabilities in your code repositories.
+    - [**SAST**](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) Add a Semgrep scan to detect vulnerabilities in your code repositories.
 
     -->
 
-    - [**Secret Detection**](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) Add a GitLeaks scan to detect passwords and other secrets in your code repositories.
+    - [**Secret Detection**](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) Add a GitLeaks scan to detect passwords and other secrets in your code repositories.
 
-    - [**SCA**](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) Add an OWASP Dependency Check or OSV scan to detect vulnerabilities in your open-source libraries and packages. 
+    - [**SCA**](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) Add an OWASP Dependency Check or OSV scan to detect vulnerabilities in your open-source libraries and packages. 
 
-    - [**Container**](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) Add an Aqua Trivy or Anchor Grype scan to detect vulnerabilities in your container images.
+    - [**Container**](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) Add an Aqua Trivy or Anchor Grype scan to detect vulnerabilities in your container images.
 
-    - [**DAST**](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) Add a Zed Attack Proxy (ZAP) scan to detect vulnerabilities in your application instances.
+    - [**DAST**](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) Add a Zed Attack Proxy (ZAP) scan to detect vulnerabilities in your application instances.
 
 #### New feature: Wiz scanner integration
 
@@ -652,7 +727,7 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 #### New feature: OPA policies for Security Test results
 
-You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/dashboards/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
+You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
 This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
 
@@ -708,7 +783,7 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
 
   - Previous behavior:
   
-    When [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
+    When [**Security Tests**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
 
   - New behavior: 
   
@@ -1409,7 +1484,7 @@ The following security steps are now generally available:
 * [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference) (STO-5393)
 * [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference) (STO-5050)
 * [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference) (STO-5052)
-* [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) (STO-5073)
+* [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference) (STO-5073)
 * [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) (STO-5394)
 * [Mend (formerly Whitesource)](/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference) (STO-5392)
 * [Prisma Cloud (formerly Twistlock)](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference) (STO-5055)

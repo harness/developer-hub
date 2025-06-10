@@ -16,7 +16,7 @@
 | Delve into Harness Connectors: configuration of Git, DockerHub, and more | [Connectors](/docs/category/connectors) |
 | **4. Harness CI Pipelines and Advanced Features** ||
 | Master Codebase configuration, shared paths, and step library, including plugin configurations | [Configure codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) |
-| Understand and set up advanced features like caching intelligence, test intelligence, and flow control | [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence) |
+| Understand and set up advanced features like caching intelligence, test intelligence, and flow control | [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence) |
 | Configure pipeline features, including triggers, input sets, failure strategies, looping, and notifications | [Pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) |
 | **5. Pipeline Execution Strategies** ||
 | Get to grips with execution environments: running steps on host vs. containers | [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/) |
@@ -29,7 +29,7 @@
 | **7. Authentication and User Management** ||
 | Deep dive into OAuth, SAML, and SCIM integrations | [Authentication](/docs/category/authentication) |
 | Set up and manage credentials, user and group permissions, and more | [Manage user groups](/docs/platform/role-based-access-control/add-user-groups) |
-| Delve into debugging and troubleshooting techniques, including running pipeline steps locally | [Troubleshoot CI](/docs/category/troubleshoot-ci) |
+| Delve into debugging and troubleshooting techniques, including running pipeline steps locally | [Troubleshoot CI](https://developer.harness.io/docs/category/troubleshoot-harness-ci) |
 | **8. Policy-Based Governance and Compliance** ||
 | Explore and configure policy as code with OPA and Rego | [Harness Policy As Code quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart) |
 | Enforce governance within pipelines and understand templates for Harness CI | [Manage access control for asset governance rules](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov/) |

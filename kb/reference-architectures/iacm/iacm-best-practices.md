@@ -36,11 +36,11 @@ As a first step, we recommend configuring your Cloud Provider and Code repositor
 ### OpenTofu / Terraform Authentication
 To effectively authenticate OpenTofu or Terraform across different providers, it’s crucial to follow a consistent approach that aligns with the requirements of each provider while ensuring security and efficiency.
 
-1. **Use Connectors When Available:** If the provider supports native integration with Harness (e.g., AWS, Azure, GCP), use the relevant [Harness connectors](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors). These connectors provide secure and streamlined authentication, reducing the need for manual setup and environment configuration.
-2. **Environment Variables and Secrets:** For providers that do not have native Harness connectors, you can manage authentication using [environment variables](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration#set-environment-variables) and secrets. Ensure that sensitive credentials are securely stored using Harness Secret Manager or another secure secret management system.
-3. **Custom Plugin Images:** If the provider has specific dependencies or custom configurations, use a [custom plugin image](https://developer.harness.io/docs/infra-as-code-management/pipelines/iacm-plugins/plugin-images) to include the necessary tools and libraries. This approach allows for flexibility and tailored setups but requires maintaining the image to match provider updates and requirements.
+1. **Use Connectors When Available:** If the provider supports native integration with Harness (e.g., AWS, Azure, GCP), use the relevant [Harness connectors](/docs/infra-as-code-management/get-started/#add-connectors). These connectors provide secure and streamlined authentication, reducing the need for manual setup and environment configuration.
+2. **Environment Variables and Secrets:** For providers that do not have native Harness connectors, you can manage authentication using environment variables and secrets. Ensure that sensitive credentials are securely stored using Harness Secret Manager or another secure secret management system.
+3. **Custom Plugin Images:** If the provider has specific dependencies or custom configurations, use a [custom plugin image](/docs/infra-as-code-management/pipelines/plugin-images) to include the necessary tools and libraries. This approach allows for flexibility and tailored setups but requires maintaining the image to match provider updates and requirements.
 
-Go to [What's supported](https://developer.harness.io/docs/infra-as-code-management/whats-supported#supported-workspace-connectors) to see what cloud provider and code repository vendors are supported by Harness. 
+Go to [What's supported](/docs/infra-as-code-management/whats-supported#supported-workspace-connectors) to see what cloud provider and code repository vendors are supported by Harness. 
 
 ## Recommended Workflows and Performance Optimization
 ### Reusable components
@@ -49,8 +49,8 @@ For general use cases to reduce unnecessary complexity and to optimize performan
 Some reusable options can be to:
 - Create reusable pipelines and set them as default pipelines to trigger quickly from any workspace within a project.
 - Use [pipeline variables](https://developer.harness.io/docs/infra-as-code-management/project-setup/input-variables) to ensure consistency.
-- Use built-in plugins such as [drift detection](https://developer.harness.io/docs/infra-as-code-management/use-iacm/drift-detection), [PR automation](https://developer.harness.io/docs/infra-as-code-management/use-iacm/pr-automation) and [IaCM Approval steps](https://developer.harness.io/docs/infra-as-code-management/use-iacm/approval-step).
-- Utilize [built-in OPA policies](https://developer.harness.io/docs/infra-as-code-management/policies/terraform-plan-cost-policy) to add protection and ensure your pipelines warn or fail if certain conditions are not met, e.g. if your total monthly infrastructure costs exceed a specified amount.
+- Use built-in plugins such as [drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection), [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation) and [IaCM Approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step).
+- Utilize [built-in OPA policies](/docs/infra-as-code-management/policies-governance/terraform-plan-cost-policy) to add protection and ensure your pipelines warn or fail if certain conditions are not met, e.g. if your total monthly infrastructure costs exceed a specified amount.
 <!-- placeholder for module registry -->
 <!-- placeholder for workspace templates -->
 
@@ -69,7 +69,7 @@ Harness seamlessly integrates with third-party services like external code repos
 - **OPA Policies:** Use [OPA policies](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/) to implement governance and trigger pipeline warnings or failures when policy conditions are not met. 
 
 ### State Management
-- **Remote State Storage:** Use remote state backends like AWS S3, GCP Cloud Storage, or Azure Blob Storage for reliable and scalable state management. Ensure state files are stored securely and versioned to prevent accidental data loss or corruption. Go to [initialize remote backends](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration) for more information.
+- **Remote State Storage:** Use remote state backends like AWS S3, GCP Cloud Storage, or Azure Blob Storage for reliable and scalable state management. Ensure state files are stored securely and versioned to prevent accidental data loss or corruption. Go to [OpenTofu backend configuration](https://opentofu.org/docs/language/settings/backends/configuration/) for more information.
 - **State Locking and Security:** Implement state locking to prevent multiple users or processes from modifying the state simultaneously, reducing the risk of conflicting changes and state corruption. For example, tools like OpenTofu or Terraform provide native support for state locking, typically using a shared backend like a database or cloud storage service. This ensures that only one operation can modify the state at a time, protecting the integrity of your infrastructure configurations.
 
 ### Error Handling and Debugging

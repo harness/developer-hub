@@ -10,13 +10,15 @@ import TabItem from '@theme/TabItem';
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
 
-With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, Harness automatically caches and restores software dependencies to speed up your builds - hassle free.
+With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, Harness automatically caches and restores software dependencies to speed up your builds - hassle free.
 
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
-:::note
-Cache Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+:::info
+* Cache Intelligence is now Generally Available (GA). 
+* Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
+* Cache Intelligence is enabled by default for newly created CI stages. This is configurable in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration) 
+
 :::
 
 
@@ -58,6 +60,8 @@ The cache storage limit depends on your subscription plan type. Please visit [Su
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
 
 The cache retention window is 15 days, which resets whenever a cache is updated.
+
+For blobs larger than 5 GB, multi-part upload (enabled via FF `CI_ENABLE_MULTIPART`) is used for caching to storage, while standard uploads are used for blobs up to 5 GB.
 
 </TabItem>
 <TabItem value="sm" label="Self-managed build infrastructures">
@@ -102,6 +106,10 @@ Cache Intelligence stores the data to be cached in the `/harness` directory by d
 - You're *not* using a [fully supported build tool](#supported-tools-and-paths).
 - You have customized cache locations, such as with `yarn config set cache-folder`.
 - You're using a Windows platform.
+
+:::warning
+When using custom paths, you must also provide a cache key. **If a cache path is specified without a key, Cache Intelligence will be disabled**, skipping cache operations.
+:::
 
 <Tabs>
 <TabItem value="Visual" label="Visual editor">
@@ -173,6 +181,10 @@ Cache paths outside the `/harness` directory must _also_ be declared in [shared 
 Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
 
 You can define custom cache keys if you don't want to use the default cache key naming behavior or you have a use case that requires defining custom cache keys, such as [caching in parallel stages](#cache-intelligence-in-parallel-stages).
+
+:::note
+When **Cache Intelligence** is enabled, the cache plugin automatically detects build tools and determines cache paths, unless custom paths are specified. Cache paths are stored under `<account_id>/default/path/to/directory`.  
+:::
 
 <Tabs>
 <TabItem value="Visual" label="Visual">
@@ -271,6 +283,11 @@ For example, here is a pipeline with two Build (`CI`) stages using Cache Intelli
 ## Enable cache override
 
 The cache override allows you to force push the cache even if the cache key hasn't changed.
+
+:::note
+By default, cache override is set to `true` regardless of cache changes. This is useful if you have infrequent builds and want to ensure your cache remains fresh. You can change the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
+:::
+
 
 To configure the cache override, add `override: true | false` to `stage.spec.caching`.
 

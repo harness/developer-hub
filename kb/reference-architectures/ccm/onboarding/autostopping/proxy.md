@@ -3,6 +3,43 @@ title: Proxy
 description: Cloud Cost Management - AutoStopping using a Proxy VM
 ---
 
+# Setup
+
+When provisioning an an autostopping proxy, you must be sure that the proxy can be reached by users of the application (instance to be stopped), and reach the application (instance). It will also need outbound internet access for initial setup and receive updates from Harness.
+
+There are two common patterns when deploying the proxy, public or private.
+
+If the proxy needs to receive traffic from the public internet it can be placed in a public subnet with an elastic IP.
+
+![](../../../static/proxy-setup-public.png)
+
+If the traffic the proxy is receiving originates from a private network, you can place it in a private subnet as long as it still has access to the internet (usually though a NAT Gateway).
+
+![](../../../static/proxy-setup-private.png)
+
+In both cases the proxy needs access to the internet. It uses this access to be initialized when first provisioned (download envoy), receive updates from Harness (new rules being created), and pass back usage metrics and activity for rules.
+
+# Maintenance
+
+## Rotate API Key
+
+When the API key you used when provision the proxy expires, you will need to rotate the key manually.
+
+Log into the box via SSH using the PEM key you specified when creating the proxy.
+
+The API Key is stored in a file located at `/var/lw_proxy/config.toml`:
+
+```
+accessPointID="ap-crun4gs76otnefrectlg"
+apiURL="https://app.harness.io/gratis/lw/api"
+proxyPort=8093
+usageTrackingPort=8094
+authToken="sat.wlgELJ0TTre5aZhzpt8gVA.xxx.xxx"
+accountID="wlgELJ0TTre5aZhzpt8gVA"
+```
+
+Replace the `authToken` key with your newly created token.
+
 # Troubleshooting
 
 When troubleshooting issues with the Auto Stopping proxy the following are simple steps you can take to narrow down what could be causing issues.

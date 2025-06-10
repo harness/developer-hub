@@ -9,6 +9,8 @@ redirect_from:
 - /docs/category/chaosguard
 - /docs/chaos-engineering/concepts/explore-concepts/chaosguard
 - /docs/chaos-engineering/use-harness-ce/governance/govern-run
+- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts
+- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts/
 ---
 
 This section introduces you to ChaosGuard and describes how Harness enforces security policies during chaos experiments execution.
@@ -28,8 +30,7 @@ The different levels of security policy enforcement include (but are not limited
 ## Flow of control
 The security evaluation step iterates over every active (or enabled) [rule](#rule) for every experiment run in the project. If the evaluation is successful, you can proceed with the experiment. Upon failure, you can't iterate further in the experiment. Below is a flowchart that summarizes the flow of control when you enable a ChaosGuard rule for a fault or set of faults.
 
-    ![flow-chart](./static/chaosguard/flow-chart-chaosguard.png)
-
+    ![flow-chart](../static/chaosguard-concepts/flow-chart-chaosguard.png)
 
 ## Low-level security governance requirements
 The table below describes the requirements for advanced environments.
@@ -85,10 +86,15 @@ A rule becomes active when all its conditions are met, controlling who can execu
 
 The example below describes the rule as **applicable on the cluster chaosday-k8s-cluster between [5 PM, Friday, Sept 15th] to [9 AM, Monday, Sept 18th] for the specific condition**.
 
-![rules-chaosguard](./static/chaosguard/add-conditions.png)
+![rules-chaosguard](../static/chaosguard-concepts/add-conditions.png)
 
 :::tip
 Creating the ChaosGuard rules is subject to Harness RBAC policies. By default, these rules are enabled only for the project admin. However, the admin can delegate this to trusted users (typically in multi- or secondary admin scenarios).
 
-![chaosguard-access-control](./static/chaosguard/chaosguard-access-control.png)
+![chaosguard-access-control](../static/chaosguard-concepts/chaosguard-access-control.png)
 :::
+
+## Next Steps
+
+- [Configure a Condition](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/govern-run#configure-a-condition)
+- [Configure a Rule](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/govern-run#configure-a-rule)

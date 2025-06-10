@@ -144,10 +144,6 @@ The Harness Delegate is a software service you install in your environment. It c
          {
            "name": "MANAGER_HOST_AND_PORT",
            "value": "<MANAGER_HOST_AND_PORT>"
-         },
-         {
-           "name": "LOG_STREAMING_SERVICE_URL",
-           "value": "<LOG_STREAMING_SERVICE_URL>"
          },            
          {
            "name": "DELEGATE_NAME",
@@ -160,10 +156,6 @@ The Harness Delegate is a software service you install in your environment. It c
          {
            "name": "INIT_SCRIPT",
            "value": ""
-         },
-         {
-           "name": "DEPLOY_MODE",
-           "value": "KUBERNETES"
          },
          {
            "name": "DELEGATE_TYPE",
@@ -489,6 +481,39 @@ deploymentConfiguration:
   minimumHealthyPercent: 100
 ```
 
+**ECS Tag Management Support**
+
+:::note
+Currently, the tag management feature is behind the feature flag `CDS_AWS_LAMBDA_ECS_TAG_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Harness also supports managing tags for Amazon ECS services. You can now create, update, or delete tags in your ECS service definition, allowing for better resource organization, automation, and management of your ECS deployments.
+
+
+<details>
+<summary>Sample yaml with tags</summary>
+
+```yaml
+launchType: FARGATE
+serviceName: myapp
+desiredCount: 1
+networkConfiguration:
+  awsvpcConfiguration:
+    securityGroups:
+      - <Security Group Id>
+    subnets:
+      - <Subnet Id>
+    assignPublicIp: ENABLED
+deploymentConfiguration:
+  maximumPercent: 200
+  minimumHealthyPercent: 100
+"tags": 
+  - "key": "Environment",
+  - "value": "Production"
+```
+
+</details>
+
 The ECS Service Definition is now added to the Service.
 
 ![](./static/ecs-deployment-tutorial-42.png)
@@ -802,6 +827,21 @@ You can see the same events in the AWS console for the ECS service:
 You can copy any of these and use them in later steps in your pipeline.
 
 ![](./static/ecs-deployment-tutorial-51.png)
+
+
+:::note  
+You can achieve more accurate failure detection for ECS Rolling Deployments in Harness. Harness evaluates both ECS task statuses and service steady-state statuses to determine deployment health.
+
+<div align="center">
+  <DocImage path={require('./static/ecs-steady-state-logs.png')} width="100%" height="100%" title="Click to view full size image" />
+</div>
+
+<div align="center">
+  <DocImage path={require('./static/ecs-steady-state-logs-2.png')} width="100%" height="100%" title="Click to view full size image" />
+</div>
+
+Currently, this feature is behind the feature flag `CDS_ECS_MONITOR_TASK_STATUS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 ## Review
 
@@ -1473,7 +1513,7 @@ With the above Service Registry ARN specified in the ECS service definition, dep
 
 :::note
 
-Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only. **This feature is only available in Harness CD NextGen.**
+Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only.
 
 :::
 

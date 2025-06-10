@@ -5,57 +5,53 @@ sidebar_label: What's Supported
 ---
 
 :::info 
-
-Harness Artifact Registry is in beta. To enable it on your account, please contact your sales representative or reach out to the team at [ar-interest@harness.io](mailto:support@harness.io).
-
+To enable Harness Artifact Registry in your account, contact your sales representative or reach out to the team at [ar-interest@harness.io](mailto:support@harness.io).
 :::
 
 ## Registries
-
 Harness Artifact Registry support a variety of registry types, and new ones are often added. We currently support the registry types listed below. 
 
 ### Supported registry types
-
 These are the currently supported registry types. 
-- Docker
-- Helm
+- **Docker:** Your go-to for container images.
+- **Helm:** Perfect for managing Kubernetes applications.
+- **Generic:** Flexible for all your needs.
+- **Maven:** Essential for Java projects.
+- **Gradle:** Streamline your build automation.
+- **SBT (Scala Build Tool):** Tailored for Scala and Java projects.
+
+### Beta
+- **Python:** For all your Python packages.
+- **NPM:** JavaScript package management.
 
 ### Coming Soon
-
 In addition to the registry types above, support for the following registries will be coming soon!
-- Generic
-- Maven
-- NPM
-- Python
-- Go
-- Nuget
+- **Go:** Support for Go modules.
+- **NuGet:** .NET package manager.
+- **Debian:** For Debian packages.
+- **Rust:** Rust package management.
+- **RPM:** Red Hat package management.
+- **Ruby:** RubyGems support.
+- **Conan:** C/C++ package manager.
+- **Alpine:** For Alpine Linux packages.
 
 ## Platform Support
-
-Harness Artifact Registry (HAR) is a part of the Harness Platform and benefits greatly from all the platform features you know and love. Here's a glimpse of what you can do with the power of the Harness Platform when using Artifact Registry.
+Harness Artifact Registry (HAR) is seamlessly integrated with the Harness Platform, offering you robust features and capabilities.
 
 ### Role-based Access Control (RBAC)
-
-HAR has full RBAC support. Simply go to your project settings, create a new role, and scroll to the bottom to find the supported HAR resources. 
+HAR has [full RBAC support](/docs/platform/role-based-access-control/rbac-in-harness). Simply go to your project settings, create a new role, and scroll to the bottom to find the supported HAR resources. 
 
 This comes with 3 roles automatically created for you:
 - **Artifact Registry Viewer**: Bind to this role to allow a user to view registries and its contents.
 - **Artifact Registry Contributor**: Bind to this role to allow a user to push an pull from registries.
 - **Artifact Registry Admin**: Bind to this role to allow a user full admin access to the AR module.
 
-To learn more on how to use RBAC, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
-
 ### Continuous Integration (CI)
-
 HAR provides native support for pushing images to Docker registries, eliminating the hassle of managing external connections. To set up, use the **Build and Push to Docker** step in a CI stage and select **Harness Artifact Registry** as your registry type. From there, simply choose the registry and image you want to use from convenient, pre-populated lists in the fields below. 
 
-To learn more about pushing artifacts from CI, go to [Build and Push to Docker](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry)
+Learn more about streamlining your CI process with our guide to [Build and Push to Docker](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry)
 
 ### Continuous Deployment (CD)
+Speed up your deployment process by using HAR as your [Artifact sources in CD](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources) without the for connectors.
 
-HAR is now available as an artifact source for CD services. By using HAR as a service's artifact source, you eliminate any need for connectors and vastly speed up the service setup and configuration process.
-
-To learn more about CD services, go to the [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview).
-
-To learn more about artifact sources in CD, go to [CD artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources)
-
+Learn more about [CD services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview).

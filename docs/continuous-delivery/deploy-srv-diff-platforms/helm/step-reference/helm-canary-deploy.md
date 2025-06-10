@@ -65,6 +65,6 @@ See the following:
 * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
-
+* [Command Flags](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart#configure-command-flags-at-step-level)
 
 

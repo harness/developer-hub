@@ -4,6 +4,16 @@ description: Set baseline for team performance and measure improvements by track
 sidebar_position: 4
 ---
 
+<CTABanner
+  buttonText="Explore SEI DORA Dashboard"
+  title="Get a more accurate picture of your entire SDLC with the SEI DORA Dashboard"
+  link="/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/"
+  closable={true}
+  target="_self"
+/>
+
+
+
 DevOps Research and Assessment (DORA) metrics is a standard measure of DevOps performance. By understanding these metrics, you can make informed decisions and implement improvements that can help your business grow.
 
 ## Create queries to pull data into your DORA dashboard
@@ -120,6 +130,34 @@ Lead Time to Production shows the median duration of deployments.
 6. Select **Save** to save the query as a tile on your dashboard.
 
 ![picture 0](static/0d658c5d680e7d165ec15ece8f89d73bb206e23d5c7a70304456b09abcfacdd0.png)  
+
+
+## Improve DORA reporting with Harness Software Engineering Insights
+
+While the DORA metrics dashboard in Harness CD provides visibility into deployment frequency, lead time, failure rates, and recovery times, it focuses primarily on deployment activity within Harness pipelines.
+
+This view may not fully capture bottlenecks or inefficiencies in upstream stages of the software delivery lifecycle (SDLC), such as hygiene in the issue management systems, code review delays, testing gaps, or build tool inefficiencies.
+
+For a holistic view of software delivery performance across your entire toolchain (e.g., Jira, Jenkins, GitHub, Harness CD), use the DORA dashboard in [Harness Software Engineering Insights (SEI)](/docs/software-engineering-insights/get-started/overview).
+
+![](./static/sei-dora-dashboard-gif.gif)
+
+This dashboard is powered by:
+
+* **[DORA profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile)**: Allows you to define the software delivery lifecycle with customizable thresholds and higher granularity for measuring DORA metrics.
+* **[Correlation engine](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/)**: Analyzes data from all integrated tools (Issue management system, CI, CD, SCM, incident management, etc.) to identify root causes of bottlenecks. For example:
+  * Long lead times caused by code review delays in GitHub
+  * High failure rates linked to flaky tests in Jenkins pipelines
+  * Recovery time outliers correlated with specific service architectures
+
+Use the CD DORA dashboard for pipeline-level metrics, and Software Engineering Insights for organization-wide optimization.
+
+### Related resources
+
+* [Harness Software Engineering Insights Overview](/docs/software-engineering-insights/get-started/overview)
+* [Set up the DORA profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile)
+* [Set up the DORA dashboard](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight)
+
 
 
 

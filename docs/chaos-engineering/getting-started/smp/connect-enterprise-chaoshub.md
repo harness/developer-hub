@@ -1,6 +1,6 @@
 ---
 title: Connect Enterprise ChaosHub via proxy
-sidebar_position: 2
+sidebar_position: 20
 description: Connect Enterprise ChaosHub in an air-gapped setup via proxy
 redirect_from:
 - /docs/chaos-engineering/get-started/ce-on-smp/configure-proxy/connect-enterprise-chaoshub

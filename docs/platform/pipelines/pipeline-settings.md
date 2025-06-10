@@ -95,6 +95,17 @@ The timeout limit is the maximum allowable time a stage or pipeline can run.
 
 By default, the **Pipeline Timeout** and **Stage Timeout** settings are set to the maximum for your plan tier. You can edit these limits to anything less than the maximum for your plan tier. If needed, you can configure different timeout limits at the account, org, and project scopes.
 
+#### Precedence of Timeout Settings
+
+Priority order (highest to lowest):
+
+- Account-level timeout (highest priority)
+- Organization-level timeout
+- Project-level timeout
+- Pipeline-level timeout
+- Stage-level timeout
+- Step-level timeout (lowest priority)
+
 Manually configuring a pipeline or stage to have a longer timeout than the system limit, the system limit is still enforced.
 
 The maximum limits for each plan tier are as follows:
@@ -161,7 +172,7 @@ For individual pipeline settings, such as stage and step settings, pipeline trig
 
 * [Harness CD](/docs/continuous-delivery)
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-* [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md)
+* [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md)
 * [Triggers](/docs/category/triggers)
 * [Pipeline failure handling, timeout limits, and retries](/docs/category/failure-handling)
 * [Conditional executions](/docs/platform/pipelines/step-skip-condition-settings)

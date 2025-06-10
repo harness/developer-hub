@@ -14,7 +14,7 @@ This topic provides steps on using Harness to provision a target AWS environment
 
 - You can add AWS CDK provisioning steps to Harness Deploy and Custom stage types.
 - You can perform ad hoc provisioning or provision the target environment for a deployment as part of the deployment stage.
-
+- Currently, OIDC connector is not supported AWS CDK plugin.
 ## Demo Video
 
 <DocVideo src="https://www.loom.com/share/5a118a7ace3e49819c697b7131468990?sid=36ae85f0-0a39-4c5c-ba62-0e1a9d52c4de" />
@@ -49,7 +49,7 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
   - The Kubernetes infrastructure is also used for Helm, Native Helm, and Kustomize deployment types.
 - [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
-- [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
+- [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment)
 - [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart)
 - [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
 - [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)

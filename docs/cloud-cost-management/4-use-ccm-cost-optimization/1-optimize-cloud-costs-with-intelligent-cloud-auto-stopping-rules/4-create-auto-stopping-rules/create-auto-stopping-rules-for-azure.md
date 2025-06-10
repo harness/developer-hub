@@ -11,12 +11,6 @@ helpdocs_is_published: true
 # Create AutoStopping Rules for Azure
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
 
-## Before you begin
-
-* [Create an Azure Connector for AutoStopping Rules](../1-add-connectors/add-azure-connector.md)
-* [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md)
-* [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
-
 ## Prerequisites
 
 * Make sure that you have Azure on-demand VMs created
@@ -47,7 +41,7 @@ Perform the following steps to link your Azure cloud account to Harness.
    
      ![](./static/create-auto-stopping-rules-for-azure-51.png)
 3. If you have already linked your Azure account and want to use that account, then select the Azure account from the list.
-4. If you have not added your cloud account, click **New Connector**. For the detailed steps, see [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md).
+4. If you have not added your cloud account, click **New Connector**. 
    
      ![](./static/create-auto-stopping-rules-for-azure-52.png)
 
@@ -72,7 +66,7 @@ Perform the following steps to get started with AutoStopping Rule.
 2. In the cloud account type, select **Azure**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
 3. Select your Azure account from the **Connect to your Azure account**.  
   
-  If you have not added an Azure cloud account, see [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md).
+  If you have not added an Azure cloud account, see [Connect to an Azure Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure).
 4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
 5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.  
 AutoStopping shuts down (for on-demand) or snapshot and terminate (for spot) the instances after the idle time period has elapsed.
@@ -100,7 +94,7 @@ You can add multiple instances to a single Rule. However, all the VMs should be 
 Add a cluster to be managed by the AutoStopping Rule.
 
 1. Select **Kubernetes Cluster** and then click **Add a cluster**.
-2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md).
+2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes).
 3. Once you have finished selecting the Kubernetes cluster, click **Add selected**.  
 
 :::note
@@ -337,7 +331,7 @@ You can use either of the following methods:
 **Auto-generated URL**
 You can use the auto-generated URL to access the resources managed by this AutoStopping Rule.
 
-Every AutoStopping rule has an auto-generated URL. This URL is a subdomain to the domain name specified for the [load balancer](../3-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL works automatically and points to the correct load balancer.
+Every AutoStopping rule has an auto-generated URL. This URL is a subdomain to the domain name specified for the [load balancer](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/load-balancer). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL works automatically and points to the correct load balancer.
 
 Select **Use the auto-generated URL to access the resources managed by this AutoStopping Rule**.
 

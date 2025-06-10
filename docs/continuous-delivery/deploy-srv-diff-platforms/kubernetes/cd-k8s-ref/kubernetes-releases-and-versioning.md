@@ -15,24 +15,7 @@ Every Harness deployment creates a new release with an incrementally increasing 
 By default, all ConfigMaps and Secrets are versioned by Harness. The corresponding references for these ConfigMaps and Secrets in other manifest objects are also updated (for example, managed workloads like Deployment, and so on).
 Versioning does not change how you use ConfigMaps or Secrets. You need not reference the release numbers when using ConfigMaps or Secrets. 
 
-You can see the use of release numbers and versioning in the **Deployments** page details in Harness First Gen,  (`Current release number is`, `Previous Successful Release is 4`):
-
-
-```bash
-INFO   2019-02-15 10:53:33    Kind                Name                                    Versioned   
-INFO   2019-02-15 10:53:33    Namespace           default                                 false       
-INFO   2019-02-15 10:53:33    Secret              image-pull-secret                       false       
-INFO   2019-02-15 10:53:33    Secret              sample                                  true        
-INFO   2019-02-15 10:53:33    Deployment          nginx-deployment                        false       
-INFO   2019-02-15 10:53:33      
-INFO   2019-02-15 10:53:33      
-INFO   2019-02-15 10:53:33    Current release number is: 5  
-INFO   2019-02-15 10:53:33      
-INFO   2019-02-15 10:53:33    Previous Successful Release is 4
-```
-
-
-And in the logs of the **deployment** in the **prepare** section of the logs in Next Gen, (`Current release number is 7`, `Previous Successful Release is 6`):
+You can see the use of release numbers and versioning in the logs of the **deployment** in the **prepare** section of the logs, (`Current release number is 7`, `Previous Successful Release is 6`):
 ```
 Manifests processed. Found following resources: 
 
@@ -71,6 +54,12 @@ Harness also uses a release name for tracking releases.  These release names sho
 :::info
 
 Do not change the **release name value** between deployments unless absolutely necessary. The release name is used by Harness for tracking releases of app versions and rollback. If you change the release name value between deployments, this will reset the versioning number and will stop rollbacks up to that point (breaking the versioning chain)
+
+:::
+
+:::warning
+
+Not having a unique release name could affect licensing. Please ensure your release names are unique.
 
 :::
 

@@ -1,6 +1,6 @@
 ---
-title: Search your code with AIDA
-description: Supercharge your code searches with AIDA.
+title: Search your code with Harness AI
+description: Supercharge your code searches with Harness AI.
 sidebar_position: 50
 ---
 

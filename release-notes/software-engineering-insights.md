@@ -22,6 +22,176 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## April 2025
+
+### Version 202504.2
+
+#### Early access features
+
+* You can now configure your GitHub integration to filter data using GitHub Organizations and GitHub Teams making it easier to align your SEI insights with your org structure.
+  * This filtering is available only during initial setup and post-configuration setup experience of the GitHub integration.
+  * The feature is currently in **BETA** and requires the SEI_GITHUB_REPO_SELECTION_ENABLED & SEI_GITHUB_REPO_SELECTION_ENABLED feature flag. To request early access, please contact [Harness Support](/docs/software-engineering-insights/sei-support).
+
+#### Fixed issues
+
+* Fixed a bug that was preventing correct sorting in drilldown views across sprint tracking widgets. (SEI-10607)
+* We resolved an issue where clicking into a ticket from a PR details view would sometimes lead to an empty screen. The correct ticket/work-item data will now appear as expected. (SEI-11418)
+* Fixed the issue where data in the Jira Releases widget was displayed incorrectly due to local timezone variations. All data is now consistently shown in UTC.  (SEI-11603)
+
+### Version 202504.1
+
+#### New features & enhancements
+
+* Introduced a new “Load More” experience for SEI Dashboards containing more than four widgets. This enhancement improves performance by deferring widget data loading until the user chooses to view more. (SEI-11071)
+* Improved behavior for precalculation-based widgets. When switching between a pre-calculated interval and a custom interval, the system now intelligently detects the change and switches between pre-calculated and live data as needed, ensuring accurate data display. (SEI-11106)
+
+#### Fixed issues
+
+* Fixed an issue that caused inconsistencies in the data displayed between the Issue/Work-item Details page and Sprint Metrics widgets. Data is now aligned across both views. (SEI-11343)
+
+## March 2025
+
+### Version 202503.2.1
+
+#### Hotfixes
+
+* Resolved an issue where the SCM PRs, SCM Rework, and SCM Coding Days reports were not respecting collection-level filters. The applied filters will now correctly reflect in the report outputs. (SEI-11160) (ZD-81229)
+* Added support for OAuth-based authentication across all SEI integrations for accounts using a Vanity URL. (SEI-11227)
+
+### Version 202503.2
+
+#### Early access features
+
+* Added support for ETA and ETA Status columns in both the Hygiene and Overview widgets within Epic Insights. This feature is currently in **BETA** and requires the SEI_EPIC_REPORT feature flag. To enable it, please contact [Harness Support](/docs/software-engineering-insights/sei-support).
+
+#### New features & enhancements
+
+* The Bitbucket integration has been upgraded to leverage SEI’s advanced pre-flight check framework, improving validation accuracy and offering clearer, actionable user experience during integration setup.  (SEI-10809)
+
+#### Fixed issues
+
+* Fixed an issue where the Issue/Work-item Details page failed to load across various widgets for users assigned the SEI Viewer role binding. (ZD-80008) (SEI-10806)
+* Resolved a bug in the SonarQube integration filter where the Starts with condition was not functioning correctly. (SEI-10935)
+
+### Version 202503.1.1
+
+#### Fixed issues
+
+* Resolved an issue in the Sprint Metrics Trend Report where charts became cluttered when displaying more than 50 data points. We now optimize the number of x-axis labels rendered, improving both readability and widget performance. (SEI-10887)
+* Fixed a bug in the Jira Backlog Trend Report where the first month's bar was missing from the bar chart when selecting time ranges like Last Month, Last 3 Months, Last Quarter, or Last 2 Quarters. (SEI-10818)
+
+### Version 202503.1
+
+#### Early access features
+
+:::note
+This feature is currently in **BETA** and requires the SEI_EPIC_REPORT feature flag. To enable it, please contact [Harness Support](/docs/software-engineering-insights/sei-support)
+:::
+
+* Epic Insights now supports filtering by Project, Health, Assignee, and Status, enabling more precise views into epic-level data. (SEI-10638)
+* The Epic Hygiene widget now highlights: (SEI-10710)
+  * Epics missing acceptance criteria
+  * Epics with short descriptions (under 10 characters)
+
+#### New features & enhancements
+
+* We’ve optimized how SEI ingests data from GitHub. Now, we skip repositories with no recent activity (in the last 60 days), which helps reduce unnecessary noise and improves system performance. (SEI-10596)
+
+#### Fixed issues
+
+*  Fixed an issue where lead time metrics were being inflated due to incorrect mapping between Jira tickets and associated commits. (SEI-10415)
+*  Resolved an issue that prevented GitHub App-based authentication from working as expected.(SEI-10764)
+*  Fixed a bug that caused Bitbucket integration setup to fail when using OAuth-based authentication. (SEI-10821)
+
+## February 2025
+
+### Version 202502.2.1
+
+<!-- February 28, 2025 -->
+
+#### Early access features
+
+* You can now define the start date of an **epic** or **initiative** — indicating when the work item or issue was prioritized and work began — directly within the widget settings for the [Epic Overview](/docs/software-engineering-insights/analytics-and-reporting/epic-insights#epic-overview) and [Epic Hygiene widgets](/docs/software-engineering-insights/analytics-and-reporting/epic-insights#track-epic-hygiene). This feature is currently in **BETA** and requires the SEI_EPIC_REPORT feature flag. To enable it, please contact [Harness Support](/docs/software-engineering-insights/sei-support). (SEI-10636)
+
+#### New features & enhancements
+
+* We have made significant optimizations to the data processing layer for [Azure DevOps](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops). These enhancements accelerate data ingestion and ensure quicker visibility of data in the widgets. (SEI-10029)
+
+#### Fixed issues
+
+* Resolved an issue where pagination was not functioning correctly on the Collections page. (SEI-10400)
+
+
+### Version 202502.2
+
+<!-- February 25, 2025 -->
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### New features & enhancements
+
+* We have improved the ingestion logic for the [Bitbucket](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud) & [GitHub integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration). The ingestion logic now excludes merge commits to prevent duplicate data from affecting metric calculations. (SEI-10071) (10070)
+
+* Added support for selecting a **GitHub Organization** when creating a new GitHub integration. This reduces the scope of ingestion, making it easier to select repositories for metric tracking.
+
+* We have enhanced the alerting framework to send **in-product notifications** when ingestion failures occur due to **expired access tokens** or an **offline satellite**. (SEI-10172)
+
+* We have improved the logic to determine when a ticket is marked as **delivered** while calculating the sprint metrics. (SEI-10250) (SEI-10391) (ZD-77182) (ZD-77936) (ZD-78754)
+  * If a ticket is marked **done** after the sprint starts, it is considered delivered.
+  * If the ticket is marked **done** but later got **reopened**, it will no longer be marked as delivered.
+  * This logic is now applied to metrics such as **Delivered tickets** and **Delivered points**.
+
+* The default ingestion frequency for Harness CI/CD integration has been updated from 1 hour to 6 hours. (SEI-10353)
+
+#### Fixed issues
+
+* Fixed an issue where editing root collection settings was not working as expected. (SEI-10431)
+
+* Resolved a data processing issue that caused SCM widgets to display incorrect data for some accounts. (SEI-10368)
+
+
+### Version 202502.1.1
+
+<!-- February 17, 2025 -->
+
+#### Early access features
+
+* We have added support for fetching data from read replicas in the ServiceNow integration. This feature is behind the feature flag SEI_SERVICE_NOW_ADVANCE_CONFIGURATION_FIELD. Contact [Harness Support](/docs/software-engineering-insights/sei-support) to enable it for your account.
+
+#### New features & enhancements
+
+This release does not include any new features & enhancements.
+
+#### Fixed issues
+
+* Fixed an issue where ticket details were not displayed in the **Developer overview scorecard** within Trellis widgets. (SEI-10269) (ZD-77492)
+
+
+### Version 202502.1
+
+<!-- February 11, 2025 -->
+
+#### Deprecated features
+
+Support for **Workflow profiles configured using only Jira stages** (i.e., only Jira statuses) has been deprecated in the **Lead Time by Stage** widget.
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### New features & enhancements
+
+* We have improved the **pre-flight checks** for integrations. The framework now validates whether the provided token has the necessary permissions for all required organizations and their respective repositories. (SEI-9953)
+
+* We have improved the error messaging for generating the **AI productivity insights** reports for better clarity and troubleshooting. (SEI-10405)
+
+#### Fixed issues
+
+* Resolved an issue where column alignments in the **Contributors** records page were incorrect. (SEI-10257)
+* Fixed an issue where the **Open report** functionality in widgets was not working as expected. (SEI-10413) (ZD-78271)
+
 ## January 2025
 
 ### Version 202501.2
@@ -188,7 +358,7 @@ This release does not include any early access features.
 #### Fixed issues
 
 * Fixed a bug that previously resulted in the incorrect display of the repository count ingested into the system for the GitHub integration (SEI-8748)
-* The issue with selecting columns in the open report view while using the HarnessCICD integration has now been resolved (SEI-1950)
+* The issue with selecting columns in the open report view while using the Harness CI/CD integration has now been resolved (SEI-1950)
 * Resolved an issue in the SCM Committers widget where clicking on a Contributor did not redirect to the Developer Scorecard (SEI-9021) (ZD-71647)
 
 ### Version 202410.1

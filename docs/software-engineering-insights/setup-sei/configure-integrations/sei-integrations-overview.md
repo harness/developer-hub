@@ -13,7 +13,7 @@ Interactions with third-party systems on Harness SEI are managed through the SEI
 You can use any application-specific integration supported by Harness SEI to integrate your tool with SEI. If you need to connect a CI/CD tool that currently lacks integration support from SEI, you have the option to create a custom CI/CD integration separately.
 
 :::info
-After adding an integration, it may take up to 24 hours for data to fully sync to SEI. During this time, any widgets you set up in Insights may not display data until the sync is complete.
+After adding an integration, it may take up to 24-72 hours for data to fully sync to SEI. During this time, any widgets you set up in dashboards may not display data until the sync is complete.
 :::
 
 ![](./static/integrations-overview.png)

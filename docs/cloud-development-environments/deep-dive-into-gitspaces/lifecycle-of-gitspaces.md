@@ -5,12 +5,6 @@ sidebar_position: 2
 sidebar_label: Gitspace Lifecycle
 ---
 
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io
-
-:::
-
 This guide explains the lifecycle of Gitspaces, detailing the different states a Gitspace can exist in and the actions associated with each state.
 
 <img width="800" src="https://github.com/user-attachments/assets/e6a6f759-7165-4d09-9dc9-21cb6d5d3049"/>

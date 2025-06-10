@@ -41,7 +41,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ### For more information
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
 
@@ -56,9 +56,9 @@ The recommended workflow is to add an Anchore Enterprise step to a Build or Secu
 
 #### Scan mode
 
-import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeOrch from './shared/step-palette/scan/mode/orchestration.md';
+import StoSettingScanModeData from './shared/step-palette/scan/mode/extraction.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
@@ -67,7 +67,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan configuration
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from './shared/step-palette/scan/config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -76,7 +76,7 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-import StoSettingScanTypeCont     from './shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeCont     from './shared/step-palette/target/type/image.md';
 
 <StoSettingScanTypeCont />
 
@@ -84,8 +84,8 @@ import StoSettingScanTypeCont     from './shared/step_palette/target/type/_image
 #### Target and Variant Detection 
 
 
-import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectContainer from './shared/step-palette/target/auto-detect/container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectContainer/>
 <StoSettingScanTypeAutodetectNote/>
@@ -93,7 +93,7 @@ import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from './shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
@@ -101,7 +101,7 @@ import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -111,49 +111,49 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 #### Type  (_orchestration_)
 
-import StoSettingImageType from './shared/step_palette/image/_type.md';
+import StoSettingImageType from './shared/step-palette/image/type.md';
 
 <StoSettingImageType />
 
 
 #### Domain
 
-import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+import StoSettingImageDomain from './shared/step-palette/image/domain.md';
 
 <StoSettingImageDomain />
 
 
 #### Name
 
-import StoSettingImageName from './shared/step_palette/image/_name.md';
+import StoSettingImageName from './shared/step-palette/image/name.md';
 
 <StoSettingImageName />
 
 
 #### Tag
 
-import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+import StoSettingImageTag from './shared/step-palette/image/tag.md';
 
 <StoSettingImageTag />
 
 
 #### Access ID
 
-import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
+import StoSettingImageAccessID from './shared/step-palette/image/access-id.md';
 
 <StoSettingImageAccessID />
 
 
 #### Access Token
 
-import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
+import StoSettingImageAccessToken from './shared/step-palette/image/access-token.md';
 
 <StoSettingImageAccessToken />
 
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
@@ -168,13 +168,13 @@ The fully-qualified URL to the scanner API, for example `https://anchore.company
 
 #### Access ID
 
-import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
+import StoSettingAuthAccessID from './shared/step-palette/auth/access-id.md';
 
 <StoSettingAuthAccessID />
 
 #### Access Token
 
-import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.md';
 
 <StoSettingAuthAccessToken />
 
@@ -187,7 +187,7 @@ The name of the image that you want to extract from Anchore. In Extraction mode,
 
 ### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
@@ -196,40 +196,46 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 Use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with flags such as `--force`. This flag resets the image analysis status to `not_analyzed`.  
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
 
 ### Settings
 
-import StoSettingSettings from './shared/step_palette/all/_settings.md';
+import StoSettingSettings from './shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
 ## View Anchore policy failures
 Anchore policy failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Successfully passed policies will not be included in the scan results.  Additionally, you can apply an OPA policy to fail the pipeline based on the policy failures. This can be achieved using the [Security Tests - External Policy Failures](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-external-policy-failures) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).
+
+## Use scanner-provided Severity
+
+import ScannerProvidedSeverity from './shared/use-scanner-provided-severity.md';
+
+<ScannerProvidedSeverity />
 
 ## Proxy settings
 
@@ -258,7 +264,7 @@ Note that in this example, the resource limits for the Docker-in-Docker step are
 
 pipeline:
   name: anchore step palette
-  identifier: anchore_step_palette
+  identifier: anchore_step-palette
   projectIdentifier: default
   orgIdentifier: default
   tags: {}

@@ -4,23 +4,15 @@ description: Create and use your own Terraform plugin images.
 sidebar_position: 30
 ---
 
-<CTABanner
-  buttonText="Learn More"
-  title="Pending release"
-  tagline="The IaCM Default Pipelines feature is currently pending release and will be available soon!"
-  link="https://developer.harness.io/roadmap/#iacm"
-  closable={true}
-  target="_self"
-/>
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness provides the flexibility to use custom images in your IACM stage, which refers to individual Terraform plugin steps such as the `terraform init` step in an IaCM pipeline provision stage. This guide walks you through the process of creating your custom image and incorporating it into your Harness pipelines.
+Harness provides the flexibility to use custom images in your IaCM stage, which applies to individual infrastructure provisioning steps, such as the `init` step in an OpenTofu or Terraform pipeline stage. This guide walks you through the process of creating a custom image and incorporating it into your Harness pipelines.
+
 
 <details>
     <summary>
-        Network Connectivity Requirements
+        ## Network Connectivity Requirements
     </summary>
 When using OpenTofu with Harness IaC Management (IaCM), it’s important to ensure that your environment allows the necessary network access for OpenTofu to function properly. OpenTofu relies on external services to download binaries, modules, and providers. If your environment is restricted, such as in air-gapped setups or strict firewall configurations, you may need to whitelist specific domains or use alternative strategies like custom images as mentioned above.
 
@@ -47,20 +39,15 @@ Make sure to configure your firewall to allow outbound access to the domains lis
 ## Create an image
 Harness allows you to create custom images based on a provided base image. This enables you to tailor the image to your specific needs and use it in your workflows.
 
-:::warning Version lock-in
-Once you create a custom image using our base image, it becomes **version-locked**. This means that if we release a new version of our base image, your custom image will not automatically update to the latest version. For instance, if you create an image today using our base image version "1.0.0" and we subsequently release version "1.1.0," your custom image will still be using version "1.0.0."
+:::warning Version Lock-In & Mitigating Challenges
+Custom images created from our base image are **version-locked**, meaning they won't automatically update with new releases. While an outdated version might not cause pipeline failures, it could lack features, have security vulnerabilities, or face compatibility issues.
 
-If your version is out-of-date, while it is unlikely to cause a pipeline failure, your current version may lack some features, be open to security vulnerabilities or run into compatibility issues. In such cases, follow the **Mitigating versioning challenges** section below:
-:::
+To keep your custom image current with our latest improvements, periodically check for updates to our base image and rebuild your custom image as needed. Proactively monitor our releases to fully benefit from the latest enhancements.
 
-:::tip Mitigating versioning challenges
-To address this versioning challenge and ensure that your custom image stays up-to-date with our latest improvements and features, you can implement specific steps within your CI/CD pipelines. These steps may include periodically checking for updates to our base image and rebuilding the custom image as necessary. It's crucial to proactively monitor our releases and sync the custom images to take full advantage of the latest enhancements.
-
-**To help detect out-of-date versions, Harness log a warning if your image version is five versions behind the latest release.**
+**Harness will log a warning if your image version is five versions behind the latest release, helping you detect out-of-date versions.**
 :::
 
 ### Create a custom image
-
 Create custom images with root-based and rootless custom containers for **Harness Cloud** and **Kubernetes** environments. The following examples demonstrate package installation via `microdnf` and direct binary installation for tools like `kubectl`.
 
 <Tabs>
@@ -129,7 +116,7 @@ USER app
             && rm kustomize_v5.3.0_linux_amd64.tar.gz
     ```
 </details>
-
+---
 
 ## Use your own image
 To use your custom image in a step, create a reference in the YAML configuration indicating that the step should use your image. 
@@ -146,14 +133,17 @@ To use your custom image in a step, create a reference in the YAML configuration
         connectorRef: privateConnector  # (2)
 ```
 :::note
-In this example, the `image` attribute **(1)** in the YAML points to the plugin image in the Elastic Container Registry (ECR) where it is hosted. If your image is hosted in a private ECR, you'll need to create a connector for that ECR and define the `connectorRef` **(2)** for the connector. This ensures that Harness can access the image. At this stage, the "apply" step in your pipeline will use the "private_harness_terraform_plugin" and have access to `kubectl` and `kustomize` for its operations.
+In this example, the `image` attribute **(1)** in the YAML points to the plugin image hosted in the Elastic Container Registry (ECR) to store your Docker images securely. 
+
+If it's in a private ECR, create a connector and define the `connectorRef` **(2)** to allow Harness access and to ensure the `apply` step in your pipeline uses the 'private_harness_terraform_plugin' and has access to `kubectl` and `kustomize` for operations.
 :::
 
+---
 ## IACM execution-config
 To use images from your repository in an IACM stage, you can use the `execution-config` API endpoints. 
 
 :::note
-Although some images mentioned here are also used by [CI](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/), it's important to note that any overrides specified using the IACM `execution-config` APIs are not applied to CI stages and vice versa. The images that can be overridden are:
+Although some images mentioned here are also used by [CI](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/), it's important to note that any overrides specified using the IACM `execution-config` APIs are not applied to CI stages and vice versa. The images that can be overridden are:
 
 - harness/ci-addon.
 - harness/ci-lite-engine.
@@ -242,3 +232,6 @@ Although some images mentioned here are also used by [CI](https://developer.harn
     ```
     </TabItem>
 </Tabs>
+
+## Conclusion
+In conclusion, custom images provide a powerful way to optimize your IaCM pipelines. By staying proactive with updates and leveraging the flexibility of Harness, you can ensure robust, secure, and efficient infrastructure management. Ready to take the next step? Implement these strategies and watch your deployment processes transform!

@@ -1,6 +1,8 @@
 ---
 id: pod-jvm-method-exception
 title: Pod JVM method exception
+redirect_from:
+- /docs/chaos-engineering/technical-reference/chaos-faults/spring-boot/spring-boot-exceptions
 ---
 
 Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.

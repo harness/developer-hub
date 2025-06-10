@@ -1,67 +1,102 @@
 ---
-title: CI onboarding guide
+title: Get Started with Harness CI
 description: A self-service onboarding guide for Harness CI.
 sidebar_position: 4
-sidebar_label: Onboarding guide
+sidebar_label: Get Started
 ---
 
-Harness CI simplifies the code development and testing process. In Harness CI pipelines, you model your build and test processes as CI stages. Each stage includes steps for building, testing, and pushing your code. Pipelines can be triggered manually or automatically by triggers, such as Git commits and pull requests.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-This guide explains what you need to know to get started using Harness CI to build and test your code.
+Welcome to the Harness CI onboarding guide. Discover how Harness accelerates software builds, enhances developer productivity, and streamlines CI processes with [intelligence features](/docs/continuous-integration/use-ci/harness-ci-intelligence), AI-driven insights, and hyper-optimized build infrastructure.
 
-## Onboard to the Harness Platform
+This guide will help you quickly get started with Harness CI, from setup to running your first build.
 
-If you're new to Harness, review the [Harness Platform onboarding guide](/docs/platform/get-started/onboarding-guide) and [Harness Platform key concepts](/docs/platform/get-started/key-concepts) before onboarding to CI.
+## Prerequisites
 
-## Learn about Harness CI
+Before beginning the walkthroughs in this guide, ensure you have:
 
-Learn about the features, components, and key concepts of Harness CI:
-
-* [CI overview](./overview.md): Learn about Harness CI architecture and key features, such as Harness Intelligence and Harness Cloud.
-* [CI key concepts](./key-concepts.md): Learn about common terminology and functionality in Harness CI, such as pipelines, stages, steps, plugins, and more.
+- Access to a Harness account.
+- Access to a source code repository such as [Harness Code Repository](/docs/code-repository/get-started/overview).
+- Have reviewed [CI overview](/docs/continuous-integration/get-started/overview) and [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
+- Have reviewed the [Harness Platform onboarding guide](/docs/platform/get-started/onboarding-guide) and [Harness Platform key concepts](/docs/platform/get-started/key-concepts).
+- Have reviewed the [Harness CI migration guides](/docs/category/migrate-to-harness-ci) if you're migrating from another CI provider.
 
 ## Create your first Harness CI pipeline
 
-Learn about [creating pipelines in Harness CI](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md) and then try it for yourself:
+This getting started guide will walk you through setting up a build pipeline for the first time.
 
-* [Tutorial - Build on Harness Cloud](./tutorials.md)
-* [Tutorial - Build on a Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
+<Tabs>
+<TabItem value="Interactive Guide">
+<DocVideo src="https://app.tango.us/app/embed/e56c08cc-4d5c-40b0-a6f7-f8cf27a06a89?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create your first CI Pipeline"/>
+</TabItem>
+<TabItem value="Step-by-step">
 
-### Build infrastructure options
+### Create a pipeline
 
-Harness offers several build infrastructure options, including Harness-managed and self-managed options. To compare build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+1. Click the module selector in the top left and navigate to the Continuous Integration module. 
+2. Click **Pipelines**
+3. Click **+ Create a Pipeline**.
+4. Enter the name of your pipeline.
+5. Click **Start**.
 
-Harness recommends starting with [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), which you can start using in minutes and is available for all plan tiers.
+### Add and configure a CI stage
 
-### Migrate to Harness CI
+1. Click **Add Stage**. 
+2. Select **Build** as your stage type and name your stage.
+3. Select your git provider. If you choose you a third party provider, you will need to set up a connector. Refer to the [connectors' documentation](/docs/category/code-repo-connectors/)
+4. Select your code repository.
+5. Click **Set up Stage**.
 
-If you're migrating to Harness CI from another CI provider, review the [Harness CI migration guides](/docs/category/migrate-to-harness-ci) for useful information about converting your existing workflows to Harness CI pipelines.
+### Choose your infrastructure
 
-## Advance your pipelines
+In your CI stage:
+
+1. Click the **Infrastructure** tab.
+2. Choose **Cloud**. 
+   - This will run the build on Harness Cloud. To learn more, refer to the [Harness Cloud documentation](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+   - Learn more about [which build infrastructure option is right for you](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+3. Leave the default options for the operating system and architecture. 
+4. Click **Continue**.
+
+### Create your execution steps
+
+In your CI stage:
+
+1. Click the **Execution** tab.
+2. Click the plus button to add a step. 
+3. Find and select the **Run** step from the step library.
+4. Name your run step. 
+5. Enter your build command. For example:
+    ```
+    echo "Harness CI is fast"
+    ```
+6. Click **Apply Changes**.
+7. Click **Save**. 
+
+### Run your pipeline
+
+In your pipeline:
+
+1. Click **Run**. 
+2. Select **Git Branch** as your build type.
+3. Enter your branch name.
+4. Click **Run Pipeline**.
+
+Congratulations on running your first CI pipeline!
+
+</TabItem>
+</Tabs>
+
+---
+
+## Next Steps
 
 Explore the documentation to learn what your Harness CI pipelines can do.
 
-* [Build images, push images, and upload artifacts.](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact)
+* [Build images, push images, and upload artifacts.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact)
 * [Use caching](/docs/category/share-and-cache-ci-data) and [manage dependencies](/docs/category/manage-dependencies).
-* Run [scripts](../use-ci/run-step-settings.md) and [tests](/docs/category/run-tests).
-* [Use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) and [write your own plugins](../use-ci/use-drone-plugins/custom_plugins.md).
-
-:::tip
-
-With Harness CI, you can build and test code in any language. For guidance on some popular languages and platforms, check out the [CI development guides](/docs/category/development-guides).
-
-:::
-
-## Check your license and build credit usage
-
-Your Harness CI subscription includes a number of developer licenses and build credits. It's important to understand your [license and build credit usage](./ci-subscription-mgmt.md#license-and-build-credit-usage).
-
-If you plan to use [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), it's important to understand [Harness Cloud billing and build credits](./ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
-
-## Become a Harness Certified Expert
-
-There are three tiers of [Harness CI certifications](/university/continuous-integration).
-
-* **Developer certification:**: The [CI Developer certification](/university/continuous-integration) is the starting point for evaluating your understanding of Harness CI.
-* **Administrator certification:** Building on the CI Developer certification, the [CI Administrator certification](/university/continuous-integration) tests your skills across CI and the Harness Platform.
-* **Architect certification:** Building upon the CI Administrator certification, the [CI Architect certification](/university/continuous-integration) goes further into design, implementation, and management of CI.
+* Run [scripts](/docs/continuous-integration/use-ci/run-step-settings.md) and [tests](/docs/category/run-tests).
+* [Use plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins.md) and [write your own plugins](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins.md).
+* [Explore CI Tutorials and Code Samples](/docs/category/tutorials-and-code-samples) for your use case.
+* [Find the right build infrastructure for you](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).

@@ -52,7 +52,7 @@ export const docsCards: CardSections = [
         title: "CCM",
         module: MODULES.ccm,
         description: "Cloud Cost Management onboarding guides",
-        link: "/docs/category/onboarding-guide-for-ccm",
+        link: "/docs/category/onboarding",
       },
       {
         title: "CODE",
@@ -127,11 +127,11 @@ export const docsCards: CardSections = [
     description: "",
     list: [
       {
-        title: "Harness AIDA",
+        title: "Harness AI",
         module: MODULES.platform,
         description:
-          "Learn about how AIDA improves your experience on the Harness platform.",
-        link: "/docs/category/harness-aida",
+          "Learn about how AI improves your experience on the Harness platform.",
+        link: "/docs/category/harness-ai",
       },
       {
         title: "Delegates",

@@ -45,13 +45,14 @@ custom_envs:
     value: "true"
 ```
 
-When deploying a delegate, it is recommended that you name the delegate either the same as the cluster name or something very similar that makes it obvious what cluster the delegate is deployed into.
+When deploying a delegate, it is recommended that you name the delegate either the same as the cluster name or something very similar that makes it obvious what cluster the delegate is deployed into.  An example of deploying a CCM Only delegate via a Helm chart is located [here](https://developer.harness.io/kb/reference-architectures/ccm/best-practices/ccm-only-delegate).
 
 ### Resource Constraints
 
 - The delegate pod needs a minimum of 1 vCPU and 2G of memory.
   - For larger clusters, more resources are needed. Requirements TBD by engineering at this time.
 - The delegate will need outbound internet access to `https://app.harness.io`
+- For sending logs to Harness for support and troubleshooting the delegate will also need outbound access to `logging.googleapis.com`.
 
 ## Connectors
 
@@ -70,14 +71,12 @@ For creating all your Kubernetes connectors it is recommended that you utilize [
 ```terraform
 # when using a delegate deployed into the cluster
 
-resource "harness_platform_connector_Kubernetes" "inheritFromDelegate" {
-  identifier  = "inheritFromDelegate"
-  name        = "inheritFromDelegate"
-  description = "description"
-  tags        = ["foo:bar"]
+resource "harness_platform_connector_kubernetes" "cluster-a" {
+  identifier  = "cluster_a"
+  name        = "cluster-a"
 
   inherit_from_delegate {
-    delegate_selectors = ["harness-delegate"]
+    delegate_selectors = ["cluster-a"]
   }
 }
 ```
@@ -93,14 +92,13 @@ For creating all your CCM Kubernetes connectors it is recommended that you utili
 At a minimum you need to enable `VISIBILITY`. If you are planning to perform auto stopping in this cluster, you can also enable `OPTIMIZATION`.
 
 ```terraform
-resource "harness_platform_connector_Kubernetes_cloud_cost" "inheritFromDelegateCCM" {
-  identifier  = "inheritFromDelegateCCM"
-  name        = "inheritFromDelegateCCM"
-  description = "example"
-  tags        = ["foo:bar"]
+resource "harness_platform_connector_kubernetes_cloud_cost" "cluster-a" {
+  identifier  = "cluster_a_ccm"
+  name        = "cluster-a-ccm"
 
   features_enabled = ["VISIBILITY", "OPTIMIZATION"]
-  connector_ref    = "inheritFromDelegate"
+  # reference connector created above
+  connector_ref    = harness_platform_connector_kubernetes.cluster-a.id
 }
 ```
 

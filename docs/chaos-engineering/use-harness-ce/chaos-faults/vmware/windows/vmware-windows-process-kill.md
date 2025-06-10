@@ -4,6 +4,7 @@ title: VMware Windows process kill
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-process-kill
 - /docs/chaos-engineering/chaos-faults/vmware/vmware-windows-process-kill
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vm-process-kill
 ---
 
 VMware Windows process kill simulates a process kill scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under process kill conditions.

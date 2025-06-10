@@ -161,6 +161,15 @@ export const moduleIconAndColor = {
       color: '--mod-ce-300',
     },
   },
+  'AI Test Automation': {
+    iconUrl:
+      'https://developer.harness.io/img/logo-ata.svg',
+    colors: {
+      border: '--mod-aida-200',
+      backgroundColor: '--mod-aida-100',
+      color: '--mod-aida-300',
+    },
+  },
   'AI Code Assistant': {
     iconUrl:
       'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/666730eaefeed82bad545d10_Subtract.svg',
@@ -171,7 +180,7 @@ export const moduleIconAndColor = {
     },
   },
   'Harness Intelligence': {
-    iconUrl: 'https://developer.harness.io/img/AIDA_Logo.svg',
+    iconUrl: 'https://developer.harness.io/img/aida-logo.svg',
     colors: {
       border: '--mod-aida-200',
       backgroundColor: '--mod-aida-100',

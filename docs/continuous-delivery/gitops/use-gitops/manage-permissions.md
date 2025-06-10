@@ -107,6 +107,13 @@ Finally, assign the role and resource group you created to the [user](/docs/plat
 
 Once the binding is done, those users will be able to sync any applications that have the label you specified in the resource group in step 3!
 
+## Harness Default Labels
+
+When applications are generated through appsets, Harness will apply some labels to associated the application with services and environments. You can use these labels:
+
+- `harness.io/envRef`: Enter the environment id. Use this to associate your application with a Harness Environment.
+- `harness.io/serviceRef`: Enter the service id. Use this to associate your application with a Harness Service. 
+
 ## Troubleshooting
 
 Common issues and solutions:

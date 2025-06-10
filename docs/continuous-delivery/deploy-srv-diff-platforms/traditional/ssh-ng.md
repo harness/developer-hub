@@ -29,6 +29,10 @@ An SSH deployment involves configuring the following:
 4. Select the deployment strategy.
 5. Run the pipeline and review.
 
+:::info
+We support using SSH with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. For more information, refer to [AWS OIDC connector reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+:::
+
 ## SSH stages
 
 To start a SSH deployment, create a new pipeline and add a stage for **Secure Shell** deployments.
@@ -59,6 +63,9 @@ For Secure Shell, you can access artifacts from the following sources:
 - Nexus2
 - Azure Artifacts
 - GCR
+  :::warning
+  Google Container Registry (GCR) is being deprecated. For more details, refer to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+  :::
 - ACR
 - Docker Registry (platform-agnostic)
 - Custom. If you select **Custom**, you will need to provide a Bash script.
@@ -142,6 +149,153 @@ Write down hosts as a comma separated list.
 
 :::
 
+### Filtering Hosts by Attributes
+
+This setting is available when you pick **Select preconfigured hosts from Physical Data Center** under **Select hosts** and select **Filter by host attributes**
+
+:::note
+Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can control whether multiple host‑attribute filters are combined with **OR (match any)** or **AND (match all)** logic.
+
+**Any (default)** – a host is selected if at least one filter condition matches (existing behavior).
+
+**All** – a host is selected only if every filter condition matches.
+
+Specific Attribute: This is where you specify the condition on which the match criteria is checked with. You can specify attributes like region, type, name, etc.
+
+Under **Preview Hosts**, you can see what hosts match the condition.
+
+<div align="center">
+  <DocImage path={require('./static/pdc-specify-host.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+<details>
+<summary>Example of how filtering hosts by attributes works</summary>
+
+Suppose you have two hosts specified in your physical data center
+
+```json
+// Host‑1
+{
+  "hostname": "ec2-00-00-01.compute-1.amazonaws.com",
+  "hostAttribute": {
+    "region": "us-east-1",
+    "name": "node-1"
+  }
+}
+
+// Host‑2
+{
+  "hostname": "ec2-00-00-02.compute-1.amazonaws.com",
+  "hostAttribute": {
+    "region": "us-west",
+    "name": "node-5"
+  }
+}
+```
+
+Scenario 1: `matchCriteria: ALL`
+
+**YAML Example for `matchCriteria: ALL`**
+
+```yaml
+infrastructureDefinition:
+  name: pdc
+  identifier: pdc
+  orgIdentifier: default
+  projectIdentifier: project_id
+  environmentRef: env_id
+  deploymentType: Ssh
+  type: Pdc
+  spec:
+    connectorRef: abc
+    credentialsRef: credentials_ref
+    hostFilter:
+      type: HostAttributes
+      spec:
+        value:
+          region: us-east-1
+          name: node-1
+        matchCriteria: ALL
+  allowSimultaneousDeployments: false
+```
+
+- **matchCriteria: ALL** means that **both** conditions must be true for the host to be selected (both `region=us-east-1` **and** `name=node-1`).
+
+**Host‑1**
+- `region`: us-east-1 (matches)
+- `name`: node-1 (matches)
+
+**Selected**: Host‑1 meets both conditions, so it **matches**.
+
+**Host‑2**
+- `region`: us-west (does not match `us-east-1`)
+- `name`: node-5 (does not match `node-1`)
+
+**Not Selected**: Host‑2 does not meet **both** conditions, so it **does not match**.
+
+**Summary for `ALL`**:  
+- **Host‑1** is selected because both `region` and `name` match.  
+- **Host‑2** is not selected because neither `region` nor `name` match.
+
+---
+
+Scenario 2: `matchCriteria: ANY`
+
+**YAML Example for `matchCriteria: ANY`**
+
+```yaml
+infrastructureDefinition:
+  name: pdc
+  identifier: pdc
+  orgIdentifier: default
+  projectIdentifier: project_id
+  environmentRef: env_ref
+  deploymentType: Ssh
+  type: Pdc
+  spec:
+    connectorRef: abc
+    credentialsRef: credentials_ref
+    hostFilter:
+      type: HostAttributes
+      spec:
+        value:
+          region: us-east-1
+          name: node-1
+        matchCriteria: ANY
+  allowSimultaneousDeployments: false
+
+```
+
+- **matchCriteria: ANY** means that **either** condition must be true for the host to be selected (either `region=us-east-1` **or** `name=node-1`).
+
+**Host‑1**
+- `region`: us-east-1 (matches)
+- `name`: node-1 (matches)
+
+**Selected**: Host‑1 meets both conditions, so it **matches**.
+
+**Host‑2**
+- `region`: us-west (does not match `us-east-1`)
+- `name`: node-5 (does not match `node-1`)
+
+**Not Selected**: Host‑2 does not meet either condition, so it **does not match**.
+
+**Summary for `ANY`**:  
+- **Host‑1** is selected because **both** `region` and `name` match.  
+- **Host‑2** is not selected because neither `region` nor `name` matches.
+
+---
+
+Key Takeaways:
+
+- **matchCriteria: ALL**: The host is selected only if **both** conditions are true.
+- **matchCriteria: ANY**: The host is selected if **either** of the conditions is true.
+
+</details>
+
 ### Pre-existing infrastructure
 
 Let's look at an example of setting up an Infrastructure Definition for a pre-existing infrastructure.
@@ -192,7 +346,6 @@ infrastructureDefinition:
 - Only supported with AWS & Azure infrastructure, target to specific hosts already uses the same permissions as before, no new API call required.
 
  
-
 
 #### Create the PDC connector for the hosts
 
@@ -520,6 +673,124 @@ Executing command rm -rf /tmp/aCy-RxnYQDSRmL8xqX4MZw ...
 Command finished with status SUCCESS
 ```
 Congratulations! You have now successfully created and completed the steps for running a pipeline by using Secure Shell.
+
+## Selective Rerun and Skipping Hosts with Same Artifact
+
+You can now skip the **hosts where the last deployment was successful using the same artifact** for traditional deployments. These improvements ensure:
+- **Efficient reruns**: Redeploy only on failed hosts instead of all hosts.
+- **Expressions for failed hosts**: Retrieve failed hosts dynamically for debugging, fixing and rerunning on only failed hosts.
+
+To use this feature, navigate to the **Advanced** tab of the **CD stage**, enable the **Skip instances with the same artifact version already deployed** checkbox. 
+
+You can enable this checkbox using the run-time by making this checkbox a **Runtime Input**. 
+
+<div align="center"> 
+  <DocImage path={require('./static/skip-instance.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+:::note
+Currently, the Selective Failed Hosts Rerun feature is behind the feature flag `CDS_SKIP_INSTANCES_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+**Change in Behavior with Feature Flag Activation**  
+Enabling the `CDS_SKIP_INSTANCES_V2` feature flag **enhances the skip instances feature** for improved reliability across deployment scenarios. The updated behavior includes:  
+
+- **Org/Account-Level Service & Environment Handling**: Ensures consistent application of skip instance logic across different organizational scopes.  
+- **Partial Success Handling**: Tracks and skips only successfully deployed hosts, preventing unnecessary re-deployments. 
+:::
+
+**Success Criteria for Deployment on a Host**
+
+- **Successfully Deployed Criteria**: A host is considered successfully deployed only if **all command steps in an execution complete successfully**.  
+- **Deployed Criteria**: A host is considered deployed if **any command step execution occurs on the host**.  
+
+**Key Features**
+
+**1. Selective Retry for Failed Hosts**  
+- Deployment retries now **target only failed hosts** instead of redeploying on all hosts when the **Skip instances with the same artifact version already deployed** checkbox is enabled.  
+
+**2. Enhanced Skip Instances Feature**  
+- Deployment is **skipped on hosts** where the **last deployment was successful using the same artifact**.  
+- Each host’s deployment success is tracked **individually**, ensuring that only failed hosts are retried.  
+- **Infrastructure changes** (e.g., connector updates, credential changes) are considered when determining the last deployment on a host.  
+
+**3. Improved Rollback Behavior**  
+- The **Skip Instances** feature now **tracks rollbacks per host**, ensuring that only the required hosts are updated.  
+- This guarantees that rollback logic correctly applies **only to affected hosts**, preventing unnecessary redeployments.  
+
+**4. New Expressions Introduced**  
+These expressions provide better tracking of deployment and skipped instances:
+- `<+stage.output.skippedHosts>`: Fetches hosts skipped during the current deployment via the Skip Instances feature.
+- `<+stageFqn.deployedHosts.succeeded>`: Fetches hosts that successfully deployed in a stage.
+- `<+stageFqn.deployedHosts.failed>`: Fetches hosts that failed deployment in a stage.
+
+:::note
+Currently, the `<+stageFqn.deployedHosts.succeeded>` and `<+stageFqn.deployedHosts.failed>` expressions are **resolved only after stage completion**.  
+
+- The **full stage FQN** (Fully Qualified Name) must be used, e.g., `<+pipeline.stages.ssh.deployedHosts.succeeded>`.  
+- These expressions will include only the hosts that meet the **Deployed** criteria.  
+
+:::
+
+<details>
+<summary>Example Workflow: Deployment with Partial Success</summary>
+
+This example demonstrates how the **Skip Instances** feature allows rerunning a pipeline without redeploying successfully deployed hosts. By enabling this feature, only failed hosts are re-run, optimizing deployment efficiency and reducing unnecessary re-deployments.  
+
+**Step 1: Deploy on Two Hosts Using Artifact Version 1**  
+Deploy **artifact version 1** on **host1** and **host2** using a command step.  
+
+**Outcome:**  
+- **host1** successfully deployed **version 1**.  
+- **Deployment on host2 failed**.  
+
+---
+
+**Step 2: Fix the Issue on Host2 and Rerun the Pipeline with Skip Instances Enabled**  
+After resolving the issue on **host2**, rerun the pipeline with the **Skip Instances** feature enabled.  
+
+**Outcome:**  
+- **Deployment on host1 is skipped** since it was previously successful.  
+- **host2 successfully deploys version 1**. 
+
+</details>
+
+<details>
+<summary>Use-Cases for Selective Rerun and Skipping Hosts</summary>
+
+The improved retry and rollback mechanisms ensure that only necessary actions are taken, avoiding unnecessary redeployments and rollbacks. Below are some key scenarios and how they are handled:
+
+1. **Pipeline Termination After Successful Deployment**
+- If the pipeline terminates due to **expire/abort/failure** cases, but the host was successfully deployed via a command step before termination, the deployment on that host is still considered successful.
+- This ensures that unexpected pipeline failures do not unnecessarily mark successful hosts as failed.
+
+2. **Parallel Deployments on the Same Hosts**
+- When the same hosts are deployed in parallel using different stages, the stage with the most recent command step execution is considered the last deployment for the skip instances feature.
+
+3. **Executions Without Command Steps**
+- If a pipeline execution does not contain command steps, it is ignored in tracking.
+- Such deployments are not considered for the skip instances feature.
+
+4. **Partial Success Without Rollback**
+- If a deployment succeeds on some hosts but fails on others, **only failed hosts are deployed on rerun**.
+- Successfully deployed **hosts are skipped**.
+
+5. **Execution Failure Followed by a Partial Rollback**
+- If a rollback is **partially successful**, only successfully rolled-back hosts are **marked as completed**.
+- The system ensures these hosts are correctly updated for future deployments.
+
+6. **Handling Command Step Retries**
+- If a command step **fails initially** but **succeeds after retry**, the host is **marked as successfully deployed**.
+- Ensures hosts are not mistakenly retried in future deployments.
+
+7. **Command Steps within Step Groups**
+- If a command step inside a step group fails but **succeeds on retry**, the host is considered **successfully deployed**.
+- This prevents unnecessary redeployments on already successful hosts.
+
+8. **Pipeline Rollback Considerations**
+- If a pipeline rollback is triggered, only hosts which were rollbacked successfully are marked as completed.
+- The system ensures these hosts are correctly updated for future deployments
+
+</details>
 
 ## Permission to perform SSH Deployments in AWS
 

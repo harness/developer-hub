@@ -335,6 +335,13 @@ Services represent your microservices and other workloads. Each service contains
 
 * `<+service.gitOpsEnabled>`: Resolves to a Boolean value to indicate whether [the GitOps option](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart) is enabled (`true`) or not (`false`).
 
+#### Check expression isResolved isUnresolved null replacement
+Harness supports expressions to check if a value is resolved instead of relying on null checks. 
+
+The expression `<+expression.isResolved(<+pipeline.variables.var1>)>` verifies whether a variable resolves to a non-null value. Similarly, `<+expression.isUnresolved(<+pipeline.variables.var1>)>` can be used to check if a variable remains unresolved. It is recommended to use these expressions instead of `<+<+pipeline.variables.var1> != null>` for more reliable evaluation in pipelines.
+
+These expressions only will evaluated variables, and does not evaluate secrets resolution. 
+
 #### Custom service-level variables
 
 You can [define custom variables](./add-a-variable.md) in your environment and service definitions, and you can use expressions to reference those custom variables.
@@ -639,6 +646,40 @@ You can select who can create and use these triggers within Harness. However, yo
 
 </details>
 
+### Fetch Original Executions Details when Rollback occurs
+
+Below are the expressions to fetch the original execution details when a rollback occurs, ensuring that the system can accurately reference the execution context from which the rollback is initiated:-
+
+* `<+pipeline.originalExecution.executionId>`
+* `<+pipeline.originalExecution.startTs>`
+* `+pipeline.originalExecution.endTs`
+* `<+pipeline.originalExecution.status>`
+* `<+pipeline.originalExecution.sequenceId>`
+* `<+pipeline.originalExecution.storeType>`
+* `+pipeline.originalExecution.branch>`
+* `<+pipeline.originalExecution.repo>`
+* `<+pipeline.originalExecution.triggeredBy>`
+* `<+pipeline.originalExecution.executionMode>`
+* `<+pipeline.originalExecution.tags>`
+* `<+pipeline.originalExecution.triggerType>`
+* `<+pipeline.originalExecution.name>`
+* `<+pipeline.originalExecution.identifier>`
+
+:::info note
+These expressions won't work when called during normal execution; they will only function correctly when invoked during a rollback execution of the original execution.
+:::
+
+## Notification Event Type Expression
+
+Below is the expression to fetch the notification event type:
+
+`<+notification.eventType>`
+
+:::info Note
+This expression is only supported for Custom Notification Templates.
+:::
+
+
 ## Handling Rollback Scenarios with `rollbackSteps`
 
 You can detect and handle rollback scenarios using various built-in expressions. One useful expression for stage-specific rollback handling is `rollbackSteps`, which helps determine if a stage is currently being rolled back, even when the pipeline itself may still be running in normal execution mode.
@@ -666,3 +707,23 @@ This checks if the entire pipeline is in rollback mode.
 #### Detecting Post-Execution Rollback
 
 `isPostProdRollback=<+<+pipeline.executionMode> == "POST_EXECUTION_ROLLBACK">`
+
+## Connector Type Variable
+
+You can reference any connector’s attributes (name, identifier, type, spec fields, etc.) via JEXL in **account**, **organisation** and **project**-level scopes. When no scope is specified, the project scope is assumed.
+
+### Scope Resolution
+
+Connector lookups follow a three-tier hierarchy—**account**, **organization**, then **project**—based on the prefix you provide:
+
+- **Account scope**: Use the `account.` prefix to explicitly fetch an account-level connector. For example:
+  - `<+connector.get("account.myConnector").type>`
+  - `<+connector.get("account.artifactory").spec.passwordRef>`
+
+- **Organization scope**: Use the `org.` prefix to target an org-level connector. For example:
+   - `<+connector.get("org.myConnector").identifier>`
+   - `<+connector.get("org.artifactory").type>`
+
+- **Project level (no prefix)**: For project-level connectors, there is no need to specify any prefix. For example:
+   - `<+connector.get("myConnector").name>`
+   - `<+connector.get("artifactory").spec.passwordRef>` 

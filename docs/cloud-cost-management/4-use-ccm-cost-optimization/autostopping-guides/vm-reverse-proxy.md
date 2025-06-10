@@ -45,7 +45,7 @@ In this scenario, it is not feasible to directly onboard the EC2 instance to Aut
 
 ## Use Harness AutoStopping Proxy
 
-[Harness AutoStopping Proxy](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb) is a valuable solution in this scenario. It is built on top of the [envoy proxy](https://www.envoyproxy.io/), offering robust capabilities for handling routing and load balancing across different cloud providers. This proxy is not limited to HTTP traffic and can effectively handle any TCP-based traffic detection.
+[Harness AutoStopping Proxy](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/load-balancer) is a valuable solution in this scenario. It is built on top of the [envoy proxy](https://www.envoyproxy.io/), offering robust capabilities for handling routing and load balancing across different cloud providers. This proxy is not limited to HTTP traffic and can effectively handle any TCP-based traffic detection.
 
 After setting up an AutoStopping proxy, select the newly created proxy as the load balancer, and then configure the custom domain as `todolist.example.com` for the proxy. To route the traffic to the underlying EC2 instance, hit the proxy IP with a host header `Host: todolist.example.com`.
 

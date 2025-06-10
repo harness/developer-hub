@@ -1,5 +1,4 @@
 ---
-id: dashboard
 sidebar_position: 15
 title: Chaos Dashboard
 redirect_from:
@@ -14,9 +13,8 @@ Dashboards provide a powerful way to visualize key metrics and data from your ex
 
 The Chaos Dashboard is an interactive interface designed to manage, visualize, and monitor chaos experiments. It offers visual representations of various experiment features, including bar graphs and a tabular display of the data for easy analysis.
 
-:::note
-For SaaS users, this feature is currently behind the feature flag `CHAOS_DASHBOARD_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-Contact your [sales representative](mailto:sales@harness.io) to check if you are eligible for the on-prem platform.
+:::info note
+- Contact your [sales representative](mailto:sales@harness.io) to check if you are eligible for the on-prem platform.
 :::
 
 Go to [view dashboard](/docs/chaos-engineering/use-harness-ce/dashboards/view-dashboard) or [create a new dashboard](/docs/chaos-engineering/use-harness-ce/dashboards/create-new).
@@ -59,8 +57,6 @@ Described below are descriptions of various fields used to plot and analyze data
 
 	* **Installation type**: Whether to enable execution of chaos experiments on an **existing infrastructures** or on **new infrastructures**.
 
-	* **Last heartbeat time**: Latest time of the infrastructure heartbeat to determine if the infrastructure is active or no.
-
 	* **Is Active (Yes / No)**: Whether the chaos infrastructure is active or no.
 
 	* **name**: The unique name of the chaos infrastructure where you execute the chaos experiment.
@@ -82,8 +78,6 @@ Described below are descriptions of various fields used to plot and analyze data
 	* **Repo branch**: The branch of the repository that is associated with the chaos hub.
 
 	* **Repo name**: The name of the branch in the repository that is associated with the chaos hub.
-
-	* **Auth type**: The type of authentication used, that is HTTP or SSH.
 
 	* **Connector scope**: Scope of the ChaosHub connector, which can be **project**, **organization** or Account** scope.
 

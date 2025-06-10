@@ -7,8 +7,6 @@ redirect_from:
   - /tutorials/platform/configure-oidc-gcp-wif-ci-hosted
 ---
 
-
-
 [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp) that use OpenID Connect (OIDC) allow Harness to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials. If accessing Google cloud resources, you can use [workload identity federation (WIF)](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector.
 
 To configure OIDC with GCP WIF for builds on [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you need to:
@@ -32,8 +30,8 @@ This topic assumes you have experience with [GCP workload identity providers](ht
 
    You can get your Harness account ID from any Harness URL, such as `https://app.harness.io/ng/#/account/ACCOUNT_ID/home/get-started`.
 
-2. Grant access using the connected service accounts for GCR/GAR:
-   1. Select the service account that has push/pull permissions for GCR/GAR.
+2. Grant access using the connected service accounts for GAR:
+   1. Select the service account that has push/pull permissions for GAR.
    2. Select principles (identities that can access the service account). Select **Only identities matching the filter**, and then select `account_id = YOUR_HARNESS_ACCOUNT_ID`.
 
 ## Set up the GCP connector
@@ -68,16 +66,14 @@ For example:
 1. [Create a pipeline](../use-ci/prep-ci-pipeline-components.md#create-a-harness-ci-pipeline) and [add a Build stage](../use-ci/set-up-build-infrastructure/ci-stage-settings.md#add-a-build-stage-to-a-pipeline).
 2. Configure the Build stage to [use Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#use-harness-cloud).
 
-   Currently, OIDC connectivity mode for GCP is supported for Harness Cloud build infrastructure only. OIDC-enabled GCP connectors only work in Build stages that use Harness Cloud build infrastructure.
-
 3. Add a [Build and Push to GAR step](../use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md) to the Build stage.
 
    For the step's **GCP Connector**, select your OIDC-enabled GCP connector.
 
-   ![Build and Push to GCR](./static/oidc-build-and-push-gcr.png)
+   ![Build and Push to GAR](./static/oidc-build-and-push-gar.png)
 
 4. Save and run the pipeline.
 
    The Build and Push step's logs show that the pipeline uses Google STS to exchange tokens and access GAR.
 
-   ![Step logs](./static/build-and-push-gcr-step-logs.png)
+   ![Step logs](./static/build-and-push-gar-step-logs.png)

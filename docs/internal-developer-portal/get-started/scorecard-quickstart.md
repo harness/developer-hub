@@ -9,7 +9,7 @@ sidebar_label: Get Started with Scorecards
 
 ## Introduction
 
-With your [catalog populated with software components](/docs/internal-developer-portal/get-started/register-a-new-software-component) and [plugins enabled](/docs/internal-developer-portal/get-started/enable-a-new-plugin), it's time to create a scorecard. Using the [catalog datasource](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog), you can monitor the existence of essential root fields and integrations defined through annotations in the catalog-info.yaml metadata. Tracking this information within the catalog helps to enforce organizational engineering standards.
+With your [catalog populated with software components](/docs/internal-developer-portal/get-started/catalog-2o.md) and [plugins enabled](/docs/internal-developer-portal/get-started/enable-a-new-plugin), it's time to create a scorecard. Using the [catalog datasource](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog), you can monitor the existence of essential root fields and integrations defined through annotations in the catalog-info.yaml metadata. Tracking this information within the catalog helps to enforce organizational engineering standards.
 
 ## Create a catalog readiness Scorecard
 
@@ -27,7 +27,7 @@ Organizations can define custom criteria for readiness, such as ensuring the pre
 
 1. Make sure you have the [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or [IDP Platform Engineer](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#2-idp-platform-engineer) role assigned to you with permissions to view, create and edit [scorecards](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-scorecards)
 
-2. Register a software component following the steps mentioned [here](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component), if you already have software components registered in your catalog you can move directly to creating a Scorecard. Here's an example of `catalog-info.yaml` we will be using for this tutorial.
+2. Register a software component following the steps mentioned [here](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component). If you already have software components registered in your catalog you can move directly to creating a Scorecard. Here's an example of `catalog-info.yaml` we will be using for this tutorial.
 
 <details>
 <summary>Example YAML</summary>

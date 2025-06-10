@@ -51,9 +51,10 @@ Select **Continue**.
 
 You can select the following options for authenticating with AWS:
 
-* **AWS Access Key.**
-* **Assume IAM role on delegate.**
-* **Assume Role using STS on delegate.**
+1. **AWS Access Key.**
+2. **Assume IAM role on delegate.**
+3. **Assume Role using STS on delegate.**
+4. **OIDC**
 
 ### Option: AWS Access Key
 
@@ -64,7 +65,7 @@ Either from the JSON for the **Key Policy**, or in the AWS **IAM** console, unde
 ![](../../secrets/static/add-an-aws-kms-secrets-manager-54.png)
 For more information, go to [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) from Amazon.
 
-#### AWS Access Key ID
+#### 1. AWS Access Key ID
 
 Select **Create or Select a Secret**.
 
@@ -84,11 +85,11 @@ Select **Create or Select a Secret**.
 
 As explained above, you can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
 
-### Option: Assume IAM Role on Delegate
+### 2. Assume IAM Role on Delegate
 
 If you select **Assume the IAM Role on Delegate** Harness will authenticate using the IAM role assigned to the AWS host running the Delegate, you select using a Delegate Selector.
 
-### Option: Assume Role using STS on Delegate
+### 3. Assume Role using STS on Delegate
 
 This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. Typically, you use `AssumeRole` within your account or for AWS cross-account access.
 
@@ -105,6 +106,28 @@ For more information, go to [How to Use an External ID When Granting Access to Y
 #### Assume Role Duration (seconds)
 
 This is the AssumeRole Session Duration. Go to Session Duration in the[AssumeRole AWS docs](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).
+
+
+### 4. OIDC - OpenID Connect.
+
+ This option uses OpenID Connect (OIDC) to authenticate and authorize users. This option is commonly used for secure identity federation across different applications or cloud platforms, enabling seamless authentication and access management.
+
+ ![odic-aws-kms](../../secrets/static/odic-aws-kms.png)
+
+- **Role ARN**: Enter the Amazon Resource Name (ARN) of the role you want to assume.  
+- **Region and IAM Role**: Once your configuration is complete, set the IAM role and region below to proceed with the setup, as shown in the image above.
+
+<details>
+    <summary>An additional step before proceeding.</summary>
+
+    #### Connectivity mode 
+
+    This additional step allows you to select the connectivity mode.
+
+    Once you have selected OIDC, you will be able to select **connectivity mode**, based on the requirement you can select the provider that can be either connect through a **delegate** or through **Harness platform**. 
+        
+    ![connetivity-mode](../../secrets/static/oidc-connectivity-mode.png)          
+</details>
 
 ### Step 3: Setup Delegates
 

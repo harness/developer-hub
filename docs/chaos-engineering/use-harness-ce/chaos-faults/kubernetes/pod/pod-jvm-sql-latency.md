@@ -34,7 +34,7 @@ Pod JVM SQL latency:
     <td> It supports MYSQL5, MYSQL8, and HIBERNATE types. For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
  <tr>
-    <td> SQL_LATENCY </td>
+    <td> LATENCY </td>
     <td> The latency to be injected into the SQL queries (in ms). </td>
     <td> For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
@@ -149,7 +149,7 @@ spec:
             - name: SQL_DATA_ACCESS_FRAMEWORK
               value: "MYSQL8"
             # provide the latency in ms
-            - name: SQL_LATENCY
+            - name: LATENCY
               value: "2000" #in ms
             # provide the transaction percentage
             - name: TRANSACTION_PERCENTAGE

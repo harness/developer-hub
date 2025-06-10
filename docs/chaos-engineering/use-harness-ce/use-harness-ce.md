@@ -4,22 +4,22 @@ sidebar_position: 1
 description: Harness CE features and their use
 ---
 
-Listed below are topics and links to how you can use them to improve resilience of your application.
+Listed below are features and their reference links that describe how you can implement them in your application to improve the resilience of your application.
 
 ## Chaos Faults
 
-- [Execute AWS faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/)
-- [Execute Azure faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/)
-- [Execute BYOC faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/byoc/)
-- [Execute Cloud Foundry faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/)
-- [Execute GCP faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/)
-- [Execute Kube-Resilience faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/kube-resilience/)
-- [Execute Kubernetes faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/)
-- [Execute Linux faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/)
-- [Execute Load faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/load/)
-- [Execute SSH faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/)
-- [Execute VMware faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/)
-- [Execute Windows faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/)
+- [AWS faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/)
+- [Azure faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/)
+- [BYOC faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/byoc/)
+- [Cloud Foundry faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/)
+- [GCP faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/)
+- [Kube-Resilience faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/kube-resilience/)
+- [Kubernetes faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/)
+- [Linux faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/)
+- [Load faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/load/)
+- [SSH faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/)
+- [VMware faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/)
+- [Windows faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/)
 
 ## ChaosHubs
 
@@ -38,15 +38,19 @@ Listed below are topics and links to how you can use them to improve resilience 
 - [Export Chaos Experiments](/docs/chaos-engineering/use-harness-ce/experiments/export-chaos-experiments)
 - [Halt and Delete Chaos Experiments](/docs/chaos-engineering/use-harness-ce/experiments/halt-delete-experiments)
 - [Create Alerts for Chaos Experiments](/docs/chaos-engineering/use-harness-ce/experiments/alert-integration)
+- [Runtime Variable Support in Experiments](/docs/chaos-engineering/use-harness-ce/experiments/fault-template)
 
 ## Governance
 
+- [ChaosGuard: Governance in Creation](//docs/chaos-engineering/use-harness-ce/governance/rbac#user-authorization-and-role-based-access-control)
 - [Governance in Execution](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/)
-- [Governance during Creation](//docs/chaos-engineering/use-harness-ce/governance/rbac#user-authorization-and-role-based-access-control)
+
 
 ## Chaos Infrastructure
 
-- [Enable and Disable Chaos Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable)
+- [Enable and Disable Chaos Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/)
+- [Centralized Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/centralized-delegate)
+- [Proxy Settings Configuration](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support)
 - [Upgrade Chaos Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra)
 
 ## Resilience Probes
@@ -54,3 +58,13 @@ Listed below are topics and links to how you can use them to improve resilience 
 - [Create Resilience Probes](/docs/chaos-engineering/use-harness-ce/probes/use-probe)
 - [Use Command Probe in Inline and Source Mode](/docs/chaos-engineering/use-harness-ce/probes/command-probe/cmd-probe-usage)
 - [Use Command Probe in Source Mode with New Relic](/docs/chaos-engineering/use-harness-ce/probes/command-probe/cmd-probe-newrelic)
+
+### Different Types of Resilience Probes
+
+- [Command Probe](/docs/chaos-engineering/use-harness-ce/probes/command-probe/)
+- [DataDog Probe](/docs/chaos-engineering/use-harness-ce/probes/datadog-probe)
+- [Dynatrace Probe](/docs/chaos-engineering/use-harness-ce/probes/dynatrace-probe)
+- [HTTP Probe](/docs/chaos-engineering/use-harness-ce/probes/http-probe)
+- [Kubernetes Probe](/docs/chaos-engineering/use-harness-ce/probes/k8s-probe)
+- [Prometheus Probe](/docs/chaos-engineering/use-harness-ce/probes/prom-probe/)
+- [SLO Probe](/docs/chaos-engineering/use-harness-ce/probes/slo-probe)

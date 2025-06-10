@@ -36,12 +36,12 @@ Pod JVM SQL exception:
     <td> It supports MYSQL5, MYSQL8, and HIBERNATE types. For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
  <tr>
-    <td> SQL_EXCEPTION_CLASS </td>
+    <td> EXCEPTION_CLASS </td>
     <td> The name of the exception class. </td>
     <td> For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
  <tr>
-    <td> SQL_EXCEPTION_MESSAGE </td>
+    <td> EXCEPTION_MESSAGE </td>
     <td> The exception message to be raised. </td>
     <td> For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
@@ -156,10 +156,10 @@ spec:
             - name: SQL_DATA_ACCESS_FRAMEWORK
               value: "MYSQL8"
             # name of the sql exception class
-            - name: SQL_EXCEPTION_CLASS
-              value: "com.mysql.cj.exceptions.CJException"
+            - name: EXCEPTION_CLASS
+              value: "IllegalArgumentException"
             # provide the exception message
-            - name: SQL_EXCEPTION_MESSAGE
+            - name: EXCEPTION_MESSAGE
               value: "CHAOS BOOM!"
             # provide the transaction percentage
             - name: TRANSACTION_PERCENTAGE

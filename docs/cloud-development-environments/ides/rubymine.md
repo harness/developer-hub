@@ -4,11 +4,6 @@ sidebar_position: 9
 description: Connect to your Gitspaces within RubyMine IDE.
 sidebar_label: RubyMine
 ---
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io
-
-:::
 
 With **RubyMine IDE** support, Harness CDE enables seamless and efficient remote development in your Gitspaces with your IDE. This integration leverages **[JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/)** to establish a direct remote connection with RubyMine IDE, eliminating the need for any prior setup.
 

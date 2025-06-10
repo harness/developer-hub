@@ -40,7 +40,7 @@ spec:
 
 ## Register software components in the catalog
 
-For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component.md). For YAML reference documentation, go to [the descriptor format](/docs/internal-developer-portal/tutorials/register-component-in-catalog#start-with-basic-entity-information).
+For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/catalog-2o.md). For YAML reference documentation, go to [the descriptor format](/docs/internal-developer-portal/tutorials/register-component-in-catalog#start-with-basic-entity-information).
 
 ## Software ecosystem modelling
 
@@ -53,9 +53,8 @@ You can access catalog APIs to retrieve software components from the catalog, re
 Start by generating a Harness API Key as described in [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). Then, by using your Harness account ID and the API Key, you can make requests to the IDP catalog APIs as follows:
 
 ```
-curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' \
---header 'x-api-key: {X_API_KEY}' \
---header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
+curl --location 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations' \
+--header 'x-api-key: <HARNESS_TOKEN>'
 ```
 
 To learn more about the available catalog APIs supported by Backstage, go to [API](https://backstage.io/docs/features/software-catalog/software-catalog-api/).

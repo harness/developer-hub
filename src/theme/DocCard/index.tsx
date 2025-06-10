@@ -16,11 +16,8 @@ import isInternalUrl from "@docusaurus/isInternalUrl";
 import { translate } from "@docusaurus/Translate";
 import type { Props } from "@theme/DocCard";
 
-import styles from "./styles.module.css";
-import type {
-  PropSidebarItemCategory,
-  PropSidebarItemLink,
-} from "@docusaurus/plugin-content-docs";
+import styles from './styles.module.css';
+import type { PropSidebarItemCategory, PropSidebarItemLink } from '@docusaurus/plugin-content-docs';
 
 function CardContainer({
   href,
@@ -32,8 +29,9 @@ function CardContainer({
   children: ReactNode;
 }): JSX.Element {
   const cardTitleClass = title
-    .replace(/\s+/g, "-")
-    .replace(/[^\w-]/g, "")
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]/g, '')
     .toLowerCase();
 
   

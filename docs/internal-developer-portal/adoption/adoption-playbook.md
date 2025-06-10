@@ -6,7 +6,6 @@ sidebar_position: 1
 redirect_from:
   - docs/internal-developer-portal/get-started/adoption-playbook
   - docs/internal-developer-portal/get-started/get-started
-unlisted: true
 ---
 
 **A step-by-step implementation guide for adopting Harness Internal Developer Portal at scale.**
@@ -246,7 +245,7 @@ From this point onwards, onboard more teams, solve newer use-cases, onboard thei
 
 - Create an internal Slack/Teams channel called **#harness-idp-adoption**. Announce new features and ask users to share feedback (both good and bad).
 - No two portals please. Avoiding creating fragmentation for Developers when it comes to their IDP use-cases.
-- Onboarding is not the same as Adoption. Onboarding refers to one or more Platform Engineers setting up the tool with Authentication, Authorization and other configuration. Adoption refers to active usage by Developers. Onboarding is a pre-requisite to Adoption.
+- Onboarding is not the same as Adoption. Onboarding refers to one or more Platform Engineers setting up the tool with Authentication, Authorization and other configuration. Adoption refers to active usage by Developers. Onboarding is a prerequisite to Adoption.
 
 ### Central vs Distributed Catalog definition YAML files
 

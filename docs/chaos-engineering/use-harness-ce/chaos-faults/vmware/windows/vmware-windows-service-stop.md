@@ -4,6 +4,7 @@ title: VMware Windows service stop
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-service-stop
 - /docs/chaos-engineering/chaos-faults/vmware/vmware-windows-service-stop
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vm-service-stop
 ---
 
 VMware Windows service stop simulates a service stop scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under service stop conditions.

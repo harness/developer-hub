@@ -113,7 +113,7 @@ In **Namespace**, enter the namespace where you want to install the Harness GitO
 
 If **Namespaced** is selected, the Harness GitOps agent is installed without cluster-scoped permissions, and it can access only those resources that are in its own namespace. You can select **Skip Crds** to not install Argo CD CRDs to avoid a collision if already installed. 
 
-Note that if you remove CRDs, you may loose your Argo CD objects like applications or projects.
+Note that if you remove CRDs from cluster, you will loose your instances of ArgoCD objects like applications, projects and application sets.
 
 Select **Next**. The **Helm Chart** and **YAML** deployment options appear.
 
@@ -263,13 +263,17 @@ Also, whenever new entities are created in mapped Argo CD projects, they are add
 
 For steps on setting up the mapping and import, go to [Map existing Argo projects](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness#map-existing-argo-projects).
 
-## Default In-Cluster for Account-Level GitOps Agent
+## Default In-Cluster
+When you create a GitOps agent, a default in-cluster is automatically created. This in-cluster is special kind of cluster which doesnt have project set so it is always created on scope same as GitOps agent.
 
-When you create a GitOps agent at the account level, a default in-cluster is automatically created. This in-cluster is only visible on the Cluster page at the account level.
-- The default in-cluster is not visible at the organization or project level unless a project mapping is configured.
-- You cannot create another in-cluster at the account level since only one default in-cluster is allowed for an account-level GitOps agent.
+- You can remove in-cluster from Harness but that doesnt actually delete in-cluster as it is a special cluster object. If deleted, it can be recreated. 
+- For `Namespaced` agent `in-cluster` is not being created and option for adding `in-cluster` is disabled.
 
-## Proxy support
+## Advanced Options
+
+The Harness GitOps Agent can be configured with advanced options during creation. This section goes through those options.
+
+### Proxy support
 
 The Harness GitOps Agent can work on environments where traffic is routed through a proxy. 
 
@@ -346,7 +350,7 @@ spec:
    .. rest of agent YAML ...
 ```
 
-### Proxy setup for testing
+#### Proxy setup for testing
 
 Use the following YAML example to install proxy in any other environment.
    
@@ -426,6 +430,14 @@ spec:
 ```
 
 </details>
+
+### Helm Secrets Path Traversal
+
+This feature allows Helm to traverse file paths containing dots (e.g. `/../`). This is disabled by default due to security risks, so please enable this with caution. 
+
+To do so, check the **Enable Helm Secrets Path Traversal** check box under the **Advanced** settings dropdown when creating your agent, as pictured below. 
+
+  ![](./static/enable-helm-secrets-checkbox.png)
 
 ## GitOps Auto Updater Job
 
@@ -550,6 +562,8 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 | GitOps Agent version | Packaged Argo CD version | Supported Argo CD versions                    | Redis version       | Haproxy version |
 | -------------------- | ------------------------ | --------------------------------------------- | ------------------- | --------------- |
+| 0.94.0               | v2.14.9                  | 2.10.10, 2.10.14, 2.13.2, 2.13.5, 2.14.9      | redis:7.4.1-alpine  | 2.9.4-alpine    |
+| 0.86.2 - 0.93.0      | v2.13.5                  | 2.9.4, 2.10.10, 2.10.14, 2.13.2, 2.13.5       | redis:7.4.1-alpine  | 2.9.4-alpine    |
 | 0.84.2 - 0.85.0      | v2.13.2                  | 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14, 2.13.2 | redis:7.4.1-alpine  | 2.9.4-alpine    |
 | 0.83.0               | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  | 2.6.14-alpine   |
 | 0.82.0               | RELEASE BURNED           | RELEASE BURNED                                | RELEASE BURNED      | N/A             |
@@ -581,6 +595,20 @@ The Argo CD components upgrade must be done manually.
 ### How can I uninstall a GitOps Agent?
 
 If you need to uninstall a GitOps Agent, you can use `kubectl delete` with the same manifest you used to install it. For example, `kubectl delete -f gitops-agent.yml -n argocd`.
+
+### What happens if CRDs are removed when uninstalling a GitOps agent?
+
+When you uninstall the GitOps agent, deleting its CRDs will also delete all GitOps-managed apps in the cluster. To avoid accidental data loss, ensure CRDs are preserved:
+
+```yaml
+crds:
+  # -- Keep CRDs on chart uninstall
+  keep: true
+```
+
+This tells Helm not to delete CRDs when you run: `helm uninstall <releaseName>`
+
+If you installed the agent with an older or custom chart that doesn’t include `crds.keep: true`, Helm’s default behavior will delete CRDs (and all dependent apps) on uninstall. Either override that setting at uninstall time or update your chart to include it.
 
 
 ## High Availability GitOps Agent
@@ -648,7 +676,10 @@ For more information, go to [High Availability from ArgoCD](https://argo-cd.read
 
 ### Harness use cases
 
-With Harness GitOps, where multiple agents can run in a single UI, Harness is not bound to have just 1 instance per UI. Harness can have multiple agents deployed across different scopes/clusters that can handle more applications than ArgoCD.
+With Harness GitOps, multiple agents can run within a single Harness project. Harness is not limited to a single agent instance—you can deploy multiple agents across different scopes or clusters, enabling you to manage more applications and environments than a standard Argo CD setup.
+
+![](./static/gitops-agent-ui.png)
+
 
 **When to use Harness GitOps HA Agent?:**
 
@@ -666,11 +697,17 @@ The GitOps agent has 2 types of reconciliation on top of the ArgoCD’s reconcil
 1. On CRUD events, reconciliation runs every 10 seconds.
 2. The bulk reconciliation (to check if anything was removed/added in the cluster directly) runs every 100 seconds.
 
-#### Known problem
+#### Known problem (Fixed)
 
-Currently, the agents running with multiple replicas are not aware that more replicas are running and hence the reconciliation runs on all. 
+:::info
 
-Consequently, if there is an HA agent running 5 pods all of the pods will send the reconcile call (5 times in 1 cycle). This results in computing overhead.
+As of [GitOps Agent 0.89](/release-notes/continuous-delivery/#gitops-agent-version-0890) this has been fixed. If you are encountering this issue, please upgrade your GitOps Service to version 1.28 or higher, and agent to 0.89 or higher.
+
+:::
+
+In older agent versions, when agents run with multiple replicas, each replica is unaware of the others. As a result, reconciliation runs on all replicas independently. 
+
+Consequently, if there is a HA agent running 5 pods, all of the pods would send the reconcile call (5 times in 1 cycle). This resulted in computing overhead.
 
 ## References
 

@@ -65,6 +65,8 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 
 ## SBOM Orchestration step configuration
 
+<DocImage path={require('./static/sbomm-overvieww.png')} width="50%" height="50%" />
+
 You can use **SBOM Orchestration** step to generate an SBOM in either the **Build** or **Deploy** stage of a Harness pipeline.
 
 * In a **Build** stage, add the **SBOM Orchestration** step after the artifact (image) has been pushed to an artifact repository.
@@ -108,12 +110,24 @@ Using SBOM Orchestration step you can generate the SBOM for both Container image
 - **Registry Type**: Select **Harness Artifact Registry** or **Third-Party Artifact Registry**, based on where your artifact is stored.
 - **Source**: Select the **Source** by choosing either a supported container registry from the list or Repository if you are generating the SBOM for source code.
 
+
 import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifact-source.md';
 
 <ArtifactSource />
 
-With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you an attest to the generated SBOM, follow the instructions in the section below.
+With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you can attest to the generated SBOM, follow the instructions in the section below.
 
+:::info
+
+The SBOM generation step supports all registry types, including JFrog, Harbor, and Kubernetes registries. Select the [Docker Registry Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker Registry where the artifact is stored.
+
+Enter the name of your image with tag, such as:
+
+JFrog: `</your-repo/test-image>:tag`
+
+Harbor: `</your-project/test-image>:tag`
+
+:::
 
 ### Attest the SBOM
 To configure attestation, in addition to the above configuration, you need to enable the SBOM Attestation checkbox in the SBOM Orchestration step. Enabling SBOM Attestation is optional and not required for SBOM generation. 
@@ -124,6 +138,8 @@ import CosignAttestationOptions from '/docs/software-supply-chain-assurance/shar
 
 <CosignAttestationOptions />
 
+<DocImage path={require('./static/sbomm-overvieww.png')} width="50%" height="50%" />
+
 
 ### Configure SBOM Drift
 This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift/). If you prefer not to detect any changes in SBOMs, leave this option unchecked. Also, enabling SBOM Drift is optional and not required for SBOM generation
@@ -133,6 +149,10 @@ Enabling this feature provides the following capabilities:
 - **Detect drift from the last generated SBOM**: Compare the current SBOM with the most recently generated SBOM to identify changes.
 - **Detect drift from a baseline**: Compare the current SBOM against a predefined baseline SBOM to detect deviations.
 
+
+:::info
+After you run the SBOM Orchestration step, the generated SBOM file is uploaded to the `/harness/sbom/{sbom_<sbom_orchestration_step_execution_id>}.json` path. You can also download the SBOM using [Harness APIs](https://apidocs.harness.io/tag/SBOM#operation/downloadSbomForArtifact).
+:::
 
 ## Run the pipeline
 

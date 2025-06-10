@@ -5,12 +5,6 @@ sidebar_position: 3
 sidebar_label: Quickstart Tutorial
 ---
 
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
-
-:::
-
 This guide provides a detailed, step-by-step tutorial to help you get started with Gitspaces. We’ll use a sample application available in our public GitHub repository, **[Demo Node.js App](https://github.com/harness-community/demo-repo-nm.git)**, to walk through this quickstart guide. You can also fork the repository to make your own changes as part of this guide.
 
 <iframe width="500" height="275" src="https://www.youtube.com/embed/73eGzg3qs8w?si=ixJHmw7-Y_txspDq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

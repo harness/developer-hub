@@ -50,6 +50,7 @@ List of measures:
 - Success Rate: Success rate of executions(executions completed with `SUCCESS` status)
 - Total Executions: Total no. of executions
 - Total Executions Trend: This compares the executions count from the previous period to the current period
+- Total Queued Executions: Total no. of queued executions(executions with current status as `QUEUED/QUEUED_LICENSE_LIMIT_REACHED/QUEUED_EXECUTION_CONCURRENCY_REACHED/QUEUED_STEP_LIMIT_REACHED`)
 
 ### Organization Tags
 This view contains the data related to the organization tags. It will contain the real-time tags of the organization.

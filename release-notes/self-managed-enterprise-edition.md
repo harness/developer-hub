@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-10-28T14:00
+date: 2025-02-28T16:00
 sidebar_position: 16
 ---
 
@@ -232,6 +232,1303 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
 :::
 
+:::danger Important
+  
+  For customers using ArgoCD and upgrading to version 0.26.x for the first time, ensure that:
+      - The required flag is enabled and set `timescale-backup-minio` secret to be ignored by ArgoCD, similar to other secrets.
+      - For subsequent upgrades from 0.26.x to any other version, disable the flag to prevent ArgoCD from overwriting the secret, which could lead to authentication issues. 
+
+    ### Upgrade Scenarios:
+      
+      1. First-time upgrade to 0.26.x:
+          - Set `archive_minio_secret: true`
+          - Configure ArgoCD to ignore the `timescale-backup-minio` secret. This ensures proper secret creation
+
+            ```yaml
+              platform:
+                bootstrap:
+                  database:
+                    timescaledb:
+                      archive_minio_secret: true
+            ```
+
+      2.  Upgrading from 0.26.x to newer versions:
+          - Add `Prune=false` annotation to the resource using the following command
+          ```yaml
+          kubectl annotate secret timescaledb-backup-minio -n <namespace> argocd.argoproj.io/sync-options='Prune=false'
+          ```
+          - Set `archive_minio_secret: false`, this prevents ArgoCD from overwriting the existing secret
+          ```yaml
+              platform:
+                bootstrap:
+                  database:
+                    timescaledb:
+                      archive_minio_secret: false
+            ```
+:::
+
+## June 03, 2025, Version 0.29.0 <!-- Draft : May 26, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.29.0](https://github.com/harness/helm-charts/releases/tag/harness-0.29.0)                 |
+| Air Gap Bundle            | [0.29.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.29.0) |
+| NG Manager                | 1.89.6                                                                                       |
+| CI Manager                | 1.79.1                                                                                       |
+| Pipeline Service          | 1.128.1                                                                                      |
+| Platform Service          | 1.66.0                                                                                       |
+| Access Control Service    | 1.87.0                                                                                       |
+| Delegate                  | 25.05.85801                                                                                  |
+| GitOps Service            | 1.32.2                                                                                       |
+| Change Data Capture       | 1.44.0                                                                                       |
+| STO Core                  | 1.140.1                                                                                      |
+| Test Intelligence Service | 1.45.0                                                                                       |
+| NG UI                     | 1.75.3                                                                                       |
+| LE NG                     | 1.6.0                                                                                        |
+| Looker                    | 1.7.11                                                                                       |
+| Log Service               | 1.19.1                                                                                       |
+| Batch Processing          | 1.48.2                                                                                       |
+| Gateway                   | 1.48.1                                                                                       |
+| IaCM Manager              | 1.76.0                                                                                       |
+
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.29.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.0/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.0/iacm_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- Updated the API docs for [**User Group APIV2** API](https://apidocs.harness.io/tag/User-Group/#operation/getUserGroupV2) to correctly reflect the subset of fields returned in the response. [PL-62617] 
+- Fixed an issue where the value for a reference-type secret was missing during policy evaluation. With this fix, the value is now passed correctly, ensuring that policy evaluation on values is honoured. [PL-62417]
+- Fixed error messaging for non-inline secrets created via YAML to ensure accurate status on the secret listing page. [PL-62270]
+- Resolved an issue where future-dated cloud credits were not consumed when no current credits were available. Previously, this caused overage to be incorrectly updated. [PL-62134]
+- Used enhanced secretId parsing to account for dynamic secret references. [PL-62089]
+- Resolved an issue where unauthenticated users were redirected to the homepage after login instead of their intended deep link destination. [PL-61939]
+- Addressed a performance issue where the FileStore page was slow when too many files were loaded at once. We’ve added virtualization so that only a few files load at a time, making the page much faster and smoother. [PL-61880] 
+- Deprecated the ‘Account Edition’ column from the Account List View across Harness. This change is part of our ongoing effort to simplify the UI and reduce redundancy. [PL-61850]
+- Fixed an issue where AWS Secret Manager connectors failed for GovCloud regions due to incorrect STS endpoint resolution. [PL-61526]
+- Fixed an issue where only one Google Cloud Run delegate could register per account by introducing the HOST_NAME_COMMAND environment variable to avoid hostname conflicts.
+- Resolved an issue where deleted variables did not reflect correctly in Resource Groups. Now, if a variable is deleted, it will also be removed from any associated Resource Groups. [PL-60850]
+- Fixed an issue in the module license view where long email addresses overlapped the date column; email text now wraps correctly. [PL-60222]
+
+#### Continuous Integration
+
+- Fixed an issue where Harness Cloud appeared under Infrastructure for the CI module in SMP environments. [CI-17250]
+
+#### Continuous Delivery
+
+- Fixed an issue where template reconciliation did not consistently load updated templates; this is now resolved with improved validation and a reconciliation loader. [PIPE-26008, ZD-80358]
+- Fixed an issue where using execution-time inputs in the Build & Push step caused the Input Set creation page to fail; the tags field now fully supports runtime inputs. [PIPE-26480, ZD-80504]
+- Fixed an issue where deployment metrics in the Unified View and Deployment Dashboards were inconsistent; metrics now accurately reflect deployments across both deploy and custom stages. [CDS-108215]
+- Fixed an issue where editing a newly created environment override using a Custom Remote Store caused an error; the UI now handles edits gracefully. [CDS-107112, ZD-78749]
+- Fixed an issue where rollbacks were not triggered for user-initiated failures and approval rejections despite the configured rollback strategy. This fix is behind the feature flag `PIPE_ADD_ORIGINAL_FAILED_CHILDREN_TO_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable it. [PIPE-26102, ZD-80129]
+- Fixed an issue where users could not create AWS S3 OIDC connectors using the GovCloud region due to identity token errors; OIDC connectors now support region-specific audience values. [CDS-108206, ZD-80533]
+- Fixed an issue where pipeline executions failed intermittently due to token generation errors during GitHub App authentication; token generation is now stable across retries. [PIPE-26414, ZD-81230]
+- Fixed an issue where the GitOps Sync step logs displayed the default Harness URL instead of the configured vanity URL; Sync and Fetch Linked Apps steps now respect vanity URL settings. [CDS-108906]
+- Fixed an issue where syncing GitOps applications with zero resources from the Harness UI failed due to a validation error; such configurations are now supported. [CDS-109108, ZD-82181]
+- Fixed an issue where the TAS Rolling Deploy step ignored `readiness-health-check` properties in `manifest.yml`; these properties are now preserved. [CDS-109043, ZD-82190]
+- Fixed an issue where copying files with a source path that included a leading `/` caused only a single file to copy instead of the full directory. This fix is behind the feature flag `CDS_SCM_FIX_FOLDER_PATH`. Contact [Harness Support](mailto:support@harness.io) to enable it. [CDS-108947, ZD-82070]
+- Fixed an issue where dark mode was not consistently applied in shell script editors and the file store. [PIPE-26634, ZD-82468]
+- Fixed an issue where the OIDC payload for the GCS Cache step lacked claims for fine-grained access control. This fix is behind the feature flag `CDS_AWS_CONNECTOR_REF_CDK`. Contact [Harness Support](mailto:support@harness.io) to enable it. [CDS-108066]
+- Fixed an issue during ECS deployments where the Prepare Rollback stage failed to find the listener in the target group. [CDS-109457, ZD-83135]
+- Fixed an issue where the Terraform Cloud step could fail during Apply due to a null pointer exception, even when apply succeeded. [CDS-109411, ZD-83143]
+- Fixed an issue where users with Environment Create permissions couldn't import environments from Git despite UI permissions. [CDS-109288, ZD-81920]
+- Fixed an issue where services showed running instances even after the release was deleted, blocking further deletion via Terraform. [CDS-108684, ZD-81599]
+- Fixed an issue where keywords in logs were incorrectly masked if secrets matched common characters like single letters. [CDS-108477, ZD-81012, ZD-81111]
+- Fixed an issue where inserting a step inside a containerized template displayed unsupported step types like Shell Script. [CDS-109096]
+- Fixed an issue where configuring Auto Approval in a step template with TimeZone and Time as runtime inputs caused the UI to become unresponsive. [PIPE-26566, ZD-82092]
+- Fixed an issue where runtime stage variables in templates did not show options to configure single-select or multi-select inputs. [CDS-108690]
+- Fixed an issue where the ASG Wait for Steady State step errored out with "No instance refreshes found" due to a race condition. [CDS-109659]
+- Fixed an issue where serverless pipelines using S3 and ECR failed due to missing `download-aws-s3` image in ECR. [CDS-109537, ZD-83368]
+- Fixed an issue where Terraform Cloud Run step intermittently failed in plan-only mode. [CDS-109508, ZD-83111]
+- Fixed an issue where adding an AwsLambdaFunctionDefinition manifest via YAML in service overrides broke the UI. [CDS-109383, ZD-83146]
+- Fixed an issue where disabling container log checking for Azure App Service had no effect; logs were initialized regardless. [CDS-109381, ZD-82885]
+- Fixed an issue where infrastructure created via webhook auto-creation skipped OPA evaluation even with the feature flag enabled. [CDS-109227, ZD-82519]
+- Fixed an issue where Azure App Service deployments succeeded but the success signal was not sent to the pipeline, causing a timeout. [CDS-109166, ZD-82534]
+- Fixed an issue where event relay triggers failed with valid HMAC signatures for project-level webhooks. [CDS-109041, ZD-82328]
+- Fixed an issue where the ASG Wait for Steady State step failed when instance refresh completed before the step began. [CDS-109659]
+- Fixed an issue where the stage status label on execution page banner was truncated on small screens. [PIPE-26698]
+- Fixed an issue where Insert Step configuration in older templates did not render correctly in the UI. [PIPE-26956, ZD-82769]
+- Fixed an issue where using expressions in the repository name of the Clone Codebase step caused the Branch Name field to load indefinitely. [CDS-109785, ZD-83118]
+- Fixed an issue where the `CF_HOME` environment variable changed after each `cf auth` command. [CDS-108472, ZD-81227]
+- Fixed an issue where the AWS CDK plugin did not support `AWS_SESSION_TOKEN` with temporary STS credentials. [CDS-109505, ZD-83221]
+- Fixed an issue where OPA policy evaluation blocked input set rendering during pipeline execution. A feature flag `PIPE_DISABLE_OPA_ON_SAVE_BLOCKING_FOR_PIPELINE_RUN` is available to revert behavior. [PIPE-26614]
+- Fixed an issue where a default deviation setting was applied while configuring a health source. [CDS-109866]
+- Fixed an issue where navigating back to the query setup page after configuring a CloudWatch health source caused a page refresh error. [CDS-109427]
+- Fixed an issue where GitOps pull request merges failed with `JSONObject["code"]` not found error. [CDS-109239]
+- Fixed an issue where using an OIDC connector to download an S3 artifact in SSH deployments caused a `webIdentityToken must not be null` error. [CDS-109225]
+- Fixed an issue where selecting Helm Canary Deploy from the UI incorrectly created a Kubernetes Canary step in the template. [CDS-109072]
+
+#### Chaos Engineering 
+
+- Fixed an issue that was causing runtime input-based fault additions to fail in Kubernetes (Harness Infrastructure) experiments when using a private image registry with a secret. The system now correctly handles secrets during fault creation in these scenarios. [CHAOS-8006]
+- Added an index on the environment_id field to improve query performance and reduce latency for operations involving environment-specific data. [CHAOS-7726]
+- Updated the title header on the Getting Started page from a question format ("Create Chaos Experiments on your ______?") to a clear statement: "Create Chaos Experiments on your Infrastructure" for better readability and user experience. [CHAOS-7802]
+- Resolved a goroutine leak in chaos-manager by properly closing response bodies, preventing memory spikes and unbounded memory usage. [CHAOS-7972]
+- Corrected the experiment count display in Bulk Run on HCE-SaaS UI by replacing the hardcoded value with a dynamic variable to reflect the actual number of selected experiments. [CHAOS-7818]
+
+#### GitOps
+
+- Fixed an issue where the API for listing repositories on the agent returned all repositories instead of only those respecting project mapping. [CDS-109479, ZD-82623]
+- Fixed an issue where invalid application sets were flooding the GitOps Agent with update events. [CDS-109042]
+- Fixed an issue where invalid application sets were flooding the GitOps agent with update events. [CDS-109042]
+
+#### Supply Chain Security
+
+- Fixed an issue where the AI Enhance button was overlapping with the step ID; the overlap has now been resolved [SSCA-3629].
+
+### New Features and Enhancements
+
+#### Harness Platform
+
+- New Audit Event for API Token Expiry: Harness now logs an audit event whenever an API token expires. This enhancement improves visibility and traceability of token lifecycle events, supporting stronger security auditing. [PL-62394]
+- Implicit tag (delegate name) is now supported for delegate version override. [PL-62335]
+- Added support for handling TOKEN_EXPIRED outbox events to generate audit entries when expired tokens are deleted. [PL-62044]
+- Added support for governing scope Variables in Harness using Open Policy Agent (OPA) policies, enabling fine-grained control over variable creation and editing. This feature is currently behind the feature flag `PL_ENABLE_OPA_FOR_VARIABLES`. [PL-61504]
+- Delegate Configurations have been removed from the Resource Group configuration UI to reduce clutter and simplify the interface.[PL-60603]
+
+#### Continuous Delivery
+
+- Harness now supports capturing **multiline output variables** from **Container steps** in CD pipelines, ensuring correct population and visibility in the Output tab. Currently, this feature is behind the feature flag `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-95235, ZD-44567,72745]
+- Harness is introducing the **ECS Blue Green Traffic Shift** step to support weighted traffic shifting for ECS deployments, enabling gradual rollout strategies for ECS services with low task counts. Currently, this feature is behind the feature flag `CDS_ECS_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-102609]
+- Harness now **enforces namespace consistency in Kubernetes and Helm deployments**, preventing users from overriding the infrastructure-defined namespace using custom CLI flags like `--namespace`. Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-99904, ZD-67987,71082]
+- Harness now supports **mounting ConfigMaps and Kubernetes Secrets as volumes in CD Container steps**, enabling users to inject configuration and credentials without modifying container images. Currently, this feature is behind the feature flag `CDS_CONFIG_MAPS_AND_SECRETS_AS_VOLUME`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-95429]
+- Harness now supports **Helm deployments with CRDs** by enforcing `helm upgrade --install` behavior, enabling seamless deployment of resources that already exist outside the target namespace. Currently, this feature is behind the feature flag `CDS_SKIP_HELM_INSTALL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-85790]
+- Harness now supports **re-running pipelines** with the original pipeline definition and inputs, enabling teams to accurately reproduce and debug historical executions. Currently, this feature is behind the feature flag `PIPE_USE_ORIGINAL_YAML_FOR_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-21837]
+- Harness now **automatically creates webhooks for GitX resources**, improving pipeline performance by avoiding manual webhook setup and eliminating execution delays for resources like templates. This behavior is enabled by default for new accounts. [PIPE-23197]
+- Harness now ensures pipelines run with the latest Git-synced configurations by triggering Git sync before executing associated triggers. This prevents outdated configs from being used and eliminates the need for manual workarounds. Currently, this feature is behind the feature flag `PIE_PROCESS_TRIGGER_SEQUENTIALLY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-21521, ZD-69595,70083]
+- Harness now supports **customized notifications** for **Webhook-based Centralized Notifications** and for **all types of Pipeline Notifications**. Currently, this feature is behind the feature flag `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Custom Notification templates](/docs/platform/templates/customized-notification-template/). [PIPE-24685]
+- Harness now supports capturing HTTP response headers, including cookies, as output variables in the HTTP step. Currently, this feature is behind the feature flag `CDS_SUPPORT_HTTP_HEADER_HTTP_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Accessing HTTP Response Headers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/#accessing-http-response-headers). [CDS-95328]
+- Harness now provides an API endpoint to fetch the latest deployment status of a service. [CDS-100872]
+- Harness now auto-approves Terraform Cloud runs of type **Refresh** by default. Currently, this feature is behind the feature flag `CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Plan with Refresh Command](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments/#plan-with-refresh-command). [CDS-98552]
+- Harness now supports configuring Helm native command flags directly at the step level. Currently, this feature is behind the feature flag `CDS_HELM_STEP_COMMAND_FLAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Command Flags at Step Level](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart/#command-flags-at-step-level). [CDS-101899]
+- Users can now avoid printing the entire script content in the console log before the output of **Tanzu Command Step**. For more information, refer to [Disable Script Logging](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-command-step/#disable-script-logging). [CDS-101641, ZD-71075]
+- Users can now configure `AND` or `OR` logic when filtering hosts by attributes in Physical Data Center (PDC) infrastructure definitions. Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Filtering Hosts by Attributes](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#filtering-hosts-by-attributes). [CDS-92584]
+- Harness now supports viewing full variable values in the Override tab. Users can see and edit entire override values without truncation. Currently, this feature is behind the feature flag `CDS_TEXTAREA_FOR_OVERRIDE_VARIABLES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-92714]
+- Harness now supports native binding of the Tanzu Application Service (TAS) Autoscaler service to your application during rolling deployments. For more information, refer to [TAS Autoscaler Integration](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart#tas-autoscaler-integration). [CDS-101502]
+- Harness now fetches Terraform Enterprise OPA policy evaluation results and fails the pipeline stage when a policy evaluation fails, ensuring pipelines correctly enforce OPA policy compliance. Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Open Policy Agent (OPA) policy support](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments/#open-policy-agent-opa-policy-support). [CDS-97468, ZD-63823,75769]
+- Harness now supports including the service name and environment in the subject line of EMAIL notifications, making them searchable and context-rich. Currently, this feature is behind the feature flag `PIPE_STAGE_NOTIFICATION_ENV_SVC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-83691]
+- Harness now displays the Helm chart versions for both current and rollback artifacts during post-production rollbacks—replacing **N/A** with the actual version numbers in the UI. [CDS-109098]
+- Harness now supports alphabetically sorting the list of Projects, Organizations, and Accounts when configuring Approver User Groups. [CDS-95935]
+- Harness is introducing the **Elastigroup Blue Green Traffic Shift** step to support weighted traffic shifting for Spot Elastigroup deployments, enabling gradual rollout strategies for services with low task counts. Currently, this feature is behind the feature flag `CDS_SPOT_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Elastigroup Blue-Green Traffic Shifting Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-traffic-shifting/). [CDS-100276]
+- The Kubernetes Java client used by Harness has been upgraded from version `18.0.0` to `22.0.1-legacy`. This update addresses known security vulnerabilities in the older version and adds compatibility with newer Kubernetes versions. [CDS-105300]
+
+#### Chaos Engineering 
+
+- Added support for Windows CPU stress on Windows dual socket servers. [CHAOS-7902]
+- Added support for dynamic updates in Active Discovery and the Application Map after each discovery run—new services are added, removed services are marked accordingly, and resources from newly excluded namespaces are hidden, with their services shown as removed if referenced in the Application Map. [CHAOS-7745]
+- Added Windows global blackhole experiment to cause global blackhole chaos on a Windows VM. [CHAOS-7091]
+- Listed below are the images to download to use image registry with Harness Delegate.
+  - `harness/chaos-ddcr:1.59.0`
+  - `harness/chaos-log-watcher:1.59.0`
+  - `harness/service-discovery-collector:0.39.0`
+  - `harness/chaos-ddcr-faults:1.59.0`
+
+#### Cloud Cost Management
+
+- Added support for quarterly reports in Perspectives: Previously, only monthly and annual reporting options were available. With the new quarterly option, users can now receive more balanced and actionable insights per quarter.
+- Nodepool Recommendations UI changes: **Largest Resource Requirements** has been renamed to **Minimum Resource Requirements**.The positions of Preferred and Minimum resource requirements have been swapped in the UI for better clarity and consistency. Preferred resource requirements will always be greater than Minimum resource requirements. We have also added tooltips on the UI to make the UI more user-friendly. [CCM-22826]
+- Preferred Instance Families: We’ve added support for saving Preferred Instance Families in Nodepool presets, along with Buffer and Minimum Node Count. Users can now select specific instance families per cloud provider and region, and these preferences will be considered when generating the next set of Nodepool recommendations. [CCM-21987]
+- Cost Categories Integration for Recommendations: The Filter panel in the Recommendations view now includes the option to filter by Cost Categories. This update is especially valuable for large-scale organizations that manage thousands of recommendations and require structured views to take meaningful action. This improvement allows for efficient sorting and quick isolation of recommendations based on relevant cost buckets and labels. [CCM-21439]
+- Improved Budget Start Date Validation: To ensure accurate budget tracking, we've added validation to prevent the creation of new budgets with a start date later than the 28th of any month. [CCM-22132]
+
+#### GitOps
+
+- Applications can now be [synced and refreshed using bulk actions](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications#bulk-sync-and-refresh). On the applications page, there are two new buttons: **Bulk Sync** and **Refresh**. Currently, this feature is behind the feature flag `GITOPS_BULK_ACTIONS_ENABLED `. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-58485**)
+
+### Behavior changes
+
+#### Continuous Delivery
+
+- Users can now deploy Lambda artifacts larger than 50 MB stored in S3. Currently, this feature is behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable this behavior change. For more information, refer to [AWS Lambda Rollback Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments/#rollback-for-artifacts-larger-than-50-mb). [CDS-74918, ZD-77784]
+
+## May 27, 2025, Version 0.28.1 <!-- Draft : May 27, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.28.1](https://github.com/harness/helm-charts/releases/tag/harness-0.28.1)                 |
+| Air Gap Bundle            | [0.28.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.28.1) |
+| NG Manager                | 1.84.4                                                                                       |
+| CI Manager                | 1.74.4                                                                                       |
+| Pipeline Service          | 1.123.2                                                                                      |
+| Platform Service          | 1.61.0                                                                                       |
+| Access Control Service    | 1.82.2                                                                                       |
+| Delegate                  | 25.04.85602                                                                                  |
+| GitOps Service            | 1.30.2                                                                                       |
+| Change Data Capture       | 1.41.3                                                                                       |
+| STO Core                  | 1.135.0                                                                                      |
+| Test Intelligence Service | 1.44.0                                                                                       |
+| NG UI                     | 1.70.3                                                                                       |
+| LE NG                     | 1.8.0                                                                                        |
+| Looker                    | 1.7.11                                                                                       |
+| Log Service               | 1.19.1                                                                                       |
+| Batch Processing          | 1.44.4                                                                                       |
+| Gateway                   | 1.42.7                                                                                       |
+| IaCM Manager              | 1.72.0                                                                                       |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.28.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/iacm_images.tgz" \
+  .
+```
+
+### New Features and Enhancements
+
+#### Harness Platform
+
+- Harness now upgrades jQuery to a safe version, addressing CVE-2020-11023 and preventing potential cross-site scripting (XSS) when passing HTML containing `<option>` elements into jQuery manipulation methods. [PL-62754, ZD-82195]
+
+## April 29, 2025, Version 0.28.0 <!-- Draft : April 28, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.28.0](https://github.com/harness/helm-charts/releases/tag/harness-0.28.0)                 |
+| Air Gap Bundle            | [0.28.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.28.0) |
+| NG Manager                | 1.84.4                                                                                      |
+| CI Manager                | 1.74.4                                                                                       |
+| Pipeline Service          | 1.123.2                                                                                      |
+| Platform Service          | 1.61.0                                                                                      |
+| Access Control Service    | 1.82.1                                                                                      |
+| Delegate                  | 25.04.85602                                                                                  |
+| GitOps Service            | 1.30.1                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.135.0                                                                                      |
+| Test Intelligence Service | 1.44.0                                                                                       |
+| NG UI                     | 1.70.3                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.11                                                                                       |
+| Log Service               | 1.19.0                                                                                       |
+| Batch Processing          | 1.44.3                                                                                       |
+| Gateway                   | 1.42.4                                                                                       |
+| IaCM Manager              | 1.72.0                                                                                       |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.28.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.0/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.0/iacm_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed the Auto Upgrade Indicator of Delegates for certain cases. [PL-61711]
+- Fixed issue where expired JWT token in delegate communication resulted in a revoked token error instead of an expired token error. [PL-61340]
+- Added support for MinIO external secret for log-service. [PL-61107]
+- Fixed the service account API to work with both `filterType` as `INCLUDE_INHERITED_SERVICE_ACCOUNTS` and search term with some value. [PL-60938]
+- Removed page load spinner for Usage Breakdown, which now has its own loading spinner. [PL-60615]
+- Fixed the error message when LDAP login fails due to invalid credentials. [PL-60508]
+- Users will now see a clear error when trying to introduce two conditions with the same name. [PL-60365]
+- Enhanced the error message when attempting to delete a connected delegate. [PL-46692]
+
+#### Continuous Integration
+
+- Resolved an issue in Build Intelligence where an extra parenthesis was added in run steps for PowerShell containers. [CI-16922, ZD-81766]
+- Fixed issue with GCP connector under "Save cache to GCS" when used as a runtime input, where Docker connectors were incorrectly listed instead of GCP connectors. [CI-16347, ZD-78363]
+- Fixed an issue where execution would fail if a Cloud Storage Connector with an unsupported authentication method was used in Default Settings for the Caching Intelligence features. Now, instead of failing, execution will proceed, but Intelligence features relying on these settings will be disabled. [CI-16265, ZD-78127]
+- Resolved an issue where Bitbucket connectivity in Harness Cloud failed when using Secure Connect on macOS. [CI-15432, ZD-74614]
+
+#### Continuous Delivery
+
+- Fixed an issue where execution-time inputs in the Build & Push step caused the Input Set creation page to fail. Tags field now fully supports runtime inputs. [PIPE-26480, ZD-80504]
+- Resolved issue where rollbacks were not triggered for user-initiated failures and approval rejections. Stage rollback now works as expected, with the fix behind feature flag `PIPE_ADD_ORIGINAL_FAILED_CHILDREN_TO_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-26102, ZD-80129]
+- Step group variables in step group templates now work as expected, resolving issues with unpredictable paths and incomplete UI resolution. [PIPE-25446]
+- Fixed missing payload section in activity history for artifact and manifest triggers, caused by unnecessary call to `useTriggerHistoryEventCorrelationV2`. [PIPE-25293]
+- Resolved issue with GitHub App Connector allowing successful connections to non-existent repositories. [PIPE-24905, ZD-76882, ZD-80843]
+- Logs now respect account-level vanity URL setting, resolving issue where GitOps Sync step logs displayed the default Harness URL. [CDS-108906]
+- Fixed rollback step failure during first Helm deployment when no previous release existed, preventing the error `Error: release has no 0 version`. [CDS-108229, ZD-80929]
+- Deployment metrics in Unified View and Deployment Dashboards now accurately reflect deployments across both deploy and custom stages. [CDS-108215]
+- CD Trends data now displays correctly on the Licensing Page, fixing issue where data was missing after a change in license type. [CDS-108153, ZD-80522]
+- Resolved issue where multiple GitOps steps within a stage caused Duplicate Key Exceptions. GitOps steps now store outputs at both stage and step scopes for accuracy. [CDS-108131]
+- Resolved Azure App Service deployment failure with AASE delegate version `25.02.85300`, fixing timeouts on artifact deployment even with valid ZIP packages. [CDS-108129, ZD-80440]
+- Fixed visibility issue of the Kubernetes Diff step icon, which either did not appear or disappeared on hover. [CDS-107719]
+- Resolved issue with `/k8s/command-flags` endpoint returning empty response for the Kubernetes Delete step, preventing users from configuring command flags. [CDS-107635]
+- Helm Uninstall step is now available for custom stages in the step library. [CDS-107612]
+- Release name for Kubernetes and Helm deployments now automatically sourced from the infrastructure definition, resolving manual re-entry issues. [CDS-107574]
+- Fixed rollback failures in Kubernetes environments due to removal of `startupProbe` configuration in manifests. [CDS-107476]
+- Fixed issue with GitOps steps failing to execute in NG-Manager version 1.79.3 due to missing method implementation. [CDS-107473]
+- Instance information now loads correctly in Snapshot environments after ECS deployments. [CDS-107467]
+- Resolved ASG Steady State step failure when fetching manifests from Git, ensuring successful deployments. [CDS-107465]
+- Fixed checkbox display issue in filter select dropdowns due to missing styles in menu options. [CDS-107320]
+- Fixed rollback delegate requests in Azure Web App rollbacks, resolving inconsistent behavior due to missing feature flag. [CDS-107236]
+- Corrected plugin image fetching issue when using runtime inputs and expressions for `Runtime Language` and `Plugin Type` fields. [CDS-107223]
+- Resolved issue with **Deploy services in parallel** option defaulting incorrectly in deploy stages. [CDS-107116]
+- Fixed Terraform Plan step failure when fetching secrets from GCP Secret Manager, despite a successful connection test. [CDS-107114, ZD-78697]
+- Corrected UI display of Artifactory and S3 as supported options for Terragrunt plan configuration files, which were not supported. [CDS-106999]
+- Resolved mismatch between version data shown on service summary page and actual version deployed to the cluster. [CDS-106908, ZD-78480]
+- Fixed YAML compilation issue with the **Deploy to multiple Environments or Infrastructure** option using filtered lists, preventing pipeline failures. [CDS-106884, ZD-78208]
+- Resolved issue with ECR artifact tag validation not triggering errors for incorrect or missing tags. [CDS-106834]
+- Fixed visibility of deployments on service pages by correcting URL filter issues. [CDS-106828]
+- Corrected broken GitOps application link from pipeline executions, enabling proper navigation. [CDS-106732]
+- Fixed instance cleanup issue when removing a GitOps agent, ensuring accurate service dashboard data. [CDS-106629]
+- Resolved issue with ECR artifact runtime input validation, allowing regex filtering of artifact tags. [CDS-106566, ZD-77818]
+- Fixed file permission issues in Artifact Bundle for NodeJS apps deployed to PCF, now preserving permissions in `tar.gz` archives. [CDS-106309, ZD-77258]
+- Resolved Canary deployment failures caused by string inference issues when replicas field was not preset. [CDS-106307]
+- Fixed issue where updated deployment template versions in Git were not appearing in runtime inputs dropdown. [CDS-106274, ZD-77132]
+- Clarified error message for Google Cloud Function failures to achieve steady state, now displaying "Function couldn’t achieve steady state." [CDS-102219]
+- Fixed ECS Blue/Green Deployments issue with Target Group and Listener Rule "stickiness" setting reset after Swap Routes step. [CDS-99881, ZD-67426]
+
+#### Cloud Cost Management
+
+- For Budgets on Perspectives using Cost Categories with shared cost buckets, we’ve fixed an edge case where budget history data was not displaying in the UI. Budget computations are now accurately reflected to ensure complete visibility into historical usage and trends [CCM-22006]
+- Fixed Incorrect Timestamps in Budget Monthly Breakdown: Previously, the [List Budgets](https://apidocs.harness.io/tag/Cloud-Cost-Budgets#operation/listBudgets) API returned monthly breakdowns with Unix timestamps for the year 2024 instead of the configured 2025 values. This issue has now been resolved, and the API returns accurate timestamps consistent with the UI configuration. [CCM-21657]
+
+### New Features and Enhancements
+
+#### Harness Platform
+
+- Ignored docker.io registry in image tags during delegate upgrade checks, as it's the default registry if not specified. [PL-61417]
+- Upgraded protocol buffer version from 3.15.5 to 4.28.3 to fix security issues and improve internal communication. [PL-61208]
+- Added a banner to notify users that Harness will switch to Google Artifact Registry (GAR) as the default public registry starting March 24, 2025. [PL-60930]
+- Added a feature flag to make delegate re-broadcast intervals increase exponentially. [PL-60477]
+- Set limits on role assignments per account based on the license edition to protect the system: 100 for COMMUNITY and FREE editions, 75,000 for Team and Enterprise editions. [PL-58428]
+- Made email(s) optional for the Email channel type in CNS when user groups are provided. [PL-57711]
+
+#### Continuous Integration
+
+- Updated the default Docker connector for new accounts to point to GAR instead of using the account-level connector [id: harnessImage]. [CI-16845]
+- Git branches are now populated when the Run Pipeline action is triggered for pipelines with Git clone enabled at the pipeline level. This feature is behind the feature flag `CI_DYNAMIC_BRANCH_SELECTOR`. [CI-16132]
+- Windows rootless mode support is now available for the CI Addon and Lite Engine images. With the new feature flag `CI_ADDON_LE_WINDOWS_ROOTLESS` enabled, Windows infrastructure will pull the rootless versions of these images [**harness/ci-addon** and **harness/ci-lite-engine**], allowing builds to run without root privileges. The rootless image versions are now available as **rootless-1.16.61**. [CI-14868, CI-15981, ZD-72927, ZD-77194]
+- Added support for shell as a run-time input in the Run-step. [CI-15390]
+
+#### Continuous Delivery
+
+- Users can now create, update, and delete tags in AWS Lambda and AWS ECS deployments, ensuring proper tag propagation during deployments and accurate reflection in the AWS Console. [CDS-107032, CDS-97430]
+- Harness now supports the latest Google Cloud APIs, keeping deployments aligned with the latest GCP updates. [CDS-102860, ZD-72653]
+
+#### Cloud Cost Management
+
+- Cost Categories Integration for Recommendations: The Filter panel in the Recommendations view now includes the option to filter by Cost Categories. This update is especially valuable for large-scale organizations that manage thousands of recommendations and require structured views to take meaningful action. This improvement allows for efficient sorting and quick isolation of recommendations based on relevant cost buckets and labels. [CCM-21439]
+- Recommendations Filter Revamp: The Filter panel in the Recommendations view has been updated to provide a more streamlined experience. As shown in the image below, the new design improves navigation and makes it easier to apply multiple filters. [CCM-21438]
+- Introduction of Recommendation Preferences: We have introduced a new feature to enhance the personalization of recommendations: Recommendation Preferences. This allows users to create, apply, and save custom tuning preferences to better suit their usage. Users can now also select a default preset preference. This ensures that the chosen tuning preferences are consistently applied across all future recommendations removing the need for repeated manual adjustments. [CCM-20954]
+
+## April 17, 2025, Version 0.27.1 <!-- Draft : April 17, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.27.1](https://github.com/harness/helm-charts/releases/tag/harness-0.27.1)                 |
+| Air Gap Bundle            | [0.27.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.27.1) |
+| NG Manager                | 1.78.8                                                                                       |
+| CI Manager                | 1.67.5                                                                                       |
+| Pipeline Service          | 1.117.2                                                                                      |
+| Platform Service          | 1.55.0                                                                                       |
+| Access Control Service    | 1.76.1                                                                                       |
+| Delegate                  | 25.02.85305                                                                                  |
+| GitOps Service            | 1.26.4                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.129.3                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.63.10                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.10                                                                                       |
+| Log Service               | 1.19.0                                                                                       |
+| Batch Processing          | 1.40.4                                                                                       |
+| Gateway                   | 1.42.4                                                                                       |
+| IaCM Manager              | 1.72.0                                                                                       |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.27.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+- Deprecated the ‘Account Edition’ column from the Account List View across Harness. This change is part of our ongoing effort to simplify the UI and reduce redundancy. [PL-61850]
+
+## April 03, 2025, Version 0.27.0  <!-- Draft : April 03, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.27.0](https://github.com/harness/helm-charts/releases/tag/harness-0.27.0)                 |
+| Air Gap Bundle            | [0.27.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.27.0) |
+| NG Manager                | 1.78.8                                                                                       |
+| CI Manager                | 1.67.5                                                                                       |
+| Pipeline Service          | 1.117.2                                                                                      |
+| Platform Service          | 1.55.0                                                                                       |
+| Access Control Service    | 1.76.1                                                                                       |
+| Delegate                  | 25.02.85305                                                                                  |
+| GitOps Service            | 1.26.4                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.129.3                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.63.9                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.10                                                                                       |
+| Log Service               | 1.19.0                                                                                       |
+| Batch Processing          | 1.40.4                                                                                       |
+| Gateway                   | 1.42.4                                                                                       |
+| IaCM Manager              | 1.72.0                                                                                       |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.27.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.0/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed an issue where changes to ResourceType in Notification Rules were not saved properly. Modifying ResourceType in an existing rule invalidated subsequent configurations. To prevent this, ResourceType is now disabled for editing in existing rules. [PL-60466]
+- Fixed an issue where cleanup jobs were registered as Patroni members, causing WAL cleanup failures due to inactive cluster members. Removed labels from cron jobs to enable independent deployment for cleanup. [PL-61372]
+
+#### Continuous Integration
+
+- Fixed an issue where the tooltip under the Stage Savings banner on the Executions page overlapped with the navigation bar.[CI-15637]
+- Fixed an issue where enabling Build Intelligence caused Python shell executions to fail due to an extra newline being appended. The autoinjection script has been corrected for **run**, **runtest**, and **runtestv2** in Build Intelligence. [CI-15914, ZD-78087]
+- Resolved an issue with the CI `repoName` filter on the execution list page. Previously, due to Elasticsearch filtering inconsistencies, users were not seeing the correct responses. This fix ensures proper filtering when the execution list page is served via Elasticsearch, which is controlled by the feature flags `PIPE_ENABLE_ELASTIC_SEARCH` and `PIPE_ENABLE_DATA_RETENTION`. [PIPE-25112, ZD-77259, ZD-77611]
+
+#### Chaos Engineering
+
+- Fixed issue that prevented auto-creation of experiments with unsupported kinds. [CHAOS-7600]
+- Linux Dynatrace probe details did not appear correctly during creation. This issue has been fixed. [CHAOS-7596]
+- Fixed caching issue when selecting chaos faults in Chaos Studio. [CHAOS-7595]
+- Resolved ChaosGuard failure for non-Kubernetes experiments. [CHAOS-7636
+
+#### Continuous Delivery
+
+- Previously, the Approval Step input variables dialog box in the Harness UI displayed unnecessary line wrapping, causing UI distortion. The issue is resolved. [**CDS-106804, ZD-78238**]
+- Previously, the system fetched the service YAML from the Master branch during Helm Chart Deployment, preventing the selection of the Primary Manifest due to a branch mismatch. This issue is resolved. [**CDS-106242, ZD-77092**]
+- Previously, when an array of cluster identifiers was provided, there was no option to reset the `deployToAll` value back to `true`. This issue is resolved by introducing an explicit option to set `deployToAll: true`. [**CDS-105791**]
+- Previously, the step palette displayed containerized steps for plugins, even when adding steps for specific deployment types [AWS SAM, Serverless, Azure Function, Google Cloud Run]. This issue is resolved by updating the payload to ensure only non-containerized steps are shown as per the backend API request. [**CDS-106180**]
+- Previously, in the Kubernetes dry-run step, while changing the field from runtime input to a fixed value, the default value was an empty string. This issue is resolved, and the default value will now be `false`. [**CDS-106356**]
+- The Service Executions page was not listing all deployments due to repository and branch details being added to the filters and URL in the new Filters v2. Filters v2 has been removed from the Service Executions page until a fix is found. [**CDS-106378**, **ZD-77572**]
+- Previously, when there was an extreme load on the agent, a Get Application API call could take approximately 30 seconds to complete. This was fixed in two ways:
+    - A new parameter, `fetchFromHarness`, was introduced in the Get Application API. This setting, when set to `true`, will fetch an application directly from Harness. This is currently fallback if the task times out on the GitOps Agent. Use this with caution as it may not return the latest state of the application.
+    - The GitOps Agent Helm Chart has new values to configure the number of task processors: `numFetchers`, `numResponders`, and `numProcessors`. These control the number of task processing routines on the agent and are helpful if there is a high concurrent load on a specific agent. [**CDS-106863**, **ZD-78359**]
+
+### New Features and Enhancements
+
+#### Harness Platform
+
+- Added User Group Sync support for OIDC with license enforcement. [PL-60492]
+
+- Added governance policy checks for Service Accounts when assigning or deleting roles. Previously, these checks were missing, allowing role modifications without policy validation. This update applies regardless of the "PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES" feature flag status. [PL-59299]
+
+- Added support for delegate version overrides at multiple scopes (account, org, project) with and without tags, providing greater flexibility in managing delegate updates. [PL-58099]
+
+- Updated the minimum Kubernetes version requirement from 1.25 to 1.27 to ensure compatibility with the latest features and security updates.  
+
+- Configured services to use image digests for improved security and deployment consistency.
+
+#### Chaos Engineering
+
+- Running timeline view in the **Execution View**: You can track the real-time execution of chaos experiments for improved visibility. [CHAOS-6672]
+
+- **Improved chaos infrastructure search navigation**: Searching for chaos infrastructure from the **Chaos Experiment** page now includes a search bar in the list view, making navigation easier when dealing with multiple entities. [CHAOS-7556]
+
+#### Continuous Delivery
+
+- GitOps applications now support the `valuesObject` field. However, Harness recommends using the [`values`](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#values) field since ArgoCD has some issues with `valueObject` when using AppSets. [CDS-106998]
+
+:::danger
+  Updating an application that contains a `valuesObject` while using an agent older than version 0.88 may result in the complete removal of the `valuesObject`. To prevent data loss, please upgrade the agent before proceeding. Additionally, attempting to access an application with a `valuesObject` will cause the task to fail and return a raw version of the `valuesObject`, which can not be modified in the UI.
+:::
+
+#### Continuous Integration
+
+- The Build Intelligence flag can now be toggled on and off based on an already resolved variable value, providing greater flexibility in pipeline configurations [CI-15706].
+- The new input `PLUGIN_IGNORE_PATHS` [available in `plugins/kaniko:1.10.6`] allows users to specify multiple paths to ignore during the build. Each path is trimmed and appended as a separate `--ignore-path` flag in the Kaniko build process. [CI-16193]
+- 'Save Cache to S3' now supports Zstd compression for faster archiving and improved upload/download efficiency [CI-16010].
+- Improved the robustness of the Build Intelligence step by ensuring failures in bringing up the cache server are ignored. This enhancement prevents disruptions and ensures a smoother build process. [CI-16165, ZD-77827]
+- Windows rootless mode support is now available for the CI Addon and Lite Engine images. With the new feature flag `CI_ADDON_LE_WINDOWS_ROOTLESS` enabled, Windows infrastructure will pull the rootless versions of these images [harness/ci-addon and harness/ci-lite-engine], allowing builds to run without root privileges. The rootless image versions are now available as rootless-1.16.61. [CI-14868, ZD-72927, ZD-77194]
+
+
+## Mar 25, 2025, Patch Version 0.26.10 <!-- Draft : Mar 25, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.10](https://github.com/harness/helm-charts/releases/tag/harness-0.26.10)                 |
+| Air Gap Bundle            | [0.26.10](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.10) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.6                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.10                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.6                                                                                       |
+| Gateway                   | 1.41.8                                                                                       |
+| IaCM Manager              | 1.65.2                                                                                       
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.10/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.10/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.10/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.10/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.10/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.10/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.10/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed an issue where cleanup jobs were registered as Patroni members, causing WAL cleanup failures due to inactive cluster members. Removed labels from cron jobs to enable independent deployment for cleanup. [PL-61372]
+
+## Mar 20, 2025, Patch Version 0.26.9 <!-- Draft : Mar 19, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.9](https://github.com/harness/helm-charts/releases/tag/harness-0.26.9)                 |
+| Air Gap Bundle            | [0.26.9](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.9) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.6                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.10                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.6                                                                                       |
+| Gateway                   | 1.41.8                                                                                       |
+| IaCM Manager              | 1.65.2                                                                                       
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.9/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Cloud Cost Management
+
+- Refund Handling in Custom Cost Measures: We have updated the custom cost measures to ensure that any costs linked to the line item type "Refund" are completely ignored. [CCM-21807]
+
+
+## Mar 20, 2025, Patch Version 0.25.5 <!-- Draft : Mar 18, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                    |
+|---------------------------|------------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.25.5](https://github.com/harness/helm-charts/releases/tag/harness-0.25.5)                 |
+| Air Gap Bundle            | [0.25.5](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.25.5) |
+| NG Manager                | 1.72.6                                                                                       |
+| CI Manager                | 1.61.2                                                                                       |
+| Pipeline Service          | 1.111.1                                                                                      |
+| Platform Service          | 1.48.0                                                                                       |
+| Access Control Service    | 1.70.0                                                                                       |
+| Delegate                  | 25.01.84800                                                                                  |
+| GitOps Service            | 1.23.10                                                                                      |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.123.1                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.6                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.4                                                                                       |
+| Gateway                   | 1.41.7                                                                                       |
+
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.25.5/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.5/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.5/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.5/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.5/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.5/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.5/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed an issue where the HPA for the SCM service was not functioning due to a service name override error. [PL-60900]
+
+## Mar 18, 2025, Patch Version 0.26.7 <!-- Draft : Mar 18, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.7](https://github.com/harness/helm-charts/releases/tag/harness-0.26.7)                 |
+| Air Gap Bundle            | [0.26.7](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.7) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.6                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.8                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.6                                                                                       |
+| Gateway                   | 1.41.8                                                                                       |
+| IaCM Manager              | 1.65.2                                                                                       
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.7/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.7/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.7/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.7/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.7/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.7/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.7/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform 
+
+- Feature added to auto cleanup timescaledb wal archives. [PL-60954].
+
+
+## Mar 14, 2025, Patch Version 0.26.4 <!-- Draft : Mar 14, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.4](https://github.com/harness/helm-charts/releases/tag/harness-0.26.4)                 |
+| Air Gap Bundle            | [0.26.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.4) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.6                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.8                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.6                                                                                       |
+| Gateway                   | 1.41.8                                                                                       |
+| IaCM Manager              | 1.65.2                                                                                       
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/sto_images.tgz" \
+  .
+```
+
+### New Features and Enhancements
+
+#### Harness Platform 
+
+- The JTI claim is now optional in the User OIDC Authentication server response. Without it, replay attacks cannot be prevented. Customers should ensure the JTI claim is included if replay attack protection is needed.[PL-61135]
+
+## Mar 06, 2025, Patch Version 0.26.3 <!-- Draft : Mar 06, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.3](https://github.com/harness/helm-charts/releases/tag/harness-0.26.3)                 |
+| Air Gap Bundle            | [0.26.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.3) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.6                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.8                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.6                                                                                       |
+| Gateway                   | 1.41.7                                                                                       |
+| IaCM Manager              | 1.65.2                                                                                       
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Continuous Delivery
+- Fixed an issue where the GitOps resource actions are not disabled on UI for users without sync access (**CDS-107535, ZD-79513**)
+
+#### Cloud Cost Management
+- New Dimensions in AWS and Unified View in Cloud Cost Dashboards: We have added the following new dimensions to enhance cost visibility in AWS and the Unified View (**CCM-21714**):
+
+AWS:
+- Line Item Description
+- Total Discount
+- Private Rate Discount
+- Bundled Discount
+- EDP Discount
+- Tax (Blended Cost)
+- Tax (Amortised Cost)
+- Tax (Unblended Cost)
+- Tax (Net Amortised Cost)
+- Credit
+- Refund (Unblended Cost)
+- Refund (Amortised Cost)
+- Refund (Net Amortised Cost)
+- Refund (Blended Cost)
+
+Unified:
+- AWS Line Item Description
+- AWS Total Discount
+- AWS Private Rate Discount
+- AWS Bundled Discount
+- AWS EDP Discount
+- AWS Tax (Unblended Cost)
+- AWS Tax (Amortised Cost)
+- AWS Tax (Blended Cost)
+- AWS Tax (Net Amortised Cost)
+- AWS Credit
+- AWS Refund (Unblended Cost)
+- AWS Refund (Blended Cost)
+- AWS Refund (Amortised Cost)
+- AWS Refund (Net Amortised Cost)
+
+## Mar 04, 2025, Patch Version 0.26.2 <!-- Draft : Mar 04, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.2](https://github.com/harness/helm-charts/releases/tag/harness-0.26.2)                 |
+| Air Gap Bundle            | [0.26.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.2) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.5                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.7                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.5                                                                                       |
+| Gateway                   | 1.41.7                                                                                       |
+| IaCM Manager              | 1.65.2  
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Infrastructure as Code Management
+
+- Fixed an issue that allowed users to view non production ready steps. [IAC-3239]
+
+#### Continuous Delivery
+- Fixed an issue where the customer is unable to perform Sync even if they have permissions (**CDS-107535, ZD-79513**)]
+
+## Feb 28, 2025, Version 0.26.0 <!-- Draft : Feb 28, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                    |
+|---------------------------|------------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.0](https://github.com/harness/helm-charts/releases/tag/harness-0.26.0)                 |
+| Air Gap Bundle            | [0.26.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.0) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.3                                                                                      |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.7                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.5                                                                                       |
+| Gateway                   | 1.41.7                                                                                       |
+| IaCM Manager              | 1.65.1                                                                                       |
+| IaC Server                | .119.5                                                                                       |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.0/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform 
+
+- Fixed mTLS validation for STRICT mode. [PL-60169]  
+- Fixed an issue in NG SCIM group management where existing user groups were not marked as SCIM-managed when a group with the same name was sent from SCIM. [PL-60098]  
+- Fixed delegate version expiry based on build time instead of the manager version, ensuring accurate version tracking. [PL-60051]  
+- Cluster admin/cluster viewer role binding names now include a user-defined namespace prefix to ensure unique roles across different namespaces. This helps maintain permissions when delegates start in different namespaces. [PL-59921]  
+- Users now require Create Project permission for the Create Project buttons to be enabled. [PL-59658]  
+- Added explicit boolean conversion for the `onDelegate` key value. [PL-59514]  
+- Fixed pagination response for the [User Groups Get API](https://apidocs.harness.io/tag/User-Group#operation/getUserGroupList) that now returns the correct total pages and page count. [PL-59214]  
+- Increased the limit of user groups inherited at the Organization and Project levels to 5,000. [PL-59185]  
+- Added ng-manager virtual service routes in the chart to support GitX Webhook APIs** at the Organization and Project levels. [PL-58990]  
+- When creating or updating a Resource Group with invalid resource identifiers, an error message will now be displayed instead of silently removing the invalid resources. [PL-58961] 
+- Added OIDC as a new authentication method, allowing [Single Sign-On (SSO) with any custom OIDC (OpenID Connect)](https://developer.harness.io/docs/platform/authentication/single-sign-on-sso-with-oidc) provider. This feature is available only for accounts with Vanity URL and is behind the feature flag PL_ENABLE_OIDC_AUTHENTICATION. [PL-56480]
+
+#### Continuous Integration
+
+- Fixed an issue where the node selector field under the Infrastructure tab in the CI module lost focus when input was entered for the first time. [CI-15730, ZD-76187]
+
+#### Continuous Delivery
+
+- Previously, broken templates pushed via webhooks with missing required types could not be fixed and had to be deleted. This issue is resolved by adding a check to ensure the template type is not empty. (**PIPE-24533**)
+- Previously, deployment was timing out and was failing without any logs getting showed. The issue is fixed now. (**PIPE-24324, ZD-74851,75772,75937**)
+- Previously, webhook trigger events using the **CRON** trigger experienced delays, and the trigger activity page did not correctly report the last execution. This issue is now resolved. (**PIPE-24256, ZD-75384, ZD-75391**)
+- Previously, the AWS load balancer dropdown was not populated when using a blue-green deployment step during multi env deployment. This issue is fixed, and the dropdown now populates correctly. (**CDS-106002, ZD-73560**)
+- Previously users were not able to re-run pipeline that had gitops deploy stage. The issue is fixed now. (**CDS-105968, ZD-76321**)
+- Previously, the timeout for refresh GitOps app call was timing out sporadically for some customers, and there was no way to adjust the timeout. The refresh API can take a long time in some cases. We have made the timeout configurable. SMP customers can set `GITOPS_RESOURCE_CLIENT_CONNECT_TIMEOUT_SECONDS` and `GITOPS_RESOURCE_CLIENT_READ_TIMEOUT_SECONDS` in ng manager's override to set the timeout. (**CDS-105967, ZD-76481**)
+- Previously, input field was not getting displayed for Service Override when configured with multiple manifests. The issue is fixed now. (**CDS-105935, ZD-76332**)
+- Previously, When the `CDS_SPECIFY_INFRASTRUCTURES` feature flag was enabled, customers using environment groups faced an issue where infrastructure options were scoped incorrectly to the project level instead of the account level. This prevented users from selecting the correct infrastructures for deployment. The issue is fixed now. (**CDS-105822,ZD-76254**)
+- Previously, the ECS Blue-Green deployment pipeline validation failed for users with dynamically generated load balancer configurations. This issue is resolved and is behind the feature flag `CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-105573, ZD-72261**)
+- Previously, in Helm Blue/Green deployment strategies, delegate selection failed with the error: `no eligible delegate
+s available in the account to execute the task` even when appropriate delegate selectors were defined. The issue is fixed. When the feature flag `CDS_ASYNC_EXECUTABLE_USE_SELECTORS` is enabled, the delegate selector priorities are correctly handled in Helm Blue/Green and Canary Deployment steps. (**CDS-105570, ZD-75740**)
+- **Previously**, using a containerized step group nested within a normal step group caused pipeline execution to fail with a `NullPointerException: Cannot invoke "java.util.List.size()" because "ports" is null.` This issue is fixed, and pipelines with nested containerized step groups now execute successfully without errors. (**CDS-105395, ZD-74949**)
+- **Previously**, Nexus3 triggers only fetched 50 tags. This issue is **fixed**, and now all tags will be fetched. (**CDS-105392, ZD-75467**)
+- Previously, when there was no time series data during a fetch sample data call in the Datadog health source, the existing DSL attempted to access the first element of the timeSeriesValues array. This resulted in an exception: `Invalid array index access. Array size is 0 and index is 0` The issue is fixed. The data collection logic now appropriately handles scenarios where no time series data is available. (**CDS-105330, ZD-73506**)
+- **Previously**, the pipeline stage name resolution issue caused artifact identifier expressions to fail, resulting in intermittent pipeline failures with the error: "Invalid request: No artifact source exists with the identifier null inside service." This issue is **fixed**. (**CDS-105306, ZD-75216**)
+- Previously, when propagating a service from one stage to another in a pipeline, execution-time input expressions (For example, `chartVersion: <+input>.executionInput()`) were not resolved correctly. This issue is now resolved. (**CDS-105282, ZD-74642**)
+- **Previously**, secrets were exposed in logs during the execution of TAS Rolling Deploy Step in case of step failure. This issue is **fixed**, and secrets are no longer exposed. (**CDS-105184, ZD-75003**)
+- **Previously**, the Fetch Helm Chart Metadata process for Helm charts failed during parallel stage deployments with the error: **Unable to fetch files for filePath `[charts/spark-support/Chart.yaml]` for Branch: stable.** This issue is **fixed**, and proper delegate selection during the manifest step is ensured. (**CDS-105137, ZD-74836**)
+- **Previously**, additional strings were incorrectly appended to the values file path during runtime when entered as allowed values, causing parsing errors and deployment failures. This issue is **fixed**, and values are now parsed correctly. (**CDS-104787, ZD-74331**)
+- **Previously**, connector references for Bitbucket were still appearing in the "referenced by" list after updating pipelines or resources to GitHub. This issue is **fixed**, and references are now removed correctly. (**CDS-104715, ZD-74243**)
+- **Previously**, during load testing, customers faced issues with the delegate thread pool size being too small, leading to failures when executing pipelines concurrently. Additionally, some delegates reported errors due to missing CF CLI versions, and 503 errors occurred due to proxy configuration issues. This issue is fixed by increasing the delegate thread pool size and improving the detection mechanism for CF CLI installations. Customers should now experience more stable pipeline executions, even with larger concurrent loads. (**CDS-103868**)
+- Previously, DeployToAll option for cluster was showing empty string instead of true which is a default value. The issue is fixed now. (**CDS-103296**)
+- Previosuly, Encrypt Yaml Output option for Kubernetes Dry Run step was not present in UI. The issue is fixed now. (**CDS-106279**)
+- Previously, when selecting a GitLab connector in the config file store for a Terragrunt plan, the API call to list all connectors failed. This happened because the connector type was incorrectly sent as "GitLab" instead of "Gitlab", which did not match the expected enum values. The issue is fixed now. (**CDS-106275, ZD-77271**)
+- Previosuly, UI crashed when we select service of a monitored service template in run pipeline form. The issue is fixed now. (**CDS-106204**)
+- Previosuly,  Service Instance Identifier label for Prometheus assign query was having two overlapping tooltips. The issue is fixed now. (**CDS-105800**)
+- Previously, the Argo 2.13.2 binary upgrade made the project ID a mandatory field for using the repo APIs, causing agent creation to fail when the `skipCertificateValidation` flag was used. This issue is now fixed. (**CDS-106137**)
+- Previously, when an application was created with a cross project repository, the repo identifier was assigned from the wrong Harness project, causing an error. This is fixed now. (**CDS-104760**)
+- Previously, the Argo 2.13.2 binary upgrade made the project ID a mandatory field for using the repo APIs, causing agent creation to fail when the `skipCertificateValidation` flag was used. This issue is now fixed. (**CDS-106137**)
+- Previously, when an application was created with a cross project repository, the repo identifier was assigned from the wrong Harness project, causing an error. This is fixed now. (**CDS-104760**)
+- After the Argo update, the default image tag was outdated. This has been fixed. (**CDS-105945, ZD-75761**)
+- Previously, Organisation scoped clusters attached to applications could be deleted. Now, this is disallowed; you cannot delete a cluster attached to applications. If you want to get around this requirement in order recreate the cluster or update it, use the `forceDelete` option. (**CDS-105804, ZD-76147**)
+- Previously, buttons for actions (restart, promote, sync) were visible to users who lacked the `GitOps app sync` permission which is required for those actions. This resulted in failures due to the actions being run by users without permission. Now, the buttons are disabled in the UI for users without the proper permissions. (**CDS-105624, ZD-75858**)
+- Previously, repository creation was failing when using repository credentials template that contained uppercase letters. Due to a normalization error, there was a credential url mismatch. This issue has been resolved. Repository creation now works with repo credential templates with uppercase letters. (**CDS-105622, ZD-75760**)
+- Previously, the metrics server in the GitOps agent did not initialize correctly when the metrics service is enabled. The issue has been resolved. Now, the correct value for `GITOPS_AGENT_METRICS_PORT` will be set when metrics are enabled. Users should update gitops-helm chart to `1.1.16` (or `1.3.5` for `gitops-helm-byoa`) to ensure that the metrics server works correctly. (**CDS-105241**)
+
+#### Chaos Engineering
+
+- Fixed the issue where clicking a Kubernetes Harness Infrastructure from the Experiments table threw a 400 (Bad request) error. (CHAOS-7512)
+- Fixed an issue where Kubernetes API, HTTP, and network faults failed due to a malfunctioning container ID derivation command in the customer's Docker environment. This has been resolved by allowing user-defined input for the command pattern. (CHAOS-7255)
+- Fixed an issue where the Kubernetes chaos infrastructure was being auto-selected even when other infrastructure types were enabled. (CHAOS-7549)
+- Updated the `useGetChaosExperimentStats` API to support project and account-scoped data retrieval. (CHAOS-7530)
+
+#### Supply Chain Security
+
+- Previously, when the base64 encoding setting was enabled, users were unable to select the "Text" or "File" options for setting the private key in the SBOM Orchestration step and the public key in the SBOM  Policy Enforcement step. This issue has been fixed. Now, when base64 encoding is enabled, users can choose between both methods (Text or File) for setting the keys during runtime. (**SCS-75280**)  
+
+#### Cloud Cost Management
+
+- Added AWS lineitemdescription support in dashboards.[CCM-21562] 
+
+- Expanded AWS & Unified View Metrics: The following cost measures are now available in AWS and Unified views at global level within Cloud Cost Dashboards, enabling more granular cost analysis  [CCM-21445]:
+  RefundUnblendedCost
+  
+  RefundAmortisedCost
+  
+  RefundNetAmortisedCost
+  
+  RefundBlendedCost
+  
+  TaxBlendedCost
+  
+  TaxUnblendedCost
+  
+  TaxAmortisedCost
+  
+  TaxNetAmortisedCost
+
+
+### New Features and Enhancements
+
+#### Harness Platform
+
+- Introduced a centralized tool for admins and support users to troubleshoot and analyze access policies and permissions across different scopes and resources, similar to GCP Policy Analyzer. Users can query permissions, users, and resources to get detailed insights. [PL-58310]  
+- Accounts with a FREE license can no longer configure SAML authentication. [PL-59708]  
+- All CG delegates will start disconnecting for customers who are not using CG. [PL-59298]  
+- OPA policies defined on Service Accounts will now enforce role assignments bound to those service accounts. [PL-59294]  
+- Added delegate-less support for the HashiCorp Secret Manager Connector, allowing users to choose between Platform or Delegate connectivity when configuring JWT authentication mode. [PL-59176]  
+- Updated Minio image to version 2024.9.22-debian-12-r1. [PL-59170]  
+- Added an option in the Delegate Helm Chart to provide mTLS certificates and enable mTLS for Delegates. [PL-59074]  
+- Improved revoked token flow by removing the self-destruct operation when a token is revoked. [PL-58728]  
+- Added support to configure Force Delete without recovery or specify a Recovery Window when creating or updating an AWS Secret Manager Connector:  
+  - Force Delete without recovery: Immediately deletes the secret without recovery.  
+  - Recovery Window: Deletes the secret in Harness but allows recovery in AWS Secret Manager within the specified time frame. [PL-58225]  
+- Updated TimescaleDB chart to pg13.16-ts2.15.3-oss to reduce vulnerabilities. [PL-58116]  
+- Archiving support has been added in TimescaleDB using a dedicated Minio server, installed alongside TimescaleDB. Archiving is enabled by default in the Harness Helm Chart.  
+  - To disable archiving, use:  
+    ```yaml
+    platform:
+      bootstrap:
+        database:
+          timescaledb:
+            archive_enabled: false
+    ```  
+:::warning Important
+
+  For customers using ArgoCD and upgrading to version 0.26.x for the first time, ensure that:
+      - The required flag is enabled and set `timescale-backup-minio` secret to be ignored by ArgoCD, similar to other secrets.
+      - For subsequent upgrades from 0.26.x to any other version, disable the flag to prevent ArgoCD from overwriting the secret, which could lead to authentication issues. 
+
+    ### Upgrade Scenarios:
+      
+      1. First-time upgrade to 0.26.x:
+          - Set `archive_minio_secret: true`
+          - Configure ArgoCD to ignore the `timescale-backup-minio` secret. This ensures proper secret creation
+
+            ```yaml
+              platform:
+                bootstrap:
+                  database:
+                    timescaledb:
+                      archive_minio_secret: true
+            ```
+
+      2.  Upgrading from 0.26.x to newer versions:
+          - Set `archive_minio_secret: false`
+          - Prevents ArgoCD from overwriting the existing secret
+  
+            ```yaml
+              platform:
+                bootstrap:
+                  database:
+                    timescaledb:
+                      archive_minio_secret: false
+            ```
+    :::  
+  [PL-58114]  
+- The disconnected delegates list in the selection log now only shows eligible but disconnected delegates, filtering out non-eligible ones. [PL-56301]  
+- Added a new metric on Delegates to track the number of times the delegate WebSocket reconnects. This helps monitor reconnection frequency and allows users to diagnose issues.  
+  - Metric Name: `io_harness_custom_metric_delegate_reconnected_total` [PL-48535]  
+- SAML signing certificate has been rotated. It can be downloaded from the SAML settings page under authentication settings. [PL-59737]  
+- Upgraded JRE to 17.0.13_11 in the delegate image. [PL-59512]  
+- Upgraded org.asynchttpclient:async-http-client to version 3.0.1. [PL-59246]  
+- Maximum number of roles that can be created per account is now restricted to 21,000 to maintain system stability and prevent abuse. [PL-59162]  
+- Upgraded the base image from ubi8-minimal to ubi9-minimal in Harness images. [PL-58377]  
+- Updated NGINX controller image from 1.3.0 to 1.11.2 to remove critical and high vulnerabilities. [PL-56529]  
+- Upgraded org.redisson:redisson to version 3.43.0. [PL-55966]
+- Added the Banners feature for users to display important messages across the UI. This feature is available behind the feature flag `PL_CUSTOM_BANNERS`. [PL-43420]  
+
+#### Infrastructure as Code Management (Beta)
+
+- Infrastructure as Code Management (IaCM) is now available on Self-Managed Enterprise Edition.
+
+#### Continuous Delivery
+
+- Added two new options to the sync application page: **Server Side Apply** and **Respect Ignore Differences**.
+    - Select **Server Side Apply** to use the `--server-side` flag when syncing resources. This can be used for very large resources, or when patching existing resources on the cluster. Note that the `replace` flag takes precedence over this one.
+    - Select **Respect Ignore Differences** in order to skip syncing of the resources listed in the **Ignore Differences** section. Normally, the **Ignore Differences** section in the manifest is only to check whether a sync is required; when we sync, the entire set of resources are still synced. Note that this option has no effect when creating a new application, only when syncing existing ones. 
+- The packaged Argo version has been upgraded from 2.13.2 to 2.13.5. 
+
+#### Chaos Engineering
+
+- Modified the Chaos Select Pipeline component to accept additional resources as properties and support allowed infrastructure types. (CHAOS-7035)
+- Upgraded the base image for all chaos services from `UBI-8` to `UBI-9` to resolve vulnerabilities. (CHAOS-7504)
+- Supports using a chaos fault template with boolean values. (CHAOS-7514)
+- Supports including a templated fault for an experiment that is part of an application map. (CHAOS-7516)
+
+## Feb 24, 2025, Patch Version 0.25.4
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                    |
+|---------------------------|------------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.25.4](https://github.com/harness/helm-charts/releases/tag/harness-0.25.4)                 |
+| Air Gap Bundle            | [0.25.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.25.4) |
+| NG Manager                | 1.72.6                                                                                       |
+| CI Manager                | 1.61.2                                                                                       |
+| Pipeline Service          | 1.111.1                                                                                      |
+| Platform Service          | 1.48.0                                                                                       |
+| Access Control Service    | 1.70.0                                                                                       |
+| Delegate                  | 25.01.84800                                                                                  |
+| GitOps Service            | 1.23.10                                                                                      |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.123.1                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.6                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.4                                                                                       |
+| Gateway                   | 1.41.7                                                                                       |
+
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.25.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Cloud Cost Management
+
+- Improved Query Performance: We have increased the socket timeout for all ClickHouse queries to enhance stability and performance. [CCM-21324]
+
+- Optimized Data Partitioning: We have added partitioning on the startTime field in unifiedTable to improve query efficiency. [CCM-21374]
+
+- Expanded AWS & Unified View Metrics: The following cost measures are now available in AWS and Unified views within Cloud Cost Dashboards, enabling more granular cost analysis:
+  - **AWS**:
+      Total Discount
+      Private Rate Discount
+      Bundled Discount
+      EDP Discount
+      Tax
+      Credit
+      Refund
+  - **Unified**:
+      AWS Total Discount
+      AWS Private Rate Discount
+      AWS Bundled Discount
+      AWS EDP Discount
+      AWS Tax
+      AWS Credit
+      AWS Refund
+         [CCM-21445]
+
+## Feb 17, 2025, Patch Version 0.25.3
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                    |
+|---------------------------|------------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.25.3](https://github.com/harness/helm-charts/releases/tag/harness-0.25.3)                 |
+| Air Gap Bundle            | [0.25.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.25.3) |
+| NG Manager                | 1.72.6                                                                                       |
+| CI Manager                | 1.61.2                                                                                       |
+| Pipeline Service          | 1.111.1                                                                                      |
+| Platform Service          | 1.48.0                                                                                       |
+| Access Control Service    | 1.70.0                                                                                       |
+| Delegate                  | 25.01.84800                                                                                  |
+| GitOps Service            | 1.23.10                                                                                      |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.123.1                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.2                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.35.7                                                                                       |
+| Gateway                   | 1.41.7                                                                                       |
+
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.25.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed a bug in the SSO login by adding user group sync functionality to OIDC login. [PL-60577]
+
+### New features and enhancements
+
+#### Harness Platform
+
+- Added OIDC as a new authentication method, allowing [Single Sign-On (SSO) with any custom OIDC (OpenID Connect)](https://developer.harness.io/docs/platform/authentication/single-sign-on-sso-with-oidc) provider. This feature is available only for accounts with Vanity URL and is behind the feature flag PL_ENABLE_OIDC_AUTHENTICATION. [PL-56480]
+
 ## Feb 6, 2025, Patch Version 0.14.13 
 
 This release includes the following Harness module and component versions.
@@ -320,7 +1617,7 @@ gsutil -m cp \
 
 ### Fixed issues
 
-#### Platform
+#### Harness Platform
 
 - Included additional debug logs for SAML login.[PL-60283]
 
@@ -367,7 +1664,7 @@ gsutil -m cp \
 
 ### Fixed issues
 
-#### Platform
+#### Harness Platform
 
 - Included additional debug logs for SAML login.[PL-60283]
 
@@ -465,7 +1762,7 @@ gsutil -m cp \
 
 ### Fixed issues
 
-#### Cloud Cost Managment
+#### Cloud Cost Management
 
 - EC2 recommendation tags: We’ve introduced support for EC2 recommendation tags, making it easier to organize your instances.[CCM-20883]
 
@@ -535,7 +1832,7 @@ gsutil -m cp \
 ```
 ### New features and enhancements
 
-#### Harness  Platform
+#### Harness Platform
 
 - Customers can now differentiate polling mode delegates on the delegate list page. [PL-58853]  
 
@@ -10266,7 +11563,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 - You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana. (SMP-766)
 
-  For more information, go to [Monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem).
+  For more information, go to [Monitoring](/docs/category/monitoring).
 
 - Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 
@@ -11961,7 +13258,7 @@ This release introduces the following features and enhancements.
 
 - You can now refer to existing secrets of Azure Key Vault, AWS secret manager, and GCP secret manager. (PL-29915)
 
-  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](https://developer.harness.io/docs/first-gen/firstgen-platform/security/secrets-management/reference-existing-secrets/).
+  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets).
 
 - Continuous Verification (CV) fails if the data for configured deployment strategy is not available. (SRM-12731)
 
@@ -12212,7 +13509,7 @@ This release includes the following fixed issues.
 
 - Terraform Apply **Delegate Selector** selection does not retain its value. (CDS-48375)
 
-  Users can see existing [delegate selectors](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors/) in the step's **Advanced** section in case of [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step) and [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step).
+  Users can see existing [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) in the step's **Advanced** section in case of [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step) and [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step).
 
 - Improve error messaging in case of Terraform plugin error. (CDS-48414)
 

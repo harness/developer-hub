@@ -7,10 +7,6 @@ redirect_from:
   - /docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
- 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
 <DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
@@ -20,31 +16,18 @@ import TabItem from '@theme/TabItem';
 
 The Snyk step in Harness STO enables you to perform Snyk [Code](./snyk-code-scanning.md), [Open Source](./snyk-open-source.md), [Container](./snyk-open-source.md), and [IaC](./snyk-iac-scanning.md) scanning in both Orchestration and Ingestion modes of STO. This document will guide you through understanding the fields, configuring them, and providing any necessary information for setting up the step.
 
-## Important notes for running Snyk scans in STO
 
-<!--
-
-You can configure the Snyk step to [show the original CVSS score](#show-the-original-cvss-score-when-snyk-overrode-it) when a Snyk security policy overrode the score for an issue. 
-
--->
-
-### Root access requirements 
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
-
-<StoRootRequirements />
+:::info
+- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+- STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 
-### For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
+:::
 
-
-## Snyk step settings for STO
+## Snyk step settings
 
 It is recommended to add a Snyk step to the **Security** or **Build** stage and configure it as described below.
 
@@ -57,10 +40,10 @@ It is recommended to add a Snyk step to the **Security** or **Build** stage and 
 #### Scan Mode
 
 
-import StoSettingScanMode from '../shared/step_palette/scan/_type.md';
+import StoSettingScanMode from '../shared/step-palette/scan/type.md';
 
-import StoSettingScanModeOrch  from '../shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeOrch  from '../shared/step-palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from '../shared/step-palette/scan/mode/ingestion.md';
 
 
 <!-- StoSettingScanMode / -->
@@ -70,7 +53,7 @@ import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestio
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '../shared/step-palette/scan/config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -82,10 +65,10 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 
 #### Type
 
-import StoSettingScanType from '../shared/step_palette/scan/_type.md';
+import StoSettingScanType from '../shared/step-palette/scan/type.md';
 
-import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
-import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeRepo from '../shared/step-palette/target/type/repo.md';
+import StoSettingScanTypeCont from '../shared/step-palette/target/type/image.md';
 
 
 <a name="scan-type"></a>
@@ -95,9 +78,9 @@ import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md
 
 #### Target and variant detection 
 
-import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
-import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from '../shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectContainer from '../shared/step-palette/target/auto-detect/container-image.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectContainer/>
@@ -106,7 +89,7 @@ import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto
 
 #### Name 
 
-import StoSettingTargetName from '../shared/step_palette/target/_name.md';
+import StoSettingTargetName from '../shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
@@ -115,7 +98,7 @@ import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 #### Variant
 
 
-import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step-palette/target/variant.md';
 
 
 
@@ -124,7 +107,7 @@ import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 #### Workspace (_repository_)
 
 
-import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '../shared/step-palette/target/workspace.md';
 
 
 <StoSettingTargetWorkspace  />
@@ -134,28 +117,28 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 
 #### Type
 
-import StoSettingImageType from '../shared/step_palette/image/_type.md';
+import StoSettingImageType from '../shared/step-palette/image/type.md';
 
 <StoSettingImageType />
 
 
 #### Domain
 
-import StoSettingImageDomain from '../shared/step_palette/image/_domain.md';
+import StoSettingImageDomain from '../shared/step-palette/image/domain.md';
 
 <StoSettingImageDomain />
 
 
 #### Name
 
-import StoSettingImageName from '../shared/step_palette/image/_name.md';
+import StoSettingImageName from '../shared/step-palette/image/name.md';
 
 <StoSettingImageName />
 
 
 #### Tag
 
-import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
+import StoSettingImageTag from '../shared/step-palette/image/tag.md';
 
 <StoSettingImageTag />
 
@@ -165,20 +148,20 @@ import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
 
 #### Access Token (_Orchestration scans_)
 
-import StoSettingAuthAccessToken from '../shared/step_palette/auth/_access-token.md';
+import StoSettingAuthAccessToken from '../shared/step-palette/auth/access-token.md';
 
 <StoSettingAuthAccessToken />
 
 
 ### Ingestion File
 
-import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '../shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
 ### Log Level
 
-import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
@@ -205,61 +188,96 @@ With these flags, the Snyk step scans recursively down the repository tree to a 
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
 ### Settings
 
-import StoSettingSettings from '../shared/step_palette/all/_settings.md';
+import StoSettingSettings from '../shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
-
-### Show original issue severities overridden by Snyk security policies 
-
-You can configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.   
-
-<DocImage path={require('../static/sto-7041-override-in-security-tests.png')} width="50%" height="50%" title="Snyk security override in Security Tests" />
-
-<DocImage path={require('../static/sto-6927-override-popup-for-snyk.png')} width="50%" height="50%" title="Override for Snyk issue in Issue Details table" />
-
-This feature is supported for `snyk container` and `snyk test` JSON output that properly reflects an override.
-  
-To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. With this setting enabled, the Snyk step processes the relevant data for issues with overridden severities. 
-
-  <Tabs>
-     <TabItem value="Visual" label="Visual" default>
-
-     <DocImage path={require('../static/sto-7041-add-setting-in-visual-editor.png')} width="40%" height="40%" title="Add ingest_tool_severity to Snyk ste" />
-
-    </TabItem>
-  
-    <TabItem value="YAML" label="YAML">
-      ``` yaml
-      - step:
-          type: Snyk
-          spec:
-            settings:
-              ingest_tool_severity: "true"
-      ```
-
-    </TabItem>
-    </Tabs>
-
-
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '../shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
+
+## Show original issue severities overridden by Snyk security policies 
+
+Harness originally will categorize a scan utilizing the CVSS scores that are provided, and using it to categorize vulnerabilities into **Critical, High, Medium, and Low** categories
+
+With the Snyk Step, or a [Custom Scan Step](https://developer.harness.io/docs/security-testing-orchestration/custom-scanning/custom-scan-reference/) utilizing a self installed Snyk runner, you can configure Harness to utilize the severity scores in a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies), and provide an override severity for an issue.  This can be adjusted from your Snyk results, or it can also come from the `snyk` CLI. You can see this information in **Issue Details**.   
+
+![](../static/sto-7041-override-in-security-tests.png)
+
+Harness will also display the information that the severity was overriden, and the original score, so long as the report follows the Snyk required format
+
+![](../static/sto-6927-override-popup-for-snyk.png)
+
+This feature is supported for `snyk container` and `snyk test` JSON output that properly reflects an override.
+
+### Requirement
+
+- [STO Plugin version 1.56.x or higher](https://hub.docker.com/r/harness/sto-plugin/tags)
+
+### JSON Output Format
+Please note that the override format must follow the Snyk documented process, such as [in the following Snyk example.](https://docs.snyk.io/supported-languages-package-managers-and-frameworks/c-c++/snyk-cli-for-open-source-c++-scans)
+
+The formatting should contain the following:
+- A value, `originalSeverity`, needs to be defined, and should contain the original severity value
+- The `severity` value can now be defined with the new severity value.  Below is a portion of an adjusted vulnerability sample:
+
+```
+{  
+     "vulnerabilities": [
+        {
+            "id": "SNYK-JS-POSTCSS-5926692",
+            "title": "Improper Input Validation",
+            "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+            "credit": [
+                "Unknown"
+            ],
+            "semver": {
+                "vulnerable": [
+                    "<8.4.31"
+                ]
+            },
+            "exploit": "Not Defined",
+            "fixedIn": [
+                "8.4.31"
+            ],
+            "patches": [],
+            "insights": {
+                "triageAdvice": null
+            },
+            "language": "js",
+            "severity": "critical",
+            "originalSeverity": "medium",
+            "cvssScore": 5.3,
+            "functions": [],
+            "malicious": false,
+            "isDisputed": false,
+            "moduleName": "postcss",
+            [...]
+        }
+    ]
+ }
+```
+
+## Use scanner-provided Severity
+
+import ScannerProvidedSeverity from '../shared/use-scanner-provided-severity.md';
+
+<ScannerProvidedSeverity />
 
 
 ## Proxy settings

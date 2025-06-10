@@ -17,6 +17,10 @@ You need:
 - A [Harness CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md).
 - A [GCP connector](#gcp-connector).
 
+:::note
+OIDC-based authentication is supported in the **Build and Push to GAR** step only when using BuildX. When using Kaniko for building a Docker image, OIDC is not supported.
+:::
+
 ## Kubernetes cluster build infrastructures require root access
 
 With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image. It doesn't support non-root users.
@@ -206,3 +210,4 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 - [How do I fix this kaniko container runtime error: kaniko should only be run inside of a container?](/kb/continuous-integration/articles/kaniko_container_runtime_error)
 - [Can I push and pull from two different docker registries that have same prefix for registry URL ?](/kb/continuous-integration/continuous-integration-faqs/#can-i-push-and-pull-from-two-different-docker-registries-that-have-same-prefix-for-registry-url-)
 - [Why does the parallel execution of build and push steps fail when using Buildx on Kubernetes?](/kb/continuous-integration/continuous-integration-faqs#why-does-the-parallel-execution-of-build-and-push-steps-fail-when-using-buildx-on-kubernetes)
+- [Why do Build and Push steps fail with "Error while loading buildkit image: exit status 1" when /var/lib/docker is included in shared paths during DIND execution?](/kb/continuous-integration/continuous-integration-faqs#why-do-build-and-push-steps-fail-with-error-while-loading-buildkit-image-exit-status-1-when-varlibdocker-is-included-in-shared-paths-during-dind-execution)

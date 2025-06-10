@@ -20,6 +20,8 @@ Looking for how-tos? See [Terraform how-tos](terraform-how-tos).
 
 :::
 
+
+
 ## Terraform provisioning options
 
 You can use Harness with Terraform in the following ways:
@@ -40,6 +42,9 @@ Dynamic provisioning uses your Terraform scripts to provision the target deploym
 Dynamic provisioning with Terraform is supported for most Harness integrations. The steps required for each integration are covered in their documentation.
 
 For more information, go to [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).
+
+
+We support using Terraform provisioning with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. For more information, refer to [AWS OIDC connector reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 ### Limitations
 

@@ -76,4 +76,4 @@ When the pipeline runs, the chaos experiment defined in Harness will be executed
 
 5. **Monitor Experiment Results**
 
-After the chaos experiment is triggered through Google Cloud Build, you can [monitor its progress](/docs/chaos-engineering/getting-started/saas/first-experiment#step-6-observing-chaos-execution) and results within the Harness UI.
+After the chaos experiment is triggered through Google Cloud Build, you can [monitor its progress](/docs/chaos-engineering/getting-started/saas/#step-7-observing-chaos-execution) and results within the Harness UI.

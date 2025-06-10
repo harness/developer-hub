@@ -135,15 +135,6 @@ Use the `JAVA_OPTS` environment variable to add or override JVM parameters. The 
           value: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=70.0 -XX:MinRAMPercentage=40.0 -XX:+HeapDumpOnOutOfMemoryError"
 ```
 
-### LOG_STREAMING_SERVICE_URL
-
-Use this variable to specify the endpoint for your log service in Harness NextGen. This variable is not used in Harness FirstGen.
-
-```yaml
-        - name: LOG_STREAMING_SERVICE_URL
-          value: "YOUR_MANAGER_ENDPOINT/log-service/"
-```
-
 ### MANAGER_HOST_AND_PORT
 
 The Harness SaaS manager URL. The specification of HTTPS in the URL indicates the use of port 443.

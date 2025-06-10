@@ -5,12 +5,6 @@ sidebar_position: 1
 sidebar_label: VS Code Browser
 ---
 
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io
-
-:::
-
 Harness CDE provides seamless support to connect and access your Gitspaces remotely within your browser via VS Code. 
 
 This guide will take you through the steps required to access a Gitspace in your VS Code Browser:

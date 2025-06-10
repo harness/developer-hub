@@ -5,7 +5,7 @@ sidebar_label: End of Life - Propelo
 sidebar_position: 2
 ---
 
-The Propelo product / platform is being deprecated and will undergo the following milestones in months to come.
+The Propelo product / platform is now EoL (End of Life). All Propelo customers have been moved to the Harness platform and have continued access and support on the Harness Software Engineering Insights (SEI) module.
 
 ## Important dates
 

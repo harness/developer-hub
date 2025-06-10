@@ -36,9 +36,9 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 :::info
 
-You need to have completed all the [pre-requisites](#pre-requisite) for the below given YAML to work properly 
+You need to have completed all the [prerequisites](#pre-requisite) for the below given YAML to work properly 
 
-Please update the `connectorRef: <the_connector_name_you_created_under_prerequisites>` for all the steps it's used, also here we are assuming the git provider to be GitHub please update the `connectorType` for `CreateRepo`, `DirectPush` and `RegisterCatalog` step in case it's other than GitHub. Also under the slack notify step for `token` add the token identifier, you have created above as part of pre-requisites. 
+Please update the `connectorRef: <the_connector_name_you_created_under_prerequisites>` for all the steps it's used, also here we are assuming the git provider to be GitHub please update the `connectorType` for `CreateRepo`, `DirectPush` and `RegisterCatalog` step in case it's other than GitHub. Also under the slack notify step for `token` add the token identifier, you have created above as part of prerequisites. 
 
 :::
 
@@ -427,7 +427,7 @@ That token is then used as part of `steps` as `apikey`
 
 ### Register the Workflow in IDP
 
-Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/catalog-2o.md).
 
 ## Use the Self Service Workflows
 

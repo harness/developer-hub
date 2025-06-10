@@ -15,7 +15,6 @@ This section introduces you to the following:
 - [Probe chaining](#probe-chaining).
 
 :::tip
-Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable it.
 - If you are an existing customer, you will see the old flow of control in resilience probes by default and you have the choice to upgrade to the new flow.
 - If you are a new customer, the feature flag is turned on by default and you will see the new flow of control in the resilience probes.
 :::

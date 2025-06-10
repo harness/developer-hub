@@ -5,12 +5,6 @@ sidebar_position: 2
 sidebar_label: VS Code Desktop
 ---
 
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
-
-:::
-
 Harness CDE provides a seamless integration with VS Code, making it easy to connect to your Gitspaces remotely. With the Gitspaces VS Code extension, you can access and manage your Gitspaces directly within your VS Code desktop IDE. This guide will walk you through the steps to install, set up, and start developing in your Gitspaces using this extension.
 
 Check out this video to get started with the Harness Gitspaces VS Code Extension: 

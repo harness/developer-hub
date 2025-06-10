@@ -22,6 +22,8 @@ To enforce SBOM policies in a Harness pipeline, you need:
 
 ## Add SBOM Policy Enforcement step
 
+<DocImage path={require('./static/sbom-policy-enforce.png')} width="50%" height="50%" />
+
 You can add the **SBOM Policy Enforcement** step to either the **Build** or **Deploy** stage of a Harness pipeline.
 
 * In a **Build** stage, add the step after the [SBOM generation](../sbom/generate-sbom.md) step.
@@ -46,7 +48,7 @@ import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifac
 ### Verify the SBOM Attestation
 To verify the SBOM attestation, in addition to the above configuration, you need to enable the Verify SBOM Attestation checkbox in the SBOM Policy Enforcement step. Enabling this is optional and not required for SBOM policy enforcement.
 
-The attestation verification process requires the corresponding **public key** of the private key used for SBOM attestation. You can perform the verification by providing the public key through the **Cosign** option or **Cosign with Secret Manager**.
+The attestation verification process requires the corresponding **public key** of the private key used for SBOM attestation. You can perform the verification by providing the public key through the **Cosign** option or **Cosign with Secret Manager**
 
 import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
 

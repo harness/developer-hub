@@ -104,6 +104,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod API modify response custom",
+    description:"Pod API modify response custom modifies the headers, body, and status code of both request and response for the APIs of the service through path filtering",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod autoscaler",
     description:"Pod autoscaler determines whether nodes can accommodate multiple replicas of a given application pod.",
     tags: ["pod"],
@@ -218,6 +224,18 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
    },
    {
+    name: "Pod JVM Solace Latency",
+    description:"Pod JVM Solace Latency injects latency in Solace queries for a Java application executing in a Kubernetes pod.",
+    tags: ["pod", "jvm", "solace", "latency"],
+    category: "kubernetes",
+  },
+   {
+    name: "Pod JVM Solace Exception",
+    description:"Pod JVM Solace Exception injects exception in Solace queries for a Java application executing in a Kubernetes pod.",
+    tags: ["pod", "jvm", "solace", "exception"],
+    category: "kubernetes",
+  },
+   {
     name: "Pod JVM method latency",
     description:"Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.",
     tags: ["pod", "latency"],
@@ -239,6 +257,18 @@ export const experiments: ExperimentDetails[] = [
     name: "Pod JVM SQL Latency",
     description:"Pod JVM SQL Latency injects latency in sql queries for a Java application executing in a Kubernetes pod",
     tags: ["pod", "jvm", "sql", "latency"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod JVM Mongo Exception",
+    description:"Pod JVM Mongo Exception injects exception in mongodb calls for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "mongo", "exception"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod JVM Mongo Latency",
+    description:"Pod JVM Mongo Latency injects latency in mongodb calls for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "mongo", "latency"],
     category: "kubernetes",
   },
   {

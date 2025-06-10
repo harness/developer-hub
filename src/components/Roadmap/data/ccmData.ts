@@ -1,207 +1,8 @@
 import { Horizon } from "./roadmapData";
 
 export const CcmData: Horizon = {
-  "Q1 CY'23": {
-    description: "Q1 CY'23, Feb-Apr 2023",
-    feature: [
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Azure VM Recommendations",
-        description: "Support for Azure VM optimisation (Rightsizing, Cleanup)",
-        backgroundColor: "var(--green-100)",
-        link: "https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm",
-      },
-      {
-        tag: [{value: "Cost Platform"}],
-        title: "On-Prem/Self-Managed Support",
-        description: "Support to run CCM in an On-Premise customer environment",
-        backgroundColor: "var(--green-100)",
-        link: "https://developer.harness.io/docs/category/ccm-on-harness-self-managed-enterprise-edition",
-      },
-      {
-        tag: [{value: "Cost Platform"}],
-        title: "Margin Obfuscation & Markups for MSPs",
-        description:
-          "Ability for MSPs to set markups at various levels of granularity (Accounts, Service etc.)",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "CDN Support for AutoStopping",
-        description:
-          "Fine-tune cost anomaly detection with an ignore list, added support for comments, and integrations with popular ticketing systems (JIRA, ServiceNow).",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "ALB Support Perfromance Improvements ",
-        description:
-          "Significant reduction in resource requirements for ALB based AS Rules",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Budget Groups",
-        description:
-          "Hierarchial Organisation of budgets with roll ups & cascading effects",
-        backgroundColor: "var(--green-100)",
-        link: "https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-budget-group/",
-      },
-    ],
-  },
-  "Q2 CY'23": {
-    description: "Q2 CY'23, May-Jul 2023",
-    feature: [
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Recommendation Workflows ",
-        description:
-          "Support for Ignore list, JIRA/ SNOW integration, Applied recommendations dashboard (Docs)",
-        backgroundColor: "var(--green-100)",
-        link: "https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#apply-recommendations",
-      },
-      {
-        tag: [{value: "Visibility"}],
-        title: "Perspective Preferences ",
-        description:
-          "Flexibility to tailor the cost data presented in your perspective. Ex. Include/ Exclude discounts, Tax etc (Docs)",
-        backgroundColor: "var(--purple-100)",
-        link: "https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences",
-      },
-      {
-        tag: [{value: "Visibility"}],
-        title: "Shared Costs support - Cost Categories ",
-        description:
-          "Share Costs across various cost buckets with various sharing strategies (Docs)",
-        backgroundColor: "var(--green-100)",
-        link: "https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories#create-shared-cost-buckets",
-      },
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "K8s AutoStopping Improvements",
-        description:
-          "Support for State Sync, Fixed Schedules & Inline dependencies",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "Asset Governance"}],
-        title: "Cloud Asset Governance for AWS",
-        description:
-          "FinOps-as-code policies for AWS with Out of  the box recommendations (Docs)",
-        backgroundColor: "var(--green-100)",
-        link: "https://developer.harness.io/docs/category/governance-for-aws",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Budgets - Capacity Planning ",
-        description: "Support for yearly forecasts in Budgets",
-        backgroundColor: "var(--green-100)",
-      },
-    ],
-  },
-  "Q3 CY'23": {
-    description: "Q3 CY'23, Aug-Oct 2023",
-    feature: [
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Forecasting Enhancements ",
-        description:
-          "Fine-tuned custom forecasting alogorithms resulting in improved accuracy",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Anomaly Detection Improvements ",
-        description:
-          "Improved accuracy to avoid False positives, Support for Harness K8s Tag based anomaly detection",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "Cost Platform"}],
-        title: "On-Prem/Self-Managed Airgapped Support - AWS",
-        description:
-          "Support to run CCM in an On-Premise customer environment in an Airgapped setup",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "Sample AutoStopping Rule Creation",
-        description:
-          "Automated creation of sample applications via Terraform that can be used to trial AutoStopping",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "HPA Support for K8s AutoStopping ",
-        description:
-          "Support to scale down workloads to a non-zero replica count to work with HPA",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "Asset Governance"}],
-        title: "AIDA for Asset Governance ",
-        description:
-          "Craft policies using AI with natural language queries (Docs)",
-        backgroundColor: "var(--purple-100)",
-        link: "https://developer.harness.io/docs/category/harness-aida-for-asset-governance",
-      },
-      {
-        tag: [{value: "Asset Governance"}],
-        title: "Cost Correlation for AWS Asset Governance",
-        description: "Correlate cost impact of policy runs to identify savings",
-        backgroundColor: "var(--green-100)",
-      },
-    ],
-  },
-  "Q4 CY'23": {
-    description: "Q4 CY'23, Nov-Jan 2024",
-    feature: [
-      {
-        tag: [],
-        title: "Improved RBAC ",
-        description:
-          "Support for granular RBAC for Recommendations, Anomalies, Budgets & Asset Governance entities (Docs)",
-        backgroundColor: "var(--green-100)",
-        link: "https://developer.harness.io/docs/cloud-cost-management/access-control/ccm-roles-and-permissions",
-      },
-      {
-        tag: [{value: "Visibility"}],
-        title: "Label Performance Enhancements ",
-        description:
-          "3x improvements in query times for dashboards leveraging cloud labels & tags",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "Terraform Provider for Autostopping Rules",
-        description: "Programmatically manage and configure AutoStopping Rules",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "Commitment Orchestrator for AWS",
-        description:
-          "Automated purchasing and management of commitments to maximize savings, compute coverage and utilization",
-        backgroundColor: "var(--green-100)",
-      },
-      {
-        tag: [{value: "Asset Governance"}],
-        title: "Cloud Asset Governance for Azure",
-        description:
-          "FinOps-as-code policies for AWS with Out of  the box recommendations (Docs)",
-        backgroundColor: "var(--green-100)",
-        link: "https://developer.harness.io/docs/category/governance-for-azure",
-      },
-      {
-        tag: [{value: "Asset Governance"}],
-        title: "Cost Correlation for Azure Asset Governance",
-        description: "Correlate cost impact of policy runs to identify savings",
-        backgroundColor: "var(--green-100)",
-      },
-    ],
-  },
-  "Q1 CY'24": {
-    description: "Q1 CY'24, Feb-Apr 2024",
+  Released: {
+    description: "What has been released",
     feature: [
       {
         tag: [{value: "Visibility"}],
@@ -245,11 +46,6 @@ export const CcmData: Horizon = {
         description: "Correlate cost impact of policy runs to identify savings",
         backgroundColor: "var(--green-100)",
       },
-    ],
-  },
-  "Q2 CY'24": {
-    description: "Q2 CY'24, May-Jul 2024",
-    feature: [
       {
         tag: [{value: "Visibility"}],
         title: "Azure preferences",
@@ -270,12 +66,6 @@ export const CcmData: Horizon = {
           "New resources added for all three clouds for Cost Correlation.",
         backgroundColor: "var(--green-100)",
       },
-
-    ],
-  },
-  "Q3 CY'24": {
-    description: "Q3 CY'24, Aug-Oct 2024",
-    feature: [
       {
         tag: [{value: "Asset Governance"}],
         title: "Custom Recommendations powered by Governance ",
@@ -291,78 +81,91 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--green-100)",
       },
       {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Recommendations RBAC enhancements",
-        description:
-          "",
-        backgroundColor: "var(--green-100)",
-      },
-      {
         tag: [{value: "Commitment Orchestrator"}],
         title: "Commitment Orchestrator for RDS (Beta) ",
         description:
-          "",
+          "The Commitment Orchestrator for RDS (Beta) extends our automated savings capabilities to Amazon RDS, helping organizations maximize cost efficiency by optimizing Reserved Instances (RIs) and Savings Plans",
         backgroundColor: "var(--green-100)",
       },
-    ],
-  },
-  "Q4 CY'24": {
-    description: "Q4 CY'24, Nov-Jan 2025",
-    feature: [
       {
         tag: [{value: " Asset Governance" }],
         title: "FInOps AI assistant (Beta)",
         description:
           "The FinOps AI Assistant leverages generative AI to automate the creation and enforcement of cloud governance policies, enabling faster cloud optimization. ",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Recommendation preferences ",
         description:
           "The Recommendation Preferences feature enables users to customize and save their tuning settings for various resources like Kubernetes workloads, NodePools, ECS services, and AWS VMs.",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
-        tag: [{value: " "}],
+        tag: [{value: "Platform"}],
         title: " ROI Dashboard ",
         description:
           "The ROI Dashboard provides customers with a centralized view of the return on investment generated by CCM’s features. It displays relevant metrics and enables users to craft compelling narratives around the data, making it easier to communicate insights and share the dashboard with stakeholders.",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [{value: "Commitment Orchestrator"}],
         title: "Commitment Orchestrator Inventory ",
         description:
           "Provides a centralized view of all account commitments, including details on Convertible and Standard RIs, Compute and EC2 Savings Plans, and statuses.",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [{value: "Cluster Orchestrator"}],
         title: "Workload Bin-packing for EKS Cluster Orchestrator",
         description:
           "Efficient scheduling and placement of containers onto nodes for optimizing node count and utilization",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [{value: "Cluster Orchestrator"}],
         title: "Configurable Karpenter Node Time-To-Live (TTL) in Harness UI",
         description:
           "Configurable Karpenter Node Time-To-Live (TTL) allows users to set node lifetimes directly within the interface, simplifying node management.",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [{value: "Cluster Orchestrator"}],
         title: "Spot Orchestration: Reverse Fallback Retry",
         description:
           "Reverse Fallback Retry enables automatic rollback of workloads to their original nodes or environments once they’re available, ensuring efficient resource use. ",
-        backgroundColor: "var(--yellow-100)",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [{value: "Cluster Orchestrator"}],
         title: "Workload Distribution Rule at Workload & Namespace level",
         description:
           "Workload Distribution Rules enable precise control over workload placement within clusters at both workload and namespace levels, enhancing resource balance, policy compliance, and workload isolation across Kubernetes environments.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Overlapping Schedules",
+        description:
+          "Overlapping schedules allow teams across time zones to define their usage windows for shared resources. By prioritizing these schedules, users can effectively manage conflicts and ensure accurate resource allocation",
+        backgroundColor: "var(--green-100)",
+      },
+       {
+        tag: [{value: "AutoStopping"}],
+        title: "Bulk Processing of AutoStopping Rules",
+        description:"Bulk processing of Autostopping rules enables users to select and update multiple rules at once to simplify the management of multiple rules simultaneously.",
+        backgroundColor: "var(--green-100)",
+      },
+    ],
+  },
+ Now:{
+  description: "Q1 CY'25, Feb 2025 - Apr 2025",
+    feature: [
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Granular RBAC",
+        description:
+          "Granular RBAC in Harness Autostopping introduces fine-grained control over Rules and Connectors as separate resources, enabling more precise permission management.",
         backgroundColor: "var(--yellow-100)",
       },
       {
@@ -373,25 +176,100 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--yellow-100)",
       },
       {
-        tag: [{value: "AutoStopping"}],
-        title: "Overlapping Schedules",
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Anomaly FinOps AI Assistant ",
+        description:" AI-powered insights to help FinOps teams analyze anomalies and notify the right stakeholders.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: " Integration with Cluster Orchestrator",
         description:
-          "Overlapping schedules allow teams across time zones to define their usage windows for shared resources. By prioritizing these schedules, users can effectively manage conflicts and ensure accurate resource allocation",
+          "Enhancing Commitment Orchestrator with seamless Cluster Orchestrator integration.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Nodepools and Nodeclasses Configuration via Harness UI",
+        description:
+          "UI-based configuration management for Nodepools and Nodeclasses.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Reverse Fallback V2",
+        description:
+          " Improved failover and fallback mechanisms for Cluster Orchestrator.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "RBAC for Cluster Orchestrator",
+        description:
+          "Role-based access control to enhance security and governance in Cluster Orchestrator.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Platform"}],
+        title: " External Data Ingestion ",
+        description:
+          "Focus compliant external data ingestion to ingest SaaS (Ex. Snowflake, Databricks etc.)",
+        backgroundColor: "var(--yellow-100)",
+      },
+    ],
+ },
+Later:{
+    description: "Q2 2025 and beyond",
+    feature: [
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: " Budgets 2.0 ",
+        description:
+          "Granular budgeting with version control, rule-based alerts, and CSV uploads for dynamic cost tracking along with AI-powered forecasts and budget suggestions",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Commitment Orchestrator for RDS GA ",
+        description:
+          "General Availability of Commitment Orchestrator for Amazon RDS, enabling better cost-efficiency through commitment management for database services.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Asset Governance"}],
+        title: " Governance Notifications ",
+        description:
+          "Alert notifications on evaluations for prompt alerting.",
         backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [{value: "AutoStopping"}],
-        title: "Granular RBAC",
+        title: "AutoStopping Onboarding Assistant for EKS",
         description:
-          "Granular RBAC in Harness Autostopping introduces fine-grained control over Rules and Connectors as separate resources, enabling more precise permission management.",
+          "A smart onboarding assistant for AutoStopping that automates resource identification, rule creation, and bulk configuration for Kubernetes-based environments.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Innovation"}],
+        title: " FinOps Workflows ",
+        description:
+          "Automated workflows to simplify and scale the adoption of FinOps practices and CCM features across organizations.",
         backgroundColor: "var(--yellow-100)",
       },
        {
-        tag: [{value: "AutoStopping"}],
-        title: "Bulk Processing of AutoStopping Rules",
-        description:"Bulk processing of Autostopping rules enables users to select and update multiple rules at once to simplify the management of multiple rules simultaneously.",
+        tag: [{value: "Cluster Orchestrator"}],
+        title: " Cluster Orchestrator for EKS (GA) ",
+        description:
+          "Workload-driven intelligent K8s node auto scaling with distributed spot orchestration and advanced bin packing",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Cluster Orchestrator for AKS",
+        description:
+          "Automates AKS cluster provisioning, scaling, and node pool management with policy-driven orchestration",
         backgroundColor: "var(--yellow-100)",
       },
     ],
-  },
+  }
 };

@@ -9,21 +9,47 @@ import Link from "@docusaurus/Link";
 const Roadmap = () => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const modules = [
-    { value: "platform", name: "Platform" },
-    { value: "aida", name: "AI Development Assistant" },
-    { value: "code", name: "Code Repository" },
-    { value: "ci", name: "Continuous Integration" },
-    { value: "cd", name: "Continuous Delivery & GitOps" },
-    { value: "iacm", name: "Infrastructure as Code Management" },
-    { value: "ff", name: "Feature Flags" },
-    { value: "fme", name: "Feature Mgmt & Experimentation" },
-    { value: "ccm", name: "Cloud Cost Management" },
-    { value: "sto", name: "Security Testing Orchestration" },
-    { value: "ssca", name: "Supply Chain Security" },
-    { value: "ce", name: "Chaos Engineering" },
-    { value: "srm", name: "Service Reliability Management" },
-    { value: "idp", name: "Internal Developer Portal" },
-    { value: "sei", name: "Software Engineering Insights" },
+    { value: 'platform', name: 'Platform', icon: 'icon_platform.svg' },
+    { value: 'aida', name: 'Harness AI', icon: 'icon_aida.svg' },
+    { value: 'code', name: 'Code Repository', icon: 'icon_code.svg' },
+    { value: 'ci', name: 'Continuous Integration', icon: 'icon_ci.svg' },
+    { value: 'cd', name: 'Continuous Delivery & GitOps', icon: 'icon_cd.svg' },
+    { value: 'dbdevops', name: 'Database DevOps', icon: 'icon_dbdevops.svg' },
+    {
+      value: 'iacm',
+      name: 'Infrastructure as Code Management',
+      icon: 'icon_iacm.svg',
+    },
+    { value: 'ff', name: 'Feature Flags', icon: 'icon_ff.svg' },
+    {
+      value: 'fme',
+      name: 'Feature Management & Experimentation',
+      icon: 'icon_fme.svg',
+    },
+    { value: 'ccm', name: 'Cloud Cost Management', icon: 'icon_ccm.svg' },
+    {
+      value: 'sto',
+      name: 'Security Testing Orchestration',
+      icon: 'icon_sto.svg',
+    },
+    { value: 'ssca', name: 'Supply Chain Security', icon: 'icon_ssca.svg' },
+    { value: 'ce', name: 'Chaos Engineering', icon: 'icon_ce.svg' },
+    {
+      value: 'srm',
+      name: 'Service Reliability Management',
+      icon: 'icon_srm.svg',
+    },
+    { value: 'idp', name: 'Internal Developer Portal', icon: 'icon_idp.svg' },
+    {
+      value: 'sei',
+      name: 'Software Engineering Insights',
+      icon: 'icon_sei.svg',
+    },
+    {
+      value: 'cde',
+      name: 'Cloud Development Environments',
+      icon: 'icon-cde.svg',
+    },
   ];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -73,6 +99,7 @@ const Roadmap = () => {
 
         const handleModuleSelect = (module: {
           value: string;
+          icon: string;
           name: string;
         }) => {
           roadmap.map((mod) => {
@@ -91,7 +118,7 @@ const Roadmap = () => {
                 {selectedDropdownModule && (
                   <div>
                     <img
-                      src={`${baseUrl}img/icon_${selectedDropdownModule.value}.svg`}
+                      src={`${baseUrl}img/${selectedDropdownModule.icon}`}
                       alt={selectedDropdownModule.name}
                     />
                     <p>{selectedDropdownModule.name}</p>
@@ -108,7 +135,7 @@ const Roadmap = () => {
                         onClick={() => handleModuleSelect(module)}
                       >
                         <img
-                          src={`${baseUrl}img/icon_${module.value}.svg`}
+                          src={`${baseUrl}img/${module.icon}`}
                           alt={module.name}
                         />
                         <p> {module.name}</p>

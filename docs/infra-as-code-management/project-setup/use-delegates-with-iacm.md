@@ -1,5 +1,5 @@
 ---
-title: Use the Harness Delegate 
+title: Harness Delegate 
 description: Learn how the Harness Delegate works with IaCM.
 sidebar_position: 40
 ---

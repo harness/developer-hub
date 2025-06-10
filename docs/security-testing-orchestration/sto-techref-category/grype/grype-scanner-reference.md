@@ -23,7 +23,7 @@ For information about setting up Grype in an air-gapped environment, go to [Set 
 - STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 
 <StoMoreInfo />
@@ -42,10 +42,10 @@ The recommended workflow is to add a Grype step to a Security or Build stage and
 #### Scan Mode
 
 
-import StoSettingScanMode from '../shared/step_palette/scan/_type.md';
+import StoSettingScanMode from '../shared/step-palette/scan/type.md';
 
-import StoSettingScanModeOrch from '../shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeOrch from '../shared/step-palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from '../shared/step-palette/scan/mode/ingestion.md';
 
 
 <!-- StoSettingScanMode / -->
@@ -56,7 +56,7 @@ import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestio
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/scan/config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -68,8 +68,8 @@ import StoSettingProductConfigName from '/docs/security-testing-orchestration/st
 
 #### Type
 
-import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
-import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeCont from '../shared/step-palette/target/type/image.md';
+import StoSettingScanTypeRepo from '../shared/step-palette/target/type/repo.md';
 
 <StoSettingScanTypeCont />
 <StoSettingScanTypeRepo />
@@ -77,9 +77,9 @@ import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md'
 
 #### Target and Variant Detection 
 
-import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
-import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from '../shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectContainer from '../shared/step-palette/target/auto-detect/container-image.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectContainer/>
@@ -88,7 +88,7 @@ import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto
 
 #### Name 
 
-import StoSettingTargetName from '../shared/step_palette/target/_name.md';
+import StoSettingTargetName from '../shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
@@ -96,7 +96,7 @@ import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 
 #### Variant
 
-import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -104,7 +104,7 @@ import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-te
 ### Ingestion File
 
 
-import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/ingest/file.md';
 
 
 
@@ -119,7 +119,7 @@ import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-te
 #### Type  
 
 
-import StoSettingImageType from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_type.md';
+import StoSettingImageType from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/image/type.md';
 
 
 
@@ -132,7 +132,7 @@ import StoSettingImageType from '/docs/security-testing-orchestration/sto-techre
 
 
 
-import StoSettingImageDomain from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_domain.md';
+import StoSettingImageDomain from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/image/domain.md';
 
 
 
@@ -144,7 +144,7 @@ import StoSettingImageDomain from '/docs/security-testing-orchestration/sto-tech
 #### Name
 
 
-import StoSettingImageName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_name.md';
+import StoSettingImageName from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/image/name.md';
 
 
 
@@ -156,7 +156,7 @@ import StoSettingImageName from '/docs/security-testing-orchestration/sto-techre
 #### Tag
 
 
-import StoSettingImageTag from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_tag.md';
+import StoSettingImageTag from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/image/tag.md';
 
 
 
@@ -168,7 +168,7 @@ import StoSettingImageTag from '/docs/security-testing-orchestration/sto-techref
 #### Access Id
 
 
-import StoSettingImageAccessID from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_access-id.md';
+import StoSettingImageAccessID from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/image/access-id.md';
 
 
 
@@ -180,7 +180,7 @@ import StoSettingImageAccessID from '/docs/security-testing-orchestration/sto-te
 #### Access Token 
 
 
-import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/image/_access-token.md';
+import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/image/access-token.md';
 
 
 
@@ -189,7 +189,7 @@ import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto
 
 ### Log Level
 
-import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
@@ -202,7 +202,7 @@ Use this field to run the [`grype`](https://github.com/anchore/grype?tab=readme-
 
 With this flag, `grype` reports only vulnerabilities that have known fixes. 
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
@@ -210,34 +210,34 @@ import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/fail-on-severity.md';
 
 
 <StoSettingFailOnSeverity />
 
 ### Settings
 
-import StoSettingSettings from '../shared/step_palette/all/_settings.md';
+import StoSettingSettings from '../shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '../shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
 ## Configure Anchore Grype as a Built-in Scanner  
 
-The Anchore Grype scanner is available as a [built-in scanner](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
+The Anchore Grype scanner is available as a [built-in scanner](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
 
 1. Search for **Container** in the step palette or navigate to the **Built-in Scanners** section and select the **Container** step.
 2. Select **Anchore Grype** from the list of scanners.  

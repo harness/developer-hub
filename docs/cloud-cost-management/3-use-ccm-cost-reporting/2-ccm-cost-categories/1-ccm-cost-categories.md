@@ -8,6 +8,18 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Tabs from '@theme/Tabs';
+
+import TabItem from '@theme/TabItem';
+
+:::tip Latest Features Released in 1.50.2
+<Tabs>
+  <TabItem value="Label V2" label="Label V2">We’re moving from the older `Label` to `Label V2`. This will improve the load time of the Perspective or Cost Category which are powered by `Label V2`. `Label V2` can be used in place of `Label` in filter in perspectives, as a GROUP BY operand in perspectives graph and in specifying rules when creating a Perspective and Cost Categories. The main goal of `Label V2` is to give you full visibility into your original cloud tag keys, exactly as they appear in your AWS, Azure, or GCP environments.
+  For Perspectives and Cost Categories using `Label`, **[migration to `Label V2` is REQUIRED for AWS compulsorily](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories#important-migration-from-label-to-labelv2)**. For new Perspectives and Cost Categories, **use `Label V2` and not `Label`**.</TabItem>
+
+</Tabs>
+:::
+
 Cost categories provide an understanding of where and how your money is being spent. Cost categories allow you to take data across multiple sources and attribute it to business contexts, such as departments, teams, and other spend categories. For example, if your business is organized by teams with multiple accounts, you can create a Cost Category named Teams and map costs to each team from all your accounts. The cost category called Teams shows you what each team is spending across AWS, GCP, Clusters, etc. You could drill down further into the cost data available for every item in your cost category. For example, in a cost category called Teams, you could view cost data for a particular team (cost bucket) such as Operations. You can then use Cost Categories in CCM Perspectives to filter across accounts, products, etc.
 
 Apart from viewing costs based purely on different data sources (AWS, GCP, Clusters, etc.) without context, cost categories allow you to view spending across these data sources according to different business contexts and help you gain useful insights.
@@ -128,7 +140,7 @@ To copy cost buckets from one cost category to another, perform the following st
    For example, consider two cost targets named team A and team B. These two teams use the same database. To enable sharing of cost between these two teams, you need to create a shared cost bucket named sharedDB (enter a name that relates to the shared bucket).
 
 - **Equally**: This option enables sharing of the shared bucket cost equally (50%) between both teams A and B. You can view it in the grid and chart.
-- **Proportionally**: This option enables sharing of the shared bucket cost proportionally between both teams. If the cost for team A is $60 and that of team B is $40. Then, 60% of DB cost is borne by team A and 40% by team B.
+- **Proportionally**: This option enables sharing of the shared bucket cost proportionally between both teams. If the cost for team A is USD60 and that of team B is USD40. Then, 60% of DB cost is borne by team A and 40% by team B.
 - **Fixed percentage**: This option allows the distribution of the cost of the shared bucket by a fixed percentage between cost buckets. For example, 30% to team A and 70% to team B.
 
 ![](./static/cost-category-builder-2.png)
@@ -150,3 +162,117 @@ In **Manage Unallocated Costs**, you can choose to show or ignore unallocated co
 Save the cost category. Now, you can view the cost bucket details in a cost category on the **Cost Categories** page.
 
 ![](./static/cost-bucket-details.png)
+
+
+## Important: Migration from `Label` to `Label V2`
+
+Harness CCM is transitioning from the traditional `Label` system to the enhanced `Label V2` system. **Support for the legacy `Label` system will be discontinued in the coming months**.
+
+### Required Action
+
+- **AWS Labels**: Immediate migration required. You must update all AWS `Label` references to use `Label V2`.
+- **GCP, Azure, and Cluster Labels**: After AWS label migration is complete, Harness CCM will automatically handle these migrations.
+
+### How to Migrate
+
+#### **Via UI:**
+
+1. **Identify affected Cost Categories**:
+    - Review all Cost Categories that use AWS Label-based grouping or filtering
+
+2. **Update each component**:
+   - Edit each Cost Category
+   - Locate all instances where you've defined rules, filters, or grouping using Labels
+   - Change the selection from "Label" to "Label V2"
+   - Save your changes
+
+3. **Verify your updates**:
+   - After updating the Cost Category, confirm that your cost data appears correctly
+   - Ensure all previously configured label-based filters work as expected
+
+Kindly follow the steps below: 
+
+<iframe 
+     src="https://app.tango.us/app/embed/5969bd17-7d02-468b-80f6-5eace7e1ffdd" 
+     title="Migrating Label to Label V2" 
+     style={{minHeight:'480px'}}
+     width="100%" 
+     height="100%" 
+     referrerpolicy="strict-origin-when-cross-origin" 
+     frameborder="0" 
+     webkitallowfullscreen="webkitallowfullscreen" 
+     mozallowfullscreen="mozallowfullscreen" 
+     allowfullscreen="allowfullscreen"></iframe>    
+
+#### **Via API:**
+
+Earlier every request had the Label field as:
+```json
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": "key1",
+                        "identifier": "LABEL",
+                        "identifierName": "Label"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                } 
+```
+
+Now the request has the Label V2 field as:
+
+```json
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": "key1",
+                        "identifier": "LABEL_V2",
+                        "identifierName": "Label v2"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                }
+```
+
+Similarly, for `labels.key`:
+
+Earlier:
+
+```json
+ "idFilter": {
+                    "field": {
+                        "fieldId": "labels.key",
+                        "fieldName": "",
+                        "identifier": "LABEL",
+                        "identifierName": "Label V2"
+                    },
+                    "operator": "IN",
+                    "values": []
+                }
+```
+
+Now:
+
+```json
+ "idFilter": {
+                    "field": {
+                        "fieldId": "labels.key",
+                        "fieldName": "",
+                        "identifier": "LABEL_V2",
+                        "identifierName": "Label V2"
+                    },
+                    "operator": "IN",
+                    "values": []
+                }
+```
+
+In short, wherever you see `LABEL` in "identifier", replace it with `LABEL_V2` alongwith "identifierName" .
+
+Please refer the following API docs for details:
+- [Create a Cost Category](https://apidocs.harness.io/tag/Cloud-Cost-Cost-Categories#operation/createBusinessMapping)
+- [Update a Cost Category](https://apidocs.harness.io/tag/Cloud-Cost-Cost-Categories#operation/updateBusinessMapping)

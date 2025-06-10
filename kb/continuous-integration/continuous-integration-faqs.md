@@ -238,6 +238,32 @@ To debug this issue, investigate delegate connectivity in your VM build infrastr
 - [Verify connectivity for GCP VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#verify-connectivity)
 - [Verify connectivity for Anka macOS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#verify-connectivity)
 
+### How to establish a VPN connection within a CI pipeline?
+
+One way to establish a secure connection between our platform’s servers and a customer’s on-premises infrastructure is through a Virtual Private Network (VPN). 
+
+:::note
+- The user must publish a public IP address (or have a domain).
+- The VPN connection must be established before any step that relies on VPN traffic for functionality.
+::: 
+
+Here is an example of using an OpenVPN server, but you can apply the same approach to Strongswan, Cisco, or any other VPN server.
+
+#### Steps to configure OpenVPN
+
+1. Download an OpenVPN file, "config.ovpn".
+2. Encode the file to Base64 and save it.
+3. Add the file as a secret.
+
+![Add config file as secret](static/vpndocs-add-file-as-secret.png)
+
+4. Decode the file, save it as a config file, and install OpenVPN.
+![Decode and save config](static/vpndocs-decode-save-config.png) 
+
+5. Run OpenVPN with the new file as a [Background Step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/).
+![Run as background step](static/vpndocs-run-ovpn-background-step.png)    
+ 
+6. Continue with the rest of the pipeline steps. 
 ## Harness Cloud
 
 ### What is Harness Cloud?
@@ -509,6 +535,22 @@ If the delegate is unable to connect to the created build farm with [Istio MTLS 
 
 For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
 
+### Why aren't Harness CI Steps like Git clone inheriting my proxy settings from the Delegate, and how can I configure a proxy for these steps?
+
+CI steps such as Git Clone don't automatically inherit the proxy settings configured on the Harness Delegate. This is because these steps run inside separate build pods, and proxy-related environment variables need to be explicitly passed down to those pods.
+
+To ensure your CI steps work with your proxy setup, you must configure the following environment variables on the Delegate:
+
+`PROXY_HOST`
+
+`PROXY_PORT`
+
+`PROXY_SCHEME`
+
+These variables allow Harness to propagate the proxy configuration to build pods so that operations like cloning a Git repository can route through the correct proxy.
+
+For a complete list of variables and instructions on setting up proxy configurations for your Delegate, refer to the [Configure delegate proxy settings documentation](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings/)
+
 ### If my pipeline consists of multiple CI stages, are all the steps across different stages executed within the same build pod?
 
 No. Each CI stage execution triggers the creation of a new build pod. The steps within a stage are then carried out within the stage's dedicated pod. If your pipeline has multiple CI stages, distinct build pods are generated for each individual stage.
@@ -674,8 +716,6 @@ environment:
   - ACCOUNT_ID=XXXX
   - DELEGATE_TOKEN=XXXX
   - MANAGER_HOST_AND_PORT=https://app.harness.io
-  - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
-  - DEPLOY_MODE=KUBERNETES
   - DELEGATE_NAME=test
   - NEXT_GEN=true
   - DELEGATE_TYPE=DOCKER
@@ -711,6 +751,51 @@ npm config set strict-ssl false
 ```
 
 If your `pnpm` commands are waiting for user input. Try using the [append-only flag](https://pnpm.io/cli/install#--reportername).
+
+### How do I use a self-signed certificate for a private Docker registry in the Build and Push to Docker Registry step?
+
+To use a self-signed certificate for a private Docker registry in the **Build and Push to Docker Registry** step, you need to ensure that the runner (or build infrastructure) trusts the certificate. Since the Build and Push to Docker Registry step does not provide a direct way to configure self-signed certificates, you can use a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/) before it to manually add the certificate.
+
+Example: Using a **Run step** to configure the self-signed certificate
+
+Before running the Build and Push to Docker Registry step, add a **Run step** in your pipeline and use the following example to set up the self-signed certificate:
+
+```YAML
+- step:
+    type: Run
+    name: Run_1
+    identifier: Run_1
+    spec:
+      shell: Sh
+      command: |-
+        # Write the certificate content to a file
+        echo '<+secrets.getValue("crt")>' > ca.crt
+        
+        # Create the Docker certificates directory for the private registry
+        mkdir -p /etc/docker/certs.d/PRIVATE_DOCKER_REGISTRY_SERVER:PRIVATE_DOCKER_REGISTRY_PORT
+        
+        # Copy the certificate to the Docker certificates directory
+        cp ca.crt /etc/docker/certs.d/PRIVATE_DOCKER_REGISTRY_SERVER:PRIVATE_DOCKER_REGISTRY_PORT
+
+        # Update the system's trusted certificate store (for Ubuntu/Debian)
+        update-ca-certificates
+
+        # Update the system's trusted certificate store (for CentOS/RHEL/Fedora)
+        update-ca-trust
+``` 
+
+Use another **Run step** to test the connection:
+
+```YAML
+- step:
+    type: Run
+    name: Run_2
+    identifier: Run_2
+    spec:
+      shell: Sh
+      command: |-
+        docker login PRIVATE_DOCKER_REGISTRY_SERVER:PRIVATE_DOCKER_REGISTRY_PORT --username SOMEUSERNAME --password SOMEPASSWORD
+```
 
 ## Windows builds
 
@@ -1335,6 +1420,13 @@ By default, Harness uses anonymous Docker access to pull Harness-required images
 
 No. Pipeline initialization isn't included in your build minutes.
 
+### How can I fix the issue where the Git clone is being treated as a submodule?
+You can resolve this by setting the Submodules Strategy to False. This will prevent the repository from being initialized as a submodule. 
+
+You can either:
+- Through the UI: Go to the GitClone step in the Harness UI and set Submodules Strategy to False.
+- Through the YAML: Update the pipeline YAML file by setting submoduleStrategy: "false" in the GitClone step configuration.
+
 ## Build and push images
 
 ### Where does a pipeline get code for a build?
@@ -1541,6 +1633,7 @@ When using the V2 Docker registry API, authentication issues can arise due to ho
 
 Here’s the key difference:
 
+
 - **Username/Password Authentication**: When using a username and password, the generated token often lacks the necessary scope details (e.g., actions like `push` and `pull`). This can cause issues when trying to authenticate with the registry during build and push steps.
   
 - **Personal Access Token (PAT) Authentication**: A PAT provides more detailed scope information in the authentication headers, ensuring the correct access levels for pushing and pulling images. With a PAT, the JWT scope is properly set, allowing seamless authentication for build and push operations.
@@ -1578,10 +1671,15 @@ In this example, the `actions` (pull, push) and the repository name are correctl
 
 To avoid authentication issues, it's recommended to either use a PAT when configuring build and push steps for Docker registries with the V2 API or, if using a username and password, switch to the V1 API.
 
+### Authentication issues (toomanyrequests: You have reached your unauthenticated pull rate limit.) despite setting a Docker Connector with Valid Credentials
+Customers may encounter the `toomanyrequests: You have reached your unauthenticated pull rate limit.` error for their Build and Push steps (ECR, Docker, etc) despite having a valid Docker Connector set and credentials.  
+This is due to utilizing the v2 registry API for a private repository pull.  Please see the above [information that goes into detail about how and why this occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls).
 
 ### How can user access the secrets as files in a Docker build without writing them to layers?
 The **build and push** steps used to build Docker images have a context field. Users can use the context field in the build and push steps to mount the current directory at `/harness`. By copying your files to a specific directory and then mounting them, you can avoid writing secrets into the Docker image layers.
 
+### Why do Build and Push steps fail with "Error while loading buildkit image: exit status 1" when /var/lib/docker is included in shared paths during DIND execution?
+**Build and Push** steps fail with the error "Error while loading buildkit image: exit status 1" when `/var/lib/docker` is included in the shared paths during Docker-in-Docker (DIND) execution because DIND creates a Docker daemon using this path, and sharing it across steps causes conflicts when multiple build steps try to create and access their own Docker daemons. To resolve this, remove `/var/lib/docker` from the shared paths configuration, which prevents conflicts and allows **Build and Push** steps to execute successfully.
 
 ## Upload artifacts
 
@@ -1690,6 +1788,13 @@ Test Intelligence doesn't split tests. Instead, Test Intelligence selects specif
 
 For additional time savings, you can [apply test splitting in addition to Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2). This can further reduce your test time by splitting the selected tests into parallel workloads.
 
+### How can I receive an execution report via email for our Test suite in Harness?
+In Harness, you can use the Email plugin in your CI pipeline to export reports and other artifacts via email. This allows you to send the execution report directly to your desired recipients without needing to push it to a Git repository.
+
+For more details on how to set up the email notifications, you can refer to these documents:
+[Using the Email Plugin in CI](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin/)
+[Exploring CI Plugins in Harness](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins/)
+
 ## Test Intelligence
 
 ### How do I use Test Intelligence?
@@ -1779,12 +1884,26 @@ Currently, the C# support still has some limitations where classes that reside i
 
 ### Does Test Intelligence support dynamic code?
 
-Harness doesn't recommend using TI with Ruby projects using dynamically generated code or Python projects using dynamic loading or metaclasses.
+Harness doesn't recommend using TI with Ruby projects that use dynamically generated code or Python projects that use dynamic loading or metaclasses.
+
+### Why did Test Intelligence Skip Analysis
+Sometimes, teams may see that tests appear to have been a part of an execution and build, but for some reason, the selected tests are 0, and there is no data on the test having been completed
+![no test selected](static/test-skip1.png)
+In the logs, customers may notice a blank array of tests selected by Test Intelligence `level=info msg="Running tests selected by Test Intelligence: []"` to be run.  There are several reasons why this may happen, and they are often related to how Test Intelligence behaves, [as outlined in our TI Overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview/#how-does-test-intelligence-work).
+
+#### Tests were skipped because Code Changes and Test have no overlap
+Test Intelligence may choose to ignore or pass on tests if the code changes that were executed, are irrelevant to the tests.  This is because it is choosing to skip tests to save time.  For example, changes to a readme file would not invoke Java tests outlined and defined.  Likewise, changes to files within the [ignore tests/files definitions will also cause Test Intelligence to Skip](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview/#ignore-tests-or-files) the tests.  
+
+#### Git Branch execution builds
+Customers choosing to define a build type for the CI Codebase as a Git Branch may also find odd behavior on re-runs on the same branch
+![Git Branch](static/test-skip1.png)
+This is because the tests associated with the branch are tied to a specific Commit ID. If the Commit ID does not change in subsequent steps or executions, Test Intelligence will see that a test result is already associated. This causes Test Intelligence to consider the testing complete, and on subsequent executions, it does not see a need to rerun a completed test.  This would be expected behavior for Test Intelligence, as TI would consider a re-run unnecessary if nothing has changed.  
+
+Customers are recommended to either change their Build Type to a **Git Pull Request** to ensure the test is run on each PR (and new Commit ID), or they can clone the Git Branch to cause a re-execution on the test.
 
 ### Why is the cache intelligence is not saving the cache from the default yarn location?
 
 This could happen if you have a custom path added in the cache intelligence config. If you want the YARN cache to be picked from the default location, make sure you don’t configure cache intelligence with a custom path
-
 
 ### Can user import test results from a generic 'mvn clean deploy' Run step into the test Dashboard? Or must use the Unit Test step to display them on that tab?
 Yes, you can use the Run step to run your maven command and upload the test results. There is a field for this in the run step (like in the run tests step). Please check [the documentation](../../docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/#report-paths) for more information.
@@ -1797,6 +1916,18 @@ pom.xml allows using environment variable references with syntax like below:
 `${env.VARIABLE_NAME}`
 
 You can not directly use harness expression in pom.xml but you can use harness expression to pass the values to environment variables which then in turn can be used in pom.xml.
+
+### Tests with Test Intelligence enabled are not showing any data results, despite having worked previously
+When Test Intelligence is first run, a call graph is generated based on the published branch and commit ID.  This is associated specifically with the branch and commit ID, even across pipelines, to allow Test Intelligence to be as efficient as possible.  
+
+If the same code is used in multiple pipelines, it would leverage the existing callgraph, if one already exists, allowing TI to help developers reduce the number of necessary tests they have to go through.
+
+With this in mind, unless there are changes to [the relevant code or test](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview/#how-does-test-intelligence-work), Test Intelligence will end up skipping the tests
+
+This can be observed with the following log
+![image](./static/testintelligence-blank.png)
+
+
 
 ## Script execution
 
@@ -2132,7 +2263,7 @@ Go to [Cache Intelligence](https://developer.harness.io/docs/continuous-integrat
 
 ### What is the Cache Intelligence cache storage limit?
 
-Harness Cloud provides up to 2GB of [cache storage](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-storage) per account.
+When using Harness Cloud, cache storage limits apply based on your CI plan. For more details on storage limits, visit the [CI subscription page](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt/#storage).
 
 ### What is the cache retention window for Cache Intelligence? Can the cache expire?
 
@@ -2298,7 +2429,7 @@ Replace `LABEL_KEY` with your label's actual key.
 
 ### Why does the parallel execution of build and push steps fail when using Buildx on Kubernetes?
 
-When using Buildx on Kubernetes (enabled by feature flags), running multiple build-and-push steps in parallel can result in failures due to race conditions. This issue arises from how Docker-in-Docker works within Kubernetes pods.
+When using Buildx on Kubernetes, either enabled by feature flags or in the build and push steps when the Docker Layer Caching option is checked, running multiple build-and-push steps in parallel may result in failures due to race conditions. This issue arises from how Docker-in-Docker works within Kubernetes pods.
 
 The failure occurs when either of the following feature flags are enabled:
 

@@ -135,8 +135,7 @@ import TabItem from '@theme/TabItem';
 
    # Add catalog-info.yaml location to catalog
     curl --location 'https://idp.harness.io/<+account.identifier>/idp/api/catalog/locations' \
-    --header 'x-api-key: Harness PAT' \
-    --header 'Harness-Account: <+account.identifier>' \
+    --header 'x-api-key: <HARNESS_TOKEN>' \
     --data-raw '{"type":"url","target":"https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>/blob/main/catalog-info.yaml"}'
    ```
 
@@ -218,9 +217,8 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
    git push --set-upstream https://oauth2:<+pipeline.variables.gitlab_token>@gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>.git main
    
    # Add catalog-info.yaml location to catalog
-    curl --location 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/locations' \
-    --header 'x-api-key: Harness PAT' \
-    --header 'Harness-Account: Account_ID' \
+    curl --location 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations' \
+    --header 'x-api-key: <HARNESS_TOKEN>' \
     --data-raw '{"type":"url","target":"https://gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>/blob/main/catalog-info.yaml"}'   
 
    ```
@@ -483,7 +481,7 @@ The `spec.steps` field contains only one action, and that is to trigger a Harnes
 
 ### Register the Workflow
 
-Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/catalog-2o.md).
 
 Now navigate to the **Create** page in IDP. You will see the newly created Workflow appear. Try it out!
 

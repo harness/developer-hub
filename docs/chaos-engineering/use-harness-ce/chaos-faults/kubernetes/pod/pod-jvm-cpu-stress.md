@@ -1,6 +1,8 @@
 ---
 id: pod-jvm-cpu-stress
 title: Pod JVM CPU stress
+redirect_from:
+- /docs/chaos-engineering/technical-reference/chaos-faults/spring-boot/spring-boot-cpu-stress
 ---
 
 Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.

@@ -136,7 +136,7 @@ To an ingress ALB, do the following:
 
 ### Optional: Configure a vanity URL based on your load balancer
 
-You can use the script provided below to configure a vanity URL based on your load balancer. The script is available in the [Harness Helm chart](https://github.com/harness/helm-charts/blob/main/src/harness/configure-vality-url.sh) and also accessible at the following path within your Helm manifest: `harness/configure-vanity-url.sh`.
+You can use the script provided below to configure a vanity URL based on your load balancer. The script is available in the [Harness Helm chart](https://github.com/harness/helm-charts/blob/main/src/harness/configure-vanity-url.sh) and also accessible at the following path within your Helm manifest: `harness/configure-vanity-url.sh`.
 
 #### Prerequisites
 
@@ -183,6 +183,8 @@ EOF
 kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPECTED_HOSTNAME":"app.harness.io"}}'
 kubectl rollout restart -n $namespace deployment -l "app.kubernetes.io/name=ng-auth-ui"
 ```
+
+The `app.harness.io` value in the command, `kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPECTED_HOSTNAME":"app.harness.io"}}'` should NOT be replaced with your created subdomain value, it should be set to "app.harness.io" itself.
 
 ##### Example command
 
