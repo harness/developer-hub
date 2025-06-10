@@ -89,6 +89,29 @@ These concurrency limits are *account wide* and NOT per pipeline.
 
 This setting can only be edited in Team and Enterprise plans. You can set it at the account scope only. You can configure the limit anywhere between 2 and the maximum. 
 
+### Project-Level Pipeline Execution Concurrency
+
+:::note
+Currently, this feature is behind the feature flag `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can take fine-grained control of how many pipelines run concurrently in each of your projects. By splitting your account-wide concurrency limit into a **High-Priority** and **Low-Priority** partition, you guarantee reserved execution slots for critical projects while preventing any one project from consuming all available capacity.
+
+You can configure this at the account scope only. Navigate to **Account Settings** -> **Pipeline** -> **Concurrent Active Pipeline Executions**.
+
+**How it works**  
+- **Define partitions**  
+  - Specify a **High** slot count (e.g. 200 of your 1000 total concurrency)  
+  - The remaining capacity automatically becomes the **Low** partition (800 in this example)  
+- **Assign projects**  
+  - Provide **either** a list of High-Priority projects **or** a list of Low-Priority projects (all others fall into the opposite set)  
+- **Runtime behavior**  
+  1. If **High** (200) and **Low** (800) are both at capacity, any new **High** execution is queued—but as soon as *any* slot frees in **High** *or* **Low**, your High-Priority pipeline will start (allowing up to 1000 simultaneous High runs over time).  
+  2. A new **Low** execution can only consume slots in the **Low** partition; if those 800 are full, it queues until a Low slot frees.  
+  3. When dequeuing mixed queues:  
+     - **High** pipelines may start on the first available slot in **High** or **Low**.  
+     - **Low** pipelines wait for the next available **Low** slot. 
+
 ### Pipeline Timeout and Stage Timeout (execution time limits)
 
 The timeout limit is the maximum allowable time a stage or pipeline can run.
