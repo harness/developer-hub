@@ -103,7 +103,7 @@ The following table shows SCS support for each infrastructure type.
 |--|--|--|--|--|
 |[Repository Security Posture Management](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm) | On Roadmap | N | N | Only GitHub, others are on Roadmap |
 |[CICD Security Posture Management](/docs/software-supply-chain-assurance/manage-risk-and-compliance/cicd-security-posture-management-cicdspm) | - | Works with Harness pipelines | Works with Harness pipelines | Only GitHub Actions, others are on Roadmap |
-|[Generate or ingest SBOM, followed by SBOM drift detection & SBOM scores](/docs/software-supply-chain-assurance/open-source-management/generate-sbom) | Y | Y | Y | Y |
+|[Generate or ingest SBOM, followed by SBOM drift detection & SBOM scores](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories) | Y | Y | Y | Y |
 |[Enforce OSS usage with SBOM governance policies](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies) | Y | Y | Y | Y |
 |[Generate SLSA provenance](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa) | Y | Y | N | N |
 |[Verify SLSA provenance with SLSA governance policies](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa) | Y | Y | Y | Y |

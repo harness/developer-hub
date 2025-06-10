@@ -112,7 +112,7 @@ export const docsCards: CardSections = [
         title: "SCS",
         module: MODULES.ssca,
         description: "Supply Chain Security onboarding guide",
-        link: "/docs/software-supply-chain-assurance/get-started/onboarding-guide",
+        link: "/docs/software-supply-chain-assurance/get-started/",
       },
       {
         title: "SEI",
