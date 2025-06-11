@@ -44,7 +44,7 @@ Ensure that both tools are installed and correctly configured before proceeding.
 
     - Default region name: Specify the AWS region where you want to deploy the cluster (e.g., us-east-1).
 
-    - Default output format: It's recommended to use json.
+    - Default output format: It's recommended to use `json`.
 
    Example:
 
@@ -52,7 +52,7 @@ Ensure that both tools are installed and correctly configured before proceeding.
    AWS Access Key ID [None]: YOUR_ACCESS_KEY
    AWS Secret Access Key [None]: YOUR_SECRET_KEY
    Default region name [None]: YOUR_REGION
-   Default output format [None]: `json`
+   Default output format [None]: json
    ```
 
    :::warning Note
