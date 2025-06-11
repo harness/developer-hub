@@ -14,7 +14,7 @@ You can create a Split Zendesk Support ticket.
 To create a support ticket:
 
 1. Send an email to [support@split.io](mailto:support@split.io).
-2. In the email message, provide steps to reproduce the issue.
+2. In the email message, provide steps to reproduce the issue. If applicable, include a URL to the feature flag, segment, or metric you're experiencing an issue with.
 3. Attach any relevant screenshots or mini video clips.
 
 The request will be routed to FME support engineers and create an internal Zendesk ticket, which is actively monitored by the Harness FME team.
