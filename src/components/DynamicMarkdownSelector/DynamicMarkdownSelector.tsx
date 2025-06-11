@@ -29,6 +29,7 @@ export interface DynamicMarkdownSelectorProps {
       logo?: string;
     }
   >;
+  inOrder?: boolean;
 }
 
 // Determine column count for visual balance
@@ -39,9 +40,11 @@ const getGridColumns = (count: number): number => {
   return 5;
 };
 
-const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options }) => {
+const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options, inOrder }) => {
   const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, "");
-  const labels = Object.keys(options).sort((a, b) => a.localeCompare(b));
+  const labels = inOrder
+    ? Object.keys(options) // insertion order
+    : Object.keys(options).sort((a, b) => a.localeCompare(b)); // alphabetical
 
   const getInitialSelected = () => {
     const hash = typeof window !== "undefined" ? window.location.hash.replace("#", "") : "";
