@@ -8,6 +8,10 @@ sidebar_position: 45
 
 In order to use this feature, please ensure that you are using [drone runner](https://github.com/drone-runners/drone-runner-aws/tree/v1.0.0-rc.187?tab=readme-ov-file#high-availablity) version of [`v1.0.0-rc.187`](https://github.com/drone-runners/drone-runner-aws/releases/tag/v1.0.0-rc.187) or greater. 
 
+## Architecture
+
+  ![](../static/HA_architecture.png)
+
 ## Setup
 
 When using VM build infrastructure, you can deploy multiple replicas of the runner or infrastructure to ensure high availability. Below is an example of a deployment yaml that deploys 2 replicas of the runner behind a load balancer.
@@ -74,8 +78,12 @@ spec:
       targetPort: 3000
       protocol: TCP
 ```
+Ensure that you've configured the above yaml properly:
 
-The load balancer ip obtained above can be used in delegate with the env variable `RUNNER_URL`. Populate `DRONE_DATABASE_DATASOURCE` accordingly. Note that above yaml mounts a volume config-volume with path `/runner`. Make sure your `pool.yml` file and secrets required are mapped properly. See the following GCP specific `pool.yaml` file used in the deployment above.
+- Populate `DRONE_DATABASE_DATASOURCE` according to your database infrastructure.
+- The env variable `RUNNER_URL` is used to point to the machine where the Harness Runner will run. In this case, use the load balancer ip obtained for the `RUNNER_URL` in the delegate. For example, when installing the delegate:
+  - Add `-e RUNNER_URL=http://<LOAD_BALANCER_IP>:3000`
+- Note that above yaml mounts a volume config-volume with path `/runner`. Make sure your `pool.yml` file and secrets required are mapped properly. See the following GCP specific `pool.yaml` file used in the deployment above.
 
 ```yaml
 version: "1"
