@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 :::tip Status of IDP 2.0 related features
 IDP 2.0 is an ongoing project under active iteration. Here is the most recent status on all the features which have been released as well as the features planned to be released in near future.
 
-| Feature                                | Status                 |
-| -------------------------------------- | ---------------------- |
-| **RBAC and Project/Org Hierarchy**     | ✅ (Ready to onboard)  |
-| **Git Experience (YAML files in Git)** | ⏳ ETA June 20th, 2025 |
-| **New System Entity for grouping**     | ⏳ ETA July 31st, 2025 |
-| **Custom User Groups**                 | ⏳ ETA July 31st, 2025 |
-| **Project/Org filters in Scorecards**  | ⏳ ETA July 31st, 2025 |
+| Feature                                | Status                |
+| -------------------------------------- | --------------------- |
+| **RBAC and Project/Org Hierarchy**     | ✅ (Ready to onboard) |
+| **Git Experience (YAML files in Git)** | ⏳ ETA June 20, 2025  |
+| **New System Entity for grouping**     | ⏳ ETA July 31, 2025  |
+| **Custom User Groups**                 | ⏳ ETA July 31, 2025  |
+| **Project/Org filters in Scorecards**  | ⏳ ETA July 31, 2025  |
 
 :::
 
