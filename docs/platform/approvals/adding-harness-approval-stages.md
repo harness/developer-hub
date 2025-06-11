@@ -265,9 +265,48 @@ pipeline:
 
 </details>
 
-### Prevent approval by pipeline executor
+### Disallowed User Emails
 
-If you don't want the User that initiated the Pipeline execution to approve this step, select the **Disallow the executor from approving the pipeline** option. Even if the User is in the selected in User Group, they won't be able to approve this step.
+You can block users from approving this step by listing their email addresses under **Disallowed User Emails**. This applies to all execution types—manual runs and triggers from GitHub, GitLab, webhooks, etc.
+
+- Supports:
+- You can provide a fixed list of emails  
+- You can use a single JEXL expression (e.g. `<+payload.pusher.email>`) or combined JEXL expressions (e.g. `<+payload.pusher.email> + <+payload.pusher.email>`) 
+- You can supply a runtime input (`<+input>`) 
+
+You cannot mix fixed values and expressions.
+
+<details>
+<summary>Example: Git-triggered disallow</summary>
+
+A Git push event arrives with payload:
+
+```yaml
+{
+  "pusher": {
+    "name": "User-1",
+    "email": "user-1@gmail.com"
+  }
+}
+```
+
+In your pipeline YAML, reference the committer’s email:
+
+```yaml
+approvers:
+  # …other approver config…
+  disallowedUserEmails: <+payload.pusher.email>
+```
+
+When `user-1@gmail.com` logs in and views that execution, they will be prevented from approving.
+</details>
+
+### Prevent executor approval
+
+Enable **Disallow the executor from approving the pipeline** to stop the user who started a **manual** run from approving it—even if they’re in an allowed group.
+
+- Only applies to manual executions (not webhook/Git triggers).  
+- If you need to block more than just the executor, such as a specific list of users or dynamically resolved emails in manual runs, use **Disallowed User Emails** instead.
 
 ### Approver inputs
 
