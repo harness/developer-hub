@@ -157,9 +157,11 @@ We've given this role access to **All non-internal indexes**. However, we could 
 For secrets and other sensitive settings, select or create a new [Text Secret.](/docs/platform/secrets/add-use-text-secrets)
 :::
 
-:::info
+:::warning
 
-You may need to use an HEC token. This token will be used only for data ingestion.
+The HEC authentication method works for data ingestion only. If you wish to fetch data, please use username and password authentication. 
+
+If you use HEC authentication, you will not be able to use Harness Continuous Verification since that relies on data fetching. 
 
 :::
 
