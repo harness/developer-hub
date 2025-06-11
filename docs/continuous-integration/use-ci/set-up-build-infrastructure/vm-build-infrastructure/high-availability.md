@@ -10,7 +10,7 @@ In order to use this feature, please ensure that you are using [drone runner](ht
 
 ## Architecture
 
-  ![](../static/HA_architecture.png)
+  ![](../static/Ha_architecture.png)
 
 ## Setup
 
