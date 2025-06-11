@@ -19,6 +19,22 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 
 
+## June 2025
+
+### Version: 1.33.0 , Plugin Version: 0.39.0
+
+#### New features and enhancements
+
+- Registry domain URLs for artifacts stored in Docker registries, including GCR, ECR, ACR, JFrog Self-Hosted (On-Prem), and Kubernetes registries (Self-Hosted), no longer need to be specified, as the domain is already included in the connector URL. In all SCS steps, only the image name is required.
+
+- Removed delegate selectors as a mandatory field from the API configuration for setting up the VM infra in [RSPM pipeline infra](https://apidocs.harness.io/tag/PipelineInfraConfig) configuration.([ZD-81509](https://harnesssupport.zendesk.com/agent/tickets/81509))
+
+
+#### Fixed Issues
+
+- Fixed an issue where dependency searches across projects were incomplete, making it hard to assess zero-day attacks.([ZD-84422](https://harnesssupport.zendesk.com/agent/tickets/84422))
+
+
 ## May 2025
 
 ### Version: 1.31.0
@@ -32,8 +48,6 @@ These release notes describe recent changes to Harness Supply Chain Security.
 - Added [API support](https://apidocs.harness.io/tag/Integration-Step-Config) for the VM to configure step resources and settings (e.g., syft, cdxgen, CycloneDX, SPDX) at the account, org, or project level.
 
 - Added support for Vault integration in Harness Cloud to securely manage secrets during pipeline executions.
-
-- Registry domain URLs for artifacts stored in Docker registries, including JFrog Self-Hosted (On-Prem) and Kubernetes registries (Self-Hosted), no longer need to be specified, as the domain is already included in the connector URL. In all SCS steps, only the image name is required.
 
 
 #### Fixed Issues
