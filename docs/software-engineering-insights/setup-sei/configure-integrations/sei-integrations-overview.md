@@ -121,3 +121,14 @@ The integration status will change to Deleting. The deletion process is schedule
 :::warning
 Note that deleting an integration will impact all collections and profiles associated with it.
 :::
+
+## Data Backfill
+Data Backfill is the process of picking up older changes once the integration is completed.  Some older data may be necessary to pull proper creation times and other information from your integration. 
+
+By default, backfill operations are dependent on the integration that customers have set up.  Depth of the backfill and frequency are each independently controlled by each integration and its source material /integration process.
+
+In an example, Jira's data backfill may be **x # of days**, every **a # of days**, whereas Github would be **y # of weeks** every **b # of days**.  
+
+This would mean that Jira would have a history of **x days**, and would refresh that data rolling forward every **a # of days**.  This means historical data rolling forward would not be updated if it exceeds **x+1 days**.  (e.g., changes made to Jira objects older than that time frame may not make it to Harness.)
+
+This affects data in Collections and elsewhere in SEI.  If a customer requires a backfill of data that is custom to their needs, they are encouraged to open a ticket with our support team and we would be happy to assist in helping getting that information updated.
