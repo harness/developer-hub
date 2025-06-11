@@ -53,6 +53,17 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 ## June 2025
 
+### Version 1.83
+
+<!-- 2025-06-09 -->
+
+#### New features and enhancements
+- Improved error handling in CI steps by adding null safety checks for Pod and PodStatus objects to prevent `NullPointerException`. (CI-17294)
+- Added [**Secure Connect**](/docs/continuous-integration/secure-ci/secure-connect/) support for the Vault connector in the UI. (CI-17710, ZD-84099)
+
+#### Fixes issues
+- Resolved compatibility issues with the `gradle-build-cache-plugin` for Java 8. After the update, the plugin was verified to work with JDK 8, JDK 11, and JDK 17. (CI-15707)
+
 ### Version 1.82
 
 <!-- 2025-06-02 -->
