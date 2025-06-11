@@ -63,6 +63,14 @@ Under Artifact Location, specify the necessary details such as Artifact Source I
 
 You can also create and use a template for artifacts.
 
+:::info
+When you set **Artifact type = Other** for a private Docker registry, Harness does not auto-populate the PLUGIN_DOCKER_USERNAME or the full registry URL in the slot’s Full Image Name and Tag. To work around this, manually add:
+- PLUGIN_DOCKER_USERNAME: `<+secrets.getValue("account.ARTIFACTORY_SAAS_PROD_USERNAME")>`
+- PLUGIN_DOCKER_CONTAINER_NAME: `https://<your-registry-url>/<repository>/<image>:<tag>`
+
+in the Azure Deployment step so that your function can authenticate and pull the correct image.
+:::
+
 ## Azure Function Environments 
 
 Define the environment you want to use to deploy the Azure function.
