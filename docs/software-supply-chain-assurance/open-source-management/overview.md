@@ -1,8 +1,8 @@
 ---
-title: Overview
+title: SBOM Overview
 description: Understanding the process of generate and manage SBOMs with Harness SCS
 sidebar_position: 8
-sidebar_label: Overview
+sidebar_label:  SBOM Overview
 redirect_from:
 
 - /docs/software-supply-chain-assurance/sbom/overview

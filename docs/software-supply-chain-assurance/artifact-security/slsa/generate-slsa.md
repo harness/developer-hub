@@ -5,6 +5,7 @@ sidebar_position: 10
 redirect_from:
   - /tutorials/secure-supply-chain/generate-slsa
   - /docs/software-supply-chain-assurance/slsa/generate-slsa
+  -  /docs/category/comply-with-slsa
 ---
 
 import Tabs from '@theme/Tabs';

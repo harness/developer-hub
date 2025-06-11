@@ -1,5 +1,5 @@
 ---
-title: Label components from image
+title: How to detect base images in SBOM
 description: Track the deployment of your open-source components
 sidebar_level: How to detect base images in SBOM
 redirect_from:

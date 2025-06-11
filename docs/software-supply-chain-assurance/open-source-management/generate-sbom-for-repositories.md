@@ -81,14 +81,10 @@ Using SBOM Orchestration step you can generate the SBOM for both Container image
 ### Configure SBOM Drift
 
 
-This feature allows you to track changes in SBOMs by comparing against the last generated SBOM. It provides a detailed analysis of addition or removal of components and licenses, helping you manage and oversee repositories more effectively. However, this is optional and not required for SBOM generation. If you prefer not to detect changes in SBOMs, leave this option unchecked.
+This feature allows you to track changes in SBOMs by comparing them against a Git branch. It provides a detailed analysis of addition or removal of components and licenses, helps you manage and oversee repositories more effectively. You can configure the comparison to be between any two branches. For example, comparing a feature branch against the main branch to identify SBOM drift before merging. However, this is optional and not required for SBOM generation. If you prefer not to detect changes in SBOMs, simply leave this option unchecked.
 
-<DocImage path={require('./static/sbom-drift.png')} width="70%" height="70%" />
+<DocImage path={require('./static/sbom-drift-for-repo.png')} width="70%" height="70%" />
 
-
-:::info
-After you run the SBOM Orchestration step, the generated SBOM file is uploaded to the `/harness/sbom/{sbom_<sbom_orchestration_step_execution_id>}.json` path. You can also download the SBOM using [Harness APIs](https://apidocs.harness.io/tag/SBOM#operation/downloadSbomForArtifact).
-:::
 
 
 ## Run the pipeline
@@ -132,6 +128,14 @@ This example **Deploy** stage has two steps:
 </Tabs>
 
 </details>
+
+### Publish SBOM
+
+After you run the SBOM Orchestration step, you can download or publish SBOM through multiple ways depending on your workflow:
+
+- Via [Harness API](https://apidocs.harness.io/tag/SBOM#operation/downloadSbomForArtifact) 
+- Use the Download SBOM button available on the Code Repositories page.
+- Access the SBOM file directly from the pipeline output at the specified path `/harness/sbom/{sbom_<sbom_orchestration_step_execution_id>}.json`.
 
 ## Next steps
 
