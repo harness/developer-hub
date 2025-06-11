@@ -88,27 +88,12 @@ export default function AccessibilityPage() {
             </p>
             <ul>
               <li>
-                <Link to={`/doc/Harness_CI_CD_Platform_VPAT_Report_2025.pdf`}
+                <a href={`/doc/Harness_CI_CD_Platform_VPAT_Report_2025.pdf`}
                   className={styles.link}
+                  target="_blank"
                 >
-                  Harness CI CD Platform VPAT Report  
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`${baseUrl}/doc/Harness_CD_VPAT_Report.pdf`}
-                  className={styles.link}
-                >
-                  Harness CD VPAT Report
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`${baseUrl}/doc/Harness_CI_VPAT_Report.pdf`}
-                  className={styles.link}
-                >
-                  Harness CI VPAT Report
-                </Link>
+                  Harness CI/CD/Platform VPAT Report  
+                </a>
               </li>
               <li>
                 <Link
@@ -148,14 +133,6 @@ export default function AccessibilityPage() {
                   className={styles.link}
                 >
                   Harness Chaos Engineering VPAT Report
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`${baseUrl}/doc/Harness_Platform_VPAT_Report.pdf`}
-                  className={styles.link}
-                >
-                  Harness Platform VPAT Report
                 </Link>
               </li>
               <li>
