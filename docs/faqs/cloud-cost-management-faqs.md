@@ -454,9 +454,6 @@ We display anomalies at the most granular level of the hierarchy and intentional
 
 Before proceeding, please double-check whether you have configured a new connector specifically for that particular cloud service. If you have indeed set up a new connector, please be aware that our machine learning models may not yet have sufficient training data for accurately identifying anomalies. To obtain reliable anomaly results, we typically require a minimum of 14 days' worth of training data.
 
-### General AutoStopping rules
-
-This section addresses some frequently asked questions about [Harness intelligent cloud AutoStopping rules](../cloud-cost-management/4-use-ccm-cost-optimization/cluster-orchestrator/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules.md).
 
 #### What are the supported cloud services that AutoStopping works with?
 
@@ -475,15 +472,6 @@ AutoStopping provides several advantages, and it can work alongside Autoscaling 
 * AutoStopping uses real-time traffic as a signal for activity and usage, whereas Autoscaling relies on CPU/memory usage, which may not be an accurate representation of actual usage. 
 * AutoStopping has the ability to scale down the entire task count all the way to zero and back up again when new requests come in, while Autoscaling can only scale down to the minimum task replica count for that service. This means that leaving even a single task running per service can add up at scale, and AutoStopping can help reduce unnecessary costs.
 * Dependent services or resources that do not directly receive traffic can also be entirely scaled down to zero or shut down based on traffic received at any endpoint, which can significantly increase overall cost savings. For example, an ECS service with an RDS database located in the same or different cluster can be scaled down or shut down entirely based on traffic received, which is not possible with just native Autoscaling.
-
-#### How does AutoStopping work with on-demand load tests and off-shift/late-shift developers? How can they trigger load tests on a stopped resource?
-
-* AutoStopping will function with real-time requests for on-demand load tests as long as the traffic is HTTP-based; when new requests come, AutoStopping will warm up the necessary services in real-time.
-* There are two options for late-shift developers:
-	+ If you know the exact schedule ahead of time, you can use [Fixed schedules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rules-ectwo) to keep the service running during that time.
-	+ If the exact duration is unknown:
-		- You can use [ECG/heartbeat agent](../cloud-cost-management/4-use-ccm-cost-optimization/cluster-orchestrator/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/2-configure-ecg-for-auto-stopping-rules.md#configure-ecg) to keep the services up as long as needed by detecting process liveliness or HTTP endpoints that can report the progress of the workers.
-		- Alternatively, you can use our [API](https://harness.io/docs/api/tag/Cloud-Cost-AutoStopping-Fixed-Schedules) support to notify of service activity/idleness.
 
 #### Can I shut down entire clusters more easily than creating one rule per service?
 

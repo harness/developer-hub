@@ -149,7 +149,7 @@ The resource recommendations are based on the percentage of the buffer you set.
 
 ### Set CPU/Memory/Node count/Instance preferences
 
-See [Optimize Kubernetes Costs with Node Pool Recommendations](node-pool-recommendations.md).
+
 
 ### Sharing recommendations
 
