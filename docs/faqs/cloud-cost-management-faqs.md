@@ -456,7 +456,7 @@ Before proceeding, please double-check whether you have configured a new connect
 
 ### General AutoStopping rules
 
-This section addresses some frequently asked questions about [Harness intelligent cloud AutoStopping rules](../cloud-cost-management/4-use-ccm-cost-optimization/cluster-orchestrator/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-auto-stopping-rules.md).
+This section addresses some frequently asked questions about [Harness intelligent cloud AutoStopping rules](../cloud-cost-management/4-use-ccm-cost-optimization/cluster-orchestrator/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules.md).
 
 #### What are the supported cloud services that AutoStopping works with?
 

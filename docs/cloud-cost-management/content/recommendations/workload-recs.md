@@ -229,11 +229,6 @@ In the case of **absolute**, the utilization value is calculated as the followin
 
 which is equal to `0.4 + 0.4 + 0.4 = 1.2`
 
-### Next steps
-
-* [Optimize Kubernetes Costs with Node Pool Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations)
-* [Analyze Cost for Kubernetes Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
-
 ### See also
 
 The following blog post walks you through workload recommendations:
