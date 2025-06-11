@@ -29,7 +29,7 @@ These release notes describe recent changes to Harness Code Repository.
 
 #### New features and enhancements
 
-* Added Audit logs for force push.
+* Added Audit logs for force push to the default branch.
 * [PR dashboard](/docs/code-repository/pull-requests/prs-of-interest) enhancement.
 
 ## May 2025
