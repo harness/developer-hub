@@ -24,12 +24,18 @@ Before beginning the walkthroughs in this guide, ensure you have:
 
 ### 1. Create a Liquibase changelog
 
-:::info Note
-If you already use liquibase, you can skip to the section Configuring Your DB Schema.
+:::info Important Note
+If you're new to Liquibase, there are two main ways to create your initial changelog:
+
+1. Use existing SQL files – Recommended if you already manage your schema through SQL scripts.
+2. Generate a changelog – Auto-generate a changelog by diffing an existing database.
+For more details on both options, refer to [How to Build a Changelog guide](https://developer.harness.io/docs/database-devops/use-database-devops/get-started/build-a-changelog/).
+
+If you already use liquibase, you can skip to the section [Configuring Your DB Schema](#2-configure-your-database-schema).
 :::
 
 1. Create Git Repo to store your DB schema files.
-2. Under repo, create folder sql/ and add ordered *.sql files
+2. Under repo, create folder sql/ and add ordered `*.sql` files
 3. Add changelog.yml at root with:
 
 ```yml
@@ -37,6 +43,7 @@ databaseChangeLog:
   - includeAll:
       path: sql
 ```
+Use semantic versioning in file names (e.g., "V1__init.sql", "V2__add_table.sql") for clarity and consistency.
 :::info tip
 Use semantic file names ("V1__init.sql", "V2__add_table.sql").
 :::
