@@ -4,45 +4,29 @@ description: Use a run step to revert git commit(s).
 sidebar_position: 35
 ---
 
-You might need to revert a pull request in a Git repository if the changes cause problems, introduce bugs, or become unnecessary. The following example shows how to use a **Run** step to revert a git commit:
+You might need to revert a pull request in a Git repository if the changes cause problems, introduce bugs, or become unnecessary. Harness CI supports native git revert using the [drone-git-revert-commit plugin](https://github.com/harness-community/drone-git-revert-commit), which simplifies the process compared to running manual git commands in a **Run** step.
+
+## Using the git-revert-commit plugin
+
+Here is an example of a **Plugin** step that reverts a git commit based on the commit SHA in the pipeline context:
 
 ```yaml
-            - step:
-                  type: Run
-                  name: rollback
-                  identifier: rollback
-                  spec:
-                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
-                    image: alpine/git
-                    shell: Sh
-                    command: |-
-                      git config --global user.email "GIT_USER_EMAIL"
-                      git config --global user.name "GIT_USER_NAME"
-                      git config --global --add safe.directory /harness
-                      git config --global credential.helper 'cache --timeout 600'
-                      << eof tr -d ' ' | git credential-cache store 
-                        protocol=https
-                        host=GIT_HOST_URL
-                        username="GIT_USER_ID"
-                        password=<+secrets.getValue("YOUR_HARNESS_GIT_PAT_SECRET")>
-                      eof
-                      git pull origin main
-                      echo "Last Commit"
-                      git rev-parse HEAD
-                      git revert -m 1 <+codebase.commitSha>
-                      echo "Restored Commit"
-                      git rev-parse HEAD
-                      git push --set-upstream origin main
-                  when:
-                    stageStatus: Failure
+- step:
+    type: Plugin
+    name: Git Revert Commit
+    identifier: git_revert_commit
+    spec:
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+      image: plugins/git-revert-commit:linux-amd64
+      settings:
+        git_pat: <+secrets.getValue("YOUR_GIT_PAT_SECRET")>
+        commit_sha: <+codebase.commitSha>
 ```
 
 :::note
-- The Git PAT should have read/write permissions to the repository and webhook creation.
-- For `host`, you can use **github.com** for GitHub, **git.harness.io** for Harness Code Repository, **gitlab.com** for GitLab, etc.
-- The above example shows a single Git commit revert. If you want to revert multiple commits, you need to modify the script.
+The plugin requires a Git Personal Access Token (PAT) with read/write permissions to the repository.
 :::
 
-This **Run** step, named `rollback`, runs when a previous step fails. It uses the `alpine/git` Docker image to configure Git, pull the latest changes from the `main` branch, revert the latest commit, and push the changes back to the `main` branch.
+For more configuration options, see the [plugin README](https://github.com/harness-community/drone-git-revert-commit/blob/main/README.md).
 
 [This guide](../../development-guides/security/git_revert_from_pr) shows how to use a similar script to revert a commit from a PR based on security scan results.
