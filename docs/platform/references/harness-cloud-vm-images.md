@@ -28,11 +28,111 @@ For detailed specifications of each image, including available preinstalled soft
 
 **You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
 
-### Checking software versions
+## Pre-installed Software Version Management
+
+### Specify versions
+
+If a Harness Cloud image has multiple versions of a tool pre-installed, you can specify the version that you want to use in a step's **Command**. For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to select an Xcode version:
+
+```
+sudo xcode-select -switch /Applications/Xcode_15.1.0.app
+```
+
+:::warning
+
+Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, make sure you [lock versions](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
+
+:::
+
+### Lock versions or install additional tools
+
+If your build requires a specific version of a tool or you need to use a version/tool that isn't pre-installed on the [Harness Cloud image](#platforms-and-image-specifications), you must add a step (such as a [Run step](/docs/continuous-integration/use-ci/run-step-settings) or [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/)) to install the version/tool directly on the build machine or run a Docker image that has the required version/tool.
+
+When installing additional tools, run `apt-get update` before installing new software that might not be in the packages list.
+
+<details>
+<summary>Example: Use an Action step to setup Java</summary>
+
+In the following YAML example, an [Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to install a Java version, and then the **Run** step confirms the Java version.
+
+```yaml
+            steps:
+              - step:
+                  identifier: install_java
+                  name: intall java version 17
+                  type: Action
+                  spec:
+                    uses: actions/setup-java@v3
+                    with:
+                      distribution: 'temurin'
+                      java-version: '16'
+              - step:
+                  identifier: java_ver_check
+                  name: java version check
+                  type: Run
+                  spec:
+                    shell: Bash
+                    command: |
+                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
+                      if [[ $JAVA_VER == 16 ]]; then
+                        echo successfully installed $JAVA_VER
+                      else
+                        exit 1
+                      fi
+```
+
+:::tip
+
+You can also use the [Bitrise step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin) to run Bitrise Workflow Steps in your CI pipelines.
+
+:::
+
+</details>
+
+<details>
+<summary>Example: Use a Docker image</summary>
+
+The following YAML example demonstrates how a **Run** step can use a Docker image to leverage tools that are available on the image without having to install them on the build machine.
+
+```yaml
+    - stage:
+        name: Print welcome message
+        identifier: welcome_message
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform: ## Platform properties describe the target machine required by this stage.
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud ## This build runs on Harness-provided infrastructure.
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Welcome
+                  identifier: Welcome
+                  spec:
+                    connectorRef: my_docker_hub  ## Specify a Docker connector to pull an image from Docker.
+                    image: alpine ## If no image is specified, the step runs on the host machine.
+                    shell: Sh
+                    command: Echo "Welcome to Harness CI"
+```
+
+:::info
+
+Steps running in containers can't communicate with [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/) running on Harness Cloud build infrastructure because they don't have a common host.
+
+:::
+
+</details>
+
+### Verifying software versions
 
 To see the exact versions of preinstalled software on each image, check the detailed specifications in the [Harness Cloud documentation](https://github.com/wings-software/harness-docs/tree/main/harness-cloud). Each image type has its own README file with current software versions and installation details.
 
-You can also check software versions during your pipeline execution:
+Alternatively, if you prefer verifying software versions within your pipeline, refer to the following sample:
 
 ```yaml
 pipeline:
@@ -205,6 +305,8 @@ Harness VM images use a versioning system to help you balance between getting th
 To ensure stable production deployments while still benefiting from the latest updates, we recommend the following approach:
 
 Use the `latest` image tag for development, feature branches, and testing pipelines. Use `latest-1` for production pipelines to ensure stability.
+
+To simplify the rollout and management of image tag updates across environments, define your image tag as [a variable at the Account, Org, Project, or Pipeline level](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/) in Harness.
 
 #### Migration Process
 
