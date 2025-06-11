@@ -1312,7 +1312,7 @@ const sidebars: SidebarsConfig = {
       "cloud-cost-management/get-started/overview",
       {
         type: "category",
-        label: "Onboarding",
+        label: "Get Started",
         link: {
           type: "generated-index",
         },
