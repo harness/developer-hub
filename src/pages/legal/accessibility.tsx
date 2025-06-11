@@ -88,6 +88,13 @@ export default function AccessibilityPage() {
             </p>
             <ul>
               <li>
+                <Link to={`/doc/Harness_CI_CD_Platform_VPAT_Report_2025.pdf`}
+                  className={styles.link}
+                >
+                  Harness CI CD Platform VPAT Report  
+                </Link>
+              </li>
+              <li>
                 <Link
                   to={`${baseUrl}/doc/Harness_CD_VPAT_Report.pdf`}
                   className={styles.link}
