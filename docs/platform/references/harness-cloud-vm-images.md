@@ -4,7 +4,7 @@ description: Reference for VM images on Harness Cloud Machines
 sidebar_position: 4
 ---
 
-Harness-hosted VM images are available for multiple operating systems and architectures, providing you with a clean, consistent environment for building, testing, and deploying your applications. Each job runs on a fresh virtual machine instance, ensuring isolation and preventing interference between builds.
+Harness-hosted VM images are available for multiple operating systems and architectures, providing you with a clean, consistent environment for building, testing, and deploying your applications. Each job runs on a fresh virtual machine instance, ensuring isolation and preventing interference among builds.
 
 For comprehensive details about what's included in each VM image, including installed software, tool versions, and system specifications, refer to [this repository](https://github.com/wings-software/harness-docs/tree/main/harness-cloud).
 
@@ -24,9 +24,7 @@ Harness provides VM images for multiple operating systems and architectures:
 
 Harness-hosted VM images include a comprehensive set of preinstalled software packages, development tools, and runtime environments. This eliminates the need to install common dependencies during your pipeline execution, significantly reducing build times.
 
-For detailed specifications of each image, including available preinstalled software and versions, see the [Harness Cloud documentation](https://github.com/wings-software/harness-docs/tree/main/harness-cloud).
-
-**You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
+**You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker containers.
 
 ## Pre-installed Software Version Management
 
@@ -238,8 +236,6 @@ steps:
       name: Install Dependencies
       identifier: install_deps
       spec:
-        connectorRef: account.harnessImage-1.0
-        image: harness/ci-addon:latest-1
         command: |
           # Ubuntu/Debian
           sudo apt-get update
@@ -263,8 +259,6 @@ steps:
       name: Install Language Packages
       identifier: install_lang_packages
       spec:
-        connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-        image: harness/ci-addon:latest
         command: |
           # Node.js packages
           npm install -g your-package
@@ -287,8 +281,6 @@ Installing software during pipeline execution increases build time. Consider the
 - Cache dependencies between builds when available
 - Consider creating custom Docker images for complex dependencies
 - Use specific tool versions that are already preinstalled
-
-For comprehensive details about what's included in each VM image, including installed software, tool versions, and system specifications, refer to the [Harness Cloud image documentation](https://github.com/wings-software/harness-docs/tree/main/harness-cloud).
 
 ## Image Versioning and Best Practices
 
