@@ -2,21 +2,25 @@
 id: locust-loadgen
 title: Locust loadgen
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen
-- /docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen-chaos
-- /docs/chaos-engineering/chaos-faults/load/locust-loadgen-chaos
+  - /docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen
+  - /docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen-chaos
+  - /docs/chaos-engineering/chaos-faults/load/locust-loadgen-chaos
 ---
+
 Locust loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
+
 - Slows down or makes the target host unavailable due to heavy load.
 - Checks the performance of the application or process running on the instance.
 
 ![Locust Loadgen Chaos](./static/images/locust-loadgen-chaos.png)
 
 ## Use cases
+
 - Locust loadgen fault determines the resilience of an application under heavy load.
 - It determines how quickly the target application recovers from such a failure.
 
 ### Prerequisites
+
 - Kubernetes > 1.17 is required to execute this fault.
 - The target host should be accessible.
 - Kubernetes ConfigMap that contains the `config.py` file is required. This file is used as a locust file to generate load in the `CHAOS_NAMESPACE`. Below is a sample ConfigMap:
@@ -42,7 +46,6 @@ data:
 If you change the `config.py` file, ensure that you update the `CONFIG_MAP_FILE` environment variable in the chaos experiment with the new name.
 :::
 
-
 ### Mandatory tunables
 
    <table>
@@ -59,6 +62,7 @@ If you change the `config.py` file, ensure that you update the `CONFIG_MAP_FILE`
     </table>
 
 ### Optional tunables
+
    <table>
         <tr>
             <th> Tunable </th>
@@ -122,6 +126,42 @@ If you change the `config.py` file, ensure that you update the `CONFIG_MAP_FILE`
         </tr>
     </table>
 
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: locust-loadgen
+spec:
+  definition:
+    scope: Namespaced # Supports "Cluster" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets"]
+    verbs: ["get", "list", "watch"]
+```
 
 ### Target host
 
@@ -129,7 +169,8 @@ It specifies the value of the target host. Tune it by using the `HOST` environme
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/locust-loadgen-chaos/host.yaml yaml)
+[embedmd]: # "./static/manifests/locust-loadgen-chaos/host.yaml yaml"
+
 ```yaml
 # generate load on the target host
 apiVersion: litmuschaos.io/v1alpha1
@@ -140,12 +181,12 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: locust-load-generator
-    spec:
-      components:
-        env:
-        - name: HOST
-          value: 'https://www.google.com'
+    - name: locust-load-generator
+      spec:
+        components:
+          env:
+            - name: HOST
+              value: "https://www.google.com"
 ```
 
 ### Number of users
@@ -154,7 +195,8 @@ It specifies the number of users or workers involved in the load generation. Tun
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/locust-loadgen-chaos/users.yaml yaml)
+[embedmd]: # "./static/manifests/locust-loadgen-chaos/users.yaml yaml"
+
 ```yaml
 # provid number of users for loadgen
 apiVersion: litmuschaos.io/v1alpha1
@@ -165,14 +207,14 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: locust-load-generator
-    spec:
-      components:
-        env:
-        - name: USERS
-          value: '100'
-        - name: HOST
-          value: 'https://www.google.com'
+    - name: locust-load-generator
+      spec:
+        components:
+          env:
+            - name: USERS
+              value: "100"
+            - name: HOST
+              value: "https://www.google.com"
 ```
 
 ### Custom load image
@@ -181,7 +223,8 @@ It specifies the rate at which users are spawned per second. Tune it by using th
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/locust-loadgen-chaos/load-image.yaml yaml)
+[embedmd]: # "./static/manifests/locust-loadgen-chaos/load-image.yaml yaml"
+
 ```yaml
 # provid a custom image for load generation
 apiVersion: litmuschaos.io/v1alpha1
@@ -192,12 +235,12 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: locust-load-generator
-    spec:
-      components:
-        env:
-        - name: LOAD_IMAGE
-          value: 'chaosnative/locust-loadgen:latest'
+    - name: locust-load-generator
+      spec:
+        components:
+          env:
+            - name: LOAD_IMAGE
+              value: "chaosnative/locust-loadgen:latest"
 ```
 
 ### Spawn rate
@@ -206,7 +249,8 @@ It specifies the custom image name of the load generated. Tune it by using the `
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/locust-loadgen-chaos/spawn-rate.yaml yaml)
+[embedmd]: # "./static/manifests/locust-loadgen-chaos/spawn-rate.yaml yaml"
+
 ```yaml
 # provid number of spawn users at (users per second)
 apiVersion: litmuschaos.io/v1alpha1
@@ -217,12 +261,12 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: locust-load-generator
-    spec:
-      components:
-        env:
-        - name: SPAWN_RATE
-          value: '100'
-        - name: HOST
-          value: 'https://www.google.com'
+    - name: locust-load-generator
+      spec:
+        components:
+          env:
+            - name: SPAWN_RATE
+              value: "100"
+            - name: HOST
+              value: "https://www.google.com"
 ```

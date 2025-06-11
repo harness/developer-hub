@@ -6,6 +6,7 @@ redirect_from:
 ---
 
 K6 loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
+
 - Slows down or makes the target host unavailable due to heavy load.
 - Checks the performance of the application or process running on the instance.
 - Supports [various](https://grafana.com/docs/k6/latest/testing-guides/test-types/) types of load testing (ex. spike, smoke, stress)
@@ -13,25 +14,28 @@ K6 loadgen fault simulates load generation on the target hosts for a specific ch
 ![k6 Loadgen Chaos](./static/images/k6-loadgen.png)
 
 ## Use cases
+
 - Simulate high traffic to test the performance and reliability of RESTful APIs.
 - Automate performance testing in CI/CD pipelines to catch regressions early.
 - Evaluate the behavior of web applications under heavy user loads.
 - Continuously monitor cloud infrastructure performance by generating synthetic traffic.
 
 ### Prerequisites
+
 - Kubernetes > 1.17 is required to execute this fault.
 - The target host should be accessible.
 - Ensure to create a Kubernetes secret that contains the javascript (JS) file within the Chaos Infrastructure's namespace. The easiest way to create a secret object is as follows::
 
 An example of the JS file is as follows:
+
 ```javascript
-import http from 'k6/http';
-import { check, sleep } from 'k6';
+import http from "k6/http";
+import { check, sleep } from "k6";
 
 export default function () {
-  let res = http.get('https://google.com');
+  let res = http.get("https://google.com");
 
-  check(res, { 'status is 200': (r) => r.status === 200 });
+  check(res, { "status is 200": (r) => r.status === 200 });
 
   sleep(0.3);
 }
@@ -63,6 +67,7 @@ kubectl create secret generic k6-script \
     </table>
 
 ### Optional tunables
+
    <table>
         <tr>
             <th> Tunable </th>
@@ -86,6 +91,42 @@ kubectl create secret generic k6-script \
         </tr>
     </table>
 
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: k6-loadgen
+spec:
+  definition:
+    scope: Namespaced # Supports "Cluster" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets"]
+    verbs: ["get", "list", "watch"]
+```
 
 ### K6 Secret
 
@@ -93,7 +134,8 @@ It defines the secret and key names for the k6 load generation script. You can a
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/k6-loadgen-chaos/k6-secret.yaml yaml)
+[embedmd]: # "./static/manifests/k6-loadgen-chaos/k6-secret.yaml yaml"
+
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -103,14 +145,14 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: k6-load-generator
-    spec:
-      components:
-        env:
-        - name: SCRIPT_SECRET_NAME
-          value: 'k6-script'
-        - name: SCRIPT_SECRET_KEY
-          value: 'script.js'
+    - name: k6-load-generator
+      spec:
+        components:
+          env:
+            - name: SCRIPT_SECRET_NAME
+              value: "k6-script"
+            - name: SCRIPT_SECRET_KEY
+              value: "script.js"
 ```
 
 ### Custom load image
@@ -119,7 +161,8 @@ Image of the k6 load generator. Tune it by using the `LOAD_IMAGE` environment va
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/k6-loadgen-chaos/load-image.yaml yaml)
+[embedmd]: # "./static/manifests/k6-loadgen-chaos/load-image.yaml yaml"
+
 ```yaml
 # provid a custom image for load generation
 apiVersion: litmuschaos.io/v1alpha1
@@ -130,10 +173,10 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: k6-load-generator
-    spec:
-      components:
-        env:
-        - name: LOAD_IMAGE
-          value: ghcr.io/grafana/k6-operator:latest-runner
+    - name: k6-load-generator
+      spec:
+        components:
+          env:
+            - name: LOAD_IMAGE
+              value: ghcr.io/grafana/k6-operator:latest-runner
 ```
