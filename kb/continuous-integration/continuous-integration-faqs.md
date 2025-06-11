@@ -1677,7 +1677,9 @@ If you are using Harness Cloud, please note that anonymous pulls will be tied to
 
 In order to resolve these issues, customers should look to enable `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature with our support team to allow teams to select the `Base Image connector` that would be utilized to pull the image.  Please keep in mind the rules regarding Docker API versions for the Docker Registry URL (Please see the above [information that goes into detail about how and why this occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls))
 
-Please note also that you may still see a "You have reached your **unauthenticated** pull rate limit." message as a failure in reaching the Docker API defaults back to attempting an unauthenticated request.
+In **most cases** customer should set up a Docker Connector utilizing the `https://index.docker.io/v1` registry URL for Harness Cloud builds.
+
+Please also note that if you receive a "You have reached your **unauthenticated** pull rate limit." message even after setting up a `Base Image Connector`, this indicates a failure in resolving the JWT token, which causes the pull to default back to attempting an unauthenticated request.
 
 #### Docker Connector with Valid Credentials but using a Private Registry/Improper configuration
 Customers may encounter the `toomanyrequests: You have reached your unauthenticated pull rate limit.` error for their Build and Push steps (ECR, Docker, etc) despite having a valid Docker Connector set and credentials.  
