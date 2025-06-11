@@ -17,7 +17,7 @@ import { MODULES } from "@site/src/constants";
             module: MODULES.ccm,
             description:
               "Learn the basic concepts of Harness Cloud Cost Management and how to set up CCM for your cloud accounts.",
-            link: "docs/cloud-cost-management/get-started/onboarding-guide/use-quick-create-k8s.md",
+            link: "docs/cloud-cost-management/get-started/onboarding-guide/use-quick-create-k8s",
           },
           {
             title: "Overview",
