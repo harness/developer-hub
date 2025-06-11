@@ -29,4 +29,4 @@ The plugin requires a Git Personal Access Token (PAT) with read/write permission
 
 For more configuration options, see the [plugin README](https://github.com/harness-community/drone-git-revert-commit/blob/main/README.md).
 
-[This guide](../../development-guides/security/git_revert_from_pr) shows how to use a similar script to revert a commit from a PR based on security scan results.
+[This guide](../../development-guides/security/git-revert-from-pr) shows how to use a similar script to revert a commit from a PR based on security scan results.
