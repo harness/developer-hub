@@ -55,6 +55,44 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## June 2025
 
+### Version 1.93.1
+
+#### New Features and Enhancements
+
+- Harness now supports **AWS OIDC connectors** for plugin-based steps, provisioners, manifest/artifact sources, and deployment swimlanes. (**CDS-101391, CDS-106108**)
+
+  **Newly supported AWS OIDC connector categories:**
+
+    | Connector Category               | Supported with AWS OIDC Connector                                            |
+    |----------------------------------|-------------------------------------------------------------------------------|
+    | **Deployment Swimlanes**         | AWS Serverless Lambda deployments                                             |
+    | **Plugin-based Steps**           | Serverless V2, AWS SAM, AWS CDK
+    | **Delegate-based Connections**   | SSH, WinRM, Spot, AWS ASG, AWS Lambda|
+    | **Provisioners**                 | CloudFormation provisioner, CDK provisioner, Terraform Cloud provisioner, Terragrunt provisioner |
+    | **Manifest & Artifact Sources**  | AMI Artifact, ECR Artifact, S3 Artifact, S3 Manifest                          |
+
+- Harness now supports **hashing of config-map and secret manifests for Kubernetes workloads under declarative rollback**, ensuring that updates to consumed configmaps or secrets trigger a redeployment even when the deployment spec itself hasn’t changed. Currently, this feature is behind the feature flag `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-83583, ZD-73074,75453**)
+
+- Harness now supports [**Project-Level Pipeline Execution Concurrency**](/docs/platform/pipelines/pipeline-settings/#project-level-pipeline-execution-concurrency), where users can split their account-wide concurrency into High-Priority and Low-Priority partitions—reserving slots for critical projects. Currently, this feature is behind the feature flag `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-15840**)
+
+- Harness now supports **filtering pipeline executions by build ID**, enabling users to quickly locate a specific run without endless scrolling. Currently, this feature is behind the feature flag `PIPE_EXECUTION_ID_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-25317**)
+
+#### Fixed Issues
+
+- Previously, the ASG Wait for Steady State step did not handle failed statuses returned by the AWS Instance Refresh API, causing it to continue polling indefinitely. The issue is resolved, and failed statuses now cause the step to terminate with an appropriate error. (**CDS-110706**)
+- Previously, Custom stages failed with a `metadata.labels` error if the project name exceeded 63 characters, while Build and Deploy stages handled this by truncating the label. The issue is resolved, Custom stages now apply the same truncation logic. (**CDS-110662,ZD-85208**)
+- Previously, pipelines managed by GitX attempted to fetch templates from the same branch as the pipeline repo, even when the templates were pinned to a specific branch in a different repository. This caused errors during save operations. The issue is resolved. (**PIPE-27304, ZD-84677**)
+- Previously, pipeline names containing spaces, dots, or certain special characters were allowed via the UI but rejected by the Terraform provider due to a stricter regex validation. The issue is resolved, and naming behavior is now consistent across both interfaces. (**PIPE-27138, ZD-84288**)
+- Previously, interactions with GitHub App authentication intermittently failed when using a delegate, disrupting pipeline execution for users fetching values from GitHub. The issue is resolved. (**CDS-109205, ZD-83974**)
+- Previously, pipelines failed intermittently due to a backend `NullPointerException`, resulting in inconsistent execution behavior. The issue is resolved. (**CDS-107827, ZD-80021**)
+- Previously, values resolved via ImagePullSecretFunctor for artifact sources other than ECR were exposed in delegate console logs. The issue is resolved, and these values are now masked to prevent data leakage. (**CDS-103019**)
+- Previously, when using an Azure Function stage template, the preExecution command configured as a runtime input did not prompt for input during pipeline execution, limiting customization. The issue is resolved. (**CDS-110718, ZD-85305**)
+- Previously, the notification template in the pipeline Notify panel would load indefinitely when accessed from the Org-level Pipeline Template view. The issue is resolved. (**PIPE-27505**)
+- Previously, pipelines failed to list service artifacts at runtime if the service was defined in a different Git branch than the pipeline, even when the gitBranch parameter was correctly set. The issue is resolved. (**CDS-110626, ZD-84626**)
+- Previously, AWS Lambda deployments using custom artifacts could fail with a `Not Support ArtifactConfig Type` error on subsequent runs, even when no pipeline changes were made. This issue is resolved. To ensure repeatable deployments, include a pre-deployment step that uploads the ZIP artifact to the designated S3 bucket before each run. (**CDS-110885, ZD-85636**)
+- Previously, Lambda deployments could result in multiple versions of a function being created during a single deployment. This occurred because a new version was published both after the code update and again after the configuration update. This issue is resolved. Only one version is now published per deployment. (**CDS-110848, ZD-85470**)
+- Previously, pipeline templates could incorrectly reference the main branch instead of the configured branch when using remote templates. This caused unexpected behavior during reconcile, such as incorrect field injections and blocked pipeline usage. The issue is resolved. (**PIPE-27676, ZD-85736**)
+
 ### GitOps Version 1.34.1, GitOps Agent Version 0.95.0
 
 #### New Features and Enhancements
@@ -119,7 +157,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Multiple high severity vulnerabilities have been found and fixed. (**CDS-107721**, **ZD-79011**)
 
-### Version 1.91.3
+### Version 1.91.5
 
 #### New Features and Enhancements
 
