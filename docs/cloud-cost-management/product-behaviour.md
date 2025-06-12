@@ -14,7 +14,7 @@ Harness offers two primary licensing tiers for Cloud Cost Management: **Free For
 ### Plan Comparison
 
 :::note
-- **If Your Cloud Spend Exceeds $250K/month**: the Free Forever plan is not supported. 
+- **If Your Cloud Spend Exceeds $250K/month**, you must upgrade to an Enterprise plan. The Free Forever plan is limited to organizations with less than $250K/month in cloud spend.
 - **If Your Cloud Spend is Under $250K/month**: CCM remains accessible on the Free Forever plan, but with certain limitations and adjustments. 
 
 :::
