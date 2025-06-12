@@ -1450,7 +1450,7 @@ const sidebars: SidebarsConfig = {
       },
       {
         type: "html",
-        value: '<span style="color:#000000; font-weight:1000;"> CCM Resources</span>',
+        value: '<span style="color:#000000; font-weight:1000;">Troubleshooting & Resources</span>',
         className: "horizontal-bar",
       },
       "cloud-cost-management/whats-supported",
