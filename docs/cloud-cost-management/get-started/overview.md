@@ -13,7 +13,7 @@ redirect_from:
 
 Understanding and managing cloud costs is essential, especially as environments grow more complex. While most tools offer insights by project, service, or tags, they fall short for DevOps teams who need visibility into namespaces, nodes, pods, and other granular resources.
 
-Traditional cost tools are built for monthly CFO-level reporting—not for the engineers actually using the resources. Harness Cloud Cost Management (CCM), formerly Continuous Efficiency, puts cost visibility directly in the hands of engineers and DevOps, offering hourly insights into resource consumption across deployments and clusters.
+Traditional cost tools are built for monthly CFO-level reporting, not for the engineers actually using the resources. **Harness Cloud Cost Management (CCM)** puts cost visibility directly in the hands of engineers and DevOps, offering hourly insights into resource consumption across deployments and clusters.
 
 ### Visual Summary
 <DocVideo src="https://www.youtube.com/watch?v=xnbTUNet5gw" />
