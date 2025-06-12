@@ -25,7 +25,7 @@ Each of the cluster's components is exposed, along with its costs.
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md).
    
      ![](./static/perform-root-cost-analysis-24.png)
 3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
@@ -63,7 +63,7 @@ The cost of each Kubernetes namespace in the cluster.
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md).
    
      ![](./static/perform-root-cost-analysis-28.png)
 3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
@@ -83,7 +83,7 @@ The cost of each Kubernetes workload or ECS service. You can see the workload ty
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md).
 
   ![](./static/perform-root-cost-analysis-32.png)
 3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
@@ -108,7 +108,7 @@ The cost details of a node provide:
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md).
      
 	  ![](./static/perform-root-cost-analysis-36.png)
 3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
@@ -143,7 +143,7 @@ To perform root cost analysis on Harness Applications and subordinate components
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md).
    
      ![](./static/perform-root-cost-analysis-40.png)
 3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
@@ -164,7 +164,7 @@ Services represent your microservices and applications. These are your microserv
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md).
    
      ![](./static/perform-root-cost-analysis-44.png)
 3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
@@ -184,7 +184,7 @@ Environments organize and name the deployment infrastructures in your cloud plat
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md).
    
      ![](./static/perform-root-cost-analysis-48.png)
 3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
@@ -204,7 +204,7 @@ Storage represents the cost of the persistent volumes present in your Kubernetes
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md).
    
    
    ![](./static/perform-root-cost-analysis-52.png)
@@ -244,7 +244,7 @@ The storage costs are displayed:
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md).
    
      ![](./static/perform-root-cost-analysis-56.png)
 3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
@@ -264,7 +264,7 @@ The cost of each product in the cluster.
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md).
    
      ![](./static/perform-root-cost-analysis-60.png)
 3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.
@@ -284,7 +284,7 @@ The cost of each Kubernetes label.
 The following steps take you through the process.
 
 1. Navigate to **Cloud Cost Management** module and click **Perspectives.**
-2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md).
+2. Click the Perspective with your clusters as Data Sources, for which you want to analyze the cost**.** Perspectives provide a single-pane view of the costs for different products, for example, clusters, applications, AWS, GCP, and Azure. See [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md).
    
      ![](./static/perform-root-cost-analysis-64.png)
 3. Select the **date range** for the costs you want to analyze. You can either click **Select custom range** to customize the date range or select an option from the pre-defined list.

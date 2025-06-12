@@ -87,5 +87,5 @@ Perform the following steps to add filters.
 
 ### Next Steps
 
-* [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md)
+* [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.md)
 

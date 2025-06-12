@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness CCM Budgets allow you to set custom budgets and receive alerts when your costs exceed (or are forecasted to exceed) your budget. Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, [create a new Perspective](create-cost-perspectives.mdives.md) and then proceed to set a budget.
+Harness CCM Budgets allow you to set custom budgets and receive alerts when your costs exceed (or are forecasted to exceed) your budget. Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, [create a new Perspective](create-cost-perspectives.md) and then proceed to set a budget.
 
 This topic describes how to create a new budget.
 
@@ -18,7 +18,7 @@ This topic describes how to create a new budget.
 You can add multiple budgets for a single Perspective.
 :::
 Perform the following steps to create a budget:
-1. If you do not have a Perspective of the resources you would like to budget, [create a new Perspective](create-cost-perspectives.mdives.md) and then proceed to set a budget.
+1. If you do not have a Perspective of the resources you would like to budget, [create a new Perspective](create-cost-perspectives.md) and then proceed to set a budget.
    After creating a Perspective, in **Perspective Builder**, click **Next**.
 2. If you wish to set a budget for an existing Perspective, select the Perspective for which you want to set a budget, and click **Edit**.
      <DocImage path={require('./static/create-a-budget-perspective-06.png')} width="50%" height="50%" title="Click to view full size image" />
