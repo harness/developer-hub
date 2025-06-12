@@ -62,7 +62,7 @@ Depending on your feature choice, do the following configuration steps.
 <TabItem value="Metric Packs">
 
 8. In **Find a Dynatrace service**, enter the name of the desired Dynatrace service. This Dynatrace service must be marked as a [key request](https://docs.dynatrace.com/docs/observe/applications-and-microservices/services/analysis/monitor-key-requests) in order to appear in this dropdown menu.
-9. In **Select Metric Packs to be monitored,** you can select **Infrastructure**, **Performance**, or both.
+9. In **Select Metric Packs to be monitored**, you can select **Infrastructure**, **Performance**, or both.
 
 </TabItem>
 <TabItem value="Custom Metrics">
