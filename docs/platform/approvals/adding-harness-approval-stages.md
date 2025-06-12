@@ -281,7 +281,7 @@ Supports:
 - You can use a expressions with two options:
 
   - Individual expression: `<+trigger.payload.pusher.email>`
-  - Combined expression: `(<+trigger.payload.pusher.email> + "," + <+trigger.payload.pusher.email>)`
+  - Combined expression: `<+ <+stage.variables.input1> + "," + <+stage.variables.input2>>.split(",")`
   
 - You can supply a runtime input (`<+input>`) 
 
