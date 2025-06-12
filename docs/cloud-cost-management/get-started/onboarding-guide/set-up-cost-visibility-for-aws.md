@@ -9,66 +9,41 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-# Set up CCM for AWS
 
-## Overview
+# Set up Harness Cloud Cost Management (CCM) for AWS
 
-Harness Cloud Cost Management (CCM) offers comprehensive solutions to manage and optimize the cloud costs of your Amazon Web Services (AWS) infrastructure. CCM provides visibility, governance, and optimization of AWS services such as EC2, S3, RDS, Lambda, and others. CCM provides recommendations to effectively right-size your cloud resources to match the workload demands and optimizes the auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
+To enable CCM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness CCM to your AWS account by creating a **Harness AWS Cloud Cost Connector**.
+
+:::important
+For CCM, **AWS connectors are available only at the Account level in Harness**. If you have multiple AWS accounts, you will need to create multiple AWS connectors.
+:::
+
+## Prerequisites
+
+- [**Required**] [An AWS account](https://aws.amazon.com/)
+- [**Required**] [Harness CCM Account](https://app.harness.io/) 
+- [**Required**] [Cost and Usage Reports (CUR)](https://docs.aws.amazon.com/cur/latest/userguide/cur-overview.html). For more information, see [Creating Cost and Usage Reports(CUR)](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#step-2-set-up-cost-and-usage-report)
+
+## Connect Harness CCM to your AWS Account
+
+   **Option 1:**
+   - Go to **Account Settings** > **Connectors**
+   - Select **+ New Connector**
+   - Under **Cloud Costs**, select **AWS**
+
+   **Option 2:**
+   - Go to **Account Settings** > **Integration for cloud cost**
+   - Select **AWS**
+
+Then follow the steps listed below.
 
 :::info
 After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
 :::
 
-## Prerequisites
-
-### AWS Connector requirements
-
-- For CCM, AWS connectors are available only at the Account level in Harness.
-- If you have multiple AWS accounts, you may need to create multiple AWS connectors depending on desired functionality:
-  - **Cost Visibility**: You may need to create one or multiple AWS connectors depending on the availability of consolidated billing. Go to **Cost and Usage Reports (CUR)** for more information.
-  - **Resource Inventory Management**: You need to create an AWS connector for each account.
-  - **Optimization by AutoStopping**: You need to create an AWS connector for each account.
-
-### Required- Cost and Usage Reports (CUR)
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs queryString="tab-number">
-<TabItem value="1" label="Multiple Accounts with Consolidated Billing">
-
-- If you have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then you need to create only a single CUR for the management account. This provides cost data for all member accounts in the organization.
-
-- For the Cost Visibility feature alone, you will only need a single AWS connector configured with the management account CUR.
-
-- In order to take advantage of other features such as Inventory Management and AutoStopping, you need to create a connector for each member account:
-  - If you are using the UI to create the additional connectors, configure all connectors with the same management account CUR.
-  - If you are using the API to create the additional connectors, you can omit billing information altogether.
-
-</TabItem>
-
-<TabItem value="2" label="Multiple Accounts">
-
-- If you do not have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then you need to create a CUR for each linked account.
-
-- Create an AWS connector for each AWS account, configured with the CUR for that account.
-
-</TabItem>
-<TabItem value="3" label="Single Account">
-
-- Create a single CUR for your AWS account.
-
-- Create a single AWS connector configured with the CUR for your account.
-
-</TabItem>
-</Tabs>
-
-## Implementation Guide
-
-### Connect CCM to your AWS account
-
-To enable CCM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS accounts.
 ```mermaid
 flowchart TD
     Start["Connect CCM to AWS"] --> Step1["Step 1: Configure Connector Overview"]
@@ -104,30 +79,7 @@ flowchart TD
     class F1,F2,F3,F4,F5 feature
 ```
 
-
-
-1. Create a new AWS connector using one of the two options below:
-
-<Tabs queryString="tab-number">
-<TabItem value="4" label="From Account Settings">
-
-2. Go to **Account Settings** > **Connectors**.
-3. Select **+ New Connector**.
-4. Under **Cloud Costs**, select **AWS**.
-
-</TabItem>
-<TabItem value="5" label="From Cloud Costs">
-
-2. Go to **Setup** > **Cloud Integration**.
-3. Select **New Cluster/Cloud account**.
-4. Select **AWS**.
-
-</TabItem>
-</Tabs>
-
-5. Perform the following tasks in the **AWS Connector** wizard.
-
-### Step 1: Configure Connector Overview
+### Step 1: Overview
 
 
 <DocImage path={require('./static/aws-connector-one.png')} width="100%" height="100%" title="Click to view full size image" />
@@ -141,6 +93,34 @@ flowchart TD
 | **Is this an AWS GovCloud account?** | Select **Yes** if connecting to a GovCloud account.                                                                                                                                                            |
 
 ### Step 2: Set Up Cost and Usage Report
+
+AWS Cost and Usage Reports tracks your AWS usage and provides estimated charges associated with your account. Each report contains line items for each unique combination of AWS products, usage type, and operation that you use in your AWS account. 
+
+This data used by Harness CCM for analysis of your cloud costs and hence, it acts on your data for saving costs. 
+
+
+Scanario 1: Multiple AWS Accounts with Consolidated Billing
+
+- If you have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled:
+  - Create only a single CUR for the management account. This provides cost data for all member accounts in the organization.
+  - For Cost Visibility feature alone, you only need a single AWS connector configured with the management account CUR.
+  - For Inventory Management and AutoStopping features, create a connector for each member account:
+    - When using the UI: Configure all connectors with the same management account CUR.
+    - When using the API: You can omit billing information altogether for additional connectors.
+
+Scenario 2: Multiple AWS Accounts (Without Consolidated Billing)
+
+- If you do not have consolidated billing enabled:
+  - Create a CUR for each linked account.
+  - Create an AWS connector for each AWS account, configured with the CUR for that account.
+
+Scenario 3: Single AWS Account
+
+- Create a single CUR for your AWS account.
+- Create a single AWS connector configured with the CUR for your account.
+
+
+![AWS Connector Requirements Diagram](./static/aws-connector-diagram.png)
 
 Launch the AWS console and perform the following steps:
 
