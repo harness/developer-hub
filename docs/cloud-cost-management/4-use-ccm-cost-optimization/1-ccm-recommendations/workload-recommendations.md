@@ -23,7 +23,7 @@ Using recommendations without proper assessment could result in unexpected chang
 ## Before You begin
 
 * [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
-* [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+* [CCM Perspectives](../../cost-reporting/perspectives/create-cost-perspectives.md)
 
 ## How are workload recommendations computed?
 

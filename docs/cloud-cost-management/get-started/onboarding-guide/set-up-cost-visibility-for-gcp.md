@@ -205,4 +205,4 @@ Your connector is now listed in the **Connectors**.
 ### Next Steps
 
 * [Analyze Cost for GCP ​Using Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-gcp-using-perspectives)
-* [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives)
+* [Create Cost Perspectives](/docs/cloud-cost-management/cost-reporting/perspectives/create-cost-perspectives)

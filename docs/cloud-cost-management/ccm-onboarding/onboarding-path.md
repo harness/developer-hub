@@ -97,7 +97,7 @@ A perspective can be used to visualize data from multiple cloud providers.
 
 CCM generates default perspectives based on cloud connectors, allowing users to explore cost data for each cloud provider. These default perspectives offer a solid foundation for understanding the concept of perspectives. Additionally, when Kubernetes connectors are available, CCM generates a `Cluster`` perspective. This cluster perspective displays cost data for all clusters such as k8s, ECS, and more.
 
-For more information, go to [Create perspectives](docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+For more information, go to [Create perspectives](docs/cloud-cost-management/cost-reporting/perspectives/create-cost-perspectives.md)
 
 
 ### Step 2. Explore cost using dashboards

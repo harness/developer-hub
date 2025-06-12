@@ -53,4 +53,3 @@ Once a schedule is deleted, it cannot be restored. To delete your report sharing
 2. Click **Confirm Delete**.
 
 The schedule no longer appears in the Perspective Builder.
-
