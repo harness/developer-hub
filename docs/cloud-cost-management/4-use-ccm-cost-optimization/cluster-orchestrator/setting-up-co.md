@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 slug: setting-up-co
 redirect_from:
-  - /docs/cloud-cost-management/4-use-ccm-cost-optimization/cluster-orchestrator/setting_up_co
+  - /cloud-cost-management/4-use-ccm-cost-optimization/cluster-orchestrator/setting_up_co
 ---
 
 To enable Cluster Orchestrator for AWS EKS clusters associated with your account, follow these two simple steps:
