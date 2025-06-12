@@ -294,10 +294,12 @@ A Github push event arrives with payload:
 
 ```yaml
 {
+  ...
   "pusher": {
     "name": "User-1",
     "email": "user-1@gmail.com"
   }
+  ...
 }
 ```
 
