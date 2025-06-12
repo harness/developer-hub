@@ -8,7 +8,6 @@ In order to deploy a workflow or look at the catalog to see what workflows are a
 
    <DocImage path={require('../static/hsf-execute-workflow-1.png')} title="Click to view full size image" />
 
-
 To execute click ‘Execute’ and follow the prompts to add in additional configurations. 
 
    <DocImage path={require('../static/hsf-execute-workflow-2.png')} title="Click to view full size image" />

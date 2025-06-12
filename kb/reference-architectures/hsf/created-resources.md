@@ -1,10 +1,10 @@
 ---
-title: Harness Solutions Factory Created Resources
+title: Created Resources
 description: Understand the resources created by HSF.
 sidebar_position: 2
 ---
 
-After you deploy you will have the following resources in your account:
+After HSF is deployed will have the following resources in your account:
 
 ### Service Accounts
 A service account named `harness-platform-manager` is created at the account level. This service account has admin privileges and is responsible for provisioning and managing the resources necessary for running HSF workflows.

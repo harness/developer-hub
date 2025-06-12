@@ -1,7 +1,7 @@
 ---
-title: HSF FAQs
-description: This article addresses some frequently asked questions about HSF.
-sidebar_position: 5
+title: FAQs
+description: Get answers to some frequently asked questions about HSF.
+sidebar_position: 6
 ---
 
 ### How does it work?
