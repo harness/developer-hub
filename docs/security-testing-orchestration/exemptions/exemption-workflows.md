@@ -104,7 +104,7 @@ This feature is behind the feature flag `STO_OCCURRENCE_EXEMPTION`. Contact [Har
 
 If you select **all** occurrences of the issue:
     - The option **Exempt all future occurrences discovered for this issue** at the bottom becomes available. Checking this option converts the request from an occurrence-level exemption to an issue-level exemption. This ensures all future occurrences of the issue will automatically be exempted.
-    - If any selected occurrence is already exempted, the option will be disabled to prevent conflicts with existing exemptions.
+    - If any occurrences in the list are already exempted, this option will be disabled to prevent conflicts. To enable it, cancel the existing exemption requests for those occurrences. Once done, select all occurrences again and recreate the exemption request, the option should now be available to check or uncheck.
 
 Follow the steps in the [Submit Exemption Request](#submit-exemption-request) section to complete and submit your request.
 
