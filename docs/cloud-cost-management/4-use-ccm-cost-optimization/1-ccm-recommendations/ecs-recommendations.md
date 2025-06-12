@@ -23,7 +23,7 @@ Using recommendations without proper assessment could result in unexpected chang
 
 ## Before You begin
 
-* [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/cost-perspectives.md
+* [CCM Perspectives](/docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/create-cost-perspectives.md)
   
 ### Prerequisites
 

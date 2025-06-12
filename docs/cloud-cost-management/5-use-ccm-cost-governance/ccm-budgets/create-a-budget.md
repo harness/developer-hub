@@ -19,7 +19,7 @@ This topic describes how to create a new budget.
 * [Set Up Cloud Cost Management for GCP](../../get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
 * [Set Up Cloud Cost Management for Azure](../../get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
 * [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
-* [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/cost-perspectives.md
+* [Create Cost Perspectives](/docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/create-cost-perspectives.md)
 
 ## Create a New Budget
 
@@ -173,5 +173,5 @@ To delete a budget:
 * [Analyze Cost for AWS Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-aws.md)
 * [Analyze Cost for GCP ​Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md)
 * [Analyze Cost for Azure Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-azure.md)
-* [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
+* [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/create-a-budget-perspective.md
 
