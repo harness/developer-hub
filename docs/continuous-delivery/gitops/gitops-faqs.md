@@ -49,11 +49,6 @@ Yes, using Terraform, it is possible to automate the provisioning of the GitOps 
 Yes. For more details, go to [Helm OCI repository documentation](https://developer.harness.io/docs/continuous-delivery/gitops/oci-support/helm-oci-repository-aws-ecr).
 
 
-### Can one manage Flux applications with Harness GitOps ?
-
-Yes  one can manage Flux applications with Harness GitOps. For more details, go to [Use Flux](/docs/continuous-delivery/gitops/connect-and-manage/use-flux/).
-
-
 ### Does Harness provides drift detection for Kubernetes non-GitOps pipelines ?
 
 No, this feature is still under development and not yet supported. We hope to deliver this soon!
@@ -280,10 +275,6 @@ Verify that the agent, cluster, and service are set up correctly. After linking 
 
 ### What steps should I take if the problem persists after linking the clusters?  
 Double-check the cluster, agent, and service configurations in both Harness and your GitOps setup. If the issue persists, reach out to your Harness support team with detailed logs or screenshots for further assistance.
-
-### What are the key differences in GitOps workflows when using Argo CD versus Flux?
-
-When implementing GitOps, Argo CD and Flux offer similar core functionalities but differ in their approach to deployment and reconciliation.  Argo CD uses a declarative approach, continuously comparing the desired state in Git with the live state and automatically syncing any discrepancies. Flux, on the other hand, employs an operator-based approach, reacting to changes in Git and applying them to the cluster.  The choice between them depends on specific project needs and preferences.  Further details on these tools can be found in relevant documentation from their respective projects.
 
 ### For GitOps Repos, does Bitbucket fall under the umbrella of a supported platform?
 
