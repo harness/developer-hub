@@ -64,6 +64,16 @@ This update is currently being rolled out to customers, and we expect the rollou
 #### Fixes issues
 - Resolved compatibility issues with the `gradle-build-cache-plugin` for Java 8. After the update, the plugin was verified to work with JDK 8, JDK 11, and JDK 17. (CI-15707)
 
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/ci-addon`          | Resolved addon connection errors in Delegate build pipeline.  | 1.16.88              | 1.16.90       |
+| `harness/ci-lite-engine`    |  Resolved addon connection errors in Delegate build pipeline. | 1.16.88              | 1.16.90       |
+| `plugins/kaniko-acr`    |  Added push-only support to `kaniko-acr`. | 1.10.7              | 1.11.2      |
+| `harness/harness-cache-server`    |  Moved build cache proxy server to containerless. | 1.7.1              | 1.7.2       |
+| `plugins/cache`    |  Changed cache restore behavior when multiple cache key entries share a common prefix. | 1.9.7              | 1.9.8       |
+
 ### Version 1.82
 
 <!-- 2025-06-02 -->
