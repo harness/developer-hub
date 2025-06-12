@@ -23,6 +23,36 @@ The release notes describe recent changes to Harness Chaos Engineering.
 ## May 2025
 
 # Relicx Release Summary \- Harness Platform Integration
+
+**Production Release: May 30, 2025**
+### New Features
+
+**Test Suite Configuration**
+- Added configurable test suite run timeout settings
+- Implemented automatic saving of test schedule configurations when deleted
+
+**Visual Testing Enhancements**
+- Added bounding box highlighting for visual assertions
+- Set interactive replay mode to false by default
+
+### Enhancements
+
+**Test Execution Reliability**
+- Improved batch based exception handling during test suite execution
+- Enhanced test run process management with proper status updates
+- Fixed test suite abort handling for terminal jobs
+- Updated admin job timeout status reporting to show "Timed Out" instead of "Executor Failed"
+
+**Performance & UI Improvements**
+- Increased memory and CPU allocation for test session flush operations
+- Fixed test name truncation in test run pages
+- Increased test runs table header height
+- Fixed effective status calculation when test count equals zero
+
+**Platform Integration**
+- Updated configuration for Harness CI/CD release workflow compatibility
+- Changed remote entry path for ATA module
+
 **Production Release: May 22, 2025**
 
 ## New Features

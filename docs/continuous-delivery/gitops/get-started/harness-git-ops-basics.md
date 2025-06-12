@@ -58,10 +58,6 @@ To enable secure and automated deployments, Harness uses a **GitOps Agent**, a l
 
 - Syncs the desired state from Git to the live cluster—ensuring consistency without modifying Git.
 
-✅ **Hosted GitOps (No Agent Required)**
-
-Harness also offers a [Hosted GitOps](/docs/continuous-delivery/gitops/connect-and-manage/hosted-gitops) option, allowing you to manage deployments without installing an Agent.
-
 **No Cluster-to-Git Reconciliation**
 
 Harness does not push changes from the cluster back to Git. Your Git repository remains the only source of truth, ensuring a predictable and auditable deployment process.

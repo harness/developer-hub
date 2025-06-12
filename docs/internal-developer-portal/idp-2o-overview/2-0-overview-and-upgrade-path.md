@@ -1,6 +1,6 @@
 ---
 title: Harness IDP 2.0 Overview
-description: Comprehensive overview guide to Harness IDP 2.0. 
+description: Comprehensive overview guide to Harness IDP 2.0.
 sidebar_position: 1
 sidebar_label: IDP 2.0 Overview
 redirect_from: docs/internal-developer-portal/2-0-overview-and-upgrade-path
@@ -9,20 +9,18 @@ redirect_from: docs/internal-developer-portal/2-0-overview-and-upgrade-path
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 :::tip Status of IDP 2.0 related features
 IDP 2.0 is an ongoing project under active iteration. Here is the most recent status on all the features which have been released as well as the features planned to be released in near future.
 
-| Feature                                              | Status                                              |
-| ---------------------------------------------------- | --------------------------------------------------- |
-| **RBAC and Project/Org Hierarchy**                   | ✅ (Ready to onboard)                               |
-| **Git Experience (YAML files in Git)**               | ⏳ WIP (expected to be available in next 3-4 weeks) |
-| **New System Entity for grouping**                   | ⏳ WIP (expected to be available in next 4-6 weeks) |
-| **Custom User Groups**                               | ⏳ WIP (expected to be available in next 4-6 weeks) |
-| **Project/Org filters in Scorecards**                | ⏳ WIP (expected to be available in next 4-6 weeks) |
+| Feature                                | Status                |
+| -------------------------------------- | --------------------- |
+| **RBAC and Project/Org Hierarchy**     | ✅ (Ready to onboard) |
+| **Git Experience (YAML files in Git)** | ⏳ ETA June 20, 2025  |
+| **New System Entity for grouping**     | ⏳ ETA July 31, 2025  |
+| **Custom User Groups**                 | ⏳ ETA July 31, 2025  |
+| **Project/Org filters in Scorecards**  | ⏳ ETA July 31, 2025  |
 
 :::
-
 
 ## Summary
 
@@ -71,7 +69,7 @@ Learn more about the [Harness platform hierarchy](https://developer.harness.io/d
 
 ### Native Harness Git Experience
 
-:::info 
+:::info
 **Native Harness Git Experience** feature will be available for use soon! You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** table. Please ensure that **no YAML files** are stored in **Git in IDP 2.0** until this feature is released.
 :::
 
@@ -130,6 +128,7 @@ All Catalog and Workflow APIs are now delivered directly through Harness Platfor
 We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
 
 ### Entity YAML Definition
+
 :::info
 Please ensure that **no entity YAML files** are stored in **Git in IDP 2.0** until the [Git Experience](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#native-harness-git-experience) feature is released. You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** table.
 :::
@@ -333,9 +332,10 @@ However, we are currently working on introducing the concept of creating custom 
 | Entity CRUD APIs                     | ❌      | ✅      | Entities can be created, updated, and deleted using Harness APIs.                                                                                                                                              |
 | Catalog Ingestion APIs               | ✅      | ✅      |                                                                                                                                                                                                                |
 | Terraform Provider                   | ❌      | Planned |                                                                                                                                                                                                                |
-| Custom User Groups | ✅ | Planned |  | 
+| Custom User Groups                   | ✅      | Planned |                                                                                                                                                                                                                |
 
 ## Timeline
+
 - IDP 2.0 will be Generally Available by end of Q2 (July 2025)
 - All IDP 1.0 APIs are removed by end of Q3 (October 2025)
 - All customers will be moved over to IDP 2.0 by end of October 2025.

@@ -125,12 +125,8 @@ Feature flag rules are evaluated in the following order:
 * The third evaluation is against the **targeting rules**. The conditions are structured as layered if/else statements and are meant to be human readable. They are evaluated in order and when a condition is met, the evaluation stops.
 * The fourth evaluation is against the **default rule**. The remaining traffic is allocated based on the distribution set in the default rule.
 
-<!-- can we add this text?
-
 ### Individual targets evaluation order
 
 Individual targets are evaluated in order. For example, if **Bob** is a user ID in the **Internal_QA** segment, then **Bob** will get **on** even though you’ve specifically assigned that key **off**.
 
 ![](./static/feature-flag-rules-evaluation-order-example.png)
-
--->

@@ -157,7 +157,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Multiple high severity vulnerabilities have been found and fixed. (**CDS-107721**, **ZD-79011**)
 
-### Version 1.91.3
+### Version 1.91.5
 
 #### New Features and Enhancements
 
