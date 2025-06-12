@@ -200,8 +200,8 @@ You can customize your perspective view with the following display preferences:
 ## Budgets, Reports, and Alerts
 For details on adding Budgets, Reports, and Alerts go to:
 
-* [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
-* [Share Your Cost Perspective Report](../../3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report.md)
+* [Create a Budget for Your Perspective](3-create-a-budget-perspective.md
+* [Share Your Cost Perspective Report](4-share-cost-perspective-report.md
 * [Detect Cloud Cost Anomalies with CCM](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm)
 
 ## Perspective Preferences

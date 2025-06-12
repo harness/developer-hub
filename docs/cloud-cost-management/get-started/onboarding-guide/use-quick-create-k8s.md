@@ -58,7 +58,7 @@ The required permissions and components are verified. On successful verification
 
 ### Viewing Cloud Costs
 
-To view the cloud spend data for the Kubernetes cluster, select **View costs** for the cluster on the **Cloud Integration** page. The Perspective page displays your cloud costs data along with recommendations to reduce your spend. For more information, see [Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md).
+To view the cloud spend data for the Kubernetes cluster, select **View costs** for the cluster on the **Cloud Integration** page. The Perspective page displays your cloud costs data along with recommendations to reduce your spend. For more information, see [Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/cost-perspectives.md
 
 ### Editing a Kubernetes connector
 
