@@ -22,6 +22,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK` | Enables users to ensure Kubernetes workloads are redeployed when referenced ConfigMaps or Secrets are updated, even if the deployment spec itself remains unchanged. This is achieved by hashing manifest content under declarative rollback. **This feature is in Limited GA.** |
 | `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` | Enables users to configure Project-Level Pipeline Execution Concurrency by splitting the account-wide concurrency limit into High-Priority and Low-Priority partitions to reserve execution slots for critical projects. [Learn more](/docs/platform/pipelines/pipeline-settings/#project-level-pipeline-execution-concurrency). **This feature is in Limited GA.** |
 | `PIPE_EXECUTION_ID_FILTER` | Enables users to filter pipeline executions by build ID, making it easier to quickly locate specific runs without scrolling through large execution lists. **This feature is in Limited GA.** |
 | `CDS_REFRESH_IN_JIRA_SERVICENOW_APPROVALS` | Enables users to manually trigger a status refresh for **Jira**, **ServiceNow**, and **Custom Approval** steps using the **Refresh** button in the UI. This enhancement supports on-demand evaluation of approval conditions, reducing reliance on scheduled polling intervals. **This feature is in Limited GA.**|
