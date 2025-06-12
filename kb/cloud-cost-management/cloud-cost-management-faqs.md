@@ -2,6 +2,8 @@
 title: Cloud Cost Management (CCM) FAQs
 description: This article addresses some frequently asked questions about Harness Cloud Cost Management (CCM).
 # sidebar_position: 2
+redirect_from:
+- /docs/faqs/cloud-cost-management-faqs
 ---
 
 ## Connectors
