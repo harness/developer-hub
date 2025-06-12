@@ -26,17 +26,14 @@ Harness offers two primary licensing tiers for Cloud Cost Management: **Free For
 | **AutoStopping Rules** | 10 | Unlimited |
 | **Data Retention** | 30 days | 5 years |
 | **Currency Preferences** | Not supported | Supported |
-| **Support** | Community | Enterprise SLA |
-| **Cloud Asset Governance** | Edits to Savings Percentage not allowed. | Access to all features |
 
-### Feature Definitions
+#### Definitions
 
 - **Cloud Spend**: The total monthly cloud expenditure across all connected cloud accounts (AWS, Azure, GCP).
 - **Kubernetes Clusters**: Number of Kubernetes clusters you can connect for cost visibility and optimization.
 - **AutoStopping Rules**: Intelligent rules that automatically stop idle cloud resources to reduce costs.
 - **Data Retention**: How long historical cost data is stored and accessible in the system.
 - **Currency Preferences**: Ability to view and report costs in currencies other than USD.
-- **Support**: Type of support available for your account.
 
 ## Upgrading from Free to Enterprise
 
@@ -48,13 +45,11 @@ When you upgrade from Free Forever to Enterprise plan, the following changes occ
 | **AutoStopping Rules** | Unlimited creation of rules | Maximize cloud cost savings by automatically stopping idle resources across all environments and projects |
 | **Data Retention** | Extended to 5 years. Users will gain all the historical access of their free tier as well. | Make data-driven decisions with long-term trend analysis and gain deeper insights into seasonal patterns and multi-year cost trends |
 | **Currency Preferences** | Fully supported | Gain the ability to view and report costs in currencies other than USD |
-| **Advanced Analytics** | Fully unlocked | Reduce cloud spend through advanced optimization recommendations, custom dashboards, and predictive analytics |
+| **All reporting, optimization and governance features** | Fully unlocked | Reduce cloud spend through advanced optimization recommendations, custom dashboards, and predictive analytics |
 
 ## Enterprise License Expiry
 
 When your Enterprise license expires, the following changes occur:
-
-### Impact on Features and Functionality
 
 | Feature | Behavior After License Expiry | Impact |
 |---------|------------------------------|--------|
@@ -63,9 +58,6 @@ When your Enterprise license expires, the following changes occur:
 | **Recommendations** | No longer generated | Existing recommendations remain visible but no new ones are created |
 | **Alerts & Notifications** | Stopped | No budget alerts, anomaly alerts, or scheduled reports are sent |
 | **AutoStopping** | AutoStopping rules continue to run but Savings calculations is affected due to lack of new data | No new Savings calculation data displayed |
-
-
-### Visual Indicators
 
 Users will see **license expired** banners in the UI to inform them of the expired status.
 
