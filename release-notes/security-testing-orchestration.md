@@ -22,6 +22,23 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## June 2025
+
+### Version v1.142.1
+
+<!-- 2025-06-12 -->
+
+#### New Features and Enhancements
+- Added support for the **SonarQube** step to include privileges for creating and using the Sonar cache (STO-8889).
+- Improved the **SonarQube** step to support occurrence detection and exemption handling for Code Coverage and Bug Smells issues (STO-9067).
+- Enhanced normalization in the **Traceable** step to handle variations in scanner outputs for CVE and CWE properties (STO-9085).
+- Updated URLs in STO Custom Dashboards to use vanity URL format (STO-8643, ZD-74374).
+
+#### Fixed Issues
+- Fixed an issue causing incorrect counts for remediated issues in the **Security Testing Dashboard** (STO-9002, ZD-84585).
+- Fixed a bug where the **GitLeaks** step failed when symlinks were present in the scanned codebase (STO-8911, ZD-83119).
+
+
 ## May 2025
 
 ### Version v1.140.1
