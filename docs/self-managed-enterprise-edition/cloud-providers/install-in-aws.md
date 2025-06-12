@@ -994,6 +994,13 @@ To enable dynamic volume provisioning, you need to manually install and configur
         ```
     </details>
 
+    Save the script as `k8s-health-check.sh`, then run the following commands to make it executable:
+
+      ```bash
+      chmod +x k8s-health-check.sh
+      ./k8s-health-check.sh
+      ```
+
 11. Once all components are healthy, you can access SMP by navigating to the sign-up UI at `https://<YOUR_ELB_ADDRESS>/auth/#/signup` to create your admin user.
 
 12. Complete to the post-install next steps.
