@@ -36,11 +36,11 @@ To request an exemption for an entire issue, you can set the exemption scope at 
 
 2. In the **Issue Details** pane, click **Request Exemption**.
 
-<DocImage path={require('./static/request-exemption.png')} width="40%" height="40%" title="Click to view full-size image" />
+<DocImage path={require('./static/request-exemption.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 ### Submit Exemption Request
 
-Fill out the **Request Exemption for Issue** form with the following fields:  
+Fill out the **Request Exemption for Issue** form with the following fields:
 <DocImage path={require('./static/request-exemption-form.png')} width="40%" height="40%" title="Click to view full-size image" />
 
 #### Where do you want this issue to be exempted?
@@ -52,7 +52,8 @@ Specify where the exemption should apply:
 - **This Project**: Exempts the issue across all pipelines and targets within this project. Choose carefully, as the exemption applies broadly within the project.  
 
 :::info
-While requests can only be created with the scopes mentioned above, reviewers can approve and apply them at the requested scope or at a higher scope - **Organization** or **Account**.
+- While requests can only be created with the scopes mentioned above, reviewers can approve and apply them at the requested scope or at a higher scope - **Organization** or **Account**.
+- As you create exemption request at the issue level, all the future occurrences part of this issues will be automatically exempted. For exemptions at occurrences level, refer to [Create Exemption Request for Occurrences within Issue](#create-exemption-request-for-occurrences-within-issue)
 :::
 #### For how long?
 
@@ -77,27 +78,35 @@ Add any technical context, mitigations, or supporting information that will help
 
 Add a link to supporting documentation, source code, or any relevant resource that provides additional context.
 
-After completing the form, click **Create Request** to submit the exemption.
 
+After completing the form, click **Create Request** to submit the exemption.
 Once the exemption request is submitted:
 - Inform your **Security Testing AppSec** reviewer.  
 - Ensure they have enough context and links to make a well-informed decision.
 
-## Create Exemption Request for Occurrences within Issue
-To request an exemption for selected occurrences of an issue, the exemption scope can only be set to the [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Security Tests** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
+### Create Exemption Request for Occurrences within Issue
+
+To request an exemption for selected occurrences of an issue, the exemption scope must be set to the [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Security Tests** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
 
 :::note
 This feature is behind the feature flag `STO_OCCURRENCE_EXEMPTION`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
-1. In the **Security Tests** tab, locate and select the specific issue for which you want to request an exemption. This action opens the **Issue Details** pane on the right.
+1. In the **Security Tests** tab, locate and select the specific issue for which you want to request an exemption. This opens the **Issue Details** pane on the right.
 2. In the **Issue Details** pane, click the **Occurrences** tab.
 3. Select the occurrences for which you want to request the exemption.
-4. Review the selected occurrences and click the **Request Occurrence Exemption** button. This will open the **Request Exemption** dialog box.
 
 <DocImage path={require('./static/request-occurrence-exemption.png')} width="700%" height="70%" title="Click to view full-size image" />
 
-Follow the steps in the [Submit Exemption Request](#submit-exemption-request) section to complete and send your request.
+4. Review your selections and click the **Request Occurrence Exemption** button. This opens the **Request Exemption** dialog box.
+
+<DocImage path={require('./static/exemption-at-occurrence-level.png')} width="40%" height="40%" title="Click to view full-size image" />
+
+If you select **all** occurrences of the issue:
+    - The option **Exempt all future occurrences discovered for this issue** at the bottom becomes available. Checking this option converts the request from an occurrence-level exemption to an issue-level exemption. This ensures all future occurrences of the issue will automatically be exempted.
+    - If any occurrences in the list are already exempted, this option will be disabled to prevent conflicts. To enable it, cancel the existing exemption requests for those occurrences. Once done, select all occurrences again and recreate the exemption request, the option should now be available to check or uncheck.
+
+Follow the steps in the [Submit Exemption Request](#submit-exemption-request) section to complete and submit your request.
 
 ## View Issue Exemptions
 
