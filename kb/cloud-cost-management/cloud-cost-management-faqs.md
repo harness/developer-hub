@@ -250,7 +250,7 @@ Yes. CCM supports the following features and functionalities in the SMP environm
 - Anomalies
 - Recommendations
 
-For more information, go to [CCM on Harness Self-Managed Enterprise Edition](https://developer.harness.io/docs/category/ccm-on-harness-self-managed-enterprise-edition).
+For more information, go to [CCM on Harness Self-Managed Enterprise Edition](/docs/category/self-managed-enterprise-edition).
 
 ### Why aren't there any actions for RDS recommendations?
 
