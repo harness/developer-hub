@@ -57,7 +57,7 @@ When your Enterprise license expires, the following changes occur:
 | **Historical Data** | Remains accessible | Previously collected data can still be viewed but no new data is added |
 | **Recommendations** | No longer generated | Existing recommendations remain visible but no new ones are created |
 | **Alerts & Notifications** | Stopped | No budget alerts, anomaly alerts, or scheduled reports are sent |
-| **AutoStopping** | AutoStopping rules continue to run but Savings calculations is affected due to lack of new data | No new Savings calculation data displayed |
+| **AutoStopping** | AutoStopping rules continue to operate, but the system cannot calculate new savings due to paused data collection | No new Savings calculation data is displayed |
 
 Users will see **license expired** banners in the UI to inform them of the expired status.
 
