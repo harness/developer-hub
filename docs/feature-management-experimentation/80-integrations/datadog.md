@@ -12,23 +12,25 @@ Datadog is a cloud-hosted monitoring and analytics platform for development and 
 
 ## In Datadog
  
-1. Go to **Integrations** and click **APIs**.
+1. Go to **Organization Settings** and click **API Keys**.
 
-   <div style={{maxWidth:500}}>![Datadog API selection](./static/datadog-api-selection.png)</div>
+   <div style={{maxWidth:500}}>![Datadog API selection](./static/datadog-api-selection-1.png)</div>
 
-2. Click **Create API Key**.
+2. Click **+ API Key**.
 
-   ![Create Datadog API key](./static/datadog-api-key.png)
+   ![Create Datadog API key](./static/datadog-api-key-1.png)
 
 3. Copy the API key that you just created.
 
 ## In Harness FME
 
 1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
+
+   ![Harness FME Admin settings](./static/datadog-splitadmin-1.png)
+
 2. Click **Integrations** and navigate to the Marketplace tab.
 
-
-   ![Harness FME Admin settings](./static/datadog-splitadmin.png)
+   ![Harness FME Admin settings](./static/datadog-split-integration.png)
 
 3. Click **Add** next to Datadog and select the project for which you would like to configure the integration. The Harness FME Datadog interface appears.
 4. In the Environment field, specify the environment from where you want audit logs sent to Datadog.
@@ -39,7 +41,7 @@ Datadog is a cloud-hosted monitoring and analytics platform for development and 
 6. In the API key field, paste the API key that you copied in step 3 of the Datadog instructions.
 7. Click **Save** to save your selections. You have now mapped your integration to your selected site.
 
-Harness FME notifications should now display in Datadog as "tage:role:split.io".
+Harness FME notifications should now display in Datadog as "tags:role:split.io".
 
 If you have any issues with this integration, contact [support@split.io](mailto:support@split.io). 
 
