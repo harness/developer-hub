@@ -12,9 +12,9 @@ helpdocs_is_published: true
 Harness offers two primary licensing tiers for Cloud Cost Management: **Free Forever** and **Enterprise**. 
 
 ### Plan Comparison
-
 :::note
-- **If Your Cloud Spend Exceeds $250K/month**, you must upgrade to an Enterprise plan. The Free Forever plan is limited to organizations with less than $250K/month in cloud spend.
+- **If Your Cloud Spend Exceeds $250K/month**: You must upgrade to an Enterprise plan. The Free Forever plan is limited to organizations with less than USD250K/month in cloud spend.
+
 - **If Your Cloud Spend is Under $250K/month**: CCM remains accessible on the Free Forever plan, but with certain limitations and adjustments. 
 
 :::
@@ -41,8 +41,8 @@ When you upgrade from Free Forever to Enterprise plan, the following changes occ
 
 | Capability | After upgrade to Enterprise License | Business Advantage |
 |---------|---------------------|--------|
-| **Kubernetes Clusters** | Unlimited clusters allowed | Achieve complete visibility across your entire K8s infrastructure, enabling organization-wide cost allocation and optimization |
-| **AutoStopping Rules** | Unlimited creation of rules | Maximize cloud cost savings by automatically stopping idle resources across all environments and projects |
+| **Kubernetes Clusters** | Unlimited | Achieve complete visibility across your entire K8s infrastructure, enabling organization-wide cost allocation and optimization |
+| **AutoStopping Rules** | Unlimited | Maximize cloud cost savings by automatically stopping idle resources across all environments and projects |
 | **Data Retention** | Extended to 5 years. Users will gain all the historical access of their free tier as well. | Make data-driven decisions with long-term trend analysis and gain deeper insights into seasonal patterns and multi-year cost trends |
 | **Currency Preferences** | Fully supported | Gain the ability to view and report costs in currencies other than USD |
 | **All reporting, optimization and governance features** | Fully unlocked | Reduce cloud spend through advanced optimization recommendations, custom dashboards, and predictive analytics |
