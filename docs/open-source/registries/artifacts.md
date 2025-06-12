@@ -54,3 +54,17 @@ If you want to pull a specific version of an artifact, do the following.
 2. Choose your version. 
 3. Copy the **Download Command** for your artifact.
 4. Use the **Download Command** where you want to download your artifact. Make sure you are logged into the registry there first. 
+
+### Using S3 for Artifact Storage
+
+Harness Open Source supports storing artifacts on an S3-compatible storage backend. This is useful if you want to externalize artifact storage outside the local filesystem (e.g., for persistence across container restarts or for horizontal scaling).
+
+To configure S3 as your artifact storage backend, set the following environment variables during installation:
+
+```
+GITNESS_REGISTRY_S3_REGION_ENDPOINT=<your-S3-endpoint>
+GITNESS_REGISTRY_S3_ACCESS_KEY=<your-access-key>
+GITNESS_REGISTRY_S3_SECRET_KEY=<your-secret-key>
+GITNESS_REGISTRY_S3_REGION=<your-aws-region>
+GITNESS_REGISTRY_S3_BUCKET=<your-S3-bucket>
+```
