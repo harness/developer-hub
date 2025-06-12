@@ -265,21 +265,32 @@ pipeline:
 
 </details>
 
+### Prevent executor approval
+
+Enable **Disallow the executor from approving the pipeline** to stop the user who started a **manual** run from approving it—even if they’re in an allowed group.
+
+- Only applies to manual executions (not webhook/Git triggers).  
+- If you need to block more than just the executor, such as a specific list of users or dynamically resolve emails during executions, use **Disallowed User Emails** instead.
+
 ### Disallowed User Emails
 
 You can block users from approving this step by listing their email addresses under **Disallowed User Emails**. This applies to all execution types—manual runs and triggers from GitHub, GitLab, webhooks, etc.
 
-- Supports:
-- You can provide a fixed list of emails  
-- You can use a single JEXL expression (e.g. `<+payload.pusher.email>`) or combined JEXL expressions (e.g. `<+payload.pusher.email> + <+payload.pusher.email>`) 
+Supports:
+- You can provide a fixed list of emails using fixed values 
+- You can use a expressions with two options:
+
+  - Individual expression: `<+trigger.payload.pusher.email>`
+  - Combined expression: `(<+trigger.payload.pusher.email> + "," + <+trigger.payload.pusher.email>)`
+  
 - You can supply a runtime input (`<+input>`) 
 
 You cannot mix fixed values and expressions.
 
 <details>
-<summary>Example: Git-triggered disallow</summary>
+<summary>Example: Github-triggered disallow</summary>
 
-A Git push event arrives with payload:
+A Github push event arrives with payload:
 
 ```yaml
 {
@@ -295,18 +306,11 @@ In your pipeline YAML, reference the committer’s email:
 ```yaml
 approvers:
   # …other approver config…
-  disallowedUserEmails: <+payload.pusher.email>
+  disallowedUserEmails: <+trigger.payload.pusher.email>
 ```
 
 When `user-1@gmail.com` logs in and views that execution, they will be prevented from approving.
 </details>
-
-### Prevent executor approval
-
-Enable **Disallow the executor from approving the pipeline** to stop the user who started a **manual** run from approving it—even if they’re in an allowed group.
-
-- Only applies to manual executions (not webhook/Git triggers).  
-- If you need to block more than just the executor, such as a specific list of users or dynamically resolved emails in manual runs, use **Disallowed User Emails** instead.
 
 ### Approver inputs
 
