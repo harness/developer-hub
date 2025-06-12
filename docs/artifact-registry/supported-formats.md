@@ -21,6 +21,10 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
     Generic: {
       path: "/artifact-registry/content/generic-quickstart.md",
       logo: "generic-logo.svg"
+    },
+    Python: {
+      path: "/artifact-registry/content/python-quickstart.md",
+      logo: "python-logo.svg"
     }
   }}
 />
