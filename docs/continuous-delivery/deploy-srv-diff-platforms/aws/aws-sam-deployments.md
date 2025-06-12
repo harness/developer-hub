@@ -33,10 +33,7 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 - Currently, you cannot add artifacts to your Harness SAM service.
 - You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` option in the Harness SAM Build step. You can manage the Kubernetes settings for these steps as needed. For more information, go to [AWS documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html#ref-sam-cli-build-options).
 - Harness doesn't support a controlled AWS SAM Rollback after a deployment pipeline failure occurs. AWS SAM will deploy the lambda function and if it fails during stack creation, cloudformation will roll it back. After a succesful AWS SAM deployment, Harness is not able to initiate a rollback, due to the AWS SAM cli's limitation to trigger rollback on demand.
-
-:::info
-Currently OIDC connectors are not supported in AWS SAM deployments. 
-:::
+- AWS OIDC connectors are supported for AWS SAM deployments starting with delegate version `855xx` or later.
 
 ## Demo Video
 
@@ -94,14 +91,14 @@ Unlike old images, in new images a single image has the capabiliity of handling 
 
  Runtimes | Images |
 | --- | --- |
-| nodejs 20 | harness/aws-sam-plugin:nodejs20.x-1.120.0-1.0.1-beta-linux-amd64 |
-| nodejs 18 | harness/aws-sam-plugin:nodejs18.x-1.120.0-1.0.1-beta-linux-amd64 |
-| java 17   | harness/aws-sam-plugin:java17-1.120.0-1.0.1-beta-linux-amd64 |
-| python 3.11   | harness/aws-sam-plugin:python3.11-1.20.0-1.0.1-beta-linux-amd64 |
-| python 3.12   | harness/aws-sam-plugin:python3.12-1.120.0-1.0.1-beta-linux-amd64 |
-| ruby 3.2   | harness/aws-sam-plugin:ruby3.2-1.20.0-1.0.1-beta-linux-amd64 |
-| java 8   | harness/aws-sam-plugin:java8-1.112.0-1.0.1-beta-linux-amd64 |
-| go 1.24   | harness/aws-sam-plugin:go1.x-1.113.0-1.0.1-beta-linux-amd64 |
+| nodejs 20 | harness/aws-sam-plugin:nodejs20.x-1.138.0-1.1.1-beta-linux-amd64 |
+| nodejs 18 | harness/aws-sam-plugin:nodejs18.x-1.138.0-1.1.1-beta-linux-amd64 |
+| java 17   | harness/aws-sam-plugin:java17-1.138.0-1.1.1-beta-linux-amd64 |
+| python 3.11   | harness/aws-sam-plugin:python3.11-1.138.0-1.1.1-beta-linux-amd64 |
+| python 3.12   | harness/aws-sam-plugin:python3.12-1.138.0-1.1.1-beta-linux-amd64 |
+| ruby 3.2   | harness/aws-sam-plugin:ruby3.2-1.138.0-1.1.1-beta-linux-amd64 |
+| java 8   | harness/aws-sam-plugin:java8-1.112.0-1.1.1-beta-linux-amd64 |
+| go 1.24   | harness/aws-sam-plugin:go1.x-1.113.0-1.1.1-beta-linux-amd64 |
 
 Now, let's understand the runtime image:-
 ![](./static/multiple-runtime-sam.png)

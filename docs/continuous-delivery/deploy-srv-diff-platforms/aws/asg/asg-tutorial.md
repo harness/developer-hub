@@ -49,6 +49,7 @@ Notes:
 - ASG creation differs for rolling and blue green deployments:
   - For rolling, Harness updates the *existing* ASG with the new configuration.
   - For blue green, Harness creates a *new* ASG with a new revision suffix, like `asg-demo__2`. Once there are two ASGs (`asg-demo__1` and `asg-demo__2`) Harness alternately updates these *existing* ASGs with the new configuration on each successive deployment.
+- AWS OIDC connectors are supported for ASG deployments starting with delegate version `84900` or later.
 
 </details>
 
@@ -182,12 +183,6 @@ Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGu
 ```
 
 </details>
-
-:::note
-
-Currently, Harness does not support ASG deployments with an OIDC-enabled AWS connector.
-
-:::
 
 ## Harness ASG services
 
