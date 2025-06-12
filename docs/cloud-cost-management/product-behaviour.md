@@ -1,95 +1,77 @@
 ---
-title: Product Behavior on License Expiry
-description: This document outlines the expected behavior of each Cloud Cost Management (CCM) feature when a license expires and restrictiomns around pricing.
+title: "Harness CCM: Subscription Plans"
+description: "A comprehensive guide to Harness Cloud Cost Management (CCM) licensing plans, feature limitations, and what happens when your license expires."
 sidebar_position: 7
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-At Harness, we strive to provide full transparency into how our Cloud Cost Management (CCM) module behaves when a license expires. This document outlines the expected behavior of each CCM feature to help you plan and operate with confidence.
-
-## Harness CCM Pricing Plan Comparison
+# Harness CCM: Subscription Plans
 
 
-|   | Free | Enterprise |
-|---------|--------|--------|
-| **Cloud Spend** | $250,000 | Buy as much as needed |
-| **Clusters** | 2 | Unlimited|
-| **AutoStopping Rules** | 10 |  Unlimited |
-| **Cost Perspectives** | 20 |  Unlimited |
-| **Data Retention** | 30 days | 5 Years|
+Harness offers two primary licensing tiers for Cloud Cost Management: **Free Forever** and **Enterprise**. 
 
-## Harness Cloud Cost Management (CCM) Product Behavior on License Expiry
+### Plan Comparison
 
-## Data Collection Behavior
+:::note
+- **If Your Cloud Spend Exceeds $250K/month**: the Free Forever plan is not supported. 
+- **If Your Cloud Spend is Under $250K/month**: CCM remains accessible on the Free Forever plan, but with certain limitations and adjustments. 
 
-CCM stops publishing cost data once the license expires.
-
-| Feature | Behavior on License Expiry |
-|--------|-----------------------------|
-| **ECS** | Metric collection stops. |
-| **AWS, GCP, Azure** | Data syncing stops. |
-| **Historical Data** | All previously collected data (K8s, cloud data) is retained and remains accessible. |
-
-## What Happens When You Re-enable the License?
-
-- **Backfill Support:** We automatically re-run jobs from the point of license expiry and publish missing data (up to the last 15 days).
-- **Cloud Data:** AWS, GCP, and Azure cost data for the **current month** is re-published.
-
-## Recommendations
-
-| Feature | Behavior on License Expiry |
-|--------|-----------------------------|
-| **Existing Recommendations** | No longer displayed. |
-| **New Recommendations** | Not computed after license expiry. |
-
-## Reports, Budgets & Anomaly Alerts
-
-| Type | Behavior on License Expiry |
-|------|-----------------------------|
-| **Budget Alerts** | Stopped. |
-| **Anomaly Alerts** | Stopped. |
-| **Scheduled Reports** | Stopped. |
-
-## AutoStopping
-
-| Feature | Behavior on License Expiry |
-|--------|-----------------------------|
-| **Savings Computation** | Affected due to lack of CCM data. |
-
-:::info
-**Visual Indicators:** Users will see **license expired** banners on UI to inform them of the status.
 :::
 
-When your Harness Cloud Cost Management (CCM) license transitions from an **Enterprise** or **Team** tier to the **Free Forever plan**, certain usage limits and feature restrictions are enforced to align with the free tier’s capabilities.
+| Feature | Free Forever | Enterprise |
+|---------|-------------|------------|
+| **Cloud Spend Limit** | Up to $250,000/month | Unlimited (pay as you grow) |
+| **Kubernetes Clusters** | 2 | Unlimited |
+| **AutoStopping Rules** | 10 | Unlimited |
+| **Data Retention** | 30 days | 5 years |
+| **Currency Preferences** | Not supported | Supported |
+| **Support** | Community | Enterprise SLA |
+| **Cloud Asset Governance** | Edits to Savings Percentage not allowed. | Access to all features |
 
-### If Your Cloud Spend Exceeds $250K/month
+### Feature Definitions
 
-For organizations with a monthly cloud spend **greater than $250,000**, the **Free Forever plan is not supported**. To continue using CCM, please contact your Harness representative to upgrade your plan.
+- **Cloud Spend**: The total monthly cloud expenditure across all connected cloud accounts (AWS, Azure, GCP).
+- **Kubernetes Clusters**: Number of Kubernetes clusters you can connect for cost visibility and optimization.
+- **AutoStopping Rules**: Intelligent rules that automatically stop idle cloud resources to reduce costs.
+- **Data Retention**: How long historical cost data is stored and accessible in the system.
+- **Currency Preferences**: Ability to view and report costs in currencies other than USD.
+- **Support**: Type of support available for your account.
 
-### If Your Cloud Spend is Under $250K/month
+## Upgrading from Free to Enterprise
 
-For organizations spending **less than $250,000/month**, CCM remains accessible on the Free Forever plan, but with certain limitations and adjustments:
+When you upgrade from Free Forever to Enterprise plan, the following changes occur:
 
-#### Kubernetes (K8s) Cost Visibility
+| Capability | After upgrade to Enterprise License | Business Advantage |
+|---------|---------------------|--------|
+| **Kubernetes Clusters** | Unlimited clusters allowed | Achieve complete visibility across your entire K8s infrastructure, enabling organization-wide cost allocation and optimization |
+| **AutoStopping Rules** | Unlimited creation of rules | Maximize cloud cost savings by automatically stopping idle resources across all environments and projects |
+| **Data Retention** | Extended to 5 years. Users will gain all the historical access of their free tier as well. | Make data-driven decisions with long-term trend analysis and gain deeper insights into seasonal patterns and multi-year cost trends |
+| **Currency Preferences** | Fully supported | Gain the ability to view and report costs in currencies other than USD |
+| **Advanced Analytics** | Fully unlocked | Reduce cloud spend through advanced optimization recommendations, custom dashboards, and predictive analytics |
 
-- **Cluster Limit:** The Free Forever plan supports cost visibility for up to **2 Kubernetes clusters**.
-- If more than 2 clusters were set up during your Enterprise/Team plan:
-  - CCM will be **automatically disabled** on all clusters.
-  - You will be able to **re-enable CCM manually** on up to 2 clusters of your choice.
+## Enterprise License Expiry
 
-#### Dashboards
+When your Enterprise license expires, the following changes occur:
 
-- All CCM-specific dashboards created during the Enterprise/Team plan will be **disabled** to comply with Free plan limits.
+### Impact on Features and Functionality
 
-#### Historical Data Access
+| Feature | Behavior After License Expiry | Impact |
+|---------|------------------------------|--------|
+| **Data Collection** | Stops for all sources | No new cost data is collected from any cloud provider or Kubernetes cluster |
+| **Historical Data** | Remains accessible | Previously collected data can still be viewed but no new data is added |
+| **Recommendations** | No longer generated | Existing recommendations remain visible but no new ones are created |
+| **Alerts & Notifications** | Stopped | No budget alerts, anomaly alerts, or scheduled reports are sent |
+| **AutoStopping** | AutoStopping rules continue to run but Savings calculations is affected due to lack of new data | No new Savings calculation data displayed |
 
-  - Users on the Free Forever plan can access **only the past 30 days** of data.
-  - Attempts to view data beyond this range will be restricted.
 
-## Want Full Access Again?
+### Visual Indicators
 
-To regain access to advanced features, dashboards, and visibility across multiple clusters, you can upgrade your plan at any time.
+Users will see **license expired** banners in the UI to inform them of the expired status.
 
-[Contact Sales](https://www.harness.io/company/contact-sales?utm_source=harness_io&utm_medium=cta&utm_campaign=platform&utm_content=pricing&utm_term=essentials) 
+## Need Help?
 
+If you have questions about your license status or need assistance with upgrading or renewal:
+
+- **Contact Sales**: [Harness Sales Team](https://www.harness.io/company/contact-sales?utm_source=harness_io&utm_medium=cta&utm_campaign=platform&utm_content=pricing&utm_term=essentials)
+- **Support Portal**: [Harness Support](https://support.harness.io)
