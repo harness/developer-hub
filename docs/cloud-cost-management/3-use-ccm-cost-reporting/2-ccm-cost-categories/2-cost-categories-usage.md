@@ -205,5 +205,5 @@ The remaining cost for Account A1 will go to Bucket 1
 
 ## See Also
 
-* [Create Cost Perspectives](../1-ccm-perspectives/cost-perspectives.md)
+* [Create Cost Perspectives](../1-ccm-perspectives/create-cost-perspectives.mdives.md)
 

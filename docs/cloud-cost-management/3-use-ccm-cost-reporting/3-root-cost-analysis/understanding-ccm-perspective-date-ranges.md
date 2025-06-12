@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-When you view a [CCM Perspective](../1-ccm-perspectives/cost-perspectives.md), you can adjust the date ranges of the Perspective:
+When you view a [CCM Perspective](../1-ccm-perspectives/create-cost-perspectives.mdives.md), you can adjust the date ranges of the Perspective:
 
 ![](./static/understanding-ccm-perspective-date-ranges-00.png)
 
