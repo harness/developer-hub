@@ -618,9 +618,9 @@ You can integrate your own microservice application into this tutorial by follow
 </TabItem>
 <TabItem value="gitops" label="GitOps Workflow">
 
-Harness GitOps (built on top of Argo CD) watches the state of your application as defined in a Git repo, and can pull (either automatically, or when instructed to do so) these changes into your Kubernetes cluster, leading to an application sync. Harness GitOps supports both Argo CD and Flux CD as the GitOps reconciler.
+Harness GitOps (built on top of Argo CD) watches the state of your application as defined in a Git repo, and can pull (either automatically, or when instructed to do so) these changes into your Kubernetes cluster, leading to an application sync. Harness GitOps supports Argo CD as the GitOps reconciler.
 
-Whether you're new to GitOps or an experienced practitioner, this guide will assist you in getting started with Harness GitOps, offering you the option to choose between Argo CD and Flux CD.
+Whether you're new to GitOps or an experienced practitioner, this guide will assist you in getting started with Harness GitOps.
 
 ## Before you begin \{#before-you-begin-gitops}
 
@@ -628,7 +628,6 @@ Verify that you have the following:
 
 1. **A Kubernetes cluster**. We recommend [K3D](https://k3d.io/v5.5.1/) for installing the Harness GitOps Agent and deploying a sample application in a local development environment.
    - For requirements, go to [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent#requirements).
-   - If you prefer using Flux CD as the reconciler, you will need to [install the Flux controller](https://fluxcd.io/flux/installation/#install-the-flux-controllers) on your Kubernetes cluster.
 2. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
    - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
@@ -659,12 +658,10 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 
 - Select **No**, and then select **Start**.
 - In **Name**, enter the name for the new Agent.
-- In **GitOps Operator**, select one of the following:
-  - **Argo**. Uses Argo CD as the GitOps reconciler.
-  - **Flux**. Uses Flux as the GitOps reconciler.
+- In **GitOps Operator**, select **Argo**.
 - In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent.
 
-Harness GitOps Agent will have access to create or modify resources in other namespaces so this namespace doesn't necessarily have to be the same as the one where your apps are deployed. For instance, you can choose `argocd` or `fluxcd` as the namespace for installing the GitOps Agent (the example in the image below uses `gitops-agent` as the namespace). Ensure that this namespace already exists on your Kubernetes cluster.
+Harness GitOps Agent will have access to create or modify resources in other namespaces so this namespace doesn't necessarily have to be the same as the one where your apps are deployed. For instance, you can have `argocd` as the namespace for installing the GitOps Agent (the example in the image below uses `gitops-agent` as the namespace). Ensure that this namespace already exists on your Kubernetes cluster.
 
 If **Namespaced** is selected, the Harness GitOps agent is installed without cluster-scoped permissions, and it can access only those resources that are in its own namespace. You can select **Skip Crds** to avoid a collision if already installed.
 
@@ -681,12 +678,10 @@ Download the Harness GitOps Agent script using either the YAML or Helm Chart opt
 
 - Select **Yes**, and then select **Start**.
 - In **Name**, enter the name for the existing Argo CD project.
-- In **GitOps Operator**, select one of the following:
-  - **Argo**. Uses Argo CD as the GitOps reconciler.
-  - **Flux**. Uses Flux as the GitOps reconciler.
+- In **GitOps Operator**, select **Argo**.
 - In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent.
 
-Harness GitOps Agent will have access to create or modify resources in other namespaces so this namespace doesn't necessarily have to be the same as the one where your apps are deployed. For instance, you can choose `argocd` or `fluxcd` as the namespace for installing the GitOps Agent (the example in the image below uses `gitops-agent` as the namespace). Ensure that this namespace already exists on your Kubernetes cluster.
+Harness GitOps Agent will have access to create or modify resources in other namespaces so this namespace doesn't necessarily have to be the same as the one where your apps are deployed. For instance, you can choose `argocd` as the namespace for installing the GitOps Agent (the example in the image below uses `gitops-agent` as the namespace). Ensure that this namespace already exists on your Kubernetes cluster.
 
 - Select **Continue**. The **Download YAML** or **Download Helm Chart** settings appear.
 
@@ -709,11 +704,6 @@ A Harness GitOps Repository is a repo containing the declarative description of 
 
 </details>
 
-:::note
-
-If you're using a Flux GitOps Reconciler, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
-
-:::
 
 1. Select **Settings**, and then select **Repositories**.
    - Select **New Repository**.
@@ -735,12 +725,6 @@ If you're using a Flux GitOps Reconciler, Flux must be present in the destinatio
 A Harness GitOps Cluster is the target deployment cluster that is compared to the desire state. Clusters are synced with the source manifests you add as GitOps Repositories.
 
 </details>
-
-:::note
-
-If you're using a Flux GitOps Reconciler, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
-
-:::
 
 1. Select **Settings**, and then select **Clusters**.
    - Select **New Cluster**.
@@ -769,7 +753,7 @@ Due to an update in the Kustomization Controller, the vanilla YAML files now nee
 1. Select **Applications**.
    - Select **New Application**.
      - Enter the **Application Name**: `guestbook`.
-     - In **GitOps Operator**, select either **Argo** or **Flux**. Based on your selection, the associated GitOps Agent will be listed next.
+     - In **GitOps Operator**, select **Argo**.
      - In **GitOps Agent**, select the Agent that you installed in your cluster.
      - You can leave out **Service** and **Environment** selections.
      - Select **Continue**.
