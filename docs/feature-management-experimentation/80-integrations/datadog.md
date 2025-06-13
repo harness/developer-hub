@@ -16,7 +16,7 @@ Datadog is a cloud-hosted monitoring and analytics platform for development and 
 
    <div style={{maxWidth:500}}>![Datadog API selection](./static/datadog-api-selection-1.png)</div>
 
-2. Click **+ API Key**.
+2. Click **+ New Key**.
 
    ![Create Datadog API key](./static/datadog-api-key-1.png)
 
