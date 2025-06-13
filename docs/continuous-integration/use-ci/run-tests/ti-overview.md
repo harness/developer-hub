@@ -75,8 +75,6 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **T
 
 :::
 
-
-
 **For instructions on using the Test Intelligence (v2), go to: [Test Intelligence step](./tests-v2.md)**
 
 For instructions on using the Test Intelligence (v1), go to:
@@ -85,6 +83,23 @@ For instructions on using the Test Intelligence (v1), go to:
 - [Enable TI with Run Tests step for Java, Kotlin, or Scala](./tests-v1/ti-for-java-kotlin-scala.md)
 - [Enable TI with Run Tests step for Python](./tests-v1/ti-for-python.md)
 - [Enable TI with Run Tests step for Ruby](./tests-v1/ti-for-ruby.md)
+
+### Handling report files with parallelism
+
+If you're using **parallelism** (test splitting) with the **Test** step, ensure that each parallel execution generates a **unique** JUnit result file. Otherwise, the aggregated test results might show duplicated or incorrect entries.
+
+In your test script, use one of the following variables to generate unique result files:
+- `junitxml="result_<+strategy.iteration>.xml"` (for matrix/strategy-based parallelism)
+- `junitxml="result_$HARNESS_NODE_INDEX.xml"` (for Harness node-based parallelism)
+
+Also, in the **Report Paths** field of the **Test** step, use a wildcard to capture all generated reports, for example:
+
+```yaml
+**/result_*.xml
+```
+<DocImage path={require('./static/parallelism-test-intelligence.png')} />
+
+This ensures that TI parses all test reports accurately and avoids duplication in the Tests tab.
 
 
 ## Ignore tests or files
