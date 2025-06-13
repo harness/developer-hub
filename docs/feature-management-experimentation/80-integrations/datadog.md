@@ -45,7 +45,7 @@ Harness FME notifications should now display in Datadog as "tags:role:split.io".
 
 If you have any issues with this integration, contact [support@split.io](mailto:support@split.io). 
 
-## Datadog Harness FME integration
+## Using FME with Datadog RUM
 
 This Harness FME integration automatically enriches your RUM data with a feature flag variant. It allows you to correlate feature releases with performance and troubleshoot any issues to ensure safe feature releases. 
 
