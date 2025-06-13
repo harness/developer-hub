@@ -88,6 +88,19 @@ native services?}
 
 7. Click on "Save AutoStopping Proxy".
 
+
+## Updating and Importing an AutoStopping Proxy
+
+When creating a rule in Step 2 - Setup Access, you can either import an existing proxy or create a new one.
+
+<DocImage path={require('./static/update-proxy-aws.png')} width="100%" height="100%" title="Click to view full-size image" />
+
+If you have previously onboarded proxies with AWS but haven't created Harness Load Balancers for them yet, you can easily import them:
+
+1. Click on the dropdown option to select an existing proxy
+2. This will open a drawer with pre-populated data from your AWS environment
+3. Review the information and click Save to create a linked Harness entity without having to re-enter the configuration details
+
 ### AWS Secrets Manager Configuration
 
 1. Secret naming convention example:

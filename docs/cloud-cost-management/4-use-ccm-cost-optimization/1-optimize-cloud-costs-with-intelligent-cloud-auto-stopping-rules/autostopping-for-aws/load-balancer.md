@@ -77,6 +77,18 @@ If using **another DNS provider**, you'll need to manually create a CNAME record
 3. For detailed instructions, see [AWS DNS CNAME documentation](https://docs.aws.amazon.com/managedservices/latest/ctexguide/ex-dirserv-cname-record-add-col.html)
 :::
 
+
+## Updating and Importing an AutoStopping Load Balancer
+
+When creating a rule in Step 2 - Setup Access, you can either import an existing load balancer or create a new one.
+
+<DocImage path={require('./static/update-proxy-aws.png')} width="100%" height="100%" title="Click to view full-size image" />
+
+If you have previously onboarded load balancers with AWS but haven't created Harness Load Balancers for them yet, you can easily import them:
+
+1. Click on the dropdown option to select an existing load balancer.
+2. This will open a drawer with pre-populated data from your AWS environment which can be used for the AutoStopping rule without having to re-enter the configuration details.
+
 ## Updating the Lambda Function
 
 The AWS Load Balancer uses a Lambda function to manage traffic and handle resource warm-up. You may need to update this function to the latest version.
