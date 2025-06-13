@@ -26,8 +26,8 @@ You can add business context to your Harness Cloud Cost Management (CCM) data us
 
 ### Before You Begin
 
-* [Set Up Cloud Cost Management for your cloud service provider](https://developer.harness.io/docs/category/onboarding-guide-for-ccm)
-* [Use Cost Categories](../2-ccm-cost-categories/1-ccm-cost-categories.md)
+* [Set Up Cloud Cost Management for your cloud service provider](/docs/cloud-cost-management/ccm-onboarding/onboarding-path)
+* [Use Cost Categories](/docs/cloud-cost-management/3-use-ccm-cost-reporting/2-ccm-cost-categories/1-ccm-cost-categories.md)
 
 ## Cloud Costs Perspective Concepts
 
@@ -200,8 +200,8 @@ You can customize your perspective view with the following display preferences:
 ## Budgets, Reports, and Alerts
 For details on adding Budgets, Reports, and Alerts go to:
 
-* [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
-* [Share Your Cost Perspective Report](../../3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report.md)
+* [Create a Budget for Your Perspective](3-create-a-budget-perspective.md
+* [Share Your Cost Perspective Report](4-share-cost-perspective-report.md
 * [Detect Cloud Cost Anomalies with CCM](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm)
 
 ## Perspective Preferences

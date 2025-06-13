@@ -19,7 +19,7 @@ This topic describes how to create a new budget.
 * [Set Up Cloud Cost Management for GCP](../../get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
 * [Set Up Cloud Cost Management for Azure](../../get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
 * [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
-* [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+* [Create Cost Perspectives](/docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/create-cost-perspectives.md)
 
 ## Create a New Budget
 
@@ -40,7 +40,7 @@ In **Define Target**, do the following:
 
 1. In **Select Perspective**, select the Perspective for which you want to set a budget.  
 Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. You can add multiple budgets for a single Perspective.
-   1. To create a new Perspective of the resources you would like to budget, click **Create a new Perspective**. Follow the steps in [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md) to create a Perspective.
+   1. To create a new Perspective of the resources you would like to budget, click **Create a new Perspective**. Follow the steps in [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/cost-perspectives.mdte a Perspective.
    2. In **Budget Name**, enter a name for your budget that will appear in the budget dashboard to identify this budget.
    3. Click **Continue**.
    
@@ -121,7 +121,7 @@ The dashboard includes the following information:
 
 ### Read Your Budget
 
-The **Budgets** dashboard further shows you the details of your selected budget at a glance. You can also navigate to the [Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md) on which the budget is created from the budget dashboard.
+The **Budgets** dashboard further shows you the details of your selected budget at a glance. You can also navigate to the [Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/cost-perspectives.mdh the budget is created from the budget dashboard.
 
 ![](./static/create-a-budget-09.png)
 
@@ -173,5 +173,5 @@ To delete a budget:
 * [Analyze Cost for AWS Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-aws.md)
 * [Analyze Cost for GCP ​Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md)
 * [Analyze Cost for Azure Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-azure.md)
-* [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
+* [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/create-a-budget-perspective.md
 
