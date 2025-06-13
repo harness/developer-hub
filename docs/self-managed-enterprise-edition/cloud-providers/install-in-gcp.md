@@ -88,7 +88,7 @@ To reserve an external static IP in GCP, do the following:
        # --- Enable Nginx ingress controller gateway
        enabled: true
        annotations: {}
-       loadBalancerIP: 34.136.145.137
+       loadBalancerIP: xx.xx.xx.xx
        className: "harness"
        loadBalancerEnabled: true
        useSelfSignedCert: false
@@ -126,6 +126,7 @@ To reserve an external static IP in GCP, do the following:
     ```
 
 12. After the installation is complete, paste the `loadbalancerURL` in your browser's address bar, and then sign in to the Harness UI.
+
 13. Complete to the post-install next steps.
 
 </TabItem>
