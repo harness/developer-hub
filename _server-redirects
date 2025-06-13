@@ -103,3 +103,13 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 /docs/category/troubleshoot-ci /docs/category/troubleshoot-harness-ci
 
 # Redirects generated from Front Matter [sytem generated goes below here]:
+
+
+
+# Added by Lavakush Biyani 
+
+/docs/category/comply-with-slsa /docs/category/slsa-compliance
+/docs/category/enforce-sbom-policies /docs/category/policies
+/docs/software-supply-chain-assurance/get-started/onboarding-guide /docs/software-supply-chain-assurance/get-started/
+/docs/software-supply-chain-assurance/sbom/generate-sbom /docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories
+

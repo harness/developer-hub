@@ -17,7 +17,7 @@ import { MODULES } from "@site/src/constants";
               module: MODULES.ssca,
               description:
                 "Start using Harness SCS.",
-              link: "/docs/software-supply-chain-assurance/get-started/onboarding-guide",
+              link: "/docs/software-supply-chain-assurance/get-started/",
             },
             {
               title: "SCS overview",
@@ -47,21 +47,21 @@ import { MODULES } from "@site/src/constants";
               module: MODULES.ssca,
               description:
                 "Generate, manage, and analyze SBOM for software artifacts.",
-              link: "/docs/software-supply-chain-assurance/sbom/generate-sbom",
+              link: "/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories",
             },
             {
                 title: "Enforce SBOM policies",
                 module: MODULES.ssca,
                 description:
                   "Verify SBOM attestations and scan for software supply chain security policy violations.",
-                link: "/docs/category/enforce-sbom-policies",
+                link: "/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies",
             },
             {
                 title: "Comply with SLSA",
                 module: MODULES.ssca,
                 description:
                   "Generate, manage, and verify SLSA Provenance.",
-                link: "/docs/category/comply-with-slsa",
+                link: "/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa",
             },
           ],
         },
