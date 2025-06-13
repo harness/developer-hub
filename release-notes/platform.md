@@ -134,9 +134,9 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Fixed an issue where users were not able to see "Variable" option in the Audit Filter dropdown list. [PL-63195]
-- Fixed an issue where user is lead to blank page when navigating to a role or resource group from the user role bindings. [PL-63154]
-- Fixed an issue where the Code Repository resource group was not appearing in the resource group list. It is now visible and functioning as expected. [PL-63120]
+- Resolved missing "Variable" option in the Audit Filter dropdown list. [PL-63195]
+- Navigating to a role or resource group from user role bindings no longer leads to a blank page. [PL-63154]
+- Code Repository resource group now appears correctly in the resource group list. [PL-63120]
 
 #### New Feature and Enhancement 
 
