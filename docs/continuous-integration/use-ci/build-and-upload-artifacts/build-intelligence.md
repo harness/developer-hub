@@ -181,11 +181,62 @@ There are two ways to apply settings.xml:
 
 These configurations enable build caching and repository access based on your pipeline’s setup.
 
+### Using a Private Maven Repository for Build Intelligence Extensions
+
+If your environment restricts access to Maven Central, you can configure Build Intelligence to download required extensions (like the Maven build cache extension) from your private or third-party artifact registry.
+
+This support is built-in and requires the following:
+
+1. Upload Required Maven Artifacts
+Ensure the following artifacts are available in your private Maven repository:
+
+- `maven-build-cache-extension-1.2.0.pom`
+
+- `maven-build-cache-extension-1.2.0.jar`
+
+These are required by Build Intelligence to enable caching for Maven builds.
+
+2. Update Your `pom.xml`
+
+Point your Maven build to use your private registry:
+
+```xml
+<repositories>
+  <repository>
+    <id>maven-dev</id>
+    <url>https://your-private-maven-registry.example.com/repository/maven-releases</url>
+    <releases>
+      <enabled>true</enabled>
+      <updatePolicy>always</updatePolicy>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+      <updatePolicy>always</updatePolicy>
+    </snapshots>
+  </repository>
+</repositories>
+```
+3. (Optional) Add Authentication
+If your registry requires authentication, add this to your `settings.xml` file:
+
+```xml
+<settings>
+  <servers>
+    <server>
+      <id>maven-dev</id>
+      <username>YOUR_USERNAME</username>
+      <password>YOUR_PASSWORD</password>
+    </server>
+  </servers>
+</settings>
+```
+
+Make sure the `<id>` in settings.xml matches the one in the `<repository>` section of your pom.xml.
+
 ### Using '--profile'
 Appending `--profile' to your build command, enables publishing Build Intelligence savings to Harness. This will allow you to clearly view the performance and benefits of using Build Intelligence. Note that even when omitted, Build Intelligence will continue to work and optimize your run as expected, but the savings will not be visible in the UI and relevant dashboards.
 
 For example:  `./gradlew build --profile`
-
 
 This is currently supported with Gradle build tool only . 
 
