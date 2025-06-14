@@ -3236,6 +3236,13 @@ As per the current design, there's no native step for this but user can write a 
 
 The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
+#### I Am Unable to Store a Custom Artifact Template in Git?
+
+Artifact source templates cannot be stored in a remote Git repository at this time. They are stored within your Harness account.
+
+#### I Want to Use a Variable to Get the Custom Artifact Version Without Calling a Script. How Can I Achieve This?
+You can use the Manually Enter an Artifact Version option and provide a variable expression as the version.
+
 
 ### Infrastructure provisioning FAQs
 
