@@ -3442,3 +3442,27 @@ Yes, Harness has an API to check the status of the deployment. You can check her
 
 ### How can user restart a delegate?
 User can restart the delegate by deleting the pod itself.
+
+#### Does an API token in Harness inherit the user’s permissions?
+Yes, an API token inherits the same permissions as the user or service account that generated it. This means the token can only access resources that the associated user or service account is authorized to access.
+
+#### Why is a secret created via YAML marked as DRAFT with a warning of "Incomplete Secret"?
+Secrets created via YAML in Harness are intentionally marked as DRAFT because you cannot fully define a secret (including its value) directly in YAML. This prevents secret values from being exposed in plain text.
+
+#### How can I complete a secret that was created via YAML?
+After creating the skeleton of the secret via YAML, you need to edit the secret in visual mode and manually enter the secret value into the password field to complete it.
+
+#### Can I upload file-based secrets via YAML in Harness?
+No, uploading file-based secrets via YAML is not supported. File-secrets must be created and uploaded through the visual interface.
+
+#### Can I configure a registry mirror for fetching Harness Delegate images, and where can I find documentation on this?
+Yes, you can configure an optional registry mirror so that Harness Delegate images are fetched from the designated mirror instead of the public Docker Hub. You can refer to the official documentation here: Configure an Optional Registry Mirror for Delegate Images
+
+#### Can I track the number of active users logging into Harness?
+Yes, Harness logs all user activities in the Audit trail, allowing you to track user logins and other actions. However, it does not provide a specific report on the number of active users.
+
+#### Can I track the total time spent using Harness (excluding admin activities)?
+Harness logs activities in the Audit trail, but it does not track the total time spent using the tool, nor does it differentiate between admin and non-admin activities.
+
+#### Can I track and visualize hygiene scores over time in Harness?
+Harness does not have a hygiene score report or feature to track and visualize hygiene scores over time, including trends showing monthly increases or decreases.
