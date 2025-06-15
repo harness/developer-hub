@@ -1,0 +1,15 @@
+{
+    "label": "BI Dashboards",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 20,
+    "link": {
+        "type": "generated-index",
+        "title": "BI Dashboards"
+    },
+    "customProps": {
+        "position": "To position the category, enter a number and move this to the root level.",
+        "helpdocs_category_id": "v3h3y6pya6"
+    }
+}

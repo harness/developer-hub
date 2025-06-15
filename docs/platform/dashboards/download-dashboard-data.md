@@ -93,12 +93,12 @@ Perform the following steps to download the data from a dashboard tile:
 
 You can choose to download the following By Harness CCM Dashboards:
 
-* [View AWS Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/aws-dashboard.md)
-* [View Azure Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/azure-cost-dashboard.md)
-* [View GCP Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/gcp-dashboard.md)
-* [View Cluster Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/cluster-cost-dashboard.md)
-* [View Multi-cloud Cost Overview Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/multi-cloud-cost-overview-dashboard.md)
-* [Orphaned EBS Volumes and Snapshots Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md)
-* [View AWS EC2 Inventory Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md)
-* [View AWS EC2 Instance Metrics Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-instance-metrics.md)
+* [View AWS Cost Dashboard](../../cloud-cost-management/cost-reporting/use-ccm-dashboards/aws-dashboard.md
+* [View Azure Cost Dashboard](../../cloud-cost-management/cost-reporting/use-ccm-dashboards/azure-cost-dashboard.md
+* [View GCP Dashboard](../../cloud-cost-management/cost-reporting/use-ccm-dashboards/gcp-dashboard.md
+* [View Cluster Cost Dashboard](../../cloud-cost-management/cost-reporting/use-ccm-dashboards/cluster-cost-dashboard.md
+* [View Multi-cloud Cost Overview Dashboard](../../cloud-cost-management/cost-reporting/use-ccm-dashboards/multi-cloud-cost-overview-dashboard.md
+* [Orphaned EBS Volumes and Snapshots Dashboard](../../cloud-cost-management/cost-reporting/use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md
+* [View AWS EC2 Inventory Cost Dashboard](../../cloud-cost-management/cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md
+* [View AWS EC2 Instance Metrics Dashboard](../../cloud-cost-management/cost-reporting/use-ccm-dashboards/view-aws-ec-2-instance-metrics.md
 

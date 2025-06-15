@@ -1,6 +1,6 @@
 ---
 title: Harness Cloud Cost Management (CCM) Overview
-sidebar_label: Overview
+sidebar_label: Overview & Key Concepts
 description: Provides an overview of Harness Cloud Cost Management.
 sidebar_position: 1
 helpdocs_topic_id: rr85306lq8

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to use different dashboard actions. The document uses [AWS Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/aws-dashboard.md) as an example. You can use **Dashboard actions** in the same way for other **By Harness Dashboards** too. For example, [GCP Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/gcp-dashboard.md), [Azure Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/azure-cost-dashboard.md), [Cluster Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/cluster-cost-dashboard.md), and so on.
+This topic describes how to use different dashboard actions. The document uses [AWS Cost Dashboard](../../cloud-cost-management/cost-reporting/use-ccm-dashboards/aws-dashboard.mdas an example. You can use **Dashboard actions** in the same way for other **By Harness Dashboards** too. For example, [GCP Cost Dashboard](..../../cloud-cost-management/cost-reporting/use-ccm-dashboards/gcp-dashboard.mdAzure Cost Dashboard](../.../../cloud-cost-management/cost-reporting/use-ccm-dashboards/azure-cost-dashboard.mduster Cost Dashboard](../../../../cloud-cost-management/cost-reporting/use-ccm-dashboards/cluster-cost-dashboard.mdo on.
 
 ### Step: Use Dashboard Actions
 

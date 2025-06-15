@@ -549,9 +549,9 @@ This feature enables access to several dashboards:
 - Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards
 
 For more information, see:
-- [View AWS EC2 Inventory Cost Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md)
-- [Orphaned EBS Volumes and Snapshots Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md)
-- [View AWS EC2 Instance Metrics Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-instance-metrics.md)
+- [View AWS EC2 Inventory Cost Dashboard](../../cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md
+- [Orphaned EBS Volumes and Snapshots Dashboard](../../cost-reporting/use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md
+- [View AWS EC2 Instance Metrics Dashboard](../../cost-reporting/use-ccm-dashboards/view-aws-ec-2-instance-metrics.md
 
 ## 4. AutoStopping Rules Permissions
 
