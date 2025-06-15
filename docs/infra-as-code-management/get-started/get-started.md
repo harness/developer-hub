@@ -216,7 +216,7 @@ The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `
 You can add the Approval step to prompt a review of the previous pipeline before proceeding to the next. The most common use case would be to add the Approval step between the `plan` and `apply` steps to ensure you are happy with the infrastructure changes and estimated costs (if `cost estimation` is enabled on your Workspace) that come with them before applying them.
 
 :::warning Approval steps hold resources
-When using an Approval step, the underlying machine running the pipeline remains active until the approval is resolved. This means it will continue consuming compute resources. Plan accordingly to avoid resource locking or cost surprises.
+When using an Approval step, the underlying machine running the pipeline remains active until the approval is resolved. This means it will continue consuming compute resources.
 :::
 
 <Tabs>

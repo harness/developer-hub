@@ -19,7 +19,7 @@ The approval step provides the following information:
 Once you've reviewed the plan and are confident in the proposed changes, you can approve it. Approving the plan acknowledges that you understand the modifications that will be made to your infrastructure.
 
 :::warning Approval steps hold resources
-When using an Approval step, the underlying machine running the pipeline remains active until the approval is resolved. This means it will continue consuming compute resources. Plan accordingly to avoid resource locking or cost surprises.
+When using an Approval step, the underlying machine running the pipeline remains active until the approval is resolved. This means it will continue consuming compute resources.
 :::
 
 To use the approval plan step, perform the following steps:
