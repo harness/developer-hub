@@ -10,7 +10,6 @@ import TabItem from '@theme/TabItem';
 If you want to see the result and impact of the Terraform plan before applying it against the resources, you can add an approval step to your flow. 
 
 The approval step provides the following information:
-
 *  The resources that were added (including Terraform outputs).
 *  The resources that were deleted.
 *  The resources that were changed.
@@ -18,6 +17,10 @@ The approval step provides the following information:
 *  OPA rules that were evaluated so far in the flow.
 
 Once you've reviewed the plan and are confident in the proposed changes, you can approve it. Approving the plan acknowledges that you understand the modifications that will be made to your infrastructure.
+
+:::warning Approval steps hold resources
+When using an Approval step, the underlying machine running the pipeline remains active until the approval is resolved. This means it will continue consuming compute resources. Plan accordingly to avoid resource locking or cost surprises.
+:::
 
 To use the approval plan step, perform the following steps:
 
