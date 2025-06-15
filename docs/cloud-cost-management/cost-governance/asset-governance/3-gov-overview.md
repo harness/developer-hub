@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 :::tip [Latest Features Released in 1.48.1](/release-notes/cloud-cost-management#april-2025---version-1481)
 <Tabs>
   <TabItem value="Alerts for Rule Evaluations" label="Alerts for Rule Evaluations">
-  [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#governance-alerts)
+  [Docs](/docs/cloud-cost-management/cost-governance/asset-governance/3-gov-overview#governance-alerts)
   Users can now configure alerts in Cloud Assets Governance based on customizable criteria such as cloud provider, resource type, cloud accounts (AWS accounts, Azure subscriptions, or GCP projects), minimum number of resources found, and minimum cost impact. When an alert is triggered, users can specify email recipients to be notified and optionally include a `.json` file with detailed evaluation output.
   </TabItem>
 </Tabs>

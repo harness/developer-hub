@@ -169,7 +169,7 @@ For information about these settings, go to [Pipeline settings](/docs/platform/p
 
 ### Cloud Cost Management
 
-For information about these settings, go to [Set up perspective preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences/#default-settings-for-perspective-preferences) and [View and apply recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations/).
+For information about these settings, go to [Set up perspective preferences](/docs/cloud-cost-management/cost-reporting/perspectives/perspective-preferences/#default-settings-for-perspective-preferences) and [View and apply recommendations](/docs/cloud-cost-management/cost-optimization/recommendations/1-home-recommendations.md).
 
 ### Notifications
 

@@ -33,7 +33,7 @@ Follow these steps to connect your cloud infrastructure and start visualizing yo
 </Tabs>
 
 ## 2. Set up Billing Exports
-<Tabs groupId="cloud-provider">
+<Tabs groupId="cloud-provider" queryString>
 <TabItem value="aws" label="AWS">
 1. Create a Cost and Usage Report (CUR) in the **AWS Billing console**.
 2. Enable hourly granularity and include resource IDs.
@@ -54,7 +54,7 @@ Billing exports are not required for CCM to function with Kubernetes.
 :::
 
 ## 3. Select requirements
-<Tabs groupId="cloud-provider">
+<Tabs groupId="cloud-provider" queryString>
 <TabItem value="aws" label="AWS">
 1. Choose between **Account-level** or **Organization-level** visibility.
 2. Decide whether to include linked accounts and tags.
@@ -74,7 +74,7 @@ Billing exports are not required for CCM to function with Kubernetes.
 </Tabs>
 
 ## 4. Configure access / permissions
-<Tabs groupId="cloud-provider">
+<Tabs groupId="cloud-provider" queryString>
 <TabItem value="aws" label="AWS">
 1. Ensure the IAM role has access to S3, CUR, and Cost Explorer APIs.
 2. View AWS policy requirements →
@@ -91,6 +91,20 @@ Billing exports are not required for CCM to function with Kubernetes.
 2. You can customize RBAC via values.yaml if needed.
 </TabItem>
 </Tabs>
+
+:::tip
+Harness CCM follows least-privilege best practices. All permissions are scoped to read-only access needed for billing data ingestion.
+[Learn more about how CCM accesses and ingests billing data →](/docs/cloud-cost-management/get-started/onboarding-guide/external-data-ingestion/)
+:::
+
+## 5. Test the Connection
+Once your connector and billing exports are configured, return to the **Connectors** page in Harness and use the **Test Connection** button to validate setup.
+
+For Kubernetes, navigate to **Cloud Cost Management > Clusters** to verify that the agent is sending metrics and the cluster is marked as active.
+
+:::note
+Cost data may take up to 24 hours to appear depending on your cloud provider’s billing export cadence.
+:::
 
 ## What's Next?
 You've successfully connected your cloud provider and enabled billing visibility. You can now:

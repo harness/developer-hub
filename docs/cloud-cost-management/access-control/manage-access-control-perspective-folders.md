@@ -78,7 +78,7 @@ Similarly, on the **Recommendations** page, the visibility of the recommendation
 | User does not have Recommendations View Permission but has Perspective View Permission | Recommendations would be filtered based on Perspective View Permission which uses perspective rules for filtering |
 | User do not have either Recommendations View Permission or Perspective View Permission | User won't be able to see any recommendations |
 
-For more information, go to [Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations).
+For more information, go to [Recommendations](/docs/cloud-cost-management/cost-optimization/recommendations/1-home-recommendations.md).
 
 
 A user with folder restrictions does not have permission to create new folders. This means that the user can only work within the existing folder structure that has been set up for them by an administrator.

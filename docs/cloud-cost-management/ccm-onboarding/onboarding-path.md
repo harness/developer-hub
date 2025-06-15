@@ -163,7 +163,7 @@ The workflow unfolds as follows:
 2. A Jira ticket is created for implementing each recommendation and is assigned to the respective owner within the engineering team.
 3. The engineering team reviews and works on implementing the recommendations. Once a recommendation is successfully implemented, the Jira status can be updated, marking the recommendation as applied in CCM.
 
-For more information on Jira workflow, go to [View and apply recommendations](docs/cloud-cost-management/4-use-ccm-cost-optimization/1-ccm-recommendations/1-home-recommendations.md).
+For more information on Jira workflow, go to [View and apply recommendations](/docs/cloud-cost-management/cost-optimization/recommendations/1-home-recommendations.md).
 
 ### Step 3. AutoStopping
 
