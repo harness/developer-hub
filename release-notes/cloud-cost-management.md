@@ -22,7 +22,7 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 
 ### [New Feature] Granular AutoStopping Permissions Support for Azure and GCP
-**[CCM-21574, CCM-21575] | [Docs for Azure] | [Docs for GCP]**
+**[CCM-21574, CCM-21575] | [Docs for Azure](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping) | [Docs for GCP](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping)**
 
 We have introduced **Granular permissions support for Azure and GCP Autostopping**. With this update, users can now **select the specific resource types they want to enable for Autostopping** such as virtual machines and instance groups. Based on the selected resource types, only the minimal required set of permissions will be requested. This feature simplifies onboarding, and aligns with security best practices.
 
