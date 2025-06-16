@@ -118,12 +118,6 @@ The following YAML example demonstrates how a **Run** step can use a Docker imag
                     command: Echo "Welcome to Harness CI"
 ```
 
-:::info
-
-Steps running in containers can't communicate with [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/) running on Harness Cloud build infrastructure because they don't have a common host.
-
-:::
-
 </details>
 
 ### Verifying software versions
@@ -290,7 +284,6 @@ Harness VM images use a versioning system to help you balance between getting th
 
 - **`latest`** - The most recent image with the newest tool versions and updates
 - **`latest-1`** - The previous stable image version
-- **`latest-2`** - Two versions behind the current latest
 
 ### Recommended Pipeline Strategy
 
@@ -319,8 +312,6 @@ Harness regularly updates VM images to include:
 - Latest versions of popular development tools
 - Runtime updates (Node.js, Python, Java, etc.)
 - New tools and utilities based on community feedback
-
-Images are typically updated every two months, with critical security updates applied more frequently.
 
 ## Support and Feedback
 
