@@ -18,7 +18,6 @@ Harness provides VM images for multiple operating systems and architectures:
 | [Linux AMD Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-22.04` | Default Linux image for Linux AMD |
 | [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `macos-14` | Latest macOS |
 | [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-2022` | Latest Windows 2022 Server Image |
-| [Windows Server 2019](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md) | `windows-2019` | Latest Windows 2019 Server Image |
 
 ### Using preinstalled software
 
