@@ -89,6 +89,7 @@ These concurrency limits are *account wide* and NOT per pipeline.
 
 This setting can only be edited in Team and Enterprise plans. You can set it at the account scope only. You can configure the limit anywhere between 2 and the maximum. 
 
+<!--
 ### Project-Level Pipeline Execution Concurrency
 
 :::note
@@ -142,6 +143,7 @@ You have two options for carving up your total concurrency:
   3. On dequeuing mixed queues:
      - **High** pipelines start on the first available slot in **High** or **Low**.  
      - **Low** pipelines wait for the next available **Low** slot.  
+-->
 
 ### Pipeline Timeout and Stage Timeout (execution time limits)
 
