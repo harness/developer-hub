@@ -124,4 +124,7 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 # advance configuration > External DB > TimescaleDB
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb/ /docs/self-managed-enterprise-edition/advanced-configurations/external-db/timescaledb/use-an-external-sm-timescaledb/
 
+# advance configuration > External DB > postgreSQL
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/postgresql/use-an-external-postgres-database
+
 # Redirects generated from Front Matter [sytem generated goes below here]:
