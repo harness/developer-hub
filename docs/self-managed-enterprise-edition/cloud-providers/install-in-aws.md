@@ -1,7 +1,7 @@
 ---
-title: Install Self-Managed Platform in Amazon EKS
+title: Install Self-Managed Platform in Amazon Elastic Kubernetes Service (EKS)
 description: This guide provides detailed instructions for deploying the Harness Self-Managed Enterprise Edition on Elastic Kubernetes Service (EKS).
-sidebar_label: Amazon EKS
+sidebar_label: Amazon Elastic Kubernetes Service (EKS)
 sidebar_position: 1
 ---
 
