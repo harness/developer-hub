@@ -1,8 +1,8 @@
 ---
-title: Install in Google Kubernetes Enginer (GKE)
+title: Install in Google Kubernetes Engine (GKE)
 description: Learn how to install Harness Self-Managed Enterprise Edition in GCP.
 sidebar_position: 2
-sidebar_label: Google Kubernetes Enginer (GKE)
+sidebar_label: Google Kubernetes Engine (GKE)
 ---
 
 import Tabs from '@theme/Tabs';
