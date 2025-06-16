@@ -129,7 +129,7 @@ CCM offers the following features:
 | --- | --- | 
 | **Cost Visibility** (Required)| This feature is available by default. Make sure you have set up the GCP Billing Export. Provides the following capabilities:<ul><li>Insights into GCP costs by projects, products, etc.</li><li>Root cost analysis using cost perspectives </li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul>|
 | **GCP Inventory Management** (Optional)| This feature provides visibility into your GCE VMs and unused disks and snapshots. The insights provided by inventory management can be used by Finance teams to understand resource utilization across the board.|
-| **GCP optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. For more information, see **Create AutoStopping Rules for GCP**.<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
+| **GCP optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. If selected, you can select [granular permissions in the next step](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostoppingg)|
 | **Cloud Governance** (Optional)              | This feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. For more information, see [Asset governance](../../5-use-ccm-cost-governance/asset-governance/1-asset-governance.md). <ul><li> Asset Management (Instance, Disk, SQL-instance, Image) </li><li>Automated Actions</li></ul>     
 
 Make your selection and select **Continue**.
@@ -200,6 +200,195 @@ Your connector is now listed in the **Connectors**.
 
 <DocImage path={require('./static/set-up-cost-visibility-for-gcp-13.png')} width="50%" height="50%" title="Click to view full size image" />
 
+
+## Granular Permissions for AutoStopping
+
+<DocImage path={require('./static/granular-gcp-one.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+#### Compute Engine Virtual Machines
+
+<details>
+<summary><b>Schedules only</b></summary>
+
+```
+// List VMs
+compute.instances.list
+
+// Tag VM
+compute.instances.setLabels
+
+// Get region information to list zones
+compute.regions.get
+
+// List regions
+compute.regions.list
+
+// Required while waiting to complete VM operations, for example stop operation
+compute.zoneOperations.get
+
+// Stop VM
+compute.instances.stop
+
+// Start VM
+compute.instances.start
+```
+
+</details>
+
+<details>
+<summary><b>with AutoStopping Proxy</b></summary>
+
+```
+// List networks
+compute.networks.list
+
+// List machine types
+compute.machineTypes.list
+
+// List subnets
+compute.subnetworks.list
+
+// List security groups
+compute.firewalls.list
+
+// Create address
+compute.addresses.create
+
+// Get address
+compute.addresses.get
+
+// create disk
+compute.disks.create
+
+// Use sub network
+compute.subnetworks.use
+
+// Create proxy VM
+compute.instances.create
+
+// use static IP
+compute.subnetworks.useExternalIp
+
+// Use address
+compute.addresses.use
+
+// Set VM metadata
+compute.instances.setMetadata
+
+// Set tags
+compute.instances.setTags
+
+// Delete address
+compute.addresses.delete
+
+// Delete proxy VM
+compute.instances.delete
+```
+
+</details>
+
+#### Instance Groups
+
+<details>
+<summary><b>Schedules only</b></summary>
+
+```
+// Get region information to list zones
+compute.regions.get
+
+// List regions
+compute.regions.list
+
+// list instance groups
+compute.instanceGroups.list
+
+// list managed instance groups
+compute.instanceGroupManagers.list
+
+// get instance groups details
+compute.instanceGroups.get
+
+// Get instances in instance groups
+compute.instances.get
+
+// List autoscalers
+compute.autoscalers.list
+
+// Get autoscaler details
+compute.autoscalers.get
+
+// For updating autoscaler configurations. This is needed during warm up and cool down
+compute.autoscalers.update
+
+// List VMS in instance group
+compute.instances.list
+
+// Deleting VMs from managed instance groups during cool down
+compute.instances.delete
+
+// Get status of operations
+compute.globalOperations.get
+
+// Get status of operations
+compute.regionOperations.get
+
+// Get status of operations
+compute.zoneOperations.get
+```
+
+</details>
+
+<details>
+<summary><b>with AutoStopping Proxy</b></summary>
+
+```
+// List networks
+compute.networks.list
+
+// List machine types
+compute.machineTypes.list
+
+// List subnets
+compute.subnetworks.list
+
+// List security groups
+compute.firewalls.list
+
+// Create address
+compute.addresses.create
+
+// Get address
+compute.addresses.get
+
+// create disk
+compute.disks.create
+
+// Use sub network
+compute.subnetworks.use
+
+// Create proxy VM
+compute.instances.create
+
+// use static IP
+compute.subnetworks.useExternalIp
+
+// Use address
+compute.addresses.use
+
+// Set VM metadata
+compute.instances.setMetadata
+
+// Set tags
+compute.instances.setTags
+
+// Delete address
+compute.addresses.delete
+
+// Delete proxy VM
+compute.instances.delete
+```
+
+</details>
 
 
 ### Next Steps

@@ -20,6 +20,19 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 ## June 2025 - Version 1.54.5
 
+
+### [New Feature] Granular AutoStopping Permissions Support for Azure and GCP
+**[CCM-21574, CCM-21575] | [Docs for Azure] | [Docs for GCP]**
+
+We have introduced **Granular permissions support for Azure and GCP Autostopping**. With this update, users can now **select the specific resource types they want to enable for Autostopping** such as virtual machines and instance groups. Based on the selected resource types, only the minimal required set of permissions will be requested. This feature simplifies onboarding, and aligns with security best practices.
+
+#### Granular AutoStopping Permissions Support for Azure:
+
+<DocImage path={require('./static/granular-azure.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+#### Granular AutoStopping Permissions Support for GCP:
+<DocImage path={require('./static/granular-gcp.png')} width="90%" height="90%" title="Click to view full-size image" />
+
 ### Feature Improvements
 
 - **RBAC Support for Nested Cost Categories:** We've extended Role-Based Access Control (RBAC) to support nested cost buckets within CCM data scope, providing more granular access control for nested Cost Categories. Note that RBAC support is not available for the Unallocated Cost bucket. [CCM-23579]
