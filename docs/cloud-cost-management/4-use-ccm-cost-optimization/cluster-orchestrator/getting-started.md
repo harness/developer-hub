@@ -21,7 +21,6 @@ Cluster Orchestrator is designed for quick implementation with minimal configura
 
 ## Prerequisites
 
-- [AWS EKS cluster with Metrics Server installed](https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html)
 - [Harness Kubernetes connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector)
 
 ## Quick Start
@@ -33,5 +32,5 @@ Cluster Orchestrator is designed for quick implementation with minimal configura
    - [Advanced](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
 4. After this, your created connector will show up on the home page of Cluster Orchestrator.
 5. Choose an enablement method and follow the steps listed on the respective pages:
-   - **kubectl**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co#installation-via-kubectl)
-   - **Helm**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co#helm-based-installation)
+   - **Onboard with a single command via kubectl**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-kubectl#kubectl-based-installation)
+   - **Terraform and Helm installation for advanced installation options**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co-helm)
