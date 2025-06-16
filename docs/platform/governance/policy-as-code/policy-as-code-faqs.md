@@ -1,7 +1,7 @@
 ---
 title: Policy as Code FAQs
 description: See sample policies and when to use them.
-sidebar_position: 80
+sidebar_position: 200
 ---
 
 This topic addresses some frequently asked questions about Policy as Code support in Harness.

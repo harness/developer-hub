@@ -169,26 +169,5 @@ import { MODULES } from "@site/src/constants";
           },
         ],
       },
-      {
-        name: "FirstGen release notes",
-        description:
-          "",
-        list: [
-          {
-            title: "FirstGen SaaS release notes",
-            module: MODULES.platform,
-            description:
-              "",
-            link: "/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes",
-          },
-          {
-            title: "FirstGen Self-Managed Enterprise Edition release notes",
-            module: MODULES.platform,
-            description:
-              "",
-            link: "/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes",
-          },
-        ],
-      },
     ];
     /* Define the cards - end */

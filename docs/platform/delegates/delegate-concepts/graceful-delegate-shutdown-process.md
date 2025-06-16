@@ -103,20 +103,12 @@ For more information on `stopTimeout`, go to [Container timeouts](https://docs.a
                "value": ""
              },
              {
-               "name": "DEPLOY_MODE",
-               "value": "KUBERNETES"
-             },
-             {
                "name": "MANAGER_HOST_AND_PORT",
                "value": "<MANAGER_HOST_AND_PORT>"
              },
              {
                "name": "DELEGATE_NAME",
                "value": "<DELEGATE_NAME>"
-             },
-             {
-               "name": "LOG_STREAMING_SERVICE_URL",
-               "value": "<LOG_STREAMING_SERVICE_URL>"
              },
             {
                "name": "DELEGATE_TAGS",

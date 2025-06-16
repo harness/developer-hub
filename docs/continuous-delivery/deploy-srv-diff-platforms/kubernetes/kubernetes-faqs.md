@@ -885,3 +885,13 @@ If your **Kubernetes manifests** or **GitOps configurations** fail due to **SSL 
 - **Use Case:** Use this flag when **connecting to SCM providers like GitHub/GitLab** with **invalid SSL certificates**.  
 
 Note: Disabling SSL verification reduces security, so use these flags only in trusted environments
+
+### How does Harness handle Kubernetes resource querying today?
+
+Harness uses the delegate to query Kubernetes resources using the built-in Kubernetes SDK. No in-cluster agent is required. If the delegate’s role is restricted and cannot list or describe resources, Harness cannot fetch pod logs, status, or metrics. Most users grant the necessary access to the delegate. If access is removed, resource querying will not work.
+
+### How are Kubernetes resource query limitations handled in Harness?
+
+Harness queries Kubernetes resources using the delegate and the built-in Kubernetes SDK—no in-cluster agent is required. This allows Harness to retrieve deployment logs, pod statuses, restart counts, and related data.
+
+If resource querying fails, it's typically because the delegate's Kubernetes service account lacks sufficient permissions. Most users grant read access to pods, events, and namespaces for this reason.

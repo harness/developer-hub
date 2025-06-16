@@ -42,6 +42,12 @@ The UI displays a detailed error message to assist in resolving the issue quickl
 - No Resources in Evaluation: The rule was evaluated, but there were no resources found.
 - Savings Below Threshold: A recommendation was generated, but the potential savings were calculated to be less than $10.
 
+## Alerts
+
+You can configure alerts to notify you for rule evaluations based on the following parameters:
+
+<DocImage path={require('../static/aws-alert.png')} width="80%" height="80%" title="Click to view full size image" />
+
 ## Recommendations 
 
 ### Granular Recommendations
@@ -70,13 +76,13 @@ Owing to this, now, while adding a recommendation to Ignore List, users have the
   <DocImage path={require('../static/aws-granular.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
-### Recommendation: delete-unattached-ebs
+### Recommendation: delete-unattached-aws-ebs
 **Description:** Delete all ebs volumes which are unattached
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-unattached-ebs
+  - name: delete-unattached-aws-ebs
     resource: ebs
     filters:
       - Attachments: []
@@ -98,13 +104,13 @@ policies:
 
 ---
 
-### Recommendation: elb-low-request-count-list
+### Recommendation: list-low-request-count-aws-elb
 **Description:** List ELBs with low request count
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: elb-low-request-count-list
+  - name: list-low-request-count-aws-elb
     resource: elb
     description: List ELBs with low request count
     filters:
@@ -130,13 +136,13 @@ policies:
 
 ---
 
-### Recommendation: migrate-gp2-to-gp3-ebs-volumes 
+### Recommendation: migrate-gp2-to-gp3-aws-ebs 
 **Description:** Migrate gp2 volumes to gp3
 
 **Policy Used:**
 ```yaml
 policies:
- - name: migrate-gp2-to-gp3-ebs-volumes
+ - name: migrate-gp2-to-gp3-aws-ebs
    resource: ebs
    filters:
     - VolumeType: gp2
@@ -163,13 +169,13 @@ Ref: https://aws.amazon.com/blogs/storage/migrate-your-amazon-ebs-volumes-from-g
 ---
 
 
-### Recommendation: delete-snapshot-with-no-volume 
+### Recommendation: delete-volume-absent-aws-ebs-snapshot 
 **Description:** Delete snapshots with no volumes
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-snapshot-with-no-volume
+  - name: delete-volume-absent-aws-ebs-snapshot
     description: Find any snapshots that do not have a corresponding volume.
     resource: aws.ebs-snapshot
     filters:
@@ -192,13 +198,13 @@ policies:
 ---
 
 
-### Recommendation: stop-unused-rds
+### Recommendation: stop-unused-aws-rds
 **Description:** Stop unused RDS database
 
 **Policy Used:**
 ```yaml
  policies:
-  - name: stop-unused-rds
+  - name: stop-unused-aws-rds
     resource: rds
     description: Stop unused RDS database
     filters:
@@ -226,13 +232,13 @@ policies:
 
 ---
 
-### Recommendation: elb-delete-unused
+### Recommendation: delete-unused-aws-elb
 **Description:** Delete unused ELB 
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: elb-delete-unused
+  - name: delete-unused-aws-elb
     resource: elb
     filters:
       - Instances: []
@@ -251,13 +257,13 @@ policies:
 
 ---
 
-### Recommendation: release-unattached-eips
+### Recommendation: release-unattached-aws-elastic-ip
 **Description:** Release unattached Elastic IPs
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: release-unattached-eips
+  - name: release-unattached-aws-elastic-ip
     resource: aws.elastic-ip
     filters:
       - AssociationId: absent
@@ -276,14 +282,14 @@ policies:
 
 ---
 
-### Recommendation: under-utilized-elasticcache-cluster
+### Recommendation: delete-underutilized-aws-cache-cluster
 **Description:** Delete underutilized cache cluster with CPU utilization less than 5% in the last 7 days.
 
 **Policy Used:**
 
 ```yaml
 policies:
-  - name: under-utilized-elasticcache-cluster
+  - name: delete-underutilized-aws-cache-cluster
     resource: cache-cluster
     description: |
       Delete underutilised cache cluster with CPU utilisation less than 5% in last 7 days
@@ -310,7 +316,7 @@ policies:
     - ```elasticache:DeleteReplicationGroup```
 
 
-### Recommendation: s3-lifecycle-configuration
+### Recommendation: configure-lifecycle-aws-s3
 
 **Description:** Configure lifecycle for S3 buckets wherever it is absent which would help to reduce storage spend
 
@@ -318,7 +324,7 @@ policies:
 
 ```yaml
 policies:
-  - name: s3-lifecycle-configuration
+  - name: configure-lifecycle-aws-s3
     resource: aws.s3
     description: |
       Configure lifecycle for s3 buckets wherever it is absent which would help to reduce storage spend
@@ -384,7 +390,7 @@ References:
     - ```s3:PutLifecycleConfiguration```
 
 
-### Recommendation: s3-intelligent-tiering-configuration
+### Recommendation: set-intelligent-tiering-aws-s3
 
 **Description:** Configure intelligent tiering for S3 buckets wherever it is disabled which would help to reduce storage spend.
 
@@ -392,7 +398,7 @@ References:
 
 ```yaml
 policies:
-  - name: s3-intelligent-tiering-configuration
+  - name: set-intelligent-tiering-aws-s3
     resource: aws.s3
     description: |
       Configure intelligent tiering for s3 buckets wherever it is disabled which would help to reduce storage spend.
@@ -447,7 +453,7 @@ If 20% of your data transitions to the Infrequent Access tier after 30 days, 20%
     - ```s3:PutIntelligentTieringConfiguration```
 
 
-### Recommendation: delete-underutilized-redshift-cluster
+### Recommendation: delete-underutilized-aws-redshift
 
 **Description:** Delete any Amazon Redshift cluster where CPU Utilization has been less than 5% for the last 7 days
 
@@ -455,7 +461,7 @@ If 20% of your data transitions to the Infrequent Access tier after 30 days, 20%
 
 ```yaml
 policies:
-  - name: delete-underutilized-redshift-cluster
+  - name: delete-underutilized-aws-redshift
     resource: redshift
     description: |
       Delete redshift cluster where CPU Utilization is less than 5% for last 7 days
@@ -480,7 +486,7 @@ policies:
     - ```redshift:DeleteCluster```
 
 
-### Recommendation: delete-redshift-old-manual-snapshots
+### Recommendation: delete-old-manual-aws-redshift-snapshot
 
 **Description:** Delete all redshift snapshots older than 35 days with a lifetime retention period
 
@@ -489,7 +495,7 @@ policies:
 ```yaml
 
 policies:
-  - name: delete-redshift-old-manual-snapshots
+  - name: delete-old-manual-aws-redshift-snapshot
     resource: redshift-snapshot
     description: |
       Delete all redshift snapshot older than 35 days with lifetime retention period
@@ -512,7 +518,7 @@ policies:
 
 ---
 
-### Recommendation: delete-empty-dynamodb-tables
+### Recommendation: delete-empty-aws-dynamodb-table
 
 **Description:** Delete DyanmoDB tables which are empty
 
@@ -520,7 +526,7 @@ policies:
 
 ```yaml
 policies:
-  - name: delete-empty-dynamodb-tables
+  - name: delete-empty-aws-dynamodb-table
     resource: dynamodb-table
     description: |
       Delete DyanmoDB tables which are empty
@@ -533,7 +539,7 @@ policies:
 
 ---
 
-### Recommendation: delete-stale-log-group
+### Recommendation: delete-stale-aws-log-group
 
 **Description:** Delete stale cloud watch log groups
 
@@ -541,7 +547,7 @@ policies:
 
 ```yaml
 policies:
-  - name: delete-stale-log-group
+  - name: delete-stale-aws-log-group
     resource: log-group
     description: |
       Delete stale cloud watch log groups
@@ -555,7 +561,7 @@ policies:
 
 ---
 
-### Recommendation: delete-stale-rds-snapshots
+### Recommendation: delete-stale-aws-rds-snapshot
 
 **Description:** Delete all stale(older than 28 days) RDS snapshots
 
@@ -563,7 +569,7 @@ policies:
 
 ```yaml
 policies:
-  - name: delete-stale-rds-snapshots
+  - name: delete-stale-aws-rds-snapshot
     resource: rds-snapshot
     description: |
       Delete all stale(older than 28 days) RDS snapshots
@@ -578,7 +584,7 @@ policies:
 
 ---
 
-### Recommendation: delete-unencrypted-firehose
+### Recommendation: delete-unencrypted-aws-firehose
 
 **Description:**  Delete Firehose which are not encrypted
 
@@ -586,7 +592,7 @@ policies:
 
 ```yaml
 policies:
-  - name: delete-unencrypted-firehose
+  - name: delete-unencrypted-aws-firehose
     resource: firehose
     description: |
       Delete Firehose which are not encrypted
@@ -599,7 +605,7 @@ policies:
 
 ---
 
-### Recommendation: delete-unencrypted-sqs
+### Recommendation: delete-unencrypted-aws-sqs
 
 **Description:**  Delete SQS which are not encrypted
 
@@ -607,7 +613,7 @@ policies:
 
 ```yaml
 policies:
-  - name: delete-unencrypted-sqs
+  - name: delete-unencrypted-aws-sqs
     resource: sqs
     description: |
       Delete SQS which are not encrypted
@@ -620,7 +626,7 @@ policies:
 
 ---
 
-### Recommendation: delete-unused-nat-gateways
+### Recommendation: delete-unused-aws-nat-gateway
 
 **Description:** Delete unused NAT Gateways based on no associated traffic in past 7 days.
 
@@ -628,7 +634,7 @@ policies:
 
 ```yaml
 policies:
-  - name: delete-unused-nat-gateways
+  - name: delete-unused-aws-nat-gateway
     resource: nat-gateway
     description: |
       Delete unused NAT Gateways based on no associated traffic in past 7 days.

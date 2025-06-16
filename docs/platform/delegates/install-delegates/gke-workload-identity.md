@@ -115,12 +115,101 @@ Deploy a Harness Delegate onto the GKE cluster.
     your-delegate name                   1/1     Running   0          2m23s
     ```
 
-    As part of deploying the Harness Delegate, the task also performs these additional tasks:
+## Create Service Account and IAM binding 
 
-    - Creates a Google Service Account (GSA) `harness-delegate`.
-    - Adds an IAM binding policy to the `harness-delegate` service account (SA), with the role `roles/iam.workloadIdentityUser` and a member "serviceAccount:$GOOGLE_CLOUD_PROJECT.svc.id.goog[\default/harness-builder]".
-    - Adds a `harness-delegate` SA with the role `roles/artifactregistry.createOnPushRepoAdmin`, enabling it to push images to GAR.
-    - Creates a KSA `harness-builder` annotated with `iam.gke.io/gcp-service-account` to `harness-delegate`, allowing it to impersonate the GSA thereby enabling it to push the built application image to GAR.
+This section outlines the steps to configure GKE Workload Identity, allowing workloads to securely access Google Cloud services using IAM roles.
+
+1. Create a namespace for the Kubernetes service account. Alternatively, you can use the default namespace or an existing one.
+
+   ```bash
+      kubectl create namespace harness-delegate-ng
+   ```
+2. Create a Kubernetes service account for your application. You can use the default service account in the default namespace or an existing one.
+
+   ```bash
+      kubectl create serviceaccount harness-builder --namespace harness-delegate-ng
+   ```
+3. Create an IAM service account for your application or use an existing one. You can use any IAM service account from any project in your organization. For Config Connector, apply the IAMServiceAccount object to the selected service account.
+
+   ```bash
+      gcloud iam service-accounts create harness-delegate --project=your-gcp-project
+   ```
+4. Ensure that your IAM service account has the necessary [roles](https://cloud.google.com/iam/docs/understanding-roles). You can grant additional roles using the following command.
+
+   ```bash
+      gcloud projects add-iam-policy-binding your-gcp-project \
+      --member "serviceAccount:harness-delegate@your-gcp-project.iam.gserviceaccount.com" \
+      --role "roles/artifactregistry.createOnPushRepoAdmin"
+   ```
+
+5. Allow the Kubernetes service account to impersonate the IAM service account by adding an [IAM policy binding](https://cloud.google.com/sdk/gcloud/reference/iam/service-accounts/add-iam-policy-binding) between them. This binding grants the Kubernetes service account permission to act as the IAM service account.
+
+   ```bash
+      gcloud iam service-accounts add-iam-policy-binding harness-delegate@your-gcp-project.iam.gserviceaccount.com \
+      --role roles/iam.workloadIdentityUser \
+      --member "serviceAccount:your-gcp-project.svc.id.goog[harness-delegate-ng/harness-builder]" \
+      --project your-gcp-project
+   ```
+
+6. Annotate the Kubernetes service account with the IAM service account's email address.
+
+   ```bash
+      kubectl annotate serviceaccount harness-builder \
+      --namespace harness-delegate-ng \
+      iam.gke.io/gcp-service-account=harness-delegate@your-gcp-project.iam.gserviceaccount.com
+   ```
+
+7. Update your Pod spec to schedule workloads on nodes with Workload Identity enabled and use the annotated Kubernetes service account.
+
+      ```bash
+      spec:
+         serviceAccountName: ksa
+         nodeSelector:
+            iam.gke.io/gke-metadata-server-enabled: "true"
+      ```
+
+8. Redeploy the pod or delegate to apply the changes.
+
+## Verify the Workload Identity configuration.
+
+1. Create a Pod that uses the annotated Kubernetes service account and run a curl command against the service accounts endpoint. Save the following configuration as harness-test.yaml:
+
+   ```yaml
+      apiVersion: v1
+      kind: Pod
+      metadata:
+      name: workload-identity-test
+      namespace: harness-delegate-ng
+      spec:
+      containers:
+      - image: google/cloud-sdk:slim
+         name: workload-identity-test
+         command: ["sleep","infinity"]
+      serviceAccountName: ksa
+      nodeSelector:
+         iam.gke.io/gke-metadata-server-enabled: "true"
+   ```
+2. Deploy the Pod:
+
+   ```bash
+      kubectl apply -f harness-test.yaml
+   ```
+
+3. Start an interactive session in the Pod.
+
+   ```bash
+      kubectl exec -it workload-identity-test \
+      --namespace harness-delegate-ng \
+      -- /bin/bash
+   ```
+
+4. Verify the identity by running the following command inside the Pod:
+
+   ```bash
+      curl -H "Metadata-Flavor: Google" \
+      http://[metadata.google.internal]/computeMetadata/v1/instance/service-accounts/default/email
+   ```
+   If Workload Identity is configured correctly, this command will return the email of the IAM service account associated with the Pod.
 
 ## Test it with a CI pipeline
 

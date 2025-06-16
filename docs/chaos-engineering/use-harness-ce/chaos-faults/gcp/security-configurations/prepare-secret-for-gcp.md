@@ -1,5 +1,6 @@
 ---
 title: Creating secrets for GCP experiments
+sidebar_position: 1
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp
 - /docs/chaos-engineering/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp

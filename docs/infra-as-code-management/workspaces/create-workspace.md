@@ -32,9 +32,9 @@ Go to [workspace statuses](/docs/infra-as-code-management/workspaces/worksace-st
 :::warning pending release
 The new workspace wizard is currently pending release and will be available soon!
 :::
-<DocVideo src="https://app.tango.us/app/embed/cfb68b54-eb46-42af-a622-5b76c9270598" title="Creating a New Workspace in Harness" />
+<DocVideo src="https://app.tango.us/app/embed/cfb68b54-eb46-42af-a622-5b76c9270598?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create a IaCM Workspace in Harness" />
 </TabItem>
-<TabItem value="Step-by-step" default>
+<TabItem value="Step-by-step">
 
 To create a new workspace, follow these steps:
 1. Sign in to [app.harness.io](https://app.harness.io).

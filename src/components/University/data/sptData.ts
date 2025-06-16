@@ -8,7 +8,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing the Harness Platform.",
-     version: "Free Plan of any module",
+     version: "Free Plans of any module",
      link: "https://university-registration.harness.io/self-paced-training-platform-fundamentals",
      tileType: tileType.preReq,
      cardType: cardType.SPT,
@@ -19,7 +19,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Continuous Delivery & GitOps.",
-     version: "Harness CD & GitOps Free Plan",
+     version: "Harness CD & GitOps Free Plans",
      link: "https://university-registration.harness.io/self-paced-training-harness-continuous-delivery-gitops",
      tileType: tileType.normal,
      cardType: cardType.SPT,
@@ -30,7 +30,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Continuous Integration.",
-     version: "Harness CI Free Plan",
+     version: "Harness CI Free Plans",
      link: "https://university-registration.harness.io/self-paced-training-harness-continuous-integration",
      tileType: tileType.normal,
      cardType: cardType.SPT,
@@ -41,7 +41,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Security Testing Orchestration.",
-     version: "Harness STO Enterprise Plan",
+     version: "Harness STO Paid Plans",
      link: "https://university-registration.harness.io/self-paced-training-harness-security-testing-orchestration",
      tileType: tileType.normal,
      cardType: cardType.SPT,
@@ -52,7 +52,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Software Engineering Insights.",
-     version: "Harness SEI Enterprise Plan",
+     version: "Harness SEI Paid Plans",
      link: "https://university-registration.harness.io/self-paced-training-harness-software-engineering-insights",
      tileType: tileType.normal,
      cardType: cardType.SPT,
@@ -63,7 +63,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Cloud Cost Management.",
-     version: "Harness CCM Free Plan",
+     version: "Harness CCM Free Plans",
      link: "https://university-registration.harness.io/self-paced-training-harness-cloud-cost-management",
      tileType: tileType.normal,
      cardType: cardType.SPT,
@@ -74,7 +74,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Infrastructure as Code Management.",
-     version: "Harness IaCM Free Plan",
+     version: "Harness IaCM Free Plans",
      link: "https://university-registration.harness.io/self-paced-training-harness-infrastructure-as-code-management",
      tileType: tileType.normal,
      cardType: cardType.SPT,
@@ -85,7 +85,7 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Internal Developer Portal.",
-     version: "Harness IDP Enterprise Plans",
+     version: "Harness IDP Paid Plans",
      link: "https://university-registration.harness.io/self-paced-training-harness-internal-developer-portal",
      tileType: tileType.normal,
      cardType: cardType.SPT,
@@ -96,8 +96,30 @@ export const spt: IltCardItem[] = [
      type: type.user,
      description:
        "Self-paced video course introducing Harness Chaos Engineering.",
-     version: "Harness CE Free Plan",
+     version: "Harness CE Free Plans",
      link: "https://university-registration.harness.io/self-paced-training-harness-chaos-engineering",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
+   {
+    title: "Supply Chain Security",
+    module: MODULES.ssca,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Supply Chain Security.",
+     version: "Harness SCS Paid Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-supply-chain-security",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
+     {
+    title: "Code Repository",
+    module: MODULES.code,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Code Repository.",
+     version: "Harness Paid Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-code-repository",
      tileType: tileType.normal,
      cardType: cardType.SPT,
    },

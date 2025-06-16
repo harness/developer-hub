@@ -1,14 +1,15 @@
-import { buildSearchBox, SearchBoxState } from '@coveo/headless';
+import { buildSearchBox, SearchEngine } from '@coveo/headless';
 import React, { useEffect, useRef, useState } from 'react';
 import SearchBox from './components/SearchBox';
-import InitializeCoveo from './Engine';
+import InitializeCoveo, { isTokenExpired } from './Engine';
 import SearchResultBox from './components/SearhResultBox';
 const CoveoSearch = () => {
   const searchBoxRef = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [searchBoxController, setSearchBoxController] = useState<any>(null);
-
+  const [engine, setEngine] = useState<SearchEngine | null>(null);
+  const [version, setVersion] = useState(0);
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -18,38 +19,31 @@ const CoveoSearch = () => {
 
   useEffect(() => {
     async function Initialize() {
-      const engine = await InitializeCoveo();
-      setEngine(engine);
-      if (engine) {
-        const SearchBoxController = buildSearchBox(engine);
-        setSearchBoxController(SearchBoxController);
+      try {
+        const newEngine = await InitializeCoveo();
+        if (newEngine) {
+          setEngine(newEngine);
+          const SearchBoxController = buildSearchBox(newEngine);
+          setSearchBoxController(SearchBoxController);
+          setVersion((v) => v + 1);
+        }
+      } catch (error) {
+        console.error('Error initializing Coveo:', error);
       }
     }
     Initialize();
 
-    const interval = setInterval(() => {
+    const interval = setInterval(async () => {
       if (isTokenExpired()) {
-        Initialize();
+        await Initialize();
       }
     }, 30000); // Check every 30 seconds
 
     return () => clearInterval(interval);
   }, []);
 
-  const isTokenExpired = (): boolean => {
-    const storedToken = localStorage.getItem('coveo_token');
-    const data = JSON.parse(storedToken);
-    if (data && data.expiry) {
-      return data.expiry <= Date.now();
-    }
-    return true;
-  };
-
   const handleClickOutside = (event: MouseEvent) => {
-    if (
-      searchBoxRef.current &&
-      !searchBoxRef.current.contains(event.target as Node)
-    ) {
+    if (searchBoxRef.current && !searchBoxRef.current.contains(event.target as Node)) {
       setOpen(false);
     }
   };
@@ -60,23 +54,15 @@ const CoveoSearch = () => {
       setSearchValue(searchValue);
     }
   };
-  const [engine, setEngine] = useState<any>(null);
 
-  if (!engine) {
-    return <></>;
+  if (!engine || !searchBoxController) {
+    return null;
   }
-  if (!searchBoxController) {
-    return <div></div>;
-  }
+
   return (
-    <div>
+    <div key={version}>
       <SearchBox controller={searchBoxController} onSearch={handleSearch} />
-      <SearchResultBox
-        ref={searchBoxRef}
-        open={open}
-        engine={engine}
-        searchValue={searchValue}
-      />
+      <SearchResultBox ref={searchBoxRef} open={open} engine={engine} searchValue={searchValue} />
     </div>
   );
 };

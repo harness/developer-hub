@@ -14,7 +14,8 @@ This topic provides steps on using Harness to provision a target AWS environment
 
 - You can add AWS CDK provisioning steps to Harness Deploy and Custom stage types.
 - You can perform ad hoc provisioning or provision the target environment for a deployment as part of the deployment stage.
-- Currently, OIDC connector is not supported AWS CDK plugin.
+- AWS OIDC connectors are supported for CDK deployments starting with delegate version 859xx or later. To use OIDC for CDK steps, ensure the feature flag `CDS_ADD_AWS_CONNECTOR_FOR_CDK_STEPS` is enabled.
+
 ## Demo Video
 
 <DocVideo src="https://www.loom.com/share/5a118a7ace3e49819c697b7131468990?sid=36ae85f0-0a39-4c5c-ba62-0e1a9d52c4de" />
@@ -49,7 +50,7 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
   - The Kubernetes infrastructure is also used for Helm, Native Helm, and Kustomize deployment types.
 - [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
-- [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
+- [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment)
 - [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart)
 - [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
 - [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
@@ -190,7 +191,7 @@ These steps are described in detail below.
 
 The CDK steps in the step group are containerized. In the **Container Registry** and **Image** settings in each step, you must provide a Harness connector to a container registry and an image for the pod the step uses.
 
-Harness provides the `aws-cdk-plugin` base image and custom images for different stacks (Java, .NET, Python, Go, etc.) They are located on the Docker Hub registry [aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags). For example, `harness/aws-cdk-plugin:1.0.0` is the base image that contains the CDK CLI and Node.js and `harness/aws-cdk-plugin:1.0.0-java` is the custom image for Java created by Harness. You can use a Harness custom image or create your own.
+Harness provides the `aws-cdk-plugin` base image and custom images for different stacks (Java, .NET, Python, Go, etc.) They are located on the Docker Hub registry [aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags). For example, `harness/aws-cdk-plugin:1.0.0` is the base image that contains the CDK CLI and Node.js and `harness/aws-cdk-plugin:1.3.0-java-linux-arm64` is the custom image for Java created by Harness. You can use a Harness custom image or create your own.
 
 You can use a Harness base image to create your own image and use that in a step. For example, if your CDK app uses a specific Java or Node.js version, you can use the base image provided by Harness and create your own image containing your dependencies. You should never override the entry point.
 
@@ -241,7 +242,7 @@ If the AWS environment is already bootstrapped and has the necessary AWS resourc
 Step settings:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
-- **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.0.0-java`.
+- **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.3.0-java-linux-arm64`.
 - **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. **App Path** must include the path to the app folder in that directory.
 - **AWS CDK Bootstrap Command Options:** You can add any CDK parameters you can see in the `cdk bootstrap --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
 
@@ -254,7 +255,7 @@ Runs the `cdk diff` command to compare the specified stack and its dependencies 
 Step settings:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
-- **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.0`.0-java.
+- **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.3.0-java-linux-arm64`.
 - **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
 - **AWS CDK Diff Command Options:** You can add any CDK parameters you can see in the `cdk diff --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
 - **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to passed to `cdk` command. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
@@ -272,7 +273,7 @@ Runs the `cdk synthesize` command. Synthesizes and prints the CloudFormation tem
 Step settings:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
-- **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.0`.0-java.
+- **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.3.0-java-linux-arm64`.
 - **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
 - **AWS CDK Synth Command Options:** You can add any CDK parameters you can see in the `cdk synthesize --help` command, just like you would in the `cdk` command-line tool. For example, `--verbose`. For more information, go to [Parameters](https://docs.aws.amazon.com/cdk/v2/guide/parameters.html) from AWS.
 - **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to passed to `cdk` command. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.
@@ -330,7 +331,7 @@ If you've made these settings expressions, Harness uses the values it obtains at
 Step settings:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
-- **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.0`.0-java.
+- **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.3.0-java-linux-arm64`.
 - **Provisioner Identifier:** Enter a unique Id to identify the provisioning performed by this step.
 
   The **Provisioner Identifier** is a project-wide setting. You can reference it across pipelines in the same project.
@@ -454,7 +455,7 @@ You can use this step to destroy one or more stacks defined in the CDK applicati
 Step settings:
 
 - **Container registry:** A Harness Docker registry connector for the registry hosting the image that you want Harness to run commands on, such as Docker Hub.
-- **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.0`.0-java.
+- **Image:** The image to use for this step. For example, `harness/aws-cdk-plugin:1.3.0-java-linux-arm64`.
 - **App Path:** The path to the CDK app. The Git Clone step listed the app repository in its **Repository Name** setting. App Path must include the path to the app folder in that directory.
 - **AWS CDK Destroy Command Options:** You can add any CDK parameters you can see in the `cdk destroy --help` command, just like you would in the `cdk` command-line tool.
 - **Stack Names:** If you are using a multi-stack app, enter the names of each stack you want to destroy here. For example, if your stack names are `cdkTest1Stack1` and `cdkTest1Stack2`, you would select **Add** and enter two stack names, one for each stack.

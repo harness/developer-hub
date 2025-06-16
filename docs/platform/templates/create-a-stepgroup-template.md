@@ -39,12 +39,6 @@ To create a template, do the following:
    - **Inline**: Save the template in Harness.
    - **Remote**: Save the template in a Git repository.
 
-:::info note
-Harness now supports storing Inline Entities in the Harness Git Repository.  
-For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
-:::
-
-
 ### Create a remote template
 
 To create a remote template, do the following:

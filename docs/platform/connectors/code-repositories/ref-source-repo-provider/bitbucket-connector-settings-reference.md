@@ -99,6 +99,7 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 </TabItem>
 </Tabs>
 
+---
 
 :::info On-Prem Accounts
 
@@ -144,6 +145,15 @@ In the **Username** field, enter the Bitbucket account username as specified in 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
 In the **Password** field, provide a Bitbucket account-level [access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html), or [app password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Passwords are stored as [Harness encrypted text secrets](/docs/platform/secrets/add-use-text-secrets). If you use an access token, the **Username** must be `x-token-auth`.
+
+:::warning
+
+The options for the password field are limited by your account type. 
+
+  - For SaaS accounts, you cannot use `access tokens`.
+  - For self-hosted or on-prem accounts, you cannot use `app passwords`.
+
+:::
 
 You must provide an account-level app password or token. Repo-level tokens are not supported.
 

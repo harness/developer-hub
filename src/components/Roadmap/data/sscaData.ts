@@ -14,11 +14,11 @@ export const SscaData: Horizon = {
         title: "Artifact Chain of Custody",
         description: "Auditors can now review an artifact chain of custody - a comprehensive audit trail for auditors that serves as a ledger for every artifact built and deployed in a CI/CD pipeline.",
       },
-      {
-        tag: [{value : "CI/CD Security"}],
-        title: "CI/CD Security Posture Management for GitHub Workflows & Harness Pipelines",
-        description: "Perform static analysis in GitHub workflows and Harness pipelines to detect risky actions and misconfigurations.",
-      },
+      // {
+      //   tag: [{value : "CI/CD Security"}],
+      //   title: "CI/CD Security Posture Management for GitHub Workflows & Harness Pipelines",
+      //   description: "Perform static analysis in GitHub workflows and Harness pipelines to detect risky actions and misconfigurations.",
+      // },
       {
         tag: [{value : "Risk & Compliance"}],
         title: "Compliance Report Generation",
@@ -31,7 +31,7 @@ export const SscaData: Horizon = {
       },
       {
         tag: [{value: "Artifact Security"}],
-        title: "Artifact Signing and Verification",
+        title: "Artifact Signing and Verification (Containers & Non-Containers)",
         description: "Ensure built artifact is not tampered before deployment.",
       },
       {
@@ -39,16 +39,21 @@ export const SscaData: Horizon = {
         title: "Report Generation",
         description: "Generate comprehensive license reports detailing the licenses associated with artifacts.",
       },
+      {
+        tag: [{value: "API"}],
+        title: "API Support",
+        description: "Enable bulk onboarding of GitHub repos across orgs and accounts, and provide SBOM download APIs for repos and artifacts."
+      },
     ],
   },
   "Now": {
-    description: "Q1 2025, Feb 2025 - April 2025",
+    description: "Q2 2025, May 2025 - July 2025",
     feature: [
-      {
-        tag: [{value: "Artifact Security"}],
-        title: "Non-Container based Artifact Signing & Verification",
-        description: "Support for signing and verification for non-containerized artifacts like helm charts, manifest files, JARs, WARs, etc.",
-      },
+      // {
+      //   tag: [{value: "Artifact Security"}],
+      //   title: "Non-Container based Artifact Signing & Verification",
+      //   description: "Support for signing and verification for non-containerized artifacts like helm charts, manifest files, JARs, WARs, etc.",
+      // },
       {
         tag: [{value : "Governance"}, {value: "Audit Trail"}],
         title: "Artifact Chain of Custody v2",
@@ -65,34 +70,54 @@ export const SscaData: Horizon = {
         description: "Visibility into open source risks across built artifacts using SBOMs.",
       },
       {
-        tag: [{value : "SLSA"}, {value: "Artifact Security"}],
-        title: "SLSA Policies",
-        description: "Out-of-the-box policies to ensure compliance with Level 1, Level 2, and Level 3 requirements.",
+        tag: [{value : "Governance"}, {value: "Risk & Compliance"}],
+        title: "OSS Top 10 Policies",
+        description: "Out of the box policies to identify risks in open source dependencies based on the OSS Top 10 risks, with the ability to block builds and deployments when critical vulnerabilities or license violations are detected.",
       },
+      // {
+      //   tag: [{value : "SLSA"}, {value: "Artifact Security"}],
+      //   title: "SLSA Policies",
+      //   description: "Out-of-the-box policies to ensure compliance with Level 1, Level 2, and Level 3 requirements.",
+      // },
+      // {
+      //   tag: [{value : "On-boarding"}, {value : "Repo Security"}],
+      //   title: "Bulk Onboarding",
+      //   description: "Allow users to bulk onboard GitHub repos across org and accounts via API.",
+      // },
+      // {
+      //   tag: [{value : "SBOM"}, {value : "Usability"}],
+      //   title: "SBOM API Support",
+      //   description: "Enable SBOM download APIs for repos and artifacts.",
+      // },
       {
-        tag: [{value : "On-boarding"}, {value : "Repo Security"}],
-        title: "Bulk Onboarding",
-        description: "Allow users to bulk onboard GitHub repos across org and accounts via API.",
-      },
-      {
-        tag: [{value : "SBOM"}, {value : "Usability"}],
-        title: "SBOM API Support",
-        description: "Enable SBOM download APIs for repos and artifacts.",
+        tag: [{value : "AI"},{value: "Dependency Management"}],
+        title: "Automate OSS Dependency Updates with Harness AI",
+        description: "Leverage Harness AI to automatically generate PRs for updating outdated dependencies.",
       },
     ],
   },
   "Next": {
-    description: "Q2 2025, May - July 2025",
+    description: "Q3 2025, August 2025 - October 2025",
     feature: [
       {
         tag: [{value: "Integration"}, {value : "Artifact Security"}],
         title: "Cosign AWS Support",
         description: "Leverage keys from AWS KMS to sign and verify artifacts.",
       },
+      // {
+      //   tag: [{value: "Visibility"}],
+      //   title: "Global Level View",
+      //   description: "Gain complete visibility into all artifact and code repositories across projects, along with their associated findings, in a unified account-level view.",
+      // },
       {
-        tag: [{value: "Visibility"}],
-        title: "Global Level View",
-        description: "Gain complete visibility into all artifact and code repositories across projects, along with their associated findings, in a unified account-level view.",
+         tag: [{value: "UX"}],
+         title: "UX Enhancements",
+         description: "Improving search, filtering across product pages and overall user experience",
+      },
+      {
+          tag: [{value : "SLSA"}, {value: "Artifact Security"}],
+          title: "SLSA Policies",
+          description: "Out-of-the-box policies to ensure compliance with Level 1, Level 2, and Level 3 requirements.",
       },
       {
         tag: [{value: "Integration"}, {value : "OpenSSF"}],
@@ -100,19 +125,19 @@ export const SscaData: Horizon = {
         description: "Support for OpenSSF Rules.",
       },
       {
+        tag: [{value: "Run time Security"}],
+        title: "Run Time Security for CI/CD Pipelines",
+        description: "Protect your Harness CI/CD pipelines from supply chain attacks by detecting anomalies and unauthorized activity through real-time system and network event monitoring.",
+      },
+      {
         tag: [{value: "Integration"},{value: "Repo Security"}],
         title: "Support for Gitlab & Bitbucket",
         description: "Complete support for GitLab and Bitbucket, allowing users to onboard repositories and perform configuration checks, SBOM generation, and security scans.",
       },
-      {
-        tag: [{value : "Governance"}, {value: "Risk & Compliance"}],
-        title: "OSS Top 10 Policies",
-        description: "Out of the box policies to identify risks in open source dependencies based on OSS Top 10 Risks.",
-      },
     ],
   },
   "Later": {
-    description: "Q3 2025+, August 2025 & beyond",
+    description: "Q4 2025+, November 2025 & beyond",
     feature: [
       {
         tag: [{value : "CI/CD Security"}],
@@ -144,11 +169,11 @@ export const SscaData: Horizon = {
         title: "Exemption Management",
         description: "Manage exemptions for risk and compliance issues across all targets (Artifacts, CI/CD, Repos).",
       },
-      {
-        tag: [{value : "AI"},{value: "Dependency Management"}],
-        title: "Automate OSS Dependency Updates with Harness AI",
-        description: "Leverage Harness AI to automatically generate PRs for updating outdated dependencies.",
-      },
+      // {
+      //   tag: [{value : "AI"},{value: "Dependency Management"}],
+      //   title: "Automate OSS Dependency Updates with Harness AI",
+      //   description: "Leverage Harness AI to automatically generate PRs for updating outdated dependencies.",
+      // },
     ],
   },
 };

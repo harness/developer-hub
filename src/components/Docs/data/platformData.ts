@@ -52,7 +52,7 @@ export const docsCards: CardSections = [
         title: "CCM",
         module: MODULES.ccm,
         description: "Cloud Cost Management onboarding guides",
-        link: "/docs/category/onboarding-guide-for-ccm",
+        link: "/docs/category/onboarding",
       },
       {
         title: "CODE",

@@ -21,6 +21,36 @@ Pod JVM method latency:
 - Determines how quickly an application returns to normalcy after the delay.
 - Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
 
+### Permissions required
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-jvm-method-latency
+spec:
+  definition:
+    scope: Namespaced
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
+
 ### Mandatory tunables
 <table>
   <tr>

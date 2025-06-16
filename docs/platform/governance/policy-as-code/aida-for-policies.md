@@ -1,7 +1,7 @@
 ---
 title: Build policies using Harness AIDA
 description: Build Policies using Harness AIDA
-sidebar_position: 70
+sidebar_position: 120
 canonical_url: https://www.harness.io/blog/elevating-aida-harness-unveils-7-new-innovative-capabilities
 ---
 

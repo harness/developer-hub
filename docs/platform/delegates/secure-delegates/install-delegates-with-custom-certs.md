@@ -53,7 +53,6 @@ To install a Docker delegate with custom certificates, do the following:
      -e DELEGATE_TYPE="DOCKER" \
      -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
      -e DELEGATE_TOKEN=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-     -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
      -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
    ```
 
@@ -67,7 +66,6 @@ To install a Docker delegate with custom certificates, do the following:
      -e DELEGATE_TYPE="DOCKER" \
      -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
      -e DELEGATE_TOKEN=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-     -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
      -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
    ```
 
@@ -199,8 +197,6 @@ spec:
                    value: PUT_YOUR_HARNESS_ACCOUNTID_HERE
                  - name: MANAGER_HOST_AND_PORT
                    value: PUT_YOUR_MANAGER_HOST_AND_PORT_HERE
-                 - name: DEPLOY_MODE
-                   value: KUBERNETES
                  - name: DELEGATE_NAME
                    value: kubernetes-delegate
                  - name: DELEGATE_TYPE
@@ -217,12 +213,6 @@ spec:
                    value: ""
                  - name: NEXT_GEN
                    value: "true"
-                 - name: CLIENT_TOOLS_DOWNLOAD_DISABLED
-                   value: "true"
-                 - name: LOG_STREAMING_SERVICE_URL
-                   value: "PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/"
-                 - name: DELEGATE_CPU_THRESHOLD
-                   value: "80"
               volumeMounts:
                  - mountPath: /opt/harness-delegate/ca-bundle/
                    name: custom-certs
@@ -426,7 +416,6 @@ After you configure the truststore file and custom certificates, you're ready to
      -e DELEGATE_TYPE="DOCKER" \
      -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
      -e DELEGATE_TOKEN=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-     -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
      -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
    ```
 
@@ -652,8 +641,6 @@ spec:
           value: "true"
         - name: CLIENT_TOOLS_DOWNLOAD_DISABLED
           value: "true"
-        - name: LOG_STREAMING_SERVICE_URL
-          value: "https://qa.harness.io/gratis/log-service/"
         volumeMounts:
         - mountPath: /cacerts
           name: custom-keystore
