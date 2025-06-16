@@ -60,7 +60,7 @@ Now that you've successfully installed the plugin, you can configure it in **Jet
 
 1. Click on **"Harness OSS Gitspaces"** from the sidebar connections.  
 2. You will be prompted to enter a **Token** in JetBrains Gateway. Go to your Harness Open Source Account Settings and create a token from there.  
-![](./static/hoss_token.png)
+![](./static/hoss-token.png)
 
 3. You will be redirected to the **Harness OSS platform** to sign in. Enter your credentials to log into your account.  
 
