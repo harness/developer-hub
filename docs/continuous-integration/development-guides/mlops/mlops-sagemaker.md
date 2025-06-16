@@ -109,7 +109,7 @@ You can use the SageMaker plugin in a [Plugin step](/docs/continuous-integration
                   name: sagemaker plugin
                   identifier: sagemaker_plugin
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: harnesscommunity/aws-sagemaker
                     settings:
                       model_name: my-model-aws

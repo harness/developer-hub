@@ -23,9 +23,10 @@ Zoom integration enables your runbooks to:
 ### Prerequisites
 Before configuring Zoom integration:
 1. [Configure a Zoom project connector](../configure-project-connectors.md#zoom-connector) for your project
-2. Ensure you have appropriate Zoom admin permissions
+2. Ensure you have appropriate Zoom permissions
 
 ### Step-by-Step Setup for Organization Connector
+
 1. Navigate to **Account Settings** → **Connectors**
 2. Click **+ Add Connector**
 3. Select **Zoom**
@@ -46,13 +47,13 @@ Before configuring Zoom integration:
 
 ## Using the Zoom Connector
 
-## Creating a Zoom Meeting Runbook
+### Creating a Zoom Meeting Runbook
 1. Create a new runbook or edit an existing one
 2. Add a new Action
 3. From the Action Picker, select **Create Zoom Meeting**
 4. No additional configuration is required - the default Zoom connector will be used
 
-## Executing the Runbook
+### Executing the Runbook
 1. Open an existing incident or create a new one
 2. Navigate to the Runbooks tab
 3. Click **Execute a Runbook**
@@ -61,15 +62,19 @@ Before configuring Zoom integration:
 6. View the results in the incident timeline
 
 ## Disabling the Connector
-1. Navigate to **Account Settings** → **Connectors**
-2. Locate your Zoom connector
-3. Click the three dots menu
-4. Select **Delete**
-5. Confirm the deletion
 
-## Using Zoom in Runbooks
+### Remove from Zoom Marketplace
+1. Go to the [Zoom Marketplace](https://marketplace.zoom.us)
+2. Navigate to **Manage → Installed Apps**
+3. Locate the Harness app
+4. Click **Remove** or **Uninstall**
+5. Confirm the removal
+6. Verify in Harness:
+   - Navigate to **Account Settings** → **Connectors**
+   - Confirm the Zoom connector is no longer listed
+   - Check that related secrets have been automatically removed
 
-## Available Actions
+## Zoom Actions and Features
 
 ### Create Incident Bridge
 When adding a Zoom action to your runbook, you can configure:

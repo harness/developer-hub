@@ -1,62 +1,82 @@
 import { Horizon } from "./roadmapData";
 export const aidaData: Horizon = {
   Now: {
-    description: "Q1 2025, Feb-Apr 2025",
+    description: "Q2 2025, May-Jul 2025",
     feature: [
       {
-        tag: [],
-        title: "Step Creation",
-        description: "Introduces the functionality for creating and managing pipeline steps.",
+        tag: [{value: "Entity Creation"}],
+        title: "Environment Creation",
+        description: "Enables the creation and configuration of environments for your DevOps workflows",
+      },
+      {
+        tag: [{value: "Entity Creation"}],
+        title: "Secret Creation",
+        description: "Enables the creation and configuration of secrets for your DevOps workflows",
+      },
+      {
+        tag: [{value: "Entity Creation"}],
+        title: "Connector Creation",
+        description: "Enables the creation and configuration of connectors for your DevOps workflows",
+      },
+      {
+        tag: [{value: "Entity Creation"}],
+        title: "Service Creation",
+        description: "Enables the creation and configuration of services for your DevOps workflows",
+      },
+      {
+        tag: [{value: "Entity Reference"}],
+        title: "Reference Existing Templates",
+        description: "Enables the use of existing templates when generating new pipelines or DevOps resources with the AI agent",
+      },
+      {
+        tag: [{value: "Entity Reference"}],
+        title: "Reference Existing Services and Secrets in Pipeline",
+        description: "Enables the use of existing services and secrets when generating new pipelines or pipeline steps and stages",
       },
       {
         tag: [],
-        title: "Stage Creation",
-        description: "Extends or refines stage creation features, building on initial stage-creation functionality.",
+        title: "Remediator Agent",
+        description: "The agent will diagnose and offer remediation steps for failures in your DevOps workflows.",
       },
       {
-        tag: [],
-        title: "Pipeline Creation",
-        description: "Enables creation and configuration of new pipelines for DevOps workflows.",
+        tag: [{value: "MCP"}],
+        title: "Harness MCP Server",
+        description: "A Harness Model Context Protocol (MCP) server will allow users to hook Harness data into their internal systems.",
       },
       {
-        tag: [],
-        title: "Step Group Support",
-        description: "Support Step Group Creation in a Pipeline.",
+        tag: [{value: "MCP"}, {value: "AI Chat"}],
+        title: "MCP Support with AI Chat",
+        description: "Integrates Model Context Protocol (MCP) capabilities into Harness, enabling communication between AI agents and Harness entities.",
       },
       {
-        tag: [],
-        title: "Reference Templates into Pipeline",
-        description: "Allows reference templates to be integrated into existing pipelines for standardized workflows.",
+        tag: [{value: "AI Chat"}],
+        title: "Audit Trail Support with AI Chat",
+        description: "Enables RBAC and observability into AI chat usage. Allows enterprise and security teams greater control over their AI agent usage.",
       },
       {
-        tag: [],
-        title: "Pipeline Data Support",
-        description: "Improves pipeline data handling, adding import of Git.",
+        tag: [{value: "AI Chat"}],
+        title: "Documentation and Support Agent in AI Chat",
+        description: "Access documentation and the support agent via AI chat.",
       },
     ],
   },
   Next: {
-    description: "Q2 2025, May-Jul 2025",
+    description: "Q3 2025, Aug-Oct 2025",
     feature: [
       {
-        tag: [],
-        title: "Extended Customer Data",
-        description: "Extends the scope and detail of customer data handling.",
+        tag: [{value: "Entity Creation"}],
+        title: "Infrastructure Configuration",
+        description: "Enables the configuration of infrastructure in your environments for your DevOps workflows",
       },
       {
         tag: [],
-        title: "Customer Data",
-        description: "Further enhancements or expansions to customer data capabilities.",
+        title: "Recommendations based on Pipeline Data",
+        description: "Enables the AI to offer recommendations based on a user's existing pipeline data.",
       },
       {
         tag: [],
-        title: "Environment Context Shared Support",
-        description: "Enables sharing of environment context (config, variables) across different pipeline stages.",
-      },
-      {
-        tag: [],
-        title: "Enriched Context Shared Support",
-        description: "Provides richer context (metadata, logs, etc.) for better pipeline insights and collaboration.",
+        title: "Shared Context Support",
+        description: "Enables rich context (environment context, config, variables, metadata, logs, etc.) sharing across pipeline stages..",
       },
       {
         tag: [],
@@ -70,8 +90,8 @@ export const aidaData: Horizon = {
       },
       {
         tag: [],
-        title: "Chat UI & Chat Templates",
-        description: "Introduces or updates a chat-based UI, including predefined templates for quicker interactions.",
+        title: "Harness AI Workflows",
+        description: "Enables the chat to engage with multiple Harness Agents to complete user tasks.",
       },
       {
         tag: [],
@@ -83,21 +103,16 @@ export const aidaData: Horizon = {
         title: "Create Slack Integration",
         description: "Builds an integration with Slack for notifications or interactions with the AI DevOps Agent.",
       },
-      {
-        tag: [],
-        title: "Add Chat Templates",
-        description: "Expands the library of chat templates for various use cases or user workflows.",
-      },
-      {
-        tag: [],
-        title: "Create Chat User Roles",
-        description: "Introduces role-based access or permissions within the chat environment.",
-      },
     ],
   },
   Later: {
-    description: "Q3 2025+, Aug 2025 & beyond",
+    description: "Q4 2025+, Nov 2025 & beyond",
     feature: [
+      {
+        tag: [],
+        title: "Pipeline Data Support",
+        description: "Improves pipeline data handling, adding import of Git.",
+      },
       {
         tag: [],
         title: "CV AI",
@@ -115,11 +130,6 @@ export const aidaData: Horizon = {
       },
       {
         tag: [],
-        title: "Chat V2 with More “Legs”",
-        description: "Upgrades the chat feature to a second version, potentially with extended functionality or modules.",
-      },
-      {
-        tag: [],
         title: "Review and Optimize Infrastructure",
         description: "Review and optimize infrastructure-as-code resources, including Pulumi, CloudFormation, Crossplane, etc.",
       },
@@ -128,6 +138,24 @@ export const aidaData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [],
+        title: "Step Creation",
+        description: "Introduces the functionality for creating and managing pipeline steps.",
+        link: "https://developer.harness.io/docs/platform/harness-aida/ai-devops#step-management",
+      },
+      {
+        tag: [],
+        title: "Stage Creation",
+        description: "Extends or refines stage creation features, building on initial stage-creation functionality.",
+        link: "https://developer.harness.io/docs/platform/harness-aida/ai-devops#stage-configuration",
+      },
+      {
+        tag: [],
+        title: "Pipeline Creation",
+        description: "Enables creation and configuration of new pipelines for DevOps workflows.",
+        link: "https://developer.harness.io/docs/platform/harness-aida/ai-devops#pipeline-orchestration",
+      },
       {
         tag: [],
         title: "Harness AI Code Agent",
@@ -160,18 +188,6 @@ export const aidaData: Horizon = {
       },
       {
         tag: [],
-        title: "Pipeline Generation",
-        description:
-          "Automatically generate pipelines for source code repositories.",
-      },
-      {
-        tag: [],
-        title: "Pipeline Generation",
-        description:
-          "Automatically generate pipelines for source code repositories.",
-      },
-      {
-        tag: [],
         title: "Harness Support",
         description:
           "Helps users understand the product, troubleshoot failures/exceptions/security vulnerabilities by leveraging documentation, community articles, internal/external knowledge base articles.",
@@ -193,12 +209,6 @@ export const aidaData: Horizon = {
         title: "Policy As Code Agent (Cloud Assets)",
         description:
           "AI-generated rules for asset governance accompanied with detailed descriptions to optimize your cloud spend.",
-      },
-      {
-        tag: [],
-        title: "Policy As Code Agent (Pipelines)",
-        description:
-          "Automatically generate Open Policy Agent (OPA) Rego policies for Pipeline governance.",
       },
       {
         tag: [],

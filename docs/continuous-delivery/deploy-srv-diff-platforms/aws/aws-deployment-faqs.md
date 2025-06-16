@@ -191,14 +191,6 @@ Yes, we do not need to create the kubeconfig file manually. We just need to have
 
 For AWS back-off strategy, parameters of time are in milliseconds. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-backoff-strategy/)
 
-
-### Is there is an ECS DNS Blue/Green deployment similar to First-Gen in the Next-Gen?
-
-In the next generation, we support the utilization of a `load balancer` with target groups for the switching between blue and green deployments.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-v2-summary/)
-For First-Gen reference read the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-blue-green-workflows/#ecs-bluegreen-using-dns)
-
-
 ### How to create an AWS connector using aws-iam-authenticator on EKS Cluster with webIdentityToken?
 
 Please read how to set AWS connector on EKS Cluster in this [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-elastic-kubernetes-service-eks)
@@ -588,10 +580,6 @@ The pipeline includes rollback steps like ECS Canary Delete and ECS Rolling Roll
 
 ### Can I run the ECS task immediately after updating the task definition?
 Yes, the deploy_ecs stage includes the EcsRunTask step, which allows running the ECS task immediately using the updated ECS task definition file.
-
-### How can I deploy to ECS using only a task definition file, without a service definition?
-
-The AWS ECS Deploy step in Harness requires a service definition.  Workarounds include using a custom stage with a shell script step to invoke the RunTask API directly, or providing a minimal service definition.  More information on ECS deployments can be found in [Harness documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-v2-summary/).
 
 ### Why am I getting an error stating that `aws-iam-authenticator` is required for EKS deployments?
 

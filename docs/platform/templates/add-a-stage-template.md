@@ -17,7 +17,7 @@ The stage template demonstrated in this topic uses runtime inputs. Runtime input
 ### Before you begin
 
 * Review [Templates overview](template.md).
-* Review the [Harness key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md).
+* Review the [Harness key concepts](/docs/platform/get-started/key-concepts).
 * You can add templates to template libraries at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 * [Tags](../references/tags-reference.md) can be used to group templates. You can search or filter templates using these tags.
 * You can have nested templates. You can refer to a stage template in a pipeline template.
@@ -43,12 +43,6 @@ To create a stage template, do the following:
     ![](./static/add-a-stage-template-51.png)
 
     You can now add stage parameters.
-
-:::info note
-Harness now supports storing Inline Entities in the Harness Git Repository.  
-For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
-:::
-
 
 ### Step 2: Add stage parameters
 

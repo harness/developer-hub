@@ -328,3 +328,24 @@ Workarounds:
 - Use an Organization-scoped or Account-scoped repository instead of a Project-scoped repository.
 - Configure repo-cred templates to manage authentication for project-level repositories.
 This is a known limitation in [ArgoCD](https://github.com/argoproj/argo-cd/issues/21016).
+
+### How are App Project IDs generated?
+
+Harness uses the following procedure to calculate the app project id:
+
+1. Concatenate the account id, org id, and project id. For example:
+2. Generate the `md5` hash for the string in step 1. For example, if the string was `proddefaulttest` then the hash might be `abcdefghijklmnopqrstuvwxyz`
+3. The first 8 characters of the hash is the app project id. For example, `abcdefgh`.
+
+##### Example: 
+  ```
+  accountid: prod
+  orgid: default
+  projectid: test
+
+  concatenated string: proddefaulttest
+
+  hash: abcdefghijklmnopqrstuvwxyz
+
+  app project id: `abcdefgh`
+  ```

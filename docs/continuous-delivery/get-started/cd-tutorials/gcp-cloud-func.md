@@ -109,7 +109,6 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
       -e DELEGATE_TYPE="DOCKER" \
       -e ACCOUNT_ID=ACCOUNT_ID \
       -e DELEGATE_TOKEN=DELEGATE_TOKEN \
-      -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
       -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.05.79310
      ```
      - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
@@ -533,7 +532,6 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
       -e DELEGATE_TYPE="DOCKER" \
       -e ACCOUNT_ID=ACCOUNT_ID \
       -e DELEGATE_TOKEN=DELEGATE_TOKEN \
-      -e LOG_STREAMING_SERVICE_URL=MANAGER_ENDPOINT/log-service/ \
       -e MANAGER_HOST_AND_PORT=MANAGER_ENDPOINT harness/delegate:23.05.79310
      ```
 

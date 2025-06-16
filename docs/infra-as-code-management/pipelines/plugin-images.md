@@ -143,7 +143,7 @@ If it's in a private ECR, create a connector and define the `connectorRef` **(2)
 To use images from your repository in an IACM stage, you can use the `execution-config` API endpoints. 
 
 :::note
-Although some images mentioned here are also used by [CI](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/), it's important to note that any overrides specified using the IACM `execution-config` APIs are not applied to CI stages and vice versa. The images that can be overridden are:
+Although some images mentioned here are also used by [CI](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/), it's important to note that any overrides specified using the IACM `execution-config` APIs are not applied to CI stages and vice versa. The images that can be overridden are:
 
 - harness/ci-addon.
 - harness/ci-lite-engine.

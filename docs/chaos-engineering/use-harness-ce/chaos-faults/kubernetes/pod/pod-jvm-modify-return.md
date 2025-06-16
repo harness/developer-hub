@@ -17,6 +17,36 @@ Pod JVM modify return:
 - Helps obscure or redact personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
 - Determines how efficiently an application recovers and returns to normalcy.
 
+### Permissions required
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-jvm-modify-return
+spec:
+  definition:
+    scope: Namespaced
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
+
 ### Mandatory tunables
 <table>
   <tr>

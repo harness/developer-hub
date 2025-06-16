@@ -65,6 +65,8 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 
 ## SBOM Orchestration step configuration
 
+<DocImage path={require('./static/sbomm-overvieww.png')} width="50%" height="50%" />
+
 You can use **SBOM Orchestration** step to generate an SBOM in either the **Build** or **Deploy** stage of a Harness pipeline.
 
 * In a **Build** stage, add the **SBOM Orchestration** step after the artifact (image) has been pushed to an artifact repository.
@@ -108,11 +110,6 @@ Using SBOM Orchestration step you can generate the SBOM for both Container image
 - **Registry Type**: Select **Harness Artifact Registry** or **Third-Party Artifact Registry**, based on where your artifact is stored.
 - **Source**: Select the **Source** by choosing either a supported container registry from the list or Repository if you are generating the SBOM for source code.
 
-:::warning Deprecation Alert
-
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SBOM Orchestration step.
-
-:::
 
 import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifact-source.md';
 
@@ -141,6 +138,8 @@ import CosignAttestationOptions from '/docs/software-supply-chain-assurance/shar
 
 <CosignAttestationOptions />
 
+<DocImage path={require('./static/sbomm-overvieww.png')} width="50%" height="50%" />
+
 
 ### Configure SBOM Drift
 This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift/). If you prefer not to detect any changes in SBOMs, leave this option unchecked. Also, enabling SBOM Drift is optional and not required for SBOM generation
@@ -149,7 +148,6 @@ Enabling this feature provides the following capabilities:
 
 - **Detect drift from the last generated SBOM**: Compare the current SBOM with the most recently generated SBOM to identify changes.
 - **Detect drift from a baseline**: Compare the current SBOM against a predefined baseline SBOM to detect deviations.
-
 
 
 :::info

@@ -17,19 +17,19 @@ sidebar_position: 25
 You can scan your container images and ingest scan results from [Aqua Security Enterprise](https://www.aquasec.com/solutions/docker-container-security/). 
 
 
-## Important notes for running Aqua Security scans in STO
-
+:::info
 - You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 - STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
+
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
+:::
 
+## Aqua Security step settings
 
-## Aqua Custom Scan step settings for STO scans
-
-The recommended workflow is to add an Aqua Security step to a Security or Build stage and then configure it as described below.
+The recommended workflow is to add an **Aqua Security** step to a **Security** or **Build** stage and then configure it as described below.
 
 
 ### Scan
@@ -49,6 +49,9 @@ import StoSettingProductConfigName from './shared/step-palette/scan/config-name.
 
 <StoSettingProductConfigName />
 
+For the **Aqua Security** step, you have two configuration options:
+- **Default**: Connects to your Aqua Security instance using an **Access Token** for authentication.
+- **Self-Hosted**: Connects to your on-premises Aqua Security instance using a **Username and Password** for authentication.
 
 ### Target
 
@@ -122,24 +125,25 @@ import StoSettingImageRegion from './shared/step-palette/image/region.md';
 
 ### Authentication
 
-
-#### Access Domain
+#### Domain
 
 import StoSettingAuthDomain from './shared/step-palette/auth/domain.md';
 
 <StoSettingAuthDomain />
 
+#### Access ID
+Enter the username for your on-premises Aqua Security instance. This field is visible only when you select the **Self-Hosted** scan configuration.
 
 #### Access Token
 
-import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.md';
+<!-- import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.md'; -->
 
-<StoSettingAuthAccessToken />
+<!-- <StoSettingAuthAccessToken /> -->
 
-#### Access Region
+- For the **Default** scan configuration, enter your Aqua Security access token.
+- For the **Self-Hosted** scan configuration, enter the password associated with your Aqua Security username.
 
-The AWS region of the image to scan.
-
+Always store sensitive credentials securely by creating a Harness text secret. Reference the secret in your configuration using the format `<+secrets.getValue("my-access-token")>`. For detailed steps, see [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Ingestion
 

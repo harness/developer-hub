@@ -1,7 +1,7 @@
 ---
 title: Policy samples
 description: See sample policies and when to use them.
-sidebar_position: 6
+sidebar_position: 100
 canonical_url: https://www.harness.io/blog/feature-flags-best-practices
 ---
 

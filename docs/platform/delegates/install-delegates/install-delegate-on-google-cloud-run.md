@@ -8,20 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::info Important Note
-Google Cloud Run automatically scales your service based on incoming traffic. While you can configure minimum and maximum replicas, actual scaling is managed by Google depending on load.
-
-- Each new revision receives 100% of traffic by default, causing older revisions to scale down.
-- You can split traffic between revisions using the [Cloud Run UI](https://console.cloud.google.com/run).
-- To maintain multiple instances, set `min` and `max` replicas—but note that scaling still depends on real-time demand.
-:::
-
 import DeployContainer from './static/container-image-url.png';
 import ConfigureService from './static/cloud-run-configure.png';
 import ContainerConfig from './static/configure-container-vol-security.png';
 import HealthCheck from './static/health-check.png';
 import DelegateStatus from './static/delegate-status.png';
 import EnVariable from './static/environment-variables.gif';
+import ServiceUrl from  './static/service-url.gif';
 
 Harness Delegate is essential for connecting your infrastructure with the Harness platform, enabling seamless deployments. Harness Delegates typically run on VMs, Kubernetes clusters, or ECS Fargate, but Google Cloud Run presents a lightweight, cost-efficient, and scalable alternative.
 
@@ -104,6 +97,25 @@ To configure a delegate on Google Cloud Run:
 
         - Set the variables in Variables & Secrets by adding the following key-value pairs:
 
+            :::info Keeping Your Delegate Always Running on Google Cloud Run 
+
+                Google Cloud Run automatically scales your service based on real-time traffic, which helps optimize resources but can affect services like delegates that need to stay up.
+                
+                - You can set min and max replicas, but Google still manages the actual scaling based on demand.
+                - Each new revision gets 100% of the traffic by default, causing older ones to scale down.
+                - If there's no traffic, Cloud Run may stop the container.
+
+                To ensure your delegate remains active and is always available, add the following environment variables:
+                    
+                    - `INIT_SCRIPT`: `nohup bash -c "while true; do curl -s https://<your-service-url>/api/health; sleep 30; done" &`
+                        
+                        - The INIT_SCRIPT ensures the container continuously runs the required startup logic. You can find the service URL, as shown in the GIF below.
+                            
+                            <img src={ServiceUrl} width="500"/>
+
+                    - `HOST_NAME_COMMAND`: echo uniqdelegate-$(openssl rand -hex 3)
+            :::
+
             ```bash
                 DELEGATE_NAME="<your_delegate_name>"
                 NEXT_GEN="true"
@@ -111,6 +123,8 @@ To configure a delegate on Google Cloud Run:
                 ACCOUNT_ID="<your_account_id>"
                 DELEGATE_TOKEN="<delegate_token_from_step1>"
                 MANAGER_HOST_AND_PORT="<manager_host_and_port_from_step1>"
+                HOST_NAME_COMMAND=`echo uniqdelegate-$(openssl rand -hex 3)`
+                INIT_SCRIPT=`nohup bash -c "while true; do curl -s https://<your-service-url>/api/health; sleep 30; done" &`
 
                 # (Optional) Add delegate tags if needed
                 DELEGATE_TAGS="tag1"
