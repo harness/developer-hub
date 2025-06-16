@@ -1,7 +1,7 @@
 ---
-title: Creating a Perspective
+title: Setting Up Perspectives
 description: Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
-sidebar_position: 3
+sidebar_position: 4
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -54,6 +54,14 @@ If you've added labels and cluster rules in the perspective builder section, it'
 :::
 
 ### Step 2: Budgets, Reports and Alerts
+
+#### Budgets, Reports, and Alerts
+For details on adding Budgets, Reports, and Alerts go to:
+
+* [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
+* [Share Your Cost Perspective Report](../../3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report.md)
+* [Detect Cloud Cost Anomalies with CCM](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm)
+
 
 :::note
 You can add multiple budgets for a single Perspective.
@@ -142,6 +150,16 @@ To delete a budget:
      <DocImage path={require('./static/create-a-budget-perspective-15.png')} width="50%" height="50%" title="Click to view full size image" />
 
 ### Step 3: Preferences
+
+### General Preferences
+
+You can customize your perspective view with the following display preferences:
+
+- **Show Others**: The graph displayed in a Perspective shows the top 12 costs only. Enable this setting to include the remaining costs as an **Others** item in the graph.
+
+- **Show Anomalies**: Highlights unusual spending patterns or sudden cost changes in your visualization. This feature helps you quickly identify potential issues or unexpected charges that may require investigation.
+
+- **Show Negative Cost**: Displays instances where discounts exceed the actual billing amount, resulting in negative cost values in your reports.
 
 ## Exporting Perspective Reports
 
