@@ -2,32 +2,6 @@ import { Horizon } from "./roadmapData";
 
 export const SeiData: Horizon = {
   Now: {
-    description: "Q1, Feb 2025 - Apr 2025",
-    feature: [
-      {
-      tag: [{ value: "Enhanced Insigths" }],
-      title: "Epic Insights (GA)",
-      description: "Empowers Engineering Managers / Project Managers to actively track the progress and health of planned epics / initiatives / tactics."
-      },
-      {
-      tag: [{ value: "AI" }, { value: "Enhanced Insigths" }],
-      title: "AI Productivity Insights (Beta)",
-      description: "Measure the impact of AI code assistant tools on developers' velocity and code quality."
-      },
-      {
-        tag: [{ value: "Integrations" }],
-        title: "ServiceNow Integration (GA)",
-        description: "ServiceNow Integration to tie incident and change request data with DORA metrics.",
-      },
-      {
-        tag: [{ value: "Integrations" }],
-        title: "Granular scoping of Integrations",
-        description: "Improved ability to more granularly scope integrations such as GitGub, Harness CI/CD. E.g. GitHub Integration can be scoped down by org, repos, teams, etc.",
-      },
-    ],
-  },
-
-  Next: {
     description: "Q2, May 2025 - Jul 2025",
     feature: [
       {
@@ -36,60 +10,91 @@ export const SeiData: Horizon = {
         description: "SEI 2.0 brings a modern UX to enable executive insights with team level actionability. SEI 2.0 will bring new collection tree navigation with support for Efficiency / Productivity / Business Alignment tracking for all teams (with Histoirical Trends).",
       },
       {
-        tag: [{ value: "AI" }, { value: "Enhanced Insights" }],
-        title: "AI Productivity Insights (GA)",
-        description: "Measure the impact of AI code assistant tools on developers' velocity and code quality.",
+        tag: [{ value: "Onboarding" }],
+        title: "New SEI 2.0 Onoarding",
+        description: "Quick setup for integrations, sync contributors, build org trees, build profiles and see Insights.",
+      },
+      {
+        tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance"}],
+        title: "New CSV based Org Trees",
+        description: "Creating and maintaining Org Trees now becomes a breeze with the CSV based org trees that stay in sync with regular CSV updates.",
+      },
+      {
+        tag: [{ value: "Insights" }],
+        title: "Playground",
+        description: "Quick time to value and ability to play with Insights, in a Playground that provides Insights across the entire organization.",
+      },
+      {
+        tag: [{ value: "Insights" }],
+        title: "Exports",
+        description: "Ability to export dashboards and widgets as PDF / CSV, to allow for easy sharing of org metrics",
       },
       {
         tag: [{ value: "Integrations" }],
+        title: "ServiceNow Integration (GA)",
+        description: "ServiceNow Integration to tie incident and change request data with DORA metrics.",
+      },
+    ],
+  },
+
+  Next: {
+    description: "Q3, Aug 2025 - Oct 2025",
+    feature: [
+      {
+        tag: [{ value: "Integrations" }, { value: "Ease of Maintenance"}],
         title: "Workday Integration (GA)",
-        description: "Workday Integration will enable seamless onboarding of teams to SEI 2.0.",
+        description: "Direct sync with Workday to enable seamless onboarding of teams to SEI 2.0.",
       },
       {
-        tag: [{ value: "Onboarding" }],
-        title: "New SEI 2.0 Onoarding",
-        description: "New SEI 2.0 onboarding will directly integrate with HRIS systems, to automate collection tree building, while making maintenance automated.",
+        tag: [{ value: "Actionability" }],
+        title: "Scoring, Goals, KPIs & Benchmarks",
+        description: "Make metrics and insights actionable by tracking scores, setting goals, assigning KPIs and comparing across benchmarks.",
+      },
+      {
+        tag: [{ value: "Insights" }],
+        title: "DevOps Insights",
+        description: "See deep insights into your DevOps workflow, to truly assess fllow and bottlenecks, after developers merge their code.",
+      },
+      {
+        tag: [{ value: "Insights" }],
+        title: "Surveys",
+        description: "Add the qualitative context to your qunatitiative metrics, with the help of surveys that help assess Developer Satisifcation.",
+      },
+     ],
+  },
+  
+  Later: {
+    description: "Nov 2025 & Beyond",
+    feature: [
+      {
+        tag: [{ value: "AI" }, { value: "Insights" }],
+        title: "AI Usage & Impact",
+        description: "Measure, track and optimize the usage and impact of AI Coding Assistants in your developer organization.",
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Agents"}],
+        title: "AI Efficiency Agent",
+        description: "An Agent that offers recommendations for improving productivity, removing bottlenecks, enhancing developer experience based on qualitative and quantitative insights.",
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Recommendations"}],
+        title: "AI Recommendations",
+        description: "Provides actionable recommendations, beyond just the Insights.",
       },
       {
         tag: [{ value: "Harness Platform" }],
         title: "Support for Harness Delegates",
         description: "SEI integrations that require an agent can now leverage Harness Delegates, commonly deployed at all existing Harness customers.",
       },
-     ],
-  },
-  
-  Later: {
-    description: "Aug 2025 & Beyond",
-    feature: [
       {
-        tag: [{ value: "Enhanced Insights" }, { value: "AIDA"}],
-        title: "Personalized Team Recommendations",
-        description: "Offer recommendations for improving productivity, removing bottlenecks, enhancing developer experience based on qualitative and quantitative insights, powered by Harness AIDA.",
+        tag: [{ value: "Insights" }],
+        title: "Canvas",
+        description: "Set up your personal Canvas that provides a custom dashboard, to track your specific metrics.",
       },
       {
-        tag: [{ value: "DX Survey" }],
-        title: "Advanced Developer Experience Survey Beta",
-        description: "Measure developer experience through customizable survey templates and benchmark the result across your organization and industry. The results, combined with quantitative insights generated from the SDLC tools, give leaders a comprehensive picture of developer productivity and delivery efficiency.",
-      },
-      {
-        tag: [{ value: "Enhanced Insights" }],
-        title: "Proactive Insights",
-        description: "Provide insight based on historical trends.",
-      },
-      {
-        tag: [{ value: "Easy Adoption" }],
-        title: "Fast Onboarding Mode",
-        description: "Initiate onboarding with partial data ingestion to accelerate the initial onboarding process. This new mode gives instant data feedback to admins, helps identify possible integration issues, and minimizes the time to generate the first insight.",
-      },
-      {
-        tag: [{ value: "Easy Adoption" }],
-        title: "Federated Team Configuration",
-        description: "Empower teams throughout your organization to design insights dashboard autonomously. This feature reduces onboarding time and enables teams to customize insights according to their specific needs independently.",
-      },
-      {
-        tag: [{ value: "Platform" }],
-        title: "BYOK support",
-        description: "Support Bring Your Own Key (BYOK).",
+        tag: [{ value: "Insights" }, { value: "Cohorts" }],
+        title: "Cohort Analysis",
+        description: "Define Dynamic Cohorts that allow qualitative & quantitative analysis across miultiple cohorts, before/after analysis & more.",
       },
     ],
   },

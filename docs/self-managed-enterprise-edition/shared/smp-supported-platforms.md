@@ -8,7 +8,7 @@ The table below outlines the key features supported in the Harness Self-Managed 
 | Disaster Recovery (DR) | [Active-Passive](/docs/self-managed-enterprise-edition/advanced-configurations/set-up-disaster-recovery/)                                                 |
 | Backup and Restore     |  [Velero](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)                                                         |
 | Networking             | <li>Istio/Nginx</li><li>[ALB/NLB/GCLB](/docs/self-managed-enterprise-edition/install/install-using-helm/#add-a-load-balancer).</li>                      |
-| Monitoring             | <li>[Prometheus](/docs/self-managed-enterprise-edition/monitor-harness-on-prem#set-up-prometheus-in-cluster).</li><li>[Grafana](/docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the-grafana-dashboard).</li>                             |
+| Monitoring             | <li>[Prometheus](/docs/self-managed-enterprise-edition/monitoring/install-prometheus).</li><li>[Grafana](/docs/self-managed-enterprise-edition/monitoring/install-grafana).</li>                             |
 | Air-gapped             | [Yes](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment/)                                                            |
 | FIPS-enabled K8S      | No | |
 

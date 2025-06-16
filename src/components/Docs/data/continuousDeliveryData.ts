@@ -242,36 +242,6 @@ import { MODULES } from "@site/src/constants";
           description:
             "Use DORA and other advanced metrics for deployments.",
           link: "/docs/category/monitor-deployments",
-          /*children: [
-            {
-              title: "CD dashboard",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments",
-            },
-            {
-              title: "DORA metrics dashboard",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/monitor-deployments/dora-metrics-dashboard",
-            },
-            {
-              title: "Deployment dashboard (FirstGen)",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/monitor-deployments/view-deployments-current-gen-dashboard",
-            },
-            {
-              title: "Service dashboard (FirstGen)",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/monitor-deployments/view-services-current-gen-dashboard",
-            },
-          ]*/  
         },
         {
           title: "Provision infrastructure",

@@ -82,6 +82,12 @@ The following command types are supported:
 * Copy artifact or config
 * Script
 
+:::note
+
+The WinRM deployment type supports Download Artifact only. You cannot use the **Copy** command type with **Artifact** in WinRM deployments.
+
+:::
+
 These are discussed in detail below.
 
 ### Artifact metadata only

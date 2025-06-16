@@ -185,9 +185,9 @@ You can now have one connector scoped to multiple GCP projects, eliminating the 
 Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-Enable the checkbox **Enable Cross Project Access** during the GCP OIDC connector configuration. For more information on GCP OIDC connector configuration, refer [GCP OIDC Connector Settings](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#enable-cross-project-access).
+For more information on GCP OIDC connector configuration, refer [GCP OIDC Connector Settings](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#enable-cross-project-access).
 
-With this checkbox enabled, you will have the option to select the **Project** in the **Cluster details** in the **Infrastructure configuration**.
+With the feature flag  enabled, you will have the option to select the **Project** in the **Cluster details** in the **Infrastructure configuration**.
 
 **Project** is an optional field. 
 - If the project is selected, in the **Cluster** dropdown, only the clusters associated with the selected project will be listed.
@@ -406,6 +406,21 @@ Use the [harness_platform_infrastructure](https://registry.terraform.io/provider
 
 </TabItem>
 </Tabs>
+
+:::info
+**EKS Execution Authentication Token Refresh**
+
+By default, AWS EKS issues an authentication token with a 15-minute time-to-live. Long-running API calls will fail once this token expires because the `aws-iam-authenticator` does not automatically refresh it. For more info, refer [kubernetes-client/java/issues/2438](https://github.com/kubernetes-client/java/issues/2438)
+
+Harness provides an opt-in fix via the feature flag `CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+
+- **What it does**  
+  Checks the token’s expiration timestamp in the `ExecCredential` response and automatically refreshes the token.
+- **Why it matters**  
+  Prevents unexpected failures on long-running Kubernetes executions against EKS clusters.
+
+With this flag enabled, your EKS-based workflows will seamlessly refresh expired tokens and continue without interruption.  
+:::
 
 ---
 
@@ -969,6 +984,34 @@ For more information about manifests in Harness, see [Add Kubernetes Manifests](
 If you omit the `namespace` key and value from a manifest in your Service Definition, Harness automatically uses the namespace you entered in the Harness Environment  **Infrastructure Definition** settings **Namespace** field.
 
 :::
+
+### Enforcing Namespace Consistency
+
+Kubernetes deployments in Harness give you more built-in control when it comes to namespace consistency. If used correctly, you can prevent users from deploying resources into namespaces other than the one defined in the Infrastructure.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This feature requires delegate version `856xx` or later.
+:::
+
+To enable this setting, go to:
+**Account** / **Org** / **Project Settings** → **Default Settings**
+Under the **Continuous Delivery** section, set the value to **True** for:
+**Enable Namespace validation from different sources with infrastructure level namespace**
+
+**How it's handled**
+
+Fortunately, Harness offers a way to enforce namespace checks—but it requires a bit of setup.
+
+If you configure the namespace explicitly in the deployment step (e.g., in a Rollout or Apply step), and this namespace conflicts with the one hardcoded in the manifest, Harness will fail the deployment. This acts as a validation layer.
+
+In other words:
+
+- You define the namespace in the Infra: `team-infra`
+- Someone hardcodes `rogue-namespace` in their manifest
+- You override the namespace again in the step: `team-infra`
+- Harness catches the mismatch and blocks the deployment
 
 ## Release Name
 

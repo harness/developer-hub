@@ -36,7 +36,7 @@ Integration testing verifies your module by:
 - Destroying the infrastructure
 
 :::info example folder
-Integration testing will use your repository's `examples/` folder.
+Integration testing iterates and runs tests for each example in the `examples/` folder.
 :::
 
 #### File structure
@@ -59,7 +59,7 @@ module-repository/
 └── README.md
 ```
 
-Harness provides an out-of-the-box pipeline for integration testing that will execute the [`init → plan → apply → destroy` commands](/docs/infra-as-code-management/pipelines/terraform-plugins) against your `main.tf` file in each subfolder. If you require customization, you can amend the pipeline or select your own custom pipeline.
+Harness provides an out-of-the-box pipeline for integration testing that will execute the [`init → plan → apply → destroy` commands](/docs/infra-as-code-management/cli-commands/terraform-plugins) against your `main.tf` file in each subfolder. If you require customization, you can amend the pipeline or select your own custom pipeline.
 </TabItem>
 <TabItem value="Tofu/Terraform testing pipeline">
 
@@ -92,7 +92,7 @@ Files in other locations will be ignored.
 Key aspects of the testing pipelines:
 
 **1. Testing stage and steps:**
-  - Each testing pipeline includes a dedicated testing stage with a single step using the `IACMModuleTestPlugin`. The `moduleId` input is dynamically passed via webhooks, ensuring precise targeting of modules during testing.
+  - Each testing pipeline includes a dedicated testing stage with a single step using the `IACM Module Test` plugin. The `moduleId` input is dynamically passed via webhooks, ensuring precise targeting of modules during testing.
 
 **2. Default testing pipeline:**
   - You can select a default testing pipeline for your module
@@ -109,7 +109,7 @@ Use the `moduleId` input instead for module-specific testing.
 </TabItem>
 <TabItem value="YAML">
 
-This YAML configuration demonstrates the use of ` moduleId: <+input>` as a dynamic input for module-specific testing. The `IACMModuleTestPlugin` step executes the `integration-test` command, ensuring comprehensive test coverage.
+This YAML configuration demonstrates the use of ` moduleId: <+input>` as a dynamic input for module-specific testing. The `IACM Module Test` plugin step executes the `integration-test` command, ensuring comprehensive test coverage.
 
 ```yaml
 pipeline:
@@ -175,16 +175,16 @@ However, custom pipelines or the use of regular plugin steps against your worksp
 ## Use module testing
 <Tabs>
 <TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/b8ed4345-45b1-4b68-b3ff-09ed5ecc04d1" title="Automated Module Registry Testing with Harness IaCM" />
+<DocVideo src="https://app.tango.us/app/embed/b8ed4345-45b1-4b68-b3ff-09ed5ecc04d1?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Automated Module Registry Testing with Harness IaCM" />
 </TabItem>
 <TabItem value="Step-by-step">
 
-1. From the IaCM Module Registry page, select a module.
-2. Select the **Test Executions** tab.
-3. Select **Set up Module testing**.
-4. Select an **Organization** and **Project**, then select **Next**.
-5. Select a Cloud Provider Connector, then select **Apply selected**.
-6. Select your **Provisioner**, and **Version**, e.g. **OpenTofu 1.9.0**.
+1. From the IaCM Module Registry page, select a module
+2. Select the **Test Executions** tab
+3. Select **Set up Module testing**
+4. Select an **Organization** and **Project**, then select **Next**
+5. Select a Cloud Provider Connector, then select **Apply selected**
+6. Select your **Provisioner**, and **Version**, e.g. **OpenTofu 1.9.0**
 7. Select **Next**.
 8. Select your default pipelines to run against your pull request to test your module.
    - By default, an **Integration Test** and **Tofu/Terraform Test** pipeline are created for you.

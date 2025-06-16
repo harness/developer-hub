@@ -251,3 +251,18 @@ To customize navigation in navigation 2.0:
 
 </TabItem>
 </Tabs>
+---
+
+### Customize Account-Wide Navigation
+
+:::note
+
+This feature is currently behind the feature flag `CDS_NAV_MODULE_VISIBILITY`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
+
+:::
+
+Admins can also edit which modules are visible to all users using the [Visible Modules in this Account](/docs/platform/settings/default-settings/#visible-modules-in-this-account) default setting. 
+
+Access this setting by going to **Account Settings** > **Default Settings** > **Visible Modules in this Account**.
+
+

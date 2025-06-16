@@ -92,6 +92,18 @@
 
 /docs/platform/connectors/ref-source-repo-provider/http-helm-repo-connector-settings-reference /docs/platform/connectors/code-repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference
 
+# Added by ivikramsahu on 28-04-2025 fixing the missing url by redirecting to prometheus
+
+/docs/self-managed-enterprise-edition/monitor-harness-on-prem#set-up-prometheus-in-cluster /docs/self-managed-enterprise-edition/monitoring/install-prometheus
+docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the-grafana-dashboard /docs/self-managed-enterprise-edition/monitoring/install-grafana
+
+/docs/self-managed-enterprise-edition/monitor-harness-on-prem /docs/category/monitoring
+
+# Added by ravilach on 04-24-2025 for Broken CI Category
+/docs/category/troubleshoot-ci /docs/category/troubleshoot-harness-ci
+
+# Redirects generated from Front Matter [sytem generated goes below here]:
+
 # Added by ivikramsahu for self-managed enterprise edition documentation revamp.
 
 /docs/self-managed-enterprise-edition/get-started/onboarding-guide /docs/self-managed-enterprise-edition/smp-overview
@@ -102,5 +114,3 @@
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-mongodb-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-mongodb-database
 
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb /docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-self-managed-mongodb
-
-# Redirects generated from Front Matter [sytem generated goes below here]:

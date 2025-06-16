@@ -52,6 +52,7 @@ When deploying a delegate, it is recommended that you name the delegate either t
 - The delegate pod needs a minimum of 1 vCPU and 2G of memory.
   - For larger clusters, more resources are needed. Requirements TBD by engineering at this time.
 - The delegate will need outbound internet access to `https://app.harness.io`
+- For sending logs to Harness for support and troubleshooting the delegate will also need outbound access to `logging.googleapis.com`.
 
 ## Connectors
 

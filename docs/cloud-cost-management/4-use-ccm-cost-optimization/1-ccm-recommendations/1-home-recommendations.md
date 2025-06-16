@@ -3,6 +3,10 @@ title: Overview
 description: Learn about the recommendations summary page and the various actions that you can perform on this page.
 # sidebar_position: 2
 ---
+import Tabs from '@theme/Tabs';
+
+import TabItem from '@theme/TabItem';
+
 
 :::note
 After you enable CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the service. In **Cloud Costs**, go to the **Recommendations** page.
@@ -22,17 +26,41 @@ Harness CCM currently supports these types of recommendations:
 - Workload
 - Governance
 
-## View recommendations
+:::tip [Latest Features Released in 1.47.0](/release-notes/cloud-cost-management#april-2025---version-1470)
+<Tabs>
+  <TabItem value="Improved Recommendation Tracking" label="Improved Recommendation Tracking">Users can now specify estimated savings when marking a recommendation as applied. Upon marking a recommendation as applied, users can now confirm whether the estimated savings matched the actual savings or enter the actual amount saved if different from the estimate. Additionally, after a recommendation has been applied, this savings data from the Applied Recommendations section can be edited. </TabItem>
+  <TabItem value="Cost Categories Integration" label="Cost Categories Integration">The Filter panel in the Recommendations view now includes the option to **filter by Cost Categories**. This update is especially valuable for large-scale organizations that manage thousands of recommendations and require structured views to take meaningful action. </TabItem>
+  <TabItem value="Recommendations Filter Revamp" label="Recommendations Filter Revamp">The Filter panel in the Recommendations view has been updated to provide a more streamlined experience.  </TabItem>
+</Tabs>
+:::
+
+## View Recommendations
 
 To view recommendations, click on the **Recommendations** tab in the navigation bar, which will take you to the homepage. On the Recommendations page, there are two tabs: Open Recommendations and Applied Recommendations. The Open Recommendations tab displays all available recommendations that have yet to be applied, while the Applied Recommendations tab shows the recommendations that have already been implemented.
 
+
 ### Open Recommendations
 
-  ![](./static/view-recommendations-page.png)
+  ![](./static/recommendations-open.png)
+
+On the Open Recommendations Page, you can view:
+- Export CSV: Option to export all recommendations with every data associated with it
+- Potential Monthly Savings that can be achieved with the recommendation
+- Potential Monthly Spend without applying recommendations.
+- Recommendation action for each resource. The Rec
+- Option to create Jira Ticket
+- Option to configure preferences and presets for recommendations through Settings
+- Option to manage the recommendations added to Ignore List
+- Different Options to filter Recommendations like:
+  - Recommendation Type
+  - Cloud Provider
+  - More filters like :
+  ![](./static/recommendations-filter-new.png)
+
 
 ### Applied Recommendations
 
-  ![](./static/applied-recommendations-page.png)
+  ![](./static/recommendations-applied.png)
 
 When you click on an individual recommendation, you’ll be able to view a detailed breakdown of the recommendation, including relevant insights, suggested actions, and any supporting information.
 
@@ -187,10 +215,6 @@ Perform the following steps to raise a ticket to apply recommendations:
 
 
 2. Enter the following ticket details:
-
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 
 <Tabs>

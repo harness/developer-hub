@@ -62,7 +62,7 @@ allowedCapabilities:
     - "NET_ADMIN"
     # SYS_ADMIN: used in stress chaos experiment to perform cgroup operations.
     - "SYS_ADMIN"
-hostNetwork: false
+hostNetwork: true
 hostIPC: false
     # To run fault injection on a target container using pid namespace.
     # It is used in stress, network, dns and http experiments.

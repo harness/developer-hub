@@ -38,7 +38,15 @@ After installing the Harness extension and completing the login process, you can
 Harness AI Code Agent offers four key features: Code Generation, Chat feature and Inline Editing. Below, we provide a detailed explanation of each feature.
 
 ### Code Generation
+
+**Watch Harness AI Code Agent in Action**.
+
+<DocVideo src="https://www.youtube.com/embed/G8IlWLCpkVM" />
+
+> In this demo, see how Harness AI Code Agent helps scaffold, complete, and iterate on real Django code—all inside VS Code. Think of it as your AI pair programmer.
+
 Code generation works by showing real-time inline code suggestions. The suggestions are generated based on the context of the code being written, and additional information such as relevant files and code snippets in the workspace.
+
 Once a suggestion is shown to the user, they can accept it fully or word by word, allowing for customization before finalizing the code.
 ![An example of AI code autocompletion](./static/code_gen.gif)
 
@@ -66,6 +74,20 @@ You can refresh the codebase index by clicking on `...` at the top of your chat 
 ### Adding References
  You can enhance the code agent's capabilities by adding references to specific files or libraries that are relevant to your query to get a more specific response. In order to add references, simply type `@' in the chat window and a pop-up will appear allowing you to select the files or libraries you want to reference.
 ![An example of AIDA code autocompletion](./static/ca_file_tag.png)
+
+### Context providers
+
+Context providers allow you to feed relevant content to the agent as input context for your queries. Harness supports several context providers, which can be used alongside the code agent to improve response accuracy.
+
+Examples include:
+
+- @Codebase: Reference the most relevant snippets from your codebase.
+
+- @File: Reference any file in your current workspace.
+
+- @Search: Reference the results of a codebase search, similar to what you'd see in VS Code search.
+
+To explore all available context providers, type `@` in the **Harness extension → Open Chat** window.
 
 ## Troubleshooting
 
@@ -114,11 +136,10 @@ No, Harness AI Code Agent does not store any of your code or personal data. The 
 ### Which Large Language Models does Harness AI Code Agent utilize?
 Harness AI Code Agent utilizes advanced Large Language Models such as OpenAI's gpt-4 and Gemini Flash. These models are designed to understand and generate human-like text, enabling the code agent to provide accurate and contextually relevant code suggestions and explanations.
 
-
 ### What programming languages does Harness AI Code Agent support?
 Harness AI Code Agent supports a wide range of programming languages including but not limited to JavaScript, Python, Java, C#, Ruby, Go, and TypeScript. The tool is designed to understand the syntax and semantics of these languages, enabling it to provide accurate code suggestions and generation tailored to the specific language being used.
 
-### What is language server and how does it work?
+### What is a language server and how does it work?
 The language server is component of Harness AI Code Agent that runs on the user's machine and communicates with the IDE. The role of the language server is to generate the context that is needed to respond to user queries by gathering and processing information from the current open tabs and files in the workspace. The language server is also responsible for generating and sending requests to the Harness AI backend.
 
 ### What context information is used by the chat feature?

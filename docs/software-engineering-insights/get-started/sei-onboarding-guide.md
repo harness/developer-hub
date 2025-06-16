@@ -7,7 +7,7 @@ helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-Harness SEI analyzes data from over 40 DevOps tools to compute [DORA metrics and over 100 other insightful metrics](/docs/category/metrics-and-reports) that provide the missing insights to help you deliver software faster with better quality.
+Harness SEI analyzes data across all key DevOps tools to compute [DORA metrics and over 100 other insightful metrics](/docs/category/metrics-and-reports) that provide the missing insights to help you deliver software faster with better quality.
 
 This guide explains what you need to know to get started using Harness SEI
 
@@ -68,7 +68,7 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 | **Step** | **Details** | **Documentation** |
 | - | - | - |
 | <a href="/docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile">Configure Business Alignment Profile</a> | Learn how to create/edit an investment profile | [Click here](/docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile) |
-| <a href="/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview#configure-the-dora-type-workflow-profile">Configure Workflow profile for DORA</a> | Learn how to create/edit a workflow profile for measuring DORA metrics | [Click here]/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile) |
+| <a href="/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview#configure-the-dora-type-workflow-profile">Configure Workflow profile for DORA</a> | Learn how to create/edit a workflow profile for measuring DORA metrics | [Click here](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile) |
 | <a href="/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/velocity-profile">Configure Workflow profile for Lead Time</a> | Learn how to create/edit a workflow profile to measure Lead Time metrics | [Click here](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/velocity-profile) |
 | <a href="/docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile">Configure Trellis profile</a> | Learn how to create/edit a Trellis profile | [Click here](/docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile) |
 

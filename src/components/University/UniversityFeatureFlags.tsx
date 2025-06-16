@@ -349,8 +349,8 @@ export default function FeatureFlags() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness FF Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness FF Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -421,8 +421,8 @@ export default function FeatureFlags() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness FF Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness FF Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>

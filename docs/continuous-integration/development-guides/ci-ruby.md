@@ -50,7 +50,7 @@ Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a [Run
     identifier: dependencies
     name: Dependencies
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: ruby:latest
       command: |-
         bundle check || bundle install
@@ -152,7 +152,7 @@ The following examples run tests in a **Run** step.
     name: Run Ruby Tests
     identifier: run_ruby_tests
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: ruby:latest
       shell: Sh
       command: |-
@@ -198,7 +198,7 @@ The following examples use the [Minitest JUnit Formatter](https://github.com/aes
     name: Run Ruby Tests
     identifier: run_ruby_tests
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: ruby:latest
       shell: Sh
       command: |-
@@ -293,7 +293,7 @@ Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in yo
     name: Ruby Version
     identifier: rubyversion
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: ruby:latest
       shell: Sh
       command: |-
@@ -324,7 +324,7 @@ Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in yo
     name: Ruby Version
     identifier: rubyversion
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: ruby:<+ stage.matrix.rubyVersion >
       shell: Sh
       command: |-
@@ -460,7 +460,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: bundle install --path vendor/bundle
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: ruby:latest
               - step:
                   type: Run
@@ -469,7 +469,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: bundle exec rake test --junit
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: ruby:latest
                   reports:
                     type: JUnit

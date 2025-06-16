@@ -64,7 +64,9 @@ Make sure `feature.file.editor` is not set to `false` in the `bitbucket.properti
 
 You can store your resources and configurations in Git by selecting the **Remote** option while creating the resources.
 
-For this, you must specify a Harness Git Connector, a repo, branch details, and a file path.
+To do this, you must specify a Harness Git Connector along with the repository and branch details.
+
+The file path will follow the convention described in [Autocreation of Entities in Harness](/docs/platform/git-experience/autocreation-of-entities/).
 
 :::info note
 If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repository, you won't need a Git Connector.

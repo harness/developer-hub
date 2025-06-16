@@ -308,7 +308,7 @@ Call the `split_tests` binary. The path depends on your build infrastructure.
 
 * For Harness Cloud, use `./split_tests`.
 * For other build infrastructures, use `/addon/bin/split_tests`.
-* For steps running in containers, rather that on the host, use `usr/bin/split_tests`. You must also declare this path in [shared paths](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#shared-paths).
+* For steps running in containers, rather that on the host, use `/usr/bin/split_tests`. You must also declare this path in [shared paths](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#shared-paths).
 
 ### Glob or file-path
 
