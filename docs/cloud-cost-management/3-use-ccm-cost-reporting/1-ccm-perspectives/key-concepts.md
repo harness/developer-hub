@@ -1,7 +1,7 @@
 ---
 title: Key Concepts
 description: Export your perspectives' reports as CSV files
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -76,3 +76,35 @@ The following are the key advantages of preview:
 :::note
 **Grouped by** Product in Preview.
 :::
+
+
+### Review: No Account/Project/etc
+
+It's important to understand the difference between the **Others** and **No Account/Project/etc** categories.
+
+When a Perspective includes multiple data sources (for example, AWS, GCP, and Cluster) and you select one data source in a Perspective **Group By**, such as **AWS: Account**, the costs for the AWS data source are displayed individually. The costs for the other data sources (GCP, Cluster) are grouped under **No Account**.
+
+In other words, a row with **No** followed by the selected `Group by` is displayed for costs that don’t have any relation with the selected `Group by`. For example, **No SKUs** is displayed for costs (AWS, clusters, etc.) that don’t have any GCP SKUs associated with it.
+
+Another example is if the **Group By** is **Project**. For example, if you selected GCP: Project, then the **No Project** item in the graph represents the AWS and Cluster project costs.
+
+Essentially, `No GroupBy` represents the null values for that `Group By` grouping. To work with these null values either in perspective filters or rules, you need to use the "IS NULL" function on that field. Since Perspectives don't explicitly provide a `No GroupBy` value in the filters, the "IS NULL" field serves as the way to handle these `No GroupBy` items. 
+
+For example, if your perspective includes both GCP and AWS cloud providers, and you intend to categorize costs by AWS accounts using the `GroupBy` function, any costs associated with GCP will be classified under the label `No Account`. In case you wish to view only the GCP costs, you can apply a filter with the condition `AWS > Account` IS NULL.
+
+### Understanding the Difference: Label vs. Label V2
+
+- **`Label` (Legacy)**: Normalizes AWS tags. GCP, Azure and Clusters tags are not normalized.
+- **`Label V2` (New)**: Preserves the original structure from AWS similar to how GCP, Azure and Cluster tags are stored.
+
+**Key Benefits of `Label V2`:**
+- **Original tags**: Displays your original cloud tag keys exactly as they appear in AWS, Azure, or GCP
+- **Improved Performance**: Enhanced data processing and query performance
+
+`Label` is a label that you assign to your AWS resources. See how [AWS labels are created](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws/). 
+
+After `Label V2`, AWS labels are stored as-is without any normalization.
+
+**Harness CCM is transitioning from the traditional `Label` system to the enhanced `Label V2` system. Support for the legacy `Label` system will be discontinued in the coming months.**
+
+Please [see the steps here](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#important-migration-from-label-to-labelv2) to migrate labels from `Label` to `Label V2`.
