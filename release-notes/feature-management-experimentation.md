@@ -13,9 +13,24 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: June 5, 2025
+#### Last updated: June 16, 2025
 
 ## June 2025
+
+### [New Feature] Experiment Tags
+----
+#### 2025-06-16
+
+You can now add tags to experiments in Harness FME, making it easier to organize, search, and manage your experiments at scale. Use tags to label experiments by team, purpose, status, or any other internal convention, just like you already do with flags, metrics, and segments.
+
+This is especially helpful for organizations with multiple teams running experiments in the same project, where clear organization and discoverability are key.
+
+#### Related documentation
+
+- [Tags](/docs/feature-management-experimentation/management-and-administration/tags/)
+- [Experimentation Overview](/docs/feature-management-experimentation/experimentation/overview)
+- [Experiments Setup](/docs/feature-management-experimentation/experimentation/setup/)
+
 ### [New Feature] Control cache expiration for client-side SDKs
 ----
 #### 2025-06-05
