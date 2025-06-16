@@ -1,9 +1,7 @@
 ---
 title: Share your cost perspective report
 description: This topic describes how to share the cost report of your Perspective with the stakeholders.
-sidebar_position: 4
-helpdocs_topic_id: sujqj6o2k7
-helpdocs_category_id: e7k0qds7tw
+sidebar_position: 5
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
