@@ -5,6 +5,7 @@ description: Get started with Harness SCS
 sidebar_position: 3
 redirect_from:
     - /docs/software-supply-chain-assurance/get-started/get-started-with-rspm
+    - /docs/software-supply-chain-assurance/get-started/onboarding-guide
 ---
 
 This guide will help you onboard to the Harness SCS features, allowing you to set up RSPM, CI/CD SPM, and Artifact Security with integrations. The onboarding process involves two main steps, configuring your integrations and selecting your resources.

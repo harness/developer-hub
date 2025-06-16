@@ -7,6 +7,21 @@ sidebar_position: 13
 
 This document provides a step-by-step guide on how to create SLSA Policies. For guidance on how to write these policies, please refer to the section on [write policy definitions](/docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies). To learn about implementing SLSA policies, follow the instructions in the section on [enforcing SLSA policies](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa#enforce-policies-on-slsa-provenance).
 
+### Before you begin
+
+As you learn to create SLSA policies, ensure you thoroughly review
+
+
+* [Harness Policy as Code - Overview](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/)
+* [Harness Policy as Code - Quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart/)
+
+The Harness Policy Library provides sample policies that simplify the process of creating and enforcing them against SLSA. Here's a guide on how to utilize these samples for policy creation.
+
+:::info
+Policies can be created at the account, organization, and project levels, this guide will focus on creating a policy at the account level. For instructions on crafting policies for the organization and project levels, please refer to the linked [overview guide](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/), which outlines a similar process.
+
+
+:::
 
 
 ## Create SLSA policies
@@ -25,7 +40,10 @@ OPA policies used for SLSA Provenance verification are different from [SBOM poli
 
 ### SLSA policy example
 
-Here's an example of an OPA policy that could be used to verify an [SLSA Provenance generated in Harness](./generate-slsa.md). If you are verifying provenance from a third-party build system provider, make sure your OPA policies reflect the provenance structure used by that build system provider. Different providers might use different SLSA Provenance structures.
+Here's an example of an OPA policy that could be used to verify an [SLSA Provenance generated in Harness](/docs/software-supply-chain-assurance/artifact-security/slsa/generate-slsa). If you are verifying provenance from a third-party build system provider, make sure your OPA policies reflect the provenance structure used by that build system provider. Different providers might use different SLSA Provenance structures.
+
+
+#### Validate Repo and Branch:
 
 ```
 package slsa
@@ -41,6 +59,34 @@ deny[msg]{
   input[0].outcome.stepArtifacts.provenanceArtifacts[0].predicate.buildDefinition.externalParameters.codeMetadata.branch != "main"
   msg := "Branch verification failed in provenance"  
 }
+```
+
+#### Validate Trigger type:
+
+```
+
+package slsa
+
+deny[msg] {
+  input[0].outcome.stepArtifacts.provenanceArtifacts[0].predicate.buildDefinition.externalParameters.trigger != "push"
+  msg := "Invalid trigger type: only 'push' is allowed"
+}
+
+
+```
+
+#### Validate Pipeline Identifier:
+
+```
+
+package slsa
+
+deny[msg] {
+  input[0].outcome.stepArtifacts.provenanceArtifacts[0].predicate.buildDefinition.buildType != "https://example.com/ci-pipeline@v1"
+  msg := "Pipeline identifier does not match expected value"
+}
+
+
 ```
 
 For more examples, go to [Policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case).
