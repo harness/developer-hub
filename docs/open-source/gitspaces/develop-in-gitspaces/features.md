@@ -5,9 +5,9 @@ sidebar_position: 2
 sidebar_label: Dev Container Features
 ---
 
-This guide takes you through the detailed steps to implement **"Features"** in your Gitspaces. Let’s dive deeper into the process.
+This document takes you through the detailed steps to implement **Features** in your Gitspaces.
 
-## What are "Features"?
+## What are Features?
 **Features** are self-contained, modular units of installed code and configuration designed to enable new development capabilities in your development container. 
 
 Implementing features enables you to add and automate the installation of additional tooling, runtime, or library "features" into your development container quickly and easily. These features are installed on top of your base image (as defined in your `devcontainer` metadata), providing added functionality.
@@ -21,7 +21,7 @@ Additional files are allowed and packaged alongside these required files.
 
 For more details on the properties supported in the `devcontainer-feature.json` file, refer [here](https://containers.dev/implementors/features/).
 
-## Defining "Features" in your Gitspace
+## Defining Features in your Gitspace
 You can define a Feature in your Gitspace by referencing it in the `devcontainer.json` file under the top-level `“features”` object.
 
 **Key considerations**:
@@ -51,7 +51,7 @@ While referencing features, ensure that the feature originates only from the **f
 | Reference to Feature in OCI Registry | ```<oci-registry>/<namespace>/<feature>[:<semantic-version>]``` | ghcr.io/user/repo/go ghcr.io/user/repo/go:1 ghcr.io/user/repo/go:latest | 
 | Direct HTTPS URI to a tarball | ```https://<uri-to-feature-tgz>``` |  https://github.com/user/repo/releases/devcontainer-feature-go.tgz | 
 
-For more details on referencing features, refer to this [guide](https://containers.dev/implementors/features/#referencing-a-feature) here. 
+For more details on referencing features, refer to this [link](https://containers.dev/implementors/features/#referencing-a-feature) here. 
 
 ## Example Feature Reference
 Here's an example feature reference for your `devcontainer.json` file:

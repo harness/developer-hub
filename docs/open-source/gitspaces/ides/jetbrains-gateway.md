@@ -26,13 +26,13 @@ The following JetBrains IDEs are supported for remote development:
 ## Pre-Requisites  
 
 #### Install Harness OSS Gitspaces JetBrains Plugin Package 
-Ensure that you have downloaded the latest version of the [**Harness OSS Gitspaces JetBrains Gateway Plugin**](https://plugins.jetbrains.com/plugin/26595-harness-oss-gitspaces) package. Follow [these steps](/docs/cloud-development-environments/ides/jetbrains-gateway#installing-the-plugin) to install and configure the plugin.
+Ensure that you have downloaded the latest version of the [**Harness OSS Gitspaces JetBrains Gateway Plugin**](https://plugins.jetbrains.com/plugin/26595-harness-oss-gitspaces) package. Follow [**these steps**](/docs/cloud-development-environments/ides/jetbrains-gateway#installing-the-plugin) to install and configure the plugin.
 
 #### Install JetBrains Gateway  
-Before proceeding, ensure that [JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/) is installed on your device.  
+Before proceeding, ensure that [**JetBrains Gateway**](https://www.jetbrains.com/remote-development/gateway/) is installed on your device.  
 
 #### Recommended Gitspace Configuration  
-Refer to [this section](/docs/cloud-development-environments/ides/intellij#recommended-gitspace-configuration) to understand the **recommended Gitspace requirements** for optimal performance when connecting to your Gitspace in JetBrains IDEs.  
+Refer to [**this section**](/docs/cloud-development-environments/ides/intellij#recommended-gitspace-configuration) to understand the **recommended Gitspace requirements** for optimal performance when connecting to your Gitspace in JetBrains IDEs.  
 
 ## Installing the Plugin  
 
