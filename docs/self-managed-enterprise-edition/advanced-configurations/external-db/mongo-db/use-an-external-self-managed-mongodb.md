@@ -2,7 +2,7 @@
 title: Use an external self-managed MongoDB with your installation
 description: Learn how to use an external self-managed MongoDB with Self-Managed Enterprise Edition installations.
 sidebar_label: External self-managed MongoDB
-sidebar_position: 30
+sidebar_position: 2
 redirect_from:
   - /tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb
 ---
@@ -46,13 +46,13 @@ Ensure the following:
 
 ## Architecture
 
-![MongoDB architecture](../static/mongodb-self-managed-architecture.png)
+![MongoDB architecture](./static/mongodb-self-managed-architecture.png)
 
 ### MongoDB replica set configuration without region failover (single data center)
 
 This architecture supports HA for databases. It does not support region/DR failover.
 
-![MongoDB architecture 1](../static/mongodb-arch-1.png)
+![MongoDB architecture 1](./static/mongodb-arch-1.png)
 
 ### MongoDB replica set configuration with region failover setup (two data centers)
 
@@ -66,7 +66,7 @@ The DC1 MongoDB priority level should be higher than DC2 to prevent cross-networ
 
 :::
 
-![DR architecture 1](../static/mongodb-dr-arch-1.png)
+![DR architecture 1](./static/mongodb-dr-arch-1.png)
 
 ### MongoDB replica set configuration with region failover setup (3 data centers)
 
@@ -80,7 +80,7 @@ The DC1 and DC2 MongoDB priority levels should be higher than DC3 to prevent cro
 
 :::
 
-![DR architecture 2](../static/mongodb-dr-arch-2.png)
+![DR architecture 2](./static/mongodb-dr-arch-2.png)
 
 ## Set up MongoDB VMs
 

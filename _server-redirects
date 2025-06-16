@@ -103,3 +103,14 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 /docs/category/troubleshoot-ci /docs/category/troubleshoot-harness-ci
 
 # Redirects generated from Front Matter [sytem generated goes below here]:
+
+# Added by ivikramsahu for self-managed enterprise edition documentation revamp.
+
+/docs/self-managed-enterprise-edition/get-started/onboarding-guide /docs/self-managed-enterprise-edition/smp-overview
+/docs/category/get-started-with-smp /docs/self-managed-enterprise-edition/get-started-with-smp
+
+# Added by ivikramsahu for self-managed enterprise edition documentation revamp (advance configuration > External DB > MongoDB)
+
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-mongodb-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-mongodb-database
+
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb /docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-self-managed-mongodb
