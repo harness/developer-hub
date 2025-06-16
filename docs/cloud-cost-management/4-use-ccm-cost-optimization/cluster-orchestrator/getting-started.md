@@ -22,6 +22,11 @@ Cluster Orchestrator is designed for quick implementation with minimal configura
 ## Prerequisites
 
 - [Harness Kubernetes connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector)
+- Kubernetes version compatibility: Supports v1.16 through v1.31. Note that Kubernetes v1.32 is not currently supported.
+
+:::note
+Important: Kubernetes v1.32 is not currently supported. Please ensure your cluster is running a compatible Kubernetes version.
+:::
 
 ## Quick Start
 
