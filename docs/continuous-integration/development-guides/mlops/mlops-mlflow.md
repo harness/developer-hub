@@ -69,7 +69,7 @@ You can include MLflow Tracking in a Harness CI pipeline by using the MLflow plu
                   name: mlflow plugin
                   identifier: maven_plugin
                   spec:
-                    connectorRef: account.harnessImage ## Harness Docker connector
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: harnesscommunity/mlflow
                     settings:
                       MLFLOW_TRACKING_URI: http://12.345.678.900:5000 ## URI for your MLflow remote tracking server

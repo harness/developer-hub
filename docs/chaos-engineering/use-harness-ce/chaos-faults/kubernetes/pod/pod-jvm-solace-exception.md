@@ -17,6 +17,36 @@ Pod JVM Solace exception:
 - Tests the impact of messaging exceptions on the end-user experience, ensuring the application behaves gracefully under Solace message delivery failures. This includes validating retries, fallback mechanisms, and error recovery strategies to maintain communication integrity.
 - Ensures that the application can handle Solace messaging exceptions without critical failure. Test error-handling strategies, automatic recovery processes, and failover configurations to verify that the system remains operational despite messaging disruptions.
 
+### Permissions required
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: pod-jvm-solace-exception
+spec:
+  definition:
+    scope: Namespaced
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
+
 ### Mandatory tunables
 <table>
   <tr>

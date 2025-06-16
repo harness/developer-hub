@@ -457,3 +457,431 @@ When we run the Asset Governance rule (not in dry-run mode) and when a resource 
     * Clone the governance rule
     * Update the webhook in the rule for the new pipeline
     * Update the filter in the rule to be the new schedule tag value
+
+# Bootstrap with OpenTofu
+
+To create the above pipeline using the [Harness TF provider](https://registry.terraform.io/providers/harness/harness/latest/docs), use the `harness_platform_pipeline` resource below:
+
+```hcl
+terraform {
+  required_providers {
+    harness = {
+      source = "harness/harness"
+    }
+  }
+}
+
+variable "name" {
+  type        = string
+  default     = "Create AutoStopping Rule"
+  description = "Pipeline Name"
+}
+
+variable "org_id" {
+  type        = string
+  description = "Organization Identifier"
+}
+
+variable "project_id" {
+  type        = string
+  description = "Project Identifier"
+}
+
+variable "docker_connector_id" {
+  type        = string
+  default     = "account.harnessImage"
+  description = "Docker connector to use for resolving images"
+}
+
+variable "kubernetes_connector_id" {
+  type        = string
+  description = "Kubernetes connector to use for running the pipeline"
+}
+
+variable "harness_endpoint" {
+  type        = string
+  default     = "app.harness.io"
+  description = "Endpoint you use to connect to Harness"
+}
+
+variable "api_secret_id" {
+  type        = string
+  description = "Secret ID with access to read connectors and create AS rules"
+}
+
+locals {
+  fmt_identifier = replace(replace(var.name, " ", "_"), "-", "_")
+}
+
+
+resource "harness_platform_pipeline" "this" {
+  identifier = local.fmt_identifier
+  name       = var.name
+  org_id     = var.org_id
+  project_id = var.project_id
+  yaml       = <<-EOT
+pipeline:
+  identifier: ${local.fmt_identifier}
+  name: ${var.name}
+  orgIdentifier: ${var.org_id}
+  projectIdentifier: ${var.project_id}
+  tags: {}
+  stages:
+    - stage:
+        name: AutoCreate
+        identifier: AutoCreate
+        description: ""
+        type: Custom
+        tags: {}
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  name: Create AutoStopping Rules
+                  identifier: Create_AutoStopping_Rules
+                  steps:
+                    - step:
+                        type: Run
+                        name: Find Existing AutoStopping Rule
+                        identifier: Find_Existing_AutoStopping_Rule
+                        spec:
+                          connectorRef: ${var.docker_connector_id}
+                          image: rssnyder/py3requests
+                          shell: Python
+                          command: |-
+                            from os import getenv, environ
+
+                            from requests import post, get
+
+                            PARAMS = {
+                                "routingId": getenv("HARNESS_ACCOUNT_ID"),
+                                "accountIdentifier": getenv("HARNESS_ACCOUNT_ID"),
+                            }
+
+                            HEADERS = {"x-api-key": getenv("HARNESS_PLATFORM_API_KEY")}
+
+
+                            def get_autostopping_rules(dry_run: bool = False, page: int = 0):
+                                resp = post(
+                                    f"https://{getenv('HARNESS_ENDPOINT')}/gateway/lw/api/accounts/{getenv('HARNESS_ACCOUNT_ID')}/autostopping/rules/list",
+                                    params=PARAMS,
+                                    headers=HEADERS,
+                                    json={"page": page, "limit": 1, "dry_run": dry_run},
+                                )
+
+                                resp.raise_for_status()
+
+                                data = resp.json()
+
+                                results = data.get("response", {}).get("records", [])
+                                if data.get("response", {}).get("pages") > page + 1:
+                                    results.extend(get_autostopping_rules(dry_run, page + 1))
+
+                                return results
+
+
+                            def get_existing_rule_id():
+                                target_instance_id = getenv("INSTANCE_ID")
+
+                                if not target_instance_id:
+                                    print("no INSTANCE specified")
+                                    exit(1)
+
+                                rules = get_autostopping_rules()
+
+                                matches = [
+                                    x
+                                    for x in rules
+                                    if x.get("routing", {}).get("instance", {}).get("filter", {}).get("ids", [])[0]
+                                    == target_instance_id
+                                ]
+                                if matches:
+                                    rule_id = matches.pop().get("id")
+                                    print(f"found existing rule for {target_instance_id}: {rule_id}")
+                                    environ["RULE_ID"] = str(rule_id)
+                                else:
+                                    environ["RULE_ID"] = ""
+
+
+                            if __name__ == "__main__":
+                                get_existing_rule_id()
+                          envVariables:
+                            INSTANCE_ID: <+input>
+                            HARNESS_ACCOUNT_ID: <+account.identifier>
+                            HARNESS_ENDPOINT: ${var.harness_endpoint}
+                            HARNESS_PLATFORM_API_KEY: <+secrets.getValue("${var.api_secret_id}")>
+                          outputVariables:
+                            - name: RULE_ID
+                    - step:
+                        type: Run
+                        name: Find AWS CCM Connector for Account
+                        identifier: Find_AWS_CCM_Connector_for_Account
+                        spec:
+                          connectorRef: ${var.docker_connector_id}
+                          image: rssnyder/py3requests
+                          shell: Python
+                          command: |-
+                            from os import getenv, environ
+
+                            from requests import post, get
+
+                            PARAMS = {
+                                "routingId": getenv("HARNESS_ACCOUNT_ID"),
+                                "accountIdentifier": getenv("HARNESS_ACCOUNT_ID"),
+                            }
+
+                            HEADERS = {"x-api-key": getenv("HARNESS_PLATFORM_API_KEY")}
+
+
+                            def get_ccm_aws_connectors(page: int = 0):
+                                local_params = PARAMS.copy()
+                                local_params.update({"pageIndex": page, "pageSize": 50})
+
+                                resp = post(
+                                    f"https://{getenv('HARNESS_ENDPOINT')}/gateway/ng/api/connectors/listV2",
+                                    params=local_params,
+                                    headers=HEADERS,
+                                    json={"types": ["CEAws"], "filterType": "Connector"},
+                                )
+
+                                resp.raise_for_status()
+
+                                data = resp.json()
+
+                                results = data.get("data", {}).get("content", [])
+                                if data.get("data", {}).get("totalPages") > page:
+                                    results.extend(get_ccm_aws_connectors(page + 1))
+
+                                return results
+
+
+                            def get_connector_for_account():
+                                account_id = getenv("ACCOUNT_ID")
+
+                                connectors = get_ccm_aws_connectors()
+
+                                matches = [
+                                    x
+                                    for x in connectors
+                                    if x.get("connector", {}).get("spec", {}).get("awsAccountId") == account_id
+                                ]
+                                if matches:
+                                    connector_id = matches.pop().get("connector", {}).get("identifier")
+                                    print(f"found connector for {account_id}: {connector_id}")
+                                    environ["CONNECTOR_ID"] = str(connector_id)
+                                else:
+                                    environ["CONNECTOR_ID"] = ""
+
+
+                            if __name__ == "__main__":
+                                get_connector_for_account()
+                          envVariables:
+                            ACCOUNT_ID: <+input>
+                            HARNESS_ACCOUNT_ID: <+account.identifier>
+                            HARNESS_ENDPOINT: ${var.harness_endpoint}
+                            HARNESS_PLATFORM_API_KEY: <+secrets.getValue("${var.api_secret_id}")>
+                          outputVariables:
+                            - name: CONNECTOR_ID
+                        when:
+                          stageStatus: Success
+                          condition: <+execution.steps.Create_AutoStopping_Rules.steps.Find_Existing_AutoStopping_Rule.output.outputVariables.RULE_ID> == ""
+                    - step:
+                        type: Run
+                        name: Create AutoStopping Rule
+                        identifier: Create_AutoStopping_Rule
+                        spec:
+                          connectorRef: ${var.docker_connector_id}
+                          image: rssnyder/py3requests
+                          shell: Python
+                          command: |-
+                            from os import getenv, environ
+
+                            from requests import post, get
+
+                            PARAMS = {
+                                "routingId": getenv("HARNESS_ACCOUNT_ID"),
+                                "accountIdentifier": getenv("HARNESS_ACCOUNT_ID"),
+                            }
+
+                            HEADERS = {"x-api-key": getenv("HARNESS_PLATFORM_API_KEY")}
+
+
+                            def create_autostopping_rule(
+                                instance_id: str,
+                                region: str,
+                                connector_id: str,
+                                idle_time_mins: int,
+                                dry_run: bool = False,
+                            ):
+                                resp = post(
+                                    f"https://{getenv('HARNESS_ENDPOINT')}/gateway/lw/api/accounts/{getenv('HARNESS_ACCOUNT_ID')}/autostopping/v2/rules",
+                                    params=PARAMS,
+                                    headers=HEADERS,
+                                    json={
+                                        "service": {
+                                            "name": instance_id,
+                                            "account_identifier": "<+account.identifier>",
+                                            "fulfilment": "ondemand",
+                                            "kind": "instance",
+                                            "cloud_account_id": connector_id,
+                                            "idle_time_mins": idle_time_mins,
+                                            "custom_domains": [],
+                                            "health_check": {
+                                                "protocol": "http",
+                                                "path": "/",
+                                                "port": 80,
+                                                "timeout": 30,
+                                                "status_code_from": 200,
+                                                "status_code_to": 299,
+                                            },
+                                            "routing": {
+                                                "ports": [],
+                                                "instance": {"filter": {"ids": [instance_id], "regions": [region]}},
+                                            },
+                                            "opts": {
+                                                "dry_run": dry_run,
+                                                "preservePrivateIP": False,
+                                                "deleteCloudResources": False,
+                                                "alwaysUsePrivateIP": False,
+                                                "hide_progress_page": False,
+                                                "preserve_private_ip": False,
+                                                "always_use_private_ip": False,
+                                            },
+                                            "metadata": {"cloud_provider_details": {"name": connector_id}},
+                                            "disabled": False,
+                                            "match_all_subdomains": False,
+                                            "access_point_id": "",
+                                        },
+                                        "deps": [],
+                                        "apply_now": True,
+                                    },
+                                )
+
+                                resp.raise_for_status()
+
+                                data = resp.json()
+
+                                return data.get("response", {}).get("id")
+
+
+                            def create_autostopping_schedule(
+                                name: str,
+                                description: str,
+                                connector_id: str,
+                                rule_id: str,
+                                days: list,
+                                start_h: int,
+                                start_m: int,
+                                end_h: int,
+                                end_m: int,
+                                tz: str,
+                            ):
+                                local_params = PARAMS.copy()
+                                local_params.update({"cloud_account_id": connector_id})
+
+                                resp = post(
+                                    f"https://{getenv('HARNESS_ENDPOINT')}/gateway/lw/api/accounts/{getenv('HARNESS_ACCOUNT_ID')}/schedules",
+                                    params=local_params,
+                                    headers=HEADERS,
+                                    json={
+                                        "schedule": {
+                                            "name": name,
+                                            "created_by": "",
+                                            "account_id": getenv("HARNESS_ACCOUNT_ID"),
+                                            "description": description,
+                                            "resources": [{"ID": str(rule_id), "Type": "autostop_rule"}],
+                                            "details": {
+                                                "uptime": {
+                                                    "days": {
+                                                        "all_day": False,
+                                                        "days": days,
+                                                        "start_time": {"hour": start_h, "min": start_m},
+                                                        "end_time": {"hour": end_h, "min": end_m},
+                                                    }
+                                                },
+                                                "timezone": tz,
+                                            },
+                                        },
+                                    },
+                                )
+
+                                resp.raise_for_status()
+
+                                data = resp.json()
+
+                                return data
+
+
+                            def create():
+                                rule_id = create_autostopping_rule(
+                                    getenv("INSTANCE_ID"),
+                                    getenv("REGION"),
+                                    getenv("CONNECTOR_ID"),
+                                    int(getenv("IDLE_TIME", 130)),
+                                )
+
+                                if rule_id:
+                                    print(f"created rule {rule_id} for", getenv("INSTANCE_ID"))
+                                    environ["RULE_ID"] = str(rule_id)
+                                else:
+                                    environ["RULE_ID"] = ""
+                                    exit(1)
+
+                                try:
+                                    days_raw = getenv("SCHEDULE_DAYS", "1,2,3,4,5").split(",")
+                                    days = [int(x) for x in days_raw]
+                                except ValueError:
+                                    print(f"non integer day supplied: {days_raw}")
+                                    exit(1)
+
+                                try:
+                                    start_h = int(getenv("SCHEDULE_START_H"))
+                                    start_m = int(getenv("SCHEDULE_START_M"))
+                                    end_h = int(getenv("SCHEDULE_END_H"))
+                                    end_m = int(getenv("SCHEDULE_END_M"))
+                                except ValueError:
+                                    print("non integer time supplied for start or end h/m")
+                                    exit(1)
+
+                                schedule_id = create_autostopping_schedule(
+                                    getenv("INSTANCE_ID"),
+                                    "created via governance+pipeline automation",
+                                    getenv("CONNECTOR_ID"),
+                                    rule_id,
+                                    days,
+                                    start_h,
+                                    start_m,
+                                    end_h,
+                                    end_m,
+                                    getenv("SCHEDULE_TIMEZONE"),
+                                )
+
+                                print(schedule_id)
+
+
+                            if __name__ == "__main__":
+                                create()
+                          envVariables:
+                            HARNESS_ACCOUNT_ID: <+account.identifier>
+                            HARNESS_ENDPOINT: ${var.harness_endpoint}
+                            HARNESS_PLATFORM_API_KEY: <+secrets.getValue("${var.api_secret_id}")>
+                            INSTANCE_ID: <+steps.Find_Existing_AutoStopping_Rule.spec.envVariables.INSTANCE_ID>
+                            REGION: <+input>
+                            CONNECTOR_ID: <+steps.Find_AWS_CCM_Connector_for_Account.output.outputVariables.CONNECTOR_ID>
+                            IDLE_TIME: "5"
+                            SCHEDULE_DAYS: 1,2,3,4,5
+                            SCHEDULE_START_H: "8"
+                            SCHEDULE_START_M: "0"
+                            SCHEDULE_END_H: "17"
+                            SCHEDULE_END_M: "0"
+                            SCHEDULE_TIMEZONE: America/Chicago
+                        when:
+                          stageStatus: Success
+                          condition: <+execution.steps.Create_AutoStopping_Rules.steps.Find_Existing_AutoStopping_Rule.output.outputVariables.RULE_ID> == ""
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: ${var.kubernetes_connector_id}
+EOT
+}
+```

@@ -30,19 +30,17 @@ The configuration for SLSA Generation and attestation previously handled in the 
 ## SLSA Generation step configuration
 The **SLSA Generation** step enables you to generate SLSA Provenance and optionally attest it. The generated provenance is saved in the [Artifact section](../artifact-view.md) in SCS, while the attestation file is pushed to the configured container registry. This step should be configured immediately after completing your image-building process, as the image digest is required for provenance generation and attestation.
 
-The **SLSA Generation** step can be used in two workflows depending on how you build your image.
-1. [SLSA Generation when you use the Harness CI **Build and Push** step to build your image.](#slsa-generation-step-configuration-with-build-and-push-step)
-2. [SLSA Generation when you use a **Run** step to build your image.](#slsa-generation-step-configuration-with-run-step)
+<DocImage path={require('./static/slsa-step.png')} width="50%" height="50%" />
 
 Follow the instructions below to configure the **SLSA Generation** step.
 
 - Search and add the **SLSA Generation** step to your pipeline. It is important to place this step immediately after the steps that complete your image-building process, as it requires the artifact digest as input.
-- **Artifact Source**: Configure your artifact source by selecting from the options available in the dropdown menu. You can choose from **DockerHub**, **ECR**, **ACR**, or **GAR**. Select the corresponding artifact source tab below for detailed instructions on configuration.
+- **Artifact Source**: Configure your artifact source by selecting from the options available in the dropdown menu. You can choose from **Docker Registry**, **ECR**, **ACR**, or **GAR**. Select the corresponding artifact source tab below for detailed instructions on configuration.
 
-:::warning Deprecation Alert
+:::info
 
 
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SLSA Generation step.
+When modifying the existing SLSA steps, you must manually remove the digest from the YAML configuration to ensure compatibility with the updated functionality.
 
 :::
 
@@ -52,17 +50,22 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
 
-* **Image:** Enter the name of your image with tag, such as `imagename:tag`.
+* **Image:** Enter the name of your image with tag, such as `imagename:tag` or `imagename@sha256:<digest>`.
 
 </TabItem>
 
-  <TabItem value="dockerhub" label="DockerHub">
+  <TabItem value="dockerhub" label="Docker Registry">
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `my-docker-org/repo-name`.
+* **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or `my-docker-org/repo-name@sha256:<digest>`
 
-* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using an [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/). Refer to the workflows described below for detailed guidance.
+:::note
+
+Unlike other artifact sources, JFrog Artifactory requires additional permissions for attestation. The connector’s user or token must have `Read`, `Annotate`, `Create/Deploy`, and `Delete` permissions.
+
+:::
+
 
 </TabItem>
 
@@ -70,7 +73,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Elastic container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `my-docker-repo/my-artifact`.
+* **Image:** Enter the name of your image with tag or digest, example `my-docker-repo/my-artifact` or `my-docker-repo/my-artifact@sha256:<digest>`.
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
@@ -85,7 +88,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
-* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where   `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/acr`
+* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format  `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
@@ -97,7 +100,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `repository-name/image`.
+* **Image:** Enter the name of your image with tag or digest, example `repository-name/image` or `repository-name/image@sha256:<digest>`.
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
@@ -122,6 +125,8 @@ import CosignAttestationOptions from '/docs/software-supply-chain-assurance/shar
 
 <CosignAttestationOptions />
 
+
+
 Here’s an example of what the signed attestation would look like
 
 ```
@@ -141,7 +146,7 @@ Here’s an example of what the signed attestation would look like
 
 Additionally, you can perform Base64 decoding on the payload data to view your SLSA Provenance.
 For verifying the SLSA attestation, please refer to [Verify SLSA](/docs/software-supply-chain-assurance/slsa/verify-slsa) documentation.
-
+<!-- 
 ## SLSA Generation step configuration with Build and Push step
 When using the Harness CI **Build and Push** step for the image-building process, you can configure the **SLSA Generation** step to generate and attest to the Provenance. Follow the [SLSA Generation step configuration](#slsa-generation-step-configuration), for the **Artifact Digest** field, you can use [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/) to dynamically populate the digest of the image built during the **Build and Push** step.  
 
@@ -270,7 +275,7 @@ This step will fetch the digest of the image and exposes it as a variable `diges
 
 <DocImage path={require('./static/slsa-gen-run-step.png')} width="50%" height="50%" />  
 
-For performing the attestation, refer to the section [Attest SLSA Provenance](#attest-slsa-provenance)
+For performing the attestation, refer to the section [Attest SLSA Provenance](#attest-slsa-provenance) -->
 
 ## Run the pipeline
 

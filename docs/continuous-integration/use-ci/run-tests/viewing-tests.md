@@ -159,7 +159,7 @@ To publish a test report to the **Artifacts** tab, you must:
                      name: publish artifact metadata
                      identifier: publish_artifact_metadata
                      spec:
-                       connectorRef: account.harnessImage ## Use the built-in Docker connector or specify your own Docker connector.
+                       connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                        image: plugins/artifact-metadata-publisher ## Required.
                        settings:
                          file_urls: ## Provide the URL to the artifact that was uploaded in the Upload Artifacts step. If you uploaded multiple artifacts, you can provide a list of URLs.

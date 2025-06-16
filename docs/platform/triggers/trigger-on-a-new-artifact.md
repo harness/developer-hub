@@ -42,6 +42,7 @@ import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 You can use the following artifact providers to triggers pipelines:
 
+- [Harness Artifact Registry](/docs/artifact-registry/ar-webhooks)
 - ACR (Azure Container Registry)
 - Amazon Machine Image (AMI)
 - Amazon S3
@@ -144,7 +145,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**. This is where you tell Harness what artifact repository to poll for changes.
-3. Create or select the connector to connect Harness to the repository, and then select **Continue**. For steps on Docker Registry connectors, go to [Add Docker Registry Artifact Servers](../../first-gen/firstgen-platform/account/manage-connectors/add-docker-registry-artifact-servers.md).
+3. Create or select the connector to connect Harness to the repository, and then select **Continue**. For steps on Docker Registry connectors, go to [docker registry connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/).
 4. In **Artifact Details**, enter the artifact for this trigger to listen for and select **Submit**. For example, in Docker Hub, you might enter `library/nginx`. The artifact is now listed in trigger.
 
    ![](./static/trigger-on-a-new-artifact-25.png)

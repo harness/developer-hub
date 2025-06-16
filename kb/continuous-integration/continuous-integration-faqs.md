@@ -535,6 +535,22 @@ If the delegate is unable to connect to the created build farm with [Istio MTLS 
 
 For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
 
+### Why aren't Harness CI Steps like Git clone inheriting my proxy settings from the Delegate, and how can I configure a proxy for these steps?
+
+CI steps such as Git Clone don't automatically inherit the proxy settings configured on the Harness Delegate. This is because these steps run inside separate build pods, and proxy-related environment variables need to be explicitly passed down to those pods.
+
+To ensure your CI steps work with your proxy setup, you must configure the following environment variables on the Delegate:
+
+`PROXY_HOST`
+
+`PROXY_PORT`
+
+`PROXY_SCHEME`
+
+These variables allow Harness to propagate the proxy configuration to build pods so that operations like cloning a Git repository can route through the correct proxy.
+
+For a complete list of variables and instructions on setting up proxy configurations for your Delegate, refer to the [Configure delegate proxy settings documentation](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings/)
+
 ### If my pipeline consists of multiple CI stages, are all the steps across different stages executed within the same build pod?
 
 No. Each CI stage execution triggers the creation of a new build pod. The steps within a stage are then carried out within the stage's dedicated pod. If your pipeline has multiple CI stages, distinct build pods are generated for each individual stage.
@@ -700,8 +716,6 @@ environment:
   - ACCOUNT_ID=XXXX
   - DELEGATE_TOKEN=XXXX
   - MANAGER_HOST_AND_PORT=https://app.harness.io
-  - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
-  - DEPLOY_MODE=KUBERNETES
   - DELEGATE_NAME=test
   - NEXT_GEN=true
   - DELEGATE_TYPE=DOCKER
@@ -1406,6 +1420,13 @@ By default, Harness uses anonymous Docker access to pull Harness-required images
 
 No. Pipeline initialization isn't included in your build minutes.
 
+### How can I fix the issue where the Git clone is being treated as a submodule?
+You can resolve this by setting the Submodules Strategy to False. This will prevent the repository from being initialized as a submodule. 
+
+You can either:
+- Through the UI: Go to the GitClone step in the Harness UI and set Submodules Strategy to False.
+- Through the YAML: Update the pipeline YAML file by setting submoduleStrategy: "false" in the GitClone step configuration.
+
 ## Build and push images
 
 ### Where does a pipeline get code for a build?
@@ -1612,6 +1633,7 @@ When using the V2 Docker registry API, authentication issues can arise due to ho
 
 Here’s the key difference:
 
+
 - **Username/Password Authentication**: When using a username and password, the generated token often lacks the necessary scope details (e.g., actions like `push` and `pull`). This can cause issues when trying to authenticate with the registry during build and push steps.
   
 - **Personal Access Token (PAT) Authentication**: A PAT provides more detailed scope information in the authentication headers, ensuring the correct access levels for pushing and pulling images. With a PAT, the JWT scope is properly set, allowing seamless authentication for build and push operations.
@@ -1648,6 +1670,23 @@ Here’s an example of a properly scoped token when using a PAT:
 In this example, the `actions` (pull, push) and the repository name are correctly defined, ensuring the token provides the appropriate access permissions.
 
 To avoid authentication issues, it's recommended to either use a PAT when configuring build and push steps for Docker registries with the V2 API or, if using a username and password, switch to the V1 API.
+
+### Authentication issues (toomanyrequests: You have reached your unauthenticated pull rate limit.) 
+#### Harness Cloud Setup with Build and Push Steps
+If you are using Harness Cloud, please note that anonymous pulls will be tied to the IP pool assigned to the region for all Harness customers.  This means that all Harness customers would utilize the [same pool of "rate limit" as defined by Docker](https://docs.docker.com/docker-hub/usage/).
+
+In order to resolve these issues, customers should look to enable `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature with our support team to allow teams to select the `Base Image connector` that would be utilized to pull the image.  Please keep in mind the rules regarding Docker API versions for the Docker Registry URL (Please see the above [information that goes into detail about how and why this occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls))
+
+In **most cases** customer should set up a Docker Connector utilizing the `https://index.docker.io/v1` registry URL for Harness Cloud builds.
+
+Please also note that if you receive a "You have reached your **unauthenticated** pull rate limit." message even after setting up a `Base Image Connector`, this indicates a failure in resolving the JWT token, which causes the pull to default back to attempting an unauthenticated request.
+
+#### Docker Connector with Valid Credentials but using a Private Registry/Improper configuration
+Customers may encounter the `toomanyrequests: You have reached your unauthenticated pull rate limit.` error for their Build and Push steps (ECR, Docker, etc) despite having a valid Docker Connector set and credentials.  
+This is due to utilizing the v2 registry API for a private repository pull.  The fallback will be that Docker will attempt an unauthorized request, which results in the above response.  Please see the above [information that goes into detail about how and why this 
+occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls).
+
+Please note that the key is located in the **unauthenticated** part of the message.  If you are hitting a rate limit with your credentials, the message will not include a reference to an unauthenticated pull request.
 
 
 ### How can user access the secrets as files in a Docker build without writing them to layers?
@@ -1762,6 +1801,13 @@ Yes, you can [split tests in Harness CI](https://developer.harness.io/docs/conti
 Test Intelligence doesn't split tests. Instead, Test Intelligence selects specific tests to run based on the changes made to your code. It can reduce the overall number of tests that run each time you make changes to your code.
 
 For additional time savings, you can [apply test splitting in addition to Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2). This can further reduce your test time by splitting the selected tests into parallel workloads.
+
+### How can I receive an execution report via email for our Test suite in Harness?
+In Harness, you can use the Email plugin in your CI pipeline to export reports and other artifacts via email. This allows you to send the execution report directly to your desired recipients without needing to push it to a Git repository.
+
+For more details on how to set up the email notifications, you can refer to these documents:
+[Using the Email Plugin in CI](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin/)
+[Exploring CI Plugins in Harness](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins/)
 
 ## Test Intelligence
 
@@ -1884,6 +1930,18 @@ pom.xml allows using environment variable references with syntax like below:
 `${env.VARIABLE_NAME}`
 
 You can not directly use harness expression in pom.xml but you can use harness expression to pass the values to environment variables which then in turn can be used in pom.xml.
+
+### Tests with Test Intelligence enabled are not showing any data results, despite having worked previously
+When Test Intelligence is first run, a call graph is generated based on the published branch and commit ID.  This is associated specifically with the branch and commit ID, even across pipelines, to allow Test Intelligence to be as efficient as possible.  
+
+If the same code is used in multiple pipelines, it would leverage the existing callgraph, if one already exists, allowing TI to help developers reduce the number of necessary tests they have to go through.
+
+With this in mind, unless there are changes to [the relevant code or test](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview/#how-does-test-intelligence-work), Test Intelligence will end up skipping the tests
+
+This can be observed with the following log
+![image](./static/testintelligence-blank.png)
+
+
 
 ## Script execution
 

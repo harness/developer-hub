@@ -144,10 +144,6 @@ The Harness Delegate is a software service you install in your environment. It c
          {
            "name": "MANAGER_HOST_AND_PORT",
            "value": "<MANAGER_HOST_AND_PORT>"
-         },
-         {
-           "name": "LOG_STREAMING_SERVICE_URL",
-           "value": "<LOG_STREAMING_SERVICE_URL>"
          },            
          {
            "name": "DELEGATE_NAME",
@@ -160,10 +156,6 @@ The Harness Delegate is a software service you install in your environment. It c
          {
            "name": "INIT_SCRIPT",
            "value": ""
-         },
-         {
-           "name": "DEPLOY_MODE",
-           "value": "KUBERNETES"
          },
          {
            "name": "DELEGATE_TYPE",
@@ -490,6 +482,10 @@ deploymentConfiguration:
 ```
 
 **ECS Tag Management Support**
+
+:::note
+Currently, the tag management feature is behind the feature flag `CDS_AWS_LAMBDA_ECS_TAG_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 Harness also supports managing tags for Amazon ECS services. You can now create, update, or delete tags in your ECS service definition, allowing for better resource organization, automation, and management of your ECS deployments.
 

@@ -293,7 +293,7 @@ export default function CertificationsCD() {
                     />
                     <span className={styles.productVersion}>
                       <strong>Product version: </strong> Harness CD & GitOps
-                      Free/Team Plans
+                      Free Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -372,7 +372,7 @@ export default function CertificationsCD() {
                     />
                     <span className={styles.productVersion}>
                       <strong>Product version: </strong> Harness CD & GitOps
-                      Enterprise Plan
+                      Paid Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -456,7 +456,7 @@ export default function CertificationsCD() {
                     />
                     <span className={styles.productVersion}>
                       <strong>Product version: </strong> Harness CD & GitOps
-                      Enterprise Plan
+                      Paid Plans
                     </span>
                   </div>
                   <div className={styles.right}>

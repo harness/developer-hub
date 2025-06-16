@@ -17,17 +17,17 @@ import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_cr_badge.svg`,
+    img: `${url}img/cert-dev-cr-badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.developer,
   },
   {
-    img: `${url}img/cert_adm_cr_badge.svg`,
+    img: `${url}img/cert-adm-cr-badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.administrator,
   },
   {
-    img: `${url}img/cert_arc_cr_badge.svg`,
+    img: `${url}img/cert-arc-cr-badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.architect,
   },
@@ -106,7 +106,7 @@ export default function CertificationsCR() {
           </div>
           <h1>Code Repository</h1>
           <div>
-            Securly host Git repositories and collaborate with advanced access
+            Securely host Git repositories and collaborate with advanced access
             controls and governance.
           </div>
         </div>
@@ -274,20 +274,20 @@ export default function CertificationsCR() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_dev_cr_badge.svg`}
+                      src={`${baseUrl}img/cert-dev-cr-badge.svg`}
                       alt="Harness Certified Expert - CR Developer"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
                       <strong>Product version: </strong> Harness Free
-                      Plan
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
-                      applications with Code projects.
+                      applications with CR projects.
                     </div>
 
 
@@ -350,13 +350,13 @@ export default function CertificationsCR() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_adm_cr_badge.svg`}
+                      src={`${baseUrl}img/cert-adm-cr-badge.svg`}
                       alt="Harness Certified Expert - CR Administrator"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -438,13 +438,13 @@ export default function CertificationsCR() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_arc_cr_badge.svg`}
+                      src={`${baseUrl}img/cert-arc-cr-badge.svg`}
                       alt="Harness Certified Expert - CR Architect"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>

@@ -18,10 +18,6 @@ You can use caching to share data cross stages or run pipelines faster by reusin
 Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, to automatically caches and restores software dependencies - hassle free.
 :::
 
-:::note
-For blobs larger than 5 GB, multi-part upload is used for caching to storage, while standard uploads are used for blobs up to 5 GB.
-:::
-
 You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3** step, and restore it in the same stage or a following stage using the **Restore Cache From S3** step. You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
 
 This topic explains how to configure the **Save Cache to S3** and **Restore Cache From S3** steps in Harness CI. This is one of several [caching options offered by Harness](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md).
@@ -116,6 +112,24 @@ Here is a YAML example of a **Save Cache to S3** step.
                     archiveFormat: Tar
 ...
 ```
+
+### Avoiding Prefix Collisions During Restore
+
+To prevent prefix collisions and ensure successful cache restoration, use the featue flag `PLUGIN_STRICT_KEY_MATCHING` (default: `true`).
+
+- Strict Mode (Default): Only restores from exact key matches, preventing unexpected collisions and ensuring accurate cache restoration.
+
+- Flexible Mode (PLUGIN_STRICT_KEY_MATCHING=false): Processes all entries that start with the specified prefix, which may result in multiple paths being restored.
+
+:::warning
+Using Flexible Mode (i.e., setting `PLUGIN_STRICT_KEY_MATCHING` to **false**) may result in unexpected behavior as multiple paths might be restored. The recommended setting is **true**.
+:::
+
+Additional Recommendations:
+
+**Key Naming**: Avoid using cache keys where one key is a prefix of another. Ensure cache key templates are distinct to prevent collisions.
+
+**Bucket Cleanup**: If collisions occur, clean up the problematic entries in the S3 bucket by removing folders with the duplicated key structure.
 
 ### Save Cache to S3 step settings
 

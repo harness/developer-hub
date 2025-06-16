@@ -22,7 +22,9 @@ You can use DLC with any [build infrastructure](/docs/continuous-integration/use
 
 :::info
 
-Docker Layer Caching is now Generally Available (GA). 
+* Docker Layer Caching is now Generally Available (GA). 
+* Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
+
 
 If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::
@@ -93,6 +95,10 @@ Here is a YAML example of a  **Build and Push an image to Docker Registry** step
 ## Remote cache image
 
 Remote cache image is an alternative to Harness CI Intelligence Docker layer caching. 
+:::info
+
+Remote cache image support is currently available only for Kubernetes infrastructure.
+:::
 
 Remote caching leverages your existing Docker registry to pull previously built layers. Each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple Build and Push steps, enabling them to share the same remote cache.
 
@@ -153,3 +159,10 @@ In addition to reducing build times, excluding unnecessary files and packages ma
 Distributed Layer Caching (DLC) provides caching benefits, but certain operations may not see significant improvements due to how caching works. For example, `FROM` statements never use cache, as base image layers are always pulled to ensure freshness. Additionally, external dependencies (like copying files from non-cached sources) may not be fully cached. DLC primarily caches self-contained operations, and checksum-based steps (like `COPY` or `ADD`) only reuse cache when source files remain unchanged. To maximize caching benefits, optimize Dockerfile instructions to reduce dependency on external sources.
 
 See [Optimize Docker images and Dockerfiles](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching/#optimize-docker-images-and-dockerfiles) to learn more.
+
+### Base Image Connector
+Customers utilizing Docker as a Base Image Connector will need to enable the Feature Flag `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR`, to use the defined Docker Connector for the Base Image Pull.  It is also necessary due to Docker rate limiting. When enabling this flag, the delegate version must be higher than 24.07.83503.
+
+:::note
+If the Feature Flag `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` is not yet enabled on your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+:::

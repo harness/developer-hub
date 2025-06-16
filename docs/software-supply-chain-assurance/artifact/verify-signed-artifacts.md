@@ -29,6 +29,8 @@ The Artifact Verification step pulls the `.sig` file from the artifact registry 
 
 Artifact Verification step supports both [container](/docs/software-supply-chain-assurance/artifact/verify-signed-artifacts#container-images) as well as [non-container images](/docs/software-supply-chain-assurance/artifact/verify-signed-artifacts#non-container-images).
 
+<DocImage path={require('./static/artifact-verify.png')} width="50%" height="50%" />
+
 ### Container Images
 
 You can search for **Artifact Verification** and add it to either the **Build** , **Deploy** or **Security** stage of a Harness pipeline
@@ -39,20 +41,14 @@ Follow the instructions below to configure the Artifact Verification step.
 
 * **Artifact Source**: Select the source container registry (e.g., DockerHub, ACR, ECR, etc.).
 
-:::warning Deprecation Alert
-
-
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the Artifact Verification step.
-
-:::
 
 <Tabs>
 
-  <TabItem value="dockerhub" label="DockerHub" default >
+  <TabItem value="dockerhub" label="Docker Registry" default >
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or you can use the digest `my-docker-org/repo-name@sha256:<digest>`
+* **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or `my-docker-org/repo-name@sha256:<digest>`
 
 </TabItem>
 
@@ -87,7 +83,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
 
-* **Image:**: Enter the name of your image using tag or digest, example `repository-name/image:tag` or you can use digest `repository-name/image:digest`
+* **Image:**: Enter the name of your image using tag or digest, example `repository-name/image:tag` or you can use digest `repository-name/image@sha256:<digest>`
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
@@ -105,9 +101,6 @@ You can verify the signed artifact with **Cosign** or **Cosign with Secret Manag
 import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
 
 <CosignVerificationOptions />
-
-
-<DocImage path={require('./static/artifact-verify.png')} width="50%" height="50%" />
 
 
 ### Non-Container Images
