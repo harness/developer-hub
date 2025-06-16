@@ -85,15 +85,20 @@ HCE facilitates 7 types of resilience probes listed below. Click each probe to n
 
 HCE allows you to create probes for multiple infrastructures, namely, Kubernetes, Linux, and Windows. The type of probes allowed on each of these infrastructures is listed below.
 
-    | Kubernetes | Linux     | Windows |
-    |------------|-----------|---------|
-    | HTTP       | HTTP      | HTTP    |
-    | Command    | Command   |         |
-    | Datadog    | Datadog   |         |
-    | Dynatrace  | Dynatrace |         |
-    | SLO        |           |         |
-    | Prometheus |           |         |
-    | Kubernetes |           |         |
+    | Kubernetes HD | Kubernetes | Linux     | Windows |
+    |--------------|------------|-----------|---------|    
+    | HTTP         | HTTP       | HTTP      | HTTP    |
+    | Command      | Command    | Command   |         |
+    | Datadog      | Datadog    | Datadog   |         |
+    | Dynatrace    | Dynatrace  | Dynatrace |         |
+    | SLO          | SLO        |           |         |
+    | Prometheus   | Prometheus |           |         |
+    | Kubernetes   | Kubernetes |           |         |
+    | APM          |            |           |         |
+
+:::info note
+Kubernetes HD means the Kubernetes infrastructure that is driven by Harness Delegate.
+:::
 
 :::tip
 - When you try to enable or disable a Linux probe, two mandatory fields `type` and `attempt` (with empty values) are added to the probe. Even if you edit these values, they will not reflect in the updated experiment manifest. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe.

@@ -52,7 +52,7 @@ pipeline:
                   name: CreateDockerFile
                   identifier: CreateDockerFile
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: alpine:latest
                     command: |-
                       touch harnessDockerfileui
@@ -112,7 +112,7 @@ pipeline:
                   name: CreateDockerFile
                   identifier: CreateDockerFile
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: alpine:latest
                     command: |-
                       touch harnessDockerfileui

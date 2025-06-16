@@ -94,7 +94,7 @@ stages:
                 name: Sauce Connect
                 identifier: Sauce_Connect
                 spec:
-                  connectorRef: account.harnessImage
+                  connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                   image: saucelabs/sauce-connect
                   shell: Sh
                   envVariables:
@@ -143,7 +143,7 @@ stages:
                 name: Sauce Connect
                 identifier: Sauce_Connect
                 spec:
-                  connectorRef: account.harnessImage
+                  connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                   image: saucelabs/sauce-connect
                   shell: Sh
                   envVariables:
@@ -154,7 +154,7 @@ stages:
                 name: Wait for SC
                 identifier: Wait_for_SC
                 spec:
-                  connectorRef: account.harnessImage
+                  connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                   image: curlimages/curl:7.83.1
                   shell: Sh
                   command: |-

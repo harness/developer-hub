@@ -68,10 +68,10 @@ Harness recommends configuring your connector before creating your workspace, ho
 To configure your connectors before you create a Workspace, go to the following interactive guides:
 <Tabs>
 <TabItem value="Cloud Provider connector">
-<DocVideo src="https://app.tango.us/app/embed/3d7ee504-7664-4805-a93c-5796b3db939b" title="Set up a Cloud Provider Connector" />
+<DocVideo src="https://app.tango.us/app/embed/3d7ee504-7664-4805-a93c-5796b3db939b?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Set up a Cloud Provider Connector for Harness IaCM" />
 </TabItem>
 <TabItem value="Git repository connector">
-<DocVideo src="https://app.tango.us/app/embed/33ce65a9-69bb-418d-9328-cd5198dcf6e5" title="Set up a Git Repository Connector" />
+<DocVideo src="https://app.tango.us/app/embed/33ce65a9-69bb-418d-9328-cd5198dcf6e5?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Set up a Git Repository Connector" />
 </TabItem>
 <TabItem value="Step-by-step">
 
@@ -208,7 +208,7 @@ You can include **cost estimation** as part of the workspace setup and in conjun
   </TabItem>
 </Tabs>
   
-The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Tofu/Terraform Plugins](/docs/infra-as-code-management/pipelines/terraform-plugins) for more information about supported OpenTofu/Terraform commands.
+The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Tofu/Terraform Plugins](/docs/infra-as-code-management/cli-commands/terraform-plugins) for more information about supported OpenTofu/Terraform commands.
 
 ---
 

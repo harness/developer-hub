@@ -12,12 +12,15 @@ This page explains how to handle JSON-formatted GCP credentials in scripts, such
 
 To avoid these errors, you need to:
 
-1. [Create a base64-encoded secret file](https://www.base64encode.org/) from your JSON-formatted GCP secret.
+1. Run the following command to generate a base64-encoded version of your JSON file:
+```bash
+base64 <path-to-your-json-file> > encoded-secret.txt
+```
 2. Save the base64-encoded file as a [Harness file secret](/docs/platform/secrets/add-file-secrets).
 3. In your pipeline, in the step where you need to use the GCP secret, decode the file secret and write it to a `.json` file. For example, this command decodes a Harness file secret named `my_secret` and writes it to `/harness/secrets.json`.
 
    ```
-   echo <+secrets.getValue("my_secret")> | base64 -d > /harness/secrets.json
+   echo <+secrets.getValue("my_secret")> | base64 --decode > /harness/secrets.json
    ```
 
    If your secret contains line breaks, you can `cat` the secret in a special-purpose code block, for example:

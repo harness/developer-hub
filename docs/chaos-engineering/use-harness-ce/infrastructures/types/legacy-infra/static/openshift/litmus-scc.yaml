@@ -3,7 +3,7 @@ kind: SecurityContextConstraints
 # To mount the socket path directory in helper pod
 allowHostDirVolumePlugin: true
 allowHostIPC: false
-allowHostNetwork: false
+allowHostNetwork: true
 # To run fault injection on a target container using pid namespace.
 # It is used in stress, network, dns and http experiments. 
 allowHostPID: true

@@ -9,7 +9,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info
+:::warning
 
 This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
 
@@ -41,7 +41,7 @@ You must select **Run only selected tests** (`runOnlySelectedTests: true`) to en
                   name: Run Tests
                   identifier: Run_Tests
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
                     language: Java ## Specify Java, Kotlin, or Scala.
                     buildTool: Maven ## Specify your build tool.
@@ -215,7 +215,7 @@ pipeline:
                   name: Run Tests
                   identifier: Run_Tests
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
                     language: Java ## Specify Java, Kotlin, or Scala.
                     buildTool: Maven ## For Java or Kotlin, specify Bazel, Maven, or Gradle. For Scala, specify Bazel, Maven, Gradle, or Sbt.

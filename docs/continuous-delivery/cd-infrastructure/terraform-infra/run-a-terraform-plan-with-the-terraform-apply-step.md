@@ -515,22 +515,26 @@ Do not use the **Output Value**, for example `<+secrets.getValue("terraform_outp
 A secret is masked in Harness logs, but you can write it to a file like this:
 
 ```
-echo "<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>" > /path/to/file.txt
+cat <<EOF > apply_outputs.json
+<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>
+EOF
 ```
+
+Above example will pass the content of Terraform apply outputs as-is into the file including quotes, etc.
 
 Here's an example of decrypted Terraform JSON output:
 
 ```json
 {
-  test-output-name1: {
-    sensitive: false,
-    type: string,
-    value: test-output-value1
+  "test-output-name1": {
+    "sensitive": false,
+    "type": "string",
+    "value": "test-output-value1"
   },
-  test-output-name2: {
-    sensitive: false,
-    type: string,
-    value: test-output-value2
+  "test-output-name2": {
+    "sensitive": false,
+    "type": "string",
+    "value": "test-output-value2"
   }
 }
 ```
@@ -539,7 +543,7 @@ Here's an example of decrypted Terraform JSON output:
 
 To extract specific values from the encrypted Terraform output, users can use tools like jq to parse and retrieve individual values from the JSON output.
 
-To parse a file using the jq tool, its content must be in a valid JSON format.
+To parse a file using the jq tool, its content must be in a valid JSON format. jq binary should be installed on the delegate.
 
 For example, use the following command to extract the value for `test-output-name1`:
 ```

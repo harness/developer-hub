@@ -200,17 +200,20 @@ To start getting your commitment coverage information you can provide read-only 
     "Statement": [
         {
             "Action": [
+                "ec2:DescribeReservedInstancesOfferings",
+                "ce:GetSavingsPlansUtilization",
+                "ce:GetReservationUtilization",
+                "ec2:DescribeInstanceTypeOfferings",
+                "ce:GetDimensionValues",
+                "ce:GetSavingsPlansUtilizationDetails",
+                "ec2:DescribeReservedInstances",
+                "ce:GetReservationCoverage",
+                "ce:GetSavingsPlansCoverage",
                 "savingsplans:DescribeSavingsPlans",
                 "organizations:DescribeOrganization",
-                "ec2:DescribeReservedInstancesOfferings",
-                "ec2:DescribeReservedInstances",
-                "ec2:DescribeInstanceTypeOfferings",
-                "ce:GetSavingsPlansUtilizationDetails",
-                "ce:GetSavingsPlansUtilization",
-                "ce:GetSavingsPlansCoverage",
-                "ce:GetReservationUtilization",
-                "ce:GetReservationCoverage",
-                "ce:GetDimensionValues"
+                "ce:GetCostAndUsage",
+                "rds:DescribeReservedDBInstancesOfferings",
+                "pricing:GetProducts"
             ],
             "Effect": "Allow",
             "Resource": "*",
@@ -229,11 +232,13 @@ Once you set up the orchestrator and are ready to approve recommendations, you c
         {
             "Action": [
                 "ec2:PurchaseReservedInstancesOffering",
-                "ec2:ModifyReservedInstances",
                 "ec2:GetReservedInstancesExchangeQuote",
+                "ec2:AcceptReservedInstancesExchangeQuote",
                 "ec2:DescribeReservedInstancesModifications",
-                "ec2:DescribeInstanceTypeOfferings",
-                "ec2:AcceptReservedInstancesExchangeQuote"
+                "ec2:ModifyReservedInstances",
+                "savingsplans:DescribeSavingsPlansOfferings",
+                "savingsplans:CreateSavingsPlan",
+                "rds:PurchaseReservedDBInstancesOffering"
             ],
             "Effect": "Allow",
             "Resource": "*",
@@ -260,28 +265,13 @@ Accounts where infrastructure is provisioned, usually every account except for t
 
 Autostopping has many ways to optimize resource usage and reduce costs. Across the different compute and routing SKUs there are many possible permissions needed. Based on your compute and application architecture you can use the following information to build a least-privileged policy.
 
-### EC2 with Fixed Schedules
+For schedule or dependency based autostopping you will only need the permissions listed under the target resource type.
 
-| Policy                | Usage                                                                                                                                        |
-|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| ec2:DescribeInstances | List VMS in Harness UI for rule creation and in rule details page. This will be used in other operations while starting and stopping the VM. |
-| ec2:CreateTags        | Create tags on the EC2 while creating an Autostopping rule.                                                                                  |
-| ec2:StartInstances    | Start EC2                                                                                                                                    |
-| ec2:StopInstances     | Stop EC2                                                                                                                                     |
+For ALB or Proxy based autostopping you will need both the ALB and Proxy permissions along with the specific resource actions.
 
-### Spot EC2 with Fixed schedules
+### ALB
 
-| Policy                                                                          | Usage                                                        |
-|---------------------------------------------------------------------------------|--------------------------------------------------------------|
-| ec2:DescribeVolumes ec2:CreateImage ec2:DescribeImages                          | Creating Snapshot for Spot VM                                |
-| ec2:TerminateInstances                                                          | Spot VMs are terminate during cool down instead of stopping. |
-| ec2:DeregisterImage ec2:DeleteSnapshot                                          | Delete snapshot after deleting Autostopping rule             |
-| ec2:RequestSpotInstances ec2:DescribeSpotInstanceRequests ec2:DescribeAddresses | Create spot VM during warm up                                |
-| ec2:RunInstances                                                                | Create on demand instance in case spot VM creation fails     |
-
-### EC2 with ALB
-
-Also requires actions listed under `EC2 with Fixed Schedules`
+To use EC2, ECS, or ASG autostopping with ALBs add the permissions below.
 
 | Policy                                              | Usage                                                                                                                                                                                       |
 |-----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -301,49 +291,32 @@ Also requires actions listed under `EC2 with Fixed Schedules`
 | iam:PassRole                                        | We specify the lambda role when we try to create lambda. Create lambda with role in request will succeed only if this permission is present                                                 |
 | lambda:AddPermission                                | This is needed to allow the lambda Target Group to execute the lambda.                                                                                                                      |
 | elasticloadbalancing:RegisterTargets                | Required to add lambda to target group                                                                                                                                                      |
+| lambda:DeleteFunction                               | Delete lambda while deleting the load balancer                                                                                                                                              |
+| elasticloadbalancing:DeleteLoadBalancer             | Only required if user trigger delete load balancer from Harness UI                                                                                                                          |
+| elasticloadbalancing:DescribeTargetHealth           | Get the target group health check details during warm up and to populate health check details in UI while creating rule.                                                                    |
+| elasticloadbalancing:DescribeListeners              | Get listeners of ALB                                                                                                                                                                        |
+| elasticloadbalancing:CreateListener                 | Create new listener in ALB if doesn't exist                                                                                                                                                 |
+| elasticloadbalancing:DescribeRules                  | Needed while creating new rule. We check existing rules and modify priority if required.                                                                                                    |
+| elasticloadbalancing:CreateRule                     | Create ALB rule                                                                                                                                                                             |
+| elasticloadbalancing:DescribeTags                   | Get tags of rules. ALB rules created by Harness will have Harness specific tags                                                                                                             |
+| elasticloadbalancing:DeleteTargetGroup              | Delete target groups                                                                                                                                                                        |
+| elasticloadbalancing:DeleteRule                     | Delete ALB rule while editing/deleting Autostopping rules                                                                                                                                   |
+| elasticloadbalancing:SetRulePriorities              | Modify existing rules priorities to make sure the ALB rules created by Harness get more priority                                                                                            |
+| elasticloadbalancing:ModifyTargetGroup              | Modify target group                                                                                                                                                                         |
+| elasticloadbalancing:ModifyRule                     | Modify ALB rule                                                                                                                                                                             |
+| cloudwatch:GetMetricStatistics                      | Traffic detection read cloud watch metrics to check the usage on a target group.                                                                                                            |
+| s3:ListBucket                                       | Need only if custom exclusion is used. This is to read the access log from S3                                                                                                               |
+| s3:GetObject                                        | Need only if custom exclusion is used. This is to read the access log from S3                                                                                                               |
+| s3:ListAllMyBuckets                                 | Need only if custom exclusion is used. This is to read the access log from S3                                                                                                               |
+| s3:GetBucketLocation                                | Need only if custom exclusion is used. This is to read the access log from S3                                                                                                               |
+| elasticloadbalancing:DescribeLoadBalancerAttributes | Need only if custom exclusion is used.Needed to get the access logs details from ALB.                                                                                                       |
+| logs:CreateLogGroup                                 | Permission assigned to the Lambda. This is to push the logs while running the lambda.                                                                                                       |
+| logs:CreateLogStream                                | Permission assigned to the Lambda. This is to push the logs while running the lambda.                                                                                                       |
+| logs:PutLogEvents                                   | Permission assigned to the Lambda. This is to push the logs while running the lambda.                                                                                                       |
 
-### ASG with Fixed schedules
+### Proxy
 
-| Policy                                | Usage                                                                   |
-|---------------------------------------|-------------------------------------------------------------------------|
-| autoscaling:DescribeAutoScalingGroups | List ASG                                                                |
-| autoscaling:UpdateAutoScalingGroup    | Set the desired capacity of ASG during warm up and cool down operations |
-| ec2:DescribeSpotPriceHistory          | Get the spot price for savings computation                              |
-
-### ASG with ALB
-
-This is a combination of permissions for `ASG with Fixed schedules` and `EC2 with ALB` policies.
-
-### RDS
-
-| Policy                  | Usage                         |
-|-------------------------|-------------------------------|
-| rds:DescribeDBInstances | List RDS instances            |
-| rds:DescribeDBClusters  | List RDS clusters             |
-| rds:ListTagsForResource | List tags associated with RDS |
-| rds:StartDBInstance     | Start RDS Instance            |
-| rds:StartDBCluster      | Start RDS Cluster             |
-| rds:StopDBInstance      | Stop RDS Instance             |
-| rds:StopDBCluster       | Stop RDS Cluster              |
-
-### ECS with Fixed schedules
-
-| Policy                     | Usage                                                            |
-|----------------------------|------------------------------------------------------------------|
-| ecs:ListClusters           | List ECS clusters                                                |
-| tag:GetResources           | List tags for selecting ECS service by tag                       |
-| ecs:ListServices           | List ECS services                                                |
-| ecs:ListTasks              | List tasks for ECS service                                       |
-| ecs:DescribeServices       | Describe ECS services                                            |
-| ecs:UpdateService          | Needed set the desired task count while warming and cooling down |
-| ecs:DescribeTaskDefinition | Describe ECS Task                                                |
-| ecs:DescribeTasks          | Describe ECS Tasks                                               |
-
-### ECS with ALB
-
-This is a combination of permissions for `ECS with Fixed schedules` and `EC2 with ALB` policies.
-
-### Provisioning Autostopping Proxy
+To use EC2, ECS, ASG or RDS autostopping with proxies add the permissions below.
 
 | Policy                            | Usage                                                                                               |
 |-----------------------------------|-----------------------------------------------------------------------------------------------------|
@@ -362,6 +335,58 @@ This is a combination of permissions for `ECS with Fixed schedules` and `EC2 wit
 | ec2:ReleaseAddress                | Release address while deleting proxy                                                                |
 | ec2:ModifyInstanceAttribute       | Modify security group of proxy VM if needed                                                         |
 
+### EC2
+
+| Policy                | Usage                                                                                                                                        |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| ec2:DescribeInstances | List VMS in Harness UI for rule creation and in rule details page. This will be used in other operations while starting and stopping the VM. |
+| ec2:CreateTags        | Create tags on the EC2 while creating an Autostopping rule.                                                                                  |
+| ec2:StartInstances    | Start EC2                                                                                                                                    |
+| ec2:StopInstances     | Stop EC2                                                                                                                                     |
+
+### EC2 Spot
+
+| Policy                                                                          | Usage                                                        |
+|---------------------------------------------------------------------------------|--------------------------------------------------------------|
+| ec2:DescribeVolumes ec2:CreateImage ec2:DescribeImages                          | Creating Snapshot for Spot VM                                |
+| ec2:TerminateInstances                                                          | Spot VMs are terminate during cool down instead of stopping. |
+| ec2:DeregisterImage ec2:DeleteSnapshot                                          | Delete snapshot after deleting Autostopping rule             |
+| ec2:RequestSpotInstances ec2:DescribeSpotInstanceRequests ec2:DescribeAddresses | Create spot VM during warm up                                |
+| ec2:RunInstances                                                                | Create on demand instance in case spot VM creation fails     |
+
+### ASG
+
+| Policy                                | Usage                                                                   |
+|---------------------------------------|-------------------------------------------------------------------------|
+| autoscaling:DescribeAutoScalingGroups | List ASG                                                                |
+| autoscaling:UpdateAutoScalingGroup    | Set the desired capacity of ASG during warm up and cool down operations |
+| ec2:DescribeSpotPriceHistory          | Get the spot price for savings computation                              |
+
+### RDS
+
+| Policy                  | Usage                         |
+|-------------------------|-------------------------------|
+| rds:DescribeDBInstances | List RDS instances            |
+| rds:DescribeDBClusters  | List RDS clusters             |
+| rds:ListTagsForResource | List tags associated with RDS |
+| rds:StartDBInstance     | Start RDS Instance            |
+| rds:StartDBCluster      | Start RDS Cluster             |
+| rds:StopDBInstance      | Stop RDS Instance             |
+| rds:StopDBCluster       | Stop RDS Cluster              |
+
+### ECS
+
+| Policy                     | Usage                                                            |
+|----------------------------|------------------------------------------------------------------|
+| ecs:ListClusters           | List ECS clusters                                                |
+| tag:GetResources           | List tags for selecting ECS service by tag                       |
+| ecs:ListServices           | List ECS services                                                |
+| ecs:ListTasks              | List tasks for ECS service                                       |
+| ecs:DescribeServices       | Describe ECS services                                            |
+| ecs:UpdateService          | Needed set the desired task count while warming and cooling down |
+| ecs:DescribeTaskDefinition | Describe ECS Task                                                |
+| ecs:DescribeTasks          | Describe ECS Tasks                                               |
+
 ### Fine-Grain Policy
 
 The following is an example policy JSON split out based on the statements above:
@@ -369,34 +394,6 @@ The following is an example policy JSON split out based on the statements above:
 ```json
 {
     "Statement": [
-        {
-            "Action": [
-                "ec2:DescribeInstances",
-                "ec2:CreateTags",
-                "ec2:StartInstances",
-                "ec2:StopInstances"
-            ],
-            "Effect": "Allow",
-            "Resource": "*",
-            "Sid": "scheduledEC2"
-        },
-        {
-            "Action": [
-                "ec2:DescribeVolumes",
-                "ec2:CreateImage",
-                "ec2:DescribeImages",
-                "ec2:TerminateInstances",
-                "ec2:DeregisterImage",
-                "ec2:DeleteSnapshot",
-                "ec2:RequestSpotInstances",
-                "ec2:DescribeSpotInstanceRequests",
-                "ec2:DescribeAddresses",
-                "ec2:RunInstances"
-            ],
-            "Effect": "Allow",
-            "Resource": "*",
-            "Sid": "scheduledSpotEC2"
-        },
         {
             "Action": [
                 "acm:ListCertificates",
@@ -414,11 +411,82 @@ The following is an example policy JSON split out based on the statements above:
                 "lambda:CreateFunction",
                 "iam:PassRole",
                 "lambda:AddPermission",
-                "elasticloadbalancing:RegisterTargets"
+                "elasticloadbalancing:RegisterTargets",
+                "lambda:DeleteFunction",
+                "elasticloadbalancing:DeleteLoadBalancer",
+                "elasticloadbalancing:DescribeTargetHealth",
+                "elasticloadbalancing:DescribeListeners",
+                "elasticloadbalancing:CreateListener",
+                "elasticloadbalancing:DescribeRules",
+                "elasticloadbalancing:CreateRule",
+                "elasticloadbalancing:DescribeTags",
+                "elasticloadbalancing:DeleteTargetGroup",
+                "elasticloadbalancing:DeleteRule",
+                "elasticloadbalancing:SetRulePriorities",
+                "elasticloadbalancing:ModifyTargetGroup",
+                "elasticloadbalancing:ModifyRule",
+                "cloudwatch:GetMetricStatistics",
+                "s3:ListBucket",
+                "s3:GetObject",
+                "s3:ListAllMyBuckets",
+                "s3:GetBucketLocation",
+                "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
             ],
             "Effect": "Allow",
             "Resource": "*",
-            "Sid": "albEC2"
+            "Sid": "alb"
+        },
+        {
+            "Action": [
+                "ec2:DescribeInstanceTypeOfferings",
+                "ec2:DescribeKeyPairs",
+                "ec2:RunInstances",
+                "secretsmanager:GetSecretValue",
+                "ec2:AllocateAddress",
+                "ec2:DescribeVpcs",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeSubnets",
+                "ec2:TerminateInstances",
+                "ec2:DescribeImages",
+                "ec2:AssociateAddress",
+                "ec2:DisassociateAddress",
+                "ec2:ReleaseAddress",
+                "ec2:ModifyInstanceAttribute"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "proxy"
+        },
+        {
+            "Action": [
+                "ec2:DescribeInstances",
+                "ec2:CreateTags",
+                "ec2:StartInstances",
+                "ec2:StopInstances"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "ec2"
+        },
+        {
+            "Action": [
+                "ec2:DescribeVolumes",
+                "ec2:CreateImage",
+                "ec2:DescribeImages",
+                "ec2:TerminateInstances",
+                "ec2:DeregisterImage",
+                "ec2:DeleteSnapshot",
+                "ec2:RequestSpotInstances",
+                "ec2:DescribeSpotInstanceRequests",
+                "ec2:DescribeAddresses",
+                "ec2:RunInstances"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "ec2Spot"
         },
         {
             "Action": [
@@ -428,7 +496,7 @@ The following is an example policy JSON split out based on the statements above:
             ],
             "Effect": "Allow",
             "Resource": "*",
-            "Sid": "scheduledASG"
+            "Sid": "asg"
         },
         {
             "Action": [
@@ -457,28 +525,7 @@ The following is an example policy JSON split out based on the statements above:
             ],
             "Effect": "Allow",
             "Resource": "*",
-            "Sid": "scheduledECS"
-        },
-        {
-            "Action": [
-                "ec2:DescribeInstanceTypeOfferings",
-                "ec2:DescribeKeyPairs",
-                "ec2:RunInstances",
-                "secretsmanager:GetSecretValue",
-                "ec2:AllocateAddress",
-                "ec2:DescribeVpcs",
-                "ec2:DescribeSecurityGroups",
-                "ec2:DescribeSubnets",
-                "ec2:TerminateInstances",
-                "ec2:DescribeImages",
-                "ec2:AssociateAddress",
-                "ec2:DisassociateAddress",
-                "ec2:ReleaseAddress",
-                "ec2:ModifyInstanceAttribute"
-            ],
-            "Effect": "Allow",
-            "Resource": "*",
-            "Sid": "proxy"
+            "Sid": "ecs"
         }
     ],
     "Version": "2012-10-17"

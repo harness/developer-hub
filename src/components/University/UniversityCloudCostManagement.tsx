@@ -283,7 +283,7 @@ export default function CloudCostManagement() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness CCM Free/Team
+                      <strong>Product version: </strong> Harness CCM Free
                       Plans
                     </span>
                   </div>
@@ -350,8 +350,8 @@ export default function CloudCostManagement() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness CCM Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness CCM Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -419,8 +419,8 @@ export default function CloudCostManagement() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness CCM Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness CCM Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>

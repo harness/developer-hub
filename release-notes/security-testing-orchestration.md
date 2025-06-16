@@ -22,7 +22,50 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## June 2025
+
+### Version v1.142.1
+
+<!-- 2025-06-12 -->
+
+#### New Features and Enhancements
+- Added support for the **SonarQube** step to include privileges for creating and using the Sonar cache (STO-8889).
+- Improved the **SonarQube** step to support occurrence detection and exemption handling for Code Coverage and Bug Smells issues (STO-9067).
+- Enhanced normalization in the **Traceable** step to handle variations in scanner outputs for CVE and CWE properties (STO-9085).
+- Updated URLs in STO Custom Dashboards to use vanity URL format (STO-8643, ZD-74374).
+
+#### Fixed Issues
+- Fixed an issue causing incorrect counts for remediated issues in the **Security Testing Dashboard** (STO-9002, ZD-84585).
+- Fixed a bug where the **GitLeaks** step failed when symlinks were present in the scanned codebase (STO-8911, ZD-83119).
+
+
+## May 2025
+
+### Version v1.140.1
+
+<!-- 2025-05-17 -->
+
+#### New Features and Enhancements
+- Added support for the setting `ingest_tool_severity: true` in the **[Checkmarx One](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference#use-scanner-provided-severity)**, **[Anchore](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#use-scanner-provided-severity)**, and **[Prisma Cloud](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference#use-scanner-provided-severity)** steps. When added, STO will use the severity provided directly by the scanner instead of calculating it based on CVSS scores (STO-8776, STO-8778, STO-8779).
+- Renamed the built-in STO role from `Security Testing SecOps` to `Security Testing AppSec`. This is not a breaking change and remains fully backward compatible (STO-7392).
+- Added support for the SonarQube step to include privileges for creating and using the Sonar cache (STO-8889).
+
+#### Fixed Issues
+- Fixed an issue in the Snyk step where the filename and upgrade version were missing in some cases (STO-8914).
+- Fixed an issue in the Veracode step where files with modification dates earlier than 1980 caused the scan to fail (STO-8910).
+
 ## April 2025
+
+### Version v1.136.1
+
+<!-- 2025-04-18 -->
+
+#### New Features and Enhancements  
+- Updated the Jira ticket creation dialog to dynamically fetch and display all required fields for ticket creation (STO-8521).
+
+#### Fixed Issues  
+- Fixed an issue where the CVSS score of issues did not match the severity label in some cases (STO-8807).
+- Fixed an issue where Harness AI failed to present remediation details if the cloned codebase did not match the ingested scan result’s repository; remediation is now shown correctly for the ingested repo (STO-8664).
 
 ### Version v1.134.1
 
@@ -67,7 +110,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### Fixed Issues
 - Fixed an issue where unsupported connectors were listed when configuring the Container Registry field in STO steps; the list now only displays supported connectors for selection (STO-8398, ZD-75006).
 - Fixed an issue where remediation calculations were skipped due to an internal race condition; this now ensures accurate remediation trends in the **Remediation Over Time** graph on the **Security Testing Dashboard** (STO-8456).
+
   <DocImage path={require('./static/sto-11275-remediation-fix.png')} width="50%" height="50%" title="Click to view full size image" />
+
 - Fixed AI remediation steps failing with a 403 error when triggered by a project admin; added support for eligible scopes like project and org (STO-8483, ZD-76591).  
 - Fixed an issue preventing users from canceling an issue exemption; users with the necessary privileges can now cancel issue exemptions without issues.
 

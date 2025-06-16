@@ -40,7 +40,7 @@ Before you create your first Harness pipeline, you must have the following:
 
 ### Harness user permissions
 * Developers need a Security Testing Developer role to run tests and view results.
-* Security Operations staff need a Security Testing SecOps role to run tests, view results, and approve security exemptions.
+* Security Operations staff need a Security Testing AppSec role to run tests, view results, and approve security exemptions.
 * To assign these roles, you need an Account Admin role. Project Admin permissions aren't enough. 
 
 ### Harness account requirements
@@ -69,7 +69,7 @@ Harness includes two [RBAC roles](/docs/platform/role-based-access-control/rbac-
   - Request exemptions ("ignore rules") to allow a pipeline to proceed even if a scan detects vulnerabilities with a specific severity or higher (Critical, High, Medium, etc.)
 
    
-* **Security Testing SecOps** role — Permissions for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
+* **Security Testing AppSec** role — Permissions for Application Security or Security Operations staff. AppSec users have all Developer permissions, but only AppSec users can approve exemption requests. 
 
 These workflows are covered in [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline).
 
@@ -84,7 +84,7 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 1. Select **Account Settings** (left menu) > **Access Control**.
 2. In the **Users** table, select the user profile.
 3. Under Role Bindings, select **+Role**.
-4. Assign the **Security Testing Developer** role or the **Security Testing SecOps** role to the user profile.
+4. Assign the **Security Testing Developer** role or the **Security Testing AppSec** role to the user profile.
 
 ![](./static/set-up-harness-for-sto-16.png)
 

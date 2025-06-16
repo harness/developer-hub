@@ -57,7 +57,7 @@ Identifiers must adhere to the following restrictions:
     - **Note:** Custom role identifiers cannot start with `_`. Hyphens (`-`) are allowed only in secret identifiers.
 - **Case Sensitivity:** Identifiers are case-sensitive.  
 - **Reserved Words:** The following words cannot be used as identifiers:
-  - `or`, `and`, `eq`, `ne`, `lt`, `gt`, `le`, `ge`, `div`, `mod`, `not`, `null`, `true`, `false`, `new`, `var`, `return`, `step`, `parallel`, `stepGroup`, `org`, `account`, `status`, `liteEngineTask`.
+  - `or`, `and`, `eq`, `ne`, `lt`, `gt`, `le`, `ge`, `div`, `mod`, `not`, `null`, `true`, `false`, `new`, `var`, `return`, `step`, `parallel`, `stepGroup`, `org`, `account`, `status`, `liteEngineTask`, `notification`.
 
 ---
 
