@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Artifact Overview
 description: Track the deployment of your open-source components
 sidebar_position: 1
 
@@ -151,4 +151,4 @@ To ensure vulnerability results appear on the Artifacts page, run STO scans on i
 
 <DocImage path={require('./static/artifacts-vulnerabilities.png')} width="100%" height="100%" title="Click to view full size image" />
 
-Refer to [view security test results](https://developer.harness.io/docs/category/view-security-test-results) in Harness STO documentation for more detailed information about the view and navigation.
+Refer to [view security test results](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) in Harness STO documentation for more detailed information about the view and navigation.
