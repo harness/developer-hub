@@ -127,4 +127,9 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 # advance configuration > External DB > postgreSQL
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/postgresql/use-an-external-postgres-database
 
+# advance configuration > External DB > redis
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-aws-elasticache /docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-aws-elasticache
+
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-an-external-redis-database
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

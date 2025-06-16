@@ -8796,7 +8796,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 - You can now use your Redis password in your external self-managed Redis database. (SMP-1860)
 
-  For more information, go to [Use an external self-managed Redis database with your installation](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database).
+  For more information, go to [Use an external self-managed Redis database with your installation](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-an-external-redis-database).
 
 ##### Continuous Delivery & GitOps
 
@@ -9546,7 +9546,7 @@ gsutil -m cp \
 
   - [MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-self-managed-mongodb)
   - [PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/postgresql/use-an-external-postgres-database)
-  - [Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database)
+  - [Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-an-external-redis-database)
   - [TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/timescaledb/use-an-external-sm-timescaledb)
 
 ##### Continuous Delivery & GitOps

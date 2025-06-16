@@ -48,7 +48,7 @@ Yes, the following tutorials are available for self-managed external database se
 
 - [Configure an external self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-self-managed-mongodb/)
 - [Configure an external self-managed TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/timescaledb/use-an-external-sm-timescaledb/)
-- [Configure an external self-managed Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database/)
+- [Configure an external self-managed Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-an-external-redis-database/)
 - [Configure an external self-managed PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/postgresql/use-an-external-postgres-database/)
 
 For more information, go to [Configure Harness Self-Managed Enterprise Edition to use external databases](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-external-databases).
