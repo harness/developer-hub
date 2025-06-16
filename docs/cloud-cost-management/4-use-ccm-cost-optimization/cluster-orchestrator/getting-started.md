@@ -37,5 +37,5 @@ Important: Kubernetes v1.32 is not currently supported. Please ensure your clust
    - [Advanced](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
 4. After this, your created connector will show up on the home page of Cluster Orchestrator.
 5. Choose an enablement method and follow the steps listed on the respective pages:
-   - **Onboard with a single command via kubectl**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-kubectl#kubectl-based-installation)
-   - **Terraform and Helm installation for advanced installation options**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co-helm)
+   - **Onboard with a single command via kubectl**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co#installation-via-kubectl)
+   - **Terraform and Helm installation for advanced installation options**: [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co#helm-based-installation)
