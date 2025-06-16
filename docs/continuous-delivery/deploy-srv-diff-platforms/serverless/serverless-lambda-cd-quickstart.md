@@ -201,6 +201,7 @@ The `s3:GetBucketLocation` action is required for a custom S3 bucket only.
 
 </details>
 
+- AWS OIDC connectors are supported for Serverless V2 deployments starting with delegate version `857xx` or later.
 
 ## Use AWS IRSA for Harness AWS connector credentials
 
@@ -244,13 +245,13 @@ There are two flavours of images available first with serverless installed and o
 
  Runtimes | With Serverless Installed | Without Serverless Installed
 | --- | --- | --- |
-| nodejs 20 | harness/serverless-plugin:nodejs20.x-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:nodejs20.x-1.0.1-beta-linux-amd64 |
-| nodejs 18 | harness/serverless-plugin:nodejs18.x-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:nodejs18.x-1.0.1-beta-linux-amd64 |
-| java 17 | harness/serverless-plugin:java17-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:java17-1.0.1-beta-linux-amd64 |
-| java 8 | harness/serverless-plugin:java8.al2-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:java8.al2-1.0.1-beta-linux-amd64 |
-| python 3.11 | harness/serverless-plugin:python3.11-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:python3.11-1.0.1-beta-linux-amd64 |
-| python 3.12 | harness/serverless-plugin:python3.12-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:python3.12-1.0.1-beta-linux-amd64 |
-| ruby 3.2 | harness/serverless-plugin:ruby3.2-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:ruby3.2-1.0.1-beta-linux-amd64 |
+| nodejs 20 | harness/serverless-plugin:nodejs20.x-3.39.0-1.1.0-beta-linux-amd64 | harness/serverless-plugin:nodejs20.x-1.1.0-beta-linux-amd64 |
+| nodejs 18 | harness/serverless-plugin:nodejs18.x-3.39.0-1.1.0-beta-linux-amd64 | harness/serverless-plugin:nodejs18.x-1.1.0-beta-linux-amd64 |
+| java 17 | harness/serverless-plugin:java17-3.39.0-1.1.0-beta-linux-amd64 | harness/serverless-plugin:java17-1.1.0-beta-linux-amd64 |
+| java 8 | harness/serverless-plugin:java8.al2-3.39.0-1.1.0-beta-linux-amd64 | harness/serverless-plugin:java8.al2-1.1.0-beta-linux-amd64 |
+| python 3.11 | harness/serverless-plugin:python3.11-3.39.0-1.1.0-beta-linux-amd64 | harness/serverless-plugin:python3.11-1.1.0-beta-linux-amd64 |
+| python 3.12 | harness/serverless-plugin:python3.12-3.39.0-1.0.0-beta-linux-amd64 | harness/serverless-plugin:python3.12-1.1.0-beta-linux-amd64 |
+| ruby 3.2 | harness/serverless-plugin:ruby3.2-3.39.0-1.1.0-beta-linux-amd64 | harness/serverless-plugin:ruby3.2-1.1.0-beta-linux-amd64 |
 
 For ECR users, you can access these images via the [ECR Image Repository for Serverless Plugin](https://gallery.ecr.aws/harness/harness/serverless-plugin).
 
@@ -395,9 +396,6 @@ plugins:
   - serverless-deployment-bucket@latest
 ```
 
-:::info
-Currently, OIDC connectord are **not supported** for Serverless V2 Plugin
-:::
 
 Variables such as `{{.Values.serviceName}}` will be resolved by a corresponding `values.yaml` file that is added in the same place as the manifest. Follow the steps above to add a manifest, but at step 3 select **Values YAML** instead. Here is an example of a `values.yaml` file for the manifest:
 

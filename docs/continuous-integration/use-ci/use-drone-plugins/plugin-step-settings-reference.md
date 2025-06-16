@@ -76,6 +76,16 @@ For example, to write to the `DRONE_OUTPUT.env` file, the plugin must use a comm
 echo "VAR_NAME=somevalue" >> $DRONE_OUTPUT
 ```
 
+At runtime, the CI engine sets the `$DRONE_OUTPUT` environment variable to a temporary file path such as `/tmp/engine/xyz-output.env`. When a step appends `KEY=value` pairs to this file using `echo`, Harness CI automatically captures them as output variables. These can then be referenced in subsequent steps using expression syntax.
+
+To verify that `$DRONE_OUTPUT` is set, you can run:
+
+```
+echo $DRONE_OUTPUT
+```
+
+This should return a path like `/tmp/engine/xyz-output.env`.
+
 To reference the resulting output variable in another step in the same stage, use either of the following expressions:
 
 ```

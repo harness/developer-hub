@@ -28,7 +28,7 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
 
 ## Install a delegate
 
-1. Install a Kubernetes delegate. For steps to install a Kubernetes delegate, go to [Delegate YAML Quickstart](/docs/first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate/).
+1. Install a Kubernetes delegate. For steps to install a Kubernetes delegate, go to [install delegate](/docs/platform/get-started/tutorials/install-delegate).
 2. Download the YAML.
 3. Modify the `INIT_SCRIPT` section in the YAML to include the following value:
 
@@ -137,8 +137,6 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
             value: <YOUR ACCOUNT ID> ## Your Account ID will be generated here
             - name: MANAGER_HOST_AND_PORT
             value: https://app.harness.io
-            - name: DEPLOY_MODE
-            value: KUBERNETES
             - name: DELEGATE_NAME
             value: terraform
             - name: DELEGATE_TYPE
@@ -163,32 +161,8 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
             value: <YOUR DELEGATE TOKEN> ## Your Generated Delegate token will go here
             - name: WATCHER_STORAGE_URL
             value: https://app.harness.io/public/prod/premium/watchers
-            - name: WATCHER_CHECK_LOCATION
-            value: current.version
-            - name: DELEGATE_STORAGE_URL
-            value: https://app.harness.io
-            - name: DELEGATE_CHECK_LOCATION
-            value: delegateprod.txt
             - name: HELM_DESIRED_VERSION
             value: ""
-            - name: CDN_URL
-            value: "https://app.harness.io"
-            - name: REMOTE_WATCHER_URL_CDN
-            value: "https://app.harness.io/public/shared/watchers/builds"
-            - name: JRE_VERSION
-            value: 11.0.14
-            - name: HELM3_PATH
-            value: ""
-            - name: HELM_PATH
-            value: ""
-            - name: KUSTOMIZE_PATH
-            value: ""
-            - name: KUBECTL_PATH
-            value: ""
-            - name: POLL_FOR_TASKS
-            value: "false"
-            - name: ENABLE_CE
-            value: "false"
             - name: PROXY_HOST
             value: ""
             - name: PROXY_PORT
@@ -735,7 +709,7 @@ These options are all available in the [Harness Docs](/docs/platform/delegates/i
 
 ### Create the connectors and secrets first
 
-Make sure the [connectors](/docs/first-gen/firstgen-platform/account/manage-connectors/harness-connectors/) are created in Harness. You can create them and manage them via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_github) or in the UI.
+Make sure the [connectors](/docs/category/connectors) are created in Harness. You can create them and manage them via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_github) or in the UI.
 
 ![Connector](https://github.com/thisrohangupta/changelog/blob/master/terraform-provider/assets/connector.png)
 

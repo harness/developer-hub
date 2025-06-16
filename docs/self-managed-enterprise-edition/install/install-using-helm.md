@@ -136,7 +136,7 @@ To an ingress ALB, do the following:
 
 ### Optional: Configure a vanity URL based on your load balancer
 
-You can use the script provided below to configure a vanity URL based on your load balancer. The script is available in the [Harness Helm chart](https://github.com/harness/helm-charts/blob/main/src/harness/configure-vality-url.sh) and also accessible at the following path within your Helm manifest: `harness/configure-vanity-url.sh`.
+You can use the script provided below to configure a vanity URL based on your load balancer. The script is available in the [Harness Helm chart](https://github.com/harness/helm-charts/blob/main/src/harness/configure-vanity-url.sh) and also accessible at the following path within your Helm manifest: `harness/configure-vanity-url.sh`.
 
 #### Prerequisites
 

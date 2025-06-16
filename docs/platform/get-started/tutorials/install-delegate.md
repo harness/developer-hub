@@ -180,7 +180,6 @@ module "delegate" {
   account_id = "PUT_YOUR_HARNESS_ACCOUNTID_HERE"
   delegate_token = "PUT_YOUR_DELEGATE_TOKEN_HERE"
   delegate_name = "firstk8sdel"
-  deploy_mode = "Kubernetes"
   namespace = "harness-delegate-ng"
   manager_endpoint = "PUT_YOUR_MANAGER_HOST_AND_PORT_HERE"
   delegate_image = "harness/delegate:yy.mm.verno"
@@ -312,7 +311,6 @@ To install a delegate, do the following:
      -e ACCOUNT_ID=YOUR_HARNESS_ACCOUNTID_ \
      -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN \
      -e DELEGATE_TAGS="" \
-     -e LOG_STREAMING_SERVICE_URL=YOUR_LOG_STREAMING_SERVICE_URL/log-service/ \
      -e MANAGER_HOST_AND_PORT=YOUR_MANAGER_HOST_AND_PORT \
      harness/delegate:yy.mm.verno
    ```

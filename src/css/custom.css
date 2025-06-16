@@ -231,6 +231,15 @@
   --mod-ff-200: #ee8625;
   --mod-ff-100: #fcf4e3;
 
+  /* Module Colors/Feature Management & Experimentation/300 */
+  --mod-fme-300: #6938c0;
+ /* Module Colors/Feature Management & Experimentation/300 */
+  --mod-fme-200: #8b73ce;
+ /* Module Colors/Feature Management & Experimentation/300 */
+  --mod-fme-100: #f6f1ff;
+
+  --mod-sto-300: #1947ec;
+
   /* Module Colors/STO/200 */
   --mod-sto-300: #1947ec;
   --mod-sto-200: #2660ff;
@@ -326,9 +335,9 @@
   --ifm-navbar-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.75);
   --ifm-navbar-height: 4.25rem;
 
-  --harness-font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --harness-font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
 
   /* here */
   --ifm-color-content-light: var(--gray-800);
@@ -372,11 +381,13 @@ summary {
 }
 /* logo-hdh-dark-theme.svg */
 html[data-theme='dark'] .navbar .navbar__logo {
-  content: url('/img/logo-hdh-dark-theme.svg');
+  /* content: url('/img/logo-hdh-dark-theme.svg'); */
+  content: url('/img/logo_pride_dark.svg');
 }
 /* logo_dlp.svg */
 html[data-theme='light'] .navbar .navbar__logo {
-  content: url('/img/logo_dlp.svg');
+  /* content: url('/img/logo_dlp.svg'); */
+  content: url('/img/logo_pride.svg');
 }
 
 html[data-theme='dark'] .CoveoSearchbox .magic-box {
@@ -784,8 +795,7 @@ a.card p.text--truncate {
 
 .horizontal-bar {
   margin-top: 15px;
-  padding: var(--ifm-menu-link-padding-vertical)
-    var(--ifm-menu-link-padding-horizontal);
+  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   font-weight: 600;
@@ -1002,6 +1012,8 @@ figure p {
   }
   #search-button {
     display: block;
+    color: black;
+    font-weight: bold;
   }
   [hover-tooltip]:hover::before {
     transform: translate(-30%);
@@ -1071,11 +1083,7 @@ figure p {
 
   --aida-btn-background: linear-gradient(96deg, #ede8fb 3.03%, #d8cbff 92.95%);
 
-  --aida-btn-background-hover: linear-gradient(
-      96deg,
-      #ede8fb 3.03%,
-      #d8cbff 92.95%
-    ),
+  --aida-btn-background-hover: linear-gradient(96deg, #ede8fb 3.03%, #d8cbff 92.95%),
     linear-gradient(96deg, #ede8fb 3.03%, #d8cbff 92.95%);
   --aida-btn-border: 1px solid #9681a7;
 
@@ -1140,6 +1148,17 @@ figure p {
   min-width: 24px;
   margin-right: 16px;
   background-image: url('/img/icon_artifact_registry.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-ata > div > a::before,
+.sidebar-ata > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/logo-ata.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1255,12 +1274,13 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-ir > div > a::before,.sidebar-ir > a::before{
-  content: " ";
+.sidebar-ir > div > a::before,
+.sidebar-ir > a::before {
+  content: ' ';
   display: inline-block;
   height: 24px;
-   min-width: 24px;
-  margin-right:16px;
+  min-width: 24px;
+  margin-right: 16px;
   background-image: url('/img/icon-ir.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1517,57 +1537,75 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 
 /*******************sidebar logo css end*******************/
 
-.continuous-delivery--gitops:hover {
-  border-color: var(--mod-cd-200) !important;
-}
-.cloud-development-environment:hover {
-  border-color: var(--mod-cde-200) !important;
-}
-.continuous-integration:hover {
-  border-color: var(--mod-ci-200) !important;
+/*** /docs  cards css arranged in alphabetical  order ****/
+.ai-test-automation:hover {
+  border-color: var(--mod-aida-200) !important;
 }
 .artifact-registry:hover {
   border-color: var(--mod-ar-200) !important;
 }
-.feature-flags:hover {
-  border-color: var(--mod-ff-200) !important;
-}
-.feature-management-experimentation:hover {
-  border-color: var(--mod-fme-200) !important;
+.chaos-engineering:hover {
+  border-color: var(--mod-ce-200) !important;
 }
 .cloud-cost-management:hover {
   border-color: var(--mod-ccm-200) !important;
 }
-.service-reliability-management:hover {
-  border-color: var(--mod-srm-200) !important;
-}
-.security-testing-orchestration:hover {
-  border-color: var(--mod-sto-200) !important;
-}
-.chaos-engineering:hover {
-  border-color: var(--mod-ce-200) !important;
-}
-.platform:hover {
-  border-color: var(--primary) !important;
+.cloud-development-environment:hover {
+  border-color: var(--mod-cde-200) !important;
 }
 .code-repository:hover {
   border-color: var(--mod-code-200) !important;
 }
-.software-supply-chain-assurance:hover {
-  border-color: var(--mod-ssca-200) !important;
+.continuous-delivery--gitops:hover {
+  border-color: var(--mod-cd-200) !important;
 }
 .continuous-error-tracking:hover {
   border-color: var(--mod-cet-200) !important;
 }
+.continuous-integration:hover {
+  border-color: var(--mod-ci-200) !important;
+}
+.database-devops:hover {
+  border-color: var(--mod-dbdevops-200) !important;
+}
+.feature-flags:hover {
+  border-color: var(--mod-ff-200) !important;
+}
+.feature-management--experimentation:hover {
+  border-color: var(--mod-fme-200) !important;
+}
+.incident-response:hover {
+  border-color: var(--mod-ir-200) !important;
+}
+.infrastructure-as-code-management:hover {
+  border-color: var(--mod-iacm-200) !important;
+}
 .internal-developer-portal:hover {
   border-color: var(--mod-idp-200) !important;
-}
-.software-engineering-insights:hover {
-  border-color: var(--mod-sei-200) !important;
 }
 .opensource:hover {
   border-color: var(--mod-opensource-200) !important;
 }
+.platform:hover {
+  border-color: var(--primary) !important;
+}
+.security-testing-orchestration:hover {
+  border-color: var(--mod-sto-200) !important;
+}
+.service-reliability-management:hover {
+  border-color: var(--mod-srm-200) !important;
+}
+.software-engineering-insights:hover {
+  border-color: var(--mod-sei-200) !important;
+}
+.software-supply-chain-assurance:hover {
+  border-color: var(--mod-ssca-200) !important;
+}
+.supply-chain-security:hover {
+  border-color: var(--mod-ssca-200) !important;
+}
+
+/*** /docs  cards css end ****/
 
 /***********************   navbar css ***********/
 

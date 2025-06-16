@@ -1565,6 +1565,8 @@ You can reference artifact properties using the following expressions in a value
 
 You connect to ECR using a Harness AWS connector. For details on all the ECR requirements for the AWS connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
+AWS OIDC connectors are supported, starting with delegate version `849xx` or later.
+
 #### YAML
 
 
@@ -1860,6 +1862,8 @@ You can reference artifact properties using the following expressions in a value
 
 You connect to AWS using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
+AWS OIDC connectors also are supported, starting with delegate version `849xx` or later.
+
 <!-- AWS S3 -->
 
 #### YAML
@@ -2088,6 +2092,8 @@ Examples:
 ### Use Amazon EC2 AMI artifacts
 
 You connect to Amazon AWS account using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
+
+AWS OIDC connectors are supported, starting with delegate version `849xx` or later.
 
 For AWS AMI artifacts, a version number represents the name of AMI. You can filter names by using tags/filter values.
 

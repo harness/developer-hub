@@ -75,6 +75,22 @@ The AZ blackhole causes network blackhole by isolating traffic in specific avail
 
 <FaultDetailsCard category="aws">
 
+### VPC route misconfiguration
+
+The vpc route misconfiguration chaos causes network issues due to the misconfiguration of the route table associated with the targeted VPC.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Misconfigured changes to VPC route tables
+- Accidental deletion of external or internal routes
+- Loss of connectivity to critical components such as Transit Gateway (TGW), NAT Gateway (NATGW), or VPC Peering connections
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### DynamoDB replication pause
 
 DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.

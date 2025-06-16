@@ -9,7 +9,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info
+:::warning
 This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
 
 While **Run Tests** step remains backwards compatible, Harness recommends using the newer [**Test** ](../tests-v2.md) step (Test Intelligence v2) for simplified user experience.
@@ -200,7 +200,7 @@ pipeline:
                   name: Run Python Tests
                   identifier: Run_Python_Tests
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: python:latest ## Specify if required by your build infrastructure.
                     language: Python
                     buildTool: Pytest ## Specify pytest or unittest.

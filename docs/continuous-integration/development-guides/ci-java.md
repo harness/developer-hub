@@ -33,7 +33,7 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to instal
                    name: build
                    identifier: build
                    spec:
-                     connectorRef: account.harnessImage
+                     connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                      image: maven:3.8-jdk-11
                      shell: Sh
                      command: |-
@@ -43,7 +43,7 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to instal
                        name: check dependencies
                        identifier: check_dependencies
                        spec:
-                         connectorRef: account.harnessImage
+                         connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                          image: maven:3.8-jdk-11
                          shell: Sh
                          command: |-
@@ -158,7 +158,7 @@ This example uses two [Run steps](/docs/continuous-integration/use-ci/run-step-s
     name: build
     identifier: build
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: maven:3.8-jdk-11
       shell: Sh
       command: |
@@ -193,7 +193,7 @@ You must use the **Test** step for your unit tests if you want to leverage Harne
                       mvn test
                       mvn package -DskipTests
                     shell: Sh
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: maven:3.8-jdk-11
                     intelligenceMode: true
                     reports:
@@ -255,7 +255,7 @@ This example uses the [Plugin step](/docs/continuous-integration/use-ci/use-dron
     name: setup java
     type: Plugin
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: plugins/github-actions
       privileged: true
       settings:
@@ -321,7 +321,7 @@ pipeline:
                       mvn test
                       mvn package -DskipTests
                     shell: Sh
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: maven:3.8-jdk-11
                     intelligenceMode: true
                     reports:
