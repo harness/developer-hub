@@ -1,12 +1,12 @@
 {
-    "label":"Helm Charts Configuration",
+    "label":"Cloud Providers",
     "position": 4,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Helm Charts Configuration"
+       "title":"Cloud Providers"
     },
     "customProps":{
        "helpdocs_category_id":"66qbyn7ugu"
