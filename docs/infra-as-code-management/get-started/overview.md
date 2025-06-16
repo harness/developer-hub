@@ -42,7 +42,7 @@ Your workspace is a container for your infrastructure resources, integrating IaC
 Actions taken to manage and maintain your infrastructure using IaC tools.
 
 - **Provision:** Applying infrastructure configuration to create cloud resources. [Learn about provisioning](/docs/infra-as-code-management/workspaces/provision-workspace).
-- **Destroy:** Removing all resources provisioned by the IaC code. [Explore the destroy operation](/docs/infra-as-code-management/workspaces/destroy-workspace).
+- **Destroy:** Removing all resources provisioned by the IaC code. [Explore the destroy operation](/docs/infra-as-code-management/workspaces/destroy-workspaces).
 - **Drift Detection:** Occurs when the actual state of your infrastructure deviates from the state defined by your IaC code, identifying discrepancies between the declared and running infrastructure. [Understand drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection).
 
 ### Resources
@@ -51,7 +51,7 @@ Components and services managed by your IaC tool and cloud provider.
 - **Cloud Resource:** Any instance of cloud infrastructure that is currently running.
 - **Cloud Provider:** A company offering cloud computing services.
 - **Harness State Tracking:** Monitors the current state of a stack and tracks changes.
-- **Terraform State Backend:** Manages access to and changes in a shared Terraform state file. [Understand state backend](/docs/infra-as-code-management/category/remote-backends).
+- **Terraform State Backend:** Manages access to and changes in a shared Terraform state file. [Understand state backend](/docs/infra-as-code-management/category/remote-backends/).
 - **Variables:** Elements used to extend and customize IaC code. [Learn about pipeline variables](/docs/infra-as-code-management/project-setup/input-variables).
 
 Go to [the IaCM onboarding guide](/docs/infra-as-code-management/get-started/) to get started or continue your IaCM journey!
