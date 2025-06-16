@@ -18,6 +18,19 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 :::
 
+## June 2025 - Version 1.54.5
+
+### Feature Improvements
+
+- **RBAC Support for Nested Cost Categories:** We've extended Role-Based Access Control (RBAC) to support nested cost buckets within CCM data scope, providing more granular access control for nested Cost Categories. Note that RBAC support is not available for the Unallocated Cost bucket. [CCM-23579]
+
+### Bug Fixes
+
+- **Fixed Duplicate Discounts with Net-Amortised Cost:** Resolved an issue where duplicate discounts were applied when net-amortised cost was selected with discounts enabled. Improvements include:
+  - When creating or updating a perspective with net-amortised cost, discounts are automatically set to false during save/update
+  - The discount field is now greyed out when net-amortised cost is selected in perspective preferences as discounts are already included in the net-amortised cost.
+  - Backend validation prevents duplicate discounts when using the API, ensuring accurate cost calculations in all scenarios [CCM-22152]
+
 ## May 2025 - Version 1.53.3
 
 ### Bug Fixes
