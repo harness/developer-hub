@@ -30,10 +30,8 @@ To ensure optimal performance while connecting to your Gitspace in WebStorm, you
 
 :::warning
 If your Gitspace does not meet the recommended requirements, the following warning may appear during your WebStorm setup. You can choose to create a new Gitspace that adheres to the recommended specifications or proceed with your existing configuration.
-
-<img width="436" alt="warning intellij" src="https://github.com/user-attachments/assets/4749c388-58d1-4917-84b2-ab5384b4d050" />
 :::
-
+<img width="436" alt="warning intellij" src="https://github.com/user-attachments/assets/4749c388-58d1-4917-84b2-ab5384b4d050" />
 
 #### Configuring your Gitspace
 To meet the recommended specifications, select the **"Large"** machine type while configuring your Gitspace in the Harness UI. This option provides:  
