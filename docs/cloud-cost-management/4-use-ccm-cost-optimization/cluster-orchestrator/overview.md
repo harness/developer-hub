@@ -15,7 +15,7 @@ Currently, this early access feature is behind a feature flag . Contact [Harness
 :::
 
 Harness’ Cloud Cost Management is centered on three key pillars: Cost Visibility, Cost Optimization and Cost Governance.
-Currently AutoStopping, Recommendations and Commitment Orchestrator (in beta) are present under cost optimisation. Harness CCM has added Cluster Orchestrator for EKS (Beta) to enhance workload-driven autoscaling and intelligent management of AWS Spot instances, contributing to overall cost efficiency. 
+Currently AutoStopping, Recommendations and Commitment Orchestrator are present under cost optimisation. Harness CCM has added Cluster Orchestrator for EKS (Beta) to enhance workload-driven autoscaling and intelligent management of AWS Spot instances, contributing to overall cost efficiency. 
 
 ## AWS Spot Instances and challenges 
 
@@ -24,8 +24,6 @@ Amazon EC2 provides a range of purchase options catering to diverse computing ne
 <DocImage path={require('./static/aws-pricing.png')} width="70%" height="70%" title="Click to view full size image" />
 
 ## Cluster Infrastructure and challenges  
-
-<DocImage path={require('./static/challenges.png')} width="50%" height="50%" title="Click to view full size image" />
 
 #### 1. Dynamic Workload Balancing ✓ SOLVED
 
