@@ -43,11 +43,11 @@ To start using Perspectives, connect your cloud provider accounts to Harness CCM
 
 | Cloud Provider | Setup Guide |
 |:--------------|:-----------|
-| **AWS** | [Complete AWS Connector Setup Guide](/docs/cloud-cost-management/get-started/set-up-cloud-cost-management/set-up-cost-visibility-for-aws) |
-| **Azure** | [Complete Azure Connector Setup Guide](/docs/cloud-cost-management/get-started/set-up-cloud-cost-management/set-up-cost-visibility-for-azure) |
-| **GCP** | [Complete GCP Connector Setup Guide](/docs/cloud-cost-management/get-started/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp) |
-| **Kubernetes** | [Complete Kubernetes Connector Setup Guide](/docs/cloud-cost-management/get-started/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes) |
-| **External Data** (Beta) | [External Cost Data Ingestion Guide](/docs/cloud-cost-management/get-started/set-up-cloud-cost-management/external-cost-data-ingestion) |
+| **AWS** | [Complete AWS Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws) |
+| **Azure** | [Complete Azure Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure) |
+| **GCP** | [Complete GCP Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp) |
+| **Kubernetes** | [Complete Kubernetes Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes) |
+| **External Data** (Beta) | [External Cost Data Ingestion Guide](/docs/cloud-cost-management/get-started/onboarding-guide/external-data-ingestion) |
 
 :::tip
 You can connect multiple cloud providers and external data sources and use them together in a single Perspective to get a unified view of all your cloud costs in one place.
@@ -68,4 +68,5 @@ To create a custom perspective that matches your business needs, see [Creating a
 
 Once your cloud providers are connected and data is flowing, you can:
 
-* [Learn Key Concepts](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts) to maximize the value of Perspectives
+* [Learn Key Concepts](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts) 
+* [Create a Perspective](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective).
