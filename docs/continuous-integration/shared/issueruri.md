@@ -1,9 +1,9 @@
-#### Issuer URI
-The Issuer Format will need to be modified depending on the environment cluster that your account resides in.  In `Account Settings` -> `Account Details`, you can see the Harness Cluster that your account resides in
+#### Issuer URL
+The Issuer Format will need to be modified depending on the environment cluster in which your account resides.  In `Account Settings` -> `Account Details`, you can see the Harness Cluster that your account resides in.
 
-The Issuer URI format should follow - https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>
+The Issuer URL format should follow `https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>`.
 
-The hostname should be as follows, (even if a VanityURL is setup for an account)
+The hostname should be as follows, (even if a VanityURL is setup for an account).
 
 | Cluster      | HostName               |
 |--------------|------------------------|
