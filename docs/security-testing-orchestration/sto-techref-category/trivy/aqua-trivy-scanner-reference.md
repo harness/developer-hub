@@ -12,19 +12,23 @@ redirect_from:
 ---
 
 <DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
-You can scan your container images using [Aqua Trivy](https://github.com/aquasecurity/trivy). 
+With Harness STO, you can use [Aqua Trivy](https://github.com/aquasecurity/trivy) to scan both:
+- **[Container images](https://trivy.dev/latest/docs/target/container_image/)**
+- **Code repositories** (via [Filesystem](https://trivy.dev/latest/docs/target/filesystem/) scanning)
 
-:::note
-STO supports container scans only with Aqua Trivy.
-:::
+When scanning code repositories, Trivy performs:
+- **Secret Detection** – Identifies hardcoded secrets or sensitive information.
+- **Software Composition Analysis (SCA)** – Detects vulnerabilities in open source dependencies.
 
-## Important notes for running Aqua Trivy scans in STO
+You can perform these scans using [Orchestration](#scan-mode) or [Ingestion](#scan-mode) modes supported in STO. Follow the steps below for detailed configuration instructions for both scan modes.
 
+:::info
 - You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 - STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
@@ -32,9 +36,10 @@ STO supports container scans only with Aqua Trivy.
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
+:::
 
 
-## Aqua Trivy step settings for STO scans
+## Aqua Trivy step settings
 
 The recommended workflow is to add an AquaTrivy step to a Security Tests or CI Build stage and then configure it as described below.
 
@@ -63,6 +68,9 @@ import StoSettingProductConfigName from '../shared/step-palette/scan/config-name
 
 <StoSettingProductConfigName />
 
+- **Default**: This option is used for container image scanning. It is automatically selected when you choose **Container Image** as the [Target Type](#target).
+
+- **Filesystem**: This option is used for scanning code repositories. It is automatically selected when you choose **Repository** as the [Target Type](#target). This scan configuration maps to Aqua Trivy’s [Filesystem](https://trivy.dev/latest/docs/target/filesystem/) scan.
 
 ### Target
 
@@ -71,8 +79,16 @@ import StoSettingProductConfigName from '../shared/step-palette/scan/config-name
 
 import StoSettingScanTypeCont from '../shared/step-palette/target/type/image.md';
 
+import StoSettingScanTypeRepo from '../shared/step-palette/target/type/repo.md';
+
 <StoSettingScanTypeCont />
 
+<StoSettingScanTypeRepo />
+
+:::info
+When you set the Target Type to **Repository**, the **[Scan Configuration](#scan-configuration)** field is automatically set to **Filesystem** and cannot be changed.
+In the future, we plan to add more scan configurations specific to each Target Type.
+:::
 
 #### Target and Variant Detection 
 
@@ -95,6 +111,12 @@ import StoSettingTargetName from '../shared/step-palette/target/name.md';
 import StoSettingTargetVariant from '../shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
+
+#### Workspace
+This field is visible only when you select **Repository** as the Target Type.
+
+Use this field to specify an individual folder or file to scan. For example, if you want to scan a specific file like `/tmp/example/test.py`, set the workspace path to:  
+`/harness/tmp/example/test.py`
 
 ### Container image
 
