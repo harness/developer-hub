@@ -2745,6 +2745,21 @@ If it is operating as expected, the Kaniko CLI will show the following in the CL
 /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=destination/repo:1.0 --snapshotMode=redo --digest-file=/kaniko/digest-file --ignore-path=/opt/nodejs
 ```
 
+#### What happens during CI pod initialization?
+During CI pod initialization, YAML manifests are prepared containing the step container details and delegate information. These manifests are then applied to the Kubernetes cluster defined in the infrastructure settings. The configured steps subsequently run inside these initialized pods.
+
+#### Is there a way to enable debug or trace mode during CI pod initialization?
+No, currently there is no flag available to change log levels or enable debug/trace mode during CI pod initialization.
+
+#### Why can't I use a template created from a custom stage in the CI stage?
+This is expected behavior. Harness only supports templates of steps that are part of the CI stage to be used as templates within the CI stage. Templates created under custom stages cannot be used in CI stages.
+
+#### Why won't the value of the output variable get resolved in the next step of the same CI pipeline stage?
+In a CI pipeline, all steps within a stage are initialized during the initialization step, and all Harness expressions are resolved at that point. Since the YAML is already deployed for the pod, the value of the output variable will not be resolved in subsequent steps of the same stage.
+
+#### How can I resolve the output variable in the next stage of a CI pipeline?
+To reference the output variable in the next stage, you should divide the steps into two stages. This will allow the output variable from one stage to be referenced and resolved in another stage for CI-type workflows.
+
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 

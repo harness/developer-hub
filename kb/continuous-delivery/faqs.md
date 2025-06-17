@@ -3236,6 +3236,109 @@ As per the current design, there's no native step for this but user can write a 
 
 The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
+#### Why is my pipeline asking for an expression value referring to the previous stage?
+If a stage is skipped and another stage in the pipeline is referring to an output of the skipped stage, we ask for the value of the expression in the run form, so that we have a valid value for the expression for the next stage to work as expected
+
+#### Do I need to change the Kubernetes cluster's Access Configuration to use OIDC role-based deployments?
+Yes, to enable OIDC role-based deployments in your Kubernetes cluster, you need to change the Access Configuration from CONFIG_MAP to API_AND_CONFIG_MAP.
+
+#### What does the CONFIG_MAP access configuration mode do in a Kubernetes cluster?
+The CONFIG_MAP mode relies solely on the aws-auth ConfigMap for authentication. It does not support dynamic OIDC role assumptions.
+
+#### What does the API_AND_CONFIG_MAP access configuration mode do in a Kubernetes cluster?
+The API_AND_CONFIG_MAP mode allows the cluster to authenticate AWS IAM principals using both the Amazon EKS access entry APIs and the aws-auth ConfigMap. This mode is essential for OIDC-based IAM role assumptions, as it enables the cluster to interact with AWS STS to assume roles via OIDC.
+
+#### How does OPA handle Git flows for non-default branches?
+In OPA, all Git flows work effectively only for the default branch. Entities created in non-default branches are not usable until they are merged into the default branch.
+
+#### Can I customize the pipeline execution name using expressions in Harness Pipeline settings?
+No, Harness does not allow customizing or parameterizing the pipeline execution name using expressions in Pipeline settings.
+
+#### Can I dynamically modify the pipeline execution name within a script step during execution?
+No, Harness does not support modifying the pipeline execution name dynamically during execution, including within script steps.
+
+#### Is there a way to add contextual information to a pipeline execution if the execution name cannot be changed?
+Yes, you can add notes to each pipeline execution to provide additional context. Notes can also be updated using the Harness API. Refer to the documentation here: Add Notes During Pipeline Execution
+
+#### How can I view the inputs used in a pipeline execution?
+You can view the inputs by expanding the execution details. Without opening the full execution page, Harness displays the service, environment, and artifact details when the service field is expanded.
+
+#### Is it possible to trigger a rollout restart from within Harness, and where can I find the documentation for it?
+Yes, Harness supports triggering a rollout restart and other Kubernetes commands directly from within your pipelines. You can refer to the official documentation here: Kubernetes Rollout Restart in Harness.
+
+#### Why did a user-initiated failure not trigger a rollback in the pipeline?
+A user-initiated failure does not trigger a rollback if the failure occurs at a step group level rather than at a leaf step. The failure strategy applies only to individual steps (leaf nodes), and failures at higher levels like step groups do not initiate rollback.
+
+#### Why did the pipeline proceed to the approval step even after a failure was marked?
+The pipeline proceeds to the approval step even after a failure if the "when condition" of the approval step is not configured to check the live status of the matrix. To prevent the approval step from running after a failure, configure the "when condition" appropriately. Refer to the documentation here: LiveStatus Expression in Harness
+
+#### Why does Harness attempt to resolve all secrets referenced in a script block, including those inside a case block, causing pipeline failures?
+Harness resolves all expressions in the script block at runtime, even those within a case block. This is done to ensure the script is executed with the correct context. However, this can lead to issues, such as Azure decryption errors for development secrets, because all secrets are resolved before executing any lines of the script, even if they are commented out or not executed.
+
+#### Is there a way to prevent Harness from resolving all expressions in the script, including commented-out code?
+As per the current design, Harness resolves all expressions before executing any lines of the script to form the script with the correct context. This behavior ensures that the script runs correctly, but may cause issues if there are unresolved secrets in the script.
+
+#### Why are new template versions now created under the "harness" folder by default, and where can I find documentation on this change?
+Harness has updated the template creation process to recommend creating new template versions under the harness folder by default. This aligns with the auto-discovery process for entities within Harness, ensuring smoother management and organization of templates. You can refer to the official documentation here: Autocreation of Entities in Harness
+
+#### Can I still specify a custom YAML path when creating a template in Harness?
+Yes, you can manually specify a custom YAML path when creating a template. The change only affects the default suggested path; it does not restrict you from setting a different path.
+
+#### Is there a way to deploy the newest image from Artifactory using a cron-based trigger without using the "latest" tag, and where can I find documentation on this?
+Yes, you can use the <+lastPublished.tag> expression in Harness. This expression automatically resolves to the most recently published artifact version from your artifact server, enabling deployment of the newest image without relying on a "latest" tag. You can refer to the official documentation here: Using <+lastPublished.tag> in Harness
+
+
+#### How can I ingest runtime arguments while deploying a Helm chart via a Harness pipeline?
+Harness supports passing runtime arguments during Helm chart deployments. You can use runtime, expression, or fixed inputs for the values. To set up arguments, edit the service, and expand the advanced section. You will find the option to add Helm commands.
+
+#### Can I reference the currently selected branch of my pipeline as a variable?
+Yes, you can use the <+pipeline.branch> expression to reference the currently selected branch of your pipeline.
+
+#### How can I execute automation tests in a target environment behind a VPN in Harness, and where can I find documentation on configuring a delegate with a proxy?
+To run automation tests in a VPN-restricted environment, you can set up the Harness delegate with a proxy using your VPN configuration. This allows the delegate to securely communicate with the manager even if the target environment is behind a VPN. For more details, you can refer to the official documentation here: Configure Delegate Proxy Settings
+
+#### What is the recommended delegate setup for accessing environments behind a VPN in Harness?
+It is recommended that the delegate be deployed within the environment where the tests need to be run. The delegate should be configured to connect to the manager via a proxy. Additionally, using a dedicated EC2 instance to connect to the client VPN and running the delegate on that instance is a secure approach.
+
+#### What causes the "Error while reading variables to process Script Output" and how can I resolve it?
+This error occurs when a script exits prematurely before the variables are exported. To resolve this issue, ensure that the script does not exit early with a success exit code. Allow the script to exit on its own, which will ensure that the variables are processed correctly before the script terminates.
+
+#### How can I schedule executions of a pipeline in Harness?
+You can create a trigger to schedule executions of a pipeline. This allows you to automate the execution of pipelines at specified times or intervals based on your requirements.
+
+#### Why is my scheduled pipeline trigger not working due to policy enforcement, and how can I fix it?
+If your pipeline trigger is not working due to policy enforcement, it may be because the policy restricts execution to users only in the QA Engineers Group. To allow the trigger to run the pipeline, you can add an exception in the policy by checking the principalType field. Set it to "SERVICE" for the trigger to bypass this policy check.
+
+#### How do I retrieve the version from a pipeline execution history in Harness?
+You can use the pipeline execution API to retrieve the version. Be sure to include the parameter &renderFullBottomGraph=true in your API request.
+
+#### Do I need to escape the pipe symbol when using it in PowerShell?
+In most cases, no. The pipe symbol is used to form pipelines between cmdlets and doesn't need to be escaped unless you're specifically working with strings where the pipe symbol could be interpreted as an operator rather than a character in the string.
+
+#### When should I escape the pipe symbol in PowerShell?
+You only need to escape the pipe symbol (^|) when it is used inside a string and you want it to appear as a literal character, rather than as a pipeline operator. If you're using the pipe symbol between cmdlets in a command, no escaping is needed.
+
+#### What is the default limit for concurrent pipeline executions in Harness?
+By default, Harness allows up to 500 concurrent executions. If you are hitting this limit, it could be causing issues with pipeline execution.
+
+#### How can I increase the limit for concurrent pipeline executions?
+You can increase the limit by following these steps:
+
+Go to Account Settings.
+
+Click on Pipeline Settings.
+
+Look for the setting "Concurrent Active Pipeline Executions".
+
+You can increase the value to a maximum of 1000.
+
+For more details, you can refer to the documentation here.
+
+#### When are output variables available for use?
+Output variables are available and ready to consume only when the step where they are defined completes successfully.
+
+#### What happens to output variables if a step fails?
+If the step fails, the output variables from that step are not processed and therefore are not available for use in subsequent steps.
 
 ### Infrastructure provisioning FAQs
 
@@ -3271,3 +3374,61 @@ For frequently asked questions about Harness Continuous Verification, go to [Con
 ### GitOps FAQs
 
 For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/gitops-faqs).
+
+#### How can I reference the pipeline's start time in my Harness pipeline?
+You can use the <+pipeline.startTs> expression to get the epoch time of the pipeline's start.
+
+#### How can I convert the pipeline's start time to a readable date and time in UTC?
+You can convert the pipeline's start time to a readable date and time using the following command:
+```
+epoch_time=<+pipeline.startTs>
+date -d @"$epoch_time"
+```
+
+#### How can I restrict users from creating tokens with a validity period of more than a month in Harness using OPA?
+You can use OPA to enforce a policy that restricts token creation to a maximum validity of 30 days. Below is an example policy:
+```
+package token_validation
+
+valid_duration := 30 * 24 * 60 * 60 * 1000  # 30 days in milliseconds
+
+deny[msg] {
+    input.token.validTo > input.token.validFrom + valid_duration
+    msg := "Token duration can only be 30 days or less"
+}
+```
+
+#### How can I exclude Harness service accounts from the token duration policy while restricting users to tokens with a validity of 90 days or less?
+You can update the policy to exclude service accounts by adding the input.token.apiKeyType field. This ensures the policy only applies when a user (not a service account) is creating the token. Below is the
+```
+package token_validation
+
+valid_duration := 90 * 24 * 60 * 60 * 1000 # 90 days in milliseconds
+
+deny[msg] {
+    input.token.apiKeyType == "USER"
+    input.token.validTo > input.token.validFrom + valid_duration
+    msg := "Token duration can only be 90 days or less"
+}
+```
+This policy will not trigger for service accounts, but it will restrict users to tokens with a duration of 90 days or less.
+
+#### What is the difference between executionInput() and <+input> in Harness pipelines?
+The executionInput() function is supported only for stage and step variables, allowing users to provide a value for that variable only when the specific stage or step is executed.
+For pipeline variables, which are resolved at the start of the pipeline, you should use <+input> instead of executionInput(). This ensures that the value is resolved correctly for pipeline variables.
+
+
+#### Is expression support available for allowed values of runtime inputs in Harness?
+Yes, expressions are supported for the allowed values of runtime inputs in Harness. However, if you're unsure whether this feature is enabled in your environment, it could be under a feature flag. For more details, refer to the official documentation here: Runtime Input Usage - Expressions in Allowed Values.
+
+#### Is it necessary to include orgIdentifier and projectIdentifier in the YAML when creating a service with Terraform in Harness?
+No, it is not necessary to include orgIdentifier and projectIdentifier in the YAML for creating a service. Terraform uses the Harness Open-API, which allows service creation by passing the body as metadata. Therefore, these identifiers are not required in the YAML when using Terraform to create a service in Harness.
+
+#### Can I use Harness variables in the base manifest or kustomization.yaml files for Kubernetes deployments?
+No, you cannot use Harness variables in the base manifest or kustomization.yaml files. Harness variables can only be used in kustomize patches that you add under the "Kustomize Patches Manifest Details." These patch files, which modify the deployment.yaml, are the only ones where Harness variables can be utilized.
+
+#### Why do secrets from external services like Vault, AWS, or GCP not work in the secret field for event relay triggers in Harness?
+Currently, only secrets managed by the Harness Secret Manager are supported in the secret field for event relay triggers. Secrets from external services like Vault, AWS, GCP, etc., do not work in this field. This limitation exists because event relay triggers use HMAC for authentication, and Harness needs to respond quickly to API requests. Introducing an additional hop to verify the HMAC on the delegate would cause significant delays in processing.
+
+#### Why doesn't the "Changed Files" attribute work when using Triggers with Bitbucket Data Center?
+The "Changed Files" attribute does not work when using Triggers with Bitbucket Data Center. This feature is only supported for cloud-based code repositories such as GitHub, Bitbucket Cloud, GitLab, etc. It is not available for Bitbucket Data Center.
