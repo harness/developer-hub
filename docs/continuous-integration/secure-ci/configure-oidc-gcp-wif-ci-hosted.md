@@ -6,6 +6,7 @@ sidebar_label: OIDC with GCP WIF for Harness Cloud
 redirect_from:
   - /tutorials/platform/configure-oidc-gcp-wif-ci-hosted
 ---
+import IssuerURI from '/docs/continuous-integration/shared/issueruri.md'
 
 [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp) that use OpenID Connect (OIDC) allow Harness to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials. If accessing Google cloud resources, you can use [workload identity federation (WIF)](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector.
 
@@ -30,7 +31,6 @@ This topic assumes you have experience with [GCP workload identity providers](ht
 
 You can get your Harness account ID from any Harness URL, such as `https://app.harness.io/ng/#/account/ACCOUNT_ID/home/get-started`.
 
-import IssuerURI from '../shared/issueruri.md'
 <IssuerURI />
 
 ### Grant Access to the Service Account
