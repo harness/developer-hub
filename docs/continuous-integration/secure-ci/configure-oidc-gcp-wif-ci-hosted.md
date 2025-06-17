@@ -34,7 +34,7 @@ You can get your Harness account ID from any Harness URL, such as `https://app.h
 <IssuerURI />
 
 ### Grant Access to the Service Account
-2. Grant access using the connected service accounts for GAR:
+Grant access using the connected service accounts for GAR:
    1. Select the service account that has push/pull permissions for GAR. (or any other [necessary permissions](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/))
    2. Select principles (identities that can access the service account). Select **Only identities matching the filter**, and then select `account_id = YOUR_HARNESS_ACCOUNT_ID`.
 
