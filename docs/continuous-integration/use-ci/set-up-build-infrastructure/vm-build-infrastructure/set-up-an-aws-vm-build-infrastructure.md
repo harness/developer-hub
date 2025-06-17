@@ -325,7 +325,12 @@ disk:
   type: io1
   iops: iops
   kms_key_id: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+  tags:
+    volumekey: volumeValue
+    key1: value2
 ```
+
+The [tags](#tags-example) property listed here, follows a key/value pair format. This will add tags to the disk/volume directly.
 
 ## Start the runner
 
