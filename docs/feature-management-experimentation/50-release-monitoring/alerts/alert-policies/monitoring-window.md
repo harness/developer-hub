@@ -70,7 +70,7 @@ You can find this value under the Stdev column in the Metric dispersion section 
 <iframe
   src="https://exp-calculators-means-9ecaf91e3a35.herokuapp.com/"
   width="100%"
-  height="600"
+  height="900"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',
@@ -83,7 +83,7 @@ You can find this value under the Stdev column in the Metric dispersion section 
 <iframe
   src="https://exp-calculators-proportions-00c422485fac.herokuapp.com/"
   width="100%"
-  height="600"
+  height="900"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',
