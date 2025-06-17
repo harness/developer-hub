@@ -69,25 +69,6 @@ export const DbdevopsData: Horizon = {
           "Add option to pass secrets to build pods without going through a Kubernetes secret object",
         tag: [{ value: "Governance" }, {value: "Q1"}],
         link: "https://developer.harness.io/docs/database-devops/use-database-devops/get-started/runtime-secrets/"
-      },
-      {
-        tag: [{ value: "Governance" }, {value: "Q4"}],
-        title: "RBAC Support",
-        description:
-          "Ability to cointrol ability to edit db schema definition via RBAC roles.",
-      },
-      {
-        tag: [{ value: "Visibility" }, { value: "Q4" }],
-        title: "Dashboards Support",
-        description:
-          "Enable Reporting on DB DevOps using Harness Dashboards.",
-      },
-      {
-        tag: [{ value: "Orchestration" }],
-        title: "Rollback to Start of Deployment",
-        description:
-          "Provide easy ability for pipeline to rollback applied changes from the same pipeline.",
-        link: "https://developer.harness.io/docs/database-devops/use-database-devops/rollback-for-database-schemas#rolling-back-to-a-previous-database-state"
       }
     ],
   },
