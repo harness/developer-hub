@@ -127,8 +127,8 @@ By default, Kubernetes does not restart pods when only ConfigMap or Secret objec
 Enable the `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK` feature flag to ensure ConfigMap and Secret changes are correctly rolled back. When enabled, Harness will:
 
 * Generate a hash for ConfigMap and Secret objects during deployment.
-* Add the hash to the kubernetes workload. 
-* Trigger a pod restart if the hash differs when a rollback is triggered, ensuring that the rolled-back configuration is applied.
+* Add the hash to the kubernetes workload/manifest. 
+* Apply the previous manifest when a rollback is triggered. Now, Kubernetes will enforce the diff in the manifest caused by the hash and restart the pod when it needs, ensuring that the rolled-back configuration is applied.
 
 This feature enhances rollback and roll-forward fidelity by ensuring pod restarts reflect all manifest changes, including non-restart-triggering objects like ConfigMaps and Secrets.
 
