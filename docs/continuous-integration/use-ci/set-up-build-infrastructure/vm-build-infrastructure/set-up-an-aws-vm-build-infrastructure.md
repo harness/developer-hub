@@ -332,6 +332,12 @@ disk:
 
 The [tags](#tags-example) property listed here, follows a key/value pair format. This will add tags to the disk/volume directly.
 
+:::note Minimum Version
+
+In order to tag the disk, please ensure you are using drone runner version of `1.0.0-rc.190` or newer.
+
+:::
+
 ## Start the runner
 
 [SSH into your EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and run the following command to start the runner:
