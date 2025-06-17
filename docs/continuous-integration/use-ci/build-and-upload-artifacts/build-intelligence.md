@@ -21,9 +21,7 @@ Build Intelligence is currently available for **Gradle**, **Bazel** and **Maven*
 * Build Intelligence currently supports Linux only (AMD and ARM). 
 * Build Intelligence currently supports Cloud and Kubernetes Build infrastructures only. 
 
-
 :::
-
  
 ## Using Build Intelligence
 Build Intelligence seamlessly integrates into your workflow without requiring changes to your build commands. Harness automatically detects supported build tools in your pipeline and injects the necessary configurations into the relevant files within the build workspace. This ensures Build Intelligence optimizes your builds during Gradle or Bazel operations performed in `Test` or `Run` steps. 
@@ -73,8 +71,6 @@ Harness doesn't limit the number of caches you can store, but, once you reach yo
 
 The cache retention window is 15 days, which resets whenever a cache is updated.
 
-
-
   </TabItem>
 
 
@@ -83,7 +79,6 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
    - Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
    - By default, Build Intelligence uses port 8082, and downloads the Build Intelligence plugin from Maven Central. You can change the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
   :::
-
 
   - When using a Build Intelligence with self-hosted infrastructure, an S3-compatible bucket is required for cache storage. Please visit [configure default S3-compatible object storage](/docs/platform/settings/default-settings.md#continuous-integration) for more information.
   - By default, the Build Intelligence step configures a proxy on port 8082. However, for self-hosted setups, you can configure the port by setting the stage variable `CACHE_SERVICE_HTTPS_BIND`, or in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
@@ -144,16 +139,11 @@ pipeline:
 
   - By default, the Build Intelligence plugin is downloaded from Maven Central. If your environment does not have access to Maven Central or you prefer using a custom Maven repository, you can configure this by setting a stage variable named `MAVEN_URL`, or in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration). See [Build Intelligence plugin](https://central.sonatype.com/artifact/io.harness/gradle-cache/overview ) 
 
-
-
   </TabItem>
 </Tabs>
 
-
-
 ### How does Build Intelligence work 
 Harness auto-detects supported build tools (Gradle and Bazel). It auto injects required configuration to appropriate files on the build workspace. This will allow Build Intelligence to automatically optimize your builds when bazel/gradle operation are done in `Test` or `Run` steps. 
-
 
 #### Gradle Config
 When using gradle, Harness creates an init.gradle file in `~/.gradle/init.d` or `$GRADLE_HOME/init.d` or `$GRADLE_USER_HOME/init.d` folder if not found, with the required configuration. 
@@ -188,13 +178,13 @@ If your environment restricts access to Maven Central, you can configure Build I
 This support is built-in and requires the following:
 
 1. Upload Required Maven Artifacts
-Ensure the following artifacts are available in your private Maven repository:
+Ensure the following artifacts are available in your private Maven repository under the correct path structure (i.e., `org/apache/maven/extensions/maven-build-cache-extension/1.2.0/`):
 
-- `maven-build-cache-extension-1.2.0.pom`
+- [maven-build-cache-extension-1.2.0.pom](https://repo.maven.apache.org/maven2/org/apache/maven/extensions/maven-build-cache-extension/1.2.0/maven-build-cache-extension-1.2.0.pom)
 
-- `maven-build-cache-extension-1.2.0.jar`
+- [maven-build-cache-extension-1.2.0.jar](https://repo.maven.apache.org/maven2/org/apache/maven/extensions/maven-build-cache-extension/1.2.0/maven-build-cache-extension-1.2.0.jar)
 
-These are required by Build Intelligence to enable caching for Maven builds.
+This ensures Maven clients can resolve the artifacts properly using the standard package coordinates, which are required by Build Intelligence to enable caching for Maven builds.
 
 2. Update Your `pom.xml`
 
