@@ -24,7 +24,7 @@ This topic assumes you have experience with [GCP workload identity providers](ht
  Set up an [identity provider](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#manage-providers) in the workload identity federation (WIF) with the following configuration:
 
    * Name: Enter any name.
-   * Issuer: `https://app.harness.io/ng/api/oidc/account/YOUR_HARNESS_ACCOUNT_ID>`.  See below for more details, depending on your environment
+   * Issuer: `https://app.harness.io/ng/api/oidc/account/YOUR_HARNESS_ACCOUNT_ID>`.  See below for more details, depending on the environment cluster your account resides in.
    * Attribute mapping:
       * `Google.subject = assertion.sub`
       * `attribute.account_id = assertion.account_id`
