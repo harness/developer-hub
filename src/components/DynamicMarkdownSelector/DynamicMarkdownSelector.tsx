@@ -27,6 +27,7 @@ export interface DynamicMarkdownSelectorProps {
     {
       path: string;
       logo?: string;
+      iconOnly?: boolean;
     }
   >;
 }
@@ -133,17 +134,17 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
                     type="button"
                   >
                     {entry.logo ? (
-                      <div className="selector-entry">
-                        <img
-                          src={`/provider-logos/${entry.logo}`}
-                          alt={`${label} logo`}
-                          className="selector-icon"
-                        />
-                        <span>{label}</span>
-                      </div>
-                    ) : (
-                      <span className="selector-entry no-logo">{label}</span>
-                    )}
+  <div className="selector-entry">
+    <img
+      src={`/provider-logos/${entry.logo}`}
+      alt={`${label} logo`}
+      className="selector-icon"
+    />
+    {!entry.iconOnly && <span>{label}</span>}
+  </div>
+) : (
+  !entry.iconOnly && <span className="selector-entry no-logo">{label}</span>
+)}
                   </button>
                 );
               })}
