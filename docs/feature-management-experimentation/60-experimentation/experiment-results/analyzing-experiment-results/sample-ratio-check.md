@@ -21,7 +21,7 @@ A 50/50 rollout does not imply a perfect 50/50 split in every sample; a small ma
 
 ## Sample ratio check
  
- Harness FME uses a chi-squared goodness of fit test to detect significant deviations between the targeted and observed sample ratios. This test performs a pairwise comparison between the actual number of users assigned to each treatment and the expected distribution. If the resulting p-value is less than 0.001, we flag a sample ratio mismatch (SRM).
+Harness FME uses a chi-squared goodness of fit test to detect significant deviations between the targeted and observed sample ratios. This test performs a pairwise comparison between the actual number of users assigned to each treatment and the expected distribution. If the resulting p-value is less than 0.001, we flag a sample ratio mismatch (SRM).
 
 The null hypothesis of this test assumes that the observed user distribution matches the expected allocation across treatments. A statistically significant result (p < 0.001) indicates that the observed distribution is unlikely to have occurred by chance and may be due to bias in traffic allocation.
 
