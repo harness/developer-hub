@@ -41,6 +41,26 @@ const getGridColumns = (count: number): number => {
 };
 
 const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options }) => {
+  // --- BEGIN: Auto-redirect if loaded directly on a content page ---
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const { pathname } = window.location;
+    // Find if the current path matches any option's path
+    const match = Object.entries(options).find(([_label, entry]) => {
+      // Normalize both to ensure leading slash
+      const normalized = entry.path.startsWith("/") ? entry.path : "/" + entry.path;
+      // Docusaurus usually serves content pages under /docs, but sometimes without
+      return pathname.endsWith(normalized) || pathname.endsWith(normalized.replace(/^\/docs/, ""));
+    });
+    if (match) {
+      const [label] = match;
+      // Find the parent page (assume it's one directory up from /content/)
+      const parent = match[1].path.split('/content/')[0] || '/';
+      // Redirect to parent page with hash
+      window.location.replace(`${parent}/supported-formats#${label.toLowerCase()}`);
+    }
+  }, [options]);
+  // --- END: Auto-redirect ---
   const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, "");
   const labels = Object.keys(options).sort((a, b) => a.localeCompare(b));
 

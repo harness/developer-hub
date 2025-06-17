@@ -1,7 +1,3 @@
----
-redirect_to: /artifact-registry/supported-formats#python
----
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
