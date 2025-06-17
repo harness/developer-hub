@@ -569,22 +569,6 @@ when using CommitSha as the build type (CI-17163, ZD-82770).
 
 ## December 2024
 
-:::note
-
-**Network allowlisting Update for Hosted macOS Infrastructure (M2 Machines)**
-
-Harness Cloud users utilizing hosted macOS infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration:
-
-To ensure uninterrupted connectivity and functionality for your CI builds, please add to allowlist the following IP range in your network settings by December 15th, 2024:
-
-IP Range: 207.254.53.128/25
-
-This update also includes a transition to M2 machines, offering improved performance and efficiency for your builds.
-
-If you have any questions or need assistance with the allowlisting process, please contact Harness Support.
-
-:::
-
 ### Version 1.58
 
 <!-- 2024-12-09 -->
