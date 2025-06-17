@@ -134,7 +134,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Previously, when users had access to a Secret Manager at a parent scope (such as Account), but not at the child scope (like Organization), the secret creation screen would get stuck in a continuous loading state after selecting the Secret Manager. With this update, users can now smoothly select and use Secret Managers from parent scopes without any loading issues. [PL-63165]
+- Previously, when users had access to a Secret Manager at a higher level (such as Account scope), but not at the lower level (like Organization scope), the secret creation screen would get stuck in a continuous loading state after selecting the Secret Manager. With this update, users can now smoothly select and use Secret Managers from higher levels without any loading issues. [PL-63165]
 
 #### New Feature and Enhancement 
 
