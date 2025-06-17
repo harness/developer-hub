@@ -1,3 +1,7 @@
+---
+redirect_to: /artifact-registry/supported-formats#maven
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

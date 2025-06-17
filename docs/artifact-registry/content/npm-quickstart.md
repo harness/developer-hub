@@ -1,3 +1,7 @@
+---
+redirect_to: /artifact-registry/supported-formats#npm
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
