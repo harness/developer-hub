@@ -330,7 +330,7 @@ disk:
     key1: value2
 ```
 
-The [tags](#tags-example) property listed here, follows a key/value pair format. This will add tags to the disk/volume directly.
+The [tags](#tags-example) property exemplified above follows a key/value pair format. This will add tags to the disk/volume directly.
 
 :::note Minimum Version
 
