@@ -19,19 +19,23 @@ To configure OIDC with GCP WIF for builds on [Harness Cloud build infrastructure
 This topic assumes you have experience with [GCP workload identity providers](https://cloud.google.com/iam/docs/workload-identities).
 
 ## Set up the GCP workload identity provider
-
-1. Set up an [identity provider](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#manage-providers) in the workload identity federation (WIF) with the following configuration:
+### Identity Provider and Pool configuration
+ Set up an [identity provider](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#manage-providers) in the workload identity federation (WIF) with the following configuration:
 
    * Name: Enter any name.
-   * Issuer: `https://app.harness.io/ng/api/oidc/account/YOUR_HARNESS_ACCOUNT_ID>`
+   * Issuer: `https://app.harness.io/ng/api/oidc/account/YOUR_HARNESS_ACCOUNT_ID>`.  See below for more details, depending on your environment
    * Attribute mapping:
       * `Google.subject = assertion.sub`
       * `attribute.account_id = assertion.account_id`
 
-   You can get your Harness account ID from any Harness URL, such as `https://app.harness.io/ng/#/account/ACCOUNT_ID/home/get-started`.
+You can get your Harness account ID from any Harness URL, such as `https://app.harness.io/ng/#/account/ACCOUNT_ID/home/get-started`.
 
+import IssuerURI from '../shared/issueruri.md'
+<IssuerURI />
+
+### Grant Access to the Service Account
 2. Grant access using the connected service accounts for GAR:
-   1. Select the service account that has push/pull permissions for GAR.
+   1. Select the service account that has push/pull permissions for GAR. (or any other [necessary permissions](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/))
    2. Select principles (identities that can access the service account). Select **Only identities matching the filter**, and then select `account_id = YOUR_HARNESS_ACCOUNT_ID`.
 
 ## Set up the GCP connector
