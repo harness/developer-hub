@@ -266,7 +266,7 @@ You can also move a Perspective to a folder from its more options (⋮) setting.
 ![](./static/create-cost-perspectives-30.png)
 
 :::important note
-There are no limits as to how many folders can be made.
+The maximum number of folders that can be created is limited to 500.
 :::
 
 
