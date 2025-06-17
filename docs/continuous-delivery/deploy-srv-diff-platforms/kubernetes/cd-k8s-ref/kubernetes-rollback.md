@@ -131,6 +131,12 @@ Enable the `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK` feature flag to ensure 
 
 This feature enhances rollback and roll-forward fidelity by ensuring pod restarts reflect all manifest changes, including non-restart-triggering objects like ConfigMaps and Secrets.
 
+:::note
+
+This feature is only applied to blue/green and rolling deployments.
+
+:::
+
 To enable the feature flag, contact [Harness Support](mailto:support@harness.io)
 
 ### Canary and blue green deployments
