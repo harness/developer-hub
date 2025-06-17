@@ -130,6 +130,16 @@ The following deprecated API endpoints are longer supported:
 
 ## June 2025
 
+### Version 1.94.x <!--June 17, 2025-->
+
+#### Fixed issues
+
+- Previously, when users had access to a Secret Manager at a parent scope (such as Account), but not at the child scope (like Organization), the secret creation screen would get stuck in a continuous loading state after selecting the Secret Manager. With this update, users can now smoothly select and use Secret Managers from parent scopes without any loading issues. [PL-63165]
+
+#### New Feature and Enhancement 
+
+- We’ve added logging to capture Kubernetes events during delegate shutdown. This will help in better understanding and troubleshooting shutdown behavior by providing more visibility into related cluster events. [PL-60516]
+
 ### Version 1.93.x <!--June 10, 2025-->
 
 #### Fixed issues
