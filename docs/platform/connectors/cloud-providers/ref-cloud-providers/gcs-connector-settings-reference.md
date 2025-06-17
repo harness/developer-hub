@@ -7,6 +7,7 @@ helpdocs_category_id: 1ehb4tcksy
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+import IssuerURI from '/docs/continuous-integration/shared/issueruri.md'
 
 Use a Harness Google Cloud Platform (GCP) connector to integrate GCP with Harness. Use GCP with Harness to obtain artifacts, communicate with GCP services, provision infrastructure, deploy microservices, and manage other workloads.
 
@@ -129,7 +130,6 @@ To connect to GCP with OIDC, you must configure an [OIDC identity provider](http
 
 If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
-import IssuerURI from 'https://developer.harness.io/docs/continuous-integration/shared/issueruri.md'
 <IssuerURI />
 
 #### Enable Cross-Project Access
