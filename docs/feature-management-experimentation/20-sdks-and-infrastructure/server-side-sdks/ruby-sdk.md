@@ -20,14 +20,14 @@ This guide provides detailed information about our Ruby SDK. All of our SDKs are
 <TabItem value="Ruby">
 
 ```ruby
-gem install splitclient-rb -v '~> 8.5.0'
+gem install splitclient-rb -v '~> 8.6.0'
 ```
 
 </TabItem>
 <TabItem value="JRuby">
 
 ```ruby
-gem install splitclient-rb -v '~> 8.5.0'
+gem install splitclient-rb -v '~> 8.6.0'
 ```
 
 </TabItem>
