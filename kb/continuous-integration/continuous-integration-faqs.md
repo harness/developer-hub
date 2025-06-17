@@ -2745,6 +2745,11 @@ If it is operating as expected, the Kaniko CLI will show the following in the CL
 /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=destination/repo:1.0 --snapshotMode=redo --digest-file=/kaniko/digest-file --ignore-path=/opt/nodejs
 ```
 
+I tried upgrading a version of a GitHub Action in my Harness CI pipeline and got the following error:
+```Error: The runs.using key in action.yml must be one of: [composite docker node12 node16], got node20```
+
+This error occurs because the Harness Build Agent currently defaults to an older nektos/act version that supports only node12 and node16, which are now end-of-life. To fix this you can enable the FF - `CI_GHA_USE_NEKTOS_V2` in your account.
+
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 
