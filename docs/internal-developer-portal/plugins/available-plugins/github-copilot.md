@@ -37,7 +37,7 @@ These insights help engineering teams assess the adoption and effectiveness of G
 |---------------|----------------------|
 | **Created by** | Backstage Community  |
 | **Category**   | Developer Experience |
-| **Source**     | GitHub               |
+| **Source**     | [GitHub](https://github.com/backstage/community-plugins/tree/main/workspaces/copilot/plugins/copilot)               |
 | **Type**       | Open-source plugin   |
 
 
