@@ -66,18 +66,18 @@ Update the `host`, `enterprise`, and `organization` values to match your GitHub 
 :::
 
 :::note 
-The plugin pulls data using GitHub REST APIs and requires **authorization via a token**.
+The plugin pulls data using GitHub REST APIs and requires **authorization via a token** which depends on the [Git Integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) setup done at IDP under "Configure" -> "Git Integrations" page.
 :::
 
 
-## Delegate Proxy (Optional)
+### Delegate Proxy (Optional)
 
 Set up a **delegate proxy** if:
 
 * GitHub APIs are not directly accessible from Harness SaaS.
 * The GitHub token (secret) is not stored in the built-in Secret Manager.
 
-### Steps:
+#### Steps:
 
 1. Add the host (`github.com`) under *Host URL or IP Address*.
 2. Use a delegate with access to GitHub and your Secret Manager.
@@ -94,7 +94,7 @@ This plugin exports:
 * ❌ 0 Cards
 * ❌ 0 Tabs
 
-### To add the page to the portal layout:
+#### To add the page to the portal layout:
 
 Update your layout config in the Admin Panel under `Layout > Sidenav Layout` like so:
 
@@ -105,7 +105,7 @@ Update your layout config in the Admin Panel under `Layout > Sidenav Layout` lik
     text: CoPilot
 ```
 
-> By default, the page is added to **service** and **website** layouts. You can modify this from **Layout Management** — reorder, remove, or reassign the page to different entity types as needed.
+<!-- > By default, the page is added to **service** and **website** layouts. You can modify this from **Layout Management** — reorder, remove, or reassign the page to different entity types as needed. -->
 
 ---
 
