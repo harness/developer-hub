@@ -13,7 +13,7 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: June 16, 2025
+#### Last updated: June 18, 2025
 
 ## June 2025
 
