@@ -22,6 +22,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| `PIPE_SUPPORT_MULTIPLE_TIMEZONES_IN_CRON_TRIGGERS` | Enables users to select timezones for [Cron triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers) using IANA Time Zone names, providing more control over when pipelines are triggered. **This feature is in Limited GA.** |
+| `CDS_UI_ENABLE_DISALLOWED_USER_EMAILS_IN_APPROVAL_STEP` | Enables users to block specific users from approving steps using [Disallowed User Emails](/docs/platform/approvals/adding-harness-approval-stages#disallowed-user-emails). **This feature is in Limited GA.** |
 | `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK` | Enables users to ensure Kubernetes workloads are redeployed when referenced ConfigMaps or Secrets are updated, even if the deployment spec itself remains unchanged. This is achieved by hashing manifest content under declarative rollback. **This feature is in Limited GA.** |
 | `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` | Enables users to configure Project-Level Pipeline Execution Concurrency by splitting the account-wide concurrency limit into High-Priority and Low-Priority partitions to reserve execution slots for critical projects. [Learn more](/docs/platform/pipelines/pipeline-settings/#project-level-pipeline-execution-concurrency). **This feature is in Limited GA.** |
 | `PIPE_EXECUTION_ID_FILTER` | Enables users to filter pipeline executions by build ID, making it easier to quickly locate specific runs without scrolling through large execution lists. **This feature is in Limited GA.** |

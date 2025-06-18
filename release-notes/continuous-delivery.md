@@ -55,7 +55,26 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## June 2025
 
-### Version 1.93.1
+### Version 1.94.4
+
+#### New Features and Enhancements
+
+- Harness now supports blocking users from approving steps via [Disallowed User Emails](/docs/platform/approvals/adding-harness-approval-stages#disallowed-user-emails). Currently, this feature is behind the feature flag `CDS_UI_ENABLE_DISALLOWED_USER_EMAILS_IN_APPROVAL_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-106081**)
+
+- Harness now supports selecting timezones for [Cron triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers) using IANA Time Zone convention. Currently, this feature is behind the feature flag `PIPE_SUPPORT_MULTIPLE_TIMEZONES_IN_CRON_TRIGGERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-24520, ZD-61218**)
+
+- Harness now supports copying Task IDs and Delegate IDs in the Delegate Task Logs on the Pipeline Execution page, with a clipboard icon next to each ID. (**CDS-97487**)
+
+#### Fixed Issues
+
+- Previously, in the Command Scripts step, only the Repeat looping strategy could be selected, while other options like Matrix and Parallelism appeared selectable but were non-functional. This issue is resolved. The UI now correctly reflects available options and disables unsupported strategies. (**PIPE-27759, ZD-85826**)
+- Previously, clicking View Instances or Rollback on the Service Summary page could result in a `Something went wrong` error due to an unhandled object value. This issue is resolved. (**CDS-111310, ZD-86009**)
+- Previously, pipelines created from a template did not inherit Stage Execution and Re-running settings, even when these were explicitly defined in the template. This issue is resolved. (**PIPE-27892, ZD-86616**)
+- Previously, log analysis did not properly apply node filtering, leading to incorrect attribution of errors from primary pods as canary data during canary analysis. This issue is resolved. Node filtering is now applied to log analysis, ensuring accurate evaluation of canary versus primary nodes. (**CDS-110750**)
+- Previously, certain manifest properties, such as health-check-interval, readiness-health-check-type, and related readiness configurations, were not applied during the Setup Application step in Tanzu Application Service (TAS, formerly PCF) deployments, even though they were present in the manifest file. This issue is resolved. (**CDS-111262, ZD-85868**)
+- Previously, Azure Function deployments could fail with an unclear error message: [begin 52, end 51, length 51], especially when the function name contained a hyphen `(-)`. The issue stemmed from incorrect parsing of production slot names. The error handling and slot detection logic have now been corrected to ensure deployments work reliably. (**CDS-111361, ZD-86114,86584**)
+
+### Version 1.93.2
 
 #### New Features and Enhancements
 
@@ -72,8 +91,6 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
     | **Manifest & Artifact Sources**  | AMI Artifact, ECR Artifact, S3 Artifact, S3 Manifest                          |
 
 - Harness now supports [**hashing of config-map and secret manifests for Kubernetes workloads under declarative rollback**](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback#configmap-and-secret-object-rollback), ensuring that updates to consumed configmaps or secrets trigger a redeployment even when the deployment spec itself hasn’t changed. Currently, this feature is behind the feature flag `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-83583, ZD-73074,75453**)
-
-- Harness now supports [**Project-Level Pipeline Execution Concurrency**](/docs/platform/pipelines/pipeline-settings/#project-level-pipeline-execution-concurrency), where users can split their account-wide concurrency into High-Priority and Low-Priority partitions—reserving slots for critical projects. Currently, this feature is behind the feature flag `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-15840**)
 
 - Harness now supports **filtering pipeline executions by build ID**, enabling users to quickly locate a specific run without endless scrolling. Currently, this feature is behind the feature flag `PIPE_EXECUTION_ID_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-25317**)
 
