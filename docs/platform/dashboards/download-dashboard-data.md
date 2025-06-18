@@ -121,11 +121,12 @@ To download the data within a specific Dashboard Element, follow the steps below
 	* To get a list of elements within a Dashboard.
 	* Copy the `id` of the particular element you wish to download the data of.
 2. [POST - Create Download Dashboard Element Task](https://apidocs.harness.io/tag/downloads#operation/create_dashboard_element_download_task)
-	* This begins an asynchronous task that prepares the data of the specified dashboard element for download.
+	* This begins an asynchronous task that prepares the data of the specified dashboard element for download.	
+ 	* Use the `id` of the Dashboard Element you wish to download the data of.
  	* Copy the `task_id` that is returned.
 3. [GET - Download Task Status](https://apidocs.harness.io/tag/downloads#operation/get_download_task_status)
 	* Periodically poll this with the `task_id` in order to check the status of the download task.
 	* When a status of `success` is returned, you can proceed to the next step.
 4. [GET - Download Dashboard Element Task Results](https://apidocs.harness.io/tag/downloads#operation/get_dashboard_element_download_task_results)
-	* Run this only after the task status returns as `success`
- 	* The results are can be downloaded as a stream in the format of `application/zip`
+	* Run this with the `task_id` only after the task status returns as `success`.
+ 	* The results can be downloaded as a stream in the format of `application/zip`.
