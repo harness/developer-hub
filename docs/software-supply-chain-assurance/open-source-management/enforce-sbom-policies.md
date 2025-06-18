@@ -5,6 +5,7 @@ sidebar_position: 20
 redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/enforce-ssca-policies
   - /docs/software-supply-chain-assurance/ssca-policies/overview
+  - /docs/software-supply-chain-assurance/sbom-policies/enforce-sbom-policies
 ---
 
 import Tabs from '@theme/Tabs';
