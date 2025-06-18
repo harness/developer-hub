@@ -1,8 +1,8 @@
 {
-    "label": "RBAC",
+    "label": "Git Experience",
     "collapsible": "true",
     "collapsed": "true",
-    "position": 11,
+    "position": 1,
     "link": {
       "type": "generated-index",
       "title": "Git Experience"

@@ -1,7 +1,7 @@
 ---
 title: GitHub Copilot Plugin
 description: Learn how to configure and use the GitHub Copilot plugin to view usage insights in Harness Internal Developer Portal (IDP).
-sidebar_position: 3
+sidebar_position: 1
 tags:
   - copilot
   - github
@@ -18,6 +18,7 @@ keywords:
   - IDP layout
   - delegate proxy
 ---
+# GitHub Copilot Plugin
 
 ## Overview
 
