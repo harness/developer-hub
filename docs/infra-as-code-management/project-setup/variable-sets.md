@@ -19,9 +19,14 @@ Connectors can be added via Account Settings or directly from your workspaces **
 :::
 
 ### Add a Connector
-From your workspace **Connectors and Variables** tab, click **+ Connector**, and select an existing connector from your account or project scope (e.g., `aws-oidc`).
+1. From your workspace **Connectors and Variables** tab, click **+ Connector**.
+2. Select an existing connector from your account or project scope (e.g., `aws-oidc`).
 
 Or, you can add a new connector by clicking **+ New Connector**.
+
+:::info interactive guide
+Also, see [Add Connectors](/docs/infra-as-code-management/get-started/#add-connectors) for an interactive guide.
+:::
 
 ---
 
@@ -65,6 +70,8 @@ There are two common ways to supply values to your declared variables:
 ### Option 1: Static or Runtime Input
 This method is best when you want to prompt the user for input (e.g., during a demo), or apply a fixed value to all runs.
 
+<Tabs>
+<TabItem value="tofu-tf" label="OpenTofu/Terraform">
 ```hcl
 # main.tf
 variable "instance_type" {
@@ -72,7 +79,9 @@ variable "instance_type" {
   default = "t3.micro"
 }
 ```
+</TabItem>
 
+<TabItem value="workspace-configuration" label="Workspace Configuration">
 ```yaml
 # Workspace configuration
 terraformVariables:
@@ -81,10 +90,14 @@ terraformVariables:
     type: String
     source: CUSTOM
 ```
+</TabItem>
+</Tabs>
 
 ### Option 2: Inject from Pipeline Variable
 If you’re using a reusable pipeline to trigger multiple workspaces, you can pass in values dynamically from pipeline-level variables.
 
+<Tabs>
+<TabItem value="pipeline-variables" label="Pipeline Variables">
 ```yaml
 # Pipeline variable defined in your pipeline YAML
 variables:
@@ -92,6 +105,8 @@ variables:
     type: String
     value: us-west-2
 ```
+</TabItem>
+<TabItem value="workspace-variables" label="Workspace Variables">
 ```yaml
 # Workspace configuration using pipeline FQN
 terraformVariables:
@@ -99,6 +114,8 @@ terraformVariables:
     value: <+pipeline.variables.aws_region>
     type: String
 ```
+</TabItem>
+</Tabs>
 
 :::tip
 You can use [Harness pipeline variables](/docs/platform/variables-and-expressions/harness-variables/) by referencing their **Fully-Qualified Name (FQN)** in the value field.
