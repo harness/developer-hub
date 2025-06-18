@@ -1,25 +1,27 @@
 ---
 title: Fundamentals
-description: Learn more about the basic fundamentals of Self Hosted Gitspaces. 
+description: Learn more about the basic fundamentals of Self-Hosted Gitspaces. 
 sidebar_position: 1
 sidebar_label: Fundamentals
 ---
 
-Scope: (what's supported)
-- GCP Infra
-- cloud + on-prem providers
+**Self-Hosted Gitspaces** are on-demand remote development environments hosted within your organization’s infrastructure. These environments come pre-configured for immediate coding and provide an added layer of security by offering **full control** over infrastructure and data. This reduces the risk of external data exposure and prevents source code from being cached or accessed by third-party cloud services.
 
-Concepts:
-- Terraform registry
-- GCP VM
-- Runner
-- Delegate
+### Scope (What’s Supported)
+- GCP Infrastructure  
+- Cloud + On-Prem Providers  
 
-## Self Hosting your Gitspaces 
+### Concepts
+- Terraform Registry  
+- GCP Virtual Machine (VM)  
+- Runner  
+- Delegate  
 
 
 ## Prerequisites
-You need to follow these prerequisites to get started with self hosted Gitspaces: 
+
+You need to follow these prerequisites to get started with self-hosted Gitspaces:
+
 | **Prerequisite**    | **Description** | **Documentation Guide** | 
 | -------- | ------- | ---------- | 
 | **Enable APIs in GCP Project** | Your GCP Project (where your have created your GCP VM Instance) should have the following APIs enabled:  <ul><li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) - api/cloudresourcemanager.googleapis.com</li><li>[Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1) - api/compute.googleapis.com</li><li>[Certificate Manager API](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest) - api/certificatemanager.googleapis.com</li><li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) - api/iam.googleapis.com</li><li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) - api/dns.googleapis.com</li></ul>   | [Guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) |
@@ -27,24 +29,43 @@ You need to follow these prerequisites to get started with self hosted Gitspaces
 | **Service Account Key** | You must create and download a Service Account Key in the same GCP Project and service account, this key is usually in the form of a **JSON** or **P12 file**, which contains the credentials necessary for the service account to authenticate. | [Guide](https://cloud.google.com/iam/docs/keys-create-delete) | 
 | **Terraform** | You must have Terraform installed on your machine with internet access (please ensure you have the SA key downloaded here) | [Guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
 
-## Get Started with Self Hosted Gitspaces
+## Get Started with Self-Hosted Gitspaces
 
-This is a quick guide to get started with Self Hosted Gitspaces. You can get started with Self Hosted Gitspaces by following the given steps: 
-### 1. Go through the Prerequisites and Fundamentals
-It's important to understand the underlying architecture and fundamentals of self hosted Gitspaces. Please ensure you read through these resources and understand everything in detail before getting started with self hosted Gitspaces. 
-- [Self Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md)
-- [Fundamental Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md)
-- [Prerequisites](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md)
+This is a quick guide to help you set up and launch your Self-Hosted Gitspaces. Follow the steps below:
 
-### 2. Configure Gitspace Infrastructure in Harness UI
-You can start by configuring your Gitspace Infrastructure in Harness UI. This helps you to configure your GCP infra details easily from the Harness UI, which will be further used while creating Gitspaces. This does require specific GCP Infra details like GCP Project, Regions, etc. To learn more about this step, go to [configure Gitspace Infrastructure](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md). 
+### 1. Go Through the Prerequisites and Fundamentals
 
-### 3. Configure and Setup Terraform Module
-Once you have configured your Gitspace Infra in the Harness UI, your next step is to initialise and apply the **Harness Gitspaces** Terraform Module to configure the specific GCP infrastructure required to setup self hosted Gitspaces. This step creates infrastructure in your given GCP project to run self hosted Gitspaces. This step also includes the creation of VM Instances required for the Gateway, for the installation and setup of runner and delegates and for the Gitspace machines setup. To learn more about this step, go to [configure and setup Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md).
+Before you begin setup, it’s important to understand the underlying architecture and concepts of Self-Hosted Gitspaces. Make sure to review the following documentation thoroughly:
 
-### 4. Setup Runner and Install Delegate 
-Once your terraform module is setup, you need to setup runner and install delegate in your GCP VM Instance to complete the self hosted setup. Since this is your GCP Infra, we'll need this setup to allow the Harness Control Plane to send and accept requests to create and start self hosted Gitspaces. To learn more, refer to [setup runner and install delegate](/docs/cloud-development-environments/self-hosted-gitspaces/runner-delegate.md). 
+- [Self-Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md)  
+- [Fundamental Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md)  
+- [Prerequisites](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md)  
+
+### 2. Configure Gitspace Infrastructure in the Harness UI
+
+Start by configuring your Gitspace infrastructure via the Harness UI. This allows you to input your GCP details like Project ID, regions, etc., which will be referenced later during provisioning.
+
+🔗 [Configure Gitspace Infrastructure](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md)
+
+### 3. Configure and Set Up the Terraform Module
+
+Once the infrastructure is defined in the UI, proceed to initialize and apply the **Harness Gitspaces Terraform Module**. This module will:
+
+- Create all required infrastructure in your GCP Project  
+- Set up VM instances for the Gateway  
+- Install and configure the Runner and Delegate  
+- Launch Gitspace machines  
+
+🔗 [Set Up Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md)
+
+### 4. Set Up Runner and Install Delegate
+
+After provisioning, install the Runner and Delegate on your GCP VM Instance. This ensures the Harness Control Plane can communicate with your infrastructure to create and manage Gitspaces.
+
+🔗 [Set Up Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/runner-delegate.md)
 
 ### 5. Manage Gitspaces
-Once your setup is done, you can easily start by creating your Gitspaces in your self hosted infrastructure and manage them easily from the Gitspaces UI. To learn more about managing Gitspaces, refer to [managing Gitspaces](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md)
- 
+
+Once the setup is complete, you can begin creating Gitspaces directly from the UI and manage them seamlessly.
+
+🔗 [Manage Gitspaces](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md)
