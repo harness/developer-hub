@@ -1,5 +1,5 @@
 ---
-title: View License Reports
+title: License Reports
 sidebar_label: License Reports
 description: View License Reports across the projects using Harness Dashboards
 sidebar_position: 2

@@ -1,7 +1,7 @@
 ---
 title: Create SLSA policies
 description: Create SLSA policies using OPA.
-sidebar_position: 13
+sidebar_position: 40
 ---
 
 
