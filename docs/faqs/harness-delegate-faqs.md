@@ -148,7 +148,7 @@ For more information, go to [Automate delegate installation](../platform/delegat
 
 When a delegate is disconnected, Harness applies a Time-To-Live (TTL) policy:
 
-- Delegate – 6 hours: If a disconnected delegate doesn't reconnect within 6 hours, it is considered expired and will no longer appear on the Delegates page in the Harness UI.
+- Delegate – 6 hours: If a disconnected delegate doesn't reconnect within 6 hours, it is considered expired and will no longer appear on the Delegate page in the Harness UI.
 
 - Delegate Group – 7 days: If a delegate group has no active delegates for 7 consecutive days, the group is considered inactive and will be removed from the Harness UI.
 
