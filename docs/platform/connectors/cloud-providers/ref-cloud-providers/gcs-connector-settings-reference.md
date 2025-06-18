@@ -104,7 +104,7 @@ Select this option to allow the connector to inherit its authentication credenti
 <summary>Learn more about credential inheritance</summary>
 
 * **IAM role inheritance:** The connector inherits the GCP IAM role assigned to the delegate in GCP, such a Harness Kubernetes delegate running in Google Kubernetes Engine (GKE). Make sure the delegate has the IAM roles that your connector needs.
-* **GCP workload identity:** If you installed the Harness [legacy Kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate) in a Kubernetes cluster in GKE that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, then the Google Cloud Platform (GCP) connector inherits these credentials if it uses that delegate.
+* **GCP workload identity:** If you installed the Harness [install delegate](/docs/platform/delegates/install-delegates/overview.md) in a Kubernetes cluster in GKE that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, then the Google Cloud Platform (GCP) connector inherits these credentials if it uses that delegate.
 * **Role and policy changes:** If you find that the IAM role associated with your GCP connector don't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the Harness Delegate that your GCP connector is using. You may need to wait up to five minutes for the change to take effect.
 * **See also:**
   * [Add a Google Cloud Platform (GCP) connector](../../../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md)
@@ -134,11 +134,10 @@ If accessing Google cloud resources, use [workload identity federation](https://
 You can now have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
 
 :::note
-Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, the Cross-Project Access feature for GCP connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-
-Note: This feature is supported when OIDC authentication is used and GKE infrastructure (Kubernetes, Helm and Google Cloud Run) is selected. The connector will allow access to multiple GCP projects for Kubernetes, Helm and Google Cloud Run infrastructure types only.
+This feature is supported when GKE infrastructure (Kubernetes, Helm and Google Cloud Run) is selected. The connector will allow access to multiple GCP projects for Kubernetes, Helm and Google Cloud Run infrastructure types only.
 
 **Project Selection Flow**:
     * With the **feature flag enabled**, the system will query the list of GCP projects accessible via the connector.

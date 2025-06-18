@@ -86,7 +86,26 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## Delegate image release notes
 
+## June 2025
+
+### Version 25.06.86100 <!--June 16, 2025-->
+
+#### New features and improvements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
+
+### Version 25.05.85905 <!--June 03, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where the lambda deployments with custom artifacts were failing for second and subsequent deployments. [CDS-110885]
+
 ## May 2025
+
+### Version 25.05.85904 <!--May 30, 2025-->
+
+#### Fixed issues
+- Resolved an issue where the AWS ASG Steady State step continued polling for the Instance Refresh status until timeout, even when the status returned was Failed or Cancelled. With this fix, polling will now stop immediately, and the step will fail as expected when a Failed or Cancelled status is detected. [CDS-110706]
 
 ### Version 25.05.85903 <!--May 22, 2025-->
 

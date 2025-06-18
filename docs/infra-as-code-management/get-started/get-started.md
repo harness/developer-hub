@@ -208,12 +208,16 @@ You can include **cost estimation** as part of the workspace setup and in conjun
   </TabItem>
 </Tabs>
   
-The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Tofu/Terraform Plugins](/docs/infra-as-code-management/pipelines/terraform-plugins) for more information about supported OpenTofu/Terraform commands.
+The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Tofu/Terraform Plugins](/docs/infra-as-code-management/cli-commands/terraform-plugins) for more information about supported OpenTofu/Terraform commands.
 
 ---
 
 ### Add an Approval step (optional)
 You can add the Approval step to prompt a review of the previous pipeline before proceeding to the next. The most common use case would be to add the Approval step between the `plan` and `apply` steps to ensure you are happy with the infrastructure changes and estimated costs (if `cost estimation` is enabled on your Workspace) that come with them before applying them.
+
+:::warning Approval steps hold resources
+When using an Approval step, the underlying machine running the pipeline remains active until the approval is resolved. This means it will continue consuming compute resources.
+:::
 
 <Tabs>
 <TabItem value="Interactive guide">

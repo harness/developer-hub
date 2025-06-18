@@ -54,11 +54,18 @@ export const featureList: CardItem[] = [
     link: "docs/category/get-started-with-feature-flags",
   },
   {
+    title: "Feature Management & Experimentation",
+    module: MODULES.fme,
+    icon: "img/icon_fme.svg",
+    description: <>Switch on data-driven features and releases.</>,
+    link: "docs/feature-management-experimentation/getting-started/docs/overview",
+  },
+  {
     title: "Optimize Cloud Costs",
     module: MODULES.ccm,
     icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
-    link: "docs/cloud-cost-management",
+    link: "docs/category/get-started-with-ccm",
   },
   {
     title: "Orchestrate Security Tests",
@@ -135,6 +142,6 @@ export const featureList: CardItem[] = [
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: <>Install Harness Platform on self-managed Kubernetes cluster.</>,
-    link: "docs/category/get-started-with-smp",
+    link: "docs/self-managed-enterprise-edition",
   },
 ];

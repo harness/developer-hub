@@ -131,6 +131,11 @@ To copy cost buckets from one cost category to another, perform the following st
 
 <DocImage path={require('./static/ccm-copy-cost-buckets.gif')} width="60%" height="60%" title="Click to view full size image" />
 
+:::note Important
+
+Role-Based Access Control (RBAC) in Harness CCM supports **nested cost buckets** within CCM data scope in **Roles**, providing more granular access control for nested Cost Categories. Note that **RBAC support is not available for the Unallocated Cost bucket**.
+
+:::
 ### Create shared cost buckets
 
 1. Select **+ New Shared Bucket**.

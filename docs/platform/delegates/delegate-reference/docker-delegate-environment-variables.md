@@ -30,59 +30,6 @@ The Harness SaaS manager URL. `https` indicates port 443.
 - MANAGER_HOST_AND_PORT = https://app.harness.io
 ```
 
-### WATCHER_STORAGE_URL
-
-The URL location of the Watcher versions. For more information, go to [Delegate installation overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
-
-```
-- WATCHER_STORAGE_URL = https://app.harness.io/public/prod/premium/watchers
-```
-
-### WATCHER_CHECK_LOCATION
-
-The location of the delegate version that the Watcher references.
-
-```yaml
-- name: WATCHER_CHECK_LOCATION
-  value: current.version
-```
-
-### REMOTE_WATCHER_URL_CDN
-
-The CDN URL for Watcher builds.
-
-```yaml
-- name: REMOTE_WATCHER_URL_CDN
-  value: https://app.harness.io/public/shared/watchers/builds
-```
-
-### DELEGATE_STORAGE_URL
-
-The URL where published delegate JAR files are stored.
-
-```yaml
-- name: DELEGATE_STORAGE_URL
-  value: https://app.harness.io
-```
-
-### DELEGATE_CHECK_LOCATION
-
-The storage location that hosts the published delegate versions.
-
-```yaml
-- name: DELEGATE_CHECK_LOCATION
-  value: delegateprod.txt
-```
-
-### DEPLOY_MODE
-
-The mode of deployment, for example, Kubernetes or Docker.
-
-```yaml
-- name: DEPLOY_MODE
-  value: DOCKER
-```
-
 ### DELEGATE_NAME
 
 The name of the delegate. This is the name that appears in Harness when the delegate is registered.
@@ -145,28 +92,6 @@ The maximum number of tasks the delegate can perform at one time. Delegate opera
   value: "50"
 ```
 
-### DELEGATE_ORG_IDENTIFIER
-
-The Harness organization [Identifier](/docs/platform/references/entity-identifier-reference.md) where the delegate registers.
-
-This value is not specified for delegates at the account level.
-
-```yaml
-- name: DELEGATE_ORG_IDENTIFIER
-  value: "engg"
-```
-
-### DELEGATE_PROJECT_IDENTIFIER
-
-The Harness project [Identifier](/docs/platform/references/entity-identifier-reference.md) within which the delegate registers.
-
-This value is not specified for delegates at the account or organization level.
-
-```yaml
-- name: DELEGATE_PROJECT_IDENTIFIER
-  value: "myproject"
-```
-
 ### PROXY_MANAGER
 
 Indicates whether to use Harness Manager or a proxy. A value of `true` indicates an outbound proxy of traffic to Harness.
@@ -189,32 +114,6 @@ For more information, go to [Build custom delegate images with third-party tools
 - INIT_SCRIPT =  echo hello world!
 ```
 
-### USE_CDN
-
-Specifies the delegate use of a CDN for new versions.
-
-```yaml
-- name: USE_CDN
-  value: "true"
-```
-
-### CDN_URL
-
-The CDN URL for delegate versions.
-
-```yaml
-- name: CDN_URL
-  value: https://app.harness.io
-```
-
-### VERSION_CHECK_DISABLED
-
-By default, the delegate always checks for new versions (using the Watcher).
-
-```yaml
-- name: VERSION_CHECK_DISABLED
-  value: "false"
-```
 
 ### See also
 

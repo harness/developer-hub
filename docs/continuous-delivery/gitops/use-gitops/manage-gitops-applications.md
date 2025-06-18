@@ -1,7 +1,7 @@
 ---
 title: Manage GitOps Applications
 description: Learn how to find and manage GitOps applications.
-sidebar_position: 35
+sidebar_position: 1
 ---
 
 You can manage your applications through the **Applications** found in **GitOps Overview** page. 
@@ -11,6 +11,23 @@ You can manage your applications through the **Applications** found in **GitOps 
 ## New Applications
 
 Create a new application by click **+New Application** in the top right. To learn more about creating applications, go to [Add a Harness GitOps Application](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-4-add-a-harness-gitops-application)
+
+## Applications Health Status Graph
+
+On the **GitOps Overview** page, you’ll find the **Applications Health Status** bar chart, which shows how many applications are in each of these states:
+
+- **Healthy**: Running without issues  
+- **Degraded**: Experiencing reduced functionality  
+- **Progressing**: Currently deploying or reconciling  
+- **Missing**: No longer found in the cluster  
+- **Suspended**: Paused or not actively reconciled  
+
+Each status bar is clickable. Click any bar (for example, **Healthy**) to open the **Applications Dashboard** filtered to show only applications in that state.
+
+
+<div align="center">
+  <DocImage path={require('./static/applications-health-status.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 ## Application Operations
 

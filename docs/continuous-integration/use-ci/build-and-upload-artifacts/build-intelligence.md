@@ -9,7 +9,11 @@ import TabItem from '@theme/TabItem';
 
 Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. By storing these outputs remotely and retrieving them when inputs haven't changed, Build Intelligence avoids unnecessary rebuilds, significantly accelerating the build process and enhancing efficiency.
 
-Build Intelligence is currently available for **Gradle** and **Bazel** build tools, with Maven support coming soon. Regardless of the programming language used in your projects, as long as you're building with a supported build tool, you can leverage Build Intelligence to optimize your builds.
+Build Intelligence is currently available for **Gradle**, **Bazel** and **Maven** build tools. Regardless of the programming language used in your projects, as long as you're building with a supported build tool, you can leverage Build Intelligence to optimize your builds.
+
+:::tip Build Intelligence with Maven (Beta)
+**Build Intelligence is now available in beta** for the Maven build tool (version 3.9+). To join the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
+:::
 
 :::info
 * Build Intelligence is now Generally Available (GA). 
@@ -119,7 +123,7 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: gradle:8.1.1-jdk17
                     shell: Sh
                     command: |-
@@ -159,6 +163,23 @@ When using bazel, Harness create a ~/.bazelrc file (if it does not exist), with 
 
 The config will look like:
 `build --remote_cache=http://endpoint:port/cache/bazel (endpoint is localhost:8082)`
+
+#### Maven Config
+For Maven builds, the following configuration files are injected into the environment:
+
+`.mvn/maven-build-cache-config.xml`
+
+`.mvn/extensions.xml`
+
+`~/.m2/settings.xml`
+
+There are two ways to apply settings.xml:
+
+- Maven installation-wide: `${maven.home}/conf/settings.xml`
+
+- User-specific: `${user.home}/.m2/settings.xml`
+
+These configurations enable build caching and repository access based on your pipeline’s setup.
 
 ### Using '--profile'
 Appending `--profile' to your build command, enables publishing Build Intelligence savings to Harness. This will allow you to clearly view the performance and benefits of using Build Intelligence. Note that even when omitted, Build Intelligence will continue to work and optimize your run as expected, but the savings will not be visible in the UI and relevant dashboards.

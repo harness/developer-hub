@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-05-21T10:00
+date: 2025-05-27T10:00
 sidebar_position: 10
 ---
 
@@ -26,52 +26,10 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 **Network Allowlisting Update for Cloud Linux/ARM**
 
-To ensure reliability when using Linux/ARM cloud machines, we've expanded our infrastructure to include machines in additional regions.
+Harness supports allowlisting of its SaaS infrastructure IPs to enable secure access to private networks. This is helpful when you want to connect Harness to internal systems such as Kubernetes clusters, artifact repositories, SCMs, or other internal services.
 
-**Action Required:**
-If your pipelines use Linux/ARM Cloud machines, require access to on-premises resources and rely on IP allowlisting, please make sure to allowlist the following new IPs:
-```
-34.143.191.93, 34.142.250.64, 34.126.140.239, 34.124.243.76, 34.124.141.152, 34.141.177.40, 34.32.206.247
-35.204.0.244, 34.13.223.178, 34.91.227.239
-```
-
-Please visit [new subscription page](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#allowlisting-for-accessing-resources-in-your-private-network) for full list of IPs.
-
-If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
-
+We recommend contacting [Harness Support](https://support.harness.io/) to receive the correct list of IPs and guidance based on your use case, region, and Harness modules in use.
 :::
-
-:::warning
- 
-**Action Required: Avoid Docker Hub Rate Limits**
-
-**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
-on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
-
-* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
-* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
-* **Private registry**: Pull images from your own private registry.
-
-[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
-
-:::
-
-:::warning
-
-**Action Required: Migration from GCR to GAR**
-
-Google Container Registry (GCR) is being decommissioned. 
-
-* As part of this change, support for the **Build and Push to GCR step in Harness CI will be discontinued**. Customers currently using this step need to **transition to the Build and Push to Google Artifact Registry (GAR)** step to continue building and pushing container images without interruption.
-* Customers that have configured HarnessImage Connector to pull [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) form GCR, need to update the connector configurations to the [new Google Artifact Registry URL](http://us-docker.pkg.dev/gar-prod-setup/harness-public)
-
-To ensure uninterrupted service, we recommend completing these updates by April 22, 2025.
-* After March 18, 2025, writing images to Google Container Registry (GCR) will no longer be possible.
-* After April 22, 2025, reading images from GCR will also be disabled.
-
-For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
-:::
-
 
 :::note
 
@@ -83,12 +41,83 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 :::
 
+## June 2025
+
+### Version 1.83
+
+<!-- 2025-06-09 -->
+
+#### New features and enhancements
+- Improved error handling in CI steps by adding null safety checks for Pod and PodStatus objects to prevent `NullPointerException`. (CI-17294)
+- Added [**Secure Connect**](/docs/continuous-integration/secure-ci/secure-connect/) support for the Vault connector in the UI. (CI-17710, ZD-84099)
+
+#### Fixes issues
+- Resolved compatibility issues with the `gradle-build-cache-plugin` for Java 8. After the update, the plugin was verified to work with JDK 8, JDK 11, and JDK 17. (CI-15707)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/ci-addon`          | Resolved addon connection errors in Delegate build pipeline.  | 1.16.88              | 1.16.90       |
+| `harness/ci-lite-engine`    |  Resolved addon connection errors in Delegate build pipeline. | 1.16.88              | 1.16.90       |
+| `plugins/kaniko-acr`    |  Added push-only support to `kaniko-acr`. | 1.10.7              | 1.11.2      |
+| `harness/harness-cache-server`    |  Moved build cache proxy server to containerless. | 1.7.1              | 1.7.2       |
+| `plugins/cache`    |  Changed cache restore behavior when multiple cache key entries share a common prefix. | 1.9.7              | 1.9.8       |
+
+### Version 1.82
+
+<!-- 2025-06-02 -->
+
+#### New features and enhancements
+
+- Changed cache restore behavior when multiple cache key entries share a common prefix. This ensures that partial key matches no longer result in incorrect path construction or unpredictable restore outcomes.
+
+    - Strict Mode (default): Only restores from exact key matches, preventing collisions and ensuring reliable behavior.
+
+    - Flexible Mode (PLUGIN_STRICT_KEY_MATCHING=false): Allows restoring all entries that match the prefix, but may result in multiple paths being restored and potential conflicts.
+
+This applies to both GCS and S3 cache storage backends. For details, check out the [docs](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs/#avoiding-prefix-collisions-during-restore). 
+
+This feature is behind the feature flag `PLUGIN_STRICT_KEY_MATCHING`. (CI-17216, ZD-82800)
+
+#### Fixes issues
+
+- Fixed an issue where step identifiers in flexible templates included the stage name, which caused unexpected behavior during stage insertion. The stage name is now removed from the identifier to ensure consistent behavior. This fix was deployed as a hotfix in `ci-manager` version `1.81.3`. (CI-17711)
+- Fixed an issue where removing a non-CI stage resulted in the removal of CI codebase configuration. (CI-17661, ZD-85176)
+  
 ## May 2025
+
+### Version 1.81
+
+<!-- 2025-05-26 -->
+
+#### New features and enhancements
+
+- The following features are now available in beta:
+
+    - [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) for the Maven build tool (version 3.9+). 
+
+    - [Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview) for JavaScript (Jest) and Kotest.
+
+  To join the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
+
+- Previously, CI stage timeouts for Kubernetes infrastructure were limited to a maximum of 24 hours. Some stages, however, require longer timeouts. Harness CI now supports stage timeouts of up to 35 days for Kubernetes-based CI stages. To enable this functionality, set the desired timeout value (greater than 24 hours) in the **Overview** section of the CI stage. (CI-15102, ZD-72737)
+
+  This feature is behind the feature flag `CI_ENABLE_LONG_TIMEOUTS`. 
+
+#### Fixed issues
+
+- Fixed an issue where pod cleanup requests were sent to an incorrect delegate when multiple delegates across clusters shared the same selector tag. This occurred specifically when pipelines were aborted during the init step, preventing Harness from receiving Pod IP information required for capability checks. The fix bypasses the connectivity check when no IP is available and introduces a dry-run pod deletion as a capability check. (CI-17241, ZD-83069)
 
 ### Version 1.80
 
 <!-- 2025-05-19 -->
 
+#### New features and enhancements
+
+- **Adjustable VM Pool initialization timeout for Windows deployments** - Virtual machines may have differing startup and initialization durations across operating systems, which can lead to timeout errors in VM Pools. You can now adjust the VM initialization timeout to ensure sufficient time to initialize. (CI-15143, ZD-70731)
+- Added support for [viewing all artifacts](/docs/continuous-integration/use-ci/viewing-builds#artifacts-tab) across stages in a grouped view, organized by the stage they were generated in. (CI-11987, ZD-61206)
+  
 #### Fixed issues
 
 - Fixed an issue where build stages misinterpreted environment variables containing commas, causing incorrect parsing of buildx options. The `plugins/buildx:1.3.1` plugin now supports the `PLUGIN_BUILDX_OPTIONS_SEMICOLON` variable to allow semicolon-delimited input for options containing commas. (CI-17379, ZD-83477)
@@ -539,22 +568,6 @@ when using CommitSha as the build type (CI-17163, ZD-82770).
 | `plugins/docker` | Addressed security vulnerabilities | 20.18.5              | 20.18.6         |
 
 ## December 2024
-
-:::note
-
-**Network allowlisting Update for Hosted macOS Infrastructure (M2 Machines)**
-
-Harness Cloud users utilizing hosted macOS infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration:
-
-To ensure uninterrupted connectivity and functionality for your CI builds, please add to allowlist the following IP range in your network settings by December 15th, 2024:
-
-IP Range: 207.254.53.128/25
-
-This update also includes a transition to M2 machines, offering improved performance and efficiency for your builds.
-
-If you have any questions or need assistance with the allowlisting process, please contact Harness Support.
-
-:::
 
 ### Version 1.58
 

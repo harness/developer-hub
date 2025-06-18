@@ -12,7 +12,7 @@ canonical_url: https://www.harness.io/harness-devops-academy/what-is-azure-cost-
 ---
 # Set up CCM for Azure
 
-Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CCM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-azure).
+Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CCM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](/docs/category/autostopping-for-azure).
 
 :::info
 
@@ -151,7 +151,7 @@ CCM offers the following features:
 | --- | --- |
 | **Cost Visibility** (Required)| This feature is available by default and requires access to the billing export. Provides the following functionalities:<ul><li>Insights into Azure costs by services, accounts, etc.</li><li>Root cost analysis using cost perspectives</li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul>|
 | **Azure Inventory Management** (Optional)| This feature provides visibility into your Azure VM inventory dashboard and metrics dashboard. The insights provided by inventory management can be used by finance teams to understand resource utilization across the board.|
-| **Azure optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your Azure instances with a simple one-time setup. For more information, go to **Create AutoStopping Rules for Azure**.<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|	
+| **Azure optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your Azure instances with a simple one-time setup. If selected, you can select [granular permissions in the next step](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping). |	
 | **Cloud Governance** (Optional)              | This feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. For more information, see [Asset governance](../../5-use-ccm-cost-governance/asset-governance/1-asset-governance.md). <ul><li>Asset Management (VM, Disk, SQLserver, Loadbalancer)</li><li>Automated Actions</li></ul>   
  
 2. Make your selection and select **Continue**.
@@ -231,6 +231,153 @@ The connection is validated and verified in this step. After successful validati
 Your connector is listed in the **Connectors**.
 
 ![](static/set-up-cost-visibility-for-azure-13.png)
+
+
+## Granular Permissions for AutoStopping
+
+<DocImage path={require('./static/granular-azure-one.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+On this screen, you can select specific features and services for AutoStopping:
+
+### Virtual Machines
+
+<details>
+<summary><b>Schedules only</b></summary>
+
+```
+// List resource groups
+Microsoft.Resources/subscriptions/resourcegroups/read
+
+// List VMs
+Microsoft.Compute/virtualMachines/read
+
+// Start VMs
+Microsoft.Compute/virtualMachines/start/action
+
+// Stop VMs
+Microsoft.Compute/virtualMachines/deallocate/action
+```
+
+</details>
+
+<details>
+<summary><b>with App Gateway</b></summary>
+
+```
+// List virtual networks
+Microsoft.Network/virtualNetworks/read
+
+// List subnets
+Microsoft.Network/virtualNetworks/subnets/read
+
+// List public IP addresses
+Microsoft.Network/publicIPAddresses/read
+
+// List app gateways
+Microsoft.Network/applicationGateways/read
+
+// For traffic detection using access logs
+Microsoft.Storage/storageAccounts/write
+
+// For traffic detection using access logs
+Microsoft.Storage/storageAccounts/read
+
+// For traffic detection using access logs
+Microsoft.Storage/storageAccounts/listKeys/action
+
+// Create Azure function for initial warm up
+Microsoft.Web/sites/write
+
+// Create Azure function for initial warm up
+Microsoft.Web/sites/read
+
+// Create Azure function for initial warm up
+Microsoft.Web/sites/config/write
+
+// Create Azure function for initial warm up
+Microsoft.Web/sites/functions/write
+
+// Create Azure function for initial warm up
+Microsoft.Web/sites/functions/read
+
+// Permissions to create application gateway
+Microsoft.Network/applicationGateways/write
+
+// Permissions to create application gateway
+Microsoft.Network/virtualNetworks/subnets/join/action
+
+// Permissions to create application gateway
+Microsoft.Network/publicIPAddresses/join/action
+
+// Permissions to create application gateway
+microsoft.insights/diagnosticSettings/write
+
+// Permissions to create application gateway
+Microsoft.Network/networkInterfaces/read
+
+// Needed during warmup
+Microsoft.Network/applicationGateways/backendhealth/action
+```
+
+</details>
+
+<details>
+<summary><b>with AutoStopping Proxy</b></summary>
+
+```
+// List virtual networks
+Microsoft.Network/virtualNetworks/read
+
+// List subnets
+Microsoft.Network/virtualNetworks/subnets/read
+
+// List network security groups
+Microsoft.Network/networkSecurityGroups/read
+
+// List security rules
+Microsoft.Network/networkSecurityGroups/securityRules/read
+
+// List SSH Keys
+Microsoft.Compute/sshPublicKeys/read
+
+// create static IP
+Microsoft.Network/publicIPAddresses/write
+
+// Read IP address
+Microsoft.Network/publicIPAddresses/read
+
+// Basic permissions to setup VM
+Microsoft.Network/networkInterfaces/write
+
+// Basic permissions to setup VM
+Microsoft.Network/networkSecurityGroups/join/action
+
+// Basic permissions to setup VM
+Microsoft.Network/virtualNetworks/subnets/join/action
+
+// Basic permissions to setup VM
+Microsoft.Network/networkInterfaces/read
+
+// Basic permissions to setup VM
+Microsoft.Network/networkInterfaces/join/action
+
+// Create VM
+Microsoft.Compute/virtualMachines/write
+
+// Delete proxy VM
+Microsoft.Compute/virtualMachines/delete
+
+// Delete public IP allocated for proxy
+Microsoft.Network/publicIPAddresses/delete
+
+// Delete proxy network interface
+Microsoft.Network/networkInterfaces/delete
+
+// Delete OS disk of proxy
+Microsoft.Compute/disks/delete
+```
+
+</details>
 
 ### Troubleshooting
 

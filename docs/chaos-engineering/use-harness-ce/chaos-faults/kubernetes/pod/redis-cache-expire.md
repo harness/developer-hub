@@ -13,6 +13,36 @@ Redis cache expire expires a given key (or all keys) for a specified duration. D
 
 Redis cache expire determines the resilience of Redis-dependant applications against frequent cache expiry.
 
+### Permissions required
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: redis-cache-expire
+spec:
+  definition:
+    scope: Namespaced
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments, statefulsets"]
+    verbs: ["get", "list"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+```
+
 <AuthenticationDetails />
 
 ### Optional tunables

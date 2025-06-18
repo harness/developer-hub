@@ -7,10 +7,6 @@ redirect_from:
   - /docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
- 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
 <DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
@@ -20,31 +16,18 @@ import TabItem from '@theme/TabItem';
 
 The Snyk step in Harness STO enables you to perform Snyk [Code](./snyk-code-scanning.md), [Open Source](./snyk-open-source.md), [Container](./snyk-open-source.md), and [IaC](./snyk-iac-scanning.md) scanning in both Orchestration and Ingestion modes of STO. This document will guide you through understanding the fields, configuring them, and providing any necessary information for setting up the step.
 
-## Important notes for running Snyk scans in STO
 
-<!--
-
-You can configure the Snyk step to [show the original CVSS score](#show-the-original-cvss-score-when-snyk-overrode-it) when a Snyk security policy overrode the score for an issue. 
-
--->
-
-### Root access requirements 
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
-
-<StoRootRequirements />
-
-
-### For more information
+:::info
+- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+- STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
-
 <StoMoreInfo />
+:::
 
-
-## Snyk step settings for STO
+## Snyk step settings
 
 It is recommended to add a Snyk step to the **Security** or **Build** stage and configure it as described below.
 
@@ -215,6 +198,18 @@ import StoSettingSettings from '../shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
+### Additional Configuration
+
+import ScannerRefAdditionalConfigs from '../shared/additional-config.md';
+
+<ScannerRefAdditionalConfigs />
+
+
+### Advanced settings
+
+import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
+
+<ScannerRefAdvancedSettings />
 
 ## Show original issue severities overridden by Snyk security policies 
 
@@ -278,50 +273,11 @@ The formatting should contain the following:
  }
 ```
 
+## Use scanner-provided Severity
 
-### Enable Severity Override
-To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step or Custom Scan Step. With this setting enabled, the Snyk step processes the relevant data for issues with overridden severities. 
+import ScannerProvidedSeverity from '../shared/use-scanner-provided-severity.md';
 
-<Tabs>
-    <TabItem value="Visual" label="Visual" default>
-      Add `ingest_tool_severity` to Snyk step keys
-      ![](../static/sto-7041-add-setting-in-visual-editor.png)
-      Add `ingest_tool_severity` to Custom Scan step keys
-      ![](./static/snyk-customstage-Ingesttoolseverity.png)
-      </TabItem>
-    <TabItem value="YAML" label="YAML">
-          **Snyk Step Declaration**
-          ``` yaml
-          - step:
-              type: Snyk
-              spec:
-                settings:
-                  ingest_tool_severity: "true"
-          ```
-          **Custom Scan Step Declaration**
-          ``` yaml
-          - step:
-              type: Security
-              spec:
-                settings:
-                  ingest_tool_severity: "true"
-          ```
-      </TabItem>
-</Tabs>
-
-
-### Additional Configuration
-
-import ScannerRefAdditionalConfigs from '../shared/additional-config.md';
-
-<ScannerRefAdditionalConfigs />
-
-
-### Advanced settings
-
-import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
-
-<ScannerRefAdvancedSettings />
+<ScannerProvidedSeverity />
 
 
 ## Proxy settings

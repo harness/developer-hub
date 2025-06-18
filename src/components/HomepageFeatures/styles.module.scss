@@ -1,5 +1,6 @@
 .features {
   padding: 3rem 0 4rem 0;
+
   h2 {
     margin-bottom: 32px;
 
@@ -7,6 +8,7 @@
     font-size: 32px;
     line-height: 40px;
   }
+
   .getStart {
     display: flex;
     justify-content: center;
@@ -15,9 +17,11 @@
     /* width: 100%; */
     // flex-basis: 70%;
     flex-grow: 1;
+
     a:hover {
       color: unset;
     }
+
     .getStartItem {
       // border: var(--card-border);
 
@@ -37,76 +41,118 @@
       margin: 0 32px 32px 0;
       padding: 32px 0 24px 0;
       border: var(--card-border);
+
       .titleAndDesc {
         height: 96px;
       }
+
       h3 {
         font-weight: 600;
         font-size: 16px;
         line-height: 24px;
         margin-bottom: 4px;
       }
+
       p {
         font-weight: 500;
         font-size: 12px;
         line-height: 18px;
       }
+
       &:hover {
         box-shadow: 0px 2px 4px rgba(40, 41, 61, 0.04),
           0px 8px 16px rgba(96, 97, 112, 0.16);
         border: 2px solid var(--primary-6);
       }
+
       &.ci:hover {
         border-color: var(--mod-ci-200);
       }
+
       &.ar:hover {
         border-color: var(--mod-ar-200);
       }
+
       &.cd:hover {
         border-color: var(--mod-cd-200);
       }
+
       &.cde:hover {
         border-color: var(--mod-cde-200);
       }
+
       &.ccm:hover {
         border-color: var(--mod-ccm-200);
       }
+
       &.ff:hover {
         border-color: var(--mod-ff-200);
       }
+
+      &.fme:hover {
+        border-color: var(--mod-fme-200);
+      }
+
       &.ssca:hover {
         border-color: var(--mod-ssca-200);
       }
+
       &.sto:hover {
         border-color: var(--mod-sto-200);
       }
+
       &.srm:hover {
         border-color: var(--mod-srm-200);
       }
+
       &.ce:hover {
         border-color: var(--mod-ce-200);
       }
+
       &.cet:hover {
         border-color: var(--mod-cet-200);
       }
+
       &.idp:hover {
         border-color: var(--mod-idp-200);
       }
+
       &.code:hover {
         border-color: var(--mod-code-200);
       }
+
       &.sei:hover {
         border-color: var(--mod-sei-200);
       }
+
       &.iacm:hover {
         border-color: var(--mod-iacm-200);
       }
+
       &.dbdevops:hover {
         border-color: var(--mod-dbdevops-200);
       }
+
+      &.ata:hover {
+        border-color: var(--mod-aida-200);
+      }
+
+      &.ir:hover {
+        border-color: var(--mod-ir-200);
+      }
+
+      &.fme:hover {
+        border-color: var(--mod-fme-200);
+      }
+
+      &.opensource:hover {
+        border-color: var(--mod-opensource-200);
+      }
     }
+
     ul.docTypes {
       display: flex;
+
       li {
         width: 24px;
         height: 24px;
@@ -118,6 +164,7 @@
         align-items: center;
         border-radius: 4px;
         margin-right: 4px;
+
         img {
           width: 16px;
           height: 16px;
@@ -126,10 +173,12 @@
     }
   }
 }
+
 .btnContainer {
   display: flex;
   justify-content: center;
   padding-top: 24px;
+
   .button {
     min-width: 200px;
   }
@@ -146,13 +195,16 @@
     font-size: 28px;
   }
 }
+
 @media screen and (max-width: 393px) {
+
   /* for mobile */
   .features {
     h2 {
       font-size: 22px;
       line-height: 150%;
     }
+
     .getStart {
       .getStartItem {
         margin-right: unset;

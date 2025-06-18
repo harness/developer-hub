@@ -101,4 +101,26 @@ export const spt: IltCardItem[] = [
      tileType: tileType.normal,
      cardType: cardType.SPT,
    },
+   {
+    title: "Supply Chain Security",
+    module: MODULES.ssca,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Supply Chain Security.",
+     version: "Harness SCS Paid Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-supply-chain-security",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
+     {
+    title: "Code Repository",
+    module: MODULES.code,
+     type: type.user,
+     description:
+       "Self-paced video course introducing Harness Code Repository.",
+     version: "Harness Paid Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-code-repository",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
 ];

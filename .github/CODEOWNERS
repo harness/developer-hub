@@ -4,31 +4,31 @@
 # Learn more at: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Global Owners of the HDH Repository
-*       @pratmit @wei-harness @ivikramsahu @dewan-ahmed
+*       @pratmit @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
 
 # Configuration Files in DS are JS.
-*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
-*.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
-*.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
-*.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
+*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
+*.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
+*.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
+*.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
 
 # Changes to Lock File
 *.lock  @wei-harness
 
 # Changes to Config Files
-*.ini  @wei-harness @ivikramsahu @dewan-ahmed
-*.json  @wei-harness @ivikramsahu @dewan-ahmed
-*.toml  @wei-harness @ivikramsahu @dewan-ahmed
-*ignore @wei-harness @ivikramsahu @dewan-ahmed
-/_server-redirect @wei-harness @ivikramsahu @dewan-ahmed
+*.ini  @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
+*.json  @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
+*.toml  @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
+*ignore @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
+/_server-redirect @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
 
 # Changes to Netlify Files
 /netlify/ @wei-harness
 
 # Contributing
-CONTRIBUTING.md @pratmit @ivikramsahu @dewan-ahmed
-README.md @pratmit @ivikramsahu @dewan-ahmed
-/docs/hdh/ @pratmit @ivikramsahu @dewan-ahmed
+CONTRIBUTING.md @pratmit @ivikramsahu @dewan-ahmed @SushrutHarness
+README.md @pratmit @ivikramsahu @dewan-ahmed @SushrutHarness
+/docs/hdh/ @pratmit @ivikramsahu @dewan-ahmed @SushrutHarness
 
 # University
 /university/ @ravilach
@@ -69,30 +69,34 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
 
 # CODE Docs
-/docs/code-repository/ @hitesharinga @dewan-ahmed @johannesHarness
-/release-notes/code-repository.md @hitesharinga @dewan-ahmed @johannesHarness
-/src/components/Roadmap/data/codeData.ts @hitesharinga @dewan-ahmed @johannesHarness
-/src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed @johannesHarness
+/docs/code-repository/ @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
+/release-notes/code-repository.md @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
+/src/components/Roadmap/data/codeData.ts @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
+/src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
 
 # STO Docs
-/docs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
-/release-notes/security-testing-orchestration.md @tejakummarikuntla @priteshchandaliya
-/src/components/Roadmap/data/stoData.ts @tejakummarikuntla @priteshchandaliya
-/src/components/Docs/data/securityTestingOrchestrationData.ts @tejakummarikuntla @priteshchandaliya
+/docs/security-testing-orchestration/ @tejakummarikuntla @BruceMcPhersonHarness
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @BruceMcPhersonHarness
+/release-notes/security-testing-orchestration.md @tejakummarikuntla @BruceMcPhersonHarness
+/src/components/Roadmap/data/stoData.ts @tejakummarikuntla  @BruceMcPhersonHarness
+/src/components/Docs/data/securityTestingOrchestrationData.ts @tejakummarikuntla @BruceMcPhersonHarness
 # STO FAQs
 /docs/faqs/security-testing-orchestration/ @tejakummarikuntla
 
 # CCM Docs
-/docs/cloud-cost-management/ @Rohit-Kaliki @joeyouss @iamanmolm @sdsingh07 @sandyydk @abhinavsingh-ccm @riyasyash
-/release-notes/cloud-cost-management.md @Rohit-Kaliki @joeyouss @himanshu-jain-harness @suryanarayanan-venkatesan
-/src/components/Roadmap/data/ccmData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
-/src/components/Docs/data/cloudCostManagementData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
+
+/docs/cloud-cost-management/3-use-ccm-cost-reporting @joeyouss @sdsingh07 @rajarshee-harness @karanshetty53
+/docs/cloud-cost-management/4-use-ccm-cost-optimization @joeyouss @sandyydk @riyasyash @rajarshee-harness @josephdlopez @jyotiarora-harness @shalinlk @karanshetty53
+/docs/cloud-cost-management/5-use-ccm-cost-governance @joeyouss @iamanmolm @rajarshee-harness @josephdlopez @sdsingh07 @karanshetty53
+/docs/cloud-cost-management/ @joeyouss @josephdlopez @karanshetty53 @rajarshee-harness @jyotiarora-harness
+/release-notes/cloud-cost-management.md @joeyouss @rajarshee-harness @josephdlopez  @karanshetty53
+/src/components/Roadmap/data/ccmData.ts @joeyouss @rajarshee-harness @karanshetty53
+/src/components/Docs/data/cloudCostManagementData.ts @joeyouss @rajarshee-harness @karanshetty53
 
 # FirstGen CCM Docs
-/docs/category/cloud-cost-management/ @Rohit-Kaliki @joeyouss
+/docs/category/cloud-cost-management/ @josephdlopez @joeyouss
 # CCM FAQs
-/docs/faqs/cloud-cost-management-faqs/ @Rohit-Kaliki @joeyouss
+/docs/faqs/cloud-cost-management-faqs/ @josephdlopez @joeyouss
 
 # CET Docs
 /docs/continuous-error-tracking/ @M-Tsur
@@ -159,7 +163,7 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
 
 # IACM Docs
-/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez @Rohit-Kaliki
+/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @nassergonzalez @Rohit-Kaliki
 /release-notes/infrastructure-as-code-management.md @RickCraig @richardblack-Harness @Rohit-Kaliki
 /src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
 /src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
@@ -172,10 +176,11 @@ static/  @rohanmaharjan100 @wei-harness
 # FF FAQs
 /docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos
 
-#FME Docs
-/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split @harness-john
-/release-notes/feature-management-experimentation.md @dtk-DaveKarow @harness-john @kleinjoshuaa @deej-split @HarnessTheChaos
-/release-notes/static/fme/ @dtk-DaveKarow @kleinjoshuaa @deej-split  @harness-john @HarnessTheChaos
+# FME Docs
+/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john
+/docs/feature-management-experimentation/ @alai97 @animcdowell @audreydo1 @NicoZelaya @jliegl-harness @sanzmauro @dtk-DaveKarow 
+/release-notes/feature-management-experimentation.md @alai97 @dtk-DaveKarow @animcdowell @harness-john @kleinjoshuaa @deej-split
+/release-notes/static/fme/ @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john 
 
 # SEI Docs
 /docs/software-engineering-insights/ @codewdhruv @batraprashant
@@ -195,8 +200,8 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness
 
 # IR Docs
-/docs/incident-response/ @ryantaylor16 @Kmonkeyjam @vasundharashukla
-/release-notes/incident-response @ryantaylor16 @Kmonkeyjam @vasundharashukla
+/docs/incident-response/ @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
+/release-notes/incident-response @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
 
 # AI QA Assistant Docs
 /docs/ai-qa-assistant/ 
@@ -225,4 +230,4 @@ static/  @rohanmaharjan100 @wei-harness
 /kb/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
 
 #Reference Architectures
-/kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness
+/kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness

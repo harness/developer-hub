@@ -128,7 +128,32 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## June 2025
+
+### Version 1.93.x <!--June 10, 2025-->
+
+#### Fixed issues
+
+- Resolved missing "Variable" option in the Audit Filter dropdown list. [PL-63195]
+- Navigating to a role or resource group from user role bindings no longer leads to a blank page. [PL-63154]
+- Code Repository resource group now appears correctly in the resource group list. [PL-63120]
+
+#### New Feature and Enhancement 
+
+- Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance. [PL-62957]
+
 ## May 2025
+
+### Version 1.91.x <!-- May 27, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where direct navigation links did not trigger sign-in page when accessed without an active session. [PL-62933]
+- Fixed an issue where banner buttons displayed cut-off or missing text when multiple banners were created. The button rendering and styling logic have been updated for a consistent UI display. Additionally, validation has been added to the callToActions field in the Banner entity API to allow up to 2 entries, with each entry’s key limited to 15 characters to ensure consistency across platforms. [PL-62794]
+      
+      :::danger Breaking Changes 
+      Changes introduced in **[PL-62794]** may affect users who have built automation based on the previous behavior. If your workflows depend on the current implementation, please review and update your automation to align with the new changes.
+      :::
 
 ### Version 1.90.x <!-- May 19, 2025-->
 

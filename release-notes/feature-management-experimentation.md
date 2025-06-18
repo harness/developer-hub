@@ -13,8 +13,39 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: April 30, 2025
+#### Last updated: June 16, 2025
 
+## June 2025
+
+### [New Feature] Experiment Tags
+----
+#### 2025-06-16
+
+You can now add tags to experiments in Harness FME, making it easier to organize, search, and manage your experiments at scale. Use tags to label experiments by team, purpose, status, or any other internal convention, just like you already do with flags, metrics, and segments.
+
+This is especially helpful for organizations with multiple teams running experiments in the same project, where clear organization and discoverability are key.
+
+#### Related documentation
+
+- [Tags](/docs/feature-management-experimentation/management-and-administration/tags/)
+- [Experimentation Overview](/docs/feature-management-experimentation/experimentation/overview)
+- [Experiments Setup](/docs/feature-management-experimentation/experimentation/setup/)
+
+### [New Feature] Control cache expiration for client-side SDKs
+----
+#### 2025-06-05
+
+The following SDKs now allow you to configure how long the rollout cache for feature flags and segment memberships persist: Browser, iOS, and Android. By default, the cache expires after 10 days. 
+
+This update introduces new configuration options for overriding that default and for explicitly clearing the cache on SDK initialization.
+
+#### Related documentation
+- [Browser SDK](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK#configuring-localstorage-cache-for-the-sdk)
+- [Browser SDK Suite](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite#configuring-localstorage-cache-for-the-suite)
+- [iOS SDK](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#configure-cache-behavior)
+- [iOS SDK Suite](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite#configure-cache-behavior)
+- [Android SDK](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#configure-cache-behavior)
+- [Android SDK Suite](https://help.split.io/hc/en-us/articles/22916666123277-Android-Suite#configure-cache-behavior)
 
 ## April 2025
 ### [New Feature] Experiments Dashboard
@@ -42,6 +73,39 @@ This release makes it easier for teams to run experiments without requiring deep
 #### Related documentation
 - [Experiments](https://help.split.io/hc/en-us/articles/35511708088077-Experiments)
 - [Experiment health check](https://help.split.io/hc/en-us/articles/35928892585741-Experiment-health-check)
+
+### [New Feature] Centralized control for React SDK flag update behavior
+----
+#### 2025-04-16
+
+You can now configure how your React application responds to SDK lifecycle events using new props on the `<SplitFactoryProvider>` component. This allows you to set default reactivity behavior for all components in the application, reducing the need to configure each hook individually. 
+
+This is especially useful for use cases like suppressing UI updates during onboarding flows or session transactions. For example, setting `updateOnSdkUpdate={false}` at the root level (i.e., the `<SplitFactoryProvider>` component) disables updates of the `useSplitTreatments` hook triggered by flag changes until re-enabled.
+
+The following options are supported:
+
+- `updateOnSdkReady`
+- `updateOnSdkReadyFromCache`
+- `updateOnSdkTimedout`
+- `updateOnSdkUpdate`
+
+These settings apply to all nested hooks and components unless explicitly overridden.
+
+For example:
+
+```javascript
+const App = () => (
+  <SplitFactoryProvider 
+    config={sdkConfig} 
+    updateOnSdkUpdate={false} // Disables SDK_UPDATE-triggered re-renders for all child components
+  >
+    <MyApp />
+  </SplitFactoryProvider>
+);
+```
+
+#### Related documentation
+- [React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#subscribe-to-events)
 
 ### [New Feature] Append impression properties
 ----

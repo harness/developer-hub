@@ -18,6 +18,63 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 :::
 
+## June 2025 - Version 1.54.5
+
+
+### [New Feature] Granular AutoStopping Permissions Support for Azure and GCP
+**[CCM-21574, CCM-21575] | [Docs for Azure](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping) | [Docs for GCP](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping)**
+
+We have introduced **Granular permissions support for Azure and GCP Autostopping**. With this update, users can now **select the specific resource types they want to enable for Autostopping** such as virtual machines and instance groups. Based on the selected resource types, only the minimal required set of permissions will be requested. This feature simplifies onboarding, and aligns with security best practices.
+
+#### Granular AutoStopping Permissions Support for Azure:
+
+<DocImage path={require('./static/granular-azure.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+#### Granular AutoStopping Permissions Support for GCP:
+<DocImage path={require('./static/granular-gcp.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Feature Improvements
+
+- **RBAC Support for Nested Cost Categories:** We've extended Role-Based Access Control (RBAC) to support nested cost buckets within CCM data scope, providing more granular access control for nested Cost Categories. Note that RBAC support is not available for the Unallocated Cost bucket. [CCM-23579]
+
+### Bug Fixes
+
+- **Fixed Duplicate Discounts with Net-Amortised Cost:** Resolved an issue where duplicate discounts were applied when net-amortised cost was selected with discounts enabled. Improvements include:
+  - When creating or updating a perspective with net-amortised cost, discounts are automatically set to false during save/update
+  - The discount field is now greyed out when net-amortised cost is selected in perspective preferences as discounts are already included in the net-amortised cost.
+  - Backend validation prevents duplicate discounts when using the API, ensuring accurate cost calculations in all scenarios [CCM-22152]
+
+## May 2025 - Version 1.53.3
+
+### Bug Fixes
+
+- **Missing Name in Enforcement Update Toast:** There was an issue where the name didn’t appear in the toast message after updating an enforcement rule. This has now been fixed, and the name will display correctly. [CCM-23256]
+
+- **Error Toast on Navigating Away from Perspective Details:** Navigating away from the Perspective Details page before it fully loaded triggered an error toast due to an aborted API call. This behavior has been fixed, and users will no longer see this error toast when navigating quickly.[CCM-23244]
+
+## May 2025 - Version 1.52.1
+
+### Feature Improvements
+
+- **New creation flow for AutoStopping Load Balancers and Proxies**: We’ve revamped the creation flow for Load Balancers and AutoStopping Proxies by moving it to a side panel for better input organization. The Custom URL is no longer a required step for Load Balancer creation—legacy LBs will still show it as a static field, and edits must be done via Route53. We’ve also introduced a new Internal/External toggle for ALBs to define access type. Additionally, there’s now a toggle for Encrypted EBS volumes. [CCM-21226]
+
+<DocImage path={require('./static/as-revamp.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **Sorting for Clusters List**: The Clusters List in Cluster Orchestrator Overview is now sorted with enabled connectors first (alphabetically), followed by AWS connectors that are not enabled (alphabetically), and then the rest. [CCM-23021]
+
+- **Improvements in Budgets and Perspectives home page**: We have now added support for showing "Created By" and "Modified By" in Perspectives and in Budgets. [CCM-22932]
+
+- **Standardized Region Format for Recommendations**: We are now normalizing region formats across all recommendations. Previously, EC2 recommendations used formats like `US_EAST_1`, while others used `us-east-1`, leading to inconsistencies. Going forward, only the standardized `us-east-1` format will be used, ensuring filters work consistently across all recommendation types. [CCM-22998]
+
+- **Cluster Orchestrator UI changes**: We’ve now moved the Base On-demand setting below the Spot/On-demand split. Additionally, if the On-demand percentage is set to 100%, the fields below will be disabled. [CCM-22759]
+
+<DocImage path={require('./static/cluster-improv.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Bug Fixes
+
+- **Improved Cloud Asset Governance Rule Saving Experience**: We've resolved an issue where saving a new Cloud Asset Governance rule incorrectly triggered a confirmation dialog to stay or leave the page. This dialog will now only appear when there are unsaved changes. [CCM-22995]
+
+
 ## May 2025 - Version 1.51.4
 
 ### [New Feature] Replacement Schedules
@@ -72,7 +129,6 @@ We have added support for replacement schedules with options: **Always, Never, o
 - **Improved Accuracy in Cost Category Anomaly Detection:** We’ve improved how cost category rules are applied to anomaly filters within Perspectives. This update ensures that anomalies tied to cost category rules ( combinations of AND/OR conditions) are shown more accurately. [CCM-21712]
 
 - **UI enhancement for Governance Recommendations**: We’ve resolved an issue in the Governance Recommendations’ Resource Breakdown tab where Azure Resource IDs were overflowing into adjacent cells. The text now wraps onto the next line to maintain proper layout. [CCM-22850]
-
 
 
 ## May 2025 - Version 1.50.2
@@ -1346,7 +1402,7 @@ The issue is resolved now.
 
 - AutoStopping Proxy for HTTPS and TCP connections.
 
-Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](/docs/category/add-load-balancers-for-autostopping-rules) and [Create AutoStopping rules](/docs/category/create-autostopping-rules).
+Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. 
 
 ##### Fixed issues
 

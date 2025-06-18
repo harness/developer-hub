@@ -187,6 +187,12 @@ The artifact defined in the Harness service is the equivalent to the `Code:Image
 
 If you do use the `Code:ImageUri` in the definition, Harness ignores it and instead uses the artifact in **Artifacts**.
 
+**Lambda service with custom artifacts** 
+
+You can use AWS Lambda custom artifact sources only when they point to S3 resources in the same AWS account. When you specify `bucketName` and `key` for a Lambda Service, Harness treats the artifact as an S3 object, so you must upload or sync your ZIP file into that bucket before every run. 
+
+If you don’t, the first deployment succeeds but subsequent runs will fail with `Not Support ArtifactConfig Type`. To ensure repeatable Lambda deployments, include a pre-deployment step in your pipeline that copies or synchronizes your custom artifact into the designated S3 bucket. 
+
 ### Function definition
 
 In **AWS Lambda Function Definition**, you specify your function definition.
@@ -786,22 +792,33 @@ Ensure that the IAM role or user associated with the deployment has the followin
 
 Harness uses **Lambda function aliases** to support rollback workflows. During deployment, Harness creates or updates an alias to point to the latest function version. If a rollback is triggered, the alias is redirected to the previously deployed version—restoring the last known good state.
 
+In this case, Harness will create an alias called `harness-latest`, which will facilitate the rollback process.  It is only created when the rollback function is used with the Feature Flag enabled. It is highly recommended that customers do not modify this alias, as it may disrupt the expected state.   Please note that even if you are not using Artifacts larger than 50MB, the Rollback process will remain the same and will utilize Aliases once the flag is enabled.
+
+The alias will appear within Lambda as per the example below:
+
+![](./static/alias-latest.png)
+
+![](./static/alias-version.png)
+
 :::info
 Harness manages aliases only for deployments performed through Harness. Creating the alias that points to the latest deployed version is also gated by the same feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. 
 
 Harness tracks only the versions deployed via Harness, and rollback is supported only for these deployments. These aliases are used exclusively for rollback operations.
 :::
 
-**Use Cases:**
+**Process and Function**
 
-- **Use Case 1**:  
-  If you deploy an artifact larger than 50 MB **without** enabling the feature flag, the deployment will succeed, but rollback will **fail**. Harness cannot trace previous artifact versions in this mode.
+- **Deploying without Feature Enabled**:  
+  If you deploy an artifact larger than 50 MB **without** enabling the feature flag, the deployment will succeed, but the rollback will **fail**. Harness cannot trace previous artifact versions in this mode.
 
-- **Use Case 2**:  
+- **Initial Deployment Process**:  
   If the feature flag is enabled and this is your **first deployment**, Harness creates new aliases. Since there’s no version history, a rollback will effectively do nothing.
 
-- **Use Case 3**:  
+- **Subsequent Deployment Process**:  
   If the feature flag is enabled and this is **not your first deployment**, Harness can track previous versions. On rollback, the alias is pointed to the previously deployed version, restoring the earlier state successfully.
+
+- **Enabling flag for Pre-Existing Lambda Deployments**:  
+  Customers can also enable this feature flag if they already have deployments enabled.  The next deployment will then be tagged with the alias, and then, the process will follow the same flow.
 
 With the feature flag enabled and the appropriate permissions in place, you can deploy Lambda artifacts of any size from S3, with Harness managing deployment and rollback reliably.
 

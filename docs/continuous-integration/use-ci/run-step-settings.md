@@ -30,7 +30,7 @@ This example runs `pytest`, includes [code coverage](./run-tests/code-coverage.m
                   name: Run pytest
                   identifier: Run_pytest
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |-
@@ -124,7 +124,7 @@ For example, this step produces [output variables](#output-variables) from Terra
                   name: Terraform Outputs
                   identifier: tf_outputs
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: kameshsampath/kube-dev-tools
                     shell: Sh
                     command: |-
@@ -178,7 +178,7 @@ In Harness, go to the pipeline where you want to add the `Run` step. In the `CI`
                   name: run pytest # Specify a name for the step.
                   identifier: run_pytest # Define a step ID, usually based on the name.
                   spec:
-                    connectorRef: account.harnessImage # Specify a container registry, if required.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: python:latest # Specify an image, if required.
                     shell: Sh
                     command: |- # Provide your commands
@@ -340,7 +340,7 @@ You can use the `Sh` option to run any shell script, provided the necessary bina
               - step:
                   ...
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |-
@@ -511,6 +511,21 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 During and after pipeline runs, you can find step logs on the [Build details page](./viewing-builds.md).
 
 If your pipeline runs tests, you can [view test reports](./run-tests/viewing-tests.md) on the Build details page.
+
+## Hidden/Invisible Characters
+Customers may occasionally encounter unexplained behavior in their scripts caused by hidden or invisible characters. These characters often appear when copying and pasting from non-plain-text sources and can lead to unexpected script errors. Harness includes a feature to display invisible characters, which is enabled by default.
+
+When invisible characters are present, users will see a highlighted space in their scripts.
+![](./static/invisiblechr-01.png)
+
+They can hover over the highlight to view the character and click "Adjust settings" to manage the display.
+![](./static/invisiblechr-hover.png)
+
+If a selection was accidentally made, the user can right-click within the script area and open the **Command Palette**.
+![](./static/invisiblechr-cmdplt.png)
+
+A dialog box will appear, allowing the user to search for and toggle the setting that controls how invisible characters are highlighted.
+![](./static/invisiblechr-toggle.png)
 
 ## Troubleshoot script execution (Run steps)
 

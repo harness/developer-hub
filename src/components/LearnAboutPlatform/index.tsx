@@ -227,6 +227,12 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
+            <a href="/release-notes/feature-management-experimentation">
+              <h4>Feature Management & Experimentation</h4>
+              <p>New features and fixed issues for the FME module</p>
+            </a>
+          </li>
+          <li>
             <a href="/release-notes/cloud-cost-management">
               <h4>Cloud Cost Management</h4>
               <p>New features and fixed issues for the CCM module</p>

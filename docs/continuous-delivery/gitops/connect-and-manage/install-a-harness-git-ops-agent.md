@@ -562,6 +562,7 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 | GitOps Agent version | Packaged Argo CD version | Supported Argo CD versions                    | Redis version       | Haproxy version |
 | -------------------- | ------------------------ | --------------------------------------------- | ------------------- | --------------- |
+| 0.94.0               | v2.14.9                  | 2.10.10, 2.10.14, 2.13.2, 2.13.5, 2.14.9      | redis:7.4.1-alpine  | 2.9.4-alpine    |
 | 0.86.2 - 0.93.0      | v2.13.5                  | 2.9.4, 2.10.10, 2.10.14, 2.13.2, 2.13.5       | redis:7.4.1-alpine  | 2.9.4-alpine    |
 | 0.84.2 - 0.85.0      | v2.13.2                  | 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14, 2.13.2 | redis:7.4.1-alpine  | 2.9.4-alpine    |
 | 0.83.0               | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  | 2.6.14-alpine   |
@@ -594,6 +595,20 @@ The Argo CD components upgrade must be done manually.
 ### How can I uninstall a GitOps Agent?
 
 If you need to uninstall a GitOps Agent, you can use `kubectl delete` with the same manifest you used to install it. For example, `kubectl delete -f gitops-agent.yml -n argocd`.
+
+### What happens if CRDs are removed when uninstalling a GitOps agent?
+
+When you uninstall the GitOps agent, deleting its CRDs will also delete all GitOps-managed apps in the cluster. To avoid accidental data loss, ensure CRDs are preserved:
+
+```yaml
+crds:
+  # -- Keep CRDs on chart uninstall
+  keep: true
+```
+
+This tells Helm not to delete CRDs when you run: `helm uninstall <releaseName>`
+
+If you installed the agent with an older or custom chart that doesn’t include `crds.keep: true`, Helm’s default behavior will delete CRDs (and all dependent apps) on uninstall. Either override that setting at uninstall time or update your chart to include it.
 
 
 ## High Availability GitOps Agent
@@ -682,11 +697,17 @@ The GitOps agent has 2 types of reconciliation on top of the ArgoCD’s reconcil
 1. On CRUD events, reconciliation runs every 10 seconds.
 2. The bulk reconciliation (to check if anything was removed/added in the cluster directly) runs every 100 seconds.
 
-#### Known problem
+#### Known problem (Fixed)
 
-Currently, the agents running with multiple replicas are not aware that more replicas are running and hence the reconciliation runs on all. 
+:::info
 
-Consequently, if there is an HA agent running 5 pods all of the pods will send the reconcile call (5 times in 1 cycle). This results in computing overhead.
+As of [GitOps Agent 0.89](/release-notes/continuous-delivery/#gitops-agent-version-0890) this has been fixed. If you are encountering this issue, please upgrade your GitOps Service to version 1.28 or higher, and agent to 0.89 or higher.
+
+:::
+
+In older agent versions, when agents run with multiple replicas, each replica is unaware of the others. As a result, reconciliation runs on all replicas independently. 
+
+Consequently, if there is a HA agent running 5 pods, all of the pods would send the reconcile call (5 times in 1 cycle). This resulted in computing overhead.
 
 ## References
 

@@ -2,9 +2,10 @@
 id: ssh-chaos
 title: SSH chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/ssh/ssh-chaos
-- /docs/chaos-engineering/chaos-faults/ssh/ssh-chaos
+  - /docs/chaos-engineering/technical-reference/chaos-faults/ssh/ssh-chaos
+  - /docs/chaos-engineering/chaos-faults/ssh/ssh-chaos
 ---
+
 SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a ConfigMap. These scripts are executed using SSH credentials, which are securely referenced in the ConfigMap. This enables direct fault injection on the target host. This experiment offers customisation for the chaos injection logic, providing flexibility and control over chaos experiments.
 
 ![SSH chaos](./static/images/ssh-chaos/ssh-chaos.png)
@@ -12,21 +13,24 @@ SSH chaos injects chaos on the target host using SSH connections by passing cust
 ## Use cases
 
 SSH chaos can be used with custom chaos logic and transferred to a target VM (to execute network chaos experiments, power off, and so on).
+
 - This serves as a framework that can be customised to perform other chaos experiments, such as network stress, HTTP, DNS, restart services, and so on.
 - This framework can be used to roll back to the original state of an abort event.
 
 ## Executing the SSH chaos experiment
+
 Before executing the SSH chaos experiment, ensure that you follow the steps in the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/prerequisites) section. This generates two experiment YAML files, namely `ssh-chaos-with-key.yaml` and `ssh-chaos-with-pass.yaml`. You can use one of them based on the authentication method you choose.
 
-* Use `ssh-chaos-with-key.yaml` for private key authentication. This file references secrets in its YAML view. The `PASSWORD` environment variable should be empty.
+- Use `ssh-chaos-with-key.yaml` for private key authentication. This file references secrets in its YAML view. The `PASSWORD` environment variable should be empty.
 
-* Use `ssh-chaos-with-pass.yaml` for password authentication. This file fetches the `PASSWORD` environment variable from the secret.
+- Use `ssh-chaos-with-pass.yaml` for password authentication. This file fetches the `PASSWORD` environment variable from the secret.
 
 :::tip
 If you use the default names for ConfigMap and secrets, you won't need to modify the experiment. If you use different names, update the respective environment variables with their names. For example, if your script file is `test.sh` instead of `script.sh`, update the `CHAOS SCRIPT PATH` environment variable with the correct value.
 :::
 
 ### Mandatory tunables
+
    <table>
         <tr>
             <th> Variables </th>
@@ -84,13 +88,51 @@ If you use the default names for ConfigMap and secrets, you won't need to modify
 HCE recommends using the format `env:{$ENV_NAME}` to pass confidential parameters. In this method, the environment variable is retrieved from a secure source (such as a secret). This ensures that the sensitive information remains uncompromised.
 :::
 
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: ssh-chaos
+spec:
+  definition:
+    scope: Namespaced # Supports "Cluster" mode too
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["deployments"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets"]
+    verbs: ["get", "list", "watch"]
+```
+
 ### Chaos script path
 
 Path to the chaos script (the chaos script is used to create the ConfigMap). Tune it by using the `CHAOS_SCRIPT_PATH` environment variable.
 
 The following YAML snippet illustrates the environment variable:
 
-[embedmd]:# (./static/manifests/ssh-chaos/chaos-script-path.yaml yaml)
+[embedmd]: # "./static/manifests/ssh-chaos/chaos-script-path.yaml yaml"
+
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -100,12 +142,12 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ssh-chaos
-    spec:
-      components:
-        env:
-        - name: CHAOS_SCRIPT_PATH
-          value: /tmp/chaos-script/chaos-script.sh
+    - name: ssh-chaos
+      spec:
+        components:
+          env:
+            - name: CHAOS_SCRIPT_PATH
+              value: /tmp/chaos-script/chaos-script.sh
 ```
 
 ### Abort script path
@@ -114,7 +156,8 @@ Path to the abort script (the abort script is used to create the ConfigMap). Tun
 
 The following YAML snippet illustrates the environment variable:
 
-[embedmd]:# (./static/manifests/ssh-chaos/abort-script-path.yaml yaml)
+[embedmd]: # "./static/manifests/ssh-chaos/abort-script-path.yaml yaml"
+
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -124,12 +167,12 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ssh-chaos
-    spec:
-      components:
-        env:
-        - name: ABORT_SCRIPT_PATH
-          value: /tmp/abort-script/abort-script.sh
+    - name: ssh-chaos
+      spec:
+        components:
+          env:
+            - name: ABORT_SCRIPT_PATH
+              value: /tmp/abort-script/abort-script.sh
 ```
 
 ### Chaos parameter
@@ -138,7 +181,8 @@ Parameter for the chaos script. Tune it by using the `CHAOS_PARAMETER` environme
 
 The following YAML snippet illustrates the environment variable:
 
-[embedmd]:# (./static/manifests/ssh-chaos/chaos-parameter.yaml yaml)
+[embedmd]: # "./static/manifests/ssh-chaos/chaos-parameter.yaml yaml"
+
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -148,15 +192,15 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ssh-chaos
-    spec:
-      components:
-        env:
-        - name: CHAOS_PARAMETER
-          value: "{\"parameters\":[{\"placeholder\":\"destination_ip\",
-                    \"data_type\":\"string\",\"value\":\"HOST_IP\"},
-                    {\"placeholder\":\"port\",\"data_type\":\"int\",
-                      \"value\":\"3258\"}]}"
+    - name: ssh-chaos
+      spec:
+        components:
+          env:
+            - name: CHAOS_PARAMETER
+              value: '{"parameters":[{"placeholder":"destination_ip",
+                "data_type":"string","value":"HOST_IP"},
+                {"placeholder":"port","data_type":"int",
+                "value":"3258"}]}'
 ```
 
 ### Abort parameter
@@ -165,7 +209,8 @@ Parameter for the abort script. Tune it by using the `ABORT_PARAMETER` environme
 
 The following YAML snippet illustrates the environment variable:
 
-[embedmd]:# (./static/manifests/ssh-chaos/abort-parameter.yaml yaml)
+[embedmd]: # "./static/manifests/ssh-chaos/abort-parameter.yaml yaml"
+
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -175,58 +220,67 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ssh-chaos
-    spec:
-      components:
-        env:
-        - name: ABORT_PARAMETER
-          value: "{\"parameters\":[{\"placeholder\":\"destination_ip\",
-                    \"data_type\":\"string\",\"value\":\"HOST_IP\"},
-                    {\"placeholder\":\"port\",\"data_type\":\"int\",
-                      \"value\":\"3258\"}]}"
+    - name: ssh-chaos
+      spec:
+        components:
+          env:
+            - name: ABORT_PARAMETER
+              value: '{"parameters":[{"placeholder":"destination_ip",
+                "data_type":"string","value":"HOST_IP"},
+                {"placeholder":"port","data_type":"int",
+                "value":"3258"}]}'
 ```
 
 :::tip
 Input parameters can be specified in different formats.
+
 1. Raw value format: `raw:{value}`. Example:
+
 ```yaml
 - name: CHAOS_PARAMETER
    value: "raw:{value}"
 ```
 
 2. Environment variable format: `env:{$ENV1}`. Example:
+
 ```yaml
 - name: CHAOS_PARAMETER
    value: "env:{$ENV1}"
 ```
 
 3. Combination format: `raw:{value},env:{$ENV1}`. Example:
+
 ```yaml
 - name: CHAOS_PARAMETER
    value: "raw:{value},env:{$ENV1}"
 ```
+
 :::
 
 ### Indicator types
 
 Comma-separated indicator types that allow for the customisation of parameter indicators. This customisation enhances the flexibility of parameter specification. Tune it by using the `INDICATOR_TYPES` environment variable.
 Customisable indicators include:
+
 1. `raw:` - String parameter
 2. `env:` - Environment variable parameter
 3. `$` - Variable
 
 Following are examples of default and customised formats:
+
 1. The default format is `raw:{HCE,CSV},env:{$OPERATION},raw:{para3}`.
-2. The customised format is `string:{HCE,CSV},environment:{&OPERATION},raw:{para3}`. 
+2. The customised format is `string:{HCE,CSV},environment:{&OPERATION},raw:{para3}`.
 
 To implement a customised format, set the `INDICATOR_TYPES` to `string,environment,&`. This setting allows modifying the indicators for `raw`, `environment`, and `$` values, thereby providing a tailored approach to parameter passing.
 
 ![chaos parameters](./static/images/ssh-chaos/chaos-parameter.png)
 
 ## Customising ConfigMap and Secret names
+
 SSH chaos is equipped to support custom names for ConfigMap and secrets by making a minor modification to the corresponding YAML file.
 
 Suppose you wish to name the ConfigMap names as `chaos-cm` and `abort-cm` instead of the default `chaos-script` and `abort-script`, update the section below in the **experiment builder**:
+
 ```yaml
 configMaps:
   - name: chaos-script
@@ -236,6 +290,7 @@ configMaps:
 ```
 
 to:
+
 ```yaml
 configMaps:
   - name: chaos-cm
