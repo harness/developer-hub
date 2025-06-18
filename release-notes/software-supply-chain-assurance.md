@@ -86,7 +86,7 @@ JFrog: `</your-repo/test-image>:tag`
 
 #### New features and enhancements
 
-- Added [Dashboards for License and Compliance Reports](/docs/software-supply-chain-assurance/reports/view-license-reports) to easily access detailed information about the licenses and compliance status associated with your software components at one place.
+- Added [Dashboards for License and Compliance Reports](/docs/software-supply-chain-assurance/open-source-management/dependencies/view-licenses) to easily access detailed information about the licenses and compliance status associated with your software components at one place.
 - Added [Artifact Signing and Verification](/docs/software-supply-chain-assurance/artifact-security/sign-verify/sign-artifacts) steps to sign artifacts and verify the signed artifacts before it gets deployed to ensure integrity and prevent tampering.
 - With Harness Internal Developer Portal (IDP) workflow now you can use a single GitHub connector at the account level and selectively onboard repositories to the project of your choice and automatically create scan pipelines to scan those repositories.
 - Secure attestation with Cosign using HashiCorp Vault, now supported via Vault Proxy with GCP Auth for enhanced security.

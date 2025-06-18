@@ -5,7 +5,7 @@ sidebar_position: 40
 ---
 
 
-This document provides a step-by-step guide on how to create SLSA Policies. For guidance on how to write these policies, please refer to the section on [write policy definitions](/docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies). To learn about implementing SLSA policies, follow the instructions in the section on [enforcing SLSA policies](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa#enforce-policies-on-slsa-provenance).
+This document provides a step-by-step guide on how to create SLSA Policies. For guidance on how to write these policies, please refer to the section on [write policy definitions](/docs/software-supply-chain-assurance/open-source-management/define-sbom-policies). To learn about implementing SLSA policies, follow the instructions in the section on [enforcing SLSA policies](/docs/software-supply-chain-assurance/artifact-security/slsa/verify-slsa#enforce-policies-on-slsa-provenance).
 
 ### Before you begin
 
@@ -30,7 +30,7 @@ You must create a set of OPA policies that you want Harness SCS to use for SLSA 
 
 :::info
 
-OPA policies used for SLSA Provenance verification are different from [SBOM policies](/docs/software-supply-chain-assurance/sbom-policies/create-sbom-policies) used for SBOM policy enforcement.
+OPA policies used for SLSA Provenance verification are different from [SBOM policies](/docs/software-supply-chain-assurance/open-source-management/create-sbom-policies) used for SBOM policy enforcement.
 
 :::
 

@@ -1,9 +1,10 @@
 ---
 title: Write policy definitions
 description: Learn how to write policy definitions for SBOM policy files.
-sidebar_position: 20
+sidebar_position: 22
 redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/define-ssca-policies
+  - /docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies
 ---
 
 When you [create SBOM policies](./create-sbom-policies.md), you define rules for open-source component usage based on criteria such as component name, version, license, PURL, and supplier.

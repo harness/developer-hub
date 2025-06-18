@@ -24,7 +24,7 @@ Here's a breakdown of the overall steps involved:
 
 
 1. Create an [OPA policy set](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)
-2. [Write policy definitions](/docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies)
+2. [Write policy definitions](docs/software-supply-chain-assurance/open-source-management/define-sbom-policies)
 3. [Enforce the policies on SBOM](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies#policy-configuration)
 4. View [policy violations](/docs/software-supply-chain-assurance/open-source-management/enforce-sbom-policies#view-policy-violations) and take actions
 
