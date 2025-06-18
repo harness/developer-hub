@@ -2,19 +2,23 @@
 id: gcp-vm-service-kill
 title: GCP VM service kill
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-service-kill
-- /docs/chaos-engineering/chaos-faults/gcp/gcp-vm-service-kill
+  - /docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-service-kill
+  - /docs/chaos-engineering/chaos-faults/gcp/gcp-vm-service-kill
 ---
+
 GCP VM service kill fault stops a given service for specified duration. As a consequence, the node becomes unschedulable and it transitions to **NotReady** state.
+
 - GCP VM service kill stops a target service on a node to make it unschedulable for a specific duration.
 - The node reverts to its original state and services resume after a specific duration. Sometimes, a new node replica may substitute the existing one.
 
 ![GCP VM service service kill](./static/images/gcp-vm-service-kill.png)
 
 ## Use cases
+
 GCP VM service kill fault assesses a GKE node's resilience by evaluating the service operating on it.
 
 ### Prerequisites
+
 - Kubernetes > 1.23
 - Cordon the node specified in the <code>VM_INSTANCE_NAMES</code> environment variable (the node for which the target service is killed) before executing the chaos fault. This ensures that the fault resources aren't scheduled on it or subject to eviction. You can achieve this using the following steps:
   - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
@@ -42,7 +46,9 @@ stringData:
   auth_provider_x509_cert_url:
   client_x509_cert_url:
 ```
+
 ### Mandatory tunables
+
    <table>
       <tr>
         <th> Tunable </th>
@@ -67,6 +73,7 @@ stringData:
     </table>
 
 ### Optional tunables
+
    <table>
       <tr>
         <th> Tunable </th>
@@ -105,14 +112,23 @@ stringData:
       </tr>
     </table>
 
+### IAM permissions
+
+Listed below are the IAM permissions leveraged by the fault:
+
+- `compute.instances.get`
+- `compute.instances.useSSH`
+
 ### Target GCP instances
+
 It selects the target instance using`VM_INSTANCE_NAMES` tunable in the given `GCP_PROJECT_ID` project.
 
 **GCP project ID**: The project ID which is a unique identifier for a GCP project. Tune it by using the `GCP_PROJECT_ID` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/gcp-vm-service-kill/gcp-instance.yaml yaml)
+[embedmd]: # "./static/manifests/gcp-vm-service-kill/gcp-instance.yaml yaml"
+
 ```yaml
 ## details of the GCP instance
 apiVersion: litmuschaos.io/v1alpha1
@@ -123,16 +139,16 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: gcp-vm-service-kill
-    spec:
-      components:
-        env:
-        # comma-separated list of vm instance names
-        - name: VM_INSTANCE_NAMES
-          value: 'instance-01'
-        # GCP project ID to which vm instance belongs
-        - name: GCP_PROJECT_ID
-          value: 'project-id'
+    - name: gcp-vm-service-kill
+      spec:
+        components:
+          env:
+            # comma-separated list of vm instance names
+            - name: VM_INSTANCE_NAMES
+              value: "instance-01"
+            # GCP project ID to which vm instance belongs
+            - name: GCP_PROJECT_ID
+              value: "project-id"
 ```
 
 ### Target service
@@ -141,7 +157,8 @@ Name of the target service to kill onxd the specified VM instance. Tune it by us
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/gcp-vm-service-kill/target-service.yaml yaml)
+[embedmd]: # "./static/manifests/gcp-vm-service-kill/target-service.yaml yaml"
+
 ```yaml
 # kill the target service on the target VM instance
 apiVersion: litmuschaos.io/v1alpha1
@@ -153,15 +170,15 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: gcp-vm-service-kill
-    spec:
-      components:
-        env:
-        # name of the target node
-        - name: SERVICE_NAME
-          value: 'containerd'
-        - name: VM_INSTANCE_NAMES
-          VALUE: 'instance-01'
+    - name: gcp-vm-service-kill
+      spec:
+        components:
+          env:
+            # name of the target node
+            - name: SERVICE_NAME
+              value: "containerd"
+            - name: VM_INSTANCE_NAMES
+              VALUE: "instance-01"
 ```
 
 ### Mask
@@ -170,7 +187,8 @@ You can also mask a service before stopping it. Tune it by using the `MAKE` envi
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/gcp-vm-service-kill/mask-service.yaml yaml)
+[embedmd]: # "./static/manifests/gcp-vm-service-kill/mask-service.yaml yaml"
+
 ```yaml
 # mask a service before stopping it
 apiVersion: litmuschaos.io/v1alpha1
@@ -182,12 +200,12 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: gcp-vm-service-kill
-    spec:
-      components:
-        env:
-        - name: MASK
-          value: 'enable'
-        - name: SERVICE_NAME
-          VALUE: 'containerd'
+    - name: gcp-vm-service-kill
+      spec:
+        components:
+          env:
+            - name: MASK
+              value: "enable"
+            - name: SERVICE_NAME
+              VALUE: "containerd"
 ```
