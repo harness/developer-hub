@@ -14,7 +14,7 @@ Harness's RBAC system enables you to precisely manage the user access to specifi
 
 ## RBAC for Remediation Tracker
 
-The configuration of RBAC for the Remediation Tracker is possible at three levels: Account, [Organization](/docs/software-supply-chain-assurance/rbac#organization), and [Project](/docs/software-supply-chain-assurance/rbac#project).
+The configuration of RBAC for the Remediation Tracker is possible at three levels: Account, [Organization](/docs/software-supply-chain-assurance/settings/rbac#organization), and [Project](/docs/software-supply-chain-assurance/settings/rbac#project).
 
 ### Creating and Managing Roles
 
