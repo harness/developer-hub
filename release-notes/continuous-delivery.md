@@ -77,6 +77,8 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Harness now supports **filtering pipeline executions by build ID**, enabling users to quickly locate a specific run without endless scrolling. Currently, this feature is behind the feature flag `PIPE_EXECUTION_ID_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-25317**)
 
+- Harness now supports all authentication methods for cross-project access with the GCP connector in both Kubernetes and native Helm environments. Currently, this feature is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
 #### Fixed Issues
 
 - Previously, the ASG Wait for Steady State step did not handle failed statuses returned by the AWS Instance Refresh API, causing it to continue polling indefinitely. The issue is resolved, and failed statuses now cause the step to terminate with an appropriate error. (**CDS-110706**)
