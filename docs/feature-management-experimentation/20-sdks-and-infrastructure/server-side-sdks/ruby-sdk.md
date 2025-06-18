@@ -12,6 +12,12 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our Ruby SDK. All of our SDKs are open source. Go to our [Ruby SDK GitHub repository](https://github.com/splitio/ruby-client) to learn more.
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 8.6.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Initialization
 
 ### 1. Import the SDK into your project

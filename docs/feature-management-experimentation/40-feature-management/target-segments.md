@@ -13,7 +13,7 @@ Once you create a feature flag, you can [create feature flag targeting rules](/d
 
 [Segments](/docs/feature-management-experimentation/feature-management/segments) are lists of user IDs. On your feature flag Definition tab, you can create targeting rules that assign treatments to segments.
 
-This article shows how to target Standard segments and Large segments in your individual targeting rules and in attribute based targeting rules.
+This article shows how to target Standard, Large, and Rule-based segments in your individual targeting rules and in attribute based targeting rules.
 
 ___Tip:___ If you don't see a segment appear when you type its name in the segment input field, it may be that the segment is not [defined](/docs/feature-management-experimentation/feature-management/segments#adding-user-ids-to-a-segment) for the given FME environment.
 
@@ -33,7 +33,7 @@ After you select a segment, you can see the segment type indicated by the input 
 
 ## Attribute based targeting rules
 
-You can also target Standard segments and Large segments in attribute based targeting rules. The following example is equivalent to the individual targeting rule shown above.
+You can also target Standard, Large, and Rule-based segments in attribute based targeting rules. The following example is equivalent to the individual targeting rule shown above.
 
 ![](./static/target-segments-attribute-based-targeting.png)
 
