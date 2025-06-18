@@ -22,6 +22,16 @@ Once you have installed the delegate in your environment, select **Verify** in t
 
 This means Harness is waiting for the delegate you installed to register. Registration can take a few minutes. Once the delegate registers, the **Verify** screen will indicate that the delegate is running.
 
+:::danger Important Note
+
+After installation, if the delegate goes into a disconnected state, Harness applies a Time-To-Live (TTL) policy:
+
+- Delegate – 6 hours: If a delegate remains disconnected and does not send heartbeats for 6 hours, it is considered expired and will no longer appear on the Delegates page in Harness.
+
+- Delegate Group – 7 days: If no delegates in a group are active for 7 consecutive days, the entire group will be removed from the Delegates page in Harness.
+
+:::
+
 ### Verify delegate registration manually
 
 The Verify screen also includes troubleshooting steps. Here are a few of the steps for the Kubernetes delegate.

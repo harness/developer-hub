@@ -144,6 +144,14 @@ Developers often need to create delegates in multiple clusters in their environm
 
 For more information, go to [Automate delegate installation](../platform/delegates/install-delegates/automate-delegate-installation.md).
 
+### What happens when a delegate is disconnected?
+
+When a delegate is disconnected, Harness applies a Time-To-Live (TTL) policy:
+
+- Delegate – 6 hours: If a disconnected delegate doesn't reconnect within 6 hours, it is considered expired and will no longer appear on the Delegates page in the Harness UI.
+
+- Delegate Group – 7 days: If a delegate group has no active delegates for 7 consecutive days, the group is considered inactive and will be removed from the Harness UI.
+
 ## Delegate requirements
 
 ### What are the delegate system requirements?
