@@ -12,6 +12,7 @@ This page describes how to download content, visualizations or data, from the **
 
 * Download Data from a Dashboard
 * Download Data from a Dashboard Tile
+* Download Data from a Dashboard via direct API integration
 
 ### Before you begin
 
@@ -102,3 +103,29 @@ You can choose to download the following By Harness CCM Dashboards:
 * [View AWS EC2 Inventory Cost Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md)
 * [View AWS EC2 Instance Metrics Dashboard](../../cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-instance-metrics.md)
 
+
+### Downloading Dashboard data via Harness API
+
+Harness provides API endpoints for managing asynchronous download tasks for data within Dashboard Elements.
+
+#### Authentication
+
+You will need to set up a Harness API Key in order to make use of this process, see the document below for help with getting started:
+* [Manage API Key](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/)
+
+#### How to download Dashboard Element data via the Harness API
+
+To download the data within a specific Dashboard Element, follow the steps below:
+
+1. [GET - Dashboard Elements](https://apidocs.harness.io/tag/dashboards#operation/get_dashboard_elements)
+	* To get a list of elements within a Dashboard.
+	* Copy the `id` of the particular element you wish to download the data of.
+2. [POST - Create Download Dashboard Element Task](https://apidocs.harness.io/tag/downloads#operation/create_dashboard_element_download_task)
+	* This begins an asynchronous task that prepares the data of the specified dashboard element for download.
+ 	* Copy the `task_id` that is returned.
+3. [GET - Download Task Status](https://apidocs.harness.io/tag/downloads#operation/get_download_task_status)
+	* Periodically poll this with the `task_id` in order to check the status of the download task.
+	* When a status of `success` is returned, you can proceed to the next step.
+4. [GET - Download Dashboard Element Task Results](https://apidocs.harness.io/tag/downloads#operation/get_dashboard_element_download_task_results)
+	* Run this only after the task status returns as `success`
+ 	* The results are can be downloaded as a stream in the format of `application/zip`
