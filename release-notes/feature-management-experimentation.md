@@ -17,6 +17,31 @@ These release notes describe recent changes to Harness Feature Management & Expe
 
 ## June 2025
 
+### [New Feature] Support for rule-based segments
+----
+#### 2025-06-18
+
+You can now define rule-based segments in Harness FME. These dynamic segments allow you to group users based on custom attribute conditions (such as location, plan type, or usage behavior) instead of maintaining static user ID lists. Rule-based segments are evaluated in real time during flag evaluation, helping you target users more flexibly and reduce manual maintenance.
+
+This feature is especially useful when working with large user segments, as they help improve maintainability and reduce performance overhead compared to managing long lists of individual user IDs.
+
+#### Related documentation
+
+- [Create a segment](/docs/feature-management-experimentation/feature-management/segments/)
+- [Target segments](/docs/feature-management-experimentation/feature-management/target-segments/)
+- [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk)
+- [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk)
+- [Browser Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite)
+- [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk)
+- [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk)
+- [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk)
+- [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk)
+- [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk)
+- [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk)
+- [NodeJS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk)
+- [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk)
+- [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk)
+
 ### [New Feature] Experiment Tags
 ----
 #### 2025-06-16
