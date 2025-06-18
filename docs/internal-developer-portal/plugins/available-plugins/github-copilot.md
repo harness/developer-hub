@@ -1,7 +1,6 @@
 ---
 title: GitHub Copilot Plugin
 description: Learn how to configure and use the GitHub Copilot plugin to view usage insights in Harness Internal Developer Portal (IDP).
-sidebar_position: 1
 tags:
   - copilot
   - github
@@ -22,7 +21,7 @@ keywords:
 
 ## Overview
 
-The **Copilot plugin** provides GitHub Copilot Enterprise insights directly within Harness IDP. It helps visualize Copilot usage metrics such as:
+The **Github Copilot plugin** provides GitHub Copilot Enterprise insights directly within Harness IDP. It helps visualize Copilot usage metrics such as:
 
 - Suggestion acceptance rates  
 - Language-wise usage distribution  
@@ -47,7 +46,6 @@ These insights help engineering teams assess the adoption and effectiveness of G
 
 ### Application Configuration YAML
 
-To enable the plugin, add the following section to your `app-config.yaml`:
 
 ```yaml
 copilot:
@@ -61,7 +59,7 @@ copilot:
   host: github.com
   enterprise: wings-software
   organization: Harness
-````
+```
 
 :::info 
 Update the `host`, `enterprise`, and `organization` values to match your GitHub Copilot Enterprise setup.
@@ -114,5 +112,4 @@ Update your layout config in the Admin Panel under `Layout > Sidenav Layout` lik
 ## Annotations
 
 * No specific annotations are required.
-* Ensure entities are **properly cataloged** so they appear correctly within the portal.
 
