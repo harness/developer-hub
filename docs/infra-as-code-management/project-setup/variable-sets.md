@@ -7,7 +7,10 @@ sidebar_position: 10
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-**Connectors and Variables** allows you to define inputs and integrations required by your workspace before running Plan, Apply, or Drift detection pipelines. This includes connecting to cloud providers, injecting variable values, and referencing files from Git repositories.
+**Connectors and Variables** define the full set of inputs and integrations your workspace uses when running Plan, Apply, or Drift detection pipelines. This combined configuration is known as a **variable set**, and it includes:
+- Connectors for authenticating with cloud providers or Git
+- Environment variables and Terraform variables
+- Variable files stored in version control
 
 ---
 
