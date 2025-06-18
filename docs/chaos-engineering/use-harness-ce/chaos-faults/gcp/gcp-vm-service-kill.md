@@ -117,8 +117,7 @@ stringData:
 Listed below are the IAM permissions leveraged by the fault:
 
 - `compute.instances.get`
-- `compute.instances.stop`
-- `compute.instances.start`
+- `compute.instances.useSSH`
 
 ### Target GCP instances
 
