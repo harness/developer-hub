@@ -19,6 +19,12 @@ This SDK supports the following .NET platform versions:
   - .NET Core 2.x and 3.x
   - .NET 8, .NET 7, .NET 6 and .NET 5
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 7.11.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Initialization
 
 :::warning[Important!]

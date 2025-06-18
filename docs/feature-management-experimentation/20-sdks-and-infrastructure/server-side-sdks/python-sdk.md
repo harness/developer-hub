@@ -16,6 +16,12 @@ This guide provides detailed information about our Python SDK. All of our SDKs a
 
 The Python SDK supports Python 3 (3.7.16 or later).
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 10.3.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Multi-thread, multi-process and asyncio modes support
 
 One of Python's great built-in features is the ability to parallelize your code to optimize the execution-performance of any module. You can implement your project in a multi-threaded, multi-process or asyncio mode, depending on what works best for you and your team.
