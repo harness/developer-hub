@@ -13,12 +13,6 @@ However, since this is supported for centralised notification, we need `PL_CENTR
 
 Users can create custom notification templates, allowing them to customise notification content and reuse templates within **Centralised Pipeline Notifications**. Templates support Pipeline Expressions and RBAC controls, ensuring flexibility and security.
 
-This feature is especially useful when you want to:
-
-- Include specific information such as pipeline variables, stage outputs, or build inputs in the notification.
-- Send trimmed-down notifications that contain only the most relevant information.
-- Format notifications to align with internal standards or predefined payload structures.
-
 This enhancement allows you to **attach a Custom Notification Template** to a notification rule and override the default message format with a custom webhook payload.
 
 Custom templates give you control over the structure and content of the notification, support dynamic expressions (like pipeline and stage variables), and enable reuse across multiple pipelines.
@@ -30,10 +24,9 @@ You can set up custom notification template for Pipeline notification at followi
 ## Setting Up Notifications Template
 
 :::info note
-1. Custom Notification templates will work only for webhook notifications.
-2. Custom Notification templates support usage of template variables.
-3. Custom Notification templates will be an inline entity, meaning they cannot be stored in Git.
-4. All Pipeline and Stage-level variables are supported. If an expression cannot be resolved, it will return an empty string.
+- Custom Notification templates support usage of template variables.
+- Custom Notification templates will be an inline entity, meaning they cannot be stored in Git.
+- All Pipeline and Stage-level variables are supported. If an expression cannot be resolved, it will return an empty string.
 ```json
 {
   "pipeline name": "pipeline",
@@ -50,7 +43,7 @@ In this example, we are going to discuss setting up custom notification template
 
 <iframe 
   src="https://app.tango.us/app/embed/fc86f283-ef3a-4199-88a1-8de92b845754"
-  style={{ minHeight: '960px', maxWidth: '800px', width: '100%' }}
+  style={{ minHeight: '800px'}}
   sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
   security="restricted"
   title="Creating a Notification Template in Harness"
@@ -159,16 +152,247 @@ This lets you replace the default notification message with a tailored structure
 
 ### How to attach a template
 
-When configuring a **pipeline-level notification rule**, click on **Notify** in the right panel of the Pipeline Studio, and follow the existing flow until you reach the **Notification Templates** step:
+When configuring a **pipeline-level notification rule**, click on **Notify** in the right panel of the Pipeline Studio, and follow the existing flow of [Creating a custom notification](/docs/platform/notifications/custom-notification) until you reach the **Notification Templates** step:
 
-1. Under the **Notification Templates** tab:
+Under the **Notification Templates** tab:
    - Select your custom notification template.
    - If the template includes **runtime variables**, you’ll be prompted to provide values for those inputs.
 
    ![](./static/customised-notifiy-1.png)
 
-:::info
-Custom notification templates are supported **only for webhook notification methods**. Templates cannot be used with Email, Slack, Teams, or PagerDuty.
+Each notification method will have different format of payload. So, you need to create a custom notification template for each notification method.
+
+Here are the notification methods and their sample payload format:
+
+<details>
+<summary>Email</summary>
+
+Here is a sample template format for Email:
+
+```yaml
+subject: ${PIPELINE} ${EVENT_TYPE}
+body: ${OUTER_DIV}${COLOR};"><div style="font-size:15px;">Pipeline <a href="${URL}" target="_blank" style="text-decoration:none;color:#1A89BF;"><b>${PIPELINE}</b></a> ${NODE_STATUS} <br> triggered by <b>${USER_NAME}</b></div><div><i>Started on ${START_DATE} and ${EVENT_TYPE} on ${END_DATE}</i><br>Execution URL ${URL}<div><span><img src="https://s3.amazonaws.com/wings-assets/slackicons/${IMAGE_STATUS}.png" height="13" width="13" style="padding-right:5px; padding-top:5px;"></span><span style="color:gray; display:inline-block; vertical-align:top; margin-top:4px;"> ${DURATION}s</span></div></div></div>
+```
+
+
+</details>
+
+<details>
+<summary>datadog</summary>
+
+Here is a sample template format for datadog:
+
+```json
+{
+    "title": "Pipeline Event for ${PIPELINE}",
+    "text": "Pipeline ${PIPELINE} ${NODE_STATUS}",
+    "tags": [
+        "pipeline:${PIPELINE}",
+        "project:${PROJECT_IDENTIFIER}",
+        "org:${ORG_IDENTIFIER}",
+        "ExecutionUrl:${URL}",
+        "status:${NODE_STATUS}",
+        "event_type:${EVENT_TYPE}",
+        "start_date:${START_DATE}",
+        "end_date:${END_DATE}",
+        "duration:${DURATION_READABLE}",
+        "image_status:${IMAGE_STATUS}",
+        "color:${COLOR}"
+    ],
+    "aggregation_key": "${PIPELINE}",
+    "priority": "normal",
+    "alert_type": "info",
+    "source_type_name": "harness_notifications"
+}
+```
+
+</details>
+
+<details>
+<summary>Microsoft Teams</summary>
+
+Here is a sample template format for Microsoft Teams:
+
+```json
+{
+  "@type": "MessageCard",
+  "themeColor": "#FFFFFF",
+  "summary": "${EVENT_TYPE}",
+  "sections": [
+    {
+      "activityTitle": "Pipeline [${PIPELINE}](${URL}) ${NODE_STATUS}",
+      "activitySubtitle": "In Project ${PROJECT_IDENTIFIER}",
+      "activityImage": "https://s3.amazonaws.com/wings-assets/slackicons/${IMAGE_STATUS}.png",
+      "facts": [
+             {
+                  "name": "Pipeline",
+                  "value": "${PIPELINE}"
+             },
+             {
+                  "name": "Project",
+                  "value": "${PROJECT_IDENTIFIER}"
+             },
+              {
+                  "name": "TriggeredBy",
+                  "value": "${USER_NAME}"
+              },
+             {
+                  "name": "Events",
+                  "value": "Pipeline started on ${START_DATE}, ${NODE_STATUS} at ${END_DATE}. Took ${DURATION}s"
+             },
+             {
+                  "name": "Execution",
+                  "value": "[${URL}](${URL})"
+             },
+      ],
+    }
+  ]
+}
+```
+
+Here is a sample template format for Microsoft Teams workflow:
+
+```json
+{
+   "type": "message",
+   "attachments": [
+      {
+         "contentType": "application/vnd.microsoft.card.adaptive",
+         "content": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.2",
+            "body": [
+               {
+                  "type": "Image",
+                  "url": "https://s3.amazonaws.com/wings-assets/slackicons/${IMAGE_STATUS}.png",
+                  "size": "Small"
+               },
+               {
+                  "type": "TextBlock",
+                  "size": "Medium",
+                  "weight": "Bolder",
+                  "text": "Pipeline [${PIPELINE}](${URL}) ${NODE_STATUS}",
+                  "wrap": true
+               },
+               {
+                  "type": "TextBlock",
+                  "text": "In Project ${PROJECT_IDENTIFIER}",
+                  "isSubtle": true,
+                  "wrap": true
+               },
+               {
+                  "type": "FactSet",
+                  "facts": [
+                     {
+                        "title": "Pipeline:",
+                        "value": "${PIPELINE}"
+                     },
+                     {
+                        "title": "Project:",
+                        "value": "${PROJECT_IDENTIFIER}"
+                     },
+                     {
+                        "title": "Triggered By:",
+                        "value": "${USER_NAME}"
+                     },
+                     {
+                        "title": "Events:",
+                        "value": "Pipeline started on ${START_DATE}, ${NODE_STATUS} at ${END_DATE}. Took ${DURATION}s"
+                     },
+                     {
+                        "title": "Execution:",
+                        "value": "[View Execution](${URL})"
+                     }
+                  ]
+               }
+            ],
+            "actions": [
+               {
+                  "type": "Action.OpenUrl",
+                  "title": "View Details",
+                  "url": "${URL}"
+               }
+            ]
+         }
+      }
+   ]
+}
+```
+
+</details>
+
+<details>
+<summary>Slack</summary>
+
+Here is a sample template format for Slack:
+
+```json
+{
+    "text" : "*Pipeline <${PIPELINE_URL}|${PIPELINE}> <${URL}|${NODE_STATUS}>*\n",
+    "attachments" : [
+        {
+          "color" : "${COLOR}",
+          "blocks" : [
+            {
+              "type" : "section",
+              "text" : {
+                "type" : "mrkdwn",
+                "text": "*Pipeline:* <${PIPELINE_URL}|${PIPELINE}>\n*Triggered by:* ${USER_NAME}\n _Started<!date^${START_TS_SECS}^ {date_short_pretty} at {time}| ${START_DATE}> and ${EVENT_TYPE} at <!date^${END_TS_SECS}^{time}|${END_DATE}>_. Took ${DURATION_READABLE}."
+              }
+            },
+            {
+              "type" : "context",
+              "elements" : [
+                {
+                  "type" : "image",
+                  "image_url" :
+                      "https://s3.amazonaws.com/wings-assets/slackicons/${IMAGE_STATUS}.png",
+                  "alt_text" : "${NODE_STATUS}"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "*<${URL}|Open Execution>*"
+                }
+              ]
+            }
+          ]
+        }
+    ]
+}
+```
+
+</details>
+
+<details>
+<summary>PagerDuty</summary>
+
+Here is a sample template format for PagerDuty:
+
+```STRING
+summary: "${EVENT_TYPE}: ${PIPELINE}, triggered by ${USER_NAME}. Started on ${START_DATE} and ${EVENT_TYPE} on ${END_DATE} with duration ${DURATION}."
+link:
+    href: harness.io
+    text: Harness
+```
+
+</details>
+
+<details>
+<summary>Webhook</summary>
+
+Here is a sample template format for Webhook:
+
+```json
+{
+    "eventData" : ${WEBHOOK_EVENT_DATA}
+}
+```
+
+</details>
+
+:::warning
+Each notification method has its own payload format. Ensure that your custom template matches the expected format for the notification method you are using. Any mismatch in the payload format will result in the notification sent in the default format.
 :::
 
 Once applied, the custom template overrides the default webhook payload sent during pipeline execution.
@@ -181,15 +405,17 @@ If a runtime variable is declared in the template, you will be prompted to **ent
 
 Use the following expression format to reference these variables in your template body: `<+notification.variables.testVar>`
 
-You can also access the event type that triggered the notification using: `<+notification.eventType>`
+You can access the event type that triggered the notification using: `<+notification.eventType>`
+
+In case of failure, you can use the expression `<+notification.errorMessage>` to view failure information for the pipeline/stage/step.
 
 ## Reconciliation of Notification Rules
 
 If you update a notification template by **adding new runtime variables** after it has already been attached to a notification rule, you may need to reconcile the rule to ensure those inputs are provided during execution.
 
-### Pipeline-level Notifications (via CNT tab)
+### Pipeline-level Notifications (via Custom Notification tab)
 
-When a template used in a **pipeline-level notification rule configured through the Notify (CNT) tab** is updated, a **warning message** will appear when you attempt to run the pipeline:
+When a template used in a **pipeline-level notification rule configured through the Custom Notification tab** is updated, a **warning message** will appear when you attempt to run the pipeline:
 
 - "Entities referenced in this pipeline have been updated. Please reconcile and save the pipeline to run the latest version."
 
