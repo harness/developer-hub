@@ -3,6 +3,7 @@ title: Entity caching with Git Experience
 description: Improve load times for remote entities, with caching.
 sidebar_position: 4
 ---
+import GitXconnect from '/docs/platform/shared/gitx-connectivity.md'
 
 Entity caching reduces delays in loading your remote entities on the Harness UI. The Harness UI maintains a local cache to reduce delays in loading your remote entities. Caching is especially useful when there are multiple levels of nesting, such as those involving pipeline templates, stage templates, and step templates. Loading such nested entities can be time-consuming involving numerous network calls, thereby reducing the performance.
 
@@ -20,6 +21,11 @@ You can reload the entities from Git and update the cache at any time.
 Caching occurs with git entities (GitHub, Bitbucket, etc) where a webhook has been established.  For example, setting up a webhook as a part of [the GitX Bi-directional sync](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/#setup-via-webhooks-page) or a webhook as a part of [Bitbucket Caching](https://developer.harness.io/kb/continuous-delivery/articles/bitbucket-api-limit/#setting-up-a-webhook-for-caching)
 
 Please note that caching occurs for each webhook created on a **per repo** basis.  Every repo that is storing entities needs its own webhook in order to establish caching.  
+
+## Caching entities saved on multiple branches
+
+To ensure isolation between caches for different entities for different branches, the cache for each entity is maintained separately for each branch. 
+For example, if you have a stage template saved in separate branches in Git, Harness maintains a separate cache corresponding to each branch for the stage template. When this stage template is encountered during your entity fetch, the cache corresponding to a unique key is requested from the server. The server then looks for a cache with this key and returns the cache (if available). 
 
 ## Entity cache life cycle 
 
@@ -53,10 +59,7 @@ Harness UI uses the following cache life cycle to render a remote entity:
 
    For example, if you open a remote pipeline whose cache has expired, the backend updates its cache based on the latest Git version.
    
-## Caching entities saved on multiple branches
-
-To ensure isolation between caches for different entities for different branches, the cache for each entity is maintained separately for each branch. 
-For example, if you have a stage template saved in separate branches in Git, Harness maintains a separate cache corresponding to each branch for the stage template. When this stage template is encountered during your entity fetch, the cache corresponding to a unique key is requested from the server. The server then looks for a cache with this key and returns the cache (if available). 
+<GitXconnect />
 
 ## Committing changes
 
@@ -71,22 +74,3 @@ You can do one of the following when there are differences:
 
 ![](../git-experience/static/CacheDiff.png)
 
-## Connectivity loss
-Customers may be naturally curious as to what may happen in the event of a potential network outage between Harness and the entity repository provider.  In this case, there are several scenarios to consider.  In general, while the connectivity is broken, Harness will utilize the "locked" cached version of the entity.
-
-### Updates to remote entities at the remote entity repo
-If autocreation is enabled, the new entities will not be created automatically and will have to be imported manually.  Another option would be for customers to recreate the file once the connectivity is fixed. For existing entities, we provide an option to `Reload from Git` where customers can manually reload from the repository once the connectivity is fixed.
-
-![](./static/entitycache-reloadfromgit.png)
-
-At a base level, in case the entities `.yaml` files are updated on the remote repository while the connection is broken, the webhook event will never reach Harness and the cache that we maintain will never be updated. Customers should be able to see the attempt to reach Harness and a failure to reach Harness within the repo logs.
-
-### Updates to remote entities from the Harness UI
-If the connectivity is broken, customers will not be able to make changed to the entity locally.  The create/edit/delete operation will fail and the cache will not be updated.  The following error message may be seen when attempt to make an update.  This is because as a part of storing a remote entity, Harness cannot update the remote entity at the repo, resulting in the failure.
-
-![](./static/entitycache-brokenconnection.png)
-
-### Harness Executions (no changes or updates)
-For existing entities, if the connectivity is broken, the pipeline will continue running and reference last cache version of the entities during execution. This includes any remote entities that were kept in the remote repo.
-
-Any updates made during the downtime period will not be reflected in the execution.  Basically, the cache has an effective "locked" state.  
