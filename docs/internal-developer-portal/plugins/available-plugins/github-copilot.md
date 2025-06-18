@@ -56,9 +56,10 @@ copilot:
       minutes: 2
     initialDelay:
       seconds: 15
-  host: github.com
-  enterprise: wings-software
-  organization: Harness
+host: github.com  # or ghe.myenterprise.com
+organization: githubOrg
+# enterprise: enterpriseName  (if you are on GitHub enterprise)
+
 ```
 
 :::info 
