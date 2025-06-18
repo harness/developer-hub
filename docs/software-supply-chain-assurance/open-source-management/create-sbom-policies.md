@@ -62,7 +62,7 @@ To create an SBOM Policy Set, follow these steps:
 3. Name the policy set and choose “SBOM” for the “Entity Type that this policy set applies to” field.
 
 
-![SBOM Entity type selection](./static/SBOM-entity-type-selection.png "SBOM Entity type selection")
+![SBOM Entity type selection](./static/sbom-entity-type-selection.png "SBOM Entity type selection")
 
 
 Set the "On what event should the policy set be evaluated" option to "On Step" and click continue.
