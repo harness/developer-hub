@@ -29,6 +29,8 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 - Removed delegate selectors as a mandatory field from the API configuration for setting up the VM infra in [RSPM pipeline infra](https://apidocs.harness.io/tag/PipelineInfraConfig) configuration.([ZD-81509](https://harnesssupport.zendesk.com/agent/tickets/81509))
 
+- For SBOM Drift, the **Detect drift from baseline** option has been removed from the SBOM orchestration step for artifacts.
+
 
 #### Fixed Issues
 
