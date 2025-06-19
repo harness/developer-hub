@@ -780,42 +780,6 @@ Yes, users have the option to create budgets without alerts. However, it is reco
 
 Yes, users can accomplish this by creating a Yearly budget and selecting the monthly breakdown option. This allows for a historical view without the need for monthly adjustments.
 
-### What is FinOps in Harness?
-
-FinOps, short for Financial Operations, in Harness refers to the practice of managing cloud costs effectively within the Harness platform. It involves optimizing cloud spending, budgeting, forecasting, and allocation of resources to ensure efficient utilization of cloud resources while controlling costs.
-
-#### Why is the total savings not displayed for one of my auto-saving rules for RDS in Harness?
-To resolve this, you may need to check the configuration of your auto-saving rule and ensure that it is correctly set up to calculate and display the total savings.
-
-
-#### What should I tag my instances with to be shut down by the stop-after-hours Rule?
-To ensure that your instances are shut down by the "stop-after-hours" Rule, you should tag them with a specific tag that the Rule will recognize. Typically, this tag should be defined in the Rule's configuration, and you should use the exact tag specified there when tagging your instances.
-
-#### What does the "No Cluster Name" entity represent in Cloud Cost Management?
-The "No Cluster Name" entity appears in the visualization when there are costs that cannot be attributed to a specific cluster. This typically occurs with orphaned resources or when costs are associated with a deleted cluster.
-
-#### How can I filter out the "No Cluster Name" entity at the cost category level?
-To filter out the "No Cluster Name" entity, you can create a new cost category and define a rule that excludes costs where the cluster name is "No Cluster Name."
-
-#### What are the steps to create a new cost category and define the rule?
-Navigate to the Cloud Cost Management module and select "Cost Categories" from the left-hand menu.
-Click on the "Create Cost Category" button and provide a name for your cost category.
-Choose the appropriate cloud provider and click on "Add Rule" under the "Rules" section.
-Select "Cluster Name" as the attribute, "is not" as the operator, and enter "No Cluster Name" as the value.
-Click on "Save Rule" and then "Save Cost Category" to finalize the configuration.
-
-#### How can I use the new cost category in my perspective to exclude the "No Cluster Name" entity?
-Once you have created the new cost category, you can use it in your perspective instead of the default cost category. This will automatically exclude the "No Cluster Name" entity from the visualization.
-By following these steps, you can effectively manage and exclude the "No Cluster Name" entity from your Cloud Cost Management visualization, ensuring more accurate cost attribution and analysis.
-
-#### How do we create an annual budget with a monthly breakdown?
-
-To create an annual budget with a monthly breakdown, you need to select the budget breakdown as Monthly while creating the budget. There is a budget breakdown option which you have to select as Monthly while creating the budget. Otherwise, the monthly breakdown won’t be available.
-
-#### When we set a budget in the CCM module, is there a way to incorporate discounts?
-
-Yes, since budgets are based on Perspectives, we can also incorporate built-in cloud discounts.
-
 ### Budget Schedule
 #### When does the budget alert process run? How often does the budget job run and alerts get processed?
 For yearly, quarterly, monthly and weekly budgets, the budget alerts job runs once a day at (6:30 am PST)
@@ -851,3 +815,40 @@ Yes, but there are certain constraints. For example if today is Dec 15th, the bu
 Now say at 9 AM, the costs for the 13th exceed 80% of threshold but < 100% threshold, then alert will be sent for 80% threshold. Now let’s say at 1pm the same day, the cost for the 13th gets refreshed and now it breaches 100% threshold, another alert will be sent out for 100% threshold.
 
 Once the day is over, we don’t reprocess the Dec 13th data even if cost for that day changes in future.  The Dec 14th data will continue to be processed for 1 more day
+
+
+## What is FinOps in Harness?
+
+FinOps, short for Financial Operations, in Harness refers to the practice of managing cloud costs effectively within the Harness platform. It involves optimizing cloud spending, budgeting, forecasting, and allocation of resources to ensure efficient utilization of cloud resources while controlling costs.
+
+#### Why is the total savings not displayed for one of my auto-saving rules for RDS in Harness?
+To resolve this, you may need to check the configuration of your auto-saving rule and ensure that it is correctly set up to calculate and display the total savings.
+
+
+#### What should I tag my instances with to be shut down by the stop-after-hours Rule?
+To ensure that your instances are shut down by the "stop-after-hours" Rule, you should tag them with a specific tag that the Rule will recognize. Typically, this tag should be defined in the Rule's configuration, and you should use the exact tag specified there when tagging your instances.
+
+#### What does the "No Cluster Name" entity represent in Cloud Cost Management?
+The "No Cluster Name" entity appears in the visualization when there are costs that cannot be attributed to a specific cluster. This typically occurs with orphaned resources or when costs are associated with a deleted cluster.
+
+#### How can I filter out the "No Cluster Name" entity at the cost category level?
+To filter out the "No Cluster Name" entity, you can create a new cost category and define a rule that excludes costs where the cluster name is "No Cluster Name."
+
+#### What are the steps to create a new cost category and define the rule?
+Navigate to the Cloud Cost Management module and select "Cost Categories" from the left-hand menu.
+Click on the "Create Cost Category" button and provide a name for your cost category.
+Choose the appropriate cloud provider and click on "Add Rule" under the "Rules" section.
+Select "Cluster Name" as the attribute, "is not" as the operator, and enter "No Cluster Name" as the value.
+Click on "Save Rule" and then "Save Cost Category" to finalize the configuration.
+
+#### How can I use the new cost category in my perspective to exclude the "No Cluster Name" entity?
+Once you have created the new cost category, you can use it in your perspective instead of the default cost category. This will automatically exclude the "No Cluster Name" entity from the visualization.
+By following these steps, you can effectively manage and exclude the "No Cluster Name" entity from your Cloud Cost Management visualization, ensuring more accurate cost attribution and analysis.
+
+#### How do we create an annual budget with a monthly breakdown?
+
+To create an annual budget with a monthly breakdown, you need to select the budget breakdown as Monthly while creating the budget. There is a budget breakdown option which you have to select as Monthly while creating the budget. Otherwise, the monthly breakdown won’t be available.
+
+#### When we set a budget in the CCM module, is there a way to incorporate discounts?
+
+Yes, since budgets are based on Perspectives, we can also incorporate built-in cloud discounts.
