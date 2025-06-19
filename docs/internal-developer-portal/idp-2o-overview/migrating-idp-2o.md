@@ -309,6 +309,7 @@ Here's how you can get hands-on with the new IDP 2.0 functionality:
 5. Understand the **[Scopes, Roles, and Permissions](/docs/internal-developer-portal/rbac/scopes.md)** hierarchy in IDP 2.0
 6. Configure **[Catalog RBAC](/docs/internal-developer-portal/rbac/catalog-rbac.md)**
 7. Set up **[Workflow RBAC](/docs/internal-developer-portal/rbac/workflow-rbac.md)**
+8. Use the **[Harness IDP Git Experience](/docs/internal-developer-portal/git-experience/gitx-journey.md)** feature to store entity YAMLs in Git. 
 
 
 

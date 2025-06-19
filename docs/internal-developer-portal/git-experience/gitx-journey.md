@@ -1,6 +1,6 @@
 ---
 title: Git Experience for Harness IDP
-description: Step-by-step guide on how users interact with the Git Experience (GitX) feature in Harness IDP.
+description: Step-by-step guide on using the Git Experience feature with Harness IDP.
 sidebar_position: 2
 keywords:
   - Harness IDP
