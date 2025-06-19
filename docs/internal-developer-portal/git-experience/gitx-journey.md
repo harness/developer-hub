@@ -1,6 +1,6 @@
 ---
-title: Git Experience for Catalog Entities
-description: Step-by-step guide on how users interact with the Git Experience (GitX) feature in Harness IDP, including component creation, versioning, and repo linking.
+title: Git Experience for Harness IDP
+description: Step-by-step guide on how users interact with the Git Experience (GitX) feature in Harness IDP.
 sidebar_position: 2
 keywords:
   - Harness IDP
@@ -21,36 +21,49 @@ tags:
   - DevOps Workflow
   - Component Management
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+:::info For IDP 1.0 Customers
+This Git Experience document is applicable **only to IDP 2.0 customers**, as the Harness IDP Git Experience is available exclusively in IDP 2.0. To learn how to upgrade, refer to the [IDP 2.0 Upgrade Guide](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md).
+:::
 
 Harness Internal Developer Portal (IDP) 2.0 integrates deeply with the Harness Platform Git Experience (GitX) to enable **bi-directional Git-backed entity management**. Harness Git Experience with IDP 2.0 allows you to store and track your entity YAMLs in Git Repositories with bi-directional updates. This document outlines how developers and platform engineers interact with Git Experience throughout the entity lifecycle. 
 
-To learn more about Harness-native Catalog entity YAML, go to [Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml.md)
+To understand more about the key features of Harness IDP Git Experience, please go through [Harness IDP Git Experience Overview](/docs/internal-developer-portal/git-experience/overview.md).
 
+### Supported IDP Entities in Git Experience
+Harness IDP Git Experience supports the following Harness IDP entities for this feature: 
+
+| **IDP Entity** | **Git Experience Support** | **Notes** | 
+| ------- | -------- | -------- |
+| **Catalog Entities** | Supports Git Experience | IDP Catalog Entities like Component, API, Resource - all support Harness IDP Git Experience i.e. you can store Catalog entity YAMLs in Git. |
+| **Workflows** | Supports Git Experience | Workflows support Harness IDP Git Experience i.e. you can store and track Workflow YAMLs in Git. | 
+| **Scorecards** | Not Supported | At present, scorecards don't support Git Experience. | 
+
+### Supported Git Providers in Harness IDP Git Experience
 Harness IDP Git Experience integrates with the following **Git Providers**: 
-- GitHub 
-- GitLab
+- GitHub (Cloud & Enterprise)
+- GitLab (Cloud & Self Hosted)
 - Bitbucket
 - Azure Repos
 - Harness Code
 
-To understand more about the key features of Harness IDP Git Experience, please go through [Harness IDP Git Experience Overview](/docs/internal-developer-portal/git-experience/overview.md).
-
 ## Storing Entity YAMLs 
-Harness Git Experience with IDP 2.0 allows you to store your Catalog entity YAMLs in the following two ways: 
+Harness Git Experience with IDP 2.0 allows you to store your Catalog entity YAMLs and Workflow YAMLs in the following two ways: 
 1. **Inline**: Your entity YAML is stored in the Harness database, and the entity exists as an **Inline Entity**. 
 2. **Remote**: Your entity YAML is pushed to Git, and the entity exists as an **Remote Entity**. 
 
-Read more about [Harness Platform Git Experience Requirements](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities#git-experience-requirements). 
+Read more about [Harness Platform Git Experience Requirements](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities#git-experience-requirements). To learn more about Harness-native Catalog entity YAML, go to [Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml.md).
+
 
 ### Creating Inline Entities 
-With Inline Entities, your Catalog entity's YAML is stored in the Harness database. You can edit and manage your entity's YAML from the Harness UI directly.
+With Inline Entities, your entity's YAML is stored in the Harness database. You can edit and manage your entity's YAML from the Harness UI directly.
 
 // steps to create an inline entity with images and screenshots
 
 ### Creating Remote Entities 
-As Harness IDP (Internal Developer Portal) evolves from Backstage-native IDP 1.0 to Harness-native IDP 2.0, entity creation now benefits from the powerful [Git Experience](https://developer.harness.io/docs/category/git-experience) capabilities provided by the Harness Platform.
-
-With Remote Entities, you can store your Catalog entity YAMLs in your Git repositories with bi-directional real-time sync support. 
+With Remote Entities, you can store your entity YAMLs in your Git repositories with bi-directional real-time sync support. 
 
 // steps to create a remote entity with images and screenshots
 
@@ -63,8 +76,8 @@ Changes made in the entity via the Harness UI are committed to the Git repo (eit
 Changes made to the YAML file in Git are **automatically reflected** in the entity using **webhook-triggered updates**. To understand more about this feature, please refer to [Updating and Syncing Entities with Git](/docs/internal-developer-portal/git-experience/gitx-journey.md#updating-and-syncing-entities-with-git)
 :::
 
-### Converting Inline to Remote Entity (and vice-versa)
-Users who initially created an entity as inline can convert it to Git-based at any time using the Edit page. The reverse—Git to inline—is also supported,  by simply clicking Move to Git, giving teams flexibility to change storage strategy mid-way without re-creating the entity.
+### Converting Inline to Remote Entity
+Users who initially created an entity as inline can convert it to remote entity (Git-based) at any time using the **Edit** page. 
 
 // steps to convert these entities with images and screenshots
 
@@ -74,14 +87,41 @@ You can also switch branches from Git to view an alternate version of the entity
 // steps to create and manage multiple branches with the PR flow
 
 ## Importing an Entity from Git (using YAML)
-In Harness IDP, users can also create new entities by importing their YAML definitions stored in Git repositories directly into Harness IDP.
+In Harness IDP, users can also create new entities and Workflows by importing their YAML definitions stored in Git repositories directly into Harness IDP.
 This feature allows teams to reuse pre-defined configurations, onboard services faster, and migrate from automation workflows or existing repositories.
+
+### Pre-requisites
+1. **Account-level Git Connectors**: Ensure you have your Git connector added to your Harness platform at the **Account** scope. During import, only **Account-level Git connectors** are supported. This ensures that the connector has access across scopes, avoiding mismatches between the connector's accessibility and the entity's YAML-defined scope. After creation, the connector can be changed to an Org/Project-level one if needed. Refer to these docs to learn more about adding [Git Connectors](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference/). 
+2. **Enable API Access**: For connection types and authentication methods where API access is not already enabled by default, you'll have to enable it from the Git connector settings. API Access is required for using Harness Git Experience. Refer to these docs to [enable API access](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access). 
+![](./static/enable-api-access.png)
+
 ### Import an Entity YAML
+You can create a new entity or workflow in Harness IDP directly from your Git YAML by using this **Import** flow. Please refer to the following steps to import any entity from Git. 
+<Tabs>
+<TabItem value="Interactive Guide">
+<DocVideo src="https://app.tango.us/app/embed/e6bb7067-f9f0-4280-ab71-9571d476936b" title="Import a Workflow from Git using a YAML" />
+</TabItem>
+<TabItem value="Step-by-Step">
+1. Go to Harness IDP -> Create. In the bottom, you'll find an option to create a new entity by importing YAML from Git. Click on **Import from Git**. 
+2. Select the **Entity Scope** (scope at which you want your entity to be created). 
+3. Select the **Git Provider**. You can either choose **Harness Code Repository** or **Third-Party Provider**. For your selected option, enter the required details. 
+4. In case of **Harness Code Repository**, you'll have to provide the following details: 
+    - **Repository**: Git Repository where your Entity YAML is stored. 
+    - **Git Branch**: Branch of your Repository where your Entity YAML is stored. 
+    - **YAML Path**: Path of your YAML File. 
+    ![](./static/harness-code.png)
+5. In case of **Third-Party Provider**, you'll have to provide the following details: 
+    - **Git Connector**: Git Connector added in your Harness IDP 
+    - **Repository**: Git Repository where your Entity YAML is stored. 
+    - **Git Branch**: Branch of your Repository where your Entity YAML is stored. 
+    - **YAML Path**: Path of your YAML File. 
+    ![](./static/third-party-git-provider.png)
+6. Click on **Import**. This will create an entity in your IDP directly from the YAML file stored in Git. 
+</TabItem>
+</Tabs>
+
 #### Harness native YAML vs Backstage YAML 
 To use this feature, Backstage YAML is not supported directly. Since IDP 2.0 uses a new data model, existing YAMLs from IDP 1.0 (Backstage-native) must be converted using Harness CLI, UI editors, or migration scripts. To understand more about converting IDP 1.0 YAMLs to IDP 2.0 YAMLs, please refer to [Converting IDP 1.0 YAMLs](/docs/internal-developer-portal/catalog/catalog-yaml.md#converting-existing-entity-yamls-idp-20)
-
-#### Steps to import an entity YAML 
-// with images and screenshots (must include the scope selection, etc.)
 
 ### Entity Scope and Connector Rules
 Some important constraints exist during the import process:
@@ -90,24 +130,18 @@ Some important constraints exist during the import process:
 - **Account-level Connectors Required**:
   During import, only Account-level Git connectors are supported. This ensures that the connector has access across scopes, avoiding mismatches between the connector's accessibility and the entity's YAML-defined scope.
   After creation, the connector can be changed to an Org/Project-level one if needed.
-- **Harness Code or Other Git Providers**:
-  - When importing via Harness Code, YAMLs can be sourced from any repository that the user has access to. The repo’s scope does not affect the entity scope.
-  - When using other Git providers (GitHub, GitLab, Bitbucket, Azure Repos), the same rules apply — the YAML determines the entity's scope, not the Git repository.
-This launches a guided setup where users must provide details like:
-- Git repository path //more details needed
-- YAML file location //more details needed
-- Git connector and branch
-The imported file must follow the Harness IDP YAML data model, which defines how entity configurations (Catalog entities) should be structured in YAML format. Once imported, Harness parses the YAML and generates the correspond.
-
-### Validation and Safeguards
-Harness validates the imported YAML thoroughly:
-- Ensures required fields and syntax are correct
-- Checks that the connector can access the YAML path
-- Validates that the entity’s scope matches the structure
-- Prevents import if there are incompatible or unsupported definitions
-
-This is especially useful for teams migrating from scripted or CLI-based workflows, as they can define entities as YAML first, store them in Git, and then use import to onboard them into the platform.
-
+- **Harness Code & Other Git Providers**:
+  - **Harness Code Repository**: When importing via **Harness Code**, YAMLs can be sourced from any repository that the user has access to. The repo’s scope does not affect the entity scope. The following details are required in importing an entity from Git using Harness Code Repository: 
+    - **Repository**: Git Repository where your Entity YAML is stored. 
+    - **Git Branch**: Branch of your Repository where your Entity YAML is stored. 
+    - **YAML Path**: Path of your YAML File. 
+    ![](./static/harness-code.png)
+  - **Third-Party Git Providers**: When using other **Git providers** (GitHub, GitLab, Bitbucket, Azure Repos), the same rules apply — the YAML determines the entity's scope. The following details are required in importing an entity from Git using Third-party Git Providers: 
+    - **Git Connector**: Git Connector added in your Harness IDP 
+    - **Repository**: Git Repository where your Entity YAML is stored. 
+    - **Git Branch**: Branch of your Repository where your Entity YAML is stored. 
+    - **YAML Path**: Path of your YAML File. 
+    ![](./static/third-party-git-provider.png)
 
 ## Updating and Syncing Entities with Git
 Once an entity in Harness IDP is backed by Git Experience, it becomes tightly coupled with its corresponding YAML definition in the Git repository. This enables a seamless two-way sync between Harness and Git, ensuring that the Git repository always reflects the source of truth - whether the changes originate from the UI or from Git directly.
