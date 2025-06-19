@@ -22,7 +22,9 @@ tags:
   - Component Management
 ---
 
-Harness Internal Developer Portal (IDP) 2.0 integrates deeply with the Harness Platform Git Experience (GitX) to enable **bi-directional Git-backed entity management**. Harness Git Experience with IDP 2.0 allows you to store and track your entity YAMLs in Git Repositories with bi-directional updates. This document outlines how developers and platform engineers interact with Git Experience throughout the entity lifecycle.
+Harness Internal Developer Portal (IDP) 2.0 integrates deeply with the Harness Platform Git Experience (GitX) to enable **bi-directional Git-backed entity management**. Harness Git Experience with IDP 2.0 allows you to store and track your entity YAMLs in Git Repositories with bi-directional updates. This document outlines how developers and platform engineers interact with Git Experience throughout the entity lifecycle. 
+
+To learn more about Harness-native Catalog entity YAML, go to [Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml.md)
 
 Harness IDP Git Experience integrates with the following **Git Providers**: 
 - GitHub 
