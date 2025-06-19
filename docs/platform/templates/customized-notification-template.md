@@ -27,7 +27,7 @@ You can create custom notification templates at the following [scopes](https://d
 There are two ways to use custom notification templates:
 
 - [**Centralized notifications for pipelines**](/docs/platform/notifications/centralised-notification)
-- [**Custom notifications for pipelines**](/docs/platform/notifications/custom-notification)
+- [**Pipeline notifications**](/docs/platform/notifications/notification-settings/#get-started-with-notifications)
 
 ## Setting Up Notifications Template
 
@@ -107,7 +107,7 @@ This allows you to replace the default notification message with a tailored stru
 
 ### How to Attach a Template
 
-When configuring a **pipeline-level notification rule**, click **Notify** in the right panel of the Pipeline Studio. Then, follow the steps for [creating a custom notification](/docs/platform/notifications/custom-notification) until you reach the **Notification Template** step.
+When configuring a **pipeline-level notification rule**, click **Notify** in the right panel of the Pipeline Studio. Then, follow the steps for [Configure pipeline notifications](/docs/platform/notifications/notification-settings/#get-started-with-notifications) until you reach the **Notification Template** step.
 
 Under the **Notification Template** section:
 
