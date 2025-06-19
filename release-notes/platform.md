@@ -134,7 +134,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Previously, when users had access to a Secret Manager at a higher level (such as Account scope), but not at the lower level (like Organization scope), the secret creation screen would get stuck in a continuous loading state after selecting the Secret Manager. With this update, users can now smoothly select and use Secret Managers from higher levels without any loading issues. [PL-63165]
+- Previously, selecting a higher-level Secret Manager (like Account scope) without access to lower levels (like Organization scope) caused the Secret Manager screen to keep loading. This is now fixed, and users can select and use Secret Managers without issues. [PL-63165]
 
 #### New Feature and Enhancement 
 
