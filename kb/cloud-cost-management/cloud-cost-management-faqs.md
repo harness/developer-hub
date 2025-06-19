@@ -816,3 +816,38 @@ To create an annual budget with a monthly breakdown, you need to select the budg
 
 Yes, since budgets are based on Perspectives, we can also incorporate built-in cloud discounts.
 
+### Budget Schedule
+#### When does the budget alert process run? How often does the budget job run and alerts get processed?
+For yearly, quarterly, monthly and weekly budgets, the budget alerts job runs once a day at (6:30 am PST)
+For daily budgets, the alerts job runs every hour.
+
+#### What is the scope and depth of the evaluation at the time the job is processed
+Specific to alerts, Harness checks the partial data for `n-1` day (with **n** being today) to see if the budget was exceeded.  Keep in mind, this is to catch the case where the partial budget data for `n-1` has already been exceeded.  Harness will also check the full data total for the `n-2` day and alert if that has been exceeded.
+
+In real world terms, lets say on June 5th, the regular Harness evaluation job runs, we check if the budget was exceeded on the 4th and update the check for the 3rd as well (since the June 3rd's data is complete), and send out an alert if either have exceeded.  
+
+If the data for June 4th is updated on June 6th with the final tally, and it still exceeds the budget (regardless if it was exceeded and alerted on June 5th) Harness will send an alert.
+
+Please note that this is not related to the costs that we see on the budgets page, but just the alerts.  Because data is partial for `n-1`, it is still not represented on the budgets page since the data is partial.  Data for the budgets page will show for `n-2` days instead.
+
+
+### Can you show how a budget alert process evaluation would work? Is there an example of what could happen with a budget alert
+
+For daily budget alerts, lets take the following scenario:
+
+- Threshold of $500
+- First cost data comes in from AWS at $450
+- Budget alerts are set for exceeding 50%, 80%, 100%
+
+#### Do we get budget alerts for exceeding 50% and 80% when the budget job is processed? Or is the alerts processed only 1 time a day?
+In case of daily budgets, the alerts job runs hourly. Every hour we check if the cost of budget is exceeding any threshold, and send alerts accordingly.
+There are two things to note here:
+- If at the time of sending alerts, if the cost is > 80%, only one alert will get sent corresponding to 80%, since it is the higher threshold. 
+- For daily budgets, please be aware of how depth and [partial budget evaluations are processed as outlined above](#what-is-the-scope-and-depth-of-the-evaluation-at-the-time-the-job-is-processed)
+
+#### When we get the 2nd cost data coming in from AWS and the cost is now $600, do we then get another budget alert of exceeds 100%?
+Yes, but there are certain constraints. For example if today is Dec 15th, the budget alerts will be processed for the 13th and 14th of Dec. 
+
+Now say at 9 AM, the costs for the 13th exceed 80% of threshold but < 100% threshold, then alert will be sent for 80% threshold. Now let’s say at 1pm the same day, the cost for the 13th gets refreshed and now it breaches 100% threshold, another alert will be sent out for 100% threshold.
+
+Once the day is over, we don’t reprocess the Dec 13th data even if cost for that day changes in future.  The Dec 14th data will continue to be processed for 1 more day
