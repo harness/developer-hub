@@ -1,23 +1,16 @@
----
-title: AWS
-description: This topic describes how to set up cost visibility for AWS.
-# sidebar_position: 2
-helpdocs_topic_id: 80vbt5jv0q
-helpdocs_category_id: 7vy86n7cws
-helpdocs_is_private: false
-helpdocs_is_published: true
-redirect_from:
-  - /docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws
----
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
 
-# Set up CCM for AWS
+<RedirectIfStandalone label="AWS" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
 ## Overview
 
 Harness Cloud Cost Management (CCM) offers comprehensive solutions to manage and optimize the cloud costs of your Amazon Web Services (AWS) infrastructure. CCM provides visibility, governance, and optimization of AWS services such as EC2, S3, RDS, Lambda, and others. CCM provides recommendations to effectively right-size your cloud resources to match the workload demands and optimizes the auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
 
 :::info
-After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
+After enabling CCM, it takes about 24 hours for the data to 
+be available for viewing and analysis.
 :::
 
 ## Prerequisites
@@ -32,9 +25,6 @@ After enabling CCM, it takes about 24 hours for the data to be available for vie
 
 ### Required- Cost and Usage Reports (CUR)
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 <Tabs queryString="tab-number">
 <TabItem value="1" label="Multiple Accounts with Consolidated Billing">
 
@@ -47,9 +37,7 @@ import TabItem from '@theme/TabItem';
   - If you are using the API to create the additional connectors, you can omit billing information altogether.
 
 </TabItem>
-
 <TabItem value="2" label="Multiple Accounts">
-
 - If you do not have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then you need to create a CUR for each linked account.
 
 - Create an AWS connector for each AWS account, configured with the CUR for that account.
@@ -130,7 +118,7 @@ flowchart TD
 ### Step 1: Configure Connector Overview
 
 
-<DocImage path={require('./static/aws-connector-one.png')} width="100%" height="100%" title="Click to view full size image" />
+![aws-connector-one](../../get-started/onboarding-guide/static/aws-connector-one.png)
 
 #### Connector Details
 
@@ -174,7 +162,7 @@ Launch the AWS console and perform the following steps:
 
 7. In the Harness connector dialog, enter the following values, and then select **Continue**.
 
-<DocImage path={require('./static/aws-connector-two.png')} width="100%" height="100%" title="Click to view full size image" />
+![aws-connector-two](../../get-started/onboarding-guide/static/aws-connector-two.png)
 
 | **Field**                         | **Description**                              |
 | --------------------------------- | -------------------------------------------- |
@@ -187,7 +175,7 @@ Select the Cloud Cost Management features that you would like to enable, and the
 
 > **☆ NOTE —** Selecting features will add the necessary permissions to the IAM role in the next step. Cost Visibility permissions are required by default.
 
-<DocImage path={require('./static/aws-connector-features.png')} width="100%" height="100%" title="Click to view full size image" />
+![aws-connector-features](../../get-started/onboarding-guide/static/aws-connector-features.png)
 
 Details about each feature are provided below:
 
@@ -212,11 +200,11 @@ Perform the following steps in the AWS Console.
    > **☆ NOTE** - The values on this page are based on your previous selections. Do not modify any values before creating the stack.
 3. In the stack's page, go to the **Outputs** tab and copy the **Value** of **CrossAccountRoleArn Key**.
 
-   ![](./static/set-up-cost-visibility-for-aws-36.png)
+   ![aws-connector-four](../../get-started/onboarding-guide/static/aws-connector-four.png)
 
 4. In the Harness connector dialog, enter the following values, and then select **Save and Continue**.
 
-<DocImage path={require('./static/aws-connector-four.png')} width="100%" height="100%" title="Click to view full size image" />
+![aws-connector-four](../../get-started/onboarding-guide/static/aws-connector-four.png)
 
 | **Field**                  | **Description**                                                                                                                            |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -361,7 +349,7 @@ Once you have the `ce:GetRightsizingRecommendation` permission added to the **Ha
 
 1. On your AWS console, go to the **Cost Explorer** service.
 
-<DocImage path={require('./static/ec2-recom-aws-screen-1.png')} width="50%" height="50%" title="Click to view full size image" />
+![ec2-recom-aws-screen-1](../../get-started/onboarding-guide/static/ec2-recom-aws-screen-1.png)
 
 2. Click **Preferences** on the left pane.
 3. Enable the following recommendations:
@@ -369,7 +357,7 @@ Once you have the `ce:GetRightsizingRecommendation` permission added to the **Ha
 - Receive Amazon EC2 resource recommendations
 - Recommendations for linked accounts
 
-<DocImage path={require('./static/ec2-recom-aws-screen-2.png')} width="50%" height="50%" title="Click to view full size image" />
+![ec2-recom-aws-screen-2](../../get-started/onboarding-guide/static/ec2-recom-aws-screen-2.png)
 
 4. Verify that you have enabled these recommendations correctly.
 
@@ -689,8 +677,6 @@ HarnessOptimsationLambdaPolicy:
 ### Granular Permissions for AutoStopping
 
 On this screen, you can select specific features and services for AutoStopping:
-
-![granular permissions](../../get-started/onboarding-guide/static/granular-permissions.gif)
 
 ### EC2 Instances
 
@@ -1349,19 +1335,20 @@ savingsplans:CreateSavingsPlan
 
 If you come across an error message indicating missing permissions, as displayed in the following screenshot, you need to add the missing permission [here](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles).
 
-<DocImage path={require('./static/asset-governance-test-output-error.png')} width="50%" height="50%" title="Click to view full size image" />
+![asset-governance-test-output-error](../../get-started/onboarding-guide/static/asset-governance-test-output-error.png)
 
 1. Copy the role specified in the error message that requires permission to execute the rule.
 2. Enter the role in IAM > Roles search box to filter the roles. The policies are displayed.
 
-<DocImage path={require('./static/aws-missing-permission-role.png')} width="50%" height="50%" title="Click to view full size image" />
+![aws-missing-permission-role](../../get-started/onboarding-guide/static/aws-missing-permission-role.png)
 
 3. In the list of policies, select the policy to edit.
-   <DocImage path={require('./static/aws-select-policy.png')} width="50%" height="50%" title="Click to view full size image" />
+
+![aws-select-policy](../../get-started/onboarding-guide/static/aws-select-policy.png)
 
 4. In the **Permissions** tab, select **Edit policy**, and then go to the **JSON** tab.
 
-   <DocImage path={require('./static/aws-edit-json.png')} width="50%" height="50%" title="Click to view full size image" />
+![aws-edit-json](../../get-started/onboarding-guide/static/aws-edit-json.png)
 
 5. Add the missing permissions. You can use a wildcard (asterisk) to grant multiple permissions. For example, `s3:Get*` permission would allow multiple S3 actions that start with "Get".
 6. Save changes.

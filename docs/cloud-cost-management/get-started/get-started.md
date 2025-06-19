@@ -1,14 +1,14 @@
-
 ---
 title: Get started
 description: Learn how to get started with Harness Cloud Cost Management (CCM).
 sidebar_position: 2
+sidebar_label: Get Started (Single Page)
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Welcome to the Harness IaCM onboarding guide. Discover how Harness streamlines and secures your infrastructure management with Infrastructure as Code Management (IaCM).
+Welcome to the Harness Cloud Cost Management (CCM) onboarding guide. Discover how Harness streamlines and secures your infrastructure management with Infrastructure as Code Management (IaCM).
 
 ## What is Cloud Cost Management?
 Harness Cloud Cost Management (CCM) helps you gain visibility into cloud and Kubernetes spend, identify cost-saving opportunities, and implement proactive guardrails. Unlike standalone cost explorers or manual reports, CCM unifies your cost data across cloud providers and Kubernetes clusters within your CI/CD workflows—making it easier to take action.

@@ -1,31 +1,21 @@
----
-title: Set up CCM for GCP
-sidebar_label: GCP
-description: This topic describes how to set up cost visibility for GCP.
-# sidebar_position: 2
-helpdocs_topic_id: kxnsritjls
-helpdocs_category_id: 7vy86n7cws
-helpdocs_is_private: false
-helpdocs_is_published: true
-redirect_from:
-  - /docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp
----
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
 
+<RedirectIfStandalone label="GCP" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP products, projects, SKUs, and location. As a first step, you need to connect Harness to your GCP account to get insights into your cloud infrastructure, and GCP services, Compute Engine, Cloud Storage, BigQuery, etc. CCM offers a wide range of features to track and control costs associated with your cloud resources.
 
 :::info
-
 After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
-
 :::
 
 ## Before you begin
 
 * Review [Required permissions and roles](https://cloud.google.com/iam/docs/understanding-custom-roles#required_permissions_and_roles) to create an IAM role at the organization level
 * Ensure that you have the following permissions to enable and configure the export of Google Cloud billing data to a BigQuery dataset:
-	+ **Billing Account Administrator** role for the target Cloud Billing account
-	+ [BigQuery User role for the Cloud project](https://cloud.google.com/bigquery/docs/dataset-access-controls) that contains the BigQuery dataset that will be used to store the Cloud Billing data
+    + **Billing Account Administrator** role for the target Cloud Billing account
+    + [BigQuery User role for the Cloud project](https://cloud.google.com/bigquery/docs/dataset-access-controls) that contains the BigQuery dataset that will be used to store the Cloud Billing data
 
 ## Connect Harness to Google Cloud Platform (GCP) Account
 
@@ -38,10 +28,6 @@ Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and
 :::
 
 1. Create a new Kubernetes connector using one of the two options below:
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 <Tabs queryString="tab-number">
 <TabItem value="4" label="From Account Settings">
 
@@ -77,7 +63,7 @@ Make sure that you have enabled **Detailed Usage Cost** on the **Billing Export*
 2. In the GCP **Explorer** window, in the pinned projects section, select **your project ID** to open the project. If you see an overflow menu (:) next to your project ID, select the menu and select **Open**.
 3. Select **Create dataset**. For more information, go to [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
 
-   <img src={create_dataset} alt="Creating a dataset in the GCP console." height="50%" width="50%" />
+![create_dataset](../../get-started/onboarding-guide/static/set-up-cost-visibility-for-gcp-02.png)
 
 4. Enter a **Dataset Name**.
 You need to enter Dataset Name in Harness.
@@ -87,7 +73,7 @@ You need to enter Dataset Name in Harness.
 8. To save, select **CREATE DATASET**.
 9. Enter the **Dataset Name** in Harness.
 
-   <img src={dataset_name} alt="Entering the dataset name." height="50%" width="50%" />
+![dataset_name](../../get-started/onboarding-guide/static/set-up-cost-visibility-for-gcp-03.png)
 
 10. Next, you need to enter the table name in Harness. From the GCP console, copy the table name where the billing export is available. In your BigQuery dataset, the table is named `gcp_billing_export_v1_*`.
 11. Once the billing account is selected, open the navigation menu>Billing export>BigQuery export. In BigQuery Export section, user needs to setup "Detailed usage cost". When setting up your dataset, it is recommended to choose the United States (US) as the dataset location.
@@ -98,7 +84,8 @@ You need to enter Dataset Name in Harness.
     - Select +Create Dataset from the drop-down menu.
     - Certain fields, such as Dataset ID, data location, and data expiry, will be required. You will be able to perform billing exports after you have your dataset ready.
 
-   <DocImage path={require('./static/set-up-cost-visibility-for-gcp-04.png')} width="50%" height="50%" title="Click to view full size image" />
+   <DocImage path={require('../../get-started/onboarding-guide/static/set-up-cost-visibility-for-gcp-04.png')} width="50%" height="50%" title="Click to view full size image" />
+   ![](../../get-started/onboarding-guide/static/set-up-cost-visibility-for-gcp-04.png)
 
 12. Enter the **Table Name** in Harness.
 13. Select **Continue**.
@@ -139,22 +126,23 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 3. Select your project in the left panel.
 4. Select your dataset. For more information on creating a dataset, see [Creating datasets](https://cloud.google.com/bigquery/docs/datasets).
 
-   <DocImage path={require('./static/gcp_billing_export_resource.png')} width="50%" height="50%" title="Click to view full size image" />
+![gcp_billing_export_resource](../../get-started/onboarding-guide/static/gcp_billing_export_resource.png)
 
 5. Select the **more actions** icon (three vertical dots) against the dataset, and then select **Share.**
 
-   <DocImage path={require('./static/gcp-dataset-share.png')} width="50%" height="50%" title="Click to view full size image" />
+![gcp-dataset-share](../../get-started/onboarding-guide/static/gcp-dataset-share.png)
 
 6. In **Dataset permissions**, in **Add Principals**, enter the Harness service account as a member.  
     Copy the service account detail from Harness. The service account is generated dynamically for your account.
 
-   <DocImage path={require('./static/Adding-principals-gcp.png')} width="50%" height="50%" title="Click to view full size image" />
+![Adding-principals-gcp](../../get-started/onboarding-guide/static/Adding-principals-gcp.png)
 
 7. In **Select a role**, select **BigQuery Data Viewer**, and then select **Add**.
 8. Select **Done**.  
     When you are done, the following screen is displayed:
 
-   ![](../../get-started/onboarding-guide/static/data-permissions-gcp.png)
+![dataset-permissions-gcp](static/dataset-permissions-gcp.png)
+
 :::info
 
 To add AutoStopping permissions:
@@ -179,7 +167,7 @@ When a connector is created, a service account is created in Harness' GCP projec
 
 Now, Harness CCM supports CAG for GCP.
 
-<DocImage path={require('./static/GCP-connector-CAG.png')} width="60%" height="60%" title="Click to view full size image" />
+![GCP-connector-CAG](../../get-started/onboarding-guide/static/GCP-connector-CAG.png)
 
 Regions for Asset Governance Rules for GCP are not available in drop-down menu but can be configured manually in the YAML.
 
@@ -189,16 +177,16 @@ Regions for Asset Governance Rules for GCP are not available in drop-down menu b
 
 The connection is validated and verified in this step. After successfully testing the connection, select **Finish**.
 
-<DocImage path={require('./static/set-up-cost-visibility-for-gcp-12.png')} width="50%" height="50%" title="Click to view full size image" />
+![set-up-cost-visibility-for-gcp-12](../../get-started/onboarding-guide/static/set-up-cost-visibility-for-gcp-12.png)
 
 Your connector is now listed in the **Connectors**.
 
-<DocImage path={require('./static/set-up-cost-visibility-for-gcp-13.png')} width="50%" height="50%" title="Click to view full size image" />
+![set-up-cost-visibility-for-gcp-13](../../get-started/onboarding-guide/static/set-up-cost-visibility-for-gcp-13.png)
 
 
 ## Granular Permissions for AutoStopping
 
-<DocImage path={require('./static/granular-gcp-one.png')} width="90%" height="90%" title="Click to view full-size image" />
+![granular-gcp-one](../../get-started/onboarding-guide/static/granular-gcp-one.png)
 
 #### Compute Engine Virtual Machines
 
@@ -385,8 +373,6 @@ compute.instances.delete
 
 </details>
 
-
 ### Next Steps
-
 * [Analyze Cost for GCP ​Using Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-gcp-using-perspectives)
 * [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives)
