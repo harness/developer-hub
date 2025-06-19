@@ -817,8 +817,7 @@ Now say at 9 AM, the costs for the 13th exceed 80% of threshold but < 100% thres
 Once the day is over, we don’t reprocess the Dec 13th data even if cost for that day changes in future.  The Dec 14th data will continue to be processed for 1 more day
 
 
-## What is FinOps in Harness?
-
+### What is FinOps in Harness?
 FinOps, short for Financial Operations, in Harness refers to the practice of managing cloud costs effectively within the Harness platform. It involves optimizing cloud spending, budgeting, forecasting, and allocation of resources to ensure efficient utilization of cloud resources while controlling costs.
 
 #### Why is the total savings not displayed for one of my auto-saving rules for RDS in Harness?
