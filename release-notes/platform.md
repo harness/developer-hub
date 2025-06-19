@@ -151,7 +151,7 @@ The following deprecated API endpoints are longer supported:
 #### New Feature and Enhancement 
 
 - Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance. [PL-62957]
-- We’ve added support for Customised Notifications across all notification channels, this enhancement allows you to dynamically tailor notification content based on user-defined inputs, offering greater flexibility and control across your integrations. [PL-62197]
+- Added support for [Custom Notifications](https://developer.harness.io/docs/platform/templates/customized-notification-template/) for all remaining channels: Email, Slack, Microsoft Teams, Datadog, PagerDuty.
 
 ## May 2025
 
