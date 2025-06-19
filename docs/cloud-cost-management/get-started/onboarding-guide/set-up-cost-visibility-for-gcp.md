@@ -77,7 +77,7 @@ Make sure that you have enabled **Detailed Usage Cost** on the **Billing Export*
 2. In the GCP **Explorer** window, in the pinned projects section, select **your project ID** to open the project. If you see an overflow menu (:) next to your project ID, select the menu and select **Open**.
 3. Select **Create dataset**. For more information, go to [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
 
-   <img src={create_dataset} alt="Creating a dataset in the GCP console." height="50%" width="50%" />
+   ![](../../get-started/onboarding-guide/static/set-up-cost-visibility-for-gcp-02.png)
 
 4. Enter a **Dataset Name**.
 You need to enter Dataset Name in Harness.
@@ -87,7 +87,7 @@ You need to enter Dataset Name in Harness.
 8. To save, select **CREATE DATASET**.
 9. Enter the **Dataset Name** in Harness.
 
-   <img src={dataset_name} alt="Entering the dataset name." height="50%" width="50%" />
+   ![](../../get-started/onboarding-guide/static/set-up-cost-visibility-for-gcp-03.png)
 
 10. Next, you need to enter the table name in Harness. From the GCP console, copy the table name where the billing export is available. In your BigQuery dataset, the table is named `gcp_billing_export_v1_*`.
 11. Once the billing account is selected, open the navigation menu>Billing export>BigQuery export. In BigQuery Export section, user needs to setup "Detailed usage cost". When setting up your dataset, it is recommended to choose the United States (US) as the dataset location.
@@ -98,7 +98,7 @@ You need to enter Dataset Name in Harness.
     - Select +Create Dataset from the drop-down menu.
     - Certain fields, such as Dataset ID, data location, and data expiry, will be required. You will be able to perform billing exports after you have your dataset ready.
 
-   <DocImage path={require('./static/set-up-cost-visibility-for-gcp-04.png')} width="50%" height="50%" title="Click to view full size image" />
+   ![](../../get-started/onboarding-guide/static/set-up-cost-visibility-for-gcp-04.png)
 
 12. Enter the **Table Name** in Harness.
 13. Select **Continue**.
@@ -139,16 +139,16 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 3. Select your project in the left panel.
 4. Select your dataset. For more information on creating a dataset, see [Creating datasets](https://cloud.google.com/bigquery/docs/datasets).
 
-   <DocImage path={require('./static/gcp_billing_export_resource.png')} width="50%" height="50%" title="Click to view full size image" />
+   ![](../../get-started/onboarding-guide/static/gcp_billing_export_resource.png)
 
 5. Select the **more actions** icon (three vertical dots) against the dataset, and then select **Share.**
 
-   <DocImage path={require('./static/gcp-dataset-share.png')} width="50%" height="50%" title="Click to view full size image" />
+   ![](../../get-started/onboarding-guide/static/gcp-dataset-share.png)
 
 6. In **Dataset permissions**, in **Add Principals**, enter the Harness service account as a member.  
     Copy the service account detail from Harness. The service account is generated dynamically for your account.
 
-   <DocImage path={require('./static/Adding-principals-gcp.png')} width="50%" height="50%" title="Click to view full size image" />
+   ![](../../get-started/onboarding-guide/static/Adding-principals-gcp.png)
 
 7. In **Select a role**, select **BigQuery Data Viewer**, and then select **Add**.
 8. Select **Done**.  
