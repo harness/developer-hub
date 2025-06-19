@@ -38,9 +38,9 @@ Before upgrading to **IDP 2.0**, carefully review the checklist below to underst
 
 ## Upgrade Path & Rollout Strategy
 
-To help ensure a seamless transition from IDP 1.0 to 2.0, follow the structured six-phase upgrade process outlined below. Before you begin, make sure you’ve completed the prerequisite checklist above.
+To help ensure a seamless transition from IDP 1.0 to 2.0, follow the structured seven-step upgrade process outlined below. Before you begin, make sure you’ve completed the prerequisite checklist above.
 
-### Phase 1: Prepare & Assess
+### Step 1: Prepare & Assess
 
 Before upgrading to IDP 2.0, ensure you’ve reviewed the [Before You Upgrade Checklist](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md#before-you-upgrade-checklist) and are fully prepared to onboard.
 
@@ -65,7 +65,7 @@ Please complete the following steps:
 
 ---
 
-### Phase 2: Check Feature Compatibility with IDP 1.0
+### Step 2: Check Feature Compatibility with IDP 1.0
 
 In addition to exploring new features, it’s essential to understand which IDP 1.0 features are still supported, changed, or deprecated.
 
@@ -74,7 +74,7 @@ In addition to exploring new features, it’s essential to understand which IDP 
 
 ---
 
-### Phase 3: Enable IDP 2.0
+### Step 3: Enable IDP 2.0
 
 Once you’re confident about upgrading:
 
@@ -89,7 +89,7 @@ Once you’re confident about upgrading:
 
 ---- 
 
-### Phase 4: Upgrade
+### Step 4: Upgrade
 
 Once the feature flag is enabled, your account will undergo the following changes:
 
@@ -153,7 +153,7 @@ After upgrading to IDP 2.0, you can begin using the **newer API endpoints**. Alt
 
 --- 
 
-### Phase 5: Test and Validate
+### Step 5: Test and Validate
 
 * Validate UI behavior: create, update, and delete entities using the new UI experience.
 * Test platform-level RBAC to ensure permissions are properly enforced.
@@ -162,10 +162,125 @@ After upgrading to IDP 2.0, you can begin using the **newer API endpoints**. Alt
 
 --- 
 
-### Phase 6: Gradual Rollout
+### Step 6: Gradual Rollout
 
 * Begin rolling out the upgraded platform to selected teams or use-cases.
 * Monitor for issues or regressions, and collect feedback from early users.
+
+---
+
+### Step 7: Store Entity YAMLs in Git 
+
+**Upgrading from IDP 1.0 to IDP 2.0 will result in all your entities being created as Inline Entities** (i.e., with all the Entity YAMLs stored in the Harness Database). In case you want to store these Entity YAMLs in Git and convert them from Inline to Remote Entities (i.e., with all the Entity YAMLs stored in Git), you can make use of the **Harness IDP Git Experience** feature. Here's how you can convert the entities:
+
+* **Convert your entities and store YAMLs in Git from your Harness IDP UI directly.** Refer to these docs on [converting Inline IDP Entities to Remote Entities](/docs/internal-developer-portal/git-experience/gitx-journey.md#converting-inline-to-remote-entity).
+* **Use the following script to convert your Inline Entities to Remote Entities directly in bulk.**
+
+```
+#!/bin/bash
+
+API_BASE_URL="{API_BASE_URL}"
+HARNESS_ACCOUNT="{HARNESS_ACCOUNT}"
+X_API_KEY="{X_API_KEY}"
+
+PAGE_SIZE=10
+PAGE=0
+KIND="component" # To give multiple kinds, use comma separated values (Example: kind=component,api,resource,workflow)
+HAS_MORE=true
+
+BRANCH_NAME="${BRANCH_NAME}"
+REPO_NAME="${REPO_NAME}"
+CONNECTOR_REF="${CONNECTOR_REF}"
+BASE_FILE_PATH=".harness/idpCatalogs"
+
+while [ "$HAS_MORE" = true ]; do
+  echo "Fetching page: $PAGE"
+
+  response=$(curl -s -D GET "$API_BASE_URL/v1/entities?kind=$KIND&limit=$PAGE_SIZE&page=$PAGE" \
+    -H "Harness-Account: $HARNESS_ACCOUNT" \
+    -H "x-api-key: $X_API_KEY" \
+    -H "Content-Type: application/json")
+
+  entities=$(echo "$response")  
+
+  if [ -z "$entities" ]; then
+    echo "No more entities found."
+    break
+  fi
+
+  echo "$entities" | jq -c '.[]' | while read -r entity; do
+    entity_ref=$(echo "$entity" | jq -r '.entity_ref')
+
+    # Example: service:account.org.proj/identifier
+    kind=$(echo "$entity_ref" | cut -d':' -f1)
+    ref_part=$(echo "$entity_ref" | cut -d':' -f2)
+
+    identifier=$(echo "$ref_part" | awk -F'/' '{print $2}')
+    scope_part=$(echo "$ref_part" | awk -F'/' '{print $1}')
+
+    IFS='.' read -r account orgIdentifier projectIdentifier <<< "$scope_part"
+
+    echo "Processing entity:"
+    echo "  Identifier: $identifier"
+    echo "  Kind: $kind"
+    echo "  OrgIdentifier: $orgIdentifier"
+    echo "  ProjectIdentifier: $projectIdentifier"
+
+    if [[ -z "$orgIdentifier" && -z "$projectIdentifier" ]]; then
+      # Account scope
+      filepath="$BASE_FILE_PATH/$kind/${identifier}.yaml"
+    elif [[ -n "$orgIdentifier" && -z "$projectIdentifier" ]]; then
+      # Org scope
+      filepath="$BASE_FILE_PATH/$kind/orgs/${orgIdentifier}/${identifier}.yaml"
+    else
+      # Project scope
+      filepath="$BASE_FILE_PATH/$kind/orgs/${orgIdentifier}/projects/${projectIdentifier}/${identifier}.yaml"
+    fi
+
+    echo "File path: $filepath"
+
+    json_payload=$(jq -n \
+      --arg branch "$BRANCH_NAME" \
+      --arg repo "$REPO_NAME" \
+      --arg connector "$CONNECTOR_REF" \
+      --arg path "$filepath" \
+      '{
+        git_details: {
+          branch_name: $branch,
+          repo_name: $repo,
+          connector_ref: $connector,
+          file_path: $path
+        },
+        entity_move_operation_type: "INLINE_TO_REMOTE"
+      }')
+
+    # Make move-entity API call
+    move_entity_response=$(curl -s -D POST "$API_BASE_URL/v1/entities/move/$scope_part/$kind/$identifier" \
+      -H "Harness-Account: $HARNESS_ACCOUNT" \
+      -H "x-api-key: $X_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d "$json_payload")
+
+      status=$(echo "$move_entity_response" | jq -r '.status')
+      if [[ "ERROR" == "$status" ]]; then
+        echo $move_entity_response
+      else
+        echo "Entity moved successfully: $entity_ref"
+      fi
+      echo "-----------------------------------------------------------------------------"
+    done
+
+  # Check if there are more pages
+  entity_count=$(echo "$entities" | jq -c '. | length')
+  if [ "$entity_count" -lt "$PAGE_SIZE" ]; then
+    echo "Last page reached"
+    HAS_MORE=false
+  else
+    PAGE=$((PAGE + 1))
+  fi
+
+  done
+```
 
 ## Unlock These Features with the IDP 2.0 Upgrade
 

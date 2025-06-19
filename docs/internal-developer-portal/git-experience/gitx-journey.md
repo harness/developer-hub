@@ -81,6 +81,8 @@ Users who initially created an entity as inline can convert it to remote entity 
 
 // steps to convert these entities with images and screenshots
 
+// script to be added here as well with detailed explanation
+
 ### Managing Multiple Branches
 You can also switch branches from Git to view an alternate version of the entity's YAML. This action does not create a new entity; instead, it updates the existing one. This is especially useful in scenarios where direct commits to the main branch are restricted due to organizational policies, and changes need to go through a pull request workflow.
 
