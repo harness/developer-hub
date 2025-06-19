@@ -88,12 +88,6 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2025
 
-### Version 25.06.86101 <!-- June 19, 2025 -->
-
-#### New features and improvements
-
-- Fixed the watcher connectivity issue for CCM to ensure we are receiving all the events from the cluster.
-
 ### Version 25.06.86100 <!--June 16, 2025-->
 
 #### New features and improvements
@@ -122,6 +116,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 - Fixed an issue where the MergePR step failed when using GitHub account URLs without a repository name. The step now correctly handles these URLs. [CDS-107526]
 - Fixed an issue where the UI would crash when editing a newly created Manifest override using a Custom Remote Store. [CDS-107112] 
 - Improved error handling for the MergePR step to provide clearer feedback when a pull request merge fails. [CDS-109239]
+
+### Version 25.06.86101 <!-- June 19, 2025 -->
+
+#### New features and improvements
+
+- Fixed the watcher connectivity issue for CCM to ensure we are receiving all the events from the cluster. [CCM-22905]
+
 
 ### Version 25.05.85805 <!--May 21, 2025-->
 
