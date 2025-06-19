@@ -4,7 +4,7 @@ import TabItem from '@theme/TabItem';
 This guide will help you **create a Python Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Python packages**.
 
 ## Prerequisites
-- Ensure you have Docker CLI installed and configured on your local machine.
+- Ensure you have **Python CLI** installed and configured on your local machine.
 - Ensure you have access to a Harness account with the appropriate permissions to create registries and connectors.
 
 ---
