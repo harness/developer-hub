@@ -1,229 +1,241 @@
 ---
 title: Setting Up Perspectives
 description: Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
-sidebar_position: 4
+sidebar_position: 3
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-## Create a Perspective
-
-You can create a Perspective by grouping your resources the way you wish. For example, if you want to create a perspective for your CFO, first add default or custom filters and then further group by Service, Account, Workload, Namespace, etc. that you would want to include in your Perspective.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 :::note
 You can create up to 10,000 Perspectives.
 :::
 
-Perform the following steps to create a Perspective:
+To create a Perspective, follow these steps:
 
-1. In **Cloud Costs**, click **Perspectives**.
-2. In **Perspectives**, click **New Perspective**.
-3. In **Perspective Builder**, enter a name for your perspective. By default, a unique name is entered in the field. You can edit the pre-populated name of the perspective.
+1. In **Cloud Costs**, click **Perspectives**
+2. Click **New Perspective**
+3. Complete the following three steps:
 
-:::note
-   Perspective names mustn't include any special characters.
+<Tabs>
+  <TabItem value="step1" label="Step 1: Perspective Builder" default>
+
+1. Enter a name for your Perspective (avoid special characters)
+2. Select a folder for organization (optional) - [Learn more about perspective folders](placeholder)
+3. Choose a default time view:
+   * Last 7 days
+   * Last 30 days
+   * Last month
+   * This month
+
+### Perspective Rules
+
+1. Click **Add rule** in the **Specify rules for the perspective** section. You can add multiple rules in a Perspective and their binding can use either the **AND** operator or the **OR** operator.
+2. Each rule can be set up using Operand, Operator and Values. 
+
+<div style={{marginBottom: '10px'}}>Rules help you define which cloud resources to include in your perspective using a simple "Operand-Operator-Value" structure.</div>
+
+<div className="rule-components-container" style={{display: 'flex', justifyContent: 'space-between', marginBottom: '20px'}}>
+  <div className="rule-component" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px'}}>
+    <div style={{fontSize: '18px', fontWeight: 'bold', marginBottom: '10px', textAlign: 'center'}}>Operand</div>
+    <div style={{fontSize: '13px', backgroundColor: '#f8f8f8', padding: '6px', borderRadius: '4px', marginBottom: '8px', fontStyle: 'italic'}}>The data category or attribute you want to filter on</div>
+    <div>Select from:</div>
+    <ul style={{paddingLeft: '20px'}}>
+      <li>Common</li>
+      <li>Cost Categories</li>
+      <li>Cluster</li>
+      <li>AWS</li>
+      <li>GCP</li>
+      <li>Azure</li>
+      <li>External Data</li>
+    </ul>
+  </div>
+  
+  <div className="rule-component" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px'}}>
+    <div style={{fontSize: '18px', fontWeight: 'bold', marginBottom: '10px', textAlign: 'center'}}>Operator</div>
+    <div style={{fontSize: '13px', backgroundColor: '#f8f8f8', padding: '6px', borderRadius: '4px', marginBottom: '8px', fontStyle: 'italic'}}>The comparison method that defines how to match values</div>
+    <div>Choose from:</div>
+    <ul style={{paddingLeft: '20px'}}>
+      <li><strong>IN</strong>: Include exact matches</li>
+      <li><strong>NOT IN</strong>: Exclude exact matches</li>
+      <li><strong>NULL</strong>: Include only where filter has no value</li>
+      <li><strong>NOT NULL</strong>: Include only where filter has a value</li>
+      <li><strong>LIKE</strong>: Include partial matches</li>
+    </ul>
+  </div>
+  
+  <div className="rule-component" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px'}}>
+    <div style={{fontSize: '18px', fontWeight: 'bold', marginBottom: '10px', textAlign: 'center'}}>Values</div>
+    <div style={{fontSize: '13px', backgroundColor: '#f8f8f8', padding: '6px', borderRadius: '4px', marginBottom: '8px', fontStyle: 'italic'}}>The specific data points to include or exclude in your perspective</div>
+    <div>Select the specific data points to apply the rule to.</div>
+    <div style={{marginTop: '10px'}}>These will vary based on your selected Operand and Operator.</div>
+  </div>
+</div>
+
+#### Example: 
+
+- Operand: `Commmon > Product`
+- Operator: `IN`
+- Values: `[Amazon DataZone, Amazon DynamoDB] `
+
+This will show all the cost items that are related to Amazon DataZone and Amazon DynamoDB.
+
+<DocImage path={require('./static/example-p.png')} width="90%" height="90%" title="Click to view full size image" />
+
+#### Preview and Continue
+
+As you build your perspective, a real-time preview appears on the right side of the screen that shows a graph of the cost data based on the rules you have added, along with a cost breakdown. 
+
+After configuring all rules, click **Next** to proceed to **Budgets, Reports and Alerts**.
+
+:::note Important Notes
+- If no rules are specified, your perspective will include data from all cloud providers and clusters
+- When combining cluster labels with cloud provider data, you must add a specific Cloud Provider filter. 
 :::
+-------
 
-4. In **Perspective Builder**, in **Rules for Perspective**, click **+** **Add rule**.
-5. Select one of the following:
-   * Common
-   * Cost Categories
-   * Cluster
-   * AWS
-   * GCP
-   * Azure
-   * Region
-   * Product
-      
-   As you add your resources in the Perspective Builder, a preview of your Perspective is displayed.
-6. Select the operator. See the **Rule-based Engine** section for more information.
-7. Select the value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
-   
-     ![](./static/create-cost-perspectives-22.png)
-8. After adding all the filters, click **Next** to add a report-sharing schedule and budget.
+  </TabItem>
+  <TabItem value="step2" label="Step 2: Budgets, Reports and Alerts">
 
+### Budgets
+  
+Budgets can help you receive alerts when the spend exceeds or is about to exceed a specified threshold so that it can be prevented.
 
-:::note
-- When you create a new Perspective, data across all cloud service providers and clusters are displayed. If you want to restrict the data to a particular cloud service provider, you must apply a filter in the Cloud Provider field.
+You can add multiple budgets for a single Perspective. Click on **+create a new Budget** to add a new budget and set up Target, Budget Amount and Configure Alerts.
 
-:::
+For detailed information about setting up budgets, see [Setting Up Budgets](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget)
+
+-----
+
+### Perspective Reports
+
+<div style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
+  <DocImage path={require('./static/output.gif')} width="70%" height="70%" title="Click to view full size image" />
+</div>
 
 
-:::note
-If you've added labels and cluster rules in the perspective builder section, it's considered a cluster perspective, hence all cluster labels are considered. In this case, data from cloud service providers such as GCP, Azure, and AWS are not considered. However, if you have applied a label that belongs to the cloud provider data, and you want to view the cluster data as well, then you have to add a Cloud Provider filter.
-:::
+Reports can send a cost report to specified users at the specified frequency. You can create a report schedule for a specific perspective.
 
-### Step 2: Budgets, Reports and Alerts
+1. In the Reports section, click **+create new Report Schedule**
+2. Configure the following options:
+   * **Name**: Name of the report.
+   * **Time zone**: Choose the time zone for the report schedule
+   * **Frequency**: Choose Daily, Weekly, Monthly, Quarterly, Yearly for delivery of reports.
+   * **Select date and time**: Choose the date and time for when the report should be sent
+   * **Send Report To**: Enter an email ID of the recipients. Email IDs are separated by a comma. Up to 50 email IDs can be added for sharing the report schedule
+3. Click **Save**.
 
-#### Budgets, Reports, and Alerts
-For details on adding Budgets, Reports, and Alerts go to:
+-------
 
-* [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
-* [Share Your Cost Perspective Report](../../3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report.md)
-* [Detect Cloud Cost Anomalies with CCM](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm)
+### Anomaly Alerts
 
+You can also set up alerts for all anomalies in the current perspective. The scope of the alerts set via this option will be for the current perspective, i.e., the alerts will be set only for anomalies detected on the current perspective data.
 
-:::note
-You can add multiple budgets for a single Perspective.
-:::
+1. Click on **+ add Anomaly Alert**
+2. Configure Name, Alert Conditions and Alert Channel. For details, see: [Anomaly Detection](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm#anomaly-notifications)
 
-Perform the following steps to create a budget:
-1. If you do not have a Perspective of the resources you would like to budget, [create a new Perspective](1-create-cost-perspectives.md) and then proceed to set a budget.
-   After creating a Perspective, in **Perspective Builder**, click **Next**.
-2. If you wish to set a budget for an existing Perspective, select the Perspective for which you want to set a budget, and click **Edit**.
-     <DocImage path={require('./static/create-a-budget-perspective-06.png')} width="50%" height="50%" title="Click to view full size image" />
+#### Additional Resources
 
-3. In **Perspective Builder**, click **Next**.
-4. In **Reports and Budget**, click **create new Budget**.
-         
-     <DocImage path={require('./static/create-a-budget-perspective-07.png')} width="50%" height="50%" title="Click to view full size image" />
+For more detailed information about Anomaly detection in CCM, refer to [Detect Cloud Cost Anomalies with CCM](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm)
 
-5. In **Define target**, in **Budget Name**, enter a name for your budget that will appear in the budget dashboard to identify this budget.
-      <DocImage path={require('./static/create-a-budget-perspective-08.png')} width="50%" height="50%" title="Click to view full size image" />
+------
 
 
-:::note
-   Budgets are created on Perspectives. You cannot select a new Perspective here.
-:::
-6. Click **Continue**.
-7. In **Set Budget Amount**, do the following:
-	1. In **Budget Period**, select the period for which you want to set the budget.
-	2. Use the date picker to set the start date for your budget.
-   	1. In **Budget Type**, select a budget type.  
-	
-		* **Specified Amount**: Enter the amount that you want to set as the budget limit.
-		* **Previous Month Spend**: Sets the previous month spent as your budget.
-	4. To add growth rate to your budgeted amount, select the checkbox **Add growth rate to budget amount**. Growth rate refers to the percentage change of the budgeted amount within the specified time period. When you've decided to add growth rate to the budget amount, specify the growth rate percentage.
-     
-       In **Specify Growth rate**, enter the percentage of the growth rate to the budget amount.  
-		  
-		You can view the increased amount of your budget in the graph. The graph displays the amount and budget period. The following example considers a 5% increase to the monthly budget amount.
+</TabItem>
+  <TabItem value="step3" label="Step 3: Preferences">
 
-     <DocImage path={require('./static/create-a-budget-perspective-10.png')} width="50%" height="50%" title="Click to view full size image" />
+With perspective preferences, you have the flexibility to tailor the cost data presented in your perspective. You can opt to include or exclude specific cost data provided by the Cloud Service Providers (CSPs) according to your needs and requirements. 
 
-		
-8. Click **Continue**.
-9. In **Configure Alerts**, set a threshold for the **Percentage of Budget** based on the **Actual Cost** or **Forecasted Cost**. Harness sends alerts when the Actual Cost or Forecasted Cost exceeds the threshold.
-
-  Harness sends an alert to the specified email addresses and Harness User Groups when the actual or forecasted cost exceeds a percentage of your monthly budget.
-
-10. In **Send report to**, add email addresses to receive budget notifications.
-    
-   <DocImage path={require('./static/create-a-budget-perspective-11.png')} width="50%" height="50%" title="Click to view full size image" />
-
-
-11. Click **Save**.
-12. Click **Save Perspective**.
-
-### Edit a Budget
-
-To edit a budget:
-
-1. In **Perspectives**, select the Perspective for which you want to edit the budget.
-2. Click **Edit**.
-   
-   <DocImage path={require('./static/create-a-budget-perspective-12.png')} width="50%" height="50%" title="Click to view full size image" />
-
-3. In **Perspective Builder**, click **Next**.
-4. In **Reports and Budget**, in **Budget**, click the **Edit** icon.
-   
-  <DocImage path={require('./static/create-a-budget-perspective-13.png')} width="50%" height="50%" title="Click to view full size image" />
-
-5. The Budget settings appear. Follow the steps in **Create a New Budget** to edit the details of the budget.
-
-### Delete a Budget
-
-:::note
-Once a budget is deleted, it cannot be restored.
-:::
-
-To delete a budget:
-
-1. In **Perspectives**, select the Perspective for which you want to edit the budget.
-2. Click **Edit**.
-   
-     <DocImage path={require('./static/create-a-budget-perspective-14.png')} width="50%" height="50%" title="Click to view full size image" />
-
-3. In **Perspective Builder**, click **Next**.
-4. In **Reports and Budget**, in **Budget**, click **Delete**.
-   
-     <DocImage path={require('./static/create-a-budget-perspective-15.png')} width="50%" height="50%" title="Click to view full size image" />
-
-### Step 3: Preferences
+Customize how your perspective data is visualized with these options:
 
 ### General Preferences
 
-You can customize your perspective view with the following display preferences:
+#### Show Others
+The default perspective graph displays only the top 12 cost items. Enable this option to group all remaining costs into an "Others" category, ensuring you see your complete spending picture.
 
-- **Show Others**: The graph displayed in a Perspective shows the top 12 costs only. Enable this setting to include the remaining costs as an **Others** item in the graph.
+#### Show Anomalies
+Highlight unusual spending patterns or sudden cost changes in your visualizations. This feature makes it easy to spot potential issues or unexpected charges that may require investigation.
 
-- **Show Anomalies**: Highlights unusual spending patterns or sudden cost changes in your visualization. This feature helps you quickly identify potential issues or unexpected charges that may require investigation.
+### Cloud-based Preferences
 
-- **Show Negative Cost**: Displays instances where discounts exceed the actual billing amount, resulting in negative cost values in your reports.
+<Tabs>
+  <TabItem value="aws" label="AWS" default>
 
-## Exporting Perspective Reports
+When creating your perspective, the **Preferences** section allows you to include specific cost factors sourced from the AWS Cost and Usage Reports (AWS CUR). These selected cost factors will be incorporated into your perspective for a more tailored and comprehensive view of your cloud costs. 
 
-You can export your Perspectives reports as comma-separated values (CSV) files. Exporting allows you to use the data in other software.
+* **Include Discounts**: Includes any discounts that AWS applied to your usage. 
+* **Include Credit**: Includes any credits that AWS has applied to your bill.
+* **Include Refunds**: Includes the negative charges that AWS refunded money for. 
+* **Include Taxes**: Includes any taxes that AWS applied to your bill. For example, VAT or US sales tax. 
+* **Show costs as**: The following are the various AWS cost types supported by Perspectives.
 
-## Limitations
+#### AWS Cost Types
 
-* Only comma-separated values files (CSV) are supported.
-* The maximum number of rows allowed in one export is 10,000 rows. If you have more rows, you can export separate CSV files using the **Export rows up to** option.
-* The more rows you export, the slower the export will be.
+* **Net amortized cost**: The actual cost of using resources, accounting for upfront payments made for Reserved Instances. It evenly spreads the upfront costs over the reservation term, considers monthly fees, and includes discounts like RI volume discounts.
 
-## Create a Perspective Export
+* **Blended cost**: The total cost of using AWS services, which includes both upfront and usage-based charges, divided by the total number of usage units. Blended rates are the rates associated with total usage in an organization averaged across accounts. For a line item, the blended cost is usage multiplied by the blended rate. The blended cost is the cost attributed to the account's usage as a linked account in an organization.
 
-1. Open a Perspective.
+* **Unblended cost**: The direct cost incurred for using AWS services, without factoring in any upfront payments or volume discounts. Unblended rates are the rates associated with an individual account's service usage. For a line item, the unblended cost is usage multiplied by the unblended rate. The unblended cost would be the cost of the account's usage if it were a standalone account. Unblended costs represent your usage costs on the day they are charged to you. In finance terms, they represent your costs on a cash basis of accounting.
 
-    Below the **Group By** graph, you can see the **Export CSV** option.
-
-  ![](./static/export-perspective-data-04.png)
-2. Click **Export CSV**.
-
-3. Enter a name for the CSV file.
-
-4. In **Export rows up to**, enter the number of rows you want exported. The number of rows should be greater than or equal to 1.
-
-### Option: Exclude rows with cost below
-
-Use **Exclude rows with cost below** to set a cost ceiling on the cost data exported.
-
-The amount must be a number. You cannot use symbols or punctuation.
-
-### Export the CSV
-
-Click **Download**. 
-
-Depending on your browser, you might be prompted to allow downloads.
-
- 
-![](./static/export-perspective-data-05.png)
-
-The file is downloaded to your local computer.
-
-
-## Edit a Perspective
-
-To edit a Perspective, do the following:
-
-1. Select the Perspective that you want to edit, and click **Edit**.
-   
-2. The **Perspective Builder** appears. Follow the steps in **Create Cost Perspectives** to edit the Perspective.
-
-## Clone a Perspective
-
-When you clone a Perspective, all its settings are cloned. You simply add a new name. After it is cloned, you can edit it just as you would edit any perspective. To clone a Perspective, do the following:
-
-Select the more actions icon on the Perspective tile that you want to clone, and select **Clone**.
-   
-  ![](./static/clone-delete-perspective.png)
+* **Amortized cost**: The total upfront payment for reserved instances spread evenly over the term of the reservation. This method is used to allocate the upfront costs equally across the duration of the reservation, making it easier to analyze the cost distribution.
     
-  The cloned Perspective appears. 
+  For example, Alejandro decides to buy a Partial Upfront t2.micro Reserved Instance (RI) with a one-year term. The upfront cost for this RI is 30 USD, which he pays at the beginning. Additionally, there is a monthly fee of 2.48 USD associated with the RI. In this case, the Cost Explorer chart will show Alejandro's RI costs as a spike on the first day of each month. This spike represents the monthly fee of 2.48 USD being charged. When Alejandro chooses "Amortized costs" in the Cost Explorer settings, it provides a different perspective on the cost data. Amortization is a process of spreading the upfront cost of a reserved instance over its duration (one year in this case). Instead of showing a large upfront cost, Amortized costs evenly distribute the upfront cost over the term of the RI. Selecting **Amortized costs** and considering a 30-day month, the Cost Explorer chart will display a daily effective rate. This daily effective rate is calculated by taking the EC2 effective rate (which is the hourly cost of running an instance) and multiplying it by the number of hours in a day. So, if the EC2 effective rate for the t2.micro instance is 0.165 USD per hour, the daily effective rate will be 0.165 USD multiplied by 24 hours, resulting in 3.96 USD.
 
-## Delete a Perspective
+* **Effective cost**: The average hourly rate obtained by combining both the upfront payment and the hourly rate. `EffectiveCost` is calculated by adding the `amortizedUpfrontCostForUsage` to the `recurringFeeForUsage`.
 
-To delete a Perspective, do the following:
+</TabItem>
+<TabItem value="gcp" label="GCP">
 
-Select the more actions icon on the Perspective tile that you want to delete, and select **Delete**.  
+The following cost factors retrieved from your GCP Billing Export data can be included or excluded in your perspectives for a more comprehensive view of your cloud costs.
+
+* **Include Discounts**: Includes any discounts that GCP applied to your usage. 
+* **Include Taxes**: Includes any taxes that GCP applied to your bill. For example, VAT or US sales tax. This option is enabled by default.
   
-The Perspective is deleted and no longer appears in the Perspective dashboard.
+To know how to analyze the perspective data, go to [Analyze cost for GCP](../3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md).
+
+For details about the **GCP Invoice Month** filter, go to [Add filters](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-gcp-using-perspectives#option-add-filter).
+
+  </TabItem>
+  <TabItem value="azure" label="Azure">
+
+Azure provides two types of cost export metrics: **Actual Cost** and **Amortized Cost**, each serving distinct financial tracking and analysis needs. In the Azure portal, users can toggle between these cost types to gain insights into their billing data. CCM allows users to configure their Azure connector to support both cost types, offering enhanced visibility and control over their expenses.
+
+#### Azure Cost Types
+
+* **Actual Cost**: Refers to the real-time, pay-as-you-go pricing for Azure resources and services. It is calculated based on hourly or per-minute usage, directly reflecting the charges that can vary with demand and utilization. This cost model is ideal for real-time monitoring and cost analysis, as it provides a precise view of expenses as they occur.
+
+* **Amortized Cost**: Offers a predictable, averaged representation of costs over a specified period, typically on a monthly basis. This approach spreads the upfront payments or commitments of Reserved Instances (RIs) over their term, which can be either one or three years. Amortized costs are particularly useful for evenly distributing expenses over reservation terms, aiding in financial projections and budgeting by providing a stable cost structure.
+
+To accommodate the diverse needs of different teams, CCM supports the setup of both Actual and Amortized cost exports within the same connector. Users can view and toggle between these costs in their perspectives.
+
+:::note
+- In order to accurately track costs, ensure that your connector has one billing type set to "Actual." If not set while creating the connector, the creation will fail. For existing connectors, update them such that one of the billing types should be "Actual"; otherwise, connector test connection would fail.
+
+- Billing type will be set to "Actual" in billing export in places where billing type was not present before this feature launch.
+
+- CCM will maintain data with the Azure cost type set to "Actual." All cost computations will be based on this setting.
+
+- For Active Spend and License-Util APIs, Costs will be queried assuming Azure cost type "Actual".
+- Prior to Azure preferences, all data was ingested as 'Actual,' even if Amortized billing was used. After Azure preferences, we ingested the new Amortized billing export data. Due to this, in some cases, 'Actual' data might no longer show. To fix this, kindly change the Azure cost type filter to 'Amortized'.
+:::
+
+  </TabItem>
+</Tabs>
+
+
+------
+
+</TabItem>
+</Tabs>
+
+After creating a Perspective you can:
+
+- Edit a Perspective
+- Clone a Perspective
+- Delete a Perspective
+- Move a Perspective to a folder
+
+Also, by clicking on a specific Perspective on the Perspective home page, you can see all the details about the perspective. 
+

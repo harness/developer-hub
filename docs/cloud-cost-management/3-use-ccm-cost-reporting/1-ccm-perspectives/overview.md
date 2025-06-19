@@ -74,173 +74,72 @@ Harness CCM is transitioning from the traditional `Label` system to the enhanced
 
 # Understanding Perspectives in Cloud Cost Management
 
+## What are Perspectives?
+
 Perspectives in Harness Cloud Cost Management (CCM) provide a powerful way to contextualize your cloud spending according to your business needs. By creating custom views of your cost data, you can gain insights that align with your organizational structure, projects, or any other business dimension.
 
-## The Perspective Dashboard
+## Benefits of Using Perspectives
 
-When you select a perspective, you'll see a comprehensive dashboard that includes:
+- **Business-Aligned Cost Visibility**: View cloud costs in ways that match your organizational structure and business priorities
+- **Custom Data Grouping**: Create meaningful cost groupings that make sense for your specific use cases
+- **Enhanced Decision Making**: Make more informed financial decisions with contextualized cost data
+- **Simplified Cost Management**: Organize complex cloud spending into understandable, actionable views
+- **Improved Cost Allocation**: Accurately attribute costs to the right teams, projects, or business units
 
-- **Financial Overview**:
-  - Total cost for the selected time period
-  - Budget allocation and utilization
-  - Forecasted future costs
-  - Cost-saving recommendations
+## Example Use Cases for Perspectives
 
-- **Interactive Cost Visualization**: A dynamic graph that lets you analyze costs using the **Group By** function, with options to segment by:
-  - **[Cost Categories](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories)**: Your custom-defined cost groupings
-  - **Cloud Provider**: Breakdown by AWS, Azure, GCP with provider-specific details
-  - **Region**: Geographic distribution of costs
-  - **Product**: Specific cloud services and products
-  - **Label**: GCP, Azure, Cluster tags and normalized AWS tags
-  - **Label V2**: Cloud tags displayed exactly as they appear in your environments
-  - **Custom Data Sources**: Any additional data sources you've configured
-  - **None**: Aggregated view without grouping
+Here are some practical scenarios where perspectives can provide significant value:
 
-- **Customizable Filters**: Refine your view to focus on specific aspects of your cloud spending
+### 1. Team-Based Cost Attribution
 
-- **Display Preferences**: Adjust how your data is presented
-## Organizing Your Perspectives
+**Scenario:** A company with multiple development teams sharing cloud resources needs to understand which team is responsible for which costs.
 
-Keep your workspace tidy by organizing perspectives into folders. There's no limit to how many folders you can create.
+**Solution:** Create a perspective that groups costs by team tags or labels, allowing managers to:
+- Track each team's cloud spending over time
+- Compare resource utilization across teams
+- Set team-specific budgets and monitor adherence
+- Identify opportunities for cost optimization within each team
 
-### Creating and Managing Folders
+### 2. Project-Based Financial Reporting
 
-1. **Create a New Folder**:
-   - Click the **New folder** button
-   - Name your folder
-   - Select which perspectives to include
-   
-   ![Creating a new folder for perspectives](./static/create-cost-perspectives-28.png)
+**Scenario:** A business needs to track costs for specific client projects that span multiple cloud services and regions.
 
-2. **Add Perspectives to Folders**:
-   - When creating a new perspective
-   - When editing an existing perspective
-   
-   ![Adding a perspective to a folder during creation or editing](./static/create-cost-perspectives-29.png)
+**Solution:** Create project-specific perspectives that filter costs based on project identifiers, enabling:
+- Accurate client billing and cost recovery
+- Project profitability analysis
+- Budget vs. actual cost tracking for each project
+- Forecasting future project costs based on current trends
 
-3. **Move Perspectives Between Folders**:
-   - Click the more options menu (⋮) for any perspective
-   - Select the move option
-   - Choose the destination folder
-   
-   ![Moving a perspective using the options menu](./static/create-cost-perspectives-30.png)
+### 3. Environment-Based Cost Management
 
-## Important: Migrating from Label to Label V2
+**Scenario:** An organization wants to compare costs between development, staging, and production environments.
 
-Harness CCM is transitioning to the enhanced Label V2 system, which provides better performance and more accurate representation of your cloud tags. **Support for the legacy Label system will be discontinued soon.**
+**Solution:** Create perspectives for each environment type, allowing teams to:
+- Identify cost disparities between environments
+- Optimize development and staging environments for cost efficiency
+- Track the cost impact of moving features from development to production
+- Implement environment-specific cost controls
 
-### Migration Timeline and Requirements
+### 4. Business Unit Financial Allocation
 
-| Cloud Provider | Migration Status | Action Required |
-|---------------|------------------|----------------|
-| AWS | **Immediate action required** | You must manually update all AWS Label references |
-| GCP, Azure, Cluster | Pending | Automatic migration will occur after AWS migration |
+**Scenario:** A large enterprise needs to allocate cloud costs to different business units for internal chargeback.
 
-### Migration Methods
+**Solution:** Create perspectives aligned with business units, providing:
+- Transparent cost allocation for finance teams
+- Business unit-specific cost reporting for executives
+- Trend analysis of cloud spending by business function
+- Data for informed resource allocation decisions
 
-#### Option 1: Using the UI
+### 5. Application Portfolio Management
 
-Follow this step-by-step process to migrate your perspectives:
+**Scenario:** An IT department manages dozens of applications and needs to understand the total cost of ownership for each.
 
-1. **Identify Affected Components**
-   - Review all perspectives using AWS Label-based grouping or filtering
+**Solution:** Create application-specific perspectives that aggregate all costs related to each application:
+- Compare costs across the application portfolio
+- Identify the most expensive applications to prioritize optimization
+- Track cost impact of application changes and updates
+- Make informed decisions about application retirement or modernization
 
-2. **Update Each Component**
-   - Edit the perspective
-   - Find all rules, filters, or groupings using AWS Labels
-   - Switch from "Label" to "Label V2"
-   - Save your changes
-
-3. **Verify Your Updates**
-   - Confirm cost data appears correctly
-   - Verify all label-based filters work as expected
-
-Follow this visual guide for the migration process:
-
-<iframe 
-   src="https://app.tango.us/app/embed/44d091fd-3177-44a1-b575-1a5a8febf36d" 
-   title="Migrating Label to Label V2" 
-   style={{minHeight:'480px'}}
-   width="100%" 
-   height="100%" 
-   referrerpolicy="strict-origin-when-cross-origin" 
-   frameborder="0" 
-   webkitallowfullscreen="webkitallowfullscreen" 
-   mozallowfullscreen="mozallowfullscreen" 
-   allowfullscreen="allowfullscreen"></iframe>
-
-#### Option 2: Using the API
-
-If you're using the API to manage perspectives, update your requests as follows:
-
-##### For labels.value:
-
-**Before:**
-```json
-{
-    "field": {
-        "fieldId": "labels.value",
-        "fieldName": "key1",
-        "identifier": "LABEL",
-        "identifierName": "Label"
-    },
-    "operator": "IN",
-    "values": ["value1"]
-}
-```
-
-**After:**
-```json
-{
-    "field": {
-        "fieldId": "labels.value",
-        "fieldName": "key1",
-        "identifier": "LABEL_V2",
-        "identifierName": "Label v2"
-    },
-    "operator": "IN",
-    "values": ["value1"]
-}
-```
-
-##### For labels.key:
-
-**Before:**
-```json
-"idFilter": {
-    "field": {
-        "fieldId": "labels.key",
-        "fieldName": "",
-        "identifier": "LABEL",
-        "identifierName": "Label V2"
-    },
-    "operator": "IN",
-    "values": []
-}
-```
-
-**After:**
-```json
-"idFilter": {
-    "field": {
-        "fieldId": "labels.key",
-        "fieldName": "",
-        "identifier": "LABEL_V2",
-        "identifierName": "Label V2"
-    },
-    "operator": "IN",
-    "values": []
-}
-```
-
-**Key Change**: Replace `"identifier": "LABEL"` with `"identifier": "LABEL_V2"` in all API requests.
-
-### Additional Resources
-
-For detailed API documentation, refer to:
-- [Creating Perspectives](https://apidocs.harness.io/tag/Cloud-Cost-Perspectives#operation/createPerspective)
-- [Updating Perspectives](https://apidocs.harness.io/tag/Cloud-Cost-Perspectives#operation/updatePerspective)
-
-### Understanding Label vs. Label V2
-
-For more information about the differences between Label and Label V2, see the [key concepts documentation](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#understanding-the-difference-label-vs-label-v2).
+### Next Steps
+- Getting Started
+- Setting Up Perspectives
