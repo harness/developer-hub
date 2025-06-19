@@ -57,7 +57,7 @@ In this example, we are going to discuss setting up notification management of P
 
         Under **Select Project** you can either select **All Projects** under the organization or you can select **Specified Project** if you want to configure notification for specific projects within the organization. Click on **Continue** to set conditions for notification.
 
-        ![](./static/pipeline_resource.png)
+        ![](./static/pipeline-resource.png)
 
 5. Under **Condition** , select **+ Add Condition** to define pipeline events based on which you want to be notified.
     
