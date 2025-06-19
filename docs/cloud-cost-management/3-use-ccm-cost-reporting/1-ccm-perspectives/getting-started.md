@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Perspectives
+title: Getting Started
 description: Learn how to set up and use Perspectives to organize cloud resources according to your business needs.
 sidebar_position: 2
 helpdocs_is_private: false
