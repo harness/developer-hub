@@ -135,19 +135,11 @@ The following deprecated API endpoints are longer supported:
 #### Fixed issues
 
 - Previously, when users had access to a Secret Manager at a higher level (such as Account scope), but not at the lower level (like Organization scope), the secret creation screen would get stuck in a continuous loading state after selecting the Secret Manager. With this update, users can now smoothly select and use Secret Managers from higher levels without any loading issues. [PL-63165]
+- We've enhanced the clarity of error messages shown when notification channel setup is done. Users will now receive intuitive, actionable messages indicating possible causes (such as default template filters), making it easier to troubleshoot and resolve issues. [PL-63406] 
 
 #### New Feature and Enhancement 
 
 - We’ve added logging to capture Kubernetes events during delegate shutdown. This will help in better understanding and troubleshooting shutdown behavior by providing more visibility into related cluster events. [PL-60516]
-- We’ve added support for Customised Notifications with input parameters across all notification channels, including:
-  - Webhook
-  - Email
-  - Slack
-  - Microsoft Teams
-  - Datadog
-  - PagerDuty
-
-  This enhancement allows you to dynamically tailor notification content based on user-defined inputs, offering greater flexibility and control across your integrations. [PL-62197]
 
 ### Version 1.93.x <!--June 10, 2025-->
 
@@ -160,6 +152,7 @@ The following deprecated API endpoints are longer supported:
 #### New Feature and Enhancement 
 
 - Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance. [PL-62957]
+- We’ve added support for Customised Notifications across all notification channels, this enhancement allows you to dynamically tailor notification content based on user-defined inputs, offering greater flexibility and control across your integrations. [PL-62197]
 
 ## May 2025
 
