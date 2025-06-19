@@ -61,7 +61,7 @@ In this example, we are going to discuss setting up notification management of P
 
 5. Under **Condition** , select **+ Add Condition** to define pipeline events based on which you want to be notified.
     
-        ![](./static/resource_pipeline-condition.png)
+        ![](./static/resource-pipeline-condition.png)
 
         Under events you can select the following **pipeline events**:-
 
