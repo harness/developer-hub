@@ -1,11 +1,10 @@
 ---
-title: Key Concepts
+title: Perspectives Overview Page
 description: Export your perspectives' reports as CSV files
-sidebar_position: 3
+sidebar_position: 4
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
 
 ## Cloud Costs Perspective Concepts
 
