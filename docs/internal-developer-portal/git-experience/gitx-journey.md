@@ -30,8 +30,6 @@ This Git Experience document is applicable **only to IDP 2.0 customers**, as the
 
 Harness Internal Developer Portal (IDP) 2.0 integrates deeply with the Harness Platform Git Experience (GitX) to enable **bi-directional Git-backed entity management**. Harness Git Experience with IDP 2.0 allows you to store and track your entity YAMLs in Git Repositories with bi-directional updates. This document outlines how developers and platform engineers interact with Git Experience throughout the entity lifecycle. 
 
-To understand more about the key features of Harness IDP Git Experience, please go through [Harness IDP Git Experience Overview](/docs/internal-developer-portal/git-experience/overview.md).
-
 ### Supported IDP Entities in Git Experience
 Harness IDP Git Experience supports the following Harness IDP entities for this feature: 
 
