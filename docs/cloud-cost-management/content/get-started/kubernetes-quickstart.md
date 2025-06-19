@@ -9,7 +9,7 @@ The Kubernetes Quick Create feature allows you to seamlessly set up your Harness
 ## Prerequisites and Permissions
 
 * See [Roles and Policies for the Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector#review-roles-and-policies-for-the-connector) to learn about the IAM roles and policies that you need to be assigned to be able to create a connector.
-* See [Prerequisites](set-up-cost-visibility-for-kubernetes.md#prerequisites) to learn about the tasks that you need to perform before setting up Cloud Costs Management for your Kubernetes cluster.
+* See [Prerequisites](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md#prerequisites) to learn about the tasks that you need to perform before setting up Cloud Costs Management for your Kubernetes cluster.
 
 
 ## Create the Kubernetes connector using the Quick Create option
@@ -28,7 +28,7 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 3. Select **Kubernetes**.
 4. Select **Quick Create**.
 5. In the **Kubernetes Connector** wizard, enter a **name** for the connector.
-6. If the cluster does not already have additional permissions, you need to apply them now. See Delegate Permissions in [Prerequisites](set-up-cost-visibility-for-kubernetes.md#prerequisites) for additional details.
+6. If the cluster does not already have additional permissions, you need to apply them now. See Delegate Permissions in [Prerequisites](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md#prerequisites) for additional details.
     1. In **Provide Permissions**, select **Download YAML**.
     2. Copy the downloaded YAML to a machine where you have `kubectl`installed and have access to your Kubernetes cluster.
     3. Run the following command to create a Kubernetes Delegate with Cluster Admin Role and a connector referencing the delegate.
@@ -48,7 +48,7 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 The required permissions and components are verified. On successful verification, the cost management features are enabled on the cluster.
 
   ![](../../get-started/static/use-cloud-integration-00.gif)
-1. (Optional) To enable the AutoStopping feature, select **Enable AutoStopping** before selecting **Finish** and continue to follow the steps in the wizard, or you could choose to enable this feature later if required. To learn how to enable AutoStopping, go to [Create a secret and provide permissions for AutoStopping](set-up-cost-visibility-for-kubernetes.md#optional-create-a-secret).
+1. (Optional) To enable the AutoStopping feature, select **Enable AutoStopping** before selecting **Finish** and continue to follow the steps in the wizard, or you could choose to enable this feature later if required. To learn how to enable AutoStopping, go to [Create a secret and provide permissions for AutoStopping](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes#optional-create-a-secret).
 
 ### Viewing Cloud Costs
 
