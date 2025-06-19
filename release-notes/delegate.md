@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2025
 
+### Version 25.06.86101 <!-- June 19, 2025 -->
+
+#### Fixed issues
+
+- Resolved the watcher connectivity issue for CCM to ensure we are receiving all the events from the cluster. [CCM-22905]
+
 ### Version 25.06.86100 <!--June 16, 2025-->
 
 #### New features and improvements
