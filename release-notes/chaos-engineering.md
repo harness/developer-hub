@@ -29,7 +29,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 - harness/chaos-ddcr:1.62.0
 - harness/chaos-log-watcher:1.62.0
-- harness/service-discovery-collector:0.40.0
+- harness/service-discovery-collector:0.42.0
 - harness/chaos-ddcr-faults:1.62.0
 
 #### What's New
