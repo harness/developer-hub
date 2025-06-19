@@ -13,7 +13,7 @@ If the connectivity is broken, customers will not be able to make changes to the
 
 ![](/docs/platform/git-experience/static/entitycache-brokenconnection.png)
 
-### Harness Executions (no changes or updates)
+### Harness Executions - no changes or updates
 For existing entities, if the connectivity is broken, the pipeline will continue running and reference the last cache version of the entities during execution. This includes any remote entities that were kept in the remote repo.  Harness maintains a cache with an expiration, and as long as the cache hasn't expired, users will see a `Branch Fetch Failed` error, but will still be able to execute the pipeline.
 ![](/docs/platform/git-experience/static/entitycache-brokenconnectrun.png)
 
