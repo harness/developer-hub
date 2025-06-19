@@ -22,6 +22,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| `PIPE_ENABLE_GITHUB_ENTERPRISE_PROVIDER_FLOW` | Enables users to integrate their GitHub Enterprise instance using Harness’s OAuth provider configuration, instead of legacy token-based connectors. Harness's built-in Secret Manager is not supported with this provider flow, you must use a custom Secret Manager accessible to your delegate. **This feature is in Limited GA.** |
 | `PIPE_SUPPORT_MULTIPLE_TIMEZONES_IN_CRON_TRIGGERS` | Enables users to select timezones for [Cron triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers) using IANA Time Zone names, providing more control over when pipelines are triggered. **This feature is in Limited GA.** |
 | `CDS_UI_ENABLE_DISALLOWED_USER_EMAILS_IN_APPROVAL_STEP` | Enables users to block specific users from approving steps using [Disallowed User Emails](/docs/platform/approvals/adding-harness-approval-stages#disallowed-user-emails). **This feature is in Limited GA.** |
 | `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK` | Enables users to ensure Kubernetes workloads are redeployed when referenced ConfigMaps or Secrets are updated, even if the deployment spec itself remains unchanged. This is achieved by hashing manifest content under declarative rollback. **This feature is in Limited GA.** |
