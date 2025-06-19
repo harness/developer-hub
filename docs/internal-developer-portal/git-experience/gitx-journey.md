@@ -66,6 +66,11 @@ Users who initially created an entity as inline can convert it to Git-based at a
 
 // steps to convert these entities with images and screenshots
 
+### Managing Multiple Branches
+You can also switch branches from Git to view an alternate version of the entity's YAML. This action does not create a new entity; instead, it updates the existing one. This is especially useful in scenarios where direct commits to the main branch are restricted due to organizational policies, and changes need to go through a pull request workflow.
+
+// steps to create and manage multiple branches with the PR flow
+
 ## Importing an Entity from Git (using YAML)
 In Harness IDP, users can also create new entities by importing their YAML definitions stored in Git repositories directly into Harness IDP.
 This feature allows teams to reuse pre-defined configurations, onboard services faster, and migrate from automation workflows or existing repositories.
