@@ -180,7 +180,7 @@ For more information, go to [Build custom delegate images with third-party tools
 
 ### Is there a limit on the number of tasks a Harness delegate can handle concurrently?
 
-Yes, by default, a Harness delegate can acquire up to 400 tasks concurrently. To allow the delegate to handle more than 400 concurrent tasks, set the environment variable DYNAMIC_REQUEST_HANDLING to true. Also, ensure that the delegate has sufficient CPU and memory resources to support the increased load.
+Yes, by default, a Harness delegate can acquire up to 400 tasks concurrently. To allow the delegate to handle more than 400 concurrent tasks, set the environment variable `DYNAMIC_REQUEST_HANDLING` to true. Also, ensure that the delegate has sufficient CPU and memory resources to support the increased load.
 
 ### Can I configure delegate proxy settings?
 
