@@ -29,7 +29,16 @@ import TabItem from '@theme/TabItem';
 This Git Experience document is applicable **only to IDP 2.0 customers**, as the Harness IDP Git Experience is available exclusively in IDP 2.0. To learn how to upgrade, refer to the [IDP 2.0 Upgrade Guide](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md).
 :::
 
-Harness Internal Developer Portal (IDP) integrates with the Platform Git Experience (GitX) to enable **bi-directional Git-backed entity management**. Harness Git Experience allows you to store and track your entity YAMLs in Git Repositories with bi-directional updates. This document outlines how developers and platform engineers interact with Git Experience throughout the entity lifecycle.
+Harness Internal Developer Portal (IDP) integrates with the Platform Git Experience (GitX) to enable **Git-backed entity management**. Harness Git Experience allows you to store and track your entity YAMLs in Git Repositories. This document outlines how developers and platform engineers interact with Git Experience throughout the entity lifecycle.
+
+### Supported Features in Git Experience
+
+| Feature                                                                            | Status                                          |
+| ---------------------------------------------------------------------------------- | ----------------------------------------------- |
+| **Store entity YAML in Git**                                                       | ✅ Available                                    |
+| **Import YAML from Git** and create a new entity                                   | ✅ Available                                    |
+| **IDP to Git changes**: Make changes in IDP and commit changes to YAML file in Git | ✅ Available                                    |
+| **Git to IDP changes**: Make changes to YAML file in Git and update entity in IDP  | 🚧 (Work in Progress) ETA: Week of July 4, 2025 |
 
 ### Supported IDP Entities in Git Experience
 
@@ -62,7 +71,7 @@ With Inline Entities, your entity's YAML is stored in the Harness database. You 
 
 ### Creating Remote Entities
 
-With Remote Entities, you can store your entity YAMLs in your Git repositories with bi-directional real-time sync support.
+With Remote Entities, you can store your entity YAMLs in your Git repositories.
 
 <iframe
   src="https://app.tango.us/app/embed/c2f6dd37-2805-426f-a004-11c15836244c?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false"
@@ -84,9 +93,10 @@ Let's get started, so when a user creates a new Catalog entity - they can choose
 Once Git is selected, users can configure the repository details, connector, branch, and YAML file path.
 Changes made in the entity via the Harness UI are committed to the Git repo (either directly or through a pull request).
 
-:::note
+<!-- Bidirectional updates are not available yet. -->
+<!-- :::note
 Changes made to the YAML file in Git are **automatically reflected** in the entity using **webhook-triggered updates**. To understand more about this feature, please refer to [Updating and Syncing Entities with Git](/docs/internal-developer-portal/git-experience/gitx-journey.md#updating-and-syncing-entities-with-git)
-:::
+::: -->
 
 ### Converting Inline to Remote Entity
 
@@ -132,14 +142,6 @@ You can also switch branches from Git to view an alternate version of the entity
   mozallowfullscreen="true"
   allowFullScreen
 />
-
-<!-- Remove this when the feature is released. -->
-
-:::info note
-
-Note that the final entity page view in IDP will still render the main/default branch. Only the Edit view will render the YAML contents from the alternate branch.
-
-:::
 
 ## Importing an Entity from Git (using YAML)
 
@@ -204,30 +206,34 @@ Some important constraints exist during the import process:
 
 ## Updating and Syncing Entities with Git
 
-Once an entity in Harness IDP is backed by Git Experience, it becomes tightly coupled with its corresponding YAML definition in the Git repository. This enables a seamless two-way sync between Harness and Git, ensuring that the Git repository always reflects the source of truth - whether the changes originate from the UI or from Git directly.
-
-### Bi-directional Sync between Harness and Git
-
-Git Experience enables bi-directional entity updates, meaning:
-
-#### Changes in Git reflect in the Harness entity YAML
-
-When a user updates the YAML file directly in the Git repository (for example, through a commit or pull request), GitX listens to webhook events configured for the repository. Once triggered, the webhook causes Harness to automatically reload the YAML and apply those changes to the corresponding entity.
-
-#### Changes in Harness entity YAML reflect in Git
+Once an entity in Harness IDP is backed by Git Experience, it becomes tightly coupled with its corresponding YAML definition in the Git repository. Any changes made to the entity in IDP is committed back to Git.
 
 When a user edits the entity using the Harness UI (such as updating metadata, annotations, or layout), GitX pushes the changes back to Git. This can happen via:
 
 - A direct push, where the update is committed directly to the configured branch, or
 - A pull request, allowing teams to apply review and approval workflows.
 
-#### Webhook Auto-Creation
+:::info note
+Note that we are actively working on adding bidirectional sync so that changes done in the YAML file also updates the entity in IDP using webhooks. This feature will land on or more July 4, 2025.
+:::
+
+<!-- ### Bi-directional Sync between Harness and Git
+
+Git Experience enables bi-directional entity updates, meaning:
+
+#### Changes in Git reflect in the Harness entity YAML
+
+When a user updates the YAML file directly in the Git repository (for example, through a commit or pull request), GitX listens to webhook events configured for the repository. Once triggered, the webhook causes Harness to automatically reload the YAML and apply those changes to the corresponding entity. -->
+
+<!-- #### Changes in Harness entity YAML reflect in Git -->
+
+<!-- #### Webhook Auto-Creation
 
 When Git Experience is configured in Harness, a webhook is automatically created in your Git repository. This webhook enables IDP GitX to listen for updates and trigger YAML reloads.
 
-![Webhook Auto-Creation](./static/webhook-created.png)
+![Webhook Auto-Creation](./static/webhook-created.png) -->
 
-#### Experience Bi-directional Sync (via Webhooks)
+<!-- #### Experience Bi-directional Sync (via Webhooks)
 
 <iframe
   src="https://app.tango.us/app/embed/4c59d405-4506-4c11-904d-106a12516e27?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false"
@@ -242,9 +248,9 @@ When Git Experience is configured in Harness, a webhook is automatically created
   webkitallowfullscreen="true"
   mozallowfullscreen="true"
   allowFullScreen
-/>
+/> -->
 
-### Manual Reload Support
+<!-- ### Manual Reload Support
 
 In some cases, webhook integrations may fail to trigger or may not be configured properly. GitX provides a fallback mechanism in such scenarios.
 
@@ -254,7 +260,7 @@ This operation pulls the latest YAML from the configured Git path and updates th
 
 Manual reload is particularly useful in debugging sync issues or in restricted environments where webhooks cannot be configured due to network/firewall constraints.
 
-![Manual Reload Support](./static/manual-reload.png)
+![Manual Reload Support](./static/manual-reload.png) -->
 
 ### Entity Sync Status & Version Drift
 

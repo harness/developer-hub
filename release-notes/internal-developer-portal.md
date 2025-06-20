@@ -45,33 +45,22 @@ Let’s dive into what’s new!
 
 ---
 
-This release marks a major milestone for IDP 2.0: the **Harness IDP Git Experience** is now officially live!
+This release marks a major milestone for IDP 2.0 with the support for **Harness IDP Git Experience**.
 
-In IDP 1.0, users had to manually manage Catalog YAML files for each update. With IDP 2.0, we introduced **inline entities**, removing the hard dependency on YAML. Now, with the Git Experience, we’re bringing back YAMLs in Git through **native Git integration with bi-directional sync** and full Git branch support.
+In IDP 1.0, users had to manually manage Catalog YAML files for each update. With IDP 2.0, we introduced **inline entities**, removing the hard dependency on YAML. Now, with the Git Experience, we’re bringing back YAML files in Git through **native Git Experience**.
 
 ![](./static/internal-developer-portal/harness-idp-gitx.png)
 
 Here’s what you can do with the new Git Experience:
 
-- **Bi-directional Git Sync**
+| Feature                                                                            | Status                                          |
+| ---------------------------------------------------------------------------------- | ----------------------------------------------- |
+| **Store entity YAML in Git**                                                       | ✅ Available                                    |
+| **Import YAML from Git** and create a new entity                                   | ✅ Available                                    |
+| **IDP to Git changes**: Make changes in IDP and commit changes to YAML file in Git | ✅ Available                                    |
+| **Git to IDP changes**: Make changes to YAML file in Git and update entity in IDP  | 🚧 (Work in Progress) ETA: Week of July 4, 2025 |
 
-  - Edit entity YAML in Git → changes reflect in IDP
-  - Edit entity via IDP UI/API → changes reflect in Git (via direct push or pull request using OAuth or API keys)
-
-- **Choose your YAML Storage Mode**
-
-  - **Inline entity** (stored in Harness DB)
-  - **Remote entity** (stored in Git)
-
-- **Real-time Sync via Webhooks**
-
-  - No more polling delays — all updates are instant
-
-- **Support for Multiple Branches**
-
-  - Full version history for audits and easy rollback
-
-You can now **convert existing inline entities to remote entities** and store their YAMLs in Git, unlocking advanced Git-native workflows. We have also provided a [script](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o#step-7-store-entity-yamls-in-git) for you to convert ALL inline entities to remote in bulk.
+You can now also **convert existing inline entities to remote entities** and store their YAMLs in Git, unlocking advanced Git-native workflows. We have also provided a [script](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o#step-7-store-entity-yamls-in-git) for you to convert ALL inline entities to remote in bulk.
 
 Learn more about this feature [here](/docs/internal-developer-portal/git-experience/gitx-journey).
 
