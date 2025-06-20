@@ -164,7 +164,7 @@ Here's an example:
 
    ![pipeline failed, critical issues found](./static/container-scan-trivy/execution-snyk-labs.png)
 
-3. Select **Security Tests** and examine any issues detected by your scan.
+3. Select **Vulnerabilities tab** and examine any issues detected by your scan.
 
    ![view scan results](./static/container-scan-trivy/scan-results-snyklabs-goof.png)
 

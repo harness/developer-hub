@@ -52,7 +52,7 @@ If an issue has an exemption status, the **Exemption Status** section will appea
 <DocImage path={require('./static/issues-exemption-status.png')} width="100%" height="100%" title="Click to view full size image" />
 
 :::info
-The **Issues** section displays the overall exemption status. The exemption status at scan time is shown only in the [**Security Tests** tab](./view-scan-results.md).
+The **Issues** section displays the overall exemption status. The exemption status at scan time is shown only in the [**Vulnerabilities** tab](./view-scan-results.md).
 :::
 
 ## Target details
@@ -69,7 +69,7 @@ In the **Target Details** pane, you can explore individual occurrences from the 
 <DocImage path={require('./static/issues-occurrence-details-pane.png')} width="100%" height="100%" title="Click to view full size image" />
 
 :::info
-Remediation suggestions for each occurrence are provided by the scanner itself. AI-based remediation powered by Harness AI is not available from the Issues section; it is only available from the [**Security Tests** tab](./view-scan-results.md).
+Remediation suggestions for each occurrence are provided by the scanner itself. AI-based remediation powered by Harness AI is not available from the Issues section; it is only available from the [**Vulnerabilities** tab](./view-scan-results.md).
 :::
 
 Use the carousel navigation buttons (**\<** and **\>**) to move through occurrences related to the selected target.

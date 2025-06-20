@@ -5,7 +5,7 @@ sidebar_position: 30
 sidebar_label: "Export security test results"
 ---
 
-After a successful pipeline scan execution, you can view the scan results in the **[Security Tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results)** tab of the Pipeline Execution UI. Currently, the Security Tests tab does not provide an option to export scan results directly. Instead, you can export scan results using the [**STO Pipeline Execution Summary Dashboard**](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary).
+After a successful pipeline scan execution, you can view the scan results in the **[Vulnerabilities](/docs/security-testing-orchestration/view-security-test-results/view-scan-results)** tab of the Pipeline Execution UI. Currently, the Vulnerabilities tab does not provide an option to export scan results directly. Instead, you can export scan results using the [**STO Pipeline Execution Summary Dashboard**](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary).
 
 You can export security test results in two ways:
 
