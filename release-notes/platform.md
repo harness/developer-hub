@@ -138,8 +138,8 @@ The following deprecated API endpoints are longer supported:
 
 #### New Feature and Enhancement 
 
-- We’ve added logging to capture Kubernetes events during delegate shutdown. This will help in better understanding and troubleshooting shutdown behavior by providing more visibility into related cluster events. [PL-60516]
-- Added support for managing access control for [connectors through tags](https://developer.harness.io/docs/platform/connectors/manage-access-control-for-connectors). [PL-43468]. 
+- Added logging to capture Kubernetes events during delegate shutdown. This will help in better understanding and troubleshooting shutdown behaviour by providing more visibility into related cluster events. [PL-60516]
+- Added support for managing access control for [connectors through tags](/docs/platform/connectors/manage-access-control-for-connectors). [PL-43468]
 
 ### Version 1.93.x <!--June 10, 2025-->
 
