@@ -21,12 +21,98 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Cluster** | **Deployment Status** | **Release Version** |
 | ----------- | --------------------- | ------------------- |
-| **prod0**   | ✅ Completed          | May - 2025.05.v1    |
-| **prod1**   | ✅ Completed          | May - 2025.05.v1    |
-| **prod2**   | ✅ Completed          | May - 2025.05.v1    |
-| **prod3**   | ✅ Completed          | May - 2025.05.v1    |
-| **prod4**   | ✅ Completed          | May - 2025.05.v1    |
-| **prodeu1** | ✅ Completed          | May - 2025.05.v1    |
+| **prod0**   | ✅ Completed          | June - 2025.06.v2    |
+| **prod1**   | ✅ Completed          | June - 2025.06.v2    |
+| **prod2**   | ✅ Completed          | June - 2025.06.v2    |
+| **prod3**   | ✅ Completed          | June - 2025.06.v2    |
+| **prod4**   | ✅ Completed          | June - 2025.06.v2    |
+| **prodeu1** | ✅ Completed          | June - 2025.06.v2    |
+
+## June - [2025.06.v2]
+
+<!-- June 20, 2025 -->
+
+Last month, Harness IDP announced a major **BETA release**: **Harness IDP 2.0**. This release wasn’t just an upgrade — it was a **complete rebuild** of the Internal Developer Portal (IDP), designed to support **enterprise-scale adoption**.
+
+We’re truly overwhelmed by the response we’ve received so far for IDP 2.0 and are incredibly grateful to all the customers and teammates who tried it out and shared valuable feedback. 
+
+This month, we're taking it a step further by launching the **Harness IDP Git Experience** — a major feature update aimed at making your IDP 2.0 experience even better. Since the beta launch, we've been heads-down fixing bugs and polishing features based on your feedback.
+
+Let’s dive into what’s new!
+
+### \[New Feature] Introducing Harness IDP Git Experience with IDP 2.0
+
+**\[IDP-4869] | [Docs](/docs/internal-developer-portal/git-experience/gitx-journey)**
+
+---
+
+This release marks a major milestone for IDP 2.0: the **Harness IDP Git Experience** is now officially live!
+
+In IDP 1.0, users had to manually manage Catalog YAML files for each update. With IDP 2.0, we introduced **inline entities**, removing the hard dependency on YAML. Now, with the Git Experience, we’re bringing back YAMLs in Git through **native Git integration with bi-directional sync** and full Git branch support.
+
+Here’s what you can do with the new Git Experience:
+
+* **Bi-directional Git Sync**
+
+  * Edit entity YAML in Git → changes reflect in IDP
+  * Edit entity via IDP UI/API → changes reflect in Git (via direct push or pull request using OAuth or API keys)
+
+* **Choose your YAML Storage Mode**
+
+  * **Inline entity** (stored in Harness DB)
+  * **Remote entity** (stored in Git)
+
+* **Real-time Sync via Webhooks**
+
+  * No more polling delays — all updates are instant
+
+* **Support for Multiple Branches**
+
+  * Full version history for audits and easy rollback
+
+You can now **convert existing inline entities to remote entities** and store their YAMLs in Git, unlocking advanced Git-native workflows.
+
+Learn more about this feature [here](/docs/internal-developer-portal/git-experience/gitx-journey).
+
+---
+
+### \[New Plugin] GitHub Co-Pilot Plugin
+
+**\[IDP-4869] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/github-copilot)**
+
+We’re excited to introduce support for the **GitHub Co-Pilot** plugin in this release!
+
+The plugin brings **GitHub Copilot Enterprise** usage insights directly into Harness IDP, helping you visualize:
+
+* Suggestion acceptance rates
+* Language-wise usage distribution
+* Overall Copilot activity
+
+These insights empower engineering teams to evaluate and improve Copilot adoption across their organization.
+
+[Read the plugin guide here](/docs/internal-developer-portal/plugins/available-plugins/github-copilot).
+
+---
+
+### \[New Plugin] BuildKite Plugin
+
+**\[IDP-4869] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/buildkite)**
+
+We’re also launching the **BuildKite plugin**, which allows developers to **view and interact with BuildKite CI/CD pipelines** directly from the Harness IDP.
+
+Key highlights:
+* View real-time build statuses
+* Trigger rebuilds directly from the portal
+* Monitor pipelines entity-wise inside IDP
+
+Perfect for teams looking to bring CI/CD visibility right into their developer portal workflows.
+
+[Read the plugin guide here](/docs/internal-developer-portal/plugins/available-plugins/buildkite).
+
+
+### Feature Improvements
+
+### Bug Fixes
 
 ## 🚀 Releasing Harness IDP 2.0 BETA - May [2025.05.v1]
 
