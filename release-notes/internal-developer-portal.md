@@ -112,7 +112,43 @@ Perfect for teams looking to bring CI/CD visibility right into their developer p
 
 ### Feature Improvements
 
+- Output Variable Extraction Now Works with `apiKeySecret`:
+You can now successfully fetch output variables when using `apiKeySecret` as workflow authentication. Previously, this caused token validation failures during execution. The issue has been resolved, and output variables now work seamlessly with `apiKeySecret`.
+\[IDP-5584]
+
+- Bitbucket Cloud API Token Authentication in Git Integrations:
+We now support API Token based Bitbucket connector in IDP Git Integrations. If you have been struggling with Bitbucket API Rate Limits, you can now update your global IDP git connector to use the API Token based authentication - which has higher rate limits.
+\[IDP-5593]
+
+- Improved Sync Consistency for Backstage Entities:
+Fixed an issue where entities would sporadically disappear from the Backstage catalog after updates via the UI. The system now ensures proper sync between the IDP database and the catalog, improving reliability during entity creation and updates.
+\[IDP-5654]
+
+- Entity Creation Filters Now Load Correctly:
+Resolved an issue where filters such as `type`, `owner`, etc., were not appearing during entity creation. The root cause was a broken filter endpoint that failed when user preferences or scope information (org/project) were invalid. A fail-safe mechanism has been added to gracefully handle such cases.\[IDP-5666]
+
+
+- Schema Validation for `authProvider` Config to Prevent Downtime:
+To avoid critical downtime scenarios, IDP now includes schema validation for `authProvider` configuration. Misconfigured values will now be caught early and flagged instead of breaking the deployment. \[IDP-5683]
+
+
+- Visual Editor Lifecycle Update Stability:
+Resolved an issue where updating the Lifecycle field of an entity using the Visual editor caused unexpected errors and led to a broken catalog view. This happened due to `null` score entities returned during scorecard validation. The backend logic has now been updated to handle such cases gracefully, ensuring entity updates via the Visual editor no longer cause save failures or UI disruptions. [IDP-5700]
+
+- get-entities API Returns Entities Across Scopes by Default: 
+The `get-entities` API now returns entities across all scopes (account, org, and project) by default when no `scope` parameter is provided. Previously, it returned only account-level entities unless explicitly specified. This enhancement aligns the API behavior with that of the UI, ensuring consistent and complete entity listings across use cases. [IDP-5704]
+
+
+
+
 ### Bug Fixes
+
+- Fixed Catalog Crash Due to Unhandled API Errors 
+Resolved an issue where the Catalog page broke when an invalid `projectIdentifier` or `orgIdentifier` was present in the URL. This was caused by an unhandled 500/404 error response from the backend. A proper catch block has been added in the frontend to gracefully handle such server errors, ensuring the UI now shows a proper zero-state screen instead of failing silently. [IDP-5628]
+
+- Resolved Entity Breakage When Adding Tags to Services 
+Fixed an issue where adding a tag to the `catalogapi` service in the demo account caused the entity to break. The backend now correctly processes tagged service updates, ensuring entity integrity is maintained in the catalog. [IDP-5632]
+
 
 ## 🚀 Releasing Harness IDP 2.0 BETA - May [2025.05.v1]
 
