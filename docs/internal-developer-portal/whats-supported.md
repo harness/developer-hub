@@ -64,6 +64,17 @@ You can use Harness Secret Manager as well for the above described function.
 
 :::
 
+## Supported IDP Entities in Git Experience
+Harness IDP Git Experience supports the following Harness IDP entities for this feature: 
+
+| **IDP Entity** | **Git Experience Support** | **Notes** | 
+| ------- | -------- | -------- |
+| **Catalog Entities** | Supports Git Experience | IDP Catalog Entities like Component, API, Resource - all support Harness IDP Git Experience i.e. you can store Catalog entity YAMLs in Git. |
+| **Workflows** | Supports Git Experience | Workflows support Harness IDP Git Experience i.e. you can store and track Workflow YAMLs in Git. | 
+| **Scorecards** | Not Supported | At present, scorecards don't support Git Experience. | 
+| **Plugins** | Not Supported | At present, plugin configurations don't support Git Experience. | 
+| **Layouts** | Not Supported | At present, layouts don't support Git Experience. | 
+
 ## Miscellaneous
 
 | **What do we Support?**              | **Links**                                                                                                                                                                                                                                                        |

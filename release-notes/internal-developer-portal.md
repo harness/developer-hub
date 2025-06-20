@@ -21,12 +21,12 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Cluster** | **Deployment Status** | **Release Version** |
 | ----------- | --------------------- | ------------------- |
-| **prod0**   | ✅ Completed          | June - 2025.06.v2    |
-| **prod1**   | ✅ Completed          | June - 2025.06.v2    |
-| **prod2**   | ✅ Completed          | June - 2025.06.v2    |
-| **prod3**   | ✅ Completed          | June - 2025.06.v2    |
-| **prod4**   | ✅ Completed          | June - 2025.06.v2    |
-| **prodeu1** | ✅ Completed          | June - 2025.06.v2    |
+| **prod0**   | ✅ Completed          | June - 2025.06.v1    |
+| **prod1**   | ✅ Completed          | June - 2025.06.v1    |
+| **prod2**   | ✅ Completed         | June - 2025.06.v1    |
+| **prod3**   | Pending          | June - 2025.06.v1    |
+| **prod4**   | Pending          | June - 2025.06.v1    |
+| **prodeu1** | Pending          | June - 2025.06.v1    |
 
 ## June - [2025.06.v1]
 
@@ -49,6 +49,8 @@ Let’s dive into what’s new!
 This release marks a major milestone for IDP 2.0: the **Harness IDP Git Experience** is now officially live!
 
 In IDP 1.0, users had to manually manage Catalog YAML files for each update. With IDP 2.0, we introduced **inline entities**, removing the hard dependency on YAML. Now, with the Git Experience, we’re bringing back YAMLs in Git through **native Git integration with bi-directional sync** and full Git branch support.
+
+![](./static/internal-developer-portal/harness-idp-gitx.png)
 
 Here’s what you can do with the new Git Experience:
 

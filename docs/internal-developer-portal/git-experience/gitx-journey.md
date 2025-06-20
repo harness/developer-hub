@@ -38,6 +38,9 @@ Harness IDP Git Experience supports the following Harness IDP entities for this 
 | **Catalog Entities** | Supports Git Experience | IDP Catalog Entities like Component, API, Resource - all support Harness IDP Git Experience i.e. you can store Catalog entity YAMLs in Git. |
 | **Workflows** | Supports Git Experience | Workflows support Harness IDP Git Experience i.e. you can store and track Workflow YAMLs in Git. | 
 | **Scorecards** | Not Supported | At present, scorecards don't support Git Experience. | 
+| **Plugins** | Not Supported | At present, plugin configurations don't support Git Experience. | 
+| **Layouts** | Not Supported | At present, layouts don't support Git Experience. | 
+
 
 ### Supported Git Providers in Harness IDP Git Experience
 Harness IDP Git Experience integrates with the following **Git Providers**: 
@@ -153,7 +156,7 @@ You can create a new entity or workflow in Harness IDP directly from your Git YA
 </TabItem>
 <TabItem value="Step-by-Step">
 1. Go to Harness IDP -> Create. In the bottom, you'll find an option to create a new entity by importing YAML from Git. Click on **Import from Git**. 
-2. Select the **Entity Scope** (scope at which you want your entity to be created). 
+2. Select the **Entity Scope** (scope at which you want your entity to be created). The scope (Account, Org, or Project) of the entity is determined by the scope you select here. Make sure your imported YAML includes the appropriate scope identifiers; otherwise, it will result in an error.
 3. Select the **Git Provider**. You can either choose **Harness Code Repository** or **Third-Party Provider**. For your selected option, enter the required details. 
 4. In case of **Harness Code Repository**, you'll have to provide the following details: 
     - **Repository**: Git Repository where your Entity YAML is stored. 
@@ -176,7 +179,7 @@ To use this feature, Backstage YAML is not supported directly. Since IDP 2.0 use
 ### Entity Scope and Connector Rules
 Some important constraints exist during the import process:
 - **Entity Scope is Fixed**:
-  The scope (Account, Org, or Project) of the entity is derived from the YAML definition. Users cannot edit or override the scope while importing.
+  The scope (Account, Org, or Project) of the entity is determined by the scope you select initially. Make sure your imported YAML includes the appropriate scope identifiers; otherwise, it will result in an error.
 - **Account-level Connectors Required**:
   During import, only Account-level Git connectors are supported. This ensures that the connector has access across scopes, avoiding mismatches between the connector's accessibility and the entity's YAML-defined scope.
   After creation, the connector can be changed to an Org/Project-level one if needed.
@@ -186,7 +189,7 @@ Some important constraints exist during the import process:
     - **Git Branch**: Branch of your Repository where your Entity YAML is stored. 
     - **YAML Path**: Path of your YAML File. 
     ![](./static/harness-code.png)
-  - **Third-Party Git Providers**: When using other **Git providers** (GitHub, GitLab, Bitbucket, Azure Repos), the same rules apply — the YAML determines the entity's scope. The following details are required in importing an entity from Git using Third-party Git Providers: 
+  - **Third-Party Git Providers**: When using other **Git providers** (GitHub, GitLab, Bitbucket, Azure Repos), the same rules apply — the scope selection and YAML determines the entity's scope. The following details are required in importing an entity from Git using Third-party Git Providers: 
     - **Git Connector**: Git Connector added in your Harness IDP 
     - **Repository**: Git Repository where your Entity YAML is stored. 
     - **Git Branch**: Branch of your Repository where your Entity YAML is stored. 
