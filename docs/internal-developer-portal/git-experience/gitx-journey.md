@@ -65,7 +65,7 @@ With Inline Entities, your entity's YAML is stored in the Harness database. You 
 With Remote Entities, you can store your entity YAMLs in your Git repositories with bi-directional real-time sync support.
 
 <iframe
-  src="https://app.tango.us/app/embed/c2f6dd37-2805-426f-a004-11c15836244c?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false"
+  src="https://app.tango.us/app/embed/94f8562e-9320-4ab5-8990-546de4d01a20?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false" 
   style={{ minHeight: '640px' }}
   sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
   security="restricted"
@@ -97,7 +97,7 @@ You can do this in two ways:
 - **Manually via the UI**: Navigate to the entity’s **Edit** screen, configure the Git settings (connector, repo, branch, and file path), and save the changes. This moves the entity YAML to Git and enables Git-based tracking.
 
 <iframe
-  src="https://app.tango.us/app/embed/548b060b-2600-472e-ad46-c9a6974a3316?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false"
+  src="https://app.tango.us/app/embed/6b5f8f74-9541-46ac-a7dd-1c1130b39438?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false" 
   style={{ minHeight: '640px' }}
   sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
   security="restricted"
@@ -110,6 +110,7 @@ You can do this in two ways:
   mozallowfullscreen="true"
   allowFullScreen
 />
+
 
 - **In Bulk using a Script**: For larger migrations, Harness provides a script that helps automate the conversion of multiple entities from Inline to Remote, storing their YAMLs in a Git repo following a structured format.
   To learn how to use this script and view complete steps, refer to the official migration guide - [Store Entity YAMLs in Git](../idp-2o-overview/migrating-idp-2o#step-7-store-entity-yamls-in-git)
