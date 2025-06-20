@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style>
+      .title { font: bold 24px sans-serif; fill: #333; }
+      .step-box { fill: #f0f8ff; stroke: #0078d4; stroke-width: 2; rx: 10; ry: 10; }
+      .step-title { font: bold 16px sans-serif; fill: #0078d4; }
+      .step-text { font: 14px sans-serif; fill: #333; }
+      .arrow { stroke: #666; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .conditional { fill: #fff0f5; stroke: #ff69b4; stroke-width: 2; rx: 10; ry: 10; }
+      .conditional-text { font: italic 14px sans-serif; fill: #ff1493; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">GCP Connector Setup Process</text>
+  
+  <!-- Step 1: Overview -->
+  <rect x="50" y="60" width="200" height="80" class="step-box" />
+  <text x="150" y="85" text-anchor="middle" class="step-title">Step 1: Overview</text>
+  <text x="60" y="110" class="step-text">• Enter Connector Name</text>
+  <text x="60" y="130" class="step-text">• Specify Project ID</text>
+  
+  <!-- Step 2: Setup Billing Export -->
+  <rect x="50" y="180" width="200" height="100" class="step-box" />
+  <text x="150" y="205" text-anchor="middle" class="step-title">Step 2: Setup Billing Export</text>
+  <text x="60" y="230" class="step-text">• Create BigQuery Dataset</text>
+  <text x="60" y="250" class="step-text">• Enable Detailed Usage Cost</text>
+  <text x="60" y="270" class="step-text">• Specify Table Name</text>
+  
+  <!-- Step 3: Choose Requirements -->
+  <rect x="50" y="320" width="200" height="120" class="step-box" />
+  <text x="150" y="345" text-anchor="middle" class="step-title">Step 3: Choose Requirements</text>
+  <text x="60" y="370" class="step-text">• Cost Visibility (Required)</text>
+  <text x="60" y="390" class="step-text">• Resource Inventory (Optional)</text>
+  <text x="60" y="410" class="step-text">• AutoStopping (Optional)</text>
+  <text x="60" y="430" class="step-text">• Cloud Governance (Optional)</text>
+  
+  <!-- Step 4: Authentication (Conditional) -->
+  <rect x="350" y="180" width="200" height="100" class="conditional" />
+  <text x="450" y="205" text-anchor="middle" class="step-title">Step 4: Authentication</text>
+  <text x="360" y="230" class="step-text">• Service Account with Custom Role</text>
+  <text x="360" y="250" class="step-text">• OIDC Authentication</text>
+  <text x="360" y="270" class="conditional-text">(Only if AutoStopping/Governance)</text>
+  
+  <!-- Step 5: Grant Permissions -->
+  <rect x="350" y="320" width="200" height="80" class="step-box" />
+  <text x="450" y="345" text-anchor="middle" class="step-title">Step 5: Grant Permissions</text>
+  <text x="360" y="370" class="step-text">• Grant BigQuery Data Viewer</text>
+  <text x="360" y="390" class="step-text">• Add Feature-specific Permissions</text>
+  
+  <!-- Step 6: Connection Test -->
+  <rect x="650" y="320" width="200" height="80" class="step-box" />
+  <text x="750" y="345" text-anchor="middle" class="step-title">Step 6: Connection Test</text>
+  <text x="660" y="370" class="step-text">• Validate Connection</text>
+  <text x="660" y="390" class="step-text">• Finish Setup</text>
+  
+  <!-- Arrows -->
+  <path d="M150,140 L150,180" class="arrow" />
+  <path d="M150,280 L150,320" class="arrow" />
+  <path d="M250,380 C300,380 300,230 350,230" class="arrow" />
+  <text x="290" y="360" class="conditional-text">If AutoStopping/Governance</text>
+  <path d="M450,280 L450,320" class="arrow" />
+  <path d="M550,360 L650,360" class="arrow" />
+  <path d="M250,380 C500,380 500,360 650,360" class="arrow" />
+  <text x="500" y="330" class="conditional-text">If only Cost Visibility</text>
+  
+  <!-- Feature Permissions -->
+  <rect x="350" y="440" width="400" height="100" class="step-box" />
+  <text x="550" y="465" text-anchor="middle" class="step-title">Individual Feature Permissions</text>
+  <text x="360" y="490" class="step-text">• Governance: Viewer role</text>
+  <text x="360" y="510" class="step-text">• AutoStopping: Compute Admin, Secret Manager Secret Accessor</text>
+  <text x="360" y="530" class="step-text">• Granular permissions available for specific features</text>
+  
+  <path d="M450,400 L450,440" class="arrow" />
+</svg>
