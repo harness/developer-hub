@@ -58,7 +58,7 @@ Read more about [Harness Platform Git Experience Requirements](https://developer
 ### Creating Inline Entities 
 With Inline Entities, your entity's YAML is stored in the Harness database. You can edit and manage your entity's YAML from the Harness UI directly.
 
-// steps to create an inline entity with images and screenshots
+![Inline Entity](./static/inline-idp.png)
 
 ### Creating Remote Entities 
 With Remote Entities, you can store your entity YAMLs in your Git repositories with bi-directional real-time sync support. 
