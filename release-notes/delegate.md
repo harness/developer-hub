@@ -2178,6 +2178,14 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## Delegate Helm Chart release notes
 
+## June 2025
+
+### Version 1.0.25 <!--June 20, 2025-->
+
+#### New features and improvements
+
+- Updated the Delegate Helm chart to provide greater control over Horizontal Pod Autoscaling (HPA). If you prefer to skip the default CPU-based autoscaling, you can now disable it by setting the CPU target to `0`. [PL-63189]
+
 ## April 2025
 
 ### Version 1.0.24
