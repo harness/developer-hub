@@ -11,22 +11,21 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::info About Harness Release Notes
 
-- **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 - **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
-- **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
+- **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, and Self-Managed Enterprise Edition release notes.
 
 :::
 
 ## 📌 Release Deployment Status by Cluster
 
-| **Cluster** | **Deployment Status** | **Release Version** |
-| ----------- | --------------------- | ------------------- |
-| **prod0**   | ✅ Completed          | June - 2025.06.v1    |
-| **prod1**   | ✅ Completed          | June - 2025.06.v1    |
-| **prod2**   | ✅ Completed         | June - 2025.06.v1    |
-| **prod3**   | Pending          | June - 2025.06.v1    |
-| **prod4**   | Pending          | June - 2025.06.v1    |
-| **prodeu1** | Pending          | June - 2025.06.v1    |
+**Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+
+<!-- Let's maintain last 3 here. -->
+
+| **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
+| ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| 2025.06.v1  | ✅        | ✅        | ✅        | ⏳        | ⏳        | ⏳          |
+| 2025.05.v1  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
 
 ## June - [2025.06.v1]
 
@@ -34,7 +33,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 Last month, Harness IDP announced a major **BETA release**: **Harness IDP 2.0**. This release wasn’t just an upgrade — it was a **complete rebuild** of the Internal Developer Portal (IDP), designed to support **enterprise-scale adoption**.
 
-We’re truly overwhelmed by the response we’ve received so far for IDP 2.0 and are incredibly grateful to all the customers and teammates who tried it out and shared valuable feedback. 
+We’re truly overwhelmed by the response we’ve received so far for IDP 2.0 and are incredibly grateful to all the customers and teammates who tried it out and shared valuable feedback.
 
 This month, we're taking it a step further by launching the **Harness IDP Git Experience** — a major feature update aimed at making your IDP 2.0 experience even better. Since the beta launch, we've been heads-down fixing bugs and polishing features based on your feedback.
 
@@ -54,25 +53,25 @@ In IDP 1.0, users had to manually manage Catalog YAML files for each update. Wit
 
 Here’s what you can do with the new Git Experience:
 
-* **Bi-directional Git Sync**
+- **Bi-directional Git Sync**
 
-  * Edit entity YAML in Git → changes reflect in IDP
-  * Edit entity via IDP UI/API → changes reflect in Git (via direct push or pull request using OAuth or API keys)
+  - Edit entity YAML in Git → changes reflect in IDP
+  - Edit entity via IDP UI/API → changes reflect in Git (via direct push or pull request using OAuth or API keys)
 
-* **Choose your YAML Storage Mode**
+- **Choose your YAML Storage Mode**
 
-  * **Inline entity** (stored in Harness DB)
-  * **Remote entity** (stored in Git)
+  - **Inline entity** (stored in Harness DB)
+  - **Remote entity** (stored in Git)
 
-* **Real-time Sync via Webhooks**
+- **Real-time Sync via Webhooks**
 
-  * No more polling delays — all updates are instant
+  - No more polling delays — all updates are instant
 
-* **Support for Multiple Branches**
+- **Support for Multiple Branches**
 
-  * Full version history for audits and easy rollback
+  - Full version history for audits and easy rollback
 
-You can now **convert existing inline entities to remote entities** and store their YAMLs in Git, unlocking advanced Git-native workflows.
+You can now **convert existing inline entities to remote entities** and store their YAMLs in Git, unlocking advanced Git-native workflows. We have also provided a [script](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o#step-7-store-entity-yamls-in-git) for you to convert ALL inline entities to remote in bulk.
 
 Learn more about this feature [here](/docs/internal-developer-portal/git-experience/gitx-journey).
 
@@ -86,9 +85,9 @@ We’re excited to introduce support for the **GitHub Co-Pilot** plugin in this 
 
 The plugin brings **GitHub Copilot Enterprise** usage insights directly into Harness IDP, helping you visualize:
 
-* Suggestion acceptance rates
-* Language-wise usage distribution
-* Overall Copilot activity
+- Suggestion acceptance rates
+- Language-wise usage distribution
+- Overall Copilot activity
 
 These insights empower engineering teams to evaluate and improve Copilot adoption across their organization.
 
@@ -103,54 +102,47 @@ These insights empower engineering teams to evaluate and improve Copilot adoptio
 We’re also launching the **BuildKite plugin**, which allows developers to **view and interact with BuildKite CI/CD pipelines** directly from the Harness IDP.
 
 Key highlights:
-* View real-time build statuses
-* Trigger rebuilds directly from the portal
-* Monitor pipelines entity-wise inside IDP
+
+- View real-time build statuses
+- Trigger rebuilds directly from the portal
+- Monitor pipelines entity-wise inside IDP
 
 Perfect for teams looking to bring CI/CD visibility right into their developer portal workflows.
 
 [Read the plugin guide here](/docs/internal-developer-portal/plugins/available-plugins/buildkite).
 
-
-### Feature Improvements
-
-- Output Variable Extraction Now Works with `apiKeySecret`:
-You can now successfully fetch output variables when using `apiKeySecret` as workflow authentication. Previously, this caused token validation failures during execution. The issue has been resolved, and output variables now work seamlessly with `apiKeySecret`.
-\[IDP-5584]
-
+<!-- Currently there is an issue with Delegate. Check with Sathish. Most likely will be out next week or so.
 - Bitbucket Cloud API Token Authentication in Git Integrations:
-We now support API Token based Bitbucket connector in IDP Git Integrations. If you have been struggling with Bitbucket API Rate Limits, you can now update your global IDP git connector to use the API Token based authentication - which has higher rate limits.
-\[IDP-5593]
+  We now support API Token based Bitbucket connector in IDP Git Integrations. If you have been struggling with Bitbucket API Rate Limits, you can now update your global IDP git connector to use the API Token based authentication - which has higher rate limits.
+  \[IDP-5593] -->
 
-- Improved Sync Consistency for Backstage Entities:
-Fixed an issue where entities would sporadically disappear from the Backstage catalog after updates via the UI. The system now ensures proper sync between the IDP database and the catalog, improving reliability during entity creation and updates.
-\[IDP-5654]
+### Bug Fixes and Improvements
 
-- Entity Creation Filters Now Load Correctly:
-Resolved an issue where filters such as `type`, `owner`, etc., were not appearing during entity creation. The root cause was a broken filter endpoint that failed when user preferences or scope information (org/project) were invalid. A fail-safe mechanism has been added to gracefully handle such cases.\[IDP-5666]
+- **`get-entities` API Returns Entities Across Scopes by Default:**
+  The `get-entities` API now returns entities across all scopes (account, org, and project) by default when no `scope` parameter is provided. Previously, it returned only account-level entities unless explicitly specified. This enhancement aligns the API behavior with that of the UI, ensuring consistent and complete entity listings across use cases. [IDP-5704]
 
+- **Output Variable Extraction now works with `apiKeySecret`:**
+  You can now successfully fetch output variables when using `apiKeySecret` as workflow authentication. Previously, this caused token validation failures during execution. The issue has been resolved, and output variables now work seamlessly with `apiKeySecret`.
+  \[IDP-5584]
 
-- Schema Validation for `authProvider` Config to Prevent Downtime:
-To avoid critical downtime scenarios, IDP now includes schema validation for `authProvider` configuration. Misconfigured values will now be caught early and flagged instead of breaking the deployment. \[IDP-5683]
+- **Fixed Catalog Crash Due to Unhandled API Errors:**
+  Resolved an issue where the Catalog page broke when an invalid `projectIdentifier` or `orgIdentifier` was present in the URL. This was caused by an unhandled 500/404 error response from the backend. A proper catch block has been added in the frontend to gracefully handle such server errors, ensuring the UI now shows a proper zero-state screen instead of failing silently. [IDP-5628]
 
+- **Resolved Entity Breakage When Adding Tags to Services:**
+  Fixed an issue where adding a tag to the `catalogapi` service in the demo account caused the entity to break. The backend now correctly processes tagged service updates, ensuring entity integrity is maintained in the catalog. [IDP-5632]
 
-- Visual Editor Lifecycle Update Stability:
-Resolved an issue where updating the Lifecycle field of an entity using the Visual editor caused unexpected errors and led to a broken catalog view. This happened due to `null` score entities returned during scorecard validation. The backend logic has now been updated to handle such cases gracefully, ensuring entity updates via the Visual editor no longer cause save failures or UI disruptions. [IDP-5700]
+- **Improved Sync Consistency for Entities:**
+  Fixed an issue where entities would sporadically disappear from the IDP catalog after updates via the UI. The system now ensures proper sync between the IDP database and the catalog, improving reliability during entity creation and updates.
+  \[IDP-5654]
 
-- get-entities API Returns Entities Across Scopes by Default: 
-The `get-entities` API now returns entities across all scopes (account, org, and project) by default when no `scope` parameter is provided. Previously, it returned only account-level entities unless explicitly specified. This enhancement aligns the API behavior with that of the UI, ensuring consistent and complete entity listings across use cases. [IDP-5704]
+- **Entity Creation Filters Now Load Correctly:**
+  Resolved an issue where filters such as `type`, `owner`, etc., were not appearing during entity creation. The root cause was a broken filter endpoint that failed when user preferences or scope information (org/project) were invalid. A fail-safe mechanism has been added to gracefully handle such cases.\[IDP-5666]
 
+- **Tighter schema validation in Kubernetes plugin to prevent downtime:**
+  To avoid critical downtime scenarios, IDP now includes schema validation for `authProvider` configuration. Misconfigured values will now be caught early and flagged instead of breaking the deployment. \[IDP-5683]
 
-
-
-### Bug Fixes
-
-- Fixed Catalog Crash Due to Unhandled API Errors 
-Resolved an issue where the Catalog page broke when an invalid `projectIdentifier` or `orgIdentifier` was present in the URL. This was caused by an unhandled 500/404 error response from the backend. A proper catch block has been added in the frontend to gracefully handle such server errors, ensuring the UI now shows a proper zero-state screen instead of failing silently. [IDP-5628]
-
-- Resolved Entity Breakage When Adding Tags to Services 
-Fixed an issue where adding a tag to the `catalogapi` service in the demo account caused the entity to break. The backend now correctly processes tagged service updates, ensuring entity integrity is maintained in the catalog. [IDP-5632]
-
+- **Visual Editor Lifecycle Update Stability**:
+  Resolved an issue where updating the Lifecycle field of an entity using the Visual editor caused unexpected errors and led to a broken catalog view. This happened due to `null` score entities returned during scorecard validation. The backend logic has now been updated to handle such cases gracefully, ensuring entity updates via the Visual editor no longer cause save failures or UI disruptions. [IDP-5700]
 
 ## 🚀 Releasing Harness IDP 2.0 BETA - May [2025.05.v1]
 
@@ -567,6 +559,7 @@ This feature enhances security by using dedicated API keys, eliminating the need
 👉 Read more about the feature [here](/docs/internal-developer-portal/flows/worflowyaml#authentication).
 
 ### [New Feature] POST & PUT Method support for Dynamic Pickers
+
 [IDP-4292]
 
 Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests.

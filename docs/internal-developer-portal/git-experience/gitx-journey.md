@@ -133,6 +133,14 @@ You can also switch branches from Git to view an alternate version of the entity
   allowFullScreen
 />
 
+<!-- Remove this when the feature is released. -->
+
+:::info note
+
+Note that the final entity page view in IDP will still render the main/default branch. Only the Edit view will render the YAML contents from the alternate branch.
+
+:::
+
 ## Importing an Entity from Git (using YAML)
 
 In Harness IDP, users can also create new entities and Workflows by importing their YAML definitions stored in Git repositories directly into Harness IDP.
@@ -140,9 +148,8 @@ This feature allows teams to reuse pre-defined configurations, onboard services 
 
 ### Pre-requisites
 
-1. **Account-level Git Connectors**: Ensure you have your Git connector added to your Harness platform at the **Account** scope. During import, only **Account-level Git connectors** are supported. This ensures that the connector has access across scopes, avoiding mismatches between the connector's accessibility and the entity's YAML-defined scope. After creation, the connector can be changed to an Org/Project-level one if needed. Refer to these docs to learn more about adding [Git Connectors](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference/).
-2. **Enable API Access**: For connection types and authentication methods where API access is not already enabled by default, you'll have to enable it from the Git connector settings. API Access is required for using Harness Git Experience. Refer to these docs to [enable API access](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access).
-   ![](./static/enable-api-access.png)
+- **Enable API Access**: For connection types and authentication methods where API access is not already enabled by default, you'll have to enable it from the Git connector settings. API Access is required for using Harness Git Experience. Refer to these docs to [enable API access](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access).
+  ![](./static/enable-api-access.png)
 
 ### Import an Entity YAML
 
@@ -154,7 +161,7 @@ You can create a new entity or workflow in Harness IDP directly from your Git YA
 <TabItem value="Step-by-Step">
 
 1. Go to Harness IDP -> Create. In the bottom, you'll find an option to create a new entity by importing YAML from Git. Click on **Import from Git**.
-2. Select the **Entity Scope** (scope at which you want your entity to be created). The scope (Account, Org, or Project) of the entity is determined by the scope you select here. Make sure your imported YAML includes the appropriate scope identifiers; otherwise, it will result in an error.
+2. Select the **Entity Scope** (scope at which you want your entity to be created). The scope (Account, Org, or Project) of the entity is determined by the scope you select here. Make sure your imported YAML includes the appropriate scope identifiers i.e. `projectIdentifier` and `orgIdentifier` – otherwise, it will result in an error.
 3. Select the **Git Provider**. You can either choose **Harness Code Repository** or **Third-Party Provider**. For your selected option, enter the required details.
 4. In case of **Harness Code Repository**, you'll have to provide the following details:
    - **Repository**: Git Repository where your Entity YAML is stored.
@@ -181,10 +188,7 @@ To use this feature, Backstage YAML is not supported directly. Since IDP 2.0 use
 Some important constraints exist during the import process:
 
 - **Entity Scope is Fixed**:
-  The scope (Account, Org, or Project) of the entity is determined by the scope you select initially. Make sure your imported YAML includes the appropriate scope identifiers; otherwise, it will result in an error.
-- **Account-level Connectors Required**:
-  During import, only Account-level Git connectors are supported. This ensures that the connector has access across scopes, avoiding mismatches between the connector's accessibility and the entity's YAML-defined scope.
-  After creation, the connector can be changed to an Org/Project-level one if needed.
+  The scope (Account, Org, or Project) of the entity is determined by the scope you select initially. Make sure your imported YAML includes the appropriate scope identifiers i.e. `projectIdentifier` and `orgIdentifier`; otherwise, it will result in an error.
 - **Harness Code & Other Git Providers**:
   - **Harness Code Repository**: When importing via **Harness Code**, YAMLs can be sourced from any repository that the user has access to. The repo’s scope does not affect the entity scope. The following details are required in importing an entity from Git using Harness Code Repository:
     - **Repository**: Git Repository where your Entity YAML is stored.
@@ -244,7 +248,7 @@ When Git Experience is configured in Harness, a webhook is automatically created
 
 In some cases, webhook integrations may fail to trigger or may not be configured properly. GitX provides a fallback mechanism in such scenarios.
 
-Users can trigger a manual reload of an entity by clicking the “Reload from Git” button available on the entity's View or Edit page.
+Users can trigger a manual reload of an entity by clicking the **“Reload from Git”** button available on the entity's View or Edit page.
 
 This operation pulls the latest YAML from the configured Git path and updates the entity, ensuring it remains up-to-date even without active webhook triggers.
 
