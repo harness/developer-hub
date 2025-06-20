@@ -78,7 +78,7 @@ If a NPM package isn’t found in your Harness registry, the upstream proxy fetc
 1. In your Harness NPM Artifact Registry, click **Setup Client**.
 2. Create or update your `~/.npmrc` file with the following content:
 ```bash
-https://pkg.harness.io/pkg/<account-id>/npm-registry/npm/
+registry=https://pkg.harness.io/pkg/<account-id>/npm-registry/npm/
 //pkg.harness.io/pkg/<account-id>/npm-registry/npm/:_authToken <TOKEN>
 ```
 3. Click **Generate Identity Token** to generate a new token that serves as the password for uploading and downloading artifacts.
