@@ -12,7 +12,7 @@ sidebar_position: 13
 The **control** treatment is a reserved treatment in FME. You cannot create a treatment named **control**. The **control** treatment is returned by the SDK in the following scenarios:
 
 * **The targeting rules for a feature flag are not defined.** If you place your code behind a feature flag and push your code to production without defining the targeting rules for that feature flag in the user interface, the SDK does not have any information on the rules or even the possible treatments of this feature flag. In this scenario, the SDK returns the **control** treatment.
-
+asdf
 * **The SDK does not have the feature cached.** If a feature flag's definition is not already cached and a treatment is evaluated for that feature flag, then the SDK returns *control*. The reasons this could happen are:
 
     * The SDK hasn't finished downloading the initial set of feature flag and segment definitions when `getTreatment` is called. This happens when calling `getTreatment` before SDK_READY event fires after initializing the SDK.
