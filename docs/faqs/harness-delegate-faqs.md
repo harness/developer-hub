@@ -178,6 +178,10 @@ For more information, go to [Build custom delegate images with third-party tools
 * The daily deployment limit is 100 deployments every 24 hours. The hourly limit is 40 deployments and is designed to detect any atypical upsurge of deployments. Contact [Harness Support](mailto:support@harness.io) to increase this limit.
 * You might need to install multiple delegates depending on how many Continuous Delivery tasks you do concurrently, and on the compute resources you are providing to each delegate. Typically, you will need one delegate for every 300-500 service instances across your applications.
 
+### Is there a limit on the number of tasks a Harness delegate can handle concurrently?
+
+Yes, by default, a Harness delegate can acquire up to 400 tasks concurrently. To allow the delegate to handle more than 400 concurrent tasks, set the environment variable DYNAMIC_REQUEST_HANDLING to true. Also, ensure that the delegate has sufficient CPU and memory resources to support the increased load.
+
 ### Can I configure delegate proxy settings?
 
 Yes. All of the delegate settings include proxy settings you can use to change how the delegate connects to Harness Manager.
