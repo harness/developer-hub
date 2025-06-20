@@ -67,7 +67,7 @@ Update the `host`, `enterprise`, and `organization` values to match your GitHub 
 :::
 
 :::note 
-The plugin pulls data using GitHub REST APIs and requires **authorization via a token** which depends on the [Git Integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) setup done at IDP under "Configure" -> "Git Integrations" page.
+The plugin pulls data using GitHub REST APIs and requires **authorization via a token** which depends on the [Git Integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) setup done at IDP under "Configure" -> "Git Integrations" page, make sure to use the same host as one that's configured in the Git integration
 :::
 
 
