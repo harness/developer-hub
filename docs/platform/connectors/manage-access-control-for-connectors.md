@@ -10,21 +10,19 @@ helpdocs_is_published: true
 
 [Role-based access control (RBAC)](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) in Harness lets you control who can access your resources, what actions they can perform, and where they can do it. Access is based on roles assigned to users, user groups, and service accounts.
 
-To manage access control for connectors in Harness, you must be an Admin for the relevant account, organization, or project.
-
 ### Configure Roles 
 
 1. Navigate to Account Settings → Access Control → Roles. 
 
-2. [Add or edit a role](./add-manage-roles.md), check for Shared Resources → Connectors section to ensure the appropriate permissions are granted, as shown in the image below.
+2. [Add or edit a role](/docs/platform/role-based-access-control/add-manage-roles.md), check for Shared Resources → Connectors section to ensure the appropriate permissions are granted, as shown in the image below.
 
     ![connector-roles](./static/connector-role.png)
 
 ### Configure Resource Groups
 
-1. Go to Account Settings → Access Control → Resource Groups, and [create or edit a resource group](./add-resource-groups.md). 
+1. Go to Account Settings → Access Control → Resource Groups, and [create or edit a resource group](/docs/platform/role-based-access-control/add-resource-groups.md). 
 
-2. Select the appropriate Resource Scope based on your requirement, and set Resource to Specified, as shown below.
+2. Select the appropriate Resource Scope based on your requirements, and set Resource to All if you want to provide access to all resources. Otherwise, select Specified, as shown below.
 
     ![resource-group-and-resource](./static/resource-group.png)    
 
@@ -52,11 +50,9 @@ By following these steps, you can enable users to manage access control for conn
 
 ### Assign access control for connectors
 
-After configuring the resource group for connectors, you need to assign the role and resource group to a user or user group to give them access to the connectors.
+After configuring the resource group for connectors, you need to assign the [role binding to a principal](/docs/platform/role-based-access-control/rbac-in-harness/#principals).
 
-Navigate to Account Settings → Access Control → Users or User Groups(choose the appropriate option based on your requirements). 
-
-For example, to assign access, select New User or Edit an existing user, click on Manage Role Binding, and then select the relevant Roles and Resource Groups as shown below.
+For example, to assign access to a user, navigate to Account Settings → Access Control → Users. For the relevant user, click on Manage Role Binding, and then select the Role and Resource Group created above.
 
 ![manage-role](./static/role-binding.png)
 
