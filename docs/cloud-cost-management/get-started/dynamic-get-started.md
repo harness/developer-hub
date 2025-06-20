@@ -22,6 +22,11 @@ Select your cloud provider below to get started. You’ll connect your account, 
       logo: "kubernetes-logo.svg",
       logoSize: 32
     },
+    Revamp: {
+      path: "/cloud-cost-management/content/get-started/aws-revamp-quickstart.md",
+      logo: "aws-logo.svg",
+      logoSize: 32
+    },
     AWS: {
       path: "/cloud-cost-management/content/get-started/aws-quickstart.md",
       logo: "aws-logo.svg",
