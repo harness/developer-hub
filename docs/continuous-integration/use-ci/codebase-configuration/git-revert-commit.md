@@ -21,6 +21,7 @@ Here is an example of a **Plugin** step that reverts a git commit based on the c
       settings:
         git_pat: <+secrets.getValue("YOUR_GIT_PAT_SECRET")>
         commit_sha: <+codebase.commitSha>
+        create_revert_branch: "true"
 ```
 
 :::note
