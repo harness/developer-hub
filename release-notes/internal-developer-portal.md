@@ -28,7 +28,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 | **prod4**   | ✅ Completed          | June - 2025.06.v2    |
 | **prodeu1** | ✅ Completed          | June - 2025.06.v2    |
 
-## June - [2025.06.v2]
+## June - [2025.06.v1]
 
 <!-- June 20, 2025 -->
 
