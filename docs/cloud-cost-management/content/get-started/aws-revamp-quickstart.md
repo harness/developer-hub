@@ -124,13 +124,12 @@ Not sure which options to choose? [Learn more about each feature](#before-you-st
 ## Next Steps
 Once your data is flowing, explore the tools available in Harness CCM to help you manage and reduce your cloud spend:
 
-- Enable [Anomaly Detection](../feature-guides/anomalies) to catch unexpected cost spikes early.
-- Use [Budgets and Alerts](../feature-guides/budgets-alerts) to stay on top of spend thresholds.
-- Visualize trends and optimize usage with [Business Intelligence (BI) Dashboards](../feature-guides/bi-dashboards).
+- Use [Budgets and Alerts](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget) to stay on top of spend thresholds.
+- Visualize trends and optimize usage with [Business Intelligence (BI) Dashboards](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/access-ccm-dashboards).
 - Revisit optional features you didn’t select earlier:
-  - [Resource Inventory Management](../feature-guides/resource-inventory-management)
-  - [Optimization by AutoStopping](../feature-guides/autostopping)
-  - [Cloud Governance](../feature-guides/cloud-governance)
-  - [Commitment Orchestration](../feature-guides/commitment-orchestration)
+  - [Resource Inventory Management](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard/).
+  - [Optimization by AutoStopping](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/getting-started).
+  - [Cloud Governance](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/asset-governance).
+  - [Commitment Orchestration](/docs/category/commitment-orchestrator).
 
 Take the next step in your cloud cost management journey and turn visibility into action.
