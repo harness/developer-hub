@@ -195,7 +195,15 @@ When a user edits the entity using the Harness UI (such as updating metadata, an
 - A direct push, where the update is committed directly to the configured branch, or
 - A pull request, allowing teams to apply review and approval workflows.
 
-#### Steps to setup Bi-directional Sync (via Webhooks)
+#### Webhook Auto-Creation
+
+When Git Experience is configured in Harness, a webhook is automatically created in your Git repository. This webhook enables IDP GitX to listen for updates and trigger YAML reloads.
+
+![Webhook Auto-Creation](./static/webhook-created.png)
+
+
+
+#### Experience Bi-directional Sync (via Webhooks)
 
 <iframe 
   src="https://app.tango.us/app/embed/4c59d405-4506-4c11-904d-106a12516e27?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false" 
@@ -216,8 +224,11 @@ When a user edits the entity using the Harness UI (such as updating metadata, an
 
 ### Manual Reload Support
 In some cases, webhook integrations may fail to trigger or may not be configured properly. GitX provides a fallback mechanism in such scenarios.
+
 Users can trigger a manual reload of an entity by clicking the “Reload from Git” button available on the entity's View or Edit page.
+
 This operation pulls the latest YAML from the configured Git path and updates the entity, ensuring it remains up-to-date even without active webhook triggers.
+
 Manual reload is particularly useful in debugging sync issues or in restricted environments where webhooks cannot be configured due to network/firewall constraints.
 
 ![Manual Reload Support](./static/manual-reload.png)

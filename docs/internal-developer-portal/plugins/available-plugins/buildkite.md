@@ -34,7 +34,7 @@ The Buildkite plugin enables developers to view and interact with their CI/CD pi
 |---------------|-------|
 | **Created by** | Backstage Community |
 | **Category**   | Developer Experience |
-| **Source**     | [GitHub](https://github.com/buildkite/backstage-plugin) |
+| **Source**     | [GitHub](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-buildkite) |
 | **Type**       | Open-source plugin |
 
 ## Configuration
@@ -55,7 +55,7 @@ proxy:
 
 To authorize requests to the Buildkite API, the plugin requires an access token (`BUILDKITE_TOKEN`)
 
-The token should have `read_builds` and `read_pipelines` permissions at minimum.
+The token should have `read_builds` and `read_pipelines` permissions.
 
 
 ## Layout
@@ -68,7 +68,12 @@ This plugin renders as a **tab under the CI/CD section** in the entity page.
   path: /ci-cd
   title: CI/CD
   contents:
-    - component: EntityBuildkiteContent
+    - component: EntitySwitch
+      specs:
+        cases:
+          - if: isBuildkiteAvailable
+            content:
+              component: EntityBuildkiteContent
 ```
 
 
