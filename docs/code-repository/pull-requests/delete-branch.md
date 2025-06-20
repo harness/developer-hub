@@ -8,7 +8,7 @@ Harness Code lets you easily delete the source branch of a pull request after it
 
 <DocImage path={require('/docs/code-repository/pull-requests/static/delete-branch-post-merge.png')} />
 
-## When the **Delete Branch** option appears
+## When the Delete Branch option appears
 
 After a pull request is **merged** or **closed**, a **Delete Branch** button appears on the PR page if the following conditions are met:
 
@@ -16,7 +16,7 @@ After a pull request is **merged** or **closed**, a **Delete Branch** button app
 - The source branch has **not been updated** since the PR was created.
 - The branch deletion is **allowed by the branch rule**, or the current user is in the **bypass list** for that rule.
 
-## When the button is **not shown**
+## When the button is not shown
 
 You won't see the **Delete Branch** button if:
 
