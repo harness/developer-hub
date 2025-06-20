@@ -1,15 +1,15 @@
 ---
-title: "View scan results - Security Tests tab" 
+title: "View scan results - Vulnerabilities tab" 
 description: View, navigate, discover, and investigate detected issues from an individual scan 
 sidebar_position: 10
-sidebar_label: "View scan results - Security Tests tab"
+sidebar_label: "View scan results - Vulnerabilities tab"
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results
   - /docs/category/view-and-troubleshoot-vulnerabilities
   - docs/security-testing-orchestration/dashboards/view-scan-results
 ---
 
-After your pipeline completes a security scan, you can view the scan results in the **Security Tests** tab. You can access the **Security Tests** tab from two locations:
+After your pipeline completes a security scan, you can view the scan results in the **Vulnerabilities** tab. You can access the **Vulnerabilities** tab from two locations:
 
 - **Execution History**: Select a specific pipeline execution from your pipeline's **Execution History**.
 - **Executions Section**: Navigate to the **Executions** section from the left navigation in the STO module and select a pipeline execution.
@@ -20,9 +20,9 @@ Follow these steps to view the scan results:
 
 1. Navigate to either the **Execution History** of your pipeline or the **Executions** section from the left navigation in the STO module.
 2. Select the specific execution that performed the security scan.
-3. Click the **Security Tests** tab.
+3. Click the **Vulnerabilities** tab.
 
-The **Security Tests** tab provides a comprehensive view of all issues detected during the scan.
+The **Vulnerabilities** tab provides a comprehensive view of all issues detected during the scan.
 
 <DocImage path={require('./static/security-tests-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -45,7 +45,7 @@ Issues identified in the scan are categorized as follows:
 
 ## Filtering issues
 
-You can filter issues using multiple criteria in the **Security Tests** tab:
+You can filter issues using multiple criteria in the **Vulnerabilities** tab:
 
 - **Targets**: Filter issues by target name.
 - **Target Type**: Filter by target type (e.g., repository, container, etc.).

@@ -200,7 +200,7 @@ Now that you've set up the pipeline, you can run a scan and view the detected is
 
    :::
 
-3. Run the pipeline. When the execution finishes, select **Security Tests**.
+3. Run the pipeline. When the execution finishes, select **Vulnerabilities**.
 
 This tab shows the issues that the scanner found in the test target, categorized by severity. You can filter issues using the severity buttons, expand/collapse the issue lists, and click on an issue to view details.
 
@@ -240,7 +240,7 @@ Suppose you're developing a new feature. You're working in a `DEMO-001` branch t
 First, you want to see if your branch has any security issues that aren't in the `master` branch.
 
 - Run the pipeline again with **DEMO-001** as the target variant.
-- When the pipeline finishes, go to the **Security Tests** tab.
+- When the pipeline finishes, go to the **Vulnerabilities** tab.
 
 DEMO-001 has 5 security issues: 2 critical, 2 medium, 1 low. Note that 3 of these issues are in the DEMO-001 branch only and 2 are common to both DEMO-001 and master.
 
@@ -254,7 +254,7 @@ When Harness processes the security issues identified in a scan, it deduplicates
 
 Note the following as you troubleshoot and fix your security issues:
 
-- Each security issue you see in the **Security Tests** page is unique and requires its own resolution.
+- Each security issue you see in the **Vulnerabilities** page is unique and requires its own resolution.
 - A single issue might have multiple occurrences throughout the target. To remediate an issue, you must fix all occurrences of that issue.
 
 </details>
@@ -371,7 +371,7 @@ In this section, you'll create an exemption as a developer and then approve it a
 
 In the following step, you'll create an exemption for each of the two critical issues found: `subprocess_popen_with_shell_equals_true` (only in the current scan) and `hashlib` (common to the baseline scan).
 
-3. In the **Security Tests** tab, do the following steps for each critical issue:
+3. In the **Vulnerabilities** tab, do the following steps for each critical issue:
 
    1. Select the critical issue in the issues table (bottom left) to open **Issue Details**.
    2. Select **Request Exemption**.
@@ -399,7 +399,7 @@ In the following step, you'll create an exemption for each of the two critical i
 
    <img src={approve_exemption_requests} alt="Approve exemption requests" height="60%" width="60%" />
 
-6. Go back to your pipeline and run another build with the **DEMO-001** branch. When the build finishes, go to the **Security Tests** page.
+6. Go back to your pipeline and run another build with the **DEMO-001** branch. When the build finishes, go to the **Vulnerabilities** page.
 
 7. Select **Exempted** (far right, under **Security Executions**). Note that this button, like the Critical, High, and other buttons, acts as a toggle to show and hide specific issues in the issues table. If you select and unselect **Exempted**, the exempted issues switch between visible and hidden.
 
