@@ -52,7 +52,21 @@ As Harness IDP (Internal Developer Portal) evolves from Backstage-native IDP 1.0
 
 With Remote Entities, you can store your Catalog entity YAMLs in your Git repositories with bi-directional real-time sync support. 
 
-// steps to create a remote entity with images and screenshots
+<iframe 
+  src="https://app.tango.us/app/embed/c2f6dd37-2805-426f-a004-11c15836244c?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false" 
+  style={{ minHeight: '640px' }} 
+  sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+  security="restricted" 
+  title="Create and Configure Onboarding Component" 
+  width="100%" 
+  height="100%" 
+  referrerPolicy="strict-origin-when-cross-origin" 
+  frameBorder="0" 
+  webkitallowfullscreen="true" 
+  mozallowfullscreen="true" 
+  allowFullScreen
+/>
+
 
 Let's get started, so when a user creates a new Catalog entity - they can choose to store the YAML inline or in a remote Git repository. This selection is available upfront in the entity creation form.
 
@@ -66,12 +80,39 @@ Changes made to the YAML file in Git are **automatically reflected** in the enti
 ### Converting Inline to Remote Entity (and vice-versa)
 Users who initially created an entity as inline can convert it to Git-based at any time using the Edit page. The reverse—Git to inline—is also supported,  by simply clicking Move to Git, giving teams flexibility to change storage strategy mid-way without re-creating the entity.
 
-// steps to convert these entities with images and screenshots
+<iframe 
+  src="https://app.tango.us/app/embed/548b060b-2600-472e-ad46-c9a6974a3316?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false" 
+  style={{ minHeight: '640px' }} 
+  sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+  security="restricted" 
+  title="Move Workflow to Git Repository" 
+  width="100%" 
+  height="100%" 
+  referrerPolicy="strict-origin-when-cross-origin" 
+  frameBorder="0" 
+  webkitallowfullscreen="true" 
+  mozallowfullscreen="true" 
+  allowFullScreen 
+/>
+
 
 ### Managing Multiple Branches
 You can also switch branches from Git to view an alternate version of the entity's YAML. This action does not create a new entity; instead, it updates the existing one. This is especially useful in scenarios where direct commits to the main branch are restricted due to organizational policies, and changes need to go through a pull request workflow.
 
-// steps to create and manage multiple branches with the PR flow
+<iframe 
+  src="https://app.tango.us/app/embed/8dcee9d3-bde1-487d-8b8e-f6b9bbcf2e50?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false" 
+  style={{ minHeight: '640px' }} 
+  sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+  security="restricted" 
+  title="Update Metadata and Commit in Harness" 
+  width="100%" 
+  height="100%" 
+  referrerPolicy="strict-origin-when-cross-origin" 
+  frameBorder="0" 
+  webkitallowfullscreen="true" 
+  mozallowfullscreen="true" 
+  allowFullScreen 
+/>
 
 ## Importing an Entity from Git (using YAML)
 In Harness IDP, users can also create new entities by importing their YAML definitions stored in Git repositories directly into Harness IDP.
@@ -122,7 +163,22 @@ When a user edits the entity using the Harness UI (such as updating metadata, an
 
 #### Steps to setup Bi-directional Sync (via Webhooks)
 
-// steps to setup bi-directional sync with images
+<iframe 
+  src="https://app.tango.us/app/embed/4c59d405-4506-4c11-904d-106a12516e27?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false" 
+  style={{ minHeight: '640px' }} 
+  sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+  security="restricted" 
+  title="Edit YAML and Commit Changes in GitHub and Harness" 
+  width="100%" 
+  height="100%" 
+  referrerPolicy="strict-origin-when-cross-origin" 
+  frameBorder="0" 
+  webkitallowfullscreen="true" 
+  mozallowfullscreen="true" 
+  allowFullScreen 
+/>
+
+
 
 ### Manual Reload Support
 In some cases, webhook integrations may fail to trigger or may not be configured properly. GitX provides a fallback mechanism in such scenarios.
@@ -130,7 +186,9 @@ Users can trigger a manual reload of an entity by clicking the “Reload from Gi
 This operation pulls the latest YAML from the configured Git path and updates the entity, ensuring it remains up-to-date even without active webhook triggers.
 Manual reload is particularly useful in debugging sync issues or in restricted environments where webhooks cannot be configured due to network/firewall constraints.
 
-// screenshot with the same support 
+![Manual Reload Support](./static/manual-reload.png)
+
+
 
 ### Entity Sync Status & Version Drift
 To provide complete visibility into the sync state of an entity, GitX shows real-time metadata on the entity’s View/Edit pages. This includes:
