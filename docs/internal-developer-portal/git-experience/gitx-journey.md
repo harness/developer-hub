@@ -88,8 +88,14 @@ Changes made in the entity via the Harness UI are committed to the Git repo (eit
 Changes made to the YAML file in Git are **automatically reflected** in the entity using **webhook-triggered updates**. To understand more about this feature, please refer to [Updating and Syncing Entities with Git](/docs/internal-developer-portal/git-experience/gitx-journey.md#updating-and-syncing-entities-with-git)
 :::
 
+
 ### Converting Inline to Remote Entity
-Users who initially created an entity as inline can convert it to remote entity (Git-based) at any time using the **Edit** page. 
+
+Users who initially created an entity as **Inline** (stored in the Harness database) can convert it to a **Remote Entity** (Git-backed) at any time using the **Edit** page in the Harness UI.
+
+You can do this in two ways:
+
+* **Manually via the UI**: Navigate to the entity’s **Edit** screen, configure the Git settings (connector, repo, branch, and file path), and save the changes. This moves the entity YAML to Git and enables Git-based tracking.
 
 <iframe 
   src="https://app.tango.us/app/embed/548b060b-2600-472e-ad46-c9a6974a3316?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false" 
@@ -107,7 +113,10 @@ Users who initially created an entity as inline can convert it to remote entity 
 />
 
 
-// script to be added here as well with detailed explanation
+
+* **In Bulk using a Script**: For larger migrations, Harness provides a script that helps automate the conversion of multiple entities from Inline to Remote, storing their YAMLs in a Git repo following a structured format.
+ To learn how to use this script and view complete steps, refer to the official migration guide - [Store Entity YAMLs in Git](../idp-2o-overview/migrating-idp-2o#step-7-store-entity-yamls-in-git)
+
 
 ### Managing Multiple Branches
 You can also switch branches from Git to view an alternate version of the entity's YAML. This action does not create a new entity; instead, it updates the existing one. This is especially useful in scenarios where direct commits to the main branch are restricted due to organizational policies, and changes need to go through a pull request workflow.
