@@ -46,11 +46,12 @@ It may take up to **24 hours** for AWS to begin delivering cost and usage data. 
 
 In the meantime, explore the optional requirements and feature integrations available in Harness CCM, these will be available to select in your **Choose Requirements** step of the connection wizard:
 
-- [Resource Inventory Management](../feature-guides/resource-inventory-management)
-- [Optimization by AutoStopping](../feature-guides/autostopping)
-- [Cloud Governance](../feature-guides/cloud-governance)
-- [Commitment Orchestration](../feature-guides/commitment-orchestration)
+  - [Resource Inventory Management](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard/).
+  - [Optimization by AutoStopping](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/getting-started).
+  - [Cloud Governance](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/asset-governance).
+  - [Commitment Orchestration](/docs/category/commitment-orchestrator).
 :::
+
 
 ---
 
