@@ -293,6 +293,7 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
          - For account scope only: `<ACCOUNT_ID>`
 
          - With the `PL_OIDC_ENHANCED_SUBJECT_FIELD` feature flag enabled: `account/{account_id}:org/{organization_id}:project/{project_id}`
+           - Leave org and/or project blank for an account level or org level connector.  For example, account level would be `account/{account_id}:org/:project/`
    :::
 
    ```json
@@ -311,21 +312,21 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
    }
    ```
 
-5. **Apply the Role Configuration**:  
+6. **Apply the Role Configuration**:  
    
    Use the following command to create the role in Vault:
    ```  
    curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" --request POST --data @role-config.json http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/role_assigned
    ```  
 
-6. **Verify the Role**:  
+7. **Verify the Role**:  
    
    To ensure that the role was created successfully, run the following command:
    ```  
    curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/role_assigned
    ```  
 
-7. **Configure in HashiCorp Vault in Harness**
+8. **Configure in HashiCorp Vault in Harness**
 
      ![hashicorp](../static/harshicorp.gif)
 
