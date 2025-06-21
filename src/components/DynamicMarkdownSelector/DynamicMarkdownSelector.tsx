@@ -27,6 +27,10 @@ export interface DynamicMarkdownSelectorProps {
     {
       path: string;
       logo?: string;
+      iconOnly?: boolean;
+      logoSize?: number;
+      logoWidth?: number;
+      logoHeight?: number;
     }
   >;
 }
@@ -138,11 +142,20 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
                           src={`/provider-logos/${entry.logo}`}
                           alt={`${label} logo`}
                           className="selector-icon"
+                          {...((entry.logoWidth || entry.logoHeight || entry.logoSize) ? {
+                            style: {
+                              width: entry.logoWidth ?? entry.logoSize,
+                              height: entry.logoHeight ?? entry.logoSize,
+                              objectFit: "contain",
+                              maxWidth: "100%",
+                              maxHeight: "100%",
+                            }
+                          } : {})}
                         />
-                        <span>{label}</span>
+                        {!entry.iconOnly && <span>{label}</span>}
                       </div>
                     ) : (
-                      <span className="selector-entry no-logo">{label}</span>
+                      !entry.iconOnly && <span className="selector-entry no-logo">{label}</span>
                     )}
                   </button>
                 );

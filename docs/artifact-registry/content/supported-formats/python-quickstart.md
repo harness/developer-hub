@@ -1,10 +1,13 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
+
+<RedirectIfStandalone label="Python" targetPage="/docs/artifact-registry/supported-formats" />
 
 This guide will help you **create a Python Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Python packages**.
 
 ## Prerequisites
-- Ensure you have Docker CLI installed and configured on your local machine.
+- Ensure you have **Python CLI** installed and configured on your local machine.
 - Ensure you have access to a Harness account with the appropriate permissions to create registries and connectors.
 
 ---
