@@ -7,7 +7,7 @@ export const SeiData: Horizon = {
       {
         tag: [{ value: "User Experience" }, { value: "New Features" }],
         title: "SEI 2.0",
-        description: "SEI 2.0 brings a modern UX to enable executive insights with team level actionability. SEI 2.0 will bring new collection tree navigation with support for Efficiency / Productivity / Business Alignment tracking for all teams (with Histoirical Trends).",
+        description: "SEI 2.0 brings a modern UX to enable executive insights with team level actionability. SEI 2.0 will bring new collection tree navigation with support for Efficiency / Productivity / Business Alignment tracking for all teams (with Historical Trends).",
       },
       {
         tag: [{ value: "Onboarding" }],
@@ -53,12 +53,12 @@ export const SeiData: Horizon = {
       {
         tag: [{ value: "Insights" }],
         title: "DevOps Insights",
-        description: "See deep insights into your DevOps workflow, to truly assess fllow and bottlenecks, after developers merge their code.",
+        description: "See deep insights into your DevOps workflow, to truly assess flow and bottlenecks, after developers merge their code.",
       },
       {
         tag: [{ value: "Insights" }],
         title: "Surveys",
-        description: "Add the qualitative context to your qunatitiative metrics, with the help of surveys that help assess Developer Satisifcation.",
+        description: "Add the qualitative context to your quantitative metrics, with the help of surveys that help assess Developer Satisfaction.",
       },
      ],
   },
@@ -74,7 +74,7 @@ export const SeiData: Horizon = {
       {
         tag: [{ value: "AI" }, { value: "Agents"}],
         title: "AI Efficiency Agent",
-        description: "An Agent that offers recommendations for improving productivity, removing bottlenecks, enhancing developer experience based on qualitative and quantitative insights.",
+        description: "An Agent that offers recommendations for improving productivity, removing bottlenecks, and enhancing developer experience based on qualitative and quantitative insights.",
       },
       {
         tag: [{ value: "AI" }, { value: "Recommendations"}],
@@ -94,7 +94,7 @@ export const SeiData: Horizon = {
       {
         tag: [{ value: "Insights" }, { value: "Cohorts" }],
         title: "Cohort Analysis",
-        description: "Define Dynamic Cohorts that allow qualitative & quantitative analysis across miultiple cohorts, before/after analysis & more.",
+        description: "Define Dynamic Cohorts that allow qualitative & quantitative analysis across multiple cohorts, before/after analysis & more.",
       },
     ],
   },
