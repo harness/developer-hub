@@ -28,17 +28,36 @@ This tab includes three subtabs:
 - **Outputs:** Values exposed by your modules, typically used to pass data between pipeline stages or systems.
 
 Use this tab to validate state, inspect dependencies, and troubleshoot issues, without digging through raw state files.
----
-### Variables
-The Variables tab is populated from the variables defined within your infrastructure code, commonly in your `variables.tf` file.
 
-:::info
+---
+
+### Variables and Connectors
+The **Variables and Connectors** tab lets you define the inputs and integrations required to run your IaCM workspace pipelines. These settings apply to operations such as `init`, `plan`, `apply`, or drift detection.
+
+#### Connectors
+Connectors allow your workspace to authenticate with cloud providers, Git repositories, or other external systems. For example, a Git connector may be required to fetch variable files, or a cloud connector (like `aws-oidc`) may be needed for provisioning infrastructure.
+
+You can add connectors at the **Account**, **Project**, or **Organization** level.
+
+#### Variables
+Variables are used to inject configuration values into your infrastructure code. You can define:
+
+- **Environment variables** for shell-level runtime config (e.g., `TF_LOG`, `ENVIRONMENT`)
+- **OpenTofu/Terraform variables** that map to `variable {}` blocks in your `.tf` files
+- **Variable files** (`.tfvars`, `.json`, or `.yaml`) stored in Git and referenced at runtime
+
+These values can be statically defined, prompted at runtime with `<+input>`, or injected from pipeline variables.
+
+:::info Learn more
+For setup instructions and YAML examples, see [Configure Connectors and Variables](/docs/infra-as-code-management/workspaces/configure-connectors-and-variables).
+
 Variables can be set in any of the following ways:
 - **Explicit variables:** You can state that exact value of the variable directly in your code.
 - **Variable reference:** You can set a variable value directly in the variables tab of your workspace and reference it with the `var.variable_reference` syntax in your OpenTofu/Terraform code. 
 - **Default values** Setting default values acts as a fallback and prevents unexpected errors in cases where you referenced a variable that doesn't match any reference in your workspace variables, e.g. it is misspelled or has been manually removed.
 - **Consider sensitive information:** In some cases you may want to store a variable with sensitive information such as database passwords or other secret. In these cases, you can label your OpenTofu/Terraform code as `sensitive = true`
 :::
+
 
 <Tabs>
 <TabItem value="Explicit variable">
