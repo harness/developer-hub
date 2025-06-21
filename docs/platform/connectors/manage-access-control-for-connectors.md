@@ -36,7 +36,7 @@ helpdocs_is_published: true
         
             ![by-type](./static/by-type.gif)
 
-    * **By Tag**: Grants access to connectors based on matching tags. If a connector has a tag included in the resource group's tag list, users with the corresponding role assignments automatically gain access. 
+    * **By Tag**: Grants access to connectors based on matching tags. If a connector has a tag included in the resource group's tag list, users with the corresponding role assignments automatically gain access. This is currently behind the `PL_TAG_BASED_ACCESS_TO_CONNECTORS` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
     
         If the tag is removed from the connector, access is automatically revoked.    
     
