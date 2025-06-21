@@ -1310,6 +1310,8 @@ const sidebars: SidebarsConfig = {
         className: "horizontal-bar",
       },
       "cloud-cost-management/get-started/overview",
+      "cloud-cost-management/get-started/dynamic-get-started",
+      "cloud-cost-management/get-started/get-started",
       {
         type: "category",
         label: "Get Started",
