@@ -31,7 +31,7 @@ The Harness FME platform performs a sample ratio check with each calculation upd
 
 <img src="https://help.split.io/hc/article_attachments/360043234732" alt="sample_ratio_check.png" width="900" /> 
 
-When performing a sample ratio check in the Harness FME platform, the current treatment pair ratio has to match the targeted treatment pair ratio. For example, say your targeted ratio was 25/25/50 across treatments A/B/C. If you are comparing A to B, the targeted ratio is 25/25 out of the combined 50% allocated to A and B, which simplifies to 50/50. The sample ratio check is conducted against this targeted 50/50 distribution for the selected treatment pair, not the full A/B/C allocation.
+When performing a sample ratio check in the Harness FME platform, the current treatment pair ratio has to match the targeted treatment pair ratio. For example, say your targeted ratio was 25/25/50 across treatments A/B/C. FME performs pairwise comparisons between all treatment pairs: A vs. B, A vs. C, and B vs. C. For A vs. B, the targeted ratio is 25/25 out of the combined 50% allocated to A and B, which simplifies to 50/50. For A vs. C and B vs. C, the targeted ratios are 25/50, or 1:2. The sample ratio check is conducted against this targeted 50/50 distribution for the selected treatment pair, not the full A/B/C allocation.
 
 The table below shows the results of the check and a quick overview of each. 
  
