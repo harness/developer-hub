@@ -1,5 +1,8 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
+
+<RedirectIfStandalone label="Maven" targetPage="/docs/artifact-registry/supported-formats" />
 
 This guide will help you **create a Maven Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Maven packages**.
 

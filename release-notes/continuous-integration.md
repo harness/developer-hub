@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-05-27T10:00
+date: 2025-06-18T10:00
 sidebar_position: 10
 ---
 
@@ -43,13 +43,25 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 ## June 2025
 
+### Version 1.84
+
+<!-- 2025-06-16 -->
+
+#### New features and enhancements
+- Added [**Secure Connect**](/docs/continuous-integration/secure-ci/secure-connect/) support for the Vault connector in the UI. (CI-17710, ZD-84099)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/harness-cache-server`    |  Fixed an issue with Amazon s3 bucket uploads with presigned URLs for Harness Build Intelligence | 1.7.2              | 1.7.3       |
+
 ### Version 1.83
 
 <!-- 2025-06-09 -->
 
 #### New features and enhancements
 - Improved error handling in CI steps by adding null safety checks for Pod and PodStatus objects to prevent `NullPointerException`. (CI-17294)
-- Added [**Secure Connect**](/docs/continuous-integration/secure-ci/secure-connect/) support for the Vault connector in the UI. (CI-17710, ZD-84099)
 
 #### Fixes issues
 - Resolved compatibility issues with the `gradle-build-cache-plugin` for Java 8. After the update, the plugin was verified to work with JDK 8, JDK 11, and JDK 17. (CI-15707)

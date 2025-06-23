@@ -21,7 +21,7 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 ## June 2025
 
-### Version: 1.33.0 , Plugin Version: 0.39.0
+### Version: 1.33.0 , Plugin Version: 0.39.1
 
 #### New features and enhancements
 

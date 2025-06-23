@@ -193,9 +193,16 @@ No early access (beta) features are available for the Harness Supply Chain Secur
 The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
 <!-- No early access features are available for the Harness Security Testing Orchestration module. Go to [STO Release Notes](/release-notes/security-testing-orchestration) for all the latest updates.  -->
 
+#### All Issues Section at Project Level
+
+* **GA date:** July 2025
+* **Early access release date:** May 2025
+* **Issue number:** STO-5430
+* **Feature flag:** `STO_ALL_ISSUES_PAGE`
+
 #### Exemptions support for Account and Organization
 
-* **GA date:** May 2025
+* **GA date:** July 2025
 * **Early access release date:** April 2025
 * **Early access release version:** v1.136.1
 * **Issue number:** STO-6260
