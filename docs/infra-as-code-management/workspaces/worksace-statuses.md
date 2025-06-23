@@ -14,7 +14,7 @@ This document provides an overview of workspace statuses, offering a quick glanc
 - **Destroying:** Workspaces undergoing the teardown process with a `destroy` pipeline actively running.
 - **Drifted:** Workspaces where the actual infrastructure has drifted from the expected configuration. Go to [Drift Detection](/docs/infra-as-code-management/pipelines/operations/drift-detection) to find out more.
 - **Apply_Needed:** An `apply` is required to bring the infrastructure in sync with the workspace configuration. 
-    - This status appears when changes are detected but not yet applied—such as Terraform code updates, modified variables or files, or changes to the provisioner version. 
+    - This status appears when changes are detected but not yet applied, such as OpenTofu/Terraform code updates, modified variables or files, or changes to the provisioner version. 
     - It is typically set after a plan step shows pending changes or when configuration is edited directly, helping users identify workspaces that are currently out-of-date.
 - **Failed:** Workspaces where the last operation did not complete successfully, requiring attention.
 
