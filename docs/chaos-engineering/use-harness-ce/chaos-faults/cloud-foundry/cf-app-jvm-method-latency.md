@@ -27,6 +27,11 @@ CF app JVM method latency:
     <th>Notes</th>
   </tr>
   <tr>
+    <td> deploymentModel </td>
+    <td> The deployment model being used for Linux Chaos Infrastructure + Cloud Foundry Fault Injector. For more information, refer <a href="cf-chaos-components-and-their-deployment-architecture/#direct-installation-of-lci-in-the-tas-vms">here</a>.</td>
+    <td> One of: <code>model-1</code>,<code>model-2</code>. No default value is assumed, if the tunable is not provided. For <code>model-1</code>, <code>boshDeployment</code> and <code>faultInjectorLocation</code> inputs are not required. </td>
+  </tr>
+  <tr>
     <td>organization</td>
     <td>Organization where the target app resides.</td>
     <td>For example, <code>dev-org</code>.</td>
@@ -50,11 +55,6 @@ CF app JVM method latency:
     <td>method</td>
     <td>The target Java class method.</td>
     <td>For example, <code>AddToInventory</code></td>
-  </tr>
-  <tr>
-    <td> deploymentModel </td>
-    <td> The deployment model used for setting up the fault injector. It supports <code>model-1</code> and <code>model-2</code>. Model-1 assumes that the fault-injector exists within a diego cell VM whereas Model-2 assumes that the fault-injector exists within a jumpbox VM.</td>
-    <td> Supports <code>model-1</code> and <code>model-2</code>. For more information, go to <a href="#deployment-model"> Deployment Model</a>. </td>
   </tr>
 </table>
 
@@ -108,13 +108,39 @@ CF app JVM method latency:
   <tr>
     <td> faultInjectorLocation </td>
     <td> Location of the fault injector with respect to the cloud foundry vms. </td>
-    <td> Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#fault-injector-location"> Fault Injector Location</a>. </td>
+    <td> Default: <code>local</code>. Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#fault-injector-location"> Fault Injector location</a>. </td>
   </tr>
 </table>
 
 <CFAndBOSHSecrets />
 
 <VSphereSecrets />
+
+### Deployment Model
+The `deploymentModel` input specifies the LCI deployment model with respect to its placement in the host TAS VM.
+- It accepts one of: `model-1`, `model-2`.
+- No default value is assumed if the input is not provided, but the experiment execution fails with an error.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/cf-app-jvm-method-latency/deploymentModel.yaml yaml)
+```yaml
+# deployment model for LCI
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-jvm-method-latency
+  labels:
+    name: app-jvm-method-latency
+spec:
+  cfAppJVMChaos/inputs:
+    duration: 30s
+    faultInjectorLocation: vSphere
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+    deploymentModel: model-1
+```
 
 ### Class
 The `class` input specifies the Java class whose method will be targeted. It shall be provided as: `package-name.class-name`.
@@ -197,7 +223,7 @@ The following YAML snippet illustrates the use of this input:
 
 [embedmd]:# (./static/manifests/cf-app-jvm-method-latency/faultInjectorLocation.yaml yaml)
 ```yaml
-# cf deployment platform
+# Fault Injector location
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:

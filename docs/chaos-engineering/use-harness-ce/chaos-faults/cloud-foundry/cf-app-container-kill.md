@@ -25,9 +25,9 @@ CF app container kill:
     <th> Notes </th>
   </tr>
   <tr>
-    <td> cfDeploymentPlatform </td>
-    <td> Deployment platform used for cloud foundry with respect to where the infrastructure is hosted. </td>
-    <td> Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#cf-deployment-platform"> CF deployment platform</a>. </td>
+    <td> deploymentModel </td>
+    <td> The deployment model being used for Linux Chaos Infrastructure + Cloud Foundry Fault Injector. For more information, refer <a href="cf-chaos-components-and-their-deployment-architecture/#direct-installation-of-lci-in-the-tas-vms">here</a>.</td>
+    <td> One of: <code>model-1</code>,<code>model-2</code>. No default value is assumed, if the tunable is not provided. For <code>model-1</code>, <code>boshDeployment</code> and <code>faultInjectorLocation</code> inputs are not required. </td>
   </tr>
   <tr>
     <td> organization </td>
@@ -44,11 +44,6 @@ CF app container kill:
     <td> The app to be stopped. </td>
     <td> The app must reside within the given organization and space. For example, <code>cf-app</code> </td>
   </tr>
-  <tr>
-    <td> boshDeployment </td>
-    <td> The bosh deployment under which the CF components are being managed. </td>
-    <td> It can be obtained using the BOSH CLI command <code>bosh deployments</code>. For more information, go to <a href="#bosh-deployment"> BOSH deployment</a>. </td>
-  </tr>
 </table>
 
 ### Optional tunables
@@ -57,6 +52,16 @@ CF app container kill:
     <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
+  </tr>
+  <tr>
+    <td> faultInjectorLocation </td>
+    <td> Fault injector placement with respect to where the LCI is hosted. </td>
+    <td> Default: <code>local</code>. Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#fault-injector-location"> Fault Injector location</a>. </td>
+  </tr>
+  <tr>
+    <td> boshDeployment </td>
+    <td> The bosh deployment under which the CF components are being managed. </td>
+    <td> It can be obtained using the BOSH CLI command <code>bosh deployments</code>. For more information, go to <a href="#bosh-deployment"> BOSH deployment</a>. </td>
   </tr>
   <tr>
     <td> instanceAffectedPercentage </td>
@@ -113,12 +118,39 @@ metadata:
 spec:
   cfAppContainerKill/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
     boshDeployment: cf
     signal: "15"
+```
+
+### Deployment Model
+The `deploymentModel` input specifies the LCI deployment model with respect to its placement in the host TAS VM.
+- It accepts one of: `model-1`, `model-2`.
+- No default value is assumed if the input is not provided, but the experiment execution fails with an error.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/cf-app-container-kill/deploymentModel.yaml yaml)
+```yaml
+# deployment model for LCI
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-container-kill
+  labels:
+    name: app-container-kill
+spec:
+  cfAppContainerKill/inputs:
+    duration: 30s
+    faultInjectorLocation: vSphere
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+    boshDeployment: cf
+    deploymentModel: model-1
 ```
 
 ### BOSH deployment
@@ -138,7 +170,7 @@ metadata:
 spec:
   cfAppContainerKill/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -162,7 +194,7 @@ metadata:
 spec:
   cfAppContainerKill/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -170,16 +202,17 @@ spec:
     instanceAffectedPercentage: 50
 ```
 
-### CF deployment platform
-The `cfDeploymentPlatform` input variable determines the deployment platform used for CF with respect to the infrastructure.
-- The deployment platform can be local, that is, the same environment used by the infrastructure, or a remote machine.
-- The deployment platform is where the fault-injector utility executes.
+### Fault Injector location
+The `faultInjectorLocation` input determines the fault injector placement with respect to where the LCI is hosted.
+- It supports one of: 
+  - `local`: LCI and fault injector are placed in the same machine.
+  - `vSphere`: Fault injector is placed in a remote vSphere managed VM.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-app-container-kill/cfDeploymentPlatform.yaml yaml)
+[embedmd]:# (./static/manifests/cf-app-container-kill/faultInjectorLocation.yaml yaml)
 ```yaml
-# cf deployment platform
+# Fault Injector location
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
@@ -189,7 +222,7 @@ metadata:
 spec:
   cfAppContainerKill/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -212,7 +245,7 @@ metadata:
 spec:
   cfAppContainerKill/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -236,7 +269,7 @@ metadata:
 spec:
   cfAppContainerKill/inputs:
     duration: 30s
-    cfDeploymentPlatform: local
+    faultInjectorLocation: local
     app: cf-app
     organization: dev-org
     space: dev-space

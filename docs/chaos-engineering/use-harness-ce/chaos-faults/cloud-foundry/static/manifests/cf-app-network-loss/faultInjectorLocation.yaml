@@ -1,14 +1,14 @@
-# cf deployment platform
+# Fault Injector location
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
-  name: cf-route-unmap
+  name: cf-app-network-loss
   labels:
-    name: route-unmap
+    name: app-network-loss
 spec:
-  cfAppRouteUnmap/inputs:
+  cfAppNetworkChaos/inputs:
     duration: 30
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space

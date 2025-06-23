@@ -26,11 +26,6 @@ CF app route unmap:
     <th> Notes </th>
   </tr>
   <tr>
-    <td> cfDeploymentPlatform </td>
-    <td> Deployment platform used for Cloud Foundry with respect to where the infrastructure is hosted. </td>
-    <td> Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#cf-deployment-platform"> CF deployment platform.</a></td>
-  </tr>
-  <tr>
     <td> organization </td>
     <td> Organization where the target app resides. </td>
     <td> For example, <code>dev-org</code>. </td>
@@ -58,6 +53,11 @@ CF app route unmap:
     <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
+  </tr>
+  <tr>
+    <td> faultInjectorLocation </td>
+    <td> Fault injector placement with respect to where the LCI is hosted. </td>
+    <td> Default: <code>local</code>. Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#fault-injector-location"> Fault Injector location</a>. </td>
   </tr>
   <tr>
     <td> path </td>
@@ -113,7 +113,7 @@ metadata:
 spec:
   cfAppRouteUnmap/inputs:
     duration: 30
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -138,7 +138,7 @@ metadata:
 spec:
   cfAppRouteUnmap/inputs:
     duration: 30
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -146,26 +146,27 @@ spec:
     path: /abc
 ```
 
-### CF deployment platform
-The `cfDeploymentPlatform` input variable determines the deployment platform used for CF with respect to the infrastructure.
-- The deployment platform can be local, that is, the same environment used by the infrastructure, or a remote machine.
-- The deployment platform is where the fault-injector utility executes.
+### Fault Injector location
+The `faultInjectorLocation` input determines the fault injector placement with respect to where the LCI is hosted.
+- It supports one of: 
+  - `local`: LCI and fault injector are placed in the same machine.
+  - `vSphere`: Fault injector is placed in a remote vSphere managed VM.
 
-The following YAML snippet illustrates the use of this input variable:
+The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-app-route-unmap/cfDeploymentPlatform.yaml yaml)
+[embedmd]:# (./static/manifests/cf-app-container-kill/faultInjectorLocation.yaml yaml)
 ```yaml
-# cf deployment platform
+# Fault Injector location
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
-  name: cf-app-route-unmap
+  name: cf-app-container-kill
   labels:
-    name: app-route-unmap
+    name: app-container-kill
 spec:
-  cfAppRouteUnmap/inputs:
-    duration: 30
-    cfDeploymentPlatform: vSphere
+  cfAppContainerKill/inputs:
+    duration: 30s
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -188,7 +189,7 @@ metadata:
 spec:
   cfAppRouteUnmap/inputs:
     duration: 30
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -212,7 +213,7 @@ metadata:
 spec:
   cfAppRouteUnmap/inputs:
     duration: 30
-    cfDeploymentPlatform: local
+    faultInjectorLocation: local
     app: cf-app
     organization: dev-org
     space: dev-space

@@ -1,5 +1,5 @@
 ---
-id: CF chaos components and their deployment architecture
+id: cf-chaos-components-and-their-deployment-architecture
 title: CF chaos components and deployment architecture
 sidebar_position: 2
 redirect_from:
@@ -73,9 +73,13 @@ To successfully execute a CF fault, you have to fulfill the following prerequisi
 
 Harness supports two deployment modes in the CF environment for the chaos components mentioned earlier. It is designed to support different networking configurations (or constraints) within enterprises.
 
-### Run LCI in Diego cells hosting the app instances
+### Direct installation of LCI in the TAS VMs
 
-This is the default deployment mode that is simpler, in which the LCI resides on the VM that hosts the app instances, that is, Diego Cells. In this model, the fault blast radius is confined to the app containers and application processes on the cell under test only, with respect to purely CF-API driven faults and app instance (or container)level fault types.
+In this mode, LCI is installed directly as a systemd service in a TAS VM. It includes two different models:
+
+1. `model-1`: Installs LCI in a Diego Cell VM.  This allows the fault blast radius to be confined to the app containers and application processes on the cell under test only, with respect to purely CF-API driven faults and app instance (or container) level fault types.
+
+2. `model-2`: Installs LCI in the Ops Manager (Jumpbox) VM. This allows for multiple Diego Cells and the corresponding application containers deployed on them to be targeted. It requires BOSH SSH access to run the commands on the Diego Cells.
 
 ![](./static/images/deployment-model-3.png)
 
