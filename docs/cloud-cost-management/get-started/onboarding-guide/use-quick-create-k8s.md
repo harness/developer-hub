@@ -1,5 +1,5 @@
 ---
-title: Kubernetes quick create
+title: Kubernetes
 description:  This topic helps you seamlessly set up your Harness CCM with a single click for your existing Kubernetes clusters.
 # sidebar_position: 2
 helpdocs_topic_id: g9dgxg2cc6

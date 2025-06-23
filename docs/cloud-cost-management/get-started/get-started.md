@@ -57,13 +57,6 @@ To ensure a smooth and error-free setup experience, complete the following steps
 
 This is the value you’ll paste into the wizard later on.
 
----
-
-</TabItem>
-<TabItem value="azure" label="Azure">
-- A Harness project with CCM enabled.
-- Access to your cloud provider's billing and IAM settings.
-- Permissions to create billing exports and read cost data.
 </TabItem>
 <TabItem value="gcp" label="GCP">
 To ensure a successful setup and pass the final connection test, complete the following tasks in your **Google Cloud Console** before launching the Harness wizard.
@@ -99,6 +92,11 @@ To ensure a successful setup and pass the final connection test, complete the fo
 2. Click **Share Dataset**.
 3. Add the following service account as a **Viewer**: `<account-id>@<project-id>.iam.gserviceaccount.com`
 </TabItem>
+<TabItem value="azure" label="Azure">
+- A Harness project with CCM enabled.
+- Access to your cloud provider's billing and IAM settings.
+- Permissions to create billing exports and read cost data.
+</TabItem>
 <TabItem value="kubernetes" label="Kubernetes">
 - A Harness project with CCM enabled.
 - Access to your cloud provider's billing and IAM settings.
@@ -107,7 +105,7 @@ To ensure a successful setup and pass the final connection test, complete the fo
 </Tabs>
 
 :::caution time for data delivery
-It may take up to **24 hours** for AWS to begin delivering cost and usage data. You can still proceed through the wizard, but the connection test may fail if data isn’t yet available.
+It may take up to **24 hours** for your cloud provider to begin delivering cost and usage data. You can still proceed through the wizard, but the connection test may fail if data isn’t yet available.
 
 In the meantime, explore the optional requirements and feature integrations available in Harness CCM, these will be available to select in your **Choose Requirements** step of the connection wizard:
 
@@ -124,64 +122,16 @@ Once you've gathered the required AWS details, follow these steps in the Harness
 
 <Tabs groupId="cloud-provider" queryString>
 <TabItem value="aws" label="AWS">
-
-#### Interactive Guide
-<DocVideo src="https://app.tango.us/app/embed/6b42eeea-c39c-4a4f-b8da-8c7021e0cff2?makeViewOnly=true&hideAuthorAndDetails=true" title="Add Cloud Costs Connector in Harness" />
-
-#### Step-by-Step
-1. Go to **Account Settings** > **Connectors**.
-2. Select **New Connector**.
-3. Under **Cloud Costs**, select your cloud provider, e.g. AWS, Azure, GCP, or Kubernetes.
-4. Perform the following tasks in the selected cloud provider connector wizard.
-
+<DocVideo src="https://app.tango.us/app/embed/f48937b7-996f-45f1-9fd9-b387d2570561?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
 </TabItem>
 <TabItem value="gcp" label="GCP">
-
-#### Interactive Guide
-<DocVideo src="https://app.tango.us/app/embed/6b42eeea-c39c-4a4f-b8da-8c7021e0cff2?makeViewOnly=true&hideAuthorAndDetails=true" title="Add Cloud Costs Connector in Harness" />
-
-#### Step-by-Step
-After preparing the prerequisites, return to Harness and complete each step in the wizard:
-
-**Overview**
-- Connector Name: `gcp-cost-connector` (or your preferred name)  
-- Project ID: `your-gcp-project-id`
-
-**Setup Billing Export**  
-- Dataset Name: `your-dataset-name`  
-- Table Name: `your-table-name`  
-
-**Choose Requirements**  
-- ✅ Cost Visibility (mandatory)  
-- Optionally enable:
-  - Resource Inventory Management  
-  - AutoStopping  
-  - Cloud Governance
-
-**Grant Permissions**  
-- Reconfirm you granted `BigQuery Data Viewer` to the service account.
----
-
-**Final Step: Connection Test**
-Harness will attempt to:
-- Validate access to your dataset.
-- Confirm the billing export table exists.
-- Verify permissions.
-
-**Common Connection Errors**:
-
-| Error | Likely Cause | Resolution |
-|-------|--------------|------------|
-| `Unable to find dataset` | Dataset name or project ID is incorrect | Double-check both values in GCP and in the wizard |
-| `Permission denied` | Missing or incorrect IAM roles | Re-grant `BigQuery Data Viewer` to Harness’ service account |
-| `Table not found` | Billing export is not enabled or table name is wrong | Wait for billing export to initialize or adjust name in the wizard |
-
+<DocVideo src="https://app.tango.us/app/embed/f48937b7-996f-45f1-9fd9-b387d2570561?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add GCP Cloud Cost Connector in Harness" />
 </TabItem>
 <TabItem value="azure" label="Azure">
-
+<DocVideo src="https://app.tango.us/app/embed/f48937b7-996f-45f1-9fd9-b387d2570561?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Azure Cloud Cost Connector in Harness" />
 </TabItem>
 <TabItem value="kubernetes" label="Kubernetes">
-
+<DocVideo src="https://app.tango.us/app/embed/f48937b7-996f-45f1-9fd9-b387d2570561?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Kubernetes Cloud Cost Connector in Harness" />
 </TabItem>
 </Tabs>
 
@@ -191,7 +141,8 @@ Harness CCM follows least-privilege best practices. All permissions are scoped t
 :::
 
 ## 3. See Your Cloud Costs
-> _Coming soon_: This section will show you how to verify your setup, view AWS spend in Harness, and explore cost breakdowns.
+Use **Perspectives** to organize and visualize your cloud costs by business context—such as teams, environments, or applications.
+> _Placeholder_: This section will show you how to verify your setup, view cloud spend in Harness, and explore cost breakdowns.
 
 ---
 
