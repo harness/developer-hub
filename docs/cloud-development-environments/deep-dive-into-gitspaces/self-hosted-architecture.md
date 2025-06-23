@@ -62,17 +62,23 @@ The infrastructure on the customer side (eg. GCP) includes:
 * User installs the **Delegate** and starts the **VM Runner**.
 * The Control Plane submits Gitspace lifecycle tasks to the Delegate.
 
+![](./static/harness-customer-infra.png)
+
 ### Delegate ↔ Runner
 
 * Delegate submits VM requests to the Runner.
 * Runner handles VM provisioning, execution, and response.
 * Delegate receives status and forwards it to the Control Plane.
 
+![](./static/delegate-runner.jpg)
+
 ### Delegate ↔ Gateway ↔ Gitspaces
 
 * Delegate sends tasks to the Gateway.
 * Gateway routes tasks to corresponding Gitspace instances (VMs).
 * Gateway handles routing for all workspace interactions.
+
+![](./static/delegate-gateway-gitspaces.jpg)
 
 ## Key Concepts
 

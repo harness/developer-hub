@@ -11,7 +11,7 @@ sidebar_label: Fundamentals
 - GCP Infrastructure  
 - Cloud + On-Prem Providers  
 
-### Concepts
+### Key Concepts
 - Terraform Registry  
 - GCP Virtual Machine (VM)  
 - Runner  
