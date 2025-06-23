@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Get Started with Perspectives
 description: Learn how to set up and use Perspectives to organize cloud resources according to your business needs.
 sidebar_position: 2
 helpdocs_is_private: false
@@ -12,15 +12,6 @@ import TabItem from '@theme/TabItem';
 ## What are Perspectives?
 
 Perspectives in Harness Cloud Cost Management (CCM) provide a powerful way to contextualize your cloud spending according to your business needs. By creating custom views of your cost data, you can gain insights that align with your organizational structure, projects, or any other business dimension.
-
-## Benefits of Using Perspectives
-
-- **Business-Aligned Cost Visibility**: View cloud costs in ways that match your organizational structure and business priorities
-- **Custom Data Grouping**: Create meaningful cost groupings that make sense for your specific use cases
-- **Enhanced Decision Making**: Make more informed financial decisions with contextualized cost data
-- **Simplified Cost Management**: Organize complex cloud spending into understandable, actionable views
-- **Improved Cost Allocation**: Accurately attribute costs to the right teams, projects, or business units
-
 
 ## Prerequisites
 
@@ -65,17 +56,6 @@ To start using Perspectives, connect your cloud provider accounts to Harness CCM
 :::tip
 You can connect multiple cloud providers and external data sources and use them together in a single Perspective to get a unified view of all your cloud costs in one place.
 :::
-
-## Accessing Default Perspectives
-
-After connecting your cloud provider and waiting for data ingestion (approximately 24 hours):
-
-1. Navigate to the **Perspectives** page in your Harness CCM dashboard
-2. Look for the **By Harness** filter in the top-left corner to view all default perspectives
-
-## Creating Your First Perspective
-
-To create a custom perspective that matches your business needs, see [Creating a Perspective](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective).
 
 ## Next Steps
 

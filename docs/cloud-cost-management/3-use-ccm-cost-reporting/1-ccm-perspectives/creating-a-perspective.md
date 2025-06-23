@@ -1,5 +1,5 @@
 ---
-title: Setting Up Perspectives
+title: Create Perspectives
 description: Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 sidebar_position: 3
 helpdocs_is_private: false
@@ -13,14 +13,17 @@ import TabItem from '@theme/TabItem';
 You can create up to 10,000 Perspectives.
 :::
 
+<DocVideo src="https://app.tango.us/app/embed/7dc1bfa7-a157-4555-8473-ff9e0bb421ec" style="min-height:720px" title="Create a Perspective in Harness CCM" />
+
 To create a Perspective, follow these steps:
 
 1. In **Cloud Costs**, click **Perspectives**
 2. Click **New Perspective**
 3. Complete the following three steps:
 
-<Tabs>
+<Tabs groupId="steps" queryString>
   <TabItem value="step1" label="Step 1: Perspective Builder" default>
+
 
 1. Enter a name for your Perspective (avoid special characters)
 2. Select a folder for organization (optional) - [Learn more about perspective folders](placeholder)
@@ -57,13 +60,14 @@ To create a Perspective, follow these steps:
     <div style={{fontSize: '18px', fontWeight: 'bold', marginBottom: '10px', textAlign: 'center'}}>Operator</div>
     <div style={{fontSize: '13px', backgroundColor: '#f8f8f8', padding: '6px', borderRadius: '4px', marginBottom: '8px', fontStyle: 'italic'}}>The comparison method that defines how to match values</div>
     <div>Choose from:</div>
-    <ul style={{paddingLeft: '20px'}}>
-      <li><strong>IN</strong>: Include exact matches</li>
-      <li><strong>NOT IN</strong>: Exclude exact matches</li>
-      <li><strong>NULL</strong>: Include only where filter has no value</li>
-      <li><strong>NOT NULL</strong>: Include only where filter has a value</li>
-      <li><strong>LIKE</strong>: Include partial matches</li>
-    </ul>
+
+    * **IN**: Include only resources that exactly match the specified value
+    * **NOT IN**: Include all resources except those that match the specified value
+    * **NULL**: Include only resources where this field has no value (excludes resources with this field)
+    * **NOT NULL**: Include only resources where this field has a value
+    * **LIKE**: Include resources where the field partially matches a pattern (uses regular expressions)
+      - For exact pattern matching, use `^pattern$` syntax
+    
   </div>
   
   <div className="rule-component" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px'}}>
@@ -160,9 +164,10 @@ Highlight unusual spending patterns or sudden cost changes in your visualization
 
 ### Cloud-based Preferences
 
-<Tabs>
+<Tabs groupId="cloud" queryString>
   <TabItem value="aws" label="AWS" default>
 
+#### AWS-specific Preferences
 When creating your perspective, the **Preferences** section allows you to include specific cost factors sourced from the AWS Cost and Usage Reports (AWS CUR). These selected cost factors will be incorporated into your perspective for a more tailored and comprehensive view of your cloud costs. 
 
 * **Include Discounts**: Includes any discounts that AWS applied to your usage. 
@@ -188,6 +193,8 @@ When creating your perspective, the **Preferences** section allows you to includ
 </TabItem>
 <TabItem value="gcp" label="GCP">
 
+#### GCP-specific Preferences
+
 The following cost factors retrieved from your GCP Billing Export data can be included or excluded in your perspectives for a more comprehensive view of your cloud costs.
 
 * **Include Discounts**: Includes any discounts that GCP applied to your usage. 
@@ -199,6 +206,8 @@ For details about the **GCP Invoice Month** filter, go to [Add filters](/docs/cl
 
   </TabItem>
   <TabItem value="azure" label="Azure">
+
+#### Azure-specific Preferences
 
 Azure provides two types of cost export metrics: **Actual Cost** and **Amortized Cost**, each serving distinct financial tracking and analysis needs. In the Azure portal, users can toggle between these cost types to gain insights into their billing data. CCM allows users to configure their Azure connector to support both cost types, offering enhanced visibility and control over their expenses.
 
@@ -230,12 +239,4 @@ To accommodate the diverse needs of different teams, CCM supports the setup of b
 </TabItem>
 </Tabs>
 
-After creating a Perspective you can:
-
-- Edit a Perspective
-- Clone a Perspective
-- Delete a Perspective
-- Move a Perspective to a folder
-
-Also, by clicking on a specific Perspective on the Perspective home page, you can see all the details about the perspective. 
 
