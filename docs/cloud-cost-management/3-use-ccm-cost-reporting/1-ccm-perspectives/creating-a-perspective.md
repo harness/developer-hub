@@ -26,7 +26,7 @@ To create a Perspective, follow these steps:
 
 
 1. Enter a name for your Perspective (avoid special characters)
-2. Select a folder for organization (optional) - [Learn more about perspective folders](placeholder)
+2. Select a folder for organization (optional)
 3. Choose a default time view:
    * Last 7 days
    * Last 30 days
@@ -199,13 +199,9 @@ The following cost factors retrieved from your GCP Billing Export data can be in
 
 * **Include Discounts**: Includes any discounts that GCP applied to your usage. 
 * **Include Taxes**: Includes any taxes that GCP applied to your bill. For example, VAT or US sales tax. This option is enabled by default.
-  
-To know how to analyze the perspective data, go to [Analyze cost for GCP](../3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md).
 
-For details about the **GCP Invoice Month** filter, go to [Add filters](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-gcp-using-perspectives#option-add-filter).
-
-  </TabItem>
-  <TabItem value="azure" label="Azure">
+</TabItem>
+<TabItem value="azure" label="Azure">
 
 #### Azure-specific Preferences
 
