@@ -45,27 +45,25 @@ Before you begin setup, it’s important to understand the underlying architectu
 
 Start by configuring your Gitspace infrastructure via the Harness UI. This allows you to input your GCP details like Project ID, regions, etc., which will be referenced later during provisioning.
 
-🔗 [Configure Gitspace Infrastructure](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md)
+[Configure Gitspace Infrastructure](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md)
 
 ### 3. Configure and Set Up the Terraform Module
 
 Once the infrastructure is defined in the UI, proceed to initialize and apply the **Harness Gitspaces Terraform Module**. This module will:
 
 - Create all required infrastructure in your GCP Project  
-- Set up VM instances for the Gateway  
-- Install and configure the Runner and Delegate  
-- Launch Gitspace machines  
+- Set up VM instances for the Gateway
 
-🔗 [Set Up Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md)
+[Set Up Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md)
 
 ### 4. Set Up Runner and Install Delegate
 
 After provisioning, install the Runner and Delegate on your GCP VM Instance. This ensures the Harness Control Plane can communicate with your infrastructure to create and manage Gitspaces.
 
-🔗 [Set Up Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/runner-delegate.md)
+[Set Up Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/runner-delegate.md)
 
 ### 5. Manage Gitspaces
 
 Once the setup is complete, you can begin creating Gitspaces directly from the UI and manage them seamlessly.
 
-🔗 [Manage Gitspaces](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md)
+[Manage Gitspaces](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md)

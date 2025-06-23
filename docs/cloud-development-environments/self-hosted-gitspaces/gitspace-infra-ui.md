@@ -5,7 +5,7 @@ sidebar_position: 2
 sidebar_label: Configure Gitspace Infrastructure
 ---
 
-In order to get started with self-hosted Gitspaces, you'll first need to configure infrastructure for these Gitspaces. This infrastructure is where your Gitspaces will be hosted, so you must define and configure it within Harness. This guide will take you through the detailed steps to configure your infrastructure using the Harness UI.
+In order to get started with self-hosted Gitspaces, you'll first need to configure infrastructure for these Gitspaces. This infrastructure is where your Gitspaces will be hosted, so you must define and configure it within Harness UI. This guide will take you through the detailed steps to configure your infrastructure using the Harness UI.
 
 ## Prerequisites
 
