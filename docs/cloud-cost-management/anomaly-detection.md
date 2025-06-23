@@ -107,7 +107,3 @@ Harness gives you the tools to:
 - Tailor notifications and thresholds to your environment.
 
 Start using Anomalies to reconcile your cloud spend like a financial audit—review, tag, and archive with confidence.
-
----
-
-Need help troubleshooting anomalies? Check out the [Anomaly Detection FAQ](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm#faqs).
