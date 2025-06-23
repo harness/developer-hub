@@ -181,7 +181,7 @@ We have added support for replacement schedules with options: **Always, Never, o
 ## May 2025 - Version 1.50.2
 
 ### [New Feature] Label V2
-**[CCM-22075]** | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#important-migration-from-label-to-labelv2)
+**[CCM-22075]** | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#migration-from-label-to-label-v2)
 
 We're rolling out **Label V2**, a major enhancement to how labels (tags) are handled and displayed across the platform, delivering **better visibility**, **performance**, and **alignment with cloud-native formats**.
 
@@ -1051,7 +1051,6 @@ However, it's important to note that while copying you may encounter issues if t
   - Billing entity
   - Line item type
 
-  For more information, go to [Analyze AWS costs by using perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws).
 
 ##### Fixed issues
 
@@ -1071,7 +1070,7 @@ However, it's important to note that while copying you may encounter issues if t
 
 - **Perspective Preferences** enhancement (CCM-11145)
 
-  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences).
+  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective).
 
 :::info
 The current configurations for **Show others** and **Show unallocated cost in clusters** are preserved. This means that though the default settings have these preferences set to false, any _existing perspective_ with these preferences set to true will retain their current state and not be overridden.
