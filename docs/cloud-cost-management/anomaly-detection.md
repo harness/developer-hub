@@ -24,7 +24,7 @@ Before using CCM Anomalies, ensure the following:
 
 - Your cloud infrastructure is connected to Harness using a [Cloud Cost Connector](/docs/cloud-cost-management/get-started/).
 - Billing data ingestion is active and running for your cloud provider.
-- You have appropriate permissions to access [Cost Reporting features](/docs/cloud-cost-management/use-ccm-cost-reporting/).
+- You have appropriate permissions to access [Cost Reporting features](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives).
 
 ---
 
