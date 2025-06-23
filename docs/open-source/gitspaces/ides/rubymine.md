@@ -31,8 +31,7 @@ To ensure optimal performance while connecting to your Gitspace in RubyMine, you
 :::warning
 If your Gitspace does not meet the recommended requirements, the following warning may appear during your RubyMine setup. You can choose to create a new Gitspace that adheres to the recommended specifications or proceed with your existing configuration.
 :::
-<img width="436" alt="warning intellij" src="https://github.com/user-attachments/assets/4749c388-58d1-4917-84b2-ab5384b4d050" />
-
+![](./static/warning-intellij.jpg)
 
 #### Configuring your Gitspace
 To meet the recommended specifications, select the **"Large"** machine type while configuring your Gitspace in the Harness UI. This option provides:  
@@ -62,20 +61,16 @@ For optimal performance, it is recommended to use the **"Large"** Gitspace machi
 ![](./static/open-rubymine.png)
 
 2. A prompt will appear requesting permission to open **JetBrains Gateway** and establish a connection with the remote server. Click **"Open JetBrains Gateway"**.
-<img width="500" alt="jetbrains gateway permissions" src="https://github.com/user-attachments/assets/3863b850-8318-4ca7-8b17-9fc957d4fd7c" />
-
+![](./static/jetbrains-gateway-permissions.png)
 
 ### Connect to the Remote Server
 You will be redirected to **JetBrains Gateway**, where you will be prompted to connect and establish an SSH connection. Click **"Check Connection and Continue"** to begin the setup process. This setup process will download the necessary files and tools required for your RubyMine environment.
-
-<img width="700" alt="connect to ssh" src="https://github.com/user-attachments/assets/0626be74-7da8-42a0-8853-7c810cb4d972" />
+![](./static/connect-to-ssh.png)
 
 :::warning
 In case your Gitspace does not meet the recommended requirements, you may receive the following warning during the above setup. You can either create a new Gitspace to align with the recommended specifications or continue with your current configuration.
-
-<img width="436" alt="warning intellij" src="https://github.com/user-attachments/assets/4749c388-58d1-4917-84b2-ab5384b4d050" />
-
 :::
+![](./static/warning-intellij.jpg)
 
 ### Setup Complete
 Once the setup completes, your Gitspace will be successfully connected to RubyMine IDE. Congratulations! You are now ready to work on your Gitspace directly within RubyMine.
