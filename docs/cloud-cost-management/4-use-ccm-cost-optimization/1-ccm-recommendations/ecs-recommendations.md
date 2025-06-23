@@ -21,9 +21,6 @@ This topic describes how CCM computes ECS service recommendations and how you ca
 Before using recommendations in your ECS cluster environment, ensure that you evaluate their impact thoroughly. The person reviewing the recommendations should be able to understand the impacts identified in the recommendations, as well as the impact on the infrastructure and business.  
 Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
 
-## Before You begin
-
-* [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
   
 ### Prerequisites
 
