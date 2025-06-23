@@ -649,16 +649,19 @@ This section covers common problems experienced when using the [YAML editor](/do
 
 ### The incoming YAML document exceeds the limit: 3145728 code points
 
-This error happens when you are adding YAML that exceeds the Harness limit of 3MB.  This is a hard limit that cannot be increased.
+This error happens when you are adding YAML that exceeds the Harness limit of 3MB.  This is a hard limit that cannot be increased.  Customers will need to explore options to reduce the total pipeline size.
 
 Please note that this size limit is with regards to the **total rendered pipeline** YAML size.   This includes all templates and nested templates/groups.  The best way to see if the size has been reduced is to look at the **compiled YAML for an execution**.
 
 Some strategies people can consider to work with this limit
 - Dividing pipelines into [chained pipelines](/docs/platform/pipelines/pipeline-chaining/)
-- Moving all scripts in any step into a [Harness File Store Location](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#script-location).  This should include **scripts within templates** that are being referred to within the pipeline.
+- Utilizing Looping Strategies [such as Matrices](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/).  
+  - This will cause the rendered pipeline to only have references to the looping parameters, not all rendered looping steps/stages.
+- Moving all scripts in any step into a [Harness File Store Location](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#script-location).  This should include **scripts within templates** that are being referred to within the pipeline.  
+  - Please note this will affect policy evaluations on inline scripts, as the policy will not evaluate the filestore file (it only exists as a reference in the pipeline.)
+
 ![](./static/hnsfilestore.png)
 
-To fix this error, you will need to reduce the size of the pipeline or template.
 
 ## Connectors
 
