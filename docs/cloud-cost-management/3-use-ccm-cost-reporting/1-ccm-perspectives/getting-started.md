@@ -9,6 +9,19 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+## What are Perspectives?
+
+Perspectives in Harness Cloud Cost Management (CCM) provide a powerful way to contextualize your cloud spending according to your business needs. By creating custom views of your cost data, you can gain insights that align with your organizational structure, projects, or any other business dimension.
+
+## Benefits of Using Perspectives
+
+- **Business-Aligned Cost Visibility**: View cloud costs in ways that match your organizational structure and business priorities
+- **Custom Data Grouping**: Create meaningful cost groupings that make sense for your specific use cases
+- **Enhanced Decision Making**: Make more informed financial decisions with contextualized cost data
+- **Simplified Cost Management**: Organize complex cloud spending into understandable, actionable views
+- **Improved Cost Allocation**: Accurately attribute costs to the right teams, projects, or business units
+
+
 ## Prerequisites
 
 Before getting started with Perspectives, ensure you have:
