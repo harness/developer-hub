@@ -22,5 +22,5 @@ This document provides an overview of workspace statuses, offering a quick glanc
 <DocVideo src="https://app.tango.us/app/embed/1b445b45-6085-4964-a8c4-ab5c883f0a98?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Harness IaCM Workspace Status'" />
 
 :::tip enhanced usability
-For enhanced usability, set [default pipelines](/docs/infra-as-code-management/pipelines/default-pipelines) in your workspace configuration, so you can run [provision](/docs/infra-as-code-management/workspaces/provision-workspace) and [destroy](/docs/infra-as-code-management/pipelines/operations/destroy-workspaces) pipelines directly against the workspace you are reviewing. 
+For enhanced usability, set [default pipelines](/docs/infra-as-code-management/pipelines/default-pipelines) in your workspace configuration, so you can run [provision](/docs/infra-as-code-management/workspaces/provision-workspace) and [destroy](/docs/infra-as-code-management/workspaces/destroy-workspaces) pipelines directly against the workspace you are reviewing. 
 :::
