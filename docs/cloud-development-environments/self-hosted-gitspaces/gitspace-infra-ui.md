@@ -11,7 +11,7 @@ In order to get started with self-hosted Gitspaces, you'll first need to configu
 
 - Ensure you’ve read through the **Fundamentals** and **Prerequisites** of self-hosted Gitspaces [here](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). This will help you gain a deeper understanding of the basic concepts and setup steps.
 - Please make sure you are aware of the following details required for configuring your GCP Infrastructure. These inputs are necessary during this step. Refer to the table below for a detailed description of each input.
-- Only **Gitspace Admins** with account-level access can configure Gitspace Infrastructure.
+- Only **Gitspace Admins** with **account-level access** can configure Gitspace Infrastructure.
 - Ensure that your GCP project (to be defined in the infra config) has the following APIs enabled:
   <ul>
     <li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) – `api/cloudresourcemanager.googleapis.com`</li>
@@ -35,7 +35,7 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 
 ### Provide Basic Infrastructure Details
 
-1. **Infrastructure Name**: Provide a name for your Gitspace infrastructure. You can select this while creating Gitspaces.
+1. **Infrastructure Name**: Provide a name for your Gitspace infrastructure. This name will be used while referencing your infrastructure for creating Gitspaces.
 2. **GCP Project**: Enter the name of your GCP project. This is where the GCP VM Instance hosting your Gitspaces will reside.
 3. **Domain**: Provide the domain under which all Gitspaces created in this infrastructure will be accessible.
 4. **Gateway Machine Type**: Specify the VM machine type for your Gateway.
