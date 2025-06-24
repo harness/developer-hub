@@ -14,7 +14,7 @@ Building with non-root users may be necessary for an organization due to the sec
 By default, Harness builds utilizing a Kubernetes cluster infrastructure are completed using [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) for all **Build and Push** steps. If your team utilizes Kaniko, unfortunately, a Kaniko requirement is to have root access to build the Docker image. It doesn't support non-root users, so users will have to use one of the alternates listed below.
 
 ### Build X Builds
-Customers can also utilize BuildX for their builds.  This feature can be enabled by submitting a ticket to Harness Support to enable the flag `CI_USE_BUILDX_ON_K8`.  We recommend [reviewing the notes about this feature on the CI Early Access Features page](https://developer.harness.io/docs/continuous-integration/ci-supported-platforms/#harness-ci-early-access-features).  You must run BuildX on Kubernetes with Privileged mode enabled.
+Customers can use BuildX for their Docker builds. By default, Harness uses Kaniko on Kubernetes. To switch to BuildX by default, please contact support to enable the feature flag `CI_USE_BUILDX_ON_K8`. Note that BuildX requires privileged access. Regardless of this flag, BuildX is always used by default when Docker Layer Caching (DLC) is enabled in **Build and Push** steps.
 
 ### Drone Docker
 It is also possible to utilize drone docker. Please read the following documentation for a full breakdown of [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md) and how to use it.
