@@ -27,4 +27,8 @@ The **Map service instance identifier** (SII) section is only visible if you hav
 
 In **Service Instance Identifier (only needed for CV)**, specify the service instance identifier, which represents a dynamically created service that you deploy using Harness. The default value is `_sourceHost`.
 
-When doing canary deployments, ensure that the SII can be used to identify the canary instance of the service, or CV will not work properly."
+This field allows CV to identify the name of the host which has emitted the metric/log.
+
+Picking the right service instance identifier is important, and depends on the kind of metric that you want to monitor. As an example, for Kubernetes deployments, the best selection will typically be `pod`, `<podname>`, or `<containername>`.
+
+When doing canary deployments, ensure that the SII can be used to identify the canary instance of the service, or CV will not work properly.
