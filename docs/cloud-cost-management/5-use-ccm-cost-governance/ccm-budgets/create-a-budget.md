@@ -121,7 +121,7 @@ The dashboard includes the following information:
 
 ### Read Your Budget
 
-The **Budgets** dashboard further shows you the details of your selected budget at a glance. You can also navigate to the [Perspective](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective.md) on which the budget is created from the budget dashboard.
+The **Budgets** dashboard further shows you the details of your selected budget at a glance. You can also navigate to the Perspective on which the budget is created from the budget dashboard.
 
 ![](./static/create-a-budget-09.png)
 
