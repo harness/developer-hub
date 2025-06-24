@@ -49,6 +49,13 @@ Finally, in your IaCM stage you will need to add the required annotations for th
 
 ![SA Annotations](../static/iacm-aws-connector-irsa-sa-anno.png)
 
-The annotation is `eks.amazonaws.com/role-arn` and the value should be the ARN of the role to assume, which should be the role that trusts your clusters OIDC provider.
+The annotation is `eks.amazonaws.com/role-arn` and the value should be the ARN of the IRSA role.
+
+As an alternative to specifying the role in the stage, you can pre-create a service account with the annotation and instead specify the service account in the stage settings.
+
+```shell
+kubectl -n <namespace> create sa <sa name>
+kubectl annotate sa <sa name> -n <namespace> eks.amazonaws.com/role-arn=<irsa role arn>
+```
 
 This method also allows you to define a "role to assume" in the connector which will be assumed for your in your IaCM execution.
