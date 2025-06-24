@@ -357,7 +357,7 @@ Currently, [STO scan steps](https://developer.harness.io/docs/security-testing-o
 
 Go to [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
-### GCP OIDC Connector keeps saying `OIDC Configuration Error: Error encountered while obtaining OIDC Access Token from STS` but I believe my configuration is correct
+### GCP OIDC Connector keeps saying "OIDC Configuration Error: Error encountered while obtaining OIDC Access Token from STS" configuration is correct
 Harness obsfucates various information from GCP OIDC connections due to security and information concerns.  In order to keep customers safe even in the case of connection error, Harness obasfucates information that may help troubleshoot this kind of issue.  
 
 To start, please ensure that your Harness Environment and Google Cloud Environment are configured according to our documentation about [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted)
@@ -394,7 +394,7 @@ Once you run the command, Harness will return a successful JWT
 The data portion is the JWT
 
 #### Compare the issuer in the JSON Web Token with what is being supplied by Harness
-You can now decode your JWT token and ensure its values are correct.  Visit https://jwt.io/, and decode the values for the payload.  The values should look somewhat like the following:
+You can now decode your JWT token and ensure its values are correct.  You can decode the JWT using a tool of your choice (such as with Python) or visit a site like https://jwt.io/, and decode the values for the payload (please note that Harness does not endorse https://jwt.io).  The values should look somewhat like the following:
 ```
 {
   "sub": "YOUR_HARNESS_ACCOUNT_ID",
