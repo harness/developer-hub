@@ -150,13 +150,16 @@ export const CdData: Horizon = {
         title: "Integration with DataDog",
         description: "Users can integrate Harness pipelines with DataDog for real-time monitoring, logging, and performance insights.",
       },
-
       {
         tag: [{value: "OPA"}],
         title: "Repo Import and Package Support",
         description: "",
       },
-
+      {
+        tag: [{value: "GitOps"}],
+        title: "Native Argo Rollout Step",
+        description: "Users can leverage Harness native Argo Rollout steps for deployments.",
+      },
       {
         tag: [{value: "Miscellaneous"}],
         title: "OIDC Authentication - Hashicorp deployment types",
