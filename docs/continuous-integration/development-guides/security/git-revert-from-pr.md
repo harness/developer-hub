@@ -15,7 +15,7 @@ At times, you might want to undo changes introduced by a pull request (PR) in a 
 
 ## Design
 
-When a pull request is merged, a CI pipeline is triggered that clones the Git repository based on the commit SHA. The pipeline then runs a set of tests (e.g., security scans). If any of those tests fail, [a **Run** step reverts the Git commit(s)](../../use-ci/codebase-configuration/git-revert-commit).
+When a pull request is merged, a CI pipeline is triggered based on the commit SHA. The pipeline runs security scans, and if any test fails, a native **Plugin** step automatically [reverts the git commit(s)](../../use-ci/codebase-configuration/git-revert-commit) introduced by the PR.
 
 ```mermaid
 graph LR
@@ -23,7 +23,7 @@ graph LR
     B[Pipeline clones git repo based on commitSha]
     C[Security scan is run]
     D{Scan fails?}
-    E[Run step reverts the git commit]
+    E[Plugin step reverts the git commit]
     F[Pipeline continues]
 
     A --> B
@@ -90,31 +90,15 @@ pipeline:
                         level: info
                       fail_on_severity: high
               - step:
-                  type: Run
-                  name: rollback
-                  identifier: rollback
+                  type: Plugin
+                  name: Git Revert Commit
+                  identifier: git_revert_commit
                   spec:
-                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
-                    image: alpine/git
-                    shell: Sh
-                    command: |-
-                      git config --global user.email "GIT_USER_EMAIL"
-                      git config --global user.name "GIT_USER_NAME"
-                      git config --global --add safe.directory /harness
-                      git config --global credential.helper 'cache --timeout 600'
-                      << eof tr -d ' ' | git credential-cache store 
-                        protocol=https
-                        host=github.com
-                        username="GIT_USER_ID"
-                        password=<+secrets.getValue("YOUR_HARNESS_GIT_PAT_SECRET")>
-                      eof
-                      git pull origin main
-                      echo "Last Commit"
-                      git rev-parse HEAD
-                      git revert -m 1 <+codebase.commitSha>
-                      echo "Restored Commit"
-                      git rev-parse HEAD
-                      git push --set-upstream origin main
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+                    image: plugins/git-revert-commit:linux-amd64
+                    settings:
+                      git_pat: <+secrets.getValue("YOUR_GIT_PAT_SECRET")>
+                      commit_sha: <+codebase.commitSha>
                   when:
                     stageStatus: Failure
           platform:
@@ -174,8 +158,8 @@ trigger:
 
 ## Test the setup
 
-This guide uses [OWASP Dependency-check Scanner](../../../security-testing-orchestration/sto-techref-category/owasp-scanner-reference) as a sample test step. You can set different severity levels for this scanner. In this example,  `fail_on_severity` is set to **high** which means if the scan finds any vulnerability in the code with **high** or **critical**  severity levels, the **OWASP Scan** and the pipeline fail automatically.
+This guide uses [OWASP Dependency-check Scanner](../../../security-testing-orchestration/sto-techref-category/owasp-scanner-reference) as a sample test step. You can set different severity levels for this scanner. In this example, `fail_on_severity` is set to **high** which means if the scan finds any vulnerability in the code with **high** or **critical**  severity levels, the **OWASP Scan** and the pipeline fail automatically.
 
-The **Run** step executes if the security scan fails which then reverts the Git commit that triggered the pipeline. This example shows the Git revert of a single commit but you can modify the script to revert multiple commits.
+The **Plugin** step executes if the security scan fails which then reverts the Git commit that triggered the pipeline. This example shows the Git revert of a single commit but you can modify the script to revert multiple commits.
 
-Create a pull request in your target Git repo with some known high/critical vulnerabilities and then merge the PR. This will trigger the pipeline, the **OWASP Scan** will find these vulnerabilities, and the **Run** step will revert the commit that triggered the pipeline. You can check the pipeline execution logs to see the output of the **Run** step. The pipeline will continue to run after the **Run** step and you can add more steps to the pipeline as needed.
+Create a pull request in your target Git repo with some known high/critical vulnerabilities and then merge the PR. This will trigger the pipeline, the **OWASP Scan** will find these vulnerabilities, and the **Plugin** step will revert the commit that triggered the pipeline. You can check the pipeline execution logs to see the output of the **Plugin** step. The pipeline will continue to run after the **Plugin** step and you can add more steps to the pipeline as needed.
