@@ -31,4 +31,6 @@ This field allows CV to identify the name of the host which has emitted the metr
 
 Picking the right service instance identifier is important, and depends on the kind of metric that you want to monitor. As an example, for Kubernetes deployments, the best selection will typically be `pod`, `<podname>`, or `<containername>`.
 
+When creating a monitored service template, you can decide to choose the service instance identifier at runtime. 
+
 When doing canary deployments, ensure that the SII can be used to identify the canary instance of the service, or CV will not work properly.
