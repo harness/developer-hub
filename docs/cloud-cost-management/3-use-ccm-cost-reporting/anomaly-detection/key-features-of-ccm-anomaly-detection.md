@@ -12,8 +12,6 @@ Once an anomaly is detected, for each of the anomaly detected, CCM provides insi
 Detected anomalies are stored in a time series database and are available for review and analysis. Each anomaly is assigned metadata, such as the reported cost, expected cost, and anomaly score.
 The final anomalies are flagged for further investigation, allowing users to take corrective action as needed.
 
-<DocImage path={require('../static/anomalies-drilldown.png')} width="80%" height="80%" title="Click to view full size image" />
-
 When a user clicks on any anomaly, a detailed analysis of the anomaly is shown:
 
 The page contains:
@@ -26,6 +24,8 @@ The page contains:
   - Spend within range: 
   - Top resource changes: Top resources with major cost impact due to the anomaly with corresponsing cloud labels on the resources for additional metadata.
   - Section to submit feedback: Users can mark an anomaly as “True Expected”, “True Unexpected”, or “False”” to improve accuracy of the system for further anomaly detection.
+
+<DocVideo src="https://app.tango.us/app/embed/c2f0d526-f77e-4303-be51-a98c4bf2de88?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Anomaly Drilldown" />
 
 ## Anomaly Workflows
 
@@ -41,19 +41,16 @@ Any anomaly from the list will exist in one of the three states at any given poi
 
 The Archived/Ignored page provides details about anomalies in both states, including the estimated total cost impact, the number of anomalies ignored, and the number archived.
 
-<DocImage path={require('../static/anomalies-workflows.png')} width="80%" height="80%" title="Click to view full size image" />
-<DocImage path={require('../static/anomalies-two.png')} width="80%" height="80%" title="Click to view full size image" />
-
 ## Anomaly Alerts
 
 It might not always be possible to keep an eye out on the homepage to check for anomalies and some anomalies might need urgent attention. For this reason, Harness CCM provides an option to set alerts for all anomalies for a particular account or specific resources. 
-
-<DocImage path={require('../static/anomalies-notifications.png')} width="80%" height="80%" title="Click to view full size image" />
 
 While setting up a new alert, following can be selected:
 - Scope: Scope for which the anomaly needs to be alerted for. This can be either for all account data that the user has access to or the user can specify perspectives for which anomaly alerts will be sent.
 - Configuring the anomaly alert: Alert conditions follow your set preferences. You may override these thresholds, but only to increase them. Currently, the user can set thresholds for “Alert when cost difference is over ($)” and/or “Alert when cost difference is over (%)” depending on whether they want to define a specific cost amount or a cost percentage.
 - Alert Channel: Currently, Harness CCM supports Slack and/or e-mail as possible methods of sending alerts.
+
+<DocVideo src="https://app.tango.us/app/embed/3536272f-5e99-4280-a983-81f710de4199?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Anomaly Alerts" />
 
 ## Anomaly Global preferences
 
@@ -71,4 +68,4 @@ Similar to the above, this setting enables you to define a threshold based on th
 
 This setting allows the system to adjust the baseline cost of a resource if an anomaly persists beyond a specified number of days. If an anomaly is not resolved and continues to impact costs for the set duration, the resource's baseline cost is updated to reflect the higher cost. This helps maintain an accurate representation of the resource's true cost over time, ensuring that future anomalies are detected against the adjusted baseline.
 
-<DocImage path={require('../static/anomalies-preferences.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocVideo src="https://app.tango.us/app/embed/1ccb1269-f454-40cc-876e-cb4ab0301896?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Anomaly Preferences" />
