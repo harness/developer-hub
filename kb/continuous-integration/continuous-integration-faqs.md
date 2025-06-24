@@ -357,6 +357,94 @@ Currently, [STO scan steps](https://developer.harness.io/docs/security-testing-o
 
 Go to [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
+### GCP OIDC Connector keeps saying `OIDC Configuration Error: Error encountered while obtaining OIDC Access Token from STS` but I believe my configuration is correct
+Harness obsfucates various information from GCP OIDC connections due to security and information concerns.  In order to keep customers safe even in the case of connection error, Harness obasfucates information that may help troubleshoot this kind of issue.  
+
+To start, please ensure that your Harness Environment and Google Cloud Environment are configured according to our documentation about [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted)
+
+Next, please ensure that you have an [API key for an Harness account with at least **CREATE_OIDC_ID_TOKEN_PERMISSION** permissions in your Harness Environment](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/).
+
+#### Attain Your Harness JSON Web Token (JWT)
+In order to perform some of the tasks, you will need to attain your JSON Web Token (JWT), you will need to cURL against the Harness API endpoint with the following command:
+
+```
+curl --location 'https://app.harness.io/ng/api/oidc/id-token/gcp' \
+--header 'accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'x-api-key: YOUR_API_KEY' \
+--data-raw '{
+    "accountId": "YOUR_HARNESS_ACCOUNT_ID",
+    "workloadPoolId": "YOUR_CONNECTOR_WORKLOAD_POOL_ID",
+    "providerId": "YOUR_CONNECTOR_PROVIDER_ID",
+    "gcpProjectId": "YOUR_CONNECTOR_PROJECT#_ID",
+    "serviceAccountEmail": "YOUR_CONNECTOR_SVC_ACCOUNT_EMAIL_ID"
+  }'
+```
+You'll need to replace the values in capital letters with your information from the OIDC Connector/WIF Account and your Harness Environment.
+
+Once you run the command, Harness will return a successful JWT
+```
+{
+    "status": "SUCCESS",
+    "data": "aaa9aAAaAaAAAV9AaAAAhAaAaAaAAAAaA9AaAaAaAaAaAAaA9AaAAAAAAa9AAAaAaAaAaAaAAbAaAbAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAa999AaAaAaAaAaAa-aAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaA.aAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaA",
+    "metaData": null,
+    "correlationId": "00a000aa-a0000-0a00-000a-0a00a0a0a000"
+}
+```
+The data portion is the JWT
+
+#### Compare the issuer in the JSON Web Token with what is being supplied by Harness
+You can now decode your JWT token and ensure its values are correct.  Visit https://jwt.io/, and decode the values for the payload.  The values should look somewhat like the following:
+```
+{
+  "sub": "YOUR_HARNESS_ACCOUNT_ID",
+  "iss": "https://app.harness.io/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>",
+  "aud": "https://iam.googleapis.com/projects/<YOUR_CONNECTOR_PROJECT#_ID>/locations/global/workloadIdentityPools/<YOUR_CONNECTOR_WORKLOAD_POOL_ID>/providers/<YOUR_CONNECTOR_PROVIDER_ID>",
+  "exp": 1750713017,
+  "iat": 1750711017,
+  "account_id": "YOUR_HARNESS_ACCOUNT_ID"
+}
+```
+
+Now perform a cURL from a local system to Harness, using the appropriate Hostname for your Harness Cluster.  Note that the source IP must be part of the allow-listed for the account.
+
+| Cluster      | HostName               |
+|--------------|------------------------|
+| Prod1/Prod2  | app.harness.io         |
+| Prod3        | app3.harness.io        |
+| Prod0/Prod4  | accounts.harness.io    |
+| EU clusters  | accounts.eu.harness.io |
+
+```
+curl https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>/.well-known/openid-configuration
+```
+
+Compare the value for `iss` with the `issuer` value from the curl command.  They should match.
+
+#### Test your JSON Web Token for issues using GCP's STS Method: Token test
+GCP has a method to test a token's external identity within a pool.
+
+Customers will need to [visit the GCP site](https://cloud.google.com/iam/docs/reference/sts/rest/v1/TopLevel/token), and prepare a payload for testing.
+
+![](./static/jwt-gcptestsite.png)
+
+Using the **Try this Method** section, add the following request body, that follows the example outlined in the GCP documentation.  Take special note that the `audience` value for the test does **not** have the `https:` portion of the url.  Including it will result in an error.
+
+```
+{
+  "grantType": "urn:ietf:params:oauth:grant-type:token-exchange",
+  "audience": "//iam.googleapis.com/projects/<YOUR_CONNECTOR_PROJECT#_ID>/locations/global/workloadIdentityPools/<YOUR_CONNECTOR_WORKLOAD_POOL_ID>/providers/<YOUR_CONNECTOR_PROVIDER_ID>",
+  "scope": "https://www.googleapis.com/auth/cloud-platform",
+  "requestedTokenType": "urn:ietf:params:oauth:token-type:access_token",
+  "subjectToken": "<YOUR_JWT_FROM_ABOVE_STEPS>",
+  "subjectTokenType": "urn:ietf:params:oauth:token-type:id_token"
+  
+}
+```
+
+Click on the `Execute` button.  If you receive a `200` response, then your token should be set up correctly, and there should not be any issues.  If there is another response, this means there is an issue with how the GCP WIF was set up, and we recommend reviewing the information in the error to help troubleshoot the issue.  
+
+
 ### When I run a build on Harness cloud, which delegate is used? Do I need to install a delegate to use Harness Cloud?
 
 Harness Cloud builds use a delegate hosted in the Harness Cloud runner. You don't need to install a delegate in your local infrastructure to use Harness Cloud.
