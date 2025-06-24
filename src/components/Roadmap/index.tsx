@@ -11,6 +11,7 @@ const Roadmap = () => {
   const modules = [
     { value: 'platform', name: 'Platform', icon: 'icon_platform.svg' },
     { value: 'aida', name: 'Harness AI', icon: 'icon_aida.svg' },
+    { value: 'ata', name: 'AI Test Automation', icon: 'logo-ata.svg' },
     { value: 'code', name: 'Code Repository', icon: 'icon_code.svg' },
     { value: 'ci', name: 'Continuous Integration', icon: 'icon_ci.svg' },
     { value: 'cd', name: 'Continuous Delivery & GitOps', icon: 'icon_cd.svg' },
