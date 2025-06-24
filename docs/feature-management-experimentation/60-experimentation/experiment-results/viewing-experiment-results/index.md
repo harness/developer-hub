@@ -25,7 +25,7 @@ The Metrics impact tab is described as follows:
 
 To learn more about analyzing and filtering data on the Metrics Impact tab, see [Applying filters](/docs/feature-management-experimentation/experimentation/metrics/setup/filtering/).
 
-For detailed information about specific metric cards, refer to [Understanding metric impact](docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards/).
+For detailed information about specific metric cards, refer to [Understanding metric impact](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards/).
 
 ## Automated calculation frequency
 

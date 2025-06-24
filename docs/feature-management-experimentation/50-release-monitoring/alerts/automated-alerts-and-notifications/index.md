@@ -88,7 +88,7 @@ When you receive an alert, you can view the feature flag in the Harness FME UI a
 
 ### Metric alerting
 
-Toggling a feature flag’s alerting on or off will not disable metric alerting, which is defined and enabled on a metric’s Alert policy tab. It is possible that a metric simultaneously triggers a feature flag alert and a metric alert if it is selected as a key metric for a feature flag and if the thresholds in both alert definitions are reached. To define metric alert policies, review the [Configuring metric alerting](docs/feature-management-experimentation/experimentation/metrics/alert-policies/#create-a-metric-alert-policy) guide.
+Toggling a feature flag’s alerting on or off will not disable metric alerting, which is defined and enabled on a metric’s Alert policy tab. It is possible that a metric simultaneously triggers a feature flag alert and a metric alert if it is selected as a key metric for a feature flag and if the thresholds in both alert definitions are reached. To define metric alert policies, review the [Configuring metric alerting](/docs/feature-management-experimentation/experimentation/metrics/alert-policies/#create-a-metric-alert-policy) guide.
 
 ### Alert baseline treatment and treatment distribution
 
