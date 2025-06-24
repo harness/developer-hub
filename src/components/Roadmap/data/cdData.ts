@@ -164,11 +164,6 @@ export const CdData: Horizon = {
       },
       {
         tag: [{value: "GitOps"}],
-        title: "Argo Rollout Support",
-        description: "Users can leverage Argo Rollouts for deployments.",
-      },
-      {
-        tag: [{value: "GitOps"}],
         title: "Harness Expressions in Applications",
         description: "Users can leverage Harness expressions within GitOps applications, enabling dynamic configurations and enhanced automation.",
       },
@@ -263,6 +258,12 @@ export const CdData: Horizon = {
   "Released": {
     description: "What has been released",
     feature: [
+      {
+        tag: [{value: "GitOps"}],
+        title: "Argo Rollout Support",
+        description: "Users can leverage Argo Rollouts for deployments.",
+        link: "https://developer.harness.io/docs/continuous-delivery/gitops/connect-and-manage/use-argo-rollouts/"
+      },
       {
         tag: [{value: "Deployment"}],
         title: "Blue Green with traffic shifting in ECS deployments",
