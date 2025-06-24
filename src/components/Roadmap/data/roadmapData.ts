@@ -16,6 +16,7 @@ import { aidaData } from "./aidaData";
 import { codeData } from "./codeData";
 import { CdeData } from "./cdeData"; 
 import { DbdevopsData } from "./dbdevopsData"; 
+import { AtaData } from "./ataData"; 
 
 
 export interface ModuleData {
@@ -64,6 +65,12 @@ const ModuleData: ModuleData[] = [
     description: "SaaS release status: GA, SMP release status: GA",
     module: MODULES.dbdevops,
     horizon: DbdevopsData,
+  },
+  {
+    title: "AI Test Automation",
+    description: "SaaS release status: GA, SMP release status: Not yet planned",
+    module: MODULES.ata,
+    horizon: AtaData,
   },
   {
     title: "Continuous Integration",
