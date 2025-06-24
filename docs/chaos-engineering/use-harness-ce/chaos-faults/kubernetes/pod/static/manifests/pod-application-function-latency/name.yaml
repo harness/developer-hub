@@ -1,0 +1,20 @@
+---
+# Injects error in a given function of the application pod
+apiVersion: litmuschaos.io/v1alpha1
+kind: K8sFault
+metadata:
+  name: pod-application-function-latency
+spec:
+  definition:
+    targets:
+      application:
+        name: 'my-app'
+        function: 'myFunction'
+    chaos:
+      experiment: pod-application-function-latency
+      serviceAccountName: litmus-admin
+      image: docker.io/harness/chaos-ddcr-faults:main-latest
+      imagePullPolicy: Always
+      env:
+        - name: MESSAGE
+          value: 'Injected error for testing'

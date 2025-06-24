@@ -401,6 +401,7 @@ This fault determines the resilience of an application when host names are resol
 </Accordion>
 
 </FaultDetailsCard>
+
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
 ### Pod HTTP latency
@@ -416,6 +417,7 @@ This fault evaluates the application's resilience to lossy (or flaky) HTTP respo
 </Accordion>
 
 </FaultDetailsCard>
+
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
 ### Pod HTTP modify body
@@ -922,6 +924,40 @@ Time Chaos is a Kubernetes pod-level fault that introduces controlled time offse
 <Accordion color="green">
 <summary>Use cases</summary>
 It can test the application's resilience for invalid system time.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod Application Function Error
+
+Pod Application Function Error injects an error into a specified function of an application running in a Kubernetes pod. This fault is useful for testing the resilience of your application to function-level errors.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Simulate third-party API failure by injecting errors into wrapper functions.
+- Test application behavior when core business logic functions return unexpected errors.
+- Validate retry mechanisms and fallback strategies for critical service methods.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod Application Function Latency
+
+Pod Application Function Latency injects latency into a specified function of an application running in a Kubernetes pod. This fault is useful for testing the resilience of your application to function-level delays.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Simulate slow function execution to test application behavior under degraded performance.
+- Validate timeout, retry, and circuit breaker mechanisms when core functions are delayed.
+- Induce latency that can lead to application-level failures, helping identify resilience gaps and failure thresholds.
+
 </Accordion>
 
 </FaultDetailsCard>
