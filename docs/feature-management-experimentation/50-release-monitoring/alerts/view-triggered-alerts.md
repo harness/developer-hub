@@ -29,4 +29,4 @@ Clicking on the Details pop-over icon shows additional information about the ale
 | Absolute impact | Displays the difference between the comparison value and baseline value and the associated error margin. |
 
 
-For more information on configuring alerts, refer to the [Metric alerting guide](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) and [Feature flag significance alerting guide](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting).
+For more information on configuring alerts, refer to the [Metric alerting guide](/docs/feature-management-experimentation/release-monitoring/alerts/alert-policies) and [Feature flag significance alerting guide](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/#setting-up-feature-flag-alerting).
