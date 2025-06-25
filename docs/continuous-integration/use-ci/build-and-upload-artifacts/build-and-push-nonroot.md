@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-Building with non-root users may be necessary for an organization due to security or compliance requirements. This page describes how to build and push Docker images as a non-root user, and outlines Harness options and best practices for Kubernetes-based builds. T
+Building with non-root users may be necessary for an organization due to security or compliance requirements. This page describes how to build and push Docker images as a non-root user, and outlines Harness options and best practices for Kubernetes-based builds.
 
 ---
 
