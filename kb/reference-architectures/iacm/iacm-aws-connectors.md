@@ -45,17 +45,15 @@ Next, we can create a Harness AWS Connector that uses the "IRSA" method. You wil
 
 ![IRSA selected](../static/iacm-aws-connector-irsa.png) 
 
-Finally, in your IaCM stage you will need to add the required annotations for the service account used in your build pod. This is set under Infrastructure > Advanced > Annotations.
-
-![SA Annotations](../static/iacm-aws-connector-irsa-sa-anno.png)
-
-The annotation is `eks.amazonaws.com/role-arn` and the value should be the ARN of the IRSA role.
-
-As an alternative to specifying the role in the stage, you can pre-create a service account with the annotation and instead specify the service account in the stage settings.
+You will now need to create a Kubernetes service account in the namespace to be used for your executions.
 
 ```shell
 kubectl -n <namespace> create sa <sa name>
 kubectl annotate sa <sa name> -n <namespace> eks.amazonaws.com/role-arn=<irsa role arn>
 ```
+
+Finally, in your IaCM stage you will need to add the namespace and service account you created to be used in your build pod. This is set under Infrastructure > Platform and Advanced.
+
+![SA Annotations](../static/iacm-aws-connector-irsa-sa-anno.png)
 
 This method also allows you to define a "role to assume" in the connector which will be assumed for your in your IaCM execution.
