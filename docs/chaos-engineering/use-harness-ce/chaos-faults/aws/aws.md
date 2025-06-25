@@ -1133,3 +1133,34 @@ Windows EC2 network loss causes network packet loss on Windows VM for the target
 
 </Accordion>
 </FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Windows EC2 Process Kill
+
+Windows EC2 Process Kill fault kills the target processes running on a Windows EC2 instance. This fault disrupts application-critical processes running on the instance by killing their underlying processes or threads.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Simulate loss of processes on Windows EC2 instances to check the app resiliency
+- Evaluate the impact of process loss on application performance.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Lambda Block TCP Connection
+
+Lambda Block TCP Connection is an AWS fault that simulates network blocks for TCP connections of a Lambda function. This fault helps you evaluate how your application responds when outbound TCP connections from a Lambda function are blocked.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Simulate network blocks to test Lambda function resilience.
+- Evaluate the impact of blocked TCP connections on application performance and error handling.
+- Test fallback mechanisms and error reporting in serverless architectures.
+
+</Accordion>
+</FaultDetailsCard>
