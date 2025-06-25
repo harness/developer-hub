@@ -2,7 +2,7 @@
 title: Configure and Setup the Terraform Module
 description: Get Started with Harness CDE (Gitspaces)
 sidebar_position: 3
-sidebar_label: Configure and Setup the Terraform Module
+sidebar_label: Setup Terraform Module
 ---
 
 This is your second step in configuring self-hosted Gitspaces. Once you have added and configured the Gitspace Infrastructure in your Harness UI, you need to configure and set up the [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest) to provision the GCP infrastructure and complete the setup in your selected GCP project. This guide will walk you through the detailed steps to configure and set it up.
@@ -10,8 +10,13 @@ This is your second step in configuring self-hosted Gitspaces. Once you have add
 ## Prerequisites
 
 - Ensure you've read through the **fundamentals and prerequisites** of self-hosted Gitspaces [here](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). This helps you develop a deeper understanding of all core concepts and steps involved.
-- Make sure you have completed the steps in [configuring Gitspace Infrastructure in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md). This is a **mandatory prerequisite**, as the YAML generated from that step is a required input here.
-- Ensure that your GCP project (as defined in your infra config) has the following APIs enabled:
+- Make sure you have completed the steps in [configuring Gitspace Infrastructure in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md). This is a **mandatory prerequisite**, as the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#download-the-infrastructure-config-yaml) generated from that step is a required input here.
+- You must have a **Service Account with the "Owner" role** in the same GCP project where your GCP VM instance will be created.
+  Refer to the [GCP documentation](https://cloud.google.com/iam/docs/service-accounts-create) to learn how to create a service account. You can also follow the detailed steps in [this section](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#generate-the-service-account-key) of our guide.
+- You must **create and download a Service Account Key** for the same service account within the same GCP project.
+  Refer to the [GCP documentation](https://cloud.google.com/iam/docs/keys-create-delete) for more information. Detailed steps are also provided in [this section](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#generate-the-service-account-key) of our guide.
+- Ensure that your GCP project (as defined in your infra config) has the following APIs enabled, here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project: 
+
 
   <ul>
     <li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) – `api/cloudresourcemanager.googleapis.com`</li>
@@ -21,11 +26,9 @@ This is your second step in configuring self-hosted Gitspaces. Once you have add
     <li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) – `api/dns.googleapis.com`</li>
   </ul>
 
-Here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project.
-
 ## Functions of the Terraform Module
 
-The [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest) is responsible for configuring and creating the infrastructure in GCP needed to run Harness Gitspaces. This includes provisioning VPCs, Subnetworks, IAM, Cloud NAT, and other supporting services. It also creates the VM instance required to set up the **Runner** and **Delegate** for self-hosted Gitspaces.
+The [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest) is responsible for configuring and creating the infrastructure in GCP needed to host Self Hosted Gitspaces. This includes provisioning VPCs, Subnetworks, IAM, Cloud NAT, and other supporting services. It also creates the VM instance required to set up **Runner** and **Delegate** for self-hosted Gitspaces.
 
 ### Terraform Inputs
 
@@ -45,7 +48,7 @@ The following Terraform variables are mandatory inputs required to apply and set
 
 This module creates the GCP infrastructure and generates a `pool.yaml` file with all infrastructure details.
 
-// Add outputs table here
+Refer to this [documentation](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest?tab=outputs) to get a detailed overview of all the **Outputs** generated from the Terraform Module. 
 
 
 ## Configuring the Terraform Module
@@ -75,10 +78,10 @@ These have default values and are not mandatory:
 
 ### Generate the Service Account Key
 
-You need a **Service Account Key** with **Owner** role to apply the Terraform module.
+You need a **Service Account Key** with **Owner** role to apply the Terraform module: 
 
-1. In your GCP project, create a Service Account with the `Owner` role. [Guide](https://cloud.google.com/iam/docs/service-accounts-create).
-2. Create a key for the Service Account. [Guide](https://cloud.google.com/iam/docs/keys-create-delete).
+1. In your GCP project, create a Service Account with the `Owner` role. Follow this [guide](https://cloud.google.com/iam/docs/service-accounts-create) to learn more about the same.
+2. Create a key for the Service Account. Follow this [guide](https://cloud.google.com/iam/docs/keys-create-delete) to learn more about the same.
 3. Download the key file in `.json` or `.p12` format.
 
 ### Retrieve the Infra Config YAML
@@ -90,19 +93,19 @@ Use the **Infra Config YAML** file downloaded during [Gitspace Infrastructure co
 Now that all input parameters are ready:
 
 1. In the folder containing the **Infra Config YAML** and **Service Account Key File**, create a `main.tf` file.
-2. Paste the following Terraform snippet:
+2. Paste the following Terraform snippet (taken from the [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest)):
 
 ```hcl
 module "harness-gitspaces" {
     source  = "harness/harness-gitspaces/gcp"
-    version = "0.0.2"
-    # insert the required variables below
+    version = "[TO BE REPLACED FROM THE REGISTRY'S OFFICIAL DOCUMENTATION]"
+    # insert the required input variables below
 }
 ```
-3. Insert the required parameters:
+3. Insert the required parameters with their respective path values:
 ```module "harness_gitspacs_gcp" {
-    infra_config_yaml_file      = "infra_config.yaml"
-    service_account_key_file    = "service-account-key.json"
+    infra_config_yaml_file      = "[INFRA CONFIG YAML FILE PATH]"
+    service_account_key_file    = "[SERVICE ACCOUNT KEY FILE PATH]"
     manage_dns_zone             = true
 }
 ```
@@ -111,9 +114,9 @@ module "harness-gitspaces" {
 
 #### Example Terraform Configuration
 ```
-module "harness_gitspacs_gcp" {
+module "harness-gitspaces" {
     source                      = "harness/harness-gitspaces/gcp"
-    version                     = "0.0.2"
+    version                     = "0.0.3"
     infra_config_yaml_file      = "infra_config.yaml"
     service_account_key_file    = "service-account-key.json"
     manage_dns_zone             = true
@@ -126,17 +129,18 @@ module "harness_gitspacs_gcp" {
 ### Initialize and Apply the Terraform Configuration
 
 Once your Terraform config is ready:
-1. **Initialize Terraform**: Run ``terraform init`` to initialize your directory. Guide
-2. **Plan Terraform**: Run ``terraform plan`` to preview changes. Guide
-3. **Apply Terraform**: Run ``terraform apply`` to execute and provision infrastructure. Guide
+1. **Initialize Terraform**: Run ``terraform init`` to **initialize your directory**. Refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/init) to learn more about this command reference. 
+2. **Plan Terraform**: Run ``terraform plan`` to **preview changes**. Refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/plan) to learn more about this command reference. 
+3. **Apply Terraform**: Run ``terraform apply`` to **execute and provision infrastructure**. Refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/apply) to learn more about this command reference. 
 
-This setup provisions the required infrastructure in your GCP project, including a GCP VM instance to host the Harness Delegate and Runner.
+This setup provisions the required infrastructure in your GCP project, including a **GCP VM instance** to host the Harness Delegate and Runner.
 
 ### Download the Pool YAML File
-After applying the Harness Gitspaces Terraform Module, a pool.yaml file is generated in the same folder as your main.tf. This file defines the VM specs for your Gitspace instances.
+After applying the Harness Gitspaces Terraform Module, a ``pool.yaml`` file is generated in the same folder as your ``main.tf``. This file defines the VM specs for your Gitspace instances.
 
 // Add more details about pool.yaml here.
 
 Keep this file handy — it will be required in the next step.
 
 ## Next Steps
+Now that your GCP infrastructure is fully set up, proceed to [configure the Runner and Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/runner-delegate.md) on the GCP VM instance created. Make sure you have the [`pool.yaml` file ready](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#download-the-pool-yaml-file) for the next steps.

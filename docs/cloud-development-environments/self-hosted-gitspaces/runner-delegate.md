@@ -5,21 +5,24 @@ sidebar_position: 4
 sidebar_label: Setup Runner and Install Delegate
 ---
 
-To configure self hosted Gitspaces in your own infrastructure, you need to host and setup **Harness Delegate** and **Runner** in your own infrastructure. Both Harness Delegate and Runner are required to be hosted in your GCP infrastructure to establish a seamless connection between the Harness Control Plane and your GCP infrastructure. Once you have the [Harness Gitspaces Terraform Module configured and setup](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md), you'll have a GCP VM instance active and running in your GCP project which will be used to host your Harness Delegate and Runner. 
+To configure self hosted Gitspaces in your own infrastructure, you need to host and setup **Harness Delegate** and **Runner** in your own infrastructure. Both Harness Delegate and Runner are required to be hosted in your GCP infrastructure to establish a seamless connection between the Harness Control Plane and your GCP infrastructure. 
+
+Once you have the [Harness Gitspaces Terraform Module configured and setup](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md), you'll have a **GCP VM instance active** and running in your GCP project which will be used to host your Harness Delegate and Runner. 
 
 ## Prerequisites
-- Ensure you've read through the fundamentals and prerequisites of self hosted gitspaces here. This helps you get a deeper understanding of all the basic concepts and steps involved with self hosted gitspaces. 
-- Please make sure you have completed the steps mentioned in [configuring the Harness Gitspaces terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md). This step is a mandatory prerequisite as this step sets up the GCP infrastructure and generates the **Pool YAML file** which is required to host and setup the Runner. 
-- Ensure you have the GCP VM instance active and running in your GCP project. (This VM instance is created while your terraform configuration is configured and setup.) Please refer to this [guide](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md) to understand more about this. 
+- Ensure you've read through the **fundamentals and prerequisites** of self hosted gitspaces [here](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). This helps you get a deeper understanding of all the basic concepts and steps involved with self hosted gitspaces. 
+- Please make sure you have completed the steps mentioned in [configuring the Harness Gitspaces terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md). This step is a mandatory prerequisite as this step **sets up the GCP infrastructure**, **creates a GCP VM instance in your infra** and **generates the ``pool.yaml`` file** which is required to host and setup the Runner. 
+- Ensure you have the GCP VM instance active and running in your GCP project. (This VM instance is created while your terraform configuration is configured and setup.) Please refer to this [documentation](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md) to understand more about configuring this Terraform Module. 
 
 ## Functions of Runner and Delegate
-// why do you need to do this? (why is runner required)
+### Delegate 
+Harness Delegate is a service that you install in your infrastructure to establish and maintain a connection between Harness Control Plane and your infrastructure. Self Hosted Gitspaces run in your own infrastructure, but are managed by Harness Control Plane. Thus to establish and maintain communication between the Harness Control Plane and Customer's infrastructure, customer need to install Harness Delegate in their infrastructure. Read more about [Harness Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
-// key concepts: runner, delegate (fundamentals)
-
+### VM Runner
+The Runner is responsible for managing the VM lifecycle. The VM Runner maintains a pool of VMs for executing the tasks. When the Delegate receives any Task Request from the Harness Control Plane, it forwards the request to the Runner, which executes the task on the available VM and manages the VM lifecycle according to the request. Read more about [VM Runner](https://docs.drone.io/runner/vm/overview/).
 
 ## Setting up Runner and Delegate 
-You can follow this detailed guide (as described below) to setup Runner and install Harness Delegate in your infrastructure (GCP VM instance):  
+You can follow this detailed guide (as described below) to setup Runner and install Harness Delegate in your infrastructure:  
 
 ### SSH into the VM Instance 
 :::info
@@ -27,7 +30,7 @@ To connect to a VM with SSH, you'll need your SSH Key to propogate into your VM.
 :::
 
 You'll have to [SSH into your GCP VM instance](https://cloud.google.com/compute/docs/connect/standard-ssh) to host your Runner and Delegate there. In order to do that, you can follow the given steps: 
-1. Go to your **GCP Console** and go to **VM Instances**. You can find your specific VM instance created as per the details you entered while configuring your infra in the Harness UI. Click on that instance and head over to the **Details** page. 
+1. Go to your **GCP Console** and go to **VM Instances**. You can find your specific VM instance created as per the details you entered while configuring your infrastructure in the Harness UI. Click on that instance and head over to the **Details** page. 
 2. Click on **SSH** and select **View gcloud command**. This is your command to SSH into the instance from your machine. Run this command in your local terminal. 
 
 Once you are into the VM Instance, you can continue and complete the following steps. 
@@ -37,7 +40,7 @@ You'll need **Docker** installed in your GCP VM instance to configure self hoste
 
 ### Start the Runner 
 Now that you're into the VM instance and you've installed Docker, follow the given steps to start the **Runner**: 
-1. Create a new file called ``pool.yaml`` in your instance and copy the same YAML file content as you had when you configured the Terraform Module. Refer to this [guide](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#download-the-pool-yaml-file) to learn more about the same. 
+1. Create a new file called ``pool.yaml`` in your instance and copy the same YAML file content as you had when you configured the Terraform Module. Refer to [Setup Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#download-the-pool-yaml-file) to learn more about the same. 
 2. Run the following command to create a new network: 
 ```
 docker network create harness

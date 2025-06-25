@@ -11,7 +11,7 @@ In order to get started with self-hosted Gitspaces, you'll first need to configu
 
 - Ensure you’ve read through the **Fundamentals** and **Prerequisites** of self-hosted Gitspaces [here](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). This will help you gain a deeper understanding of the basic concepts and setup steps.
 - Only **Gitspace Admins** with **Account-level access** can configure Gitspace Infrastructure.
-- Ensure that your GCP project (to be defined in the infra config) has the following APIs enabled:
+- Ensure that your GCP project (as defined in your infra config) has the following APIs enabled, here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project: 
   <ul>
     <li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) – `api/cloudresourcemanager.googleapis.com`</li>
     <li>[Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1) – `api/compute.googleapis.com`</li>
@@ -19,7 +19,6 @@ In order to get started with self-hosted Gitspaces, you'll first need to configu
     <li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) – `api/iam.googleapis.com`</li>
     <li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) – `api/dns.googleapis.com`</li>
   </ul>
-Here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project.
 
 ## Configuring Gitspace Infrastructure
 
