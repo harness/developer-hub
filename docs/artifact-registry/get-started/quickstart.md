@@ -19,10 +19,16 @@ Getting started with Artifact Registry follows these steps:
 ## Prerequisite
 Depending on your package manager, e.g. Docker, Helm or Maven, you may need to use its associated dependencies like the Docker CLI. 
 
+:::tip
+Ensure that your registry name starts with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`.
+
+**Your registry name must be unique to your Harness Account**.
+:::
+
 ## Create a registry
 <Tabs>
 <TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/e3650c96-80e9-414d-aba1-64cb0d4db24d" title="Create an Artifact Registry" />
+<DocVideo src="https://app.tango.us/app/embed/e3650c96-80e9-414d-aba1-64cb0d4db24d?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create an Artifact Registry" />
 </TabItem>
 <TabItem value="Step-by-step">
 
@@ -30,7 +36,7 @@ Depending on your package manager, e.g. Docker, Helm or Maven, you may need to u
 2. Select a [registry type](/docs/artifact-registry/whats-supported#supported-registry-types).
 3. Enter a **Registry Name** and, optionally, a **Description** or **Labels**.
     :::tip
-    This registry name must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
+    This registry name must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`, and **must be unique to your Harness Account**.
     :::
 4. Select **Create Registry**.
 </TabItem>
@@ -47,7 +53,7 @@ Upstream proxies are commonly used to manage dependencies. During a build, if an
 To create one, follow these steps: 
 <Tabs>
 <TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/4d59383b-7b7d-4355-acb7-1eed4ca657f0" title="Create an Upstream Proxy in Harness Artifact Registry" />
+<DocVideo src="https://app.tango.us/app/embed/4d59383b-7b7d-4355-acb7-1eed4ca657f0?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create an Upstream Proxy in Harness Artifact Registry" />
 </TabItem>
 <TabItem value="Step-by-step">
 
@@ -55,7 +61,7 @@ To create one, follow these steps:
 2. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Harness and is chosen by you. 
    
    :::tip allowed characters
-    This proxy key must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
+    This proxy key must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`, and **must be unique to your Harness Account**.
    :::
 
 3. For the source, e.g. **Docker Hub**.
@@ -71,7 +77,7 @@ After creating an upstream proxy, you need to set it in your artifact registry. 
 
 <Tabs>
 <TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/4294875b-384e-4558-839c-3f96c225a928" title="Configuring Upstream in Harness Workspaces" />
+<DocVideo src="https://app.tango.us/app/embed/4294875b-384e-4558-839c-3f96c225a928?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Configuring Upstream in Harness Workspaces" />
 </TabItem>
 <TabItem value="Step-by-step">
 
@@ -89,7 +95,7 @@ Next, use the registry we created. To do so, we will pull an artifact from the p
 
 <Tabs>
 <TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/a6085408-4187-4d5d-90cd-08e4a2ee193d" title="Use an Artifact Registry" />
+<DocVideo src="https://app.tango.us/app/embed/a6085408-4187-4d5d-90cd-08e4a2ee193d?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Use an Artifact Registry" />
 </TabItem>
 <TabItem value="Step-by-step">
 
@@ -106,8 +112,15 @@ When you pull an artifact, the system first checks the local registry. If the ar
 Now, you should see the artifact appear in your docker registry as well as the **Artifacts** tab in the left navigation panel.
 That concludes the quick start guide! You should now have enough to get started with Artifact Registry. 
 
-## See Also
-To learn more go to:
+## Specific Package Types
+Go to [Supported Formats](/docs/artifact-registry/supported-formats) to see how to use specific package types: 
+- [Docker](/docs/artifact-registry/supported-formats#docker)
+- [Maven](/docs/artifact-registry/supported-formats#maven)
+- [Python](/docs/artifact-registry/supported-formats#python)
+- [Helm](/docs/artifact-registry/supported-formats#helm)
+- [NPM](/docs/artifact-registry/supported-formats#npm)
+- [Generic](/docs/artifact-registry/supported-formats#generic)
 
+## Additional Resources
 - [Configure Registries](/docs/artifact-registry/manage-registries/configure-registry)
 - [Manage Artifacts](/docs/artifact-registry/manage-artifacts/artifact-management)
