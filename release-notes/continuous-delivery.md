@@ -55,6 +55,23 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## June 2025
 
+### GitOps Service 1.35, GitOps Agent 0.96
+
+#### New Features and Enhancements
+
+- On the **GitOps Overview** page, you’ll find the **Applications Health Status** bar chart, which shows how many applications are in each state. Each status bar is clickable. Click any bar (for example, Healthy) to open the Applications Dashboard filtered to show only applications in that state. For more, go to [application health status graph](/docs/continuous-delivery/gitops/use-gitops/manage-gitops-applications#applications-health-status-graph)
+- From the environments page, click the **GitOps Clusters** tab to view the list of GitOps clusters associated with an environment. Each row’s **Cluster ID** and **Agent** name is now a link that opens the corresponding Cluster or Agent detail page in a new tab. Additionally, you can add a cluster to this list. For more, go to [GitOps clusters](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview#gitops-clusters)
+
+
+#### Fixed Issues
+
+- Previously, when a GitOps agent was deleted, the service continued to check for its existence in each entity GET request through an interceptor used for all GitOps entities. This validation was incorrectly returning a 401 Authorization error, which caused Terraform Plan operations to fail for GitOps entities associated with the deleted agent.
+
+  This issue has been resolved. The GitOps service now returns a 404 NotFound error when an agent is deleted, correctly indicating that the related resources have been cascade deleted. This allows Terraform Plan operations to complete successfully. (**CDS-110145**, **ZD-83461**)
+- Previously, when GitOps Applications were deleted through certain paths (via reconciler, deleting agent, or AppProject mapping deletion), the "Referenced by" entries in services and environments continued to reference the deleted applications. This occurred because these deletion paths were not generating the necessary setup usage events required to clean up these references. As a result, environments and services maintained orphaned references to GitOps Applications that no longer existed.
+
+  This issue has been resolved. The GitOps Application reference cleanup now properly generates setup usage events when applications are cascade deleted through any deletion path, including reconciler, agent deletion, or AppProject mapping deletion. This ensures that all "Referenced by" entries are properly removed from environments and services. (**CDS-109666**, **ZD-83409**)
+
 ### Version 1.94.4
 
 #### New Features and Enhancements
