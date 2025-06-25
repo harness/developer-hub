@@ -60,7 +60,7 @@ For details on how to use a second role in the connector with STS AssumeRole, se
 
 #### Using STS AssumeRole
 
-Both the NodePool and IRSA authentication styles allow you to specify a seperate role in the connector to use for the IaCM steps.  Unlike the delegate selector set in the connector, the role specified here will be used by the IaCM stage during execution.  
+Both the NodePool and IRSA authentication styles allow you to specify a seperate role in the connector to use for the IaCM steps. The role specified here will be used by the IaCM stage during execution.  
 
 When the stage executes, the steps will call the STS `AssumeRole` service to assume the second IAM role defined in the connector, and that is the role that will be used when running the IaCM steps.  This role can be in a separate AWS account, allowing the IaCM stage running in centralized infrastructure to reach any number of target accounts.
 
