@@ -1,8 +1,8 @@
 ---
-title: Configure Gitspace Infrastructure
+title: Configure Gitspace Infrastructure via Harness UI
 description: Get Started with Harness CDE (Gitspaces)
 sidebar_position: 2
-sidebar_label: Configure Gitspace Infrastructure
+sidebar_label: Configure Gitspace Infrastructure via Harness UI
 ---
 
 In order to get started with self-hosted Gitspaces, you'll first need to configure infrastructure for these Gitspaces. This infrastructure is where your Gitspaces will be hosted, so you must define and configure it within Harness UI. This guide will take you through the detailed steps to configure your infrastructure using the Harness UI.
@@ -10,8 +10,7 @@ In order to get started with self-hosted Gitspaces, you'll first need to configu
 ## Prerequisites
 
 - Ensure you’ve read through the **Fundamentals** and **Prerequisites** of self-hosted Gitspaces [here](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). This will help you gain a deeper understanding of the basic concepts and setup steps.
-- Please make sure you are aware of the following details required for configuring your GCP Infrastructure. These inputs are necessary during this step. Refer to the table below for a detailed description of each input.
-- Only **Gitspace Admins** with **account-level access** can configure Gitspace Infrastructure.
+- Only **Gitspace Admins** with **Account-level access** can configure Gitspace Infrastructure.
 - Ensure that your GCP project (to be defined in the infra config) has the following APIs enabled:
   <ul>
     <li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) – `api/cloudresourcemanager.googleapis.com`</li>
@@ -20,7 +19,6 @@ In order to get started with self-hosted Gitspaces, you'll first need to configu
     <li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) – `api/iam.googleapis.com`</li>
     <li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) – `api/dns.googleapis.com`</li>
   </ul>
-
 Here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project.
 
 ## Configuring Gitspace Infrastructure
@@ -32,6 +30,8 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 1. Only users with the **Gitspace Admin** role and account-level access can configure Gitspace Infrastructure.
 2. Navigate to the **Cloud Development Environments** module and open your **Account Settings**.
 3. In the side navbar under Account Settings, select **Gitspace Infrastructure**.
+
+![](./static/access-gitspace-infra.png)
 
 ### Provide Basic Infrastructure Details
 
@@ -49,20 +49,40 @@ You can add and configure regions for Gitspaces. Note that users will only be ab
 3. **Sub-Domain**: Enter the sub-domain for each region. The root domain will match the one entered in the basic details. You can define a separate sub-domain per region.
 4. **Runner VM Region**: Select the VM region where the runner and delegate will be set up for self-hosted Gitspaces.
 
-### Download the Infra Config YAML
+### Download the Infrastructure Config YAML
 
 Once all details have been entered, click on **Download and Apply YAML**. This will generate the **Infra Config YAML**, which contains the entire Gitspace Infra configuration. This YAML is a mandatory input for [configuring and setting up the Harness Gitspaces Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md), which provisions the GCP infrastructure in your selected project.
 
 ## Managing Your Gitspace Infrastructure
 
-### Editing Your Infra
+### Editing Gitspace Infrastructure
+Once your infrastructure is configured, you also have the option to **edit and update it**. Please note that only **Gitspace Admins** with **Account-level access** are permitted to make changes.
 
-_(Instructions TBD)_
+Here's how you can edit your infrastructure: 
+1. Go to your **Gitspace Infrastructure UI**. 
+2. Click on the **Edit** button on the top-right corner. 
+![](./static/edit-infra.png)
+3. Whenever you make changes to your infrastructure configuration, you’ll need to **download the updated Infra Config YAML**.
+Use this updated YAML to [reapply your Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md) to reflect the changes. You can learn more about this process in the [next steps](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#next-steps).
 
-### Deleting Your Infra
+### Deleting Gitspace Infrastructure
+:::warning **Warning: Irreversible Action**
 
-_(Instructions TBD)_
+Deleting your infrastructure is **permanent** and **cannot be undone**. This action will:
+
+* Permanently remove your entire infrastructure configuration
+* **Immediately auto-stop** all Gitspaces running on this infrastructure
+
+Please proceed **only if you are absolutely certain** you want to delete this infrastructure.
+:::
+
+You can **delete your infrastructure** from the Gitspace Infrastructure UI. Please note that only **Gitspace Admins** with **Account-level access** are permitted to make changes. Once you delete your Gitspace Infrastructure, all Gitspaces running on that infra will be **permanently auto-stopped**, and you will no longer be able to access any of them.
+
+Here's how you can delete your infrastructure: 
+1. Go to your **Gitspace Infrastructure UI**. 
+2. Scroll down to the bottom of the page. You’ll find the option to **Delete Infrastructure**. Click this button to permanently delete the selected infrastructure.
+
+![](./static/delete-infra.png)
 
 ## Next Steps
-
-Proceed to configure and apply the Terraform module to provision your self-hosted Gitspaces.
+Now that you have the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#download-the-infra-config-yaml) downloaded, proceed to [configure and apply the Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md) to provision your self-hosted Gitspaces. 

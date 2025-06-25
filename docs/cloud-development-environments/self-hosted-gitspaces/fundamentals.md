@@ -15,7 +15,7 @@ To learn more about what's supported with self-hosted Gitspaces, visit [What's S
 
 
 ### Key Concepts
-To understand how self-hosted Gitspaces work and explore the underlying architecture, visit the [Self-Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md) documentation.
+To understand how self-hosted Gitspaces work and explore the underlying architecture, go through the [Self-Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md) documentation.
 There are a few key concepts that form the foundation of how self-hosted Gitspaces operate:
 
 #### Harness Control Plane
@@ -65,11 +65,11 @@ Before you begin setup, it’s important to understand the underlying architectu
 - [Fundamental Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md)  
 - [Prerequisites](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#prerequisites)  
 
-### 2. Configure Gitspace Infrastructure in the Harness UI
+### 2. Configure Gitspace Infrastructure via Harness UI
 
 Start by configuring your Gitspace infrastructure via the Harness UI. This allows you to input your infrastructure details like Project ID, regions, etc., which will be referenced later during provisioning.
 
-[Configure Gitspace Infrastructure](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md)
+[Configure Gitspace Infrastructure via Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md)
 
 ### 3. Configure and Set Up the Terraform Module
 
