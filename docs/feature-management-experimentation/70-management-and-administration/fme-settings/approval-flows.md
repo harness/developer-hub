@@ -3,11 +3,11 @@ title: Approval flows
 sidebar_position: 30
 ---
 
-As an administrator, you can set up approval workflows in your environment. These workflows help you manage what changes users or groups are allowed to make on any given environment. These approvals apply to feature flags and segments. Editors on an environment can submit the change for approval to another teammate using Harness FME to ensure no mistakes were made in the release. For more information about setting up approval flows, refer to the [Permissions](https://help.split.io/hc/en-us/articles/360020579052-Permissions) guide.
+As an administrator, you can set up approval workflows in your environment. These workflows help you manage what changes users or groups are allowed to make on any given environment. These approvals apply to feature flags and segments. Editors on an environment can submit the change for approval to another teammate using Harness FME to ensure no mistakes were made in the release. For more information about setting up approval flows, refer to the [Permissions](/docs/feature-management-experimentation/management-and-administration/fme-settings/permissions) guide.
 
 ## Submitting for approval
 
-As part of the review and [comment process](https://help.split.io/hc/en-us/articles/360020579472-Audit-logs) for your changes, you can select a set of teammates or [groups](https://help.split.io/hc/en-us/articles/360020812952-Manage-user-groups) to review the change. Enter the name of the teammate or group into the search bar and select your desired approvers.
+As part of the review and [comment process](/docs/feature-management-experimentation/management-and-administration/account-settings/audit-logs) for your changes, you can select a set of teammates or [groups](/docs/feature-management-experimentation/management-and-administration/account-settings/groups) to review the change. Enter the name of the teammate or group into the search bar and select your desired approvers.
 
 <img src="https://help.split.io/hc/article_attachments/30801604782989" alt="approval_flows_one.png" width="800" />
 

@@ -33,7 +33,7 @@ Control how and when alerts trigger by creating an [alert policy](.././alerts/al
 
 Set the time window over which metric performance is evaluated for alert policies. [Monitoring windows](.././alerts/alert-policies/monitoring-window) help you tune sensitivity and reduce alert noise by limiting the period during which alerts are automatically triggered based on observed metric degradations.
 
-Harness FME continues to monitor and alert your team of a metric degradation for up to 28 days after a version change. The default monitor window is 24 hours. Administrators can change the monitor window under the [Monitor and experiment settings](https://help.split.io/hc/en-us/articles/360020640752).
+Harness FME continues to monitor and alert your team of a metric degradation for up to 28 days after a version change. The default monitor window is 24 hours. Administrators can change the monitor window on the Monitor window and statistics page.
 
 :::note
 The monitoring window only applies to alert policies. If the monitoring window is set to 24 hours, Release Monitoring stops evaluating metrics for alert triggering after 24 hours from the version change. However, significance-based alerts (those triggered by re-running calculations during deeper analysis or user-initiated recalculations) can still trigger beyond the monitoring window.
@@ -49,7 +49,7 @@ When an alert fires, you can access the [alert details](./view-triggered-alerts.
 
 | **Action** | **Description** |
 | ---- | ---- | 
-| Kill feature flag | If you decide to kill a feature flag due to an alert, the [default treatment](https://help.split.io/hc/en-us/articles/360020528192-Default-treatment) overrides the existing targeting rules and is returned for all customers. |
+| Kill feature flag | If you decide to kill a feature flag due to an alert, the [default treatment](/docs/feature-management-experimentation/feature-management/default-treatment/) overrides the existing targeting rules and is returned for all customers. |
 
 ### Troubleshooting alerts
 

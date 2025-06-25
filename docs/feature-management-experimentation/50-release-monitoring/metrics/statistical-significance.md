@@ -13,7 +13,7 @@ The impact you see could be the result of a typical fluctuation in the metric in
 
 Choosing the right significance threshold should balance the confidence you want to have in the impact not being by chance and the number of samples (traffic) that you receive.
 
-Learn more below about testing for a significant impact, the methodologies, and default configurations used in Harness FME. If your account's risk tolerance is lower, or your traffic volumes are of scale, learn more about [changing statistical settings](https://help.split.io/hc/en-us/articles/360020640752) in Harness FME.
+Learn more below about testing for a significant impact, the methodologies, and default configurations used in Harness FME. If your account's risk tolerance is lower, or your traffic volumes are of scale, learn more about [changing statistical settings](/docs/feature-management-experimentation/experimentation/setup/experiment-settings/) in Harness FME.
 
 ## Two-tailed test
  
@@ -49,7 +49,7 @@ Learn more about interpreting your metrics impact and configuring your statistic
 
 ## Normal distribution
  
-Robust experiments rely on the means of treatment and control groups, which are assumed to be normally distributed. The *central limit theorem (CLT)* shows that the mean of a variable has an approximately normal distribution if the sample size is large enough. We apply the [rule of thumb](http://bit.ly/expRulesOfThumb) that the minimum number of independent and identically distributed observations needed to safely assume that the means have a normal distribution is 355 for each treatment. Hence, by default we require a sample size of at least 355 in each treatment before we calculate significance for your metrics. You can change this minimum sample size requirement in the [Monitor and Experiment settings](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings) section in Harness FME.
+Robust experiments rely on the means of treatment and control groups, which are assumed to be normally distributed. The *central limit theorem (CLT)* shows that the mean of a variable has an approximately normal distribution if the sample size is large enough. We apply the [rule of thumb](http://bit.ly/expRulesOfThumb) that the minimum number of independent and identically distributed observations needed to safely assume that the means have a normal distribution is 355 for each treatment. Hence, by default we require a sample size of at least 355 in each treatment before we calculate significance for your metrics. You can change this minimum sample size requirement in the [Monitor and Experiment settings](/docs/feature-management-experimentation/experimentation/setup/experiment-settings/) section in Harness FME.
 
 ## Alert Policy Statistics 
 
@@ -81,7 +81,7 @@ Each metric for a given test will only have enough power to detect impacts great
 
 For example, in the image above, the hover text indicates that your treatment didn’t impact the number of bookings per user by more than a relative change of 3.76%, but that there may be an impact smaller than that value. 
 
-To reduce the MLDE so that it is possible to discover potential impacts smaller than this, you need a larger sample size. This may mean running the experiment for a longer period of time or with a different percentage rollout. You can use the [sample size and sensitivity calculators](https://help.split.io/hc/en-us/articles/360034040851-Sample-size-and-sensitivity-calculators) to help understand how long you would need to run an experiment to get the required sensitivity. 
+To reduce the MLDE so that it is possible to discover potential impacts smaller than this, you need a larger sample size. This may mean running the experiment for a longer period of time or with a different percentage rollout. You can use the [sample size and sensitivity calculators](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/) to help understand how long you would need to run an experiment to get the required sensitivity. 
 
 ### Learning from inconclusive results
 
@@ -117,7 +117,7 @@ One thing to note about the above example is that the confidence interval for th
 
 #### No peeking
 
-The possibility of early noisy data and false positives is a key reason it is important to decide how long your experiment runs prior to starting it and to not pick a winner sooner than that based on a metric reaching significance. In addition to multiple decision points increasing the chance of seeing a false positive, more data gives you more confidence in the durability of the effect you are seeing. Before starting your experiment, use the [Sample size and sensitivity calculators](https://help.split.io/hc/en-us/articles/360034040851-Sample-size-and-sensitivity-calculators) to see how many users have to encounter your experiment in order to see a meaningful swing in metrics. These calculators also take into account your seasonality cycle (typically seven days = one week), so that your experiment's duration sees an equal number of phases from the cycle.
+The possibility of early noisy data and false positives is a key reason it is important to decide how long your experiment runs prior to starting it and to not pick a winner sooner than that based on a metric reaching significance. In addition to multiple decision points increasing the chance of seeing a false positive, more data gives you more confidence in the durability of the effect you are seeing. Before starting your experiment, use the [Sample size and sensitivity calculators](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/) to see how many users have to encounter your experiment in order to see a meaningful swing in metrics. These calculators also take into account your seasonality cycle (typically seven days = one week), so that your experiment's duration sees an equal number of phases from the cycle.
 
 #### Use sequential testing
 
