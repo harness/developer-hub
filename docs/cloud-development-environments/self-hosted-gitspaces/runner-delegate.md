@@ -15,7 +15,11 @@ Once you have the [Harness Gitspaces Terraform Module configured and setup](/doc
 - Ensure you have the GCP VM instance active and running in your GCP project. (This VM instance is created while your terraform configuration is configured and setup.) Please refer to this [documentation](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md) to understand more about configuring this Terraform Module. 
 
 ## Functions of Runner and Delegate
-### Delegate 
+This section explains the key functions of Harness Delegate and VM Runner. Refer to [Self Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md) to understand the underlying architecture in detail. 
+
+![](./static/self-hosted-architecture.png)
+
+### Harness Delegate 
 Harness Delegate is a service that you install in your infrastructure to establish and maintain a connection between Harness Control Plane and your infrastructure. Self Hosted Gitspaces run in your own infrastructure, but are managed by Harness Control Plane. Thus to establish and maintain communication between the Harness Control Plane and Customer's infrastructure, customer need to install Harness Delegate in their infrastructure. Read more about [Harness Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
 ### VM Runner
@@ -40,7 +44,7 @@ You'll need **Docker** installed in your GCP VM instance to configure self hoste
 
 ### Start the Runner 
 Now that you're into the VM instance and you've installed Docker, follow the given steps to start the **Runner**: 
-1. Create a new file called ``pool.yaml`` in your instance and copy the same YAML file content as you had when you configured the Terraform Module. Refer to [Setup Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#download-the-pool-yaml-file) to learn more about the same. 
+1. Create a new file called ``pool.yaml`` in your instance and copy the [same YAML file content](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#download-the-pool-yaml-file) as you had when you configured the Terraform Module. Refer to [Setup Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#download-the-pool-yaml-file) to learn more about the same. 
 2. Run the following command to create a new network: 
 ```
 docker network create harness
@@ -74,7 +78,7 @@ Please ensure you are installing the **Docker Delegate** in your VM instance. Fo
 
 4. Enter a **Delegate Name**.
 
-5. Copy the **Delegate install command** and run it in your GCP VM. Add this snippet into your delegate install command: ``-e RUNNER_URL="http://vm-runner:3000/" \`` to ensure the delegate has the runner url. Your final install command will look something like this: 
+5. Copy the **Delegate install command** and run it in your GCP VM. Add the **runner URL** by adding this snippet into your delegate install command: ``-e RUNNER_URL="http://vm-runner:3000/" \`` to ensure the delegate has the runner url. Your final install command will look something like this: 
 
 ```
 docker run -d \
@@ -97,5 +101,11 @@ To learn more about delegates and delegate installation, go to [Delegate install
 
 Once your Delegate is up and running, you have successfully setup the infrastructure and established a successful connection between the Harness Control Plane and your infrastructure. 
 
-## Next Steps
+### Delegate Selector
+Once you’ve installed and set up your Delegate, enter the specific **Delegate Name** in the **Delegate Selector** field within your Gitspace Infrastructure UI.
 
+//TBD
+
+## Next Steps
+Now that you’ve successfully installed and configured the Delegate, you’re ready to **create and manage Self Hosted Gitspaces** within your GCP infrastructure.
+Proceed to the [Manage Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/manage-self-hosted.md) guide to get started.

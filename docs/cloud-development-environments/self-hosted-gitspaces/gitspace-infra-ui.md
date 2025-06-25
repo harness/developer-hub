@@ -1,8 +1,8 @@
 ---
-title: Configure Gitspace Infrastructure via Harness UI
+title: Configure & Manage Gitspace Infrastructure in Harness UI
 description: Get Started with Harness CDE (Gitspaces)
 sidebar_position: 2
-sidebar_label: Configure Gitspace Infrastructure via Harness UI
+sidebar_label: Configure & Manage Gitspace Infrastructure in Harness UI
 ---
 
 In order to get started with self-hosted Gitspaces, you'll first need to configure infrastructure for these Gitspaces. This infrastructure is where your Gitspaces will be hosted, so you must define and configure it within Harness UI. This guide will take you through the detailed steps to configure your infrastructure using the Harness UI.
@@ -20,7 +20,7 @@ In order to get started with self-hosted Gitspaces, you'll first need to configu
     <li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) – `api/dns.googleapis.com`</li>
   </ul>
 
-## Configuring Gitspace Infrastructure
+## Configure Gitspace Infrastructure
 
 Configuring your Gitspace Infrastructure involves adding your infrastructure details in the Harness UI using the steps below. This process generates an **Infra Config YAML** — a YAML file that captures your entire infrastructure configuration. This YAML is a required input when running the Harness Gitspace Terraform Module to provision the necessary GCP VM infrastructure.
 
@@ -43,7 +43,7 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 
 You can add and configure regions for Gitspaces. Note that users will only be able to host Gitspaces in these defined regions. Use the following input parameters:
 
-1. **Region Name**: Enter the region name. Refer to the GCP documentation to view available regions.
+1. **Region Name**: Enter the region name. Refer to the [GCP documentation](https://cloud.google.com/compute/docs/regions-zones) to view available regions.
 2. **IP Details**: Provide the IP configuration for each region.
 3. **Sub-Domain**: Enter the sub-domain for each region. The root domain will match the one entered in the basic details. You can define a separate sub-domain per region.
 4. **Runner VM Region**: Select the VM region where the runner and delegate will be set up for self-hosted Gitspaces.
@@ -52,9 +52,9 @@ You can add and configure regions for Gitspaces. Note that users will only be ab
 
 Once all details have been entered, click on **Download and Apply YAML**. This will generate the **Infra Config YAML**, which contains the entire Gitspace Infra configuration. This YAML is a mandatory input for [configuring and setting up the Harness Gitspaces Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md), which provisions the GCP infrastructure in your selected project.
 
-## Managing Your Gitspace Infrastructure
+## Manage Gitspace Infrastructure
 
-### Editing Gitspace Infrastructure
+### Edit Gitspace Infrastructure
 Once your infrastructure is configured, you also have the option to **edit and update it**. Please note that only **Gitspace Admins** with **Account-level access** are permitted to make changes.
 
 Here's how you can edit your infrastructure: 
@@ -64,7 +64,7 @@ Here's how you can edit your infrastructure:
 3. Whenever you make changes to your infrastructure configuration, you’ll need to **download the updated Infra Config YAML**.
 Use this updated YAML to [reapply your Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md) to reflect the changes. You can learn more about this process in the [next steps](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#next-steps).
 
-### Deleting Gitspace Infrastructure
+### Delete Gitspace Infrastructure
 :::warning **Warning: Irreversible Action**
 
 Deleting your infrastructure is **permanent** and **cannot be undone**. This action will:
@@ -82,6 +82,9 @@ Here's how you can delete your infrastructure:
 2. Scroll down to the bottom of the page. You’ll find the option to **Delete Infrastructure**. Click this button to permanently delete the selected infrastructure.
 
 ![](./static/delete-infra.png)
+
+### Assess Gateway Group Health for Gitspace Infrastructure
+//TBD
 
 ## Next Steps
 Now that you have the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#download-the-infra-config-yaml) downloaded, proceed to [configure and apply the Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md) to provision your self-hosted Gitspaces. 
