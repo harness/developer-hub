@@ -1266,7 +1266,7 @@ Yes. You can run any commands in a Run step. With respect to Git, for example, y
 
 You can store authentication credentials as [secrets](https://developer.harness.io/docs/category/secrets/) and use [expressions](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs#expressions), such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call them in your git commands.
 
-You could also [pull credentials from a git connector used elsewhere in the pipeline](/kb/continuous-integration/articles/using-git-credentials-from-codebase-connector-in-ci-pipelines-run-step).
+You could also [pull credentials from a git connector used elsewhere in the pipeline](/kb/continuous-integration/articles/use-git-credentials-from-codebase-connector-in-ci-pipelines-run-step).
 
 ### Can I use codebase variables when cloning a codebase in a Run step?
 
