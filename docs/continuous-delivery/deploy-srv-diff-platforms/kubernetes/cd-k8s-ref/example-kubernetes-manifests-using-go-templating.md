@@ -183,7 +183,7 @@ When the image is in a private repo, you use the expression `<+artifact.imagePu
 
 This key will import the credentials from the Docker credentials file in the artifact.
 
-It's much simpler to simple use the `<+artifact.imagePullSecret>` expression in the values.yaml file and then reference it in other manifests.
+It's much simpler to use the `<+artifact.imagePullSecret>` expression in the values.yaml file and then reference it in other manifests.
 
 Using the values.yaml file above, we simply remove the comment in front of `dockercfg: <+artifact.imagePullSecret>`:
 
