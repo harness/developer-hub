@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2025
 
+### Version 25.06.86102 <!-- June 26, 2025 -->
+
+#### Fixed issues
+
+- Added support for an alternative method to fetch Jenkins job details when the queueItem API returns null. [CDS-109699]
+
 ### Version 25.06.86101 <!-- June 19, 2025 -->
 
 #### Fixed issues
