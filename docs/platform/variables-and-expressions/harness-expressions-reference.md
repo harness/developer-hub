@@ -734,5 +734,8 @@ You can now use built-in expressions to get the current system date and time dur
 
 You can use the following expressions:
 
-- `<+currentTime()>` : Returns current date and time with milliseconds
-- `<+currentDate()>` : Returns current date in YYYY-MM-DD format
+- `<+currentTime()>` : Returns the current date and time with milliseconds and timezone.  
+  Example output: `2025-06-26T11:55:00.790+0000`
+
+- `<+currentDate()>` : Returns the current date in `YYYY-MM-DD` format.  
+  Example output: `2025-06-26`
