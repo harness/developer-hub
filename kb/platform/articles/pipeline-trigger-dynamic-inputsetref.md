@@ -1,5 +1,5 @@
 
-# Harness Dynamic Input Set Referencing on Git Event triggers
+# Dynamic Input Set Referencing on Git Event triggers
 
 ## Preface
 
