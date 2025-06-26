@@ -352,7 +352,7 @@ Yes, Harness NextGen supports both the QUARTZ and UNIX syntax formats for cron t
 
 ### Can i select an inputSetRef based on the branch that triggers a git event?
 
-Although not recommended, this is possible. see the writeup here: [Dynamically selecting an inputSetRef based on triggering branch](/kb/platform/articles/pipeline-trigger-inputsetref.md)
+Although not recommended, this is possible. see the writeup here: [Dynamically selecting an inputSetRef based on triggering branch](/kb/platform/articles/pipeline-trigger-dynamic-inputsetref.md)
 
 ## Stop pipelines
 
