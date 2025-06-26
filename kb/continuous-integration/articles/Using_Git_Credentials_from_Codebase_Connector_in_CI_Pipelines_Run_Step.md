@@ -47,7 +47,7 @@ By using the `.netrc` file, you can execute Git commands within the run step wit
    EOF
 
    # Run Git commands
-   git clone https://github.com/your/repo.git
-   cd repo
+   git clone https://github.com/your/private-repo.git
+   cd private-repo
    git pull origin main
    ```
