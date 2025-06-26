@@ -690,7 +690,7 @@ HarnessOptimsationLambdaPolicy:
 
 On this screen, you can select specific features and services for AutoStopping:
 
-<DocImage path={require('./static/granular-permissions.gif.gif')} width="100%" height="100%" title="Click to view full size image" />
+![granular permissions](../../get-started/onboarding-guide/static/granular-permissions.gif)
 
 ### EC2 Instances
 

@@ -15,9 +15,9 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
       logo: "docker-logo.svg"
     },
     Maven: {
-      path: "/artifact-registry/content/supported-formats/maven-quickstart.md",
+      path: "/artifact-registry/content/maven-quickstart.md",
       logo: "maven-logo.svg",
-      iconOnly: true,
+      iconOnly: true
     },
     Generic: {
       path: "/artifact-registry/content/supported-formats/generic-quickstart.md",
