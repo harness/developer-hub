@@ -350,9 +350,9 @@ There is no limit to the number of triggers for a pipeline.
 
 Yes, Harness NextGen supports both the QUARTZ and UNIX syntax formats for cron triggers. For more information, go to [Schedule Pipelines Using Cron Triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
 
-### Can i select an inputSet based on the branch that triggers a git event?
+### Can i select an inputSetRef based on the branch that triggers a git event?
 
-Although not recommended, this is possible. see the writeup here: [Dynamically selecting an inputSetRef based on triggering branch] (./articles/pipeline-trigger-inputsetref.md)
+Although not recommended, this is possible. see the writeup here: [Dynamically selecting an inputSetRef based on triggering branch](/kb/platform/articles/pipeline-trigger-inputsetref.md)
 
 ## Stop pipelines
 
