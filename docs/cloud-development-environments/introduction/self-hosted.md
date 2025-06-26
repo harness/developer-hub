@@ -1,85 +1,97 @@
 ---
-title: Self Hosted Gitspaces
+title: Get Started with Self Hosted Gitspaces
 description: Get Started with Harness CDE (Gitspaces)
 sidebar_position: 3
 sidebar_label: Self Hosted Gitspaces
 ---
 
-## Everything about Self Hosted Gitspaces
-### Self Hosted & Harness Hosted Gitspaces 
-### Challenges with Hosted Gitspaces 
-Hosted Cloud Development Environments (CDEs) — like GitHub Codespaces, Gitpod Cloud, and Replit — promise fast onboarding, consistent workspaces, and reduced local setup. However, as organizations scale or operate under stricter security, compliance, and performance needs, several **critical challenges emerge** with relying on hosted CDEs.
+## Fundamentals
 
----
+**Self-Hosted Gitspaces** are on-demand remote development environments hosted within your organization’s infrastructure. These environments come pre-configured for instant coding and provide an added layer of security by offering **full control** over infrastructure and data. This reduces the risk of external data exposure and prevents source code from being cached or accessed by third-party cloud services.
 
-### 🔐 1. **Security & Data Sovereignty**
+### Self Hosted vs Harness Hosted Gitspaces 
+Harness-Hosted Gitspaces are fully managed by Harness and reduce the setup complexity for end users. However, as organizations grow and adopt stricter security and compliance standards, **Harness-Hosted Gitspaces may introduce the following enterprise challenges**:
 
-One of the most pressing concerns is **loss of control over source code and developer data**.
+* **Security & Data Sovereignty**: Lack of full control over source code and developer data.
+* **Customization Limitations**: Hosted solutions may not support deep customization of tooling and environment setup.
+* **Latency Issues**: Hosted regions are fixed, potentially causing performance problems for globally distributed teams.
 
-* **Source Code Exposure**: Hosted CDEs typically clone the codebase into vendor-controlled containers. This creates potential risk for intellectual property (IP) leaks or unauthorized access.
-* **Secrets Management**: Developers often work with sensitive API keys, tokens, and credentials. Hosted platforms might not support secure secret injection or enterprise-grade vault integrations.
-* **Third-Party Infrastructure**: Code, logs, and user actions are stored on infrastructure you don't manage, which can be a deal-breaker for sectors like finance, defense, or healthcare.
-* **Data Residency**: Enterprises with data residency requirements (e.g., GDPR, HIPAA, FedRAMP) may not be able to choose or control the region where their data and development sessions are stored.
+In contrast, **Self-Hosted Gitspaces** solve these issues by offering complete infrastructure control. 
 
----
+| Use Case                  | Self-Hosted Gitspaces                      | Harness-Hosted Gitspaces           |
+| ------------------------- | ------------------------------------------ | ---------------------------------- |
+| **Infrastructure**        | Managed by Customer       | Managed by Harness                 |
+| **Security & Compliance** | Full control by customer                   | Shared responsibility model        |
+| **Source Code**           | Stored within customer infra               | Stored and cached in Harness |
+| **Data Residency**        | Customer-defined and governed              | Stored in Harness Cloud         |
+| **Latency/Location**      | Global flexibility based on customer infra | Limited to predefined regions      |
 
-### 🛡️ 2. **Compliance and Audit Gaps**
+### Key Concepts 
+There are a few key concepts that form the foundation of how Self Hosted Gitspaces operate: 
+- [Harness Control Plane](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#harness-control-plane)
+- [Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#delegate)
+- [VM Runner](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#vm-runner)
+- [Gateway](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#gateway)
+- [Terraform Registry](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#terraform-registry)
 
-Hosted platforms often fall short in supporting internal audits, forensics, and compliance workflows.
+Read more about all these [key concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). 
 
-* **Limited Observability**: Enterprises may not get access to detailed logs of developer activities like file access, command execution, or network usage.
-* **No Custom Logging Pipelines**: Hosted services may not allow integration with internal observability tools like Splunk, Datadog, or Prometheus.
-* **Lack of Role-Based Controls**: Fine-grained permissions (e.g., who can run which environments or access certain files) are often limited or predefined.
+### Architecture Overview
+Self-Hosted Gitspaces consist of two core components:
 
----
+* **Harness Control Plane**
+* **Customer’s Cloud Infrastructure (e.g., GCP)**
 
-### ⚙️ 3. **Limited Customization and Tooling Flexibility**
+![Architecture Diagram](./static/self-hosted-architecture.png)
 
-Hosted CDEs are designed to serve the general developer audience. For specialized teams, this can be limiting.
+Read more about the [self hosted gitspaces architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md). 
 
-* **Unsupported Toolchains**: Certain legacy tools, hardware-specific SDKs, or heavy runtimes (e.g., CUDA for GPUs) may not be supported.
-* **Restricted Images**: You often cannot modify the base image beyond a point — limiting the ability to preinstall enterprise-grade testing tools, linters, or licensed software.
-* **Network Restrictions**: Hosted environments may not connect to internal APIs, databases, or services behind firewalls or VPNs.
-
----
-
-### 🌐 4. **Latency and Performance Issues**
-
-While hosted CDEs provide consistent environments, performance is often unpredictable.
-
-* **Cold Starts**: Environments may take several minutes to start after being idle, breaking developer flow.
-* **Location-based Latency**: Teams located far from the hosted environment’s data centers (e.g., India, LATAM, Africa) may face noticeable lag.
-* **Limited Compute Configs**: You can’t always choose CPU, memory, or GPU profiles based on workload needs.
-
----
-
-### 👥 5. **Vendor Lock-In**
-
-Adopting a hosted CDE often means aligning with the vendor's tools, ecosystem, and workflow.
-
-* **Proprietary Configuration Files**: Each provider has its own setup conventions (e.g., `.devcontainer.json` for Codespaces, `.gitpod.yml` for Gitpod).
-* **API Lock-In**: Integrations may require vendor-specific APIs and webhooks that are hard to migrate later.
-* **Hard to Migrate**: Moving off a hosted CDE later involves rebuilding infra, templates, and workflows — a significant lift.
-
----
-
-### 💸 6. **Unpredictable or Rising Costs**
-
-For large teams or long-running dev sessions, hosted pricing models can escalate rapidly.
-
-* **Pay-per-hour Models**: Developers leaving sessions open or reusing large environments can run up unexpected costs.
-* **No Cost Optimization Tools**: Most vendors offer limited cost visibility or auto-shutdown rules.
-* **Multi-region Workflows**: Hosting dev environments close to globally distributed teams often costs extra or isn’t supported at all.
-
-
-### Self Hosted vs Hosted Gitspaces 
-### Architecture of Self Hosted GitspaceS
-
-## Getting Started with Self Hosted Gitspaces
+## Get Started with Self Hosted Gitspaces
 ### Prerequisites
-### Key Concepts
-### Get Started 
+You need to follow these prerequisites to get started with self-hosted Gitspaces:
 
-## Recommendations for Hosted vs Self Hosted Gitspaces 
-## Next Steps
+| **Prerequisite**    | **Description** | **Documentation Guide** | 
+| -------- | ------- | ---------- | 
+| **Enable APIs in GCP Project** | Your GCP Project (where your have created your GCP VM Instance) should have the following APIs enabled:  <ul><li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) - api/cloudresourcemanager.googleapis.com</li><li>[Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1) - api/compute.googleapis.com</li><li>[Certificate Manager API](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest) - api/certificatemanager.googleapis.com</li><li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) - api/iam.googleapis.com</li><li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) - api/dns.googleapis.com</li></ul>   | [Guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) |
+| **Service Account** | You must have a Service Account with the "Owner" permission in the same GCP Project where you have your GCP VM Instance.| [Guide](https://cloud.google.com/iam/docs/service-accounts-create) | 
+| **Service Account Key** | You must create and download a Service Account Key in the same GCP Project and service account, this key is usually in the form of a **JSON** or **P12 file**, which contains the credentials necessary for the service account to authenticate. | [Guide](https://cloud.google.com/iam/docs/keys-create-delete) | 
+| **Terraform** | You must have Terraform installed on your machine with internet access (please ensure you have the SA key downloaded here) | [Guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
+
+### Get Started
+This is a quick guide to help you set up and launch your Self-Hosted Gitspaces. Follow the steps below:
+
+#### 1. Go Through the Prerequisites and Fundamentals
+
+Before you begin setup, it’s important to understand the underlying architecture and concepts of Self-Hosted Gitspaces. Make sure to review the following documentation thoroughly:
+
+- [Self-Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md)  
+- [Fundamental Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md)  
+- [Prerequisites](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#prerequisites)  
+
+#### 2. Configure Gitspace Infrastructure via Harness UI
+
+Start by configuring your Gitspace infrastructure via the Harness UI. This allows you to input your infrastructure details like Project ID, regions, etc., which will be referenced later during provisioning.
+
+[Configure Gitspace Infrastructure via Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md)
+
+#### 3. Configure and Set Up the Terraform Module
+
+Once the infrastructure is defined in the UI, proceed to initialize and apply the **Harness Gitspaces Terraform Module**. This module will:
+
+- Create all required infrastructure in your GCP Project  
+- Set up VM instances for the Gateway
+
+[Set Up Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md)
+
+#### 4. Set Up Runner and Install Delegate
+
+After provisioning, install the Runner and Delegate on your GCP VM Instance. This ensures the Harness Control Plane can communicate with your infrastructure to create and manage Gitspaces.
+
+[Set Up Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/runner-delegate.md)
+
+#### 5. Manage Gitspaces
+
+Once the setup is complete, you can begin creating Gitspaces directly from the UI and manage them seamlessly.
+
+[Manage Gitspaces](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md) 
 

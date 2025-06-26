@@ -9,22 +9,20 @@ This is your second step in configuring self-hosted Gitspaces. Once you have add
 
 ## Prerequisites
 
-- Ensure you've read through the **fundamentals and prerequisites** of self-hosted Gitspaces [here](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). This helps you develop a deeper understanding of all core concepts and steps involved.
-- Make sure you have completed the steps in [configuring Gitspace Infrastructure in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md). This is a **mandatory prerequisite**, as the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#download-the-infrastructure-config-yaml) generated from that step is a required input here.
-- You must have a **Service Account with the "Owner" role** in the same GCP project where your GCP VM instance will be created.
+1. Ensure you've read through the **fundamentals and prerequisites** of self-hosted Gitspaces [here](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). This helps you develop a deeper understanding of all core concepts and steps involved.
+2. Make sure you have completed the steps in [configuring Gitspace Infrastructure in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md). This is a **mandatory prerequisite**, as the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#download-the-infrastructure-config-yaml) generated from that step is a required input here.
+3. You must have a **Service Account with the "Owner" role** in the same GCP project where your GCP VM instance will be created.
   Refer to the [GCP documentation](https://cloud.google.com/iam/docs/service-accounts-create) to learn how to create a service account. You can also follow the detailed steps in [this section](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#generate-the-service-account-key) of our guide.
-- You must **create and download a Service Account Key** for the same service account within the same GCP project.
+4. You must **create and download a Service Account Key** for the same service account within the same GCP project.
   Refer to the [GCP documentation](https://cloud.google.com/iam/docs/keys-create-delete) for more information. Detailed steps are also provided in [this section](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#generate-the-service-account-key) of our guide.
-- Ensure that your GCP project (as defined in your infra config) has the following APIs enabled, here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project: 
-
-
-  <ul>
-    <li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) – `api/cloudresourcemanager.googleapis.com`</li>
-    <li>[Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1) – `api/compute.googleapis.com`</li>
-    <li>[Certificate Manager API](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest) – `api/certificatemanager.googleapis.com`</li>
-    <li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) – `api/iam.googleapis.com`</li>
-    <li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) – `api/dns.googleapis.com`</li>
-  </ul>
+5. Ensure that your GCP project (as defined in your infra config) has the following APIs enabled, here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project: 
+      <ul>
+        <li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) – `api/cloudresourcemanager.googleapis.com`</li>
+        <li>[Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1) – `api/compute.googleapis.com`</li>
+        <li>[Certificate Manager API](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest) – `api/certificatemanager.googleapis.com`</li>
+        <li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) – `api/iam.googleapis.com`</li>
+        <li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) – `api/dns.googleapis.com`</li>
+      </ul>
 
 ## Functions of the Terraform Module
 
