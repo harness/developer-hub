@@ -10,7 +10,7 @@ The user-centric pull request page is available at the account, organization, an
 This feature is behind a feature flag `CODE_SPACE_PULLREQ`.
 :::
 
-The page includes three main sections:
+The page includes three pre-defined queries:
 
 - **All** – Displays all pull requests in the selected scope.
 - **Created** – Displays all PRs created by the logged-in user.
@@ -23,8 +23,8 @@ The **PR Dashboard** provides a complete view of pull requests across the select
 - View **all pull requests** across the selected scope, including PRs created by other users.
 - Supports advanced filtering by:
   - **Author** – Filter PRs by who opened them.
-  - **Status** – Filter by PR status (Open, Closed, etc.)
-  - **Labels** – Filter by tags such as `bug`, `feature`, `needs-review`, etc.
+  - **Status** – Filter PRs by status (Open, Closed, etc.)
+  - **Labels** – Filter PRs by labels such as `bug`, `feature`, `needs-review`, etc.
   - **Your Reviews** – For PRs assigned to you for review, you can filter further by **Review Status**:`Pending`, `Approved`, or `Changes Requested`.
 
 <DocImage path={require('/docs/code-repository/pull-requests/static/pr-dashboard.png')} />
