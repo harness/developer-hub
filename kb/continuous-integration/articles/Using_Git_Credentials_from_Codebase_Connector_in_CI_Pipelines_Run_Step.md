@@ -48,6 +48,6 @@ By using the `.netrc` file, you can execute Git commands within the run step wit
 
    # Run Git commands
    git clone https://github.com/your/repo.git
-   git checkout master
-   git pull origin master
+   cd repo
+   git pull origin main
    ```
