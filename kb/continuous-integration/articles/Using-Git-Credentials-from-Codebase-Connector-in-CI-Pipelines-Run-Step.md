@@ -1,5 +1,7 @@
 ---
 title:  Use codebase connector's Git credentials in a CI Run step
+redirect_from:
+  - /kb/continuous-integration/articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step
 ---
 
 Harness CI supports seamless integration with version control systems through [codebase connectors](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase). While most Git tasks are automated within the CI pipeline, there can be scenarios where you need to manually execute Git commands in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings), such as when you need to [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory) or run [use Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
