@@ -4,20 +4,84 @@ description: Reference for VM images on Harness Cloud Machines
 sidebar_position: 4
 ---
 
-Harness-hosted VM images are available for multiple operating systems and architectures, providing you with a clean, consistent environment for building, testing, and deploying your applications. Each job runs on a fresh virtual machine instance, ensuring isolation and preventing interference among builds.
+Harness provides preconfigured virtual machine (VM) images to run your CI jobs in the cloud. These images come with common build tools and dependencies preinstalled, so you can focus on building and testing your code without worrying about setup.
 
-For comprehensive details about what's included in each VM image, including installed software, tool versions, and system specifications, refer to [this repository](https://github.com/wings-software/harness-docs/tree/main/harness-cloud).
+Every CI job runs on a fresh VM, ensuring clean, isolated builds.
 
-## Available VM images
+To see what’s included in each image, visit the [Harness Cloud VM image repository](https://github.com/wings-software/harness-docs/tree/main/harness-cloud).
+
+## Cloud VM Images
+
+:::warning 
+By default, all CI pipelines running on Harness Cloud use the latest image for each operating system (e.g., ubuntu-latest).
+We’re gradually rolling out the ability to select specific VM images per or stage, functionality that is currently behind the feature flags `CI_ENABLE_HOSTED_IMAGE_MANAGEMENT`, `CI_ENABLE_HOSTED_BETA_IMAGES`.
+Once enabled, existing pipelines running on cloud (where the VM image in not set in the stage explicitly) will be executed on the `latest` vm image of the selected operating system. User then will be able to select wether to continue with `latest` as a default, or pin stages to specific versions to avoid image changes when `latest` version is updated to point to a new version.
+Planned releases of versions as well as updates to new `latest` images will be posted in advance to allow customer to prepare. 
+:::
+
+### Available VM Images Image Tags
+
 
 Harness provides VM images for multiple operating systems and architectures:
 
-| Virtual machine image | Image label | Notes |
-|----------------------|-------------|-------|
-| [Linux ARM Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-22.04` | Default Linux image for Linux ARM |
-| [Linux AMD Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-22.04` | Default Linux image for Linux AMD |
-| [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `macos-14` | Latest macOS |
-| [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-2022` | Latest Windows 2022 Server Image |
+| Virtual machine image | Image label | Notes | Rollout Status|
+|----------------------|-------------|-------|-----|
+| [Linux AMD Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux AMD | GA |
+| [Linux AMD Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux AMD | Deploying |
+| [Linux ARM Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux ARM | GA |
+| [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM | Deploying |
+| [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `macos-latest` or `macos-14` | Latest macOS | GA |
+| [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-latest` or `windows-2022` | Latest Windows 2022 Server Image |GA |
+
+
+### Choosing an image version 
+To select an the image tag to use, simply provide it in the `imageName` property of the cloud infrastructure `runtime` section.
+
+```yaml
+    runtime:
+      type: Cloud
+      spec:
+        size: xxlarge
+        imageName: latest # specify image tag
+```
+
+### Understanding Image Tags
+
+Harness VM images use a versioning system to help you balance between getting the latest updates and maintaining build stability:
+
+- **`latest`** - The most recent image with the newest tool versions and updates. For example, `ubuntu-latest`.
+- **`penultimate`** - The previous stable image version. For example, `ubuntu-penultimate`.
+
+For each of these, will also have a tag representing its version, as described in the above table. 
+
+### Best Practice: Pin Image Versions in Production
+
+Since using the `latest` image may contain breaking changes or updated tool versions that could affect your build. Always test thoroughly before updating production pipelines.
+
+To ensure stable production deployments while still benefiting from the latest updates, we recommend the following approach:
+
+1. **Test in Dev**: **Use latest in non-prod** pipelines and confirm everything works with the new image.
+2. **Update Prod**: Switch production pipelines to the new image, and **pin image name to a specific version**.
+
+
+To simplify the rollout and management of image tag updates across environments, we recommend defining the image name as [a variable at the Account, Org, Project, or Pipeline level](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/) in Harness. This will ensure you can pin your pipeline to a new version globally.
+
+
+:::warning
+The `latest` image may contain breaking changes or updated tool versions that could affect your build. Always test thoroughly before updating production pipelines.
+:::
+
+### Image Updates and Maintenance
+
+Harness regularly updates VM images to include:
+
+- Security patches and OS updates.
+- Latest versions of popular development tools.
+- Runtime updates (Node.js, Python, Java, etc.).
+- New tools and utilities based on community feedback.
+
+
+## Pre-installed Software Version Management
 
 ### Using preinstalled software
 
@@ -25,7 +89,6 @@ Harness-hosted VM images include a comprehensive set of preinstalled software pa
 
 **You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker containers.
 
-## Pre-installed Software Version Management
 
 ### Specify versions
 
@@ -275,42 +338,6 @@ Installing software during pipeline execution increases build time. Consider the
 - Consider creating custom Docker images for complex dependencies
 - Use specific tool versions that are already preinstalled
 
-## Image Versioning and Best Practices
-
-### Understanding Image Tags
-
-Harness VM images use a versioning system to help you balance between getting the latest updates and maintaining build stability:
-
-- **`latest`** - The most recent image with the newest tool versions and updates
-- **`latest-1`** - The previous stable image version
-
-### Recommended Pipeline Strategy
-
-To ensure stable production deployments while still benefiting from the latest updates, we recommend the following approach:
-
-Use the `latest` image tag for development, feature branches, and testing pipelines. Use `latest-1` for production pipelines to ensure stability.
-
-To simplify the rollout and management of image tag updates across environments, define your image tag as [a variable at the Account, Org, Project, or Pipeline level](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/) in Harness.
-
-#### Migration Process
-
-1. **Test with Latest**: Run your development and testing pipelines using the `latest` image
-2. **Validate**: Ensure all tests pass and deployments are healthy
-3. **Update Production**: Once validated, update your production pipelines from `latest-1` to `latest`
-4. **Monitor**: Keep an eye on production builds after the update
-
-:::warning
-The `latest` image may contain breaking changes or updated tool versions that could affect your build. Always test thoroughly before updating production pipelines.
-:::
-
-## Image Updates and Maintenance
-
-Harness regularly updates VM images to include:
-
-- Security patches and OS updates
-- Latest versions of popular development tools
-- Runtime updates (Node.js, Python, Java, etc.)
-- New tools and utilities based on community feedback
 
 ## Support and Feedback
 
