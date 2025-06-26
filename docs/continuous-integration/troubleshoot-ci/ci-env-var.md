@@ -336,7 +336,7 @@ For descriptions of these and other identifier variables, go to [Identifiers and
 
 * `HARNESS_LOG_PREFIX`
 * `HARNESS_SECRETS_LIST`
-* `DRONE_NETRC_USERNAME`, `DRONE_NETRC_PASSWORD`, `DRON_NETRC_MACHINE`: [.netrc files store Git credentials](/kb/continuous-integration/articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step).
+* `DRONE_NETRC_USERNAME`, `DRONE_NETRC_PASSWORD`, `DRON_NETRC_MACHINE`: [.netrc files store Git credentials](/kb/continuous-integration/articles/using-git-credentials-from-codebase-connector-in-ci-pipelines-run-step).
 
 ## Identifier and status variables
 
