@@ -22,15 +22,15 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## June 2025
 
-### Version 1.62.0
+### Version 1.62.11
 
 #### Images required
 Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
 
-- harness/chaos-ddcr:1.62.0
-- harness/chaos-log-watcher:1.62.0
-- harness/service-discovery-collector:0.42.0
-- harness/chaos-ddcr-faults:1.62.0
+- harness/chaos-ddcr:1.62.4
+- harness/chaos-log-watcher:1.62.1
+- harness/service-discovery-collector:0.42.1
+- harness/chaos-ddcr-faults:1.62.2
 
 #### What's New
 
@@ -53,7 +53,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 - APM Probe Integration - Monitor application performance during chaos experiments with Application Performance Monitoring probes. (CHAOS-8518)
 - Parallel Linux Experiments - Run multiple chaos experiments simultaneously on Linux infrastructure in SaaS environments. (CHAOS-8748)
-- Custom URLs - Support for vanity URLs across chaos management services. (CHAOS-8528)
+- Vanity URLs - Support for vanity URLs across chaos management services. (CHAOS-8528)
 - Enhanced Experiment Construction - Streamlined process for creating experiments with experiment-level probes, actions, and templates. (CHAOS-8062)
 - Unified Validation - Consistent schema validation across all infrastructure types supporting experiment-level probes. (CHAOS-8608)
 
@@ -79,13 +79,11 @@ Listed below are the images to download to use [image registry with Harness Dele
 - Fixed data counting issues in Local Hub and Chaos Hub
 - Enhanced authentication handling to prevent unnecessary impersonation data
 - Improved schema handling for better compatibility
+- Added restriction in backend to prevent the deletion of default kubernetes system probe via API.
 
 ##### Infrastructure and Performance
 
-- Resolved deployment strategy issues with chaos-manager service
-- Fixed build pipeline issues for better reliability
-- Improved data handling to prevent system errors during experiment snapshots
-- Enhanced probe execution and data retrieval processes
+- Fixed vulnerabilities by upgrading `jwt` and `ff-go-sdk` go packages in all chaos components.
 
 
 ## April 2025
