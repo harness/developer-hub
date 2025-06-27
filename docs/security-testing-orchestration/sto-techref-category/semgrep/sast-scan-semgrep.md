@@ -79,7 +79,7 @@ Do the following:
 
    ![pipeline failed, critical issues found](./static/sast-semgrep-tutorial/pipeline-failed-critical-issues-found.png)
 
-4. Select **Security Tests** and examine any issues detected by your scan.
+4. Select **Vulnerabilities** and examine any issues detected by your scan.
 
    ![view scan results](./static/sast-semgrep-tutorial/security-tests-results.png)
 

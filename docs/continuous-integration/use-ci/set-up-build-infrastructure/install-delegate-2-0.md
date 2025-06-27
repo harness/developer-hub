@@ -86,7 +86,7 @@ Download and install the correct binary for your OS.
 
 1. Download the binary for your system
 ```
-curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.2/runner-darwin-arm64'
+curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.3/runner-darwin-arm64'
 ```
 
 2. Give it permission to execute
@@ -113,7 +113,7 @@ chmod +x harness-runner
 
 1. Download the binary for your system
 ```
-curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.2/runner-darwin-amd64'
+curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.3/runner-darwin-amd64'
 ```
 
 2. Give it permission to execute
@@ -140,7 +140,7 @@ chmod +x harness-runner
 
 1. Download the binary for your system
 ```
-curl --output harness-runner https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.2/runner-linux-arm64
+curl --output harness-runner https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.3/runner-linux-arm64
 ```
 
 2. Give it permission to execute
@@ -171,7 +171,7 @@ nohup ./harness-runner server --env-file config.env > nohup-runner.out 2>&1 &
 
 1. Download the binary for your system
 ```
-curl --output harness-runner https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.2/runner-linux-amd64
+curl --output harness-runner https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.3/runner-linux-amd64
 ```
 
 2. Give it permission to execute

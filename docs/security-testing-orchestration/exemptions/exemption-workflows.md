@@ -26,9 +26,9 @@ To create an exemption request, you must have the necessary permissions (**Exemp
 :::
 
 ## Create Exemption Request for an Issue
-To request an exemption for an entire issue, you can set the exemption scope at the [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Security Tests** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
+To request an exemption for an entire issue, you can set the exemption scope at the [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Vulnerabilities** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
 
-1. In the **Security Tests** tab, locate and select the specific issue for which you want to request an exemption. This action opens the **Issue Details** pane on the right.
+1. In the **Vulnerabilities** tab, locate and select the specific issue for which you want to request an exemption. This action opens the **Issue Details** pane on the right.
 
 2. In the **Issue Details** pane, click **Request Exemption**.
 
@@ -82,13 +82,13 @@ Once the exemption request is submitted:
 
 ### Create Exemption Request for Occurrences within Issue
 
-To request an exemption for selected occurrences of an issue, the exemption scope must be set to the [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Security Tests** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
+To request an exemption for selected occurrences of an issue, the exemption scope must be set to the [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Vulnerabilities** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
 
 :::note
 This feature is behind the feature flag `STO_OCCURRENCE_EXEMPTION`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
-1. In the **Security Tests** tab, locate and select the specific issue for which you want to request an exemption. This opens the **Issue Details** pane on the right.
+1. In the **Vulnerabilities** tab, locate and select the specific issue for which you want to request an exemption. This opens the **Issue Details** pane on the right.
 2. In the **Issue Details** pane, click the **Occurrences** tab.
 3. Select the occurrences for which you want to request the exemption.
 

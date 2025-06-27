@@ -83,7 +83,7 @@ Do the following:
 
 Save your pipeline and then select **Run**. 
 
-The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
+The pipeline scans your code repository and then shows the results in [Vulnerabilities tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 
 </details>
@@ -130,7 +130,7 @@ Add a Semgrep step to the stage and set it up as follows.
 
 Save your pipeline and then select **Run**. 
 
-The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
+The pipeline scans your code repository and then shows the results in [Vulnerabilities tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 
 </details>

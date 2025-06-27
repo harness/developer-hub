@@ -34,7 +34,7 @@ To realize the objectives, the SCS module offers the following features:
 
 
 
-* [Repository security posture management](../repository-security-posture-management-rspm)
+* [Repository security posture management](/docs/software-supply-chain-assurance/repository-security-posture-management-rspm)
 * Comply with security compliance standards
     * [CIS Benchmarks](https://www.cisecurity.org/benchmark/software-supply-chain-security)
     * [OWASP Top 10 CI/CD Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/)

@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-03-01T08:00:00
+date: 2025-06-18T10:00:00
 tags: ["fme", "feature management experimentation"]
 
 sidebar_position: 11
@@ -9,7 +9,7 @@ sidebar_position: 11
 
 import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
-
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/feature-management-experimentation/rss.xml" />
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 

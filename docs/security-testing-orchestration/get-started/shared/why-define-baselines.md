@@ -3,7 +3,7 @@
 
   - For developers, it’s critical to distinguish between security issues in the baseline vs. issues in the variant you’re working on.  Thus if you’re working in a downstream branch, you want to detect and resolve issues in your branch (the variant) before merging, so you don’t introduce them into the main branch (the baseline). 
 
- - When you scan a variant of a target with a baseline defined, the scan results make it easy to identify issues in the variant only (“your” issues) vs. issues also found in the baseline. The [Security Tests tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) divides these issues into two lists:
+ - When you scan a variant of a target with a baseline defined, the scan results make it easy to identify issues in the variant only (“your” issues) vs. issues also found in the baseline. The [Vulnerabilities tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) divides these issues into two lists:
 
     - **Only in \<_target_>:\<_variant_>** Issues found in the scanned variant only.
 

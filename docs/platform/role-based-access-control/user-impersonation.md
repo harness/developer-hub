@@ -16,6 +16,10 @@ User Impersonation allows account administrators to temporarily act as another u
 
 By impersonating a user, Account admins can see exactly what that user sees and perform actions on their behalf.
 
+### Demo video
+
+<DocVideo src="https://youtu.be/SA-FrEuuz4I" />
+
 ### Prerequisite
 
 - A user must have the [Account Admin role](/docs/platform/role-based-access-control/add-manage-roles/#platform-roles) to impersonate other users.

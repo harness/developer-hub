@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2025
 
+### Version 25.06.86102 <!-- June 26, 2025 -->
+
+#### Fixed issues
+
+- Added support for an alternative method to fetch Jenkins job details when the queueItem API returns null. [CDS-109699]
+
 ### Version 25.06.86101 <!-- June 19, 2025 -->
 
 #### Fixed issues
@@ -2177,6 +2183,14 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 </details>
 
 ## Delegate Helm Chart release notes
+
+## June 2025
+
+### Version 1.0.25 <!--June 20, 2025-->
+
+#### New features and improvements
+
+- Updated the Delegate Helm chart to provide greater control over Horizontal Pod Autoscaling (HPA). If you prefer to skip the default CPU or memory-based autoscaling behavior, you can now disable it by setting the target utilization to `0`. [PL-63189]
 
 ## April 2025
 
