@@ -46,7 +46,7 @@ Use the following guidelines when configuring and running SonarQube scans in STO
   - Alternatively, configure STO images and pipelines to run as non-root users and manage self-signed certificates. For details, see [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 :::info
-STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
+STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates-in-sto).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
