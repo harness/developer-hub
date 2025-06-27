@@ -71,8 +71,7 @@ After all the set-up steps, you can review and finalise your inputs.
 ## Commitment Orchestrator Dashboard
 
 
-<DocImage path={require('./static/dashboard-co.png')} width="80%" height="80%" title="Click to view full size image" />
-
+<DocImage path={require('./static/dashboard-co.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Post set-up, you can view your dashboard with all the information required . You can manipulate the information shown according to the filters such as Instances and Regions and see all the information related to Computer Coverage, Savings, Commitment Utilisation alongwith Log history. This way, the dashboard allows you to easily keep a track of your commitments and make informed decisions.
 
@@ -85,8 +84,6 @@ Post set-up, you can view your dashboard with all the information required . You
 - **Commitment Utilisation**: Percentage of your purchased Reserved Instances and Savings Plans that are actively being used. 
 
 ### Compute Coverage Graph
-
-<DocImage path={require('./static/dashboard-co.png')} width="80%" height="80%" title="Click to view full size image" />
 
 The Compute Coverage Graph provides a visual representation of your EC2 compute usage coverage by Reserved Instances and Savings Plans over time. You can customize the view by grouping the data by:
 
@@ -115,7 +112,7 @@ The Commitment Utilisation Graph shows the percentage of your purchased Reserved
 
 ### Log History
 
-The Log History section provides a comprehensive audit trail of all Commitment Orchestrator activities, including recommendation generation, action execution, cost impact tracking, configuration changes, error logs, and performance metrics. The log history is filterable by date range, account, region, and action type, making it easy to analyze specific periods or troubleshoot particular issues.
+The Log History section provides a comprehensive audit trail of all Commitment Orchestrator activities, including date, connector name, type (RI Event and SP Event), description of the purchase.
 
 ### Active Actions
 
