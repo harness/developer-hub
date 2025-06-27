@@ -77,11 +77,13 @@ Harness supports two deployment modes in the CF environment for the chaos compon
 
 In this mode, LCI is installed directly as a systemd service in a TAS VM. It includes two different models:
 
-1. `model-1`: Installs LCI in a Diego Cell VM.  This allows the fault blast radius to be confined to the app containers and application processes on the cell under test only, with respect to purely CF-API driven faults and app instance (or container) level fault types.
-
-2. `model-2`: Installs LCI in the Ops Manager (Jumpbox) VM. This allows for multiple Diego Cells and the corresponding application containers deployed on them to be targeted. It requires BOSH SSH access to run the commands on the Diego Cells.
+1. `model-1`: Installs LCI and CFI in a Diego Cell VM.  This allows the fault blast radius to be confined to the app containers and application processes on the cell under test only, with respect to purely CF-API driven faults and app instance (or container) level fault types.
 
 ![](./static/images/deployment-model-3.png)
+
+2. `model-2`: Installs LCI and CFI in the Ops Manager (Jumpbox) VM. This allows for multiple Diego Cells and the corresponding application containers deployed on them to be targeted. It requires [BOSH SSH](https://community.pivotal.io/s/article/How-to-Run-Bash-Commands-via-BOSH?language=en_US) access to run the commands on the Diego Cells. This approach is used where the Diego cells are cordoned off in a private network that doesn't offer outbound connectivity.
+
+![](./static/images/deployment-tanzu-4.png)
 
 ### Run CF infrastructure as native CF app interacting with chaos sidecars
 
@@ -96,18 +98,10 @@ The fault injection is achieved using a two-tier agent, with:
 2. The second component runs as a sidecar process in the app instance that queries the first component for any task directed towards its own app instance ID/container, fetches the task and injects the chaos.
 
 :::note
-The second mode of deployment doesn't involve root privileges, and hence can't execute [application instance (or container level) faults](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#application-instance-or-container-level-faults).
+This mode of deployment doesn't involve root privileges, and hence can't execute [application instance (or container level) faults](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#application-instance-or-container-level-faults).
 :::
 
 ![](./static/images/sidecar.png)
-
-### Run LCI with Tanzu Ops manager
-
-This deployment model leverages a jump box (typically the Tanzu Ops Manager) to run the LCI and CFI. The model uses [`bosh` commands to run fault-injection commands](https://community.pivotal.io/s/article/How-to-Run-Bash-Commands-via-BOSH?language=en_US) remotely on the Diego cells. This approach is used where the Diego cells are cordoned off in a private network that doesn't offer outbound connectivity.
-
-In this model, the blast radius can extend to multiple cells as a part of a single fault (if you choose to) since the centralized CFI (on the jump box) can remotely inject faults on app instances across cells from the same location.
-
-![](./static/images/deployment-tanzu-4.png)
 
 ## CF faults classification
 

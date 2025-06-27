@@ -80,6 +80,40 @@ CF app stop:
 
 <VSphereSecrets />
 
+## Fault Permissions
+### List all applications the user or client has access to
+
+**Required Roles (any one):**
+-   `SpaceDeveloper` (in the app’s space)
+-   `SpaceAuditor` (read-only role in the app’s space)
+-   `OrgManager` or `OrgAuditor` (at the org level)
+
+**Required OAuth Scopes (for tokens):**
+-   `cloud_controller.read`
+-   `cloud_controller.admin`
+-   `cloud_controller.global_auditor`
+
+### Stop a specific application (i.e., changes its state to "STOPPED")
+
+**Required Roles:**
+-   `SpaceDeveloper` (must have write access in the app's space)    
+
+**Required OAuth Scopes:**
+-   `cloud_controller.write`
+-   `cloud_controller.admin`
+
+
+### Start a specific application (i.e., changes its state to "STARTED").
+
+**Required Roles:**
+-   `SpaceDeveloper` (must have write access in the app's space)
+
+**Required OAuth Scopes:**
+-   `cloud_controller.write`
+-   `cloud_controller.admin`
+
+---
+
 ### Fault Injector location
 The `faultInjectorLocation` input determines the fault injector placement with respect to where the LCI is hosted.
 - It supports one of: 

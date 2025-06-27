@@ -95,6 +95,51 @@ CF app route unmap:
 
 <VSphereSecrets />
 
+## Fault Permissions
+### Lists all apps that the user or system has visibility into
+
+**Required Roles (any one):**
+-   `SpaceDeveloper`
+-   `SpaceAuditor`
+-   `OrgManager`
+-   `OrgAuditor`
+
+**Required OAuth Scopes (any one):**
+-   `cloud_controller.read`
+-   `cloud_controller.admin`
+-   `cloud_controller.global_auditor`
+
+### Fetch routes associated with a specific app
+
+**Required Roles (any one):**
+-   `SpaceDeveloper`
+-   `SpaceAuditor`
+
+**Required OAuth Scopes (any one):**
+-   `cloud_controller.read`
+-   `cloud_controller.admin`
+-   `cloud_controller.global_auditor`
+
+### Remove (unmap) a specific route from the given app
+
+**Required Role:**
+-   `SpaceDeveloper` (in the space where the app exists)
+
+**Required OAuth Scopes (any one):**
+-   `cloud_controller.write`
+-   `cloud_controller.admin`
+
+### Associate (map) a specific route with an app
+
+**Required Role:**
+-   `SpaceDeveloper`
+
+**Required OAuth Scopes (any one):**
+-   `cloud_controller.write`
+-   `cloud_controller.admin`
+
+---
+
 ### Host
 The `host` input variable determines the host of the route which is un-mapped.
 For example, for a route `http://example-app.shared-domain.example.com`, the host is `example-app`.

@@ -117,6 +117,70 @@ CF app JVM method exception:
 
 <VSphereSecrets />
 
+## Fault Permissions
+### List all applications the user or client has access to
+**Required Roles (any one):**
+-   `SpaceDeveloper` (in the app’s space)
+-   `SpaceAuditor` (read-only role in the app’s space)
+-   `OrgManager` or `OrgAuditor` (at the org level)
+
+**Required OAuth Scopes (for tokens):**
+-   `cloud_controller.read`
+-   `cloud_controller.admin`
+-   `cloud_controller.global_auditor`
+
+### List all BOSH deployments
+**Required Role:**
+-   BOSH user with read permissions (typically `admin` or a user with `read` access to deployments)
+
+**Required Auth:**
+-   Valid BOSH UAA token with `bosh.read` scope
+
+### Establish SSH session to a Diego Cell via BOSH SSH
+**Required Role:**
+-   BOSH user with SSH access permissions for the Diego Cell instance group
+
+**Required Auth:**
+-   BOSH UAA token with `bosh.ssh` or `bosh.admin` scope
+
+### Use `cfdot` to list LRPs and locate app containers
+**Required Role:**
+-   Operator with SSH access to a cell and executable access to `cfdot`
+
+**Required Auth:**
+-   Requires `diego.read` scope in BOSH UAA or access to the Diego BBS with a trusted client certificate
+
+### Use `ctr` (containerd CLI) to get container-level metadata and target PIDs
+**Required Role:**
+-   SSH-level access to the cell host and root access (or `sudo`) to interact with containerd
+
+**Required Auth:**
+-   None via API; local root or elevated user access is required
+
+### Download Byteman artifacts into the target container
+**Required Role:**
+-   Root or privileged access to copy files into the app container’s namespace using tools like `nsenter` or `ctr`
+
+**Required Auth:**
+-   None via API; file access is performed locally via root privileges
+
+### Inject JVM chaos using Byteman scripts inside target containers
+
+**Required Role:**
+-   Root access to attach Byteman agent and execute scripts within the JVM process namespace
+
+**Required Auth:**
+-   None via API; requires PID-level access to the target JVM and execution rights
+
+### Remove injected chaos by clearing Byteman rules
+**Required Role:**
+-   Same as above — continued root-level access to the JVM process namespace
+
+**Required Auth:**
+-   None via API; local cleanup via script execution with appropriate permissions
+
+---
+
 ### Deployment Model
 The `deploymentModel` input specifies the LCI deployment model with respect to its placement in the host TAS VM.
 - It accepts one of: `model-1`, `model-2`.

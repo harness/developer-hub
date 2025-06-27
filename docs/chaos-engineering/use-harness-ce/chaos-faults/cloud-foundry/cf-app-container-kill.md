@@ -99,6 +99,55 @@ CF app container kill:
 
 <VSphereSecrets />
 
+## Fault Permissions
+### List all applications the user or client has access to
+**Required Roles (any one):**
+-   `SpaceDeveloper` (in the app’s space)
+-   `SpaceAuditor` (read-only role in the app’s space)
+-   `OrgManager` or `OrgAuditor` (at the org level)
+
+**Required OAuth Scopes (for tokens):**
+-   `cloud_controller.read`
+-   `cloud_controller.admin`
+-   `cloud_controller.global_auditor`
+
+### List all BOSH deployments
+**Required Role:**
+-   BOSH user with read permissions (typically `admin` or a user with `read` access to deployments)
+
+**Required Auth:**
+-   Valid BOSH UAA token with `bosh.read` scope
+
+### Establish SSH session to a Diego Cell via BOSH SSH
+**Required Role:**
+-   BOSH user with SSH access permissions for the Diego Cell instance group
+
+**Required Auth:**
+-   BOSH UAA token with `bosh.ssh` or `bosh.admin` scope
+
+### Use `cfdot` to list LRPs and locate app containers
+**Required Role:**
+-   Operator with SSH access to a cell and executable access to `cfdot`
+
+**Required Auth:**
+-   Requires `diego.read` scope in BOSH UAA or access to the Diego BBS with a trusted client certificate
+
+### Use `ctr` to get container-level metadata and target container PIDs
+**Required Role:**
+-   SSH-level access to the cell host and root access (or `sudo`) to interact with containerd
+
+**Required Auth:**
+-   None via API; requires root or elevated access on the host to inspect or query containerd
+
+### Kill the target container using `ctr`
+**Required Role:**
+-   Root access on the Diego Cell to execute `ctr tasks kill` or equivalent containerd lifecycle commands
+
+**Required Auth:**
+-   None via API; kill is performed via local host access and requires system-level privileges
+
+---
+
 ### Signal
 The `signal` input determines the signal to be sent while killing the container.
 - It defaults to `SIGKILL`.

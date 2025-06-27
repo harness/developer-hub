@@ -128,6 +128,58 @@ CF app network duplication:
 
 <VSphereSecrets />
 
+## Fault Permissions
+### List all applications the user or client has access to
+
+**Required Roles (any one):**
+-   `SpaceDeveloper` (in the app’s space)
+-   `SpaceAuditor` (read-only role in the app’s space)
+-   `OrgManager` or `OrgAuditor` (at the org level)
+
+**Required OAuth Scopes (for tokens):**
+-   `cloud_controller.read`
+-   `cloud_controller.admin`
+-   `cloud_controller.global_auditor`
+
+### List all BOSH deployments (only for model-2)
+**Required Role:**
+-   BOSH user with read permissions (typically `admin` or a user with `read` access to deployments)
+
+**Required Auth:**
+-   Valid BOSH UAA token with `bosh.read` scope
+
+### Establish SSH session to a Diego Cell via BOSH SSH (only for model-2)
+**Required Role:**
+-   BOSH user with SSH access permissions for the Diego Cell instance group
+
+**Required Auth:**
+-   BOSH UAA token with `bosh.ssh` or `bosh.admin` scope
+
+### Use `cfdot` to list LRPs and locate app containers
+**Required Role:**
+-   Operator with SSH access to a cell and executable access to `cfdot`
+
+**Required Auth:**
+-   Requires `diego.read` scope in BOSH UAA or access to the Diego BBS with a trusted client certificate
+
+### Use `ctr` (containerd CLI) to get container-level metadata
+**Required Role:**
+-   SSH-level access to the cell host and root access (or `sudo`) to interact with containerd
+
+**Required Auth:**
+-   None via API; local root or elevated user access is required
+
+### Run `nsenter` and `tc` to inject or remove chaos in target container network namespaces
+
+**Required Role:**
+-   Root access on the Diego Cell host (via BOSH SSH, for model-2)
+-   Ability to use Linux `nsenter` and `tc` tools within container network namespaces
+
+**Required Auth:**
+-   None via API; requires local machine-level root privileges
+
+---
+
 ### Deployment Model
 The `deploymentModel` input specifies the LCI deployment model with respect to its placement in the host TAS VM.
 - It accepts one of: `model-1`, `model-2`.
