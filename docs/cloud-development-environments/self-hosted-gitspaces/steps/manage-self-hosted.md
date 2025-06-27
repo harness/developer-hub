@@ -45,7 +45,7 @@ Here's how you can create a Self Hosted Gitspace:
 1. Navigate to the desired **Organization** and **Project**.
 2. Click on **Gitspaces** in the left navigation panel.
 3. Click on **New Gitspace**.
-4. Enter the required Gitspace details. Refer to this [documentation](/docs/cloud-development-environments/steps/manage-gitspaces/create-gitspaces.md) for field descriptions.
+4. Enter the required Gitspace details. Refer to this [documentation](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md) for field descriptions.
 5. Under **Infra Provider Type**, select the infrastructure you configured earlier. You can identify it by the **Infrastructure Name** you provided.
 6. Choose the **Region**, populated from the region details configured in your infrastructure.
 7. Select the **Machine Type**, populated from the machines you added to the infrastructure.

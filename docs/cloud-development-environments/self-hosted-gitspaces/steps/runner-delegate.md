@@ -7,7 +7,7 @@ sidebar_label: Setup Runner and Install Delegate
 
 To configure self hosted Gitspaces in your own infrastructure, you need to host and setup **Harness Delegate** and **Runner** in your own infrastructure. Both Harness Delegate and Runner are required to be hosted in your GCP infrastructure to establish a seamless connection between the Harness Control Plane and your GCP infrastructure. 
 
-Once you have the [Harness Gitspaces Terraform Module configured and setup](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md), you'll have a **GCP VM instance active** and running in your GCP project which will be used to host your Harness Delegate and Runner. 
+Once you have the [Harness Gitspaces Terraform Module configured and setup](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md), you'll have a **GCP VM instance active** and running in your GCP project which will be used to host your Harness Delegate and Runner. 
 
 ## Prerequisites
 1. Ensure you've read through the **fundamentals and prerequisites** of self hosted gitspaces [here](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). This helps you get a deeper understanding of all the basic concepts and steps involved with self hosted gitspaces. 
