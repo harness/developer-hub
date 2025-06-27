@@ -6,6 +6,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from: 
 - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives
+- /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-a-budget-perspective
+- /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/share-cost-perspective-report
+- /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/export-perspective-data
+
 ---
 
 import Tabs from '@theme/Tabs';

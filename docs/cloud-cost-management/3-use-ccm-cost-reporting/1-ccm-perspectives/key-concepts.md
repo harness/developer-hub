@@ -4,6 +4,10 @@ description: Key Concepts
 sidebar_position: 4
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+- /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/filters-in-perspectives
+- /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences
+
 ---
 
 import Tabs from '@theme/Tabs';
