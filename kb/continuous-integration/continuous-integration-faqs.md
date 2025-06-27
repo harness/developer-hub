@@ -297,7 +297,7 @@ For Harness CI Cloud machine specs, go to [Harness Cloud image specifications](h
 
 ### Can I use my own secrets manager with Harness Cloud build infrastructure?
 
-No. To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), you must use the built-in Harness secrets manager.
+Yes, Harness supports secret managers from various cloud providers, including HashiCorp Vault.
 
 ### Connector errors with Harness Cloud build infrastructure
 
