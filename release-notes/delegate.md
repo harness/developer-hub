@@ -106,6 +106,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Enhanced system stability and regular checks implemented to ensure reliability.
 
+### Version 25.06.85906 <!--June 27, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue when the log line exceeds the maximum length, it will split into multiple lines, causing the sanitization not to detect when content is present in different lines. [CDS-111820]
+
 ### Version 25.05.85905 <!--June 03, 2025-->
 
 #### Fixed issues
