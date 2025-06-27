@@ -210,6 +210,8 @@ The image you use should support the CDK operations you are running in your app.
 
 You can find all current tags on Docker Hub: [harness/aws-cdk-plugin - Docker Hub](https://hub.docker.com/r/harness/aws-cdk-plugin/tags)
 
+Harness also supports **`amd64`** architecture for these plugin images. You can find the corresponding tags (such as `harness/aws-cdk-plugin:1.3.0-2.1019.2-linux-amd64-unified`) on [Docker Hub](https://hub.docker.com/r/harness/aws-cdk-plugin/tags?name=amd64).
+
 ## Git Clone step
 
 The Git Clone step is the first stage **Execution** step added to the containerized step group for Harness CDK.
