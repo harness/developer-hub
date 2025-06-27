@@ -53,7 +53,7 @@ Being part of the Amazon EC2 Spot Service Ready Program distinguishes Harness as
 | Feature | Karpenter | Cluster Orchestrator |
 |---------|-----------|---------------------|
 | **Cost Savings Visibility** | No visibility into cost savings achieved through Spot usage | Real-Time Savings Insights: Track actual cost savings from Spot node utilization |
-| **Cluster Cost Insights** | Lacks insights into cluster cost optimization potential | Comprehensive Cost Analysis: Integration with CCM provides deep cluster cost visibility |
+| **Cluster Cost Insights** | Lacks insights into cluster cost optimization potential | Comprehensive Cost Analysis: Perspectives provide deep cluster cost visibility |
 
 ### 3. Intelligent Bin Packing
 
@@ -69,20 +69,21 @@ This feature is exclusive to Cluster Orchestrator and provides unprecedented con
 - **Base Capacity Management**: Maintain minimum On-Demand replicas for critical traffic
 - **Workload-Aware Scaling**: Scale additional capacity on cost-effective Spot nodes
 - **Traffic Pattern Optimization**: Ideal for applications requiring guaranteed availability with cost-efficient scaling
+
 ### 5. Commitment Utilization Guarantee
 
 **Karpenter:**
-- No awareness of Reserved Instances or Savings Plans
-- Can lead to over-provisioning and missed commitment utilization
+- No active or complete management of Reserved Instances or Savings Plans
+- Requires manual configuration on your nodepools
+- Can lead to over-provisioning and missed commitment utilization if manual data is not correct
 
 **Cluster Orchestrator:**
 - **Commitment Integration**: Full integration with Harness Commitment Orchestrator
-- **Guaranteed Utilization**: Ensures maximum utilization of existing commitments
+- **Utilization**: Ensures maximum utilization of idle commitment capacity
 - **Cost Optimization**: Prevents over-provisioning by leveraging pre-purchased capacity
-- **Financial Efficiency**: Maximizes ROI on Reserved Instances and Savings Plans
 
 ### 6. Replacement Schedules
 
 **Cluster Orchestrator:**
-- **Scheduled Operations**: Control when disruptive operations (bin packing, consolidation, reverse fallback) execute
+- **Scheduled Operations**: Time-window based control when disruptive operations (bin packing, consolidation, reverse fallback) execute
 - **Business-Aware Scheduling**: Prevent disruptions during critical business hours

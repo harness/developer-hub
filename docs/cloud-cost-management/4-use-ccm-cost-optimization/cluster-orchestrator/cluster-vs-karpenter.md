@@ -19,7 +19,7 @@ helpdocs_is_published: true
 | **Setup Complexity** | Requires manual SQS Queue setup and maintenance | Works out-of-the-box with zero configuration |
 | **Interruption Handling** | Basic SQS-based monitoring | Sophisticated interruption prediction and handling |
 | **Node Selection** | Limited strategy options | Configurable strategies (cost-optimized, least-interrupted) |
-| **Fallback Mechanism** | Basic fallback to On-Demand | Intelligent fallback with reverse fallback capability |
+| **Fallback Mechanism** | Basic fallback to On-Demand | Intelligent fallback with reverse fallback capability with schedule-based time window|
 
 **Cluster Orchestrator Advantages:**
 - **Zero Configuration**: No need to set up and maintain SQS queues for interruption monitoring
