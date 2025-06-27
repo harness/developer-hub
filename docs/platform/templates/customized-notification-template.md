@@ -122,28 +122,46 @@ Here are the notification methods and their sample payload format:
 
 
 <Tabs>
-  <TabItem value="email" label="Email/Webhook" default>
+  <TabItem value="email" label="Email" default>
 
 Here is a sample template for Email notification:
 
 ```yaml
 template:
-  name: emailtemp1
-  identifier: emailtemp1
-  versionLabel: v0
+  name: email-template
   type: Notification
   projectIdentifier: samples
   orgIdentifier: default
   tags: {}
   spec:
     body:
-      content: |-
-        subject: Pipeline Event: <+pipeline.name>
-        body: "sending custom template <+notification.variables.runtimeVar>"
+      content: |
+        subject: Harness Pipeline Notification
+        body: |
+          Hello,
+
+          Here's a summary of your pipeline execution:
+
+          Pipeline Name: <+pipeline.name>
+          Status: <+pipeline.status>
+
+          Stage Name: <+stage.name>
+
+          View Execution:
+          <+pipeline.executionUrl>
+
+
+          Regards,
+          Harness CI/CD
       type: YAML
     variables: []
-
+  identifier: email-template
+  versionLabel: v0
   ```
+
+  Here's how the notification would look like when the above template is used in the notification rule:
+
+  ![](./static/email-template.png)
 
   </TabItem>
   <TabItem value="datadog" label="Datadog">
@@ -152,8 +170,8 @@ Here is a sample template for Datadog notification:
 
 ```yaml
 template:
-  name: DataDogTempNoti2
-  identifier: DataDogTempNoti2
+  name: datadog-template
+  identifier: datadog-template
   type: Notification
   projectIdentifier: samples
   orgIdentifier: default
@@ -162,7 +180,7 @@ template:
     body:
       content: |
         {
-          "title": "Pipeline Event by Brooke: <+pipeline.name>",
+          "title": "Pipeline Event by Harness : <+pipeline.name>",
           "text": "Pipeline **<+pipeline.name>** has **<+notification.eventType>**.\n\n• **Project:** `<+project.identifier>`\n• **Org:** `<+org.identifier>`\n• **Execution URL:** `<+pipeline.executionUrl>`\n• **Detail 1:** `<+notification.variables.var1>`\n• **Detail 2:** `<+notification.variables.var2>``\n• **Detail 3:** `<+notification.variables.var3>",
           "tags": [
             "pipeline:<+pipeline.name>",
@@ -193,8 +211,10 @@ template:
         value: <+stage.name>
         type: string
   versionLabel: v2
-
 ```
+Here's how the notification would look like when the above template is used in the notification rule:
+
+![](./static/datadog-template.png)
 
   </TabItem>
 
@@ -204,7 +224,9 @@ Here is a sample template for Microsoft Teams notification:
 
 ```yaml
 template:
-  name: ConnectorMSteamTemp
+  name: MSteamTemplate
+  identifier: MSteamTemplate
+  versionLabel: v0
   type: Notification
   projectIdentifier: samples
   orgIdentifier: default
@@ -213,45 +235,80 @@ template:
     body:
       content: |
         {
-          "@type": "MessageCard",
-          "themeColor": "#0078D7",
-          "summary": "<+notification.eventType>",
-          "sections": [
+          "type": "message",
+          "attachments": [
             {
-              "activityTitle": "Pipeline [<+pipeline.name>](<+pipeline.executionUrl>) <+pipeline.status>",
-              "activitySubtitle": "In Project <+project.name>",
-              "activityImage": "https://s3.amazonaws.com/wings-assets/slackicons/${IMAGE_STATUS}.png",
-              "facts": [
-                {
-                  "name": "Pipeline",
-                  "value": "<+pipeline.name>"
-                },
-                {
-                  "name": "Project",
-                  "value": "<+project.identifier>"
-                },
-                {
-                  "name": "TriggeredBy",
-                  "value": "<+notification.triggeredBy>"
-                },
-                {
-                  "name": "Events",
-                  "value": "Started on <+formatDate(pipeline.startTs)>; <+pipeline.status> at <+formatDate(pipeline.endTs)>; took <+pipeline.duration>s"
-                },
-                {
-                  "name": "Execution",
-                  "value": "<+pipeline.executionUrl>"
-                }
-              ]
+              "contentType": "application/vnd.microsoft.card.adaptive",
+              "content": {
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                "type": "AdaptiveCard",
+                "version": "1.2",
+                "body": [
+                  {
+                    "type": "Image",
+                    "url": "https://s3.amazonaws.com/wings-assets/slackicons/${IMAGE_STATUS}.png",
+                    "size": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "size": "Medium",
+                    "weight": "Bolder",
+                    "text": "Pipeline [<+pipeline.name>](<+pipeline.executionUrl>) <+pipeline.status> by <+notification.variables.runtimeVar>",
+                    "wrap": true
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "In Project <+project.name> by <+notification.variables.runtimeVar>",
+                    "isSubtle": true,
+                    "wrap": true
+                  },
+                  {
+                    "type": "FactSet",
+                    "facts": [
+                      {
+                        "title": "Pipeline Name",
+                        "value": "<+pipeline.name>"
+                      },
+                      {
+                        "title": "Status",
+                        "value": "<+pipeline.status>"
+                      },
+                      {
+                        "title": "Stage Name",
+                        "value": "<+stage.name>"
+                      },
+                      {
+                        "title": "Execution URL",
+                        "value": "<+pipeline.executionUrl>"
+                      }
+                    ]
+                  }
+                ],
+                "actions": [
+                  {
+                    "type": "Action.OpenUrl",
+                    "title": "View Details",
+                    "url": "<+pipeline.executionUrl>"
+                  }
+                ]
+              }
             }
           ]
         }
       type: JSON
-    variables: []
-  identifier: ConnectorMSteamTemp
-  versionLabel: v0
-
+    variables:
+      - name: var1
+        value: var1ValuePassed
+        type: string
+      - name: runtimeVar
+        value: <+input>
+        type: string
+  description: This is a perfect template all details are provided and the view details (msteams) button will work.
 ```
+
+Here's how the notification would look like when the above template is used in the notification rule:
+
+![](./static/ms-template.png)
 
   </TabItem>
 
@@ -261,7 +318,7 @@ Here is a sample template for Slack notification:
 
 ```yaml
 template:
-  name: SlackTempUpdated
+  name: SlackTemplate
   type: Notification
   projectIdentifier: samples
   orgIdentifier: default
@@ -296,31 +353,6 @@ template:
                         "short": true
                       },
                       {
-                        "title": "Service Name",
-                        "value": "<+service.name>",
-                        "short": true
-                      },
-                      {
-                        "title": "Environment Name",
-                        "value": "<+env.name>",
-                        "short": true
-                      },
-                      {
-                        "title": "Namespace",
-                        "value": "<+infra.namespace>",
-                        "short": true
-                      },
-                      {
-                        "title": "Event Type",
-                        "value": "<+notification.eventType>",
-                        "short": true
-                      },
-                                    {
-                        "title": "Error Message",
-                        "value": "<+notification.errorMessage>",
-                        "short": true
-                      },
-                      {
                         "title": "Execution URL",
                         "value": "<+pipeline.executionUrl>",
                         "short": false
@@ -350,6 +382,10 @@ template:
   versionLabel: v4
   ```
 
+  Here's how the notification would look like when the above template is used in the notification rule:
+
+  ![](./static/slack-template.png)
+
 
   </TabItem>
   <TabItem value="pagerduty" label="PagerDuty">
@@ -359,15 +395,17 @@ Here is a sample template for PagerDuty notification:
 ```yaml
 template:
   name: JsonPagerDuty
+  identifier: JsonPagerDuty
+  versionLabel: "1"
   type: Notification
-  projectIdentifier: samples
+  projectIdentifier: sample-project
   orgIdentifier: default
   tags: {}
   spec:
     body:
-      content: |2-
-         {
-                "summary": "<+notification.eventType>: <+pipeline.name>, triggered by Brooke. Started on <+notification.startTs> and <+notification.eventType> on <+notification.endTs> with duration <+notification.duration>. Testing custom template <+notification.variables.var1>",
+      content: |-
+        {
+                "summary": "This is a Pipeline notification from Harness",
                 "link": {
                   "href": "harness.io",
                   "text": "Harness"
@@ -376,11 +414,13 @@ template:
       type: JSON
     variables:
       - name: var1
-        value: pipelineNotify234
+        value: Harness
         type: string
-  identifier: JsonPagerDuty
-  versionLabel: v1
 ```
+
+Here's how the notification would look like when the above template is used in the notification rule:
+
+![](./static/pagerduty-notification.png)
 
   </TabItem>
   <TabItem value="webhook" label="Webhook">
@@ -412,7 +452,7 @@ template:
         type: string
 ```
 
-Below is an example of the JSON response received when this notification is triggered:
+Here's how the notification would look like when the above template is used in the notification rule:
 
 ![](./static/yaml-notification.png)
 
