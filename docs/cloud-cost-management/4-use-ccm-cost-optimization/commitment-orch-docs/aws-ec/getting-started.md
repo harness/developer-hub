@@ -70,7 +70,6 @@ After all the set-up steps, you can review and finalise your inputs.
 
 ## Commitment Orchestrator Dashboard
 
-
 <DocImage path={require('./static/dashboard-co.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Post set-up, you can view your dashboard with all the information required . You can manipulate the information shown according to the filters such as Instances and Regions and see all the information related to Computer Coverage, Savings, Commitment Utilisation alongwith Log history. This way, the dashboard allows you to easily keep a track of your commitments and make informed decisions.
@@ -93,7 +92,7 @@ The Compute Coverage Graph provides a visual representation of your EC2 compute 
 
 ### Savings Graph
 
-<DocImage path={require('./static/savings-graph.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/savings-graph.png')} width="100%" height="100%" title="Click to view full size image" />
 
 The Savings Graph displays the total cost savings achieved through Reserved Instances and Savings Plans compared to On-Demand rates. You can customize the view by grouping the data by:
 

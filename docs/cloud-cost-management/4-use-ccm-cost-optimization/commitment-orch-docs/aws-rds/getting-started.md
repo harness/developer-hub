@@ -101,16 +101,3 @@ You can change and select the mode (either automatic approval or manual approval
 :::
 
 
-### Interactive walkthrough for set-up
-
-<iframe 
-    src="https://app.tango.us/app/embed/30ae820c-7055-4b85-b11b-2ecdaae818b4" 
-    title="Set up Commitment Orchestrator" 
-    style={{minHeight:'640px'}}
-    width="100%" 
-    height="100%" 
-    referrerpolicy="strict-origin-when-cross-origin" 
-    frameborder="0" 
-    webkitallowfullscreen="webkitallowfullscreen" 
-    mozallowfullscreen="mozallowfullscreen" 
-    allowfullscreen="allowfullscreen"></iframe>
