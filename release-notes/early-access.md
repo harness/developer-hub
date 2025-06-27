@@ -190,16 +190,9 @@ No early access (beta) features are available for the Harness Supply Chain Secur
 
 ## STO early access features
 
-The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
-<!-- No early access features are available for the Harness Security Testing Orchestration module. Go to [STO Release Notes](/release-notes/security-testing-orchestration) for all the latest updates.  -->
+<!-- The following early access (beta) feature is available for the Harness Security Testing Orchestration module. -->
+No early access features are available for the Harness Security Testing Orchestration module. Go to [STO Release Notes](/release-notes/security-testing-orchestration) for all the latest updates. 
 
-#### Exemptions support for Account and Organization
-
-* **GA date:** May 2025
-* **Early access release date:** April 2025
-* **Early access release version:** v1.136.1
-* **Issue number:** STO-6260
-* **Feature flag:** `STO_GLOBAL_EXEMPTIONS`
 
 ## SRM early access features
 
