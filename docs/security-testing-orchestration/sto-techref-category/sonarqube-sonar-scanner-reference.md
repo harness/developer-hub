@@ -15,36 +15,46 @@ helpdocs_is_published: truex
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
 
- You can run scans and ingest results from [SonarQube](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
+Harness STO integrates with [SonarQube](https://docs.sonarqube.org/latest/) to scan your code repositories for vulnerabilities, enforce policies, and maintain code quality. The SonarQube step supports all the three STO scan modes: **Orchestration**, **Ingestion**, and **Extraction**.
 
-<DocVideo src="https://www.youtube.com/embed/qP0TUQuTSfI?si=yzQslx3sXdQjXWTi" /> 
+**Language Support**: All languages supported by SonarQube are compatible. Refer to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/) for prerequisites specific to your repository's language.
 
-## Important notes for running SonarQube scans in STO
+<DocVideo src="https://www.youtube.com/embed/qP0TUQuTSfI?si=yzQslx3sXdQjXWTi" />
 
-* STO supports repository scanning only for SonarQube.
-* STO supports all languages supported by SonarQube.
-* Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. <!-- Need to confirm this sentece per https://harness.atlassian.net/browse/DOC-3640 If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan. -->
-  For details about specific language requirements, go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/).
-* By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestration and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube step. 
-* You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
-* You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+### SonarQube Issue categorization in STO
 
-### Root access requirements 
+STO categorizes the SonarQube issues with severities: **Critical**, **High**, **Medium**, **Low**, and **Info**. The table below outlines how specific SonarQube issue types are classified in STO.
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
+| SonarQube Issue Type        | STO Categorization                                                        |
+|-----------------------------|-----------------------------------------------------------------------------------|
+| Vulnerabilities         | Imported, normalized, deduplicated and assigned [STO severity levels](/docs/security-testing-orchestration/get-started/key-concepts/severities)            |
+| Code Smells, Bug Smells, Maintainability issues| Imported and categorized under **Info** severity.                                   |
+| [Quality Gates (Policies)](#view-sonarqube-quality-gate-failures)| Imported and categorized as policy issues with **Info** severity.                   |
+| [Code Coverage](#view-sonarqube-code-coverage-results)           | Imported as both a step output variable and a policy issue with **Info** severity.  |
+| Hotspots                | Currently not supported by STO.                                                   |
 
-<StoRootRequirements />
+### Step configuration guidelines
 
+Use the following guidelines when configuring and running SonarQube scans in STO:
 
-### For more information
+#### Resource Allocation
+  - By default, STO allocates **500Mi memory** for SonarQube scans, suitable primarily for Ingestion scans.
+  - For Orchestration and Extraction scans, allocate at least **2GB memory**. Customize resource limits per [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources).
+
+#### Certificates and Root Access
+  - Run scans with root access if adding trusted certificates at runtime.
+  - Alternatively, configure STO images and pipelines to run as non-root users and manage self-signed certificates. For details, see [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+
+:::info
+STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
-
 <StoMoreInfo />
+:::
 
-## SonarQube step settings for STO scans
+## SonarQube step settings
 
 
 The recommended workflow is to add a SonarQube step to a Security or Build stage and then configure it as described below.
