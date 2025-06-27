@@ -159,6 +159,12 @@ import StoSettingToolProjectName from '../shared/step-palette/tool/project/name.
 
 If the specified project does not exist, the step will create a new project using the provided Project Name.
 
+#### Use Raw Scanner Severity
+
+import ScannerProvidedSeverity from '../shared/use-scanner-provided-severity.md';
+
+<ScannerProvidedSeverity />
+
 
 ### Log Level
 
@@ -187,12 +193,6 @@ import ScannerRefAdditionalConfigs from '../shared/additional-config.md';
 import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
-
-## Use scanner-provided Severity
-
-import ScannerProvidedSeverity from '../shared/use-scanner-provided-severity.md';
-
-<ScannerProvidedSeverity />
 
 ## Proxy settings
 

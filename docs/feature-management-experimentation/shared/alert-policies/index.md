@@ -109,7 +109,7 @@ You can find this value under the Stdev column in the Metric Dispersion section 
 <iframe
   src="https://exp-calc-alertmeans-confwindow-baf229399d58.herokuapp.com/"
   width="100%"
-  height="600"
+  height="900"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',
@@ -122,7 +122,7 @@ You can find this value under the Stdev column in the Metric Dispersion section 
 <iframe
   src="https://exp-calc-alertprop-confwindow-8c155dbd4fc1.herokuapp.com/"
   width="100%"
-  height="600"
+  height="900"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',

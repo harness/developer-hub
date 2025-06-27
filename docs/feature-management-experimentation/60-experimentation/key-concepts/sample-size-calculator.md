@@ -30,7 +30,7 @@ If your metric is a count, sum, average or ratio metric, use the [first calculat
 <iframe
   src="https://exp-calculators-means-9ecaf91e3a35.herokuapp.com/"
   width="100%"
-  height="600"
+  height="900"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',
@@ -43,7 +43,7 @@ If your metric is a count, sum, average or ratio metric, use the [first calculat
 <iframe
   src="https://exp-calculators-proportions-00c422485fac.herokuapp.com/"
   width="100%"
-  height="600"
+  height="800"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',
@@ -66,7 +66,7 @@ The second graph shows you how large or small the comparison metric would need t
 <iframe
   src="https://csb-16kyv-2r8njoik3.now.sh/?codemirror=1"
   width="100%"
-  height="600"
+  height="2400"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',
@@ -79,7 +79,7 @@ The second graph shows you how large or small the comparison metric would need t
 <iframe
   src="https://csb-5kd7k-42pc8nrsq.now.sh/?codemirror=1"
   width="100%"
-  height="600"
+  height="2300"
   style={{
     border: '1px solid #ccc',
     borderRadius: '8px',

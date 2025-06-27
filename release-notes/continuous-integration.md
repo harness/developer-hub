@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-05-27T10:00
+date: 2025-06-18T10:00
 sidebar_position: 10
 ---
 
@@ -26,19 +26,9 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 **Network Allowlisting Update for Cloud Linux/ARM**
 
-To ensure reliability when using Linux/ARM cloud machines, we've expanded our infrastructure to include machines in additional regions.
+Harness supports allowlisting of its SaaS infrastructure IPs to enable secure access to private networks. This is helpful when you want to connect Harness to internal systems such as Kubernetes clusters, artifact repositories, SCMs, or other internal services.
 
-**Action Required:**
-If your pipelines use Linux/ARM Cloud machines, require access to on-premises resources and rely on IP allowlisting, please make sure to allowlist the following new IPs:
-```
-34.143.191.93, 34.142.250.64, 34.126.140.239, 34.124.243.76, 34.124.141.152, 34.141.177.40, 34.32.206.247
-35.204.0.244, 34.13.223.178, 34.91.227.239
-```
-
-Please visit [new subscription page](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#allowlisting-for-accessing-resources-in-your-private-network) for full list of IPs.
-
-If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
-
+We recommend contacting [Harness Support](https://support.harness.io/) to receive the correct list of IPs and guidance based on your use case, region, and Harness modules in use.
 :::
 
 :::note
@@ -53,16 +43,38 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 ## June 2025
 
+### Version 1.84
+
+<!-- 2025-06-16 -->
+
+#### New features and enhancements
+- Added [**Secure Connect**](/docs/continuous-integration/secure-ci/secure-connect/) support for the Vault connector in the UI. (CI-17710, ZD-84099)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/harness-cache-server`    |  Fixed an issue with Amazon s3 bucket uploads with presigned URLs for Harness Build Intelligence | 1.7.2              | 1.7.3       |
+
 ### Version 1.83
 
 <!-- 2025-06-09 -->
 
 #### New features and enhancements
 - Improved error handling in CI steps by adding null safety checks for Pod and PodStatus objects to prevent `NullPointerException`. (CI-17294)
-- Added [**Secure Connect**](/docs/continuous-integration/secure-ci/secure-connect/) support for the Vault connector in the UI. (CI-17710, ZD-84099)
 
 #### Fixes issues
 - Resolved compatibility issues with the `gradle-build-cache-plugin` for Java 8. After the update, the plugin was verified to work with JDK 8, JDK 11, and JDK 17. (CI-15707)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/ci-addon`          | Resolved addon connection errors in Delegate build pipeline.  | 1.16.88              | 1.16.90       |
+| `harness/ci-lite-engine`    |  Resolved addon connection errors in Delegate build pipeline. | 1.16.88              | 1.16.90       |
+| `plugins/kaniko-acr`    |  Added push-only support to `kaniko-acr`. | 1.10.7              | 1.11.2      |
+| `harness/harness-cache-server`    |  Moved build cache proxy server to containerless. | 1.7.1              | 1.7.2       |
+| `plugins/cache`    |  Changed cache restore behavior when multiple cache key entries share a common prefix. | 1.9.7              | 1.9.8       |
 
 ### Version 1.82
 
@@ -568,22 +580,6 @@ when using CommitSha as the build type (CI-17163, ZD-82770).
 | `plugins/docker` | Addressed security vulnerabilities | 20.18.5              | 20.18.6         |
 
 ## December 2024
-
-:::note
-
-**Network allowlisting Update for Hosted macOS Infrastructure (M2 Machines)**
-
-Harness Cloud users utilizing hosted macOS infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration:
-
-To ensure uninterrupted connectivity and functionality for your CI builds, please add to allowlist the following IP range in your network settings by December 15th, 2024:
-
-IP Range: 207.254.53.128/25
-
-This update also includes a transition to M2 machines, offering improved performance and efficiency for your builds.
-
-If you have any questions or need assistance with the allowlisting process, please contact Harness Support.
-
-:::
 
 ### Version 1.58
 

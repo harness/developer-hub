@@ -119,7 +119,7 @@ You can access **Administrative Settings** from your Harness UI directly using t
 1. In Harness, go to **Account Settings** → **User Groups** under **Access Control**.
 2. Click **New User Group**.
 3. Name the group **Catalog Create Users**. (Optional: Add a description and tags.)
-4. Under **Add Users**, select the users to include in this group.
+4. Under **Add Users**, select the users to include in this group.~
 5. Click **Save**.
 </TabItem>
 </Tabs>

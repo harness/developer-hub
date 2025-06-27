@@ -13,16 +13,14 @@ This topic provides use cases for some of the most popular widgets available wit
 
 For teams working on DevOps, DORA metrics like Deployment Frequency and Change Failure Rate are important. If your team uses Jenkins as the CI and CD tool, the following widgets can help you identify delays in delivery and monitor the effectiveness of your recovery from issues.
 
-* [Create a DORA profile]/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview#dora-profile)
 * [Deployment Frequency](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/#deployment-frequency)
 * [Change Failure Rate](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/#change-failure-rate)
 
-### Measure lead time
+:::note
 
-The Jenkins integration can be used to configure the Workflow profile for measuring the lead time metric. Tracking lead time for changes is essential to understanding how quickly new code reaches production. The CI/CD stages in Lead Time can highlights areas in the CI/CD pipeline that may require optimization to improve the build time or delivery speed.
+The SEI Jenkins integration doesn’t currently support lead time tracking out of the box. To capture this metric, you’ll need to use the Custom CI/CD API to send artifact details into SEI. You can learn more about how to set this up in the [DORA CI/CD Correlation](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/dora-ci-cd-correlation).
 
-* [Lead Time for Changes (DORA widget)](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/#lead-time-for-changes)
-* [Lead Time reports (Velocity Lead Time widgets)](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time)
+:::
 
 ### Job and pipeline run frequency
 
@@ -39,9 +37,3 @@ Analyzing job duration can help to optimize build times and streamline CI/CD wor
 * [CI/CD Job Duration Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-duration-report)
 * [CI/CD Job Duration Single Stat](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-duration-single-stat)
 * [CI/CD Job Duration Trend Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-duration-trend-report)
-
-:::info
-
-The Jenkins integration in SEI supports numerous other widgets. For more recommendations or to explore additional widgets, contact [Harness Support](/docs/software-engineering-insights/sei-support) for guidance.
-
-:::

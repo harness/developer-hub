@@ -128,6 +128,32 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## June 2025
+
+### Version 1.94.x <!--June 17, 2025-->
+
+#### Fixed issues
+
+- Previously, selecting a higher-level Secret Manager (like Account scope) without access to lower levels (like Organization scope) caused the Secret Manager screen to keep loading. This is now fixed, and users can select and use Secret Managers without issues. [PL-63165]
+
+#### New Feature and Enhancement 
+
+- Added logging to capture Kubernetes events during delegate shutdown. This will help in better understanding and troubleshooting shutdown behaviour by providing more visibility into related cluster events. [PL-60516]
+- Added support for managing access control for [connectors through tags](https://developer.harness.io/docs/platform/connectors/manage-access-control-for-connectors). This feature is currently behind the feature flag: `PL_TAG_BASED_ACCESS_TO_CONNECTORS`. [PL-43468]
+
+### Version 1.93.x <!--June 10, 2025-->
+
+#### Fixed issues
+
+- Resolved missing "Variable" option in the Audit Filter dropdown list. [PL-63195]
+- Navigating to a role or resource group from user role bindings no longer leads to a blank page. [PL-63154]
+- Code Repository resource group now appears correctly in the resource group list. [PL-63120]
+
+#### New Feature and Enhancement 
+
+- Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance. [PL-62957]
+- Added support for [Custom Notifications](https://developer.harness.io/docs/platform/templates/customized-notification-template/) for all remaining channels: Email, Slack, Microsoft Teams, Datadog, PagerDuty.
+
 ## May 2025
 
 ### Version 1.91.x <!-- May 27, 2025-->

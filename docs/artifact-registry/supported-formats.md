@@ -11,16 +11,31 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
 <DynamicMarkdownSelector
   options={{
     Docker: {
-      path: "/artifact-registry/content/docker-quickstart.md",
+      path: "/artifact-registry/content/supported-formats/docker-quickstart.md",
       logo: "docker-logo.svg"
     },
     Maven: {
-      path: "/artifact-registry/content/maven-quickstart.md",
-      logo: "maven-logo.svg"
+      path: "/artifact-registry/content/supported-formats/maven-quickstart.md",
+      logo: "maven-logo.svg",
+      iconOnly: true,
     },
     Generic: {
-      path: "/artifact-registry/content/generic-quickstart.md",
+      path: "/artifact-registry/content/supported-formats/generic-quickstart.md",
       logo: "generic-logo.svg"
+    },
+    Python: {
+      path: "/artifact-registry/content/supported-formats/python-quickstart.md",
+      logo: "python-logo.svg"
+    },
+    NPM: {
+      path: "/artifact-registry/content/supported-formats/npm-quickstart.md",
+      logo: "npm-logo.svg",
+      iconOnly: true,
+    },
+    Helm: {
+      path: "/artifact-registry/content/supported-formats/helm-quickstart.md",
+      logo: "helm-logo.svg",
+      logoSize: 28
     }
   }}
 />

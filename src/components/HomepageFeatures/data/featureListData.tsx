@@ -65,7 +65,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ccm,
     icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
-    link: "docs/cloud-cost-management",
+    link: "docs/category/get-started-with-ccm",
   },
   {
     title: "Orchestrate Security Tests",
@@ -142,6 +142,6 @@ export const featureList: CardItem[] = [
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: <>Install Harness Platform on self-managed Kubernetes cluster.</>,
-    link: "docs/category/get-started-with-smp",
+    link: "docs/self-managed-enterprise-edition",
   },
 ];

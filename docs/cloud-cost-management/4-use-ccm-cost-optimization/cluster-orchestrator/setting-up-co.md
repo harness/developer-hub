@@ -7,7 +7,8 @@ helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
-  - /docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting_up_co
+  - /docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting_up_co/
+
 ---
 
 To enable Cluster Orchestrator for AWS EKS clusters associated with your account, follow these two simple steps:
@@ -15,7 +16,6 @@ To enable Cluster Orchestrator for AWS EKS clusters associated with your account
 ### Step 1: Enable feature flag
 
 Currently, this early access feature is behind a feature flag . Contact [Harness Support](mailto:support@harness.io) to enable the feature. After it is enabled, you can see it directly in the navigation bar.
-
 
 Currently Cluster Orchestrator can be set up using two methods:
 a. Helm Based installation

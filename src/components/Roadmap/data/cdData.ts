@@ -150,22 +150,20 @@ export const CdData: Horizon = {
         title: "Integration with DataDog",
         description: "Users can integrate Harness pipelines with DataDog for real-time monitoring, logging, and performance insights.",
       },
-
       {
         tag: [{value: "OPA"}],
         title: "Repo Import and Package Support",
         description: "",
       },
-
+      {
+        tag: [{value: "GitOps"}],
+        title: "Native Argo Rollout Step",
+        description: "Users can leverage Harness native Argo Rollout steps for deployments.",
+      },
       {
         tag: [{value: "Miscellaneous"}],
         title: "OIDC Authentication - Hashicorp deployment types",
         description: "Users can enable OIDC authentication for HashiCorp deployment types.",
-      },
-      {
-        tag: [{value: "GitOps"}],
-        title: "Argo Rollout Support",
-        description: "Users can leverage Argo Rollouts for deployments.",
       },
       {
         tag: [{value: "GitOps"}],
@@ -263,6 +261,12 @@ export const CdData: Horizon = {
   "Released": {
     description: "What has been released",
     feature: [
+      {
+        tag: [{value: "GitOps"}],
+        title: "Argo Rollout Support",
+        description: "Users can leverage Argo Rollouts for deployments.",
+        link: "https://developer.harness.io/docs/continuous-delivery/gitops/connect-and-manage/use-argo-rollouts/"
+      },
       {
         tag: [{value: "Deployment"}],
         title: "Blue Green with traffic shifting in ECS deployments",

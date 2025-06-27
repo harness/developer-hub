@@ -52,7 +52,7 @@ export const docsCards: CardSections = [
         title: "CCM",
         module: MODULES.ccm,
         description: "Cloud Cost Management onboarding guides",
-        link: "/docs/category/onboarding",
+        link: "/docs/category/get-started",
       },
       {
         title: "CODE",
@@ -126,6 +126,12 @@ export const docsCards: CardSections = [
     name: "Platform feature highlights",
     description: "",
     list: [
+      {
+        title: "Pipelines",
+        module: MODULES.platform,
+        description: "Learn how to create and manage pipelines.",
+        link: "/docs/category/pipelines",
+      },
       {
         title: "Harness AI",
         module: MODULES.platform,

@@ -49,6 +49,7 @@ Notes:
 - ASG creation differs for rolling and blue green deployments:
   - For rolling, Harness updates the *existing* ASG with the new configuration.
   - For blue green, Harness creates a *new* ASG with a new revision suffix, like `asg-demo__2`. Once there are two ASGs (`asg-demo__1` and `asg-demo__2`) Harness alternately updates these *existing* ASGs with the new configuration on each successive deployment.
+- AWS OIDC connectors are supported for ASG deployments starting with delegate version `84900` or later.
 
 </details>
 
@@ -182,12 +183,6 @@ Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGu
 ```
 
 </details>
-
-:::note
-
-Currently, Harness does not support ASG deployments with an OIDC-enabled AWS connector.
-
-:::
 
 ## Harness ASG services
 
@@ -1879,6 +1874,21 @@ Blue/Green deployments are achieved by swapping routes between the target groups
 ![second stage](../static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)
 
 For more information on how to configure blue-green traffic shifting, refer to [ASG Blue-Green Traffic Shifting Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-traffic-shift)
+
+## Rollback Behavior with ASG Multi-Service Deployment
+
+Harness supports rollback for ASG multi-service deployments using a **single rollback step**. This means that even if you configure different delegate selectors for different deployment steps, only one delegate will be used for the rollback.
+
+**Delegate Selection Order**
+
+In scenarios with multiple delegate selectors, the delegate for the rollback step is chosen based on the following priority:
+
+1. **Step-level selector**
+2. **Stage-level selector**
+3. **Pipeline-level selector**
+4. **Connector-level selector**
+
+Ensure that the appropriate delegate selectors are configured at the relevant level to avoid unexpected delegate selection during rollback.
 
 ## Advanced settings
 

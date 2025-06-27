@@ -10,10 +10,12 @@ GCP SQL Instance Failover disrupts the state of GCP SQL instance filtered using 
 ## Use cases
 
 GCP SQL instance failover fault:
+
 - Determines the resilience of the GKE infrastructure.
 - Determines how quickly an SQL Instance can recover when a failover on one of the replicas is triggered.
 
 ### Prerequisites
+
 - Kubernetes > 1.16
 - Service account should have editor access (or owner access) to the GCP project.
 - High Availability should be enabled on target GCP SQL Instance
@@ -39,6 +41,7 @@ stringData:
 ```
 
 ### Mandatory tunables
+
    <table>
       <tr>
         <th> Tunable </th>
@@ -58,6 +61,7 @@ stringData:
     </table>
 
 ### Optional tunables
+
    <table>
       <tr>
         <th> Tunable </th>
@@ -94,6 +98,8 @@ stringData:
 ### IAM permissions
 
 Listed below are the IAM permissions leveraged by the fault:
+
+- `cloudsql.instances.get`
 - `cloudsql.instances.failover`
 - `cloudsql.instances.list`
 
@@ -105,7 +111,8 @@ The name of SQL Instance subject to Failover. It triggers failover on the sql in
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/gcp-sql-instance-failover/gcp-sql-instance-failover.yaml yaml)
+[embedmd]: # "./static/manifests/gcp-sql-instance-failover/gcp-sql-instance-failover.yaml yaml"
+
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine

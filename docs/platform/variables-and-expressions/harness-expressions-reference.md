@@ -727,3 +727,21 @@ Connector lookups follow a three-tier hierarchy—**account**, **organization**,
 - **Project level (no prefix)**: For project-level connectors, there is no need to specify any prefix. For example:
    - `<+connector.get("myConnector").name>`
    - `<+connector.get("artifactory").spec.passwordRef>` 
+
+## Date and time expressions
+
+You can now use built-in expressions to get the current system date and time during pipeline execution. These are helpful for tagging, logging, or generating time-based identifiers in your steps. These values are generated in UTC timezone.
+
+You can use the following expressions:
+
+- `<+currentTime()>` : Returns the current date and time with milliseconds.
+  
+  Sample usage: `echo <+currentTime()>`
+  
+  Output: `2025-06-26T11:55:00.790+0000`
+
+- `<+currentDate()>` : Returns the current date in `YYYY-MM-DD` format.  
+  
+  Sample usage: `echo <+currentDate()>`
+  
+  Output: `2025-06-26`

@@ -2,6 +2,8 @@
 description: KB - Webhook caching prevents Bitbucket API Limit issue
 title: Preventing Bitbucket API Rate Limits with Webhook Caching
 ---
+import GitXconnect from '/docs/platform/shared/gitx-connectivity.md'
+
 # Introduction
 
 This knowledge base article discusses how setting up a webhook sync can help prevent reaching the Bitbucket API rate limit issue. 
@@ -75,6 +77,4 @@ Harness tracks the .harness folder by default in all webhooks.
 4. Each repository will need to have a webhook established.  For example, setting a webhook up for repository `abc123corp` will not cache data fro the repo `harness123` in Bitbucket
 :::
 
-
-
-
+<GitXconnect />

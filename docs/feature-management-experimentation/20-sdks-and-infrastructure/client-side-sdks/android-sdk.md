@@ -30,6 +30,12 @@ implementation("androidx.work:work-runtime") {
 ```
 :::
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 5.3.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Initialization
 
 To get started, set up FME in your code base with the following two steps.

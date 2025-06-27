@@ -35,7 +35,7 @@ You will have to select some delegate for the connector to be tied to. This sele
 
 This does not require EKS to be used as the cluster type and could be ran on any self-hosted cluster using EC2 instances for the nodes, when there are instance profiles used.
 
-This method also allows you to define a "role to assume" in the connector which will be assumed for your in your IaCM execution.
+For details on how to use a second role in the connector with STS AssumeRole, see [below](#using-sts-assumerole)
 
 #### IRSA
 
@@ -45,10 +45,23 @@ Next, we can create a Harness AWS Connector that uses the "IRSA" method. You wil
 
 ![IRSA selected](../static/iacm-aws-connector-irsa.png) 
 
-Finally, in your IaCM stage you will need to add the required annotations for the service account used in your build pod. This is set under Infrastructure > Advanced > Annotations.
+You will now need to create a Kubernetes service account in the namespace to be used for your executions.
+
+```shell
+kubectl -n <namespace> create sa <sa name>
+kubectl annotate sa <sa name> -n <namespace> eks.amazonaws.com/role-arn=<irsa role arn>
+```
+
+Finally, in your IaCM stage you will need to add the namespace and service account you created to be used in your build pod. This is set under Infrastructure > Platform and Advanced.
 
 ![SA Annotations](../static/iacm-aws-connector-irsa-sa-anno.png)
 
-The annotation is `eks.amazonaws.com/role-arn` and the value should be the ARN of the role to assume, which should be the role that trusts your clusters OIDC provider.
+For details on how to use a second role in the connector with STS AssumeRole, see [below](#using-sts-assumerole)
 
-This method also allows you to define a "role to assume" in the connector which will be assumed for your in your IaCM execution.
+#### Using STS AssumeRole
+
+Both the NodePool and IRSA authentication styles allow you to specify a seperate role in the connector to use for the IaCM steps. The role specified here will be used by the IaCM stage during execution.  
+
+When the stage executes, the steps will call the STS `AssumeRole` service to assume the second IAM role defined in the connector, and that is the role that will be used when running the IaCM steps.  This role can be in a separate AWS account, allowing the IaCM stage running in centralized infrastructure to reach any number of target accounts.
+
+![Connector with STS AssumeRole](../static/iacm-aws-sts-assume.png) 

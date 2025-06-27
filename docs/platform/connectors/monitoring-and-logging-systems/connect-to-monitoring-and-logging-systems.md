@@ -153,9 +153,15 @@ We've given this role access to **All non-internal indexes**. However, we could 
 1. In the **Username** field, enter the username of your Splunk account.
 2. In **Password** field, you can choose **Create or Select a secret.**
 
-
-:::info note
+:::note
 For secrets and other sensitive settings, select or create a new [Text Secret.](/docs/platform/secrets/add-use-text-secrets)
+:::
+
+:::warning
+
+The HEC authentication method works for data ingestion only. If you wish to fetch data, please use username and password authentication. 
+
+If you use HEC authentication, you will not be able to use Harness Continuous Verification since that relies on data fetching. 
 
 :::
 

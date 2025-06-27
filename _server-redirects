@@ -103,3 +103,33 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 /docs/category/troubleshoot-ci /docs/category/troubleshoot-harness-ci
 
 # Redirects generated from Front Matter [sytem generated goes below here]:
+
+# Added by ivikramsahu for self-managed enterprise edition documentation revamp.
+
+/docs/self-managed-enterprise-edition/get-started/onboarding-guide /docs/self-managed-enterprise-edition/smp-overview
+/docs/category/get-started-with-smp /docs/self-managed-enterprise-edition/get-started-with-smp
+
+# Added by ivikramsahu for self-managed enterprise edition documentation revamp 
+# advance configuration > External DB > MongoDB
+
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-mongodb-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-mongodb-database
+
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb /docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-self-managed-mongodb
+
+# advance configuration > External DB > MinIO
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-self-managed-minio-object-storage /docs/self-managed-enterprise-edition/advanced-configurations/external-db/minio/use-self-managed-minio-object-storage
+
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-aws-s3-for-pipeline-logs /docs/self-managed-enterprise-edition/advanced-configurations/external-db/minio/configure-aws-s3-for-pipeline-logs
+
+# advance configuration > External DB > TimescaleDB
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb/ /docs/self-managed-enterprise-edition/advanced-configurations/external-db/timescaledb/use-an-external-sm-timescaledb/
+
+# advance configuration > External DB > postgreSQL
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/postgresql/use-an-external-postgres-database
+
+# advance configuration > External DB > redis
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-aws-elasticache /docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-aws-elasticache
+
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-an-external-redis-database
+
+# Redirects generated from Front Matter [sytem generated goes below here]:

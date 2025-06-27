@@ -1,7 +1,7 @@
 ---
 title: Code Repository release notes
 sidebar_label: Code Repository
-date: 2025-05-23T10:00
+date: 2025-06-18T10:00
 sidebar_position: 7
 ---
 
@@ -22,6 +22,16 @@ These release notes describe recent changes to Harness Code Repository.
 
 
 ## June 2025
+
+<!-- June 17, 2025 -->
+
+### Version 1.46.x
+
+#### New features and enhancements
+- Added the ability to set favorite repositories across the account.
+
+#### Fixes issues
+- Resolved an issue where Markdown in Harness Code did not render images.
 
 <!-- June 10, 2025 -->
 
