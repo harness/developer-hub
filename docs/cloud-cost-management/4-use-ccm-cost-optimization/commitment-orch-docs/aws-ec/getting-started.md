@@ -8,8 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-## Getting Started
-
 Commitment Orchestrator can be found on Harness' dashboard under [Cloud Costs module](https://app.harness.io/). 
 
 Prerequisites:
@@ -50,7 +48,7 @@ The purchases will happen only at master account level and thus will be in turn 
 </TabItem>
 <TabItem value="step3" label="Step 3: Coverage Percentage">
 
-### Coverage Percentage and SP/RI split
+### Coverage Percentage and Engine Mode
 
 **Coverage Percentage:** The Coverage percentage is the percentage of your compute spend that you want to be covered by Savings Plans or Reserved Instances. The remaining amount will continue to run as on-demand.
 
@@ -88,14 +86,17 @@ Post set-up, you can view your dashboard with all the information required . You
 
 ### Compute Coverage Graph
 
+<DocImage path={require('./static/dashboard-co.png')} width="80%" height="80%" title="Click to view full size image" />
+
 The Compute Coverage Graph provides a visual representation of your EC2 compute usage coverage by Reserved Instances and Savings Plans over time. You can customize the view by grouping the data by:
 
 - **Commitment Type**: Compare coverage between, On-Demand, Reserved Instances and Savings Plans to understand which commitment types are providing the most coverage and total cost across all commitment types.
 - **Instance Family**: Analyze coverage across different EC2 instance families (e.g., m5, c5, r5) to identify optimization opportunities.
 - **Region**: View coverage distribution across AWS regions to ensure balanced commitment utilization geographically.
 
-
 ### Savings Graph
+
+<DocImage path={require('./static/savings-graph.png')} width="80%" height="80%" title="Click to view full size image" />
 
 The Savings Graph displays the total cost savings achieved through Reserved Instances and Savings Plans compared to On-Demand rates. You can customize the view by grouping the data by:
 

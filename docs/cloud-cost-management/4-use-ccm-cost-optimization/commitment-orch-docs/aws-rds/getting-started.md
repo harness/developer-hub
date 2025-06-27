@@ -8,7 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-## Getting Started
 
 Commitment Orchestrator can be found in the Harness dashboard under [Cloud Costs module](https://app.harness.io/). 
 Commitment Orchestrator can be easily setup from the dashboard itself by following these steps:
@@ -77,7 +76,7 @@ Post set-up, you can view your dashboard with all the information required. You 
 
 ### Log History
 
-The Log History section provides a comprehensive audit trail of all Commitment Orchestrator activities, including recommendation generation, action execution, cost impact tracking, configuration changes, error logs, and performance metrics. The log history is filterable by date range, account, region, and action type, making it easy to analyze specific periods or troubleshoot particular issues.
+The Log History section provides a comprehensive audit trail of all Commitment Orchestrator activities, including date, connector name, type (RI Event and SP Event), description of the purchase.
 
 ### Active Actions
 
