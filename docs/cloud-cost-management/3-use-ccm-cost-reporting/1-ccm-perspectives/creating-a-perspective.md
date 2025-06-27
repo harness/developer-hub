@@ -4,11 +4,12 @@ description: Perspectives allow you to group your resources in ways that are mor
 sidebar_position: 3
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from: 
+- /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 ## What are Perspectives?
 
