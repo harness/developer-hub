@@ -11,8 +11,8 @@ Once you have the [Harness Gitspaces Terraform Module configured and setup](/doc
 
 ## Prerequisites
 1. Ensure you've read through the **fundamentals and prerequisites** of self hosted gitspaces [here](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). This helps you get a deeper understanding of all the basic concepts and steps involved with self hosted gitspaces. 
-2. Please make sure you have completed the steps mentioned in [configuring the Harness Gitspaces terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md). This step is a mandatory prerequisite as this step **sets up the GCP infrastructure**, **creates a GCP VM instance in your infra** and **generates the ``pool.yaml`` file** which is required to host and setup the Runner. 
-3. Ensure you have the GCP VM instance active and running in your GCP project. (This VM instance is created while your terraform configuration is configured and setup.) Please refer to this [documentation](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md) to understand more about configuring this Terraform Module. 
+2. Please make sure you have completed the steps mentioned in [configuring the Harness Gitspaces terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md). This step is a mandatory prerequisite as this step **sets up the GCP infrastructure**, **creates a GCP VM instance in your infra** and **generates the ``pool.yaml`` file** which is required to host and setup the Runner. 
+3. Ensure you have the GCP VM instance active and running in your GCP project. (This VM instance is created while your terraform configuration is configured and setup.) Please refer to this [documentation](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to understand more about configuring this Terraform Module. 
 
 ## Functions of Runner and Delegate
 This section explains the key functions of Harness Delegate and VM Runner. Refer to [Self Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md) to understand the underlying architecture in detail. 
@@ -44,7 +44,7 @@ You'll need **Docker** installed in your GCP VM instance to configure self hoste
 
 ### Start the Runner 
 Now that you're into the VM instance and you've installed Docker, follow the given steps to start the **Runner**: 
-1. Create a new file called ``pool.yaml`` in your instance and copy the [same YAML file content](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#download-the-pool-yaml-file) as you had when you configured the Terraform Module. Refer to [Setup Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#download-the-pool-yaml-file) to learn more about the same. 
+1. Create a new file called ``pool.yaml`` in your instance and copy the [same YAML file content](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#download-the-pool-yaml-file) as you had when you configured the Terraform Module. Refer to [Setup Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#download-the-pool-yaml-file) to learn more about the same. 
 2. Run the following command to create a new network: 
 ```
 docker network create harness
@@ -108,4 +108,4 @@ Once you’ve installed and set up your Delegate, enter the specific **Delegate 
 
 ## Next Steps
 Now that you’ve successfully installed and configured the Delegate, you’re ready to **create and manage Self Hosted Gitspaces** within your GCP infrastructure.
-Proceed to the [Manage Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/manage-self-hosted.md) guide to get started.
+Proceed to the [Manage Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md) guide to get started.

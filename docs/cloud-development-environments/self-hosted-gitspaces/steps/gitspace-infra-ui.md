@@ -50,7 +50,7 @@ You can add and configure regions for Gitspaces. Note that users will only be ab
 
 ### Download the Infrastructure Config YAML
 
-Once all details have been entered, click on **Download and Apply YAML**. This will generate the **Infra Config YAML**, which contains the entire Gitspace Infra configuration. This YAML is a mandatory input for [configuring and setting up the Harness Gitspaces Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md), which provisions the GCP infrastructure in your selected project.
+Once all details have been entered, click on **Download and Apply YAML**. This will generate the **Infra Config YAML**, which contains the entire Gitspace Infra configuration. This YAML is a mandatory input for [configuring and setting up the Harness Gitspaces Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md), which provisions the GCP infrastructure in your selected project.
 
 ## Manage Gitspace Infrastructure
 
@@ -62,7 +62,7 @@ Here's how you can edit your infrastructure:
 2. Click on the **Edit** button on the top-right corner. 
 ![](./static/edit-infra.png)
 3. Whenever you make changes to your infrastructure configuration, you’ll need to **download the updated Infra Config YAML**.
-Use this updated YAML to [reapply your Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md) to reflect the changes. You can learn more about this process in the [next steps](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#next-steps).
+Use this updated YAML to [reapply your Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to reflect the changes. You can learn more about this process in the [next steps](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#next-steps).
 
 ### Delete Gitspace Infrastructure
 :::warning **Warning: Irreversible Action**
@@ -87,4 +87,4 @@ Here's how you can delete your infrastructure:
 //TBD
 
 ## Next Steps
-Now that you have the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#download-the-infra-config-yaml) downloaded, proceed to [configure and apply the Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md) to provision your self-hosted Gitspaces. 
+Now that you have the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#download-the-infra-config-yaml) downloaded, proceed to [configure and apply the Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to provision your self-hosted Gitspaces. 

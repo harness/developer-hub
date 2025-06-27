@@ -86,7 +86,7 @@ The infrastructure on the customer side (eg. GCP) includes:
 
 Harness Delegate is a service that you install in your infrastructure to establish and maintain a connection between Harness Control Plane and your infrastructure. Self Hosted Gitspaces run in your own infrastructure, but are managed by Harness Control Plane. Thus to establish and maintain communication between the Harness Control Plane and Customer's infrastructure, customer need to install Harness Delegate in their infrastructure. Read more about [Harness Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
-To understand more about this step and its implementation, please refer to [Setup Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/runner-delegate.md)
+To understand more about this step and its implementation, please refer to [Setup Runner and Install Delegate](docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate.md)
 
 ### VM Runner
 

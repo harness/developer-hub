@@ -10,11 +10,11 @@ This is your second step in configuring self-hosted Gitspaces. Once you have add
 ## Prerequisites
 
 1. Ensure you've read through the **fundamentals and prerequisites** of self-hosted Gitspaces [here](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). This helps you develop a deeper understanding of all core concepts and steps involved.
-2. Make sure you have completed the steps in [configuring Gitspace Infrastructure in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md). This is a **mandatory prerequisite**, as the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#download-the-infrastructure-config-yaml) generated from that step is a required input here.
+2. Make sure you have completed the steps in [configuring Gitspace Infrastructure in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md). This is a **mandatory prerequisite**, as the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#download-the-infrastructure-config-yaml) generated from that step is a required input here.
 3. You must have a **Service Account with the "Owner" role** in the same GCP project where your GCP VM instance will be created.
-  Refer to the [GCP documentation](https://cloud.google.com/iam/docs/service-accounts-create) to learn how to create a service account. You can also follow the detailed steps in [this section](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#generate-the-service-account-key) of our guide.
+  Refer to the [GCP documentation](https://cloud.google.com/iam/docs/service-accounts-create) to learn how to create a service account. You can also follow the detailed steps in [this section](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#generate-the-service-account-key) of our guide.
 4. You must **create and download a Service Account Key** for the same service account within the same GCP project.
-  Refer to the [GCP documentation](https://cloud.google.com/iam/docs/keys-create-delete) for more information. Detailed steps are also provided in [this section](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#generate-the-service-account-key) of our guide.
+  Refer to the [GCP documentation](https://cloud.google.com/iam/docs/keys-create-delete) for more information. Detailed steps are also provided in [this section](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#generate-the-service-account-key) of our guide.
 5. Ensure that your GCP project (as defined in your infra config) has the following APIs enabled, here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project: 
       <ul>
         <li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) – `api/cloudresourcemanager.googleapis.com`</li>
@@ -60,8 +60,8 @@ Follow these steps to configure and apply the Terraform module. Ensure all prere
 
 To apply the Terraform module, you need three mandatory input parameters:
 
-- **Service Account Key File**: A Service Account Key with necessary permissions in your GCP project. Learn how to [generate a Service Account Key](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#generate-the-service-account-key).
-- **Infra Config YAML File**: Contains all infrastructure details for setting up the Terraform module. Learn how to [retrieve it here](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#retrieve-the-infra-config-yaml).
+- **Service Account Key File**: A Service Account Key with necessary permissions in your GCP project. Learn how to [generate a Service Account Key](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#generate-the-service-account-key).
+- **Infra Config YAML File**: Contains all infrastructure details for setting up the Terraform module. Learn how to [retrieve it here](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#retrieve-the-infra-config-yaml).
 - **`manage_dns_zone`**: Controls DNS management:
   - `yes`: DNS will be managed automatically by the module.
   - `no`: You'll need to manage DNS manually.
@@ -84,7 +84,7 @@ You need a **Service Account Key** with **Owner** role to apply the Terraform mo
 
 ### Retrieve the Infra Config YAML
 
-Use the **Infra Config YAML** file downloaded during [Gitspace Infrastructure configuration in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#download-the-infra-config-yaml). This is required for the Terraform module.
+Use the **Infra Config YAML** file downloaded during [Gitspace Infrastructure configuration in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#download-the-infra-config-yaml). This is required for the Terraform module.
 
 ### Create the Terraform Configuration
 
@@ -141,4 +141,4 @@ After applying the Harness Gitspaces Terraform Module, a ``pool.yaml`` file is g
 Keep this file handy — it will be required in the next step.
 
 ## Next Steps
-Now that your GCP infrastructure is fully set up, proceed to [configure the Runner and Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/runner-delegate.md) on the GCP VM instance created. Make sure you have the [`pool.yaml` file ready](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-terraform.md#download-the-pool-yaml-file) for the next steps.
+Now that your GCP infrastructure is fully set up, proceed to [configure the Runner and Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate.md) on the GCP VM instance created. Make sure you have the [`pool.yaml` file ready](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#download-the-pool-yaml-file) for the next steps.

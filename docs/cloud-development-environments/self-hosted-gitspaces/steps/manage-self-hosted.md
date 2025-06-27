@@ -11,7 +11,7 @@ Once you have configured your infrastructure and established a healthy connectio
 
 1. Ensure you have completed all the necessary steps to get started with Self Hosted Gitspaces. Refer to [Fundamentals of Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#get-started-with-self-hosted-gitspaces) for a detailed walkthrough.
 
-2. Verify that the **Gateway Group Health** status for the added region is marked as **Healthy** before creating any Self Hosted Gitspaces. Learn more in the [Manage Gitspace Infrastructure](/docs/cloud-development-environments/self-hosted-gitspaces/gitspace-infra-ui.md#assess-gateway-group-health-for-gitspace-infrastructure) guide.
+2. Verify that the **Gateway Group Health** status for the added region is marked as **Healthy** before creating any Self Hosted Gitspaces. Learn more in the [Manage Gitspace Infrastructure](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#assess-gateway-group-health-for-gitspace-infrastructure) guide.
 
 ## Create Self Hosted Gitspaces
 
@@ -45,7 +45,7 @@ Here's how you can create a Self Hosted Gitspace:
 1. Navigate to the desired **Organization** and **Project**.
 2. Click on **Gitspaces** in the left navigation panel.
 3. Click on **New Gitspace**.
-4. Enter the required Gitspace details. Refer to this [documentation](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md) for field descriptions.
+4. Enter the required Gitspace details. Refer to this [documentation](/docs/cloud-development-environments/steps/manage-gitspaces/create-gitspaces.md) for field descriptions.
 5. Under **Infra Provider Type**, select the infrastructure you configured earlier. You can identify it by the **Infrastructure Name** you provided.
 6. Choose the **Region**, populated from the region details configured in your infrastructure.
 7. Select the **Machine Type**, populated from the machines you added to the infrastructure.
