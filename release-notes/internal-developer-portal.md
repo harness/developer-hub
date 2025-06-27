@@ -41,7 +41,7 @@ Let’s dive into what’s new!
 
 ### \[New Feature] Introducing Harness IDP Git Experience with IDP 2.0
 
-**\[IDP-4869] | [Docs](/docs/internal-developer-portal/git-experience/gitx-journey)**
+**\[IDP-4596] | [Docs](/docs/internal-developer-portal/git-experience/gitx-journey)**
 
 ---
 
