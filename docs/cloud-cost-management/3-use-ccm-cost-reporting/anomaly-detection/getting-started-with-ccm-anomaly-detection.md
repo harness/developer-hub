@@ -82,8 +82,8 @@ When you select an anomaly, you'll see:
     - Cost Trend and Anomalies visualization with historical data (30 or 90 days). This includes data such as:
         - **Anomaly Threshold**: Upper and lower bounds that define normal spending behavior
         - **Expected Average Spend**: Predicted daily cost based on historical patterns
-        - **Anomalous Spend**: Actual costs that exceeded the normal threshold range
-        - **Spend within Range**: Daily costs that fall within expected parameters
+        - **Anomalous Spend**: Costs that exceeded the normal threshold range
+        - **Spend within Range**: Daily expected costs
     - Top resource changes contributing to the anomaly
     - Feedback options to improve detection accuracy:
         - **True Expected**: The cost increase was anticipated
@@ -94,7 +94,7 @@ When you select an anomaly, you'll see:
 
 
 <Tabs>
-<TabItem value="screenshot" label="UI Image" default>
+<TabItem value="screenshot" label="Drilldown Window" default>
 
 <DocImage path={require('./static/drilldown.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -118,7 +118,7 @@ Set up alerts to receive notifications when anomalies are detected without havin
 - **Alert Channel**: Currently, Harness CCM supports Slack and/or e-mail as possible methods of sending alerts.
 
 <Tabs>
-<TabItem value="screenshot" label="UI Image" default>
+<TabItem value="screenshot" label="Alerts Window" default>
 
 <DocImage path={require('./static/alert.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -140,7 +140,7 @@ Configure system-wide anomaly detection settings to ensure only significant anom
 3. **Anomaly Persistence**: This setting allows the system to adjust the baseline cost of a resource if an anomaly persists beyond a specified number of days. If an anomaly is not resolved and continues to impact costs for the set duration, the resource's baseline cost is updated to reflect the higher cost. This helps maintain an accurate representation of the resource's true cost over time, ensuring that future anomalies are detected against the adjusted baseline.
 
 <Tabs>
-<TabItem value="screenshot" label="UI Image" default>
+<TabItem value="screenshot" label="Preferences Window" default>
 
 <DocImage path={require('./static/preferences.png')} width="100%" height="100%" title="Click to view full size image" />
 
