@@ -210,6 +210,78 @@ The image you use should support the CDK operations you are running in your app.
 
 You can find all current tags on Docker Hub: [harness/aws-cdk-plugin - Docker Hub](https://hub.docker.com/r/harness/aws-cdk-plugin/tags)
 
+## Create your own image
+
+You can create your own image based on the `aws-cdk-plugin` [base image](link to github) in order to use updated versions of NodeJS, Alpine, AWS CDK, etc.
+
+Creating your docker file allows you to use stay up to date, but Harness has only tested the [images listed above](#cdk-plugin-images).
+
+### 1. Edit the Base Image Dockerfile
+
+First, edit the base docker file to use the versions you want. You can change the ARGs at the top for:
+
+- `NODE_VERSION`. Default: 20.6.
+- `ALPINE_VERSION`. Default: 3.16.
+- `AWS_CDK_VERSION`. Default: 2.1016.1.
+
+<details>
+<summary> Base Dockerfile </summary>
+
+```dockerfile
+ARG NODE_VERSION=<Add Node JS Version EX: 20.6>
+ARG ALPINE_VERSION=<Add Alpine Version EX: 3.16>
+ARG AWS_CDK_VERSION=<Add AWS CDK Version EX: 2.1016.1>
+ARG UNIFIED_PIPELINE=false
+ARG OS
+ARG ARCH
+
+FROM --platform=${OS}/${ARCH} node:${NODE_VERSION}-alpine AS node
+
+ARG UNIFIED_PIPELINE=false
+ARG OS
+ARG ARCH
+
+FROM --platform=${OS}/${ARCH} alpine:${ALPINE_VERSION}
+
+ARG UNIFIED_PIPELINE=false
+ARG OS
+ARG ARCH
+
+# Set UNIFIED_PIPELINE as an environment variable
+ENV UNIFIED_PIPELINE=${UNIFIED_PIPELINE}
+
+RUN if [ "$UNIFIED_PIPELINE" != "true" ]; then \
+        apk add git; \
+    fi
+
+RUN mkdir -p /opt/harness/scripts/
+
+ADD scripts/* /opt/harness/scripts/
+RUN chmod +x /opt/harness/scripts/*
+
+ADD cdk-plugin/release/${OS}/${ARCH}/aws-cdk-plugin /opt/harness/
+RUN chmod +x /opt/harness/aws-cdk-plugin
+
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/bin /usr/local/bin
+
+RUN node -v
+RUN npm -v
+
+RUN npm install -g aws-cdk@${AWS_CDK_VERSION}
+RUN cdk --version
+
+ENTRYPOINT ["/opt/harness/scripts/run.sh"]
+```
+
+</details>
+
+### 2. Edit your Language-Specific Dockerfile
+
+### 3. Build your image(s)
+
+
 ## Git Clone step
 
 The Git Clone step is the first stage **Execution** step added to the containerized step group for Harness CDK.
