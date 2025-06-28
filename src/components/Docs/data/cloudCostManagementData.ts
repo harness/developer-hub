@@ -13,13 +13,6 @@ import { MODULES } from "@site/src/constants";
           "",
         list: [
           {
-            title: "Onboarding",
-            module: MODULES.ccm,
-            description:
-              "Learn the basic concepts of Harness Cloud Cost Management and how to set up CCM for your cloud accounts.",
-            link: "/docs/category/get-started",
-          },
-          {
             title: "Overview",
             module: MODULES.ccm,
             description:
