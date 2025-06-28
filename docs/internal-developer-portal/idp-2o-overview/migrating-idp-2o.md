@@ -58,7 +58,7 @@ Please complete the following steps:
     These will continue to work temporarily but will be **deprecated by the end of October**. You’ll need to transition to the newer APIs.
 
   - If your current setup includes **System** or **Domain** entities:
-    These are no longer supported in IDP 2.0 and will be **discarded during migration**. You’ll need to create new entities using the updated data model.
+    These are no longer supported in IDP 2.0. During the migration process, they will be **discarded**. To continue using these entities, you'll need to recreate them using the updated data model. We're working on introducing a similar System entity in IDP 2.0 by end of July 2025.
 
   - If you used **`hidden`** or **`private`** tags for any entity or workflow:
     These tags are not supported in IDP 2.0. Instead, configure **RBAC** and recreate your entities at the appropriate scope (Account, Org, or Project) with correct roles and permissions.
