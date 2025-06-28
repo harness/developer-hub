@@ -25,4 +25,4 @@ Since iOS and Android SDKs do not support initializing multiple client objects f
 
 It is important to note the SDK factory object will create the local SDK cache folder and use the SDK API Key for naming convention. Its strongly recommended to use different SDK API Key for each factory object, to have each factory sync and update its own cache folder.
 
-Checkout the [example code for iOS using two factories](https://help.split.io/hc/en-us/articles/360030632172).
+Checkout the [example code for iOS using two factories](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/iOS-two-factories-SDK).

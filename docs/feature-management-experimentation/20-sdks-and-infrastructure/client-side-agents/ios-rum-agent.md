@@ -78,7 +78,7 @@ Arguments passed to the `setup` method will override any value contained in the 
 
 While the Agent will work without having an Identity, events won't be sent to FME services until at least one is set.
 
-Identity objects consist of a key and a [traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type). You can only pass values that match the names of traffic types already defined in Harness FME.
+Identity objects consist of a key and a [traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/). You can only pass values that match the names of traffic types already defined in Harness FME.
 
  The RUM Agent provides methods to manage Identities, as shown in the table below.
 
@@ -142,7 +142,7 @@ FME's iOS RUM Agent collects a number of events by default.
 | hangs | Sent if an application hang is detected. | No | No |
 | device_info | Information provided by the OS about a device. This is sent the first time the Agent runs on the device. The device ID recorder is the ASIdentifierManager.shared().advertisingIdentifier value. | No | ```{ id: string, model: string, osName: string, osVersion: string }``` |
 
-Each event for the metrics described above automatically includes a `session_id` property that can be use to filter certain events when defining Split metrics for experimentation purposes. Learn more about [metric definitions and how to define property filters](https://help.split.io/hc/en-us/articles/22005565241101-Metrics).
+Each event for the metrics described above automatically includes a `session_id` property that can be use to filter certain events when defining Split metrics for experimentation purposes. Learn more about [metric definitions and how to define property filters](/docs/feature-management-experimentation/release-monitoring/metrics/).
 
 | **Name** | **Description** |
 | --- | --- |
@@ -150,7 +150,7 @@ Each event for the metrics described above automatically includes a `session_id`
 
 ## Automatic metric creation
 
-FME will automatically create [metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) for a subset of the event types received from the iOS RUM Agent. These "out of the box metrics" are auto-created for you:
+FME will automatically create [metrics](/docs/feature-management-experimentation/release-monitoring/metrics/) for a subset of the event types received from the iOS RUM Agent. These "out of the box metrics" are auto-created for you:
 
 | **Event type** | **Metric name** | 
 | --- | --- |
@@ -159,7 +159,7 @@ FME will automatically create [metrics](https://help.split.io/hc/en-us/articles/
 | split.rum.app_start | Average App Start Time - Split Agents |
 | split.rum.anr | Count of ANRs - Split Agents |
 
-For a metric that was auto-created, you can manage the [definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) and [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) like you would for any other metric. If you delete a metric that was auto-created, FME will not re-create the metric, even if the event type is still flowing.
+For a metric that was auto-created, you can manage the [definition](/docs/feature-management-experimentation/release-monitoring/metrics/) and [alert policies](/docs/feature-management-experimentation/experimentation/metrics/alert-policies#create-a-metric-alert-policy) like you would for any other metric. If you delete a metric that was auto-created, FME will not re-create the metric, even if the event type is still flowing.
 
 ## Advanced use cases
 
