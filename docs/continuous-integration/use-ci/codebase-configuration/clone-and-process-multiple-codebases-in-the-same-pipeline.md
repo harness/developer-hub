@@ -79,7 +79,7 @@ For details about the **Run** step settings, check out the **Run scripts** tab u
 
 :::tip
 
-When cloning additional codebases that use the same credentials as your default codebase, you can [use your default codebase connector's credentials in your Run step](/kb/continuous-integration/articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step).
+When cloning additional codebases that use the same credentials as your default codebase, you can [use your default codebase connector's credentials in your Run step](/kb/continuous-integration/articles/use-git-credentials-from-codebase-connector-in-ci-pipelines-run-step).
 
 :::
 
