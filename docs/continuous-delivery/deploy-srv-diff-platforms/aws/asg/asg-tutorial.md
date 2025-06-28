@@ -1875,6 +1875,44 @@ Blue/Green deployments are achieved by swapping routes between the target groups
 
 For more information on how to configure blue-green traffic shifting, refer to [ASG Blue-Green Traffic Shifting Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-traffic-shift)
 
+## Fail Fast and Parallel Rollback Behavior
+
+### Fail Fast Pipeline Support
+
+:::note
+Currently, this feature is behind Feature Flag: `PIPE_FAIL_ALL_FAILURE_STRATEGY`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+:::
+
+In traditional parallel deployments, Harness waits for all steps or stages to complete before determining pipeline status. This can be inefficient when early failure is enough to trigger rollback.
+
+Harness now supports **Fail Fast** behavior:
+
+- If **any step or stage** in a parallel group fails, the pipeline immediately:
+  - Fails without waiting for other steps to finish.
+  - Triggers the defined **failure strategy**, such as **pipeline rollback**.
+
+This is particularly useful where early failures should halt the entire rollout.
+
+### Parallel Rollback Behavior
+
+:::note
+Currently, this feature is behind Feature Flag: `CDS_ASG_MULTI_DEPLOY_ROLLBACK_SUPPORT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+:::
+
+In Deploy stages with **parallel steps**, Harness supports rollback coordination across all steps. If a failure occurs in any step, Harness will:
+
+- Trigger rollback for all **successfully completed steps** in the parallel group.
+- Skip any **remaining unexecuted steps**, enforcing a fail-fast response.
+
+This ensures that partially completed parallel executions are not left in an inconsistent state and that failed roll-outs are cleaned up automatically.
+
+**Example**
+
+Suppose there is a Deploy stage with multiple parallel steps. If a few steps succeed and the fourth step fails:
+
+- All **completed steps**, along with the **failed step**, will be **rolled back**.
+- Any **remaining unexecuted steps** will be **skipped** due to **fail fast**, and will not run.
+
 ## Rollback Behavior with ASG Multi-Service Deployment
 
 Harness supports rollback for ASG multi-service deployments using a **single rollback step**. This means that even if you configure different delegate selectors for different deployment steps, only one delegate will be used for the rollback.
