@@ -27,7 +27,7 @@ You will learn about the Kubernetes chaos infrastructure components involved in 
 You will also learn how the components mentioned earlier can be leveraged to inject faults into cloud-based infrastructure and managed services.
 
 :::tip
-Components involved in chaos against the TKGi control plane, that is, the VMs, are the same ones as described in [deployment model for Cloud Foundry chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances).
+Components involved in chaos against the TKGi control plane, that is, the VMs, are the same ones as described in [deployment model for Cloud Foundry chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/cf-chaos-components-and-their-deployment-architecture#direct-installation-of-lci-in-the-tas-vms).
 :::
 
 ### Subscriber

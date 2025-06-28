@@ -28,9 +28,9 @@ CF app network latency:
     <th> Notes </th>
   </tr>
   <tr>
-    <td> cfDeploymentPlatform </td>
-    <td> Deployment platform used for cloud foundry with respect to where the infrastructure is hosted. </td>
-    <td> Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#cf-deployment-platform"> CF deployment platform</a>. </td>
+    <td> deploymentModel </td>
+    <td> The deployment model being used for Linux Chaos Infrastructure + Cloud Foundry Fault Injector. For more information, refer <a href="cf-chaos-components-and-their-deployment-architecture/#direct-installation-of-lci-in-the-tas-vms">here</a>.</td>
+    <td> One of: <code>model-1</code>,<code>model-2</code>. No default value is assumed, if the tunable is not provided. For <code>model-1</code>, <code>boshDeployment</code> and <code>faultInjectorLocation</code> inputs are not required. </td>
   </tr>
   <tr>
     <td> organization </td>
@@ -47,11 +47,6 @@ CF app network latency:
     <td> The app to be stopped. </td>
     <td> The app must reside within the given organization and space. For example, <code>cf-app</code> </td>
   </tr>
-  <tr>
-    <td> boshDeployment </td>
-    <td> The bosh deployment under which the CF components are being managed. </td>
-    <td> It can be obtained using the BOSH CLI command <code>bosh deployments</code>. For more information, go to <a href="#bosh-deployment"> BOSH deployment</a>. </td>
-  </tr>
 </table>
 
 ### Optional tunables
@@ -61,6 +56,16 @@ CF app network latency:
     <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
+  </tr>
+  <tr>
+    <td> faultInjectorLocation </td>
+    <td> Fault injector placement with respect to where the LCI is hosted. </td>
+    <td> Default: <code>local</code>. Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#fault-injector-location"> Fault Injector location</a>. </td>
+  </tr>
+  <tr>
+    <td> boshDeployment </td>
+    <td> The bosh deployment under which the CF components are being managed. </td>
+    <td> It can be obtained using the BOSH CLI command <code>bosh deployments</code>. For more information, go to <a href="#bosh-deployment"> BOSH deployment</a>. </td>
   </tr>
   <tr>
     <td> instanceAffectedPercentage </td>
@@ -128,6 +133,84 @@ CF app network latency:
 
 <VSphereSecrets />
 
+## Fault Permissions
+### List all applications the user or client has access to
+
+**Required Roles (any one):**
+-   `SpaceDeveloper` (in the app’s space)
+-   `SpaceAuditor` (read-only role in the app’s space)
+-   `OrgManager` or `OrgAuditor` (at the org level)
+
+**Required OAuth Scopes (for tokens):**
+-   `cloud_controller.read`
+-   `cloud_controller.admin`
+-   `cloud_controller.global_auditor`
+
+### List all BOSH deployments (only for model-2)
+**Required Role:**
+-   BOSH user with read permissions (typically `admin` or a user with `read` access to deployments)
+
+**Required Auth:**
+-   Valid BOSH UAA token with `bosh.read` scope
+
+### Establish SSH session to a Diego Cell via BOSH SSH (only for model-2)
+**Required Role:**
+-   BOSH user with SSH access permissions for the Diego Cell instance group
+
+**Required Auth:**
+-   BOSH UAA token with `bosh.ssh` or `bosh.admin` scope
+
+### Use `cfdot` to list LRPs and locate app containers
+**Required Role:**
+-   Operator with SSH access to a cell and executable access to `cfdot`
+
+**Required Auth:**
+-   Requires `diego.read` scope in BOSH UAA or access to the Diego BBS with a trusted client certificate
+
+### Use `ctr` (containerd CLI) to get container-level metadata
+**Required Role:**
+-   SSH-level access to the cell host and root access (or `sudo`) to interact with containerd
+
+**Required Auth:**
+-   None via API; local root or elevated user access is required
+
+### Run `nsenter` and `tc` to inject or remove chaos in target container network namespaces
+
+**Required Role:**
+-   Root access on the Diego Cell host (via BOSH SSH, for model-2)
+-   Ability to use Linux `nsenter` and `tc` tools within container network namespaces
+
+**Required Auth:**
+-   None via API; requires local machine-level root privileges
+
+---
+
+### Deployment Model
+The `deploymentModel` input specifies the LCI deployment model with respect to its placement in the host TAS VM.
+- It accepts one of: `model-1`, `model-2`.
+- No default value is assumed if the input is not provided, but the experiment execution fails with an error.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/cf-app-network-latency/deploymentModel.yaml yaml)
+```yaml
+# deployment model for LCI
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-network-latency
+  labels:
+    name: app-network-latency
+spec:
+  cfAppNetworkChaos/inputs:
+    duration: 30s
+    faultInjectorLocation: vSphere
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+    deploymentModel: model-1
+```
+
 ### Destination hosts
 
 The `destinationHosts` input variable subjects the comma-separated names of the target hosts to chaos.
@@ -146,7 +229,7 @@ metadata:
 spec:
   cfAppNetworkChaos/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -171,7 +254,7 @@ metadata:
 spec:
   cfAppNetworkChaos/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -199,7 +282,7 @@ metadata:
 spec:
   cfAppNetworkChaos/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -229,7 +312,7 @@ metadata:
 spec:
   cfAppNetworkChaos/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -256,7 +339,7 @@ metadata:
 spec:
   networkChaos/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -283,7 +366,7 @@ metadata:
 spec:
   cfAppNetworkChaos/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -309,7 +392,7 @@ metadata:
 spec:
   cfAppNetworkChaos/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -317,19 +400,17 @@ spec:
     instanceAffectedPercentage: 50
 ```
 
-### CF deployment platform
-
-The `cfDeploymentPlatform` input variable determines the deployment platform used for CF with respect to the infrastructure.
-
-- The deployment platform can be local, that is, the same environment used by the infrastructure, or a remote machine.
-- The deployment platform is where the fault-injector utility executes.
+### Fault Injector location
+The `faultInjectorLocation` input determines the fault injector placement with respect to where the LCI is hosted.
+- It supports one of: 
+  - `local`: LCI and fault injector are placed in the same machine.
+  - `vSphere`: Fault injector is placed in a remote vSphere managed VM.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]: # './static/manifests/cf-container-kill/cfDeploymentPlatform.yaml yaml'
-
+[embedmd]:# (./static/manifests/cf-app-network-latency/faultInjectorLocation.yaml yaml)
 ```yaml
-# cf deployment platform
+# Fault Injector location
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
@@ -339,7 +420,7 @@ metadata:
 spec:
   cfAppNetworkChaos/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -351,7 +432,7 @@ The `skipSSLValidation` input variable determines whether to skip SSL validation
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]: # './static/manifests/cf-container-kill/skipSSLValidation.yaml yaml'
+[embedmd]: # './static/manifests/cf-app-network-latency/skipSSLValidation.yaml yaml'
 
 ```yaml
 # skip ssl validation for cf
@@ -364,7 +445,7 @@ metadata:
 spec:
   cfAppNetworkChaos/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -377,7 +458,7 @@ The `faultInjectorPort` input variable determines the port used for the fault-in
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]: # './static/manifests/cf-container-kill/faultInjectorPort.yaml yaml'
+[embedmd]: # './static/manifests/cf-app-network-latency/faultInjectorPort.yaml yaml'
 
 ```yaml
 # fault injector port
@@ -390,7 +471,7 @@ metadata:
 spec:
   cfAppNetworkChaos/inputs:
     duration: 30s
-    cfDeploymentPlatform: local
+    faultInjectorLocation: local
     app: cf-app
     organization: dev-org
     space: dev-space

@@ -7,7 +7,7 @@ metadata:
 spec:
   networkChaos/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space

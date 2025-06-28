@@ -27,6 +27,11 @@ CF app JVM method latency:
     <th>Notes</th>
   </tr>
   <tr>
+    <td> deploymentModel </td>
+    <td> The deployment model being used for Linux Chaos Infrastructure + Cloud Foundry Fault Injector. For more information, refer <a href="cf-chaos-components-and-their-deployment-architecture/#direct-installation-of-lci-in-the-tas-vms">here</a>.</td>
+    <td> One of: <code>model-1</code>,<code>model-2</code>. No default value is assumed, if the tunable is not provided. For <code>model-1</code>, <code>boshDeployment</code> and <code>faultInjectorLocation</code> inputs are not required. </td>
+  </tr>
+  <tr>
     <td>organization</td>
     <td>Organization where the target app resides.</td>
     <td>For example, <code>dev-org</code>.</td>
@@ -50,11 +55,6 @@ CF app JVM method latency:
     <td>method</td>
     <td>The target Java class method.</td>
     <td>For example, <code>AddToInventory</code></td>
-  </tr>
-  <tr>
-    <td> deploymentModel </td>
-    <td> The deployment model used for setting up the fault injector. It supports <code>model-1</code> and <code>model-2</code>. Model-1 assumes that the fault-injector exists within a diego cell VM whereas Model-2 assumes that the fault-injector exists within a jumpbox VM.</td>
-    <td> Supports <code>model-1</code> and <code>model-2</code>. For more information, go to <a href="#deployment-model"> Deployment Model</a>. </td>
   </tr>
 </table>
 
@@ -108,13 +108,103 @@ CF app JVM method latency:
   <tr>
     <td> faultInjectorLocation </td>
     <td> Location of the fault injector with respect to the cloud foundry vms. </td>
-    <td> Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#fault-injector-location"> Fault Injector Location</a>. </td>
+    <td> Default: <code>local</code>. Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#fault-injector-location"> Fault Injector location</a>. </td>
   </tr>
 </table>
 
 <CFAndBOSHSecrets />
 
 <VSphereSecrets />
+
+## Fault Permissions
+### List all applications the user or client has access to
+**Required Roles (any one):**
+-   `SpaceDeveloper` (in the app’s space)
+-   `SpaceAuditor` (read-only role in the app’s space)
+-   `OrgManager` or `OrgAuditor` (at the org level)
+
+**Required OAuth Scopes (for tokens):**
+-   `cloud_controller.read`
+-   `cloud_controller.admin`
+-   `cloud_controller.global_auditor`
+
+### List all BOSH deployments
+**Required Role:**
+-   BOSH user with read permissions (typically `admin` or a user with `read` access to deployments)
+
+**Required Auth:**
+-   Valid BOSH UAA token with `bosh.read` scope
+
+### Establish SSH session to a Diego Cell via BOSH SSH
+**Required Role:**
+-   BOSH user with SSH access permissions for the Diego Cell instance group
+
+**Required Auth:**
+-   BOSH UAA token with `bosh.ssh` or `bosh.admin` scope
+
+### Use `cfdot` to list LRPs and locate app containers
+**Required Role:**
+-   Operator with SSH access to a cell and executable access to `cfdot`
+
+**Required Auth:**
+-   Requires `diego.read` scope in BOSH UAA or access to the Diego BBS with a trusted client certificate
+
+### Use `ctr` (containerd CLI) to get container-level metadata and target PIDs
+**Required Role:**
+-   SSH-level access to the cell host and root access (or `sudo`) to interact with containerd
+
+**Required Auth:**
+-   None via API; local root or elevated user access is required
+
+### Download Byteman artifacts into the target container
+**Required Role:**
+-   Root or privileged access to copy files into the app container’s namespace using tools like `nsenter` or `ctr`
+
+**Required Auth:**
+-   None via API; file access is performed locally via root privileges
+
+### Inject JVM chaos using Byteman scripts inside target containers
+
+**Required Role:**
+-   Root access to attach Byteman agent and execute scripts within the JVM process namespace
+
+**Required Auth:**
+-   None via API; requires PID-level access to the target JVM and execution rights
+
+### Remove injected chaos by clearing Byteman rules
+**Required Role:**
+-   Same as above — continued root-level access to the JVM process namespace
+
+**Required Auth:**
+-   None via API; local cleanup via script execution with appropriate permissions
+
+---
+
+### Deployment Model
+The `deploymentModel` input specifies the LCI deployment model with respect to its placement in the host TAS VM.
+- It accepts one of: `model-1`, `model-2`.
+- No default value is assumed if the input is not provided, but the experiment execution fails with an error.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/cf-app-jvm-method-latency/deploymentModel.yaml yaml)
+```yaml
+# deployment model for LCI
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-jvm-method-latency
+  labels:
+    name: app-jvm-method-latency
+spec:
+  cfAppJVMChaos/inputs:
+    duration: 30s
+    faultInjectorLocation: vSphere
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+    deploymentModel: model-1
+```
 
 ### Class
 The `class` input specifies the Java class whose method will be targeted. It shall be provided as: `package-name.class-name`.
@@ -197,7 +287,7 @@ The following YAML snippet illustrates the use of this input:
 
 [embedmd]:# (./static/manifests/cf-app-jvm-method-latency/faultInjectorLocation.yaml yaml)
 ```yaml
-# cf deployment platform
+# Fault Injector location
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:

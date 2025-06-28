@@ -8,7 +8,7 @@ metadata:
 spec:
   cfAppRouteUnmap/inputs:
     duration: 30
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
