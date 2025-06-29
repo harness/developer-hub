@@ -6,12 +6,12 @@ sidebar_position: 3
 ---
 
 
-The Compliance Report provides detailed insights into your organization's compliance status. Reports are generated for each compliance standard, including Top 10 OWASP CI/CD and CIS Benchmarks, helping you identify repository-level security gaps. The dashboard supports multiple filters to help narrow down and analyze specific subsets of data. You can download or email the report for further analysis. After applying any filter, click **Reload** icon at the top right of the dashboard for the changes to take effect.
+The Compliance Report provides detailed insights into your organization's compliance status. Reports are generated for each compliance standard, including Top 10 OWASP CI/CD and CIS Benchmarks, helps you identify repository-level security gaps. The dashboard supports multiple filters to help narrow down and analyze specific subsets of data. You can download or email the report for further analysis. After applying any filter, click **Reload** icon at the top right of the dashboard for the changes to take effect.
 
 You can generate the compliance report for a [single repository](/docs/software-supply-chain-assurance/open-source-management/dependencies/compliance#compliance-report-repo), or [summary report for all repositories](/docs/software-supply-chain-assurance/open-source-management/dependencies/compliance#compliance-report-summary) within a project or organization of your choice
 
 
-### Compliance Report (Repo):
+### Compliance Report (Repo)
 
 
 This dashboard provides a centralized view of repository-level compliance evaluations against widely accepted security benchmarks such as Top 10 OWASP CI/CD and CIS Benchmarks.
@@ -49,20 +49,20 @@ This dashboard provides a centralized view of repository-level compliance evalua
 <DocImage path={require('./static/repo-summary.png')} width="80%" height="100%" title="Click to view full size image" />
 
 
-### Failed Issues Trend by Severity:
+### Failed Issues Trend by Severity
 
-Track how failed compliance checks are distributed by severity over time to identify degradation patterns or improvements.
+Tracks the daily count of failed compliance checks by severity, helps you to quickly spot spikes, regressions, and assess repository risk posture over time.
 
 <DocImage path={require('./static/repo-severity.png')} width="80%" height="100%" title="Click to view full size image" />
 
-### Rules Evaluation Trend:
+### Rules Evaluation Trend
 
-Visualize the overall compliance posture over time by comparing total passed, and failed evaluations across scans.
+Tracks the total number of passed vs failed rule evaluations over time, helps you to visualize changes in compliance posture across scans.
 
 <DocImage path={require('./static/repo-trend.png')} width="80%" height="100%" title="Click to view full size image" />
 
 
-### Compliance Report (Summary):
+### Compliance Report (Summary)
 
 The Compliance Report (Summary) aggregates compliance status across multiple repositories.
 
@@ -82,7 +82,7 @@ The Compliance Report (Summary) aggregates compliance status across multiple rep
 
 **Latest Repositories Status**: Lists recently evaluated repositories, including branch names and compliance status.
 
-**Scan Status**: Breakdown of passed vs failed repositories.
+**Scan Status**: Pie chart showing the percentage of passed vs failed repositories.
 
 <DocImage path={require('./static/compliance-report-summary.png')} width="80%" height="100%" title="Click to view full size image" />
 
@@ -108,8 +108,10 @@ The Compliance Report (Summary) aggregates compliance status across multiple rep
 <DocImage path={require('./static/compliance-rule-analysis.png')} width="80%" height="100%" title="Click to view full size image" />
 
 
-### Rules Summary:
+### Rules Summary
 
-
+Provides a breakdown of all evaluated compliance rules, showing the number of repositories that passed or failed each rule which helps to pinpoint compliance gaps across standards like CIS and OWASP.
 
 <DocImage path={require('./static/compliance-rule-summary.png')} width="80%" height="100%" title="Click to view full size image" />
+
+You can also view the [Failed Issues Trend by Severity](/docs/software-supply-chain-assurance/open-source-management/dependencies/compliance#failed-issues-trend-by-severity) and [Rules Evaluation Trend](/docs/software-supply-chain-assurance/open-source-management/dependencies/compliance#rules-evaluation-trend) graphs in the compliance Report Summary dashboard for all repositories within the organization or project.
