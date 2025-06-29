@@ -1,21 +1,3 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+This option allows you to configure the step to use the severity reported directly by the scanner. By default, STO assigns severity based on numeric scores (such as CVSS). When this option is enabled, STO bypasses its internal severity mapping and uses the severity levels reported by the scanner (e.g., Critical, High, Medium, Low).
 
-You can configure the steps to directly use the severity provided by scanners. By default, STO assigns severity based on numeric scoring (such as CVSS). Enabling this setting instructs STO to bypass its internal severity mapping and directly use severity levels (Critical, High, Medium, Low, etc.) as reported by the scanner itself.
-
-To enable this behavior, In the **Settings** section of your step, add the setting `ingest_tool_severity` and set it to `true`.
-
-<Tabs>
-    <TabItem value="Visual" label="Visual" default>
-    <DocImage path={require('../static/sto-7041-add-setting-in-visual-editor.png')} width="50%" height="50%" title="Click to view full size image" />
-      </TabItem>
-    <TabItem value="YAML" label="YAML">
-          ``` yaml
-          - step:
-              type: <scanner_name>
-              spec:
-                settings:
-                  ingest_tool_severity: "true"
-          ```
-      </TabItem>
-</Tabs>
+To enable this behavior, check the **Use Raw Scanner Severity** field (recommended), or add `ingest_tool_severity: true` setting in the **Settings** section.

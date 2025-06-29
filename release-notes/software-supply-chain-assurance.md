@@ -21,13 +21,15 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 ## June 2025
 
-### Version: 1.33.0 , Plugin Version: 0.39.0
+### Version: 1.33.0 , Plugin Version: 0.39.1
 
 #### New features and enhancements
 
 - Registry domain URLs for artifacts stored in Docker registries, including GCR, ECR, ACR, JFrog Self-Hosted (On-Prem), and Kubernetes registries (Self-Hosted), no longer need to be specified, as the domain is already included in the connector URL. In all SCS steps, only the image name is required.
 
 - Removed delegate selectors as a mandatory field from the API configuration for setting up the VM infra in [RSPM pipeline infra](https://apidocs.harness.io/tag/PipelineInfraConfig) configuration.([ZD-81509](https://harnesssupport.zendesk.com/agent/tickets/81509))
+
+- For SBOM Drift, the **Detect drift from baseline** option has been removed from the SBOM orchestration step for artifacts.
 
 
 #### Fixed Issues

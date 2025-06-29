@@ -202,7 +202,6 @@ For details on adding Budgets, Reports, and Alerts go to:
 
 * [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
 * [Share Your Cost Perspective Report](../../3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report.md)
-* [Detect Cloud Cost Anomalies with CCM](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm)
 
 ## Perspective Preferences
 
@@ -266,7 +265,7 @@ You can also move a Perspective to a folder from its more options (⋮) setting.
 ![](./static/create-cost-perspectives-30.png)
 
 :::important note
-There are no limits as to how many folders can be made.
+The maximum number of folders that can be created is limited to 500.
 :::
 
 

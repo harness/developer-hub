@@ -32,7 +32,7 @@ Before you begin, you must complete a one-time setup to configure your Jira conn
 Jira tickets can only be created for targets that have baselines configured. For more information, see [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
 :::
 
-1. Go to the **Security Tests** tab from a pipeline execution or from the **Executions** section in the left navigation panel.
+1. Go to the **Vulnerabilities** tab from a pipeline execution or from the **Executions** section in the left navigation panel.
 
 2. Locate and select the issue for which you want to create a Jira ticket, then click **Create Ticket**.
 

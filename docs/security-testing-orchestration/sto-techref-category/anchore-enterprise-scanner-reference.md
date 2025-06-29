@@ -180,10 +180,15 @@ import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.m
 
 ### Scan Tool
 
-#### Image Name
+#### Use Raw Scanner Severity
 
-The name of the image that you want to extract from Anchore. In Extraction mode, the image to scan must be located on the Anchore server. You should include both the image name and tag, for example, `ubuntu:20.04`.
+import ScannerProvidedSeverity from './shared/use-scanner-provided-severity.md';
 
+<ScannerProvidedSeverity />
+
+#### Image Name (*for **Extraction** Scan Mode*)
+
+This field appears only when you select **Extraction** as the [Scan Mode](#scan-mode). The name of the image that you want to extract from Anchore. In Extraction mode, the image to scan must be located on the Anchore server. You should include both the image name and tag, for example, `ubuntu:20.04`.
 
 ### Log Level
 
@@ -230,12 +235,6 @@ import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 ## View Anchore policy failures
 Anchore policy failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Successfully passed policies will not be included in the scan results.  Additionally, you can apply an OPA policy to fail the pipeline based on the policy failures. This can be achieved using the [Security Tests - External Policy Failures](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-external-policy-failures) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).
-
-## Use scanner-provided Severity
-
-import ScannerProvidedSeverity from './shared/use-scanner-provided-severity.md';
-
-<ScannerProvidedSeverity />
 
 ## Proxy settings
 

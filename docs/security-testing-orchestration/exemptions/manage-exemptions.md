@@ -14,10 +14,6 @@ This document details how issue exemption requests can be reviewed and processed
 
 The reviewer's role must include **Approve/Reject** permissions for Exemptions at the appropriate scope, whether at the **Project**, **Organization**, or **Account** level.   Refer to [Required permissions for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) and ensure you have the required privileges at the required scopes.
 
-:::note
-Support for **Exemptions** at **Organization** and **Account** level is controlled by the feature flag  `STO_GLOBAL_EXEMPTIONS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
-
 ## Issue Exemption lifecycle
 An Issue Exemption request in STO follows a defined lifecycle, with actions that can be taken at each stage. The actions to address exemption requests include **Approve**, **Reject**, **Cancel**, and **Re-open** (to re-open any expired, rejected requests).
 

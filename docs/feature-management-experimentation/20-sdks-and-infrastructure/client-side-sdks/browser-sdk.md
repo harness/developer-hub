@@ -34,6 +34,12 @@ You must polyfill Fetch Web API if it is not available in your target browsers a
 
 If you're looking for possible polyfill options, check [es6-promise](https://github.com/stefanpenner/es6-promise), [es6-map](https://github.com/medikoo/es6-map) and [es6-set](https://github.com/medikoo/es6-set) for Promise, Map and Set polyfills respectively. For Fetch Web API, we recommend the lightweight [unfetch](https://unpkg.com/unfetch@latest/polyfill/index.js) or [whatwg-fetch](https://cdn.jsdelivr.net/npm/whatwg-fetch@latest/dist/fetch.umd.min.js).
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 1.3.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Initialization
 
 Set up FME in your code base with the following two steps:

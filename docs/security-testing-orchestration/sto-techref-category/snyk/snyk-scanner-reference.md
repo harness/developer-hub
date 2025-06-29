@@ -152,6 +152,13 @@ import StoSettingAuthAccessToken from '../shared/step-palette/auth/access-token.
 
 <StoSettingAuthAccessToken />
 
+### Scan Tool
+
+#### Use Raw Scanner Severity
+
+import ScannerProvidedSeverity from '../shared/use-scanner-provided-severity.md';
+
+<ScannerProvidedSeverity />
 
 ### Ingestion File
 
@@ -272,13 +279,6 @@ The formatting should contain the following:
     ]
  }
 ```
-
-## Use scanner-provided Severity
-
-import ScannerProvidedSeverity from '../shared/use-scanner-provided-severity.md';
-
-<ScannerProvidedSeverity />
-
 
 ## Proxy settings
 

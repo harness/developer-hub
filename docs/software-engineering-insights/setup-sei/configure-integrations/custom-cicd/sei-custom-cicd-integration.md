@@ -22,9 +22,10 @@ Configure the API according to the following specifications.
 ## API specification
 
 * **Method:** `POST`
-* **Base URL (Environment: PROD2):** `https://app.harness.io/gratis/sei/api/v1/custom-cicd`
-* **Base URL (Environment: PROD1):** `https://app.harness.io/prod1/sei/api/v1/custom-cicd`
-* **Base URL (Environment: EU):** `https://accounts.eu.harness.io/sei/api/v1/custom-cicd`
+* **Base URL (Environment: PROD2):** `https://app.harness.io/gratis/sei/api/v1/`
+* **Base URL (Environment: PROD1):** `https://app.harness.io/prod1/sei/api/v1/`
+* **Base URL (Environment: PROD3):** `https://app3.harness.io/sei/api/v1/`
+* **Base URL (Environment: EU):** `https://accounts.eu.harness.io/sei/api/v1/`
 * **Header:** Requires Harness SEI ApiKey authorization. The content type is ```application/json```
 * **Body:** Contains a data object with ```request_type``` and ```payload```.
 
@@ -44,7 +45,68 @@ Configure the API according to the following specifications.
 * Data:
 
 ```yaml
-"{"pipeline":"Node.js CI","user_id":"SCMTrigger","repo_url":"https://api.github.com/users/rajpropelo","start_time":1679467494000,"result":"success","duration":77000,"build_number":4487150517,"instance_guid":"89d2491c-764a-4f77-93d9-18e8e372b795","instance_name":"Custom CI/CD Instance","instance_url":"https://custom-cicd.acme.com/","job_run":{"stages":[{"displayName":"Build_Stage","displayDescription":"Build_Stage","result":"succeeded","state":"completed","durationInMillis":5000,"steps":[{"displayName":"BUILD_STEP","displayDescription":"BUILD_STEP","result":"succeeded","state":"completed","durationInMillis":5000}]}]},"job_full_name":"Node.js CI--readme updated","qualified_name":"Node.js CI--readme updated","branch_name":"master","module_name":null,"scm_commit_ids":["64be72b2c1f7d2a33082f98a40a848880fcdcd5e"],"job_run_params":[{"type":"StringParameterValue","name":"version","value":1},{"type":"StringParameterValue","name":"revision","value":1}],"ci":true,"cd":false,"artifacts":[{"input":false,"output":true,"type":"container","location":"http://generated/image/location","name":"image1","qualifier":"1"}],"trigger_chain":[{"id":"SCMTrigger","type":"SCMTriggerCause"}]}"
+{
+  "pipeline": "<PIPELINE_NAME>",
+  "user_id": "<TRIGGER_USER_ID>",
+  "repo_url": "<REPO_URL>",
+  "start_time": <EPOCH_START_TIME_IN_MS>,
+  "result": "<BUILD_RESULT>",
+  "duration": <DURATION_IN_MS>,
+  "build_number": <BUILD_NUMBER>,
+  "instance_guid": "<INSTANCE_GUID>",
+  "instance_name": "<INSTANCE_NAME>",
+  "instance_url": "<INSTANCE_URL>",
+  "job_run": {
+    "stages": [
+      {
+        "displayName": "<STAGE_NAME>",
+        "displayDescription": "<STAGE_DESCRIPTION>",
+        "result": "<STAGE_RESULT>",
+        "state": "<STAGE_STATE>",
+        "durationInMillis": <STAGE_DURATION>,
+        "steps": [
+          {
+            "displayName": "<STEP_NAME>",
+            "displayDescription": "<STEP_DESCRIPTION>",
+            "result": "<STEP_RESULT>",
+            "state": "<STEP_STATE>",
+            "durationInMillis": <STEP_DURATION>
+          }
+        ]
+      }
+    ]
+  },
+  "job_full_name": "<JOB_FULL_NAME>",
+  "qualified_name": "<QUALIFIED_JOB_NAME>",
+  "branch_name": "<BRANCH_NAME>",
+  "module_name": "<MODULE_NAME_OR_NULL>",
+  "scm_commit_ids": ["<COMMIT_ID_1>", "<COMMIT_ID_2>"],
+  "job_run_params": [
+    {
+      "type": "<PARAM_TYPE>",
+      "name": "<PARAM_NAME>",
+      "value": "<PARAM_VALUE>"
+    }
+  ],
+  "ci": <BOOLEAN_CI>,
+  "cd": <BOOLEAN_CD>,
+  "artifacts": [
+    {
+      "input": <BOOLEAN_IS_INPUT>,
+      "output": <BOOLEAN_IS_OUTPUT>,
+      "type": "<ARTIFACT_TYPE>",
+      "location": "<ARTIFACT_LOCATION_URL>",
+      "name": "<ARTIFACT_NAME>",
+      "qualifier": "<ARTIFACT_QUALIFIER>"
+    }
+  ],
+  "trigger_chain": [
+    {
+      "id": "<TRIGGER_ID>",
+      "type": "<TRIGGER_TYPE>"
+    }
+  ]
+}
 ```
 
 </details>
@@ -52,32 +114,25 @@ Configure the API according to the following specifications.
 Here is an example of a request on PROD2 environment:
 
 ```bash
-curl --location '<CUSTOM_CICD_API>' \
---header 'sec-ch-ua: "Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"' \
---header 'Accept: application/json, text/plain, */*' \
---header 'Referer: https://app.harness.io/' \
---header 'sec-ch-ua-mobile: ?0' \
+curl --location '<BASE_URL>/custom-cicd' \
 --header 'Authorization: ApiKey <HARNESS_SEI_API_KEY>' \
---header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' \
---header 'sec-ch-ua-platform: "macOS"' \
 --header 'Content-Type: application/json' \
---data '{
-{
-    “job_name”: “pipelines-testing”,
-    “instance_guid”: “c9a73c1b-7590-34sa-a82f-c53a469686b7",
-    “instance_name”: “azure-integration”,
-    “job_full_name”: “<PROJECT>/<REPO_NAME>“,
-    “job_normalized_full_name”: “<PROJECT>/<REPO_NAME>“,
-    “result”: “FAILED”,
-    “user_id”: “UNKNOWN”,
-    “repo_url”: “https://dev.azure.com/<USERNAME>/<PROJECT>/<REPO_NAME>“,
-    “start_time”: 1684912520000,
-    “duration”: 5,
-    “build_number”: 7871,
-    “instance_url”: “https://dev.azure.com”,
-    “branch_name”: “main”,
-    "project_name": "Project" 
-}
+--data-raw '{
+  "job_name": "<JOB_NAME>",
+  "instance_guid": "<INSTANCE_GUID>",
+  "instance_name": "<INSTANCE_NAME>",
+  "job_full_name": "<env.JOB_FULL_NAME>",
+  "job_normalized_full_name": "<env.JOB_FULL_NAME>",
+  "result": "<BUILD_RESULT>",
+  "user_id": "<USER_ID>",
+  "repo_url": "<REPO_URL>",
+  "start_time": <EPOCH_START_TIME_IN_MS>,
+  "duration": <DURATION_IN_SECONDS>,
+  "build_number": <BUILD_NUMBER>,
+  "instance_url": "<CI_CD_INSTANCE_URL>",
+  "branch_name": "<BRANCH_NAME>",
+  "project_name": "<PROJECT_NAME>"
+}'
 
 ```
 
@@ -214,7 +269,7 @@ We need to generate a CI/CD instance GUID associated with that integration. This
 Here is an example using a cURL command:
 
 ```shell
-curl --location '<CUSTOM_CICD_API>' \ # The Base URL is relative to the environment that you're using.
+curl --location '<BASE_URL>/custom-cicd' \ # The Base URL is relative to the environment that you're using.
 --header 'Authorization: ApiKey <HARNESS_SEI_API_KEY>' \
 --header 'Content-Type: application/json' \
 --data '{

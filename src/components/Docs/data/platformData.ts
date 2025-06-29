@@ -127,6 +127,12 @@ export const docsCards: CardSections = [
     description: "",
     list: [
       {
+        title: "Pipelines",
+        module: MODULES.platform,
+        description: "Learn how to create and manage pipelines.",
+        link: "/docs/category/pipelines",
+      },
+      {
         title: "Harness AI",
         module: MODULES.platform,
         description:

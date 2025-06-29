@@ -32,6 +32,7 @@ These are a few examples of using segments to deploy safe and successful feature
 Harness FME supports the following segment types:
   * **Standard segments** - can contain up to 100,000 user IDs
   * **Large segments** - can contain up to 1,000,000 user IDs (may be increased upon request)
+  * **Rule-based segments** - dynamically include user IDs based on [targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting/#targeting-rules) 
 
 :::info
 **Large segments** are available on the [Enterprise](https://www.split.io/pricing/) plan.
@@ -49,7 +50,7 @@ When you add user IDs to a segment, note that these are lists that need to be fu
   * Creating and updating Large segments is done in _two steps_, including using Split API to upload a CSV file containing the segment's _full list_ of user IDs.
   * In Harness FME, you can search a Large segment for a given User ID, but the full list of user IDs in a Large segment cannot be displayed.
 
-This article shows how to work with Standard segments and Large segments and explains the differences in detail.
+This article shows how to work with Standard, Large, and Rule-based segments and explains the differences in detail.
 
 The segment type is displayed at the top of each Segment page in Harness FME, as shown below.
 
@@ -57,7 +58,7 @@ The segment type is displayed at the top of each Segment page in Harness FME, as
 
 In Harness FME, you can filter the segments listed on the Segments pane by segment type.
 
-<div style={{maxWidth:400}}> ![](./static/create-a-segment-filter.png) </div>
+<div style={{maxWidth:400}}> ![](./static/create-a-segment-filter-1.png) </div>
 
 ## Creating a segment
 
@@ -67,7 +68,7 @@ To create a segment:
 
 1. From the navigation bar, click **Create segment**. The Create a segment page appears.
 
-   <div style={{maxWidth:700}}> ![](./static/create-a-segment-page.png) </div>
+   <div style={{maxWidth:700}}> ![](./static/create-a-segment-page-1.png) </div>
     
 2. Fill in the fields as follows:
   * **Name.** Give your segment an easily recognizable name.
@@ -104,6 +105,8 @@ You need to add a segment definition for a given environment (this creates an em
     ___For Standard segments___ you can choose to individually add user IDs or to add them via file import.
 
     ___For Large segments___ user IDs are added via file import using Split API.
+
+    ___For rule-based segments___ user IDs are dynamically included based on targeting rules, which you can configure in the UI or using the Split API.
 
     For details about the import file contents, see the [CSV import file format](#csv-import-file-format) section below.
 

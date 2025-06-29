@@ -109,6 +109,6 @@ The types of scans conducted include:
 2. Secret Scanning with [Gitleaks](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference/)
 3. Software Composition Analysis (SCA) with [OSV](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference/).
 
-Refer to [view security test results](/docs/security-testing-orchestration/view-security-test-results/view-scan-results/) in Harness STO documentation for more detailed information about the view and navigation.
+Refer to [view security test results](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) in Harness STO documentation for more detailed information about the view and navigation.
 
 For a complete overview of your supply chain's compliance posture, refer [Compliance Summary](/docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture) documentation.

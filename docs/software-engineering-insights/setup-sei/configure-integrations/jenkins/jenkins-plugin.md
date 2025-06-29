@@ -7,6 +7,13 @@ redirect_from:
     - /docs/software-engineering-insights/sei-integrations/jenkins/jenkins-plugin
 ---
 
+:::note
+
+The SEI Jenkins integration provides basic CI/CD insights, but it doesn’t support lead time tracking out of the box. To enable this metric, you’ll need to send artifact details using the Custom CI/CD API.
+You can learn more about how to set this up in the [DORA CI/CD Correlation](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/dora-ci-cd-correlation).
+
+:::
+
 The **Harness - SEI Jenkins Plugin** is a tool, written in Java, to send reports about builds to Harness SEI.
 
 ### Step 1: Configure the integration in the Harness platform
