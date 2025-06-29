@@ -1,0 +1,13 @@
+{
+    "label":"Sign and Verify Artifacts",
+    "position": 6,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "description": "Sign your artifacts using Harness SCS",
+    "link":{
+       "type":"generated-index",
+       "title":"Sign and Verify Artifacts"
+       
+    }
+ }
