@@ -269,7 +269,7 @@ We need to generate a CI/CD instance GUID associated with that integration. This
 Here is an example using a cURL command:
 
 ```shell
-curl --location '<BASE_URL>/custom-cicd' \ # The Base URL is relative to the environment that you're using.
+curl --location '<BASE_URL>/cicd/instances' \
 --header 'Authorization: ApiKey <HARNESS_SEI_API_KEY>' \
 --header 'Content-Type: application/json' \
 --data '{
