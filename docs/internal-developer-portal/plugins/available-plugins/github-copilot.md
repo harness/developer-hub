@@ -71,7 +71,7 @@ The plugin pulls data using GitHub REST APIs and requires **authorization via a 
 
 :::
 
-:::warning 
+:::note 
 If you are using `copilot.enterprise` in GitHub Copilot plugin config, note that the Enterprise API for Copilot only works with a "classic PAT" (personal access token). This means you will need to configure a Git connector in IDP, under "Configure" -> "Git Integrations" in your Harness account, with authorization using a [username and token](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#authentication).
 :::
 
