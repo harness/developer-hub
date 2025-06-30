@@ -14,6 +14,12 @@ By using the `.netrc` file, you can execute Git commands within the run step wit
 
 :::
 
+:::info Private Repos Only
+
+This article is to be used with private repos only. 
+
+:::
+
 1. [Configure your CI pipeline's codebase.](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase)
 
    Make sure to select the code repo connector with the credentials that you want to use in the Run step.
