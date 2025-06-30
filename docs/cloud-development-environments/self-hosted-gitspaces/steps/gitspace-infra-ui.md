@@ -5,12 +5,12 @@ sidebar_position: 2
 sidebar_label: Configure Gitspace Infrastructure in Harness UI
 ---
 
-In order to get started with self-hosted Gitspaces, you'll first need to configure infrastructure for these Gitspaces. This infrastructure is where your Gitspaces will be hosted, so you must define and configure it within Harness UI. This guide will take you through the detailed steps to configure your infrastructure using the Harness UI.
+In order to get started with Self Hosted Gitspaces, you'll first need to **configure your infrastructure**. This infrastructure is where your Gitspaces will be hosted, so you must **define and configure it from Harness UI**. This guide will take you through the detailed steps to configure your infrastructure using the Harness UI.
 
 ## Prerequisites
 
-1. Ensure you’ve read through the **Fundamentals** and **Prerequisites** of self-hosted Gitspaces [here](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). This will help you gain a deeper understanding of the basic concepts and setup steps.
-2. Only **Gitspace Admins** with **Account-level access** can configure Gitspace Infrastructure.
+1. Ensure you’ve read through the [Fundamentals and Prerequisites](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of self-hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
+2. Only users with **Account-level access** can configure Gitspace infrastructure for now. Read more about the [Permissions Hierarchy](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). 
 3. Ensure that your GCP project (as defined in your infra config) has the following APIs enabled, here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project: 
       <ul>
         <li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) – `api/cloudresourcemanager.googleapis.com`</li>
@@ -26,7 +26,7 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 
 ### Access Gitspace Infrastructure
 
-1. Only users with the **Gitspace Admin** role and account-level access can configure Gitspace Infrastructure.
+1. Only users with the **Account-level access** can configure Gitspace Infrastructure.
 2. Navigate to the **Cloud Development Environments** module and open your **Account Settings**.
 3. In the side navbar under Account Settings, select **Gitspace Infrastructure**.
 
@@ -34,23 +34,34 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 
 ### Provide Basic Infrastructure Details
 
-1. **Infrastructure Name**: Provide a name for your Gitspace infrastructure. This name will be used while referencing your infrastructure for creating Gitspaces.
-2. **GCP Project**: Enter the name of your GCP project. This is where the GCP VM Instance hosting your Gitspaces will reside.
-3. **Domain**: Provide the domain under which all Gitspaces created in this infrastructure will be accessible.
-4. **Gateway Machine Type**: Specify the VM machine type for your Gateway.
+1. **Infrastructure Name**: Provide a **name** for your **Gitspace infrastructure**. This name will be used while referencing your infrastructure for creating Gitspaces.
+2. **GCP Project**: Enter the name of your **GCP project**. This is where the GCP VM Instance hosting your Gitspaces will reside.
+3. **Domain**: Provide the **domain** under which all Gitspaces created in this infrastructure will be accessible.
+4. **Gateway Machine Type**: Specify the **VM machine type** for your Gateway.
+
+![](./static/basic-details-infra-ui.png)
 
 ### Configure Regions
 
-You can add and configure regions for Gitspaces. Note that users will only be able to host Gitspaces in these defined regions. Use the following input parameters:
+You can add and configure regions for Gitspaces. Note that users will only be able to host Gitspaces in these defined regions. Click on **New Region** to add a new region.
+![](./static/add-region-first-time.jpg)
 
-1. **Region Name**: Enter the region name. Refer to the [GCP documentation](https://cloud.google.com/compute/docs/regions-zones) to view available regions.
-2. **IP Details**: Provide the IP configuration for each region.
-3. **Sub-Domain**: Enter the sub-domain for each region. The root domain will match the one entered in the basic details. You can define a separate sub-domain per region.
-4. **Runner VM Region**: Select the VM region where the runner and delegate will be set up for self-hosted Gitspaces.
+Use the following input parameters:
+1. **Region Name**: Enter the **region name**. Refer to the [GCP documentation](https://cloud.google.com/compute/docs/regions-zones) to view available regions.
+2. **IP Details**: Provide the **IP configuration** for each region.
+3. **Sub-Domain**: Enter the **domain** for each region. This field consists of a sub-domain and a root-domain. The root-domain is the same domain entered above in the basic details. 
+![](./static/new-region-1.jpg)
+4. **Runner VM Region**: Select the **VM region** where the runner and delegate will be set up for Self Hosted Gitspaces.
+![](./static/runner-vm-region.png)
+
+Here's how **all the added regions** will look for your infrastructure.
+![](./static/all-regions.png)
 
 ### Download the Infrastructure Config YAML
 
 Once all details have been entered, click on **Download and Apply YAML**. This will generate the **Infra Config YAML**, which contains the entire Gitspace Infra configuration. This YAML is a mandatory input for [configuring and setting up the Harness Gitspaces Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md), which provisions the GCP infrastructure in your selected project.
+
+![](./static/download-apply-yaml.png)
 
 ## Manage Gitspace Infrastructure
 

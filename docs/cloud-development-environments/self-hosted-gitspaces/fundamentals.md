@@ -1,6 +1,6 @@
 ---
 title: Fundamentals
-description: Learn more about the basic fundamentals of Self-Hosted Gitspaces. 
+description: Understand the basic fundamentals of Self-Hosted Gitspaces. 
 sidebar_position: 1
 sidebar_label: Fundamentals
 ---
