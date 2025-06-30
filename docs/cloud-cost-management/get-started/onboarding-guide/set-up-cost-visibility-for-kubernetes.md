@@ -354,8 +354,3 @@ $ kubectl auth can-i watch podmetrics --as=system:serviceaccount:harness-delegat
 yes
 ```
 
-## Next Steps
-
-* [Optimize Cloud Costs with AutoStopping Rules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard)
-* [Root Cost Analysis](../../3-use-ccm-cost-reporting/3-root-cost-analysis/perform-root-cost-analysis.md)
-* [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
