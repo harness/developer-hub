@@ -139,7 +139,7 @@ You can enable authentication for your GCP account via
 - Service Account with Custom Role: Created with custom permissions
 - OIDC Authentication: Federated access with no stored credentials
 
-### OIDC Authentication
+#### OIDC Authentication
 
 :::info 
 This feature is behind a Feature Flag `CCM_ENABLE_OIDC_AUTH_GCP`. Contact [Harness Support](mailto:support@harness.io) to enable it.

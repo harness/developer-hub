@@ -209,7 +209,7 @@ You can enable authentication for your AWS account via
 - Cross Account Role: Created with custom permissions
 - OIDC Authentication: Federated access with no stored credentials
 
-### OIDC Authentication
+#### OIDC Authentication
 
 :::info 
 This feature is behind a Feature Flag `CCM_ENABLE_OIDC_AUTH_AWS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
