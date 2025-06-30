@@ -1,5 +1,5 @@
 ---
-title: Create a budget group
+title: Budget Groups
 description: This topic describes how to create a new budget group.
 ---
 
