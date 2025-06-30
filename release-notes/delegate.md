@@ -106,7 +106,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Enhanced system stability and regular checks implemented to ensure reliability.
 
-### Version 25.06.85806 <!--June 27, 2025-->
+### Version 25.05.85806 <!--June 27, 2025-->
 
 #### Fixed issues
 
