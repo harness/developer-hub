@@ -18,12 +18,11 @@ keywords:
 import Head from '@docusaurus/Head';
 
 <Head>
-  <title>Understanding Contexts in Harness Database DevOps</title>
+  <meta name="title" content="Understanding Contexts in Harness Database DevOps" data-rh="title"/>
   <meta
     name="description"
-    content="Learn how Liquibase contexts help filter changesets by environment in Harness Database DevOps. Includes examples, CLI commands, best practices, and structured FAQ schema."
+    content="Learn what a context is, how it works in Harness DB DevOps, and explore best practices for context, rollback, transaction control, and CI/CD workflows."
   />
-  <meta name="keywords" content="Liquibase context, database DevOps, Harness changelog, set-contexts CLI, changeset filtering, YAML changelog, environment-based deployments" />
   <script type="application/ld+json">
     {`
       {
@@ -127,7 +126,7 @@ context: "dev, qa"           # Runs if context is dev OR qa
 context:"!prod and test"    # Runs if NOT prod AND is test
 context:"v1.0 or !qa"       # Runs if v1.0 OR NOT qa
 ```
-This logical control helps you fine-tune exactly which changesets run during a migration operation.
+This logical control helps you fine-tune exactly which [changesets](./changeset.md) run during a migration operation.
 
 ### How Contexts Work in Harness Database DevOps?
 
@@ -136,21 +135,7 @@ This logical control helps you fine-tune exactly which changesets run during a m
 | **Default behavior**            | If you don’t use a special context in DB Instance, all changesets—including those with contexts—will run. |
 | **With context filter**         | Only the changesets matching the filter will run. Others will be skipped.                     |
 | **Empty or strict context (@)** | A changeset with `@context` runs only if that exact context is provided during the update.    |
-
-## How to Use Context Management at Scale ?
-
-When you have dozens or even hundreds of changesets, adding or editing contexts manually can become time-consuming and error-prone. That's why there is a powerful Liquibase command: `set-contexts`, this command enables bulk editing of contexts directly from the CLI—without manual changes to the changelog files. It supports SQL, XML, YAML, and JSON changelogs, and works across multiple included changelogs.
-
-
-### Example Usage of `set-contexts` Command
-
-```bash
-liquibase set-contexts \
-  --set-as="dev,stage" \
-  --context-filter="dev,uat,stage" \
-  --label-filter="rel-02" \
-  --force-replace=true
-```
+| **Multiple contexts**           | You can assign multiple contexts to a changeset, and it will run if any of those contexts match. |
 
 ## Conclusion
 
