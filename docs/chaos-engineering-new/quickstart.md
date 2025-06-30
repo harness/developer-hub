@@ -2,6 +2,7 @@
 title: Quickstart
 description: Get started with your first chaos experiment in minutes
 sidebar_position: 5
+unlisted: true
 ---
 
 # Quickstart

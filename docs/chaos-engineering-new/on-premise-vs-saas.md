@@ -1,181 +1,173 @@
 ---
 title: On-premise vs SaaS
-description: Choose between Harness Chaos Engineering SaaS and on-premise deployment options
+description: Choose between Harness Chaos Engineering SaaS and Self-Managed Enterprise Edition deployment options
 sidebar_position: 3
 ---
 
 # On-premise vs SaaS
 
-Harness Chaos Engineering offers flexible deployment options to meet your organization's security, compliance, and operational requirements. Choose between our fully managed SaaS solution or deploy on-premises for complete control.
+Harness Chaos Engineering offers two deployment options to meet your organization's requirements. Choose between the fully managed SaaS solution or deploy the Self-Managed Enterprise Edition on-premises.
 
 ## Harness Chaos Engineering SaaS
 
 ### Overview
-The SaaS offering is a fully managed, cloud-hosted solution that provides immediate access to chaos engineering capabilities without infrastructure setup or maintenance overhead.
+Harness SaaS is a fully managed, cloud-hosted solution that provides immediate access to chaos engineering capabilities without infrastructure setup or maintenance overhead.
 
-### Key Benefits
+### Key Features
+- **Quick Setup**: Start running chaos experiments within minutes
+- **Managed Infrastructure**: No need to manage underlying platform components
+- **Automatic Updates**: Always access the latest features and patches
+- **Enterprise ChaosHub**: Built-in access to 200+ pre-built chaos faults
+- **AIDA Support**: AI Development Assistant for creating governance policies
 
-#### Quick Time to Value
-- **Instant Setup**: Start running chaos experiments within minutes
-- **No Infrastructure Management**: Focus on chaos engineering, not platform maintenance
-- **Automatic Updates**: Always access the latest features and security patches
-- **Global Availability**: 99.9% uptime SLA with global redundancy
-
-#### Scalability and Performance
-- **Auto-scaling**: Handles experiment load automatically
-- **Global Edge**: Reduced latency with worldwide presence
-- **High Availability**: Multi-region deployment with automatic failover
-- **Performance Optimization**: Continuously optimized for speed and reliability
-
-#### Cost Effectiveness
-- **No Capital Expenditure**: Pay-as-you-use pricing model
-- **Reduced Operational Costs**: No need for dedicated infrastructure teams
-- **Predictable Pricing**: Transparent, usage-based billing
-- **Free Tier Available**: Get started without upfront costs
+### What's Included
+- **Complete Platform**: Full chaos engineering capabilities out-of-the-box
+- **Enterprise ChaosHub**: Access to comprehensive fault library
+- **Harness AIDA**: AI assistant for policy creation and optimization
+- **Managed Services**: Platform maintenance handled by Harness
+- **Standard Integrations**: Built-in connectors for popular tools    
 
 ### Ideal For
-- **Startups and SMBs**: Organizations wanting to get started quickly
-- **Cloud-First Companies**: Teams already using cloud services
-- **Development Teams**: Groups focused on application development
-- **Proof of Concepts**: Testing chaos engineering before full commitment
+- Organizations wanting to get started quickly
+- Teams focused on application development over infrastructure
+- Companies with standard compliance requirements
+- Development and testing environments
 
-### Security and Compliance
-- **SOC 2 Type II Certified**: Rigorous security controls
-- **ISO 27001 Compliant**: International security standards
-- **GDPR Compliant**: European data protection regulations
-- **Data Encryption**: End-to-end encryption in transit and at rest
-
-## Harness Chaos Engineering On-Premise
+## Self-Managed Enterprise Edition (On-Premise)
 
 ### Overview
-The on-premise deployment gives you complete control over your chaos engineering platform, running entirely within your own infrastructure and security perimeter.
+The Self-Managed Enterprise Edition allows you to run Harness Chaos Engineering entirely within your own infrastructure, providing complete control over your chaos engineering environment.
 
-### Key Benefits
+### Key Features
+- **Complete Data Control**: All data remains within your infrastructure
+- **Feature Parity**: Same capabilities as SaaS with minor timeline differences
+- **Network Isolation**: Deploy in air-gapped or restricted environments
+- **Custom Configuration**: Tailor the platform to your specific needs
+- **Enterprise Integration**: LDAP, SSO, and custom authentication
 
-#### Complete Control
-- **Data Sovereignty**: All data remains within your infrastructure
-- **Custom Security Policies**: Implement organization-specific security controls
-- **Network Isolation**: Run in air-gapped or highly restricted environments
-- **Compliance Flexibility**: Meet specific regulatory requirements
-
-#### Enterprise Integration
-- **LDAP/AD Integration**: Seamless authentication with existing systems
-- **Custom SSO**: Integration with enterprise identity providers
-- **Network Policies**: Align with existing network security architecture
-- **Audit Logging**: Comprehensive logging for compliance and security
-
-#### Customization Options
-- **Custom Faults**: Develop organization-specific fault types
-- **API Extensions**: Build custom integrations and workflows
-- **Branding**: White-label the platform for your organization
-- **Resource Allocation**: Optimize for your specific workload patterns
-
-### Ideal For
-- **Large Enterprises**: Organizations with complex compliance requirements
-- **Regulated Industries**: Financial services, healthcare, government
-- **High-Security Environments**: Organizations with strict data policies
-- **Custom Requirements**: Teams needing specialized functionality
+### Architecture Components
+- **Chaos Control Plane**: Manages experiments and orchestration
+- **Database Layer**: MongoDB and TimescaleDB for data storage
+- **Monitoring Stack**: Prometheus and Grafana for observability
+- **Authentication Service**: User management and access control
+- **Load Balancer**: NGINX or Istio virtual services
 
 ### Infrastructure Requirements
 
 #### Minimum Requirements
-- **CPU**: 8 cores per node (minimum 3 nodes)
-- **Memory**: 32 GB RAM per node
-- **Storage**: 500 GB SSD per node
-- **Network**: 1 Gbps connectivity
+- **CPU**: 16 cores total
+- **Memory**: 32 GB RAM
+- **Storage**: 500 GB SSD
+- **Kubernetes**: v1.21+ (any CNCF-certified distribution)
 
-#### Recommended Requirements
-- **CPU**: 16 cores per node (5+ nodes for HA)
-- **Memory**: 64 GB RAM per node
-- **Storage**: 1 TB NVMe SSD per node
-- **Network**: 10 Gbps connectivity with redundancy
+#### Recommended for Production
+- **CPU**: 32+ cores
+- **Memory**: 64+ GB RAM
+- **Storage**: 1+ TB NVMe SSD
+- **High Availability**: Multi-node setup with redundancy
 
-#### Supported Platforms
-- **Kubernetes**: Any CNCF-certified distribution
-- **Operating Systems**: RHEL 8+, Ubuntu 20.04+, CentOS 8+
-- **Container Runtime**: Docker, containerd, CRI-O
-- **Load Balancer**: NGINX, HAProxy, cloud load balancers
+### Deployment Options
+- **Cloud**: Deploy on public cloud Kubernetes services
+- **Connected**: On-premises with internet connectivity
+- **Air-gapped**: Completely isolated environments
+- **Signed Certificates**: Custom certificate management
 
-## Comparison Matrix
+### Limitations Compared to SaaS
+- **Enterprise ChaosHub**: Not connected by default
+  - Contact [Harness Support](mailto:support@harness.io) for access
+  - Can be added as a [custom ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/)
+- **Harness AIDA**: AI Development Assistant not available
+- **Updates**: Manual deployment of platform updates required
+- **Maintenance**: Customer responsibility for platform operations
 
-| Feature | SaaS | On-Premise |
-|---------|------|------------|
+## Feature Comparison
+
+| Feature | SaaS | Self-Managed Enterprise |
+|---------|------|-------------------------|
 | **Setup Time** | Minutes | Days to Weeks |
-| **Maintenance** | Managed by Harness | Customer Responsibility |
-| **Updates** | Automatic | Manual/Scheduled |
-| **Scalability** | Auto-scaling | Manual scaling |
+| **Platform Maintenance** | Managed by Harness | Customer Responsibility |
+| **Feature Updates** | Automatic | Manual Deployment |
+| **Enterprise ChaosHub** | ✅ Included | ❌ Requires Setup |
+| **Harness AIDA** | ✅ Available | ❌ Not Available |
 | **Data Location** | Harness Cloud | Customer Infrastructure |
-| **Customization** | Limited | Extensive |
-| **Integration** | Standard APIs | Full API + Custom |
-| **Compliance** | Standard Certifications | Customer-Controlled |
-| **Cost Model** | Usage-Based | License + Infrastructure |
-| **Support** | 24/7 Included | Enterprise Support Plans |
+| **Air-gapped Deployment** | ❌ Not Supported | ✅ Supported |
+| **Custom Integrations** | Standard APIs | Full API Access |
+| **Compliance Control** | Shared Responsibility | Full Customer Control |
 
-## Security Considerations
+## Supported Platforms (Both Deployments)
 
-### SaaS Security
-- **Shared Responsibility Model**: Harness secures the platform, you secure your experiments
-- **Data Encryption**: AES-256 encryption for data at rest and in transit
-- **Network Security**: VPC isolation and private networking options
-- **Access Control**: Multi-factor authentication and RBAC
+Both SaaS and Self-Managed Enterprise Edition support the same target platforms:
 
-### On-Premise Security
-- **Full Control**: Complete ownership of security implementation
-- **Air-Gapped Deployment**: Isolated from external networks if required
-- **Custom Encryption**: Implement organization-specific encryption standards
-- **Audit Trail**: Complete visibility into all system activities
+### Kubernetes Distributions
+- Amazon EKS (k8s 1.21+)
+- Azure AKS (k8s 1.21+)
+- Google GKE (k8s 1.21+)
+- Red Hat OpenShift (k8s 1.21+)
+- Rancher (k8s 1.21+)
+- VMware Tanzu (k8s 1.21+)
+- Self-managed clusters (k8s 1.21+)
 
-## Migration Path
+### Operating Systems
+- Ubuntu 16.04+
+- Red Hat Enterprise Linux 7+
+- CentOS 7+
+- Debian 10+
+- Fedora 30+
+- openSUSE Leap 15.4+
 
-### SaaS to On-Premise
-- **Export Configurations**: Download all experiment definitions and settings
-- **Data Migration**: Transfer historical data and results
-- **Team Training**: Transition support and training programs
-- **Gradual Migration**: Phased approach to minimize disruption
-
-### On-Premise to SaaS
-- **Configuration Import**: Upload existing experiment definitions
-- **Data Synchronization**: Migrate historical data to cloud
-- **Team Onboarding**: Training on SaaS-specific features
-- **Hybrid Operation**: Run both environments during transition
+### Chaos Fault Categories
+Both deployments support the same fault types across Linux, Kubernetes, Windows, VMware, AWS, GCP, and Azure platforms.
 
 ## Making the Decision
 
 ### Choose SaaS If You:
 - Want to get started quickly with minimal setup
 - Prefer managed services and automatic updates
-- Have standard compliance requirements
-- Want predictable, usage-based pricing
-- Focus on application development over infrastructure
+- Need immediate access to Enterprise ChaosHub
+- Want to use Harness AIDA for policy creation
+- Have standard security and compliance requirements
 
-### Choose On-Premise If You:
+### Choose Self-Managed Enterprise Edition If You:
 - Have strict data sovereignty requirements
-- Need extensive customization capabilities
+- Need to deploy in air-gapped environments
+- Require complete control over the platform
 - Operate in highly regulated industries
-- Require air-gapped or isolated deployments
-- Have existing infrastructure and operational expertise
+- Have existing on-premises infrastructure expertise
+- Need custom security implementations
 
 ## Getting Started
 
-### SaaS
-1. **Sign Up**: Create your free Harness account
-2. **Connect Infrastructure**: Link your cloud accounts or Kubernetes clusters
-3. **Run First Experiment**: Follow our quick start guide
-4. **Scale Up**: Add team members and expand experiment scope
+### SaaS Deployment
+1. **Sign Up**: Create your Harness account at [app.harness.io](https://app.harness.io)
+2. **Create Project**: Set up your first chaos engineering project
+3. **Connect Infrastructure**: Link your Kubernetes clusters or cloud accounts
+4. **Run First Experiment**: Follow the [getting started guide](./get-started)
 
-### On-Premise
-1. **Contact Sales**: Discuss requirements and licensing
-2. **Infrastructure Planning**: Design your deployment architecture
-3. **Installation**: Deploy using Helm charts or operators
-4. **Configuration**: Set up authentication, networking, and integrations
-5. **Training**: Onboard your team with expert guidance
+### Self-Managed Enterprise Edition
+1. **Contact Sales**: Discuss licensing and requirements
+2. **Plan Infrastructure**: Review [system requirements](./on-premises-smp)
+3. **Install Platform**: Deploy using Helm charts
+4. **Configure Access**: Set up authentication and networking
+5. **Connect ChaosHub**: Request Enterprise ChaosHub access if needed
 
-## Support and Services
+## Support
 
-Both deployment options include:
-- **Technical Support**: Expert assistance for setup and operations
-- **Professional Services**: Implementation and best practices consulting
-- **Training Programs**: Comprehensive chaos engineering education
-- **Community Resources**: Access to documentation, forums, and examples
+### SaaS Support
+- **Included Support**: Platform maintenance and updates
+- **Community Resources**: Documentation, forums, and examples
+- **Enterprise Support**: Available for enterprise customers
 
-Ready to choose your deployment model? [Contact our team](https://harness.io/contact-sales) to discuss your specific requirements and get personalized recommendations.
+### Self-Managed Support
+- **Installation Guidance**: Professional services available
+- **Platform Updates**: Customer-managed deployment
+- **Enterprise Support**: Dedicated support for enterprise customers
+- **Community Resources**: Access to documentation and forums
+
+## Next Steps
+
+1. **Review Requirements**: Assess your security, compliance, and operational needs
+2. **Compare Options**: Use the feature comparison to evaluate both deployments
+3. **Plan Deployment**: Choose the option that best fits your organization
+4. **Get Started**: Follow the appropriate getting started guide
+
+For detailed information about supported platforms and limitations, see [What's Supported](./whats-supported).

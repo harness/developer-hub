@@ -7,66 +7,50 @@ redirect_from:
 
 # What's supported
 
-Harness Chaos Engineering works across multiple deployment models and supports a wide range of platforms for running chaos experiments.
+This topic lists the platforms and technologies that Harness Chaos Engineering supports for deploying chaos infrastructure and running chaos experiments.
 
-## Deployment Options
+Harness Chaos Engineering is supported on the following deployment models:
+- [Harness SaaS](#harness-saas)
+- [Self-Managed Enterprise Edition](#self-managed-enterprise-edition)
+- [Self-Managed Enterprise Edition in Offline Environments](#self-managed-enterprise-edition-in-offline-environments)
 
-Choose the deployment model that fits your organization's needs:
-
-### 🌐 Harness SaaS
-- **Fully managed** cloud service
-- **Quick setup** - start in minutes
-- **Automatic updates** and maintenance
-- **Global availability** with 99.9% uptime SLA
-
-### 🏢 Self-Managed Enterprise Edition (On-Premises)
-- **On-premises deployment** with full control
-- **Enterprise integrations** (LDAP, SSO)
-- **Custom security policies** and compliance
-- **Air-gapped environments** supported
-
-### 🔒 Offline Environments (On-Premises)
-- **Completely isolated** from external networks
-- **All enterprise features** available
-- **Custom ChaosHub** integration required
-- **Contact support** for Enterprise ChaosHub access
+Harness Chaos Engineering supports running faults on [AWS](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/), [Azure](/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/), [GCP](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/), [Kubernetes](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/), [Linux](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/), [VMware](/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/), and [Windows](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/) platforms.
 
 ---
 
-## Supported Platforms
+## Harness SaaS
 
-### Kubernetes Distributions
-Run chaos experiments on any CNCF-certified Kubernetes cluster:
+**Harness SaaS** is a fully managed cloud service that provides:
+- **Quick setup** - start in minutes
+- **Automatic updates** and maintenance
+- **Global availability** with 99.9% uptime SLA
+- **Enterprise ChaosHub** access included
 
-| Platform | Minimum Version | Status |
-|----------|----------------|--------|
-| **Amazon EKS** | k8s 1.21+ | ✅ Fully Supported |
-| **Azure AKS** | k8s 1.21+ | ✅ Fully Supported |
-| **Google GKE** | k8s 1.21+ | ✅ Fully Supported |
-| **Red Hat OpenShift** | k8s 1.21+ | ✅ Fully Supported |
-| **Rancher** | k8s 1.21+ | ✅ Fully Supported |
-| **VMware Tanzu** | k8s 1.21+ | ✅ Fully Supported |
-| **Self-managed clusters** | k8s 1.21+ | ✅ Fully Supported |
+### Supported Platforms for Chaos Infrastructure
+
+The following table shows the supported operating systems and distributions for deploying chaos infrastructure:
+
+| Platform | Distribution | Version | Supported |
+|----------|-------------|---------|----------|
+| **Kubernetes** | Amazon EKS | k8s 1.21+ | ✅ |
+| **Kubernetes** | Azure AKS | k8s 1.21+ | ✅ |
+| **Kubernetes** | Google GKE | k8s 1.21+ | ✅ |
+| **Kubernetes** | Red Hat OpenShift | k8s 1.21+ | ✅ |
+| **Kubernetes** | Rancher | k8s 1.21+ | ✅ |
+| **Kubernetes** | VMware Tanzu | k8s 1.21+ | ✅ |
+| **Kubernetes** | Self-managed clusters | k8s 1.21+ | ✅ |
+| **Linux** | Ubuntu | 16.04+ | ✅ |
+| **Linux** | Red Hat Enterprise Linux | 7+ | ✅ |
+| **Linux** | CentOS | 7+ | ✅ |
+| **Linux** | Debian | 10+ | ✅ |
+| **Linux** | Fedora | 30+ | ✅ |
+| **Linux** | openSUSE Leap | 15.4+ | ✅ |
 
 :::info Container Runtimes
 Kubernetes faults work with **Docker**, **CRI-O**, and **containerd** runtimes.
 :::
 
-### Linux Distributions
-Deploy chaos infrastructure on popular Linux distributions:
-
-| Distribution | Minimum Version | Status |
-|-------------|----------------|--------|
-| **Ubuntu** | 16.04+ | ✅ Fully Supported |
-| **Red Hat Enterprise Linux** | 7+ | ✅ Fully Supported |
-| **CentOS** | 7+ | ✅ Fully Supported |
-| **Debian** | 10+ | ✅ Fully Supported |
-| **Fedora** | 30+ | ✅ Fully Supported |
-| **openSUSE Leap** | 15.4+ | ✅ Fully Supported |
-
----
-
-## Chaos Fault Categories
+### Supported Chaos Fault Categories
 
 The following table shows available fault types and where they are supported. For a complete list and detailed information, go to [Chaos faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/).
 
@@ -82,13 +66,56 @@ The following table shows available fault types and where they are supported. Fo
 
 ---
 
+## Self-Managed Enterprise Edition
+
+**Self-Managed Enterprise Edition** provides on-premises deployment with:
+- **Full control** over your deployment
+- **Enterprise integrations** (LDAP, SSO)
+- **Custom security policies** and compliance
+- **All SaaS features** in feature parity
+
+### Limitations
+
+Chaos Engineering on Self-Managed Enterprise Edition has the following limitations compared to SaaS:
+- **Harness Enterprise ChaosHub** is not connected by default
+  - Contact [Harness Support](mailto:support@harness.io) for access to the Enterprise ChaosHub
+  - Once you have access, you can add it as a [custom ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/)
+- **Harness AI Development Assistant (AIDA™)** for CE
+
+### Supported Platforms
+
+All platforms and fault categories supported in [Harness SaaS](#harness-saas) are also supported in Self-Managed Enterprise Edition.
+
+For more information about deployment, go to [Self-Managed Enterprise Edition and CE on SMP](/docs/chaos-engineering/getting-started/smp/).
+
+---
+
+## Self-Managed Enterprise Edition in Offline Environments
+
+**Self-Managed Enterprise Edition in Offline Environments** provides:
+- **Completely isolated** from external networks
+- **Air-gapped deployment** support
+- **All enterprise features** available
+- **Custom security policies** and compliance
+
+### Requirements
+
+- **Custom ChaosHub** integration required for fault templates
+- **Contact support** for Enterprise ChaosHub access in offline environments
+
+### Supported Platforms
+
+All CE features and platforms supported in [Self-Managed Enterprise Edition](#self-managed-enterprise-edition) are also supported in offline environments.
+
+---
+
 ## Next Steps
 
-1. **[Choose your deployment](./on-premise-vs-saas)** - SaaS vs Self-Managed
-2. **[Learn key concepts](./key-concepts)** - Understand chaos engineering fundamentals
+1. **[Choose your deployment](./on-premise-vs-saas)** - Compare SaaS vs Self-Managed options
+2. **[Learn key concepts](./concepts)** - Understand chaos engineering fundamentals
 3. **[Start with tutorials](./tutorials)** - Run your first chaos experiment
 4. **[Explore integrations](./integrations)** - Connect with your existing tools
 
 :::tip Ready to get started?
-Check out our **[Overview](./overview)** to understand how Harness Chaos Engineering can help build resilient systems.
+Check out our **[Get Started](./get-started)** guide to begin your chaos engineering journey.
 :::
