@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2025
 
+### Version 25.06.86103 <!-- June 26, 2025 -->
+
+#### Fixed issues
+
+- Added support to handle modification of Issue Type to Work Type introduced in the lates Jira Saas release. [CDS-111788]
+
 ### Version 25.06.86102 <!-- June 26, 2025 -->
 
 #### Fixed issues
