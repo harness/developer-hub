@@ -156,7 +156,6 @@ Follow the steps on the **Authentication** page to complete OIDC authentication:
 - Project Number: The project number of the GCP project that is used to create the workload identity federation. To get the Project number, go to [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
 - Service Account Email: This is the service account that was linked to the workload identity pool in the last step.
 
-
 If AutoStopping Granular Rules are selected, you will be prompted to generate commands. Click on **Generate commands for step 3** and run the commands listed on screen to create and assign the custom role with permissions for your selected features.
 
 ### Step 5: Grant Permissions
