@@ -279,7 +279,7 @@ To track custom events, you can use the `client.track()` method or the `suite.tr
 
 The `client.track()` method sends events **_for the identity configured on the client instance_**. This `track` method can take up to four arguments. The proper data type and syntax for each are:
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is `String`. You can only pass values that match the names of [traffic types](h/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is `String`. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is `String`. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.

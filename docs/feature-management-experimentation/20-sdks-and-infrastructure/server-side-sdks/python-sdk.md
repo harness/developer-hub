@@ -104,7 +104,7 @@ Similar to Multi-threaded mode, when the SDK is instantiated in `in-memory`, it 
 
 We recommend instantiating the SDK once as a singleton and reusing it throughout your application.
 
-Use the code snippet below and plug in your API key. The API key is available on your **Organization Settings** page, on the **APIs** tab. The API key is of type `sdk`. For more information, see [Understanding API Keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys-API-keys).
+Use the code snippet below and plug in your API key. The API key is available on your **Organization Settings** page, on the **APIs** tab. The API key is of type `sdk`. For more information, see [Understanding API Keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys).
 
 ```python title="Python"
 from splitio import get_factory_async
