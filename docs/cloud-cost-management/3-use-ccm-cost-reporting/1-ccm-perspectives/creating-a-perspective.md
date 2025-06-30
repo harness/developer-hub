@@ -9,6 +9,10 @@ redirect_from:
 - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-a-budget-perspective
 - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/share-cost-perspective-report
 - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/export-perspective-data
+- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md
+- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md
+- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report.md
+
 
 ---
 
