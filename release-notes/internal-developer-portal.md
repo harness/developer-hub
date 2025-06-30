@@ -41,7 +41,7 @@ Let’s dive into what’s new!
 
 ### \[New Feature] Introducing Harness IDP Git Experience with IDP 2.0
 
-**\[IDP-4869] | [Docs](/docs/internal-developer-portal/git-experience/gitx-journey)**
+**\[IDP-4596] | [Docs](/docs/internal-developer-portal/git-experience/gitx-journey)**
 
 ---
 
@@ -68,7 +68,7 @@ Learn more about this feature [here](/docs/internal-developer-portal/git-experie
 
 ### \[New Plugin] GitHub Co-Pilot Plugin
 
-**\[IDP-4869] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/github-copilot)**
+**\[IDP-5571] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/github-copilot)**
 
 We’re excited to introduce support for the **GitHub Co-Pilot** plugin in this release!
 
@@ -86,7 +86,7 @@ These insights empower engineering teams to evaluate and improve Copilot adoptio
 
 ### \[New Plugin] BuildKite Plugin
 
-**\[IDP-4869] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/buildkite)**
+**\[IDP-5531] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/buildkite)**
 
 We’re also launching the **BuildKite plugin**, which allows developers to **view and interact with BuildKite CI/CD pipelines** directly from the Harness IDP.
 
