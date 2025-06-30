@@ -273,7 +273,7 @@ let treatment = getTreatment("FEATURE_FLAG_NAME", attributes: nil, evaluationOpt
 
 Tracking events is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. See the [Events](/docs/feature-management-experimentation/release-monitoring/events/) documentation for more information.
 
-The Suite automatically collects some RUM metrics and sends them to Harness FME. Specifically, crashes, ANRs and app start time (see [Default events](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent#default-events-and-properties)) are automatically collected by the Suite. Learn more about these and other events in the [iOS RUM Agent](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent#events) documentation.
+The Suite automatically collects some RUM metrics and sends them to Harness FME. Specifically, crashes, ANRs and app start time (see [Default events](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent#default-events-and-properties)) are automatically collected by the Suite. Learn more about these and other events in the [iOS RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent#events) documentation.
 
 To track custom events, you can use the `client.track()` method or the `suite.track()` method. Both methods are demonstrated in the code examples below.
 
