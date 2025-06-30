@@ -8,29 +8,20 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 Harness CCM Budgets allow you to set custom budgets and receive alerts when your costs exceed (or are forecasted to exceed) your budget.
-
 
 ## Before You Begin
 
-* [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective): Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. 
-
-## Create a New Budget
-
-
-
-Perform the following steps to create a budget:
-
-1. Navigate to the **Cloud Cost Management** module and click **Budgets.**
-2. In **All Budgets**, click **New Budget**.
-
+* [Set Up Cloud Cost Management for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
+* [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md): Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. 
 
 ## Interactive guide
 
 <DocVideo src="https://app.tango.us/app/embed/951ab084-1997-49aa-b854-a532dd972952?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
 
-## Setting Up Budgets Step-by-Step
+## Create a Budget
+1. Navigate to the **Cloud Cost Management** module and click **Budgets.**
+2. Click **New Budget**.
 
 ### Step 1: Define Target
 
@@ -39,7 +30,9 @@ Budgets are created on Perspectives. If you do not have a Perspective of the res
 
 - **Budget Name**: enter a name for your budget that will appear in the budget dashboard to identify this budget. 
 
-Click Continue
+- Click **Continue**.
+
+---------
 
 ### Step 2: Set Budget Amount
 
@@ -60,45 +53,110 @@ Budgets' start date cannot be later than the 28th of any month.
 	  
 	You can view the increased amount of your budget in the graph. The graph displays the amount and budget period.
 	
-Click **Continue**.
+- Click **Continue**.
 
 #### Projected Cost
 
 Budget also displays the projected cost based on the actual spend, cost of the last 30 days, and remaining days in the budget period.
 
-![](./static/create-a-budget-05.png)
+**Formula Breakdown:**
 
-The projected cost in budget is calculated as follows:
+```
+Projected Cost = Actual Spend + Estimated Remaining Cost
 
-`(Actual spend till date)`  +  `(cost of last 30 days) * ((remaining days in budget)/30)`
+Where:
+• Actual Spend = Cost incurred from budget start to current date
+• Estimated Remaining Cost = (Last 30 days average) × (Remaining days in period ÷ 30)
+```
 
-Example:
+#### Examples
 
-**Monthly Budget**: Suppose you have set a monthly budget for your Perspective and the current date is January 10. In this case, the projected cost of the budget is calculated as the following:
+| Budget Type | Scenario | Calculation Formula |
+|-------------|----------|--------------------|
+| **Monthly Budget** | Current date: January 10<br/>Budget period: Full month | `Actual spend (Jan 1-10)` + `(Last 30 days cost) × (21 remaining days ÷ 30)` |
+| **Weekly Budget** | Week: January 1-7<br/>Current date: January 6 | `Actual spend (Jan 1-6)` + `(Last 30 days cost) × (1 remaining day ÷ 30)` |
+| **Daily Budget** | Any single day | `Actual spend (current day)` + `(Last 30 days cost ÷ 30)` |
 
-`(Actual spend till date (1-10 Jan))`  +  `(cost of last 30 days) * ((remaining days in budget (21))/30)`
 
-**Weekly Budget**: Suppose you have set a weekly budget for your Perspective. The week starts from January 1 and the current date is January 6. In this case, the projected cost of the budget is calculated as the following:
+---------
 
-`(Actual spend till date (1-6 Jan))`  +  `(cost of last 30 days) * ((remaining days in budget (1))/30)`
+### (Optional) Step 3: Configure Alerts 
 
-**Daily Budget**: In the case of daily budget:
+Harness will send an alert to the specified email addresses and Harness User Groups when the actual or forecasted cost exceeds a percentage of your monthly budget
 
-`(Actual spend till date)`  +  `(cost of last 30 days) / 30`
+- Click on **+Add New Alert**. 
+- Specify the **Percentage of Budget** based on the **Actual Cost** or **Forecasted Cost**. Harness sends alerts when the Actual Cost or Forecasted Cost exceeds the threshold.  
+- In **Send Alert To**, select one of the following options to receive budget notifications. 
+  1. **Email**: Enter the email address (you can enter more than one email address or email groups).
+  2. **Slack Webhook URL**: Enter the webhook URL.!
+- Click **Save**. Your budget is listed.
 
-### Configure Alerts
+------
 
-1. In **Configure Alerts**, set a threshold for the **Percentage of Budget** based on the **Actual Cost** or **Forecasted Cost**. Harness sends alerts when the Actual Cost or Forecasted Cost exceeds the threshold.  
-Harness will send an alert to the specified email addresses and Harness User Groups when the actual or forecasted cost exceeds a percentage of your monthly budget.
-2. In **Send Alert To**, select one of the following options to receive budget notifications.
-	1. **Email**: Enter the email address (you can enter more than one email address or email groups).
-	2. **Slack Webhook URL**: Enter the webhook URL.!
-   
-     [](./static/create-a-budget-06.png)
-3. Click **Save**. Your budget is listed.
+## Budget Groups
 
-![](./static/create-a-budget-07.png)
+:::note
+Currently, this feature is behind the feature flag CCM_BUDGET_CASCADES. Contact Harness Support to enable the feature.
+:::
 
+A Budget Group helps you manage multiple budgets rolled up as a single high level budget. You can combine multiple budgets into a Budget Group and monitor them.
+
+### Creating a Budget Group
+
+- Navigate to the **Cloud Cost Management** module and click **Budgets.** Click **Create a new Budget Group**.
+- Enter a **Budget group name**.
+- Select the **Budgets** to create a group OR **Budget groups** to create a group. You cannot combine a budget and a budget group to create a Budget Group.
+- When selecting Budgets to group, ensure that they have the same **Start date**, **Budget Type**, and **Period**. If you are creating a **group of Budget Groups**, the **cascading type** must also be similar. After selecting the first budget or budget group, the remaining budgets or budget groups that have a different **Start date**, **Budget Type**, **Period** or **Cascading Type** are disabled.
+- Click **Continue**.
+- **Budget amount for the group**: The sum of the budgets or budget groups selected in the previous step is displayed by default. You can edit this value. If you make any changes to this amount, you will have to specify the **Cascading** strategy to split the balance.
+- **Cascading**: If you wish to split the budget group amount across the budgets in the Budget Group, select one of the following cascading options:
+
+  - **Equally**: Selecting this option splits the amount equally between the budgets in the group.
+  - **Proportionally**: Specify the percentage split for each budget by selecting this option. For example, if you have a budget group with three budgets - Budget A, Budget B, and Budget C, you must specify the percentage of the total budget amount allotted to each of the three budgets. Ensure that the sum of the three percentages equals 100%.
+
+- Click **Continue**.
+- **Set Alerts for your budget group**:
+   - Select **Actual** or **Forecasted** from the dropdown list.
+   - Enter the threshold percentage of the budget that will trigger an alert.
+   - In **Send Alert To**, select one of the following options to receive budget notifications.
+     -  **Email**: Enter the email address (you can enter more than one email address or email groups).
+     -  **Slack Webhook URL**: Enter the webhook URL.
+   - Click **Save**. 
+
+### Update a Budget Group
+
+- In the Budgets homepage, select the budget group that you want to edit.
+- Click **Edit** from the vertical ellipsis (⋮) icon.
+- You can update the name of the budget group. 
+- You could exclude existing budgets or budget groups and include new ones with the same parameters.
+
+:::note
+You cannot modify the budget amount and the **Cascading** settings if you have selected the option while creating the budget group, but the proportions can be modified if **Proportional Cascading** is selected.
+:::
+
+- Whenever there is a change in the budget values within a nested budget group, the adjustment will cascade upwards, causing a readjustment of the budget ratios all the way to the top. Consequently, the budget amounts in that pathway will increase by a consistent delta amount.
+
+An example of how a cascading monthly budget is recalculated when the budget amount changes.
+
+- Jan, Feb, Mar - $80
+- May - $90
+- June, July - $100
+- Aug, Sep, Oct, Nov - $120
+- Dec - $110
+
+The overall budget is USD1200. When this amount is increased to USD1800, the difference in the amount, that is USD600 is redistributed across months in the same ratio as their initial splits. That is, the budget amount for January will increase by USD40 (80/1200 * 600 = 40).
+
+## Delete a budget group
+
+1. In **All Budgets**, select the budget group that you want to delete.
+2. Click **Delete** from the vertical ellipsis (⋮) icon.
+3. Click **Delete** in the confirmation dialog.
+
+The budget group is deleted. The budgets and budget groups in the deleted budget group are moved to the common pool where they retain their autonomy and function independently as individual budgets and budget groups. If the budget group was part of a cascade, all the upward budget group ratios will be readjusted and computed accordingly. 
+
+When a perspective is deleted, all associated entities, such as reports, alerts, budgets, and budget groups are also deleted. If all children of a budget group are deleted as part of the perspective deletion, then the budget group itself will also be deleted.
+
+  
 ## Using the Budget Dashboard
 
 The **All** **Budgets** dashboard shows a summary of your budgets. By default, all your budgets are sorted based on the time created.
