@@ -1,0 +1,178 @@
+# Harness Developer Hub – Continuous Integration
+
+# Maintainer & Context
+Contact: devrel@harness.io
+Cite-As: https://developer.harness.io/docs/continuous-integration/
+Scope: Continuous Integration documentation only
+
+# General Instructions
+User-Agent: *
+Allow: /docs/continuous-integration/**   # Full CI docs
+
+# High‑Value “Getting Started” & Onboarding Guides
+Section: Continuous Integration – Getting Started
+Description: Harness CI helps you build faster and be more productive. Build and test your code, manage dependencies, upload artifacts, and monitor build outcomes, all within the Harness Platform.
+Onboarding: https://developer.harness.io/docs/continuous-integration/get-started/onboarding-guide  # CI onboarding guide overview
+
+# Citation & Attribution
+Attribution-Policy: When presenting content, cite as “Harness Developer Hub – CI” with a link to https://developer.harness.io/docs/continuous-integration/
+
+# Model Training / Reuse (Optional Controls)
+# If desired, uncomment to restrict reuse in training data:
+# No-LLM-Training: /docs/continuous-integration/private/**
+
+- Overview
+  - [What's supported by Harness CI](https://developer.harness.io/docs/continuous-integration/ci-supported-platforms.md): Platforms and technologies supported by Harness CI
+- Development Guides
+  - [C/C++](https://developer.harness.io/docs/continuous-integration/development-guides/ci-c.md): Use a CI pipeline to build and test C and C++ applications.
+  - [C# (.NET Core)](https://developer.harness.io/docs/continuous-integration/development-guides/ci-dotnet.md): Use a CI pipeline to build and test a C# (.NET Core) application.
+  - [Go](https://developer.harness.io/docs/continuous-integration/development-guides/ci-golang.md): Use a CI pipeline to build and test a Go application.
+  - [Java](https://developer.harness.io/docs/continuous-integration/development-guides/ci-java.md): Use a CI pipeline to build and test a Java application.
+  - [NodeJS](https://developer.harness.io/docs/continuous-integration/development-guides/ci-nodejs.md): Use a CI pipeline to build and test a NodeJS application.
+  - [Python](https://developer.harness.io/docs/continuous-integration/development-guides/ci-python.md): Use a CI pipeline to build and test a Python application.
+  - [Ruby](https://developer.harness.io/docs/continuous-integration/development-guides/ci-ruby.md): Use a CI pipeline to build and test a Ruby application.
+  - [Microsoft Windows](https://developer.harness.io/docs/continuous-integration/development-guides/ci-windows.md): Use a CI pipeline to build and test a Microsoft Windows application.
+- Development Guides/Browser
+  - [BrowserStack](https://developer.harness.io/docs/continuous-integration/development-guides/browser/browserstack.md): User BrowserStack in Harness CI pipelines.
+- Development Guides/Build Infra
+  - [Tutorial - Amazon EKS with IRSA and Harness Delegate Setup](https://developer.harness.io/docs/continuous-integration/development-guides/build-infra/aws-irsa-infra.md): Set up an Amazon Elastic Kubernetes Service (EKS) cluster with IAM Roles for Service Accounts (IRSA) for cross-account integration.
+- Development Guides/Mlops
+  - [Tutorial - End-to-end MLOps CI/CD pipeline with Harness and AWS](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/e2e-mlops-tutorial.md): Build and deploy an ML model using Harness and AWS.
+  - [Azure ML](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-azureml.md): Use Azure ML with Harness.
+  - [MLOps best practices](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-best-practices.md): MLOps best practices
+  - [Databricks](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-databricks.md): Use Databricks with Harness.
+  - [MLflow](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-mlflow.md): Use Mlflow with Harness.
+  - [MLOps with Harness](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-overview.md): Use Harness for MLOps.
+  - [AWS SageMaker](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-sagemaker.md): Use AWS SageMaker with Harness.
+  - [Google Vertex AI](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-vertexai.md): Use Google Vertex AI with Harness
+- Development Guides/Mobile
+  - [Android](https://developer.harness.io/docs/continuous-integration/development-guides/mobile/android.md): Use a CI pipeline to build and test an Android application.
+  - [Tutorial - React Native and iOS pipeline](https://developer.harness.io/docs/continuous-integration/development-guides/mobile/e2e-ios-tutorial.md): Build and publish a React Native iOS app to TestFlight using Fastlane in Harness CI.
+  - [iOS/macOS](https://developer.harness.io/docs/continuous-integration/development-guides/mobile/ios.md): Use a CI pipeline to build and test iOS and macOS applications.
+  - [Mobile development with Harness](https://developer.harness.io/docs/continuous-integration/development-guides/mobile/mobile-dev-with-ci.md): Use Harness CI for developing mobile apps
+- Development Guides/Security
+  - [git revert changes from CI pipeline](https://developer.harness.io/docs/continuous-integration/development-guides/security/git-revert-from-pr.md): Revert changes introduced by a pull request based on security tests.
+- Get Started
+  - [Subscriptions and licenses](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt.md): View and manage your CI subscriptions and licenses.
+  - [Key concepts](https://developer.harness.io/docs/continuous-integration/get-started/key-concepts.md): Basic terminology and concepts related to CI pipelines
+  - [Get Started with Harness CI](https://developer.harness.io/docs/continuous-integration/get-started/onboarding-guide.md): A self-service onboarding guide for Harness CI.
+  - [Harness Continuous Integration overview](https://developer.harness.io/docs/continuous-integration/get-started/overview.md): Harness CI simplifies the code development and testing process.
+  - [Try Harness CI](https://developer.harness.io/docs/continuous-integration/get-started/tutorials.md): Explore Harness CI and the features that make it four times faster than the leading competitors.
+- Migration Guides
+  - [Migrate from CircleCI to Harness CI](https://developer.harness.io/docs/continuous-integration/migration-guides/migrating-from-circleci.md): Learn how to migrate your existing CircleCI workflows to Harness CI.
+  - [Migrate from GitHub Actions to Harness CI](https://developer.harness.io/docs/continuous-integration/migration-guides/migrating-from-githubactions.md): Learn how to migrate your existing GitHub Actions workflows to Harness CI.
+  - [Migrate from GitLab CI to Harness CI](https://developer.harness.io/docs/continuous-integration/migration-guides/migrating-from-gitlab.md): Learn how to migrate your existing GitLab workflows to Harness CI.
+  - [Migration utility (experimental)](https://developer.harness.io/docs/continuous-integration/migration-guides/migration-utility.md): Facilitate pipeline migration into Harness CI.
+- Secure Ci
+  - [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step.md): Use base64 encoding and decoding to avoid errors with GCP secrets in Run steps.
+  - [Configure OIDC with GCP WIF for Harness Cloud](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted.md): Configure OIDC with GCP WIF for builds on Harness Cloud.
+  - [Generate GCP access tokens from OIDC tokens](https://developer.harness.io/docs/continuous-integration/secure-ci/gcp-oidc-token-plugin.md): Use a plugin to publish Helm charts to Docker registries
+  - [Secure Connect for Harness Cloud](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect.md): Private networking with Harness-managed runners.
+  - [Security hardening for Harness CI](https://developer.harness.io/docs/continuous-integration/secure-ci/security-hardening.md): Best practices and features to help you build securely with Harness CI.
+- Troubleshoot Ci
+  - [Troubleshoot builds with AIDA](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida.md): AIDA is the Harness AI Development Assistant.
+  - [CI environment variables reference](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/ci-env-var.md): Learn about environment variables in Harness CI pipelines.
+  - [Debug with SSH](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/debug-mode.md): Use debug mode to troubleshoot remote builds
+  - [Optimize Windows VM Runner](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/optimize-windows-vm-runner.md): Optimizing Self-Hosted Windows VM Runner for Faster Startup and Response Times.
+  - [Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md): Harness CI troubleshooting tool, guidance, and FAQs.
+- Use Ci
+  - [Harness CI Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/harness-ci-intelligence.md): Harness CI Intelligence leverages a suite of CI features to optimize your builds.
+  - [CI pipeline creation overview](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md): An overview of CI pipeline components and Build stage settings
+  - [Use CI Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings.md): This topic describes settings for the CI Run step.
+  - [View builds](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds.md): You can inspect past builds and monitor ongoing builds.
+- Use Ci/Build And Upload Artifacts
+  - [Publish anything to the Artifacts tab](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab.md): You can publish any URL to the Artifacts tab.
+  - [How to Build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot.md): Use the buildah plugin if you can't use the built-in Build and Push steps.
+  - [Build and push artifacts and images](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md): There are many ways you can use Harness CI to upload artifacts.
+  - [Build Intelligence Overview](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence.md): Learn about the Build Intelligence in Harness CI.
+  - [Build multi-architecture images](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-multi-arch.md): You can build multi-architecture images in a CI pipeline.
+  - [Build-only and Push-only Options for Docker Images](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md): You can build images without pushing them Or push a pre-built image without building.
+  - [Export artifacts by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin.md): Use the Email plugin to export reports and other artifacts by email.
+  - [Copy images across registries](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/migrate-images.md): Use a plugin to copy an image from one registry to another.
+- Use Ci/Build And Upload Artifacts/Build And Push
+  - [Build and Push to ACR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-acr.md): Use a CI pipeline to build and push an image to ACR.
+  - [Build and Push to JFrog Docker registries](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-jfrog.md): Use a CI pipeline to build and push an image to a JFrog Docker registry.
+  - [Build and Push to Docker](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md): Use a CI pipeline to build and push an image to a Docker registry.
+  - [Build and Push to ECR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings.md): Learn how to use the Build and Push to ECR step.
+  - [Build and Push to GAR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md): Use a CI pipeline to build and push an image to GAR.
+  - [Build and Push to GCR (Pending deprecation)](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr.md): Use a CI pipeline to build and push an image to GCR.
+  - [Build and Push to GHCR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ghcr.md): Use a CI pipeline to build and push an image to GitHub Container Registry.
+- Use Ci/Build And Upload Artifacts/Upload Artifacts
+  - [Upload Artifacts to GCS](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md): Add a step to upload artifacts to Google Cloud Storage.
+  - [Upload Artifacts to JFrog](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog.md): Add a step to upload artifacts to JFrog.
+  - [Upload Artifacts to S3](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md): Upload artifacts to AWS or other S3 providers such as MinIo.
+  - [Upload artifacts to Sonatype Nexus](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus.md): You can use Harness CI to upload artifacts to Sonatype Nexus Repository Manager.
+  - [Build, Package and Push .NET packages](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-dotnet-to-azure-artifacts.md): Add steps to build and package a .NET application and then push the package to Azure Artifacts using Harness CI pipelines.
+  - [Upload Helm charts to container registries](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-helm-chart.md): Use a plugin to publish Helm charts to Docker registries
+- Use Ci/Caching Ci Data
+  - [Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md): Caching dependencies can improve build times.
+  - [Docker layer caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md): Caching Docker layers between pipeline executions can reduce build times.
+  - [Multilayer caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching.md): Use multiple Save and Restore Cache steps to achieve multilayer caching.
+  - [Confirm cache before installing dependencies](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/run-if-no-cache.md): Use conditional executions to run steps only if the cache wasn't restored.
+  - [Save and Restore Cache from Azure](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/save-cache-azure.md): Caching improves build times and enables you to share data across stages.
+  - [Save and Restore Cache from GCS](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs.md): Caching improves build times and enables you to share data across stages.
+  - [Save and Restore Cache from S3](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache.md): Caching enables sharing data across stages
+  - [Share CI data across steps and stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md): This topic describes how you can share CI data across steps and stages.
+- Use Ci/Codebase Configuration
+  - [CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md): Use Harness' built-in expressions to reference various Git codebase attributes in pipeline stages.
+  - [Clone multiple code repos in one pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md): Use Git Clone steps to clone additional code repos into a pipeline's workspace.
+  - [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory.md): Use a Run step to clone a subdirectory instead of an entire repo.
+  - [Configure codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md): CI pipelines build and test code that is pulled from Git code repositories.
+  - [Git Clone step in CI](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/git-clone-step.md): Clone a repository into the CI stage's workspace.
+  - [git revert from a CI pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/git-revert-commit.md): Use a run step to revert git commit(s).
+  - [SCM status checks](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks.md): Configure branch protection and status checks for codebases associated with Harness CI.
+- Use Ci/Codebase Configuration/Static
+  - [Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/static/gitlfs.md): Use Run steps to install Git LFS and run git lfs commands.
+- Use Ci/Manage Dependencies
+  - [Background step settings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings.md): Use Background steps to manage dependent services.
+  - [Run a LocalStack service](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/ci-localstack-background-step.md): Run LocalStack in a Background step in a Build stage.
+  - [Run a Sauce Connect Proxy service](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/ci-saucelabs-background-step.md): Run Sauce Connect Proxy in a Background step in a Build stage.
+  - [Dependency management strategies](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies.md): Learn how you can manage dependencies in Harness CI pipelines.
+  - [Run health checks on background services](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/health-check-services.md): Use step groups to run health checks on separate background services.
+  - [Run multiple PostgreSQL instances in Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres.md): Use Background steps to run multiple PostgreSQL instances.
+  - [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage.md): You can run Docker-in-Docker as a Background step in a Build stage.
+- Use Ci/Run Tests
+  - [Tutorial - Test a FastAPI project](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ci-fastapi-test.md): Use Harness CI to automatically test a FastAPI project.
+  - [Code coverage](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/code-coverage.md): Include code coverage in your CI pipelines.
+  - [Flaky Tests](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/flaky-tests.md): Use Test Analysis Plugin to manage flaky tests
+  - [Run tests in CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci.md): Use Run and Test steps to run tests in CI pipelines.
+  - [Split tests in Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism.md): Split tests for any language. Use parallelism to improve test times.
+  - [Format test reports](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref.md): Test reports must be in JUnit XML format to appear on the Tests tab.
+  - [Test Intelligence™ step](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2.md): Use the Test step to leverage Test Intelligence.
+  - [Test Intelligence™ overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview.md): Reduce unit test time by running only relevant unit tests.
+  - [View tests](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests.md): View the results from CI tests.
+- Use Ci/Run Tests/Tests V1
+  - [Use Run Tests step for C#](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-csharp.md): Set up TI for C# applications with .NET Core or NUnit.
+  - [Use Run Tests step for Java, Kotlin, or Scala](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-java-kotlin-scala.md): Set up TI for Java, Kotlin, or Scala programming languages.
+  - [Use Run Tests step for Python](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-python.md): Set up TI for Python codebases.
+  - [Use the Run Tests step for Ruby](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-ruby.md): Set up TI for Ruby programming language.
+  - [Enable parallelism on a Run Tests step](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-test-splitting.md): You can enable parallelism on a Run Tests step.
+- Use Ci/Set Up Build Infrastructure
+  - [CI Build stage settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md): This topic describes CI Build stage settings.
+  - [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md): You can define a CI build infrastructure on any Linux or macOS host.
+  - [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md): When you run a Harness CI build, the pipeline pulls the Harness CI images it needs from Docker Hub.
+  - [Install Harness Delegate 2.0 (Closed Beta)](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/install-delegate-2-0.md): Learn how to install Harness Delegate 2.0 for local machines
+  - [Pre-built public images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/public-docker-images.md): These images are loaded with helpful libraries for CI pipelines.
+  - [Resource allocation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits.md): Learn about container resource allocation logic and troubleshooting.
+  - [Use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): You can use Harness-managed build infrastructure for your Harness CI pipelines.
+  - [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md): Compare Harness-managed and self-managed CI build infrastructure options.
+- Use Ci/Set Up Build Infrastructure/K8S Build Infrastructure
+  - [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md): CI build pods can interact with servers using self-signed certificates.
+  - [Run Windows builds in a Kubernetes build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure.md): You can run Windows builds in your Kubernetes build infrastructure.
+  - [Set up a Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): You can use a Kubernetes cluster build infrastructure for a Harness CI pipeline.
+  - [Tutorial - Build and test on a Kubernetes cluster](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra.md): Learn how to create a pipeline that uses a Kubernetes cluster build infrastructure.
+- Use Ci/Set Up Build Infrastructure/Vm Build Infrastructure
+  - [Set up a Microsoft Azure VM build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-azure.md): Set up a CI build infrastructure in Microsoft Azure.
+  - [Set up a GCP VM build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform.md): This topic describes how to set up a CI build infrastructure in Google Cloud Platform.
+  - [Set up a macOS VM build infrastructure with Anka Registry](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry.md): Set up a Harness macOS build farm that uses an Anka registry and controller.
+  - [High Availability (HA)](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/high-availability.md): Set up high availability on VM build infrastructure.
+  - [Set up an AWS VM build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md): Set up a CI build infrastructure using AWS VMs.
+- Use Ci/Use Drone Plugins
+  - [Use the Bitrise step](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin.md): Use Bitrise Workflow Steps in your Harness CI pipelines.
+  - [Use the GitHub Action step](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step.md): Run GitHub Actions in your Harness CI pipelines.
+  - [Integrate Jira in a CI pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin.md): Connect your Harness CI pipelines to Jira.
+  - [Write custom plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins.md): You can write your own plugins.
+  - [Explore plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins.md): Learn how, why, and when to use plugins
+  - [Plugin step settings](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference.md): Plugins perform predefined tasks.
+  - [Use Drone plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md): Drone plugins are Docker containers that perform predefined tasks.
+  - [Use the GitHub Actions Drone plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md): Run GitHub Actions in your Harness CI pipelines.

@@ -19,10 +19,6 @@ You can create exemption requests either for the entire issue or for specific oc
 
 Reviewers have the flexibility to approve exemption requests either at the requested scope or extend the scope to the **Organization** or **Account** level during the review process. For more details, refer to [Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions). To view submitted requests, refer to [View Issue Exemptions](#view-issue-exemptions).
 
-:::note
-Support for **Exemptions** at **Organization** and **Account** level is is controlled by the feature flag  `STO_GLOBAL_EXEMPTIONS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
-
 <DocImage path={require('./static/request-exemption-overview.png')} width="80%" height="80%" title="Click to view full-size image" />
 
 :::note

@@ -69,10 +69,10 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
 
 # CODE Docs
-/docs/code-repository/ @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
-/release-notes/code-repository.md @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
-/src/components/Roadmap/data/codeData.ts @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
-/src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed @johannesHarness @nofarblue
+/docs/code-repository/ @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
+/release-notes/code-repository.md @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
+/src/components/Roadmap/data/codeData.ts @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
+/src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
 
 # STO Docs
 /docs/security-testing-orchestration/ @tejakummarikuntla @BruceMcPhersonHarness
@@ -183,10 +183,10 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/static/fme/ @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john 
 
 # SEI Docs
-/docs/software-engineering-insights/ @codewdhruv @batraprashant
-/release-notes/software-engineering-insights.md @codewdhruv @batraprashant
-/src/components/Roadmap/data/seiData.ts @codewdhruv
-/src/components/Docs/data/softwareEngineeringInsightsData.ts @codewdhruv
+/docs/software-engineering-insights/ @alai97 @codewdhruv @batraprashant @santoshdodamani
+/release-notes/software-engineering-insights.md @alai97 @codewdhruv @batraprashant @santoshdodamani
+/src/components/Roadmap/data/seiData.ts @alai97 @codewdhruv @batraprashant @santoshdodamani
+/src/components/Docs/data/softwareEngineeringInsightsData.ts @alai97 @codewdhruv @batraprashant @santoshdodamani
 
 # DB DevOps Docs
 /docs/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness

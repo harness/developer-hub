@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2025
 
+### Version 25.06.86102 <!-- June 26, 2025 -->
+
+#### Fixed issues
+
+- Added support for an alternative method to fetch Jenkins job details when the queueItem API returns null. [CDS-109699]
+
 ### Version 25.06.86101 <!-- June 19, 2025 -->
 
 #### Fixed issues
@@ -99,6 +105,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 #### New features and improvements
 
 - Enhanced system stability and regular checks implemented to ensure reliability.
+
+### Version 25.05.85806 <!--June 27, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue when the log line exceeds the maximum length, it will split into multiple lines, causing the sanitization not to detect when content is present in different lines. [CDS-111820]
 
 ### Version 25.05.85905 <!--June 03, 2025-->
 

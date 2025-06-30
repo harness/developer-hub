@@ -54,6 +54,3 @@ If you have not yet configured your clusters with the required IP addresses, use
 - [EKS (Amazon Elastic Container Service)](https://repost.aws/knowledge-center/eks-lock-api-access-IP-addresses)
 - [AKS (Azure Kubernetes Service)](https://learn.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges)
 
-## Using Secure Connect for Harness Cloud (Optional Alternative)
-
-If allowlisting IPs is not feasible due to security policies or firewall constraints, you can use [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect/) to establish a secure tunnel between Harness Cloud and your private infrastructure — without exposing any public endpoints.
