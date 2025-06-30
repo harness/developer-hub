@@ -69,42 +69,6 @@ import TabItem from '@theme/TabItem';
 ### Connect CCM to your AWS account
 
 To enable CCM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS accounts.
-```mermaid
-flowchart TD
-    Start["Connect CCM to AWS"] --> Step1["Step 1: Configure Connector Overview"]
-    Step1 --> Step2["Step 2: Set Up Cost and Usage Report"]
-    Step2 --> Step3["Step 3: Choose Requirements"]
-    
-    Step3 --> F1["Cost Visibility\n(Required)"] 
-    Step3 --> F2["Resource Inventory\n(Optional)"] 
-    Step3 --> F3["AutoStopping\n(Optional)"] 
-    Step3 --> F4["Cloud Governance\n(Optional)"] 
-    Step3 --> F5["Commitment Orchestration\n(Optional)"]
-    
-    F1 --> Step4
-    F2 --> Step4
-    F3 --> Step4
-    F4 --> Step4
-    F5 --> Step4
-    
-    Step4["Step 4: Create Cross Account Role"] --> Step5["Step 5: Connection Test"]
-    Step5 --> Complete["AWS Connector Ready"]
-    
-    subgraph "Actions"
-    A1["Harness UI Actions"] --- style1[/"Blue boxes"/]
-    A2["AWS Console Actions"] --- style2[/"Orange boxes"/]
-    end
-    
-    classDef harness fill:#0078D4,color:white,stroke:#0078D4,stroke-width:2px
-    classDef aws fill:#FF9900,color:white,stroke:#FF9900,stroke-width:2px
-    classDef feature fill:#6B46C1,color:white,stroke:#6B46C1,stroke-width:2px
-    
-    class Start,Step1,Step3,Step5,Complete harness
-    class Step2,Step4 aws
-    class F1,F2,F3,F4,F5 feature
-```
-
-
 
 1. Create a new AWS connector using one of the two options below:
 
@@ -218,6 +182,13 @@ This feature is behind a Feature Flag `CCM_ENABLE_OIDC_AUTH_AWS`. Contact [Harne
 <DocImage path={require('./static/oidc-aws.png')} width="100%" height="100%" title="Click to view full size image" />
 
 OIDC authentication allows secure access your billing data and perform cost optimization without storing credentials. 
+
+To use OIDC, you need to create an [OIDC identity provider in AWS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html). 
+
+Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider:
+
+- Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<ACCOUNT_ID>`
+- OIDC audience: `sts.amazonaws.com`
 
 Follow the steps on the **Authentication** page to complete OIDC authentication:
 

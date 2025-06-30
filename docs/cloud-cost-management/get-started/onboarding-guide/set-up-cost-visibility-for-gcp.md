@@ -147,6 +147,27 @@ This feature is behind a Feature Flag `CCM_ENABLE_OIDC_AUTH_GCP`. Contact [Harne
 
 OIDC authentication allows secure access your billing data and perform cost optimization without storing credentials. 
 
+To connect to GCP with OIDC, you must configure an [OIDC identity provider](https://cloud.google.com/iam/docs/workload-identity-federation-with-other-providers) in GCP and connect the service account with relevant permissions that Harness will use to operate in GCP. Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider.
+
+- Harness OIDC Issuer provider endpoint: `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID>`. See below for more details about the Issuer URL format, depending on the environment cluster for your Harness Account.
+
+- OIDC audience: `https://iam.googleapis.com/projects/<GCP_PROJECT_NUMBER>/locations/global/workloadIdentityPools/<POOL_ID>/providers/<WORKLOAD_PROVIDER_ID>`
+
+**Issuer URL:**
+
+The Issuer Format will need to be modified depending on the environment cluster in which your account resides. In `Account Settings` -> `Account Details`, you can see the Harness Cluster that your account resides in.
+
+The Issuer URL format should follow `https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>.`
+
+The hostname should be as follows, even if a Vanity URL is set up for an account.
+
+| Cluster | HostName |
+|---------|----------|
+| Prod1/Prod2 | app.harness.io |
+| Prod3 | app3.harness.io |
+| Prod0/Prod4 | accounts.harness.io |
+| EU clusters | accounts.eu.harness.io |
+
 Follow the steps on the **Authentication** page to complete OIDC authentication:
 1. Configure the federation settings and service account in your GCP console. Read more about it: [Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation)
 
