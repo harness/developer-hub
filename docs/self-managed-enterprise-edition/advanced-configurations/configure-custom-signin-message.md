@@ -27,7 +27,7 @@ This is not just cosmetic. It's essential for:
 By enforcing a visible, customizable message at login, organizations strengthen their security posture and reduce legal risk.
 
 <details>
-    <summary>Example</summary>
+    <summary>Regulatory / Legal disclaimer Example</summary>
         <p>
             You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
 
@@ -46,15 +46,13 @@ By enforcing a visible, customizable message at login, organizations strengthen 
 </details>
 
 
+## Why use this feature?
 
+This feature is especially helpful for:
 
-## Who should use this feature?
-
-This feature is especially valuable for:
-
-* **Security teams** enforcing policy awareness
-* **Compliance officers** meeting audit or regulatory requirements
-* **IT administrators** who want consistent communication of rules across the organization
+* **Security teams**, to consistently enforce policy awareness
+* **Compliance officers**, to meet audit and regulatory requirements
+* **IT administrators**, to ensure clear, consistent communication of rules across the organization
 
 Any organization handling sensitive data or operating under compliance frameworks will benefit from enabling this feature.
 
@@ -66,6 +64,32 @@ Follow these steps to enable and configure the Custom Login Message:
 
 1. Write your message in valid HTML format. Make sure the content is properly sanitized to avoid XSS or injection risks.
 
+    <details>
+        <summary>HTML Example</summary>
+        <p>
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>.container{display:flex;align-items:center;background-color:#fff;padding:10px}.logo{width:200px;height:59px;margin-right:13px}.us-gov-banner{font-weight:700;font-size:7.5pt}</style>
+        </head>
+        <body>
+            <div class="container">
+                <img src="https://i.ibb.co/Xk5FbpxQ/67c1e03a825964d3fc83ba66-harness-logo.jpg" alt="Logo" class="logo">
+                <div class="us-gov-banner">You are accessing an [Organization Name] information system. This includes any device, network, or storage connected to this system.
+                    Authorized use only. Unauthorized or improper use may result in disciplinary action, civil, or criminal penalties.
+                    By using this system, you consent to the following:
+                    No reasonable expectation of privacy. All data and communications may be monitored, intercepted, or seized.
+                    Do not process sensitive or classified information without proper authorization.
+                </div>
+            </div>
+        </body>
+        </html>
+        ```
+        </p>
+    </details>    
+    
+
 2. Encode the HTML content to Base64.
 
     - Use any standard tool or command. For example:
@@ -73,22 +97,37 @@ Follow these steps to enable and configure the Custom Login Message:
         ```bash
         cat your-message.html | base64
         ```
+    - Once you have encoded your HTML, here’s an example of what the output will look like (truncated for readability):
+
+        ```base64
+        PCFET0NUWVBFIGh0bWw+CjwhLS0gc2F2ZWQgZnJvbSB1cmw9KDAwMjIpY2hyb21lOi8vbmV3LXRhYi1wYWdl...
+        ```    
 
 3. Configure the environment variable.
 
-   Add the Base64-encoded string to your `values.yaml` file in the `ng-auth-ui` service:
+   Add the Base64-encoded string to your `values.yaml` file in the `ng-auth-ui` service, `config` → `CUSTOM_EULA_POLICY` as shown below:
 
-   ```yaml
-   ng-auth-ui:
-     config:
-       CUSTOM_EULA_POLICY: "<your-base64-encoded-html>"
-   ```
+    ```yaml
+    ng-auth-ui:
+      config:
+        CUSTOM_EULA_POLICY: "<your-base64-encoded-html>"
+    ```
+
+    Example:
+
+    ```yaml
+    ng-auth-ui:
+      config:
+        CUSTOM_EULA_POLICY: "PCFET0NUWVBFIGh0bWw+CjwhLS0gc2F2ZWQgZnJvbSB1cmw9KDAwMjIpY2hyb21lOi8vbmV3LXRhYi1wYWdlLyAtLT4KPGh0bWwgZGlyPSJsdHIiIGxhbmc9ImVuIiBjbGFzcz0iIiBsYXp5LWxvYWRlZD0idHJ1ZSI+PGhlYWQ..."
+    ```
 
 4. Upgrade your Helm chart to apply the changes:
 
    ```bash
    helm upgrade -i <release-name> <path-to-directory> -n <namespace> -f values.yaml
    ```
+
+<!--Working snapshot-->
 
     Once you have successfully upgraded your Helm chart, your custom message will appear on the login screen, similar to the example shown below.
 
