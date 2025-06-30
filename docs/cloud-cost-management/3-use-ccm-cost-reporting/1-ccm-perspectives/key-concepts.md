@@ -7,7 +7,7 @@ helpdocs_is_published: true
 redirect_from:
 - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/filters-in-perspectives
 - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences
-
+- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/6-filters-in-perspectives.md
 ---
 
 import Tabs from '@theme/Tabs';
