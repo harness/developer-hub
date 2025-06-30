@@ -59,16 +59,14 @@ OR
 2. Select **New Connector**.
 3. Select **GCP-Cloud Cost** under **Cloud Costs**.
 
-<Tabs>
-<TabItem value="step1" label="Step 1: Overview">
+### Step 1: Overview
 
 1. In **Overview**, in **Connector Name**, enter a name that describes this account.
 2. In **Specify Project ID**, enter the project ID and select **Continue**. For more information on how to get a project ID, go to [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
 3. **[Optional] Description**: Enter a description for the connector.
 4. **[Optional] Tags**: Add tag to the connector. 
 
-</TabItem>
-<TabItem value="step2" label="Step 2: Setup Billing Export">
+### Step 2: Setup Billing Export
 
 Cloud Billing export to BigQuery enables you to export detailed Google Cloud billing data (such as usage and cost estimate data) automatically throughout the day to a BigQuery dataset that you specify.
 
@@ -118,9 +116,7 @@ When setting up a connector for GCP Billing Export, keep the following limitatio
 
 :::
 
-</TabItem>
-
-<TabItem value="step3" label="Step 3: Choose Requirements">
+### Step 3: Choose Requirements
 
 Select the Cloud Cost Management features that you would like to use on your GCP account.
 
@@ -132,11 +128,9 @@ Select the Cloud Cost Management features that you would like to use on your GCP
 | **Optimization using AutoStopping rules** | This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. If selected, you can select [granular permissions in the next step](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostoppingg)|
 | **Cloud Governance** (Optional)              | This feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. For more information, see [Asset governance](../../5-use-ccm-cost-governance/asset-governance/1-asset-governance.md). <ul><li> Asset Management (Instance, Disk, SQL-instance, Image) </li><li>Automated Actions</li></ul>     
 
+### Step 4: Authentication (Conditional)
 
-</TabItem>
-
-
-<TabItem value="step4" label="Step 4: Authentication (Conditional)">
+<DocImage path={require('./static/oidc-gcp.png')} width="100%" height="100%" title="Click to view full size image" />
 
 If you have selected **Optimization by AutoStopping** or **Cloud Governance**, in previous step, you can set up Authentication. If not selected, this step will not be prompted.
 
@@ -165,21 +159,15 @@ Follow the steps on the **Authentication** page to complete OIDC authentication:
 
 If AutoStopping Granular Rules are selected, you will be prompted to generate commands. Click on **Generate commands for step 3** and run the commands listed on screen to create and assign the custom role with permissions for your selected features.
 
-</TabItem>
-<TabItem value="step5" label="Step 5: Grant Permissions">
+### Step 5: Grant Permissions
 
-You can see all the steps you need to do and grant relevant permissions. Follow the instructions listed on screen to grant permissions.
+Yo u can see all the steps you need to do and grant relevant permissions. Follow the instructions listed on screen to grant permissions.
 
-</TabItem>
-
-<TabItem value="step6" label="Step 5: Connection Test">
+### Step 6: Connection Test
 
 The connection is validated and verified in this step. After successfully testing the connection, select **Finish**.
 
 Your connector is now listed in the **Connectors**.
-
-</TabItem>
-</Tabs>
 
 ## Individual Feature Permissions
 

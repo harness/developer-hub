@@ -200,7 +200,33 @@ Details about each feature are provided below:
 | **Commitment Orchestration** | Optional | • Purchase Reserved Instances offering<br/>• Get Reserved Instances Exchange Quote<br/>• Describe Instance type offerings<br/>• Accept RI exchange quote<br/>• Describe RI modifications<br/>• Modify Reserved Instances | Adding [these permissions](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#6-commitment-orchestrator-permissions) to an IAM role in the next step. |
 
 
-### Step 4: Create Cross Account Role
+### Step 4: Authentication (Conditional)
+
+If you have selected **Optimization by AutoStopping**, **Cloud Governance** or **Commitment Orchestration**, in previous step, you can set up Authentication using OIDC. If not selected, this step will not be prompted.
+
+You can enable authentication for your AWS account via
+
+- Cross Account Role: Created with custom permissions
+- OIDC Authentication: Federated access with no stored credentials
+
+### OIDC Authentication
+
+:::info 
+This feature is behind a Feature Flag `CCM_ENABLE_OIDC_AUTH_AWS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+<DocImage path={require('./static/oidc-aws.png')} width="100%" height="100%" title="Click to view full size image" />
+
+OIDC authentication allows secure access your billing data and perform cost optimization without storing credentials. 
+
+Follow the steps on the **Authentication** page to complete OIDC authentication:
+
+- Launch the CloudFormation Template on the AWS console. You can also preview the template [here](https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v1/ng/HarnessAWSOidcTemplate.yaml).
+- Login to your AWS account if not logged in already.
+- Follow [the instructions to create the Cross Account Role](https://docs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws#step_4_create_cross_account_role)
+- Enter Cross Account Role ARN and Region in the input boxes on the UI.
+
+### Step 5: Create Cross Account Role
 
 Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy based on the features selected above.
 
