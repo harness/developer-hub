@@ -88,6 +88,18 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2025
 
+### Version 25.06.86104 <!-- June 30, 2025 -->
+
+#### Fixed issues
+
+- Added support to handle the modification of Issue Type to Work Type introduced in the latest Jira SaaS release. [CDS-111788]
+
+### Version 25.06.86103 <!--June 27, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue when the log line exceeds the maximum length, it will split into multiple lines, causing the sanitization not to detect when content is present in different lines. [CDS-111820]
+
 ### Version 25.06.86102 <!-- June 26, 2025 -->
 
 #### Fixed issues
