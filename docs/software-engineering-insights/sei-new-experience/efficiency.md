@@ -33,11 +33,10 @@ Setting up an Efficiency Profile in SEI 2.0 involves the following steps to ensu
 ### 3. How to Configure an Efficiency Profile
 Configuring an Efficiency Profile involves setting up the specific parameters and conditions under which metrics are tracked.
 
-* **Define Stages:** Configure the start and end events for each stage of the software development lifecycle. 
+1. Define stages: Configure the start and end events for each stage of the software development lifecycle. 
 For example, the Planning stage might start when a ticket is created and end when the first code commit is made.
+1. Set up integrations: Ensure that all necessary integrations (e.g., Issue Management, SCM, and CI/CD) are configured to provide the data needed for each stage.
+1. Apply team-specific configurations: Allow team managers to apply specific filters and settings relevant to their team's context, such as specific branches or issue types to track.
 
-* **Integration Setup:** Ensure that all necessary integrations (e.g., Issue Management, SCM, CI/CD) are configured to provide the data needed for each stage.
-
-* **Team-Specific Configurations:** Allow team managers to apply specific filters and settings relevant to their team's context, such as specific branches or issue types to track.
 By following these steps, organizations can effectively set up and configure Efficiency Profile to gain valuable insights into their software delivery processes and drive continuous improvement.
 
