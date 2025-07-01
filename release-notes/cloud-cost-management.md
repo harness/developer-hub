@@ -304,6 +304,7 @@ This feature is currently in Beta and behind a feature flag `CCM_EXTERNAL_DATA_I
 - Fix for Anomalies Alert Scope Visibility: Some anomalies alerts created from the existing flow were incorrectly assigned an alert scope. Due to this, the alerts were not appearing in the anomalies list. This issue has now been fixed by setting the correct scope, ensuring proper visibility of anomalies alerts. [CCM-21278]
 - Confirmation Dialog for Unsaved Cloud Asset Governance Rules: To prevent accidental loss of unsaved changes, a confirmation dialog will now appear when navigating away from an unsaved Cloud Asset Governance rule. [CCM-20972]
 - Time-To-Live (TTL) Support for Karpenter Nodes in Cluster Orchestrator: We have introduced Time-To-Live (TTL) support for Karpenter nodes in the Cluster Orchestrator configuration. This feature allows users to automatically terminate idle or underutilized Karpenter nodes after a specified period, optimizing resource usage and reducing costs. [CCM-20051]
+- Role-Based Access Control (RBAC) for CCM Side Navigation: Now, the side navigation dynamically adjusts based on a user's permissions. Features such as Overview, AutoStopping, and Governance will only be visible if the user has the necessary RBAC permissions. This ensures a cleaner interface and prevents access to unauthorized sections. [CCM-20789]
 
 ## January 2025
 
