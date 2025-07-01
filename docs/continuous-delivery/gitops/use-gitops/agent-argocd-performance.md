@@ -12,7 +12,7 @@ Nature of issues is totally dependent on the environment and the use case and it
 
 1. **High CPU and Memory Usage:**
     - **Cause:** Managing a kubernetes cluster with large number of objects can lead to increased resource consumption. For instance, in environments with numerous applications, the Application Controller may experience elevated CPU usage, leading to performance degradation. 
-    - **Solution:** Scaling up the Application Controller by increasing the number of replicas can help distribute the workload and improve performance. ([Argo CD](https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability). Each application pod can be dedicated to one cluster, that is called sharding. ([Kostis Argo CD](https://kostis-argo-cd.readthedocs.io/en/first-page/operations/scaling/#common-scaling-problems))
+    - **Solution:** Scaling up the Application Controller by increasing the number of replicas can help distribute the workload and improve performance. [Argo CD](https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability). Each application pod can be dedicated to one cluster, that is called sharding. ([Kostis Argo CD](https://kostis-argo-cd.readthedocs.io/en/first-page/operations/scaling/#common-scaling-problems))
     - **Cause:** Having applications with self-heal turned on can cause high CPU usage if the application always have differences with the desired state.
     - **Solution:** 
       - Use exponentinal backoff for the application sync by editing 
