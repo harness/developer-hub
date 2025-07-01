@@ -17,7 +17,7 @@ Any URLs behind any firewall or private URLs used in plugins should be accessed 
 
 Any software component can be registered in the catalog by using a YAML file stored in the following Git providers:
 
-* [Harness Code Repository (Default)](https://www.harness.io/products/code-repository) 
+* [Harness Code Repository (Default)](https://developer.harness.io/docs/code-repository/get-started/overview/) 
 * [GitHub](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) (Cloud & Enterprise)
 * [GitLab](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) (Cloud & Self Hosted)
 * [Bitbucket](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket)

@@ -65,7 +65,7 @@ Harness IDP Git Experience integrates with the following **Git Providers**:
 - [GitLab](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) (Cloud & Self Hosted)
 - [Bitbucket](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket)
 - [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
-- [Harness Code](https://www.harness.io/products/code-repository)
+- [Harness Code](https://developer.harness.io/docs/code-repository/get-started/overview/)
 
 ## Storing Entity YAMLs
 
