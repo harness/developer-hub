@@ -1,9 +1,9 @@
 ---
-title: Configure Customizable Login Message
-sidebar_label: Configure Customizable Login Message
-tags: ["custom sign in message", "smp", "message on log in"]
+title: Configure Custom Login Prompt
+sidebar_label: Configure Custom Login Prompt
+tags: ["custom sign in prompt", "smp", "prompt on log in", "message prompt"]
 keywords: 
-- custom sign-in message
+- custom sign-in prompt
 date: 2025-07-26T14:00
 sidebar_position: 3
 ---
@@ -16,7 +16,7 @@ sidebar_position: 3
 
 <!--Introduction: what is customizable login message, why it is needed-->
 
-The Custom Login Message feature lets organizations display a mandatory banner or modal on the login screen, ensuring that users see and acknowledge important notices before accessing the platform.
+The Custom Login Prompt allows organizations to display a mandatory notice on the login screen, ensuring users see and acknowledge important information before accessing the platform.
 
 This is not just cosmetic. It's essential for:
 
@@ -24,7 +24,7 @@ This is not just cosmetic. It's essential for:
 * **Legal protection** by showing terms of use, acceptable use policies, or disclaimers before granting access.
 * **Security awareness** by reminding users of data handling responsibilities, password policies, or incident reporting procedures.
 
-By enforcing a visible, customizable message at login, organizations strengthen their security posture and reduce legal risk.
+By enforcing a visible, customizable prompt at login, organizations strengthen their security posture and reduce legal risk.
 
 <details>
     <summary>Regulatory / Legal disclaimer Example</summary>
@@ -62,7 +62,7 @@ Any organization handling sensitive data or operating under compliance framework
 
 Follow these steps to enable and configure the Custom Login Message:
 
-1. Write your message in valid HTML format. Make sure the content is properly sanitized to avoid XSS or injection risks.
+1. Write the information you want to display in the prompt using valid HTML format. Ensure the content is properly sanitized to prevent XSS or injection risks.
 
     <details>
         <summary>HTML Example</summary>
@@ -129,7 +129,7 @@ Follow these steps to enable and configure the Custom Login Message:
 
 <!--Working snapshot-->
 
-    Once you have successfully upgraded your Helm chart, your custom message will appear on the login screen, similar to the example shown below.
+    Once you have successfully upgraded your Helm chart, your custom login prompt will appear on the login screen, similar to the example shown below.
 
     ![custom-message](./static/custom-sign-in-message.png)
 
