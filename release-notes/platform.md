@@ -418,6 +418,8 @@ The following deprecated API endpoints are longer supported:
 
 - Upgraded the delegate base image from `ubi8-minimal:8.10` to `ubi9-minimal:9.4`. (PL-58376)
 
+- NG Delegates have been updated to exclude the use of delegate profiles and scopes when retrieving implicit selectors, ensuring more consistent behavior. (PL-55697)
+
 ## December 2024
 ### Version 1.69.x<!-- December 12, 2024 -->
 #### Fixed issues
