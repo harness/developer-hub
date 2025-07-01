@@ -1,9 +1,10 @@
 ---
-title: Manage Self Hosted Gitspaces
+title: Create Machines and Update Delegate Selector
 description: Get Started with Harness CDE (Gitspaces)
 sidebar_position: 5
-sidebar_label: Manage Self Hosted Gitspaces
+sidebar_label: Create Machines & Update Delegate Selector
 ---
+This is your **fourth step** in configuring **Self Hosted Gitspaces**. 
 
 Once you have configured your infrastructure and established a healthy connection between the **Harness Control Plane** and the **Harness Delegate**, you are all set to create and manage your **Self Hosted Gitspaces**.
 
@@ -13,11 +14,7 @@ Once you have configured your infrastructure and established a healthy connectio
 
 2. Verify that the **Gateway Group Health** status for the added region is marked as **Healthy** before creating any Self Hosted Gitspaces. Learn more in the [Manage Gitspace Infrastructure](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#assess-gateway-group-health-for-gitspace-infrastructure) guide.
 
-## Create Self Hosted Gitspaces
-
-Once your infrastructure is configured, follow the steps below to begin creating Self Hosted Gitspaces.
-
-### Add Machines in Gitspace Infrastructure
+## Add Machines in Gitspace Infrastructure
 
 You must add **Machines** to your Gitspace Infrastructure to create and manage **Machine Types** for your Self Hosted Gitspaces. These machines allocate the necessary compute resources required for running Gitspaces. Adding Machines is **mandatory**. Without them, you will not be able to create Self Hosted Gitspaces.
 
@@ -29,14 +26,15 @@ Follow the given steps to add Machines:
 
 This action will register a new machine in your Gitspace Infrastructure, enabling it to host Self Hosted Gitspaces.
 
-### Select Delegate from Delegate Selector
+## Select Delegate from Delegate Selector
 
 Once you’ve installed and configured your Delegate, you must enter the specific **Delegate Name** in the **Delegate Selector** field within your Gitspace Infrastructure UI.
 
 Follow the given steps to select a Delegate:
 
 1. Navigate to the **Infrastructure Details** UI after configuring your infrastructure and setting up the Delegate.
-2. //TBD (Add steps once flow is finalized.)
+2. Click on **Edit** to edit the infrastructure details. 
+3. Update the **Delegate Selector** field there using either the **Delegate Name** or **Delegate Tags**. 
 
 ### Create Gitspace
 

@@ -1,15 +1,16 @@
 ---
 title: Configure Gitspace Infrastructure in Harness UI
-description: Get Started with Harness CDE (Gitspaces)
+description: Learn more about how to configure your Gitspace infrastructure via Harness UI.
 sidebar_position: 2
 sidebar_label: Configure Gitspace Infrastructure in Harness UI
 ---
+This is your **first step** in configuring **Self Hosted Gitspaces**. 
 
 In order to get started with Self Hosted Gitspaces, you'll first need to **configure your infrastructure**. This infrastructure is where your Gitspaces will be hosted, so you must **define and configure it from Harness UI**. This guide will take you through the detailed steps to configure your infrastructure using the Harness UI.
 
 ## Prerequisites
 
-1. Ensure you’ve read through the [Fundamentals and Prerequisites](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of self-hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
+1. Ensure you’ve read through the [Fundamentals and Prerequisites](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
 2. Only users with **Account-level access** can configure Gitspace infrastructure for now. Read more about the [Permissions Hierarchy](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). 
 3. Ensure that your GCP project (as defined in your infra config) has the following APIs enabled, here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project: 
       <ul>
@@ -45,6 +46,10 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 
 You can add and configure regions for Gitspaces. Note that users will only be able to host Gitspaces in these defined regions. Click on **New Region** to add a new region.
 ![](./static/add-region-first-time.jpg)
+
+:::info
+You can create and manage Self Hosted Gitspaces only if your infrastructure has at least one region added. 
+:::
 
 Use the following input parameters:
 1. **Region Name**: Enter the **region name**. Refer to the [GCP documentation](https://cloud.google.com/compute/docs/regions-zones) to view available regions.
@@ -95,7 +100,15 @@ Here's how you can delete your infrastructure:
 ![](./static/delete-infra.png)
 
 ### Assess Gateway Group Health for Gitspace Infrastructure
-//TBD
+You can assess the **Gateway Group Health** for your Gitspace infrastructure from the Infra Details UI. Go to **Locations and Machines**, and click on the region for which you want to assess the Gateway health. You can find the following details:
+
+* **Gateway Group Name**: System-generated name of the Gateway Group
+* **Gateway Group Health**: Health status of the Gateway Group
+* **Gateway Instance Name**: System-generated name of the Gateway Group instance
+* **Envoy Health**: Health status of Envoy
+* **Gateway Version Number**: Gateway image version number
+
+//Image with a healthy gateway
 
 ## Next Steps
 Now that you have the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#download-the-infra-config-yaml) downloaded, proceed to [configure and apply the Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to provision your self-hosted Gitspaces. 
