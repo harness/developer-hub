@@ -28,8 +28,7 @@ Setting up an Efficiency Profile in SEI 2.0 involves the following steps to ensu
 1. Instantiate the profile: Customize the selected profile to fit your organization's specific needs. This involves defining the stages of the software development lifecycle you want to measure, such as Planning, Coding, Review, Build, and Deploy.
 1. Assign the profile to an org tree: Map the instantiated profile to your organization's tree structure. This ensures that all teams within your organization adhere to the same efficiency metrics.
 Configure Team Node Definitions: Define the specific data scope for each team, including relevant projects, repositories, and issue types.
-
-* **Activate Insights:** Once the profile is configured and mapped, activate the insights to start tracking and analyzing efficiency metrics.
+1. Activate insights: Once the profile is configured and mapped, activate the insights to start tracking and analyzing efficiency metrics.
 
 ### 3. How to Configure an Efficiency Profile
 Configuring an Efficiency Profile involves setting up the specific parameters and conditions under which metrics are tracked.
