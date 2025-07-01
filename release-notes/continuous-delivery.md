@@ -53,6 +53,44 @@ Google Container Registry (GCR) is deprecated and scheduled to shut down on **Ma
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+## July 2025
+
+### Version 1.95.0
+
+#### New Features and Enhancements
+
+- Harness now supports deploying multiple ASGs in a single stage for the same service, environment, and infrastructure, with automatic parallel rollback triggered on failure. Currently, this feature is behind the feature flag `CDS_ASG_MULTI_DEPLOY_ROLLBACK_SUPPORT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+- Harness now supports fail fast behavior in parallel executions, where a failure in any step or stage immediately fails the pipeline and triggers the configured failure strategy. Currently, this feature is behind the feature flag `PIPE_FAIL_ALL_FAILURE_STRATEGY`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+- Harness displays applied **Input Sets** in the Inputs tab with clickable names and surfaces them in the trigger summary on the execution history page, making it easy to navigate and locate runs tied to specific Input Sets. Currently, this feature is behind the feature flag `PIPE_ENABLE_INPUT_SET_FILTER`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+#### Fixed Issues
+
+- Previously, pipelines triggered rollback even when the failure strategy for the last stage (a child pipeline stage) was set to Mark as Failure. This was caused by incorrect handling when the last stage was a chained pipeline. The issue is resolved. The rollback is no longer triggered in such cases, and the pipeline now correctly honors the configured failure strategy. (**PIPE-28067, ZD-86977**)
+- Previously, an erroneous error message was shown when users created a pull request from the Pipeline Studio using the *Commit to a new branch* and *Start a pull request to merge* option. Although the pull request was successfully created, the UI incorrectly displayed a failure due to a *500 error response* from the API. This issue is resolved. (**PIPE-27981**)
+- Previously, the Freeze Window Get List API failed when invoked without a request body, despite documentation indicating the body was optional. This issue is resolved, and the API now handles empty request bodies correctly. (**CDS-111808, ZD-86755**)
+- Previously, regex patterns defined for Helm chart versions in runtime inputs were not respected, resulting in all versions being listed regardless of the pattern. The issue is resolved. Helm chart version listings now correctly honor regex and allowed values defined in the input settings. (**CDS-111561, ZD-86715**)
+- Previously, the OCI Helm Registry connector did not validate the Helm Repository URL during connector creation, resulting in successful validation despite incorrect URLs. This issue is resolved. (**CDS-111566**)
+- Previously, secret output variables did not resolve correctly when used inside command flags in manifest configurations for Kubernetes services using Helm source. The issue is resolved. (**CDS-111515, ZD-86051**)
+- Previously, output variable expressions did not resolve correctly in the **Aws Cdk Synth** step when referenced from a prior step within the same containerized step group. The expression was passed as a literal string instead of being evaluated. The issue is resolved. (**CDS-111504, ZD-86484**)
+- Previously, the Kubernetes Diff step failed during Canary deployments due to label selector mismatches introduced by the harness.io/track label. The issue is resolved. The Diff step now handles label selector changes introduced by Canary strategies more gracefully. (**CDS-111394, ZD-85685**)
+- Previously, there was a race condition where Auto Scaling Group (ASG) instances could launch before lifecycle hooks were added, leading to inconsistent behavior during deployments. Currently, this issue is resolved by using the feature flag `CDS_ASG_FIX_LIFECYCLE_HOOKS_ORDER`. (**CDS-110817**)
+- Previously, the Services and Environments count shown on the Account Overview dashboard did not include account-level and organizational-level entities, leading to discrepancies in license utilization metrics. The issue is resolved. The overview dashboard now includes all accessible scoped entities in the total count. (**CDS-110806**)
+- Previously, Custom stages failed with a metadata.labels error when project names exceeded the 63-character limit enforced by Kubernetes. The issue is resolved. Custom stages now apply the same truncation logic as Build and Deploy stages to ensure compliance with Kubernetes label constraints. (**CDS-110662, ZD-85208**)
+- Previously, ASG deployments with multiple ASGs in a single stage did not trigger rollback as expected. Rollback information was collected for only one ASG, resulting in skipped rollbacks for others. The issue is resolved. (**CDS-110667, ZD-85313**)
+- Previously, Jenkins job logs and status were not returned to Harness for a specific job, causing pipeline executions to time out despite the job being successfully triggered. The issue is resolved. (**CDS-109699, ZD-82996**)
+- Previously, users were unable to open or create input sets for a specific pipeline due to a UI error *"Something went wrong"* triggered by malformed stage references within existing input sets. The issue is resolved. (**PIPE-28113, ZD-87115**)
+- Previously, when deploying multiple services with service selection configured as a runtime input, the selected services appeared as "undefined" in the UI during execution. The issue is resolved. (**CDS-111727, ZD-86964**)
+- Previously, when selecting a value from a combobox in the *Run Pipeline* modal using the Enter key, the UI exhibited ambiguous behavior, sometimes prematurely submitting the form or failing to populate the selected value. The issue is resolved. The Enter key now correctly selects the highlighted option without triggering form submission. (**PIPE-27984, ZD-86851**)
+- Previously, input variables in remote Email step templates were incorrectly referencing the id field instead of the name field. This caused values to appear blank during pipeline execution. The issue is resolved. (**PIPE-27944, ZD-86704**)
+- Previously, in native Helm deployments, additional values override files configured from S3 were not being fetched or applied, and no logs were shown in the fetch file task. The issue is resolved. Helm deployments now correctly pull and apply override files from S3 as expected. (**CDS-111563, ZD-86725**)
+- Previously, pipelines created from templates did not inherit the configured Stage Execution and Re-running settings from the template. The issue is resolved. Newly created pipelines now correctly inherit these settings from the source pipeline template. (**PIPE-27892, ZD-86616**)
+- Previously, CD stage templates failed when both Deploy services in parallel and Environment were set as runtime inputs in multi-environment mode. The issue occurred because the deploy in parallel UI component was not included in the propagate flow. The issue is resolved. (**CDS-111440, ZD-86394**)
+- Previously, the Artifact Path dropdown failed to populate correctly during pipeline execution, even when the repository variable was configured properly. The UI showed a validation error stating that the repository value was missing, though the pipeline executed successfully if a value was manually entered. The issue is resolved. (**CDS-111369, ZD-86129**)
+- Previously, when a template referenced in a pipeline was updated, elements such as `spec:` and `environmentInputs:` were automatically reintroduced into the pipeline YAML, even if they had been manually removed. These changes appeared as *Unsaved Changes* in the UI before reconciliation. The issue is resolved. (**PIPE-27754, ZD-85736**)
+- Previously, selecting a deployment stage in a pipeline that used the same template with multiple versions  resulted in an *unknown error*. This was due to lodash.get misinterpreting dots in version labels as path separators, leading to malformed YAML and parsing failures. The issue is resolved. (**PIPE-27921, ZD-86197**)
+
 ## June 2025
 
 ### GitOps Service 1.35, GitOps Agent 0.96
