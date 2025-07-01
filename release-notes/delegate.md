@@ -335,6 +335,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` (PL-58376)
 :::
 
+- NG Immutable Delegates no longer send the profileId parameter in their requests. (PL-55697)
 - Added a new metric on the delegate side to track the number of times the delegate WebSocket reconnects. This metric, `io_harness_custom_metric_delegate_reconnected_total`, can be used to set alerts for frequent reconnections, helping identify potential issues with the delegate and enabling you to seek further assistance from Harness if needed. (PL-48535)
 
 ## December 2024
