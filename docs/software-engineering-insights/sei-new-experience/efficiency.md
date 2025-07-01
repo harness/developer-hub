@@ -22,7 +22,7 @@ The primary metrics used to gauge efficiency are the following [DORA metrics](ht
 These metrics are used to provide insights into the software delivery performance and help in identifying areas for improvement.
 
 ### 2. How to Set Up an Efficiency Profile
-Setting up an Efficiency Profile in SEI 2.0 involves below steps to ensure that the right metrics are being tracked and analyzed.
+Setting up an Efficiency Profile in SEI 2.0 involves the following steps to ensure that the right metrics are being tracked and analyzed:
 
 * **Select the Right Profile:** Choose from default profiles based on your integration setup. For example, if you have Issue Management and Source Code Management integrations, you might select the "Default IM, SCM Efficiency Profile."
 
