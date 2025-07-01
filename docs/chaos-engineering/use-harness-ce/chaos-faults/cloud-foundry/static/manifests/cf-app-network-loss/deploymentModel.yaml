@@ -1,3 +1,4 @@
+# deployment model for LCI
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
@@ -11,4 +12,4 @@ spec:
     app: cf-app
     organization: dev-org
     space: dev-space
-    packetLossPercentage: '50'
+    deploymentModel: model-1

@@ -1,4 +1,4 @@
-# cf deployment platform
+# fault injector location
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
@@ -6,9 +6,9 @@ metadata:
   labels:
     name: app-network-duplication
 spec:
-  cfAppNetworkChaos/inputs:
-    duration: 30
-    cfDeploymentPlatform: vSphere
+  cfAppContainerKill/inputs:
+    duration: 30s
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space

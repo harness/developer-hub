@@ -26,11 +26,6 @@ CF app stop:
     <th> Notes </th>
   </tr>
   <tr>
-    <td> cfDeploymentPlatform </td>
-    <td> Deployment platform used for cloud foundry with respect to where the infrastructure is hosted. </td>
-    <td> Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#cf-deployment-platform"> CF deployment platform.</a> </td>
-  </tr>
-  <tr>
     <td> organization </td>
     <td> Organization where the target app resides. </td>
     <td> For example, <code>dev-org</code> </td>
@@ -53,6 +48,11 @@ CF app stop:
     <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
+  </tr>
+  <tr>
+    <td> faultInjectorLocation </td>
+    <td> Fault injector placement with respect to where the LCI is hosted. </td>
+    <td> Default: <code>local</code>. Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#fault-injector-location"> Fault Injector location</a>. </td>
   </tr>
   <tr>
     <td> faultInjectorPort </td>
@@ -80,26 +80,61 @@ CF app stop:
 
 <VSphereSecrets />
 
-### CF deployment platform
-The `cfDeploymentPlatform` input variable determines the deployment platform used for CF with respect to the infrastructure.
-- The deployment platform can be local, that is, the same environment used by the infrastructure, or a remote machine.
-- The deployment platform is where the fault-injector utility executes.
+## Fault Permissions
+### List all applications the user or client has access to
+
+**Required Roles (any one):**
+-   `SpaceDeveloper` (in the app’s space)
+-   `SpaceAuditor` (read-only role in the app’s space)
+-   `OrgManager` or `OrgAuditor` (at the org level)
+
+**Required OAuth Scopes (for tokens):**
+-   `cloud_controller.read`
+-   `cloud_controller.admin`
+-   `cloud_controller.global_auditor`
+
+### Stop a specific application (i.e., changes its state to "STOPPED")
+
+**Required Roles:**
+-   `SpaceDeveloper` (must have write access in the app's space)    
+
+**Required OAuth Scopes:**
+-   `cloud_controller.write`
+-   `cloud_controller.admin`
+
+
+### Start a specific application (i.e., changes its state to "STARTED").
+
+**Required Roles:**
+-   `SpaceDeveloper` (must have write access in the app's space)
+
+**Required OAuth Scopes:**
+-   `cloud_controller.write`
+-   `cloud_controller.admin`
+
+---
+
+### Fault Injector location
+The `faultInjectorLocation` input determines the fault injector placement with respect to where the LCI is hosted.
+- It supports one of: 
+  - `local`: LCI and fault injector are placed in the same machine.
+  - `vSphere`: Fault injector is placed in a remote vSphere managed VM.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-app-stop/cfDeploymentPlatform.yaml yaml)
+[embedmd]:# (./static/manifests/cf-app-container-kill/faultInjectorLocation.yaml yaml)
 ```yaml
-# cf deployment platform
+# Fault Injector location
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
-  name: cf-app-stop
+  name: cf-app-container-kill
   labels:
-    name: app-stop
+    name: app-container-kill
 spec:
-  cfAppStop/inputs:
+  cfAppContainerKill/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -122,7 +157,7 @@ metadata:
 spec:
   cfAppStop/inputs:
     duration: 30s
-    cfDeploymentPlatform: vSphere
+    faultInjectorLocation: vSphere
     app: cf-app
     organization: dev-org
     space: dev-space
@@ -146,7 +181,7 @@ metadata:
 spec:
   cfAppStop/inputs:
     duration: 30s
-    cfDeploymentPlatform: local
+    faultInjectorLocation: local
     app: cf-app
     organization: dev-org
     space: dev-space
