@@ -128,6 +128,18 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## July 2025
+
+### Version 1.95.x <!--July 01, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue in the Create IP Allowlist wizard where pasting text into the Name field would duplicate the content. For example, pasting `ABC 1` would incorrectly result in `ABC 1ABC 1`. [PL-63331]
+
+#### New Feature and Enhancement
+
+- 
+
 ## June 2025
 
 ### Version 1.94.x <!--June 17, 2025-->
