@@ -127,6 +127,11 @@ We will provide detailed documentation on the newer API docs and provide sample 
 
 IDP 2.0 implements a Harness-native entity schema featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
 
+:::info Note
+In IDP 2.0, only one entity is supported per `catalog-info.yaml` file. Defining multiple entities within a single YAML file—previously allowed in IDP 1.0—is no longer supported to maintain alignment with the Harness platform standards.
+:::
+
+
 For convenience, we've developed an API that converts Backstage catalog YAML to Harness catalog YAML format. This conversion is also available in the user interface—simply paste a Backstage Catalog YAML to automatically convert it to Harness Catalog YAML.
 
 JSON Schemas for all Catalog entities are available through our API.

@@ -170,6 +170,10 @@ After upgrading to IDP 2.0, you can begin using the **newer API endpoints**. Alt
 
 ### Step 7: Store Entity YAMLs in Git
 
+:::info Note
+In IDP 2.0, only one entity is supported per `catalog-info.yaml` file. Defining multiple entities within a single YAML file—previously allowed in IDP 1.0—is no longer supported to maintain alignment with the Harness platform standards.
+:::
+
 **Upgrading from IDP 1.0 to IDP 2.0 will result in all your entities being created as Inline Entities** (i.e., with all the Entity YAMLs stored in the Harness Database). In case you want to store these Entity YAMLs in Git and convert them from Inline to Remote Entities (i.e., with all the Entity YAMLs stored in Git), you can make use of the **Harness IDP Git Experience** feature. Here's how you can convert the entities:
 
 - **Convert your entities and store YAMLs in Git from your Harness IDP UI directly.** Refer to these docs on [converting Inline IDP Entities to Remote Entities](/docs/internal-developer-portal/git-experience/gitx-journey.md#converting-inline-to-remote-entity).

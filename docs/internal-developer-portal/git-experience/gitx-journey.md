@@ -40,6 +40,19 @@ Harness Internal Developer Portal (IDP) integrates with the Platform Git Experie
 | **IDP to Git changes**: Make changes in IDP and commit changes to YAML file in Git | ✅ Available                                    |
 | **Git to IDP changes**: Make changes to YAML file in Git and update entity in IDP  | 🚧 (Work in Progress) ETA: Week of July 4, 2025 |
 
+
+> **Note:**
+> Harness IDP Git Experience currently supports storing and managing Catalog Entities (such as `Component`, `API`, and `Resource`) and Workflows as YAML files in Git.
+> Other entities — including Scorecards, Plugins, and Layouts — are not yet supported in Git Experience.
+>
+> For the full list of supported entities, refer to the [Supported IDP Entities in Git Experience](https://developer.harness.io/docs/internal-developer-portal/whats-supported#supported-idp-entities-in-git-experience) documentation.
+
+
+
+:::info Note
+In IDP 2.0, only one entity is supported per `catalog-info.yaml` file. Defining multiple entities within a single YAML file—previously allowed in IDP 1.0—is no longer supported to maintain alignment with the Harness platform standards.
+:::
+
 ### Supported IDP Entities in Git Experience
 
 IDP Catalog entity YAMLs (Component, API, Resource) and Workflow YAMLs can be stored in Git using Git Experience. However, configuration of other resources such as Scorecards, Plugin configurations, Layouts, etc. can only be done using the UI or API.
@@ -48,11 +61,11 @@ IDP Catalog entity YAMLs (Component, API, Resource) and Workflow YAMLs can be st
 
 Harness IDP Git Experience integrates with the following **Git Providers**:
 
-- GitHub (Cloud & Enterprise)
-- GitLab (Cloud & Self Hosted)
-- Bitbucket
-- Azure Repos
-- Harness Code
+- [GitHub](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) (Cloud & Enterprise)
+- [GitLab](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) (Cloud & Self Hosted)
+- [Bitbucket](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket)
+- [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
+- [Harness Code](https://www.harness.io/products/code-repository)
 
 ## Storing Entity YAMLs
 
