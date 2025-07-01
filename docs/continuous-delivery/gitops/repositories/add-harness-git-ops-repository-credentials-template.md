@@ -1,5 +1,5 @@
 ---
-title: Add Harness GitOps Repository Credentials Template
+title: GitOps Repository Credentials Template
 description: This topic describes how to create a single GitOps Repository Credentials Template and apply it to all GitOps Repositories.
 sidebar_position: 10
 helpdocs_topic_id: tg4og0bboo
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/add-harness-git-ops-repository-credentials-template
+  - /docs/continuous-delivery/gitops/use-gitops/add-harness-git-ops-repository-credentials-template
 ---
 
 This topic describes how to set up a GitOps Repository Credentials Template.

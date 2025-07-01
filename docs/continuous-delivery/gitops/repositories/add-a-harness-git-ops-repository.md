@@ -39,7 +39,7 @@ For details, see [Install a Harness GitOps Agent](/docs/continuous-delivery/gito
 
 You will also provide the credentials to use when connecting to the Git repository. Ensure you have your credentials available.
 
-If you use a [GitOps repository credentials template](/docs/continuous-delivery/gitops/use-gitops/add-harness-git-ops-repository-credentials-template) with a GitOps repository, then the repository path in the GitOps repository must be a subfolder of the repository path in the repository credentials template.
+If you use a [GitOps repository credentials template](docs/continuous-delivery/gitops/use-gitops/add-harness-git-ops-repository-credentials-template) with a GitOps repository, then the repository path in the GitOps repository must be a subfolder of the repository path in the repository credentials template.
 
 1. In your Harness project, select **GitOps**, and then select **Settings**.
 2. Select **Repositories**.
@@ -77,7 +77,7 @@ import TabItem from '@theme/TabItem';
    * **Use a Credentials Template**
       - Select the GitOps credentials template to use.
         
-        For details, go to [Harness GitOps Repository Credentials Template](/docs/continuous-delivery/gitops/use-gitops/add-harness-git-ops-repository-credentials-template).
+        For details, go to [Harness GitOps Repository Credentials Template](docs/continuous-delivery/gitops/use-gitops/add-harness-git-ops-repository-credentials-template).
 
         If you use a repository credentials template for GitOps repository authentication, then the repository path in the GitOps repository must be a subfolder of the repository path in the repository credentials template.
 
@@ -139,7 +139,7 @@ import TabItem from '@theme/TabItem';
    * **Use a Credentials Template**
       - Select the GitOps credentials template to use.
 
-        For details, go to [Harness GitOps Repository Credentials Template](/docs/continuous-delivery/gitops/use-gitops/add-harness-git-ops-repository-credentials-template).
+        For details, go to [Harness GitOps Repository Credentials Template](docs/continuous-delivery/gitops/use-gitops/add-harness-git-ops-repository-credentials-template).
 
         If you use a repository credentials template for GitOps repository authentication, then the repository path in the GitOps repository must be a subfolder of the repository path in the repository credentials template.
 

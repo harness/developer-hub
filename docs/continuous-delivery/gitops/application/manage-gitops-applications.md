@@ -2,6 +2,8 @@
 title: Manage GitOps Applications
 description: Learn how to find and manage GitOps applications.
 sidebar_position: 1
+redirect_from:
+  - /docs/continuous-delivery/gitops/use-gitops/manage-gitops-applications
 ---
 
 You can manage your applications through the **Applications** found in **GitOps Overview** page. 
@@ -38,7 +40,7 @@ Each application will display various helpful information such as the applicatio
 Each tile will have 3 vertical dots. Clicking this will allow you to manually **Sync**, **Refresh**, or **Delete** the application. 
 
 See the following to learn more about some of these operations:
-- [Sync Applications](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications)
+- [Sync Applications](/docs/continuous-delivery/gitops/application/sync-gitops-applications)
 - [Refresh Applications](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics#refresh)
 
 ## Filter Applications

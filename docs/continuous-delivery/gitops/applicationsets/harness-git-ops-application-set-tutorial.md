@@ -87,7 +87,7 @@ Both JSON and YAML formats are supported for ApplicationSets.
 
 ### Step 3: Sync the ApplicationSet app
 
-You can sync from 2 places: **Application** view or PR pipeline. For syncing via the PR pipeline, please refer to [Sync GitOps applications](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications).
+You can sync from 2 places: **Application** view or PR pipeline. For syncing via the PR pipeline, please refer to [Sync GitOps applications](/docs/continuous-delivery/gitops/application/sync-gitops-applications).
 
 From the **Application** view, you can sync the Harness ApplicationSet application or the individual Applications independently.
 

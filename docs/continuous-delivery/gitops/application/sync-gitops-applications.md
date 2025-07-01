@@ -4,6 +4,7 @@ description: This topic describes how to sync GitOps applications.
 sidebar_position: 30
 redirect_from:
   - /docs/continuous-delivery/gitops/sync-gitops-applications
+  - /docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications
 ---
 
 Sync is a process that ensures that the live state of a system matches its desired state by applying a declarative description. This process involves synchronizing the desired Git state with the live cluster state. 
