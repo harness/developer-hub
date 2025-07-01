@@ -23,7 +23,7 @@ A Harness GitOps Repository is used for Harness GitOps only. For other Harness f
 * [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md)
 * [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md)
 * [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent.md)
-* [Add a Harness GitOps Repository](add-a-harness-git-ops-repository.md)
+* [Add a Harness GitOps Repository](/docs/continuous-delivery/gitops/repositories/add-a-harness-git-ops-repository)
 
 ## Limitations
 
@@ -31,7 +31,7 @@ A Harness GitOps Repository is used for Harness GitOps only. For other Harness f
 
 ## Review: GitOps Repository
 
-See [Add a Harness GitOps Repository](add-a-harness-git-ops-repository.md).
+See [Add a Harness GitOps Repository](/docs/continuous-delivery/gitops/repositories/add-a-harness-git-ops-repository).
 
 If you use a GitOps Repository Credentials Template with a GitOps Repository, then the repo path in the GitOps Repository must be a subfolder of the repo path in the Repository Credentials Template.
 
