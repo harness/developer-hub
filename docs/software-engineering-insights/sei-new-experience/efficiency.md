@@ -11,13 +11,13 @@ Efficiency in the context of SEI 2.0 refers to the measurement and analysis of h
 
 The primary metrics used to gauge efficiency are the following [DORA metrics](https://cloud.google.com/blog/products/devops-sre/announcing-the-2024-dora-report):
 
-**Lead Time to Change:** The time it takes for a code change to go from commit to production.
+* **Lead Time to Change:** The time it takes for a code change to go from commit to production.
 
-**Deployment Frequency:** How often an organization successfully releases to production.
+* **Deployment Frequency:** How often an organization successfully releases to production.
 
-**Change Failure Rate:** The percentage of changes that fail in production.
+* **Change Failure Rate:** The percentage of changes that fail in production.
 
-**Mean Time to Restore (MTTR):** The time it takes to recover from a failure in production.
+* **Mean Time to Restore (MTTR):** The time it takes to recover from a failure in production.
 
 These metrics are used to provide insights into the software delivery performance and help in identifying areas for improvement.
 
