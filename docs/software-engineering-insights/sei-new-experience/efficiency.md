@@ -7,7 +7,9 @@ sidebar_position: 15
 
 ### 1. What is Efficiency?
 
-Efficiency in the context of SEI 2.0 refers to the measurement and analysis of how effectively an Organization or Team runs its software development processes. It focuses on key performance metrics that help in understanding and improving the speed and quality of software delivery. The primary metrics used to gauge efficiency are the DORA metrics:
+Efficiency in the context of SEI 2.0 refers to the measurement and analysis of how effectively an organization or team runs its software development processes. It focuses on key performance metrics that helps your organization or team understand and improve the speed and quality of software delivery. 
+
+The primary metrics used to gauge efficiency are the following [DORA metrics](https://cloud.google.com/blog/products/devops-sre/announcing-the-2024-dora-report):
 
 **Lead Time to Change:** The time it takes for a code change to go from commit to production.
 
