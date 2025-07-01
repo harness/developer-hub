@@ -292,7 +292,7 @@ The new experience for configuring the **GitHub Actions integration** and **GitL
 
 * We have added support for using **ServiceNow queries** for both incidents and change requests to filter data to be ingested into the system while configuring the integration. For more information, go to [SEI ServiceNow integration](/docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow). This feature is currently in BETA and requires the SEI_SERVICE_NOW_ADVANCE_CONFIGURATION_FIELD feature flag. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-9174)
 
-![](.././docs/software-engineering-insights/setup-sei/configure-integrations/static/snow-query.png)
+![](../docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/snow-query.png)
 
 #### New features and enhancements
 

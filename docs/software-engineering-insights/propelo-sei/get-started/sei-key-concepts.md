@@ -18,7 +18,7 @@ By default, a **Project** consists of two top-level Collection categories: **Tea
 
 For more information, Go to [Projects and Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview)
 
-![](../../platform/organizations-and-projects/static/projects-and-organizations-06.png)
+![](../../../platform/organizations-and-projects/static/projects-and-organizations-06.png)
 
 ## Collections & Collection Categories
 
