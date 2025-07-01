@@ -54,7 +54,7 @@ export const featureList: CardItem[] = [
     link: "docs/category/get-started-with-feature-flags",
   },
   {
-    title: "Feature Management & Experimentation",
+    title: "Release with Feature Management & Experimentation",
     module: MODULES.fme,
     icon: "img/icon_fme.svg",
     description: <>Switch on data-driven features and releases.</>,
