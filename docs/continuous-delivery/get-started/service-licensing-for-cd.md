@@ -27,13 +27,13 @@ Services deployed using the CD module, in the **last 30 days** are considered '*
 
 ## Service Instances
 
-In the section below, when we dive deeper into how service license consumption works, we will constantly refer to ‘Service Instances’. Service Instances refer to the pods or instances of a service deployed to a host. CD module constantly tracks the instances of a service deployed, at a 60 min cadence, and allows admins to track these instances and service versions deployed across different infrastructure hosts. This provides visibility and control to admins.
+In the section below, when we dive deeper into how service license consumption works, we will constantly refer to 'Service Instances'. Service Instances refer to the pods or instances of a service deployed to a host. CD module constantly tracks the instances of a service deployed, at a 60 min cadence, and allows admins to track these instances and service versions deployed across different infrastructure hosts. This provides visibility and control to admins.
 
 Service Instances (SIs) also play a role in how service license consumption works. This will be detailed in the next section. But note that while Harness tracks all SIs for all deployed services at a 60 min cadence, when reporting for license consumption, Harness takes the **95th percentile** of all SI data points seen over the last 30 days for the service, and uses this value as the number of SIs for the service. This is extremely beneficial for our customers and ensures that their usage spikes do not penalize license consumption. By ignoring the top 5 percentile, any spikes related to say load testing, blue-green deployments, or any other temporary increases, do not artificially inflate license tracking, and licensing stays true to steady state SI counts for the service.
 
 ## Service License Consumption (for Active Services)
 
-Only Active Services (services deployed in the last 30 days) consume 1 or more service licenses. Let’s look at deployment scenarios to see how Harness CD consumes Service licenses.
+Only Active Services (services deployed in the last 30 days) consume 1 or more service licenses. Let's look at deployment scenarios to see how Harness CD consumes Service licenses.
 
 ### Containerized Applications
 
@@ -76,15 +76,15 @@ Examples:
 
 ### Custom Deployments
 
-Harness allows custom deployments using deployment templates, to support deployments to architectures not yet natively supported by Harness CD. From a license tracking perspective, Harness encourages all customers to configure an ‘instance fetch’ script as part of the custom deployment, which returns the instances of this service deployed on the target architecture. There are two scenarios here:
+Harness allows custom deployments using deployment templates, to support deployments to architectures not yet natively supported by Harness CD. From a license tracking perspective, Harness encourages all customers to configure an 'instance fetch' script as part of the custom deployment, which returns the instances of this service deployed on the target architecture. There are two scenarios here:
 
-- The ‘Instance Fetch’ script is properly configured and Harness has steady visibility to all SIs for the service.
+- The 'Instance Fetch' script is properly configured and Harness has steady visibility to all SIs for the service.
 
 ```TEXT
 Harness CD consumes 1 Service License for every 20 SIs of the custom service.
 ```
 
-- The ‘Instance Fetch’ script is not properly set up or functioning as expected - Harness has no visibility to SIs for the service.
+- The 'Instance Fetch' script is not properly set up or functioning as expected - Harness has no visibility to SIs for the service.
 
 ```TEXT
 Harness CD consumes 1 Service License for each active custom service.
@@ -92,13 +92,52 @@ Harness CD consumes 1 Service License for each active custom service.
 
 ### Pipelines with no Service
 
-Harness allows custom deployments, where no service is associated with the deployment. This can happen when a pipeline execution only runs infrastructure provisioning steps, only performs shell script executions, or runs a custom stage with the environment configured, but no service. In all these scenarios, lack of service config means Harness loses the default license tracking. In these scenarios:
+Harness allows custom deployments, where no service is associated with the deployment. This can happen when a pipeline execution only runs infrastructure provisioning steps, only performs shell script executions, or runs a custom stage with the environment configured, but no service. In all these scenarios, lack of service config means Harness loses the default license tracking.
+
+#### V3.0 Licensing Model for Custom Stage Execution
+
+Starting with the V3.0 licensing model, Harness CD uses an aggregated approach for custom stage execution:
 
 ```TEXT
-Harness CD consumes 1 Service License for every 2000 executions of such custom stages.
+Harness CD consumes 1 Service License for every 2000 aggregated custom stage executions.
 ```
 
-Therefore, custom stages are more than a logical division; each custom stage will count as 1 pipeline execution. For example, if a pipeline has two custom stages, then executing that pipeline will use 2 executions in relation to service license consumption.
+This means:
+- All custom stage executions across your account are pooled together
+- The total execution count is divided by 2000 to determine service license consumption
+- This provides more predictable and cost-effective licensing for customers with frequent custom stage usage
+
+**Examples:**
+- 500 custom stage executions = 0.25 service licenses (rounded up to 1)
+- 2500 custom stage executions = 1.25 service licenses (rounded up to 2)  
+- 5000 custom stage executions = 2.5 service licenses (rounded up to 3)
+
+**Note:** Custom stages are more than a logical division; each custom stage will count as 1 pipeline execution. For example, if a pipeline has two custom stages, then executing that pipeline will use 2 executions in relation to service license consumption.
+
+## V3.0 Licensing Model Enhancements
+
+The V3.0 licensing model introduces key improvements based on customer feedback and usage patterns:
+
+### Custom Stage Execution Aggregation
+
+The most significant enhancement in V3.0 is the aggregation approach for custom stage executions:
+
+- **Previous Behavior (V2):** Each unique custom stage execution consumed 1 service license immediately
+- **V3.0 Enhancement:** All custom stage executions are aggregated and divided by 2000 to determine service license consumption
+
+This change provides:
+- **Cost Predictability:** Eliminates unexpected license spikes from custom deployment patterns
+- **Fair Usage Billing:** Aligns billing with actual platform value delivered
+- **Consistency:** Matches the established framework for "deployments without service" scenarios
+
+### Migration from V2 to V3.0
+
+Existing customers will be automatically migrated to the V3.0 licensing model. This migration:
+- Does not require any configuration changes
+- Will typically result in reduced license consumption for customers using custom stages
+- Maintains all existing functionality and performance
+
+For questions about the V3.0 model impact on your specific usage, contact your Harness account representative.
 
 ## Subscription Page Walkthrough
 
@@ -113,19 +152,19 @@ Harness has introduced a significant update to its service tracking capabilities
 
 ## Improved Service Licence Tracking
 
-| Component                    | Service Tracking (Past State)                                    | Service Tracking (New State)                                    | Change Details                                                                                                                       |
+| Component                    | Service Tracking (V2 State)                                    | Service Tracking (V3.0 State)                                    | Change Details                                                                                                                       |
 |------------------------------|-------------------------------------------------|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | **CD Service**               | 1 Service = 20 SI                               | 1 Service = 20 SI                               | No change in licensing rules.                                                                                                        |
-| **GitOps Service**           | Not measurable by customer, not calculated in product | 1 GitOps Service = 20 SI (1 Service)            | New service tracking introduced for GitOps Services.                                                                                 |
-| **Pipeline Execution (Deployments w/o Service)** | Not measurable by customer, not calculated in product | 2000 Executions = 1 Service                     | New service tracking introduced for Deployments without service. Specifically, per Stage Execution. If a Pipeline has 5 Stages with no service being deployed, we bill 5 Executions. |
-| **Serverless Services**      | 1 Function = 1 Service                          | 1 Function = 0.2 Service For SI based - No Charge | Adjusted valuation to 0.2 Service per function.                                                                                       |
+| **GitOps Service**           | 1 GitOps Service = 20 SI (1 Service)            | 1 GitOps Service = 20 SI (1 Service)            | No change from V2 model.                                                                                 |
+| **Pipeline Execution (Deployments w/o Service)** | 2000 Executions = 1 Service                     | 2000 Aggregated Executions = 1 Service                     | **V3.0 Enhancement:** Custom stage executions are now aggregated across the account before calculating service consumption, providing more predictable billing. |
+| **Serverless Services**      | 1 Function = 0.2 Service                          | 1 Function = 0.2 Service | No change from V2 model.                                                                                       |
 
 
 ## Customer FAQs for the improved Service Tracking
 
 ### If I deploy a service but it generates 0 service instances, will it still count toward my active service usage?
 
-Yes. Even if your service doesn’t create any service instances, it will still be considered active because it was used in a Deploy stage. Harness will count and charge for 1 Active Service in this case.
+Yes. Even if your service doesn't create any service instances, it will still be considered active because it was used in a Deploy stage. Harness will count and charge for 1 Active Service in this case.
 
 ###  If my pipeline fails, will the service still count as active?
 
@@ -143,7 +182,17 @@ Your license consumption may increase since we are now tracking more deployable 
 
 By adjusting the valuation to 0.20 of a Service per serverless function, customers deploying serverless architectures will experience reduced costs associated with these functions. This change makes it more cost-effective for you to leverage serverless deployments.
 
+### How does the V3.0 model differ from the previous V2 licensing model?
 
+The primary difference is in how custom stage executions are tracked. V3.0 uses an aggregated approach where all custom stage executions are pooled together and divided by 2000, rather than each execution consuming a full service license immediately. This typically results in lower license consumption for customers using custom stages.
+
+### Will the V3.0 model increase my costs?
+
+The V3.0 model is designed to be cost-neutral or cost-reducing for most customers. The aggregation approach for custom stages typically reduces license consumption compared to the V2 model. We are committed to working with customers to ensure the transition is beneficial.
+
+### When will my account be migrated to the V3.0 model?
+
+The V3.0 model is automatically applied to all accounts. No action is required on your part, and all existing functionality remains unchanged. You can monitor your updated usage through the service licensing page.
 
 ### Does Harness provide tools to help manage and optimize licensing costs?
 
@@ -155,11 +204,11 @@ The User License is now considered a legacy license type that we no longer suppo
 
 ### What will happen with the Service or Service Instance Licenses I initially renewed or purchased?
 
-Harness will migrate existing customers with Service or Service Instance Licenses to the V2 version of these license types. After discussing with you, the licensing page will compute usage according to the V2 licensing model. Please note that you cannot renew under the legacy V1 Service or Service Instance Licenses.
+Harness will migrate existing customers with Service or Service Instance Licenses to the V3.0 version of these license types. After discussing with you, the licensing page will compute usage according to the V3.0 licensing model. Please note that you cannot renew under the legacy V1 or V2 Service or Service Instance Licenses.
 
 ### I'm concerned about unexpected cost increases. How can I ensure my costs remain manageable?
 
-We understand concerns about cost management. This change is not intended to upcharge you. It’s intended to improve service tracking. We will not upcharge based on increased utilization. To help you, we offer tools within the platform that provide detailed visibility into your usage. You can monitor your consumption in real-time and set up alerts for usage thresholds. Additionally, our team is available to work with you to analyze your usage patterns and identify opportunities for optimization to keep your costs predictable.
+We understand concerns about cost management. This change is not intended to upcharge you. It's intended to improve service tracking. We will not upcharge based on increased utilization. To help you, we offer tools within the platform that provide detailed visibility into your usage. You can monitor your consumption in real-time and set up alerts for usage thresholds. Additionally, our team is available to work with you to analyze your usage patterns and identify opportunities for optimization to keep your costs predictable.
 
 ### Will there be a grace period to adjust to the new licensing model?
 
@@ -237,5 +286,3 @@ We offer flexible licensing options to accommodate various requirements. Please 
 ## Need Further Assistance?
 
 Our team is here to help you through this transition. If you have any additional questions or concerns, please don't hesitate to contact your Harness account representative or our support team.
-
-
