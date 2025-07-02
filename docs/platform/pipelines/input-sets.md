@@ -245,3 +245,21 @@ Expected Outcome: If re-run **From Last Failed Stage**, the pipeline may still u
 ### Recommendation
 
 To apply updated inputs reliably, always use the **From Specific Stage** option if input changes are required for the re-run.
+
+## View and Filter Executions by Input Set
+
+You can now view and filter pipeline executions based on the input sets used.
+
+In the **Execution History** tab, the **Input Set column** shows the input sets applied to each run. These names are clickable and open the corresponding input set.
+
+The **Inputs** tab of an execution shows the input sets applied, even when an overlay (multiple input sets) was selected during execution.
+
+<div align="center">
+  <DocImage path={require('./static/input-sets-01.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+You can filter pipeline executions by input set name using the Search filter in the **Execution History** page.
+
+<div align="center">
+  <DocImage path={require('./static/input-sets-02.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
