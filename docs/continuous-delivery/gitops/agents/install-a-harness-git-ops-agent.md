@@ -9,6 +9,7 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/install-a-harness-git-ops-agent
   - /docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent
+  - /docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent
 canonical_url: https://www.harness.io/blog/gitops-benefits
 ---
 
@@ -74,19 +75,19 @@ See [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness
 
 Ensure your Harness Project has the **Continuous Delivery** module enabled.
 
-![](../use-gitops/static/install-a-harness-git-ops-agent-86.png)
+![](./static/install-a-harness-git-ops-agent-86.png)
 
 In your Harness Project, click **GitOps**.
 
 The Harness GitOps **Overview**, **Applications**, and **Settings** appear. If this is the first time GitOps has been set up in the Project, the Applications will be empty.
 
-![](../use-gitops/static/install-a-harness-git-ops-agent-87.png)
+![](./static/install-a-harness-git-ops-agent-87.png)
 
 All entities other than Applications are in **Settings**.
 
 Select **Settings**. The Harness GitOps settings appear.
 
-![](../use-gitops/static/install-a-harness-git-ops-agent-88.png)
+![](./static/install-a-harness-git-ops-agent-88.png)
 
 Select **GitOps Agents**.
 
@@ -116,12 +117,12 @@ Select **Next**. The **Helm Chart** and **YAML** deployment options appear.
 
 The **Helm Chart** option lets you download a `override.yaml` file for the Harness GitOps Agent. Download this file and pass it as values to the Helm chart.
 
-![](install-a-harness-git-ops-agent-helm-95.png)
+![](./static/install-a-harness-git-ops-agent-helm-95.png)
 
 
 The **YAML** option lets you download the manifest YAML for the Harness GitOps Agent. You can download this YAML file and run it in your Harness GitOps Agent cluster.
 
-![](install-a-harness-git-ops-agent-yaml-95.png)
+![](./static/install-a-harness-git-ops-agent-yaml-95.png)
 
 </TabItem>
 </Tabs>
@@ -222,17 +223,17 @@ Back in Harness, select **Continue**.
 
 Harness indicates that the Harness GitOps Agents is registered.
 
-![](../use-gitops/static/install-a-harness-git-ops-agent-90.png)
+![](./static/install-a-harness-git-ops-agent-90.png)
 
 Select **Continue**.
 
 When you are finished, the **Agents** list shows the new Agent as **Healthy** and **Connected**.
 
-![](../use-gitops/static/install-a-harness-git-ops-agent-91.png)
+![](./static/install-a-harness-git-ops-agent-91.png)
 
 In your cloud platform Kubernetes cluster you can see the agent workload:
 
-![](../use-gitops/static/install-a-harness-git-ops-agent-92.png)
+![](./static/install-a-harness-git-ops-agent-92.png)
 
 Now that you have the Harness GitOps Agent installed, running, and registered, you can configure the remaining components.
 
@@ -242,11 +243,11 @@ Once you have installed the Agent, when you create Application, Cluster, or Repo
 
 **Once you use this Agent to add another entity,** such as a Cluster or Repository, Harness will then map this new Argo CD project to a Harness Project identifier (Id). You will see this mapping in Harness:
 
-![](../use-gitops/static/install-a-harness-git-ops-agent-93.png)
+![](./static/install-a-harness-git-ops-agent-93.png)
 
 If you used an existing Argo CD Project, you will see the existing Argo CD Project mapped to your Harness Project Id:
 
-![](../use-gitops/static/install-a-harness-git-ops-agent-94.png)
+![](./static/install-a-harness-git-ops-agent-94.png)
 
 See [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference).
 

@@ -286,7 +286,7 @@ The insert call creates a new link, but there is an update call that updates as 
 
 ###  How can we address the user's report of a GitOps agent container with errors, specifically the inability to connect to the GitOps server, and the subsequent authentication failures?
 
-The GitOps agent's inability to connect to the server and subsequent authentication failures point to network connectivity or authentication configuration problems. Verify network connectivity between the agent and the server.  Check the agent's configuration for correct server address, port, and authentication credentials.  Review the server logs for any errors related to the agent's connection attempts.  Refer to [Harness Docs](https://developer.harness.io/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent/).
+The GitOps agent's inability to connect to the server and subsequent authentication failures point to network connectivity or authentication configuration problems. Verify network connectivity between the agent and the server.  Check the agent's configuration for correct server address, port, and authentication credentials.  Review the server logs for any errors related to the agent's connection attempts.  Refer to [Harness Docs](https://developer.harness.io/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent/).
 
 ### How can users set up GitOps correctly and avoid configuration errors?  
 Users should ensure:

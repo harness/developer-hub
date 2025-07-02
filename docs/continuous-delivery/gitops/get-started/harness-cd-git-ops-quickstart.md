@@ -86,7 +86,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 4. Select **New GitOps Agent**. The Agent creation wizard appears.
 
    You can choose to install a Harness GitOps Agent with or without an existing Argo CD instance. 
-5. For this example, select **No** and select **Start**. If you already have an existing ArgoCD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent#harness-gitops-agent-with-existing-argo-cd-project).
+5. For this example, select **No** and select **Start**. If you already have an existing ArgoCD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent#harness-gitops-agent-with-existing-argo-cd-project).
 
    ![](./static/harness-cd-git-ops-quickstart-04.png)
 6. In **Name**, enter the name **example**.

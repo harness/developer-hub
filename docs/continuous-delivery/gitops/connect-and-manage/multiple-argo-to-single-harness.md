@@ -19,7 +19,7 @@ Also, whenever new entities are created in the mapped Argo CD projects, they are
 
 With a standard Harness GitOps Agent installation (non-BYOA), Harness can install and manage Argo CD for you. This scenario is different from a BYOA where you are importing an existing Argo CD configuration into Harness GitOps.
 
-For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent).
+For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent).
 
 ### Mapping existing Argo CD projects across different Harness scopes
 
