@@ -1,13 +1,13 @@
 ---
 title: Best Practices
-description: Learn how to name and structure artifact registries to avoid conflicts and simplify governance.
+description: Learn how to name and structure artifact registries for clarity, consistency, and simpler governance.
 sidebar_position: 10
 ---
 
 Harness Artifact Registry provides centralized management for Docker, Helm, Maven, NPM, Python, and other artifact types. This guide outlines **naming conventions**, **scope selection**, and **governance strategies** to help you build a scalable registry structure.
 
-## Why Naming Matters
-Registry names must be globally unique across your Harness account—regardless of scope (account, org, or project). Reusing names like `docker-dev` in multiple scopes will cause conflicts.
+## Why naming matters
+Registry names must be globally unique across your Harness account—regardless of scope (account, org, or project). **Reusing names like `docker-dev` in multiple scopes is not allowed**.
 
 :::tip naming and scoping benefits
 Following consistent naming and scoping practices avoids registry sprawl and supports better collaboration, access control, and automation.
@@ -15,7 +15,7 @@ Following consistent naming and scoping practices avoids registry sprawl and sup
 
 ---
 
-## Before You Create a Registry
+## Before you create a registry
 Use this checklist to guide naming, scope, and ownership decisions before creating a new artifact registry.
 
 1. **Can you reuse an existing registry?**
@@ -27,10 +27,10 @@ Once you've answered these questions, continue reading to define a registry name
 
 ---
 
-## Recommended Naming Convention
+## Recommended naming convention
 Use this format to ensure global uniqueness and clarity: `<scope>-<team>-<package-type>-<environment>`
 
-### Naming Components
+### Naming components
 | Component                | Values / Examples                                                   | Description                             |
 |--------------------------|----------------------------------------------------------------------|-----------------------------------------|
 | **Scope Indicator**      | `acct`, `org`, `proj`                                               | Registry scope: account, org, or project. |
@@ -54,8 +54,8 @@ Your registry name must start with a letter and can only contain lowercase alpha
 
 ---
 
-## Scope Strategy
-| Scope       | Use For                                           | Owned By            |
+## Scope strategy
+| Scope       | Use For                                           | Managed By            |
 |-------------|---------------------------------------------------|---------------------|
 | **Account**     | Shared tools, base images, proxies                | Platform/DevOps     |
 | **Organization**| Team-shared libraries, internal components        | Team Leads          |
@@ -63,7 +63,7 @@ Your registry name must start with a letter and can only contain lowercase alpha
 
 ---
 
-## Registry URL Format
+## Registry URL format
 - **Docker:** `pkg.harness.io/<account-id>/<registry-name>/<artifact>:<tag>`
 - **Other types:** `pkg.harness.io/pkg/<account-id>/<registry-name>/<package-type>/`
 
@@ -71,7 +71,7 @@ Your registry name must start with a letter and can only contain lowercase alpha
 
 ---
 
-## Upstream Proxy Best Practices
+## Upstream proxy best practices
 Use upstream proxies at **account or org level** to:
 - Cache external sources like Docker Hub, Maven Central, PyPI.
 - Improve performance and reliability.
@@ -88,7 +88,7 @@ The upstream proxy is essential for caching open-source dependencies. During a b
 
 ---
 
-## Governance and Ownership
+## Governance and ownership
 Define roles and responsibilities:
 - **Registry Admin**: Full access + user permissions.
 - **Contributor**: Push/pull access.
@@ -96,7 +96,7 @@ Define roles and responsibilities:
 
 ---
 
-## Planning Tips
+## Planning ahead
 - Inventory teams and artifact types.
 - Align naming with scope and lifecycle.
 - Reserve namespace for known future needs.
@@ -106,7 +106,7 @@ Define roles and responsibilities:
 
 By following these best practices, you'll ensure your artifact registry is secure, organized, and ready to scale with your team's needs.
 
-## Next Steps
+## Next steps
 - [Get Started with Artifact Registry](/docs/artifact-registry/get-started/quickstart.md)
 - [Integrate with your CD pipelines](/docs/artifact-registry/platform-integrations/cd-ar-integrations)
 - [Learn about security integrations](/docs/artifact-registry/platform-integrations/security-integrations/ssd-ar-integrations)
