@@ -40,7 +40,7 @@ We're excited to introduce several new features and improvements to the SEI modu
 
 ### Business Alignment
 
-Business Alignment metrics will help you understand where engineers are allocating their time through effort investment metrics. A business Alignment profile allows you to define a more granular level definition to measure effort investment metrics using dynamic filter sets and conditions, multiple categories and associated allocation goals.
+Business Alignment metrics will help you understand where engineers are allocating their time through effort investment metrics. A Business Alignment profile allows you to define a more granular level definition to measure effort investment metrics using dynamic filter sets and conditions, multiple categories and associated allocation goals.
 
 The new profile also introduces a Business Alignment report, which consolidates all existing effort investment reports within the Propelo application into a single, comprehensive view. This report supports advanced features such as search, multiple drill-down views, and more.
 
@@ -82,9 +82,7 @@ It operates at both the Project and Account levels, enabling management of colle
 
 This role provides read-only access and is designed for users who need to view Collections or Insights without requiring administrative or management capabilities. Users with this role can view insights and Collections within projects.
 
-Users can be granted these roles individually or as part of user groups.
-
-To learn more, go to [Access Control in Harness SEI](/docs/software-engineering-insights/setup-sei/access-control/sei-roles-and-permissions)
+Users can be granted these roles individually or as part of user groups. To learn more, go to [Access Control in Harness SEI](/docs/software-engineering-insights/setup-sei/access-control/sei-roles-and-permissions).
 
 The users from the Propelo platform will be automatically associated with the roles and resource groups based on their level of access. Refer to the below table to learn more about this.
 
@@ -164,7 +162,7 @@ The Base URL for all SEI services is updated based on the specific production en
 * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`
 * **BASE URL (EU):** `https://accounts.eu.harness.io/sei/api/`
 
-For steps on using these APIs, go to [Harness SEI API Guide](/docs/software-engineering-insights/sei-administration/sei-api-reference/sei-api-guide).
+For steps on using these APIs, go to the [Harness SEI API Guide](/docs/software-engineering-insights/sei-administration/sei-api-reference/sei-api-guide).
 
 ## Deprecated Features
 
@@ -280,7 +278,7 @@ If you were using an Ingestion Satellite for on-premise integrations, follow the
 
 ![](../static/MIGRATION-SATELLITE.png)
 
-To determine which Harness cluster is assigned to your account, go to your[account details](#account-overview) page.
+To determine which Harness cluster is assigned to your account, go to your [account details](#account-overview) page.
 
 After updating the `satellite.yml` file, run the container to schedule the ingestion process for your integrations.
 
