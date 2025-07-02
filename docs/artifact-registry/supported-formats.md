@@ -32,6 +32,13 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
       logo: "npm-logo.svg",
       iconOnly: true,
     },
+    RPM: {
+      path: "/artifact-registry/content/supported-formats/rpm-quickstart.md",
+      logo: "rpm-logo.svg",
+      iconOnly: true,
+      logoWidth: 42,
+      logoHeight: 28
+    },
     Helm: {
       path: "/artifact-registry/content/supported-formats/helm-quickstart.md",
       logo: "helm-logo.svg",

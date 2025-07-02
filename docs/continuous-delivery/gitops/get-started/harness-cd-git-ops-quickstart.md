@@ -90,10 +90,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 
    ![](./static/harness-cd-git-ops-quickstart-04.png)
 6. In **Name**, enter the name **example**.
-7. Set **GitOps Operator** to one of the following:
-
-   * **Argo**. Uses Argo CD as the GitOps reconciler.
-   * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
+7. Set **GitOps Operator** to **Argo**.
 
 8. Set **Namespace** to the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this example, we use **default**.
 9. Select **Continue**. The **Review YAML** settings appear.
@@ -389,11 +386,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
    ![](./static/harness-cd-git-ops-quickstart-13.png)
 
 2. In **Application Name**, enter **example**.
-3. In **GitOps Operator**, select the GitOps operator you selected when installing the example agent:
-  
-    * **Argo**. Uses Argo CD as the GitOps reconciler.
-    * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
-
+3. In **GitOps Operator**, select **Argo**.
 4. In **GitOps Agent**, select the Agent you added earlier.
 5. In **Service**, select **New Service**, and name the Service **guestbook**.
 6. In **Environment**, select **New Environment**, name the Environment **example**, and select **Pre-Production**.

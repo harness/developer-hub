@@ -113,6 +113,7 @@ export const university: CardItem[] = [
     description:
       "Secure your SDLC and align them with industry-standard risk frameworks.",
     link: "/university/scs",
+    numberOfCerts: 1,
     SPT_available: true,
     ILT_available: true,
   },
@@ -122,6 +123,7 @@ export const university: CardItem[] = [
     description:
       "Securely host Git repositories and collaborate with advanced governance.",
     link: "/university/cr",
+    numberOfCerts: 1,
     SPT_available: true,
     ILT_available: true,
   },

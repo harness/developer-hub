@@ -40,7 +40,7 @@ We're excited to introduce several new features and improvements to the SEI modu
 
 ### Business Alignment
 
-Business Alignment metrics will help you understand where engineers are allocating their time through effort investment metrics. A business Alignment profile allows you to define a more granular level definition to measure effort investment metrics using dynamic filter sets and conditions, multiple categories and associated allocation goals.
+Business Alignment metrics will help you understand where engineers are allocating their time through effort investment metrics. A Business Alignment profile allows you to define a more granular level definition to measure effort investment metrics using dynamic filter sets and conditions, multiple categories and associated allocation goals.
 
 The new profile also introduces a Business Alignment report, which consolidates all existing effort investment reports within the Propelo application into a single, comprehensive view. This report supports advanced features such as search, multiple drill-down views, and more.
 
@@ -280,7 +280,7 @@ If you were using an Ingestion Satellite for on-premise integrations, follow the
 
 ![](../static/migration-satellite-1.png)
 
-To determine which Harness cluster is assigned to your account, go to your[account details](#account-overview) page.
+To determine which Harness cluster is assigned to your account, go to your [account details](#account-overview) page.
 
 After updating the `satellite.yml` file, run the container to schedule the ingestion process for your integrations.
 

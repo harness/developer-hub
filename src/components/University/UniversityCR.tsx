@@ -270,8 +270,7 @@ export default function CertificationsCR() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Code Repository - Developer (BETA COMING
-                      SOON)
+                      Code Repository - Developer 
                     </h2>
                     <img
                       src={`${baseUrl}img/cert-dev-cr-badge.svg`}
@@ -284,7 +283,7 @@ export default function CertificationsCR() {
                     </span>
                   </div>
                   <div className={styles.right}>
-                    <h3>Coming Soon...</h3>
+                    <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
                       applications with CR projects.
@@ -295,7 +294,7 @@ export default function CertificationsCR() {
 
 
                     <div className={styles.btnContainer}>
-                      <Link href="#">
+                      <Link href="https://university-registration.harness.io/code-repository-developer">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
@@ -314,7 +313,7 @@ export default function CertificationsCR() {
               <div className={styles.examDetailsCard}>
                 <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="#">
+                  <Link href="https://university-registration.harness.io/code-repository-developer">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>

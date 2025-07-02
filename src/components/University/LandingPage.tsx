@@ -379,19 +379,20 @@ export default function University() {
                       src={`${baseUrl}img/cert-dev-iacm-badge.svg`}
                       alt="Developer IaCM Badge"
                     />
+
+                    <img
+                      src={`${baseUrl}img/cert-dev-cr-badge.svg`}
+                      alt="Developer CR Badge"
+                    />
+                    <img
+                      src={`${baseUrl}img/cert-dev-scs-badge.svg`}
+                      alt="Developer SCS Badge"
+                    />
                   </div>
-                
-                <h5>Coming Soon</h5>
-                <div className={styles.unAvailableCerts}>
-                  <img
-                    src={`${baseUrl}img/cert-dev-cr-badge.svg`}
-                    alt="Developer CR Badge"
-                  /> 
-                  <img
-                    src={`${baseUrl}img/cert-dev-scs-badge.svg`}
-                    alt="Developer SCS Badge"
-                  /> 
-                </div> 
+
+                  {/* <h5>Coming Soon</h5> */}
+                  {/* <div className={styles.unAvailableCerts}>
+                </div> */}
 
                 </div>
               </div>
@@ -445,7 +446,7 @@ export default function University() {
                     />
                   </div>
 
-                    {/* <h5>Coming Soon</h5> */}
+                  {/* <h5>Coming Soon</h5> */}
                   {/* <div className={styles.unAvailableCerts}>
                 </div> */}
                 </div>

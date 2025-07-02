@@ -18,8 +18,29 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 :::
 
-## June 2025 - Version 1.54.5
+## June 2025 - Version 1.55.3
 
+### [New Feature] OIDC Authentication Support
+**[CCM-23638] | [AWS OIDC Documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#oidc-authentication) | [GCP OIDC Documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#step-4-authentication-conditional)**
+
+Harness CCM now supports OpenID Connect (OIDC) authentication for enhanced security and streamlined connector setup. This authentication method is available for the following cloud providers and features:
+
+**AWS Support:**
+- Asset Governance
+- Commitment Orchestration  
+- AutoStopping
+
+**GCP Support:**
+- Asset Governance
+- AutoStopping
+
+### Feature Improvements
+
+- **Cost Category Management Improvements**: Cost category name updates now propagate automatically across all usage locations, with changes reflected in CCM Perspectives and nested cost category rules.  [CCM-23698]
+
+- **Commitment Setup UI Refinements**: We have removed the Potential Savings widget and the Current Coverage section from the [Commitment Setup Review screen](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/commitment-orch-docs/aws-ec/getting-started). These changes eliminate generic data that didn't reflect user-specific selections from previous configuration steps, providing a more streamlined and relevant user experience. [CCM-23604]
+
+## June 2025 - Version 1.54.5
 
 ### [New Feature] Granular AutoStopping Permissions Support for Azure and GCP
 **[CCM-21574, CCM-21575] | [Docs for Azure](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping) | [Docs for GCP](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping)**
