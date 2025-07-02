@@ -19,7 +19,7 @@ Use this integration to:
 This documentation provides additional details on the different types of Segment integrations you can use, how they affect your data in Harness FME, and instructions for setting up the integration. 
 
 :::warning[Important]
-If you use both the `anonymousId` and `userId` fields on Segment's `track` call to differentiate between logged in and anonymous traffic find out how to [verify your Segment events](https://help.split.io/hc/en-us/articles/360035701011-Segment-Verifying-Segment-Events-in-Split) in Split or learn how to [successfully experiment with anonymous and logged-in users](https://help.split.io/hc/en-us/articles/360035494011-Successfully-Experiment-with-Anonymous-and-Logged-in-Users). 
+If you use both the `anonymousId` and `userId` fields on Segment's `track` call to differentiate between logged in and anonymous traffic find out how to [verify your Segment events](https://help.split.io/hc/en-us/articles/360035701011-Segment-Verifying-Segment-Events-in-Split) in Harness FME or learn how to [successfully experiment with anonymous and logged-in users](/docs/feature-management-experimentation/experimentation/setup/anonymous-and-logged-in-users/). 
 :::
 
 ## Harness FME as a source
@@ -121,7 +121,7 @@ The `identify` call lets you tie a user to their actions and record traits about
 Read more on Segment's `identify` spec [here](https://segment.com/docs/spec/identify/).
 
 ### Track
-The `track` call lets you record any actions your users perform, along with any properties that describe the action. When you enable in Harness FME and call the `track` function, FME records events within Harness FME. Learn more about Harness FME's events [here](https://help.split.io/hc/en-us/articles/360020585772).
+The `track` call lets you record any actions your users perform, along with any properties that describe the action. When you enable in Harness FME and call the `track` function, FME records events within Harness FME. For more information, see the [Events documentation](/docs/feature-management-experimentation/release-monitoring/events/).
 
 Read more on Segment's `track` spec [here](https://segment.com/docs/spec/track/).
 

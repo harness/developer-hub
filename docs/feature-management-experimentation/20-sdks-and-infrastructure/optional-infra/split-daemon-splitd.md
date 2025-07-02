@@ -18,8 +18,8 @@ Splitd is a daemon designed to be deployed in the same host as the application, 
 
 Splitd currently works with the following FME Thin SDKs:
 
-* [Elixir Thin Client SDK](https://help.split.io/hc/en-us/articles/26988707417869)
-* [PHP Thin Client SDK](https://help.split.io/hc/en-us/articles/18305128673933)
+* [Elixir Thin Client SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/elixir-thin-client-sdk)
+* [PHP Thin Client SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk)
 
 If you are looking for a language that is not listed here, contact the support team at [support@split.io](mailto:support@split.io).
 

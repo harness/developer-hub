@@ -52,4 +52,4 @@ After installing FME SDKs and calling track() or configuring a data integration,
 5. Apply column headers as filters by clicking **Add query criteria*.
 6. Once selected, click the **Query** button again.
 
-Learn more about [events](https://help.split.io/hc/en-us/articles/360020585772-Track-events) in Harness.
+Learn more about [events](/docs/feature-management-experimentation/release-monitoring/events/) in Harness.

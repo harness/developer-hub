@@ -17,7 +17,7 @@ Reach out to your customer success manager or [support](mailto:support@split.io)
 
 Sentry allows you to easily centralize all your exception and error tracking across your stack. By tracking exceptions via Sentry's API and libraries, you can leverage their grouping algorithms to review exceptions that are similar to each other in one place. They offer support for most platforms, including JavaScript, Node.js, PHP, .Net, Go, Python, and more.
 
-Use this integration to send exceptions from your Projects in Sentry to Harness FME. When configured, Harness FME will quickly process and display [Sentry exception data](https://docs.sentry.io/error-reporting/capturing/) in Harness FME as [track events](https://help.split.io/hc/en-us/articles/360020585772-Track-events) for analysis. You can control what environments and traffic types you're capturing exceptions for in Harness FME without having to touch any code. 
+Use this integration to send exceptions from your Projects in Sentry to Harness FME. When configured, Harness FME will quickly process and display [Sentry exception data](https://docs.sentry.io/error-reporting/capturing/) in Harness FME as [track events](/docs/feature-management-experimentation/release-monitoring/events/) for analysis. You can control what environments and traffic types you're capturing exceptions for in Harness FME without having to touch any code. 
 
 ## Setting up the integration
 
@@ -25,8 +25,8 @@ Use this integration to send exceptions from your Projects in Sentry to Harness 
 In order to use this integration, you will need to:
 
 * Be on Sentry's Business plan or above.
-* [Send Environment data](https://docs.sentry.io/enriching-error-data/environments/?platform=javascript#how-to-send-environment-data) as part of your Sentry implementation. This is necessary in order to map your exceptions to the proper [Harness FME environment](https://help.split.io/hc/en-us/articles/360019915771-Environments)
-* [Send key data](https://docs.sentry.io/platforms/javascript/enriching-events/identify-user/) as part of your Sentry implementation. This is necessary in order to map your exceptions to the proper [FME traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) and to set the proper `key` for track events in Harness FME.
+* [Send Environment data](https://docs.sentry.io/enriching-error-data/environments/?platform=javascript#how-to-send-environment-data) as part of your Sentry implementation. This is necessary in order to map your exceptions to the proper [Harness FME environment](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments).
+* [Send key data](https://docs.sentry.io/platforms/javascript/enriching-events/identify-user/) as part of your Sentry implementation. This is necessary in order to map your exceptions to the proper [FME traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types) and to set the proper `key` for track events in Harness FME.
 
 ### In Sentry
 

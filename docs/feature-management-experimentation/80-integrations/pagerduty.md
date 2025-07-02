@@ -59,7 +59,7 @@ The actions performed by my rule are to route to an appropriate service -- “AB
 
 ### Configure a metric alert policy in Harness FME
 
-1. Select a metric on which you would like to alert. The full details on configuring an alert policy are found in Harness FME's [metric alerting guide](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting).
+1. Select a metric on which you would like to alert. The full details on configuring an alert policy are found in Harness FME's [metric alerting guide](/docs/feature-management-experimentation/release-monitoring/alerts/alert-policies/#create-a-metric-alert-policy).
 
    ![](./static/pagerduty-step4.png)
 

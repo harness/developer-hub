@@ -12,9 +12,9 @@ Refer to this document to check API differences and migration details for moving
 
 ## Requirements
 
-Browser SDK has the [same browser requirements](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK#language-support) as JavaScript SDK (it supports ES5 syntax and requires Promises support) but also requires [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) support.
+Browser SDK has the [same browser requirements](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#language-support) as JavaScript SDK (it supports ES5 syntax and requires Promises support) but also requires [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) support.
 
-Therefore, to target old browsers such as IE10, users must polyfill the Fetch API besides Promises.  More details [here](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK#language-support).
+Therefore, to target old browsers such as IE10, users must polyfill the Fetch API besides Promises.  More details [here](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#language-support).
 
 ## Installation and import
  	
@@ -28,7 +28,7 @@ Therefore, to target old browsers such as IE10, users must polyfill the Fetch AP
 
 ## Configuration and API
 
-Most configuration params are the same in [JavaScript SDK](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#configuration) and [Browser SDK](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK#configuration).  SDK client and manager APIs (i.e., method signatures) are also the same. The differences:
+Most configuration params are the same in [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configuration) and [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk/#configuration).  SDK client and manager APIs (i.e., method signatures) are also the same. The differences:
 
 ### Traffic type
 
@@ -91,7 +91,7 @@ In the Browser SDK, you must “plug” a logger instance in the `debug` config 
 
 You can set a boolean or string log level value as `debug` config param, as in the regular JavaScript SDK, but in that case, most log messages will display a code number instead.
 
-Those message codes are listed in the public repository: [`Error`](https://github.com/splitio/javascript-commons/blob/development/src/logger/messages/error.ts), [`Warning`](https://github.com/splitio/javascript-commons/blob/development/src/logger/messages/warn.ts), [`Info`](https://github.com/splitio/javascript-commons/blob/development/src/logger/messages/info.ts), [`Debug`](https://github.com/splitio/javascript-commons/blob/development/src/logger/messages/debug.ts). More details [here](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK#logging).
+Those message codes are listed in the public repository: [`Error`](https://github.com/splitio/javascript-commons/blob/development/src/logger/messages/error.ts), [`Warning`](https://github.com/splitio/javascript-commons/blob/development/src/logger/messages/warn.ts), [`Info`](https://github.com/splitio/javascript-commons/blob/development/src/logger/messages/info.ts), [`Debug`](https://github.com/splitio/javascript-commons/blob/development/src/logger/messages/debug.ts). More details [here](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#logging).
 
 | JavaScript SDK 10.15.x | Browser SDK 0.1.x |
 | --- | --- |

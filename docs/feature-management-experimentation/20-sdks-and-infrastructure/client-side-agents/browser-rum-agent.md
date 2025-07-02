@@ -156,7 +156,7 @@ SplitRumAgent.addIdentity({ key: 'user_id', trafficType: 'user' });
 </TabItem>
 </Tabs>
 
-Identity objects consist of a key and a [traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type). The traffic type value must match the name of a traffic type that you have defined in Harness FME.
+Identity objects consist of a key and a [traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/). The traffic type value must match the name of a traffic type that you have defined in Harness FME.
 
 These identities are used to associate the events captured by the RUM Agent to some user, before sending them to FME services. If you provide more than one identity, the captured events will be duplicated and sent to FME services for each identity.
 
@@ -346,7 +346,7 @@ type RouteChangesEvent = {
 
 ## Automatic metric creation
 
-FME will automatically create [metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) for a subset of the event types received from the Browser RUM Agent. These "out of the box metrics" are auto-created for you:
+FME will automatically create [metrics](/docs/feature-management-experimentation/release-monitoring/metrics/) for a subset of the event types received from the Browser RUM Agent. These "out of the box metrics" are auto-created for you:
 
 | **Event type** | **Metric name** | 
 | --- | --- |
@@ -359,13 +359,13 @@ FME will automatically create [metrics](https://help.split.io/hc/en-us/articles/
 | split.rum.webvitals.ttfb | Average TTFB - Split Agents |
 | split.rum.webvitals.fid | Average FID - Split Agents |
 
-For a metric that was auto-created, you can manage the [definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) and [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) like you would for any other metric. If you delete a metric that was auto-created, FME will not re-create the metric, even if the event type is still flowing.
+For a metric that was auto-created, you can manage the [definition](/docs/feature-management-experimentation/release-monitoring/metrics/) and [alert policies](/docs/feature-management-experimentation/experimentation/metrics/alert-policies#create-a-metric-alert-policy) like you would for any other metric. If you delete a metric that was auto-created, FME will not re-create the metric, even if the event type is still flowing.
 
 ## Advanced use cases
 
 ### Custom properties
 
-Each event for the metrics described above automatically includes three properties that can be use to filter certain events when defining Split metrics for experimentation purposes. Learn more about [metric definitions and how to define property filters](https://help.split.io/hc/en-us/articles/22005565241101-Metrics).
+Each event for the metrics described above automatically includes three properties that can be use to filter certain events when defining Split metrics for experimentation purposes. Learn more about [metric definitions and how to define property filters](/docs/feature-management-experimentation/release-monitoring/metrics/).
 
 | **Name** | **Description** | **Values** | 
 | --- | --- | --- | 

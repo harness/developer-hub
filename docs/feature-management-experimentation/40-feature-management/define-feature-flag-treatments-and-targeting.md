@@ -71,7 +71,7 @@ Here are a few examples:
 * logged in user ID
 * account number
 
-Be mindful of using random user IDs, as [overuse of random IDs](https://help.split.io/hc/en-us/articles/26978089134349-MTK-Usage-and-Comparing-Counts#use-of-unstable-ids) can increase your MTK count (and [costs](https://help.split.io/hc/en-us/articles/360034159232-Account-usage-data)) unnecessarily.
+Be mindful of using random user IDs, as [overuse of random IDs](/docs/feature-management-experimentation/management-and-administration/admin-best-practices/mtk-efficiency#use-of-unstable-ids) can increase your MTK count (and [costs](/docs/feature-management-experimentation/management-and-administration/account-usage)) unnecessarily.
 :::
 
 Targeting rules have a limit of 500 user IDs, so we suggest [creating a segment](/docs/feature-management-experimentation/feature-management/segments) if you need to target a large number of user IDs.
@@ -105,7 +105,7 @@ In the Targeting rules area, you can:
    ![](./static/define-feature-flag-treatments-and-targeting-attribute-based.png)
 
 :::tip[Tip: Distribute treatments by percentage to enable experimentation]
-If you have at least one targeting rule with ___percentage distribution___, then you can ___compare metric results between feature flag treatments___ (on the [Metrics impact tab](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab)).
+If you have at least one targeting rule with ___percentage distribution___, then you can ___compare metric results between feature flag treatments___ (on the [Metrics impact tab](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/).
 :::
 
 ## Setting the alert baseline treatment
@@ -113,7 +113,7 @@ If you have at least one targeting rule with ___percentage distribution___, then
 In the [Set alert baseline treatment](http://localhost:3000/docs/feature-management-experimentation/feature-management/set-the-alert-baseline-treatment) area, select a baseline treatment that will be used for your alert policies.
 
 :::tip[Tip: Set the alert baseline treatment to enable alerting]
-If you set the ___alert baseline treatment___ AND you have at least one targeting rule with ___percentage distribution___, then you can receive ___[feature flag alerts](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting)___ and ___[metric alerts](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting)___.
+If you set the ___alert baseline treatment___ AND you have at least one targeting rule with ___percentage distribution___, then you can receive ___[feature flag alerts](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/#setting-up-feature-flag-alerting)___ and ___[metric alerts](/docs/feature-management-experimentation/experimentation/metrics/alert-policies/#create-a-metric-alert-policy)___.
 :::
 
 ## Rules evaluation order

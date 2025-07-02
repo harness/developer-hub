@@ -24,4 +24,4 @@ To prevent your app from waiting indefinitely on the SDK in case there is an iss
 
 Another useful event is SDK_READY_FROM_CACHE, since the first time the SDK runs successfully in the app it will store the cache in the app storage, so the next time the SDK initializes it can use the existing cache and does not need to wait for the network sync.
 
-For more info please check the [SDK doc](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#basic-usage).
+For more info please check the [SDK doc](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#basic-usage).
