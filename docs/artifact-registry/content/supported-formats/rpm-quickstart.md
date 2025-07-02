@@ -46,7 +46,7 @@ An upstream proxy allows your registry to fetch RPM packages from external sourc
 <DocVideo src="https://app.tango.us/app/embed/c41c6ad2-718e-4783-96ea-fc39b5794096?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Configure RPM Upstream Proxy in Harness" />
 
 </TabItem>
-<TabItem value="configure-upstream-step-by-step" label="Step-by-Step">
+<TabItem value="configure-upstream-step-by-step" label="Step-by-Step" default>
 
 ### Create an upstream proxy
 1. In the Artifact Registry module, click the dropdown next to **New Artifact Registry** and select **Upstream Proxy**.
