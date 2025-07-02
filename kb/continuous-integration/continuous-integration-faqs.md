@@ -5,6 +5,7 @@ sidebar_position: 2
 redirect_from:
   - /docs/faqs/continuous-integration-ci-faqs
   - /docs/frequently-asked-questions/harness-faqs/continuous-integration-ci-faqs
+  - /kb/continuous-integration/articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step.md
 ---
 
 ## Build infrastructure
