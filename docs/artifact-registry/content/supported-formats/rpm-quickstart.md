@@ -22,7 +22,9 @@ This guide shows you how to **create an RPM Artifact Registry** in Harness, **co
 2. Click on **New Artifact Registry**.
 3. In the Registry Type list, select **RPM Registry**.
 4. Provide a Registry Name.
-    - The registry name must start with a letter and can include lowercase alphanumeric characters, underscores (`_`), periods (`.`), and hyphens (`-`).
+    :::tip registry name
+    This registry name must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`, and **must be unique to your Harness Account**.
+    :::
 5. Optionally, add a Description and Labels for better organization.
 6. Click **Create Registry** to finalize.
 </TabItem>
