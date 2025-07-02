@@ -83,7 +83,7 @@ To sync a specific source:
 
 To terminate an in-progress sync, go to the application for the syncing app and locate the **Terminate Sync** button in the top right corner of the UI. Replace the **Sync** button when a sync is in progress.
 
-![](./static/terminate_sync.png)
+![](./static/terminate-sync.png)
 
 ## Bulk Sync and Refresh
 
