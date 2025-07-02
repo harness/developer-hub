@@ -190,6 +190,6 @@ export const university: CardItem[] = [
       "CR Developer focuses on the fundamental skills around SCM/Git and governance.",
     version: "Harness Paid Plans",
     link: "/university/cr?lvl=developer",
-    // numberOfCerts: 1,
+    // numberOfCerts:  1, 
   },
 ];
