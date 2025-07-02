@@ -2,6 +2,8 @@
 title: Manage access for GitOps Applications using labels
 description: Learn how to manage access control for GitOps resources
 sidebar_position: 40
+redirect_from:
+  - /docs/continuous-delivery/gitops/use-gitops/manage-permissions
 ---
 
 Harness uses role-based access control (RBAC) for managing user permissions platform wide. This extends to Harness GitOps as well. To learn more, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
