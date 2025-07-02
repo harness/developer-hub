@@ -246,7 +246,7 @@ Optionally, click on the **Wait until healthy** checkbox, if you would like the 
 
 In **Advanced Configuration**, select the application you want to sync and configure the sync options. You can either can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter.
 
-![](../use-gitops/static/gitopssync-step.png)
+![](../application/static/gitopssync-step.png)
 
 The sync options provided are the same options you receive while syncing an application in GitOps directly.
 
