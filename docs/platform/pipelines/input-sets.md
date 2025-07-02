@@ -249,7 +249,7 @@ To apply updated inputs reliably, always use the **From Specific Stage** option 
 ## View and Filter Executions by Input Set
 
 :::note
-Currently, this feature is behind the feature flag `PIPE_EXECUTION_ID_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+Currently, this feature is behind the feature flag `PIPE_ENABLE_INPUT_SET_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 :::
 
 You can now view and filter pipeline executions based on the input sets used.
