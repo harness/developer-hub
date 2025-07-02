@@ -19,14 +19,14 @@ import { CardItem } from "../../University/CertCard";
 
 export const university: CardItem[] = [
   {
-    title: "Continuous Delivery & GitOps",
-    module: MODULES.cd,
+    title: "Code Repository",
+    module: MODULES.code,
     description:
-      "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way.",
-    link: "/university/continuous-delivery",
-    numberOfCerts: 3,
-    ILT_available: true,
+      "Securely host Git repositories and collaborate with advanced governance.",
+    link: "/university/cr",
+    numberOfCerts: 1,
     SPT_available: true,
+    ILT_available: true,
   },
   {
     title: "Continuous Integrations",
@@ -37,6 +37,26 @@ export const university: CardItem[] = [
     numberOfCerts: 3,
     ILT_available: true,
     SPT_available: true,
+  },
+  {
+    title: "Continuous Delivery & GitOps",
+    module: MODULES.cd,
+    description:
+      "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way.",
+    link: "/university/continuous-delivery",
+    numberOfCerts: 3,
+    ILT_available: true,
+    SPT_available: true,
+  },
+  {
+    title: "Infrastructure as Code Management",
+    module: MODULES.iacm,
+    description:
+      "Efficiently and securely scale your Terraform / OpenTofu Infrastructure as Code.",
+    link: "/university/iacm",
+    numberOfCerts: 1,
+    SPT_available: true,
+    ILT_available: true,
   },
 
   {
@@ -68,6 +88,16 @@ export const university: CardItem[] = [
     SPT_available: true,
   },
   {
+    title: "Supply Chain Security",
+    module: MODULES.ssca,
+    description:
+      "Secure your SDLC and align them with industry-standard risk frameworks.",
+    link: "/university/scs",
+    numberOfCerts: 1,
+    SPT_available: true,
+    ILT_available: true,
+  },
+  {
     title: "Chaos Engineering",
     module: MODULES.ce,
     description:
@@ -76,16 +106,6 @@ export const university: CardItem[] = [
     ILT_available: true,
     SPT_available: true,
     numberOfCerts: 2,
-  },
-  {
-    title: "Software Engineering Insights",
-    module: MODULES.sei,
-    description:
-      "Discover SDLC bottlenecks, assess team productivity, and improve developer experience.",
-    link: "/university/sei",
-    SPT_available: true,
-    ILT_available: true,
-    numberOfCerts: 1,
   },
   {
     title: "Internal Developer Portal",
@@ -98,34 +118,14 @@ export const university: CardItem[] = [
     ILT_available: true,
   },
   {
-    title: "Infrastructure as Code Management",
-    module: MODULES.iacm,
+    title: "Software Engineering Insights",
+    module: MODULES.sei,
     description:
-      "Efficiently and securely scale your Terraform / OpenTofu Infrastructure as Code.",
-    link: "/university/iacm",
-    numberOfCerts: 1,
+      "Discover SDLC bottlenecks, assess team productivity, and improve developer experience.",
+    link: "/university/sei",
     SPT_available: true,
     ILT_available: true,
-  },
-  {
-    title: "Supply Chain Security",
-    module: MODULES.ssca,
-    description:
-      "Secure your SDLC and align them with industry-standard risk frameworks.",
-    link: "/university/scs",
     numberOfCerts: 1,
-    SPT_available: true,
-    ILT_available: true,
-  },
-  {
-    title: "Code Repository",
-    module: MODULES.code,
-    description:
-      "Securely host Git repositories and collaborate with advanced governance.",
-    link: "/university/cr",
-    numberOfCerts: 1,
-    SPT_available: true,
-    ILT_available: true,
   },
 
 ];
