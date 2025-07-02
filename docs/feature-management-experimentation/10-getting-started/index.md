@@ -43,5 +43,5 @@ If you're new to Harness, review the [Harness platform onboarding guide](/docs/p
 
 Some resources to get started with FME:
 
-* [What's supported?](./../whats-supported.md)
+* [What's supported?](./whats-supported)
 * [Key concepts](./key-concepts/)

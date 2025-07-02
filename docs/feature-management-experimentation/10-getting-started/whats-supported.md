@@ -7,11 +7,9 @@ sidebar_position: 1
 
 This topic lists platform and technologies supported by Harness Feature Management & Experimentation (FME).
 
-For more information about FME features and functionality, go to the [Harness FME overview](/docs/feature-management-experimentation/10-getting-started/docs/overview.md).
+For more information about FME features and functionality, go to the [Harness FME overview](/docs/feature-management-experimentation/getting-started).
 
-For information about upcoming and recently released features, go to the [Harness FME product roadmap](https://developer.harness.io/roadmap/#fme).
-
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
+To learn about upcoming and recently released features, go to the [Harness FME product roadmap](https://developer.harness.io/roadmap/#fme).
 
 ## Supported server-side SDKs
 
@@ -74,8 +72,6 @@ This tool reduces connection latencies from the SDKs to the Harness servers tran
 ## Running in the cloud
 
 There are no limitations for using FME in any cloud or non-cloud environment as long as the languages needed are supported with an SDK, and connectivity to either Harness or the Split Proxy can be established.
-
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
 <!-- todo: move 3 sections to integrations landing page >
 ## Monitoring and analytics sources
@@ -154,4 +150,4 @@ Some of our best ideas come from our customers. You can submit your feature requ
 
 ## What else does Harness support?
 
-For information about what's supported for other Harness modules and the Harness Software Delivery Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
