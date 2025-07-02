@@ -50,7 +50,7 @@ Harness Internal Developer Portal (IDP) integrates with the Platform Git Experie
 
 
 :::info Note
-In IDP 2.0, only one entity is supported per `catalog-info.yaml` file. Defining multiple entities within a single YAML file—previously allowed in IDP 1.0—is no longer supported to maintain alignment with the Harness platform standards.
+In IDP 2.0, each catalog entity must be defined in a separate YAML file. Creating multiple entities within a single file is no longer supported, ensuring consistency with Harness platform standards.
 :::
 
 ### Supported IDP Entities in Git Experience
