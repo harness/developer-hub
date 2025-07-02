@@ -67,7 +67,7 @@ When the Harness AI SRE on-call module becomes available, you will be able to co
 Connect relevant runbooks to your alert rule. These runbooks can be:
 - Automatically triggered when an incident is created
 - Suggested to responders during incident resolution
-- Used as reference documentation for incident response
+- Used as reference documentation for AI SRE
 
 ## Best Practices
 
