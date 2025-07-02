@@ -4,7 +4,7 @@ description: You can write custom logic in JavaScript to use in Propels.
 sidebar_position: 15
 ---
 
-You can write custom logic in JavaScript to use in [Propels](./propels-overview.md). This page explains the Propels script structure and provides usage examples.
+You can write custom logic in JavaScript to use in [Propels](./propels-overview). This page explains the Propels script structure and provides usage examples.
 
 ## Script structure
 

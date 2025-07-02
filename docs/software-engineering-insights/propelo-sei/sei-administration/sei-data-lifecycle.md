@@ -21,7 +21,7 @@ The SEI data processing workflow is composed of the following stages:
 
 ![](../static/sei-integrations-architecture.png)
 
-Harness SEI integrates with Software Development Lifecycle (SDLC) tools—such as [JIRA Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration.md) and [GitHub Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration) — using secure API connections. Depending on your environment, you can use one of two integration methods:
+Harness SEI integrates with Software Development Lifecycle (SDLC) tools—such as [JIRA Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration) and [GitHub Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration) — using secure API connections. Depending on your environment, you can use one of two integration methods:
 
 ### Direct SaaS integration
 

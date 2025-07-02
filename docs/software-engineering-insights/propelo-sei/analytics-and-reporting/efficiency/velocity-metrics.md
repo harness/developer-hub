@@ -38,5 +38,5 @@ For information about reports you can use to analyze velocity metrics, go to:
 * [Issues reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports)
 * [Lead time reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time)
 * [SCM reports](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights)
-* [Support reports](/docs/software-engineering-insights/analytics-and-reporting/support-metrics.md) (Issues, resolution time, response time, and requester wait time reports only)
+* [Support reports](/docs/software-engineering-insights/analytics-and-reporting/support-metrics) (Issues, resolution time, response time, and requester wait time reports only)
 * [PagerDuty reports](/docs/software-engineering-insights/analytics-and-reporting/quality-metrics-reports/pagerduty-reports) (Ack trend, after hours, response, response times, and stacks reports only)

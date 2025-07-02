@@ -4,7 +4,7 @@ description: Import CSVs into SEI Tables.
 sidebar_position: 40
 ---
 
-SEI Tables can contain any custom data that you enter manually, pull from a [Propel](./propels-overview.md), or import from a CSV file. You can then display Table data on [Table reports](./table-reports.md).
+SEI Tables can contain any custom data that you enter manually, pull from a [Propel](./propels-overview, or import from a CSV file. You can then display Table data on [Table reports](./table-reports).
 
 ## Import CSVs
 
@@ -70,7 +70,7 @@ To rename a column, select the column header cell, enter the new name, and then 
 You can specify the column data type to ensure uniformly-formatted values. Data types include:
 
 * **Text:** Cells can contain any free text value. This is equivalent to string.
-* **Baseline:** Use this option to configure baselines for [Custom Table reports](./table-reports.md). Baselines establish value ranges, such as target performance ranges or low/medium/high performance thresholds.
+* **Baseline:** Use this option to configure baselines for [Custom Table reports](./table-reports). Baselines establish value ranges, such as target performance ranges or low/medium/high performance thresholds.
 * **Boolean:** Cells must contain either `True` or `False`.
 * **Date:** Cells must contain date-formatted values.
 * **Preset:** Cells can only contain values from a predefined list of possible values. If you select this option, you must add predefined values.
@@ -137,7 +137,7 @@ If a column is both **Required** or **Read-Only**, you *must* specify a [default
 
 ### Apply color coding
 
-You can apply color coding to change how cells look in [Table reports](./table-reports.md). Color coding is useful for quickly identifying low/medium/high values.
+You can apply color coding to change how cells look in [Table reports](./table-reports). Color coding is useful for quickly identifying low/medium/high values.
 
 <!-- ![](../static/customize_table10.png) -->
 
@@ -161,7 +161,7 @@ You can apply color coding to change how cells look in [Table reports](./table-r
 
 ### Apply filters
 
-Table filters are similar to report filters. By applying a filter to a Table, you can refine the data before displaying it on a [Table report](./table-reports.md), which may include additional filters for further refinement and focus.
+Table filters are similar to report filters. By applying a filter to a Table, you can refine the data before displaying it on a [Table report](./table-reports), which may include additional filters for further refinement and focus.
 
 To add a filter:
 
@@ -173,7 +173,7 @@ To add a filter:
 
    <DocImage path={require('../static/customize-table-8.png')} />
 
-Table filters have a one-to-one relationship between columns and filter values. To apply dynamic and complex filters, use a [Table report](./table-reports.md) on an Insight.
+Table filters have a one-to-one relationship between columns and filter values. To apply dynamic and complex filters, use a [Table report](./table-reports) on an Insight.
 
 ### Insert hyperlinks
 
@@ -183,7 +183,7 @@ You can use Markdown-formatted hyperlinks (`[value](link)`) in any cell where yo
 
 <DocImage path={require('../static/customize-table-9.png')} />
 
-The links are rendered as in-line hyperlinks when presented on a [Table report](./table-reports.md).
+The links are rendered as in-line hyperlinks when presented on a [Table report](./table-reports).
 
 <!-- ![](../static/customize_table10.png) -->
 

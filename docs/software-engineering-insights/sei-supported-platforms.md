@@ -65,7 +65,7 @@ For more information about early access features, including early access feature
 
 :::note
 
-To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). For the status of a feature flag, please note [Beta, GA, Limited GA Feature Categorization](/docs/platform/get-started/release-status.md) in the descriptions below.
+To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). For the status of a feature flag, please note [Beta, GA, Limited GA Feature Categorization](/docs/platform/get-started/release-status) in the descriptions below.
 
 :::
 

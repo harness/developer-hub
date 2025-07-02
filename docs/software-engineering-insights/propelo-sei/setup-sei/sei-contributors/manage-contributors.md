@@ -28,7 +28,7 @@ To view and modify contributors:
 
 <!-- img .gitbook/assets/Screen Shot 2022-12-01 at 2.23.22 PM.png - Settings page with Users tile indicated -->
 
-Select the **Settings** (wrench) icon to edit contributor attributes. By default, contributors only include a **Name** and **Email**. You can use attributes as dynamic filters for contributor-based [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections.md). Therefore, you might find it useful to add custom attributes, such as roles, team names, departments, supervisors, or other designations.
+Select the **Settings** (wrench) icon to edit contributor attributes. By default, contributors only include a **Name** and **Email**. You can use attributes as dynamic filters for contributor-based [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections). Therefore, you might find it useful to add custom attributes, such as roles, team names, departments, supervisors, or other designations.
 
 To add custom attributes:
 

@@ -278,7 +278,7 @@ If you were using an Ingestion Satellite for on-premise integrations, follow the
   * **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/`
   * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`   
 
-![](../static/MIGRATION-SATELLITE.png)
+![](../static/migration-satellite-1.png)
 
 To determine which Harness cluster is assigned to your account, go to your[account details](#account-overview) page.
 

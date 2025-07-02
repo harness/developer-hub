@@ -10,7 +10,7 @@ The [Issue Hygiene Report widget](/docs/software-engineering-insights/analytics-
 
 These scores represent _hygiene misses_ in a designated time frame. A hygiene miss means that a ticket in your issue management system was missing an important field, failed to change status while sprint was active, or was assigned to an inactive user.
 
-What constitutes a miss depends on your _hygiene categories_. There are several built-in [hygiene categories](/docs/software-engineering-insights/analytics-and-reporting/hygiene-metrics.md#issue-hygiene-categories), and you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management integration.
+What constitutes a miss depends on your _hygiene categories_. There are several built-in [hygiene categories](/docs/software-engineering-insights/analytics-and-reporting/hygiene-metrics#issue-hygiene-categories), and you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management integration.
 
 To add custom hygiene categories:
 
