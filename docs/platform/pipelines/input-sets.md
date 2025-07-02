@@ -254,16 +254,18 @@ Currently, this feature is behind the feature flag `PIPE_ENABLE_INPUT_SET_FILTER
 
 You can now view and filter pipeline executions based on the input sets used.
 
-In the **Execution History** tab, the **Input Set column** shows the input sets applied to each run. These names are clickable and open the corresponding input set.
+- In the **Execution History** tab, the **Input Set column** shows the input sets applied to each run. These names are clickable and open the corresponding input set.
 
-The **Inputs** tab of an execution shows the input sets applied, even when an overlay (multiple input sets) was selected during execution.
+- The **Inputs** tab of an execution shows the input sets applied, even when an overlay (multiple input sets) was selected during execution.
 
 <div align="center">
   <DocImage path={require('./static/input-sets-01.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
-You can filter pipeline executions by input set name using the Search filter in the **Execution History** page.
+- You can filter pipeline executions by input set name using the Search filter in the **Execution History** page.
 
 <div align="center">
   <DocImage path={require('./static/input-sets-02.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
+
+If you're using the API to track or filter executions, include the inputSetIdentifiers query parameter in your request. See [API reference](https://apidocs.harness.io/tag/Pipeline-Execute#operation/postPipelineExecuteWithInputSetYaml!in=query&path=inputSetIdentifiers&t=request) for details.
