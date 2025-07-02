@@ -200,9 +200,9 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/cloud-development-environments/ @manishas @khushisharmaharness
 /src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness
 
-# IR Docs
-/docs/incident-response/ @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
-/release-notes/incident-response @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
+# AI SRE Docs
+/docs/ai-sre/ @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
+/release-notes/ai-sre.md @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
 
 # AI QA Assistant Docs
 /docs/ai-qa-assistant/ 
