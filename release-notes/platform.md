@@ -134,11 +134,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Resolved an issue in the Create IP Allowlist wizard where pasting text into the Name field would duplicate the content. For example, pasting `ABC 1` would incorrectly result in `ABC 1ABC 1`. [PL-63331]
-
-#### New Feature and Enhancement
-
-- 
+- Resolved an issue in the Create IP Allowlist screen where pasting text into the Name field would duplicate the content. For example, pasting `ABC 1` would incorrectly result in `ABC 1ABC 1`. [PL-63331]
 
 ## June 2025
 
