@@ -492,7 +492,7 @@ gsutil -m cp \
 
 #### GitOps
 
-- Applications can now be [synced and refreshed using bulk actions](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications#bulk-sync-and-refresh). On the applications page, there are two new buttons: **Bulk Sync** and **Refresh**. Currently, this feature is behind the feature flag `GITOPS_BULK_ACTIONS_ENABLED `. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-58485**)
+- Applications can now be [synced and refreshed using bulk actions](/docs/continuous-delivery/gitops/application/sync-gitops-applications#bulk-sync-and-refresh). On the applications page, there are two new buttons: **Bulk Sync** and **Refresh**. Currently, this feature is behind the feature flag `GITOPS_BULK_ACTIONS_ENABLED `. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-58485**)
 
 ### Behavior changes
 

@@ -101,7 +101,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### New Features and Enhancements
 
-- On the **GitOps Overview** page, you’ll find the **Applications Health Status** bar chart, which shows how many applications are in each state. Each status bar is clickable. Click any bar (for example, Healthy) to open the Applications Dashboard filtered to show only applications in that state. For more, go to [application health status graph](/docs/continuous-delivery/gitops/use-gitops/manage-gitops-applications#applications-health-status-graph)
+- On the **GitOps Overview** page, you’ll find the **Applications Health Status** bar chart, which shows how many applications are in each state. Each status bar is clickable. Click any bar (for example, Healthy) to open the Applications Dashboard filtered to show only applications in that state. For more, go to [application health status graph](/docs/continuous-delivery/gitops/application/manage-gitops-applications#applications-health-status-graph)
 - From the environments page, click the **GitOps Clusters** tab to view the list of GitOps clusters associated with an environment. Each row’s **Cluster ID** and **Agent** name is now a link that opens the corresponding Cluster or Agent detail page in a new tab. Additionally, you can add a cluster to this list. For more, go to [GitOps clusters](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview#gitops-clusters)
 
 
