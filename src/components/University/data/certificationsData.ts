@@ -172,4 +172,24 @@ export const university: CardItem[] = [
     link: "/university/chaos-engineering?lvl=administrator",
     // numberOfCerts: 1,
   },
+  {
+    title: "Supply Chain Security  - Developer",
+    module: MODULES.ssca,
+    type: certType.developer,
+    description:
+      "SCS Developer focuses on the fundamental skills to secure your SDLC with risk frameworks.",
+    version: "Harness SCS Paid Plans",
+    link: "/university/scs?lvl=developer",
+    // numberOfCerts: 1,
+  },
+  {
+    title: "Code Repository  - Developer",
+    module: MODULES.code,
+    type: certType.developer,
+    description:
+      "CR Developer focuses on the fundamental skills around SCM/Git and governance.",
+    version: "Harness Paid Plans",
+    link: "/university/cr?lvl=developer",
+    // numberOfCerts: 1,
+  },
 ];
