@@ -36,7 +36,7 @@ Harness CCM Budgets provide comprehensive cost governance capabilities that help
 
 ### Step 1: Define Target
 
-<DocImage path={require('./static/budget_stepone.png')} width="90%" height="90%" title="Click to view full-size image" />
+<DocImage path={require('./static/budget-stepone.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 - **Select Perspective**, select the Perspective for which you want to set a budget.  
 Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first [create a new Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md) and then proceed to set a budget. You can add multiple budgets for a single Perspective.
@@ -53,7 +53,7 @@ Budgets are created on Perspectives. If you do not have a Perspective of the res
 Budgets' start date cannot be later than the 28th of any month. 
 :::
 
-<DocImage path={require('./static/budget_steptwo.png')} width="90%" height="90%" title="Click to view full-size image" />
+<DocImage path={require('./static/budget-steptwo.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 - **Budget Period**: select the period for which you want to set the budget. You can set the budget period to **Monthly**, **Daily**, **Weekly**, **Quarterly**, or **Yearly**.
 - **Period starts from**: Use the date picker to set the start date for your budget.
@@ -96,7 +96,7 @@ Where:
 
 ### (Optional) Step 3: Configure Alerts 
 
-<DocImage path={require('./static/budget_stepthree.png')} width="90%" height="90%" title="Click to view full-size image" />
+<DocImage path={require('./static/budget-stepthree.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 Harness will send an alert to the specified email addresses and Harness User Groups when the actual or forecasted cost exceeds a percentage of your monthly budget
 
