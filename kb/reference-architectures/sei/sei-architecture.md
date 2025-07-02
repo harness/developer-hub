@@ -32,7 +32,7 @@ The backend processes data ingested from various sources and manages it through 
 
 * **Server API:** This API layer handles caching (via Redis) and serves as an intermediary between the data ingestion layer and the frontend services, ensuring efficient data retrieval.
 
-[Propels](/docs/software-engineering-insights/setup-sei/sei-propels-scripts/propels-overview) in SEI are responsible for triggering workflows or processes based on the ingested data. 
+[Propels](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-propels-scripts/propels-overview) in SEI are responsible for triggering workflows or processes based on the ingested data. 
 These workflows could be part of larger processing pipelines, responding to various types of events.
 
 The frontend for users is powered by a micro-frontend architecture that interacts with the backend services via the Access Control and Gateway.

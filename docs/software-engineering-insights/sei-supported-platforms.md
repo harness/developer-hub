@@ -11,35 +11,35 @@ SEI integrates with a number of third-party providers to provide a centralized v
 
 ## Harness SEI supported platforms and technologies
 
-Harness SEI supports a variety of platforms, repos, tools, and related technologies. The following sections list entities or providers with first-class support in Harness SEI. Please find the growing list of [supported third-party integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview)
+Harness SEI supports a variety of platforms, repos, tools, and related technologies. The following sections list entities or providers with first-class support in Harness SEI. Please find the growing list of [supported third-party integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview)
 
 ### Issue Management Platform
 
-* [Azure Boards](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
-* [Jira](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration)
+* [Azure Boards](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
+* [Jira](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration)
 
 ### Source Code Management (SCM)
 
-* [Azure Repos](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
-* [Bitbucket](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud)
-* [GitHub](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration)
-* [GitLab Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab)
-* [GitLab Enterprise](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab)
+* [Azure Repos](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
+* [Bitbucket](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud)
+* [GitHub](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration)
+* [GitLab Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab)
+* [GitLab Enterprise](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab)
 
 ### CI/CD
 
-* [Jenkins](/docs/software-engineering-insights/setup-sei/configure-integrations/jenkins/jenkins-plugin)
-* [Harness Continuous Delivery & GitOps and Continuous Integration](/docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd)
-* [Azure Pipelines](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
-* [GitHub Actions](/docs/software-engineering-insights/setup-sei/configure-integrations/github-actions/sei-github-actions)
+* [Jenkins](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jenkins/jenkins-plugin)
+* [Harness Continuous Delivery & GitOps and Continuous Integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd)
+* [Azure Pipelines](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
+* [GitHub Actions](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github-actions/sei-github-actions)
 
 ### BETA
 
-* [SonarQube](/docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/sonarqube/sei-integration-sonarqube)
-* [PagerDuty](/docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty)
-* [ServiceNow](/docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow)
+* [SonarQube](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sonarqube/sei-integration-sonarqube)
+* [PagerDuty](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty)
+* [ServiceNow](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow)
 
-Use the [Ingestion Satellites](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-overview) service within your local network or VPC to connect your artifacts, issue management, collaboration tools, source code managers, and other providers to Harness SEI.
+Use the [Ingestion Satellites](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview) service within your local network or VPC to connect your artifacts, issue management, collaboration tools, source code managers, and other providers to Harness SEI.
 
 :::info Note:
 
@@ -51,7 +51,7 @@ For information about what's supported for other Harness modules and the Harness
 
 ## Harness SEI features
 
-For highlights of key SEI features, go to [Harness SEI overview](/docs/software-engineering-insights/get-started/overview) and [Harness SEI key concepts](/docs/software-engineering-insights/get-started/sei-key-concepts).
+For highlights of key SEI features, go to [Harness SEI overview](/docs/software-engineering-insights/propelo-sei/get-started/overview) and [Harness SEI key concepts](/docs/software-engineering-insights/propelo-sei/get-started/sei-key-concepts).
 
 For information about upcoming and recently released features, go to the [SEI release notes](/release-notes/software-engineering-insights).
 
@@ -76,7 +76,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>SEI_SHOW_TRELIS_NEW_INTERVAL</td>
-        <td>Enables Trellis Profile configuration using <a href="/docs/software-engineering-insights/get-started/early-access/profiles/sei-trellis-factors">Trellis Factors</a> at the Central Profile. This feature is in BETA. </td>
+        <td>Enables Trellis Profile configuration using <a href="/docs/software-engineering-insights/propelo-sei/get-started/early-access/profiles/sei-trellis-factors">Trellis Factors</a> at the Central Profile. This feature is in BETA. </td>
     </tr>
     <tr>
         <td>SEI_NEW_COLLECTION_TREE</td>
@@ -104,7 +104,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>SEI_BA_INCLUDE_UNRESOLVED_ISSUES</td>
-        <td>Allows you to use the [Business Alignment report](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment) to calculate alignment metrics for tickets that are in the **In Progress status category** and those that have been resolved (i.e., Done status category) within a specific duration of time.</td>
+        <td>Allows you to use the [Business Alignment report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/sei-business-alignment) to calculate alignment metrics for tickets that are in the **In Progress status category** and those that have been resolved (i.e., Done status category) within a specific duration of time.</td>
     </tr>
     <tr>
         <td>SEI_GITHUB_REPO_SELECTION_ENABLED</td>
@@ -135,17 +135,17 @@ Here are some SEI early access features that were recently promoted to GA:
     </tr>
     <tr>
         <td>SEI_EASY_ONBOARDING_JIRA</td>
-        <td>Enables access to the new user experience for connecting to [Jira Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration#connect-with-jira-cloud) & [Data Center](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration#connect-with-jira-software-data-center) using the [Jira Connect App](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration#configure-the-integration-using-the-jira-connect-app)</td>
+        <td>Enables access to the new user experience for connecting to [Jira Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration#connect-with-jira-cloud) & [Data Center](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration#connect-with-jira-software-data-center) using the [Jira Connect App](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration#configure-the-integration-using-the-jira-connect-app)</td>
         <td>April 2024</td>
     </tr>
     <tr>
         <td>SEI_EASY_ONBOARDING_GITHUB</td>
-        <td>Enables access to the new user experience for connecting to [GitHub Organization (Cloud)](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration#connect-with-github-cloud) & [GitHub Enterprise Server](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration#connect-with-github-enterprise-server) using the [SEI GitHub App](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration#configure-the-integration-using-the-github-app)</td>
+        <td>Enables access to the new user experience for connecting to [GitHub Organization (Cloud)](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration#connect-with-github-cloud) & [GitHub Enterprise Server](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration#connect-with-github-enterprise-server) using the [SEI GitHub App](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration#configure-the-integration-using-the-github-app)</td>
         <td>April 2024</td>
     </tr>
     <tr>
         <td>SEI_IS_AZURE_NEW_ONB_ENABLED</td>
-        <td>Access the new [Azure DevOps integration](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops) onboarding with PAT authentication</td>
+        <td>Access the new [Azure DevOps integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops) onboarding with PAT authentication</td>
         <td>August 2024</td>
     </tr>
     <tr>

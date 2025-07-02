@@ -7,7 +7,7 @@ sidebar_position: 4
 <CTABanner
   buttonText="Explore SEI DORA Dashboard"
   title="Get a more accurate picture of your entire SDLC with the SEI DORA Dashboard"
-  link="/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/"
+  link="/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics/"
   closable={true}
   target="_self"
 />
@@ -138,14 +138,14 @@ While the DORA metrics dashboard in Harness CD provides visibility into deployme
 
 This view may not fully capture bottlenecks or inefficiencies in upstream stages of the software delivery lifecycle (SDLC), such as hygiene in the issue management systems, code review delays, testing gaps, or build tool inefficiencies.
 
-For a holistic view of software delivery performance across your entire toolchain (e.g., Jira, Jenkins, GitHub, Harness CD), use the DORA dashboard in [Harness Software Engineering Insights (SEI)](/docs/software-engineering-insights/get-started/overview).
+For a holistic view of software delivery performance across your entire toolchain (e.g., Jira, Jenkins, GitHub, Harness CD), use the DORA dashboard in [Harness Software Engineering Insights (SEI)](/docs/software-engineering-insights/propelo-sei/get-started/overview).
 
 ![](./static/sei-dora-dashboard-gif.gif)
 
 This dashboard is powered by:
 
-* **[DORA profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile)**: Allows you to define the software delivery lifecycle with customizable thresholds and higher granularity for measuring DORA metrics.
-* **[Correlation engine](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/)**: Analyzes data from all integrated tools (Issue management system, CI, CD, SCM, incident management, etc.) to identify root causes of bottlenecks. For example:
+* **[DORA profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/dora-profile)**: Allows you to define the software delivery lifecycle with customizable thresholds and higher granularity for measuring DORA metrics.
+* **[Correlation engine](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics/)**: Analyzes data from all integrated tools (Issue management system, CI, CD, SCM, incident management, etc.) to identify root causes of bottlenecks. For example:
   * Long lead times caused by code review delays in GitHub
   * High failure rates linked to flaky tests in Jenkins pipelines
   * Recovery time outliers correlated with specific service architectures
@@ -154,9 +154,9 @@ Use the CD DORA dashboard for pipeline-level metrics, and Software Engineering I
 
 ### Related resources
 
-* [Harness Software Engineering Insights Overview](/docs/software-engineering-insights/get-started/overview)
-* [Set up the DORA profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile)
-* [Set up the DORA dashboard](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight)
+* [Harness Software Engineering Insights Overview](/docs/software-engineering-insights/propelo-sei/get-started/overview)
+* [Set up the DORA profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/dora-profile)
+* [Set up the DORA dashboard](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight)
 
 
 
