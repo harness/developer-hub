@@ -55,7 +55,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## July 2025
 
-### Version 1.95.0
+### Version 1.95.5
 
 #### New Features and Enhancements
 
