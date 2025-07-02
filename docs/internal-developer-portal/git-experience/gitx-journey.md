@@ -58,7 +58,7 @@ IDP Catalog entity YAMLs (Component, API, Resource) and Workflow YAMLs can be st
 
 Harness IDP Git Experience integrates with the following **Git Providers**:
 
-- [GitHub](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) (Cloud & Enterprise)
+- GitHub ([Cloud](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) & [Enterprise](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server))
 - [GitLab](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) (Cloud & Self Hosted)
 - [Bitbucket](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket)
 - [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
