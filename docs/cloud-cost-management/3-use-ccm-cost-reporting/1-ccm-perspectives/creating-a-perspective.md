@@ -9,10 +9,9 @@ redirect_from:
 - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-a-budget-perspective
 - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/share-cost-perspective-report
 - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/export-perspective-data
-- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md
-- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md
-- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report.md
-
+- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives
+- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective
+- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report
 
 ---
 
@@ -38,27 +37,6 @@ Before getting started with Perspectives, ensure you have:
   * **GCP** - [Complete GCP Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp)
   * **Kubernetes** - [Complete Kubernetes Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
   * **External Data** (Beta) - [External Cost Data Ingestion Guide](/docs/cloud-cost-management/get-started/onboarding-guide/external-data-ingestion)
-
-
-## Quick Setup Process
-
-<div className="quick-setup-container" style={{display: 'flex', justifyContent: 'space-between', marginBottom: '20px'}}>
-  <div className="setup-step" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px', textAlign: 'center'}}>
-    <div style={{fontSize: '24px', fontWeight: 'bold', marginBottom: '10px'}}>1</div>
-    <div style={{fontWeight: 'bold'}}>Connect Cloud Provider</div>
-    <div>Create CCM connector for your cloud account</div>
-  </div>
-  <div className="setup-step" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px', textAlign: 'center'}}>
-    <div style={{fontSize: '24px', fontWeight: 'bold', marginBottom: '10px'}}>2</div>
-    <div style={{fontWeight: 'bold'}}>Wait for Data Ingestion</div>
-    <div>Data processing takes ~24 hours</div>
-  </div>
-  <div className="setup-step" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px', textAlign: 'center'}}>
-    <div style={{fontSize: '24px', fontWeight: 'bold', marginBottom: '10px'}}>3</div>
-    <div style={{fontWeight: 'bold'}}>Access & Create</div>
-    <div>View default and create custom perspectives</div>
-  </div>
-</div>
 
 
 ## Creating a Perspective

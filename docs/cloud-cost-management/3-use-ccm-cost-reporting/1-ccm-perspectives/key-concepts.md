@@ -7,7 +7,7 @@ helpdocs_is_published: true
 redirect_from:
 - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/filters-in-perspectives
 - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences
-- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/6-filters-in-perspectives.md
+- /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/6-filters-in-perspectives
 ---
 
 import Tabs from '@theme/Tabs';
@@ -318,7 +318,7 @@ After Label V2, AWS labels are stored as-is without any normalization.
 
 For API users, update the identifier from `LABEL` to `LABEL_V2`:
 
-<Tabs>
+<Tabs groupId="before-after">
 <TabItem value="before" label="Before (Legacy)">
 
 ```json
@@ -355,8 +355,8 @@ For API users, update the identifier from `LABEL` to `LABEL_V2`:
 
 Similarly, for `labels.key`:
 
-<Tabs>
-<TabItem value="key-before" label="Before (Legacy)">
+<Tabs groupId="before-after">
+<TabItem value="before" label="Before (Legacy)">
 
 ```json
 {
@@ -372,9 +372,8 @@ Similarly, for `labels.key`:
   }
 }
 ```
-
 </TabItem>
-<TabItem value="key-after" label="After (Label V2)">
+<TabItem value="after" label="After (Label V2)">
 
 ```json
 {
@@ -398,7 +397,7 @@ Similarly, for `labels.key`:
 
 ## Organize Perspectives using Folders
 
-You can organize Perspectives by adding them to folders.
+You can organize Perspectives by adding them to folders. The number of Folders that **can be created is 500.**
 
 Click **New folder**, name the folder, and then select the Perspectives you want to add.
 
@@ -410,7 +409,4 @@ You can also add a Perspective to a folder when you create it or move it to a fo
 
 <DocImage path={require('./static/move-folder.png')} width="90%" height="90%" title="Click to view full size image" />
 
-:::info
-The number of Folders that can be created is 500.
-:::
 
