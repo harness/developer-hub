@@ -32,7 +32,6 @@ Harness CCM now supports OpenID Connect (OIDC) authentication for enhanced secur
 
 **GCP Support:**
 - Asset Governance
-- Commitment Orchestration
 - AutoStopping
 
 ### Feature Improvements
