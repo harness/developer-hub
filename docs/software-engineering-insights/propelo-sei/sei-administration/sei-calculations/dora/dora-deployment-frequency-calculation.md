@@ -13,7 +13,7 @@ Deployment Frequency represents how often an organization successfully releases 
 
 To monitor Deployment Frequency, you must create a **DORA type Workflow profile** and add the **Deployment Frequency** report to your Insights.
 
-To learn more, go to [DORA Reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics)
+To learn more, go to [DORA Reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics)
 
 ### Deployment Frequency scoring
 
@@ -28,7 +28,7 @@ The Deployment Frequency formula depends on whether you are tracking issue
 management, SCM, or CI/CD. The following factors can contribute to Deployment
 Frequency calculations:
 
-* The [SEI integration](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview) chosen in the Workflow profile.
+* The [SEI integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview) chosen in the Workflow profile.
 * For Issue Management Platforms, SEI counts the Number of issues deployed.
 * For SCM SEI integrations, SEI counts the number of PRs deployed.
 * For CI/CD SEI integrations, SEI counts the number of jobs deployed

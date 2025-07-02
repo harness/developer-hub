@@ -34,11 +34,11 @@ You will be directed to the first Collection and its associated Insight. For log
 
 ![](./static/switch-projects.png)
 
-* Use the collection navigation in the Insights header to navigate through the [Collection hierarchy](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections).
+* Use the collection navigation in the Insights header to navigate through the [Collection hierarchy](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collections).
 
 ![](./static/collection-navigation.png)
 
-* If [Integration Monitoring](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview#integration-monitoring) is enabled, the integration status will be displayed in the Insights header.
+* If [Integration Monitoring](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview#integration-monitoring) is enabled, the integration status will be displayed in the Insights header.
 
 ![](./static/integration-monitoring.png)
 
@@ -102,7 +102,7 @@ Follow these steps to create a new Insight.
 ![](./static/insight-settings.png)
 
 * Select at least one Collection category to associate with the Insight.
-  * All [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections) and child Collections within the selected category will be automatically linked.
+  * All [Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collections) and child Collections within the selected category will be automatically linked.
   * To review Collections within a category, click **View Collections** in the Collections categories dropdown menu.
 * Click **Create** to save the Insight.
 * After saving, add widgets or modify settings such as [Insight associations](#manage-insights-associations).
@@ -132,7 +132,7 @@ You can also configure individual metrics and widgets to specify what data is us
 
 ### Manage Insights associations
 
-You can manage the Collections associated with Insights from the **Edit Collection** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections#manage-insights-associations).
+You can manage the Collections associated with Insights from the **Edit Collection** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collections#manage-insights-associations).
 
 ### Visibility and sharing
 
@@ -146,8 +146,8 @@ Harness SEI has three built-in user roles:
 
 For more information about authentication, access, and user management, go to the following:
 
-* [RBAC in Harness SEI](/docs/software-engineering-insights/setup-sei/access-control/sei-roles-and-permissions)
-* [Manage Access Control for SEI Insights](/docs/software-engineering-insights/setup-sei/access-control/manage-access-control-for-insights)
+* [RBAC in Harness SEI](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/sei-roles-and-permissions)
+* [Manage Access Control for SEI Insights](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/manage-access-control-for-insights)
 * [Harness Platform authentication (including 2FA and SSO)](/docs/category/authentication)
 * [Harness RBAC overview](/docs/platform/role-based-access-control/rbac-in-harness)
 
@@ -163,12 +163,12 @@ The following five Insights are the most frequently used on SEI:
 
 ### DORA Metrics
 
-Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Research Assessment) metrics](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics).
+Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Research Assessment) metrics](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics).
 
 If you want to create a DORA Metrics Insight refer to the below resoures.
 
-* [Tutorial: Create a DORA Metrics Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight)
-* [DORA widgets](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics)
+* [Tutorial: Create a DORA Metrics Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight)
+* [DORA widgets](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics)
 
 ![](./static/dora-insight.png)
 
@@ -176,12 +176,12 @@ If you want to create a DORA Metrics Insight refer to the below resoures.
 
 Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration.
 
-For more information about SCM metrics and widgets, go to [velocity metrics](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-metrics) and [SCM reports](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights).
+For more information about SCM metrics and widgets, go to [velocity metrics](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/velocity-metrics) and [SCM reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights).
 
 If you want to create a Developer i.e. SCM Metrics Insight refer to the below resources.
 
-* [Tutorial: Create a Developer / SCM Metrics Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/developer-insight)
-* [SCM widgets](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights) 
+* [Tutorial: Create a Developer / SCM Metrics Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/insight-tutorials/developer-insight)
+* [SCM widgets](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights) 
 
 ![](./static/dev-insight.png)
 
@@ -189,7 +189,7 @@ If you want to create a Developer i.e. SCM Metrics Insight refer to the below re
 
 The Business Alignment Insight can help visualize where your teams expend the most effort and help your teams prioritize their time. Implementing this requires you to create a Business Alignment profile and then use the profile to generate the Business Alignment report.
 
-For more information about these report, go to [Business Alignment](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment).
+For more information about these report, go to [Business Alignment](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/sei-business-alignment).
 
 ![](./static/business-alignment-insight.png)
 
@@ -201,7 +201,7 @@ Use the Trellis Insight to examine [Trellis Scores](/docs/category/trellis-score
 
 If you want to create a Trellis Insight refer to the below resources.
 
-* [Tutorial: Create a Trellis Metrics Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/trellis-insight)
+* [Tutorial: Create a Trellis Metrics Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/insight-tutorials/trellis-insight)
 * [Trellis widgets](/docs/category/trellis-scores)
 
 ### Planning Insights
@@ -210,5 +210,5 @@ Use the Planning Insight to examine [sprint metrics](/docs/category/agile-metric
 
 If you want to create a Sprints Metrics Insight refer to the below resources.
 
-* [Tutorial: Create a Sprint Metrics Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/agile-insights)
+* [Tutorial: Create a Sprint Metrics Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/insight-tutorials/agile-insights)
 * [Sprint metric widgets](/docs/category/agile-metrics)

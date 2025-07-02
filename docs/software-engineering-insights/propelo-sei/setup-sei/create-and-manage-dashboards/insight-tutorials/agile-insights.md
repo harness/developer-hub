@@ -19,7 +19,7 @@ It allows you to look at what was planned to do (committed), what was actually c
 ## Prerequisites
 
 * Ensure that Harness SEI is enabled for your Account.
-* Complete setting up your [Projects and Collection](/docs/software-engineering-insights/get-started/sei-onboarding-guide)
+* Complete setting up your [Projects and Collection](/docs/software-engineering-insights/propelo-sei/get-started/sei-onboarding-guide)
 * Setup and configure the Integrations for your Issue Management tool.
 
 ## Set up your project, integration and collection
@@ -37,21 +37,21 @@ Once your project is created, you can set up and map integrations as an admin an
 
 ## Integration Mapping
 
-**Integration Mapping** is the process of associating available or new integrations with your current project. As an admin, you can set up and map integrations in your project. For more information, go to [Integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview).
+**Integration Mapping** is the process of associating available or new integrations with your current project. As an admin, you can set up and map integrations in your project. For more information, go to [Integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview).
 
 1. Go to the **Integration Mapping** tab within the SEI module.
 2. Click **Map Integrations** and select existing integrations or create new ones as needed.
 3. Ensure you associate the integrations with your current project.
-4. Now for configuring a Sprint Metrics insight, you'll need to map the [Jira integration](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration) (Issue Management Tool).
+4. Now for configuring a Sprint Metrics insight, you'll need to map the [Jira integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration) (Issue Management Tool).
 
 :::info
-You can also use [Azure DevOps integration](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops) as the Issue Management tool.
+You can also use [Azure DevOps integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops) as the Issue Management tool.
 :::
 
 You can also create new integrations and associate the integration with the current project by mapping them.
 
-* To create a new Jira integration, go to [Jira integration](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration).
-* To create a new Azure DevOps integration, go to [Azure DevOps integration](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops).
+* To create a new Jira integration, go to [Jira integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration).
+* To create a new Azure DevOps integration, go to [Azure DevOps integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops).
 
 ## Create the Insight
 
@@ -79,9 +79,9 @@ Use these sprint metric reports to analyze sprint and planning metrics allowing 
 
 Engineering managers usually use these three key sprint metrics to get a holistic picture of the sprint productiviy:
 
-1. [Commit Points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-points) (The number of story points you plan to complete during the sprint)
-2. [Commit Done Points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-done-points) (The number of story points actually finished at the end of the sprint)
-3. [Creep Points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#creep-points) (The difference between the initially planned story points and those actually delivered).
+1. [Commit Points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-points) (The number of story points you plan to complete during the sprint)
+2. [Commit Done Points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-done-points) (The number of story points actually finished at the end of the sprint)
+3. [Creep Points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#creep-points) (The difference between the initially planned story points and those actually delivered).
 
 The **Sprint Metrics Trend Report** is recommended for visualizing a time series trend of these metrics to help engineering managers understand how the respective sprint metrics has evolved throughout various sprint cycles.
 
@@ -102,7 +102,7 @@ To add the **Sprint Metrics Trend Report** widget to Insights:
    3. **Issue Management System:** Select the integration for your Issue Management System.
 9. Select **Next: Place Widget**, place the widget on the Insight, and then save the layout.
 
-For more information,go to [Sprint Metric Trend Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-trend-report).
+For more information,go to [Sprint Metric Trend Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-trend-report).
 
 ### Issue Hygiene Report
 
@@ -153,7 +153,7 @@ To add the **Issues Report** widget to Insights:
    5. Select the date format.
 8. Select **Next: Place Widget**, place the widget on the Insight, and then save the layout.
 
-To configure the widget for various other use cases, go to [Issues Report Use Cases](/docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports).
+To configure the widget for various other use cases, go to [Issues Report Use Cases](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/issues-reports).
 
 ### Issue Resolution Time Report
 
@@ -170,7 +170,7 @@ To add the **Issue Resolution Time Report** widget to Insights:
 5. On the **Settings** tab, you can select the **Issue Management System** to use for this report. Available options are based on your configured SEI integrations. You can also select how you want to sort X-axis data, such as ascending or descending, and choose the maximum number of unique values to show on the X-axis.
 6. Select **Next: Place Widget**, place the widget on the Insight, and then save the layout.
 
-To configure the widget for various other use cases, go to [Issue Resolution Time Report Use Cases](/docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports).
+To configure the widget for various other use cases, go to [Issue Resolution Time Report Use Cases](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/issues-reports).
 
 ### Sprint Metrics Single Stat
 
@@ -195,7 +195,7 @@ To add the **Sprint Metrics Single Stat Report** widget to Insights:
 
 ### Other sprint metrics reports
 
-* [Sprit Metrics Percentage Trend Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-percentage-trend-report)
-* [Sprint Impact of Unestimated Tickets Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports)
-* [Sprint Goal Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports)
-* [Sprint Distribution Retrospective Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports)
+* [Sprit Metrics Percentage Trend Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-percentage-trend-report)
+* [Sprint Impact of Unestimated Tickets Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports)
+* [Sprint Goal Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports)
+* [Sprint Distribution Retrospective Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports)

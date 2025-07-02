@@ -31,8 +31,8 @@ These improvements indicate that AI helps reduce bottlenecks in code review and 
 
 Harness AI Productivity Insights offers two types of analysis to help track and measure AI adoption impact:
 
-* [Sentiment Analysis](/docs/software-engineering-insights/ai-productivity-insights/sentiment-analysis)
-* [Sentiment & Qualitative Analysis](/docs/software-engineering-insights/ai-productivity-insights/sentiment-and-qualitative-analysis)
+* [Sentiment Analysis](/docs/software-engineering-insights/propelo-sei/ai-productivity-insights/sentiment-analysis)
+* [Sentiment & Qualitative Analysis](/docs/software-engineering-insights/propelo-sei/ai-productivity-insights/sentiment-and-qualitative-analysis)
 
 The choice of analysis depends on your organization's AI adoption stage and the level of detail required in measuring AI productivity.
 
@@ -40,12 +40,12 @@ The choice of analysis depends on your organization's AI adoption stage and the 
 
 ### Sentiment analysis
 
-[Sentiment analysis](/docs/software-engineering-insights/ai-productivity-insights/sentiment-analysis) focuses on understanding how developers feel about using AI code assistants. It helps capture feedback on aspects such as ease of use, satisfaction, productivity, and innovation.
+[Sentiment analysis](/docs/software-engineering-insights/propelo-sei/ai-productivity-insights/sentiment-analysis) focuses on understanding how developers feel about using AI code assistants. It helps capture feedback on aspects such as ease of use, satisfaction, productivity, and innovation.
 This method relies on surveys to gather opinions and track developer sentiment across various areas like efficiency and overall experience.
 
 ### Sentiment & qualitative analysis
 
-This [report](/docs/software-engineering-insights/ai-productivity-insights/sentiment-and-qualitative-analysis) tracks how AI code assistants affect software teams by analyzing both hard metrics (like code quality and delivery speed) and developer feedback. Integrated with source code systems, it answers one question: *Does AI actually help teams ship better software faster?*
+This [report](/docs/software-engineering-insights/propelo-sei/ai-productivity-insights/sentiment-and-qualitative-analysis) tracks how AI code assistants affect software teams by analyzing both hard metrics (like code quality and delivery speed) and developer feedback. Integrated with source code systems, it answers one question: *Does AI actually help teams ship better software faster?*
 
 With SCM integrations, this approach provides a detailed report on how AI tools impact team performance. It measures productivity improvements, evaluates code quality, and gathers feedback on AI usage.
 By combining both qualitative data and sentiment analysis, organizations can gain a clearer picture of benefits and challenges with AI adoption.
@@ -63,6 +63,6 @@ By comparing these groups side-by-side, we measure what actually changes when te
 
 ## See also
 
-* [Generate the sentiment analysis report](/docs/software-engineering-insights/ai-productivity-insights/sentiment-analysis)
-* [Generate the sentiment & qualitative analysis report](/docs/software-engineering-insights/ai-productivity-insights/sentiment-and-qualitative-analysis)
-* [AI Insights (Dashboards)](/docs/software-engineering-insights/ai-productivity-insights/dashboards/ai-overview-dashboard)
+* [Generate the sentiment analysis report](/docs/software-engineering-insights/propelo-sei/ai-productivity-insights/sentiment-analysis)
+* [Generate the sentiment & qualitative analysis report](/docs/software-engineering-insights/propelo-sei/ai-productivity-insights/sentiment-and-qualitative-analysis)
+* [AI Insights (Dashboards)](/docs/software-engineering-insights/propelo-sei/ai-productivity-insights/dashboards/ai-overview-dashboard)

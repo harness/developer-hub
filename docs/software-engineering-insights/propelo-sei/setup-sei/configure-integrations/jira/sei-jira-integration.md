@@ -4,8 +4,8 @@ description: Integrate SEI with Jira Cloud
 sidebar_position: 1
 sidebar_label: Connect with Jira Cloud
 redirect_from:
-  - /docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration
-  - /docs/software-engineering-insights/setup-sei/configure-integrations/automated-integrations/sei-integration-jira
+  - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration
+  - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/automated-integrations/sei-integration-jira
 ---
 
 
@@ -39,7 +39,7 @@ To ensure your integration can work correctly, please refer to the list of [Harn
 To integrate SEI with Jira, you must choose your Jira type:
 
 * [Jira Cloud](#add-the-jira-integration)
-* [Jira Data Center](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/jira-data-center)
+* [Jira Data Center](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/jira-data-center)
 
 ![](../static/jira-types.png)
 
@@ -152,8 +152,8 @@ Please note that after adding an integration, it may take up to 24 hours for the
 
 ### See also
 
-* [Connect with Jira Data Center](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/jira-data-center)
-* [Add custom hygiene misses](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/custom-hygiene-misses)
-* [Configure custom field mapping](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/custom-fields)
-* [Reauthenticate](/docs/software-engineering-insights/setup-sei/configure-integrations/reauthenticate-integration)
-* [Ingested data](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-datasheet)
+* [Connect with Jira Data Center](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/jira-data-center)
+* [Add custom hygiene misses](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/custom-hygiene-misses)
+* [Configure custom field mapping](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/custom-fields)
+* [Reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration)
+* [Ingested data](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-datasheet)

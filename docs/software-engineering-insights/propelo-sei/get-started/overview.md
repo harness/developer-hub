@@ -26,13 +26,13 @@ SEI also helps your teams drive continuous improvement by leveraging best practi
 
 To start using SEI, configure the following:
 
-* [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview)
-* [Integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview)
-* [Contributors](/docs/software-engineering-insights/setup-sei/sei-contributors/manage-contributors)
+* [Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/project-and-collection-overview)
+* [Integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview)
+* [Contributors](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-contributors/manage-contributors)
 * [Projects](/docs/platform/organizations-and-projects/projects-and-organizations)
-* [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview)
+* [Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/project-and-collection-overview)
 * [Profiles](/docs/category/profiles)
-* [Insights](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights)
+* [Insights](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights)
 * [Metrics and reports](/docs/category/metrics-and-reports)
 
 :::tip
@@ -44,8 +44,8 @@ Use [Propels](/docs/category/workflow-automation) to add human-in-the-loop autom
 ## See also
 
 * [Get started with Harness](/docs/category/get-started-with-harness)
-* [SEI Key Concepts](/docs/software-engineering-insights/get-started/sei-key-concepts)
-* [SEI Onboarding Guide](/docs/software-engineering-insights/get-started/sei-onboarding-guide)
+* [SEI Key Concepts](/docs/software-engineering-insights/propelo-sei/get-started/sei-key-concepts)
+* [SEI Onboarding Guide](/docs/software-engineering-insights/propelo-sei/get-started/sei-onboarding-guide)
 * [Supported platforms and technologies](/docs/platform/platform-whats-supported)
-* [Propelo and Harness](/docs/software-engineering-insights/get-started/propelo-and-harness)
+* [Propelo and Harness](/docs/software-engineering-insights/propelo-sei/get-started/propelo-and-harness)
 * [Knowledge Base and FAQs](/kb/sei/)

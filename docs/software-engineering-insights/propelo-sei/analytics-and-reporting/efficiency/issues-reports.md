@@ -3,7 +3,7 @@ title: Issue tracking
 description: Analyze data related to issues in your issue management system.
 sidebar_position: 50
 redirect_from:
-    - /docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports
+    - /docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/issues-reports
 ---
 
 Use these issues reports to analyze data related to issues in issue management systems, such as Jira. Some reports can also be used for support tickets and tickets or issues that cover multiple systems (support, issue management, SCM, and CI/CD).
@@ -31,7 +31,7 @@ To configure the **Issue Hygiene report**, follow these steps:
 
 #### Step 1: Add the widget
 
-* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
 * Choose the **Issues Report** widget.
 
 The following settings are available to configure the Issues Report:
@@ -134,13 +134,13 @@ Issue resolution time reports help you understand how long tickets remain open, 
 * **Issue Resolution Time Trend Report:** Monitor changes over time in issue resolution time.
 * **Issue Resolution Time Single Stat:** A [single stat widget](#issue-single-stats) showing the number of issues marked as resolved in a given time period.
 * **Issue Time Across Stages:** Analyze cycle time by status. Cycle time is the elapsed time for an iteration of the issue workflow, from open to close.
-* **[Issue Lead Time by Stage Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time)**
-* **[Issue Lead Time By Type Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time)**
+* **[Issue Lead Time by Stage Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/velocity-lead-time)**
+* **[Issue Lead Time By Type Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/velocity-lead-time)**
 * **[Jira Releases Report](#configure-the-jira-releases-report):** Analyze your team's release pattern by understanding the average time elapsed between issue creation and release.
 
 :::tip Use Issue Resolution Time to monitor MTTR and MTBF
 
-Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics). You can use the **Issue Resolution Time Report** and **Issue Resolution Time Single Stat** widgets to monitor MTTR and MTBF. To do this, configure the filters and settings for these widgets so that they only track issues related to failure recovery.
+Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics). You can use the **Issue Resolution Time Report** and **Issue Resolution Time Single Stat** widgets to monitor MTTR and MTBF. To do this, configure the filters and settings for these widgets so that they only track issues related to failure recovery.
 
 :::
 
@@ -167,7 +167,7 @@ The **Issue Resolution Time Report** can help answer questions like:
 
 To configure the **Issue Resolution Time report**, follow these steps:
 
-* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
 * Choose the **Issue Resolution Time report** widget.
 
 #### Step 2: Configure the Filters on the widget
@@ -252,7 +252,7 @@ This configuration produces a bar graph showing a historical record of the avera
 <!-- img .gitbook/assets/image (38).png - time to close issue by last time period bar graph example -->
 
 1. On the **Aggregations** tab, select **Issue Last Closed (Week, Month, Quarter)** for the X-axis dimension.
-2. On the **Filters** tab, add filters to demonstrate [MTTR](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics#mean-time-to-restore-mttr) or [Lead Time For Changes](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics#lead-time-for-changes) trends:
+2. On the **Filters** tab, add filters to demonstrate [MTTR](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics#mean-time-to-restore-mttr) or [Lead Time For Changes](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics#lead-time-for-changes) trends:
 
    * For MTTR: Add an **Issue Type** filter, and set the filter value to **Bugs**.
    * For Lead Time For Change: Add an **Issue Type** filter, and set the filter values to **Tasks** and **Stories**.
@@ -277,7 +277,7 @@ This configuration produces a bar graph showing the median resolution time to cl
 
 ## Issue Backlog Trend Report
 
-The **Issue Backlog Trend report** allows you to analyze the historical data of your current issues. This report can help you answer questions about your backlog. To learn more, go to [Issue Backlog Trend Report](/docs/software-engineering-insights/get-started/early-access/metrics-reports/issue-backlog-trend-report).
+The **Issue Backlog Trend report** allows you to analyze the historical data of your current issues. This report can help you answer questions about your backlog. To learn more, go to [Issue Backlog Trend Report](/docs/software-engineering-insights/propelo-sei/get-started/early-access/metrics-reports/issue-backlog-trend-report).
 
 ## Jira Releases Report
 
@@ -304,7 +304,7 @@ To configure the **Jira Releases report**, follow these steps:
 
 #### Step 1: Add the report
 
-* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
 * Choose the **Jira Releases report** widget.
 
 #### Step 2: Configure the Filters for the widget
@@ -323,7 +323,7 @@ Complete the widget settings and select **Next: Place Widget**, place the widget
 
 :::tip
 
-Use the **Jira Releases Report** along with the **[Lead Time by Time Spent in Stages Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time)**, which can show you a breakdown of stages that contribute to the average lead time value present in your **Jira Releases Report**.
+Use the **Jira Releases Report** along with the **[Lead Time by Time Spent in Stages Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/velocity-lead-time)**, which can show you a breakdown of stages that contribute to the average lead time value present in your **Jira Releases Report**.
 
 :::
 
@@ -331,7 +331,7 @@ Use the **Jira Releases Report** along with the **[Lead Time by Time Spent in St
 
 To get the most benefit from this report, the following best practices are recommended:
 
-* Practice good Jira [hygiene](/docs/software-engineering-insights/analytics-and-reporting/hygiene-metrics), especially when changing issue statuses. Selecting the incorrect status, having an unclear status workflow, or having too many similar statuses can result in poor or inaccurate lead time measurements.
+* Practice good Jira [hygiene](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/hygiene-metrics), especially when changing issue statuses. Selecting the incorrect status, having an unclear status workflow, or having too many similar statuses can result in poor or inaccurate lead time measurements.
 * Whenever possible, map issues to a single version, rather than multiple versions.
 * Make sure all **Done** issues are eventually moved to the **Resolved** status (Ideally, moved to completion from the development and testing perspective).
 * Perform releases only after all linked issues are in the **Resolved** status.
@@ -401,7 +401,7 @@ To configure the **Issue Bounce report**, follow these steps:
 
 #### Step 1: Add the widget
 
-* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
 * Choose the **Issue Bounce report** widget.
 
 #### Step 2: Configure the Filters for the widget
@@ -454,7 +454,7 @@ To configure the **Issue Bounce report**, follow these steps:
 
 #### Step 1: Add the widget
 
-* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
 * Choose the **Issue Hops Report** widget.
 
 #### Step 2: Configure the Filters for the widget
@@ -480,7 +480,7 @@ Complete the widget settings and select **Next: Place Widget**, place the widget
 
 ## Issue hygiene reports
 
-For information about issue hygiene reports, go to [Hygiene reports](/docs/software-engineering-insights/analytics-and-reporting/hygiene-metrics).
+For information about issue hygiene reports, go to [Hygiene reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/hygiene-metrics).
 
 ## Issue single stats
 
@@ -505,5 +505,5 @@ You might want to set the time range to **Use Insight time**, which allows the u
 ## Other issues reports
 
 * **Issue Hotspots Report:** Determine code hotspots most often result in issues being created in your issue management system. This can help you identify code areas that need better test coverage.
-* **Issue Progress Report:** Analyze progress on [effort investment categories](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment).
-* **SCM issues:** For information about reports that track SCM issues, go to [SCM reports](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights).
+* **Issue Progress Report:** Analyze progress on [effort investment categories](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/sei-business-alignment).
+* **SCM issues:** For information about reports that track SCM issues, go to [SCM reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights).

@@ -65,7 +65,7 @@ This view allows teams to deep-dive into epic progress, identify risks, and take
 #### Step 2: Configure widget settings
 
 * Apply filters to refine the epics displayed based on criteria such as issue resolution, creation date, or due date.
-* Select the issue type as **Epics**, **Initiatives**, or both. Epics and Initiatives are issue types in issue management systems like [Jira](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration) and [Azure DevOps Boards](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops).
+* Select the issue type as **Epics**, **Initiatives**, or both. Epics and Initiatives are issue types in issue management systems like [Jira](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration) and [Azure DevOps Boards](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops).
 
 #### Step 3: Set the Health Buffer
 
@@ -141,7 +141,7 @@ The widget displays a tabular view of epics, highlighting key details:
 #### Step 2: Configure widget settings
 
 * Apply filters to refine the epics displayed based on criteria such as *issue resolution*, *creation date*, or *due date*.
-* Select the issue type as **Epics**, **Initiatives**, or both. Epics and Initiatives are issue types in issue management systems like [Jira](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration) and [Azure DevOps Boards](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops).
+* Select the issue type as **Epics**, **Initiatives**, or both. Epics and Initiatives are issue types in issue management systems like [Jira](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration) and [Azure DevOps Boards](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops).
 
 #### Step 3: Set the Health Buffer
 

@@ -4,7 +4,7 @@ description: Integrate SEI with PagerDuty.
 sidebar_position: 150
 sidebar_label: Connect with PagerDuty
 redirect_from:
-    - /docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty
+    - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty
 ---
 
 PagerDuty specializes in a SaaS incident response platform for IT departments.
@@ -12,7 +12,7 @@ PagerDuty specializes in a SaaS incident response platform for IT departments.
 Use the SEI PagerDuty integration to integrate SEI with any Cloud-based PagerDuty account/plan.
 
 :::note
-The 202403.2 release added the support to measure the incident recovery time using the DORA MTTR report for the PagerDuty integration. To learn more, go to [Measure incident recovery time](/docs/software-engineering-insights/get-started/early-access/metrics-reports/mttr-incident-recovery).
+The 202403.2 release added the support to measure the incident recovery time using the DORA MTTR report for the PagerDuty integration. To learn more, go to [Measure incident recovery time](/docs/software-engineering-insights/propelo-sei/get-started/early-access/metrics-reports/mttr-incident-recovery).
 :::
 
 ## Requirements
@@ -62,9 +62,9 @@ To integrate with an on-premises PagerDuty offering, you must use an [Ingestion 
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Pagerduty server.
 
-Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a satellite.yml file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-overview).
+Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a satellite.yml file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview).
 
-If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yml` file
 

@@ -4,7 +4,7 @@ description: Integrate SEI with Azure DevOps.
 sidebar_position: 1
 sidebar_label: Connect with Azure DevOps
 redirect_from:
-    - /docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops
+    - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -13,7 +13,7 @@ Azure DevOps (ADO) is a Microsoft product that provides version control, reporti
 
 Use the SEI Azure DevOps Services integration to integrate SEI with ADO Services. SEI ingests pipelines, Git repos, Team Foundation Version Control (TFVC), and Azure Boards data from ADO Services.
 
-Azure DevOps Services is a cloud offering. To integrate with the on-premises offering, Azure DevOps Server, you must use an [Ingestion Satellite](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-overview).
+Azure DevOps Services is a cloud offering. To integrate with the on-premises offering, Azure DevOps Server, you must use an [Ingestion Satellite](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview).
 
 ### Requirements
 
@@ -144,7 +144,7 @@ After adding the integration, it may take up to 24 hours for data to fully sync 
 
 ### See also
 
-* [Reauthenticate](/docs/software-engineering-insights/setup-sei/configure-integrations/reauthenticate-integration)
-* [Ingested data from Azure Repos](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-azure-repos-datasheet)
-* [Ingested data from Azure Pipelines](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-azure-pipelines-datasheet)
-* [Ingested data from Azure Boards](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-azure-boards-datasheet)
+* [Reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration)
+* [Ingested data from Azure Repos](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-azure-repos-datasheet)
+* [Ingested data from Azure Pipelines](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-azure-pipelines-datasheet)
+* [Ingested data from Azure Boards](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-azure-boards-datasheet)

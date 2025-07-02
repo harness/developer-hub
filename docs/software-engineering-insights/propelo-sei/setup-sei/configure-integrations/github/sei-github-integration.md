@@ -4,7 +4,7 @@ description: Integrate SEI with GitHub Cloud
 sidebar_position: 05
 sidebar_label: Connect with GitHub Cloud
 redirect_from:
-  - /docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration
+  - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration
 ---
 
 GitHub provides hosting for software development and version control using Git.
@@ -12,9 +12,9 @@ GitHub provides hosting for software development and version control using Git.
 To integrate SEI with Github, you must choose the type of your Github account.
 
 * [GitHub Organization (Cloud)](#add-the-github-integration)
-* [GitHub Enterprise Server (On-Prem)](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-enterprise-server)
+* [GitHub Enterprise Server (On-Prem)](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-enterprise-server)
 
-To integrate with GitHub Enterprise Server, go to [Connect with GitHub Enterprise](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-enterprise-server).
+To integrate with GitHub Enterprise Server, go to [Connect with GitHub Enterprise](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-enterprise-server).
 
 ![](../static/github-type.png)
 
@@ -146,7 +146,7 @@ Before you configure the SEI GitHub integration, you must generate a GitHub Pers
 
 ### See also
 
-* [Connect with Github Enterprise](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-enterprise-server)
-* [Reauthenticate](/docs/software-engineering-insights/setup-sei/configure-integrations/reauthenticate-integration)
-* [Ingested data](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-datasheet)
-* [Recommendations](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-recommendations)
+* [Connect with Github Enterprise](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-enterprise-server)
+* [Reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration)
+* [Ingested data](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-datasheet)
+* [Recommendations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-recommendations)

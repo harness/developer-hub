@@ -20,9 +20,9 @@ It allows you to look at what was planned to do (committed), what was completed 
 
 Engineering managers usually use these three key sprint metrics to get a holistic picture of the sprint productivity:
 
-1. [Commit Points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-points) (The number of story points you plan to complete during the sprint)
-2. [Commit Done Points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-done-points) (The number of story points actually finished at the end of the sprint)
-3. [Creep Points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#creep-points) (The difference between the initially planned story points and those actually delivered).
+1. [Commit Points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-points) (The number of story points you plan to complete during the sprint)
+2. [Commit Done Points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-done-points) (The number of story points actually finished at the end of the sprint)
+3. [Creep Points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#creep-points) (The difference between the initially planned story points and those actually delivered).
 
 The **Sprint Metrics Trend Report** is recommended for visualizing a time series trend of these metrics to help engineering managers understand how the respective sprint metrics has evolved throughout various sprint cycles.
 
@@ -69,7 +69,7 @@ Complete the widget settings and select **Next: Place Widget**, place the widget
 
 ### Calculation
 
-This report displays the trend over the metrics that are selected under the widget settings. To learn about what each of these metrics calculates, go to [Sprint Metrics](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics).
+This report displays the trend over the metrics that are selected under the widget settings. To learn about what each of these metrics calculates, go to [Sprint Metrics](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics).
 
 In this example, we consider a use case for a single **Sprint** with a total of **20 tickets planned** at the **beginning of the Sprint**. The widget in this scenario is configured to consider all tickets that were committed at the start of the sprint for the metric calculation.
 
@@ -149,13 +149,13 @@ Complete the widget settings and select **Next: Place Widget**, place the widget
 
 ### Calculation
 
-The widget calculates and displays the time series trend of the selected sprint metrics ratios. Find complete the list of the [Sprint Metrics ratios here](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios).
+The widget calculates and displays the time series trend of the selected sprint metrics ratios. Find complete the list of the [Sprint Metrics ratios here](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios).
 
 ## Sprint Metrics Single Stat
 
 ### Definition
 
-The **Sprint Metrics Single Stat** widget presents a single sprint metric averaged over the selected time interval. This widget can [help you use historical metrics for sprint prediction and performance assessment.](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-overview#sprint-metrics-use-cases)
+The **Sprint Metrics Single Stat** widget presents a single sprint metric averaged over the selected time interval. This widget can [help you use historical metrics for sprint prediction and performance assessment.](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-overview#sprint-metrics-use-cases)
 
 ![](./static/sprint-metrics-single-stat.png)
 

@@ -4,11 +4,11 @@ description: Generate Alignment metrics for your Engineering Team using the Busi
 sidebar_position: 50
 sidebar_label: Business Alignment
 redirect_from:
-  - /docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment
+  - /docs/software-engineering-insights/propelo-sei/analytics-and-reporting/sei-business-alignment
   - /docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-reports
-  - /docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment
+  - /docs/software-engineering-insights/propelo-sei/analytics-and-reporting/sei-business-alignment
   - /docs/category/business-alignment
-  - /docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment
+  - /docs/software-engineering-insights/propelo-sei/analytics-and-reporting/sei-business-alignment
 ---
 
 The Business Alignment Report helps you visualize where your teams are investing the majority of their effort and assist them in prioritizing their time effectively. This report displays your investment efforts across the categories outlined in the corresponding Business Alignment Profile.
@@ -17,7 +17,7 @@ The Business Alignment Report helps you visualize where your teams are investing
 
 <br />
 
-The report displays the effort invested for each category as a percentage, along with a label (`Ideal`, `Poor`, `Acceptable`) on the **Pie Chart**. The Trend Section displays the breakdown of the score over time in a **Stacked Bar Chart** format, based on the defined  Categories and their associated Allocation Goals in the [Business Alignment Profile](/docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile). The Bar Chart breaks down the metric value into time intervals as configured under the widget settings.
+The report displays the effort invested for each category as a percentage, along with a label (`Ideal`, `Poor`, `Acceptable`) on the **Pie Chart**. The Trend Section displays the breakdown of the score over time in a **Stacked Bar Chart** format, based on the defined  Categories and their associated Allocation Goals in the [Business Alignment Profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/business-alignment-profile). The Bar Chart breaks down the metric value into time intervals as configured under the widget settings.
 
 ![](./static/ba-report.png)
 

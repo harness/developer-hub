@@ -4,7 +4,7 @@ description: Integrate SEI with the ServiceNow Platform.
 sidebar_position: 10
 sidebar_label: Connect with ServiceNow
 redirect_from:
-    - /docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow
+    - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow
 ---
 
 import Tabs from '@theme/Tabs';
@@ -241,7 +241,7 @@ If you want to filter the incidents or change requests to be ingested, create a 
 ![](../../static/snow-on-prem-query.png)
 
 * Click on **Download YAML File** to download the `satellite.yml` file.
-* Click on the **Done** button and the integration will be successfully saved. Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-overview).
+* Click on the **Done** button and the integration will be successfully saved. Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview).
 
 Here’s a sample `satellite.yml` file:
 
@@ -267,9 +267,9 @@ integrations:
 
 The ServiceNow integration primarily is used for measuring the incident recovery time using the DORA Mean Time to Restore (MTTR) widget.
 
-For detailed instructions on setting up and configuring the DORA profile to effectively measure MTTR using the ServiceNow integration, please refer to [Measure incident recovery time](/docs/software-engineering-insights/get-started/early-access/metrics-reports/mttr-incident-recovery).
+For detailed instructions on setting up and configuring the DORA profile to effectively measure MTTR using the ServiceNow integration, please refer to [Measure incident recovery time](/docs/software-engineering-insights/propelo-sei/get-started/early-access/metrics-reports/mttr-incident-recovery).
 
 ## See also
 
-* [Ingested data](/docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow-datasheet)
-* [Supported integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview)
+* [Ingested data](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow-datasheet)
+* [Supported integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview)

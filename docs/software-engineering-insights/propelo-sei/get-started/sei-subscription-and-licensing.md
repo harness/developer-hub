@@ -55,12 +55,12 @@ When integrating SEI with multiple SDLC tools, different user records may be cre
 
 #### Why merge duplicate contributor records?
 
-The un-merged duplicate records may inflate license consumption. To ensure accurate license usage, [merge duplicate records](/docs/software-engineering-insights/setup-sei/sei-contributors/manage-user-profiles#merge-contributors) and maintain a unified contributor record. 
+The un-merged duplicate records may inflate license consumption. To ensure accurate license usage, [merge duplicate records](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-contributors/manage-user-profiles#merge-contributors) and maintain a unified contributor record. 
 
 * Unified records ensure accurate license counts and holistic activity tracking.
 * Avoid paying for "ghost" users.
 
 ### See also
 
-* [Merge duplicate contributors](/docs/software-engineering-insights/setup-sei/sei-contributors/manage-user-profiles#merge-contributors)
-* [Modify contributor data via CSV Export & Import](/docs/software-engineering-insights/setup-sei/sei-contributors/manage-contributors#modify-contributors-export-and-import)
+* [Merge duplicate contributors](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-contributors/manage-user-profiles#merge-contributors)
+* [Modify contributor data via CSV Export & Import](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-contributors/manage-contributors#modify-contributors-export-and-import)

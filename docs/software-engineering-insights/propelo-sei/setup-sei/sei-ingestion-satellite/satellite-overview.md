@@ -16,9 +16,9 @@ For application-specific integrations, select Satellite Integration or Use Satel
 
 Credentials specified in the integration configuration are used to generate the Satellite configuration file, `satellite.yml`. The type of credentials required depends on the specific integration
 
-* For self-managed Jira (on-prem private), you must use username and password credentials for authentication. Go to [JIRA integration](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration) for more information.
-* For on-prem GitLab, you must use API key (personal access token) authentication. Go to [Gitlab integration](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab) for more information.
-* For other application specific integration refer to the relevant documentation [here](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview).
+* For self-managed Jira (on-prem private), you must use username and password credentials for authentication. Go to [JIRA integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration) for more information.
+* For on-prem GitLab, you must use API key (personal access token) authentication. Go to [Gitlab integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab) for more information.
+* For other application specific integration refer to the relevant documentation [here](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview).
 
 After configuring the integration, you can download the Satellite configuration file, `satellite.yml` which contains the necessary settings for your integration.
 

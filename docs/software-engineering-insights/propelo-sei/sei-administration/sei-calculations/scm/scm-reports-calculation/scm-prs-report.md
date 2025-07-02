@@ -7,7 +7,7 @@ redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-reports-calculation/scm-prs-report
 ---
 
-The **SCM PRs Report** shows a high-level view of PRs moving through your SCM tool. The reports display data based on the selected metric. Find the list of supported metrics [here](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-prs-report).
+The **SCM PRs Report** shows a high-level view of PRs moving through your SCM tool. The reports display data based on the selected metric. Find the list of supported metrics [here](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights#scm-prs-report).
 
 ## Metric 1: Comment Density
 

@@ -13,8 +13,8 @@ This topic describes metrics and reports related to customer support, such as is
 
 The following are the two most commonly used types of Support Hygiene reports.
 
-* [Support Hygiene Reports](/docs/software-engineering-insights/analytics-and-reporting/hygiene-metrics#support-hygiene-reports)
-* [Support Hygiene Trend Reports](/docs/software-engineering-insights/analytics-and-reporting/hygiene-metrics#support-hygiene-reports)
+* [Support Hygiene Reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/hygiene-metrics#support-hygiene-reports)
+* [Support Hygiene Trend Reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/hygiene-metrics#support-hygiene-reports)
 
 ## Issue and Ticket Count Reports (Zendesk and Salesforce)
 

@@ -21,7 +21,7 @@ The Propelo platform will be completely brought down and all accounts will becom
 
 As part of our ongoing efforts to streamline product offerings and enhance customer experience, all current users of the Propelo platform will be migrated to Harness Software Engineering Insights (SEI). This transition aligns with our strategy to focus on the continued development and advancement of the Harness SEI module.
 
-For detailed migration instructions, please refer to the [Migration guide](/docs/software-engineering-insights/get-started/migrate-propelo-to-harness/migrate-propelo-to-harness-sei)
+For detailed migration instructions, please refer to the [Migration guide](/docs/software-engineering-insights/propelo-sei/get-started/migrate-propelo-to-harness/migrate-propelo-to-harness-sei)
 
 ### Next steps
 

@@ -27,16 +27,16 @@ SEI offers different velocity metrics based on the tools your teams use and the 
 
 There are many velocity metrics, and some overlap with other metrics categories. For more information about velocity subcategories and related metrics, go to:
 
-* [DORA metrics](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics)
-* [Business Alignment](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment)
-* [Flow metrics](/docs/software-engineering-insights/analytics-and-reporting/efficiency/flow-metrics)
+* [DORA metrics](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics)
+* [Business Alignment](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/sei-business-alignment)
+* [Flow metrics](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/flow-metrics)
 * [Sprint metrics](/docs/category/agile-metrics)
 
 For information about reports you can use to analyze velocity metrics, go to:
 
-* [CI/CD job reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights)
-* [Issues reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports)
-* [Lead time reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time)
-* [SCM reports](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights)
-* [Support reports](/docs/software-engineering-insights/analytics-and-reporting/support-metrics) (Issues, resolution time, response time, and requester wait time reports only)
-* [PagerDuty reports](/docs/software-engineering-insights/analytics-and-reporting/quality-metrics-reports/pagerduty-reports) (Ack trend, after hours, response, response times, and stacks reports only)
+* [CI/CD job reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/cicd-insights)
+* [Issues reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/issues-reports)
+* [Lead time reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/velocity-lead-time)
+* [SCM reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights)
+* [Support reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/support-metrics) (Issues, resolution time, response time, and requester wait time reports only)
+* [PagerDuty reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/quality-metrics-reports/pagerduty-reports) (Ack trend, after hours, response, response times, and stacks reports only)

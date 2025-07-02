@@ -44,7 +44,7 @@ Business Alignment metrics will help you understand where engineers are allocati
 
 The new profile also introduces a Business Alignment report, which consolidates all existing effort investment reports within the Propelo application into a single, comprehensive view. This report supports advanced features such as search, multiple drill-down views, and more.
 
-For detailed information, refer to the [Business Alignment documentation](/docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile).
+For detailed information, refer to the [Business Alignment documentation](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/business-alignment-profile).
 
 ### Simplified Navigation
 
@@ -84,7 +84,7 @@ This role provides read-only access and is designed for users who need to view C
 
 Users can be granted these roles individually or as part of user groups.
 
-To learn more, go to [Access Control in Harness SEI](/docs/software-engineering-insights/setup-sei/access-control/sei-roles-and-permissions)
+To learn more, go to [Access Control in Harness SEI](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/sei-roles-and-permissions)
 
 The users from the Propelo platform will be automatically associated with the roles and resource groups based on their level of access. Refer to the below table to learn more about this.
 
@@ -164,7 +164,7 @@ The Base URL for all SEI services is updated based on the specific production en
 * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`
 * **BASE URL (EU):** `https://accounts.eu.harness.io/sei/api/`
 
-For steps on using these APIs, go to [Harness SEI API Guide](/docs/software-engineering-insights/sei-administration/sei-api-reference/sei-api-guide).
+For steps on using these APIs, go to [Harness SEI API Guide](/docs/software-engineering-insights/propelo-sei/sei-administration/sei-api-reference/sei-api-guide).
 
 ## Deprecated Features
 
@@ -182,8 +182,8 @@ The following features are currently not supported in the SEI module of Harness:
 
 The following Harness platform features are currently not supported in the SEI module of Harness:
 
-* Delegates (SEI uses the [Ingestion Satellite](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-overview) to setup integrations with on-prem tools)
-* Connectors (SEI uses [integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview) to connect with third party tools)
+* Delegates (SEI uses the [Ingestion Satellite](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview) to setup integrations with on-prem tools)
+* Connectors (SEI uses [integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview) to connect with third party tools)
 
 ## Migration methodology
 

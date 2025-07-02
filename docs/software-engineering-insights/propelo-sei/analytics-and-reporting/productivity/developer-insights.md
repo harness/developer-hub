@@ -3,7 +3,7 @@ title: Developer insights
 description: These widgets show metrics related to SCM activity.
 sidebar_position: 20
 redirect_from:
-    - /docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights
+    - /docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights
 ---
 
 SCM reports help you analyze activity in your SCM tools, including:
@@ -14,7 +14,7 @@ SCM reports help you analyze activity in your SCM tools, including:
 * Review collaboration.
 * Most active repositories and files.
 
-Reports can be filtered by project, repository, time range, and other data points, depending on your SCM [integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview).
+Reports can be filtered by project, repository, time range, and other data points, depending on your SCM [integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview).
 
 ## SCM Code Activity Reports
 
@@ -258,7 +258,7 @@ Complete the widget settings and select **Next: Place Widget**, place the widget
 * **SCM Change Volume to CI/CD Jobs Single Stat:** Report a single stat related to the frequency or volume of deployed code changes.
 * **Code Volume Vs. Deployment Report**
 
-For more information about CI/CD job reports, go to [CI/CD job reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights).
+For more information about CI/CD job reports, go to [CI/CD job reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/cicd-insights).
 
 ## SCM Issues reports​
 
@@ -350,7 +350,7 @@ Select the metric that you want to display on the widget stages. You can select 
 
 #### Step 3: Configure the Settings
 
-* Select the [Workflow Profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview) that you want to use for this widget. Available options are based on the configured [Workflow Profiles](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview) in the SEI account.
+* Select the [Workflow Profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview) that you want to use for this widget. Available options are based on the configured [Workflow Profiles](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview) in the SEI account.
 * Select how you want to apply the filters in the widget. You can either choose to **Apply Filters Only For The Initial Node** or **Apply Filters To All Nodes**.
 
 #### Step 4: Save the widget
@@ -382,7 +382,7 @@ This measures the time taken from the creation of a pull request to its first ap
 This is the time taken to merge the first pull request after it has been created. It indicates the speed at which changes are integrated into the main branch.
 
 :::info
-When calculating **Lead Time**, the time spent in each stage depends on the stages that a PR actually goes through. For example: if the [Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview) includes a **Time to Comment** stage, but there are no comments on the PR, then the **Time to Comment** is zero.
+When calculating **Lead Time**, the time spent in each stage depends on the stages that a PR actually goes through. For example: if the [Workflow profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview) includes a **Time to Comment** stage, but there are no comments on the PR, then the **Time to Comment** is zero.
 :::
 
 <details>

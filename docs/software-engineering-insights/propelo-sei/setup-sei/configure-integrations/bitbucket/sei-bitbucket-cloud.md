@@ -9,7 +9,7 @@ redirect_from:
 
 Bitbucket Cloud is a cloud-based platform for managing Git repositories. It's part of the Atlassian suite and is widely used for version control, collaboration, and DevOps workflows.
 
-This topic describes the settings and permissions for the Bitbucket integration. Harness supports both [Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud) and [Data Center (On-Prem)](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-integration-bitbucket) versions of Bitbucket. The following settings are applicable to Bitbucket Cloud.
+This topic describes the settings and permissions for the Bitbucket integration. Harness supports both [Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud) and [Data Center (On-Prem)](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-integration-bitbucket) versions of Bitbucket. The following settings are applicable to Bitbucket Cloud.
 
 ### Requirements
 
@@ -98,6 +98,6 @@ To avoid rate limiting issues, consider setting up multiple Account Credentials 
 
 ### See also
 
-* [Connect with Bitbucket Data Center](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-integration-bitbucket)
-* [Reauthenticate](/docs/software-engineering-insights/setup-sei/configure-integrations/reauthenticate-integration)
-* [Ingested data](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-bitbucket-datasheet)
+* [Connect with Bitbucket Data Center](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-integration-bitbucket)
+* [Reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration)
+* [Ingested data](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-bitbucket-datasheet)

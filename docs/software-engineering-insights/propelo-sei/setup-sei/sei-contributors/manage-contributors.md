@@ -10,7 +10,7 @@ Contributors are developers and other team members that complete actions and act
 
 Account associations connect related user accounts across your SDLC tools. For example, you can associate a contributor's Jira, GitHub, and Harness accounts so the data from those accounts are correlated to the same record in SEI, rather than three "instances" of a user. This makes it easier to track individual contributor activity across tools.
 
-You can use any attributes as dynamic filters for contributor-based [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections). Some attributes are included by default, such as **Name**, **Email**, and **Integration**. You can add custom attributes to further refine contributor records and create dynamic filters unique to your organization or teams.
+You can use any attributes as dynamic filters for contributor-based [Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collections). Some attributes are included by default, such as **Name**, **Email**, and **Integration**. You can add custom attributes to further refine contributor records and create dynamic filters unique to your organization or teams.
 
 :::info
 
@@ -28,7 +28,7 @@ To view and modify contributors:
 
 <!-- img .gitbook/assets/Screen Shot 2022-12-01 at 2.23.22 PM.png - Settings page with Users tile indicated -->
 
-Select the **Settings** (wrench) icon to edit contributor attributes. By default, contributors only include a **Name** and **Email**. You can use attributes as dynamic filters for contributor-based [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections). Therefore, you might find it useful to add custom attributes, such as roles, team names, departments, supervisors, or other designations.
+Select the **Settings** (wrench) icon to edit contributor attributes. By default, contributors only include a **Name** and **Email**. You can use attributes as dynamic filters for contributor-based [Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collections). Therefore, you might find it useful to add custom attributes, such as roles, team names, departments, supervisors, or other designations.
 
 To add custom attributes:
 
@@ -48,13 +48,13 @@ To add custom attributes:
 
 For the **Integration** attribute, SEI uses the **Email** as the primary attribute to collate contributor identities across integrations.
 
-For example, assume a user's email is `a.developer@myorg.com`, and you have [integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview) with Jira, GitHub, and Slack. If SEI finds the same email address in Jira, GitHub, and Slack, then the data from those integrations are all correlated to the same contributor in SEI.
+For example, assume a user's email is `a.developer@myorg.com`, and you have [integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview) with Jira, GitHub, and Slack. If SEI finds the same email address in Jira, GitHub, and Slack, then the data from those integrations are all correlated to the same contributor in SEI.
 
 However, if the user is registered under `a.developer@myorg.com` in Jira and Slack, but they use a different email for GitHub, then the GitHub data is associated with a separate contributor record. This is because SEI does not know that the other email address also belongs to `a.developer@myorg.com` unless you [modify the contributor](#modify-contributors-export-and-import) to include the user's GitHub email address.
 
 ## Modify contributors (export and import)
 
-SEI automatically detects user identities in your [integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview) and creates contributors from those identities. However, there are several reasons you might need to modify contributors, such as:
+SEI automatically detects user identities in your [integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview) and creates contributors from those identities. However, there are several reasons you might need to modify contributors, such as:
 
 * Users don't have the same email address for all accounts.
 * A user's identity wasn't detected through the integration.
@@ -75,7 +75,7 @@ To modify contributors, you must export a CSV file, edit it, and then import the
 
 ### Manually add contributors
 
-SEI automatically detects user identities in your [integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview). If you need to manually add a contributor, follow the steps to [Modify contributors](#modify-contributors-export-and-import), and add a row for each new contributor. At minimum, you must provide a name and email for the contributor to be valid.
+SEI automatically detects user identities in your [integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview). If you need to manually add a contributor, follow the steps to [Modify contributors](#modify-contributors-export-and-import), and add a row for each new contributor. At minimum, you must provide a name and email for the contributor to be valid.
 
 ## Merge contributors
 

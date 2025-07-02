@@ -21,7 +21,7 @@ The SEI data processing workflow is composed of the following stages:
 
 ![](../static/sei-integrations-architecture.png)
 
-Harness SEI integrates with Software Development Lifecycle (SDLC) tools—such as [JIRA Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration) and [GitHub Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration) — using secure API connections. Depending on your environment, you can use one of two integration methods:
+Harness SEI integrates with Software Development Lifecycle (SDLC) tools—such as [JIRA Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration) and [GitHub Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration) — using secure API connections. Depending on your environment, you can use one of two integration methods:
 
 ### Direct SaaS integration
 
@@ -29,7 +29,7 @@ The Harness SaaS application connects directly to cloud-based SDLC tools using t
 
 ### Satellite based integration for on-prem integrations
 
-When integrating with on-premise systems, Harness SEI uses the [ingestion satellite](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-overview) to maintain security and control.
+When integrating with on-premise systems, Harness SEI uses the [ingestion satellite](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview) to maintain security and control.
 
 * The ingestion satellite creates outbound connections from your network to on-premise services (e.g., JIRA, GitHub) to fetch the required metadata.
 * Authentication tokens and secrets remain within your environment, ensuring they are not transmitted externally.
@@ -43,13 +43,13 @@ The SEI ingestion layer acts as a data magnet, collecting information from every
 
 Harness SEI connects directly to various cloud-based tools via their native APIs. For example:
 
-* [Jira](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration): Retrieves ticketing and hygiene data.
-* [GitHub](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration): Collects information on code changes and pull requests.
-* [ServiceNow](/docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow): Gathers incident data and change requests.
+* [Jira](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration): Retrieves ticketing and hygiene data.
+* [GitHub](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration): Collects information on code changes and pull requests.
+* [ServiceNow](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow): Gathers incident data and change requests.
 
 ### Data collection agents
 
-In some environments, SEI deploys lightweight agents that reside within your network. These agents securely collect data and forward it to SEI. An example is the [Harness SEI Jenkins Plugin](/docs/software-engineering-insights/setup-sei/configure-integrations/jenkins/jenkins-plugin) that is installed on your Jenkins server, it securely gathers build and job data.
+In some environments, SEI deploys lightweight agents that reside within your network. These agents securely collect data and forward it to SEI. An example is the [Harness SEI Jenkins Plugin](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jenkins/jenkins-plugin) that is installed on your Jenkins server, it securely gathers build and job data.
 
 All data—whether pulled via API or collected by an agent—is stored securely in its raw format. This "raw integration data" serves as the foundation for subsequent analysis.
 
@@ -71,7 +71,7 @@ The raw data is cleaned and standardized by:
 
 ### Pre-calculations
 
-To ensure rapid dashboard response times, SEI performs key [calculations in advance](/docs/software-engineering-insights/analytics-and-reporting/precalculated-widgets). This pre-processing means that when you view your dashboard, the insights are instantly available.
+To ensure rapid dashboard response times, SEI performs key [calculations in advance](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/precalculated-widgets). This pre-processing means that when you view your dashboard, the insights are instantly available.
 
 ### Indexing and search
 

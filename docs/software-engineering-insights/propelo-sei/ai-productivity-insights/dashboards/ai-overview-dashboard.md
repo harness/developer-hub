@@ -252,7 +252,7 @@ Understanding a combination of metrics is key. For example, an increase in new l
 
 #### Detailed view
 
-Selecting [**View Details**](/docs/software-engineering-insights/ai-productivity-insights/dashboards/velocity-dashboard) provides a granular breakdown of each metric's contribution to the overall Velocity score. This view helps teams:
+Selecting [**View Details**](/docs/software-engineering-insights/propelo-sei/ai-productivity-insights/dashboards/velocity-dashboard) provides a granular breakdown of each metric's contribution to the overall Velocity score. This view helps teams:
 
 * Pinpoint stages causing delays in PR cycles.  
 * Determine which development activities contribute most to velocity gains.

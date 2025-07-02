@@ -13,7 +13,7 @@ This tutorial explains how to create a Trellis Insight with all the supported re
 ## Prerequisites
 
 * Ensure that Harness SEI is enabled for your Account.
-* Complete setting up your [Projects and Collection](/docs/software-engineering-insights/get-started/sei-onboarding-guide)
+* Complete setting up your [Projects and Collection](/docs/software-engineering-insights/propelo-sei/get-started/sei-onboarding-guide)
 * Setup and configure the Integrations for your Issue Management tool, Source Code Manager and Deployment Manager.
 * Trellis Profile on Harness SEI
 
@@ -32,7 +32,7 @@ To create or edit a **Trellis profile**:
 To calculate the Trellis Score, this profile must be associated with the collection under which your Trellis Insight is configured.
 :::
 
-To learn more about customizing an existing trellis profile or creating a new profile, go to [Trellis Profile](/docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile).
+To learn more about customizing an existing trellis profile or creating a new profile, go to [Trellis Profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/trellis-profile).
 
 ## Set up your project, integration and collection
 
@@ -49,22 +49,22 @@ Once your project is created, you can set up and map integrations as an admin an
 
 ## Integration Mapping
 
-**Integration Mapping** is the process of associating available or new integrations with your current project. As an admin, you can set up and map integrations in your project. For more information, go to [Integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview).
+**Integration Mapping** is the process of associating available or new integrations with your current project. As an admin, you can set up and map integrations in your project. For more information, go to [Integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview).
 
 1. Go to the **Integration Mapping** tab within the SEI module.
 2. Click **Map Integrations** and select existing integrations or create new ones as needed.
 3. Ensure you associate the integrations with your current project.
-4. Now for configuring a DORA Metrics insight, you'll need to map the [Jira integration (Issue Management Tool)](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration), [Github integration (Source Code Manager)](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration), [Harness NG integration (CI/CD Platform)](/docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd).
+4. Now for configuring a DORA Metrics insight, you'll need to map the [Jira integration (Issue Management Tool)](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration), [Github integration (Source Code Manager)](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration), [Harness NG integration (CI/CD Platform)](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd).
 
 :::info
-You can also use [Azure DevOps integration](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops) as the Issue Management tool.
+You can also use [Azure DevOps integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops) as the Issue Management tool.
 :::
 
 You can also create new integrations and associate the integration with the current project by mapping them.
 
-* To create a new Jira integration, go to [Jira integration](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration).
-* To create a new GitHub integration, go to [GitHub integration](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration).
-* To create a new Harness NG integration, go to [Harness NG integration](/docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd).
+* To create a new Jira integration, go to [Jira integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration).
+* To create a new GitHub integration, go to [GitHub integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration).
+* To create a new Harness NG integration, go to [Harness NG integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd).
 
 ## Create the Insight
 
@@ -99,7 +99,7 @@ The Trellis Score Report calculates and displays the Trellis Scores by individua
 * **Proficiency:** Proficiency measures how many projects are currently being worked on. It is based on two metrics: Technical breadth and repo breadth.
 * **Leadership and Collaboration:** Leadership and collaboration measures developer teamwork and contribution to peer reviews.
 
-The factors and weight associated with the Trellis Score are essentially defined at the profile level. To learn more, go to [Trellis Profile](/docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile).
+The factors and weight associated with the Trellis Score are essentially defined at the profile level. To learn more, go to [Trellis Profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/trellis-profile).
 
 ![](../static/trellis-score-report.png)
 

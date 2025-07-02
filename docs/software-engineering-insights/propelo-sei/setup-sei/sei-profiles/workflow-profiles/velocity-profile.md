@@ -703,7 +703,7 @@ Separate multiple values with a comma.
 
 ### Measure lead time by Jira statuses
 
-Harness SEI allows you to measure lead time exclusively by Jira statuses, providing an ideal solution for teams using [Jira](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration) as their primary issue management tool. This configuration is mandatory for generating the Jira releases Report. Since lead time is based solely on Jira statuses, the **Ticket Created** event is automatically set as the default start event.
+Harness SEI allows you to measure lead time exclusively by Jira statuses, providing an ideal solution for teams using [Jira](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration) as their primary issue management tool. This configuration is mandatory for generating the Jira releases Report. Since lead time is based solely on Jira statuses, the **Ticket Created** event is automatically set as the default start event.
 
 You can customize the workflow by adding custom stages, each defined with a name, description, and acceptable time limits. These stages, along with the [Jira release stage](#add-the-jira-release-stage), can mirror your software delivery process, providing a detailed measure of overall lead time.
 
@@ -717,8 +717,8 @@ You can customize the workflow by adding custom stages, each defined with a name
 
 #### Restrictions
 
-* The **issue management system** is fixed to [Jira](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration), and the **Start Event** is locked as **Ticket Created** when measuring lead time by Jira statuses.
-* To switch to [Azure](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops) or another issue management system, you must disable the release stage.
+* The **issue management system** is fixed to [Jira](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration), and the **Start Event** is locked as **Ticket Created** when measuring lead time by Jira statuses.
+* To switch to [Azure](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops) or another issue management system, you must disable the release stage.
 * Modifying the start event is not allowed when the release stage is enabled, as it can lead to incorrect configurations.
 * For profiles already in use, the Jira release stage remains disabled by default unless explicitly enabled.
 

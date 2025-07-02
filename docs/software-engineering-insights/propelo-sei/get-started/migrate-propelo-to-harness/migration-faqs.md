@@ -7,7 +7,7 @@ sidebar_label: Migration FAQs
 
 This topic provides answers to common questions about migrating from the Propelo platform to Harness Software Engineering Insights (SEI).
 
-For details migration steps, go to [Migration Guide](/docs/software-engineering-insights/get-started/migrate-propelo-to-harness/migrate-propelo-to-harness-sei)
+For details migration steps, go to [Migration Guide](/docs/software-engineering-insights/propelo-sei/get-started/migrate-propelo-to-harness/migrate-propelo-to-harness-sei)
 
 ## What is Harness Software Engineering Insights?
 
@@ -43,7 +43,7 @@ No. Migrating to Harness SEI NextGen will not impact your current plan. Your cur
 
 Your existing access control settings will not be impacted due to migration. After the migration, all Propelo users will receive invitations to access the Harness SEI module with role assignments based on their previous Propelo permissions.
 
-For details on Propelo roles mapping to Harness roles, go to [Migration guide](/docs/software-engineering-insights/get-started/migrate-propelo-to-harness/migrate-propelo-to-harness-sei#improved-rbac-capabilities).
+For details on Propelo roles mapping to Harness roles, go to [Migration guide](/docs/software-engineering-insights/propelo-sei/get-started/migrate-propelo-to-harness/migrate-propelo-to-harness-sei#improved-rbac-capabilities).
 
 ## What happens if I have a project in Harness with the same name as on the Propelo platform?
 
@@ -53,4 +53,4 @@ There will be no conflicts. The existing project will be updated to include the 
 
 No. Some lesser-used features from the Propelo platform have not been included in Harness SEI. 
 
-To learn more, go to [Deprecated features on Harness SEI](/docs/software-engineering-insights/get-started/migrate-propelo-to-harness/migrate-propelo-to-harness-sei#deprecated-features).
+To learn more, go to [Deprecated features on Harness SEI](/docs/software-engineering-insights/propelo-sei/get-started/migrate-propelo-to-harness/migrate-propelo-to-harness-sei#deprecated-features).

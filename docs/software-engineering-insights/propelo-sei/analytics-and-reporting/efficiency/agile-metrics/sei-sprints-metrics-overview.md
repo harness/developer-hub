@@ -30,22 +30,22 @@ Sprint metrics can help you plan and deliver on sprints more effectively, includ
     <tr>
         <td>Sprint metrics reports</td>
         <td>Use sprint metrics reports to analyze sprint and planning metrics </td>
-        <td>[Click Here](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports)</td>
+        <td>[Click Here](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports)</td>
     </tr>
     <tr>
         <td>Sprint metrics</td>
         <td>List of all the metrics supported in SEI for measuring sprint success</td>
-        <td>[Click Here](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics)</td>
+        <td>[Click Here](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics)</td>
     </tr>
     <tr>
         <td>Sprint metrics ratios</td>
         <td>These ratios are calculated from sprint metrics</td>
-        <td>[Click Here](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios)</td>
+        <td>[Click Here](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios)</td>
     </tr>
     <tr>
         <td>Create a Sprints Insight</td>
         <td>Step by step guide to create a Sprint Insight</td>
-        <td>[Click Here](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/agile-insights)</td>
+        <td>[Click Here](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/insight-tutorials/agile-insights)</td>
     </tr>
     <tr>
         <td>Best Practices and Recommendations</td>
@@ -60,14 +60,14 @@ These examples show how you can use sprint metrics to measure team performance.
 
 ### Measure team performance in recent sprints
 
-Use the [commit done ratio](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#commit-done-ratio) to check the team's performance on recent sprint plans. Compute this metric as an average over the last 2 months or 6 sprints.
+Use the [commit done ratio](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#commit-done-ratio) to check the team's performance on recent sprint plans. Compute this metric as an average over the last 2 months or 6 sprints.
 
-If the average commit done ratio over a long period of time is above 70 percent, then the team is executing sprint plans well and could potentially take on more load. If the total [done to commit ratio](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#done-to-commit-ratio) is above 120 percent, then the sprint plans aren't making full use of the team's capacity.
+If the average commit done ratio over a long period of time is above 70 percent, then the team is executing sprint plans well and could potentially take on more load. If the total [done to commit ratio](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#done-to-commit-ratio) is above 120 percent, then the sprint plans aren't making full use of the team's capacity.
 
 A commit done ratio below 60 percent indicates poor performance on sprint plans and room for improvement in sprint delivery. There are several reasons a team might perform poorly on sprint plans. Check for:
 
-* The impact of creep and context switching on sprint plans. Check the [creep to commit ratio](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#creep-to-commit-ratio) and the [creep done to commit ratio](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#creep-done-to-commit-ratio). Creep that is consistently above 40 percent could have an impact on sprint deliverables.
-* Vague requirements that cause rework and impact sprint delivery. Use an [Issue Hygiene Report](/docs/software-engineering-insights/analytics-and-reporting/hygiene-metrics#issue-hygiene-report) to check the sprint's Hygiene Score.
+* The impact of creep and context switching on sprint plans. Check the [creep to commit ratio](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#creep-to-commit-ratio) and the [creep done to commit ratio](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#creep-done-to-commit-ratio). Creep that is consistently above 40 percent could have an impact on sprint deliverables.
+* Vague requirements that cause rework and impact sprint delivery. Use an [Issue Hygiene Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/hygiene-metrics#issue-hygiene-report) to check the sprint's Hygiene Score.
 * If none of the above apply, then the team may be consistently planning for more than they can deliver.
 
 Here is a flow chart illustrating the use of sprint metrics for performance analysis:
@@ -92,7 +92,7 @@ This example analyzes team performance over a sprint, as represented by the foll
 
 The following table represents how the above JIRA sprint report is interpreted by SEI:
 
-| Issue | Status | [Commit points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-points) | [Commit done points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-done-points) | [Delivered points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#sprint-velocity-delivered-points) | [Creep points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#creep-points) | [Creep done points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#creep-done-points) |
+| Issue | Status | [Commit points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-points) | [Commit done points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-done-points) | [Delivered points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#sprint-velocity-delivered-points) | [Creep points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#creep-points) | [Creep done points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#creep-done-points) |
 | ----- | ------ | ------------------------------- | ----------------------------------------- | ----------------------------------- | ----------------------------- | --------------------------------------- |
 | LO-1    | Done        | 2             | 2                  | 2                | -            | -                 |
 | LO-2    | Done        | 1             | 2                  | 2                | -            | -                 |
@@ -116,7 +116,7 @@ SEI uses the above points values to calculate sprint metrics ratios, generating 
 
 You can use historical cycle time data and key metrics to evaluate a team's performance, predict the number of items that can be completed in the next sprint, enhance sprint planning, and improve overall efficiency.
 
-Use [Sprint Metrics Single Stat widgets](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-single-stat) to present [sprint metrics](#sprint-metrics) or [sprint metrics ratios](#sprint-metrics-ratios) on your Insights, such as the [done to commit ratio](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#done-to-commit-ratio), [scope creep (unplanned work) ratio](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#creep-points), [sprint velocity](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#sprint-velocity-delivered-points), or [creep to commit ratio](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#creep-to-commit-ratio).
+Use [Sprint Metrics Single Stat widgets](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-single-stat) to present [sprint metrics](#sprint-metrics) or [sprint metrics ratios](#sprint-metrics-ratios) on your Insights, such as the [done to commit ratio](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#done-to-commit-ratio), [scope creep (unplanned work) ratio](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#creep-points), [sprint velocity](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#sprint-velocity-delivered-points), or [creep to commit ratio](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios#creep-to-commit-ratio).
 
 After configuring the widgets, use the provided statistics to estimate the number of items for the next sprint, evaluate performance, and identify trends.
 
@@ -124,9 +124,9 @@ After configuring the widgets, use the provided statistics to estimate the numbe
 
 Use sprint metrics reports to analyze sprint and planning metrics.
 
-* [Sprint Metrics Trend Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-trend-report)
-* [Sprint Metrics Percentage Trend Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-percentage-trend-report)
-* [Sprint Metrics Single Stat](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-single-stat)
+* [Sprint Metrics Trend Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-trend-report)
+* [Sprint Metrics Percentage Trend Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-percentage-trend-report)
+* [Sprint Metrics Single Stat](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-single-stat)
 * Sprint Goal Report
 * Sprint Distribution Retrospective Report
 * Sprint Impact of Unestimated Tickets Report
@@ -137,19 +137,19 @@ Sprint metrics measure points and tickets in a sprint. This includes work that w
 
 Sprint work is typically measured in story points, which are a relative estimation unit used to gauge the complexity and effort required for a task. Point can represent expected level of effort, complexity, or value of tickets.
 
-The key sprint metrics include [Sprint velocity (delivered points)](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#sprint-velocity-delivered-points), [Churn rate](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#churn-rate), [Commit done points](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-done-points) etc. Find the complete list of supported [Sprint Metrics here](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics).
+The key sprint metrics include [Sprint velocity (delivered points)](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#sprint-velocity-delivered-points), [Churn rate](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#churn-rate), [Commit done points](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#commit-done-points) etc. Find the complete list of supported [Sprint Metrics here](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics).
 
 ## Sprint metrics ratios
 
 In addition to the individual metrics, there are mathematical ratios that provide insights into the team's performance and efficiency during the sprint. These ratios are calculated based on the existing sprint metrics.
 
-Find the complete list of [Sprint Metrics ratios here](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios).
+Find the complete list of [Sprint Metrics ratios here](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios).
 
 ## Create a Sprint metrics Insight
 
 Having a Sprint Insight can help address issues related to the sprint success and enhance the overall sprint planning and delivery process. Refer to the below tutorial to learn how to create an Insight (i.e. Dashboard) configured with the most frequently used Sprint metrics reports to measure your team's contribution and activity across various sprint cycles.
 
-* [**Tutorial: Create a Sprint Metrics Insight**](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/agile-insights)
+* [**Tutorial: Create a Sprint Metrics Insight**](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/insight-tutorials/agile-insights)
 
 ## Best Practices and Recommendations
 

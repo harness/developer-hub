@@ -9,7 +9,7 @@ redirect_from:
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).
 
-With SEI, you can use [DORA Metrics Insights](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights/#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
+With SEI, you can use [DORA Metrics Insights](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights/#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
 
 Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/configure-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
@@ -28,9 +28,9 @@ Harness SEI provides the following reports for DORA metrics reporting:
 
 The Deployment Frequency report represents how often an organization successfully releases software to production.
 
-To monitor Deployment Frequency, you must create a [DORA type Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile) and add the **Deployment Frequency** widget to your Insights.
+To monitor Deployment Frequency, you must create a [DORA type Workflow profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/dora-profile) and add the **Deployment Frequency** widget to your Insights.
 
-Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview).
+Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview).
 
 ![](./static/df-report.png)
 
@@ -84,7 +84,7 @@ The Deployment Frequency formula depends on whether you are tracking issue manag
 * Widget-level filters.
 * Insight time range, which is the time range selected by the user when viewing the Insight.
 
-To learn more, go to [Deployment Frequency calculation](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-deployment-frequency-calculation).
+To learn more, go to [Deployment Frequency calculation](/docs/software-engineering-insights/propelo-sei/sei-administration/sei-calculations/dora/dora-deployment-frequency-calculation).
 
 :::info
 SEI fetches the history for both the builds jobs and triggers jobs for each pipeline from GitLab. The list of all jobs is available in the job selection tab under Deployment Frequency when configuring the DORA profile.
@@ -134,9 +134,9 @@ Note that for lead time metrics you can define stages based on either of the fol
 * **Commit Created:** This event ensures that lead time tracking starts when the first commit is committed.
 * **API Event:** This This event triggers the lead time calculation based on a custom API event.
 
-The default configuration for a Ticket-based workflow profile has five stages where as PR-based Workflow profile has four stages. To find more information, go to [Workflow profiles for lead time]/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/velocity-profile).
+The default configuration for a Ticket-based workflow profile has five stages where as PR-based Workflow profile has four stages. To find more information, go to [Workflow profiles for lead time]/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/velocity-profile).
 
-For information about other Lead Time reports, go to [Lead time reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time).
+For information about other Lead Time reports, go to [Lead time reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/velocity-lead-time).
 
 ### Add the DORA Lead Time for Changes report
 
@@ -162,7 +162,7 @@ To add the **Lead Time for Changes** widget to Insights:
 
 * Select **Next: Place Widget**, place the widget on the Insight and then select **Save Layout**.
 
-For information about other Lead Time reports, go to [Lead time reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time).
+For information about other Lead Time reports, go to [Lead time reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/velocity-lead-time).
 
 ### Development Stages
 
@@ -233,7 +233,7 @@ Note that for Lead Time For Changes Report you can choose to enable or disable t
 
 Overall lead time is the sum of the time spent in each stage in a workflow, such as commit-to-deployment time for a change, open-to-merge time for PRs, or the issue workflow for issues in your issue management system. Lead time can help identify where a team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 
-The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile]/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/velocity-profile). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
+The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile]/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/velocity-profile). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
 
 ### Average
 
@@ -241,17 +241,17 @@ When configured to calculate the Lead Time as the **Average time in stage**, the
 
 ### Median
 
-The [median lead time](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation#median) is the duration by which half of the tasks or tickets are completed. It gives you idea about the typical completion time by showing the point where half of the tickets are resolved faster and the other half take longer.
+The [median lead time](/docs/software-engineering-insights/propelo-sei/sei-administration/sei-calculations/dora/dora-lead-time-calculation#median) is the duration by which half of the tasks or tickets are completed. It gives you idea about the typical completion time by showing the point where half of the tickets are resolved faster and the other half take longer.
 
 ### 90th Percentile
 
-The [90th percentile lead time](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation#90th-percentile) is the duration within which 90% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays.
+The [90th percentile lead time](/docs/software-engineering-insights/propelo-sei/sei-administration/sei-calculations/dora/dora-lead-time-calculation#90th-percentile) is the duration within which 90% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays.
 
 ### 95th Percentile
 
-The [95th percentile lead time](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation#95th-percentile) is the duration within which 95% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays. The calculation of the 95th percentile lead time follows the same steps as the 90th percentile, with the only difference being the percentile value used.
+The [95th percentile lead time](/docs/software-engineering-insights/propelo-sei/sei-administration/sei-calculations/dora/dora-lead-time-calculation#95th-percentile) is the duration within which 95% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays. The calculation of the 95th percentile lead time follows the same steps as the 90th percentile, with the only difference being the percentile value used.
 
-If you want to learn more about the calculations behind these metrics, you can check out the [DORA Lead Time calculations](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation).
+If you want to learn more about the calculations behind these metrics, you can check out the [DORA Lead Time calculations](/docs/software-engineering-insights/propelo-sei/sei-administration/sei-calculations/dora/dora-lead-time-calculation).
 
 ### Lead Time Scoring
 
@@ -305,7 +305,7 @@ Merge Time = Time for the first approval - Time to the PR creation (Default)
 
 Change Failure Rate represents the percentage of deployments that cause a failure in production.
 
-To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile), and then add the **Change Failure Rate** widget to Insights.
+To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/dora-profile), and then add the **Change Failure Rate** widget to Insights.
 
 To measure the Change Failure Rate accurately, define your workflow profile configuration to choose a set of pipelines that are responsible for deploying to Production environments and have specific `Failure` statuses or have specific run parameters configured. It is recommended for the denominator i.e. **Total Deployments** to have an identical configuration as the Deployment Frequency definition.
 
@@ -358,7 +358,7 @@ The Change Failure Rate is calculated by dividing the number of failed deploymen
 * Widget-level filters.
 * Insight time range, which is the time range selected by the user when viewing the Insight.
 
-To learn more, go to [Change Failure Rate calculation](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-change-failure-rate-calculation).
+To learn more, go to [Change Failure Rate calculation](/docs/software-engineering-insights/propelo-sei/sei-administration/sei-calculations/dora/dora-change-failure-rate-calculation).
 
 <details>
 <summary>Change Failure Rate calculation example</summary>
@@ -400,9 +400,9 @@ There are several ways to present MTTR in SEI Insights, including:
 
 * **DORA Mean Time To Restore**
 * **Time To Restore Service**
-* **[Issue Resolution Time reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports)**
+* **[Issue Resolution Time reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/issues-reports)**
 
-To learn more, go to [DORA MTTR calculation](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-mttr-calculation).
+To learn more, go to [DORA MTTR calculation](/docs/software-engineering-insights/propelo-sei/sei-administration/sei-calculations/dora/dora-mttr-calculation).
 
 ### Add the DORA Mean Time To Restore report
 
@@ -417,7 +417,7 @@ To add the **DORA Mean Time To Restore** report to the Insight:
 
 * Customize the widget by configuring **Filters**. This step allows you to specify conditions (such as `Issue Created In`/`Resolved In`) that contribute to the overall calculations.
 * Select the metric you want to measure under the **Metrics** tab. For example: `Average Time in the Stage` measures the average time spent in each stage.
-* On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile).
+* On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/dora-profile).
 
 #### Step 3: Save the widget
 

@@ -29,7 +29,7 @@ Issues that were removed from the sprint backlog during the middle of the sprint
 
 ### Commit done ratio
 
-The **Commit done ratio** is calculated by dividing **Commit done points** by **Commit points**. It is the ratio of completed points to committed points, and it indicates how well the team is meeting their commitments in terms of work effort. You can use this ratio to [measure team performance in recent sprints](/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-overview#measure-team-performance-in-recent-sprints).
+The **Commit done ratio** is calculated by dividing **Commit done points** by **Commit points**. It is the ratio of completed points to committed points, and it indicates how well the team is meeting their commitments in terms of work effort. You can use this ratio to [measure team performance in recent sprints](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-overview#measure-team-performance-in-recent-sprints).
 
 The **Commit done ratio STDEV** is the standard deviation of the **Commit done ratio**. It represents the variability in commit done ratios over multiple sprints.
 

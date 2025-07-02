@@ -4,8 +4,8 @@ description: Use the BA profile to examine effort investment metrics.
 sidebar_position: 10
 sidebar_label: Business Alignment profile
 redirect_from:
-  - /docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile
-  - /docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile
+  - /docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/business-alignment-profile
+  - /docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/business-alignment-profile
 ---
 
 Business Alignment metrics help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics that connects your engineering to the business value.
@@ -48,7 +48,7 @@ The ranking of categories plays a significant role in determining how tickets ar
 
 ### Allocation Goals
 
-After adding [categories](https://developer.harness.io/docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile#categories), you can set goals for how much time you want developers to work on each category.
+After adding [categories](https://developer.harness.io/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/business-alignment-profile#categories), you can set goals for how much time you want developers to work on each category.
 
 Define the **Ideal Range** for each Category. You can set ranges in percentage values. After defining your ideal range, SEI automatically calculates the Acceptable range and Poor range based on your ideal.
 
@@ -140,4 +140,4 @@ Finally, you will set the allocation goals for each category. This involves deci
 
 ### Step 7: Save the profile
 
-Once the profile settings have been configured, you can **Save** the profile. <br /> <br />You can select the newly created Business Alignment profile in the Business Alignment report widget to generate insights which can help you align your engineering work with business goals, ensuring that time and effort are spent where they're most valuable. To learn more about how the Alignement metrics are calculated, go to the [Business Alignment report](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment).
+Once the profile settings have been configured, you can **Save** the profile. <br /> <br />You can select the newly created Business Alignment profile in the Business Alignment report widget to generate insights which can help you align your engineering work with business goals, ensuring that time and effort are spent where they're most valuable. To learn more about how the Alignement metrics are calculated, go to the [Business Alignment report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/sei-business-alignment).

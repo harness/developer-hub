@@ -6,11 +6,11 @@ sidebar_label: Add custom hygiene misses
 
 ---
 
-The [Issue Hygiene Report widget](/docs/software-engineering-insights/analytics-and-reporting/hygiene-metrics#issue-hygiene-reports) uses data from Jira to calculate hygiene scores.
+The [Issue Hygiene Report widget](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/hygiene-metrics#issue-hygiene-reports) uses data from Jira to calculate hygiene scores.
 
 These scores represent _hygiene misses_ in a designated time frame. A hygiene miss means that a ticket in your issue management system was missing an important field, failed to change status while sprint was active, or was assigned to an inactive user.
 
-What constitutes a miss depends on your _hygiene categories_. There are several built-in [hygiene categories](/docs/software-engineering-insights/analytics-and-reporting/hygiene-metrics#issue-hygiene-categories), and you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management integration.
+What constitutes a miss depends on your _hygiene categories_. There are several built-in [hygiene categories](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/hygiene-metrics#issue-hygiene-categories), and you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management integration.
 
 To add custom hygiene categories:
 
@@ -29,4 +29,4 @@ To add custom hygiene categories:
 
 ![](../static/hygiene-miss-sprint-hops.png)
 
-5. To get scores for custom hygiene categories, you must modify the category **Weights** in your Issue Hygiene Report widgets. Custom categories don't have an initial weight, so you must modify all instances of the widget to include your custom categories in the hygiene score calculations. For detail instructions, go to [Configure the Issue Hygiene Report](/docs/software-engineering-insights/analytics-and-reporting/hygiene-metrics#configure-the-issue-hygiene-report).
+5. To get scores for custom hygiene categories, you must modify the category **Weights** in your Issue Hygiene Report widgets. Custom categories don't have an initial weight, so you must modify all instances of the widget to include your custom categories in the hygiene score calculations. For detail instructions, go to [Configure the Issue Hygiene Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/hygiene-metrics#configure-the-issue-hygiene-report).

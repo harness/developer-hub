@@ -4,12 +4,12 @@ description: Integrate SEI with Sonar Cloud
 sidebar_position: 10
 sidebar_label: Connect with Sonar Cloud
 redirect_from:
-    - /docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/sonarqube/sei-integration-sonarqube
+    - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sonarqube/sei-integration-sonarqube
 ---
 
 SonarQube is an open-source platform for continuous inspection of code quality to perform automatic reviews with static analysis of code to detect bugs, code smells, and security vulnerabilities on 20+ programming languages.
 
-This topic describes the settings and permissions for the SonarQube integration. Harness supports both [Cloud](#add-the-integration) and [Self-Managed (On-Prem)](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-integration-bitbucket) versions of SonarQube. The following settings are applicable to Sonar Cloud.
+This topic describes the settings and permissions for the SonarQube integration. Harness supports both [Cloud](#add-the-integration) and [Self-Managed (On-Prem)](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-integration-bitbucket) versions of SonarQube. The following settings are applicable to Sonar Cloud.
 
 ### Requirements
 

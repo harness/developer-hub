@@ -26,17 +26,17 @@ redirect_from:
     <tr>
         <td>Trellis Profile</td>
         <td>Create/Edit a Trellis profile</td>
-        <td>[Click Here](/docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile)</td>
+        <td>[Click Here](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/trellis-profile)</td>
     </tr>
     <tr>
         <td>Trellis Reports</td>
         <td>Use Trellis reports to analyze the Trellis scores for your engineering team</td>
-        <td>[Click Here](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports)</td>
+        <td>[Click Here](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports)</td>
     </tr>
     <tr>
         <td>Trellis Insight</td>
         <td>Step by step guide to create a Trellis Insight</td>
-        <td>[Click Here](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/trellis-insight)</td>    
+        <td>[Click Here](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/insight-tutorials/trellis-insight)</td>    
         </tr>
     <tr>
         <td>Trellis Calculations</td>
@@ -67,7 +67,7 @@ By default, all changes to code written in the last 30 days are considered rewor
 
 The purpose of measuring rework is to evaluate the stability of the code, the frequency of necessary changes, and the efficiency of the development efforts.
 
-By default, any changes made to code written in the last 30 days are considered rework. To learn more, go to [SCM Rework](/docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-reports-calculation/scm-rework-report ).
+By default, any changes made to code written in the last 30 days are considered rework. To learn more, go to [SCM Rework](/docs/software-engineering-insights/propelo-sei/sei-administration/sei-calculations/scm/scm-reports-calculation/scm-rework-report ).
 :::
 
 ### Impact
@@ -83,7 +83,7 @@ The Impact of an engineer's work is defined and measured by two key metrics: **H
 
 :::info
 It's important to note that the definition of **High Impact** can vary depending on the Investment profile and user preferences. The metrics that contribute to the **Impact Factor** require categories from the Investment profile as input parameters. <br /><br />
-To configure this, go to [Configure the Impact Factor in a Trellis profile](/docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile#enable-the-impact-factor).
+To configure this, go to [Configure the Impact Factor in a Trellis profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/trellis-profile#enable-the-impact-factor).
 :::
 
 ### Volume
@@ -147,7 +147,7 @@ Leadership and collaboration measure developer teamwork and contribution to peer
 
 ## Trellis Profile
 
-A Trellis profile is required to calculate your Trellis Score and to modify the factors and weights that contribute to your score. To create a new profile, go to [Trellis Profiles](/docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile).
+A Trellis profile is required to calculate your Trellis Score and to modify the factors and weights that contribute to your score. To create a new profile, go to [Trellis Profiles](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/trellis-profile).
 
 ### Modifying Factors
 
@@ -181,7 +181,7 @@ Development Stages Mapping allows users to map a Trellis profile with developmen
 
 Trellis Score reports provide valuable insights into developer performance and facilitate data-driven decision-making. Add these widgets to your Insights to analyze Trellis Scores.
 
-* [Trellis Score Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#trellis-score-report): Trellis Scores by developer.
-* [Trellis Scores by Collection](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#trellis-score-by-collection): Trellis Scores organized by [Collection](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections).
-* [Individual Raw Stats](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#individual-raw-stats): A table of base values that contribute to Trellis Scores.
-* [Raw Stats by Collection](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#raw-stats-by-collection): Base values organized by [Collection](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections).
+* [Trellis Score Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#trellis-score-report): Trellis Scores by developer.
+* [Trellis Scores by Collection](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#trellis-score-by-collection): Trellis Scores organized by [Collection](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collections).
+* [Individual Raw Stats](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#individual-raw-stats): A table of base values that contribute to Trellis Scores.
+* [Raw Stats by Collection](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#raw-stats-by-collection): Base values organized by [Collection](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collections).

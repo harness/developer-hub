@@ -4,7 +4,7 @@ description: Integrate SEI with Harness CI and CD
 sidebar_position: 10
 sidebar_label: Connect with Harness CI/CD
 redirect_from:
-    - /docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd
+    - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd
 ---
 
 Use the SEI HarnessNG integration to integrate Software Engineering Insights with the Harness Continuous Delivery & GitOps and Continuous Integration modules.
@@ -55,7 +55,7 @@ import TabItem from '@theme/TabItem';
 
 <TabItem value="harness-smp" label="Harness Self-Managed Enterprise Edition">
 
-You can connect Harness SEI with Harness Self-Managed Enterprise Edition (Harness On-Prem), using the [Ingestion Satellite](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/run-the-satellite-container)
+You can connect Harness SEI with Harness Self-Managed Enterprise Edition (Harness On-Prem), using the [Ingestion Satellite](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/run-the-satellite-container)
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud using the API key, with the exception of using satellite to communicate with the Harness NG server.
 
@@ -75,11 +75,11 @@ The steps for configuring the integration using **Satellite** is similar to conf
    * **Project**: Enter your project name. Similarly, you can use a comma-separated list if you have multiple projects.
      
      For example, "`org/project`, `org2/project2`" Like organization names, project names are case-sensitive. Leaving this field blank will ingest all the projects from organizations accessible to the token user.
-* Click on **Download YAML File** and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-overview).
+* Click on **Download YAML File** and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview).
 
 ![](../static/harnessng-3.png)
 
-If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yml` file:
 

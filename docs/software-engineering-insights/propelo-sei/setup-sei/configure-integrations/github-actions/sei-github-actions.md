@@ -4,7 +4,7 @@ description: Integrate SEI with Github Actions
 sidebar_position: 45
 sidebar_label: Connect with Github actions
 redirect_from:
-    - /docs/software-engineering-insights/setup-sei/configure-integrations/github-actions/sei-github-actions
+    - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github-actions/sei-github-actions
 ---
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts.
@@ -71,7 +71,7 @@ This authentication method is simple to set up and is suitable for various API i
 
 ## Connect with Github Actions (On-Prem)
 
-To connect Harness SEI with on-prem instance of Github Actions, you'll need to use the [Ingestion Satellite](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
+To connect Harness SEI with on-prem instance of Github Actions, you'll need to use the [Ingestion Satellite](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
 
 The steps for configuring the integration using the **Ingestion Satellite** is similar to configuring the integration on Cloud, with the exception of using satellite to communicate with the Github server.
 
@@ -79,11 +79,11 @@ The steps for configuring the integration using the **Ingestion Satellite** is s
 2. Add a **Description** for the integration. (Optional)
 3. Enter the **Personal Access Token** that you generated earlier.
 4. In the **Github Actions URL** field, add the URL where your GitHub Actions instance is hosted.
-5. Click on the **Download YAML File** button and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
+5. Click on the **Download YAML File** button and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
 
 ![](../static/gha-4.png)
 
-If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yml` file:
 

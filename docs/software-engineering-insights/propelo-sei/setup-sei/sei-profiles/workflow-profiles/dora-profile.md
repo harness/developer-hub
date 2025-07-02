@@ -1197,7 +1197,7 @@ Here's an example configuration of how you could configure Mean Time to Restore 
 
 ![](../static/mttr-snow-1.png)
 
-* Select the associated **ServiceNow integration**. To learn about how to configure the integration, go to [ServiceNow integration](/docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow).
+* Select the associated **ServiceNow integration**. To learn about how to configure the integration, go to [ServiceNow integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow).
 
 ![](../static/mttr-snow-2.png)
 
@@ -1231,7 +1231,7 @@ Here's an example configuration of how you could configure Mean Time to Restore 
 
 ![](../static/mttr-pagerduty-1.png)
 
-* Select the associated **PagerDuty integration**. To learn about how to configure the integration, go to [PagerDuty integration](/docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty).
+* Select the associated **PagerDuty integration**. To learn about how to configure the integration, go to [PagerDuty integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty).
 
 ![](../static/mttr-pagerduty-2.png)
 
@@ -1715,7 +1715,7 @@ While configuring the DORA profile, you may encounter some common issues. Below 
 
 #### Resolution Steps
 
-* **Check Diagnostics:** Navigate to the [Diagnostics](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-diagnostics) section and verify whether data is ingested for the selected integrations. If data is not yet available, wait for the ingestion process to complete.
+* **Check Diagnostics:** Navigate to the [Diagnostics](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-diagnostics) section and verify whether data is ingested for the selected integrations. If data is not yet available, wait for the ingestion process to complete.
 * **Request Field Ingestion:** If the field is not ingested, create a [Harness Support](/docs/software-engineering-insights/sei-support) ticket and request the ingestion of the specific field as part of the integration.
 
 ### Values for selected filters don't populate
@@ -1726,13 +1726,13 @@ While configuring the DORA profile, you may encounter some common issues. Below 
 
 #### Resolution Steps
 
-* **Verify Data Availability:** Use the [Diagnostics](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-diagnostics) section to confirm whether the data has been successfully ingested. If the data is not present, wait until ingestion is complete to configure the filters.
+* **Verify Data Availability:** Use the [Diagnostics](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-diagnostics) section to confirm whether the data has been successfully ingested. If the data is not present, wait until ingestion is complete to configure the filters.
 
 ### Projects/Collections not available in the association settings
 
 #### Possible Causes
 
-* **Existing DORA Profile Association:** The collection might already be associated with another [DORA profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview), as each collection can only be linked to one DORA-type workflow profile. A mismatch between collections and the intended DORA profile can result in the collection not appearing in the association settings.
+* **Existing DORA Profile Association:** The collection might already be associated with another [DORA profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview), as each collection can only be linked to one DORA-type workflow profile. A mismatch between collections and the intended DORA profile can result in the collection not appearing in the association settings.
 
 #### Resolution Steps
 
@@ -1742,5 +1742,5 @@ While configuring the DORA profile, you may encounter some common issues. Below 
 
 After setting up the DORA profile, proceed to create the DORA Insight using the available DORA widgets. These widgets enable you to visualize and monitor key DORA metrics, providing actionable insights into your team’s performance.
 
-* [Configure & add the DORA widgets](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/)
-* [Create & manage the DORA Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight)
+* [Configure & add the DORA widgets](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics/)
+* [Create & manage the DORA Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight)

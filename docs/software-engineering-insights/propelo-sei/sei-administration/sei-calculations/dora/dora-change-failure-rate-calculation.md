@@ -11,9 +11,9 @@ redirect_from:
 
 Change Failure Rate represents the percentage of deployments that cause a failure in production.
 
-To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile), and then add the **Change Failure Rate** widget to Insights.
+To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/dora-profile), and then add the **Change Failure Rate** widget to Insights.
 
-To learn more, go to [DORA Reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics)
+To learn more, go to [DORA Reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics)
 
 ### Change Failure Rate Calculation and Scoring
 

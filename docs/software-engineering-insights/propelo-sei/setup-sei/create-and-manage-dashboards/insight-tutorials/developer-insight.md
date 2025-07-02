@@ -15,7 +15,7 @@ In this tutorial, you'll learn how to create an Insight (i.e. Dashboard) with th
 ## Prerequisites
 
 * Ensure that Harness SEI is enabled for your Account.
-* Complete setting up your [Projects and Collection](/docs/software-engineering-insights/get-started/sei-onboarding-guide)
+* Complete setting up your [Projects and Collection](/docs/software-engineering-insights/propelo-sei/get-started/sei-onboarding-guide)
 * Setup and configure the Integration for your Source Code Manager.
 
 ## Set up your project, integration and collection
@@ -33,12 +33,12 @@ Once your project is created, you can set up and map integrations as an admin an
 
 ## Integration Mapping
 
-**Integration Mapping** is the process of associating available or new integrations with your current project. As an admin, you can set up and map integrations in your project. For more information, go to [Integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview).
+**Integration Mapping** is the process of associating available or new integrations with your current project. As an admin, you can set up and map integrations in your project. For more information, go to [Integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview).
 
 1. Go to the **Integration Mapping** tab within the SEI module.
 2. Click **Map Integrations** and select existing integrations or create new ones as needed.
 3. Ensure you associate the integrations with your current project.
-4. Now for configuring a Developer Metrics insight, you'll need to map the integration for your source code manager. For this tutorial we will map the [GitHub integration](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration) (Source Code Manager).
+4. Now for configuring a Developer Metrics insight, you'll need to map the integration for your source code manager. For this tutorial we will map the [GitHub integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration) (Source Code Manager).
 
 :::info
 Find a list of all the supported integrations for SCM on Harness SEI [here](/docs/software-engineering-insights/sei-supported-platforms)
@@ -46,7 +46,7 @@ Find a list of all the supported integrations for SCM on Harness SEI [here](/doc
 
 You can also create new integrations and associate the integration with the current project by mapping them.
 
-* To create a new GitHub integration, go to [GitHub integration](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration).
+* To create a new GitHub integration, go to [GitHub integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration).
 
 ## Create the Insight
 
@@ -103,7 +103,7 @@ To add the **SCM PRs Report** widget to Insights:
 9. Define how the items displayed in the **X-Axis** should be sorted.
 10. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
-For information, go to [SCM PRs Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights).
+For information, go to [SCM PRs Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights).
 
 ### SCM Coding Days Report
 
@@ -122,7 +122,7 @@ To add the **SCM Coding Days Report** widget to Insights:
 7. Define how the items displayed in the X-Axis should be sorted.
 8. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
-For information, go to SCM [Coding Days Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights).
+For information, go to SCM [Coding Days Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights).
 
 ### SCM PR Lead Time by Stage Report
 
@@ -135,7 +135,7 @@ To add the **SCM PR Lead Time by Stage Report** widget to Insights:
 1. Select **Settings**, and then select **Add Widget**.
 2. Select the **SCM PR Lead Time by Stage Report** widget.
 3. Configure the **Filters** for the widget, such as `source/destination branch`, `reviewer`, `label`, and so on. This defines the types of commits or PRs that are considered in the lead time calculation.
-4. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview), and then select **Next: Place Widget**.
+4. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview), and then select **Next: Place Widget**.
 5. Select where you want to place the widget on the Insight, and then select **Save Layout**.
 
 ### Single Stat Reports
@@ -170,11 +170,11 @@ To add the **SCM Commits Single Stat Report** widget to Insights:
 Similarly you can also configure the other Single Stat reports.
 Some other SCM related reports which are frequently used are
 
-* [SCM Rework Report](/docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-reports-calculation/scm-rework-report ): The Rework report measures the refactoring of code, which involves making modifications to the existing codebase or rewriting it entirely.
-* [SCM Committers Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-committers-report): This report analyzes the volume of code changes by committer.
-* [SCM Issues Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-issues-reports): This report analyzes the number of issues in your SCM tool by time, label, or other categories.
-* [SCM Issues Count Single Stat](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-issues-reports): This report displays a single stat related to the number of issues in your SCM tool.
-* [SCM Issues Trends Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-issues-reports): This report analyzes changes over time in the volume of SCM issues.
+* [SCM Rework Report](/docs/software-engineering-insights/propelo-sei/sei-administration/sei-calculations/scm/scm-reports-calculation/scm-rework-report ): The Rework report measures the refactoring of code, which involves making modifications to the existing codebase or rewriting it entirely.
+* [SCM Committers Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights#scm-committers-report): This report analyzes the volume of code changes by committer.
+* [SCM Issues Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights#scm-issues-reports): This report analyzes the number of issues in your SCM tool by time, label, or other categories.
+* [SCM Issues Count Single Stat](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights#scm-issues-reports): This report displays a single stat related to the number of issues in your SCM tool.
+* [SCM Issues Trends Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights#scm-issues-reports): This report analyzes changes over time in the volume of SCM issues.
 
 ## Best Practices
 

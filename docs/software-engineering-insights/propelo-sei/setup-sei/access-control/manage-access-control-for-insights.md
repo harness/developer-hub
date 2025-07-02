@@ -12,7 +12,7 @@ This topic describes how to add and manage access control for SEI Insights.
 
 ## Before You Begin
 
-* [RBAC in SEI](/docs/software-engineering-insights/setup-sei/access-control/sei-roles-and-permissions)
+* [RBAC in SEI](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/sei-roles-and-permissions)
 * [RBAC in Harnesss](/docs/platform/role-based-access-control/add-manage-roles)
 
 ## SEI Insights Roles and Permissions
@@ -51,7 +51,7 @@ At the account level scope, the resource group allows you to define permissions 
 * Insights
 * Collections
 
-In this section, we cover how you can use the existing [built-in resource group](/docs/software-engineering-insights/setup-sei/access-control/sei-roles-and-permissions#built-in-resource-groups) or [create a new resource group](/docs/platform/role-based-access-control/add-resource-groups) for managing access to Insights.
+In this section, we cover how you can use the existing [built-in resource group](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/sei-roles-and-permissions#built-in-resource-groups) or [create a new resource group](/docs/platform/role-based-access-control/add-resource-groups) for managing access to Insights.
 
 At the account level, there are two built-in resource groups available:
 
@@ -92,7 +92,7 @@ At the project level scope, the resource group enables you to set permissions fo
 
 You have the option to define the resource group to allow access to all entities, such as **All Insights** and **All Collections**, or to specify a group of resource entities, such as **specific Insights** and **specific Collections**.
 
-In this section, we cover how you can use the existing [built-in resource group](/docs/software-engineering-insights/setup-sei/access-control/sei-roles-and-permissions#built-in-resource-groups) or define a [new resource group](/docs/platform/role-based-access-control/add-resource-groups) for managing access to the Insights. To configure the permissions for **Collections**, go to [Manage Access Control for SEI Collections](/docs/software-engineering-insights/setup-sei/access-control/manage-access-control-for-insights).
+In this section, we cover how you can use the existing [built-in resource group](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/sei-roles-and-permissions#built-in-resource-groups) or define a [new resource group](/docs/platform/role-based-access-control/add-resource-groups) for managing access to the Insights. To configure the permissions for **Collections**, go to [Manage Access Control for SEI Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/manage-access-control-for-insights).
 
 At the project level, there is one built-in resource group available:
 

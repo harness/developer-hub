@@ -7,9 +7,9 @@ redirect_from:
     - /docs/software-engineering-insights/sei-integrations/gitlab/sei-gitlab-private-cloud
 ---
 
-GitLab Private Cloud is a managed, self-hosted version of GitLab. To connect with GitLab Cloud, go to [Connect with GitLa Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab).
+GitLab Private Cloud is a managed, self-hosted version of GitLab. To connect with GitLab Cloud, go to [Connect with GitLa Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab).
 
-To connect Harness SEI with Github Private Cloud, you'll need to use the [Ingestion Satellite](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
+To connect Harness SEI with Github Private Cloud, you'll need to use the [Ingestion Satellite](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
 
 ### Configure authentication
 
@@ -47,9 +47,9 @@ Follow the steps below to configure the integration:
    3. **Fetch Projects**: Allow SEI to ingest data from Gitlab Projects.
    4. **Fetch Commits**: Allow SEI to ingest commit metadata from Gitlab.
    5. **Fetch Commit Files**: Allow SEI to ingest data within commits from Gitlab.
-10. Click on **Download YAML File** and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-overview).
+10. Click on **Download YAML File** and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview).
 
-If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yml` file:
 
@@ -86,11 +86,11 @@ Use the following optional metadata fields to optimize the ingestion functionali
 | Fetch Pipelines | `fetch_pipelines` | The supported values are `True/False` | This field specifies whether to fetch pipeline data. |
 | PR Commit Limit | `pr_commit_limit` | Default value: 250 | This field sets a cap on the number of commits fetched per Pull Request. |
 
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 ### See also
 
-* [Connect with GitLab On-Prem](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-gitlab-onprem)
-* [Connect with GitLab Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab)
-* [Reauthenticate](/docs/software-engineering-insights/setup-sei/configure-integrations/reauthenticate-integration)
-* [Recommendations](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-gitlab-recommendations)
+* [Connect with GitLab On-Prem](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-gitlab-onprem)
+* [Connect with GitLab Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab)
+* [Reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration)
+* [Recommendations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-gitlab-recommendations)

@@ -39,7 +39,7 @@ The Lines of Code metric in SCM reports provides a more granular representation 
 * **Lines of Code Deleted:** It measures the lines of code a developer deletes for an associated pull request.
 * **Total Lines or Lines of Code Modified or Changed:** It measures the total lines of code changed as a result of the addition or deletion of lines for an associated pull request or commit in the respective report.
 
-To learn more, go to [SCM Reports](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights).
+To learn more, go to [SCM Reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights).
 
 ## Scope of Measurement across different platforms
 

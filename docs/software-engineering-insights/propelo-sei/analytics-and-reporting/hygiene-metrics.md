@@ -60,7 +60,7 @@ Hygiene misses are based on hygiene categories. The built-in categories are:
 
 Data for hygiene categories are derived from your [integrations](/docs/category/configure-integrations).
 
-You can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [SEI integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview). You can have up to ten categories.
+You can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [SEI integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview). You can have up to ten categories.
 
 You can modify the importance of each category when you [configure the Issue Hygiene Report](#add-the-report).
 
@@ -70,7 +70,7 @@ To configure the **Issue Hygiene report**, follow these steps:
 
 #### Step 1: Add the widget
 
-* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, select **Settings**, and select **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, select **Settings**, and select **Add Widget**.
 * Select the **Issue Hygiene Report** widget.
 
 #### Step 2: Configure the Filters on the widget
@@ -95,7 +95,7 @@ Configure the **Weights** for each hygiene category.
 
 A lower weight causes a category to have a lower impact on the overall score, and a higher weight causes a category to have a larger impact on the overall score. A weight of zero excludes that category from the hygiene score calculation. Make sure the total of all weights equals 100.
 
-In addition to the built-in categories, you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [SEI integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview).
+In addition to the built-in categories, you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [SEI integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview).
 
 #### Step 4: Configure the Settings
 
@@ -185,11 +185,11 @@ Configure the **Weights** for each hygiene category.
 
 A lower weight causes a category to have a lower impact on the overall score, and a higher weight causes a category to have a larger impact on the overall score. A weight of zero excludes that category from the hygiene score calculation. Make sure the total of all weights equals 100.
 
-In addition to the built-in categories, you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [SEI integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview).
+In addition to the built-in categories, you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [SEI integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview).
 
 #### Step 4: Configure the Settings
 
-* Select the **Issue Management System** to use for this widget. Available options are based on your configured [SEI integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview).
+* Select the **Issue Management System** to use for this widget. Available options are based on your configured [SEI integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview).
 * Select the **Time Interval** for the data to be displayed in the widget.
 * Select how you want to display the data in the widget. The available options are **Stacked Area Chart** and **Stacked Bar Chart**
 

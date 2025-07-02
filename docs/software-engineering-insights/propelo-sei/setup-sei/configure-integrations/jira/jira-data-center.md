@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="satellite" label="Connect via Ingestion Satellite" default>
 
-To connect with the on-prem instances of **Jira Software Data Center**, you can use the [Ingestion Satellite](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/run-the-satellite-container). The configuration process for the integration is similar to setting up the integration in the cloud but instead uses the ingestion satellite to communicate with the Atlassian server.
+To connect with the on-prem instances of **Jira Software Data Center**, you can use the [Ingestion Satellite](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/run-the-satellite-container). The configuration process for the integration is similar to setting up the integration in the cloud but instead uses the ingestion satellite to communicate with the Atlassian server.
 
 To set up the integration for the Jira Data Center:
 
@@ -79,7 +79,7 @@ To set up the integration for the Jira Data Center:
 
 ![](../static/jira-dc-success.png)
 
-Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
+Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
 
 Here’s a sample `satellite.yml` file which uses username and password for authentication.
 
@@ -228,12 +228,12 @@ Replace `<ADFS_PASSWORD>` with the actual password for the specified ADFS userna
 
 </details>
 
-If you encounter issues with configuring the Ingestion Satellite, refer to the [Troubleshooting and FAQs](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+If you encounter issues with configuring the Ingestion Satellite, refer to the [Troubleshooting and FAQs](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 ### See also
 
-* [Connect with Jira Data Center](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/jira-data-center)
-* [Add custom hygiene misses](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/custom-hygiene-misses)
-* [Configure custom field mapping](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/custom-fields)
-* [Reauthenticate](/docs/software-engineering-insights/setup-sei/configure-integrations/reauthenticate-integration)
-* [Ingested data](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-datasheet)
+* [Connect with Jira Data Center](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/jira-data-center)
+* [Add custom hygiene misses](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/custom-hygiene-misses)
+* [Configure custom field mapping](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/custom-fields)
+* [Reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration)
+* [Ingested data](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-datasheet)

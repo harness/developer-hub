@@ -16,7 +16,7 @@ This page describes key concepts related to Harness SEI features and functionali
 
 By default, a **Project** consists of two top-level Collection categories: **Teams** and **Sprints**, each with options to customize. Each Collection category can have other Collections defined under them in parent-child relationships.
 
-For more information, Go to [Projects and Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview)
+For more information, Go to [Projects and Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/project-and-collection-overview)
 
 ![](../../../platform/organizations-and-projects/static/projects-and-organizations-06.png)
 
@@ -28,8 +28,8 @@ Under each Collection category are one or more levels of Collections. Collection
 
 To learn more about the Collection heirarchy refer the below resources.
 
-* [Manage Collection Categories](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collection-cat)
-* [Manage Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections)
+* [Manage Collection Categories](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collection-cat)
+* [Manage Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/manage-collections)
 
 ![](./static/collections-overview.png)
   
@@ -37,7 +37,7 @@ To learn more about the Collection heirarchy refer the below resources.
 
 Insights in SEI provide a visual representation of key metrics and KPIs, enabling engineering teams to monitor their performance and identify areas for improvement. To create a Insight in SEI, users can utilize pre-built reports that are specifically designed to display relevant data points. These reports can be customized and arranged on the insight canvas to create a comprehensive view of team performance.
 
-For more information, go to [Insights](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights).
+For more information, go to [Insights](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights).
 
 ![](./static/sei-insights.png)
 
@@ -45,7 +45,7 @@ For more information, go to [Insights](/docs/software-engineering-insights/setup
 
 Ingestion Satellite is used to integrate your on-premise tools and custom integrations into your SEI workspace. It enables data ingestion and integration with various third-party applications and services.
 
-For more information, Go to [Ingestion Satellite](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-overview)
+For more information, Go to [Ingestion Satellite](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview)
 
 ## Integrations
 
@@ -53,14 +53,14 @@ To calculate meaningful metrics and optimize your software development lifecycle
 
 Harness SEI offers many types of integrations, including:
 
-* [Code repo integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview#source-code-management-scm)
-* [Ticketing system integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview#issue-management-platform)
-* [CI/CD platform integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview#cicd)
-* [Security tools integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview#security)
-* [Communication & Collaboration tools integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview#communication--collaboration)
-* [Incident monitoring system integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview#incident-monitoring)
-* [Other integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview#others)
-* [Custom CI/CD integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview#custom-cicd-integrations)
+* [Code repo integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview#source-code-management-scm)
+* [Ticketing system integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview#issue-management-platform)
+* [CI/CD platform integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview#cicd)
+* [Security tools integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview#security)
+* [Communication & Collaboration tools integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview#communication--collaboration)
+* [Incident monitoring system integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview#incident-monitoring)
+* [Other integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview#others)
+* [Custom CI/CD integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview#custom-cicd-integrations)
 
 ![](./static/sei-integrations.png)
 
@@ -70,11 +70,11 @@ A **Profile** in SEI represents an entity where users define a specific set of m
 
 SEI provides 3 different types of profiles:
 
-1. **Investment Profile:** Investment profiles help you understand where engineers are allocating their time through effort investment metrics. For more information, Go to [Investment Profile](/docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile).
+1. **Investment Profile:** Investment profiles help you understand where engineers are allocating their time through effort investment metrics. For more information, Go to [Investment Profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/business-alignment-profile).
 
-2. **Workflow Profile:** Workflow profile is an entity in SEI where users define the stages, events, and measurement criteria to assess the entire development process lifecycle. You can use these profiles to derive insights on time taken to ship changes or the time taken for bug fixes to reach production etc. For more information, Go to [Workflow Profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview).
+2. **Workflow Profile:** Workflow profile is an entity in SEI where users define the stages, events, and measurement criteria to assess the entire development process lifecycle. You can use these profiles to derive insights on time taken to ship changes or the time taken for bug fixes to reach production etc. For more information, Go to [Workflow Profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview).
 
-3. **Trellis Profile:** Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. Trellis Scores are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. For more information, Go to [Trellis Profile](/docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile).
+3. **Trellis Profile:** Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. Trellis Scores are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. For more information, Go to [Trellis Profile](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/trellis-profile).
 
 ## Metrics & Reports
 

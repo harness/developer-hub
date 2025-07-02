@@ -5,7 +5,7 @@ sidebar_position: 10
 sidebar_label: Connect with Bitbucket Data Center
 canonical_url: https://www.harness.io/blog/bitbucket-servers-sunset
 redirect_from:
-  - /docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud
+  - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud
 ---
 
 Bitbucket is a web-based version control repository hosting service, for source code and development projects that use either Mercurial or Git revision control systems.
@@ -71,9 +71,9 @@ import TabItem from '@theme/TabItem';
 * Enter the **Bitbucket Personal Access Token**. To generate an PAT token for your Bitbucket account, go to [Managing PAT tokens for Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/create-a-repository-access-token/).
 * Enter **Tags** and the **List of repositories** you want to ingest. You can leave this option blank if you want to ingest all the repositories from organizations accessible to the token user.
 * You can select the **Filters** to define the type of data you want to ingest. The available options are **Fetch Commits**, **Fetch PRs**, **Fetch PRs Reviews**, **Fetch Commits Fields**.
-* Download the `satellite.yml` file and update it following the instructions [here](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-overview).
+* Download the `satellite.yml` file and update it following the instructions [here](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview).
 
-If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yaml`:
 
@@ -105,6 +105,6 @@ integrations:
 
 ### See also
 
-* [Connect with Bitbucket Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud)
-* [Reauthenticate](/docs/software-engineering-insights/setup-sei/configure-integrations/reauthenticate-integration)
-* [Ingested data](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-bitbucket-datasheet)
+* [Connect with Bitbucket Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud)
+* [Reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration)
+* [Ingested data](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-bitbucket-datasheet)

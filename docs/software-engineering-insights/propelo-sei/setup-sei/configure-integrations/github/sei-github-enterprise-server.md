@@ -7,7 +7,7 @@ redirect_from:
     - /docs/software-engineering-insights/sei-integrations/github/sei-github-enterprise-server
 ---
 
-GitHub Enterprise Server is a self-hosted version of GitHub designed for organizations that need to manage their repositories, code, and collaboration tools on their own infrastructure. To integrate Harness SEI with GitHub Cloud, go to [Connect with GitHub Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration).
+GitHub Enterprise Server is a self-hosted version of GitHub designed for organizations that need to manage their repositories, code, and collaboration tools on their own infrastructure. To integrate Harness SEI with GitHub Cloud, go to [Connect with GitHub Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration).
 
 ### Authenticate with GitHub
 
@@ -107,9 +107,9 @@ To set up the integration for the GitHub Enterprise:
 
 ![](../static/github-enterprise-success.png)
 
-Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
+Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
 
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs)
+If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs)
 
 :::info
 Please note that after adding an integration, it may take up to 24 hours for the data to be fully reflected on SEI. This means that any widgets you configure on Insights using this integration may not display data until the synchronization is completed.
@@ -144,7 +144,7 @@ integrations:
 
 ### See also
 
-* [Connect with Github Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration)
-* [Reauthenticate](/docs/software-engineering-insights/setup-sei/configure-integrations/reauthenticate-integration)
-* [Ingested data](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-datasheet)
-* [Recommendations](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-recommendations)
+* [Connect with Github Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration)
+* [Reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration)
+* [Ingested data](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-datasheet)
+* [Recommendations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-recommendations)

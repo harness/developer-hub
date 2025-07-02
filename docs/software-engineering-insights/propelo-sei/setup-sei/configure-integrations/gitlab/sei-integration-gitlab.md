@@ -4,7 +4,7 @@ description: Integrate SEI with GitLab Cloud.
 sidebar_position: 10
 sidebar_label: Connect with GitLab Cloud
 redirect_from:
-    - /docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab 
+    - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab 
 ---
 
 GitLab is a DevOps platform that provides Git repos, CI/CD pipelines, issue management, and more.
@@ -15,7 +15,7 @@ To integrate SEI with Gitlab, you must choose your Gitlab Account type. SEI supp
 * Gitlab Private Cloud
 * Gitlab Enterprise
 
-To integrate with Gitlab Enterprise, go to [Connect with Gitlab Enterprise](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab).
+To integrate with Gitlab Enterprise, go to [Connect with Gitlab Enterprise](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab).
 
 ### Configure authentication
 
@@ -68,7 +68,7 @@ This authentication method is simple to set up and is suitable for various API i
 
 ### See also
 
-* [Connect with GitLab Private Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-gitlab-private-cloud)
-* [Connect with GitLab On-Prem](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-gitlab-onprem)
-* [Reauthenticate](/docs/software-engineering-insights/setup-sei/configure-integrations/reauthenticate-integration)
-* [Recommendations](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-gitlab-recommendations)
+* [Connect with GitLab Private Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-gitlab-private-cloud)
+* [Connect with GitLab On-Prem](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-gitlab-onprem)
+* [Reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration)
+* [Recommendations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-gitlab-recommendations)

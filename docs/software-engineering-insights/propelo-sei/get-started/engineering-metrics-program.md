@@ -119,10 +119,10 @@ The challenge is that this data is spread across different tools, built for diff
 
 Take DORA metrics as an example. They combine data from:
 
-* Issue management systems (e.g., [Jira](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration), [Azure DevOps Boards](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)).
-* Source code managers (e.g., [GitHub](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration), [GitLab](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab), [Bitbucket](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-integration-bitbucket)).
-* CI/CD tools (e.g., [Jenkins](/docs/software-engineering-insights/setup-sei/configure-integrations/jenkins/jenkins-plugin), [Harness](/docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd)).
-* Incident management tools (e.g., [ServiceNow](/docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow)).
+* Issue management systems (e.g., [Jira](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration), [Azure DevOps Boards](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)).
+* Source code managers (e.g., [GitHub](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration), [GitLab](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab), [Bitbucket](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-integration-bitbucket)).
+* CI/CD tools (e.g., [Jenkins](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jenkins/jenkins-plugin), [Harness](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd)).
+* Incident management tools (e.g., [ServiceNow](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow)).
 
 By correlating data across these sources, you can connect activities, processes, and tooling to find bottlenecks faster.
 

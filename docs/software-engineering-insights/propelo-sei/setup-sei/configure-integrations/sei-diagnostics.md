@@ -4,7 +4,7 @@ description: Troubleshoot and validate your data in SEI
 sidebar_label: Diagnostics
 sidebar_position: 85
 redirect_from:
-  - /docs/software-engineering-insights/setup-sei/configure-integrations/sei-diagnostics
+  - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-diagnostics
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -64,7 +64,7 @@ This error happens when data fetching from paginated endpoints fails midstream. 
 
 **Solution**
 
-* **Verify API Token:** Go to your SEI integration settings and confirm that the API token is valid and hasn’t expired. Generate a new token if needed and [reauthenticate](/docs/software-engineering-insights/setup-sei/configure-integrations/reauthenticate-integration), especially if the integration has been recently reconfigured.
+* **Verify API Token:** Go to your SEI integration settings and confirm that the API token is valid and hasn’t expired. Generate a new token if needed and [reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration), especially if the integration has been recently reconfigured.
 * **Check Permissions:** Ensure the user or service account associated with the integration has the necessary permissions to access the data.
 * **Review integration settings:** If you’re pulling large volumes of data from GitHub / Jira, try reconfiguring the integration using multiple access tokens in the integration’s configuration (e.g., 4-5 PATs for a data size of 20k+ repositories in GitHub) to manage data limits better.
 * If the error persists, reach out to [support](/docs/software-engineering-insights/sei-support) with the details for further investigation.
@@ -88,7 +88,7 @@ This error occurs when the integration is sending too many requests to the API w
 
 **Solution**
 
-If you're using a PAT (Personal Access Token) or API Key for authentication, try [reauthenticating](/docs/software-engineering-insights/setup-sei/configure-integrations/reauthenticate-integration) the integration with multiple access tokens for different service accounts. This can help distribute the request load and reduce the likelihood of hitting rate limits. If the error persists, reach out to [support](/docs/software-engineering-insights/sei-support) with the details for further investigation.
+If you're using a PAT (Personal Access Token) or API Key for authentication, try [reauthenticating](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration) the integration with multiple access tokens for different service accounts. This can help distribute the request load and reduce the likelihood of hitting rate limits. If the error persists, reach out to [support](/docs/software-engineering-insights/sei-support) with the details for further investigation.
 
 ### Ingestion satellite status
 

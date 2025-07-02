@@ -7,7 +7,7 @@ sidebar_position: 4
 <CTABanner
   buttonText="View Migration Guide"
   title="We have started to migrate the Propelo platform users to Harness SEI"
-  link="/docs/software-engineering-insights/get-started/migrate-propelo-to-harness/migrate-propelo-to-harness-sei"
+  link="/docs/software-engineering-insights/propelo-sei/get-started/migrate-propelo-to-harness/migrate-propelo-to-harness-sei"
   closable={true}
   target="_self"
 />

@@ -11,7 +11,7 @@ redirect_from:
 
 The Lead Time calculation measures the total time taken from the moment a ticket is created to the point when it is released to production. Below are examples that demonstrate how Lead Time is calculated across different scenarios.
 
-To learn more, go to [DORA Reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics)
+To learn more, go to [DORA Reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics)
 
 ## Calculation
 

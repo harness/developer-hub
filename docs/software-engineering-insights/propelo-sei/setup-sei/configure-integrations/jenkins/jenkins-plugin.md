@@ -10,7 +10,7 @@ redirect_from:
 :::note
 
 The SEI Jenkins integration provides basic CI/CD insights, but it doesn’t support lead time tracking out of the box. To enable this metric, you’ll need to send artifact details using the Custom CI/CD API.
-You can learn more about how to set this up in the [DORA CI/CD Correlation](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/dora-ci-cd-correlation).
+You can learn more about how to set this up in the [DORA CI/CD Correlation](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics/dora-ci-cd-correlation).
 
 :::
 

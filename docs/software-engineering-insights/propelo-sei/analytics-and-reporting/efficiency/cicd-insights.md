@@ -13,7 +13,7 @@ Use CI/CD job reports to analyze metrics and trends related to CI/CD job runs. T
 * **Adoption rates:** Gain a deeper understanding of the adoption rate of CI/CD practices across different teams or departments, which helps identify areas of success and potential improvement.
 * **Pipeline performance analysis:** By tracking job counts over time, you can analyze a pipeline's performance. Changes in the job count, such as an increase in queued jobs or a decrease in completed jobs, can provide insights into the pipeline's efficiency, resource utilization, or potential issues affecting its execution.
 
-These widgets can be configured based on various CI/CD attributes, such as pipelines, projects, and statuses, depending on your CI/CD [integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview).
+These widgets can be configured based on various CI/CD attributes, such as pipelines, projects, and statuses, depending on your CI/CD [integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview).
 
 ## What is a Pipeline?
 
@@ -27,10 +27,10 @@ A **Job** in SEI is defined as a single run or execution of the pipeline which i
 
 Use the CI/CD Job Count reports to understand how often your CI/CD jobs run and whether they succeed or fail. You can analyze CI/CD job counts over a specific period, and shed light on the trends and patterns observed during that time.
 
-* [CICD Job Count report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-count-report)
-* [CICD Pipeline Jobs Count report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-pipeline-jobs-count-report)
-* [CICD Job Count Trend report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-count-trend-report)
-* [CICD Jobs Count Single Stat](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-jobs-count-single-stat)
+* [CICD Job Count report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/cicd-insights#cicd-job-count-report)
+* [CICD Pipeline Jobs Count report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/cicd-insights#cicd-pipeline-jobs-count-report)
+* [CICD Job Count Trend report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/cicd-insights#cicd-job-count-trend-report)
+* [CICD Jobs Count Single Stat](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/cicd-insights#cicd-jobs-count-single-stat)
 
 ### CICD Job Count Report
 
@@ -104,7 +104,7 @@ Pipeline job reports are functionally identical to [job count reports](#job-coun
 
 ## SCM to CI/CD jobs reports
 
-For information about SCM to CI/CD jobs reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights).
+For information about SCM to CI/CD jobs reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights).
 
 ## Configure CI/CD job reports
 

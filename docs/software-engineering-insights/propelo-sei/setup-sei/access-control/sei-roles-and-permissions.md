@@ -151,7 +151,7 @@ At the project level scope, SEI provides two default roles - **SEI Collection Ad
 The resources related to these roles apply only to the project-level scope and depend on the associated Resource Group. You can manage permissions for the following SEI resources at the project level:
 
 * Insights
-* [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview#collections)
+* [Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/project-and-collection-overview#collections)
 
 ### Account Level
 
@@ -165,7 +165,7 @@ The resources associated are dependent on the Resource Group defined. You can ma
 
 * Configuration Settings (All account level resources)
 * Insights
-* [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview#collections)
+* [Collections](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-projects-and-collections/project-and-collection-overview#collections)
 
 :::info
 Note that the **Configuration Settings** resource will only be accessible when the Resource Group's scope is set to **Account Only**.

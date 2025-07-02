@@ -19,7 +19,7 @@ Configuration Settings refers to all the SEI module resources that are available
 
 ## Before You Begin
 
-* [RBAC in SEI](/docs/software-engineering-insights/setup-sei/access-control/sei-roles-and-permissions)
+* [RBAC in SEI](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/sei-roles-and-permissions)
 * [RBAC in Harnesss](/docs/platform/role-based-access-control/add-manage-roles)
 
 ## SEI Configuration Settings Roles and Permissions
@@ -36,7 +36,7 @@ It is important to note that the permissions mentioned in the table above are en
 
 In this section, we will walk through the process of defining and managing access controls for resource groups for defining access control for **Configuration Settings (Account Level SEI Resources)** within an Account.
 
-In this section, we cover how you can use the existing [built-in resource group](/docs/software-engineering-insights/setup-sei/access-control/sei-roles-and-permissions#built-in-resource-groups) or [create a new resource group](/docs/platform/role-based-access-control/add-resource-groups) for managing access to Configuration Settings on Harness SEI.
+In this section, we cover how you can use the existing [built-in resource group](/docs/software-engineering-insights/propelo-sei/setup-sei/access-control/sei-roles-and-permissions#built-in-resource-groups) or [create a new resource group](/docs/platform/role-based-access-control/add-resource-groups) for managing access to Configuration Settings on Harness SEI.
 
 At the **Account Level**, there are two built-in resource groups available:
 
