@@ -156,8 +156,8 @@ const config: Config = {
               to: 'docs/chaos-engineering',
             },
             {
-              label: 'Incident Response',
-              to: 'docs/incident-response',
+              label: 'AI SRE',
+              to: 'docs/ai-sre',
             },
             {
               label: 'Service Reliability Management',
@@ -367,8 +367,8 @@ const config: Config = {
               to: 'https://harness.io/products/chaos-engineering',
             },
             {
-              label: 'Incident Response',
-              to: 'https://harness.io/products/incident-response',
+              label: 'AI SRE',
+              to: 'https://harness.io/products/ai-sre',
             },
             {
               label: 'Service Reliability Management',
