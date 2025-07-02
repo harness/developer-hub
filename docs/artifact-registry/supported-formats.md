@@ -43,6 +43,10 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
       path: "/artifact-registry/content/supported-formats/helm-quickstart.md",
       logo: "helm-logo.svg",
       logoSize: 28
+    },
+    Nuget: {
+      path: "/artifact-registry/content/supported-formats/nuget-quickstart.md",
+      logo: "nuget-logo.svg",
     }
   }}
 />
