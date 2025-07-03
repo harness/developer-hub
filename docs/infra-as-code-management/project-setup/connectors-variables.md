@@ -1,6 +1,6 @@
 ---
-title: Configure Connectors and Variables
-description: Learn how to configure connectors, environment variables, Tofu/Terraform variables, and variable files in your IaCM workspace.
+title: Connectors and Variables
+description: Learn how to configure connectors, environment variables, OpenTofu/Terraform variables, and variable files in your IaCM workspace.
 sidebar_position: 10
 ---
 
@@ -9,7 +9,7 @@ import TabItem from "@theme/TabItem";
 
 **Connectors and Variables** define the full set of inputs and integrations your workspace uses when running Plan, Apply, or Drift detection pipelines. This combined configuration is known as a **variable set**, and it includes:
 - Connectors for authenticating with cloud providers or Git
-- Environment variables and Terraform variables
+- Environment variables and OpenTofu/Terraform variables
 - Variable files stored in version control
 
 ---
@@ -21,7 +21,7 @@ A **connector** is required to authenticate with cloud providers or external sys
 Connectors can be added via Account Settings or directly from your workspaces **Connectors and Variables** tab.
 :::
 
-### Add a Connector
+### Add a connector
 1. From your workspace **Connectors and Variables** tab, click **+ Connector**.
 2. Select an existing connector from your account or project scope (e.g., `aws-oidc`).
 
@@ -31,15 +31,21 @@ Or, you can add a new connector by clicking **+ New Connector**.
 Also, see [Add Connectors](/docs/infra-as-code-management/get-started/#add-connectors) for an interactive guide.
 :::
 
+### Connectors from templates
+If your workspace is created from a workspace template, it may include connectors defined in the template.
+- These appear in the **Connectors and Variables** tab.
+- Template-sourced connectors are marked with a **TEMPLATE** source label.
+- Currently, these connectors **cannot be modified** in the workspace.
+
 ---
 
-## Environment Variables
+## Environment variables
 Environment variables provide runtime configuration for your infrastructure. These behave like standard shell variables and can be used by your provisioning logic, module behavior, or CLI tooling.
 
 - **Key**: The name of the variable (e.g., `TF_LOG`, `ENVIRONMENT`).
-- **Value**: You can set a static value, insert a pipeline variable (FQN), or use `<+input>` for runtime input.
+- **Value**: You can set a static value, insert a pipeline variable (FQN), or use **`<+input>`** for runtime input.
 
-### Add an Environment Variable
+### Add an environment variable
 1. Click **+ New Environment Variable**.
 2. Define the `Type` (usually `string`).
 3. Provide a `Key` and a `Value`.
@@ -59,18 +65,18 @@ environmentVariables:
 
 ---
 
-## OpenTofu/Terraform Variables
+## OpenTofu/Terraform variables
 OpenTofu/Terraform variables (`variable {}` blocks in your code) must be declared by name and value. These are injected into Terraform runs and used in your `*.tf` files.
 
 1. Click **+ Add Variable** under the **OpenTofu/Terraform Variables** section.
 2. Define the `Key` to match your Terraform variable name.
-3. Set the `Value`, or use `<+input>` for runtime prompts.
+3. Set the `Value`, or use **`<+input>`** for runtime prompts.
 
 ---
 
 There are two common ways to supply values to your declared variables:
 
-### Option 1: Static or Runtime Input
+### Option 1: Static or runtime input
 This method is best when you want to prompt the user for input (e.g., during a demo), or apply a fixed value to all runs.
 
 <Tabs>
@@ -96,7 +102,7 @@ terraformVariables:
 </TabItem>
 </Tabs>
 
-### Option 2: Inject from Pipeline Variable
+### Option 2: Inject from pipeline variable
 If you’re using a reusable pipeline to trigger multiple workspaces, you can pass in values dynamically from pipeline-level variables.
 
 <Tabs>
@@ -129,10 +135,10 @@ You can use [Harness pipeline variables](/docs/platform/variables-and-expression
 
 ---
 
-## Variable Files
+## Variable files
 Variable files allow you to inject multiple variables via `.tfvars`, `.json`, or `.yaml` files stored in Git.
 
-### Add a Variable File
+### Add a variable file
 1. Click **+ New Variable File**.
 2. Select the **Connector** to access your Git repo.
 3. Choose a repository, branch, and file path (e.g., `main`, `envs/dev.tfvars`).
@@ -160,14 +166,14 @@ Each variable shows its **source**, such as:
 - `TEMPLATE`: inherited from the selected Template.
 - `CUSTOM`: defined directly in the workspace.
 
-You can use `<+input>` to prompt users to supply values at runtime.
+You can use **`<+input>`** to prompt users to supply values at runtime.
 
 ---
 
 ## Example Use Case
 A demo or workshop environment may require different AWS regions and names for each execution. You can:
 
-- Define these as `<+input>` to prompt per run.
+- Define these as **`<+input>`** to prompt per run.
 - Inject pipeline variables for automation.
 - Reference variable files in Git for version control.
 
@@ -175,4 +181,4 @@ A demo or workshop environment may require different AWS regions and names for e
 
 ## Next Steps
 - [Provision your workspace](/docs/infra-as-code-management/workspaces/provision-workspace) using the configured inputs.
-- [Add OPA Policies](/docs/infra-as-code-management/policies-governance/opa-workspace) to enforce policy compliance.
+- [Add OPA policies](/docs/infra-as-code-management/policies-governance/opa-workspace) to enforce policy compliance.

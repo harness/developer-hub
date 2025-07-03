@@ -86,7 +86,7 @@ steps:
       identifier: Apply
 ```
 
-If your workspace requires OpenTofu/Terraform variables or environment variables, [add them in your workspace settings](/docs/infra-as-code-management/project-setup/variable-sets).
+If your workspace requires OpenTofu/Terraform variables or environment variables, [add them in your workspace settings](/docs/infra-as-code-management/project-setup/connectors-variables).
 
 If no variables are specified, Harness uses any defaults defined in the source code (e.g. `variables.tf` files in your repo). Go to [Declaring variables](https://opentofu.org/docs/language/values/variables) to see how to define variables in your source code.
 
