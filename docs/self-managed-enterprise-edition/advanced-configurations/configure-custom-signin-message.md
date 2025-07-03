@@ -1,6 +1,6 @@
 ---
-title: Configure Custom Login Prompt
-sidebar_label: Configure Custom Login Prompt
+title: Custom Login Prompt
+sidebar_label: Custom Login Prompt
 tags: ["custom sign in prompt", "smp", "prompt on log in", "message prompt"]
 keywords: 
 - custom sign-in prompt
@@ -16,43 +16,21 @@ sidebar_position: 3
 
 <!--Introduction: what is customizable login message, why it is needed-->
 
-The Custom Login Prompt allows organizations to display a mandatory notice on the login screen, ensuring users see and acknowledge important information before accessing the platform.
+Custom login prompt allows organizations to display security, legal, or compliance notices—such as U.S. Government consent banners— ensuring users see and acknowledge important information before accessing the platform.
 
-This is not just cosmetic. It's essential for:
+Showing a login prompt to users can be important in the following use cases:
 
-* **Regulatory compliance** (e.g. SOC 2, ISO 27001, GDPR) that may require user consent or policy acknowledgment.
-* **Legal protection** by showing terms of use, acceptable use policies, or disclaimers before granting access.
-* **Security awareness** by reminding users of data handling responsibilities, password policies, or incident reporting procedures.
-
-By enforcing a visible, customizable prompt at login, organizations strengthen their security posture and reduce legal risk.
-
-<details>
-    <summary>Regulatory / Legal disclaimer Example</summary>
-        <p>
-            You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.
-
-            By using this IS (which includes any device attached to this IS), you consent to the following conditions:
-
-            -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.
-
-            -At any time, the USG may inspect and seize data stored on this IS.
-
-            -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.
-
-            -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.
-
-            -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work products are private and confidential. See User Agreement for details.
-        </p>
-</details>
-
+* **Regulatory compliance** that may require user consent or policy acknowledgement.
+* **Legal protection** by showing terms of use, data usage policies, or disclaimers before granting access.
+* **Security awareness** by reminding users of acceptable use policies, confidentiality requirements, or security best practices.
 
 ## Why use this feature?
 
 This feature is especially helpful for:
 
-* **Security teams**, to consistently enforce policy awareness
-* **Compliance officers**, to meet audit and regulatory requirements
-* **IT administrators**, to ensure clear, consistent communication of rules across the organization
+* **Security teams**, to consistently enforce policy awareness.
+* **Compliance officers**, to meet audit and regulatory requirements.
+* **IT administrators**, to ensure clear, consistent communication of rules across the organization.
 
 Any organization handling sensitive data or operating under compliance frameworks will benefit from enabling this feature.
 
