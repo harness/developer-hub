@@ -189,11 +189,12 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/softwareEngineeringInsightsData.ts @alai97 @codewdhruv @batraprashant @santoshdodamani
 
 # DB DevOps Docs
-/docs/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
-/release-notes/database-devops.md @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
-/src/components/Docs/data/databaseDevOpsData.ts @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
+/docs/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
+/release-notes/database-devops.md @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
+/src/components/Docs/data/databaseDevOpsData.ts @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
+/src/components/Roadmap/data/dbdevopsData.ts @stephenatwell @archit-harness @sonichigo @rohitk-h @ivikramsahu @wei-harness
 # DB DevOps FAQs
-/docs/faqs/db-devops-faqs/ @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
+/docs/faqs/db-devops-faqs/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
 
 # CDE Docs
 /docs/cloud-development-environments/ @manishas @khushisharmaharness
@@ -227,7 +228,7 @@ static/  @rohanmaharjan100 @wei-harness
 /kb/armory @jimin-harness @deepanshuHarness @guna-harness
 
 # DB DevOps
-/kb/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
+/kb/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h @hemanthbsridhar
 
 #Reference Architectures
 /kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness
