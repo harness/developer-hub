@@ -111,12 +111,12 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur
 
 # Chaos Docs
-/docs/chaos-engineering/ @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
+/docs/chaos-engineering/ @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
 /release-notes/chaos-engineering.md @neelanjan00 @Jonsy13 @Ashutosh-Bhadauriya
 /src/components/Roadmap/data/ceData.ts @neelanjan00 @SushrutHarness
 /src/components/Docs/data/chaosEngineeringData* @neelanjan00 @SushrutHarness
 # Chaos FAQs
-/docs/faqs/chaos-engineering-faqs @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
+/docs/faqs/chaos-engineering-faqs @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
 /docs/faqs/static @neelanjan00 @Jonsy13 @Adarshkumar14 @ksatchit @umamukkara @Ashutosh-Bhadauriya
 /kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @ksatchit @umamukkara @Ashutosh-Bhadauriya
 
@@ -216,7 +216,7 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/openSourceData.tsx @dewan-ahmed @rustd @SushrutHarness
 
 # Cloud Operations Docs
-/docs/harness-cloud-operations/ @ankit-harness @yogi-harness
+/docs/harness-cloud-operations/ @ankit-harness
 
 # Knowledge Base ###
 
