@@ -29,11 +29,12 @@ Any artifacts that go through [SBOM Orchestration](/docs/software-supply-chain-a
 The landing page of the Artifacts section provides a comprehensive list of all artifacts, displaying the following details for each: 
 
 * **Name**: The name of the artifact. 
+* **Artifact Type**: The type of the artifact
 * **Digests**: The number of digests associated with the artifact.
 * **Environments**: The environments where the artifact has been deployed with the count. 
 * **Vulnerabilities**: The vulnerabilities identified in the most recent scan of the digest. 
 
-<DocImage path={require('./static/artifacts-overview-tab.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/artifacts-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 #### Search and filter options
@@ -100,11 +101,12 @@ The SBOM tab presents details of all the dependencies within the artifact, inclu
 * **Package Manager:** Tool managing the package.
 * **PURL:** Package URL.
 * **Supplier:** Source of the dependency.
+* **Vulnerabilities:** Shows the number of issues for each SBOM component, grouped by severity levels (Critical, High, Medium, Low) as identified through the Snyk scan.
 
-<DocImage path={require('./static/scs-sbomtab.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/sbom-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
-For more information about the levels of image dependencies, refer to the "[Label Components from Image](/docs/software-supply-chain-assurance/how-to-guides/label-components-from-image)" documentation.
+For more information about the levels of image dependencies, refer to the [How to detect base images in SBOM](/docs/software-supply-chain-assurance/how-to-guides/label-components-from-image) documentation.
 
 
 #### Search and filter options

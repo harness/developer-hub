@@ -161,6 +161,12 @@ This example **Deploy** stage has two steps:
 </details>
 
 
+### View vulnerabilities in the SBOM
+
+
+After you run the SBOM orchestration step followed by the STO Snyk scan, the [SBOM tab](/docs/software-supply-chain-assurance/artifact-security/overview#sbom-tab) on the Artifacts page displays vulnerabilities for the components identified by Snyk. This helps you effectively identify and prioritize open source risks
+
+
 ### Publish SBOM
 
 After you run the SBOM Orchestration step, you can download or publish SBOM through multiple ways depending on your workflow:
