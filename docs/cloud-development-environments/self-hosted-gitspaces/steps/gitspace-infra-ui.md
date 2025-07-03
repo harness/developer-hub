@@ -1,6 +1,6 @@
 ---
 title: Configure Gitspace Infrastructure in Harness UI
-description: Learn more about how to configure your Gitspace infrastructure via Harness UI.
+description: Learn more about how to configure your Gitspace Infrastructure via Harness UI.
 sidebar_position: 2
 sidebar_label: Configure Gitspace Infrastructure in Harness UI
 ---

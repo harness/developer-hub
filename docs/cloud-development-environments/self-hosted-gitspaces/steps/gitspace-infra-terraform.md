@@ -1,6 +1,6 @@
 ---
 title: Configure and Setup the Terraform Module
-description: Get Started with Harness CDE (Gitspaces)
+description: Learn more on how to configure, setup and use the Terraform Module. 
 sidebar_position: 3
 sidebar_label: Setup Terraform Module
 ---

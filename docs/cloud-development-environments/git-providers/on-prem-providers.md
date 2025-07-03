@@ -1,6 +1,6 @@
 ---
 title: Configure On-Prem Providers
-description: Get Started with Harness CDE (Gitspaces)
+description: Learn more on how to configure On-Prem Git Providers for Gitspaces. 
 sidebar_position: 2
 sidebar_label: On-Prem Providers
 ---
@@ -31,7 +31,7 @@ There are two key components to configuring on-prem Git providers with Harness G
 
 #### Harness Control Plane
 
-The Harness Control Plane is used to manage the entire customer interaction through the **Harness UI** and establish a connection with the customer's infrastructure. All the customer's source code, repositories, and secrets are stored in their infrastructure via on-prem Git providers and their on-prem secret managers. The Harness Control Plane registers customer interactions and establishes a **connection layer with the Harness Delegate** hosted in the customer’s infrastructure.
+The Harness Control Plane is used to **manage the entire customer interaction** through the **Harness UI** and establish a connection with the **customer's infrastructure**. All the customer's source code, repositories, and secrets are stored in their infrastructure via on-prem Git providers and their on-prem secret managers. The Harness Control Plane registers customer interactions and establishes a **connection layer with the Harness Delegate** hosted in the customer’s infrastructure.
 
 #### Customer's Infrastructure
 

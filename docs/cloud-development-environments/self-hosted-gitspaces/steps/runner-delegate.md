@@ -1,6 +1,6 @@
 ---
 title: Setup Runner and Install Delegate
-description: Get Started with Harness CDE (Gitspaces)
+description: Understand more about setting up VM Runners and installing Delegate. 
 sidebar_position: 4
 sidebar_label: Setup Runner & Install Delegate
 ---

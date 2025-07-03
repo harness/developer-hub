@@ -1,11 +1,11 @@
 ---
-title: Create a Gitspace
-description: Learn how to create a new Gitspace
+title: Create Gitspaces
+description: Learn how to create a new Gitspace. 
 sidebar_position: 1
-sidebar_label: Create a Gitspace
+sidebar_label: Create Gitspaces
 ---
 
-Follow the instructions below to create a Gitspace:
+Follow the instructions below to **create a new Gitspace** from the Harness UI:
 
 1. Click on **+New Gitspace**. To create a **Gitspace** using the [sample app](https://github.com/harness-community/demo-repo-nm). You have two options to create Gitspace:
 
@@ -52,3 +52,19 @@ It will take few minutes to provision the Gitspace and you could see all the ste
 ![](./static/gitspaces-starting.png)
 
 Now you can your Gitspace in the selected IDE and start developing. 
+
+
+### Create Gitspace
+
+Here's how you can create a Self Hosted Gitspace:
+
+1. Navigate to the desired **Organization** and **Project**.
+2. Click on **Gitspaces** in the left navigation panel.
+3. Click on **New Gitspace**.
+4. Enter the required Gitspace details. Refer to this [documentation](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md) for field descriptions.
+5. Under **Infra Provider Type**, select the infrastructure you configured earlier. You can identify it by the **Infrastructure Name** you provided.
+6. Choose the **Region**, populated from the region details configured in your infrastructure.
+7. Select the **Machine Type**, populated from the machines you added to the infrastructure.
+8. Click **Create Gitspace**.
+
+And that’s it, your Self Hosted Gitspace is now up and running entirely within your own infrastructure.
