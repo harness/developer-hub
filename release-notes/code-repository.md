@@ -40,7 +40,7 @@ These release notes describe recent changes to Harness Code Repository.
 #### New features and enhancements
 - Added the ability to set favorite repositories across the account.
 
-#### Fixes issues
+#### Fixed issues
 - Resolved an issue where Markdown in Harness Code did not render images.
 
 <!-- June 10, 2025 -->
