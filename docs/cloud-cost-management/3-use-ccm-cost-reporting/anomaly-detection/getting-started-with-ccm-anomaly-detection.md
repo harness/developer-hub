@@ -24,7 +24,7 @@ Getting started with CCM anomaly detection is straightforward and requires just 
 
 1. **Set up a Cloud Cost Connector** - Connect your cloud provider accounts (AWS, GCP, Azure) to Harness CCM using the appropriate connectors.
 
-2. **Allow Data Collection** - Once connected, Harness will automatically begin collecting cost data from your cloud environments. The system requires approximately 42 days of historical data for optimal anomaly detection.
+2. **Allow Data Collection** - Once connected, Harness will automatically begin collecting cost data from your cloud environments. The system requires approximately 13 months of historical data for optimal anomaly detection.
 
 3. **Automatic Anomaly Detection** - After data starts flowing in, the anomaly detection system will automatically begin analyzing your cost patterns and identifying potential anomalies. No additional configuration is required for basic anomaly detection.
 
@@ -34,7 +34,7 @@ CCM's anomaly detection process works through these key steps:
 
 ```mermaid
 flowchart LR
-    A["Data Collection (42 days history)"] --> B["Analysis (ML models)"] 
+    A["Data Collection (13 months history)"] --> B["Analysis (ML models)"] 
     B --> C["Detection (Compare actual vs predicted)"] 
     C --> D["Notification (Send alerts)"] 
     D --> E["User Action (Review & respond)"]
