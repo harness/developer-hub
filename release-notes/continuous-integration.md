@@ -50,6 +50,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 #### Fixed issues
 - Fixed an issue where the codebase icon in the right sidebar of Pipeline Studio was incorrectly showing a failed state when the **repoName** in the codebase configuration was set as a runtime input. (ZD-84658, CI-17640)
 - Fixed an issue where expressions in environment variables for Build and Push steps were not evaluated if they depended on values (e.g., output variables) produced by earlier steps. This occurred because evaluation happened too early during stage initialization. Expressions are now evaluated just before step execution, ensuring correct resolution. (CI-17763, ZD-85822)
+- Resolved an issue where Docker connectors used as base image connectors in **Build and Push** steps failed to authenticate when the URL was set to `https://index.docker.io/v2/`. The backend now implicitly converts this to the correct v1 endpoint (`https://index.docker.io/v1/`) to ensure proper authentication. (CI-14112)
 
 #### Harness images updates
 
