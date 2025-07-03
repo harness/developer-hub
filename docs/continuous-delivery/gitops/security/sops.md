@@ -4,6 +4,8 @@ description: Use Mozilla SOPS to decrypt and provision secrets that are encrypte
 sidebar_label: Manage Secrets with SOPS
 sidebar_position: 60
 canonical_url: https://www.harness.io/blog/gitops-secrets
+redirect_from:
+  - /docs/continuous-delivery/gitops/use-gitops/sops
 ---
 
 GitOps uses Git as the source of truth for infrastructure and application configuration and therefore requires access to secrets in some form. For example, GitOps might require authentication tokens and private keys to operate correctly. Storing secrets in Git represents a security vulnerability and must not be allowed, even when the Git repository is considered private and implements access controls. 

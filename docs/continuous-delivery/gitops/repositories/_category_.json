@@ -4,6 +4,7 @@
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
+    "description": "Learn how to create and use Harness GitOps repositories",
     "link": {
         "type": "generated-index",
         "title": "Repositories"

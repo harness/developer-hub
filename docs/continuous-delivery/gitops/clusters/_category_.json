@@ -4,6 +4,7 @@
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
+    "description": "Learn how to create and use Harness GitOps clusters",
     "link": {
         "type": "generated-index",
         "title": "Clusters"

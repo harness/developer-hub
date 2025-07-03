@@ -125,7 +125,7 @@ This environment variable will tell the Agent to look at the file specified in t
 
 ### Can I pass sensitive data in a Harness GitOps deployment?
 
-You can use [Mozilla SOPS](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/sops), which enables you to securely manage sensitive data by encrypting it before storing it in your Git repository.
+You can use [Mozilla SOPS](https://developer.harness.io/docs/continuous-delivery/gitops/security/sops), which enables you to securely manage sensitive data by encrypting it before storing it in your Git repository.
 
 Once encrypted, SOPS decrypts the data during deployment using the keys stored as Kubernetes secrets, ensuring that your sensitive information remains protected.
 
