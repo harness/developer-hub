@@ -30,7 +30,7 @@ Additionally, SOPS does not support asymmetric keys for encrypting and decryptin
 ## Encrypt secrets
 
 Use the following procedure to implement SOPS:
-1. If you are using the Bring Your Own Argo CD (BYOA) method to migrate your existing Argo CD setup to Harness GitOps, [prepare the BYOA agent](/docs/continuous-delivery/gitops/use-gitops/sops#prepare-the-byoa-agent-only-if-you-are-using-byoa).
+1. If you are using the Bring Your Own Argo CD (BYOA) method to migrate your existing Argo CD setup to Harness GitOps, [prepare the BYOA agent](/docs/continuous-delivery/gitops/security/sops#prepare-the-byoa-agent-only-if-you-are-using-byoa).
 
 2. Encrypt secrets by using one of the following tools:
 
