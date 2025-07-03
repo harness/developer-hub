@@ -1,0 +1,20 @@
+# defines the action for the given network rule
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-web-access-restrict
+    spec:
+      components:
+        env:
+        # Provide the action for a rule
+        - name: ACTION
+          value: 'deny'
+         # duration for the chaos execution
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'

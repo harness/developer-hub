@@ -1,0 +1,11 @@
+# memory to consume
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-memory-stress
+  labels:
+    name: memory-stress
+spec:
+  stressChaos/inputs:
+    workers: 1
+    memory: 50%

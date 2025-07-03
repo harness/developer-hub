@@ -1,0 +1,15 @@
+# class
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-jvm-modify-return
+  labels:
+    name: app-jvm-modify-return
+spec:
+  cfAppJVMChaos/inputs:
+    class: com.appinventory.appinventory.appInventoryController
+    duration: 30s
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+    boshDeployment: cf

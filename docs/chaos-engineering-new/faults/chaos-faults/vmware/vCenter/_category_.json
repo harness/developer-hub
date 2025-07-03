@@ -1,0 +1,13 @@
+{
+  "position": 2,
+  "label": "VMware - vCenter",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"VMware - vCenter "
+  },
+  "customProps": {
+    "description": "VMware faults executed on vCenter"
+  }
+}

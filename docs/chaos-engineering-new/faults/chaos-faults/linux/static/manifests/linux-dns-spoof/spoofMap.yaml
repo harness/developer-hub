@@ -1,0 +1,10 @@
+# target host names for spoofing
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-dns-spoof
+  labels:
+    name: dns-spoof
+spec:
+  dnsChaos/inputs:
+    spoofMap: '{"abc.com":"spoofabc.com"}'

@@ -1,0 +1,26 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: fs-fill
+      spec:
+        components:
+          env:
+            # space to be filled in bytes
+            # or specify the size in K, KB, M, MB, G, GB
+            - name: FILL_SIZE
+              value: "500M"
+            # container path to be filled
+            - name: FILE_PATH
+              value: "/tmp"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"

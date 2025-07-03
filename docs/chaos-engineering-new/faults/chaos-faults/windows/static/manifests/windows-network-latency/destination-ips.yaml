@@ -1,0 +1,17 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: MachineChaosExperiment
+metadata:
+  name: windows-network-latency
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    infraType: windows
+    steps:
+      - - name: windows-network-latency
+    tasks:
+    - definition:
+        chaos:
+          env:
+            - name: DESTINATION_IPS
+              value: '0.8.0.8,192.168.5.6'

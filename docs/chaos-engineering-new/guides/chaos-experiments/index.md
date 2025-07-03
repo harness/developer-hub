@@ -1,5 +1,5 @@
 ---
-title: Chaos Experiments
+title: Overview
 description: Master chaos experiments - from creation to execution and analysis
 sidebar_position: 1
 ---

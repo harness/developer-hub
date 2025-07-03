@@ -1,0 +1,41 @@
+# it injects the api modify body fault
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-api-modify-body
+      spec:
+        components:
+          env:
+            # provide the headers filters
+            - name: HEADERS_FILTERS
+              value: 'key1:value1,key2:value2'
+            # provide the methods filters
+            - name: METHODS
+              value: 'GET,POST'
+            # provide the query params filters
+            - name: QUERY_PARAMS
+              value: 'param1:value1,param2:value2'
+            # provide the source hosts filters
+            - name: SOURCE_HOSTS
+              value: 'host1,host2'
+            # provide the source ips filters
+            - name: SOURCE_IPS
+              value: 'ip1,ip2'
+            # provide the connection type
+            - name: SERVICE_DIRECTION
+              value: 'ingress'
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
+            - name: RESPONSE_BODY
+              value: "/.+/test"

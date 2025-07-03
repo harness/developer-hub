@@ -1,0 +1,26 @@
+## provide the offset and clock ids
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: time-chaos
+      spec:
+        components:
+          env:
+            # time offset
+            - name: OFFSET
+              value: "3600s"
+            # clock ids of the target system
+            - name: CLOCK_IDS
+              value: "CLOCK_REALTIME"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"

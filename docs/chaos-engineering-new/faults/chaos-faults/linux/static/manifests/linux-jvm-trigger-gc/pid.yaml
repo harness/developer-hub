@@ -1,0 +1,13 @@
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-jvm-trigger-gc
+  labels:
+    name: jvm-trigger-gc
+spec:
+  jvmChaos/inputs:
+    duration: 30s
+    port: 9091
+    pid: 1
+    startupCommand: ""
+    rampTime: ""

@@ -1,0 +1,21 @@
+# contains EBS volume ID 
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ebs-loss-by-id
+    spec:
+      components:
+        env:
+        # ID of the ebs volume
+        - name: EBS_VOLUME_ID
+          value: 'ebs-vol-1'
+        # region for the ebs volume
+        - name: REGION
+          value: 'us-east-1'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'

@@ -1,0 +1,9 @@
+{
+  "position": 13,
+  "label": "Windows",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Windows faults documentation"
+  }
+}

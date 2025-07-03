@@ -4,7 +4,7 @@ description: Comprehensive security controls and best practices for chaos engine
 sidebar_position: 1
 ---
 
-# Security
+# Security Overview
 
 Harness provides comprehensive security controls to ensure the safe execution of chaos experiments on your infrastructure. This section covers security considerations and features across administrative and runtime environments, including authentication, authorization, network security, and blast radius control.
 

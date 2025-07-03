@@ -1,0 +1,9 @@
+{
+  "position": 5,
+  "label": "Cloud Foundry",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Cloud Foundry faults documentation"
+  }
+}

@@ -1,10 +1,10 @@
 ---
-title: Security Templates
+title: Overview
 sidebar_position: 1
 description: Security policies and templates for chaos engineering environments
 ---
 
-# Security Templates
+# Security Templates Overview
 
 This section introduces you to various security policies you can use with Harness Chaos Engineering.
 

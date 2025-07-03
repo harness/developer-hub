@@ -1,0 +1,24 @@
+# contains transaction percentage for the dns spoofing
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-dns-spoof
+      spec:
+        components:
+          env:
+            # provide the transaction percentage within (0,100] range
+            # for example, it will affect 50% of the total dns queries
+            - name: TRANSACTION_PERCENTAGE
+              value: '50'
+            - name: TOTAL_CHAOS_DURATION
+              value: '60'

@@ -1,0 +1,12 @@
+# specify the storage to be filled
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-fs-fill
+  labels:
+    name: fs-fill
+spec:
+  fsFillChaos/inputs:
+    fillPath: "/tmp"
+    fillStorage: 100M
+    duration: 30s

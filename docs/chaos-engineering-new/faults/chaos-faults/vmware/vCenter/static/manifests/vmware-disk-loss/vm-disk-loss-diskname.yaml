@@ -1,0 +1,19 @@
+# Disk loss in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-disk-loss
+    spec:
+      components:
+        env:
+        # Name of the VM
+        - name: APP_VM_MOIDS
+          value: 'vm-2055'
+        # Name of target disk
+        - name: VIRTUAL_DISK_NAMES
+          value: 'disk-1.vmdk'

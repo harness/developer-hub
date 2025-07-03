@@ -1,0 +1,22 @@
+# Set CPU and Memory container resouce for the target container
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: aws-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-update-container-resource-limit
+    spec:
+      components:
+        env:
+        - name: CPU
+          value: '256'
+        - name: MEMORY
+          value: '256'
+        - name: REGION
+          value: 'us-east-2'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'

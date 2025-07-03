@@ -221,7 +221,12 @@ If you execute a chaos experiment but it directly moves to the ERROR state witho
 
 To verify this:
 1. Go to **Chaos Experiments** in the UI and navigate to the experiment you created.
+
+    ![Navigate to Experiment](./static/images/navigate-1.png)
+
 2. Select the `⋮` icon and select **View runs**. Navigate to the specific run, select the `⋮` icon, and then select **View Run Report**.
+
+    ![View Run Report](./static/images/view-report-2.png)
 
 **Debug Steps:**
 
@@ -265,7 +270,13 @@ The service did not start due to a logon failure.
 
 1. Open Local Security Policy.
 2. Navigate to User Rights Assignment.
+
+    ![Local Security Policy](./static/images/local-security-policy.png)
+
 3. Find "_Log on as a service_" and add the user to this policy.
+
+    ![Add Policy](./static/images/local-security-policy-logon.png)
+
 4. Apply and save the changes.
 5. Start the Service: Restart the WindowsChaosInfrastructure service from the Services tab in Task Manager.
 6. Check Logs: If the issue persists, refer to the log file at `C:\\HCE\Logs` for more details.
@@ -273,15 +284,32 @@ The service did not start due to a logon failure.
 **Solution (Method 2) - Manual Service Configuration:**
 
 1. Open Task Manager (Ctrl + Shift + Esc).
-2. Switch to the "Services" tab.
-3. Find the "WindowsChaosInfrastructure" service.
-4. Right-click on the service and select "Open Services".
-5. In the Services window, locate "WindowsChaosInfrastructure" again.
-6. Right-click on it and choose "Properties".
-7. Go to the "_Log On_" tab.
-8. Enter the credentials of the user account that should run the service.
-9. Select **Apply**. You should receive a confirmation that the account has been granted logon as a service right.
-10. Start the service.
+
+    ![Open Task Manager](./static/images/open-task-manager.png)
+
+   - Press Ctrl + Shift + Esc to open the Task Manager or search Task Manager.
+   - Switch to the "Services" tab.
+
+2. Locate the service.
+
+    ![Locate Service](./static/images/task-manager-service.png)
+
+   - Find the "WindowsChaosInfrastructure" service.
+   - Right-click on the service and select "Open Services".
+
+3. Modify Service Properties:
+   - In the Services window, locate "WindowsChaosInfrastructure" again.
+   - Right-click on it and choose "Properties".
+   - Go to the "_Log On_" tab.
+
+4. Provide User Credentials.
+
+    ![Provide User Credentials](./static/images/task-manager-service-logon.png)
+
+   - Enter the credentials of the user account that should run the service.
+   - Select **Apply**. You should receive a confirmation that the account has been granted logon as a service right.
+
+5. Start the Service: Apply the changes and start the service. The service should now enter a running state.
 
 ### Installation Failed with "The Specified Service Already Exists"
 
@@ -399,61 +427,7 @@ The Windows Chaos infrastructure currently doesn't support auto-upgrades. For ev
 * Command probes in the **source** mode is not available for Linux in Harness CE SaaS.
 * In SMP (self-managed platform), command probe in the **source** mode is only available for Linux.
 
-## Troubleshooting Decision Tree
-
-```mermaid
-flowchart TD
-    A[Issue Occurred] --> B{Infrastructure Connected?}
-    B -->|No| C[Check Network & Auth]
-    B -->|Yes| D{Experiment Running?}
-    D -->|No| E[Check Resources & Permissions]
-    D -->|Yes| F{Getting Expected Results?}
-    F -->|No| G[Review Probes & Hypothesis]
-    C --> H[Follow Infrastructure Guide]
-    E --> I[Follow Experiment Guide]
-    G --> J[Follow Analysis Guide]
-    H --> K[Still Issues?]
-    I --> K
-    J --> K
-    K -->|Yes| L[Contact Support]
-    K -->|No| M[Success!]
-```
-
-## Getting Help
-
-### Self-Service Resources
-
-| Resource | Best For | Response Time |
-|----------|----------|---------------|
-| **[Documentation](/docs/chaos-engineering-new/)** | Step-by-step guides | Immediate |
-| **[FAQ](/docs/chaos-engineering-new/resources/faq)** | Common questions | Immediate |
-| **This Troubleshooting Guide** | Known issues | Immediate |
-
-### Community Support
-
-- **[Harness Community Forum](https://community.harness.io/)** - Get help from other users
-- **[GitHub Discussions](https://github.com/harness/harness/discussions)** - Technical discussions
-- **[Slack Community](https://harnesscommunity.slack.com/)** - Real-time chat support
-
-### Professional Support
-
-**When to Contact Support:**
-- Production issues affecting business operations
-- Security-related concerns
-- Data loss or corruption
-- Issues persisting after following this guide
-
-**How to Contact:**
-- **Email**: [support@harness.io](mailto:support@harness.io)
-- **Support Portal**: [support.harness.io](https://support.harness.io/)
-- **Emergency**: Use your dedicated support channel (Enterprise customers)
-
-**Information to Include:**
-- Harness account ID and organization
-- Timestamp of the issue
-- Detailed error messages and logs
-- Steps to reproduce the problem
-- Expected vs actual behavior
+For further assistance, please refer to the [documentation](/docs/chaos-engineering-new/) or contact [Harness Support](mailto:support@harness.io).
 
 ## Additional Resources
 

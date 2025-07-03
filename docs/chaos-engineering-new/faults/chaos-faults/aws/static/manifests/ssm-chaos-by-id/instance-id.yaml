@@ -1,0 +1,18 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ssm-chaos-by-id
+    spec:
+      components:
+        env:
+        # ID of the EC2 instance
+        - name: EC2_INSTANCE_ID
+          value: 'instance-1'
+        # region for the EC2 instance
+        - name: REGION
+          value: 'us-east-1'

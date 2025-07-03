@@ -1,0 +1,16 @@
+kind: Workflow
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: fis-chaos
+  namespace: litmus
+spec:
+  templates:
+    - name: fis-chaos
+      spec:
+        components:
+          env:
+            - name: EXPERIMENT_TEMPLATE_ID
+              value: ''
+          secrets:
+            - name: cloud-secret
+              mountPath: /tmp/

@@ -1,0 +1,22 @@
+# defines pod image and label selectors
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: kubelet-density
+    spec:
+      components:
+        env:
+        # image of the pod
+        - name: POD_IMAGE
+          value: 'nginx'
+        # pod label selectors
+        - name: POD_SELECTOR
+          value: '{name: kubelet-density-app}'
+        - name: TARGET_NODE
+          value: 'node1'
