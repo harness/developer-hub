@@ -47,7 +47,7 @@ Harness Internal Developer Portal (IDP) integrates with the Platform Git Experie
 
 
 :::info Note
-With the IDP Git experience feature, one entity can have only one YAML file. Unlike IDP 1.0, storing multiple entities within a single YAML is no longer supported in IDP 2.0.
+With the IDP Git experience feature, one entity can have only one YAML file. Unlike IDP 1.0, storing multiple entities within a single YAML is no longer supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions.
 :::
 
 ### Supported IDP Entities in Git Experience
@@ -133,7 +133,7 @@ You can do this in two ways:
 
 
 - **In Bulk using a Script**: For larger migrations, Harness provides a script that helps automate the conversion of multiple entities from Inline to Remote, storing their YAMLs in a Git repo following a structured format.
-  To learn how to use this script and view complete steps, refer to the official migration guide - [Store Entity YAMLs in Git](../idp-2o-overview/migrating-idp-2o#step-7-store-entity-yamls-in-git)
+  To learn how to use this script and view complete steps, refer to the official migration guide - [Store Entity YAMLs in Git](../idp-2o-overview/migrating-idp-2o.md#step-7-store-entity-yamls-in-git)
 
 ### Managing Multiple Branches
 
