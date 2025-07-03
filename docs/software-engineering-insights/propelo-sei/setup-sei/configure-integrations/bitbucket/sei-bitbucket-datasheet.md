@@ -3,6 +3,8 @@ title: BitBucket Datasheet
 description: A complete list of metadata ingested by SEI from BitBucket
 sidebar_label: Metadata
 sidebar_position: 90
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-bitbucket-datasheet
 ---
 
 SEI uses Rest APIs to connect to BitBucket. Using these API calls SEI ingests metadata for commits and pull requests from BitBucket.

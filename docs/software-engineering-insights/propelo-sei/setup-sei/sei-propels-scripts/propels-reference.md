@@ -2,6 +2,8 @@
 title: JavaScript reference
 description: You can write custom logic in JavaScript to use in Propels.
 sidebar_position: 15
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/sei-propels-scripts/propels-reference
 ---
 
 You can write custom logic in JavaScript to use in [Propels](./propels-overview). This page explains the Propels script structure and provides usage examples.

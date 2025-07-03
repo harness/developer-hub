@@ -5,6 +5,7 @@ sidebar_position: 25
 sidebar_label: Hygiene
 redirect_from:
     - /docs/software-engineering-insights/sei-metrics-and-reports/hygiene-metrics
+    - /docs/software-engineering-insights/analytics-and-reporting/hygiene-metrics
 ---
 
 Use hygiene reports to understand hygiene in your issue management and support systems, such as Jira or Zendesk. Hygiene measures adherence to issue management best practices, such as issue classification and responsiveness, based on hygiene categories. Hygiene reports can help you measure overall process adherence and identify gaps in issues that resulted in delayed deployments.

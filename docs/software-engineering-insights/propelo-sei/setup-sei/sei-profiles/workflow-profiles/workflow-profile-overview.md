@@ -2,6 +2,8 @@
 title: Overview
 description: Use Workflow profiles to define stages, events, and measurement criteria for Lead Time reporting.
 sidebar_position: 30
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview
 ---
 
 Workflow profiles in Software Engineering Insights enable you to define developer processes and measurement criteria for evaluating the efficacy of your organization's entire software development lifecycle. These profiles allow you to measure key metrics such as [DORA (DevOps Research and Assessment)](https://dora.dev/) and [Lead Time](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/workflow-profiles/velocity-profile), providing valuable insights into the time taken to ship changes or deploy bug fixes to production.

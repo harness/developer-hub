@@ -3,7 +3,8 @@ title: Overview
 description: Measure AI productivity insights
 sidebar_position: 10
 sidebar_label: Overview
-
+redirect_from:
+  - /docs/software-engineering-insights/ai-productivity-insights/aipi-overview
 ---
 
 AI-powered productivity tools help development teams by automating repetitive coding tasks and assisting with code generation. However, measuring the impact of these tools on productivity is still a challenge for many organizations.

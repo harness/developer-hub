@@ -5,6 +5,7 @@ sidebar_label: Ingest Artifacts Data
 sidebar_position: 20
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/sei-api-reference/ingest-artifacts-data
+    - /docs/software-engineering-insights/sei-administration/sei-api-reference/ingest-artifacts-data
 ---
 
 This topic provides a guide for ingesting CI/CD artifacts data into Harness SEI.

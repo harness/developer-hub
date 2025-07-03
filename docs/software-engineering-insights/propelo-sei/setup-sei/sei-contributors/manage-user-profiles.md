@@ -3,6 +3,8 @@ title: Manage user profiles
 description: Steps to manage and update user profiles in SEI
 sidebar_label: Manage user profiles
 sidebar_position: 5
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/sei-contributors/manage-user-profiles
 ---
 
 When setting up Software Engineering Insights with multiple integrations, the data ingested by each creates different integration-specific **user profiles**. SEI uses email addresses to unify these user profiles, but sometimes you might encounter multiple user profiles for the same user.

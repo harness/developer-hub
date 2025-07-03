@@ -3,6 +3,8 @@ title: Epic insights
 description: Use the epic tracking widgets to understand epic health and track key projects in your organization.
 sidebar_position: 40
 sidebar_label: Epic insights
+redirect_from:
+  - /docs/software-engineering-insights/analytics-and-reporting/epic-insights
 ---
 
 Engineering leadership is responsible for delivering critical major projects, often tracked as Epics. To effectively monitor project progress, they need visibility into:

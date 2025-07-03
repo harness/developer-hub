@@ -2,6 +2,8 @@
 title:  Enable the module
 description: Enable the Harness Software Engineering Insights module in your account
 sidebar_position: 5
+redirect_from:
+  - /docs/software-engineering-insights/get-started/enable-the-sei-module
 ---
 Harness SEI is currently available to a limited set of customers. To get started, send an email to [support@harness.io](mailto:support@harness.io) for a demo and a Harness specialist will get you going.
 

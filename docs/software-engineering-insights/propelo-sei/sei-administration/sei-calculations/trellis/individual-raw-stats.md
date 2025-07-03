@@ -5,6 +5,7 @@ sidebar_label: Individual Raw Stats
 sidebar_position: 20
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/trellis-calculations/individual-raw-stats
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/trellis/individual-raw-stats
 ---
 
 This topic describes a calculation example for the Individual Raw Stats report:

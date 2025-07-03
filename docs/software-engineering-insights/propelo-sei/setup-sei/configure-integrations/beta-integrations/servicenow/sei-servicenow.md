@@ -5,6 +5,7 @@ sidebar_position: 10
 sidebar_label: Connect with ServiceNow
 redirect_from:
     - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow
 ---
 
 import Tabs from '@theme/Tabs';

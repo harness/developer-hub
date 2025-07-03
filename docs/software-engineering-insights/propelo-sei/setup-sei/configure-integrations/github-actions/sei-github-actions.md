@@ -5,6 +5,7 @@ sidebar_position: 45
 sidebar_label: Connect with Github actions
 redirect_from:
     - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github-actions/sei-github-actions
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/github-actions/sei-github-actions
 ---
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts.

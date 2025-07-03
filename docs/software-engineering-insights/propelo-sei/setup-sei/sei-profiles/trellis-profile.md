@@ -2,6 +2,8 @@
 title: Trellis profile
 description: Create a Trellis profile to get a Trellis Score.
 sidebar_position: 20
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile
 ---
 
 Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. [Trellis Scores](/docs/category/trellis-scores) are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor.

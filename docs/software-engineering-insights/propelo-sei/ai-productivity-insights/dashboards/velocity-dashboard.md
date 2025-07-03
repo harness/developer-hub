@@ -3,7 +3,8 @@ title: Velocity dashboard
 description: Measure AI productivity insights
 sidebar_position: 12
 sidebar_label: Velocity
-
+redirect_from:
+  - /docs/software-engineering-insights/ai-productivity-insights/dashboards/velocity-dashboard
 ---
 
 This dashboard shows a clear comparison of how fast teams work with AI versus without AI. Think of it as a speedometer for your dev team — it helps you track progress across key metrics such as PR lead time, commit frequency, and code volume.

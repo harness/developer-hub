@@ -4,6 +4,7 @@ description: PagerDuty is an incident response platform.
 sidebar_position: 40
 redirect_from:
     - /docs/software-engineering-insights/sei-metrics-and-reports/quality-metrics-reports/pagerduty-reports
+    - /docs/software-engineering-insights/analytics-and-reporting/quality-metrics-reports/pagerduty-reports
 ---
 
 PagerDuty is an incident response platform for IT departments. To analyze your PagerDuty data in SEI, set up a [PagerDuty SEI integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty), and then add PagerDuty reports to your [Insights](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights).

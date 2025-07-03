@@ -5,6 +5,7 @@ sidebar_position: 5
 sidebar_label: Overview
 redirect_from:
     - /docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-onboarding
+    - /docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/dora-onboarding
 ---
 
 ## What is DORA
@@ -310,4 +311,4 @@ The following Issue Management Platforms are supported for calculating the DORA 
   * [Custom CICD](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration)
     * Integration can be set up by using your own custom implementation through webhooks.
 
-To learn more about all the supported integrations on SEI, go to [What's Supported](/docs/software-engineering-insights/sei-supported-platforms)
+To learn more about all the supported integrations on SEI, go to [What's Supported](/docs/software-engineering-insights/sei-supported-platforms).

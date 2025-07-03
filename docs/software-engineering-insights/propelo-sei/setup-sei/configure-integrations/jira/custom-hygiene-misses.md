@@ -3,7 +3,8 @@ title: Add custom hygiene misses
 description: Configure the hygiene settings for the Jira integration
 sidebar_position: 8
 sidebar_label: Add custom hygiene misses
-
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/jira/custom-hygiene-misses
 ---
 
 The [Issue Hygiene Report widget](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/hygiene-metrics#issue-hygiene-reports) uses data from Jira to calculate hygiene scores.

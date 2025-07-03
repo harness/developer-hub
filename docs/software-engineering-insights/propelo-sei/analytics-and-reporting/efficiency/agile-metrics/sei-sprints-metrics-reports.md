@@ -6,6 +6,7 @@ sidebar_label: Sprints Metrics Reports
 canonical_url: https://www.harness.io/blog/top-3-sprint-metrics-to-measure-developer-productivity
 redirect_from:
   - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sprint-metrics/sei-sprints-metrics-reports
+  - /docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports
 ---
 
 You can use the sprint metrics reports to analyze sprint and planning metrics.

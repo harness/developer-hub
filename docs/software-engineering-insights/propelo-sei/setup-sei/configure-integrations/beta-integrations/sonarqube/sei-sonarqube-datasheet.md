@@ -3,6 +3,8 @@ title: Sonarqube Datasheet
 description: A complete list of metadata ingested by SEI from Sonarqube
 sidebar_label: Sonarqube Datasheet
 sidebar_position: 20
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/sonarqube/sei-sonarqube-datasheet
 ---
 SEI uses Rest APIs to connect to Sonarqube. Using these API calls SEI ingests
 metadata for Sonar issues, analyses, projects, and quality gates. This metadata is

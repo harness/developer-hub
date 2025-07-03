@@ -4,6 +4,7 @@ description: Trellis Scores helps you understand your team's productivity.
 sidebar_position: 70
 redirect_from:
     - /docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/trellis-score-reports
+    - /docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports
 ---
 
 Trellis Score reports provide valuable insights into developer performance and facilitate data-driven decision-making. Add these widgets to your Insights to analyze Trellis Scores.
@@ -274,4 +275,4 @@ The report displays the breakdown of the base values as average that contribute 
 </tr>
 </table>
 
-You can edit the widget to show different values (add/remove columns) or apply filtering. To learn more, refer to the [Trellis Calculation guide](/docs/category/trellis-calculations)
+You can edit the widget to show different values (add/remove columns) or apply filtering. To learn more, refer to the [Trellis Calculation guide](/docs/category/trellis-calculations).

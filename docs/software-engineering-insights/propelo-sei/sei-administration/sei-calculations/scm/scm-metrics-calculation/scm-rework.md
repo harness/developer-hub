@@ -5,6 +5,7 @@ sidebar_label: SCM Rework
 sidebar_position: 21
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-metrics-calculation/scm-rework
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-metrics-calculation/scm-rework
 ---
 
 This topic provides a guide on how the Rework metric is calculated on SEI.

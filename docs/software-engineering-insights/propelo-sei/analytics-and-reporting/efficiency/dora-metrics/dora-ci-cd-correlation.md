@@ -5,6 +5,7 @@ sidebar_position: 15
 sidebar_label: CI/CD Correlation
 redirect_from:
     - /docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-ci-cd-correlation
+    - /docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/dora-ci-cd-correlation
 ---
 
 SEI can connect to one or more CI/CD integrations. The jobs and executions are normalized and can be correlated across multiple sources. For example, you could be using Jenkins as your CI platform and Harness as the CD.

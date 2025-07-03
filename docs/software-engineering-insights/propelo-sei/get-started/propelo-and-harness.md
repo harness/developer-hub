@@ -2,6 +2,8 @@
 title: Propelo and Harness
 description: Propelo is now Harness SEI.
 sidebar_position: 4
+redirect_from:
+  - /docs/software-engineering-insights/get-started/propelo-and-harness
 ---
 
 <CTABanner

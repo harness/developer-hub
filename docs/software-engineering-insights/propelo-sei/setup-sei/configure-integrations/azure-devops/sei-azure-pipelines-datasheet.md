@@ -3,6 +3,8 @@ title: Azure Pipelines Datasheet
 description: A complete list of metadata ingested by SEI from Azure Pipelines
 sidebar_label: Pipelines Metadata
 sidebar_position: 56
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-azure-pipelines-datasheet
 ---
 
 SEI uses Rest APIs to connect to Azure Pipelines. Using these API calls SEI ingests metadata for builds, pipelines and releases data.

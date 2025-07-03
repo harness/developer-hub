@@ -3,6 +3,8 @@ title: SEI Data Lifecycle
 description: Create & manage API keys for Harness SEI module
 sidebar_label: SEI Data Lifecycle
 sidebar_position: 21
+redirect_from:
+  - /docs/software-engineering-insights/sei-administration/sei-data-lifecycle
 ---
 
 This topic outlines the simplified architecture for the Harness Software Engineering Insights module, including its ingestion process and data flow across the various stages.

@@ -5,6 +5,7 @@ sidebar_position: 2
 sidebar_label: Jenkins plugin
 redirect_from:
     - /docs/software-engineering-insights/sei-integrations/jenkins/jenkins-plugin
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/jenkins/jenkins-plugin
 ---
 
 :::note

@@ -3,6 +3,8 @@ title: Github Datasheet
 description: A complete list of metadata ingested by SEI from Github
 sidebar_label: Metadata
 sidebar_position: 20
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-datasheet
 ---
 SEI uses Rest APIs to connect to Github. Using these API calls SEI ingests metadata
 for Github commits, pull requests, issues, repositories, tags, and users. This metadata

@@ -5,6 +5,7 @@ sidebar_position: 13
 sidebar_label: Sprint Metrics
 redirect_from:
   - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sprint-metrics/sei-sprints-metrics
+  - /docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics
 ---
 
 ## What are Sprint metrics?

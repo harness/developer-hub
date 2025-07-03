@@ -5,6 +5,7 @@ sidebar_label: SCM Commits
 sidebar_position: 30
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-metrics-calculation/scm-commits
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-metrics-calculation/scm-commits
 ---
 
 This topic provides a guide on how SCM commits are fetched from various SCM providers on SEI.

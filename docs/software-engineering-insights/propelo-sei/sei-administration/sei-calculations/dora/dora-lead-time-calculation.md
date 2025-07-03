@@ -5,6 +5,7 @@ sidebar_label: DORA Lead Time
 sidebar_position: 10
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation
 ---
 
 ### What is Lead Time?
@@ -26,7 +27,7 @@ When configured to calculate the Lead Time as the **Average time in stage**, the
 The median lead time is the duration by which half of the tasks or tickets are completed. It gives a sense of the typical completion time by showing the point where half of the tasks are finished faster and the other half take longer.
 This is the standard way to calculate the median lead time:
 
-For each stage in the worlkflow (for example: Stage 1, Stage 2, Stage 3, ..., Stage N), the median lead time is calculated across all tickets:
+For each stage in the workflow (for example: Stage 1, Stage 2, Stage 3, ..., Stage N), the median lead time is calculated across all tickets:
 
 ```bash
 Median Lead Time for Stage 1 = Median(Stage 1 Lead Times for all tickets)

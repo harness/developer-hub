@@ -5,6 +5,7 @@ sidebar_label: DORA MTTR
 sidebar_position: 25
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-mttr-calculation
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-mttr-calculation
 ---
 
 ### What is Mean Time to Restore?

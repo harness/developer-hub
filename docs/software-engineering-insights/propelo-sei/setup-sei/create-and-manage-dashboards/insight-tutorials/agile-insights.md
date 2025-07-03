@@ -4,6 +4,7 @@ description: Learn how to create an Sprint metrics Insights on Harness SEI.
 sidebar_position: 2
 redirect_from:
   - /tutorials/software-engineering-insights/sprint-metrics-insight
+  - /docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/agile-insights
 ---
 
 Effective sprint planning and delivery are crucial for Agile teams to meet project goals and deliver value to stakeholders. Sprint metrics play a pivotal role in assessing and improving the team's performance.

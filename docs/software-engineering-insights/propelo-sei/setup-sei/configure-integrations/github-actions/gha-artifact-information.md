@@ -3,6 +3,8 @@ title: Send artifact information to Harness SEI
 description: Step by step guide to send artifact information to Harness SEI
 sidebar_position: 50
 sidebar_label: Send artifact information
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/github-actions/gha-artifact-information
 ---
 
 This topic provides step-by-step instructions on how you can set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions.

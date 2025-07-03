@@ -5,6 +5,7 @@ sidebar_position: 100
 sidebar_label: Precalculation
 redirect_from:
     - /docs/software-engineering-insights/sei-metrics-and-reports/precalculated-reports
+    - /docs/software-engineering-insights/analytics-and-reporting/precalculated-widgets
 ---
 
 ## What is a precalculated report?

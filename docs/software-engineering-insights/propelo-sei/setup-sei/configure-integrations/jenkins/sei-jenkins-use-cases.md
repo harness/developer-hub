@@ -3,6 +3,8 @@ title: Jenkins Use Cases
 description: Recommended widgets and metrics for the Jenkins integration
 sidebar_position: 15
 sidebar_label: Jenkins Use Cases
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/jenkins/sei-jenkins-use-cases
 ---
 
 This topic provides use cases for some of the most popular widgets available with the Jenkins integration, which help teams measure metrics such as job frequency, success rate, duration, and lead time, supporting continuous improvement in delivery workflows.

@@ -2,6 +2,8 @@
 title: Collections
 description: Guide on how to use RBAC to define access control on SEI Collections.
 sidebar_position: 15
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/access-control/manage-access-control-for-collections
 ---
 
 # Manage access control for SEI Collections
