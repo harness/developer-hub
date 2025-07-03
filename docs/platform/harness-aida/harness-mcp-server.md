@@ -175,8 +175,8 @@ HARNESS_DEFAULT_PROJECT_ID=your_project_id \
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/harness/harness-mcp.git  
-cd harness-mcp
+git clone https://github.com/harness/mcp-server  
+cd mcp-server
 ```
 
 2. Build the binary:
