@@ -16,3 +16,17 @@ Harness now supports **Fail Fast** behavior:
   - Triggers the configured **failure strategy**, such as **pipeline rollback**.
 
 This is particularly useful in scenarios where early failures should halt the entire rollout.
+
+Here is a sample YAML for setting up fast fail in your pipeline:
+```yaml
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: PipelineRollback
+                spec:
+                  failAll: true
+```
+
+Adding `failAll: true` to the **failure strategy** at **stage level** will enable fail fast behavior.
