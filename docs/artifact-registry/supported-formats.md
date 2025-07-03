@@ -12,7 +12,8 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
   options={{
     Docker: {
       path: "/artifact-registry/content/supported-formats/docker-quickstart.md",
-      logo: "docker-logo.svg"
+      logo: "docker-logo.svg",
+      logoSize: 24
     },
     Maven: {
       path: "/artifact-registry/content/supported-formats/maven-quickstart.md",
@@ -21,11 +22,13 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
     },
     Generic: {
       path: "/artifact-registry/content/supported-formats/generic-quickstart.md",
-      logo: "generic-logo.svg"
+      logo: "generic-logo.svg",
+      logoSize: 20
     },
     Python: {
       path: "/artifact-registry/content/supported-formats/python-quickstart.md",
-      logo: "python-logo.svg"
+      logo: "python-logo.svg",
+      logoSize: 24
     },
     NPM: {
       path: "/artifact-registry/content/supported-formats/npm-quickstart.md",
@@ -43,6 +46,11 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
       path: "/artifact-registry/content/supported-formats/helm-quickstart.md",
       logo: "helm-logo.svg",
       logoSize: 28
+    },
+    Nuget: {
+      path: "/artifact-registry/content/supported-formats/nuget-quickstart.md",
+      logo: "nuget-logo.svg",
+      logoSize: 24
     }
   }}
 />
