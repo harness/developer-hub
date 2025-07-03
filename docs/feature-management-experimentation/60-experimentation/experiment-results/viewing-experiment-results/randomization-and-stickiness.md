@@ -13,7 +13,7 @@ Because each instance of the SDK is an independent targeting engine with no loca
 
 ### Harness FME targeting engine
 
-Hareness FME SDKs compute treatments very quickly. In Java, for instance, treatments are computed on the order of a few hundred microseconds. This means Harness FME can be used in the most performance-intensive components of your application.
+Harness FME SDKs compute treatments very quickly. In Java, for instance, treatments are computed on the order of a few hundred microseconds. This means Harness FME can be used in the most performance-intensive components of your application.
 
 To achieve this speed, FME by design, does not retain state. Specifically, after FME assigns a treatment to a user, it does not remember what was assigned. Given the scale of our customers' use cases, retaining a history of every treatment assigned to every key would negatively impact the requirements for speed and size efficiency in our SDKs.
 
@@ -21,7 +21,7 @@ For feature flags that use traffic allocation or percentage rollouts, FME uses a
 
 Of course, if you change the feature flag's targeting rules, some users may be moved from one treatment to another. This could happen if they fall under a different rule or if the percentages in a rule are changed. That is the intent for an overwhelming number of use cases but is not ideal in some scenarios.
 
-More information on how Harness FME deterministic hashing and targeting engine work can be found [here](https://help.split.io/hc/en-us/articles/360043397251-Split-and-consistent-assignment-of-treatments) and [here](https://help.split.io/hc/en-us/articles/360030024391-How-does-Split-ensure-a-consistent-user-experience).
+More information on how Harness FME deterministic hashing and targeting engine work can be found [here](https://help.split.io/hc/en-us/articles/360043397251-Split-and-consistent-assignment-of-treatments) and [here](/docs/feature-management-experimentation/feature-management/faqs/ensure-a-consistent-user-experience).
 
 ## Experiment implications
 

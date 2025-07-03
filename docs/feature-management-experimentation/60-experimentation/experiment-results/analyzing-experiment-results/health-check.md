@@ -38,10 +38,10 @@ The seasonality effect is considered complete when the experiment has run for at
 
 #### Useful references:
 * [Reviewing metrics during an experiment](https://help.split.io/hc/en-us/articles/360021867572-Reviewing-metrics-during-an-experiment)
-* [Experimental review period](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings#experimental-review-period)
-* [Where did my statistical significance go?](https://help.split.io/hc/en-us/articles/360040999531-Where-did-my-statistical-significance-go)
-* [When are metrics automatically recalculated?](https://help.split.io/hc/en-us/articles/360019836212-When-are-metric-cards-updated)
-* [Sample size and sensitivity calculators](https://help.split.io/hc/en-us/articles/360034040851-Sample-size-and-sensitivity-calculators)
+* [Experimental review period](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#experimental-review-period)
+* [Where did my statistical significance go?](/docs/feature-management-experimentation/release-monitoring/metrics/statistical-significance/#troubleshooting)
+* [When are metrics automatically recalculated?](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-calculation-schedule/#when-are-metric-cards-updated)
+* [Sample size and sensitivity calculators](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/)
 
 ## Experimental review period completeness (for fixed horizon testing)
 
@@ -59,9 +59,9 @@ Fixed horizon testing is designed to detect subtle but consistent effects of exp
 The experimental review period will be complete when the experiment has run to the experiment end date. As a best practice, you can carefully evaluate that your experiment duration allows enough traffic (data entering your experiment) to raise the sensitivity (ability to find a minimal percentage impact) of your experiment to your desired level.
 
 #### Useful references:
-* [Using fixed horizons in experimental review periods](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings#using-fixed-horizons-in-experimental-review-periods)
-* [Review periods](https://help.split.io/hc/en-us/articles/360019836212-When-are-metric-cards-updated#h_01HA3275YF38N5TMFQBQVG6Q60)
-* [Sample size and sensitivity calculators](https://help.split.io/hc/en-us/articles/360034040851-Sample-size-and-sensitivity-calculators)
+* [Using fixed horizons in experimental review periods](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#using-fixed-horizons-in-experimental-review-periods)
+* [Review periods](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-calculation-schedule/)
+* [Sample size and sensitivity calculators](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/)
 
 ## Sample ratio
 
@@ -79,7 +79,7 @@ Accurate experiment results rely on the unbiased distribution of users across al
 Look for a design flaw in the experiment that might be preventing random sampling and causing a sample ratio mismatch.
 
 #### Useful references
-* [Sample ratio check](https://help.split.io/hc/en-us/articles/360020636472-Sample-ratio-check)
+* [Sample ratio check](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check/)
 * [How can I troubleshoot a Sample Ratio Mismatch in my feature flag?](https://help.split.io/hc/en-us/articles/360019981952-Sample-ratio-mismatch-check)
 * [Sample ratio mismatch calculator](https://help.split.io/hc/en-us/articles/360044715132-Sample-ratio-mismatch-calculator)
 
@@ -100,6 +100,6 @@ High sample exclusions in an experiment potentially introduce bias and reduce ge
 Examine the sample data that has come into the experiment, and consider why keys may have been reassigned treatments. To reduce the percentage of exclusions, you can introduce new data into the experiment (for example, by increasing feature flag traffic exposure) or redesign and restart the experiment with a new assignment source.
 
 #### Useful references
-* [Attribution and exclusion](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion#potential-complications) (see Exclusions)
-* [Reallocate](https://help.split.io/hc/en-us/articles/360020528352-Reallocate)
-* [Export data](https://help.split.io/hc/en-us/articles/360048120112-Export-data)
+* [Attribution and exclusion](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/attribution-and-exclusion/#potential-complications) (see Exclusions)
+* [Reallocate](/docs/feature-management-experimentation/feature-management/reallocate-traffic)
+* [Export data](/docs/feature-management-experimentation/feature-management/export-data/)

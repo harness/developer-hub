@@ -41,7 +41,7 @@ The Impact snapshot chart shows an up-to-date, aggregated view of the expected i
 
 ##### Dimensional analysis
 
-On the impact snapshot chart, you can analyze data for ___key metrics___ using [dimensional analysis](https://help.split.io/hc/en-us/articles/14824241665421-Using-dimensional-analysis). This allows you to:
+On the impact snapshot chart, you can analyze data for ___key metrics___ using [dimensional analysis](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/#using-dimensional-analysis). This allows you to:
 
 * **Unlock deeper insights.** Understand unexpected spikes in your metric results that are driving top-line metrics at a dimensional level.
 * **Run more data-driven experiments.** Iterate on your next hypotheses or run follow-up experiments using the insights gained on what worked or didn’t in past experiments.
@@ -50,7 +50,7 @@ On the impact snapshot chart, you can analyze data for ___key metrics___ using [
 [Multiple comparison correction](../../key-concepts/multiple-comparison-correction) is not applied to dimensional analysis.
 :::
 
-Before you can select a _dimension_ to analyze on the metric Impact snapshot, you need to send a corresponding _[event property](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties)_, for the event measured by the metric. (You can set event properties in code when you call the FME SDK's `track` method.) An Admin also needs to [configure dimensions and values](https://help.split.io/hc/en-us/articles/14824241665421-Using-dimensional-analysis#configuring-dimensions-and-values) to show them in the Select a dimension dropdown.
+Before you can select a _dimension_ to analyze on the metric Impact snapshot, you need to send a corresponding _[event property](/docs/feature-management-experimentation/experimentation/events/#event-properties)_, for the event measured by the metric. (You can set event properties in code when you call the FME SDK's `track` method.) An Admin also needs to [configure dimensions and values](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/#configuring-dimensions-and-values) to show them in the Select a dimension dropdown.
 
 To view dimensional analysis on the metric Impact snapshot:
 
@@ -128,7 +128,7 @@ This section of the table provides information about the metric's sample populat
 | Title | Description |
 | --- | --- | 
 | **In treatment** | The number of unique user keys that were served a treatment, and in some cases sent an event measured by the metric. | 
-| **Excluded** | The number of unique user keys excluded from the analysis. For more information, see the Exclusions section in [Attribution and exclusion](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion#potential-complications). | 
+| **Excluded** | The number of unique user keys excluded from the analysis. For more information, see the Exclusions section in [Attribution and exclusion](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/attribution-and-exclusion/#potential-complications). | 
 | **Sample size** | The number of unique user keys remaining in the sample after exclusions. |
 
 In most cases, the _In treatment_ value equals the number of user keys that were served a treatment. However, there are some metric definition settings that cause the _In treatment_ value to be ___less___ than the number of user keys that were served a treatment. (Consequently _Sample size_ would also be less.) These metric definition settings are explained below.

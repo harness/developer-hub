@@ -41,7 +41,7 @@ Hence, we recommend setting an alert threshold that is less extreme than any deg
 
 ## Using the calculators
 
-If you are unsure of any of the data required for the calculator we recommended looking at the metric results for a similar feature flag you have already ran, or running a "100% off" feature flag with your intended targeting rules. You can then find the sample size, metric value and standard deviation from the [Metric Details and Trends view](https://help.split.io/hc/en-us/articles/360025376251-Metrics-impact-Metric-details-and-trends) reached by clicking into the metric card.
+If you are unsure of any of the data required for the calculator we recommended looking at the metric results for a similar feature flag you have already ran, or running a "100% off" feature flag with your intended targeting rules. You can then find the sample size, metric value and standard deviation from the [Metric Details and Trends view](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends) reached by clicking into the metric card.
 
 ### Expected sample size during the monitoring window
 

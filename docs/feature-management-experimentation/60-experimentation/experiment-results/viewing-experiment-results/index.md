@@ -16,16 +16,16 @@ To view the impact of your feature rollout on your account's metrics, from your 
 
 The Metrics impact tab is described as follows:
 
-* **View impact for.** Select the version or a custom date, targeting rule, and treatments that you want to compare. When you select the treatment, you can see the number of unique keys in that treatment. For more information, refer to the [Apply filters guide](https://help.split.io/hc/en-us/articles/360020848451-Applying-filters).
+* **View impact for.** Select the version or a custom date, targeting rule, and treatments that you want to compare. When you select the treatment, you can see the number of unique keys in that treatment. For more information, refer to the [Apply filters guide](/docs/feature-management-experimentation/experimentation/metrics/setup/filtering/).
 * **Summary of metrics impact.** View how long your measurements have been running, and the last update time for the metrics displayed below. You can also force a recalculation of your metrics by clicking the Recalculate metrics button. This recalculation usually takes around 5 minutes but is dependent on the length of your experiment and the size of your data.
 * **Filter metrics.** Filter down to metrics with a positive or negative impact by clicking the tile. You can deselect and view all by clicking the tile again.
-* **Key metrics.** Select the key metrics that you want to monitor to help you evaluate the success of this feature. Learn about [Configuring feature flag alerting](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting) for your key metrics. Key metrics are recalculated on a schedule, or when you click the *Recalculate* button.
-* **Guardrail metrics.** Globally protected guardrail metrics adhere to an account-wide alerting policy. See the [Metric definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics#metric-categories) page for more information. Guardrail metrics are recalculated on a schedule, or when you click the *Recalculate* button.
+* **Key metrics.** Select the key metrics that you want to monitor to help you evaluate the success of this feature. Learn about [Configuring feature flag alerting](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/#setting-up-feature-flag-alerting) for your key metrics. Key metrics are recalculated on a schedule, or when you click the *Recalculate* button.
+* **Guardrail metrics.** Globally protected guardrail metrics adhere to an account-wide alerting policy. See the [Metric definition](/docs/feature-management-experimentation/experimentation/metrics/categories/) page for more information. Guardrail metrics are recalculated on a schedule, or when you click the *Recalculate* button.
 * **Supporting metrics.** Select the supporting metrics that you want to monitor for this experiment or feature rollout. These metrics should be important to you, but may not be your primary success metrics for this feature. Supporting metrics are recalculated on a schedule, or when you click the *Recalculate* button.
 
-To learn more about analyzing and filtering data on the Metrics Impact tab, see [Applying filters](https://help.split.io/hc/en-us/articles/360020848451).
+To learn more about analyzing and filtering data on the Metrics Impact tab, see [Applying filters](/docs/feature-management-experimentation/experimentation/metrics/setup/filtering/).
 
-For detailed information about specific metric cards, refer to [Understanding metric impact](https://help.split.io/hc/en-us/articles/360020890491-Understand-impact).
+For detailed information about specific metric cards, refer to [Understanding metric impact](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards/).
 
 ## Automated calculation frequency
 
