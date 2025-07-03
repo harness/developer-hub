@@ -86,6 +86,20 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## Delegate image release notes
 
+## July 2025
+
+### Version 25.06.86202 <!-- Jul 02, 2025 -->
+
+#### Fixed issues
+
+- Improved Kubernetes Manifest Logging: Large manifest YAMLs are now split into smaller chunks by individual resources to prevent log overload and improve readability. (CDS-111820)
+
+- Improved GitHub Enterprise support in GitOps pipelines by fixing hardcoded URLs and adding delegate access checks for PR merge steps. (CDS-111758)
+
+#### New features and improvements
+
+- Added logging to capture Kubernetes events during delegate shutdown. This will help in better understanding and troubleshooting shutdown behaviour by providing more visibility into related cluster events. [PL-60516]
+
 ## June 2025
 
 ### Version 25.06.86104 <!-- June 30, 2025 -->
