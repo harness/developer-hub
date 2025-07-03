@@ -37,7 +37,7 @@ You can create a Perspective for your resources using rules and filters. The fil
 * **Cost Categories**: You can create a perspective by filtering based on the cost categories you have created. To create cost categories, see [Use Cost Categories](../2-ccm-cost-categories/1-ccm-cost-categories.md).
 * **Region**: Each AWS, GCP, or Azure region you're currently running services in.
 * **Product**: Each of your active products with its cloud costs.
-* **Cloud Provider**: 
+* **Cloud Provider**: Filter and group costs by the cloud service provider (AWS, GCP, Azure, or Kubernetes clusters) to analyze spending across different cloud platforms.
 * **Label**: Each label that you assign to your AWS resources. You can select a label name to get more granular details of your label. For more information, go to [Tagging your AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html). For tags to appear in the Perspective, you must activate the user-defined cost allocation tags in the AWS Billing and Cost Management console. For more information, go to [Activating User-Defined Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html). CCM updates the tag keys as follows:
 	+ For the user-defined tags, `user_` prefix is added.
 	+ For the AWS system tags, `aws_` prefix is added.
