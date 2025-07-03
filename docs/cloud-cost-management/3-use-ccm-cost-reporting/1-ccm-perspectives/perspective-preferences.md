@@ -135,8 +135,12 @@ Currently, Harness CCM considers only three types of discounts under the LineIte
 To know how to analyze the AWS perspective data, go to [Analyze cost for AWS](../3-root-cost-analysis/analyze-cost-for-aws.md).
 
 ## GCP preferences
+
+<DocImage path={require('./static/gcp-p.png')} width="70%" height="70%" title="Click to view full size image" />
+
 The following cost factors retrieved from your GCP Billing Export data can be included or excluded in your perspectives for a more comprehensive view of your cloud costs.
 * **Include Discounts**: Includes any discounts that GCP applied to your usage. 
+* **Include Promotions**: Includes promotional credits offered by GCP.
 * **Include Taxes**: Includes any taxes that GCP applied to your bill. For example, VAT or US sales tax. This option is enabled by default.
   
 To know how to analyze the perspective data, go to [Analyze cost for GCP](../3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md).
