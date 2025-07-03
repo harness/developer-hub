@@ -218,8 +218,6 @@ When creating your perspective, the **Preferences** section allows you to includ
 
 #### AWS Cost Types
 
-
-
 * **Net Amortized Cost**: The actual cost of using resources, accounting for **upfront payments** made for **Reserved Instances**. It evenly spreads the upfront costs over the **reservation term**, considers **monthly fees**, and includes discounts like **RI volume discounts**.
 
 * **Blended Cost**: The total cost of using AWS services, which includes both **upfront** and **usage-based charges**, divided by the total number of usage units. **Blended rates** are the rates associated with total usage in an organization averaged across accounts. For a line item, the blended cost is **usage multiplied by the blended rate**. The blended cost is the cost attributed to the account's usage as a **linked account** in an organization.
@@ -256,6 +254,7 @@ The following cost factors retrieved from your GCP Billing Export data can be in
 
 * **Include Discounts**: Includes any discounts that GCP applied to your usage. 
 * **Include Taxes**: Includes any taxes that GCP applied to your bill. For example, VAT or US sales tax. This option is enabled by default.
+* **Include Promotions**: Includes all 
 
 </TabItem>
 <TabItem value="azure" label="Azure">
