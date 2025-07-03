@@ -47,6 +47,10 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 <!-- 2025-06-30 -->
 
+#### New features and enhancements
+
+- Added support for **Clone Codebase** field as Harness expression. (CI-17024)
+ 
 #### Fixed issues
 - Fixed an issue where the codebase icon in the right sidebar of Pipeline Studio was incorrectly showing a failed state when the **repoName** in the codebase configuration was set as a runtime input. (ZD-84658, CI-17640)
 - Fixed an issue where expressions in environment variables for Build and Push steps were not evaluated if they depended on values (e.g., output variables) produced by earlier steps. This occurred because evaluation happened too early during stage initialization. Expressions are now evaluated just before step execution, ensuring correct resolution. (CI-17763, ZD-85822)
