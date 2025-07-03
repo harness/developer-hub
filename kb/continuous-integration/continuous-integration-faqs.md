@@ -2833,6 +2833,42 @@ If it is operating as expected, the Kaniko CLI will show the following in the CL
 /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=destination/repo:1.0 --snapshotMode=redo --digest-file=/kaniko/digest-file --ignore-path=/opt/nodejs
 ```
 
+## Matrix Executions and Strategy FAQs
+
+### Why am I seeing the error "should map to single port" when using JSON-based matrix executions?
+
+When using JSON input to define matrix combinations, you may encounter the following error during CI pipeline execution: **should map to single port**.
+
+This typically occurs when the matrix input is dynamically constructed from a JSON object — and the ordering of keys in the matrix input is not preserved during evaluation. This can lead to internal mismatches between matrix labels and execution steps.
+
+#### Root Cause
+The issue arises from non-deterministic key ordering in matrix inputs derived from JSON strings. Engines like Jackson or the default Java Map do not guarantee key order, which causes:
+
+- Inconsistent step identifiers between Initialize and Run steps
+
+- Internal parsing errors
+
+- Label mismatch during Kubernetes pod creation
+
+#### Workarounds
+
+Option 1: Disable Matrix Labels By Name
+- Go to Pipeline Settings
+- Uncheck the “Enable Matrix Labels By Name” option
+
+Disabling this option prevents Harness from generating Kubernetes labels based on matrix key values, avoiding the problem entirely.
+
+Option 2: Explicitly Define nodeName
+You can override the auto-generated node name by providing a stable, predictable naming pattern in your matrix config:
+
+```yaml
+strategy:
+  matrix:
+    service: [svc1, svc2, svc3]
+    env: [env1, env2]
+    nodeName: stage_<+matrix.service>_<+matrix.env>
+```
+This bypasses the default label generator logic that may be affected by unordered JSON keys.
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 
