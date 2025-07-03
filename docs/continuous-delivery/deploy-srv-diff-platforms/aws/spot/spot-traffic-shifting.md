@@ -330,3 +330,5 @@ This example outlines the basic flow you can follow when implementing Elastigrou
 2. Add an **Elastigroup Blue Green Traffic** step (inherit or standalone) to begin shifting traffic incrementally.
 3. **(Optional)** Add an **approval step** to control progression between shifts.
 4. Repeat the **Elastigroup Blue Green Traffic ** steps to gradually increase traffic to 100%. 
+
+For a detailed example of how to implement Elastigroup Blue-Green traffic shifting, including the pipeline YAML, check out the [Harness community repo](https://github.com/harness-community/harnesscd-example-apps/tree/master/aws-blue-green-traffic-shift/spot-elastigroup-blue-green-traffic-shifting).
