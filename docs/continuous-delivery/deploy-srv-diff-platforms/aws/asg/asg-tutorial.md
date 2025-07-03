@@ -1875,6 +1875,25 @@ Blue/Green deployments are achieved by swapping routes between the target groups
 
 For more information on how to configure blue-green traffic shifting, refer to [ASG Blue-Green Traffic Shifting Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-traffic-shift)
 
+## Multi-ASG Deployments and Parallel Rollback (Single Service/Environment/Infrastructure)
+
+:::note
+Currently, this feature is behind the feature flag: `CDS_ASG_MULTI_DEPLOY_ROLLBACK_SUPPORT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
+In an ASG stage, users can add multiple Deploy steps to deploy multiple Auto Scaling Groups (ASGs) for the same **service, environment, and infrastructure** combination. These steps can be executed in parallel or in sequence.
+
+Rollback is also triggered automatically on failure. A single Rollback step will initiate rollback for **all successfully deployed ASGs in parallel** within that stage.
+
+You can also configure a [fail fast strategy](/docs/platform/pipelines/failure-handling/fast-fail) so that the pipeline immediately fails and skips remaining steps when any Deploy step fails.
+
+**Example**
+
+Suppose a stage contains four parallel Deploy steps, each deploying a different ASG. If one of the Deploy steps fails:
+
+- The failed ASG and all successfully deployed ASGs will be **rolled back in parallel**.
+- Any Deploy steps that had not yet executed will be **skipped**.
+
 ## Rollback Behavior with ASG Multi-Service Deployment
 
 Harness supports rollback for ASG multi-service deployments using a **single rollback step**. This means that even if you configure different delegate selectors for different deployment steps, only one delegate will be used for the rollback.
