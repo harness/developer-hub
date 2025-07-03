@@ -54,7 +54,7 @@ This section will guide you through creating a new chaos dashboard, and creating
 
 To create the query to customize the field, use [lookML](https://cloud.google.com/looker/docs/what-is-lookml) query. Provide a name and click **Save**.
 
-    ![save-field](./static/create-new/lookML-11.png)
+    ![save-field](./static/create-new/look-ml-11.png)
 
 ## Next steps
 

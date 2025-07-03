@@ -339,7 +339,7 @@ Test chaos experiments in the allowed namespaces to verify proper configuration:
 
 Run a pod-delete experiment targeting applications in `namespaceA`:
 
-![Namespace A Test](./static/namespace-considerations/nsA.png)
+![Namespace A Test](./static/namespace-considerations/ns-a.png)
 
 **Expected Result:** Experiment executes successfully with proper permissions.
 
@@ -347,7 +347,7 @@ Run a pod-delete experiment targeting applications in `namespaceA`:
 
 Run a pod-delete experiment targeting applications in `namespaceB`:
 
-![Namespace B Test](./static/namespace-considerations/nsB.png)
+![Namespace B Test](./static/namespace-considerations/ns-b.png)
 
 **Expected Result:** Experiment executes successfully with proper permissions.
 
