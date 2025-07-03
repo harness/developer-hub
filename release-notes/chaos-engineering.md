@@ -117,9 +117,6 @@ Listed below are the images to download to use image registry with Harness Deleg
 * **Custom URLs Support** - Enhanced chaos management services with vanity URL support for better branding and accessibility. (CHAOS-7920)
 
 ### Backend and Infrastructure
-* **AI-Powered Recommendations** - Enhanced chaos AI agent infrastructure with improved embeddings collection for better fault and probe recommendations. (CHAOS-8582, CHAOS-8575)
-
-* **Feature Flag Optimization** - Streamlined feature flag management by deprecating old flags in favor of unified umbrella flags. (CHAOS-8494)
 
 * **Improved ChaosGuard** - Fixed YAML mode issues for ChaosGuard conditions in Linux and Windows infrastructures. (CHAOS-8146)
 
