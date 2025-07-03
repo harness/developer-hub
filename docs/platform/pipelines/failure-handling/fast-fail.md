@@ -1,5 +1,5 @@
 ---
-title: Fail Fast Pipeline Support
+title: Fail Fast Pipeline
 description: You can enable fail fast behavior in your pipelines.
 ---
 
