@@ -92,10 +92,10 @@ Listed below are the images to download to use [image registry with Harness Dele
 #### Images required
 Listed below are the images to download to use image registry with Harness Delegate.
 
-- harness/chaos-ddcr:1.61.11
-- harness/chaos-log-watcher:1.61.11
+- harness/chaos-ddcr:1.61.1
+- harness/chaos-log-watcher:1.61.1
 - harness/service-discovery-collector:0.41.0
-- harness/chaos-ddcr-faults:1.61.11
+- harness/chaos-ddcr-faults:1.61.2
 
 #### What's New
 
