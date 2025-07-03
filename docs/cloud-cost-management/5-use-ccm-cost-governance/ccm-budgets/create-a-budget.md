@@ -106,6 +106,8 @@ Harness will send an alert to the specified email addresses and Harness User Gro
 
 ![](./static/create-a-budget-07.png)
 
+For more information about how Alerts are processed and their function, please take a look at our [CCM Knowledgebase FAQ Budgets section](https://developer.harness.io/kb/cloud-cost-management/cloud-cost-management-faqs/#budgets), where we cover topics such as [the budget alert schedule](https://developer.harness.io/kb/cloud-cost-management/budget-schedule)
+
 ## Using the Budget Dashboard
 
 The **All** **Budgets** dashboard shows a summary of your budgets. By default, all your budgets are sorted based on the time created.
