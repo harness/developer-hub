@@ -24,16 +24,6 @@ Showing a login prompt to users can be important in the following use cases:
 * **Legal protection** by showing terms of use, data usage policies, or disclaimers before granting access.
 * **Security awareness** by reminding users of acceptable use policies, confidentiality requirements, or security best practices.
 
-## Why use this feature?
-
-This feature is especially helpful for:
-
-* **Security teams**, to consistently enforce policy awareness.
-* **Compliance officers**, to meet audit and regulatory requirements.
-* **IT administrators**, to ensure clear, consistent communication of rules across the organization.
-
-Any organization handling sensitive data or operating under compliance frameworks will benefit from enabling this feature.
-
 <!--configuration steps: how to enable this sign-in message-->
 
 ## Configuration Steps
