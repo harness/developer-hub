@@ -258,10 +258,6 @@ You can now view and filter pipeline executions based on the input sets used.
 
 - The **Inputs** tab of an execution shows the input sets applied, even when an overlay (multiple input sets) was selected during execution.
 
-:::info
-This feature is only available within individual pipeline views. Input sets are not visible or filterable in the **All Pipelines** execution list at the project level.
-:::
-
 <div align="center">
   <DocImage path={require('./static/input-sets-01.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
