@@ -32,7 +32,7 @@ Harness Chaos Engineering provides a comprehensive library of pre-built chaos fa
 <!-- Custom component -->
 
 import ChaosFaults from '@site/src/components/ChaosEngineering/ChaosFaults';
-import { categories } from './categories'
+import { categories } from './chaos-faults/categories'
 
 <ChaosFaults categories={categories} />
 
@@ -144,7 +144,7 @@ spec:
 
 ## Related Resources
 
-- [Common Tunables for All Faults](./common-tunables-for-all-faults)
-- [Creating Chaos Experiments](../../guides/chaos-experiments/)
-- [Resilience Probes](../../guides/probes/)
-- [Security Best Practices](../../security/)
+- [Common Tunables for All Faults](./chaos-faults/common-tunables-for-all-faults)
+- [Creating Chaos Experiments](../guides/chaos-experiments/)
+- [Resilience Probes](../guides/probes/)
+- [Security Best Practices](../security/)

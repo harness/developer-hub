@@ -1633,3 +1633,8 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
     font-size: 15px;
   }
 }
+
+/* Hide sidebar categories that are only for navigation context */
+.sidebar-hidden {
+  display: none !important;
+}

@@ -16,7 +16,7 @@ const getCategoryDetails = (category: string): Record<string, string> => {
   };
   const setDetails = (category: FaultCategory) => {
     details.icon = `${path}/${category}.svg`;
-    details.link = `${category}/`;
+    details.link = `/docs/chaos-engineering-new/faults/chaos-faults/${category}/`;
   };
   switch (category) {
     case FaultCategory.AWS:
