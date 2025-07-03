@@ -3,6 +3,8 @@ title: Azure Repos Datasheet
 description: A complete list of metadata ingested by SEI from Azure Repos
 sidebar_label: Repos Metadata
 sidebar_position: 50
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-azure-repos-datasheet
 ---
 
 SEI uses Rest APIs to connect to Azure Repos. Using these API calls SEI ingests metadata for commits and pull requests from Azure Repos service.

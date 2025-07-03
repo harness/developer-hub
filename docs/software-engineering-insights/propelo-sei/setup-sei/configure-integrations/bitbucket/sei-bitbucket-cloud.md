@@ -5,6 +5,7 @@ sidebar_position: 10
 sidebar_label: Connect with Bitbucket Cloud
 redirect_from:
   - /docs/software-engineering-insights/sei-integrations/bitbucket/sei-bitbucket-cloud
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud
 ---
 
 Bitbucket Cloud is a cloud-based platform for managing Git repositories. It's part of the Atlassian suite and is widely used for version control, collaboration, and DevOps workflows.

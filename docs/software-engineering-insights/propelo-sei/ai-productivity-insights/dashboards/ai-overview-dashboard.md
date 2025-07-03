@@ -3,7 +3,8 @@ title: Overview
 description: Measure AI productivity insights
 sidebar_position: 10
 sidebar_label: Overview
-
+redirect_from:
+  - /docs/software-engineering-insights/ai-productivity-insights/dashboards/ai-overview-dashboard
 ---
 
 The AI Insights overview dashboard presents a side-by-side comparison of productivity between teams using AI and those not using AI and how it impacts key factors such as quality, velocity and developer experience. The dashboard focuses on three key areas:

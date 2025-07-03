@@ -5,6 +5,7 @@ sidebar_label: Deployment Frequency
 sidebar_position: 15
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-deployment-frequency-calculation
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-deployment-frequency-calculation
 ---
 
 ### What is Deployment Frequency?

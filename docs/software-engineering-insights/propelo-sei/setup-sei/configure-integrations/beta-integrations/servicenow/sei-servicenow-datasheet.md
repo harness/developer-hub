@@ -3,6 +3,8 @@ title: ServiceNow Datasheet
 description: A complete list of metadata ingested by SEI from the ServiceNow platform
 sidebar_label: Metadata
 sidebar_position: 40
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow-datasheet
 ---
 
 SEI uses Rest APIs to connect to the ServiceNow platform. Using these API calls SEI
@@ -96,5 +98,4 @@ The full details of all the fields are mentioned below.
 
 ### ServiceNow custom fields
 
-The system ingests all the custom fields as created by the user from the
-ServiceNow platform.
+The system ingests all the custom fields as created by the user from the ServiceNow platform.

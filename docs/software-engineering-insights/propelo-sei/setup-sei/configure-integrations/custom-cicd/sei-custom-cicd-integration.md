@@ -5,6 +5,7 @@ sidebar_position: 1
 sidebar_label: Custom CI/CD integrations
 redirect_from:
     - /docs/software-engineering-insights/sei-integrations/custom-cicd/sei-custom-cicd-integration
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration
 ---
 
 SEI supports custom CI/CD integrations using the `/v1/custom-cicd` API. 

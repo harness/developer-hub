@@ -3,7 +3,8 @@ title: Sentiment & qualitative analysis
 description: Measure AI productivity insights
 sidebar_position: 15
 sidebar_label: Sentiment & qualitative analysis
-
+redirect_from:
+  - /docs/software-engineering-insights/ai-productivity-insights/sentiment-and-qualitative-analysis
 ---
 With SCM integrations, you can generate an in-depth report that reveals how much faster your team is with AI, assesses code quality, and collects feedback on their overall experience with the AI assistant.
 
@@ -167,4 +168,4 @@ Click **Create Report** once ready.
 Distribute the survey using the following methods:  
 
 * **Send Now:** Email the survey to participants immediately.  
-* **Send Later:** Save the survey link for manual distribution at another time.  
+* **Send Later:** Save the survey link for manual distribution at another time.

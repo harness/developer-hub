@@ -5,6 +5,7 @@ sidebar_label: Change Failure Rate
 sidebar_position: 20
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-change-failure-rate-calculation
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-change-failure-rate-calculation
 ---
 
 ### What is Change Failure Rate?

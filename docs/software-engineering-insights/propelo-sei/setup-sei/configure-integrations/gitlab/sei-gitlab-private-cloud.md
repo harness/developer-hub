@@ -5,6 +5,7 @@ sidebar_position: 15
 sidebar_label: Connect with GitLab Private Cloud
 redirect_from:
     - /docs/software-engineering-insights/sei-integrations/gitlab/sei-gitlab-private-cloud
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-gitlab-private-cloud
 ---
 
 GitLab Private Cloud is a managed, self-hosted version of GitLab. To connect with GitLab Cloud, go to [Connect with GitLa Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab).

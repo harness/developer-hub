@@ -5,6 +5,7 @@ sidebar_position: 15
 sidebar_label: Connect with SonarQube Server
 redirect_from:
     - /docs/software-engineering-insights/sei-integrations/beta-integrations/sonarqube/sei-sonar-self-managed
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/sonarqube/sei-sonar-self-managed
 ---
 
 To integrate SEI with on-premises SonarQube instances, you must use an Ingestion Satellite. The configuration steps for this integration are similar to those for Sonar Cloud, with the key difference being the use of the satellite for communication with the SonarQube server.

@@ -3,6 +3,8 @@ title: Measure incident recovery time using the DORA Mean Time to Restore report
 description: Measure your incident recovery time using the MTTR report
 sidebar_position: 135
 sidebar_label: Measure incident recovery time
+redirect_from:
+  - /docs/software-engineering-insights/get-started/early-access/metrics-reports/mttr-incident-recovery
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

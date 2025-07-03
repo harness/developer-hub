@@ -4,6 +4,7 @@ description: Learn how to create an Insight to measure Trellis Scores on Harness
 sidebar_position: 4
 redirect_from:
   - /tutorials/software-engineering-insights/trellis-insight
+  - /docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/trellis-insight
 ---
 
 Trellis Scores are a proprietary scoring mechanism from SEI that help you understand your team's productivity. Trellis Scores are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor, allowing for tailored assessments based on individual profiles.

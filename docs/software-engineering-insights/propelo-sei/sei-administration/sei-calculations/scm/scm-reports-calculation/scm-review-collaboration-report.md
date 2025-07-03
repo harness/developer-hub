@@ -5,6 +5,7 @@ sidebar_label: SCM Review Collaboration report
 sidebar_position: 20
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-reports-calculation/scm-review-collaboration-report
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-reports-calculation/scm-review-collaboration-report
 ---
 
 The report displays information about the **PR author** and the **Approver** details in each **Collaboration State**. The **Collaboration State** can be defined as the state in which the code is committed.

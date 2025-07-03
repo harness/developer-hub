@@ -5,6 +5,7 @@ sidebar_label: Trellis Score Report
 sidebar_position: 10
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/trellis-calculations/trellis-score-report
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/trellis/trellis-score-report
 ---
 The Trellis Score Report calculates and displays the Trellis Scores by individual developers.
 

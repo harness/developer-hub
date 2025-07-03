@@ -4,6 +4,7 @@ description: Analyze data related to issues in your issue management system.
 sidebar_position: 50
 redirect_from:
     - /docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/issues-reports
+    - /docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports
 ---
 
 Use these issues reports to analyze data related to issues in issue management systems, such as Jira. Some reports can also be used for support tickets and tickets or issues that cover multiple systems (support, issue management, SCM, and CI/CD).

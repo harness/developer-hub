@@ -2,6 +2,8 @@
 title: Overview
 description: Integrate your on-premise tools and custom integrations into your SEI project.
 sidebar_position: 1
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-overview
 ---
 
 Ingestion Satellite is used to integrate your on-premise tools and custom integrations into your SEI project. It enables data ingestion and integration with various third-party applications and services.

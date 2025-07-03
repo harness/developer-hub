@@ -2,6 +2,8 @@
 title: Table widgets
 description: Use Table reports to analyze data from Tables.
 sidebar_position: 45
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/sei-propels-scripts/table-reports
 ---
 
 Add Table reports to your [Insights](/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights) to analyze data from [Tables](./tables).

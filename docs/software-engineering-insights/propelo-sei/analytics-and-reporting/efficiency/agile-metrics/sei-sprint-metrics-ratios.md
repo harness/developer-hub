@@ -5,6 +5,7 @@ sidebar_position: 15
 sidebar_label: Sprint Metric Ratios
 redirect_from:
   - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sprint-metrics/sei-sprint-metrics-ratios
+  - /docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprint-metrics-ratios
 ---
 
 These ratios are calculated from sprint metrics.

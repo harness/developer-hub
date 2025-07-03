@@ -3,7 +3,8 @@ title: Sentiment analysis
 description: Measure AI productivity insights
 sidebar_position: 12
 sidebar_label: Sentiment analysis
-
+redirect_from:
+  - /docs/software-engineering-insights/ai-productivity-insights/sentiment-analysis
 ---
 
 Sentiment analysis evaluates the perceptions and feelings of developers toward the developer experience where AI code assistants may impact.It helps measure aspects like ease of use, satisfaction, productivity, and innovation.

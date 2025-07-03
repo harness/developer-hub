@@ -3,6 +3,8 @@ title: Build an Engineering Metrics Program
 description: Increase engineering productivity, efficiency and business impact.
 sidebar_position: 10
 sidebar_label: Build an Engineering Metrics Program
+redirect_from:
+  - /docs/software-engineering-insights/get-started/engineering-metrics-program
 ---
 
 Measuring software engineering excellence poses a significant challenge for most engineering organizations. 

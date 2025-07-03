@@ -4,6 +4,7 @@ description: Learn how to create an Insight to measure developer metrics i.e. SC
 sidebar_position: 5
 redirect_from:
   - /tutorials/software-engineering-insights/developer-insight
+  - /docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/developer-insight
 ---
 
 Understanding the health and productivity of your team is essential for any engineering organization. To achieve this, Developer Insights can be used as a collection of metrics that effectively showcase your team's value and performance.

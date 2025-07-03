@@ -6,6 +6,8 @@ helpdocs_topic_id:
 helpdocs_category_id: 
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/software-engineering-insights/get-started/sei-onboarding-guide
 ---
 Harness SEI analyzes data across all key DevOps tools to compute [DORA metrics and over 100 other insightful metrics](/docs/category/metrics-and-reports) that provide the missing insights to help you deliver software faster with better quality.
 

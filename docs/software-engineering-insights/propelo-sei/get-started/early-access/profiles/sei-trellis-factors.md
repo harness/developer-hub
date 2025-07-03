@@ -3,6 +3,8 @@ title: Trellis Factors
 description: Use the Trellis Factors to define the threshold for your Trellis Metrics calculation.
 sidebar_position: 15
 sidebar_label: Trellis Factors
+redirect_from:
+  - /docs/software-engineering-insights/get-started/early-access/profiles/sei-trellis-factors
 ---
 
 :::info

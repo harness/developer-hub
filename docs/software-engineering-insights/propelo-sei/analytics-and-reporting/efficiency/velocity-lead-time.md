@@ -4,6 +4,7 @@ description: Use these reports to analyze lead time metrics.
 sidebar_position: 15
 redirect_from:
     - /docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/velocity-lead-time
+    - /docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time
 ---
 
 Lead time measures elapsed time to deliver features, close issues, or complete workflows. For example, it can measure:

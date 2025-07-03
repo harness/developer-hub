@@ -3,6 +3,8 @@ title: Azure Boards Datasheet
 description: A complete list of metadata ingested by SEI from Azure Boards
 sidebar_label: Boards Metadata
 sidebar_position: 52
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-azure-boards-datasheet
 ---
 
 SEI uses Rest APIs to connect to Azure Boards. Using these API calls SEI ingests metadata for WorkItems, Teams, Iterations and other metadata.

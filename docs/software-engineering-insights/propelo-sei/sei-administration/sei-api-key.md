@@ -3,6 +3,8 @@ title: Manage Harness SEI API keys
 description: Create & manage API keys for Harness SEI module
 sidebar_label: Manage Harness SEI API keys
 sidebar_position: 20
+redirect_from:
+  - /docs/software-engineering-insights/sei-administration/sei-api-key
 ---
 
 Harness SEI APIs use module-specific API keys to authenticate requests. Currently, you can only create API keys for your personal account.

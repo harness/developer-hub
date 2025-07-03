@@ -5,6 +5,7 @@ sidebar_position: 1
 sidebar_label: Overview
 redirect_from:
   - /docs/software-engineering-insights/sei-insights
+  - /docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights
 ---
 
 Insights are dashboards that make it easy to visualize and interpret metrics that are captured by SEI. With a variety of out-of-the-box widgets, you can create Insights that show the data you care about most and help you understand your engineering team's effectiveness and efficiency.

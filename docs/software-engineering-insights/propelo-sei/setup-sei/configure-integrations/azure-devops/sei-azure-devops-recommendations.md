@@ -3,6 +3,8 @@ title: Azure DevOps Use Cases
 description: Recommended Widgets and Metrics for Azure DevOps Integration
 sidebar_label: Azure DevOps Use Cases
 sidebar_position: 56
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-azure-devops-recommendations
 ---
 
 This topic includes use cases for some of the most popular widgets used to measure developer metrics with the Azure DevOps integration.
@@ -71,7 +73,5 @@ Use SCM PR widgets to analyze the flow of PRs through your repositories, assess 
 Understanding rework is essential to improving code quality and maintaining high standards in development. The [SCM Rework widget](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights#scm-rework-report) tracks rework volumes over time, helping teams identify which areas of code are more prone to revisions and need improvement.
 
 :::info
-
 The Azure DevOps integration in SEI supports numerous other widgets. For more recommendations or to explore additional reports, contact [Harness Support](/docs/software-engineering-insights/sei-support) for guidance.
-
 :::

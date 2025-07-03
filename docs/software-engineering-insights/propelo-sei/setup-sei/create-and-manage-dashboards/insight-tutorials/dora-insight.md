@@ -4,6 +4,7 @@ description: Learn how to create an Insight to measure DORA metrics on Harness S
 sidebar_position: 3
 redirect_from:
   - /tutorials/software-engineering-insights/dora-insight
+  - /docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />

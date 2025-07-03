@@ -4,6 +4,7 @@ description: SonarQube is a tool that inspects code quality.
 sidebar_position: 50
 redirect_from:
     - /docs/software-engineering-insights/sei-metrics-and-reports/quality-metrics-reports/sonarqube-reports
+    - /docs/software-engineering-insights/analytics-and-reporting/quality-metrics-reports/sonarqube-reports
 ---
 
 SonarQube is an open-source platform designed for continuous inspection of code quality. It provides valuable insights into code issues, trends, and metrics to help organizations maintain high-quality software.

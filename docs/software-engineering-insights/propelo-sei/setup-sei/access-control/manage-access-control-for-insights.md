@@ -2,6 +2,8 @@
 title: Insights
 description: Guide on how to use RBAC to define access control on SEI Insights.
 sidebar_position: 5
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/access-control/manage-access-control-for-insights
 ---
 
 # Manage access control for SEI Insights

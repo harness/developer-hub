@@ -3,7 +3,8 @@ title: Jira Use Cases
 description: Recommended widgets and metrics for the Jira integration
 sidebar_position: 15
 sidebar_label: Jira Use Cases
-
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/jira/jira-recommendations
 ---
 
 For engineering leaders focused on optimizing Agile practices, tracking relevant Jira metrics is critical.
@@ -44,7 +45,5 @@ Hygiene refers to how well the team manages and tracks ongoing work, which suppo
 * [Issue Resolution Time report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/issues-reports)
 
 :::info
-
 The Jira integration in SEI supports numerous other widgets. For more recommendations or to explore additional widgets, contact [Harness Support](/docs/software-engineering-insights/sei-support) for guidance.
-
 :::

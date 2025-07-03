@@ -5,6 +5,7 @@ sidebar_label: SCM Rework report
 sidebar_position: 10
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-reports-calculation/scm-rework-report
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-reports-calculation/scm-rework-report
 ---
 
 In this example, we consider a software development team working on a given project.

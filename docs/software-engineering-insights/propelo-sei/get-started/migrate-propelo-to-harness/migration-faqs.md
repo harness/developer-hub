@@ -3,6 +3,8 @@ title: Migration FAQs
 description: Answers to common SEI migration questions.
 sidebar_position: 5
 sidebar_label: Migration FAQs
+redirect_from:
+  - /docs/software-engineering-insights/get-started/migrate-propelo-to-harness/migration-faqs
 ---
 
 This topic provides answers to common questions about migrating from the Propelo platform to Harness Software Engineering Insights (SEI).

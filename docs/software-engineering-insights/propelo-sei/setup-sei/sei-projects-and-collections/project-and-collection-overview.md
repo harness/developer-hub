@@ -2,6 +2,8 @@
 title: Project and collection hierarchies
 description: Learn how projects and Collections create hierarchies in SEI.
 sidebar_position: 10
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview
 ---
 
 Collection hierarchies in SEI keep data organized. At the top of the hierarchy is a [Harness project](/docs/category/organizations-and-projects). Under each project are Collection categories and one or more levels of Collections.

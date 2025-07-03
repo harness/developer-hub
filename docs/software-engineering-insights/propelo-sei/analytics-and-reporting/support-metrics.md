@@ -5,6 +5,7 @@ sidebar_position: 60
 sidebar_label: Support
 redirect_from:
     - /docs/software-engineering-insights/sei-metrics-and-reports/support-metrics
+    - /docs/software-engineering-insights/analytics-and-reporting/support-metrics
 ---
 
 This topic describes metrics and reports related to customer support, such as issues in Zendesk or SalesForce.

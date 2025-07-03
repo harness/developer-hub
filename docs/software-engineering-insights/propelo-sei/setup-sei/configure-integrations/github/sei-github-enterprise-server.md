@@ -5,6 +5,7 @@ sidebar_position: 10
 sidebar_label: Connect with GitHub Enterprise Server
 redirect_from:
     - /docs/software-engineering-insights/sei-integrations/github/sei-github-enterprise-server
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-enterprise-server
 ---
 
 GitHub Enterprise Server is a self-hosted version of GitHub designed for organizations that need to manage their repositories, code, and collaboration tools on their own infrastructure. To integrate Harness SEI with GitHub Cloud, go to [Connect with GitHub Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration).

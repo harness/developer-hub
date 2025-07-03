@@ -3,7 +3,8 @@ title: Harness CI/CD Use Cases
 description: Recommended Widgets and Metrics for Harness CI/CD Integration
 sidebar_position: 15
 sidebar_label: Harness CI/CD Use Cases
-
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-harness-cicd-recommendations
 ---
 
 This topic provides use cases for some of the most popular widgets available with the Harness CI/CD integration, which help teams measure metrics such as job frequency, success rate, duration, and lead time, supporting continuous improvement in delivery workflows.
@@ -42,7 +43,5 @@ Analyzing job duration can help to optimize build times and streamline CI/CD wor
 * [CI/CD Job Duration Trend Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/cicd-insights#cicd-job-duration-trend-report)
 
 :::info
-
 The Harness CI/CD integration in SEI supports numerous other widgets. For more recommendations or to explore additional widgets, contact [Harness Support](/docs/software-engineering-insights/sei-support) for guidance.
-
 :::

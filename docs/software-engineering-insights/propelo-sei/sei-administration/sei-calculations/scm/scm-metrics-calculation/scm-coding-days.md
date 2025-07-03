@@ -5,6 +5,7 @@ sidebar_label: SCM Coding Days
 sidebar_position: 40
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-metrics-calculation/scm-coding-days
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-metrics-calculation/scm-coding-days
 ---
 
 This topic provides a guide on how the **SCM Coding Days** metric is calculated across various SCM reports on SEI.

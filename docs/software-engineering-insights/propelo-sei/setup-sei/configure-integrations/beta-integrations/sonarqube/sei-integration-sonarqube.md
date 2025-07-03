@@ -5,6 +5,7 @@ sidebar_position: 10
 sidebar_label: Connect with Sonar Cloud
 redirect_from:
     - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sonarqube/sei-integration-sonarqube
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/sonarqube/sei-integration-sonarqube
 ---
 
 SonarQube is an open-source platform for continuous inspection of code quality to perform automatic reviews with static analysis of code to detect bugs, code smells, and security vulnerabilities on 20+ programming languages.

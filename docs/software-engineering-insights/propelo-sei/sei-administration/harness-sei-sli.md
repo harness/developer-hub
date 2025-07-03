@@ -3,6 +3,8 @@ title: Harness SEI SLIs
 description: How we compute uptime for different Harness SEI Services
 sidebar_label: Harness SEI SLIs
 sidebar_position: 20
+redirect_from:
+  - /docs/software-engineering-insights/sei-administration/harness-sei-sli
 ---
 
 This is a Harness operational reference guide for all the Service Level Indicators (SLIs) across the Harness Software Engineering Insights module. Our SLO gets calculated based on these user centric SLIs.

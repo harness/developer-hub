@@ -6,6 +6,8 @@ helpdocs_topic_id:
 helpdocs_category_id: 
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/software-engineering-insights/get-started/sei-key-concepts
 ---
 
 This page describes key concepts related to Harness SEI features and functionality, such as your Harness Projects, Collections, Insights, Integrations, Ingestion Satellite, Metrics & Reports, RBAC, and more.
@@ -80,4 +82,4 @@ SEI provides 3 different types of profiles:
 
 Metrics and Reports in SEI refer to various key performance indicators and data-driven insights that are used to assess and improve a software development team's performance and productivity. Reports are predefined widgets which can be customized and used for generating insights on tracking, analyzing, and optimizing different aspects of the development process.
 
-For more information, go to [Metrics & Reports](/docs/category/metrics-and-reports)
+For more information, go to [Metrics & Reports](/docs/category/metrics-and-reports).

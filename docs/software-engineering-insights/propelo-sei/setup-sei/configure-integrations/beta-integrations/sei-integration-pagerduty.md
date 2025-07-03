@@ -5,6 +5,7 @@ sidebar_position: 150
 sidebar_label: Connect with PagerDuty
 redirect_from:
     - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty
 ---
 
 PagerDuty specializes in a SaaS incident response platform for IT departments.

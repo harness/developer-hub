@@ -5,6 +5,7 @@ sidebar_label: SCM PRs report
 sidebar_position: 5
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-reports-calculation/scm-prs-report
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-reports-calculation/scm-prs-report
 ---
 
 The **SCM PRs Report** shows a high-level view of PRs moving through your SCM tool. The reports display data based on the selected metric. Find the list of supported metrics [here](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/productivity/developer-insights#scm-prs-report).

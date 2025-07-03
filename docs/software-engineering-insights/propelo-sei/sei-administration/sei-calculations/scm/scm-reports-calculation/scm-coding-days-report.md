@@ -5,6 +5,7 @@ sidebar_label: SCM Coding Days report
 sidebar_position: 20
 redirect_from:
     - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-reports-calculation/scm-coding-days-report
+    - /docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-reports-calculation/scm-coding-days-report
 ---
 
 The report displays the coding days count based on the selected settings in the widget configuration. \

@@ -3,6 +3,8 @@ title: Lead Time (Behind FF)
 description: A new calculation logic for computing the Lead Time metric.
 sidebar_position: 100
 sidebar_label: Lead Time (Behind FF)
+redirect_from:
+  - /docs/software-engineering-insights/get-started/early-access/metrics-reports/sei-lead-time-beta
 ---
 :::info
 Note that the **202404.1.1 Release** introduced a new calculation logic for computing the **Lead Time** metric.

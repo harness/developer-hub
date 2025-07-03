@@ -6,6 +6,7 @@ sidebar_label: Business Alignment profile
 redirect_from:
   - /docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/business-alignment-profile
   - /docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/business-alignment-profile
+  - /docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile
 ---
 
 Business Alignment metrics help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics that connects your engineering to the business value.

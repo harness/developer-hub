@@ -5,6 +5,7 @@ sidebar_position: 10
 sidebar_label: Overview
 redirect_from:
     - /docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/sei-trellis-scores-overview
+    - /docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/sei-trellis-scores-overview
 ---
 **Trellis Scores** are a proprietary productivity metric developed by SEI that provides a holistic understanding of software development team and individual performance. These scores are calculated based on a combination of key factors, including **Code Quality**, **Code Volume**, **Speed**, **Impact**, **Proficiency**, and **Collaboration**.
 

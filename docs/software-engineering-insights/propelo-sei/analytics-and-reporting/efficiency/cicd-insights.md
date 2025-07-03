@@ -4,6 +4,7 @@ description: These widgets show metrics related to CI/CD jobs.
 sidebar_position: 30
 redirect_from:
     - /docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports
+    - /docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights
 ---
 
 Use CI/CD job reports to analyze metrics and trends related to CI/CD job runs. This data helps you achieve a comprehensive understanding of how CI/CD practices have been adopted and utilized within your organization, including:

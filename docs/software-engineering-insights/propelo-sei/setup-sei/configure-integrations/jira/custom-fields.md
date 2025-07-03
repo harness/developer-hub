@@ -3,7 +3,8 @@ title: Add custom field mapping
 description: Configure the custom field settings for the Jira integration
 sidebar_position: 9
 sidebar_label: Add custom field mapping
-
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/jira/custom-fields
 ---
 
 You can map the custom fields from Jira into the SEI system. This will let you use this custom field as filters while setting up the widget settings, collection definition, and profile settings while using the Jira integration.

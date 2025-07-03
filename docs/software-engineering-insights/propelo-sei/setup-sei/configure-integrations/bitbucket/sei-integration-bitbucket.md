@@ -6,6 +6,7 @@ sidebar_label: Connect with Bitbucket Data Center
 canonical_url: https://www.harness.io/blog/bitbucket-servers-sunset
 redirect_from:
   - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-integration-bitbucket
 ---
 
 Bitbucket is a web-based version control repository hosting service, for source code and development projects that use either Mercurial or Git revision control systems.

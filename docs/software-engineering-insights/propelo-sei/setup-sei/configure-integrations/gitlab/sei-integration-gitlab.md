@@ -5,6 +5,7 @@ sidebar_position: 10
 sidebar_label: Connect with GitLab Cloud
 redirect_from:
     - /docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/gitlab/sei-integration-gitlab 
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab
 ---
 
 GitLab is a DevOps platform that provides Git repos, CI/CD pipelines, issue management, and more.

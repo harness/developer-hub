@@ -3,6 +3,8 @@ title: Jira Datasheet
 description: A complete list of metadata ingested by SEI from Jira
 sidebar_label: Metadata
 sidebar_position: 20
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-datasheet
 ---
 
 SEI connects to Jira via REST APIs, that is used for ingesting metadata for Jira Issues, Projects, Users, Statuses, and Sprints. By default, SEI captures all standard fields across these entities, and users can also specify custom fields for ingestion.

@@ -2,6 +2,8 @@
 title: Propels overview
 description: Propels are a no-code/low-code automation framework.
 sidebar_position: 10
+redirect_from:
+  - /docs/software-engineering-insights/setup-sei/sei-propels-scripts/propels-overview
 ---
 
 Propels are a no-code/low-code automation framework that can work together with your orchestration scripts and additionally bring in human judgment. Users can get alerts, along with software development metrics, from Jira, GitHub, Jenkins, and many other tools. Propels can send reminders, route problems to the right people for solutions, and even escalate if a particular task is not completed within a given duration.
