@@ -272,9 +272,9 @@ This step uses a **GitHub connector** (configured as a third-party provider) and
 
 Now that you’ve cloned the Java cookiecutter template, the next step is to generate the actual service code using that template.
 
-Add a **Cookiecutter** step right after your Git Clone step. Since the template was already pulled in the previous step, you’ll treat it as a **Private** repository here — meaning the pipeline will use the locally cloned version.
+- Add a **Cookiecutter** step right after your Git Clone step. Since the template was already pulled in the previous step, you’ll treat it as a **Private** repository here — meaning the pipeline will use the locally cloned version.
 
-In the **Path for Template**, reference the same pipeline variable you used earlier:  
+- In the **Path for Template**, reference the same pipeline variable you used earlier:  
 `<+pipeline.variables.cookie_repo>`
 
 Next, configure the inputs that the template expects. These inputs should exactly match the keys defined in the `cookiecutter.json` file inside your template repo.
@@ -308,5 +308,46 @@ All of these are already defined as pipeline variables, so just use the expressi
       verbose: false
       overwriteIfExists: false
 ```
+
+### Step 4: Create a GitHub Repository for the Service
+
+Now that the Java service has been generated, the next step is to create a new GitHub repository to store the code. 
+
+This is done using the **CreateRepo** step. The repo can be created under an organization or a personal account — just make sure your GitHub connector has the correct permissions. 
+
+![create-repo](./static/java-onb/create-repo.png)
+
+
+| Field                   | Description                                                                 |
+|-------------------------|-----------------------------------------------------------------------------|
+| **Git Provider**        | Third-party Git provider – GitHub                                           |
+| **Repository Type**     | Choose `Public` or `Private` based on your needs                            |
+| **Connector**           | GitHub connector with repo creation permissions (OAuth or PAT)              |
+| **Organization**        | `<+pipeline.variables.organization>` – target GitHub org name               |
+| **Repository Name**     | `<+pipeline.variables.repo_name>` – the repo to be created                  |
+| **Description** (optional) | Short text describing the repository’s purpose                           |
+| **Default Branch**      | `main` – or any branch your organization prefers as default                 |
+| **Add Personal Account**| Enable if you're not using an org and want to push under your GitHub user   |
+
+> If you're using an organization account, provide its name through the `organization` variable. If not, you can check the **Add Personal Account** box to push it under your personal GitHub username.
+
+
+#### Sample YAML
+
+```yaml
+- step:
+    type: CreateRepo
+    name: CreateREPO
+    identifier: CreateREPO
+    spec:
+      connectorType: Github
+      connectorRef: account.name
+      organization: <+pipeline.variables.organization>
+      repository: <+pipeline.variables.repo_name>
+      repoType: public
+      defaultBranch: main
+      personalAccount: false
+```
+
 
 
