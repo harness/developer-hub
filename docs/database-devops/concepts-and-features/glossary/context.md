@@ -143,15 +143,15 @@ Using contexts in Liquibase allows teams to manage database changesets with prec
 
 ## FAQ
 
-### What is a context in Harness Database DevOps?
+### 1. What is a context in Harness Database DevOps?
 A context in Harness Database DevOps is a tag used to conditionally control which changesets are executed during a database update. It helps manage environment-specific changes, such as dev, test, or production.
 
-### What are some best practices for using contexts?
+### 2. What are some best practices for using contexts?
 - Use for test data: Tag test data with `context: test` to exclude it from production deployments.
 - Avoid using context for DB-specific logic: Instead, use the dbms attribute for targeting specific database types.
 - Use include context inheritance: Add context in `<include>` or `<includeAll>` tags to propagate across included changelogs.
 
-### Can I assign more than one context to a single changeset?
+### 3. Can I assign more than one context to a single changeset?
 Yes, you can assign multiple contexts to a changeset by separating them with commas. For example:
 
 ```yaml
