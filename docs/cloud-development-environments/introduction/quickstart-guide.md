@@ -12,7 +12,7 @@ redirect_from: /docs/cloud-development-environments/introduction/beta-usage
 - All Gitspaces in this model run entirely within the **Harness Cloud (Harness-managed infrastructure)**.
 - **No infrastructure setup** is needed — you can create and launch a Gitspace in just a few minutes, **without any configuration**.
 
-## Get Started with Harness-Hosted GitSpaces
+## Get Started with Harness-Hosted Gitspaces
 
 ### Prerequisite
 
