@@ -23,6 +23,16 @@ You can also create PRs by [comparing branches](../work-in-repos/branch.md#compa
 
 :::
 
+### Compare & Pull Request Banner
+
+When a commit is pushed to a branch without an existing pull request, Harness Code Repository displays a banner at the top of the repository page:
+
+<DocImage path={require('/docs/code-repository/pull-requests/static/pr-banner-on-new-change.png')} />
+
+:::note
+The banner appears only if the pushed branch does not have an open pull request.
+:::
+
 ## Close a pull request
 
 If you decide a pull request is invalid or not ready for review, you can close it.
