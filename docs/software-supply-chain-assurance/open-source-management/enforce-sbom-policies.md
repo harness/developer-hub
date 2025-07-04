@@ -1,11 +1,12 @@
 ---
 title: Enforce SBOM policies
 description: Use SCS to implement SBOM Policy Enforcement.
-sidebar_position: 20
+sidebar_position: 21
 redirect_from:
   - /docs/software-supply-chain-assurance/ssca-policies/enforce-ssca-policies
   - /docs/software-supply-chain-assurance/ssca-policies/overview
   - /docs/software-supply-chain-assurance/sbom-policies/enforce-sbom-policies
+  - /docs/software-supply-chain-assurance/sbom-policies/overview
 ---
 
 import Tabs from '@theme/Tabs';

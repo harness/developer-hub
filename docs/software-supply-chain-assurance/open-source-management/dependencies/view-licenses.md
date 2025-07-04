@@ -3,6 +3,9 @@ title: License Reports
 sidebar_label: License Reports
 description: View License Reports across the projects using Harness Dashboards
 sidebar_position: 2
+redirect_from:
+
+- /docs/software-supply-chain-assurance/reports/view-license-reports
 ---
 
 Software licenses generally fall into different categories or families, each with its own set of rules and obligations. Harness groups the licenses into four different categories which are called License Families.

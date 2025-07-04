@@ -3,6 +3,9 @@ title: Compliance Summary
 sidebar_label: Compliance Summary
 description: Assess and understand the risk posture of your software supply chain
 sidebar_position: 3
+redirect_from:
+
+- /docs/software-supply-chain-assurance/manage-risk-and-compliance/manage-compliance-posture
 ---
 
 The Compliance section within the SCS module serves as a hub for assessing and understanding the risk posture of your entire supply chain. This section is indispensable for GRC (Governance, Risk, and Compliance) and security teams as it provides detailed evaluation results after applying all relevant rules to various target types within your supply chain. You can access a thorough summary of these evaluations, including the specific rules applied, their execution statuses, and the target types impacted by each rule.

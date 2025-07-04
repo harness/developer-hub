@@ -1,11 +1,13 @@
 ---
 title: Generate and Manage Software Bill of Materials (SBOM)
 description: Generate SBOM for Artifacts using Harness SCS
-sidebar_position: 10
+sidebar_position: 9
 sidebar_label: Generate SBOM for Artifacts
 redirect_from:
-  - /docs/software-supply-chain-assurance/generate-sbom
+  - /docs/software-supply-chain-assurance/sbom/generate-sbom
   - /tutorials/secure-supply-chain/generate-sbom
+  - /docs/software-supply-chain-assurance/sbom/sbom-drift
+  - /docs/software-supply-chain-assurance/sbom/sbom-score
 ---
 
 import Tabs from '@theme/Tabs';

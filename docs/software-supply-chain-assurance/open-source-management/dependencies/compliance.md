@@ -3,6 +3,8 @@ title: Compliance Reports
 sidebar_label: Compliance Reports
 description: View Compliance Reports across the Repos using Harness Dashboards
 sidebar_position: 3
+redirect_from:
+- /docs/software-supply-chain-assurance/open-source-management/dependencies/compliance
 ---
 
 
@@ -36,7 +38,7 @@ This dashboard provides a centralized view of repository-level compliance evalua
 
 **Rule ID**: Unique identifier of the compliance rule.
 
-**Rule Name**:Name/summary of the compliance check.
+**Rule Name**: Name/summary of the compliance check.
 
 **Remediation**: Recommended fix or policy to meet the rule.
 
