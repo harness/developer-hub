@@ -1,0 +1,23 @@
+# stop the tasks of an ECS cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-task-stop
+    spec:
+      components:
+        env:
+        # provide the name of ECS cluster
+        - name: CLUSTER_NAME
+          value: 'demo'
+        - name: SERVICE_NAME
+          vale: 'test-svc'
+        - name: REGION
+          value: 'us-east-1'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'

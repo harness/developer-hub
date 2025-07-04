@@ -1535,6 +1535,18 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   background-repeat: no-repeat;
 }
 
+.sidebar-ce-new > div > a::before,
+.sidebar-ce-new > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/icon_ce.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 /*******************sidebar logo css end*******************/
 
 /*** /docs  cards css arranged in alphabetical  order ****/
@@ -1620,4 +1632,9 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   .navbar__items {
     font-size: 15px;
   }
+}
+
+/* Hide sidebar categories that are only for navigation context */
+.sidebar-hidden {
+  display: none !important;
 }

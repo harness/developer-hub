@@ -1,0 +1,9 @@
+{
+  "position": 10,
+  "label": "Legacy Infrastructure",
+  "collapsible": "true",
+  "collapsed": "true",
+  "customProps": {
+    "description": "Legacy infrastructure facilitated by Harness CE."
+  }
+}

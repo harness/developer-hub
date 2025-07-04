@@ -1,0 +1,20 @@
+# contains route table cidr for given region
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vpc-route-misconfiguration
+    spec:
+      components:
+        env:
+        # target route table cidr for the chaos
+        - name: TARGET_ROUTE_CIDRS
+          value: '10.1.0.0/16,0.0.0.0/0'
+        - name: TARGET_ROUTE_TABLE_IDS
+          value: 'rtb-212'
+        - name: VPC_ID
+          value: 'vpc-21312'

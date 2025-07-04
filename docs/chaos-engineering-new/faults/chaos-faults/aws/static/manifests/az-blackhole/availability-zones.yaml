@@ -1,0 +1,19 @@
+# contains az blackhole for given az
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: az-blackhole
+      spec:
+        components:
+          env:
+            # target availability zones for the chaos
+            - name: AVAILABILITY_ZONES
+              value: 'us-east-1a,us-east-1b'
+            # region for chaos
+            - name: REGION
+              value: 'us-east-1'

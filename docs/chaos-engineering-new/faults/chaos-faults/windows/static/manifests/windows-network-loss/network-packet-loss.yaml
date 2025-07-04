@@ -1,0 +1,17 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: MachineChaosExperiment
+metadata:
+  name: windows-network-loss
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    infraType: windows
+    steps:
+      - - name: windows-network-loss
+    tasks:
+    - definition:
+        chaos:
+          env:
+            - name: NETWORK_PACKET_LOSS_PERCENTAGE
+              value: "100"

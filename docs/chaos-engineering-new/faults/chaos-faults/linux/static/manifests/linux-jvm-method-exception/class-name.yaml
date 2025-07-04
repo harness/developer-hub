@@ -1,0 +1,16 @@
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-jvm-method-exception
+  labels:
+    name: jvm-method-exception
+spec:
+  jvmChaos/inputs:
+    duration: 30s
+    port: 9091
+    pid: 0
+    class: "org.framework.appName.system.WelcomeController"
+    method: ""
+    exception: ""
+    startupCommand: "/usr/bin/pet-clinic.jar"
+    rampTime: ""

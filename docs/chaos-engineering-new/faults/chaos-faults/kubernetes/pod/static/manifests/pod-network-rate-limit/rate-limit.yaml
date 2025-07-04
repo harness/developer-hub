@@ -1,0 +1,26 @@
+# it injects the network rate limit
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-network-rate-limit
+      spec:
+        components:
+          env:
+            - name: NETWORK_BANDWIDTH
+              value: "1mbit"
+            - name: BURST
+              value: "32kb"
+            - name: LIMIT
+              value: "2mb"
+            - name: TOTAL_CHAOS_DURATION
+              value: '60'

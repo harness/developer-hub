@@ -1,0 +1,19 @@
+## contains the Azure instance details
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-instance-stop
+    spec:
+      components:
+        env:
+        # comma separated list of Azure instance names
+        - name: AZURE_INSTANCE_NAMES
+          value: 'instance-01,instance-02'
+        # name of the resource group
+        - name: RESOURCE_GROUP
+          value: 'rg-azure'

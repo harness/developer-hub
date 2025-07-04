@@ -1,0 +1,15 @@
+# provid a custom image for load generation
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: k6-load-generator
+      spec:
+        components:
+          env:
+            - name: LOAD_IMAGE
+              value: ghcr.io/grafana/k6-operator:latest-runner

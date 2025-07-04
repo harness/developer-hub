@@ -1,0 +1,30 @@
+kind: KubernetesChaosExperiment
+apiVersion: litmuschaos.io/v1alpha1
+metadata:
+  name: pod-jvm-solace-latency
+  namespace: hce
+spec:
+  tasks:
+    - definition:
+        chaos:
+          env:
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
+            # name of the topic or queue
+            - name: STREAM
+              value: "solace-queue"
+            # the type of Solace messaging role
+            - name: SOLACE_MODE
+              value: "receiver"
+            # type of the solace destination
+            - name: SOLACE_DESTINATION_TYPE
+              value: "queue"
+            # implementation approach used by the target application
+            - name: SOLACE_APPROACH
+              value: "jcsmp"
+            # provide the latency in ms
+            - name: LATENCY
+              value: "2000" #in ms
+            # provide the transaction percentage
+            - name: TRANSACTION_PERCENTAGE
+              value: "50"

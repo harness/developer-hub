@@ -1,0 +1,13 @@
+{
+  "position": 4,
+  "label": "VMware - Linux",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"VMware - Linux"
+  },
+  "customProps": {
+    "description": "VMware faults executed on Linux agent"
+  }
+}

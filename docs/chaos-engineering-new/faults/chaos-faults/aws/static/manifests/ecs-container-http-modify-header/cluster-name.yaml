@@ -1,0 +1,20 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-container-http-modify-body
+    spec:
+      components:
+        env:
+        # provide the name of ECS cluster
+        - name: CLUSTER_NAME
+          value: 'demo'
+        - name: REGION
+          value: 'us-east-2'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
