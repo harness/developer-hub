@@ -123,6 +123,29 @@ All Catalog and Workflow APIs are now delivered directly through Harness Platfor
 
 We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
 
+### Single Entity per YAML File
+
+In IDP 1.0, it was possible to define multiple entities in a single YAML file using the `---` separator. For example:
+
+```yaml
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: serviceA
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: serviceB
+```
+
+This approach is no longer supported in IDP 2.0. To align with the Harness platform standards and Git Experience (GitX) model, each YAML file must now define **only one entity**.
+
+This change ensures better alignment with GitX workflows and simplifies entity lifecycle management.
+
+> 💡 Note: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own `catalog-info.yaml` file.
+
+
 ### Entity YAML Definition
 
 IDP 2.0 implements a Harness-native entity schema featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
