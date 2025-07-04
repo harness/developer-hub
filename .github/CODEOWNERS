@@ -114,8 +114,8 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/chaos-engineering/ @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
 /docs/chaos-engineering-new/ @neelanjan00 @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
 /release-notes/chaos-engineering.md @neelanjan00 @Jonsy13 @Ashutosh-Bhadauriya
-/src/components/Roadmap/data/ceData.ts @neelanjan00 @vishal-av @SushrutHarness @Ashutosh-Bhadauriya
-/src/components/Docs/data/chaosEngineeringData* @neelanjan00 @vishal-av @SushrutHarness @Ashutosh-Bhadauriya
+/src/components/Roadmap/data/ceData.ts @neelanjan00 @SushrutHarness @Ashutosh-Bhadauriya
+/src/components/Docs/data/chaosEngineeringData* @neelanjan00 @SushrutHarness @Ashutosh-Bhadauriya
 # Chaos FAQs
 /docs/faqs/chaos-engineering-faqs @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
 /docs/faqs/static @neelanjan00 @Jonsy13 @Adarshkumar14 @ksatchit @umamukkara @Ashutosh-Bhadauriya
