@@ -60,7 +60,7 @@ The user needs to make the required changes in the config map (cluster.inCluster
 
 ### Do we have a way of adding certificate at project/org level to be consumed by GitOps Agent ?
 
-We do not have a way to add certificates at different scope for project/org/account level for GitOps Agent. This is an agent side configuration and need to be done at the agent itself. For more details, go to [Harness GitOps Agent with self-signed certificates](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates).
+We do not have a way to add certificates at different scope for project/org/account level for GitOps Agent. This is an agent side configuration and need to be done at the agent itself. For more details, go to [Harness GitOps Agent with self-signed certificates](https://developer.harness.io/docs/continuous-delivery/gitops/agents/harness-git-ops-agent-with-self-signed-certificates).
 
 
 ### Is there a method to configure the Harness GitOps agent auto updater to utilize our Artifactory proxy for Docker Hub, considering policy of not allowing Kubernetes clusters to access the public internet directly ?
@@ -125,7 +125,7 @@ This environment variable will tell the Agent to look at the file specified in t
 
 ### Can I pass sensitive data in a Harness GitOps deployment?
 
-You can use [Mozilla SOPS](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/sops), which enables you to securely manage sensitive data by encrypting it before storing it in your Git repository.
+You can use [Mozilla SOPS](https://developer.harness.io/docs/continuous-delivery/gitops/security/sops), which enables you to securely manage sensitive data by encrypting it before storing it in your Git repository.
 
 Once encrypted, SOPS decrypts the data during deployment using the keys stored as Kubernetes secrets, ensuring that your sensitive information remains protected.
 
@@ -286,7 +286,7 @@ The insert call creates a new link, but there is an update call that updates as 
 
 ###  How can we address the user's report of a GitOps agent container with errors, specifically the inability to connect to the GitOps server, and the subsequent authentication failures?
 
-The GitOps agent's inability to connect to the server and subsequent authentication failures point to network connectivity or authentication configuration problems. Verify network connectivity between the agent and the server.  Check the agent's configuration for correct server address, port, and authentication credentials.  Review the server logs for any errors related to the agent's connection attempts.  Refer to [Harness Docs](https://developer.harness.io/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent/).
+The GitOps agent's inability to connect to the server and subsequent authentication failures point to network connectivity or authentication configuration problems. Verify network connectivity between the agent and the server.  Check the agent's configuration for correct server address, port, and authentication credentials.  Review the server logs for any errors related to the agent's connection attempts.  Refer to [Harness Docs](https://developer.harness.io/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent/).
 
 ### How can users set up GitOps correctly and avoid configuration errors?  
 Users should ensure:
