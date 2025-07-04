@@ -1,6 +1,6 @@
 ---
 title: Get Started with Self Hosted Gitspaces
-description: Get Started with Harness CDE (Gitspaces)
+description: Detailed guide to get started with Self Hosted Gitspaces. 
 sidebar_position: 3
 sidebar_label: Self Hosted Gitspaces
 ---
@@ -57,12 +57,15 @@ You need to follow these prerequisites to get started with self-hosted Gitspaces
 | **Service Account Key** | You must create and download a Service Account Key in the same GCP Project and service account, this key is usually in the form of a **JSON** or **P12 file**, which contains the credentials necessary for the service account to authenticate. | [Guide](https://cloud.google.com/iam/docs/keys-create-delete) | 
 | **Terraform** | You must have Terraform installed on your machine with internet access (please ensure you have the SA key downloaded here) | [Guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
 
-### Get Started
+### Get Started with Self-Hosted Gitspaces
+
 This is a quick guide to help you set up and launch your Self-Hosted Gitspaces. Follow the steps below:
 
 #### 1. Go Through the Prerequisites and Fundamentals
 
-Before you begin setup, it’s important to understand the underlying architecture and concepts of Self-Hosted Gitspaces. Make sure to review the following documentation thoroughly:
+Before you begin setup, it’s important to understand the **underlying architecture** and **concepts of Self-Hosted Gitspaces**. 
+
+🔗 Make sure to review the following **documentation** thoroughly:
 
 - [Self-Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md)  
 - [Fundamental Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md)  
@@ -70,28 +73,24 @@ Before you begin setup, it’s important to understand the underlying architectu
 
 #### 2. Configure Gitspace Infrastructure via Harness UI
 
-Start by configuring your Gitspace infrastructure via the Harness UI. This allows you to input your infrastructure details like Project ID, regions, etc., which will be referenced later during provisioning.
+Start by configuring your **Gitspace infrastructure via the Harness UI**. This allows you to input your infrastructure details like Project ID, regions, etc., which will be referenced later during provisioning.
 
-[Configure Gitspace Infrastructure via Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md)
+🔗 [Configure Gitspace Infrastructure via Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md)
 
 #### 3. Configure and Set Up the Terraform Module
 
-Once the infrastructure is defined in the UI, proceed to initialize and apply the **Harness Gitspaces Terraform Module**. This module will:
+Once the infrastructure is configured in the UI, proceed to initialize and apply the **Harness Gitspaces Terraform Module**. This module will **create all required GCP infrastructure** and will set up VM instances for the Gateway. 
 
-- Create all required infrastructure in your GCP Project  
-- Set up VM instances for the Gateway
-
-[Set Up Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md)
+🔗 [Set Up Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md)
 
 #### 4. Set Up Runner and Install Delegate
 
-After provisioning, install the Runner and Delegate on your GCP VM Instance. This ensures the Harness Control Plane can communicate with your infrastructure to create and manage Gitspaces.
+After provisioning, install the **Runner and Delegate** on your GCP VM Instance. This ensures the Harness Control Plane can communicate with your infrastructure to create and manage Gitspaces.
 
-[Set Up Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate.md)
+🔗 [Set Up Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate.md)
 
-#### 5. Manage Gitspaces
+#### 5. Create Machines & Gitspaces
 
-Once the setup is complete, you can begin creating Gitspaces directly from the UI and manage them seamlessly.
+Once the setup is complete, you can begin by **creating machines** and **Gitspaces** directly. 
 
-[Manage Gitspaces](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md) 
-
+🔗 [Create Machines](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md)

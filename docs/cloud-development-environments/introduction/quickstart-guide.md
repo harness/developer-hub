@@ -1,70 +1,64 @@
 ---
-title: Harness Hosted Gitspaces
-description: Get Started with Harness CDE (Gitspaces)
+title: Get Started with Harness Hosted Gitspaces
+description: Detailed guide to get started with Harness Hosted Gitspaces. 
 sidebar_position: 2
 sidebar_label: Harness Hosted Gitspaces
 redirect_from: /docs/cloud-development-environments/introduction/beta-usage
 ---
 
-Harness CDE (also known as Gitspaces) are on-demand, remote development environments that can be launched instantly with a single click. This document serves as a quickstart guide to help users get started with Harness Gitspaces. Please refer to our [quickstart tutorial](/docs/cloud-development-environments/introduction/quickstart-tutorial.md) guide for a detailed, step-by-step demo on how to get started with Gitspaces.
+**Harness Hosted Gitspaces** are on-demand, remote development environments that can be launched instantly with a single click. This document serves as a quickstart guide to help users get started with Harness Hosted Gitspaces. Please refer to our [quickstart tutorial](/docs/cloud-development-environments/introduction/quickstart-tutorial.md) guide for a detailed, step-by-step demo on how to get started with Gitspaces.
 
-### Pre-Requisite
-Please ensure that the CDE module is enabled in your Harness account before you start with these instructions. You can reach out to the team to get this enabled: cde-interest@harness.io
+- Harness-Hosted GitSpaces are **fully managed and operated** by Harness, requiring **no maintenance from your side**.
+- All Gitspaces in this model run entirely within the **Harness Cloud (Harness-managed infrastructure)**.
+- **No infrastructure setup** is needed — you can create and launch a Gitspace in just a few minutes, **without any configuration**.
 
-## Create your first Gitspace
-1. Navigate to the **“Cloud Development Environments”** module in the sidebar of your Harness UI. 
+## Get Started with Harness-Hosted GitSpaces
 
-    <img width="550" alt="cde tab" src="https://github.com/user-attachments/assets/c97086df-687e-4914-9894-bf632cc6bd58" />
+### Prerequisite
 
-2. Select the project where you want to create the Gitspace and click **“Get Started Now”** to proceed to the **“Create Gitspace”** page. (In case there's any existing Gitspace for your project, you can click on **"Create a new Gitspace"**.)
+Please ensure that the **Harness CDE module** is enabled in your Harness account before you proceed. You can reach out to the team at **[cde-interest@harness.io](mailto:cde-interest@harness.io)** to get this enabled.
 
-    <img width="850" alt="quickstart-1" src="https://github.com/user-attachments/assets/330e89ae-7b2f-420f-8ea6-66f07d9d5893" />
+### Understanding the Requirements
 
-3. Specify your Gitspace details:
-    - Connect your **Git provider** (Harness Code is the default). 
-    
-        For providers like **GitHub** or **GitLab**, [configure OAuth](/docs/cloud-development-environments/features-of-gitspaces/authentication.md) to access private repositories. 
-    - Enter your repository’s branch name.
-    - Choose your preferred IDE:
-        - VS Code Browser
-        - VS Code Desktop (This requires the Harness Gitspaces VS Code Desktop extension, [follow this guide to set this up](/docs/cloud-development-environments/ides/vs-code-desktop.md)).
-    - Select your region and machine type.
-    
-        <img width="600" alt="quickstart-2" src="https://github.com/user-attachments/assets/bb6fdb75-4270-43b7-9f77-72a32fad4bc0" />
+Before you begin, make sure you’ve read through the supported features and understood the capabilities of Harness-Hosted Gitspaces. This will help you refine your requirements and plan your use case more effectively. 
+- [What's Supported](/docs/cloud-development-environments/introduction/whats-supported.md)
+- [Gitspace Configuration](/docs/cloud-development-environments/deep-dive-into-gitspaces/gitspace-configuration.md)
+- [Gitspace Lifecycle](/docs/cloud-development-environments/deep-dive-into-gitspaces/lifecycle-of-gitspaces.md)
+- [Features of Gitspaces](/docs/category/features-of-gitspaces)
 
-4. Click **“Create Gitspace”**.
+### Creating Your First Gitspace
 
-You’ll be redirected to the Gitspace Details page to monitor events and container logs during creation. Once the Gitspace is ready, open it by clicking **“Open VS Code Online”** or **“Open VS Code Desktop”**.
-Congratulations! You’ve created your first Gitspace.
+Once you’re clear on your use case and requirements, you can start by creating your first Gitspace. No configuration is required to get started - all you need is your source code repository link, and you can dive straight into creating your Gitspace. Refer to [Creating Gitspaces](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md) for detailed steps.
 
-<img width="1000" alt="quickstart-4" src="https://github.com/user-attachments/assets/03639543-9fbc-4da2-9e2e-a3b45c3ee7c8" />
+### Developing in Your Gitspace
 
+You can now begin developing in your Gitspace and customize it to fit your specific needs.
 
-## Develop in your Gitspace
-You can start developing in your Gitspace and customise it as per your specific needs. 
+The configuration for your Gitspace is stored in the `.devcontainer/devcontainer.json` file within your project’s repository. This file includes all the metadata and settings for your development environment, allowing you to tailor your setup using various properties. For more details, refer to the [Gitspace Configuration Guide](docs/cloud-development-environments/deep-dive-into-gitspaces/gitspace-configuration.md).
 
-The configuration for your Gitspace is stored in the `.devcontainer/devcontainer.json` file within your project’s repository. This file includes all the metadata and settings for your development environment, allowing you to customize your setup using various properties. For more details, refer to the [Gitspace configuration guide](docs/cloud-development-environments/deep-dive-into-gitspaces/gitspace-configuration.md) here.
+Here are some key features of developing in GitSpaces:
 
-
-Here are some key features of developing in Gitspaces:
 #### [Private Docker Images](/docs/cloud-development-environments/features-of-gitspaces/private-docker-images.md)
-Harness Gitspaces supports the use of **private Docker images**, allowing you to pull private Docker images using artifact repository connectors like **JFrog Artifactory**, **Docker Registry** and **Amazon ECR** for your Gitspaces which further enables you to personalize your Gitspace seamlessly. 
+
+Harness Gitspaces support the use of **private Docker images**, allowing you to pull them using artifact repository connectors like **JFrog Artifactory**, **Docker Registry**, and **Amazon ECR** - enabling seamless personalization of your Gitspace.
 
 ![](./static/private-docker-images-1.png)
 
 #### [Secure Connect Integration](/docs/cloud-development-environments/features-of-gitspaces/secure-connect.md)
-Harness Gitspaces offers the **Secure Connect** feature, providing a robust and secure proxy solution. This feature allows seamless integration with your on-premises, privately-hosted assets such as Docker Registries and Artifact Repositories. 
+
+Harness Gitspaces offer the **Secure Connect** feature, providing a robust and secure proxy solution. This allows seamless integration with your on-premises, privately-hosted assets, such as Docker Registries and Artifact Repositories.
 
 #### [Port Forwarding](/docs/cloud-development-environments/develop-using-cde/port-forwarding.md)
-**Port Forwarding** in Gitspaces acts as a bridge between a remote development environment and your local machine. It allows developers to access services running inside Gitspaces as if they were running locally on their system. 
+
+**Port Forwarding** in Gitspaces bridges your remote development environment and local machine. It allows developers to access services running inside Gitspaces as if they were running locally.
 
 ![](./static/port-forward-latest.png)
 
-You can check out more about the different [features of Gitspaces here](https://developer.harness.io/docs/category/features-of-gitspaces). 
+You can explore more [features of Gitspaces here](https://developer.harness.io/docs/category/features-of-gitspaces).
 
-## Customize and Manage your Gitspace
-You can customize your Gitspace to meet your specific needs by modifying its configuration. Use the `devcontainer.json` properties to set up environment variables, `runArgs`, and configure `containerUser` and `remoteUser` for your Gitspaces. Learn more about how to [customize your Gitspace](https://developer.harness.io/docs/category/developing-in-gitspaces) using the `devcontainer.json` file.
+### Customizing and Managing Your Gitspace
+
+You can further customize your Gitspace to meet your specific needs by modifying its configuration. Use the `devcontainer.json` properties to set up environment variables, `runArgs`, and configure `containerUser` and `remoteUser` for your GitSpaces. Learn more about how to [customize your Gitspace](https://developer.harness.io/docs/category/developing-in-gitspaces) using the `devcontainer.json` file.
 
 Additionally, Gitspaces can be managed directly from the Harness UI. You can easily start, stop, or delete a Gitspace as needed. Find more details about [managing your Gitspaces](https://developer.harness.io/docs/category/managing-gitspaces).
-
 

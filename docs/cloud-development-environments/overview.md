@@ -38,11 +38,6 @@ Here are the key characteristics of **Harness Cloud Development Environments (al
 
 - **Flexible**: Each Gitspace can be spun up with a custom hardware configuration, so you can get bigger machines for resource-intensive applications and smaller machines for trivial ones.
 
-## Everything about Harness Gitspaces (CDEs)
-Take a deep dive into the key features and use cases of Harness Gitspaces through a glimpse of how Maria, a developer, spends her day working seamlessly with GitSpaces.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/pEianR6PCPY?si=tCJKw0vAsu7yye95" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 ### Key Use Cases
 Harness Gitspaces (CDE) solve several real-world challenges for teams:
 
@@ -78,12 +73,16 @@ We have **two deployment models** for Harness Gitspaces: **Harness Hosted Gitspa
 
 ## Next Steps
 
+Take a deep dive into the key features and use cases of Harness Gitspaces through a glimpse of how Maria, a developer, spends her day working seamlessly with GitSpaces.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pEianR6PCPY?si=tCJKw0vAsu7yye95" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Here’s how you can get started with **Harness GitSpaces**:
 
-1. [**Understand what’s supported**]((/docs/cloud-development-environments/introduction/whats-supported.md)) - Review the current capabilities of Harness Gitspaces to align with your needs.
+1. [**Understand what’s supported**](/docs/cloud-development-environments/introduction/whats-supported.md) - Review the current capabilities of Harness Gitspaces to align with your needs.
 
-2. [**Follow the Get Started tutorial**]((/docs/category/introduction)) — Once you’ve assessed your requirements, try the tutorial for a quick hands-on introduction. 
+2. [**Follow the Get Started tutorial**](/docs/category/introduction) — Once you’ve assessed your requirements, try the tutorial for a quick hands-on introduction. 
 
-3. [**Deep dive into architecture & configuration**]((/docs/category/deep-dive-into-gitspaces)) — Learn how Gitspaces work under the hood and how to configure them effectively. 
+3. [**Deep dive into architecture & configuration**](/docs/category/deep-dive-into-gitspaces) — Learn how Gitspaces work under the hood and how to configure them effectively. 
 
-4. **Explore features** — Familiarize yourself with the key features and see how to develop efficiently within Gitspaces -> [Features of GitSpaces](/docs/category/features-of-gitspaces) & [Developing in GitSpaces](/docs/category/develop-using-cde)
+4. **Explore features** — Familiarize yourself with the key features and see how to develop efficiently within Gitspaces -> [**Features of Gitspaces**](/docs/category/features-of-gitspaces) & [**Developing in Gitspaces**](/docs/category/develop-using-cde). 
