@@ -1,5 +1,5 @@
 ---
-redirect_to: /artifact-registry/supported-formats#nuget
+redirect_from: /artifact-registry/supported-formats#nuget
 ---
 
 import Tabs from '@theme/Tabs';
