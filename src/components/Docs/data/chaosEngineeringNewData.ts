@@ -17,21 +17,21 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.ce,
           description:
             "Learn about chaos engineering principles, benefits, and how to get started with your first experiments.",
-          link: "/docs/chaos-engineering-new/get-started",
+          link: "/docs/chaos-engineering-new/overview",
         },
         {
           title: "Core Concepts",
           module: MODULES.ce,
           description:
             "Understand the fundamental concepts of Harness Chaos Engineering.",
-          link: "/docs/chaos-engineering-new/concepts",
+          link: "/docs/chaos-engineering-new/key-concepts",
         },
         {
-          title: "Quick Start Tutorial",
+          title: "Quick Start Guide",
           module: MODULES.ce,
           description:
-            "Run your first chaos experiment in minutes with our step-by-step guide.",
-          link: "/docs/chaos-engineering-new/get-started/quick-start",
+            "Run your first chaos experiment in minutes with our comprehensive quickstart guide.",
+          link: "/docs/chaos-engineering-new/quickstart",
         },
       ],
     },
@@ -42,68 +42,68 @@ import { MODULES } from "@site/src/constants";
         "",
       list: [
         {
-          title: "Fault Injection",
+          title: "Chaos Experiments",
           module: MODULES.ce,
           description:
-            "Simulate various failure scenarios including CPU stress, memory exhaustion, network latency, and service failures.",
-          link: "/docs/chaos-engineering-new/concepts/fault-injection",
+            "Create, run, and analyze chaos experiments with comprehensive experiment management.",
+          link: "/docs/chaos-engineering-new/guides/chaos-experiments",
         },
         {
-          title: "Automated Experiments",
+          title: "Chaos Faults",
           module: MODULES.ce,
           description:
-            "Schedule and automate chaos experiments to continuously validate system resilience.",
-          link: "/docs/chaos-engineering-new/concepts/automation",
+            "Comprehensive fault library for Kubernetes, AWS, Azure, GCP, and infrastructure chaos.",
+          link: "/docs/chaos-engineering-new/faults/chaos-faults",
         },
         {
-          title: "Multi-Platform Support",
+          title: "Resilience Probes",
           module: MODULES.ce,
           description:
-            "Run chaos experiments on Kubernetes, AWS, Azure, GCP, and on-premises infrastructure.",
-          link: "/docs/chaos-engineering-new/integrations",
+            "Monitor and validate system health during chaos experiments with various probe types.",
+          link: "/docs/chaos-engineering-new/guides/probes",
         },
       ],
     },
 
     {
-      name: "Create experiments",
+      name: "Guides & Management",
       description:
         "",
       list: [
         {
-          title: "Experiment Design",
+          title: "Application Maps",
           module: MODULES.ce,
           description:
-            "Learn how to design effective chaos experiments with proper hypothesis and success criteria.",
-          link: "/docs/chaos-engineering-new/tutorials/experiment-design",
+            "Visualize and understand your application topology for targeted chaos experiments.",
+          link: "/docs/chaos-engineering-new/guides/application-maps",
         },
         {
-          title: "Infrastructure Chaos",
+          title: "GameDays",
           module: MODULES.ce,
           description:
-            "Create experiments targeting infrastructure components like CPU, memory, network, and disk.",
-          link: "/docs/chaos-engineering-new/tutorials/infrastructure-chaos",
+            "Organize and run collaborative chaos engineering exercises with your team.",
+          link: "/docs/chaos-engineering-new/guides/gamedays",
         },
         {
-          title: "Application Chaos",
+          title: "Infrastructure Management",
           module: MODULES.ce,
           description:
-            "Test application resilience with service failures, latency injection, and error simulation.",
-          link: "/docs/chaos-engineering-new/tutorials/application-chaos",
+            "Set up and manage chaos infrastructure for Kubernetes and on-premises environments.",
+          link: "/docs/chaos-engineering-new/guides/infrastructures",
         },
         {
-          title: "Kubernetes Chaos",
+          title: "Custom Faults",
           module: MODULES.ce,
           description:
-            "Run chaos experiments on Kubernetes clusters with pod, node, and resource-level faults.",
-          link: "/docs/chaos-engineering-new/tutorials/kubernetes-chaos",
+            "Create custom chaos faults using BYOC, scripts, HTTP calls, and database operations.",
+          link: "/docs/chaos-engineering-new/faults/custom-faults",
         },
         {
-          title: "Cloud Provider Chaos",
+          title: "On-premises (SMP)",
           module: MODULES.ce,
           description:
-            "Execute cloud-specific chaos experiments on AWS, Azure, and GCP resources.",
-          link: "/docs/chaos-engineering-new/tutorials/cloud-chaos",
+            "Deploy and manage Harness Chaos Engineering in self-managed platform environments.",
+          link: "/docs/chaos-engineering-new/guides/on-premises-smp",
         },
       ],
     },
@@ -121,40 +121,40 @@ import { MODULES } from "@site/src/constants";
           link: "/docs/chaos-engineering-new/integrations/cicd",
         },
         {
-          title: "Monitoring & Observability",
+          title: "Performance Testing Tools",
           module: MODULES.ce,
           description:
-            "Connect with monitoring tools like Prometheus, Datadog, and New Relic for comprehensive experiment analysis.",
-          link: "/docs/chaos-engineering-new/integrations/monitoring",
+            "Integrate with JMeter, Gatling, K6, and other performance testing tools for comprehensive validation.",
+          link: "/docs/chaos-engineering-new/integrations/performance-testing",
         },
         {
-          title: "API Reference",
+          title: "Security & Governance",
           module: MODULES.ce,
           description:
-            "Complete API documentation for programmatic experiment management and automation.",
-          link: "/docs/chaos-engineering-new/reference",
+            "Implement security best practices, RBAC, and governance policies for chaos engineering.",
+          link: "/docs/chaos-engineering-new/security",
         },
       ],
     },
 
     {
-      name: "Help and FAQs",
+      name: "Help and Resources",
       description:
         "",
       list: [
         {
-          title: "Troubleshooting",
+          title: "Troubleshooting Guide",
           module: MODULES.ce,
           description:
-            "Common issues and solutions for chaos engineering experiments.",
-          link: "/docs/chaos-engineering-new/troubleshooting",
+            "Common issues and solutions for infrastructure, experiments, and platform troubleshooting.",
+          link: "/docs/chaos-engineering-new/resources/troubleshooting",
         },
         {
-          title: "Best Practices",
+          title: "AI Reliability Agent",
           module: MODULES.ce,
           description:
-            "Learn industry best practices for implementing chaos engineering in your organization.",
-          link: "/docs/chaos-engineering-new/concepts/best-practices",
+            "Leverage AI-powered insights for intelligent experiment recommendations and analysis.",
+          link: "/docs/chaos-engineering-new/guides/ai/ai-reliability-agent",
         },
         {
           title: "Chaos Engineering Knowledge Base",

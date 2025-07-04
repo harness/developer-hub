@@ -160,20 +160,11 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "link",
-          href: "/docs/chaos-engineering",
-          label: "Chaos Engineering",
-          className: "sidebar-ce",
-          customProps: {
-            description: "Learn how to build and validate resilience.",
-          },
-        },
-        {
-          type: "link",
           href: "/docs/chaos-engineering-new",
-          label: "Chaos Engineering (New)",
+          label: "Chaos Engineering",
           className: "sidebar-ce-new",
           customProps: {
-            description: "Learn how to build and validate resilience with our new documentation.",
+            description: "Learn how to build and validate resilience.",
           },
         },
         // Incident Response Landing Page
@@ -1648,6 +1639,8 @@ const sidebars: SidebarsConfig = {
       },
     },
   ],
+  // Old Chaos Engineering docs - accessible via direct links with proper sidebar navigation
+  // Hidden from main navigation but provides left sidebar when visiting old docs directly
   chaosengineering: [
     {
       type: "category",
@@ -1901,7 +1894,7 @@ const sidebars: SidebarsConfig = {
           className: "horizontal-bar",
         },
         "chaos-engineering-new/resources/troubleshooting",
-        "chaos-engineering-new/resources/faq",
+
       ],
     },
     // Release Notes

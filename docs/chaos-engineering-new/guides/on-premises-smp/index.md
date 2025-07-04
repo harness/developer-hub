@@ -1,7 +1,10 @@
 ---
-title: On-premises (SMP)
+title: Overview
 sidebar_position: 1
 description: Deploy and manage Harness Chaos Engineering in your on-premises environment using Self-Managed Platform
+redirect_from:
+- /docs/chaos-engineering/get-started/ce-on-smp/ce-smp-roadmap
+- /docs/category/ce-on-harness-self-managed-enterprise-edition
 ---
 
 # On-premises (SMP)
@@ -10,43 +13,143 @@ Deploy Harness Chaos Engineering in your own infrastructure using the Self-Manag
 
 ## Overview
 
-The Self-Managed Platform (SMP) allows you to run Harness Chaos Engineering entirely within your own infrastructure, providing:
+The Self-Managed Platform (SMP) allows organizations to run Harness Chaos Engineering entirely within their own infrastructure. Harness Chaos Engineering is available in the SMP version, where you will need to create, manage and maintain your clusters. You will be responsible for providing permissions to projects and handling the issues associated with them.
 
-- **Complete Data Control**: All data remains within your environment
-- **Enhanced Security**: Meet strict compliance and security requirements
-- **Network Isolation**: Deploy in air-gapped or restricted network environments
-- **Custom Configuration**: Tailor the platform to your specific needs
-- **Reduced Latency**: Minimize network hops for better performance
+**Feature availability on Harness Chaos Engineering SaaS and SMP are on par, with minor timeline changes in the SMP feature releases.**
 
-## Architecture
+### Deployment Models
 
-### Core Components
+Harness Chaos Engineering is offered as:
+- **SaaS**: Fully managed cloud service
+- **On-Premise (SMP)**: Self-managed deployment in your infrastructure
 
-The on-premises SMP deployment consists of:
+The capabilities of Harness Chaos Engineering are the same in both **SaaS** and **On-Premise** models.
 
-```mermaid
-graph TB
-    A[Harness Platform] --> B[Chaos Control Plane]
-    B --> C[Chaos Infrastructure]
-    C --> D[Target Applications]
-    
-    B --> E[MongoDB]
-    B --> F[Redis]
-    B --> G[TimescaleDB]
-    
-    H[Load Balancer] --> A
-    I[Ingress Controller] --> H
-```
+## Feature Roadmap
 
-### Key Services
+The table below outlines the roadmap for the Harness Self-Managed Enterprise Edition of Chaos Engineering:
 
-1. **Chaos Control Plane**: Manages experiments, workflows, and orchestration
-2. **Chaos Infrastructure**: Executes chaos experiments on target systems
-3. **Database Layer**: Stores experiment data, results, and configurations
-4. **Monitoring Stack**: Observability and metrics collection
-5. **Authentication Service**: User management and access control
+| **Release version** | **Feature set** | **Deployment infrastructure** | **Supported platforms** | **Supported ingress** |
+| --- | --- | --- | --- | --- |
+| Limited GA (Current version) | Feature parity with SaaS | <ul><li>Cloud</li><li>Connected</li><li>Air-gapped</li><li>Signed certificates</li></ul> | Kubernetes clusters | <ul><li>NGINX</li><li>Istio virtual services</li></ul> |
+| General Availability (Coming soon) | Feature parity with SaaS | | | |
 
 ## Prerequisites
+
+Before deploying Harness Chaos Engineering on SMP, ensure you meet all technical requirements including infrastructure, networking, security, and storage specifications.
+
+**For detailed requirements, see [Prerequisites](./prerequisites.md)**
+
+Key requirements include:
+- **Kubernetes cluster** with minimum 3 nodes
+- **Container runtime** (Docker 20.10+, containerd 1.5+, or CRI-O 1.20+)
+- **Database support** for MongoDB, Redis, and TimescaleDB
+- **Network connectivity** for ingress controllers and external services
+- **Storage** with persistent volume support
+- **Security** configurations including RBAC and service accounts
+
+## Air-gapped Environment Setup
+
+:::info note
+To install SMP in an air-gapped environment, go to [SMP in air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
+:::
+
+### Enterprise ChaosHub Connection
+
+If you don't have access to [GitHub](https://github.com/), you will not be able to deploy Harness SMP in an air-gapped cluster completely. As a consequence, the Enterprise ChaosHub will be in a `DISCONNECTED` state.
+
+**To address this:**
+1. Use a proxy that can access [GitHub](https://github.com/)
+2. Provide the configuration under chaos manager deployment
+3. Use this setup in the `override.yaml` file of the Helm chart before deployment
+
+#### Proxy Configuration Example
+
+```yaml
+chaos-manager:
+  config:
+    HTTP_PROXY: http://<proxy-ip>:<proxy-port>
+    HTTPS_PROXY: https://<proxy-ip>:<proxy-port>
+    NO_PROXY: <cluster-ip>
+    GIT_SSL_NO_VERIFY: true
+```
+
+**Environment Variables:**
+- `HTTP_PROXY`: Set only if connecting to an SCM server deployed over HTTP (optional for Enterprise ChaosHub)
+- `HTTPS_PROXY`: Set if connecting to an SCM server deployed over HTTPS or [GitHub](https://github.com) (required for Enterprise ChaosHub)
+- `NO_PROXY`: Set with the cluster IP where you deploy the chaos infrastructure
+- `GIT_SSL_NO_VERIFY`: Set when using self-signed certificates to skip SSL certificate validation
+
+:::tip Proxy with Credentials
+You can provide `HTTP_PROXY` and `HTTPS_PROXY` with endpoints that have credentials. First URL encode the username and password:
+
+```
+http://<url-encoded-username>:<url-encoded-password>@<proxy-ip>:<proxy-port>
+```
+:::
+
+## Infrastructure Connection via Proxy
+
+To connect your chaos infrastructure to the control plane via proxy when using a [dedicated chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/):
+
+### Environment Variables Configuration
+
+Configure the following environment variables for the subscriber:
+
+- `HTTP_PROXY`: Set if you deploy the SMP control plane over HTTP
+- `HTTPS_PROXY`: Set if you deploy the SMP control plane over HTTPS or connecting to app.harness.io
+- `NO_PROXY`: Set with the cluster IP to direct requests to Kube API server directly
+- `INDIRECT_UPLOAD`: Set to "true" for experiment log streaming
+
+### Experiment Configuration
+
+When the infrastructure is `CONNECTED`, configure proxy settings in experiment manifests:
+
+1. Select **YAML** view in the **Experiment Builder**
+2. Click **Edit Yaml**
+3. Provide values for proxy environment variables
+
+![Proxy Configuration](./static/change-vals.png)
+
+## Known Limitations
+
+### HTTP vs HTTPS Access
+- The **Copy to clipboard** facility only works when accessing SMP over HTTPS-based connections
+- HTTP-based connections will not support clipboard functionality
+
+### Command Probes
+- Command probes in **source** mode for Kubernetes are available for both SMP and Harness Chaos Engineering SaaS
+- In SMP, command probe in **source** mode is only available for Linux
+
+### Linux Chaos Infrastructure (LCI)
+- LCI currently does not support executing [parallel faults](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) in SaaS
+- The self-managed platform (SMP) supports executing parallel faults on LCI
+
+## Feature Flags
+
+Certain features in Harness Self-Managed Enterprise Edition require feature flags to be enabled. To enable these feature flags, go to [Add Feature Flags](/docs/self-managed-enterprise-edition/install/manage-feature-flags/#add-feature-flags-to-your-installation).
+
+## Additional Resources
+
+- [What's supported](/docs/chaos-engineering/whats-supported.md)
+- [SMP Release Notes](/release-notes/self-managed-enterprise-edition)
+- [Upgrade Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra#smp)
+- [DDCR Proxy Configuration](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support)
+
+## Support
+
+For assistance with SMP deployment and configuration:
+- Contact [Harness Support](mailto:support@harness.io)
+- Review [SMP documentation](/docs/self-managed-enterprise-edition/)
+- Check [SMP Release Notes](/release-notes/self-managed-enterprise-edition) for latest updates
+
+---
+
+**Next Steps:**
+- Review [supported platforms](/docs/chaos-engineering/whats-supported.md)
+- Plan your [infrastructure setup](/docs/chaos-engineering/use-harness-ce/infrastructures/)
+- Configure [chaos experiments](/docs/chaos-engineering/use-harness-ce/experiments/)
+- Set up [monitoring and observability](/docs/chaos-engineering/use-harness-ce/probes/)
 
 ### Infrastructure Requirements
 

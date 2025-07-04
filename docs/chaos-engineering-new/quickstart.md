@@ -218,7 +218,7 @@ Congratulations! You've successfully run your first chaos experiment. Here's wha
 
 ### Get Help and Support
 - **[Troubleshooting Guide](/docs/chaos-engineering-new/resources/troubleshooting)** - Common issues and solutions
-- **[FAQ](/docs/chaos-engineering-new/resources/faq)** - Frequently asked questions
+
 - **[Community](https://harnesscommunity.slack.com)** - Join our Slack community
 - **[Support](https://support.harness.io)** - Contact Harness Support
 
