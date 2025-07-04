@@ -1,9 +1,3 @@
----
-redirect_from:
-- /docs/artifact-registry/content/supported-formats/nuget-quickstart /docs/artifact-registry/supported-formats#nuget
-hide_table_of_contents: true
----
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
