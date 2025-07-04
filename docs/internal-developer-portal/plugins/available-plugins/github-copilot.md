@@ -62,9 +62,6 @@ copilot:
   # organization: ${{COPILOT_ORG}}  # eg: githubOrg - GitHub organization name
   # enterprise: ${{COPILOT_ENT}}  # Optional - only if using GitHub Enterprise
 ```
-Use `${{ }}` to securely inject values via Harness Secret Manager or delegate-based secret backends. If you're using secrets, declare variables to above and in the variables section below the config.
-
-
 
 :::info 
 Update the `host`, `enterprise`, and `organization` values to match your GitHub Copilot Enterprise setup.
