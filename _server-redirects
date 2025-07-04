@@ -132,9 +132,4 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-an-external-redis-database
 
-#Dynamic content redirects
-# Artifact Registry
-# Supported Formats redirect to dynamic selector tile
-/artifact-registry/content/supported-formats/nuget-quickstart /artifact-registry/supported-formats#nuget
-
 # Redirects generated from Front Matter [sytem generated goes below here]:

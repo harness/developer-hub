@@ -2,6 +2,15 @@
 title: Supported Formats
 description: Learn about supported formats in your workspace tabs. 
 sidebar_position: 10
+redirect_from: 
+  - /docs/artifact-registry/content/supported-formats/nuget-quickstart
+  - /docs/artifact-registry/content/supported-formats/python-quickstart
+  - /docs/artifact-registry/content/supported-formats/rpm-quickstart
+  - /docs/artifact-registry/content/supported-formats/helm-quickstart
+  - /docs/artifact-registry/content/supported-formats/generic-quickstart
+  - /docs/artifact-registry/content/supported-formats/npm-quickstart
+  - /docs/artifact-registry/content/supported-formats/maven-quickstart
+  - /docs/artifact-registry/content/supported-formats/docker-quickstart
 ---
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
