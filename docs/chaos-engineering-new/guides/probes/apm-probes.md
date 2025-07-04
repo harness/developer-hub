@@ -406,7 +406,6 @@ evaluationWindow: "10m"  # Increase window if data is sparse
 - [**SLO Probes**](./slo-probe.md) - Service level objective validation
 - [**Best Practices**](./best-practices.md) - Advanced probe strategies
 - [**Actions**](../actions/index.md) - Automated responses to probe results
-- [**Integrations**](../../integrations/index.md) - Platform-specific integrations
 
 ---
 

@@ -575,7 +575,6 @@ response:
 ## Next Steps
 
 - [**Probes**](../probes/index.md) - Learn about probe configuration and best practices
-- [**Integrations**](../../integrations/index.md) - Platform-specific integrations
 - [**Security**](../../security/index.md) - Secure action configuration
 - [**Best Practices**](../probes/best-practices.md) - Advanced strategies
 

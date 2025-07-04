@@ -411,7 +411,6 @@ governance:
 
 - [**Best Practices**](./best-practices.md) - Advanced probe strategies
 - [**Actions**](../actions/index.md) - Automated responses to probe results
-- [**Integrations**](../../integrations/index.md) - Platform-specific integrations
 - [**Security**](../../security/index.md) - Secure probe configuration
 
 ---

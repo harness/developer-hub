@@ -582,7 +582,6 @@ scoring:
 ## Next Steps
 
 - [**Actions**](../actions/index.md) - Automated responses to probe results
-- [**Integrations**](../../integrations/index.md) - Platform-specific integrations
 - [**Security**](../../security/index.md) - Secure probe configuration
 - [**Troubleshooting**](../../resources/troubleshooting.md) - Common probe issues and solutions
 
