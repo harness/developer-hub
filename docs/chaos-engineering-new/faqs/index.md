@@ -238,7 +238,7 @@ Support tiers include:
 
 ### Where can I find more information?
 Resources available:
-- **[Documentation](./overview)** - Comprehensive guides and tutorials
+- **[Documentation](../overview)** - Comprehensive guides and tutorials
 - **[Community Forum](https://community.harness.io)** - Ask questions and share experiences
 - **[Slack Community](https://harnesscommunity.slack.com)** - Real-time chat with users and experts
 - **[Knowledge Base](/kb/chaos-engineering)** - Searchable articles and solutions
@@ -270,5 +270,5 @@ If you can't find the answer you're looking for:
 4. **Schedule a [demo](https://harness.io/demo)** to speak with our experts
 
 :::tip Quick Help
-For immediate assistance, use the in-app help chat or check our [Troubleshooting](../troubleshooting) section for common issues and solutions.
+For immediate assistance, use the in-app help chat or check our [Resources](../resources/troubleshooting) section for common issues and solutions.
 :::

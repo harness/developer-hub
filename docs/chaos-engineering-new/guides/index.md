@@ -36,9 +36,9 @@ Create and implement custom chaos faults tailored to your specific use cases.
 If you're new to chaos engineering with Harness, we recommend starting with:
 
 1. **[Chaos Experiments](./chaos-experiments)** - Learn the fundamentals of creating experiments
-2. **[Probes & Actions](./probes-actions)** - Understand how to validate system behavior
+2. **[Probes](./probes)** - Understand how to validate system behavior
 3. **[Application Maps](./application-maps)** - Visualize your system architecture
-4. **[Pipelines](./pipelines)** - Integrate with your existing workflows
+4. **[Actions](./actions)** - Automate responses to experiment results
 
 ## Best Practices
 

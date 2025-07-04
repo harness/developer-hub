@@ -650,10 +650,8 @@ trigger:
 
 ## Next Steps
 
-- [**Configuration Examples**](./configuration.md) - Detailed configuration examples
-- [**Integration Patterns**](./integrations.md) - Platform-specific integrations
-- [**Best Practices**](./best-practices.md) - Action design best practices
-- [**Troubleshooting**](./troubleshooting.md) - Common issues and solutions
+- [**Actions Overview**](./index.md) - Complete guide to actions
+- [**Probes**](../probes/index.md) - Learn about probe configuration
 
 ---
 

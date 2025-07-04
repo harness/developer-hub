@@ -145,6 +145,6 @@ spec:
 ## Related Resources
 
 - [Common Tunables for All Faults](./common-tunables-for-all-faults)
-- [Creating Chaos Experiments](../../guides/chaos-experiments/)
-- [Resilience Probes](../../guides/probes/)
-- [Security Best Practices](../../security/)
+- [Creating Chaos Experiments](../../guides/chaos-experiments/index)
+- [Resilience Probes](../../guides/probes/index)
+- [Security Best Practices](../../security/index)

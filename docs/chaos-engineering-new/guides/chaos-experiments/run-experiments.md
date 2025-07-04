@@ -427,8 +427,7 @@ kubectl get events --sort-by='.lastTimestamp'
 After mastering experiment execution:
 
 1. **[Analyze Results](./analyze-results)** - Understand resilience scores and insights
-2. **[Advanced Configuration](./advanced-configuration)** - Fine-tune complex scenarios
-3. **[Manage Experiments](./manage-experiments)** - Organize and maintain your experiment library
-4. **[Troubleshooting](./troubleshooting)** - Resolve issues and optimize performance
+2. **[Manage Experiments](./manage-experiments)** - Organize and maintain your experiment library
+3. **[Create Experiments](./create-experiments)** - Build new experiment scenarios
 
 Ready to run your first experiment? Start with a simple, low-impact test during off-peak hours and gradually build confidence in your chaos engineering practices.

@@ -34,4 +34,4 @@ Chaos Engineering is the discipline of experimenting on a system to build confid
 
 ## Next Steps
 
-Ready to begin? Start with our [Quick Start Guide](./quick-start) to run your first chaos experiment in minutes.
+Ready to begin? Start with our [Quick Start Guide](../quickstart) to run your first chaos experiment in minutes.

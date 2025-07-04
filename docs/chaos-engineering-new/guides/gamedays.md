@@ -265,7 +265,7 @@ Ready to organize your first GameDay?
 1. **[Plan Chaos Experiments](./chaos-experiments)** - Create experiments for your GameDay scenarios
 2. **[Set up Application Maps](./application-maps)** - Visualize systems for better GameDay planning
 3. **[Configure Probes](./probes)** - Monitor GameDay effectiveness
-4. **[Build Pipelines](./pipelines)** - Automate GameDay scenario deployment
+4. **[Configure Actions](./actions)** - Automate GameDay responses and notifications
 
 ## Conclusion
 

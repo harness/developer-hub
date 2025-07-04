@@ -537,9 +537,9 @@ Track your organization's chaos engineering maturity:
 
 After mastering result analysis:
 
-1. **[Advanced Configuration](./advanced-configuration)** - Create more sophisticated experiments
-2. **[Manage Experiments](./manage-experiments)** - Organize and maintain your experiment library
-3. **[Integration Strategies](../pipelines)** - Incorporate chaos engineering into your workflows
-4. **[Team Practices](../gamedays)** - Scale chaos engineering across your organization
+1. **[Create Experiments](./create-experiments)** - Build new experiment scenarios
+2. **[Experiment Management](./manage-experiments)** - Organize and maintain your experiment library
+3. **[Gamedays](../gamedays)** - Scale chaos engineering across your organization
+4. **[Actions](../actions)** - Automate responses to experiment results
 
 Transform your chaos experiment results into a continuous improvement engine that drives your system's resilience to new heights. Remember: the goal isn't just to break things—it's to learn, improve, and build confidence in your system's ability to handle real-world failures.

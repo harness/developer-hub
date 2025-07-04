@@ -588,9 +588,9 @@ Track operational aspects:
 
 After mastering experiment management:
 
-1. **[Advanced Configuration](./advanced-configuration)** - Create sophisticated experiment scenarios
-2. **[Pipeline Integration](../pipelines)** - Automate chaos engineering in your workflows
-3. **[Team Scaling](../gamedays)** - Expand chaos engineering across your organization
+1. **[Create Experiments](./create-experiments)** - Build new experiment scenarios
+2. **[Gamedays](../gamedays)** - Expand chaos engineering across your organization
+3. **[Actions](../actions)** - Automate responses to experiment results
 4. **[Governance](../../security)** - Implement enterprise-grade controls and compliance
 
 Effective experiment management is the foundation of a successful chaos engineering program. By implementing these practices, you'll build a scalable, maintainable, and collaborative chaos engineering capability that grows with your organization.

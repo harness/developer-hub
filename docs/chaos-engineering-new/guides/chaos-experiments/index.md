@@ -70,7 +70,7 @@ Before creating experiments, ensure you have:
 1. **[Create Your First Experiment](./create-experiments)** - Step-by-step experiment creation
 2. **[Execute and Monitor](./run-experiments)** - Run experiments safely with monitoring
 3. **[Analyze Results](./analyze-results)** - Understand resilience scores and insights
-4. **[Advanced Configuration](./advanced-configuration)** - Fine-tune experiments for complex scenarios
+4. **[Manage Experiments](./manage-experiments)** - Organize and maintain your experiments
 
 ## Experiment Types by Use Case
 
@@ -163,13 +163,8 @@ Learn how to execute experiments safely, schedule recurring runs, and monitor ex
 ### **[Analyze Results](./analyze-results)**
 Understand resilience scores, interpret experiment outcomes, and derive actionable insights.
 
-### **[Advanced Configuration](./advanced-configuration)**
-Master advanced features like custom probes, complex fault sequences, and integration options.
-
 ### **[Manage Experiments](./manage-experiments)**
 Organize, edit, export, and maintain your experiment library effectively.
-
-### **[Troubleshooting](./troubleshooting)**
 Resolve common issues and optimize experiment performance.
 
 ## Success Metrics
@@ -199,8 +194,8 @@ Track your chaos engineering maturity:
 Ready to start your chaos engineering journey?
 
 1. **[Create Your First Experiment](./create-experiments)** - Begin with a simple, safe experiment
-2. **[Explore Fault Types](../../concepts)** - Understand available chaos faults
-3. **[Set Up Monitoring](../probes-actions)** - Configure probes and validation
+2. **[Explore Fault Types](../../faults/chaos-faults)** - Understand available chaos faults
+3. **[Set Up Monitoring](../probes)** - Configure probes and validation
 4. **[Join the Community](https://community.harness.io)** - Connect with other chaos engineers
 
 Chaos experiments are your gateway to building truly resilient systems. Start small, learn continuously, and gradually expand your chaos engineering practices to cover your entire infrastructure and application stack.

@@ -319,8 +319,8 @@ Examples:
 After creating your experiment:
 
 1. **[Run Your Experiment](./run-experiments)** - Execute safely with monitoring
-2. **[Configure Advanced Settings](./advanced-configuration)** - Fine-tune for complex scenarios
-3. **[Set Up Monitoring](../probes-actions)** - Enhance validation and observability
+2. **[Set Up Monitoring](../probes)** - Enhance validation and observability
+3. **[Configure Actions](../actions)** - Automate responses to experiment results
 4. **[Analyze Results](./analyze-results)** - Understand outcomes and improve resilience
 
 ## Troubleshooting

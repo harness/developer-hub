@@ -271,9 +271,9 @@ image_registry:
 
 Ready to configure custom image registries for your chaos experiments?
 
-1. **[Set up Infrastructure](./infrastructure)** - Configure infrastructure with custom registries
+1. **[Set up Infrastructure](./infrastructures)** - Configure infrastructure with custom registries
 2. **[Create Experiments](./chaos-experiments)** - Use custom images in your experiments
 3. **[Configure Security](../security)** - Implement security policies for image usage
-4. **[Monitor Operations](./monitoring)** - Track image registry performance and usage
+4. **[Monitor with Probes](./probes)** - Track image registry performance and usage
 
 Custom image registry configuration provides the foundation for secure, compliant, and efficient chaos engineering in enterprise environments.
