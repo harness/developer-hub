@@ -1,5 +1,7 @@
 ---
-redirect_to: /docs/artifact-registry/supported-formats/#nuget
+redirect_to:
+  - /docs/artifact-registry/supported-formats#nuget
+hide_table_of_contents: true
 ---
 
 import Tabs from '@theme/Tabs';
