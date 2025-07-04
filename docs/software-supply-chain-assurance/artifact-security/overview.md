@@ -100,9 +100,9 @@ The SBOM tab presents details of all the dependencies within the artifact, inclu
 * **Package Manager:** Tool managing the package.
 * **PURL:** Package URL.
 * **Supplier:** Source of the dependency.
-* **Vulnerabilities:** Shows the number of issues for each SBOM component, grouped by severity levels (Critical, High, Medium, Low) as identified through the Snyk scan.
+* **Vulnerabilities:** Provides a summary of vulnerabilities found from the Snyk scan, categorized by severity: critical, high, medium, and low.
 
-<DocImage path={require('./static/sbom-tab.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/component-sbom-for-artifacts.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 For more information about the levels of image dependencies, refer to the [How to detect base images in SBOM](/docs/software-supply-chain-assurance/how-to-guides/label-components-from-image) documentation.
