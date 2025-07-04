@@ -76,11 +76,20 @@ spec:
 
 </TabItem>
 </Tabs>
-:::info
 
-In the above example we import all the API specs in `json` format as a `$text` embedding, and it's a suggested hack to import multiple APIs in openapi format. 
+:::note Backend URL Allow List
+
+By default, Backstage restricts backend fetching and only allows requests to public APIs defined in `catalog-info.yaml` files if the domains are explicitly allowed.
+
+To enable access:
+
+- Add full domains or use wildcards (e.g., `*.apis.com`) to allow subdomains.
+- You can also list specific paths. Subdirectories are supported using a trailing slash (e.g., `/exampledir/` allows `/exampledir/example`).
+
+Make sure the host or path for your OpenAPI spec is included in this list to allow successful API documentation import.
 
 :::
+
 
 The above-mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format. 
 
