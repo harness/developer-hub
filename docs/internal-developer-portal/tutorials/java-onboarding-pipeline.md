@@ -471,7 +471,7 @@ Once this step completes, your service will immediately show up as a new **Workf
 If the catalog file is not found at the specified path, the registration will fail. Make sure the filename and its location match what was set during the file generation step.
 :::
 
-Perfect — here's how to wrap up the tutorial naturally by **showing what the pipeline looks like once built**, **reminding them to save it**, and **guiding them to test it by running**. No fluff — just how you’d explain it if you were showing someone:
+
 
 ---
 
