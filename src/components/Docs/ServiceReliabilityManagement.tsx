@@ -51,7 +51,7 @@ export default function SRM() {
             color: colorMode === 'dark' ? '#e0a800' : '#856404' 
           }}>⚠️</div>
           <div>
-            <strong>Deprecation Notice:</strong> The Service Reliability Management module will be deprecated soon. Please reach out to your Harness representative to migrate to <Link href="https://developer.harness.io/docs/incident-response">Incident Response</Link>, which provides enhanced incident management capabilities.
+            <strong>Deprecation Notice:</strong> The Service Reliability Management module will be deprecated soon. Please reach out to your Harness representative to migrate to <Link href="https://developer.harness.io/docs/ai-sre">AI SRE</Link>, which provides enhanced incident management capabilities.
           </div>
         </div>
         <div className={styles.spaceBetween}>

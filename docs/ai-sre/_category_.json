@@ -1,0 +1,11 @@
+{
+  "label":"AI SRE",
+  "collapsible":"true",
+  "collapsed":"true",
+  "link":{
+     "type":"generated-index",
+     "title":"AI SRE"
+  },
+ "customProps":{
+  }
+}

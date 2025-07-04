@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/incidentResponseData';
-export default function IR() {
+export default function AISRE() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
@@ -15,7 +15,7 @@ export default function IR() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon-ir.svg`} />
-            <h1>Incident Response</h1>
+            <h1>AI SRE</h1>
           </div>
           <div className={styles.btnContainer}>
           </div>
@@ -23,13 +23,13 @@ export default function IR() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Harness Incident Response (IR) is a cutting-edge module that 
+            Harness AI SRE is a cutting-edge module that 
             revolutionizes incident management by focusing on proactive issue 
             prevention and accelerated resolution. A key differentiator is its 
             ability to correlate change events from disparate sources, 
             such as CI/CD pipelines, Feature Flags, 3rd Party changes, and 
             deployments, providing unparalleled context for incident attribution. 
-            Harness IR automates prioritization and response orchestration while 
+            Harness AI SRE automates prioritization and response orchestration while 
             integrating seamlessly with existing tools like ServiceNow, Slack, and 
             monitoring systems. Real-time visibility into service health, error 
             budgets, and associated changes empower teams to resolve incidents 
