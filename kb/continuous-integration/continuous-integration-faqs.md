@@ -2626,7 +2626,7 @@ If your builds time out with this error during stage initialization, and you're 
 
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 
-Yes. To do this, you can add a step that runs in parallel to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Use a parallel step to monitor failures](./articles/parallel-step-for-logging).
+Yes. To do this, you can add a step that runs in parallel to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Use a parallel step to monitor failures](/kb/continuous-integration/articles/parallel-step-for-logging).
 
 ### How to get the build ID of a pipeline execution?
 
