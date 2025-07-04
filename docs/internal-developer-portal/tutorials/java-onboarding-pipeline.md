@@ -241,12 +241,12 @@ This step uses a **GitHub connector** (configured as a third-party provider) and
 
 | Field            | Description                                                                 |
 |------------------|-----------------------------------------------------------------------------|
-| **Connector**    | A GitHub connector scoped at the **account level**. It must have access (via PAT or OAuth) to the template repo. |
-| **Repository Name** | Use the pipeline variable. This points to the source template repository. |
-| **Git Provider Type** | Set this to **Third-party Git provider** (GitHub). |
-| **Build Type**   | Select **Git Branch**. This ensures you're always pulling from a stable reference. |
-| **Branch Name**  | Enter `main`, assuming your cookiecutter template’s latest code is in the `main` branch. |
-| **Clone Directory** | *(Optional)* Leave blank to use the default path (`/harness/<repo>`), or specify a custom directory if needed (e.g., `/template`). |
+| Connector    | A GitHub connector scoped at the **account level**. It must have access (via PAT or OAuth) to the template repo. |
+| Repository Name | Use the pipeline variable. This points to the source template repository. |
+| Git Provider Type | Set this to **Third-party Git provider** (GitHub). |
+| Build Type   | Select **Git Branch**. This ensures you're always pulling from a stable reference. |
+| Branch Name  | Enter `main`, assuming your cookiecutter template’s latest code is in the `main` branch. |
+| Clone Directory | *(Optional)* Leave blank to use the default path (`/harness/<repo>`), or specify a custom directory if needed (e.g., `/template`). |
 
 
 > For reference, you can use the sample template here: [github.com/ShibamD/java-cookiecutter-template](https://github.com/ShibamD/java-cookiecutter-template)
@@ -311,23 +311,23 @@ All of these are already defined as pipeline variables, so just use the expressi
 
 ### Step 4: Create a GitHub Repository for the Service
 
-Now that the Java service has been generated, the next step is to create a new GitHub repository to store the code. 
+Now that your Java service has been generated, it’s time to create a fresh GitHub repository to store the code you just scaffolded.
 
-This is done using the **CreateRepo** step. The repo can be created under an organization or a personal account — just make sure your GitHub connector has the correct permissions. 
+You’ll do this using the **CreateRepo** step in your pipeline. You can choose to create the repo under your GitHub organization or your personal account — just make sure the GitHub connector you're using has the right permissions to do so. 
 
 ![create-repo](./static/java-onb/create-repo.png)
 
 
 | Field                   | Description                                                                 |
 |-------------------------|-----------------------------------------------------------------------------|
-| **Git Provider**        | Third-party Git provider – GitHub                                           |
-| **Repository Type**     | Choose `Public` or `Private` based on your needs                            |
-| **Connector**           | GitHub connector with repo creation permissions (OAuth or PAT)              |
-| **Organization**        | `<+pipeline.variables.organization>` – target GitHub org name               |
-| **Repository Name**     | `<+pipeline.variables.repo_name>` – the repo to be created                  |
-| **Description** (optional) | Short text describing the repository’s purpose                           |
-| **Default Branch**      | `main` – or any branch your organization prefers as default                 |
-| **Add Personal Account**| Enable if you're not using an org and want to push under your GitHub user   |
+| Git Provider        | Third-party Git provider – GitHub                                           |
+| Repository Type     | Choose `Public` or `Private` based on your needs                            |
+| Connector           | GitHub connector with repo creation permissions (OAuth or PAT)              |
+| Organization        | `<+pipeline.variables.organization>` – target GitHub org name               |
+| Repository Name     | `<+pipeline.variables.repo_name>` – the repo to be created                  |
+| Description (optional) | Short text describing the repository’s purpose                           |
+| Default Branch      | `main` – or any branch your organization prefers as default                 |
+| Add Personal Account| Enable if you're not using an org and want to push under your GitHub user   |
 
 > If you're using an organization account, provide its name through the `organization` variable. If not, you can check the **Add Personal Account** box to push it under your personal GitHub username.
 
@@ -349,5 +349,150 @@ This is done using the **CreateRepo** step. The repo can be created under an org
       personalAccount: false
 ```
 
+### Step 5: Generate the catalog file
+
+To get your Java service into the Software Catalog, you’ll need to generate a `file_name.yaml` file inside the name of the service’s folder provided as input. This is handled by the **CreateCatalog** step in your pipeline.
+
+Just use the service name as the path — that way, the file lands right inside the folder you just created.
+This YAML file holds important metadata about the service. Most of the values can be populated using pipeline variables so everything stays aligned with what the developer originally provided.
+
+![create-catalog](./static/java-onb/create-catalog.png)
+
+| Field            | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| File Name     | Name of the file to be created; typically `catalog-info.yaml`              |
+| Path          | Folder path where the file will be placed — usually the service directory  |
+| File Content  | The actual YAML content that describes the service and enables catalog registration |
+
+#### File content:
+
+```yaml
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: <+pipeline.variables.service_name>
+  description: <+pipeline.variables.description>
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  lifecycle: production
+  owner: <+pipeline.variables.owner>
+```
 
 
+
+#### Sample YAML
+
+```yaml
+- step:
+    type: CreateCatalog
+    name: CreateCatalog
+    identifier: CreateCatalog
+    spec:
+      fileName: gen-code.yaml
+      filePath: <+pipeline.variables.service_name>
+      fileContent: |
+        apiVersion: backstage.io/v1alpha1
+        kind: Component
+        metadata:
+          name: <+pipeline.variables.service_name>
+          description: <+pipeline.variables.description>
+          annotations:
+            backstage.io/techdocs-ref: dir:.
+        spec:
+          type: service
+          owner: abc
+          lifecycle: experimental
+```
+
+
+### Step 6: Push the service code to GitHub
+
+After the Java code and catalog file are generated, you need to publish them to GitHub. Use the **DirectPush** step to push the contents from the service folder to the new GitHub repository.
+
+Make sure you're using the same Git connector and GitHub organization you used during the CreateRepo step. This step requires the code directory path (usually the service name) and pushes the code to the `main` branch.
+
+![push-to-git](./static/java-onb/push-to-git.png)
+
+| Field               | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| Git Provider     | GitHub (via third-party Git provider option)                                |
+| Connector        | GitHub connector with commit access                                         |
+| Organization     | GitHub org under which the repo was created                                 |
+| Repository Name  | Name of the new repo, same as earlier                                       |
+| Code Directory   | The folder where the generated service code and `catalog-info.yaml` live   |
+| Branch Name      | Use `main` as default                                                       |
+| Allow Force Push | Enable this to make sure the pipeline can push even if the branch already exists |
+
+:::note
+Force push is helpful when GitHub auto-initializes a repository with files like a README or `.gitignore`, which can cause normal pushes to fail. Enabling this ensures the pipeline can overwrite that content with the generated code.
+:::
+
+#### Sample YAML
+
+```yaml
+- step:
+    type: DirectPush
+    name: DirectPushToGit
+    identifier: DirectPushToGit
+    spec:
+      connectorType: Github
+      forcePush: true
+      connectorRef: account.ShibamDhar
+      organization: <+pipeline.variables.organization>
+      repository: <+pipeline.variables.repo_name>
+      codeDirectory: <+pipeline.variables.service_name>
+      branch: main
+```
+
+
+### Step 7: Register the service in the Software Catalog
+
+This final step makes your new Java service show up in the Harness Software Catalog by registering the catalog YAML file you created earlier (`gen-code.yaml`). 
+
+The **RegisterCatalog** step does exactly that — it uses your GitHub connector to reach the repo, locate the file, and create the Component in the catalog.
+
+You just need to point it to the correct GitHub organization, repo name, and file path.
+
+| Field               | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| Git Provider     | GitHub via third-party provider option                                      |
+| Connector        | GitHub connector used throughout the pipeline                               |
+| Organization     | GitHub org where the service repo lives                                     |
+| Repository Name  | The name of the repository created earlier                                  |
+| Branch Name      | `main`, or whichever branch holds your YAML file           |
+| File Path        | The path of the YAML file generated earlier.                 |
+| API Key (Optional) | If your catalog requires authentication for registration                  |
+
+Once this step completes, your service will immediately show up as a new **Workflow** in the Harness IDP Software Catalog — fully registered with its metadata and ready to be used, documented, and governed.
+
+:::caution
+If the catalog file is not found at the specified path, the registration will fail. Make sure the filename and its location match what was set during the file generation step.
+:::
+
+Perfect — here's how to wrap up the tutorial naturally by **showing what the pipeline looks like once built**, **reminding them to save it**, and **guiding them to test it by running**. No fluff — just how you’d explain it if you were showing someone:
+
+---
+
+### Previewing the Final Pipeline
+
+Once you've added all the steps, your pipeline should now look like this in the **Pipeline Studio**:
+
+![Final Pipeline View](./static/java-onb/steps.png)
+
+
+
+
+- Save the Pipeline : Before moving on, make sure to hit **Save** on the top right. This locks in your configuration so you don’t lose anything.
+
+
+- Run and Verify : To check if everything works, click **Run**. Harness will prompt you to enter the required pipeline inputs — such as `service_name`, `description`, and others you wired up earlier.
+
+If all steps are correctly configured and your secrets/connectors are valid, the pipeline should execute like this:
+
+![Successful Execution](./static/java-onb/logs.png)
+
+> Every step will show a ✅ if successful. You can also switch to the **Execution Context** tab to inspect the resolved values of your pipeline variables — a great way to debug or confirm if the right data flowed through.
+
+----
