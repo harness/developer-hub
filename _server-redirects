@@ -134,7 +134,7 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 
 #Dynamic content redirects
 # Artifact Registry
-# NuGet redirect to dynamic selector tile
-/docs/artifact-registry/content/supported-formats/nuget-quickstart /docs/artifact-registry/supported-formats#nuget
+# Supported Formats redirect to dynamic selector tile
+/artifact-registry/content/supported-formats/nuget-quickstart /artifact-registry/supported-formats#nuget
 
 # Redirects generated from Front Matter [sytem generated goes below here]:
