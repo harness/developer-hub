@@ -139,7 +139,8 @@ metadata:
   name: serviceB
 ```
 
-This approach is no longer supported in IDP 2.0. To align with the Harness platform standards and Git Experience (GitX) model, each YAML file must now define **only one entity**.
+This approach is no longer supported in IDP 2.0. To align with the Harness platform standards and Git Experience (GitX) model, each YAML file must now define **only one entity**, basically every IDP entity can only be defined with a single YAML file.
+
 
 This change ensures better alignment with GitX workflows and simplifies entity lifecycle management.
 
