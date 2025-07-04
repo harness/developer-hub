@@ -148,3 +148,5 @@ metadata:
 6. Navigate to the **Docs** tab to review the documentation, which should become available shortly. 
 
 ![](static/docs-rendered.png)
+
+

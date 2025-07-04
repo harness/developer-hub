@@ -20,6 +20,16 @@ annotations:
 ```
 The `backstage.io/techdocs-ref` annotation is used by TechDocs to download the documentation source files for generating an entity's TechDocs site.
 
+:::info Additional Requirement for Harness IDP 2.0
+If you're using Harness IDP 2.0, you must also include the --`backstage.io/source-location`-- annotation in your catalog-info.yaml to enable source linking within the Harness UI.
+
+```yaml
+annotations:
+  backstage.io/techdocs-ref: dir:.
+  backstage.io/source-location: url:<your-repo-url>
+```
+:::
+
 2. Create a `mkdocs.yml` file in the root of your skeleton folder with the following content:
 
 ```sh
