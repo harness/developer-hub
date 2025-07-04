@@ -2,8 +2,6 @@
 title: Supported Formats
 description: Learn about supported formats in your workspace tabs. 
 sidebar_position: 10
-redirect_from:
-  - /docs/artifact-registry/content/supported-formats/nuget-quickstart
 ---
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';

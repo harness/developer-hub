@@ -1,6 +1,6 @@
 ---
-redirect_to:
-  - /docs/artifact-registry/supported-formats#nuget
+redirect_from:
+- /docs/artifact-registry/content/supported-formats/nuget-quickstart /docs/artifact-registry/supported-formats#nuget
 hide_table_of_contents: true
 ---
 
