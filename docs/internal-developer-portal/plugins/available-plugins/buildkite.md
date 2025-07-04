@@ -25,8 +25,7 @@ keywords:
 
 The Buildkite plugin enables developers to view and interact with their CI/CD pipeline runs directly within the Harness Internal Developer Portal (IDP). It surfaces real-time build statuses, allows rebuilding builds, and helps teams monitor their pipelines on a per-entity basis.
 
-
-![Buildkite](./static/buildkite.png)
+![buildkite](./static/buildkite.png)
 
 ## Plugin Metadata
 

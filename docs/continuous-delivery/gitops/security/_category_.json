@@ -1,0 +1,11 @@
+{
+    "label": "Secrets and Security",
+    "position": "1000",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Secrets and Security"
+    }
+  }

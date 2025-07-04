@@ -20,6 +20,134 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## June 2025
+
+### Version 1.62.11
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+
+- harness/chaos-ddcr:1.62.4
+- harness/chaos-log-watcher:1.62.1
+- harness/service-discovery-collector:0.42.1
+- harness/chaos-ddcr-faults:1.62.2
+
+#### What's New
+
+##### New Chaos Experiments
+
+- VPC Route Misconfiguration for AWS - Simulate network connectivity issues by disrupting connections to Transit Gateway, NAT Gateway, or VPC Peering connections. (CHAOS-8181)
+- Windows Memory Stress Experiments - Run memory stress tests on Windows systems without requiring administrator privileges. (CHAOS-8468, CHAOS-8456)
+- AWS Windows Chaos Experiments - Execute chaos experiments on Windows EC2 instances using AWS Systems Manager. (CHAOS-8139, CHAOS-8141)
+- Linux Experiments with Non-Root Users - Install and run chaos experiments on Linux systems without root access (limited fault selection available). (CHAOS-8121)
+
+##### Enhanced User Experience
+
+- Redesigned Experiments Page - Cleaner, more intuitive interface for managing your chaos experiments. (CHAOS-8185)
+- Improved Timeline View - Better visualization of experiment execution with support for new probes, actions, and faults. (CHAOS-8558)
+- Enhanced Chaos Studio - New properties and variables tabs for easier probe and action configuration. (CHAOS-8745)
+- Action Management - Dedicated details screen for managing standalone actions. (CHAOS-8178)
+- Permission Indicators - Visual indicators on fault cards showing basic or advanced permission requirements with helpful tooltips. (CHAOS-8397)
+
+##### Platform Improvements
+
+- APM Probe Integration - Monitor application performance during chaos experiments with Application Performance Monitoring probes. (CHAOS-8518)
+- Parallel Linux Experiments - Run multiple chaos experiments simultaneously on Linux infrastructure in SaaS environments. (CHAOS-8748)
+- Vanity URLs - Support for vanity URLs across chaos management services. (CHAOS-8528)
+- Enhanced Experiment Construction - Streamlined process for creating experiments with experiment-level probes, actions, and templates. (CHAOS-8062)
+- Unified Validation - Consistent schema validation across all infrastructure types supporting experiment-level probes. (CHAOS-8608)
+
+#### Improvements and Bug Fixes
+
+##### Timeline and Execution
+
+- Fixed experiment status not updating correctly when experiments fail
+- Improved timeline view to properly display skipped and error nodes with accurate duration
+- Resolved missing data issues in timeline execution details
+- Fixed experiment execution getting stuck in queued state
+
+##### User Interface
+
+- Fixed dropdown pagination controls not working properly
+- Improved error messaging to show clearer descriptions instead of technical error codes
+- Resolved display issues with Windows infrastructure troubleshooting commands
+- Fixed various UI components for better user experience
+
+##### API and Data Management
+
+- Improved API responses for experiment lists, faults, probes, and actions
+- Fixed data counting issues in Local Hub and Chaos Hub
+- Enhanced authentication handling to prevent unnecessary impersonation data
+- Improved schema handling for better compatibility
+- Added restriction in backend to prevent the deletion of default kubernetes system probe via API.
+
+##### Infrastructure and Performance
+
+- Fixed vulnerabilities by upgrading `jwt` and `ff-go-sdk` go packages in all chaos components.
+
+## May 2025
+
+### Version 1.61.11
+
+#### Images required
+Listed below are the images to download to use image registry with Harness Delegate.
+
+- harness/chaos-ddcr:1.61.1
+- harness/chaos-log-watcher:1.61.1
+- harness/service-discovery-collector:0.41.0
+- harness/chaos-ddcr-faults:1.61.2
+
+#### What's New
+
+### Enhanced Platform Support
+* **Istio and Virtual Services Support** - All SMP services now fully support Istio service mesh and virtual services for better network management and traffic routing. (PL-59078)
+
+### APM Monitoring Improvements
+* **Splunk Observability Integration** - Added Splunk Observability support for APM probes, expanding monitoring capabilities during chaos experiments. (CHAOS-8463)
+
+* **AppDynamics Comparator Support** - Enhanced APM probes with comparator functionality for AppDynamics connector, enabling better threshold-based monitoring. (CHAOS-8513)
+
+* **APM Probe Details View** - Improved experiment execution page to display APM probe properties and details for better visibility. (CHAOS-8163)
+
+### Experiment Management
+* **BYOC (Bring Your Own Container) Enhancements** - Added runtime input support and improved user experience for custom container-based chaos experiments. (CHAOS-8162, CHAOS-8128, CHAOS-8153)
+
+* **Kubernetes V2 Beta1 Support** - Added versioning support for Experiment Factory with new experiment schema for Kubernetes v2 beta1 manifests. (CHAOS-8137)
+
+* **Custom URLs Support** - Enhanced chaos management services with vanity URL support for better branding and accessibility. (CHAOS-7920)
+
+### Backend and Infrastructure
+
+* **Improved ChaosGuard** - Fixed YAML mode issues for ChaosGuard conditions in Linux and Windows infrastructures. (CHAOS-8146)
+
+### Improvements and Bug Fixes
+
+#### Experiment Creation and Validation
+* **Fixed YAML Validation Issues** - Resolved problems where unrelated errors would block experiment creation and saving when using blank canvas or YAML upload methods. (CHAOS-8585)
+
+* **Enhanced Linux Experiment Execution** - Fixed execution issues in Linux environments by updating TaskDefinition CRD charts with required response body fields. (CHAOS-8573)
+
+### Probe Management and Validation
+* **Command Probe Fixes** - Resolved multiple issues with Kubernetes CMD probes including source attribute handling and editing functionality. (CHAOS-8555, CHAOS-8550, CHAOS-8581)
+
+* **Dynatrace Probe Improvements** - Fixed probe creation issues and added proper validation for numerical values in Float type comparisons. (CHAOS-8554, CHAOS-8547, CHAOS-8546)
+
+* **Prometheus Probe Validation** - Added mandatory validation for query and query path fields to ensure proper probe configuration. (CHAOS-8544)
+
+* **APM Probe Display** - Fixed issues where APM probe properties weren't showing correctly on experiment execution pages. (CHAOS-8565)
+
+* **Bulk Probe Operations** - Improved bulk disable functionality for probes with better error handling and logging. (CHAOS-8552)
+
+### Platform Stability
+* **Windows Build Improvements** - Resolved Windows-specific build issues for better cross-platform compatibility. (CHAOS-8535)
+
+* **Helm Chart Updates** - Fixed missing Kubernetes event watcher image references in Helm charts. (CHAOS-8453)
+
+* **Pod Status Monitoring** - Enhanced pod-delete fault to properly check status for all affected pods. (CHAOS-8539)
+
+* **TLS Configuration** - Improved handling of empty TLS configuration objects for APM probes. (CHAOS-8158)
+
+
 ## April 2025
 
 ### Version 1.59.0

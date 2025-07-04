@@ -86,14 +86,11 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 4. Select **New GitOps Agent**. The Agent creation wizard appears.
 
    You can choose to install a Harness GitOps Agent with or without an existing Argo CD instance. 
-5. For this example, select **No** and select **Start**. If you already have an existing ArgoCD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent#harness-gitops-agent-with-existing-argo-cd-project).
+5. For this example, select **No** and select **Start**. If you already have an existing ArgoCD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent#harness-gitops-agent-with-existing-argo-cd-project).
 
    ![](./static/harness-cd-git-ops-quickstart-04.png)
 6. In **Name**, enter the name **example**.
-7. Set **GitOps Operator** to one of the following:
-
-   * **Argo**. Uses Argo CD as the GitOps reconciler.
-   * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
+7. Set **GitOps Operator** to **Argo**.
 
 8. Set **Namespace** to the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this example, we use **default**.
 9. Select **Continue**. The **Review YAML** settings appear.
@@ -304,7 +301,7 @@ In this example, we'll connect using the cluster master URL and a Service Accoun
 
 To use a Kubernetes Service Account (SA) and token, you will need to either use an existing SA that has `cluster-admin` or *admin* permissions in the namespace, or create a new SA and grant it the permissions. This is described in [Add a Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 
-To create a cluster entity using IAM role in Amazon EKS, go to [Creating a GitOps cluster with IAM role](/docs/continuous-delivery/gitops/use-gitops/create-cluster-with-iam).
+To create a cluster entity using IAM role in Amazon EKS, go to [Creating a GitOps cluster with IAM role](/docs/continuous-delivery/gitops/clusters/create-cluster-with-iam).
 
 Here's an example of a SA and ClusterRoleBinding with `cluster-admin`:
 
@@ -389,11 +386,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
    ![](./static/harness-cd-git-ops-quickstart-13.png)
 
 2. In **Application Name**, enter **example**.
-3. In **GitOps Operator**, select the GitOps operator you selected when installing the example agent:
-  
-    * **Argo**. Uses Argo CD as the GitOps reconciler.
-    * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
-
+3. In **GitOps Operator**, select **Argo**.
 4. In **GitOps Agent**, select the Agent you added earlier.
 5. In **Service**, select **New Service**, and name the Service **guestbook**.
 6. In **Environment**, select **New Environment**, name the Environment **example**, and select **Pre-Production**.
@@ -600,7 +593,7 @@ kubectl create namespace {namespace}
 
 * Next, try Harness GitOps using one of your own repos and target clusters.
 * Understand [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial) and how you can use them with [Harness PR Pipelines](/docs/continuous-delivery/gitops/pr-pipelines/) to streamline GitOps across multiple environments.
-* Read about how Harness GitOps approaches [Managing Kubernetes secrets in Git using Mozilla SOPS](/docs/continuous-delivery/gitops/use-gitops/sops).
+* Read about how Harness GitOps approaches [Managing Kubernetes secrets in Git using Mozilla SOPS](/docs/continuous-delivery/gitops/security/sops).
 * Checkout this [sample](https://github.com/harness-community/Gitops-Samples/tree/main/Fetch-App-Sync) for Fetching App Details and Syncing App using Harness Pipeline.
 * Checkout this [sample](https://github.com/harness-community/Gitops-Samples/tree/main/Syncing-multiple-apps) for Syncing Multiple GitOps Applications.
 

@@ -118,7 +118,7 @@ export const docsCards: CardSections = [
         title: "SEI",
         module: MODULES.sei,
         description: "Software Engineering Insights onboarding guide",
-        link: "/docs/software-engineering-insights/get-started/sei-onboarding-guide",
+        link: "/docs/software-engineering-insights/propelo-sei/get-started/sei-onboarding-guide",
       },
     ],
   },

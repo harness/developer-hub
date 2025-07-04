@@ -1,9 +1,10 @@
 {
   "label": "PR pipelines",
-  "position": "500",
+  "position": "600",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
+  "description": "Learn how to use PR pipelines to manage your applications",
   "link": {
       "type": "generated-index",
       "title": "PR pipelines"

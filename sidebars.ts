@@ -649,6 +649,7 @@ const sidebars: SidebarsConfig = {
       className: "horizontal-bar",
     },
     "artifact-registry/whats-supported",
+    "artifact-registry/ar-best-practices",
     {
       type: "category",
       label: "Authorization & Authentication",
