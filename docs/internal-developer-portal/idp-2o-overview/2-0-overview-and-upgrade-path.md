@@ -144,7 +144,7 @@ This approach is no longer supported in IDP 2.0. To align with the Harness platf
 
 This change ensures better alignment with GitX workflows and simplifies entity lifecycle management.
 
-> 💡 Note: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own `catalog-info.yaml` file.
+> 💡 Note: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own entity YAML file.
 
 
 ### Entity YAML Definition
@@ -152,7 +152,7 @@ This change ensures better alignment with GitX workflows and simplifies entity l
 IDP 2.0 implements a Harness-native entity schema featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
 
 :::info Note
-With the IDP Git experience feature, one entity can have only one YAML file. Unlike IDP 1.0, storing multiple entities within a single YAML is no longer supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions.
+With the IDP Git experience feature, one entity can have only one YAML file. Unlike IDP 1.0, storing multiple entities within a single YAML is no longer supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions. To understand more about this and other key differences, see the [breaking changes in IDP 2.0](https://developer.harness.io/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#breaking-changes-in-idp-20).
 :::
 
 

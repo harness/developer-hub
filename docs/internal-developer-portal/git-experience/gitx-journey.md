@@ -41,18 +41,18 @@ Harness Internal Developer Portal (IDP) integrates with the Platform Git Experie
 | **Git to IDP changes**: Make changes to YAML file in Git and update entity in IDP  | 🚧 (Work in Progress) ETA: Week of July 4, 2025 |
 
 
-> **Note:**
-> For the full list of supported entities, refer to the [Supported IDP Entities in Git Experience](https://developer.harness.io/docs/internal-developer-portal/whats-supported#supported-idp-entities-in-git-experience) documentation.
-
 
 
 :::info Note
-With the IDP Git experience feature, one entity can have only one YAML file. Unlike IDP 1.0, storing multiple entities within a single YAML is no longer supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions.
+With the IDP Git experience feature, one entity can have only one YAML file. Unlike IDP 1.0, storing multiple entities within a single YAML is no longer supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions. 
+To understand more about this and other key differences, see the [breaking changes in IDP 2.0](https://developer.harness.io/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#breaking-changes-in-idp-20).
 :::
 
 ### Supported IDP Entities in Git Experience
 
 IDP Catalog entity YAMLs (Component, API, Resource) and Workflow YAMLs can be stored in Git using Git Experience. However, configuration of other resources such as Scorecards, Plugin configurations, Layouts, etc. can only be done using the UI or API.
+> **Note:**
+> For the full list of supported entities, refer to the [Supported IDP Entities in Git Experience](https://developer.harness.io/docs/internal-developer-portal/whats-supported#supported-idp-entities-in-git-experience) documentation.
 
 ### Supported Git Providers in Harness IDP Git Experience
 
