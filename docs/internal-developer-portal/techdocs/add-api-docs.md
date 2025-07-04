@@ -33,7 +33,7 @@ More details on descriptor format for API's could be found below in the referenc
 
 Note that to be able to read from targets that are outside the normal integration points such as `github.com`, you'll need to explicitly allow it by adding an entry in the **URL Allow List** under **Admin**
 
-![](static/url-allow-list.png)
+![URL Allow List](static/url-allow.png)
 
 :::
 
@@ -77,12 +77,16 @@ spec:
 </TabItem>
 </Tabs>
 
+:::info
+In the above example we import all the API specs in `json` format as a `$text` embedding, and it's a suggested hack to import multiple APIs in openapi format. 
+:::
+
 :::note Backend URL Allow List
 
 By default, Backstage restricts backend fetching and only allows requests to public APIs defined in `catalog-info.yaml` files if the domains are explicitly allowed.
 
 To enable access:
-
+- Go to your IDP portal and navigate to `Configuration` > `URL Allow List`.
 - Add full domains or use wildcards (e.g., `*.apis.com`) to allow subdomains.
 - You can also list specific paths. Subdirectories are supported using a trailing slash (e.g., `/exampledir/` allows `/exampledir/example`).
 
