@@ -10,7 +10,7 @@ sidebar_position: 17
 
 ## Issue
 
-When using Android App with Kotlin language, the code below always returns contro" treatment from Android SDK
+When using Android App with Kotlin language, the code below always returns the control treatment from the Android SDK:
 
 ```java
 val apiKey = "API KEY"
