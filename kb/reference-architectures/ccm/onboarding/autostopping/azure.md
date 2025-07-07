@@ -93,4 +93,4 @@ To call this API the token used must have auto stopping rule view in the Harness
 
 ## Provisioning via Terraform
 
-There exists several examples of configuring and deploying rules in [this](https://github.com/wings-software/AutoStoppingLab/tree/main/azure) repository.
+There exists several examples of configuring and deploying rules in [this repository](https://github.com/wings-software/AutoStoppingLab/tree/main/azure).
