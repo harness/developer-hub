@@ -514,6 +514,33 @@ gsutil -m cp \
 - Resolved an issue where Docker connectors used as base image connectors in **Build and Push** steps failed to authenticate when the URL was set to `https://index.docker.io/v2/`. The backend now implicitly converts this to the correct v1 endpoint (`https://index.docker.io/v1/`) to ensure proper authentication. (CI-14112)
 - Resolved compatibility issues with the `gradle-build-cache-plugin` for Java 8. After the update, the plugin was verified to work with JDK 8, JDK 11, and JDK 17. (CI-15707)
 
+#### Chaos Engineering
+
+- Fixed experiment status not updating correctly when experiments fail (CHAOS-8744)
+- Improved timeline view to properly display skipped and error nodes with accurate duration (CHAOS-8959)
+- Resolved missing data issues in timeline execution details (CHAOS-8560)
+- Fixed experiment execution getting stuck in queued state (CHAOS-8805)
+- Improved error messaging to show clearer descriptions instead of technical error codes (CHAOS-8493)
+- Resolved display issues with Windows infrastructure troubleshooting commands (CHAOS-8605)
+- Fixed various UI components for better user experience (CHAOS-8590)
+- Improved API responses for experiment lists, faults, probes, and actions (CHAOS-8534, CHAOS-8571, CHAOS-8700)
+- Enhanced authentication handling to prevent unnecessary impersonation data (CHAOS-8939)
+- Improved schema handling for better compatibility (CHAOS-8563, CHAOS-8522)
+- Added restriction in backend to prevent the deletion of default kubernetes system probe via API (CHAOS-8635)
+- Fixed vulnerabilities by upgrading jwt and ff-go-sdk go packages in all chaos components (CHAOS-8687, CHAOS-8686, CHAOS-8684, CHAOS-8682, CHAOS-8681)
+- Fixed chaos-manager Service not using Rolling Deployment Strategy (CHAOS-8790)
+- Fixed emissary release pipeline (CHAOS-8559)
+- Resolved internal system error coming while running experiments in snapshot (CHAOS-8521)
+- Fixed GraphQL API returning 0 value for attempt and retry in probe run property (CHAOS-8167)
+- Updated ddcr with latest hce-sdk to fix run properties issue (CHAOS-8739)
+- Updated template field in chaosHubResources on sync operation (CHAOS-8707)
+- Updated pagination limit to 64 for listFaults API (CHAOS-8478)
+- Updated getProbes and getProbe GQL API to only return non runtime based probes for backwards compatibility (CHAOS-8195)
+- Moved FaultRef outside faults and renamed ID to Identify for experiment probes (CHAOS-8589)
+- Updated status in execution node details in DDCR and removed case conversion in chaos manager (CHAOS-8792)
+- Skipped sending Impersonating Authentication Info in audit details if impersonation is not done (CHAOS-8939)
+- Provided experiment type / kind in experiment list API to redirect to the correct execution page (CHAOS-8868)
+
 ### New Feature and Enhancement
 
 #### Harness Platform
@@ -583,20 +610,21 @@ gsutil -m cp \
 
 #### Chaos Engineering
 
-- VPC Route Misconfiguration for AWS - Simulate network connectivity issues by disrupting connections to Transit Gateway, NAT Gateway, or VPC Peering connections. (CHAOS-8181)
-- Windows Memory Stress Experiments - Run memory stress tests on Windows systems without requiring administrator privileges. (CHAOS-8468, CHAOS-8456)
-- AWS Windows Chaos Experiments - Execute chaos experiments on Windows EC2 instances using AWS Systems Manager. (CHAOS-8139, CHAOS-8141)
-- Linux Experiments with Non-Root Users - Install and run chaos experiments on Linux systems without root access (limited fault selection available). (CHAOS-8121)
-- Redesigned Experiments Page - Cleaner, more intuitive interface for managing your chaos experiments. (CHAOS-8185)
-- Improved Timeline View - Better visualization of experiment execution with support for new probes, actions, and faults. (CHAOS-8558)
-- Enhanced Chaos Studio - New properties and variables tabs for easier probe and action configuration. (CHAOS-8745)
-- Action Management - Dedicated details screen for managing standalone actions. (CHAOS-8178)
-- Permission Indicators - Visual indicators on fault cards showing basic or advanced permission requirements with helpful tooltips. (CHAOS-8397)
-- APM Probe Integration - Monitor application performance during chaos experiments with Application Performance Monitoring probes. (CHAOS-8518)
-- Parallel Linux Experiments - Run multiple chaos experiments simultaneously on Linux infrastructure in SaaS environments. (CHAOS-8748)
-- Vanity URLs - Support for vanity URLs across chaos management services. (CHAOS-8528)
-- Enhanced Experiment Construction - Streamlined process for creating experiments with experiment-level probes, actions, and templates. (CHAOS-8062)
-- Unified Validation - Consistent schema validation across all infrastructure types supporting experiment-level probes. (CHAOS-8608)
+- Added VPC Route Misconfiguration chaos fault for AWS to simulate network connectivity issues by disrupting connections to Transit Gateway, NAT Gateway, or VPC Peering connections (CHAOS-8181)
+- Added support for Windows memory stress experiments that run without requiring administrator privileges (CHAOS-8468, CHAOS-8456)
+- Added support for AWS Windows chaos experiments that execute on Windows EC2 instances using AWS Systems Manager (CHAOS-8139, CHAOS-8141)
+- Added support for Linux experiments with non-root users to install and run chaos experiments on Linux systems without root access (limited fault selection available) (CHAOS-8121)
+- Redesigned experiments page with cleaner, more intuitive interface for managing chaos experiments (CHAOS-8185)
+- Enhanced timeline view with better visualization of experiment execution and support for new probes, actions, and faults (CHAOS-8558)
+- Added properties and variables tabs in chaos studio for easier probe and action configuration (CHAOS-8745)
+- Implemented dedicated details screen for managing standalone actions (CHAOS-8178)
+- Added permission indicators with visual indicators on fault cards showing basic or advanced permission requirements with helpful tooltips (CHAOS-8397)
+- Added APM probe integration to monitor application performance during chaos experiments (CHAOS-8518)
+- Enabled parallel Linux experiments to run multiple chaos experiments simultaneously on Linux infrastructure in SaaS environments (CHAOS-8748)
+- Added support for vanity URLs across chaos management services (CHAOS-8528)
+- Enhanced experiment construction with streamlined process for creating experiments with experiment-level probes, actions, and templates (CHAOS-8062)
+- Added unified validation with consistent schema validation across all infrastructure types supporting experiment-level probes (CHAOS-8608)
+- Added UI changes for support installation of Linux agent via non-root user (CHAOS-8699)
 
 ## July 2, 2025, Version 0.29.1
 
