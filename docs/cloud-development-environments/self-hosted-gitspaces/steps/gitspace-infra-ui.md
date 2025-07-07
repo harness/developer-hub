@@ -76,28 +76,39 @@ Once your infrastructure is configured, you also have the option to **edit and u
 Here's how you can edit your infrastructure: 
 1. Go to your **Gitspace Infrastructure UI**. 
 2. Click on the **Edit** button on the top-right corner. 
-![](./static/edit-infra.png)
+![](./static/edit-infra-latest.png)
 3. Whenever you make changes to your infrastructure configuration, you’ll need to **download the updated Infra Config YAML**.
 Use this updated YAML to [reapply your Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to reflect the changes. You can learn more about this process in the [next steps](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#next-steps).
 
 ### Delete Gitspace Infrastructure
 :::warning **Warning: Irreversible Action**
 
-Deleting your infrastructure is **permanent** and **cannot be undone**. This action will:
-
-* Permanently remove your entire infrastructure configuration
-* **Immediately auto-stop** all Gitspaces running on this infrastructure
+Deleting your infrastructure is **permanent** and **cannot be undone**. This action will permanently remove your entire infrastructure configuration. 
 
 Please proceed **only if you are absolutely certain** you want to delete this infrastructure.
 :::
 
-You can **delete your infrastructure** from the Gitspace Infrastructure UI. Please note that only **Gitspace Admins** with **Account-level access** are permitted to make changes. Once you delete your Gitspace Infrastructure, all Gitspaces running on that infra will be **permanently auto-stopped**, and you will no longer be able to access any of them.
+You can **delete your infrastructure** from the **Gitspace Infrastructure UI**. Please note that only users with **account-level access** are permitted to perform this action.
 
+You can delete the **Gitspace Infrastructure** only if the following conditions are met:
+
+* All **Gitspaces** associated with this infrastructure have been deleted.
+* All **Machines** associated with this infrastructure have been deleted.
+
+If these conditions are not met, you will not be able to delete the Gitspace Infrastructure.
+
+#### Deleting Gitspaces
+You can **delete Gitspaces** (created within a specific infrastructure) using the Harness UI. Refer to the [documentation](/docs/cloud-development-environments/manage-gitspaces/delete-gitspaces.md) for detailed steps on deleting a Gitspace.
+
+#### Deleting Machines
+Follow this [documentation](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md#delete-machines-from-gitspace-infrastructure) to get detailed instructions on how to **delete Machines** from your Gitspace Infrastructure. 
+
+#### Deleting Infrastructure
 Here's how you can delete your infrastructure: 
 1. Go to your **Gitspace Infrastructure UI**. 
 2. Scroll down to the bottom of the page. You’ll find the option to **Delete Infrastructure**. Click this button to permanently delete the selected infrastructure.
 
-![](./static/delete-infra.png)
+![](./static/delete-infra-latest.png)
 
 ### Assess Gateway Group Health for Gitspace Infrastructure
 You can assess the **Gateway Group Health** for your Gitspace infrastructure from the Infra Details UI. Go to **Locations and Machines**, and click on the region for which you want to assess the Gateway health. You can find the following details:
@@ -108,7 +119,7 @@ You can assess the **Gateway Group Health** for your Gitspace infrastructure fro
 * **Envoy Health**: Health status of Envoy
 * **Gateway Version Number**: Gateway image version number
 
-//Image with a healthy gateway
+![](./static/healthy-gateway.png)
 
 ## Next Steps
 Now that you have the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#download-the-infra-config-yaml) downloaded, proceed to [configure and apply the Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to provision your self-hosted Gitspaces. 

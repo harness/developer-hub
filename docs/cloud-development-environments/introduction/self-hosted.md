@@ -31,7 +31,7 @@ There are a few key concepts that form the foundation of how Self Hosted Gitspac
 - [Harness Control Plane](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#harness-control-plane)
 - [Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#delegate)
 - [VM Runner](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#vm-runner)
-- [Gateway](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#gateway)
+- [CDE Gateway](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#gateway)
 - [Terraform Registry](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#terraform-registry)
 
 Read more about all these [key concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md). 
@@ -55,7 +55,8 @@ You need to follow these prerequisites to get started with self-hosted Gitspaces
 | **Enable APIs in GCP Project** | Your GCP Project (where your have created your GCP VM Instance) should have the following APIs enabled:  <ul><li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) - api/cloudresourcemanager.googleapis.com</li><li>[Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1) - api/compute.googleapis.com</li><li>[Certificate Manager API](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest) - api/certificatemanager.googleapis.com</li><li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) - api/iam.googleapis.com</li><li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) - api/dns.googleapis.com</li></ul>   | [Guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) |
 | **Service Account** | You must have a Service Account with the "Owner" permission in the same GCP Project where you have your GCP VM Instance.| [Guide](https://cloud.google.com/iam/docs/service-accounts-create) | 
 | **Service Account Key** | You must create and download a Service Account Key in the same GCP Project and service account, this key is usually in the form of a **JSON** or **P12 file**, which contains the credentials necessary for the service account to authenticate. | [Guide](https://cloud.google.com/iam/docs/keys-create-delete) | 
-| **Terraform** | You must have Terraform installed on your machine with internet access (please ensure you have the SA key downloaded here) | [Guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
+| **Terraform / OpenTofu** | You must have Terraform/OpenTofu installed on your machine with internet access (please ensure you have the SA key downloaded here) | [Guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
+| **DNS Propogation** | You must verify that the domain or subdomain you use for self hosted Gitspaces has been properly delegated and that DNS propogation has completed. | [Docs](https://www.catchpoint.com/dns-monitoring/dns-delegation) | 
 
 ### Get Started with Self-Hosted Gitspaces
 
@@ -79,7 +80,7 @@ Start by configuring your **Gitspace infrastructure via the Harness UI**. This a
 
 #### 3. Configure and Set Up the Terraform Module
 
-Once the infrastructure is configured in the UI, proceed to initialize and apply the **Harness Gitspaces Terraform Module**. This module will **create all required GCP infrastructure** and will set up VM instances for the Gateway. 
+Once the infrastructure is configured in the UI, proceed to initialize and apply the **Harness Gitspaces Terraform Module**. This module will **create all required GCP infrastructure** and will set up VM instances for the CDE Gateway. 
 
 🔗 [Set Up Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md)
 

@@ -47,7 +47,7 @@ You can configure on-prem Git providers with Harness Gitspaces by following thes
 
 ### 1. Add On-Prem Git Provider
 
-To begin, you need to add and configure your credentials for on-prem Git providers from your Harness account.
+To begin, you need to add and configure the OAuth client details in your on-prem Git providers from your Harness account.
 
 To configure and add **Bitbucket Data Center**, refer to this [documentation](https://developer.harness.io/docs/platform/git-experience/oauth-integration#configure-oauth-for-self-hosted-bitbucket-provider).
 

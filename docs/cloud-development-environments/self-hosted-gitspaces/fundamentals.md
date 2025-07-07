@@ -33,15 +33,15 @@ To understand more about this component, please refer to [Self Hosted Gitspaces 
 To understand more about this step and its implementation, please refer to [Setup Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate.md)
 
 ### VM Runner
-The Runner is responsible for managing the **VM lifecycle**. The VM Runner maintains a pool of VMs for executing the tasks. When the Delegate receives any Task Request from the Harness Control Plane, it forwards the request to the Runner, which executes the task on the available VM and manages the VM lifecycle according to the request. Read more about [VM Runner](https://docs.drone.io/runner/vm/overview/).
+The **VM Runner** is responsible for **managing the VM lifecycle**. The VM Runner creates a VM on demand for executing the tasks. When the Delegate receives any Task Request from the Harness Control Plane, it forwards the request to the Runner, which executes the task on the created VM and manages the VM lifecycle according to the request. Read more about [VM Runner](https://docs.drone.io/runner/vm/overview/).
 
 To understand more about this step and its implementation, please refer to [Setup Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate.md)
 
-### Gateway
-The **CDE Gateway** plays a key role in ensuring reliable connectivity, secure access, and controlled traffic flow. It is responsible for **routing** user requests to the appropriate Gitspaces. The gateway also handles **authentication**, ensuring that only users with valid access tokens can access Gitspaces. From a **security** perspective, the gateway ensures that all incoming traffic to a Gitspace VM originates from trusted components. This controlled entry point greatly reduces the surface area for potential attacks and enforces strict traffic policies.
+### CDE Gateway
+The **CDE Gateway** plays a key role in ensuring reliable connectivity, secure access, and controlled traffic flow. It is responsible for **routing** user requests to the appropriate Gitspaces. The CDE gateway also handles **authentication**, ensuring that only users with valid access tokens can access Gitspaces. From a **security** perspective, the CDE gateway ensures that all incoming traffic to a Gitspace VM originates from trusted components. This controlled entry point greatly reduces the surface area for potential attacks and enforces strict traffic policies.
 
 ### Terraform Module
-A **Terraform module** is a reusable package of Terraform configuration files designed to provision related infrastructure components together. The [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest) is used to provision and set up all the **necessary GCP infrastructure** required to run and use **Self-Hosted Gitspaces** in your own GCP environment. It automates tasks like VPC creation, sub-network setup, IAM roles and policies configuration, and other supporting GCP services needed to run and use Self-Hosted Gitspaces.
+A **Terraform module** is a reusable package of Terraform configuration files designed to provision related infrastructure components together. The [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest) is used to provision and set up all the **necessary GCP infrastructure** required to run and use **Self-Hosted Gitspaces** in your own GCP project. It automates tasks like VPC creation, sub-network setup, IAM roles and policies configuration, and other supporting GCP services needed to run and use Self-Hosted Gitspaces.
 
 To understand more about this step and its implementation, please refer to [Configure and Use the Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md)
 
@@ -54,8 +54,8 @@ You need to follow these prerequisites to get started with self-hosted Gitspaces
 | **Enable APIs in GCP Project** | Your GCP Project (where your have created your GCP VM Instance) should have the following APIs enabled:  <ul><li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) - api/cloudresourcemanager.googleapis.com</li><li>[Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1) - api/compute.googleapis.com</li><li>[Certificate Manager API](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest) - api/certificatemanager.googleapis.com</li><li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) - api/iam.googleapis.com</li><li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) - api/dns.googleapis.com</li></ul>   | [Docs](https://cloud.google.com/endpoints/docs/openapi/enable-api) |
 | **Service Account** | You must have a Service Account with the "Owner" permission in the same GCP Project where you have your GCP VM Instance.| [Docs](https://cloud.google.com/iam/docs/service-accounts-create) | 
 | **Service Account Key** | You must create and download a Service Account Key in the same GCP Project and service account, this key is usually in the form of a **JSON** or **P12 file**, which contains the credentials necessary for the service account to authenticate. | [Docs](https://cloud.google.com/iam/docs/keys-create-delete) | 
-| **Terraform** | You must have Terraform installed on your machine with internet access (please ensure you have the SA key downloaded here) | [Docs](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
-| **DNS Propogation** | | | 
+| **Terraform/OpenTofu** | You must have Terraform/OpenTofu installed on your machine with internet access (please ensure you have the SA key downloaded here) | [Docs](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
+| **DNS Propogation** | You must verify that the domain or subdomain you use for self hosted Gitspaces has been properly delegated and that DNS propogation has completed. | [Docs](https://www.catchpoint.com/dns-monitoring/dns-delegation) | 
 
 ## Get Started with Self-Hosted Gitspaces
 
@@ -79,7 +79,7 @@ Start by configuring your **Gitspace infrastructure via the Harness UI**. This a
 
 ### 3. Configure and Set Up the Terraform Module
 
-Once the infrastructure is configured in the UI, proceed to initialize and apply the **Harness Gitspaces Terraform Module**. This module will **create all required GCP infrastructure** and will set up VM instances for the Gateway. 
+Once the infrastructure is configured in the UI, proceed to initialize and apply the **Harness Gitspaces Terraform Module**. This module will **create all required GCP infrastructure** and will set up VM instances for the CDE Gateway. 
 
 🔗 [Set Up Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md)
 

@@ -30,7 +30,7 @@ In contrast, **Self-Hosted Gitspaces** solve these issues by offering complete i
 Self-Hosted Gitspaces consist of two core components:
 
 * **Harness Control Plane**
-* **Customer’s Cloud Infrastructure (e.g., GCP)**
+* **Customer’s Cloud Infrastructure [Google Cloud Platform(GCP)]**
 
 ![Architecture Diagram](./static/self-hosted-architecture.png)
 
@@ -64,10 +64,10 @@ The infrastructure on the customer side (eg. GCP) includes:
 
 ![](./static/harness-customer-infra.png)
 
-### Delegate ↔ Runner
+### Delegate ↔ VM Runner
 
-* Delegate submits VM requests to the Runner.
-* Runner handles VM provisioning, execution, and response.
+* Delegate submits VM requests to the VM Runner.
+* VM Runner handles VM provisioning, execution, and response.
 * Delegate receives status and forwards it to the Control Plane.
 
 ![](./static/delegate-runner.jpg)
@@ -90,7 +90,7 @@ To understand more about this step and its implementation, please refer to [Setu
 
 ### VM Runner
 
-The Runner is responsible for managing the VM lifecycle. The VM Runner maintains a pool of VMs for executing the tasks. When the Delegate receives any Task Request from the Harness Control Plane, it forwards the request to the Runner, which executes the task on the available VM and manages the VM lifecycle according to the request. Read more about [VM Runner](https://docs.drone.io/runner/vm/overview/).
+The **VM Runner** is responsible for **managing the VM lifecycle**. The VM Runner creates a VM on demand for executing the tasks. When the Delegate receives any Task Request from the Harness Control Plane, it forwards the request to the Runner, which executes the task on the created VM and manages the VM lifecycle according to the request. Read more about [VM Runner](https://docs.drone.io/runner/vm/overview/).
 
 To understand more about this step and its implementation, please refer to [Setup Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate.md)
 

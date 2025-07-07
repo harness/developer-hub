@@ -1,8 +1,8 @@
 ---
-title: Create Machines and Update Delegate Selector
+title: Manage Machines and Update Delegate Selector
 description: Deep dive into how to create Machines and update Delegate Selector to get started. 
 sidebar_position: 5
-sidebar_label: Create Machines & Update Delegate Selector
+sidebar_label: Manage Machines & Update Delegate Selector
 ---
 This is your **fourth step** in configuring **Self Hosted Gitspaces**. 
 
@@ -22,7 +22,9 @@ Follow the given steps to add Machines:
 
 1. After configuring your infrastructure and setting up the Delegate, navigate to the **Infrastructure Details** UI.
 2. In the **Locations and Machines** section, click on **New Machine**.
+![](./static/new-machine.png)
 3. Fill in the required machine details and click **Create**.
+![](./static/machine-details.jpg)
 
 This action will register a new machine in your Gitspace Infrastructure, enabling it to host Self Hosted Gitspaces.
 
@@ -35,6 +37,16 @@ Follow the given steps to select a Delegate:
 1. Navigate to the **Infrastructure Details** UI after configuring your infrastructure and setting up the Delegate.
 2. Click on **Edit** to edit the infrastructure details. 
 3. Update the **Delegate Selector** field there using either the **Delegate Name** or **Delegate Tags**. You can also select Delegates in the Delegate Selector field using **Delegate Tags**. Read more about [Delegate Tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags). 
+
+![](./static/delegate-selector.png)
+
+## Delete Machines from Gitspace Infrastructure
+You can also delete **Machines** from your Gitspace Infrastructure. Here's how you can do that: 
+1. Go to your **Gitspace Infrastructure** UI. 
+2. Go to the **Locations and Machines** section. 
+3. Click the **delete** icon for the specific machine you want to delete. 
+
+![](./static/delete-machine.png)
 
 ## Next Steps
 Now that everything is set up, you can start **creating and managing Gitspaces**. To learn more, refer to [Managing Gitspaces](/docs/category/manage-gitspaces).
