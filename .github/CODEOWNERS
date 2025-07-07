@@ -75,13 +75,13 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
 
 # STO Docs
-/docs/security-testing-orchestration/ @tejakummarikuntla @BruceMcPhersonHarness
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @BruceMcPhersonHarness
-/release-notes/security-testing-orchestration.md @tejakummarikuntla @BruceMcPhersonHarness
-/src/components/Roadmap/data/stoData.ts @tejakummarikuntla  @BruceMcPhersonHarness
-/src/components/Docs/data/securityTestingOrchestrationData.ts @tejakummarikuntla @BruceMcPhersonHarness
+/docs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
+/release-notes/security-testing-orchestration.md @tejakummarikuntla @priteshchandaliya
+/src/components/Roadmap/data/stoData.ts @tejakummarikuntla  @priteshchandaliya
+/src/components/Docs/data/securityTestingOrchestrationData.ts @tejakummarikuntla @priteshchandaliya
 # STO FAQs
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
 
 # CCM Docs
 
