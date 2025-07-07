@@ -48,13 +48,14 @@ To create a new entity, navigate to the Harness IDP portal and click on **“Cre
   3. Define the **entity scope** — choose whether the entity should reside at the Account, Project, or Organization level. Read more about Catalog RBAC.
   ![](./static/scope-entity.png)
   4. Next, choose how you want to manage the entity:
-      - Inline (default): Manage the entity fully within the Harness UI — no Git required. Ideal for fast onboarding or for teams unfamiliar with Backstage YAML structure.
-      - Git Experience: Choose this if you want to store and manage the entity YAML in a connected Git repository. Just switch to **Third-party Git provider**, select your Git provider, repository, and target branch.
+    * **Inline (default):** Manage the entity YAML directly within Harness.
+    * **Remote:** Choose to store your entity YAML in a Git repository for version control, collaboration, and change tracking.
+    You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
       ![](./static/catalog-git.png)
       > The Git Experience is ideal for teams who prefer to manage entities as code. Learn more in the [Git Experience Journey](/docs/internal-developer-portal/git-experience/gitx-journey.md).
   5. Click on **“Review YAML”** to view the auto-generated YAML. Since there's a live sync between the Visual and YAML views, changes in one will reflect in the other.
 
-  :::info
+  :::info`
   **Note:** **YAML validation** is performed to ensure compatibility with the **Harness-native Catalog YAML** model. Any errors will be shown in the Validation logs.
 
   ![](./static/yaml-validation.png)
@@ -85,8 +86,9 @@ Note: **YAML validation** is automatically performed to ensure compatibility wit
 3. You can define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
 ![](./static/scope-entity.png)
 4. Choose how you want to manage the entity:
-      - Inline (default): Manage the entity fully within the Harness UI — no Git required. Ideal for fast onboarding or for teams unfamiliar with Backstage YAML structure.
-      - Git Experience: Choose this if you want to store and manage the entity YAML in a connected Git repository. Just switch to **Third-party Git provider**, select your Git provider, repository, and target branch.
+    * **Inline (default):** Manage the entity YAML directly within Harness.
+    * **Remote:** Choose to store your entity YAML in a Git repository for version control, collaboration, and change tracking.
+    You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
       ![](./static/catalog-git.png)
       > The Git Experience is ideal for teams who prefer to manage entities as code. Learn more in the [Git Experience Journey](/docs/internal-developer-portal/git-experience/gitx-journey.md).
 

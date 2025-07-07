@@ -63,8 +63,9 @@ Let's try creating a **Workflow** using both the methods:
   3. Define the **Workflow scope** — choose whether the Workflow should reside at the Account, Project, or Organization level. For this use-case, let's select the Account scope. Read more about Workflow RBAC.
   ![](./static/workflow-scope.png)
   4. You now have two options for managing your Workflow configuration:
-      - Inline (default): Manage the Workflow YAML directly within Harness.
-      - Git Experience: Choose to store your Workflow YAML in a Git repository for version control, collaboration, and change tracking. To enable this, switch to **Third-party Git provider**, select your Git provider, repository, and target branch.
+    * **Inline (default):** Manage the Workflow YAML directly within Harness.
+    * **Remote:** Choose to store your Workflow YAML in a Git repository for version control, collaboration, and change tracking.
+    You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
         ![](./static/git-workflow.png)
      > The Git Experience is ideal for teams who prefer to manage Workflows as code. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey.md).
 
@@ -98,11 +99,11 @@ Let's try creating a **Workflow** using both the methods:
 ![](./static/workflow-scope.png)
 
 4. You now have two options for managing your Workflow configuration:
-      - Inline (default): Manage the Workflow YAML directly within Harness.
-      - Git Experience: Choose to store your Workflow YAML in a Git repository for version control, collaboration, and change tracking. To enable this, switch to **Third-party Git provider**, select your Git provider, repository, and target branch.
-        ![](./static/git-workflow.png)
-     > The Git Experience is ideal for teams who prefer to manage Workflows as code. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey.md).
-
+    * **Inline (default):** Manage the Workflow YAML directly within Harness.
+    * **Remote:** Choose to store your Workflow YAML in a Git repository for version control, collaboration, and change tracking.
+    You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
+    ![](./static/git-workflow.png)
+    > The Git Experience is ideal for teams who prefer to manage Workflows as code. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey.md).
 
 :::info
 Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs.
