@@ -1894,6 +1894,11 @@ Suppose a stage contains four parallel Deploy steps, each deploying a different 
 - The failed ASG and all successfully deployed ASGs will be **rolled back in parallel**.
 - Any Deploy steps that had not yet executed will be **skipped**.
 
+### Limitations
+
+**Looping strategies are not supported for multi-deploy rollback.**  
+If a single ASG Rolling Deploy step is looped multiple times in a stage, rollback will not be triggered for any of the ASGs.
+
 ## Rollback Behavior with ASG Multi-Service Deployment
 
 Harness supports rollback for ASG multi-service deployments using a **single rollback step**. This means that even if you configure different delegate selectors for different deployment steps, only one delegate will be used for the rollback.
