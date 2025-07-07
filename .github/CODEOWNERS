@@ -150,11 +150,11 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/platform/harness-aida/ @SushrutHarness @pratmit @thisrohangupta @ivikramsahu @abhishekharness @vishal-av
 
 # IDP Docs
-/docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness
-/release-notes/internal-developer-portal.md @OrkoHunter @manishas @khushisharmaharness
-/release-notes/static/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness
-/src/components/Roadmap/data/idpData.ts @OrkoHunter @manishas @khushisharmaharness
-/src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness
+/docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/release-notes/internal-developer-portal.md @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/release-notes/static/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/src/components/Roadmap/data/idpData.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
 
 # SCS Docs
 /docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
