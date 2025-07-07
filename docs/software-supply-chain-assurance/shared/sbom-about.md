@@ -18,7 +18,7 @@ Because there are multiple SBOM formats and standards, the SCS module normalizes
 
 When an SBOM is generated, the SCS module generates and signs the attestation, ensuring that the information is accurate and trustworthy. The attestations are then securely stored in your artifact repository, where you can access and analyze them as needed. Refer to [Attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) to learn more. SBOM are also stored in the Harness Platform so that you can download, analyze, and share them as needed.
 
-Attestations are stored as `.att` files in the artifact repository, specified in your build or deploy stage, along with the image. You can also find the SBOM on the **Execution details** page in Harness. For more information, go to [view pipeline execution results](/docs/software-supply-chain-assurance/ssca-view-results.md).
+Attestations are stored as `.att` files in the artifact repository, specified in your build or deploy stage, along with the image. You can also find the SBOM on the **Execution details** page in Harness.
 
 :::info
 While Harness is capable of generating SBOMs for both **Container Images** and **Code Repositories**, it is important to note that SBOM attestation is supported only for Container Images.
