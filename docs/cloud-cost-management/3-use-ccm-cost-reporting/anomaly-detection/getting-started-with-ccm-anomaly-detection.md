@@ -45,13 +45,18 @@ flowchart LR
     style E fill:#ffd6a5,stroke:#ff9a3c
 ```
 
-1. **Data Collection**: CCM collects 42 days of historical cost data for each cluster and cloud account
-2. **Analysis**: The system processes this data using machine learning models to predict expected costs. CCM uses BigQuery ML (BQML) for advanced anomaly detection:
-    -  Models are recreated weekly to forecast the next 8 days' costs for each entity.
-    - Predicted costs are compared with actual costs using configurable thresholds.
-    - Anomalies are flagged when costs exceed expected ranges.
-3. **Detection**: Actual costs are compared against predicted costs to identify anomalies
-4. **Notification**: When anomalies are detected, alerts are sent through configured channels
+1. **Data Collection**: CCM collects 12 months of historical cost data for each cluster and cloud account
+2. **Analysis and Detection**: The system processes this data using machine learning models to predict expected costs. CCM uses BigQuery ML (BQML) and Prophet for advanced anomaly detection and prediction. Anomalies are flagged when costs exceed expected ranges. CCM runs Anomaly Detection jobs everyday to detect new anomalies based on your configured [Preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-preferences).
+
+    In addition to scheduled jobs that CCM internally runs, CCM also supports event-driven anomaly detection for AWS, GCP, and Azure with the following behaviour:
+
+    - If partial cost data is available, anomaly detection runs immediately on available data. If no anomalies are detected on partial data, regular job runs will catch them once complete data is available
+    - Detection is limited to the specific cloud account receiving the cost ingestion event.
+    - If an anomaly is detected on partial data and costs change when complete data arrives, the anomaly is updated accordingly.
+
+    **Example**: If today is November 1st and a cost ingestion event is received, anomaly detection runs immediately for November 1st data for that specific cloud account. If complete data becomes available the next day, regular jobs will still process it to ensure accuracy.
+
+3. **Notification**: When anomalies are detected, [alerts](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-alerts) are sent through configured channels
 
 ## Managing Anomalies
 
