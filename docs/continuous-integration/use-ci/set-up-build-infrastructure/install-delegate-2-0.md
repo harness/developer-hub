@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 :::warning Closed Beta
 
-Delegate 2.0 is currently in closed beta, and is available for select customers only. Access is determined by the product team, and is based on current [supported use cases and steps](#whats-supported). 
+Delegate 2.0 is currently in closed beta, and is available for select customers only. Access is determined by the product team, and is based on current [supported use cases and steps](#whats-supported).
 
 :::
 
@@ -27,6 +27,7 @@ Please enable the following feature flags to use Delegate 2.0. To enable these f
 
 - `PL_ENABLE_UNIFIED_TASK`
 - `PL_USE_RUNNER`
+- `CI_ADD_CONNECTOR_REF_TO_IMPLICIT_GIT_CLONE_STEP`
 
 :::
 
@@ -71,7 +72,7 @@ To get this information, do the following:
 1. In the left nav, click **Project Settings**.
 2. Under **Project-level Resources**, click **Delegates**.
 3. Click **+ New Delegate**.
-4. Choose **Docker** as your delegate type. 
+4. Choose **Docker** as your delegate type.
 5. Copy `ACCOUNT_ID`, `DELEGATE_TOKEN`, and `MANAGER_HOST_AND_PORT` which can be found in the `docker run` command. This will be under the heading **Run the following command to install**.
 
 </TabItem>
@@ -219,7 +220,7 @@ Most importantly, ensure that you have set `Local` as the **Infrastructure** and
 
 ### Set Max Stage Capacity
 
-With Harness Delegate 2.0, you can configure a limit for the maximum number of stages the delegate will be executing at a given time. When the delegate is handling tasks at full capacity, new tasks will be queued and picked up once the delegate's capacity is freed.  
+With Harness Delegate 2.0, you can configure a limit for the maximum number of stages the delegate will be executing at a given time. When the delegate is handling tasks at full capacity, new tasks will be queued and picked up once the delegate's capacity is freed.
 
 In order to configure a max limit for number of stages executed by a delegate, you should add a `MAX_STAGES` variable in the delegate's `config.env` file. The value of the `MAX_STAGES` should be a positive integer.
 
