@@ -143,7 +143,11 @@ For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. For e
 - After the connection test runs, select **Finish** to save the connector.
 
 
+:::caution Important
+Please note that using the **Client ID** instead of the **App ID** is not supported when configuring Git integrations with the **GitHub App connector**.
 
+Backstage only supports GitHub App connectors that are configured using the **App ID**.
+:::
 :::warning
 
 While using GitHub App, you need a **private key for your GitHub app** to configure your Harness GitHub connector, follow the instructions mentioned [here](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/#generate-a-private-key) **to convert the key file to the necessary format for the Harness GitHub connector**
