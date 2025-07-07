@@ -574,7 +574,7 @@ gsutil -m cp \
 
   Additionally, Harness uses a more resilient Git URL matching algorithm, replacing the unstable `git.NormalizeGitURL` method with a more consistent approach. Users with account/org-level credentials should see them available automatically for project-scoped repositories.
 
-- Users can view the **Applications Health Status** bar chart on the **GitOps Overview** page. Clicking a bar (e.g., Healthy) opens the Applications Dashboard filtered to that state. For more, see [application health status graph](/docs/continuous-delivery/gitops/use-gitops/manage-gitops-applications#applications-health-status-graph).
+- Users can view the **Applications Health Status** bar chart on the **GitOps Overview** page. Clicking a bar (e.g., Healthy) opens the Applications Dashboard filtered to that state. For more, see [application health status graph](https://developer.harness.io/docs/continuous-delivery/gitops/application/manage-gitops-applications/#applications-health-status-graph).
 
 - From the **Environments** page, users can click the **GitOps Clusters** tab to view a list of GitOps clusters associated with the environment. Each row’s **Cluster ID** and **Agent** name links to its detail page in a new tab. Users can also add new clusters. For more, see [GitOps clusters](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview#gitops-clusters).
 
