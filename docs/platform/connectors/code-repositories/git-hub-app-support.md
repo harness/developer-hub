@@ -82,12 +82,6 @@ You need the **Installation ID** and **App ID** to configure your Harness GitHub
 
    ![](../static/git-hub-app-support-55.png)
 
-:::caution Important
-Please note that using the **Client ID** instead of the **App ID** is not supported when configuring Git integrations with the **GitHub App connector**.
-
-Backstage only supports GitHub App connectors that are configured using the **App ID**.
-:::
-
 ## Generate a private key
 
 You need a private key for your GitHub app to configure your Harness GitHub connector.
