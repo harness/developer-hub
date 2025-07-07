@@ -32,16 +32,16 @@ import { MODULES } from "@site/src/constants";
           link: "/docs/cloud-development-environments/introduction/whats-supported",
         },
         {
-          title: "Quickstart Guide",
+          title: "Harness Hosted Gitspaces",
           module: MODULES.cde,
-          description: "Get started by setting up and configuring your Gitspaces.",
+          description: "Detailed guide to get started with Harness Hosted Gitspaces.",
           link: "/docs/cloud-development-environments/introduction/quickstart-guide",
         },
         {
-          title: "Quickstart Tutorial",
+          title: "Self Hosted Gitspaces",
           module: MODULES.cde,
-          description: "A detailed step-by-step tutorial to get started with Gitspaces. ",
-          link: "/docs/cloud-development-environments/introduction/quickstart-tutorial",
+          description: "Detailed guide to get started with Self Hosted Gitspaces. ",
+          link: "/docs/cloud-development-environments/introduction/self-hosted",
         }
       ],
     },
@@ -62,19 +62,18 @@ import { MODULES } from "@site/src/constants";
           description: "Understand the different stages in the life of a Gitspace.",
           link: "/docs/cloud-development-environments/deep-dive-into-gitspaces/lifecycle-of-gitspaces",
         },
+        {
+          title: "Self Hosted Gitspaces Architecture",
+          module: MODULES.cde,
+          description: "Understand the different components and underlying architecture of Self Hosted Gitspaces.",
+          link: "/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture",
+        },
       ],
     },
     {
       name: "Features of Gitspaces",
       description: "",
       list: [
-        {
-          title: "Authentication",
-          module: MODULES.cde,
-          description:
-            "Learn how to configure a Git provider for authentication.",
-          link: "/docs/cloud-development-environments/features-of-gitspaces/authentication",
-        },
         {
           title: "Private Docker Images",
           module: MODULES.cde,
@@ -94,13 +93,30 @@ import { MODULES } from "@site/src/constants";
             "Learn more about why Harness auto-stops inactive Gitspaces. ",
           link: "/docs/cloud-development-environments/features-of-gitspaces/auto-stopping",
         },
+      ],
+    },
+    {
+      name: "Managing Gitspaces",
+      description: "",
+      list: [
         {
-          title: "Tracking Changes",
+          title: "Create a Gitspace",
           module: MODULES.cde,
-          description: "Learn how to track all Gitspace changes from Harness UI.",
-          link: "/docs/cloud-development-environments/features-of-gitspaces/tracking-changes",
+          description: "Learn how to create a new Gitspace.",
+          link: "/docs/cloud-development-environments/manage-gitspaces/create-gitspaces",
         },
-      
+        {
+          title: "Delete a Gitspace",
+          module: MODULES.cde,
+          description: "Learn how to delete an existing Gitspace.",
+          link: "/docs/cloud-development-environments/manage-gitspaces/delete-gitspaces",
+        },
+        {
+          title: "Start/Stop a Gitspace",
+          module: MODULES.cde,
+          description: "Learn how to start/stop an existing Gitspace.",
+          link: "/docs/cloud-development-environments/manage-gitspaces/existing-gitspaces",
+        },
       ],
     },
     {
@@ -126,26 +142,6 @@ import { MODULES } from "@site/src/constants";
           link: "/docs/cloud-development-environments/develop-using-cde/port-forwarding",
         },
         {
-          title: "Environment Variables",
-          module: MODULES.cde,
-          description:
-            "Learn how to define environment variables for your development.",
-          link: "/docs/cloud-development-environments/develop-using-cde/env-variables",
-        },
-        {
-          title: "runArgs Configuration",
-          module: MODULES.cde,
-          description:
-            "Get started with using the runArgs property to configure your Gitspace.",
-          link: "/docs/cloud-development-environments/develop-using-cde/run-args",
-        },
-        {
-          title: "User Configuration",
-          module: MODULES.cde,
-          description: "Learn more about how you can configure containerUser and remoteUser in your Gitspace.",
-          link: "/docs/cloud-development-environments/develop-using-cde/container-remote-user",
-        },
-        {
           title: "Pre-Installed Extensions",
           module: MODULES.cde,
           description: "Learn more about how you can setup pre-installed extensions for your Gitspaces.",
@@ -153,53 +149,4 @@ import { MODULES } from "@site/src/constants";
         }
       ],
     },
-    {
-      name: "IDEs",
-      description: "",
-      list: [
-        {
-          title: "VS Code Browser",
-          module: MODULES.cde,
-          description:
-            "Connect to your Gitspaces within VS Code Browser",
-          link: "/docs/cloud-development-environments/ides/vs-code-browser",
-        },
-        {
-          title: "VS Code Desktop",
-          module: MODULES.cde,
-          description: "Connect to your Gitspaces within VS Code Desktop",
-          link: "/docs/cloud-development-environments/ides/vs-code-desktop",
-        },
-        {
-          title: "IntelliJ IDEA",
-          module: MODULES.cde,
-          description: "Connect to your Gitspaces within IntelliJ IDEA",
-          link: "/docs/cloud-development-environments/ides/intellij",
-        },
-      ],
-    },
-    {
-      name: "Managing Gitspaces",
-      description: "",
-      list: [
-        {
-          title: "Create a Gitspace",
-          module: MODULES.cde,
-          description: "Learn how to create a new Gitspace",
-          link: "/docs/cloud-development-environments/manage-gitspaces/create-gitspaces",
-        },
-        {
-          title: "Delete a Gitspace",
-          module: MODULES.cde,
-          description: "Learn how to delete an existing Gitspace",
-          link: "/docs/cloud-development-environments/manage-gitspaces/delete-gitspaces",
-        },
-        {
-          title: "Start/Stop a Gitspace",
-          module: MODULES.cde,
-          description: "Learn how to start/stop an existing Gitspace",
-          link: "/docs/cloud-development-environments/manage-gitspaces/existing-gitspaces",
-        },
-      ],
-    }
   ];
