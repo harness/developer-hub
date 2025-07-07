@@ -146,7 +146,12 @@ This approach is no longer supported in IDP 2.0. To align with the Harness platf
 
 This change ensures better alignment with GitX workflows and simplifies entity lifecycle management.
 
-> 💡 Note: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own entity YAML file.
+> his update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own entity YAML file.
+
+:::note 
+Identifiers must use only letters, numbers, and underscores. Hyphens and special characters aren’t allowed.
+
+:::
 
 
 ### Entity YAML Definition
@@ -226,28 +231,28 @@ spec:
 
 <TabItem value="idp-2" label="IDP 2.0 (Harness YAML)" default>
   ```yaml
-  apiVersion: harness.io/v1
-  identifier: artist-service
-  name: Artist Service
-  kind: Component
-  type: service
-  projectIdentifier: public-websites
-  orgIdentifier: default
-  owner: group:artist-relations-team
-  metadata:
-    description:
-    annotations:
-      jira/project-key: artistweb
-    tags:
-      - java
-    links:
-      - url: https://admin.example-org.com
-        title: Admin Dashboard
-        icon: dashboard
-        type: admin-dashboard
-  spec:
-    lifecycle: production
-  ```
+apiVersion: harness.io/v1
+identifier: artist_service
+name: Artist Service
+kind: Component
+type: service
+projectIdentifier: public_websites
+orgIdentifier: default
+owner: group:artist_relations_team
+metadata:
+  description: Artist microservice for artist data and relations
+  annotations:
+    jira/project-key: artistweb
+  tags:
+    - java
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+spec:
+  lifecycle: production
+```
   </TabItem>
 </Tabs>
 
