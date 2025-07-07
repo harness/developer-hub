@@ -269,7 +269,7 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
 ## July 7, 2025, Version 0.30.0 <!-- Draft : Jul 07, 2025 -->
 
-:::Danger Important Notice: Retention Policy Support for MinIO Buckets
+:::danger Important Notice: Retention Policy Support for MinIO Buckets
 
 Retention policies for MinIO buckets are now supported and can be configured through bootstrap overrides to automatically delete older pipeline logs, helping manage storage costs and prevent disk space issues.
 
