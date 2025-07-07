@@ -54,7 +54,7 @@ Harness Gitspaces (CDE) solve several real-world challenges for teams:
 - **Disaster Recovery & Continuity** - Developers can **resume work instantly** from any device in case of **loss or theft**, since **no sensitive data resides locally**, maintaining both productivity and security.
 
 ### Key Features
-Here are some key features of developing in Harness Gitspaces (CDEs):
+Here are some key features of developing in Harness Gitspaces:
 
 * [**Private Docker Images**](/docs/cloud-development-environments/features-of-gitspaces/private-docker-images.md): Gitspaces supports the use of private Docker images, allowing you to pull private Docker images and create GitSpaces.
 * [**Auto-Stopping**](/docs/cloud-development-environments/features-of-gitspaces/auto-stopping.md): Gitspaces automatically suspends idle Gitspaces after a defined period to save costs, with easy resume when needed.

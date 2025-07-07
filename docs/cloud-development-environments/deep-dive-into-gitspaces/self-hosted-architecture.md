@@ -21,9 +21,9 @@ In contrast, **Self-Hosted Gitspaces** solve these issues by offering complete i
 | ------------------------- | ------------------------------------------ | ---------------------------------- |
 | **Infrastructure**        | Managed by Customer       | Managed by Harness                 |
 | **Security & Compliance** | Full control by customer                   | Shared responsibility model        |
-| **Source Code**           | Stored within customer infra               | Stored and cached in Harness |
+| **Source Code**           | Stored within customer infrastructure               | Stored and cached in Harness |
 | **Data Residency**        | Customer-defined and governed              | Stored in Harness Cloud         |
-| **Latency/Location**      | Global flexibility based on customer infra | Limited to predefined regions      |
+| **Latency/Location**      | Global flexibility based on customer infrastructure | Limited to predefined regions      |
 
 ## Self-Hosted Gitspaces: Architecture Overview
 
@@ -32,7 +32,7 @@ Self-Hosted Gitspaces consist of two core components:
 * **Harness Control Plane**
 * **Customer’s Cloud Infrastructure [Google Cloud Platform(GCP)]**
 
-![Architecture Diagram](./static/self-hosted-architecture.png)
+![Architecture Diagram](./static/self-hosted-arch.png)
 
 ## Key Components
 
@@ -51,7 +51,7 @@ The infrastructure on the customer side (eg. GCP) includes:
 | VM             | Purpose                                                                   |
 | -------------- | ------------------------------------------------------------------------- |
 | **VM1**        | Hosts the Harness **Delegate** and **VM Runner**                          |
-| **VM2**        | Hosts the **Gateway** responsible for routing Gitspace requests           |
+| **VM2**        | Hosts the **CDE Gateway** responsible for routing Gitspace requests           |
 | **VM3+, VM4+** | Each new Gitspace is launched in its own VM with a DevContainer preloaded |
 
 ## Component Interactions
@@ -94,10 +94,9 @@ The **VM Runner** is responsible for **managing the VM lifecycle**. The VM Runne
 
 To understand more about this step and its implementation, please refer to [Setup Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate.md)
 
-### Gateway
+### CDE Gateway
 
-The Gateway is responsible for routing all requests to Gitspaces.
-
+The **CDE Gateway** plays a key role in ensuring reliable connectivity, secure access, and controlled traffic flow. It is responsible for **routing** user requests to the appropriate Gitspaces. The CDE gateway also handles **authentication**, ensuring that only users with valid access tokens can access Gitspaces. From a **security** perspective, the CDE gateway ensures that all incoming traffic to a Gitspace VM originates from trusted components. This controlled entry point greatly reduces the surface area for potential attacks and enforces strict traffic policies.
 
 ## Next Steps
-
+You can get started with Self Hosted Gitspaces by following this [Get Started with Self Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md) guide. 

@@ -1,6 +1,6 @@
 ---
 title: What's supported in Harness Gitspaces
-description: Lists the Git providers, IDE integrations and compute types supported in Harness Gitspaces.
+description: Lists the Git providers, IDEs, compute types supported in Harness Gitspaces.
 sidebar_label: What's Supported
 sidebar_position: 1
 ---
@@ -68,7 +68,7 @@ We currently support the following regions for **Harness Hosted Gitspaces**:
 
 ### Self Hosted
 
-For Self Hosted Gitspaces, you can configure regions of your choice based on your infrastructure. For more details, refer to [Regions in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#configure-regions).
+For Self Hosted Gitspaces, you can configure **regions of your choice** based on your infrastructure. For more details, refer to [Regions in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#configure-regions).
 
 ## Machine Types
 
@@ -83,4 +83,4 @@ If you need larger machines, please contact us at **[cde-interest@harness.io](ma
 
 ### Self Hosted
 
-For Self Hosted Gitspaces, you can configure machine types of your choice based on your infrastructure. For more details, refer to [Machines in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md#add-machines-in-gitspace-infrastructure).
+For Self Hosted Gitspaces, you can configure **machine types of your choice** based on your infrastructure. For more details, refer to [Machines in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md#add-machines-in-gitspace-infrastructure).
