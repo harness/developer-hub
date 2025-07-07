@@ -444,42 +444,6 @@ gsutil -m cp \
 - Fixed an issue where manifest properties like health-check-interval and readiness configurations were not applied during the Setup Application step in TAS deployments. [CDS-111262, ZD-85868]
 - Fixed an issue where Azure Function deployments failed with a confusing error message when function names contained a hyphen. Parsing logic has been corrected. [CDS-111361, ZD-86114, ZD-86584]
 
-#### Continuous Delivery
-
-- Users can manually trigger a status refresh for Jira, ServiceNow, and Custom Approval steps using the **Refresh** button in the UI. This enhancement allows on-demand evaluation of approval conditions, reducing the need to wait for scheduled polling intervals. This feature is currently behind the feature flag `CDS_REFRESH_IN_JIRA_SERVICENOW_APPROVALS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-81994, ZD-52261, ZD-54622]
-
-- Harness supports custom webhook trigger execution via the Queue Service, improving reliability and scalability. This ensures that webhook triggers are processed efficiently, even under high load, without one customer’s activity impacting others. This feature is currently behind the feature flag `PIPE_ENABLE_QUEUED_BASED_CUSTOM_TRIGGERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-21872]
-
-- Users can view **Pipeline Metadata settings** directly in Pipeline Studio when using a Pipeline Template. Only the Advanced Settings defined in the template YAML are shown, providing a clearer, read-only view of relevant configuration options. For more information, refer to [Pipeline template](/docs/platform/templates/create-pipeline-template/#advanced-options). [PIPE-25136]
-
-- Harness supports automatic EKS token refresh during deployments, addressing issues caused by AWS’s 15-minute token TTL. This feature is currently behind the feature flag `CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [EKS Execution Authentication Token Refresh](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#aws-elastic-kubernetes-service-eks). [CDS-100948, ZD-78817]
-
-- Harness supports an **Execution Strategy Type** filter in the **Deployments and Service v2** dashboards, enabling filtering by execution strategy. For more information, refer to [CD Stage Executions](/docs/continuous-delivery/monitor-deployments/using-cd-custom-dashboards#cd-stage-executions). [CDS-105276]
-
-- Harness supports **AWS OIDC connectors** for plugin-based steps, provisioners, manifest/artifact sources, and deployment swimlanes. [CDS-101391, CDS-106108]
-
-  **Supported AWS OIDC connector categories:**
-
-  | Connector Category               | Supported with AWS OIDC Connector                                            |
-  |----------------------------------|------------------------------------------------------------------------------|
-  | **Deployment Swimlanes**         | AWS Serverless Lambda deployments                                            |
-  | **Plugin-based Steps**           | Serverless V2, AWS SAM, AWS CDK                                              |
-  | **Delegate-based Connections**   | SSH, WinRM, Spot, AWS ASG, AWS Lambda                                        |
-  | **Provisioners**                 | CloudFormation, CDK, Terraform Cloud, Terragrunt provisioners                |
-  | **Manifest & Artifact Sources**  | AMI Artifact, ECR Artifact, S3 Artifact, S3 Manifest                         |
-
-- Harness supports [**hashing of config-map and secret manifests for Kubernetes workloads under declarative rollback**](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback#configmap-and-secret-object-rollback), ensuring that updates to consumed configmaps or secrets trigger a redeployment even when the deployment spec itself hasn’t changed. This feature is currently behind the feature flag `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-83583, ZD-73074, ZD-75453]
-
-- Harness supports **filtering pipeline executions by build ID**, enabling users to quickly locate a specific run without endless scrolling. This feature is currently behind the feature flag `PIPE_EXECUTION_ID_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-25317]
-
-- Harness supports all authentication methods for cross-project access with the GCP connector in both Kubernetes and native Helm environments. This feature is currently behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-- Harness supports blocking users from approving steps via [Disallowed User Emails](/docs/platform/approvals/adding-harness-approval-stages#disallowed-user-emails). This feature is currently behind the feature flag `CDS_UI_ENABLE_DISALLOWED_USER_EMAILS_IN_APPROVAL_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-106081]
-
-- Harness supports selecting timezones for [Cron triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers) using IANA Time Zone convention. This feature is currently behind the feature flag `PIPE_SUPPORT_MULTIPLE_TIMEZONES_IN_CRON_TRIGGERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-24520, ZD-61218]
-
-- Users can copy Task IDs and Delegate IDs in the Delegate Task Logs on the Pipeline Execution page using a clipboard icon next to each ID. [CDS-97487]
-
 #### GitOps
 
 - Fixed multiple high severity vulnerabilities in GitOps images. [CDS-107721, ZD-79011]
@@ -551,6 +515,42 @@ gsutil -m cp \
 - All SMP services now support Istio and Virtual Services. [PL-59078]
 - Added logging to capture Kubernetes events during delegate shutdown. This will help in better understanding and troubleshooting shutdown behaviour by providing more visibility into related cluster events. [PL-60516]
 - Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance. [PL-62957]
+
+#### Continuous Delivery
+
+- Users can manually trigger a status refresh for Jira, ServiceNow, and Custom Approval steps using the **Refresh** button in the UI. This enhancement allows on-demand evaluation of approval conditions, reducing the need to wait for scheduled polling intervals. This feature is currently behind the feature flag `CDS_REFRESH_IN_JIRA_SERVICENOW_APPROVALS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-81994, ZD-52261, ZD-54622]
+
+- Harness supports custom webhook trigger execution via the Queue Service, improving reliability and scalability. This ensures that webhook triggers are processed efficiently, even under high load, without one customer’s activity impacting others. This feature is currently behind the feature flag `PIPE_ENABLE_QUEUED_BASED_CUSTOM_TRIGGERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-21872]
+
+- Users can view **Pipeline Metadata settings** directly in Pipeline Studio when using a Pipeline Template. Only the Advanced Settings defined in the template YAML are shown, providing a clearer, read-only view of relevant configuration options. For more information, refer to [Pipeline template](/docs/platform/templates/create-pipeline-template/#advanced-options). [PIPE-25136]
+
+- Harness supports automatic EKS token refresh during deployments, addressing issues caused by AWS’s 15-minute token TTL. This feature is currently behind the feature flag `CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [EKS Execution Authentication Token Refresh](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#aws-elastic-kubernetes-service-eks). [CDS-100948, ZD-78817]
+
+- Harness supports an **Execution Strategy Type** filter in the **Deployments and Service v2** dashboards, enabling filtering by execution strategy. For more information, refer to [CD Stage Executions](/docs/continuous-delivery/monitor-deployments/using-cd-custom-dashboards#cd-stage-executions). [CDS-105276]
+
+- Harness supports **AWS OIDC connectors** for plugin-based steps, provisioners, manifest/artifact sources, and deployment swimlanes. [CDS-101391, CDS-106108]
+
+  **Supported AWS OIDC connector categories:**
+
+  | Connector Category               | Supported with AWS OIDC Connector                                            |
+  |----------------------------------|------------------------------------------------------------------------------|
+  | **Deployment Swimlanes**         | AWS Serverless Lambda deployments                                            |
+  | **Plugin-based Steps**           | Serverless V2, AWS SAM, AWS CDK                                              |
+  | **Delegate-based Connections**   | SSH, WinRM, Spot, AWS ASG, AWS Lambda                                        |
+  | **Provisioners**                 | CloudFormation, CDK, Terraform Cloud, Terragrunt provisioners                |
+  | **Manifest & Artifact Sources**  | AMI Artifact, ECR Artifact, S3 Artifact, S3 Manifest                         |
+
+- Harness supports [**hashing of config-map and secret manifests for Kubernetes workloads under declarative rollback**](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback#configmap-and-secret-object-rollback), ensuring that updates to consumed configmaps or secrets trigger a redeployment even when the deployment spec itself hasn’t changed. This feature is currently behind the feature flag `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-83583, ZD-73074, ZD-75453]
+
+- Harness supports **filtering pipeline executions by build ID**, enabling users to quickly locate a specific run without endless scrolling. This feature is currently behind the feature flag `PIPE_EXECUTION_ID_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-25317]
+
+- Harness supports all authentication methods for cross-project access with the GCP connector in both Kubernetes and native Helm environments. This feature is currently behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+- Harness supports blocking users from approving steps via [Disallowed User Emails](/docs/platform/approvals/adding-harness-approval-stages#disallowed-user-emails). This feature is currently behind the feature flag `CDS_UI_ENABLE_DISALLOWED_USER_EMAILS_IN_APPROVAL_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-106081]
+
+- Harness supports selecting timezones for [Cron triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers) using IANA Time Zone convention. This feature is currently behind the feature flag `PIPE_SUPPORT_MULTIPLE_TIMEZONES_IN_CRON_TRIGGERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-24520, ZD-61218]
+
+- Users can copy Task IDs and Delegate IDs in the Delegate Task Logs on the Pipeline Execution page using a clipboard icon next to each ID. [CDS-97487]
 
 #### GitOps
 
