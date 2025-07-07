@@ -54,7 +54,9 @@ Harness CCM now supports OpenID Connect (OIDC) authentication for enhanced secur
 ### [New Feature] Event Driven Anomaly Detection
 **[CCM-22730] | [Docs](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection`)**
 
+CCM now provides **event-driven anomaly detection** that triggers automatically when cost data is ingested, complementing the existing scheduled anomaly detection jobs.
 
+This feature provides **immediate detection** by running anomaly analysis instantly when cost data becomes available, enabling faster identification of cost anomalies. The feature is available for AWS, GCP, and Azure cloud accounts.
 
 ### Feature Improvements
 
