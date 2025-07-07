@@ -18,6 +18,25 @@ These release notes describe recent changes to Harness Supply Chain Security.
 :::
 
 
+## July 2025
+
+### Version: 1.34.5 , Plugin Version: 0.40.0
+
+#### New features and enhancements
+
+
+- The [SBOM tab](https://developer.harness.io/docs/software-supply-chain-assurance/artifact-security/overview#sbom-tab) now displays component-level vulnerabilities by mapping STO Snyk scan results to SBOM components.
+- A new Component Violations Dashboard for Repositories and Artifacts is now available, highlighting pipelines flagged for SBOM policy violations.
+- SBOM now uses the repository name as the default application name. To override this and use `/harness` as the application name, set the stage variable `SYFT_SBOM_NO_SOURCE_NAME=TRUE`. ([ZD-87366](https://harnesssupport.zendesk.com/agent/tickets/87366))
+- Fixed an issue where component searches returned incomplete results. Search is now consistent across all projects and organizations, improving visibility. ([ZD-84422](https://harnesssupport.zendesk.com/agent/tickets/84422))
+
+#### Fixed Issues
+
+- Fixed an issue where updating the integration to include all repositories still showed only the previously selected ones.
+- Fixed an issue where STO container scan results (e.g., JFrog Xray) were not mapped to Artifact SBOM vulnerabilities due to a case mismatch. Now it has been updated to ensure accurate vulnerability mapping. ([ZD-84700](https://harnesssupport.zendesk.com/agent/tickets/84700))
+
+
+
 
 ## June 2025
 
