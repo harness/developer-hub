@@ -57,6 +57,10 @@ Access Policy Analyzer feature is currently behind the `PL_ENABLE_POLICY_ANALYZE
 
         - User Group: Select groups of users to analyze collective access permissions. Once you have selected User Group, proceed to choose the specific user group for the desired scope, as shown below.
 
+          :::note Important note:
+            Ensure that the selected user group contains at least one user. The Access Policy Analyzer requires this to fetch policies correctly.
+          :::
+
             <img src={UserGroup} width="650"/>
 
         - Service Account: Choose service accounts to review their access. 
