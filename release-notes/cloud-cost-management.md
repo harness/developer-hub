@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-06-01T18:00
+date: 2025-07-07T18:00
 sidebar_position: 6
 ---
 
@@ -17,6 +17,23 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. In the new UI, go to Account Settings, Account Details, General, Account Details, and then Platform Service Versions. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+## July 2025 - Version 1.56.3
+**Deployment Date:** July 7, 2025 (Prod-1)
+
+### Feature Improvements
+- **Jira Integration Optimization**: We have improved Jira ticket creation performance for recommendations by optimizing API call timing. Jira projects now load immediately and API call frequency is reduced, improving overall performance and backend load. [CCM-23837]
+
+- **Anomaly Detection Filter Support**: We have added support for filter inheritance when navigating from Perspectives to Anomaly Detection (V2) screens. Anomaly results now respect all filters applied on the source Perspective page.[CCM-23544]
+
+- **Increased Folder Limit**: We have increased the maximum number of folders that can be created from the previous limit of 500 to 2,000. [CCM-23784]
+
+### Bug Fixes
+
+- **Governance Recommendation Unignore Options**: Previously, the Recommendations list menu showed multiple options for unignoring a Governance recommendation. We’ve now fixed this by showing a single option to unignore it at the same level it was ignored, and we’ve also corrected the payload that’s sent when unignoring. [CCM-23591]
+
+- **Budget Growth Rate Display Logic**: We have fixed budget creation workflow to properly handle growth rate visibility. When creating a monthly budget, users will not see the growth rate option. [CCM-22148]
+
+- **Cost Category Filter Logic**: We have fixed an issue with compound filter conditions where cost category filters were not properly handled when no matching recommendations existed. The fix ensures that when no recommendations match the cost category criteria, the entire compound condition properly evaluates to false, maintaining logical consistency in filter operations. [CCM-23645] 
 
 ## June 2025 - Version 1.55.3
 
@@ -33,6 +50,11 @@ Harness CCM now supports OpenID Connect (OIDC) authentication for enhanced secur
 **GCP Support:**
 - Asset Governance
 - AutoStopping
+
+### [New Feature] Event Driven Anomaly Detection
+**[CCM-22730] | [Docs](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection`)**
+
+
 
 ### Feature Improvements
 
