@@ -13,7 +13,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<DocVideo src="https://app.tango.us/app/embed/ebb7c428-73b1-46fc-82c2-57782d8359c2?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" style="min-height:720px" title="Perspective Overview in Harness CCM" />
+<DocVideo src="https://app.tango.us/app/embed/89164540-a07f-4900-bca7-b303fbb37154?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" style="min-height:720px" title="Perspective Overview in Harness CCM" />
 
 ## Overview
 

@@ -254,7 +254,7 @@ The following cost factors retrieved from your GCP Billing Export data can be in
 
 * **Include Discounts**: Includes any discounts that GCP applied to your usage. 
 * **Include Taxes**: Includes any taxes that GCP applied to your bill. For example, VAT or US sales tax. This option is enabled by default.
-* **Include Promotions**: Includes all 
+* **Include Promotions**: Includes all promotional credits. These promotional credits are considered a form of payment and are automatically applied to reduce your total bill when available.
 
 </TabItem>
 <TabItem value="azure" label="Azure">
