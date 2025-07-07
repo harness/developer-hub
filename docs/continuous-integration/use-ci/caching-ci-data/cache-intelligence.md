@@ -40,9 +40,9 @@ Below is a list of the default locations cached using Cache Intelligence:
 | `F# .Net` | *.fsproj | .nuget/packages
 
 
-By default, behavior for Cache Intelligence is that it iwll look for the exact filenames as listed in the above table under the **Dependency Management file**.  
+By default, Cache Intelligence searches for the exact filenames listed in the table above under the **Dependency Management file**.  
 
-Harness Cache Intelligence will explore the root directory as well as one directory depth below for the file in order to determine the tool that a customer is using in the repo.
+Harness Cache Intelligence will explore the root directory as well as one directory depth below for the file to determine the tool that a customer is using in the repository.
 
 This then determines the **Default Path Cached** location that Harness will save and restore as a part of the Cache Intelligence process.  
 
