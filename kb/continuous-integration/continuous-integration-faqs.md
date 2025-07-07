@@ -1783,6 +1783,132 @@ The **build and push** steps used to build Docker images have a context field. U
 ### Why do Build and Push steps fail with "Error while loading buildkit image: exit status 1" when /var/lib/docker is included in shared paths during DIND execution?
 **Build and Push** steps fail with the error "Error while loading buildkit image: exit status 1" when `/var/lib/docker` is included in the shared paths during Docker-in-Docker (DIND) execution because DIND creates a Docker daemon using this path, and sharing it across steps causes conflicts when multiple build steps try to create and access their own Docker daemons. To resolve this, remove `/var/lib/docker` from the shared paths configuration, which prevents conflicts and allows **Build and Push** steps to execute successfully.
 
+### How can I block or restrict image pulls in my Harness CI pipelines?
+
+To enforce stricter network control or restrict use of external registries during CI builds, here are two common approaches:
+
+Option 1: Use a Run Step to Dynamically Block a Website (e.g., a registry)
+
+You can block network access to specific domains like `example.com` by using a Run step in your pipeline that applies iptables rules before any potentially unsafe step runs.
+
+Here’s a sample Harness CI pipeline that blocks access to `example.com`:
+
+```yaml
+pipeline:
+  name: blockwebsiteexample
+  identifier: blockwebsiteexample
+  projectIdentifier: PROJECT_NAME
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Bash
+                    command: |-
+                      DOMAIN="example.com"
+                      IPS=$(dig +short $DOMAIN | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}')
+                      for IP in $IPS; do
+                        sudo iptables -A OUTPUT -d "$IP" -j REJECT
+                      done
+              - step:
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    shell: Sh
+                    command: curl -I https://example.com
+              - step:
+                  type: Run
+                  name: Run_3
+                  identifier: Run_3
+                  spec:
+                    shell: Bash
+                    command: |-
+                      DOMAIN="example.com"
+                      IPS=$(dig +short $DOMAIN | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}')
+                      for IP in $IPS; do
+                        sudo iptables -D OUTPUT -d "$IP" -j REJECT
+                      done
+                  when:
+                    stageStatus: All
+              - step:
+                  type: Run
+                  name: Run_4
+                  identifier: Run_4
+                  spec:
+                    shell: Sh
+                    command: curl -I https://example.com
+                  when:
+                    stageStatus: All
+```
+
+Use this when:
+
+- You want to restrict access to specific URLs during pipeline execution.
+
+- You need fine-grained, dynamic blocking based on domains or IPs.
+
+- You're running builds in Harness Cloud with Linux runners.
+
+Option 2: Use OPA Policy to Deny docker pull Commands
+
+For governance at scale, you can apply OPA policies to deny pipelines that contain docker pull or other blacklisted commands.
+
+Here’s a sample OPA policy:
+
+```yaml
+package pipeline
+
+# Deny build pipelines that don't push to "us.gcr.io"
+# NOTE: Try changing the expected host to see the policy fail
+deny[msg] {
+	# Find all stages ...
+	stage = input.pipeline.stages[_].stage
+
+	# ... that are used for CI
+	stage.type == "CI"
+
+	# ... that have steps
+	step = stage.spec.execution.steps[_].step
+
+	# ... that build and push to GCR steps
+	step.type == "Run"
+
+  contains_keyword := regex.match("\\bdocker pull\\b", step.spec.command) 
+  contains_keyword
+  # Generate a message indicating the forbidden keyword usage
+  msg := sprintf("Step '%s' in stage '%s' contains a docker pull command.", [step.name, stage.name])
+}
+```
+
+Use this when:
+
+- You want to enforce compliance across many teams or orgs
+
+- You don’t want to manually edit pipelines
+
+- You prefer policy-as-code to manage CI guardrails
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
