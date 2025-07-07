@@ -224,3 +224,7 @@ kubectl rollout restart deployment autostopping-controller -n harness-autostoppi
 
 kubectl rollout restart deployment autostopping-router -n harness-autostopping
 ```
+
+## Provisioning via Terraform
+
+There exists several examples of configuring and deploying rules in [this](https://developer.harness.io/kb/reference-architectures/ccm/onboarding/autostopping/k8s) repository.

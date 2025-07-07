@@ -90,3 +90,7 @@ For example, you have a stopping rule for a database configured in Harness. When
 There is an API available to "warm up" or "cool down" a rule for a specified amount of time. This can be helpful when you have a schedule applied but some developer needs access to an application, or needs to test bringing the workload down.
 
 To call this API the token used must have auto stopping rule view in the Harness account.
+
+## Provisioning via Terraform
+
+There exists several examples of configuring and deploying rules in [this](https://github.com/wings-software/AutoStoppingLab/tree/main/azure) repository.
