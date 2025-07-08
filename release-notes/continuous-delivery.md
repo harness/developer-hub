@@ -55,6 +55,19 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## July 2025
 
+## GitOps Service 1.37.0, GitOps Agent 0.97.0
+
+#### New Features and Enhancements
+
+- **Argo Upgrade!** The argo version was upgraded from v2.14.9 to 2.14.13 to resolve critical CVEs. Please ensure you upgrade to the new service and agent version to ensure security. (**CDS-112038**)
+- You can now [filter Agents](/docs/continuous-delivery/gitops/application/manage-gitops-applications/#filter-applications) more effectively with the addition of new filter options:
+    - Cluster ID
+    - Mapped Harness Project
+    - Tag
+    - Agent Version (Version list updates dynamically as new versions are supported)
+  In addition, the filtering experience has been upgraded to match the enhanced UX introduced in the Applications section. This includes the ability to save and edit filters, making it easier to manage complex environments and reuse filter configurations. (**CDS-110032**)
+- Normal streaming of pod logs has been sped up by using new batch tasks. (**CDS-110786**)
+
 ### Version 1.95.5
 
 #### New Features and Enhancements
