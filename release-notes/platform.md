@@ -134,7 +134,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- SAML Authentication: We have introduced a 5-minute clock skew tolerance between the Identity Provider (IdP) and Harness Manager to improve reliability during time synchronization discrepancies. [PL-63828]
+- SAML Authentication: Resolved time synchronization issues by introducing a 5-minute clock skew tolerance between the Identity Provider (IdP) and Harness Manager. [PL-63828]
 - Updated SMP license validation to avoid false email alerts. [PL-63554]
 
 #### New Feature and Enhancement 
