@@ -5,6 +5,7 @@ description: Deploy and manage Harness Chaos Engineering in your on-premises env
 redirect_from:
 - /docs/chaos-engineering/get-started/ce-on-smp/ce-smp-roadmap
 - /docs/category/ce-on-harness-self-managed-enterprise-edition
+- /docs/chaos-engineering/getting-started/smp
 ---
 
 # On-premises (SMP)

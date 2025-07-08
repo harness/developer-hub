@@ -2,6 +2,8 @@
 title: Create Experiments
 description: Step-by-step guide to creating your first chaos experiment
 sidebar_position: 2
+redirect_from:
+  - /docs/chaos-engineering/use-harness-ce/experiments/create-experiments
 ---
 
 # Create Experiments

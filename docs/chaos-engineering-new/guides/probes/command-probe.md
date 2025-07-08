@@ -2,6 +2,11 @@
 title: Command Probes
 description: Execute custom commands and scripts for flexible validation
 sidebar_position: 5
+redirect_from:
+  - /docs/chaos-engineering/use-harness-ce/probes/command-probe
+  - /docs/chaos-engineering/use-harness-ce/probes/command-probe/command-probe
+  - /docs/chaos-engineering/use-harness-ce/probes/command-probe/cmd-probe-newrelic
+  - /docs/chaos-engineering/use-harness-ce/probes/command-probe/cmd-probe-usage
 ---
 
 # Command Probes

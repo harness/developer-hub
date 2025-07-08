@@ -2,6 +2,8 @@
 title: Probe Types & Execution Modes
 description: Understanding different probe types and their execution modes
 sidebar_position: 2
+redirect_from:
+  - /docs/chaos-engineering/use-harness-ce/probes/types
 ---
 
 # Probe Types & Execution Modes

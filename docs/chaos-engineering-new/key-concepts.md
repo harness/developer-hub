@@ -2,6 +2,8 @@
 title: Key Concepts
 description: Essential Harness Chaos Engineering concepts and terminology
 sidebar_position: 4
+redirect_from:
+  - /docs/chaos-engineering/concepts
 ---
 
 # Key Concepts

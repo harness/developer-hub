@@ -5,6 +5,7 @@ description: Steps to add a custom ChaosHub to your project
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub
 - /docs/chaos-engineering/features/chaos-hubs/add-chaos-hub
+- /docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

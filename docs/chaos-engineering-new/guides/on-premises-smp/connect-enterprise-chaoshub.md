@@ -5,6 +5,7 @@ description: Connect Enterprise ChaosHub in an air-gapped setup via proxy for SM
 redirect_from:
 - /docs/chaos-engineering/get-started/ce-on-smp/configure-proxy/connect-enterprise-chaoshub
 - /docs/category/configure-proxy-on-self-managed-enterprise-edition
+- /docs/chaos-engineering/getting-started/smp/connect-enterprise-chaoshub
 ---
 
 # Connect Enterprise ChaosHub via Proxy

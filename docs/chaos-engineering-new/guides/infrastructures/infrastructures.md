@@ -6,6 +6,7 @@ redirect_from:
 - /docs/category/chaos-infrastructure
 - /docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure/
 - /docs/chaos-engineering/concepts/explore-concepts/infrastructures/
+- /docs/chaos-engineering/use-harness-ce/infrastructures
 ---
 
 import Tabs from '@theme/Tabs';

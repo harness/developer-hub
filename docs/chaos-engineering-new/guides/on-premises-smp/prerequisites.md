@@ -2,6 +2,8 @@
 title: Prerequisites
 sidebar_position: 2
 description: Prerequisites and requirements for deploying Harness Chaos Engineering on SMP
+redirect_from:
+  - /docs/chaos-engineering/getting-started/smp/prerequisites
 ---
 
 # Prerequisites

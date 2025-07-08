@@ -2,6 +2,8 @@
 title: Overview
 description: Master chaos experiments - from creation to execution and analysis
 sidebar_position: 1
+redirect_from:
+  - /docs/chaos-engineering/use-harness-ce/chaos-experiments
 ---
 
 # Chaos Experiments

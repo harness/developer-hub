@@ -2,6 +2,8 @@
 title: Kubernetes Probes
 description: Validate Kubernetes resources and cluster state during chaos experiments
 sidebar_position: 4
+redirect_from:
+  - /docs/chaos-engineering/use-harness-ce/probes/k8s-probe
 ---
 
 # Kubernetes Probes

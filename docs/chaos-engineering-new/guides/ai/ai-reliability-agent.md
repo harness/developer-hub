@@ -2,6 +2,8 @@
 title: AI Reliability Agent
 description: Introduction to the AI Reliability Agent in Harness Chaos Engineering
 sidebar_position: 1
+redirect_from:
+  - /docs/chaos-engineering/ai-reliability-agent
 ---
 
 :::info note

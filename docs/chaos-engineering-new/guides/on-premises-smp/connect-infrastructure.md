@@ -4,6 +4,7 @@ sidebar_position: 3
 description: Connect chaos infrastructure to the control plane via proxy in SMP environments
 redirect_from:
     - /docs/chaos-engineering/get-started/ce-on-smp/configure-proxy/connect-infrastructure
+    - /docs/chaos-engineering/getting-started/smp/connect-infrastructure
 ---
 
 # Connect Infrastructure via Proxy

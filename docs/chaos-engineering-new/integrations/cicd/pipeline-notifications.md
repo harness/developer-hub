@@ -2,6 +2,8 @@
 title: Pipeline Notifications and Approvals
 description: Configure notifications and approvals for chaos experiment pipelines
 sidebar_position: 6
+redirect_from:
+  - /docs/chaos-engineering/integrations/pipeline-exec
 ---
 
 # Pipeline Notifications and Approvals

@@ -2,6 +2,8 @@
 title: Jenkins Integration
 description: Run chaos experiments as Jenkins pipeline steps
 sidebar_position: 4
+redirect_from:
+  - /docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline
 ---
 
 # Jenkins Integration

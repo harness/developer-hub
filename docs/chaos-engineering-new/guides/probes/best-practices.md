@@ -2,6 +2,8 @@
 title: Probe Best Practices
 description: Advanced strategies and best practices for effective probe design and implementation
 sidebar_position: 9
+redirect_from:
+  - /docs/chaos-engineering/use-harness-ce/probes/use-probe
 ---
 
 # Probe Best Practices

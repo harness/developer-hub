@@ -7,6 +7,7 @@ redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/introduction
 - /docs/category/chaoshub
 - /docs/category/chaos-hubs
+- /docs/chaos-engineering/use-harness-ce/chaoshubs
 ---
 
 ## ChaosHub

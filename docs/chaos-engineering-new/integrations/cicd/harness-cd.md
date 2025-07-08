@@ -2,6 +2,8 @@
 title: Harness Continuous Delivery Integration
 description: Integrate chaos experiments with Harness CD pipelines
 sidebar_position: 5
+redirect_from:
+  - /docs/chaos-engineering/integrations/hce-and-cd/chaos-cd
 ---
 
 # Harness Continuous Delivery Integration

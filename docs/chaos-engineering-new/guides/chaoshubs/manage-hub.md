@@ -5,6 +5,7 @@ description: Save and manage experiments in custom ChaosHub
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/manage-hub
 - /docs/chaos-engineering/features/chaos-hubs/manage-hub
+- /docs/chaos-engineering/use-harness-ce/chaoshubs/manage-hub
 ---
 
 This section explains how to save and manage experiments in your custom ChaosHub(s) and how to sync your ChaosHub GitHub repository with Harness. For setup instructions, see [Add a Custom ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub).

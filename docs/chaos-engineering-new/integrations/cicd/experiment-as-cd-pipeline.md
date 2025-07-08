@@ -2,6 +2,8 @@
 title: Execute Chaos Experiment as CD Pipeline
 description: Complete tutorial on executing chaos experiments as part of CD pipeline workflows
 sidebar_position: 7
+redirect_from:
+  - /docs/chaos-engineering/integrations/hce-and-cd/experiment-as-cd-pipeline
 ---
 
 # Execute Chaos Experiment as CD Pipeline

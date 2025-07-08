@@ -1,6 +1,8 @@
 ---
 title: Governance in Creation
 sidebar_position: 1
+redirect_from:
+  - /docs/chaos-engineering/use-harness-ce/governance/rbac
 ---
 
 This topic describes how Harness CE leverages RBAC to ensure that you have the right access to chaos engineering resources.

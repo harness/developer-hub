@@ -2,6 +2,10 @@
 title: Get Started with Chaos Engineering
 description: Quick start guides and onboarding for Chaos Engineering
 sidebar_position: 1
+redirect_from:
+  - /docs/chaos-engineering/getting-started/getting-started
+  - /docs/chaos-engineering/getting-started
+  - /docs/chaos-engineering/getting-started/prerequisites
 ---
 
 # Get Started with Chaos Engineering

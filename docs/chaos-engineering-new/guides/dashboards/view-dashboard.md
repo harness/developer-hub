@@ -4,6 +4,7 @@ sidebar_position: 1
 redirect_from:
 - /docs/chaos-engineering/features/chaos-dashboard/overview
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview
+- /docs/chaos-engineering/use-harness-ce/dashboards/view-dashboard
 ---
 
 ## Before you begin, review the following:

@@ -8,6 +8,7 @@ redirect_from:
 - /docs/chaos-engineering/features/gameday/introduction-to-gameday
 - /docs/category/gameday
 - /docs/chaos-engineering/concepts/explore-concepts/GameDay
+- /docs/chaos-engineering/use-harness-ce/gameday
 - /docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday
 ---
 

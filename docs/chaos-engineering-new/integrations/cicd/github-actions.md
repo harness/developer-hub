@@ -2,6 +2,8 @@
 title: Run chaos experiments using GitHub Actions
 sidebar_position: 2
 description: Guide to run a chaos experiment using GitHub Actions
+redirect_from:
+  - /docs/chaos-engineering/integrations/experiment-as-github-action
 ---
 
 # Run chaos experiments using GitHub Actions

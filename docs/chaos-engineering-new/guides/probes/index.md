@@ -2,6 +2,9 @@
 title: Overview
 description: Comprehensive guide to probes in chaos engineering experiments
 sidebar_position: 1
+redirect_from:
+  - /docs/chaos-engineering/use-harness-ce/probes
+  - /docs/chaos-engineering/use-harness-ce/probes/probes
 ---
 
 # Probes Overview

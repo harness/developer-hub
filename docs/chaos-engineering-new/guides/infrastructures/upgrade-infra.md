@@ -5,6 +5,7 @@ description: Guide to upgrade your chaos infrastructure
 redirect_from:
 - /docs/chaos-engineering/chaos-infrastructure/upgrade-infra
 - /docs/chaos-engineering/features/chaos-infrastructure/upgrade-infra/
+- /docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra
 ---
 
 This topic describes how you can upgrade your legacy chaos infrastructure (Dedicated Kubernetes Infrastructure, Helm-based Installation, Linux, and Windows infrastructure).
