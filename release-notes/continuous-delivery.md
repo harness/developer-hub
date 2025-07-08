@@ -55,6 +55,13 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## July 2025
 
+### GitOps Service 1.36.1, GitOps Agent 0.96.0
+
+#### Fixed Issues
+
+- Previously, the name could not be updated for an application set resource and because the update was done with an upsert, a new application set was created. This is now fixed. (**CDS-111778**)
+- Previously, updating a DR (Disaster Recovery) agent could fail because the check for an existing agent only matched by account, org, project, and identifier—excluding the drIdentifier. This caused multiple agents to be returned during the update process. This issue is now resolved by improving the existing agent check to uniquely identify the correct DR agent. Note that agent updates are limited to changes in description and tags, and both primary and DR agents must be updated accordingly. (**CDS-111467**)
+
 ### Version 1.95.5
 
 #### New Features and Enhancements
