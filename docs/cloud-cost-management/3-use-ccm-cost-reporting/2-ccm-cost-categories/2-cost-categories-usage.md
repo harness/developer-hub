@@ -203,7 +203,3 @@ The remaining cost for Account A1 will go to Bucket 1
 - Ensure your rules are specific and mutually exclusive when needed, to avoid unintentional gaps or overrides.
 - If Bucket 2 rules don’t match the criteria, or due to overlapping rules the data doesn’t appear, then the same cost bucket will not be visible in the dashboard either.
 
-## See Also
-
-* [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
-
