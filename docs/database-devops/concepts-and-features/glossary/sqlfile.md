@@ -25,6 +25,29 @@ import Head from '@docusaurus/Head';
   />
 </Head>
 
+The **`sql`** tag allows you to embed raw SQL statements directly within a changeset, instead of referencing external .sql files. This is particularly useful for small, declarative changes or when working with simple SQL that doesn't require reuse across environments.
+
+The sql change type supports multi-line SQL statements using delimiters such as `;` or `GO`, and allows inline comments in the following formats:
+
+- Multi-line comments enclosed within `/* ... */`
+- Single-line comments prefixed by `--`
+
+It also offers support for statement splitting via the `splitStatements` attribute and database-specific targeting using the dbms attribute. For Example:
+
+```yaml
+databaseChangeLog:
+  - changeSet:
+      id: sql-example
+      author: john-deo
+      changes:
+        - sql:
+            dbms: '!h2, oracle, mysql'
+            endDelimiter: \nGOs
+            splitStatements: true
+            sql: |
+              insert into person (name) values ('Bob')
+```
+
 The **`sqlFile`** tag in Harness Database DevOps (which uses Liquibase under the hood) allows you to execute raw SQL stored in external `.sql` files as part of a [changeset](./context.md). This is especially useful for large SQL scripts, vendor-specific features, or when reusing validated scripts across environments.
 
 Here’s a sample usage within a changeset:
@@ -84,17 +107,17 @@ Use context, labels, and logicalFilePath for environment-specific execution and 
 
 This example shows how to use `sqlFile` to seed data in a development environment, with a corresponding rollback script to remove the seeded data if needed.
 
-## Harness-Specific Enhancements
-While sqlFile follows Liquibase OSS conventions, Harness adds:
+## When to Use sql vs sqlFile
 
-- SQL preview during PRs and pipeline runs
-- Approvals tied to the SQL output
-- Change tracking and audit logs across environments
-- Rollback automation using companion rollback scripts or failover logic
+| Use Case                        | Use `sql`        | Use `sqlFile`                       |
+| ------------------------------- | ---------------- | ----------------------------------- |
+| Small or simple SQL             | ✅                | —                                   |
+| SQL must be embedded            | ✅                | —                                   |
+| Reusing large or vendor scripts | —                | ✅                                   |
+| Managing external files         | —                | ✅                                   |
+| Need full CI/CD preview/audit   | ✅ *(in Harness)* | ✅ *(full preview + rollback logic)* |
 
-## When Should You Avoid sqlFile?
-- For small, single DDL statements—prefer inline changes for readability.
-- When portability is critical—SQL in files may be tightly coupled to a specific dialect.
+Both tags support rollback, split statements, and comment stripping, but sqlFile is generally preferred for large or externalized logic, especially in Harness where preview, approval, and audit workflows are deeply integrated.
 
 ## Conclusion
 
@@ -128,6 +151,10 @@ Use `sqlFile` when:
 
 For smaller, portable, or declarative changes, inline YAML or XML is preferred.
 
-### 6. **Does Harness support approvals for `sqlFile` execution?**
+### 6. **When should I use the inline `sql` tag instead of `sqlFile`?**
+
+Use the inline `sql` tag when your SQL statement is simple, small, and does not require reuse across multiple environments. It’s ideal for one-off DDL or DML operations that are easily readable and maintainable directly within the changelog. Inline SQL is also useful when you want to minimize file dependencies or when working in early-stage development environments. For larger, reusable, or vendor-specific scripts, `sqlFile` is recommended.
+
+### 7. **Does Harness support approvals for `sqlFile` execution?**
 
 Absolutely. Harness integrates approval gates into your database pipeline. Any changeset using `sqlFile` can be subjected to review and approval workflows—ensuring that all SQL changes are vetted before execution in sensitive environments like staging or production.
