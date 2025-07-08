@@ -94,6 +94,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Improved log-streaming performance while dispatching the logs. (CDS-111776)
   
+### Version 25.06.86104 <!-- Jul 08, 2025 -->
+
+#### Fixed issues
+
+- The kind `VirtualService` is added to the canary workload, which is not expected. (CDS-111916)
+
 ### Version 25.06.86203 <!-- Jul 08, 2025 -->
 
 #### Fixed issues
