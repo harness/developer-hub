@@ -94,6 +94,18 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Improved log-streaming performance while dispatching the logs. (CDS-111776)
   
+### Version 25.06.86104 <!-- Jul 08, 2025 -->
+
+#### Fixed issues
+
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. (CDS-111916)
+
+### Version 25.06.86203 <!-- Jul 08, 2025 -->
+
+#### Fixed issues
+
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. (CDS-111916)
+
 ### Version 25.06.86202 <!-- Jul 02, 2025 -->
 
 #### Fixed issues
