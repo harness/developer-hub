@@ -29,6 +29,12 @@ When a commit is pushed to a branch without an existing pull request, Harness Co
 
 <DocImage path={require('/docs/code-repository/pull-requests/static/pr-banner-on-new-change.png')} />
 
+:::note Banner Visibility
+The banner appears for **2 hours** after changes are pushed to a branch. Once this time window passes, the banner no longer displays on page load.
+
+Only the **three most recently updated branches** are eligible to show the banner.
+:::
+
 ## Close a pull request
 
 If you decide a pull request is invalid or not ready for review, you can close it.
