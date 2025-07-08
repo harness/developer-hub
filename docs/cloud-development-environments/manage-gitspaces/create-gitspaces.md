@@ -77,13 +77,17 @@ Follow the instructions below to create a new Gitspace, based on your deployment
 
 6. **SSH Key**: Required for all IDEs except browser-based ones. Refer to the SSH key setup guide.
 
+![](./static/create-github-1.png)
+
 7. **Infra Provider Type**: Select **Harness Default GCP Provider**.
 
 8. **Region**: Choose from **pre-defined regions** ([see supported regions](/docs/cloud-development-environments/introduction/whats-supported.md#regions-available)).
 
 9. **Machine Type**: Choose from **available machine types** ([see supported machines](/docs/cloud-development-environments/introduction/whats-supported.md#machine-types)).
 
-10. Click **Create GitSpace**.
+10. Click **Create Gitspace**.
+
+![](./static/create-github-2.png)
 
 ### Self Hosted Gitspaces
 
@@ -109,6 +113,8 @@ Follow the instructions below to create a new Gitspace, based on your deployment
 9. **Machine Type**: Choose from the machine types configured in your infrastructure ([see how to configure machine types in self hosted](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md#add-machines-in-gitspace-infrastructure)).
 
 10. Click **Create Gitspace**.
+
+![](./static/create-self-1.png)
 
 Once your Gitspace is active, you're ready to begin development!
 

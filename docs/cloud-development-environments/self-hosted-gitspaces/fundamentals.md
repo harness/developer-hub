@@ -79,7 +79,7 @@ Start by configuring your **Gitspace infrastructure via the Harness UI**. This a
 
 ### 3. Configure and Set Up the Terraform Module
 
-Once the infrastructure is configured in the UI, proceed to initialize and apply the **Harness Gitspaces Terraform Module**. This module will **create all required GCP infrastructure** and will set up VM instances for the CDE Gateway. 
+Once the infrastructure is configured in the UI, proceed to initialize and use the **Harness Gitspaces Terraform Module**. This module will **create all required GCP infrastructure** and will set up VM instances for the CDE Gateway. 
 
 🔗 [Set Up Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md)
 
@@ -93,4 +93,4 @@ After provisioning, install the **Runner and Delegate** on your GCP VM Instance.
 
 Once the setup is complete, you can begin by **creating machines** and **Gitspaces** directly. 
 
-🔗 [Create Machines](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md)
+🔗 [Create and Manage Machines](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md)
