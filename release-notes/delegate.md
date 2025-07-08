@@ -98,13 +98,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 #### Fixed issues
 
-- The kind `VirtualService` is added to the canary workload, which is not expected. (CDS-111916)
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. (CDS-111916)
 
 ### Version 25.06.86203 <!-- Jul 08, 2025 -->
 
 #### Fixed issues
 
-- The kind `VirtualService` is added to the canary workload, which is not expected. (CDS-111916)
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. (CDS-111916)
 
 ### Version 25.06.86202 <!-- Jul 02, 2025 -->
 
