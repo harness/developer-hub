@@ -1312,6 +1312,7 @@ const sidebars: SidebarsConfig = {
       "cloud-cost-management/get-started/overview",
       "cloud-cost-management/get-started/dynamic-get-started",
       "cloud-cost-management/get-started/get-started",
+      "cloud-cost-management/get-started/landing",
       {
         type: "category",
         label: "Get Started",
