@@ -381,6 +381,29 @@ service:
 
 </details>
 
+### Setting up Aliases for the Lambda Function (Optional)
+As a part of the service definition, customers also have the opportunity to set up the Alias for their AWS Lambda function.  This is not required and wholly optional for customers.  Please note that the alias that is being set up should not use the name `harness-latest` or it may interfere with Harness' rollback process.
+
+Customer are present with an example within the Harness UI of how the Alias can be defined.  They can use this as a template and modify and then upload the template with the alias definitions for the deployment.  Although the template can be seen in the UI, it only exists as a sample
+![](./static/lambda-aliassample.png)
+
+The alias is required to include the `name` field and the `description` fields.  Customers can also include [`routingConfig` as per the example below](https://docs.aws.amazon.com/lambda/latest/api/API_AliasRoutingConfiguration.html), where the 12th version of the deployment will receive 60% of the traffic.
+
+
+```
+name: "TestAlias"
+description: "Testing for Hello World v01"
+routingConfig:
+    additionalVersionWeights:
+           "12": 0.6
+```
+
+Although customers can set the `routingConfig` upon initial creation, the updates for the routing requires deletion of the alias and re-creation, not an update.  
+
+The feature flag `CDS_AWS_LAMBDA_ROUTING_CONFIG_ADDITION_DURING_ALIAS_UPDATE` changes this behavior where updates to the Alias' definitions will now modify subsequent updates to the alias `routingConfig`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+
+
 ### Service configuration using Harness API
 
 You can configure the Harness AWS Lambda service using the [Create Service API](https://apidocs.harness.io/tag/Services#operation/createServiceV2). Ensure you specify the service type as `AwsLambda`
@@ -793,6 +816,8 @@ Ensure that the IAM role or user associated with the deployment has the followin
 Harness uses **Lambda function aliases** to support rollback workflows. During deployment, Harness creates or updates an alias to point to the latest function version. If a rollback is triggered, the alias is redirected to the previously deployed version—restoring the last known good state.
 
 In this case, Harness will create an alias called `harness-latest`, which will facilitate the rollback process.  It is only created when the rollback function is used with the Feature Flag enabled. It is highly recommended that customers do not modify this alias, as it may disrupt the expected state.   Please note that even if you are not using Artifacts larger than 50MB, the Rollback process will remain the same and will utilize Aliases once the flag is enabled.
+
+Any customer-defined aliases should not conflict with this alias.
 
 The alias will appear within Lambda as per the example below:
 

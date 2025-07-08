@@ -43,6 +43,6 @@ This view has has the following components:
 
 :::info
 
- To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Security Tests**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
+ To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Vulnerabilities tab**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 :::

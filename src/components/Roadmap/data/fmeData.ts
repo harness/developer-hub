@@ -20,18 +20,6 @@ export const FmeData: Horizon = {
         title: "Flag impressions properties bag",
         description: "Decorate impression records with properties to use in downstream processing. Ongoing support for additional SDKs being developed and released.",
       },
-      {
-        tag: [{value: "Targeting"}, {value: "Better Together"}],
-        title: "Rule-based segments",
-        description:
-          "Assign feature availability for user groups based on different conditions, with all the power of FME targeting.",
-      },
-      {
-        tag: [{ value: "Targeting" }],
-        title: "Client side SDKs cache expiration",
-        description:
-          "Control when local cache on device expires.",
-      },
     ],
   },
   Next: {
@@ -89,6 +77,20 @@ export const FmeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{value: "Targeting"}, {value: "Better Together"}],
+        title: "Rule-based segments",
+        description:
+          "Assign feature availability for user groups based on different conditions, with all the power of FME targeting.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-support-for-rule-based-segments",
+      },
+      {
+        tag: [{ value: "Targeting" }],
+        title: "Client side SDKs cache expiration",
+        description:
+          "Control when local cache on device expires.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-control-cache-expiration-for-client-side-sdks"
+      },
       {
         tag: [{ value: "Targeting" }],
         title: "Flag impressions toggle",

@@ -161,7 +161,7 @@ Here's a YAML example for scanning a [Google Gruyere instance](#set-up-your-app-
 
 1. Run the pipeline and then wait for the execution to finish.
 
-2. Select [**Security Tests**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) and examine any issues detected by your scan.
+2. Select [**Vulnerabilities tab**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) and examine any issues detected by your scan.
 
    ![view scan results](./static/dast-scans-zap/view-dast-scan-results.png)
 

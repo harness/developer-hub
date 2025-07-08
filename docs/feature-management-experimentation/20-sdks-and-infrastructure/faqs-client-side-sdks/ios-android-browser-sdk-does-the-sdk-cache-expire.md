@@ -14,4 +14,9 @@ The Split mobile (iOS and Android) and JavaScript Browser SDKs download a local 
 
 ## Answer
 
-The SDK will consider the cache stale if it hasn't been updated for 90 days. In such case it will issue a full download of FME definitions. This is an unlikely scenario since the SDK is continuously synching changes from the Harness FME servers and updating the cache.
+- For the JavaScript SDK, version 11.2.0 introduces a default cache expiration period of 10 days, which is configurable using the `LOCALSTORAGE` setting. After expiration, the SDK will refresh the cache from scratch. 
+- For the Browser SDK, version 1.2.0 introduces a default cache expiration period of 10 days, which is configurable using the `InLocalStorage` setting. For more information, see [Configuring LocalStorage cache for the SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#configuring-localstorage-cache-for-the-sdk).
+- For the Android SDK, version 5.3.0 introduces a default cache expiration period of 10 days, which is configurable using the `rolloutCacheConfiguration` setting. After expiration, the SDK will refresh the cache from scratch.
+- For the iOS SDK, version 3.3.0 introduces a default cache expiration period of 10 days, which is configurable using the `rolloutCacheConfiguration` setting. After expiration, the SDK will refresh the cache from scratch.
+
+All SDKs continue to store impressions and events for up to 90 days, after which the cache is considered stale and may be purged.

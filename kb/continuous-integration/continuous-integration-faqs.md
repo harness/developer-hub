@@ -297,7 +297,7 @@ For Harness CI Cloud machine specs, go to [Harness Cloud image specifications](h
 
 ### Can I use my own secrets manager with Harness Cloud build infrastructure?
 
-No. To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), you must use the built-in Harness secrets manager.
+Yes, Harness supports secret managers from various cloud providers, including HashiCorp Vault.
 
 ### Connector errors with Harness Cloud build infrastructure
 
@@ -356,6 +356,94 @@ Currently, [STO scan steps](https://developer.harness.io/docs/security-testing-o
 ### How do I configure OIDC with GCP WIF for Harness Cloud builds?
 
 Go to [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
+
+### GCP OIDC Connector keeps saying "OIDC Configuration Error: Error encountered while obtaining OIDC Access Token from STS" configuration is correct
+Harness obsfucates various information from GCP OIDC connections due to security and information concerns.  In order to keep customers safe even in the case of connection error, Harness obasfucates information that may help troubleshoot this kind of issue.  
+
+To start, please ensure that your Harness Environment and Google Cloud Environment are configured according to our documentation about [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted)
+
+Next, please ensure that you have an [API key for an Harness account with at least **CREATE_OIDC_ID_TOKEN_PERMISSION** permissions in your Harness Environment](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/).
+
+#### Attain Your Harness JSON Web Token (JWT)
+In order to perform some of the tasks, you will need to attain your JSON Web Token (JWT), you will need to cURL against the Harness API endpoint with the following command:
+
+```
+curl --location 'https://app.harness.io/ng/api/oidc/id-token/gcp' \
+--header 'accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'x-api-key: YOUR_API_KEY' \
+--data-raw '{
+    "accountId": "YOUR_HARNESS_ACCOUNT_ID",
+    "workloadPoolId": "YOUR_CONNECTOR_WORKLOAD_POOL_ID",
+    "providerId": "YOUR_CONNECTOR_PROVIDER_ID",
+    "gcpProjectId": "YOUR_CONNECTOR_PROJECT#_ID",
+    "serviceAccountEmail": "YOUR_CONNECTOR_SVC_ACCOUNT_EMAIL_ID"
+  }'
+```
+You'll need to replace the values in capital letters with your information from the OIDC Connector/WIF Account and your Harness Environment.
+
+Once you run the command, Harness will return a successful JWT
+```
+{
+    "status": "SUCCESS",
+    "data": "aaa9aAAaAaAAAV9AaAAAhAaAaAaAAAAaA9AaAaAaAaAaAAaA9AaAAAAAAa9AAAaAaAaAaAaAAbAaAbAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAa999AaAaAaAaAaAa-aAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaA.aAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaA",
+    "metaData": null,
+    "correlationId": "00a000aa-a0000-0a00-000a-0a00a0a0a000"
+}
+```
+The data portion is the JWT
+
+#### Compare the issuer in the JSON Web Token with what is being supplied by Harness
+You can now decode your JWT token and ensure its values are correct.  You can decode the JWT using a tool of your choice (such as with Python) or visit a site like https://jwt.io/, and decode the values for the payload (please note that Harness does not endorse https://jwt.io).  The values should look somewhat like the following:
+```
+{
+  "sub": "YOUR_HARNESS_ACCOUNT_ID",
+  "iss": "https://app.harness.io/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>",
+  "aud": "https://iam.googleapis.com/projects/<YOUR_CONNECTOR_PROJECT#_ID>/locations/global/workloadIdentityPools/<YOUR_CONNECTOR_WORKLOAD_POOL_ID>/providers/<YOUR_CONNECTOR_PROVIDER_ID>",
+  "exp": 1750713017,
+  "iat": 1750711017,
+  "account_id": "YOUR_HARNESS_ACCOUNT_ID"
+}
+```
+
+Now perform a cURL from a local system to Harness, using the appropriate Hostname for your Harness Cluster.  Note that the source IP must be part of the allow-listed for the account.
+
+| Cluster      | HostName               |
+|--------------|------------------------|
+| Prod1/Prod2  | app.harness.io         |
+| Prod3        | app3.harness.io        |
+| Prod0/Prod4  | accounts.harness.io    |
+| EU clusters  | accounts.eu.harness.io |
+
+```
+curl https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>/.well-known/openid-configuration
+```
+
+Compare the value for `iss` with the `issuer` value from the curl command.  They should match.
+
+#### Test your JSON Web Token for issues using GCP's STS Method: Token test
+GCP has a method to test a token's external identity within a pool.
+
+Customers will need to [visit the GCP site](https://cloud.google.com/iam/docs/reference/sts/rest/v1/TopLevel/token), and prepare a payload for testing.
+
+![](./static/jwt-gcptestsite.png)
+
+Using the **Try this Method** section, add the following request body, that follows the example outlined in the GCP documentation.  Take special note that the `audience` value for the test does **not** have the `https:` portion of the url.  Including it will result in an error.
+
+```
+{
+  "grantType": "urn:ietf:params:oauth:grant-type:token-exchange",
+  "audience": "//iam.googleapis.com/projects/<YOUR_CONNECTOR_PROJECT#_ID>/locations/global/workloadIdentityPools/<YOUR_CONNECTOR_WORKLOAD_POOL_ID>/providers/<YOUR_CONNECTOR_PROVIDER_ID>",
+  "scope": "https://www.googleapis.com/auth/cloud-platform",
+  "requestedTokenType": "urn:ietf:params:oauth:token-type:access_token",
+  "subjectToken": "<YOUR_JWT_FROM_ABOVE_STEPS>",
+  "subjectTokenType": "urn:ietf:params:oauth:token-type:id_token"
+  
+}
+```
+
+Click on the `Execute` button.  If you receive a `200` response, then your token should be set up correctly, and there should not be any issues.  If there is another response, this means there is an issue with how the GCP WIF was set up, and we recommend reviewing the information in the error to help troubleshoot the issue.  
+
 
 ### When I run a build on Harness cloud, which delegate is used? Do I need to install a delegate to use Harness Cloud?
 
@@ -1695,6 +1783,132 @@ The **build and push** steps used to build Docker images have a context field. U
 ### Why do Build and Push steps fail with "Error while loading buildkit image: exit status 1" when /var/lib/docker is included in shared paths during DIND execution?
 **Build and Push** steps fail with the error "Error while loading buildkit image: exit status 1" when `/var/lib/docker` is included in the shared paths during Docker-in-Docker (DIND) execution because DIND creates a Docker daemon using this path, and sharing it across steps causes conflicts when multiple build steps try to create and access their own Docker daemons. To resolve this, remove `/var/lib/docker` from the shared paths configuration, which prevents conflicts and allows **Build and Push** steps to execute successfully.
 
+### How can I block or restrict image pulls in my Harness CI pipelines?
+
+To enforce stricter network control or restrict use of external registries during CI builds, here are two common approaches:
+
+Option 1: Use a Run Step to Dynamically Block a Website (e.g., a registry)
+
+You can block network access to specific domains like `example.com` by using a Run step in your pipeline that applies iptables rules before any potentially unsafe step runs.
+
+Here’s a sample Harness CI pipeline that blocks access to `example.com`:
+
+```yaml
+pipeline:
+  name: blockwebsiteexample
+  identifier: blockwebsiteexample
+  projectIdentifier: PROJECT_NAME
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Bash
+                    command: |-
+                      DOMAIN="example.com"
+                      IPS=$(dig +short $DOMAIN | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}')
+                      for IP in $IPS; do
+                        sudo iptables -A OUTPUT -d "$IP" -j REJECT
+                      done
+              - step:
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    shell: Sh
+                    command: curl -I https://example.com
+              - step:
+                  type: Run
+                  name: Run_3
+                  identifier: Run_3
+                  spec:
+                    shell: Bash
+                    command: |-
+                      DOMAIN="example.com"
+                      IPS=$(dig +short $DOMAIN | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}')
+                      for IP in $IPS; do
+                        sudo iptables -D OUTPUT -d "$IP" -j REJECT
+                      done
+                  when:
+                    stageStatus: All
+              - step:
+                  type: Run
+                  name: Run_4
+                  identifier: Run_4
+                  spec:
+                    shell: Sh
+                    command: curl -I https://example.com
+                  when:
+                    stageStatus: All
+```
+
+Use this when:
+
+- You want to restrict access to specific URLs during pipeline execution.
+
+- You need fine-grained, dynamic blocking based on domains or IPs.
+
+- You're running builds in Harness Cloud with Linux runners.
+
+Option 2: Use OPA Policy to Deny docker pull Commands
+
+For governance at scale, you can apply OPA policies to deny pipelines that contain docker pull or other blacklisted commands.
+
+Here’s a sample OPA policy:
+
+```yaml
+package pipeline
+
+# Deny build pipelines that don't push to "us.gcr.io"
+# NOTE: Try changing the expected host to see the policy fail
+deny[msg] {
+	# Find all stages ...
+	stage = input.pipeline.stages[_].stage
+
+	# ... that are used for CI
+	stage.type == "CI"
+
+	# ... that have steps
+	step = stage.spec.execution.steps[_].step
+
+	# ... that build and push to GCR steps
+	step.type == "Run"
+
+  contains_keyword := regex.match("\\bdocker pull\\b", step.spec.command) 
+  contains_keyword
+  # Generate a message indicating the forbidden keyword usage
+  msg := sprintf("Step '%s' in stage '%s' contains a docker pull command.", [step.name, stage.name])
+}
+```
+
+Use this when:
+
+- You want to enforce compliance across many teams or orgs
+
+- You don’t want to manually edit pipelines
+
+- You prefer policy-as-code to manage CI guardrails
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -2538,7 +2752,7 @@ If your builds time out with this error during stage initialization, and you're 
 
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 
-Yes. To do this, you can add a step that runs in parallel to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Use a parallel step to monitor failures](./articles/parallel-step-for-logging).
+Yes. To do this, you can add a step that runs in parallel to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Use a parallel step to monitor failures](/kb/continuous-integration/articles/parallel-step-for-logging).
 
 ### How to get the build ID of a pipeline execution?
 
@@ -2745,6 +2959,42 @@ If it is operating as expected, the Kaniko CLI will show the following in the CL
 /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=destination/repo:1.0 --snapshotMode=redo --digest-file=/kaniko/digest-file --ignore-path=/opt/nodejs
 ```
 
+## Matrix Executions and Strategy FAQs
+
+### Why am I seeing the error "should map to single port" when using JSON-based matrix executions?
+
+When using JSON input to define matrix combinations, you may encounter the following error during CI pipeline execution: **should map to single port**.
+
+This typically occurs when the matrix input is dynamically constructed from a JSON object — and the ordering of keys in the matrix input is not preserved during evaluation. This can lead to internal mismatches between matrix labels and execution steps.
+
+#### Root Cause
+The issue arises from non-deterministic key ordering in matrix inputs derived from JSON strings. Engines like Jackson or the default Java Map do not guarantee key order, which causes:
+
+- Inconsistent step identifiers between Initialize and Run steps
+
+- Internal parsing errors
+
+- Label mismatch during Kubernetes pod creation
+
+#### Workarounds
+
+Option 1: Disable Matrix Labels By Name
+- Go to Pipeline Settings
+- Uncheck the “Enable Matrix Labels By Name” option
+
+Disabling this option prevents Harness from generating Kubernetes labels based on matrix key values, avoiding the problem entirely.
+
+Option 2: Explicitly Define nodeName
+You can override the auto-generated node name by providing a stable, predictable naming pattern in your matrix config:
+
+```yaml
+strategy:
+  matrix:
+    service: [svc1, svc2, svc3]
+    env: [env1, env2]
+    nodeName: stage_<+matrix.service>_<+matrix.env>
+```
+This bypasses the default label generator logic that may be affected by unordered JSON keys.
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 

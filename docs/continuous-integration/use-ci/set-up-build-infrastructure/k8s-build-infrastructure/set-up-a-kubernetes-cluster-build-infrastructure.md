@@ -28,7 +28,11 @@ The following diagram shows the architecture of a kubernetes cluster build infra
 
 ![](../static/ci-pipeline-quickstart-13.png)
 
-You must install the Harness Delegate in the same cluster you use for the build farm. The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
+:::note
+You must install the Harness Delegate in the same cluster you use for the build farm.
+::: 
+
+The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
 
 <details>
 <summary>Video summary</summary>

@@ -23,7 +23,7 @@ For example, you can use this to:
 
 ## Add a Git Clone step
 
-Assume the [default codebase](./create-and-configure-a-codebase#configure-the-default-codebase) is a repo that contains app code files, and the Dockerfile necessary to build the app image is in a different repo. You can use [Git Clone](./git-clone-step) step to clone the second repo into the workspace, or fetch spricifc files/directories. Then, you can use a [Build and Push](../../../category/build-and-push) step to build and push an image using files from both repos.
+Assume the [default codebase](./create-and-configure-a-codebase#configure-the-default-codebase) is a repo that contains app code files, and the Dockerfile necessary to build the app image is in a different repo. You can use [Git Clone](./git-clone-step) step to clone the second repo into the workspace, or fetch specific files/directories. Then, you can use a [Build and Push](../../../category/build-and-push) step to build and push an image using files from both repos.
 
 
 <Tabs>

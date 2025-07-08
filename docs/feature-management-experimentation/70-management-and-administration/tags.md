@@ -3,13 +3,14 @@ title: Tags
 sidebar_position: 30
 ---
 
-Use tags to organize and manage feature flags, segments, and metrics across the FME user interface. Tags can isolate a particular team or feature release, for example, _reporting team_, _front end_, or _geo search release_.
+Use tags to organize and manage feature flags, segments, metrics, and experiments across the FME user interface. Tags can isolate a particular team or feature release, for example, _reporting team_, _front end_, or _geo search release_.
 
 We recommend creating tags that are specific to your workflow. Here are some ideas to get you started: 
 
 * **By team.** Identify the responsible team using tags such as _front end_, _infrastructure_, _web_, or _mobile_.
 * **By feature release.** Identify all of the feature flags associated with a particular release using tags such as _reporting_, _new permissioning_, or _contact database migration_.
 * **By feature flag type.** Identify all the feature flags associated with paywalls or those that are permanent versus temporary, using tags such as _paywall_, _permanent_, or _temporary_.
+* **By experiment purpose or scope.** Identify all of the experiments associated with onboarding flows, checkout optimizations, or other test initiatives using tags such as _onboarding_, _checkout_, or _retention-test_.
 
 :::info[note]
 Be aware of the following:
@@ -19,7 +20,7 @@ Be aware of the following:
 
 ## Adding tags
  
-To tag feature flags, segments, or metrics: 
+To tag feature flags, segments, metrics, or experiments: 
 
 1. Select the item you want to tag. 
 2. Click the gear icon next to the feature flag title and select Edit details. The Details view appears.

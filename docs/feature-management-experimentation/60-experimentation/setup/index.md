@@ -30,6 +30,6 @@ Setting up an experiment follows these steps:
       Based on your feature flag definition, the following fields are pre-populated by default: the start time is the timestamp of the flag’s current version, the end time is determined by your default review period, the baseline treatment is the flag’s default treatment, and the comparison treatments are all other treatments defined by the flag.
       :::
 
-4. Write an optional hypothesis and add any additional owners. Then click **Create**.
+4. Write an optional hypothesis, add any additional owners, and apply tags to help categorize your experiment (for example, by team, status, or feature area). Then click **Create**.
 
 5. Add key and supporting metrics to your experiment. Guardrail metrics will be measured automatically for every experiment.

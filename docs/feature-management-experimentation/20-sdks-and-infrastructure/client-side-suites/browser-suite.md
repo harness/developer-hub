@@ -18,6 +18,12 @@ The Suite provides the all-encompassing essential programming interface for work
 
 The JavaScript Browser Suite supports all major browsers. While the library was built to support ES5 syntax, it depends on native support for ES6 Promise. If the Promise object is not available in your target browsers, you will need an ES6 Promise polyfill.
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 2.2.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Initialization
 
 Set up FME in your code base with the following two steps:

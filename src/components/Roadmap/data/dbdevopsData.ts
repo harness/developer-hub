@@ -4,6 +4,36 @@ export const DbdevopsData: Horizon = {
     description: "What has been released in the last ~2 Quarters",
     feature: [
       {
+        title: "Variable Branch Override",
+        description:
+          "Allow a DB Instance to read the branch it deploys to from a pipeline variable. This is useful for deploying feature branches.",
+        tag: [{ value: "Orchestration" }, {value: "Q2"}],
+      },
+      {
+        title: "Log Size (Phase 1)",
+        description:
+          "Add compression to preview step logs to increase maximum supported SQL size beyond 64kb by approximately 5x.",
+        tag: [{ value: "Orchestration" }, {value: "Q2"}],
+      },
+      {
+        title: "Change Audits",
+        description:
+          "Visibility into database changes and the history of applying them across numerous Database DevOps screens",
+        tag: [{ value: "Visibility" }, {value: "Q2"}],
+      },
+      {
+        title: "ChangeID Output",
+        description:
+          "Add an output on the apply step that outputs the list of change IDs that were applied.",
+        tag: [{ value: "Orchestration" }, {value: "Q2"}],
+      },
+      {
+        title: "Variable Branch Override",
+        description:
+          "Allow the branch name that a DB Instance deploys from to come from a pipeline variable to simplify usage of feature branches.",
+        tag: [{ value: "Orchestration" }, {value: "Q2"}],
+      },
+      {
         title: "Spanner for Google SQL",
         description: "Added support for the Google SQL version of the Google Spanner database as a supported database type.",
         tag: [{ value: "Integrations" }, {value: "Q1"}],
@@ -28,64 +58,23 @@ export const DbdevopsData: Horizon = {
           "ability to define changelog property overrides on database instances, and reference them within your changelog.",
       },
       {
-        tag: [{ value: "Governance" }, {value: "Q4"}],
-        title: "RBAC Support",
+        title: "Finish Governance",
         description:
-          "Ability to cointrol ability to edit db schema definition via RBAC roles.",
+          "Various enhancement on our policy enforcement to support known customer-specific policies",
+        tag: [{ value: "Governance" }, {value: "Q1"}],
       },
       {
-        tag: [{ value: "Visibility" }, { value: "Q4" }],
-        title: "Dashboards Support",
+        title: "Connector Secrets",
         description:
-          "Enable Reporting on DB DevOps using Harness Dashboards.",
-      },
-      {
-        tag: [{ value: "Orchestration" }],
-        title: "Rollback to Start of Deployment",
-        description:
-          "Provide easy ability for pipeline to rollback applied changes from the same pipeline.",
-        link: "https://developer.harness.io/docs/database-devops/use-database-devops/rollback-for-database-schemas#rolling-back-to-a-previous-database-state"
+          "Add option to pass secrets to build pods without going through a Kubernetes secret object",
+        tag: [{ value: "Governance" }, {value: "Q1"}],
+        link: "https://developer.harness.io/docs/database-devops/use-database-devops/get-started/runtime-secrets/"
       }
     ],
   },
   "Now": {
     description: "Currently under active development, ~ current quarter",
     feature: [
-      {
-        title: "Log Size (Phase 1)",
-        description:
-          "Add compression to preview step logs to increase maximum supported SQL size beyond 64kb by approximately 5x.",
-        tag: [{ value: "Orchestration" }],
-      },
-      {
-        title: "Connector Secrets",
-        description:
-          "Add option to pass secrets to build pods without going through a Kubernetes secret object",
-        tag: [{ value: "Governance" }],
-      },
-      {
-        title: "Finish Governance",
-        description:
-          "Various enhancement on our policy enforcement to support known customer-specific policies",
-        tag: [{ value: "Governance" }],
-      },
-      {
-        title: "Change Audits",
-        description:
-          "Visibility into database changes and the history of applying them across numerous Database DevOps screens",
-        tag: [{ value: "Visibility" }],
-      }
-    ],
-  },
-  "Next": {
-    description: "What we'll build next, next ~2 quarters",
-    feature: [
-      {
-        title: "Variable Branch Override",
-        description:
-          "Allow a DB Instance to read the branch it deploys to from a pipeline variable. This is useful for deploying feature branches.",
-        tag: [{ value: "Orchestration" }],
-      },
       {
         title: "Log Size (Phase 2)",
         description:
@@ -97,7 +86,12 @@ export const DbdevopsData: Horizon = {
         description:
           "Implement a subscription UI for Harness Database DevOps",
         tag: [{ value: "Governance" }],
-      },
+      }
+    ],
+  },
+  "Next": {
+    description: "What we'll build next, next ~2 quarters",
+    feature: [
       {
         title: "Kerberos Auth",
         description:
@@ -109,18 +103,18 @@ export const DbdevopsData: Horizon = {
         description:
           "Allow referencing properties from a database instance inside the JDBC URL of a database connector.",
         tag: [{ value: "Orchestration" }],
+      },
+      {
+        title: "Native Flyway Support",
+        description:
+          "Add native support for using Flyway instead of liquibase",
+        tag: [{ value: "Integrations" }],
       }
     ]
   },
   "Future": {
     description: "typically > 6 months out",
     feature: [
-      {
-        title: "Native Flyway Support",
-        description:
-          "Add native support for using Flyway instead of liquibase",
-        tag: [{ value: "Integrations" }],
-      },
       {
         title: "Support for Snowflake",
         description: "Add support for Snowflake as a supported database type.",

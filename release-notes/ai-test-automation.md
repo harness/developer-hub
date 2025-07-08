@@ -1,16 +1,16 @@
 ---
 title: AI Test Automation Release Notes
 sidebar_label: AI Test Automation
-date: 2025-05-22T10:00
+date: 2025-05-30T10:00:00
 sidebar_position: 19
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/chaos-engineering/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/ai-test-automation/rss.xml" />
 
-The release notes describe recent changes to Harness Chaos Engineering.
+The release notes describe recent changes to Harness AI Test Automation.
 
 :::info About Harness Release Notes
 

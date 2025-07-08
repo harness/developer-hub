@@ -45,7 +45,7 @@ custom_envs:
     value: "true"
 ```
 
-When deploying a delegate, it is recommended that you name the delegate either the same as the cluster name or something very similar that makes it obvious what cluster the delegate is deployed into.  An example of deploying a CCM Only delegate via a Helm chart is located [here](https://developer.harness.io/kb/reference-architectures/ccm/best-practices/ccm-only-delegate).
+When deploying a delegate, it is recommended that you name the delegate either the same as the cluster name or something very similar that makes it obvious what cluster the delegate is deployed into. An example of deploying a CCM Only delegate via a Helm chart is [located here](https://developer.harness.io/kb/reference-architectures/ccm/best-practices/k8s/ccm-only-delegate).
 
 ### Resource Constraints
 

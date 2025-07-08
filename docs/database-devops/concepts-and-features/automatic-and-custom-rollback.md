@@ -7,8 +7,6 @@ description: Automatic and Custom Rollbacks
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Automatic and Custom Rollbacks
-
 There are two types of rollback functionality:
 
 - **Automatic rollbacks**: Generated automatically based on the change type
@@ -38,6 +36,9 @@ Unexpected error running Liquibase:
 
 To roll back your `dropTable` statement, you have to specify custom logic in your changelog so that Liquibase knows how to correctly restore your database.
 
+:::info
+To Know more how to use automatic rollback see [Automated Rollback for Database Schemas](../use-database-devops/rollback-for-database-schemas.md).
+:::
 
 ## Custom rollback statements
 

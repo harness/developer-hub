@@ -24,6 +24,12 @@ The JavaScript SDK supports all major browsers. While the library was built to s
 
 If you're looking for possible polyfill options, check [es6-promise](https://github.com/stefanpenner/es6-promise), [es6-map](https://github.com/medikoo/es6-map) and [es6-set](https://github.com/medikoo/es6-set) for Promise, Map and Set polyfills respectively.
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in SDK versions 11.4.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Initialization
  
 Set up FME in your code base with two simple steps.

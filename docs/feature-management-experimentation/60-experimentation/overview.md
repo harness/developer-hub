@@ -11,8 +11,14 @@ Experiments take in your experimental control variables, measure events, and dis
 
 For any experimentation program to be successful, teams should be able to remain agile and create repeatable steps. These steps give teams an outline for the who, what, when and where of experimentation.  From conception to iteration, it is important that teams optimize the process itself as they go along, in order to move faster. 
 
-For more information about creating an experiment, see the [Setup documentation](./setup).
+For more information about creating an experiment, see the [Setup documentation](/docs/feature-management-experimentation/experimentation/setup/).
+
+## Use tags to organize experiments
+
+You can add **tags** to experiments to make it easier to search, filter, and apply standards. Tags are flexible labels that let you group experiments by team, purpose, status, or any internal conventions. 
+
+Learn more about [experiment tags](/docs/feature-management-experimentation/management-and-administration/tags/).
 
 ## Analyze experiment results
 
-For more information about analyzing experiment results, see [Analyzing experiment results](./experiment-results/analyzing-experiment-results).
+For more information about analyzing experiment results, see [Analyzing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results).

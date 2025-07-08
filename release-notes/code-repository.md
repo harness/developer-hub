@@ -1,7 +1,7 @@
 ---
 title: Code Repository release notes
 sidebar_label: Code Repository
-date: 2025-05-23T10:00
+date: 2025-07-03T10:00
 sidebar_position: 7
 ---
 
@@ -22,6 +22,26 @@ These release notes describe recent changes to Harness Code Repository.
 
 
 ## June 2025
+
+
+<!-- July 03, 2025 -->
+
+### Version 1.48.x
+
+#### New features and enhancements
+
+- Added a banner prompting users to **Create PR** when a new branch is recently pushed.
+- Added repository sort and scope filters to the repo list page. Users can now sort repositories and toggle between account, org, and project scopes to control visibility.
+
+<!-- June 17, 2025 -->
+
+### Version 1.46.x
+
+#### New features and enhancements
+- Added the ability to set favorite repositories across the account.
+
+#### Fixed issues
+- Resolved an issue where Markdown in Harness Code did not render images.
 
 <!-- June 10, 2025 -->
 

@@ -21,9 +21,9 @@ When you open the Harness Database DevOps module, you will encounter a single-pa
 
 ## The Unified Environment Overview for Database Schemas
 
- ![A screenshot of the Harness Database DevOps Unified Schema that highlights the Database Schemas](../concepts-and-features/static/unified-environment-database-devops.png)
+ ![Unified View that highlights the Database Schemas Applied](./static/dbops-unified-view.png)
 
-When you select **DB Schemas** from the left navigation menu, you will see a single-pane interface that displays all database changes across different environments, highlighting pending actions, in-progress modifications, and recently completed updates.
+When you click on **DB Schemas** section from the left-hand menu. Then, select the database schema you want to check. Once selected, click on the **Migration State** option under one of the connected DB Instances. This will open a clear, single-page view that shows all the changes linked to that schema in the database, whether they are pending, currently in progress, or already completed.
 
 This overview provides insights into the database states in both production and non-production environments, allowing for quick assessments of readiness and synchronization. Here’s what you will find in this section:
 

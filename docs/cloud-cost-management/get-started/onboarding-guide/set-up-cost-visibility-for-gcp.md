@@ -15,6 +15,9 @@ import select_gcp from './static/set-up-cost-visibility-for-gcp-01.png'
 import create_dataset from './static/set-up-cost-visibility-for-gcp-02.png'
 import dataset_name from './static/set-up-cost-visibility-for-gcp-03.png'
 import dataset_permissions from './static/data-permissions-gcp.png'
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP products, projects, SKUs, and location. As a first step, you need to connect Harness to your GCP account to get insights into your cloud infrastructure, and GCP services, Compute Engine, Cloud Storage, BigQuery, etc. CCM offers a wide range of features to track and control costs associated with your cloud resources.
 
@@ -31,45 +34,39 @@ After enabling CCM, it takes about 24 hours for the data to be available for vie
 	+ **Billing Account Administrator** role for the target Cloud Billing account
 	+ [BigQuery User role for the Cloud project](https://cloud.google.com/bigquery/docs/dataset-access-controls) that contains the BigQuery dataset that will be used to store the Cloud Billing data
 
-## Connect Harness to Google Cloud Platform (GCP) Account
+## Connect Harness CCM to Google Cloud Platform (GCP) Account
 
-Connect Harness to your GCP account to gain access your GCP services, Compute Engine, Cloud Storage, BigQuery, etc. Harness CCM gives you cost insights that are derived from the billing export. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](set-up-cost-visibility-for-kubernetes.md).
-
+You can use Harness CCM features once your cloud account is connected to Harness CCM. This can be done via creating a cloud account connector for GCP. 
 :::info
 
 Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe daylight saving time shifts. However, Harness CCM explorer uses the UTC time zone. You may notice some cloud cost differences between Harness CCM explorer and the GCP Cloud Billing report due to the time zone difference.
 
 :::
 
-1. Create a new Kubernetes connector using one of the two options below:
+Create a new GCP connector in these 5 simple steps:
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+### GCP Connector Setup Process Overview
 
-<Tabs queryString="tab-number">
-<TabItem value="4" label="From Account Settings">
+#### Access the GCP Connector Setup
 
-1. Go to **Account Resources** > **Connectors**.
-2. Select **+ New Connector**.
-3. Under **Cloud Costs**, select **GCP**.
-
-</TabItem>
-<TabItem value="5" label="From Cloud Costs">
-
-1. Go to **Setup** > **Cloud Integration**.  
-2. Select **New Cluster/Cloud account**.
+1. Go to **Account Settings** > **Integration for Cloud Cost**.
+2. Select **+ New Cluster/Cloud Account**.
 3. Select **GCP**.
 
-</TabItem>
-</Tabs>
+OR
 
-2. Perform the following tasks in the **GCP Connector** wizard.
+1. Go to **Account Settings** > **Connectors**.  
+2. Select **New Connector**.
+3. Select **GCP-Cloud Cost** under **Cloud Costs**.
 
-### Overview
-1. In **Overview**, in **Connector Name**, enter a name that describes this account.
+### Step 1: Overview
+
+1. In **Overview**, in **Connector Name**, enter a name that describes this account.
 2. In **Specify Project ID**, enter the project ID and select **Continue**. For more information on how to get a project ID, go to [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
+3. **[Optional] Description**: Enter a description for the connector.
+4. **[Optional] Tags**: Add tag to the connector. 
 
-### GCP Billing Export
+### Step 2: Setup Billing Export
 
 Cloud Billing export to BigQuery enables you to export detailed Google Cloud billing data (such as usage and cost estimate data) automatically throughout the day to a BigQuery dataset that you specify.
 
@@ -119,48 +116,94 @@ When setting up a connector for GCP Billing Export, keep the following limitatio
 
 :::
 
-### Choose Requirements
+### Step 3: Choose Requirements
 
 Select the Cloud Cost Management features that you would like to use on your GCP account.
 
-CCM offers the following features:
 
 | Features  | Capabilities | 
 | --- | --- | 
-| **Cost Visibility** (Required)| This feature is available by default. Make sure you have set up the GCP Billing Export. Provides the following capabilities:<ul><li>Insights into GCP costs by projects, products, etc.</li><li>Root cost analysis using cost perspectives </li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul>|
-| **GCP Inventory Management** (Optional)| This feature provides visibility into your GCE VMs and unused disks and snapshots. The insights provided by inventory management can be used by Finance teams to understand resource utilization across the board.|
-| **GCP optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. For more information, see **Create AutoStopping Rules for GCP**.<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
+| **Cost Visibility** (Required)| This feature is available by default. Make sure you have set up the GCP Billing Export. Provides the following capabilities:<ul><li>Insights into GCP costs by projects, products, etc.</li><li>Cost Perspectives </li><li>Anomaly Detection</li><li>Budgets and Forecasts</li><li>Cost Categories</li></ul>|
+| **Resource Inventory Management** | This feature provides visibility into your GCE VMs and unused disks and snapshots. The insights provided by inventory management can be used by Finance teams to understand resource utilization across the board.|
+| **Optimization using AutoStopping rules** | This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. If selected, you can select [granular permissions in the next step](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostoppingg)|
 | **Cloud Governance** (Optional)              | This feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. For more information, see [Asset governance](../../5-use-ccm-cost-governance/asset-governance/1-asset-governance.md). <ul><li> Asset Management (Instance, Disk, SQL-instance, Image) </li><li>Automated Actions</li></ul>     
 
-Make your selection and select **Continue**.
+### Step 4: Authentication (Conditional)
 
-### Grant Permissions
+<DocImage path={require('./static/oidc-gcp.png')} width="100%" height="100%" title="Click to view full size image" />
 
-Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing data (such as usage and cost estimate data) to a BigQuery dataset that you specify. The export happens throughout the day automatically. 
+If you have selected **Optimization by AutoStopping** or **Cloud Governance**, in previous step, you can set up Authentication. If not selected, this step will not be prompted.
 
-1. In **Grant permissions**, select **Open BigQuery Page**.
-2. Log into the GCP console and go to the BigQuery page.
-3. Select your project in the left panel.
-4. Select your dataset. For more information on creating a dataset, see [Creating datasets](https://cloud.google.com/bigquery/docs/datasets).
+You can enable authentication for your GCP account via
 
-   <DocImage path={require('./static/gcp_billing_export_resource.png')} width="50%" height="50%" title="Click to view full size image" />
+- Service Account with Custom Role: Created with custom permissions
+- OIDC Authentication: Federated access with no stored credentials
 
-5. Select the **more actions** icon (three vertical dots) against the dataset, and then select **Share.**
+#### OIDC Authentication
 
-   <DocImage path={require('./static/gcp-dataset-share.png')} width="50%" height="50%" title="Click to view full size image" />
+:::info 
+This feature is behind a Feature Flag `CCM_ENABLE_OIDC_AUTH_GCP`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
 
-6. In **Dataset permissions**, in **Add Principals**, enter the Harness service account as a member.  
-    Copy the service account detail from Harness. The service account is generated dynamically for your account.
+OIDC authentication allows secure access your billing data and perform cost optimization without storing credentials. 
 
-   <DocImage path={require('./static/Adding-principals-gcp.png')} width="50%" height="50%" title="Click to view full size image" />
+To connect to GCP with OIDC, you must configure an [OIDC identity provider](https://cloud.google.com/iam/docs/workload-identity-federation-with-other-providers) in GCP and connect the service account with relevant permissions that Harness will use to operate in GCP. Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider.
 
-7. In **Select a role**, select **BigQuery Data Viewer**, and then select **Add**.
-8. Select **Done**.  
-    When you are done, the following screen is displayed:
+- Harness OIDC Issuer provider endpoint: `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID>`. See below for more details about the Issuer URL format, depending on the environment cluster for your Harness Account.
 
-   <img src={dataset_permissions} alt="Entering the dataset name." height="50%" width="50%" />
+- OIDC audience: `https://iam.googleapis.com/projects/<GCP_PROJECT_NUMBER>/locations/global/workloadIdentityPools/<POOL_ID>/providers/<WORKLOAD_PROVIDER_ID>`
 
-:::info
+**Issuer URL:**
+
+The Issuer Format will need to be modified depending on the environment cluster in which your account resides. In `Account Settings` -> `Account Details`, you can see the Harness Cluster that your account resides in.
+
+The Issuer URL format should follow `https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>.`
+
+The hostname should be as follows, even if a Vanity URL is set up for an account.
+
+| Cluster | HostName |
+|---------|----------|
+| Prod1/Prod2 | app.harness.io |
+| Prod3 | app3.harness.io |
+| Prod0/Prod4 | accounts.harness.io |
+| EU clusters | accounts.eu.harness.io |
+
+Follow the steps on the **Authentication** page to complete OIDC authentication:
+1. Configure the federation settings and service account in your GCP console. Read more about it: [Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation)
+
+2. Enter the following inputs from your GCP configuration:
+- Workload Pool ID: This identifies the workload pool created in GCP, and it is the Pool ID value. To get the Workload Pool ID, go to [Manage workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools).
+- Provider ID This identifies the OIDC provider configured in GCP, and it is the Provider ID value. To get the Provider ID, go to [Manage workload identity pool providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#manage-providers).
+- Project Number: The project number of the GCP project that is used to create the workload identity federation. To get the Project number, go to [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
+- Service Account Email: This is the service account that was linked to the workload identity pool in the last step.
+
+If AutoStopping Granular Rules are selected, you will be prompted to generate commands. Click on **Generate commands for step 3** and run the commands listed on screen to create and assign the custom role with permissions for your selected features.
+
+### Step 5: Grant Permissions
+
+Yo u can see all the steps you need to do and grant relevant permissions. Follow the instructions listed on screen to grant permissions.
+
+### Step 6: Connection Test
+
+The connection is validated and verified in this step. After successfully testing the connection, select **Finish**.
+
+Your connector is now listed in the **Connectors**.
+
+## Individual Feature Permissions
+
+### Governance Permissions
+
+To configure permissions for Cloud Governance features:
+
+1. Navigate to **IAM & Admin** in the GCP console.
+2. If authentication is done via service account:
+   - Search for your service account in the principals list
+   - Click **Edit Principal**
+   - Add the [**Viewer** role](https://cloud.google.com/iam/docs/understanding-roles#basic) (`roles/viewer`) from the Basic category
+   - For automated actions, grant additional permissions as required by your governance policies
+3. Click **Save** to apply the changes.
+
+### AutoStopping Permissions
 
 To add AutoStopping permissions:
 
@@ -172,37 +215,196 @@ To add AutoStopping permissions:
 
 When a connector is created, a service account is created in Harness' GCP project that is unique for each customer. This service account is created only once per customer. You need to assign two roles to this service account in the GCP project that they are connecting to Harness CCM:
 
-* **Compute Admin** - Assign this role to Harness' service account. This allows Harness CCM to be able to perform AutoStopping actions such as starting and stopping of VMs and Instance groups. Also, GCP AutoStopping involves the usage of a custom VM with configurations as per your preference (instance type configuration). This requires access to create and launch a VM in which a custom load balancer for AutoStopping is installed.
-* **Secret Manager Secret Accessor** - Assign this role if you intend to use TLS/HTTPS in the routing configurations of the AutoStopping Rule. You need to upload the certificate's private key and the public certificate as secrets in GCP. Harness needs access to these secrets to be able to configure the custom load balancer. This role provides access to only the particular versions of the secrets, provided the complete path is entered during the creation of the custom load balancer. It does not let Harness view or list all the secrets in your GCP project. You can also add additional protection in the GCP on your end to provide conditional access to secrets as necessary. For example, provide access to Harness' service account to versions of only those secrets with a naming convention like "Harness-".
+* [**Compute Admin**](https://cloud.google.com/iam/docs/roles-permissions/compute#compute.admin) - Assign this role to Harness' service account. This allows Harness CCM to be able to perform AutoStopping actions such as starting and stopping of VMs and Instance groups. Also, GCP AutoStopping involves the usage of a custom VM with configurations as per your preference (instance type configuration). This requires access to create and launch a VM in which a custom load balancer for AutoStopping is installed.
+
+* [**Secret Manager Secret Accessor**](https://cloud.google.com/iam/docs/roles-permissions/secretmanager#secretmanager.secretAccessor) - Assign this role if you intend to use TLS/HTTPS in the routing configurations of the AutoStopping Rule. You need to upload the certificate's private key and the public certificate as secrets in GCP. Harness needs access to these secrets to be able to configure the custom load balancer. This role provides access to only the particular versions of the secrets, provided the complete path is entered during the creation of the custom load balancer. It does not let Harness view or list all the secrets in your GCP project. You can also add additional protection in the GCP on your end to provide conditional access to secrets as necessary. For example, provide access to Harness' service account to versions of only those secrets with a naming convention like "Harness-".
 :::
 
-9. Select **Continue** in Harness.
+#### Granular Permissions for AutoStopping
 
-### Cloud asset governance rules
+<DocImage path={require('./static/granular-gcp-one.png')} width="90%" height="90%" title="Click to view full-size image" />
 
-:::info
+#### Compute Engine Virtual Machines
 
-Now, Harness CCM supports CAG for GCP.
+<details>
+<summary><b>Schedules only</b></summary>
 
-<DocImage path={require('./static/GCP-connector-CAG.png')} width="60%" height="60%" title="Click to view full size image" />
+```
+// List VMs
+compute.instances.list
 
-Regions for Asset Governance Rules for GCP are not available in drop-down menu but can be configured manually in the YAML.
+// Tag VM
+compute.instances.setLabels
 
-:::
+// Get region information to list zones
+compute.regions.get
 
-### Connection Test
+// List regions
+compute.regions.list
 
-The connection is validated and verified in this step. After successfully testing the connection, select **Finish**.
+// Required while waiting to complete VM operations, for example stop operation
+compute.zoneOperations.get
 
-<DocImage path={require('./static/set-up-cost-visibility-for-gcp-12.png')} width="50%" height="50%" title="Click to view full size image" />
+// Stop VM
+compute.instances.stop
 
-Your connector is now listed in the **Connectors**.
+// Start VM
+compute.instances.start
+```
 
-<DocImage path={require('./static/set-up-cost-visibility-for-gcp-13.png')} width="50%" height="50%" title="Click to view full size image" />
+</details>
 
+<details>
+<summary><b>with AutoStopping Proxy</b></summary>
 
+```
+// List networks
+compute.networks.list
 
-### Next Steps
+// List machine types
+compute.machineTypes.list
 
-* [Analyze Cost for GCP ​Using Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-gcp-using-perspectives)
-* [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives)
+// List subnets
+compute.subnetworks.list
+
+// List security groups
+compute.firewalls.list
+
+// Create address
+compute.addresses.create
+
+// Get address
+compute.addresses.get
+
+// create disk
+compute.disks.create
+
+// Use sub network
+compute.subnetworks.use
+
+// Create proxy VM
+compute.instances.create
+
+// use static IP
+compute.subnetworks.useExternalIp
+
+// Use address
+compute.addresses.use
+
+// Set VM metadata
+compute.instances.setMetadata
+
+// Set tags
+compute.instances.setTags
+
+// Delete address
+compute.addresses.delete
+
+// Delete proxy VM
+compute.instances.delete
+```
+
+</details>
+
+#### Instance Groups
+
+<details>
+<summary><b>Schedules only</b></summary>
+
+```
+// Get region information to list zones
+compute.regions.get
+
+// List regions
+compute.regions.list
+
+// list instance groups
+compute.instanceGroups.list
+
+// list managed instance groups
+compute.instanceGroupManagers.list
+
+// get instance groups details
+compute.instanceGroups.get
+
+// Get instances in instance groups
+compute.instances.get
+
+// List autoscalers
+compute.autoscalers.list
+
+// Get autoscaler details
+compute.autoscalers.get
+
+// For updating autoscaler configurations. This is needed during warm up and cool down
+compute.autoscalers.update
+
+// List VMS in instance group
+compute.instances.list
+
+// Deleting VMs from managed instance groups during cool down
+compute.instances.delete
+
+// Get status of operations
+compute.globalOperations.get
+
+// Get status of operations
+compute.regionOperations.get
+
+// Get status of operations
+compute.zoneOperations.get
+```
+
+</details>
+
+<details>
+<summary><b>with AutoStopping Proxy</b></summary>
+
+```
+// List networks
+compute.networks.list
+
+// List machine types
+compute.machineTypes.list
+
+// List subnets
+compute.subnetworks.list
+
+// List security groups
+compute.firewalls.list
+
+// Create address
+compute.addresses.create
+
+// Get address
+compute.addresses.get
+
+// create disk
+compute.disks.create
+
+// Use sub network
+compute.subnetworks.use
+
+// Create proxy VM
+compute.instances.create
+
+// use static IP
+compute.subnetworks.useExternalIp
+
+// Use address
+compute.addresses.use
+
+// Set VM metadata
+compute.instances.setMetadata
+
+// Set tags
+compute.instances.setTags
+
+// Delete address
+compute.addresses.delete
+
+// Delete proxy VM
+compute.instances.delete
+```
+
+</details>

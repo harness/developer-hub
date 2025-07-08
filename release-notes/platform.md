@@ -128,6 +128,43 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## July 2025
+
+### Version 1.95.x <!--July 01, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue in the Create [IP Allowlist](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/) screen where pasting text into the Name field would duplicate the content. For example, pasting `ABC 1` would incorrectly result in `ABC 1ABC 1`. [PL-63331]
+
+#### New Feature and Enhancement 
+
+- Delegates are now tagged with the appropriate scope (Account/Organization/Project) for all Assessment types in the Delegate selection logs in a pipeline. [PL-49165]
+
+## June 2025
+
+### Version 1.94.x <!--June 17, 2025-->
+
+#### Fixed issues
+
+- Previously, selecting a higher-level Secret Manager (like Account scope) without access to lower levels (like Organization scope) caused the Secret Manager screen to keep loading. This is now fixed, and users can select and use Secret Managers without issues. [PL-63165]
+
+#### New Feature and Enhancement 
+
+- Added support for managing access control for [connectors through tags](https://developer.harness.io/docs/platform/connectors/manage-access-control-for-connectors). This feature is currently behind the feature flag: `PL_TAG_BASED_ACCESS_TO_CONNECTORS`. [PL-43468]
+
+### Version 1.93.x <!--June 10, 2025-->
+
+#### Fixed issues
+
+- Resolved missing "Variable" option in the Audit Filter dropdown list. [PL-63195]
+- Navigating to a role or resource group from user role bindings no longer leads to a blank page. [PL-63154]
+- Code Repository resource group now appears correctly in the resource group list. [PL-63120]
+
+#### New Feature and Enhancement 
+
+- Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance. [PL-62957]
+- Added support for [Custom Notifications](https://developer.harness.io/docs/platform/templates/customized-notification-template/) for all remaining channels: Email, Slack, Microsoft Teams, Datadog, PagerDuty.
+
 ## May 2025
 
 ### Version 1.91.x <!-- May 27, 2025-->
@@ -391,6 +428,8 @@ The following deprecated API endpoints are longer supported:
 - Upgraded the `org.asynchttpclient_async-http-client` to version 3.0.1. (PL-59246)
 
 - Upgraded the delegate base image from `ubi8-minimal:8.10` to `ubi9-minimal:9.4`. (PL-58376)
+
+- NG Delegates have been updated to exclude the use of delegate profiles and scopes when retrieving implicit selectors, ensuring more consistent behavior. (PL-55697)
 
 ## December 2024
 ### Version 1.69.x<!-- December 12, 2024 -->
