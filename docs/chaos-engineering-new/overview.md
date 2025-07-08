@@ -73,6 +73,6 @@ Ready to begin your chaos engineering journey? Explore the following sections:
 ## Next Steps
 
 Once you understand the basics, you can:
-- Explore our [Concepts](./concepts) section for deeper technical knowledge
+- Explore our [Key Concepts](./key-concepts) section for deeper technical knowledge
 - Follow our [Tutorials](./tutorials) for hands-on experience
-- Check out [Integrations](./integrations) to connect with your existing tools
+- Check out [Integrations](./integrations/cicd/jenkins) to connect with your existing tools

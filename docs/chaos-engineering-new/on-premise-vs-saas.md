@@ -145,7 +145,7 @@ Both deployments support the same fault types across Linux, Kubernetes, Windows,
 
 ### Self-Managed Enterprise Edition
 1. **Contact Sales**: Discuss licensing and requirements
-2. **Plan Infrastructure**: Review [system requirements](./on-premises-smp)
+2. **Plan Infrastructure**: Review [system requirements](./guides/on-premises-smp)
 3. **Install Platform**: Deploy using Helm charts
 4. **Configure Access**: Set up authentication and networking
 5. **Connect ChaosHub**: Request Enterprise ChaosHub access if needed

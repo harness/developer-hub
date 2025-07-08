@@ -623,6 +623,6 @@ By following this guide, you have successfully restricted chaos engineering to s
 1. **[Security Templates](./security-templates)** - Implement additional security policies
 2. **[Pod Security Policies](./security-templates/psp)** - Add pod-level security controls
 3. **[OpenShift Security](./security-templates/openshift-scc)** - OpenShift-specific configurations
-4. **[Monitoring and Auditing](../concepts/observability)** - Implement comprehensive monitoring
+4. **[Monitoring and Auditing](../integrations/cicd/jenkins)** - Implement comprehensive monitoring
 
 Regular review and updates of namespace permissions ensure your chaos engineering practices remain secure and aligned with your evolving security requirements.

@@ -112,9 +112,9 @@ All CE features and platforms supported in [Self-Managed Enterprise Edition](#se
 ## Next Steps
 
 1. **[Choose your deployment](./on-premise-vs-saas)** - Compare SaaS vs Self-Managed options
-2. **[Learn key concepts](./concepts)** - Understand chaos engineering fundamentals
+2. **[Learn key concepts](./key-concepts)** - Understand chaos engineering fundamentals
 3. **[Start with tutorials](./tutorials)** - Run your first chaos experiment
-4. **[Explore integrations](./integrations)** - Connect with your existing tools
+4. **[Explore integrations](./integrations/cicd/jenkins)** - Connect with your existing tools
 
 :::tip Ready to get started?
 Check out our **[Get Started](./get-started)** guide to begin your chaos engineering journey.

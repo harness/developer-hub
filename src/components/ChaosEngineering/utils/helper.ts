@@ -59,7 +59,8 @@ const getCategoryDetails = (category: string): Record<string, string> => {
       setDetails(FaultCategory.SSH);
       break;
     case FaultCategory.BYOC:
-      setDetails(FaultCategory.BYOC);
+      details.icon = `${path}/${FaultCategory.BYOC}.svg`;
+      details.link = `/docs/chaos-engineering-new/faults/custom-faults/byoc/`;
       break;
     default:
       details.icon = `${path}/default.svg`;

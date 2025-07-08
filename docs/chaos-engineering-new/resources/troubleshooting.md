@@ -150,7 +150,7 @@ If the Discovery Agent is unable to discover services:
 
 ### Environment Variable and Secret Usage in Command Probe Source Mode
 
-You can use secrets and environment variables in the [**source mode**](/docs/chaos-engineering-new/concepts/) of the command probe using the manifest in the following manner:
+You can use secrets and environment variables in the **source mode** of the command probe using the manifest in the following manner:
 
 ```yaml
 source:
@@ -368,7 +368,7 @@ If you try to access the Harness Self-Managed Enterprise Edition (SMP) portal ov
 
 ### Status Timeout Check Issue
 
-For faults such as [node network loss](/docs/chaos-engineering-new/concepts/), [kubelet service kill](/docs/chaos-engineering-new/concepts/), the default status check timeout is 180 seconds. If you have specified your chaos experiment duration to be less than 180 seconds, the chaos experiment can fetch the status of the helper pod once the duration is complete, and this will be within the timeout threshold. If the duration of the experiment is more than 180 seconds, the status check times out even before the fault completes, and results in the fault erroring out.
+For faults such as node network loss, kubelet service kill, the default status check timeout is 180 seconds. If you have specified your chaos experiment duration to be less than 180 seconds, the chaos experiment can fetch the status of the helper pod once the duration is complete, and this will be within the timeout threshold. If the duration of the experiment is more than 180 seconds, the status check times out even before the fault completes, and results in the fault erroring out.
 
 **Solution:** Increase the status check timeout duration so that the experiment completes and then fetching the status of helper pods.
 
@@ -403,15 +403,15 @@ probe:
 
 ### Integration With Pipeline
 
-Harness CE platform provides [native integration for chaos experiments with the CD module](/docs/chaos-engineering-new/integrations/). We currently don't support the integration of Windows chaos experiments with Harness CD pipelines.
+Harness CE platform provides [native integration for chaos experiments with the CD module](/docs/chaos-engineering-new/integrations/cicd/jenkins). We currently don't support the integration of Windows chaos experiments with Harness CD pipelines.
 
 ### GameDay Support
 
-Harness CE currently offers [GameDay](/docs/chaos-engineering-new/concepts/) support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. However, GameDay support for Windows chaos experiments is not yet available.
+Harness CE currently offers [GameDay](../guides/gamedays) support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. However, GameDay support for Windows chaos experiments is not yet available.
 
 ### Inclusion in ChaosGuard Policies
 
-[ChaosGuard](/docs/chaos-engineering-new/concepts/) is a Harness CE feature that enhances the security and control of chaos experiments. Currently, ChaosGuard policies don't support Windows chaos experiments.
+[ChaosGuard](../guides/governance/rbac) is a Harness CE feature that enhances the security and control of chaos experiments. Currently, ChaosGuard policies don't support Windows chaos experiments.
 
 ### Scheduled or Cron Experiments
 
@@ -431,6 +431,6 @@ For further assistance, please refer to the [documentation](/docs/chaos-engineer
 
 ## Additional Resources
 
-- [Security Best Practices](/docs/chaos-engineering-new/security/)
-- [Integration Guides](/docs/chaos-engineering-new/integrations/)
-- [Concepts and Architecture](/docs/chaos-engineering-new/concepts/)
+- [Key Concepts](../key-concepts)
+- [Integration Guides](../integrations/cicd/jenkins)
+- [Security Best Practices](../security/)

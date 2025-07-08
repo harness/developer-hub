@@ -38,15 +38,22 @@ export default function ChaosEngineeringNew() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Chaos Engineering helps you test how resilient your applications are by intentionally breaking things in a controlled way.
+              Chaos Engineering is the practice of proactively introducing faults into your applications or infrastructure and test the resilience of business services. Developers, QA teams, Performance test teams and SREs run chaos experiments to measure the resilience of the systems and find the weaknesses in that process.
             </p>
             <p>
-            Instead of waiting for your systems to fail unexpectedly in production (which always happens at the worst possible time), you deliberately introduce small failures during normal operations to see how your applications respond. This might mean temporarily shutting down a database, adding network delays, or consuming extra CPU resources.
-              {/* Build confidence in your system's resilience with Harness Chaos Engineering. 
-              Proactively identify weaknesses through controlled chaos experiments, validate 
-              system reliability, and ensure your applications can withstand real-world failures. 
-              Leverage advanced fault injection, automated experiments, and comprehensive monitoring 
-              to create truly resilient systems. */}
+              Harness Chaos Engineering provides end-to-end tooling to resilience testing via the chaos engineering principles. Enterprises can build highly scalable resilience testing practice with Harness because of the following capabilities:
+            </p>
+            <ul>
+              <li><strong>Experiments</strong> - faults, probes and actions</li>
+              <li><strong>ChaosGuard</strong> for governance</li>
+              <li><strong>Delegates</strong> - scalability</li>
+              <li><strong>Connectors</strong> for integration</li>
+              <li><strong>Resilience management</strong> - Resilience scores, coverages, weaknesses and mitigation plans</li>
+              <li><strong>AI Powered</strong>: Recommendations</li>
+              <li><strong>MCP Tools</strong> for AI Agent communication and simplifying the end user experience</li>
+            </ul>
+            <p>
+              In addition, the Harness platform provides the required enterprise capabilities like RBACs, SSO, logs and auditing making the entire solution scalable and easy to implement.
             </p>
             <div className={styles.illustrationContainer}>
               <img

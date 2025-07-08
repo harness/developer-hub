@@ -564,4 +564,4 @@ For a complete example, check out the [Jenkins demo repository](https://github.c
 - Implement chaos testing in your release process
 - Consider using Jenkins Configuration as Code (JCasC)
 
-For more information, see the [Jenkins Pipeline documentation](https://www.jenkins.io/doc/book/pipeline/) and [Harness CE CLI reference](/docs/chaos-engineering-new/reference/cli-reference).
+For more information, see the [Jenkins Pipeline documentation](https://www.jenkins.io/doc/book/pipeline/) and [Harness CE CLI reference](../../reference/).

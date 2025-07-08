@@ -353,7 +353,7 @@ echo "✅ Resource check completed"
 ## Additional Resources
 
 - [SMP Installation Guide](/docs/self-managed-enterprise-edition/install/)
-- [Kubernetes Requirements](/docs/self-managed-enterprise-edition/install/kubernetes-cluster-setup)
+- [Helm Installation Guide](/docs/self-managed-enterprise-edition/install/install-using-helm)
 - [Security Best Practices](/docs/chaos-engineering/security/)
 - [Troubleshooting Guide](/docs/chaos-engineering/troubleshooting/)
 

@@ -175,8 +175,8 @@ Now that you understand these key concepts, you can:
 
 1. **Set Up Your Environment**: Create your first [environment and chaos infrastructure](./get-started)
 2. **Run Your First Experiment**: Follow our [tutorials](./tutorials) to execute a simple chaos experiment
-3. **Explore ChaosHub**: Browse the [Enterprise ChaosHub](./concepts) for available fault types
-4. **Learn Advanced Features**: Discover [integrations](./integrations) and governance capabilities
+3. **Explore ChaosHub**: Browse the [Enterprise ChaosHub](./faults/chaos-faults) for available fault types
+4. **Learn Advanced Features**: Discover [integrations](./integrations/cicd/jenkins) and governance capabilities
 
 ## Next Steps
 

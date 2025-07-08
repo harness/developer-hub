@@ -11,7 +11,7 @@ Welcome to Harness Chaos Engineering! This guide will help you set up your first
 ## Before You Begin
 
 Review the following:
-- [All about chaos engineering](/docs/chaos-engineering-new/concepts)
+- [All about chaos engineering](./key-concepts)
 - [What's supported](/docs/chaos-engineering-new/whats-supported)
 - Ensure you have access to a Kubernetes cluster, Linux machine, or cloud environment
 
@@ -206,15 +206,15 @@ To access onboarding, go to **Chaos Engineering** → **Overview** → **Select 
 Congratulations! You've successfully run your first chaos experiment. Here's what to explore next:
 
 ### Expand Your Chaos Engineering Practice
-1. **[Explore More Faults](/docs/chaos-engineering-new/faults)** - Try different types of chaos faults
+1. **[Explore More Faults](./faults/chaos-faults)** - Try different types of chaos faults
 2. **[Advanced Probes](/docs/chaos-engineering-new/guides/probes)** - Set up comprehensive monitoring
 3. **[GameDays](/docs/chaos-engineering-new/guides/gamedays)** - Organize team chaos engineering events
-4. **[CI/CD Integration](/docs/chaos-engineering-new/guides/pipelines)** - Automate chaos testing in your pipelines
+4. **[CI/CD Integration](./integrations/cicd/jenkins)** - Automate chaos testing in your pipelines
 
 ### Learn Best Practices
 1. **[Key Concepts](/docs/chaos-engineering-new/key-concepts)** - Understand chaos engineering fundamentals
 2. **[Security](/docs/chaos-engineering-new/security)** - Implement secure chaos engineering practices
-3. **[Governance](/docs/chaos-engineering-new/guides/governance)** - Set up proper controls and policies
+3. **[Governance](./guides/governance/rbac)** - Set up proper controls and policies
 
 ### Get Help and Support
 - **[Troubleshooting Guide](/docs/chaos-engineering-new/resources/troubleshooting)** - Common issues and solutions

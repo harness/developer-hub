@@ -235,7 +235,7 @@ Every fault in the Enterprise ChaosHub publishes required permissions:
 - **Alternatives**: Lower-privilege alternatives where available
 
 **Common Permission Templates:**
-- **[AWS Resource Faults](../use-harness-ce/chaos-faults/aws/security-configurations/policy-for-all-aws-faults)**: Comprehensive AWS permissions
+- **[AWS Resource Faults](../faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults)**: Comprehensive AWS permissions
 - **Kubernetes Pod Faults**: Container and pod-level permissions
 - **Network Faults**: Network policy and connectivity permissions
 - **Resource Stress Faults**: System resource access permissions
