@@ -56,7 +56,7 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
-* **Image:** Enter your image details with a tag or digest in the format `<registry-login-server>/<repository>:<tag>` or `<registry-login-server>/<repository>@sha256:<digest>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where   `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/acr:test`
+* **Image:** Enter your image details with a tag or digest in the format `<registry-login-server>/<repository>:<tag>` or `<registry-login-server>/<repository>@sha256:<digest>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/acr:test`
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
 

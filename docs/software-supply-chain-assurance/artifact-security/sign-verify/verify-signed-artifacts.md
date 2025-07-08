@@ -30,9 +30,9 @@ The artifact verification step ensures the authenticity of the signed artifact b
 
 ## Artifact Verification step configuration
 
-The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key. In the artifact signing step, if you chosen not to push the `.sig` file to the registry, then for the artifact verification `.sig` file will instead be pulled from the Harness database . This process ensures that the artifact was signed by a trusted entity, thereby confirming its integrity and authenticity.
+The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key. In the artifact signing step, if you have chosen not to push the `.sig` file to the registry, then for the artifact verification `.sig` file will instead be pulled from the Harness database. This process ensures that the artifact was signed by a trusted entity, thereby confirming its integrity and authenticity.
 
-Artifact Verification step supports both [container](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#container-images) as well as [non-container images](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#non-container-images).
+Artifact Verification step supports both [container](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#container-images) and [non-container images](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts#non-container-images).
 
 <DocImage path={require('./static/artifact-verify.png')} width="50%" height="50%" />
 
@@ -76,7 +76,7 @@ Follow the instructions below to configure the Artifact Verification step.
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
-* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where   `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
+* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
@@ -130,7 +130,7 @@ Non-container images can be verified using **Cosign** or **Cosign with Secret Ma
 Once the artifact is signed and verified, you will be able to see the Artifact Integrity Verification status from the Artifacts Overview tab.
 
 
-* If the signed artifact is successfully verified using the public key, the verification status is displayed as Passed, along with the links to the corresponding Rekor log entry and the execution results.
+* If the signed artifact is successfully verified using the public key, the verification status is displayed as Passed, along with the links to the corresponding rekor log entry and the execution results.
 
 * If the verification fails, the status is displayed as Failed.
 

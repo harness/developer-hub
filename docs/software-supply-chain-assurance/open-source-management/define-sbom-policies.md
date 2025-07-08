@@ -115,7 +115,7 @@ does_match_license(license, rules) if {
 
 ## Supported Operators
 
-In this section you can find the opreators supported by SBOM OPA policies
+In this section you can find the operators supported by SBOM OPA policies
 
 ### String Operators
 ```

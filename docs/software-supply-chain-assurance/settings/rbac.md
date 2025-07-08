@@ -55,11 +55,11 @@ To set roles and permissions at the Project level, open the Project Settings, an
 
 ### Creating and Managing Resource Groups
 
-Here's how you can create and manage resource groups for the remediation tracker at the account level. Additionally,  you can refer to [Manage Resource Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/) document to learn more.
+Here's how you can create and manage resource groups for the remediation tracker at the account level. Additionally, you can refer to [Manage Resource Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/) document to learn more.
 
 1. Navigate to **Account Settings** > **Access Control** > **Resource groups** within your Harness Account.
 2. Add a new resource group or select an existing one to modify.
-3. Set the "Resource Scope" accordinlgy if you are creating one.
+3. Set the "Resource Scope" accordingly if you are creating one.
 4. Within the Resources, select Supply Chain Assurance.
 
 

@@ -86,7 +86,7 @@ Navigate to the **Code Repositories** section to view your repositories, and the
 
 
 ## Setup CI/CD SPM on Harness pipelines
-From the **Get started** page, click on **Harness** under available integrations, and select **Enable** on the CI/CD Security options. This will setup the CI/CD SPM on your Harness pipelines.
+From the **Get started** page, click on **Harness** under available integrations, and select **Enable** on the CI/CD Security options. This will set up the CI/CD SPM on your Harness pipelines.
 
 <DocImage path={require('./static/get-started-harness-01.png')} width="100%" height="100%" title="Click to view full size image" />
 

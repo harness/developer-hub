@@ -43,7 +43,7 @@ You can use **SBOM Orchestration** step to generate an SBOM in either the **Buil
 
 :::
 
-Using SBOM Orchestration step you can generate the SBOM for both Container images and and Repositories. Follow the steps to configure the fields for each supported type.
+Using SBOM Orchestration step you can generate the SBOM for both Container images and Repositories. Follow the steps to configure the fields for each supported type.
 
 * **Name:** Enter a name for the step.
 
