@@ -16,7 +16,7 @@ Harness can provision any resource that is supported by a Terraform [provider o
 
 :::note
 
-Looking for how-tos? See [Terraform how-tos](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-how-to).
+Looking for how-tos? See [Terraform how-tos](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-how-tos).
 
 :::
 
