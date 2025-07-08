@@ -42,7 +42,7 @@ The SCS module supports these policy types:
 
 * **Deny list policies:** Define components, or combinations of component attributes, that are not allowed. If an artifact includes a component that is part of the deny list, the artifact's policy evaluation fails.
 * **Allow list policies:** Define components or combinations of component attributes that are allowed. If an artifact includes a component that *is not* part of the allow list, the artifact's policy evaluation fails.
-* **Deny list and Allow list policies:** Policies with with both deny list and allow list.
+* **Deny list and Allow list policies:** Policies with both deny list and allow list.
 
 ### Policy enforcement
 

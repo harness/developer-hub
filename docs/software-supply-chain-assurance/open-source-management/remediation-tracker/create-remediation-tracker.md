@@ -22,10 +22,10 @@ Creating the remediation tracker can be done in a few clicks:
 
 
 1. Select ‘Remediation Tracker’ from the left-side panel in the dashboard.
-2. Click ‘+ New Remediation Tracker’ at the top-right corner.
+2. Click ‘+ New Remediation Tracker’ in the top-right corner.
 
 
-![create remediation tracker](./static/create-remediation.png "create remediation tracker")
+![Create remediation tracker](./static/create-remediation.png "create remediation tracker")
 
 
 4. Configure the following details.
@@ -103,7 +103,7 @@ It's important to note that once an artifact is excluded, it cannot be re-added 
 
 ## Creating tickets from the tracker
 
-In the tracker, you can easily create Jira tickets for individual artifacts. Simply click the 'Create Ticket' button located to the right of the artifact list item. This will open options to configure the ticket details, with the artifact details automatically populating the Jira ticket creation fields. Similarly, you can create tickets at the tracker level by clicking the 'Create Ticket' button at the top right corner of the screen. However, before proceeding, ensure that your Jira account is connected to Harness using the Harness Jira connector. For more information on this, you can refer to the [Connect to Jira document](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira/).  
+In the tracker, you can easily create Jira tickets for individual artifacts. Simply click the 'Create Ticket' button located to the right of the artifact list item. This will open options to configure the ticket details, with the artifact details automatically populating the Jira ticket creation fields. Similarly, you can create tickets at the tracker level by clicking the 'Create Ticket' button in the top right corner of the screen. However, before proceeding, ensure that your Jira account is connected to Harness using the Harness Jira connector. For more information on this, you can refer to [Connect to Jira document](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira/).  
 
 <DocImage path={require('./static/create-ticket-in-jira.png')} width="100%" height="80%" />
 

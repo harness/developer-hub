@@ -24,7 +24,7 @@ As artifacts pass through multiple stages in the software lifecycle, ensuring th
 Currently, this feature is behind the feature flag `SSCA_ARTIFACT_SIGNING`. Contact Harness Support to enable the feature.
 ::: -->
 
-## Artifact Signing process in SCS
+## Artifact Signing in SCS
 
 For signing container images, the Artifact Signing step retrieves the artifact from the container registry, signs it using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key from a key pair, and generates a signature file `.sig`. Once the signature is successfully generated, it is pushed back to the same container registry alongside the artifact. This signature file is essential for verifying the artifact's integrity and authenticity. For more details on artifact verification, refer to the [Artifact Verification documentation](/docs/software-supply-chain-assurance/artifact-security/sign-verify/verify-signed-artifacts)
 
@@ -101,7 +101,7 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
-* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where   `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
+* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
@@ -160,7 +160,7 @@ Non-container images can be signed using **Cosign** or **Cosign with Secret Mana
 
 ## View Signed Artifacts
 
-You can easily access the signed artifact details from the Artifacts Overview tab.This section shows the signature and who signed the artifact.Additionally, you can also find the artifact signing as an event in the Chain of Custody, where a new entry is logged every time you sign an artifact.This entry includes a link to the execution results and rekor log entry, allowing you to track the signing activity and cross-check the details.
+You can easily access the signed artifact details from the Artifacts Overview tab. This section shows the signature and who signed the artifact. Additionally, you can also find the artifact signing as an event in the Chain of Custody, where a new entry is logged every time you sign an artifact.This entry includes a link to the execution results and rekor log entry, allowing you to track the signing activity and cross-check the details.
 
 <DocImage path={require('./static/artifact-signing-data.png')} width="100%" height="100%" />
 

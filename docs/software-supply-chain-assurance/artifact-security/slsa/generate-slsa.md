@@ -90,7 +90,7 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
-* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format  `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
+* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
@@ -287,7 +287,7 @@ When you run a pipeline with SLSA generation enabled, Harness SCS:
 * Generates and signs an attestation using the provided key and password.
 * Stores the SLSA Provenance in Harness and uploads the `.att` file to your container registry alongside the image.
 
-The signed attestation is stored, as an `.att` file, in the artifact repository along with the image. You can also find the SLSA Provenance on the **Supply Chain** tab on the Pipeline Execution details page in Harness.You can download your SLSA provenance and find the status of the **SLSA verification step**. The overview section presents a cumulative count of all Success and failure cases.
+The signed attestation is stored, as a `.att` file, in the artifact repository along with the image. You can also find the SLSA Provenance on the **Supply Chain** tab on the Pipeline Execution details page in Harness.You can download your SLSA provenance and find the status of the **SLSA verification step**. The overview section presents a cumulative count of all Success and failure cases.
 
 
 <DocImage path={require('./static/scs-slsa-verification.png')} width="100%" height="100%" />

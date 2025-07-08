@@ -33,7 +33,7 @@ Policies can be created at the account, organization, and project levels, this g
 
 ![SBOM policy create step](./static/som-policy-create.png)
 
-3. You can then browse the library of sample policies by searching for "sbom" and select the appropriate option according to your needs.
+3. You can then browse the library of sample policies by searching for **SBOM** and select the appropriate option according to your needs.
 
 
 ![SBOM Sample policies]( ./static/sample-policies-sbom.png "SBOM Sample policies")

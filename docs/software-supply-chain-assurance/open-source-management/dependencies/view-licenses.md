@@ -59,14 +59,14 @@ Follow the steps below to view the License-Report for the artifacts. You can use
 
 :::tip
 
-Whenever you apply a new filter, make sure to click on **Refresh** icon at the top-right corner to pull the latest data onto the dashboard.
+Whenever you apply a new filter, make sure to click on **Refresh** icon in the top-right corner to pull the latest data onto the dashboard.
 
 :::
 
-5) Click on ellipsis which is on the top right corner of your dashboard for more actions.
+5) Click on ellipsis which is in the top right corner of your dashboard for more actions.
 
 * **Clear Cache & Refresh:** Performs a hard refresh, clears the cache, and updates the dashboard with the latest changes.
-* **Download:** Download the license report in any of the format (PDF,CSV).
+* **Download:** Download the license report in any of the format (PDF, CSV).
 * **Schedule Delivery:** Set up automatic delivery of your license report (daily, weekly, or monthly) so you don’t have to check the dashboard manually.
 
 <DocImage path={require('./static/apply-filters-dashboard.png')} width="80%" height="100%" title="Click to view full size image" />
