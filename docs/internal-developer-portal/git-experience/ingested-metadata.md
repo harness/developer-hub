@@ -1,0 +1,59 @@
+---
+title: Visualizing Ingested Metadata in the YAML Editor
+description: Understand how Harness IDP displays dynamic metadata ingested via API without writing it to Git, using a side panel in the YAML editor.
+sidebar_position: 2
+keywords:
+  - Harness IDP Git integration
+  - Ingested metadata in YAML
+  - Visualize non-Git metadata
+  - API-based metadata ingestion
+  - Dynamic service metadata view
+  - GitX powered YAML editor
+  - Developer portal metadata insights
+  - Catalog ingestion metadata panel
+  - Metadata editing restrictions
+tags:
+  - GitX
+  - Harness IDP
+  - Developer Experience
+  - Metadata Ingestion
+  - YAML Editing
+  - Service Metadata
+---
+# Ingested Metadata in YAML Editor
+
+In Harness IDP 2.0, the Git Experience (GitX) enables a seamless flow between the YAML editor in the UI and Git repositories. Entities such as services, systems, and resources are defined and version-controlled via YAML files stored in Git. However, many metadata properties—such as team ownership, versioning information, or quality scores—are frequently updated by external systems. These properties are ingested dynamically using the Ingestion API but are intentionally not written to the Git-backed YAML.
+
+This is to avoid unnecessary commit noise and ensure live data can be attached to entities without cluttering Git history.
+
+In the YAML editor, Harness now provides a way to view this ingested metadata without misleading users into thinking it’s Git-tracked. These properties are shown in a dedicated panel and not embedded directly within the YAML text.
+
+The editor maintains a clean separation between Git-synced definitions and runtime metadata, while still offering full visibility to users.
+
+Users can click the **Ingested Properties** button in the editor to open a side panel that shows dynamic metadata currently attached to the entity. This metadata appears in a YAML-like format but is read-only and is not committed to the Git repository.
+
+### Behavior Summary
+
+- Ingested metadata is attached via the Ingestion API and appears in the IDP UI.
+- These properties do not appear in the Git YAML and are not committed.
+- A side panel allows users to view them alongside the YAML editor.
+- A static notice is shown to clarify that the data is not stored in Git.
+- This ensures users are not confused about the origin or mutability of such metadata.
+
+### Editing and Conflicts
+
+If a property exists both in the Git YAML and via the Ingestion API, the ingested version is shown in the side panel and may override the display in IDP views. The YAML editor itself only reflects Git-tracked values. If users wish to version-control such metadata, they can manually edit the YAML to include those values.
+
+### Viewing Ingested Metadata
+
+![Ingested Metadata View](./static/ingested-metadata.png)
+
+To view ingested properties in the YAML editor:
+
+1. Open any component or service in edit mode.
+2. Switch to the **YAML** view.
+3. Click **Ingested Properties** on the right-hand side.
+4. The panel will display the metadata ingested via API in a read-only YAML-like format.
+
+For example, metadata like `teamManager`, `teamLead`, or `minorVersion`—which are not stored in Git—will be visible here.
+

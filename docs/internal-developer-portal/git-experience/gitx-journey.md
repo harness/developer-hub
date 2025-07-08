@@ -253,7 +253,7 @@ When Git Experience is configured in Harness, a webhook is automatically created
   webkitallowfullscreen="true"
   mozallowfullscreen="true"
   allowFullScreen
-/> -->
+/> 
 
 <!-- ### Manual Reload Support
 
