@@ -17,11 +17,11 @@ Any URLs behind any firewall or private URLs used in plugins should be accessed 
 
 Any software component can be registered in the catalog by using a YAML file stored in the following Git providers:
 
-* [Harness Code Repository (Default)](https://www.harness.io/products/code-repository) 
-* GitHub
-* GitLab
-* Bitbucket
-* Azure Repos
+* [Harness Code Repository (Default)](https://developer.harness.io/docs/code-repository/get-started/overview/) 
+* GitHub ([Cloud](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) & [Enterprise](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server))
+* [GitLab](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) (Cloud & Self Hosted)
+* [Bitbucket](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket)
+* [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
 
 We support multiple connectors with different hostname for a single git provider to fetch `catalog-info.yaml` at once. E.g., Users can use connectors for both `github.com` and `github enterprise` and fetch entity YAML at the same time.
 

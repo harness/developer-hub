@@ -43,10 +43,13 @@ The Buildkite plugin enables developers to view and interact with their CI/CD pi
 
 ```yaml
 proxy:
-  '/buildkite/api':
-    target: https://api.buildkite.com/v2/
-    headers:
-      Authorization: Bearer ${BUILDKITE_TOKEN}
+  endpoints:
+    '/buildkite/api':
+      target: https://api.buildkite.com/v2
+      headers:
+        Authorization: Bearer ${BUILDKITE_API_TOKEN}
+      pathRewrite:
+        '^/api/proxy/buildkite/api' : ''
 ````
 
 

@@ -171,9 +171,9 @@ Accounts where infrastructure is provisioned, usually every account except for t
 
 When enabling asset governance, it is best practice to start with a read-only policy so you can run rules in dry-run, receive out-of-the-box recommendations, and begin to create your own custom governance recommendations.
 
-We suggest you use the AWS-provided `ViewOnlyAccess` policy which will allow Harness to access AWS resources in a read-only manner.
+We suggest you use the AWS-provided `ReadOnlyAccess` policy which will allow Harness to access AWS resources in a read-only manner.
 
-`arn:aws:iam::aws:policy/job-function/ViewOnlyAccess`
+`arn:aws:iam::aws:policy/job-function/ReadOnlyAccess`
 
 Once you are ready to perform actions using governance, you can create a custom policy to allow only the actions you want to take via governance, or use built-in policies to provide whatever access you are comfortable with.
 

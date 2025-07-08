@@ -98,7 +98,7 @@ global:
     enabled: true
     gcpProjectId: "<gcpServiceAccountProjectId>"
   smtpCreateSecret:
-    enabled: true
+    enabled: true # Update the default values of "smtp-secret" as mentioned in below step else application startup will fail.
   license:
     ng: <SMP NG License with CCM>
   database:
@@ -114,6 +114,17 @@ ccm:
       create: true
       annotations: {}
       name: "batch-processing-default"
+    secrets:
+      fileSecret:
+      - volumeMountPath: "/opt/harness/svc"
+        keys:
+        - key: ce-gcp-home-project-creds
+          path: "ce-gcp-home-project-creds.json"
+        - key: ce-batch-gcp-credentials
+          path: "ce-batch-gcp-credentials.json"
+      default:
+        ce-gcp-home-project-creds: ""
+        ce-batch-gcp-credentials: ""
     gcpConfig:
       GCP_SMP_ENABLED: true
       bucketNamePrefix: "harness-ccm-%s-%s" # Update the bucket name prefix if you want, but keep double %s for project and region
@@ -327,6 +338,16 @@ project = "<gcpServiceAccountProjectId>"
 
     ```ceng-gcp-credentials: <gcpServiceAccountCredentials>```
 
+**5. nextgen-ce configmap**
+
+    ```kubectl edit configmap nextgen-ce -n harness```
+    
+    Update below fields:
+    ```
+    GCP_PROJECT_ID: <gcpServiceAccountProjectId>
+    GCP_SERVICE_ACCOUNT_EMAIL: <gcpServiceAccountEmail>
+    ```
+
 Following are some secrets from platform-service that you will need to update:
 1. **smtp-secret** [Required to support budget alerts E-mail]
     
@@ -360,11 +381,131 @@ Please refer [this](https://developer.harness.io/docs/cloud-cost-management/get-
 Not supporting **GCP Inventory management** in the **Choose Requirements** step of GCP Connector flow.
 :::
 
-### Troubleshooting
-If in case the K8s secrets expire, the secrets will have to be set again. First you would have to update the secrets in respective `secret.yaml` and then delete the pod. We recommend to `kubectl delete` the following pods:
+## Replay GCP Billing Export data
 
-- `batch-processing`
-- `ce-nextgen`
-- `cloud-info`
+### Step 1: Get GCP Connector details
 
-and then follow the [same steps](https://developer.harness.io/docs/cloud-cost-management/get-started/ccm-smp/azure-smp#handling-kubernetes-secrets) to set the keys. After the new keys are set, verify the changes by looking at the `configs` for the pods.
+Use below API to get GCP Connector details for your account.
+
+[Harness API docs](https://apidocs.harness.io)
+
+Body:
+```json
+{
+    "filterType": "Connector",
+    "types": [
+        "GcpCloudCost"
+    ]
+}
+```
+
+### Step 2: Update GCP Sync Replay yaml file
+
+Use the mapping table to update `<placeHolder>` value in the yaml with the info got in the first step.
+
+| S. No. | GCP Connector Fields (connector object) | GCP Sync Replay Fields |
+|--------|----------------------------------------|------------------------|
+| 1 | | `image`: Path to GCP Sync K8s Job. Example: docker.io/harness/ccm-gcp-smp-signed:10053 |
+| 2 | `accountIdentifier` | `accountId` |
+| 3 | `spec.projectId` | `sourceGcpProjectId` |
+| 4 | `spec.billingExportSpec.datasetId` | `sourceDataSetId` |
+| 5 | | `sourceDataSetRegion`: Retrieve this information by checking the details section of the billing export table's dataset. |
+| 6 | `identifier` | `connectorId` |
+| 7 | `spec.billingExportSpec.tableId` | `sourceGcpTableName` |
+| 8 | | `replayIntervalInDays`: Specify number of days for which you want to replay. |
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: gcp-sync-k8s-job
+  namespace: harness
+  labels:
+    job-type: gcp-sync-k8s-job
+spec:
+  ttlSecondsAfterFinished: 604800
+  template:
+    spec:
+      containers:
+      - image: <placeHolder>
+        imagePullPolicy: IfNotPresent
+        name: python-gcp-sync-container
+        command: ["python", "/data-pipeline/gcp_billing_bq_main.py"]
+        args: ['{
+"accountId": "<placeHolder>", 
+"sourceGcpProjectId": "<placeHolder>", 
+"sourceDataSetId": "<placeHolder>", 
+"sourceDataSetRegion": "<placeHolder>", 
+"connectorId": "<placeHolder>", 
+"sourceGcpTableName": "<placeHolder>", 
+"replayIntervalInDays": "<placeHolder>"
+}']
+        env:
+        - name: CLICKHOUSE_ENABLED
+          valueFrom:
+            configMapKeyRef:
+              name: batch-processing
+              key: CLICKHOUSE_ENABLED
+        - name: CLICKHOUSE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: batch-processing
+              key: CLICKHOUSE_URL_PYTHON
+        - name: CLICKHOUSE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: batch-processing
+              key: CLICKHOUSE_PORT_PYTHON
+        - name: CLICKHOUSE_USERNAME
+          value: default
+        - name: CLICKHOUSE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: clickhouse
+              key: admin-password
+        - name: CLICKHOUSE_SEND_RECEIVE_TIMEOUT
+          value: "86400"
+        - name: CLICKHOUSE_QUERY_RETRIES
+          value: "3"
+        - name: HMAC_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: batch-processing
+              key: HMAC_ACCESS_KEY
+        - name: HMAC_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: batch-processing
+              key: HMAC_SECRET_KEY
+        - name: SERVICE_ACCOUNT_CREDENTIALS
+          valueFrom:
+            secretKeyRef:
+              name: batch-processing-secret-mount
+              key: ce-batch-gcp-credentials
+        resources:
+          limits:
+            cpu: "1"
+            memory: 2Gi
+          requests:
+            cpu: "1"
+            memory: 2Gi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: OnFailure
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  backoffLimit: 3
+```
+
+### Step 3: Apply/Delete GCP Sync Replay yaml file
+
+```
+kubectl apply -f /<path>/gcp-sync-replay.yaml
+kubectl delete -f /<path>/gcp-sync-replay.yaml
+```
+
+:::info
+Job name should be unique. OR delete the existing job and re-apply it.
+:::

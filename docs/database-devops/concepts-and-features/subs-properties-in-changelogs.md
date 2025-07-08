@@ -4,8 +4,6 @@ title: Substituting Properties in Changelogs
 description: Automatic and Custom Rollbacks
 ---
 
-
-
 # Substituting Properties in Changelogs
 It allows you to define placeholders in your changelog files (such as `${property.name}`) and later replace these placeholders 
 with actual values when the changelog is executed. This mechanism is especially useful for managing configurations and ensuring 
@@ -22,13 +20,10 @@ deploying database changes far more efficient and scalable.
 - drone-liquibase-spanner - plugins/drone-liquibase:1.2.0-4.27-spanner
 :::
 
-
 :::info
 The tokens to replace in your changelog are described using the `${property-name}` syntax.
 The supported format includes alphanumeric characters, +, -, . , and _. Example `${property+name}`
 :::
-
-
 
 ## Uses
 1. Environment-specific Names
@@ -294,11 +289,9 @@ databaseChangeLog:
 ```
 </details>
 
-
 :::note
 You can use property substitution in sql and sqlFile change types. Liquibase calculates the checksum after substitution for sql, but before substitution for sqlFile.
 This impacts attributes like runOnChange.
 For example, if you set an environment variable ENV_EXAMPLE=value and use it in both sql and sqlFile changesets, then update the database, the value is substituted.
 If you later change ENV_EXAMPLE=new_value and run update again, only the sql changeset reruns, because its checksum reflects the substituted value.
 :::
-

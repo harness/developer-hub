@@ -270,8 +270,7 @@ export default function CertificationsSCS() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Supply Chain Security - Developer (BETA COMING
-                      SOON)
+                      Supply Chain Security - Developer
                     </h2>
                     <img
                       src={`${baseUrl}img/cert-dev-scs-badge.svg`}
@@ -284,7 +283,7 @@ export default function CertificationsSCS() {
                     </span>
                   </div>
                   <div className={styles.right}>
-                    <h3>Coming Soon...</h3>
+                    <h3>Review Study Guide.</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
                       applications with SCS projects.
@@ -295,7 +294,7 @@ export default function CertificationsSCS() {
 
 
                     <div className={styles.btnContainer}>
-                      <Link href="#">
+                      <Link href="https://university-registration.harness.io/supply-chain-security-developer">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
@@ -314,7 +313,7 @@ export default function CertificationsSCS() {
               <div className={styles.examDetailsCard}>
                 <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="#">
+                  <Link href="https://university-registration.harness.io/supply-chain-security-developer">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>

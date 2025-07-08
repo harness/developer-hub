@@ -24,7 +24,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| 2025.06.v1  | ✅        | ✅        | ✅        | ⏳        | ⏳        | ⏳          |
+| 2025.06.v1  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
 | 2025.05.v1  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
 
 ## June - [2025.06.v1]

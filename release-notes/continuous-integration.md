@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-06-18T10:00
+date: 2025-06-30T10:00
 sidebar_position: 10
 ---
 
@@ -42,6 +42,25 @@ This update is currently being rolled out to customers, and we expect the rollou
 :::
 
 ## June 2025
+
+### Version 1.85
+
+<!-- 2025-06-30 -->
+
+#### New features and enhancements
+
+- Added support for **Clone Codebase** field as Harness expression. (CI-17024)
+ 
+#### Fixed issues
+- Fixed an issue where the codebase icon in the right sidebar of Pipeline Studio was incorrectly showing a failed state when the **repoName** in the codebase configuration was set as a runtime input. (ZD-84658, CI-17640)
+- Fixed an issue where expressions in environment variables for Build and Push steps were not evaluated if they depended on values (e.g., output variables) produced by earlier steps. This occurred because evaluation happened too early during stage initialization. Expressions are now evaluated just before step execution, ensuring correct resolution. (CI-17763, ZD-85822)
+- Resolved an issue where Docker connectors used as base image connectors in **Build and Push** steps failed to authenticate when the URL was set to `https://index.docker.io/v2/`. The backend now implicitly converts this to the correct v1 endpoint (`https://index.docker.io/v1/`) to ensure proper authentication. (CI-14112)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/harness-cache-server`    |  Fixed an issue with Build Intelligence communication to the cache proxy server. | 1.7.3              | 1.7.4       |
 
 ### Version 1.84
 

@@ -23,7 +23,7 @@ Using recommendations without proper assessment could result in unexpected chang
 ## Before You begin
 
 * [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
-* [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+* [CCM Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective)
 
 ## How are workload recommendations computed?
 
@@ -246,7 +246,6 @@ which is equal to `0.4 + 0.4 + 0.4 = 1.2`
 ### Next steps
 
 * [Optimize Kubernetes Costs with Node Pool Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations)
-* [Analyze Cost for Kubernetes Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
 
 ### See also
 

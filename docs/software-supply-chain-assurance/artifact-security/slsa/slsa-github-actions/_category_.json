@@ -1,0 +1,12 @@
+{
+    "label":"SLSA using GitHub Actions",
+    "position": 48,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "description": "Generate and Verify SLSA Provenance using Harness GitHub Actions",
+    "link":{
+       "type":"generated-index",
+       "title":"SLSA using GitHub Actions"
+    }
+ }
