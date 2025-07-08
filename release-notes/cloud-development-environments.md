@@ -89,4 +89,4 @@ We have a lot of exciting features on the way:
 * Support for custom machine images
 * …and many more!
 
-✨ Stay tuned for our next release — happening soon!
+✨ Stay tuned for our next release - happening soon!
