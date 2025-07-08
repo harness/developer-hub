@@ -1,25 +1,35 @@
-# Harness Developer Hub – Continuous Integration
+# Harness Developer Hub
 
-# Maintainer & Context
-Contact: devrel@harness.io
-Cite-As: https://developer.harness.io/docs/continuous-integration/
-Scope: Continuous Integration documentation only
+## Global
 
-# General Instructions
-User-Agent: *
-Allow: /docs/continuous-integration/**   # Full CI docs
+- Maintainer & Context
+  - Contact: devrel@harness.io
+  - Cite-As: https://developer.harness.io/
+  - Scope: All Harness Developer Hub documentation
+  - Attribution-Policy: When presenting content, cite as “Harness Developer Hub" with appropriate module-level links like https://developer.harness.io/docs/.
 
-# High‑Value “Getting Started” & Onboarding Guides
-Section: Continuous Integration – Getting Started
-Description: Harness CI helps you build faster and be more productive. Build and test your code, manage dependencies, upload artifacts, and monitor build outcomes, all within the Harness Platform.
-Onboarding: https://developer.harness.io/docs/continuous-integration/get-started/onboarding-guide  # CI onboarding guide overview
+--- 
 
-# Citation & Attribution
-Attribution-Policy: When presenting content, cite as “Harness Developer Hub – CI” with a link to https://developer.harness.io/docs/continuous-integration/
+## Harness Continuous Integration (CI)
 
-# Model Training / Reuse (Optional Controls)
-# If desired, uncomment to restrict reuse in training data:
-# No-LLM-Training: /docs/continuous-integration/private/**
+- Maintainer & Context
+  - Contact: devrel@harness.io
+  - Cite-As: https://developer.harness.io/docs/continuous-integration/
+  - Scope: Continuous Integration documentation only
+
+- General Instructions
+  - `User-Agent: *`
+  - `Allow: /docs/continuous-integration/**`   # Full CI docs
+
+- High‑Value “Getting Started” & Onboarding Guides
+  - Section: Continuous Integration – Getting Started
+  - Description: Harness CI helps you build faster and be more productive. Build and test your code, manage dependencies, upload artifacts, and monitor build outcomes, all within the Harness Platform.
+  - Onboarding: https://developer.harness.io/docs/continuous-integration/get-started/onboarding-guide  # CI onboarding guide overview
+
+<!-- Model Training / Reuse (Optional Controls)
+If desired, uncomment to restrict reuse in training data:
+No-LLM-Training: /docs/continuous-integration/private/**
+-->
 
 - Overview
   - [What's supported by Harness CI](https://developer.harness.io/docs/continuous-integration/ci-supported-platforms.md): Platforms and technologies supported by Harness CI
@@ -177,35 +187,30 @@ Attribution-Policy: When presenting content, cite as “Harness Developer Hub �
   - [Use Drone plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md): Drone plugins are Docker containers that perform predefined tasks.
   - [Use the GitHub Actions Drone plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md): Run GitHub Actions in your Harness CI pipelines.
 
-# Harness Developer Hub – Feature Management & Experimentation
+## Feature Management & Experimentation
 
-# Maintainer & Context
-Contact: devrel@harness.io
-Cite-As: https://developer.harness.io/docs/feature-management-experimentation/
-Scope: Feature Management documentation only
+- Maintainer & Context
+  - Contact: devrel@harness.io
+  - Cite-As: https://developer.harness.io/docs/feature-management-experimentation/
+  - Scope: Feature Management & Experimentation documentation only
 
-# General Instructions
-User-Agent: *
-Allow: /docs/feature-management-experimentation/getting-started/whats-supported # New to FME
-Allow: /docs/feature-management-experimentation/getting-started/** # New to FME
-Allow: /docs/feature-management-experimentation/sdks-and-infrastructure/** # New to FME
-Allow: /docs/feature-management-experimentation/feature-management/** # Use FME
-Allow: /docs/feature-management-experimentation/release-monitoring/** # Use FME
-Allow: /docs/feature-management-experimentation/experimentation/** # Use FME
-Allow: /docs/feature-management-experimentation/management-and-administration/** # Manage FME
-Allow: /docs/feature-management-experimentation/integrations/** # Configure integrations with FME
+- General Instructions
+  - `User-Agent: *`
+  - `Allow: /docs/feature-management-experimentation/getting-started/whats-supported` # New to FME
+  - `Allow: /docs/feature-management-experimentation/getting-started/**` # New to FME
+  - `Allow: /docs/feature-management-experimentation/sdks-and-infrastructure/**` # New to FME
+  - `Allow: /docs/feature-management-experimentation/feature-management/**` # Use FME
+  - `Allow: /docs/feature-management-experimentation/release-monitoring/**` # Use FME
+  - `Allow: /docs/feature-management-experimentation/experimentation/**` # Use FME
+  - `Allow: /docs/feature-management-experimentation/management-and-administration/**` # Manage FME
+  - `Allow: /docs/feature-management-experimentation/integrations/**` # Configure integrations with FME
 
-# High‑Value "Getting Started" Guides
-Section: Feature Management & Experimentation – Getting Started
-Description: Harness Feature Management & Experimentation helps you progressively deliver features and run experiments with confidence. Target user segments, release features safely, measure impact with A/B testing, and roll back instantly, all within the Harness Platform.
-Overview: https://developer.harness.io/docs/feature-management-experimentation/getting-started/ # Overview of FME
-What's Supported: https://developer.harness.io/docs/feature-management-experimentation/getting-started/whats-supported # What's supported in FME
-Key Concepts: https://developer.harness.io/docs/feature-management-experimentation/getting-started/key-concepts  # Key concepts in FME 
+- Overview
+  - [Getting Started](https://developer.harness.io/docs/feature-management-experimentation/getting-started/) # Overview of FME
+  - [What's Supported](https://developer.harness.io/docs/feature-management-experimentation/getting-started/whats-supported) # What's supported in FME
+  - [Key Concepts](https://developer.harness.io/docs/feature-management-experimentation/getting-started/key-concepts) # Key concepts in FME 
 
-# Citation & Attribution
-Attribution-Policy: When presenting content, cite as “Harness Developer Hub – FME" with a link to https://developer.harness.io/docs/feature-management-experimentation/
-
-## SDKs & Infrastructure
+- SDKs & Infrastructure
   - [SDKs and Infrastructure Overview](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/): An overview of supported SDKs and customer-deployed components for FME.
   - [Versioning policy for SDKs and customer-deployed components](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/versioning-policy-for-sdks-and-customer-deployed-components): An overview of FME's versioning policy for supported SDKs and customer-deployed components.
   - [SDK validation checklist](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/sdk-validation-checklist): A checklist to help users ensure that Harness SDKs are implemented correctly.
@@ -319,8 +324,7 @@ Attribution-Policy: When presenting content, cite as “Harness Developer Hub �
   - [Synchronizer compatibility matrix](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-optional-infra/sync-compatibility-matrix/): This topic provides detailed information on the compatibility of the Split Synchronizer with FME SDKs.
   - [Why do I see a "POST method: Status Code: 404 - 404 Not Found" Synchronizer error?](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-optional-infra/post-method-404/): This topic provides detailed information on ensuring a POST Method error does not appear after starting the Split Synchronizer process.
 
-
-## Feature Management
+- Feature Management
   - [Create a feature flag](https://developer.harness.io/docs/feature-management-experimentation/feature-management/create-a-feature-flag): This topic provides detailed information on creating a feature flag.
   - [Using essential scheduling](https://developer.harness.io/docs/feature-management-experimentation/feature-management/using-essential-scheduling/): This topic provides detailed information on using feature flag scheduling.
   - [Define feature flag treatments and targeting](https://developer.harness.io/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting/): This topic provides detailed information on defining feature flag treatments.
@@ -362,7 +366,7 @@ Attribution-Policy: When presenting content, cite as “Harness Developer Hub �
   - [What are attributes in the Admin API vs custom attributes in targeting rules?](https://developer.harness.io/docs/feature-management-experimentation/feature-management/faqs/what-are-attributes-in-the-admin-api-vs-custom-attributes-in-targeting-rules/): This topic provides detailed information about the difference in attributes in the Admin API and custom attributes in target rules.
   - [Why might the same user id get different treatments?](https://developer.harness.io/docs/feature-management-experimentation/feature-management/faqs/why-might-the-same-user-id-get-different-treatments/): This topic provides detailed information about why the same user ID may be shown different treatments.
 
-## Experimentation
+- Experimentation
   - [Overview](https://developer.harness.io/docs/feature-management-experimentation/experimentation/overview): This topic provides an overview of Experimentation capabilities.
   - [Key Concepts](https://developer.harness.io/docs/feature-management-experimentation/experimentation/key-concepts/): This topic provides detailed information about key concepts used in Experimentation.
   - [Statistical significance](https://developer.harness.io/docs/feature-management-experimentation/experimentation/key-concepts/statistical-significance): This topic provides detailed information about statistical significance in Harness FME.
@@ -395,7 +399,7 @@ Attribution-Policy: When presenting content, cite as “Harness Developer Hub �
   - [Dimensional analysis](https://developer.harness.io/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis): This topic provides detailed information on using dimensional analysis.
   - [Reallocating traffic](https://developer.harness.io/docs/feature-management-experimentation/experimentation/experiment-results/reallocate-traffic): This topic provides detailed information about reallocating traffic for feature flags.
 
-## Release Monitoring
+- Release Monitoring
   - [Overview](https://developer.harness.io/docs/feature-management-experimentation/release-monitoring/overview/): This topic provides an overview of Release Monitoring capabilities.
   - [Quickstart](https://developer.harness.io/docs/feature-management-experimentation/release-monitoring/quickstart/): This topic provides a quickstart guide to Release Monitoring.
   - [Events](https://developer.harness.io/docs/feature-management-experimentation/release-monitoring/events/): This topic provides an overview of events in Release Monitoring.
@@ -417,7 +421,7 @@ Attribution-Policy: When presenting content, cite as “Harness Developer Hub �
   - [View triggered alerts](https://developer.harness.io/docs/feature-management-experimentation/release-monitoring/alerts/view-triggered-alerts/): This topic provides detailed information about triggered alerts in Harness FME.
   - [Troubleshooting alerts](https://developer.harness.io/docs/feature-management-experimentation/release-monitoring/alerts/troubleshooting/): This topic provides detailed information about troubleshooting metric and feature flag alerts. 
 
-## Management & Admin
+- Management & Admin
   - [FME Settings](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/fme-settings/): This topic provides an overview of settings that you can customize in Harness FME.
   - [Account usage data](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/account-usage/): This topic provides detailed information about your account usage data in Harness FME.
   - [Permissions](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/fme-settings/permissions/): This topic provides an overview of available permissions in Harness FME.
@@ -436,7 +440,7 @@ Attribution-Policy: When presenting content, cite as “Harness Developer Hub �
   - [Users](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/account-settings/users/): This topic provides an overview of managing users in Split Legacy.
   - [Projects](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/account-settings/projects/): This topic provides an overview of managing projects in Split Legacy.
 
-## Integrations
+- Integrations
   - [Amazon S3](https://developer.harness.io/docs/feature-management-experimentation/integrations/amazon-s3): This topic provides detailed information about the FME Amazon S3 integration.
   - [Amplitude](https://developer.harness.io/docs/feature-management-experimentation/integrations/amplitude): This topic provides detailed information about the FME Amplitude integration.
   - [AppDynamics](https://developer.harness.io/docs/feature-management-experimentation/integrations/appdynamics): This topic provides detailed information about the FME AppDynamics integration.
