@@ -71,7 +71,9 @@ Follow these steps:
 
 1. Navigate to **User Profile** -> **Profile Overview**. Under **Connect to a Provider**, click **Select a Provider**.
 2. Click on the **On-Prem / Custom Provider** section and select the provider you created earlier.
+![](./static/on-prem-1.png)
 3. Click **Connect**.
+![](./static/on-prem-2.png)
 4. You’ll be redirected to a permissions page where you must allow Harness to access your account. Click **Allow/Authorize**.
 5. Once done, your access token in the Git provider account is created, and OAuth is successfully configured.
 
