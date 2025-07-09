@@ -3,38 +3,29 @@
 ## Global
 
 - Maintainer & Context
-  - Contact: devrel@harness.io
-  - Cite-As: https://developer.harness.io/
-  - Scope: All Harness Developer Hub documentation
-  - Attribution-Policy: When presenting content, cite as “Harness Developer Hub" with appropriate module-level links like https://developer.harness.io/docs/.
+Contact: devrel@harness.io
+Cite-As: https://developer.harness.io/
+Scope: All Harness Developer Hub documentation
+Attribution-Policy: When presenting content, cite as “Harness Developer Hub" with appropriate module-level links like https://developer.harness.io/docs/.
 
-  <!-- Model Training / Reuse (Optional Controls)
-  If desired, uncomment to restrict reuse in training data:
-  No-LLM-Training: /docs/continuous-integration/private/**
-  -->
+<!-- Model Training / Reuse (Optional Controls)
+If desired, uncomment to restrict reuse in training data:
+No-LLM-Training: /docs/continuous-integration/private/**
+-->
 
-## Harness Continuous Integration (CI)
-
-- `User-Agent: *`
-- `Allow: /docs/continuous-integration/**`   # Full CI docs
-
-- High‑Value “Getting Started” & Onboarding Guides
-  - Section: Continuous Integration – Getting Started
-  - Description: Harness CI helps you build faster and be more productive. Build and test your code, manage dependencies, upload artifacts, and monitor build outcomes, all within the Harness Platform.
-  - Onboarding: https://developer.harness.io/docs/continuous-integration/get-started/onboarding-guide  # CI onboarding guide overview
-
-## Harness Feature Management & Experimentation (FME)
+## Harness Documentation
 
 - `User-Agent: *`
-- `Allow: /docs/feature-management-experimentation/**`   # Full FME docs
-- `Allow: /docs/feature-management-experimentation/getting-started/whats-supported` # New to FME
-- `Allow: /docs/feature-management-experimentation/getting-started/**` # New to FME
-- `Allow: /docs/feature-management-experimentation/sdks-and-infrastructure/**` # New to FME
-- `Allow: /docs/feature-management-experimentation/feature-management/**` # Use FME
-- `Allow: /docs/feature-management-experimentation/release-monitoring/**` # Use FME
-- `Allow: /docs/feature-management-experimentation/experimentation/**` # Use FME
-- `Allow: /docs/feature-management-experimentation/management-and-administration/**` # Manage FME
-- `Allow: /docs/feature-management-experimentation/integrations/**` # Configure integrations with FME
+- Allow: /docs/continuous-integration/**   # Full CI docs
+- Allow: /docs/feature-management-experimentation/**   # Full FME docs
+- Allow: /docs/feature-management-experimentation/getting-started/whats-supported # New to FME
+- Allow: /docs/feature-management-experimentation/getting-started/** # New to FME
+- Allow: /docs/feature-management-experimentation/sdks-and-infrastructure/** # New to FME
+- Allow: /docs/feature-management-experimentation/feature-management/** # Use FME
+- Allow: /docs/feature-management-experimentation/release-monitoring/** # Use FME
+- Allow: /docs/feature-management-experimentation/experimentation/** # Use FME
+- Allow: /docs/feature-management-experimentation/management-and-administration/** # Manage FME
+- Allow: /docs/feature-management-experimentation/integrations/** # Configure integrations with FME
 
 --- 
 
@@ -42,6 +33,8 @@
 
 - Overview
   - [What's supported by Harness CI](https://developer.harness.io/docs/continuous-integration/ci-supported-platforms.md): Platforms and technologies supported by Harness CI
+  - [Onboarding](https://developer.harness.io/docs/continuous-integration/get-started/onboarding-guide): Harness CI helps you build faster and be more productive. Build and test your code, manage dependencies, upload artifacts, and monitor build outcomes, all within the Harness Platform.
+
 - Development Guides
   - [C/C++](https://developer.harness.io/docs/continuous-integration/development-guides/ci-c.md): Use a CI pipeline to build and test C and C++ applications.
   - [C# (.NET Core)](https://developer.harness.io/docs/continuous-integration/development-guides/ci-dotnet.md): Use a CI pipeline to build and test a C# (.NET Core) application.
@@ -239,7 +232,7 @@
   - [Split Daemon (splitd)](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-daemon-splitd): This topic provides detailed information about the Split Daemon (splitd).
   - [Split Evaluator](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator): This topic provides detailed information about the Split Evaluator.
   - [Split Proxy](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy): This topic provides detailed information about the Split Proxy.
-  - [Split Synchronizer](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-syncrhonizer): This topic provides detailed information about the Split Synchronizer.
+  - [Split Synchronizer](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer): This topic provides detailed information about the Split Synchronizer.
   - [Split JavaScript synchronizer tools](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-javascript-synchronizer-tools): This topic provides detailed information about Split JavaScript Synchronizer tools.
   - [Moving feature flags to a service](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/moving-feature-flags-to-a-service): This topic provides best practices on using a service for feature flags.
   - [Split Synchronizer runbook](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/split-sync-runbook): This topic provides best practices on running a Split Synchronizer.
