@@ -354,7 +354,6 @@ echo "✅ Resource check completed"
 
 ## Additional Resources
 
-- [SMP Installation Guide](/docs/self-managed-enterprise-edition/install/)
 - [Helm Installation Guide](/docs/self-managed-enterprise-edition/install/install-using-helm)
 - [Security Best Practices](/docs/chaos-engineering/security/)
 - [Troubleshooting Guide](/docs/chaos-engineering/resources/troubleshooting)
@@ -362,6 +361,5 @@ echo "✅ Resource check completed"
 ---
 
 **Next Steps:**
-- Review [installation guide](/docs/self-managed-enterprise-edition/install/)
 - Configure [proxy settings](/docs/chaos-engineering/guides/on-premises-smp/connect-infrastructure) (if needed)
 - Set up [Enterprise ChaosHub](/docs/chaos-engineering/guides/on-premises-smp/connect-enterprise-chaoshub)
