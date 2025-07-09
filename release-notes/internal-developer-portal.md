@@ -79,6 +79,12 @@ More details: [Visualizing Ingested Metadata](https://harness.atlassian.net/wiki
   * Fixed a bug where `connector_ref` was incorrectly passed as an empty string during **Harness Code Repo** setup; this is now handled safely.
     *\[IDP-5579, IDP-5477, IDP-5493, IDP-5816]*
 
+* **New Default Role: `IDP Workflow Executor`**
+  A new out-of-the-box role called **`IDP Workflow Executor`** is now available at all scopes (Account, Org, and Project). This role includes `View` and `Execute` permissions for IDP Workflows and allows platform teams to grant workflow execution access without creating custom roles.
+  This change is part of a **Platform/Access Control service release**, not the core IDP module release.
+  *\[IDP-5542]*
+
+
 * **Fixed Ingested Properties Display in Catalog UI**
   Resolved an issue where ingested properties were not being properly displayed in the Catalog UI. The system now correctly renders metadata derived from Git-based ingestion, improving visibility during entity editing.
   *\[IDP-5882]*
