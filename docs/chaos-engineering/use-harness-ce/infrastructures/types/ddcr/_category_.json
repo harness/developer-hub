@@ -1,9 +1,0 @@
-{
-  "position": 20,
-  "label": "Delegate-Driven Chaos Infrastructure",
-  "collapsible": "true",
-  "collapsed": "true",
-  "customProps": {
-    "description": "Delegate-driven chaos infrastructure or runner or Delegate facilitated by Harness CE."
-  }
-}

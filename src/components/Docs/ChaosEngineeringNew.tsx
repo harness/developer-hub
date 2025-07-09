@@ -16,7 +16,7 @@ export default function ChaosEngineeringNew() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_ce.svg`} />
-            <h1>Chaos Engineering (New)</h1>
+            <h1>Chaos Engineering</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/kb/chaos-engineering">

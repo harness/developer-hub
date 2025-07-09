@@ -5,7 +5,7 @@ import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
-import { docsCards } from './data/chaosEngineeringData';
+import { docsCards } from './data/chaosEngineeringNewData';
 export default function CE() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
@@ -37,42 +37,33 @@ export default function CE() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              <h3>Resilience Testing Made Easy</h3>
-              Harness Chaos Engineering (HCE) module provides an end-to-end tooling
-              to do the <strong>Resilience Testing</strong> in both lower and production environments.
-              Resilience measurement of the services can be automated such that informed 
-              decisions are taken in the change management process of the Software 
-              Delivery Life Cycle or SDLC. The practice of introducing, implementing,
-              and improvising the <strong>Resilience Testing</strong> is made easy by the chaos experimentation
-              process.
-
-              
-              <p>
-                <p>
-                Chaos experiments help in measuring the resilience of the services. 
-                Harness Chaos Engineering module comes with more than <strong>200</strong> different types
-                of out-of-the-box faults using which chaos experiments can be created and 
-                orchestrated in a few minutes. Chaos Experiments give out Resilience Score
-                as the outcome of a successful run which can be used to take informed decisions
-                by <strong>QA Engineers</strong> or <strong>Performance Test Engineers</strong> or <strong>SREs</strong> in their effort to improve
-                the resilience posture of their applications or business services.
-                </p>
-                
-              </p>
-
-              <p>
-               <h3>Resilience Posture</h3>
-               Resilience Posture of a module or an application or a business service is an indicator of 
-               how resilient the system is against perceived risks of failures in either software or
-               infrastructure or the third party systems. Harness Chaos Engineering helps in building
-               a process of automating the continuous or the on-demand measurement of Resiliene Posture.
-
-
-               The Resilience Posture helps in taking importance decisions while making deployment changes,
-               making new product releases, doing infrastructure upgrades and also acting as an external 
-               indicator of Reliability for end users and third party service providers.
-              </p>
+              Chaos Engineering is the practice of proactively introducing faults into your applications or infrastructure and test the resilience of business services. Developers, QA teams, Performance test teams and SREs run chaos experiments to measure the resilience of the systems and find the weaknesses in that process.
             </p>
+            <p>
+              Harness Chaos Engineering provides end-to-end tooling to resilience testing via the chaos engineering principles. Enterprises can build highly scalable resilience testing practice with Harness because of the following capabilities:
+            </p>
+            <ul>
+              <li><strong>Experiments</strong> - faults, probes and actions</li>
+              <li><strong>ChaosGuard</strong> for governance</li>
+              <li><strong>Delegates</strong> - scalability</li>
+              <li><strong>Connectors</strong> for integration</li>
+              <li><strong>Resilience management</strong> - Resilience scores, coverages, weaknesses and mitigation plans</li>
+              <li><strong>AI Powered</strong>: Recommendations</li>
+              <li><strong>MCP Tools</strong> for AI Agent communication and simplifying the end user experience</li>
+            </ul>
+            <p>
+              In addition, the Harness platform provides the required enterprise capabilities like RBACs, SSO, logs and auditing making the entire solution scalable and easy to implement.
+            </p>
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === 'light'
+                    ? `${baseUrl}img/ce.svg`
+                    : `${baseUrl}img/CE_Landing_Page_dark_mode.svg`
+                }
+              />{' '}
+            </div>
 
           </div>
         </div>

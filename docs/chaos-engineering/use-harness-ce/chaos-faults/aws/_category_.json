@@ -1,9 +1,0 @@
-{
-  "position": 2,
-  "label": "AWS",
-  "collapsible": true,
-  "collapsed": true,
-  "customProps": {
-    "description": "AWS faults documentation"
-  }
-}

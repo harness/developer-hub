@@ -153,7 +153,7 @@ const config: Config = {
             },
             {
               label: 'Chaos Engineering',
-              to: 'docs/chaos-engineering-new',
+              to: 'docs/chaos-engineering',
             },
             {
               label: 'Incident Response',

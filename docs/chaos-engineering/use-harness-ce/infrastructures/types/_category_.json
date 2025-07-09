@@ -1,9 +1,0 @@
-{
-  "position": 10,
-  "label": "Types of Infrastructure",
-  "collapsible": "true",
-  "collapsed": "true",
-  "customProps": {
-    "description": "Types of chaos infrastructure facilitated by Harness CE."
-  }
-}

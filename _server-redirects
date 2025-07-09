@@ -119,7 +119,9 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 # advance configuration > External DB > MinIO
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-self-managed-minio-object-storage /docs/self-managed-enterprise-edition/advanced-configurations/external-db/minio/use-self-managed-minio-object-storage
 
-# Added by ashutosh on 08-01-2025 for chaos engineering documentation redirects
+# Added by ashutosh on 09-01-2025 for chaos engineering documentation structure migration
+# Fault-specific redirects for old structure
+/docs/chaos-engineering/use-harness-ce/chaos-faults /docs/chaos-engineering/faults/chaos-faults
 /docs/chaos-engineering/use-harness-ce/chaos-faults/aws /docs/chaos-engineering/faults/chaos-faults/aws
 /docs/chaos-engineering/use-harness-ce/chaos-faults/azure /docs/chaos-engineering/faults/chaos-faults/azure
 /docs/chaos-engineering/use-harness-ce/chaos-faults/gcp /docs/chaos-engineering/faults/chaos-faults/gcp
