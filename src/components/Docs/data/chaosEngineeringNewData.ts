@@ -118,14 +118,14 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.ce,
           description:
             "Integrate chaos testing into your CI/CD pipelines for continuous resilience validation.",
-          link: "/docs/chaos-engineering/integrations/cicd",
+          link: "/docs/chaos-engineering/integrations/cicd/jenkins",
         },
         {
           title: "Performance Testing Tools",
           module: MODULES.ce,
           description:
             "Integrate with JMeter, Gatling, K6, and other performance testing tools for comprehensive validation.",
-          link: "/docs/chaos-engineering/integrations/performance-testing",
+          link: "/docs/chaos-engineering/integrations/performance-testing/gatling",
         },
         {
           title: "Security & Governance",

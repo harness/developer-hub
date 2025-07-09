@@ -39,7 +39,7 @@ The diagram below describes the detailed flow of control (step 5 of the earlier 
 ### Characteristics of DDCR
 
 - Automated Kubernetes [service discovery](/docs/chaos-engineering/guides/service-discovery) and workloads with network traffic patterns between them through a transient discovery agent.
-- [Automated](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding#choose-between-automatic-and-customizable-application-map-creation) and [guided](/docs/chaos-engineering/guides/application-maps#create-an-application-map) application map creation that represent a fully functional application within the cluster (which comprises of several constituent microservices).
+- [Automated](/docs/chaos-engineering/get-started#choose-between-automatic-and-customizable-application-map-creation) and [guided](/docs/chaos-engineering/guides/application-maps#create-an-application-map) application map creation that represent a fully functional application within the cluster (which comprises of several constituent microservices).
 - [Chaos experiment auto-creation](#auto-create-experiment) for a given [application map](/docs/chaos-engineering/guides/application-maps) based on the workload specification and its lineage in terms of network traffic.
 - Reuse the Harness Delegate for chaos experiment execution on the user cluster without a dedicated (or separate) chaos agent.
 - Application-level and application map level resilience scores.

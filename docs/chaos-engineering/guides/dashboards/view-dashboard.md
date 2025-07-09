@@ -9,7 +9,7 @@ redirect_from:
 
 ## Before you begin, review the following:
 
-- [Chaos Dashboard](/docs/chaos-engineering/concepts/explore-features#resilience-insights)
+- [Chaos Engineering Overview](/docs/chaos-engineering/overview)
 
 ## View Default Chaos Dashboard
 

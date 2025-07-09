@@ -34,7 +34,7 @@ Some of these faults use purely the Kubernetes API. In such cases, a Go client i
 
 Along with the Kubernetes API, many other faults use runtime APIs to extract the container PIDs and inject chaos in the target container's network, pid and mnt namespaces (for example, [pod network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-loss), [pod CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog), [pod IO latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-io-latency), and so on.)
 
-- Go to [How Stuff Works in Pod Faults](/docs/chaos-engineering/concepts/how-stuff-works/generic-pod-flow/) to know the flow of control when a generic pod fault is executed against microservices, that is, application workloads.
+- Go to [Key Concepts](/docs/chaos-engineering/key-concepts) to understand the fundamental principles of chaos engineering and how faults are executed against microservices, that is, application workloads.
 - Go to [How Stuff Works in IO/Latency Faults](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-dns-error) to know the flow of control when a IO or latency is injected into pod.
 
 Described below is the flow of control in [DNS chaos fault](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-dns-error).

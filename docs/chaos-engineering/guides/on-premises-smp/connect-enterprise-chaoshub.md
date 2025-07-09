@@ -290,5 +290,5 @@ spec:
 
 **Next Steps:**
 - Configure [infrastructure proxy settings](/docs/chaos-engineering/guides/on-premises-smp/connect-infrastructure)
-- Set up [monitoring and alerting](/docs/chaos-engineering/key-concepts/probes/)
+- Set up [monitoring and alerting](/docs/chaos-engineering/guides/probes/)
 - Review [security configurations](/docs/chaos-engineering/security/)

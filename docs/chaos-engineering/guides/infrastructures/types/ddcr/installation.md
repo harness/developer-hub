@@ -10,7 +10,7 @@ This topic describes how you can install Harness Delegate and enable chaos on it
 
 ## Prerequisites
 
-- [Create an Environment](/docs/chaos-engineering/getting-started/saas/#step-3-create-an-environment)
+- [Create an Environment](/docs/chaos-engineering/on-premise-vs-saas)
 
 ## Interactive Demo
 Navigate through the demo below to see how to create an environment, a new infrastructure, a new connector and a Delegate. 

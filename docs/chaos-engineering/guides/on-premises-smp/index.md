@@ -123,7 +123,7 @@ When the infrastructure is `CONNECTED`, configure proxy settings in experiment m
 - In SMP, command probe in **source** mode is only available for Linux
 
 ### Linux Chaos Infrastructure (LCI)
-- LCI currently does not support executing [parallel faults](/docs/chaos-engineering/guides/experiments/create-experiments) in SaaS
+- LCI currently does not support executing [parallel faults](/docs/chaos-engineering/guides/chaos-experiments/create-experiments) in SaaS
 - The self-managed platform (SMP) supports executing parallel faults on LCI
 
 ## Feature Flags
@@ -149,8 +149,8 @@ For assistance with SMP deployment and configuration:
 **Next Steps:**
 - Review [supported platforms](/docs/chaos-engineering/whats-supported.md)
 - Plan your [infrastructure setup](/docs/chaos-engineering/guides/infrastructures/)
-- Configure [chaos experiments](/docs/chaos-engineering/guides/experiments/)
-- Set up [monitoring and observability](/docs/chaos-engineering/key-concepts/probes/)
+- Configure [chaos experiments](/docs/chaos-engineering/guides/chaos-experiments/)
+- Set up [monitoring and observability](/docs/chaos-engineering/guides/probes/)
 
 ### Infrastructure Requirements
 

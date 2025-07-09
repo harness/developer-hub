@@ -72,14 +72,14 @@ To verify the status of the service, navigate to the command prompt on your Wind
 
 ![](./static/start-service-2.png)
 
-3. Any other status will be associated with logs which you can troubleshoot using our [troubleshooting guide](/docs/chaos-engineering/troubleshooting/)
+3. Any other status will be associated with logs which you can troubleshoot using our [troubleshooting guide](/docs/chaos-engineering/resources/troubleshooting)
 
 ## Prerequisites to Install Infrastructure
 Ensure that you have fulfilled the [prerequisites](/docs/chaos-engineering/faults/chaos-faults/windows/prerequisites) before connecting to a Windows chaos infrastructure.
 
 
 ## Step 1: Create / Select Environment
-1. Go to **Environments** and [create a new environment](/docs/chaos-engineering/guides/experiments/create-experiments#create-environment) or select an environment that already exists.
+1. Go to **Environments** and [create a new environment](/docs/chaos-engineering/guides/chaos-experiments/create-experiments#create-environment) or select an environment that already exists.
 
   ![new environment](./static/new-env.png)
 
@@ -153,4 +153,4 @@ This disables your Windows infrastructure.
 
 ## Resilience probes for Windows
 
-Harness CE allows you to create [HTTP](/docs/chaos-engineering/key-concepts/probes/http-probe) probe for Windows.
+Harness CE allows you to create [HTTP](/docs/chaos-engineering/guides/probes/http-probe) probe for Windows.

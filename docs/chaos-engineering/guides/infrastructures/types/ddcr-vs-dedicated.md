@@ -26,7 +26,7 @@ This section compares the characteristics of Delegate-Driven Chaos Infrastructur
     <td>N/A</td>
   </tr>
   <tr>
-    <td>Supports <a href="https://developer.harness.io/docs/chaos-engineering/getting-started/onboarding/"><strong>automated and guided application map creation</strong> </a>, representing a fully functional application within the cluster.</td>
+    <td>Supports <a href="https://developer.harness.io/docs/chaos-engineering/guides/application-maps"><strong>automated and guided application map creation</strong> </a>, representing a fully functional application within the cluster.</td>
     <td>N/A</td>
   </tr>
   <tr>

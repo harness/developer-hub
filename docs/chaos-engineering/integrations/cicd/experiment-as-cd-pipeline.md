@@ -346,4 +346,4 @@ Integrating chaos experiments with CD pipelines provides:
 
 This approach transforms chaos engineering from a periodic activity into a continuous practice that enhances the reliability of your entire deployment pipeline.
 
-For more information about Harness CD integration, visit the [CD tutorials](/docs/category/cd-and-gitops-tutorials) and explore [advanced chaos engineering patterns](/docs/chaos-engineering/guides/).
+For more information about Harness CD integration, visit the [CD tutorials](/docs/category/cd-and-gitops-tutorials) and explore [advanced chaos engineering patterns](/docs/chaos-engineering/guides/chaos-experiments/).

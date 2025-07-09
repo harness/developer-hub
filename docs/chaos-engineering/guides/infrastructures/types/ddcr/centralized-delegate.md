@@ -298,6 +298,6 @@ Create Harness infrastructure definition using the same Kubernetes cluster conne
 
 ### Step 6. Edit Infrastructure 
 
-Follow this step only after [enabling chaos](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding) on the infrastructure. Edit the infrastructure you created in [step 5](#step-5-create-harness-infrastructure-definition) to provide the details of the dedicated namespace that was created. This is the namespace where the chaos runner is launched along with the Service Account to ensure that experiments are executed with relevant permissions.
+Follow this step only after [enabling chaos](/docs/chaos-engineering/get-started) on the infrastructure. Edit the infrastructure you created in [step 5](#step-5-create-harness-infrastructure-definition) to provide the details of the dedicated namespace that was created. This is the namespace where the chaos runner is launched along with the Service Account to ensure that experiments are executed with relevant permissions.
 
     ![service account used](./static/delegate/sa-3.png)

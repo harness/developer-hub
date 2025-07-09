@@ -87,7 +87,7 @@ Chaos Engineering on Self-Managed Enterprise Edition has the following limitatio
 
 All platforms and fault categories supported in [Harness SaaS](#harness-saas) are also supported in Self-Managed Enterprise Edition.
 
-For more information about deployment, go to [Self-Managed Enterprise Edition and CE on SMP](/docs/chaos-engineering/getting-started/smp/).
+For more information about deployment, go to [Self-Managed Enterprise Edition and CE on SMP](/docs/chaos-engineering/guides/on-premises-smp/).
 
 ---
 

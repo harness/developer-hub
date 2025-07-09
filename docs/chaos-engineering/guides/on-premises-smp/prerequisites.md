@@ -357,7 +357,7 @@ echo "✅ Resource check completed"
 - [SMP Installation Guide](/docs/self-managed-enterprise-edition/install/)
 - [Helm Installation Guide](/docs/self-managed-enterprise-edition/install/install-using-helm)
 - [Security Best Practices](/docs/chaos-engineering/security/)
-- [Troubleshooting Guide](/docs/chaos-engineering/troubleshooting/)
+- [Troubleshooting Guide](/docs/chaos-engineering/resources/troubleshooting)
 
 ---
 

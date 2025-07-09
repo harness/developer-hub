@@ -3,7 +3,7 @@ title: Create Experiments
 description: Step-by-step guide to creating your first chaos experiment
 sidebar_position: 2
 redirect_from:
-  - /docs/chaos-engineering/guides/experiments/create-experiments
+  - /docs/chaos-engineering/guides/chaos-experiments/create-experiments
 ---
 
 # Create Experiments

@@ -213,6 +213,6 @@ For fault-specific tunables, refer to the individual fault documentation in each
 
 ## Related Resources
 
-- [Chaos Faults Overview](../index)
-- [Creating Chaos Experiments](../../guides/chaos-experiments/index)
-- [Resilience Probes](../../guides/probes/index)
+- [Chaos Faults Overview](../chaos-faults)
+- [Creating Chaos Experiments](../../guides/chaos-experiments/)
+- [Resilience Probes](../../guides/probes/)

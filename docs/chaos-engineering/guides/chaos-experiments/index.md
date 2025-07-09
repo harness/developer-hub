@@ -391,10 +391,10 @@ Configure alerts for experiment monitoring:
 
 Ready to create your first experiment? Here's what to do next:
 
-1. **[Set up Probes & Actions](./probes-actions)** - Learn about monitoring and automated responses
-2. **[Explore GameDays](./gamedays)** - Organize team-wide chaos engineering exercises
-3. **[Build Pipelines](./pipelines)** - Automate chaos testing in your CI/CD workflows
-4. **[Check Integrations](./integrations)** - Connect with your existing monitoring tools
+1. **[Set up Probes](../probes/)** - Learn about monitoring and resilience validation
+2. **[Explore GameDays](../gamedays)** - Organize team-wide chaos engineering exercises
+3. **[Manage Experiments](./manage-experiments)** - Learn to organize and control your experiments
+4. **[Analyze Results](./analyze-results)** - Understand experiment outcomes and insights
 
 :::tip Pro Tip
 Start with simple experiments like pod deletion or CPU stress, then gradually work your way up to more complex scenarios. The key is to build confidence and learn from each experiment!

@@ -13,7 +13,7 @@ This section will guide you through creating a new chaos dashboard, and creating
 
 ## Before you begin, review the following
 
-- [Out-of-box Resilience Insights](/docs/chaos-engineering/concepts/explore-features#resilience-insights)
+- [Chaos Engineering Overview](/docs/chaos-engineering/overview)
 - [View Chaos dashboards](/docs/chaos-engineering/guides/dashboards/view-dashboard)
 
 ## Create a new visualization

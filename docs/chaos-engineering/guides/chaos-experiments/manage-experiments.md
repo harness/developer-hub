@@ -3,9 +3,9 @@ title: Manage Experiments
 description: Organize, edit, export, and maintain your chaos experiment library effectively
 sidebar_position: 5
 redirect_from:
-  - /docs/chaos-engineering/guides/experiments/edit-chaos-experiment
-  - /docs/chaos-engineering/guides/experiments/export-chaos-experiments
-  - /docs/chaos-engineering/guides/experiments/halt-delete-experiments
+  - /docs/chaos-engineering/guides/chaos-experiments/edit-chaos-experiment
+  - /docs/chaos-engineering/guides/chaos-experiments/export-chaos-experiments
+  - /docs/chaos-engineering/guides/chaos-experiments/halt-delete-experiments
 ---
 
 # Manage Experiments

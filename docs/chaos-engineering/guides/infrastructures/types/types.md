@@ -17,5 +17,5 @@ You can execute experiments on these infrastructures based on different environm
 
 Chaos experiments associated with Cloud Foundry are executed using Linux chaos infrastructure, and experiments with AWS, GCP, Azure, VMware, and Bare metal are executed on Kubernetes infrastructure.
 
-Before creating an infrastructure, [create an environment](/docs/chaos-engineering/guides/experiments/create-experiments#create-environment) because a chaos infrastructure is created within an environment.
+Before creating an infrastructure, [create an environment](/docs/chaos-engineering/guides/chaos-experiments/create-experiments#create-environment) because a chaos infrastructure is created within an environment.
 

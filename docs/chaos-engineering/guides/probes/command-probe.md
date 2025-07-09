@@ -3,10 +3,10 @@ title: Command Probes
 description: Execute custom commands and scripts for flexible validation
 sidebar_position: 5
 redirect_from:
-  - /docs/chaos-engineering/key-concepts/probes/command-probe
-  - /docs/chaos-engineering/key-concepts/probes/command-probe/command-probe
-  - /docs/chaos-engineering/key-concepts/probes/command-probe/cmd-probe-newrelic
-  - /docs/chaos-engineering/key-concepts/probes/command-probe/cmd-probe-usage
+  - /docs/chaos-engineering/guides/probes/command-probe
+  - /docs/chaos-engineering/guides/probes/command-probe/command-probe
+  - /docs/chaos-engineering/guides/probes/command-probe/cmd-probe-newrelic
+  - /docs/chaos-engineering/guides/probes/command-probe
 ---
 
 # Command Probes

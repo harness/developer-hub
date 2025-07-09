@@ -227,11 +227,11 @@ kubectl exec -it deployment/subscriber -n litmus -- nslookup your-smp-endpoint
 - [SMP Release Notes](/release-notes/self-managed-enterprise-edition)
 - [Infrastructure Types](/docs/chaos-engineering/guides/infrastructures/types/)
 - [DDCR Proxy Support](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support)
-- [Troubleshooting Guide](/docs/chaos-engineering/troubleshooting/)
+- [Troubleshooting Guide](/docs/chaos-engineering/resources/troubleshooting)
 
 ---
 
 **Next Steps:**
 - Configure [Enterprise ChaosHub connection](/docs/chaos-engineering/guides/on-premises-smp/connect-enterprise-chaoshub)
-- Set up [monitoring and observability](/docs/chaos-engineering/key-concepts/probes/)
+- Set up [monitoring and observability](/docs/chaos-engineering/guides/probes/)
 - Review [security best practices](/docs/chaos-engineering/security/)

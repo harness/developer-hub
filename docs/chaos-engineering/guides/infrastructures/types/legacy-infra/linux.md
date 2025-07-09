@@ -31,7 +31,7 @@ A set of mandatory input flags is required to install chaos infrastructure, incl
 12. **http-client-timeout**: HTTP client timeout for communicating with the control plane. The default value is **30s**.
 
 :::info note
-- LCI currently does not support executing [parallel faults](/docs/chaos-engineering/guides/experiments/create-experiments) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI).
+- LCI currently does not support executing [parallel faults](/docs/chaos-engineering/guides/chaos-experiments/create-experiments) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI).
 :::
 
 ### Infrastructure Service
@@ -138,7 +138,7 @@ To enable chaos on Linux, follow the steps below:
     ![Create Infra](./static/select-linux-2.png)
 
 1. On the next screen, enter a **Name** for the infrastructure, and optionally, a **Description** and **Tags**. Select **Next**.
-You can also specify [different values](/docs/chaos-engineering/concepts/chaos101#chaos-infrastructure) for the infrastructure.
+You can also specify [different values](/docs/chaos-engineering/key-concepts) for the infrastructure.
 
     ![Execute Command](./static/deploy-infra-4.png)
 

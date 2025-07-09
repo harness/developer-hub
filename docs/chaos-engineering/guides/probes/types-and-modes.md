@@ -3,7 +3,7 @@ title: Probe Types & Execution Modes
 description: Understanding different probe types and their execution modes
 sidebar_position: 2
 redirect_from:
-  - /docs/chaos-engineering/key-concepts/probes/types
+  - /docs/chaos-engineering/guides/probes/types
 ---
 
 # Probe Types & Execution Modes

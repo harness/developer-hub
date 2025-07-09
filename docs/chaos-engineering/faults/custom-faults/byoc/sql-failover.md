@@ -155,10 +155,10 @@ During experiment execution, the experiment pod logs help understand the followi
 
 ### Check Status - Resilience Probes
 
-Create [resilience probes](/docs/chaos-engineering/key-concepts/probes/) that help conduct status checks to verify the health of the infrastructure or application and its readiness to endure chaos injection. You can configure these status checks at different stages of the chaos experiment, such as Start of Test (SOT), End of Test (EOT), OnChaos, Continuous, and Edge (Start & End) of Chaos Injection.
+Create [resilience probes](/docs/chaos-engineering/guides/probes/) that help conduct status checks to verify the health of the infrastructure or application and its readiness to endure chaos injection. You can configure these status checks at different stages of the chaos experiment, such as Start of Test (SOT), End of Test (EOT), OnChaos, Continuous, and Edge (Start & End) of Chaos Injection.
 
 :::tip
-For this example, you can create a [command probe](/docs/chaos-engineering/key-concepts/probes/command-probe/) in the "Edge" mode as it allows you to verify the status of the SQL instance before and after chaos injection, ensuring that the SQL instance remains operational and healthy.
+For this example, you can create a [command probe](/docs/chaos-engineering/guides/probes/command-probe/) in the "Edge" mode as it allows you to verify the status of the SQL instance before and after chaos injection, ensuring that the SQL instance remains operational and healthy.
 :::
 
 This validation process is executed through the GCloud Console. Solely relying on manual checks via the console may not be the most efficient method.
