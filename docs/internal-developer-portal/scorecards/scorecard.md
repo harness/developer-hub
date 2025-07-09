@@ -45,6 +45,11 @@ Scorecard has two main UI components which are developer facing and lives in the
 
 <DocImage path={require('./static/scorecard-overviewpage.png')}/>
 
+:::info GITX Enabled
+Scorecards in Harness IDP will always get loaded from the default branch of the associated Git repository. 
+If you're using a remote Git repository to manage your Scorecard definitions, make sure that the YAML file is committed and pushed to the default branch. This behavior helps maintain a single source of truth and avoids confusion from incomplete or in-progress configurations.
+:::
+
 1. #### Adding Card and Tab Content for an Entity
 
    - Go to the **Layout** section in IDP **Admin**, and select **Service** or any other kind of catalog entity for which you want to add Scorecards.
