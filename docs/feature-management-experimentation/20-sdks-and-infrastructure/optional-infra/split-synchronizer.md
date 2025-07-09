@@ -36,13 +36,13 @@ If you are upgrading from Split Synchronizer version 4.x or below to 5.x, some o
 
 The Split Synchronizer works with most of the languages that FME supports. 
 
-* [PHP SDK](https://help.split.io/hc/en-us/articles/360020350372)
-* [Python SDK](https://help.split.io/hc/en-us/articles/360020359652)
-* [.NET SDK](https://help.split.io/hc/en-us/articles/360020240172)
-* [Node.js SDK](https://help.split.io/hc/en-us/articles/360020564931)
-* [Ruby SDK](https://help.split.io/hc/en-us/articles/360020673251)
-* [Go SDK](https://help.split.io/hc/en-us/articles/360020093652)
-* [Java SDK](https://help.split.io/hc/en-us/articles/360020405151)
+* [PHP SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-sdk)
+* [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk)
+* [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk)
+* [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk)
+* [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk)
+* [Go SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk)
+* [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk)
 
 If you are looking for a language that is not listed here, contact the support team at [support@split.io](mailto:support@split.io) to discuss your options.
 

@@ -43,7 +43,7 @@ The following validation considerations are relevant for all FME SDKs.
 
 * **Validate 24 hours of impressions (and events) from the Data hub.** Take a feature flag that has a known high activity and download all impressions for it from the previous 24 hour period. Ensure that the number of treatments and IDs all match with expectations. For events, take the previous full 24 hours of events, if applicable. With impressions, take note if you are seeing any ‘CONTROL’ treatments as those warrant further investigation to understand why those are happening.
 
-* **Evaluate if you can take advantage of Flag Sets**   You can use Flag Sets for limiting the flags downloaded by an SDK. [Flag Sets](https://help.split.io/hc/en-us/articles/22256278916621-Using-flag-sets-to-boost-SDK-performance) allow you to control from Harness FME which flags are downloaded by an SDK. This means you can ensure that only the flags needed for a frontend SDK or a backend SDK are downloaded. This reduces the time for the SDK to get ready while also saving memory and bandwidth. 
+* **Evaluate if you can take advantage of Flag Sets**   You can use Flag Sets for limiting the flags downloaded by an SDK. [Flag Sets](/docs/feature-management-experimentation/feature-management/using-flag-sets-to-boost-sdk-performance) allow you to control from Harness FME which flags are downloaded by an SDK. This means you can ensure that only the flags needed for a frontend SDK or a backend SDK are downloaded. This reduces the time for the SDK to get ready while also saving memory and bandwidth. 
 
 ## Browser SDKs (including Angular, React, etc.)
 
@@ -53,7 +53,7 @@ The following items are specific to browser-based SDKs.
 
 * **Evaluate if localStorage mode is something you may be interested in.** By default, the SDK stores the cache in memory, which means every time the user visits the page, the SDK has to re-download the whole cache again.
 
-  Using this option stores the cache in the browser file system, which improves the SDK performance after the first load. For more information, refer to [Why does the JavaScript SDK return Not Ready status in slow networks?](https://help.split.io/hc/en-us/articles/360012551371-Why-does-the-JavaScript-SDK-return-Not-Ready-status-in-Slow-Networks-) Using this option also allows users to view localStorage in their browser to see rollout plans. If you are use multiple factories, ensure that you are setting prefixes explicitly so they don’t overwrite one another’s localstorage objects.
+  Using this option stores the cache in the browser file system, which improves the SDK performance after the first load. For more information, refer to [Why does the JavaScript SDK return Not Ready status in slow networks?](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-not-ready-status-in-slow-networks) Using this option also allows users to view localStorage in their browser to see rollout plans. If you are use multiple factories, ensure that you are setting prefixes explicitly so they don’t overwrite one another’s localstorage objects.
 
 * **Evaluate if you can take advantage of lazy loading.** The SDK factory must have the customer key at initialization time. This key might not be available initially though, especially if the key is provided from another tool (e.g., Segment or mParticle). Using the Lazy init allows you to initialize the SDK by passing a dummy key, then create a new client from the same factory object when the actual customer key is obtained.
 
