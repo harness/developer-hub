@@ -4,6 +4,22 @@ description: You can build multi-architecture images in a CI pipeline.
 sidebar_position: 21
 ---
 
+Building multi-architecture images is possible with Harness but differs based on your infrastructure type. Please choose the infrastructure that is right for you.
+
+## Cloud, Local, VMs Infrastructure
+
+Building multi-architecture images is simple for cloud, local, and VM infrastructures. You will need to enable an environment variable in your `Build and Push an image to Docker` step. To do so:
+
+1. Open your `Build and Push an image to Docker Registry` step. 
+2. Open the **Optional Configuration** dropdown at the bottom of the step.
+3. Add a variable under **Environment Variables**.
+4. Enter `PLUGIN_PLATFORM` for your **Key**. 
+5. Enter your architectures as a comma separated list as your **Value**. For example, `linux/amd64,linux/arm64`.
+
+That's it!
+
+## Kubernetes Infrastructure
+
 To build multi-architecture images in a CI pipeline, use a separate stage to build and push each architecture.
 
 For example, the following pipeline has two stages. The two stages have similar components, but they differ according to the architecture of the image that the stage builds. Each stage has:
