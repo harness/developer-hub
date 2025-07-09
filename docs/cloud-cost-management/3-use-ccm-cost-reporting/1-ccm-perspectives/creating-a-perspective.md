@@ -56,7 +56,7 @@ To create a Perspective, follow these steps:
 
 ## Perspective Builder
 
-<DocImage path={require('./static/builder.mp4')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/builder.png')} width="100%" height="100%" title="Click to view full size image" />
 
 1. Enter a name for your Perspective (avoid special characters)
 2. Select a folder for organization (optional)
