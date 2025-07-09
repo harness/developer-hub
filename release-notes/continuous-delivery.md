@@ -55,11 +55,9 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## July 2025
 
-### Version 1.96.0
+### Version 1.96.4
 
 #### New Features and Enhancements
-
-- Harness now supports **canary deployment strategy** for AWS Lambda native deployments, enabling incremental traffic shifting to new function revisions with verification steps or manual approvals for zero-downtime roll-outs. Currently, this feature is behind the feature flag `CDS_AWS_LAMBDA_CANARY_DEPLOY`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**CDS-107454**)
 
 - Harness supports the **Upload Artifacts to S3** step in Deploy stage, enabling users to upload artifacts directly to S3 within their CD workflows in a containerized step group. (**CDS-107976**)
 
