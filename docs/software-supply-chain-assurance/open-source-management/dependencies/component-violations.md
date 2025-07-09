@@ -5,7 +5,7 @@ description: View Component Violations for Artifacts and Code Repositories
 sidebar_position: 4
 ---
 
-The Component Violations Dashboard for Artifacts and Repositories displays pipelines flagged for SBOM policy violations. It provides a centralized view across organizations and projects, making it easier to respond during zero-day attacks.
+The Component Violations Dashboard for Artifacts and Repositories displays pipelines flagged for SBOM policy violations. It provides a centralized view across organizations and projects.
 
 Follow the below steps to view component violations for artifacts. You can follow the same process to view Component violations for code repositories.
 
@@ -17,7 +17,7 @@ Follow the below steps to view component violations for artifacts. You can follo
 
 - **Violated Artifacts:** Total number of artifacts that violated SBOM policies.
 
-<DocImage path={require('./static/component-violations.png')} width="80%" height="80%" title="Click to view full size image" /> 
+<DocImage path={require('./static/component-violations-table.png')} width="80%" height="80%" title="Click to view full size image" /> 
 
 
 You can apply filters to drill down and navigate across the following key dimensions:
@@ -35,8 +35,6 @@ You can apply filters to drill down and navigate across the following key dimens
 
 Click the ellipsis icon, in the top-right corner of the dashboard to download the component violations report (PDF or CSV), or set up automated delivery (daily, weekly, or monthly).
 
-<DocImage path={require('./static/cv-violations.png')} width="80%" height="80%" title="Click to view full size image" /> 
-
 
 ### Pipeline Execution Summary
 
@@ -48,7 +46,7 @@ Pipeline Execution Summary table lists the pipelines that violated the SBOM Allo
 
 - **Project Identifier:** The project the pipeline resides in.
 
-- **Executions With Violations:** Number of pipeline executions that failed SBOM policy checks. When you click on the violations count, this opens a pop-up table with the following columns:
+- **Executions With Violations:** Number of pipeline executions that failed SBOM policy checks. When you **Click on** the violations count, this opens a pop-up table with the following columns:
 
    - **Artifact Name:** Name of the Artifact.
 
@@ -60,6 +58,6 @@ Pipeline Execution Summary table lists the pipelines that violated the SBOM Allo
 
 - Executions Without Violations: Number of executions that passed the SBOM policy checks.
 
-<DocImage path={require('./static/cv-pipeline-summary.png')} width="80%" height="80%" title="Click to view full size image" /> 
+<DocImage path={require('./static/cv-table.png')} width="80%" height="100%" title="Click to view full size image" /> 
 
 
