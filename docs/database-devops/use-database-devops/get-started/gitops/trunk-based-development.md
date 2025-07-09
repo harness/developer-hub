@@ -54,7 +54,7 @@ This allows you to reuse the same changelog file, while ensuring each environmen
 Before we can deploy our Database Schema, we need to connect a database instance to which we can deploy it. Here’s how:
 
 1. Under "DB Instances", click  “Add New DB Instance".
-2. Click New JDBC Connector and Enter Name, JDBC URL & credentials, select the harness [delegate](../../../platform/delegates/delegate-concepts/delegate-overview.md), then Save and Finish.
+2. Click New JDBC Connector and Enter Name, JDBC URL & credentials, select the harness delegate, then Save and Finish.
    - **Name** - A name to identify the database instance.
    - **JDBC URL** - The JDBC connection string for your database instance. Learn More about [JDBC connection strings](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/).
    - **Username** - The username to connect to the database.
