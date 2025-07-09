@@ -281,7 +281,7 @@ spec:
 
 ## Additional Resources
 
-- [SMP Installation Guide](/docs/self-managed-enterprise-edition/install/)
+- [SMP Installation Guide](/docs/self-managed-enterprise-edition/install/harness-helm-chart)
 - [Air-gapped Environment Setup](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment)
 - [ChaosHub Management](/docs/chaos-engineering/guides/chaoshubs/)
 - [Proxy Configuration Best Practices](/docs/chaos-engineering/security/)

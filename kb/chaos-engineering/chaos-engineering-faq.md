@@ -84,7 +84,7 @@ Yes, you can use [SSH chaos](/docs/chaos-engineering/faults/chaos-faults/ssh/ssh
 No, Harness CE helps identify the failures in your application by injecting failures intentionally. This way, you can identify the failures and use other methods to address the issues identified using Harness CE.
 
 #### What kind of Reporting is provided by the tool?
-Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](/docs/chaos-engineering/guides/probes/), [alerts](/docs/chaos-engineering/use-harness-ce/experiments/alert-integration) and [chaos dashboard](/docs/chaos-engineering/use-harness-ce/dashboards/).
+Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](/docs/chaos-engineering/guides/probes/), [alerts](/docs/chaos-engineering/guides/chaos-experiments/manage-experiments) and [chaos dashboard](/docs/chaos-engineering/guides/dashboards/).
 
 
 #### Can I deploy chaos infrastructure on an Openshift Cluster?
@@ -101,11 +101,11 @@ For example, to execute the network loss fault,
 ## Harness Delegate
 
 :::tip
-The FAQs below are based on Harness CE entities using [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr#what-is-ddcr).
+The FAQs below are based on Harness CE entities using [Harness Delegate](/docs/chaos-engineering/guides/infrastructures/types/ddcr).
 :::
 
 #### Do you support On-Premise Harness Control Plane?
-Yes, Harness CE supports the self-managed enterprise edition (SME, also known as self-managed platform or SMP). Depending on the version of Harness CE (SaaS or Self-Managed Platform), the control plane is hosted by Harness (for SaaS) or within your domain (for example, harness.your-domain.io). Go to [SMP](/docs/chaos-engineering/getting-started/smp/) for more information.
+Yes, Harness CE supports the self-managed enterprise edition (SME, also known as self-managed platform or SMP). Depending on the version of Harness CE (SaaS or Self-Managed Platform), the control plane is hosted by Harness (for SaaS) or within your domain (for example, harness.your-domain.io). Go to [SMP](/docs/chaos-engineering/guides/on-premises-smp/) for more information.
 
 #### Does chaos use the Harness Delegate or does it need a separate agent?
 Harness CE uses the Harness Delegate to execute chaos experiments, which you can leverage to:
@@ -114,7 +114,7 @@ Harness CE uses the Harness Delegate to execute chaos experiments, which you can
 - Better control over chaos experiments by facilitating advanced tunables.
 - Gain insights into application-level resilience scores.
 
-Go to [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr#what-is-ddcr) for more information.
+Go to [Harness Delegate](/docs/chaos-engineering/guides/infrastructures/types/ddcr) for more information.
 
 #### What ports are necessary to be opened in the org's firewall rules to access the Harness Control Plane from the user environment?
 You can access the Harness control plane from the user environment with outbound connectivity over HTTPS using port 443.
@@ -152,25 +152,25 @@ The agents are:
 
 #### What are the prerequisites to setup/onboard Harness Chaos Engineering?
 
-Go to [prerequisites](/docs/chaos-engineering/getting-started/saas/) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/training/sandbox) or execute [your first chaos experiment](/docs/chaos-engineering/getting-started/saas/).
+Go to [prerequisites](/docs/chaos-engineering/on-premise-vs-saas) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/tutorials) or execute [your first chaos experiment](/docs/chaos-engineering/on-premise-vs-saas).
 **OR**
 If you want a head start to your journey with Harness CE, you can onboard Harness CE in two ways:
-- [Automated onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding); and
-- [Guided onboarding](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding).
+- [Automated onboarding](/docs/chaos-engineering/get-started); and
+- [Guided onboarding](/docs/chaos-engineering/get-started).
 
 #### Can all the Chaos Operations be managed via APIs (agent, experiment life cycles etc.,)
 Yes, all chaos operations can be managed using APIs. For more information, go to [Harness CE API documentation](https://apidocs.harness.io/chaos.html).
 
 #### Are there any tutorials to get started with Chaos?
 Yes, you can start executing chaos engineering experiments in the following ways:
-- [Run chaos experiments](/docs/chaos-engineering/getting-started/saas/)
-- [Execute experiments using API](/docs/chaos-engineering/getting-started/saas/experiment-using-api)
+- [Run chaos experiments](/docs/chaos-engineering/on-premise-vs-saas)
+- [Execute experiments using API](/docs/chaos-engineering/guides/chaos-experiments/create-experiments)
 
 #### Do you provide a Sandbox environment for us to play with the tool?
-Yes, you can execute experiments in a sandbox environment. Go to [sandbox environment](/docs/chaos-engineering/training/sandbox) to play around with Harness CE.
+Yes, you can execute experiments in a sandbox environment. Go to [sandbox environment](/docs/chaos-engineering/tutorials) to play around with Harness CE.
 
 #### Can I schedule the execution of a Chaos Experiment?
-Yes, you can [schedule](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#run-or-schedule-the-experiment) chaos experiments.
+Yes, you can [schedule](/docs/chaos-engineering/guides/chaos-experiments/create-experiments) chaos experiments.
 
 ## Kubernetes experiment flow optimization
 
@@ -209,7 +209,7 @@ No, the existing infrastructures will continue to function as usual, but Harness
 - If the experiment format is old, you may see `litmus-checker` and `chaos-k8s` images in the YAML. Since version 1.37.0 is the last supported version of these components, the `litmus-checker` and `chaos-k8s` are displayed with version 1.37.0. For the new experiment format, you will only see a `go-runner` image.
 
 #### Why can't I create a new experiment from the UI?
-- To create a new experiment, you need to have at least one infrastructure in version 1.38.x or higher. Hence, you can either [connect a new infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types) or [upgrade an existing one](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra).
+- To create a new experiment, you need to have at least one infrastructure in version 1.38.x or higher. Hence, you can either [connect a new infrastructure](/docs/chaos-engineering/guides/infrastructures/types) or [upgrade an existing one](/docs/chaos-engineering/guides/infrastructures/upgrade-infra).
 
 #### Is there a way to upgrade the older experiment to the new format?
 - Yes, you can manually edit the experiment manifest or create a new experiment from the UI. Older experiments will continue to work because of backward compatibility.
@@ -217,7 +217,7 @@ No, the existing infrastructures will continue to function as usual, but Harness
 ## Application Maps
 
 #### How to manually associate experiments as a part of Application Map?
-To manually associate the experiment as a part of an application map, list the experiment as a part of an [application map](/docs/chaos-engineering/use-harness-ce/application-map), specify the tag `applicationmap=<application map identity>` while creating the experiment.
+To manually associate the experiment as a part of an application map, list the experiment as a part of an [application map](/docs/chaos-engineering/guides/application-maps), specify the tag `applicationmap=<application map identity>` while creating the experiment.
 
 ## Security
 
@@ -244,7 +244,7 @@ A chaos infrastructure could be inactive due to a variety of reasons. When you t
 
 #### How do I control user actions in a given environment in Harness Chaos?
 
-The scope of a user's access to chaos resources added to a given Harness account or project can be controlled by assigning them a predefined or custom role. To learn more, go to [chaos access control](/docs/chaos-engineering/use-harness-ce/governance/rbac#user-authorization-and-role-based-access-control).
+The scope of a user's access to chaos resources added to a given Harness account or project can be controlled by assigning them a predefined or custom role. To learn more, go to [chaos access control](/docs/chaos-engineering/guides/governance/rbac).
 
 #### How do I control the security blast radius in terms of access to application microservices and infrastructure resources in a user environment?
 
@@ -321,13 +321,13 @@ This is applicable on Harness CE entities that use a dedicated infrastructure ra
 ## Integration
 
 #### Can Harness Chaos Agents be installed via Helm Charts?
-Yes, [chaos dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/) as well as [Harness Delegate](https://www.harness.io/blog/delegate-installation-via-helm) can be installed using Helm charts.
+Yes, [chaos dedicated infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/) as well as [Harness Delegate](https://www.harness.io/blog/delegate-installation-via-helm) can be installed using Helm charts.
 
 #### Can chaos experiments be triggered from [X] pipeline (Harness, Jenkins, Gitlab, Azure DevOps)?
 Yes, Harness CE provides integration with many tools, such as [Gitlab pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-gitlab-pipeline), [Jenkins pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline), with [Harness CD](https://developer.harness.io/docs/category/integrate-hce-with-harness-cd), [Harness Feature Flags](https://developer.harness.io/docs/chaos-engineering/integrations/chaos-ff), and [SRM](https://developer.harness.io/docs/chaos-engineering/integrations/use-chaos-with-srm).
 
 #### Does Harness Chaos provide Resilience Probes for [X] APM (Prometheus, Dynatrace, Datadog, NewRelic, Splunk)?
-Yes, you can use resilience probes with [Prometheus](/docs/chaos-engineering/guides/probes/prom-probe), [Dynatrace](/docs/chaos-engineering/guides/probes/dynatrace-probe), [DataDog](/docs/chaos-engineering/guides/probes/datadog-probe), and [NewRelic](/docs/chaos-engineering/guides/probes/command-probe/cmd-probe-newrelic).
+Yes, you can use resilience probes with [Prometheus](/docs/chaos-engineering/guides/probes/prometheus-probe), [Dynatrace](/docs/chaos-engineering/guides/probes/apm-probes), [DataDog](/docs/chaos-engineering/guides/probes/apm-probes), and [NewRelic](/docs/chaos-engineering/guides/probes/command-probe).
 
 ## License
 
