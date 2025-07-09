@@ -1,5 +1,5 @@
 ---
-title: Visualizing Ingested Metadata in the YAML Editor
+title: Ingested Metadata in the YAML Editor
 description: Understand how Harness IDP displays dynamic metadata ingested via API without writing it to Git, using a side panel in the YAML editor.
 sidebar_position: 2
 keywords:

@@ -128,7 +128,16 @@ You can do this in two ways:
 
 ### Managing Multiple Branches
 
-You can also switch branches from Git to view an alternate version of the entity's YAML. This action does not create a new entity; instead, it updates the existing one. This is especially useful in scenarios where direct commits to the main branch are restricted due to organizational policies, and changes need to go through a pull request workflow.
+Harness Git Experience allows users to view the YAML definition of a Git-backed entity across any available branch. This is especially helpful for reviewing PR changes, testing variations, or managing configuration workflows in different environments.
+
+You can use the branch selector from the entity view in the Software Catalog to toggle between branches and inspect the YAML for that branch.
+
+This is especially useful in scenarios where direct commits to the main branch are restricted due to organizational policies, and changes need to go through a pull request workflow.
+
+![Branch Selection in GitX](./static/multi-branch.png)
+
+> While you can inspect and preview YAMLs across different branches, only the **default branch** (as configured during entity creation) is actively used by Harness IDP for rendering and syncing entity definitions.
+
 
 <iframe
   src="https://app.tango.us/app/embed/8dcee9d3-bde1-487d-8b8e-f6b9bbcf2e50?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false"
