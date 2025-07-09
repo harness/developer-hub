@@ -20,7 +20,7 @@ Audit logs are captured every time a member changes a feature flag, segment, or 
 | | | Removing an alert policy |
 
 ## Titles and comments in changes
-When you click review changes after making a change to a feature flag, segment, or metric, a panel displays offering a diff view of the changed elements. You can enter a title and comments for the change made to make it easier for teammates to understand why the change was made. If you want to make titles and comments required for all changes in a project, refer to the [Projects](https://help.split.io/hc/en-us/articles/360023534451-Projects#editing-a-project) guide for more information.
+When you click review changes after making a change to a feature flag, segment, or metric, a panel displays offering a diff view of the changed elements. You can enter a title and comments for the change made to make it easier for teammates to understand why the change was made. If you want to make titles and comments required for all changes in a project, refer to the [Projects](/docs/feature-management-experimentation/management-and-administration/account-settings/projects#editing-a-project) guide for more information.
 
 <img src="https://help.split.io/hc/article_attachments/15614601902733" alt="change_summary.png" width="800" />
 

@@ -167,7 +167,7 @@ When using the **`config`** prop, the `SplitFactoryProvider` component automatic
 
 Therefore, you should use the `config` prop for simpler setups where you know that the component [state in the render tree](https://react.dev/learn/preserving-and-resetting-state) will not reset, i.e., it will not be unmounted and mounted again (for instance, when you have a single `SplitFactoryProvider` component in the root or near the root of your app). Otherwise, a new factory instance will be created (if you pass a new `config` object) or the factory will be re-initialized (if you pass a reference to the same `config` object and the component is mounted again).
 
-When using the **`factory`** prop, the `SplitFactoryProvider` component doesn't shut down the SDK automatically. You should handle the [shutdown](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#shutdown) yourself.
+When using the **`factory`** prop, the `SplitFactoryProvider` component doesn't shut down the SDK automatically. You should handle the [shutdown](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#shutdown) yourself.
 
 You can use it for more complex setups. For example, when you need to use the `SplitFactoryProvider` component in different parts of your app, or when the `SplitFactoryProvider` is nested in a component that might be unmounted and mounted again, for example in a tabbed view, or a micro-frontend architecture. In these cases, you can create the factory instance as a global variable, and pass it down to the `SplitFactoryProvider` components.
 
@@ -201,7 +201,7 @@ Feel free to dive into the declaration files if IntelliSense is not enough!
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ## Using the SDK
 
@@ -213,7 +213,7 @@ To make sure the SDK is properly loaded before asking it for a treatment, block 
 
 After the `isReady` prop is set to true, you can use the SDK. The `useSplitTreatments` hook returns the proper treatments based on the `names` prop value passed to it and the `core.key` value you passed in the config when instantiating the SDK. Then use the `treatments` property to access the treatment values as well as the corresponding [dynamic configurations](/docs/feature-management-experimentation/feature-management/dynamic-configurations) that you defined in Harness FME. Remember to handle the client returning control as a safeguard.
 
-Similarly to the vanilla JS SDK, React SDK supports the ability to evaluate flags based on cached content when using [LOCALSTORAGE](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#configuration) as storage type. In this case, the `isReadyFromCache` prop will change to true almost instantly since access to the cache is synchronous, allowing you to consume flags earlier on components that are critical to your UI. Keep in mind that the data might be stale until `isReady` prop is true. Read more [below](#subscribe-to-events-and-changes).
+Similarly to the vanilla JS SDK, React SDK supports the ability to evaluate flags based on cached content when using [LOCALSTORAGE](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configuration) as storage type. In this case, the `isReadyFromCache` prop will change to true almost instantly since access to the cache is synchronous, allowing you to consume flags earlier on components that are critical to your UI. Keep in mind that the data might be stale until `isReady` prop is true. Read more [below](#subscribe-to-events-and-changes).
 
 <Tabs>
 <TabItem value="With useSplitTreatments hook">
@@ -656,13 +656,13 @@ const MyComponent = () => {
 
 ### Shutdown
 
-If the `SplitFactoryProvider` component is created with a `config` prop, then the component automatically instantiates and shuts down the SDK factory when the component is mounted and unmounted respectively. Otherwise, if the component is created by passing an SDK factory via the `factory` prop, you should handle the [shutdown](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#shutdown) yourself.
+If the `SplitFactoryProvider` component is created with a `config` prop, then the component automatically instantiates and shuts down the SDK factory when the component is mounted and unmounted respectively. Otherwise, if the component is created by passing an SDK factory via the `factory` prop, you should handle the [shutdown](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#shutdown) yourself.
 
 ## Track
 
 Use the `useTrack` hook to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Tracking events through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your features on your users' actions and metrics.
 
-Learn more about using [tracking events](https://help.split.io/hc/en-us/articles/360020585772) in Harness FME.
+Learn more about using [tracking events](/docs/feature-management-experimentation/release-monitoring/events/) in Harness FME.
 
 To track events, you must follow two steps:
 1. Retrieve the client's `track` method, which is available through the `useTrack` hook or the `useSplitClient` hook.
@@ -670,18 +670,18 @@ To track events, you must follow two steps:
 
 In the examples below, you can see that tracking events can take up to four arguments. The proper data type and syntax for each are:
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `eventsQueueSize` config or if an incorrect input has been provided.
 
-In case a bad input is provided, you can read more about our [SDK's expected behavior](https://help.split.io/hc/en-us/articles/360020585772-Track-events).
+In case a bad input is provided, you can read more about our [SDK's expected behavior](/docs/feature-management-experimentation/release-monitoring/events/).
 
 Remember that:
 - You must follow [React Hook rules](https://react.dev/reference/rules/rules-of-hooks) when using the `useTrack` or `useSplitClient` hooks, i.e., they must be invoked at the top level of your component or in custom hooks.
@@ -755,7 +755,7 @@ function MyComponent() {
 
 ## Configuration
 
-The SDK has a number of knobs for configuring performance. Each knob is tuned to a reasonable default. However, you can override the value while providing the config to the `SplitFactoryProvider` as shown in the Initialization section of this doc. To learn about the available configuration options, go to the [JavaScript SDK Configuration section](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#configuration).
+The SDK has a number of knobs for configuring performance. Each knob is tuned to a reasonable default. However, you can override the value while providing the config to the `SplitFactoryProvider` as shown in the Initialization section of this doc. To learn about the available configuration options, go to the [JavaScript SDK Configuration section](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configuration).
 
 ## Localhost mode
 
@@ -974,7 +974,7 @@ if (isReady) {
 </TabItem>
 </Tabs>
 
-To find all the details on the Manager available methods, see the [JavaScript SDK Manager section.](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#manager)
+To find all the details on the Manager available methods, see the [JavaScript SDK Manager section](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#manager).
 
 ## Listener
 
@@ -1063,7 +1063,7 @@ Even though the SDK does not fail if there is an exception in the listener, do n
 
 ## Logging
 
-To enable SDK logging in the browser, see how the [SDK Logging](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#logging) works.
+To enable SDK logging in the browser, see how the [SDK Logging](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#logging) works.
 
 This library own logger is not configurable yet, but will be very soon!
 
@@ -1075,7 +1075,7 @@ This section describes advanced use cases and features provided by the SDK.
 
 Each JavaScript SDK factory client is tied to one specific customer ID at a time which usually belongs to one traffic type (for example, `user`, `account`, `organization`). This enhances performance and reduces data cached within the SDK.
 
-FME supports the ability to release based on multiple traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, you can learn more [here](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type).
+FME supports the ability to release based on multiple traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, you can learn more [here](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/).
 
 If you need to roll out feature flags by different traffic types, instantiate multiple SDK clients, one for each traffic type. For example, you may want to roll out the feature `user-poll` by `users` and the feature `account-permissioning` by `accounts`. You can do this by retrieving different clients using the `useSplitClient` hook.
 
@@ -1380,7 +1380,7 @@ The `SplitContext` exposes the internal factory and client instances of JavaScri
 
 ### User consent
 
-The SDK factory allows you to disable the tracking of events and impressions until user consent is explicitly granted or declined. To learn how to configure this feature, refer to the [JavaScript SDK User consent section.](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#user-consent)
+The SDK factory allows you to disable the tracking of events and impressions until user consent is explicitly granted or declined. To learn how to configure this feature, refer to the [JavaScript SDK User consent section](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#user-consent).
 
 ### Server-Side Rendering
 

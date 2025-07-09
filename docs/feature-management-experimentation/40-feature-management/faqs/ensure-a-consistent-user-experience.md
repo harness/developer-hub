@@ -12,7 +12,7 @@ sidebar_position: 9
 
 Split SDKs use a deterministic hashing algorithm to decide what experience (treatment) to deliver for a feature flag. The algorithm takes two inputs:
 
-* The user ID. The ID can be an anonymous user ID, a logged in user ID, an account number or any other entity representable as a string. The type of the ID is indicated by its [traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type). 
+* The user ID. The ID can be an anonymous user ID, a logged in user ID, an account number or any other entity representable as a string. The type of the ID is indicated by its [traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/). 
 * The feature flag. When the SDK initializes, it downloads targeting plans for all flags. The seed, which is a random number for each feature flag, is cached as part of the rollout plan, and is consistent for every SDK that evaluates that flag.
 
 For example, user_1234 hits a getTreatment and the flag has the seed 123456.  These are combined and run through a deterministic hashing algorithm, which is consistent every time.  That hash value is converted into a number, which is then normalized using Mod 100 and put into one of 100 buckets.  The result is the user is put into the same bucket every time, for that feature flag, independent of which SDK calls the flag.  One way to think of it is the bucket is what’s assigned a treatment, not the user.

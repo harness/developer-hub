@@ -62,6 +62,30 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Previously, the name could not be updated for an application set resource and because the update was done with an upsert, a new application set was created. This is now fixed. (**CDS-111778**)
 - Previously, updating a DR (Disaster Recovery) agent could fail because the check for an existing agent only matched by account, org, project, and identifier—excluding the drIdentifier. This caused multiple agents to be returned during the update process. This issue is now resolved by improving the existing agent check to uniquely identify the correct DR agent. Note that agent updates are limited to changes in description and tags, and both primary and DR agents must be updated accordingly. (**CDS-111467**)
 
+### Version 1.96.4
+
+#### New Features and Enhancements
+
+- Harness supports the **Upload Artifacts to S3** step in Deploy stage, enabling users to upload artifacts directly to S3 within their CD workflows in a containerized step group. (**CDS-107976**)
+
+- Harness supports **barrier synchronization across parent and child pipelines**, enabling child pipelines to reference and utilize barriers defined in parent pipelines via runtime inputs for coordinated deployments and consistent roll-outs. Currently, this feature is behind the feature flag `PIPE_BARRIERS_FOR_CHAINED_PIPELINES`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
+
+- Users can now **change the repository when saving a new template**, enabling switching from project-level to account-level connectors. (**PIPE-12768**)
+
+- Harness now supports **registering GitX webhooks without creating them in Git providers**, enabling webhook setup via an intermediary service without requiring connector-level registration permissions. Currently, this feature is behind the feature flag `PIPE_GITX_DISABLE_SKIP_GIT_WEBHOOK_REGISTRATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-27267, ZD-79944, ZD-85272**)
+
+#### Fixed Issues
+
+- Previously, when both *Deploy Service in Parallel* and *Chart Version* were configured as runtime inputs, selecting a chart version and toggling the *Deploy Service in Parallel* option would erase the selected value. The issue is resolved with the feature flag `CDS_DEPLOY_SERVICE_IN_PARALLEL_FIX`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-110410, ZD-84716**)
+- Previously, executing a pipeline from the pipeline list page using an input set from a different branch resulted in an error stating that the input set did not exist in the main branch, even when the correct branch was specified. The issue is resolved. (**PIPE-28124, ZD-86994**)
+- Previously, .replace() in Harness expressions did not resolve correctly when the input variable was defined using another expression, even though it worked when the variable was configured as a runtime input. The issue is resolved. (**PIPE-27747, ZD-85847**)
+- Previously, the WinRM deployment rollback stage was incorrectly skipped even when rollback data from a successful prior deployment was available. The issue is resolved. The rollback stage will execute as expected when valid rollback data exists from a previous deployment. (**CDS-111654, ZD-86859**) 
+- Previously, the Canary deployment stage failed with a NullPointerException when attempting to access getPreviousReleaseVersion() on a null output from the Helm Canary step. This issue is resolved. (**CDS-111738, ZD-87118**) 
+- Previously, pipeline rollbacks triggered separate PIPELINE_START and PIPELINE_SUCCESS notifications for the rollback execution, followed by a PIPELINE_FAILED notification for the main pipeline. This behavior exposed rollback pipelines as independent executions. The issue is resolved and behind a feature flag `PIPE_DISABLE_PIPELINE_NOTIFICATIONS_ON_ROLLBACK`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**PIPE-28097**)
+- Previously, the CD Git Clone step failed even when valid repository details were provided. This was due to an internal mapping error where the step failed with the message: *Step `[<step_name>]`* should map to single port. The issue is resolved. (**PIPE-28355, ZD-87095**)
+- Previously, the Fargate deployment EcsUpgradeContainer step did not perform a health check on retry, which led to the step being marked as successful even when the service was not healthy. This caused the pipeline to proceed under the false assumption that the deployment succeeded. The issue is resolved with a feature flag `CDS_ECS_STEADY_STATE_CHECK_ON_RETRIES`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-111777, ZD-86907**)
+- Previously, the Canary Delete step in Kubernetes deployments incorrectly deleted Virtual Services as part of the workload during rollback. This led to loss of traffic routing configurations and potential service downtime. The issue is resolved with a feature flag `CDS_K8S_NOT_ADD_TRAFFIC_ROUTING_TO_CANARY_WORKLOAD`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**CDS-111916, ZD-87449**)
+
 ### Version 1.95.5
 
 #### New Features and Enhancements
