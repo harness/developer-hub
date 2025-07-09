@@ -2072,7 +2072,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "html",
-          value: "Propelo SEI",
+          value: "SEI (Legacy)",
           className: "horizontal-bar",
         },
         {
@@ -2091,7 +2091,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "html",
-          value: "Harness SEI",
+          value: "SEI (Beta)",
           className: "horizontal-bar",
         },
         {
