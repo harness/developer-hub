@@ -26,6 +26,10 @@ In Harness IDP 2.0, the Git Experience (GitX) enables a seamless flow between th
 
 This is to avoid unnecessary commit noise and ensure live data can be attached to entities without cluttering Git history.
 
+Starting with this release, the YAML editor in Harness IDP now includes a built-in view for displaying ingested metadata alongside the Git-synced YAML. This ensures users can see a complete picture of their service definitions—including dynamic data from tools like scanners or scorecards—without manually modifying the YAML file in Git.
+
+This separation of Git-backed and ingested data preserves Git history accountability while providing transparency into system-managed properties. Users are still responsible for managing source-of-truth YAML in Git, while ingested metadata reflects runtime or tool-generated values that update independently of version control.
+
 In the YAML editor, Harness now provides a way to view this ingested metadata without misleading users into thinking it’s Git-tracked. These properties are shown in a dedicated panel and not embedded directly within the YAML text.
 
 The editor maintains a clean separation between Git-synced definitions and runtime metadata, while still offering full visibility to users.
@@ -56,4 +60,3 @@ To view ingested properties in the YAML editor:
 4. The panel will display the metadata ingested via API in a read-only YAML-like format.
 
 For example, metadata like `teamManager`, `teamLead`, or `minorVersion`—which are not stored in Git—will be visible here.
-
