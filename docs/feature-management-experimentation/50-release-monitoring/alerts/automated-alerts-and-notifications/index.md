@@ -47,11 +47,11 @@ To enable or disable alert notifications for a specific feature flag, do the fol
 
 1. Click **Feature flags** in the left navigation menu, and click on a feature flag.
 
-1. Ensure the Alert baseline treatment is selected in the flag definition. _How this selection is used for alerting:_ Harness FME will compare the metric value of each treatment against the metric value of the alert baseline treatment selected. This comparison will determine the impact (_desired_, _undesired_, or _inconclusive_) that the feature flag has on that metric. For example, if you have two treatments “on” and “off”, and “off” is selected as your alert baseline treatment, Harness FME will monitor the impact of the “on” treatment against the “off” treatment and alert you if a statistically significant impact is observed. For more information, see [Understanding metric impact](https://help.split.io/hc/en-us/articles/360020890491-Understanding-metric-impact), [Applying filters](https://help.split.io/hc/en-us/articles/360020848451-Applying-filters), and [Set the alert baseline treatment](https://help.split.io/hc/en-us/articles/360029566292-Set-the-alert-baseline-treatment-).
+1. Ensure the Alert baseline treatment is selected in the flag definition. _How this selection is used for alerting:_ Harness FME will compare the metric value of each treatment against the metric value of the alert baseline treatment selected. This comparison will determine the impact (_desired_, _undesired_, or _inconclusive_) that the feature flag has on that metric. For example, if you have two treatments “on” and “off”, and “off” is selected as your alert baseline treatment, Harness FME will monitor the impact of the “on” treatment against the “off” treatment and alert you if a statistically significant impact is observed. For more information, see [Understanding metric impact](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards/), [Applying filters](/docs/feature-management-experimentation/release-monitoring/metrics/setup/filtering/), and [Set the alert baseline treatment](/docs/feature-management-experimentation/release-monitoring/alerts/set-the-alert-baseline-treatment).
 
 1. Next to the feature flag name, click on the gear icon, and select **Alerts setup**.
 
-1. Note that feature flag alerts can only be enabled for all production environments at this time. (You can change the Environment type to **Production** when you edit an environment in Admin settings, accessed via the top button in the left navigation panel.) For more information about environments, see the [Environments](https://help.split.io/hc/en-us/articles/360019915771) guide.
+1. Note that feature flag alerts can only be enabled for all production environments at this time. (You can change the Environment type to **Production** when you edit an environment in Admin settings, accessed via the top button in the left navigation panel.) For more information about environments, see the [Environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments/) documentation.
 
 1. Under Alert conditions, check the box **When a key metric reaches significance** to turn the feature flag’s alerting on. This means that an alert will be immediately triggered whenever one of this feature flag’s key metrics reaches a desired or undesired impact. Unchecking the box will turn the feature flag’s alerting off.
 
@@ -82,13 +82,13 @@ Visit the Harness FME application to view the feature flag's metrics impact or k
 
 The recipients of the feature flag alert email are listed under Destinations and recipients, in the feature flag's **Alerts setup**, accessed via the gear icon next to the feature flag's name.
 
-When you receive an alert, you can view the feature flag in the Harness FME UI and select the [Metrics impact tab](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab). Filter using the alert information to view the measurement that triggered the alert and explore the metric results.
+When you receive an alert, you can view the feature flag in the Harness FME UI and select the [Metrics impact tab](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/). Filter using the alert information to view the measurement that triggered the alert and explore the metric results.
 
 ## How feature flag alerting relates to other features and settings
 
 ### Metric alerting
 
-Toggling a feature flag’s alerting on or off will not disable metric alerting, which is defined and enabled on a metric’s Alert policy tab. It is possible that a metric simultaneously triggers a feature flag alert and a metric alert if it is selected as a key metric for a feature flag and if the thresholds in both alert definitions are reached. To define metric alert policies, review the [Configuring metric alerting](https://help.split.io/hc/en-us/articles/19832312225293) guide.
+Toggling a feature flag’s alerting on or off will not disable metric alerting, which is defined and enabled on a metric’s Alert policy tab. It is possible that a metric simultaneously triggers a feature flag alert and a metric alert if it is selected as a key metric for a feature flag and if the thresholds in both alert definitions are reached. To define metric alert policies, review the [Configuring metric alerting](/docs/feature-management-experimentation/experimentation/metrics/alert-policies/#create-a-metric-alert-policy) guide.
 
 ### Alert baseline treatment and treatment distribution
 
@@ -96,11 +96,11 @@ For metric calculations to determine a desired or undesired impact, the feature 
 
 ### Recalculating metrics 
 
-Clicking the **Recalculate metrics** button on the Metrics impact tab in the feature flag definition will trigger feature flag alerts (for any key metrics that show a desired or undesired impact after recalculating). For more information see [Manually recalculating metrics](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab#manually-recalculating-metrics).
+Clicking the **Recalculate metrics** button on the Metrics impact tab in the feature flag definition will trigger feature flag alerts (for any key metrics that show a desired or undesired impact after recalculating). For more information see [Manually recalculating metrics](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/#manually-recalculating-metrics).
 
 ## Troubleshooting feature flag alerts
 
-For troubleshooting an alert that did not fire as expected, refer to the [Troubleshooting alerting](https://help.split.io/hc/en-us/articles/19832825482637) guide.
+For troubleshooting an alert that did not fire as expected, refer to the [Troubleshooting alerting](/docs/feature-management-experimentation/release-monitoring/alerts/troubleshooting) guide.
 
 To understand the impact of your feature flags, you need to know when critical changes are occurring. Harness FME gives you the ability to create alerts that actively check for a degradation in your metrics. Alerts that fired are displayed both on the Targeting and Alerts tab on the feature flag page.
 

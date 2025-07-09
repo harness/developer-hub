@@ -4,13 +4,13 @@ description: Learn how to get started with Release Monitoring.
 sidebar_position: 20
 ---
 
-See the following quickstart guides that take advantage of FME SDK Suite (or RUM agents) and the default events they track in order to quickly get you up and running with Release Monitoring.  If you don’t want to or can’t use them, you can always send events to Harness FME other ways — via SDK’s `track` methods, API calls, or integrations as [documented here](https://help.split.io/hc/en-us/articles/360020585772-Events).
+See the following quickstart guides that take advantage of FME SDK Suite (or RUM agents) and the default events they track in order to quickly get you up and running with Release Monitoring.  If you don’t want to or can’t use them, you can always send events to Harness FME other ways — via [SDK’s `track` methods, API calls, or integrations](/docs/feature-management-experimentation/release-monitoring/events/).
 
 ## Rollout of a new feature on the Web
 
 When rolling out a new feature on your site, you’ll want to track how that affects the performance metrics on your site. Google researchers have provided a package that they call [web vitals](https://github.com/GoogleChrome/web-vitals) that measures what are considered to be the most important and vital metrics to measure performance as seen by users browsing or visiting a website.
 
-FME Browser SDK Suite includes the web vitals package to allow you to track and monitor these metrics. You can also track [additional events](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent#custom-events) you are interested in as well.
+FME Browser SDK Suite includes the web vitals package to allow you to track and monitor these metrics. You can also track [additional events](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent#custom-events) you are interested in as well.
 
 We recommend using the npm package, which allows you to customize the events tracked and register additional collectors. 
 
@@ -18,7 +18,7 @@ If you are not going to be evaluating flags in the browser you can use the RUM a
 
 To set this up, follow these steps:
 
-1. Install the FME [Browser SDK Suite](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite#1-import-the-suite-into-your-project) (or [Browser RUM agent](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent#1-import-the-agent-into-your-project))
+1. Install the FME [Browser SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite#1-import-the-suite-into-your-project) (or [Browser RUM agent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent#1-import-the-agent-into-your-project))
 
    1. Set the FME SDK Key
    2. Set the user IDs and trafficTypes
@@ -30,11 +30,11 @@ To set this up, follow these steps:
    
 1. Put your new feature behind a flag with a percentage based rollout
 
-    1. Set up [Key Metrics](https://help.split.io/hc/en-us/articles/360058405992-Metrics-Guide)
+    1. Set up [Key Metrics](/docs/feature-management-experimentation/experimentation/setup/metric-selection/key-metrics)
       
-1. Once the events start flowing from the RUM agent, metrics will automatically be generated according to this list: [Automatic Metric Creation for Browser](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-Agent#automatic-metric-creation)
+1. Once the events start flowing from the RUM agent, metrics will automatically be generated according to this list: [Automatic Metric Creation for Browser](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent#automatic-metric-creation)
 
-    1. Configure [alerting](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) for these metrics
+    1. Configure [alerting](/docs/feature-management-experimentation/release-monitoring/alerts/alert-policies/) for these metrics
  
 
 And that’s it. You are now getting Harness FME’s powerful statistical computation engine watching your back to ensure that you are alerted to any degradation of the automatic metric across any of your percentage based rollouts of features. 
@@ -55,11 +55,11 @@ To set this up, follow these steps:
 
 1. Put your new feature behind a flag with a percentage based rollout
    
-   1. Set up [Key Metrics](https://help.split.io/hc/en-us/articles/360058405992-Metrics-Guide)
+   1. Set up [Key Metrics](/docs/feature-management-experimentation/experimentation/setup/metric-selection/key-metrics)
 
-1. Once the events start flowing from the RUM agent, metrics will automatically be generated according to this list: [Automatic Metric Creation for Android](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent#automatic-metric-creation) and [Automatic Metric Creation for iOS](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent#automatic-metric-creation) 
+1. Once the events start flowing from the RUM agent, metrics will automatically be generated according to this list: [Automatic Metric Creation for Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent#automatic-metric-creation) and [Automatic Metric Creation for iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent#automatic-metric-creation) 
    
-   1. Configure [alerting](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) for these metrics
+   1. Configure [alerting](/docs/feature-management-experimentation/release-monitoring/alerts/alert-policies/) for these metrics
 
 And that’s it. You are now getting Harness FME’s powerful statistical computation engine watching your back to ensure that you are alerted to any degradation of the automatic metric across any of your percentage based rollouts of features. 
 

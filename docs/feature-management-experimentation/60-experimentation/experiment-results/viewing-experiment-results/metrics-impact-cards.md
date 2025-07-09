@@ -5,7 +5,7 @@ sidebar_position: 10
 
 Your metrics cards show different states depending on your user selections on the feature flag's Metric impact tab, the traffic distribution, the data available, and whether a baseline is selected in the feature flag definition. This page provides a summary of the states of the metric impact card. 
 
-For more information about the Metric impact tab, refer to the [Metric impact](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact) guide.
+For more information about the Metric impact tab, refer to the [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/) documentation.
 
 :::tip
 On a Desired, Undesired, or Inconclusive impact metric card, you can see the range that the _**impact lies between**_. The two values are the statistically calculated extreme values for your impact. The smaller the range between the extreme values, the higher the confidence in the predictability of the feature impact on the metric.
@@ -40,7 +40,7 @@ When a metric card displays **Undesired** and is red, it is because of the follo
 A metric card displays **Inconclusive** if the metric impact is undecided. The card displays a yellow state if:
 
 * There is insufficient evidence to believe that there was an impact. Because the p-value is greater than the defined significance threshold of 0.05 or your account-wide significance setting, there is little evidence that the treatment selected had a different impact on the metric than the baseline treatment selected.
-* The observed effect is less than the defined effect threshold. In this case, the observed effect doesn't meet the desired minimum detectable effect. Refer to the [Sample size and sensitivity calculators](https://help.split.io/hc/en-us/articles/360034040851-Sample-size-and-sensitivity-calculators) guide for more information about detectable effect sizes using our calculators.
+* The observed effect is less than the defined effect threshold. In this case, the observed effect doesn't meet the desired minimum detectable effect. Refer to the [Sample size and sensitivity calculators](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/) guide for more information about detectable effect sizes using our calculators.
 * The range goes from a negative to a positive range. It’s inconclusive because the impact could be positive or negative.
 
 ### Baseline value equals zero
@@ -57,7 +57,7 @@ This section details the results shown on gray metric cards. It also explains th
 
 <img src="https://help.split.io/hc/article_attachments/11298119532557" alt="needs_more_data_355_sample_size.png" width="600" />
 
-A metric card displays **Needs more data** when the treatments being compared have not reached the minimum sample size. (The minimum sample size is set in Experiment settings). We require data from a specific number of unique users in each treatment before we calculate significance for your metrics. For more information, refer to the [Statistical significance](https://help.split.io/hc/en-us/articles/360020641472-Statistical-significance).
+A metric card displays **Needs more data** when the treatments being compared have not reached the minimum sample size. (The minimum sample size is set in Experiment settings). We require data from a specific number of unique users in each treatment before we calculate significance for your metrics. For more information, refer to the [Statistical significance](/docs/feature-management-experimentation/experimentation/key-concepts/statistical-significance/).
 
 ### Statistically not possible
 

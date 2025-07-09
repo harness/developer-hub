@@ -17,7 +17,7 @@ To use this feature, you must enable the experimentation package. Contact [suppo
 
 ## Before you start
 
-Before you start, you must be sending events with event properties. For more information about sending event properties, refer to the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events) guide. For deeper analysis of events and properties you are currently sending, go to the Data hub, and from the Live tail tab, run your query for your events to get the right event properties. For more information on how to run a query, refer to the [Query events section](https://help.split.io/hc/en-us/articles/360044867032-Live-tail#query-events) of the Live tail guide.
+Before you start, you must be sending events with event properties. For more information about sending event properties, refer to the [Events](/docs/feature-management-experimentation/release-monitoring/events/) guide. For deeper analysis of events and properties you are currently sending, go to the Data hub, and from the Live tail tab, run your query for your events to get the right event properties. For more information on how to run a query, refer to the [Query events section](/docs/feature-management-experimentation/feature-management/live-tail/#query-events) of the Live tail guide.
 
 ## What is a dimension
 
@@ -51,7 +51,7 @@ You can configure dimensions at the Admin level. You have a limit of twenty dime
 
 ## Viewing dimensionality
 
-View your dimensions in the Impact snapshot graph. This graph provides you with an up-to-date, aggregated view of the impact and confidence interval broken out by dimension over baseline for each treatment. For more information about the graph, refer to the [Line chart section](https://help.split.io/hc/en-us/articles/360025376251-Metric-details-and-trends#line-charts) of the Metric details and trends guide.
+View your dimensions in the Impact snapshot graph. This graph provides you with an up-to-date, aggregated view of the impact and confidence interval broken out by dimension over baseline for each treatment. For more information about the graph, refer to the [Line chart section](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/#line-charts) of the Metric details and trends guide.
 
 ## Editing dimensions
 
