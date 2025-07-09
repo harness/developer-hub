@@ -26,11 +26,11 @@ Chaos infrastructure helps facilitate the chaos fault injection and hypothesis v
 
 All the chaos infrastructure services adhere to the **principle of least privilege**, where the services execute with the minimum number of permissions.
 
-Go to [enable or disable an infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/) and [upgrade it](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra) to get a hands-on experience.
+Go to [enable or disable an infrastructure](/docs/chaos-engineering/guides/infrastructures/types/) and [upgrade it](/docs/chaos-engineering/guides/infrastructures/upgrade-infra) to get a hands-on experience.
 
 You can install an infrastructure as a part of creating an experiment. This infrastructure is installed on the target Kubernetes cluster and helps inject chaos into applications, thereby executing the chaos experiments.
 
-Go to [flow of control](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/classification#flow-of-control-in-kubernetes-based-faults) to understand the flow of control of Kubernetes faults.
+Go to [flow of control](/docs/chaos-engineering/faults/chaos-faults/kubernetes/classification#flow-of-control-in-kubernetes-based-faults) to understand the flow of control of Kubernetes faults.
 
 :::tip
 - You can add multiple chaos infrastructures as part of an environment.
@@ -52,6 +52,6 @@ To delete your environment, remove the environment references, that is, the infr
 
 
 Harness CE facilitates installing two types of chaos infrastructure:
-- [DDCR](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/) (Delegate Driven Chaos Runner) aka **Harness Delegate**; and
-- [Harness Chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/) that uses a dedicated infrastructure (aka Legacy Kubernetes Infrastructure).
+- [DDCR](/docs/chaos-engineering/guides/infrastructures/types/ddcr/) (Delegate Driven Chaos Runner) aka **Harness Delegate**; and
+- [Harness Chaos infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/) that uses a dedicated infrastructure (aka Legacy Kubernetes Infrastructure).
 

@@ -89,7 +89,7 @@ CF app JVM method exception:
 	<tr>
 		<td> duration </td>
 		<td> Duration through which chaos is injected into the target resource (in seconds). </td>
-		<td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> chaos duration</a>. </td>
+		<td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> chaos duration</a>. </td>
 	</tr>
 	<tr>
 		<td> skipSSLValidation </td>

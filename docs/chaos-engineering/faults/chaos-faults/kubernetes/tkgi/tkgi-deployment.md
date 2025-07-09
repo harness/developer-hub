@@ -2,7 +2,7 @@
 title: Fault injection on Tanzu Kubernetes Grid-based infrastructure
 sidebar_position: 2
 redirect_from:
-	- /docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/tkgi-deployment
+	- /docs/chaos-engineering/faults/chaos-faults/kubernetes/tkgi-deployment
 ---
 
 This topic describes HCE's fault injection approach on [Tanzu Kubernetes Grid-based](https://tanzu.vmware.com/kubernetes-grid)(TKGi) infrastructure. It describes the chaos components installed in the cluster, their deployment architecture, and various deployment modes of the Kubernetes chaos infrastructure.
@@ -10,7 +10,7 @@ This topic describes HCE's fault injection approach on [Tanzu Kubernetes Grid-ba
 ## Overview
 You can execute chaos experiments on various layers of your infrastructure to determine the resilience of your TKGi-based microservices. You can start from the application process layer (supported for JVM-based apps currently) and move down to the underlying host infrastructure.
 
-Harness provides out-of-the-box faults for different target types as well as automatically validates the resilience of the services with performance metrics, status endpoints, health check scripts, and so on using [**resilience probes**](/docs/chaos-engineering/use-harness-ce/probes/).
+Harness provides out-of-the-box faults for different target types as well as automatically validates the resilience of the services with performance metrics, status endpoints, health check scripts, and so on using [**resilience probes**](/docs/chaos-engineering/key-concepts/probes/).
 
 You can combine the chaos experiments with custom actions such as load generation when you execute these experiments as part of the Harness pipelines.
 
@@ -27,7 +27,7 @@ You will learn about the Kubernetes chaos infrastructure components involved in 
 You will also learn how the components mentioned earlier can be leveraged to inject faults into cloud-based infrastructure and managed services.
 
 :::tip
-Components involved in chaos against the TKGi control plane, that is, the VMs, are the same ones as described in [deployment model for Cloud Foundry chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/cf-chaos-components-and-their-deployment-architecture#direct-installation-of-lci-in-the-tas-vms).
+Components involved in chaos against the TKGi control plane, that is, the VMs, are the same ones as described in [deployment model for Cloud Foundry chaos](/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/cf-chaos-components-and-their-deployment-architecture#direct-installation-of-lci-in-the-tas-vms).
 :::
 
 ### Subscriber

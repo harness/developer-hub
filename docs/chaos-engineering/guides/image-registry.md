@@ -3,7 +3,7 @@ title: Image Registry
 description: Configure custom container image registries for chaos experiments
 sidebar_position: 11
 redirect_from:
-  - /docs/chaos-engineering/use-harness-ce/image-registry
+  - /docs/chaos-engineering/guides/image-registry
 ---
 
 # Image Registry

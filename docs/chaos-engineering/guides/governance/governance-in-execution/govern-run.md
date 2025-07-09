@@ -4,16 +4,16 @@ sidebar_position: 2
 description: This topic describes how you can configure rules and conditions for ChaosGuard.
 redirect_from:
 - /docs/chaos-engineering/features/chaosguard/configuring-chaosguard
-- /docs/chaos-engineering/use-harness-ce/governance/govern-run
+- /docs/chaos-engineering/guides/governance/govern-run
 ---
 
-This topic describes how you can configure **ChaosGuard** to enforce security policies during chaos experiments execution. An additional layer of security that is executed before running a chaos experiment is [ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/).
+This topic describes how you can configure **ChaosGuard** to enforce security policies during chaos experiments execution. An additional layer of security that is executed before running a chaos experiment is [ChaosGuard](/docs/chaos-engineering/guides/governance/governance-in-execution/).
 
 [This](https://youtu.be/cHFiBvQPCLU) video provides a walkthrough of configuring the rules and conditions in ChaosGuard.
 
 ## Prerequisites
 
-[Install a Harness Delegate or a dedicated chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/) before creating a condition because a condition is applied to an infrastructure.
+[Install a Harness Delegate or a dedicated chaos infrastructure](/docs/chaos-engineering/guides/infrastructures/types/) before creating a condition because a condition is applied to an infrastructure.
 
 ## Configure a condition
 

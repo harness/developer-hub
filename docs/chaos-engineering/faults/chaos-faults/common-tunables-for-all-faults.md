@@ -3,7 +3,7 @@ title: Common Tunables for All Faults
 description: Configuration parameters shared across all chaos faults
 sidebar_position: 2
 redirect_from:
-  - /docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults
+  - /docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults
 ---
 
 # Common Tunables for All Faults

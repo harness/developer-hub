@@ -19,7 +19,7 @@ SSH chaos can be used with custom chaos logic and transferred to a target VM (to
 
 ## Executing the SSH chaos experiment
 
-Before executing the SSH chaos experiment, ensure that you follow the steps in the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/prerequisites) section. This generates two experiment YAML files, namely `ssh-chaos-with-key.yaml` and `ssh-chaos-with-pass.yaml`. You can use one of them based on the authentication method you choose.
+Before executing the SSH chaos experiment, ensure that you follow the steps in the [prerequisites](/docs/chaos-engineering/faults/chaos-faults/ssh/prerequisites) section. This generates two experiment YAML files, namely `ssh-chaos-with-key.yaml` and `ssh-chaos-with-pass.yaml`. You can use one of them based on the authentication method you choose.
 
 - Use `ssh-chaos-with-key.yaml` for private key authentication. This file references secrets in its YAML view. The `PASSWORD` environment variable should be empty.
 

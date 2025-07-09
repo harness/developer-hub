@@ -18,7 +18,7 @@ The Chaos Dashboard is an interactive interface designed to manage, visualize, a
 - Contact your [sales representative](mailto:sales@harness.io) to check if you are eligible for the on-prem platform.
 :::
 
-Go to [view dashboard](/docs/chaos-engineering/use-harness-ce/dashboards/view-dashboard) or [create a new dashboard](/docs/chaos-engineering/use-harness-ce/dashboards/create-new).
+Go to [view dashboard](/docs/chaos-engineering/guides/dashboards/view-dashboard) or [create a new dashboard](/docs/chaos-engineering/guides/dashboards/create-new).
 
 Described below are descriptions of various fields used to plot and analyze data in Chaos Dashboard.
 

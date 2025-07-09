@@ -4,7 +4,7 @@ sidebar_position: 1
 redirect_from:
 - /docs/chaos-engineering/features/chaos-dashboard/overview
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview
-- /docs/chaos-engineering/use-harness-ce/dashboards/view-dashboard
+- /docs/chaos-engineering/guides/dashboards/view-dashboard
 ---
 
 ## Before you begin, review the following:
@@ -17,7 +17,7 @@ redirect_from:
 
     ![chaos-dashboard](./static/view/chaos-dashboard-intro.png)
 
-2. From the modules displayed at the top, select **Chaos**. You can see a number of predefined chaos dashboards. You can either select one of the experiments or [create a new dashboard](/docs/chaos-engineering/use-harness-ce/dashboards/create-new). Here, you can select a predefined chaos dashboard named **Chaos Experiment Insights**. You will see multiple visualizations in this predefined dashboard.
+2. From the modules displayed at the top, select **Chaos**. You can see a number of predefined chaos dashboards. You can either select one of the experiments or [create a new dashboard](/docs/chaos-engineering/guides/dashboards/create-new). Here, you can select a predefined chaos dashboard named **Chaos Experiment Insights**. You will see multiple visualizations in this predefined dashboard.
 
     ![select-chaos](./static/view/select-default.png)
 
@@ -43,5 +43,5 @@ You can view the data, and download the data in different formats (such as JSON,
 
 ## Next steps
 
-- [Create New Dashboard](/docs/chaos-engineering/use-harness-ce/dashboards/create-new)
+- [Create New Dashboard](/docs/chaos-engineering/guides/dashboards/create-new)
 - [Best practices to build effective dashboards](/docs/platform/dashboards/dashboard-best-practices.md)

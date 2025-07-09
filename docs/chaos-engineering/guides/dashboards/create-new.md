@@ -6,7 +6,7 @@ description: Guide to create a new dashboard and visualize entities of a chaos e
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/create-a-new-dashboard
 - /docs/chaos-engineering/features/chaos-dashboard/create-a-new-dashboard
-- /docs/chaos-engineering/use-harness-ce/dashboards/create-new
+- /docs/chaos-engineering/guides/dashboards/create-new
 ---
 
 This section will guide you through creating a new chaos dashboard, and creating custom visualizations for various entities of a chaos experiment.
@@ -14,7 +14,7 @@ This section will guide you through creating a new chaos dashboard, and creating
 ## Before you begin, review the following
 
 - [Out-of-box Resilience Insights](/docs/chaos-engineering/concepts/explore-features#resilience-insights)
-- [View Chaos dashboards](/docs/chaos-engineering/use-harness-ce/dashboards/view-dashboard)
+- [View Chaos dashboards](/docs/chaos-engineering/guides/dashboards/view-dashboard)
 
 ## Create a new visualization
 

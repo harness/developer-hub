@@ -2,7 +2,7 @@
 title: Governance in Creation
 sidebar_position: 1
 redirect_from:
-  - /docs/chaos-engineering/use-harness-ce/governance/rbac
+  - /docs/chaos-engineering/guides/governance/rbac
 ---
 
 This topic describes how Harness CE leverages RBAC to ensure that you have the right access to chaos engineering resources.
@@ -28,13 +28,13 @@ To view the permissions you have, go to **Project Settings**-> **Access Control*
 
 Harness allows users to exercise fine-grained control, which is sufficient for environments that are local to a team or group. You can perform the following operations:
 
-1. View/Add (by connecting to the relevant Git repo)/Edit (the access information, refresh durations, etc.)/Delete the **chaos artifact sources** ([ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub)).
+1. View/Add (by connecting to the relevant Git repo)/Edit (the access information, refresh durations, etc.)/Delete the **chaos artifact sources** ([ChaosHub](/docs/chaos-engineering/guides/chaoshubs/add-chaos-hub)).
 
-2. View/Add (by installing the chaos agent)/Edit/Delete the target infrastructure, where the chaos experiments are carried out ([Chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/)).
+2. View/Add (by installing the chaos agent)/Edit/Delete the target infrastructure, where the chaos experiments are carried out ([Chaos infrastructure](/docs/chaos-engineering/guides/infrastructures/types/)).
 
-3. View/Add (by selecting fault templates and providing app data)/Edit (fault tunables, validation/probe constraints, execution properties)/Execute (run saved experiments)/Delete the chaos experiments ([Chaos Experiment](/docs/chaos-engineering/use-harness-ce/experiments/#create-experiments)).
+3. View/Add (by selecting fault templates and providing app data)/Edit (fault tunables, validation/probe constraints, execution properties)/Execute (run saved experiments)/Delete the chaos experiments ([Chaos Experiment](/docs/chaos-engineering/guides/experiments/#create-experiments)).
 
-4. View/Add (by selecting one or more experiments against one or more target infrastructures)/Edit (objectives, descriptions, tags, selected experiments)/Delete [chaos gamedays](/docs/chaos-engineering/use-harness-ce/GameDay).
+4. View/Add (by selecting one or more experiments against one or more target infrastructures)/Edit (objectives, descriptions, tags, selected experiments)/Delete [chaos gamedays](/docs/chaos-engineering/guides/gamedays).
 
     ![fine-grain control](./static/rbac/fine-grain-control.png)
 
@@ -43,7 +43,7 @@ The Harness project admin persona can create a custom role by selecting the desi
 ![new-user](./static/rbac/new-user-entry.png)
 
 
-[Harness RBAC functionality](/docs/chaos-engineering/security/) acts as a first-level security check (or deterrent) that you can leverage to prevent config-time security issues. It is a platform-wide, generic framework that counts resources from other Harness modules (such as CI/CD/Cloud Cost/Service Reliability, etc.) under its purview. However, chaos has additional requirements to enforce [execution-time security restrictions](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/).
+[Harness RBAC functionality](/docs/chaos-engineering/security/) acts as a first-level security check (or deterrent) that you can leverage to prevent config-time security issues. It is a platform-wide, generic framework that counts resources from other Harness modules (such as CI/CD/Cloud Cost/Service Reliability, etc.) under its purview. However, chaos has additional requirements to enforce [execution-time security restrictions](/docs/chaos-engineering/guides/governance/governance-in-execution/).
 
 ## Conclusion
 

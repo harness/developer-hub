@@ -79,7 +79,7 @@ Kubelet density:
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the target node. </td>
-        <td> If this environment variable isn't set, a random target node is selected. For more information, go to <a href = "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node</a>.</td>
+        <td> If this environment variable isn't set, a random target node is selected. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node</a>.</td>
       </tr>
     </table>
     
@@ -93,7 +93,7 @@ Kubelet density:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 90s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
+        <td> Defaults to 90s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> POD_COUNT </td>
@@ -128,7 +128,7 @@ Kubelet density:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href= "/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href= "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
     </table>
 

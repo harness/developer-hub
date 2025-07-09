@@ -3,7 +3,7 @@ title: Run & Schedule Experiments
 description: Execute chaos experiments safely with monitoring and scheduling options
 sidebar_position: 3
 redirect_from:
-  - /docs/chaos-engineering/use-harness-ce/experiments/run-schedule-exp
+  - /docs/chaos-engineering/guides/experiments/run-schedule-exp
 ---
 
 # Run & Schedule Experiments

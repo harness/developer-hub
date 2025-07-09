@@ -2,8 +2,8 @@
 title: Delegate Versus Dedicated Chaos Infrastructure
 sidebar_position: 20
 redirect_from:
-- /docs/chaos-engineering/use-harness-ce/infrastructures/#dedicated-chaos-infrastructure-versus-harness-delegate-driven-chaos-infrastructure
-- /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr-vs-dedicated
+- /docs/chaos-engineering/guides/infrastructures/#dedicated-chaos-infrastructure-versus-harness-delegate-driven-chaos-infrastructure
+- /docs/chaos-engineering/guides/infrastructures/ddcr-vs-dedicated
 ---
 
 This section compares the characteristics of Delegate-Driven Chaos Infrastructure and Dedicated chaos infrastructure (Legacy Kubernetes infrastructure).
@@ -14,15 +14,15 @@ This section compares the characteristics of Delegate-Driven Chaos Infrastructur
     <th>Dedicated Chaos Infrastructure</th>
   </tr>
   <tr>
-    <td>Involves installing <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr#what-is-ddcr"><strong>Delegates</strong> </a>, a service used to connect to <strong>artifact repositories, collaboration tools, verification systems</strong>, and more.</td>
-    <td>Involves <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes">setting up</a> a separate, dedicated environment for running chaos experiments.</td>
+    <td>Involves installing <a href="https://developer.harness.io/docs/chaos-engineering/guides/infrastructures/types/ddcr#what-is-ddcr"><strong>Delegates</strong> </a>, a service used to connect to <strong>artifact repositories, collaboration tools, verification systems</strong>, and more.</td>
+    <td>Involves <a href="https://developer.harness.io/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/kubernetes">setting up</a> a separate, dedicated environment for running chaos experiments.</td>
   </tr>
   <tr>
     <td>Leverages the <strong>existing infrastructure</strong>, allowing chaos experiments to be run without requiring a separate setup, eliminating the need of CRDs.</td>
     <td>Requires CRDS and its own <strong>resources</strong> (servers, network configurations, etc.) that are <strong>isolated</strong> from the main application infrastructure.</td>
   </tr>
   <tr>
-    <td>Includes <strong>automated Kubernetes service discovery</strong> and workload analysis using a <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/service-discovery#how-does-harness-ce-leverage-discovered-services"><strong>transient discovery agent</strong> </a>.</td>
+    <td>Includes <strong>automated Kubernetes service discovery</strong> and workload analysis using a <a href="https://developer.harness.io/docs/chaos-engineering/guides/service-discovery#how-does-harness-ce-leverage-discovered-services"><strong>transient discovery agent</strong> </a>.</td>
     <td>N/A</td>
   </tr>
   <tr>
@@ -30,7 +30,7 @@ This section compares the characteristics of Delegate-Driven Chaos Infrastructur
     <td>N/A</td>
   </tr>
   <tr>
-    <td>Enables <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/#auto-create-experiments"><strong>chaos experiment auto-creation</strong> </a> for a given <a href="https://developer.harness.io/docs/platform/application-map/"> application map </a> based on the <strong>workload specification and network traffic lineage</strong>.</td>
+    <td>Enables <a href="https://developer.harness.io/docs/chaos-engineering/guides/infrastructures/#auto-create-experiments"><strong>chaos experiment auto-creation</strong> </a> for a given <a href="https://developer.harness.io/docs/platform/application-map/"> application map </a> based on the <strong>workload specification and network traffic lineage</strong>.</td>
     <td>N/A</td>
   </tr>
   <tr>
@@ -47,15 +47,15 @@ This section compares the characteristics of Delegate-Driven Chaos Infrastructur
   </tr>
   <tr>
   <td> Enables fault execution on following platforms:
-  <ul><li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/">AWS</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/">GCP</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/">Kubernetes</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/">VMware</a></li></ul></td>
+  <ul><li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/aws/">AWS</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/gcp/">GCP</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/">Kubernetes</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/">VMware</a></li></ul></td>
   <td> Enables fault execution on following platforms:
-  <ul><li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/">AWS</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/">Azure</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/">GCP</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/">Kubernetes</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/">VMware </a></li></ul></td>
+  <ul><li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/aws/">AWS</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/azure/">Azure</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/gcp/">GCP</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/">Kubernetes</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/">VMware </a></li></ul></td>
   </tr>
 </table>

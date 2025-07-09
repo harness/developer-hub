@@ -3,21 +3,21 @@ title: Dedicated Delegate on Target Cluster
 sidebar_position: 30
 description: Use Dedicated Delegate on Target Cluster
 redirect_from:
-- /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/dedicated-delegate
+- /docs/chaos-engineering/guides/infrastructures/ddcr/dedicated-delegate
 ---
 
 This topic describes the permissions required to deploy Delegate for each target cluster to execute chaos experiments.
 
 ## Before you begin, review the following:
 
-- [What is DDCR?](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr)
-- [Install Delegate to execute chaos experiments](/docs/chaos-engineering/use-harness-ce/infrastructures/types)
+- [What is DDCR?](/docs/chaos-engineering/guides/infrastructures/#what-is-ddcr)
+- [Install Delegate to execute chaos experiments](/docs/chaos-engineering/guides/infrastructures/types)
 
 ## Why service accounts matter
 
 A service account is required in the Delegate YAML when Delegate is installed in the **target cluster** to execute chaos experiments, because Delegate has to assume a role to execute chaos experiments.
 
-In case the Delegate is deployed in a [**centralized infrastructure**](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/centralized-delegate) (and connected to the target cluster), service account is not required in the Delegate YAML because the Kubernetes connectors already have the role permissions, and Delegate only orchestrates the tasks.
+In case the Delegate is deployed in a [**centralized infrastructure**](/docs/chaos-engineering/guides/infrastructures/types/ddcr/centralized-delegate) (and connected to the target cluster), service account is not required in the Delegate YAML because the Kubernetes connectors already have the role permissions, and Delegate only orchestrates the tasks.
 
 The diagram below describes the interaction between Harness environment and your (user) environment when using a dedicated Delegate on a target cluster. It is important to note that Harness Delegate is installed in the target cluster where chaos experiment is executed.
 
@@ -294,6 +294,6 @@ Finally create the Kubernetes infrastructure using the Kubernetes connectors cre
 
 ### Step 10. Edit Infrastructure 
 
-Edit the infrastructure you created in [step 9](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/dedicated-delegate#step-9-create-kubernetes-infrastructure) to provide the details of dedicated namespace that was created earlier. This is the namespace where the chaos runner will be launched along with the Service Account to ensure that experiments run with relevant permissions.
+Edit the infrastructure you created in [step 9](/docs/chaos-engineering/guides/infrastructures/types/ddcr/dedicated-delegate#step-9-create-kubernetes-infrastructure) to provide the details of dedicated namespace that was created earlier. This is the namespace where the chaos runner will be launched along with the Service Account to ensure that experiments run with relevant permissions.
 
     ![](./static/delegate/edit-infra-sa.png)

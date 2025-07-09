@@ -14,7 +14,7 @@ Windows process kill:
 - Simulates loss of processes, leading to degradation in the performance of application on the machine.
 
 ## Prerequisites
-- Ensure that the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
+- Ensure that the [prerequisites](/docs/chaos-engineering/faults/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
 
 ### Mandatory tunables
 
@@ -32,7 +32,7 @@ Windows process kill:
      <tr>
         <td> DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
+        <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
       </tr>
     </table>
 
@@ -56,7 +56,7 @@ Windows process kill:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

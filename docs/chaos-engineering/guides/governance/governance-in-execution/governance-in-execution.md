@@ -8,7 +8,7 @@ redirect_from:
 - /docs/chaos-engineering/features/chaosguard/chaosguard-concepts
 - /docs/category/chaosguard
 - /docs/chaos-engineering/concepts/explore-concepts/chaosguard
-- /docs/chaos-engineering/use-harness-ce/governance/govern-run
+- /docs/chaos-engineering/guides/governance/govern-run
 - /docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts
 - /docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts/
 - /docs/chaos-engineering/use-harness-ce/governance
@@ -45,7 +45,7 @@ The table below describes the requirements for advanced environments.
 | Who        | Users who are subjected to the above conditions                                                | Harness DB or Identity store      | Selective application of conditions to users (for example, contractors, other team members) |
 | When       | The time window in which chaos is allowed to be executed                                       | User Input or Harness DB          | Minimize windows for disruptive activity, upon approval/authorization                       |
 
-With ChaosGuard, each experiment run consists of a security step wherein one or more [rules](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/#rule) are evaluated before execution. Each rule contains one or more [conditions](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/#condition) describing the constraints specified in the table above. The experiment can proceed only upon a successful evaluation of all the rules.
+With ChaosGuard, each experiment run consists of a security step wherein one or more [rules](/docs/chaos-engineering/guides/governance/governance-in-execution/#rule) are evaluated before execution. Each rule contains one or more [conditions](/docs/chaos-engineering/guides/governance/governance-in-execution/#condition) describing the constraints specified in the table above. The experiment can proceed only upon a successful evaluation of all the rules.
 
 ## Key Components
 
@@ -97,5 +97,5 @@ Creating the ChaosGuard rules is subject to Harness RBAC policies. By default, t
 
 ## Next Steps
 
-- [Configure a Condition](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/govern-run#configure-a-condition)
-- [Configure a Rule](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/govern-run#configure-a-rule)
+- [Configure a Condition](/docs/chaos-engineering/guides/governance/governance-in-execution/govern-run#configure-a-condition)
+- [Configure a Rule](/docs/chaos-engineering/guides/governance/governance-in-execution/govern-run#configure-a-rule)

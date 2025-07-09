@@ -3,14 +3,14 @@ title: Centralized Delegate
 sidebar_position: 30
 description: Configure Centralized Delegate
 redirect_from:
-- /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/centralized-delegate
+- /docs/chaos-engineering/guides/infrastructures/ddcr/centralized-delegate
 ---
 
 This topic describes the permissions required to execute chaos experiments when the target application and Delegate are running on different clusters. 
 
 ## Prerequisites
 
-- The [Delegate must be installed](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/installation) within your centralized infrastructure.
+- The [Delegate must be installed](/docs/chaos-engineering/guides/infrastructures/types/ddcr/installation) within your centralized infrastructure.
 - Ensure network connectivity between the centralized infrastructure and the target cluster infrastructure where chaos experiments will be executed.
 
 The diagram below describes how the Harness environment and your (user) environment communicate with the help of Harness Delegate to execute chaos experiments.
@@ -243,7 +243,7 @@ To discover the resources and run chaos, use the permissions (described below) i
 
 ### Step 4: Onboard Namespaces
 
-You can onboard [all namespaces](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/centralized-delegate#access-all-namespaces) or [specific namespaces (one or more)](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/centralized-delegate#access-specific-namespace) to inject chaos.
+You can onboard [all namespaces](/docs/chaos-engineering/guides/infrastructures/types/ddcr/centralized-delegate#access-all-namespaces) or [specific namespaces (one or more)](/docs/chaos-engineering/guides/infrastructures/types/ddcr/centralized-delegate#access-specific-namespace) to inject chaos.
 
 #### Access All Namespaces
 

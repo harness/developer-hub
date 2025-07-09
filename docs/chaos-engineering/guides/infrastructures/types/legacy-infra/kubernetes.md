@@ -11,20 +11,20 @@ redirect_from:
 - /docs/chaos-engineering/features/chaos-infrastructure/introduction
 - /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/
 - /docs/chaos-engineering/get-started/prerequisites/#chaos-infrastructure-requirements
-- /docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/
+- /docs/chaos-engineering/guides/infrastructures/types/legacy-infra/
 - /docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures
 - docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures
 - /docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure
 - /docs/chaos-engineering/features/chaos-infrastructure/disconnect-chaos-infrastructure
-- /docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#use-helm-template-to-install-chaos-infrastructure
+- /docs/chaos-engineering/guides/infrastructures/enable-disable#use-helm-template-to-install-chaos-infrastructure
 ---
 
 This topic describes the following:
-  - [What is Dedicated Chaos Infrastructure?](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#what-is-harness-chaos-infrastructure)
-  - [Resource Requirements](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#chaos-infrastructure-requirements)
-  - [Installation steps](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#install-dedicated-chaos-infrastructure)
-  - [Validate the installation](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#validate-installation)
-  - [Disable the infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#disable-infrastructure)
+  - [What is Dedicated Chaos Infrastructure?](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/kubernetes#what-is-harness-chaos-infrastructure)
+  - [Resource Requirements](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/kubernetes#chaos-infrastructure-requirements)
+  - [Installation steps](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/kubernetes#install-dedicated-chaos-infrastructure)
+  - [Validate the installation](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/kubernetes#validate-installation)
+  - [Disable the infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/kubernetes#disable-infrastructure)
 
 ## What is Harness Chaos Infrastructure?
 
@@ -186,7 +186,7 @@ To use Helm to install a chaos infrastructure,
 
 ### Upgrade Infrastructure
 
-To upgrade Helm-based installation's infrastructure, go to [Upgrade Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra#use-helm-template-to-upgrade-chaos-infrastructure).
+To upgrade Helm-based installation's infrastructure, go to [Upgrade Infrastructure](/docs/chaos-engineering/guides/infrastructures/upgrade-infra#use-helm-template-to-upgrade-chaos-infrastructure).
 
 ## Validate Installation
 
@@ -208,6 +208,6 @@ This disables your Kubernetes infrastructure.
 
 ## Next Steps
 
-- [Delegate-Driven Chaos Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/)
-- [Dedicated versus Delegate Driven Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr-vs-dedicated)
-- [Upgrade Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra)
+- [Delegate-Driven Chaos Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/ddcr/)
+- [Dedicated versus Delegate Driven Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/ddcr-vs-dedicated)
+- [Upgrade Infrastructure](/docs/chaos-engineering/guides/infrastructures/upgrade-infra)

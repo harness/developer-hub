@@ -9,7 +9,7 @@ redirect_from:
 
 # Connect Infrastructure via Proxy
 
-This guide describes how to connect your chaos infrastructure to the control plane via proxy when using a [dedicated chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/) in SMP environments.
+This guide describes how to connect your chaos infrastructure to the control plane via proxy when using a [dedicated chaos infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/) in SMP environments.
 
 ## Overview
 
@@ -20,8 +20,8 @@ When deploying chaos infrastructure in air-gapped or proxy-enabled environments,
 
 :::tip
 For DDCR and Discovery Agent proxy configuration, see:
-- [Harness Delegate Driven Chaos runner](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support#hnp-configuration-for-delegate-driven-chaos-runner-ddcr)
-- [Discovery Agent proxy settings](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support#hnp-configuration-for-discovery-agent)
+- [Harness Delegate Driven Chaos runner](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support#hnp-configuration-for-delegate-driven-chaos-runner-ddcr)
+- [Discovery Agent proxy settings](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support#hnp-configuration-for-discovery-agent)
 :::
 
 ## Infrastructure Proxy Configuration
@@ -225,13 +225,13 @@ kubectl exec -it deployment/subscriber -n litmus -- nslookup your-smp-endpoint
 ## Additional Resources
 
 - [SMP Release Notes](/release-notes/self-managed-enterprise-edition)
-- [Infrastructure Types](/docs/chaos-engineering/use-harness-ce/infrastructures/types/)
-- [DDCR Proxy Support](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support)
+- [Infrastructure Types](/docs/chaos-engineering/guides/infrastructures/types/)
+- [DDCR Proxy Support](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support)
 - [Troubleshooting Guide](/docs/chaos-engineering/troubleshooting/)
 
 ---
 
 **Next Steps:**
 - Configure [Enterprise ChaosHub connection](/docs/chaos-engineering/guides/on-premises-smp/connect-enterprise-chaoshub)
-- Set up [monitoring and observability](/docs/chaos-engineering/use-harness-ce/probes/)
+- Set up [monitoring and observability](/docs/chaos-engineering/key-concepts/probes/)
 - Review [security best practices](/docs/chaos-engineering/security/)

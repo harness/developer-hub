@@ -5,7 +5,7 @@ title: Cross-Project Cloud SQL Failover Using BYOC Injector
 
 ## Overview
 
-This topic provides how to implement a cross-project failover for Google Cloud SQL instances using a Bring Your Own Chaos (BYOC) injector. The [BYOC injector](/docs/chaos-engineering/use-harness-ce/chaos-faults/byoc/) facilitates the simulation of failover scenarios to test the resilience and high availability of Cloud SQL instances across different projects.
+This topic provides how to implement a cross-project failover for Google Cloud SQL instances using a Bring Your Own Chaos (BYOC) injector. The [BYOC injector](/docs/chaos-engineering/faults/custom-faults/byoc/) facilitates the simulation of failover scenarios to test the resilience and high availability of Cloud SQL instances across different projects.
 
 ---
 
@@ -19,8 +19,8 @@ Before proceeding, ensure the following prerequisites are met:
   - cloudsql.instances.failover
   - cloudsql.instances.list
 - Harness CE provides two ways of providing permissions to the `litmus-admin` Kubernetes secret: 
-  - [Using Gcloud Service Account Secret](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp/)
-  - [Using Workload Identity](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/security-configurations/gcp-iam-integration/)
+  - [Using Gcloud Service Account Secret](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp/)
+  - [Using Workload Identity](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/gcp-iam-integration/)
 
 ---
 
@@ -155,10 +155,10 @@ During experiment execution, the experiment pod logs help understand the followi
 
 ### Check Status - Resilience Probes
 
-Create [resilience probes](/docs/chaos-engineering/use-harness-ce/probes/) that help conduct status checks to verify the health of the infrastructure or application and its readiness to endure chaos injection. You can configure these status checks at different stages of the chaos experiment, such as Start of Test (SOT), End of Test (EOT), OnChaos, Continuous, and Edge (Start & End) of Chaos Injection.
+Create [resilience probes](/docs/chaos-engineering/key-concepts/probes/) that help conduct status checks to verify the health of the infrastructure or application and its readiness to endure chaos injection. You can configure these status checks at different stages of the chaos experiment, such as Start of Test (SOT), End of Test (EOT), OnChaos, Continuous, and Edge (Start & End) of Chaos Injection.
 
 :::tip
-For this example, you can create a [command probe](/docs/chaos-engineering/use-harness-ce/probes/command-probe/) in the "Edge" mode as it allows you to verify the status of the SQL instance before and after chaos injection, ensuring that the SQL instance remains operational and healthy.
+For this example, you can create a [command probe](/docs/chaos-engineering/key-concepts/probes/command-probe/) in the "Edge" mode as it allows you to verify the status of the SQL instance before and after chaos injection, ensuring that the SQL instance remains operational and healthy.
 :::
 
 This validation process is executed through the GCloud Console. Solely relying on manual checks via the console may not be the most efficient method.
@@ -175,7 +175,7 @@ You can use Workload Identity to understand how to configure a Google Cloud Plat
 
 Suppose the chaos infrastructure is located in `Project A`, and the target SQL instance is located in `Project B`. Let us call the service account to employ as `SA`.
 
-You must establish the service account `SA` in `Project A` to facilitate its link to the Kubernetes service account `litmus-admin`, as specified in the [Harness CE documentation](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/security-configurations/gcp-iam-integration/) and execute the Workload Identity mapping. 
+You must establish the service account `SA` in `Project A` to facilitate its link to the Kubernetes service account `litmus-admin`, as specified in the [Harness CE documentation](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/gcp-iam-integration/) and execute the Workload Identity mapping. 
 Once the service account mapping is in place, the next step is to grant relevant permissions to the service account in other projects. You can accomplish this by designating the same service account as a `PRINCIPAL` in `Project B` and assigning a role with the necessary permissions as mentioned in the [prerequisites](#prerequisites).
 
   ![cross-project setup](./static/images/cross-proj-setup.png)

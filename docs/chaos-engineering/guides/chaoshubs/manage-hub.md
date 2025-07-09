@@ -5,10 +5,10 @@ description: Save and manage experiments in custom ChaosHub
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/manage-hub
 - /docs/chaos-engineering/features/chaos-hubs/manage-hub
-- /docs/chaos-engineering/use-harness-ce/chaoshubs/manage-hub
+- /docs/chaos-engineering/guides/chaoshubs/manage-hub
 ---
 
-This section explains how to save and manage experiments in your custom ChaosHub(s) and how to sync your ChaosHub GitHub repository with Harness. For setup instructions, see [Add a Custom ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub).
+This section explains how to save and manage experiments in your custom ChaosHub(s) and how to sync your ChaosHub GitHub repository with Harness. For setup instructions, see [Add a Custom ChaosHub](/docs/chaos-engineering/guides/chaoshubs/add-chaos-hub).
 
 ## View ChaosHubs
 
@@ -39,7 +39,7 @@ When you add an experiment to a custom ChaosHub, it's saved as a template from w
 
 To add an experiment to a custom ChaosHub:
 
-1. [Create an experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments).
+1. [Create an experiment](/docs/chaos-engineering/guides/experiments/create-experiments).
 
 1. In the Chaos Experiments page, find the experiment you want to add to a custom ChaosHub, select the **More options** icon (**⋮**), and then select **Add to ChaosHub**.
 
@@ -62,14 +62,14 @@ To add an experiment to a custom ChaosHub:
 	This saves your experiment as a template in a custom ChaosHub.
 
 :::info note
-You can also save an experiment as a template to a custom ChaosHub while [creating the experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) in Chaos Studio. The **Save** button saves the experiment itself so that it appears on the Chaos Experiments page. Selecting the **down-arrow** next to **Save** lets you add the experiment as a template to a custom ChaosHub.
+You can also save an experiment as a template to a custom ChaosHub while [creating the experiment](/docs/chaos-engineering/guides/experiments/create-experiments) in Chaos Studio. The **Save** button saves the experiment itself so that it appears on the Chaos Experiments page. Selecting the **down-arrow** next to **Save** lets you add the experiment as a template to a custom ChaosHub.
 
 ![Experiment details screen with Save and Add to ChaosHub options circled](./static/manage-hub/experiment-save-to-hub.png)
 :::
 
 ## Sync Harness with a ChaosHub Git repository
 
-When you [connect a custom ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub), you can add and edit experiments in that hub in either Harness or the custom hub's GitHub repository.
+When you [connect a custom ChaosHub](/docs/chaos-engineering/guides/chaoshubs/add-chaos-hub), you can add and edit experiments in that hub in either Harness or the custom hub's GitHub repository.
 Changes made in Harness sync automatically with your repository. However, when you make changes in your repository, you need to sync them with Harness using the UI.
 
 To sync your custom ChaosHub's Git repository with Harness:

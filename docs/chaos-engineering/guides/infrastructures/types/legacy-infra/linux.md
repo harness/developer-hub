@@ -2,7 +2,7 @@
 title: Linux Chaos Infrastructure
 sidebar_position: 10
 redirect_from:
-- /docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#on-linux-infrastructure
+- /docs/chaos-engineering/guides/infrastructures/enable-disable#on-linux-infrastructure
 ---
 
 This topic describes Linux Chaos Infrastructure (LCI), how to use flags to configure some characteristics of the infrastructure, how to enable, and disable chaos on LCI.
@@ -31,7 +31,7 @@ A set of mandatory input flags is required to install chaos infrastructure, incl
 12. **http-client-timeout**: HTTP client timeout for communicating with the control plane. The default value is **30s**.
 
 :::info note
-- LCI currently does not support executing [parallel faults](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI).
+- LCI currently does not support executing [parallel faults](/docs/chaos-engineering/guides/experiments/create-experiments) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI).
 :::
 
 ### Infrastructure Service
@@ -146,7 +146,7 @@ You can also specify [different values](/docs/chaos-engineering/concepts/chaos10
 
 ## Upgrade Infrastructure
 
-Go to [Upgrade Saas or SMP for Linux](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra#upgrade-linux-infrastructure) to upgrade your installation.
+Go to [Upgrade Saas or SMP for Linux](/docs/chaos-engineering/guides/infrastructures/upgrade-infra#upgrade-linux-infrastructure) to upgrade your installation.
 
 ## Validate Installation
 

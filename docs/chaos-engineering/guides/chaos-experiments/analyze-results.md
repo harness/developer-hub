@@ -3,8 +3,8 @@ title: Analyze Results
 description: Understand resilience scores, interpret experiment outcomes, and derive actionable insights
 sidebar_position: 4
 redirect_from:
-  - /docs/chaos-engineering/use-harness-ce/experiments/timeline-view
-  - /docs/chaos-engineering/use-harness-ce/experiments/experiments
+  - /docs/chaos-engineering/guides/experiments/timeline-view
+  - /docs/chaos-engineering/guides/experiments/experiments
 ---
 
 # Analyze Results

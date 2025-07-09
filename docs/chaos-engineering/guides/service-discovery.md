@@ -3,7 +3,7 @@ title: Service Discovery
 description: Automatically discover and map services in your infrastructure for targeted chaos engineering
 sidebar_position: 10
 redirect_from:
-  - /docs/chaos-engineering/use-harness-ce/service-discovery
+  - /docs/chaos-engineering/guides/service-discovery
 ---
 
 # Service Discovery

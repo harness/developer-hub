@@ -15,7 +15,7 @@ Harness Chaos Engineering is supported on the following deployment models:
 - [Self-Managed Enterprise Edition](#self-managed-enterprise-edition)
 - [Self-Managed Enterprise Edition in Offline Environments](#self-managed-enterprise-edition-in-offline-environments)
 
-Harness Chaos Engineering supports running faults on [AWS](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/), [Azure](/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/), [GCP](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/), [Kubernetes](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/), [Linux](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/), [VMware](/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/), and [Windows](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/) platforms.
+Harness Chaos Engineering supports running faults on [AWS](/docs/chaos-engineering/faults/chaos-faults/aws/), [Azure](/docs/chaos-engineering/faults/chaos-faults/azure/), [GCP](/docs/chaos-engineering/faults/chaos-faults/gcp/), [Kubernetes](/docs/chaos-engineering/faults/chaos-faults/kubernetes/), [Linux](/docs/chaos-engineering/faults/chaos-faults/linux/), [VMware](/docs/chaos-engineering/faults/chaos-faults/vmware/), and [Windows](/docs/chaos-engineering/faults/chaos-faults/windows/) platforms.
 
 ---
 
@@ -53,7 +53,7 @@ Kubernetes faults work with **Docker**, **CRI-O**, and **containerd** runtimes.
 
 ### Supported Chaos Fault Categories
 
-The following table shows available fault types and where they are supported. For a complete list and detailed information, go to [Chaos faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/).
+The following table shows available fault types and where they are supported. For a complete list and detailed information, go to [Chaos faults](/docs/chaos-engineering/faults/chaos-faults/).
 
 | Fault type | Linux | K8s | Windows | VMware | AWS | GCP | Azure |
 |------------|-------|-----|---------|--------|-----|-----|-------|
@@ -80,7 +80,7 @@ The following table shows available fault types and where they are supported. Fo
 Chaos Engineering on Self-Managed Enterprise Edition has the following limitations compared to SaaS:
 - **Harness Enterprise ChaosHub** is not connected by default
   - Contact [Harness Support](mailto:support@harness.io) for access to the Enterprise ChaosHub
-  - Once you have access, you can add it as a [custom ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/)
+  - Once you have access, you can add it as a [custom ChaosHub](/docs/chaos-engineering/guides/chaoshubs/)
 - **Harness AI Development Assistant (AIDA™)** for CE
 
 ### Supported Platforms

@@ -283,12 +283,12 @@ spec:
 
 - [SMP Installation Guide](/docs/self-managed-enterprise-edition/install/)
 - [Air-gapped Environment Setup](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment)
-- [ChaosHub Management](/docs/chaos-engineering/use-harness-ce/chaoshubs/)
+- [ChaosHub Management](/docs/chaos-engineering/guides/chaoshubs/)
 - [Proxy Configuration Best Practices](/docs/chaos-engineering/security/)
 
 ---
 
 **Next Steps:**
 - Configure [infrastructure proxy settings](/docs/chaos-engineering/guides/on-premises-smp/connect-infrastructure)
-- Set up [monitoring and alerting](/docs/chaos-engineering/use-harness-ce/probes/)
+- Set up [monitoring and alerting](/docs/chaos-engineering/key-concepts/probes/)
 - Review [security configurations](/docs/chaos-engineering/security/)

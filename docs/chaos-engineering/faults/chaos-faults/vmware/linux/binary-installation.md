@@ -15,7 +15,7 @@ This topic describes the binaries to be installed before executing the Linux OS 
     </thead>
     <tbody>
         <tr>
-            <td><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-network-loss">VMware Network Loss</a></td>
+            <td><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-network-loss">VMware Network Loss</a></td>
             <td>
                 <ul>
                     <li>Install <code>iproute2</code> for Ubuntu VM.</li>
@@ -25,7 +25,7 @@ This topic describes the binaries to be installed before executing the Linux OS 
             <td>N/A</td>
         </tr>
         <tr>
-            <td><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-network-latency">VMware Network Latency</a></td>
+            <td><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-network-latency">VMware Network Latency</a></td>
             <td>
                 <ul>
                     <li>Install <code>iproute2</code> for Ubuntu VM.</li>
@@ -35,7 +35,7 @@ This topic describes the binaries to be installed before executing the Linux OS 
             <td>N/A</td>
         </tr>
         <tr>
-            <td><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-cpu-hog">VMware CPU Hog</a></td>
+            <td><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-cpu-hog">VMware CPU Hog</a></td>
             <td>
                 <ul>
                     <li>Install <code>stress-ng</code> command in the VM.</li>
@@ -52,7 +52,7 @@ This topic describes the binaries to be installed before executing the Linux OS 
             </td>
         </tr>
         <tr>
-            <td><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-memory-hog">VMware Memory Hog</a></td>
+            <td><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-memory-hog">VMware Memory Hog</a></td>
             <td>
                 <ul>
                     <li>Install <code>stress-ng</code> command in the VM.</li>
@@ -62,7 +62,7 @@ This topic describes the binaries to be installed before executing the Linux OS 
             <td>See VMware CPU Hog installation steps.</td>
         </tr>
         <tr>
-            <td><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-io-stress">VMware IO Stress</a></td>
+            <td><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-io-stress">VMware IO Stress</a></td>
             <td>
                 <ul>
                     <li>Install <code>stress-ng</code> command in the VM.</li>
@@ -72,7 +72,7 @@ This topic describes the binaries to be installed before executing the Linux OS 
             <td>See VMware CPU Hog installation steps.</td>
         </tr>
         <tr>
-            <td><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-dns-chaos">VMware DNS Chaos</a></td>
+            <td><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-dns-chaos">VMware DNS Chaos</a></td>
             <td>
                 <ul>
                     <li>Install <code>dns_interceptor</code> binary in the target VM.</li>
@@ -82,9 +82,9 @@ This topic describes the binaries to be installed before executing the Linux OS 
             <td>N/A</td>
         </tr>
         <tr>
-            <td><ol><li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-http-latency">VMware HTTP Latency</a></li>
-            <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-http-modify-response"> VMware HTTP Modify Response</a></li>
-            <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-http-reset-peer"> VMware HTTP Reset Peer</a></li></ol></td>
+            <td><ol><li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-http-latency">VMware HTTP Latency</a></li>
+            <li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-http-modify-response"> VMware HTTP Modify Response</a></li>
+            <li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-http-reset-peer"> VMware HTTP Reset Peer</a></li></ol></td>
             <td>
                 <ul>
                     <li>Install <code>toxiproxy-server</code> binary in the target VM.</li>

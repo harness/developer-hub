@@ -6,7 +6,7 @@ redirects_from:
 - /docs/chaos-engineering/chaos-faults/windows/prerequisites
 ---
 
-Windows chaos faults disrupt the resources of an application running on a Windows virtual machine. To execute these faults, you need to [install a chaos infrastructure in the Windows VM](/docs/chaos-engineering/use-harness-ce/infrastructures/).
+Windows chaos faults disrupt the resources of an application running on a Windows virtual machine. To execute these faults, you need to [install a chaos infrastructure in the Windows VM](/docs/chaos-engineering/guides/infrastructures/).
 
 This section describes the interoperability matrix and the prerequisites to execute Windows chaos faults.
 

@@ -5,7 +5,7 @@ description: Steps to add a custom ChaosHub to your project
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub
 - /docs/chaos-engineering/features/chaos-hubs/add-chaos-hub
-- /docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub
+- /docs/chaos-engineering/guides/chaoshubs/add-chaos-hub
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -138,4 +138,4 @@ To share your custom ChaosHub with another Harness project, add the hub to the o
 
 ## Next steps
 
-You can add and launch experiments in your custom ChaosHub, or add YAML fault and experiment definitions directly in your ChaosHub GitHub repository, and then sync it with Harness. For more details, go to [Manage ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/manage-hub).
+You can add and launch experiments in your custom ChaosHub, or add YAML fault and experiment definitions directly in your ChaosHub GitHub repository, and then sync it with Harness. For more details, go to [Manage ChaosHub](/docs/chaos-engineering/guides/chaoshubs/manage-hub).

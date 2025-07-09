@@ -72,12 +72,12 @@ If you change the `config.py` file, ensure that you update the `CONFIG_MAP_FILE`
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Time taken to inject chaos into the target resource (in seconds). </td>
-            <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
+            <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance poweroffs (in seconds). </td>
-            <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+            <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> USERS </td>
@@ -122,7 +122,7 @@ If you change the `config.py` file, ensure that you update the `CONFIG_MAP_FILE`
         <tr>
             <td> RAMP_TIME </td>
             <td> Wait period before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+            <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
 

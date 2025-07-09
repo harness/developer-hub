@@ -4,7 +4,7 @@ sidebar_position: 2
 description: Manage different users to perform AWS API calls
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/aws-switch-profile
-- /docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile
+- /docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile
 ---
 This section describes how different users are managed to perform AWS API calls.
 

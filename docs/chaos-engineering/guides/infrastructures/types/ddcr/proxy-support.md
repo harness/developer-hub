@@ -5,7 +5,7 @@ description: Configure DDCR and Discovery Agent Proxy settings.
 redirect_from:
 - /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/proxy-support
 - /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/proxy-support
-- /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/proxy-support
+- /docs/chaos-engineering/guides/infrastructures/ddcr/proxy-support
 ---
 
 This topic describes when Harness Network Proxy (HNP) is required, how you can install it, and configure DDCR and discovery HNP settings.
@@ -25,12 +25,12 @@ The diagram above describes the following:
 - All the inbound connections go through the Delegate.
 - If your cluster has connectivity with the Harness portal (Harness Control Plane in the diagram), you won't need any proxy.
 - If your cluster does not have connectivity with the Harness portal (Harness Control Plane in the diagram), then such requests goes through the proxy.
-    - In case you already have a proxy set up, you can [provide the URL of the proxy in the UI](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support#delegate-driven-chaos-runner-ddcr).
+    - In case you already have a proxy set up, you can [provide the URL of the proxy in the UI](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support#delegate-driven-chaos-runner-ddcr).
     - In case you don't have a proxy set up, you can [install](#installation) HNP.
     - In case you don't have a proxy set up, you can [install](#installation) HNP.
 
 :::tip
-Chaos runner supports token-based authentication with the Harness Platform. If you want to add another authentication on top of Harness authentication, you can [enable mTLS](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/mtls-support) for the account.
+Chaos runner supports token-based authentication with the Harness Platform. If you want to add another authentication on top of Harness authentication, you can [enable mTLS](/docs/chaos-engineering/guides/infrastructures/types/ddcr/mtls-support) for the account.
 :::
 
 ## Installation

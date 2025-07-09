@@ -3,7 +3,7 @@ title: HTTP Probes
 description: Monitor web services and APIs with HTTP-based health checks
 sidebar_position: 3
 redirect_from:
-  - /docs/chaos-engineering/use-harness-ce/probes/http-probe
+  - /docs/chaos-engineering/key-concepts/probes/http-probe
 ---
 
 # HTTP Probes

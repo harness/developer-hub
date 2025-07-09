@@ -10,7 +10,7 @@ redirect_from:
 
 This tutorial explains how you can run Harness chaos experiments using GitHub Actions.
 
-1. [Create a chaos experiment in the Harness Chaos Engineering module](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments). Execute this experiment to verify the configuration and ensure that the resilience probes are working as expected. The experiment ID and resilience score determined from this experiment run will be used to integrate the experiment with GitHub Actions.
+1. [Create a chaos experiment in the Harness Chaos Engineering module](/docs/chaos-engineering/guides/experiments/create-experiments). Execute this experiment to verify the configuration and ensure that the resilience probes are working as expected. The experiment ID and resilience score determined from this experiment run will be used to integrate the experiment with GitHub Actions.
 
    ![chaos experiment with ID and resilience score](./static/chaos-experiments-with-id.png)
 

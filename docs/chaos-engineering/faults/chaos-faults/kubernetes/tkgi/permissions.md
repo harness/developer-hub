@@ -24,7 +24,7 @@ This topic describes the HCE platform requires to execute chaos experiments.
 </tr>
 <tr>
 	<th> Access requirements for agent install </th>
-	<td> Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements">these</a> permissions. </td>
+	<td> Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements">these</a> permissions. </td>
 </tr>
 
 <tr>
@@ -36,11 +36,11 @@ This topic describes the HCE platform requires to execute chaos experiments.
 	<th> Access requirements for advanced chaos experiments </th>
 	<td><ul><li>Chaos ServiceAccount: <a href="https://hce-docs.github.io/platform-wise-chaos-info/TKGi/Kubernetes/advanced-pod-and-node-chaos-access-requirements.html"> consolidated serviceaccount for advanced pod and node chaos </a> </li>
 <li>Container Runtime privileges: <a href="https://github.com/hce-docs/platform-wise-chaos-info/blob/main/TKGi/Kubernetes/recommended-psp-for-advanced-pod-chaos.yaml"> recommended PSP for advanced chaos </a> </li>
-<li>To understand the need for the privileges, refer to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/classification#pod-faults-microservices-based-faults"> chaos experiment flow for microservice-based targets. </a> </li></ul></td>
+<li>To understand the need for the privileges, refer to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/classification#pod-faults-microservices-based-faults"> chaos experiment flow for microservice-based targets. </a> </li></ul></td>
 </tr>
 <tr>
 		<th> Chaos deployment and architecture details </th>
-        <td><ul><li> Refer to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances"> TKGi approach </a> and <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/classification#namespace-scope-mode"> namespace-scoped cluster mode. </a></li></ul></td>
+        <td><ul><li> Refer to <a href="/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances"> TKGi approach </a> and <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/classification#namespace-scope-mode"> namespace-scoped cluster mode. </a></li></ul></td>
 </tr>
 <tr>
 		<th> Supported chaos faults	</th>

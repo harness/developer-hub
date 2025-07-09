@@ -5,13 +5,13 @@ description: Configure mTLS with with DDCR and Discovery Agent.
 redirect_from:
 - /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/mtls-support
 - /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/mtls-support
-- /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/mtls-support
+- /docs/chaos-engineering/guides/infrastructures/ddcr/mtls-support
 ---
 
 ## Prerequisites
 
 - [What is mTLS?](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support)
-- [What is DDCR?](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr)
+- [What is DDCR?](/docs/chaos-engineering/guides/infrastructures/#what-is-ddcr)
 
 This topic describes how you can configure mTLS with DDCR and Discovery Agent.
 
@@ -23,7 +23,7 @@ To configure mTLS in the DDCR, create a Kubernetes secret with the certificate a
 
     ![](./static/delegate/mtls-1.png)
 
-If you don't want to create Kubernetes secrets in multiple clusters, you can [install the agent proxy](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support#installation) (aka Chaos Runner agent proxy) with mTLS key and certificate and provide the proxy URL in proxy setting.
+If you don't want to create Kubernetes secrets in multiple clusters, you can [install the agent proxy](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support#installation) (aka Chaos Runner agent proxy) with mTLS key and certificate and provide the proxy URL in proxy setting.
 
     ![](./static/delegate/proxy-2.png)
 

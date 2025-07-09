@@ -5,7 +5,7 @@ sidebar_position: 10
 redirect_from:
 - /docs/category/harness-delegate-driven-infrastructure
 - /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/
-- /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/
+- /docs/chaos-engineering/guides/infrastructures/ddcr/
 ---
 
 This topic describes Delegate-Driven Chaos Infrastructure, its characteristics, and installation. 
@@ -14,9 +14,9 @@ This topic describes Delegate-Driven Chaos Infrastructure, its characteristics, 
 
 DDCR, aka [Harness Delegate or DDCI (Delegate-Driven Chaos Infrastructure) or DDCR (Delegate-Driven Chaos Runners)](/docs/platform/delegates/delegate-concepts/delegate-overview) is a service that runs in your local network that helps connect your infrastructure, artifacts with Harness Manager. It allows for quick onboarding and optimized chaos execution for microservices-based targets on Kubernetes.
 
-To install a new Delegate, go to [enable chaos](/docs/chaos-engineering/use-harness-ce/infrastructures/types/)
+To install a new Delegate, go to [enable chaos](/docs/chaos-engineering/guides/infrastructures/types/)
 
-The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/use-harness-ce/service-discovery) and [create application maps](/docs/chaos-engineering/use-harness-ce/application-map).
+The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/guides/service-discovery) and [create application maps](/docs/chaos-engineering/guides/application-maps).
 
     ![](./static/delegate/flow-v2.png)
 
@@ -30,17 +30,17 @@ The schematic diagram below describes how chaos experiments are executed in usin
 
     ![](./static/delegate/ddci-flow.png)
 
-Go to [permissions required](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcrpermissions) to know the detailed list of permissions to execute Kubernetes faults with a Delegate.
+Go to [permissions required](/docs/chaos-engineering/guides/infrastructures/#what-is-ddcrpermissions) to know the detailed list of permissions to execute Kubernetes faults with a Delegate.
 
-The diagram below describes the detailed flow of control (step 5 of the earlier diagram), for an example chaos experiment- [pod DNS chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-dns-error).
+The diagram below describes the detailed flow of control (step 5 of the earlier diagram), for an example chaos experiment- [pod DNS chaos](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-dns-error).
 
     ![](./static/delegate/elaborate.png)
 
 ### Characteristics of DDCR
 
-- Automated Kubernetes [service discovery](/docs/chaos-engineering/use-harness-ce/service-discovery) and workloads with network traffic patterns between them through a transient discovery agent.
-- [Automated](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding#choose-between-automatic-and-customizable-application-map-creation) and [guided](/docs/chaos-engineering/use-harness-ce/application-map#create-an-application-map) application map creation that represent a fully functional application within the cluster (which comprises of several constituent microservices).
-- [Chaos experiment auto-creation](#auto-create-experiment) for a given [application map](/docs/chaos-engineering/use-harness-ce/application-map) based on the workload specification and its lineage in terms of network traffic.
+- Automated Kubernetes [service discovery](/docs/chaos-engineering/guides/service-discovery) and workloads with network traffic patterns between them through a transient discovery agent.
+- [Automated](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding#choose-between-automatic-and-customizable-application-map-creation) and [guided](/docs/chaos-engineering/guides/application-maps#create-an-application-map) application map creation that represent a fully functional application within the cluster (which comprises of several constituent microservices).
+- [Chaos experiment auto-creation](#auto-create-experiment) for a given [application map](/docs/chaos-engineering/guides/application-maps) based on the workload specification and its lineage in terms of network traffic.
 - Reuse the Harness Delegate for chaos experiment execution on the user cluster without a dedicated (or separate) chaos agent.
 - Application-level and application map level resilience scores.
 
@@ -69,6 +69,6 @@ Earlier, resilience score was measured at the experiment level. With Harness Del
 
 ## Next Steps
 
-- [Permissions Required](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/permissions)
-- [Install Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/installation)
-- [Delegate versus Dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr-vs-dedicated)
+- [Permissions Required](/docs/chaos-engineering/guides/infrastructures/types/ddcr/permissions)
+- [Install Delegate](/docs/chaos-engineering/guides/infrastructures/types/ddcr/installation)
+- [Delegate versus Dedicated infrastructure](/docs/chaos-engineering/guides/infrastructures/types/ddcr-vs-dedicated)

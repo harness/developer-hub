@@ -91,7 +91,7 @@ http://<url-encoded-username>:<url-encoded-password>@<proxy-ip>:<proxy-port>
 
 ## Infrastructure Connection via Proxy
 
-To connect your chaos infrastructure to the control plane via proxy when using a [dedicated chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/):
+To connect your chaos infrastructure to the control plane via proxy when using a [dedicated chaos infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/):
 
 ### Environment Variables Configuration
 
@@ -123,7 +123,7 @@ When the infrastructure is `CONNECTED`, configure proxy settings in experiment m
 - In SMP, command probe in **source** mode is only available for Linux
 
 ### Linux Chaos Infrastructure (LCI)
-- LCI currently does not support executing [parallel faults](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) in SaaS
+- LCI currently does not support executing [parallel faults](/docs/chaos-engineering/guides/experiments/create-experiments) in SaaS
 - The self-managed platform (SMP) supports executing parallel faults on LCI
 
 ## Feature Flags
@@ -134,8 +134,8 @@ Certain features in Harness Self-Managed Enterprise Edition require feature flag
 
 - [What's supported](/docs/chaos-engineering/whats-supported.md)
 - [SMP Release Notes](/release-notes/self-managed-enterprise-edition)
-- [Upgrade Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra#smp)
-- [DDCR Proxy Configuration](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support)
+- [Upgrade Infrastructure](/docs/chaos-engineering/guides/infrastructures/upgrade-infra#smp)
+- [DDCR Proxy Configuration](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support)
 
 ## Support
 
@@ -148,9 +148,9 @@ For assistance with SMP deployment and configuration:
 
 **Next Steps:**
 - Review [supported platforms](/docs/chaos-engineering/whats-supported.md)
-- Plan your [infrastructure setup](/docs/chaos-engineering/use-harness-ce/infrastructures/)
-- Configure [chaos experiments](/docs/chaos-engineering/use-harness-ce/experiments/)
-- Set up [monitoring and observability](/docs/chaos-engineering/use-harness-ce/probes/)
+- Plan your [infrastructure setup](/docs/chaos-engineering/guides/infrastructures/)
+- Configure [chaos experiments](/docs/chaos-engineering/guides/experiments/)
+- Set up [monitoring and observability](/docs/chaos-engineering/key-concepts/probes/)
 
 ### Infrastructure Requirements
 

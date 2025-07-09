@@ -3,7 +3,7 @@ title: Installation
 sidebar_position: 20
 description: Steps to install Harness Delegate and enable chaos.
 redirect_from:
-- /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/installation
+- /docs/chaos-engineering/guides/infrastructures/ddcr/installation
 ---
 
 This topic describes how you can install Harness Delegate and enable chaos on it. You can follow the interactive demo or the steps to install Harness Delegate.
@@ -62,8 +62,8 @@ If you have created a connector and a Harness Delegate earlier, you can find the
 - Ensure your Delegate version is `24.09.83900` or above to support executing chaos experiments using DDCR. 
 - Currently, DDCR (or Harness Delegate) can only be installed to execute Kubernetes-based faults. This means you can only create Kubernetes connectors.
 - To execute faults on Linux and Windows, install Linux and Windows agents respectively.
-- To configure mTLS with DDCR and Discovery Agent, go to [mTLS Support](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/mtls-support).
-- To configure mTLS with DDCR and and Discovery Agent proxy settings, go to [proxy Support](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support).
+- To configure mTLS with DDCR and Discovery Agent, go to [mTLS Support](/docs/chaos-engineering/guides/infrastructures/types/ddcr/mtls-support).
+- To configure mTLS with DDCR and and Discovery Agent proxy settings, go to [proxy Support](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support).
 :::
 
 ## Harness Terraform Provider
@@ -72,5 +72,5 @@ Go to [create Harness Delegate (DDCR)](https://registry.terraform.io/providers/h
 
 ## Next Steps
 
-- [Deploy Delegate on a Cluster](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/dedicated-delegate)
-- [Use mTLS with Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/mtls-support)
+- [Deploy Delegate on a Cluster](/docs/chaos-engineering/guides/infrastructures/types/ddcr/dedicated-delegate)
+- [Use mTLS with Delegate](/docs/chaos-engineering/guides/infrastructures/types/ddcr/mtls-support)

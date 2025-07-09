@@ -14,7 +14,7 @@ This topic compares EC2 chaos injection approach for Kubernetes+SSM and Native L
 </tr>
   <tr>
     <th> Install Prerequisites/Agent Setup </th>
-    <td> <ol type="1"> <li> Installation of the agent needs user to be a cluster-admin OR mapped to cluster role with <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these </a> permissions. </li>
+    <td> <ol type="1"> <li> Installation of the agent needs user to be a cluster-admin OR mapped to cluster role with <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these </a> permissions. </li>
     <li> SSM Agent is installed (it runs with sudo by default) on the target EC2 instance(s). </li>
     <li> Default <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/quick-setup-getting-started.html#quick-setup-getting-started-iam"> SSM IAM role </a> should be attached to the target EC2 instance(s). </li>
     <li> Ensure that you either create a secret with account user credentials or map an appropriate IAM role reference/ARN to the chaos ServiceAccount to carry out the chaos injection. </li> </ol></td>

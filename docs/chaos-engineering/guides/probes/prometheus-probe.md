@@ -3,9 +3,9 @@ title: Prometheus Probes
 description: Validate metrics and SLOs using Prometheus queries
 sidebar_position: 6
 redirect_from:
-  - /docs/chaos-engineering/use-harness-ce/probes/prom-probe
-  - /docs/chaos-engineering/use-harness-ce/probes/prom-probe/prom-probe
-  - /docs/chaos-engineering/use-harness-ce/probes/prom-probe/configure-prom-probe
+  - /docs/chaos-engineering/key-concepts/probes/prom-probe
+  - /docs/chaos-engineering/key-concepts/probes/prom-probe/prom-probe
+  - /docs/chaos-engineering/key-concepts/probes/prom-probe/configure-prom-probe
 ---
 
 # Prometheus Probes

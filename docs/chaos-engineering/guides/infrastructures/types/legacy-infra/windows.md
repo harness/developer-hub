@@ -2,14 +2,14 @@
 title: Windows Chaos Infrastructure
 sidebar_position: 30
 redirect_from:
-- /docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#on-linux-infrastructure
+- /docs/chaos-engineering/guides/infrastructures/enable-disable#on-linux-infrastructure
 ---
 
 This topic describes Windows Chaos Infrastructure, how you can enable and disable chaos on Windows Infrastructure.
 
 Chaos experiments executed on Windows infrastructure inject chaos into Windows OS-based VM. This deteriorates the performance of the application for the duration of the chaos experiment. Depending on the type of instance the fault targets, Windows faults are categorized into various types.
 
-Go to [Windows-based Chaos faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/) to find the list of faults supported.
+Go to [Windows-based Chaos faults](/docs/chaos-engineering/faults/chaos-faults/windows/) to find the list of faults supported.
 
 The diagram represents a high-level architecture of the interaction between the Windows execution plane and control plane components.
 
@@ -75,11 +75,11 @@ To verify the status of the service, navigate to the command prompt on your Wind
 3. Any other status will be associated with logs which you can troubleshoot using our [troubleshooting guide](/docs/chaos-engineering/troubleshooting/)
 
 ## Prerequisites to Install Infrastructure
-Ensure that you have fulfilled the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites.md) before connecting to a Windows chaos infrastructure.
+Ensure that you have fulfilled the [prerequisites](/docs/chaos-engineering/faults/chaos-faults/windows/prerequisites) before connecting to a Windows chaos infrastructure.
 
 
 ## Step 1: Create / Select Environment
-1. Go to **Environments** and [create a new environment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-environment) or select an environment that already exists.
+1. Go to **Environments** and [create a new environment](/docs/chaos-engineering/guides/experiments/create-experiments#create-environment) or select an environment that already exists.
 
   ![new environment](./static/new-env.png)
 
@@ -95,7 +95,7 @@ Ensure that you have fulfilled the [prerequisites](/docs/chaos-engineering/use-h
 
 ## Step 3: Deploy Infrastructure
 
-4. Copy the command generated. The [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites.md) discusses how you can configure a password. If you have a password, replace it in the `<your-password>` placeholder. Execute this command on your terminal (remember to open the command prompt as an admin if you are not an admin by default). Click **Done** once you finish the execution.
+4. Copy the command generated. The [prerequisites](/docs/chaos-engineering/faults/chaos-faults/windows/prerequisites) discusses how you can configure a password. If you have a password, replace it in the `<your-password>` placeholder. Execute this command on your terminal (remember to open the command prompt as an admin if you are not an admin by default). Click **Done** once you finish the execution.
 
     ![](./static/copy-command-3.png)
 
@@ -129,7 +129,7 @@ Service created and started successfully.
 
 ## Upgrade Infrastructure
 
-Go to [Upgrade Infrastructure for Windows](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra#upgrade-windows-infrastructure) to upgrade to the latest version of your Windows infrastructure.
+Go to [Upgrade Infrastructure for Windows](/docs/chaos-engineering/guides/infrastructures/upgrade-infra#upgrade-windows-infrastructure) to upgrade to the latest version of your Windows infrastructure.
 
 ## Validate Installation
 
@@ -153,4 +153,4 @@ This disables your Windows infrastructure.
 
 ## Resilience probes for Windows
 
-Harness CE allows you to create [HTTP](/docs/chaos-engineering/use-harness-ce/probes/http-probe) probe for Windows.
+Harness CE allows you to create [HTTP](/docs/chaos-engineering/key-concepts/probes/http-probe) probe for Windows.

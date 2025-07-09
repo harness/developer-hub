@@ -49,4 +49,4 @@ Also known as Enterprise hub, it comes out-of-the-box with HCE and consists of p
 Resilience probes are currently not supported with Chaos Hubs.
 :::
 
-Go to [connect to ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub) or [manage ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/manage-hub) for hands-on learning.
+Go to [connect to ChaosHub](/docs/chaos-engineering/guides/chaoshubs/add-chaos-hub) or [manage ChaosHub](/docs/chaos-engineering/guides/chaoshubs/manage-hub) for hands-on learning.

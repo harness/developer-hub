@@ -22,7 +22,7 @@ The table below describes the permissions required to inject fault into VMware.
 </tr>
 <tr>
 	<th> Access requirements for agent install </th>
-    <td><ul><li>Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these </a> permissions. </li></ul></td>
+    <td><ul><li>Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these </a> permissions. </li></ul></td>
 </tr>
 
 <tr>

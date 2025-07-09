@@ -6,7 +6,7 @@ description: Applying OPA policy in experiment pipeline
 
 This topic describes how you can use OPA when executing experiments in a pipeline.
 
-To know more about how to execute chaos experiments in a pipeline, go to [Experiments in Pipeline](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-experiment-as-a-pipeline).
+To know more about how to execute chaos experiments in a pipeline, go to [Experiments in Pipeline](/docs/chaos-engineering/guides/experiments/create-experiments#create-experiment-as-a-pipeline).
 
 ## Why is OPA required with HCE pipelines?
 In the context of Harness Chaos Engineering, [Open Policy Agent (OPA)](https://www.openpolicyagent.org/docs/latest/) can be integrated within pipelines to ensure that you can enforce specific rules and compliance checks during chaos experiments. It allows fine-grained control over policies within cloud-native applications.
