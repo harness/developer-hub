@@ -248,7 +248,7 @@ const config: Config = {
               to: 'university/sto',
             },
             {
-              label: 'Software Supply Chain',
+              label: 'Supply Chain Security',
               to: 'university/scs',
             },
             {

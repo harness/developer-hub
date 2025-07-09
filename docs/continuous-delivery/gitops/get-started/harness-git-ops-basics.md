@@ -22,7 +22,7 @@ GitOps is a modern approach to Continuous Delivery (CD) where Git acts as the si
 
 Instead of manually deploying via pipelines, GitOps continuously syncs your Kubernetes cluster with your declarative manifests (YAML, Helm, Kustomize, etc.), ensuring consistency across environments.
 
-Checkout [in-depth comparison between Argo CD and Harness GitOps](./harness-gitops-vs-argocd)
+Checkout [in-depth comparison between Argo CD and Harness GitOps](/docs/continuous-delivery/gitops/get-started/harness-gitops-vs-argocd)
 
 ## How GitOps works in Harness
 

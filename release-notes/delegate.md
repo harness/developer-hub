@@ -86,7 +86,51 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## Delegate image release notes
 
+## July 2025
+
+### Version 25.04.85707 <!-- Jul 08, 2025 -->
+
+#### Fixed issues
+
+- Improved log-streaming performance while dispatching the logs. (CDS-111776)
+  
+### Version 25.06.86104 <!-- Jul 08, 2025 -->
+
+#### Fixed issues
+
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. (CDS-111916)
+
+### Version 25.06.86203 <!-- Jul 08, 2025 -->
+
+#### Fixed issues
+
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. (CDS-111916)
+
+### Version 25.06.86202 <!-- Jul 02, 2025 -->
+
+#### Fixed issues
+
+- Improved Kubernetes Manifest Logging: Large manifest YAMLs are now split into smaller chunks by individual resources to prevent log overload and improve readability. (CDS-111820)
+
+- Improved GitHub Enterprise support in GitOps pipelines by fixing hardcoded URLs and adding delegate access checks for PR merge steps. (CDS-111758)
+
+#### New features and improvements
+
+- Added logging to capture Kubernetes events during delegate shutdown. This will help in better understanding and troubleshooting shutdown behaviour by providing more visibility into related cluster events. [PL-60516]
+
 ## June 2025
+
+### Version 25.06.86104 <!-- June 30, 2025 -->
+
+#### Fixed issues
+
+- Added support to handle the modification of Issue Type to Work Type introduced in the latest Jira SaaS release. [CDS-111788]
+
+### Version 25.06.86103 <!--June 27, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue when the log line exceeds the maximum length, it will split into multiple lines, causing the sanitization not to detect when content is present in different lines. [CDS-111820]
 
 ### Version 25.06.86102 <!-- June 26, 2025 -->
 
@@ -105,6 +149,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 #### New features and improvements
 
 - Enhanced system stability and regular checks implemented to ensure reliability.
+
+### Version 25.05.85806 <!--June 27, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue when the log line exceeds the maximum length, it will split into multiple lines, causing the sanitization not to detect when content is present in different lines. [CDS-111820]
 
 ### Version 25.05.85905 <!--June 03, 2025-->
 
@@ -317,6 +367,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` (PL-58376)
 :::
 
+- NG Immutable Delegates no longer send the profileId parameter in their requests. (PL-55697)
 - Added a new metric on the delegate side to track the number of times the delegate WebSocket reconnects. This metric, `io_harness_custom_metric_delegate_reconnected_total`, can be used to set alerts for frequent reconnections, helping identify potential issues with the delegate and enabling you to seek further assistance from Harness if needed. (PL-48535)
 
 ## December 2024

@@ -4,4 +4,4 @@ description: Frequently asked questions related to SEI Ingestion Satellite
 sidebar_position: 55
 ---
 
-For FAQs & Troubleshooting guide on the Ingestion Satellite, go to the [Ingestion Satellite FAQs & Troubleshooting](/docs/software-engineering-insights/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+For FAQs & Troubleshooting guide on the Ingestion Satellite, go to the [Ingestion Satellite FAQs & Troubleshooting](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).

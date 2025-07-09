@@ -14,6 +14,10 @@ After your pipeline completes a security scan, you can view the scan results in 
 - **Execution History**: Select a specific pipeline execution from your pipeline's **Execution History**.
 - **Executions Section**: Navigate to the **Executions** section from the left navigation in the STO module and select a pipeline execution.
 
+:::info
+The **Vulnerabilities** tab was previously called the **Security Tests** tab. We have renamed the tab to **Vulnerabilities**.
+:::
+
 ## Navigate to Security Test results
 
 Follow these steps to view the scan results:

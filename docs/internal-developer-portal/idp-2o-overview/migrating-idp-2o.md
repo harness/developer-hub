@@ -58,7 +58,7 @@ Please complete the following steps:
     These will continue to work temporarily but will be **deprecated by the end of October**. You’ll need to transition to the newer APIs.
 
   - If your current setup includes **System** or **Domain** entities:
-    These are no longer supported in IDP 2.0 and will be **discarded during migration**. You’ll need to create new entities using the updated data model.
+    These are no longer supported in IDP 2.0. During the migration process, they will be **discarded**. To continue using these entities, you'll need to recreate them using the updated data model. We're working on introducing a similar System entity in IDP 2.0 by end of July 2025.
 
   - If you used **`hidden`** or **`private`** tags for any entity or workflow:
     These tags are not supported in IDP 2.0. Instead, configure **RBAC** and recreate your entities at the appropriate scope (Account, Org, or Project) with correct roles and permissions.
@@ -169,6 +169,10 @@ After upgrading to IDP 2.0, you can begin using the **newer API endpoints**. Alt
 ---
 
 ### Step 7: Store Entity YAMLs in Git
+
+:::info Note
+With the new IDP 2.0, one entity can have only one YAML file. Unlike IDP 1.0, storing multiple entities within a single YAML is no longer supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions. To understand more about this and other key differences, see the [breaking changes in IDP 2.0](https://developer.harness.io/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#breaking-changes-in-idp-20).
+:::
 
 **Upgrading from IDP 1.0 to IDP 2.0 will result in all your entities being created as Inline Entities** (i.e., with all the Entity YAMLs stored in the Harness Database). In case you want to store these Entity YAMLs in Git and convert them from Inline to Remote Entities (i.e., with all the Entity YAMLs stored in Git), you can make use of the **Harness IDP Git Experience** feature. Here's how you can convert the entities:
 

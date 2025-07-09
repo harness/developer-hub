@@ -17,8 +17,10 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 | [**RBAC and Project/Org Hierarchy**](/docs/internal-developer-portal/rbac/scopes)                     | ✅ (Ready to onboard) |
 | [**Git Experience (YAML files in Git)**](/docs/internal-developer-portal/git-experience/gitx-journey) | ✅ (Ready to onboard) |
 | **New System Entity for grouping**                                                                    | ⏳ ETA July 31, 2025  |
-| **Custom User Groups**                                                                                | ⏳ ETA July 31, 2025  |
 | **Project/Org filters in Scorecards**                                                                 | ⏳ ETA July 31, 2025  |
+
+<!-- | **Custom User Groups**                                                                                | ⏳ ETA July 31, 2025  | -->
+
 
 :::
 
@@ -123,9 +125,43 @@ All Catalog and Workflow APIs are now delivered directly through Harness Platfor
 
 We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
 
+### Single Entity per YAML File
+
+In IDP 1.0, it was possible to define multiple entities in a single YAML file using the `---` separator. For example:
+
+```yaml
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: serviceA
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: serviceB
+```
+
+This approach is no longer supported in IDP 2.0. To align with the Harness platform standards and Git Experience (GitX) model, each YAML file must now define **only one entity**, basically every IDP entity can only be defined with a single YAML file.
+
+
+This change ensures better alignment with GitX workflows and simplifies entity lifecycle management.
+
+> NOTE: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own entity YAML file.
+
+:::note 
+Identifiers must use only letters, numbers, and underscores. Hyphens and special characters aren’t allowed.
+
+:::
+
+
 ### Entity YAML Definition
 
 IDP 2.0 implements a Harness-native entity schema featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
+
+:::info Note
+With the IDP Git experience feature, one entity can have only one YAML file. Unlike IDP 1.0, storing multiple entities within a single YAML is no longer supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions. To understand more about this and other key differences, see the [breaking changes in IDP 2.0](https://developer.harness.io/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#breaking-changes-in-idp-20).
+:::
+
 
 For convenience, we've developed an API that converts Backstage catalog YAML to Harness catalog YAML format. This conversion is also available in the user interface—simply paste a Backstage Catalog YAML to automatically convert it to Harness Catalog YAML.
 
@@ -195,28 +231,28 @@ spec:
 
 <TabItem value="idp-2" label="IDP 2.0 (Harness YAML)" default>
   ```yaml
-  apiVersion: harness.io/v1
-  identifier: artist-service
-  name: Artist Service
-  kind: Component
-  type: service
-  projectIdentifier: public-websites
-  orgIdentifier: default
-  owner: group:artist-relations-team
-  metadata:
-    description:
-    annotations:
-      jira/project-key: artistweb
-    tags:
-      - java
-    links:
-      - url: https://admin.example-org.com
-        title: Admin Dashboard
-        icon: dashboard
-        type: admin-dashboard
-  spec:
-    lifecycle: production
-  ```
+apiVersion: harness.io/v1
+identifier: artist_service
+name: Artist Service
+kind: Component
+type: service
+projectIdentifier: public_websites
+orgIdentifier: default
+owner: group:artist_relations_team
+metadata:
+  description: Artist microservice for artist data and relations
+  annotations:
+    jira/project-key: artistweb
+  tags:
+    - java
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+spec:
+  lifecycle: production
+```
   </TabItem>
 </Tabs>
 

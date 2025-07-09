@@ -57,11 +57,11 @@ In this example, we are going to discuss setting up notification management of P
 
         Under **Select Project** you can either select **All Projects** under the organization or you can select **Specified Project** if you want to configure notification for specific projects within the organization. Click on **Continue** to set conditions for notification.
 
-        ![](./static/pipeline_resource.png)
+        ![](./static/pipeline-resource.png)
 
 5. Under **Condition** , select **+ Add Condition** to define pipeline events based on which you want to be notified.
     
-        ![](./static/resource_pipeline_condition.png)
+        ![](./static/resource-pipeline-condition.png)
 
         Under events you can select the following **pipeline events**:-
 
@@ -80,15 +80,19 @@ In this example, we are going to discuss setting up notification management of P
 
         <img src={PipeEvents} width="500"/>
 
-6. Under **Set Channels**, **Select Channels** where you want notification to be sent.
+6. Optionally you can add **Notification Template** to get custom notifications based on the event. To learn more, go to [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template).
 
-        ![](./static/set_channels.png)
+        ![](./static/notification-template.png)
+
+7. Under **Set Channels**, **Select Channels** where you want notification to be sent.
+
+        ![](./static/select-channels.png)
 
         Under **Select Channel** you can choose the already created channel at that scope or you can create a [**New Channel**](/docs/platform/notifications/notification-settings.md).
 
         To configure a New Channel, click New Channel and enter a Channel Name.
             
-            ![](./static/select_channels.png)
+            ![](./static/new-channel.png)
 
             Next, choose a Connectivity Mode—you can send notifications either directly through the Harness Platform or via a Harness Delegate.
 
@@ -106,9 +110,9 @@ In this example, we are going to discuss setting up notification management of P
 
                 ![](./static/create-new-channel.png)
 
-7. Select **Submit** to save your notification configuration.
+8. Select **Submit** to save your notification configuration.
 
-        ![](./static/submit_notification.png)
+        ![](./static/submit-notification.png)
 
 You can set up notification at [Account](#account-level) and [Project Level](#project-level) following the same steps outlined above.
 
