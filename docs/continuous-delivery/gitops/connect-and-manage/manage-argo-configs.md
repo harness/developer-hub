@@ -16,7 +16,7 @@ To add the GitOps application for your Argo CD configuration, do the following:
 
 1. Install a Harness GitOps agent on the destination cluster.
 
-2. In Harness GitOps, add a GitOps repository for the repository where your Argo CD configurations are stored. For steps on how to do this, go to [Add a Harness GitOps repository](/docs/continuous-delivery/gitops/use-gitops/add-a-harness-git-ops-repository).
+2. In Harness GitOps, add a GitOps repository for the repository where your Argo CD configurations are stored. For steps on how to do this, go to [Add a Harness GitOps repository](/docs/continuous-delivery/gitops/repositories/add-a-harness-git-ops-repository).
 
    <figure>
    

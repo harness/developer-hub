@@ -267,6 +267,58 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
             ```
 :::
 
+## July 2, 2025, Version 0.29.1
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.29.1](https://github.com/harness/helm-charts/releases/tag/harness-0.29.1)                 |
+| Air Gap Bundle            | [0.29.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.29.1) |
+| NG Manager                | 1.89.6                                                                                       |
+| CI Manager                | 1.79.1                                                                                       |
+| Pipeline Service          | 1.128.1                                                                                      |
+| Platform Service          | 1.66.0                                                                                       |
+| Access Control Service    | 1.87.0                                                                                       |
+| Delegate                  | 25.05.85801                                                                                  |
+| GitOps Service            | 1.32.2                                                                                       |
+| Change Data Capture       | 1.44.0                                                                                       |
+| STO Core                  | 1.140.1                                                                                      |
+| Test Intelligence Service | 1.45.0                                                                                       |
+| NG UI                     | 1.75.3                                                                                       |
+| LE NG                     | 1.6.0                                                                                        |
+| Looker                    | 1.7.11                                                                                       |
+| Log Service               | 1.19.1                                                                                       |
+| Batch Processing          | 1.48.2                                                                                       |
+| Gateway                   | 1.48.1                                                                                       |
+| IaCM Manager              | 1.76.0                                                                                       |
+| Harness Manager           | 1.86.4                                                                                       |
+
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.29.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.1/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.29.1/iacm_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- In SAML Authentication we have now enabled 5-minute clock skew tolerance between IDP and Harness Manager. [PL-63828]
+
 ## June 03, 2025, Version 0.29.0 <!-- Draft : May 26, 2025 -->
 
 This release includes the following Harness module and component versions.
@@ -492,7 +544,7 @@ gsutil -m cp \
 
 #### GitOps
 
-- Applications can now be [synced and refreshed using bulk actions](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications#bulk-sync-and-refresh). On the applications page, there are two new buttons: **Bulk Sync** and **Refresh**. Currently, this feature is behind the feature flag `GITOPS_BULK_ACTIONS_ENABLED `. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-58485**)
+- Applications can now be [synced and refreshed using bulk actions](/docs/continuous-delivery/gitops/application/sync-gitops-applications#bulk-sync-and-refresh). On the applications page, there are two new buttons: **Bulk Sync** and **Refresh**. Currently, this feature is behind the feature flag `GITOPS_BULK_ACTIONS_ENABLED `. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-58485**)
 
 ### Behavior changes
 
@@ -3092,7 +3144,7 @@ chaos-manager:
 
 - GitOps is now installed automatically with Continuous Delivery (CD) and no longer requires separate control settings in the override configuration.
 
-- The Harness GitOps agent uses the **Horizontal Pod Autoscaler** for CPU and memory management, with a minimum of 1 replica and a maximum of 5 replicas in High Availability (HA) mode. For more information, go to [GitOps documentation](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent/#high-availability-ha). (CDS-100830)
+- The Harness GitOps agent uses the **Horizontal Pod Autoscaler** for CPU and memory management, with a minimum of 1 replica and a maximum of 5 replicas in High Availability (HA) mode. For more information, go to [GitOps documentation](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent/#high-availability-ha). (CDS-100830)
 
 - Harness GitOps now supports Multi-Source applications with ArgoCD. This feature is available for the GitOps agent version 0.79. Currently, this feature is behind the feature flag  `GITOPS_MULTI_SOURCE_ENABLED`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-85518)
 

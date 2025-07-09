@@ -75,13 +75,13 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
 
 # STO Docs
-/docs/security-testing-orchestration/ @tejakummarikuntla @BruceMcPhersonHarness
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @BruceMcPhersonHarness
-/release-notes/security-testing-orchestration.md @tejakummarikuntla @BruceMcPhersonHarness
-/src/components/Roadmap/data/stoData.ts @tejakummarikuntla  @BruceMcPhersonHarness
-/src/components/Docs/data/securityTestingOrchestrationData.ts @tejakummarikuntla @BruceMcPhersonHarness
+/docs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
+/release-notes/security-testing-orchestration.md @tejakummarikuntla @priteshchandaliya
+/src/components/Roadmap/data/stoData.ts @tejakummarikuntla  @priteshchandaliya
+/src/components/Docs/data/securityTestingOrchestrationData.ts @tejakummarikuntla @priteshchandaliya
 # STO FAQs
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
 
 # CCM Docs
 
@@ -111,12 +111,12 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur
 
 # Chaos Docs
-/docs/chaos-engineering/ @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
+/docs/chaos-engineering/ @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
 /release-notes/chaos-engineering.md @neelanjan00 @Jonsy13 @Ashutosh-Bhadauriya
 /src/components/Roadmap/data/ceData.ts @neelanjan00 @SushrutHarness
 /src/components/Docs/data/chaosEngineeringData* @neelanjan00 @SushrutHarness
 # Chaos FAQs
-/docs/faqs/chaos-engineering-faqs @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
+/docs/faqs/chaos-engineering-faqs @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
 /docs/faqs/static @neelanjan00 @Jonsy13 @Adarshkumar14 @ksatchit @umamukkara @Ashutosh-Bhadauriya
 /kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @ksatchit @umamukkara @Ashutosh-Bhadauriya
 
@@ -150,11 +150,11 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/platform/harness-aida/ @SushrutHarness @pratmit @thisrohangupta @ivikramsahu @abhishekharness @vishal-av
 
 # IDP Docs
-/docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness
-/release-notes/internal-developer-portal.md @OrkoHunter @manishas @khushisharmaharness
-/release-notes/static/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness
-/src/components/Roadmap/data/idpData.ts @OrkoHunter @manishas @khushisharmaharness
-/src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness
+/docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/release-notes/internal-developer-portal.md @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/release-notes/static/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/src/components/Roadmap/data/idpData.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
 
 # SCS Docs
 /docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
@@ -189,11 +189,12 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/softwareEngineeringInsightsData.ts @alai97 @codewdhruv @batraprashant @santoshdodamani
 
 # DB DevOps Docs
-/docs/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
-/release-notes/database-devops.md @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
-/src/components/Docs/data/databaseDevOpsData.ts @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
+/docs/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
+/release-notes/database-devops.md @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
+/src/components/Docs/data/databaseDevOpsData.ts @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
+/src/components/Roadmap/data/dbdevopsData.ts @stephenatwell @archit-harness @sonichigo @rohitk-h @ivikramsahu @wei-harness
 # DB DevOps FAQs
-/docs/faqs/db-devops-faqs/ @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
+/docs/faqs/db-devops-faqs/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
 
 # CDE Docs
 /docs/cloud-development-environments/ @manishas @khushisharmaharness
@@ -215,7 +216,7 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/openSourceData.tsx @dewan-ahmed @rustd @SushrutHarness
 
 # Cloud Operations Docs
-/docs/harness-cloud-operations/ @ankit-harness @yogi-harness
+/docs/harness-cloud-operations/ @ankit-harness
 
 # Knowledge Base ###
 
@@ -227,7 +228,7 @@ static/  @rohanmaharjan100 @wei-harness
 /kb/armory @jimin-harness @deepanshuHarness @guna-harness
 
 # DB DevOps
-/kb/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
+/kb/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h @hemanthbsridhar
 
 #Reference Architectures
 /kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness

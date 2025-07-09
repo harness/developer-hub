@@ -40,19 +40,29 @@ Harness Internal Developer Portal (IDP) integrates with the Platform Git Experie
 | **IDP to Git changes**: Make changes in IDP and commit changes to YAML file in Git | ✅ Available                                    |
 | **Git to IDP changes**: Make changes to YAML file in Git and update entity in IDP  | 🚧 (Work in Progress) ETA: Week of July 4, 2025 |
 
+
+
+
+:::info Note
+With the IDP Git experience feature, one entity can have only one YAML file. Unlike IDP 1.0, storing multiple entities within a single YAML is no longer supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions. 
+To understand more about this and other key differences, see the [breaking changes in IDP 2.0](https://developer.harness.io/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#breaking-changes-in-idp-20).
+:::
+
 ### Supported IDP Entities in Git Experience
 
 IDP Catalog entity YAMLs (Component, API, Resource) and Workflow YAMLs can be stored in Git using Git Experience. However, configuration of other resources such as Scorecards, Plugin configurations, Layouts, etc. can only be done using the UI or API.
+> **Note:**
+> For the full list of supported entities, refer to the [Supported IDP Entities in Git Experience](https://developer.harness.io/docs/internal-developer-portal/whats-supported#supported-idp-entities-in-git-experience) documentation.
 
 ### Supported Git Providers in Harness IDP Git Experience
 
 Harness IDP Git Experience integrates with the following **Git Providers**:
 
-- GitHub (Cloud & Enterprise)
-- GitLab (Cloud & Self Hosted)
-- Bitbucket
-- Azure Repos
-- Harness Code
+- GitHub ([Cloud](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) & [Enterprise](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server))
+- [GitLab](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) (Cloud & Self Hosted)
+- [Bitbucket](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket)
+- [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
+- [Harness Code](https://developer.harness.io/docs/code-repository/get-started/overview/)
 
 ## Storing Entity YAMLs
 
@@ -123,7 +133,7 @@ You can do this in two ways:
 
 
 - **In Bulk using a Script**: For larger migrations, Harness provides a script that helps automate the conversion of multiple entities from Inline to Remote, storing their YAMLs in a Git repo following a structured format.
-  To learn how to use this script and view complete steps, refer to the official migration guide - [Store Entity YAMLs in Git](../idp-2o-overview/migrating-idp-2o#step-7-store-entity-yamls-in-git)
+  To learn how to use this script and view complete steps, refer to the official migration guide - [Store Entity YAMLs in Git](../idp-2o-overview/migrating-idp-2o.md#step-7-store-entity-yamls-in-git)
 
 ### Managing Multiple Branches
 

@@ -27,6 +27,8 @@ The **Github Copilot plugin** provides GitHub Copilot Enterprise insights direct
 - Language-wise usage distribution  
 - Overall Copilot activity  
 
+![Github-copilot](./static/github-copilot.png)
+
 These insights help engineering teams assess the adoption and effectiveness of GitHub Copilot across their services.
 
 ![github-copilot](./static/github-copilot.png)
@@ -49,17 +51,16 @@ These insights help engineering teams assess the adoption and effectiveness of G
 
 ```yaml
 copilot:
-  scheduler:
+  schedule:
     frequency:
-      cron: '0 2 * * *'
+      hours: 2
     timeout:
       minutes: 2
     initialDelay:
       seconds: 15
-host: github.com  # or ghe.myenterprise.com
-organization: githubOrg
-# enterprise: enterpriseName  (if you are on GitHub enterprise)
-
+  host: github.com # or github.myenterprise.com
+  # organization: ${{COPILOT_ORG}}  # eg: githubOrg - GitHub organization name
+  # enterprise: ${{COPILOT_ENT}}  # Optional - only if using GitHub Enterprise
 ```
 
 :::info 
@@ -101,7 +102,7 @@ This plugin exports:
 
 #### To add the page to the portal layout:
 
-Update your layout config in the Admin Panel under `Layout > Sidenav Layout` like so:
+Since its not added by default, you need to update your layout config in the Admin Panel under `Layout > Sidenav Layout` manually, like so:
 
 ```yaml
 - name: SidebarItem
@@ -110,9 +111,6 @@ Update your layout config in the Admin Panel under `Layout > Sidenav Layout` lik
     text: CoPilot
 ```
 
-<!-- > By default, the page is added to **service** and **website** layouts. You can modify this from **Layout Management** — reorder, remove, or reassign the page to different entity types as needed. -->
-
----
 
 ## Annotations
 
