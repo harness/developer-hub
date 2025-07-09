@@ -1,7 +1,7 @@
 ---
-title: Node pool recommendations
+title: Node Pool Recommendations
 description: Harness Cloud Cost Management (CCM) provides recommendations for your Kubernetes clusters. This topic describes how CCM computes node pool recommendations and how you can use them to potentially reduce monthly costs.
-# sidebar_position: 2
+sidebar_position: 2
 helpdocs_topic_id: x75xp0xime
 helpdocs_category_id: viib5j7fek
 helpdocs_is_private: false
@@ -29,8 +29,8 @@ Recommendations will not be generated for nodepools with multiple instance famil
 
 ## Before You begin
 
-* [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
-* [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+* [Set Up Cloud Cost Management for Kubernetes](../../../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
+* [CCM Perspectives](../../../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
 
 ## Prerequisites
 
@@ -136,7 +136,7 @@ The value for CPU and memory is auto-populated by aggregating the resource utili
 
 By default, the recommendation computation adds a 15% buffer to the recommended resources. This option allows you to add an additional buffer to your resources.
 
-![](./static/node-pool-recommendations-09.png)
+![](../../static/node-pool-recommendations-09.png)
 
 Once you apply the preferences, modified values are used for calculating the recommendations.
 
@@ -144,13 +144,13 @@ Once you apply the preferences, modified values are used for calculating the rec
 
 The maximum workload that is observed based on the historical utilization that is scheduled on the nodes is used to calculate the value for this field. You can customize your CPU (vCPU) and RAM options (GiB).
 
-![](./static/node-pool-recommendations-10.png)
+![](../../static/node-pool-recommendations-10.png)
 
 #### Option: Preferred minimum node count
 
 This option allows you to set the number of minimum nodes that are used for the recommendation. Use the **+** button to increase the node count and click **-** to decrease the node count.
 
-![](./static/node-pool-recommendations-11.png)
+![](../../static/node-pool-recommendations-11.png)
 
 #### Option: Preferred instance families
 
@@ -160,11 +160,11 @@ In **Preferred Instance families**, click **add preferred instance families**.
 
 Select your preferences and click **Save Preferences**. The category of the instance families will depend on the cloud provider type. The following example shows the GKE.
 
-![](./static/node-pool-recommendations-12.png)
+![](../../static/node-pool-recommendations-12.png)
 
 Once, you've made all the changes, click **Apply Preferences** or click **Reset to default**.
 
-![](./static/node-pool-recommendations-13.png)
+![](../../static/node-pool-recommendations-13.png)
 
 :::important note
 For nodepool recommendations, we base our calculations using public pricing data, which may differ from actual price.

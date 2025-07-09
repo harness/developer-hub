@@ -1,0 +1,356 @@
+.container {
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h3 {
+  margin: 0 0 8px 0;
+  color: #1565c0;
+  font-size: 24px;
+}
+
+.header p {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+}
+
+/* Slider Styles */
+.sliderContainer {
+  margin-bottom: 32px;
+}
+
+.sliderTrack {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #ffebee 0%, #e3f2fd 50%, #e8f5e8 100%);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1565c0;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(21, 101, 192, 0.3);
+  transition: all 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(21, 101, 192, 0.4);
+}
+
+.slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1565c0;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(21, 101, 192, 0.3);
+}
+
+.sliderLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.stageIndicator {
+  text-align: center;
+  padding: 12px;
+  background: #e3f2fd;
+  border-radius: 8px;
+  color: #1565c0;
+  font-size: 16px;
+}
+
+/* Comparison Styles */
+.comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.beforeAfter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  position: relative;
+}
+
+.state {
+  padding: 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.before {
+  background: #ffebee;
+  border: 2px solid #c62828;
+}
+
+.after {
+  background: #e8f5e8;
+  border: 2px solid #2e7d32;
+}
+
+.state h4 {
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+.before h4 {
+  color: #c62828;
+}
+
+.after h4 {
+  color: #2e7d32;
+}
+
+.instanceBox {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.instanceType {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.specs {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.cost {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1565c0;
+}
+
+.utilization {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.utilizationBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.utilizationBar span {
+  min-width: 80px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cpuBar, .memBar {
+  height: 20px;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  flex: 1;
+  max-width: 200px;
+}
+
+.cpuBar {
+  background: linear-gradient(90deg, #4caf50, #8bc34a);
+}
+
+.memBar {
+  background: linear-gradient(90deg, #2196f3, #03a9f4);
+}
+
+/* Cost Impact Styles */
+.costImpact {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.costCard, .savingsCard, .annualCard {
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.costCard {
+  background: #fff3e0;
+  border: 1px solid #ffb74d;
+}
+
+.savingsCard {
+  background: #e8f5e8;
+  border: 1px solid #4caf50;
+}
+
+.annualCard {
+  background: #e3f2fd;
+  border: 1px solid #2196f3;
+}
+
+.costCard h5, .savingsCard h5, .annualCard h5 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.costComparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.currentCost {
+  font-size: 20px;
+  font-weight: bold;
+  color: #c62828;
+}
+
+.arrow {
+  font-size: 18px;
+  color: #666;
+}
+
+.optimizedCost {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.savings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.savingsAmount {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.savingsPercent {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.annualSavings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.annualAmount {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1565c0;
+}
+
+.annualLabel {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* Progress Indicators */
+.progressIndicators {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.progressItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progressItem span:first-child {
+  min-width: 140px;
+  font-weight: 500;
+}
+
+.progressItem span:last-child {
+  min-width: 40px;
+  text-align: right;
+  font-weight: bold;
+  color: #1565c0;
+}
+
+.progressBar {
+  flex: 1;
+  height: 12px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #2196f3);
+  transition: width 0.3s ease;
+  border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .beforeAfter {
+    grid-template-columns: 1fr;
+  }
+  
+  .costImpact {
+    grid-template-columns: 1fr;
+  }
+  
+  .progressIndicators {
+    grid-template-columns: 1fr;
+  }
+  
+  .progressItem {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .progressItem span:first-child,
+  .progressItem span:last-child {
+    min-width: auto;
+    text-align: center;
+  }
+}
