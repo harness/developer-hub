@@ -2066,6 +2066,11 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         {
+          type: "doc",
+          id: "software-engineering-insights/sei-supported-platforms",
+          label: "Supported Platforms",
+        },
+        {
           type: "html",
           value: "Propelo SEI",
           className: "horizontal-bar",
