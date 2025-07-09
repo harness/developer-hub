@@ -52,6 +52,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 #### Fixed issues
 - Fixed an issue where `PLUGIN_SOURCE_IMAGE` values with registry URLs containing ports were incorrectly parsed, causing image lookup failures. (CI-18019, ZD-87175)
 - Fixed an issue where GitLab SHA builds did not route through the delegate even when the connector was configured to do so, causing certificate errors for some users. These requests now correctly go through the delegate. (CI-17996, ZD-83042, ZD-86364, ZD-87434)
+- Fixed a **NullPointerException** in explicit Git Clone steps when using general Git connectors. These connectors now work as expected. (CI-18006)
 
 #### Harness images updates
 
