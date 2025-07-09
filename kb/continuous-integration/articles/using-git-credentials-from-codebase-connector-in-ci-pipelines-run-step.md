@@ -2,7 +2,7 @@
 title:  Use codebase connector's Git credentials in a CI Run step
 ---
 
-Harness CI supports seamless integration with version control systems through [codebase connectors](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase). While most Git tasks are automated within the CI pipeline, there can be scenarios where you need to manually execute Git commands in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings), such as when you need to [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory) or run [use Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
+Harness CI supports seamless integration with version control systems through [codebase connectors](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase). While most Git tasks are automated within the CI pipeline, there can be scenarios where you need to manually execute Git commands in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings), such as when you need to [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory) or run [use Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration#download-lfs-files).
 
 To facilitate this process, you can use a `.netrc` file to pull Git credentials from your pipeline's codebase connector and use those credentials in your Run step's commands.
 
