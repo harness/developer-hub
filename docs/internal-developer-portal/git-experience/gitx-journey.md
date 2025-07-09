@@ -243,7 +243,7 @@ When a user updates the YAML file directly in the Git repository (for example, t
 
 #### Webhook Auto-Creation
 
-When Git Experience is configured in Harness, a webhook is automatically created in your Git repository. This webhook enables IDP GitX to listen for updates and trigger YAML reloads.
+When Git Experience (GitX) is configured in Harness, a webhook is automatically created in your Git repository. This webhook allows IDP GitX to listen for changes and automatically trigger YAML reloads. If the webhook is configured and any updates are pushed to the repository, Harness also validates the updated IDP catalog YAMLs to ensure correctness and consistency.
 
 ![Webhook Auto-Creation](./static/webhook-created.png) 
 
