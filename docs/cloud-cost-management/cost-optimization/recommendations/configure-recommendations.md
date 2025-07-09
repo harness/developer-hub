@@ -1,0 +1,149 @@
+---
+title: Configure Recommendations
+description: Learn how to configure recommendations to optimize your cloud costs.
+sidebar_position: 30
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+Cloud Cost Management (CCM) recommendations help you identify opportunities to optimize your cloud spend and improve resource efficiency. These automated insights analyze your usage patterns and suggest actionable steps to reduce costs across your cloud environments.
+
+## Types of recommendations
+- **Azure VM Recommendations**: Identify underutilized virtual machines in your Azure environment and suggest rightsizing or termination to reduce spend.
+- **AWS EC2 Recommendations**: Analyze EC2 usage to detect idle or oversized instances, offering guidance to optimize instance types or stop them altogether.
+- **AWS ECR Recommendations**: Highlight unused container images in Amazon Elastic Container Registry and recommend cleanup actions.
+- **Governance Recommendations**: Provide cost governance insights based on tagging, business units, and spending patterns across AWS, GCP, and Azure.
+- **Node Pool Recommendations**: Recommend better node pool configurations for your Kubernetes clusters to balance cost and performance, with cloud-specific requirements.
+- **Workload Recommendations**: Target inefficient Kubernetes workloads by analyzing CPU/memory utilization and proposing updated resource requests/limits.
+
+---
+
+## Platform Coverage
+| Cloud Platform | Azure VM | AWS EC2 | AWS ECR | Governance | Node Pool | Workload |
+|----------------|----------|---------|---------|------------|------------|----------|
+| **AWS**        | ❌       | ✅      | ✅      | ✅         | ✅         | ❌       |
+| **Azure**      | ✅       | ❌      | ❌      | ✅         | ✅         | ❌       |
+| **GCP**        | ❌       | ❌      | ❌      | ✅         | ✅         | ❌       |
+| **Kubernetes** | ❌       | ❌      | ❌      | ❌         | ✅         | ✅       |
+
+---
+
+:::tip
+Use this page to adjust the thresholds used by Harness CCM to generate recommendations for AWS, Azure, Kubernetes, and ECS workloads. You can tune buffer percentages and set platform-specific parameters to better align recommendations with your infrastructure and risk tolerance.
+:::
+
+The following topics provide step-by-step instructions for configuring recommendations for each cloud platform, 
+
+## Before you begin
+Before enabling recommendations, ensure your cloud environments are connected and the correct features are enabled. Go to [Get Started](#) to connect your cloud provider.
+
+<Tabs groupId="cloud-platform" queryString>
+<TabItem value="aws" label="AWS">
+<Tabs groupId="recommendation-type" queryString>
+<TabItem value="ec2" label="EC2">
+
+- Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws).
+- To obtain EC2 recommendations, configure a Harness AWS CCM connector with the Inventory Management feature enabled.
+- Go to [Perspectives](/docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
+</TabItem>
+<TabItem value="ecs" label="ECS">
+
+- Go to [Perspectives](docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
+
+- Configure an AWS CCM Connector with the Inventory Management feature enabled to get ECS recommendations.
+
+:::info delegate not required
+No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role.
+See [Set Up Cloud Cost Management for AWS](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws).
+:::
+
+</TabItem>
+</Tabs>
+</TabItem>
+<TabItem value="azure" label="Azure">
+
+- Connect your Azure cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for Azure](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md).
+- To obtain Azure VM recommendations, configure a Harness Azure CCM connector with the Cost Visibility and the Inventory Management features enabled. For more information, go to [Connect CCM to your Azure account](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md#connect-ccm-to-your-azure-account).
+  
+:::note
+Enabling the **Visibility** feature allows retrieving recommendations from the Azure Advisor. The **Inventory Management** feature allows you to fetch the CPU utilization data and display the corresponding recommendations. If the Inventory Management feature is not enabled, the graph and table may show a null state.
+:::
+
+</TabItem>
+<TabItem value="gcp" label="GCP">
+Placeholder for GCP recommendation prerequisites
+</TabItem>
+<TabItem value="kubernetes" label="Kubernetes">
+kubernetes
+</TabItem>
+</Tabs>
+
+## Enable recommendations
+
+<Tabs groupId="cloud-platform" queryString>
+<TabItem value="aws" label="AWS">
+aws
+</TabItem>
+<TabItem value="azure" label="Azure">
+azure
+</TabItem>
+<TabItem value="gcp" label="GCP">
+gcp
+</TabItem>
+<TabItem value="kubernetes" label="Kubernetes">
+kubernetes
+</TabItem>
+</Tabs>
+
+## View recommendations
+
+<Tabs groupId="cloud-platform" queryString>
+<TabItem value="aws" label="AWS">
+aws
+</TabItem>
+<TabItem value="azure" label="Azure">
+azure
+</TabItem>
+<TabItem value="gcp" label="GCP">
+gcp
+</TabItem>
+<TabItem value="kubernetes" label="Kubernetes">
+kubernetes
+</TabItem>
+</Tabs>
+
+## Recommendation settings
+
+<Tabs groupId="cloud-platform" queryString>
+<TabItem value="aws" label="AWS">
+aws
+</TabItem>
+<TabItem value="azure" label="Azure">
+azure
+</TabItem>
+<TabItem value="gcp" label="GCP">
+gcp
+</TabItem>
+<TabItem value="kubernetes" label="Kubernetes">
+kubernetes
+</TabItem>
+</Tabs>
+
+## Apply recommendations
+
+<Tabs groupId="cloud-platform" queryString>
+<TabItem value="aws" label="AWS">
+aws
+</TabItem>
+<TabItem value="azure" label="Azure">
+azure
+</TabItem>
+<TabItem value="gcp" label="GCP">
+gcp
+</TabItem>
+<TabItem value="kubernetes" label="Kubernetes">
+kubernetes
+</TabItem>
+</Tabs>

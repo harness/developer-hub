@@ -404,7 +404,5 @@ Harness provides filtering support for recommendations based on cloud account id
   -   **GCP**: No filtering support.  
 
 :::note
-
 Filtering support for recommendations extends to **RBAC configurations based on perspective folder access settings**, ensuring that cost-saving suggestions are appropriately scoped to the right teams. 
-
 :::
