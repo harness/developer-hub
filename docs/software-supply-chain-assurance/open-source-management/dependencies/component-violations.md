@@ -5,7 +5,7 @@ description: View Component Violations for Artifacts and Code Repositories
 sidebar_position: 4
 ---
 
-The Component Violations Dashboard for Artifacts and Repositories displays the number of pipelines flagged for SBOM policy violations. It provides a centralized view, eliminating the need to manually search for components across repositories and projects, providing a single point of access, especially helpful during zero-day attacks.
+The Component Violations Dashboard for Artifacts and Repositories displays pipelines flagged for SBOM policy violations. It provides a centralized view across organizations and projects, making it easier to respond during zero-day attacks.
 
 Follow the below steps to view component violations for artifacts. You can follow the same process to view Component violations for code repositories.
 
