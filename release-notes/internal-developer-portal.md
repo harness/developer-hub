@@ -34,39 +34,38 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ###  [New feature] Harness Git Experience (GitX) — Now Bi-Directional
 
-Harness IDP's Git Experience has been upgraded to offer full [**bi-directional sync**](../docs/internal-developer-portal/git-experience/gitx-journey#bi-directional-sync-between-harness-and-git). You can now manage **Scorecards, Workflows, Layouts, and Software Catalog configuration** directly from your Git repository — while still retaining visibility and control within the IDP UI.
+Harness IDP's Git Experience has been upgraded to offer full [**bi-directional sync**](../docs/internal-developer-portal/git-experience/gitx-journey#bi-directional-sync-between-harness-and-git). You can now manage **Scorecards, and Workflows** directly from your Git repository — while still retaining visibility and control within the IDP UI.
 
 Key highlights:
 
-* Changes made via the IDP UI can also be pushed back to Git (if Git sync is enabled).
-* From the **Catalog page**, you can now **switch branches** and preview configurations before they go live — ideal for testing or working with feature branches.
-* Only the default branch will be active and reflected in IDP runtime.
-* When you configure a Git repository for use with GitX, a webhook is automatically added to enable real-time sync from Git to IDP — no manual webhook setup needed.
+**New features:**
 
+* When you configure a Git repository for use with GitX, a webhook is automatically added. This enables real-time sync from Git to IDP without requiring manual webhook setup.
+* From the Catalog page, you can now switch branches and preview configurations before they go live. This is useful for testing or working with feature branches.
+* Any changes made in Git will now be reflected in IDP, provided the webhook is enabled.
+
+**Recap of existing behavior:**
+
+* Changes made via the IDP UI can be pushed back to Git, if Git sync is enabled.
+* Only the default branch will be active and reflected in the IDP runtime.
 
 This unlocks GitOps-style workflows, where Git remains the source of truth, and IDP becomes the real-time visual dashboard.
 
+###  [New feature] Visualize Ingested Properties
 
-###  [New feature] Git-Based Service Ingestion
+When you use Catalog Ingestion API to push custom metadata, they are not committed back to the YAML file but are part of the final entity metadata shown in IDP. You can now visualize all ingested properties in the entity YAML view.
 
-You can now onboard services via Git using a streamlined, declarative ingestion flow.
+![](./static/ingested.png)
 
-What’s new:
+More details: [Visualizing Ingested Metadata](../docs/internal-developer-portal/git-experience/ingested-metadata)
 
-* When services are ingested from Git, **custom metadata** defined in your repo is now **visually displayed in the Edit Entity flow**.
-* These properties are **read-only** and cannot be edited from the frontend.
-* They are also **not embedded into the main YAML**, keeping configuration clean and version-controlled.
+###  [New feature] Increased Bitbucket API Rate Limits
 
-This gives teams visibility into derived metadata and streamlines registration without manual edits.
+Bitbucket Git Connector in IDP now also supports API Key Authentication which allows for higher API rate limits when used in syncing files or Scorecards computation.
 
-More details: [Visualizing Ingested Metadata](https://harness.atlassian.net/wiki/spaces/IDP/pages/22528984069/Visualizing+Ingested+Metadata+in+the+YAML+editor)
+If you are facing Bitbucket API rate limit issues, please update your Bitbucket connector with a new one using API Key authentication.
 
-###  [New feature] Bitbucket Improvements and Delegate
-
-* **Bitbucket Connector Support for API Key Authentication**
-  You can now configure Bitbucket connectors to use **API key authentication** in IDP Git Experience. This enables higher API rate limits and improved sync performance — especially beneficial when computing metrics for Scorecards.
-
-  > To use **Bitbucket API access for score computation**, you must upgrade your Harness Delegate to **version `25.06.86202` or newer**.
+You must also upgrade your Harness Delegate used in the Git connector to **version `25.06.86202` or newer**.
 
 ### Bug Fixes and Improvements
 
@@ -85,10 +84,6 @@ More details: [Visualizing Ingested Metadata](https://harness.atlassian.net/wiki
   *\[IDP-5542]*
 
 
-* **Fixed Ingested Properties Display in Catalog UI**
-  Resolved an issue where ingested properties were not being properly displayed in the Catalog UI. The system now correctly renders metadata derived from Git-based ingestion, improving visibility during entity editing.
-  *\[IDP-5882]*
-
 * **Error Handling for Entity Import from Harness Code Repo**
   Fixed a backend issue that caused entity import to fail when using **Harness Code Repo** with Git Experience enabled by default. The system now gracefully handles this scenario without requiring manual configuration toggles.
   *\[IDP-5855]*
@@ -101,10 +96,6 @@ More details: [Visualizing Ingested Metadata](https://harness.atlassian.net/wiki
   Fixed a UI glitch where user group names in the "owner" field of the Catalog table would intermittently flicker between full text and ellipsis. Styling has been corrected for better consistency.
   *\[IDP-5792]*
 
-* **Bitbucket Cloud API Token Support for Scorecards via Delegate**
-  Backend and delegate updates have been introduced to support **Bitbucket Cloud API token**–based authentication when fetching metadata for Scorecards.
-  Ensure your delegate version is upgraded to **`25.06.86202` or newer** to enable this capability.
-  *\[IDP-5777, IDP-5776]*
 
 
 ## June - [2025.06.v1]
