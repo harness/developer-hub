@@ -88,23 +88,20 @@ Harness CCM uses labels to process node pool recommendations. Make sure to add o
 
 ## Enable recommendations
 
-<Tabs groupId="cloud-platform" queryString>
-<TabItem value="aws" label="AWS">
-aws
-</TabItem>
-<TabItem value="azure" label="Azure">
-azure
-</TabItem>
-<TabItem value="gcp" label="GCP">
-gcp
-</TabItem>
-<TabItem value="kubernetes" label="Kubernetes">
-kubernetes
-</TabItem>
-</Tabs>
+Recommendations are enabled as part of your cloud connector configuration. To enable recommendations for a cloud platform, follow the instructions [add a new connector](#get-started) or edit an existing one by:
+
+1. Select **Account settings** from the left navigation.
+2. Select **Connectors**.
+3. Select an existing **Cloud cost connector**.
+4. Select **Edit details**.
+5. Follow the connector configuration wizard and select **Resource inventory management** from the **Choose requirements** step.
+
+:::info aws cost reporter
+For AWS connectors, you must also enable the **Cost Explorer** permissions to the CCM template, see the **Create cross account role** section step in the configuration wizard.
+:::
+
 
 ## View recommendations
-
 <Tabs groupId="cloud-platform" queryString>
 <TabItem value="aws" label="AWS">
 aws
@@ -121,7 +118,6 @@ kubernetes
 </Tabs>
 
 ## Recommendation settings
-
 <Tabs groupId="cloud-platform" queryString>
 <TabItem value="aws" label="AWS">
 aws
@@ -138,7 +134,6 @@ kubernetes
 </Tabs>
 
 ## Apply recommendations
-
 <Tabs groupId="cloud-platform" queryString>
 <TabItem value="aws" label="AWS">
 aws
@@ -153,3 +148,62 @@ gcp
 kubernetes
 </TabItem>
 </Tabs>
+
+
+## Governance
+Harness Cloud Asset Governance provides tools to optimize your cloud spend and avoid unnecessary costs. By leveraging these recommendations, you can better control your cloud expenses while ensuring that your cloud infrastructure is optimized for maximum efficiency and cost-effectiveness.
+
+The following resources can be optimized with Asset Governance:
+
+<Tabs groupId="cloud-platform" queryString>
+<TabItem value="aws" label="AWS">
+
+- EC2 instances
+- EBS
+- ELB
+- Cache-cluster
+- S3 buckets
+- Lambda functions
+- RDS (Relational Database Service) instances
+- CloudFormation stacks
+
+Go to [AWS Asset Governance](/docs/cloud-cost-management/governance/asset-governance) to view all the AWS recommendations.
+</TabItem>
+<TabItem value="azure" label="Azure">
+
+- Virtual Machines (VMs)
+- Storage accounts
+- App services
+- Cosmos DB accounts
+- SQL server
+- PostgreSQL servers
+- Key Vaults
+
+Go to [Azure Asset Governance](/docs/cloud-cost-management/governance/asset-governance) to view all the Azure recommendations.
+</TabItem>
+<TabItem value="gcp" label="GCP">
+
+- Compute Engine instances
+- Cloud Storage buckets
+- App Engine applications
+- Cloud SQL instances
+- Cloud IAM policies
+
+Go to [GCP Asset Governance](/docs/cloud-cost-management/governance/asset-governance) to view all the GCP recommendations.
+</TabItem>
+</Tabs>
+
+### Enable governance
+Similarly to other cloud recommendations, **Cloud governance** is enabled as part of your cloud connector configuration. To enable governance for your cloud platform, follow the instructions [add a new connector](#get-started) or edit an existing one by:
+
+1. Select **Account settings** from the left navigation.
+2. Select **Connectors**.
+3. Select an existing **Cloud cost connector**.
+4. Select **Edit details**.
+5. Follow the connector configuration wizard and select **Cloud governance** from the **Choose requirements** step.
+
+### View cost governance recommendations
+1. In Harness, go to the Cloud Costs module.
+2. Click **Recommendations**.
+3. There are two tabs present on the window - "Open Recommendations" and "Applied Recommendations". Open Recommendation tab shows all the recommendations that are currently available for applying and the potential monthly savings that the user can achieve if they are applied. On the other hand, Applied Recommendations show all the recommendations that have already been applied and the total savings achieved with their application.
+4. The recommendations window allows you to put filters on the recommendations to see the result as per convenience. Kindly choose "Governance" in "Recommendation Type" filter for all governance recommendations. Currently, these are filters supported:
