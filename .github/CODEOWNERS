@@ -105,10 +105,10 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/ContinuousErrorTracking.tsx @M-Tsur
 
 # SRM Docs
-/docs/service-reliability-management/ @sunilgupta-harness @umamukkara @M-Tsur
-/release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara @M-Tsur
-/src/components/Roadmap/data/srmData.ts @sunilgupta-harness @M-Tsur
-/src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur
+/docs/service-reliability-management/ @sunilgupta-harness @umamukkara @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
+/release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
+/src/components/Roadmap/data/srmData.ts @sunilgupta-harness @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
+/src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
 
 # Chaos Docs
 /docs/chaos-engineering/ @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya

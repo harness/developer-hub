@@ -1842,16 +1842,6 @@ const sidebars: SidebarsConfig = {
         description: "Learn about recent changes to Harness products.",
       },
     },
-     // Roadmap
-     {
-      type: "link",
-      label: "Roadmap",
-      className: "sidebar-roadmap",
-      href: "/roadmap/#srm",
-      customProps: {
-        description: "Learn about recent changes to Harness products.",
-      },
-    },
     // API Docs
     {
       type: "link",
