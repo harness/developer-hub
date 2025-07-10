@@ -34,7 +34,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ###  [New feature] Harness Git Experience (GitX) — Now Bi-Directional
 
-Harness IDP's Git Experience has been upgraded to offer full [**bi-directional sync**](../docs/internal-developer-portal/git-experience/gitx-journey#bi-directional-sync-between-harness-and-git). You can now manage **Scorecards, and Workflows** directly from your Git repository — while still retaining visibility and control within the IDP UI.
+Harness IDP's Git Experience has been upgraded to offer full [**bi-directional sync**](https://developer.harness.io/docs/internal-developer-portal/git-experience/gitx-journey/#bi-directional-sync-between-harness-and-git). You can now manage **Catalog entities, and Workflows** directly from your Git repository — while still retaining visibility and control within the IDP UI.
 
 Key highlights:
 
@@ -57,7 +57,7 @@ When you use Catalog Ingestion API to push custom metadata, they are not committ
 
 ![](./static/internal-developer-portal/ingested.png)
 
-More details: [Visualizing Ingested Metadata](../docs/internal-developer-portal/git-experience/ingested-metadata)
+More details: [Visualizing Ingested Metadata](https://developer.harness.io/docs/internal-developer-portal/git-experience/ingested-metadata)
 
 ###  [New feature] Increased Bitbucket API Rate Limits
 
