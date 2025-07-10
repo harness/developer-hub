@@ -2080,7 +2080,7 @@ const sidebars: SidebarsConfig = {
           label: "SEI 1.0",
           link: {
             type: "generated-index",
-            slug: "/category/propelo-sei",
+            slug: "/category/sei-current",
           },
           items: [
             {
@@ -2099,7 +2099,7 @@ const sidebars: SidebarsConfig = {
           label: "SEI 2.0 (Recommended)",
           link: {
             type: "generated-index",
-            slug: "/category/harness-sei",
+            slug: "/category/sei-recommended",
           },
           items: [
             {
