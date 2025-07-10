@@ -29,6 +29,16 @@ import TabItem from '@theme/TabItem';
 This Git Experience document is applicable **only to IDP 2.0 customers**, as the Harness IDP Git Experience is available exclusively in IDP 2.0. To learn how to upgrade, refer to the [IDP 2.0 Upgrade Guide](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md).
 :::
 
+
+### Supported Features in Git Experience
+
+| Feature                                                                            | Status                                          |
+| ---------------------------------------------------------------------------------- | ----------------------------------------------- |
+| **Store entity YAML in Git**                                                       | ✅ Available                                    |
+| **Import YAML from Git** and create a new entity                                   | ✅ Available                                    |
+| **IDP to Git changes**: Make changes in IDP and commit changes to YAML file in Git | ✅ Available                                    |
+| **Git to IDP changes**: Make changes to YAML file in Git and update entity in IDP  | ✅ Available |
+
 Harness Internal Developer Portal (IDP) integrates with the Platform Git Experience (GitX) to enable **bi-directional Git-backed entity management**. Harness Git Experience allows you to store and track your entity YAMLs in Git Repositories with bi-directional updates. This document outlines how developers and platform engineers interact with Git Experience throughout the entity lifecycle.
 
 

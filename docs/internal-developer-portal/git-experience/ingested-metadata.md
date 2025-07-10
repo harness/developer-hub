@@ -46,7 +46,11 @@ Users can click the **Ingested Properties** button in the editor to open a side 
 
 ### Editing and Conflicts
 
-If a property exists both in the Git YAML and via the Ingestion API, the ingested version is shown in the side panel and may override the display in IDP views. The YAML editor itself only reflects Git-tracked values. If users wish to version-control such metadata, they can manually edit the YAML to include those values.
+In the metadata section (which includes annotations and custom properties), values can come from both the Git-tracked YAML and the Ingestion API. When the same property is defined in both places, the value ingested via the API takes precedence and will override the display in IDP views such as the side panel.
+
+This override behavior happens only at the display/rendering level — for example, when viewing the side panel or when components are used in Scorecards. However, this does not affect the actual YAML stored in Git, which remains unchanged unless manually edited. The flows are isolated: manual UI/YAML edits follow one path, and ingested data follows another. If there's a conflict, the ingested value is prioritized during rendering and internal evaluation.
+
+
 
 ### Viewing Ingested Metadata
 
