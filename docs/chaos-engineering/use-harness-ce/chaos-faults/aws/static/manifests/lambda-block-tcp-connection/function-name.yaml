@@ -1,0 +1,16 @@
+---
+# Block TCP connections from a specific Lambda function
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: lambda-block-tcp-connection
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: lambda-block-tcp-connection
+      spec:
+        components:
+          env:
+            - name: FUNCTION_NAME
+              value: 'test-function'
