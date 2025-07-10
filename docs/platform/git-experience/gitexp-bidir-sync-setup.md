@@ -56,9 +56,6 @@ Automatic webhook registration follows these principles:
 
 By default, Harness attempts to register webhooks automatically for GitX entities using the associated Git connector. If your organization prefers to manage webhook registration externally, you can now disable webhook creation entirely from the Harness platform.
 
-:::note
-Currently, this feature is behind the feature flag `PIPE_GITX_DISABLE_SKIP_GIT_WEBHOOK_REGISTRATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
 
 #### Skip Git Webhook Registration Setting
 
@@ -67,8 +64,6 @@ To disable automatic webhook registration:
 1. Go to **Account Settings** → **Git Experience Settings**.
 2. Enable the **Skip Git Webhook Registration** checkbox.
 3. Save your changes.
-
-The **Skip Git Webhook Registration** setting only appears if the feature flag PIPE_GITX_DISABLE_SKIP_GIT_WEBHOOK_REGISTRATION is set to true. If the flag is not enabled, this setting will not be visible.
 
 When this setting is enabled:
 
