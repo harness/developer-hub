@@ -8,7 +8,7 @@ You can mark repositories as favorites in Harness Code to quickly access them an
 
 To favorite a repository:
 
-1. Go to the **Repositories** page.
+1. Go to the **Repositories** page or repo details page.
 2. Click the ⭐ icon next to the repository name and visibility.
 3. Once favorited, the star turns yellow, indicating it’s now in your favorites.
 <DocImage path={require('./assets/star-repo.png')} />
@@ -24,6 +24,6 @@ To filter and view only favorited repositories:
 
 :::tip
 
-Favorites are stored at the **account level**, so your starred repositories stay consistent across sessions.
+Favorites are persisted in storage so your starred repositories stay consistent across sessions.
 
 :::
