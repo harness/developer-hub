@@ -725,7 +725,7 @@ Users can now access the [change request ID](/docs/feature-management-experiment
 #### 2022-10-14
 ##### SDK Enhancements
 ###### Evaluate Without Sending Impressions
-Split as added a new impression mode, `NONE`. Which can now enable [all Split SDKS](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/-SDK-overview#supported-sdks) to send only unique keys per Split rather than sending all impression data. This will help decrease network traffic from your system to Split, ultimately leading to lower resource consumption.
+Split as added a new impression mode, `NONE`. Which can now enable [all Split SDKS](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview#supported-sdks) to send only unique keys per Split rather than sending all impression data. This will help decrease network traffic from your system to Split, ultimately leading to lower resource consumption.
 #### 2022-10-05
 ##### Learning and Onboarding
 ###### Split Arcade
