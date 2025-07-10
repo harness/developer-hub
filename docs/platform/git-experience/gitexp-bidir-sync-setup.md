@@ -82,7 +82,7 @@ This is useful for organizations that:
 - Use Git systems like GitLab with restricted permissions or intermediaries.
 - Need full control over webhook behavior without triggering permission issues.
 
-Here is an example of the message displayed during Git trigger creation when this setting is enabled.
+Here is an example of the message displayed during Git Webhook creation when this setting is enabled.
 
 <div align="center">
   <DocImage path={require('./static/manual-webhook.png')} width="60%" height="60%" title="Manual Webhook Registration" />
