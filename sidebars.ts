@@ -2072,7 +2072,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "html",
-          value: "SEI (Legacy)",
+          value: "SEI (Current)",
           className: "horizontal-bar",
         },
         {
@@ -2096,7 +2096,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "SEI 2.0 (Beta)",
+          label: "SEI 2.0 (Recommended)",
           link: {
             type: "generated-index",
             slug: "/category/harness-sei",
