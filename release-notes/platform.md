@@ -130,6 +130,17 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2025
 
+### Version 1.96.x <!--July 08, 2025-->
+
+#### Fixed issues
+
+- SAML Authentication: Resolved time synchronization issues by introducing a 5-minute clock skew tolerance between the Identity Provider (IdP) and Harness Manager. [PL-63828]
+- Updated SMP license validation to avoid false email alerts. [PL-63554]
+
+#### New Feature and Enhancement 
+
+- Added the `FIPS_ENABLED` environment variable to the delegate YAML when the manager is deployed with FIPS enabled. [PL-63554]
+
 ### Version 1.95.x <!--July 01, 2025-->
 
 #### Fixed issues
