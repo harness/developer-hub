@@ -55,7 +55,7 @@ This unlocks GitOps-style workflows, where Git remains the source of truth, and 
 
 When you use Catalog Ingestion API to push custom metadata, they are not committed back to the YAML file but are part of the final entity metadata shown in IDP. You can now visualize all ingested properties in the entity YAML view.
 
-![](./static/ingested.png)
+![](./static/internal-developer-portal/ingested.png)
 
 More details: [Visualizing Ingested Metadata](../docs/internal-developer-portal/git-experience/ingested-metadata)
 
