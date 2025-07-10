@@ -76,7 +76,13 @@ Enabling the **Visibility** feature allows retrieving recommendations from the A
 Placeholder for GCP recommendation prerequisites
 </TabItem>
 <TabItem value="kubernetes" label="Kubernetes">
-kubernetes
+
+Nodepool and workload prerequisites:
+* [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
+* [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+
+Harness CCM uses labels to process node pool recommendations. Make sure to add one of the labels listed in the following table for the respective cloud providers:
+
 </TabItem>
 </Tabs>
 
