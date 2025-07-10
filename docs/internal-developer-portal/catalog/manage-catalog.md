@@ -55,17 +55,36 @@ To create a new entity, navigate to the Harness IDP portal and click on **“Cre
       > The Git Experience is ideal for teams who prefer to manage entities as code. Learn more in the [Git Experience Journey](/docs/internal-developer-portal/git-experience/gitx-journey.md).
   5. Click on **“Review YAML”** to view the auto-generated YAML. Since there's a live sync between the Visual and YAML views, changes in one will reflect in the other.
 
-  :::info`
-  **Note:** **YAML validation** is performed to ensure compatibility with the **Harness-native Catalog YAML** model. Any errors will be shown in the Validation logs.
+    :::info
+     **YAML validation** is performed to ensure compatibility with the **Harness-native Catalog YAML** model. Any errors will be shown in the Validation logs.
 
-  ![](./static/yaml-validation.png)
-  :::
+    ![](./static/yaml-validation.png)
+    :::
 
-  5. If needed, **configure a plugin** by referring to its documentation and adding the required annotations in the Catalog YAML.
+  6. If needed, **configure a plugin** by referring to its documentation and adding the required annotations in the Catalog YAML.
   ![](./static/plugins-entity.png)
-  6. Once everything is set, click **“Create Component”** to finalize and create the entity.
+  7. Once everything is set, click **“Create Component”** to finalize and create the entity.
   ![](./static/yaml-view.png)
 
+### Catalog with Git Experience (GitX)
+
+When you choose to manage your entity YAML via a Git repository (Remote mode), Harness IDP enables full Git integration through GitX.
+
+This adds advanced capabilities to your catalog experience, including:
+
+- **Branch selection**: Choose from any available Git branches (e.g., `main`, `dev`, or feature branches) from a dropdown in the Catalog view.
+- **File path visibility**: Easily identify which YAML file and location are powering your entity.
+- **Real-time sync**: Changes made to the YAML file in Git (e.g., via PR or commit) are reflected in the IDP UI, and updates made via the UI are pushed to the Git repo.
+- **Pull request collaboration**: Git-backed entities enable auditability and team collaboration using version control workflows.
+
+![Branch Selector in Catalog View](./static/multi-branch.png)
+
+This makes it easy to track, version, and collaborate on entity definitions as code, while still leveraging the UI for updates and metadata insights.
+
+> This Git-backed entity mode requires a Git connector and a repository path configuration during entity creation.
+:::note
+While you can view and edit entity YAML across multiple Git branches, the entity registered in the Software Catalog will always reflect the YAML from the repository’s **default branch** (e.g., `main`). Ensure that any final changes are merged to the default branch to be considered active in IDP.
+:::
 ### Catalog YAML
 You can also use the [Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml.md) to create entities in Harness IDP. With IDP 2.0, you are required to follow the new Harness-native Data Model and structure when defining entities in Catalog YAML. If you have existing entities defined using **legacy Backstage YAML**, you can still use them—Harness will automatically convert them into the Harness-native Data Model format. Learn more about the new data model here. To create a new entity, navigate to the Harness IDP portal and click **“Create”** from the side-bar menu.
 
