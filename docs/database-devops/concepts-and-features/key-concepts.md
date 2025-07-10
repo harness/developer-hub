@@ -9,13 +9,53 @@ import BetaIcon from '/img/icon_beta.svg';
 
 <BetaIcon />
 
-# Database DevOps Key Concepts
-
 This topic covers basic terminology and concepts related to Database DevOps. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md). For information about using DB DevOps, go to [Harness Database DevOps onboarding guide](/docs/database-devops/use-database-devops/get-started/onboarding-guide.md).
 
 ## Database
 
 A database is an organized collection of structured information, or data, that is stored and managed electronically, typically in a computer system. Databases are designed to support the storage, retrieval, modification, and deletion of data in a way that ensures data integrity, security, and performance.
+
+```mermaid
+%%{ init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#e0f0ff",
+    "primaryBorderColor": "#007acc",
+    "lineColor": "#007acc",
+    "fontSize": "16px",
+    "fontFamily": "Arial",
+    "edgeLabelBackground":"#ffffff"
+  }
+} }%%
+flowchart TD
+    A[Database Schema:<br>repository +<br>liquibase changelog location]
+    B[DB Instance]
+    C[DB Connector:<br>jdbc URL +<br>credentials]
+    D[Harness Delegate]
+    E[Service]
+    F[Your Infra]
+
+    A --> B
+    B --> C
+    C --> D
+    F --> D
+
+    A -. Optional Link .-> E
+    subgraph Conceptual_Box[" "]
+        C
+        F
+        note1[/"Unrelated, but<br>conceptually similar"/]
+    end
+
+    style Conceptual_Box stroke-dasharray: 5 5
+    style Conceptual_Box fill:#c2f0c2,stroke:#0f5132
+
+    linkStyle 0 stroke-width:2px
+    linkStyle 1 stroke-width:2px
+    linkStyle 2 stroke-width:2px
+    linkStyle 3 stroke-width:2px
+    linkStyle 4 stroke-width:3px,stroke-dasharray: 4 4
+```
 
 ## Database Schemas
 
@@ -49,15 +89,15 @@ A database connection refers to the specific parameters and credentials used to 
 
 As mentioned earlier under the definition of Database Schema, DDL refers to the SQL commands used to define or modify the structure of the database schema itself. This includes operations that create, alter, or drop database objects such as tables, indexes, views, and constraints. Some examples include the following: 
 
-```
+```sql
 CREATE TABLE Employees (ID INT, Name VARCHAR(100), Department VARCHAR(50));
 ```
 
-```
+```sql
 ALTER TABLE Employees ADD COLUMN Salary DECIMAL(10, 2);
 ```
 
-```
+```sql
 TRUNCATE TABLE Employees;
 ```
 
@@ -65,15 +105,15 @@ TRUNCATE TABLE Employees;
 
 DML refers to SQL commands used for managing data within the database objects defined by DDL, such as tables. DML operations allow users to insert, update, delete, and retrieve data stored in the database. Some examples include the following:
 
-```
+```sql
 INSERT INTO Employees (ID, Name, Department) VALUES (1, 'Jane Doe', 'HR');
 ```
 
-```
+```sql
 UPDATE Employees SET Salary = 60000 WHERE ID = 1;
 ```
 
-```
+```sql
 DELETE FROM Employees WHERE ID = 1;
 ```
 
