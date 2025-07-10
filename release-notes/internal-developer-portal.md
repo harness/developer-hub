@@ -53,7 +53,7 @@ This unlocks GitOps-style workflows, where Git remains the source of truth, and 
 
 ###  [New feature] Visualize Ingested Properties
 
-When you use Catalog Ingestion API to push custom metadata, they are not committed back to the YAML file but are part of the final entity metadata shown in IDP. You can now visualize all ingested properties in the entity YAML view.
+When you use Catalog Ingestion API to push custom metadata, it is not committed back to the YAML file but is part of the final entity metadata shown in IDP. You can now visualize all ingested properties in the entity YAML view.
 
 ![](./static/internal-developer-portal/ingested.png)
 
