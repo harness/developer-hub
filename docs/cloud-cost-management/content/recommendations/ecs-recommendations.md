@@ -13,14 +13,14 @@ Using recommendations without proper assessment could result in unexpected chang
 
 ## Before You begin
 
-* [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+* [CCM Perspectives](/docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives)
   
 ### Prerequisites
 
 To obtain ECS recommendations, configure an AWS CCM Connector with the Inventory Management feature enabled.
 
 No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role.
-See [Set Up Cloud Cost Management for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
+See [Set Up Cloud Cost Management for AWS](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws).
 
 ## How are recommendations computed?
 
@@ -32,7 +32,7 @@ The implementation uses a histogram method to compute the recommendations.
 
 The computation adds a 15% buffer to the recommended resources by default. CCM also allows you to add any additional buffer using the **Tune recommendations** option.
 
-When you enable [Cost Visibility](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md) for your ECS cluster, Harness starts collecting CPU and memory resource utilization metrics for every service present in the cluster every minute.
+When you enable [Cost Visibility](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws) for your ECS cluster, Harness starts collecting CPU and memory resource utilization metrics for every service present in the cluster every minute.
 
 The utilization data collected every minute is then aggregated in the Delegate for a 20-minute window. The 20-minute aggregated data is then sent to Harness:
 

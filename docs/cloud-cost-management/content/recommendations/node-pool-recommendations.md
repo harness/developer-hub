@@ -19,8 +19,8 @@ Recommendations will not be generated for nodepools with multiple instance famil
 
 ## Before You begin
 
-* [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
-* [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+* [Set Up Cloud Cost Management for Kubernetes](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
+* [CCM Perspectives](/docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives)
 
 ## Prerequisites
 

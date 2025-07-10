@@ -34,6 +34,8 @@ Cloud Cost Management (CCM) recommendations help you identify opportunities to o
 Use this page to adjust the thresholds used by Harness CCM to generate recommendations for AWS, Azure, Kubernetes, and ECS workloads. You can tune buffer percentages and set platform-specific parameters to better align recommendations with your infrastructure and risk tolerance.
 :::
 
+---
+
 The following topics provide step-by-step instructions for configuring recommendations for each cloud platform, 
 
 ## Before you begin
@@ -44,7 +46,7 @@ Before enabling recommendations, ensure your cloud environments are connected an
 <Tabs groupId="recommendation-type" queryString>
 <TabItem value="ec2" label="EC2">
 
-- Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws).
+- Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](#).
 - To obtain EC2 recommendations, configure a Harness AWS CCM connector with the Inventory Management feature enabled.
 - Go to [Perspectives](/docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 </TabItem>
@@ -56,7 +58,7 @@ Before enabling recommendations, ensure your cloud environments are connected an
 
 :::info delegate not required
 No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role.
-See [Set Up Cloud Cost Management for AWS](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws).
+See [Set Up Cloud Cost Management for AWS](#).
 :::
 
 </TabItem>
@@ -64,8 +66,8 @@ See [Set Up Cloud Cost Management for AWS](/docs/cloud-cost-management/get-start
 </TabItem>
 <TabItem value="azure" label="Azure">
 
-- Connect your Azure cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for Azure](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md).
-- To obtain Azure VM recommendations, configure a Harness Azure CCM connector with the Cost Visibility and the Inventory Management features enabled. For more information, go to [Connect CCM to your Azure account](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md#connect-ccm-to-your-azure-account).
+- Connect your Azure cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for Azure](#).
+- To obtain Azure VM recommendations, configure a Harness Azure CCM connector with the Cost Visibility and the Inventory Management features enabled. For more information, go to [Connect CCM to your Azure account](#).
   
 :::note
 Enabling the **Visibility** feature allows retrieving recommendations from the Azure Advisor. The **Inventory Management** feature allows you to fetch the CPU utilization data and display the corresponding recommendations. If the Inventory Management feature is not enabled, the graph and table may show a null state.
@@ -78,16 +80,16 @@ Placeholder for GCP recommendation prerequisites
 <TabItem value="kubernetes" label="Kubernetes">
 
 Nodepool and workload prerequisites:
-* [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
-* [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+* [Set Up Cloud Cost Management for Kubernetes](#)
+* [CCM Perspectives](#)
 
 Harness CCM uses labels to process node pool recommendations. Make sure to add one of the labels listed in the following table for the respective cloud providers:
 
 </TabItem>
 </Tabs>
 
+---
 ## Enable recommendations
-
 Recommendations are enabled as part of your cloud connector configuration. To enable recommendations for a cloud platform, follow the instructions [add a new connector](#get-started) or edit an existing one by:
 
 1. Select **Account settings** from the left navigation.
@@ -100,6 +102,7 @@ Recommendations are enabled as part of your cloud connector configuration. To en
 For AWS connectors, you must also enable the **Cost Explorer** permissions to the CCM template, see the **Create cross account role** section step in the configuration wizard.
 :::
 
+---
 
 ## View recommendations
 <Tabs groupId="cloud-platform" queryString>
@@ -117,6 +120,8 @@ kubernetes
 </TabItem>
 </Tabs>
 
+---
+
 ## Recommendation settings
 <Tabs groupId="cloud-platform" queryString>
 <TabItem value="aws" label="AWS">
@@ -132,6 +137,8 @@ gcp
 kubernetes
 </TabItem>
 </Tabs>
+
+---
 
 ## Apply recommendations
 <Tabs groupId="cloud-platform" queryString>
@@ -149,6 +156,7 @@ kubernetes
 </TabItem>
 </Tabs>
 
+---
 
 ## Governance
 Harness Cloud Asset Governance provides tools to optimize your cloud spend and avoid unnecessary costs. By leveraging these recommendations, you can better control your cloud expenses while ensuring that your cloud infrastructure is optimized for maximum efficiency and cost-effectiveness.

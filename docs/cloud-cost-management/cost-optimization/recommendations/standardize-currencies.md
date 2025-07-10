@@ -15,10 +15,10 @@ Harness CCM lets you display all cloud spend data and dashboards in a single, pr
 ## Before you begin
 You must integrate your cloud accounts with Harness CCM. For more information, refer to the following topics:
 
-* [Set up cost visibility for AWS](../cluster-orchestrator/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
-* [Set up cost visibility for Azure](../cluster-orchestrator/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
-* [Set up cost visibility for GCP](../cluster-orchestrator/get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
-* [Set up cost visibility for Kubernetes](../cluster-orchestrator/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
+* [Set up cost visibility for AWS](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
+* [Set up cost visibility for Azure](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure)
+* [Set up cost visibility for GCP](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp)
+* [Set up cost visibility for Kubernetes](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
 
 
 ## Set up your preferred currency 
