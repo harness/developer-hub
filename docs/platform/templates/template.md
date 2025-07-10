@@ -185,6 +185,12 @@ Harness enables you to choose any one of the following:
 * **Save as new version:** Create a new version of the selected template and save with the changes you just made.![](./static/template-10.png)
 * **Save as new Template:** Create a new template from the selected template and save the changes you just made.![](./static/template-11.png)
 
+## Saving a template to a different repository
+
+You can save a template to a different repository by selecting **Save as new Template** and then selecting the repository from the **Repository** dropdown.
+
+You can also change the scope of the connector and mover to a higher scope (project --> org --> account) to save the template to a different repository.
+
 ## Template settings
 
 You can set a specific version of your template as the stable version by selecting **Template Settings**.
