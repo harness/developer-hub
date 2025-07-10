@@ -149,6 +149,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New Feature and Enhancement 
 
+- Introduced `core_oidcIdToken_create` as an experimental permission to enable creation of OIDC ID Tokens. [PL-62926]
 - Delegates are now tagged with the appropriate scope (Account/Organization/Project) for all Assessment types in the Delegate selection logs in a pipeline. [PL-49165]
 
 ## June 2025
