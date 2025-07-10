@@ -60,7 +60,7 @@ By default, Harness attempts to register webhooks automatically for GitX entitie
 Currently, this feature is behind the feature flag `PIPE_GITX_DISABLE_SKIP_GIT_WEBHOOK_REGISTRATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
-**Skip Git Webhook Registration Setting**
+#### Skip Git Webhook Registration Setting
 
 To disable automatic webhook registration:
 
@@ -79,6 +79,12 @@ This is useful for organizations that:
 - Do not allow outbound connections or webhook creation from Harness.
 - Use Git systems like GitLab with restricted permissions or intermediaries.
 - Need full control over webhook behavior without triggering permission issues.
+
+Here is an example of the message displayed during Git trigger creation when this setting is enabled.
+
+<div align="center">
+  <DocImage path={require('./static/manual-webhook.png')} width="60%" height="60%" title="Manual Webhook Registration" />
+</div>
 
 ## Manual Webhook Setup for Bi-directional Sync
 
