@@ -33,7 +33,13 @@ The landing page of the Artifacts section provides a comprehensive list of all a
 * **Environments**: The environments where the artifact has been deployed with the count. 
 * **Vulnerabilities**: The vulnerabilities identified in the most recent scan of the digest. 
 
-<DocImage path={require('./static/artifacts-overview.png')} width="100%" height="100%" title="Click to view full size image" />
+:::info
+
+Vulnerability details are displayed only when the STO license is enabled for your account.
+
+:::
+
+<DocImage path={require('./static/artifact-overvview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 #### Search and filter options
