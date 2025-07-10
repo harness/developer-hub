@@ -68,6 +68,8 @@ To disable automatic webhook registration:
 2. Enable the **Skip Git Webhook Registration** checkbox.
 3. Save your changes.
 
+The **Skip Git Webhook Registration** setting only appears if the feature flag PIPE_GITX_DISABLE_SKIP_GIT_WEBHOOK_REGISTRATION is set to true. If the flag is not enabled, this setting will not be visible.
+
 When this setting is enabled:
 
 - Harness will not attempt to create or validate webhooks in your Git provider.
