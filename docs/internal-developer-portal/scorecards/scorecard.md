@@ -46,7 +46,7 @@ Scorecard has two main UI components which are developer facing and lives in the
 <DocImage path={require('./static/scorecard-overviewpage.png')}/>
 
 :::info GITX Enabled
-Scorecards in Harness IDP will always get loaded from the default branch of the associated Git repository. 
+Scorecard calculations are based on entity data from the default branch of the associated Git repository.
 If you're using a remote Git repository to manage your Scorecard definitions, make sure that the YAML file is committed and pushed to the default branch. This behavior helps maintain a single source of truth and avoids confusion from incomplete or in-progress configurations.
 :::
 
