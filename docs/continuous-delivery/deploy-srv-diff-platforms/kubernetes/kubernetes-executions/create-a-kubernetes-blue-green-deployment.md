@@ -311,7 +311,7 @@ harness.io/color: blue
 Done
 ```
 
-:::important
+:::info
 
 This step does not perform any **post-swap health checks**. Harness assumes that the stage deployment was successful and that the service is ready to receive traffic. If you need to verify the health of the new primary environment after the swap (e.g., by hitting an API endpoint or checking pod readiness), you must explicitly add a **Verify**, **Shell Script**, or **HTTP step** after this step in your pipeline.
 :::
@@ -321,7 +321,8 @@ This step does not perform any **post-swap health checks**. Harness assumes that
 
 A great benefit of a Blue Green deployment is rapid rollback: rolling back to the old version of an app is simple and reliable because network traffic is simply routed back to the previous pods.
 
-:::important Behavior change
+:::info Behavior change
+
 For Blue Green deployments, Harness used to scale down deployments, DaemonSets, deploymentConfig, and delete HPA and PDB resources. During scale down, Harness updated the field replicas to 0. In Kubernetes, if HPA is configured, it is not mandatory to define replicas. So when another deployment happens and Harness applies the same old deployments manifest, it does not update the replicas field and remains 0. This results in no deployment even though the pipeline is successful. To resolve this, Harness now scale down only DaemonSets and delete deployment, deploymentConfig, HPA, and PDB resources. 
 :::
 
