@@ -48,11 +48,11 @@ Before enabling recommendations, ensure your cloud environments are connected an
 
 - Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](#).
 - To obtain EC2 recommendations, configure a Harness AWS CCM connector with the Inventory Management feature enabled.
-- Go to [Perspectives](/docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
+- Go to [Perspectives](#) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 </TabItem>
 <TabItem value="ecs" label="ECS">
 
-- Go to [Perspectives](docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
+- Go to [Perspectives](#) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 
 - Configure an AWS CCM Connector with the Inventory Management feature enabled to get ECS recommendations.
 
@@ -175,7 +175,7 @@ The following resources can be optimized with Asset Governance:
 - RDS (Relational Database Service) instances
 - CloudFormation stacks
 
-Go to [AWS Asset Governance](/docs/cloud-cost-management/governance/asset-governance) to view all the AWS recommendations.
+Go to [AWS Asset Governance](/docs/cloud-cost-management/5-use-ccm-cost-governance/asset-governance/1-asset-governance) to view all the AWS recommendations.
 </TabItem>
 <TabItem value="azure" label="Azure">
 
@@ -187,7 +187,7 @@ Go to [AWS Asset Governance](/docs/cloud-cost-management/governance/asset-govern
 - PostgreSQL servers
 - Key Vaults
 
-Go to [Azure Asset Governance](/docs/cloud-cost-management/governance/asset-governance) to view all the Azure recommendations.
+Go to [Azure Asset Governance](/docs/cloud-cost-management/5-use-ccm-cost-governance/asset-governance/1-asset-governance) to view all the Azure recommendations.
 </TabItem>
 <TabItem value="gcp" label="GCP">
 
@@ -197,7 +197,7 @@ Go to [Azure Asset Governance](/docs/cloud-cost-management/governance/asset-gove
 - Cloud SQL instances
 - Cloud IAM policies
 
-Go to [GCP Asset Governance](/docs/cloud-cost-management/governance/asset-governance) to view all the GCP recommendations.
+Go to [GCP Asset Governance](/docs/cloud-cost-management/5-use-ccm-cost-governance/asset-governance) to view all the GCP recommendations.
 </TabItem>
 </Tabs>
 

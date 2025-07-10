@@ -13,7 +13,7 @@ Using recommendations without proper assessment could result in unexpected chang
 ## Before You begin
 
 * [Set Up Cloud Cost Management for Kubernetes](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
-* [CCM Perspectives](/docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives)
+* [CCM Perspectives](#)
 
 ## How are workload recommendations computed?
 
@@ -152,7 +152,7 @@ The resource recommendations are based on the percentage of the buffer you set.
 
 ### Set CPU/Memory/Node count/Instance preferences
 
-See [Optimize Kubernetes Costs with Node Pool Recommendations](/docs/cloud-cost-management/recommendations/node-pool-recommendations).
+See [Optimize Kubernetes Costs with Node Pool Recommendations](#).
 
 ### Sharing recommendations
 
@@ -236,8 +236,8 @@ which is equal to `0.4 + 0.4 + 0.4 = 1.2`
 
 ### Next steps
 
-* [Optimize Kubernetes Costs with Node Pool Recommendations](/docs/cloud-cost-management/cost-optimization/recommendations/node-pool-recommendations)
-* [Analyze Cost for Kubernetes Using Perspectives](/docs/cloud-cost-management/3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives)
+* [Optimize Kubernetes Costs with Node Pool Recommendations](#)
+* [Analyze Cost for Kubernetes Using Perspectives](#)
 
 ### See also
 
