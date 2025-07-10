@@ -35,11 +35,6 @@ const Roadmap = () => {
     },
     { value: 'ssca', name: 'Supply Chain Security', icon: 'icon_ssca.svg' },
     { value: 'ce', name: 'Chaos Engineering', icon: 'icon_ce.svg' },
-    {
-      value: 'srm',
-      name: 'Service Reliability Management',
-      icon: 'icon_srm.svg',
-    },
     { value: 'idp', name: 'Internal Developer Portal', icon: 'icon_idp.svg' },
     {
       value: 'sei',
