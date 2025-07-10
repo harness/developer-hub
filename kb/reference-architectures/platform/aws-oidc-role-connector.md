@@ -14,6 +14,21 @@ By leveraging OpenTofu we can create the AWS and Harness components necessary to
 
 Refer to the [AWS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) and [Harness](https://registry.terraform.io/providers/harness/harness/latest/docs) provider documentation for configuration details.
 
+```
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+    harness = {
+      source = "harness/harness"
+      version = "~> 0.37"
+    }
+  }
+}
+```
+
 ## Data Sources
 
 We can pull in the AWS and Harness context needed using data resources from the relivant providers:
