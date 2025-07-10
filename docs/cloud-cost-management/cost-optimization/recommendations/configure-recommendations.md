@@ -175,7 +175,7 @@ The following resources can be optimized with Asset Governance:
 - RDS (Relational Database Service) instances
 - CloudFormation stacks
 
-Go to [AWS Asset Governance](/docs/cloud-cost-management/5-use-ccm-cost-governance/asset-governance/1-asset-governance) to view all the AWS recommendations.
+Go to [AWS Asset Governance](#) to view all the AWS recommendations.
 </TabItem>
 <TabItem value="azure" label="Azure">
 
@@ -187,7 +187,7 @@ Go to [AWS Asset Governance](/docs/cloud-cost-management/5-use-ccm-cost-governan
 - PostgreSQL servers
 - Key Vaults
 
-Go to [Azure Asset Governance](/docs/cloud-cost-management/5-use-ccm-cost-governance/asset-governance/1-asset-governance) to view all the Azure recommendations.
+Go to [Azure Asset Governance](#) to view all the Azure recommendations.
 </TabItem>
 <TabItem value="gcp" label="GCP">
 
@@ -197,7 +197,7 @@ Go to [Azure Asset Governance](/docs/cloud-cost-management/5-use-ccm-cost-govern
 - Cloud SQL instances
 - Cloud IAM policies
 
-Go to [GCP Asset Governance](/docs/cloud-cost-management/5-use-ccm-cost-governance/asset-governance) to view all the GCP recommendations.
+Go to [GCP Asset Governance](#) to view all the GCP recommendations.
 </TabItem>
 </Tabs>
 
