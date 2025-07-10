@@ -5,259 +5,149 @@ sidebar_position: 1
 redirect_from:
   - /docs/chaos-engineering/use-harness-ce/probes
   - /docs/chaos-engineering/guides/probes/probes
+  - /docs/chaos-engineering/features/resilience-probes/overview
+  - /docs/chaos-engineering/features/resilience-probes/types/
+  - /docs/category/resilience-probes
+  - /docs/chaos-engineering/guides/probes/
+  - /docs/chaos-engineering/concepts/explore-concepts/resilience-probes/
 ---
 
-# Probes Overview
+## What is a probe?
 
-Probes are essential monitoring mechanisms that continuously validate system health during chaos experiments. They act as your safety net and validation layer, ensuring experiments provide meaningful insights while maintaining system stability.
+Probes are pluggable health checkers defined within the chaos engine for any chaos experiment. They are declarative checks that determine the outcome of a fault.
 
-## What are Probes?
+![Probe](./static/overview/probe.png)
 
-Probes are **pluggable health checkers** that monitor your applications and infrastructure during chaos experiments. Think of them as intelligent sensors that:
+Probes are scoped to specific faults, and you can define as many probes as needed for each fault. The probe is triggered by a chaos runner when the chaos engine begins execution. They can be used to perform tasks such as, but not limited to, the following:
+- Monitors your application's health **before**, **during** and **after** a chaos experiment.
+- Explore the behavior of a system in a chaotic or unpredictable manner.
+- Help understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior.
+- Validate the [declarative hypothesis](#declarative-hypothesis) set by the user.
 
-- **Monitor Health**: Continuously check application and infrastructure status
-- **Validate Hypotheses**: Confirm your assumptions about system behavior
-- **Ensure Safety**: Prevent experiments from causing excessive damage
-- **Measure Impact**: Quantify the effects of chaos on your systems
+Depending on the type of probe, probes can:
+- Run `cmd` commands for innumerable validations,
+- Run the Kubernetes commands, send HTTP requests, check for a label or field selector missing, and assert if the resource is absent or not,
+- Execute PromQL queries, perform conditional validation on QPS or probe success percentages (percentage of probes that have been successfully evaluated out of the total number of probes),
+- Validate your error budget (SLO probe),
+- Connect with the APM tool and assert metrics (Datadog probe).
 
-![Probe Overview](./static/overview/probe.png)
+[This](https://youtu.be/b4ggnJcZrcM) video provides a step-by-step walkthrough of creating a probe.
 
-## Why Use Probes?
+### Declarative hypothesis
 
-### **Declarative Hypothesis Validation**
-Probes help validate your **declarative hypothesis** - a clear statement of what you expect to happen during the experiment:
+Declarative hypothesis in a cloud-native chaos engineering environment is a way of specifying the expected outcome of a chaos experiment before it is run. It is a statement that defines the expected result of the experiment and is used to guide the experiment's design and implementation. This can be done as a part of defining the fault specifications in the respective chaos engine which is validated by the chaos operator.
 
-```yaml
-# Example hypothesis
-hypothesis: "User login API should remain available with <200ms response time during pod failures"
+This hypothesis is a way to ensure that the experiment is well-defined and that the results are easily understood. It helps to ensure that the experiment is repeatable and the results can be compared across different runs.
 
-# Corresponding probe
-http_probe:
-  name: "login-api-health"
-  url: "https://api.example.com/auth/login"
-  method: "POST"
-  expected_response_time: "200ms"
-  expected_status: 200
-```
+Declarative hypotheses in HCE are written in a simple, clear, and concise manner, that is, they should be **specific, measurable, achievable, relevant, and time-bound (SMART)**. The steady-state and declarative hypothesis set by the user should directly map with the SLOs.
 
-### **SMART Validation**
-Your probes should follow **SMART** criteria:
-- **Specific**: Clear, well-defined checks
-- **Measurable**: Quantifiable metrics and thresholds
-- **Achievable**: Realistic expectations
-- **Relevant**: Aligned with business objectives
-- **Time-bound**: Defined execution windows
+## Who should use probes?
 
-## Probe Types
+Chaos probes are used by **developers**, **quality assurance engineers**, and **system administrators** to monitor the health, test the resilience, execute custom user-desired checks/functions, perform CRUD operations, etc depending on the type of probe, usually against the applications under chaos running on a Kubernetes cluster.
 
-### **HTTP Probes**
-Monitor web services and APIs:
-```yaml
-http_probe:
-  name: "api-health-check"
-  url: "https://api.example.com/health"
-  method: "GET"
-  expected_status: 200
-  timeout: "5s"
-```
+In general, anyone responsible for maintaining and deploying applications in a Kubernetes cluster, especially in a production environment, should consider using chaos probes to proactively identify and fix issues in their applications.
 
-### **Kubernetes Probes**
-Validate Kubernetes resources:
-```yaml
-k8s_probe:
-  name: "pod-availability"
-  resource: "pods"
-  namespace: "production"
-  field_selector: "status.phase=Running"
-  expected_count: 3
-```
+## Why should you use probes?
 
-### **Command Probes**
-Execute custom commands:
-```yaml
-cmd_probe:
-  name: "database-connection"
-  command: "pg_isready -h db.example.com -p 5432"
-  expected_exit_code: 0
-```
+In a production environment, it is hard to predict when and how failures will occur, and it can be difficult to test for all possible scenarios.
 
-### **Prometheus Probes**
-Query metrics from Prometheus:
-```yaml
-prom_probe:
-  name: "cpu-usage-check"
-  query: "avg(cpu_usage_percent) < 80"
-  endpoint: "http://prometheus:9090"
-```
+By injecting known failures into the system, probes help identify and fix issues before they occur in production, and ensure that the application remains available and responsive to user requests even in the event of unexpected failures.
 
-### **APM Probes**
-Integrate with monitoring tools:
-- **Datadog**: Monitor application performance metrics
-- **Dynatrace**: Track user experience and performance
-- **New Relic**: Validate application health
-- **AppDynamics**: Monitor business transactions
+You can use probes to simulate different types of failures and test how the application behaves under different conditions.
 
-### **SLO Probes**
-Validate Service Level Objectives:
-```yaml
-slo_probe:
-  name: "availability-slo"
-  slo_id: "user-service-availability"
-  threshold: "99.9%"
-```
+- Probes are **shareable**, that is, they create a global instance of probes. It is a shared entity that can be used across multiple faults.
+- Probes are **reusable**, that is, you can create the validation instance first and use it across different experiments. This enables you to avoid the repeated creation of the same probes for similar requirements.
 
-## Execution Modes
+This is also in accordance with how HCE pans out:
+1. Plan the hypothesis.
+2. Measure the validation criteria to check against the SLA.
 
-Probes can run in different modes based on your validation needs:
+### Types of resilience probes
 
-### **SoT (Start of Test)**
-- Executed **before** chaos injection
-- Validates baseline system health
-- Ensures system is ready for chaos
+HCE facilitates multiple types of resilience probes listed below. Click each probe to navigate to details such as probe property, definition, schema, authentication, methods, and so on.
 
-### **EoT (End of Test)**
-- Executed **after** chaos injection
-- Validates system recovery
-- Confirms hypothesis post-chaos
+- [**HTTP probe**](/docs/chaos-engineering/guides/probes/http-probe): To query health/downstream URIs.
+- [**Kubernetes probe**](/docs/chaos-engineering/guides/probes/kubernetes-probe): To perform CRUD operations against native and custom Kubernetes resources.
+- [**Datadog probe**](/docs/chaos-engineering/guides/probes/datadog-probe): To query a [Datadog Synthetic](https://docs.datadoghq.com/synthetics/) test and use its results to evaluate the probe outcome.
+- [**Dynatrace probe**](/docs/chaos-engineering/guides/probes/dynatrace-probe): Determines the health of your application by examining the entry or exit criteria.
+- [**SLO probe**](/docs/chaos-engineering/guides/probes/slo-probe): To allow you to validate the error budget for a given SLO when the corresponding application is subject to chaos and determine the verdict based on the percentage change in the error budget.
+- [**Command probes**](/docs/chaos-engineering/guides/probes/command-probes/): Execute custom commands and scripts for flexible validation.
+- [**Prometheus probes**](/docs/chaos-engineering/guides/probes/prometheus-probes/): Execute PromQL queries and validate Prometheus metrics.
+- [**APM probes**](/docs/chaos-engineering/guides/probes/apm-probes/): Application Performance Monitoring probes for comprehensive validation with monitoring platforms.
 
-### **Edge**
-- Executed **both** before and after chaos
-- Compares pre and post-chaos states
-- Most common mode for validation
 
-### **Continuous**
-- Executed **throughout** the experiment
-- Provides real-time monitoring
-- Ideal for performance validation
+:::info note
+- Each type of probe has its advantages and disadvantages, and the choice of probe depends on the specific requirements of the experiment and the system being tested.
+- The probes can be used in isolation or in several combinations to achieve the desired checks.
+:::
 
-### **OnChaos**
-- Executed **only during** chaos injection
-- Monitors immediate impact
-- Useful for fault-specific validation
+HCE allows you to create probes for multiple infrastructures, namely, Kubernetes, Linux, and Windows. The type of probes allowed on each of these infrastructures is listed below.
 
-## Common Use Cases
+    | Kubernetes HD | Kubernetes | Linux     | Windows |
+    |--------------|------------|-----------|---------|    
+    | HTTP         | HTTP       | HTTP      | HTTP    |
+    | Command      | Command    | Command   |         |
+    | Datadog      | Datadog    | Datadog   |         |
+    | Dynatrace    | Dynatrace  | Dynatrace |         |
+    | SLO          | SLO        |           |         |
+    | Prometheus   | Prometheus |           |         |
+    | Kubernetes   | Kubernetes |           |         |
+    | APM          |            |           |         |
 
-### **1. API Availability Monitoring**
-```yaml
-# Ensure critical APIs remain accessible
-http_probe:
-  name: "user-service-availability"
-  url: "https://api.example.com/users"
-  method: "GET"
-  expected_status: 200
-  mode: "Continuous"
-  interval: "10s"
-```
+:::info note
+Kubernetes HD means the Kubernetes infrastructure that is driven by Harness Delegate.
+:::
 
-### **2. Database Connectivity**
-```yaml
-# Validate database connections
-cmd_probe:
-  name: "db-connection-check"
-  command: "mysql -h db.example.com -u app -p$DB_PASSWORD -e 'SELECT 1'"
-  expected_exit_code: 0
-  mode: "Edge"
-```
+:::tip
+- When you try to enable or disable a Linux probe, two mandatory fields `type` and `attempt` (with empty values) are added to the probe. Even if you edit these values, they will not reflect in the updated experiment manifest. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe.
+- Go to [troubleshooting](/docs/chaos-engineering/resources/troubleshooting) for more information.
+:::
 
-### **3. Performance Validation**
-```yaml
-# Monitor response times
-http_probe:
-  name: "response-time-check"
-  url: "https://api.example.com/search"
-  method: "GET"
-  expected_response_time: "500ms"
-  mode: "Continuous"
-```
+### Permissions required
 
-### **4. Resource Availability**
-```yaml
-# Check Kubernetes pod availability
-k8s_probe:
-  name: "pod-count-validation"
-  resource: "pods"
-  namespace: "production"
-  label_selector: "app=web-server"
-  expected_count: 3
-  mode: "Continuous"
-```
+Resilience probe is created in an infrastructure, hence you need to have access to **create/edit** and **view** the **chaos infrastructure** to use resilience probes. Go to **Project Settings** -> **Access Control** -> **Roles** and create a new role or ask your project admin to create an appropriate role.
 
-## Impact on Resilience Score
+![](./static/perms-reqd.png)
 
-Probes directly influence your **Resilience Score**:
+## Resilience probes status
 
-- **Passed Probes**: Increase resilience score
-- **Failed Probes**: Decrease resilience score
-- **Probe Errors**: May invalidate experiment results
+Probe status is the single source of truth when executing a chaos experiment. The probe status in a chaos experiment can be in 4 different states.
 
-```mermaid
-graph LR
-    A[Experiment Start] --> B[Execute Probes]
-    B --> C{All Probes Pass?}
-    C -->|Yes| D[High Resilience Score]
-    C -->|No| E[Lower Resilience Score]
-    D --> F[Experiment Success]
-    E --> G[Identify Weaknesses]
-```
+- **AWAITED**: A probe status is in 'awaited' state until the fault is being executed, that is, the fault is still running. Once it has completed execution, it can be in the 'passed', 'failed' or 'N/A' state.
+- **PASSED**: A probe status is considered 'passed' when the success criteria is met.
+- **FAILED**: A probe status is considered 'failed' when the success criteria is not met.
+- **RUNNING**: A probe status is considered 'running' when the probe is currently in execution.
+- **N/A**: A probe status is in the 'N/A' state when the result of the fault could not be determined.
 
-## Probe Chaining
+### Delete resilience probes
 
-Combine multiple probes for comprehensive validation:
+You can delete a probe only after disabling it. Go to [Disable Probes](/docs/chaos-engineering/guides/probes/use-probe#disable-a-probe) for more information.
 
-```yaml
-experiment:
-  name: "comprehensive-validation"
-  probes:
-    - name: "api-health"
-      type: "http"
-      mode: "Continuous"
-    - name: "db-connection"
-      type: "cmd"
-      mode: "Edge"
-    - name: "pod-availability"
-      type: "k8s"
-      mode: "Continuous"
-    - name: "performance-metrics"
-      type: "prometheus"
-      mode: "Continuous"
-```
+- When you select **Disable only**, the probe won't be available for further scheduling when selecting the probe from the UI. If the older runs (or experiment) manifest used that probe, successive runs of the experiment will be blocked with the message that the probe is disabled. This is because the probe is not removed since it is not a **Bulk Disable** operation. You will need to manually remove the probe references from the manifest.
+- When you select **Disable Only**, the history of the probe would be intact and you can see older probe executions associated with it.
+- Once you **Bulk disable** a probe, information about the probe reference is also deleted from all the manifest references, that is, the probe is removed from the `probeRef` annotation. This ensures that the next possible run will not schedule the probe.
+- Only when you **hard delete** a probe, you can reuse the name of that probe.
 
-## Best Practices
+### Default/System resilience probes
 
-### **Design Principles**
-- **Start Simple**: Begin with basic health checks
-- **Add Gradually**: Increase complexity as needed
-- **Test Probes**: Validate probe logic before experiments
-- **Monitor Results**: Analyze probe data for insights
+- You can create system (default probes) at the project level **only once**.
+- Once you create a default probe, you can't delete, disable, or update it.
+- If you have more than one resilience probe in your chaos experiment, you can disable, delete, or update the system probe.
+- Default probes are a part of resilience probes and are entered as annotations in the experiment manifest.
 
-### **Configuration Tips**
-- **Set Appropriate Timeouts**: Avoid false negatives
-- **Choose Right Intervals**: Balance accuracy and performance
-- **Use Meaningful Names**: Make probes self-documenting
-- **Document Expectations**: Clear hypothesis statements
+### Image registry support
+- You can configure the image registry to be used with the default probes. If you haven't configured a probe yet, the experiment will use the default image registry.
+- HCE doesn't currently provide image registry support for default probes.
 
-### **Troubleshooting**
-- **Check Connectivity**: Ensure probes can reach targets
-- **Validate Credentials**: Confirm authentication works
-- **Review Logs**: Analyze probe execution logs
-- **Test Independently**: Validate probe logic separately
+:::info notes
+- **Legacy probes support (Backward compatibility)***: Users can still use legacy probes.
+- **Audit integration**: Audit events are available for resilience probes.
+- **Access control permissions division**: ACL is mapped to the experiment ACL.
+- Resilience probes are not a part of any subscription, and hence you don't have any limit on the number of probes you can create.
+- You can execute 1,000 probes in a month.
+:::
 
-## Getting Started
+## Next steps
 
-1. **Define Your Hypothesis**: What do you expect to validate?
-2. **Choose Probe Types**: Select appropriate monitoring mechanisms
-3. **Configure Probes**: Set up validation logic and thresholds
-4. **Test Probes**: Validate probe behavior before experiments
-5. **Analyze Results**: Use probe data to improve system resilience
-
-## Next Steps
-
-- [**Probe Types & Modes**](./types-and-modes.md) - Detailed probe configuration
-- [**HTTP Probes**](./http-probe.md) - Web service monitoring
-- [**Kubernetes Probes**](./kubernetes-probe.md) - Container orchestration validation
-- [**Command Probes**](./command-probe.md) - Custom validation scripts
-- [**Best Practices**](./best-practices.md) - Advanced probe strategies
-
----
-
-*Probes are your window into system behavior during chaos. Use them wisely to build confidence in your system's resilience.*
+- [Use case of resilience probes](/docs/chaos-engineering/guides/probes/types-and-modes)
+- [Use resilience probes](/docs/chaos-engineering/guides/probes/use-probe)

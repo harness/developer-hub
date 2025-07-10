@@ -1,418 +1,267 @@
 ---
-title: SLO Probes
+title: SLO Probe
 description: Validate Service Level Objectives and error budgets during chaos experiments
-sidebar_position: 8
+sidebar_position: 7
+redirect_from:
+- /docs/chaos-engineering/technical-reference/probes/slo-probe
+- /docs/chaos-engineering/features/probes/slo-probe
+- /docs/chaos-engineering/concepts/explore-concepts/resilience-probes/slo-probe
 ---
 
-# SLO Probes
+Service Level Objective (SLO) probes let users validate the error budget for a given SLO when the corresponding application is subject to chaos and determine the verdict based on the percentage change in the error budget. The probe leverages the API from the Service Reliability Management (SRM) module and fetches the error budget values during the chaos execution time period. The success of a chaos probe can be defined based on the drop in the percentage of the error budget values. The percentage drop is defined by the user in the probe configuration.
 
-SLO (Service Level Objective) probes validate error budgets and service reliability metrics during chaos experiments. They integrate with Harness Service Reliability Management (SRM) to ensure your chaos experiments don't violate established service level objectives and help maintain reliability standards.
+## Probe definition
 
-## What are SLO Probes?
+You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
 
-SLO probes connect with **Harness SRM** to monitor error budget consumption during chaos experiments. They help ensure that chaos engineering practices align with business reliability requirements and don't compromise service level agreements.
+```yaml
+kind: Workflow
+apiVersion: argoproj.io/v1alpha1
+spec:
+  templates:
+    - inputs:
+        artifacts:
+          - raw:
+              data: |
+                apiVersion: litmuschaos.io/v1alpha1
+                kind: ChaosEngine
+                spec:
+                  experiments:
+                    - spec:
+                        probe:
+                          ####################################
+                          Probes are defined here
+                          ####################################
+```
 
-**Key Capabilities:**
-- **Error Budget Monitoring**: Track error budget consumption during chaos
-- **SLO Compliance**: Ensure experiments don't violate service objectives
-- **Reliability Validation**: Maintain service reliability standards
-- **Impact Assessment**: Measure chaos impact on business metrics
-- **Early Warning**: Alert when error budgets are at risk
-- **Compliance Reporting**: Generate reliability compliance reports
+## Schema
 
-## Quick Start
+Listed below is the probe schema for the SLO probe, with properties shared across all the probes and properties unique to the SLO probe.
 
-### **Basic Error Budget Validation**
+<table>
+  <tr>
+    <td><strong>Field</strong></td>
+    <td><strong>Description</strong></td>
+    <td><strong>Type</strong></td>
+    <td><strong>Range</strong></td>
+    <td><strong>Notes</strong></td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>Flag to hold the name of the probe</td>
+    <td>Mandatory</td>
+    <td>N/A <code>type: string</code></td>
+    <td>The <code>name</code> holds the name of the probe. It can be set based on the use case.</td>
+  </tr>
+  <tr>
+    <td>type</td>
+    <td>Flag to hold the type of the probe</td>
+    <td>Mandatory</td>
+    <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.</code></td>
+    <td>The <code>type</code> supports five types of probes: httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.</td>
+  </tr>
+  <tr>
+    <td>mode</td>
+    <td>Flag to hold the mode of the probe</td>
+    <td>Mandatory</td>
+    <td><code>EOT, Edge, Continuous, OnChaos</code></td>
+    <td>The <code>mode</code> supports four modes of probes. SLO Probe supports EOT mode since the SRM API is called post the chaos execution.</td>
+  </tr>
+  <tr>
+    <td>platformEndpoint</td>
+    <td>Flag to hold the platform endpoint</td>
+    <td>Mandatory</td>
+    <td>N/A<code>type: string</code></td>
+    <td>The <code>platformEndpoint</code> stores the value of NG manager platform endpoint. For example, <code>https://app.harness.io/gateway/cv/api</code></td>
+  </tr>
+  <tr>
+    <td>sloIdentifier</td>
+    <td>Flag to hold the slo identifier of the SLO</td>
+    <td>Mandatory</td>
+    <td>N/A<code>type: string</code></td>
+    <td>The <code>sloIdentifier</code> field consists of the SLO identifier for which the error budget is calculated.</td>
+  </tr>
+  <tr>
+    <td>evaluationTimeout</td>
+    <td>Flags to hold the total evaluation time for the probe</td>
+    <td>Optional</td>
+    <td>N/A <code>type: string</code></td>
+    <td>The <code>evaluationTimeout</code> is the time period for which the error budget values are fetched and based on the chaos execution time period, the percentage change is calculated.</td>
+  </tr>
+  <tr>
+    <td>insecureSkipVerify</td>
+    <td>Flag to skip certificate checks</td>
+    <td>Optional</td>
+    <td>bool</td>
+    <td>The <code>insecureSkipVerify</code> contains flag to skip certificate checks.</td>
+  </tr>
+  <tr>
+    <td>sloSourceMetadata</td>
+    <td>Mandatory</td>
+    <td>SLO source metadata</td>
+    <td>string</td>
+    <td> Comprises of identifiers used to fetch the details from SRM module. It includes APITokenSecret which is required to authenticate the request and the scope for the SLO entity.</td>
+  </tr>
+</table>
+
+### SLO source metadata
+
+<table>
+  <tr>
+    <td><strong>Field</strong></td>
+    <td><strong>Description</strong></td>
+    <td><strong>Type</strong></td>
+    <td><strong>Range</strong></td>
+    <td><strong>Notes</strong></td>
+  </tr>
+  <tr>
+    <td>apiTokenSecret</td>
+    <td>Flag to hold API Token secret</td>
+    <td>Mandatory</td>
+    <td>N/A <code>type: string</code></td>
+    <td>The <code>apiTokenSecret</code> contains the API Token. The secret should be added with <code>X-API-KEY</code> as the key and should be present in the same namespace where experiment is running.</td>
+  </tr>
+  <tr>
+    <td>scope</td>
+    <td>Flag to hold scope</td>
+    <td>Mandatory</td>
+    <td> N/A </td>
+    <td> Identifier such as accountID, orgID and projectID</td>
+  </tr>
+</table>
+
+### Comparator
+
+<table>
+  <tr>
+    <td><strong>Field</strong></td>
+    <td><strong>Description</strong></td>
+    <td><strong>Type</strong></td>
+    <td><strong>Range</strong></td>
+    <td><strong>Notes</strong></td>
+  </tr>
+  <tr>
+    <td>type</td>
+    <td>Flag to hold type of the data used for comparison</td>
+    <td>Optional</td>
+    <td><code>float</code></td>
+    <td>The <code>type</code> contains type of data, which should be compared as part of comparison operation.</td>
+  </tr>
+  <tr>
+    <td>criteria</td>
+    <td>Flag to hold criteria for the comparison</td>
+    <td>Mandatory</td>
+    <td>It supports <code>{`&gt;=, &lt;=, ==, &gt;, &lt;, !=, oneOf, between`}</code> for int & float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type.</td>
+    <td>The <code>criteria</code> contains criteria of the comparison, which should be fulfill as part of comparison operation.</td>
+  </tr>
+  <tr>
+    <td>value</td>
+    <td>Flag to hold value for the comparison</td>
+    <td>Mandatory</td>
+    <td>N/A <code>type: string</code></td>
+    <td>The <code>value</code> contains value of the comparison, which should follow the given criteria as part of comparison operation.</td>
+  </tr>
+</table>
+
+### Evaluation window
+
+<table>
+  <tr>
+   <td><strong>Field</strong> </td>
+   <td><strong>Description</strong> </td>
+   <td><strong>Type</strong> </td>
+   <td><strong>Range</strong> </td>
+   <td><strong>Notes</strong> </td>
+  </tr>
+  <tr>
+   <td>evaluationStartTime</td>
+   <td>Flag to hold the evaluation start time of the probe</td>
+   <td>Optional</td>
+   <td>positive integer </td>
+   <td>It represents the start time of the probe evaluation</td>
+  </tr>
+  <tr>
+   <td>evaluationEndTime </td>
+   <td>Flag to hold the evaluation end time of the probe </td>
+   <td> Optional</td>
+   <td> positive integer</td>
+   <td>It represents the end time of the probe evaluation </td>
+  </tr>
+</table>
+
+### Run properties
+
+<table>
+  <tr>
+    <td><strong>Field</strong></td>
+    <td><strong>Description</strong></td>
+    <td><strong>Type</strong></td>
+    <td><strong>Range</strong></td>
+    <td><strong>Notes</strong></td>
+  </tr>
+  <tr>
+    <td>probeTimeout</td>
+    <td>Flag to hold the timeout of the probe</td>
+    <td>Mandatory</td>
+    <td>N/A <code>type: string</code></td>
+    <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data</td>
+  </tr>
+  <tr>
+    <td>attempt</td>
+    <td>Flag to hold the attempt of the probe</td>
+    <td>Mandatory</td>
+    <td>N/A <code>type: integer</code></td>
+    <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.</td>
+  </tr>
+  <tr>
+    <td>interval</td>
+    <td>Flag to hold the interval of the probe</td>
+    <td>Mandatory</td>
+    <td>N/A <code>type: string</code></td>
+    <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries</td>
+  </tr>
+  <tr>
+    <td>initialDelaySeconds</td>
+    <td>Flag to hold the initial delay interval for the probes</td>
+    <td>Optional</td>
+    <td>N/A <code>type: integer</code></td>
+    <td>The <code>initialDelaySeconds</code> represents the initial waiting time interval for the probes.</td>
+  </tr>
+  <tr>
+    <td>stopOnFailure</td>
+    <td>Flags to hold the stop or continue the experiment on probe failure</td>
+    <td>Optional</td>
+    <td>N/A <code>type: boolean</code></td>
+    <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails</td>
+  </tr>
+</table>
+
+## Definition
+
 ```yaml
 probe:
-  - name: "api-availability-slo"
+  - name: "slo-probe"
     type: "sloProbe"
-    mode: "EOT"  # SLO probes only support EOT mode
+    sloProbe/inputs:
+      platformEndpoint: "<platform-endpoint>"
+      sloIdentifier: "<slo-identifier>"
+      evaluationTimeout: 5m
+      sloSourceMetadata:
+        apiTokenSecret: "<api-token>"
+        scope:
+          accountIdentifier: "<account-identifier>"
+          orgIdentifier: "<org-identifier>"
+          projectIdentifier: "<project-identifier>"
+        comparator:
+          type: float
+          criteria: <
+          value: "0.1"
+    mode: "EOT"
     runProperties:
-      probeTimeout: "60s"
-      attempt: 3
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "user-api-availability-slo"
-      evaluationTimeout: "10m"
-      comparator:
-        type: "float"
-        criteria: ">"
-        value: "90.0"  # Error budget should remain > 90%
-      insecureSkipVerify: false
+      attempt: 2
+      probeTimeout: 1000ms
+      stopOnFailure: false
 ```
 
-### **Response Time SLO Validation**
-```yaml
-probe:
-  - name: "response-time-slo"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "api-response-time-slo"
-      evaluationTimeout: "15m"
-      comparator:
-        type: "float"
-        criteria: ">="
-        value: "95.0"  # Maintain 95% of error budget
-      authToken: "${HARNESS_API_TOKEN}"
-```
 
-## SLO Types and Examples
 
-### **1. Availability SLOs**
-```yaml
-probe:
-  - name: "service-availability-slo"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "microservice-availability"
-      evaluationTimeout: "5m"
-      comparator:
-        type: "float"
-        criteria: ">"
-        value: "99.0"  # 99% availability target
-      # Validates that service remains available during chaos
-```
-
-### **2. Latency SLOs**
-```yaml
-probe:
-  - name: "latency-slo-validation"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "api-latency-p95"
-      evaluationTimeout: "10m"
-      comparator:
-        type: "float"
-        criteria: "<"
-        value: "10.0"  # Less than 10% error budget consumption
-      # Ensures 95th percentile latency remains within bounds
-```
-
-### **3. Error Rate SLOs**
-```yaml
-probe:
-  - name: "error-rate-slo"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "service-error-rate"
-      evaluationTimeout: "8m"
-      comparator:
-        type: "float"
-        criteria: ">"
-        value: "85.0"  # Maintain 85% of error budget
-      # Validates error rates stay within acceptable limits
-```
-
-### **4. Throughput SLOs**
-```yaml
-probe:
-  - name: "throughput-slo-check"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "api-throughput-slo"
-      evaluationTimeout: "12m"
-      comparator:
-        type: "float"
-        criteria: ">="
-        value: "90.0"  # Maintain 90% of error budget
-      # Ensures throughput remains within SLO bounds
-```
-
-## Common Use Cases
-
-### **1. Microservices Reliability Testing**
-```yaml
-probes:
-  # User service availability
-  - name: "user-service-availability"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "user-service-99-9-availability"
-      evaluationTimeout: "10m"
-      comparator:
-        type: "float"
-        criteria: ">"
-        value: "95.0"  # Keep 95% of error budget
-  
-  # Order service latency
-  - name: "order-service-latency"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "order-service-p95-latency"
-      evaluationTimeout: "10m"
-      comparator:
-        type: "float"
-        criteria: "<"
-        value: "15.0"  # Less than 15% budget consumption
-```
-
-### **2. API Gateway Resilience**
-```yaml
-probes:
-  # Gateway availability
-  - name: "gateway-availability-slo"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "api-gateway-availability"
-      evaluationTimeout: "15m"
-      comparator:
-        type: "float"
-        criteria: ">="
-        value: "98.0"  # Maintain 98% of error budget
-  
-  # Gateway response time
-  - name: "gateway-response-time-slo"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "gateway-response-time"
-      evaluationTimeout: "15m"
-      comparator:
-        type: "float"
-        criteria: "<"
-        value: "20.0"  # Less than 20% budget consumption
-```
-
-### **3. Database Performance Validation**
-```yaml
-probe:
-  - name: "database-performance-slo"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "database-query-performance"
-      evaluationTimeout: "20m"
-      comparator:
-        type: "float"
-        criteria: ">"
-        value: "90.0"  # Maintain 90% of error budget
-      # Validates database performance during chaos
-```
-
-### **4. Business Critical Services**
-```yaml
-probes:
-  # Payment service reliability
-  - name: "payment-service-slo"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "payment-processing-reliability"
-      evaluationTimeout: "30m"
-      comparator:
-        type: "float"
-        criteria: ">"
-        value: "99.5"  # Very strict for payment processing
-  
-  # Authentication service
-  - name: "auth-service-slo"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      platformEndpoint: "https://app.harness.io/gateway/cv/api"
-      sloIdentifier: "authentication-service-slo"
-      evaluationTimeout: "10m"
-      comparator:
-        type: "float"
-        criteria: ">="
-        value: "97.0"  # Maintain 97% of error budget
-```
-
-## Configuration Options
-
-### **Platform Integration**
-```yaml
-sloProbe/inputs:
-  platformEndpoint: "https://app.harness.io/gateway/cv/api"  # Harness SRM endpoint
-  sloIdentifier: "my-service-availability-slo"              # SLO identifier from SRM
-  evaluationTimeout: "10m"                                   # Time window for evaluation
-```
-
-### **Authentication**
-```yaml
-# Using API token
-sloProbe/inputs:
-  authToken: "${HARNESS_API_TOKEN}"
-  
-# Using service account
-sloProbe/inputs:
-  serviceAccount: "chaos-slo-validator"
-  
-# Skip TLS verification (development only)
-sloProbe/inputs:
-  insecureSkipVerify: true
-```
-
-### **Error Budget Thresholds**
-```yaml
-comparator:
-  type: "float"
-  criteria: ">"          # Greater than threshold
-  # criteria: ">="       # Greater than or equal
-  # criteria: "<"        # Less than threshold
-  # criteria: "<="       # Less than or equal
-  # criteria: "=="       # Equal to threshold
-  # criteria: "!="       # Not equal to threshold
-  value: "90.0"          # Percentage threshold
-```
-
-## Error Budget Calculation
-
-### **Understanding Error Budget**
-Error budget represents the amount of unreliability you can tolerate while still meeting your SLO:
-
-```
-Error Budget = 100% - SLO Target
-Example: 99.9% SLO = 0.1% Error Budget
-```
-
-### **Probe Validation Logic**
-```yaml
-# Example: 99.9% availability SLO
-# Error Budget: 0.1% (43.2 minutes per month)
-# During 10-minute chaos experiment:
-# Acceptable error budget consumption: ~1.44 minutes
-
-probe:
-  - name: "availability-budget-check"
-    type: "sloProbe"
-    mode: "EOT"
-    sloProbe/inputs:
-      sloIdentifier: "service-availability-99-9"
-      evaluationTimeout: "10m"
-      comparator:
-        type: "float"
-        criteria: ">"
-        value: "80.0"  # Keep 80% of error budget remaining
-```
-
-## Troubleshooting
-
-### **Common Issues**
-
-#### **Authentication Failures**
-```yaml
-# Problem: 401/403 errors
-# Solution: Verify API token and permissions
-sloProbe/inputs:
-  authToken: "${VALID_HARNESS_API_TOKEN}"
-  # Ensure token has SRM read permissions
-```
-
-#### **SLO Not Found**
-```yaml
-# Problem: SLO identifier not found
-# Solution: Verify SLO exists in SRM
-sloProbe/inputs:
-  sloIdentifier: "correct-slo-identifier"  # Check SRM dashboard
-```
-
-#### **Evaluation Timeout Issues**
-```yaml
-# Problem: Evaluation timeout too short
-# Solution: Increase timeout for longer experiments
-sloProbe/inputs:
-  evaluationTimeout: "30m"  # Increase for longer chaos experiments
-```
-
-#### **Platform Endpoint Errors**
-```yaml
-# Problem: Cannot connect to platform
-# Solution: Verify endpoint URL and network connectivity
-sloProbe/inputs:
-  platformEndpoint: "https://app.harness.io/gateway/cv/api"  # Correct endpoint
-```
-
-### **Debugging Tips**
-
-1. **Verify SLO Configuration**: Check SLO setup in Harness SRM
-2. **Validate Authentication**: Test API token independently
-3. **Check Error Budget**: Ensure sufficient error budget exists
-4. **Monitor Evaluation Time**: Align timeout with experiment duration
-5. **Test Connectivity**: Verify network access to Harness platform
-
-## Best Practices
-
-### **SLO Design Guidelines**
-- **Align with Business Goals**: SLOs should reflect user experience
-- **Set Realistic Targets**: Based on historical performance data
-- **Regular Review**: Update SLOs as systems evolve
-- **Layer SLOs**: Different SLOs for different service tiers
-
-### **Probe Configuration**
-- **Appropriate Timeouts**: Match evaluation window to experiment duration
-- **Conservative Thresholds**: Leave buffer for unexpected variations
-- **Multiple SLOs**: Validate different aspects (availability, latency, errors)
-- **Regular Testing**: Validate SLO probe configuration regularly
-
-### **Error Budget Management**
-- **Monitor Consumption**: Track error budget usage over time
-- **Reserve Budget**: Keep buffer for chaos experiments
-- **Trend Analysis**: Understand error budget consumption patterns
-- **Alert Thresholds**: Set alerts before budget exhaustion
-
-## Integration with Chaos Engineering
-
-### **Experiment Planning**
-```yaml
-# Plan experiments based on available error budget
-experiment:
-  name: "microservice-resilience-test"
-  probes:
-    - name: "pre-experiment-budget-check"
-      type: "sloProbe"
-      mode: "EOT"
-      # Ensure sufficient error budget before starting
-```
-
-### **Continuous Validation**
-```yaml
-# Use SLO probes in CI/CD pipelines
-pipeline:
-  stages:
-    - chaos_experiment:
-        probes:
-          - slo_validation
-    - deployment:
-        condition: slo_validation.success
-```
-
-### **Governance and Compliance**
-```yaml
-# Enforce SLO compliance in all chaos experiments
-governance:
-  required_probes:
-    - type: "sloProbe"
-      minimum_threshold: "90.0"
-  # Prevent experiments that would violate SLOs
-```
-
-## Next Steps
-
-- [**Best Practices**](./best-practices.md) - Advanced probe strategies
-- [**Actions**](../actions/index.md) - Automated responses to probe results
-- [**Security**](../../security/index.md) - Secure probe configuration
-
----
-
-*SLO probes ensure your chaos engineering practices align with business reliability requirements. Use them to maintain service level objectives while building system resilience.*

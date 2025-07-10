@@ -179,7 +179,7 @@ Building team support:
 Yes, through several methods:
 - **BYOC (Bring Your Own Chaos)** - Upload custom fault scripts
 - **API integration** - Use REST APIs to trigger custom failures
-- **Webhook actions** - Integrate with external systems
+
 - **Custom probes** - Create application-specific health checks
 - **Script execution** - Run custom scripts during experiments
 

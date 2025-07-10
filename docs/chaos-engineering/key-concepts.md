@@ -151,26 +151,6 @@ Define acceptable system performance during chaos:
 - **Network Policies**: Control experiment execution boundaries
 - **Compliance**: Support for regulatory and security requirements
 
-## Best Practices
-
-### Experiment Design
-- **Start Small**: Begin with low-impact experiments and gradually increase scope
-- **Clear Hypotheses**: Define testable predictions about system behavior
-- **Comprehensive Probes**: Use multiple validation methods to assess impact
-- **Documentation**: Record experiment goals, procedures, and outcomes
-
-### Safety and Governance
-- **Blast Radius Control**: Limit experiment impact to specific components
-- **Rollback Procedures**: Always have mechanisms to stop experiments
-- **Team Coordination**: Ensure proper communication during experiments
-- **Compliance**: Follow organizational policies and regulatory requirements
-
-### Continuous Improvement
-- **Regular Reviews**: Analyze experiment results and system improvements
-- **Automation**: Integrate chaos experiments into CI/CD pipelines
-- **Knowledge Sharing**: Document learnings and share across teams
-- **Iterative Approach**: Continuously refine experiments based on results
-
 ## Getting Started
 
 Now that you understand these key concepts, you can:
@@ -185,6 +165,5 @@ Now that you understand these key concepts, you can:
 - **[What's Supported](./whats-supported)**: Review supported platforms and deployment options
 - **[SaaS vs Self-Managed](./on-premise-vs-saas)**: Choose the right deployment model
 - **[Get Started Guide](./get-started)**: Begin your chaos engineering journey
-- **[Tutorials](./tutorials)**: Practice with hands-on examples
 
 Understanding these Harness-specific concepts provides the foundation for successful chaos engineering implementation. The platform's enterprise features and integrations make it easier to adopt chaos engineering practices at scale.

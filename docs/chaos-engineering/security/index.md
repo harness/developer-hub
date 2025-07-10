@@ -1,403 +1,108 @@
 ---
+sidebar_position: 1
 title: Overview
 description: Comprehensive security controls and best practices for chaos engineering
-sidebar_position: 1
+redirect_from:
+- /docs/chaos-engineering/technical-reference/security/introduction
+- /docs/chaos-engineering/architecture-and-security/security/introduction
+- /docs/category/security-1
 ---
 
-# Security Overview
+Harness provides several controls to ensure the safe execution of chaos experiments on your infrastructure. This section explains security considerations and associated features across administrative and runtime environments, including:
 
-Harness provides comprehensive security controls to ensure the safe execution of chaos experiments on your infrastructure. This section covers security considerations and features across administrative and runtime environments, including authentication, authorization, network security, and blast radius control.
+- [Connectivity from target clusters and request authentication](#connectivity-from-target-clusters-and-authentication-of-requests)
+- [Kubernetes roles for the chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure)
+- [User authentication to the Harness Chaos Engineering module](#user-authentication)
+- [Access control and permissions for chaos actions](#user-authorization-and-role-based-access-control )
+- [Secrets management](#secrets-management)
+- [Blast radius control using permissions](#blast-radius-control-using-permissions)
 
-Chaos engineering security operates on multiple layers to protect your infrastructure while enabling effective resilience testing:
+Further sections provide a quick summary of the internal security controls and processes for the chaos module to help you gain insights into how security is baked into the build process. The processes include:
 
-### Core Security Principles
-- **Least Privilege Access**: Minimal permissions required for experiment execution
-- **Defense in Depth**: Multiple security layers and controls
-- **Secure by Default**: Safe configurations and automatic rollback mechanisms
-- **Audit and Compliance**: Complete visibility into chaos activities
-- **Blast Radius Control**: Containment of experiment impact
+- Base images
+- Vulnerability scanning
+- Pen testing
 
-### Security Architecture Components
-- **Control Plane Security**: Authentication, authorization, and API security
-- **Execution Plane Security**: Isolated experiment execution with RBAC
-- **Network Security**: Encrypted communication and network isolation
-- **Data Protection**: Secure secrets management and data handling
-- **Monitoring & Auditing**: Complete activity logging and compliance reporting
+### Connectivity from target clusters and authentication of requests
 
----
+You must connect your Kubernetes infrastructure (clusters or namespaces) to HCE (Harness Chaos Engineering) to discover the microservices and execute chaos experiments on them. The connection between your Kubernetes infrastructure and HCE is enabled by a set of deployments on the Kubernetes cluster. The deployments comprise a relay (subscriber) that communicates with the HCE control plane and custom controllers, which carry out the chaos experiment business logic.
 
-## Connectivity and Authentication
+This group of deployments (known as the execution plane) is referred to as the [chaos infrastructure](/docs/chaos-engineering/guides/infrastructures/types/).
 
-### Secure Infrastructure Connection
+The chaos infrastructure connects to the control plane by making outbound requests over HTTPS (port number 443) to claim and perform chaos tasks. The connections don't require you to create rules for inbound traffic. A unique ID, named cluster ID, is assigned to the chaos infrastructure. The chaos infrastructure shares a dedicated key, named access-key, with the control plane. Both cluster ID and access key are generated during installation. Every API request made to the control plane includes these identifiers for authentication purposes.
 
-Your Kubernetes infrastructure connects to Harness Chaos Engineering through a secure, outbound-only communication model:
+![Overview](./static/overview/overview.png)
 
-**Connection Architecture:**
-- **Outbound HTTPS**: Chaos infrastructure makes outbound requests over HTTPS (port 443)
-- **No Inbound Rules**: No inbound traffic rules required on your infrastructure
-- **Unique Authentication**: Each infrastructure has a unique cluster ID and access key
-- **Encrypted Communication**: All data transmission is encrypted in transit
-
-![Security Overview](./static/overview/overview.png)
-
-**Authentication Flow:**
-1. Chaos infrastructure generates unique cluster ID and access key during installation
-2. All API requests include these identifiers for authentication
-3. Control plane validates credentials before processing requests
-4. Secure token refresh and rotation mechanisms
-
-### Multi-Environment Support
-
-Harness can leverage the same cluster to inject chaos into various targets:
-- **Kubernetes Resources**: Pods, services, deployments within the cluster
-- **Infrastructure Targets**: VMs, cloud resources accessible from the cluster
-- **External Services**: APIs and services reachable from the execution environment
-
-:::info Cloud Integration
-For cloud resource chaos injection, Harness securely manages cloud credentials through Kubernetes secrets, ensuring sensitive information never leaves your environment.
+:::info
+Harness can leverage the same cluster (or namespace) to inject chaos into infrastructure targets (such as VMs, cloud resources etc.) within the user environment, provided that the cluster can access them. For more information on Cloud Secrets, refer to the above diagram.
 :::
 
----
+### Kubernetes roles for chaos infrastructure
 
-## Kubernetes Security Model
+You can install the deployments that make up the chaos infrastructure with cluster-wide scope or namespace-only scope. These deployments are mapped to a dedicated service account that can execute all supported chaos experiments for that scope. To learn more about connecting to a chaos infrastructure in cluster or namespace mode, refer to [connect chaos infrastructures](/docs/chaos-engineering/guides/infrastructures/types/). Mapping deployments to dedicated service accounts is considered as the first level of blast radius control.
 
-### Service Account Architecture
+The permissions are listed below for reference.
 
-Chaos infrastructure deployments use dedicated service accounts with carefully scoped permissions:
-
-**Installation Modes:**
-- **Cluster-wide Scope**: Full cluster access for comprehensive testing
-- **Namespace-only Scope**: Restricted access to specific namespaces
-- **Custom Scope**: Fine-tuned permissions for specific use cases
-
-### Permission Management
-
-The default permissions enable comprehensive chaos testing while maintaining security:
-
-**Core Permissions:**
-- **Pod Management**: Create, delete, monitor experiment and helper pods
-- **Resource Access**: Read deployments, services, and configuration data
-- **Event Logging**: Create and update experiment events and results
-- **Network Control**: Manage network policies for network chaos
-
-**Advanced Permissions:**
-- **Custom Resource Management**: Handle Litmus chaos resources
-- **Job Execution**: Create and manage batch jobs for experiments
-- **Metric Collection**: Access monitoring data for validation
-
-:::note Permission Tuning
-Permissions can be fine-tuned based on your environment and experiment requirements. See [Blast Radius Control](#blast-radius-control) for detailed guidance.
+:::note
+The permissions listed an be tuned for further minimization based on environments connected, type of experiments needed etc. Refer to [blast radius control using permissions](#blast-radius-control-using-permissions) to learn more.
 :::
 
-### Namespace Isolation
+| Resource                                                                              | Permissions                                                       | Uses                                                                                                                          |
+|---------------------------------------------------------------------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| deployments, replicationcontrollers, daemonsets, replicasets, statefulsets            | get, list                                                         | For asset discovery of available resources on the cluster so that you can target them with chaos experiments.                 |
+| secrets, configmaps                                                                   | get, list                                                         | To read authentication information (cluster-id and access-keys), configuration tunables.                                      |
+| jobs                                                                                  | create, get, list, delete, deletecollection                       | Chaos experiments are launched as Kubernetes jobs.                                                                            |
+| pods, events                                                                          | get, create, update, patch, delete, list, watch, deletecollectio  | <ul><li>Manage transient pods created to perform chaos.</li> <li>Generate and manage chaos events.</li></ul>                  |
+| pod/logs                                                                              | get, list, watch                                                  | <ul><li>Track execution logs.</li> <li>Leverage to validate resource behavior/chaos impact.</li></ul>                         |
+| nodes                                                                                 | patch, get, list, update                                          | <ul><li>Filter or isolate chaos targets to specific nodes.</li> <li>Subject nodes to chaos (only in cluster-scope).</li></ul> |
+| network policies                                                                      | create, delete, list, get                                         | Cause chaos through network partitions.                                                                                       |
+| services                                                                              | create, update, get, list, watch, delete, deletecollection        | <ul><li>Generate chaos metrics.</li> <li>Watch or probe application service metrics for health.</li></ul>                     |
+| custom resource definitions, chaosengines, finalizers, chaosexperiments, chaosresults | get, create, update, patch, delete, list, watch, deletecollection | Lifecycle management of chaos custom resources in CE.                                                                        |
+| leases (CRDs)                                                                         | get, create, list, update, delete                                 | Enable high availability of chaos custom controllers via leader elections.                                                    |
 
-Implement namespace-level security controls:
+### Secrets management
 
-**Benefits:**
-- **Reduced Blast Radius**: Limit chaos impact to specific namespaces
-- **Environment Separation**: Isolate development, staging, and production
-- **Team Boundaries**: Align chaos permissions with team responsibilities
-- **Compliance Requirements**: Meet regulatory isolation requirements
+HCE leverages secrets for administrative or management purposes as well as at runtime (during execution of chaos experiments). The former involves users leveraging the Harness Secret Manager on the control plane, while the latter is purely managed by the users themselves in their respective Kubernetes clusters.
 
-**Implementation Steps:**
-1. Install chaos infrastructure in cluster mode
-2. Delete default ClusterRole and ClusterRoleBinding
-3. Create namespace-specific Roles and RoleBindings
-4. Verify isolation through testing
+### Secrets to access chaos artifact (Git) repositories
 
-[Learn more about namespace considerations →](./namespace-considerations)
+HCE allows you to add one or more [ChaosHubs](/docs/chaos-engineering/guides/chaoshubs/) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involves connecting to the respective canonical source, Git repository by using Personal Access Tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
 
----
+The chaos module leverages the native Git Connectors provided by the Harness platform to achieve this connectivity, which in turn leverages the Harness Secret Manager to store the PAT or SSH keys.
 
-## User Authentication and Authorization
+![Control plane secrets](./static/overview/control-plane-secrets.png)
 
-### Authentication Methods
+![Experiment secrets](./static/overview/experiment-secrets.png)
 
-**Harness Platform Integration:**
-- **Single Sign-On (SSO)**: SAML, OAuth, OpenID Connect
-- **LDAP Integration**: Active Directory and enterprise directories
-- **Multi-Factor Authentication**: Enhanced security for sensitive operations
-- **API Keys**: Programmatic access with proper scoping
 
-### Role-Based Access Control (RBAC)
+### Secrets to access and inject chaos on public and on-prem cloud resources
 
-**Built-in Roles:**
-- **Chaos Engineering Admin**: Full platform administration
-- **Chaos Engineering Editor**: Create and manage experiments
-- **Chaos Engineering Viewer**: Read-only access to experiments and results
-- **Custom Roles**: Tailored permissions for specific needs
+HCE supports fault injection into non-Kubernetes resources such as on-premises VMs, bare-metal machines, cloud infrastructure resources (compute, storage, and network), and cloud-managed services. It leverages provider-specific APIs to inject chaos.
 
-**Permission Granularity:**
-- **Environment-level**: Control access to specific environments
-- **Infrastructure-level**: Manage chaos infrastructure permissions
-- **Experiment-level**: Fine-grained experiment execution controls
-- **Resource-level**: Specific resource type permissions
+Additionally, HCE supports custom validation tasks such as retrieving metrics from an APM, making API calls for health status, and running background processes for data integrity.
 
-### Access Control Best Practices
+Both of the aforementioned actions require specific access to the infrastructure or service in question. This information is expected to be fed as Kubernetes secrets to the transient chaos pod resources that are launched during experiment execution. To learn more about how experiments are executed, go to [chaos architecture](/docs/chaos-engineering/key-concepts#harness-chaos-engineering-architecture).
 
-**Principle of Least Privilege:**
-- Grant minimum permissions required for job functions
-- Regular review and cleanup of unused permissions
-- Time-bound access for temporary requirements
-- Separation of duties for critical operations
-
-**Audit and Monitoring:**
-- Complete audit trail of all user actions
-- Real-time alerts for suspicious activities
-- Regular access reviews and compliance reporting
-- Integration with SIEM systems
-
----
-
-## Secrets Management
-
-### Control Plane Secrets
-
-Harness leverages the native Harness Secret Manager for administrative secrets:
-
-**ChaosHub Connectivity:**
-- **Git Repository Access**: Personal Access Tokens (PAT) or SSH keys
-- **Secure Storage**: Encrypted storage in Harness Secret Manager
-- **Scope Management**: Proper permissions for repository operations
-- **Rotation Support**: Automated secret rotation capabilities
-
-![Control Plane Secrets](./static/overview/control-plane-secrets.png)
-
-### Runtime Secrets
-
-Experiment execution secrets are managed within your Kubernetes clusters:
-
-**Cloud Provider Access:**
-- **AWS Credentials**: IAM roles, access keys, session tokens
-- **Azure Credentials**: Service principals, managed identities
-- **GCP Credentials**: Service account keys, workload identity
-- **Custom Providers**: API keys and authentication tokens
-
-![Experiment Secrets](./static/overview/experiment-secrets.png)
-
-**Secret Management Best Practices:**
-- **Kubernetes Secrets**: Store sensitive data as Kubernetes secrets
-- **Secret References**: Experiments reference secret names, not values
-- **Lifecycle Management**: You control secret creation, rotation, and deletion
-- **Encryption**: Secrets encrypted at rest and in transit
-
-### Example: AWS Chaos Experiment Secrets
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-  namespace: litmus
-type: Opaque
-data:
-  cloud_config.yml: |
-    # AWS credentials for chaos experiments
-    [default]
-    aws_access_key_id = <access-key>
-    aws_secret_access_key = <secret-key>
-    aws_session_token = <session-token>
-    region = us-east-1
-```
-
-:::info Secret Security
-Experiment artifacts only reference secret names. The actual secret values remain fully under your control within your Kubernetes clusters.
+:::info
+The experiment artifact that is stored in a chaos hub or supplied when you create an experiment only references the names of secrets. You can fully manage the life cycle of the secrets within their clusters.
 :::
 
----
+[Here](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-cpu-hog#prerequisites) is an example of AWS access information being fed to the experiment pods through a Kubernetes secret.
 
-## Blast Radius Control
+### Blast radius control using permissions
 
-### Permission-Based Controls
+You can fine-tune permissions to suit specific infrastructures and experiments if you want to reduce the blast radius and impact from a security perspective. This applies to both Kubernetes-based and non-Kubernetes chaos.
 
-Fine-tune permissions to reduce blast radius and security impact:
+In the case of the Kubernetes chaos, a lower blast radius is achieved through [service accounts](/docs/chaos-engineering/security/namespace-considerations) mapped to custom roles instead of the default service accounts mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, a lower blast radius is achieved through cloud-specific role definitions (for example, IAM) mapped to the user account.
 
-**Kubernetes Chaos Controls:**
-- **Custom Service Accounts**: Replace default accounts with restricted ones
-- **Namespace Boundaries**: Limit chaos to specific namespaces
-- **Resource Quotas**: Prevent resource exhaustion
-- **Network Policies**: Control network access during experiments
+Every fault in the Enterprise chaos hub publishes the permissions that you need to execute the fault. You can tune your roles. Common permission templates that work as subsets or supersets for a specific category of experiments are also available. For example, [AWS resource faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults).
 
-**Cloud Chaos Controls:**
-- **IAM Role Restrictions**: Minimal cloud permissions for specific faults
-- **Resource Tagging**: Target only tagged resources
-- **Region Limitations**: Restrict chaos to specific regions
-- **Service Boundaries**: Limit access to specific cloud services
 
-### Fault-Specific Permissions
+## Next steps
 
-Every fault in the Enterprise ChaosHub publishes required permissions:
+* [Namespace considerations](/docs/chaos-engineering/security/namespace-considerations)
+* [Openshift security policies](/docs/chaos-engineering/security/security-templates/openshift-scc)
+* [Pod security policy](/docs/chaos-engineering/security/security-templates/psp)
+* [Kyverno policy](/docs/chaos-engineering/security/security-templates/kyverno-policies)
 
-**Permission Documentation:**
-- **Minimum Required**: Essential permissions for fault execution
-- **Optional Permissions**: Additional capabilities for enhanced functionality
-- **Security Impact**: Risk assessment for each permission
-- **Alternatives**: Lower-privilege alternatives where available
 
-**Common Permission Templates:**
-- **[AWS Resource Faults](../faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults)**: Comprehensive AWS permissions
-- **Kubernetes Pod Faults**: Container and pod-level permissions
-- **Network Faults**: Network policy and connectivity permissions
-- **Resource Stress Faults**: System resource access permissions
-
-### Dynamic Blast Radius Management
-
-**Runtime Controls:**
-- **Percentage Limits**: Limit affected resources by percentage
-- **Count Limits**: Maximum number of resources to impact
-- **Time Boundaries**: Automatic experiment timeouts
-- **Health Thresholds**: Stop experiments based on system health
-
-**Monitoring and Alerts:**
-- **Real-time Monitoring**: Track experiment impact in real-time
-- **Automatic Rollback**: Trigger rollback on threshold breaches
-- **Alert Integration**: Notify teams of experiment status changes
-- **Incident Response**: Automated incident creation for failures
-
----
-
-## Security Templates and Policies
-
-### Kubernetes Security Policies
-
-**Pod Security Policies (PSP):**
-- Restrict privileged containers
-- Control volume types and access
-- Enforce security contexts
-- Limit network access
-
-**Pod Security Standards:**
-- **Privileged**: Unrestricted policy (development only)
-- **Baseline**: Minimally restrictive policy
-- **Restricted**: Heavily restricted policy (production)
-
-### Policy Enforcement Tools
-
-**Open Policy Agent (OPA):**
-- Custom policy definitions
-- Runtime policy enforcement
-- Compliance validation
-- Audit and reporting
-
-**Kyverno Policies:**
-- Kubernetes-native policy management
-- Validation, mutation, and generation rules
-- GitOps-friendly policy deployment
-- Rich policy library
-
-**OpenShift Security Context Constraints (SCC):**
-- OpenShift-specific security controls
-- Fine-grained permission management
-- Integration with RBAC
-- Compliance reporting
-
-[Explore Security Templates →](./security-templates)
-
----
-
-## Internal Security Controls
-
-Harness implements comprehensive internal security controls:
-
-### Build and Deployment Security
-
-**Secure Development:**
-- **Base Images**: Hardened, regularly updated base images
-- **Vulnerability Scanning**: Continuous scanning of all components
-- **Dependency Management**: Regular updates and security patches
-- **Code Reviews**: Security-focused code review processes
-
-**Penetration Testing:**
-- **Regular Testing**: Quarterly penetration testing
-- **Third-party Audits**: Independent security assessments
-- **Vulnerability Disclosure**: Responsible disclosure program
-- **Compliance Certifications**: SOC 2, ISO 27001, and other standards
-
-### Runtime Security
-
-**Platform Security:**
-- **Encryption**: Data encrypted at rest and in transit
-- **Network Isolation**: Secure network segmentation
-- **Access Monitoring**: Real-time access monitoring and alerting
-- **Incident Response**: 24/7 security incident response
-
-**Compliance and Auditing:**
-- **Audit Logs**: Comprehensive activity logging
-- **Compliance Reporting**: Automated compliance reports
-- **Data Residency**: Control over data location and processing
-- **Privacy Controls**: GDPR and privacy regulation compliance
-
----
-
-## Security Best Practices
-
-### Development Environment
-
-**Initial Setup:**
-- Start with dedicated test clusters
-- Implement RBAC from day one
-- Use namespace isolation for team boundaries
-- Regular security training for team members
-
-**Experiment Design:**
-- Begin with low-impact experiments
-- Gradually increase blast radius
-- Implement comprehensive monitoring
-- Document security considerations
-
-### Production Environment
-
-**Deployment Strategy:**
-- Phased rollout with increasing scope
-- Comprehensive pre-flight checks
-- Real-time monitoring and alerting
-- Automated rollback mechanisms
-
-**Operational Security:**
-- Regular permission audits
-- Incident response procedures
-- Security metrics and KPIs
-- Continuous improvement processes
-
-### Organizational Security
-
-**Governance:**
-- Security policies and procedures
-- Regular training and awareness programs
-- Compliance monitoring and reporting
-- Third-party security assessments
-
-**Culture:**
-- Security-first mindset
-- Shared responsibility model
-- Continuous learning and improvement
-- Open communication about security issues
-
----
-
-## Getting Started with Security
-
-### Quick Security Checklist
-
-**Before First Experiment:**
-- [ ] Configure proper RBAC permissions
-- [ ] Set up namespace isolation if required
-- [ ] Implement monitoring and alerting
-- [ ] Define incident response procedures
-- [ ] Review and approve experiment scope
-
-**Ongoing Security:**
-- [ ] Regular permission audits
-- [ ] Security training for team members
-- [ ] Compliance reporting and reviews
-- [ ] Continuous monitoring and improvement
-
-### Next Steps
-
-1. **[Namespace Considerations](./namespace-considerations)** - Implement namespace-level security
-2. **[Security Templates](./security-templates)** - Use pre-built security policies
-3. **[OpenShift Security](./security-templates/openshift-scc)** - OpenShift-specific controls
-4. **[Pod Security Policies](./security-templates/psp)** - Kubernetes pod security
-5. **[Kyverno Policies](./security-templates/kyverno-policies)** - Policy-as-code implementation
-
-Security is not a one-time setup but an ongoing process. Regular reviews, updates, and improvements ensure your chaos engineering practices remain secure and compliant as your infrastructure evolves.

@@ -7,7 +7,6 @@ redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/introduction
 - /docs/category/chaoshub
 - /docs/category/chaos-hubs
-- /docs/chaos-engineering/use-harness-ce/chaoshubs
 ---
 
 ## ChaosHub
@@ -16,7 +15,7 @@ A ChaosHub is a collection of experiment templates (defined as workflow custom r
 
 You can add ChaosHub using a Git service provider such as GitHub, where ChaosHub exists as a repository. This allows native version control and management of the faults and experiment artefact.
 
-Harness Chaos Engineering provides a default Enterprise ChaosHub that includes a wide array of experiments and faults out of the box. You can also add your own custom ChaosHubs to maintain and share private scenarios and faults within your organization.
+HCE provides a default Enterprise ChaosHub that includes a wide array of experiments and faults out of the box. You can also add your own custom ChaosHubs to maintain and share private scenarios and faults within your organization.
 
 [This](https://youtu.be/b4ggnJcZrcM) video provides a step-by-step walkthrough of using a ChaosHub.
 
@@ -49,4 +48,4 @@ Also known as Enterprise hub, it comes out-of-the-box with HCE and consists of p
 Resilience probes are currently not supported with Chaos Hubs.
 :::
 
-Go to [connect to ChaosHub](/docs/chaos-engineering/guides/chaoshubs/add-chaos-hub) or [manage ChaosHub](/docs/chaos-engineering/guides/chaoshubs/manage-hub) for hands-on learning.
+Go to [connect to ChaosHub](./add-chaos-hub) or [manage ChaosHub](./manage-hub) for hands-on learning.

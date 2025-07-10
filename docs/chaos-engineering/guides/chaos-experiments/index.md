@@ -1,401 +1,145 @@
 ---
 title: Overview
-description: Master chaos experiments - from creation to execution and analysis
 sidebar_position: 1
+description: Configure rules to receive alerts for your chaos experiments.
 redirect_from:
-  - /docs/chaos-engineering/use-harness-ce/chaos-experiments
+- /docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments
+- /docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score
+- /docs/chaos-engineering/features/experiments/resilience-score/
+- /docs/category/chaos-experiments-/
+- /docs/chaos-engineering/technical-reference/experiments/
+- /docs/chaos-engineering/use-harness-ce/chaos-experiments
 ---
 
-# Chaos Experiments
+This topic describes chaos experiments, why it is required, the permissions required to execute a chaos experiment, and how the resilience score is determined based on the chaos experiment's execution.
 
-Chaos experiments are the foundation of chaos engineering - controlled, hypothesis-driven tests that intentionally introduce failures to validate and improve system resilience. This comprehensive guide covers everything you need to master chaos experiments with Harness.
+## Prerequisites
 
-## What are Chaos Experiments?
+Before creating a chaos experiment, [create an environment](/docs/chaos-engineering/guides/chaos-experiments/create-experiments#create-environment) and [enable a chaos infrastructure](/docs/chaos-engineering/guides/infrastructures/types/). This is because a chaos experiment is executed on an infrastructure which is in turn housed in an environment.
 
-A **chaos experiment** in Harness consists of one or more chaos faults arranged in a specific sequence to create realistic failure scenarios. Each experiment:
+## Introduction
+Harness Chaos Engineering gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications.
 
-- **Tests specific hypotheses** about system behavior under failure conditions
-- **Measures resilience** through automated probes and monitoring
-- **Provides quantitative results** via resilience scoring
-- **Ensures safety** through automatic rollback mechanisms
-- **Integrates seamlessly** with your existing CI/CD workflows
+An experiment is created in an infrastructure, and an infrastructure is installed within an environment. 
+An environment represents your deployment scenario, wherein each environment may contain multiple chaos infrastructures. It helps isolate the various environments that the engineering, product owners, QA, and automation teams use under a single Harness project. 
 
-## Core Components
+## What is a Chaos Experiment?
+A **chaos experiment** consists of chaos faults arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. Tune the parameters associated with these faults to impart the desired chaos behavior.
 
-### Chaos Faults
-Pre-built failure scenarios from the Enterprise ChaosHub:
-- **Infrastructure Faults**: CPU stress, memory exhaustion, network disruption
-- **Application Faults**: Pod deletion, service disruption, container kills
-- **Cloud Platform Faults**: AWS ECS stop, Azure VM restart, GCP function failure
-- **Custom Faults**: Organization-specific failure scenarios
+You can define the experiment using the Chaos Studio, that helps create new experiments using the guided UI.
 
-### Resilience Probes
-Automated validation mechanisms that run during experiments:
-- **HTTP Probes**: Check service availability and response times
-- **Command Probes**: Execute custom validation commands
-- **Kubernetes Probes**: Monitor pod and service health
-- **Prometheus Probes**: Query metrics for system health validation
+When an experiment fails, the failed step specifies the exact cause of failure for the experiment run. It contains an error code for the classification of the error, a phase to specify the execution phase during which the error occurred, and a user-friendly description of the error.
 
-### Resilience Scoring
-Quantitative measurement of system resilience:
-- **Fault Weights**: Assign importance levels (1-10) to different faults
-- **Probe Success Rate**: Percentage of successful health validations
-- **Overall Score**: Weighted calculation of experiment success
+Go to [Key Concepts](/docs/chaos-engineering/key-concepts) to understand the flow of control when a chaos experiment is executed.
 
-## Experiment Architecture
+## Permissions Required
 
-```mermaid
-graph TB
-    A[Control Plane] --> B[Chaos Infrastructure]
-    B --> C[Target Applications]
-    
-    D[Experiment Definition] --> E[Fault Injection]
-    E --> F[Probe Validation]
-    F --> G[Result Collection]
-    G --> H[Resilience Score]
-    
-    I[Safety Mechanisms] --> J[Automatic Rollback]
-    I --> K[Blast Radius Control]
-    I --> L[Real-time Monitoring]
-```
+Chaos experiments are executed in a chaos infrastructure, hence you need to have access to **create/edit** and **view** the **chaos infrastructure**. Go to **Project Settings** -> **Access Control** -> **Roles** and create a new role or ask your project admin to create an appropriate role.
 
-## Getting Started
+![](./static/perms-reqd.png)
 
-### Prerequisites
-Before creating experiments, ensure you have:
-- **Environment** set up for your deployment scenario
-- **Chaos Infrastructure** installed in your target environment
-- **Proper permissions** for experiment creation and execution
-- **Target applications** identified and accessible
+## Flow of Control
 
-### Quick Start Path
-1. **[Create Your First Experiment](./create-experiments)** - Step-by-step experiment creation
-2. **[Execute and Monitor](./run-experiments)** - Run experiments safely with monitoring
-3. **[Analyze Results](./analyze-results)** - Understand resilience scores and insights
-4. **[Manage Experiments](./manage-experiments)** - Organize and maintain your experiments
+The diagram below describes the flow of control when a chaos experiment is executed.
 
-## Experiment Types by Use Case
+	![flow of control](./static/create-experiments/experiment-sequence.png)
 
-### Infrastructure Resilience
-**Validate infrastructure fault tolerance:**
-- Node failures and recovery
-- Network partitions and latency
-- Resource exhaustion scenarios
-- Storage and disk failures
+**1. Initiating a Chaos Experiment**
+- You (the user) begin by creating a new chaos experiment in the **Chaos Control Plane**.
+- The Control Plane prompts the user to provide key details required for configuring the experiment:
 
-### Application Resilience
-**Test application-level fault handling:**
-- Service dependency failures
-- Database connection issues
-- Memory leaks and CPU spikes
-- Configuration errors
+  - **Chaos Infrastructure:** Define the infrastructure where the experiment will be executed.
+  - **Faults and Tunables:** Configure tunables as required. Multiple faults can be added in any order.
+  - **Fault Probes:** Include probes beyond the default health check probe to validate specific hypotheses.
+  - **Fault Weights:** Assign weights to faults to indicate their impact relative to others. These weights help determine the experiment's [**resilience score**](/docs/chaos-engineering/guides/chaos-experiments/), a quantitative measure of system robustness.
 
-### Cloud Platform Resilience
-**Verify cloud service resilience:**
-- Availability zone failures
-- Load balancer disruptions
-- Auto-scaling behavior
-- Managed service outages
+- Once all required inputs are provided, the experiment is created and ready for execution.
 
-### End-to-End Scenarios
-**Complex, multi-component failures:**
-- Cascading failure scenarios
-- Disaster recovery testing
-- Peak load with failures
-- Multi-region failover
+**2. Executing the Chaos Experiment**
+- When the experiment is run, the **Chaos Control Plane** sends the experiment details to the target **chaos infrastructure**.
+- The infrastructure manages four key responsibilities during execution:
 
-## Safety and Governance
+  - **Fault Injection:** It interprets and injects the specified faults into the target resources. Depending on the experiment setup, multiple faults can be injected concurrently.
+  - **Probe Execution:** As faults are injected, the infrastructure runs the corresponding fault probes and records their results.
+  - **Log Streaming:** Real-time execution logs are continuously streamed and can be accessed in the **Chaos Control Plane** for monitoring and troubleshooting.
+  - **Result Transmission:** Once the experiment concludes, the infrastructure sends back execution results, including probe outcomes, to the Control Plane.
 
-### Built-in Safety Features
-- **Automatic Rollback**: Experiments stop automatically if safety thresholds are breached
-- **Blast Radius Control**: Limit experiment impact to specific components or percentages
-- **Pre-flight Checks**: Validate system health before experiment execution
-- **Real-time Monitoring**: Continuous observation during experiment execution
+## Experiment Status
 
-### Governance Integration
-- **ChaosGuard**: Policy-based experiment approval and control
-- **RBAC**: Role-based access control for experiment management
-- **Audit Logs**: Complete tracking of all experiment activities
-- **Compliance**: Support for regulatory and organizational requirements
+Experiment status describes the overall status of the experiment that depends on the status of the probe and the fault. The experiment status in a chaos experiment can be in 7 different states.
 
-## Integration Capabilities
+	- **Completed**: The fault and the probes associated with every fault were completed successfully.
+	- **Completed with Error**: All the faults complete execution, and none of them show **error** status, but one of them may show **Completed with error** if the probe associated with the fault fails.
+	- **Error**: If one of the faults or steps in the experiment results in an **error**, the experiment corresponds to being in an **error** state.
+	- **Running**: Once the task (or experiment) is picked up by the infrastructure subscriber (pod), it goes to **running** state.
+	- **Timeout**: If the task is in the queue, but not picked up by the subscriber for execution within a specific duration, the task times out.
+	- **Queued**: An experiment goes to the **queued** state before it is executed, that is when the task (or experiment) has not been picked up by the infrastructure subscriber (pod) yet. At this point, the task is placed in the queue and is waiting to be picked.
+	- **Stopped**: If an experiment was stopped by the user, the fault that was being executed then also stops (this results in the fault status being **stopped**). The subsequent faults associated with the experiment don't get executed either.
 
-### CI/CD Integration
-- **Pipeline Steps**: Add chaos experiments to Harness CD pipelines
-- **GitOps**: Manage experiments as code with version control
-- **Automated Scheduling**: Run experiments on schedules or triggers
-- **Quality Gates**: Use resilience scores as deployment criteria
+### Chaos Rollback
 
-### Observability Integration
-- **Prometheus**: Query metrics during experiments
-- **Grafana**: Visualize system behavior and experiment results
-- **Custom Dashboards**: Monitor experiment progress and system health
-- **Alert Integration**: Receive notifications for experiment events
+Chaos rollback ensures that all target resources in an experiment return to their steady state after the experiment concludes, maintaining the safety of all applications deployed on your machine.
 
-## Best Practices
+	- Chaos rollback occurs automatically at the end of each experiment. If an on-the-fly experiment is aborted, the chaos is safely reverted.
+	- If a network disruption occurs between the Control Plane and Execution Plane during the experiment, the experiment is gracefully aborted, and the chaos is reverted.
+	- If the chaos infrastructure process exits abruptly during an experiment, the daemon service reverts the chaos before restarting the process.
+	- In the event of an abrupt machine reboot, the daemon service checks for and reverts any inconsistencies from the prior chaos execution before starting the chaos infrastructure process.
+	- In the rare scenario where the chaos rollback itself encounters an error, an appropriate error message is logged in the experiment log, prompting the user for manual intervention.
 
-### Experiment Design
-- **Start Small**: Begin with low-impact experiments and gradually increase scope
-- **Clear Hypotheses**: Define specific, testable predictions about system behavior
-- **Comprehensive Probes**: Use multiple validation methods to assess impact
-- **Realistic Scenarios**: Simulate actual failure conditions your system might face
+The diagram below describes the flow of control in a chaos experiment.
 
-### Execution Strategy
-- **Off-Peak Testing**: Run initial experiments during low-traffic periods
-- **Gradual Rollout**: Increase experiment scope and complexity over time
-- **Team Coordination**: Ensure proper communication and preparation
-- **Documentation**: Record experiment goals, procedures, and outcomes
+## Determine Resilience
 
-### Continuous Improvement
-- **Regular Reviews**: Analyze results and refine experiments
-- **Automation**: Integrate successful experiments into regular testing
-- **Knowledge Sharing**: Document learnings and share across teams
-- **Iterative Approach**: Continuously improve based on results and feedback
+The **resilience score** is a quantitative measure of how resilient the target application is to a chaos experiment. It is determined by executing a chaos experiment.
 
-## Detailed Guides
+The score is calculated based on:
 
-Explore specific aspects of chaos experiments:
+* The weight you give each fault in the experiment.
+* The success rate of the probes in each fault.
 
-### **[Create Experiments](./create-experiments)**
-Step-by-step guide to building your first chaos experiment, from blank canvas to complex scenarios.
+### Fault Weight
 
-### **[Run & Schedule Experiments](./run-experiments)**
-Learn how to execute experiments safely, schedule recurring runs, and monitor execution.
+While creating a chaos experiment, you can assign a weight between 1 - 10 to each fault. This represents the priority/importance of the respective fault. The higher the weight, the more significant the fault is.
 
-### **[Analyze Results](./analyze-results)**
-Understand resilience scores, interpret experiment outcomes, and derive actionable insights.
+For example:
 
-### **[Manage Experiments](./manage-experiments)**
-Organize, edit, export, and maintain your experiment library effectively.
-Resolve common issues and optimize experiment performance.
+- Low Priority: 0 - 3
+- Medium Priority: 4 - 6
+- High Priority: 7 - 10
 
-## Success Metrics
+### Probe Success Percentage
 
-Track your chaos engineering maturity:
+The **probe success percentage** for a fault is the ratio of successful probes to total probes. For example, if a fault has 4 probes and only 2 of them are successful, then the probe success percentage for this fault is 50%.
 
-### Beginner (Getting Started)
-- First experiment created and executed
-- Basic fault types understood
-- Simple probes configured
-- Resilience score interpretation
+### Resilience Calculation
 
-### Intermediate (Building Confidence)
-- Multiple experiment types created
-- Complex probe configurations
-- Scheduled experiment execution
-- Integration with monitoring systems
+Based on fault weights and probe success rates, you can calculate two types of resilience score (represented as a percentage):
 
-### Advanced (Chaos Engineering Maturity)
-- Automated experiment pipelines
-- Custom fault development
-- Organization-wide chaos practices
-- Continuous resilience validation
+* **Fault resilience** = fault weight * probe success percentage<br />
+* **Experiment resilience** = sum of all fault resilience / sum of all fault weights of the experiments
+
+Below is an example:
+**Experiment A** runs, and includes 3 faults. Fault weights, number of probes, and probe success rates are as follows.
+
+   | Fault | Weight | Number<br />of probes | Probes<br />succeeded | Fault<br />resilience |
+   |:----:|:---:|:---:|:-------:|:-------:|
+   | Fault1 | 2 | 1 | 0 (or 0%) | 0%    |
+   | Fault2 | 4 | 2 | 2 (or 100%) | 400%  |
+   | Fault3 | 8 | 4 | 3 (or 75%) | 600%   |
+   |        | **Sum: 14** |  |    | **Sum: 1000%**   |
+<br />
+
+**Experiment A's total resilience score**
+
+   Divide the sum of all fault resilience by the sum of all fault weights:
+
+   **1000% / 14 = 71%**
 
 ## Next Steps
 
-Ready to start your chaos engineering journey?
+- [Create Experiment](/docs/chaos-engineering/guides/chaos-experiments/create-experiments)
+- [Edit Experiments](/docs/chaos-engineering/guides/chaos-experiments/edit-chaos-experiment)
+- [Run Experiments](/docs/chaos-engineering/guides/chaos-experiments/run-experiments)
+- [Alerts for Experiments](/docs/chaos-engineering/guides/chaos-experiments/alert-integration)
+- [Runtime Variable Support in Experiments](/docs/chaos-engineering/guides/chaos-experiments/fault-template)
 
-1. **[Create Your First Experiment](./create-experiments)** - Begin with a simple, safe experiment
-2. **[Explore Fault Types](../../faults/chaos-faults)** - Understand available chaos faults
-3. **[Set Up Monitoring](../probes)** - Configure probes and validation
-4. **[Join the Community](https://community.harness.io)** - Connect with other chaos engineers
-
-Chaos experiments are your gateway to building truly resilient systems. Start small, learn continuously, and gradually expand your chaos engineering practices to cover your entire infrastructure and application stack.
-- **CPU Stress**: Consume CPU resources to test auto-scaling
-- **Memory Stress**: Exhaust memory to validate OOM handling
-- **Disk Stress**: Fill disk space or stress I/O operations
-- **Network Stress**: Add latency, packet loss, or bandwidth limits
-
-#### **Component Failures**
-- **Pod/Container Kill**: Terminate running containers
-- **Node Failure**: Simulate entire node unavailability
-- **Service Disruption**: Stop critical system services
-- **Storage Failures**: Simulate disk or volume failures
-
-### Application Experiments
-Focus on application-level resilience:
-
-#### **Service Dependencies**
-- **External Service Failures**: Simulate third-party service outages
-- **Database Unavailability**: Test database failover mechanisms
-- **API Rate Limiting**: Simulate API throttling scenarios
-- **Authentication Failures**: Test auth service disruptions
-
-#### **Application Faults**
-- **HTTP Error Injection**: Return specific HTTP error codes
-- **Response Delays**: Add latency to API responses
-- **Memory Leaks**: Simulate gradual memory consumption
-- **Configuration Errors**: Test invalid configuration handling
-
-### Platform Experiments
-Target container and orchestration platforms:
-
-#### **Kubernetes Faults**
-- **Pod Deletion**: Random or targeted pod termination
-- **Resource Limits**: Apply CPU/memory constraints
-- **Network Policies**: Disrupt service-to-service communication
-- **Volume Failures**: Simulate persistent volume issues
-
-#### **Cloud Provider Faults**
-- **Instance Termination**: Stop cloud instances
-- **AZ Failures**: Simulate availability zone outages
-- **Load Balancer Issues**: Disrupt traffic distribution
-- **Managed Service Failures**: Test cloud service dependencies
-
-## Experiment Configuration
-
-### Target Selection
-Choose what to target in your experiments:
-
-```yaml
-# Example: Target selection criteria
-targets:
-  - type: "kubernetes"
-    namespace: "production"
-    labels:
-      app: "web-service"
-    percentage: 50  # Affect 50% of matching pods
-  
-  - type: "aws-ec2"
-    region: "us-west-2"
-    tags:
-      Environment: "prod"
-    count: 2  # Affect 2 instances
-```
-
-### Fault Configuration
-Define the specific fault to inject:
-
-```yaml
-# Example: CPU stress configuration
-fault:
-  type: "cpu-stress"
-  parameters:
-    cpu_cores: 2
-    cpu_load: 80
-    duration: "5m"
-  
-# Example: Network latency configuration
-fault:
-  type: "network-latency"
-  parameters:
-    latency: "100ms"
-    jitter: "10ms"
-    duration: "10m"
-```
-
-### Success Criteria
-Define what constitutes a successful experiment:
-
-```yaml
-# Example: Success criteria
-success_criteria:
-  - metric: "response_time_p95"
-    threshold: "< 500ms"
-    
-  - metric: "error_rate"
-    threshold: "< 1%"
-    
-  - metric: "availability"
-    threshold: "> 99%"
-```
-
-## Best Practices
-
-### Start Small
-- **Begin with staging environments** before production
-- **Limit blast radius** to minimize impact
-- **Use short durations** for initial experiments
-- **Target non-critical systems** first
-
-### Gradual Expansion
-- **Increase scope** as confidence grows
-- **Add more fault types** progressively
-- **Extend to production** with proper safeguards
-- **Involve more team members** in planning
-
-### Safety First
-- **Always have rollback plans** ready
-- **Set up comprehensive monitoring** before experiments
-- **Use automatic rollback conditions** to prevent damage
-- **Communicate with stakeholders** about planned experiments
-
-### Continuous Learning
-- **Document all findings** and insights
-- **Share results** with the broader team
-- **Update system designs** based on learnings
-- **Schedule regular re-testing** to validate improvements
-
-## Common Experiment Patterns
-
-### Resilience Validation
-Test how well your system handles expected failures:
-- **Database failover testing**
-- **Load balancer failure scenarios**
-- **Auto-scaling validation**
-- **Circuit breaker testing**
-
-### Dependency Testing
-Validate behavior when dependencies fail:
-- **Third-party service outages**
-- **Internal service failures**
-- **Network partitions**
-- **Authentication service disruptions**
-
-### Performance Testing
-Understand system behavior under stress:
-- **Resource exhaustion scenarios**
-- **Traffic spike simulation**
-- **Slow dependency responses**
-- **Memory pressure testing**
-
-### Recovery Testing
-Validate disaster recovery procedures:
-- **Data center failures**
-- **Multi-region failover**
-- **Backup and restore procedures**
-- **Emergency response protocols**
-
-## Monitoring and Observability
-
-### Key Metrics to Track
-- **Response times**: API and service response latencies
-- **Error rates**: HTTP errors, application exceptions
-- **Throughput**: Requests per second, transaction rates
-- **Resource utilization**: CPU, memory, disk, network
-- **Business metrics**: User experience, revenue impact
-
-### Alerting Setup
-Configure alerts for experiment monitoring:
-- **Experiment start/stop notifications**
-- **Threshold breach alerts**
-- **Automatic rollback triggers**
-- **Post-experiment summary reports**
-
-## Troubleshooting Experiments
-
-### Common Issues
-- **Experiments won't start**: Check permissions and connectivity
-- **Unexpected results**: Validate hypothesis and success criteria
-- **System instability**: Review blast radius and safety measures
-- **Monitoring gaps**: Ensure comprehensive observability coverage
-
-### Debugging Steps
-1. **Review experiment logs** for error messages
-2. **Check target system health** before and during experiments
-3. **Validate monitoring setup** and probe configurations
-4. **Verify network connectivity** and permissions
-5. **Analyze system dependencies** and potential side effects
-
-## Next Steps
-
-Ready to create your first experiment? Here's what to do next:
-
-1. **[Set up Probes](../probes/)** - Learn about monitoring and resilience validation
-2. **[Explore GameDays](../gamedays)** - Organize team-wide chaos engineering exercises
-3. **[Manage Experiments](./manage-experiments)** - Learn to organize and control your experiments
-4. **[Analyze Results](./analyze-results)** - Understand experiment outcomes and insights
-
-:::tip Pro Tip
-Start with simple experiments like pod deletion or CPU stress, then gradually work your way up to more complex scenarios. The key is to build confidence and learn from each experiment!
-:::

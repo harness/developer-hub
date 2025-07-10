@@ -1,5 +1,5 @@
 ---
-title: Connect Infrastructure via Proxy
+title: Connect chaos infrastructure via proxy
 sidebar_position: 3
 description: Connect chaos infrastructure to the control plane via proxy in SMP environments
 redirect_from:
@@ -7,231 +7,52 @@ redirect_from:
     - /docs/chaos-engineering/getting-started/smp/connect-infrastructure
 ---
 
-# Connect Infrastructure via Proxy
+This topic describes the method to connect your chaos infrastructure to the control plane on [app.harness.io](https://app.harness.io) or Self-Managed Platform (SMP) via proxy when using a [dedicated chaos infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/).
 
-This guide describes how to connect your chaos infrastructure to the control plane via proxy when using a [dedicated chaos infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/) in SMP environments.
-
-## Overview
-
-When deploying chaos infrastructure in air-gapped or proxy-enabled environments, you need to configure proxy settings to ensure proper communication between:
-- Chaos infrastructure and SMP control plane
-- Chaos infrastructure and target applications
-- Experiment execution and log streaming
+Go to configure proxy settings for [Harness Delegate Driven Chaos runner](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support#hnp-configuration-for-delegate-driven-chaos-runner-ddcr) and proxy settings for [Discovery Agent](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support#hnp-configuration-for-discovery-agent) to configure DDCR and Discovery agent related proxy settings, respectively.
 
 :::tip
-For DDCR and Discovery Agent proxy configuration, see:
-- [Harness Delegate Driven Chaos runner](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support#hnp-configuration-for-delegate-driven-chaos-runner-ddcr)
-- [Discovery Agent proxy settings](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support#hnp-configuration-for-discovery-agent)
+To know about new feature releases, enhancements, and fixed issues, go to [SMP release notes](/release-notes/self-managed-enterprise-edition).
 :::
 
-## Infrastructure Proxy Configuration
+To deploy a chaos infrastructure in an air-gapped cluster that accesses [app.harness.io](https://app.harness.io) or SMP control plane via proxy, configure the `HTTP_PROXY` , `HTTPS_PROXY`, and `NO_PROXY` environment variables for the subscriber, and apply the manifest, where:
 
-### Environment Variables
+- `HTTP_PROXY` is set if you deploy the SMP control plane over HTTP.
 
-Configure the following environment variables for the subscriber:
+- `HTTPS_PROXY` is set if you deploy the SMP control plane over HTTPS or if you want to connect to [app.harness.io](https://app.harness.io).
 
-| Variable | Purpose | When to Set |
-|----------|---------|-------------|
-| `HTTP_PROXY` | HTTP proxy endpoint | When SMP control plane is deployed over HTTP |
-| `HTTPS_PROXY` | HTTPS proxy endpoint | When SMP control plane is deployed over HTTPS or connecting to app.harness.io |
-| `NO_PROXY` | Bypass proxy for specific IPs | Set with cluster IP for direct Kube API server access |
+- `NO_PROXY` is set with the cluster IP of the cluster where you deploy the chaos infrastructure. This allows requests to be directed to the Kube API server directly instead of going through a proxy. In addition, the proxy may not be able to connect to the Kube API server if it is deployed outside the cluster.
 
-### Basic Proxy Configuration
 
-For proxies without credentials:
-
-```bash
-export HTTP_PROXY=http://<proxy-ip>:<proxy-port>
-export HTTPS_PROXY=https://<proxy-ip>:<proxy-port>
-export NO_PROXY=<cluster-ip>
+The above environment variables are set without providing any credentials. An example of a proxy without credentials:
+```
+http://<proxy-ip>:<proxy-port>
 ```
 
-### Proxy with Authentication
+When the infrastructure is `CONNECTED`, an experiment is created. 
+To stream logs in real-time during experiment execution, configure the following environment variables in the experiment manifest (for the experiment you created earlier).
 
-For proxies requiring authentication, URL encode the credentials:
+Select **YAML** view in the **Experiment Builder**, and click **Edit Yaml**, and provide values for `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY` and `INDIRECT_UPLOAD` as shown in the diagram.
 
-```bash
-export HTTP_PROXY=http://<url-encoded-username>:<url-encoded-password>@<proxy-ip>:<proxy-port>
-export HTTPS_PROXY=https://<url-encoded-username>:<url-encoded-password>@<proxy-ip>:<proxy-port>
+    ![](./static/change-vals.png)
+
+The environment variables are described below:
+
+- `HTTP_PROXY` is set if you deploy the SMP control plane over HTTP.
+
+- `HTTPS_PROXY` is set if you deploy the SMP control plane over HTTPS or if you want to connect to [app.harness.io](https://app.harness.io).
+
+- `NO_PROXY` is set with the cluster IP of the cluster where you deploy the chaos infrastructure. This allows requests to be directed to the Kube API server directly instead of going through a proxy. In addition, the proxy may not be able to connect to the Kube API server if it is deployed outside the cluster.
+
+- `INDIRECT_UPLOAD`is set to "true".
+
+
+:::tip
+- You can provide `HTTP_PROXY` and `HTTPS_PROXY` with endpoints that have credentials. For this, you have to first URL Encode the username and the password and provide them.
+- An example of a proxy with credentials:
+
 ```
-
-:::tip URL Encoding
-Common characters that need encoding:
-- `@` → `%40`
-- `:` → `%3A`
-- `/` → `%2F`
-- `#` → `%23`
+http://<url-encoded-username>:<url-encoded-password>@<proxy-ip>:<proxy-port>
+```
 :::
 
-## Experiment Proxy Configuration
-
-### Real-time Log Streaming
-
-When the infrastructure is `CONNECTED`, configure proxy settings for experiment log streaming:
-
-1. **Open Experiment Builder**
-   - Navigate to your experiment
-   - Select **YAML** view in the **Experiment Builder**
-   - Click **Edit Yaml**
-
-2. **Add Proxy Environment Variables**
-
-![Proxy Configuration](./static/change-vals.png)
-
-3. **Configure Variables**
-
-```yaml
-spec:
-  definition:
-    chaos:
-      env:
-        - name: HTTP_PROXY
-          value: "http://<proxy-ip>:<proxy-port>"
-        - name: HTTPS_PROXY
-          value: "https://<proxy-ip>:<proxy-port>"
-        - name: NO_PROXY
-          value: "<cluster-ip>"
-        - name: INDIRECT_UPLOAD
-          value: "true"
-```
-
-### Environment Variables Description
-
-- **`HTTP_PROXY`**: Set if SMP control plane is deployed over HTTP
-- **`HTTPS_PROXY`**: Set if SMP control plane is deployed over HTTPS or connecting to app.harness.io
-- **`NO_PROXY`**: Set with cluster IP to direct requests to Kube API server directly (bypasses proxy)
-- **`INDIRECT_UPLOAD`**: Set to "true" to enable indirect log upload for real-time streaming
-
-## Configuration Methods
-
-### Method 1: Direct Environment Variables
-
-Set environment variables directly on the subscriber deployment:
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: subscriber
-spec:
-  template:
-    spec:
-      containers:
-      - name: subscriber
-        env:
-        - name: HTTP_PROXY
-          value: "http://proxy.example.com:8080"
-        - name: HTTPS_PROXY
-          value: "https://proxy.example.com:8080"
-        - name: NO_PROXY
-          value: "10.96.0.1"
-```
-
-### Method 2: ConfigMap Configuration
-
-Use ConfigMap for subscriber configuration in the chaos infrastructure manifest:
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: subscriber-config
-data:
-  HTTP_PROXY: "http://proxy.example.com:8080"
-  HTTPS_PROXY: "https://proxy.example.com:8080"
-  NO_PROXY: "10.96.0.1"
-```
-
-## Verification Steps
-
-### 1. Check Infrastructure Connection
-
-```bash
-kubectl get pods -n litmus
-kubectl logs -f deployment/subscriber -n litmus
-```
-
-### 2. Verify Proxy Configuration
-
-```bash
-kubectl exec -it deployment/subscriber -n litmus -- env | grep PROXY
-```
-
-### 3. Test Connectivity
-
-```bash
-# Test HTTP connectivity
-kubectl exec -it deployment/subscriber -n litmus -- curl -I http://your-smp-endpoint
-
-# Test HTTPS connectivity
-kubectl exec -it deployment/subscriber -n litmus -- curl -I https://your-smp-endpoint
-```
-
-## Troubleshooting
-
-### Common Issues
-
-#### 1. Connection Timeouts
-**Symptoms**: Infrastructure shows as disconnected, connection timeouts in logs
-**Solutions**:
-- Verify proxy endpoints are accessible
-- Check firewall rules
-- Validate proxy authentication credentials
-
-#### 2. SSL Certificate Errors
-**Symptoms**: SSL handshake failures, certificate validation errors
-**Solutions**:
-- Add `GIT_SSL_NO_VERIFY=true` for self-signed certificates
-- Configure proper CA certificates
-- Use HTTP proxy if HTTPS is problematic
-
-#### 3. DNS Resolution Issues
-**Symptoms**: Cannot resolve hostnames, DNS lookup failures
-**Solutions**:
-- Configure DNS servers in proxy environment
-- Use IP addresses instead of hostnames
-- Set appropriate `NO_PROXY` values
-
-### Debug Commands
-
-```bash
-# Check proxy connectivity
-kubectl exec -it deployment/subscriber -n litmus -- curl -v --proxy $HTTP_PROXY http://example.com
-
-# Verify environment variables
-kubectl exec -it deployment/subscriber -n litmus -- printenv | grep -i proxy
-
-# Check DNS resolution
-kubectl exec -it deployment/subscriber -n litmus -- nslookup your-smp-endpoint
-```
-
-## Security Considerations
-
-### Proxy Authentication
-- Store credentials securely using Kubernetes secrets
-- Use service accounts with minimal required permissions
-- Rotate proxy credentials regularly
-
-### Network Segmentation
-- Limit proxy access to required endpoints only
-- Implement network policies for chaos infrastructure
-- Monitor proxy logs for suspicious activity
-
-### Certificate Management
-- Use proper SSL certificates for HTTPS proxies
-- Implement certificate rotation policies
-- Validate certificate chains
-
-## Additional Resources
-
-- [SMP Release Notes](/release-notes/self-managed-enterprise-edition)
-- [Infrastructure Types](/docs/chaos-engineering/guides/infrastructures/types/)
-- [DDCR Proxy Support](/docs/chaos-engineering/guides/infrastructures/types/ddcr/proxy-support)
-- [Troubleshooting Guide](/docs/chaos-engineering/resources/troubleshooting)
-
----
-
-**Next Steps:**
-- Configure [Enterprise ChaosHub connection](/docs/chaos-engineering/guides/on-premises-smp/connect-enterprise-chaoshub)
-- Set up [monitoring and observability](/docs/chaos-engineering/guides/probes/)
-- Review [security best practices](/docs/chaos-engineering/security/)

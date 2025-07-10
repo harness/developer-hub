@@ -184,23 +184,6 @@ To access onboarding, go to **Chaos Engineering** → **Overview** → **Select 
 - **Duration**: 1 minute
 - **Success Criteria**: Timeouts handled gracefully
 
-## Troubleshooting
-
-### Infrastructure Not Connecting
-- Verify network connectivity from your cluster/machine to Harness
-- Check if the chaos agent/delegate is running
-- Ensure proper permissions for installation
-
-### Experiment Fails to Start
-- Verify target resources exist and are accessible
-- Check RBAC permissions for chaos operations
-- Ensure infrastructure is in CONNECTED state
-
-### Probes Failing
-- Validate probe endpoint URLs and configurations
-- Check network connectivity to probe targets
-- Review success criteria and thresholds
-
 ## What's Next?
 
 Congratulations! You've successfully run your first chaos experiment. Here's what to explore next:
@@ -210,30 +193,6 @@ Congratulations! You've successfully run your first chaos experiment. Here's wha
 2. **[Advanced Probes](/docs/chaos-engineering/guides/probes)** - Set up comprehensive monitoring
 3. **[GameDays](/docs/chaos-engineering/guides/gamedays)** - Organize team chaos engineering events
 4. **[CI/CD Integration](./integrations/cicd/jenkins)** - Automate chaos testing in your pipelines
-
-### Learn Best Practices
-1. **[Key Concepts](/docs/chaos-engineering/key-concepts)** - Understand chaos engineering fundamentals
-2. **[Security](/docs/chaos-engineering/security)** - Implement secure chaos engineering practices
-3. **[Governance](./guides/governance/rbac)** - Set up proper controls and policies
-
-### Get Help and Support
-- **[Troubleshooting Guide](/docs/chaos-engineering/resources/troubleshooting)** - Common issues and solutions
-
-- **[Community](https://harnesscommunity.slack.com)** - Join our Slack community
-- **[Support](https://support.harness.io)** - Contact Harness Support
-
-## Harness CE vs LitmusChaos
-
-Harness Chaos Engineering builds upon the open-source LitmusChaos project with additional enterprise features:
-
-- **SaaS Platform**: Fully managed chaos engineering platform
-- **Advanced Faults**: 200+ chaos faults across cloud providers
-- **Enterprise Security**: RBAC, audit logs, and compliance features
-- **Integrations**: Native integration with Harness CD, monitoring tools
-- **GameDays**: Collaborative chaos engineering events
-- **ChaosGuard**: Governance and safety controls
-
-For a detailed comparison, see our [feature comparison table](/docs/chaos-engineering/overview#harness-ce-vs-litmus).
 
 :::tip Success!
 You've completed your first chaos experiment! You're now ready to build more resilient systems through systematic chaos engineering practices.

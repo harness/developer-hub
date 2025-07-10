@@ -1,89 +1,55 @@
 ---
-title: Namespace Considerations
+title: Namespace considerations
 sidebar_position: 2
-description: Execute chaos experiments on specific namespaces with proper security isolation
+description: Execute chaos experiments on specific namespaces
+redirect_from:
+- /docs/chaos-engineering/technical-reference/security/namespace-considerations
+- /docs/chaos-engineering/architecture-and-security/security/namespace-considerations
 ---
+This section discusses the steps required to run chaos experiments on specific namespaces.
 
-# Namespace Considerations
+Kubernetes clusters are vast, multi-layered, and customizable. A simple misconfiguration or vulnerability introduced by libraries poses a threat to the Kubernetes environment. These threats allow users with malicious intent to gather information about your environment without being detected, gain backdoor access to your application, or escalate privileges to steal secrets.
 
-Learn how to implement namespace-level security controls to restrict chaos experiments to specific namespaces, reducing blast radius and improving security isolation in your Kubernetes environment.
+You can allow your chaos experiments to run in specific namespaces, thereby limiting the exposure of all the services (including business-critical and potentially sensitive workflows) of your application.
 
-## Overview
+If your application fails, the above-mentioned technique also helps pin-point the exact cluster, namespace, and services in your Kubernetes environment that failed.
 
-Kubernetes clusters are complex, multi-layered environments where a simple misconfiguration or vulnerability can pose significant threats. By restricting chaos experiments to specific namespaces, you can:
+### Step 1. Install CE in cluster mode
 
-- **Limit Exposure**: Reduce the attack surface by isolating chaos activities
-- **Improve Security**: Prevent access to business-critical and sensitive workflows
-- **Enable Debugging**: Quickly identify which cluster, namespace, and services failed
-- **Meet Compliance**: Satisfy regulatory requirements for environment isolation
+- Install CE in cluster mode with the given installation manifest.
+- Restrict `hce` service account to certain target namespaces.
 
-## Security Benefits
-
-### Threat Mitigation
-Namespace isolation helps protect against:
-- **Information Gathering**: Prevents unauthorized access to sensitive application data
-- **Backdoor Access**: Limits potential entry points for malicious activities
-- **Privilege Escalation**: Restricts the ability to steal secrets or escalate permissions
-- **Lateral Movement**: Contains potential security breaches within specific boundaries
-
-### Operational Benefits
-- **Blast Radius Control**: Limit the impact of chaos experiments
-- **Team Boundaries**: Align security controls with organizational structure
-- **Environment Separation**: Isolate development, staging, and production workloads
-- **Compliance Requirements**: Meet regulatory isolation mandates
-
----
-
-## Implementation Guide
-
-### Step 1: Install Chaos Engineering in Cluster Mode
-
-First, install the chaos infrastructure in cluster mode using the standard installation manifest:
+### Step 2. Delete `hce` ClusterRole and ClusterRoleBinding
+- Once CE is up and running in cluster mode, delete the `hce` ClusterRole and ClusterRoleBinding to restrict the chaos scope in all namespaces.
 
 ```bash
-kubectl apply -f https://hub.litmuschaos.io/api/chaos/master?file=charts/generic/chaos-infrastructure/chaos-infrastructure.yaml
-```
+$> kubectl delete clusterrole hce
+````
 
-This creates the necessary deployments with cluster-wide permissions initially.
-
-### Step 2: Remove Cluster-Wide Permissions
-
-Once the chaos infrastructure is running, remove the default cluster-wide permissions:
-
-**Delete ClusterRole:**
-```bash
-kubectl delete clusterrole hce
-```
-
-**Expected Output:**
 ```
 clusterrole.rbac.authorization.k8s.io "hce" deleted
 ```
 
-**Delete ClusterRoleBinding:**
 ```bash
-kubectl delete clusterrolebinding hce
-```
+$> kubectl delete clusterrolebinding hce
+````
 
-**Expected Output:**
 ```
 clusterrolebinding.rbac.authorization.k8s.io "hce" deleted
 ```
 
-### Step 3: Create Namespace-Specific Permissions
+### Step 3. Create Role and RoleBinding in all target namespaces
 
-Create Role and RoleBinding resources for each target namespace where you want to allow chaos experiments.
+This allows specific namespaces for chaos operations. Create Role and RoleBinding in these specific namespaces (say `namespaceA` and `namespaceB`).
 
-#### Example: Namespace A Permissions
-
-Create `namespaceA-role.yaml`:
+The manifest for `role-1.yaml` in `namespaceA` will look as shown below.
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: namespaceA-chaos
-  namespace: namespaceA
+  namespace: litmus
   labels:
     name: namespaceA-chaos
     app.kubernetes.io/part-of: litmus
@@ -99,7 +65,7 @@ rules:
   # Fetch configmaps details and mount it to the experiment pod (if specified)
   - apiGroups: [""]
     resources: ["configmaps"]
-    verbs: ["get","list"]
+    verbs: ["get","list",]
   # Track and get the runner, experiment, and helper pods log
   - apiGroups: [""]
     resources: ["pods/log"]
@@ -149,7 +115,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: namespaceA-chaos
-  namespace: namespaceA
+  namespace: litmus
   labels:
     name: namespaceA-chaos
     app.kubernetes.io/part-of: litmus
@@ -163,9 +129,7 @@ subjects:
   namespace: litmus
 ```
 
-#### Example: Namespace B Permissions
-
-Create `namespaceB-role.yaml`:
+The manifest for `role-2.yaml` in `namespaceB` will look as shown below.
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -188,7 +152,7 @@ rules:
   # Fetch configmaps details and mount it to the experiment pod (if specified)
   - apiGroups: [""]
     resources: ["configmaps"]
-    verbs: ["get","list"]
+    verbs: ["get","list",]
   # Track and get the runner, experiment, and helper pods log
   - apiGroups: [""]
     resources: ["pods/log"]
@@ -252,377 +216,58 @@ subjects:
   namespace: litmus
 ```
 
-:::info Service Account Reference
-The RoleBinding subjects point to the `litmus-admin` service account in the chaos infrastructure namespace (typically `litmus`). This allows the chaos infrastructure to operate within the specified target namespaces.
+:::info
+The rolebinding subjects point to the `hce` service account only (in HCE namespace). 
 :::
 
-### Step 4: Apply the Namespace Permissions
+#### Create the roles
 
-Apply the role configurations for each target namespace:
-
-**Apply Namespace A permissions:**
 ```bash
-kubectl apply -f namespaceA-role.yaml
-```
+$> kubectl apply -f role-1.yaml
+````
 
-**Expected Output:**
-```
-role.rbac.authorization.k8s.io/namespaceA-chaos created
-rolebinding.rbac.authorization.k8s.io/namespaceA-chaos created
-```
+```role.rbac.authorization.k8s.io/namespaceA-chaos created```
+```rolebinding.rbac.authorization.k8s.io/namespaceA-chaos created```
 
-**Apply Namespace B permissions:**
 ```bash
-kubectl apply -f namespaceB-role.yaml
+$> kubectl apply -f role-2.yaml
 ```
 
-**Expected Output:**
+```role.rbac.authorization.k8s.io/namespaceB-chaos created```
+```rolebinding.rbac.authorization.k8s.io/namespaceB-chaos created```
+
+### Step 4. Create Role and RoleBinding in all target namespaces
+
+Create a Role and RoleBinding in the chaos namespace as well. This will be used by chaos runner pod to launch experiment.
+
+### Step 5. Verify the chaos execution on different namespaces
+
+Run an experiment, say pod-delete in both the namespaces to verify if these namespaces have the permission to run experiments.
+
+For namespaceA:
+
+![namespace A](./static/namespace-considerations/ns-a.png)
+
+For namespaceA:
+
+![namespace B](./static/namespace-considerations/ns-b.png)
+
+You are able to run chaos on the target namespaces (`namespaceA` and `namespaceB`). Now, you can check to see if namespace `test` can be used to run chaos experiments.
+
+For `test` namespace:
+
+The experiment fails to run and experiment pod logs.
+
 ```
-role.rbac.authorization.k8s.io/namespaceB-chaos created
-rolebinding.rbac.authorization.k8s.io/namespaceB-chaos created
-```
-
-### Step 5: Create Chaos Infrastructure Namespace Permissions
-
-Create a Role and RoleBinding in the chaos infrastructure namespace to allow the chaos runner pod to launch experiments:
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: chaos-infrastructure-role
-  namespace: litmus
-  labels:
-    name: chaos-infrastructure-role
-    app.kubernetes.io/part-of: litmus
-rules:
-  # for managing the chaos infrastructure components
-  - apiGroups: [""]
-    resources: ["pods", "services", "configmaps", "secrets"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  # for chaos experiment execution
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "list", "get", "delete", "deletecollection"]
-  # for chaos resource management
-  - apiGroups: ["litmuschaos.io"]
-    resources: ["chaosengines", "chaosexperiments", "chaosresults"]
-    verbs: ["create", "list", "get", "patch", "update", "delete"]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: chaos-infrastructure-binding
-  namespace: litmus
-  labels:
-    name: chaos-infrastructure-binding
-    app.kubernetes.io/part-of: litmus
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: chaos-infrastructure-role
-subjects:
-- kind: ServiceAccount
-  name: litmus-admin
-  namespace: litmus
+time="2022-11-14T06:47:47Z" level=info msg="Experiment Name: pod-delete"
+time="2022-11-14T06:47:47Z" level=info msg="[PreReq]: Getting the ENV for the pod-delete experiment"
+time="2022-11-14T06:47:49Z" level=info msg="[PreReq]: Updating the chaos result of pod-delete experiment (SOT)"
+time="2022-11-14T06:47:51Z" level=info msg="The application information is as follows" Namespace=test Label="app=nginx" Chaos Duration=30
+time="2022-11-14T06:47:51Z" level=info msg="[Status]: Verify that the AUT (Application Under Test) is running (pre-chaos)"
+time="2022-11-14T06:47:51Z" level=info msg="[Status]: Checking whether application containers are in ready state"
+time="2022-11-14T06:50:53Z" level=error msg="Application status check failed, err: Unable to find the pods with matching labels, err: pods is forbidden: User \"system:serviceaccount:litmus:litmus-admin\" cannot list resource \"pods\" in API group \"\" in the namespace \"test\""
 ```
 
----
+You have successfully restricted CE to run chaos on certain namespaces instead of all namespaces.
+kubectl delete clusterrole hce
 
-## Verification and Testing
-
-### Step 6: Verify Namespace Isolation
-
-Test chaos experiments in the allowed namespaces to verify proper configuration:
-
-#### Test Namespace A
-
-Run a pod-delete experiment targeting applications in `namespaceA`:
-
-![Namespace A Test](./static/namespace-considerations/ns-a.png)
-
-**Expected Result:** Experiment executes successfully with proper permissions.
-
-#### Test Namespace B
-
-Run a pod-delete experiment targeting applications in `namespaceB`:
-
-![Namespace B Test](./static/namespace-considerations/ns-b.png)
-
-**Expected Result:** Experiment executes successfully with proper permissions.
-
-#### Test Restricted Namespace
-
-Attempt to run an experiment in a namespace without permissions (e.g., `test` namespace):
-
-**Expected Failure:** The experiment should fail with permission errors.
-
-**Sample Error Log:**
-```
-time="2024-01-15T06:47:47Z" level=info msg="Experiment Name: pod-delete"
-time="2024-01-15T06:47:47Z" level=info msg="[PreReq]: Getting the ENV for the pod-delete experiment"
-time="2024-01-15T06:47:49Z" level=info msg="[PreReq]: Updating the chaos result of pod-delete experiment (SOT)"
-time="2024-01-15T06:47:51Z" level=info msg="The application information is as follows" Namespace=test Label="app=nginx" Chaos Duration=30
-time="2024-01-15T06:47:51Z" level=info msg="[Status]: Verify that the AUT (Application Under Test) is running (pre-chaos)"
-time="2024-01-15T06:47:51Z" level=info msg="[Status]: Checking whether application containers are in ready state"
-time="2024-01-15T06:50:53Z" level=error msg="Application status check failed, err: Unable to find the pods with matching labels, err: pods is forbidden: User \"system:serviceaccount:litmus:litmus-admin\" cannot list resource \"pods\" in API group \"\" in the namespace \"test\""
-```
-
-This error confirms that namespace isolation is working correctly.
-
----
-
-## Permission Customization
-
-### Minimal Permissions
-
-For environments requiring stricter security, you can reduce permissions further:
-
-```yaml
-# Minimal permissions for basic pod chaos experiments
-rules:
-  # Essential pod operations
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["get", "list", "delete"]
-  # Basic event logging
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list"]
-  # Read deployment information
-  - apiGroups: ["apps"]
-    resources: ["deployments"]
-    verbs: ["get", "list"]
-```
-
-### Extended Permissions
-
-For comprehensive chaos testing, you might need additional permissions:
-
-```yaml
-# Extended permissions for advanced chaos experiments
-rules:
-  # All basic permissions (from above examples)
-  # Plus additional permissions for:
-  
-  # Persistent volume operations
-  - apiGroups: [""]
-    resources: ["persistentvolumes", "persistentvolumeclaims"]
-    verbs: ["get", "list", "patch"]
-  
-  # Custom resource definitions
-  - apiGroups: ["apiextensions.k8s.io"]
-    resources: ["customresourcedefinitions"]
-    verbs: ["get", "list"]
-  
-  # Ingress and service mesh operations
-  - apiGroups: ["networking.k8s.io"]
-    resources: ["ingresses"]
-    verbs: ["get", "list", "patch"]
-```
-
----
-
-## Best Practices
-
-### Security Considerations
-
-**Regular Audits:**
-- Periodically review namespace permissions
-- Remove unused or overly broad permissions
-- Monitor experiment execution logs for security events
-- Implement automated permission compliance checks
-
-**Principle of Least Privilege:**
-- Grant only the minimum permissions required
-- Use specific resource names when possible
-- Implement time-bound permissions for temporary access
-- Regular cleanup of unused roles and bindings
-
-### Operational Excellence
-
-**Documentation:**
-- Maintain clear documentation of namespace boundaries
-- Document the purpose and scope of each namespace
-- Keep permission matrices up to date
-- Record security decisions and rationale
-
-**Monitoring and Alerting:**
-- Monitor cross-namespace access attempts
-- Alert on permission escalation attempts
-- Track experiment execution patterns
-- Implement anomaly detection for unusual activities
-
-### Automation
-
-**GitOps Integration:**
-```yaml
-# Example GitOps workflow for namespace permissions
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: chaos-namespace-permissions
-spec:
-  source:
-    repoURL: https://github.com/your-org/chaos-permissions
-    path: namespaces/
-    targetRevision: main
-  destination:
-    server: https://kubernetes.default.svc
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-```
-
-**Terraform Management:**
-```hcl
-# Terraform resource for namespace permissions
-resource "kubernetes_role" "chaos_namespace" {
-  for_each = var.chaos_namespaces
-  
-  metadata {
-    namespace = each.key
-    name      = "${each.key}-chaos"
-  }
-  
-  rule {
-    api_groups = [""]
-    resources  = ["pods"]
-    verbs      = ["create", "delete", "get", "list", "patch", "update"]
-  }
-  
-  # Additional rules...
-}
-```
-
----
-
-## Troubleshooting
-
-### Common Issues
-
-#### Permission Denied Errors
-**Symptom:** Experiments fail with "forbidden" errors
-**Solution:** 
-- Verify Role and RoleBinding are created in the target namespace
-- Check that the service account name matches in the RoleBinding
-- Ensure the chaos infrastructure namespace is correct
-
-#### Experiments Not Starting
-**Symptom:** Experiments remain in pending state
-**Solution:**
-- Check chaos infrastructure pod logs
-- Verify network connectivity between namespaces
-- Ensure resource quotas allow experiment pod creation
-
-#### Partial Functionality
-**Symptom:** Some experiment features don't work
-**Solution:**
-- Review the specific permissions required for the fault type
-- Add missing permissions to the Role definition
-- Test with minimal permissions and gradually add more
-
-### Debugging Commands
-
-**Check Role Permissions:**
-```bash
-kubectl describe role <role-name> -n <namespace>
-```
-
-**Verify RoleBinding:**
-```bash
-kubectl describe rolebinding <rolebinding-name> -n <namespace>
-```
-
-**Test Service Account Permissions:**
-```bash
-kubectl auth can-i <verb> <resource> --as=system:serviceaccount:<namespace>:<service-account>
-```
-
-**View Experiment Logs:**
-```bash
-kubectl logs -n <chaos-namespace> <experiment-pod-name>
-```
-
----
-
-## Advanced Configurations
-
-### Multi-Tenant Environments
-
-For multi-tenant Kubernetes clusters:
-
-```yaml
-# Tenant-specific namespace permissions
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: tenant-a-chaos
-  namespace: tenant-a-prod
-  labels:
-    tenant: tenant-a
-    environment: production
-rules:
-  # Restricted permissions for production tenant
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["get", "list"]  # Read-only for production
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list"]
-```
-
-### Environment-Specific Permissions
-
-Different permission sets for different environments:
-
-```yaml
-# Development environment - permissive
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: dev-chaos-permissive
-  namespace: development
-rules:
-  # Full permissions for development testing
-  - apiGroups: ["*"]
-    resources: ["*"]
-    verbs: ["*"]
-
----
-# Production environment - restrictive
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: prod-chaos-restrictive
-  namespace: production
-rules:
-  # Minimal permissions for production
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["get", "list"]
-  - apiGroups: ["apps"]
-    resources: ["deployments"]
-    verbs: ["get", "list"]
-```
-
-## Conclusion
-
-Implementing namespace-level security controls for chaos engineering provides:
-
-- **Enhanced Security**: Reduced attack surface and blast radius
-- **Operational Safety**: Clear boundaries for chaos experiment execution
-- **Compliance Alignment**: Meeting regulatory and organizational requirements
-- **Debugging Efficiency**: Faster identification of issues and their scope
-
-By following this guide, you have successfully restricted chaos engineering to specific namespaces, improving the security posture of your Kubernetes environment while maintaining the ability to conduct effective resilience testing.
-
-## Next Steps
-
-1. **[Security Templates](./security-templates)** - Implement additional security policies
-2. **[Pod Security Policies](./security-templates/psp)** - Add pod-level security controls
-3. **[OpenShift Security](./security-templates/openshift-scc)** - OpenShift-specific configurations
-4. **[Monitoring and Auditing](../integrations/cicd/jenkins)** - Implement comprehensive monitoring
-
-Regular review and updates of namespace permissions ensure your chaos engineering practices remain secure and aligned with your evolving security requirements.

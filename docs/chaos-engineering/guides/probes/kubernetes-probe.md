@@ -3,486 +3,393 @@ title: Kubernetes Probes
 description: Validate Kubernetes resources and cluster state during chaos experiments
 sidebar_position: 4
 redirect_from:
+- /docs/chaos-engineering/technical-reference/probes/k8s-probe
+- /docs/chaos-engineering/features/probes/k8s-probe
+  - /docs/chaos-engineering/concepts/explore-concepts/resilience-probes/k8s-probe
   - /docs/chaos-engineering/guides/probes/k8s-probe
 ---
 
-# Kubernetes Probes
+With the proliferation of custom resources and operators, especially in the case of stateful applications, the steady state is manifested as status parameters or flags within Kubernetes resources. K8s Probe addresses verification of the desired resource state by allowing users to define the Kubernetes GVR (group-version-resource) with appropriate filters (field selectors or label selectors). The experiment makes use of the Kubernetes Dynamic Client to achieve this. The probe supports the following CRUD operations:
 
-Kubernetes probes are essential for validating the state of Kubernetes resources during chaos experiments. They help ensure that your cluster maintains desired resource states, deployments remain healthy, and custom resources behave correctly under failure conditions.
+- **create:** Creates Kubernetes resource based on the data provided inside the probe.k8sProbe/inputs.data field.
+- **delete:** Deletes matching kubernetes resource via GVR and filters (field selectors/label selectors).
+- **present:** Checks for the presence of Kubernetes resource based on GVR and filters (field selectors or label selectors).
+- **absent:** Checks for the absence of Kubernetes resource based on GVR and filters (field selectors or label selectors).
 
-## What are Kubernetes Probes?
+:::tip
+The Kubernetes probe is fully declarative in the way they are conceived
+:::
 
-Kubernetes probes use the **Kubernetes Dynamic Client** to interact with any Kubernetes resource via **GVR (Group-Version-Resource)** specifications. They support comprehensive CRUD operations and advanced filtering capabilities.
+## Probe definition
 
-**Key Capabilities:**
-- **Resource State Validation**: Check if resources exist and are in desired states
-- **Custom Resource Monitoring**: Validate CRDs and operator-managed resources
-- **Advanced Filtering**: Use label selectors and field selectors
-- **CRUD Operations**: Create, read, update, and delete resources
-- **Count Validation**: Verify resource quantities and scaling
-- **Namespace Scoping**: Target specific namespaces or cluster-wide resources
+You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
 
-## Quick Start
+```yaml
+kind: Workflow
+apiVersion: argoproj.io/v1alpha1
+spec:
+  templates:
+    - inputs:
+        artifacts:
+          - raw:
+              data: |
+                apiVersion: litmuschaos.io/v1alpha1
+                kind: ChaosEngine
+                spec:
+                  experiments:
+                    - spec:
+                        probe:
+                          ####################################
+                          Probes are defined here
+                          ####################################
+```
 
-### **Basic Pod Availability Check**
+## Schema
+
+Listed below is the probe schema for the Kubernetes probe, with properties shared across all the probes and properties unique to the Kubernetes probe.
+
+<table>
+  <tr>
+   <td><strong>Field</strong> </td>
+   <td><strong>Description</strong></td>
+   <td><strong>Type</strong></td>
+   <td><strong>Range</strong></td>
+   <td><strong>Notes</strong> </td>
+  </tr>
+  <tr>
+   <td>group </td>
+   <td>Flag to hold the group of the Kubernetes resource for the k8sProbe </td>
+   <td>Optional </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>group</code> contains group of the Kubernetes resource on which k8sProbe performs the specified operation.</td>
+  </tr>
+  <tr>
+   <td>version </td>
+   <td>Flag to hold the apiVersion of the Kubernetes resource for the k8sProbe </td>
+   <td>Mandatory </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>version</code> contains apiVersion of the Kubernetes resource on which k8sProbe performs the specified operation </td>
+  </tr>
+  <tr>
+   <td>resource </td>
+   <td>Flag to hold the Kubernetes resource name for the k8sProbe </td>
+   <td>Mandatory </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>resource</code> contains the Kubernetes resource name on which k8sProbe performs the specified operation. </td>
+  </tr>
+  <tr>
+   <td>namespace </td>
+   <td>Flag to hold the namespace of the Kubernetes resource for the k8sProbe </td>
+   <td>Optional </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>namespace</code> contains namespace of the Kubernetes resource on which k8sProbe performs the specified operation. </td>
+  </tr>
+  <tr>
+   <td>fieldSelector </td>
+   <td>Flag to hold the fieldSelectors of the Kubernetes resource for the k8sProbe </td>
+   <td>Optional </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>fieldSelector</code> contains fieldSelector to derived the Kubernetes resource on which k8sProbe performs the specified operation. </td>
+  </tr>
+  <tr>
+   <td>labelSelector </td>
+   <td>Flag to hold the labelSelectors of the Kubernetes resource for the k8sProbe </td>
+   <td>Optional </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>labelSelector</code> contains labelSelector to derived the Kubernetes resource on which k8sProbe performs the specified operation. </td>
+  </tr>
+  <tr>
+   <td>operation</td>
+   <td>Flag to hold the operation type for the k8sProbe </td>
+   <td>Mandatory </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>operation</code> contains operation which should be applied on the Kubernetes resource as part of k8sProbe. It supports four type of operation. It can be one of <code>create, delete, present, absent</code>.</td>
+  </tr>
+  <tr>
+   <td>resourceNames </td>
+   <td>Flag to hold the resourceNames of the Kubernetes resource </td>
+   <td>Optional </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>resourceNames</code> contains Kubernetes resources used for many requests. </td>
+  </tr>
+</table>
+
+### Run properties
+
+<table>
+  <tr>
+   <td><strong>Field</strong> </td>
+   <td><strong>Description</strong> </td>
+   <td><strong>Type</strong> </td>
+   <td><strong>Range</strong> </td>
+   <td><strong>Notes</strong> </td>
+  </tr>
+  <tr>
+   <td>probeTimeout </td>
+   <td>Flag to hold the timeout of the probe </td>
+   <td>Mandatory </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data </td>
+  </tr>
+  <tr>
+   <td>attempt </td>
+   <td>Flag to hold the attempt of the probe </td>
+   <td>Mandatory </td>
+   <td>N/A <code>type: integer</code> </td>
+   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.</td>
+  </tr>
+  <tr>
+   <td>interval </td>
+   <td>Flag to hold the interval of the probe </td>
+   <td>Mandatory </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries</td>
+  </tr>
+  <tr>
+   <td>probePollingInterval </td>
+   <td>Flag to hold the polling interval for the probes (applicable for all modes) </td>
+   <td>Optional </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>probePollingInterval</code> contains the time interval for which continuous and onchaos probe should be sleep after each iteration</td>
+  </tr>
+  <tr>
+   <td>initialDelaySeconds</td>
+   <td>Flag to hold the initial delay interval for the probes</td>
+   <td>Optional</td>
+   <td>N/A <code>type: integer</code></td>
+   <td>The <code>initialDelaySeconds</code> represents the initial waiting time interval for the probes.</td>
+  </tr>
+  <tr>
+   <td>stopOnFailure</td>
+   <td>Flags to hold the stop or continue the experiment on probe failure</td>
+   <td>Optional</td>
+   <td>N/A <code>type: boolean</code></td>
+   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails </td>
+  </tr>
+</table>
+
+## Definition
+
+
 ```yaml
 probe:
-  - name: "pod-availability-check"
+  - name: "check-app-status"
     type: "k8sProbe"
-    mode: "Continuous"
-    runProperties:
-      probeTimeout: "10s"
-      interval: "5s"
-      attempt: 3
     k8sProbe/inputs:
       group: ""
       version: "v1"
       resource: "pods"
-      namespace: "production"
-      operation: "present"
-      labelSelector: "app=web-server"
-```
-
-### **Deployment Replica Validation**
-```yaml
-probe:
-  - name: "deployment-replica-check"
-    type: "k8sProbe"
-    mode: "Edge"
-    k8sProbe/inputs:
-      group: "apps"
-      version: "v1"
-      resource: "deployments"
-      namespace: "production"
-      operation: "present"
-      fieldSelector: "metadata.name=web-deployment"
-      expectedCount: 1
-```
-
-## CRUD Operations
-
-### **Present Operation**
-Validates that specified resources exist and meet criteria:
-
-```yaml
-k8sProbe/inputs:
-  operation: "present"
-  group: ""
-  version: "v1"
-  resource: "pods"
-  namespace: "production"
-  labelSelector: "app=api-server,tier=backend"
-  expectedCount: 3  # Expect exactly 3 matching pods
-```
-
-### **Absent Operation**
-Ensures specified resources do not exist:
-
-```yaml
-k8sProbe/inputs:
-  operation: "absent"
-  group: ""
-  version: "v1"
-  resource: "pods"
-  namespace: "production"
-  fieldSelector: "status.phase=Failed"
-  # Ensures no failed pods exist
-```
-
-### **Create Operation**
-Creates new Kubernetes resources:
-
-```yaml
-k8sProbe/inputs:
-  operation: "create"
-  group: ""
-  version: "v1"
-  resource: "configmaps"
-  namespace: "production"
-  data: |
-    apiVersion: v1
-    kind: ConfigMap
-    metadata:
-      name: chaos-test-config
-      namespace: production
-    data:
-      test-key: "chaos-experiment-active"
-```
-
-### **Delete Operation**
-Removes matching resources:
-
-```yaml
-k8sProbe/inputs:
-  operation: "delete"
-  group: ""
-  version: "v1"
-  resource: "pods"
-  namespace: "production"
-  labelSelector: "chaos-test=true"
-  # Cleans up test pods
-```
-
-## Advanced Filtering
-
-### **Label Selectors**
-Filter resources based on labels:
-
-```yaml
-# Single label
-labelSelector: "app=web-server"
-
-# Multiple labels (AND condition)
-labelSelector: "app=web-server,environment=production"
-
-# Label existence
-labelSelector: "app"
-
-# Label non-existence
-labelSelector: "!debug"
-
-# Set-based selectors
-labelSelector: "environment in (production,staging)"
-labelSelector: "tier notin (cache,proxy)"
-```
-
-### **Field Selectors**
-Filter resources based on field values:
-
-```yaml
-# Pod phase
-fieldSelector: "status.phase=Running"
-
-# Node name
-fieldSelector: "spec.nodeName=worker-node-1"
-
-# Metadata name
-fieldSelector: "metadata.name=my-pod"
-
-# Multiple fields
-fieldSelector: "status.phase=Running,spec.restartPolicy=Always"
-```
-
-## Resource Examples
-
-### **1. Pod Health Monitoring**
-```yaml
-probes:
-  # Check running pods
-  - name: "running-pods-check"
-    type: "k8sProbe"
-    mode: "Continuous"
-    k8sProbe/inputs:
-      group: ""
-      version: "v1"
-      resource: "pods"
-      namespace: "production"
-      operation: "present"
+      namespace: "default"
       fieldSelector: "status.phase=Running"
-      labelSelector: "app=web-server"
-      expectedCount: 3
-  
-  # Ensure no failed pods
-  - name: "no-failed-pods"
-    type: "k8sProbe"
-    mode: "Continuous"
-    k8sProbe/inputs:
-      group: ""
-      version: "v1"
-      resource: "pods"
-      namespace: "production"
-      operation: "absent"
-      fieldSelector: "status.phase=Failed"
-```
-
-### **2. Deployment Status Validation**
-```yaml
-probe:
-  - name: "deployment-ready-check"
-    type: "k8sProbe"
-    mode: "Edge"
-    k8sProbe/inputs:
-      group: "apps"
-      version: "v1"
-      resource: "deployments"
-      namespace: "production"
-      operation: "present"
-      fieldSelector: "metadata.name=api-deployment"
-      # Additional validation can check status.readyReplicas
-```
-
-### **3. Service Availability**
-```yaml
-probe:
-  - name: "service-endpoint-check"
-    type: "k8sProbe"
-    mode: "Continuous"
-    k8sProbe/inputs:
-      group: ""
-      version: "v1"
-      resource: "services"
-      namespace: "production"
-      operation: "present"
-      labelSelector: "app=api-server"
-      expectedCount: 1
-```
-
-### **4. ConfigMap Validation**
-```yaml
-probe:
-  - name: "config-presence-check"
-    type: "k8sProbe"
-    mode: "SOT"
-    k8sProbe/inputs:
-      group: ""
-      version: "v1"
-      resource: "configmaps"
-      namespace: "production"
-      operation: "present"
-      fieldSelector: "metadata.name=app-config"
-```
-
-### **5. Custom Resource Monitoring**
-```yaml
-probe:
-  - name: "custom-resource-check"
-    type: "k8sProbe"
-    mode: "Continuous"
-    k8sProbe/inputs:
-      group: "stable.example.com"
-      version: "v1"
-      resource: "crontabs"
-      namespace: "production"
-      operation: "present"
-      labelSelector: "environment=production"
-      expectedCount: 2
-```
-
-## Common Use Cases
-
-### **1. Microservice Resilience Testing**
-```yaml
-probes:
-  # Validate all microservice pods are running
-  - name: "microservice-pods"
-    type: "k8sProbe"
-    mode: "Continuous"
-    k8sProbe/inputs:
-      group: ""
-      version: "v1"
-      resource: "pods"
-      namespace: "microservices"
-      operation: "present"
-      fieldSelector: "status.phase=Running"
-      labelSelector: "tier=backend"
-      expectedCount: 9  # 3 services × 3 replicas each
-  
-  # Ensure services remain accessible
-  - name: "microservice-services"
-    type: "k8sProbe"
-    mode: "Edge"
-    k8sProbe/inputs:
-      group: ""
-      version: "v1"
-      resource: "services"
-      namespace: "microservices"
-      operation: "present"
-      labelSelector: "tier=backend"
-      expectedCount: 3
-```
-
-### **2. Stateful Application Monitoring**
-```yaml
-probes:
-  # Check StatefulSet pods
-  - name: "database-pods"
-    type: "k8sProbe"
-    mode: "Continuous"
-    k8sProbe/inputs:
-      group: ""
-      version: "v1"
-      resource: "pods"
-      namespace: "database"
-      operation: "present"
-      labelSelector: "app=postgresql"
-      fieldSelector: "status.phase=Running"
-      expectedCount: 3
-  
-  # Validate PersistentVolumes
-  - name: "persistent-volumes"
-    type: "k8sProbe"
-    mode: "Edge"
-    k8sProbe/inputs:
-      group: ""
-      version: "v1"
-      resource: "persistentvolumes"
-      operation: "present"
-      labelSelector: "app=postgresql"
-      expectedCount: 3
-```
-
-### **3. Operator and CRD Validation**
-```yaml
-probes:
-  # Check operator pod health
-  - name: "operator-health"
-    type: "k8sProbe"
-    mode: "Continuous"
-    k8sProbe/inputs:
-      group: ""
-      version: "v1"
-      resource: "pods"
-      namespace: "operators"
-      operation: "present"
-      labelSelector: "app=my-operator"
-      fieldSelector: "status.phase=Running"
-      expectedCount: 1
-  
-  # Validate custom resources
-  - name: "custom-resource-status"
-    type: "k8sProbe"
-    mode: "Edge"
-    k8sProbe/inputs:
-      group: "mycompany.com"
-      version: "v1alpha1"
-      resource: "myresources"
-      namespace: "production"
-      operation: "present"
-      labelSelector: "status=active"
-```
-
-### **4. Network Policy Testing**
-```yaml
-probe:
-  - name: "network-policy-check"
-    type: "k8sProbe"
-    mode: "SOT"
-    k8sProbe/inputs:
-      group: "networking.k8s.io"
-      version: "v1"
-      resource: "networkpolicies"
-      namespace: "production"
-      operation: "present"
-      labelSelector: "policy-type=ingress"
-      expectedCount: 2
-```
-
-### **5. Resource Cleanup Validation**
-```yaml
-probe:
-  - name: "cleanup-validation"
-    type: "k8sProbe"
+      labelSelector: "app=nginx"
+      operation: "present" # it can be present, absent, create, delete
     mode: "EOT"
-    k8sProbe/inputs:
-      group: ""
-      version: "v1"
-      resource: "pods"
-      namespace: "chaos-test"
-      operation: "absent"
-      labelSelector: "chaos-experiment=true"
-      # Ensures test pods are cleaned up
+    runProperties:
+      probeTimeout: 5s
+      interval: 2s
+      attempt: 1
 ```
 
-## Configuration Properties
+### Create operation
 
-### **Resource Identification**
+It creates the Kubernetes resources based on the data specified inside in the `probe.k8sProbe/inputs.data` field.
+
+Use the following example to tune this:
+
 ```yaml
-k8sProbe/inputs:
-  group: "apps"              # API group (empty for core resources)
-  version: "v1"              # API version
-  resource: "deployments"    # Resource type (plural form)
-  namespace: "production"    # Target namespace (optional for cluster-scoped)
-```
-
-### **Filtering Options**
-```yaml
-k8sProbe/inputs:
-  labelSelector: "app=web,tier=frontend"     # Label-based filtering
-  fieldSelector: "status.phase=Running"      # Field-based filtering
-  expectedCount: 3                           # Expected resource count
-```
-
-### **Operation Types**
-```yaml
-k8sProbe/inputs:
-  operation: "present"    # Check resource existence
-  # operation: "absent"   # Check resource absence
-  # operation: "create"   # Create new resource
-  # operation: "delete"   # Delete matching resources
-```
-
-## Troubleshooting
-
-### **Common Issues**
-
-#### **RBAC Permissions**
-```yaml
-# Ensure probe has necessary permissions
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+# create the given resource provided inside data field
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
 metadata:
-  name: chaos-probe-role
-rules:
-- apiGroups: [""]
-  resources: ["pods", "services", "configmaps"]
-  verbs: ["get", "list", "create", "delete"]
-- apiGroups: ["apps"]
-  resources: ["deployments", "replicasets"]
-  verbs: ["get", "list"]
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "create-percona-pvc"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace where the instance of resource should be created
+          namespace: "default"
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "create"
+          # contains manifest, which can be used to create the resource
+          data: |
+            kind: PersistentVolumeClaim
+            apiVersion: v1
+            metadata:
+              name: percona-mysql-claim
+              labels:
+                target: percona
+            spec:
+              storageClassName: standard
+              accessModes:
+              - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 100Mi
+        mode: "SOT"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
 ```
 
-#### **Resource Not Found**
+
+### Delete operation
+
+It deletes matching Kubernetes resources via GVR and filters (field selectors or label selectors) provided at `probe.k8sProbe/inputs`.
+
+Use the following example to tune this:
+
 ```yaml
-# Problem: Resource not found errors
-k8sProbe/inputs:
-  group: ""           # Correct group for core resources
-  version: "v1"       # Verify correct API version
-  resource: "pods"    # Use plural form
-  namespace: "default" # Specify correct namespace
+# delete the resource matched with the given inputs
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "delete-percona-pvc"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace of the instance, which needs to be deleted
+          namespace: "default"
+          # labels selectors for the k8s resource, which needs to be deleted
+          labelSelector: "openebs.io/target-affinity=percona"
+          # fieldselector for the k8s resource, which needs to be deleted
+          fieldSelector: ""
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "delete"
+        mode: "EOT"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
 ```
 
-#### **Selector Issues**
+### Present operation
+
+It checks for the presence of Kubernetes resources based on GVR and filters (field selectors or labelselectors) provided at `probe.k8sProbe/inputs`.
+
+Use the following example to tune this:
+
 ```yaml
-# Problem: No resources match selectors
-labelSelector: "app=web-server"  # Verify label exists on resources
-fieldSelector: "status.phase=Running"  # Check field path is correct
+# verify the existance of the resource matched with the given inputs inside cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-percona-pvc-presence"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace where the instance of resource
+          namespace: "default"
+          # labels selectors for the k8s resource
+          labelSelector: "openebs.io/target-affinity=percona"
+          # fieldselector for the k8s resource
+          fieldSelector: ""
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "present"
+        mode: "SOT"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
 ```
 
-### **Debugging Tips**
+### Absent operation
 
-1. **Verify Resource Existence**: Use `kubectl get` to confirm resources exist
-2. **Check Labels**: Validate label selectors match actual resource labels
-3. **Test Field Selectors**: Verify field paths using `kubectl get -o yaml`
-4. **Validate RBAC**: Ensure service account has required permissions
-5. **Monitor Counts**: Use `expectedCount` to validate exact quantities
+It checks for the absence of Kubernetes resources based on GVR and filters (field selectors or labelselectors) provided at `probe.k8sProbe/inputs`.
 
-## Best Practices
+Use the following example to tune this:
 
-### **Design Guidelines**
-- **Use Specific Selectors**: Target exact resources needed
-- **Validate Counts**: Use `expectedCount` for precise validation
-- **Choose Appropriate Operations**: Match operation to validation goal
-- **Document Resource Dependencies**: Clear probe naming and descriptions
-
-### **Performance Considerations**
-- **Limit Scope**: Use namespaces and selectors to reduce query scope
-- **Optimize Polling**: Set appropriate intervals for continuous probes
-- **Monitor API Load**: Avoid excessive Kubernetes API calls
-- **Use Efficient Selectors**: Prefer label selectors over field selectors
-
-### **Security Best Practices**
-- **Minimal RBAC**: Grant only necessary permissions
-- **Namespace Isolation**: Scope probes to specific namespaces
-- **Audit Access**: Monitor probe API access patterns
-- **Secure Service Accounts**: Use dedicated service accounts for probes
-
-## Next Steps
-
-- [**Command Probes**](./command-probe.md) - Custom validation scripts
-- [**Prometheus Probes**](./prometheus-probe.md) - Metrics-based validation
-- [**APM Probes**](./apm-probes.md) - Application performance monitoring
-- [**Best Practices**](./best-practices.md) - Advanced probe strategies
-
----
-
-*Kubernetes probes provide deep visibility into your cluster state during chaos experiments. Use them to ensure your Kubernetes resources remain healthy and properly configured.*
+```yaml
+# verify that the no resource should be present in cluster with the given inputs
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-percona-pvc-absence"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace where the instance of resource
+          namespace: "default"
+          # labels selectors for the k8s resource
+          labelSelector: "openebs.io/target-affinity=percona"
+          # fieldselector for the k8s resource
+          fieldSelector: ""
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "absent"
+        mode: "EOT"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```

@@ -1,415 +1,125 @@
 ---
-title: Probe Types & Execution Modes
+title: Modes and use cases of resilience probes
 description: Understanding different probe types and their execution modes
 sidebar_position: 2
 redirect_from:
+  - /docs/chaos-engineering/configure-chaos-experiments/probes/overview
+  - /docs/chaos-engineering/features/probes/overview
+  - /docs/chaos-engineering/concepts/explore-concepts/resilience-probes/types
   - /docs/chaos-engineering/guides/probes/types
 ---
 
-# Probe Types & Execution Modes
+This section introduces you to the following:
+- [Different modes of resilience probes](#modes-of-resilience-probes);
+- [Use cases](#common-use-cases);
+- [Effects of resilience probe on resilience score](#effects-on-the-resilience-score);
+- [Probe chaining](#probe-chaining).
 
-This guide covers the different types of probes available and their execution modes, helping you choose the right monitoring strategy for your chaos experiments.
-
-## Execution Modes
-
-Probe execution modes determine **when** and **how often** probes run during your chaos experiments. Choose the right mode based on your validation requirements.
-
-### **SoT (Start of Test)**
-Executes **before** chaos injection begins.
-
-```yaml
-probe:
-  name: "baseline-check"
-  type: "httpProbe"
-  mode: "SOT"  # Runs only at start
-  httpProbe/inputs:
-    url: "https://api.example.com/health"
-    method: "GET"
-```
-
-**Use Cases:**
-- Validate system baseline health
-- Ensure prerequisites are met
-- Confirm system readiness for chaos
-
-### **EoT (End of Test)**
-Executes **after** chaos injection completes.
-
-```yaml
-probe:
-  name: "recovery-check"
-  type: "httpProbe"
-  mode: "EOT"  # Runs only at end
-  httpProbe/inputs:
-    url: "https://api.example.com/health"
-    method: "GET"
-```
-
-**Use Cases:**
-- Validate system recovery
-- Confirm hypothesis post-chaos
-- Check for lingering effects
-
-### **Edge Mode**
-Executes **both** before and after chaos injection.
-
-```yaml
-probe:
-  name: "comparison-check"
-  type: "httpProbe"
-  mode: "Edge"  # Runs at start AND end
-  httpProbe/inputs:
-    url: "https://api.example.com/metrics"
-    method: "GET"
-```
-
-**Use Cases:**
-- Compare pre vs post-chaos states
-- Measure impact of chaos
-- Most common validation pattern
-
-### **Continuous Mode**
-Executes **throughout** the entire experiment duration.
-
-```yaml
-probe:
-  name: "ongoing-monitoring"
-  type: "httpProbe"
-  mode: "Continuous"
-  runProperties:
-    probePollingInterval: "10s"  # Check every 10 seconds
-  httpProbe/inputs:
-    url: "https://api.example.com/health"
-    method: "GET"
-```
-
-**Use Cases:**
-- Real-time monitoring
-- Performance validation
-- Continuous health checks
-
-### **OnChaos Mode**
-Executes **only during** chaos injection period.
-
-```yaml
-probe:
-  name: "chaos-impact-check"
-  type: "httpProbe"
-  mode: "OnChaos"
-  runProperties:
-    probePollingInterval: "5s"
-  httpProbe/inputs:
-    url: "https://api.example.com/health"
-    method: "GET"
-```
-
-**Use Cases:**
-- Monitor immediate chaos impact
-- Fault-specific validation
-- Performance during failure
-
-## Probe Types Overview
-
-### **HTTP Probes**
-Monitor web services, APIs, and HTTP endpoints.
-
-```yaml
-httpProbe:
-  name: "api-health-check"
-  url: "https://api.example.com/health"
-  method: "GET"
-  expected_status: 200
-  timeout: "5s"
-```
-
-**Best For:**
-- Web service availability
-- API response validation
-- Performance monitoring
-- Load balancer health checks
-
-### **Kubernetes Probes**
-Validate Kubernetes resources and cluster state.
-
-```yaml
-k8sProbe:
-  name: "pod-availability"
-  resource: "pods"
-  namespace: "production"
-  fieldSelector: "status.phase=Running"
-  expectedCount: 3
-```
-
-**Best For:**
-- Pod availability checks
-- Resource state validation
-- Cluster health monitoring
-- Deployment status verification
-
-### **Command Probes**
-Execute custom commands and scripts.
-
-```yaml
-cmdProbe:
-  name: "database-connection"
-  command: "pg_isready -h db.example.com -p 5432"
-  expectedExitCode: 0
-  source: "inline"
-```
-
-**Best For:**
-- Custom validation logic
-- Database connectivity
-- File system checks
-- Application-specific tests
-
-### **Prometheus Probes**
-Query metrics from Prometheus monitoring.
-
-```yaml
-promProbe:
-  name: "cpu-usage-check"
-  query: "avg(cpu_usage_percent) < 80"
-  endpoint: "http://prometheus:9090"
-  comparator:
-    criteria: "=="
-    value: "1"
-```
-
-**Best For:**
-- Performance metrics validation
-- Resource utilization checks
-- Custom metric queries
-- SLI/SLO validation
-
-### **APM Probes**
-Integrate with Application Performance Monitoring tools.
-
-#### **Datadog Probe**
-```yaml
-datadogProbe:
-  name: "response-time-check"
-  query: "avg:http.response_time{service:user-api}"
-  threshold: 200
-```
-
-#### **Dynatrace Probe**
-```yaml
-dynatraceProbe:
-  name: "user-experience-check"
-  entitySelector: "type(SERVICE),tag(environment:production)"
-  metricSelector: "builtin:service.response.time"
-```
-
-**Best For:**
-- Application performance monitoring
-- User experience validation
-- Business metric tracking
-- Advanced analytics
-
-### **SLO Probes**
-Validate Service Level Objectives and error budgets.
-
-```yaml
-sloProbe:
-  name: "availability-slo"
-  sloId: "user-service-availability"
-  threshold: "99.9%"
-  evaluationWindow: "5m"
-```
-
-**Best For:**
-- SLO compliance validation
-- Error budget monitoring
-- Service reliability checks
-- Business impact assessment
-
-## Common Use Cases
-
-### **1. Network Partitioning Tests**
-```yaml
-# Validate service mesh resilience
-probes:
-  - name: "service-connectivity"
-    type: "httpProbe"
-    mode: "Continuous"
-    httpProbe/inputs:
-      url: "http://service-a.production.svc.cluster.local/health"
-  
-  - name: "fallback-mechanism"
-    type: "cmdProbe"
-    mode: "OnChaos"
-    cmdProbe/inputs:
-      command: "curl -f http://fallback-service/health"
-```
-
-### **2. Pod Failure Scenarios**
-```yaml
-# Monitor pod recovery and scaling
-probes:
-  - name: "pod-count-validation"
-    type: "k8sProbe"
-    mode: "Continuous"
-    k8sProbe/inputs:
-      resource: "pods"
-      namespace: "production"
-      labelSelector: "app=web-server"
-      operation: "present"
-  
-  - name: "service-availability"
-    type: "httpProbe"
-    mode: "Edge"
-    httpProbe/inputs:
-      url: "https://api.example.com/health"
-```
-
-### **3. Resource Exhaustion Tests**
-```yaml
-# Monitor performance under resource pressure
-probes:
-  - name: "cpu-utilization"
-    type: "promProbe"
-    mode: "Continuous"
-    promProbe/inputs:
-      query: "avg(cpu_usage_percent) < 90"
-      endpoint: "http://prometheus:9090"
-  
-  - name: "memory-usage"
-    type: "promProbe"
-    mode: "Continuous"
-    promProbe/inputs:
-      query: "avg(memory_usage_percent) < 85"
-```
-
-### **4. Latency Injection Tests**
-```yaml
-# Validate performance under network delays
-probes:
-  - name: "response-time-check"
-    type: "httpProbe"
-    mode: "Continuous"
-    httpProbe/inputs:
-      url: "https://api.example.com/search"
-      method: "GET"
-      responseTimeout: "2s"  # Expect response within 2s
-  
-  - name: "user-experience-metric"
-    type: "datadogProbe"
-    mode: "OnChaos"
-    datadogProbe/inputs:
-      query: "avg:http.response_time{service:search-api} < 1000"
-```
-
-## Impact on Resilience Score
-
-Probes directly influence your experiment's **Resilience Score** using this formula:
-
-```
-Resilience Score = Σ(Weight(fault) × ProbeSuccessPercentage(fault)) / Σ Weight(fault)
-```
-
-### **Probe Success Calculation**
-- **Successful Probe**: 100% success
-- **Failed Probe**: 0% success
-- **Continuous Probes**: Average success across all executions
-
-### **Example Calculation**
-```yaml
-experiment:
-  faults:
-    - name: "pod-delete"
-      weight: 10
-      probes:
-        - name: "api-health"     # 100% success
-        - name: "db-connection"  # 80% success (4/5 checks passed)
-        
-# Fault Success = (100 + 80) / 2 = 90%
-# Resilience Score = (10 × 90) / 10 = 90%
-```
-
-## Probe Chaining
-
-**Probe chaining** allows you to use results from one probe in subsequent probes, enabling complex validation workflows.
-
-:::info YAML Only Feature
-Probe chaining is currently only available in YAML manifests and supports Command Probes.
+:::tip
+- If you are an existing customer, you will see the old flow of control in resilience probes by default and you have the choice to upgrade to the new flow.
+- If you are a new customer, the feature flag is turned on by default and you will see the new flow of control in the resilience probes.
 :::
 
-### **Basic Chaining Example**
+## Modes of resilience probes
+
+The probe mode refers to the way in which a probe checks the system's health during a chaos experiment. The probes can be set up to run in different modes:
+
+- **SoT**: Executed at the Start of Test as a pre-chaos check.
+- **EoT**: Executed at the End of Test as a post-chaos check.
+- **Edge**: Executed both, before and after the chaos.
+- **Continuous**: The probe is executed continuously, with a specified polling interval during the chaos injection.
+- **OnChaos**: The probe is executed continuously, with a specified polling interval strictly for chaos duration of chaos.
+
+:::tip
+
+:::
+
+### Default probe
+
+By default, each fault imported into Chaos Studio would have a health check command probe configured in `Edge` mode. Health check probes ensure that the application remains available and responsive to user requests in the event of unexpected failures, by regularly checking the health of the containers. This regular check ensures that Kubernetes can automatically take action if a container is not healthy, such as restarting or removing the container.
+
+It is mandatory to have at least one probe configured in a chaos experiment to validate the user-defined (or default) checks against the application.
+
+## Common use cases
+
+Some common use cases of probes include:
+
+1. **Network partitioning**: Testing how an application behaves when network connectivity is lost between different components.
+2. **Pod failures**: Testing how an application behaves when a pod in a Kubernetes cluster is terminated or becomes unavailable.
+3. **Node failures**: Testing how an application behaves when a node in a Kubernetes cluster is terminated or becomes unavailable.
+4. **Resource exhaustion**: Testing how an application behaves when resources such as CPU or memory are exhausted.
+5. **Latency injection**: Testing how an application behaves when network latency is increased.
+6. **Configuration change**: Testing how an application behaves when the configuration is changed.
+7. **Identifying bottlenecks**: Identifying the bottlenecks in the system and making sure that the system can handle such scenarios.
+8. **Testing disaster recovery**: Testing the disaster recovery plan and making sure that the system can recover from an unexpected failure.
+9. **Testing application scalability**: Testing the scalability of the application and making sure that the system can handle more traffic.
+10. **Testing Kubernetes components**: Testing the behavior of Kubernetes components like apiserver, etcd, controller manager and kubelet.
+
+These are some of the common use cases where chaos probes can be used but it can also be used in other scenarios as well depending on the requirements of the application and the system.
+
+## Effects on the resilience score
+
+In a chaos experiment, the probe success percentage refers to the percentage of successful probes out of the total number of probes run during a chaos experiment. The value depends on the successful outcome of the probe criteria based on the type and mode selected. There are two possible values of probe success percentage for each of the probe criteria, either `0`(if the criteria assertion fails) or `100`(if the criteria assertion passes).
+
+The probe success percentage for each of the probes mentioned in the fault plays an important role in determining the final Resilience Score of the experiment. The Resilience Score of a Chaos Experiment is calculated by this formula:
+
+```
+Σ(Weights(fault) x Probe Percentage(fault)) / Σ Weights(fault)
+```
+
+It is an important metric in evaluating the results of a chaos experiment and can be used to identify which parts of the system are most affected by the chaos injection and where improvements need to be made. It also helps to understand the behavior of the application during the chaos scenario and fine tune the application for better resiliency.
+
+## Probe status and deriving inferences
+
+The chaos experiments run the probes defined in the ChaosEngine and update their stage-wise success in the ChaosResult custom resource, with details including the overall **probeSuccessPercentage** (a ratio of successful checks v/s total probes) and failure step, where applicable. The success of a probe is dependent on whether the expected status/results are met and also on whether it is successful in all the experiment phases defined by the probe's execution mode. For example, probes that are executed in "Edge" mode, need the checks to be successful both during the pre-chaos & post-chaos phases to be declared as successful.
+
+The pass criteria for an experiment is the logical conjunction of all probes defined in the ChaosEngine and an inbuilt entry/exit criteria. Failure of either indicates a failed hypothesis and is deemed experiment failure.
+
+
+## Probe chaining
+
+:::info YAML only feature
+This feature can only be defined using the YAML manifest for now.
+:::
+
+Probe chaining enables reuse of probe a result represented by the template function `{{ .<probeName>.probeArtifact.Register}})` in subsequent "downstream" probes defined in the ChaosEngine. Note that the order of execution of probes in the experiment depends purely on the order in which they are defined in the ChaosEngine.
+
+Probe chaining is currently supported only for Command Probe. Following is an example of probe chaining, where the result of the first probe is being used in the command of the second probe.
+
 ```yaml
-probes:
-  - name: "get-pod-name"
+probe:
+  - name: "probe1"
     type: "cmdProbe"
     cmdProbe/inputs:
-      command: "kubectl get pods -l app=web -o jsonpath='{.items[0].metadata.name}'"
+      command: "<command>"
       comparator:
         type: "string"
-        criteria: "contains"
-        value: "web"
+        criteria: "equals"
+        value: "<value-for-criteria-match>"
+      source: "inline"
     mode: "SOT"
-    
-  - name: "check-pod-logs"
+    runProperties:
+      probeTimeout: 5
+      interval: 5
+      retry: 1
+  - name: "probe2"
     type: "cmdProbe"
     cmdProbe/inputs:
-      # Using result from first probe
-      command: "kubectl logs {{ .get-pod-name.ProbeArtifacts.Register }} | grep -c ERROR"
+      ## probe1's result being used as one of the args in probe2
+      command: "<command> {{ .probe1.ProbeArtifacts.Register }} <arg2>"
       comparator:
-        type: "int"
-        criteria: "equal"
-        value: "0"
-    mode: "EOT"
-```
-
-### **Advanced Chaining Pattern**
-```yaml
-probes:
-  - name: "discover-service-endpoint"
-    type: "cmdProbe"
-    cmdProbe/inputs:
-      command: "kubectl get svc web-service -o jsonpath='{.spec.clusterIP}'"
+        type: "string"
+        criteria: "equals"
+        value: "<value-for-criteria-match>"
+      source: "inline"
     mode: "SOT"
-    
-  - name: "validate-service-health"
-    type: "cmdProbe"
-    cmdProbe/inputs:
-      command: "curl -f http://{{ .discover-service-endpoint.ProbeArtifacts.Register }}:8080/health"
-    mode: "Continuous"
-    
-  - name: "check-service-metrics"
-    type: "cmdProbe"
-    cmdProbe/inputs:
-      command: "curl -s http://{{ .discover-service-endpoint.ProbeArtifacts.Register }}:8080/metrics | grep -c 'http_requests_total'"
-    mode: "EOT"
+    runProperties:
+      probeTimeout: 5
+      interval: 5
+      retry: 1
 ```
 
-## Best Practices
+## Next steps
 
-### **Mode Selection Guidelines**
-- **Use SoT/EoT** for simple before/after comparisons
-- **Use Edge** for impact measurement
-- **Use Continuous** for real-time monitoring
-- **Use OnChaos** for fault-specific validation
-
-### **Probe Configuration Tips**
-- **Set Realistic Timeouts**: Avoid false negatives
-- **Choose Appropriate Intervals**: Balance accuracy vs performance
-- **Use Meaningful Names**: Make probes self-documenting
-- **Monitor Probe Performance**: Track probe execution time
-
-### **Common Pitfalls**
-- **Too Aggressive Timeouts**: Causing false failures
-- **Excessive Probe Frequency**: Overwhelming the system
-- **Insufficient Validation**: Missing critical checks
-- **Complex Probe Logic**: Making debugging difficult
-
-## Next Steps
-
-- [**HTTP Probes**](./http-probe.md) - Web service monitoring
-- [**Kubernetes Probes**](./kubernetes-probe.md) - Container orchestration validation
-- [**Command Probes**](./command-probe.md) - Custom validation scripts
-- [**Prometheus Probes**](./prometheus-probe.md) - Metrics-based validation
-- [**Best Practices**](./best-practices.md) - Advanced probe strategies
-
----
-
-*Choose the right probe types and modes to build comprehensive validation for your chaos experiments.*
+- [Configure and add a probe](/docs/chaos-engineering/guides/probes/use-probe)
+- [Using command probe in different modes](/docs/chaos-engineering/guides/probes/command-probes/command-probe-usage)

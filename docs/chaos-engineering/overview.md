@@ -12,13 +12,13 @@ Chaos Engineering is the practice of proactively introducing faults into your ap
 
 Harness Chaos Engineering provides end-to-end tooling to resilience testing via the chaos engineering principles. Enterprises can build highly scalable resilience testing practice with Harness because of the following capabilities:
 
-- **Experiments** - faults, probes and actions
+- **Experiments** - faults and probes
 - **ChaosGuard** for governance
 - **Delegates** - scalability
 - **Connectors** for integration
 - **Resilience management** - Resilience scores, coverages, weaknesses and mitigation plans
 - **AI Powered**: Recommendations
-- **MCP Tools** for AI Agent communication and simplifying the end user experience
+
 
 In addition, the Harness platform provides the required enterprise capabilities like RBACs, SSO, logs and auditing making the entire solution scalable and easy to implement.
 

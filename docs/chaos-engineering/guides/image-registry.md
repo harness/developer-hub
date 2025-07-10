@@ -1,281 +1,185 @@
 ---
 title: Image Registry
-description: Configure custom container image registries for chaos experiments
+description: A repository that hosts container images used by chaos experiments.
 sidebar_position: 11
 redirect_from:
+  - /docs/chaos-engineering/configure-chaos-experiments/image-registry
+  - /docs/chaos-engineering/features/image-registry
+  - /docs/chaos-engineering/concepts/explore-concepts/image-registry
   - /docs/chaos-engineering/guides/image-registry
 ---
 
-# Image Registry
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-Configure custom container image registries to use private or internal images for chaos experiments, providing better security and control over the container images used in your chaos engineering workflows.
+### What is an image registry?
 
-## Overview
+An image registry is a repository that hosts container images that are used by chaos experiments. Registries can be **public** or **private**. HCE allows you to use custom image registries for chaos experiments.
 
-Image registry configuration allows you to:
-- **Use private container images** for chaos experiments
-- **Control image sources** and versions
-- **Implement security policies** for container usage
-- **Support air-gapped environments** with internal registries
-- **Ensure compliance** with organizational image policies
+A custom image registry allows for storing container images securely, restricting access to authorized users and applications only.
 
-## Why Use Custom Image Registry
+:::tip
+- You can configure the image registry to be used with the default probes. If you haven't configured a probe yet, the experiment will use the default image registry.
+- HCE doesn't provide image registry support at the moment for default probes.
+:::
 
-### Security Benefits
-- **Private image access** for sensitive environments
-- **Controlled image sources** to prevent unauthorized containers
-- **Vulnerability scanning** integration with your registry
-- **Access control** through registry authentication
+Follow the steps below to use [custom values](#custom-values-for-image-registry) or [default values](#default-values-for-image-registry) of the image registry in your chaos experiment.
 
-### Operational Benefits
-- **Consistent image versions** across environments
-- **Faster image pulls** from local or regional registries
-- **Reduced external dependencies** for critical experiments
-- **Better compliance** with organizational policies
 
-## Configuration Levels
+[This](https://youtu.be/jpSd1nGf8s0) video provides a step-by-step walkthrough of configuring the Image Registry.
 
-Image registry can be configured at multiple levels:
+### Why use a Custom Image Registry?
 
-### Account Level
-- **Global default** for all projects and infrastructures
-- **Centralized management** by platform administrators
-- **Consistent policies** across the organization
-- **Override permissions** for lower levels
+When the image you need to use for your chaos experiment is private, and the chaos experiments are required to be run for internal consumption, you can configure image registry as **private** and provide custom values to it.
+This way, you will have better control, and security when working with private images.
 
-### Organization Level
-- **Organization-specific** image policies
-- **Inherits from account** if not overridden
-- **Department or team** specific configurations
-- **Flexible policy management**
+Depending on whether you use DDCR (Delegate Driven Chaos Runner) or dedicated chaos infrastructure, image registry settings is configured from **account**/**organization**/**project**/**infrastructure** settings or from the UI, respectively.
 
-### Project Level
-- **Project-specific** image requirements
-- **Development team** control over images
-- **Environment-specific** configurations
-- **Granular policy application**
+:::info note
+This feature is behind the feature flag `CHAOS_IMAGEREGISTRY_DEV`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
-### Infrastructure Level
-- **Infrastructure-specific** image sources
-- **Environment isolation** through different registries
-- **Performance optimization** with local registries
-- **Compliance requirements** per environment
+<Tabs>
+<TabItem value = "Harness Delegate / DDCR">
 
-## Registry Types
+### Permissions Required
 
-### Public Registries
-For publicly accessible images:
-- **Docker Hub** - Default public registry
-- **Google Container Registry** - GCR public images
-- **Amazon ECR Public** - AWS public registry
-- **GitHub Container Registry** - Public GitHub packages
+Ensure you have at least **View** permissions to the project to execute chaos experiments. 
 
-### Private Registries
-For restricted access images:
-- **Docker Hub Private** - Private repositories on Docker Hub
-- **Amazon ECR** - AWS Elastic Container Registry
-- **Google Container Registry** - GCR private repositories
-- **Azure Container Registry** - ACR private images
-- **Harbor** - Open source enterprise registry
-- **Artifactory** - JFrog enterprise registry
+To create or view an image registry, ask your admin to grant you the **Create/Edit** permissions from account/project/organization settings.
 
-## Configuration Steps
+  ![](./static/image-registry/chaos-engineering-img-registry-perms.png)
 
-### Basic Configuration
 
-1. **Navigate to Settings**
-   - Go to Account/Organization/Project Settings
-   - Select "Image Registry (For Chaos)"
+### Configure Image Registry from Account/Organization/Project/Infrastructure settings
 
-2. **Configure Registry Details**
-   ```yaml
-   registry:
-     server: "your-registry.example.com"
-     account: "your-account-name"
-     type: "private"  # or "public"
-   ```
+With appropriate permissions, you can configure image registry from the **account** or **organization** or **project** or **infrastructure** settings.
 
-3. **Set Authentication**
-   - For private registries, provide authentication details
-   - Use Kubernetes secrets for credential management
-   - Configure pull secrets for image access
+This approach provides flexibility and ensures you can manage image registry settings at different levels.
 
-### Advanced Configuration
+In this example, you will learn how to configure image registry from **Account Settings**.
 
-#### Custom Images
-Specify custom images for different components:
+1. Go to **Account Settings** -> **Image Registry (For Chaos)**.
 
-```yaml
-custom_images:
-  chaos_runner: "your-registry.com/chaos/runner:v1.0.0"
-  chaos_operator: "your-registry.com/chaos/operator:v1.0.0"
-  log_watcher: "your-registry.com/chaos/log-watcher:v1.0.0"
-  go_runner: "your-registry.com/chaos/go-runner:v1.0.0"
-```
+    ![account settings](./static/image-registry/account-level.png)
 
-#### Registry Authentication
-Configure authentication for private registries:
+2. Provide registry details:
+  a. Specify the server and account name. 
+  b. Choose the image registry type. 
+  c. Enable **Allow Overrides** option if you want to allow changes to image registry settings at lower levels, such as Organization, Project, or Infrastructure.
+  For example, currently, you are in the **Account** scope. Allowing overrides will allow you to make changes to the image registry settings at the **Organization**, **Project**, and **infrastructure** levels.
+
+    ![override settings](./static/image-registry/override.png)
+
+3. Use Custom Images (Optional):
+
+  a. Enable **Use custom images** if you want to provide custom images for the specified fields.
+  b. Add your custom images in the fields shown in the screenshot.
+
+    ![custom image settings](./static/image-registry/custom-img.png)
+
+:::tip
+If you enable the **Allow Overrides** option, you can configure the image registry for infrastructures that are **Supported by a Harness Delegate**:
+  a. Go to Environments > Infrastructure.
+  b. Click Edit.
+  c. Scroll to the bottom to access the **Image Registry** settings.
+
+  ![ir infra](./static/image-registry/ir-settings.png)
+:::
+
+</TabItem>
+
+<TabItem value = "Dedicated chaos infrastructure">
+
+## Custom values for image registry
+### Step 1: Navigate to Image Registry
+
+* To use a custom image, go to **Image Registry** on the left-hand side, and select **Use custom values**.
+
+  ![select-custom](./static/image-registry/select-custom.png)
+
+### Step 2: Specify parameters
+* Specify parameters for the custom values, such as **Custom image registry server**, **Custom image registry account**, and **Registry type**.
+
+  ![public-registry](./static/image-registry/public-registry.png)
+
+* You can choose between **Public** or **Private** in the **Registry type**. When you select **Private** registry type, add the **secret name**.
+
+  ![private-registry](./static/image-registry/private-registry.png)
+
+### Step 3: Save the custom values
+* Select **Save** to save your changes.
+
+In your chaos experiment manifest, the above custom setting will be reflected below.
 
 ```yaml
-authentication:
-  type: "kubernetes_secret"
-  secret_name: "registry-credentials"
-  namespace: "harness-chaos"
+container:
+  name: ""
+  image: docker.io/chaosnative/k8s:1.30.0
+  imagePullSecrets:
+   - name: defreg
+  command:
+    - sh
+    - "-c"
+  args:
+    - kubectl apply -f /tmp/ -n {{workflow.parameters.adminModeNamespace}} && sleep 30
 ```
 
-#### Override Permissions
-Enable lower-level overrides:
-- **Allow Overrides** - Permit configuration at lower levels
-- **Inheritance** - Use parent level configuration as default
-- **Validation** - Ensure configuration consistency
+:::info note
+* If you use a public image or provide the `imagePullSecret` while using a private registry, the Argo workflow controller (v3.4.x) finds the entry point for litmus-checker.
+* If you use an image from an internal registry without providing `imagePullSecret`, the workflow facilitates a default command that you can use to determine the entry point of litmus-checker.
+:::
 
-## Required Images
+## Default values for image registry
 
-### For Harness Delegate (DDCR)
+* To use a default image, navigate to image registry, select **Use default values**, and then select **Save**.
+
+  ![select-save](./static/image-registry/click-save.png)
+
+In your chaos experiment manifest, the above default setting will be reflected below.
+
 ```yaml
-required_images:
-  - "harness/chaos-ddcr:latest"
-  - "harness/chaos-log-watcher:latest"
-  - "harness/service-discovery-collector:latest"
-  - "harness/chaos-ddcr-faults:latest"
+container:
+  name: ""
+  image: docker.io/chaosnative/k8s:1.30.0
+  command:
+    - sh
+    - "-c"
+  args:
+    - kubectl apply -f /tmp/ -n {{workflow.parameters.adminModeNamespace}} && sleep 30
 ```
+</TabItem>
+</Tabs>
 
-### For Dedicated Infrastructure
-```yaml
-required_images:
-  - "harness/chaos-log-watcher:latest"
-  - "harness/chaos-workflow-controller:latest"
-  - "harness/chaos-argoexec:latest"
-  - "harness/chaos-exporter:latest"
-  - "harness/chaos-operator:latest"
-  - "harness/chaos-runner:latest"
-  - "harness/chaos-subscriber:latest"
-  - "harness/chaos-go-runner:latest"
-  - "harness/k8s-chaos-infrastructure-upgrader:latest"
-```
+## Images required
 
-## Implementation Examples
+Listed below are images that you should download to use image registry. The example below describes images required for 1.53.x release. Based on the release, the version will vary.
 
-### Docker Hub Private Registry
-```yaml
-image_registry:
-  server: "docker.io"
-  account: "your-dockerhub-username"
-  type: "private"
-  authentication:
-    secret_name: "dockerhub-secret"
-```
+Refer to the [Delegate release](https://developer.harness.io/release-notes/delegate/) to download the latest version of Delegate and [Chaos Engineering](https://developer.harness.io/release-notes/chaos-engineering) to get the latest version of chaos component images, respectively.
 
-### Amazon ECR
-```yaml
-image_registry:
-  server: "123456789012.dkr.ecr.us-west-2.amazonaws.com"
-  account: "your-aws-account"
-  type: "private"
-  authentication:
-    type: "aws_ecr"
-    region: "us-west-2"
-```
+<Tabs>
+<TabItem value = "Harness Delegate / DDCR">
 
-### Google Container Registry
-```yaml
-image_registry:
-  server: "gcr.io"
-  account: "your-gcp-project"
-  type: "private"
-  authentication:
-    type: "gcp_service_account"
-    key_file: "service-account-key.json"
-```
+- harness/chaos-ddcr:1.53.0
+- harness/chaos-log-watcher:1.53.0
+- harness/service-discovery-collector:0.33.0
+- docker.io/harness/chaos-ddcr-faults:1.53.0
 
-### Harbor Registry
-```yaml
-image_registry:
-  server: "harbor.company.com"
-  account: "chaos-engineering"
-  type: "private"
-  authentication:
-    username: "chaos-user"
-    password_secret: "harbor-credentials"
-```
+</TabItem>
 
-## Security Considerations
+<TabItem value = "Dedicated Chaos Infrastructure">
 
-### Access Control
-- **Least privilege** access for chaos components
-- **Separate credentials** for different environments
-- **Regular credential rotation** for security
-- **Audit logging** for registry access
+- harness/chaos-log-watcher:1.53.0
+- harness/chaos-workflow-controller:v3.4.16
+- harness/chaos-argoexec:v3.4.16
+- harness/chaos-exporter:1.53.0
+- harness/chaos-operator:1.53.0
+- harness/chaos-runner:1.53.0
+- harness/chaos-subscriber:1.53.0
+- docker.io/harness/chaos-go-runner:1.53.0
+- harness/k8s-chaos-infrastructure-upgrader:1.53.0
 
-### Image Security
-- **Vulnerability scanning** of custom images
-- **Image signing** and verification
-- **Base image updates** for security patches
-- **Compliance scanning** for policy adherence
+</TabItem>
 
-### Network Security
-- **Private network** access to internal registries
-- **TLS encryption** for registry communication
-- **Firewall rules** for registry access
-- **VPN or private links** for secure connectivity
 
-## Troubleshooting
-
-### Common Issues
-
-**Image pull failures:**
-- Verify registry credentials and permissions
-- Check network connectivity to registry
-- Confirm image names and tags are correct
-- Review Kubernetes pull secret configuration
-
-**Authentication errors:**
-- Validate credential format and encoding
-- Check secret creation and namespace
-- Verify registry authentication method
-- Review RBAC permissions for service accounts
-
-**Configuration not taking effect:**
-- Confirm configuration level hierarchy
-- Check override permissions and inheritance
-- Verify infrastructure-specific settings
-- Review experiment manifest generation
-
-### Diagnostic Steps
-
-1. **Test registry connectivity** from infrastructure
-2. **Verify image availability** in configured registry
-3. **Check authentication** with registry credentials
-4. **Review experiment logs** for image pull errors
-5. **Validate configuration** at appropriate level
-
-## Best Practices
-
-### Registry Management
-- **Use dedicated registries** for chaos engineering images
-- **Implement image lifecycle** management policies
-- **Monitor registry usage** and performance
-- **Maintain image documentation** and versioning
-
-### Security
-- **Regular security scans** of custom images
-- **Credential management** through secure storage
-- **Network isolation** for registry access
-- **Audit trail** for configuration changes
-
-### Operations
-- **Test configurations** in non-production environments
-- **Document registry policies** and procedures
-- **Monitor image pull performance** and reliability
-- **Plan for registry maintenance** and updates
-
-## Next Steps
-
-Ready to configure custom image registries for your chaos experiments?
-
-1. **[Set up Infrastructure](./infrastructures)** - Configure infrastructure with custom registries
-2. **[Create Experiments](./chaos-experiments)** - Use custom images in your experiments
-3. **[Configure Security](../security)** - Implement security policies for image usage
-4. **[Monitor with Probes](./probes)** - Track image registry performance and usage
-
-Custom image registry configuration provides the foundation for secure, compliant, and efficient chaos engineering in enterprise environments.
+</Tabs>
