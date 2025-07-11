@@ -143,6 +143,26 @@ You have two options for carving up your total concurrency:
      - **High** pipelines start on the first available slot in **High** or **Low**.  
      - **Low** pipelines wait for the next available **Low** slot.  
 
+### Stage/Step-Level Concurrency Limits
+
+In addition to the concurrent execution limit across pipelines, Harness also imposes a concurrency limit **within individual pipeline executions**.
+
+This limit defines the maximum number of **steps or stages that can run simultaneously** at runtime—especially relevant when using looping strategies like matrix or for-each with high parallelism.
+
+#### Default Concurrency Limits (per execution)
+
+| Plan Tier            | Max Concurrent Steps/Stages |
+|----------------------|-----------------------------|
+| Free                 | 2                           |
+| Team                 | 50                          |
+| DevOps Essentials    | 60                          |
+| Enterprise           | 100                         |
+
+> ⚠️ Even if your pipeline defines up to 256 parallel steps/stages, only the first `maxConcurrency` steps will execute concurrently. The rest are queued until slots free up.
+
+This limit exists to ensure fair usage and system stability. It is configurable internally based on your plan tier, but not editable by users via the UI.
+
+
 ### Pipeline Timeout and Stage Timeout (execution time limits)
 
 The timeout limit is the maximum allowable time a stage or pipeline can run.
