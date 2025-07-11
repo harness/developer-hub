@@ -9,7 +9,7 @@ redirect_from:
 
 ## Overview
 
-Adding developer records is crucial for mapping individuals to their respective [teams](./teams) and roles within SEI 2.0.
+Adding developer records is crucial for mapping individuals to their respective [teams](./setup-teams) and roles within SEI 2.0.
 
 ## Uploading developer records
 

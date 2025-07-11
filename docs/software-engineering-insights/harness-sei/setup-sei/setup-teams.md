@@ -9,7 +9,7 @@ redirect_from:
 
 ## Overview
 
-Team settings allow you to tailor how SEI 2.0 collects and interprets data for specific [teams](./teams), including defining incidents, features, and bugs.
+Team settings allow you to tailor how SEI 2.0 collects and interprets data for specific teams, including defining incidents, features, and bugs.
 
 ## Configuring team settings
 

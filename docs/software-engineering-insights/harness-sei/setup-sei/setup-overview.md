@@ -13,12 +13,12 @@ Follow these steps to get started and customize SEI 2.0 to your team's structure
 
 ### Set up integrations and your org structure
 
-To start using SEI 2.0, you can [configure integrations](./integrations) with your organization's source control, CI/CD, and ticketing tools. Once your integrations are in place, [create org trees](./organizations) to define your team structure and reporting relationships in SEI 2.0. You can then [add developers](./developers) and assign them to teams to begin tracking insights.
+To start using SEI 2.0, you can [configure integrations](./configure-integrations) with your organization's source control, CI/CD, and ticketing tools. Once your integrations are in place, [create org trees](./setup-org-tree) to define your team structure and reporting relationships in SEI 2.0. You can then [add developers](./upload-developer-records) and assign them to teams to begin tracking insights.
 
 ### Define performance benchmarks
 
-Next, [create an efficiency profile](./profiles) to define performance benchmarks that reflect your organization’s goals. You can also [configure team settings](./teams) to fine-tune how SEI 2.0 attributes work to each team, including backfill options and label filters.
+Next, [create an efficiency profile](./setup-profiles/efficiency-profile) to define performance benchmarks that reflect your organization’s goals. You can also [configure team settings](./setup-teams) to fine-tune how SEI 2.0 attributes work to each team, including backfill options and label filters.
 
 ### Explore insights
 
-Once setup is complete, you can [view insights at the org tree level](./insights) to understand how your organization is performing overall, or [view insights for a specific team](./granular-insights.md) to dive deeper into team-level performance data.
+Once setup is complete, you can [view insights at the org tree level](./view-insights/insights) to understand how your organization is performing overall, or [view insights for a specific team](./view-insights/granular-insights) to dive deeper into team-level performance data.
