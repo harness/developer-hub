@@ -76,6 +76,16 @@ If your organization restricts access to Google Artifact Registry (GAR), conside
     **Note:** The existing legacy notification permissions are DEPRECATED and will soon be moved to an INACTIVE state. The new permissions will be released in the ACTIVE state with RBAC enforced.
 :::
 
+:::danger Important Note:
+    **About `core_oidcIdToken_create`**  
+
+    This new permission allows users to create tokens at all three scopes (Account, Organization, and Project). As long as a user has a role assignment granting permission to create an ID token at a specific scope, they will be able to generate the ID token.
+
+    | Resource      | Permissions                                          | Status       |
+    |---------------|------------------------------------------------------|--------------|
+    | OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
+:::
+
 :::info important
 This is a notification for a feature change aimed at enhancing your experience with Harness. Here's what you need to know:
 
@@ -150,15 +160,6 @@ The following deprecated API endpoints are longer supported:
 #### New Feature and Enhancement 
 
 - Introduced `core_oidcIdToken_create` as an experimental permission to enable creation of OIDC ID Tokens. [PL-62926]
-    :::info Important Note:
-      **About `core_oidcIdToken_create`**  
-
-      This new permission allows users to create tokens at all three scopes (Account, Organization, and Project). As long as a user has a role assignment granting permission to create an ID token at a specific scope, they will be able to generate the ID token.
-
-      | Resource      | Permissions                                          | Status       |
-      |---------------|------------------------------------------------------|--------------|
-      | OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
-    :::
 - Delegates are now tagged with the appropriate scope (Account/Organization/Project) for all Assessment types in the Delegate selection logs in a pipeline. [PL-49165]
 
 ## June 2025
