@@ -102,7 +102,7 @@ For detailed instructions on managing your infrastructure state, visit [Provisio
 
 ---
 ### Configuration
-Derived from the initial setup steps of your workspace, including cost estimation settings, selected connectors, and default pipelines.
+Derived from the initial setup steps of your workspace, including cost estimation settings, and default pipelines.
 - **Usage:** Provides a quick overview of your workspace's configuration, allowing for easy edits and updates.
 
 #### Advanced options

@@ -74,13 +74,16 @@ OpenTofu/Terraform variables (`variable {}` blocks in your code) must be declare
 
 ---
 
-There are two common ways to supply values to your declared variables:
+Each variable declared in your OpenTofu/Terraform code must be supplied with a value from one of the following input sources. If a variable is defined in multiple places, the order of precedence determines which value is used:
 
-### Option 1: Static or runtime input
-This method is best when you want to prompt the user for input (e.g., during a demo), or apply a fixed value to all runs.
+Order of precedence:
+	1.	Pipeline-level variable (highest)
+	2.	Workspace configuration
+	3.	HCL default value in your code (lowest)
 
-<Tabs>
-<TabItem value="tofu-tf" label="OpenTofu/Terraform">
+### Option 1: Define default values in HCL
+You can assign a default value directly in your OpenTofu/Terraform code. This acts as a fallback if no value is provided from the workspace or pipeline.
+
 ```hcl
 # main.tf
 variable "instance_type" {
@@ -88,34 +91,35 @@ variable "instance_type" {
   default = "t3.micro"
 }
 ```
-</TabItem>
 
-<TabItem value="workspace-configuration" label="Workspace Configuration">
+### Option 2: Provide values in the Workspace
+Configure variables in the OpenTofu/Terraform Variables section of your workspace. These values override any defaults in your code.
+
 ```yaml
 # Workspace configuration
 terraformVariables:
   - key: instance_type
-    value: <+input>
+    value: <+input> # or a static value like "t3.large"
     type: String
     source: CUSTOM
 ```
-</TabItem>
-</Tabs>
+:::tip runtime input
+Use `<+input>` to prompt users for values at runtime.
+:::
 
-### Option 2: Inject from pipeline variable
-If you’re using a reusable pipeline to trigger multiple workspaces, you can pass in values dynamically from pipeline-level variables.
-
+### Option 3: Override with Pipeline Variables
+If your workspace is triggered by a reusable pipeline, you can pass in values from pipeline-level variables. These take precedence over workspace or HCL values.
 <Tabs>
-<TabItem value="pipeline-variables" label="Pipeline Variables">
+<TabItem value="pipeline" label="Pipeline Variables">
 ```yaml
-# Pipeline variable defined in your pipeline YAML
+# Pipeline YAML
 variables:
   - name: aws_region
     type: String
     value: us-west-2
 ```
 </TabItem>
-<TabItem value="workspace-variables" label="Workspace Variables">
+<TabItem value="workspace-ref" label="Workspace Reference">
 ```yaml
 # Workspace configuration using pipeline FQN
 terraformVariables:
@@ -129,9 +133,6 @@ terraformVariables:
 :::tip
 You can use [Harness pipeline variables](/docs/platform/variables-and-expressions/harness-variables/) by referencing their **Fully-Qualified Name (FQN)** in the value field.
 :::
-
-
-
 
 ---
 
@@ -159,6 +160,10 @@ variableFiles:
         - envs/dev.tfvars
 ```
 
+:::info variable file source
+Your variable files and HCL can come from the same Git repository or different repositories.
+:::
+
 ---
 
 ## Input Sources and Runtime Behavior
@@ -167,15 +172,6 @@ Each variable shows its **source**, such as:
 - `CUSTOM`: defined directly in the workspace.
 
 You can use **`<+input>`** to prompt users to supply values at runtime.
-
----
-
-## Example Use Case
-A demo or workshop environment may require different AWS regions and names for each execution. You can:
-
-- Define these as **`<+input>`** to prompt per run.
-- Inject pipeline variables for automation.
-- Reference variable files in Git for version control.
 
 ---
 
