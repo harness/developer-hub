@@ -1,8 +1,8 @@
 ---
-title: About SEI 2.0
+title: SEI 2.0 Overview
 description: The new experience for measuring engineering insights in Harness SEI
-sidebar_label: About SEI 2.0
-sidebar_position: 1
+sidebar_label: SEI 2.0 Overview
+sidebar_position: 05
 ---
 
 We’re excited to introduce SEI 2.0, a completely reimagined experience that marks a significant step forward in how engineering organizations measure and improve developer productivity and delivery efficiency. The SEI 2.O experience is built on a new architecture with performance, flexibility, and extensibility at its core.
