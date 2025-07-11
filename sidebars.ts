@@ -1190,8 +1190,8 @@ const sidebars: SidebarsConfig = {
         "feature-management-experimentation/fme-support",
         {
           type: "link",
-          label: "Split Admins API Guide",
-          href: "https://help.split.io/hc/en-us/articles/34773611130893-Before-and-After-Guide-API-for-Split-Admins",
+          label: "Administering a Migrated Split Account on Harness",
+          href: "https://help.split.io/hc/en-us/articles/37936926294541-Before-and-After-Guide-Administering-a-Migrated-Split-Account-on-Harness",
         },
       ],
     },
