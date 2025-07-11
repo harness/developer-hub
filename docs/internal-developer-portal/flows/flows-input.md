@@ -1550,7 +1550,7 @@ properties:
         mask: true
 ...
 ```
-[Example workflow.yaml](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/hide-uploaded-files-inreview.yaml)
+[Example workflow.yaml](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/uploaded-files.yaml)
 
 ![](./static/file-upload-hide-content.png)
 
