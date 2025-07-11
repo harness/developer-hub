@@ -71,7 +71,7 @@ instances:
       account:
         project_id: ci-play ## Your Google project ID.
         json_path: /path/to/key.json ## Path to the application_default_credentials.json file.
-      image: projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-1804-bionic-v20220510
+      image: projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20250701
       machine_type: e2-small
       zone: ## To minimize latency between delegate and build VMs, specify the same zone where your delegate VM is running.
         - us-central1-a
