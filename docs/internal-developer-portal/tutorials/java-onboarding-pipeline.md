@@ -21,25 +21,22 @@ keywords:
   - service bootstrap automation
 ---
 
+# End-to-End IDP Self-Service Workflow for Java Services
 
-# End-to-End IDP Self-Service Workflow
+This tutorial explains how to implement a self-service onboarding workflow for Java-based microservices within the **Harness Internal Developer Portal (IDP)**. The goal is to provide developers with a simple, consistent, and fully automated way to create and register new services, without relying on manual setup or platform intervention.
 
-This tutorial explains how to implement a self-service onboarding workflow for Java services in the Harness Internal Developer Portal (IDP). The goal is to enable developers to create and register new Java-based microservices in a consistent, repeatable, and fully automated way.
+As a **Platform Engineer**, you are responsible for building and maintaining this workflow. Developers will trigger it by submitting a short form in the IDP UI while executing workflow, supplying basic details like the service name, description, owner, and more. From there, the workflow takes over.
 
-As a Platform Engineer, you will build and maintain the onboarding workflow. Developers will use this workflow through a simple form in the IDP interface to initiate the onboarding process, without needing to manually set up repositories or service metadata.
+Behind the scenes, the following steps are automated:
 
-The workflow includes the following automated steps:
+* A Java microservice is scaffolded using a predefined **Cookiecutter** template, ensuring every service follows standard project structure and best practices.
+* A new GitHub repository is created, and the generated code is pushed automatically.
+* A YAML file is generated with metadata about the service and committed to the repository.
+* The service is registered as a **Component** in the IDP Software Catalog, making it visible and manageable within the portal.
 
-- A developer fills out a short form in the IDP UI with service details such as name, description, and owner.
-- A Java-based microservice is generated using a predefined project scaffolding tool called **cookiecutter**. This ensures all services follow the same structure and conventions.
-- A new GitHub repository is created, and the generated service code is pushed automatically.
-- The service is registered in the IDP Software Catalog by generating and committing a metadata file (`catalog-info.yaml`). This makes the new service visible and manageable within the internal developer portal.
-
-The Developer uses this workflow by submitting a form with basic service details. Once submitted, the pipeline executes the defined stages and automatically registers the service in the IDP Software Catalog as a Component.
-This setup ensures consistency across services, reduces onboarding time, and improves visibility and governance across engineering teams.
+This setup ensures that all services are onboarded in a standardized way; improving consistency, reducing lead time, and enhancing visibility across engineering teams. It’s especially valuable for organizations adopting an internal developer portal model to streamline development workflows, enforce governance, and scale platform practices effectively.
 
 
-This setup is especially useful for organizations adopting an internal developer portal approach to streamline software development, enforce standards, and reduce onboarding friction.
 
 ## Prerequisites
 
@@ -51,7 +48,7 @@ Before you begin, ensure the following prerequisites are in place. These are req
   You should have access to a Harness project with **Internal Developer Portal (IDP)** enabled.
 
 - **GitHub Connector Configured in Harness**  
-  Since this onboarding workflow will create and push services to GitHub, a GitHub connector must be set up in Harness. You can use your Git provider connector or create a new one.
+  Since this onboarding workflow will create and push services to GitHub, a GitHub connector must be set up in Harness. You can use your Git provider connector or create a new one. In this tutorial we will use a GitHub connector with `Org` setup. We will have the best Git experience with this setup.
 
 - **Pipeline Execution Permissions**  
   Ensure you have permissions to create and run pipelines within your Harness project, especially with access to the **IDP stage**, which will be used to register services into the Software Catalog.
@@ -64,7 +61,7 @@ Before you begin, ensure the following prerequisites are in place. These are req
 
 
 
-A working knowledge of Harness pipelines and their YAML-based configuration is recommended. In particular, it is useful to understand how to structure pipeline stages and steps, as well as how the IDP stage facilitates the registration of catalog entities.
+A working knowledge of Harness pipelines and their YAML-based configuration is recommended. In particular, it is useful to understand how to structure pipeline stages and steps, as well as how the [IDP APIs](https://apidocs.harness.io/tag/Entities) facilitate the creation as well as registration of catalog entities.
 Even if you're not yet familiar with Harness pipelines or templates, this guide offers detailed, step-by-step instructions. It walks you through how each component fits into the overall onboarding workflow and how to configure them effectively to achieve a fully functional setup.
 
 
@@ -72,13 +69,22 @@ Even if you're not yet familiar with Harness pipelines or templates, this guide 
 
 This Java service onboarding workflow in Harness IDP 2.0 is built using a few core components. Each serves a distinct purpose and is required to enable a smooth, self-service experience for developers.
 
+
 ### IDP Workflow (UI Form)
 
-This is the entry point for developers. It appears as a form in the Harness IDP UI where the developer provides basic service information such as the name, description, and owner. It simplifies the onboarding process by hiding complexity behind a single, guided action.
+The onboarding begins with a developer submitting a form within the Harness IDP UI. This form, available under the Workflows section , you have to locate it and execute it. The workflow can be named `java-onboarding`, which will collect basic information such as the service name, description, owner and some git details. The workflow provides a simplified entry point, abstracting away all the underlying automation logic.
+
 
 ### Harness Pipeline (IDP Stage)
 
-The pipeline handles the automation behind the scenes. It is configured in a Harness project and is triggered when the form is submitted. The pipeline contains logic to generate code, push it to GitHub, and register the service. The IDP Stage specifically enables catalog registration.
+The IDP Stage in a Harness pipeline is built specifically to support Internal Developer Portal workflows. It provides a curated set of steps designed to automate catalog-related actions and platform tasks—without custom scripting.
+Within the IDP Stage, you can configure steps like creating a Git repository, running templating tools, pushing files directly to Git, sending Slack notifications, executing scripts, or registering components into the Software Catalog. These steps are purpose-built and composable, allowing platform engineers to define clean, end-to-end workflows that respond to developer inputs or scheduled triggers.
+By using the IDP Stage, the pipeline becomes a structured, reusable automation layer for everything tied to service metadata, developer onboarding, and catalog lifecycle management.
+
+
+
+
+
 
 ### Service Metadata File
 
