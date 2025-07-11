@@ -28,7 +28,7 @@ _No action required_
 
 _No action required_
 
-This plugin does **not** export a full standalone page. It exposes the `EntityAdrContent` and this is how you configure it:
+It exposes the `EntityAdrContent` and this is how you configure it:
 
 ```YAML
     - name: EntityAdrContent
