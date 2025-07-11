@@ -1,13 +1,15 @@
 ---
-title: Configuring Team Settings
+title: Set up Teams
 description: Learn how to configure team settings in SEI 2.0.
-sidebar_label: Configuring Team Settings
-sidebar_position: 5
+sidebar_label: Set up Teams
+sidebar_position: 15
+redirect_from:
+- /docs/software-engineering-insights/sei-new-experience/setup/teams
 ---
 
 ## Overview
 
-Team settings allow you to tailor how SEI 2.0 collects and interprets data for specific [teams](./teams), including defining incidents, features, and bugs.
+Team settings allow you to tailor how SEI 2.0 collects and interprets data for specific teams, including defining incidents, features, and bugs.
 
 ## Configuring team settings
 

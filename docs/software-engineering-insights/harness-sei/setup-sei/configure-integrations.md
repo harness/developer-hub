@@ -1,8 +1,10 @@
 ---
-title: Configuring Integrations
-description: Learn how to configure integrations with various development tools in Harness SEI 2.0.
-sidebar_label: Configuring Integrations
-sidebar_position: 1
+title: Configuring integrations
+description: Learn how to configure integrations with various SDLC tools in Harness SEI 2.0.
+sidebar_label: Configuring integrations
+sidebar_position: 2
+redirect_from:
+- /docs/software-engineering-insights/sei-new-experience/setup/integrations
 ---
 
 ## Overview

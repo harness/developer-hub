@@ -3,6 +3,8 @@ title: View Insights for a Specific Team After Applying Team Settings
 description: Learn how to view insights for a specific team after applying the team settings in SEI 2.0.
 sidebar_label: View Insights for a Specific Team After Applying Team Settings
 sidebar_position: 7
+redirect_from:
+- /docs/software-engineering-insights/sei-new-experience/setup/granular-insights
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-To get more granular insights, you can drill down into specific [teams](./teams) within an [Org Tree](./integrations) and apply team-specific settings.
+To get more granular insights, you can drill down into specific [teams](../setup-teams) within an [Org Tree](../configure-integrations) and apply team-specific settings.
 
 ## Viewing insights for a specific team after applying team settings
 
@@ -19,7 +21,7 @@ To view insights for a specific team after applying team settings:
 1. From the left-hand navigation pane, click on **Insights**.
 1. In the left-hand panel, expand the Org Tree (e.g., "SEI org tree v7 July") to reveal the individual teams.
 1. Click on the specific team (e.g., "Noah Lewis," "Ava Patel") for which you want to view insights.
-1. Configure [Team Settings](./teams) (if not already done):
+1. Configure [Team Settings](../setup-teams) (if not already done):
 
    - To adjust settings for a team, go to **Teams** from the left navigation.
    - Click the **Edit** icon next to the desired team.

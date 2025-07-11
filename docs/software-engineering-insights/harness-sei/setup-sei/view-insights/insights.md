@@ -3,11 +3,13 @@ title: View Insights at the Org Tree Level
 description: Learn how to view insights at the organization tree level in SEI 2.0.
 sidebar_label: View Insights at the Org Tree Level
 sidebar_position: 6
+redirect_from:
+- /docs/software-engineering-insights/sei-new-experience/setup/insights
 ---
 
 ## Overview
 
-Once an [Org Tree](./organizations) is set up, you can view high-level insights for the entire organization.
+Once an [Org Tree](../setup-org-tree) is set up, you can view high-level insights for the entire organization.
 
 ## Viewing insights at the organization tree level
 
