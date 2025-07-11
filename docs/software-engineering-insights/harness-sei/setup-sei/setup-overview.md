@@ -1,8 +1,8 @@
 ---
-title: Setup
+title: Overview
 description: Learn how to setup Harness SEI to measure engineering insights across your organization.
-sidebar_label: Setup
-sidebar_position: 3
+sidebar_label: Overview
+sidebar_position: 1
 ---
 
 This page walks you through how to configure Software Engineering Insights (SEI) 2.0 for your organization, from setting up integrations and org trees to assigning developers and viewing insights. 

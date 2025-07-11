@@ -1,8 +1,8 @@
 ---
-title: Create An Efficiency Profile
+title: Efficiency profile
 description: Learn how to create an efficiency profile in SEI 2.0.
-sidebar_label: Create An Efficiency Profile
-sidebar_position: 4
+sidebar_label: Efficiency profile
+sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs';

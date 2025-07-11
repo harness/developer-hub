@@ -1,8 +1,8 @@
 ---
-title: Configuring Team Settings
+title: Set up Teams
 description: Learn how to configure team settings in SEI 2.0.
-sidebar_label: Configuring Team Settings
-sidebar_position: 5
+sidebar_label: Set up Teams
+sidebar_position: 15
 ---
 
 ## Overview
