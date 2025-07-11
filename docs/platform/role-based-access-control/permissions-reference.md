@@ -50,11 +50,11 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 :::danger Important Note:
     **About `core_oidcIdToken_create`**  
 
-    This new permission allows users to create tokens at all three scopes (Account, Organization, and Project). As long as a user has a role assignment granting permission to create an ID token at a specific scope, they will be able to generate the ID token.
+    A new `core_oidcIdToken_create` permission is introduced to govern the creation of OIDC ID token. The permission is currently in the EXPERIMENTAL status. However, after August 8, the permission will change to ACTIVE status. If any automation makes use of the [OIDC ID token](https://apidocs.harness.io/tag/Oidc-ID-Token), we recommend updating it accordingly.
 
-    | Resource      | Permissions                                          | Status       |
-    |---------------|------------------------------------------------------|--------------|
-    | OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
+      | Resource      | Permissions                                          | Status       |
+      |---------------|------------------------------------------------------|--------------|
+      | OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
 :::
 
 ## Administrative Functions
