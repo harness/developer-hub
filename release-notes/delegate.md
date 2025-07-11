@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## July 2025
 
+### Version 25.06.86004 <!-- Jul 11, 2025 -->
+
+#### Fixed issues
+
+- Added debug logs to CI K8 pod cleanup flow (CI-17241)
+
 ### Version 25.04.85707 <!-- Jul 08, 2025 -->
 
 #### Fixed issues
