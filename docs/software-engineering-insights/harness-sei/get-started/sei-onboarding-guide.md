@@ -5,7 +5,7 @@ sidebar_label: SEI 2.0 Onboarding Guide
 sidebar_position: 10
 ---
 
-This guide explains what you need to know to get started using Harness SEI 2.0
+This guide explains what you need to know to get started using Harness SEI 2.0.
 
 ## Complete Harness Platform onboarding
 
@@ -47,8 +47,8 @@ If you're switching over to Harness SEI 2.0 from the SEI 1.0 experience, review 
 
 | **Profile Type** | **Purpose** | **Documentation** |
 |------------------|-------------|--------------------|
-| [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) | Define how you track DORA & Sprint insights (Coming soon) | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) |
-| [Productivity Profile](/docs/category/set-up-profiles) | Track developer activity and collaboration, including PR throughput, cycle time & PR activity | [View Setup Guide](/docs/category/set-up-profiles) |
+| [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) | Define how you track DORA and Sprint insights (Coming soon) | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) |
+| [Productivity Profile](/docs/category/set-up-profiles) | Track developer activity and collaboration, including PR throughput, cycle time, and PR activity | [View Setup Guide](/docs/category/set-up-profiles) |
 | Business Alignment Profile (Coming soon) | Define how engineering efforts align to product goals and delivery of business value. | Coming soon |
 
 ### Phase 5: Upload your developer records
