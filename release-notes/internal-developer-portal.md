@@ -34,7 +34,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ###  [New feature] Harness Git Experience (GitX) — Now Bi-Directional
 
-Harness IDP's Git Experience has been upgraded to offer full [**bi-directional sync**](../docs/internal-developer-portal/git-experience/gitx-journey#bi-directional-sync-between-harness-and-git). You can now manage **Scorecards, and Workflows** directly from your Git repository — while still retaining visibility and control within the IDP UI.
+Harness IDP's Git Experience has been upgraded to offer full [**bi-directional sync**](https://developer.harness.io/docs/internal-developer-portal/git-experience/gitx-journey/#bi-directional-sync-between-harness-and-git). You can now manage **Catalog entities and Workflows** directly from your Git repository — while still retaining visibility and control within the IDP UI.
 
 Key highlights:
 
@@ -53,11 +53,11 @@ This unlocks GitOps-style workflows, where Git remains the source of truth, and 
 
 ###  [New feature] Visualize Ingested Properties
 
-When you use Catalog Ingestion API to push custom metadata, they are not committed back to the YAML file but are part of the final entity metadata shown in IDP. You can now visualize all ingested properties in the entity YAML view.
+When you use Catalog Ingestion API to push custom metadata, it is not committed back to the YAML file but is part of the final entity metadata shown in IDP UI. You can now visualize all ingested properties in the entity YAML view.
 
 ![](./static/internal-developer-portal/ingested.png)
 
-More details: [Visualizing Ingested Metadata](../docs/internal-developer-portal/git-experience/ingested-metadata)
+More details: [Visualizing Ingested Metadata](https://developer.harness.io/docs/internal-developer-portal/git-experience/ingested-metadata)
 
 ###  [New feature] Increased Bitbucket API Rate Limits
 
