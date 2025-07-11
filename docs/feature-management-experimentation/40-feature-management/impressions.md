@@ -77,10 +77,6 @@ When impression tracking is off, you will see "Impression tracking off" at the t
 
 ![](static/impressions-tracking-visual-cues-1.png)
 
-:::info[Impression tracking toggle and SDK compatibility]
-See [this page](/docs/feature-management-experimentation/feature-management/faqs/is-the-feature-flag-impression-toggle-supported) to verify compatibility of FME SDK or optional infrastructure. Older SDK versions that do not support the **Impression tracking** toggle will not detect the toggle on/off setting and will send impressions to Harness servers.
-:::
-
 ### Supported SDKs and customer-deployed components for impression tracking
 
 The impression tracking toggle only works with supported FME SDKs and customer-deployed components. If the SDK you are using does not support the toggle, impressions will still be sent to Harness servers—even if impression tracking is turned off for the feature flag definition.
