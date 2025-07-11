@@ -3,6 +3,8 @@ title: Enable SEI 2.0
 description: Measure developer productivity by tracking the velocity & flow metrics across your organization.
 sidebar_label: Enable SEI 2.0
 sidebar_position: 15
+redirect_from:
+- /docs/software-engineering-insights/sei-new-experience/enable-sei-new-experience
 ---
 
 SEI 2.0 is currently in BETA, and we’re excited to give early access to users who want to explore the new experience. To participate in the beta program, you’ll need to enable a feature flag and assign appropriate access permissions.

@@ -3,6 +3,8 @@ title: Efficiency profile
 description: Learn how to create an efficiency profile in SEI 2.0.
 sidebar_label: Efficiency profile
 sidebar_position: 1
+redirect_from:
+- /docs/software-engineering-insights/sei-new-experience/setup/profiles
 ---
 
 import Tabs from '@theme/Tabs';

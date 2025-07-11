@@ -3,6 +3,8 @@ title: Set up Teams
 description: Learn how to configure team settings in SEI 2.0.
 sidebar_label: Set up Teams
 sidebar_position: 15
+redirect_from:
+- /docs/software-engineering-insights/sei-new-experience/setup/teams
 ---
 
 ## Overview

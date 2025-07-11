@@ -3,6 +3,8 @@ title: View Insights for a Specific Team After Applying Team Settings
 description: Learn how to view insights for a specific team after applying the team settings in SEI 2.0.
 sidebar_label: View Insights for a Specific Team After Applying Team Settings
 sidebar_position: 7
+redirect_from:
+- /docs/software-engineering-insights/sei-new-experience/setup/granular-insights
 ---
 
 import Tabs from '@theme/Tabs';

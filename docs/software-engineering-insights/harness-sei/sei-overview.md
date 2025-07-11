@@ -2,7 +2,7 @@
 title: SEI 2.0 Overview
 description: The new experience for measuring engineering insights in Harness SEI
 sidebar_label: SEI 2.0 Overview
-sidebar_position: 05
+sidebar_position: 1
 ---
 
 Welcome to SEI 2.0 — the next generation of engineering insights at Harness. We've reimagined how organizations understand developer productivity, delivery health, and business impact. Built from the ground up on a modern, high-performance architecture, SEI 2.0 brings flexibility, scale, and trust to your software engineering data.

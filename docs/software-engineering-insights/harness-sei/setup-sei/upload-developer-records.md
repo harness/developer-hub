@@ -3,13 +3,15 @@ title: Add developer records
 description: Learn how to add developer records for your organization in SEI 2.0.
 sidebar_label: Add developer records
 sidebar_position: 5
+redirect_from:
+- /docs/software-engineering-insights/sei-new-experience/setup/developers
 ---
 
-### Who is a developer
+## Overview
 
 Adding developer records is crucial for mapping individuals to their respective [teams](./teams) and roles within SEI 2.0.
 
-### Upload developer records
+## Uploading developer records
 
 To add developer records:
 
