@@ -44,10 +44,6 @@ It exposes the `EntityAdrContent` and this is how you configure it:
 ```
 
 
-## Search Availability
-
-The ADR plugin also integrates with the Backstage search system, making ADRs available in search results.
-
 
 
 ## Annotations
