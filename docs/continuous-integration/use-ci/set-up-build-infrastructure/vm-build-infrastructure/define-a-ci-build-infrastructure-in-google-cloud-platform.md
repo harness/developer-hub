@@ -31,7 +31,7 @@ These are the requirements to configure the Google Cloud VM. This is the primary
 1. Log into the [Google Cloud Console](https://console.cloud.google.com/) and launch a VM to host your Harness Delegate and runner.
 
    * Select a machine type with 4 vCPU and 16 GB memory or more. Harness recommends an Ubuntu 20.04 LTS machine image, such as [Focal](https://console.cloud.google.com/marketplace/product/ubuntu-os-cloud/ubuntu-focal) or [Jammy](https://console.cloud.google.com/marketplace/product/ubuntu-os-cloud/ubuntu-jammy).
-   * To find images to use on Google Compute Engine, run `gcloud compute images list`. Valid image references follow the format of `projects/PROJECT/global/images/IMAGE`. For example: `projects/docs-test/global/images/ubuntu-pro-1804-bionic-v20220131`.
+   * To find images to use on Google Compute Engine, run `gcloud compute images list`. Valid image references follow the format of `projects/PROJECT/global/images/IMAGE`. For example: `projects/ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20250701`.
 
 2. Configure the VM to allow ingress on ports 22 and 9079.
 3. [SSH into the VM](https://cloud.google.com/compute/docs/connect/standard-ssh), if you haven't done so already.
