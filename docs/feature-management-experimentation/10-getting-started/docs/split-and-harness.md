@@ -23,7 +23,7 @@ Authentication, access, and user management are part of the Harness platform. Pe
 
 ## Administering a Migrated Split Account on Harness
 
-Split administrators should read the [Before and After Guide: Administering a Migrated Split Account on Harness](https://help.split.io/hc/en-us/articles/37936926294541-Before-and-After-Guide-Administering-a-Migrated-Split-Account-on-Harness) published in the [Split to Harness Migration section of the Split by Harness Help Center](https://help.split.io/hc/en-us/sections/34618781681933-Split-to-Harness-Migration). The guide will guide you through administrative tasks which change to standard Harness platform features after your migration into Harness.
+Split administrators should read the [Before and After Guide: Administering a Migrated Split Account on Harness](https://help.split.io/hc/en-us/articles/37936926294541-Before-and-After-Guide-Administering-a-Migrated-Split-Account-on-Harness) published in the [Split to Harness Migration section of the Split by Harness Help Center](https://help.split.io/hc/en-us/sections/34618781681933-Split-to-Harness-Migration). The guide will walk you through administrative tasks which change to standard Harness platform features after your migration into Harness.
 
 ## Harness platform integrations coming soon
 
