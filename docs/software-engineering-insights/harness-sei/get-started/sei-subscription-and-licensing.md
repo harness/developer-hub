@@ -1,7 +1,7 @@
 ---
 title:  SEI Subscriptions and Licenses
 description: Upgrade, Manage and View the SEI License usage data
-sidebar_position: 10
+sidebar_position: 20
 sidebar_label: Subscriptions and Licenses
 redirect_from:
   - /docs/software-engineering-insights/get-started/sei-subscription-and-licensing
@@ -32,15 +32,15 @@ On the Subscriptions page, you will find a detailed summary of your license acti
 * **Subscription period:** Shows the start and end dates of your current plan.
 * **Usage insights:** The **Activity & usage** section highlights the total number of Developer licenses consumed.
 
-![](./static/license-overview.png)
+![](../../propelo-sei/get-started/static/license-overview.png)
 
 The **Activity & usage** section provides real-time data on how many Developer licenses are being utilized. An unexpectedly high number of active contributors compared to the allocated licenses might indicate issues like duplicate records. 
 
-![](./static/activity-usage.png)
+![](../../propelo-sei/get-started/static/activity-usage.png)
 
 If your usage exceeds the purchased licenses, it is recommended to review the Developer records and assess if there are Developers you don't need Insights for. You can always update the Developer table to only have the right intended Developers, and hence control license consumption. Note that doing so, ensures that no Insights are generated for the Developers that are removed from the Developer table.
 
-![](./static/developers.png)
+![](../static/developers.png)
 
 ### See also
 
