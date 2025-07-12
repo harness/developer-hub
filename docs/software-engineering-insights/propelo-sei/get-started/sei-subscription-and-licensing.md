@@ -40,7 +40,7 @@ The **Activity & usage** section provides real-time data on how many Developer l
 
 If your usage exceeds the purchased licenses, it is recommended to review the Developer records and assess if there are Developers you don't need Insights for. You can always update the Developer table to only have the right intended Developers, and hence control license consumption. Note that doing so, ensures that no Insights are generated for the Developers that are removed from the Developer table.
 
-![](./static/activity-usage-breakdown.png)
+![](./static/developers.png)
 
 ### See also
 
