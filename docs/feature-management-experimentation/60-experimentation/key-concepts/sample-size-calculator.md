@@ -90,7 +90,7 @@ The second graph shows you how large or small the comparison metric would need t
 
 ## Using the calculators
 
-If you have the experiment pack and are unsure of any of the data required for the calculator, we recommend looking at the metric results for a similar feature flag you have already run or running a *100% off* feature flag with your intended targeting rules. You can then find the sample size, metric value and standard deviation from the [Metric Details and Trends](https://help.split.io/hc/en-us/articles/360025376251-Metrics-impact-Metric-details-and-trends) view reached by clicking into the metric card.
+If you have the experiment pack and are unsure of any of the data required for the calculator, we recommend looking at the metric results for a similar feature flag you have already run or running a *100% off* feature flag with your intended targeting rules. You can then find the sample size, metric value and standard deviation from the [Metric Details and Trends](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/) view reached by clicking into the metric card.
 
 ### Expected sample size per day
 

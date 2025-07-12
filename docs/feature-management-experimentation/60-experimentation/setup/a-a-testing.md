@@ -18,7 +18,7 @@ In addition to double checking the effectiveness and accuracy of your implementa
 ### Prerequisites
 
 * Your application incorporates the FME SDK.
-* Event data is being sent to FME. Be sure to send any relevant [event values and properties](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) needed to properly define and calculate your metric.
+* Event data is being sent to FME. Be sure to send any relevant [event values and properties](/docs/feature-management-experimentation/experimentation/events/#event-properties) needed to properly define and calculate your metric.
 * Desired metrics are created. This is not an absolute requirement, as metrics can be created at any time before or during an experiment and will be calculated using all appropriate, available events. But in most cases, you will at least want to have some set of metrics created.
 * In your code, add a `getTreatment` call for where you will expect this A/A or future A/B test to run. This will generate an impression for the key, for the feature flag’s traffic type.
 
@@ -26,11 +26,11 @@ In addition to double checking the effectiveness and accuracy of your implementa
 
 #### Step 1: Choose a traffic type
 
-Running an A/A test is simple. First, decide for which traffic type you wish to run the test. Best practice is to run an A/A test for every [traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) for which you are running experiments.
+Running an A/A test is simple. First, decide for which traffic type you wish to run the test. Best practice is to run an A/A test for every [traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) for which you are running experiments.
 
 #### Step 2: Create a new feature flag
 
-Create the feature flag with [targeting rules](https://help.split.io/hc/en-us/articles/360020791591-Targeting-customers) serving an equally distributed percentage-based rollout. For an A/A test, this would be 50/50.
+Create the feature flag with [targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting) serving an equally distributed percentage-based rollout. For an A/A test, this would be 50/50.
 
 The names of the treatments are inconsequential, so using the defaults of on and off is fine. You could also use an alternative like A1 and A2 to reinforce that the treatments for the A/A test should be identical.
 
@@ -69,7 +69,7 @@ How long you choose to run your A/A test will depend on a few factors such as yo
 Ideally, there is no difference between the on and off treatment groups and you would expect to see only minor effects between the treatments and no conclusions of statistical significance.
 
 You should expect the following:
-* Treatment samples: Sample size between treatments should generally match. If not, then check for a [sample ratio mismatch](https://help.split.io/hc/en-us/articles/360020636472-Sample-ratio-check).
+* Treatment samples: Sample size between treatments should generally match. If not, then check for a [sample ratio mismatch](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check/).
 * Metric results: Impact on your metrics should be inconclusive. There should be no difference since there really is no change between the two treatments.
   * You may see variance on each individual day - this is common as your data evens out.
   * It is possible to see statistical significance, while rare. Any particular p-value can go in any direction for a metric.
@@ -81,7 +81,7 @@ That’s it! You have now successfully run an A/A test and should feel confident
 
 ### Why do I see significance in my A/A test?
 
-Harness FME has sophisticated features in place to detect false positives and detect issues in setup or with the data. These features include [sample ratio mismatch checks](https://help.split.io/hc/en-us/articles/360020636472-Sample-ratio-check), [multiple comparison corrections](https://help.split.io/hc/en-us/articles/360037852431-Multiple-comparison-correction), and [FME's approach to statistics](https://help.split.io/hc/en-us/articles/360042265892-Split-s-approach-to-statistics).
+Harness FME has sophisticated features in place to detect false positives and detect issues in setup or with the data. These features include [sample ratio mismatch checks](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check/), [multiple comparison corrections](/docs/feature-management-experimentation/experimentation/key-concepts/multiple-comparison-correction/), and [FME's approach to statistics](https://help.split.io/hc/en-us/articles/360042265892-Split-s-approach-to-statistics).
 
 However, there is always a possibility that a statistically significant difference will be detected. This doesn't necessarily mean something went wrong and that your telemetry is suspect.
 
@@ -95,7 +95,7 @@ Remember that checking the p-value multiple times increases the chance of seeing
 
 Note that over the life of the A/A test two different metrics show p-values less than or equal to 0.05. Overall, three of the 72 data points are at or below 0.05. This is within the realm of expectation, but if you saw three out of 20 metrics were statistically significant at the same observation point, you might want to investigate further. Were those three metrics based on the same event? If so, then this might not be unexpected.
 
-With metrics using unique events, in an A/A test you would expect to see a random distribution of p-values at any given observation point. If you don’t, you’ll need to do some further analysis to see why bias is creeping into your results. For instance was there a [sample ratio mismatch](https://help.split.io/hc/en-us/articles/360020636472-Sample-ratio-check) that might have skewed results?
+With metrics using unique events, in an A/A test you would expect to see a random distribution of p-values at any given observation point. If you don’t, you’ll need to do some further analysis to see why bias is creeping into your results. For instance was there a [sample ratio mismatch](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/sample-ratio-check/) that might have skewed results?
 
 ## Troubleshooting tips
 
@@ -104,13 +104,13 @@ If you are seeing unexpected A/A test results, we recommend the following:
 Check the sample size for your experiment. Even though you are not looking to achieve statistical significance, it is still important to run the experiment on a sizable number of visitors to validate its accuracy.
 Check run time. We recommend running an A/A test for at least 1 full week to account for potential seasonality in user behavior.
 
-If you need more support investigating your A/A test results, you can [file a support ticket](https://help.split.io/hc/en-us/requests/new) and our Support team and advisors can assist further.
+If you need more support investigating your A/A test results, you can [file a support ticket](https://support.harness.io/hc/en-us/requests) and our Support team and advisors can assist further.
 
 ## Frequently asked questions
 
 **Do I need to run an A/A test before every A/B test?**
 
-No, you do not need to run an A/A test before or with every experiment. Typically, you will want to run your A/A test between setup and execution of your first experiments. If you wish to set up a global holdout or holdback group for experiments, you can use [FME dependencies](https://help.split.io/hc/en-us/articles/360020527652-Target-with-dependencies).
+No, you do not need to run an A/A test before or with every experiment. Typically, you will want to run your A/A test between setup and execution of your first experiments. If you wish to set up a global holdout or holdback group for experiments, you can use [FME dependencies](/docs/feature-management-experimentation/feature-management/target-with-dependencies/).
 
 An A/A test only needs to be run once per metric and per traffic type. As mentioned above, it’s a good practice to have a separate A/A test for every traffic type being used for experimentation, since randomization, event reporting, and available metrics differ for each.
 

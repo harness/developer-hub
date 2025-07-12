@@ -3,15 +3,15 @@ title: Projects
 sidebar_position: 10
 ---
 
-Projects allow you to separately manage your feature flags and experiments across your different business units, product lines, and applications. When you first create your account, you're  provided with one project named Default. This project has two [environments](https://help.split.io/hc/en-us/articles/360019915771) and one [traffic type](https://help.split.io/hc/en-us/articles/360019916311) created underneath it. You can rename and edit these environments and traffic types and add more to the Default project. 
+Projects allow you to separately manage your feature flags and experiments across your different business units, product lines, and applications. When you first create your account, you're  provided with one project named Default. This project has two [environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) and one [traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types) created underneath it. You can rename and edit these environments and traffic types and add more to the Default project. 
 
 The following objects are also located in a project. Refer object model map below for reference:
 
-* [Feature flags](https://help.split.io/hc/en-us/articles/9058495582349-Create-a-feature-flag)
-* [Segments](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment)
-* [Metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics)
-* [Event types](https://help.split.io/hc/en-us/articles/360020585772-Track-events)
-* [API keys](https://help.split.io/hc/en-us/articles/360019916211-API-keys)  
+* [Feature flags](/docs/feature-management-experimentation/feature-management/create-a-feature-flag/)
+* [Segments](/docs/feature-management-experimentation/feature-management/segments)
+* [Metrics](/docs/feature-management-experimentation/release-monitoring/metrics/)
+* [Event types](/docs/feature-management-experimentation/release-monitoring/events/)
+* [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys)  
 
 When you onboard different business units to Harness FME, you can add up to 20 projects within your account to allow each team to have a separated space to manage their experiments and feature flags. You can manage your projects from your Admin Settings page. Here, you can add new projects or edit existing ones. 
 
@@ -91,4 +91,4 @@ You can navigate between projects by doing the following:
 To manage your projects, go to the **projects** tab in your **Admin Settings** page. On this page you can:
 
 * See a list of all your existing projects.
-* Manage the [environments](https://help.split.io/hc/en-us/articles/360019915771) and [traffic types](https://help.split.io/hc/en-us/articles/360019916311) in a project by clicking **View** in the Actions column for selected projects.
+* Manage the [environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) and [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types) in a project by clicking **View** in the Actions column for selected projects.

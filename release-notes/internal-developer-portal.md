@@ -24,8 +24,79 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| 2025.06.v1  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
-| 2025.05.v1  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
+| [2025.07.v1](/release-notes/internal-developer-portal#july---202507v1)                               | ✅        | ✅         | ✅         | ⏳         | ⏳         | ⏳           |
+| [2025.06.v1](/release-notes/internal-developer-portal#june---202506v1)  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
+| [2025.05.v1](/release-notes/internal-developer-portal#-releasing-harness-idp-20-beta---may-202505v1) | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
+
+
+## July - [2025.07.v1]
+
+
+###  [New feature] Harness Git Experience (GitX) — Now Bi-Directional
+
+Harness IDP's Git Experience has been upgraded to offer full [**bi-directional sync**](https://developer.harness.io/docs/internal-developer-portal/git-experience/gitx-journey/#bi-directional-sync-between-harness-and-git). You can now manage **Catalog entities and Workflows** directly from your Git repository — while still retaining visibility and control within the IDP UI.
+
+Key highlights:
+
+**New features:**
+
+* When you configure a Git repository for use with GitX, a webhook is automatically added. This enables real-time sync from Git to IDP without requiring manual webhook setup.
+* From the Catalog page, you can now switch branches and preview configurations before they go live. This is useful for testing or working with feature branches.
+* Any changes made in Git will now be reflected in IDP, provided the webhook is enabled.
+
+**Recap of existing behavior:**
+
+* Changes made via the IDP UI can be pushed back to Git, if Git sync is enabled.
+* Only the default branch will be active and reflected in the IDP runtime.
+
+This unlocks GitOps-style workflows, where Git remains the source of truth, and IDP becomes the real-time visual dashboard.
+
+###  [New feature] Visualize Ingested Properties
+
+When you use Catalog Ingestion API to push custom metadata, it is not committed back to the YAML file but is part of the final entity metadata shown in IDP UI. You can now visualize all ingested properties in the entity YAML view.
+
+![](./static/internal-developer-portal/ingested.png)
+
+More details: [Visualizing Ingested Metadata](https://developer.harness.io/docs/internal-developer-portal/git-experience/ingested-metadata)
+
+###  [New feature] Increased Bitbucket API Rate Limits
+
+Bitbucket Git Connector in IDP now also supports API Key Authentication which allows for higher API rate limits when used in syncing files or Scorecards computation.
+
+If you are facing Bitbucket API rate limit issues, please update your Bitbucket connector with a new one using API Key authentication.
+
+You must also upgrade your Harness Delegate used in the Git connector to **version `25.06.86202` or newer**.
+
+### Bug Fixes and Improvements
+
+* **Enhancements to Git Experience (GitX) Entity Views and Behavior**
+  Several improvements have been made to streamline how Git-synced entities are displayed and managed within IDP:
+
+  * The **Edit Entity** page now features a refined Git details header for improved clarity.
+  * A **branch selector** has been added to the **Entity Details** view, allowing users to view configurations across branches while continuing to treat the default branch as the source of truth.
+  * Scorecard computations are now consistently based on the **default branch only**, aligning with runtime behavior.
+  * Fixed a bug where `connector_ref` was incorrectly passed as an empty string during **Harness Code Repo** setup; this is now handled safely.
+    *\[IDP-5579, IDP-5477, IDP-5493, IDP-5816]*
+
+* **New Default Role: `IDP Workflow Executor`**
+  A new out-of-the-box role called **`IDP Workflow Executor`** is now available at all scopes (Account, Org, and Project). This role includes `View` and `Execute` permissions for IDP Workflows and allows platform teams to grant workflow execution access without creating custom roles.
+  This change is part of a **Platform/Access Control service release**, not the core IDP module release.
+  *\[IDP-5542]*
+
+
+* **Error Handling for Entity Import from Harness Code Repo**
+  Fixed a backend issue that caused entity import to fail when using **Harness Code Repo** with Git Experience enabled by default. The system now gracefully handles this scenario without requiring manual configuration toggles.
+  *\[IDP-5855]*
+
+* **YAML Editor Now Shows Latest Saved State**
+  Resolved an issue where the UI YAML editor reverted to a stale version after clicking “Save Changes.” This could cause users to overwrite prior edits unintentionally. The editor now properly reflects the latest saved YAML after each update.
+  *\[IDP-5851]*
+
+* **Owner Field Display Flicker Resolved in Catalog Table**
+  Fixed a UI glitch where user group names in the "owner" field of the Catalog table would intermittently flicker between full text and ellipsis. Styling has been corrected for better consistency.
+  *\[IDP-5792]*
+
+
 
 ## June - [2025.06.v1]
 

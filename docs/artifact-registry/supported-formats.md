@@ -51,6 +51,11 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
       path: "/artifact-registry/content/supported-formats/nuget-quickstart.md",
       logo: "nuget-logo.svg",
       logoSize: 24
+    },
+    Cargo: {
+      path: "/artifact-registry/content/supported-formats/cargo-quickstart.md",
+      logo: "rust-logo.png",
+      logoSize: 24
     }
   }}
 />

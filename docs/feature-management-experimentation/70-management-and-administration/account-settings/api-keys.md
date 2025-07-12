@@ -3,7 +3,7 @@ title: API keys
 sidebar_position: 40
 ---
 
-FME [SDKs](https://help.split.io/hc/en-us/articles/360033557092-SDK-overview) and [Admin API](https://docs.split.io/reference) both require API keys for authentication.
+FME [SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/) and [Admin API](https://docs.split.io/reference) both require API keys for authentication.
 
 In Harness FME, there are three types of keys:
 
@@ -106,7 +106,7 @@ If you restrict an API Key to one or more environments, the following are the Ad
 Harness FME enables you to restrict the access level of API keys in two ways:
 
 1. Specifying **roles** for the API key: This limits what resource types an API key can access
-2. Specifying a **scope** for the API key: This limits the reach of the API key across [environments](https://help.split.io/hc/en-us/articles/360019915771), a [project](https://help.split.io/hc/en-us/articles/360023534451-Projects), or the whole account.
+2. Specifying a **scope** for the API key: This limits the reach of the API key across [environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments), a [project](/docs/feature-management-experimentation/management-and-administration/account-settings/projects), or the whole account.
 
 While FME client-side and server-side SDK API keys are always scoped to a specific _environment_, Admin API keys can be tuned to granular access levels by creating them with a **role** and **scope** [using the Harness FME API](https://docs.split.io/reference/create-an-api-key). This page describes the roles and scopes that can be applied when creating **_Admin API keys_**.
 
