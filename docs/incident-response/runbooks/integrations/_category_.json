@@ -1,8 +1,0 @@
-{
-  "label": "Integration Guides",
-  "position": 10,
-  "link": {
-    "type": "generated-index",
-    "description": "Detailed guides for setting up and using integrations with Harness Incident Response Runbooks. Learn how to configure communication tools like Slack and Microsoft Teams, as well as ticketing systems like Jira and ServiceNow."
-  }
-}
