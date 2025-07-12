@@ -7,19 +7,16 @@ redirect_from:
   - /docs/software-engineering-insights/get-started/sei-subscription-and-licensing
 ---
 
-You can quickly and securely manage your SEI subscription directly through your account at any time, including:
-
-* Upgrading your plan.
-* Managing payment details and billing admins.
-* Viewing license usage data.
+You can quickly and securely manage your SEI subscription directly through your account at any time. See clear details on your subscription, and associated usage details.
+Note: This page details the new Developer Licensing model. The old Contributor model has been deprecated. The new model continues to be aligned with the goal of building analytics for Developers in your Engineering organization, and does so effectively.
 
 ## License overview
 
-Your SEI subscription includes a specific number of **Contributor licenses**, which track the number of **Contributors** identified across all integrated SDLC tools.
+Your SEI subscription includes a specific number of **Developer licenses**, which track the number of **Developers** for which SEI is generating insights, and consuming a Developer license.
 
-### Who is a contributor?
+### Who is a Developer?
 
-A **Contributor** is a user record that SEI tracks and analyzes based on activity in SDLC tools.  All users whose actions or artifacts are read from configured **Source Code Management** or **Issue / Project Management tool(s)** are considered as SEI Developers and consume a license.
+SEI allows admins to explicitly define (import) the list of Developers for whom Insights must be generated. All Developers in this list, explicitly consume a Developer license. These Developers may never login to the Harness Platform, but consume a license by virtue of having Insights generated for their Engineering related work. Insights may often be accessed by management / engineering leadership.
 
 ### View license usage
 
@@ -33,36 +30,18 @@ On the Subscriptions page, you will find a detailed summary of your license acti
 
 * **Total licenses purchased:** Displays the number of contributor licenses included in your plan.
 * **Subscription period:** Shows the start and end dates of your current plan.
-* **Usage insights:** The **Activity & usage** section highlights the total number of contributor licenses consumed.
+* **Usage insights:** The **Activity & usage** section highlights the total number of Developer licenses consumed.
 
 ![](./static/license-overview.png)
 
-The **Activity & usage** section provides real-time data on how many contributor licenses are being utilized. An unexpectedly high number of active contributors compared to the allocated licenses might indicate issues like duplicate records. 
+The **Activity & usage** section provides real-time data on how many Developer licenses are being utilized. An unexpectedly high number of active contributors compared to the allocated licenses might indicate issues like duplicate records. 
 
 ![](./static/activity-usage.png)
 
-If your usage exceeds the purchased licenses, it is recommended to review the contributor records to ensure that each license is being used for a unique contributor. Duplicate records can lead to inflated usage numbers, causing your account to appear over-utilized.
+If your usage exceeds the purchased licenses, it is recommended to review the Developer records and assess if there are Developers you don't need Insights for. You can always update the Developer table to only have the right intended Developers, and hence control license consumption. Note that doing so, ensures that no Insights are generated for the Developers that are removed from the Developer table.
 
 ![](./static/activity-usage-breakdown.png)
 
-### Reduce the over usage by merging contributors
-
-When integrating SEI with multiple SDLC tools, different user records may be created for the same individual. SEI attempts to unify records based on email addresses, but discrepancies can occur due to the following reasons:
-
-* **Different email addresses:** The same developer uses multiple email addresses across different tools.
-  * jane.doe@company.com in GitHub
-  * jane@company.com in Jira
-* **Varied usernames:** Variations in usernames across platforms lead to multiple records being created.
-* **Bot/Service accounts:** Non-human accounts (e.g., ci-cd-bot@company.com) mistakenly counted as contributors.
-
-#### Why merge duplicate contributor records?
-
-The un-merged duplicate records may inflate license consumption. To ensure accurate license usage, [merge duplicate records](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-contributors/manage-user-profiles#merge-contributors) and maintain a unified contributor record. 
-
-* Unified records ensure accurate license counts and holistic activity tracking.
-* Avoid paying for "ghost" users.
-
 ### See also
 
-* [Merge duplicate contributors](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-contributors/manage-user-profiles#merge-contributors)
-* [Modify contributor data via CSV Export & Import](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-contributors/manage-contributors#modify-contributors-export-and-import)
+* [Adding Developers](/docs/software-engineering-insights/sei-new-experience/setup/developers)
