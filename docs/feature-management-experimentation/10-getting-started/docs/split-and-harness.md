@@ -21,7 +21,9 @@ Authentication, access, and user management are part of the Harness platform. Pe
 * [Harness platform authentication (including 2FA and SSO)](/docs/category/authentication)
 * [Harness RBAC overview](/docs/platform/role-based-access-control/rbac-in-harness)
 
-<!-- todo: add info about FME Admin/User roles and permissions and their management --->
+## Administering a Migrated Split Account on Harness
+
+Split administrators should read the [Before and After Guide: Administering a Migrated Split Account on Harness](https://help.split.io/hc/en-us/articles/37936926294541-Before-and-After-Guide-Administering-a-Migrated-Split-Account-on-Harness) published in the [Split to Harness Migration section of the Split by Harness Help Center](https://help.split.io/hc/en-us/sections/34618781681933-Split-to-Harness-Migration). The guide will guide you through administrative tasks which change to standard Harness platform features after your migration into Harness.
 
 ## Harness platform integrations coming soon
 
