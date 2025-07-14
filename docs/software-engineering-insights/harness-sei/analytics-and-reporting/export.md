@@ -2,7 +2,7 @@
 title: Exporting SEI 2.0 Insights
 description: Learn how to share and export insights in Harness SEI.
 sidebar_label: Exporting SEI 2.0 Insights
-sidebar_position: 5
+sidebar_position: 3
 ---
 
 ## Overview

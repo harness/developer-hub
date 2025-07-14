@@ -2,7 +2,7 @@
 title: Efficiency
 description: Measurement and analysis of how effectively an organization or team performs its software development processes
 sidebar_label: Engineering Efficiency
-sidebar_position: 4
+sidebar_position: 1
 redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/efficiency
 ---
