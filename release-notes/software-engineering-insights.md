@@ -30,7 +30,7 @@ You can now export insights from the SEI 2.0 platform in both PDF and CSV format
 
 #### Related documentation
 
-- [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/export/)
+- [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/export/)
 
 ## April 2025
 
