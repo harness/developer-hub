@@ -56,8 +56,6 @@ Use the following input parameters:
 2. **IP Details**: Provide the **IP configuration** for each region.
 3. **Sub-Domain**: Enter the **domain** for each region. This field consists of a sub-domain and a root-domain. The root-domain is the same domain entered above in the basic details. 
 ![](./static/new-region-1.jpg)
-4. **Runner VM Region**: Select the **VM region** where the runner and delegate will be set up for Self Hosted Gitspaces.
-![](./static/runner-vm-region.png)
 
 Here's how **all the added regions** will look for your infrastructure.
 ![](./static/all-regions.png)

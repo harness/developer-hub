@@ -66,9 +66,9 @@ Here are some key features of developing in Harness Gitspaces:
 ### Deployment Models 
 We have **two deployment models** for Harness Gitspaces: **Harness Hosted Gitspaces** and **Self Hosted Gitspaces**. 
 
-- [**Harness-Hosted Gitspaces**](/docs/cloud-development-environments/introduction/quickstart-guide.md) are fully managed and controlled by Harness and reduce the setup complexity for end users. With this model, customers can create Gitspaces controlled and managed by Harness and hosted in Harness cloud. 
+- [**Harness-Hosted Gitspaces**](/docs/cloud-development-environments/introduction/self-hosted.md#harness-hosted-model) are fully managed and controlled by Harness and reduce the setup complexity for end users. With this model, customers can create Gitspaces controlled and managed by Harness and hosted in Harness cloud. 
 
-- [**Self-Hosted Gitspaces**](/docs/cloud-development-environments/introduction/self-hosted.md) are on-demand remote development environments hosted within your organization’s infrastructure. These environments come pre-configured for instant coding and provide an added layer of security by offering **full control** over infrastructure and data.
+- [**Self-Hosted Gitspaces**](/docs/cloud-development-environments/introduction/self-hosted.md#self-hosted-model) are on-demand remote development environments hosted within your organization’s infrastructure. These environments come pre-configured for instant coding and provide an added layer of security by offering **full control** over infrastructure and data.
 
 
 ## Next Steps

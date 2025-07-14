@@ -47,7 +47,7 @@ For more details, see [Overview & Key Concepts](/docs/cloud-development-environm
 
 #### Getting Started with Self-Hosted Gitspaces
 
-To start using Self-Hosted Gitspaces, you must **complete the prerequisites** and **configure your infrastructure within Harnes**s to host your Gitspaces. Refer to [Configuring Self-Hosted Gitspaces](/docs/category/configure-self-hosted-gitspaces) for instructions.
+To start using Self-Hosted Gitspaces, you must **complete the prerequisites** and **configure your infrastructure within Harnes**s to host your Gitspaces. Refer to [Configuring Self-Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps) for instructions.
 
 ### Self-Hosted vs. Harness-Hosted
 

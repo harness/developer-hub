@@ -19,13 +19,13 @@ Based on the deployment model you choose - **Harness Hosted** or **Self Hosted**
 
 #### 1️⃣ Harness Hosted
 
-For Harness Hosted Gitspaces, no infrastructure configuration is required. All you need is your source code repository link and Gitspace details. Read more about [Harness Hosted Gitspaces](/docs/cloud-development-environments/introduction/quickstart-guide.md).
+For Harness Hosted Gitspaces, no infrastructure configuration is required. All you need is your source code repository link and Gitspace details. Read more about [Harness Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md#harness-hosted-model).
 
 **🔗 Follow the instructions here to create a new Gitspace: [Creating Gitspaces](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md#create-gitspaces)**.
 
 #### 2️⃣ Self Hosted
 
-For Self Hosted Gitspaces, you need to ensure your infrastructure is configured and set up beforehand. Read more about [Self Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md). All the configuration steps are mandatory before creating any Self Hosted Gitspace.
+For Self Hosted Gitspaces, you need to ensure your infrastructure is configured and set up beforehand. Read more about [Self Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md#self-hosted-model). All the configuration steps are mandatory before creating any Self Hosted Gitspace.
 
 **🔗 Follow the instructions here to configure Self Hosted Gitspaces: [Get Started with Self Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md#get-started-with-self-hosted-gitspaces)**
 
