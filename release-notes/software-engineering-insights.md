@@ -1,14 +1,12 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2024-03-30T10:00:10
+date: 2025-07-14T10:00:10
 sidebar_position: 15
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/software-engineering-insights/rss.xml" />
 
@@ -21,6 +19,18 @@ These release notes describe recent changes to Harness Software Engineering Insi
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## May 2025
+
+### [New Feature] Export SEI 2.0 dashboards and widgets
+----
+#### 2025-05-29
+
+You can now export insights from the SEI 2.0 platform in both PDF and CSV formats. This feature makes it easier to share key performance metrics across teams and stakeholders, supporting better decision-making and performance tracking.
+
+#### Related documentation
+
+- [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/analytics-and-reporting/export/)
 
 ## April 2025
 

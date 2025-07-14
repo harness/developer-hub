@@ -76,6 +76,16 @@ If your organization restricts access to Google Artifact Registry (GAR), conside
     **Note:** The existing legacy notification permissions are DEPRECATED and will soon be moved to an INACTIVE state. The new permissions will be released in the ACTIVE state with RBAC enforced.
 :::
 
+:::danger Important Note:
+    **About `core_oidcIdToken_create`**  
+
+    A new `core_oidcIdToken_create` permission is introduced to govern the creation of OIDC ID token. The permission is currently in the EXPERIMENTAL status. However, after August 8, the permission will change to ACTIVE status. If any automation makes use of the [OIDC ID token](https://apidocs.harness.io/tag/Oidc-ID-Token), we recommend updating it accordingly.
+
+      | Resource      | Permissions                                          | Status       |
+      |---------------|------------------------------------------------------|--------------|
+      | OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
+:::
+
 :::info important
 This is a notification for a feature change aimed at enhancing your experience with Harness. Here's what you need to know:
 
@@ -130,6 +140,17 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2025
 
+### Version 1.96.x <!--July 08, 2025-->
+
+#### Fixed issues
+
+- SAML Authentication: Resolved time synchronization issues by introducing a 5-minute clock skew tolerance between the Identity Provider (IdP) and Harness Manager. [PL-63828]
+- Updated SMP license validation to avoid false email alerts. [PL-63554]
+
+#### New Feature and Enhancement 
+
+- Added the `FIPS_ENABLED` environment variable to the delegate YAML when the manager is deployed with FIPS enabled. [PL-63554]
+
 ### Version 1.95.x <!--July 01, 2025-->
 
 #### Fixed issues
@@ -138,6 +159,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New Feature and Enhancement 
 
+- Introduced `core_oidcIdToken_create` as an experimental permission to enable creation of OIDC ID Tokens. [PL-62926]
 - Delegates are now tagged with the appropriate scope (Account/Organization/Project) for all Assessment types in the Delegate selection logs in a pipeline. [PL-49165]
 
 ## June 2025

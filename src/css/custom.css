@@ -310,11 +310,11 @@
   --mod-fme-200: var(--purple-400);
   --mod-fme-100: var(--purple-100);
 
-  /* Module Colors/Incident Response */
+  /* Module Colors/AI SRE */
   /* Change this later */
-  --mod-ir-300: #cd0056;
-  --mod-ir-200: #ff368a;
-  --mod-ir-100: #ffa1cb;
+  --mod-aisre-300: #cd0056;
+  --mod-aisre-200: #ff368a;
+  --mod-aisre-100: #ffa1cb;
 
   /* ----- */
   --ifm-link-decoration: none;
@@ -1274,8 +1274,8 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
-.sidebar-ir > div > a::before,
-.sidebar-ir > a::before {
+.sidebar-aisre > div > a::before,
+.sidebar-aisre > a::before {
   content: ' ';
   display: inline-block;
   height: 24px;
@@ -1574,8 +1574,8 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 .feature-management--experimentation:hover {
   border-color: var(--mod-fme-200) !important;
 }
-.incident-response:hover {
-  border-color: var(--mod-ir-200) !important;
+.ai-sre:hover {
+  border-color: var(--mod-aisre-200) !important;
 }
 .infrastructure-as-code-management:hover {
   border-color: var(--mod-iacm-200) !important;

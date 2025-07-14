@@ -9,7 +9,7 @@
 ![STO](static/img/icon_sto.svg)
 ![IACM](static/img/icon_iacm.svg)
 ![CE](static/img/icon_ce.svg)
-![IR](static/img/icon-ir.svg)
+![AISRE](static/img/icon-ir.svg)
 ![SEI](static/img/icon_sei.svg)
 ![CET](static/img/icon_cet.svg)
 ![IDP](static/img/icon_idp.svg)

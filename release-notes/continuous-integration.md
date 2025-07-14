@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-06-30T10:00
+date: 2025-07-07T10:00
 sidebar_position: 10
 ---
 
@@ -41,6 +41,29 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 :::
 
+## July 2025
+
+### Version 1.86
+
+<!-- 2025-06-07 -->
+
+#### New features and enhancements
+- Reduced the size of the Windows Artifactory plugin image by ~80%, improving build performance and resource usage. (CI-17716)
+#### Fixed issues
+- Fixed an issue where `PLUGIN_SOURCE_IMAGE` values with registry URLs containing ports were incorrectly parsed, causing image lookup failures. (CI-18019, ZD-87175)
+- Fixed an issue where GitLab SHA builds did not route through the delegate even when the connector was configured to do so, causing certificate errors for some users. These requests now correctly go through the delegate. (CI-17996, ZD-83042, ZD-86364, ZD-87434)
+- Improved handling of empty Git-related fields in explicit **Git Clone** steps when using general Git connectors. These connectors now work reliably across a broader range of configurations. (CI-18006)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `plugins/buildx`    |  Fixed an issue where `PLUGIN_SOURCE_IMAGE` values with registry URLs containing ports were incorrectly parsed, causing image lookup failures. | 1.3.1              | 1.3.3       |
+| `plugins/buildx-ecr`    |  Fixed an issue where `PLUGIN_SOURCE_IMAGE` values with registry URLs containing ports were incorrectly parsed, causing image lookup failures. | 1.2.17              | 1.3.1       |
+| `plugins/buildx-acr`    |  Fixed an issue where `PLUGIN_SOURCE_IMAGE` values with registry URLs containing ports were incorrectly parsed, causing image lookup failures. | 1.2.17              | 1.3.1       |
+| `plugins/buildx-gar`    |  Fixed an issue where `PLUGIN_SOURCE_IMAGE` values with registry URLs containing ports were incorrectly parsed, causing image lookup failures. | 1.2.17              | 1.3.1       |
+| `plugins/artifactory`    |  Reduced the size of the Windows Artifactory plugin image by ~80%, improving build performance and resource usage. | 1.7.5              | 1.7.6       |
+
 ## June 2025
 
 ### Version 1.85
@@ -55,6 +78,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 - Fixed an issue where the codebase icon in the right sidebar of Pipeline Studio was incorrectly showing a failed state when the **repoName** in the codebase configuration was set as a runtime input. (ZD-84658, CI-17640)
 - Fixed an issue where expressions in environment variables for Build and Push steps were not evaluated if they depended on values (e.g., output variables) produced by earlier steps. This occurred because evaluation happened too early during stage initialization. Expressions are now evaluated just before step execution, ensuring correct resolution. (CI-17763, ZD-85822)
 - Resolved an issue where Docker connectors used as base image connectors in **Build and Push** steps failed to authenticate when the URL was set to `https://index.docker.io/v2/`. The backend now implicitly converts this to the correct v1 endpoint (`https://index.docker.io/v1/`) to ensure proper authentication. (CI-14112)
+- Fixed an issue where opening a pipeline from the Pipelines view and selecting a CI stage did not display the execution view as expected. (CI-17918)
 
 #### Harness images updates
 

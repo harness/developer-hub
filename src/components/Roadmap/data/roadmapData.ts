@@ -7,7 +7,6 @@ import { CcmData } from "./ccmData";
 import { StoData } from "./stoData";
 import { SscaData } from "./sscaData";
 import { CeData } from "./ceData";
-import { SrmData } from "./srmData";
 import { IdpData } from "./idpData";
 import { SeiData } from "./seiData";
 import { IacmData } from "./iacmData";
@@ -114,12 +113,6 @@ const ModuleData: ModuleData[] = [
       "SaaS release status: GA, SMP release status: Limited GA",
     module: MODULES.ce,
     horizon: CeData,
-  },
-  {
-    title: "Service Reliability Management",
-    description: "SaaS release status: GA, SMP release status: GA",
-    module: MODULES.srm,
-    horizon: SrmData,
   },
   {
     title: "Internal Developer Portal",

@@ -58,11 +58,12 @@ In general we recommend waiting until the end of the review period or intended r
 ### Potential causes of an SRM
 
 #### Excluded Users
-In some cases, users may be [excluded](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion) from the analysis due to seeing multiple treatments or rules, and because some treatments inherently exclude more users than others, this can cause a Sample Ratio Mismatch, introduce a bias into your samples, and invalidate the results.
 
-For example, if you have different rules for users on each of your 3 plan types e.g. Free, Trial and Paid, and if one of your treatments causes more users to switch between these plan types then this may result in more users being excluded from that treatment.
+In some cases, users may be [excluded](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/attribution-and-exclusion/) from the analysis due to seeing multiple treatments or rules, and because some treatments inherently exclude more users than others, this can cause a Sample Ratio Mismatch, introduce a bias into your samples, and invalidate the results.
 
-To check whether this is the cause of your SRM, we suggest you look at the ‘excluded’ column under the sample population section of the [Metric Details and Trends](https://help.split.io/hc/en-us/articles/360025376251-Metric-details-and-trends) view to see if your treatment has caused users to be removed from your analysis. 
+For example, if you have different rules for users on each of your 3 plan types (e.g. Free, Trial and Paid), and if one of your treatments causes more users to switch between these plan types then this may result in more users being excluded from that treatment.
+
+To check whether this is the cause of your SRM, we suggest you look at the ‘excluded’ column under the sample population section of the [Metric Details and Trends](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/) view to see if your treatment has caused users to be removed from your analysis. 
 
 #### Data Loss
 
