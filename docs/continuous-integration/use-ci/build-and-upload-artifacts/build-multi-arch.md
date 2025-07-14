@@ -6,11 +6,12 @@ sidebar_position: 21
 
 Building multi-architecture images is possible with Harness but differs based on your infrastructure type. Please choose the infrastructure that is right for you.
 
-## Cloud, Local, VMs Infrastructure
+## Cloud Infrastructure
 
-Building multi-architecture images is simple for cloud, local, and VM infrastructures. You will need to enable an environment variable in your `Build and Push an image to Docker` step. To do so:
+Building multi-architecture images is simple for cloud infrastructures. You will need to enable an environment variable in your `Build and Push an image to Docker` step. To do so:
 
 1. Open your `Build and Push an image to Docker Registry` step. 
+2. Select `Enable Docker Layer caching`. To learn more, go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching).
 2. Open the **Optional Configuration** dropdown at the bottom of the step.
 3. Add a variable under **Environment Variables**.
 4. Enter `PLUGIN_PLATFORM` for your **Key**. 
@@ -18,7 +19,20 @@ Building multi-architecture images is simple for cloud, local, and VM infrastruc
 
 That's it!
 
-## Kubernetes Infrastructure
+## Self-Managed Infrastructure
+
+In order to build multi-architecture images with Kubernetes infrastructure, you will need to use BuildX and DLC. To do so you will require the feature flag `CI_ENABLE_DLC_SELF_HOSTED`. To enable this flag, contact [Harness Support](mailto:support@harness.io)
+
+Once this flag is enabled, simply complete the [cloud infrastructure steps above](#cloud-infrastructure) to build multi-architecture images.
+
+<details>
+<summary>Deprecated method of building multi-arch images on Kubernetes infrastructure</summary>
+
+:::info
+
+The following method for building multi-arch images is not recommended. 
+
+:::
 
 To build multi-architecture images in a CI pipeline, use a separate stage to build and push each architecture.
 
@@ -162,3 +176,5 @@ pipeline:
                       limits:
                         memory: 100M
 ```
+
+</details>
