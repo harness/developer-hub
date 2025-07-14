@@ -3,7 +3,6 @@ title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
 date: 2025-06-18T10:00:00
 tags: ["fme", "feature management experimentation"]
-
 sidebar_position: 11
 ---
 
@@ -13,7 +12,21 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: June 18, 2025
+#### Last updated: July 14, 2025
+
+## July 2025
+
+### [New Feature] AI Summarize button for metrics and experiments
+----
+#### 2025-07-14
+
+Harness FME now includes an AI Summarize button on the Metrics impact tab and Experiments Dashboard. This feature generates a summary of your experiment results and metric impact, helping teams quickly interpret statistical outcomes without needing to dig into raw data or graphs.
+
+AI summaries are especially helpful for product managers and non-technical stakeholders who want fast, accurate takeaways about the effectiveness of feature flags or treatments.
+
+#### Related documentation
+
+- [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/#use-ai-summarize)
 
 ## June 2025
 
