@@ -18,9 +18,7 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 | [**Git Experience (YAML files in Git)**](/docs/internal-developer-portal/git-experience/gitx-journey) | ✅ (Ready to onboard) |
 | **New System Entity for grouping**                                                                    | ⏳ ETA July 31, 2025  |
 | **Project/Org filters in Scorecards**                                                                 | ⏳ ETA July 31, 2025  |
-
-<!-- | **Custom User Groups**                                                                                | ⏳ ETA July 31, 2025  | -->
-
+| **Custom User Groups**                                                                               | ⏳ ETA Pending       |
 
 :::
 
