@@ -37,6 +37,13 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 ## June 2025 - Version 1.55.3
 
+### [New Feature] Billing Export Fields Expansion in Unified Explore
+**[CCM-23638] | [Docs](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/access-ccm-dashboards#billing-export-fields-expansion-in-unified-explore)**
+
+We’ve expanded our billing data capabilities across all three cloud providers AWS, GCP, and Azure, by exposing all standard billing export fields directly in Unified Explore.
+
+These fields allow for deeper visibility, granular filtering, and improved analysis of cloud spend across providers.
+
 ### [New Feature] OIDC Authentication Support
 **[CCM-23638] | [AWS OIDC Documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#oidc-authentication) | [GCP OIDC Documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#step-4-authentication-conditional)**
 
