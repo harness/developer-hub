@@ -26,7 +26,8 @@ Harness account limits are specfied below:
 | Service Accounts    | 6,000         | Maximum number of service accounts that can be created in an account. |
 | API Keys            | 6,000         | Maximum number of API keys that can be created in an account.         |
 | Tokens              | 6,000         | Maximum number of tokens that can be created in an account.           |
-| Roles               | 21,000        | Maximum number of Roles that can be created in an account.             |
+| Roles               | 21,000        | Maximum number of Roles that can be created in an account.            |
+| Role Assignments    | 75,000        | Maximum number of Role Assignments that can be created in an account. |
 
 :::info important 
 Harness reserves the right to modify these limits at any time to ensure platform stability and resource management. 
