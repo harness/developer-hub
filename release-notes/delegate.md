@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## July 2025
 
+### Version 25.06.86204 <!-- Jul 08, 2025 -->
+
+#### Fixed issues
+
+- Fix for IDP git integration and catalog flow not working with Github Enterprise GithubApp Authentication mode. (IDP-5945)
+
 ### Version 25.06.86004 <!-- Jul 11, 2025 -->
 
 #### Fixed issues
