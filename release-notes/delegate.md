@@ -88,7 +88,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## July 2025
 
-### Version 25.06.86204 <!-- Jul 08, 2025 -->
+### Version 25.06.86204 <!-- Jul 14, 2025 -->
 
 #### Fixed issues
 
