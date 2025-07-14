@@ -52,8 +52,7 @@ If you’re interested and want to get started with Self-Hosted Gitspaces, here�
 1. **Go Through the Prerequisites and Fundamentals**: Before you begin, it’s important to understand the **underlying architecture** and **concepts of Self-Hosted Gitspaces**.
 
    * 🔗 [Self-Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture)
-   * 🔗 [Fundamental Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals)
-   * 🔗 [Prerequisites](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals#prerequisites)
+   * 🔗 [Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals)
 
 2. **Configure Gitspace Infrastructure via Harness UI**: Start by configuring your **Gitspace infrastructure in the Harness UI**. This lets you input your infrastructure details, which will be referenced later during provisioning.
 
