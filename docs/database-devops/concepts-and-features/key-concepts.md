@@ -24,16 +24,16 @@ A database is an organized collection of structured information, or data, that i
     "lineColor": "#007acc",
     "fontSize": "16px",
     "fontFamily": "Arial",
-    "edgeLabelBackground":"#ffffff"
+    "edgeLabelBackground":"#f6b26b"
   }
 } }%%
 flowchart TD
-    A[Database Schema:<br>repository +<br>liquibase changelog location]
+    A[Database Schema:<br>Repository +<br>Liquibase Changelog]
     B[DB Instance]
-    C[DB Connector:<br>jdbc URL +<br>credentials]
+    C[DB Connector:<br>JDBC URL +<br>Credentials]
     D[Harness Delegate]
     E[Service]
-    F[Your Infra]
+    F[Infra]
 
     A --> B
     B --> C
@@ -41,14 +41,18 @@ flowchart TD
     F --> D
 
     A -. Optional Link .-> E
-    subgraph Conceptual_Box[" "]
+    subgraph Harness_Box[" "]
         C
+    end  
+    subgraph Conceptual_Box["Customer Environment"]
+        D
         F
-        note1[/"Unrelated, but<br>conceptually similar"/]
     end
 
     style Conceptual_Box stroke-dasharray: 5 5
     style Conceptual_Box fill:#c2f0c2,stroke:#0f5132
+    style Harness_Box fill:#ffe599,stroke:#0f5132
+
 
     linkStyle 0 stroke-width:2px
     linkStyle 1 stroke-width:2px
