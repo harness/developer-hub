@@ -5,9 +5,8 @@ sidebar_position: 10
 
 ## Overview
 
-The **Metrics impact** tab shows the impact of your experiment or feature rollout on your customers. To make data-driven decisions on your features, review and interpret the data that you collect before deciding to roll out the functionality to more customers. The data on this tab allows you to ensure safe and reliable feature delivery while powering data-driven decisions. 
 
-In addition to the **Metrics impact** tab available on individual feature flags, you can view your experiment results from the **Experiments** page. This page provides a centralized view of all experiments and allows you to quickly access performance metrics, significance levels, and summary details for each treatment group.
+You can view your experiment results from the **Experiments** page. This page provides a centralized view of all experiments and allows you to quickly access performance metrics, significance levels, and summary details for each treatment group.
 
 Click into any experiment to view detailed results, including the following:
 

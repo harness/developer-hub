@@ -20,7 +20,9 @@ These release notes describe recent changes to Harness Feature Management & Expe
 ----
 #### 2025-07-14
 
-Harness FME now includes an AI Summarize button on the Metrics impact tab and Experiments Dashboard. This feature generates a summary of your experiment results and metric impact, helping teams quickly interpret statistical outcomes without needing to dig into raw data or graphs.
+Harness FME now includes an AI Summarize button on the Experiments Dashboard and Metric Details Dashboard. This feature uses AI to summarize your overall experiment results as well as how individual metrics on that experiment are performing over time, providing a more holistic view of performance and outcomes.
+
+These summaries help teams quickly interpret statistical results (both at the metric level and the experiment level) without needing to dig into raw data or graphs.
 
 AI summaries are especially helpful for product managers and non-technical stakeholders who want fast, accurate takeaways about the effectiveness of feature flags or treatments.
 
