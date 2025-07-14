@@ -2,21 +2,21 @@
 id: windows-ec2-network-latency
 title: Windows EC2 Network Latency
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-network-latency
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-network-latency
 ---
 
 Windows EC2 network latency causes a network packet delay on Windows VM for the target EC2 instance(s) using [Clumsy](https://jagt.github.io/clumsy/).
 
 ## Use cases
+
 - It degrades the network without marking the EC2 instance as unhealthy (or unworthy) of traffic, which is resolved using a middleware that switches traffic based on SLOs (performance parameters).
 - It may stall the EC2 instance or get corrupted waiting endlessly for a packet.
 - It limits the impact (blast radius) to the traffic that you wish to test, by specifying the IP addresses.
 
-
 ![Windows EC2 Network Latency](./static/images/windows-ec2-network-latency.png)
 
 :::tip
-When Clumsy is downloaded, the path is exported which is used while executing the experiment. 
+When Clumsy is downloaded, the path is exported which is used while executing the experiment.
 :::
 
 ## Use cases
@@ -31,9 +31,63 @@ Windows EC2 network latency:
 - Simulates a slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.
 
 ## Prerequisites
+
 - Ensure that the [prerequisites](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
 - Verify that [Clumsy](https://app.harness.io/public/shared/tools/chaos/windows/clumsy-0.3-win64-a.zip) is installed on the Windows VM.
 - The EC2 instance should be in a healthy state.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+:::
+
+Below is an example AWS policy to execute the fault.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:GetDocument",
+        "ssm:DescribeDocument",
+        "ssm:GetParameter",
+        "ssm:GetParameters",
+        "ssm:SendCommand",
+        "ssm:CancelCommand",
+        "ssm:CreateDocument",
+        "ssm:DeleteDocument",
+        "ssm:GetCommandInvocation",
+        "ssm:UpdateInstanceInformation",
+        "ssm:DescribeInstanceInformation"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2messages:AcknowledgeMessage",
+        "ec2messages:DeleteMessage",
+        "ec2messages:FailMessage",
+        "ec2messages:GetEndpoint",
+        "ec2messages:GetMessages",
+        "ec2messages:SendReply"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["ec2:DescribeInstanceStatus", "ec2:DescribeInstances"],
+      "Resource": ["*"]
+    }
+  ]
+}
+```
+
+:::info note
+
+- Go to [AWS named profile for chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
+  :::
 
 ### Mandatory tunables
 
@@ -61,6 +115,7 @@ Windows EC2 network latency:
     </table>
 
 ### Optional tunables
+
    <table>
       <tr>
         <th> Tunable </th>
@@ -91,11 +146,12 @@ Windows EC2 network latency:
 
 ### Network latency
 
-The `NETWORK_LATENCY` environment variable specifies the delay induced, in  milliseconds.
+The `NETWORK_LATENCY` environment variable specifies the delay induced, in milliseconds.
 
 Use the following example to specify network latency:
 
-[embedmd]:# (./static/manifests/windows-ec2-network-latency/network-latency.yaml yaml)
+[embedmd]: # "./static/manifests/windows-ec2-network-latency/network-latency.yaml yaml"
+
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: MachineChaosExperiment
@@ -109,18 +165,21 @@ spec:
     steps:
       - - name: windows-network-latency
     tasks:
-    - definition:
-        chaos:
-          env:
-            - name: NETWORK_LATENCY
-              value: "2000"
+      - definition:
+          chaos:
+            env:
+              - name: NETWORK_LATENCY
+                value: "2000"
 ```
+
 ### Path of Clumsy
+
 The `PATH_OF_CLUMSY` environment variable specifies the path of the Clumsy tool in the VM.
 
 Use the following example to specify the path of Clumsy:
 
-[embedmd]:# (./static/manifests/windows-ec2-network-loss/path-of-clumsy.yaml yaml)
+[embedmd]: # "./static/manifests/windows-ec2-network-loss/path-of-clumsy.yaml yaml"
+
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: MachineChaosExperiment
@@ -134,10 +193,10 @@ spec:
     steps:
       - - name: windows-network-latency
     tasks:
-    - definition:
-      chaos:
-        env:
-       # Path of the Clumsy tool in the VM
-        - name: PATH_OF_CLUMSY
-          value: 'C:\\Program Files\\Clumsy\\'
+      - definition:
+        chaos:
+          env:
+            # Path of the Clumsy tool in the VM
+            - name: PATH_OF_CLUMSY
+              value: 'C:\\Program Files\\Clumsy\\'
 ```
