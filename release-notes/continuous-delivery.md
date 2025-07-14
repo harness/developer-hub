@@ -68,8 +68,6 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Harness supports the **Upload Artifacts to S3** step in Deploy stage, enabling users to upload artifacts directly to S3 within their CD workflows in a containerized step group. (**CDS-107976**)
 
-- Harness supports **barrier synchronization across parent and child pipelines**, enabling child pipelines to reference and utilize barriers defined in parent pipelines via runtime inputs for coordinated deployments and consistent roll-outs. Currently, this feature is behind the feature flag `PIPE_BARRIERS_FOR_CHAINED_PIPELINES`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
-
 - Users can now **change the repository when saving a new template**, enabling switching from project-level to account-level connectors. (**PIPE-12768**)
 
 - Harness now supports **registering GitX webhooks without creating them in Git providers**, enabling webhook setup via an intermediary service without requiring connector-level registration permissions. Currently, this feature is behind the feature flag `PIPE_GITX_DISABLE_SKIP_GIT_WEBHOOK_REGISTRATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-27267, ZD-79944, ZD-85272**)
