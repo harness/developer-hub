@@ -150,14 +150,14 @@ docker run -it \
 
 ### Use Secure Connect environment variables to route other clients
 
-When you enable Secure Connect, Harness sets two environment variables: `HARNESS_HTTP_PROXY` and `HARNESS_HTTPS_PROXY`.
+When you enable Secure Connect and your pipeline uses a connector that is configured with Secure Connect (for example, a git clone step), Harness sets two environment variables: `HARNESS_HTTP_PROXY` and `HARNESS_HTTPS_PROXY`.
 
-You can use these environment variables in cURL commands to tunnel other clients through the established secure tunnel, for example:
+> **Note:** The Secure Connect proxy environment variables are only available after the pipeline uses Secure Connect at least once (such as by accessing a connector that has Secure Connect enabled). After this, all subsequent steps in the pipeline will have access to these variables.
 
+You can use these environment variables in cURL commands or other tools to tunnel requests through the established secure tunnel. For example, to access an internal or staging URL:
+
+```bash
+curl -x $HARNESS_HTTPS_PROXY https://example.com
 ```
-curl -x "$HARNESS_HTTPS_PROXY" YOUR_ENDPOINT_URL
-```
 
-Replace `YOUR_ENDPOINT_URL` with the URL that you want to route through the secure tunnel. For example, you could route a private Bitbucket domain like `https://bitbucket.myorg.com/`.
-
-
+Replace the example URL with the endpoint you want to route through the secure tunnel, such as a private Bitbucket domain (`https://bitbucket.myorg.com/`) or any internal/dev/QA resource accessible via the tunnel.
