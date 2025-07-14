@@ -32,16 +32,16 @@ import { MODULES } from "@site/src/constants";
           link: "/docs/cloud-development-environments/introduction/whats-supported",
         },
         {
-          title: "Harness Hosted Gitspaces",
+          title: "Deployment Models",
           module: MODULES.cde,
-          description: "Detailed guide to get started with Harness Hosted Gitspaces.",
-          link: "/docs/cloud-development-environments/introduction/quickstart-guide",
+          description: "Understand the different deployment models for Gitspaces.",
+          link: "/docs/cloud-development-environments/introduction/self-hosted",
         },
         {
-          title: "Self Hosted Gitspaces",
+          title: "Quickstart Tutorial",
           module: MODULES.cde,
-          description: "Detailed guide to get started with Self Hosted Gitspaces. ",
-          link: "/docs/cloud-development-environments/introduction/self-hosted",
+          description: "Learn how to get started with Gitspaces. ",
+          link: "/docs/cloud-development-environments/introduction/quickstart-tutorial",
         }
       ],
     },
