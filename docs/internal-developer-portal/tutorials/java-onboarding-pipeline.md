@@ -55,6 +55,8 @@ Before you begin, ensure the following prerequisites are in place. These are req
 
 ### Tools and Resources
 
+- 
+
 - **Cookiecutter Template for Java Services**  
   A prebuilt [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/) template must be available in a public or private GitHub repository. This template defines the standard project structure for all Java services created through the onboarding workflow.
 
@@ -185,7 +187,7 @@ These variables are used across stages and steps to:
 
 You’ll configure these under **Pipeline → Variables**.
 
-#### Input Types
+#### Variable value Types
 
 In Harness pipelines, every variable is assigned one of the following types, based on how its value is provided or resolved during execution:
 
@@ -202,10 +204,23 @@ These variables will be referenced in your pipeline steps using the `<+pipeline.
 
 > Here the variable - `cookie_repo` is made fixed and pre-filled (e.g., `java-cookiecutter-template`)for this tutorial, but you can make it dynamic based on your use case.
 
+
+#### Variable input types
+You get to choose from multiple variable input types to handle different kinds of data securely and dynamically.
+You can set the type as `Secret` to store sensitive values like API keys securely via Harness Secrets Manager.
+Other common types include:
+
+- String – for plain text values.
+- Number – for numeric inputs used in logic or configurations.
+
+![variable-input-types](./static/java-onb/var-type.png)
 #### Sample YAML
 
+<details>
+<summary>Example YAML</summary>
+
 ```yaml
- variables:
+  variables:
     - name: service_name
       type: String
       description: ""
@@ -231,7 +246,34 @@ These variables will be referenced in your pipeline steps using the `<+pipeline.
       description: ""
       required: false
       value: java-cookiecutter-template
+    - name: organization
+      type: String
+      description: ""
+      required: true
+      value: <+input>
+    - name: repo_name
+      type: String
+      description: ""
+      required: true
+      value: <+input>
+    - name: unique_identifier
+      type: String
+      description: ""
+      required: true
+      value: <+input>
+    - name: harness_accID
+      type: String
+      description: ""
+      required: true
+      value: harness_accID_value
+    - name: api_key
+      type: Secret
+      description: ""
+      required: true
+      value: sd-api-key-harness
 ```
+
+</details>
 
 ### Step 2: Clone the Java Cookiecutter Template Repository
 
@@ -239,7 +281,7 @@ The first execution step in your pipeline is to **clone the Java cookiecutter te
 
 To do this, you’ll add a **Git Clone** step to your pipeline’s execution stage.
 
-This step uses a **GitHub connector** (configured as a third-party provider) and pulls the repo defined by the pipeline variable.
+This step uses a **GitHub connector** (configured as a third-party Git provider) and pulls the repo defined by the pipeline variable.
 
 ![git-clone](./static/java-onb/git-clone.png)
 
@@ -272,6 +314,8 @@ This step uses a **GitHub connector** (configured as a third-party provider) and
         spec:
           branch: main
     description: Clone the Java cookiecutter template
+    when:
+      stageStatus: Success
 ```
 
 ### Step 3: Run Cookiecutter to Generate Java Code
@@ -355,69 +399,12 @@ You’ll do this using the **CreateRepo** step in your pipeline. You can choose 
       personalAccount: false
 ```
 
-### Step 5: Generate the catalog file
-
-To get your Java service into the Software Catalog, you’ll need to generate a `file_name.yaml` file inside the name of the service’s folder provided as input. This is handled by the **CreateCatalog** step in your pipeline.
-
-Just use the service name as the path — that way, the file lands right inside the folder you just created.
-This YAML file holds important metadata about the service. Most of the values can be populated using pipeline variables so everything stays aligned with what the developer originally provided.
-
-![create-catalog](./static/java-onb/create-catalog.png)
-
-| Field            | Description                                                                 |
-|------------------|-----------------------------------------------------------------------------|
-| File Name     | Name of the file to be created; typically `catalog-info.yaml`              |
-| Path          | Folder path where the file will be placed — usually the service directory  |
-| File Content  | The actual YAML content that describes the service and enables catalog registration |
-
-#### File content:
-
-```yaml
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: <+pipeline.variables.service_name>
-  description: <+pipeline.variables.description>
-  annotations:
-    backstage.io/techdocs-ref: dir:.
-spec:
-  type: service
-  lifecycle: production
-  owner: <+pipeline.variables.owner>
-```
+### Step 5: Push the service code to GitHub
 
 
+Once the Java service is generated using the Cookiecutter template and the repository is successfully created, the next step is to push the code to GitHub using the **DirectPush** step. This step takes the contents from the generated service directory and commits them directly to the `main` branch of the newly created repository.
 
-#### Sample YAML
-
-```yaml
-- step:
-    type: CreateCatalog
-    name: CreateCatalog
-    identifier: CreateCatalog
-    spec:
-      fileName: gen-code.yaml
-      filePath: <+pipeline.variables.service_name>
-      fileContent: |
-        apiVersion: backstage.io/v1alpha1
-        kind: Component
-        metadata:
-          name: <+pipeline.variables.service_name>
-          description: <+pipeline.variables.description>
-          annotations:
-            backstage.io/techdocs-ref: dir:.
-        spec:
-          type: service
-          owner: abc
-          lifecycle: experimental
-```
-
-
-### Step 6: Push the service code to GitHub
-
-After the Java code and catalog file are generated, you need to publish them to GitHub. Use the **DirectPush** step to push the contents from the service folder to the new GitHub repository.
-
-Make sure you're using the same Git connector and GitHub organization you used during the CreateRepo step. This step requires the code directory path (usually the service name) and pushes the code to the `main` branch.
+It’s important to ensure the directory path provided in this step matches the name of the generated folder (typically the service name). Also, make sure you’re using the same GitHub connector and organization as configured during the CreateRepo step.
 
 ![push-to-git](./static/java-onb/push-to-git.png)
 
@@ -453,35 +440,67 @@ Force push is helpful when GitHub auto-initializes a repository with files like 
 ```
 
 
-### Step 7: Register the service in the Software Catalog
+### Step 6: Create and Register Component Entity 
 
-This final step makes your new Java service show up in the Harness Software Catalog by registering the catalog YAML file you created earlier (`gen-code.yaml`). 
+After the Java service is generated and pushed to GitHub, the next essential step is to create and register the service entity in the **Harness IDP Software Catalog**. This ensures that your service becomes visible in the catalog, is discoverable by teams, and is ready to adopt platform features like Scorecards, TechDocs, and more.
 
-The **RegisterCatalog** step does exactly that — it uses your GitHub connector to reach the repo, locate the file, and create the Component in the catalog.
+In this step, you are invoking the [Entities API](https://apidocs.harness.io/tag/Entities#operation/createEntity) to automate the registration process. The API request:
 
-You just need to point it to the correct GitHub organization, repo name, and file path.
+* Generates the component YAML (`kind: component`)
+* Pushes it into the GitHub repo at a defined path
+* Registers it directly into the catalog
 
-| Field               | Description                                                                 |
-|---------------------|-----------------------------------------------------------------------------|
-| Git Provider     | GitHub via third-party provider option                                      |
-| Connector        | GitHub connector used throughout the pipeline                               |
-| Organization     | GitHub org where the service repo lives                                     |
-| Repository Name  | The name of the repository created earlier                                  |
-| Branch Name      | `main`, or whichever branch holds your YAML file           |
-| File Path        | The path of the YAML file generated earlier.                 |
-| API Key (Optional) | If your catalog requires authentication for registration                  |
-
-Once this step completes, your service will immediately show up as a new **Workflow** in the Harness IDP Software Catalog — fully registered with its metadata and ready to be used, documented, and governed.
-
-:::caution
-If the catalog file is not found at the specified path, the registration will fail. Make sure the filename and its location match what was set during the file generation step.
-:::
+![](./static/java-onb/create-register-entity.png)
 
 
+You are using a Python-based **Run** step here, but you are not restricted to Python. Any tool or script that can send an HTTP `POST` request with the appropriate payload and headers will work.
+
+However, regardless of language or tool, there are certain key values that must be included in the request:
+
+* A valid YAML definition (you can use runtime expressions to keep it dynamic)
+* Git configuration details such as `repo_name`, `branch_name`, and `file_path`
+* Properly scoped **connector reference**
+* Secure API key and Harness account ID passed through headers
+
+<details>
+<summary>Python Snippet</summary>
+
+```python
+import requests
+import json
+
+url = "https://app.harness.io/v1/entities?convert=false&dry_run=false"
+
+payload = json.dumps({
+  "yaml": "apiVersion: harness.io/v1\nkind: component\ntype: Service\nidentifier: <+pipeline.variables.unique_identifier>\nname: <+pipeline.variables.service_name>\nowner: <+pipeline.variables.owner>\nspec:\n  lifecycle: experimental\n  ownedBy:\n    - group/sample-group\nmetadata:\n  description: <+pipeline.variables.description>\n  annotations:\n    backstage.io/source-location: url:https://github.com/<+pipeline.variables.organization>/<+pipeline.variables.repo_name>/blob/main/gen-code.yaml\n    backstage.io/techdocs-ref: dir:.\n  links:\n    - title: Website\n      url: http://my-sample-website.com\n  tags:\n    - my-sample\n",
+  "git_details": {
+    "branch_name": "main",
+    "file_path": "harness_entity/<+pipeline.variables.service_name>.yaml",
+    "commit_message": "Added Harness Git Experience",
+    "connector_ref": "account.ShibamDhar",
+    "store_type": "REMOTE",
+    "repo_name": "<+pipeline.variables.repo_name>",
+    "is_harness_code_repo": False
+  }
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Harness-Account': '<+pipeline.variables.harness_accID>',
+  'x-api-key': '<+pipeline.variables.api_key>'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+```
+
+</details>
+
+This approach is recommended because it eases the onboarding flow. It removes the need for manual registration via the UI and enforces a consistent structure for all components being onboarded.
 
 ---
 
-### Previewing the Final Pipeline
+### Finalizing and Verifying the Onboarding Flow
 
 Once you've added all the steps, your pipeline should now look like this in the **Pipeline Studio**:
 
@@ -501,4 +520,176 @@ If all steps are correctly configured and your secrets/connectors are valid, the
 
 > Every step will show a ✅ if successful. You can also switch to the **Execution Context** tab to inspect the resolved values of your pipeline variables — a great way to debug or confirm if the right data flowed through.
 
+- Once the pipeline has completed successfully, the service entity will be automatically created and registered in the Harness Software Catalog. You can verify this by navigating to the Catalog section in the IDP.
+
+![Catalog View](./static/java-onb/catalog-entity.png)
+
+
 ----
+
+## Building the UI Workflow for Developer Self-Service
+
+Now that your pipeline is ready and working end-to-end, it’s time to make it developer-facing.
+
+You’ll now create a **Workflow** in the Harness Internal Developer Portal that acts as a simple form UI. This form will collect all the required inputs — like service name, owner, description, etc. — and pass them to the pipeline you just built.
+
+Think of this as the final piece of the self-service experience, where you can abstract away all the underlying automation logic and provide a simplified entry point for developers to create and register new services.
+
+### Create a New Workflow in Developer Portal
+
+Navigate to the **Workflows** section in the IDP and click **Create Workflow**. This will open a window where you can define the workflow's name, description, and other properties. This would be like the basic info for [workflow creation](https://developer.harness.io/docs/internal-developer-portal/flows/manage-workflow-2o#creating-workflows).
+
+### Configure Workflow YAML
+
+Once your workflow basic details are provided, the next step is to configure it using YAML. This is where you define the **input fields** developers will fill out, and how those values will be passed into your existing onboarding pipeline.
+
+![workflow-yaml](./static/java-onb/workflow-yaml.png)
+
+#### Parameters: Capturing Developer Inputs
+
+Under the `parameters` section, you're declaring all the fields the developer needs to provide during execution; such as `service_name`, `repo_name`, `owner`, and more.
+
+Each field has a `title`, `type`, and optionally a `description` or validation pattern. You can also mark some fields as `required`, which ensures the form can’t be submitted without them.
+
+These parameters are rendered as a UI form in the Developer Portal when someone opens the workflow.
+
+#### Triggering the Pipeline with Inputs
+
+After defining the inputs, you configure a **step** to trigger the onboarding pipeline. That’s done using:
+
+```yaml
+action: trigger:harness-custom-pipeline
+```
+
+This action takes:
+
+* A full **pipeline URL** — including your account, project, repo, and stage details
+* An **inputset** — which maps each workflow input to a pipeline variable
+* An **API key** — passed securely using the `token` field
+
+This means: when a developer fills out the form and clicks “Run,” the workflow passes those values to the pipeline — which in turn runs all the steps: code generation, GitHub push, and entity registration.
+
+You can find this pipeline URL directly in the **Pipeline Studio** of Harness. Just copy it from the browser when you’re inside the pipeline — make sure it includes the right connector, repo, and stage info.
+
+
+<details>
+<summary>Sample YAML</summary>
+
+```yaml
+spec:
+  parameters:
+    - title: Fill in the Java service details
+      required:
+        - service_name
+        - java_package_name
+        - owner
+        - organization
+        - repo_name
+        - unique_identifier
+      properties:
+        service_name:
+          title: Service Name
+          type: string
+          description: Name of the Java service
+
+        java_package_name:
+          title: Java Package Name
+          type: string
+          description: Java package name (e.g., com.example.myservice)
+          pattern: ^[a-z][a-z0-9]*(\.[a-z][a-z0-9]*)*$
+
+        description:
+          title: Description
+          type: string
+          description: Description of the Java service
+          default: Generated Java service from IDP template
+
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the service
+
+        organization:
+          title: GitHub Organization
+          type: string
+          description: Name of the GitHub organization
+          default: Sdhar-ORG-Harness
+
+        repo_name:
+          title: Repository Name
+          type: string
+          description: Name of the repository where the service will be stored
+
+        unique_identifier:
+          title: Unique Identifier
+          type: string
+          description: Unique identifier for the service (no spaces, lowercase)
+          pattern: ^[a-z0-9_]+$
+
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+
+  steps:
+    - id: trigger
+      name: Onboarding Java Service
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://app.harness.io/ng/account/<...>/pipeline-studio/?<...>
+        inputset:
+          service_name: ${{ parameters.service_name }}
+          java_package_name: ${{ parameters.java_package_name }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          organization: ${{ parameters.organization }}
+          repo_name: ${{ parameters.repo_name }}
+          unique_identifier: ${{ parameters.unique_identifier }}
+        apikey: ${{ parameters.token }}
+
+  ownedBy:
+    - user:account/timothy.davis@harness.io
+
+
+```
+</details>
+
+### Running the Workflow from the UI
+
+Once your workflow YAML is saved and configured, it becomes instantly available in the **Workflows** section of the Harness Developer Portal. Developers can now search, execute, and track onboarding in just a few clicks.
+
+- Search and Launch the Workflow:
+Developers can search for the published workflow by name (e.g., `Java-Onv`) from the **Workflows** tab.
+Once found, simply click **Execute** to launch the workflow form.
+![Search Workflow in IDP](./static/java-onb/workflow.png)
+<!-- ![Search Workflow in IDP](./static/java-onb/workflow-search.png) -->
+
+
+- Fill Inputs and Trigger Pipeline: 
+When the workflow runs, it presents a UI form to the developer based on the parameters you defined earlier. After submission, it triggers the underlying onboarding pipeline, passing along all input values. You’ll be able to track progress in real time, and view exactly which variables were passed into the pipeline.
+![Fill Inputs and Trigger Pipeline](./static/java-onb/workflow-input.png)
+
+
+
+
+
+## Wrapping Up: Bringing Developer Self-Service to Life
+
+Congratulations — you’ve just built a fully functional, end-to-end onboarding workflow for Java services in Harness IDP.
+
+This is more than just a pipeline or form — it’s a platform capability. With this setup, developers can create a new service with all the necessary code, metadata, and governance simply by submitting a workflow in the Developer Portal. That’s the essence of platform engineering — enabling velocity without sacrificing control.
+
+#### Here’s what you’ve delivered:
+
+* A reusable Java onboarding pipeline that clones templates, generates code, creates GitHub repos, pushes files, and registers services into the IDP Catalog.
+* A structured set of pipeline variables that turn developer input into dynamic, automated behavior.
+* A UI-driven Workflow that hides complexity and gives developers a clean, guided experience.
+* Verified execution — ensuring every component is created, pushed, and registered exactly as expected.
+
+With this in place, developers now have a single, consistent entry point to spin up new services that are catalog-compliant and production-ready. As a platform engineer, you’ve established a foundation that’s easy to extend, maintain, and scale.
+
+
+You’ve laid the groundwork for self-service at scale. And this is only the beginning of what’s possible with Harness IDP.
+
+
