@@ -13,7 +13,7 @@ When interacting with GitHub from CI pipelines, authentication is required for a
 * **Security risks** from hardcoded secrets or token exposure.
 * **User binding** ties activity to a specific person rather than a system identity.
 
-This guide walks through a modern, flexible solution that uses a GitHub App to generate short-lived tokens at runtime, powered by a Harness-compatible plugin.
+This guide walks through a modern, flexible solution that uses a GitHub App to generate short-lived tokens at runtime, powered by a [Harness-compatible plugin](https://github.com/harness-community/drone-github-app-token).
 
 ---
 
