@@ -4,11 +4,15 @@ description: You can build multi-architecture images in a CI pipeline.
 sidebar_position: 21
 ---
 
-Building multi-architecture images is possible with Harness but differs based on your infrastructure type. Please choose the infrastructure that is right for you.
+This document covers methods for building multi architecture images in Harness with or without [Docker layer caching (DLC)](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching). 
 
-## Cloud Infrastructure
+## With DLC
 
-Building multi-architecture images is simple for cloud infrastructures. You will need to enable an environment variable in your `Build and Push an image to Docker` step. To do so:
+:::info Self-Hosted Infrastructure
+
+If you're using self-hosted infrastructure, turn on the feature flag `CI_ENABLE_DLC_SELF_HOSTED`. To enable this flag, contact [Harness Support](mailto:support@harness.io).
+
+:::
 
 1. Open your `Build and Push an image to Docker Registry` step. 
 2. Select `Enable Docker Layer caching`. To learn more, go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching).
@@ -17,14 +21,23 @@ Building multi-architecture images is simple for cloud infrastructures. You will
 4. Enter `PLUGIN_PLATFORM` for your **Key**. 
 5. Enter your architectures as a comma separated list as your **Value**. For example, `linux/amd64,linux/arm64`.
 
-That's it!
+## Without DLC
 
-## Self-Managed Infrastructure
+:::info Kubernetes Infrastructure
 
-In order to build multi-architecture images with Kubernetes infrastructure, you will need to use BuildX and DLC. To do so you will require the feature flag `CI_ENABLE_DLC_SELF_HOSTED`. To enable this flag, contact [Harness Support](mailto:support@harness.io)
+If you're using Kubernetes infrastructure, turn on the feature flag `CI_USE_BUILDX_ON_K8`. To enable this flag, contact [Harness Support](mailto:support@harness.io).
 
-Once this flag is enabled, simply complete the [cloud infrastructure steps above](#cloud-infrastructure) to build multi-architecture images.
+:::
 
+1. Open your `Build and Push an image to Docker Registry` step. 
+2. Open the **Optional Configuration** dropdown at the bottom of the step.
+3. Add two variables under **Environment Variables**.
+4. Enter `PLUGIN_PLATFORM` for your first **Key**. 
+5. Then, enter your architectures as a comma separated list as your **Value**. For example, `linux/amd64,linux/arm64`.
+6. Enter `PLUGIN_BUILDER_DRIVER` for your second variable's **Key**.
+7. Then, enter `docker-container` for your second variable's **Value**.
+
+## Deprecated Methods
 <details>
 <summary>Deprecated method of building multi-arch images on Kubernetes infrastructure</summary>
 
