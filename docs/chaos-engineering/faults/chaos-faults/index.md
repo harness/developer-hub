@@ -2,6 +2,7 @@
 title: Chaos Faults
 description: Comprehensive library of pre-built chaos faults for testing system resilience
 sidebar_position: 1
+slug: /docs/chaos-engineering/faults/chaos-faults-reference
 redirect_from:
   - /docs/chaos-engineering/use-harness-ce/chaos-faults
 ---
@@ -144,9 +145,3 @@ spec:
 - **Document Results**: Record learnings and system improvements
 - **Safety First**: Always have rollback procedures and safety mechanisms in place
 
-## Related Resources
-
-- [Common Tunables for All Faults](./common-tunables-for-all-faults)
-- [Creating Chaos Experiments](../../guides/chaos-experiments/index)
-- [Resilience Probes](../../guides/probes/index)
-- [Security Best Practices](../../security/index)
