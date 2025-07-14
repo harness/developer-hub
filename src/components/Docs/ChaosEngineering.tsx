@@ -5,8 +5,9 @@ import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
-import { docsCards } from './data/chaosEngineeringNewData';
-export default function CE() {
+import { docsCards } from './data/chaosEngineeringData';
+
+export default function ChaosEngineering() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
@@ -64,12 +65,10 @@ export default function CE() {
                 }
               />{' '}
             </div>
-
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      <div className={styles.subSection}></div>
     </div>
   );
 }

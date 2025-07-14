@@ -93,7 +93,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: <>Measure the resilience posture of applications.</>,
-    link: "docs/chaos-engineering/",
+    link: "docs/chaos-engineering/overview",
   },
   {
     title: "Revolutionize Incident Management",
