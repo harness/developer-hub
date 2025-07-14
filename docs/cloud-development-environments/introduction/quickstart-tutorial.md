@@ -14,57 +14,13 @@ This guide provides a detailed step-by-step walkthrough to help you get started 
 Ensure that the **CDE module** is enabled in your Harness account before proceeding.
 For assistance, contact: **[cde-interest@harness.io](mailto:cde-interest@harness.io)**
 
-## Select Your Deployment Model
-
-Based on the deployment model you choose - **Harness Hosted** or **Self Hosted** - you can proceed accordingly with this tutorial.
-
-### Harness Hosted
-
-For Harness Hosted Gitspaces, no infrastructure configuration is required. All you need is your source code repository link and Gitspace details. Read more about [Harness Hosted Gitspaces](/docs/cloud-development-environments/introduction/quickstart-guide.md).
-
-**🔗 Follow the instructions here to create a new Gitspace: [Creating Gitspaces](/docs/cloud-development-environments/introduction/quickstart-tutorial.md#create-a-gitspace)**.
-
-### Self Hosted
-
-For Self Hosted Gitspaces, you need to ensure your infrastructure is configured and set up beforehand. Read more about [Self Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md). All the configuration steps are mandatory before creating any Self Hosted Gitspace.
-
-**🔗 Follow the instructions here to configure Self Hosted Gitspaces: [Get Started with Self Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md#get-started-with-self-hosted-gitspaces)**
-
-## Select Your Git Provider
-
-Depending on the Git provider you choose - **Cloud Provider** or **On-Prem** - you can proceed accordingly with this tutorial.
-
-### Cloud Git Providers
-
-Gitspaces allow you to configure your preferred **cloud Git provider** for seamless development. This enables you to create a Gitspace directly from your project repository (public or private) hosted on your chosen Git provider.
-If you plan to use any of the following Cloud Git Providers, you must configure them beforehand:
-
-* [Harness Code](https://developer.harness.io/docs/code-repository/get-started/overview/)
-* [GitHub Cloud](https://docs.github.com/en/get-started/start-your-journey/about-github-and-git)
-* [GitLab Cloud](https://about.gitlab.com/)
-* [Bitbucket Cloud](https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-cloud/)
-* Any Public Git Repository
-
-**🔗 Follow the instructions here to configure OAuth for these providers: [Get Started with Cloud Git Providers](/docs/cloud-development-environments/git-providers/cloud-providers.md)**
-
-### On-Prem Git Providers
-
-You can configure On-Prem Git Providers to launch Gitspaces for source code repositories hosted **within your own infrastructure**. This provides an added layer of security and control over your source code and metadata, ensuring that your data never leaves your servers.
-If you plan to use any of the following On-Prem Git Providers, you must configure them beforehand:
-
-* [GitHub Enterprise Server](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server)
-* [GitLab Self-Managed](https://docs.gitlab.com/subscriptions/self_managed/)
-* [Bitbucket Data Center](https://www.atlassian.com/enterprise/data-center/bitbucket)
-
-**🔗 Follow the instructions here to configure On-Prem Git Providers: [Get Started with On-Prem Git Providers](/docs/cloud-development-environments/git-providers/on-prem-providers.md).**
-
 ## Create a Gitspace
 
 We’ll now create a Gitspace, we’ll use a sample application from our public GitHub repository: **[Demo Node.js App](https://github.com/harness-community/demo-repo-nm.git)**. This is useful for Harness-Hosted Gitspaces. 
 
 1. Open the Harness UI and go to **Gitspaces** from the left sidebar.
 
-2. **Git Provider**: Select your **Git Provider** (as per the [section](/docs/cloud-development-environments/introduction/quickstart-tutorial.md#select-your-git-provider) above).
+2. **Git Provider**: Select your preferred **Git Provider** ([see supported Git Providers](/docs/cloud-development-environments/introduction/whats-supported.md#git-providers)). 
 
 3. **Repository URL**: Enter your **Repository URL**:
 

@@ -99,4 +99,4 @@ To understand more about this step and its implementation, please refer to [Setu
 The **CDE Gateway** plays a key role in ensuring reliable connectivity, secure access, and controlled traffic flow. It is responsible for **routing** user requests to the appropriate Gitspaces. The CDE gateway also handles **authentication**, ensuring that only users with valid access tokens can access Gitspaces. From a **security** perspective, the CDE gateway ensures that all incoming traffic to a Gitspace VM originates from trusted components. This controlled entry point greatly reduces the surface area for potential attacks and enforces strict traffic policies.
 
 ## Next Steps
-You can get started with Self Hosted Gitspaces by following this [Get Started with Self Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md) guide. 
+You can get started with Self Hosted Gitspaces by following this [Get Started with Self Hosted Gitspaces](/docs/category/configure-self-hosted-gitspaces) guide. 

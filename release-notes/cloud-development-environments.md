@@ -18,14 +18,6 @@ Review the notes below for details about recent changes to **Harness Cloud Devel
 
 :::
 
-## 📌 Release Deployment Status by Cluster
-
-| **Cluster** | **Deployment Status** | **Release Version** |
-| ----------- | --------------------- | ------------------- |
-| **prod0**   | ✅ Completed          | Jul - 2025.07.v1    |
-| **prod1**   | ✅ Completed          | Jul - 2025.07.v1    |
-| **prod2**   | ✅ Completed          | Jul - 2025.07.v1    |
-
 ## 🚀 Releasing Self-Hosted Gitspaces — July \[2025.07.v1]
 
 ### Introducing Harness Self-Hosted Gitspaces
