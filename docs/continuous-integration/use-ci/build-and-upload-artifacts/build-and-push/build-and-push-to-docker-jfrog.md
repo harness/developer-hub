@@ -242,6 +242,8 @@ Settings:
 
 [Plugin on Dockerhub](https://hub.docker.com/r/plugins/artifactory-publish-docker-buildinfo/tags)
 
+<SshOps/>
+
 ## Troubleshoot Build and Push steps
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to building and pushing images, such as:
