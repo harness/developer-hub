@@ -54,12 +54,9 @@ To access the dashboards outside the CCM module, perform the following steps:
 The data scan limit is 350 GB per query. Users can avoid hitting this limit by applying necessary filters to reduce the result-set as per their requirements.
 :::
 
-## See also
-* [Use Dashboard Actions](../../../platform/dashboards/use-dashboard-actions.md)
-
 ## Billing Export Fields Expansion in Unified Explore
 
-We’ve expanded our billing data capabilities across all three cloud providers — AWS, GCP, and Azure by exposing all standard billing export fields directly in Unified Explore.
+We’ve expanded our billing data capabilities across all three cloud providers: AWS, GCP, and Azure by exposing all standard billing export fields directly in Unified Explore.
 
 These fields allow for deeper visibility, granular filtering, and improved analysis of cloud spend across providers.
 
@@ -71,9 +68,9 @@ Managing cloud costs effectively requires access to detailed and accurate data. 
 
 - Simplify audits, budgeting, and forecasting
 
-#### What’s Included
+### What’s Included
 
-### AWS**
+#### AWS
 
 All standard fields from AWS Cost and Usage Reports (CUR) are now available.
 
@@ -81,7 +78,7 @@ Example fields: lineItem/UsageAccountId, lineItem/UsageType, product/instanceTyp
 
 [AWS Data Dictionary →](https://docs.aws.amazon.com/cur/latest/userguide/data-dictionary.html)
 
-### GCP
+#### GCP
 
 Support for both Standard and Detailed billing export schemas.
 
@@ -91,7 +88,7 @@ Fields from cost_type, project.id, service.description, and more are available.
 
 [GCP Detailed Schema →](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables/detailed-usage#detailed-usage-cost-data-schema)
 
-### Azure
+#### Azure
 
 Standard billing dataset fields such as resourceGroup, meterCategory, costInBillingCurrency, etc. are now exposed.
 

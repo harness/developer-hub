@@ -38,7 +38,7 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 ## June 2025 - Version 1.55.3
 
 ### [New Feature] Billing Export Fields Expansion in Unified Explore
-**[CCM-23638] | [Docs](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/access-ccm-dashboards#billing-export-fields-expansion-in-unified-explore)**
+**[CCM-22738] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/access-ccm-dashboards#billing-export-fields-expansion-in-unified-explore)**
 
 We’ve expanded our billing data capabilities across all three cloud providers AWS, GCP, and Azure, by exposing all standard billing export fields directly in Unified Explore.
 
