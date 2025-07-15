@@ -30,7 +30,7 @@ Each impression contains these fields.
 | Traffic type ID and name | Traffic type associated to the feature flag evaluated. |
 | Treatment | Treatment that was returned. |
 
-# Tracking impressions
+## Tracking impressions
 
 Impressions are tracked by each Harnes FME SDK and periodically sent to Harness backend servers.
 
