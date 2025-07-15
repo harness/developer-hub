@@ -140,6 +140,13 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2025
 
+### Version 1.97.x <!--July 15, 2025-->
+
+#### Fixed issues
+
+- Resolved a bug in the roll-up job. It now uses a MongoDB stream/iterator to process documents one at a time, preventing OOM errors caused by loading all unprocessed documents at once. [PL-63838]
+- Updated User Details page where links under the RoleBindings tab now properly redirect to the correct scoped Roles and ResourceGroups. [PL-63651]
+
 ### Version 1.96.x <!--July 08, 2025-->
 
 #### Fixed issues
