@@ -8,6 +8,7 @@ redirect_from:
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
+import SshOps from '/docs/continuous-integration/shared/ssh-during-docker-build.md';
 
 This topic explains how to configure the **Build and Push to GAR** step in a Harness CI pipeline. This step is used to build and push to [Google Artifact Registry (GAR)](https://cloud.google.com/artifact-registry).
 

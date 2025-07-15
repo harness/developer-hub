@@ -8,6 +8,7 @@ redirect_from:
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
 import Tar from '/docs/continuous-integration/shared/build-and-push-local-tar.md';
+import SshOps from '/docs/continuous-integration/shared/ssh-during-docker-build.md';
 
 This topic explains how to use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-registry.md) to build and push an image to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory) Docker registries.
 
