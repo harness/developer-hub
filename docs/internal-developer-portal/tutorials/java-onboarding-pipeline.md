@@ -1,5 +1,5 @@
 ---
-title: End-to-End IDP Self-Service Workflow
+title: Developer Form to Catalog-Ready Service: Automating Java Onboarding in Harness IDP
 description: End-to-end guide for Platform Engineers and Developers to onboard Java services into the Internal Developer Portal (IDP) using Harness pipelines and workflows.
 sidebar_position: 1
 tags:
@@ -21,7 +21,7 @@ keywords:
   - service bootstrap automation
 ---
 
-# End-to-End IDP Self-Service Workflow for Java Services
+# Developer Form to Catalog-Ready Service: Automating Java Onboarding in Harness IDP
 
 This tutorial explains how to implement a self-service onboarding workflow for Java-based microservices within the **Harness Internal Developer Portal (IDP)**. The goal is to provide developers with a simple, consistent, and fully automated way to create and register new services, without relying on manual setup or platform intervention.
 
@@ -55,7 +55,9 @@ Before you begin, ensure the following prerequisites are in place. These are req
 
 ### Tools and Resources
 
-- 
+- **Harness API Key**  
+  A valid [Harness API Key](https://developer.harness.io/docs/platform/automation/api/api-quickstart/) is required to authenticate API calls made during the registration step. This key is securely passed through the workflow and used to trigger pipeline executions or interact with the Entities API. Make sure it's scoped appropriately and stored as a secret.
+
 
 - **Cookiecutter Template for Java Services**  
   A prebuilt [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/) template must be available in a public or private GitHub repository. This template defines the standard project structure for all Java services created through the onboarding workflow.
@@ -290,7 +292,7 @@ This step uses a **GitHub connector** (configured as a third-party Git provider)
 | Field            | Description                                                                 |
 |------------------|-----------------------------------------------------------------------------|
 | Connector    | A GitHub connector scoped at the **account level**. It must have access (via PAT or OAuth) to the template repo. |
-| Repository Name | Use the pipeline variable. This points to the source template repository. |
+| Repository Name | You can use the pipeline variable `<+pipeline.variables.cookie_repo>` to point to the source template repository. |
 | Git Provider Type | Set this to **Third-party Git provider** (GitHub). |
 | Build Type   | Select **Git Branch**. This ensures you're always pulling from a stable reference. |
 | Branch Name  | Enter `main`, assuming your cookiecutter template’s latest code is in the `main` branch. |
@@ -332,10 +334,10 @@ Next, configure the inputs that the template expects. These inputs should exactl
 ![cookiecutter](./static/java-onb/cookiecutter.png)
 
 For our Java service, you’ll pass values for:
-- `service_name` 
-- `java_package_name` 
-- `description` 
-- `owner` 
+- service_name - `<+pipeline.variables.service_name>`
+- java_package_name - `<+pipeline.variables.java_package_name>`
+- description - `<+pipeline.variables.description>`
+- owner - `<+pipeline.variables.owner>`
 
 All of these are already defined as pipeline variables, so just use the expression syntax like:  
 `<+pipeline.variables.service_name>`, `<+pipeline.variables.owner>`, and so on.
@@ -370,16 +372,18 @@ You’ll do this using the **CreateRepo** step in your pipeline. You can choose 
 
 | Field                   | Description                                                                 |
 |-------------------------|-----------------------------------------------------------------------------|
-| Git Provider        | Third-party Git provider – GitHub                                           |
+| Git Provider        | We will use Third-party Git provider – GitHub                                           |
 | Repository Type     | Choose `Public` or `Private` based on your needs                            |
-| Connector           | GitHub connector with repo creation permissions (OAuth or PAT)              |
-| Organization        | `<+pipeline.variables.organization>` – target GitHub org name               |
-| Repository Name     | `<+pipeline.variables.repo_name>` – the repo to be created                  |
+| Connector           | A GitHub connector scoped at the **account level**. It must have access to commit to the repo.              |
+| Organization        | `<+pipeline.variables.organization>` – the target GitHub org name where the repo will be created.              |
+| Repository Name     | `<+pipeline.variables.repo_name>` – the name of the new repo, which you want to create.                   |
 | Description (optional) | Short text describing the repository’s purpose                           |
 | Default Branch      | `main` – or any branch your organization prefers as default                 |
 | Add Personal Account| Enable if you're not using an org and want to push under your GitHub user   |
 
-> If you're using an organization account, provide its name through the `organization` variable. If not, you can check the **Add Personal Account** box to push it under your personal GitHub username.
+:::note
+In this tutorial, we're focusing on onboarding services within a GitHub organization account. All repository creation and push operations are scoped to the organization, and that your GitHub connector has the necessary permissions at the `org` level.
+:::
 
 
 #### Sample YAML
@@ -399,22 +403,22 @@ You’ll do this using the **CreateRepo** step in your pipeline. You can choose 
       personalAccount: false
 ```
 
-### Step 5: Push the service code to GitHub
+### Step 5: Push the Service Code to GitHub
 
 
 Once the Java service is generated using the Cookiecutter template and the repository is successfully created, the next step is to push the code to GitHub using the **DirectPush** step. This step takes the contents from the generated service directory and commits them directly to the `main` branch of the newly created repository.
 
-It’s important to ensure the directory path provided in this step matches the name of the generated folder (typically the service name). Also, make sure you’re using the same GitHub connector and organization as configured during the CreateRepo step.
+It’s important to ensure the organization and repository name provided in this step matches the name of the repository created in the previous step. 
 
 ![push-to-git](./static/java-onb/push-to-git.png)
 
 | Field               | Description                                                                 |
 |---------------------|-----------------------------------------------------------------------------|
-| Git Provider     | GitHub (via third-party Git provider option)                                |
-| Connector        | GitHub connector with commit access                                         |
-| Organization     | GitHub org under which the repo was created                                 |
-| Repository Name  | Name of the new repo, same as earlier                                       |
-| Code Directory   | The folder where the generated service code and `catalog-info.yaml` live   |
+| Git Provider     | We will use Third-party Git provider – GitHub                                |
+| Connector        | A GitHub connector scoped at the **account level**. It must have access to commit to the repo.                                                 |
+| Organization     | GitHub org under which the repo was created - `<+pipeline.variables.organization>`                                |
+| Repository Name  | Name of the new repo, same as earlier - `<+pipeline.variables.repo_name>`                                       |
+| Code Directory   | The directory where you want the generated service code to live - `<+pipeline.variables.service_name>`   |
 | Branch Name      | Use `main` as default                                                       |
 | Allow Force Push | Enable this to make sure the pipeline can push even if the branch already exists |
 
