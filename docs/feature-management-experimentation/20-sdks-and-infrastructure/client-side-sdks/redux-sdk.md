@@ -181,7 +181,7 @@ Feel free to dive into the declaration files if IntelliSense is not enough!
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ## Using the SDK
 
@@ -695,19 +695,19 @@ Destroying the SDK is meant to be definitive. A call to the `destroySplitSdk` fu
 
 ## Track
 
-You can use the `track` method to record any actions your users perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users’ actions and metrics. Go to [Events](https://help.split.io/hc/en-us/articles/360020585772) to learn more about using track events in feature flags. 
+You can use the `track` method to record any actions your users perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users’ actions and metrics. Go to [Events](/docs/feature-management-experimentation/release-monitoring/events/) to learn more about using track events in feature flags. 
 
 The `track` method takes a params object with up to five arguments. The data type and syntax for each are:
 
 * **key:** The `key` variable used in the `getTreatments` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period. 
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
@@ -765,7 +765,7 @@ const queued = track({ key: USER_ID, trafficType: 'user', eventType: 'page_load_
 
 The SDK has a number of parameters for configuring performance. Each parameter is set to a reasonable default. However, you can override these value in the `config` object passed to the `initSplitSdk` action creator, as shown in the [Initialization](#initialization) section above.
 
-To learn about all the available configuration options, go to the [JavaScript SDK Configuration section.](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#configuration)
+To learn about all the available configuration options, go to the [JavaScript SDK Configuration section](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configuration).
 
 ## Localhost mode
 
@@ -905,7 +905,7 @@ function requestHandler(params) {
 </TabItem>
 </Tabs>
 
-For more details on about using the Manager, go to [JavaScript SDK Manager](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#manager).
+For more details on about using the Manager, go to [JavaScript SDK Manager](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#manager).
 
 ## Listener
  
@@ -981,7 +981,7 @@ Even though the SDK does not fail if there is an exception in the listener, do n
 
 ## Logging
  
-To enable SDK logging in the browser, see how the SDK Logging works on [the client side](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#logging) or [the server side](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK#logging) depending on where you're running the SDK.
+To enable SDK logging in the browser, see how the SDK Logging works on [the client side](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#logging) or [the server side](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#logging) depending on where you're running the SDK.
 
 ## Advanced use cases
 
@@ -991,7 +991,7 @@ This section describes advanced use cases and features provided by the Redux SDK
  
 When running **on the client side** the Redux SDK factory client is tied to one specific key or ID at a time which usually belongs to one traffic type (for example, `user`, `account`, `organization`). This enhances performance and reduces caching data in the SDK.
 
-FME supports the ability to release features to multiple keys with different traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. Go to [Traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) to learn more.
+FME supports the ability to release features to multiple keys with different traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. Go to [Traffic type](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) to learn more.
 
 If you need to roll out feature flags by different traffic types, the SDK instantiates multiple clients, one for each traffic type. For example, you may want to roll out the feature flag `user-poll` by `users` and the feature flag `account-permissioning` by `accounts`. 
 
@@ -1251,7 +1251,7 @@ const FeatureFlagTogglerFromCustomStateKey = connectToggler('myFeatureFlag', key
 
 ### User consent
 
-The SDK factory allows you to disable the tracking of events and impressions until user consent is explicitly granted or declined. To learn how to configure this feature, refer to the [JavaScript SDK User consent](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#user-consent) section.
+The SDK factory allows you to disable the tracking of events and impressions until user consent is explicitly granted or declined. To learn how to configure this feature, refer to the [JavaScript SDK User consent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#user-consent) section.
 
 When using the Redux SDK, you can access the underlying SDK factory instance via the `splitSdk` object, as shown below:
 

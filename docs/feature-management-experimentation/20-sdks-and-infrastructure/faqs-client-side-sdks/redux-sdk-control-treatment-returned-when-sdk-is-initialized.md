@@ -35,7 +35,7 @@ When the SDK initializes, it starts downloading the cache from Harness FME serve
 The solution is to dispatch `getTreatments` actions immediately after the `initSplitSdk` action. `getTreatments` creates an async (Thunk) action that will evaluate feature flags when the SDK is ready, and also on SDK updates if you set the `evalOnUpdate` param to true (it is false by default). This way the isReady flag will update together with the treatments values, in a single **action**.
 In the first approach (dispatching the `getTreatments` action in `onReadyCallback`), there are two separate updates: one of the isReady flag, and a second one of the treatments values (after dispatching `getTreatment` action in the callback).
 
-For more details, check our public documentation, [here](https://help.split.io/hc/en-us/articles/360038851551-Redux-SDK#advanced-subscribe-to-events-and-changes).
+For more details, check our public documentation [here](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk#subscribe-to-events).
 
 ```
 export default function initialise() {

@@ -10,7 +10,7 @@ sidebar_label: Browser Suite
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide provides detailed information about our JavaScript Browser Suite, an SDK designed to leverage the full power of FME. The Browser Suite is built on top of the [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk) and the [Browser RUM Agent](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent), offering a unified solution, optimized for web development.
+This guide provides detailed information about our JavaScript Browser Suite, an SDK designed to leverage the full power of FME. The Browser Suite is built on top of the [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk) and the [Browser RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent), offering a unified solution, optimized for web development.
 
 The Suite provides the all-encompassing essential programming interface for working with your FME feature flags, as well as capabilities for automatically tracking performance measurements and user events. Code currently using Browser SDK or Browser RUM Agent can be easily upgraded to Browser Suite, which is designed as a drop-in replacement.
 
@@ -137,7 +137,7 @@ When the Suite is instantiated, it starts synchronizing feature flag and segment
 
 We recommend instantiating the Suite once as a singleton and reusing it throughout your application.
 
-Configure the Suite with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the Suite with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys) to learn more.
 
 ## Using the Suite
 
@@ -528,22 +528,22 @@ const treatment: string = client.getTreatment('FEATURE_FLAG_NAME', undefined, ev
 
 ### Track
 
-Tracking **events** is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. See the [Events](https://help.split.io/hc/en-us/articles/360020585772) documentation for more information.
+Tracking **events** is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users' actions and metrics. See the [Events](/docs/feature-management-experimentation/release-monitoring/events/) documentation for more information.
 
-The Suite automatically collects some RUM metrics and sends them to Harness FME. Specifically, some [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) events (see [Default events](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent#default-events)) and Web Vitals events are automatically collected by the Suite. Learn more about these and other events in the [Browser RUM Agent](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent#events) documentation.
+The Suite automatically collects some RUM metrics and sends them to Harness FME. Specifically, some [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) events (see [Default events](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent#default-events)) and Web Vitals events are automatically collected by the Suite. Learn more about these and other events in the [Browser RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent#events) documentation.
 
 To track custom events, you can use the Suite client's `track` method or the Suite RUM agent's `track` method. Both methods are demonstrated in the code example below.
 
 The Suite client's `track` method sends events for the identity configured on the client instance or passed as a parameter to this method. The `track` method can take up to four arguments. The proper data type and syntax for each are:
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Harness FME.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) that you have defined in your instance of Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](/docs/feature-management-experimentation/release-monitoring/events/#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The Suite RUM agent's `track` method sends events for all the identities configured on all instances of the Suite clients. For those clients that have not been configured with a traffic type, the `track` method uses the default traffic type `user`. The Suite RUM agent's `track` method can take up to three of the four arguments described above: `EVENT_TYPE`, `VALUE`, and `PROPERTIES`. 
 
@@ -586,7 +586,7 @@ var queued = SplitRumAgent.track('page_load_time', null, properties);
 </TabItem>
 </Tabs>
 
-The `track` methods returns a boolean value of `true` or `false` to indicate whether or not the Suite was able to successfully queue the event to be sent back to Harness servers on the next event post. The `track` method returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if incorrect input has been provided. See the [Track events](https://help.split.io/hc/en-us/articles/360020585772-Track-events) documentation for more information.
+The `track` methods returns a boolean value of `true` or `false` to indicate whether or not the Suite was able to successfully queue the event to be sent back to Harness servers on the next event post. The `track` method returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if incorrect input has been provided. See the [Track events](/docs/feature-management-experimentation/release-monitoring/events/) documentation for more information.
 
 ### Shutdown
 
@@ -650,7 +650,7 @@ Suite RUM agent parameters:
 | rumAgent.prefix | Optional prefix to append to the `eventTypeId` of the events sent to Harness by the RUM Agent. For example, if you set the prefix to 'my-app', the event type 'error' will be sent as 'my-app.error'. | undefined |
 | rumAgent.pushRate | The Agent posts the queued events data in bulks. This parameter controls the posting rate in seconds. | 30 |
 | rumAgent.queueSize | The maximum number of event items the RUM Agent will queue. If more values are queued, events will be dropped until they are sent to Harness FME. | 5000 |
-| rumAgent.eventCollectors | The RUM Agent tracks some events by default using event collectors. These event collectors include errors, navigation timing metrics (`page.load.time` and `time.to.dom.interactive` event types), and Web-Vitals. You can disable any of them by setting their value to `false`. Go to [RUM Agent events](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-Agent#events) for more information on each event. | \{ errors: true, navigationTiming: true, webVitals: true \} |
+| rumAgent.eventCollectors | The RUM Agent tracks some events by default using event collectors. These event collectors include errors, navigation timing metrics (`page.load.time` and `time.to.dom.interactive` event types), and Web-Vitals. You can disable any of them by setting their value to `false`. Go to [RUM Agent events](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent#events) for more information on each event. | \{ errors: true, navigationTiming: true, webVitals: true \} |
 
 Shared parameters:
 
@@ -1104,7 +1104,7 @@ This section describes advanced use cases and features provided by the Suite.
 
 ### Instantiate multiple clients
 
-FME supports the ability to release based on multiple traffic types. For example, with traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to the [Traffic type guide](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) for more information.
+FME supports the ability to release based on multiple traffic types. For example, with traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to the [Traffic type guide](/docs/feature-management-experimentation/management-and-administration/fme-settings/traffic-types/) for more information.
 
 Each Suite client is tied to one specific customer ID at a time, so if you need to roll out feature flags by different traffic types, instantiate multiple clients, one for each traffic type. For example, you may want to roll out the feature `user-poll` by `users` and the feature `account-permissioning` by `accounts`.
 
@@ -1332,7 +1332,7 @@ suite.UserConsent.getStatus() === suite.UserConsent.Status.DECLINED;
 
 The Suite handles the setup of the RUM agent using the same SDK key. Configurations for [Logging](#logging), [User consent](#user-consent) and [Identities](#instantiate-multiple-clients) are also shared between the Suite and the RUM agent.
 
-You can further configure the RUM agent using the `rumAgent` property of the Suite configuration object, which is passed as the second argument to the RUM agent's [`setup` method](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent#configuration):
+You can further configure the RUM agent using the `rumAgent` property of the Suite configuration object, which is passed as the second argument to the RUM agent's [`setup` method](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent#configuration):
 
 ```javascript
 import { SplitSuite } from '@splitsoftware/browser-suite';

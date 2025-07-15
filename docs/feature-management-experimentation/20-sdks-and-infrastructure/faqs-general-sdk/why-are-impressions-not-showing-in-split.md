@@ -19,7 +19,7 @@ There are few possible root causes:
 When using Redis and Split Synchronizer:
 
 * Synchronizer is not able to read the Impression key in Redis. Check for any errors in the Synchronizer debug log or Synchronizer admin console (http://[Synchronizer host]:3010//admin/dashboard) to determine root cause.
-* Synchronizer is not keeping up with the impressions flowing from the SDK. Check the [KB article](https://help.split.io/hc/en-us/articles/360016299232-Configure-Split-Synchronizer-for-high-load-Impressions) for solution.
+* Synchronizer is not keeping up with the impressions flowing from the SDK. Check the [KB article](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/configure-fme-synchronizer-to-handle-high-impression-rate) for solution.
 
 When the SDK connects directly to Harness FME servers:
 

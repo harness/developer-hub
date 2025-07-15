@@ -27,12 +27,7 @@ For macOS users, the additional feature flag `CI_HOSTED_CONTAINERLESS_OOTB_STEP_
 
 With Secure Connect for Harness CI Cloud, you can connect to your sensitive assets through a secure tunnel. This allows you to use Harness Cloud build infrastructure with privately-hosted assets, such as internal artifacts repositories and on-premises code repositories. Secure Connect is a faster alternative to allowlisting IPs.
 
-<figure>
-
-![Secure Connect architecture diagram](./static/secure-connect-arch.png)
-
-<figcaption>To use Harness CI Cloud in firewalled environments, such as corporate networks, you enable a secure tunnel between the Harness Cloud network and your private network.</figcaption>
-</figure>
+<DocImage path={require('/docs/continuous-integration/secure-ci/static/secure-connect-arch.png')} alt="Architecture of Secure Connect: establishes a secure tunnel from Harness Cloud to your private network, enabling access to internal code and artifact repositories."/>
 
 You can [configure Secure Connect](#configure-secure-connect) in minutes. If you're already using Harness Cloud build infrastructure, you don't need additional approval to enable Secure Connect.
 
@@ -61,52 +56,52 @@ The API key must be base64-encoded before being added to the Secret.
 :::
 
 ```yaml
- ---
- apiVersion: v1
- kind: Secret
- metadata:
-   name: secure-connect-api-key
- type: Opaque
- data:
-   API_KEY: XXXXXXXXXX
- ---
- apiVersion: apps/v1
- kind: Deployment
- metadata:
-   name: secure-connect
-   labels:
-     app: secure-connect
- spec:
-   selector:
-     matchLabels:
-       app: secure-connect
-   template:
-     metadata:
-       labels:
-         app: secure-connect
-     spec:
-       automountServiceAccountToken: false
-       restartPolicy: Always
-       containers:
-         - name: secure-connect
-           image: harness/frpc-signed
-           resources:
-             requests:
-               cpu: "2"
-               memory: "4G"
-             limits:
-               cpu: "2"
-               memory: "4G"
-           env:
-             - name: REMOTE_PORT
-               value: "30001"
-             - name: REMOTE_SERVER
-               value: sc.harness.io
-             - name: API_KEY
-               valueFrom:
-                 secretKeyRef:
-                   name: secure-connect-api-key
-                   key: API_KEY
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secure-connect-api-key
+type: Opaque
+data:
+  API_KEY: XXXXXXXXXX
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secure-connect
+  labels:
+    app: secure-connect
+spec:
+  selector:
+    matchLabels:
+      app: secure-connect
+  template:
+    metadata:
+      labels:
+        app: secure-connect
+    spec:
+      automountServiceAccountToken: false
+      restartPolicy: Always
+      containers:
+        - name: secure-connect
+          image: harness/frpc-signed
+          resources:
+            requests:
+              cpu: "2"
+              memory: "4G"
+            limits:
+              cpu: "2"
+              memory: "4G"
+          env:
+            - name: REMOTE_PORT
+              value: "30001"
+            - name: REMOTE_SERVER
+              value: sc.harness.io
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secure-connect-api-key
+                  key: API_KEY
 ```
 
 * `REMOTE_PORT` is any port from `30000` to `30099`.
@@ -141,7 +136,7 @@ docker run -it \
 
 3\. Enable **Secure Connect** for each connector you use with Harness Cloud that needs to route through a secure tunnel. This setting is available in each connector's **Connect to Provider** settings.
 
-   For example, if you need to connect to an on-premise code repo, you need to enable **Secure Connect** in your code repo connector's settings.
+   For example, if you need to connect to an on-premises code repository, you need to enable **Secure Connect** in your code repository connector's settings.
 
    Compatible connectors include:
    * [GitHub connectors](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
@@ -160,7 +155,7 @@ When you enable Secure Connect, Harness sets two environment variables: `HARNESS
 You can use these environment variables in cURL commands to tunnel other clients through the established secure tunnel, for example:
 
 ```
-curl -x HARNESS_HTTPS_PROXY YOUR_ENDPOINT_URL
+curl -x "$HARNESS_HTTPS_PROXY" YOUR_ENDPOINT_URL
 ```
 
 Replace `YOUR_ENDPOINT_URL` with the URL that you want to route through the secure tunnel. For example, you could route a private Bitbucket domain like `https://bitbucket.myorg.com/`.

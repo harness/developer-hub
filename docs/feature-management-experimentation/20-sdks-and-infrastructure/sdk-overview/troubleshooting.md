@@ -15,7 +15,7 @@ When you integrate FME SDKs, consider the following to make sure that you have t
 * **Understand security considerations**. Client- and server-side SDKs have different security considerations when managing and targeting using your customers' PII.
 * **Determine which API key**. There are three types of Harness FME authentication tokens with each providing different levels of access to Harness FME API. Understand what each key provides access to and when to use each API key.
 * **Determine which SDK language**. FME supports serveral SDKs across various languages. With FME, you can use multiple SDKs if your product is comprised of applications written in multiple languages.
-* **Determine if you need to use the Split Synchronizer & Proxy**. By default, Harness FME SDKs keep segment and feature flag definitions synchronized as users navigate across disparate systems, treatments, and conditions. However, some languages do not have a native capability to keep a shared local cache of this data to properly serve treatments. For these cases, we built the Split Synchronizer. To learn more, refer to the [Split Synchronizer and Proxy guide](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer-proxy).
+* **Determine if you need to use the Split Synchronizer & Proxy**. By default, Harness FME SDKs keep segment and feature flag definitions synchronized as users navigate across disparate systems, treatments, and conditions. However, some languages do not have a native capability to keep a shared local cache of this data to properly serve treatments. For these cases, we built the Split Synchronizer. To learn more, refer to the [Split Synchronizer guide](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer).
 
 ## Streaming architecture overview
 
@@ -105,9 +105,9 @@ Using Harness FME involves using one of our SDKs. The Harness FME team builds an
 | Flutter plugin | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin) & [GitHub](https://github.com/splitio/flutter-sdk-plugin) |
 | iOS | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) & [GitHub](https://github.com/splitio/ios-client) | 
 | JavaScript | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) & [GitHub](https://github.com/splitio/javascript-client) | 
-| React | client-side | [Docs](https://help.split.io/hc/en-us/articles/360038825091) & [GitHub](https://github.com/splitio/react-client) | 
+| React | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk) & [GitHub](https://github.com/splitio/react-client) | 
 | React Native | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk) & [GitHub](https://github.com/splitio/react-native-client) |
-| Redux | client-side | [Docs](https://help.split.io/hc/en-us/articles/360038851551) & [GitHub](https://github.com/splitio/redux-client) | 
+| Redux | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk) & [GitHub](https://github.com/splitio/redux-client) | 
 | Elixir Thin-Client | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/elixir-thin-client-sdk) & [GitHub](https://github.com/splitio/elixir-thin-client) |
 | GO | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk) & [GitHub](https://github.com/splitio/go-client) | 
 | Java | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk) & [GitHub](https://github.com/splitio/java-client) |

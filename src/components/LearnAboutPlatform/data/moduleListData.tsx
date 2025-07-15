@@ -81,8 +81,8 @@ export const moduleList: CardItem[] = [
     link: 'docs/chaos-engineering',
   },
   {
-    title: 'Incident Response',
-    module: MODULES.ir,
+    title: 'AI SRE',
+    module: MODULES.aisre,
     icon: 'img/icon-ir.svg',
     description: (
       <>
@@ -90,7 +90,7 @@ export const moduleList: CardItem[] = [
         resolution.
       </>
     ),
-    link: 'docs/incident-response',
+    link: 'docs/ai-sre',
   },
   {
     title: 'Service Reliability Management',

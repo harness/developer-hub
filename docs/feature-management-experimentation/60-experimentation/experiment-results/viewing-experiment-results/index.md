@@ -3,29 +3,61 @@ title: Viewing experiment results
 sidebar_position: 10
 ---
 
-The Metrics impact tab shows the impact of your experiment or feature rollout on your customers. To make data-driven decisions on your features, review and interpret the data that you collect before deciding to roll out the functionality to more customers. The data on this tab allows you to ensure safe and reliable feature delivery while powering data-driven decisions. Before getting started, review the following:
+## Overview
+
+
+You can view your experiment results from the **Experiments** page. This page provides a centralized view of all experiments and allows you to quickly access performance metrics, significance levels, and summary details for each treatment group.
+
+Click into any experiment to view detailed results, including the following:
+
+* Experiment metadata, such as:
+  
+  - Experiment name, owners, and tags
+  - Start and end dates
+  - Active targeting rule
+  - Total number of exposures
+  - Treatment group assignment counts and percentages
+
+* Treatment comparison, including:
+
+  - The baseline treatment (e.g. `off`)
+  - One or more comparison treatments (e.g. `low`)
+
+## Use AI Summarize 
+
+For faster interpretation of experiment outcomes, the Experiments page includes an **AI Summarize** button. This analyzes key and guardrail metric results to generate a summary of your experiment, making it easier to share results and next steps with your team.
+
+![Experiment Summary](../../static/summarize.png)
+
+The summary is broken into three sections:
+
+* **Winner Analysis**: Highlights whether a clear winner emerged across key metrics and guardrails.
+* **Overall Impact Summary**: Summarizes how the treatment impacted user behavior or business outcomes.
+* **Next Steps Suggestion**: Recommends what to do next, whether to iterate, roll out, or revisit your setup.
+
+## Viewing metrics 
+
+To view the impact of your feature rollout on your account's metrics, from your selected feature flag, click the **Metrics impact** tab. The metric cards show how your account's metrics change when comparing treatments against your flag's baseline treatment.
+
+Before getting started, review the following:
 
 * Understand how your most important metrics (overall evaluation criteria) were both positively and negatively impacted to learn more about what your customers expect and how you should change your feature functionality.
 * Compare the actual impact with your team's preliminary hypothesis.
 * Ensure that you understand the impact and tradeoffs on your account's guardrail and performance metrics.
 * Share the impact with your team.
 
-## Viewing metrics 
-
-To view the impact of your feature rollout on your account's metrics, from your selected feature flag, click the **Metrics impact** tab. The metric cards show how your account's metrics change when comparing treatments against your flag's baseline treatment.
-
 The Metrics impact tab is described as follows:
 
-* **View impact for.** Select the version or a custom date, targeting rule, and treatments that you want to compare. When you select the treatment, you can see the number of unique keys in that treatment. For more information, refer to the [Apply filters guide](https://help.split.io/hc/en-us/articles/360020848451-Applying-filters).
+* **View impact for.** Select the version or a custom date, targeting rule, and treatments that you want to compare. When you select the treatment, you can see the number of unique keys in that treatment. For more information, refer to the [Apply filters guide](/docs/feature-management-experimentation/experimentation/metrics/setup/filtering/).
 * **Summary of metrics impact.** View how long your measurements have been running, and the last update time for the metrics displayed below. You can also force a recalculation of your metrics by clicking the Recalculate metrics button. This recalculation usually takes around 5 minutes but is dependent on the length of your experiment and the size of your data.
 * **Filter metrics.** Filter down to metrics with a positive or negative impact by clicking the tile. You can deselect and view all by clicking the tile again.
-* **Key metrics.** Select the key metrics that you want to monitor to help you evaluate the success of this feature. Learn about [Configuring feature flag alerting](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting) for your key metrics. Key metrics are recalculated on a schedule, or when you click the *Recalculate* button.
-* **Guardrail metrics.** Globally protected guardrail metrics adhere to an account-wide alerting policy. See the [Metric definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics#metric-categories) page for more information. Guardrail metrics are recalculated on a schedule, or when you click the *Recalculate* button.
+* **Key metrics.** Select the key metrics that you want to monitor to help you evaluate the success of this feature. Learn about [Configuring feature flag alerting](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/#setting-up-feature-flag-alerting) for your key metrics. Key metrics are recalculated on a schedule, or when you click the *Recalculate* button.
+* **Guardrail metrics.** Globally protected guardrail metrics adhere to an account-wide alerting policy. See the [Metric definition](/docs/feature-management-experimentation/experimentation/metrics/categories/) page for more information. Guardrail metrics are recalculated on a schedule, or when you click the *Recalculate* button.
 * **Supporting metrics.** Select the supporting metrics that you want to monitor for this experiment or feature rollout. These metrics should be important to you, but may not be your primary success metrics for this feature. Supporting metrics are recalculated on a schedule, or when you click the *Recalculate* button.
 
-To learn more about analyzing and filtering data on the Metrics Impact tab, see [Applying filters](https://help.split.io/hc/en-us/articles/360020848451).
+To learn more about analyzing and filtering data on the Metrics Impact tab, see [Applying filters](/docs/feature-management-experimentation/experimentation/metrics/setup/filtering/).
 
-For detailed information about specific metric cards, refer to [Understanding metric impact](https://help.split.io/hc/en-us/articles/360020890491-Understand-impact).
+For detailed information about specific metric cards, refer to [Understanding metric impact](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards/).
 
 ## Automated calculation frequency
 

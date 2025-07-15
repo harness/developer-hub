@@ -94,7 +94,7 @@ docker push 082XXXXX925.dkr.ecr.us-east-2.amazonaws.com/splitsync
 
 ![](https://help.split.io/hc/article_attachments/360037885491)
 
-17. Add the required environment variables to the Container as needed by your setup. Look up the "Docker Environment Variable" column in the documentation [configuration section](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer#common-configuration-synchronizer-and-proxy-mode). In our example, we specified the following variables:
+17. Add the required environment variables to the Container as needed by your setup. Look up the "Docker Environment Variable" column in the documentation [configuration section](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer#advanced-configuration). In our example, we specified the following variables:
 ```
 SPLIT_SYNC_APIKEY
 SPLIT_SYNC_REDIS_HOST

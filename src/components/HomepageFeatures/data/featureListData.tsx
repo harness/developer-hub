@@ -58,7 +58,7 @@ export const featureList: CardItem[] = [
     module: MODULES.fme,
     icon: "img/icon_fme.svg",
     description: <>Switch on data-driven features and releases.</>,
-    link: "docs/feature-management-experimentation/getting-started/docs/overview",
+    link: "docs/feature-management-experimentation/getting-started",
   },
   {
     title: "Optimize Cloud Costs",
@@ -93,14 +93,14 @@ export const featureList: CardItem[] = [
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: <>Measure the resilience posture of applications.</>,
-    link: "docs/chaos-engineering/getting-started/",
+    link: "docs/chaos-engineering/overview",
   },
   {
     title: "Revolutionize Incident Management",
-    module: MODULES.ir,
+    module: MODULES.aisre,
     icon: "img/icon-ir.svg",
     description: <>Focus on proactive issue prevention and accelerated resolution.</>,
-    link: "docs/incident-response",
+    link: "docs/ai-sre",
   },
   {
     title: "Increase Developer Productivity",

@@ -27,9 +27,9 @@ export const FmeData: Horizon = {
     feature: [
       {
         tag: [{ value: "Better Together" }],
-        title: "Split integration into Harness, Part 2",
+        title: "Granular permissions in RBAC",
         description:
-          "Migrate permission management to 100% Harness RBAC managed.",
+          "Migrate permission management for FME object and environment-level permissions to Harness RBAC. Previously titled: Split integration into Harness, Part 2",
       },
       {
         tag: [{ value: "SDK" }],

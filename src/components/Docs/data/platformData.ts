@@ -46,7 +46,7 @@ export const docsCards: CardSections = [
         title: "CE",
         module: MODULES.ce,
         description: "Chaos Engineering onboarding guides",
-        link: "/docs/chaos-engineering/getting-started/onboarding/",
+        link: "/docs/chaos-engineering/get-started/",
       },
       {
         title: "CCM",

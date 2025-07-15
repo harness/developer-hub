@@ -47,11 +47,22 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
         
 :::
 
+:::danger Important Note:
+    **About `core_oidcIdToken_create`**  
+
+    A new `core_oidcIdToken_create` permission is introduced to govern the creation of OIDC ID token. The permission is currently in the EXPERIMENTAL status. However, after August 8, the permission will change to ACTIVE status. If any automation makes use of the [OIDC ID token](https://apidocs.harness.io/tag/Oidc-ID-Token), we recommend updating it accordingly.
+
+      | Resource      | Permissions                                          | Status       |
+      |---------------|------------------------------------------------------|--------------|
+      | OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
+:::
+
 ## Administrative Functions
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
 | Resource Groups | <ul><li>View (`core_resourcegroup_view`)</li><li>Create/Edit (`core_resourcegroup_edit`)</li><li>Delete (`core_resourcegroup_delete`)</li></ul> | Active |
+| OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
 | Account Settings | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_setting_view`)</li><li>Edit (`core_setting_edit`)</li></ul> | Active |
 | Default Settings | <ul><li>Create/Edit</li></ul> | Active |
 | Projects | <ul><li>View (`core_project_view`)</li><li>Create (`core_project_create`)</li><li>Edit (`core_project_edit`)</li><li>Delete (`core_project_delete`)</li></ul> | Active |

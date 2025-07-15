@@ -10,7 +10,7 @@ sidebar_position: 17
 
 ## Issue
 
-When using Android App with Kotlin language, the code below always returns contro" treatment from Android SDK
+When using Android App with Kotlin language, the code below always returns the control treatment from the Android SDK:
 
 ```java
 val apiKey = "API KEY"
@@ -31,6 +31,6 @@ splitClient.on(SplitEvent.SDK_READY, object : SplitEventTask() {
 While this code works fine using Swift language based Projects, in Kotlin the code does not listen to the `SDK_READY` event if used as is.
 
 ## Solution
-Based on the [Advanced Section](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#advanced-subscribe-to-events) of Android SDK documentation, we can override onPostExecution function, which will be only called when the `SDK_READY` event fires.
+Based on the [Advanced Section](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#subscribe-to-events) of Android SDK documentation, we can override onPostExecution function, which will be only called when the `SDK_READY` event fires.
 
 <pre>splitClient.on(SplitEvent.<strong>SDK_READY</strong>, <strong>object </strong>: SplitEventTask() \{<br></br>     <strong>override fun </strong>onPostExecution(client: SplitClient) \{<br></br>         <strong>var </strong>treatment = splitClient.getTreatment(<strong>"split-name"</strong>)<br></br>     \}<br></br>\})</pre>

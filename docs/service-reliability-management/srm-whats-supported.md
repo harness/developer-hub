@@ -14,7 +14,7 @@ All SRM features supported in Harness SaaS are also supported in the Self-Manage
 
 For more information about SRM features and functionality, go to [Harness SRM overview](/docs/service-reliability-management/get-started/overview.md) and [Harness SRM key concepts](/docs/service-reliability-management/get-started/key-concepts).
 
-For information about upcoming and recently released features, go to the [SRM product roadmap](https://developer.harness.io/roadmap/#srm), [SRM release notes](/release-notes/service-reliability-management), and [SRM early access features](#srm-early-access-features)
+For information about recently released features, go to the [SRM release notes](/release-notes/service-reliability-management), and [SRM early access features](#srm-early-access-features)
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
 

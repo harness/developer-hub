@@ -21,7 +21,7 @@ Perspectives in Harness CCM provide powerful cost analysis capabilities through 
 
 ## Perspective Drilldown
 
-<DocImage  path={require('./static/total-cost.mp4')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./static/total-cost.png')} width="100%" height="100%" title="Click to view full size image" />
 
 - **Total Cost**: The total cost of the resources in the Perspective.
 - **Budget**: The budget for the resources in the Perspective.
@@ -30,7 +30,7 @@ Perspectives in Harness CCM provide powerful cost analysis capabilities through 
 
 ### Group By
 
-<DocImage  path={require('./static/group-by.mp4')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./static/group-by.png')} width="100%" height="100%" title="Click to view full size image" />
 
 You can create a Perspective for your resources using rules and filters. The filters are used to group the resources. The following are the supported filters:
 
@@ -175,7 +175,7 @@ Analyze costs for your Kubernetes clusters and ECS environments with these group
 
 ### Preferences
 
-<DocImage  path={require('./static/preferences.mp4')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./static/preferences.png')} width="100%" height="100%" title="Click to view full size image" />
 
 #### General Preferences
 
@@ -397,7 +397,7 @@ Similarly, for `labels.key`:
 
 ## Organize Perspectives using Folders
 
-You can organize Perspectives by adding them to folders. The number of Folders that **can be created is 500.**
+You can organize Perspectives by adding them to folders. The number of Folders that **can be created is 2000.**
 
 Click **New folder**, name the folder, and then select the Perspectives you want to add.
 

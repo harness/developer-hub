@@ -202,7 +202,7 @@ The following early access (beta) feature is available for the Harness Security 
 
 ## SRM early access features
 
-For information about early access (beta) features for Harness Service Reliability Management, go to [SRM early access features](/docs/service-reliability-management/srm-whats-supported/#srm-early-access-features) and the [SRM release notes](./service-reliability-management).
+For information about early access (beta) features for Harness Service Reliability Management, go to [SRM release notes](./service-reliability-management).
 
 ## Features promoted to GA
 

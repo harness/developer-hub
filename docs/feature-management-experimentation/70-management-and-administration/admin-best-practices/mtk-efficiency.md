@@ -7,7 +7,7 @@ Harness FME has a wide variety of support for sending impressions data that it c
 
 ## What is an MTK
 
-Harness FME tracks usage for our customers based upon what are called MTKs. MTK stands for **Monthly Tracked Keys**. For a more detailed description see our page on [Account Usage Data](https://help.split.io/hc/en-us/articles/360034159232-Account-usage-data#usage-data). When counting anonymous users, the MTK count may be inflated due to any of the circumstances described below.
+Harness FME tracks usage for our customers based upon what are called MTKs. MTK stands for **Monthly Tracked Keys**. For a more detailed description see our page on [Account Usage Data](/docs/feature-management-experimentation/management-and-administration/account-usage#usage-data). When counting anonymous users, the MTK count may be inflated due to any of the circumstances described below.
 
 If a user with the key “John” sees three different feature flags within a month, "John" would be counted as a single MTK. If “John” sees the same feature flag 100 times within a month, "John" would still be counted as a single MTK. If John also has an anonymous cookie id “ABC-123,” and that ID is evaluated with Harness FME, then that is an additional MTK because it is a different key value. If "ABC-123" continues to have impressions, that is still just one additional MTK, for a total of two. Now if "John" clears his cookies, or visits as an anonymous user from a different device, then that would be an additional key used by the SDK, and as a result, an additional (third) MTK.
 
@@ -94,7 +94,7 @@ Check for feature flags that are 100% rolled out and remove them from code. Harn
 
 ### Sampling
 
-For anonymous experiments, if you are getting a significant amount of MTKs to [power your experiments](https://help.split.io/hc/en-us/articles/360034040851-Sample-size-and-sensitivity-calculators), you could consider sampling keys. This is something that would have to be done with code outside of Harness FME's getTreatment call. Non-sampled traffic will not be part of the experiment and will be given a hardcoded treatment. If using this approach, it is not recommended to sample by something such as a time of day, attribute, region, first come/first serve, etc. The recommended approach is to use a mathematical hashing function with a test that can be used to filter out anonymous keys on a percentage basis from Harness FME's track and getTreatment calls.
+For anonymous experiments, if you are getting a significant amount of MTKs to [power your experiments](/docs/feature-management-experimentation/experimentation/key-concepts/sample-size-calculator/), you could consider sampling keys. This is something that would have to be done with code outside of Harness FME's getTreatment call. Non-sampled traffic will not be part of the experiment and will be given a hardcoded treatment. If using this approach, it is not recommended to sample by something such as a time of day, attribute, region, first come/first serve, etc. The recommended approach is to use a mathematical hashing function with a test that can be used to filter out anonymous keys on a percentage basis from Harness FME's track and getTreatment calls.
 
 #### Code Example for getTreatment
 
@@ -167,29 +167,29 @@ Some analytics tools use the user's location while others may default to UTC or 
 
 Because different attribution logic is used by various tools, it's not uncommon for values of a similar metric to vary by 10-15%. It's important to understand how things like omni-channel conversions are handled. For example, a user may get an impression/treatment on one device, perhaps an ad on a phone, and then convert or perform some other tracked action from a browser.
 
-When experimenting, Harness FME will exclude users from results under certain circumstances. For example, a user that switches targeting rules more than once within the same version of an experiment will be excluded from experimental analysis. This is not a usual circumstance and the number of users excluded for these reasons may be small, but there are cases where the design of a test or misconfigured targeting rules could lead to significant exclusions. Note that while exclusions do impact experiment results, they do not change the MTK count. For more information, review the [Attribution and exclusion guide](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion).
+When experimenting, Harness FME will exclude users from results under certain circumstances. For example, a user that switches targeting rules more than once within the same version of an experiment will be excluded from experimental analysis. This is not a usual circumstance and the number of users excluded for these reasons may be small, but there are cases where the design of a test or misconfigured targeting rules could lead to significant exclusions. Note that while exclusions do impact experiment results, they do not change the MTK count. For more information, review the [Attribution and exclusion guide](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/attribution-and-exclusion/).
 
-Harness FME's [metric details and trends](https://help.split.io/hc/en-us/articles/360025376251-Metric-Details-and-Trends) feature highlights any excluded users.
+Harness FME's [metric details and trends](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/) feature highlights any excluded users.
 
 ### Client-side device connectivity
 
 Implementation of Harness FME on the browser or mobile device can impact the collection of data. This is exacerbated by the relative lack of control over user interaction. Abruptly closing a browser window or a mobile app can impede or delay data being captured.
 
-Ad/content blockers are becoming more common as users seek to avoid ads and more attention is placed on privacy concerns. These blockers can impact a wide range of client-side trackers, not just ads, and not just Harness FME. Depending on what is blocked, the results computed by various analytic tools may differ. Some ways to resolve this issue with Harness FME include [moving Harness FME evaluation to the backend](https://help.split.io/hc/en-us/articles/360025281872-Moving-Splits-to-the-Back-End), or using [Harness FME Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy), where the proxy is hosted from the same DNS root as your site or application.
+Ad/content blockers are becoming more common as users seek to avoid ads and more attention is placed on privacy concerns. These blockers can impact a wide range of client-side trackers, not just ads, and not just Harness FME. Depending on what is blocked, the results computed by various analytic tools may differ. Some ways to resolve this issue with Harness FME include [moving Harness FME evaluation to the backend](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/moving-feature-flags-to-a-service), or using [Harness FME Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy/), where the proxy is hosted from the same DNS root as your site or application.
 
 Be aware that moving feature flags to the backend may exacerbate the difference in counts if content blockers come into play and client-side flags still exist, because client-side content blocking doesn't impact server-side flags.
 
-When using the JavaScript or mobile SDKs, configuration options (such as [these](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#configuration) for JavaScript) can be tuned to ensure you capture the greatest possible number of impressions and/or events. In particular, the RefreshRates can have a significant impact when lowered.
+When using the JavaScript or mobile SDKs, configuration options (such as [these](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configuration) for JavaScript) can be tuned to ensure you capture the greatest possible number of impressions and/or events. In particular, the RefreshRates can have a significant impact when lowered.
 
 A number of articles in the Help Center describe why you may be missing or getting improper impression counts in Harness FME, and how to avoid some of these issues:
 
-- [<span class="mark">Block traffic until the SDK is ready</span>](https://help.split.io/hc/en-us/articles/360006667012-Block-traffic-until-the-SDK-is-ready)
+- [<span class="mark">Block traffic until the SDK is ready</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/block-traffic-until-the-sdk-is-ready/)
 
-- [<span class="mark">Why are Impressions not showing in Harness FME?</span>](https://help.split.io/hc/en-us/articles/360007632132-Why-are-Impressions-not-showing-in-Split-)
+- [<span class="mark">Why are Impressions not showing in Harness FME?</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/why-are-impressions-not-showing-in-split)
 
-- [<span class="mark">Javascript SDK on slow networks</span>](https://help.split.io/hc/en-us/articles/360012551371-Why-does-the-Javascript-SDK-return-Not-Ready-status-in-Slow-Networks-)
+- [<span class="mark">Javascript SDK on slow networks</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-not-ready-status-in-slow-networks/)
 
-- [<span class="mark">Always getting 'Control' treatments</span>](https://help.split.io/hc/en-us/articles/360020863412-General-SDK-Always-getting-Control-treatments)
+- [<span class="mark">Always getting 'Control' treatments</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/always-getting-control-treatments/)
 
 ### Bots or web crawlers
 
@@ -203,7 +203,7 @@ If a sample ratio mismatch is detected in one system but not the other, then inv
 
 For troubleshooting, it is likely helpful to export impressions and events from the data hub for analysis. Note that Harness FME deduplicates incoming impressions, so the impression count may be significantly different from other systems or counts of SDK function calls, for example.
 
-Harness FME's SDKs maintain an internal LRU cache (last recently used) to keep impressions sent under reasonable limits. This cache is maintained for the life of the SDK instance. When an impression is generated we check the LRU cache to see if a matching impression has been registered before. If so, we don't queue the impression and only send it with the [impression listener](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator#impression-listener), if it is set. If the impression hasn't been seen before, we add it to the queue.
+Harness FME's SDKs maintain an internal LRU cache (last recently used) to keep impressions sent under reasonable limits. This cache is maintained for the life of the SDK instance. When an impression is generated we check the LRU cache to see if a matching impression has been registered before. If so, we don't queue the impression and only send it with the [impression listener](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator/#impression-listener), if it is set. If the impression hasn't been seen before, we add it to the queue.
 
 By operating the SDK in "optimized" mode, which is the default, we are able to lower the number of impressions. These impressions are then deduplicated an additional time, server-side, over a 1-hour window before posting downstream to serve integrations such as Amplitude, Segment, mParticle, and the webhooks. It is important to note that neither Harness FME's SDKs nor Harness FME's servers maintain state for a particular key. We do our best to deduplicate across a particular SDK instance and over logical time windows.
 
@@ -231,4 +231,4 @@ For more information on Metrics review these videos and articles:
 
 - [<u>All About FME Metrics</u>](https://help.split.io/hc/en-us/articles/360042967172-All-About-Split-Metrics)
 
-- [<u>Metrics Impact</u>](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact)
+- [<u>Viewing experiment results</u>](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/)
