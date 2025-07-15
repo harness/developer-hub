@@ -55,6 +55,25 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## July 2025
 
+### Version 1.97.0
+
+#### New Features and Enhancements
+
+- Harness now supports a **Native OIDC step to consume an OIDC connector and generate an OIDC token** for use in subsequent non-native scripted operations. (**CDS-110358**)
+
+- Harness supports **barrier synchronization across parent and child pipelines**, enabling child pipelines to reference and utilize barriers defined in parent pipelines via runtime inputs for coordinated deployments and consistent roll-outs. Currently, this feature is behind the feature flag `PIPE_BARRIERS_FOR_CHAINED_PIPELINES`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
+
+#### Fixed Issues
+
+- Previously, when using Pipeline Chaining across different projects, the Execution History UI incorrectly displayed references for Service and Environment/Infrastructure in parent-child executions. These incorrect links made it difficult for users to trace pipeline execution details. This issue is resolved. (**PIPE-27165, ZD-83767**)
+- Previously, when editing git-enabled policies in the Policy Editor, selecting a feature branch still loaded content from the master branch, leading to confusion and incorrect edits. This occurred even after switching to the correct branch or reopening the editor from the policy list. The issue is resolved. (**PIPE-27509, ZD-85205**)
+- Previously, the gitBranch field was being unintentionally added to the pipeline YAML when using the Git Experience, causing unexpected changes in version-controlled files. The issue is resolved. (**PIPE-28335, ZD-87619**)
+- Previously, when output variable names were too long relative to the screen size, the copy button was not visible in the UI, making it difficult for users to copy the values. The issue is resolved. (PIPE-28500)
+- Previously, when the output for a service step exceeded the MongoDB document size limit (16MB), the pipeline did not clearly indicate the root cause of the failure. Instead, the error surfaced in a subsequent step (such as the infrastructure step), making it difficult for users to identify and debug the actual issue. The issue is resolved. (**CDS-111594, ZD-86835**)
+- Previously, the Jenkins step in pipelines would intermittently fail to trigger jobs, showing the error `Failure in fetching job`, even though the Jenkins configuration was correct and worked at other times. This inconsistency occurred despite increasing step timeout and delegate count. The issue is resolved. (**CDS-111753, ZD-87145**)
+- Previously, nested expressions such as `<+pipeline.stages.test_<+pipeline.variables.app>...>` were not being resolved correctly in pipelines, resulting in unresolved or incorrect values during execution. The issue is resolved. (**PIPE-28354**)
+- Previously, attempting to configure a native Helm deployment using charts from an OCI registry resulted in a generic *Null Pointer Exception* error, even after successful chart publishing via pipeline execution. This prevented users from linking and deploying OCI-based Helm charts in Harness. The issue is resolved.(**CDS-112221, ZD-88256**)
+
 ### GitOps Service 1.36.1, GitOps Agent 0.96.0
 
 #### Fixed Issues
