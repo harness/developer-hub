@@ -376,12 +376,14 @@ Keys are reserved keywords used to validate unique FQNs. If you have multiple to
 ```
 
 ### Topology Spread Constraints
-A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. Currently, this field supports specifying `topologySpreadConstraint`, with plans to extend support for additional configurations in the future. 
+A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. 
 
 :::note
 * podSpecOverlay is currently supported via YAML only. Please use the YAML editor to modify.
 * This feature requires using delegate version 24.09.83900 or higher.
 :::
+
+By default, this field supports only `topologySpreadConstraints`. Support for broader `PodSpec` customizations (e.g., volumes, securityContext) is available behind a feature flag. For details, see [Customize the PodSpec in Kubernetes build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/customize-podspec).
 
 #### Usage example 
 
