@@ -27,38 +27,61 @@ A database is an organized collection of structured information, or data, that i
     "edgeLabelBackground":"#f6b26b"
   }
 } }%%
-flowchart TD
+flowchart LR
     A[Database Schema:<br>Repository +<br>Liquibase Changelog]
     B[DB Instance]
     C[DB Connector:<br>JDBC URL +<br>Credentials]
-    D[Harness Delegate]
+    D["<br>Harness<br> #0040;Platform+Delegate#0041;<br><br>"]
     E[Service]
-    F[Infra]
 
     A --> B
     B --> C
     C --> D
-    F --> D
+    D --> Conceptual_Box
+    A --> D
 
     A -. Optional Link .-> E
-    subgraph Harness_Box[" "]
-        C
-    end  
     subgraph Conceptual_Box["Customer Environment"]
-        D
-        F
+    direction TB
+        K8S
+        DB
+        PODS
     end
+    subgraph K8S["Kubernetes Cluster"]
+    direction TB
+        C1["Pod: Git Clone & Checkout"]
+        C2["Pod: Run Liquibase Apply"]
+        DB["DB"]
+    end
+    subgraph PODS["Kubernetes Cluster"]
+    direction TB
+        C3["Pod: Collect Logs & Cleanup"]
+    end
+    subgraph DB["Target Database"]
+      direction TB
+          D1[("Database<br>–DATABASE SCHEMA<br>–DATABASECHANGELOG<br>")]
+    end
+    
+    C1 --> C2
+    C2 ==> C3
+    C2 --> DB
+    DB --> D
 
     style Conceptual_Box stroke-dasharray: 5 5
     style Conceptual_Box fill:#c2f0c2,stroke:#0f5132
-    style Harness_Box fill:#ffe599,stroke:#0f5132
-
+    style C1 fill:#d4edda,stroke:#28a745,stroke-width:2px
+    style C2 fill:#d4edda,stroke:#28a745,stroke-width:2px
+    style C3 fill:#d4edda,stroke:#28a745,stroke-width:2px
+    style D fill:#d4edda,stroke:#28a745,stroke-width:2px
 
     linkStyle 0 stroke-width:2px
     linkStyle 1 stroke-width:2px
     linkStyle 2 stroke-width:2px
     linkStyle 3 stroke-width:2px
     linkStyle 4 stroke-width:3px,stroke-dasharray: 4 4
+    linkStyle 6 stroke-width:3px,stroke-dasharray: 4 4
+    linkStyle 9 stroke-width:3px,stroke-dasharray: 4 4
+
 ```
 
 ## Database Schemas
