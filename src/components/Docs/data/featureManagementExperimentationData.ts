@@ -18,7 +18,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.fme,
           description:
             "Key concepts",
-          link: "/docs/feature-management-experimentation/getting-started/docs/key-concepts",
+          link: "/docs/feature-management-experimentation/getting-started/key-concepts",
         },
         {
           title: "What's supported",
