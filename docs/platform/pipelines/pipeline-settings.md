@@ -158,7 +158,11 @@ This limit defines the maximum number of **steps or stages that can run simultan
 | DevOps Essentials    | 60                          |
 | Enterprise           | 100                         |
 
-> ⚠️ Even if your pipeline defines up to 256 parallel steps/stages, only the first `maxConcurrency` steps will execute concurrently. The rest are queued until slots free up.
+:::info
+
+Even if your pipeline defines up to 256 parallel steps or stages, only the first `maxConcurrency` steps will execute concurrently. The rest are queued until slots become available.
+:::
+
 
 This limit exists to ensure fair usage and system stability. It is configurable internally based on your plan tier, but not editable by users via the UI.
 
