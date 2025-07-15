@@ -80,12 +80,12 @@ The following SDKs now allow you to configure how long the rollout cache for fea
 This update introduces new configuration options for overriding that default and for explicitly clearing the cache on SDK initialization.
 
 #### Related documentation
-- [Browser SDK](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK#configuring-localstorage-cache-for-the-sdk)
-- [Browser SDK Suite](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite#configuring-localstorage-cache-for-the-suite)
-- [iOS SDK](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#configure-cache-behavior)
-- [iOS SDK Suite](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite#configure-cache-behavior)
-- [Android SDK](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#configure-cache-behavior)
-- [Android SDK Suite](https://help.split.io/hc/en-us/articles/22916666123277-Android-Suite#configure-cache-behavior)
+- [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#configuring-localstorage-cache-for-the-sdk)
+- [Browser SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite#configuring-localstorage-cache-for-the-suite)
+- [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#configure-cache-behavior)
+- [iOS SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#configure-cache-behavior)
+- [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#configure-cache-behavior)
+- [Android SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite#configure-cache-behavior)
 
 ## April 2025
 ### [New Feature] Experiments Dashboard
@@ -111,8 +111,8 @@ This release makes it easier for teams to run experiments without requiring deep
 ![Experiments metric charts](./static/fme/experiments-dashboard-metric-charts.gif)
 
 #### Related documentation
-- [Experiments](https://help.split.io/hc/en-us/articles/35511708088077-Experiments)
-- [Experiment health check](https://help.split.io/hc/en-us/articles/35928892585741-Experiment-health-check)
+- [Experiments](/docs/feature-management-experimentation/experimentation/overview)
+- [Experiment health check](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/health-check)
 
 ### [New Feature] Centralized control for React SDK flag update behavior
 ----
@@ -145,22 +145,22 @@ const App = () => (
 ```
 
 #### Related documentation
-- [React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#subscribe-to-events)
+- [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#subscribe-to-events)
 
 ### [New Feature] Append impression properties
 ----
 #### 2025-04-10
 The following SDKs now allow you to append properties to impressions for each `getTreatment` call: Browser, iOS, JavaScript, Node.js, React, and Redux. This provides additional context for in-product troubleshooting within Live tail or downstream external analysis.
 #### Related documentation
-- [Browser SDK](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK#append-properties-to-impressions)
-- [Browser SDK Suite](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite#append-properties-to-impressions)
-- [iOS SDK](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#append-properties-to-impressions)
-- [iOS SDK Suite](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite#append-properties-to-impressions)
-- [Java SDK](https://help.split.io/hc/en-us/articles/360020405151-Java-SDK#append-properties-to-impressions)
-- [JavaScript SDK](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#append-properties-to-impressions)
-- [Node.js SDK](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK#append-properties-to-impressions)
-- [React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#append-properties-to-impressions)
-- [Redux SDK](https://help.split.io/hc/en-us/articles/360038851551-Redux-SDK#append-properties-to-impressions)
+- [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#append-properties-to-impressions)
+- [Browser SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite#append-properties-to-impressions)
+- [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#append-properties-to-impressions)
+- [iOS SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#append-properties-to-impressions)
+- [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#append-properties-to-impressions)
+- [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#append-properties-to-impressions)
+- [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#append-properties-to-impressions)
+- [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#append-properties-to-impressions)
+- [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk#append-properties-to-impressions)
 
 ## March 2025
 ### [New Feature] Feature flag impression toggle
@@ -173,7 +173,7 @@ This feature allows you to streamline impressions sent to third party integratio
 ![Impression tracking toggle](./static/fme/impression-tracking-toggle.png)
 
 #### Related documentation
-- [Tracking impressions](https://help.split.io/hc/en-us/articles/360020585192-Impressions#tracking-impressions)
+- [Tracking impressions](/docs/feature-management-experimentation/feature-management/impressions/#tracking-impressions)
 
 ### [New Feature] AI settings
 ----
@@ -192,7 +192,7 @@ Your data is protected by the [Harness privacy policy](https://www.harness.io/le
 ----
 #### 2025-02-28
 #### Elixir SDK General Availability
-The [Elixir Thin Client SDK](https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK) enables developers to integrate Harness FME feature flagging and event tracking directly into their Elixir applications. Leveraging [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd), this lightweight SDK provides highly performant first-class FME support within Elixir.
+The [Elixir Thin Client SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/elixir-thin-client-sdk/) enables developers to integrate Harness FME feature flagging and event tracking directly into their Elixir applications. Leveraging [Split Daemon (splitd)](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-daemon-splitd), this lightweight SDK provides highly performant first-class FME support within Elixir.
 
 Thanks are due to the team at [Cars.com](https://www.cars.com/) for the initial implementation, which they contributed to the FME user community. The Harness engineering team then finalized the work, making it generally available as a Harness-supported FME SDK.
 
@@ -201,11 +201,11 @@ FME Thin Client SDKs are known for their lightweight footprint and are always pa
 
 ![Architecture Diagram - Thin SDK Client SDK and Split D](./static/fme/thin-sdksplitd-fme-server-diagram.png)
 
-Splitd can be set up locally to the consumer application or be deployed as a sidecar to the consumer application container. See the [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd) documentation for details.
+Splitd can be set up locally to the consumer application or be deployed as a sidecar to the consumer application container. See the [Split Daemon (splitd)](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-daemon-splitd) documentation for details.
 
 ##### Related documentation
-* [Elixir Thin-Client SDK](https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK)
-* [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd)
+* [Elixir Thin-Client SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/elixir-thin-client-sdk/)
+* [Split Daemon (splitd)](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-daemon-splitd)
 
 ## January 2025
 ### [New Feature] Release Agent (AI Chatbot)
@@ -227,7 +227,7 @@ Note: The transition from "Switch" to "Release Agent" will take place gradually.
 ![Image](./static/fme/ask-switch-in-left-nav.png)
 
 ##### Related documentation
-- [Metric details and trends](https://help.split.io/hc/en-us/articles/360025376251-Metric-details-and-trends)
+- [Metric details and trends](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/)
 - [Switch AI assistant](https://help.split.io/hc/en-us/articles/21188803158157-Switch-AI-assistant)
 
 ### [New Feature] Targeting - Large segments
@@ -242,8 +242,8 @@ Effective immediately, Enterprise tier customers may create and use Large segmen
 
 ![Image](./static/fme/image-53.png)
 Learn more about Large segments and the ways they differ from Standard segments in the documentation:
-- [Create a segment](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment)
-- [Target segments](https://help.split.io/hc/en-us/articles/360020525252-Target-segments)
+- [Create a segment](/docs/feature-management-experimentation/feature-management/segments)
+- [Target segments](/docs/feature-management-experimentation/feature-management/target-segments)
 
 Note: The initial release of Large segments is focused on client-side SDK usage only. Server-side SDKs do not yet support Large segments, but soon will. Until they are supported, evaluations of feature flags that target Large segments will return control on server-side SDKs.
 
@@ -251,13 +251,13 @@ Note: The initial release of Large segments is focused on client-side SDK usage 
 After familiarizing yourself with Large segments at the above links, you may find these UI and API equivalent documentation links handy for automating the steps via the Admin API:
 ###### Steps for creating and populating a Large segment using either UI or API
 1. Create a Large segment (just **metadata**, no Environment definition)
-- [UI steps](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment#creating-a-segment) (select Large)
+- [UI steps](/docs/feature-management-experimentation/feature-management/segments#creating-a-segment) (select Large)
 - [API steps](https://docs.split.io/reference/createlargesegment)
 2. Create a **definition** for a Large segment in an Environment (no user IDs)
-- [UI steps](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment#adding-user-ids-to-a-segment) (step 3)
+- [UI steps](/docs/feature-management-experimentation/feature-management/segments#adding-user-ids-to-a-segment) (step 3)
 - [API steps](https://docs.split.io/reference/createlargesegmentinenvironment)
 3. Add **user IDs** to a Large segment (to the definition created in step 2)
-- [UI steps](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment#file-import-for-large-segments)
+- [UI steps](/docs/feature-management-experimentation/feature-management/segments#file-import-for-large-segments)
 - [API steps](https://docs.split.io/reference/create-change-request#open-change-request-to-add-members-to-a-large-segment)
 
 ###### Adding an approval step via Admin API
@@ -296,8 +296,8 @@ If "is in list" is chosen as the matcher type, suggested values are shown:
 ![Image](./static/fme/3-choose-a-suggsted-value-1920x890.png)
 
 ###### **Related Documentation:**
-- [Creating individual custom attributes in Admin settings](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#creating-individual-custom-attributes-in-admin-settings)
-- [Creating multiple custom attributes in Admin Settings](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#creating-multiple-custom-attributes-in-admin-settings) (CSV upload)
+- [Creating individual custom attributes in Admin settings](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#creating-individual-custom-attributes-in-admin-settings)
+- [Creating multiple custom attributes in Admin Settings](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#creating-multiple-custom-attributes-in-admin-settings) (CSV upload)
 
 ## November 2024
 ### 2024-11-27
@@ -312,15 +312,15 @@ As a refresher, here is quick summary of the three alert types:
 
 * **Metric Alert**
     - **Triggered**: when the relative or absolute impact threshold in an Alert policy is reached
-    - **Configured:** at the metric level, by [creating an Alert policy](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting)
+    - **Configured:** at the metric level, by [creating an Alert policy](/docs/feature-management-experimentation/experimentation/metrics/alert-policies/#create-a-metric-alert-policy)
     - **Monitors:** percentage rollouts for all flags which have the same traffic type as the metric
 - **Guardrail Metric Alert**
     - **Triggered:** when any statistically significant impact is detected, either desirable or undesirable
-    - **Configured:** at the metric level, by [marking a metric's category as "Guardrail"](https://help.split.io/hc/en-us/articles/22005565241101-Metrics#metric-categories)
+    - **Configured:** at the metric level, by [marking a metric's category as "Guardrail"](/docs/feature-management-experimentation/experimentation/metrics/categories/)
     - **Monitors:** percentage rollouts for all flags which have the same traffic type as the metric
 - **Key Metric Alert**
     - **Triggered:** when any statistically significant impact is detected, either desirable or undesirable
-    - **Configured:** at the feature flag level, by [marking a metric as a "Key metric" for that flag](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting)
+    - **Configured:** at the feature flag level, by [marking a metric as a "Key metric" for that flag](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/#setting-up-feature-flag-alerting)
     - **Monitors:** percentage rollouts only for flags where the metric is a Key metric
 
 ## September 2024
@@ -371,7 +371,7 @@ Key metrics and Supporting metrics are specific to individual feature flags, and
 ![Image](./static/fme/image1-14.png)
 
 ###### **How do I ensure my important metrics are still monitored for every flag?**
-In June, Split introduced [Guardrail metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics?_gl=1*u0yhnk*_gcl_au*OTQzOTM3ODQ3LjE3MTk5ODA1NjI.#:~:text=Guardrail%20metrics%3A,impact%20is%20detected.) to improve your ability to define which metrics should be monitored for every flag. Guardrail metrics include automated alerting, meaning flag owners will be notified as their releases or experiments impact these metrics. 
+In June, Split introduced [Guardrail metrics](/docs/feature-management-experimentation/release-monitoring/metrics/categories/) to improve your ability to define which metrics should be monitored for every flag. Guardrail metrics include automated alerting, meaning flag owners will be notified as their releases or experiments impact these metrics. 
 
 Since Organizational metrics will no longer be available, **we recommend adding important metrics to the new Guardrail metrics category ASAP** to ensure they continue to be protected and limit any disruption of analyzing metric results. 
 
@@ -388,20 +388,20 @@ Flag owners will now automatically receive alerts on any guardrail metric withou
 
 Alerts are sent to flag owners whenever a guardrail metric moves significantly in the desired or undesired direction. This feature is designed to help you make safe and accurate release decisions in a timely manner.
 
-As a reminder, Guardrail Metrics ([released 2024-06-14](https://www.split.io/releases/2024-06-14/)) ensure that an organization’s most crucial metrics are protected and monitored throughout every feature release and experiment by making their calculation automatic and mandatory for all flags that use the same traffic type as the metric.
+As a reminder, Guardrail Metrics ([released 2024-06-14](#guardrail-metrics)) ensure that an organization’s most crucial metrics are protected and monitored throughout every feature release and experiment by making their calculation automatic and mandatory for all flags that use the same traffic type as the metric.
 
-Metrics are set as guardrail metrics for your workspace on the Metric definition page. View the docs [here](https://help.split.io/hc/en-us/articles/22005565241101-Metrics#:~:text=Guardrail%20metrics%3A,impact%20is%20detected.).
+Metrics are set as guardrail metrics for your workspace on the Metric definition page. View the docs [here](/docs/feature-management-experimentation/release-monitoring/metrics/categories/).
 
 ## June 2024
 ### 2024-06-14
 #### Monitoring
 ##### Guardrail Metrics
-Users can now categorize their organization’s most important metrics as  “guardrails”. [Guardrail metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics#:~:text=Guardrail%20metrics%3A,impact%20is%20detected.) are those your organization wants to protect during a feature release or experiment. Metrics are set as guardrail metrics for your workspace on the Metric definition page.
+Users can now categorize their organization’s most important metrics as  “guardrails”. [Guardrail metrics](/docs/feature-management-experimentation/release-monitoring/metrics/categories/) are those your organization wants to protect during a feature release or experiment. Metrics are set as guardrail metrics for your workspace on the Metric definition page.
 
 ### 2024-06-06
 #### SDK Enhancements
 ##### Semantic Versioning Targeting
-Using the latest Split SDKs, users can more easily define targeting rules for new features based on app, OS, and other versions using attribute-based targeting. The SDK then automatically serves the appropriate treatment to users without needing additional code configurations. Split’s native [Semantic Versioning Targeting](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#semver-attributes) removes the additional complexities and manual work that comes with targeting different application versions, allowing users to seamlessly deliver different experiences.
+Using the latest Split SDKs, users can more easily define targeting rules for new features based on app, OS, and other versions using attribute-based targeting. The SDK then automatically serves the appropriate treatment to users without needing additional code configurations. Split’s native [Semantic Versioning Targeting](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#semver-attributes) removes the additional complexities and manual work that comes with targeting different application versions, allowing users to seamlessly deliver different experiences.
 
 ## May 2024
 ### 2024-05-31
@@ -412,10 +412,10 @@ Left-hand navigation within the application has been optimized. With this change
 ### 2024-05-03
 #### SDK Enhancements
 ##### Split Suite, iOS SDK
-Users can automatically capture event data in Split using their [iOS SDK](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite) without needing additional agents, integrations, or track calls. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
+Users can automatically capture event data in Split using their [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) without needing additional agents, integrations, or track calls. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
 #### Monitoring
 ##### Out-of-the-Box Metrics
-Split automatically creates metrics for any events being auto-captured by the Split Suite and RUM Agents ([Web](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-Agent#automatic-metric-creation), [Android](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent#automatic-metric-creation), [iOS](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent#automatic-metric-creation)). This reduces the manual effort of creating metrics and allows users to easily calculate their engineering and performance metrics.
+Split automatically creates metrics for any events being auto-captured by the Split Suite and RUM Agents ([Web](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent#automatic-metric-creation), [Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent#automatic-metric-creation), [iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent#automatic-metric-creation)). This reduces the manual effort of creating metrics and allows users to easily calculate their engineering and performance metrics.
 
 ## April 2024
 ### 2024-04-16
@@ -445,7 +445,7 @@ Users can now also copy code snippets directly from Switch, enabling faster time
 To help teams quickly find the information they are looking for, Split has improved the filtering experience in these lists: **feature flags**, **segments**, and **metrics**. Users’ most recent search filters will be preserved as users continue to navigate the product. 
 #### Feature Experimentation
 ##### Sequential Testing Update
-Users can now reduce the [minimum sample size to 100](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings#minimum-sample-size) at the organizational level via the admin setting. This allows users to get statistically significant results, faster.
+Users can now reduce the [minimum sample size to 100](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#minimum-sample-size#minimum-sample-size) at the organizational level via the admin setting. This allows users to get statistically significant results, faster.
 
 ## January 2024
 ### 2024-01-16
@@ -456,12 +456,12 @@ Toast notifications will now appear in the lower right corner of Split’s UI. T
 ### 2024-01-09
 #### **SDK Enhancements**
 ##### **Split Suite, Android SDK**
-Users can now automatically capture event data in [Split for their Android S](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite)[DK](https://help.split.io/hc/en-us/articles/22916666123277-Android-Suite) without needing additional agents, integrations, or track calls. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
+Users can now automatically capture event data in [Split for their Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite) without needing additional agents, integrations, or track calls. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
 
 ### 2024-01-02
 #### **SDK Enhancements**
 ##### **Split Suite, Browser SDK**
-Users can now automatically capture event data in [Split for their Browser SDK](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite) without needing additional agents, integrations, or track calls. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
+Users can now automatically capture event data in [Split for their Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite) without needing additional agents, integrations, or track calls. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
 
 ## 2023 releases
 
@@ -469,13 +469,13 @@ Users can now automatically capture event data in [Split for their Browser SDK](
 ### 2023-12-20
 #### SDK Enhancements
 ##### **RUM Agent iOS**
-With [RUM Agent iOS](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent), the iOS SDK will automatically capture event data and send it back to the Split Cloud. Event data will then populate in Split’s Data Hub, similar to impression data. This eliminates the manual process of sending events to Split and enables a quicker setup of metrics and alert policies.
+With [RUM Agent iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent), the iOS SDK will automatically capture event data and send it back to the Split Cloud. Event data will then populate in Split’s Data Hub, similar to impression data. This eliminates the manual process of sending events to Split and enables a quicker setup of metrics and alert policies.
 
 
 ### 2023-12-19
 #### SDK Enhancements
 ##### React SDK Updates
-Split’s [React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK) hooks can now return the SDK’s readiness status and support update parameters to control when an application will render. These properties now allow users to easily refresh application components with just a few lines of code.
+Split’s [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk) hooks can now return the SDK’s readiness status and support update parameters to control when an application will render. These properties now allow users to easily refresh application components with just a few lines of code.
 
 The `useSplitTreatments` hook has been optimized to detect duplicate `getTreatment` calls, improving the performance and UX of the application.
 
@@ -487,19 +487,19 @@ Dynamic Configuration’s JSON input field now supports text wraps. This allows 
 ### 2023-12-12
 #### Feature Flag Management Console 
 ##### Flag Sets 
-With [Flag Sets](https://help.split.io/hc/en-us/articles/22256278916621-Using-flag-sets-to-boost-SDK-performance), users can group flags that logically belong together, so that the SDK only retrieves relevant flag definitions when initialized. This reduces SDK latency, memory consumption, and CPU utilization.
+With [Flag Sets](/docs/feature-management-experimentation/feature-management/using-flag-sets-to-boost-sdk-performance/), users can group flags that logically belong together, so that the SDK only retrieves relevant flag definitions when initialized. This reduces SDK latency, memory consumption, and CPU utilization.
 
 ### 2023-12-11
 #### Monitoring
 ##### Event Visualization
-With [Event Visualization](https://help.split.io/hc/en-us/articles/360020585772-Events#exploring-events), users are now able to easily view their event data in aggregate directly in Split’s Data Hub without needing an external tool. This enables users to quickly validate if their event data is properly flowing into Split, and see how that event is behaving over time.
+With [Event Visualization](/docs/feature-management-experimentation/release-monitoring/events/#exploring-events), users are now able to easily view their event data in aggregate directly in Split’s Data Hub without needing an external tool. This enables users to quickly validate if their event data is properly flowing into Split, and see how that event is behaving over time.
 
 ### 2023-12-06
 #### Monitoring
 ##### Custom Metrics Event Grouping (OR)
-With [Custom Metrics, Event Grouping (OR)](https://help.split.io/hc/en-us/articles/22005565241101), users have the flexibility to choose more than one base event and aggregate up to 5 different events together when creating metrics. This allows users to build more complex metrics that fit their needs and combine different inputs into one metric.
+With [Custom Metrics, Event Grouping (OR)](/docs/feature-management-experimentation/release-monitoring/metrics/), users have the flexibility to choose more than one base event and aggregate up to 5 different events together when creating metrics. This allows users to build more complex metrics that fit their needs and combine different inputs into one metric.
 ##### Event Type Management Enhancements
-Users can now create metric definitions without needing to set [event types](https://help.split.io/hc/en-us/articles/360020585772-Events#h_01HGZV3J56QGKEV39YJ6KHF36M) beforehand in the Admin UI, removing bottlenecks between admins and users. 
+Users can now create metric definitions without needing to set [event types](/docs/feature-management-experimentation/release-monitoring/metrics/#metric-types) beforehand in the Admin UI, removing bottlenecks between admins and users. 
 Event types will be automatically deleted after 150 days of no data being received, eliminating the manual process of cleaning up unused types.
 
 ## November 2023
@@ -517,9 +517,9 @@ Users can now use tab-based navigation to access Split’s login page, change su
 #### Feature Experimentation
 ##### Sequential Testing Update
 Sequential Testing will now be the default statistical method for all net-new organizations using monitoring and experimentation. 
-The minimum sample size for [Sequential Testing](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings#minimum-sample-size) has been reduced from 200 to 100. This allows users to get statistically significant results, faster.
+The minimum sample size for [Sequential Testing](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#minimum-sample-size#minimum-sample-size) has been reduced from 200 to 100. This allows users to get statistically significant results, faster.
 ##### Dimensional Analysis Update
-Users can now create up to [20 dimensions with 20 values per dimension](https://help.split.io/hc/en-us/articles/14824241665421-Using-dimensional-analysis#configuring-dimensions-and-values). This gives users even more flexibility when doing a deeper analysis of their feature experiments or releases.
+Users can now create up to [20 dimensions with 20 values per dimension](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/#configuring-dimensions-and-values). This gives users even more flexibility when doing a deeper analysis of their feature experiments or releases.
 
 ## October 2023
 ### 2023-10-25
@@ -530,14 +530,14 @@ Define specific [roles](https://docs.split.io/reference/api-keys-overview#admin-
 ### 2023-10-24
 #### SDK Enhancements
 ##### PHP in-memory (PHP Thin Client SDK) updates 
-Split’s PHP in-memory SDK now supports [event tracking via the `track ()` call](https://help.split.io/hc/en-us/articles/18305128673933#track), getting treatments with [Dynamic Configurations](https://help.split.io/hc/en-us/articles/18305128673933#get-treatments-with-configurations), and retrieving information on cached flags via [SDK Manager](https://help.split.io/hc/en-us/articles/18305128673933#manager).
+Split’s PHP in-memory SDK now supports [event tracking via the `track ()` call](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk#tracktrack), getting treatments with [Dynamic Configurations](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk#trackget-treatments-with-configurations), and retrieving information on cached flags via [SDK Manager](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk#trackmanager).
 
 ### 2023-10-10
 #### Monitoring
 ##### **Feature Flag Significance Alerting**
-With [Feature Flag Significance Alerting](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting), users can now receive notifications when a statistically significant difference has been observed between two treatments on their flag’s key metrics. Feature Flag alerting is enabled automatically for releases with a percentage allocation. This enables users to make fast, accurate release decisions in a timely manner.
+With [Feature Flag Significance Alerting](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/#setting-up-feature-flag-alerting), users can now receive notifications when a statistically significant difference has been observed between two treatments on their flag’s key metrics. Feature Flag alerting is enabled automatically for releases with a percentage allocation. This enables users to make fast, accurate release decisions in a timely manner.
 ##### Out-of-the-Box Metrics, Browser RUM Agent
-Split now [automatically creates metrics](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent#automatic-metric-creation) for any events being auto-captured by the Split SDK (Browser RUM Agent). This reduces the manual effort of creating metrics and allows users to easily calculate their engineering and performance metrics.
+Split now [automatically creates metrics](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent#automatic-metric-creation) for any events being auto-captured by the Split SDK (Browser RUM Agent). This reduces the manual effort of creating metrics and allows users to easily calculate their engineering and performance metrics.
 
 ## September 2023
 ### 2023-09-18
@@ -554,15 +554,15 @@ The feature flag definitions tab has added two minor UX updates to the editor fl
 ### 2023-08-15
 #### SDK Enhancements
 ##### **RUM Agents - Web & Android**
-- Users can now automatically capture event data in Split for their [Web](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent) and [Android](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent) SDKs. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
+- Users can now automatically capture event data in Split for their [Web](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent) and [Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent) SDKs. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
 #### Monitoring
 ##### Custom Analysis Time Frame
-- With [Custom Analysis Time Frame](https://help.split.io/hc/en-us/articles/360020848451-Applying-filters#selecting-custom-dates), users can now analyze across date ranges regardless of any changes made to the feature flag definition. This enables better flexibility when analyzing results.
+- With [Custom Analysis Time Frame](/docs/feature-management-experimentation/release-monitoring/metrics/setup/filtering/#selecting-custom-dates), users can now analyze across date ranges regardless of any changes made to the feature flag definition. This enables better flexibility when analyzing results.
 
 ### 2023-08-07
 #### SDK Enhancements 
 ##### **PHP in-memory (PHP Thin Client SDK)**
-- Split now supports running PHP [locally](https://help.split.io/hc/en-us/articles/18305128673933) using the [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157) process to store and maintain feature flag data. This eliminates the need to use Redis & the Split Synchronizer while using our PHP SDK and provides a simpler set-up process.
+- Split now supports running PHP [locally](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk) using the [Split Daemon (splitd)](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-daemon-splitd) process to store and maintain feature flag data. This eliminates the need to use Redis & the Split Synchronizer while using our PHP SDK and provides a simpler set-up process.
 
 ### 2023-08-03
 #### Learning and Onboarding
@@ -570,12 +570,12 @@ The feature flag definitions tab has added two minor UX updates to the editor fl
 [Split Arcade](https://help.split.io/hc/en-us/articles/7996112174733-Split-Arcade-self-paced-certifications) is an interactive, gamified experience that provides persona-based technical training, tutorials, and best-practice guidance from industry experts. Users gain access to highly engaging content including product explainer videos, clickable product walkthroughs, manipulatable code examples, and more. With knowledge checks along the way, team members earn professional certifications and LinkedIn badges to validate progress.
 #### Language Library Enhancements
 ##### Flutter Plugin
-[Split's Flutter Plugin](https://help.split.io/hc/en-us/articles/8096158017165-Flutter-plugin) brings scalable feature flags to any app, website, or experience built with Flutter. Just inject the service into any component and start evaluating flags and tracking events.
+[Split's Flutter Plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin) brings scalable feature flags to any app, website, or experience built with Flutter. Just inject the service into any component and start evaluating flags and tracking events.
 
 ### 2023-08-01
 #### SDK Enhancements
 ##### **Instant Feature Flags**
-- To reduce the latency of updates and increase the [reliability of SDKs](https://help.split.io/hc/en-us/articles/360033557092#streaming-architecture-overview), feature flag update notices delivered via streaming will not require a subsequent network request to fetch the changes. Instead, changes will be contained in the streaming payload itself.
+- To reduce the latency of updates and increase the [reliability of SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/#streaming-architecture-overview), feature flag update notices delivered via streaming will not require a subsequent network request to fetch the changes. Instead, changes will be contained in the streaming payload itself.
 
 ## July 2023
 ### 2023-07-26
@@ -592,18 +592,18 @@ The feature flag definitions tab has added two minor UX updates to the editor fl
 ### 2023-06-22
 #### Experimentation
 ##### **Sequential Testing**
-- [Sequential Testing](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings#using-sequential-testing) is a statistical testing method that allows users to obtain statistical results without the constraint of an experiment review period. This allows users to receive faster experimentation results, so that they make informed decisions about releases, quickly.
+- [Sequential Testing](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#minimum-sample-size#using-sequential-testing) is a statistical testing method that allows users to obtain statistical results without the constraint of an experiment review period. This allows users to receive faster experimentation results, so that they make informed decisions about releases, quickly.
 
 ### 2023-06-07
 #### Monitoring
 ##### Metric Filtering Multiple Comparison Correction (MCC) Update
-When filtering your organizational metrics on the Metrics impact page, [MCC will only be applied once for all organizational metrics](https://help.split.io/hc/en-us/articles/360037852431#key-and-organizational-metrics). This will prevent users from seeing different p-values when metric results are filtered.
+When filtering your organizational metrics on the Metrics impact page, [MCC will only be applied once for all organizational metrics](/docs/feature-management-experimentation/experimentation/key-concepts/multiple-comparison-correction/#key-and-organizational-metrics). This will prevent users from seeing different p-values when metric results are filtered.
 
 ## May 2023
 ### 2023-05-24
 #### Monitoring
 ##### Disabled Recalculating Metrics
-To help prevent unintentional resets of your data, the [recalculate metric button has been disabled](https://help.split.io/hc/en-us/articles/360020844451#About-recalculating-metrics) for feature flags that don't have any data available for calculations or haven't received traffic within Split's data retention period.
+To help prevent unintentional resets of your data, the [recalculate metric button has been disabled](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/#manually-recalculating-metrics) for feature flags that don't have any data available for calculations or haven't received traffic within Split's data retention period.
 
 ### 2023-05-15
 #### Usability Enhancements
@@ -617,30 +617,30 @@ To reduce the confusion between "Split", our product, and "split", the feature f
 ### 2023-05-08
 #### Integrations
 ##### Split's mParticle Integration Update
-Customers can now map Split traffic types to [mParticle MPID](https://help.split.io/hc/en-us/articles/360038306272#split-as-an-event-output) when sending events to Split.
+Customers can now map Split traffic types to [mParticle MPID](/docs/feature-management-experimentation/integrations/mparticle#harness-fme-as-an-event-output) when sending events to Split.
 
 ## April 2023
 ### 2023-04-27
 #### Admin API Keys Enhancements
 ##### Clone API Keys
-Users can now [clone API Keys](https://help.split.io/hc/en-us/articles/360019916211#cloning-api-keys) with the same access levels and scope as the key that is cloned. This will enable users to securely change/rotate keys on a regular basis while eliminating manual work.
+Users can now [clone API Keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys#cloning-api-keys) with the same access levels and scope as the key that is cloned. This will enable users to securely change/rotate keys on a regular basis while eliminating manual work.
 #### SDK Enhancements
 ##### TLS support
-Split now supports TLS encryption for [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer#cli-configuration-options-and-its-equivalents-in-json--environment-variables) and [Split Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy#cli-configuration-options-and-its-equivalents-in-json-and-environment-variables) endpoints. This will enable developers to further secure their SDK traffic.
+Split now supports TLS encryption for [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer#cli-configuration-options-and-its-equivalents-in-json--environment-variables) and [Split Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy#cli-configuration-options-and-its-equivalents-in-json-and-environment-variables) endpoints. This will enable developers to further secure their SDK traffic.
 
 ### 2023-04-26
 #### SDK Enhancements
 ##### Mobile SDK Cache Encryption
-Developers can now encrypt the persistent cache of rollout plans on their [iOS](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#configuration) and [Android](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#configuration) SDKs. This will help enhance the security of this data.
+Developers can now encrypt the persistent cache of rollout plans on their [iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#configuration) and [Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#configuration) SDKs. This will help enhance the security of this data.
 ##### .NET Customizable Network Proxy
-Developers can now [configure specific proxies](https://help.split.io/hc/en-us/articles/360020240172--NET-SDK#proxy) using higher precedence than environment variables to perform the server requests for the .NET SDK. This will give developers the flexibility to proxy Split traffic separated from app traffic.
+Developers can now [configure specific proxies](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk/#proxy) using higher precedence than environment variables to perform the server requests for the .NET SDK. This will give developers the flexibility to proxy Split traffic separated from app traffic.
 
 ### 2023-04-06
 #### Feature Management Console
 ##### Essential Scheduling
-[Essential scheduling](https://help.split.io/hc/en-us/articles/11461143253517-Using-essential-scheduling) provides the capability to launch a feature on a certain date and time, up to 90 days in advance. This enables users to get all the necessary rollout work done, like getting approvals, long before the release.
+[Essential scheduling](/docs/feature-management-experimentation/feature-management/using-essential-scheduling/) provides the capability to launch a feature on a certain date and time, up to 90 days in advance. This enables users to get all the necessary rollout work done, like getting approvals, long before the release.
 ##### Simplified Feature Flag Configurations: Split Environment Usability Updates (Release 1)
-There are new UI and UX updates to the feature flag editing experience that make the selection of [environments](https://help.split.io/hc/en-us/articles/360020791591) and the editing of flag details more intuitive and easier. The updates include an environment pick list showcasing feature flag traffic per environment, production environment indicators, and upgraded headers to easily edit flag details.
+There are new UI and UX updates to the feature flag editing experience that make the selection of [environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) and the editing of flag details more intuitive and easier. The updates include an environment pick list showcasing feature flag traffic per environment, production environment indicators, and upgraded headers to easily edit flag details.
 #### Security
 ##### SCIM Support
 With [SCIM Support](https://help.split.io/hc/en-us/sections/14249918421005-SCIM), IT Admins can now manage Split users and groups using their preferred Identity Provider (IdP) including [Azure Active Directory](https://help.split.io/hc/en-us/articles/12386431119245-SCIM-for-Azure-AD) and [Okta](https://help.split.io/hc/en-us/articles/10488076923021-SCIM-for-Okta). This will help streamline the onboarding/offboarding processes as well as reduce the risk when governing users outside one's security platform.
@@ -649,47 +649,47 @@ With [SCIM Support](https://help.split.io/hc/en-us/sections/14249918421005-SCIM)
 ### 2023-03-24
 #### SDK Enhancements
 ##### SDK Offline Mode from JSON
-Developers can now start their [Go](https://help.split.io/hc/en-us/articles/360020093652-Go-SDK#json) and [Python](https://help.split.io/hc/en-us/articles/360020359652-Python-SDK#json) SDK instances in `localhost` mode, and easily download SDK data in the form of JSON files with just one command. These files can then mimic test or production environments, helping to improve the testing of applications offline.
+Developers can now start their [Go](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk#json) and [Python](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#json) SDK instances in `localhost` mode, and easily download SDK data in the form of JSON files with just one command. These files can then mimic test or production environments, helping to improve the testing of applications offline.
 ### 2023-03-23
 #### Feature Management Console
 ##### Individual Target Key Limit
-The [individual target key limit](https://help.split.io/hc/en-us/articles/360020791591) has been updated to 500. This will enable users to deliver changes to their users faster without any impact on the application load times.
+The [individual target key limit](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) has been updated to 500. This will enable users to deliver changes to their users faster without any impact on the application load times.
 ### 2023-03-17
 #### Documentation
 ##### SDK Validation Checklist
-The [SDK validation checklist](https://help.split.io/hc/en-us/articles/13998631077901-SDK-validation-checklist) helps users ensure that SDKs are implemented keeping best practices in mind. This checklist defines the general guidelines, checks, and validations that can be useful for developers and software architects to avoid common mistakes or oversights and to ensure optimal performance of the Split SDK.
+The [SDK validation checklist](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/sdk-validation-checklist) helps users ensure that SDKs are implemented keeping best practices in mind. This checklist defines the general guidelines, checks, and validations that can be useful for developers and software architects to avoid common mistakes or oversights and to ensure optimal performance of the Split SDK.
 ### 2023-03-08
 #### Experimentation
 ##### Experiment Review Period Notification
 Users will now see a section on their **My Work** page that lists [experiments ready for review](https://help.split.io/hc/en-us/articles/360042494691-My-work#experiments-for-review). This will make it easier and faster for users to access their statistical results and encourage them to take informed next steps.
 #### Integrations
 ##### Split's Amplitude Integration Update
-[Split's Amplitude Integration](https://help.split.io/hc/en-us/articles/360046658932-Amplitude#in-split) now supports Amplitude EU instances. This will enable customers using the EU region to properly configure the integration and send Split impressions to Amplitude.
+[Split's Amplitude Integration](/docs/feature-management-experimentation/integrations/amplitude#in-harness-fme) now supports Amplitude EU instances. This will enable customers using the EU region to properly configure the integration and send Split impressions to Amplitude.
 ### 2023-03-01
 #### Feature Management Console
 ##### Metric Audit Logs
-[Metric Audit Logs](https://help.split.io/hc/en-us/articles/360020579472-Audit-logs) will now capture when a metric name is updated and when an alert policy is created, updated, or deleted. This will help increase visibility across teams of all the changes made across Split.### February 2023
+[Metric Audit Logs](/docs/feature-management-experimentation/management-and-administration/account-settings/audit-logs) will now capture when a metric name is updated and when an alert policy is created, updated, or deleted. This will help increase visibility across teams of all the changes made across Split.### February 2023
 ### 2023-02-27
 #### Monitoring
 ##### Metric Definition Filters
-The [metric definition tab](https://help.split.io/hc/en-us/articles/360020843931) has added an additional filter so users can now measure the metric event only if another event was completed beforehand. This will unlock a new way for users to measure the impact of experiments, and interpret their data.
+The [metric definition tab](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/) has added an additional filter so users can now measure the metric event only if another event was completed beforehand. This will unlock a new way for users to measure the impact of experiments, and interpret their data.
 ## January 2023
 ### 2023-01-31
 #### SDK Enhancements
 ##### SDK Offline Mode from JSON
-Developers can now start their [Java SDK](https://help.split.io/hc/en-us/articles/360020405151-Java-SDK#json) instance in `localhost` mode, and easily download SDK data in the form of JSON files with just one command. These files can then mimic test or production environments, helping to improve the testing of applications offline.
+Developers can now start their [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#json) instance in `localhost` mode, and easily download SDK data in the form of JSON files with just one command. These files can then mimic test or production environments, helping to improve the testing of applications offline.
 ### 2023-01-26
 #### Monitoring
 ##### Alerting UX Enhancement
-Users will now see a [bell icon](https://help.split.io/hc/en-us/articles/360020586132-Creating-a-metric#viewing-metrics) within their metric list to easily identify whether or not an alert policy exists for a metric. If the icon is **white**, then no alert policy exists and if the icon is **gray**, then an alert policy exists for the metric. Clicking on the gray icon will take the user directly to the alert policy page for that metric.
+Users will now see a [bell icon](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/#viewing-metrics) within their metric list to easily identify whether or not an alert policy exists for a metric. If the icon is **white**, then no alert policy exists and if the icon is **gray**, then an alert policy exists for the metric. Clicking on the gray icon will take the user directly to the alert policy page for that metric.
 ### 2023-01-23
 #### Monitoring
 ##### Alerting UX Enhancement
-Previously, monitoring alerts were only generated when the sample size in each treatment reached 355. Now, users can receive alerts when the [sample size](https://help.split.io/hc/en-us/articles/360020640752#minimum-sample-size) reaches a minimum of 200. This will allow users to fire alerts earlier, whether or not they have configured a lower sample size in their experiment settings.
+Previously, monitoring alerts were only generated when the sample size in each treatment reached 355. Now, users can receive alerts when the [sample size](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#minimum-sample-size) reaches a minimum of 200. This will allow users to fire alerts earlier, whether or not they have configured a lower sample size in their experiment settings.
 ### 2023-01-18
 #### Monitoring
 ##### Alerting UX Enhancement
-Users can now [manage their alert policy](https://help.split.io/hc/en-us/articles/360020890491-Understanding-metric-impact#actions-you-can-perform) directly from their metric cards on the **Metric impacts** tab. This change will make it simple to find where to manage alerts and/or know if alerts already exist for a metric.
+Users can now [manage their alert policy](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards/#actions-you-can-perform) directly from their metric cards on the **Metric impacts** tab. This change will make it simple to find where to manage alerts and/or know if alerts already exist for a metric.
 
 ## Previous releases
 
@@ -702,20 +702,20 @@ Users can now [manage their alert policy](https://help.split.io/hc/en-us/article
 #### 2022-12-22
 ##### Feature Management Console
 ###### Usability Updates on the Targeting Rules page
-The usability updates on the [Targeting Rules page](https://help.split.io/hc/en-us/categories/360001538072-Target-Configure) include decluttering the tab, reducing confusion on default rule, and default targeting and starting the UI upgrade journey.
+The usability updates on the [Targeting Rules page](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting/#targeting-rules) include decluttering the tab, reducing confusion on default rule, and default targeting and starting the UI upgrade journey.
 #### 2022-12-15
 ##### Integrations
 ###### Split-ServiceNow Integrations
-The [Split-ServiceNow Integration Beta](https://help.split.io/hc/en-us/articles/5524203735181-ServiceNow) allows users to send change requests for feature flags and segments to ServiceNow DevOps and receive approvals back. This enables admins to leverage their customized change control process in ServiceNow without leaving the tool with which they're familiar.
+The [Split-ServiceNow Integration Beta](/docs/feature-management-experimentation/integrations/servicenow) allows users to send change requests for feature flags and segments to ServiceNow DevOps and receive approvals back. This enables admins to leverage their customized change control process in ServiceNow without leaving the tool with which they're familiar.
 #### 2022-12-12
 ##### Monitoring & Experimentation
 ###### Metric Card Update
-The **Metrics impact** tab now has [redesigned metric cards](https://help.split.io/hc/en-us/articles/360020890491-Understand-impact) to highlight essential information and improve the clarity of experiment data. New visual cues and layout enable users to quickly understand results at a glance.
+The **Metrics impact** tab now has [redesigned metric cards](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards/) to highlight essential information and improve the clarity of experiment data. New visual cues and layout enable users to quickly understand results at a glance.
 #### November 2022
 #### 2022-11-30
 ##### Experimentation
 ###### Dimensional Analysis
-[Dimensional Analysis](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings#dimensional-analysis) allows users to leverage event property data across all their sources to develop a set of dimensions. These can then be used to dissect experimentation results at a deeper level, giving you the insights needed to make better-informed future hypotheses and experimentation iterations.
+[Dimensional Analysis](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#minimum-sample-size#dimensional-analysis) allows users to leverage event property data across all their sources to develop a set of dimensions. These can then be used to dissect experimentation results at a deeper level, giving you the insights needed to make better-informed future hypotheses and experimentation iterations.
 #### 2022-11-16
 ##### Learning and Onboarding
 ###### Split Arcade
@@ -723,24 +723,24 @@ The **Metrics impact** tab now has [redesigned metric cards](https://help.split.
 #### 2022-11-07
 ##### Feature Management Console
 ###### Attribute Dictionary Iteration
-Admins can now add up to 100 suggested values when creating [custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#creating-multiple-attributes) using the `string` type. This will give users more flexibility when creating targeting rules.
+Admins can now add up to 100 suggested values when creating [custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#creating-multiple-attributes) using the `string` type. This will give users more flexibility when creating targeting rules.
 #### 2022-11-01
 ##### SDK Enhancements
 ###### Split Evaluator Update
-Users can now calculate flags for [multiple environments](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator#multiple-environments-support) from a single instance of the Evaluator. This will require users to set individual API keys paired with a token for each environment they connect to the evaluator.
+Users can now calculate flags for [multiple environments](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator#multiple-environments-support) from a single instance of the Evaluator. This will require users to set individual API keys paired with a token for each environment they connect to the evaluator.
 #### October 2022
 #### 2022-10-26
 ##### SDK Enhancements
 ###### Support for watchOS, macOS, and tvOS
-Split has extended its iOS SDK capability to now [support watchOS, macOS, and tvOS](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK). This brings scalable feature flags to any app, website, or experience built within the Apple ecosystem. Just inject the service into any component and start evaluating flags and tracking events.
+Split has extended its iOS SDK capability to now [support watchOS, macOS, and tvOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk). This brings scalable feature flags to any app, website, or experience built within the Apple ecosystem. Just inject the service into any component and start evaluating flags and tracking events.
 #### 2022-10-20
 ##### Feature Management Console
 ###### Change Request ID More Accessible
-Users can now access the [change request ID](https://help.split.io/hc/en-us/articles/360039250851-Approval-flows#reviewing-a-request) directly from the change summary page. This will eliminate the need to copy the ID from a web browser address bar.
+Users can now access the [change request ID](/docs/feature-management-experimentation/management-and-administration/fme-settings/approval-flows#reviewing-a-request) directly from the change summary page. This will eliminate the need to copy the ID from a web browser address bar.
 #### 2022-10-14
 ##### SDK Enhancements
 ###### Evaluate Without Sending Impressions
-Split as added a new impression mode, `NONE`. Which can now enable [all Split SDKS](https://help.split.io/hc/en-us/articles/360033557092-SDK-overview#supported-sdks) to send only unique keys per Split rather than sending all impression data. This will help decrease network traffic from your system to Split, ultimately leading to lower resource consumption.
+Split as added a new impression mode, `NONE`. Which can now enable [all Split SDKS](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview#supported-sdks) to send only unique keys per Split rather than sending all impression data. This will help decrease network traffic from your system to Split, ultimately leading to lower resource consumption.
 #### 2022-10-05
 ##### Learning and Onboarding
 ###### Split Arcade
@@ -758,23 +758,23 @@ The [Ready to clean up](https://help.split.io/hc/en-us/articles/4405016480269-Us
 #### 2022-08-19
 ##### Feature Management Console
 ###### Create Multiple Attributes
-Admins can now create [multiple custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#creating-multiple-attributes) by uploading them using a CSV file, helping to reduce time and errors.
+Admins can now create [multiple custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#creating-multiple-attributes) by uploading them using a CSV file, helping to reduce time and errors.
 #### 2022-08-01
 ##### Feature Management Console
 ###### Attribute Dictionary
-With [Split's Attribute Dictionary](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#adding-an-attribute), admins can now easily create custom attributes and suggested values. Users can then select from a list of predefined attributes and values to help decrease development time.
+With [Split's Attribute Dictionary](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#adding-an-attribute), admins can now easily create custom attributes and suggested values. Users can then select from a list of predefined attributes and values to help decrease development time.
 ##### SDK Enhancements
 ###### LogLevel Configurations
-LogLevel Configuration gives developers more granularity when choosing what level of logs they want to capture within their [i](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#track)[OS](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#configuration) and [Android](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#configuration) SDKs.
+LogLevel Configuration gives developers more granularity when choosing what level of logs they want to capture within their [i](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#track)[OS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#configuration) and [Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#configuration) SDKs.
 #### July 2022
 #### 2022-07-29
 ##### Integrations
 **Google Tag Manage**r
-The [Google Tag Manager (GTM) integration](https://help.split.io/hc/en-us/articles/7936008367245-Google-Tag-Manager) is an extension of our Google Analytics (GA) integration. With this extension, users can easily define which usage data to track and send over to Split to help make better-informed decisions.
+The [Google Tag Manager (GTM) integration](/docs/feature-management-experimentation/integrations/google-tag-manager) is an extension of our Google Analytics (GA) integration. With this extension, users can easily define which usage data to track and send over to Split to help make better-informed decisions.
 #### 2022-07-26
 ##### Admin Console
 ###### **Allow Admins to Skip Approval Flows**
-To avoid delays when changes need to occur right away, admins can now [skip approval flows](https://help.split.io/hc/en-us/articles/360039250851-Approval-flows) on selected environments.
+To avoid delays when changes need to occur right away, admins can now [skip approval flows](/docs/feature-management-experimentation/management-and-administration/fme-settings/approval-flows) on selected environments.
 #### 2022-07-15
 ##### Admin API Enhancements
 ###### Get/Create Split API Enhancements
@@ -782,22 +782,22 @@ Our [Get Split](https://docs.split.io/reference/get-split) and [Create Split](ht
 #### 2022-07-07
 ##### SDK Enhancements
 ###### Client-Side Single Sync
-Client-side single sync allows customers to configure their [React](https://help.split.io/hc/en-us/articles/360038825091-React-SDK), [JavaScript](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK), [Node.js](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK), [React Native](https://help.split.io/hc/en-us/articles/4406066357901-React-Native-SDK), [Redux](https://help.split.io/hc/en-us/articles/360038851551), [JavaScript Browser](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK), and [Angular](https://help.split.io/hc/en-us/articles/6495326064397-Angular-utilities) SDKs to avoid processing updated or new targeting rules during a session. This enables the user experience to stay consistent while reducing performance impact.
+Client-side single sync allows customers to configure their [React](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk), [JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk), [Node.js](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk), [React Native](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk), [Redux](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk), [JavaScript Browser](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk), and [Angular](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/angular-utilities) SDKs to avoid processing updated or new targeting rules during a session. This enables the user experience to stay consistent while reducing performance impact.
 #### June 2022
 #### 2022-06-16
 ##### Integrations
 ###### Amazon S3 Inbound Integration Update
-Split has added functionality to the [S3 Inbound integration](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3). With this update, all S3 bucket and status folder prefix will have a consolidated status file that includes all files with events that have been uploaded to Split during its latest batch.
+Split has added functionality to the [S3 Inbound integration](/docs/feature-management-experimentation/integrations/amazon-s3). With this update, all S3 bucket and status folder prefix will have a consolidated status file that includes all files with events that have been uploaded to Split during its latest batch.
 #### 2022-06-03
 ##### Language Library Enhancements
 ###### Angular Library
-[Split's Angular Library](https://help.split.io/hc/en-us/articles/6495326064397) brings scalable feature flags to any app, website or experience built with Angular. Just inject the service in any component and start evaluating flags and tracking events!
+[Split's Angular Library](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/angular-utilities) brings scalable feature flags to any app, website or experience built with Angular. Just inject the service in any component and start evaluating flags and tracking events!
 #### 2022-06-01
 ##### Experimentation
 ###### Impact Snapshot
-[Impact snapshot](https://help.split.io/hc/en-us/articles/360025376251-Metric-details-and-trends#viewing-impact-snapshot) provides users with an up-to-date, aggregated view of the expected impact over baseline for each treatment and an estimated range for that impact.
+[Impact snapshot](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/#viewing-impact-snapshot) provides users with an up-to-date, aggregated view of the expected impact over baseline for each treatment and an estimated range for that impact.
 ###### Deprecation of "Across" Metrics
-The creation of new "across" metrics has been deprecated. This deprecation will not impact any usage of the current "across" metrics. Users can still access the same information while using "across" metrics by using "[per traffic type](https://help.split.io/hc/en-us/articles/360020843931-Metric-definition)" metrics and clicking into the metric cards.
+The creation of new "across" metrics has been deprecated. This deprecation will not impact any usage of the current "across" metrics. Users can still access the same information while using "across" metrics by using "[per traffic type](/docs/feature-management-experimentation/experimentation/metrics/categories/)" metrics and clicking into the metric cards.
 ##### Management Console
 ###### Workspace View Permissions
 Admins can now control which users, groups, and Admin API keys can see if a certain Workspace exists and access the objects within it (splits, segments, metrics, traffic types, and environments). Use in order to keep sensitive projects private and to minimize cognitive load on users by reducing Workspaces visible to them. Visit the [documentation](https://help.split.io/hc/en-us/articles/360023534451-Workspaces#about-setting-workspace-permissions) to learn more.
@@ -816,11 +816,11 @@ Several new additions and enhancements to [Split's Admin API](https://docs.split
 #### 2022-04-20
 ##### SDK Enhancements
 ###### User Consent Support
-Our [JavaScript](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#user-consent), [Browser](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK#user-consent), [React](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#user-consent), and [Redux SDKs](https://help.split.io/hc/en-us/articles/360038851551-Redux-SDK#user-consent) now allow you to easily disable the tracking of events and impressions until user consent for tracking is explicitly granted or declined.
+Our [JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#user-consent), [Browser](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#user-consent), [React](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#user-consent), and [Redux SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk#user-consent) now allow you to easily disable the tracking of events and impressions until user consent for tracking is explicitly granted or declined.
 #### 2022-04-07
 ##### Integrations
 ###### Microsoft Azure DevOps Integration Update
-Split has added functionality to the [Azure DevOps integration](https://help.split.io/hc/en-us/articles/4408032964493-Azure-DevOps). With this update, users will be able to map their Split workspaces to Azure DevOps projects. In Split, users will now be able to see the Azure DevOps work item assignee, work item status, and action.
+Split has added functionality to the [Azure DevOps integration](/docs/feature-management-experimentation/integrations/azure-devops). With this update, users will be able to map their Split workspaces to Azure DevOps projects. In Split, users will now be able to see the Azure DevOps work item assignee, work item status, and action.
 #### March 2022
 #### 2022-03-18
 ##### Management Console
@@ -829,7 +829,7 @@ Within a status column, you now have additional options to customize the sort or
 #### 2022-03-15
 ##### Integrations
 ###### Datadog Integration Update
-Split has added functionality to the [Datadog integration](https://help.split.io/hc/en-us/articles/4822553169933-Datadog). With this update, account admins will be able to map the integration between a Split environment and a specific Datadog site. Split now supports the integration for any Datadog Site, including one for the EU.
+Split has added functionality to the [Datadog integration](/docs/feature-management-experimentation/integrations/datadog). With this update, account admins will be able to map the integration between a Split environment and a specific Datadog site. Split now supports the integration for any Datadog Site, including one for the EU.
 #### January 2022
 #### 2022-01-22
 ##### Management Console
@@ -838,7 +838,7 @@ Users can now drag and drop feature cards on the Rollout Board to immediately up
 #### 2022-01-17
 ##### SDK Enhancements
 ###### User Consent Support for Mobile
-Our [iOS](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#user-consent) and [Android](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#configuration) SDKs now allow you to easily disable the tracking of events and impressions until user consent for tracking is explicitly granted or declined.
+Our [iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#user-consent) and [Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#configuration) SDKs now allow you to easily disable the tracking of events and impressions until user consent for tracking is explicitly granted or declined.
 ##### Learning and Onboarding
 ###### Split Arcade
 [Split Arcade](https://arcade.split.io/certifications), our self-serve customer education, and certification platform is now available to our Free (Developer) users! All customers can now gain a deeper understanding of how Split supports the simplest needs for even the most advanced use cases. Free users can now get Split Certified in "Level 1: Feature Flagging Foundations" by registering [here](https://free-arcade.split.io/).
@@ -856,7 +856,7 @@ Our [iOS](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#user-cons
 #### 2021-11-16
 ##### Integration
 ###### Azure DevOps integration
-Once configured, you can create feature flags and view flag statuses along with details associated with work items. In Azure DevOps, users can easily set up tasks to define custom rollouts in a pipeline. Visit the [documentation](https://help.split.io/hc/en-us/articles/4408032964493-Azure-DevOps) to learn more.
+Once configured, you can create feature flags and view flag statuses along with details associated with work items. In Azure DevOps, users can easily set up tasks to define custom rollouts in a pipeline. Visit the [documentation](/docs/feature-management-experimentation/integrations/azure-devops) to learn more.
 ##### Management Console
 ###### Rollout Board Enhancement
 Users can now use a variety of out-of-box dimensions to refine your search and narrow down to a specific set of features on the Rollout Board. Visit the [Advanced Filtering documentation](https://help.split.io/hc/en-us/articles/4405016480269-Use-the-rollout-board#filters) to learn more.
@@ -868,12 +868,12 @@ You can now assign a status to each feature flag upon creation or when updating 
 #### 2021-08-04
 ##### SDK Enhancement
 ###### React Native SDK
-Our new [SDK for React Native](https://help.split.io/hc/en-us/articles/4406066357901-React-Native-SDK) is powered by Split's core TypeScript modules, and is optimized towards mobile lifecycle and use cases. It also uses a pluggable API to keep your bundle leaner by selecting only the features you need, with the ability to add more as we release them.
+Our new [SDK for React Native](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk) is powered by Split's core TypeScript modules, and is optimized towards mobile lifecycle and use cases. It also uses a pluggable API to keep your bundle leaner by selecting only the features you need, with the ability to add more as we release them.
 #### June 2021
 #### 2021-06-08
 ##### Statistics
 ###### Share results from Metrics
-The new [Share results dropdown,](https://help.split.io/hc/en-us/articles/360059696231-Share-Results) in the Metrics tab, allows you to share results from experiments with your teammates. Select the format that best meets their needs (JSON, PDF, CSV, or via URL). Available to all Experimentation customers.
+The new [Share results dropdown,](/docs/feature-management-experimentation/experimentation/experiment-results/#share-results) in the Metrics tab, allows you to share results from experiments with your teammates. Select the format that best meets their needs (JSON, PDF, CSV, or via URL). Available to all Experimentation customers.
 #### April 2021
 #### 2021-04-28
 ##### Integrations
