@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## July 2025
 
+### Version 25.06.86106 <!-- Jul 15, 2025 -->
+
+#### Fixed issues
+
+- Fix for Dynatrace connector URL validation for API Token flow. (CDS-112199)
+
 ### Version 25.06.86203 <!-- Jul 14, 2025 -->
 
 #### Fixed issues
@@ -106,7 +112,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Improved log-streaming performance while dispatching the logs. (CDS-111776)
   
-### Version 25.06.86104 <!-- Jul 08, 2025 -->
+### Version 25.06.86105 <!-- Jul 08, 2025 -->
 
 #### Fixed issues
 
