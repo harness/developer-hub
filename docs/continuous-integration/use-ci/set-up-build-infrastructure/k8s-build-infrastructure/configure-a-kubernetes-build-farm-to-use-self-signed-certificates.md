@@ -347,6 +347,69 @@ The name is sanitized to comply with Kubernetes naming conventions. If the total
 3. To avoid potential failures in Kubernetes environments, ensure that all secret names are lowercase. Starting from **delegate release 825xx**, any uppercase characters in the secret name are automatically converted to lowercase to ensure compatibility with Kubernetes naming conventions.
 :::
 
+## Using Dockerfile builds with self-signed certificates (BuildKit-specific)
+
+When using the [Build and Push to Docker](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/) step (or any step that performs Dockerfile builds using BuildKit), mounting CA certificates to the Delegate is not enough. BuildKit must be explicitly configured to trust your private registry's certificate.
+
+This workaround is only required for **Build and Push to Docker** steps using Docker BuildKit. Steps using Kaniko, like most default Kubernetes builds in Harness, do not require this additional configuration if the certificate is already mounted using `DESTINATION_CA_PATH`.
+
+To make this work, follow these additional steps:
+
+1. Create the CA cert and BuildKit TOML config dynamically in a Run step.
+
+2. Share the cert and config path using `sharedPaths` and environment variables.
+
+Here is an example pipeline that downloads a CA cert, creates the required BuildKit config file, and builds a Dockerfile using a private registry with a self-signed cert:
+
+```yaml
+sharedPaths:
+  - /etc/buildkit/certs/<REGISTRY_IP:PORT>
+
+envVariables:
+  PLUGIN_BUILDER_CONFIG: /harness/buildkit.toml
+```
+
+Sample Run step to prepare cert and TOML:
+
+```yaml
+- step:
+    type: Run
+    name: Prepare BuildKit Config
+    identifier: buildkit_config
+    spec:
+      connectorRef: account.harnessImage
+      image: alpine
+      shell: Sh
+      command: |-
+        REGISTRY_IP="your.registry.com:5000"
+        CRT_URL="https://your-cert-url/ca.crt"
+        CERT_DIR="/etc/buildkit/certs/${REGISTRY_IP}"
+        BUILDKIT_TOML="/harness/buildkit.toml"
+
+        mkdir -p "$CERT_DIR"
+        wget -O "${CERT_DIR}/ca.crt" "$CRT_URL"
+
+        cat <<EOF > "$BUILDKIT_TOML"
+        [registry."${REGISTRY_IP}"]
+          ca = ["${CERT_DIR}/ca.crt"]
+        EOF
+```
+
+Then, use the config in your Build step like this:
+
+```yaml
+- step:
+    type: BuildAndPushDockerRegistry
+    name: Docker Build
+    identifier: docker_build
+    spec:
+      ...
+      envVariables:
+        PLUGIN_BUILDER_CONFIG: /harness/buildkit.toml
+```
+
+This ensures that BuildKit inside your pipeline trusts the self-signed certificate used by your private registry.
+
 ## Troubleshoot Kubernetes cluster build infrastructures
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including use of self-signed certificates, such as:

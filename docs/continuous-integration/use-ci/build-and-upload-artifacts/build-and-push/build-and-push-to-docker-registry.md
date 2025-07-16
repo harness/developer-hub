@@ -87,6 +87,11 @@ The name of the repository where you want to store the image, for example, `<hub
 
 For private Docker registries, specify a fully qualified repo name.
 
+:::tip
+Using a private Docker registry with a self-signed certificate?  
+[Learn how to configure BuildKit to trust self-signed certs.](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
+:::
+
 ### Tags
 
 Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag.
