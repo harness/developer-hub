@@ -2276,6 +2276,14 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## Delegate Upgrader release notes
 
+## July 2025
+
+### Version 1.7.0 <!--Jul 16, 2025--> 
+
+#### New features and improvements
+
+- Added support for proxy settings in the Delegate Upgrader using environment variables. This allows the upgrader to work in environments that require proxy access. [PL-48062]
+
 ## April 2025
 
 ### Version 1.6.0
