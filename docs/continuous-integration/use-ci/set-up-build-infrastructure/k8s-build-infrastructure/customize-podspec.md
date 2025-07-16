@@ -6,7 +6,9 @@ sidebar_position: 50
 
 Harness CI supports advanced customization of the Kubernetes PodSpec used for your build pods. You can use this to apply configurations like projected volumes, custom security contexts, node selectors, and topology spread constraints.
 
-> ⚠️ **Feature Flag Required:** This feature is gated by the feature flag `CI_K8S_OVERLAY_YAML` and requires Harness Delegate version `863` or higher.
+:::note Feature Flag Required
+This feature is gated by the feature flag `CI_K8S_OVERLAY_YAML` and requires Harness Delegate version `863xx` or higher.
+:::
 
 ## Overview
 

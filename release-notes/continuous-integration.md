@@ -43,9 +43,37 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 ## July 2025
 
+### Version 1.87
+
+<!-- 2025-07-14 -->
+
+#### New features and enhancements
+
+- You can now provide an overlay YAML to override the pod spec in Kubernetes builds. This feature is behind the feature flag `CI_K8S_OVERLAY_YAML`. For details, check out [the documentation](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/customize-podspec). (CI-17391)
+- Added support for GitHub Actions and Bitrise steps on both VM and Local Runner infrastructures. Check out the following docs for specific step:
+  - [GitHub Actions step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step#support-for-github-actions-on-vm-and-local-runner-build-infrastructure)
+  - [Bitrise step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin#support-for-bitrise-steps-on-vm-and-local-runner-build-infrastructure)
+- Added support for increasing the Docker-based CI infrastructure timeout from the default 24 hours to up to 35 days. Default behavior remains unchanged. To enable this extended timeout, turn on the feature flag `CI_ENABLE_LONG_TIMEOUTS` and configure the desired timeout at the stage level. For details, check out the [stage timeout note](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#stage-timeout). (CI-18163)
+- The default Drone plugins used in out-of-the-box build steps now emit a step log warning when a Base Image Connector is not configured. Additionally, the Drone Kaniko images have been updated to use Chainguard’s maintained fork of Kaniko as the base. (CI-17953)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `plugins/kaniko`    |  Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base. | 1.10.6              | 1.11.4       |
+| `plugins/kaniko-ecr`    |  Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base. | 1.11.1              | 1.11.4       |
+| `plugins/kaniko-acr`    |  Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base. | 1.11.2              | 1.11.4       |
+| `plugins/docker`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.6              | 21.0.1       |
+| `plugins/ecr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.7              | 21.0.1       |
+| `plugins/acr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.8              | 21.0.1       |
+| `plugins/buildx`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.3              | 1.3.4      |
+| `plugins/buildx-ecr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.1              | 1.3.2      |
+| `plugins/buildx-acr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.1              | 1.3.2      |
+| `plugins/buildx-gar`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.1              | 1.3.2      |
+
 ### Version 1.86
 
-<!-- 2025-06-07 -->
+<!-- 2025-07-07 -->
 
 #### New features and enhancements
 - Reduced the size of the Windows Artifactory plugin image by ~80%, improving build performance and resource usage. (CI-17716)

@@ -33,16 +33,6 @@ The delegate install command uses the default authentication token for your Harn
 
 :::
 
-## Prerequisites for Bitrise and Action steps on local runner
-
-Starting with **v0.1.19**, local runners support **Bitrise** and **GitHub Action steps**.
-
-To use this feature, make sure:
-
-- You're using **runner version v0.1.19 or later**.
-- The **feature flag** `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` is **enabled**.
-- The machine has **access to github.com**, since the runner downloads additional binaries during execution.
-
 ## Set up a Linux local runner
 
 ### Prepare machines
