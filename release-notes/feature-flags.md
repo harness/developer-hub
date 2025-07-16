@@ -1,9 +1,8 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-05-16T08:09:25
+date: 2025-07-16T08:09:25
 tags: [NextGen, "feature flags"]
-
 sidebar_position: 11
 ---
 
@@ -27,27 +26,145 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: May 16, 2025
+#### Last updated: July 16, 2025
+
+## July 2025
+
+### Node.js SDK
+
+#### Version 1.8.7
+
+**Bug fixes**:
+
+- Fixed an issue where the Node SDK did not retry after initialization failure. (FFM-12484)
+- Fixed an uncaught exception occurring when fetching flags or segments fails on SSE events. (FFM-12499)
+
+### .NET SDK
+
+#### Version 1.7.3
+
+This minor release updates the build process to sign the NuGet package, improving package integrity and trust.
+
+**Bug fixes**:
+
+- Documentation fixes. (FFM-12465)
+
+**New features and enhancements**:
+
+- Signed NuGet package as part of the build process. (FFM-12415)
+
+## June 2025
+
+### Java SDK
+
+#### Version 1.8.1
+
+**Maintenance**:
+
+- Migrated artifact publishing from OSSRH to the Maven Central Repository. This release includes no functional changes or bug fixes. (FFM-12481)
+
+### Android Client SDK
+
+#### Version 2.2.5
+
+**Maintenance**:
+
+- Migrated artifact publishing from OSSRH to Maven Central Repository. This release includes no functional changes or bug fixes. (FFM-12482)
+
+### Node.js SDK
+
+#### Version 1.8.6
+
+**Bug fixes**:
+
+- Various streaming reliability improvements and fixes to enhance connection stability and reduce disconnections. (FFM-12477)
+
+## May 2025
+
+### Python SDK
+
+#### Version 1.7.2
+
+**Bug fixes**:
+
+- Fixed an issue with the boolean equals clause to ensure correct evaluation in feature flag rules. (FFM-12349)
+
+## April 2025
+
+### iOS SDK
+
+#### Version 1.3.4
+
+**Bug fixes**: 
+
+- Fixed a crash that could occur when re-initializing the SDK. Replacing the custom singleton with a thread-safe `static let` pattern to prevent force-unwrapping a nil optional. Also synchronized `initialize` and `destroy` to avoid memory corruption. (FFM-12377)
+
+#### Version 1.3.3
+
+**Bug fixes**: 
+
+- Fixed an issue where the main thread could be blocked if disk writing took too long. The `saveToDisk` method now uses `DispatchQueue.async` to ensure the main thread returns immediately. (FFM-12377)
+
+### JavaScript SDK
+
+#### Version 1.31.0
+
+**New features and enhancements**:
+
+- Added a new `enableAnalytics` option to control whether metrics are sent from the SDK. See the [Options interface](https://github.com/harness/ff-javascript-client-sdk/blob/main/src/types.ts#L172) for usage details. (FFM-12373)
+
+**Security and maintenance**:
+
+- Bumped `esbuild` to address a CVE. As a result, the minimum Node version required to build the SDK is now 18. This change only affects development environments and does not alter the minimum supported Node version for SDK users. 
+
+### Node.js SDK
+
+#### Version 1.8.5
+
+**Bug fixes and enhancements**:
+
+- Added retries for timed out requests and authentication requests.
+- Introduced `axiosRetries` option to control the number of retries (see [documentation](https://github.com/harness/ff-nodejs-server-sdk/blob/main/src/types.ts#L17)).
+- Removed dumping of entire Axios objects on request failures to reduce log noise.
+- Fixed an issue where `waitForInitialization()` could unblock prematurely before flags and groups were fully loaded, preventing brief returns of default variations. (FFM-12374)
 
 ## March 2025
 
 ### Relay Proxy
 
-#### Version 2.0.10.
+#### Version 2.0.10
 
 **Fixed Issues**:
 
 - Resolved an issue where the REDIS_DB environment variable was not passed to the Redis client, causing the default DB to be used regardless of configuration
 - Updated third-party dependencies to address security vulnerabilities identified by scanners.
 
-
 #### Version 2.0.9
 
 **New features and enhancements**:
 
 - Added support for rotating auth secrets without downtime or requiring SDK restarts.
-Previously, updating the AUTH_SECRET invalidated existing SDK tokens. Now, you can assign a new AUTH_SECRET and move the old one to LEGACY_SECRETS. The Proxy will accept tokens signed with both. Once all SDKs are using tokens signed with the new secret, you can remove the legacy value.
+  
+  Previously, updating the AUTH_SECRET invalidated existing SDK tokens. Now, you can assign a new AUTH_SECRET and move the old one to LEGACY_SECRETS. The Proxy will accept tokens signed with both. Once all SDKs are using tokens signed with the new secret, you can remove the legacy value.
 
+### Node.js SDK
+
+#### Version 1.8.4
+
+**Bug fixes**: 
+
+- Reduced log verbosity for stream disconnection and retries. Now logs an error once per disconnection period, a warning on the first retry, the 10th attempt, and every 50th attempt thereafter. All other retries are logged at the `debug` level. Also downgraded some overly verbose `info` logs in the Evaluator to `debug` level. (FFM-12353)
+
+### Go SDK
+
+#### Version 0.1.26
+
+**Bug fixes**:
+
+- Fixed pipeline issues. (FFM-167)
+- Addressed .NET vulnerability. (FFM-12309)
+- Updated x/net dependency to latest version. (FFM-12359)
+- Resolved vulnerabilities related to infrastructure-as-code. (IAC-3407)
 
 ## February 2025
 
@@ -58,18 +175,57 @@ Previously, updating the AUTH_SECRET invalidated existing SDK tokens. Now, you c
 - Upgrades packages and dependencies to resolve CVEs
 - Updates to documentation
 
+### JavaScript SDK
+
+#### Version 1.30.0
+
+**New features and enhancements**:
+
+- Added a new optional prop `onFlagNotFound`, which triggers a callback when a requested flag cannot be found and a default variation is served. The callback receives two arguments:
+
+  - `flagNotFound`: A typeDefaultVariationEventPayload containing the flag identifier and the default variation.
+  - `loading`: A boolean indicating whether the SDK was still initializing at the time of the request.
+
+This feature helps developers monitor when default variations are returned due to issues like typos, misconfigurations, or early variation calls before SDK initialization. It listens to the `ERROR_DEFAULT_VARIATION_RETURNED` event introduced in JavaScript SDK v1.29.0. See the [README](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md#caching) for usage details. (FFM-12306)
+
+**Maintenance**:
+
+- Updated README documentation for clarity and to reflect recent SDK enhancements. 
+
+### React Native Client SDK
+
+#### Version 2.2.0
+
+**New features and enhancements**:
+
+- Added support to automatically re-initialize the SDK when configuration options change. (FFM-12320)
+
+#### Version 2.1.0
+
+**Maintenance**:
+
+- Bumped JavaScript SDK version and updated README documentation. (FFM-12313)
+
 ## January 2025
 
 ### Ruby SDK
 
-### Version 1.4.6
+#### Version 1.4.6
 
 **Fixed Issues**:
  - Thread safety issues have been resolved. Previously, the Ruby SDK was marked a singleton and did not ensure only one instance can be created. This caused some issues where multiples were created in a quick period of time. This fix helps protect you from it. (FFM-12281)
  - Added `initialized` method. This checks if client is initialized and returns `true` if initialization is complete and `false` if it has 
   not. (FFM-12277)
 
-# Previous releases
+### Python SDK
+
+#### Version 1.7.1
+
+**Bug fixes**:
+
+- Increased the default size of the LRU cache to improve caching behavior. (FFM-12288)
+
+## Previous releases
 
 <details>
 <summary>2024 releases</summary>
@@ -78,10 +234,17 @@ Previously, updating the AUTH_SECRET invalidated existing SDK tokens. Now, you c
 
 ### Android Client SDK
 
-### Version 2.2.4
+#### Version 2.2.4
 
 **New features and enhancements**:
  - Remove unused `org.threeten:threetenbpdependency`. (FFM-12237)
+
+### iOS SDK
+
+#### Version 1.3.1
+
+**Fixed issues**:
+ - Fixed an issue where the `jsonVariation` method returned double-escaped JSON strings, requiring developers to manually code them. The method now returns correctly formatted JSON, eliminating the need for manual unescaping. (FFM-12241)
 
 ## November 2024
 
@@ -125,6 +288,34 @@ Previously, updating the AUTH_SECRET invalidated existing SDK tokens. Now, you c
  invalid metric events shortly after the SDK has initialised. This patch release ensures these invalid metrics events are skipped, and a warning is logged 
  if the SDK encounters them. The impact of flag evaluation metrics will not include any events that have been skipped. (FFM-12192)
 
+### React Native Client SDK
+
+#### Version 2.0.0
+
+**New features and enhancements**:
+
+- Renamed the optional prop `async` to `asyncMode` on the `FFContextProvider` in the React Native SDK to resolve a conflict with updates in React Native 0.76.
+
+  If you are upgrading to this version, you must update your usage accordingly:
+
+  ```jsx
+  <FFContextProvider
+    asyncMode
+    apiKey="YOUR_API_KEY"
+    target={{
+      identifier: 'YOUR_TARGET_IDENTIFIER',
+      name: 'YOUR TARGET NAME'
+    }}
+    options={{
+      cache: true
+    }}
+  >
+    <MyApp />
+  </FFContextProvider>
+  ```
+
+  This change prevents errors caused by reserved keyword conflicts in newer React Native versions. (FFM-12209)
+
 ## October 2024
 
 ### Relay Proxy
@@ -141,6 +332,14 @@ Previously, updating the AUTH_SECRET invalidated existing SDK tokens. Now, you c
 - Upgrades dependencies to resolve CVEs
 - Reduces pushpin log level from info to error level. This reduces the amount of ephemeral pod storage the Proxy consumes in k8s.
 - Ensures the Proxy only writes to the response body if the response hasn't already been committed.
+
+### JavaScript SDK
+
+#### Version 1.29.0
+
+**New features and enhancements**:
+
+- Added a new event `ERROR_DEFAULT_VARIATION_RETURNED`, emitted whenever the SDK returns a default variation. This allows you to listen for and handle cases where a fallback is used. See the [README](https://github.com/harness/ff-javascript-client-sdk#listening-for-the-error_default_variation_returned-event) for usage details. (FFM-12129)
 
 ### Java SDK
 
@@ -167,6 +366,21 @@ Previously, updating the AUTH_SECRET invalidated existing SDK tokens. Now, you c
  down the stream, the SDK would still make a poll request,
  resulting in error logs due to evicted network resources. Now, no
  polling requests are made after `close()` is invoked.
+
+### React Client SDK
+
+#### Version 1.14.0
+
+**New features and enhancements**:
+
+- Added a new optional `onFlagNotFound` callback prop, which is triggered whenever a variation is requested for a flag that cannot be found and the default variation is returned.
+
+  The callback receives two arguments:
+
+  - `flagNotFound`: A `typeDefaultVariationEventPayload` containing the flag identifier and the default variation served.
+  - `loading`: A boolean indicating whether the SDK was still initializing at the time of the request.
+
+  This feature leverages the `ERROR_DEFAULT_VARIATION_RETURNED` event (available in JavaScript SDK v1.29.0+) and helps teams identify issues like typos, misconfigurations, or early variation calls before SDK initialization. See the [README](https://github.com/harness/ff-react-client-sdk?tab=readme-ov-file#on-flag-not-found) for usage examples. (FFM-12129)
 
 ## September 2024
 
@@ -240,6 +454,22 @@ Previously, updating the AUTH_SECRET invalidated existing SDK tokens. Now, you c
 **Fixed Issues**:
  - No longer ships `rake`, `minitest` and `standard` as dependencies. (FFM-11995)
 
+### Flutter SDK
+
+#### Version 2.3.0
+
+**New features and enhancements**:
+
+- Upgraded internal Feature Flags SDKs: Android SDK to v2.2.3 and iOS SDK to v1.3.1. (FFM-11972)
+
+### Golang SDK
+
+#### Version 0.1.25
+
+**New features and enhancements**:
+
+- Added configurable limit and clearing schedule for the seen targets map. Use `WithSeenTargetsMaxSize` to set the maximum size and `WithSeenTargetsClearInterval` to configure the clearing interval. (FFM-11660)
+
 ## August 2024
 
 ### Node.js SDK
@@ -292,6 +522,14 @@ Previously, updating the AUTH_SECRET invalidated existing SDK tokens. Now, you c
  - Added `httpx_args` option. (FFM-11935):
    - For further reading, you can refer to this [doc on `httpsx_args`](https://github.com/harness/ff-python-server-sdk/blob/main/docs/further_reading.md#httpx-configuration-options)
    - You can find a [sample of the change by Harness](https://github.com/harness/ff-python-server-sdk/blob/main/examples/with_httpx_args_example/with_httpx_args.py) in our Python SDK repo.
+
+### Node.js SDK
+
+#### Version 1.8.3
+
+**Security Updates**: 
+
+- Patched Axios vulnerability [CVE-2024-39338](https://github.com/advisories/GHSA-8hc4-vh64-cxmj) by upgrading the dependency to a secure version. (FFM-11888)
 
 ## July 2024
 
@@ -470,6 +708,13 @@ Previously, updating the AUTH_SECRET invalidated existing SDK tokens. Now, you c
  - Fixed error logging when metrics are processed for targets without any attributes. (FFM-11655)
 
 ## May 2024
+
+### iOS SDK
+
+#### Version 1.3.1
+
+**Fixed issues**:
+ - Fixed an issue in iOS Proxy V2 where a missing `projectIdentifier` in the authentication token caused a crash. This field is now treated as optional to prevent nil reference errors. (FFM-11492)
 
 ### Golang SDK
 
@@ -835,7 +1080,7 @@ This is a major hardening effort of the SDK to improve its overall reliability:
 
 ### JavaScript SDK
 
-### Version 1.25.0
+#### Version 1.25.0
 
  - It allows the overriding of cache storage mechanism. (FFM-10772)
  - Removed React Native Android detection. (FFM-10810)
@@ -998,6 +1243,12 @@ This is a major hardening effort of the SDK to improve its overall reliability:
 
 We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/client-sdks/react-client).
 
+### Apex SDK
+
+#### Version 0.1.3
+
+- Added a re-authentication mechanism to the poller to handle token refresh during long-running sessions. Also introduced a synchronous initialization option for the SDK (not applicable to scheduled jobs). (FFM-10286)
+
 ## November 2023
 
 ### Android SDK
@@ -1037,7 +1288,7 @@ We encourage users to migrate to our React SDK. For more information on transiti
 
 ### Java SDK
 
-### Version 1.4.0
+#### Version 1.4.0
 
  - Updated the percentage rollout hash to match GoLang SDK.
  - Dropped SSE event log down from `INFO` to `DEBUG`.
