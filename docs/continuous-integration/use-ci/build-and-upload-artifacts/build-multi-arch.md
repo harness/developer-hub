@@ -14,7 +14,7 @@ If you're using self-hosted infrastructure, turn on the feature flag `CI_ENABLE_
 
 :::
 
-1. Open your `Build and Push an image to Docker Registry` step. 
+1. Open your [Build and Push an image to Docker Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/) step. 
 2. Select `Enable Docker Layer caching`. To learn more, go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching).
 2. Open the **Optional Configuration** dropdown at the bottom of the step.
 3. Add a variable under **Environment Variables**.
