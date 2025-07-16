@@ -128,13 +128,18 @@ For more details, go to [Steady state check](https://developer.harness.io/docs/c
 Workflow notification strategy can only interpret Condition,Scope, and User Group fields. So, all the notification rules are applied on workflow level.
 
 
-### Is it possible to modify the looping stage runs inside a pipeline execution?
+### Can I customize the names of looping stage runs in a pipeline execution?
 
-You can use Matrix strategies where you can use labels. To use the matrix labels naming strategy, do the following:
-1. In Harness, select Account Settings.
-2. Select Account Resources, then select Pipeline.
-3. Set Enable Matrix Labels By Name to true.
-4. Select Save.
+Yes, you can. Harness uses a default matrix naming strategy that labels looping stages with numeric indices (like _2_2, _1_3, etc.). To make these names more readable, you can enable matrix labels based on axis names.
+
+To enable this:
+1. In Harness, go to Account Settings.
+2. Navigate to Default Settings at the Account, Organization, or Project level.
+3. Expand Pipeline settings.
+4. Set **Enable Matrix Labels By Name** to **true**.
+5. Select **Save**.
+
+For more information, refer [Looping Strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#customize-matrix-stage-names).
 
 
 ### How do you determine the number of service instances/licenses for our services?
