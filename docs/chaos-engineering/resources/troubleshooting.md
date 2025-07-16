@@ -360,6 +360,56 @@ Force TLS 1.2 by adding the following line to the beginning of your command:
 powershell -Command "& { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://app.harness.io/public/shared/tools/chaos/windows/1.32.0/install.ps1' -OutFile 'install.ps1' -UseBasicParsing; .\install.ps1 -AdminUser '.\uditgaurav' -AdminPass 'password@123' -InfraId '59cedc73-c544-432a-99e7-ec20b2fc73c0' -AccessKey 'ow03gxzvkjdck9ws5jjmznu2gzx7h0ep' -ServerUrl 'https://shubhamch.pr2.harness.io/chaos/mserver/api' }"
 ```
 
+
+### Windows CPU stress chaos fails when using CPU percentage input
+
+**Error Message:**
+```
+System.Object[] does not contain a method named 'op_Division'
+Error running script 'cpu-stress.ps1': exit status 1
+```
+
+#### Issue Explanation
+
+This error typically occurs when executing the `windows-cpu-stress` chaos fault using the `CPU_PERCENTAGE` input. The chaos script attempts to calculate the number of CPU cores using WMI:
+
+```powershell
+(Get-WmiObject Win32_Processor).NumberOfLogicalProcessors
+```
+
+If the user running the script lacks sufficient permission to access this WMI class, the command returns an object array or fails, causing a method invocation error when performing arithmetic operationsv(here op_Division).
+
+#### Root Cause
+
+- Insufficient WMI privileges prevent the command from returning a usable integer.
+- This leads to PowerShell throwing an error on the division operation.
+
+#### How to Reproduce & Verify
+
+Run this command manually in a PowerShell terminal:
+
+```powershell
+(Get-WmiObject Win32_Processor).NumberOfLogicalProcessors
+```
+
+- ❌ If this fails or returns an array object and throws an error, the user lacks WMI access.
+- ✅ If it returns a number (e.g., `4`), the permissions are in place and the script should work correctly.
+
+#### How to fix this?
+
+**Grant WMI Access:** Ensure the user running the chaos service has appropriate permissions to access WMI. If you're unsure how to configure this, please contact your Windows administrator for assistance.
+
+#### Workaround (If Fix Not Possible)
+
+If permission changes are not feasible, use the `CPU` parameter directly instead of `CPU_PERCENTAGE`:
+
+```json
+"CPU": "2"
+```
+
+This bypasses the WMI call and uses a fixed number of cores for CPU stress.
+Once the WMI command works manually, retry the chaos experiment with percentage input. It should now work as expected.
+
 ## Known Issues
 
 ### Incorrect Upgrade Prompt
