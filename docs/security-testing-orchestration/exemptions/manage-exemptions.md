@@ -62,7 +62,7 @@ You can approve the exemption at the requested scope or a higher one:
 - **Approve for this organization** – Applies the exemption across all projects in the organization requires [`Approve/Reject`](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions)` permission at the Organization scope.
 - **Approve for this account** – Applies the exemption across all organizations and projects in the account requires [`Approve/Reject`](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) permission at the Account scope).
 
-When you click an **Approve** action, a window appears displaying details such as Issue Title, Requested Scope, and an optional **Comment** field. Review the details, add comments if needed, and click **Submit**.
+When you click on an **Approve** action, a window appears displaying details such as Issue Title, Requested Scope, and an optional **Comment** field. Review the details, add comments if needed, and click **Submit**.
 
 :::tip
 Always review the **Exemption Details** and consider the **Requested Duration** before approving. The exemption remains active only for the specified time window (e.g., 7 days from the approval date).
