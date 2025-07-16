@@ -65,12 +65,10 @@ This update is currently being rolled out to customers, and we expect the rollou
 |-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
 | `plugins/kaniko`    |  Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base. | 1.10.6              | 1.11.4       |
 | `plugins/kaniko-ecr`    |  Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base. | 1.11.1              | 1.11.4       |
-| `plugins/kaniko-gcr`    |  Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base. | 1.10.1              | 1.11.4       |
 | `plugins/kaniko-acr`    |  Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base. | 1.11.2              | 1.11.4       |
 | `plugins/docker`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.6              | 21.0.1       |
 | `plugins/ecr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.7              | 21.0.1       |
 | `plugins/acr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.8              | 21.0.1       |
-| `plugins/gcr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.6              | 21.0.1       |
 | `plugins/buildx`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.3              | 1.3.4      |
 | `plugins/buildx-ecr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.1              | 1.3.2      |
 | `plugins/buildx-acr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.1              | 1.3.2      |
