@@ -70,7 +70,7 @@ These settings are for the [Harness SCS module](/docs/software-supply-chain-assu
 By default Harness applies a timeout (of 1 hour) on CI stages to ensure pipelines don't run indefinitely. Users can increase stage timeout to a maximum of 24 hours.
 
 :::note
-On Kubernetes infrastructure, when the CI_ENABLE_LONG_TIMEOUTS feature flag is enabled, the maximum timeout can now be set to 35 days. This is especially useful for long running jobs like ML training or large test suites.
+On self-managed build infrastructure, when the CI_ENABLE_LONG_TIMEOUTS feature flag is enabled, the maximum timeout can now be set to 35 days. This is especially useful for long running jobs like ML training or large test suites.
 
 :::
 
