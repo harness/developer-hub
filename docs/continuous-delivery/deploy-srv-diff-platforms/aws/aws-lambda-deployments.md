@@ -203,6 +203,8 @@ The API takes a JSON object as input that defines the configuration settings for
 
 In Harness, you use a JSON configuration file to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
 
+Secrets are not supported for the `functionName` field in `function.json`. This value must be provided in plain text to enable traffic shifting and rollback. Using a secret may expose it in logs and cause deployment failures.
+
 **Harness Support for Tag Management**
 
 :::note
