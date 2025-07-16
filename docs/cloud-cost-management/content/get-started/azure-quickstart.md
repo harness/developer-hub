@@ -5,14 +5,31 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 <RedirectIfStandalone label="Azure" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
 ## Before You Start
-To ensure a smooth and error-free setup experience, complete the following steps in your **Azure portal** before launching the Harness wizard. This will allow you to progress through the setup without delays or missing prerequisites.
+To ensure a smooth and error-free setup experience, set up Azure billing Export before launching the Harness wizard. This will allow you to progress through the setup without delays or missing prerequisites.
 
-| Required Info                       | Where to Find It                             | Why It’s Needed                                       |
-| ----------------------------------- | -------------------------------------------- | ----------------------------------------------------- |
-| **Storage Account Name**            | Azure Portal → Storage accounts              | Source location of exported billing data.             |
-| **Subscription ID**                 | Azure Portal → Subscriptions                 | Identifies the subscription being monitored.          |
-| **Storage Container**               | Azure Portal → Storage accounts → Containers | Target location for billing export data.              |
-| **Storage Directory & Export Name** | When configuring Billing Export in Azure     | Required to locate and identify billing data exports. |
+
+ | Required Info                       | Where to Find It                             | Why It’s Needed                                       |
+ | ----------------------------------- | -------------------------------------------- | ----------------------------------------------------- |
+ | **Storage Account Name**            | Azure Portal → Storage accounts              | Source location of exported billing data.             |
+ | **Subscription ID**                 | Azure Portal → Subscriptions                 | Identifies the subscription being monitored.          |
+ | **Storage Container**               | Azure Portal → Storage accounts → Containers | Target location for billing export data.              |
+ | **Storage Directory & Export Name** | When configuring Billing Export in Azure     | Required to locate and identify billing data exports. |
+ 
+### Set Up Azure Billing Export
+
+1. Go to **Azure Portal → Cost Management → Exports**.
+2. Click **+ Create** to create a new export.
+3. Configure your export:
+   - 📝 **Name**: Enter a descriptive name (e.g., `ccm-harness-export`)
+   - 📊 **Type**: Choose **Actual cost** or **Amortized cost**
+   - 🕒 **Frequency**: Set to **Daily**
+4. Set up storage destination:
+   - Choose your **Storage account** (or create new)
+   - Specify **Container** and **Directory path**
+   - 📄 **Format**: CSV (recommended)
+   - 🗜️ **Compression**: Gzip
+5. Click **Create** to complete setup.
+
 
 :::info Choose your billing type
 Harness supports two billing types:
@@ -21,6 +38,7 @@ Harness supports two billing types:
 
 Choose the one that aligns best with your internal reporting strategy. This cannot be changed later.
 :::
+
 :::caution time for data delivery
 It may take up to **24 hours** for AWS to begin delivering cost and usage data. You can still proceed through the wizard, but the connection test may fail if data isn’t yet available.
 
@@ -37,78 +55,78 @@ In the meantime, explore the optional requirements and feature integrations avai
 ## Cloud Connector Wizard
 Once you've gathered the required Azure details, follow these steps in the Harness setup wizard to connect your Azure account and enable cost visibility.
 
-<Tabs>
-<TabItem value="Interactive Guide" label="Interactive Guide">
-   <DocVideo src="https://app.tango.us/app/embed/f48937b7-996f-45f1-9fd9-b387d2570561?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Azure Cloud Cost Connector in Harness" />
-</TabItem>
-<TabItem value="Step-by-Step" label="Step-by-Step">
+### Interactive Guide
+<DocVideo src="https://app.tango.us/app/embed/e313dd8b-99ad-4fb0-a7f3-459d3a3ca5f6?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Azure Cloud Cost Connector in Harness"  />
 
-### Step 1: Overview
+### Step-by-Step Guide
+
+#### Step 1: Overview
 1. Launch the wizard and select **Azure** as the cloud provider.
-2. Enter a name and optional description for your connector.
-3. Click **Continue**.
+2. Provide the following required information:
+   - **Name**: Enter a descriptive name for your connector
+   - **Azure Tenant ID**: Find your [Azure Tenant ID](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant)
+   - **Azure Subscription ID**: Find your [Azure Subscription ID](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription)
+   - **Description** (optional): Add a description for your connector
+3. Click **Continue** to proceed to the next step.
 
 ---
 
-### Step 2: Azure Billing Exports
-1. Click **Launch Azure Console**.
-2. Follow the [instructions to create a Billing Export](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-export-acm-data).
-3. Enter the following:
-   * **Storage Account Name** (e.g., `harnessbillingstorage`)
-   * **Subscription ID** (e.g., `12345678-9abc-def0-1234-56789abcdef0`)
-   * **Storage Container** (e.g., `billingexports`)
-   * **Storage Directory** (e.g., `ccm`)
-   * **Export Name** (e.g., `ccm-export`)
+#### Step 2: Azure Billing Exports
+1. If you have not created a Billing Export,  follow the [instructions to create a Billing Export](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-export-acm-data).
+2. Enter the following:
+
+| Required Info                       | Where to Find It                             | Why It’s Needed                                       |
+| ----------------------------------- | -------------------------------------------- | ----------------------------------------------------- |
+| **Storage Account Name**            | Azure Portal → Storage accounts              | Source location of exported billing data.             |
+| **Subscription ID**                 | Azure Portal → Subscriptions                 | Identifies the subscription being monitored.          |
+| **Storage Container**               | Azure Portal → Storage accounts → Containers | Target location for billing export data.              |
+| **Storage Directory & Export Name** | When configuring Billing Export in Azure     | Required to locate and identify billing data exports. |
 4. Select your **Metric (Billing Type)**:
    * `Actual` or `Amortised`
 5. Click **Continue**.
 
+
+
 ---
 
-### Step 3: Choose Requirements
+#### Step 3: Choose Requirements
 1. **Cost Visibility** is selected by default.
-2. Optionally select any of the following:
-   * **Resource Inventory Management**: View VMs and resource inventory.
-   * **Optimization by AutoStopping**: Orchestrate VMs based on idleness.
-   * **Cloud Governance**: Apply cost guardrails and policies.
+2. Optionally, you can enable any of the following features (they can also be added later):
+   - Resource Inventory Management
+   - Optimization by AutoStopping. If selected, you can select granular permissions for AutoStopping by clicking **Continue**
+   - Cloud Governance
 3. Click **Continue**.
 
 ---
 
-### Step 4: Create Service Principal
-1. Open your terminal or Azure Cloud Shell.
-2. Run the following auto-generated commands:
-```bash
-# Register the Harness app (Harness provides a fixed multi-tenant app ID)
-az ad sp create --id <harness-multi-tenant-app-id>
+#### Step 4: Create Service Principal
 
-# Role assignment for enabling Cost Visibility
-SCOPE=`az storage account show --name harnessbillingstorage --query "id" | xargs`
+Harness uses a multi-tenant application to securely access your billing data and enable the features you selected.
 
-# Assign role to the app on the scope fetched above
-az role assignment create --assignee <harness-multi-tenant-app-id> --role 'Storage Blob Data Reader' --scope $SCOPE
-```
-3. Click **Continue**.
+1. The wizard displays customized Azure CLI commands based on your feature selections from **Step 3: Choose Requirements**.
+2. Copy and execute these commands in **Azure Cloud Shell** or your local terminal with Azure CLI.
+3. After successful execution, click **Continue**.
+
+:::tip
+The displayed commands are dependent on your specific feature selections. Always use the commands shown in your wizard interface.
+:::
 
 ---
 
-### Step 5: Verify the Connection
+#### Step 5: Verify the Connection
 1. Harness will attempt to validate the connection using your inputs.
-2. If this step fails, it's usually because AWS has not yet delivered the first CUR file.
-   - Wait up to **24 hours** after setting up the CUR before trying again.
+2. If this step fails, it's usually because Azure has not yet delivered the first billing export.
+   - Wait up to **24 hours** after setting up the billing export before trying again.
 3. Once validated, click **Finish Setup**.
 
 ---
 
 🎉 You’ve now connected your Azure account and enabled cost visibility in Harness.
-</TabItem>
-</Tabs>
 
 ---
 
 ## See Your Cloud Costs
-Use **Perspectives** to organize and visualize your cloud costs by business context—such as teams, environments, or applications.
-> _Placeholder_: This section will show you how to verify your setup, view cloud spend in Harness, and explore cost breakdowns.
+Use **[Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective)** to organize and visualize your cloud costs by business context—such as teams, environments, or applications.
 
 ---
 

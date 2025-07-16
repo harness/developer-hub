@@ -5,22 +5,6 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 <RedirectIfStandalone label="Azure" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
 ## Before You Start
-To ensure a smooth and error-free setup experience, complete the following steps in your **Azure portal** before launching the Harness wizard. This will allow you to progress through the setup without delays or missing prerequisites.
-
-| Required Info                       | Where to Find It                             | Why It’s Needed                                       |
-| ----------------------------------- | -------------------------------------------- | ----------------------------------------------------- |
-| **Storage Account Name**            | Azure Portal → Storage accounts              | Source location of exported billing data.             |
-| **Subscription ID**                 | Azure Portal → Subscriptions                 | Identifies the subscription being monitored.          |
-| **Storage Container**               | Azure Portal → Storage accounts → Containers | Target location for billing export data.              |
-| **Storage Directory & Export Name** | When configuring Billing Export in Azure     | Required to locate and identify billing data exports. |
-
-:::info Choose your billing type
-Harness supports two billing types:
-- **Actual**: Reflects real-time incurred charges.
-- **Amortised**: Spreads out charges (e.g., reserved instances) evenly over usage.
-
-Choose the one that aligns best with your internal reporting strategy. This cannot be changed later.
-:::
 :::caution time for data delivery
 It may take up to **24 hours** for AWS to begin delivering cost and usage data. You can still proceed through the wizard, but the connection test may fail if data isn’t yet available.
 
@@ -35,81 +19,162 @@ In the meantime, explore the optional requirements and feature integrations avai
 ---
 
 ## Cloud Connector Wizard
-Once you've gathered the required Azure details, follow these steps in the Harness setup wizard to connect your Azure account and enable cost visibility.
-
 <Tabs>
-<TabItem value="Interactive Guide" label="Interactive Guide">
-   <DocVideo src="https://app.tango.us/app/embed/f48937b7-996f-45f1-9fd9-b387d2570561?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Azure Cloud Cost Connector in Harness" />
+<TabItem value="Quick Create" label="Quick Create">
+
+### Interactive Guide
+<DocVideo src="https://app.tango.us/app/embed/e1019596-4936-481c-91c0-f66edadec236?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Kubernetes Cloud Cost Connector in Harness" />
+
+### Step-by-Step Guide
+### Step 1: Overview
+1. Launch the wizard and select **Kubernetes** as the cloud provider. Click on **Quick Create**.
+2. Enter a name for your connector. Please note, this is the name with which the Kubernetes Cluster will be identified in Harness Cloud Cost Management. Also you need to have **Cluster Admin Role** to the Cluster you would like to add
+3. Click **Continue**.
+
+---
+
+### Step 2: Download and Apply YAML
+
+To provide your cluster with permissions apply the following YAML.
+
+Applying the YAML file will:
+
+1. Create a Harness Delegate
+
+2. Assigns the Cluster admin role to the Delegate
+
+Step to Apply the YAML:
+
+Step 1
+
+Download the YAML file as shown on wizard. You can also preview the YAML file.
+
+Step 2
+
+Apply the YAML using the command:
+
+kubectl apply -f harness-delegate.yml
+
+Once applied, click on “Continue”. A Kubernetes Connector will be created.
+
+::note
+For EKS Clusters, ensure that the Metrics server is installed on your Kubernetes cluster where your Harness Kubernetes Delegate will be installed
+
+:::
+
+
+---
+
+### Step 3: Create and Test Connection
+
+Creating Delegate : Created Successfully
+
+Listening for a heartbeat from the Delegate : Installed Successfully
+
+Creating Connectors : Created Successfully
+
+Verifying Permissions
+
+---
+
+🎉 You’ve now connected your Kubernetes cluster and enabled cost visibility in Harness.
+
 </TabItem>
-<TabItem value="Step-by-Step" label="Step-by-Step">
+<TabItem value="Advanced" label="Advanced"> 
+
+### Prerequisites
+
+If you have previously created a connector to the preferred cluster for any other modules (Deployments, Builds etc.), you may reference the same connector to upgrade to support Cloud Cost Management. 
+
+If this is your first time creating a connector to the cluster, you need to create a new connector. 
+
+
+### Interactive Guide
+<DocVideo src="https://app.tango.us/app/embed/a55ce80b-4990-4510-9407-7d69690d70c1?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Kubernetes Cloud Cost Connector in Harness" />
+
+### Step-by-Step Guide
 
 ### Step 1: Overview
-1. Launch the wizard and select **Azure** as the cloud provider.
-2. Enter a name and optional description for your connector.
-3. Click **Continue**.
+
+1. **Select Kubernetes Connector**: Choose an existing Kubernetes connector from your available connectors.
+2. **Configure Cloud Cost Connector**: Enter a name, optional description, and tags for your connector.
+3. Click **Continue** to proceed to the next step.
+
+----
+
+### Step 2: Feature Selection
+
+Choose the Cloud Cost Management features you want to enable for your Kubernetes cluster:
+
+- **Deep Kubernetes Cost Visibility** (Selected by default)
+- **Kubernetes Optimization by AutoStopping** (Optional)
+
+:::tip
+You can enable AutoStopping later if you prefer to start with cost visibility only.
+:::
+
+Click **Continue** to proceed to the next step.
+
+------
+
+### Step 3: Secret Creation (Conditional - if AutoStopping is selected)
+
+1. **Create an API key** from your Harness account settings
+2. **Create namespace**:
+   ```bash
+   kubectl create namespace harness-autostopping
+   ```
+3. **Create secret YAML file** - Replace `YOUR_API_TOKEN_HERE` with your actual API key:
+   ```yaml
+   apiVersion: v1
+   stringData:
+     token: YOUR_API_TOKEN_HERE
+   kind: Secret
+   metadata:
+     name: harness-api-key
+     namespace: harness-autostopping
+   type: Opaque
+   ```
+4. **Apply the secret**:
+   ```bash
+   kubectl apply -f secret.yaml
+   ```
 
 ---
 
-### Step 2: Azure Billing Exports
-1. Click **Launch Azure Console**.
-2. Follow the [instructions to create a Billing Export](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-export-acm-data).
-3. Enter the following:
-   * **Storage Account Name** (e.g., `harnessbillingstorage`)
-   * **Subscription ID** (e.g., `12345678-9abc-def0-1234-56789abcdef0`)
-   * **Storage Container** (e.g., `billingexports`)
-   * **Storage Directory** (e.g., `ccm`)
-   * **Export Name** (e.g., `ccm-export`)
-4. Select your **Metric (Billing Type)**:
-   * `Actual` or `Amortised`
-5. Click **Continue**.
+### Step 4: Provide Permissions
 
----
+1. **Download YAML file** - The wizard will provide a YAML file containing permissions to access the pods and services of the cluster. You can also preview the YAML file.
 
-### Step 3: Choose Requirements
-1. **Cost Visibility** is selected by default.
-2. Optionally select any of the following:
-   * **Resource Inventory Management**: View VMs and resource inventory.
-   * **Optimization by AutoStopping**: Orchestrate VMs based on idleness.
-   * **Cloud Governance**: Apply cost guardrails and policies.
-3. Click **Continue**.
+2. Copy the downloaded YAML to a machine where you have kubectl installed and have access to your Kubernetes cluster. Run the following command to apply the Harness delegate to your Kubernetes Cluster:
 
----
-
-### Step 4: Create Service Principal
-1. Open your terminal or Azure Cloud Shell.
-2. Run the following auto-generated commands:
 ```bash
-# Register the Harness app (Harness provides a fixed multi-tenant app ID)
-az ad sp create --id <harness-multi-tenant-app-id>
+kubectl apply -f ccm-kubernetes.yaml
+```   
 
-# Role assignment for enabling Cost Visibility
-SCOPE=`az storage account show --name harnessbillingstorage --query "id" | xargs`
+:::note
+For EKS clusters, ensure the metrics server is installed. 
+:::
 
-# Assign role to the app on the scope fetched above
-az role assignment create --assignee <harness-multi-tenant-app-id> --role 'Storage Blob Data Reader' --scope $SCOPE
-```
-3. Click **Continue**.
+3. Click **Done** and then **Continue**
 
----
-
-### Step 5: Verify the Connection
-1. Harness will attempt to validate the connection using your inputs.
-2. If this step fails, it's usually because AWS has not yet delivered the first CUR file.
-   - Wait up to **24 hours** after setting up the CUR before trying again.
-3. Once validated, click **Finish Setup**.
 
 ---
 
-🎉 You’ve now connected your Azure account and enabled cost visibility in Harness.
+### Step 5: Verify Connection
+
+Harness will verify the connection to your Kubernetes cluster
+
+---
+
+🎉 **Success!** You've successfully connected your Kubernetes cluster to Harness Cloud Cost Management.
+
 </TabItem>
 </Tabs>
 
----
 
 ## See Your Cloud Costs
-Use **Perspectives** to organize and visualize your cloud costs by business context—such as teams, environments, or applications.
-> _Placeholder_: This section will show you how to verify your setup, view cloud spend in Harness, and explore cost breakdowns.
-
+Use **[Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective)** to organize and visualize your cloud costs by business context—such as teams, environments, or applications.
 ---
 
 ## Next Steps

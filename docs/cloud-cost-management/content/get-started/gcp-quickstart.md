@@ -5,19 +5,27 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 <RedirectIfStandalone label="GCP" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
 ## Before You Start
-To ensure a successful setup and pass the final connection test, complete the following tasks in your **Google Cloud Console** before launching the Harness wizard.
+To ensure a smooth and error-free setup experience, set up GCP Billing Export before launching the Harness wizard. This will allow you to progress through the setup without delays or missing prerequisites.
 
-| Required Info                        | Where to Find It                               | Why It’s Needed |
-|-------------------------------------|------------------------------------------------|-----------------|
-| **GCP Project ID**                  | GCP Console → IAM & Admin → Settings           | Identifies the project Harness connects to. |
-| **Billing Account ID**              | GCP Console → Billing                          | Links spend data to the correct billing source. |
-| **BigQuery Dataset Name**          | BigQuery Console → Datasets                    | Target location for billing export data. |
-| **BigQuery Table Name**            | Automatically created in the dataset           | Must match what you input in the wizard. |
-| **Harness Service Account Access** | Grant `BigQuery Data Viewer` role to: `<account-id>@<project-id>.iam.gserviceaccount.com` | Allows Harness to read billing data. |
+**Why is Billing Export required?**
+
+Harness Cloud Cost Management (CCM) analyzes your cloud spending by accessing detailed billing data from your GCP account. The billing export automatically sends your cost and usage data to BigQuery, where Harness can securely read it.
+
+:::info 
+⚠️ GCP Billing Export Table Limitations and CMEK Restrictions
+When setting up a connector for GCP Billing Export, keep the following limitations and guidelines in mind:
+
+- GCP does not support copying data across regions if the source table uses CMEK.
+- GCP also does not allow copying data from Materialized Views.
+- If your organization enforces CMEK policies, consider creating a new dataset without CMEK enabled specifically for the integration.
+- It is recommended to create the dataset in the US region, as it offers the most compatibility with GCP billing export operations.
+- Use datasets with default (Google-managed) encryption when configuring the connector.
+
+:::
 
 ---
 
-#### Step 1: Set Up the Billing Export
+### Step 1: Set Up the Billing Export
 1. Go to **Billing → Billing export**.
 2. Enable **Export detailed billing data to BigQuery**.
 3. Choose a billing-enabled project and dataset.
@@ -30,7 +38,7 @@ To ensure a successful setup and pass the final connection test, complete the fo
 
 ---
 
-#### **Step 2: Grant Permissions**
+### **Step 2: Grant Permissions**
 1. Go to **BigQuery → Your Project → Dataset**.
 2. Click **Share Dataset**.
 3. Add the following service account as a **Viewer**: `<account-id>@<project-id>.iam.gserviceaccount.com`
@@ -53,64 +61,102 @@ In the meantime, explore the optional requirements and feature integrations avai
 ## Cloud Connector Wizard
 Once you've gathered the required GCP details, follow these steps in the Harness setup wizard to connect your GCP account and enable cost visibility.
 
-<Tabs>
-<TabItem value="Interactive Guide" label="Interactive Guide">
-<DocVideo src="https://app.tango.us/app/embed/f48937b7-996f-45f1-9fd9-b387d2570561?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add GCP Cloud Cost Connector in Harness" />
-</TabItem>
-<TabItem value="Step-by-Step" label="Step-by-Step">
+### Interactive Guide
+<DocVideo src="https://app.tango.us/app/embed/3eb1eed3-85aa-4b1a-b4e6-d249989e7ce5?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add GCP Cloud Cost Connector in Harness" />
+
+### Step-by-Step Guide
 
 ### Step 1: Add GCP Account Details
-1. In the wizard, enter a name for your connector (e.g., `ccm-gcp-prod`).
-2. Enter your **GCP Project ID**.
+1. In the wizard, enter a name for your connector (e.g., `gcp-demo-prod`).
+2. Specify **Project ID**.
 3. (Optional) Add a description and tags to help identify this connector later.
 4. Click **Continue**.
 
 ---
 
 ### Step 2: Select or Create a Billing Export
+Cloud Billing export to BigQuery enables you to export detailed Google Cloud billing data (such as usage and cost estimate data) automatically throughout the day to a BigQuery dataset that you specify.
 1. If your Billing Export already exists, select it from the list.
-2. If not, return to GCP and follow the steps in the [Before You Start](#before-you-start) section to create one.
+2. If not, return to GCP and follow the steps in the [Before You Start](#before-you-start) section to create one. 
 3. Once the Billing Export appears in the list, select it and click **Continue**.
 
 ---
 
 ### Step 3: Choose Requirements
-1. **Cost Visibility** is selected by default and is required — leave it checked.
+1. **Cost Visibility** is selected by default and is required.
 2. Optionally, you can enable any of the following features (they can also be added later):
    - Resource Inventory Management
-   - Optimization by AutoStopping
+   - Optimization by AutoStopping. If selected, you can select granular permissions for AutoStopping by clicking **Continue**
    - Cloud Governance
-   - Commitment Orchestration
 3. Click **Continue**.
 
 ---
 
-### Step 4: Enter Cross Account Role Details
-1. Paste the **Cross Account Role ARN** you created via the CloudFormation stack.
-   - You can find this under **CloudFormation → Stacks → Outputs tab** in AWS.
-2. The **External ID** will be pre-filled — leave it as is.
-3. Click **Save and Continue**.
+### Step 4: Authentication(Optional)
+
+
+If you have selected **Optimization by AutoStopping** or **Cloud Governance**, in previous step, you can set up Authentication by OIDC. For rest of the features, authentication will be through Service Account with Custom Role.
+
+#### OIDC Authentication
+
+:::info 
+This feature is behind a Feature Flag `CCM_ENABLE_OIDC_AUTH_GCP`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+OIDC authentication allows secure access your billing data and perform cost optimization without storing credentials. 
+
+To connect to GCP with OIDC, you must configure an [OIDC identity provider](https://cloud.google.com/iam/docs/workload-identity-federation-with-other-providers) in GCP and connect the service account with relevant permissions that Harness will use to operate in GCP. Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider.
+
+- Harness OIDC Issuer provider endpoint: `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID>`. See below for more details about the Issuer URL format, depending on the environment cluster for your Harness Account.
+
+- OIDC audience: `https://iam.googleapis.com/projects/<GCP_PROJECT_NUMBER>/locations/global/workloadIdentityPools/<POOL_ID>/providers/<WORKLOAD_PROVIDER_ID>`
+
+**Issuer URL:**
+
+The Issuer Format will need to be modified depending on the environment cluster in which your account resides. In `Account Settings` -> `Account Details`, you can see the Harness Cluster that your account resides in.
+
+The Issuer URL format should follow `https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>.`
+
+The hostname should be as follows, even if a Vanity URL is set up for an account.
+
+| Cluster | HostName |
+|---------|----------|
+| Prod1/Prod2 | app.harness.io |
+| Prod3 | app3.harness.io |
+| Prod0/Prod4 | accounts.harness.io |
+| EU clusters | accounts.eu.harness.io |
+
+Follow the steps on the **Authentication** page to complete OIDC authentication:
+1. Configure the federation settings and service account in your GCP console. Read more about it: [Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation)
+
+2. Enter the following inputs from your GCP configuration:
+- Workload Pool ID: This identifies the workload pool created in GCP, and it is the Pool ID value. To get the Workload Pool ID, go to [Manage workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools).
+- Provider ID This identifies the OIDC provider configured in GCP, and it is the Provider ID value. To get the Provider ID, go to [Manage workload identity pool providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#manage-providers).
+- Project Number: The project number of the GCP project that is used to create the workload identity federation. To get the Project number, go to [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
+- Service Account Email: This is the service account that was linked to the workload identity pool in the last step.
+
+If AutoStopping Granular Rules are selected, you will be prompted to generate commands. Click on **Generate commands for step 3** and run the commands listed on screen to create and assign the custom role with permissions for your selected features.
+
+### Step 5: Grant Permissions
+
+Based on what you selected in **Step 3 - Choose Requirements**, you will be prompted to grant permissions to your service account alongwith the steps to be followed.
 
 ---
 
-### Step 5: Verify the Connection
+### Step 6: Verify the Connection
 1. Harness will attempt to validate the connection using your inputs.
-2. If this step fails, it's usually because AWS has not yet delivered the first CUR file.
-   - Wait up to **24 hours** after setting up the CUR before trying again.
+2. If this step fails, it's usually because GCP has not yet delivered the first billing export.
+   - Wait up to **24 hours** after setting up the billing export before trying again.
 3. Once validated, click **Finish Setup**.
 
 ---
 
 🎉 You’ve now connected your GCP account and enabled cost visibility in Harness.
-</TabItem>
-</Tabs>
 
 ---
 
 ## See Your Cloud Costs
-Use **Perspectives** to organize and visualize your cloud costs by business context—such as teams, environments, or applications.
->_Placeholder_: This section will show you how to verify your setup, view cloud spend in Harness, and explore cost breakdowns.
-
+Use **[Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective)** to organize and visualize your cloud costs by business context—such as teams, environments, or applications.
 ---
 
 ## Next Steps

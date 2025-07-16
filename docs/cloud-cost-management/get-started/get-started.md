@@ -7,12 +7,6 @@ sidebar_label: Get Started
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
-Harness Cloud Cost Management (CCM) is a comprehensive solution designed to help your gain visibility and control over your cloud spending. By integrating seamlessly with major cloud providers, Harness CCM enables teams to **monitor, analyse, and optimize cloud costs across multiple environments**. 
-
-With features like **automated cost allocation, real-time reporting, and actionable insights**, CCM empowers engineering, finance, and DevOps teams to make data-driven decisions, reduce waste, and maximize the value of their cloud investments.
-
----
-
 Select your cloud provider below to get started. You’ll connect your account, review your associated resource costs, and begin your journey to effective cloud cost management with Harness CCM.
 
 <DynamicMarkdownSelector
