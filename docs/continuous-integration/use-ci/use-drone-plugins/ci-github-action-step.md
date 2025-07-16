@@ -438,6 +438,15 @@ The following table compares GitHub Action YAML with Harness CI Action step YAML
 </tr>
 </table>
 
+## Support for GitHub Actions on VM and Local Runner Build Infrastructure
+
+Harness supports GitHub Actions steps on both VM and Local Runner infrastructures. Check out the following docs for specific build infrastructures:
+  - [AWS VM Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure#enable-github-actions-and-bitrise-step-support)
+  - [Azure VM Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-azure#enable-github-actions-and-bitrise-step-support)
+  - [GCP VM Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#enable-github-actions-and-bitrise-step-support)
+  - [macOS VM Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#enable-github-actions-and-bitrise-step-support)
+  - [Local Runner Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#prerequisites-for-bitrise-and-action-steps-on-local-runner)
+  
 ## Troubleshooting GitHub Actions in Harness CI
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issue related to plugins and integrations, including GitHub Action steps. For example:

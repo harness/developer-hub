@@ -85,7 +85,7 @@ To use GitHub Actions and Bitrise step types in Harness CI, your Harness Delegat
 
 :::
 
-Check out [user-data-example](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure#user-data-example) for details.
+Check out [user-data-example](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#user-data-example) for details.
 
 ## Configure the Drone pool on the Google Cloud VM
 

@@ -152,3 +152,12 @@ If you already configured Bitrise Workflow Steps elsewhere, the Bitrise `inputs`
 </td>
 </tr>
 </table>
+
+## Support for Bitrise Steps on VM and Local Runner Build Infrastructure
+
+Harness supports Bitrise steps on both VM and Local Runner infrastructures. Check out the following docs for specific build infrastructures:
+  - [AWS VM Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure#enable-github-actions-and-bitrise-step-support)
+  - [Azure VM Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-azure#enable-github-actions-and-bitrise-step-support)
+  - [GCP VM Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#enable-github-actions-and-bitrise-step-support)
+  - [macOS VM Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#enable-github-actions-and-bitrise-step-support)
+  - [Local Runner Build Infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#prerequisites-for-bitrise-and-action-steps-on-local-runner)
