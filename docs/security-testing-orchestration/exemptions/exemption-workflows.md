@@ -139,15 +139,17 @@ Clicking an exemption request opens the **Issue Details** pane. At the top right
 
 <DocImage path={require('./static/exemption-details-side-pane.png')} width="100%" height="100%" title="Click to view full-size image" />
 
-This pane includes the following details:
+Clicking on the **Exemption Status** button shows:
 
-- **Issue Details:** Displays the Issue title, Description, Issue Type, Severity, Scanner, and any Reference identifiers.
-- **Exemption Status and Details:** Shows the current status of the exemption (e.g., Pending, Approved, Rejected, Expired) along with a history of events such as when it was requested, approved, or rejected, etc.
-- **Targets Impacted** Displays all targets affected by the issue and where the exemption would be applied if approved.
-- **Occurrences:** Lists all the occurrences of the issue across different scans, and targets where it was detected.
-- **Response Actions:** If you have the [required permissions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions), you will see options to **Approve**, **Reject**, **Cancel**, or **Re-open** the request, depending on its current state.
+- **Current Status:** Indicates the state of the request — `Pending`, `Approved`, `Rejected`.
+- **Requested By:** Displays the user who created the exemption request and the relative time since it was submitted (e.g., `David · 7 days ago`).
+- **Requested Duration:** Shows the time period for which the exemption is requested (e.g., `7 days`, `30 days`).
+- **Scope:** Indicates the exemption's intended application scope, such as Target-level, Pipeline-level, or Project-level.
+- **Reason:** Selected justification category provided during request creation (e.g., `Acceptable Risk`, `False Positive`, `Not Exploitable` etc.).
+- **Comments:** Displays the latest comment added by a reviewer during the approval or rejection process.
+- **Description:** Optional detailed context added by the requester.
+- **Response Actions:** If you have the [required permissions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions), available actions include **Approve**, **Reject**, **Cancel**, or **Re-open**, depending on the current request state.
 
-Use this view to fully assess the impact of the issue before taking action on the request.
 
 ### View exemptions at the Project level
 
