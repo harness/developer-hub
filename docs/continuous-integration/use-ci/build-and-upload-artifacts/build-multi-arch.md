@@ -29,7 +29,7 @@ If you're using Kubernetes infrastructure, turn on the feature flag `CI_USE_BUIL
 
 :::
 
-1. Open your `Build and Push an image to Docker Registry` step. 
+1. Open your [Build and Push an image to Docker Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/) step. 
 2. Open the **Optional Configuration** dropdown at the bottom of the step.
 3. Add two variables under **Environment Variables**.
 4. Enter `PLUGIN_PLATFORM` for your first **Key**. 
