@@ -102,6 +102,26 @@ After you select an application, you will see the application dashboard:
 You can edit the manifest in **Manifest** and the changes are synced in the target infrastructure, but when you do a full sync from your source repo the state of the source repo overwrites any changes made in **Manifest**.
 * **App Diff:** displays a diff against the live state in the cluster and desired state in Git. 
 
+### Health and Sync Status
+
+The **Health** And **Sync** status indicators now include extended metadata in a popover. Hovering over a status reveals additional context such as sync type, revision, and more. This allows you to quickly assess the application state without leaving the dashboard.
+
+<div align="center">
+  <DocImage path={require('./static/health-status.png')} width="80%" height="80%" title="Click to view full size image" />
+</div>
+
+<div align="center">
+  <DocImage path={require('./static/sync-status.png')} width="80%" height="80%" title="Click to view full size image" />
+</div>
+
+### Last Sync Details
+
+Users can now view details like sync history, commit ID, sync result, and timestamps in a side drawer that opens directly from the application dashboard. 
+
+<div align="center">
+  <DocImage path={require('./static/last-sync-details.png')} width="80%" height="80%" title="Click to view full size image" />
+</div>
+
 ## Application Configuration Options
 
 ### Ignore HPA Changes to Prevent Out-of-Sync Status

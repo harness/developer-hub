@@ -66,7 +66,7 @@ As an alternative to using FME SDKs, you can make REST API calls to a Split Eval
 ## FME's structure
 Harness FME is architected to support teams and organizations of any size, from a single developer to multiple value-stream enterprises. Take a moment to familiarize yourself with the concepts of your Harness account, project, environment, and objects, e.g., users, user groups, tags, traffic types, feature flags, segments, and metrics.
 
-import FMEArchitectureObjectsImage from '@site/docs/feature-management-experimentation/10-getting-started/docs/FMEArchitectureObjectsImage.js';
+import FMEArchitectureObjectsImage from '@site/docs/feature-management-experimentation/10-getting-started/FMEArchitectureObjectsImage.js';
 
 <FMEArchitectureObjectsImage />
 

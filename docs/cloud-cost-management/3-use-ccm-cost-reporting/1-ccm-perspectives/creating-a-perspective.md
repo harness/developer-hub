@@ -161,11 +161,11 @@ Reports can send a cost report to specified users at the specified frequency. Yo
 You can also set up alerts for all anomalies in the current perspective. The scope of the alerts set via this option will be for the current perspective, i.e., the alerts will be set only for anomalies detected on the current perspective data.
 
 1. Click on **+ add Anomaly Alert**
-2. Configure Name, Alert Conditions and Alert Channel. For details, see: [Anomaly Detection](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm#anomaly-notifications)
+2. Configure Name, Alert Conditions and Alert Channel. For details, see: [Anomaly Detection](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-notifications)
 
 #### Additional Resources
 
-For more detailed information about Anomaly detection in CCM, refer to [Detect Cloud Cost Anomalies with CCM](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm)
+For more detailed information about Anomaly detection in CCM, refer to [Detect Cloud Cost Anomalies with CCM](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection)
 
 ------
 

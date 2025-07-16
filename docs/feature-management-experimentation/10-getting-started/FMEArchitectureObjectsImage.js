@@ -1,7 +1,7 @@
 import { useColorMode } from '@docusaurus/theme-common';
 
-import FmeLight from '@site/docs/feature-management-experimentation/10-getting-started/docs/static/fme-architecture-objects-light.svg';
-import FmeDark  from '@site/docs/feature-management-experimentation/10-getting-started/docs/static/fme-architecture-objects-dark.svg' ;
+import FmeLight from '@site/docs/feature-management-experimentation/10-getting-started/static/fme-architecture-objects-light.svg';
+import FmeDark  from '@site/docs/feature-management-experimentation/10-getting-started/static/fme-architecture-objects-dark.svg' ;
 
 const LightVersion = () => {
   return <FmeLight  width='100%' height='100%' />;

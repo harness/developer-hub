@@ -108,6 +108,54 @@ After setting up the Anka Controller and Registry, you can set up [Anka Virtuali
 
 3. [Push your VM templates to the Registry.](https://docs.veertu.com/anka/anka-build-cloud/getting-started/preparing-and-joining-your-nodes/#push-the-vm-to-the-registry)
 
+### Enable GitHub Actions and Bitrise step support
+
+To support GitHub Action steps and Bitrise steps in your self-managed VM infrastructure, your build VMs must include a few additional tools at runtime.
+
+These tools are required for the GitHub Actions/Bitrise runners embedded within the Harness build process.
+
+#### Required tools
+Ensure that all build VMs (those provisioned by your runner) include:
+
+- nodejs version 16 or higher
+
+- python3 (with python pointing to python3)
+
+- golang
+
+- A correctly set HOME environment variable
+
+These are prerequisites for the GitHub Actions/Bitrise step runtimes and are not automatically installed by Harness.
+
+#### Recommended: Install via user_data script
+To automate provisioning of these tools, you can inject setup commands through the runner’s `user_data` in your `pool.yml`.
+
+Here’s an example for Linux-based VMs:
+
+```yaml
+user_data: |
+  #cloud-config
+  runcmd:
+    - 'sed -i "1s|^|HOME=/home/ubuntu\n|" /etc/environment'
+    - 'curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -'
+    - 'sudo apt install -y python3 python-is-python3 nodejs golang'
+```
+This script:
+
+- Initializes the `HOME` variable for login shells
+
+- Installs the required language runtimes and tooling
+
+- Prepares the VM to run GitHub Actions and Bitrise step definitions reliably
+
+:::note Minimum Delegate Version
+
+To use GitHub Actions and Bitrise step types in Harness CI, your Harness Delegate must be version 863 or later.
+
+:::
+
+Check out [user-data-example](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure#user-data-example) for details.
+
 ## Install the Harness Delegate and Runner
 
 Install a Harness Docker Delegate and Runner on the Linux-based AWS EC2 instance where the Anka Controller and Registry are running.
@@ -151,6 +199,61 @@ instances:
 #### Pool settings reference
 
 You can configure the following settings in your `pool.yml` file. You can also learn more in the Drone documentation for the [Pool File](https://docs.drone.io/runner/vm/configuration/pool/) and [Anka drivers](https://docs.drone.io/runner/vm/drivers/anka/).
+
+#### user data example
+
+Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data` if you need custom configuration. Refer to the [user data examples for supported runtime environments](https://github.com/drone-runners/drone-runner-aws/tree/master/app/cloudinit/user_data).
+
+Below is a sample `pool.yml` for GCP with `user_data` configuration:
+
+```yaml
+version: "1"
+instances:
+  - name: linux-amd64
+    type: google
+    pool: 1
+    limit: 10
+    platform:
+      os: linux
+      arch: amd64
+    spec:
+      account:
+        project_id: YOUR_PROJECT_ID
+        json_path: PATH_TO_SERVICE_ACCOUNT_JSON
+      image: IMAGE_NAME_OR_PATH
+      machine_type: e2-medium
+      zones:
+        - YOUR_GCP_ZONE  # e.g., us-central1-a
+      disk:
+        size: 100
+      user_data: |
+        #cloud-config
+        {{ if and (.IsHosted) (eq .Platform.Arch "amd64") }}
+        packages: []
+        {{ else }}
+        apt:
+          sources:
+            docker.list:
+              source: deb [arch={{ .Platform.Arch }}] https://download.docker.com/linux/ubuntu $RELEASE stable
+              keyid: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+        packages: []
+        {{ end }}
+        write_files:
+          - path: {{ .CaCertPath }}
+            path: {{ .CertPath }}
+            permissions: '0600'
+            encoding: b64
+            content: {{ .TLSCert | base64 }}
+          - path: {{ .KeyPath }}
+        runcmd:
+          - 'set -x'
+          - |
+            if .ShouldUseGoogleDNS; then
+              echo "DNS=8.8.8.8 8.8.4.4\nFallbackDNS=1.1.1.1 1.0.0.1\nDomains=~." | sudo tee -a /etc/systemd/resolved.conf
+              systemctl restart systemd-resolved
+            fi
+          - ufw allow 9079
+```
 
 | Setting | Type | Description |
 | ------- | ---- | ----------- |
