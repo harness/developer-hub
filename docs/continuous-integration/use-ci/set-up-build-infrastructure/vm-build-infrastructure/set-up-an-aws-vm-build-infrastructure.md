@@ -284,43 +284,7 @@ network:
 
 #### user data example
 
-Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data` if you need custom configuration , below is an example for linux based distribution. 
-
-```yaml
-user_data_path: /path/to/custom/user-data.yml
-```
-
-```yaml
-user_data: |
-  #cloud-config
-  apt:
-    sources:
-      docker.list:
-        source: deb [arch={{ .Architecture }}] https://download.docker.com/linux/ubuntu $RELEASE stable
-        keyid: KEY_TO_IMPORT
-  packages:
-  - wget
-  - docker-ce
-  write_files:
-  - path: {{ .CaCertPath }}
-    permissions: '0600'
-    encoding: b64
-    content: {{ .CACert | base64  }}
-  - path: {{ .CertPath }}
-    permissions: '0600'
-    encoding: b64
-    content: {{ .TLSCert | base64 }}
-  - path: {{ .KeyPath }}
-    permissions: '0600'
-    encoding: b64
-    content: {{ .TLSKey | base64 }}
-  runcmd:
-  - 'wget "{{ .LiteEnginePath }}/lite-engine-{{ .Platform }}-{{ .Architecture }}" -O /usr/bin/lite-engine'
-  - 'chmod 777 /usr/bin/lite-engine'
-  - 'touch /root/.env'
-  - 'touch /tmp/some_directory'
-  - '/usr/bin/lite-engine server --env-file /root/.env > /var/log/lite-engine.log 2>&1 &'
-```
+Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data` if you need custom configuration. Refer to the [user data examples for supported runtime environments](https://github.com/drone-runners/drone-runner-aws/tree/master/app/cloudinit/user_data).
 
 #### disk example
 
