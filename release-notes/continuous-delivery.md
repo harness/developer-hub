@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-7-09T10:00:00
+date: 2025-7-15T10:00:00
 sidebar_position: 8
 ---
 
@@ -54,6 +54,47 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 :::
 
 ## July 2025
+
+### GitOps Service 1.37.0, GitOps Agent 0.97.0
+
+#### [Argo Upgrade] 2.14.13 (CDS-112038)
+
+The argo version was upgraded from v2.14.9 to 2.14.13 to resolve critical CVEs. Please ensure you upgrade to the new service and agent version to ensure security. 
+
+#### [New Feature] Agent Filter Improvements (CDS-110032)
+
+You can now [filter Agents](/docs/continuous-delivery/gitops/application/manage-gitops-applications/#filter-applications) more effectively with the addition of new filter options:
+  - Cluster ID
+  - Mapped Harness Project
+  - Tag
+  - Agent Version (Version list updates dynamically as new versions are supported)
+In addition, the filtering experience has been upgraded to match the enhanced UX introduced in the Applications section. This includes the ability to save and edit filters, making it easier to manage complex environments and reuse filter configurations. 
+
+#### [New Feature] Enhanced GitOps Application View (CDS-109925)
+
+We've improved the GitOps Application View with new features designed to deliver more context and a smoother user experience:
+  - **Richer Sync & Health Status Popovers**: The `Sync` and `Health` status popovers now include additional metadata and contextual details, giving users deeper insights without leaving the main application view.
+  - **Modern Drawer for Last Sync Statuses**: The previous tab-based layout has been replaced with a side drawer, offering a more consistent experience when viewing last sync details while keeping you in context.
+
+#### [UI/UX Improvement] Improved Application List View (CDS-108478)
+
+Harness addressed several key usability and performance issues in the Application List View:
+  - **Added Popovers**: Added a popover for each field (Name, Agent ID, Source, Destination) in the table.
+  - **Popover Copy Buttons**: Popovers now contain a "Copy to Clipboard" button that allows users to copy the field's content easily.
+  - **Server-side Sorting**: Sorting is now handled server-side, enabling accurate sorting without requiring all applications to be loaded in the browser.
+  - **Preserved Sort on Back Navigation**: The selected sort order is now retained when using the browser’s back button to return from an app detail view to the application list, improving navigation flow and reducing rework.
+
+#### [UI/UX Improvement] GitOps Agent Details Page (CDS-110030)
+
+Harness introduced a series of user experience improvements to the GitOps Agent Details page to make agent management more intuitive and efficient:
+  - **Linked List of Applications**: Added a paginated and sortable list of applications associated with each agent for easier navigation and accessibility.
+  - **Dynamic Page Title**: The agent name now appears in the page header, providing immediate context.
+  - **Streamlined Edit Flow**: The page no longer requires an explicit **Edit** action. A **Save** button appears only when changes are made, simplifying updates.
+  - **Agent Version Display**: The agent's current version is now clearly visible, improving traceability and version awareness.
+  - **Harness Project Links**: In the project mapping section, clickable links now lead directly to the associated Harness projects for quicker access.
+
+#### Other Improvements
+  - Normal streaming of pod logs has been sped up by using new batch tasks. (**CDS-110786**)
 
 ### GitOps Service 1.36.1, GitOps Agent 0.96.0
 
