@@ -92,8 +92,8 @@ To configure a proxy for your Kubernetes Delegate Upgrader, ensure that you upda
       namespace: harness-delegate-ng
       containerName: delegate
       delegateConfig:
-        accountId: px7xd_XXXXXXX_Vjvw
-        managerHost: https://vanityurl.harness.io
+        accountId: XXXX_XXXXXXX_XXXX
+        managerHost: https://<YOUR_VANITY_URL>
       proxyHost: XX.XX.XX.XX
       proxyPort: 3128
       proxyManager: true
@@ -114,14 +114,14 @@ To run the Docker Delegate Upgrader with proxy settings, use the command below w
 ```bash
 docker run  --cpus=0.1 --memory=100m \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -e ACCOUNT_ID=px7xd_XXXXXXX_Vjvw \
-  -e MANAGER_HOST_AND_PORT=https://vanityurl.harness.io \
+  -e ACCOUNT_ID=XXXX_XXXXXXX_XXXX \
+  -e MANAGER_HOST_AND_PORT=https://<YOUR_VANITY_URL> \
   -e UPGRADER_WORKLOAD_NAME=docker-delegate \
   -e PROXY_HOST=YOUR_PROXY_HOST_IP \
   -e PROXY_PORT=YOUR_PROXY_PORT \
   -e PROXY_USER=MYUSER \
   -e PROXY_PASSWORD=****** \
-  -e UPGRADER_TOKEN=NWExNWY3MGU4YXXXXXXXXXXXA5YzhlZjAzZDgwMDY= \
+  -e UPGRADER_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXX \
   -e CONTAINER_STOP_TIMEOUT=3600 \
   -e SCHEDULE="0 */1 * * *" us-west1-docker.pkg.dev/gar-setup/docker/upgrader:1.7.0
 ```
