@@ -57,7 +57,7 @@ To create a new entity, navigate to the Harness IDP portal and click on **“Cre
 
     :::info
      **YAML validation** is performed to ensure compatibility with the **Harness-native Catalog YAML** model. Any errors will be shown in the Validation logs.
-
+    Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
     ![](./static/yaml-validation.png)
     :::
 
@@ -98,7 +98,7 @@ You can also use the [Catalog YAML](/docs/internal-developer-portal/catalog/cata
 ![](./static/yaml-conversion.png)
 
 :::info
-Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs.
+Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 ![](./static/yaml-validation.png)
 :::
 
