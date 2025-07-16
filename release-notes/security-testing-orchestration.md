@@ -22,6 +22,25 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## July 2025
+
+### Version v1.148.4
+
+<!-- 2025-07-17 -->
+
+#### New Features and Enhancements
+- [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference) step now supports the **Filesystem** scan configuration for scanning a repository or file using `trivy fs` (STO-8711, ZD-81541).  
+- [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference) step now supports the **Trivy SBOM** scan configuration for scanning SBOM files using `trivy sbom /path/to/cyclonex.json` (STO-8940).
+- [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz) step now recognizes exempted issues and no longer lists them as active. Previously exempted issues may now appear as **Remediated** after the next Wiz scan (STO-9229).
+- Added the checkbox field **Use Scanner Raw Severity** to the [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference) step to use the scanner-provided severity instead of CVSS-based severity. This is functionally equivalent to setting `ingest_tool_severity: true` (STO-8547).
+
+#### Fixed Issues
+- Fixed a bug in [Checkov](/docs/security-testing-orchestration/sto-techref-category/checkov-iac-scan) scan handling where multiple vulnerability types in one scan were not processed correctly (STO-9153, ZD-85529).
+- Enhanced the **Scanner** filter in the Vulnerabilities tab to support subproduct-based filtering, fixes the issue where custom scanners couldn’t be individually selected in the UI (STO-9010, ZD-84685).
+- Fixed a data consistency issue that caused some issues to be incorrectly marked as remediated in Custom Dashboards (STO-8997, ZD-84585).  
+- Fixed a data inconsistency where some older scans (over a year old) had no previous scan reference, which caused confusion in the Vulnerabilities tab of pipeline executions (STO-9216).  
+
+
 ## June 2025
 
 ### Version v1.142.1
