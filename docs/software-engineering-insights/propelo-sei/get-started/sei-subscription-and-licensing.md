@@ -16,7 +16,8 @@ Your SEI subscription includes a specific number of **Developer licenses**, whic
 
 ### Who is a Developer?
 
-SEI allows admins to explicitly define (import) the list of Developers for whom Insights must be generated. All Developers in this list, explicitly consume a Developer license. These Developers may never login to the Harness Platform, but consume a license by virtue of having Insights generated for their Engineering related work. Insights may often be accessed by management / engineering leadership.
+SEI allows admins to explicitly define (import) the list of Developers for whom Insights must be generated. All Developers in this list, explicitly consume a Developer license. These Developers may never login to the Harness Platform, but consume a license by virtue of having Insights generated for their Engineering related work. Insights may often be accessed by management / engineering leadership instead.
+Harness recommends that you bring into SEI, all Developers / Engineers that contribute to your SDLC (Software Delivery LifeCycle) - this can often span many roles in the organization such as Developers, QA, Security, DevOps, SecOps, and more. Though often, the biggest and most important developer population is the developers who are actively writing and shipping code - SEI excels at providing deep insights into this user segment and to get value from SEI, Harness highly recommends brining in this entire population segment.
 
 ### View license usage
 
