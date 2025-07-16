@@ -90,8 +90,6 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 25.07.86300 <!--Jul 16 2025-->
 
-#### Fixed issues
-
 #### New features and improvements
 
 - Delegate registration now makes sure FIPS delegates only register with a FIPS-enabled manager. [PL-63704]
