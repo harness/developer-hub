@@ -157,6 +157,7 @@ Based on what you selected in **Step 3 - Choose Requirements**, you will be prom
 
 ## See Your Cloud Costs
 Use **[Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective)** to organize and visualize your cloud costs by business context—such as teams, environments, or applications.
+
 ---
 
 ## Next Steps

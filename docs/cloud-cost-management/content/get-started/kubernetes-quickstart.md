@@ -175,6 +175,7 @@ Harness will verify the connection to your Kubernetes cluster
 
 ## See Your Cloud Costs
 Use **[Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective)** to organize and visualize your cloud costs by business context—such as teams, environments, or applications.
+
 ---
 
 ## Next Steps
