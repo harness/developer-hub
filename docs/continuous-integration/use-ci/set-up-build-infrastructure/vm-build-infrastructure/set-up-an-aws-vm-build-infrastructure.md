@@ -286,6 +286,57 @@ network:
 
 Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data` if you need custom configuration. Refer to the [user data examples for supported runtime environments](https://github.com/drone-runners/drone-runner-aws/tree/master/app/cloudinit/user_data).
 
+Below is a sample `pool.yml` for GCP with `user_data` configuration:
+
+```yaml
+version: "1"
+instances:
+  - name: linux-amd64
+    type: google
+    pool: 1
+    limit: 10
+    platform:
+      os: linux
+      arch: amd64
+    spec:
+      account:
+        project_id: YOUR_PROJECT_ID
+        json_path: PATH_TO_SERVICE_ACCOUNT_JSON
+      image: IMAGE_NAME_OR_PATH
+      machine_type: e2-medium
+      zones:
+        - YOUR_GCP_ZONE  # e.g., us-central1-a
+      disk:
+        size: 100
+      user_data: |
+        #cloud-config
+        {{ if and (.IsHosted) (eq .Platform.Arch "amd64") }}
+        packages: []
+        {{ else }}
+        apt:
+          sources:
+            docker.list:
+              source: deb [arch={{ .Platform.Arch }}] https://download.docker.com/linux/ubuntu $RELEASE stable
+              keyid: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+        packages: []
+        {{ end }}
+        write_files:
+          - path: {{ .CaCertPath }}
+            path: {{ .CertPath }}
+            permissions: '0600'
+            encoding: b64
+            content: {{ .TLSCert | base64 }}
+          - path: {{ .KeyPath }}
+        runcmd:
+          - 'set -x'
+          - |
+            if .ShouldUseGoogleDNS; then
+              echo "DNS=8.8.8.8 8.8.4.4\nFallbackDNS=1.1.1.1 1.0.0.1\nDomains=~." | sudo tee -a /etc/systemd/resolved.conf
+              systemctl restart systemd-resolved
+            fi
+          - ufw allow 9079
+```
+
 #### disk example
 
 ```yaml
