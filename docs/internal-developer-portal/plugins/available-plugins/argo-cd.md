@@ -61,6 +61,18 @@ metadata:
     argocd/app-name: <your-app-name>
 ```
 
+## Note
+
+When using ArgoCD without SSL, the plugin may fail to retrieve data correctly, even if configured with the HTTPS endpoint. This occurs because when operating over HTTP, ArgoCD will not accept the connection unless the `server.insecure` configuration is set to `true`.
+
+In Kubernetes (K8s) environments where ArgoCD is deployed, the associated ConfigMap may not include this configuration flag by default. The `server.insecure` flag needs to be enabled in the ConfigMap to allow HTTP access. The following Kubernetes commands can be used to enable this configuration:
+
+```bash
+kubectl patch configmap argocd-cmd-params-cm -n argocd --type merge -p '{"data":{"server.insecure":"true"}}'
+kubectl rollout restart deployment argocd-server -n argocd
+```
+
+
 ## Support
 
 The plugin is owned by RedHat and managed in this [repository](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-argo-cd#argo-cd-plugin-for-backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
