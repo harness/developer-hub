@@ -70,7 +70,7 @@ docker run --cpus=1 --memory=2g \
   -e MANAGER_HOST_AND_PORT=https://<YOUR_MANAGER_HOST_AND_PORT>/delegate:23.09.80505
 ```
 
-### Kubernetes Delegate Upgrader with proxy settings
+### Proxy Configuration for Kubernetes Delegate Upgrader
 
 :::note
   This feature is available from 1.7.0 and later.
@@ -107,7 +107,7 @@ Once updated, apply the configuration using the command below.
 kubectl apply -f harness-delegate.yaml
 ```
 
-### Docker delegate upgrader with proxy settings
+### Proxy Configuration for Docker Delegate Upgrader
 
 To run the Docker Delegate Upgrader with proxy settings, use the command below with the required environment variables:
 
