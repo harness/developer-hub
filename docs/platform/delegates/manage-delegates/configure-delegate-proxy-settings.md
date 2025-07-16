@@ -55,7 +55,7 @@ If an in-cluster Kubernetes delegate has a proxy configured, then `NO_PROXY` mus
 
 The following script installs a Docker delegate with an HTTP proxy scheme.
 
-```
+```bash
 docker run --cpus=1 --memory=2g \
   -e DELEGATE_NAME=docker-delegate \
   -e RUNNER_URL=https://<YOUR_RUNNER_URL> \
@@ -68,6 +68,62 @@ docker run --cpus=1 --memory=2g \
   -e ACCOUNT_ID=YOUR_ACCOUNT_ID \
   -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN \
   -e MANAGER_HOST_AND_PORT=https://<YOUR_MANAGER_HOST_AND_PORT>/delegate:23.09.80505
+```
+
+### Kubernetes Delegate Upgrader with proxy settings
+
+:::note
+  This feature is available from 1.7.0 and later.
+:::
+
+To configure a proxy for your Kubernetes Delegate Upgrader, ensure that you update the manifest file. Download the `harness-delegate.yaml`, find the `kind: ConfigMap` section, and add your proxy settings (i.e., proxyHost, proxyPort, proxymanager, proxyUser, ProxyPassword) as shown below.
+
+```yaml
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: kubernetes-delegate-upgrader-config
+    namespace: harness-delegate-ng
+  data:
+    config.yaml: |
+      mode: Delegate
+      dryRun: false
+      workloadName: kubernetes-delegate
+      namespace: harness-delegate-ng
+      containerName: delegate
+      delegateConfig:
+        accountId: px7xd_XXXXXXX_Vjvw
+        managerHost: https://vanityurl.harness.io
+      proxyHost: XX.XX.XX.XX
+      proxyPort: 3128
+      proxyManager: true
+      proxyUser: MYUSER
+      proxyPassword: ******
+```
+
+Once updated, apply the configuration using the command below.
+
+```bash
+kubectl apply -f harness-delegate.yaml
+```
+
+### Docker delegate upgrader with proxy settings
+
+To run the Docker Delegate Upgrader with proxy settings, use the command below with the required environment variables:
+
+```bash
+docker run  --cpus=0.1 --memory=100m \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -e ACCOUNT_ID=px7xd_XXXXXXX_Vjvw \
+  -e MANAGER_HOST_AND_PORT=https://vanityurl.harness.io \
+  -e UPGRADER_WORKLOAD_NAME=docker-delegate \
+  -e PROXY_HOST=YOUR_PROXY_HOST_IP \
+  -e PROXY_PORT=YOUR_PROXY_PORT \
+  -e PROXY_USER=MYUSER \
+  -e PROXY_PASSWORD=****** \
+  -e UPGRADER_TOKEN=NWExNWY3MGU4YXXXXXXXXXXXA5YzhlZjAzZDgwMDY= \
+  -e CONTAINER_STOP_TIMEOUT=3600 \
+  -e SCHEDULE="0 */1 * * *" us-west1-docker.pkg.dev/gar-setup/docker/upgrader:1.7.0
 ```
 
 ### Subnet masks not supported
