@@ -18,6 +18,43 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 :::
 ## July 2025 - Version 1.56.3
+**Deployment Date:** July 17, 2025 (Prod-1)
+
+### Feature Improvements
+- Previously, for older applied recommendations linked to a ServiceNow ticket, the system displayed the raw timestamp instead of a readable date and time format. This has been fixed to ensure a consistent and user-friendly display. [CCM-24082]
+
+- We’ve removed the limit of 30 Rules or Rule Sets in the Enforcement Create/Update wizard. [CCM-23953]
+
+- We have set maximum number of evaluations per enforcement to 10,000 (without individual limits on rules, rule sets, accounts, or regions). Evaluations are calculated as (Rules*Accounts*Region) and now capped at 10,000 per enforcement. [CCM-21995]
+
+- The Area chart in Perspectives has been replaced with a Line chart. The Area chart was removed as it didn’t offer additional insights beyond what the stacked bar chart already provides. [CCM-23889]
+
+- The Perspective chart tooltip now displays the total cost for the selected day along with the individual costs of all data points. The selected data point is highlighted to help with easier cost analysis. [CCM-23888]
+
+- Recommendation filters will show full list of tags and search is supported in the tag list. [CCM-23792]
+
+- Previously, the Role field in the Stack Template was populated as undefined when updating an existing AWS connector from the default authentication type to OIDC. This issue has now been resolved, and the role is correctly retained during the update. [CCM-23765]
+
+- Previously, when creating yearly budgets with a monthly breakdown based on last period spend, the UI was sending timestamps from the previous year in the create API payload. Although these timestamps were only stored for reference and not actively used, the UI has now been updated to send the correct timestamps. [CCM-23583]
+
+- We now support Cost Category for Cluster data in production.
+
+Usage Instructions
+Billing Source: Set to CLUSTER
+Cost Category can now be used as a filter and dimension in Perspectives based on cluster data.
+
+Note: Cost Category  is available only from the day the deployment went live.
+For historical data, please raise a ticket to request a backfill.
+
+Additional Capability
+Customers can now create Cost Buckets based on cluster-level rules. [CCM-22980]
+
+- In the AutoStopping Rule creation flow, users can now create an ALB, Azure Application Gateway, or AutoStopping Proxy only if the selected connector has the required granular permissions.  [CCM-21579]
+
+- Previously, the aggregation parameter was missing in the API call used to fetch the Perspective Chart CSV, causing discrepancies with the current view. This has now been fixed—CSV exports will reflect the selected aggregation, ensuring consistency with the displayed data. [CCM-20404]
+
+
+## July 2025 - Version 1.56.3
 **Deployment Date:** July 7, 2025 (Prod-1)
 
 ### Feature Improvements
@@ -26,6 +63,11 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 - **Anomaly Detection Filter Support**: We have added support for filter inheritance when navigating from Perspectives to Anomaly Detection (V2) screens. Anomaly results now respect all filters applied on the source Perspective page.[CCM-23544]
 
 - **Increased Folder Limit**: We have increased the maximum number of folders that can be created from the previous limit of 500 to 2,000. [CCM-23784]
+
+- In GCP perspective we have added a perspective preference for PROMOTION. 
+If this is enabled it will include the promotion amount as well which is fetched from credits type Promotion.
+
+Earlier if we enable the discount - it used to include the promotion as well but not discount wont include the promotion cost. This has to be enabled separately from the preference. [CCM-20075]
 
 ### Bug Fixes
 
