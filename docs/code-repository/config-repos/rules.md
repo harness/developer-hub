@@ -1,10 +1,10 @@
 ---
-title: Enable branch rules
-description: Set up branch rules in Harness Code
+title: Enable rules
+description: Set up branch and tag rules in Harness Code
 sidebar_position: 30
 ---
 
-In Harness Code, you can use branch rules and CODEOWNERS to manage individual repositories.
+In Harness Code, you can use branch rules, tag rules, and CODEOWNERS to manage individual repositories.
 
 For broader permissions, such as the ability to view repos within a specific Harness project, go to [Access control](/docs/code-repository/get-started/onboarding-guide.md#manage-access).
 
@@ -63,9 +63,74 @@ Pull requests authored by a default reviewer will skip the required approval che
 Updating the rule does not retroactively assign reviewers to existing PRs—it only applies at the time of PR creation.
 :::
 
+## Add Tag Rules
+
+Harness Code Repository supports **Tag Rules**, allowing you to enforce fine-grained control over Git tag operations — similar to branch protection rules, but specific to tags.
+
+You can restrict who can create, delete, or update tags, and apply rules to specific tag patterns.
+
+To create a tag rule:
+
+1. Navigate to **Code Repository** → your repo.
+2. In the left sidebar, select **Manage Repository**.
+3. Go to the **Rules** tab.
+4. Click the **+ New branch rule** dropdown and select **New tag rule**.
+
+### Create a Tag Rule
+
+After selecting **New tag rule**, the rule editor appears:
+
+#### Enable
+
+Check this box to activate the rule.
+
+#### Name and Description
+
+* **Name**: A human-readable name for the rule.
+* **Description** (optional): Add context for this rule’s purpose.
+
+#### Target Patterns
+
+* Define which tag patterns this rule applies to.
+* Use globstar-style matching (e.g.:
+
+  * `v*` for all version tags,
+  * `release/**` for nested release tags).
+
+You can also toggle **Default branch** protection if needed, though this is more commonly used with branch rules.
+
+#### Rules: Select all that apply
+
+Choose which operations to restrict for tags matching the pattern:
+
+* **Block tag creation** – only users with bypass permission can create matching tags.
+* **Block tag deletion** – restrict who can delete these tags.
+* **Block tag update** – restrict force-pushing or re-tagging existing tag names.
+
+#### Bypass List
+
+Allow specific users, user groups, or service accounts to override the rule. Only those listed will be able to perform restricted operations.
+
+### Example: Prevent Accidental Release Tagging
+
+If you want to prevent unapproved users from creating or deleting tags like `v1.0.0`, you could:
+
+* Target pattern: `v*`
+* Enable:
+
+  * Block tag creation
+  * Block tag deletion
+* Add your CI service account to the bypass list
+
+### Tips
+
+* Use tag rules in combination with **branch rules** for comprehensive Git policy enforcement.
+* You can view all active tag rules in the **Rules** tab of the repository, under the **Tag** filter.
+* Rules are enforced at the Git operation level — users pushing from Git CLI or through CI tools will see a rejection message if blocked.
+
 ## Toggle rules
 
-You can toggle branch rules on and off.
+You can toggle rules on and off.
 
 1. Go to your repository and select **Settings**.
 2. Select the **Rules** tab.
@@ -75,7 +140,7 @@ You can toggle branch rules on and off.
 
 1. Go to your repository and select **Settings**.
 2. Select the **Rules** tab.
-3. Locate the rule you want to edit or delete, select **More options** (&vellip;), and then select **Edit Rule** or **Delete Rule**.
+3. Locate the rule you want to edit or delete, select **More options**, and then select **Edit Rule** or **Delete Rule**.
 
 ## CODEOWNERS
 
