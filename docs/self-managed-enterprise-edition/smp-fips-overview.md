@@ -62,7 +62,7 @@ Harness supports deployments that comply with FIPS 140-2 requirements. FIPS-comp
 
 This allows customers in government, defense, and regulated industries to use Harness while meeting their security and compliance obligations.
 
-## Enable FIPS in Kubernetes
+## FIPS-Enabled Kubernetes Deployments
 
 To achieve FIPS 140-2 compliance on Kubernetes, you must use FIPS-enabled operating system images, follow cloud provider security best practices, and apply required cryptographic and infrastructure-level settings. 
 
@@ -80,7 +80,7 @@ The table below outlines the key planning steps, infrastructure considerations, 
 |                                   | Service Access Control | Use IAM Roles for Service Accounts (IRSA)                                          | Use Workload Identity for scoped access                                                                                                                   |
 | **Deployment Guidance**           | Cluster Creation       | Use eksctl with custom bootstrap script enabling `FIPS_MODE=1`                     | Use `gcloud container clusters create` with COS FIPS images and secure options                                                                            |
 |                                   | Node Pool Setup        | Use FIPS AMI and pass FIPS bootstrap; private networking enabled                   | Use COS\_CONTAINERD with secure boot and shielded node flags                                                                                              |
-|                                   | Example Command        | `yaml<br>ami: ami-fips-enabled<br>overrideBootstrapCommand:<br>export FIPS_MODE=1` | `bash<br>gcloud container clusters create fips-cluster \ <br>--image-type="COS_CONTAINERD" \ <br>--node-version="cos-fips-89" \ <br>--enable-secure-boot` |
+|                                   | Example Command        | `ami: ami-fips-enabled \ overrideBootstrapCommand: export FIPS_MODE=1` | `gcloud container clusters create fips-cluster \ --image-type="COS_CONTAINERD" \ --node-version="cos-fips-89" \ --enable-secure-boot` |
 |                                   | TLS Enforcement        | Enforce TLS 1.2+ across ingress and internal services                              | Enforce TLS via Ingress and load balancer configuration                                                                                                   |
 |                                   | Runtime Validation     | `/proc/sys/crypto/fips_enabled` and `openssl ciphers` check                        | COS images run in enforced FIPS mode; no manual validation needed                                                                                         |
 |                                   | Base Images            | Use RHEL UBI or other FIPS-compliant base images                                   | Use base images with OpenSSL in FIPS mode for workloads                                                                                                   |
