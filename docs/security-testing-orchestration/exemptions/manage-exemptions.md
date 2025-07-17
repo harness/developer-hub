@@ -62,11 +62,18 @@ You can approve the exemption at the requested scope or a higher one:
 - **Approve for this organization** – Applies the exemption across all projects in the organization requires [`Approve/Reject`](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions)` permission at the Organization scope.
 - **Approve for this account** – Applies the exemption across all organizations and projects in the account requires [`Approve/Reject`](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) permission at the Account scope).
 
+When you click on an **Approve** action, a window appears displaying details such as the Issue Title, Requested Scope, and an optional **Comment** field. You can review the request details, add a comment if needed, and click **Submit** to proceed.
+
+Only the latest comment from an approval or rejection action is displayed in the exemption pane. Comments history is not shown. To view complete exemption details, refer to [View Issue Exemptions](/docs/security-testing-orchestration/exemptions/exemption-workflows#view-issue-exemptions) documentation.
+
+
 :::tip
 Always review the **Exemption Details** and consider the **Requested Duration** before approving. The exemption remains active only for the specified time window (e.g., 7 days from the approval date).
 :::
 
 <DocImage path={require('./static/approve-exemption-project-view.png')} width="100%" height="100%" title="Click to view full size image" />
+
+<DocImage path={require('./static/exemption-comment-approve.png')} width="70%" height="70%" title="Click to view full size image" />
 
 #### Users Can Approve Their Own Exemptions
 
@@ -75,6 +82,14 @@ You can control whether users are allowed to approve or reject their own exempti
 ### Reject an Exemption Request
 
 To reject an exemption request, you can either use the **Reject** action directly from the **Exemptions** section or click the request to open the **Exemption Details** pane, where you can review the request thoroughly before choosing to **Reject** it.
+
+When you click on the **Reject** action, a window appears displaying details such as the Issue Title, Requested Scope, and an optional **Comment** field. You can review the request details, add a comment if needed, and click **Submit** to proceed.
+
+Only the latest comment from an approval or rejection action is displayed in the exemption pane. Comments history is not shown. To view complete exemption details, refer to [View Issue Exemptions](/docs/security-testing-orchestration/exemptions/exemption-workflows#view-issue-exemptions) documentation.
+
+<DocImage path={require('./static/reject-exemption-project-view.png')} width="100%" height="100%" title="Click to view full size image" />
+
+<DocImage path={require('./static/exemption-comment-reject.png')} width="70%" height="70%" title="Click to view full size image" />
 
 Once rejected, the request moves to the **Rejected** tab. The associated issue remains active and may continue to block pipelines due to OPA policy enforcement failures. For more information, see the [**Issue Exemption Lifecycle**](#issue-exemption-lifecycle).
 
