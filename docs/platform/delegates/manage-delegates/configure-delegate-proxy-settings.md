@@ -1,6 +1,6 @@
 ---
-title: Configure delegate proxy settings
-description: All delegates include proxy settings you can use to change how the delegate connects to the Harness Manager. By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.…
+title: Proxy Configuration Guide.
+description: Learn how to manage connectivity in environments where outbound traffic must go through a proxy. 
 sidebar_position: 1
 helpdocs_topic_id: 5ww21ewdt8
 helpdocs_category_id: m9iau0y3hv
@@ -8,15 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-All delegates include proxy settings you can use to change how the delegate connects to the Harness Manager.
+This article explains how to configure proxy settings to manage connectivity in environments where outbound traffic is restricted. 
 
-By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.
+By default, HTTP and HTTPS proxy schemes are supported.
 
-:::warning
+:::warning Important Note
 When using a HTTP Helm repositories, the [default setting](/docs/platform/settings/default-settings/) `Ignore status code for HTTP connections` must be set to `true` as socket connection tests conducted by Harness from the delegate do not account for proxy details.
 :::
 
-### Kubernetes delegate proxy settings
+## Proxy Settings for Delegate 
+
+### Kubernetes
 
 The proxy settings are in the `harness-delegate.yaml` file:
 
@@ -51,7 +53,7 @@ The `PROXY_MANAGER` setting determines whether the delegate bypasses proxy setti
 
 If an in-cluster Kubernetes delegate has a proxy configured, then `NO_PROXY` must contain the cluster master IP. This enables the delegate to skip the proxy for in-cluster connections.
 
-### Sample Docker delegate installation script with a proxy scheme
+### Docker 
 
 The following script installs a Docker delegate with an HTTP proxy scheme.
 
@@ -70,13 +72,15 @@ docker run --cpus=1 --memory=2g \
   -e MANAGER_HOST_AND_PORT=https://<YOUR_MANAGER_HOST_AND_PORT>/delegate:23.09.80505
 ```
 
-### Proxy Configuration for Kubernetes Delegate Upgrader
+## Proxy Settings for Delegate Upgrader
 
-:::note
-  This feature is available from 1.7.0 and later.
+:::info Feature Availability 
+  This feature is available from Delegate Upgrader [1.7.0](/release-notes/delegate#version-170-) and later.
 :::
 
-To configure a proxy for your Kubernetes Delegate Upgrader, ensure that you update the manifest file. Download the `harness-delegate.yaml`, find the `kind: ConfigMap` section, and add your proxy settings (i.e., proxyHost, proxyPort, proxymanager, proxyUser, ProxyPassword) as shown below.
+### Kubernetes 
+
+To configure proxy for your Kubernetes Delegate Upgrader, add the proxy settings to the Delegate upgrader config in the manifest file. Below is an example for the same:
 
 ```yaml
   apiVersion: v1
@@ -107,9 +111,9 @@ Once updated, apply the configuration using the command below.
 kubectl apply -f harness-delegate.yaml
 ```
 
-### Proxy Configuration for Docker Delegate Upgrader
+### Docker
 
-To run the Docker Delegate Upgrader with proxy settings, use the command below with the required environment variables:
+To run the Docker Delegate Upgrader with proxy settings, set the required environment variables in the Docker command as shown in the example below.
 
 ```bash
 docker run  --cpus=0.1 --memory=100m \
@@ -126,7 +130,7 @@ docker run  --cpus=0.1 --memory=100m \
   -e SCHEDULE="0 */1 * * *" us-west1-docker.pkg.dev/gar-setup/docker/upgrader:1.7.0
 ```
 
-### Subnet masks not supported
+## Subnet masks not supported
 
 You cannot use delegate proxy settings to specify the Cluster Service Network CIDR notation and make the delegate bypass the proxy to talk to the Kubernetes API.
 
