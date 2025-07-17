@@ -62,24 +62,41 @@ Harness supports deployments that comply with FIPS 140-2 requirements. FIPS-comp
 
 This allows customers in government, defense, and regulated industries to use Harness while meeting their security and compliance obligations.
 
-### Enabling FIPS (with example include modules and feature..)
+## Enable FIPS in Kubernetes
 
+To achieve FIPS 140-2 compliance on Kubernetes, you must use FIPS-enabled operating system images, follow cloud provider security best practices, and apply required cryptographic and infrastructure-level settings. 
 
+The table below outlines the key planning steps, infrastructure considerations, and deployment guidance to help you meet FIPS compliance requirements.
 
-- Planning and prerequisites
-- Infrastructure considerations
-- Deployment guidance
+| **Category**                      | **Item**               | **AWS EKS**                                                                        | **GCP GKE**                                                                                                                                               |
+|-----------------------------------|------------------------|------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Prerequisites**                 | Kubernetes Version     | EKS v1.23 or higher                                                                | GKE v1.25 or higher                                                                                                                                       |
+|                                   | FIPS-Enabled OS Images | Amazon Linux 2 with FIPS (e.g., `amazon-eks-node-1.27-v20240415-fips`)             | COS FIPS-enabled images (e.g., `cos-fips-89`, `cos-fips-101`) or Ubuntu FIPS images (`ubuntu-fips-2204-v20231215`)                                        |
+|                                   | CLI Tools              | AWS CLI v2, eksctl                                                                 | gcloud CLI                                                                                                                                                |
+|                                   | IAM / Permissions      | IAM permissions for EKS, EC2, VPC, and related resources                           | IAM roles for cluster and node creation, GKE Admin                                                                                                        |
+| **Infrastructure Considerations** | Private Clusters       | Deploy EKS in private subnets with NAT Gateway or VPC Endpoints                    | Enable **private clusters** with **private nodes** and **private endpoints**                                                                              |
+|                                   | Node Security          | Shielded EC2 (Nitro), IMDSv2, encrypted EBS volumes                                | Shielded GKE nodes with Secure Boot, vTPM, and Integrity Monitoring                                                                                       |
+|                                   | Network Access         | Use Master Authorized Networks, Security Groups, and Network ACLs                  | Enable Master Authorized Networks, VPC-native clusters, Cloud NAT for egress                                                                              |
+|                                   | Service Access Control | Use IAM Roles for Service Accounts (IRSA)                                          | Use Workload Identity for scoped access                                                                                                                   |
+| **Deployment Guidance**           | Cluster Creation       | Use eksctl with custom bootstrap script enabling `FIPS_MODE=1`                     | Use `gcloud container clusters create` with COS FIPS images and secure options                                                                            |
+|                                   | Node Pool Setup        | Use FIPS AMI and pass FIPS bootstrap; private networking enabled                   | Use COS\_CONTAINERD with secure boot and shielded node flags                                                                                              |
+|                                   | Example Command        | `yaml<br>ami: ami-fips-enabled<br>overrideBootstrapCommand:<br>export FIPS_MODE=1` | `bash<br>gcloud container clusters create fips-cluster \ <br>--image-type="COS_CONTAINERD" \ <br>--node-version="cos-fips-89" \ <br>--enable-secure-boot` |
+|                                   | TLS Enforcement        | Enforce TLS 1.2+ across ingress and internal services                              | Enforce TLS via Ingress and load balancer configuration                                                                                                   |
+|                                   | Runtime Validation     | `/proc/sys/crypto/fips_enabled` and `openssl ciphers` check                        | COS images run in enforced FIPS mode; no manual validation needed                                                                                         |
+|                                   | Base Images            | Use RHEL UBI or other FIPS-compliant base images                                   | Use base images with OpenSSL in FIPS mode for workloads                                                                                                   |
+|                                   | Network Policies       | Use Calico or native CNI plugins to enforce restrictions                           | Enable Network Policy and use **CALICO** as provider                                                                                                      |
 
-- what's supported vs upcoming 
-
-
+<!--
 - FIPS in harness 
     - module supported and how 
     - what features are supported.
-    -  tabular and descriptive
+    -  tabular and descriptive - done
+    - what's supported vs upcoming 
 
 - AWS EKS with FIPS enabled - Bottlerocket AMI
 - Verification of FIPS (CLI commands)
+
+-->
 
 ### Limitations
 
