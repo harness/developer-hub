@@ -5,6 +5,9 @@ sidebar_position: 10
 sidebar_label: Continuous Delivery
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Learn how to use Artifact Registry with the Continuous Delivery (CD) module to simplify artifact management, ensure traceability, and streamline deployments—especially for use cases like deploying generic artifacts to serverless platforms.
 
 :::info Why Integrate Artifact Registry with Continuous Delivery?
@@ -24,12 +27,6 @@ Artifact Registry is supported as a native artifact source in select CD steps. C
 The following steps show how to deploy a generic artifact to AWS Lambda using Harness CD.
 
 <Tabs>
-<TabItem value="interactive" label="Interactive Guide">
-
-**Coming soon:**  
-An interactive guide will be available for this process.
-
-</TabItem>
 <TabItem value="step" label="Step-by-Step">
 
 ### 1. Upload a Generic Artifact
