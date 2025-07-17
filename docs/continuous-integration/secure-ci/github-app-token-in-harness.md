@@ -23,15 +23,13 @@ Earlier approaches involved scripting token generation by manually crafting JWTs
 * Required external scripts and secret manager setup.
 * **Did not work reliably in Harness Cloud**, often failing silently or returning incorrect data.
 
-For details on the previous approach, see [this KB article](/kb/continuous-integration/articles/github-app-pat-dispenser/).
-
 ## Recommended Solution: GitHub App Token Plugin
 
 Harness now supports a more robust and cloud-compatible method using the open source [`drone-github-app-token`](https://github.com/harness-community/drone-github-app-token) plugin.
 
 This plugin generates GitHub App installation tokens securely during pipeline execution. It eliminates the need for PATs or static secrets and enables you to use the token immediately in subsequent steps.
 
-### Key Benefits
+***Key Benefits***
 
 * Tokens are **ephemeral**, scoped to the pipeline.
 * Securely injected as output variables.
@@ -45,11 +43,11 @@ This plugin generates GitHub App installation tokens securely during pipeline ex
     type: Plugin
     name: Generate GitHub App Token
     spec:
-      connectorRef: YOUR_DOCKER_CONNECTOR
+      connectorRef: YOUR_DOCKER_CONNECTOR # Docker connector that can pull the plugin image.
       image: plugins/github-app-token:latest
       settings:
-        app_id: "YOUR_GITHUB_APP_ID"
-        private_key: <+secrets.getValue("YOUR_GITHUB_APP_KEY")>  # Secret of type "File"
+        app_id: "YOUR_GITHUB_APP_ID" # Numeric Value
+        private_key: <+secrets.getValue("YOUR_GITHUB_APP_KEY")>  # File-type Secret on Harness
         permission_contents: write
 
 - step:
@@ -63,13 +61,16 @@ This plugin generates GitHub App installation tokens securely during pipeline ex
              https://api.github.com/repos/YOUR_ORG/YOUR_REPO/contents
 ```
 
-### Notes:
+:::note
 
-* `app_id`: GitHub App ID (numeric).
-* `private_key`: Must be stored in Harness as a **File-type Secret**.
-* `connectorRef`: Docker connector that can pull the plugin image.
-* The token can also be passed as an environment variable (`GH_TOKEN`) if you're using the GitHub CLI.
+* The plugin exports several output variables — including the GitHub App token (`GITHUB_APP_TOKEN`), installation ID (`GITHUB_APP_INSTALLATION_ID`), and app slug (`GITHUB_APP_SLUG`). These variables can be referenced in subsequent steps using:
+```bash
+<+execution.steps.Generate_GitHub_Token.output.outputVariables.GITHUB_APP_TOKEN>
+<+execution.steps.Generate_GitHub_Token.output.outputVariables.GITHUB_APP_INSTALLATION_ID>
+<+execution.steps.Generate_GitHub_Token.output.outputVariables.GITHUB_APP_SLUG>
+```
 * The JWT is used to authenticate as the GitHub App and generate the installation token. The JWT expires after 10 minutes by design, but the installation token — which grants actual repo access — lasts for 60 minutes.
+:::
 
 ## Best Practices
 
