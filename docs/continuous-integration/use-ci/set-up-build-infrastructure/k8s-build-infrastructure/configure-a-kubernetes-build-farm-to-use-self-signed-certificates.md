@@ -353,23 +353,26 @@ When using the [Build and Push to Docker](/docs/continuous-integration/use-ci/bu
 
 This workaround is only required for **Build and Push to Docker** steps using Docker BuildKit. Steps using Kaniko, like most default Kubernetes builds in Harness, do not require this additional configuration if the certificate is already mounted using `DESTINATION_CA_PATH`.
 
-To make this work, follow these additional steps:
+To make BuildKit trust your self-signed registry certs, you need to:
 
-1. Create the CA cert and BuildKit TOML config dynamically in a Run step.
+1. Dynamically prepare the BuildKit config and cert path in a `Run` step.
 
 2. Share the cert and config path using `sharedPaths` and environment variables.
 
-Here is an example pipeline that downloads a CA cert, creates the required BuildKit config file, and builds a Dockerfile using a private registry with a self-signed cert:
+3. Concatenate multiple PEM files (if applicable) into a single CA bundle used by both Docker and BuildKit.
+
+### Step-by-step example
 
 ```yaml
 sharedPaths:
-  - /etc/buildkit/certs/<REGISTRY_IP:PORT>
+  - /etc/buildkit/certs/your.registry.com:5000
+  - /etc/docker/certs.d/your.registry.com:5000
 
 envVariables:
   PLUGIN_BUILDER_CONFIG: /harness/buildkit.toml
 ```
 
-Sample Run step to prepare cert and TOML:
+### Run step to prepare certs and BuildKit config
 
 ```yaml
 - step:
@@ -381,21 +384,38 @@ Sample Run step to prepare cert and TOML:
       image: alpine
       shell: Sh
       command: |-
-        REGISTRY_IP="your.registry.com:5000"
-        CRT_URL="https://your-cert-url/ca.crt"
-        CERT_DIR="/etc/buildkit/certs/${REGISTRY_IP}"
+        # Registry address (update this to match your use case)
+        REG="your.registry.com:5000"
+        CERT_PATH_DOCKER="/etc/docker/certs.d/${REG}"
+        CERT_PATH_BUILDX="/etc/buildkit/certs/${REG}"
         BUILDKIT_TOML="/harness/buildkit.toml"
 
-        mkdir -p "$CERT_DIR"
-        wget -O "${CERT_DIR}/ca.crt" "$CRT_URL"
+        # Create cert paths
+        mkdir -p "$CERT_PATH_DOCKER"
+        mkdir -p "$CERT_PATH_BUILDX"
 
+        # Concatenate all mounted PEMs into a single CA bundle
+        for cert in /harness-shared-certs-path/*.pem; do
+          cat "$cert" >> "$CERT_PATH_DOCKER/ca.crt"
+          echo >> "$CERT_PATH_DOCKER/ca.crt"
+        done
+
+        # Symlink for BuildKit
+        ln -s "$CERT_PATH_DOCKER/ca.crt" "$CERT_PATH_BUILDX/ca.crt"
+
+        # Write buildkit.toml
+        echo "Writing buildkit.toml..."
         cat <<EOF > "$BUILDKIT_TOML"
-        [registry."${REGISTRY_IP}"]
-          ca = ["${CERT_DIR}/ca.crt"]
+        [registry."$REG"]
+          ca = ["$CERT_PATH_BUILDX/ca.crt"]
+          insecure = false
         EOF
+
+        ls -lr "$CERT_PATH_BUILDX"
+        cat "$BUILDKIT_TOML"
 ```
 
-Then, use the config in your Build step like this:
+### Build step using the config
 
 ```yaml
 - step:
@@ -407,6 +427,14 @@ Then, use the config in your Build step like this:
       envVariables:
         PLUGIN_BUILDER_CONFIG: /harness/buildkit.toml
 ```
+
+:::note
+- Certs should be mounted ahead of time (e.g., through Harness secrets or volume mounts).
+
+- This approach supports multiple PEM files and ensures both Docker and BuildKit trust the self-signed certs.
+
+- You must ensure that the sharedPaths include both cert directories so that they persist across steps.
+:::
 
 This ensures that BuildKit inside your pipeline trusts the self-signed certificate used by your private registry.
 
