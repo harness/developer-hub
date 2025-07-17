@@ -159,6 +159,23 @@ This is usually caused by a step starting a subprocess that never exits, or the 
 
 You can create cron jobs in the Drone UI only. References to cron jobs in your drone.yml are for filtering purposes only.
 
+### Is it possible to set the k8s runner to also create namespaces and not pods?
+No as per architecture it’s not possible as  It always creates pods.
+
+### After upgrading to Drone 2.26, my pipeline fails to use the workspace even though it worked previously. What changed?
+
+This issue may be caused by the removal of the base field from the workspace configuration in the latest Drone version.
+Check your pipeline YAML and remove the base field from the workspace section. The base field is no longer supported in Drone 2.26 and later.
+
+### Why Are My Drone Builds Not Running Even Though the Job Was Triggered?
+
+If the job appears in the server logs but is not picked up by any runner, it could be due to one of the following reasons:
+1. Incorrect Runner Type The pipeline may be configured for a specific runner type (e.g., Kubernetes), but only a different runner type (e.g., Docker) is available.
+2. Mismatched Architecture The architecture defined in the pipeline (e.g., linux/arm64, linux/amd64) does not match the architecture supported by the available runner.
+3. Missing or Mismatched Labels If the pipeline uses runner labels, ensure the runner is configured with matching labels. Otherwise, it won’t pick up the job.
+4. Unmet Conditions There may be a condition in the pipeline (e.g., event type, branch, environment variable) that is not met, causing the runner to skip the job.
+Please review  https://drone.discourse.group/t/drone-builds-are-pending/10915/5 for more details.
+
 ## Drone logging
 
 ### How do I enable the debug logs flag on Drone-Server and Drone-Runner?
