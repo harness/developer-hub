@@ -144,7 +144,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Resolved a bug in the roll-up job. It now uses a MongoDB stream/iterator to process documents one at a time, preventing OOM errors caused by loading all unprocessed documents at once. [PL-63838]
+- Resolved a bug in the roll-up job by updating it to process documents one at a time, improving memory efficiency and preventing out-of-memory (OOM) errors. [PL-63838]
 - Updated User Details page where links under the RoleBindings tab now properly redirect to the correct scoped Roles and ResourceGroups. [PL-63651]
 
 #### New Feature and Enhancement
