@@ -90,11 +90,6 @@ import StoSettingScanTypeRepo from '../shared/step-palette/target/type/repo.md';
 
 <StoSettingScanTypeRepo />
 
-:::info
-When you set the Target Type to **Repository**, the **[Scan Configuration](#scan-configuration)** field is automatically set to **Filesystem** and cannot be changed.
-In the future, we plan to add more scan configurations specific to each Target Type.
-:::
-
 #### Target and Variant Detection 
 
 import StoSettingScanTypeAutodetectContainer from '../shared/step-palette/target/auto-detect/container-image.md';
