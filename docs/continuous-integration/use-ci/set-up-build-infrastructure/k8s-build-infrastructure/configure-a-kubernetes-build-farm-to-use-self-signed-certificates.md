@@ -374,6 +374,8 @@ envVariables:
 
 ### Run step to prepare certs and BuildKit config
 
+Here is an example `Run` step that uses CA certs already mounted into the Delegate and build pod (e.g., via volume mounts to `/harness-shared-certs-path`), prepares the BuildKit config file, and builds a Dockerfile
+
 ```yaml
 - step:
     type: Run
