@@ -15,8 +15,6 @@ When interacting with GitHub from CI pipelines, authentication is required for a
 
 This guide walks through a modern, flexible solution that uses a GitHub App to generate short-lived tokens at runtime, powered by a [Harness-compatible plugin](https://github.com/harness-community/drone-github-app-token).
 
----
-
 ## Limitations of Static Tokens and Legacy Approaches
 
 Earlier approaches involved scripting token generation by manually crafting JWTs, calling GitHub APIs, and injecting tokens into Harness pipelines via a custom secret manager. While functional, this method:
@@ -26,8 +24,6 @@ Earlier approaches involved scripting token generation by manually crafting JWTs
 * **Did not work reliably in Harness Cloud**, often failing silently or returning incorrect data.
 
 For details on the previous approach, see [this KB article](/kb/continuous-integration/articles/github-app-pat-dispenser/).
-
----
 
 ## Recommended Solution: GitHub App Token Plugin
 
@@ -40,8 +36,6 @@ This plugin generates GitHub App installation tokens securely during pipeline ex
 * Tokens are **ephemeral**, scoped to the pipeline.
 * Securely injected as output variables.
 * Works in **Harness Cloud environments** without special configuration.
-
----
 
 ## Example: Using GitHub App Token in a CI Pipeline
 
@@ -75,8 +69,7 @@ This plugin generates GitHub App installation tokens securely during pipeline ex
 * `private_key`: Must be stored in Harness as a **File-type Secret**.
 * `connectorRef`: Docker connector that can pull the plugin image.
 * The token can also be passed as an environment variable (`GH_TOKEN`) if you're using the GitHub CLI.
-
----
+* The JWT is used to authenticate as the GitHub App and generate the installation token. The JWT expires after 10 minutes by design, but the installation token — which grants actual repo access — lasts for 60 minutes.
 
 ## Best Practices
 
@@ -84,11 +77,4 @@ This plugin generates GitHub App installation tokens securely during pipeline ex
 * Use scoped permissions on your GitHub App to follow the principle of least privilege.
 * Pass the generated token only between pipeline steps — avoid logging or persisting it.
 
----
-
-## Troubleshooting
-
-* Ensure your `private_key` secret is uploaded as **file type**, not plaintext.
-* Confirm the plugin step succeeded by checking `output.outputVariables.GITHUB_APP_TOKEN`.
-* Tokens expire after a short time (\~10 minutes). Use them immediately in the next step.
 
