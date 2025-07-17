@@ -14,8 +14,6 @@ tags:
   - FIPS
 ---
 
-## What is FIPS?
-
 FIPS (Federal Information Processing Standards) are a set of standards published by the United States government to define security and interoperability requirements for federal systems and contractors. 
 
 The most relevant standard for software systems is **FIPS 140**, which sets the security requirements for cryptographic modules (the software and hardware performing encryption and related operations).
@@ -38,7 +36,7 @@ Using FIPS-validated cryptography reduces the risk of insecure implementations a
 
 For customers with regulatory requirements or internal security policies that mandate FIPS compliance, it is essential that all parts of their software stack—including tools like Harness—can be deployed in a way that meets these standards.
 
-## Key Reasons to Consider This 
+## Key Reasons to Consider FIPS 
 
 Harness is committed to supporting customers who need to comply with FIPS 140-2 requirements. This includes organizations in government, defense, and regulated industries where secure cryptographic operations are mandatory.
 
@@ -66,15 +64,21 @@ This allows customers in government, defense, and regulated industries to use Ha
 
 ### Enabling FIPS (with example include modules and feature..)
 
+
+
 - Planning and prerequisites
 - Infrastructure considerations
 - Deployment guidance
 
+- what's supported vs upcoming 
 
 
+- FIPS in harness 
+    - module supported and how 
+    - what features are supported.
+    -  tabular and descriptive
 
 - AWS EKS with FIPS enabled - Bottlerocket AMI
-
 - Verification of FIPS (CLI commands)
 
 ### Limitations
@@ -88,13 +92,3 @@ This allows customers in government, defense, and regulated industries to use Ha
 
 
 
-Review addition:
-
-
-- what's supported vs upcoming 
-
-
-- FIPS in harness 
-    - module supported and how 
-    - what features are supported.
-    -  tabular and descriptive
