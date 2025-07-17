@@ -81,12 +81,11 @@ Use upstream proxies at **account or org level** to:
 The upstream proxy is essential for caching open-source dependencies. During a build, if a required dependency is not already cached, it is retrieved from a public repository and stored in the Upstream Proxy artifact tab. This ensures continuous availability, even if the source repository (e.g. Docker Hub or Maven Central) experiences downtime. Harness’s caching mechanism enhances reliability and efficiency by reducing dependency on external services and safeguarding access to critical artifacts.
 :::
 
-### Examples
-- `acct-proxy-dockerhub`
-- `acct-proxy-npmjs`
-- `org-proxy-private-registry`
-
----
+### Proxy registry name guidance 
+- For account-wide proxies, a team name is **not** required in the registry name.
+- Including `proxy` in the registry name (e.g., `acct-docker-proxy-dev`) is helpful for clarity and governance.
+- You do **not** need a separate proxy for each environment.
+- Example: `acct-docker-proxy-dev`
 
 ## Governance and ownership
 Define roles and responsibilities:
