@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## July 2025
 
+### Version 25.07.86300 <!--Jul 16 2025-->
+
+#### New features and improvements
+
+- Delegate registration now makes sure FIPS delegates only register with a FIPS-enabled manager. [PL-63704]
+
 ### Version 25.06.86106 <!-- Jul 15, 2025 -->
 
 #### Fixed issues
@@ -2270,6 +2276,14 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## Delegate Upgrader release notes
 
+## July 2025
+
+### Version 1.7.0 <!--Jul 16, 2025--> 
+
+#### New features and improvements
+
+- Added support for proxy settings in the Delegate Upgrader using environment variables. This allows the upgrader to work in environments that require proxy access. [PL-48062]
+
 ## April 2025
 
 ### Version 1.6.0
@@ -2279,3 +2293,4 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 #### New features and improvements
 - Added support for [automatic upgrades](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#docker-delegate) for Docker delegates brought up using the `docker run` command. [PL-41879]
+
