@@ -168,13 +168,12 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
 /src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
 
-# FF Docs
-/docs/feature-flags/ @HarnessTheChaos @laura-mannus
-/release-notes/feature-flags.md @HarnessTheChaos
-/src/components/Roadmap/data/ffData.ts @HarnessTheChaos
-/src/components/Docs/data/featureFlagsData.ts @HarnessTheChaos
-# FF FAQs
-/docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos
+# FF Classic Docs
+/docs/feature-flags/ @alai97 @animcdowell @laura-mannus @jcox250
+/docs/faqs/harness-feature-flag-faqs/ @alai97 @animcdowell @jcox250
+/release-notes/feature-flags.md @alai97 @animcdowell @jcox250
+/src/components/Roadmap/data/ffData.ts @alai97 @animcdowell
+/src/components/Docs/data/featureFlagsData.ts @alai97 @animcdowell
 
 # FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john
