@@ -75,7 +75,7 @@ Let's try creating a **Workflow** using both the methods:
   ![](./static/workflow-yaml.png)
 
   :::info
-  **Note:** **YAML validation** is performed to ensure compatibility with the **Harness-native Data Model**. Any errors will be shown in the Validation logs.
+  **YAML validation** is performed to ensure compatibility with the **Harness-native Data Model**. Any errors will be shown in the Validation logs. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
   :::
 
   6. Once everything is set, click **“Create Workflow”** to finalize and create the Workflow.

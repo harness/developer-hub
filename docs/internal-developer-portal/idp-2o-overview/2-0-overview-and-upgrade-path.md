@@ -144,10 +144,10 @@ This approach is no longer supported in IDP 2.0. To align with the Harness platf
 
 This change ensures better alignment with GitX workflows and simplifies entity lifecycle management.
 
-> NOTE: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own entity YAML file.
+> NOTE: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own entity YAML file. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 :::note 
-Identifiers must use only letters, numbers, and underscores. Hyphens and special characters aren’t allowed.
+Identifiers must use only letters, numbers, and underscores. Hyphens and special characters aren’t allowed. 
 
 :::
 

@@ -77,6 +77,8 @@ To create a **Component** via the UI:
 
 ![](./static/yaml-view.png)
 
+> ⚠️ **Note:** Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
+
   </TabItem>
 
   <TabItem value="YAML" label="Catalog YAML">
@@ -87,7 +89,10 @@ To create a Component using Catalog YAML:
 2. In the **Visual View**, switch to **YAML View** via the toggle at the top.
    ![](./static/yaml-way.png)
 3. Paste your existing Backstage YAML if available. Harness will auto-convert it into the native format.
+
    ![](./static/yaml-conversion.png)
+
+> ⚠️ **Note:** Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 4. Define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
 ![](./static/scope-entity.png)

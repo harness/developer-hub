@@ -110,7 +110,7 @@ Each kind represents a different type of entity within the Harness-native data m
 
 ### `identifier`
 
-The `identifier` field is a **unique, machine-readable** reference for the entity. It serves as the primary key for identifying and interacting with the entity.
+The `identifier` field is a **unique, machine-readable** reference for the entity. It serves as the primary key for identifying and interacting with the entity. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 | **Property**            | **Description**                                                                                       |
 |------------------------|-------------------------------------------------------------------------------------------------------|
