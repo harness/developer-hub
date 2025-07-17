@@ -31,7 +31,7 @@ Important: Kubernetes v1.32 is not currently supported. Please ensure your clust
 ## Quick Start
 
 1. Log in to [Harness](https://app.harness.io) and go to **Cloud Costs** → **Cluster Orchestrator**
-2. Click on "Add New Cluster" 
+2. If you don't have a Kubernetes connector, click on "Add New Cluster" else fo to step 5.
 3. Click on "New Cluster/Cloud Account", then select "Kubernetes". You can create a Kubernetes Connector through two methods:
    - [Quick Create](/docs/cloud-cost-management/get-started/onboarding-guide/use-quick-create-k8s)
    - [Advanced](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
