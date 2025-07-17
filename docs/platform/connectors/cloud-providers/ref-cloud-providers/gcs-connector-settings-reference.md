@@ -161,6 +161,34 @@ To configure the **Project** at the infrastructure level, follow these steps:
 
 For more detailed instructions on using this for a Kubernetes infrastructure, refer to [Google Kubernetes Engine (GKE) for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#google-kubernetes-engine-gke).
 
+### OIDC claims supported in Harness
+
+**Trusted Claims:**
+
+  - The following claims are considered trusted and are validated for existence in Harness with access checks to ensure the principal has the required permissions:
+    * `accountId`
+    * `organizationId`
+    * `projectIdentifier`
+    * `pipelineIdentifier`
+
+  - The following claims are also validated for existence in Harness, but do not include an access check:
+    * `environmentIdentifier`
+    * `connectorIdentifier`
+    * `serviceIdentifier`
+
+**Non-Trusted Claims**
+
+  - The following claims are considered non-trusted. They are not validated for existence or access control and are used for informational context only:
+
+    * `environmentType`
+    * `connectorName`
+    * `serviceName`
+    * `triggeredByName`
+    * `triggerByEmail`
+    * `stageType`
+    * `stepType`
+    * `context`
+
 #### Custom Parameters 
 
 You can add attribute conditions in your Workload Identity Pools under Workload Identity Federation. 

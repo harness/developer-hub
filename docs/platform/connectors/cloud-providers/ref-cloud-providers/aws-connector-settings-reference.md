@@ -522,6 +522,34 @@ If the feature flag `CDS_ENABLE_PIPELINE_SCOPED_OIDC_SUB` is enabled on top of `
 - For Organization level resources - `"sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/"`
 - For Account level resources - `"sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/:project/"`
 
+### OIDC claims supported in Harness
+
+**Trusted Claims:**
+
+  - The following claims are considered trusted and are validated for existence in Harness with access checks to ensure the principal has the required permissions:
+    * `accountId`
+    * `organizationId`
+    * `projectIdentifier`
+    * `pipelineIdentifier`
+
+  - The following claims are also validated for existence in Harness, but do not include an access check:
+    * `environmentIdentifier`
+    * `connectorIdentifier`
+    * `serviceIdentifier`
+
+**Non-Trusted Claims**
+
+  - The following claims are considered non-trusted. They are not validated for existence or access control and are used for informational context only:
+
+    * `environmentType`
+    * `connectorName`
+    * `serviceName`
+    * `triggeredByName`
+    * `triggerByEmail`
+    * `stageType`
+    * `stepType`
+    * `context`
+
 ### Custom Parameters 
 
 Here are the custom parameters for the Harness AWS OIDC JWT:
