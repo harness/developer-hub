@@ -97,8 +97,6 @@ Check this box to activate the rule.
   * `v*` for all version tags,
   * `release/**` for nested release tags).
 
-You can also toggle **Default branch** protection if needed, though this is more commonly used with branch rules.
-
 #### Rules: Select all that apply
 
 Choose which operations to restrict for tags matching the pattern:
