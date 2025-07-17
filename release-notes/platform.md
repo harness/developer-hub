@@ -147,6 +147,10 @@ The following deprecated API endpoints are longer supported:
 - Resolved a bug in the roll-up job. It now uses a MongoDB stream/iterator to process documents one at a time, preventing OOM errors caused by loading all unprocessed documents at once. [PL-63838]
 - Updated User Details page where links under the RoleBindings tab now properly redirect to the correct scoped Roles and ResourceGroups. [PL-63651]
 
+#### New Feature and Enhancement
+
+- New audit event for Delegate token expiry: An audit event gets logged whenever an API token expires. This enhancement improves visibility and traceability of delegate token lifecycle events, supporting stronger security auditing. [PL-63995]
+
 ### Version 1.96.x <!--July 08, 2025-->
 
 #### Fixed issues
