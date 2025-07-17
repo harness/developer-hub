@@ -11,11 +11,11 @@ sidebar_label: Overview & Key Concepts
 * Currently, we only support **GCP Cloud VMs** as the infrastructure option for self-hosted Gitspaces. Support for **AWS Cloud VMs** is in progress and will be available soon.
 * You can create and manage self-hosted Gitspaces using either [cloud-based](/docs/cloud-development-environments/git-providers/cloud-providers.md) or [on-premises Git providers](/docs/cloud-development-environments/git-providers/on-prem-providers.md), offering enhanced security and greater control over your source code.
 
-To learn more about what's supported with self-hosted Gitspaces, visit [What's Supported](/docs/cloud-development-environments/introduction/whats-supported.md).
+To learn more about what's supported with self-hosted Gitspaces, visit [What's Supported](/docs/cloud-development-environments/introduction/whats-supported.md#deployment-models).
 
 
 ## Key Concepts
-To understand how self-hosted Gitspaces work and explore the underlying architecture, go through the [Self-Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md) documentation.
+To understand how self-hosted Gitspaces work and explore the underlying architecture, go through the [Self-Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md) documentation. Refer to [Configuring Self-Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps) to get started with Self Hosted Gitspaces. 
 There are a few key concepts that form the foundation of how self-hosted Gitspaces operate:
 
 ### Harness Control Plane

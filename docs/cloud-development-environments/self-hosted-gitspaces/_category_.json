@@ -1,10 +1,14 @@
 {
-  "label": "Self-Hosted GitSpaces",
+  "label": "Self-Hosted Gitspaces",
   "collapsible": "true",
   "collapsed": "true",
   "position": 5,
+  "link": {
+      "type": "generated-index",
+      "title": "Self-Hosted Gitspaces"
+    },
   "customProps": {
-    "title": "Self-Hosted GitSpaces",
+    "title": "Self-Hosted Gitspaces",
     "description": "Learn about Self-Hosted GitSpaces, including fundamentals, configuration, and management of your own GitSpaces infrastructure."
   }
 }

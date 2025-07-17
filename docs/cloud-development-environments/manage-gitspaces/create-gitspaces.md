@@ -7,12 +7,6 @@ sidebar_label: Create Gitspaces
 
 This document will guide you to understand in detail on how to create a new Gitspace. Follow the instructions below to start creating a new Gitspace. 
 
-## Prerequisites
-
-### Enable CDE Module
-Ensure that the **CDE module** is enabled in your Harness account before proceeding.
-For assistance, contact: **[cde-interest@harness.io](mailto:cde-interest@harness.io)**
-
 ### Select Your Deployment Model
 
 Based on the deployment model you choose - **Harness Hosted** or **Self Hosted** - you can proceed accordingly with this tutorial.
@@ -27,7 +21,7 @@ For Harness Hosted Gitspaces, no infrastructure configuration is required. All y
 
 For Self Hosted Gitspaces, you need to ensure your infrastructure is configured and set up beforehand. Read more about [Self Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md#self-hosted-model). All the configuration steps are mandatory before creating any Self Hosted Gitspace.
 
-**🔗 Follow the instructions here to configure Self Hosted Gitspaces: [Get Started with Self Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md#get-started-with-self-hosted-gitspaces)**
+**🔗 Follow the instructions here to configure Self Hosted Gitspaces: [Get Started with Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps)**
 
 ### Select Your Git Provider
 
