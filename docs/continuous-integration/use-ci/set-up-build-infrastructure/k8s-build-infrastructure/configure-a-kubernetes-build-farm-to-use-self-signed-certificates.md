@@ -365,8 +365,7 @@ To make BuildKit trust your self-signed registry certs, you need to:
 
 ```yaml
 sharedPaths:
-  - /etc/buildkit/certs/your.registry.com:5000
-  - /etc/docker/certs.d/your.registry.com:5000
+  - /etc/buildkit/certs/your.registry.com
 
 envVariables:
   PLUGIN_BUILDER_CONFIG: /harness/buildkit.toml
@@ -387,30 +386,24 @@ Here is an example `Run` step that uses CA certs already mounted into the Delega
       shell: Sh
       command: |-
         # Registry address (update this to match your use case)
-        REG="your.registry.com:5000"
-        CERT_PATH_DOCKER="/etc/docker/certs.d/${REG}"
+        REG="your.registry.com"
         CERT_PATH_BUILDX="/etc/buildkit/certs/${REG}"
         BUILDKIT_TOML="/harness/buildkit.toml"
 
         # Create cert paths
-        mkdir -p "$CERT_PATH_DOCKER"
         mkdir -p "$CERT_PATH_BUILDX"
 
         # Concatenate all mounted PEMs into a single CA bundle
         for cert in /harness-shared-certs-path/*.pem; do
-          cat "$cert" >> "$CERT_PATH_DOCKER/ca.crt"
-          echo >> "$CERT_PATH_DOCKER/ca.crt"
+          cat "$cert" >> "$CERT_PATH_BUILDX/ca.crt"
+          echo >> "$CERT_PATH_BUILDX/ca.crt"
         done
-
-        # Symlink for BuildKit
-        ln -s "$CERT_PATH_DOCKER/ca.crt" "$CERT_PATH_BUILDX/ca.crt"
 
         # Write buildkit.toml
         echo "Writing buildkit.toml..."
         cat <<EOF > "$BUILDKIT_TOML"
         [registry."$REG"]
           ca = ["$CERT_PATH_BUILDX/ca.crt"]
-          insecure = false
         EOF
 
         ls -lr "$CERT_PATH_BUILDX"
