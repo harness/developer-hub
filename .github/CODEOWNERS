@@ -220,11 +220,11 @@ static/  @rohanmaharjan100 @wei-harness
 # Knowledge Base ###
 
 # Overall KB
-/kb/ @deepanshuHarness @jimin-harness @guna-harness
-/src/components/KnowledgeBase/data/ @deepanshuHarness @jimin-harness @guna-harness
+/kb/ @deepanshuHarness @jimin-harness
+/src/components/KnowledgeBase/data/ @deepanshuHarness @jimin-harness
 
 #Armory KB
-/kb/armory @jimin-harness @deepanshuHarness @guna-harness
+/kb/armory @jimin-harness @deepanshuHarness
 
 # DB DevOps
 /kb/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h @hemanthbsridhar
