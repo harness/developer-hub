@@ -417,7 +417,18 @@ By default, the values will be resolved for the manifest in each serverless step
 
 ## Add the artifact
 
-Currently, Harness supports ZIP file artifacts only. Harness doesn't support Docker images yet.Next, we'll add a publicly-available artifact to your Service. The artifact is a zip file with a JavaScript function hosted in Artifactory.
+Next, add your Serverless artifact. For this quickstart, we will add a publicly available artifact to your service using Artifactory. However, you have more options for your artifact source.
+
+### Artifact Sources
+
+Here is a full list of artifact sources available to you for Serverless deployments:
+- [**Artifactory**](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo#add-an-artifactory-repository). Harness supports ZIP files stored in Artifactory as your Serverless deployment artifacts.
+- [**AWS S3**](/docs/platform/connectors/cloud-providers/add-aws-connector). Harness supports ZIP files stored in an S3 bucket for your Serverless deployment artifacts.
+- [**ECR**](/docs/platform/connectors/cloud-providers/add-aws-connector). Harness supports docker images stored in ECR as your Serverless deployment artifacts.
+
+### Add the artifact with Artifactory
+
+For this guide, we'll add a publicly-available artifact to your Service. The artifact is a zip file with a JavaScript function hosted in Artifactory.
 
 We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate in a Kubernetes cluster. The delegate is a worker process that performs the deployment operations. The delegate will use the URL and credentials you provide in the Connector to connect to Artifactory and fetch the artifact at runtime.
 
