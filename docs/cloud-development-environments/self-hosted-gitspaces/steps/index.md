@@ -6,6 +6,8 @@ sidebar_label: Configure Self-Hosted Gitspaces
 
 Welcome to the Self-Hosted Gitspaces configuration guide! This document will walk you through the key steps to configure and set up Self-Hosted Gitspaces in your environment.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7QNpTR7mRXI?si=viZp8kQyGrPjE5-n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ### Prerequisites
 
 You need to follow these prerequisites to get started with self-hosted Gitspaces:
