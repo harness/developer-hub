@@ -3,6 +3,8 @@ title: Configure Alert Rules
 description: Learn how to configure alert rules in Harness AI SRE to route, filter, and enrich incoming alerts.
 sidebar_label: Alert Rules
 sidebar_position: 4
+redirects_from:
+- /docs/incident-response/alerts/alert-rules
 ---
 
 # Alert Rules
@@ -67,7 +69,7 @@ When the Harness AI SRE on-call module becomes available, you will be able to co
 Connect relevant runbooks to your alert rule. These runbooks can be:
 - Automatically triggered when an incident is created
 - Suggested to responders during incident resolution
-- Used as reference documentation for incident response
+- Used as reference documentation for AI SRE
 
 ## Best Practices
 
