@@ -22,12 +22,12 @@ Review the notes below for details about recent changes to **Harness Cloud Devel
 
 ### Introducing Harness Self-Hosted Gitspaces
 
-We’re thrilled and excited to announce the **BETA release of Harness Self-Hosted Gitspaces** — a big step forward in improving developer experience and productivity at enterprise scale.
+We’re thrilled and excited to announce the **release of Harness Self-Hosted Gitspaces** — a big step forward in improving developer experience and productivity at enterprise scale.
 
 Self-Hosted Gitspaces are on-demand, remote cloud development environments hosted within your **organization’s own infrastructure**. These environments come **pre-configured for instant coding** and provide an **extra layer of security** by giving you full control over infrastructure and data. This helps reduce the risk of external data exposure and ensures your source code isn’t cached or accessed by third-party cloud services.
 Read more about **[Self-Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted)**.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-0AxA-9oguw?si=JNXGiyQ7K66ALjsc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7QNpTR7mRXI?si=viZp8kQyGrPjE5-n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Why Self-Hosted?
 
