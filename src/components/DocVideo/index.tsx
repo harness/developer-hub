@@ -106,7 +106,7 @@ const DocVideo = ({
         frameBorder="0"
         webkitallowfullscreen="true"
         mozallowfullscreen="true"
-        allowfullscreen="true">
+        allowFullScreen={true}>
       </iframe>
     );
   }
