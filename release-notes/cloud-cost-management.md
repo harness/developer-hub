@@ -22,33 +22,43 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 ### Feature Improvements
 
-- **Perspective Line chart:** Perspectives now displays a Line chart instead of an Area chart, eliminating redundancy with the stacked bar view. [CCM-23889]
+#### Perspectives
+- **Line chart view:** Perspectives now displays a Line chart instead of an Area chart, eliminating redundancy with the stacked bar view. [CCM-23889]
 
 <DocImage path={require('./static/line-chart.png')} width="100%" height="100%" title="Click to view full size image" />
 
+- **CSV aggregation fix:** CSV exports from Perspectives now respect the selected aggregation setting, matching the on-screen view. [CCM-20404]
+
+- **GCP credits regex support:** Perspective queries now support regex-based matching for GCP discount types aligned with dashboard behavior. [CCM-24110]
+
+#### Recommendations
 - **Readable ServiceNow timestamps:** Applied recommendations linked to ServiceNow tickets now show human-readable date-time values, making audit trails easier to follow. [CCM-24082]
 
 <DocImage path={require('./static/rec-timestamps.png')} width="100%" height="100%" title="Click to view full size image" />
 
-- **Enforcement evaluation cap increased:** Each enforcement can now run up to **10,000 evaluations** (`Rules × Accounts × Regions`), replacing the previous 30-rule limit. [CCM-23953, CCM-21995]
+- **Tag filter search:** Recommendation filters now list all available cloud tags and provide search to quickly find specific tags. [CCM-23792]
 
-- **Perspective tooltip enhancements:** The chart tooltip now shows the total daily cost plus individual data-point costs, with the selected point highlighted for easier analysis. [CCM-23888]
+#### Asset Governance
+- **Enforcement evaluation cap increased:** The previous limit of 30 Rules or Rule Sets per enforcement has been removed. Each enforcement can now run up to **10,000 evaluations** (`Rules × Accounts × Regions`). [CCM-23953, CCM-21995]
+
+- **Tooltip enhancements:** The chart tooltip now shows the total daily cost plus individual data-point costs, with the selected point highlighted for easier analysis. [CCM-23888]
 
 <DocImage path={require('./static/tags.gif')} width="100%" height="100%" title="Click to view full size image" />
 
-- **Improved recommendation tag filters:** Recommendation filters now list all available cloud tags and provide search to quickly find specific tags. [CCM-23792]
-
-- **AWS connector role retention:** When updating an AWS connector from the default authentication type to OIDC, the `Role` field is now preserved instead of being set to **undefined**. [CCM-23765]
-
+#### Cost Categories
 - **Cost Category for cluster data:** **Cost Category** is now available for cluster data in production. Set **Billing Source** to **CLUSTER** to use it as a filter or dimension in Perspectives.
   - Contact Harness Support to backfill historical data if needed (before 10 July 2025).
   - You can also create **Cost Buckets** based on cluster-level rules. [CCM-22980]
 
-- **AutoStopping connector permission checks:** The AutoStopping rule flow now validates that the selected connector already has the granular permissions required to create the target gateway resource (ALB, Azure Application Gateway, or Harness AutoStopping Proxy). For detailed permission requirements, see the granular-permissions sections for each cloud provider: [AWS](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#granular-permissions-for-autostopping), [Azure](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping), and [GCP](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping). [CCM-21579]
+#### AutoStopping
 
-- **Perspective CSV aggregation fix:** CSV exports from Perspectives now respect the selected aggregation setting, matching the on-screen view. [CCM-20404]
+- **Connector permission checks:** The AutoStopping rule flow now validates that the selected connector already has the granular permissions required to create the target gateway resource (ALB, Azure Application Gateway, or Harness AutoStopping Proxy). For detailed permission requirements, see the granular-permissions sections for each cloud provider: [AWS](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#granular-permissions-for-autostopping), [Azure](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping), and [GCP](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping). [CCM-21579]
 
-- **Single CCM K8s connector per CD K8s connector:** Each CD Kubernetes connector can now be linked to only **one** CCM Kubernetes connector; the UI enforces this limit during setup. [CCM-18900]
+
+#### Connectors
+- **AWS connector role retention:** When updating an AWS connector from the default authentication type to OIDC, the `Role` field is now preserved instead of being set to **undefined**. [CCM-23765]
+
+- **Single CCM K8s connector per CD connector:** Each CD Kubernetes connector can now be linked to only **one** CCM Kubernetes connector; the UI enforces this limit during setup. [CCM-18900]
 
 ## July 2025 - Version 1.56.3
 **Deployment Date:** July 7, 2025 (Prod-1)
@@ -60,10 +70,9 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 - **Increased Folder Limit**: We have increased the maximum number of folders that can be created from the previous limit of 500 to 2,000. [CCM-23784]
 
-- In GCP perspective we have added a perspective preference for PROMOTION. 
-If this is enabled it will include the promotion amount as well which is fetched from credits type Promotion.
-
-Earlier if we enable the discount - it used to include the promotion as well but not discount wont include the promotion cost. This has to be enabled separately from the preference. [CCM-20075]
+- **New GCP “Include Promotions” preference:**
+  - Located in Perspective Preferences, this toggle includes promotional credits (for example, Free Trial or marketing credits) in cost calculations when enabled.
+  - Promotions are no longer bundled with the regular **Discount** option; enable this preference separately if you want promotional amounts reflected. [CCM-20075]
 
 ### Bug Fixes
 
