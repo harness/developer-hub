@@ -47,7 +47,7 @@ To meet the recommended specifications, select the **"Large"** machine type whil
 ## Getting started with IntelliJ IDEA
 Follow these steps to get started with integrating IntelliJ IDEA into your Gitspaces workflow:  
 ### Create a Gitspace
-1. Navigate to the **Harness UI** and [create a new Gitspace](/docs/cloud-development-environments/introduction/quickstart-guide) for your project repository.
+1. Navigate to the **Harness UI** and [create a new Gitspace](/docs/cloud-development-environments/introduction/quickstart-tutorial.md) for your project repository.
 2. Select **"IntelliJ"** as the IDE during Gitspace creation.
 <img width="600" alt="choose intellij" src="https://github.com/user-attachments/assets/f022ab53-8e95-4605-9418-35d772aae7ae" />
 

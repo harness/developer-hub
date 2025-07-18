@@ -1,54 +1,114 @@
 ---
-title: Create a Gitspace
-description: Learn how to create a new Gitspace
+title: Create Gitspaces
+description: Learn how to create a new Gitspace. 
 sidebar_position: 1
-sidebar_label: Create a Gitspace
+sidebar_label: Create Gitspaces
 ---
 
-Follow the instructions below to create a Gitspace:
+This document will guide you to understand in detail on how to create a new Gitspace. Follow the instructions below to start creating a new Gitspace. 
 
-1. Click on **+New Gitspace**. To create a **Gitspace** using the [sample app](https://github.com/harness-community/demo-repo-nm). You have two options to create Gitspace:
+### Select Your Deployment Model
 
+Based on the deployment model you choose - **Harness Hosted** or **Self Hosted** - you can proceed accordingly with this tutorial.
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+#### 1️⃣ Harness Hosted
 
-<Tabs queryString="Create Gitspace">
-<TabItem value="using-harness-code" label="Using Harness Code">
+For Harness Hosted Gitspaces, no infrastructure configuration is required. All you need is your source code repository link and Gitspace details. Read more about [Harness Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md#harness-hosted-model).
 
-2. Select the **Repository** from the dropdown, followed by updating the **branch**. 
+**🔗 Follow the instructions here to create a new Gitspace: [Creating Gitspaces](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md#create-gitspaces)**.
 
-![](./static/harness-code.png)
+#### 2️⃣ Self Hosted
 
-</TabItem>
-<TabItem value="other-git-repositories" label="Other Git Repositories">
+For Self Hosted Gitspaces, you need to ensure your infrastructure is configured and set up beforehand. Read more about [Self Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md#self-hosted-model). All the configuration steps are mandatory before creating any Self Hosted Gitspace.
 
-1. You can add a public or private repository URL for supported [git providers](/docs/cloud-development-environments/introduction/whats-supported#git-providers).
+**🔗 Follow the instructions here to configure Self Hosted Gitspaces: [Get Started with Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps)**
 
-2. For **public repositories**, the URL must strictly follow this format: https://git-provider.com/organisation/repository (e.g., for GitHub: https://github.com/harness-community/demo-repo-nm). Any extra text after this may cause an error.
+### Select Your Git Provider
 
-3. If OAuth is configured, you’ll be able to select from a list of **private repositories** you have access to.
+Depending on the Git provider you choose - **Cloud Provider** or **On-Prem** - you can proceed accordingly with this tutorial.
 
-4. By default the **branch** selected would be **main** which you can change according to your choice.
+#### 1️⃣ Cloud Git Providers
 
-</TabItem>
-</Tabs>
+Gitspaces allow you to configure your preferred **cloud Git provider** for seamless development. This enables you to create a Gitspace directly from your project repository (public or private) hosted on your chosen Git provider.
+If you plan to use any of the following Cloud Git Providers, you must configure them beforehand:
 
+* [Harness Code](https://developer.harness.io/docs/code-repository/get-started/overview/)
+* [GitHub Cloud](https://docs.github.com/en/get-started/start-your-journey/about-github-and-git)
+* [GitLab Cloud](https://about.gitlab.com/)
+* [Bitbucket Cloud](https://support.atlassian.com/bitbucket-cloud/docs/get-started-with-bitbucket-cloud/)
+* Any Public Git Repository
 
+**🔗 Follow the instructions here to configure OAuth for these providers: [Get Started with Cloud Git Providers](/docs/cloud-development-environments/git-providers/cloud-providers.md)**
 
-### Select IDE
-Move back to the CDE Create Gitspace window and select your preferred IDE from the given options. 
+#### 2️⃣ On-Prem Git Providers
 
-### Select Region 
-Select the **region** in which you want to provision your CDE. 
+You can configure On-Prem Git Providers to launch Gitspaces for source code repositories hosted **within your own infrastructure**. This provides an added layer of security and control over your source code and metadata, ensuring that your data never leaves your servers.
+If you plan to use any of the following On-Prem Git Providers, you must configure them beforehand:
 
-### Select Machine 
-Select the machine type to be either **Standard** or **Large**. 
+* [GitHub Enterprise Server](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server)
+* [GitLab Self-Managed](https://docs.gitlab.com/subscriptions/self_managed/)
+* [Bitbucket Data Center](https://www.atlassian.com/enterprise/data-center/bitbucket)
 
-![](./static/create-gitspace.png)
+**🔗 Follow the instructions here to configure On-Prem Git Providers: [Get Started with On-Prem Git Providers](/docs/cloud-development-environments/git-providers/on-prem-providers.md).**
 
-It will take few minutes to provision the Gitspace and you could see all the steps and logs involved. 
+## Create Gitspaces
+Follow the instructions below to create a new Gitspace, based on your deployment model:
 
-![](./static/gitspaces-starting.png)
+### Harness Hosted Gitspaces
 
-Now you can your Gitspace in the selected IDE and start developing. 
+1. Open the Harness UI and go to **Gitspaces** from the left sidebar.
+
+2. **Git Provider**: Select your **Git Provider** as configured above with the [prerequisites](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md#select-your-git-provider). 
+
+3. **Repository URL**: Enter your **Git Repository URL**:
+
+   * For **cloud providers**: use the public repository URL or your fork (use the full HTTPS format: `https://git-provider.com/org/repo`).
+   * For **on-prem providers**: provide the internal repository URL.
+
+4. **Branch**: Enter a branch name, or use the default `main`.
+
+5. **IDE**: Select your preferred IDE (e.g., VS Code Desktop). Check [IDE prerequisites](/docs/category/ides) beforehand.
+
+6. **SSH Key**: Required for all IDEs except browser-based ones. Refer to the SSH key setup guide.
+
+![](./static/create-github-1.png)
+
+7. **Infra Provider Type**: Select **Harness Default GCP Provider**.
+
+8. **Region**: Choose from **pre-defined regions** ([see supported regions](/docs/cloud-development-environments/introduction/whats-supported.md#regions-available)).
+
+9. **Machine Type**: Choose from **available machine types** ([see supported machines](/docs/cloud-development-environments/introduction/whats-supported.md#machine-types)).
+
+10. Click **Create Gitspace**.
+
+![](./static/create-github-2.png)
+
+### Self Hosted Gitspaces
+
+1. Open the Harness UI and go to **Gitspaces** from the left sidebar.
+
+2. **Git Provider**: Select your **Git Provider** as configured above with the [prerequisites](/docs/cloud-development-environments/manage-gitspaces/create-gitspaces.md#select-your-git-provider). 
+
+3. **Repository URL**: **Repository URL**: Enter your **Git Repository URL**:
+
+   * For **cloud providers**: use the public repository URL or your fork (use the full HTTPS format: `https://git-provider.com/org/repo`).
+   * For **on-prem providers**: provide the internal repository URL.
+
+4. **Branch**: Enter a branch name, or use the default `main`.
+
+5. **IDE**: Select your preferred IDE (e.g., VS Code Desktop). Check [IDE prerequisites](/docs/category/ides) beforehand.
+
+6. **SSH Key**: Required for all IDEs except browser-based ones. Refer to the SSH key setup guide.
+
+7. **Infra Provider Type**: Select your previously configured **Self-Hosted infrastructure**.
+
+8. **Region**: Select from your **configured list of regions** ([see how to configure regions in self hosted](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#configure-regions)).
+
+9. **Machine Type**: Choose from the machine types configured in your infrastructure ([see how to configure machine types in self hosted](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md#add-machines-in-gitspace-infrastructure)).
+
+10. Click **Create Gitspace**.
+
+![](./static/create-self-1.png)
+
+Once your Gitspace is active, you're ready to begin development!
+
