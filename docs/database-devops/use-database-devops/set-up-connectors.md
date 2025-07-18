@@ -29,7 +29,6 @@ The JDBC connector is used for connecting to your database instance.
 | **ORACLE**         | `jdbc:oracle:thin:@//{host}:{port}/{servicename}`                                                                                |
 | **POSTGRES**       | `jdbc:postgresql://{host}:{port}/{dbName}?sslmode=disable`                                                                       |
 | **SQLSERVER**      | `jdbc:sqlserver://{host}:{port};trustServerCertificate=true;databaseName={dbName}`                                               |
-| **MongoAtlasSQL**  | `jdbc:mongodb://{host}:{port}/{dbName}?ssl=true&authSource=admin`                                                                |
 | **MYSQL**          | `jdbc:mysql://{host}:{port}/{dbName}`                                                                                            |
 | **MONGODB**        | `mongodb://{host}:{port}/{dbName}/?authSource=admin`                                                                             |
 | **GOOGLE SPANNER** | `jdbc:cloudspanner:/projects/{project-id}/instances/{instance-id}/databases/{database-name}?lenient=true`                        |

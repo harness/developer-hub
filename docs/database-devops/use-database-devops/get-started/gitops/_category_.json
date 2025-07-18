@@ -1,0 +1,11 @@
+{
+    "label":"GitOps",
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"GitOps"
+    },
+    "customProps":{
+    }
+ }

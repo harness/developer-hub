@@ -30,6 +30,14 @@ In DBOps workflows, the following types of secrets are typically required:
 2. **Schema Repo Clone Secrets** – used by scripts to fetch schema definitions from source control.
 3. **Database Passwords** – used for authenticating with databases via JDBC or similar connectors.
 
+### Prerequisites
+
+Ensure you have the following versions:
+- **Harness Delegate**: 858xx or later
+- **Harness CI Addon**: 1.16.81 or later
+- **Harness CI Lite Engine**: 1.16.81 or later
+- **Ng manager**: 1.87.0
+- **Ci-manager**: 1.77.0
 
 ### How it Works
 
