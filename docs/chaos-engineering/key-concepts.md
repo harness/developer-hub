@@ -4,6 +4,21 @@ description: Essential Harness Chaos Engineering concepts and terminology
 sidebar_position: 4
 redirect_from:
   - /docs/chaos-engineering/concepts
+  - /docs/chaos-engineering/get-started/key-concepts
+  - /docs/chaos-engineering/architecture-and-security/architecture/components
+  - /docs/chaos-engineering/architecture-and-security/architecture
+  - /docs/chaos-engineering/technical-reference/architecture/kubernetes
+  - /docs/chaos-engineering/technical-reference/architecture/linux
+  - /docs/chaos-engineering/architecture-and-security/architecture/control-plane
+  - /docs/category/architecture-and-security
+  - /docs/category/architecture
+  - /docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management
+  - /docs/chaos-engineering/features/chaos-infrastructure/linux-chaos-infrastructure-advanced-management
+  - /docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure
+  - /docs/chaos-engineering/features/chaos-infrastructure/openshift-infra
+  - /docs/chaos-engineering/chaos-infrastructure/openshift-infra
+  - /docs/chaos-engineering/concepts/deployment-architecture
+  - /docs/chaos-engineering/concepts/explore-architecture
 ---
 
 # Key Concepts
