@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import BrowserOnly from "@docusaurus/BrowserOnly";
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import DocVideo from "@site/src/components/DocVideo";
 import "./DynamicMarkdownSelector.css";
+
+import type {TOCItem} from '@docusaurus/mdx-loader';
 
 declare var require: {
   context(
@@ -33,6 +36,9 @@ export interface DynamicMarkdownSelectorProps {
       logoHeight?: number;
     }
   >;
+  mdToc: TOCItem[];
+  precedingHeadingID: string;
+  nextHeadingID: string;
 }
 
 // Determine column count for visual balance
@@ -43,7 +49,8 @@ const getGridColumns = (count: number): number => {
   return 5;
 };
 
-const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options }) => {
+const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options, mdToc, precedingHeadingID = '', nextHeadingID = '' }) => {
+
   const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, "");
   const labels = Object.keys(options).sort((a, b) => a.localeCompare(b));
 
@@ -56,9 +63,10 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
   const [selected, setSelected] = useState(getInitialSelected());
   const [ContentComp, setContentComp] = useState<React.ComponentType<any> | null>(null);
   const [search, setSearch] = useState("");
-  const [toc, setToc] = useState<{ id: string; text: string; level: number }[]>([]);
+
 
   // Update selection if hash changes
+
   useEffect(() => {
     const onHashChange = () => {
       const hash = window.location.hash.replace("#", "");
@@ -71,17 +79,8 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
     return () => window.removeEventListener("hashchange", onHashChange);
   }, [labels]);
 
-  useEffect(() => {
-    const headings = Array.from(document.querySelectorAll(".markdown-content h2"));
-    const newToc = headings.map((el) => ({
-      id: el.id,
-      text: el.textContent || "",
-      level: parseInt(el.tagName[1], 10),
-    }));
-    setToc(newToc);
-  }, [ContentComp]);
-
   // Update hash in URL when selection changes
+
   useEffect(() => {
     const path = options[selected]?.path;
     const entry = mdxMap[path];
@@ -97,6 +96,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
     }
   }, [selected]);
 
+
   const filteredLabels = labels.filter((label) =>
     label.toLowerCase().includes(search.toLowerCase())
   );
@@ -105,6 +105,15 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
   const showSearch = labels.length > 12;
   const displayLabels = showSearch ? filteredLabels : labels;
   const columns = getGridColumns(displayLabels.length);
+
+
+  spliceMDToc( 
+    mdToc,  
+    precedingHeadingID, 
+    nextHeadingID, 
+    mdxCtx( '.' + options[selected]?.path )?.toc  //e.g. mdxCtx('./cloud-cost-management/content/get-started/aws-quickstart.md').toc
+  );
+
 
   return (
     <BrowserOnly>
@@ -162,17 +171,6 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
               })}
             </div>
           </div>
-          {toc.length > 0 && (
-            <nav className="runtime-toc">
-              <ul>
-                {toc.map((h) => (
-                  <li key={h.id} className={`level-${h.level}`}>
-                    <a href={`#${h.id}`}>{h.text}</a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          )}
           <div className="markdown-content">
             {ContentComp && <ContentComp components={{ Tabs, TabItem, DocVideo }} />}
           </div>
@@ -182,5 +180,146 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
     </BrowserOnly>
   );
 };
+
+
+/**
+ * Dynamically updates table of contents of the parent component (the parent md page).
+ * Inserts the headings from the DynamicMarkdownSelector (DMS) content into the table of
+ * contents that appears at the page top right.
+ * @param mdToc              Parent component's toc (table of contents) array. We add headings to this.
+ * @param precedingHeadingID Heading id that comes before the DMS component on the parent page.
+ * @param nextHeadingID      Heading id that comes after the DMS component on the parent page.
+ * @param dmsToc             Linked page that is selected in the DMS. We add headings from this page to mdToc.
+ */
+function spliceMDToc( 
+  mdToc: TOCItem[],  
+  precedingHeadingID: string = '', 
+  nextHeadingID     : string = '', 
+  dmsToc: TOCItem[]
+) {
+
+  if( !mdToc ) return;
+
+  removePlaceholder(mdToc);
+
+  const mdTocSpliceStart = mdToc.findIndex(e => e.id == precedingHeadingID?.replace('#', '')) + 1; // will be 0, if heading is not found
+
+  let mdTocSpliceEnd = mdToc.findIndex(e => e.id == nextHeadingID?.replace('#', ''));
+  if (mdTocSpliceEnd == -1) mdTocSpliceEnd = mdToc.length;
+  
+
+  // remove DynamicMarkdownSelector (DMS) toc content (from previous component render)
+  mdToc.splice(mdTocSpliceStart, mdTocSpliceEnd - mdTocSpliceStart);
+
+
+  /* console.log("DEBUG (after removing in DMS content) mdToc length", mdToc.length);
+  for (let i = 0; i < mdToc.length; i++) {
+    console.log("# mdToc" + i, mdToc[i].value);
+  } */
+
+  if( dmsToc ) {
+
+    // (re-)add DMS toc content
+    mdToc.splice(mdTocSpliceStart, 0, ...dmsToc);
+    updateTocHTML( mdToc );
+  }
+
+  addPlaceholder(mdToc);
+}
+
+
+/**
+ * Manually update the page's table of contents, using innerHTML.
+ * -- We are doing this because we cannot nudge the parent component to refresh using normal React
+ *  patterns (i.e. we can't define state variables in the md page and pass them to the child component).
+ * @param mdToc The parent component's toc (table of contents) array. We copy these headings to the DOM tree.
+ */
+function updateTocHTML( mdToc: TOCItem[] ) { 
+
+  if( !ExecutionEnvironment.canUseDOM ) return;
+  
+  let mdTocIndex = 0;
+
+
+  // there is only one table of contents on the page (the one we want to update)
+  const pgToc: Element = document.getElementsByClassName("table-of-contents table-of-contents__left-border").item(0);
+
+  if( pgToc == undefined ) return;
+
+  // clear TOC items (remove all children)
+  pgToc.innerHTML = '';
+
+  while( mdTocIndex < mdToc.length ){
+
+    // get a pointer to the toc contents
+    let pgTocElement: Element = document.createElement('li');
+
+
+    // update toc heading
+
+    pgTocElement.innerHTML = 
+      '<a href="#{ID}" class="table-of-contents__link toc-highlight table-of-contents__link">{VALUE}</a>';
+    pgTocElement.innerHTML = 
+      pgTocElement.innerHTML.replace('{ID}'   , mdToc[mdTocIndex].id   )
+                            .replace('{VALUE}', mdToc[mdTocIndex].value);
+
+
+    // update any children
+
+    let L3innerHTML = '';
+
+    ++mdTocIndex;
+
+    while( mdTocIndex < mdToc.length && mdToc[mdTocIndex].level >= 3 ) {
+      if ( mdToc[mdTocIndex].level == 3 ) {
+        L3innerHTML += 
+          '<li><a href="#{ID}" class="table-of-contents__link toc-highlight table-of-contents__link">{VALUE}</a></li>';
+        L3innerHTML = 
+          L3innerHTML.replace('{ID}'   , mdToc[mdTocIndex].id   )
+                     .replace('{VALUE}', mdToc[mdTocIndex].value);
+      }
+      ++mdTocIndex;
+    }
+
+    if( L3innerHTML != '' ) {
+      pgTocElement.innerHTML += '<ul>' + L3innerHTML + '</ul>';
+    }
+
+
+    pgToc.append(pgTocElement);
+  }
+}
+
+
+/**
+ * We add/remove a placeholder to handle an edge case: If there are no headings in the
+ * first DMS button selected, then the toc is not created in the DOM of the parent page
+ * and cannot be updated.
+ * -- To prevent this from happening, we add and remove a placeholder. Then the DOM elements
+ *  for the tocare created and we can update them when the selection changes.
+ * @param mdToc The parent component's toc (table of contents) array.
+ */
+
+const placeholder: TOCItem = { id: 'placeholder', value: '', level: 2 };
+
+function addPlaceholder ( mdToc: TOCItem[] )
+{
+  if( mdToc.length == 0 ) mdToc.push(placeholder);
+}
+
+function removePlaceholder( mdToc: TOCItem[] ) {
+
+  const placeholderIndex:number = mdToc.findIndex(
+      x => 
+        x.id    == placeholder.id    && 
+        x.value == placeholder.value && 
+        x.level == placeholder.level
+  );
+
+  if( placeholderIndex != -1 ) mdToc.splice(placeholderIndex, 1);
+}
+
+
+
 
 export default DynamicMarkdownSelector;
