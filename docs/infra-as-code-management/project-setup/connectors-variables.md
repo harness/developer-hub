@@ -34,7 +34,6 @@ Also, see [Add Connectors](/docs/infra-as-code-management/get-started/#add-conne
 ### Connectors from templates
 If your workspace is created from a workspace template, it may include connectors defined in the template.
 - These appear in the **Connectors and Variables** tab.
-- Template-sourced connectors are marked with a **TEMPLATE** source label.
 - Currently, these connectors **cannot be modified** in the workspace.
 
 ---
