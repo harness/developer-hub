@@ -10,7 +10,7 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Commitment Orchestrator for RDS
+# Commitment Orchestrator for RDS (Beta)
 
 Commitment Orchestrator for RDS helps you optimize your Amazon RDS (Relational Database Service) costs by automatically managing your Reserved Instance (RI) commitments. It analyzes your RDS usage patterns and recommends the most cost-effective combination of Reserved Instances.
 
