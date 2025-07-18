@@ -17,6 +17,50 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. In the new UI, go to Account Settings, Account Details, General, Account Details, and then Platform Service Versions. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+## July 2025 - Version 1.57.1
+**Deployment Date:** July 18, 2025 (Prod-1)
+
+### Feature Improvements
+
+#### Perspectives
+- **Line chart view:** Perspectives now displays a Line chart instead of an Area chart, eliminating redundancy with the stacked bar view. [CCM-23889]
+
+<DocImage path={require('./static/line-chart.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- **CSV aggregation fix:** CSV exports from Perspectives now respect the selected aggregation setting, matching the on-screen view. [CCM-20404]
+
+- **GCP credits regex support:** Perspective queries now support regex-based matching for GCP discount types aligned with dashboard behavior. [CCM-24110]
+
+#### Cost Categories
+
+- **Cluster Cost Category (CC) Stamping Support**: We now support Cost Category for Cluster data. Set **Billing Source** to **CLUSTER** to use Cost Category as a filter or dimension in Dashboards. This capability applies only to data generated after 10 July 2025 (submit a support ticket to backfill older data). You can also create **Cost Buckets** based on cluster-level rules. View cluster Cost Categories in **Unified Explore** rather than **Cluster Explore**. [CCM-22980]
+
+<DocImage path={require('./static/tags.gif')} width="100%" height="100%" title="Click to view full size image" />
+
+#### AutoStopping
+
+- **Connector permission checks:** The AutoStopping rule flow now validates that the selected connector already has the granular permissions required to create the target gateway resource (ALB, Azure Application Gateway, or Harness AutoStopping Proxy). For detailed permission requirements, see the granular-permissions sections for each cloud provider: [AWS](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#granular-permissions-for-autostopping), [Azure](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping), and [GCP](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping). [CCM-21579]
+
+
+#### Recommendations
+- **Readable ServiceNow timestamps:** Applied recommendations linked to ServiceNow tickets now show human-readable date-time values, making audit trails easier to follow. [CCM-24082]
+
+<DocImage path={require('./static/rec-timestamps.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- **Tag filter search:** Recommendation filters now list all available cloud tags and provide search to quickly find specific tags. [CCM-23792]
+
+#### Asset Governance
+- **Enforcement evaluation cap increased:** The previous limit of 30 Rules or Rule Sets per enforcement has been removed. Each enforcement can now run up to **10,000 evaluations** (`Rules × Accounts × Regions`). [CCM-23953, CCM-21995]
+
+- **Tooltip enhancements:** The chart tooltip now shows the total daily cost plus individual data-point costs, with the selected point highlighted for easier analysis. [CCM-23888]
+
+<DocImage path={require('./static/tags.gif')} width="100%" height="100%" title="Click to view full size image" />
+
+#### Connectors
+- **AWS connector role retention:** When updating an AWS connector from the default authentication type to OIDC, the `Role` field is now preserved instead of being set to **undefined**. [CCM-23765]
+
+- **Single CCM K8s connector per CD connector:** Each CD Kubernetes connector can now be linked to only **one** CCM Kubernetes connector; the UI enforces this limit during setup. [CCM-18900]
+
 ## July 2025 - Version 1.56.3
 **Deployment Date:** July 7, 2025 (Prod-1)
 
@@ -26,6 +70,10 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 - **Anomaly Detection Filter Support**: We have added support for filter inheritance when navigating from Perspectives to Anomaly Detection (V2) screens. Anomaly results now respect all filters applied on the source Perspective page.[CCM-23544]
 
 - **Increased Folder Limit**: We have increased the maximum number of folders that can be created from the previous limit of 500 to 2,000. [CCM-23784]
+
+- **New GCP “Include Promotions” preference:**
+  - Located in Perspective Preferences, this toggle includes promotional credits (for example, Free Trial or marketing credits) in cost calculations when enabled.
+  - Promotions are no longer bundled with the regular **Discount** option; enable this preference separately if you want promotional amounts reflected. [CCM-20075]
 
 ### Bug Fixes
 
@@ -52,7 +100,7 @@ Harness CCM now supports OpenID Connect (OIDC) authentication for enhanced secur
 - AutoStopping
 
 ### [New Feature] Event Driven Anomaly Detection
-**[CCM-22730] | [Docs](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection`)**
+**[CCM-22730] | [Docs](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-detection-process)**
 
 CCM now provides **event-driven anomaly detection** that triggers automatically when cost data is ingested, complementing the existing scheduled anomaly detection jobs.
 
@@ -265,7 +313,6 @@ We have introduced **Granular permissions support for AWS Autostopping**. With t
 
  <DocImage path={require('./static/savings-rec.png')} width="90%" height="90%" title="Click to view full-size image" />
   <DocImage path={require('./static/savings-rec-two.png')} width="90%" height="90%" title="Click to view full-size image" />
-
 
 -  Cost Categories Integration for Recommendations: The **Filter panel** in the **Recommendations view** now includes the option to **filter by Cost Categories**. This update is especially valuable for large-scale organizations that manage **thousands of recommendations** and require structured views to take meaningful action. This improvement allows for efficient sorting and quick isolation of recommendations based on relevant cost buckets and labels. [CCM-21439]
 
