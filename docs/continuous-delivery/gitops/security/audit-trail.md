@@ -91,6 +91,3 @@ To view the diff:
 
 **Application Sync Success/Failure** events are **not tracked** in the audit trail.  
 Only sync **trigger** events are recorded.
-
-
-For full platform audit capabilities, filtering, and export options, see the [Audit Trail documentation](https://developer.harness.io/docs/platform/governance/audit-trail/).
