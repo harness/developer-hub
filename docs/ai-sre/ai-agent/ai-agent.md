@@ -3,6 +3,8 @@ title: AI Scribe Agent
 description: Learn about the specialized AI Scribe Agent in Harness AI SRE that automates incident documentation by capturing and organizing communications from Slack, Zoom, and Microsoft Teams.
 sidebar_label: AI Scribe
 sidebar_position: 2
+redirects_from:
+- /docs/incident-response/ai-agent/ai-agent
 ---
 
 # AI Scribe Agent

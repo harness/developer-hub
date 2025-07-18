@@ -3,10 +3,13 @@ title: ServiceNow Integration for Runbooks
 sidebar_label: ServiceNow
 sidebar_position: 5
 description: Learn how to integrate ServiceNow with Harness AI SRE Runbooks, including bidirectional synchronization and incident creation.
+redirects_from:
+- /docs/incident-response/runbooks/integrations/servicenow
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import CreateIntegration from './static/create-integration.png';
 
 # ServiceNow Integration for Runbooks
 
@@ -17,7 +20,6 @@ Harness AI SRE offers comprehensive integration with ServiceNow, enabling both o
 ServiceNow integration enables your runbooks to:
 - Create and update incidents
 - Track incident progress
-- Manage CMDB records
 - Automate workflow transitions
 - Sync incident updates bidirectionally
 
@@ -218,9 +220,9 @@ This section walks you through setting up an integration in Harness AI SRE to re
 3. Set the following values:
    - **Name**: ServiceNow Incidents
    - **Type**: Incident
-   - **Template**: Leave blank (not yet available)
+   - **Template**: ServiceNow Incident
 
-![Create Integration](./static/create-integration.png)
+<img src={CreateIntegration} width="600"/>
 
 4. Copy the generated **Webhook URL**.
 

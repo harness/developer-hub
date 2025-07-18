@@ -3,6 +3,8 @@ title: Configure Authentication for Runbook Actions
 sidebar_label: Configure Authentication
 sidebar_position: 3
 description: Learn how to set up and manage authentication for different runbook actions and integrations in Harness AI SRE.
+redirects_from:
+- /docs/incident-response/runbooks/configure-authentication
 ---
 
 # Configure Authentication

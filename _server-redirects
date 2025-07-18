@@ -148,6 +148,12 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-aws-s3-for-pipeline-logs /docs/self-managed-enterprise-edition/advanced-configurations/external-db/minio/configure-aws-s3-for-pipeline-logs
 
+# Added by vasundhara on 18-07-2025 for incident response to ai-sre rebranding
+# Incident Response redirects for old structure
+/docs/incident-response/get-started/overview /docs/ai-sre/get-started/overview
+/docs/incident-response/resources/whats-supported /docs/ai-sre/resources/whats-supported
+/src/components/Docs/IncidentResponse /src/components/Docs/AiSre
+
 # advance configuration > External DB > TimescaleDB
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb/ /docs/self-managed-enterprise-edition/advanced-configurations/external-db/timescaledb/use-an-external-sm-timescaledb/
 
