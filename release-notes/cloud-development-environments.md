@@ -47,7 +47,7 @@ Read more about the different **[Use Cases of Self-Hosted Gitspaces](/docs/cloud
 
 ### Get Started
 
-If you’re interested and want to get started with Self-Hosted Gitspaces, here’s what you need to do:
+Refer to **[Configuring Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps)** to get started with setting up Self-Hosted Gitspaces. If you’re interested, here’s what you need to do:
 
 1. **Go Through the Prerequisites and Fundamentals**: Before you begin, it’s important to understand the **underlying architecture** and **concepts of Self-Hosted Gitspaces**.
 

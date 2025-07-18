@@ -41,6 +41,12 @@ Follow the given steps to select a Delegate:
 ![](./static/delegate-selector.png)
 
 ## Delete Machines from Gitspace Infrastructure
+:::warning **Warning: Irreversible Action**
+
+Deleting these machines is **permanent** and **cannot be undone**. This action will permanently remove these machines. 
+
+Please proceed **only if you are absolutely certain** you want to delete these machines.
+:::
 You can also delete **Machines** from your Gitspace Infrastructure. Here's how you can do that: 
 1. Go to your **Gitspace Infrastructure** UI. 
 2. Go to the **Locations and Machines** section. 

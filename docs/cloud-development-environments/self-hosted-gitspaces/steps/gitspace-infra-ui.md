@@ -53,7 +53,9 @@ You can create and manage Self Hosted Gitspaces only if your infrastructure has 
 
 Use the following input parameters:
 1. **Region Name**: Enter the **region name**. Refer to the [GCP documentation](https://cloud.google.com/compute/docs/regions-zones) to view available regions.
-2. **IP Details**: Provide the **IP configuration** for each region.
+2. **IP Details**: Provide the **IP configuration** for each region. 
+    - **Default Subnet IP Range**: This is the primary IP range of the subnet and is used to assign internal IPs to your resources. 
+    - **Proxy IP Range**: This is a special subnet created specifically for certain Google-managed services and is used by Google's proxies for internal LB traffic routing. 
 3. **Sub-Domain**: Enter the **domain** for each region. This field consists of a sub-domain and a root-domain. The root-domain is the same domain entered above in the basic details. 
 ![](./static/new-region-1.jpg)
 
@@ -65,6 +67,46 @@ Here's how **all the added regions** will look for your infrastructure.
 Once all details have been entered, click on **Download and Apply YAML**. This will generate the **Infra Config YAML**, which contains the entire Gitspace Infra configuration. This YAML is a mandatory input for [configuring and setting up the Harness Gitspaces Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md), which provisions the GCP infrastructure in your selected project.
 
 ![](./static/download-apply-yaml.png)
+
+This is what a **sample Infrastructure Config YAML** looks like: 
+```YAML
+account_identifier: vpCkHKsDSxK9_KYfjCTMKA
+infra_provider_config_identifier: testprod2hybrid
+name: test-prod2-hybrid
+gitspace_vm_tags:
+- gcp-gitspace
+project:
+  id: harness-gitspace-prod2
+  service_account: cde-provisioner
+domain: prod2.gitspace.test.harness.io
+delegateselectors:
+- selector: gitspaces
+  origin: ""
+gateway:
+  instances: 1
+  machine_type: e2-standard-4
+  vm_tags:
+  - gateway
+  vm_image:
+    family: debian-11
+    project: debian-cloud
+  shared_secret: <shared-secret>
+  cde_manager_url: https://app.harness.io/gateway/gratis/cde
+  version: 1.15.0
+runner_vm_region:
+- us-west1
+runner:
+  vm_image: projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20250213
+region_configs:
+  us-west1:
+    region_name: us-west1
+    default_subnet_ip_range: 10.6.0.0/16
+    proxy_subnet_ip_range: 10.7.0.0/16
+    certificates:
+      contents:
+      - domain: uswest.prod2.gitspace.test.harness.io
+
+```
 
 ## Manage Gitspace Infrastructure
 
@@ -109,7 +151,7 @@ Here's how you can delete your infrastructure:
 ![](./static/delete-infra-latest.png)
 
 ### Assess Gateway Group Health for Gitspace Infrastructure
-You can assess the **Gateway Group Health** for your Gitspace infrastructure from the Infra Details UI. Go to **Locations and Machines**, and click on the region for which you want to assess the Gateway health. You can find the following details:
+You can assess the **Gateway Group Health** for your Gitspace infrastructure from the Infra Details UI. Go to **Locations and Machines**, and click on the region for which you want to assess the Gateway health. In case the Gateway is **Unhealthy**, you will not be able to create any Gitspaces since no requests will be routed forward. You can find the following details:
 
 * **Gateway Group Name**: System-generated name of the Gateway Group
 * **Gateway Group Health**: Health status of the Gateway Group
