@@ -11,7 +11,7 @@ This topic describes how to synchronize stages and [step groups](/docs/continuou
 Harness provides multiple options for controlling resource usage and protecting capacity limits. Go to [controlling resource usage with Barriers, Resource Constraints, and Queue steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/controlling-deployments-with-barriers-resource-constraints-and-queue-steps) for more information.
 
 :::
-
+  
 ## Barriers and synchronization
 
 :::note
@@ -73,6 +73,7 @@ There are a few behaviors to note when using Barriers within a looping strategy 
 * You cannot use the `maxConcurrency` parameter in setting up looping. When this parameter is used, not all the stages start up in parallel, and some wait for the first few to end. Barriers will prevent the initial set of stages from ending, so the pipeline will get stuck. 
 * When using barriers with a multi-service deployment, please select the **Deploy Services in Parallel** option, so that the pipeline does not wait for a stage to complete before beginning the next one. 
 * You can use barriers to coordinate between multiple sets of looped stages, or between a single stage and a group of looped stages. As mentioned before, the same **Barrier Reference** must be used across all the sets of stages. The stages will all execute up to the Barrier step and wait for the others. This applies even if one of the groups starts later than another.
+* **Barriers are also supported across child pipelines.** A parent pipeline can define and use a barrier, and any child pipeline can reference and synchronize using the same barrier.
 
 
 ## Important notes
