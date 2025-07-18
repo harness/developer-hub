@@ -21,8 +21,15 @@ These release notes describe recent changes to Harness Code Repository.
 :::
 
 
-## June 2025
+## July 2025
 
+<!-- July 16, 2025 -->
+
+### Version 1.50.x
+
+#### New features and enhancements
+- Added support for tag rules in Harness Code Repository. Users can now restrict tag creation, deletion, and updates with pattern-based rules.
+- Added support for including user groups in the bypass list for branch rules.
 
 <!-- July 03, 2025 -->
 
@@ -30,8 +37,10 @@ These release notes describe recent changes to Harness Code Repository.
 
 #### New features and enhancements
 
-- Added a banner prompting users to **Create PR** when a new branch is recently pushed.
+- Added a [banner prompting users to **Create PR**](/docs/code-repository/pull-requests/create-pr#compare--pull-request-banner) when a new branch is recently pushed.
 - Added repository sort and scope filters to the repo list page. Users can now sort repositories and toggle between account, org, and project scopes to control visibility.
+
+## June 2025
 
 <!-- June 17, 2025 -->
 
