@@ -17,42 +17,38 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. In the new UI, go to Account Settings, Account Details, General, Account Details, and then Platform Service Versions. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
-## July 2025 - Version 1.56.3
-**Deployment Date:** July 17, 2025 (Prod-1)
+## July 2025 - Version 1.57.1
+**Deployment Date:** July 18, 2025 (Prod-1)
 
 ### Feature Improvements
-- Previously, for older applied recommendations linked to a ServiceNow ticket, the system displayed the raw timestamp instead of a readable date and time format. This has been fixed to ensure a consistent and user-friendly display. [CCM-24082]
 
-- We’ve removed the limit of 30 Rules or Rule Sets in the Enforcement Create/Update wizard. [CCM-23953]
+- **Perspective Line chart:** Perspectives now displays a Line chart instead of an Area chart, eliminating redundancy with the stacked bar view. [CCM-23889]
 
-- We have set maximum number of evaluations per enforcement to 10,000 (without individual limits on rules, rule sets, accounts, or regions). Evaluations are calculated as (Rules*Accounts*Region) and now capped at 10,000 per enforcement. [CCM-21995]
+<DocImage path={require('./static/line-chart.png')} width="100%" height="100%" title="Click to view full size image" />
 
-- The Area chart in Perspectives has been replaced with a Line chart. The Area chart was removed as it didn’t offer additional insights beyond what the stacked bar chart already provides. [CCM-23889]
+- **Readable ServiceNow timestamps:** Applied recommendations linked to ServiceNow tickets now show human-readable date-time values, making audit trails easier to follow. [CCM-24082]
 
-- The Perspective chart tooltip now displays the total cost for the selected day along with the individual costs of all data points. The selected data point is highlighted to help with easier cost analysis. [CCM-23888]
+<DocImage path={require('./static/rec-timestamps.png')} width="100%" height="100%" title="Click to view full size image" />
 
-- Recommendation filters will show full list of tags and search is supported in the tag list. [CCM-23792]
+- **Enforcement evaluation cap increased:** Each enforcement can now run up to **10,000 evaluations** (`Rules × Accounts × Regions`), replacing the previous 30-rule limit. [CCM-23953, CCM-21995]
 
-- Previously, the Role field in the Stack Template was populated as undefined when updating an existing AWS connector from the default authentication type to OIDC. This issue has now been resolved, and the role is correctly retained during the update. [CCM-23765]
+- **Perspective tooltip enhancements:** The chart tooltip now shows the total daily cost plus individual data-point costs, with the selected point highlighted for easier analysis. [CCM-23888]
 
-- Previously, when creating yearly budgets with a monthly breakdown based on last period spend, the UI was sending timestamps from the previous year in the create API payload. Although these timestamps were only stored for reference and not actively used, the UI has now been updated to send the correct timestamps. [CCM-23583]
+<DocImage path={require('./static/tags.gif')} width="100%" height="100%" title="Click to view full size image" />
 
-- We now support Cost Category for Cluster data in production.
+- **Improved recommendation tag filters:** Recommendation filters now list all available cloud tags and provide search to quickly find specific tags. [CCM-23792]
 
-Usage Instructions
-Billing Source: Set to CLUSTER
-Cost Category can now be used as a filter and dimension in Perspectives based on cluster data.
+- **AWS connector role retention:** When updating an AWS connector from the default authentication type to OIDC, the `Role` field is now preserved instead of being set to **undefined**. [CCM-23765]
 
-Note: Cost Category  is available only from the day the deployment went live.
-For historical data, please raise a ticket to request a backfill.
+- **Cost Category for cluster data:** **Cost Category** is now available for cluster data in production. Set **Billing Source** to **CLUSTER** to use it as a filter or dimension in Perspectives.
+  - Contact Harness Support to backfill historical data if needed (before 10 July 2025).
+  - You can also create **Cost Buckets** based on cluster-level rules. [CCM-22980]
 
-Additional Capability
-Customers can now create Cost Buckets based on cluster-level rules. [CCM-22980]
+- **AutoStopping connector permission checks:** The AutoStopping rule flow now validates that the selected connector already has the granular permissions required to create the target gateway resource (ALB, Azure Application Gateway, or Harness AutoStopping Proxy). For detailed permission requirements, see the granular-permissions sections for each cloud provider: [AWS](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#granular-permissions-for-autostopping), [Azure](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping), and [GCP](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping). [CCM-21579]
 
-- In the AutoStopping Rule creation flow, users can now create an ALB, Azure Application Gateway, or AutoStopping Proxy only if the selected connector has the required granular permissions.  [CCM-21579]
+- **Perspective CSV aggregation fix:** CSV exports from Perspectives now respect the selected aggregation setting, matching the on-screen view. [CCM-20404]
 
-- Previously, the aggregation parameter was missing in the API call used to fetch the Perspective Chart CSV, causing discrepancies with the current view. This has now been fixed—CSV exports will reflect the selected aggregation, ensuring consistency with the displayed data. [CCM-20404]
-
+- **Single CCM K8s connector per CD K8s connector:** Each CD Kubernetes connector can now be linked to only **one** CCM Kubernetes connector; the UI enforces this limit during setup. [CCM-18900]
 
 ## July 2025 - Version 1.56.3
 **Deployment Date:** July 7, 2025 (Prod-1)
@@ -94,7 +90,7 @@ Harness CCM now supports OpenID Connect (OIDC) authentication for enhanced secur
 - AutoStopping
 
 ### [New Feature] Event Driven Anomaly Detection
-**[CCM-22730] | [Docs](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection`)**
+**[CCM-22730] | [Docs](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-detection-process)**
 
 CCM now provides **event-driven anomaly detection** that triggers automatically when cost data is ingested, complementing the existing scheduled anomaly detection jobs.
 
