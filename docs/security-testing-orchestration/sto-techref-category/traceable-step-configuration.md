@@ -14,12 +14,11 @@ sidebar_position: 401
 
 The Traceable step in Harness STO enables API testing by connecting with your Traceable account. Depending on your requirements, you can choose from the following three STO scan modes for Traceable step, follow the appropriate documentation for each mode.
 
-- [**Orchestration Mode**](#orchestration-mode-configuration): This mode allows you to initiate a scan within an existing Traceable suite. The scan results are then automatically saved in STO.
+- [**Orchestration Mode**](#orchestration-mode-configuration): This mode allows you to initiate a Scan Run within an existing [Traceable Scan](https://docs.traceable.ai/docs/ast-scans). The scan results are then automatically saved in STO.
 
 - [**Ingestion Mode**](#ingestion-mode-configuration): You can use Ingestion mode to read the scan results from a data file and feed them into STO. This also covers how to fetch the results from Traceable for Ingestion.
 
-- [**Extraction Mode**](#extraction-mode-configuration): Use Extraction mode to retrieve the latest scan data of a specific Traceable suite and feed the results into STO.
-
+- [**Extraction Mode**](#extraction-mode-configuration): Use Extraction mode to retrieve the latest scan data of a specific [Traceable Scan](https://docs.traceable.ai/docs/ast-scans) and feed the results into STO.
 
 :::info
 - You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
@@ -32,16 +31,16 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 :::
 
 ## Orchestration mode configuration
-The Orchestration mode in the Traceable step allows you to initiate a scan within an existing Traceable suite. In this mode, you cannot create a new suite or define the API endpoints; it is currently limited to initiating the scan and having the scan results in STO. Here's how you can do it.
+The Orchestration mode in the Traceable step allows you to initiate a scan(Scan Run in Traceable) within an existing [Traceable Scan](https://docs.traceable.ai/docs/ast-scans). In this mode, you cannot create a new Scan or define the API endpoints; it is currently limited to initiating an existing scan and having the scan results in STO. Here's how you can do it.
 
 Search for and add the **Traceable** step to your pipeline. This step can be used in either the **Build** stage or the **Security** stage. In the step configuration, set the following fields:
 
 1. **Scan Mode**: Set the **Scan Mode** to **Orchestration**.
 2. **Target**: Under **[Target](#target)**, for **[Target and Variant Detection](#target-and-variant-detection)**, it's recommended to use the **[Auto](#auto)** option. Alternatively, you can manually define **Name** and **Variant** using the **Manual** option.
 3. **Authentication**: Provide your Traceable **[Domain](#domain)** and pass your Traceable **[Access Token](#access-token)** as a Harness secret, for example: `<+secrets.getValue("traceable_api_token")>`.
-4. **Scan Tool**: Enter your **[Suite ID](#suite-id)** and configure the **[Runner Selection](#runner-selection)** field.
+4. **Scan Tool**: Enter your **[Scan Name](#scan-name)** and configure the **[Runner Selection](#runner-selection)** field.
 
-<DocImage path={require('./static/traceable-orchestration.png')} width="40%" height="40%" title="Click to view full size image" />
+<!-- <DocImage path={require('./static/traceable-orchestration.png')} width="40%" height="40%" title="Click to view full size image" /> -->
 
 These are the essential settings for performing an Orchestration scan using the Traceable step. For more features and configuration options, see the [Traceable Step Settings](#traceable-step-settings) section.
 
@@ -197,21 +196,21 @@ Search for and add the **Traceable** step to your pipeline.
 2. **Target**: Under **[Target](#target)**, for **[Target and Variant Detection](#target-and-variant-detection)**, define the **Name** and **Varient** manually.
 3. **Ingestion File**: For the field [**Ingestion File**](#ingestion-file), enter the path where the JSON scan results file is saved. In our example, if you haven’t changed the **OUTPUT_FILE** variable in the shared command, you can use `/harness/vulnerabilities.json` or specify the path you updated it to.
 
-<DocImage path={require('./static/traceable-ingestion.png')} width="40%" height="40%" title="Click to view full size image" />
+<!-- <DocImage path={require('./static/traceable-ingestion.png')} width="40%" height="40%" title="Click to view full size image" /> -->
 
 These are the essential settings for performing an Ingestion scan using the Traceable step. For more features and configuration options, see the [Traceable Step Settings](#traceable-step-settings) section.
 
 ## Extraction mode configuration
-The Extraction mode in Traceable step allows you to retrieve the latest scan data of a specific Traceable suite and feed the results into STO. Here's how you can do it.
+The Extraction mode in Traceable step allows you to retrieve the latest scan data of a specific [Traceable Scan](https://docs.traceable.ai/docs/ast-scans) and feed the results into STO. Here's how you can do it.
 
 Search for and add the **Traceable** step to your pipeline. This step can be used in either the **Build** stage or the **Security** stage. In the step configuration, set the following fields:
 
 1. **Scan Mode**: Set the **Scan Mode** to **Extraction**.
 2. **Target**: Under **[Target](#target)**, for **[Target and Variant Detection](#target-and-variant-detection)**, it's recommended to use the **[Auto](#auto)** option. Alternatively, you can manually define **Name** and **Variant** using the **Manual** option.
 3. **Authentication**: Provide your Traceable **[Domain](#domain)** and pass your Traceable **[Access Token](#access-token)** as a Harness secret, for example: `<+secrets.getValue("traceable_api_token")>`.
-4. **Scan Tool**: Enter your **[Suite ID](#suite-id)**.
+4. **Scan Tool**: Enter your **[Scan Name](#scan-name)**.
 
-<DocImage path={require('./static/traceable-extraction.png')} width="40%" height="40%" title="Click to view full size image" />
+<!-- <DocImage path={require('./static/traceable-extraction.png')} width="40%" height="40%" title="Click to view full size image" /> -->
 
 These are the essential settings for performing an Extraction scan using the Traceable step. For more features and configuration options, see the [Traceable Step Settings](#traceable-step-settings) section.
 
@@ -232,8 +231,8 @@ You can configure the details of your scan instance by setting its name and vari
 
 #### Auto
 When selected **Auto**, the step sets these values as:
-- **Name**: The Suite ID is used as the name of the target.
-- **Variant**: The Variant is set to "Instance."
+- **Name**: Uses the value specified in the [Scan Name](#scan-name) field as the target name.  
+- **Variant**: Automatically sets the scan execution timestamp as the variant.
 
 Note the following:
 - **Auto** is not available when the **Scan Mode** is Ingestion. 
@@ -264,8 +263,8 @@ You should create a Harness text secret with your encrypted token and reference 
 
 ### Scan Tool
 
-#### Suite ID
-Enter the Traceable Suite  ID, which you can find in the URL when you open your suite in Traceable. For example, in the URL `https://app.traceable.ai/my-suite/44aadeB-782b-8d52-8q12-43kdf33/vulnerabilities?time=1d&env=env`, the suite ID is `44aadeB-782b-8d52-8q12-43kdf33`. You can learn more about Suites in the [Traceable documentation](https://docs.traceable.ai/docs/suites).
+#### Scan Name
+Enter the Traceable Scan ID, which you can find in the URL when you open your Scan in Traceable. For example, in the URL `https://app.traceable.ai/my-scan/44aadeB-782b-8d52-8q12-43kdf33/vulnerabilities?time=1d&env=env`, the Scan ID is `44aadeB-782b-8d52-8q12-43kdf33`. You can learn more about Scans in the [Traceable documentation](https://docs.traceable.ai/docs/ast-scans).
 
 #### Runner Selection
 This field appears when the scan mode is set to **Orchestration**. You can allow Traceable to set it automatically by selecting **Auto**, or configure it manually by choosing **Manual**. If you select **Manual**, enter the Traceable [Runner ID](https://docs.traceable.ai/docs/runners#runner-view) in the **Runner ID** field. Also, make sure you have runners created and active in Traceable, as the step cannot create runners.
