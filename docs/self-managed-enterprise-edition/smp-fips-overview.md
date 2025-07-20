@@ -105,7 +105,7 @@ Before deploying a FIPS-compliant Kubernetes cluster, ensure the following:
 | Encryption    | Enable in-transit and at-rest encryption for workloads and volumes.            |
 | Logging       | Integrate audit logging with centralized logging systems.                      |
 
-### Enabling FIPS Mode on AWS EKS
+### Enabling FIPS on AWS EKS
 
 AWS provides different options for enabling FIPS 140-2 compliance on worker nodes. This guide walks through enabling FIPS on Amazon EKS using a FIPS-enabled AMI, setting up FIPS mode at bootstrap (if using a custom AMI), and verifying the setup.
 
