@@ -486,6 +486,12 @@ const sidebars: SidebarsConfig = {
       className: "horizontal-bar",
     },
     "continuous-integration/get-started/overview",
+    "cloud-cost-management/get-started/get-started",
+    "cloud-cost-management/get-started/get-started-linked-toc-vars",
+    "cloud-cost-management/get-started/get-started-no-post-toc",
+    "cloud-cost-management/get-started/get-started-no-pre-toc",
+    "cloud-cost-management/get-started/get-started-two-dms",
+    "cloud-cost-management/get-started/get-started-no-toc",
     "continuous-integration/get-started/key-concepts",
     "continuous-integration/get-started/onboarding-guide",
     {
