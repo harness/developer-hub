@@ -342,7 +342,7 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
 
 ### Custom Parameters 
 
-Here are the custom parameters for the Hashicorp OIDC JWT:
+Here are the custom parameters for the Hashicorp Vault OIDC JWT:
 
 - **account_id**: The account id of your Harness account.
 - **organization_id**: The organization id of your Harness organization.
