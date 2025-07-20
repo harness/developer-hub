@@ -312,6 +312,50 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
    }
    ```
 
+#### OIDC claims supported in Harness for HashiCorp Vault
+
+**Trusted Claims:**
+
+  - Harness validates the following claims internally to determine if the principal has the required permissions. When configuring trust on the Cloud Provider side, only these specific claims and their exact values should be accepted. Any claims outside this list must be rejected to avoid unauthorized access.
+    * `accountId`
+    * `organizationId`
+    * `projectIdentifier`
+    * `pipelineIdentifier`
+
+  - The following claims are also validated for existence in Harness, but do not include an access check:
+    * `environmentIdentifier`
+    * `connectorIdentifier`
+    * `serviceIdentifier`
+
+**Non-Trusted Claims**
+
+  - The following claims are considered non-trusted. They are not validated for existence or access control and are used for informational context only:
+
+    * `environmentType`
+    * `connectorName`
+    * `serviceName`
+    * `triggeredByName`
+    * `triggerByEmail`
+    * `stageType`
+    * `stepType`
+    * `context`
+
+### Custom Parameters 
+
+Here are the custom parameters for the Hashicorp OIDC JWT:
+
+- **account_id**: The account id of your Harness account.
+- **organization_id**: The organization id of your Harness organization.
+- **project_id**: The project id of your Harness project. 
+- **connector_id**: The id of the OIDC-enabled Vault connector that sent this token.
+- **connector_name**: The name of the OIDC-enabled Vault connector that sent this token.
+- **context**: This specifies the Harness context from when this OIDC token is generated. Possible values for this field are:
+  - `CONNECTOR_VALIDATION` - This context is sent when the connector is being setup.
+  - `PIPELINE_CONFIGURATION` - This context is sent when a pipeline configuration is being completed.
+  - `PIPELINE_EXECUTION` - This context is sent when a pipeline configuration is being executed.
+  - `PERPETUAL_TASK` - This context is sent when a perpetual task is executing.
+
+
 6. **Apply the Role Configuration**:  
    
    Use the following command to create the role in Vault:

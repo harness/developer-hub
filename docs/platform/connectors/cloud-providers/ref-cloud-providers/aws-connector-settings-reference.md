@@ -526,7 +526,7 @@ If the feature flag `CDS_ENABLE_PIPELINE_SCOPED_OIDC_SUB` is enabled on top of `
 
 **Trusted Claims:**
 
-  - The following claims are considered trusted and are validated for existence in Harness with access checks to ensure the principal has the required permissions:
+  - Harness validates the following claims internally to determine if the principal has the required permissions. When configuring trust on the Cloud Provider side, only these specific claims and their exact values should be accepted. Any claims outside this list must be rejected to avoid unauthorized access.
     * `accountId`
     * `organizationId`
     * `projectIdentifier`
