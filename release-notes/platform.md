@@ -149,7 +149,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New Feature and Enhancement
 
-- New audit event for Delegate token expiry: An audit event gets logged whenever an API token expires. This enhancement improves visibility and traceability of delegate token lifecycle events, supporting stronger security auditing. [PL-63995]
+- New audit event for Delegate token expiry: An audit event gets logged whenever a delegate token gets revoked. This enhancement improves visibility and traceability of delegate token lifecycle events, supporting stronger security auditing. [PL-63995]
 
 ### Version 1.96.x <!--July 08, 2025-->
 
