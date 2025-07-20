@@ -171,7 +171,7 @@ For more detailed instructions on using this for a Kubernetes infrastructure, re
     * `projectIdentifier`
     * `pipelineIdentifier`
 
-  - The following claims are also validated for existence in Harness, but do not include an access check:
+  - The following claims are validated for existence in Harness, but do not include an access check:
     * `environmentIdentifier`
     * `connectorIdentifier`
     * `serviceIdentifier`

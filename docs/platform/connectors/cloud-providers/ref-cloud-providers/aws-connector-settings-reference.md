@@ -532,7 +532,7 @@ If the feature flag `CDS_ENABLE_PIPELINE_SCOPED_OIDC_SUB` is enabled on top of `
     * `projectIdentifier`
     * `pipelineIdentifier`
 
-  - The following claims are also validated for existence in Harness, but do not include an access check:
+  - The following claims are validated for existence in Harness, but do not include an access check:
     * `environmentIdentifier`
     * `connectorIdentifier`
     * `serviceIdentifier`
