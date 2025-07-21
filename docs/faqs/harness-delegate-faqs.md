@@ -192,32 +192,20 @@ By default, the Harness Delegate uses HTTP and HTTPS in its `PROXY_SCHEME` setti
 
 ### How to Enable CPU Limit in the Delegate Helm Chart?
 
-By default, the Harness Delegate Helm chart sets a CPU **request** but does not include a CPU **limit** under the `resources` section. However, you can manually add a CPU limit by extending the `limits` block in your `values.yaml` file.
+The Harness Delegate Helm chart supports setting custom resource limits for CPU and memory. However, these configurations are commented out by default in the `values.yaml` file. 
 
-**Default snippet:**
-
-```yaml
-resources:
-  limits:
-    memory: "2048Mi"
-  requests:
-    cpu: "0.5"
-    memory: "2048Mi"
-```
-
-**Updated snippet with CPU limit:**
+To enable them, simply uncomment the `resources` block and provide your desired values, as shown in the example below.:
 
 ```yaml
 resources:
   limits:
-    cpu: "1"         # Add this line
-    memory: "2048Mi"
+    cpu: 1 
+    memory: 2048Mi 
   requests:
-    cpu: "0.5"
-    memory: "2048Mi"
+    cpu: 1
+    memory: 2048Mi
 ```
-
-This allows you to enforce a CPU cap for the delegate container, helping maintain better resource control in your cluster.
+This ensures the delegate pod is scheduled with the appropriate compute resources in your Kubernetes cluster.
 
 ## Delegate selection
 
