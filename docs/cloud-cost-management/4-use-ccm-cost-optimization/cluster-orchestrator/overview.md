@@ -14,20 +14,42 @@ Currently, this early access feature is behind a feature flag . Contact [Harness
 
 :::
 
-Harness’ Cloud Cost Management is centered on three key pillars: Cost Visibility, Cost Optimization and Cost Governance.
-Currently AutoStopping, Recommendations and Commitment Orchestrator are present under cost optimisation. Harness CCM has added Cluster Orchestrator for EKS (Beta) to enhance workload-driven autoscaling and intelligent management of AWS Spot instances, contributing to overall cost efficiency. 
+Harness’ Cloud Cost Management (CCM) is built on three pillars: **Cost Visibility**, **Cost Optimization**, and **Cost Governance**.
+Within the Cost Optimization pillar, **Cluster Orchestrator for Amazon EKS (Beta)** adds a next-generation, Karpenter-based autoscaling and scheduling engine that balances cost and performance across Spot, On-Demand, and committed capacity.
 
-## AWS Spot Instances and challenges 
+## Harness CCM Cluster Orchestrator for Amazon Elastic Kubernetes Service (EKS)
 
-Amazon EC2 provides a range of purchase options catering to diverse computing needs, including On-Demand Instances, Reserved Instances, and Spot Instances. While On-Demand Instances offer flexibility with pay-as-you-go pricing, Reserved Instances provide significant cost savings with long-term commitments. Spot Instances, on the other hand, allow users to bid for unused EC2 capacity at lower prices, making them ideal for fault-tolerant, flexible and stateless workloads. However, Spot Instances come with challenges such as potential interruptions and the risk of termination within just 2 minutes of a notice if capacity becomes unavailable.
+The **Harness Cluster Orchestrator** is an extension to EKS that dynamically provisions the optimal mix of Spot, On-Demand, and committed capacity, guided by real-time workload demand and business constraints. Powered by Karpenter, it:
 
-<DocImage path={require('./static/aws-pricing.png')} width="70%" height="70%" title="Click to view full size image" />
+* Launches exactly-right nodes in seconds; no warm buffer required.
+* Packs pods tightly using sophisticated bin-packing algorithms and disruption budgets.
+* Automatically shifts workloads between Spot and On-Demand capacity with predictive fallback and reverse-fallback.
+* Prioritises pre-purchased Reserved Instances and Savings Plans to maximise commitment utilisation.
+* Surfaces detailed, per-workload cost metrics directly in CCM Perspectives.
 
-## Harness Cluster Orchestrator for Amazon Elastic Kubernetes Service (EKS)
+Combined, these capabilities can drive **up to 90 % cost savings** while maintaining application reliability.
 
-The **Harness Cluster Orchestrator** for Amazon Elastic Kubernetes Service (EKS), a component of the Harness Cloud Cost Management (CCM) module, is designed to tackle the obstacles listed above. It **intelligently scales EKS cluster nodes** according to actual workload requirements. Additionally, by leveraging CCM's **distributed Spot orchestration capability**, you can **save up to 90% on cloud costs** with Amazon EC2 Spot Instances.
+### Key capabilities at a glance
 
-It also facilitates **workload-driven autoscaling**, dynamically adjusting cluster resources to match workload demands while optimizing the utilization of AWS Spot instances. This approach ensures **efficient resource allocation** and **cost-effective cluster management**. Harness' Cluster Orchestrator for Amazon EKS **distinguishes itself** from other solutions in the market because of additional features like **distributed spot orchestration**.
+- **Karpenter-based autoscaling** with quick, one-click migration for existing Karpenter users.
+- **Advanced bin-packing & replacement schedules** to maximise node utilisation without over-provisioning.
+- **Node- and workload-level Spot/On-Demand distribution** with automated fallback and reverse-fallback logic.
+- **Commitment-aware scheduling** that leverages Reserved Instances and Savings Plans before purchasing new capacity.
+- **True workload cost attribution** and real-time cost tracking in CCM Perspectives.
+
+## Key challenges solved
+
+Harness Cluster Orchestrator tackles the most common obstacles teams face when running production workloads on EKS:
+
+| Challenge | How Harness CCM Cluster Orchestrator solves it |
+|-----------|------------------------------------|
+| Unpredictable Spot interruptions | Automated fallback & reverse-fallback seamlessly migrate workloads between Spot and On-Demand with minimal disruption while maintaining high cost-savings. |
+| Idle or over-provisioned nodes | Advanced bin-packing and replacement schedules right-size the cluster continuously, eliminating waste. |
+| Slow, manual scaling | Karpenter-based engine launches exactly right nodes based on unscheduled pod resources in few seconds. |
+| Under-utilised Reserved Instances / Savings Plans | Commitment-aware scheduling preferentially lands workloads on already-paid capacity before adding new compute. |
+| Complex multi-workload requirements | NodePools & NodeClasses let you define granular capacity profiles and workload placement rules. |
+| Limited cost visibility | Per-workload, Per-namespace, per-node, etc. cost metrics are surfaced in CCM Perspectives for true-up and showback. |
+
 
 ## AWS Service Ready Partner
 
