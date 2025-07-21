@@ -5,7 +5,31 @@ sidebar_label: Security scanners
 sidebar_position: 02
 ---
 
-The following is the list of scanners supported by STO, you can view them by scan type
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Harness STO supports over 40 security scanners, they are categorized as follows:
+
+- **[Harness Security Scanners](#harness-security-scanners)**: Scanners developed and maintained directly by Harness.
+- **[Third-Party Scanners](#third-party-scanners)**: External scanners integrated into the Harness platform, not developed by Harness  
+    - **Open-Source Scanners**: A subset of third-party scanners that are open-source.
+- **[Built-in Scanner Steps](/docs/security-testing-orchestration/set-up-scans/built-in-scanners)**: Built by Harness, pre-configured open-source scanner steps that automatically set up scanner settings without the need of commercial license. For a complete guide, see [Built-in Scanners](/docs/security-testing-orchestration/set-up-scans/built-in-scanners).
+
+For a comprehensive list of all scanners, you can view them by **[Scan Type](#third-party-scanners)** or **[Target Type](#third-party-scanners)** further down this page.
+
+### Harness Security Scanners
+Harness is expanding its native security scanning capabilities. These scanners are developed and maintained directly by Harness.
+
+- **API DAST**(*previously Traceable*): A Dynamic Application Security Testing Solution for your APIs. This was formerly known as the Traceable API DAST scanner.
+
+### Third-Party Scanners
+The following are the list of third-party scanners that are categorized by **Scan Type** and **Target Type**. The list includes both commercial and open-source scanners.
+
+<Tabs queryString="view-by">
+
+<TabItem value="scan-type" label="Scan Type" default>
+
+Here are the list of scanners supported by STO by scan type.
 
 - [Static Application Security Testing - SAST Scanners](#static-application-security-testing---sast-scanners)
 - [Secret Detection Scanners](#secret-detection-scanners)
@@ -61,6 +85,24 @@ Infrastructure as Code (IaC) scanning is a security testing practice that analyz
 import IacScanners from '/docs/security-testing-orchestration/set-up-scans/shared/iac-scanners.md';
 
 <IacScanners />
+
+---
+
+</TabItem>
+
+<TabItem value="target-type" label="Target Type">
+
+import StoSupportedScanners from '/docs/security-testing-orchestration/sto-techref-category/shared/sto-supported-scanners.md';
+
+<StoSupportedScanners />
+
+
+
+---
+</TabItem>
+
+</Tabs>
+
 
 ### Scanners supported with Custom Scan step
 
