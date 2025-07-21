@@ -414,13 +414,13 @@ The setup is cloud-agnostic and works across providers by adjusting the storage 
 
       ```bash
       NAME                                  READY   STATUS    RESTARTS   AGE
-      pl-50649-delegate-568c6c98b9-kjshd    1/1     Running   0          2m
+      delegate-ephemeral-storage            1/1     Running   0          2m
       ```
 
    - Describe the Pod
 
       ```bash
-      kubectl describe pod pl-50649-delegate-568c6c98b9-kjshd -n harness-delegate-ng
+      kubectl describe pod delegate-ephemeral-storage -n harness-delegate-ng
       ```   
 
       Look for the similar section below in your output
@@ -429,7 +429,7 @@ The setup is cloud-agnostic and works across providers by adjusting the storage 
       Volumes:
       scratch-volume:
          Type:       PersistentVolumeClaim (a reference to a PVC)
-         ClaimName:  scratch-volume-pl-50649-delegate-568c6c98b9-kjshd
+         ClaimName:  scratch-volume-delegate-ephemeral-storage
          ReadOnly:   false
 
       Mounts:
