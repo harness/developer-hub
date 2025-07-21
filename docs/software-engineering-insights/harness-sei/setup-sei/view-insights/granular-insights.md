@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-To get more granular insights, you can drill down into specific [teams](../setup-teams) within an [Org Tree](../configure-integrations) and apply team-specific settings.
+To get more granular insights, you can drill down into specific [teams](../setup-teams) within an [Org Tree](../setup-org-tree) and apply team-specific settings.
 
 ## Viewing insights for a specific team after applying team settings
 
