@@ -71,7 +71,63 @@ Irrespective of the model, the architecture is divided into two parts.
 1. **The Control Plane** that is part of the Harness Platform that is responsible for orchestrating, managing, and controlling the execution of chaos experiments.
 2. **The Execution Plane** that resides in the enterprise's private or public network where chaos experiments are executed. It consists of the infrastructure where faults are injected and tested.
 
-An enterprise typically consists of one chaos control plane and one or more chaos execution planes. The diagrams below describe different deployment models. 
+An enterprise typically consists of one chaos control plane and one or more chaos execution planes. The diagrams below describe different deployment models.
+
+### Connectivity Requirements
+
+Harness Chaos Engineering uses outbound HTTPS connections over port 443 for all communication between your infrastructure and the Harness control plane. **No inbound ports need to be opened** in your network.
+
+![Connectivity Requirements](./static/key-concepts/architecture/connectivity-requirements.png)
+
+#### Network Architecture
+
+**Chaos Agents**
+
+Target resources for chaos experiments are reached through different agent types:
+- **Harness Delegate (Kubernetes Chaos Agent)**: Manages Kubernetes-based experiments and cloud provider resources
+- **Linux Chaos Agent**: Executes experiments directly on Linux hosts and applications
+- **Windows Chaos Agent**: Executes experiments directly on Windows hosts and applications
+
+All agents communicate with the Harness control plane via outgoing port 443 - **no inbound port 443 needs to be opened**.
+
+**Chaos Experiment Results Flow**
+
+Results are sent directly to the Harness control plane via different paths:
+- **Linux/Windows targets**: Results sent directly to port 443 of Harness control plane
+- **Kubernetes application experiments**: Results sent directly to port 443 (do not go through Harness Delegate)
+- **VMware, serverless functions, cloud provider resources**: Results sent to port 443 via the Harness Delegate
+
+All communication flows outbound from your infrastructure to `app.harness.io:443` using HTTPS.
+
+#### Port Requirements
+
+**Required Outbound Access**
+
+| From | To | Port | Protocol | Purpose |
+|------|----|----- |----------|----------|
+| Harness Delegate | app.harness.io:443 | 443 | HTTPS | New TCP connection requests |
+| Linux VM/Windows VM | app.harness.io:443 | 443 | HTTPS | Keep alive packets, chaos experiment results |
+| Kubernetes Clusters | app.harness.io:443 | 443 | HTTPS | Chaos experiment results |
+
+**Data Types Transmitted**
+
+The following data is transmitted over port 443:
+
+| Component | Data Type | Description |
+|-----------|-----------|-------------|
+| Linux/Windows VMs | Keep alive packets | Maintains connection with control plane |
+| Linux/Windows VMs | Chaos experiment results | Results sent directly to control plane |
+| Harness Delegate | Connection requests | Initial connection establishment |
+| Harness Delegate | VMware/Cloud results | Results from VMware, serverless, cloud provider experiments |
+| Kubernetes Clusters | Application results | Results sent directly to control plane (bypass Delegate) |
+
+#### Firewall Configuration
+
+**Required Outbound Rules**
+
+Ensure your firewall allows outbound HTTPS traffic on port 443 to:
+- `app.harness.io` (primary endpoint)
+- `*.harness.io` (for additional Harness services)
 
 ### Deployment models
 
