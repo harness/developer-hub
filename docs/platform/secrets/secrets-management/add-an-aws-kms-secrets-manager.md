@@ -16,106 +16,142 @@ import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 
 This topic describes how to add an AWS KMS Secret Manager in Harness.
 
-### Before you begin
+### Prerequisites
 
 * [Harness' key concepts](/docs/platform/get-started/key-concepts.md)
 * [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 * [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 
+Before you begin, make sure you have a Harness Project set up. If not, follow the steps in [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md). You can create a Connector from any module within your Project, or from the Organization or Account level.
 
-### Step 1: Add a Secret Manager
+### 1: Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, go to[Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
+Navigate to **Settings** → **Account-level resources** → **Connectors** and click **New Connector**.
 
-You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
+Then, go to **Secret Managers** and select **AWS KMS**. 
 
-In **Connectors**, select **Connector**.
+### 2: Overview
 
-In **Secret Managers**, select **AWS KMS**. The **AWS Key Management Service** settings appear.
+- Enter a **Name** for your secret manager.
+
+        > You can either update the **ID** or leave it the same as your secret manager's name. For more information, see [Entity Identifier Reference](../../references/entity-identifier-reference.md).
+
+- (Optional) Enter a **Description** and **Tags** for your secret manager.
+
+- Select **Continue**.
 
 ![](../../secrets/static/add-an-aws-kms-secrets-manager-53.png)
 
-### Step 2: Overview
+### 3: Details
 
-Enter a **Name** for your secret manager.
+Select the Credential Type. There are four ways to authenticate with AWS, as shown below:
 
-You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../references/entity-identifier-reference.md).
+- [**AWS Access Key.**](#option-1-aws-access-key)
+- [**Assume IAM role on Delegate.**](#option-2-assume-iam-role-on-delegate)
+- [**Assume Role using STS on Delegate.**](#option-3-assume-role-using-sts-on-delegate)
+- [**Use OIDC**](#option-4-oidc---openid-connect)
 
-Enter a **Description** for your secret manager.
-
-Enter **Tags** for your secret manager.
-
-Select **Continue**.
-
-### Option: Credential Type
-
-You can select the following options for authenticating with AWS:
-
-1. **AWS Access Key.**
-2. **Assume IAM role on delegate.**
-3. **Assume Role using STS on delegate.**
-4. **OIDC**
-
-### Option: AWS Access Key
+### Option 1: AWS Access Key
 
 Use your AWS IAM user login credentials.
 
-Either from the JSON for the **Key Policy**, or in the AWS **IAM** console, under **Encryption keys,** gather the **AWS Access Key ID**, **AWS Secret Key**, and **Amazon Resource Name (ARN)**.
+:::tip 
+You can get the **AWS Access Key ID**, **AWS Secret Key**, and **Amazon Resource Name (ARN)** either from the **Key Policy** JSON or from the AWS **IAM** console under **Encryption keys**.
+:::
 
 ![](../../secrets/static/add-an-aws-kms-secrets-manager-54.png)
-For more information, go to [Finding the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn) from Amazon.
 
-#### 1. AWS Access Key ID
+For more information, refer to the AWS guide on [viewing the Key ID and ARN](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn)
 
-Select **Create or Select a Secret**.
+    - **AWS Access Key ID**
 
-In the secret settings dialog, you can create/select a [Secret](/docs/platform/secrets/add-use-text-secrets) and enter your AWS Access Key as it's value.
+        - Select **Create or Select a Secret**.
 
-The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to secret manager.
+        - In the secret settings dialog, you can create or select a [Secret](/docs/platform/secrets/add-use-text-secrets) and enter your AWS Access Key as its value.
 
-#### AWS Secret Access Key
+            :::info
+            - The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to secret manager.
+            :::
 
-Select **Create or Select a Secret**.
+    - **AWS Secret Access Key**
 
-You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your Access Key ID's secret key as the **Secret Value**, or use an existing secret.
+        - Select **Create or Select a Secret**.
 
-#### AWS ARN
+        - You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your Access Key ID's secret key as the **Secret Value**, or use an existing secret.
 
-Select **Create or Select a Secret**.
+    - **AWS ARN**
 
-As explained above, you can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
+        ![arn](../static/plaintext-encrypted.png)
 
-### 2. Assume IAM Role on Delegate
+        You can set your AWS ARN using one of the following options:
+
+            - **Plain Text**: Recommended when the ARN is not considered sensitive.
+
+            - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
+                
+                - Select **Create or Select a Secret**.
+
+                - As explained above, you can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
+
+### Option 2: Assume IAM Role on Delegate
 
 If you select **Assume the IAM Role on Delegate** Harness will authenticate using the IAM role assigned to the AWS host running the Delegate, you select using a Delegate Selector.
 
-### 3. Assume Role using STS on Delegate
+- In the **AWS ARN** field, you can set your ARN using one of the following options:
+
+    ![](../static/iam-role-del.png)
+
+    - **Plain Text**: Recommended when the ARN is not considered sensitive.
+
+    - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
+                
+        - Select **Create or Select a Secret**.
+
+        - As explained above, you can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
+
+- Select the **Region**, then click **Continue**.
+
+### Option 3: Assume Role using STS on Delegate
 
 This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. Typically, you use `AssumeRole` within your account or for AWS cross-account access.
 
-#### Role ARN
+    - **AWS ARN**: you can set your ARN using one of the following options:
 
-Enter the Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target deployment AWS account.
+        ![](../static/role-using-sts.png)
 
-#### External ID
+        - **Plain Text**: Recommended when the ARN is not considered sensitive. 
 
-If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
+        - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
+                
+            - Select **Create or Select a Secret**.
 
-For more information, go to [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) from AWS.
+            - As explained above, you can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
 
-#### Assume Role Duration (seconds)
+    - **Region**: select your AWS region.
 
-This is the AssumeRole Session Duration. Go to Session Duration in the[AssumeRole AWS docs](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).
+    - **Role ARN**: Enter the Amazon Resource Name (ARN) of the role that you want to assume. This is an IAM role in the target deployment AWS account.
 
+    - **External ID**: If the administrator of the account to which the role belongs provided you with an external ID, then enter that value. For more information, see [How to Use an External ID When Granting Access to Your AWS Resources to a Third Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) in the AWS documentation.
 
-### 4. OIDC - OpenID Connect.
+    - **Assume Role Duration (seconds)**: This field sets the AssumeRole session duration. For more details, see [Session Duration](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html) in the AWS AssumeRole documentation.
+.
+
+### Option 4: OIDC - OpenID Connect.
 
  This option uses OpenID Connect (OIDC) to authenticate and authorize users. This option is commonly used for secure identity federation across different applications or cloud platforms, enabling seamless authentication and access management.
 
- ![odic-aws-kms](../../secrets/static/odic-aws-kms.png)
+    - **AWS ARN**: you can set your ARN using one of the following options:
 
-- **Role ARN**: Enter the Amazon Resource Name (ARN) of the role you want to assume.  
-- **Region and IAM Role**: Once your configuration is complete, set the IAM role and region below to proceed with the setup, as shown in the image above.
+        ![odic-aws-kms](../../secrets/static/odic-aws-kms.png)
+
+        - **Plain Text**: Recommended when the ARN is not considered sensitive. 
+
+        - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
+                
+            - Select **Create or Select a Secret**.
+
+            - As explained above, you can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
+    - **Region and IAM Role**: Once your configuration is complete, set the IAM role and region below to proceed with the setup, as shown in the image above.
 
 <details>
     <summary>An additional step before proceeding.</summary>
@@ -126,13 +162,13 @@ This is the AssumeRole Session Duration. Go to Session Duration in the[AssumeRol
 
     Once you have selected OIDC, you will be able to select **connectivity mode**, based on the requirement you can select the provider that can be either connect through a **delegate** or through **Harness platform**. 
         
-    ![connetivity-mode](../../secrets/static/oidc-connectivity-mode.png)          
+![connectivity-mode](../../secrets/static/oidc-connectivity-mode.png)          
 </details>
 
-### Step 3: Setup Delegates
+### 3: Setup Delegates
 
 In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Select **Save and Continue**.
 
-### Step 4: Test Connection
+### 4: Test Connection
 
 In **Connection** **Test**, select **Finish** after your connection is successful.
