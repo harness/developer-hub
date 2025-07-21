@@ -1,6 +1,6 @@
 ---
-title: Developer Form to Catalog-Ready Service: Automating Java Onboarding in Harness IDP
-description: End-to-end guide for Platform Engineers and Developers to onboard Java services into the Internal Developer Portal (IDP) using Harness pipelines and workflows.
+title: "Developer Form to Catalog-Ready Service: Automating Java Onboarding in Harness IDP"
+description: "End-to-end guide for Platform Engineers and Developers to onboard Java services into the Internal Developer Portal (IDP) using Harness pipelines and workflows."
 sidebar_position: 1
 tags:
   - Harness IDP
