@@ -194,7 +194,7 @@ By default, the Harness Delegate uses HTTP and HTTPS in its `PROXY_SCHEME` setti
 
 The Harness Delegate Helm chart supports setting custom resource limits for CPU and memory. However, these configurations are commented out by default in the `values.yaml` file. 
 
-To enable them, simply uncomment the `resources` block and provide your desired values, as shown in the example below.:
+To enable them, simply uncomment the `resources` block and provide your desired values, as shown in the example below:
 
 ```yaml
 resources:
