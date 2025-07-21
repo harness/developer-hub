@@ -369,7 +369,7 @@ The setup is cloud-agnostic and works across providers by adjusting the storage 
                storageClassName: "<YOUR-STORAGE-CLASS>"
                resources:
                   requests:
-                  storage: 3Gi
+                  storage: <STORAGE-SIZE>
    ```
 
    :::note
