@@ -248,9 +248,7 @@ function updateTocHTML( mdToc: TOCItem[] ) {
 
   // clear TOC items (remove all children)
   pgToc.innerHTML = '';
-  pgToc.removeAttribute('hidden');
   
-  if( mdToc.length == 0 ) pgToc.setAttribute('hidden', '');  // this removes the left border (vertical line)
 
   while( mdTocIndex < mdToc.length ){
 
