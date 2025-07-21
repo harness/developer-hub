@@ -91,7 +91,12 @@ To enable access:
 - You can also list specific paths. Subdirectories are supported using a trailing slash (e.g., `/exampledir/` allows `/exampledir/example`).
 
 Make sure the host or path for your OpenAPI spec is included in this list to allow successful API documentation import.
+:::
 
+
+:::caution
+API entity creation in IDP 2.0 currently supports OpenAPI specifications referenced via **absolute URLs** (e.g., `https://raw.githubusercontent.com/org/repo/main/openapi.yaml`) in the `definition.$text` field.
+Support for relative paths (e.g., `./openapi.yaml`, `../api.json`) is planned but not yet available. To ensure proper API documentation rendering, please ensure the domain is added to the **Backend URL Allow List** under *Configuration > URL Allow List*.
 :::
 
 
@@ -114,7 +119,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://<absolute-url-to-openapi-spec-file>/petstore.oas.yaml
 metadata:
   description: The petstore API
   links:
@@ -152,7 +157,7 @@ spec:
   lifecycle: dev
   owner: Harness_Partners
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://<absolute-url-to-openapi-spec-file>/petstore.oas.yaml
 ```
 </TabItem>
 </Tabs>
@@ -334,7 +339,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://<absolute-url-to-openapi-spec-file>/petstore.oas.yaml
 metadata:
   description: The petstore API
   links:
@@ -392,7 +397,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://<absolute-url-to-openapi-spec-file>/petstore.oas.yaml
 metadata:
   description: The petstore API
   links:
@@ -431,7 +436,7 @@ spec:
   lifecycle: dev
   owner: Harness_Partners
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://<absolute-url-to-openapi-spec-file>/petstore.oas.yaml
 
 ```
 </TabItem>

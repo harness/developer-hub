@@ -289,7 +289,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: ./petstore.oas.yaml
+    $text: https://<absolute-url-to-openapi-spec-file>/petstore.oas.yaml
 metadata:
   description: The petstore API
   links:
