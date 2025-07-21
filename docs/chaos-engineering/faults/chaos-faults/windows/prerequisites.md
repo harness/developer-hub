@@ -2,7 +2,7 @@
 id: prerequisites
 title: Prerequisites
 sidebar_position: 1
-redirects_from:
+redirect_from:
 - /docs/chaos-engineering/chaos-faults/windows/prerequisites
 ---
 

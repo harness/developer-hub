@@ -2,7 +2,7 @@
 title: Incident Management Best Practices
 sidebar_label: Best Practices
 description: Incident Management Best Practices
-redirects_from:
+redirect_from:
 - /docs/incident-response/resources/ai-sre-best-practices
 ---
 

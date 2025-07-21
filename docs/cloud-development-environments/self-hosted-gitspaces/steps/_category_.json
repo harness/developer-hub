@@ -1,0 +1,14 @@
+{
+  "label": "Configure Self-Hosted Gitspaces",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "cloud-development-environments/self-hosted-gitspaces/steps/index"
+  },
+  "customProps": {
+    "title": "Configure Self-Hosted Gitspaces",
+    "description": "Learn how to configure and set up Self-Hosted GitSpaces in your environment, including infrastructure setup, Terraform module configuration, and Runner/Delegate setup."
+  }
+}

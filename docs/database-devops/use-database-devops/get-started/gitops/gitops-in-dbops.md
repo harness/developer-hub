@@ -41,12 +41,11 @@ By integrating GitOps into your database lifecycle, you gain traceability, audit
 When adopting GitOps for database management, two primary branching strategies are commonly used:
 
 1. **Environment-by-Branch**  
-   Each environment (e.g., dev, staging, prod) has a dedicated Git branch. Changes are promoted by merging from lower to higher environments.  
+   Each environment (e.g., dev, staging, prod) has a dedicated Git branch. Changes are promoted by merging from lower to higher environments. → [Learn more](./environment-based-development.md)
 
 2. **Trunk-Based Development**  
-   A single mainline branch (e.g., `main` or `trunk`) is used, with pipelines or metadata controlling environment-specific behavior.  
-   → [Learn more](./gitops/trunk-based-development.md)
+   A single mainline branch (e.g., `main` or `trunk`) is used, with pipelines or metadata controlling environment-specific behavior. → [Learn more](./trunk-based-development.md)
 
-::: tip  
-> If you're not currently using a GitOps-based branching approach, Harness recommends adopting **trunk-based development**. It simplifies change management, accelerates delivery, and aligns well with modern CI/CD and database promotion workflows.
+:::note tip  
+If you're not currently using a GitOps-based branching approach, Harness recommends adopting **trunk-based development**. It simplifies change management, accelerates delivery, and aligns well with modern CI/CD and database promotion workflows.
 :::
