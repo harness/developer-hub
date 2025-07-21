@@ -73,69 +73,13 @@ Irrespective of the model, the architecture is divided into two parts.
 
 An enterprise typically consists of one chaos control plane and one or more chaos execution planes. The diagrams below describe different deployment models.
 
-### Connectivity Requirements
-
-Harness Chaos Engineering uses outbound HTTPS connections over port 443 for all communication between your infrastructure and the Harness control plane. **No inbound ports need to be opened** in your network.
-
-![Connectivity Requirements](./static/key-concepts/architecture/connectivity-requirements.png)
-
-#### Network Architecture
-
-**Chaos Agents**
-
-Target resources for chaos experiments are reached through different agent types:
-- **Harness Delegate (Kubernetes Chaos Agent)**: Manages Kubernetes-based experiments and cloud provider resources
-- **Linux Chaos Agent**: Executes experiments directly on Linux hosts and applications
-- **Windows Chaos Agent**: Executes experiments directly on Windows hosts and applications
-
-All agents communicate with the Harness control plane via outgoing port 443 - **no inbound port 443 needs to be opened**.
-
-**Chaos Experiment Results Flow**
-
-Results are sent directly to the Harness control plane via different paths:
-- **Linux/Windows targets**: Results sent directly to port 443 of Harness control plane
-- **Kubernetes application experiments**: Results sent directly to port 443 (do not go through Harness Delegate)
-- **VMware, serverless functions, cloud provider resources**: Results sent to port 443 via the Harness Delegate
-
-All communication flows outbound from your infrastructure to `app.harness.io:443` using HTTPS.
-
-#### Port Requirements
-
-**Required Outbound Access**
-
-| From | To | Port | Protocol | Purpose |
-|------|----|----- |----------|----------|
-| Harness Delegate | app.harness.io:443 | 443 | HTTPS | New TCP connection requests |
-| Linux VM/Windows VM | app.harness.io:443 | 443 | HTTPS | Keep alive packets, chaos experiment results |
-| Kubernetes Clusters | app.harness.io:443 | 443 | HTTPS | Chaos experiment results |
-
-**Data Types Transmitted**
-
-The following data is transmitted over port 443:
-
-| Component | Data Type | Description |
-|-----------|-----------|-------------|
-| Linux/Windows VMs | Keep alive packets | Maintains connection with control plane |
-| Linux/Windows VMs | Chaos experiment results | Results sent directly to control plane |
-| Harness Delegate | Connection requests | Initial connection establishment |
-| Harness Delegate | VMware/Cloud results | Results from VMware, serverless, cloud provider experiments |
-| Kubernetes Clusters | Application results | Results sent directly to control plane (bypass Delegate) |
-
-#### Firewall Configuration
-
-**Required Outbound Rules**
-
-Ensure your firewall allows outbound HTTPS traffic on port 443 to:
-- `app.harness.io` (primary endpoint)
-- `*.harness.io` (for additional Harness services)
-
 ### Deployment models
 
 ![SaaS-and-SMP model of deployment of Harness Chaos Engineering](./static/key-concepts/architecture/saas-vs-onprem.png)
 
 --- 
 
-### Execution plane
+### Chaos Execution plane
 The execution plane consists of a logical group of components that reside in the customer's network responsible for running chaos experiments. Some of these components are long running and others are spawned dynamically at run time (of the chaos experiment). The chaos experiments are executed on the target resources by a chaos agent residing on the target or by the Harness delegate residing in the customer network.
 
 #### Agentless model
@@ -170,7 +114,8 @@ The following table provides different agent types and corresponding target reso
 
 ---
 
-### Features of Control Plane
+### Chaos Control Plane
+
 The control plane in Harness Chaos Engineering consists of various components that helps connect the targets to Harness, create chaos experiments, set up RBACs, set up governance and orchestrate the chaos experiments. Some of the key features of the control plane are described below.
 
 #### Chaos Services
@@ -234,36 +179,50 @@ Once the chaos experiments are created using a chaos studio, they are available 
 
 ---
 
+### Connectivity Requirements
+
+Harness Chaos Engineering uses outbound HTTPS connections over port 443 for all communication between your infrastructure and the Harness control plane. **No inbound ports need to be opened** in your network.
+
+![Connectivity Requirements](./static/key-concepts/architecture/connectivity-requirements.png)
+
+**Required Outbound Access**
+
+| From | To | Type of Data Out (Customer Premise to Harness) | Type of Connection |
+|------|----|-------------------------------------------------|--------------------|
+| Linux VM / Windows VM | app.harness.io:443 | New TCP connection request, Keep alive packets on the TCP connection | HTTPS |
+| Harness Delegate on Kubernetes | app.harness.io:443 | Chaos experiment results from VMware, cloud provider resources | HTTPS |
+| Linux VM / Windows VM | app.harness.io:443 | Chaos experiment results | HTTPS |
+| Harness Delegate on Kubernetes | app.harness.io:443 | New TCP connection request, Keep alive packets on the TCP connection | HTTPS |
+| Applications on Kubernetes | app.harness.io:443 | Chaos experiment results | HTTPS |
+
+Target resources for chaos experiments are reached through different agent types:
+- **Harness Delegate (Kubernetes Chaos Agent)**: Manages Kubernetes-based experiments and cloud provider resources
+- **Linux Chaos Agent**: Executes experiments directly on Linux hosts and applications
+- **Windows Chaos Agent**: Executes experiments directly on Windows hosts and applications
+
+All agents communicate with the Harness control plane via outgoing port 443 - **no inbound port 443 needs to be opened**.
+
+**Chaos Experiment Results Flow**
+
+Results are sent directly to the Harness control plane via different paths:
+- **Linux/Windows targets**: Results sent directly to port 443 of Harness control plane
+- **Kubernetes application experiments**: Results sent directly to port 443 (do not go through Harness Delegate)
+- **VMware, serverless functions, cloud provider resources**: Results sent to port 443 via the Harness Delegate
+
+All communication flows outbound from your infrastructure to `app.harness.io:443` using HTTPS.
+
+#### Firewall Configuration
+
+**Required Outbound Rules**
+
+Ensure your firewall allows outbound HTTPS traffic on port 443 to:
+- `app.harness.io` (primary endpoint)
+- `*.harness.io` (for additional Harness services)
+
 ### Scaling Harness Chaos Engineering
 For the Kubernetes targets - it is easier to onboard chaos capabilities to your applications on a new Kubernetes cluster using the agentless model. Once the [Harness delegate is deployed and configured](/docs/platform/delegates/delegate-concepts/delegate-overview#install-a-delegate), you can onboard chaos to a new Kubernetes cluster by [adding a connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) and running an automated chaos onboarding wizard that discovers the resources and creates initial set of chaos experiments. 
 
 ![Scaling with Harness Chaos Engineering](./static/key-concepts/architecture/scalingchaos.png)
-
-### Key Components
-
-#### Chaos Infrastructure
-A logical group of components in your network responsible for:
-- Executing chaos experiments on target resources
-- Communicating with the Control Plane
-- Managing experiment lifecycle and results
-
-**Types**:
-- **Kubernetes Infrastructure**: For container-based applications
-- **Linux Infrastructure**: For traditional server environments
-- **Dedicated vs Harness Delegate**: Different deployment models
-
-#### ChaosHub
-A repository of chaos experiment templates and faults:
-- **Enterprise ChaosHub**: Harness-provided hub with 200+ pre-built faults
-- **Custom ChaosHub**: Organization-specific experiment templates
-- **Fault Categories**: Organized by platform (AWS, Kubernetes, Linux, etc.)
-
-#### Resilience Probes
-Pluggable health checkers that validate experiment outcomes:
-- **HTTP Probes**: Check service availability via HTTP requests
-- **Command Probes**: Execute custom commands to validate system state
-- **Kubernetes Probes**: Check pod/service status in Kubernetes
-- **Prometheus Probes**: Query metrics from Prometheus
 
 ## Chaos Experiment Workflow
 
