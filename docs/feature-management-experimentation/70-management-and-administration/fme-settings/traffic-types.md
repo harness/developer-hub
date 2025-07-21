@@ -49,7 +49,7 @@ To create traffic types, do the following:
 5. Enter a name and click **Save**. A new traffic type is created.
 
 :::note
-Once a traffic type is created with a specific traffic type, it cannot be edited. This is intentional to prevent your experiment data from being mixed across different traffic types, which could skew your results.
+Once a feature flag is created with a specific traffic type, it cannot be edited. This is intentional to prevent your experiment data from being mixed across different traffic types, which could skew your results.
 
 To change a traffic type, create a feature flag with the appropriate traffic type.
 :::
