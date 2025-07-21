@@ -344,6 +344,102 @@ To install a delegate, do the following:
 </TabItem>
 </Tabs>
 
+## Setting Up Ephemeral Storage in Delegate Helm Charts
+
+To manage temporary disk space more effectively, you can configure ephemeral storage for the Harness Delegate using Helm charts. This guide outlines the steps to define custom volumes and apply the configuration during Helm installation, adaptable to any cloud environment based on your storage class settings.
+
+1. Create a `values.yaml file` and add the following configuration to it.
+
+   ```yaml
+      custom_mounts:
+      - mountPath: "/scratch"
+         name: scratch-volume
+
+      custom_volumes:
+      - name: scratch-volume
+         ephemeral:
+            volumeClaimTemplate:
+            metadata:
+               labels:
+                  type: my-frontend-volume
+            spec:
+               accessModes: [ "ReadWriteOnce" ]
+               storageClassName: "<YOUR-STORAGE-CLASS>"
+               resources:
+                  requests:
+                  storage: 3Gi
+   ```
+
+   :::note
+      Define your `storageClassName` based on your cloud provider, as it may vary. You can use the following command to list available storage classes:
+
+      ```bash
+      kubectl get storageclass
+      ```
+
+      Output:
+
+      ```bash
+      NAME                PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+      standard (default)  kubernetes.io/gce-pd    Delete          Immediate           true                    45d
+      premium-rwo         pd.csi.storage.gke.io   Delete          WaitForFirstConsumer true                   20d
+      ```
+   :::
+
+2. Install the Helm chart to apply the changes. You can refer to the example below, which uses the `values.yaml` configuration file during installation:
+
+   ```yaml
+      helm upgrade -i harness-del-storage --namespace harness-delegate-ng --create-namespace \
+      harness-delegate/harness-delegate-ng \
+      --set delegateName=harness-del-storage \
+      --set accountId=XXXXXXXXXXXXXXXX \
+      --set delegateToken=XXXXXXXXXXXXXXXXXXXXXX \
+      --set managerEndpoint=https://<YOUR-URL.harness.io> \
+      --set delegateDockerImage=us-west1-docker.pkg.dev/gar-setup/docker/delegate:25.07.86300 \
+      --set replicas=1 --set upgrader.enabled=true \
+      -f values.yaml
+   ```
+
+3. Verify your storage. 
+
+   - Get the Pod Name
+      
+      ```bash
+      kubectl get pods -n harness-delegate-ng
+      ```
+
+      Output:
+
+      ```bash
+      NAME                                  READY   STATUS    RESTARTS   AGE
+      pl-50649-delegate-568c6c98b9-kjshd    1/1     Running   0          2m
+      ```
+
+   - Describe the Pod
+
+      ```bash
+      kubectl describe pod pl-50649-delegate-568c6c98b9-kjshd -n harness-delegate-ng
+      ```   
+
+      Look for the similar section below in your output
+
+      ```bash
+      Volumes:
+      scratch-volume:
+         Type:       PersistentVolumeClaim (a reference to a PVC)
+         ClaimName:  scratch-volume-pl-50649-delegate-568c6c98b9-kjshd
+         ReadOnly:   false
+
+      Mounts:
+      /scratch from scratch-volume (rw)
+      ```
+
+      This confirms that your ephemeral volume (scratch-volume) is mounted to /scratch in the pod. 
+
+   :::warning Important note:
+      Whenever a pod is deleted, its corresponding ephemeral storage is also deleted automatically. A new ephemeral volume is created when a new pod is spun up. This ensures that the storage is always tied to the lifecycle of the pod and is not persistent.
+   :::
+
 ## Deploy using a custom role
 
 During delegate installation, you have the option to deploy using a custom role. To use a custom role, you must edit the delegate YAML file.
