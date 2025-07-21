@@ -21,14 +21,6 @@ Harness Delegate 2.0 is under **Beta** and can only be used for Mac Build, Andro
 
 :::
 
-:::note
-
-Please enable the following feature flag to use Delegate 2.0. To enable this flag, contact [Harness Support](mailto:support@harness.io)
-
-- `PL_ENABLE_UNIFIED_TASK`
-
-:::
-
 ## What's Supported
 
 ### Supported Connectors
