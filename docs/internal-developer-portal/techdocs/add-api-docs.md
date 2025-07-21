@@ -95,7 +95,7 @@ Make sure the host or path for your OpenAPI spec is included in this list to all
 
 
 :::caution
-API entity creation in IDP 2.0 currently supports OpenAPI specifications referenced via **absolute URLs** (e.g., `https://raw.githubusercontent.com/org/repo/main/openapi.yaml`) in the `definition.$text` field.
+API entity creation in IDP 2.0 currently supports OpenAPI specifications referenced via **absolute URLs** (e.g., `https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml`) in the `definition.$text` field.
 Support for relative paths (e.g., `./openapi.yaml`, `../api.json`) is planned but not yet available. To ensure proper API documentation rendering, please ensure the domain is added to the **Backend URL Allow List** under *Configuration > URL Allow List*.
 :::
 

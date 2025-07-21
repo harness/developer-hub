@@ -123,7 +123,7 @@ All Catalog and Workflow APIs are now delivered directly through Harness Platfor
 
 
 :::info
-As part of the transition to Harness Catalog APIs, API entity definitions currently require absolute URLs `(e.g., https://raw.githubusercontent.com/org/repo/main/openapi.yaml)`.
+As part of the transition to Harness Catalog APIs, API entity definitions currently require absolute URLs `(e.g., https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)`.
 
 Relative file paths `(e.g., ./openapi.yaml)` are not yet supported, but will be available in a future release. 
 :::
