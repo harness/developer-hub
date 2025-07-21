@@ -512,6 +512,7 @@ spec:
   owner: test
   lifecycle: experimental
 ```
+> Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
