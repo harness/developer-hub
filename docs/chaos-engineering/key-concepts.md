@@ -189,11 +189,14 @@ Harness Chaos Engineering uses outbound HTTPS connections over port 443 for all 
 
 | From | To | Type of Data Out (Customer Premise to Harness) | Type of Connection |
 |------|----|-------------------------------------------------|--------------------|
-| Linux VM / Windows VM | app.harness.io:443 | New TCP connection request, Keep alive packets on the TCP connection | HTTPS |
-| Harness Delegate on Kubernetes | app.harness.io:443 | Chaos experiment results from VMware, cloud provider resources | HTTPS |
-| Linux VM / Windows VM | app.harness.io:443 | Chaos experiment results | HTTPS |
-| Harness Delegate on Kubernetes | app.harness.io:443 | New TCP connection request, Keep alive packets on the TCP connection | HTTPS |
-| Applications on Kubernetes | app.harness.io:443 | Chaos experiment results | HTTPS |
+| Linux VM / Windows VM | `app.harness.io:443`, `*.harness.io` | New TCP connection request, Keep alive packets on the TCP connection | HTTPS |
+|  | `app.harness.io:443`, `*.harness.io` | Chaos experiment results | HTTPS |
+|  | APM System | Metrics Query | HTTPS |
+| Harness Delegate on Kubernetes | `app.harness.io:443`, `*.harness.io` | Chaos experiment results from VMware, cloud provider resources | HTTPS |
+| | `app.harness.io:443`, `*.harness.io` | New TCP connection request, Keep alive packets on the TCP connection | HTTPS |
+| | APM System | Metrics Query | HTTPS |
+| Applications on Kubernetes | `app.harness.io:443`, `*.harness.io` | Chaos experiment results | HTTPS |
+|  | APM System | Metrics Query | HTTPS |
 
 Target resources for chaos experiments are reached through different agent types:
 - **Harness Delegate (Kubernetes Chaos Agent)**: Manages Kubernetes-based experiments and cloud provider resources
