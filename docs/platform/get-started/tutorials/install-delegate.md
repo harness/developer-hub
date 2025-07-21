@@ -344,11 +344,13 @@ To install a delegate, do the following:
 </TabItem>
 </Tabs>
 
-## Setting Up Ephemeral Storage in Delegate Helm Charts
+## Ephemeral Storage in Delegate Helm Charts
 
-To manage temporary disk space more effectively, you can configure ephemeral storage for the Harness Delegate using Helm charts. This guide outlines the steps to define custom volumes and apply the configuration during Helm installation, adaptable to any cloud environment based on your storage class settings.
+To manage temporary disk space efficiently, you can configure ephemeral storage for the Harness Delegate using Helm charts. This guide walks you through defining custom volumes and applying the configuration during Helm installation. 
 
-1. Create a `values.yaml file` and add the following configuration to it.
+The setup is cloud-agnostic and works across providers by adjusting the storage class as needed.
+
+1. Create a `values.yaml` file and add the following configuration to it.
 
    ```yaml
       custom_mounts:
@@ -371,7 +373,7 @@ To manage temporary disk space more effectively, you can configure ephemeral sto
    ```
 
    :::note
-      Define your `storageClassName` based on your cloud provider, as it may vary. You can use the following command to list available storage classes:
+      Set the `storageClassName` based on your cloud provider, as the available options may vary. You can list them using the command below:
 
       ```bash
       kubectl get storageclass
@@ -386,7 +388,7 @@ To manage temporary disk space more effectively, you can configure ephemeral sto
       ```
    :::
 
-2. Install the Helm chart to apply the changes. You can refer to the example below, which uses the `values.yaml` configuration file during installation:
+2. Install the Helm chart using the example below, which applies the configuration from `values.yaml` file we created earlier:
 
    ```yaml
       helm upgrade -i harness-del-storage --namespace harness-delegate-ng --create-namespace \
@@ -400,7 +402,7 @@ To manage temporary disk space more effectively, you can configure ephemeral sto
       -f values.yaml
    ```
 
-3. Verify your storage. 
+3. Verify that the ephemeral storage has been mounted correctly by inspecting the pod’s volume mounts.
 
    - Get the Pod Name
       
@@ -437,7 +439,7 @@ To manage temporary disk space more effectively, you can configure ephemeral sto
       This confirms that your ephemeral volume (scratch-volume) is mounted to /scratch in the pod. 
 
    :::warning Important note:
-      Whenever a pod is deleted, its corresponding ephemeral storage is also deleted automatically. A new ephemeral volume is created when a new pod is spun up. This ensures that the storage is always tied to the lifecycle of the pod and is not persistent.
+      Ephemeral storage is automatically deleted when the pod is terminated, and a new volume is created when a new pod starts. This ensures the storage is tied to the pod’s lifecycle and is not persistent.
    :::
 
 ## Deploy using a custom role
