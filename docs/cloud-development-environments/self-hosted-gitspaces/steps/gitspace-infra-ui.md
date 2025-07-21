@@ -7,8 +7,6 @@ sidebar_label: Configure Gitspace Infrastructure in Harness UI
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
-This is your **first step** in configuring **Self Hosted Gitspaces**. You'll need to configure your infrastructure where your Gitspaces will be hosted through the Harness UI. Select your cloud provider to get started:
-
 <DynamicMarkdownSelector
   options={{
     GCP: {
