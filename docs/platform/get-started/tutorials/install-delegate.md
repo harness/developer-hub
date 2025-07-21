@@ -363,7 +363,7 @@ The setup is cloud-agnostic and works across providers by adjusting the storage 
             volumeClaimTemplate:
             metadata:
                labels:
-                  type: my-frontend-volume
+                  type: <YOUR-TYPE-REFERENCE>
             spec:
                accessModes: [ "ReadWriteOnce" ]
                storageClassName: "<YOUR-STORAGE-CLASS>"
@@ -391,13 +391,13 @@ The setup is cloud-agnostic and works across providers by adjusting the storage 
 2. Install the Helm chart using the example below, which applies the configuration from `values.yaml` file we created earlier:
 
    ```yaml
-      helm upgrade -i harness-del-storage --namespace harness-delegate-ng --create-namespace \
+      helm upgrade -i <YOUR-DELEGATE-NAME> --namespace harness-delegate-ng --create-namespace \
       harness-delegate/harness-delegate-ng \
-      --set delegateName=harness-del-storage \
+      --set delegateName=<YOUR-DELEGATE-NAME> \
       --set accountId=XXXXXXXXXXXXXXXX \
       --set delegateToken=XXXXXXXXXXXXXXXXXXXXXX \
       --set managerEndpoint=https://<YOUR-URL.harness.io> \
-      --set delegateDockerImage=us-west1-docker.pkg.dev/gar-setup/docker/delegate:25.07.86300 \
+      --set delegateDockerImage=us-west1-docker.pkg.dev/gar-setup/docker/delegate:<DELEGATE-TAG-VERSION> \
       --set replicas=1 --set upgrader.enabled=true \
       -f values.yaml
    ```
