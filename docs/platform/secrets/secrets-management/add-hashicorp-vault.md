@@ -312,6 +312,24 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
    }
    ```
 
+#### OIDC claims supported in Harness for HashiCorp Vault
+
+**Trusted Claims:**
+
+  - Harness validates the following claims internally to determine if the principal has the required permissions. When configuring trust on the Cloud Provider side, only these specific claims and their exact values should be accepted. Any claims outside this list must be rejected to avoid unauthorized access.
+    * `account_id`
+    * `organization_id`
+    * `project_id`
+
+### Custom Parameters 
+
+Here are the custom parameters for the Hashicorp Vault (OIDC JWT):
+
+- **account_id**: The account id of your Harness account.
+- **organization_id**: The organization id of your Harness organization.
+- **project_id**: The project id of your Harness project. 
+
+
 6. **Apply the Role Configuration**:  
    
    Use the following command to create the role in Vault:
