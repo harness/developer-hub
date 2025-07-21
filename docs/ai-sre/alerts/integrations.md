@@ -3,7 +3,7 @@ title: Alert Integrations
 description: Learn how to configure native alert integrations in Harness AI SRE for popular monitoring and observability tools.
 sidebar_label: Integrations
 sidebar_position: 3
-redirects_from:
+redirect_from:
 - /docs/incident-response/alerts/integrations
 ---
 
