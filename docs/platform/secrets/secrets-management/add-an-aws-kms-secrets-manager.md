@@ -26,9 +26,7 @@ Before you begin, make sure you have a Harness Project set up. If not, follow th
 
 ### 1: Add a Secret Manager
 
-Navigate to **Settings** → **Account-level resources** → **Connectors** and click **New Connector**.
-
-Then, go to **Secret Managers** and select **AWS KMS**. 
+Navigate to **Settings** → **Account-level resources** → **Connectors** and click **New Connector**. Then, go to **Secret Managers** and select **AWS KMS**. 
 
 ### 2: Overview
 
@@ -75,9 +73,7 @@ For more information, refer to the AWS guide on [viewing the Key ID and ARN](htt
 
     - **AWS Secret Access Key**
 
-        - Select **Create or Select a Secret**.
-
-        - You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your Access Key ID's secret key as the **Secret Value**, or use an existing secret.
+        - Select **Create or Select a Secret**. You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your Access Key ID's secret key as the **Secret Value**, or use an existing secret.
 
     - **AWS ARN**
 
@@ -89,9 +85,7 @@ For more information, refer to the AWS guide on [viewing the Key ID and ARN](htt
 
             - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
                 
-                - Select **Create or Select a Secret**.
-
-                - As explained above, you can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
+                - Select **Create or Select a Secret**. You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
 
 ### Option 2: Assume IAM Role on Delegate
 
@@ -105,9 +99,7 @@ If you select **Assume the IAM Role on Delegate** Harness will authenticate usin
 
     - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
                 
-        - Select **Create or Select a Secret**.
-
-        - As explained above, you can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
+        - Select **Create or Select a Secret**. You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
 
 - Select the **Region**, then click **Continue**.
 
@@ -123,9 +115,7 @@ This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IA
 
         - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
                 
-            - Select **Create or Select a Secret**.
-
-            - As explained above, you can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
+            - Select **Create or Select a Secret**. You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
 
     - **Region**: select your AWS region.
 
@@ -148,9 +138,8 @@ This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IA
 
         - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
                 
-            - Select **Create or Select a Secret**.
+            - Select **Create or Select a Secret**. You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
 
-            - As explained above, you can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
     - **Region and IAM Role**: Once your configuration is complete, set the IAM role and region below to proceed with the setup, as shown in the image above.
 
 <details>
@@ -162,7 +151,7 @@ This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IA
 
     Once you have selected OIDC, you will be able to select **connectivity mode**, based on the requirement you can select the provider that can be either connect through a **delegate** or through **Harness platform**. 
         
-![connectivity-mode](../../secrets/static/oidc-connectivity-mode.png)          
+    ![connectivity-mode](../../secrets/static/oidc-connectivity-mode.png)          
 </details>
 
 ### 3: Setup Delegates
