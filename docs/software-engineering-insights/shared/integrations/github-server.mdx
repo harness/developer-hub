@@ -1,3 +1,12 @@
+import repoScope from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/github-token-scope1.png';
+import adminScope from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/github-token-scope2.png';
+import connectCloud from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/github-4.png';
+import onpremInstance from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/github-enterprise-easyonboarding.png';
+import downloadYaml from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/github-enterprise-success.png';
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 GitHub Enterprise Server is a self-hosted version of GitHub designed for organizations that need to manage their repositories, code, and collaboration tools on their own infrastructure. To integrate Harness SEI with GitHub Cloud, go to [Connect with GitHub Cloud](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration).
 
 ### Authenticate with GitHub
@@ -9,11 +18,11 @@ To create a GitHub personal access token to configure the SEI GitHub integration
 
    * All `repo` scopes, including the parent `repo` scope. The top-level `repo` scope is required for SEI to have the required visibility into your repos.
 
-   ![The repo scope selections for a GitHub personal access token.](../static/github-token-scope1.png)
+     <img src={repoScope} alt="The repo scope selections for a GitHub personal access token." width="600" />
 
    * The `read:org` scope under `admin:org`.
 
-   ![The admin:org scope selections for a GitHub personal access token.](../static/github-token-scope2.png)
+     <img src={adminScope} alt="The admin:org scope selections for a GitHub personal access token." width="600" />
 
 3. Copy the token somewhere that you can retrieve it when you configure the integration.
 4. If your GitHub organization uses SAML SSO, enable SSO for your personal access token. For instructions, go to the GitHub documentation on [Authorizing a personal access token for use with SAML SSO](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
@@ -21,11 +30,8 @@ To create a GitHub personal access token to configure the SEI GitHub integration
 :::info
 If you have enabled an allow list in your GitHub account, certain Harness IP addresses must be added to it in order to allow communication between the Harness Platform and GitHub. If the necessary IPs are not whitelisted, the integration may fail to authenticate or sync data properly.
 
-To ensure your integration can work correctly, please refer to the list of [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) that may need to be whitelisted in your firewall.
+To ensure your integration can work correctly, refer to the list of [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) that may need to be whitelisted in your firewall.
 :::
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ### Add the GitHub integration
 
@@ -39,7 +45,7 @@ To set up the integration for the GitHub Enterprise:
 3. Select **GitHub Enterprise** as the integration type.
 4. Choose the **Connect via Cloud** option.
 
-![](../static/github-4.png)
+   <img src={connectCloud} alt="Connect via Cloud" width="900" />
 
 5. Define the integration settings:
    * **Integration Name:** Name for your integration.
@@ -50,7 +56,7 @@ To set up the integration for the GitHub Enterprise:
      Note that you can add multiple PATs for the same integration.
    * Enter the URL of your GitHub Enterprise On-prem instance, for example, `<https://GITHUB.ORGANIZATION-DOMAIN>`. Ensure it's a valid URL.
 
-![](../static/github-enterprise-easyonboarding.png)
+     <img src={onpremInstance} alt="GitHub Enterprise On-Prem Configuration" width="900" />
 
 6. If applicable, configure the **Additional Options**.
    * Specify the repositories for which you want to ingest the data on SEI. Use the format username/repository-name. Leave this field blank to ingest all the repositories.
@@ -62,7 +68,7 @@ To set up the integration for the GitHub Enterprise:
      * **Fetch Commit Files**: Allow SEI to ingest data within commits from GitHub.
 7. Once you've configured the integration, click on **Download YAML File** to download the satellite.yml file.
 
-![](../static/github-enterprise-success.png)
+   <img src={downloadYaml} alt="Download YAML File" width="900" />
 
 </TabItem>
 
@@ -84,7 +90,7 @@ To set up the integration for the GitHub Enterprise:
      Note that you can add multiple PATs for the same integration.
    * Enter the URL of your GitHub Enterprise On-prem instance, for example, `<https://GITHUB.ORGANIZATION-DOMAIN>`. Ensure it's a valid URL.
 
-![](../static/github-enterprise-easyonboarding.png)
+     <img src={onpremInstance} alt="GitHub Enterprise Configuration" width="900" />
 
 6. If applicable, configure the **Additional Options**.
    * Specify the repositories for which you want to ingest the data on SEI. Use the format username/repository-name. Leave this field blank to ingest all the repositories.
@@ -96,14 +102,14 @@ To set up the integration for the GitHub Enterprise:
      * **Fetch Commit Files**: Allow SEI to ingest data within commits from GitHub.
 7. Once you've configured the integration, click on **Download YAML File** to download the satellite.yml file.
 
-![](../static/github-enterprise-success.png)
+   <img src={downloadYaml} alt="Download YAML File" width="900" />
 
 Once you have downloaded the `satellite.yml` file update it following the instructions [here](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
 
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs)
+If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
-:::info
-Please note that after adding an integration, it may take up to 24 hours for the data to be fully reflected on SEI. This means that any widgets you configure on Insights using this integration may not display data until the synchronization is completed.
+:::info 
+After adding an integration, it may take up to 24 hours for the data to be fully reflected on SEI. This means that any widgets you configure on the Insights page using this integration may not display data until the synchronization is completed.
 :::
 
 Here’s a sample `satellite.yml` file:
