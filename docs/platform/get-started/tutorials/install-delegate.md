@@ -396,7 +396,7 @@ The setup is cloud-agnostic and works across providers by adjusting the storage 
       --set delegateName=<YOUR-DELEGATE-NAME> \
       --set accountId=XXXXXXXXXXXXXXXX \
       --set delegateToken=XXXXXXXXXXXXXXXXXXXXXX \
-      --set managerEndpoint=https://<YOUR-URL.harness.io> \
+      --set managerEndpoint=https://<YOUR-URL>.harness.io \
       --set delegateDockerImage=us-west1-docker.pkg.dev/gar-setup/docker/delegate:<DELEGATE-TAG-VERSION> \
       --set replicas=1 --set upgrader.enabled=true \
       -f values.yaml
