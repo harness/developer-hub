@@ -58,15 +58,18 @@ steps:
           db: ${{ parameters.db }}
           cache: ${{ parameters.cache }}
       apikey: ${{ parameters.token }}
+      // highlight-next-line
       showOutputVariables: true
 output:
   text:
+   // highlight-start 
     - title: Output Variable
       content: |
         Output Variable **test2** is `${{ steps.trigger.output.test2 }}`
     - title: Another Output Variable
       content: |
         Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`
+    // highlight-end
 ```
 
 :::info
