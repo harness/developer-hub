@@ -48,6 +48,7 @@ const config: Config = {
   },
 
   future: {
+    v4: true,
     experimental_faster: true,
   },
 
@@ -428,6 +429,10 @@ const config: Config = {
               to: 'https://ideas.harness.io',
             },
             {
+              label: 'Feature Flags GA List',
+              to: '/feature-flags',
+            },
+            {
               label: 'Instructor-Led Training',
               to: '/university?ilt',
             },
@@ -517,6 +522,16 @@ const config: Config = {
         },
       },
     ],
+    [
+      path.resolve(__dirname, './plugins/docs-rss-plugin'),
+      {
+        id: 'feature-flags',
+        path: 'feature-flags',
+        routeBasePath: 'feature-flags',
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
+        editUrl: 'https://github.com/harness/developer-hub/tree/main',
+      },
+    ],
     // redirect plugin start
     [
       path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
@@ -602,6 +617,7 @@ const config: Config = {
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
+    path.join(__dirname, '/plugins/ff-ga-atom-plugin'),
   ],
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),
