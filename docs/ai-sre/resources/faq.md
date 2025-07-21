@@ -3,7 +3,7 @@ title: AI SRE FAQs
 description: Frequently asked questions about Harness AI SRE
 sidebar_position: 100
 sidebar_label: FAQs
-redirects_from:
+redirect_from:
 - /docs/incident-response/resources/faq
 ---
 
