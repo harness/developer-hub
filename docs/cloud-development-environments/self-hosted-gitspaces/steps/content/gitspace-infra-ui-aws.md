@@ -12,7 +12,7 @@ In order to get started with Self Hosted Gitspaces, you'll first need to **confi
 2. Only users with **Account-level access** can configure Gitspace infrastructure for now. Read more about the [Permissions Hierarchy](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 3. // Pending
 
-## Configure Gitspace Infrastructure
+## Configure AWS Cloud Infrastructure in Harness UI
 
 Configuring your Gitspace Infrastructure involves adding your infrastructure details in the Harness UI using the steps below. This process generates an **Infra Config YAML** — a YAML file that captures your entire infrastructure configuration. This YAML is a required input when running the Harness Gitspace Terraform Module to provision the necessary AWS infrastructure.
 
