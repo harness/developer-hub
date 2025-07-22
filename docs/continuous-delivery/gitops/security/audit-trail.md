@@ -15,7 +15,8 @@ Currently, GitOps audit events are behind the feature flag `GITOPS_AUDIT_TRAIL_E
 
 ## Supported GitOps Audit Events
 
-GitOps audit events are recorded for changes made via the Harness API as well as background changes triggered by the GitOps reconciler (for example, ApplicationSets or cascade deletes).
+GitOps audit events are recorded for changes made via the Harness API as well as background changes triggered by the GitOps reconciler (for example, when resources are deleted directly from the cluster instead of through the Harness UI).
+
 
 ### Applications
 
@@ -24,7 +25,7 @@ GitOps audit events are recorded for changes made via the Harness API as well as
 - Delete Application  
 - Sync start  
 
-Includes applications created and managed via **ApplicationSets**.  
+For applications created and managed via **ApplicationSets**, only **Delete** and **Sync start** events are supported in the audit trail. 
 
 ### ApplicationSets
 
@@ -68,10 +69,11 @@ Includes applications created and managed via **ApplicationSets**.
 - Update GnuPG Key  
 - Delete GnuPG Key
 
-### System Reconciler Events
+## System Reconciler Events
 
-Delete events triggered by the **GitOps reconciler** or **cascade delete** operations are also tracked.  
-This includes cases where GitOps entities are deleted directly on the cluster (e.g., from Argo CD), and Harness reconciles the deletion internally.
+Delete events triggered by the **GitOps reconciler** are also tracked.
+
+For example, if a GitOps-managed resource (such as an Application or Agent) is deleted directly from the cluster (for instance, via Argo CD), Harness detects the change, reconciles the state, and records the corresponding delete event in the audit trail.
 
 ## Viewing YAML Differences
 
