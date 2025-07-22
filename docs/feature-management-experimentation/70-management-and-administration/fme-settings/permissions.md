@@ -20,7 +20,7 @@ An environment has the following three permission settings that you can set:
 
 To set up permissions, do the following:
 
-1. From the left navigation, click the **profile button** at the bottom and then **Admin settings**. The Projects page displays.
+1. From the left navigation, click **FME Settings**. The Projects page displays.
 2. In the desired project, click **View** in the Actions column. The project page with any associated environments appears.
 3. In the Environments tab, select the desired environment by clicking **Edit** in the Actions column. The Edit environment page appears. 
 
@@ -50,10 +50,10 @@ To set up permissions, do the following:
 
      With this setting, you can select any groups or users to be editors for feature flags and segments in this environment. In an environment where change permissions are set to Restrict who can edit, only those added as editors can do the following:
 
-        * Add a feature to the environment.
+        * Add a feature flag definition to the environment.
         * Edit an existing flag definition (including the kill or restore functionality).
         * Delete a flag.
-        * Add a segment to the environment.
+        * Add a segment definition to the environment.
         * Edit an existing segment.
         * Delete a segment.
         * Add additional editors.
