@@ -372,20 +372,36 @@ The setup is cloud-agnostic and works across providers by adjusting the storage 
                   storage: <STORAGE-SIZE>
    ```
 
-   :::note
-      Set the `storageClassName` based on your cloud provider, as the available options may vary. You can list them using the command below:
+   :::note  
+      Before proceeding with installation, ensure a suitable StorageClass exists in your cluster. This is required for provisioning ephemeral volumes as defined in your values.yaml.
+
+      You can check the available storage classes using:
 
       ```bash
       kubectl get storageclass
       ```
 
-      Output:
+      If your cluster doesn’t have a suitable `StorageClass`, you can create one using:
 
       ```bash
-      NAME                PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
-      standard (default)  kubernetes.io/gce-pd    Delete          Immediate           true                    45d
-      premium-rwo         pd.csi.storage.gke.io   Delete          WaitForFirstConsumer true                   20d
+      kubectl apply -f storage-class.yaml
       ```
+
+      Example `storage-class.yaml`:
+
+      ```yaml
+      apiVersion: storage.k8s.io/v1
+      kind: StorageClass
+      metadata:
+      name: <YOUR-STORAGE-CLASS-NAME>
+      provisioner: <YOUR-STORAGE-PROVISIONER>  # e.g., kubernetes.io/aws-ebs, pd.csi.storage.gke.io
+      parameters:
+      type: <YOUR-VOLUME-TYPE>               # e.g., gp2 for AWS
+      reclaimPolicy: <YOUR-RECLAIM-POLICY>     # e.g., Retain or Delete
+      volumeBindingMode: WaitForFirstConsumer
+      ```
+
+      After creating the `StorageClass`, configure it in the Helm chart by setting: `--set persistence.storageClass=<YOUR-STORAGE-CLASS-NAME>`
    :::
 
 2. Install the Helm chart using the example below, which applies the configuration from `values.yaml` file we created earlier:
