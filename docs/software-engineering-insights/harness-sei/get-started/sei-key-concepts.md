@@ -39,7 +39,7 @@ Developers can belong to multiple teams across different Org Trees and Projects,
 The Org Tree represents your organizational hierarchy and structure in SEI 2.0. It provides the foundation for grouping developers and replicating the org hierarchy into SEI 2.0.
 At present, the Org Tree is powered by CSV-based imports from your HRIS system (e.g., Workday, BambooHR). The CSV must include a contributor attribute (such as ManagerEmail or ManagerID) that defines the reporting relationship between individuals.
 
-Using this structure, SEI  2.0automatically builds a manager and reportee tree, allowing you to view and analyze metrics in the context of real-world teams and reporting lines.
+Using this structure, SEI  2.0 automatically builds a manager and reportee tree, allowing you to view and analyze metrics in the context of real-world teams and reporting lines.
 
 :::note Coming Soon
 Multi-level groupings based on custom attributes (e.g., Department → Function → Team) will be supported in future iterations. This will allow organizations to model more complex hierarchies and operational structures, making it easier to analyze engineering performance across departments, locations, and lines of business.
