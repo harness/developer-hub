@@ -10,17 +10,17 @@ import TabItem from '@theme/TabItem';
 
 Harness STO supports over 40 security scanners, they are categorized as follows:
 
-- **[Harness Security Scanners](#harness-security-scanners)**: Scanners developed and maintained directly by Harness.
-- **[Third-Party Scanners](#third-party-scanners)**: External scanners integrated into the Harness platform, not developed by Harness  
+- **[Harness Security Scanners](#harness-security-scanners)**: Scanners developed, maintained, and fully supported by Harness
+- **[Third-Party Scanners](#third-party-scanners)**:  External commercial or open-source scanners integrated with the Harness platform, not developed or directly maintained by Harness.
     - **Open-Source Scanners**: A subset of third-party scanners that are open-source.
-- **[Built-in Scanner Steps](/docs/security-testing-orchestration/set-up-scans/built-in-scanners)**: Built by Harness, pre-configured open-source scanner steps that automatically set up scanner settings without the need of commercial license. For a complete guide, see [Built-in Scanners](/docs/security-testing-orchestration/set-up-scans/built-in-scanners).
+- **[Built-in Scanner Steps](/docs/security-testing-orchestration/set-up-scans/built-in-scanners)**:  Harness-provided scanner steps using pre-configured open-source scanners. These are ready-to-use within Harness pipelines and do not require additional commercial licenses. For a complete guide, refer to [Built-in Scanners](/docs/security-testing-orchestration/set-up-scans/built-in-scanners).
 
 For a comprehensive list of all scanners, you can view them by **[Scan Type](#third-party-scanners)** or **[Target Type](#third-party-scanners)** further down this page.
 
 ### Harness Security Scanners
 Harness is expanding its native security scanning capabilities. These scanners are developed and maintained directly by Harness.
 
-- **[API DAST](/docs/security-testing-orchestration/sto-techref-category/traceable-step-configuration)**(*previously Traceable*): A Dynamic Application Security Testing Solution for your APIs. This was formerly known as the Traceable API DAST scanner.
+- **[API DAST](/docs/security-testing-orchestration/sto-techref-category/traceable-step-configuration)** (*previously Traceable*): A Dynamic Application Security Testing scanner for your APIs. This was formerly known as the **Traceable API DAST** scanner.
 
 ### Third-Party Scanners
 The following are the list of third-party scanners that are categorized by **Scan Type** and **Target Type**. The list includes both commercial and open-source scanners.
@@ -47,12 +47,18 @@ import SASTScanners from '/docs/security-testing-orchestration/set-up-scans/shar
 
 <SASTScanners />
 
+In addition to the listed supported scanners, the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) allows the use of various other scanners. For a complete list of supported scanners, refer to [Scanners Supported with Custom Scan Step](#scanners-supported-with-custom-scan-step).
+
+
 ### Secret Detection Scanners
 Secret Detection is a security testing practice that scans code repositories for exposed credentials, API keys, tokens, and other sensitive information. To configure and run secret detection scans, refer Secret Detection documentation.
 
 import SecretScanners from '/docs/security-testing-orchestration/set-up-scans/shared/secret-scanners.md';
 
 <SecretScanners />
+
+In addition to the listed supported scanners, the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) allows the use of various other scanners. For a complete list of supported scanners, refer to [Scanners Supported with Custom Scan Step](#scanners-supported-with-custom-scan-step).
+
 
 ### Software Composition Analysis - SCA Scanners
 Software Composition Analysis (SCA) is a security testing practice that identifies vulnerabilities in open-source dependencies and third-party libraries used in your applications. To configure and run SCA scans, refer [Software Composition Analysis documentation](/docs/security-testing-orchestration/set-up-scans/software-composition-analysis).
@@ -61,6 +67,9 @@ import SCAScanners from '/docs/security-testing-orchestration/set-up-scans/share
 
 <SCAScanners />
 
+In addition to the listed supported scanners, the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) allows the use of various other scanners. For a complete list of supported scanners, refer to [Scanners Supported with Custom Scan Step](#scanners-supported-with-custom-scan-step).
+
+
 ### Container Scanners
 Container Scanning is a security testing practice that analyzes your container images for potential vulnerabilities. To configure and run container scans, refer [Container Scanning documentation](/docs/security-testing-orchestration/set-up-scans/container-scanning).
 
@@ -68,6 +77,9 @@ Container Scanning is a security testing practice that analyzes your container i
 import ContainerScanners from '/docs/security-testing-orchestration/set-up-scans/shared/container-scanners.md';
 
 <ContainerScanners />
+
+In addition to the listed supported scanners, the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) allows the use of various other scanners. For a complete list of supported scanners, refer to [Scanners Supported with Custom Scan Step](#scanners-supported-with-custom-scan-step).
+
 
 ### Dynamic Application Security Testing - DAST Scanners
 
@@ -78,6 +90,8 @@ import DASTScanners from '/docs/security-testing-orchestration/set-up-scans/shar
 
 <DASTScanners />
 
+In addition to the listed supported scanners, the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) allows the use of various other scanners. For a complete list of supported scanners, refer to [Scanners Supported with Custom Scan Step](#scanners-supported-with-custom-scan-step).
+
 ### Infrastructure as Code - IaC Scanners
 Infrastructure as Code (IaC) scanning is a security testing practice that analyzes IaC configurations to identify misconfigurations, security vulnerabilities, and compliance issues before deployment. To configure and run IaC scans, refer [Infrastructure as Code documentation](/docs/security-testing-orchestration/set-up-scans/infrastructure-as-code-scanning).
 
@@ -85,6 +99,8 @@ Infrastructure as Code (IaC) scanning is a security testing practice that analyz
 import IacScanners from '/docs/security-testing-orchestration/set-up-scans/shared/iac-scanners.md';
 
 <IacScanners />
+
+In addition to the listed supported scanners, the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) allows the use of various other scanners. For a complete list of supported scanners, refer to [Scanners Supported with Custom Scan Step](#scanners-supported-with-custom-scan-step).
 
 ---
 

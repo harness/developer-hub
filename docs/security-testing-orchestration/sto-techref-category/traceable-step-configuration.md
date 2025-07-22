@@ -15,8 +15,7 @@ sidebar_position: 10
 The **API DAST** step previously called as **Traceable** enables API testing by connecting with your **[Traceable](https://docs.traceable.ai/docs/ast-scans)** account. Depending on your requirements, you can choose from the following three STO scan modes for API DAST step, follow the appropriate documentation for each mode.
 
 :::note
-The scanner previously referred to as **Traceable API DAST** has been renamed to **API DAST** under [Harness Security Scanners](/docs/security-testing-orchestration/whats-supported/scanners#harness-security-scanners).  
-You may still encounter the term *Traceable* in certain references or interfaces; both refer to the same scanner.
+This step previously referred to as **Traceable** has been renamed to **API DAST** under [Harness Security Scanners](/docs/security-testing-orchestration/whats-supported/scanners#harness-security-scanners). You may still encounter the term **Traceable** in certain references or interfaces; both refer to the same scanner.
 :::
 
 
