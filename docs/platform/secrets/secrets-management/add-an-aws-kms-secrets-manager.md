@@ -73,7 +73,7 @@ For more information, refer to the AWS guide on [viewing the Key ID and ARN](htt
 
         - Select **Create or Select a Secret**. You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your Access Key ID's secret key as the **Secret Value**, or use an existing secret.
 
-    - **AWS ARN**:  You can provide the AWS ARN as plain text or as a secret.
+    - **AWS ARN**:  You can provide the AWS ARN as plain text or as an encrypted secret.
 
         ![arn](../static/plaintext-encrypted.png)
 
@@ -81,7 +81,7 @@ For more information, refer to the AWS guide on [viewing the Key ID and ARN](htt
 
 If you select **Assume the IAM Role on Delegate** Harness will authenticate using the IAM role assigned to the AWS host running the Delegate, you select using a Delegate Selector.
 
-    - **AWS ARN**: Enter the AWS ARN directly as plain text or as a secret.
+    - **AWS ARN**: Enter the AWS ARN directly as plain text or as an encrypted secret.
 
         ![](../static/iam-role-del.png)
 
@@ -91,7 +91,7 @@ If you select **Assume the IAM Role on Delegate** Harness will authenticate usin
 
 This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. Typically, you use `AssumeRole` within your account or for AWS cross-account access.
 
-    - **AWS ARN**: Provide the ARN either in plain text (for non-sensitive use cases) or as a secret.
+    - **AWS ARN**: Provide the ARN either in plain text or as an encrypted secret.
 
         ![](../static/role-using-sts.png)
 
@@ -108,7 +108,7 @@ This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IA
 
  This option uses OpenID Connect (OIDC) to authenticate and authorize users. This option is commonly used for secure identity federation across different applications or cloud platforms, enabling seamless authentication and access management.
 
-    - **AWS ARN**: Choose to input your ARN either as plain text or as a secret.
+    - **AWS ARN**: Choose to input your ARN either as plain text or as an encrypted secret.
 
         ![odic-aws-kms](../../secrets/static/odic-aws-kms.png)
 
