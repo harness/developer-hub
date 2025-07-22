@@ -39,8 +39,6 @@ This feature is exclusive to Cluster Orchestrator and provides unprecedented con
 
 - **Percentage-Based Distribution**: Define exact percentages for Spot vs On-Demand pod placement
 - **Base Capacity Management**: Maintain minimum On-Demand replicas for critical traffic
-- **Workload-Aware Scaling**: Scale additional capacity on cost-effective Spot nodes
-- **Traffic Pattern Optimization**: Ideal for applications requiring guaranteed availability with cost-efficient scaling
 
 ### 5. Commitment Utilization Guarantee
 
