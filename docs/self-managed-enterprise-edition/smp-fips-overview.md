@@ -42,11 +42,7 @@ Harness is committed to supporting customers who need to comply with FIPS 140-2 
 
 FIPS 140 is a U.S. government standard that defines security requirements for cryptographic modules. Compliance with FIPS 140-2 (and its successor, FIPS 140-3) is required for U.S. federal agencies and contractors, as well as for many organizations in sectors such as healthcare, finance, and critical infrastructure. It is often also a requirement for non-U.S. public sector organizations depending on local regulations and contractual obligations.
 
-When regulations require cryptographic protection of data, they usually mandate the use of validated cryptographic modules. Non-validated cryptography is generally treated as offering no meaningful protection. In practice, this means:
-
-- Data must be protected with approved, validated algorithms and implementations.
-- Cryptographic libraries and modules must be validated under the FIPS 140 standard.
-- Systems must be configured to ensure all cryptographic operations comply with these requirements.
+When regulations require cryptographic protection of data, they usually mandate the use of validated cryptographic modules. Non-validated cryptography is generally treated as offering no meaningful protection.
 
 Deploying software in a FIPS-compliant manner can be complex. It often requires using specific versions of libraries, binaries, and container images built with validated cryptographic modules. These versions must be carefully maintained and updated to balance compliance with timely vulnerability mitigation.
 
@@ -54,69 +50,37 @@ The regulatory landscape around FIPS requirements is dynamic and can evolve over
 
 ## FIPS Support in Harness
 
-Harness supports deployments that comply with FIPS 140-2 requirements. FIPS-compliant deployments of Harness are designed for organizations with strict security requirements. These deployments require planning and additional configuration, such as:
+Harness supports deployments that comply with FIPS 140-2 requirements for Self-Managed Platform in Harness. This enables customers in government, defense, and other regulated industries to use Harness while meeting their security and compliance obligations.
 
-- Sourcing or building container images with the required cryptographic modules.
-- Using external databases or infrastructure components that are FIPS-enabled.
-- Reviewing and updating deployment configurations to meet FIPS standards.
+The following steps provide practical guidance to help you prepare, configure, and validate your managed Kubernetes clusters for FIPS 140-2 compliance.
 
-This allows customers in government, defense, and regulated industries to use Harness while meeting their security and compliance obligations.
+### Infrastructure Prerequisites
 
-## FIPS Compliance on Kubernetes
+Before deploying a FIPS-compliant Kubernetes cluster, ensure the following prerequisites are met:
 
-To achieve FIPS 140-2 compliance on Kubernetes, it's essential to use FIPS-enabled operating system images, apply cloud provider security best practices, and enable required cryptographic and infrastructure-level settings.
+1. **Cloud Provider FIPS Support**: The target environment must run on a cloud provider that supports FIPS 140-2 configurations. For AWS, use node OS images that include validated FIPS cryptographic modules. FIPS-specific endpoints may also be required for certain AWS services. Recommended FIPS-enabled OS options include:
 
-This guide provides practical steps to help you prepare, configure, and validate your managed Kubernetes clusters for FIPS 140-2 compliance.
+   * [Bottlerocket FIPS](https://docs.aws.amazon.com/bottlerocket/latest/userguide/fips.html)
+   * [Amazon Linux 2 FIPS](https://docs.aws.amazon.com/linux/al2/fips.html)
 
-### Prerequisites
+2. **Kubernetes Version Compatibility**: Ensure the Kubernetes version is compatible with the selected FIPS-enabled OS. For AWS EKS, FIPS-compliant AMIs (like Amazon Linux 2 FIPS) are generally supported from Kubernetes version **v1.23** onward.
 
-Before deploying a FIPS-compliant Kubernetes cluster, ensure the following:
+3. **System Requirements and Tools**: The deployment environment must have the following tools installed:
 
-1. Cloud Provider Support 
+   * [`kubectl`](https://kubernetes.io/docs/tasks/tools/) – for interacting with Kubernetes clusters
+   * [`eksctl`](https://eksctl.io/) – for provisioning and managing EKS clusters
+   * **Optional**: SSH access to worker nodes, if you need to perform FIPS validation or troubleshooting at the OS level
 
-        Verify that your cloud provider supports FIPS 140-2 configurations. Use node OS images with validated FIPS cryptographic modules:
-
-        | Cloud | Source                                                                                                           |
-        |-------|------------------------------------------------------------------------------------------------------------------|
-        | AWS   | [Bottlerocket FIPS](https://docs.aws.amazon.com/bottlerocket/latest/userguide/fips.html)                         |
-        | AWS   | [Amazon Linux 2 FIPS](https://docs.aws.amazon.com/linux/al2/fips.html)                                           |
-
-2. Kubernetes Version Compatibility
-
-        Ensure the Kubernetes version supports your selected FIPS-enabled OS:
-
-        * AWS EKS: [Amazon Linux 2 FIPS AMIs](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html) are typically supported from Kubernetes v1.23+
-
-3. Required CLI Tools
-
-        Ensure the following tools are available in your environment:
-
-        * [`kubectl`](https://kubernetes.io/docs/tasks/tools/) – Kubernetes CLI
-        * [`eksctl`](https://eksctl.io/) – EKS cluster management (AWS)
-        * SSH access to worker nodes (optional, for in-node FIPS validation)
-
-### Infrastructure Considerations
-
-| **Category**  | **Recommendation**                                                             |
-|---------------|--------------------------------------------------------------------------------|
-| Networking    | Use private clusters and secure VPCs/subnets. Restrict master endpoint access. |
-| Node Security | Use hardened nodes (e.g., AWS Nitro, GCP Shielded VMs).                        |
-| IAM/RBAC      | Implement least-privilege IAM and Kubernetes RBAC policies.                    |
-| Encryption    | Enable in-transit and at-rest encryption for workloads and volumes.            |
-| Logging       | Integrate audit logging with centralized logging systems.                      |
-
-### Enabling FIPS on AWS EKS
+### Enabling FIPS on AWS Cluster
 
 AWS provides different options for enabling FIPS 140-2 compliance on worker nodes. This guide walks through enabling FIPS on Amazon EKS using a FIPS-enabled AMI, setting up FIPS mode at bootstrap (if using a custom AMI), and verifying the setup.
-
-#### Select a FIPS-Enabled AMI
 
 For Bottlerocket, AWS provides [FIPS-enabled AMIs](https://docs.aws.amazon.com/eks/latest/userguide/bottlerocket-fips-amis.html). You can retrieve the latest AMI ID using AWS CLI:
 
 ```bash
 aws ssm get-parameters-by-path \
-  --path /aws/service/bottlerocket/aws-k8s-1.27/x86_64/fips/latest/image_id \
-  --region us-east-1
+  --path /aws/service/bottlerocket/aws-k8s-<CLUSTER_K8s-VERSION>/x86_64/fips/latest/image_id \
+  --region <YOUR-AWS-REGION>
 ```
 
 Sample Output:
@@ -125,7 +89,7 @@ Sample Output:
 {
   "Parameters": [
     {
-      "Name": "/aws/service/bottlerocket/aws-k8s-1.27/x86_64/fips/latest/image_id",
+      "Name": "/aws/service/bottlerocket/aws-k8s-<CLUSTER_K8s-VERSION>/x86_64/fips/latest/image_id",
       "Type": "String",
       "Value": "ami-0abcdef1234567890"
     }
@@ -133,17 +97,7 @@ Sample Output:
 }
 ```
 
-Replace the node group AMI in your configuration with the AMI ID returned.
-
-#### Enable FIPS Mode at Bootstrap (For Custom AMIs)
-
-If you are using a custom Amazon Linux 2 AMI, ensure it includes:
-
-* The kernel parameter `fips=1` in GRUB
-* FIPS-related packages like `dracut-fips`, `openssl`, and `aide`
-* `fips-mode-setup` utility
-
-In your `eksctl` config file, use the following block to enable FIPS mode during node initialization:
+Replace the node group AMI in your configuration with the AMI ID returned. In your `eksctl` config file, use the following block to enable FIPS mode during node initialization:
 
 ```yaml
 managedNodeGroups:
@@ -156,31 +110,28 @@ managedNodeGroups:
 
 This ensures the node boots with FIPS mode enabled.
 
-> 🔗 [Amazon Linux 2 FIPS Guide](https://docs.aws.amazon.com/linux/al2/fips.html)
+### Enable FIPS Mode 
+<!--
+- FIPS in harness 
+    - module supported and how 
+    - what features are supported.
+    -  tabular and descriptive - done
+    - what's supported vs upcoming 
+-->
+After verifying that your Kubernetes cluster is FIPS-enabled, proceed with the installation of the latest Self-Managed Platform (SMP) version. Download and extract the Helm chart package.
 
-#### Use AWS FIPS Endpoints (Recommended)
+To enable FIPS mode in your Harness deployment, modify the `values.yaml` file by adding the following configuration under the `global` section:
 
-While enabling FIPS mode on the OS ensures compliant cryptographic modules, you should also use FIPS-compliant endpoints for AWS services such as S3, KMS, and Secrets Manager to ensure end-to-end compliance.
+ ```yaml
+ global:
+  fips: true
+ ```
 
-For example:
+ This setting ensures that the Harness components are deployed in compliance with FIPS 140-2 requirements. Once the configuration is updated, install or upgrade your Helm release using the modified `values.yaml` to apply the changes.
 
-* S3: `https://s3-fips.us-east-1.amazonaws.com`
-* KMS: `https://kms-fips.us-east-1.amazonaws.com`
+### Validate FIPS 
 
-These can be configured in:
-
-* **AWS CLI**:
-
-  ```bash
-  aws s3 ls --endpoint-url https://s3-fips.us-east-1.amazonaws.com
-  ```
-* **AWS SDKs**: Pass `endpointUrl` manually while configuring the client.
-
-> 🔗 [FIPS Endpoints Documentation](https://docs.aws.amazon.com/general/latest/gr/fips.html)
-
-### Validate FIPS Mode on Node
-
-To confirm FIPS mode is active on a node, SSH into the instance and run:
+To confirm FIPS is active on a node, SSH into the instance and run:
 
 ```bash
 cat /proc/sys/crypto/fips_enabled
@@ -194,19 +145,9 @@ cat /proc/sys/crypto/fips_enabled
 
 An output of `1` confirms that the node is running in FIPS mode. Use Kubernetes probes or init containers to validate FIPS status per node.
 
-## FIPS in Harness
 
-<!--
-- FIPS in harness 
-    - module supported and how 
-    - what features are supported.
-    -  tabular and descriptive - done
-    - what's supported vs upcoming 
 
-- AWS EKS with FIPS enabled - Bottlerocket AMI
-- Verification of FIPS (CLI commands)
 
--->
 
 ### Limitations
 
