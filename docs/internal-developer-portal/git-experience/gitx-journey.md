@@ -274,6 +274,22 @@ When Git Experience (GitX) is configured in Harness, a webhook is automatically 
   allowFullScreen
 /> 
 
+
+#### Workflow Execution Visibility and Webhook Requirement
+
+While Git Experience ensures that entity YAML is synchronized between Git and Harness using webhooks, there is an additional consideration for **Workflow entities**.
+
+When changes are pushed to the default branch of a Git-connected repository, those updates are fetched and reflected in the **YAML editor**. However, these changes do **not appear in the Workflow execution UI** (such as visual stages, steps, or execution history) unless a **webhook** is explicitly configured on the Git connector.
+
+To fully reflect changes across both YAML and execution views, ensure a webhook is configured at the appropriate scope (account, project, or org), and listens to relevant Git connectors.
+
+![Configure Webhooks](./static/webhook-idp.png)
+
+:::note
+This does not applicable for inline Harness repository. Know more about [Configure Webhooks](/docs/platform/git-experience/gitexp-bidir-sync-setup/#setup-via-webhooks-page).
+:::
+
+
 <!-- ### Manual Reload Support
 
 In some cases, webhook integrations may fail to trigger or may not be configured properly. GitX provides a fallback mechanism in such scenarios.

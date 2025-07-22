@@ -67,7 +67,7 @@ Let's try creating a **Workflow** using both the methods:
     * **Remote:** Choose to store your Workflow YAML in a Git repository for version control, collaboration, and change tracking.
     You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
         ![](./static/git-workflow.png)
-     > The Git Experience is ideal for teams who prefer to manage Workflows as code. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey.md).
+     > The Git Experience is ideal for teams who prefer to manage Workflows as code, with full version control and Git-native workflows. To ensure changes are reflected in both YAML and execution views, a [webhook](/docs/internal-developer-portal/git-experience/gitx-journey#workflow-execution-visibility-and-webhook-requirement) must be configured on the Git connector. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey).
 
 
   5. Click on **“Review YAML”** to view the auto-generated YAML. Since there's a live sync between the Visual and YAML views, changes in one will reflect in the other. 
@@ -103,7 +103,7 @@ Let's try creating a **Workflow** using both the methods:
     * **Remote:** Choose to store your Workflow YAML in a Git repository for version control, collaboration, and change tracking.
     You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
     ![](./static/git-workflow.png)
-    > The Git Experience is ideal for teams who prefer to manage Workflows as code. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey.md).
+    > The Git Experience is ideal for teams who prefer to manage Workflows as code, with full version control and Git-native workflows. To ensure changes are reflected in both YAML and execution views, a [webhook](/docs/internal-developer-portal/git-experience/gitx-journey#workflow-execution-visibility-and-webhook-requirement) must be configured on the Git connector. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey).
 
 :::info
 Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs.
