@@ -29,7 +29,7 @@ These release notes describe recent changes to Harness Code Repository.
 
 #### New features and enhancements
 - Added support for tag rules in Harness Code Repository. Users can now restrict tag creation, deletion, and updates with pattern-based rules.
-- Added support for including user groups in the bypass list for branch rules.
+- Added support for including user groups in the bypass list for branch rules and tag rules.
 
 <!-- July 03, 2025 -->
 
