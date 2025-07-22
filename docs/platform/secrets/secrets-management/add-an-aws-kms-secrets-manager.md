@@ -75,47 +75,27 @@ For more information, refer to the AWS guide on [viewing the Key ID and ARN](htt
 
         - Select **Create or Select a Secret**. You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your Access Key ID's secret key as the **Secret Value**, or use an existing secret.
 
-    - **AWS ARN**
+    - **AWS ARN**:  You can provide the AWS ARN as plain text (if it's not sensitive) or store it securely as a Harness Secret. Use **Create or Select a Secret** to set it safely.
 
         ![arn](../static/plaintext-encrypted.png)
-
-        You can set your AWS ARN using one of the following options:
-
-            - **Plain Text**: Recommended when the ARN is not considered sensitive.
-
-            - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
-                
-                - Select **Create or Select a Secret**. You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
 
 ### Option 2: Assume IAM Role on Delegate
 
 If you select **Assume the IAM Role on Delegate** Harness will authenticate using the IAM role assigned to the AWS host running the Delegate, you select using a Delegate Selector.
 
-- In the **AWS ARN** field, you can set your ARN using one of the following options:
+    - **AWS ARN**: Enter the AWS ARN directly as plain text if it's not sensitive, or store it securely as an encrypted Harness Secret by using **Create or Select a Secret**.
 
-    ![](../static/iam-role-del.png)
+        ![](../static/iam-role-del.png)
 
-    - **Plain Text**: Recommended when the ARN is not considered sensitive.
-
-    - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
-                
-        - Select **Create or Select a Secret**. You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
-
-- Select the **Region**, then click **Continue**.
+    - Select the **Region**, then click **Continue**.
 
 ### Option 3: Assume Role using STS on Delegate
 
 This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. Typically, you use `AssumeRole` within your account or for AWS cross-account access.
 
-    - **AWS ARN**: you can set your ARN using one of the following options:
+    - **AWS ARN**: Provide the ARN either in plain text (for non-sensitive use cases) or as a securely stored Harness Secret using the **Create or Select a Secret** option.
 
         ![](../static/role-using-sts.png)
-
-        - **Plain Text**: Recommended when the ARN is not considered sensitive. 
-
-        - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
-                
-            - Select **Create or Select a Secret**. You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
 
     - **Region**: select your AWS region.
 
@@ -130,15 +110,9 @@ This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IA
 
  This option uses OpenID Connect (OIDC) to authenticate and authorize users. This option is commonly used for secure identity federation across different applications or cloud platforms, enabling seamless authentication and access management.
 
-    - **AWS ARN**: you can set your ARN using one of the following options:
+    - **AWS ARN**: Choose to input your ARN either as plain text or securely using a Harness Secret. Use the **Create or Select a Secret** feature to manage it appropriately.
 
         ![odic-aws-kms](../../secrets/static/odic-aws-kms.png)
-
-        - **Plain Text**: Recommended when the ARN is not considered sensitive. 
-
-        - **Encrypted**: Use this option if you prefer to store the ARN securely as a secret.
-                
-            - Select **Create or Select a Secret**. You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
 
     - **Region and IAM Role**: Once your configuration is complete, set the IAM role and region below to proceed with the setup, as shown in the image above.
 
