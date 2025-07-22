@@ -2,13 +2,13 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 <RedirectIfStandalone label="GCP" targetPage="/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui" />
 
-This is your **first step** in configuring **Self Hosted Gitspaces** on Google Cloud Platform. 
+This is your **first step** in configuring **Self Hosted Gitspaces** on **GCP Cloud Infrastructure**. 
 
-In order to get started with Self Hosted Gitspaces, you'll first need to **configure your infrastructure**. This infrastructure is where your Gitspaces will be hosted, so you must **define and configure it from Harness UI**. This guide will take you through the detailed steps to configure your GCP infrastructure using the Harness UI.
+In order to get started with Self Hosted Gitspaces, you'll first need to **configure your infrastructure**. This infrastructure is where your Gitspaces will be hosted, so you must **define and configure it from Harness UI**. This guide will take you through the detailed steps to configure your infrastructure using the Harness UI.
 
 ## Prerequisites
 
-1. Ensure you've read through the [Fundamentals and Prerequisites](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
+1. Ensure you’ve read through the [Fundamentals and Prerequisites](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
 2. Only users with **Account-level access** can configure Gitspace infrastructure for now. Read more about the [Permissions Hierarchy](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). 
 3. Ensure that your GCP project (as defined in your infra config) has the following APIs enabled, here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project: 
       <ul>
@@ -19,7 +19,7 @@ In order to get started with Self Hosted Gitspaces, you'll first need to **confi
         <li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) – `api/dns.googleapis.com`</li>
       </ul>
 
-## Configure Gitspace Infrastructure
+## Configure Gitspace Infrastructure via Harness UI
 
 Configuring your Gitspace Infrastructure involves adding your infrastructure details in the Harness UI using the steps below. This process generates an **Infra Config YAML** — a YAML file that captures your entire infrastructure configuration. This YAML is a required input when running the Harness Gitspace Terraform Module to provision the necessary GCP VM infrastructure.
 
@@ -103,6 +103,7 @@ region_configs:
     certificates:
       contents:
       - domain: uswest.prod2.gitspace.test.harness.io
+
 ```
 
 ## Manage Gitspace Infrastructure
@@ -114,8 +115,8 @@ Here's how you can edit your infrastructure:
 1. Go to your **Gitspace Infrastructure UI**. 
 2. Click on the **Edit** button on the top-right corner. 
 ![](../static/edit-infra-latest.png)
-3. Whenever you make changes to your infrastructure configuration, you'll need to **download the updated Infra Config YAML**.
-Use this updated YAML to [reapply your Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to reflect the changes. You can learn more about this process in the [next steps](#next-steps).
+3. Whenever you make changes to your infrastructure configuration, you’ll need to **download the updated Infra Config YAML**.
+Use this updated YAML to [reapply your Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to reflect the changes. You can learn more about this process in the [next steps](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#next-steps).
 
 ### Delete Gitspace Infrastructure
 :::warning **Warning: Irreversible Action**
@@ -143,7 +144,7 @@ Follow this [documentation](/docs/cloud-development-environments/self-hosted-git
 #### Deleting Infrastructure
 Here's how you can delete your infrastructure: 
 1. Go to your **Gitspace Infrastructure UI**. 
-2. Scroll down to the bottom of the page. You'll find the option to **Delete Infrastructure**. Click this button to permanently delete the selected infrastructure.
+2. Scroll down to the bottom of the page. You’ll find the option to **Delete Infrastructure**. Click this button to permanently delete the selected infrastructure.
 
 ![](../static/delete-infra-latest.png)
 
@@ -159,4 +160,4 @@ You can assess the **Gateway Group Health** for your Gitspace infrastructure fro
 ![](../static/healthy-gateway.png)
 
 ## Next Steps
-Now that you have the [Infrastructure Config YAML](#download-the-infrastructure-config-yaml) downloaded, proceed to [configure and apply the Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to provision your self-hosted Gitspaces.
+Now that you have the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#download-the-infra-config-yaml) downloaded, proceed to [configure and apply the Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to provision your self-hosted Gitspaces. 
