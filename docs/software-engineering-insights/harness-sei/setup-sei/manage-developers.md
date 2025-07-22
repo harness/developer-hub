@@ -1,10 +1,11 @@
 ---
-title: Add developer records
-description: Learn how to add developer records for your organization in SEI 2.0.
-sidebar_label: Add developer records
-sidebar_position: 5
+title: Manage developers
+description: Learn how to manage developers for your organization in SEI 2.0.
+sidebar_label: Manage developers
+sidebar_position: 7
 redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/setup/developers
+- /docs/software-engineering-insights/harness-sei/setup-sei/add-developer-records
 ---
 
 ## Overview
