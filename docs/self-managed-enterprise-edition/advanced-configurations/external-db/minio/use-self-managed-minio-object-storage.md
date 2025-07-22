@@ -11,6 +11,40 @@ Harness Self-Managed Enterprise Edition enables you to configure self-managed ob
 
 You can install MinIO on your preferred VMs and provide the endpoint in your Harness Helm charts. This topic describes how to set up 4 MinIO servers.
 
+:::danger Important Notice: Retention Policy Support for MinIO Buckets
+
+Retention policies for MinIO buckets are now supported and can be configured through bootstrap overrides to automatically delete older pipeline logs, helping manage storage costs and prevent disk space issues.
+
+This feature is **disabled by default** and must be explicitly enabled. By default, enabling it will delete logs older than 1 year. You can customize the retention period as needed. Changes may take up to 24 hours to apply due to MinIO’s internal scheduling. Always ensure you have appropriate backups to avoid accidental data loss.
+
+### Enable Default 1-Year Deletion Policy
+
+To enable with the default 1-year expiration, no need to specify the duration:
+
+  ```yaml
+  database:
+    minio:
+      provisioning:
+        enabled: true
+  ```
+### Customize the Retention Period
+
+To extend the retention period (e.g., 2 years), update the override as follows:
+
+  ```yaml
+  database:
+    minio:
+      provisioning:
+        enabled: true
+        buckets:
+          - name: "logs"
+            lifecycle:
+              - id: LogServiceRetentionPolicy
+                expiry:
+                  days: 720  # 2 years
+  ```
+:::
+
 ## MinIO prerequisites
 
 Make sure to meet the MinIO prerequisites before you set up self-managed object storage. For prerequisites, go to [Object Storage for Linux](https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html#prerequisites) in the MinIO documentation.
