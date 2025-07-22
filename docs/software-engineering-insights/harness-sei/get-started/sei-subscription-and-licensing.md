@@ -44,4 +44,4 @@ If your usage exceeds the purchased licenses, it is recommended to review the De
 
 ### See also
 
-* [Manage developers](/docs/software-engineering-insights/harness-sei/setup-sei/upload-developer-records)
+* [Manage developers](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers)
