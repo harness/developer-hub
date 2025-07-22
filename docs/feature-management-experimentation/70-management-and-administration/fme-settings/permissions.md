@@ -89,7 +89,3 @@ You can optionally specify if admins can skip an approval flow for specific envi
 3. In the Environments tab, click **Edit** in the Actions column on the environment you want to update. The Edit environment page appears.
 4. In the Change permissions section, select the **Allow Administrators to skip approval** checkbox.
 5. Click **Save**. The new setting is saved.
-
-:::info
-The administrators group is always added as an editor when permissions are enabled, both at the environment level or at the feature flag, segment, and metric level.
-:::
