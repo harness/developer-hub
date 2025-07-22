@@ -60,8 +60,8 @@ Before deploying a FIPS-compliant Kubernetes cluster, ensure the following prere
 
 1. **Cloud Provider FIPS Support**: The target environment must run on a cloud provider that supports FIPS 140-2 configurations. For AWS, use node OS images that include validated FIPS cryptographic modules. FIPS-specific endpoints may also be required for certain AWS services. Recommended FIPS-enabled OS options include:
 
-   * [Bottlerocket FIPS](https://docs.aws.amazon.com/bottlerocket/latest/userguide/fips.html)
-   * [Amazon Linux 2 FIPS](https://docs.aws.amazon.com/linux/al2/fips.html)
+   * [Bottlerocket AMIs](https://docs.aws.amazon.com/bottlerocket/latest/userguide/fips.html)
+   * [Amazon Linux 2](https://docs.aws.amazon.com/linux/al2/fips.html)
 
 2. **Kubernetes Version Compatibility**: Ensure the Kubernetes version is compatible with the selected FIPS-enabled OS. For AWS EKS, FIPS-compliant AMIs (like Amazon Linux 2 FIPS) are generally supported from Kubernetes version **v1.23** onward.
 
@@ -110,7 +110,7 @@ managedNodeGroups:
 
 This ensures the node boots with FIPS mode enabled.
 
-### Enable FIPS Mode 
+### Enable FIPS in Self-Managed Platform (SMP) 
 <!--
 - FIPS in harness 
     - module supported and how 
@@ -122,12 +122,30 @@ After verifying that your Kubernetes cluster is FIPS-enabled, proceed with the i
 
 To enable FIPS mode in your Harness deployment, modify the `values.yaml` file by adding the following configuration under the `global` section:
 
- ```yaml
- global:
-  fips: true
- ```
+  ```yaml
+  global:
+    fips: true
+  ```
 
- This setting ensures that the Harness components are deployed in compliance with FIPS 140-2 requirements. Once the configuration is updated, install or upgrade your Helm release using the modified `values.yaml` to apply the changes.
+This setting ensures that the Harness components are deployed in compliance with FIPS 140-2 requirements. Once the configuration is updated, install or upgrade your Helm release using the modified `values.yaml` to apply the changes.
+
+### What Is Supported When FIPS Is Enabled
+
+The following components are tested and supported on FIPS-enabled and enforced SMP environments, focusing on CI, CD, and STO functionalities.
+
+| **Category**                         | **Supported Integrations**                                                                 |
+|--------------------------------------|--------------------------------------------------------------------------------------------|
+| **Authentication & User Management** | Self-managed (Username/Password) <br> SAML (Okta) <br> SCIM (Okta)                         |
+| **Secret Management Connectors**     | HashiCorp Vault <br> AWS Secrets Manager                                                   |
+| **Cloud Providers**                  | AWS Cloud Provider <br> Kubernetes Cluster (via Delegate IAM)                              |
+| **Code Repositories**                | GitHub                                                                                     |
+| **Cloud Cost**                       | AWS Cloud Cost                                                                             |
+| **Artifact Repositories**            | Docker Registry <br> Artifactory                                                           |
+| **Notification Mechanisms**          | SMTP <br> Slack <br> Microsoft Teams                                                       |
+| **Deployment**                       | Kubernetes <br> Native Helm                                                                |
+| **Build**                            | Shell <br> Build and Push to ECR <br> Build and Push to Docker <br> Upload Artifacts to S3 |
+| **Security Tests**                   | SonarQube <br> Aqua Trivy <br> Gitleaks <br> Kaniko <br> Grype <br> Semgrep                |
+| **SCS**                              | Supported                                                                                  |
 
 ### Validate FIPS 
 
@@ -145,17 +163,13 @@ cat /proc/sys/crypto/fips_enabled
 
 An output of `1` confirms that the node is running in FIPS mode. Use Kubernetes probes or init containers to validate FIPS status per node.
 
-
-
-
-
 ### Limitations
 
 FIPS mode is not backward compatible and is only supported on new installations.
 
 ### References
 
-* [AWS Bottlerocket FIPS AMIs](https://docs.aws.amazon.com/eks/latest/userguide/bottlerocket-fips-amis.html)
+* [AWS Bottlerocket AMIs](https://docs.aws.amazon.com/eks/latest/userguide/bottlerocket-fips-amis.html)
 * [AWS FIPS Endpoints](https://docs.aws.amazon.com/general/latest/gr/fips.html)
 
 
