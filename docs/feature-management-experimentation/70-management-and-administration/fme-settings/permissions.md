@@ -42,10 +42,6 @@ To set up permissions, do the following:
   
         When setting change permissions for a particular flag or segment in an environment, the owners and the user making the change are automatically added as editors, along with the account's administrators.
 
-        :::info[note]
-        The administrators group is always added as an editor when permissions are enabled, both at the environment level or at the feature flag, segment, and metric levels.
-        :::
-
      **Restrict who can edit**
 
      With this setting, you can select any groups or users to be editors for feature flags and segments in this environment. In an environment where change permissions are set to Restrict who can edit, only those added as editors can do the following:
