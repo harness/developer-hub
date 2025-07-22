@@ -383,6 +383,24 @@ If you need quotes around the [Harness variable expressions](/docs/platform/vari
 
 If you use [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
 
+### Accessing AWS OIDC Tokens from Connectors in Shell Scripts
+
+In cases where native CD steps do not support certain use cases (e.g., custom infrastructure provisioning, scripting-based deployments), you can programmatically retrieve an OIDC token from the Infrastructure connector or any scoped connector, and use it in your script to authenticate with **AWS**.
+
+Harness securely evaluates the expression at runtime and makes the OIDC token available for use within the script.
+
+#### Supported Expressions
+
+| Purpose                          | Expression                                                                 |
+|----------------------------------|----------------------------------------------------------------------------|
+| Connector ID                     | `<+connector.get(<+infra.connectorRef>).identifier>`                       |
+| IAM Role ARN                     | `<+connector.get(<+infra.connectorRef>).spec.credential.spec.iamRoleArn>`  |
+| AWS Region                       | `<+connector.get(<+infra.connectorRef>).spec.credential.region>`           |
+| OIDC Token (Infrastructure)      | `<+connectorInputs.get(<+infra.connectorRef>).oidcToken>`                  |
+| OIDC Token (Org-level connector) | `<+connectorInputs.get("org.awsoidc").oidcToken>`                          |
+| OIDC Token (Account-level)       | `<+connectorInputs.get("account.awsoidc").oidcToken>`                      |
+
+
 ### Specify input variables
 
 While you can simply declare a variable in your script using a Harness expression or string for its value, using Input Variables provides some additional benefits:
