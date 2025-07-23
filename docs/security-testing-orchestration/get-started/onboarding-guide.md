@@ -58,18 +58,17 @@ The following sections describe the workflow for setting up STO. Once you comple
 
 ### Add Security Testing roles
 
-Harness includes two [RBAC roles](/docs/platform/role-based-access-control/rbac-in-harness/) specifically for STO users:
+Harness includes two [RBAC roles](/docs/security-testing-orchestration/rbac#built-in-sto-roles-default-roles) specifically for STO users, refer to [STO RBAC](/docs/security-testing-orchestration/rbac) documentation for more details.
 
-* **Security Testing Developer** role — Permissions for developer workflows: 
+* **[Security Testing Developer](/docs/security-testing-orchestration/rbac#built-in-sto-roles-default-roles)** role — Permissions for developer workflows: 
 
   - Configure and run scans
   - Set baselines (such as the `main` branch of `latest` tag) for scan targets
   - View scan results and troubleshoot detected issues
   - Configure scan steps to fail the pipeline if any "show-stopper" vulnerabilities are found
   - Request exemptions ("ignore rules") to allow a pipeline to proceed even if a scan detects vulnerabilities with a specific severity or higher (Critical, High, Medium, etc.)
-
    
-* **Security Testing AppSec** role — Permissions for Application Security or Security Operations staff. AppSec users have all Developer permissions, but only AppSec users can approve exemption requests. 
+* **[Security Testing AppSec](/docs/security-testing-orchestration/rbac#built-in-sto-roles-default-roles)** role — Permissions for Application Security or Security Operations staff. AppSec users have all Developer permissions, but only AppSec users can approve exemption requests. 
 
 These workflows are covered in [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline).
 
@@ -81,18 +80,18 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 <summary>Assign Security Testing roles: default workflow</summary>
 
 
-1. Select **Account Settings** (left menu) > **Access Control**.
+1. Select **Account/Organization/Project Settings** (left menu) > **Access Control**.
 2. In the **Users** table, select the user profile.
 3. Under Role Bindings, select **+Role**.
 4. Assign the **Security Testing Developer** role or the **Security Testing AppSec** role to the user profile.
 
-![](./static/set-up-harness-for-sto-16.png)
-
+<DocImage path={require('./static/set-up-harness-for-sto-16.png')} width="40%" height="40%" title="Click to view full size image" />
 
 
 </details>
 
-### STO Resource Group configuration limitation - RBAC
+
+<!-- ### STO Resource Group configuration limitation - RBAC
 STO is not currently listed as a **Resource** in the **Resource Groups** configuration UI. To allow users access to all STO resources, you must create or use a Resource Group with resources set to **All**. This requirement applies to all levels of the **Resource Scope**
 - Project
 - Organization
@@ -102,7 +101,7 @@ STO is not currently listed as a **Resource** in the **Resource Groups** configu
 Using the **Specified** option in the Resource Group may lead to errors in displaying STO information or executing STO operations for assigned users.
 :::
 
-<DocImage path={require('/docs/security-testing-orchestration/get-started/static/sto-resource-group-rbac-limiation.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('/docs/security-testing-orchestration/get-started/static/sto-resource-group-rbac-limiation.png')} width="100%" height="100%" title="Click to view full size image" /> -->
 
 
 ### Set up a build infrastructure for STO
