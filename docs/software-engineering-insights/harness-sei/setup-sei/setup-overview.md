@@ -56,7 +56,7 @@ You can download a sample CSV format directly from the UI before uploading your 
 
 #### Set up resources
 
-* [Upload your developer records via CSV](/docs/software-engineering-insights/harness-sei/setup-sei/upload-developer-records)
+* [Manage developers](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers)
 * [Set up a Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree)
 
 ### Set up teams & explore insights
