@@ -125,10 +125,167 @@ The displayed commands are dependent on your specific feature selections. Always
 
 ---
 
-## See Your Cloud Costs
-Use **[Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective)** to organize and visualize your cloud costs by business context—such as teams, environments, or applications.
+## After Connector Setup
+
+Within about 24 hours of linking your AWS account, billing data begins to flow into Harness. Harness automatically creates default **Perspectives** so you can immediately understand where your cloud spend is going. You can also build custom Perspectives that match your teams, environments, or applications.
+
+Next, head to **Budgets** to set spending thresholds and receive alerts.
+
+As your data flows, Harness will start flagging **Anomalies** and you can configure notification preferences to stay on top of unexpected spikes.
 
 ---
+
+
+## Individual Feature Permissions
+
+### Governance Permissions
+
+- Assign the [**Reader** role](https://docs.azure.cn/en-us/role-based-access-control/built-in-roles/general#reader) to let Harness view resources for governance analysis.
+- If you want Harness to execute automated governance actions, also assign the [**Contributor** role](https://docs.azure.cn/en-us/role-based-access-control/built-in-roles/privileged#contributor).
+
+### Granular Permissions for AutoStopping
+
+On this screen, you can select specific features and services for AutoStopping:
+
+### Virtual Machines
+
+<details>
+<summary><b>Schedules only</b></summary>
+
+```
+// List resource groups
+Microsoft.Resources/subscriptions/resourcegroups/read
+
+// List VMs
+Microsoft.Compute/virtualMachines/read
+
+// Start VMs
+Microsoft.Compute/virtualMachines/start/action
+
+// Stop VMs
+Microsoft.Compute/virtualMachines/deallocate/action
+```
+
+</details>
+
+<details>
+<summary><b>with App Gateway</b></summary>
+
+```
+// List virtual networks
+Microsoft.Network/virtualNetworks/read
+
+// List subnets
+Microsoft.Network/virtualNetworks/subnets/read
+
+// List public IP addresses
+Microsoft.Network/publicIPAddresses/read
+
+// List app gateways
+Microsoft.Network/applicationGateways/read
+
+// For traffic detection using access logs
+Microsoft.Storage/storageAccounts/write
+
+// For traffic detection using access logs
+Microsoft.Storage/storageAccounts/read
+
+// For traffic detection using access logs
+Microsoft.Storage/storageAccounts/listKeys/action
+
+// Create Azure function for initial warm up
+Microsoft.Web/sites/write
+
+// Create Azure function for initial warm up
+Microsoft.Web/sites/read
+
+// Create Azure function for initial warm up
+Microsoft.Web/sites/config/write
+
+// Create Azure function for initial warm up
+Microsoft.Web/sites/functions/write
+
+// Create Azure function for initial warm up
+Microsoft.Web/sites/functions/read
+
+// Permissions to create application gateway
+Microsoft.Network/applicationGateways/write
+
+// Permissions to create application gateway
+Microsoft.Network/virtualNetworks/subnets/join/action
+
+// Permissions to create application gateway
+Microsoft.Network/publicIPAddresses/join/action
+
+// Permissions to create application gateway
+microsoft.insights/diagnosticSettings/write
+
+// Permissions to create application gateway
+Microsoft.Network/networkInterfaces/read
+
+// Needed during warmup
+Microsoft.Network/applicationGateways/backendhealth/action
+```
+
+</details>
+
+<details>
+<summary><b>with AutoStopping Proxy</b></summary>
+
+```
+// List virtual networks
+Microsoft.Network/virtualNetworks/read
+
+// List subnets
+Microsoft.Network/virtualNetworks/subnets/read
+
+// List network security groups
+Microsoft.Network/networkSecurityGroups/read
+
+// List security rules
+Microsoft.Network/networkSecurityGroups/securityRules/read
+
+// List SSH Keys
+Microsoft.Compute/sshPublicKeys/read
+
+// create static IP
+Microsoft.Network/publicIPAddresses/write
+
+// Read IP address
+Microsoft.Network/publicIPAddresses/read
+
+// Basic permissions to setup VM
+Microsoft.Network/networkInterfaces/write
+
+// Basic permissions to setup VM
+Microsoft.Network/networkSecurityGroups/join/action
+
+// Basic permissions to setup VM
+Microsoft.Network/virtualNetworks/subnets/join/action
+
+// Basic permissions to setup VM
+Microsoft.Network/networkInterfaces/read
+
+// Basic permissions to setup VM
+Microsoft.Network/networkInterfaces/join/action
+
+// Create VM
+Microsoft.Compute/virtualMachines/write
+
+// Delete proxy VM
+Microsoft.Compute/virtualMachines/delete
+
+// Delete public IP allocated for proxy
+Microsoft.Network/publicIPAddresses/delete
+
+// Delete proxy network interface
+Microsoft.Network/networkInterfaces/delete
+
+// Delete OS disk of proxy
+Microsoft.Compute/disks/delete
+```
+
+</details>
 
 ## Next Steps
 Once your Azure billing data is flowing into Harness, explore these features to enhance your cloud cost management:
