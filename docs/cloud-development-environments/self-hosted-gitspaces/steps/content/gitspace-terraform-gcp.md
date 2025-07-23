@@ -129,7 +129,7 @@ module "harness-gitspaces" {
 ###  5. Initialize and Apply the Terraform Configuration
 
 Once your Terraform config is ready:
-1. **Initialize Terraform**: Run ``terraform init`` to **initialize your directory**. Refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/init) to learn more about this command reference. 
+1. **Initialize Terraform**: Run ``terraform init`` to **initialize your backend**. Refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/init) to learn more about this command reference. 
 2. **Plan Terraform**: Run ``terraform plan`` to **preview changes**. Refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/plan) to learn more about this command reference. 
 3. **Apply Terraform**: Run ``terraform apply`` to **execute and provision infrastructure**. Refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/apply) to learn more about this command reference. 
 

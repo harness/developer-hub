@@ -57,13 +57,28 @@ Refer to this [documentation](https://registry.terraform.io/modules/harness/harn
 Follow these steps to configure and apply the Terraform module. Ensure all prerequisites are completed before proceeding.
 
 ### 1. Prepare the Terraform Input Variables
-To apply the Terraform module, you need three mandatory input parameters:
+To apply the Terraform module, you need seven mandatory input parameters:
 
 #### Mandatory Input Variables
-To apply the Terraform module, you need three mandatory input parameters:
+To apply the Terraform module, you need seven mandatory input parameters:
+
+- **`access_key`**: This is the AWS Access Key required to authenticate into your AWS account. You can find this in the AWS console, refer to [Manage Access Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) to learn more about the same. 
+- **`secret_key`**: This is the AWS Secret Key required to authenticate into your account. 
+- **`token`**: This is the AWS session token, which is a temporary credential required to authenticate into your account. Learn more about [Temporary Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html).
+- **Infra Config YAML File**: Contains all infrastructure details for setting up the Terraform module. Learn how to [retrieve it here](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#retrieve-the-infra-config-yaml).
+- **`default_region`**: This field is used to specify the region as your **default workspace**. This is the region where all the global resources will be created. Learn more about the same by referring to [Deafult Workspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/content/gitspace-terraform-aws.md#default-workspace)
+- **`region`**: This field is defined to fetch the current workspace using ``terraform.workspace``. 
+- **`manage_dns_zone`**: Controls DNS management:
+  - `yes`: DNS will be managed automatically by the module.
+  - `no`: You'll need to manage DNS manually.
 
 #### Optional Input Variables
 These have default values and are not mandatory:
+
+- **`use_certificate_manager`**: Set to `true` (default) to use AWS Certificate Manager for SSL.
+- **`private_key_path`**: Provide if not using Certificate Manager (default: `""`).
+- **`certificate_path`**: Provide if not using Certificate Manager (default: `""`).
+- **`chain_path`**: //Pending
 
 ### 2. Retrieve the Infra Config YAML
 Use the **Infra Config YAML** file downloaded during [Gitspace Infrastructure configuration in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#download-the-infra-config-yaml). This is required for the Terraform module.
@@ -111,11 +126,29 @@ module "harness-gitspaces" {
 ```
 
 ### 4. Initialize and Apply the Terraform Configuration (Default Workspace)
+Once your terraform configuration is ready, you'll have to start by initialising the backend and applying the terraform configuration in your **default workspace** to **create all the global resources**. Use the following steps to do so: 
+
+1. **Show Terraform Workspace**: You'll always start in a **default workspace**. You can check the list of existing workspaces by running ``terraform workspace list``. In case you want to check which workspace you are in currently, run ``terraform workspace show``. 
+2. **Initialize Terraform**: Run ``terraform init`` to **initialize your backend**. Refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/init) to learn more about this command reference. 
+3. **Plan Terraform**: Run ``terraform plan`` to **preview changes**. Refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/plan) to learn more about this command reference. 
+4. **Apply Terraform**: Run ``terraform apply`` to **execute and provision infrastructure**. Refer to this [guide](https://developer.hashicorp.com/terraform/cli/commands/apply) to learn more about this command reference. 
+
+Once you have applied the terraform configuration in your ``default`` workspace, all the **global resources** have been created. 
 
 ### 5. Apply the Terraform Configuration (Region Workspaces)
+Once all your **global resources** have been created in your ``default`` workspace, all you have to do next is apply the terraform configuration in your **region workspaces**. This is required for **every region** to be used for creating Gitspaces. Use the following steps to do so: 
+
+1. **Switch to Region Workspace**: Run ``terraform workspace select -or-create <region-name>`` to switch to the region workspace. Replace `<region-name>` with the name of the region you want to apply the configuration in. 
+2. **Apply Terraform**: Run ``terraform apply`` to **execute and provision infrastructure**. This will create all the region wise resources in the specific region. 
+
+Once you have applied the terraform configuration in all the **region workspaces**, all the **region wise resources** have been created. This provisions the AWS Infrastructure needed for setting up Gitspaces. 
 
 ### 6. Download the Pool YAML File
+After applying the [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/aws/0.0.1), a ``pool.yaml`` file is generated in the same folder as your ``main.tf``. This file defines the VM specs for your Gitspace instances.
+
+Keep this file handy — it will be required in the next step.
 
 ## Next Steps
+Now that your AWS infrastructure is fully set up, proceed to [Configure the Runner and Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate.md). Make sure you have the [`pool.yaml` file ready](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#download-the-pool-yaml-file) for the next steps.
 
 
