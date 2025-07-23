@@ -6,6 +6,10 @@ description: This topic describes how to optimize cloud costs using asset govern
 
 Recommendations help kickstart your journey with governance. Essentially, Harness runs certain policies behind the scenes to generate recommendations for your governance-enabled GCP projects. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, Harness showcases recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details. 
 
+:::tip Enable APIs
+Before recommendations can run, make sure the required Google Cloud APIs are enabled for each project. See [Enable required Google Cloud APIs for Governance](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#enable-required-google-cloud-apis-for-governance).
+:::
+
 ## Governance Recommendation Insights
 
 Harness CCM now provides users the ability to monitor Governance Recommendations through the new Recommendations Insights tab in the Governance module. 
