@@ -3,6 +3,12 @@ title: Get Started
 description: Learn how to get started with CCM with your chosen cloud provider.
 sidebar_position: 20
 sidebar_label: Get Started
+redirect_from: 
+- /docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws
+- /docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure
+- /docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp
+- /docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes
+- /docs/cloud-cost-management/get-started/onboarding-guide/use-quick-create-k8s
 ---
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
