@@ -44,7 +44,7 @@ To create an efficiency profile:
 
 ### Set up Lead Time for Changes
 
-Lead Time for Changes measures how long it takes for a task to move from development to production. Setting up LTTC in your Efficiency Profile involves mapping the phases of your delivery workflow and selecting events that signal the start and end of each phase.
+Lead Time for Changes (LTTC) measures how long it takes for a task to move from development to production. Setting up LTTC in your Efficiency Profile involves mapping the phases of your delivery workflow and selecting events that signal the start and end of each phase.
 
 #### Configuration overview
 
