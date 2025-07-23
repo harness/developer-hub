@@ -113,8 +113,8 @@ static/  @rohanmaharjan100 @wei-harness
 # Chaos Docs
 /docs/chaos-engineering/ @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
 /release-notes/chaos-engineering.md @Jonsy13 @Ashutosh-Bhadauriya
-/src/components/Roadmap/data/ceData.ts @SushrutHarness @Ashutosh-Bhadauriya
-/src/components/Docs/data/chaosEngineeringData* @SushrutHarness @Ashutosh-Bhadauriya
+/src/components/Roadmap/data/ceData.ts @Ashutosh-Bhadauriya
+/src/components/Docs/data/chaosEngineeringData* @Ashutosh-Bhadauriya
 # Chaos FAQs
 /docs/faqs/chaos-engineering-faqs @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
 /docs/faqs/static @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
