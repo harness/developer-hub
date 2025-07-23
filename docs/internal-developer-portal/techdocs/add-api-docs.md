@@ -119,7 +119,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: https://<absolute-url-to-openapi-spec-file>/petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 metadata:
   description: The petstore API
   links:
@@ -157,7 +157,7 @@ spec:
   lifecycle: dev
   owner: Harness_Partners
   definition:
-    $text: https://<absolute-url-to-openapi-spec-file>/petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 ```
 </TabItem>
 </Tabs>
@@ -339,7 +339,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: https://<absolute-url-to-openapi-spec-file>/petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 metadata:
   description: The petstore API
   links:
@@ -397,7 +397,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: https://<absolute-url-to-openapi-spec-file>/petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 metadata:
   description: The petstore API
   links:
@@ -436,7 +436,7 @@ spec:
   lifecycle: dev
   owner: Harness_Partners
   definition:
-    $text: https://<absolute-url-to-openapi-spec-file>/petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 
 ```
 </TabItem>

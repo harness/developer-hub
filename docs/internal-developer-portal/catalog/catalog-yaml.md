@@ -289,7 +289,7 @@ owner: Harness_Partners
 spec:
   lifecycle: dev
   definition:
-    $text: https://<absolute-url-to-file>/petstore.oas.yaml
+    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
 metadata:
   description: The petstore API
   links:
