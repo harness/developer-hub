@@ -17,7 +17,7 @@ helpdocs_is_published: true
 | **Setup Complexity** | Requires manual SQS Queue setup and maintenance | Works out-of-the-box with zero configuration |
 | **Interruption Handling** | Basic SQS-based monitoring | Sophisticated interruption prediction and handling |
 | **Node Selection** | Limited strategy options | Configurable strategies (cost-optimized, least-interrupted) |
-| **Fallback Mechanism** | Basic fallback to On-Demand | Intelligent fallback with reverse fallback capability |
+| **Fallback & Reverse Fallback** | Basic fallback: moves pods to On-Demand once Spot is interrupted; no automatic return | Intelligent fallback migrates pods to On-Demand on interruption risk **and** reverse fallback automatically moves them back to Spot when capacity is healthy |
 
 
 ### 2. Cost Visibility and Savings Analysis
@@ -29,31 +29,30 @@ helpdocs_is_published: true
 
 ### 3. Intelligent Bin Packing
 
-While Karpenter offers basic consolidation policies and budgets for node consolidation, it lacks granular control over underutilization thresholds. Users cannot precisely define what constitutes "underutilized" resources, limiting optimization effectiveness.
-
-Cluster Orchestrator addresses this gap by allowing users to configure specific CPU and Memory percentage thresholds. When node usage falls below these customizable thresholds, the system intelligently evicts pods to other available nodes in the cluster. This process respects Pod Disruption Budgets and scheduling constraints, ensuring application availability while achieving efficient bin packing and optimal resource utilization.
+| Feature | Karpenter | Cluster Orchestrator |
+|---------|-----------|---------------------|
+| **Granular Thresholds** | Fixed consolidation logic; cannot tune under-utilisation levels | User-definable CPU & Memory thresholds for bin-packing decisions |
+| **Pod Evictions** | Basic eviction | Evicts pods intelligently while honoring Pod Disruption Budgets |
+| **Resulting Utilisation** | Moderate | Maximised node utilisation and lower waste |
 
 ### 4. Dynamic Spot/On-Demand Split Configuration
 
-This feature is exclusive to Cluster Orchestrator and provides unprecedented control over workload distribution:
-
-- **Percentage-Based Distribution**: Define exact percentages for Spot vs On-Demand pod placement
-- **Base Capacity Management**: Maintain minimum On-Demand replicas for critical traffic
+| Capability | Karpenter | Cluster Orchestrator |
+|------------|-----------|---------------------|
+| **Percentage-based Spot/On-Demand mix** | Not available | Specify exact Spot vs On-Demand percentages via WorkloadDistributionRules |
+| **Base capacity safeguards** | Not available | Ensure minimum On-Demand replicas for critical workloads |
 
 ### 5. Commitment Utilization Guarantee
 
-**Karpenter:**
-- No active or complete management of Reserved Instances or Savings Plans
-- Requires manual configuration on your nodepools
-- Can lead to over-provisioning and missed commitment utilization if manual data is not correct
+| Feature | Karpenter | Cluster Orchestrator |
+|---------|-----------|---------------------|
+| **RI / Savings Plan awareness** | None; manual tracking required | Fully integrated with [Harness Commitment Orchestrator](https://developer.harness.io/docs/category/commitment-orchestrator) |
+| **Automatic node type selection** | Not supported | Launches nodes that consume idle commitments first |
+| **Over-provisioning risk** | High if data outdated | Minimized by commitment-aware scheduling |
 
-**Cluster Orchestrator:**
-- **Commitment Integration**: Full integration with Harness Commitment Orchestrator
-- **Utilization**: Ensures maximum utilization of idle commitment capacity
-- **Cost Optimization**: Prevents over-provisioning by leveraging pre-purchased capacity
+### 6. Replacement Windows
 
-### 6. Replacement Schedules
-
-**Cluster Orchestrator:**
-- **Scheduled Operations**: Time-window based control when disruptive operations (bin packing, consolidation, reverse fallback) execute
-- **Business-Aware Scheduling**: Prevent disruptions during critical business hours
+| Capability | Karpenter | Cluster Orchestrator |
+|------------|-----------|---------------------|
+| **Time-window control for disruptive ops** | Not available | Schedule bin packing / consolidation inside defined windows |
+| **Business-hour safeguards** | Not available | Skip disruptive actions during critical periods |
