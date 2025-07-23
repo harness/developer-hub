@@ -132,9 +132,10 @@ The following components are tested and supported on FIPS-enabled and enforced S
 | Notification Mechanisms          | SMTP<br />Slack<br />MS Teams                                                              |
 | Deployment                       | Kubernetes<br />Native Helm                                                                |
 | Build                            | Shell<br />Build and Push to ECR<br />Build and Push to Docker<br />Upload Artifacts to S3 |
-| Security Tests                   | SonarQube<br />Aqua Trivy<br />Gitleaks<br />Kaniko<br />Grype<br />Semgrep                |
+| Security Tests | [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference)<br />[Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)<br />[Gitleaks](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)<br />[Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference)<br />[OSV](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference)<br />[Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)<br />[SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) |
 | IACM                             | Supported                                                                                  |
 | SCS                              | Supported                                                                                  |
+
 
 ## Validate FIPS 
 
