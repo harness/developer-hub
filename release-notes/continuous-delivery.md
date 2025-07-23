@@ -67,6 +67,15 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Harness now supports sending a success status to GitHub PRs when stages are skipped, ensuring skipped stages don’t block pull request merges. (**PIPE-27210**)
 
+#### Behavior Changes
+
+- Harness now preserves **required** and **description** metadata for Service and Environment variables in Pipelines and Templates, ensuring that any variable marked `required: true` or given a description in a Service/Environment retains those attributes when used as a runtime input in a Pipeline run form or Input Set. Currently, this feature is behind the feature flag `PIPE_POPULATE_REQUIRED_AND_DESC_METADATA_INTO_REFERENCING_ENTITY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-15840**)
+
+  With this feature:
+  - The **Required** flag and **Description** attribute appear in Service and Environment variables when referenced in Pipelines.
+  - **Impact:** All Pipelines and Templates that use Services or Environments with variables will require a save—since the new `description` and `required` fields show up on opening—which may be disruptive. We will not enable the feature flag immediately (dates to be announced). Contact Harness Support to turn it on right away if needed.
+ 
+
 #### Fixed Issues
 
 - Previously, pipeline rollbacks generated independent `PIPELINE_START` and `PIPELINE_SUCCESS` notifications before the main pipeline's `PIPELINE_FAILED` notification, causing confusion. The issue is resolved and is behind the feature flag `PIPE_DISABLE_PIPELINE_NOTIFICATIONS_ON_ROLLBACK`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-28097**)
