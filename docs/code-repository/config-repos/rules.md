@@ -101,13 +101,13 @@ Check this box to activate the rule.
 
 Choose which operations to restrict for tags matching the pattern:
 
-* **Block tag creation** – only users with bypass permission can create matching tags.
-* **Block tag deletion** – restrict who can delete these tags.
-* **Block tag update** – restrict force-pushing or re-tagging existing tag names.
+* **Block tag creation** – Restrict who can create matching tags.
+* **Block tag deletion** – Restrict who can delete matching tags.
+* **Block tag update** – Restrict who can update matching tags.
 
 #### Bypass List
 
-Allow specific users, user groups, or service accounts to override the rule. Only those listed will be able to perform restricted operations.
+Allow specific users, user groups, or service accounts to bypass the rule. Only those listed will be able to perform restricted operations.
 
 ### Example: Prevent Accidental Release Tagging
 
@@ -115,9 +115,9 @@ If you want to prevent unapproved users from creating or deleting tags like `v1.
 
 * Target pattern: `v*`
 * Enable:
-
   * Block tag creation
   * Block tag deletion
+  * Block tag update
 * Add your CI service account to the bypass list
 
 ### Tips
