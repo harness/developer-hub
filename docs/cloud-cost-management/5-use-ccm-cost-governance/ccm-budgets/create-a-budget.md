@@ -21,7 +21,7 @@ Harness CCM Budgets provide comprehensive cost governance capabilities that help
 ## Prerequisites
 
 * [Set Up Cloud Cost Management for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
-* [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md): Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. 
+* [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective): Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. 
 
 ## Create a Budget
 
@@ -39,7 +39,7 @@ Harness CCM Budgets provide comprehensive cost governance capabilities that help
 <DocImage path={require('./static/budget-stepone.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 - **Select Perspective**, select the Perspective for which you want to set a budget.  
-Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first [create a new Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md) and then proceed to set a budget. You can add multiple budgets for a single Perspective.
+Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first [create a new Perspective](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective) and then proceed to set a budget. You can add multiple budgets for a single Perspective.
 
 - **Budget Name**: enter a name for your budget that will appear in the budget dashboard to identify this budget. 
 
@@ -175,37 +175,18 @@ Follow this interactive guide to understand how to navigate and use the Budget D
 
 ## Edit/Delete Budgets
 
-### Edit a Budget
-
 To edit a budget:
 
 1. In **All Budgets**, select the budget that you want to edit.
-2. Click **Edit**.
+2. Click **Edit** to edit the budget.
+3. To delete a budget, In **All Budgets**, select the budget that you want to delete and click on **Delete**.
    
-     ![](./static/create-a-budget-12.png)
-3. The Budget settings appear. Follow the steps in **Create a New Budget** to edit the details of the budget.  
+<DocImage path={require('./static/budget-delete.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 :::note
 You cannot edit the **Budget Period**.
 :::
 
-### Delete a Budget
-
 :::warning
 Once a budget is deleted, it cannot be restored.
 :::
-
-To delete a budget:
-
-1. In **All Budgets**, select the budget that you want to delete.
-   
-     ![](./static/create-a-budget-13.png)
-2. Click **Delete**.
-   
-     ![](./static/create-a-budget-14.png)
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> b2311c8e31 (new changes)

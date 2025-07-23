@@ -119,6 +119,8 @@ Follow this interactive guide to understand how to navigate and use the Budget D
 
 ### Edit/Delete Budget Groups
 
+
+
 #### Edit a Budget Group
 
 To update a budget group:
@@ -158,3 +160,6 @@ To delete a budget group, in **All Budgets**, select the budget group that you w
 :::info
 When a perspective is deleted, all associated entities, such as reports, alerts, budgets, and budget groups are also deleted. If all children of a budget group are deleted as part of the perspective deletion, then the budget group itself will also be deleted.
 :::
+
+
+<DocImage path={require('./static/bg-delete.png')} width="90%" height="90%" title="Click to view full-size image" />
