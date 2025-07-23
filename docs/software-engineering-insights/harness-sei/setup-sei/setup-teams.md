@@ -9,7 +9,60 @@ redirect_from:
 
 ## Overview
 
-Team settings allow you to tailor how SEI 2.0 collects and interprets data for specific teams, including defining incidents, features, and bugs.
+Teams are the core unit of measurement in SEI 2.0. Every leaf node in the Org Tree is treated as a Team, making it the fundamental grouping for surfacing insights, applying goals, and driving accountability.
+
+Each Team represents a group of developers working together within the organizational hierarchy and is automatically derived from the Org Tree structure.
+
+### Key concepts
+
+* **Auto-derived:** Every leaf node in the Org Tree is automatically considered a Team.
+* **Configurable:** Each Team has its own configuration to define how metrics are calculated and displayed.
+* **Contextualized and metric specific settings:** Teams include metadata such as associated integrations, relevant services, repositories, destination branches, pipelines, environments, etc.
+
+This configuration layer adds precision to how metrics like Deployment Frequency, Lead Time, MTTR, and others are calculated, which ensures each metric reflects the real scope, velocity, and complexity of the team's delivery lifecycle.
+
+### Why team settings matters
+
+Out of the box, SEI builds teams from your organization’s hierarchy. However, each team needs to be contextualized with additional configuration to ensure data is mapped correctly and insights are accurate.
+
+This includes:
+
+* Identifying the right developers and matching them to their work.
+* Linking the team to the right integrations across issue management systems, source code managers, continuous delivery and incident monitoring/management systems.
+* Defining how metrics like incidents, bugs, and features are recognized in your software delivery workflow.
+
+## Team Settings Overview
+
+Each team’s configuration includes the following:
+
+### Developer Identifiers (Required for Productivity Insights)
+
+To measure productivity metrics accurately (e.g., coding days, PR activity), SEI needs to know which developer performed which action in each tool.
+
+Team admins must manually map developers to their identifiers in each system:
+
+* Jira: User Account ID
+* GitHub: Username
+* GitLab: Username
+* Bitbucket: Username
+
+This step is mandatory for productivity metrics.
+
+### Tool specific settings
+
+SEI supports integration with various DevOps tools. Each team can override global settings to use specific integrations that better reflect their actual tool usage.
+
+Only tools included in the team's linked Efficiency or Business Alignment profiles will require configuration.
+
+#### Supported Tools
+
+* Issue Management: Jira, Azure Boards
+* Source Code Management (SCM): GitHub, GitLab, Bitbucket
+* Continuous Integration / Delivery (CI/CD): Harness CD, GitHub Actions and Jenkins.
+
+
+
+
 
 ## Configuring team settings
 
