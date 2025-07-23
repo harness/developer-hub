@@ -237,7 +237,7 @@ There are two primary approaches to managing multiple database instances:
 
 ### 1. Branch-Based Approach
 
-Use different branches for different environments:
+Use different branches for [different environments](/docs/database-devops/gitops/environment-by-branch)
 
 ```
 main branch     → Development
@@ -265,7 +265,7 @@ Below attached screen shows the structure of branch-based approach, where we hav
 
 Maintain instance-specific directories in the main branch:
 
-``` bash
+```bash
 db/
 ├── envs/
 │   ├── qa/

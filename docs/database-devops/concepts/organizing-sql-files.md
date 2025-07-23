@@ -112,7 +112,7 @@ Notice:
 Using space in author name is not recommended. Prefer to use dot/dash separated names.
 :::
 
-### `include` and `includeAll` tags
+### include and includeAll tags
 Liquibase provides two primary tags for referencing other changelog files in your root changelog: include and includeAll. The `include` tag allows you to include a single SQL file in your changelog: 
 
 <Tabs>

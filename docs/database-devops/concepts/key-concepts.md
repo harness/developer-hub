@@ -3,6 +3,25 @@ title: Database DevOps Key Concepts
 sidebar_label: DB DevOps Key Concepts
 description: Basic terminology and concepts related to Harness Database DevOps
 sidebar_position: 1
+keywords:
+  - database devops
+  - db devops
+  - harness db devops
+  - harness database devops
+  - harness dbops
+  - harness database
+  - harness db
+  - harness devops
+  - continuous integration
+  - continuous delivery
+  - ci cd
+tags:
+  - database-devops
+  - db-devops
+  - harness-db-devops
+  - key-concepts
+  - glossary
+  - dbops
 ---
 
 import BetaIcon from '/img/icon_beta.svg';

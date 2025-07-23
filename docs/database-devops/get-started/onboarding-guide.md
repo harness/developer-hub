@@ -3,6 +3,25 @@ title: Database DevOps onboarding guide
 description: A self-service onboarding guide for Harness DB DevOps.
 sidebar_position: 4
 sidebar_label: Onboarding guide
+keywords:
+  - database devops
+  - db devops
+  - harness db devops
+  - harness database devops
+  - harness dbops
+  - harness database
+  - harness db
+  - harness devops
+  - continuous integration
+  - continuous delivery
+  - ci cd
+tags:
+  - database-devops
+  - db-devops
+  - harness-db-devops
+  - onboarding-guide
+  - getting-started
+  - dbops
 ---
 
 import BetaIcon from '/img/icon_beta.svg';

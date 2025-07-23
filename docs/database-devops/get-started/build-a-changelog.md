@@ -1,6 +1,8 @@
 ---
 title: Building Changelog File
 description: Learn how to build a changelog file for your database using Harness DBOps.
+sidebar_label: Building Changelog
+sidebar_position: 1
 keywords:
   - changelog
   - database changelog
@@ -15,8 +17,13 @@ keywords:
   - harness db
   - harness devops
   - harness ci cd
-sidebar_label: Building Changelog
-sidebar_position: 1
+tags:
+  - changelog
+  - database-devops
+  - db-devops
+  - harness-db-devops
+  - ci-cd
+  - dbops
 ---
 
 import Tabs from '@theme/Tabs';

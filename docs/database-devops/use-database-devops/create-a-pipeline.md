@@ -21,6 +21,8 @@ tags:
   - database-deployments
   - ci-cd
   - dbops-automation
+  - database-migrations
+  - dbops
 ---
 
 1. In Harness, go to the **Database DevOps** module and select your **Project**. 

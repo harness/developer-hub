@@ -4,6 +4,20 @@ description: This document provides a guide on how to use custom scripts for Dat
 sidebar_label: Custom Script for Database DevOps
 sidebar_position: 5
 keywords: [database devops, custom script, database migration, database versioning, docker, docker registry, jfrog artifactory, github, gitlab, bitbucket]
+tags:
+  - database-devops
+  - custom-script
+  - database-migration
+  - database-versioning
+  - docker
+  - docker-registry
+  - jfrog-artifactory
+  - github
+  - gitlab
+  - bitbucket
+  - dbops
+  - harness-db-devops
+
 ---
 
 ## Overview
