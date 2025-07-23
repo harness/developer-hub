@@ -59,13 +59,13 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### New Features and Enhancements
 
-- Harness now supports separate **Create** and **Edit** authorization grants for pipelines and templates, decoupling these permissions for more granular RBAC control. Currently, this feature is behind feature flags `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION` and `PIPE_CREATE_EDIT_PERMISSION_SPLIT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.(**PIPE-24649**)
+- Harness now supports separate **Create** and **Edit** authorization grants for pipelines and templates, decoupling these permissions for more granular RBAC control. Currently, this feature is behind feature flags `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION` and `PIPE_CREATE_EDIT_PERMISSION_SPLIT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Enabling this feature requires migrating your existing resources; Harness Support will guide you through the process. (**PIPE-24649**)
+
 
 - Harness now supports [**Project-Level Pipeline Execution Concurrency**](/docs/platform/pipelines/pipeline-settings/#project-level-pipeline-execution-concurrency), where users can split their account-wide concurrency into High-Priority and Low-Priority partitions—reserving slots for critical projects. Currently, this feature is behind feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-15840**)
 
-- Harness now supports customizing Git status check data for Git-triggered pipelines, enabling control over check names and which statuses are reported via parameters at step, stage, and pipeline levels. (**PIPE-18844**)
+- Harness now supports customizing Git status check data for Git-triggered pipelines, enabling control over check names and which statuses are reported via parameters at the step, stage, and pipeline levels; additionally, skipped stages now report **Success** to GitHub PRs so they don’t block pull request merges. (**PIPE-18844**, **PIPE-27210**)
 
-- Harness now supports sending a success status to GitHub PRs when stages are skipped, ensuring skipped stages don’t block pull request merges. (**PIPE-27210**)
 
 #### Behavior Changes
 
