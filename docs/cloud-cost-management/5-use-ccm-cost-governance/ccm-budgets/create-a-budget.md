@@ -55,7 +55,19 @@ Budgets' start date cannot be later than the 28th of any month.
 
 <DocImage path={require('./static/budget-steptwo.png')} width="90%" height="90%" title="Click to view full-size image" />
 
-- **Budget Period**: select the period for which you want to set the budget. You can set the budget period to **Monthly**, **Daily**, **Weekly**, **Quarterly**, or **Yearly**.
+- **Budget Period**: Select the time period for your budget. Available options include:
+  * **Monthly**: Set a budget for each calendar month
+  * **Daily**: Set a daily budget
+  * **Weekly**: Set a weekly budget
+  * **Quarterly**: Set a budget for each quarter
+  * **Yearly**: Set an annual budget
+
+  When selecting **Yearly**, you can choose your budget breakdown as either:
+  * **Yearly**: One budget amount for the entire year
+  * **Monthly**: Individual budget amounts for each month of the year, with the option to override forecasted spend for each month.
+
+<DocImage path={require('./static/monthly-yearly-breakdown.png')} width="90%" height="90%" title="Click to view full-size image" />
+
 - **Period starts from**: Use the date picker to set the start date for your budget.
 - **Budget Type**: select a Budget Type:  
 	* **Specified Amount**: Enter the amount that you want to set as the budget limit.
