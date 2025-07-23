@@ -1,11 +1,11 @@
 {
-    "label": "Exempt issues",
+    "label": "Exempt Issues",
     "position": 90,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Exempt issues"
+        "title": "Exempt Issues"
     }
 }

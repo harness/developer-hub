@@ -329,7 +329,7 @@ This workflow is useful if you don't have a CI license and want to use [Kaniko](
 
 3. Use a Run step to run a manual scan of the local image.
 
-4. Add a [Security Tests step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support) to [ingest](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline) your scan data.
+4. Add a [Security Tests step](/docs/security-testing-orchestration/whats-supported/scanners) to [ingest](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline) your scan data.
 
    If the scan results meet or exceed the [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) threshold, the pipeline fails.
 
@@ -354,7 +354,7 @@ This workflow is useful if you have a CI license and want to use [skopeo](https:
 
 4. Use a Run step to scan the local image TAR.
 
-5. Add a [Security Tests step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support) to [ingest](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline) your scan data.
+5. Add a [Security Tests step](/docs/security-testing-orchestration/whats-supported/scanners) to [ingest](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline) your scan data.
 
    If the scan results meet or exceed the [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) threshold, the pipeline fails.
 

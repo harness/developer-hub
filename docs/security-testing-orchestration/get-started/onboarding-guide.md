@@ -1,5 +1,5 @@
 ---
-title: Onboarding guide
+title: Onboarding Guide
 description: Set up your permissions, infrastructure, delegate, and connectors.
 sidebar_position: 20
 helpdocs_topic_id: rlbw5luj4h
@@ -106,7 +106,7 @@ Using the **Specified** option in the Resource Group may lead to errors in displ
 
 ### Set up a build infrastructure for STO
 
-You need a Harness build infrastructure to run scans in STO. First, review [Operating systems and architectures supported by STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#supported-operating-systems-and-architectures). Then select the infrastructure you want to use: 
+You need a Harness build infrastructure to run scans in STO. First, review [Operating systems and architectures supported by STO](/docs/security-testing-orchestration/whats-supported/infrastructure). Then select the infrastructure you want to use: 
 
 - [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) 
 

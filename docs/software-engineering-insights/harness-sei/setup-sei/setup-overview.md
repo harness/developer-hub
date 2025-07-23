@@ -13,7 +13,7 @@ Follow these steps to get started and customize SEI 2.0 to your team's structure
 
 ### Set up integrations and your org structure
 
-To start using SEI 2.0, you can [configure integrations](./configure-integrations) with your organization's source control, CI/CD, and ticketing tools. Once your integrations are in place, [create org trees](./setup-org-tree) to define your team structure and reporting relationships in SEI 2.0. You can then [add developers](./upload-developer-records) and assign them to teams to begin tracking insights.
+To start using SEI 2.0, you can [configure integrations](./configure-integrations/overview) with your organization's source control, CI/CD, and ticketing tools. Once your integrations are in place, [create org trees](./setup-org-tree) to define your team structure and reporting relationships in SEI 2.0. You can then [add developers](./manage-developers) and assign them to teams to begin tracking insights.
 
 ### Define performance benchmarks
 

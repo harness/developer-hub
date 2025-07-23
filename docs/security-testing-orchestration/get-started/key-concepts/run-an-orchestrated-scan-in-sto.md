@@ -23,7 +23,7 @@ To set up an orchestration scan, you specify information such as:
 	+ Code repo — project and branch
 	+ Instance (website) — identifier, environment, domain, path, protocol, port
 
-STO supports orchestration scans for popular open-source scanners such as Aqua-Trivy and Bandit as well as commercial scanners such as SonarQube. For a complete list of supported scanners, go to [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support).
+STO supports orchestration scans for popular open-source scanners such as Aqua-Trivy and Bandit as well as commercial scanners such as SonarQube. For a complete list of supported scanners, go to [Harness STO scanner support](/docs/security-testing-orchestration/whats-supported/scanners).
 
 ## Example workflows
 
@@ -34,5 +34,5 @@ Here are some example workflows that illustrate how to set up an orchestration s
 
 ## See also
 
-- [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support)
+- [Harness STO scanner support](/docs/security-testing-orchestration/whats-supported/scanners)
 - [Run an ingestion-only scan in an STO pipeline](./ingest-scan-results-into-an-sto-pipeline.md)
