@@ -211,7 +211,7 @@ This flexible setup enables teams to define failure signals in a way that reflec
 
 Mean Time to Restore (MTTR) measures the average time it takes for your teams to restore service after a failure or incident. This metric helps you understand how quickly your teams respond to and resolve production issues.
 
-#### Select a Incident/Failure Detection Source
+#### Select an Incident/Failure Detection Source
 
 Currently, SEI supports MTTR measurement using:
 
