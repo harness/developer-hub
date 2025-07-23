@@ -43,6 +43,10 @@ Configure the following fields in the step to perform the attestation
 - **Connector**: Select the HashiCorp Vault connector.  
 - **Key**: Enter the path to the Transit Secrets Engine in your HashiCorp Vault where the keys are stored.
 
+:::note
+Vault is supported only for Kubernetes and VM infrastructure.
+:::
+
 </TabItem>
 
 </Tabs>
