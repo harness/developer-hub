@@ -1250,59 +1250,11 @@ logs:PutLogEvents
 
 ## 5. Cloud Asset Governance Permissions
 
-The Cloud Asset Governance feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. This feature provides asset management for EC2, EBS, RDS, S3 resources and enables automated actions.
-
-#### Required Permissions
-
-Enable the following permissions in AWS to execute cloud governance rules:
-
-
-<details>
-<summary><b>Click to view Cloud Asset Governance Policy</b></summary>
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": [
-                "ec2:Describe*",
-                "ec2:DeleteSnapshot",
-                "ec2:DeleteVolume",
-                "ec2:Get*",
-                "ec2:ListImagesInRecycleBin",
-                "ec2:ListSnapshotsInRecycleBin",
-                "elasticbeanstalk:Check*",
-                "elasticbeanstalk:Describe*",
-                "elasticbeanstalk:List*",
-                "elasticbeanstalk:Request*",
-                "elasticbeanstalk:Retrieve*",
-                "elasticbeanstalk:Validate*",
-                "elasticloadbalancing:Describe*",
-                "rds:Describe*",
-                "rds:List*",
-                "autoscaling-plans:Describe*",
-                "autoscaling-plans:GetScalingPlanResourceForecastData",
-                "autoscaling:Describe*",
-                "autoscaling:GetPredictiveScalingForecast",
-                "s3:DescribeJob",
-                "s3:Get*",
-                "s3:List*"
-            ],
-            "Resource": "*",
-            "Effect": "Allow"
-        }
-    ]
-}
-```
-
-</details>
+For Cloud Asset Governance, add the [`ReadOnlyAccess`](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/ReadOnlyAccess.html) policy to the IAM role or user used by Harness. This policy supplies the baseline read-only permissions needed.
 
 :::info
-
-- This is not an exhaustive list; you may require additional permissions to support custom rules.
-- A yellow underline in a custom policy indicates that you need permission to support the underlined filters and/or actions.
-  :::
+Depending on your custom governance rules or automated actions, you may need to grant **additional permissions** beyond `ReadOnlyAccess`.
+:::
 
 ## 6. Commitment Orchestrator Permissions
 
