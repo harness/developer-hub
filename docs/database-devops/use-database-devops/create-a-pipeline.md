@@ -1,8 +1,26 @@
 ---
 title: Create a pipeline in Database DevOps
 sidebar_label: Create a pipeline in Database DevOps
-description: Explaining how to create a pipeline in Database DevOps
+description: Learn how to create, configure, and execute a pipeline in Harness Database DevOps for automating database deployments and schema changes.
 sidebar_position: 2
+keywords:
+  - create pipeline
+  - database pipeline
+  - dbops pipeline
+  - harness database devops
+  - ci cd for database
+  - database devops
+  - db schema deployment
+  - database automation
+  - devops pipeline for db
+  - db migration pipeline
+  - database ci cd
+tags:
+  - harness-db-devops
+  - pipeline-creation
+  - database-deployments
+  - ci-cd
+  - dbops-automation
 ---
 
 1. In Harness, go to the **Database DevOps** module and select your **Project**. 

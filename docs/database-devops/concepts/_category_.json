@@ -7,6 +7,7 @@
        "title":"Concepts of Database DevOps"
     },
     "customProps":{
+    "description": "Explore foundational concepts, best practices, and key components of Harness Database DevOps."
     },
    "position": 20
  }

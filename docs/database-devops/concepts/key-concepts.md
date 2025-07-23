@@ -9,13 +9,80 @@ import BetaIcon from '/img/icon_beta.svg';
 
 <BetaIcon />
 
-# Database DevOps Key Concepts
-
-This topic covers basic terminology and concepts related to Database DevOps. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md). For information about using DB DevOps, go to [Harness Database DevOps onboarding guide](/docs/database-devops/use-database-devops/get-started/onboarding-guide.md).
+This topic covers basic terminology and concepts related to Database DevOps. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md). For information about using DB DevOps, go to [Harness Database DevOps onboarding guide](/docs/database-devops/get-started/onboarding-guide.md).
 
 ## Database
 
 A database is an organized collection of structured information, or data, that is stored and managed electronically, typically in a computer system. Databases are designed to support the storage, retrieval, modification, and deletion of data in a way that ensures data integrity, security, and performance.
+
+```mermaid
+%%{ init: {
+  "theme": "base",
+  "themeVariables": {
+    "primaryColor": "#e0f0ff",
+    "primaryBorderColor": "#007acc",
+    "lineColor": "#007acc",
+    "fontSize": "16px",
+    "fontFamily": "Arial",
+    "edgeLabelBackground":"#f6b26b"
+  }
+} }%%
+flowchart LR
+    A[Database Schema:<br>Repository +<br>Liquibase Changelog]
+    B[DB Instance]
+    C[DB Connector:<br>JDBC URL +<br>Credentials]
+    D["<br>Harness<br> #0040;Platform+Delegate#0041;<br><br>"]
+    E[Service]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> Conceptual_Box
+    A --> D
+
+    A -. Optional Link .-> E
+    subgraph Conceptual_Box["Customer Environment"]
+    direction TB
+        K8S
+        DB
+        PODS
+    end
+    subgraph K8S["Kubernetes Cluster"]
+    direction TB
+        C1["Pod: Git Clone & Checkout"]
+        C2["Pod: Run Liquibase Apply"]
+        DB["DB"]
+    end
+    subgraph PODS["Kubernetes Cluster"]
+    direction TB
+        C3["Pod: Collect Logs & Cleanup"]
+    end
+    subgraph DB["Target Database"]
+      direction TB
+          D1[("Database<br>–DATABASE SCHEMA<br>–DATABASECHANGELOG<br>")]
+    end
+    
+    C1 --> C2
+    C2 ==> C3
+    C2 --> DB
+    DB --> D
+
+    style Conceptual_Box stroke-dasharray: 5 5
+    style Conceptual_Box fill:#c2f0c2,stroke:#0f5132
+    style C1 fill:#d4edda,stroke:#28a745,stroke-width:2px
+    style C2 fill:#d4edda,stroke:#28a745,stroke-width:2px
+    style C3 fill:#d4edda,stroke:#28a745,stroke-width:2px
+    style D fill:#d4edda,stroke:#28a745,stroke-width:2px
+
+    linkStyle 0 stroke-width:2px
+    linkStyle 1 stroke-width:2px
+    linkStyle 2 stroke-width:2px
+    linkStyle 3 stroke-width:2px
+    linkStyle 4 stroke-width:3px,stroke-dasharray: 4 4
+    linkStyle 6 stroke-width:3px,stroke-dasharray: 4 4
+    linkStyle 9 stroke-width:3px,stroke-dasharray: 4 4
+
+```
 
 ## Database Schemas
 
@@ -49,15 +116,15 @@ A database connection refers to the specific parameters and credentials used to 
 
 As mentioned earlier under the definition of Database Schema, DDL refers to the SQL commands used to define or modify the structure of the database schema itself. This includes operations that create, alter, or drop database objects such as tables, indexes, views, and constraints. Some examples include the following: 
 
-```
+```sql
 CREATE TABLE Employees (ID INT, Name VARCHAR(100), Department VARCHAR(50));
 ```
 
-```
+```sql
 ALTER TABLE Employees ADD COLUMN Salary DECIMAL(10, 2);
 ```
 
-```
+```sql
 TRUNCATE TABLE Employees;
 ```
 
@@ -65,15 +132,15 @@ TRUNCATE TABLE Employees;
 
 DML refers to SQL commands used for managing data within the database objects defined by DDL, such as tables. DML operations allow users to insert, update, delete, and retrieve data stored in the database. Some examples include the following:
 
-```
+```sql
 INSERT INTO Employees (ID, Name, Department) VALUES (1, 'Jane Doe', 'HR');
 ```
 
-```
+```sql
 UPDATE Employees SET Salary = 60000 WHERE ID = 1;
 ```
 
-```
+```sql
 DELETE FROM Employees WHERE ID = 1;
 ```
 

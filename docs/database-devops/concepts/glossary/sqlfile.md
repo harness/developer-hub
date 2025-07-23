@@ -13,6 +13,12 @@ keywords:
   - database automation
   - rollback
   - harness database devops
+tags:
+  - liquibase-integration
+  - sqlfile-usage
+  - harness-db-devops
+  - raw-sql-deployments
+  - database-automation
 ---
 
 import Head from '@docusaurus/Head';

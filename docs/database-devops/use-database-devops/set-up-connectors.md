@@ -1,8 +1,25 @@
 ---
 title: Setting Up Connectors
 sidebar_label: Setting Up Connectors
-description: Setting Up Connectors 
+description: Learn how to set up and configure connectors in Harness DB DevOps to securely link databases, artifact registries, and secret managers.
 sidebar_position: 4
+keywords:
+  - harness connectors
+  - database connectors
+  - dbops connector setup
+  - configuring connectors
+  - secret manager integration
+  - connector configuration
+  - dbops integration
+  - database devops setup
+  - harness dbops
+  - secure database connection
+tags:
+  - harness-db-devops
+  - connector-setup
+  - integration
+  - secret-management
+  - database-connectivity
 ---
 
 This topic describes how to set up connectors within Harness DB DevOps. 

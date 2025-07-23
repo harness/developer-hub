@@ -1,14 +1,31 @@
 ---
 sidebar_position: 2
 title: Deployment Architecture
-description: Deployment architecture of Harness Database DevOps
+description: Understand the deployment architecture of Harness Database DevOps, including components, data flow, and integration points.
+keywords:
+  - deployment architecture
+  - harness database devops
+  - dbops architecture
+  - database devops components
+  - data flow
+  - infrastructure setup
+  - dbops system design
+  - harness architecture diagram
+  - database deployment lifecycle
+  - ci cd database pipeline
+tags:
+  - harness-db-devops
+  - deployment-architecture
+  - system-design
+  - dbops-infrastructure
+  - ci-cd-integration
 ---
 
 Welcome to the Harness Database DevOps Product Documentation. This guide will assist you in  integrating database operations into your application deployment workflows. Our Database DevOps module enables you to manage database schemas, orchestrate changes, and ensure consistency across all your environments. Let's dive into how Harness Database DevOps can streamline your database change management and enhance your overall deployment strategy.
 
 ## Before you begin, review the following:
 
-- [All about Database DevOps](/docs/database-devops/use-database-devops/get-started/overview.md)
+- [All about Database DevOps](/docs/database-devops/overview.md)
 
 ## Harness DB DevOps Architecture
 
@@ -23,7 +40,7 @@ Before you can access Harness Database DevOps, you must have Harness enable the 
 
 
 
-[Harness Database DevOps](/docs/database-devops/use-database-devops/get-started/overview.md) is crucial to the Harness Delegate because it integrates database change management into [Harness CI](../../continuous-integration/get-started/overview.md), enabling organizations to apply DevOps best practices to their database operations. Here are several key points that highlight its importance:
+[Harness Database DevOps](/docs/database-devops/overview.md) is crucial to the Harness Delegate because it integrates database change management into [Harness CI](../../continuous-integration/get-started/overview.md), enabling organizations to apply DevOps best practices to their database operations. Here are several key points that highlight its importance:
 
  1. **Orchestration of Database Changes**: Harness Database DevOps allows for the orchestration of database changes in a manner similar to application code deployments. This means that database changes can be managed through pipelines, ensuring that they are executed in a controlled and automated way. This orchestration helps to eliminate the manual processes that often slow down deployments when database changes are involved.
 
