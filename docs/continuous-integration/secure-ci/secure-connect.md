@@ -172,7 +172,7 @@ When you enable Secure Connect and your pipeline uses a connector that is config
 You can use these environment variables in cURL commands or other tools to tunnel requests through the established secure tunnel. For example, to access an internal or staging URL:
 
 ```bash
-curl -x $HARNESS_HTTPS_PROXY https://example.com
+curl -x "$HARNESS_HTTPS_PROXY" https://example.com
 ```
 
 Replace the example URL with the endpoint you want to route through the secure tunnel, such as a private Bitbucket domain (`https://bitbucket.myorg.com/`) or any internal/dev/QA resource accessible via the tunnel.
