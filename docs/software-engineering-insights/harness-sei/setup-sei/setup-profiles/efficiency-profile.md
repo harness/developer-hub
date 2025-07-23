@@ -141,7 +141,7 @@ SEI 2.0 provides the following default phase structure for LTTC. These reflect c
     </Tabs>
 
 :::info 
-Note that the event correlation such as linking tickets to commits or builds is automatically inferred & derived by the SEI Correlation Engine.
+Note that the event correlation such as linking tickets to commits or builds is automatically inferred and derived by the SEI Correlation Engine.
 :::
 
 ### Set up Deployment Frequency
