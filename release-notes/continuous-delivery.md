@@ -69,7 +69,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### Behavior Changes
 
-- Harness now preserves **required** and **description** metadata for Service and Environment variables in Pipelines and Templates, ensuring that any variable marked `required: true` or given a description in a Service/Environment retains those attributes when used as a runtime input in a Pipeline run form or Input Set. Currently, this feature is behind the feature flag `PIPE_POPULATE_REQUIRED_AND_DESC_METADATA_INTO_REFERENCING_ENTITY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-15840**)
+- Harness now preserves **required** and **description** metadata for Service and Environment variables in Pipelines and Templates, ensuring that any variable marked `required: true` or given a description in a Service/Environment retains those attributes when used as a runtime input in a Pipeline run form or Input Set. Currently, this feature is behind the feature flag `PIPE_POPULATE_REQUIRED_AND_DESC_METADATA_INTO_REFERENCING_ENTITY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-13770, ZD-51392,55069,57312,62354,63051,63226,64057,65695,80110**)
 
   With this feature:
   - The **Required** flag and **Description** attribute appear in Service and Environment variables when referenced in Pipelines.
