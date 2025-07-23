@@ -11,109 +11,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ### Prerequisites
 
-* See [Roles and Policies for the Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector#review-roles-and-policies-for-the-connector) to learn about the IAM roles and policies that you need to be assigned to be able to create a connector.
-* See [Prerequisites](set-up-cost-visibility-for-kubernetes.md#prerequisites) to learn about the tasks that you need to perform before setting up Cloud Costs Management for your Kubernetes cluster.
-
-:::info
-
-The following entities are created in this process:
-
-* A Kubernetes delegate of medium size with cluster admin permissions.
-* A Kubernetes connector which can also be used for other Harness modules such as CI, CD, and so on.
-* Cost Visibility is enabled on this Kubernetes connector.
-
-:::
-
-<DocVideo src="https://app.tango.us/app/embed/e1019596-4936-481c-91c0-f66edadec236?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Kubernetes Cloud Cost Connector in Harness" />
-
-### Step-by-Step Guide
-
-#### Step 1: Overview
-1. Launch the wizard and select **Kubernetes** as the cloud provider. Click on **Quick Create**.
-2. Enter a name for your connector. Please note, this is the name with which the Kubernetes Cluster will be identified in Harness Cloud Cost Management. Also you need to have **Cluster Admin Role** to the Cluster you would like to add
-3. Click **Continue**.
-
----
-
-#### Step 2: Download and Apply YAML
-
-To grant Harness the required cluster permissions, apply the **delegate YAML**.
-
-**What this YAML does**
-
-- Creates a Harness Delegate.
-- Grants the Delegate the `cluster-admin` role.
-
-**How to apply**
-
-1. In the wizard, click **Download YAML** (you can preview the file).
-2. Run the following command:
-
-```bash
-kubectl apply -f harness-delegate.yml
-```
-
-3. After the command succeeds, return to the wizard and click **Continue**. Harness will create a Kubernetes Connector.
-
-:::note
-For Amazon EKS clusters, make sure the Kubernetes **Metrics Server** is installed in the cluster where the Harness Delegate runs.
-:::
-
-
----
-
-#### Step 3: Create and Test Connection
-
-After the successful creation of delegate and the connectors, and verification of permissions, select **Finish**. The connector is now listed in the Kubernetes clusters table.
-
----
-
-🎉 You’ve now connected your Kubernetes cluster and enabled cost visibility in Harness.
-
-</TabItem>
-<TabItem value="Advanced" label="Advanced" queryString="advanced"> 
-
-## Advanced Method
-
-:::note
-
-If you have previously created a connector to the preferred cluster for any other modules (Deployments, Builds etc.), you may reference the same connector to upgrade to support Cloud Cost Management. 
-
-If this is your first time creating a connector to the cluster, you need to create a new connector. 
-
-:::
-
-To fully enable CCM for a Kubernetes cluster, you need to:
-
-- **Deploy a delegate into the target cluster.** This gives Harness a connection into your cluster.
-- **Create a Harness cloud provider Kubernetes connector that targets the delegate.** This ties your cluster and delegate to a representation of your cluster in Harness.
-- **Create a Harness CCM Kubernetes connector that targets the Kubernetes connector.** This enables the delegate to start collecting usage metrics to be sent back to Harness for use in CCM.
-- **(Optional) Deploy the autostopping controller and router into the target cluster.** This enables you to create CCM autostopping rules to reduce costs of your cluster.
-
-:::info
-
-After you enable CCM in your first cluster, the data is available within a few minutes for viewing and analysis.
-
-However, you can't see the idle cost due to missing utilization data. CCM generates the last 30 days of the cost data based on the first events.
-
-From the second cluster onwards, it takes about 2 to 3 hours for the data to be available for viewing and analysis.
-
-If you are using a CCM cloud connector, the data generation is delayed. Since CCM performs cost true-up based on cost information available at cloud provider source.
-
-:::
-
-### Kubernetes CCM connection requirements and workflow
-
-For CCM, you can only use Kubernetes connectors at the Account level in Harness. This section describes how to set up the CCM Kubernetes connector.
-
-Here's a visual representation of the CCM Kubernetes connector requirements and workflow:
-
-
-<DocImage path={require('../static/set-up-cost-visibility-for-kubernetes-14.png')} width="100%" height="100%" title="Click to view full size image" />
-
-### Prerequisites
-
-Make sure you have the following set up before you create a Kubernetes connector for CCM:
+- See [Roles and Policies for the Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector#review-roles-and-policies-for-the-connector) to learn about the IAM roles and policies that you need to be assigned to be able to create a connector.
 
 #### Kubernetes cluster requirements
 
@@ -253,7 +151,104 @@ rules:
 ```
 </details>
 
-###Create the Cloud Provider Kubernetes Cluster Connector
+
+:::info
+
+The following entities are created in this process:
+
+* A Kubernetes delegate of medium size with cluster admin permissions.
+* A Kubernetes connector which can also be used for other Harness modules such as CI, CD, and so on.
+* Cost Visibility is enabled on this Kubernetes connector.
+
+:::
+
+<DocVideo src="https://app.tango.us/app/embed/e1019596-4936-481c-91c0-f66edadec236?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Kubernetes Cloud Cost Connector in Harness" />
+
+### Step-by-Step Guide
+
+#### Step 1: Overview
+1. Launch the wizard and select **Kubernetes** as the cloud provider. Click on **Quick Create**.
+2. Enter a name for your connector. Please note, this is the name with which the Kubernetes Cluster will be identified in Harness Cloud Cost Management. Also you need to have **Cluster Admin Role** to the Cluster you would like to add
+3. Click **Continue**.
+
+---
+
+#### Step 2: Download and Apply YAML
+
+To grant Harness the required cluster permissions, apply the **delegate YAML**.
+
+**What this YAML does**
+
+- Creates a Harness Delegate.
+- Grants the Delegate the `cluster-admin` role.
+
+**How to apply**
+
+1. In the wizard, click **Download YAML** (you can preview the file).
+2. Run the following command:
+
+```bash
+kubectl apply -f harness-delegate.yml
+```
+
+3. After the command succeeds, return to the wizard and click **Continue**. Harness will create a Kubernetes Connector.
+
+:::note
+For Amazon EKS clusters, make sure the Kubernetes **Metrics Server** is installed in the cluster where the Harness Delegate runs.
+:::
+
+
+---
+
+#### Step 3: Create and Test Connection
+
+After the successful creation of delegate and the connectors, and verification of permissions, select **Finish**. The connector is now listed in the Kubernetes clusters table.
+
+---
+
+🎉 You’ve now connected your Kubernetes cluster and enabled cost visibility in Harness.
+
+</TabItem>
+<TabItem value="Advanced" label="Advanced" queryString="advanced"> 
+
+## Advanced Method
+
+:::note
+
+If you have previously created a connector to the preferred cluster for any other modules (Deployments, Builds etc.), you may reference the same connector to upgrade to support Cloud Cost Management. 
+
+If this is your first time creating a connector to the cluster, you need to create a new connector. 
+
+:::
+
+To fully enable CCM for a Kubernetes cluster, you need to:
+
+- **Deploy a delegate into the target cluster.** This gives Harness a connection into your cluster.
+- **Create a Harness cloud provider Kubernetes connector that targets the delegate.** This ties your cluster and delegate to a representation of your cluster in Harness.
+- **Create a Harness CCM Kubernetes connector that targets the Kubernetes connector.** This enables the delegate to start collecting usage metrics to be sent back to Harness for use in CCM.
+- **(Optional) Deploy the autostopping controller and router into the target cluster.** This enables you to create CCM autostopping rules to reduce costs of your cluster.
+
+:::info
+
+After you enable CCM in your first cluster, the data is available within a few minutes for viewing and analysis.
+
+However, you can't see the idle cost due to missing utilization data. CCM generates the last 30 days of the cost data based on the first events.
+
+From the second cluster onwards, it takes about 2 to 3 hours for the data to be available for viewing and analysis.
+
+If you are using a CCM cloud connector, the data generation is delayed. Since CCM performs cost true-up based on cost information available at cloud provider source.
+
+:::
+
+### Kubernetes CCM connection requirements and workflow
+
+For CCM, you can only use Kubernetes connectors at the Account level in Harness. This section describes how to set up the CCM Kubernetes connector.
+
+Here's a visual representation of the CCM Kubernetes connector requirements and workflow:
+
+<DocImage path={require('../static/set-up-cost-visibility-for-kubernetes-14.png')} width="100%" height="100%" title="Click to view full size image" />
+
+### Create the Cloud Provider Kubernetes Cluster Connector
 
 Once the delegate is deployed you need to [create a Kubernetes cloud provider connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) at the Account level. This connector should be created to `Use credentials of a specific Harness delegate` and select the delegate you deployed into the target cluster.
 

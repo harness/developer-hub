@@ -1311,6 +1311,7 @@ const sidebars: SidebarsConfig = {
       },
       "cloud-cost-management/get-started/overview",
       "cloud-cost-management/get-started/get-started",
+      "cloud-cost-management/get-started/onboarding-guide/external-data-ingestion",
       {
         type: "html",
         value: '<span style="color:#000000; font-weight:1000;"> Use CCM </span>',
