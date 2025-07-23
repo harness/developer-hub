@@ -92,7 +92,7 @@ This setting can only be edited in Team and Enterprise plans. You can set it at 
 ### Project-Level Pipeline Execution Concurrency
 
 :::note
-Currently, this feature is behind the feature flag `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 You can take fine-grained control of how many pipelines run concurrently in each of your projects. By splitting your account-wide concurrency limit into a **High-Priority** and **Low-Priority** partition, you guarantee reserved execution slots for critical projects while preventing any one project from consuming all available capacity.
