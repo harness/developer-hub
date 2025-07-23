@@ -40,14 +40,13 @@ Choose the one that aligns best with your internal reporting strategy. This cann
 :::
 
 :::caution time for data delivery
-It may take up to **24 hours** for AWS to begin delivering cost and usage data. You can still proceed through the wizard, but the connection test may fail if data isn’t yet available.
+It may take up to **24 hours** for Azure to begin delivering cost and usage data. You can still proceed through the wizard, but the connection test may fail if data isn’t yet available.
 
 In the meantime, explore the optional requirements and feature integrations available in Harness CCM, these will be available to select in your **Choose Requirements** step of the connection wizard:
 
   - [Resource Inventory Management](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard/).
   - [Optimization by AutoStopping](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/getting-started).
   - [Cloud Governance](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/asset-governance).
-  - [Commitment Orchestration](/docs/category/commitment-orchestrator).
 :::
 
 ---
@@ -127,7 +126,7 @@ The displayed commands are dependent on your specific feature selections. Always
 
 ## After Connector Setup
 
-Within about 24 hours of linking your AWS account, billing data begins to flow into Harness. Harness automatically creates default **Perspectives** so you can immediately understand where your cloud spend is going. You can also build custom Perspectives that match your teams, environments, or applications.
+Within about 24 hours of linking your Azure account, billing data begins to flow into Harness. Harness automatically creates default **Perspectives** so you can immediately understand where your cloud spend is going. You can also build custom Perspectives that match your teams, environments, or applications.
 
 Next, head to **Budgets** to set spending thresholds and receive alerts.
 
@@ -286,6 +285,7 @@ Microsoft.Compute/disks/delete
 ```
 
 </details>
+------
 
 ## Next Steps
 Once your Azure billing data is flowing into Harness, explore these features to enhance your cloud cost management:

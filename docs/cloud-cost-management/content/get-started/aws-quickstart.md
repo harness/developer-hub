@@ -22,7 +22,7 @@ To ensure a smooth and error-free setup experience, complete the following steps
 4. Check the following options:
    - ✅ **Include resource IDs**
    - 🕒 **Time granularity**: `Hourly`
-   - ♻️ **Report versioning**: `Overwrite existing report`
+   - 🔄 **Report versioning**: `Overwrite existing report`
 5. Choose or create an **S3 bucket** as the report destination.
 6. Complete the setup.
 
@@ -44,13 +44,12 @@ In the meantime, explore the optional requirements and feature integrations avai
 ## Cloud Connector Wizard
 Once you've gathered the required AWS details, follow these steps in the Harness setup wizard to connect your AWS account and enable cost visibility.
 
-<Tabs>
-<TabItem value="Interactive Guide" label="Interactive Guide">
+### Interactive Guide 
 <DocVideo src="https://app.tango.us/app/embed/f48937b7-996f-45f1-9fd9-b387d2570561?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
-</TabItem>
-<TabItem value="Step-by-Step" label="Step-by-Step">
 
-### Step 1: Add AWS Account Details
+### Step-by-Step
+
+#### Step 1: Add AWS Account Details
 1. In the wizard, enter a name for your connector (e.g., `ccm-aws-prod`).
 2. Enter your **12-digit AWS Account ID**.
 3. (Optional) Add a description and tags to help identify this connector later.
@@ -59,14 +58,14 @@ Once you've gathered the required AWS details, follow these steps in the Harness
 
 ---
 
-### Step 2: Select or Create a Cost and Usage Report
+#### Step 2: Select or Create a Cost and Usage Report
 1. If your Cost and Usage Report (CUR) already exists, select it from the list.
 2. If not, return to AWS and follow the steps in the [Before You Start](#before-you-start) section to create one.
 3. Once the CUR appears in the list, select it and click **Continue**.
 
 ---
 
-### Step 3: Choose Requirements
+#### Step 3: Choose Requirements
 1. **Cost Visibility** is selected by default and is required, leave it checked.
 2. Optionally, you can enable any of the following features (they can also be added later):
    - Resource Inventory Management
@@ -81,7 +80,42 @@ Not sure which options to choose? [Learn more about each feature](#before-you-st
 
 ---
 
-### Step 4: Enter Cross Account Role Details
+#### Step 4: Authentication (Conditional)
+
+If you have selected **Optimization by AutoStopping**, **Cloud Governance** or **Commitment Orchestration**, in previous step, you can set up Authentication using OIDC. If not selected, this step will not be prompted.
+
+You can enable authentication for your AWS account via
+
+- Cross Account Role: Created with custom permissions
+- OIDC Authentication: Federated access with no stored credentials
+
+#### OIDC Authentication
+
+:::info 
+This feature is behind a Feature Flag `CCM_ENABLE_OIDC_AUTH_AWS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+<DocImage path={require('../static/oidc-aws.png')} width="100%" height="100%" title="Click to view full size image" />
+
+OIDC authentication allows secure access your billing data and perform cost optimization without storing credentials. 
+
+To use OIDC, you need to create an [OIDC identity provider in AWS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html). 
+
+Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider:
+
+- Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<ACCOUNT_ID>`
+- OIDC audience: `sts.amazonaws.com`
+
+Follow the steps on the **Authentication** page to complete OIDC authentication:
+
+- Launch the CloudFormation Template on the AWS console. You can also preview the template [here](https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v1/ng/HarnessAWSOidcTemplate.yaml).
+- Login to your AWS account if not logged in already.
+- Follow [the instructions to create the Cross Account Role](https://docs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws#step_4_create_cross_account_role)
+- Enter Cross Account Role ARN and Region in the input boxes on the UI.
+
+----
+
+### Step 5: Enter Cross Account Role Details
 1. Paste the **Cross Account Role ARN** you created via the CloudFormation stack.
    - You can find this under **CloudFormation → Stacks → Outputs tab** in AWS.
 2. The **External ID** will be pre-filled — leave it as is.
@@ -89,7 +123,7 @@ Not sure which options to choose? [Learn more about each feature](#before-you-st
 
 ---
 
-### Step 5: Verify the Connection
+#### Step 5: Verify the Connection
 1. Harness will attempt to validate the connection using your inputs.
 2. If this step fails, it's usually because AWS has not yet delivered the first CUR file.
    - Wait up to **24 hours** after setting up the CUR before trying again.
@@ -98,8 +132,6 @@ Not sure which options to choose? [Learn more about each feature](#before-you-st
 ---
 
 🎉 You’ve now connected your AWS account and enabled cost visibility in Harness.
-</TabItem>
-</Tabs>
 
 ---
 

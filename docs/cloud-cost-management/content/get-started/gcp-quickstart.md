@@ -46,14 +46,13 @@ When setting up a connector for GCP Billing Export, keep the following limitatio
 ---
 
 :::caution time for data delivery
-It may take up to **24 hours** for AWS to begin delivering cost and usage data. You can still proceed through the wizard, but the connection test may fail if data isn’t yet available.
+It may take up to **24 hours** for GCP to begin delivering cost and usage data. You can still proceed through the wizard, but the connection test may fail if data isn’t yet available.
 
 In the meantime, explore the optional requirements and feature integrations available in Harness CCM, these will be available to select in your **Choose Requirements** step of the connection wizard:
 
   - [Resource Inventory Management](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard/).
   - [Optimization by AutoStopping](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/getting-started).
   - [Cloud Governance](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/asset-governance).
-  - [Commitment Orchestration](/docs/category/commitment-orchestrator).
 :::
 
 ---
@@ -92,10 +91,16 @@ Cloud Billing export to BigQuery enables you to export detailed Google Cloud bil
 
 ---
 
-### Step 4: Authentication(Optional)
+### Step 4: Authentication (Conditional)
 
+<DocImage path={require('../static/oidc-gcp.png')} width="100%" height="100%" title="Click to view full size image" />
 
-If you have selected **Optimization by AutoStopping** or **Cloud Governance**, in previous step, you can set up Authentication by OIDC. For rest of the features, authentication will be through Service Account with Custom Role.
+If you have selected **Optimization by AutoStopping** or **Cloud Governance**, in previous step, you can set up Authentication. If not selected, this step will not be prompted.
+
+You can enable authentication for your GCP account via
+
+- Service Account with Custom Role: Created with custom permissions
+- OIDC Authentication: Federated access with no stored credentials
 
 #### OIDC Authentication
 
@@ -137,6 +142,8 @@ Follow the steps on the **Authentication** page to complete OIDC authentication:
 
 If AutoStopping Granular Rules are selected, you will be prompted to generate commands. Click on **Generate commands for step 3** and run the commands listed on screen to create and assign the custom role with permissions for your selected features.
 
+-----
+
 ### Step 5: Grant Permissions
 
 Based on what you selected in **Step 3 - Choose Requirements**, you will be prompted to grant permissions to your service account alongwith the steps to be followed.
@@ -155,10 +162,232 @@ Based on what you selected in **Step 3 - Choose Requirements**, you will be prom
 
 ---
 
-## See Your Cloud Costs
-Use **[Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective)** to organize and visualize your cloud costs by business context—such as teams, environments, or applications.
+## After Connector Setup
+
+Within about 24 hours of linking your GCP account, billing data begins to flow into Harness. Harness automatically creates default **Perspectives** so you can immediately understand where your cloud spend is going. You can also build custom Perspectives that match your teams, environments, or applications.
+
+Next, head to **Budgets** to set spending thresholds and receive alerts.
+
+As your data flows, Harness will start flagging **Anomalies** and you can configure notification preferences to stay on top of unexpected spikes.
 
 ---
+
+## Individual Feature Permissions
+
+### Governance Permissions
+
+To configure permissions for Cloud Governance features:
+
+1. Navigate to **IAM & Admin** in the GCP console.
+2. If authentication is done via service account:
+   - Search for your service account in the principals list
+   - Click **Edit Principal**
+   - Add the [**Viewer** role](https://cloud.google.com/iam/docs/understanding-roles#basic) (`roles/viewer`) from the Basic category
+   - For automated actions, grant additional permissions as required by your governance policies
+3. Click **Save** to apply the changes.
+
+#### Enable required Google Cloud APIs for Governance
+
+Governance Recommendations rely on the following Google Cloud services. Make sure they are **enabled in every project** you want to monitor:
+
+- [**Cloud Run Admin API**](https://cloud.google.com/run/docs/reference/rest)
+- [**Cloud Memorystore for Redis API**](https://cloud.google.com/memorystore/docs/redis/reference/rest)
+- [**Cloud Functions API**](https://cloud.google.com/functions/docs/reference/rest)
+- [**Kubernetes Engine API**](https://cloud.google.com/kubernetes-engine/docs/reference/rest)
+
+You can enable the APIs via Google Cloud console:
+1. Open **[APIs & Services](https://console.cloud.google.com/apis/library)** for your project (https://console.cloud.google.com/apis/library).  
+2. Search for each API above and click **Enable**.
+
+For enabling through console, see the [GCP documentation](https://cloud.google.com/endpoints/docs/openapi/enable-api#enabling_an_api).
+
+### Granular Permissions for AutoStopping
+
+#### Compute Engine Virtual Machines
+
+<details>
+<summary><b>Schedules only</b></summary>
+
+```
+// List VMs
+compute.instances.list
+
+// Tag VM
+compute.instances.setLabels
+
+// Get region information to list zones
+compute.regions.get
+
+// List regions
+compute.regions.list
+
+// Required while waiting to complete VM operations, for example stop operation
+compute.zoneOperations.get
+
+// Stop VM
+compute.instances.stop
+
+// Start VM
+compute.instances.start
+```
+
+</details>
+
+<details>
+<summary><b>with AutoStopping Proxy</b></summary>
+
+```
+// List networks
+compute.networks.list
+
+// List machine types
+compute.machineTypes.list
+
+// List subnets
+compute.subnetworks.list
+
+// List security groups
+compute.firewalls.list
+
+// Create address
+compute.addresses.create
+
+// Get address
+compute.addresses.get
+
+// create disk
+compute.disks.create
+
+// Use sub network
+compute.subnetworks.use
+
+// Create proxy VM
+compute.instances.create
+
+// use static IP
+compute.subnetworks.useExternalIp
+
+// Use address
+compute.addresses.use
+
+// Set VM metadata
+compute.instances.setMetadata
+
+// Set tags
+compute.instances.setTags
+
+// Delete address
+compute.addresses.delete
+
+// Delete proxy VM
+compute.instances.delete
+```
+
+</details>
+
+#### Instance Groups
+
+<details>
+<summary><b>Schedules only</b></summary>
+
+```
+// Get region information to list zones
+compute.regions.get
+
+// List regions
+compute.regions.list
+
+// list instance groups
+compute.instanceGroups.list
+
+// list managed instance groups
+compute.instanceGroupManagers.list
+
+// get instance groups details
+compute.instanceGroups.get
+
+// Get instances in instance groups
+compute.instances.get
+
+// List autoscalers
+compute.autoscalers.list
+
+// Get autoscaler details
+compute.autoscalers.get
+
+// For updating autoscaler configurations. This is needed during warm up and cool down
+compute.autoscalers.update
+
+// List VMS in instance group
+compute.instances.list
+
+// Deleting VMs from managed instance groups during cool down
+compute.instances.delete
+
+// Get status of operations
+compute.globalOperations.get
+
+// Get status of operations
+compute.regionOperations.get
+
+// Get status of operations
+compute.zoneOperations.get
+```
+
+</details>
+
+<details>
+<summary><b>with AutoStopping Proxy</b></summary>
+
+```
+// List networks
+compute.networks.list
+
+// List machine types
+compute.machineTypes.list
+
+// List subnets
+compute.subnetworks.list
+
+// List security groups
+compute.firewalls.list
+
+// Create address
+compute.addresses.create
+
+// Get address
+compute.addresses.get
+
+// create disk
+compute.disks.create
+
+// Use sub network
+compute.subnetworks.use
+
+// Create proxy VM
+compute.instances.create
+
+// use static IP
+compute.subnetworks.useExternalIp
+
+// Use address
+compute.addresses.use
+
+// Set VM metadata
+compute.instances.setMetadata
+
+// Set tags
+compute.instances.setTags
+
+// Delete address
+compute.addresses.delete
+
+// Delete proxy VM
+compute.instances.delete
+```
+
+</details>
+------
 
 ## Next Steps
 Once your data is flowing, explore the tools available in Harness CCM to help you manage and reduce your cloud spend:
