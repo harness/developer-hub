@@ -88,8 +88,3 @@ To view the diff:
 <div align="center">
   <DocImage path={require('./static/gitops-audit-logs.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
-
-## Limitations
-
-**Application Sync Success/Failure** events are **not tracked** in the audit trail.  
-Only sync **trigger** events are recorded.
