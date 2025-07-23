@@ -1,10 +1,10 @@
 {
-    "label":"Concepts and Features",
+    "label":"Concepts of Database DevOps",
     "collapsible":"true",
     "collapsed":"true",
     "link":{
        "type":"generated-index",
-       "title":"Concepts and Features"
+       "title":"Concepts of Database DevOps"
     },
     "customProps":{
     },

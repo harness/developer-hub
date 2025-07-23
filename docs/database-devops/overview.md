@@ -26,7 +26,7 @@ Harness DB DevOps provides a way to:
 Before you can access Harness Database DevOps, you must have Harness enable the following feature flag, `DBOPS_ENABLED`. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io).
 :::
 
- ![Harness DB DevOps architecture diagram](../../concepts-and-features/static/database-devops-architecture.png)
+ ![Harness DB DevOps architecture diagram](./concepts/static/database-devops-architecture.png)
 
 The Harness Database DevOps architecture is built around the Harness Delegate, which plays a crucial role in managing database change operations. This delegate operates within your environment—whether that's a local network, virtual private cloud, or Kubernetes cluster—ensuring seamless integration with your existing infrastructure. 
 

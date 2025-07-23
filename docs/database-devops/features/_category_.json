@@ -1,11 +1,12 @@
 {
-    "label":"Understanding Changelog Directories",
+    "label":"Features of Database DevOps",
     "collapsible":"true",
     "collapsed":"true",
     "link":{
        "type":"generated-index",
-       "title":"Understanding Changelog Directories"
+       "title":"Features of Database DevOps"
     },
     "customProps":{
-    }
+    },
+   "position": 20
  }

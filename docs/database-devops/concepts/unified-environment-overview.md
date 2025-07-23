@@ -1,14 +1,37 @@
 ---
 sidebar_position: 3
-title: User Interface of Harness Database DevOps
-description: Discussing the UI of Harness Database DevOps
+title:  User Interface of Harness Database DevOps
+sidebar_label:  User Interface of Harness Database DevOps
+description: Learn how to navigate the Harness Database DevOps user interface, including schema views, pipeline executions, and deployment monitoring.
+keywords:
+  - Harness Database DevOps
+  - Harness UI
+  - Database Deployment UI
+  - DB DevOps Interface
+  - Schema Management UI
+  - CI/CD Pipelines for Databases
+  - Harness Pipelines
+  - Database Schema Overview
+  - Migration State UI
+  - DB Deployments View
+  - Database DevOps Execution Monitoring
+  - Harness Execution Dashboard
+tags:
+  - database
+  - devops
+  - ci/cd
+  - harness
+  - user-interface
+  - database-pipelines
+  - db-schema
+  - deployment
 ---
 
 This guide talks you through the UI of Harness Database DevOps. 
 
 ## Environment Overview for Database DevOps
 
- ![A screenshot of the Harness Database DevOps page that highlights the menu on the left of the UI.](../concepts-and-features/static/db-devops-overview.png)
+ ![A screenshot of the Harness Database DevOps page that highlights the menu on the left of the UI.](../concepts/db-devops-overview.png)
 
 When you open the Harness Database DevOps module, you will encounter a single-pane interface that will display an overview of important activities relevant to using DB DevOps. Here's what you can expect:
 
@@ -21,7 +44,7 @@ When you open the Harness Database DevOps module, you will encounter a single-pa
 
 ## The Unified Environment Overview for Database Schemas
 
- ![Unified View that highlights the Database Schemas Applied](./static/dbops-unified-view.png)
+ ![Unified View that highlights the Database Schemas Applied](../conceptsdbops-unified-view.png)
 
 When you click on **DB Schemas** section from the left-hand menu. Then, select the database schema you want to check. Once selected, click on the **Migration State** option under one of the connected DB Instances. This will open a clear, single-page view that shows all the changes linked to that schema in the database, whether they are pending, currently in progress, or already completed.
 
@@ -36,7 +59,7 @@ This overview provides insights into the database states in both production and 
 
 ## The Overview of the Harness Database DevOps Pipelines 
 
-  ![A screenshot of the Harness Database DevOps Pipeline UI](../concepts-and-features/static/db-devops-pipelines-page.png)
+  ![A screenshot of the Harness Database DevOps Pipeline UI](../conceptsdb-devops-pipelines-page.png)
 
 On the DB DevOps **Pipelines** UI, you are provided with a detailed, yet straightforward overview that offers userful information 
 for understanding the status of the pipelines in your environments. Here's what you will find on the Harness Database DevOps **Pipelines** interface:
@@ -50,7 +73,7 @@ for understanding the status of the pipelines in your environments. Here's what 
 
 ## Database DevOps Executions Overview 
 
-![A screenshot of the Harness Database DevOps Executions UI](../concepts-and-features/static/db-devops-executions-overview.png)
+![A screenshot of the Harness Database DevOps Executions UI](../conceptsdb-devops-executions-overview.png)
 
 The Harness DB DevOps **Executions** UI provides a comprehensive view of the execution statuses of your pipelines. Here’s a detailed breakdown of the elements you will find on the DB DevOps **Executions** interface: 
 

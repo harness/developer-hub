@@ -100,7 +100,7 @@ You can create a changelog by using the `generate-changelog` command. This metho
 
 1. Under `DBOps` in the Harness UI, navigate to `DB Schema`.
 2. Click on the `Add DB Schema` button.
-![Create DB Schema](../static/db-devops-create-dbschema.png)
+![Create DB Schema](../use-database-devops/static/db-devops-create-dbschema.png)
 3. Click on the `Add DB Instance` button.
 4. Go to `Pipeline` and click on the `Create a Pipeline` button.
 5. Click on the `Add Stage` button and select `custom stage`.
@@ -110,20 +110,20 @@ Toggle on the "Enable container based execution".
 :::
 7. In the `Step Group` section, select `Add Step` as the step type. Under "DB DevOps", select `Liquibase Command` as the step type.
 8. By default the name is "**LiquibaseCommand_1**".
-![Configure Command](../static/build-changelog/db-devops-liquibase-command.png)
+![Configure Command](../use-database-devops/static/build-changelog/db-devops-liquibase-command.png)
 - **Select DB Schema**: The DB Schema we created on Step 2.
 - **Select DB Instance**: The Instance we created on Step 3.
 - **Command**: The command to be executed. In this case, we will use `generate-changelog` to generate a changelog file.
 9. Click `Apply Changes` and Save the Pipeline.
 10. Click on the `Run` button to run the pipeline.
 11. Once the pipeline is executed successfully, you will find the changelog file in the specified path.
-![Generate Changelog](../static/build-changelog/db-devops-generate-changelog.png)
+![Generate Changelog](../use-database-devops/static/build-changelog/db-devops-generate-changelog.png)
 
 #### Commit to Git Repository
 You can commit the generated changelog file to your git repository using the `Run Command` step in the pipeline. This allows you to version control your changelog file and keep track of changes over time. Otherwise, once the pipeline is executed, pods will be deleted and the changelog file will be lost.
 
 1. In the Pipeline, under the `Step Group` section, add a new step `Run Command` as the step type.
-![Commit to Git Step](../static/build-changelog/db-devops-changelog-git-commit-step.png)
+![Commit to Git Step](../use-database-devops/static/build-changelog/db-devops-changelog-git-commit-step.png)
 - **Name**: The name of the step.
 - **Registry Type**: The type of registry to use. We can use `Third Party Registry` or `Harness Artifact Registry`. 
 - **Container Registry**: The container registry to use. This is the location where the image is stored. In this case, we will use Docker Hub as the registry.
@@ -151,7 +151,7 @@ You can commit the generated changelog file to your git repository using the `Ru
   git push -u origin $CURRENT_BRANCH -f
   ```
 3. Click on `Apply Changes`. Save the Pipeline and click on the `Run` button to run the pipeline.
-![Commit to Git](../static/build-changelog/db-devops-changelog-git-commit.png)
+![Commit to Git](../use-database-devops/static/build-changelog/db-devops-changelog-git-commit.png)
 
 </TabItem>
 </Tabs>
