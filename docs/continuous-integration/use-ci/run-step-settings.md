@@ -159,19 +159,19 @@ This example demonstrates how to set up SSH authentication in a **Run** step, su
 The SSH private key must be stored in Harness as a **File-type Secret** to be used securely in the pipeline.
 
 ```yaml
-              - step:
-                  type: Run
-                  name: SSH setup and build
-                  identifier: SSH_Build
-                  spec:
-                    shell: Sh
-                    command: |-
-                      mkdir -p ~/.ssh
-                      echo '<+secrets.getValue("account.your-ssh-private-key")>' > ~/.ssh/id_rsa
-                      chmod 600 ~/.ssh/id_rsa
-                      export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
-                      git clone git@github.com:your-org/private-repo.git
-                      ./build.sh
+- step:
+    type: Run
+    name: SSH setup and build
+    identifier: SSH_Build
+    spec:
+      shell: Sh
+      command: |-
+        mkdir -p ~/.ssh
+        echo '<+secrets.getValue("account.your-ssh-private-key")>' > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
+        git clone git@github.com:your-org/private-repo.git
+        ./build.sh
 ```
 :::tip
 
