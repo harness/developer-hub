@@ -1829,6 +1829,7 @@ const sidebars: SidebarsConfig = {
           value: '<span style="color:#4B5563; font-weight:600;"> Resources </span>',
           className: "horizontal-bar",
         },
+        "chaos-engineering/resources/hce-vs-litmus",
         "chaos-engineering/resources/troubleshooting",
 
       ],
