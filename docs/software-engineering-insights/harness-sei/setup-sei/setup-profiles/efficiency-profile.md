@@ -74,10 +74,10 @@ Here's what you need to know before setting up LTTC:
 
 For each enabled phase, you’ll:
 
-* Select a Start Event Source → The system where the phase begins (e.g., Jira).
-* Select a Start Event → The trigger that signals the phase has started (e.g., ticket status changes to In Progress).
-* Select an End Event Source → The system where the phase ends (can be different).
-* Select an End Event → The trigger that indicates the phase has ended (e.g., first commit created).
+* Select a Start Event Source: The system where the phase begins (e.g., Jira).
+* Select a Start Event: The trigger that signals the phase has started (e.g., ticket status changes to In Progress).
+* Select an End Event Source: The system where the phase ends (can be different).
+* Select an End Event: The trigger that indicates the phase has ended (e.g., first commit created).
 
 #### Default Phases
 
