@@ -14,7 +14,7 @@ tags:
   - FIPS
 ---
 
-FIPS (Federal Information Processing Standards) are a set of standards published by the United States government to define security and interoperability requirements for federal systems and contractors. 
+FIPS (Federal Information Processing Standards) is a set of standards published by the United States government to define security and interoperability requirements for federal systems and contractors. 
 
 The most relevant standard for software systems is **FIPS 140**, which sets the security requirements for cryptographic modules (the software and hardware performing encryption and related operations).
 
@@ -35,18 +35,6 @@ This ensures that:
 Using FIPS-validated cryptography reduces the risk of insecure implementations and helps meet compliance requirements for audits and certifications.
 
 For customers with regulatory requirements or internal security policies that mandate FIPS compliance, it is essential that all parts of their software stack—including tools like Harness—can be deployed in a way that meets these standards.
-
-## Key Reasons to Consider FIPS 
-
-Harness is committed to supporting customers who need to comply with FIPS 140-2 requirements. This includes organizations in government, defense, and regulated industries where secure cryptographic operations are mandatory.
-
-FIPS 140 is a U.S. government standard that defines security requirements for cryptographic modules. Compliance with FIPS 140-2 (and its successor, FIPS 140-3) is required for U.S. federal agencies and contractors, as well as for many organizations in sectors such as healthcare, finance, and critical infrastructure. It is often also a requirement for non-U.S. public sector organizations depending on local regulations and contractual obligations.
-
-When regulations require cryptographic protection of data, they usually mandate the use of validated cryptographic modules. Non-validated cryptography is generally treated as offering no meaningful protection.
-
-Deploying software in a FIPS-compliant manner can be complex. It often requires using specific versions of libraries, binaries, and container images built with validated cryptographic modules. These versions must be carefully maintained and updated to balance compliance with timely vulnerability mitigation.
-
-The regulatory landscape around FIPS requirements is dynamic and can evolve over time. Harness monitors these changes to help ensure that customers deploying Harness in FIPS-compliant environments can continue to meet their security and compliance obligations.
 
 ## FIPS Support in Harness
 
