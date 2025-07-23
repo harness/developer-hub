@@ -215,6 +215,88 @@ You can also create users and user groups directly in Harness, but any users or 
 
 :::
 
+### Define Granular Create and Edit Permissions
+
+You can define separate **create** and **edit** permissions for **pipeline** and **template** resources. 
+
+:::note
+To use this setting, ensure the following feature flags are enabled:
+
+- `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION` — Enables migration of existing roles
+- `PIPE_CREATE_EDIT_PERMISSION_SPLIT` — Enables enforcement in backend and UI
+
+Contact [Harness Support](mailto:support@harness.io) to enable these flags.
+:::
+
+#### Pipeline Permissions
+
+You can now assign the following permissions independently:
+
+- `core_pipeline_create` — permission to create pipelines  
+- `core_pipeline_edit` — permission to edit pipelines  
+
+Previously, both actions were controlled by the combined `core_pipeline_edit` permission.
+
+<details>
+<summary>View all pipeline permissions</summary>
+
+The following permissions are always available:
+
+- `core_pipeline_abort` — permission to abort an execution  
+- `core_pipeline_view` — permission to view pipelines  
+- `core_pipeline_execute` — permission to execute a pipeline  
+- `core_pipeline_delete` — permission to delete a pipeline  
+
+Create and edit permissions depend on feature flag status:
+
+**With feature flags enabled:**
+- `core_pipeline_create` — permission to create a pipeline  
+- `core_pipeline_edit` — permission to edit a pipeline  
+
+**Without feature flags:**
+- `core_pipeline_edit` — combined permission to create and edit pipelines  
+
+</details>
+
+#### Template Permissions
+
+Similarly, template permissions have been split as follows:
+
+- `core_template_create` — permission to create templates  
+- `core_template_edit` — permission to edit templates  
+
+This separation allows you to grant create-only or edit-only access for templates.
+
+<details>
+<summary>View all template permissions</summary>
+
+The following permissions are always available:
+
+- `core_template_copy` — permission to copy a template  
+- `core_template_view` — permission to view a template  
+- `core_template_delete` — permission to delete a template  
+- `core_template_access` — general access to the template resource  
+
+Create and edit permissions depend on feature flag status:
+
+**With feature flags enabled:**
+- `core_template_create` — permission to create a template  
+- `core_template_edit` — permission to edit a template  
+
+**Without feature flags:**
+- `core_template_edit` — combined permission to create and edit templates  
+
+</details>
+
+:::important
+Once `PIPE_CREATE_EDIT_PERMISSION_SPLIT` and `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION` are enabled:
+
+- **Create and edit permissions become exclusive**. You must explicitly assign both permissions (`core_pipeline_create` and `core_pipeline_edit`, or their template equivalents) if users need to perform both actions.
+- **Terraform and script-based setups must include `create` permissions**. Using only `core_pipeline_edit` or `core_template_edit` will no longer grant create privileges.
+- **Edit permission does not imply delete or execute**. These actions continue to be governed by their own permissions (`core_pipeline_delete`, `core_pipeline_execute`, etc.).
+- **During migration (`PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION`)**, Harness will automatically add the new `create` permissions to all roles that currently have `edit`. This migration happens only after customer approval and applies per account.
+:::
+
 ### RBAC workflow examples
 
 These examples walk through two specific RBAC configuration scenarios.
