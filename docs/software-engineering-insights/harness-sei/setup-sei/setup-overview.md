@@ -7,7 +7,7 @@ redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/setup/
 ---
 
-This guide walks you through the essential steps to configure Software Engineering Insights (SEI) 2.0 for your organization—from setting up integrations and defining your org structure to uploading developer records and exploring insights.
+This page walks you through the essential steps to configure Software Engineering Insights (SEI) 2.0 for your organization, from setting up integrations and defining your org structure to uploading developer records and exploring insights.
 
 Follow these steps to get started and customize SEI 2.0 to your team's structure and goals.
 
