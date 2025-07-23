@@ -19,7 +19,7 @@ A Budget Group helps you manage multiple budgets rolled up as a single high leve
 
 ## Interactive guide
 
-<DocVideo src="https://app.tango.us/app/embed/951ab084-1997-49aa-b854-a532dd972952?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
+<DocVideo src="https://app.tango.us/app/embed/87012224-0977-4cee-b095-550c7e507d99?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
 
 ## Step-by-Step Guide
 
@@ -63,12 +63,14 @@ A Budget Group helps you manage multiple budgets rolled up as a single high leve
      -  **Slack Webhook URL**: Enter the webhook URL.
 - Click **Save**. 
 
+---------
+
 ## Using the Budget Group Dashboard
 
 <Tabs>
 <TabItem value="dashboard-overview" label="Dashboard Overview" default>
 
-When you click on a specific budget, you'll see a detailed view containing:
+When you click on a specific budget group, you'll see a detailed view containing:
 
 ### Budget Groups Overview Cards
 
@@ -110,8 +112,7 @@ A detailed breakdown corresponding to the Budget History Graph:
 
 Follow this interactive guide to understand how to navigate and use the Budget Dashboard effectively:
 
-<DocVideo src="https://app.tango.us/app/embed/budget-dashboard-walkthrough" title="Budget Dashboard Navigation Guide" />
-
+<DocVideo src="https://app.tango.us/app/embed/fb211aa1-47d1-4b43-a62c-813129a4ab64?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Budget Dashboard Navigation Guide" />
 
 </TabItem>
 </Tabs>

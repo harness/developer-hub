@@ -126,7 +126,7 @@ Harness will send an alert to the specified email addresses and Harness User Gro
 <Tabs>
 <TabItem value="dashboard-overview" label="Dashboard Overview" default>
 
-<DocImage path={require('./static/budget-dashboard.mp4')} width="100%" height="100%" title="Click to view full-size image" />
+<DocImage path={require('./static/budget-dashboard.gif')} width="100%" height="100%" title="Click to view full-size image" />
 
 When you click on a specific budget, you'll see a detailed view containing:
 
@@ -165,7 +165,7 @@ A detailed breakdown corresponding to the Budget History Graph:
 
 Follow this interactive guide to understand how to navigate and use the Budget Dashboard effectively:
 
-<DocVideo src="https://app.tango.us/app/embed/budget-dashboard-walkthrough" title="Budget Dashboard Navigation Guide" />
+<DocVideo src="https://app.tango.us/app/embed/ea06db3f-b081-44b6-8f13-3aaa14bce1d1?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Budget Dashboard Navigation Guide" />
 
 
 </TabItem>
