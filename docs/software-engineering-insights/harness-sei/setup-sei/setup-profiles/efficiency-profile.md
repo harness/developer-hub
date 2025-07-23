@@ -213,7 +213,7 @@ Mean Time to Restore (MTTR) measures the average time it takes for your teams to
 
 #### Select an Incident/Failure Detection Source
 
-Currently, SEI supports MTTR measurement using:
+Harness SEI supports MTTR measurement using:
 
 * Issue Management Systems (e.g., Jira)
 * Coming soon: Support for Incident Management / ITSM systems (e.g., PagerDuty, ServiceNow).
