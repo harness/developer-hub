@@ -10,12 +10,12 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
 <DynamicMarkdownSelector
   options={{
     GCP: {
-      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/gitspace-terraform-gcp.md",
+      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/infra/gitspace-terraform-gcp.md",
       logo: "gcp-logo.svg",
       logoSize: 24
     },
     AWS: {
-      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/gitspace-terraform-aws.md",
+      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/infra/gitspace-terraform-aws.md",
       logo: "aws-logo.svg",
       logoSize: 24
     }

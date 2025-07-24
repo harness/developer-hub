@@ -19,7 +19,7 @@ You'll have to [SSH into your GCP VM instance](https://cloud.google.com/compute/
 1. Go to your **GCP Console** and go to **VM Instances**. You can find your specific VM instance created as per the details you entered while configuring your infrastructure in the Harness UI. Click on that instance and head over to the **Details** page. 
 2. Click on **SSH** and select **View gcloud command**. This is your command to SSH into the instance from your machine. Run this command in your local terminal. 
 
-![](../static/gcloud-command-ssh.png)
+![](../../static/gcloud-command-ssh.png)
 
 Once you are into the VM Instance, you can continue and complete the following steps. 
 
@@ -101,7 +101,7 @@ Once you’ve installed and set up your Delegate, enter the specific **Delegate 
 
 You can also select Delegates in the Delegate Selector field using **Delegate Tags**. Read more about [Delegate Tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags). 
 
-![](../static/delegate-selector.png)
+![](../../static/delegate-selector.png)
 
 ## Next Steps
 Now that you’ve successfully installed and configured the Delegate, you’re ready to **create machines and self hosted Gitspaces** within your GCP infrastructure.

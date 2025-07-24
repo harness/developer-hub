@@ -124,7 +124,7 @@ Once you’ve installed and set up your Delegate, enter the specific **Delegate 
 
 You can also select Delegates in the Delegate Selector field using **Delegate Tags**. Read more about [Delegate Tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags). 
 
-![](../static/delegate-selector.png)
+![](../../static/delegate-selector.png)
 
 ## Next Steps
 Now that you’ve successfully installed and configured the Delegate, you’re ready to **create machines and self hosted Gitspaces** within your AWS cloud infrastructure.

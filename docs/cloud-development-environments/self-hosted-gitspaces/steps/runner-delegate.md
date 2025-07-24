@@ -30,12 +30,12 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
 <DynamicMarkdownSelector
   options={{
     GCP: {
-      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/runner-delegate-gcp.md",
+      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/infra/runner-delegate-gcp.md",
       logo: "gcp-logo.svg",
       logoSize: 24
     },
     AWS: {
-      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/runner-delegate-aws.md",
+      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/infra/runner-delegate-aws.md",
       logo: "aws-logo.svg",
       logoSize: 24
     }

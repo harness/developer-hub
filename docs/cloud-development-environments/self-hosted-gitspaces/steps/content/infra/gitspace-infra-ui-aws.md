@@ -22,7 +22,7 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 2. Navigate to the **Cloud Development Environments** module and open your **Account Settings**.
 3. In the side navbar under Account Settings, select **Gitspace Infrastructure**.
 
-![](../static/access-gitspace-infra.png)
+![](../../static/access-gitspace-infra.png)
 
 ### Provide Basic Infrastructure Details
 
@@ -31,14 +31,14 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 3. **Domain**: Provide the **domain** under which all Gitspaces created in this infrastructure will be accessible.
 4. **CDE Gateway Instance Type**: Specify the **instance type** for your CDE Gateway.
 
-![](../static/aws-hybrid-1.png)
+![](../../static/aws-hybrid-1.png)
 
 ### Configure Regions
 You can add and configure regions for Gitspaces. Note that users will only be able to host Gitspaces in these defined regions. Click on **New Region** to add a new region. While using **AWS Cloud Infrastructure** for your Self Hosted Gitspaces, you'll need to take care of the following rules: 
 1. It's mandatory to add at least **two availability zones** for each region in your infrastructure. 
 2. For every availability zone, you need to provide the **private subnet CIDR block** and **public subnet CIDR block**. 
 
-![](../static/aws-hybrid-2.png)
+![](../../static/aws-hybrid-2.png)
 
 Use the following input parameters:
 1. **AWS Region**: Select the **AWS region**. Refer to the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) to view available regions.
@@ -48,13 +48,13 @@ Use the following input parameters:
    - **Private Subnet CIDR Block**: This is the private IP range required for the subnet. Ensure this IP range is within the VPC CIDR block. 
    - **Public Subnet CIDR Block**: This is the corresponding public IP range required for the subnet. Ensure this IP range is within the VPC CIDR block. 
 
-![](../static/aws-hybrid-region-details.png)
+![](../../static/aws-hybrid-region-details.png)
 
 ### Download the Infrastructure Config YAML
 
 Once all details have been entered, click on **Download and Apply YAML**. This will generate the **Infra Config YAML**, which contains the entire Gitspace Infra configuration. This YAML is a mandatory input for [configuring and setting up the Harness Gitspaces Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md), which provisions the AWS infrastructure in your selected account.
 
-![](../static/aws-hybrid-download-yaml.png)
+![](../../static/aws-hybrid-download-yaml.png)
 
 This is what a **sample Infrastructure Config YAML** looks like: 
 ```YAML
@@ -95,7 +95,7 @@ Here's how you can edit your infrastructure:
 1. Go to your **Gitspace Infrastructure UI**. 
 2. Click on the **Edit** button on the top-right corner. 
 
-![](../static/aws-edit-infra.png)
+![](../../static/aws-edit-infra.png)
 
 3. Whenever you make changes to your infrastructure configuration, you'll need to **download the updated Infra Config YAML**.
 Use this updated YAML to [reapply your Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to reflect the changes. You can learn more about this process in the [next steps](#next-steps).
@@ -128,7 +128,7 @@ Here's how you can delete your infrastructure:
 1. Go to your **Gitspace Infrastructure UI**. 
 2. Scroll down to the bottom of the page. You'll find the option to **Delete Infrastructure**. Click this button to permanently delete the selected infrastructure.
 
-![](../static/aws-delete-inra.png)
+![](../../static/aws-delete-inra.png)
 
 ### Assess Gateway Group Health for Gitspace Infrastructure
 You can assess the **Gateway Group Health** for your Gitspace infrastructure from the Infra Details UI. Go to **Locations and Machines**, and click on the region for which you want to assess the Gateway health. In case the Gateway is **Unhealthy**, you will not be able to create any Gitspaces since no requests will be routed forward. You can find the following details:
@@ -139,7 +139,7 @@ You can assess the **Gateway Group Health** for your Gitspace infrastructure fro
 * **Envoy Health**: Health status of Envoy
 * **Gateway Version Number**: Gateway image version number
 
-![](../static/aws-hyrbid-gateway-health.png)
+![](../../static/aws-hyrbid-gateway-health.png)
 
 ## Next Steps
 Now that you have the [Infrastructure Config YAML](#download-the-infrastructure-config-yaml) downloaded, proceed to [configure and apply the Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to provision your self-hosted Gitspaces.

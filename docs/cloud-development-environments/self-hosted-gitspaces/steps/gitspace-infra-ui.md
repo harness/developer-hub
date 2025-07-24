@@ -10,12 +10,12 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
 <DynamicMarkdownSelector
   options={{
     GCP: {
-      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/gitspace-infra-ui-gcp.md",
+      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/infra/gitspace-infra-ui-gcp.md",
       logo: "gcp-logo.svg",
       logoSize: 24
     },
     AWS: {
-      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/gitspace-infra-ui-aws.md",
+      path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/infra/gitspace-infra-ui-aws.md",
       logo: "aws-logo.svg",
       logoSize: 24
     }

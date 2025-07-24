@@ -79,9 +79,9 @@ These have default values and are not mandatory:
 You need a **Service Account Key** with **Owner** role to apply the Terraform module: 
 
 1. In your GCP project, create a Service Account with the `Owner` role. Follow this [guide](https://cloud.google.com/iam/docs/service-accounts-create) to learn more about the same.
-![](../static/owner-service-account.jpg)
+![](../../static/owner-service-account.jpg)
 2. Create a key for the Service Account. Follow this [guide](https://cloud.google.com/iam/docs/keys-create-delete) to learn more about the same.
-![](../static/add-key-service-account.jpg)
+![](../../static/add-key-service-account.jpg)
 3. Download the key file in `.json` or `.p12` format.
 
 ### 3. Retrieve the Infra Config YAML
