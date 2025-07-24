@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Solutions to common pain points and known issues in Harness Chaos Engineering
-sidebar_position: 1
+sidebar_position: 2
 redirect_from:
   - /docs/chaos-engineering/troubleshooting
   - /docs/chaos-engineering/resources/troubleshootingtroubleshooting
