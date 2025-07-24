@@ -220,8 +220,9 @@ In the event of a course cancellation:
 Instructor-Led Training has tiers of costs depending on format. All ILTs has access to the 
 [Platform Pre-Req Course](https://university-registration.harness.io/introduction-to-the-harness-platform). 
 
-* Dedicated: $12,000 for up to 12 students virtually. On-site will be the $12,000 + travel. 
-* Virtual: $1,000 per student, per module. 
+* Dedicated: $16,000 for up to 12 students virtually. Travel is included to customer location of choice or can be virtual.
+* [EDU Service Details](https://www.harness.io/services/training). 
+* [EDU Terms](https://www.harness.io/legal/education). 
 
 You can leverage your Harness Service Catalog Dollars for payment
 of dedicated ILTs or purchase dedicated ILTs via your Harness account rep. Virtual ILTs can be bought online via credit card. 
