@@ -10,7 +10,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 ## Setting up VM Runner and Delegate 
 You can follow this detailed guide (as described below) to setup Runner and install Harness Delegate in your infrastructure:  
 
-### SSH into the VM Instance 
+### 1. SSH into the GCP VM Instance 
 :::info
 To connect to a VM with SSH, you'll need your **SSH Key to propogate into your VM**. Make sure you have a fully functioning SSH Key added into your GCP Console. Refer to this guide to learn more on [how to add a SSH Key to VMs](https://cloud.google.com/compute/docs/connect/add-ssh-keys). 
 :::
@@ -23,10 +23,10 @@ You'll have to [SSH into your GCP VM instance](https://cloud.google.com/compute/
 
 Once you are into the VM Instance, you can continue and complete the following steps. 
 
-### Install Docker 
+### 2. Install Docker 
 You'll need **Docker** installed in your GCP VM instance to configure self hosted Gitspaces. Refer to this [installation guide](https://docs.docker.com/engine/install/) on how to install Docker in your VM instance. 
 
-### Start the VM Runner 
+### 3. Start the VM Runner 
 Now that you're into the VM instance and you've installed Docker, follow the given steps to start the **Runner**: 
 1. Create a ``/runner`` directory on your VM instance and ``cd`` into it:
 
@@ -56,7 +56,7 @@ docker run -d \
 ```
 This **starts a VM Runner** in your VM which will **interact with the Harness Delegate** to complete all the various tasks involved in connecting the Harness Control Plane to your self hosted Infrastructure. 
 
-### Install the Delegate 
+### 4. Install the Delegate 
 Now that you have the VM Runner setup and started, you can continue and install **Harness Docker Delegate** in your VM instance to be able to establish a **seamless connection between the Harness Control Plane and your GCP infrastructure**. To learn more about delegates and delegate installation, go to [Delegate installation overview](https://developer.harness.io/docs/platform/delegates/install-delegates/overview). Please refer to the detailed steps below to install the Delegate: 
 :::info
 Please ensure you are installing the **Docker Delegate** in your VM instance. For now, Self Hosted Gitspaces will only work with Delegates created at the **Account level**. 
@@ -96,7 +96,7 @@ docker run -d \
 
 Once your Delegate is up and running, you have successfully setup the infrastructure and established a successful connection between the Harness Control Plane and your infrastructure. 
 
-### Delegate Selector
+### 5. Update the Delegate Selector
 Once you’ve installed and set up your Delegate, enter the specific **Delegate Name** in the **Delegate Selector** field within your Gitspace Infrastructure UI. You can either add it while configuring the Gitspace Infra UI or once you've setup everything, you can edit the infrastructure and add a specific Delegate. Read more about how to use [Delegate Selector](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md#select-delegate-from-delegate-selector). 
 
 You can also select Delegates in the Delegate Selector field using **Delegate Tags**. Read more about [Delegate Tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags). 

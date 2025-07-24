@@ -1,8 +1,8 @@
 ---
-title: Configure Gitspace Infrastructure in Harness UI
+title: Configure Gitspace Infrastructure
 description: Learn more about how to configure your Gitspace Infrastructure via Harness UI.
 sidebar_position: 2
-sidebar_label: Configure Gitspace Infrastructure in Harness UI
+sidebar_label: Configure Gitspace Infrastructure
 ---
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
@@ -20,4 +20,5 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
       logoSize: 24
     }
   }}
+  toc = {toc}
 />

@@ -11,7 +11,9 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 - **Target Group**: A Target Group is a set of resources (in this case EC2 instances) registered as Targets. This is used to define the targets that a Load Balancer will send traffic to. In this case, we'll be using a **Network Load Balancer** to send traffic to the EC2 instance. Thus we will register the EC2 instance created in this target group and will define the specific protocol and port for the target. Read more about [Target Groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html).
 - **Listener**: A Listener is configured on the Load Balancer, it is used to listen for the incoming connections on the defined port/protocol. When you create a listener, you specify a target group for its default action. Traffic is forwarded to the target group specified in the listener rule. Read more about [Listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html). 
 
-## 1. Create an AWS EC2 Instance
+## Setting up Runner & Installing Delegate
+
+### 1. Create an AWS EC2 Instance
 To host the VM Runner and Harness Delegate, an EC2 instance is required. Follow the steps mentioned here to learn more on how to [launch an AWS EC2 Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#ec2-launch-instance). 
 
 You'll need to configure the **Network configuration** to the following configuration: 
@@ -23,7 +25,7 @@ You'll need to configure the **Network configuration** to the following configur
 
 Launch an AWS EC2 instance with the above network configuration, you can choose and customise the other details required accordingly. 
 
-## 2. Create an AWS Target Group
+### 2. Create an AWS Target Group
 You'll have to create a Target Group for the Load Balancer. This target group will have **EC2 Instances** as the target type. Follow the steps mentioned here to learn more on how to [create a new Target Group](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-target-group.html). Use the following configuration to create one: 
     - **Target Type**: Select ``Instances`` for the target type. 
     - **Protocol**: This is the protocol required for load balancer-to-target communication. Enter ``TCP`` here to allow the load balancer to communicate with the target instance. 
@@ -32,7 +34,7 @@ You'll have to create a Target Group for the Load Balancer. This target group wi
 
 Create a Target Group with the above configuration and save the details.  
 
-## 3. Add a Listener in Load Balancer 
+### 3. Add a Listener in Load Balancer 
 You'll have to add a Listener in the Load Balancer to allow traffic to reach the target group. Follow the steps mentioned here to learn more on how to [add a listener](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-listener.html). Use the following configuration to add one: 
     - **Load Balancer**: From the Load Balancers screen, select the **NLB** load balancer. 
     - **Listener Protocol & Port**: A listener checks for connection requests using the protocol and port that you configure here. Select ``TCP`` as the protocol and enter any port number as the port. 
@@ -40,16 +42,16 @@ You'll have to add a Listener in the Load Balancer to allow traffic to reach the
 
 Create a Listener with the above configuration and save the details. 
 
-## 4. Update Security Group
+### 4. Update Security Group
 
 
-## 5. SSH into the VM Instance
+### 5. SSH into the AWS EC2 Instance
 Now that your Instance is up and running, all you have to do is connect to your instance using a SSH client. Refer to the documentation to [connect to your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html). 
 
-## 6. Install Docker 
+### 6. Install Docker 
 You'll need **Docker** installed in your AWS VM instance to configure self hosted Gitspaces. Refer to this [installation guide](https://docs.docker.com/engine/install/) on how to install Docker in your VM instance. 
 
-## 7. Start the VM Runner 
+### 7. Start the VM Runner 
 Now that you're into the VM instance and you've installed Docker, follow the given steps to start the **Runner**: 
 1. Create a ``/runner`` directory on your VM instance and ``cd`` into it:
 
@@ -79,7 +81,7 @@ docker run -d \
 ```
 This **starts a VM Runner** in your VM which will **interact with the Harness Delegate** to complete all the various tasks involved in connecting the Harness Control Plane to your self hosted Infrastructure. 
 
-## 8. Install the Delegate 
+### 8. Install the Delegate 
 Now that you have the VM Runner setup and started, you can continue and install **Harness Docker Delegate** in your VM instance to be able to establish a **seamless connection between the Harness Control Plane and your GCP infrastructure**. To learn more about delegates and delegate installation, go to [Delegate installation overview](https://developer.harness.io/docs/platform/delegates/install-delegates/overview). Please refer to the detailed steps below to install the Delegate: 
 :::info
 Please ensure you are installing the **Docker Delegate** in your VM instance. For now, Self Hosted Gitspaces will only work with Delegates created at the **Account level**. 
@@ -119,7 +121,7 @@ docker run -d \
 
 Once your Delegate is up and running, you have successfully setup the infrastructure and established a successful connection between the Harness Control Plane and your infrastructure. 
 
-## 9. Update the Delegate Selector
+### 9. Update the Delegate Selector
 Once you’ve installed and set up your Delegate, enter the specific **Delegate Name** in the **Delegate Selector** field within your Gitspace Infrastructure UI. You can either add it while configuring the Gitspace Infra UI or once you've setup everything, you can edit the infrastructure and add a specific Delegate. Read more about how to use [Delegate Selector](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md#select-delegate-from-delegate-selector). 
 
 You can also select Delegates in the Delegate Selector field using **Delegate Tags**. Read more about [Delegate Tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags). 

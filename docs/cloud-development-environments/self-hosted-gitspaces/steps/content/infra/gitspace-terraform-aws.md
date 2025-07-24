@@ -13,9 +13,9 @@ Once you have added and configured the **AWS Cloud Infrastructure in your Harnes
 3. // Pending
 
 ## Functions of the Terraform Module
-The Harness Gitspaces Terraform Module is responsible for configuring and creating the infrastructure in AWS needed to host Self Hosted Gitspaces. This includes provisioning VPCs, Subnets, Cloud NAT, and other supporting services. 
+The [Harness Gitspaces AWS Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/aws/0.0.2) is responsible for configuring and creating the infrastructure in AWS needed to host Self Hosted Gitspaces. This includes provisioning VPCs, Subnets, Cloud NAT, and other supporting services. 
 
-### Workspaces 
+### Terraform Workspaces 
 Terraform workspaces are **isolated instances of Terraform state** within a single configuration directory. Each Terraform configuration has an associated backend that defines how Terraform executes operations and where Terraform stores persistent data, like state. The persistent data stored in the backend belongs to a workspace. Read more about [Terraform Workspaces](https://developer.hashicorp.com/terraform/language/state/workspaces). 
 
 In our Terraform setup, **AWS Regions are mapped to Terraform Workspaces**. This means that each AWS region will have its own workspace, allowing you to manage resources in different regions independently. 
@@ -23,10 +23,10 @@ In our Terraform setup, **AWS Regions are mapped to Terraform Workspaces**. This
 #### Default Workspace
 Terraform starts with a single, default workspace named ``default`` that you cannot delete. You'll always start in the **default workspace**, which corresponds to your **default AWS region** as defined in the configuration. This ``default workspace`` is used to install **all the global resources** in your infrastructure. 
 
-This is set using the `default_region` variable in the Terraform Configuration as defined in the [Terraform Inputs](/docs/cloud-development-environments/self-hosted-gitspaces/steps/content/gitspace-terraform-aws.md#terraform-inputs). 
+This is set using the `default_region` variable in the Terraform Configuration as defined in the [Terraform Inputs](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#terraform-inputs). 
 
 #### Region-wise Workspaces
-Each **AWS Region** configured in the AWS Cloud Infrastructure (via Harness UI) will have its **own Workspace**. If you want to provision resources in other regions, you'll have to switch to that workspace and will have to download the regional resources in that specific region by applying this Terraform Configuration. Learn more about this step by referring to [applying terraform configuration in different regional workspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/content/gitspace-terraform-aws.md#5-apply-the-terraform-configuration-region-workspaces)
+Each **AWS Region** configured in the AWS Cloud Infrastructure (via Harness UI) will have its **own Workspace**. If you want to provision resources in other regions, you'll have to switch to that workspace and will have to download the regional resources in that specific region by applying this Terraform Configuration. Learn more about this step by referring to [applying terraform configuration in different regional workspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#5-apply-the-terraform-configuration-region-workspaces)
 
 ### Terraform Inputs
 The following Terraform variables are **mandatory inputs** required to apply and set up the Terraform module:
@@ -42,7 +42,7 @@ The following Terraform variables are **mandatory inputs** required to apply and
 | `certificate_path`             | string   | Path to the **SSL certificate file** (if not using Certificate Manager).                          | No           | `""`                                 |
 | `private_key_path`             | string   | Path to the **private key file** for the SSL certificate (if not using Certificate Manager).      | No           | `""`                                 |
 | `use_certificate_manager`  | bool     | Indicates whether **AWS Certificate Manager** should be used for SSL certificates.             | No           | `true`                               |
-| `chain_path`  | string     |              | No        |                                |
+| `chain_path`  | string     |   Path to **SSL certificate chain file** (if not using ACM)   | No        |      `""`                          |
 
 
 Refer to this [documentation](https://registry.terraform.io/modules/harness/harness-gitspaces/aws/0.0.1?tab=inputs) to learn more about the **Inputs** required for the Terraform Module. 
@@ -101,8 +101,7 @@ module "harness-gitspaces" {
     access_key                  = "[AWS ACCESS KEY]"
     secret_key                  = "[AWS SECRET KEY]"
     token                       = "[AWS SESSION TOKEN]" 
-    default_region              = "[DEFAULT AWS REGION]"    
-    region                      = "[AWS REGION]"
+    default_region              = "[DEFAULT AWS REGION]"   
     manage_dns_zone             = true
 }
 ```
@@ -113,13 +112,12 @@ module "harness-gitspaces" {
 ```
 module "harness-gitspaces" {
     source                      = "harness/harness-gitspaces/aws"
-    version                     = "0.0.1"
+    version                     = "0.0.2"
     infra_config_yaml_file      = "infra_config.yaml"
     access_key                  = "[AWS ACCESS KEY]"
     secret_key                  = "[AWS SECRET KEY]"
     token                       = "[AWS SESSION TOKEN]" 
-    default_region              = "[DEFAULT AWS REGION]"    
-    region                      = "[AWS REGION]"
+    default_region              = "[DEFAULT AWS REGION]" 
     manage_dns_zone             = true
 }
 ```

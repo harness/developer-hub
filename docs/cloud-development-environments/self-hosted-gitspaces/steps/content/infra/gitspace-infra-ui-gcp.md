@@ -19,7 +19,7 @@ In order to get started with Self Hosted Gitspaces, you'll first need to **confi
         <li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) – `api/dns.googleapis.com`</li>
       </ul>
 
-## Configure GCP Cloud Infrastructure in Harness UI
+## Configure GCP Cloud Infrastructure
 
 Configuring your Gitspace Infrastructure involves adding your infrastructure details in the Harness UI using the steps below. This process generates an **Infra Config YAML** — a YAML file that captures your entire infrastructure configuration. This YAML is a required input when running the Harness Gitspace Terraform Module to provision the necessary GCP VM infrastructure.
 
@@ -49,7 +49,7 @@ You can add and configure regions for Gitspaces. Note that users will only be ab
 You can create and manage Self Hosted Gitspaces only if your infrastructure has at least one region added. 
 :::
 
-Use the following input parameters:
+Use the following **input parameters**:
 1. **Region Name**: Enter the **region name**. Refer to the [GCP documentation](https://cloud.google.com/compute/docs/regions-zones) to view available regions.
 2. **IP Details**: Provide the **IP configuration** for each region. 
     - **Default Subnet IP Range**: This is the primary IP range of the subnet and is used to assign internal IPs to your resources. 

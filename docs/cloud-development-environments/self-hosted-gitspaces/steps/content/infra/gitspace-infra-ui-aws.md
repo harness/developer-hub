@@ -12,7 +12,7 @@ In order to get started with Self Hosted Gitspaces, you'll first need to **confi
 2. Only users with **Account-level access** can configure Gitspace infrastructure for now. Read more about the [Permissions Hierarchy](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 3. // Pending
 
-## Configure AWS Cloud Infrastructure in Harness UI
+## Configure AWS Cloud Infrastructure
 
 Configuring your Gitspace Infrastructure involves adding your infrastructure details in the Harness UI using the steps below. This process generates an **Infra Config YAML** — a YAML file that captures your entire infrastructure configuration. This YAML is a required input when running the Harness Gitspace Terraform Module to provision the necessary AWS infrastructure.
 
@@ -27,7 +27,7 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 ### Provide Basic Infrastructure Details
 
 1. **Infrastructure Name**: Provide a **name** for your **Gitspace infrastructure**. This name will be used while referencing your infrastructure for creating Gitspaces.
-2. **VPC CIDR Block**: Enter your VPC CIDR Block to specify the IP range for the VPC.
+2. **VPC CIDR Block**: Enter your **VPC CIDR Block** to specify the IP range for the VPC.
 3. **Domain**: Provide the **domain** under which all Gitspaces created in this infrastructure will be accessible.
 4. **CDE Gateway Instance Type**: Specify the **instance type** for your CDE Gateway.
 
@@ -40,7 +40,7 @@ You can add and configure regions for Gitspaces. Note that users will only be ab
 
 ![](../../static/aws-hybrid-2.png)
 
-Use the following input parameters:
+Use the following **input parameters**:
 1. **AWS Region**: Select the **AWS region**. Refer to the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) to view available regions.
 2. **Subdomain**: Provide the **subdomain** for the region. 
 3. **Zones**: It's mandatory to add at least **two availability zones** for each region in your infrastructure. Select the availability zones from this field. You can add more than two availability zones if needed using the **"New Zone"** button. 

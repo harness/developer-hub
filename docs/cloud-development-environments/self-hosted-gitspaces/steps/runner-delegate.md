@@ -40,4 +40,5 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
       logoSize: 24
     }
   }}
+  toc = {toc}
 />
