@@ -26,9 +26,24 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 16, 2025
+#### Last updated: July 24, 2025
 
 ## July 2025
+
+### Relay Proxy
+
+#### Version 2.0.13
+
+*Optimizes SSE event handling after Primary Proxy restarts or disconnections from Harness SaaS*
+
+Previously, when the Primary Proxy reconnected, it would send patch events for all flags to SDKs to force a full refresh. This safeguarded against missed changes in SaaS while the Proxy was disconnected and couldn’t update replicas or SDKs. With this update, the Primary Proxy now sends patch events only for resources that actually changed during the disconnection. To enable this, we updated the shape of the data the Proxy stores in Redis for tracking resources. This change is backwards compatible — upgrading from Proxy versions <= 2.0.12 to 2.0.13 requires no manual steps. On startup, the Proxy automatically migrates the old data structure to the new one.
+
+*Important*: If you upgrade to version 2.0.13 and later decide to revert back to 2.0.12, you must configure the REDIS_DB to use a different database index. Version 2.0.13 changes the format of the data stored in Redis in a way that is not compatible with 2.0.12. By pointing 2.0.12 to a different Redis DB, the Proxy will start with a fresh store and avoid any compatibility issues.
+
+#### Version 2.0.12
+
+- Adds HOST & Remote IP to the request logging middleware.
+- Updates dependencies to resolve vulnerability in `github.com/golang-jwt/jwt` package.
 
 ### Node.js SDK
 
@@ -80,6 +95,12 @@ This minor release updates the build process to sign the NuGet package, improvin
 - Various streaming reliability improvements and fixes to enhance connection stability and reduce disconnections. (FFM-12477)
 
 ## May 2025
+
+### Relay Proxy
+
+#### Version 2.0.11
+
+- Updated third-party dependencies to address security vulnerabilities identified by scanners.
 
 ### Python SDK
 
