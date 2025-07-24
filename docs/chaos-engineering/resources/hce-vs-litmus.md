@@ -42,7 +42,7 @@ sidebar_position: 1
 | | Cross-cluster experiments | ❌ | ✅ |
 | **Deployment & Agents** | SaaS deployment | ❌ | ✅ |
 | | Self-managed platform | ✅ | ✅ |
-| | Kubernetes native agent | ❌ | ✅ |
+| | Kubernetes native agent | ✅ | ✅ |
 | | Linux native agent | ❌ | ✅ |
 | | Windows native agent | ❌ | ✅ |
 | | Scope-based isolation | ✅ | ✅ |
@@ -52,7 +52,7 @@ sidebar_position: 1
 | | Out-of-box experiments | ❌ | ✅ |
 | | Chaos experiment templates | ✅ | ✅ |
 | | Experiment scheduling | ✅ | ✅ |
-| | Advanced scheduling (cron) | ❌ | ✅ |
+| | Advanced scheduling (cron) | ✅ | ✅ |
 | | GameDays | ❌ | ✅ |
 | | Pipelines | ❌ | ✅ |
 | | Resilience score | ✅ | ✅ |
@@ -68,8 +68,6 @@ sidebar_position: 1
 | | SAML provider | ❌ | ✅ |
 | | OAuth providers | ❌ | ✅ |
 | | Role-based access control | ✅ | ✅ |
-| | Single Sign-On (OAuth 2.0) | ❌ | ✅ |
-| | Single Sign-On (SAML) | ❌ | ✅ |
 | | Okta provisioning (SCIM) | ❌ | ✅ |
 | | Azure AD provisioning | ❌ | ✅ |
 | | OneLogin provisioning | ❌ | ✅ |
@@ -99,14 +97,6 @@ sidebar_position: 1
 | | Time-window RBACs | ❌ | ✅ |
 | | ServiceAccount RBACs | ❌ | ✅ |
 | **Platform Integrations** | Harness CD integration | ❌ | ✅ |
-| | Jenkins integration | ❌ | ✅ |
-| | GitLab integration | ❌ | ✅ |
-| | Harness Continuous Verification integration | ❌ | ✅ |
-| | Feature Flags integration | ❌ | ✅ |
-| | SRM integration | ❌ | ✅ |
-| | Custom fault SDK | ❌ | ✅ |
-| | API orchestration | ❌ | ✅ |
-| | Postman provider | ❌ | ✅ |
 | | Terraform provider | ❌ | ✅ |
 | **APM Integrations** | Prometheus probe | ✅ | ✅ |
 | | Datadog probe | ❌ | ✅ |
@@ -131,13 +121,13 @@ sidebar_position: 1
 | | Pod network duplication | ✅ | ✅ |
 | | Pod network partition | ✅ | ✅ |
 | | Pod network rate limit | ❌ | ✅ |
-| | Pod DNS error | ❌ | ✅ |
-| | Pod DNS spoof | ❌ | ✅ |
-| | Pod HTTP latency | ❌ | ✅ |
-| | Pod HTTP status code | ❌ | ✅ |
-| | Pod HTTP modify body | ❌ | ✅ |
-| | Pod HTTP modify header | ❌ | ✅ |
-| | Pod HTTP reset peer | ❌ | ✅ |
+| | Pod DNS error | ✅ | ✅ |
+| | Pod DNS spoof | ✅ | ✅ |
+| | Pod HTTP latency | ✅ | ✅ |
+| | Pod HTTP status code | ✅ | ✅ |
+| | Pod HTTP modify body | ✅ | ✅ |
+| | Pod HTTP modify header | ✅ | ✅ |
+| | Pod HTTP reset peer | ✅ | ✅ |
 | | Pod API block | ❌ | ✅ |
 | | Pod API latency | ❌ | ✅ |
 | | Pod API modify body | ❌ | ✅ |
@@ -159,16 +149,16 @@ sidebar_position: 1
 | | JVM SQL faults | ❌ | ✅ |
 | | Redis cache expire | ❌ | ✅ |
 | | Redis cache limit | ❌ | ✅ |
-| | Redis cache penetration | ❌ | ✅ |
+| | Redis cache penetration | ✅ | ✅ |
 | **Kubernetes Node Faults** | Node CPU hog | ✅ | ✅ |
 | | Node memory hog | ✅ | ✅ |
-| | Node I/O stress | ❌ | ✅ |
+| | Node I/O stress | ✅ | ✅ |
 | | Node network latency | ❌ | ✅ |
 | | Node network loss | ❌ | ✅ |
 | | Node restart | ✅ | ✅ |
-| | Node drain | ❌ | ✅ |
-| | Node taint | ❌ | ✅ |
-| | Kubelet service kill | ❌ | ✅ |
+| | Node drain | ✅ | ✅ |
+| | Node taint | ✅ | ✅ |
+| | Kubelet service kill | ✅ | ✅ |
 | | Kubelet density stress | ❌ | ✅ |
 | **AWS Cloud Faults** | EC2 stop by ID/tag | ✅ | ✅ |
 | | EC2 CPU hog | ❌ | ✅ |
@@ -204,9 +194,9 @@ sidebar_position: 1
 | | Resource access restrict | ❌ | ✅ |
 | | SSM chaos by ID/tag | ❌ | ✅ |
 | **GCP Cloud Faults** | VM instance stop | ✅ | ✅ |
-| | VM instance stop by label | ❌ | ✅ |
+| | VM instance stop by label | ✅ | ✅ |
 | | VM disk loss | ✅ | ✅ |
-| | VM disk loss by label | ❌ | ✅ |
+| | VM disk loss by label | ✅ | ✅ |
 | | VM service kill | ❌ | ✅ |
 | | SQL instance failover | ❌ | ✅ |
 | **Azure Cloud Faults** | VM basic operations | ✅ | ✅ |
