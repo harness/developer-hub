@@ -139,6 +139,37 @@ If the test pipeline fails, you can utilize the rollback feature to revert the d
 
 No, currently there is no way to fully integrate a triggered test pipeline within the original deployment pipeline. The test pipeline will always operate as a separate entity.
 
+### Why did my pipeline run use a different delegate and fail to authenticate with GitHub?
+When a delegate selector is not specified at the step, stage, pipeline, or connector level, Harness automatically chooses the least-loaded delegate available to execute the task. This means that different pipeline runs might use different delegates. If a specific delegate is not correctly configured to authenticate with your GitHub connector, authentication failures like:
+
+"Failed to download manifest files from git. Git connection error. authentication not supported"
+
+may occur, even if other delegates work as expected.
+
+### What causes authentication errors with GitHub connectors in Harness?
+GitHub authentication errors in Harness often stem from an underlying issue with the delegate’s network or credential configuration:
+
+The delegate may lack the necessary credentials, SSH keys, or access tokens required for GitHub API access.
+
+Firewall or network policies may restrict outbound traffic to GitHub on certain delegates.
+
+Environment variables or secret manager references may be missing on the failing delegate.
+As a result, authentication fails only when Harness routes the pipeline through a misconfigured delegate.
+
+### How can I ensure the correct delegate is always used for my pipelines?
+You can explicitly control delegate selection using “delegate selectors.” Assign the appropriate selector (such as the-prod-shared-iac-cluster) to your connector, pipeline, stage, or individual steps. This ensures that all relevant tasks consistently use the delegate you know is configured to interact with GitHub successfully, reducing the risk of intermittent and environment-specific failures.
+
+### What is the recommended mitigation for intermittent delegate-related authentication issues?
+
+As a best practice:
+Add a delegate selector to your GitHub connector or the relevant deployment steps, restricting execution to the delegate(s) that have validated GitHub access.
+
+Regularly audit all delegates to verify that required credentials and network access are properly configured for external integrations.
+
+If you need to use multiple delegates, ensure all of them have valid credentials and consistent configuration for the external systems they interact with.
+
+By explicitly setting delegate selectors and ensuring uniform delegate configuration, you can significantly reduce or eliminate authentication issues and ensure pipeline reliability.
+
 ## API
 
 ### Can I run pipelines through the API or CLI?
@@ -349,6 +380,35 @@ There is no limit to the number of triggers for a pipeline.
 ### Does Harness NextGen support the same cron syntax for triggers as FirstGen?
 
 Yes, Harness NextGen supports both the QUARTZ and UNIX syntax formats for cron triggers. For more information, go to [Schedule Pipelines Using Cron Triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
+
+### Can I store Harness trigger definitions as YAML in Git with Git Experience?
+No, at this time, triggers are not supported for Git Experience in Harness. This means you cannot store triggers as YAML files in your Git repository or have them automatically created in Git via YAML. This is an acknowledged limitation with an open enhancement request by Harness.
+
+### Why doesn't my trigger-input set binding work when using Git-stored YAML?
+Despite having successful webhook configuration, the trigger and input set binding at the code level will not function as expected through Git if triggers are not natively supported as Git entities. Both input sets and pipelines can be managed in Git, but triggers must still be configured through the Harness UI or API, not directly via Git YAML.
+
+### What is the current best practice for linking triggers and input sets?
+To link triggers and input sets:
+
+Create and sync your pipeline and input set YAMLs in Git.
+
+Use the Harness UI to manually configure triggers and select input sets as needed.
+
+Ensure the input set is created and available in Harness before attempting to create a trigger that references it.
+Currently, purely code-based (YAML in Git) linkage for triggers is not available.
+
+### Is there a workaround to automate trigger creation or sync them from Git?
+Not directly. Harness currently requires triggers to be managed separately within the platform. Any automation for trigger creation or binding must use Harness APIs or manual UI actions, not via Git-sync or YAML definitions in your repository.
+
+### What enhancements are planned to resolve this?
+Harness is aware of the need for Git-based management of triggers. There is a published feature request to enable trigger support in Git Experience, which would allow users to manage and version their triggers natively in Git repositories. You can follow and upvote the enhancement on the Harness feature request board.
+
+### What should I keep in mind regarding input sets and trigger support with Git Experience?
+Pipelines and input sets should exist in the same Git branch for proper synchronization.
+
+Input sets can be stored, imported, and managed in Git, but triggers currently must be handled outside Git through Harness.
+
+Always ensure pipeline and input set changes are synced and stable before configuring or updating a trigger in the platform.
 
 ## Stop pipelines
 
