@@ -144,7 +144,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Improved access control for OIDC token generation by introducing a new permission `core_oidcIdToken_create`. This ensures that only authorized service accounts can generate tokens and assume roles..[PL-64006]
+- Improved access control for OIDC token generation by introducing a new permission `core_oidcIdToken_create`. This ensures that only authorized service accounts can generate tokens and assume roles.[PL-64006]
 
   :::danger Important Note: About `core_oidcIdToken_create`
 
