@@ -251,7 +251,7 @@ To avoid this, explicitly exclude the following directories in your pom.xml file
 `/harness/.mvn` (also applies to cache-related scans)
 
 **Example: Update to pom.xml**
-Add the following snippet under the <build> section to configure the apache-rat-plugin to ignore these paths:
+Add the following snippet under the `<build>` section to configure the apache-rat-plugin to ignore these paths:
 
 ```xml
 <build>
