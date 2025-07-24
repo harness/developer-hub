@@ -4,16 +4,15 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 <RedirectIfStandalone label="Azure" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
-<Tabs>
-<TabItem value="Quick Create" label="Quick Create" queryString="quick-create">
 
-## Quick Create Method
-
-### Prerequisites
+## Before You Start
 
 - See [Roles and Policies for the Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector#review-roles-and-policies-for-the-connector) to learn about the IAM roles and policies that you need to be assigned to be able to create a connector.
 
-#### Kubernetes cluster requirements
+<details>
+<summary><b>Cluster, Delegate, and Metrics Server Requirements</b></summary>
+
+### Kubernetes cluster requirements
 
 You need a target Kubernetes cluster for the Harness Delegate and deployment. Make sure your cluster meets the following requirements:
 
@@ -72,6 +71,8 @@ For clusters exceeding 100 nodes, allocate the following additional resources:
 
 * 1m core per node
 * 2MiB memory per node
+
+</details>
 
 ### Install delegate
 
@@ -151,6 +152,11 @@ rules:
 ```
 </details>
 
+
+<Tabs>
+<TabItem value="Quick Create" label="Quick Create" queryString="quick-create">
+
+## Quick Create Method
 
 :::info
 
