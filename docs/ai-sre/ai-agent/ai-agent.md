@@ -4,7 +4,7 @@ description: Learn about the specialized AI Scribe Agent in Harness AI SRE that 
 sidebar_label: AI Scribe
 sidebar_position: 2
 redirect_from:
-- /docs/incident-response/ai-agent/ai-agent
+- /docs/incident-response/ai-ir-agent/ai-agent
 ---
 
 # AI Scribe Agent
