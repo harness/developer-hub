@@ -248,7 +248,6 @@ function updateTocHTML( mdToc: TOCItem[] ) {
 
   // clear TOC items (remove all children)
   pgToc.innerHTML = '';
-  
 
   while( mdTocIndex < mdToc.length ){
 
