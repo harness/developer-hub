@@ -1429,6 +1429,8 @@ const sidebars: SidebarsConfig = {
         className: "horizontal-bar",
       },
       "cloud-cost-management/whats-supported",
+      "cloud-cost-management/feature-permissions",
+      "cloud-cost-management/oidc-auth",
       "cloud-cost-management/product-behaviour",
       {
         type: "category",

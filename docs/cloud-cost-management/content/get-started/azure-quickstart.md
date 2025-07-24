@@ -65,7 +65,7 @@ Once you've gathered the required Azure details, follow these steps in the Harne
    - **Name**: Enter a descriptive name for your connector
    - **Azure Tenant ID**: Find your [Azure Tenant ID](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-microsoft-entra-tenant)
    - **Azure Subscription ID**: Find your [Azure Subscription ID](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription)
-   - **Description** (optional): Add a description for your connector
+   - (Optional)**Description**: Add a description for your connector
 3. Click **Continue** to proceed to the next step.
 
 ---
@@ -90,7 +90,7 @@ Once you've gathered the required Azure details, follow these steps in the Harne
 
 #### Step 3: Choose Requirements
 1. **Cost Visibility** is selected by default.
-2. Optionally, you can enable any of the following features (they can also be added later):
+2. (Optional) You can enable any of the following features (they can also be added later):
    - Resource Inventory Management
    - Optimization by AutoStopping. If selected, you can select granular permissions for AutoStopping by clicking **Continue**
    - Cloud Governance
@@ -110,6 +110,9 @@ Harness uses a multi-tenant application to securely access your billing data and
 The displayed commands are dependent on your specific feature selections. Always use the commands shown in your wizard interface.
 :::
 
+:::info
+Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CCM to understand the minimum roles or permissions needed for every CCM feature.
+:::
 ---
 
 #### Step 5: Verify the Connection
@@ -124,172 +127,10 @@ The displayed commands are dependent on your specific feature selections. Always
 
 ---
 
-## After Connector Setup
-
-Within about 24 hours of linking your Azure account, billing data begins to flow into Harness. Harness automatically creates default **Perspectives** so you can immediately understand where your cloud spend is going. You can also build custom Perspectives that match your teams, environments, or applications.
-
-Next, head to **Budgets** to set spending thresholds and receive alerts.
-
-As your data flows, Harness will start flagging **Anomalies** and you can configure notification preferences to stay on top of unexpected spikes.
-
----
-
-
-## Individual Feature Permissions
-
-### Governance Permissions
-
-- Assign the [**Reader** role](https://docs.azure.cn/en-us/role-based-access-control/built-in-roles/general#reader) to let Harness view resources for governance analysis.
-- If you want Harness to execute automated governance actions, also assign the [**Contributor** role](https://docs.azure.cn/en-us/role-based-access-control/built-in-roles/privileged#contributor).
-
-### Granular Permissions for AutoStopping
-
-On this screen, you can select specific features and services for AutoStopping:
-
-### Virtual Machines
-
-<details>
-<summary><b>Schedules only</b></summary>
-
-```
-// List resource groups
-Microsoft.Resources/subscriptions/resourcegroups/read
-
-// List VMs
-Microsoft.Compute/virtualMachines/read
-
-// Start VMs
-Microsoft.Compute/virtualMachines/start/action
-
-// Stop VMs
-Microsoft.Compute/virtualMachines/deallocate/action
-```
-
-</details>
-
-<details>
-<summary><b>with App Gateway</b></summary>
-
-```
-// List virtual networks
-Microsoft.Network/virtualNetworks/read
-
-// List subnets
-Microsoft.Network/virtualNetworks/subnets/read
-
-// List public IP addresses
-Microsoft.Network/publicIPAddresses/read
-
-// List app gateways
-Microsoft.Network/applicationGateways/read
-
-// For traffic detection using access logs
-Microsoft.Storage/storageAccounts/write
-
-// For traffic detection using access logs
-Microsoft.Storage/storageAccounts/read
-
-// For traffic detection using access logs
-Microsoft.Storage/storageAccounts/listKeys/action
-
-// Create Azure function for initial warm up
-Microsoft.Web/sites/write
-
-// Create Azure function for initial warm up
-Microsoft.Web/sites/read
-
-// Create Azure function for initial warm up
-Microsoft.Web/sites/config/write
-
-// Create Azure function for initial warm up
-Microsoft.Web/sites/functions/write
-
-// Create Azure function for initial warm up
-Microsoft.Web/sites/functions/read
-
-// Permissions to create application gateway
-Microsoft.Network/applicationGateways/write
-
-// Permissions to create application gateway
-Microsoft.Network/virtualNetworks/subnets/join/action
-
-// Permissions to create application gateway
-Microsoft.Network/publicIPAddresses/join/action
-
-// Permissions to create application gateway
-microsoft.insights/diagnosticSettings/write
-
-// Permissions to create application gateway
-Microsoft.Network/networkInterfaces/read
-
-// Needed during warmup
-Microsoft.Network/applicationGateways/backendhealth/action
-```
-
-</details>
-
-<details>
-<summary><b>with AutoStopping Proxy</b></summary>
-
-```
-// List virtual networks
-Microsoft.Network/virtualNetworks/read
-
-// List subnets
-Microsoft.Network/virtualNetworks/subnets/read
-
-// List network security groups
-Microsoft.Network/networkSecurityGroups/read
-
-// List security rules
-Microsoft.Network/networkSecurityGroups/securityRules/read
-
-// List SSH Keys
-Microsoft.Compute/sshPublicKeys/read
-
-// create static IP
-Microsoft.Network/publicIPAddresses/write
-
-// Read IP address
-Microsoft.Network/publicIPAddresses/read
-
-// Basic permissions to setup VM
-Microsoft.Network/networkInterfaces/write
-
-// Basic permissions to setup VM
-Microsoft.Network/networkSecurityGroups/join/action
-
-// Basic permissions to setup VM
-Microsoft.Network/virtualNetworks/subnets/join/action
-
-// Basic permissions to setup VM
-Microsoft.Network/networkInterfaces/read
-
-// Basic permissions to setup VM
-Microsoft.Network/networkInterfaces/join/action
-
-// Create VM
-Microsoft.Compute/virtualMachines/write
-
-// Delete proxy VM
-Microsoft.Compute/virtualMachines/delete
-
-// Delete public IP allocated for proxy
-Microsoft.Network/publicIPAddresses/delete
-
-// Delete proxy network interface
-Microsoft.Network/networkInterfaces/delete
-
-// Delete OS disk of proxy
-Microsoft.Compute/disks/delete
-```
-
-</details>
-------
-
 ## Next Steps
 Once your Azure billing data is flowing into Harness, explore these features to enhance your cloud cost management:
 
+- View and [Create Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective) to visualize cloud usage and trends.
 - Create [Budgets and Alerts](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget) to monitor spend thresholds.
 - Use [BI Dashboards](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/access-ccm-dashboards) to visualize cloud usage and trends.
 - Revisit optional integrations:
