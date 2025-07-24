@@ -23,11 +23,13 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 #### New features and enhancements
 
-- Added support for AWS authentication using Assume IAM Role with the delegate in all SCS steps, enabling compatibility with environments that restrict secret access key usage.
+- Added support for AWS authentication - Assume IAM Role with delegate and IRSA, enabling compatibility with environments that restrict the use of AWS secret access keys.
 
 #### Fixed Issues
 
-- Fixed an issue where the [Delete Repos API on the repo listing page](https://apidocs.harness.io/tag/Delete-Repositories#operation/deleteRepositories) deleted all branches, even when a specific branch was provided. It now deletes only the specified branch. ([ZD-88336](https://harnesssupport.zendesk.com/agent/tickets/88336))
+- Fixed an issue where the [Delete Repos API on the repo listing page](https://apidocs.harness.io/tag/Delete-Repositories#operation/deleteRepositories) deleted all branches in the repository, even when a specific branch was provided. It now deletes only the specified branch. ([ZD-88336](https://harnesssupport.zendesk.com/agent/tickets/88336))
+
+- Fixed `unsupported manifest format` error by dynamically fetching the architecture from the stage infrastructure at runtime instead of using a hardcoded value. ([ZD-86959](https://harnesssupport.zendesk.com/agent/tickets/86959))
 
 ### Version: 1.34.5 , Plugin Version: 0.40.0
 
