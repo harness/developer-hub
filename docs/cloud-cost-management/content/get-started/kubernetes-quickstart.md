@@ -220,11 +220,9 @@ After the successful creation of delegate and the connectors, and verification o
 ## Advanced Method
 
 :::note
-
 If you have previously created a connector to the preferred cluster for any other modules (Deployments, Builds etc.), you may reference the same connector to upgrade to support Cloud Cost Management. 
 
 If this is your first time creating a connector to the cluster, you need to create a new connector. 
-
 :::
 
 To fully enable CCM for a Kubernetes cluster, you need to:
@@ -235,7 +233,6 @@ To fully enable CCM for a Kubernetes cluster, you need to:
 - **(Optional) Deploy the autostopping controller and router into the target cluster.** This enables you to create CCM autostopping rules to reduce costs of your cluster.
 
 :::info
-
 After you enable CCM in your first cluster, the data is available within a few minutes for viewing and analysis.
 
 However, you can't see the idle cost due to missing utilization data. CCM generates the last 30 days of the cost data based on the first events.
@@ -243,11 +240,9 @@ However, you can't see the idle cost due to missing utilization data. CCM genera
 From the second cluster onwards, it takes about 2 to 3 hours for the data to be available for viewing and analysis.
 
 If you are using a CCM cloud connector, the data generation is delayed. Since CCM performs cost true-up based on cost information available at cloud provider source.
-
 :::
 
 ### Kubernetes CCM connection requirements and workflow
-
 For CCM, you can only use Kubernetes connectors at the Account level in Harness. This section describes how to set up the CCM Kubernetes connector.
 
 Here's a visual representation of the CCM Kubernetes connector requirements and workflow:
@@ -261,18 +256,14 @@ Once the delegate is deployed you need to [create a Kubernetes cloud provider co
 Make sure the connector passes its connection test to validate the delegate has been installed correctly and can make outbound connections to the Harness Manager.
 
 :::warning
-
 In Harness, the ratio of Delegates to Connectors is 1:2. If you have 20 clusters, then you need 20 delegates and 40 connectors (one Kubernetes cloud provider connector and one CCM Cloud Integration/Cloud Costs Kubernetes connector for each cluster).
-
 :::
 
 ### Create CCM Kubernetes Connector
-
 ### Interactive Guide
 <DocVideo src="https://app.tango.us/app/embed/a55ce80b-4990-4510-9407-7d69690d70c1?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Kubernetes Cloud Cost Connector in Harness" />
 
 ### Step-by-Step Guide
-
 #### Step 1: Overview
 
 1. **Select Kubernetes Connector**: Choose an existing Kubernetes connector from your available connectors.
@@ -282,7 +273,6 @@ In Harness, the ratio of Delegates to Connectors is 1:2. If you have 20 clusters
 ----
 
 #### Step 2: Feature Selection
-
 Choose the Cloud Cost Management features you want to enable for your Kubernetes cluster:
 
 - **Deep Kubernetes Cost Visibility** (Selected by default)
@@ -304,7 +294,6 @@ Click **Continue** to proceed to the next step.
 ------
 
 #### Step 3: Secret Creation (Conditional - if AutoStopping is selected)
-
 1. **Create an API key** from your Harness account settings
 2. **Create namespace**:
    ```bash
@@ -329,7 +318,6 @@ Click **Continue** to proceed to the next step.
 ---
 
 #### Step 4: Provide Permissions
-
 1. **Download YAML file** - The wizard will provide a YAML file containing permissions to access the pods and services of the cluster. You can also preview the YAML file.
 
 2. Copy the downloaded YAML to a machine where you have kubectl installed and have access to your Kubernetes cluster. Run the following command to apply the Harness delegate to your Kubernetes Cluster:
@@ -344,11 +332,9 @@ For EKS clusters, ensure the metrics server is installed.
 
 3. Click **Done** and then **Continue**
 
-
 ---
 
 #### Step 5: Verify Connection
-
 Harness will verify the connection to your Kubernetes cluster
 
 ---
@@ -359,7 +345,6 @@ Harness will verify the connection to your Kubernetes cluster
 
 
 #### Troubleshooting
-
 In the **Verify connection** step, if you get an error message like `few of the visibility permissions are missing`, then you need to review the CCM permissions required for Harness Delegate.
 
 <DocImage path={require('../static/set-up-cost-visibility-for-kubernetes-20.png')} width="100%" height="100%" title="Click to view full size image" />

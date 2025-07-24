@@ -94,7 +94,7 @@ You can enable authentication for your AWS account via
 
 ----
 
-### Step 5: Enter Cross Account Role Details
+#### Step 5: Enter Cross Account Role Details
 1. Paste the **Cross Account Role ARN** you created via the CloudFormation stack.
    - You can find this under **CloudFormation → Stacks → Outputs tab** in AWS.
 2. The **External ID** will be pre-filled — leave it as is.
