@@ -58,6 +58,6 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
       logoSize: 24
     }
   }}
-  mdToc = {toc}
+  toc = {toc}
 />
 

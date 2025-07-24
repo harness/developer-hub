@@ -36,7 +36,7 @@ export interface DynamicMarkdownSelectorProps {
       logoHeight?: number;
     }
   >;
-  mdToc: TOCItem[];
+  toc: TOCItem[];
   precedingHeadingID: string;
   nextHeadingID: string;
 }
@@ -49,7 +49,7 @@ const getGridColumns = (count: number): number => {
   return 5;
 };
 
-const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options, mdToc, precedingHeadingID = '', nextHeadingID = '' }) => {
+const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options, toc, precedingHeadingID = '', nextHeadingID = '' }) => {
 
   const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, "");
   const labels = Object.keys(options).sort((a, b) => a.localeCompare(b));
@@ -108,7 +108,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
 
 
   spliceMDToc( 
-    mdToc,  
+    toc,  
     precedingHeadingID, 
     nextHeadingID, 
     mdxCtx( '.' + options[selected]?.path )?.toc  //e.g. mdxCtx('./cloud-cost-management/content/get-started/aws-quickstart.md').toc
