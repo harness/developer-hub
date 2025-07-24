@@ -17,7 +17,7 @@ helpdocs_is_published: true
 | **Setup Complexity** | Requires manual SQS Queue setup and maintenance | Works out-of-the-box with zero configuration |
 | **Interruption Handling** | Basic SQS-based monitoring | Sophisticated interruption prediction and handling |
 | **Node Selection** | Limited strategy options | Configurable strategies (cost-optimized, least-interrupted) |
-| **Fallback & Reverse Fallback** | Basic fallback: moves pods to On-Demand once Spot is interrupted; no automatic return | Intelligent fallback automatically launches an On-Demand instance when Spot capacity is unavailable or an interruption risk is detected **and** reverse fallback seamlessly moves workloads back to Spot when capacity is healthy. |
+| **Fallback & Reverse Fallback** | Basic fallback: moves pods to On-Demand once Spot is interrupted; no automatic return | Intelligent fallback automatically launches an On-Demand instance when Spot capacity is unavailable or an interruption risk is detected. If market is unavailable, it creates an On Demand instance. **And** reverse fallback seamlessly moves workloads back to Spot when capacity is healthy. |
 
 
 ### 2. Cost Visibility and Savings Analysis
