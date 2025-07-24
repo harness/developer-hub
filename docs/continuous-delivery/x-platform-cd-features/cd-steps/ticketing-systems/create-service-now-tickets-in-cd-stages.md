@@ -118,6 +118,8 @@ Additionally, a dropdown for templates is also provided when configuring Trigger
 :::note
 
 This feature requires Harness Delegate version 81200 or later
+
+Harness Software Delivery Platform app is **not needed** for creating standard change requests using this feature.
 :::
 
 This option appears only when the value type in the **Ticket Type** field is **Fixed value**, and the ServiceNow ticket type specified is *Change Request*. This feature can be used to create low-risk standard change requests using pre-approved standard templates.
