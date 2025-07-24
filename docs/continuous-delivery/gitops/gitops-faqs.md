@@ -340,3 +340,105 @@ Harness uses the following procedure to calculate the app project id:
 
   app project id: `abcdefgh`
   ```
+
+### Why does my pipeline error when env/cluster IDs are set as variables?
+Harness resolves pipeline variables at runtime. If a required value (like cluster ID) is missing or not passed correctly, internal resolution fails and may result in a NullPointerException, especially if the pipeline expects a static value.
+
+### What causes the "data is null" NullPointerException at the GitOpsClusters step?
+This error means that the variable expression for the cluster (or environment/agent) did not resolve to a valid value—leaving the Harness engine with a null data object to process.
+
+### What are the prerequisites for referencing clusters and environments as variables in a pipeline?
+The clusters you want to reference must be correctly linked to their respective environments in Harness.
+
+All variable values (env ID, agent ID, cluster ID) must exist in the correct Harness scope and be accessible at runtime.
+
+### How do I ensure GitOps clusters are correctly linked to an environment?
+Navigate to your environment in Harness, open the GitOps Clusters tab, and verify or add linked clusters using the Select Cluster option.
+
+Only clusters linked to the selected environment will be available for selection or reference in the pipeline.
+
+### Can I use dynamic expressions (variables) for env/cluster in pipelines?
+Yes, but ensure variable names and values are set and passed correctly via pipeline parameters or input sets.
+
+Pipeline will fail with null-related errors if referenced variables are not set or if their values are out of scope.
+
+### What are best practices for defining and passing cluster/environment variables?
+Use pipeline-level or input set variables for env, agent, cluster IDs.
+
+Validate expressions like ```<+pipeline.variables.env_id>``` resolve correctly before the GitOpsClusters step.
+
+Always provide default values or validate variable presence to avoid null resolution failures.
+
+### How can I debug which variable is not set (causing 'data is null')?
+Add debug steps or echo variable values before the failing step.
+
+Check pipeline execution logs for which variable resolved to null.
+
+Use static values for testing, then incrementally shift to variables once confirmed working.
+
+### How do I link clusters in a reusable, non-hardcoded way?
+Link clusters at the environment level and refer to their IDs by variable.
+
+Map environment/cluster names to IDs in a config file or project-level variables for dynamic reference.
+
+### Is there any workaround for Harness requiring pre-linked clusters?
+No, clusters must be pre-linked to environments.
+
+You can't link a cluster at runtime via variable if it isn't already associated in Harness; linkage must be done manually or via API before pipeline run.
+
+### If the problem persists, what troubleshooting steps help most?
+Double-check that all variables (env, agent, cluster) are non-empty and accessible at the step.
+
+Validate cluster linkage in UI.
+
+Clear cache/restart the Harness UI in case of UI state issues.
+
+Reach out to Harness support with pipeline YAML, error logs, variable settings, and environment/cluster mappings if issue is unresolved
+
+### What does the "app is not allowed in project or project does not exist" error mean?
+This error indicates that either:
+
+The specified ArgoCD AppProject does not exist, or
+
+The Application resource is not permitted to join that project, most commonly due to namespace or access misconfiguration13.
+
+### Why does the application namespace matter in Harness and ArgoCD?
+The metadata.namespace of your Application resource must match the namespace where the GitOps agent (ArgoCD controller) operates. If these do not match, the application may not be recognised or may not be permitted to join the specified project5.
+
+### What is the correct way to set the Application's namespace?
+The metadata.namespace should be the namespace where the GitOps agent is installed (e.g., ccgf-stage-harnessgitops).
+
+This is separate from the destination.namespace in your spec, which refers to where your workloads will be deployed.
+
+### How do I confirm my AppProject exists and is properly mapped in Harness?
+Check in Harness UI under GitOps > Projects.
+
+Ensure that the project with ID or name (xxxxxx in the error) exists.
+
+Verify it is mapped correctly for your account and agent, and its sourceNamespaces includes the agent's namespace.
+
+### What if the AppProject exists, but the error persists?
+Confirm that the AppProject permits applications from the specific namespace you are using.
+
+In ArgoCD, the AppProject’s spec.sourceNamespaces field must explicitly list your application namespace58.
+
+If missing, update the AppProject to include it.
+
+### Should the Application CR always be in the agent’s namespace?
+Yes, unless ArgoCD is explicitly configured to allow Application CRDs in additional namespaces.
+
+By default, only the namespace with the agent/controller is accepted unless extra config allows otherwise56.
+
+### What is the distinction between metadata.namespace and spec.destination.namespace?
+metadata.namespace: Where the ArgoCD Application CR itself resides (must match agent namespace unless advanced config is set).
+
+spec.destination.namespace: The target namespace for deploying your Kubernetes workloads can be any namespace accessible by the agent.
+
+### How can I fix the error if the application must be in a different namespace?
+If you need the Application CR in a namespace other than the agent's, the ArgoCD deployment must:
+
+Be configured with --application-namespaces to allow additional namespaces.
+
+The AppProject should explicitly list the allowed source namespaces.
+
+Otherwise, move your Application CR definition to the agent’s namespace.
