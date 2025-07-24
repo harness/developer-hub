@@ -38,7 +38,6 @@ The following Terraform variables are **mandatory inputs** required to apply and
 | `token`              | string   | AWS Session Token (AWS Credentials)                                                        | Yes          | —                                    |
 | `infra_config_yaml_file`  | string   | Path to the **infra config YAML file** with infrastructure configuration.                         | Yes          | —                                    |
 | `default_region`             | string   | **Default AWS region** required to download the global resources.      | Yes          | —                                    |
-| `region`             | string   | AWS Region                          | Yes          | ``terraform.workspace``                                    |
 | `manage_dns_zone`             | bool   | Indicates whether the **DNS zone should be managed by the module**.                          | Yes           | —                                 |
 | `certificate_path`             | string   | Path to the **SSL certificate file** (if not using Certificate Manager).                          | No           | `""`                                 |
 | `private_key_path`             | string   | Path to the **private key file** for the SSL certificate (if not using Certificate Manager).      | No           | `""`                                 |
