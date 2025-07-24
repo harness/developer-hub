@@ -18,8 +18,6 @@ Learn how to **create a Cargo Artifact Registry**, **configure an upstream proxy
 <DocVideo src="https://app.tango.us/app/embed/f626d22d-573e-476b-a777-8f92b79e0937?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create a Cargo Artifact Registry in Harness" />
 </TabItem>
 <TabItem value="step" label="Step-by-Step">
-
-### Create your registry
 1. Navigate to the Artifact Registry module in your Harness project.
 2. Click on **New Artifact Registry**.
 3. In the Registry Type dropdown, select **Cargo Registry**.
@@ -46,20 +44,20 @@ An upstream proxy allows your registry to fetch Cargo packages from external sou
 <Tabs>
 <TabItem value="interactive" label="Interactive Guides">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 <DocVideo src="https://app.tango.us/app/embed/167f5941-b4d7-42ff-9019-3782004e706f?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create a Cargo Upstream Proxy in Harness" />
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 <DocVideo src="https://app.tango.us/app/embed/c54a6c44-2c7a-4048-a814-34ab27c9905c?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Configure Cargo Upstream Proxy in Harness" />
 </TabItem>
 <TabItem value="step" label="Step-by-Step">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 1. In the Artifact Registry module, click the dropdown next to **New Artifact Registry** and select **Upstream Proxy**.
 2. Choose **Cargo Registry** as the proxy type.
 3. Click **Create Proxy** to establish the connection.
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 1. In the Artifact Registry module, select an existing Artifact Registry.
 2. Select the **Configuration** tab.
 3. Under **Advanced (Optional)**, select **Configure Upstream**.
