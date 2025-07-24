@@ -30,7 +30,7 @@ In contrast, **Self-Hosted Gitspaces** solve these issues by offering complete i
 Self-Hosted Gitspaces consist of two core components:
 
 * **Harness Control Plane**
-* **Customer’s Cloud Infrastructure [Google Cloud Platform(GCP)]**
+* **Customer’s Cloud Infrastructure**
 
 ![Architecture Diagram](./static/self-hosted-arch.png)
 
@@ -46,7 +46,7 @@ The **Harness Control Plane** manages Gitspaces workflows. Users configure their
 
 ### Customer's Infrastructure
 
-The infrastructure on the customer side (eg. GCP) includes:
+The infrastructure on the customer side (eg. GCP, AWS) includes:
 
 | VM             | Purpose                                                                   |
 | -------------- | ------------------------------------------------------------------------- |

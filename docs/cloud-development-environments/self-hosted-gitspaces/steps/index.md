@@ -4,13 +4,18 @@ sidebar_position: 1
 sidebar_label: Configure Self-Hosted Gitspaces
 ---
 
-Welcome to the Self-Hosted Gitspaces configuration guide! This document will walk you through the key steps to configure and set up Self-Hosted Gitspaces in your environment.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Welcome to the Self-Hosted Gitspaces configuration guide! This document will walk you through the key steps to configure and set up Self-Hosted Gitspaces in your infrastructure.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7QNpTR7mRXI?si=viZp8kQyGrPjE5-n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-### Prerequisites
-
+## Prerequisites
 You need to follow these prerequisites to get started with self-hosted Gitspaces:
+
+<Tabs queryString="infra-provider">
+<TabItem value="GCP" label="GCP">
 
 | **Prerequisite**    | **Description** | **Documentation Guide** | 
 | -------- | ------- | ---------- | 
@@ -19,6 +24,17 @@ You need to follow these prerequisites to get started with self-hosted Gitspaces
 | **Service Account Key** | You must create and download a Service Account Key in the same GCP Project and service account, this key is usually in the form of a **JSON** or **P12 file**, which contains the credentials necessary for the service account to authenticate. | [Docs](https://cloud.google.com/iam/docs/keys-create-delete) | 
 | **Terraform/OpenTofu** | You must have Terraform/OpenTofu installed on your machine with internet access (please ensure you have the SA key downloaded here) | [Docs](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
 | **DNS Propogation** | You must verify that the domain or subdomain you use for self hosted Gitspaces has been properly delegated and that DNS propogation has completed. | [Docs](https://www.catchpoint.com/dns-monitoring/dns-delegation) | 
+
+</TabItem>
+<TabItem value="AWS" label="AWS">
+| **Prerequisite**    | **Description** | **Documentation Guide** | 
+| -------- | ------- | ---------- | 
+| **AWS User Access** | You must have the following permissions and access as a AWS user to create and manage EC2 instances required for configuring self hosted Gitspaces in your AWS infrastructure. |  |
+| **Terraform/OpenTofu** | You must have Terraform/OpenTofu installed on your machine with internet access (please ensure you have the SA key downloaded here) | [Docs](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
+| **DNS Propogation** | You must verify that the domain or subdomain you use for self hosted Gitspaces has been properly delegated and that DNS propogation has completed. | [Docs](https://www.catchpoint.com/dns-monitoring/dns-delegation) | 
+
+</TabItem>
+</Tabs>
 
 ## Get Started with Self-Hosted Gitspaces
 
@@ -31,7 +47,7 @@ Before you begin setup, it’s important to understand the **underlying architec
 🔗 Make sure to review the following **documentation** thoroughly:
 
 - [Self-Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md)  
-- [Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md)   
+- [Overview & Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md)   
 
 ### 2. Configure Gitspace Infrastructure via Harness UI
 
@@ -41,13 +57,13 @@ Start by configuring your **Gitspace infrastructure via the Harness UI**. This a
 
 ### 3. Configure and Set Up the Terraform Module
 
-Once the infrastructure is configured in the UI, proceed to initialize and use the **Harness Gitspaces Terraform Module**. This module will **create all required GCP infrastructure** and will set up VM instances for the CDE Gateway. 
+Once the infrastructure is configured in the UI, proceed to initialize and use the **Harness Gitspaces Terraform Module**. This module will **create all required infrastructure** and will set up VM instances for the CDE Gateway. 
 
 🔗 [Set Up Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md)
 
 ### 4. Set Up Runner and Install Delegate
 
-After provisioning, install the **Runner and Delegate** on your GCP VM Instance. This ensures the Harness Control Plane can communicate with your infrastructure to create and manage Gitspaces.
+After provisioning, install the **Runner and Delegate** on your VM Instance. This ensures the Harness Control Plane can communicate with your infrastructure to create and manage Gitspaces.
 
 🔗 [Set Up Runner and Install Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate.md)
 
