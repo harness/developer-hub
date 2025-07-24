@@ -142,19 +142,6 @@ The following deprecated API endpoints are longer supported:
 
 ### Version 1.98.x <!--July 22, 2025-->
 
-#### Fixed issues
-
-- Improved access control for OIDC token generation by introducing a new permission `core_oidcIdToken_create`. This ensures that only authorized service accounts can generate tokens and assume roles.[PL-64006]
-
-  :::danger Important Note: About `core_oidcIdToken_create`
-
-    A new `core_oidcIdToken_create` permission is introduced to govern the creation of OIDC ID token. The permission is currently in the EXPERIMENTAL status. However, after August 8, the permission will change to ACTIVE status. If any automation makes use of the [OIDC ID token](https://apidocs.harness.io/tag/Oidc-ID-Token), we recommend updating it accordingly.
-
-      | Resource      | Permissions                                          | Status       |
-      |---------------|------------------------------------------------------|--------------|
-      | OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
-:::
-
 #### New Feature and Enhancement
 
 - Enhanced the task broadcast mechanism to prevent sending tasks to non-eligible delegates. [PL-58722]
