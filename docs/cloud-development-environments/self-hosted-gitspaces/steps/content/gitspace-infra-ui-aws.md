@@ -45,8 +45,8 @@ Use the following input parameters:
 2. **Subdomain**: Provide the **subdomain** for the region. 
 3. **Zones**: It's mandatory to add at least **two availability zones** for each region in your infrastructure. Select the availability zones from this field. You can add more than two availability zones if needed using the **"New Zone"** button. 
 4. **IP Details**: Provide the **IP configuration** for each availability zone per region. 
-   - **Private Subnet CIDR Block**: This is the private IP range required for the subnet. 
-   - **Public Subnet CIDR Block**: This is the corresponding public IP range required for the subnet.
+   - **Private Subnet CIDR Block**: This is the private IP range required for the subnet. Ensure this IP range is within the VPC CIDR block. 
+   - **Public Subnet CIDR Block**: This is the corresponding public IP range required for the subnet. Ensure this IP range is within the VPC CIDR block. 
 
 ![](../static/aws-hybrid-region-details.png)
 
@@ -58,16 +58,16 @@ Once all details have been entered, click on **Download and Apply YAML**. This w
 
 This is what a **sample Infrastructure Config YAML** looks like: 
 ```YAML
-account_identifier: -k53qRQAQ1O7DBLb9ACnjQ
-infra_provider_config_identifier: cdeqaaws
-name: cde-qa-aws
-domain: qa.aws.gitspace.test.harness.io
-vpc_cidr_block: 10.0.0.0/16
+account_identifier: <ACCOUNT_IDENTIFIER>
+infra_provider_config_identifier: <INFRA_PROVIDER_CONFIG_IDENTIFIER>
+name: <INFRA_NAME>
+domain: <DOMAIN>
+vpc_cidr_block: <VPC_CIDR_BLOCK>
 gateway:
     instance_type: t2.medium
     instances: 1
     version: 1.16.0
-    shared_secret: 0c83c440-8ff5-452e-978d-31c9272b6e43
+    shared_secret: <SHARED_SECRET>
     cde_manager_url: https://qa.harness.io/gateway/cde
 runner:
     region: ""
@@ -82,8 +82,8 @@ region_configs:
             - zone: us-west-1c
               public_cidr_block: 10.0.48.0/20
               private_cidr_block: 10.0.16.0/20
-        domain: uswest1.qa.aws.gitspace.test.harness.io
-        gateway_ami_id: ""
+        domain: <DOMAIN>
+        gateway_ami_id: <GATEWAY_AMI_ID>
 ```
 
 ## Manage Gitspace Infrastructure

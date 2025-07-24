@@ -68,15 +68,15 @@ Once all details have been entered, click on **Download and Apply YAML**. This w
 
 This is what a **sample Infrastructure Config YAML** looks like: 
 ```YAML
-account_identifier: vpCkHKsDSxK9_KYfjCTMKA
-infra_provider_config_identifier: testprod2hybrid
-name: test-prod2-hybrid
+account_identifier: <ACCOUNT_IDENTIFIER>
+infra_provider_config_identifier: <INFRA_PROVIDER_CONFIG_IDENTIFIER>
+name: <INFRA_NAME>
 gitspace_vm_tags:
 - gcp-gitspace
 project:
-  id: harness-gitspace-prod2
+  id: <PROJECT_ID>
   service_account: cde-provisioner
-domain: prod2.gitspace.test.harness.io
+domain: <DOMAIN>
 delegateselectors:
 - selector: gitspaces
   origin: ""
@@ -88,7 +88,7 @@ gateway:
   vm_image:
     family: debian-11
     project: debian-cloud
-  shared_secret: <shared-secret>
+  shared_secret: <SHARED_SECRET>
   cde_manager_url: https://app.harness.io/gateway/gratis/cde
   version: 1.15.0
 runner_vm_region:
@@ -102,8 +102,7 @@ region_configs:
     proxy_subnet_ip_range: 10.7.0.0/16
     certificates:
       contents:
-      - domain: uswest.prod2.gitspace.test.harness.io
-
+      - domain: <DOMAIN>
 ```
 
 ## Manage Gitspace Infrastructure
