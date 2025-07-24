@@ -44,7 +44,7 @@ Select your cloud provider below to get started. You’ll connect your account, 
       logoSize: 32
     }
   }}
-  mdToc={toc}
+  toc={toc}
   precedingHeadingID='#get-started-intro-subheading'
   nextHeadingID='get-started-concluding-heading'
 />
@@ -80,7 +80,7 @@ Here is another DMS:
       logoSize: 32
     }
   }}
-  mdToc={toc}
+  toc={toc}
   precedingHeadingID='get-started-concluding-heading'
   nextHeadingID='last-heading-at-the-end'
 />

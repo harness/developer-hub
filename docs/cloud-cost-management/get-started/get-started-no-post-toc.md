@@ -53,6 +53,6 @@ Select your cloud provider below to get started. You’ll connect your account, 
       logoSize: 32
     }
   }}
-  mdToc={toc}
+  toc={toc}
   precedingHeadingID='get-started-intro-subheading'
 />
