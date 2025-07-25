@@ -290,17 +290,17 @@ This does not applicable for Harness Code repository. Know more about [Configure
 :::
 
 
-<!-- ### Manual Reload Support
+### Manual Reload Support
 
 In some cases, webhook integrations may fail to trigger or may not be configured properly. GitX provides a fallback mechanism in such scenarios.
 
-Users can trigger a manual reload of an entity by clicking the **“Reload from Git”** button available on the entity's View or Edit page.
+Users can trigger a manual reload of an entity by clicking the **“Reload”** button available on the entity's View or Edit page.
 
 This operation pulls the latest YAML from the configured Git path and updates the entity, ensuring it remains up-to-date even without active webhook triggers.
 
 Manual reload is particularly useful in debugging sync issues or in restricted environments where webhooks cannot be configured due to network/firewall constraints.
 
-![Manual Reload Support](./static/manual-reload.png) -->
+![Manual Reload Support](./static/manual-reload.png)
 
 ### Entity Sync Status & Version Drift
 
