@@ -63,10 +63,10 @@ static/  @rohanmaharjan100 @wei-harness
 
 
 # Continuous Integration Docs
-/docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
-/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
-/src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
-/src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
+/docs/continuous-integration/ @nofarblue @dewan-ahmed @SushrutHarness @shivloka-harness
+/release-notes/continuous-integration.md @nofarblue @dewan-ahmed @SushrutHarness @shivloka-harness
+/src/components/Roadmap/data/ciData.ts @nofarblue @dewan-ahmed @SushrutHarness @shivloka-harness
+/src/components/Docs/data/continuousIntegrationData.ts @nofarblue @dewan-ahmed @SushrutHarness @shivloka-harness
 
 # CODE Docs
 /docs/code-repository/ @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
@@ -211,8 +211,8 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
 
 # Open Source Docs
-/docs/open-source/ @dewan-ahmed @rustd @SushrutHarness
-/src/components/Docs/data/openSourceData.tsx @dewan-ahmed @rustd @SushrutHarness
+/docs/open-source/ @dewan-ahmed @SushrutHarness
+/src/components/Docs/data/openSourceData.tsx @dewan-ahmed @SushrutHarness
 
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @ankit-harness
