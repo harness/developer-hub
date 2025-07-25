@@ -91,4 +91,6 @@ Then, go to the **Security and Governance** section > **Policies**.
 
 In the top right of this overview page, select **Policies**. 
 
-Here you will see a full list of policies, the policy store, and the number of **Referenced Policy Sets**. You can click on the **View** button to open a modal with a full list of referenced policy sets.
+Here you'll see a full list of policies, along with the policy store and the number of referenced policy sets for each one. Click the **View** button to open a modal showing the complete list of referenced policy sets.
+
+![](./static/policy-as-code-faq-1.png)
