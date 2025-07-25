@@ -133,6 +133,7 @@ databaseChangeLog:
       changes:
         - createCollection:
             collectionName: users
+            options: '{"validator": {"$jsonSchema": {"bsonType": "object", "required": ["name", "email"], "properties": {"name": {"bsonType": "string", "description": "User''s full name"}, "email": {"bsonType": "string", "description": "User''s email address"}, "status": {"bsonType": "string", "enum": ["active", "inactive", "pending"], "description": "Account status"}}}}, "validationAction": "warn", "validationLevel": "strict"}'
   - changeSet:
       id: devteam:2
       author: john-doe
