@@ -1,13 +1,18 @@
 ---
 title: Target with custom attributes
 sidebar_label: Target with custom attributes
-description: ""
+description: "Learn how to add custom attributes to create dynamic targeted feature rollout plans in Harness FME."
 sidebar_position: 9
+redirect_from:
+- /docs/feature-management-experimentation/feature-management/faqs/does-my-sdk-version-support-semver
 ---
 
 <p>
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes </button>
 </p>
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 With custom attributes, you can create dynamic targeted feature rollout plans using any end-user criteria or dimension that is known at runtime. Custom attributes can be used to represent:
 
@@ -256,9 +261,70 @@ For example, use an attribute 'os_version' of type SemVer to give users that hav
  The version numbers you provide must include the patch number (e.g. `2.2` is invalid, but `2.2.0` is valid) and can include pre-release identifiers and build metadata, as defined in the [Semantic Version](https://semver.org) specification. Comparisons also follow the Semantic Version specification.
 :::
 
-:::info[SemVer attributes and SDK compatibility]
-See [this page](/docs/feature-management-experimentation/feature-management/faqs/does-my-sdk-version-support-semver) to verify compatibility of FME SDK or Split optional infrastructure. For older SDK versions that do not support SemVer, the `control` treatment will be returned and a special impression will be created. See the _[Control treatment](/docs/feature-management-experimentation/feature-management/control-treatment)_ help page for more information.
+#### Supported SDKs and customer-deployed components for SemVer matcher
+
+The Semantic Version (SemVer) matcher is only supported in specific FME SDK and customer-deployed componenet versions. If you are using an older SDK version that does not support the SemVer matcher, feature flag evaluations will return the `control` treatment and a special impression will be created.
+
+:::info
+If you are using an older SDK or customer-deployed component version that does not support the SemVer matcher, Harness recommends upgrading to a supported version to ensure your target rules function as expected.
 :::
+
+Use the following tables to verify that your SDK or customer-deployed component version supports the SemVer matcher.
+
+<Tabs queryString="semver-support">
+  <TabItem value="sdk-suites" label="Client-side SDK Suites">
+  
+  | **Client-side SDK Suite** | **Version that supports SemVer** |
+  |-----------------------|----------------------------------|
+  | Android SDK Suite     | 1.2.0 and later                  |
+  | Browser SDK Suite     | 1.4.0 and later                  |
+  | iOS SDK Suite         | 1.2.0 and later                  |
+  
+  </TabItem>
+
+  <TabItem value="client-sdks" label="Client-side SDKs">
+  
+  | **Client-side SDK**   | **Version that supports SemVer** |
+  |-----------------------|----------------------------------|
+  | Android SDK           | 4.1.0 and later                  |
+  | Angular utilities     | 3.0.0 and later                  |
+  | Browser SDK           | 0.14.0 and later                 |
+  | Flutter plugin        | 0.1.9 and later                  |
+  | iOS SDK               | 2.25.0 and later                 |
+  | JavaScript SDK        | 10.26.0 and later                |
+  | React SDK             | 1.12.0 and later                 |
+  | React Native SDK      | 0.9.0 and later                  |
+  | Redux SDK             | 1.12.0 and later                 |
+  
+  </TabItem>
+
+  <TabItem value="server-sdks" label="Server-side SDKs">
+  
+  | **Server-side SDK**   | **Version that supports SemVer** |
+  |-----------------------|----------------------------------|
+  | Go SDK                | 6.6.0 and later                  |
+  | Java SDK              | 4.12.0 and later                 |
+  | .NET SDK              | 7.9.0 and later                  |
+  | Node.js SDK           | 10.26.0 and later                |
+  | PHP SDK               | 7.3.0 and later                  |
+  | PHP Thin Client SDK   | See SplitD version               |
+  | Python SDK            | 9.7.0 and later                  |
+  | Ruby SDK              | 8.4.0 and later                  |
+  
+  </TabItem>
+
+  <TabItem value="infra" label="Customer-deployed Components">
+  
+  | **Component**                 | **Version that supports SemVer** |
+  |------------------------------|----------------------------------|
+  | Split Daemon                 | 1.4.0 and later                  |
+  | Split Evaluator              | 2.6.0 and later                  |
+  | Split Synchronizer           | 5.8.0 and later                  |
+  | Split Proxy                  | 5.8.0 and later                  |
+  | JavaScript synchronizer tools| 0.6.0 and later                  |
+  
+  </TabItem>
+</Tabs>
 
 ### Set attributes
 
