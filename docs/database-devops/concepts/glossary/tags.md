@@ -85,14 +85,20 @@ A **tag** in Harness Database DevOps is a marker that identifies the state of yo
 
 Tags are recorded in the `DATABASECHANGELOG` table and can be created using either:
 
-- The `tag` command (manual tagging)
+- The `tag` command (manual tagging) - You can specify a custom tag name in the input field on the apply step when deploying through Harness pipelines
 - The `tagDatabase` Change Type (changelog-driven tagging)
 
----
-
 ## Tag Command
+The `tag` command marks the current database state without requiring a changeset. When using the Harness Database DevOps apply step:
 
-The `tag` command marks the current database state without requiring a changeset. This is ideal for manual checkpoints before or after a release.
+1. The apply step automatically checks if the current database state is tagged before applying changes.
+2. After deployment, the apply step can optionally tag the final database state with the tag name you specified in the input field.
+
+:::note
+If no tag exists, it creates one at the end of the apply step to ensure rollback capability.
+:::
+
+This tagging system ensures you always have defined rollback points before and after deployments.
 
 ![dbops-db-instance-tag](../static/dbops-db-instance-tag.png)
 
@@ -152,21 +158,17 @@ This setup allows rollbacks to specific versions based on real release points.
 
 ## Conclusion
 
-Tags in Harness Database DevOps offer a robust mechanism for version control, rollback targeting, and deployment transparency. Whether you prefer declarative tagging with tagDatabase or manual tagging using the tag command, each approach enhances your ability to manage database changes reliably. Integrating tagging into your release workflow ensures predictable rollbacks and auditable database histories aligned with your CI/CD pipelines.
+Tags in Harness Database DevOps offer a robust mechanism for version control, rollback targeting, and deployment transparency. By automatically ensuring tags exist before all deployments Harness enhances your ability to manage database changes reliably. Integrating tagging into your release workflow ensures predictable rollbacks and auditable database histories aligned with your CI/CD pipelines.
 
 ## FAQ
-
-### 1. What is the difference between tag and tagDatabase?
-The tag command applies a tag manually to the latest row in the DATABASECHANGELOG table, while tagDatabase is a formal Change Type embedded in the changelog, allowing version-controlled tagging.
-
-### 2. Can I roll back to a tag using Harness?
+### 1. Can I roll back to a tag using Harness?
 Yes. You can use the rollback command with a tag to revert all changes made after that tag. Harness supports rollback strategies via the pipeline and rollback steps.
 
-### 3. Should I tag before or after a release?
-It is a best practice to apply a tag immediately after deploying a release. This creates a stable checkpoint to revert to in case of future failures.
+### 2. Should I tag before or after a release?
+It is a best practice to apply a tag immediately after deploying a release. This creates a stable checkpoint to revert to in case of future failures. By tagging immediately after release you can intuitively name the tag to match the release name. Additionally ensuring a tag exists before release is critical to ensuring you can always roll back -- The Harness apply step does this automatically for you.
 
-### 4. Does tagging impact my database structure or data?
+### 3. Does tagging impact my database structure or data?
 No. Tags are metadata entries in the DATABASECHANGELOG table and do not modify your database schema or data.
 
-### 5. Can I preview which changes will be rolled back by a tag?
+### 4. Can I preview which changes will be rolled back by a tag?
 Yes. You can use the rollback SQL preview or Harness pipeline logs to view which changesets will be reverted before executing a rollback to a tag.

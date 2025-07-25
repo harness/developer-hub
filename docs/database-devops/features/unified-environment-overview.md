@@ -3,6 +3,7 @@ sidebar_position: 3
 title:  User Interface of Harness Database DevOps
 sidebar_label:  User Interface of Harness Database DevOps
 description: Learn how to navigate the Harness Database DevOps user interface, including schema views, pipeline executions, and deployment monitoring.
+slug: /database-devops/concepts-and-features/unified-environment-overview/
 keywords:
   - Harness Database DevOps
   - Harness UI
@@ -31,7 +32,7 @@ This guide talks you through the UI of Harness Database DevOps.
 
 ## Environment Overview for Database DevOps
 
- ![A screenshot of the Harness Database DevOps page that highlights the menu on the left of the UI.](../features/static/db-devops-overview.png)
+ ![A screenshot of the Harness Database DevOps page that highlights the menu on the left of the UI.](./static/db-devops-overview.png)
 
 When you open the Harness Database DevOps module, you will encounter a single-pane interface that will display an overview of important activities relevant to using DB DevOps. Here's what you can expect:
 
