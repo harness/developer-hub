@@ -477,7 +477,7 @@ import os
 
 # Define Harness API endpoint with org and project identifiers
 url = (
-    "https://qa.harness.io/v1/entities"
+    "https://app.harness.io/v1/entities"
     "?convert=false"
     "&dry_run=false"
     "&orgIdentifier=<+pipeline.variables.org_identifier>"
@@ -496,10 +496,8 @@ name: <+pipeline.variables.app_name>
 owner: <+pipeline.variables.owner>
 spec:
   lifecycle: experimental
-  ownedBy:
-    - group/sample-group
 metadata:
-  description: This entity ids for <+pipeline.variables.project_name>
+  description: <+pipeline.variables.project_name>
   annotations:
     backstage.io/source-location: url:https://github.com/<+pipeline.variables.organization>/<+pipeline.variables.repo_name>
     backstage.io/techdocs-ref: dir:.
@@ -546,7 +544,7 @@ try:
 
     obj = response.json()
     catalog_url = (
-    f"https://qa.harness.io/ng/account/<+pipeline.variables.harness_accID>/module/idp/catalog/"
+    f"https://app.harness.io/ng/account/<+pipeline.variables.harness_accID>/module/idp/catalog/"
     f"account.{obj.get('orgIdentifier')}.{obj.get('projectIdentifier')}/"
     f"{obj.get('kind')}/{obj.get('identifier')}"
     )
