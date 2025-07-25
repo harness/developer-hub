@@ -142,7 +142,7 @@ To install ECG on Windows and track user session, please follow the steps below.
 3. Download and unzip the latest ECG release:
 
 ```
-Invoke-WebRequest -Uri "https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/harness_autostop_ecg_windows_amd64.zip" -OutFile "./Downloads\harness_autostop_ecg_windows_amd64.zip"
+Invoke-WebRequest -Uri "https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/harness_autostop_ecg_windows_amd64_v1.0.2.zip" -OutFile "./Downloads\harness_autostop_ecg_windows_amd64.zip"
 
 Expand-Archive -Path "./Downloads\harness_autostop_ecg_windows_amd64.zip" -DestinationPath "./Downloads\harness_autostop_ecg_windows_amd64"
 cd ecg_1.2.0_linux_amd64
@@ -152,31 +152,45 @@ cd ecg_1.2.0_linux_amd64
 
 ```
 mkdir C:\Users\Administrator\harness
-mv .\Downloads\harness_autostop_ecg_windows_amd64\harness_autostop_ecg_windows_amd64 C:\Users\Administrator\harness\harness_autostop_ecg_windows_amd64.exe
+mv .\Downloads\harness_autostop_ecg_windows_amd64\harness_autostop_ecg_windows_amd64.exe C:\Users\Administrator\harness\harness_autostop_ecg_windows_amd64.exe
 ```
 
-5. Configure the ECG by setting global environment variables on the machine:
+5. Set the environment variables at the system level needed for ECG:
 
-```
-setx ECG_accountID "{account_id}" /M
-setx ECG_apiURL "https://app.harness.io/gateway/lw/api" /M
-setx ECG_ruleHostName "{host_name}" /M
-setx ECG_user_session_watch "true" /M
-```
+   ```cmd
+   # Replace {host_name} with Autostopping rule host name (remove "https://" from the hostname)
+   setx ECG_ruleHostName "{host_name}" /M
+   
+   # Replace "{account_id}" with Harness Account ID
+   setx ECG_accountID "{account_id}" /M
+   
+   setx ECG_apiURL "https://app.harness.io/gateway/lw/api" /M
+   setx ECG_user_session_watch "true" /M
+   
+   # For explicitly specifying the log location (optional)
+   setx ECG_logs_location "C:\Users\Administrator\harness\logs\ecg.log" /M
+   ```
 
-Where you should replace `{account_id}` with your Harness account id, and `{host_name}` with the hostname of your autostopping rule (without the `http://`)
+   ![](./static/configure-ecg-for-auto-stopping-rules-00.png)
 
-![](./static/configure-ecg-for-auto-stopping-rules-00.png)
+   :::note
+   If you use a non-standard Harness URL, you can change the `apiURL` accordingly.
+   :::
 
-If you use a non-standard Harness URL, you can change the `apiURL` accordingly.
+6. Install ECG as a Windows service:
 
-6. Finally install the ECG as a Windows service and start it
+   a. Navigate into the folder where you placed the executable:
+   
+   ```cmd
+   cd C:\Users\Administrator\harness
+   ```
+   
+   b. Install the ECG service:
+   
+   ```cmd
+   .\harness_autostop_ecg_windows_amd64.exe install
+   ```
 
-```
-cd C:\Users\Administrator\harness
-./harness_autostop_ecg_windows_amd64.exe install
-Start-Service Harness-ecg
-```
 
 ## Validation
 
