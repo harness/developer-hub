@@ -6,11 +6,15 @@ This is your **first step** in configuring **Self Hosted Gitspaces** on **AWS Cl
 
 In order to get started with Self Hosted Gitspaces, you'll first need to **configure your infrastructure**. This infrastructure is where your Gitspaces will be hosted, so you must **define and configure it from Harness UI**. This guide will take you through the detailed steps to configure your AWS infrastructure using the Harness UI.
 
+---
+
 ## Prerequisites
 
 1. Ensure you've read through the [Overview & Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
 2. Only users with **Account-level access** can configure Gitspace infrastructure for now. Read more about the [Permissions Hierarchy](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 3. // Pending
+
+---
 
 ## Configure AWS Cloud Infrastructure
 
@@ -41,7 +45,7 @@ You can add and configure regions for Gitspaces. Note that users will only be ab
 ![](../../static/aws-hybrid-2.png)
 
 Use the following **input parameters**:
-1. **AWS Region**: Select the **AWS region**. Refer to the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) to view available regions.
+1. **AWS Region**: Select the **AWS region**. Refer to the [AWS documentation](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html) to view available regions.
 2. **Subdomain**: Provide the **subdomain** for the region. 
 3. **Zones**: It's mandatory to add at least **two availability zones** for each region in your infrastructure. Select the availability zones from this field. You can add more than two availability zones if needed using the **"New Zone"** button. 
 4. **IP Details**: Provide the **IP configuration** for each availability zone per region. 
@@ -64,27 +68,26 @@ name: <INFRA_NAME>
 domain: <DOMAIN>
 vpc_cidr_block: <VPC_CIDR_BLOCK>
 gateway:
-    instance_type: t2.medium
+    instance_type: <INSTANCE_TYPE>
     instances: 1
     version: 1.16.0
     shared_secret: <SHARED_SECRET>
-    cde_manager_url: https://qa.harness.io/gateway/cde
-runner:
-    region: ""
-    vm_image: ""
+    cde_manager_url: https://app.harness.io/gateway/cde
 region_configs:
-    us-west-1:
-        region_name: us-west-1
+    <REGION_NAME>:
+        region_name: <REGION_NAME>
         availability_zones:
-            - zone: us-west-1a
-              public_cidr_block: 10.0.32.0/20
-              private_cidr_block: 10.0.0.0/20
-            - zone: us-west-1c
-              public_cidr_block: 10.0.48.0/20
-              private_cidr_block: 10.0.16.0/20
+            - zone: <AVAILABILITY_ZONE_1>
+              public_cidr_block: <PUBLIC_CIDR_BLOCK_1>
+              private_cidr_block: <PRIVATE_CIDR_BLOCK_1>
+            - zone: <AVAILABILITY_ZONE_2>
+              public_cidr_block: <PUBLIC_CIDR_BLOCK_2>
+              private_cidr_block: <PRIVATE_CIDR_BLOCK_2>
         domain: <DOMAIN>
         gateway_ami_id: <GATEWAY_AMI_ID>
 ```
+
+---
 
 ## Manage Gitspace Infrastructure
 
@@ -140,6 +143,8 @@ You can assess the **Gateway Group Health** for your Gitspace infrastructure fro
 * **Gateway Version Number**: Gateway image version number
 
 ![](../../static/aws-hyrbid-gateway-health.png)
+
+---
 
 ## Next Steps
 Now that you have the [Infrastructure Config YAML](#download-the-infrastructure-config-yaml) downloaded, proceed to [configure and apply the Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to provision your self-hosted Gitspaces.

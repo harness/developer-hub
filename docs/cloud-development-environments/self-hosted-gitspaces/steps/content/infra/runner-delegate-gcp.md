@@ -7,6 +7,8 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 2. Please make sure you have completed the steps mentioned in [Configuring the Harness Gitspaces terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md). This step is a mandatory prerequisite as this step **sets up the GCP infrastructure**, **creates a GCP VM instance in your infra** and **generates the ``pool.yaml`` file** which is required to host and setup the VM Runner. 
 3. Ensure you have the **GCP VM instance active and running** in your GCP project. (This VM instance is created while your terraform configuration is configured and setup.) Please refer to this [documentation](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to understand more about configuring this Terraform Module. 
 
+---
+
 ## Setting up VM Runner and Delegate 
 You can follow this detailed guide (as described below) to setup Runner and install Harness Delegate in your infrastructure:  
 
@@ -102,6 +104,8 @@ Once you’ve installed and set up your Delegate, enter the specific **Delegate 
 You can also select Delegates in the Delegate Selector field using **Delegate Tags**. Read more about [Delegate Tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags). 
 
 ![](../../static/delegate-selector.png)
+
+---
 
 ## Next Steps
 Now that you’ve successfully installed and configured the Delegate, you’re ready to **create machines and self hosted Gitspaces** within your GCP infrastructure.

@@ -7,6 +7,8 @@ sidebar_label: Overview & Key Concepts
 
 **Self-Hosted Gitspaces** are on-demand remote development environments hosted within your organization’s infrastructure. These environments come pre-configured for instant coding and provide an added layer of security by offering **full control** over infrastructure and data. This reduces the risk of external data exposure and prevents source code from being cached or accessed by third-party cloud services.
 
+---
+
 ## What’s Supported with Self Hosted Gitspaces?
 ### Cloud Infrastructure Providers
 We support the following cloud infrastructure providers for self-hosted Gitspaces:
@@ -20,6 +22,7 @@ We support the following git providers for self-hosted Gitspaces:
 
 To learn more about what's supported with self-hosted Gitspaces, visit [What's Supported](/docs/cloud-development-environments/introduction/whats-supported.md#deployment-models).
 
+---
 
 ## Key Concepts
 To understand how self-hosted Gitspaces work and explore the underlying architecture, go through the [Self-Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md) documentation. Refer to [Configuring Self-Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps) to get started with Self Hosted Gitspaces. 
@@ -51,3 +54,8 @@ The **CDE Gateway** plays a key role in ensuring reliable connectivity, secure a
 A **Terraform module** is a reusable package of Terraform configuration files designed to provision related infrastructure components together. The [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest) is used to provision and set up all the **necessary resources** required to run and use **Self-Hosted Gitspaces** in your own infrastructure. It automates tasks like VPC creation, sub-network setup, IAM roles and policies configuration, and other supporting services needed to run and use Self-Hosted Gitspaces.
 
 To understand more about this step and its implementation, please refer to [Configure and Use the Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md)
+
+---
+
+## Next Steps
+Get started with configuring Self Hosted Gitspaces by following the steps mentioned here: [Get Started with Self-Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/)

@@ -8,11 +8,15 @@ This is your **fourth step** in configuring **Self Hosted Gitspaces**.
 
 Once you have configured your infrastructure and established a **healthy connection** between the **Harness Control Plane** and the **Harness Delegate**, you are all set to create and manage your **Self Hosted Gitspaces**.
 
+---
+
 ## Prerequisites
 
 1. Ensure you have completed all the necessary steps to **get started with Self Hosted Gitspaces**. Refer to [Fundamentals of Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md#get-started-with-self-hosted-gitspaces) for a detailed walkthrough.
 
 2. Verify that the **Gateway Group Health** status for the added region is marked as **Healthy** before creating any Self Hosted Gitspaces. Learn more in the [Manage Gitspace Infrastructure](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#assess-gateway-group-health-for-gitspace-infrastructure) guide.
+
+---
 
 ## Add Machines in Gitspace Infrastructure
 
@@ -28,6 +32,8 @@ Follow the given steps to add Machines:
 
 This action will register a new machine in your Gitspace Infrastructure, enabling it to host Self Hosted Gitspaces.
 
+---
+
 ## Select Delegate from Delegate Selector
 
 Once you’ve installed and configured your Delegate, you must enter the specific **Delegate Name** in the **Delegate Selector** field within your Gitspace Infrastructure UI.
@@ -39,6 +45,8 @@ Follow the given steps to select a Delegate:
 3. Update the **Delegate Selector** field there using either the **Delegate Name** or **Delegate Tags**. You can also select Delegates in the Delegate Selector field using **Delegate Tags**. Read more about [Delegate Tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags). 
 
 ![](./static/delegate-selector.png)
+
+---
 
 ## Delete Machines from Gitspace Infrastructure
 :::warning **Warning: Irreversible Action**
@@ -53,6 +61,8 @@ You can also delete **Machines** from your Gitspace Infrastructure. Here's how y
 3. Click the **delete** icon for the specific machine you want to delete. 
 
 ![](./static/delete-machine.png)
+
+---
 
 ## Next Steps
 Now that everything is set up, you can start **creating and managing Gitspaces**. To learn more, refer to [Managing Gitspaces](/docs/category/manage-gitspaces).

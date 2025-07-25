@@ -6,6 +6,8 @@ This is your **second step** in configuring **Self Hosted Gitspaces** on **GCP C
 
 Once you have added and configured the **GCP Cloud Infrastructure in your Harness UI**, you need to configure and set up the [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest) to provision the **GCP infrastructure** and complete the setup in your selected GCP project. This guide will walk you through the detailed steps to configure and set it up.
 
+---
+
 ## Prerequisites
 
 1. Ensure you’ve read through the [Overview & Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
@@ -22,6 +24,8 @@ Once you have added and configured the **GCP Cloud Infrastructure in your Harnes
         <li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) – `api/iam.googleapis.com`</li>
         <li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) – `api/dns.googleapis.com`</li>
       </ul>
+
+---
 
 ## Functions of the Terraform Module
 
@@ -48,11 +52,11 @@ This module creates the GCP infrastructure and generates a `pool.yaml` file with
 
 Refer to this [documentation](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest?tab=outputs) to get a detailed overview of all the **Outputs** generated from the Terraform Module. 
 
+---
 
 ## Configuring the Terraform Module
 
 Follow these steps to configure and apply the Terraform module. Ensure all prerequisites are completed before proceeding.
-
 
 ### 1. Prepare the Terraform Input Variables
 
@@ -139,6 +143,8 @@ This setup provisions the required infrastructure in your GCP project, including
 After applying the [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest), a ``pool.yaml`` file is generated in the same folder as your ``main.tf``. This file defines the VM specs for your Gitspace instances.
 
 Keep this file handy — it will be required in the next step.
+
+---
 
 ## Next Steps
 Now that your GCP infrastructure is fully set up, proceed to [Configure the Runner and Delegate](/docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate.md) on the GCP VM instance created. Make sure you have the [`pool.yaml` file ready](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#download-the-pool-yaml-file) for the next steps.

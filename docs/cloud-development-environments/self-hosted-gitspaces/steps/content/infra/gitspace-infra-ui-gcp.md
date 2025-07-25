@@ -6,6 +6,8 @@ This is your **first step** in configuring **Self Hosted Gitspaces** on **GCP Cl
 
 In order to get started with Self Hosted Gitspaces, you'll first need to **configure your infrastructure**. This infrastructure is where your Gitspaces will be hosted, so you must **define and configure it from Harness UI**. This guide will take you through the detailed steps to configure your infrastructure using the Harness UI.
 
+---
+
 ## Prerequisites
 
 1. Ensure you’ve read through the [Fundamentals and Prerequisites](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
@@ -18,6 +20,8 @@ In order to get started with Self Hosted Gitspaces, you'll first need to **confi
         <li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) – `api/iam.googleapis.com`</li>
         <li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) – `api/dns.googleapis.com`</li>
       </ul>
+
+---
 
 ## Configure GCP Cloud Infrastructure
 
@@ -75,14 +79,14 @@ gitspace_vm_tags:
 - gcp-gitspace
 project:
   id: <PROJECT_ID>
-  service_account: cde-provisioner
+  service_account: <SERVICE_ACCOUNT>
 domain: <DOMAIN>
 delegateselectors:
 - selector: gitspaces
   origin: ""
 gateway:
   instances: 1
-  machine_type: e2-standard-4
+  machine_type: <MACHINE_TYPE>
   vm_tags:
   - gateway
   vm_image:
@@ -92,18 +96,20 @@ gateway:
   cde_manager_url: https://app.harness.io/gateway/gratis/cde
   version: 1.15.0
 runner_vm_region:
-- us-west1
+- <REGION_NAME>
 runner:
-  vm_image: projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20250213
+  vm_image: <VM_IMAGE>
 region_configs:
-  us-west1:
-    region_name: us-west1
-    default_subnet_ip_range: 10.6.0.0/16
-    proxy_subnet_ip_range: 10.7.0.0/16
+  <REGION_NAME>:
+    region_name: <REGION_NAME>
+    default_subnet_ip_range: <DEFAULT_SUBNET_IP_RANGE>
+    proxy_subnet_ip_range: <PROXY_SUBNET_IP_RANGE>
     certificates:
       contents:
       - domain: <DOMAIN>
 ```
+
+---
 
 ## Manage Gitspace Infrastructure
 
@@ -157,6 +163,8 @@ You can assess the **Gateway Group Health** for your Gitspace infrastructure fro
 * **Gateway Version Number**: Gateway image version number
 
 ![](../../static/healthy-gateway.png)
+
+---
 
 ## Next Steps
 Now that you have the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#download-the-infra-config-yaml) downloaded, proceed to [configure and apply the Terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md) to provision your self-hosted Gitspaces. 

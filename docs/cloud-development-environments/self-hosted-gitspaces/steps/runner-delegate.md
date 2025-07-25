@@ -11,6 +11,8 @@ To configure self hosted Gitspaces in your own infrastructure, you need to host 
 
 Once you have the respective Terraform module setup, you'll need an active **VM instance** in your infrastructure which will be used to host your Harness Delegate and VM Runner. 
 
+---
+
 ## Functions of VM Runner and Delegate
 This section explains the key functions of **Harness Delegate and VM Runner**. Refer to [Self Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md) to understand the underlying architecture in detail. 
 
@@ -21,6 +23,8 @@ This section explains the key functions of **Harness Delegate and VM Runner**. R
 
 ### VM Runner
 The **VM Runner** is responsible for **managing the VM lifecycle**. The VM Runner creates a VM on demand for executing the tasks. When the Delegate receives any Task Request from the Harness Control Plane, it forwards the request to the Runner, which executes the task on the created VM and manages the VM lifecycle according to the request. Read more about [VM Runner](https://docs.drone.io/runner/vm/overview/).
+
+---
 
 ## Infrastructure Provider
 Before we start with setting up Runner and Delegate, choose your cloud infrastructure provider to get the detailed steps. 

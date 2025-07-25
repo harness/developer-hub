@@ -4,12 +4,20 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ## Prerequisites
 1. Ensure you’ve read through the [Overview & Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
-2. Please make sure you have completed the steps mentioned in [Configuring the Harness Gitspaces terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#aws). This step is a mandatory prerequisite as this step **sets up the AWS infrastructure** and **generates the ``pool.yaml`` file** which is required to host and setup the VM Runner. 
+2. Please make sure you have completed the steps mentioned in [Configuring the Harness Gitspaces terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md). This step is a mandatory prerequisite as this step **sets up the AWS infrastructure** and **generates the ``pool.yaml`` file** which is required to host and setup the VM Runner. 
+
+---
 
 ## Key Concepts
 - **Amazon EC2 Instance**: An Amazon EC2 instance is a virtual server in the AWS cloud environment. You'll need an EC2 instance to setup the VM runner and install Harness Delegate. Follow the steps in the given documentation to create an EC2 instance with specific configuration as mentioned. This EC2 instance uses a private VPC and subnet and doesn't allow any public IPs to ensure data is always secure and private with no route to the internet gateway. Read more about [Amazon EC2 Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Instances.html). 
-- **Target Group**: A Target Group is a set of resources (in this case EC2 instances) registered as Targets. This is used to define the targets that a Load Balancer will send traffic to. In this case, we'll be using a **Network Load Balancer** to send traffic to the EC2 instance. Thus we will register the EC2 instance created in this target group and will define the specific protocol and port for the target. Read more about [Target Groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html).
-- **Listener**: A Listener is configured on the Load Balancer, it is used to listen for the incoming connections on the defined port/protocol. When you create a listener, you specify a target group for its default action. Traffic is forwarded to the target group specified in the listener rule. Read more about [Listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html). 
+
+- **Security Group**: A Security Group acts as a virtual firewall for your EC2 instances to control inbound and outbound traffic. Inbound rules control the incoming traffic to your instance, and outbound rules control the outgoing traffic from your instance. Read more about [Amazon EC2 Security Groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html).  
+
+- **Target Group**: A Target Group is a set of resources (in this case EC2 instances) registered as Targets. This is used to define the targets that a Load Balancer will send traffic to. In this case, we'll be using a **Network Load Balancer** to send traffic to the EC2 instance. Thus we will register the EC2 instance created in this target group and will define the specific protocol and port for the target. Read more about [Amazon EC2 Target Groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html).
+
+- **Listener**: A Listener is configured on the Load Balancer, it is used to listen for the incoming connections on the defined port/protocol. When you create a listener, you specify a target group for its default action. Traffic is forwarded to the target group specified in the listener rule. Read more about [Amazon EC2 Listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html). 
+
+---
 
 ## Setting up Runner & Installing Delegate
 
@@ -17,6 +25,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 To host the VM Runner and Harness Delegate, an EC2 instance is required. Follow the steps mentioned here to learn more on how to [launch an AWS EC2 Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#ec2-launch-instance). 
 
 You'll need to configure the **Network configuration** to the following configuration: 
+    - **Key Pair**: Under Key pair (login), for Key pair name, choose an **existing key pair** or choose **Create new key** pair to create your first key pair.
     - **VPC**: Select the VPC network for your EC2 instance. You'll be able to find a VPC with your infrastructure name given while provisioning the AWS cloud infrastructure via Harness UI. For example, if the infrastructure name is ``aws-infra-1`` you'll be able to find a VPC with the name ``aws-infra-1-network``. 
     - **Subnet**: From the given options, select the ``private-subnet`` to ensure the network interface is located in a **private subnet**.
     - **Auto-assign Public IP**: ``Disable`` this field to ensure that no public IP is automatically assigned to the primary network interface of the instance. 
@@ -31,6 +40,7 @@ You'll have to create a Target Group for the Load Balancer. This target group wi
     - **Protocol**: This is the protocol required for load balancer-to-target communication. Enter ``TCP`` here to allow the load balancer to communicate with the target instance. 
     - **Port**: This is the port number where targets receive traffic. Enter ``22`` to allow SSH traffic. 
     - **VPC**: This is the field where VPC with the instances to be included in the target group is required. Select the VPC configured earlier during EC2 instance creation. 
+    - **Add Targets**: If the target type is Instances, select one or more instances, enter one or more ports, and then choose **Include as pending** below.
 
 Create a Target Group with the above configuration and save the details.  
 
@@ -42,11 +52,19 @@ You'll have to add a Listener in the Load Balancer to allow traffic to reach the
 
 Create a Listener with the above configuration and save the details. 
 
-### 4. Update Security Group
+### 4. Update Security Group Rules
+You'll have to update the ``gateway-sg`` security group rules (the one selected earlier while creating an EC2 instance) to allow traffic to reach the Load Balancer. Follow the steps mentioned here to learn more on how to [update the security group rules](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/changing-security-group.html#add-remove-security-group-rules). Use the following configuration to update one: 
+    - **Inbound Rules**: Add a new rule to allow traffic on the port used by the Load Balancer. 
+    - **Type**: Select **Custom TCP** in the Inbound Rule Type. 
+    - **Port Range**: Enter the port number used for creating the Listener on the Load Balancer. 
 
+Save the inbound rules for the security group. 
 
 ### 5. SSH into the AWS EC2 Instance
-Now that your Instance is up and running, all you have to do is connect to your instance using a SSH client. Refer to the documentation to [connect to your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html). 
+Now that your Instance is up and running, all you have to do is connect to your instance using a SSH client. Refer to the documentation to [connect to your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html). To use a ssh client, you need to use the following ``ssh`` command to connect to your instance: 
+```
+ssh -i <PATH TO YOUR PRIVATE KEY> ec2-user@<REGION_SUBDOMAIN> -p <LISTENER_PORT_NUMBER>
+```
 
 ### 6. Install Docker 
 You'll need **Docker** installed in your AWS VM instance to configure self hosted Gitspaces. Refer to this [installation guide](https://docs.docker.com/engine/install/) on how to install Docker in your VM instance. 
@@ -127,6 +145,8 @@ Once you’ve installed and set up your Delegate, enter the specific **Delegate 
 You can also select Delegates in the Delegate Selector field using **Delegate Tags**. Read more about [Delegate Tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags). 
 
 ![](../../static/delegate-selector.png)
+
+---
 
 ## Next Steps
 Now that you’ve successfully installed and configured the Delegate, you’re ready to **create machines and self hosted Gitspaces** within your AWS cloud infrastructure.

@@ -23,18 +23,21 @@ You need to follow these prerequisites to get started with self-hosted Gitspaces
 | **Service Account** | You must have a Service Account with the "Owner" permission in the same GCP Project where you have your GCP VM Instance.| [Docs](https://cloud.google.com/iam/docs/service-accounts-create) | 
 | **Service Account Key** | You must create and download a Service Account Key in the same GCP Project and service account, this key is usually in the form of a **JSON** or **P12 file**, which contains the credentials necessary for the service account to authenticate. | [Docs](https://cloud.google.com/iam/docs/keys-create-delete) | 
 | **Terraform/OpenTofu** | You must have Terraform/OpenTofu installed on your machine with internet access (please ensure you have the SA key downloaded here) | [Docs](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
-| **DNS Propogation** | You must verify that the domain or subdomain you use for self hosted Gitspaces has been properly delegated and that DNS propogation has completed. | [Docs](https://www.catchpoint.com/dns-monitoring/dns-delegation) | 
+| **Domain Manager Access** | You must have access to the domain manager to delegate the domain or subdomain you use for self hosted Gitspaces. | [Docs](https://www.catchpoint.com/dns-monitoring/dns-delegation) | 
 
 </TabItem>
 <TabItem value="AWS" label="AWS">
 | **Prerequisite**    | **Description** | **Documentation Guide** | 
 | -------- | ------- | ---------- | 
-| **AWS User Access** | You must have the following permissions and access as a AWS user to create and manage EC2 instances required for configuring self hosted Gitspaces in your AWS infrastructure. |  |
-| **Terraform/OpenTofu** | You must have Terraform/OpenTofu installed on your machine with internet access (please ensure you have the SA key downloaded here) | [Docs](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
-| **DNS Propogation** | You must verify that the domain or subdomain you use for self hosted Gitspaces has been properly delegated and that DNS propogation has completed. | [Docs](https://www.catchpoint.com/dns-monitoring/dns-delegation) | 
+| **AWS User Access** | You must have the following permissions and access as a AWS user required for configuring self hosted Gitspaces in your AWS infrastructure. |  |
+| **AWS Credentials** | You must have the following AWS credentials to configure AWS Cloud infrastructure for Self Hosted Gitspaces: <ul><li>AWS Access Key</li><li>AWS Secret Key</li><li>AWS Session Token (optional)</li></ul> | [Docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) |
+| **Terraform/OpenTofu** | You must have Terraform/OpenTofu installed on your machine with internet access. | [Docs](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
+| **Domain Manager Access** | You must have access to the Domain Manager to delegate the domain or subdomain you use for Self Hosted Gitspaces. | [Docs](https://www.catchpoint.com/dns-monitoring/dns-delegation) | 
 
 </TabItem>
 </Tabs>
+
+---
 
 ## Get Started with Self-Hosted Gitspaces
 
