@@ -15,9 +15,9 @@ helpdocs_is_published: true
 | Feature | Karpenter | Cluster Orchestrator |
 |---------|-----------|---------------------|
 | **Setup Complexity** | Requires manual SQS Queue setup and maintenance | Works out-of-the-box with zero configuration |
-| **Interruption Handling** | Basic SQS-based monitoring | Sophisticated interruption prediction and handling |
+| **Interruption Handling** | Basic SQS-based monitoring | Sophisticated interruption handling |
 | **Node Selection** | Limited strategy options | Configurable strategies (cost-optimized, least-interrupted) |
-| **Fallback & Reverse Fallback** | Basic fallback: moves pods to On-Demand once Spot is interrupted; no automatic return | Intelligent fallback automatically launches an On-Demand instance when Spot capacity is unavailable or an interruption risk is detected. If market is unavailable, it creates an On Demand instance. **And** reverse fallback seamlessly moves workloads back to Spot when capacity is healthy. |
+| **Fallback & Reverse Fallback** | Basic fallback: moves pods to On-Demand once Spot is interrupted; no automatic return | Intelligent fallback automatically launches an On-Demand instance when Spot capacity gets unavailable. If market is unavailable, it creates an On Demand instance. **And** reverse fallback seamlessly moves workloads back to Spot when capacity is healthy. |
 
 
 ### 2. Cost Visibility and Savings Analysis
@@ -54,5 +54,5 @@ helpdocs_is_published: true
 
 | Capability | Karpenter | Cluster Orchestrator |
 |------------|-----------|---------------------|
-| **Time-window control for disruptive ops** | Available (NodePool Disruption Budgets) | Schedule bin packing / consolidation inside defined windows |
-| **Business-hour safeguards** | Not available | Skip disruptive actions during critical periods |
+| **Time-window control for disruptive ops** | Available (NodePool Disruption Budgets) | Replacement Windows let you pre-schedule disruptive operations such as Bin Packing, Harness pod eviction, consolidation, and reverse fallback so that they run outside critical business periods |
+

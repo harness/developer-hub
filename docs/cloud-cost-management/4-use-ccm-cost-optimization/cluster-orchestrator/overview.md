@@ -15,7 +15,7 @@ Currently, this early access feature is behind a feature flag . Contact [Harness
 :::
 
 Harness’ Cloud Cost Management (CCM) is built on three pillars: **Cost Visibility**, **Cost Optimization**, and **Cost Governance**.
-Within the Cost Optimization pillar, **Cluster Orchestrator for Amazon EKS (Beta)** adds a next-generation, Karpenter-based autoscaling and scheduling engine that balances cost and performance across Spot, On-Demand, and committed capacity.
+Within the Cost Optimization pillar, **Cluster Orchestrator for Amazon EKS (Beta)** adds Karpenter-based autoscaling that balances cost and performance across Spot, On-Demand, and committed capacity.
 
 ## Harness CCM Cluster Orchestrator for Amazon Elastic Kubernetes Service (EKS)
 
@@ -33,7 +33,7 @@ Combined, these capabilities can drive **up to 90 % cost savings** while maintai
 
 - **Karpenter-based autoscaling** with quick, one-click migration for existing Karpenter users.
 - **Advanced bin-packing & replacement schedules** to maximise node utilisation without over-provisioning.
-- **Workload-level Spot/On-Demand distribution** with automated fallback and reverse-fallback logic.
+- **Workload-level Spot/On-Demand distribution** with automated fallback and reverse-fallback.
 - **Commitment-aware scheduling** that leverages Reserved Instances and Savings Plans before purchasing new capacity.
 - **True workload cost attribution** and real-time cost tracking in CCM Perspectives.
 
