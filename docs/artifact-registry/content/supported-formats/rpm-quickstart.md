@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="RPM" targetPage="/docs/artifact-registry/supported-formats" />
 
 This guide shows you how to **create an RPM Artifact Registry** in Harness, **configure an upstream proxy**, and **manage RPM packages** using **YUM** or **DNF**.
 
@@ -135,5 +132,3 @@ curl --location --request PUT 'https://pkg.app.harness.io/pkg/<account-id>/<rpm-
 </Tabs>
 
 ---
-
-By following this guide, you can create and manage an RPM Artifact Registry in Harness, configure an optional upstream proxy, and use YUM or DNF to install and upload packages.

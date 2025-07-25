@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="Docker" targetPage="/docs/artifact-registry/supported-formats" />
 
 This guide will help you **create a Docker Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Docker images**.
 
@@ -102,4 +99,3 @@ This command retrieves the Docker image from your Harness registry to your local
 :::
 
 ---
-By following this guide, you can effectively set up and manage a Docker Artifact Registry within Harness, streamlining your container image workflows.

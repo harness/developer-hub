@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="NuGet" targetPage="/docs/artifact-registry/supported-formats" />
 
 Learn how to **create a NuGet Artifact Registry**, **configure an upstream proxy**, and **publish or install NuGet packages** using the CLI.
 
@@ -103,5 +100,3 @@ nuget install <ARTIFACT_NAME> -Version <VERSION> -Source harness
 ```
 
 ---
-
-By following this guide, you can publish and install NuGet packages between your local environment and the Harness registry.
