@@ -100,7 +100,9 @@ This minor release updates the build process to sign the NuGet package, improvin
 
 #### Version 2.0.11
 
-- Updated third-party dependencies to address security vulnerabilities identified by scanners.
+**Security and maintenance**:
+
+- Updated third-party dependencies to address security vulnerabilities identified by scanners. (FFM-12432)
 
 ### Python SDK
 
