@@ -23,6 +23,14 @@ These release notes describe recent changes to Harness Code Repository.
 
 ## July 2025
 
+<!-- July 23, 2025 -->
+
+### Version 1.51.x
+
+#### New features and enhancements
+- Added support for [tag rules in Harness Code Repository](/docs/code-repository/config-repos/rules#add-tag-rules). Users can now restrict tag creation, deletion, and updates using pattern-based rules, similar to branch protection.
+- Allow groups to be included in the bypass list for branch rules.
+
 <!-- July 16, 2025 -->
 
 ### Version 1.50.x
