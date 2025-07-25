@@ -2274,6 +2274,27 @@ The delegate won't attempt to acquire any new tasks until the resource level inc
 
 The `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` feature flag works for user invites. When a user is added as member to a user group, a separate notification is sent, which is not dependent on this feature flag.
 
+### Can I collapse or hide the “Filter by Tag” menu in the dashboard UI?
+Currently, there is no built-in UI option to collapse or hide the “Filter by Tag” panel across all dashboards.
+
+### Why does the “Filter by Tag” section take up so much space?
+The section is designed to provide quick filtering across entities. On data-rich dashboards, this can result in noticeable visual clutter, especially on smaller screens.
+
+### What is a recommended workaround to reduce clutter caused by tag filters?
+You can build Custom Dashboards that focus only on the metrics and visualizations you need—minimizing reliance on broad tag filtering.
+
+### Does customizing a dashboard remove the tag filter menu?
+No. The “Filter by Tag” menu still appears, but custom dashboards give you more control over layout, widgets, and the amount of visible filtering.
+
+### Can I programmatically control the visibility of the tag filter section?
+Not at this time. Harness does not offer programmatic control (e.g., via YAML or API) to toggle UI components like the tag filter pane.
+
+### Will future updates include collapsible filter panels?
+Feature enhancements like collapsible or floating filter menus are commonly requested and may be considered in future UI improvements, but there's no official ETA.
+
+### How can I ensure my dashboard stays clean and focused?
+Design dashboards with specific goals in mind. Use pre-filtered views, labels, or scoped queries in widgets instead of relying solely on global tag filters.
+
 ## Git Experience
 
 ### Can we customize the SSH configuration when using a Git connector set by SSH?
@@ -2326,6 +2347,37 @@ Yes, you can add multiple projects to the same repository. GitX is entity-based,
 ### I have environments at the Org/Project/Account levels, can I Git sync them?
 
 No, this isn't currently supported.
+
+### Why did my pipeline run use a different delegate and fail to authenticate with GitHub?
+When a delegate selector is not specified at the step, stage, pipeline, or connector level, Harness automatically chooses the least-loaded delegate available to execute the task. This means that different pipeline runs might use different delegates. If a specific delegate is not correctly configured to authenticate with your GitHub connector, authentication failures like:
+
+"Failed to download manifest files from git. Git connection error. authentication not supported"
+
+may occur, even if other delegates work as expected.
+
+### What causes authentication errors with GitHub connectors in Harness?
+GitHub authentication errors in Harness often stem from an underlying issue with the delegate’s network or credential configuration:
+
+The delegate may lack the necessary credentials, SSH keys, or access tokens required for GitHub API access.
+
+Firewall or network policies may restrict outbound traffic to GitHub on certain delegates.
+
+Environment variables or secret manager references may be missing on the failing delegate.
+As a result, authentication fails only when Harness routes the pipeline through a misconfigured delegate.
+
+### How can I ensure the correct delegate is always used for my pipelines?
+You can explicitly control delegate selection using “delegate selectors.” Assign the appropriate selector (such as the-prod-shared-iac-cluster) to your connector, pipeline, stage, or individual steps. This ensures that all relevant tasks consistently use the delegate you know is configured to interact with GitHub successfully, reducing the risk of intermittent and environment-specific failures.
+
+### What is the recommended mitigation for intermittent delegate-related authentication issues?
+
+As a best practice:
+Add a delegate selector to your GitHub connector or the relevant deployment steps, restricting execution to the delegate(s) that have validated GitHub access.
+
+Regularly audit all delegates to verify that required credentials and network access are properly configured for external integrations.
+
+If you need to use multiple delegates, ensure all of them have valid credentials and consistent configuration for the external systems they interact with.
+
+By explicitly setting delegate selectors and ensuring uniform delegate configuration, you can significantly reduce or eliminate authentication issues and ensure pipeline reliability.
 
 ## Governance
 
@@ -3442,3 +3494,7 @@ Yes, Harness has an API to check the status of the deployment. You can check her
 
 ### How can user restart a delegate?
 User can restart the delegate by deleting the pod itself.
+
+### What is the quick fix for the logStreamingServiceBaseUrl misconfiguration?
+
+```Update the value from: https://app.harness.io/log-service/ to the correct endpoint (e.g., for prod2):https://app.harness.io/prod2/log-service/ Ensure this aligns with your current environment```.
