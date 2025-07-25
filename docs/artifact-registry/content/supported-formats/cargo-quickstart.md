@@ -110,8 +110,3 @@ cargo add <ARTIFACT_NAME>@<VERSION> --registry harness-cargo-registry
 ---
 
 By following this guide, you can publish and install Cargo packages between your local environment and the Harness registry.
-
-## Next Steps
-- [Integrate with your CD pipelines](/docs/artifact-registry/platform-integrations/cd-ar-integrations)
-- [Learn about security integrations](/docs/artifact-registry/platform-integrations/security-integrations/ssd-ar-integrations)
-- [Automate actions with Webhooks](/docs/artifact-registry/ar-webhooks)

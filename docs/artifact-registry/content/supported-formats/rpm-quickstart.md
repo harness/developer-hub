@@ -137,8 +137,3 @@ curl --location --request PUT 'https://pkg.app.harness.io/pkg/<account-id>/<rpm-
 ---
 
 By following this guide, you can create and manage an RPM Artifact Registry in Harness, configure an optional upstream proxy, and use YUM or DNF to install and upload packages.
-
-## Next Steps
-- [Integrate with your CD pipelines](/docs/artifact-registry/platform-integrations/cd-ar-integrations)
-- [Learn about security integrations](/docs/artifact-registry/platform-integrations/security-integrations/ssd-ar-integrations)
-- [Automate actions with Webhooks](/docs/artifact-registry/ar-webhooks)
