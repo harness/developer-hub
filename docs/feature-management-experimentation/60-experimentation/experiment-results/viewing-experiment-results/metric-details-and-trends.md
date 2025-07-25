@@ -14,7 +14,7 @@ The **Impact snapshot** chart in the Experiment Metric details dashboard support
 To view dimensional analysis on a metric in an Experiment:
 
 1. Go to **Experiments** and open the desired experiment.
-1. Scroll to the **Metric details** section and click on a key metric to view the Metric details dashboard.
+1. Click on a key metric to view the Metric details dashboard.
 1. On the **Impact snapshot** chart, select a dimension from the dropdown.
 1. The line chart updates to show values for each dimension.
 
