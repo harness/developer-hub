@@ -43,7 +43,7 @@ Previously, when the Primary Proxy reconnected, it would send patch events for a
 #### Version 2.0.12
 
 - Adds HOST & Remote IP to the request logging middleware.
-- Updates dependencies to resolve vulnerability in `github.com/golang-jwt/jwt` package.
+- Updates dependencies to resolve a vulnerability in the `github.com/golang-jwt/jwt` package. (FFM-12432)
 
 ### Node.js SDK
 
