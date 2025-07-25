@@ -82,3 +82,13 @@ Policies applied to the Service entity during **On Run** and **On Save** events 
 Harness platform uses the Open Policy Agent (OPA) library version **0.62.0**.
 
 For more details, you can refer to [OPA v0.62.0](https://github.com/open-policy-agent/opa/tree/v0.62.0).
+
+### How can I tell what policy sets are using my policy?
+
+Find a full list of your policies for your scope by going to the relevant settings page: **Project Settings**, **Organization Settings**, or **Account Settings**
+
+Then, go to the **Security and Governance** section > **Policies**.
+
+In the top right of this overview page, select **Policies**. 
+
+Here you will see a full list of policies, the policy store, and the number of **Referenced Policy Sets**. You can click on the **View** button to open a modal with a full list of referenced policy sets.
