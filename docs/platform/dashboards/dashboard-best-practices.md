@@ -21,8 +21,10 @@ Here are some best practices you can follow for building your dashboards:
 * **Columns and rows**: Having a lot of columns and rows can also slow down your dashboards due to memory issues. Be mindful of how many you need and also filter at the dashboard level to reduce the number of results in an element.
 * **Shared filters**: By using shared filters across multiple tiles, you can reduce the total number of queries the dashboard runs, which can help speed it up.
 * **Testing the dashboard**: Always test your dashboard after you’ve updated it to make sure you don’t miss any changes in its performance.
-* **Time zone treatment in dashboards**: The time zone applied to your dashboard can affect the results shown, because of slight differences in the exact hours used for time-based data. If you are interested in the data as it applies to a different region, you might want to change the time zone of your dashboard to reflect that region.
+:::warning
+**Time zone treatment in dashboards**: The time zone applied to your dashboard can affect the results shown, because of slight differences in the exact hours used for time-based data. If you are interested in the data as it applies to a different region, you might want to change the time zone of your dashboard to reflect that region.
 By default Dashboards are set to UTC. The time zone can be changed to the user’s time by doing the following:
-  * Click the three-dot dashboard menu
-  * Choose any of the time zones listed in the drop-down to run all tiles in that time zone. 
+* Click the three-dot dashboard menu
+* Choose any of the time zones listed in the drop-down to run all tiles in that time zone.
+:::
 
