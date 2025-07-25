@@ -21,78 +21,74 @@ Centralized notifications can be configured for the following resource types:
 3. Chaos Experiment
 4. Service Level Objectives
 
-This article explains how to configure notifications for Pipelines and Delegates across different [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): Account, Organization, and Project.
+This article explains how to configure notifications for Pipelines and Delegates in Harness across different [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes).
 
-To configure notifications at the Account, Organization, or Project level:  
- - For Account-level, go to Account Settings → General → Notification. 
+This guide uses the Account scope as an example, but the steps apply similarly to Organization and Project scopes. To configure notifications, follow the steps below.
 
-   ![account-level](./static/account-resource-type.gif)
- 
- - For Organization or Project-level, go to the respective Organization/Project → select Organization/Project → Settings → General → Notification.
- 
-   ![org-proj-level](./static/org-proj-resource-type.gif)
-
-Let’s walk through an example to set up notification management. In this example, we’ll configure notifications for Pipelines and Delegates, following the step-by-step guide below.
-
-For now, we’ll configure notifications at the Account level, but you can follow similar steps to configure them at the Organization or Project level as well.
-
-1. In Harness, go to **Account Settings**.
-2. Under **General**, select **Notifications Management**. 
+1. Navigate to **Account Settings** → **General**, select **Notifications Management**. 
 
         ![account-level-notification](./static/organization-setting-notification-management.png)
 
-3. Under **Overview**, provide **Notification Name** and **Continue** to select Resource type. Based on your selection, choose the next option either **Pipeline** or **Delegate** from the tabs below.
+2. In the **Overview** section, provide a **Notification Name** and click **Continue**. Then, select the appropriate **Resource Type**. Depending on your selection, proceed with either the **Pipeline** or **Delegate** tab.
 
         ![](./static/new-notification-setup.png)
 
+## Centralized notification
+
 <Tabs>
 <TabItem queryString="pipeline" value="Pipeline" Label="pipeline" default>
-## Centralized notification for Pipeline 
+
+### Configure Notifications for Pipelines
 
 :::info Note
   Pipeline specific notifications are behind `PIPE_CENTRALISED_NOTIFICATION`. 
 :::
 
-4. Under **Resources**, Select Resource Type as **Pipeline**. 
+3. Select **Pipeline** as the **Resource Type** in the **Resources** section.
 
         ![](./static/resource_type.png)
 
-        Under **Select Project** you can either select **All Projects** under the organization or you can select **Specified Project** if you want to configure notification for specific projects within the organization. Click on **Continue** to set conditions for notification.
+   Next, choose the project scope: **All Projects** under the Organization, or **Specified Project** to target particular projects
+
+   Click **Continue** to move to the condition setup.
 
         ![](./static/pipeline-resource.png)
 
-5. Under **Condition** , select **+ Add Condition** to define pipeline events based on which you want to be notified.
-    
+4. Click **+ Add Condition** to define when notifications should be triggered based on pipeline events.
+
         ![](./static/resource-pipeline-condition.png)
 
-        :::info note
-                Stage start/success/failed events will apply to all stages within a pipeline. There is no option to configure notifications for specific stages, if you want to do that you can configure it via [Pipeline level notification](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
-        :::
+   :::info Note
+   Stage start, success, and failure events apply to all stages in a pipeline. For more granular control (such as specific stages), consider using [pipeline-level notifications](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
+   :::
 
-        Under **Create Condition** provide, Condition Name and **Select Pipeline Events**. Click on **Continue** to set channel where you want to send the notification.
+   Provide a **Condition Name**, select relevant **Pipeline Events**, and click **Continue** to choose the notification channel.
 
-        <img src={PipeEvents} width="500"/>
+   <img src={PipeEvents} width="500"/>
+
 </TabItem>
-<TabItem value="Delegate" Label="delegate" default>
-## Centralized notification for Delegate 
 
-4. Under **Resources**, Select Resource Type as **Delegate**. Here, you can configure notifications for all Delegates by selecting the **Select All Delegates** option. 
+<TabItem value="Delegate" label="Delegate">
 
-   Alternatively, you can target Delegates with specific tags—up to a maximum of **five tags** can be added, as shown below.
+### Centralized Notifications for Delegates
+
+3. Choose **Delegate** as the **Resource Type**.
+
+   You can either notify: **All Delegates**, or Only Delegates that match specific **tags** (up to five supported)
 
    ![delegate-resource-type](./static/delegate-resource-type.png)
 
-5. Under **Condition** , select **+ Add Condition** to define delegate events based on which you want to be alerted.
+4. Click **+ Add Condition** to set up alerts based on delegate events.
 
    ![delegate-condition](./static/delegate-condition.png)
 
-   Under **Create Condition**, provide a **Condition Name** and select the appropriate **Delegate Events**. There are three types of Delegate events that can be configured:
-    
-    - Delegate Disconnected.
-    - Delegate Expired.
-    - Delegate Expiring in 1 to 4 Weeks.
+   Enter a **Condition Name**, and select from the following **Delegate Events**:
 
-   Click Continue to choose the channel where you want to send the notifications.
+        * Delegate Disconnected
+        * Delegate Expired
+        * Delegate Expiring in 1 to 4 Weeks
+
+   Proceed by clicking **Continue** to configure your notification channel.
 
 </TabItem>
 </Tabs>
