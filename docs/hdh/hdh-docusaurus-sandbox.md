@@ -159,6 +159,67 @@ Detail text tab 2.
 </TabItem>
 </Tabs>
 
+## Dynamic Markdown Selector
+
+If you have too many tabs, you can use the Dynamic Markdown Selector instead.
+
+import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
+
+<DynamicMarkdownSelector
+  options={{
+    Docker: {
+      path: "/hdh/content/dynamic-markdown-selector/docker-quickstart.md",
+      logo: "docker-logo.svg",
+      logoSize: 24
+    },
+    Maven: {
+      path: "/hdh/content/dynamic-markdown-selector/maven-quickstart.md",
+      logo: "maven-logo.svg",
+      iconOnly: true,
+    },
+    Generic: {
+      path: "/hdh/content/dynamic-markdown-selector/generic-quickstart.md",
+      logo: "generic-logo.svg",
+      logoSize: 20
+    },
+    Python: {
+      path: "/hdh/content/dynamic-markdown-selector/python-quickstart.md",
+      logo: "python-logo.svg",
+      logoSize: 24
+    },
+    NPM: {
+      path: "/hdh/content/dynamic-markdown-selector/npm-quickstart.md",
+      logo: "npm-logo.svg",
+      iconOnly: true,
+    },
+    RPM: {
+      path: "/hdh/content/dynamic-markdown-selector/rpm-quickstart.md",
+      logo: "rpm-logo.svg",
+      iconOnly: true,
+      logoWidth: 42,
+      logoHeight: 28
+    },
+    Helm: {
+      path: "/hdh/content/dynamic-markdown-selector/helm-quickstart.md",
+      logo: "helm-logo.svg",
+      logoSize: 28
+    },
+    Nuget: {
+      path: "/hdh/content/dynamic-markdown-selector/nuget-quickstart.md",
+      logo: "nuget-logo.svg",
+      logoSize: 24
+    },
+    Cargo: {
+      path: "/hdh/content/dynamic-markdown-selector/cargo-quickstart.md",
+      logo: "rust-logo.png",
+      logoSize: 24
+    }
+  }}
+  toc={toc}
+  precedingHeadingID='#dynamic-markdown-selector'
+  nextHeadingID='#code-formatting'
+/>
+
 ## Code Formatting
 
 Can enable syntax highlighting with these [common languages](https://github.com/FormidableLabs/prism-react-renderer/blob/master/packages/generate-prism-languages/index.ts).
