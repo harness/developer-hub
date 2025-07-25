@@ -10,13 +10,14 @@ Once you have added and configured the **GCP Cloud Infrastructure in your Harnes
 
 ## Prerequisites
 
-1. Ensure you’ve read through the [Overview & Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
-2. Make sure you have completed all the steps detailed out in [Configuring GCP Cloud Infrastructure in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md). This is a **mandatory prerequisite**, as the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#download-the-infrastructure-config-yaml) generated from that step is a required input here.
-3. You must have a **Service Account with the "Owner" role** in the same GCP project where your GCP VM instance will be created.
+1. Ensure you've enabled the feature flag ``CDE_HYBRID_ENABLED`` in your Harness account since Self Hosted Gitspaces are currently available behind this feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+2. Ensure you’ve read through the [Overview & Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
+3. Make sure you have completed all the steps detailed out in [Configuring GCP Cloud Infrastructure in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md). This is a **mandatory prerequisite**, as the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#download-the-infrastructure-config-yaml) generated from that step is a required input here.
+4. You must have a **Service Account with the "Owner" role** in the same GCP project where your GCP VM instance will be created.
   Refer to the [GCP documentation](https://cloud.google.com/iam/docs/service-accounts-create) to learn how to create a service account. You can also follow the detailed steps in [this section](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#generate-the-service-account-key) of our guide.
-4. You must **create and download a Service Account Key** for the same service account within the same GCP project.
+5. You must **create and download a Service Account Key** for the same service account within the same GCP project.
   Refer to the [GCP documentation](https://cloud.google.com/iam/docs/keys-create-delete) for more information. Detailed steps are also provided in [this section](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#generate-the-service-account-key) of our guide.
-5. Ensure that your GCP project (as defined in your infra config) has the following APIs enabled, here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project: 
+6. Ensure that your GCP project (as defined in your infra config) has the following APIs enabled, here's a quick [reference guide](https://cloud.google.com/endpoints/docs/openapi/enable-api) to learn more about enabling APIs in your GCP project: 
       <ul>
         <li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) – `api/cloudresourcemanager.googleapis.com`</li>
         <li>[Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1) – `api/compute.googleapis.com`</li>

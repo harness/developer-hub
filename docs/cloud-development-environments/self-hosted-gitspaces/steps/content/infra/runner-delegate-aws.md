@@ -3,8 +3,9 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 <RedirectIfStandalone label="AWS" targetPage="/docs/cloud-development-environments/self-hosted-gitspaces/steps/runner-delegate" />
 
 ## Prerequisites
-1. Ensure you’ve read through the [Overview & Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
-2. Please make sure you have completed the steps mentioned in [Configuring the Harness Gitspaces terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md). This step is a mandatory prerequisite as this step **sets up the AWS infrastructure** and **generates the ``pool.yaml`` file** which is required to host and setup the VM Runner. 
+1. Ensure you've enabled the feature flag ``CDE_HYBRID_ENABLED`` in your Harness account since Self Hosted Gitspaces are currently available behind this feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+2. Ensure you’ve read through the [Overview & Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
+3. Please make sure you have completed the steps mentioned in [Configuring the Harness Gitspaces terraform module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md). This step is a mandatory prerequisite as this step **sets up the AWS infrastructure** and **generates the ``pool.yaml`` file** which is required to host and setup the VM Runner. 
 
 ---
 

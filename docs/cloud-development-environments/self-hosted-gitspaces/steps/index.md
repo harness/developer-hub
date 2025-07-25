@@ -19,6 +19,7 @@ You need to follow these prerequisites to get started with self-hosted Gitspaces
 
 | **Prerequisite**    | **Description** | **Documentation Guide** | 
 | -------- | ------- | ---------- | 
+| **Enable Feature Flag in Harness Account** | Enable the feature flag ``CDE_HYBRID_ENABLED`` in your Harness account. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag. | [Harness Support](mailto:support@harness.io) |
 | **Enable APIs in GCP Project** | Your GCP Project (where your have created your GCP VM Instance) should have the following APIs enabled:  <ul><li>[Cloud Resource Manager API](https://cloud.google.com/resource-manager/reference/rest) - api/cloudresourcemanager.googleapis.com</li><li>[Compute Engine API](https://cloud.google.com/compute/docs/reference/rest/v1) - api/compute.googleapis.com</li><li>[Certificate Manager API](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest) - api/certificatemanager.googleapis.com</li><li>[Identity and Access Management (IAM) API](https://cloud.google.com/iam/docs/reference/rest) - api/iam.googleapis.com</li><li>[Cloud DNS API](https://cloud.google.com/dns/docs/reference/rest/v1) - api/dns.googleapis.com</li></ul>   | [Docs](https://cloud.google.com/endpoints/docs/openapi/enable-api) |
 | **Service Account** | You must have a Service Account with the "Owner" permission in the same GCP Project where you have your GCP VM Instance.| [Docs](https://cloud.google.com/iam/docs/service-accounts-create) | 
 | **Service Account Key** | You must create and download a Service Account Key in the same GCP Project and service account, this key is usually in the form of a **JSON** or **P12 file**, which contains the credentials necessary for the service account to authenticate. | [Docs](https://cloud.google.com/iam/docs/keys-create-delete) | 
@@ -29,6 +30,7 @@ You need to follow these prerequisites to get started with self-hosted Gitspaces
 <TabItem value="AWS" label="AWS">
 | **Prerequisite**    | **Description** | **Documentation Guide** | 
 | -------- | ------- | ---------- | 
+| **Enable Feature Flag in Harness Account** | Enable the feature flag ``CDE_HYBRID_ENABLED`` in your Harness account. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag. | [Harness Support](mailto:support@harness.io) |
 | **AWS User Access** | You must have the following permissions and access as a AWS user required for configuring self hosted Gitspaces in your AWS infrastructure. |  |
 | **AWS Credentials** | You must have the following AWS credentials to configure AWS Cloud infrastructure for Self Hosted Gitspaces: <ul><li>AWS Access Key</li><li>AWS Secret Key</li><li>AWS Session Token (optional)</li></ul> | [Docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) |
 | **Terraform/OpenTofu** | You must have Terraform/OpenTofu installed on your machine with internet access. | [Docs](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |

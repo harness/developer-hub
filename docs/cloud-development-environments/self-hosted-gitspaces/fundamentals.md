@@ -5,6 +5,10 @@ sidebar_position: 1
 sidebar_label: Overview & Key Concepts
 ---
 
+:::info
+Please note that **Self Hosted Gitspaces** are currently available behind the Feature Flag ``CDE_HYBRID_ENABLED``. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+:::
+
 **Self-Hosted Gitspaces** are on-demand remote development environments hosted within your organization’s infrastructure. These environments come pre-configured for instant coding and provide an added layer of security by offering **full control** over infrastructure and data. This reduces the risk of external data exposure and prevents source code from being cached or accessed by third-party cloud services.
 
 ---
