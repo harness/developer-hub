@@ -236,9 +236,9 @@ Visit [Intelligence Savings](/docs/continuous-integration/use-ci/harness-ci-inte
 
 ### Troubleshooting
 
-#### Ignoring Build and Cache Intel Directories in Apache RAT Scans
+#### Ignoring Build Intelligence Directories in Apache RAT Scans
 
-If you are using the Apache RAT plugin for license compliance, it may incorrectly mark Harness Build Intelligence or Cache Intelligence directories as invalid files. This can cause unnecessary failures in your build pipeline.
+If you are using the Apache RAT plugin for license compliance, it may incorrectly mark Harness Build Intelligence directories as invalid files. This can cause unnecessary failures in your build pipeline.
 
 To avoid this, explicitly exclude the following directories in your pom.xml file.
 
