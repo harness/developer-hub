@@ -215,17 +215,21 @@ You can also create users and user groups directly in Harness, but any users or 
 
 :::
 
-### Define Granular Create and Edit Permissions
+### Split Create/Edit Permissions for Pipelines and Templates
 
-You can define separate **create** and **edit** permissions for **pipeline** and **template** resources. 
+Harness has introduced a permission split for pipelines and templates, allowing you to manage **create** and **edit** actions independently. This RBAC enhancement gives you more granular control when assigning user roles—supporting stricter separation of duties and better alignment with enterprise access policies.
+
+#### Feature Flag Rollout Process
+
+This feature is being rolled out in two controlled phases. Flags must be enabled **in order**:
+
+- `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION`:  
+  Enables migration. Automatically adds `create` permissions to all roles that already have `edit`. New and updated roles will receive both permissions.  
+- `PIPE_CREATE_EDIT_PERMISSION_SPLIT`:  
+  Enables enforcement and UI changes. Access checks now rely on the split permissions, and “Create” and “Edit” are shown as separate checkboxes in the UI.
 
 :::note
-To use this setting, ensure the following feature flags are enabled:
-
-- `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION` — Enables migration of existing roles
-- `PIPE_CREATE_EDIT_PERMISSION_SPLIT` — Enables enforcement in backend and UI
-
-Contact [Harness Support](mailto:support@harness.io) to enable these flags.
+Reach out to [Harness Support](mailto:support@harness.io) to enable these feature flags. Onboarding is gated by customer approval per account.
 :::
 
 #### Pipeline Permissions
@@ -234,8 +238,6 @@ You can now assign the following permissions independently:
 
 - `core_pipeline_create` — permission to create pipelines  
 - `core_pipeline_edit` — permission to edit pipelines  
-
-Previously, both actions were controlled by the combined `core_pipeline_edit` permission.
 
 <details>
 <summary>View all pipeline permissions</summary>
@@ -260,12 +262,10 @@ Create and edit permissions depend on feature flag status:
 
 #### Template Permissions
 
-Similarly, template permissions have been split as follows:
+Template permissions are also split into:
 
 - `core_template_create` — permission to create templates  
 - `core_template_edit` — permission to edit templates  
-
-This separation allows you to grant create-only or edit-only access for templates.
 
 <details>
 <summary>View all template permissions</summary>
@@ -289,12 +289,13 @@ Create and edit permissions depend on feature flag status:
 </details>
 
 :::important
-Once `PIPE_CREATE_EDIT_PERMISSION_SPLIT` and `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION` are enabled:
+**Key Behavior Notes After FF2 Is Enabled:**
 
-- **Create and edit permissions become exclusive**. You must explicitly assign both permissions (`core_pipeline_create` and `core_pipeline_edit`, or their template equivalents) if users need to perform both actions.
-- **Terraform and script-based setups must include `create` permissions**. Using only `core_pipeline_edit` or `core_template_edit` will no longer grant create privileges.
-- **Edit permission does not imply delete or execute**. These actions continue to be governed by their own permissions (`core_pipeline_delete`, `core_pipeline_execute`, etc.).
-- **During migration (`PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION`)**, Harness will automatically add the new `create` permissions to all roles that currently have `edit`. This migration happens only after customer approval and applies per account.
+- **Create and edit are exclusive** — users must be explicitly assigned both permissions if needed.
+- **Terraform/API scripts** must include `core_pipeline_create` or `core_template_create` explicitly to perform create operations.
+- **Edit-only users cannot delete or execute** — these actions are governed by separate permissions.
+- **During FF1 migration**, `create` permissions are auto-added to roles with `edit`. Migration is customer-controlled and enabled per account.
+
 :::
 
 ### RBAC workflow examples
