@@ -258,6 +258,11 @@ Other common types include:
       description: ""
       required: true
       value: <+input>
+    - name: branch_name
+      type: String
+      description: ""
+      required: true
+      value: <+input>
     - name: harness_accID
       type: String
       description: ""
@@ -268,10 +273,15 @@ Other common types include:
       description: ""
       required: false
       value: cookiecutter-spring-boot
+    - name: connector_ref
+      type: String
+      description: ""
+      required: true
+      value: account.ShibamDhar
     - name: api_key
       type: Secret
       description: ""
-      required: false
+      required: true
       value: sd-api-key-harness
 ```
 
@@ -376,7 +386,7 @@ You’ll do this using the **CreateRepo** step in your pipeline. We will be crea
 | Organization        | `<+pipeline.variables.organization>` – the target GitHub org name where the repo will be created.              |
 | Repository Name     | `<+pipeline.variables.repo_name>` – the name of the new repo, which you want to create.                   |
 | Description (optional) | Short text describing the repository’s purpose                           |
-| Default Branch      | `main` – or any branch your organization prefers as default                 |
+| Default Branch      | `<+pipeline.variables.branch_name>` – the branch your organization prefers as default                 |
 | Add Personal Account| Enable if you're not using an org and want to push under your GitHub user   |
 
 :::note
@@ -397,7 +407,7 @@ In this tutorial, we're focusing on onboarding services within a GitHub organiza
       organization: <+pipeline.variables.organization>
       repository: <+pipeline.variables.repo_name>
       repoType: public
-      defaultBranch: main
+      defaultBranch: <+pipeline.variables.branch_name>
       personalAccount: false
 ```
 
@@ -417,7 +427,7 @@ It’s important to ensure the organization and repository name provided in this
 | Organization     | GitHub org under which the repo was created - `<+pipeline.variables.organization>`                                |
 | Repository Name  | Name of the new repo, same as earlier - `<+pipeline.variables.repo_name>`                                       |
 | Code Directory   | The directory where you want the generated service code to live - `<+pipeline.variables.project_name>`   |
-| Branch Name      | Use `main` as default                                                       |
+| Branch Name      | `<+pipeline.variables.branch_name>`  - branch where the code will be pushed                                                     |
 | Allow Force Push | Enable this to make sure the pipeline can push even if the branch already exists |
 
 :::note
@@ -438,7 +448,7 @@ Force push is helpful when GitHub auto-initializes a repository with files like 
       organization: <+pipeline.variables.organization>
       repository: <+pipeline.variables.repo_name>
       codeDirectory: <+pipeline.variables.project_name>
-      branch: main
+      branch: <+pipeline.variables.branch_name>
     when:
       stageStatus: Success
 ```
@@ -512,10 +522,10 @@ metadata:
 payload = json.dumps({
     "yaml": component_yaml,
     "git_details": {
-        "branch_name": "main",
+        "branch_name": "<+pipeline.variables.branch_name>",
         "file_path": ".harness/idp.yaml",
         "commit_message": "Created an entity file",
-        "connector_ref": "account.ShibamDhar",
+        "connector_ref": "<+pipeline.variables.connector_ref>",
         "store_type": "REMOTE",
         "repo_name": "<+pipeline.variables.repo_name>",
         "is_harness_code_repo": False
