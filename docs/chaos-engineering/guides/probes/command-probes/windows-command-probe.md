@@ -10,10 +10,10 @@ In this guide, we'll walk you through setting up a Windows command probe that ch
 
 ## Prerequisites
 
-- [Setup Windows chaos infrastructure](/docs/chaos-engineering/guideßs/infrastructures/types/legacy-infra/windows)
+- [Setup Windows chaos infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/windows)
 - [Command Probe](/docs/chaos-engineering/guides/probes/command-probes/)
 - [Create a resilience probe](/docs/chaos-engineering/guides/probes/#create-a-resilience-probe)
-- [Windows chaos faults](/docs/chaos-engineering/chaos-faults/windows/)
+- [Windows chaos faults](/docs/chaos-engineering/faults/chaos-faults/windows/)
 
 ## Steps to configure Windows command probe
 
@@ -42,6 +42,6 @@ In this guide, we'll walk you through setting up a Windows command probe that ch
 ## Related topics
 
 - [Command probe configuration](/docs/chaos-engineering/guides/probes/command-probes/command-probe-usage)
-- [Windows chaos faults](/docs/chaos-engineering/chaos-faults/windows/)
+- [Windows chaos faults](/docs/chaos-engineering/faults/chaos-faults/windows/)
 - [Probe modes and timing](/docs/chaos-engineering/guides/probes/#probe-modes)
 - [Creating resilience probes](/docs/chaos-engineering/guides/probes/#create-a-resilience-probe)
