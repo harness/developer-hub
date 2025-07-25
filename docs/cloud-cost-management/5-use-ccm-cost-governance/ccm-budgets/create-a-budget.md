@@ -10,28 +10,27 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness CCM Budgets provide comprehensive cost governance capabilities that help you proactively manage and control your cloud spending. With CCM Budgets, you can:
+Harness CCM Budgets provide comprehensive cost governance capabilities that help you proactively manage and control your cloud spending. 
 
-- **Set Custom Budget Limits**: Define spending thresholds for specific cloud resources, services, or entire projects based on your organizational needs
-- **Receive Proactive Alerts**: Get notified when your actual costs exceed or are forecasted to exceed your predefined budget limits
+**With Budgets, you can:**
+
+- **Set Custom [Budget Limits](#step-2-set-budget-amount)**: Define spending thresholds for specific cloud resources, services, or entire projects based on your organizational needs
+- **Receive Proactive [Alerts](#optional-step-3-configure-alerts)**: Get notified when your actual costs exceed or are forecasted to exceed your predefined budget limits
 - **Monitor Multiple Time Periods**: Create budgets for various timeframes including monthly, quarterly, or yearly periods
 - **Track Actual vs. Forecasted Costs**: Compare real-time spending against predicted costs to make informed financial decisions
-- **Organize with Budget Groups**: Combine multiple budgets into hierarchical groups for better organization and cascading budget management
+- **Organize with [Budget Groups](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-budget-group)**: Combine multiple budgets into hierarchical groups for better organization and cascading budget management
 
 ## Prerequisites
 
-* [Set Up Cloud Cost Management for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
+* [Create CCM Connector](/docs/cloud-cost-management/get-started/#aws): Create a CCM connector to connect to your cloud provider.
 * [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective): Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. 
 
 ## Create a Budget
 
-## Interactive guide
+<Tabs groupId="budget-create">
+<TabItem value="step-by-step-guide" label="Step-by-Step Guide" default>
 
-<DocVideo src="https://app.tango.us/app/embed/951ab084-1997-49aa-b854-a532dd972952?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
-
-## Step-by-Step Guide
-
-1. Navigate to the **Cloud Cost Management** module and click **Budgets.**
+1. Navigate to the **Cloud Cost Management** module and click **Budgets.**
 2. Click **New Budget**.
 
 ### Step 1: Define Target
@@ -49,7 +48,7 @@ Budgets are created on Perspectives. If you do not have a Perspective of the res
 
 ### Step 2: Set Budget Amount
 
-:::note
+:::info
 Budgets' start date cannot be later than the 28th of any month. 
 :::
 
@@ -82,28 +81,6 @@ Budgets' start date cannot be later than the 28th of any month.
 	
 - Click **Continue**.
 
-#### Projected Cost
-
-Budget also displays the projected cost based on the actual spend, cost of the last 30 days, and remaining days in the budget period.
-
-**Formula Breakdown:**
-
-```
-Projected Cost = Actual Spend + Estimated Remaining Cost
-
-Where:
-• Actual Spend = Cost incurred from budget start to current date
-• Estimated Remaining Cost = (Last 30 days average) × (Remaining days in period ÷ 30)
-```
-
-#### Examples
-
-| Budget Type | Scenario | Calculation Formula |
-|-------------|----------|--------------------|
-| **Monthly Budget** | Current date: January 10<br/>Budget period: Full month | `Actual spend (Jan 1-10)` + `(Last 30 days cost) × (21 remaining days ÷ 30)` |
-| **Weekly Budget** | Week: January 1-7<br/>Current date: January 6 | `Actual spend (Jan 1-6)` + `(Last 30 days cost) × (1 remaining day ÷ 30)` |
-| **Daily Budget** | Any single day | `Actual spend (current day)` + `(Last 30 days cost ÷ 30)` |
-
 ---------
 
 ### (Optional) Step 3: Configure Alerts 
@@ -120,11 +97,18 @@ Harness will send an alert to the specified email addresses and Harness User Gro
 - Click **Save**. Your budget is listed.
 
 ------
+</TabItem>
+<TabItem value="interactive-guide" label="Interactive Guide" default>
 
-## Using the Budget Dashboard
+<DocVideo src="https://app.tango.us/app/embed/951ab084-1997-49aa-b854-a532dd972952?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
+
+</TabItem>
+</Tabs>
+
+## Tracking Budget
 
 <Tabs>
-<TabItem value="dashboard-overview" label="Dashboard Overview" default>
+<TabItem value="dashboard-overview" label="Budget Insights" default>
 
 <DocImage path={require('./static/budget-dashboard.gif')} width="100%" height="100%" title="Click to view full-size image" />
 
@@ -137,17 +121,22 @@ Each budget displays the following key metrics:
 - **Budget Period**: The time frame for your budget (daily, weekly, monthly, quarterly, or yearly)
 - **Spend Till Date**: The actual amount spent from the budget start date to the current date
 - **Budget Amount**: The total budget limit you've set for the specified period
-- **Forecasted Cost**: Predicted spending based on current usage patterns and historical data
+- **[Forecasted Cost](#what-is-forecast-cost-and-how-is-it-calculated)**: Predicted spending based on current usage patterns and historical data.
 - **Alerts At**: The threshold percentages and notification settings you've configured
 
-### Budget History Graph
+### Budget History Graph and Table
+
+Historical data for a budget is displayed through an interactive graph as well as a table.
+
+#### Budget History Graph 
+
 An interactive graph displaying:
 - **Forecasted Cost Trend**: Projected spending over the budget period
 - **Period-to-Date Cost**: Cumulative actual spending from the start of the latest budget period to current date where "Period" refers to the budget period. For example, if you have a monthly budget, the Month-to-Date Cost will show the cumulative cost from the start of the current month to the current date.
 - **Actual Cost**: Real-time comparison of spending against your budget limit
 - **Budget**: Visual indicators showing your alert thresholds
 
-### Budget Details Table
+#### Budget Details Table
 A detailed breakdown corresponding to the Budget History Graph:
 
 | Metric | Description |
@@ -178,15 +167,41 @@ Follow this interactive guide to understand how to navigate and use the Budget D
 To edit a budget:
 
 1. In **All Budgets**, select the budget that you want to edit.
-2. Click **Edit** to edit the budget.
+2. Click **Edit** to edit the budget. You cannot edit the **Budget Period**.
 3. To delete a budget, In **All Budgets**, select the budget that you want to delete and click on **Delete**.
    
 <DocImage path={require('./static/budget-delete.png')} width="90%" height="90%" title="Click to view full-size image" />
 
-:::note
-You cannot edit the **Budget Period**.
-:::
-
-:::warning
+:::danger
 Once a budget is deleted, it cannot be restored.
 :::
+
+## FAQs
+
+### What is Forecast Cost and how is it calculated?
+
+Harness CCM displays a *Forecast cost* for every budget. It estimates how much you will spend **by the end of the current period** if your current pace continues.
+
+#### Calculation 
+
+Average Daily Spend = `(H + C) / Dₕ`
+
+**Forecasted Cost**
+- For Daily Budget: `(H + C) / Dₕ`
+- ForWeekly, Monthly, Quarterly, Yearly= `C + AverageDailySpend × R`
+
+Where:
+- **H**: Sum of Actual Cost across all completed periods
+- **C**: Actual spend in the current period so far (start-day → yesterday)
+- **Dₕ**: Days from the first history day **through yesterday** (inclusive)
+- **R**: Calendar days remaining (today → last day of period)
+
+#### Examples:
+
+| Budget Period | Date Range | Today | H (Historical Spend) | Dₕ (Days of History) | C (Current Spend) | R (Days Remaining) | Average Daily Spend | Forecasted Cost |
+|---------------|------------|-------|----------------------|----------------------|-------------------|--------------------|---------------------|-----------------|
+| Weekly | Mon 8 Jan – Sun 14 Jan | Wed 10 Jan | $12,000 | 86 | $350 | 5 | $143 | $1,065 |
+| Monthly | 1 Jan – 31 Jan | 10 Jan | $48,000 | 101 | $8,600 | 21 | $560 | $20,360 |
+| Quarterly | 1 Apr – 30 Jun | 15 May | $400,000 | 409 | $160,000 | 46 | $1,369 | $222,974 |
+| Yearly | 1 Jan 2025 – 31 Dec 2025 | 1 Aug 2025 | $1,800,000 | 577 | $1,150,000 | 152 | $5,106 | $1,927,000 |
+ 

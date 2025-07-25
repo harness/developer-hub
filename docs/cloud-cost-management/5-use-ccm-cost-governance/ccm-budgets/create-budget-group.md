@@ -5,11 +5,29 @@ description: This topic describes how to create a new budget group.
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::note
-Currently, this feature is behind the feature flag CCM_BUDGET_CASCADES. Contact Harness Support to enable the feature.
-:::
+<div style={{
+  backgroundColor: '#fff3cd',
+  border: '1px solid #ffeaa7',
+  borderRadius: '8px',
+  padding: '16px',
+  margin: '20px 0'
+}}>
+  <p style={{margin: 0}}>
+    <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behing a Feature Flag</strong>
 
-A Budget Group helps you manage multiple budgets rolled up as a single high level budget. You can combine multiple budgets into a Budget Group and monitor them.
+    Budget Groups is currently behind a feature flag `CCM_BUDGET_CASCADES`. Contact Harness Support to have the flag enabled for your account.
+  </p>
+</div>
+
+
+Budget Groups aggregate related budgets and budget groups into one consolidated entity, giving you a unified view of spend. **A given Budget Group can contain _either_ Budgets _or_ Budget Groups.**
+
+**With Budget Groups, you can:**
+
+* **Set up one-click alerts** to notify stakeholders automatically when any child budget crosses its threshold.
+* **Generate simplified roll-up reports** so you don’t have to track multiple individual budgets.
+* **Apply cascading controls** to distribute the group’s amount down to child budgets equally or proportionally.
+* **Mirror your org hierarchy** by nesting Budget Groups (for example → Company › Business Unit › Project) and rolling up costs at each level.
 
 ## Prerequisites
 
@@ -17,11 +35,8 @@ A Budget Group helps you manage multiple budgets rolled up as a single high leve
 
 ## Create a Budget Group
 
-## Interactive guide
-
-<DocVideo src="https://app.tango.us/app/embed/87012224-0977-4cee-b095-550c7e507d99?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
-
-## Step-by-Step Guide
+<Tabs groupId="budget-group-create">
+<TabItem value="step-by-step-guide" label="Step-by-Step Guide" default>
 
 1. Navigate to the **Cloud Cost Management** module and click **Budgets**
 2. Click **Create a new Budget Group**.
@@ -64,15 +79,24 @@ A Budget Group helps you manage multiple budgets rolled up as a single high leve
 - Click **Save**. 
 
 ---------
+</TabItem>
+<TabItem value="interactive-guide" label="Interactive Guide">
 
-## Using the Budget Group Dashboard
+<DocVideo src="https://app.tango.us/app/embed/87012224-0977-4cee-b095-550c7e507d99?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
 
-<Tabs>
-<TabItem value="dashboard-overview" label="Dashboard Overview" default>
+</TabItem>
+</Tabs>
+
+## Tracking Budget Group
+
+<Tabs groupId="budget-group-dashboard">
+<TabItem value="dashboard-overview" label="Budget Group Insights" default>
 
 When you click on a specific budget group, you'll see a detailed view containing:
 
 ### Budget Groups Overview Cards
+
+<DocImage path={require('./static/bg-one.gif')} width="100%" height="100%" title="Click to view full-size image" />
 
 Each budget displays the following key metrics:
 
@@ -83,16 +107,22 @@ Each budget displays the following key metrics:
 - **Alerts At**: The threshold percentages and notification settings you've configured
 - **Budget Group Contents**: Details about the budgets or budget groups that are part of the budget group.
 
-<DocImage path={require('./static/bg-one.gif')} width="100%" height="100%" title="Click to view full-size image" />
+### Budget History Graph and Table
 
-### Budget History Graph
+<DocImage path={require('./static/bg-two.gif')} width="100%" height="100%" title="Click to view full-size image" />
+
+Historical data for the budget group is displayed through an interactive graph as well as a table.
+
+#### Budget History Graph 
+
 An interactive graph displaying:
 - **Forecasted Cost Trend**: Projected spending over the budget period
 - **Period-to-Date Cost**: Cumulative actual spending from the start of the latest budget period to current date where "Period" refers to the budget period. For example, if you have a monthly budget, the Month-to-Date Cost will show the cumulative cost from the start of the current month to the current date.
 - **Actual Cost**: Real-time comparison of spending against your budget limit
 - **Budget**: Visual indicators showing your alert thresholds
 
-### Budget Details Table
+#### Budget History Table
+
 A detailed breakdown corresponding to the Budget History Graph:
 
 | Metric | Description |
@@ -103,12 +133,10 @@ A detailed breakdown corresponding to the Budget History Graph:
 | **Budget Variance ($)** | Dollar difference between actual and budgeted costs |
 | **Budget Variance (%)** | Percentage variance showing over/under budget performance |
 
-<DocImage path={require('./static/bg-two.gif')} width="100%" height="100%" title="Click to view full-size image" />
+
 
 </TabItem>
 <TabItem value="interactive-guide" label="Interactive Guide">
-
-### Visual Walkthrough
 
 Follow this interactive guide to understand how to navigate and use the Budget Dashboard effectively:
 
@@ -119,9 +147,11 @@ Follow this interactive guide to understand how to navigate and use the Budget D
 
 ### Edit/Delete Budget Groups
 
-
-
 #### Edit a Budget Group
+
+:::info
+You cannot modify the budget amount and the **Cascading** settings if you have selected the option while creating the budget group, but the proportions can be modified if **Proportional Cascading** is selected.
+:::
 
 To update a budget group:
 
@@ -129,10 +159,6 @@ To update a budget group:
 2. Click **Edit** from the vertical ellipsis (⋮) icon.
 3. You can update the name of the budget group.
 4. You can exclude existing budgets or budget groups and include new ones with the same parameters.
-
-:::note
-You cannot modify the budget amount and the **Cascading** settings if you have selected the option while creating the budget group, but the proportions can be modified if **Proportional Cascading** is selected.
-:::
 
 #### Cascading Budget Recalculation
 
@@ -151,15 +177,16 @@ The overall budget is USD1200. When this amount is increased to USD1800, the dif
 
 #### Delete a Budget Group
 
+:::danger Deleting Perspective
+When a perspective is deleted, all associated entities, such as reports, alerts, budgets, and budget groups are also deleted. If all children of a budget group are deleted as part of the perspective deletion, then the budget group itself will also be deleted.
+:::
+
+
 To delete a budget group, in **All Budgets**, select the budget group that you want to delete. Click **Delete** from the vertical ellipsis (⋮) icon.
 
 - The budget group is deleted from your account.
 - The budgets and budget groups within the deleted budget group are moved to the common pool where they retain their autonomy and function independently.
 - If the budget group was part of a cascade, all the upward budget group ratios will be readjusted and computed accordingly.
-
-:::info
-When a perspective is deleted, all associated entities, such as reports, alerts, budgets, and budget groups are also deleted. If all children of a budget group are deleted as part of the perspective deletion, then the budget group itself will also be deleted.
-:::
 
 
 <DocImage path={require('./static/bg-delete.png')} width="90%" height="90%" title="Click to view full-size image" />
