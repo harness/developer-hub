@@ -120,6 +120,26 @@ The **Skip Resource Versioning** option is disabled automatically.
    - Previous successful release Secret.
    - One more previous release Secret.
 
+### Rollback Support for ConfigMap and Secret Changes
+
+By default, Kubernetes does not restart pods when only ConfigMap or Secret objects are updated. As a result, declarative rollbacks that involve changes to these objects may not take effect as expected.
+
+Enable the `CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK` feature flag to ensure ConfigMap and Secret changes are correctly rolled back. When enabled, Harness will:
+
+* Generate a hash for ConfigMap and Secret objects during deployment.
+* Add the hash to the kubernetes workload/manifest. 
+* Apply the previous manifest when a rollback is triggered. Now, Kubernetes will enforce the diff in the manifest caused by the hash and restart the pod when it needs, ensuring that the rolled-back configuration is applied.
+
+This feature enhances rollback and roll-forward fidelity by ensuring pod restarts reflect all manifest changes, including non-restart-triggering objects like ConfigMaps and Secrets.
+
+:::note
+
+This feature is only applied to blue/green and rolling deployments.
+
+:::
+
+To enable the feature flag, contact [Harness Support](mailto:support@harness.io)
+
 ### Canary and blue green deployments
 
 For canary and blue green deployments, Harness appends ConfigMaps and Secrets present in your manifests with suffixes. This is to differentiate them from the ConfigMaps and Secrets in already running, production manifests.

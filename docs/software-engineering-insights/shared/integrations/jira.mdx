@@ -1,0 +1,156 @@
+import apiToken from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/jira-api-token.png';
+import jiraType from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/jira-types.png';
+import cloudType from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/jira-cloud-type.png';
+import jiraConnect from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/jira-connect.png';
+import jiraAppPermissions from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/jira-app-permissions.png';
+import connectConfiguration from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/connect-configuration.png';
+import seiOTP from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/sei-otp.png';
+import addSEITOPApp from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/add-sei-top-app.png';
+import selectApp from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/select-app.png'
+import pastOTP from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/past-otp.png';
+import apiKeyCloud from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/api-key-cloud.png';
+import jiraKeyConfig from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/jira-key-config.png';
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Jira is a proprietary issue-tracking product that allows bug tracking and agile project management. You can connect Harness SEI to Jira using a Harness Jira integration.
+
+### Authenticate with Jira
+
+Before you configure the SEI Jira integration, you must generate an Atlassian API token.
+
+:::tip Use a service account
+The user creating the token must have read access to all projects that you want SEI to track, and the user must be able to search issues within the SEI-relevant projects.
+
+Due to the scope of visibility required, consider using a managed service account, rather than a personal user account, to create the token.
+:::
+
+1. Create an Atlassian API token. For instructions, go to the Atlassian documentation on [Managing API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
+2. Make sure to copy the token somewhere that you can retrieve it when you configure the integration.
+
+   <img src={apiToken} alt="API Token" width="500" />
+
+:::info
+If you have enabled an allow list in your Atlassian account, certain Harness IP addresses must be added to it in order to allow communication between the Harness Platform and Atlassian. If the necessary IPs are not whitelisted, the integration may fail to authenticate or sync data properly.
+
+To ensure your integration can work correctly, please refer to the list of [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) that may need to be whitelisted in your firewall.
+:::
+
+### Add the Jira integration
+
+To integrate SEI with Jira, you must choose your Jira type:
+
+* [Jira Cloud](#add-the-jira-integration)
+* [Jira Data Center](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/jira-data-center)
+
+<img src={jiraType} alt="JIRA Type" width="600" />
+
+For the Jira type as Cloud, you can choose how you want to connect Jira, i.e.:
+
+* Jira Connect App
+* Jira API Token
+
+<img src={cloudType} alt="Jira Cloud Type" width="600" />
+
+<Tabs>
+  <TabItem value="jira-connect-app" label="Using Jira Connect App" default>
+
+The Jira Connect App facilitates a seamless connection to Jira projects with minimal user intervention, requiring Jira admin configuration for the app.
+<br/> <br/>Using the Jira Connect App allows you to retrieve all user emails from Jira, making it faster and easier to connect and manage the integration.
+
+<img src={jiraConnect} alt="Jira Connect App" width="600" />
+
+The following permissions are required to configure the **Jira Connect App** integration:
+
+* **View email addresses of users:** This permission allows the integration to access and view the email addresses of users within the Atlassian account.
+* **Read data from the application:** This permission allows the integration to read data from the Atlassian account, such as data from Jira tickets, Jira projects etc.
+
+<img src={jiraAppPermissions} alt="Jira App Permissions" width="800" />
+
+To set up the integration using the **Jira Connect App**:
+
+1. Select **Integrations** under **Data Settings**.
+2. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
+3. Select **Jira Software Cloud** as the integration type.
+4. Select the **Jira Connect App** tile to set up the connection with Jira.
+5. In the Jira Connect App settings page add the basic overview information:
+   * **Integration Name:** Name for your integration.
+   * **Description (optional):** Add a description for the integration.
+   * **Tags (optional):** Add tags for the integration if required.
+
+     <img src={connectConfiguration} alt="Connect Configuration" width="700" />
+
+6. Install the Jira Connect App. To do this, follow these simple steps:
+   * Verify that you are an owner of the Jira account where you track issues. An easy way to check is to visit your organization page and verify that the organization is listed.
+   * Go to the **Atlassian Marketplace** to install the app and configure the [SEI app](https://marketplace.atlassian.com/apps/1231375/harness-software-engineering-insights-sei?tab=overview\&hosting=cloud) to access the Jira projects.
+   * **Install** the App.
+   * Generate and copy the **Jira Connect App key** in the SEI integration configuration settings.
+
+     <img src={seiOTP} alt="Jira Connect App Key" width="700" />
+
+   * Go back to the **Jira Connect App** you just installed.
+   * Select **Apps** on the header (beside Create button)
+
+     <img src={addSEITOPApp} alt="Jira Connect App" width="600" />
+
+   * Select **Harness SEI Atlassian Connect configuration** from the dropdown menu.
+
+     <img src={selectApp} alt="Harness SEI Atlassian Connect Configuration" width="300" />
+
+   * Paste the Harness SEI OTP key.
+
+     <img src={pastOTP} alt="SEI OTP Key" width="500" />
+
+    :::tip
+    The key expires after 10 minutes, so generate a new key if the current one expires.
+    :::
+
+7. Click on **Validate Connection** to validate the connection, and once successful, you'll have the integration set up under the **Your Integrations** tab.
+
+</TabItem>
+
+<TabItem value="api-key" label="Using API Key">
+
+Before you configure the SEI Jira integration, you must generate an Atlassian API token.
+
+To set up the integration using the Jira API Key:
+
+1. Select **Integrations** under **Data Settings**.
+2. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
+3. Select Jira Software Cloud as the integration type.
+4. Select the Using Jira API Token tile to set up the connection with Jira.
+5. Configure the integration settings and authentication: 
+   * Integration Name: Name for your integration.
+   * Description (optional): Add a description for the integration.
+   * Tags (optional): Add tags for the integration if required.
+   * Add the **URL** of your **Jira** integration instance, for example, `"https://organization.atlassian.net"`. Make sure it's a valid URL.
+   * Enter your Email address for the Atlassian account
+   * Provide the **API Key** that you previously generated for your Atlassian account.
+
+     <img src={apiKeyCloud} alt="API Key " width="600" />
+
+7. Configure the advanced integration settings if required:
+   * Select your preferred **Time Zone** from the available options.
+   * Choose the fields you wish to exclude from ingestion.
+     
+     You might exclude fields containing sensitive information such as **Summary**, **Description**, and **Comments**. Excluded fields will not be evaluated for hygiene or adherence to best practices.
+   
+     <img src={jiraKeyConfig} alt="Jira Key Configuration" width="600" />
+
+8. Click on **Validate Connection** to validate the connection, and once successful, you'll have the integration set up under the **Your Integrations** tab.
+
+</TabItem>
+</Tabs>
+
+:::info
+After adding an integration, it may take up to 24 hours for the data to reflect on Harness SEI. This means that any widgets you configure on the Insights page using this integration may not display data until the synchronization is completed.
+:::
+
+### See also
+
+* [Connect with Jira Data Center](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/jira-data-center)
+* [Add custom hygiene misses](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/custom-hygiene-misses)
+* [Configure custom field mapping](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/custom-fields)
+* [Reauthenticate](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/reauthenticate-integration)
+* [Ingested data](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-datasheet)

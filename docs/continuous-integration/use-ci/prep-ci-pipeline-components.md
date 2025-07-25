@@ -86,6 +86,12 @@ CI pipelines build and test code that is pulled from a Git code repository. When
 
 Harness uses [code repo connectors](/docs/category/code-repo-connectors) to connect to Git repositories.
 
+:::note
+
+By enabling the feature flag `CI_DYNAMIC_BRANCH_SELECTOR`, Git branches in the codebase branch selector will be dynamically populated when running a pipeline. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+:::
+
 ### Build infrastructure
 
 All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me](./set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).

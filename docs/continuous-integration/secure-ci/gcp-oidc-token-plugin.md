@@ -18,7 +18,7 @@ To use the GCP OIDC plugin, [add a Plugin step](../use-ci/use-drone-plugins/run-
                   name: generate-token
                   identifier: generate-token
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/gcp-oidc
                     settings:
                       project_id: 12345678
@@ -33,7 +33,7 @@ To use the GCP OIDC plugin, configure the [Plugin step settings](../use-ci/use-d
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
-| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). | YOUR_IMAGE_REGISTRY_CONNECTOR |
 | `image` | String | Enter `plugins/gcp-oidc`. You can specify an optional architecture tag. For a list of available tags, go to the [GCP OIDC plugin README](https://github.com/harness-community/drone-gcp-oidc?tab=readme-ov-file#plugin-image). | `plugins/gcp-oidc:linux-amd64` |
 | `project_id` | String | Your GCP project ID. | `12345678` |
 | `pool_id` | String | The pool ID for OIDC authentication. | `12345678` |
@@ -62,7 +62,7 @@ Here's a YAML example of a Plugin step generating a GCP token and a Run step usi
                   name: generate-token
                   identifier: generate_token
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/gcp-oidc
                     settings:
                       project_id: 12345678

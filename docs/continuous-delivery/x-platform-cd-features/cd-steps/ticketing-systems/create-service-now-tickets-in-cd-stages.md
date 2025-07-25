@@ -33,6 +33,11 @@ You can add the Create ServiceNow step to a Harness CD stage or an Approval stag
 
 The Integration for Harness Software Delivery Platform app is required to create ServiceNow tickets using Harness templates. You can install the latest version of the Integration for Harness Software Delivery Platform app in your ServiceNow instance from the [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh).
 
+This integration is currently supported for the following ServiceNow versions:
+   - Vancouver
+   - Washington DC
+   - Yokohama
+
 For more information, go to the [ServiceNow installation guide](https://store.servicenow.com/appStoreAttachments.do?sys_id=1fc1632b872f4dd0970e2178cebb35ba).
 
 ## Important note for using the ServiceNow API
@@ -113,6 +118,8 @@ Additionally, a dropdown for templates is also provided when configuring Trigger
 :::note
 
 This feature requires Harness Delegate version 81200 or later
+
+Harness Software Delivery Platform app is **not needed** for creating standard change requests using this feature.
 :::
 
 This option appears only when the value type in the **Ticket Type** field is **Fixed value**, and the ServiceNow ticket type specified is *Change Request*. This feature can be used to create low-risk standard change requests using pre-approved standard templates.

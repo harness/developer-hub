@@ -45,13 +45,14 @@ custom_envs:
     value: "true"
 ```
 
-When deploying a delegate, it is recommended that you name the delegate either the same as the cluster name or something very similar that makes it obvious what cluster the delegate is deployed into.  An example of deploying a CCM Only delegate via a Helm chart is located [here](https://developer.harness.io/kb/reference-architectures/ccm/best-practices/ccm-only-delegate).
+When deploying a delegate, it is recommended that you name the delegate either the same as the cluster name or something very similar that makes it obvious what cluster the delegate is deployed into. An example of deploying a CCM Only delegate via a Helm chart is [located here](https://developer.harness.io/kb/reference-architectures/ccm/best-practices/k8s/ccm-only-delegate).
 
 ### Resource Constraints
 
 - The delegate pod needs a minimum of 1 vCPU and 2G of memory.
   - For larger clusters, more resources are needed. Requirements TBD by engineering at this time.
 - The delegate will need outbound internet access to `https://app.harness.io`
+- For sending logs to Harness for support and troubleshooting the delegate will also need outbound access to `logging.googleapis.com`.
 
 ## Connectors
 

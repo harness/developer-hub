@@ -5,7 +5,7 @@ sidebar_label: Anchore Enterprise step configuration
 sidebar_position: 20
 ---
 
-<DocsTag   text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag   text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#artifact-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans" />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
@@ -180,10 +180,15 @@ import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.m
 
 ### Scan Tool
 
-#### Image Name
+#### Use Raw Scanner Severity
 
-The name of the image that you want to extract from Anchore. In Extraction mode, the image to scan must be located on the Anchore server. You should include both the image name and tag, for example, `ubuntu:20.04`.
+import ScannerProvidedSeverity from './shared/use-scanner-provided-severity.md';
 
+<ScannerProvidedSeverity />
+
+#### Image Name (*for **Extraction** Scan Mode*)
+
+This field appears only when you select **Extraction** as the [Scan Mode](#scan-mode). The name of the image that you want to extract from Anchore. In Extraction mode, the image to scan must be located on the Anchore server. You should include both the image name and tag, for example, `ubuntu:20.04`.
 
 ### Log Level
 

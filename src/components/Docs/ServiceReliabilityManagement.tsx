@@ -35,6 +35,25 @@ export default function SRM() {
             </Link>
           </div>
         </div>
+        <div style={{ 
+          backgroundColor: colorMode === 'dark' ? '#1a1a1a' : '#FFF3CD',
+          border: colorMode === 'dark' ? '1px solid #3a3a3a' : '1px solid #FFECB5',
+          borderRadius: '4px',
+          padding: '16px',
+          marginTop: '16px',
+          marginBottom: '16px',
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+          <div style={{ 
+            marginRight: '12px', 
+            fontSize: '20px', 
+            color: colorMode === 'dark' ? '#e0a800' : '#856404' 
+          }}>⚠️</div>
+          <div>
+            <strong>Deprecation Notice:</strong> The Service Reliability Management module will be deprecated soon. Please reach out to your Harness representative to migrate to <Link href="https://developer.harness.io/docs/ai-sre">AI SRE</Link>, which provides enhanced incident management capabilities.
+          </div>
+        </div>
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>

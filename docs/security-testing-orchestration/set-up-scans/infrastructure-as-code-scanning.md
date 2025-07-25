@@ -14,9 +14,9 @@ You can use any of the [integrated scanners](#supported-scanners-for-iac) that p
 ### Supported Scanners for IaC
 Below is the list of scanners supported for IaC in Harness STO:
 
-- [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-iac-scanning)
-- [**Wiz**](/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz)
-- [**Checkov**](/docs/security-testing-orchestration/sto-techref-category/checkov-iac-scan)
+import CustomScanners from '/docs/security-testing-orchestration/set-up-scans/shared/custom-step-scanners.md';
+
+<CustomScanners />
 
 If the scanner you use for IaC is not listed, you can explore additional [scanners](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) that are compatible with the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference). If the Custom Scan step does not support the scanner you need, you can use the [Custom Ingestion](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference) step to ingest and process your scan results.
 

@@ -191,19 +191,18 @@ No early access (beta) features are available for the Harness Supply Chain Secur
 ## STO early access features
 
 The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
-<!-- No early access features are available for the Harness Security Testing Orchestration module. Go to [STO Release Notes](/release-notes/security-testing-orchestration) for all the latest updates.  -->
+<!-- No early access features are available for the Harness Security Testing Orchestration module. Go to [STO Release Notes](/release-notes/security-testing-orchestration) for all the latest updates. -->
 
-#### CheckmarxOne Step
+#### All Issues Section at Project Level
 
-* **GA date:** March 2025
-* **Early access release date:** February 2025
-* **Early access release version:** v1.127.5
-* **Issue number:** STO-5747
-* **Feature flag:** `STO_STEP_PALETTE_CHECKMARX_ONE`
+* **GA date:** July 2025
+* **Early access release date:** May 2025
+* **Issue number:** STO-5430
+* **Feature flag:** `STO_ALL_ISSUES_PAGE`
 
 ## SRM early access features
 
-For information about early access (beta) features for Harness Service Reliability Management, go to [SRM early access features](/docs/service-reliability-management/srm-whats-supported/#srm-early-access-features) and the [SRM release notes](./service-reliability-management).
+For information about early access (beta) features for Harness Service Reliability Management, go to [SRM release notes](./service-reliability-management).
 
 ## Features promoted to GA
 

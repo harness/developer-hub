@@ -14,9 +14,11 @@ With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integr
 
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
-:::note
-Cache Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+:::info
+* Cache Intelligence is now Generally Available (GA). 
+* Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
+* Cache Intelligence is enabled by default for newly created CI stages. This is configurable in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration) 
+
 :::
 
 
@@ -38,8 +40,13 @@ Below is a list of the default locations cached using Cache Intelligence:
 | `F# .Net` | *.fsproj | .nuget/packages
 
 
-For other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
+By default, Cache Intelligence searches for the exact filenames listed in the table above under the **Dependency Management file**.  
 
+Harness Cache Intelligence will explore the root directory as well as one directory depth below for the file to determine the tool that a customer is using in the repository.
+
+This then determines the **Default Path Cached** location that Harness will save and restore as a part of the Cache Intelligence process.  
+
+To make modifications for other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
 
 
 ## Cache storage
@@ -58,6 +65,8 @@ The cache storage limit depends on your subscription plan type. Please visit [Su
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
 
 The cache retention window is 15 days, which resets whenever a cache is updated.
+
+For blobs larger than 5 GB, multi-part upload (enabled via FF `CI_ENABLE_MULTIPART`) is used for caching to storage, while standard uploads are used for blobs up to 5 GB.
 
 </TabItem>
 <TabItem value="sm" label="Self-managed build infrastructures">
@@ -102,6 +111,10 @@ Cache Intelligence stores the data to be cached in the `/harness` directory by d
 - You're *not* using a [fully supported build tool](#supported-tools-and-paths).
 - You have customized cache locations, such as with `yarn config set cache-folder`.
 - You're using a Windows platform.
+
+:::warning
+When using custom paths, you must also provide a cache key. **If a cache path is specified without a key, Cache Intelligence will be disabled**, skipping cache operations.
+:::
 
 <Tabs>
 <TabItem value="Visual" label="Visual editor">
@@ -175,9 +188,7 @@ Harness generates a cache key from a hash of the build lock file (such as `pom.x
 You can define custom cache keys if you don't want to use the default cache key naming behavior or you have a use case that requires defining custom cache keys, such as [caching in parallel stages](#cache-intelligence-in-parallel-stages).
 
 :::note
-When **Cache Intelligence** is enabled, the cache plugin automatically detects build tools and determines cache paths. If no cache key is provided, a default key (`default`) is used, and cache paths are stored under `<account_id>/default/path/to/directory`.  
-
-By default, you can specify only a cache path without a key, but this may cause issues during cache restoration in CI stages. To avoid unnecessary cache downloads, we recommend enabling the `CI_CACHE_SKIP_IF_KEY_EMPTY` feature flag. When enabled, **Cache Intelligence** will skip cache restoration and saving if cache paths are provided without a cache key.
+When **Cache Intelligence** is enabled, the cache plugin automatically detects build tools and determines cache paths, unless custom paths are specified. Cache paths are stored under `<account_id>/default/path/to/directory`.  
 :::
 
 <Tabs>
@@ -277,6 +288,11 @@ For example, here is a pipeline with two Build (`CI`) stages using Cache Intelli
 ## Enable cache override
 
 The cache override allows you to force push the cache even if the cache key hasn't changed.
+
+:::note
+By default, cache override is set to `true` regardless of cache changes. This is useful if you have infrequent builds and want to ensure your cache remains fresh. You can change the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
+:::
+
 
 To configure the cache override, add `override: true | false` to `stage.spec.caching`.
 

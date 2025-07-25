@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2024-10-01T18:00
+date: 2025-07-18T18:00
 sidebar_position: 6
 ---
 
@@ -17,25 +17,362 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. In the new UI, go to Account Settings, Account Details, General, Account Details, and then Platform Service Versions. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+## July 2025 - Version 1.57.1
+**Deployment Date:** July 18, 2025 (Prod-1)
+
+### Feature Improvements
+
+#### Perspectives
+- **Line chart view:** Perspectives now displays a Line chart instead of an Area chart, eliminating redundancy with the stacked bar view. [CCM-23889]
+
+<DocImage path={require('./static/line-chart.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- **CSV aggregation fix:** CSV exports from Perspectives now respect the selected aggregation setting, matching the on-screen view. [CCM-20404]
+
+- **GCP credits regex support:** Perspective queries now support regex-based matching for GCP discount types aligned with dashboard behavior. [CCM-24110]
+
+- **Tooltip enhancements:** The Group By Chart tooltip now shows the total daily cost plus individual data-point costs, with the selected point highlighted for easier analysis. [CCM-23888]
+
+<DocImage path={require('./static/tags.gif')} width="100%" height="100%" title="Click to view full size image" />
+
+#### Cost Categories
+
+- **Cluster Cost Category (CC) Stamping Support**: We now support Cost Category for Cluster data. Set **Billing Source** to **CLUSTER** to use Cost Category as a filter or dimension in Dashboards. This capability applies only to data generated after 10 July 2025 (submit a support ticket to backfill older data). You can also create **Cost Buckets** based on cluster-level rules. View cluster Cost Categories in **Unified Explore** rather than **Cluster Explore**. [CCM-22980]
 
 
-## March 2025
+#### AutoStopping
 
-### Version 1.45.7
+- **Connector permission checks:** The AutoStopping rule flow now validates that the selected connector already has the granular permissions required to create the target gateway resource (ALB, Azure Application Gateway, or Harness AutoStopping Proxy). For detailed permission requirements, see the granular-permissions sections for each cloud provider: [AWS](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#granular-permissions-for-autostopping), [Azure](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping), and [GCP](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping). [CCM-21579]
 
-#### New features and enhancements
 
-- (Beta) External Cost Data Ingestion: Harness Cloud Cost Management now supports External Cost Data Ingestion, enabling you to bring in cost data from third-party vendors using a standardized CSV format.
-Key Capabilities:
+#### Recommendations
+- **Readable ServiceNow timestamps:** Applied recommendations linked to ServiceNow tickets now show human-readable date-time values, making audit trails easier to follow. [CCM-24082]
+
+<DocImage path={require('./static/rec-timestamps.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- **Tag filter search:** Recommendation filters now list all available cloud tags and provide search to quickly find specific tags. [CCM-23792]
+
+#### Asset Governance
+- **Enforcement evaluation cap increased:** The previous limit of 30 Rules or Rule Sets per enforcement has been removed. Each enforcement can now run up to **10,000 evaluations** (`Rules × Accounts × Regions`). [CCM-23953, CCM-21995]
+
+#### Connectors
+- **AWS connector role retention:** When updating an AWS connector from the default authentication type to OIDC, the `Role` field is now preserved instead of being set to **undefined**. [CCM-23765]
+
+- **Single CCM K8s connector per CD connector:** Each CD Kubernetes connector can now be linked to only **one** CCM Kubernetes connector; the UI enforces this limit during setup. [CCM-18900]
+
+## July 2025 - Version 1.56.3
+**Deployment Date:** July 7, 2025 (Prod-1)
+
+### Feature Improvements
+- **Jira Integration Optimization**: We have improved Jira ticket creation performance for recommendations by optimizing API call timing. Jira projects now load immediately and API call frequency is reduced, improving overall performance and backend load. [CCM-23837]
+
+- **Anomaly Detection Filter Support**: We have added support for filter inheritance when navigating from Perspectives to Anomaly Detection (V2) screens. Anomaly results now respect all filters applied on the source Perspective page.[CCM-23544]
+
+- **Increased Folder Limit**: We have increased the maximum number of folders that can be created from the previous limit of 500 to 2,000. [CCM-23784]
+
+- **New GCP “Include Promotions” preference:**
+  - Located in Perspective Preferences, this toggle includes promotional credits (for example, Free Trial or marketing credits) in cost calculations when enabled.
+  - Promotions are no longer bundled with the regular **Discount** option; enable this preference separately if you want promotional amounts reflected. [CCM-20075]
+
+### Bug Fixes
+
+- **Governance Recommendation Unignore Options**: Previously, the Recommendations list menu showed multiple options for unignoring a Governance recommendation. We’ve now fixed this by showing a single option to unignore it at the same level it was ignored, and we’ve also corrected the payload that’s sent when unignoring. [CCM-23591]
+
+- **Budget Growth Rate Display Logic**: We have fixed budget creation workflow to properly handle growth rate visibility. When creating a monthly budget, users will not see the growth rate option. [CCM-22148]
+
+- **Cost Category Filter Logic**: We have fixed an issue with compound filter conditions where cost category filters were not properly handled when no matching recommendations existed. The fix ensures that when no recommendations match the cost category criteria, the entire compound condition properly evaluates to false, maintaining logical consistency in filter operations. [CCM-23645] 
+
+## June 2025 - Version 1.55.3
+
+### [New Feature] OIDC Authentication Support
+**[CCM-23638] | [AWS OIDC Documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#oidc-authentication) | [GCP OIDC Documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#step-4-authentication-conditional)**
+
+Harness CCM now supports OpenID Connect (OIDC) authentication for enhanced security and streamlined connector setup. This authentication method is available for the following cloud providers and features:
+
+**AWS Support:**
+- Asset Governance
+- Commitment Orchestration  
+- AutoStopping
+
+**GCP Support:**
+- Asset Governance
+- AutoStopping
+
+### [New Feature] Event Driven Anomaly Detection
+**[CCM-22730] | [Docs](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-detection-process)**
+
+CCM now provides **event-driven anomaly detection** that triggers automatically when cost data is ingested, complementing the existing scheduled anomaly detection jobs.
+
+This feature provides **immediate detection** by running anomaly analysis instantly when cost data becomes available, enabling faster identification of cost anomalies. The feature is available for AWS, GCP, and Azure cloud accounts.
+
+### Feature Improvements
+
+- **Cost Category Management Improvements**: Cost category name updates now propagate automatically across all usage locations, with changes reflected in CCM Perspectives and nested cost category rules.  [CCM-23698]
+
+- **Commitment Setup UI Refinements**: We have removed the Potential Savings widget and the Current Coverage section from the [Commitment Setup Review screen](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/commitment-orch-docs/aws-ec/getting-started). These changes eliminate generic data that didn't reflect user-specific selections from previous configuration steps, providing a more streamlined and relevant user experience. [CCM-23604]
+
+## June 2025 - Version 1.54.5
+
+### [New Feature] Granular AutoStopping Permissions Support for Azure and GCP
+**[CCM-21574, CCM-21575] | [Docs for Azure](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping) | [Docs for GCP](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping)**
+
+We have introduced **Granular permissions support for Azure and GCP Autostopping**. With this update, users can now **select the specific resource types they want to enable for Autostopping** such as virtual machines and instance groups. Based on the selected resource types, only the minimal required set of permissions will be requested. This feature simplifies onboarding, and aligns with security best practices.
+
+#### Granular AutoStopping Permissions Support for Azure:
+
+<DocImage path={require('./static/granular-azure.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+#### Granular AutoStopping Permissions Support for GCP:
+<DocImage path={require('./static/granular-gcp.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Feature Improvements
+
+- **RBAC Support for Nested Cost Categories:** We've extended Role-Based Access Control (RBAC) to support nested cost buckets within CCM data scope, providing more granular access control for nested Cost Categories. Note that RBAC support is not available for the Unallocated Cost bucket. [CCM-23579]
+
+### Bug Fixes
+
+- **Fixed Duplicate Discounts with Net-Amortised Cost:** Resolved an issue where duplicate discounts were applied when net-amortised cost was selected with discounts enabled. Improvements include:
+  - When creating or updating a perspective with net-amortised cost, discounts are automatically set to false during save/update
+  - The discount field is now greyed out when net-amortised cost is selected in perspective preferences as discounts are already included in the net-amortised cost.
+  - Backend validation prevents duplicate discounts when using the API, ensuring accurate cost calculations in all scenarios [CCM-22152]
+
+## May 2025 - Version 1.53.3
+
+### Bug Fixes
+
+- **Missing Name in Enforcement Update Toast:** There was an issue where the name didn’t appear in the toast message after updating an enforcement rule. This has now been fixed, and the name will display correctly. [CCM-23256]
+
+- **Error Toast on Navigating Away from Perspective Details:** Navigating away from the Perspective Details page before it fully loaded triggered an error toast due to an aborted API call. This behavior has been fixed, and users will no longer see this error toast when navigating quickly.[CCM-23244]
+
+## May 2025 - Version 1.52.1
+
+### Feature Improvements
+
+- **New creation flow for AutoStopping Load Balancers and Proxies**: We’ve revamped the creation flow for Load Balancers and AutoStopping Proxies by moving it to a side panel for better input organization. The Custom URL is no longer a required step for Load Balancer creation—legacy LBs will still show it as a static field, and edits must be done via Route53. We’ve also introduced a new Internal/External toggle for ALBs to define access type. Additionally, there’s now a toggle for Encrypted EBS volumes. [CCM-21226]
+
+<DocImage path={require('./static/as-revamp.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **Sorting for Clusters List**: The Clusters List in Cluster Orchestrator Overview is now sorted with enabled connectors first (alphabetically), followed by AWS connectors that are not enabled (alphabetically), and then the rest. [CCM-23021]
+
+- **Improvements in Budgets and Perspectives home page**: We have now added support for showing "Created By" and "Modified By" in Perspectives and in Budgets. [CCM-22932]
+
+- **Standardized Region Format for Recommendations**: We are now normalizing region formats across all recommendations. Previously, EC2 recommendations used formats like `US_EAST_1`, while others used `us-east-1`, leading to inconsistencies. Going forward, only the standardized `us-east-1` format will be used, ensuring filters work consistently across all recommendation types. [CCM-22998]
+
+- **Cluster Orchestrator UI changes**: We’ve now moved the Base On-demand setting below the Spot/On-demand split. Additionally, if the On-demand percentage is set to 100%, the fields below will be disabled. [CCM-22759]
+
+<DocImage path={require('./static/cluster-improv.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Bug Fixes
+
+- **Improved Cloud Asset Governance Rule Saving Experience**: We've resolved an issue where saving a new Cloud Asset Governance rule incorrectly triggered a confirmation dialog to stay or leave the page. This dialog will now only appear when there are unsaved changes. [CCM-22995]
+
+
+## May 2025 - Version 1.51.4
+
+### [New Feature] Replacement Schedules
+**[CCM-21859]**
+
+We have added support for replacement schedules with options: **Always, Never, or Custom**. Users can now define specific windows (e.g., Tuesdays and Fridays, 9 PM–11:59 PM IST) for bin packing operations. Currently this is only available for "Harness Pod Eviction". During these scheduled periods, node replacements and system updates may occur, temporarily affecting workload availability. So it is advisable to choose time windows that minimize impact on critical operations.
+
+<DocImage path={require('./static/replacement-schedules.jpeg')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Feature Improvements
+
+- **Added validation for Cost Category rules during save and update operations:** The system now constructs and dry-runs queries based on the defined cost bucket rules to identify any invalid rules before saving. As a result of this additional validation step, you may experience a slight delay during Cost Category save or update actions. [CCM-21901]
+
+- **Added support for quarterly reports in Perspectives:** Previously, only monthly and annual reporting options were available. With the new quarterly option, users can now receive more balanced and actionable insights per quarter.
+
+<DocImage path={require('./static/quarterly-report.jpeg')} width="50%" height="50%" title="Click to view full-size image" />
+
+- **Nodepool Recommendations UI changes**:  "Largest Resource Requirements" has been renamed to "Minimum Resource Requirements".The positions of Preferred and Minimum resource requirements have been swapped in the UI for better clarity and consistency. Preferred resource requirements will always be greater than Minimum resource requirements. We have also added tooltips on the UI to make the UI more user-friendly. [CCM-22826]
+
+<DocImage path={require('./static/ui-enhance.jpeg')} width="50%" height="50%" title="Click to view full-size image" />
+
+- **Traffic analysis chart on resource level for AutoStopping Rules**: We’ve introduced a new interactive chart to help you better understand resource activity and idleness over the past 30 days. It is available on every AutoStopping rule page to make it easy for users to analyze trends at a glance. 
+
+<DocImage path={require('./static/traffic-analysis.png')} width="50%" height="50%" title="Click to view full-size image" />
+
+- **More Options for Date Ranges**: We’ve added support for additional shorter time ranges on the Governance Evaluations page, including:
+  - Last 1 Minute
+  - Last 5 Minutes
+  - Last 10 Minutes
+  - Last 15 Minutes
+  - Last 30 Minutes
+  - Last 45 Minutes
+  - Last 1 Hour
+  - Last 3 Hours
+  - Last 6 Hours
+  - Last 12 Hours
+  - Last 1 Day
+  - Last 2 Days
+  - Last 7 Days
+  - Last 30 Days.
+
+<DocImage path={require('./static/dates-gov.png')} width="50%" height="50%" title="Click to view full-size image" />
+
+- **Editing Instance Families**: We’ve added support for editing Instance Families for regions that have already been added in the create/update Nodepool preset flow.
+
+<DocImage path={require('./static/edit-instance.jpeg')} width="50%" height="50%" title="Click to view full-size image" />
+
+- **Validation Enhancements for Cost Categories**: To prevent naming conflicts we’ve added new validations following which **Cost Buckets and Shared Costs** cannot have the **same name** within the same Cost Category. A validation check has been added to ensure Cost Bucket names are unique within a Cost Category, regardless of case sensitivity. Similarly, Shared Cost names must also be unique within the same Cost Category (case-insensitive check). [CCM-21900]
+
+### Bug Fixes
+
+- The [Harness API for Nodepool Recommendations](https://apidocs.harness.io/tag/Cloud-Cost-Recommendations#operation/listRecommendations) previously did not return the Account ID in the response. This issue has now been fixed, and the API will include the Account ID as part of the response payload. [CCM-21082]
+
+- **Improved Accuracy in Cost Category Anomaly Detection:** We’ve improved how cost category rules are applied to anomaly filters within Perspectives. Specifically, OR filters were incorrectly being converted to AND filters, which resulted in the expected anomalies not appearing in the Perspective view. We have fixed this and this update ensures that anomalies tied to cost category rules ( combinations of AND/OR conditions) are shown accurately. [CCM-21712]
+
+- **UI enhancement for Governance Recommendations**: We’ve resolved an issue in the Governance Recommendations’ Resource Breakdown tab where Azure Resource IDs were overflowing into adjacent cells. The text now wraps onto the next line to maintain proper layout. [CCM-22850]
+
+
+## May 2025 - Version 1.50.2
+
+### [New Feature] Label V2
+**[CCM-22075]** | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#migration-from-label-to-label-v2)
+
+We're rolling out **Label V2**, a major enhancement to how labels (tags) are handled and displayed across the platform, delivering **better visibility**, **performance**, and **alignment with cloud-native formats**.
+
+#### Key Benefits
+
+* Improved Query Performance
+* Accurate and original label visibility
+
+**:warning: Action Required**
+
+Users will need to manually **update their Perspectives, Cost Categories, and Dashboards** to use the new LabelsV2 format. 
+
+<DocImage path={require('./static/labelsv2.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Feature Improvements
+
+- **Preferred Instance Families:** We’ve added support for saving Preferred Instance Families in Nodepool presets, along with Buffer and Minimum Node Count. Users can now select specific instance families per cloud provider and region, and these preferences will be considered when generating the next set of Nodepool recommendations. [CCM-21987]
+
+<DocImage path={require('./static/nodepool-changes.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **Granular RBAC for Governance Alerts**: You can now assign granular permissions for Governance Alerts to specific resource groups and roles, enabling more precise access control. [CCM-21921]
+  
+  **For Resource Groups:**
+  1. Navigate to **Account Settings** > **Access Control** > **Resource Groups**
+  2. Select an existing Resource Group or create a new one
+  3. Enable the **Cloud Asset Governance Alerts** permission
+  4. Choose between **All** alerts or **Specified** alerts for more granular control
+
+  <DocImage path={require('./static/rg-granular.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+  **For Roles:**
+  1. Navigate to **Account Settings** > **Access Control** > **Roles**
+  2. Select an existing Role or create a new one
+  3. Enable the **Cloud Asset Governance Alerts** permission
+  4. Assign specific permissions such as **View** or **Edit/Delete**
+
+<DocImage path={require('./static/roles-rbac.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Bug Fixes
+- We have resolved an issue where, in the **Setup HTTP/HTTPS** step while creating an **AS Rule**, clicking the **Proxy** option first and then closing it would cause the **LB** option to incorrectly open the **Proxy** dialog. It will now always open the correct dialog. [CCM-22677]
+
+## April 2025 - Version 1.49.1
+
+### Feature Improvements
+
+- Asset Governance Alert Fix: We've improved the alert update experience to ensure that only relevant resources and cloud accounts are displayed based on the selected cloud provider. This enhancement ensures a more accurate and streamlined configuration flow for Governance alerts. [CCM-22618]
+
+
+## April 2025 - Version 1.48.1
+
+### [New Feature] Alerts for Governance Rule Evaluations
+**[CCM-21921] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#governance-alerts)**
+
+We’ve added Alerts in Cloud Assets Governance, allowing users to configure alerts based on Cloud Provider (AWS, GCP, Azure), Resource Type (Cloud Custodian-defined), Cloud Accounts, Minimum Number of Resources Found, Minimum Cost Impact, Email IDs, and the option to attach evaluation output as a .json file. 
+
+### Feature Improvements
+
+- Preferred Instance Families in Nodepool presets:  We’ve added support for saving Preferred Instance Families in Nodepool presets, along with Buffer and Minimum Node Count. Users can now select specific instance families per cloud provider and region, and these preferences will be considered when generating the next set of Nodepool recommendations.
+
+<DocImage path={require('./static/instance-families.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- Extend Warmup Period: We've improved the AutoStopping experience by introducing the Extend Warmup Period button. Previously, once a resource was manually started or warmed up via the AutoStopping rule page, users couldn’t extend its uptime during the active warm-up window. With this update, you can now extend the warm-up duration while the resource is still running, eliminating interruptions and giving you more control. 
+
+<DocImage path={require('./static/extend-one.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+<DocImage path={require('./static/extend-two.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+## April 2025 - Version 1.47.2
+
+### [New Feature] Granular permissions support for AWS Autostopping 
+**[CCM-21572]**
+
+We have introduced **Granular permissions support for AWS Autostopping**. With this update, users can now **select the specific AWS resource types they want to enable for Autostopping** such as EC2, ASG, or RDS. Based on the selected resource types, only the minimal required set of permissions will be requested. This feature simplifies onboarding, and aligns with security best practices.
+
+ <DocImage path={require('./static/as-granular-permissions-one.png')} width="90%" height="90%" title="Click to view full-size image" />
+ <DocImage path={require('./static/as-granular-permissions-two.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+
+### Feature Improvements
+-  Improved Recommendation Tracking: Users can now **specify estimated savings** when marking a recommendation as applied. Upon marking a recommendation as applied, users can now confirm whether the estimated savings matched the actual savings or enter the actual amount saved if different from the estimate. Additionally, after a recommendation has been applied, this savings data from the Applied Recommendations section can be edited. [CCM-21629]
+
+ <DocImage path={require('./static/savings-rec.png')} width="90%" height="90%" title="Click to view full-size image" />
+  <DocImage path={require('./static/savings-rec-two.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+-  Cost Categories Integration for Recommendations: The **Filter panel** in the **Recommendations view** now includes the option to **filter by Cost Categories**. This update is especially valuable for large-scale organizations that manage **thousands of recommendations** and require structured views to take meaningful action. This improvement allows for efficient sorting and quick isolation of recommendations based on relevant cost buckets and labels. [CCM-21439]
+
+  <DocImage path={require('./static/cc-integration.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+-  Recommendations Filter Revamp: The **Filter panel** in the **Recommendations view** has been updated to provide a more streamlined experience. As shown in the image below, the new design improves navigation and makes it easier to apply multiple filters. [CCM-21438]
+
+  <DocImage path={require('./static/rec-filter-revamp.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+-  With the release of **granular Autostopping permissions for the AWS connector**, only those AWS resources for which the required granular permissions are present in the AWS connector will be available for selection. [CCM-21577]
+
+-  Improved Budget Start Date Validation: To ensure accurate budget tracking, we've added validation to prevent the creation of new budgets with a start date later than the 28th of any month. [CCM-22132]
+
+### Bug Fixes
+
+- For Budgets on Perspectives using Cost Categories with shared cost buckets, we’ve fixed an edge case where budget history data was not displaying in the UI. Budget computations are now accurately reflected to ensure complete visibility into historical usage and trends [CCM-22006]
+
+- We’ve enhanced the logic for converting Cloud Asset Governance Recommendation output from JSON to CSV by better handling of edge cases that previously caused issues in the CSV view. [CCM-21834]
+
+**Before**
+  <DocImage path={require('./static/json-fix-before.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+**After**
+  <DocImage path={require('./static/json-fix-after.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+## April 2025 - Version 1.46.2
+
+### [New Feature] Recommendation Preferences
+**[CCM-20954] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#recommendation-settings)**
+
+We have introduced a new feature to enhance the personalization of recommendations: **Recommendation Preferences**. This allows users to create, apply, and save custom tuning preferences to better suit their usage. Users can now also select a default preset preference. This ensures that the chosen tuning preferences are consistently applied across all future recommendations removing the need for repeated manual adjustments. 
+
+<DocImage path={require('./static/rec-pref.png')} width="90%" height="90%" title="Click to view full-size image" />
+<DocImage path={require('./static/manage-presets.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+#### Feature Improvements
+- New Filters for Autostopping: We have added two new filters in the Autostopping page filter panel:
+    - Minimum Savings: This allows users to filter rules based on minimum savings threshold.
+    - Hide Disabled Rules: This filter is designed to help users manage and view only the active rules in their system by hiding disabled rules. [CCM-21788, CCM-21766]
+
+ <DocImage path={require('./static/as-filters.png')} width="90%" height="90%" title="Click to view full-size image" />
+  
+#### Fixed Issues
+- Anomaly Detection Timezone Fix: We have resolved an issue where anomalies appeared with a one-day delay due to a timezone mismatch. The chart implementation has been updated to reflect accurate timestamps. [CCM-21942]
+- Cloud Asset Governance Timezone Label: We have fixed a display issue where the "UTC" timezone label was incorrectly shown as "CUT" in enforcement logs. [CCM-21934]
+
+## March 2025 - Version 1.45.7
+
+### [New Feature]  (Beta) External Cost Data Ingestion
+**[CCM-20954] | [Docs](/docs/cloud-cost-management/get-started/onboarding-guide/external-data-ingestion)**
+Harness Cloud Cost Management now supports External Cost Data Ingestion, enabling you to bring in cost data from third-party vendors using a standardized CSV format.
+**Key Capabilities:**
 
 - Ingest and analyze external costs using Perspectives, Budgets, Dashboards and Cost Categories
 - Support for FOCUS-formatted CSV files (20MB max per file)
 
 This feature is currently in Beta and behind a feature flag `CCM_EXTERNAL_DATA_INGESTION` . Please contact our support team for enablement. [CCM-21297]
 
-- Anomaly Comments Support: You can now add and view comments directly on the Anomalies Details page, making collaboration and investigation easier. [CCM-21384]
+#### Feature Improvements
 
-- UI Fix for Rule Sets & Enforcements: Previously, if a user added multiple Rules or Rule Sets while creating Rule Sets or Enforcements, the button to proceed or save would be pushed off-screen, preventing the action. This issue is now resolved. [CCM-21512]
+- Anomaly Comments Support: You can now add and view comments directly on the Anomalies Details page, making collaboration and investigation easier. [CCM-21384]
 
 - Date Range in UTC Format: Date ranges are now processed in UTC for anomaly drilldown chart, ensuring accurate time representation across time zones like IST and PST. This also ensures drilldown chart data is fetched correctly based on the selected time range. [CCM-21630]
 
@@ -43,9 +380,9 @@ This feature is currently in Beta and behind a feature flag `CCM_EXTERNAL_DATA_I
 
 - Fixed Incorrect Timestamps in Budget Monthly Breakdown: Previously, the [List Budgets](https://apidocs.harness.io/tag/Cloud-Cost-Budgets#operation/listBudgets) API returned monthly breakdowns with Unix timestamps for the year 2024 instead of the configured 2025 values. This issue has now been resolved, and the API returns accurate timestamps consistent with the UI configuration. [CCM-21657]
 
-### Version 1.43.5
+## March 2025 - Version 1.43.5
 
-#### New features and enhancements
+#### Feature Improvements
 - Improved Accessibility for Rule Set Creation: Previously, if a user added multiple Rules or Rule Sets while creating Rule Sets or Enforcements, the button to proceed or save would be pushed off-screen, preventing the action. This issue is now resolved. [CCM-21512]
 - Improved Error Handling for AutoStopping Pages: Previously, navigating away from a loading AutoStopping page caused aborted API calls to trigger error toasts. Now, toasts will only appear for valid errors.[CCM-21199]
 - Improved UI Behavior for User Dropdown in AutoStopping : Previously, users with access only to AutoStopping encountered an error in the UI due to missing permissions for listing other users. To enhance the experience, we have modified the implementation to **hide the user dropdown in filters** if the user does not have access to list other users. [CCM-19404]
@@ -60,6 +397,7 @@ This feature is currently in Beta and behind a feature flag `CCM_EXTERNAL_DATA_I
 - Fix for Anomalies Alert Scope Visibility: Some anomalies alerts created from the existing flow were incorrectly assigned an alert scope. Due to this, the alerts were not appearing in the anomalies list. This issue has now been fixed by setting the correct scope, ensuring proper visibility of anomalies alerts. [CCM-21278]
 - Confirmation Dialog for Unsaved Cloud Asset Governance Rules: To prevent accidental loss of unsaved changes, a confirmation dialog will now appear when navigating away from an unsaved Cloud Asset Governance rule. [CCM-20972]
 - Time-To-Live (TTL) Support for Karpenter Nodes in Cluster Orchestrator: We have introduced Time-To-Live (TTL) support for Karpenter nodes in the Cluster Orchestrator configuration. This feature allows users to automatically terminate idle or underutilized Karpenter nodes after a specified period, optimizing resource usage and reducing costs. [CCM-20051]
+- Role-Based Access Control (RBAC) for CCM Side Navigation: Now, the side navigation dynamically adjusts based on a user's permissions. Features such as Overview, AutoStopping, and Governance will only be visible if the user has the necessary RBAC permissions. This ensures a cleaner interface and prevents access to unauthorized sections. [CCM-20789]
 
 ## January 2025
 
@@ -759,7 +1097,6 @@ However, it's important to note that while copying you may encounter issues if t
   - Billing entity
   - Line item type
 
-  For more information, go to [Analyze AWS costs by using perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws).
 
 ##### Fixed issues
 
@@ -779,7 +1116,7 @@ However, it's important to note that while copying you may encounter issues if t
 
 - **Perspective Preferences** enhancement (CCM-11145)
 
-  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/perspective-preferences).
+  Perspective preferences provide you the flexibility to control which cost factors are considered in your billing and CUR (Cost and Usage Report) reports within your perspective. You can now include cost factors such as discounts, taxes, and refunds. For more information, go to [Perspective Preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective).
 
 :::info
 The current configurations for **Show others** and **Show unallocated cost in clusters** are preserved. This means that though the default settings have these preferences set to false, any _existing perspective_ with these preferences set to true will retain their current state and not be overridden.
@@ -1158,7 +1495,7 @@ The issue is resolved now.
 
 - AutoStopping Proxy for HTTPS and TCP connections.
 
-Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](/docs/category/add-load-balancers-for-autostopping-rules) and [Create AutoStopping rules](/docs/category/create-autostopping-rules).
+Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. 
 
 ##### Fixed issues
 

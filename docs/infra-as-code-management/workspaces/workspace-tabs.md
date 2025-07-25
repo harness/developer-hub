@@ -20,19 +20,44 @@ If you are new to Harness IaCM, check out the [onboarding guide](/docs/infra-as-
 This document walks through each tab of a workspace, explaining its data, settings, and usage to help you configure and manage your workspace effectively.
 
 ### Resources
-The Resources tab compiles information from the infrastructure code associated with your workspace. It lists all provisioned resources, such as servers and databases.
-- **Usage:** This tab helps you monitor and manage the resources provisioned by your pipelines, providing insights into the current state and configuration of each resource.
----
-### Variables
-The Variables tab is populated from the variables defined within your infrastructure code, commonly in your `variables.tf` file.
+The Resources tab surfaces infrastructure state from OpenTofu/Terraform in a structured and readable format. It lists all managed resources, referenced data sources, and exposed outputs defined in your workspace configuration.
 
-:::info
+This tab includes three subtabs:
+- **Resources:** Infrastructure components actively provisioned and managed by OpenTofu/Terraform.
+- **Data Sources:** External values fetched at runtime (e.g., existing VPCs, AMIs). These are now extracted from the state file for easier visibility.
+- **Outputs:** Values exposed by your modules, typically used to pass data between pipeline stages or systems.
+
+Use this tab to validate state, inspect dependencies, and troubleshoot issues, without digging through raw state files.
+
+---
+
+### Variables and Connectors
+The **Variables and Connectors** tab lets you define the inputs and integrations required to run your IaCM workspace pipelines. These settings apply to operations such as `init`, `plan`, `apply`, or drift detection.
+
+#### Connectors
+Connectors allow your workspace to authenticate with cloud providers, Git repositories, or other external systems. For example, a Git connector may be required to fetch variable files, or a cloud connector (like `aws-oidc`) may be needed for provisioning infrastructure.
+
+You can add connectors at the **Account**, **Project**, or **Organization** level.
+
+#### Variables
+Variables are used to inject configuration values into your infrastructure code. You can define:
+
+- **Environment variables** for shell-level runtime config (e.g., `TF_LOG`, `ENVIRONMENT`)
+- **OpenTofu/Terraform variables** that map to `variable {}` blocks in your `.tf` files
+- **Variable files** (`.tfvars`, `.json`, or `.yaml`) stored in Git and referenced at runtime
+
+These values can be statically defined, prompted at runtime with `<+input>`, or injected from pipeline variables.
+
+:::info Learn more
+For setup instructions and YAML examples, see [Configure Connectors and Variables](/docs/infra-as-code-management/project-setup/connectors-variables).
+
 Variables can be set in any of the following ways:
 - **Explicit variables:** You can state that exact value of the variable directly in your code.
 - **Variable reference:** You can set a variable value directly in the variables tab of your workspace and reference it with the `var.variable_reference` syntax in your OpenTofu/Terraform code. 
 - **Default values** Setting default values acts as a fallback and prevents unexpected errors in cases where you referenced a variable that doesn't match any reference in your workspace variables, e.g. it is misspelled or has been manually removed.
 - **Consider sensitive information:** In some cases you may want to store a variable with sensitive information such as database passwords or other secret. In these cases, you can label your OpenTofu/Terraform code as `sensitive = true`
 :::
+
 
 <Tabs>
 <TabItem value="Explicit variable">
@@ -77,8 +102,15 @@ For detailed instructions on managing your infrastructure state, visit [Provisio
 
 ---
 ### Configuration
-Derived from the initial setup steps of your workspace, including cost estimation settings, selected connectors, and default pipelines.
+Derived from the initial setup steps of your workspace, including cost estimation settings, and default pipelines.
 - **Usage:** Provides a quick overview of your workspace's configuration, allowing for easy edits and updates.
+
+#### Advanced options
+Workspaces configuration advanced options offer the ability to configure additional settings for your workspace, including:
+- **Submodules:** Use submodules from your repository's `modules/` folder. 
+  Go to [Submodule Usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage) for more information.
+- **Sparse checkout:** Provide paths to directories to do a sparse checkout on given patterns to clone specific directories from the repository.  
+  Refer to [git documentation](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) for more details.
 ---
 ### CLI Integration
 This tab provides guidance on integrating the OpenTofu/Terraform CLI with Harness as a backend.

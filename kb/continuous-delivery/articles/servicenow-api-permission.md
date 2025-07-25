@@ -120,3 +120,10 @@ Required permission: `itil`.
       ![image](../static/debug-approval-step.png)
    8. Check if there are any data policies written on the user's Dev instance on the table. For details, go to [ServiceNow documentation](https://docs.servicenow.com/bundle/vancouver-platform-administration/page/administer/field-administration/concept/c_DataPolicy.html).
    9. When using custom tables (not Incident, Problem, Change Request, and Change Task in create/update using form templates), make sure to grant cross-scope privileges for the required table with templates (via the Harness app in ServiceNow store). For details, go to [Custom table support](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages/#custom-table-support).
+
+4. **User Permissions Look Proper with SNOW Access Analyzer, but still Receiving Permission Access Failure**
+
+   Although the user which is being used for access to Service Now appears to have the proper permissions, teams may still be getting access errors regarding permissions to a table.  (For example, messages to check permissions to the Incident Table).  The cause of this may not have to do with the User Permissions, but actually has to do with the Rest API Access Policy.
+
+   Please read [the following information in Service Now with regards to how Rest API Access Policies work](https://www.servicenow.com/docs/bundle/yokohama-platform-security/page/integrate/authentication/concept/inbound-authentication-profile.html), and how to make adjustments to them.
+   

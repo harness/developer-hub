@@ -2,7 +2,7 @@
 title: Harness STO Features
 description: List of STO Features
 sidebar_label: Features
-sidebar_position: 04
+sidebar_position: 01
 ---
 
 This document outlines all the key features of Harness STO, providing a quick overview and links to detailed documentation for further exploration. To determine if a specific feature is supported in your deployment, please refer the [Deployment Options Documentation](/docs/security-testing-orchestration/whats-supported/sto-deployments).

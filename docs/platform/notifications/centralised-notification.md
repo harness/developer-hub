@@ -59,11 +59,11 @@ For now, we’ll configure notifications at the Account level, but you can follo
 
         Under **Select Project** you can either select **All Projects** under the organization or you can select **Specified Project** if you want to configure notification for specific projects within the organization. Click on **Continue** to set conditions for notification.
 
-        ![](./static/pipeline_resource.png)
+        ![](./static/pipeline-resource.png)
 
 5. Under **Condition** , select **+ Add Condition** to define pipeline events based on which you want to be notified.
     
-        ![](./static/resource_pipeline_condition.png)
+        ![](./static/resource-pipeline-condition.png)
 
         :::info note
                 Stage start/success/failed events will apply to all stages within a pipeline. There is no option to configure notifications for specific stages, if you want to do that you can configure it via [Pipeline level notification](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
@@ -97,15 +97,19 @@ For now, we’ll configure notifications at the Account level, but you can follo
 </TabItem>
 </Tabs>
 
-6. Under **Set Channels**, **Select Channels** where you want notification to be sent.
+6. Optionally you can add **Notification Template** to get custom notifications based on the event. To learn more, go to [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template).
 
-        ![](./static/set_channels.png)
+        ![](./static/notification-template.png)
+
+7. Under **Set Channels**, **Select Channels** where you want notification to be sent.
+
+        ![](./static/select-channels.png)
 
         Under **Select Channel** you can choose the already created channel at that scope or you can create a [**New Channel**](/docs/platform/notifications/notification-settings.md).
 
         To configure a New Channel, click New Channel and enter a Channel Name.
             
-            ![](./static/select_channels.png)
+            ![](./static/new-channel.png)
 
             Next, choose a Connectivity Mode—you can send notifications either directly through the Harness Platform or via a Harness Delegate.
 
@@ -116,12 +120,16 @@ For now, we’ll configure notifications at the Account level, but you can follo
                 ![delegate-mode](./static/delegate-setup.png)
 
             Once the connectivity mode is configured, select the [**Channel Type**](/docs/platform/notifications/notification-settings#configure-pipeline-notifications) and add details related to the channel type to proceed.
+            
+            :::note
+            If you select the Connectivity Mode as "Connect through a Harness Delegate" and Channel Type as "Email", ensure to add an [SMTP configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration) to which the Harness delegate has access. If this is not done, then the Email notifications will fail.
+            :::
 
                 ![](./static/create-new-channel.png)
 
-7. Select **Submit** to save your notification configuration.
+8. Select **Submit** to save your notification configuration.
 
-        ![](./static/submit_notification.png)
+        ![](./static/submit-notification.png)
 
 
 

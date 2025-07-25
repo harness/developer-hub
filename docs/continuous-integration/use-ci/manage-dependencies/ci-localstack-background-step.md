@@ -98,7 +98,7 @@ pipeline:
                   name: localstack
                   identifier: localstack
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: localstack/localstack:latest
                     shell: Sh
                     envVariables:
@@ -108,7 +108,7 @@ pipeline:
                   name: localstack health
                   identifier: localstack_health
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: curlimages/curl:7.83.1
                     shell: Sh
                     command: until curl --fail --silent --max-time 1 http://localstack:4566/health; do sleep 2; done

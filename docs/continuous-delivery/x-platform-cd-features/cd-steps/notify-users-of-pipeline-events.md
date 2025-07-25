@@ -570,6 +570,23 @@ If you have Harness user groups that have Slack webhooks set up in their **Notif
 
 Go to [send notifications using Slack](/docs/platform/notifications/send-notifications-using-slack) for more information.
 
+
+## Notification Templates (Optional)
+
+You can also get custom notification using [Custom Notification Templates](/docs/platform/templates/customized-notification-template/).
+
+![](./static/custom-notification.png)
+
+## Select Connectivity Mode
+
+Under **Select the Connectivity Mode**, you can choose to **Connect through Harness Platform** or **Connect through Harness Delegate**.
+
+![](./static/delegate-routing-support.png)
+
+When you select **Connect through Harness Delegate**, and click on **Continue**, you will be asked to select the Delegate that this pipeline notification rule will use, in **Delegate Setup**.
+
+![](./static/delegate-routing-setup.png)
+
 ## Enable or disable notification rules
 
 Once you've created notification rules, you can enable and disable them in the **Notifications** page.

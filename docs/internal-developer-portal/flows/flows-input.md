@@ -1550,7 +1550,7 @@ properties:
         mask: true
 ...
 ```
-[Example workflow.yaml](https://github.com/Debanitrkl/backstage-test/blob/main/upload-file-prod.yaml)
+[Example workflow.yaml](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/uploaded-files.yaml)
 
 ![](./static/file-upload-hide-content.png)
 
@@ -1653,7 +1653,7 @@ spec:
 
 We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. e.g.: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
 
-The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
+The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
 
 | Item                | Example Value                           | Explanation                                                                                      |
 | ------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |

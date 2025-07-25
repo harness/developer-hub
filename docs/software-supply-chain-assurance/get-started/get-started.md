@@ -2,9 +2,11 @@
 title: Get started
 sidebar_label: Get started
 description: Get started with Harness SCS
-sidebar_position: 4
+sidebar_position: 3
 redirect_from:
     - /docs/software-supply-chain-assurance/get-started/get-started-with-rspm
+    - /docs/software-supply-chain-assurance/get-started/onboarding-guide
+    - /docs/software-supply-chain-assurance/integrations-and-permissions
 ---
 
 This guide will help you onboard to the Harness SCS features, allowing you to set up RSPM, CI/CD SPM, and Artifact Security with integrations. The onboarding process involves two main steps, configuring your integrations and selecting your resources.
@@ -16,12 +18,9 @@ To begin, navigate to the **Get Started** section in the SCS module and click on
 Here, you’ll find a list of all currently supported integrations and those that are coming soon. You can also click to expand each integration and view the features it supports.
 
 :::note
-Please refer to the [Use SCS](../get-started/onboarding-guide#use-scs) section in the onboarding document to see the full list of supported integrations for each feature.
+Please refer to the [Use SCS](/docs/software-supply-chain-assurance/ssca-supported#use-scs) section in the onboarding document to see the full list of supported integrations for each feature.
 :::
 
-Depending on your chosen integration and SCS features, refer to the appropriate sections below to get started:
-- [Setup RSPM and CI/CD SPM on GitHub repos and Actions](#setup-rspm-and-cicd-spm-on-github-repos-and-actions)
-- [Setup CI/CD SPM on Harness pipelines](#setup-cicd-spm-on-harness-pipelines)
 
 
 ## Setup RSPM and CI/CD SPM on GitHub repos and Actions
@@ -59,7 +58,7 @@ Configuring the Harness-SCS app allows SCS to connect with your GitHub and fetch
 
 
 :::note
-If the button says **Authorize and Request** instead of **Install and Authorize**," you don’t have permission to install the GitHub App. Please contact your GitHub admin for permissions. For detailed information about permissions, refer to the [Integrations and Permissions](../integrations-and-permissions) document.
+If the button says **Authorize and Request** instead of **Install and Authorize**," you don’t have permission to install the GitHub App. Please contact your GitHub admin for permissions.
 :::
 
 
@@ -87,7 +86,7 @@ Navigate to the **Code Repositories** section to view your repositories, and the
 
 
 ## Setup CI/CD SPM on Harness pipelines
-From the **Get started** page, click on **Harness** under available integrations, and select **Enable** on the CI/CD Security options. This will setup the CI/CD SPM on your Harness pipelines.
+From the **Get started** page, click on **Harness** under available integrations, and select **Enable** on the CI/CD Security options. This will set up the CI/CD SPM on your Harness pipelines.
 
 <DocImage path={require('./static/get-started-harness-01.png')} width="100%" height="100%" title="Click to view full size image" />
 

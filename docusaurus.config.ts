@@ -112,6 +112,10 @@ const config: Config = {
               to: 'docs/continuous-integration',
             },
             {
+              label: 'AI Test Automation',
+              to: 'docs/ai-test-automation',
+            },
+            {
               label: 'Artifact Registry',
               to: 'docs/artifact-registry',
             },
@@ -132,6 +136,10 @@ const config: Config = {
               to: 'docs/feature-flags',
             },
             {
+              label: 'Feature Management & Experimentation',
+              to: 'docs/feature-management-experimentation',
+            },
+            {
               label: 'Cloud Cost Management',
               to: 'docs/cloud-cost-management',
             },
@@ -148,8 +156,8 @@ const config: Config = {
               to: 'docs/chaos-engineering',
             },
             {
-              label: 'Incident Response',
-              to: 'docs/incident-response',
+              label: 'AI SRE',
+              to: 'docs/ai-sre',
             },
             {
               label: 'Service Reliability Management',
@@ -208,12 +216,20 @@ const config: Config = {
               to: 'university',
             },
             {
+              label: 'Code Repository',
+              to: 'university/cr',
+            },
+            {
               label: 'Continuous Integration',
               to: 'university/continuous-integration',
             },
             {
               label: 'Continuous Delivery & GitOps',
               to: 'university/continuous-delivery',
+            },
+            {
+              label: 'Infrastructure as Code Management',
+              to: 'university/iacm',
             },
             {
               label: 'Feature Flags',
@@ -232,8 +248,8 @@ const config: Config = {
               to: 'university/sto',
             },
             {
-              label: 'Software Engineering Insights',
-              to: 'university/sei',
+              label: 'Supply Chain Security',
+              to: 'university/scs',
             },
             {
               label: 'Chaos Engineering',
@@ -244,8 +260,8 @@ const config: Config = {
               to: 'university/idp',
             },
             {
-              label: 'Infrastructure as Code Management',
-              to: 'university/iacm',
+              label: 'Software Engineering Insights',
+              to: 'university/sei',
             },
             {
               label: 'Virtual Instructor-Led Calendar',
@@ -256,8 +272,8 @@ const config: Config = {
               to: 'university/instructions',
             },
             {
-              label: 'FAQs',
-              to: 'university/faqs',
+              label: 'Policies & FAQs',
+              to: 'university/policies-and-faqs',
             },
           ],
         },
@@ -351,8 +367,8 @@ const config: Config = {
               to: 'https://harness.io/products/chaos-engineering',
             },
             {
-              label: 'Incident Response',
-              to: 'https://harness.io/products/incident-response',
+              label: 'AI SRE',
+              to: 'https://harness.io/products/ai-sre',
             },
             {
               label: 'Service Reliability Management',
@@ -365,6 +381,10 @@ const config: Config = {
             {
               label: 'Software Engineering Insights',
               to: 'https://www.harness.io/products/software-engineering-insights',
+            },
+            {
+              label: 'AI Test Automation',
+              to: 'https://www.harness.io/products/ai-test-automation',
             },
           ],
         },
@@ -411,6 +431,10 @@ const config: Config = {
               label: 'Partners',
               to: 'https://www.harness.io/partners',
             },
+            {
+              label: 'Style Guide',
+              to: '/docs/hdh/style-guide',
+            },
           ],
         },
         {
@@ -444,7 +468,7 @@ const config: Config = {
     prism: {
       theme: themes.github,
       darkTheme: themes.vsDark,
-      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git'],
+      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git', 'java'],
     },
     colorMode: {
       defaultMode: 'light',
@@ -478,7 +502,7 @@ const config: Config = {
         id: 'release-notes',
         path: 'release-notes',
         routeBasePath: 'release-notes',
-        exclude: ['**/shared/**', '**/static/**'],
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         sidebarPath: require.resolve('./sidebars-release-notes.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {

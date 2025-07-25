@@ -311,11 +311,18 @@ harness.io/color: blue
 Done
 ```
 
+:::info
+
+This step does not perform any **post-swap health checks**. Harness assumes that the stage deployment was successful and that the service is ready to receive traffic. If you need to verify the health of the new primary environment after the swap (e.g., by hitting an API endpoint or checking pod readiness), you must explicitly add a **Verify**, **Shell Script**, or **HTTP step** after this step in your pipeline.
+:::
+
+
 ## Scale down old version
 
 A great benefit of a Blue Green deployment is rapid rollback: rolling back to the old version of an app is simple and reliable because network traffic is simply routed back to the previous pods.
 
-:::important Behavior change
+:::info Behavior change
+
 For Blue Green deployments, Harness used to scale down deployments, DaemonSets, deploymentConfig, and delete HPA and PDB resources. During scale down, Harness updated the field replicas to 0. In Kubernetes, if HPA is configured, it is not mandatory to define replicas. So when another deployment happens and Harness applies the same old deployments manifest, it does not update the replicas field and remains 0. This results in no deployment even though the pipeline is successful. To resolve this, Harness now scale down only DaemonSets and delete deployment, deploymentConfig, HPA, and PDB resources. 
 :::
 
@@ -342,6 +349,15 @@ kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.names
 ```
 
 This example does not apply to scaling down multiple deployments in the same namespace. If you use the example and you have multiple deployments in the same namespace it will impact multiple deployments. You should also include a label (or another matchSelector) specific to the particular deployment, so it doesn’t scale down all the blue deployments in the namespace. For example, match `blue` and `my-specific-app`.
+
+:::important
+
+The Scale Down step is an irreversible action. Once the inactive environment is scaled down, you cannot roll back to it. Rollback must be achieved by forward deployment of the previous version and configuration.
+
+The Blue-Green deployment strategy in Harness shifts traffic between two environments but does not validate whether the active environment is running the correct version, that's the responsibility of the **Stage Deployment** step.
+
+Only scale down the old environment after you're confident that it's no longer needed and rollback is not required.
+:::
 
 
 ## Using Horizontal Pod Autoscaler (HPA)

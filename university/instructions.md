@@ -50,7 +50,7 @@ Below is a picture of the cloud shell you will see during an exam.
 
 ## Troubleshooting
 
-Please see our [FAQ](/university/faqs) section for troubleshooting tips. You can also email our certification team at [certifications@harness.io](mailto:certifications@harness.io).
+Please see our [FAQ](/university/policies-and-faqs) section for troubleshooting tips. You can also email our certification team at [certifications@harness.io](mailto:certifications@harness.io).
 
 ## Video of Instructor-Led Training Experience
 

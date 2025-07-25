@@ -68,6 +68,12 @@ In **Monitored Service**, click **Click to autocreate a monitored service**.
 
 Harness automatically creates a monitored service using a concatenation of the service and environment names. For example, a service named `todolist` and an environment named `dev` results in a monitored service with the name `todolist_dev`.
 
+:::warning
+
+Monitored services are not compatible with GitX. Monitored services will always fetch the service and infrastructure information from the **default branch** and not from the feature branch. 
+
+:::
+
 :::note
 
 The option to auto-create a monitored service is not available if you have configured either a service, an environment, or both as runtime values. When you run the pipeline, Harness concatenates the service and environment values you enter in the runtime inputs screen and generates a monitored service name. If a monitored service with the same name exists, Harness assigns it to the pipeline. If no monitored service that matches the generated monitored service name exists, Harness skips the verification step. 

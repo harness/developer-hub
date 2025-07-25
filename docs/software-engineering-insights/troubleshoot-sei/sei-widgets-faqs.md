@@ -26,7 +26,7 @@ The calculation of velocity points in Harness SEI provides a more accurate refle
 ```ssh 
 Velocity points = Committed points completed + Scope creep points delivered + Story creep points delivered
 ```
-To learn more, go to [Sprint metrics calculations](https://developer.harness.io/docs/software-engineering-insights/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#sprint-velocity-delivered-points).
+To learn more, go to [Sprint metrics calculations](https://developer.harness.io/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics#sprint-velocity-delivered-points).
 
 ### How can I ignore commits that has multiple parents (i.e. merge commits) in the metric calculations?
 

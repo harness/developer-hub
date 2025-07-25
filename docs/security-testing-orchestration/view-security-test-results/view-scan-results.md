@@ -1,59 +1,121 @@
 ---
-title: "View scan results - Security Tests tab" 
+title: "View scan results - Vulnerabilities tab" 
 description: View, navigate, discover, and investigate detected issues from an individual scan 
 sidebar_position: 10
-sidebar_label: "View scan results - Security Tests tab"
+sidebar_label: "View scan results - Vulnerabilities tab"
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results
   - /docs/category/view-and-troubleshoot-vulnerabilities
   - docs/security-testing-orchestration/dashboards/view-scan-results
 ---
 
-In the **Security Testing Orchestration** left-hand menu, go to **Executions**. Then go to the pipeline execution and select **Security Tests**. This tab enables you to navigate, analyze, and remediate all issues detected by the pipeline execution. 
+After your pipeline completes a security scan, you can view the scan results in the **Vulnerabilities** tab. You can access the **Vulnerabilities** tab from two locations:
 
-![](./static/security-tests-tab.png)
+- **Execution History**: Select a specific pipeline execution from your pipeline's **Execution History**.
+- **Executions Section**: Navigate to the **Executions** section from the left navigation in the STO module and select a pipeline execution.
 
-The following steps describe the general workflow:
+:::info
+The **Vulnerabilities** tab was previously called the **Security Tests** tab. We have renamed the tab to **Vulnerabilities**.
+:::
 
-1. (_Optional_) Set the **Security Execution** to filter issues based on target, type, stage, step, or scanner.
+## Navigate to Security Test results
 
-   These filters are useful for pipelines that run multiple scans. You can hide irrelevant issues and focus only issues of interest. Filtering on a specific target can make it easier to compare results with previous scans of that target. 
+Follow these steps to view the scan results:
 
-2. Select the [severity](/docs/security-testing-orchestration/get-started/key-concepts/severities) tiles to filter issues by severity. You can also show or hide issues with exemptions.  
+1. Navigate to either the **Execution History** of your pipeline or the **Executions** section from the left navigation in the STO module.
+2. Select the specific execution that performed the security scan.
+3. Click the **Vulnerabilities** tab.
 
-3. Drill down to the relevant issues list to view the issues found in the scan:
+The **Vulnerabilities** tab provides a comprehensive view of all issues detected during the scan.
 
-    - **Only in \<_target_>:\<_variant_>** Issues only found in the scanned variant.
+<DocImage path={require('./static/security-tests-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
-    - **Common to \<_target_>:\<_baseline_>** Issues also found in the target baseline.
+## Understanding issue categories
 
-    - **Common to previous scan** 
-      - Issues also found in the previous scan (if the scanned target has no baseline), OR
-      - Issues also found in the previous scan of the baseline (if the scanned variant is the baseline).
+Issues identified in the scan are categorized as follows:
 
-    <!-- **Common to previous / baseline scan** Issues also found in both the previous scan of the specified variant AND the previous scan of the baseline. -->
+- **Only in \<target>:\<variant>**: Issues detected only in the scanned variant.
+- **Common to \<target>:\<baseline>**: Issues present both in the scanned variant and the baseline.
+- **Common to previous scan**:
+  - Issues found in the previous scan (if no baseline is set), OR
+  - Issues found in the previous baseline scan (if the current variant is the baseline).
 
-    - **Remediated** An issue has a status of Remediated if it was found in the baseline but not the scanned variant. 
-      
-      <DocImage path={require('./static/remediated-issue.png')} width="60%" height="60%" />
+<DocImage path={require('./static/scan-comparison.png')} width="100%" height="100%" title="Click to view full size image" />
 
-      :::note important notes
+:::note
+- For optimal results, define a baseline for each target in STO. See [Targets, Baselines, and Variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+- Issue categorization (**Only in \<target>:\<variant>** and **Remediated**) relies on the baseline used during the scan execution, which may differ from the current baseline if dynamic baselines based on regular expressions are used. See [Dynamic Baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#specify-dynamic-baselines-using-regular-expressions).
+:::
 
-      - For best results in STO, every target should have a baseline defined. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+## Filtering issues
 
-      - The **Security Tests** UI categorizes issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant against the baseline specified when the scan was run. This might be different from the baseline currently specified for the target. Baselines can change automatically when a pipeline uses [dynamic baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#specify-dynamic-baselines-using-regular-expressions) based on regular expressions.
+You can filter issues using multiple criteria in the **Vulnerabilities** tab:
 
-      :::
+- **Targets**: Filter issues by target name.
+- **Target Type**: Filter by target type (e.g., repository, container, etc.).
+- **Stage**: Filter by pipeline stages.
+- **Step**: Filter by pipeline steps.
+- **Scanner**: Filter issues by specific scanners.
+- **Issue Type**: Filter by issue types (e.g., SAST, DAST, SCA, IaC, Secret etc.).
 
-3. To investigate an issue in detail, click the issue in the list to open **Issue Details** (right). 
+### Severity-based filtering
 
-4. The **Issue Details** pane includes known details and remediation steps for the detected issue. Note that this pane shows details for all occurrences of the detected issue, so scan down to ensure that you see all occurrences. 
+Issues are summarized by severity levels (**Critical**, **High**, **Medium**, **Low**, **Info**) as clickable tiles, serving as additional filters. You can select multiple tiles.
 
-   You can also do the following:
+<DocImage path={require('./static/filter-issue-by-severity.png')} width="90%" height="90%" title="Click to view full size image" />
 
-   - [Create a Jira ticket](/docs/security-testing-orchestration/jira-integrations) for the issue.
+The **Exempted** tile displays the number of exempted issues. Clicking it shows all exempted issues.
 
-   - Request an [exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows) so that pipeline executions can proceed even if the issue is detected.
+## Issue list details
 
-   - Fix the issue using [AI-enhanced remediation steps](/docs/security-testing-orchestration/remediations/ai-based-remediations).
+Below the filters and severity tiles, you'll find detailed information:
 
+- **Severity**: Issue criticality.
+- **Issue**: Description or name of the issue.
+- **Occurrences**: Number of times the issue was detected.
+- **Status**: Issue status (e.g., Remediated, Exempted).
+
+## View issue details
+
+Click an issue to open the **Issue Details** pane. This pane contains two tabs: **[Overview](#overview-tab)** and **[Occurrence](#occurrence-tab)**.
+
+<DocImage path={require('./static/issue-details-side-pane.png')} width="100%" height="100%" title="Click to view full size image" />
+
+If an exemption applies or was requested for an issue, the **Exemption Status at Scan** section appears at the top of the pane. Here, you can view exemption details or take actions (**Approve**, **Reject**, **Re-open**) based on your permissions. Learn more in [Issue Exemption Workflow](/docs/security-testing-orchestration/exemptions/exemption-workflows).
+
+<DocImage path={require('./static/exemption-details-in-issue-details.png')} width="100%" height="100%" title="Click to view full size image" />
+
+:::tip
+From the **Issue Details** pane, you can create Jira tickets using the **Create Ticket** button (see [Create Jira tickets](/docs/security-testing-orchestration/jira-integrations)) or request issue exemptions using the **Request Exemption** button (see [Issue Exemption Workflow](/docs/security-testing-orchestration/exemptions/exemption-workflows)).
+:::
+
+### Overview tab
+
+The **Overview** tab includes:
+
+- **Details**: Issue-related information varying by issue type (SAST, SCA, DAST, IaC, Secret).
+- **Remediation**: Remediation steps from **Harness AI** and **Scanner**. If scanning a repository, you can raise PRs or get code suggestions from Harness AI (see [Fix security issues using Harness AI](/docs/security-testing-orchestration/remediations/ai-based-remediations)).
+
+  <DocImage path={require('./static/remediation-section-issue-details-pane.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- **Code Snippet**: Code snippet provided by the scanner. Enable **Allow Vulnerable Content Extraction** in **Default Settings** if the snippet isn't provided.
+- **Issue Raw Details**: Raw scanner details.
+
+### Occurrence tab
+
+The **Occurrence** tab lists all issue occurrences with fields varying by issue type. For example, SAST issues include **Severity**, **File Name**, and **Line Number**.
+
+<DocImage path={require('./static/occurrence-list.png')} width="100%" height="100%" title="Click to view full size image" />
+
+Clicking an occurrence opens the **Occurrence Details** pane, including:
+
+- **Details**: Information based on issue type.
+- **Remediation**: Steps from **Harness AI** and **Scanner** (see [Fix security issues using Harness AI](/docs/security-testing-orchestration/remediations/ai-based-remediations)).
+- **Code Snippet**: Provided by scanner or fetched by enabling **Allow Vulnerable Content Extraction**.
+- **Occurrence Raw Details**: Raw scanner details.
+
+<DocImage path={require('./static/occurrence-details-pane.png')} width="100%" height="100%" title="Click to view full size image" />
+
+Use carousel navigation (**Next ( > )** and **Previous ( < )**) to navigate occurrences.
+
+<DocImage path={require('./static/occurrence-tab-carousel-buttons.png')} width="100%" height="100%" title="Click to view full size image" />

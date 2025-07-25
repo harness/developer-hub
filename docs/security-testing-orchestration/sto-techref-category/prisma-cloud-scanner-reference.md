@@ -5,7 +5,7 @@ sidebar_label: Prisma Cloud (formerly Twistlock) step configuration
 sidebar_position: 300
 ---
 
-<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Artifact scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#artifact-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans" />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
@@ -14,8 +14,7 @@ sidebar_position: 300
 
 You can scan container images and ingest results from [Prisma Cloud](https://docs.prismacloud.io/en) (formerly Twistlock).
 
-## Important notes for running Prisma Cloud scans in STO
-
+:::info
 - You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 - STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
@@ -23,6 +22,7 @@ You can scan container images and ingest results from [Prisma Cloud](https://doc
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
+:::
 
 ## Prisma Cloud step settings for STO
 
@@ -203,15 +203,17 @@ import StoSettingAuthAccessID from './shared/step-palette/auth/access-id.md';
 
 #### Access Token
 
-
 import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.md';
-
-
-
 
 <StoSettingAuthAccessToken />
 
 ### Scan Tool
+
+#### Use Raw Scanner Severity
+
+import ScannerProvidedSeverity from './shared/use-scanner-provided-severity.md';
+
+<ScannerProvidedSeverity />
 
 #### Image Name
 

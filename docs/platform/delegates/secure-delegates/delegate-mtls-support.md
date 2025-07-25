@@ -124,13 +124,11 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
 
       1. Under `spec.template.spec.containers[0].env`, update the value for `MANAGER_HOST_AND_PORT` to `https://<subdomain>.agent.harness.io`.
 
-      2. Under `spec.template.spec.containers[0].env`, update the value for `LOG_STREAMING_SERVICE_URL` to `https://<subdomain>.agent.harness.io/log-service/`.
-
-      3. Under `spec.template.spec.containers[0.env]`, update the value for `TI_SERVICE_URL` to `https://<subdomain>.agent.harness.io/ti-service/`. 
+      2. Under `spec.template.spec.containers[0.env]`, update the value for `TI_SERVICE_URL` to `https://<subdomain>.agent.harness.io/ti-service/`. 
       
       :::note
 
-      If you don't want to update the service URLs (`LOG_STREAMING_SERVICE_URL` or `TI_SERVICE_URL`), please enable the feature flag [`CI_OVERRIDE_SERVICE_URLS`](/docs/continuous-integration/ci-supported-platforms#harness-ci-early-access-features) by contacting [Harness Support](mailto:support@harness.io).
+      If you don't want to update the service URLs ( `TI_SERVICE_URL`), please enable the feature flag [`CI_OVERRIDE_SERVICE_URLS`](/docs/continuous-integration/ci-supported-platforms#harness-ci-early-access-features) by contacting [Harness Support](mailto:support@harness.io).
 
       Additionally, enable this feature flag if you wish to use this feature with STO and SCS steps. 
 
@@ -238,7 +236,6 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
           -e DELEGATE_CLIENT_CERTIFICATE_PATH=/etc/mtls/client.crt \
           -e DELEGATE_CLIENT_CERTIFICATE_KEY_PATH=/etc/mtls/client.key \
           -e DELEGATE_TOKEN=<delegate token> \
-          -e LOG_STREAMING_SERVICE_URL=https://<subdomain>.agent.harness.io/log-service/ \
           -e MANAGER_HOST_AND_PORT=https://<subdomain>.agent.harness.io harness/delegate:yy.mm.verno
         ```
 

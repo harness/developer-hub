@@ -75,9 +75,7 @@ As mentioned previously, a Rule can have multiple policies. However, when there 
 
   <DocImage path={require('../static/rule-set-aws.png')} width="90%" height="90%" title="Click to view full size image" />
   
-:::info
-A Rule Set can have upto 30 Rules in it.
-:::
+
 
 ### Create a new Rule Set
 
@@ -134,8 +132,6 @@ While setting up a new Enforcement, you can select the following:
 :::info
 - Number of Targets in an Enforcement can be upto 200.
 - Number of Regions in Enforcement can be upto 30.
-- Number of Rule Sets in Enforcement can be upto 30.
-- Number of Rules in Enforcement can be upto 30.
 :::
 
 ### Create a new Enforcement
@@ -192,6 +188,10 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 
 <DocImage path={require('../static/evaluation-aws-one.png')} width="90%" height="90%" title="Click to view full size image" />
 
+:::info
+Each enforcement can now have up to **10,000 evaluations**. The cap is calculated as `Rules × Accounts × Regions` and replaces the earlier individual limits on rules, rule sets, accounts, or regions.
+:::
+
 ### View Evaluations
 
 1. In your **Harness** application, go to **Cloud Costs**.
@@ -203,7 +203,6 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 <DocImage path={require('../static/evaluations-aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 In the output window, users can see the resources identified in form of a Table or JSON. The table view supports all the filters and flattening of the table is supported as well. That essentially means, nested propoerties are flattened. By default, nested objects and arrays are collapsed and can be expanded upto two levels. Further nested properties are shown as formatted JSON.
-
 
 
 ### Filters in Evaluations List Page
@@ -230,7 +229,6 @@ You can create filters to view selected rules:
 :::important note
 Number of evaluations for which we can compute cost impact is 1,50,000/ Day.
 :::
-
 
 ## Testing Terminal
 

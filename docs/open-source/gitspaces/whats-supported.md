@@ -26,5 +26,13 @@ To create Gitspaces for **private repositories** on GitHub, Bitbucket, or GitLab
 
 1. **VS Code Desktop** (via [VS Code Plugin](/docs/open-source/gitspaces/ides/vs-code-desktop.md))
 2. **VS Code Browser** 
+3. **IntelliJ IDEA**
+4. **PyCharm**
+5. **PhpStorm**
+6. **GoLand**
+7. **CLion**
+8. **Rider**
+9. **RubyMine**
+10. **Webstorm**
 
 

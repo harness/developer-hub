@@ -16,7 +16,7 @@ const getCategoryDetails = (category: string): Record<string, string> => {
   };
   const setDetails = (category: FaultCategory) => {
     details.icon = `${path}/${category}.svg`;
-    details.link = `${category}/`;
+    details.link = `/docs/chaos-engineering/faults/chaos-faults/${category}/`;
   };
   switch (category) {
     case FaultCategory.AWS:
@@ -59,7 +59,8 @@ const getCategoryDetails = (category: string): Record<string, string> => {
       setDetails(FaultCategory.SSH);
       break;
     case FaultCategory.BYOC:
-      setDetails(FaultCategory.BYOC);
+      details.icon = `${path}/${FaultCategory.BYOC}.svg`;
+      details.link = `/docs/chaos-engineering/faults/custom-faults/byoc/`;
       break;
     default:
       details.icon = `${path}/default.svg`;

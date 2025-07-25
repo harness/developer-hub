@@ -82,6 +82,12 @@ The following command types are supported:
 * Copy artifact or config
 * Script
 
+:::note
+
+The WinRM deployment type supports Download Artifact only. You cannot use the **Copy** command type with **Artifact** in WinRM deployments.
+
+:::
+
 These are discussed in detail below.
 
 ### Artifact metadata only
@@ -267,6 +273,12 @@ In **Script Input Variables**, you simply select **Expression** and paste the ex
 In your script, you declare the variable using the **Name** value.
 
 At deployment runtime, Harness will evaluate the expression and the variable will contain its output.
+
+:::info note
+When using Script Input Variables in a Command Step, avoid setting values that contain newlines.
+Harness retrieves environment variables using the `printenv` command and splits them by newline characters.
+If an input variable includes newlines, this parsing may break, leading to unexpected behavior during execution.
+:::
 
 ## Output variables
 

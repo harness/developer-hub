@@ -68,7 +68,35 @@ The Vault AppRole method allows you to define multiple roles corresponding to di
 
 To assign a **Secret ID**, you can create a new [**Secret**](/docs/platform/secrets/add-use-text-secrets) or choose an existing one.
 
-The SecretId should not expire and it should be valid until it is manually revoked. Harness uses the App Role ID and Secret ID you supply to fetch a Vault Auth Token dynamically whenever there is a CRUD operation of secrets related to this vault. For example, when creating a secret in this vault, Harness internally uses this App Role Id and Secret ID and makes a call to vault via the delegate to generate a token. Now, this token is used to make the actual secret creation call to vault. This token is never received on the Harness side. It resides in the delegate and is cached for the duration that is one percent less than the time-to-live (TTL) of the token to prevent the generation of a new token for each request for improved performance. If you don't want to cache the token, you can disable the caching and token will be destroyed after the operation is successfully completed.
+The SecretId should not expire and it should be valid until it is manually revoked. Harness uses the App Role ID and Secret ID you supply to fetch a Vault Auth Token dynamically whenever there is a CRUD operation of secrets related to this vault. For example, when creating a secret in this vault, Harness internally uses this App Role Id and Secret ID and makes a call to vault via the delegate to generate a token. 
+
+#### Enable Cache for App Role Token
+Now, this token is used to make the actual secret creation call to vault. This token is never received on the Harness side. It resides in the delegate and is cached for the duration that is one percent less than the time-to-live (TTL) of the token to prevent the generation of a new token for each request for improved performance. If you don't want to cache the token, you can disable the caching and token will be destroyed after the operation is successfully completed.
+
+#### Example of Token Caching Refresh
+To understand how the number of delegates and caching schedule works, here is an example that we have put together.
+
+Let’s assume we have set a 15 min TTL. The token is cached for one pipeline during those 15 minutes (minus 1 percent), but it is determined by the **delegate** which is being used with the connector.  If the delegate has been used previously with the connector within the 15 min, then a cached version of the Vault token will exist on the delegate.  
+
+If we have three pipeline, and two delgates involved, the assignment in our example is:
+- `Pipeline A` and `Pipeine C` use the delegate, `delegate-mumbai`
+- `Pipeline B` uses the delegate, `delegate-sanfran`
+
+We will see the following behavior for the Vault connector occur in the executions, along with the **unique refresh timer** for each delegate
+```
+Pipeline A executed at time 0 (Token initial new fetch using role ID and Secret ID, stored on delegate-mumbai)
+Pipeline B executed at time +2min (Token initial new fetch using role ID and Secret ID, because this is a different delegate delegate-sanfran)
+Pipeline A executed at time +5min
+Pipeline C executed at time +10 min
+Pipeline B executed at time +11 min
+Pipeline A executed at time +16 min (Token expired on delegate-mumbai, Token new fetch performed using role ID and Secret ID,)
+Pipeline C executed at time +17 min
+Pipeline B executed at time +20 min (Token expired on delegate-sanfran, Token new fetch performed using role ID and Secret ID,)
+```
+
+Each delegate being utilized with the connector has a local cache of the token which refreshes according to the TTL rule of 15 minutes (minus 1 percent).
+
+#### Additional Information
 
 For more information, go to [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) in the HashiCorp documentation.
 
@@ -265,6 +293,7 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
          - For account scope only: `<ACCOUNT_ID>`
 
          - With the `PL_OIDC_ENHANCED_SUBJECT_FIELD` feature flag enabled: `account/{account_id}:org/{organization_id}:project/{project_id}`
+           - Leave org and/or project blank for an account level or org level connector.  For example, account level would be `account/{account_id}:org/:project/`
    :::
 
    ```json
@@ -283,21 +312,39 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
    }
    ```
 
-5. **Apply the Role Configuration**:  
+#### OIDC claims supported in Harness for HashiCorp Vault
+
+**Trusted Claims:**
+
+  - Harness validates the following claims internally to determine if the principal has the required permissions. When configuring trust on the Cloud Provider side, only these specific claims and their exact values should be accepted. Any claims outside this list must be rejected to avoid unauthorized access.
+    * `account_id`
+    * `organization_id`
+    * `project_id`
+
+### Custom Parameters 
+
+Here are the custom parameters for the Hashicorp Vault (OIDC JWT):
+
+- **account_id**: The account id of your Harness account.
+- **organization_id**: The organization id of your Harness organization.
+- **project_id**: The project id of your Harness project. 
+
+
+6. **Apply the Role Configuration**:  
    
    Use the following command to create the role in Vault:
    ```  
    curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" --request POST --data @role-config.json http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/role_assigned
    ```  
 
-6. **Verify the Role**:  
+7. **Verify the Role**:  
    
    To ensure that the role was created successfully, run the following command:
    ```  
    curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/role_assigned
    ```  
 
-7. **Configure in HashiCorp Vault in Harness**
+8. **Configure in HashiCorp Vault in Harness**
 
      ![hashicorp](../static/harshicorp.gif)
 

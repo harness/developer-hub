@@ -2,6 +2,8 @@
 title: Cloud Cost Management (CCM) FAQs
 description: This article addresses some frequently asked questions about Harness Cloud Cost Management (CCM).
 # sidebar_position: 2
+redirect_from:
+- /docs/faqs/cloud-cost-management-faqs
 ---
 
 ## Connectors
@@ -161,7 +163,7 @@ Currently, it's not supported. However, you can leverage dashboard for the same.
 
 When we ingest cloud data, we make certain modifications to the tags/labels. However, with cluster data, we ingest the labels without any alterations.
 
-More information can be found [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws/#analyze-aws-cost).
+More information can be found [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/aws-dashboard/#analyze-aws-cost).
 
 ### Why does the dropdown in the GPU cost tracking perspective only show instance types that have already been used, and not all available GPU instance types across clouds?
 
@@ -227,13 +229,8 @@ You can set up perspectives/folders for each of those and then limit access to t
 
 ### We have found that some AWS EC2 instances are still visible in recommendations list even they are stopped before 2-3 days ago. is it the usual behavior for stopped ec2s?
 
-We display recommendations that are up to approximately four days old. Even if an instance is stopped within four days after generating the recommendation, we still show that recommendation.
-
-Once a recommendation is generated, it is not updated at a later time. So regardless of the instance's current state it will be visible for about four days.
-
-### We have found that some AWS EC2 instances are still visible in recommendations list even they are stopped before 2-3 days ago. is it the usual behavior for stopped ec2s?
-
-If the instance is in a stopped state it takes ~2-3 days for the recommendation to disappear, same is the behavior for terminated instances too.
+Yes, this can happen if the stop action wasn't captured during the next sync cycle after the recommendation was made. In such cases, the recommendation disappears because the instance is no longer in a running state.
+However, if the recommendation is not marked as applied, the potential savings won’t be attributed.
 
 ### Do we support moving the recommendations from the Applied to Open recommendations section?
 
@@ -255,7 +252,7 @@ Yes. CCM supports the following features and functionalities in the SMP environm
 - Anomalies
 - Recommendations
 
-For more information, go to [CCM on Harness Self-Managed Enterprise Edition](https://developer.harness.io/docs/category/ccm-on-harness-self-managed-enterprise-edition).
+For more information, go to [CCM on Harness Self-Managed Enterprise Edition](/docs/category/self-managed-enterprise-edition).
 
 ### Why aren't there any actions for RDS recommendations?
 

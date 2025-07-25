@@ -33,10 +33,7 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 - Currently, you cannot add artifacts to your Harness SAM service.
 - You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` option in the Harness SAM Build step. You can manage the Kubernetes settings for these steps as needed. For more information, go to [AWS documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html#ref-sam-cli-build-options).
 - Harness doesn't support a controlled AWS SAM Rollback after a deployment pipeline failure occurs. AWS SAM will deploy the lambda function and if it fails during stack creation, cloudformation will roll it back. After a succesful AWS SAM deployment, Harness is not able to initiate a rollback, due to the AWS SAM cli's limitation to trigger rollback on demand.
-
-:::info
-Currently OIDC connectors are not supported in AWS SAM deployments. 
-:::
+- AWS OIDC connectors are supported for AWS SAM deployments starting with delegate version `855xx` or later.
 
 ## Demo Video
 
@@ -70,7 +67,7 @@ For more details, go to [Managing resource access and permissions](https://docs.
 
 ## Containerized step images
 
-#### Old Images
+### Old Images
 
 Harness supports different images for Build and Deploy for AWS SAM deployment. 
 
@@ -86,27 +83,31 @@ and  [`harnessdev/sam-deploy`](https://hub.docker.com/r/harnessdev/sam-deploy/ta
 
 We recommend you to use the new images that we have introduced with multiple runtime support.
 
-#### New Images
+### New SAM Images
 
-Harness support [multiple runtime images](https://hub.docker.com/r/harness/aws-sam-plugin/tags) for **nodejs20**, **nodejs18**, **python3.11**, **python3.12**, **ruby3.2**, **java8**, **go1.24**   and **java17**.. These are Linux AMD64 images. 
+Harness support [multiple runtime images](https://hub.docker.com/r/harness/aws-sam-plugin/tags) for **nodejs22**, **nodejs20**, **nodejs18**, **python3.11**, **python3.12**, **ruby3.2**, **java 21**,**java17**, **java8** and **go1.22**. These are Linux AMD64 images.
 
-Unlike old images, in new images a single image has the capabiliity of handling all the SAM steps.
+Unlike old images, in new images a single image has the capability of handling all the SAM steps.
 
- Runtimes | Images |
-| --- | --- |
-| nodejs 20 | harness/aws-sam-plugin:nodejs20.x-1.120.0-1.0.1-beta-linux-amd64 |
-| nodejs 18 | harness/aws-sam-plugin:nodejs18.x-1.120.0-1.0.1-beta-linux-amd64 |
-| java 17   | harness/aws-sam-plugin:java17-1.120.0-1.0.1-beta-linux-amd64 |
-| python 3.11   | harness/aws-sam-plugin:python3.11-1.20.0-1.0.1-beta-linux-amd64 |
-| python 3.12   | harness/aws-sam-plugin:python3.12-1.120.0-1.0.1-beta-linux-amd64 |
-| ruby 3.2   | harness/aws-sam-plugin:ruby3.2-1.20.0-1.0.1-beta-linux-amd64 |
-| java 8   | harness/aws-sam-plugin:java8-1.112.0-1.0.1-beta-linux-amd64 |
-| go 1.24   | harness/aws-sam-plugin:go1.x-1.113.0-1.0.1-beta-linux-amd64 |
+ Runtimes | Images | Version
+| --- | --- | --- |
+| **nodejs 22** | [harness/aws-sam-plugin:nodejs22.x-1.140.0-1.1.1-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/nodejs22.x-1.140.0-1.1.1-beta-linux-amd64/images/sha256-2c86f637d25d70422978fbcbff99daf4013b943d0fcf9b30b692879f34574f78) | nodejs v22.14.0 |
+| **nodejs 20** | [harness/aws-sam-plugin:nodejs20.x-1.138.0-1.1.1-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/nodejs20.x-1.138.0-1.1.1-beta-linux-amd64/images/sha256-ae3229171e1d6c52d19e1c8f85f938e64241215b3e85d2d0aaaea4905ca49ae7) | nodejs v20.19.0 |
+| **nodejs 18** | [harness/aws-sam-plugin:nodejs18.x-1.138.0-1.1.1-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/nodejs18.x-1.138.0-1.1.1-beta-linux-amd64/images/sha256-2b925c5548b8ebb767af7b589ba8f7210f84760e3e38087a75dcef0c74c59943) | nodejs v18.20.7 |
+| **java 21** | [harness/aws-sam-plugin:java21-1.140.0-1.1.1-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/java21-1.140.0-1.1.1-beta-linux-amd64/images/sha256-483ded06cad3c9b0de01231e96a4c7381e3f4b6a47c813d8c52cf2fc318381e3) | openjdk 21.0.6 |
+| **java 17** | [harness/aws-sam-plugin:java17-1.138.0-1.1.1-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/java17-1.138.0-1.1.1-beta-linux-amd64/images/sha256-ece79d208f913eb3517180a3e763825073adb119fb8ce5598f5d11fa221148d4) | openjdk 17.0.11 |
+| **java 8** | [harness/aws-sam-plugin:java8-1.112.0-1.1.1-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/java8-1.112.0-1.1.1-beta-linux-amd64/images/sha256-78db9ae25aa1852adc2348d06205f5b98552809329825d09a88204bf9a1ca45a) | openjdk 1.8.0_372 |
+| **python 3.12** | [harness/aws-sam-plugin:python3.12-1.138.0-1.1.1-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/python3.12-1.138.0-1.1.1-beta-linux-amd64/images/sha256-6201ab0dc6931872c7276bd39e628b1c0bd33b08dda14c764ceeb8748f711a11) | Python 3.12.9 |
+| **python 3.11** | [harness/aws-sam-plugin:python3.11-1.138.0-1.1.1-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/python3.11-1.138.0-1.1.1-beta-linux-amd64/images/sha256-b6afcc2c2301dd5f1d49b12e2cc108c280fbfdddfa45782c082b797cd52496ec) | Python 3.11.11 |
+| **ruby 3.2** | [harness/aws-sam-plugin:ruby3.2-1.138.0-1.1.1-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/ruby3.2-1.138.0-1.1.1-beta-linux-amd64/images/sha256-cef5ee6382d07c9975db4486c4d7254ec5a9e55ccf16f5cffc6628adbe9a8aa8) | ruby 3.2.8 |
+| **go 1.22** | [harness/aws-sam-plugin:go1.x-1.113.0-1.1.1-beta-linux-amd64](https://hub.docker.com/layers/harness/aws-sam-plugin/go1.x-1.113.0-1.1.1-beta-linux-amd64/images/sha256-ba58774a45ef3f87d45984a12151112ecc97a5e6eef242e58d648402d7f703ad) | go1.22.1 |
 
 Now, let's understand the runtime image:-
 ![](./static/multiple-runtime-sam.png)
 
 For ECR users, you can access these images via the [ECR Image Repository for SAM Plugin](https://gallery.ecr.aws/harness/harness/aws-sam-plugin).
+
+For GAR users, you can access these images via the [GAR Image Repository for SAM Plugin](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Faws-sam-plugin?inv=1&invt=Ab2GmA).
 
 :::important note
 These images can only be used in containerized step.

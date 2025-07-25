@@ -16,7 +16,7 @@ You can view and manage module subscription details as well as license informati
 
 ## Developer 360 subscriptions
 
-You can subscribe to Harness modules using the [Developer 360](https://www.harness.io/pricing) subscription model. The Developer 360 subscription offers three plans: **Free**, **Startup**, and **Enterprise**. All plans include [Harness AI](/docs/category/harness-ai), our AI Development Assistant.
+You can subscribe to Harness modules using the [Developer 360](https://www.harness.io/pricing) subscription model. The Developer 360 subscription offers two plans: **Free** and **Enterprise**. All plans include [Harness AI](/docs/category/harness-ai), our AI Development Assistant.
 
 :::info
 This model spans all modules except Cloud Cost Management, which is on a *Cloud Spend* model.
@@ -30,7 +30,7 @@ A **Developer**  contributes to code development, deployment, security, maintena
 
 These users leverage Harness to create code repositories, build, test, secure, and deploy software, conduct chaos experiments, manage SLOs, handle feature flags, and more.
 
-The definition of a **Developer** (and any associated consumption entitlements) remains consistent across all plans: **Free**, **Startup**, and **Enterprise**.
+The definition of a **Developer** (and any associated consumption entitlements) remains consistent for **Free** and **Enterprise** plans.
 
 ### Modules with direct developer tracking
 
@@ -40,7 +40,7 @@ The following Harness modules are integral to a **Developer's** daily workflow. 
 - **Continuous Integration (CI):** All users on the Harness Platform who have permission to access Harness CI module are considered as **CI Developers** and consume a license.
 - **Internal Developer Portal (IDP):** All users on the Harness Platform who have permission to access Harness IDP module are considered as **IDP Developers** and consume a license.
 - **Feature Flags (FF):** All users on the Harness Platform who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered as **FF Developers** and consume a license.
-- **Software Engineering Insights (SEI):** All users whose actions or artifacts are read from configured Source Code Management or Issue / Project Management tool(s) are considered as **SEI Developers** and consume a license.
+- **Software Engineering Insights (SEI):** SEI allows admins to explicitly define (import) the list of Developers for whom Insights must be generated. All Developers in this list, explicitly consume a Developer license. These Developers may never login to the Harness Platform, but consume a license by virtue of having Insights generated for their Engineering related work. Insights may often be accessed by management / engineering leadership.
 
 
 ### Modules with no direct developer tracking (consumption entitlements)

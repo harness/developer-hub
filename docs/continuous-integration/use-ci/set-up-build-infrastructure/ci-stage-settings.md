@@ -66,6 +66,14 @@ These settings are for the [Harness SCS module](/docs/software-supply-chain-assu
 
 [Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. There are many uses for these variables. For example, stage variables are inherently available to steps as environment variables.
 
+#### Stage Timeout
+By default Harness applies a timeout (of 1 hour) on CI stages to ensure pipelines don't run indefinitely. Users can increase stage timeout to a maximum of 24 hours.
+
+:::note
+On self-managed build infrastructure, when the CI_ENABLE_LONG_TIMEOUTS feature flag is enabled, the maximum timeout can now be set to 35 days. This is especially useful for long running jobs like ML training or large test suites.
+
+:::
+
 ## Infrastructure
 
 These settings are found on the **Infrastructure** tab after adding a stage to a pipeline.
@@ -152,7 +160,7 @@ The **Execution** tab is where you add steps to the stage. For details about dif
 
 ## Advanced
 
-The **Advanced** tab contains settings for [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md), [conditional executions](/docs/platform/pipelines/step-skip-condition-settings), [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), and [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
+The **Advanced** tab contains settings for [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md), [conditional executions](/docs/platform/pipelines/step-skip-condition-settings), [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), and [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps). 
 
 :::info
 

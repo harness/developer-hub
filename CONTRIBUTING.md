@@ -9,7 +9,7 @@
 ![STO](static/img/icon_sto.svg)
 ![IACM](static/img/icon_iacm.svg)
 ![CE](static/img/icon_ce.svg)
-![IR](static/img/icon-ir.svg)
+![AISRE](static/img/icon-ir.svg)
 ![SEI](static/img/icon_sei.svg)
 ![CET](static/img/icon_cet.svg)
 ![IDP](static/img/icon_idp.svg)
@@ -49,6 +49,10 @@ PRs should follow these guidelines in order to be merged successfully:
 - Please click **Enable auto-merge** on your PR to merge it automatically if it receives the required approvals and passes the builds. 
 
 - Please **Assign** a PR to yourself if you are its creator. 
+
+## Style Guide
+
+If you are contributing to HDH, make sure you are compliant with our [Style Guide](./docs/hdh/style-guide).
 
 ## Local development guide
 

@@ -19,11 +19,9 @@ You can use any of the [integrated scanners](#supported-scanners-for-sca) that p
 
 Below is the list of supported SCA scanners in Harness STO
 
-1. **[OSV Scanner](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference)**  
-2. **[OWASP](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference)**
-3. **[Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-code-scanning)**
-4. **[Veracode](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference)**
-5. **[Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz)**  
+import SCAScanners from '/docs/security-testing-orchestration/set-up-scans/shared/sca-scanners.md';
+
+<SCAScanners />
 
 If the scanner you use for SCA is not listed, you can explore additional [scanners](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) that are compatible with the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference). If the Custom Scan step does not support the scanner you need, you can use the [Custom Ingestion](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference) step to ingest and process your scan results.
 
