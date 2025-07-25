@@ -152,6 +152,38 @@ Consider [creating plugins](./use-drone-plugins/custom_plugins.md) for scripts t
 :::
 
 </TabItem>
+<TabItem value="ssh" label="Connect with SSH">
+
+This example demonstrates how to set up SSH authentication in a **Run** step, such as when connecting to a private Git server or remote machine.
+
+The SSH private key must be stored in Harness as a **File-type Secret** to be used securely in the pipeline.
+
+```yaml
+- step:
+    type: Run
+    name: SSH setup and build
+    identifier: SSH_Build
+    spec:
+      shell: Sh
+      command: |-
+        mkdir -p ~/.ssh
+        echo '<+secrets.getValue("account.your-ssh-private-key")>' > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
+        git clone git@github.com:your-org/private-repo.git
+        ./build.sh
+```
+:::tip
+
+- Replace `account.your-ssh-private-key` with your actual secret reference.
+
+- The `StrictHostKeyChecking=no` flag disables host verification. For production pipelines, consider managing known hosts instead.
+
+- Ensure your build image has OpenSSH tools (ssh, git, etc.) installed.
+:::
+
+</TabItem>
+
 </Tabs>
 
 ## Add the Run step
