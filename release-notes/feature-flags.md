@@ -34,11 +34,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 2.0.13
 
-*Optimizes SSE event handling after Primary Proxy restarts or disconnections from Harness SaaS*
 
-Previously, when the Primary Proxy reconnected, it would send patch events for all flags to SDKs to force a full refresh. This safeguarded against missed changes in SaaS while the Proxy was disconnected and couldn’t update replicas or SDKs. With this update, the Primary Proxy now sends patch events only for resources that actually changed during the disconnection. To enable this, we updated the shape of the data the Proxy stores in Redis for tracking resources. This change is backwards compatible — upgrading from Proxy versions <= 2.0.12 to 2.0.13 requires no manual steps. On startup, the Proxy automatically migrates the old data structure to the new one.
+**New features and enhancements**:
 
-*Important*: If you upgrade to version 2.0.13 and later decide to revert back to 2.0.12, you must configure the REDIS_DB to use a different database index. Version 2.0.13 changes the format of the data stored in Redis in a way that is not compatible with 2.0.12. By pointing 2.0.12 to a different Redis DB, the Proxy will start with a fresh store and avoid any compatibility issues.
+- Optimized SSE event handling for Primary Proxy restarts or disconnections from Harness SaaS. The Proxy now sends patch events only for resources that changed while it was disconnected, instead of patching all flags. This reduces unnecessary updates and improves efficiency. The change is backward compatible and includes an automatic data structure migration in Redis on startup. (FFM-12528)
+
+**Security and Maintenance**: 
+
+- Updated Redis data model to support more efficient resource tracking during disconnections. While upgrading from Proxy version 2.0.12 or earlier to 2.0.13 requires no manual action, reverting back to 2.0.12 after an upgrade requires setting a different `REDIS_DB` index to avoid data incompatibility. (FFM-12441)
 
 #### Version 2.0.12
 
