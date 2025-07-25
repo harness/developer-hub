@@ -17,7 +17,7 @@ This guide provides detailed information about our Java SDK. All of our SDKs are
 The Java SDK supports JDK8 and later.
 
 :::tip[Rule-based segments support]
-Rule-based segments are supported in SDK versions 4.16.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+Rule-based segments are supported in SDK versions 4.16.1 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
 
 Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
 :::
@@ -37,7 +37,7 @@ Import the SDK into your project using one of the following two methods:
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>java-client</artifactId>
-    <version>4.16.0</version>
+    <version>4.16.1</version>
 </dependency>
 ```
 
@@ -45,7 +45,7 @@ Import the SDK into your project using one of the following two methods:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:java-client:4.16.0'
+compile 'io.split.client:java-client:4.16.1'
 ```
 
 </TabItem>
