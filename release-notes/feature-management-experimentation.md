@@ -24,11 +24,13 @@ You can now break down your experiment results by dimensions such as browser, de
 
 ![Experiments dashboard](./static/fme/treatment-details.png)
 
-Using the dimensions dropdown menu, you can view the direction, impact, and metric value for each segment compared against the control group’s performance. For example, your experiment may show an overall positive result, but drilling down into specific dimensions (like state, payment type, or browser) might reveal that certain groups experienced negative or neutral impact. This gives you a more nuanced understanding of your results and another tool for refining your hypothesis or identifying follow-up experiments. 
+Select a dimension group from the dropdown menu to view the direction, impact, and metric value for each segment compared against the control group's performance. For example, your experiment may show an overall positive result, but drilling down into specific dimensions (like state, payment type, or browser) might reveal that certain groups experienced negative or neutral impact. 
+
+This gives you a more nuanced understanding of your results and another tool for refining your hypothesis or identifying follow-up experiments. 
 
 ![Experiments dashboard](./static/fme/dimensions-menu.png)
 
-This is especially helpful for identifying how specific segments are impacted by changes, so you can make more confident rollout decisions based on deeper insights.
+This is especially helpful for identifying how specific segments are impacted by changes, so you can make more informed experiment decisions based on deeper insights.
 
 #### Related documentation
 
