@@ -65,7 +65,7 @@ Once you've gathered the required GCP details, follow these steps in the Harness
 
 ### Step-by-Step Guide
 
-### Step 1: Add GCP Account Details
+#### Step 1: Add GCP Account Details
 1. In the wizard, enter a name for your connector (e.g., `gcp-demo-prod`).
 2. Specify **Project ID**.
 3. (Optional) Add a description and tags to help identify this connector later.
@@ -73,7 +73,7 @@ Once you've gathered the required GCP details, follow these steps in the Harness
 
 ---
 
-### Step 2: Select or Create a Billing Export
+#### Step 2: Select or Create a Billing Export
 Cloud Billing export to BigQuery enables you to export detailed Google Cloud billing data (such as usage and cost estimate data) automatically throughout the day to a BigQuery dataset that you specify.
 1. If your Billing Export already exists, select it from the list.
 2. If not, return to GCP and follow the steps in the [Before You Start](#before-you-start) section to create one. 
@@ -81,7 +81,7 @@ Cloud Billing export to BigQuery enables you to export detailed Google Cloud bil
 
 ---
 
-### Step 3: Choose Requirements
+#### Step 3: Choose Requirements
 1. **Cost Visibility** is selected by default and is required.
 2. (Optional) You can enable any of the following features (they can also be added later):
    - Resource Inventory Management
@@ -91,7 +91,7 @@ Cloud Billing export to BigQuery enables you to export detailed Google Cloud bil
 
 ---
 
-### Step 4: Authentication (Conditional)
+#### Step 4: Authentication (Conditional)
 
 If you have selected **Optimization by AutoStopping** or **Cloud Governance**, in previous step, you can set up Authentication. If not selected, this step will not be prompted.
 
@@ -102,7 +102,7 @@ You can enable authentication for your GCP account via
 
 -----
 
-### Step 5: Grant Permissions
+#### Step 5: Grant Permissions
 
 Based on what you selected in **Step 3 - Choose Requirements**, you will be prompted to grant permissions to your service account alongwith the steps to be followed.
 
@@ -112,7 +112,7 @@ Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) fo
 
 ---
 
-### Step 6: Verify the Connection
+#### Step 6: Verify the Connection
 1. Harness will attempt to validate the connection using your inputs.
 2. If this step fails, it's usually because GCP has not yet delivered the first billing export.
    - Wait up to **24 hours** after setting up the billing export before trying again.
