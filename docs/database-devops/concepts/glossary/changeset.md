@@ -14,6 +14,13 @@ keywords:
   - changelog
   - runAlways
   - runInTransaction
+tags:
+  - liquibase-integration
+  - changeset-basics
+  - harness-db-devops
+  - ci-cd
+  - rollback-strategy
+  - dbops
 ---
 
 import Head from '@docusaurus/Head';

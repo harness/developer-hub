@@ -112,7 +112,7 @@ Notice:
 Using space in author name is not recommended. Prefer to use dot/dash separated names.
 :::
 
-### `include` and `includeAll` tags
+### include and includeAll tags
 Liquibase provides two primary tags for referencing other changelog files in your root changelog: include and includeAll. The `include` tag allows you to include a single SQL file in your changelog: 
 
 <Tabs>
@@ -224,7 +224,7 @@ insert into test1 (id,  name) values (2, 'josh');
 </Tabs>
 
 :::caution 
-When using SQL format for your changelog files, rollback actions are required. For more information about implementing rollbacks, refer to [Automatic and Custom Rollback](../automatic-and-custom-rollback.md).
+When using SQL format for your changelog files, rollback actions are required. For more information about implementing rollbacks, refer to [Automatic and Custom Rollback](../features/automatic-and-custom-rollback.md).
 :::
 
 A clear and consistent SQL file structure allow teams to manage database changes with properly liquibase formatted SQL files. By following the best practices for directory organization, changeset formatting, spacing, and rollback definitions, you can ensure your changelogs are well-structured, maintainable, and CI/CD-ready.

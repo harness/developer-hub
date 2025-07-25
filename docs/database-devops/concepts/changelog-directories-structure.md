@@ -1,6 +1,7 @@
 ---
 title: Working with Changelog Directory Structure
-description: Working with Changelog Directory Structure
+description: Learn how to organize Liquibase changelogs in Harness DB DevOps for scalable, auditable, and rollback-friendly database deployments.
+sidebar_position: 2
 keywords:
   - database changelog management
   - liquibase changelog structure
@@ -16,7 +17,12 @@ keywords:
   - devops database migration
   - harness dbops changelog
   - rollback strategies
-sidebar_position: 2
+tags:
+  - changelog-structure
+  - harness-db-devops
+  - liquibase-integration
+  - dbops-best-practices
+  - rollback-strategy
 ---
 
 This guide explains how to effectively manage changelog file directories. A well-organized changelog file directory structure is crucial for maintaining database changes across multiple instances and environments.
@@ -231,7 +237,7 @@ There are two primary approaches to managing multiple database instances:
 
 ### 1. Branch-Based Approach
 
-Use different branches for different environments:
+Use different branches for [different environments](/docs/database-devops/gitops/environment-by-branch)
 
 ```
 main branch     → Development
@@ -259,7 +265,7 @@ Below attached screen shows the structure of branch-based approach, where we hav
 
 Maintain instance-specific directories in the main branch:
 
-``` bash
+```bash
 db/
 ├── envs/
 │   ├── qa/

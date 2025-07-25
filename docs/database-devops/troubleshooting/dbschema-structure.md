@@ -4,6 +4,15 @@ description: Understand why overview is a reserved identifier and should not be 
 sidebar_label: Reserved DB Schema Identifier
 sidebar_position: 8
 keywords: [database devops, db schema, identifier, reserved keyword, overview, API restrictions]
+tags:
+  - database-devops
+  - db-schema
+  - reserved-keywords
+  - identifier
+  - overview
+  - api-restrictions
+  - dbops
+  - harness-db-devops
 ---
 
 When defining a **DB Schema** in Harness Database DevOps, each schema must have a unique `identifier`. This identifier serves as the reference handle across pipeline configurations, API calls, and backend services.

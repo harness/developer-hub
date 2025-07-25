@@ -1,8 +1,24 @@
 ---
-title: What's supported by Harness DB DevOps
-description: Platforms and technologies supported by Harness DB DevOps
+title: What's Supported by Harness DB DevOps
+description: Explore supported database platforms, source control providers, and feature flags available in Harness DB DevOps.
 sidebar_label: What's supported
-sidebar_position: 10
+sidebar_position: 2
+keywords:
+  - supported databases
+  - dbops compatibility
+  - harness db devops support
+  - supported scm providers
+  - feature flags
+  - harness platform support
+  - early access features
+  - database devops
+  - harness dbops
+tags:
+  - harness-db-devops
+  - supported-platforms
+  - compatibility
+  - feature-flags
+  - database-support
 ---
 
 This page describes supported platforms and technologies for Harness DB DevOps specifically.
@@ -19,6 +35,7 @@ Harness Database DevOps currently supports several database platforms, including
 4. **PostgreSQL**
 5. **MySQL**
 6. **Google Cloud Spanner**
+7. **CockroachDB**
 
 It's worth noting that **MongoDB** is a NoSQL database which brings some limitations to your experience of Harness DB DevOps if this is your database of choice. 
 
@@ -29,11 +46,11 @@ One of the limitations being:
 Additionally, for sources to read the change log from, Harness Database DevOps supports:
 
 - **Git**
-- **Github**
-- **Bitbucket**
-- **Gitlab**
-- **AzureRepo**
-- **Artifactory**
+- **GitHub**
+- **BitBucket**
+- **GitLab**
+- **Azure Repo**
+- **Artifactory Registry**
 
 These platforms allow users to manage database changes effectively within their pipelines, integrating database operations with application code management.
 
@@ -48,6 +65,6 @@ For more information about early access features, including early access feature
 
 | Flag | Description |
 | ---  | ----------- |
-| `CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE` | Enable to avoid any impact to your [Database DevOps environments](/docs/database-devops/use-database-devops/get-started/onboarding-guide.md). |
+| `CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE` | Enable to avoid any impact to your [Database DevOps environments](/docs/database-devops/get-started/onboarding-guide.md). |
 | `DBOPS_ENABLED` | Enable to access Harness Database DevOps in your environment. |
 | `CDS_EXECUTION_LIST_CARD_VIEW` | Enable to access details of schemas applied to instances in Harness Pipeline execution list in your environment. |

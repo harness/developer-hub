@@ -9,6 +9,17 @@ keywords:
   - database rollback tag
   - automated rollback harness
   - schema rollback pipeline
+  - database devops
+  - harness dbops
+  - dbops rollback
+  - changeset recovery
+  - safe schema deployment
+tags:
+  - harness-db-devops
+  - rollback-strategy
+  - liquibase-integration
+  - automated-deployments
+  - database-recovery
 ---
 
 import Tabs from '@theme/Tabs';
@@ -18,7 +29,7 @@ Harness offers multiple mechanisms for rolling back schema changes—ensuring da
 
 ## Rollback A Database Schema 
 
-Rollback in Harness Database DevOps refers to reverting one or more [changesets](../concepts-and-features/glossary/changeset.md) that were previously applied to a database. There are two primary methods you can use, depending on your rollback strategy and operational context:
+Rollback in Harness Database DevOps refers to reverting one or more [changesets](../concepts/glossary/changeset.md) that were previously applied to a database. There are two primary methods you can use, depending on your rollback strategy and operational context:
 
 - **Rollback to a Tag** – Revert the database to a specific snapshot marked by a previously created Liquibase tag.
 - **Rollback by Count** – Revert a specific number of the most recently applied changesets in sequential order.
@@ -130,7 +141,7 @@ In some cases, you might need to roll back changes that were successfully applie
 For these scenarios, Harness DB DevOps provides a 'Rollback Schema' pipeline step. This step can be configured in your pipeline to roll back to a particular tag or number of changeset, allowing you to revert your database schema to a known good state.
 
 :::info
-You can also use custom rollback scripts or commands in your pipeline to handle more complex rollback scenarios. Refer to [Custom Rollback Statement](../concepts-and-features/automatic-and-custom-rollback.md#custom-rollback-statements) for more details.
+You can also use custom rollback scripts or commands in your pipeline to handle more complex rollback scenarios. Refer to [Custom Rollback Statement](../features/automatic-and-custom-rollback.md#custom-rollback-statements) for more details.
 :::
 
 ## FAQ

@@ -3,13 +3,32 @@ title: Database DevOps Key Concepts
 sidebar_label: DB DevOps Key Concepts
 description: Basic terminology and concepts related to Harness Database DevOps
 sidebar_position: 1
+keywords:
+  - database devops
+  - db devops
+  - harness db devops
+  - harness database devops
+  - harness dbops
+  - harness database
+  - harness db
+  - harness devops
+  - continuous integration
+  - continuous delivery
+  - ci cd
+tags:
+  - database-devops
+  - db-devops
+  - harness-db-devops
+  - key-concepts
+  - glossary
+  - dbops
 ---
 
 import BetaIcon from '/img/icon_beta.svg';
 
 <BetaIcon />
 
-This topic covers basic terminology and concepts related to Database DevOps. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md). For information about using DB DevOps, go to [Harness Database DevOps onboarding guide](/docs/database-devops/use-database-devops/get-started/onboarding-guide.md).
+This topic covers basic terminology and concepts related to Database DevOps. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md). For information about using DB DevOps, go to [Harness Database DevOps onboarding guide](/docs/database-devops/get-started/onboarding-guide.md).
 
 ## Database
 

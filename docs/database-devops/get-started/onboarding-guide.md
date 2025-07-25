@@ -3,6 +3,25 @@ title: Database DevOps onboarding guide
 description: A self-service onboarding guide for Harness DB DevOps.
 sidebar_position: 4
 sidebar_label: Onboarding guide
+keywords:
+  - database devops
+  - db devops
+  - harness db devops
+  - harness database devops
+  - harness dbops
+  - harness database
+  - harness db
+  - harness devops
+  - continuous integration
+  - continuous delivery
+  - ci cd
+tags:
+  - database-devops
+  - db-devops
+  - harness-db-devops
+  - onboarding-guide
+  - getting-started
+  - dbops
 ---
 
 import BetaIcon from '/img/icon_beta.svg';
@@ -60,7 +79,7 @@ The database schema defines a set of SQL changes that can be deployed to one or 
    - **Connector** - Code Repositories hosted on either GitHub, Azure, GitLab, BitBucket or etc.
 
 :::info
-To learn more about Git connectors settings, reference this [Harness Git connector settings](../../../platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference.md) documentation for more.
+To learn more about Git connectors settings, reference this [Harness Git connector settings](../../platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference.md) documentation for more.
 :::
 
 ### 3.Connect with Database Instance 
@@ -69,7 +88,7 @@ Before we can deploy our Database Schema, we need to connect a database instance
 
 1. Under "DB Instances", click  “Add New DB Instance".
 2. Select main (or your environment branch).
-3. Click New JDBC Connector and Enter Name, JDBC URL & credentials, select the harness [delegate](../../../platform/delegates/delegate-concepts/delegate-overview.md), then Save and Finish.
+3. Click New JDBC Connector and Enter Name, JDBC URL & credentials, select the harness [delegate](../../platform/delegates/delegate-concepts/delegate-overview.md), then Save and Finish.
    - **Name** - A name to identify the database instance.
    - **JDBC URL** - The JDBC connection string for your database instance. Learn More about [JDBC connection strings](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/).
    - **Username** - The username to connect to the database.

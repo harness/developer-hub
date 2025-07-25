@@ -1,7 +1,25 @@
 ---
 title: Audit Trails
-description: Learn More about How you can track events through Audit Trails
+description: Learn how to track and review changes, access, and events in Harness DB DevOps using audit trails for security, governance, and compliance.
 sidebar_position: 10
+keywords:
+  - audit trails
+  - harness dbops
+  - database audit
+  - dbops logging
+  - event tracking
+  - db activity monitoring
+  - governance
+  - database compliance
+  - database security
+  - audit logs
+tags:
+  - harness-db-devops
+  - audit-trail
+  - database-compliance
+  - security-and-governance
+  - activity-logging
+
 ---
 
 ## Introduction

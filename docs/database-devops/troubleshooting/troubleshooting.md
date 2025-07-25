@@ -3,6 +3,25 @@ title: Troubleshooting Guide
 description: Solutions to common pain points while using Harness Database DevOps.
 sidebar_label: Troubleshooting guide
 sidebar_position: 1
+keywords:
+  - troubleshooting
+  - database devops
+  - db devops
+  - harness db devops
+  - harness database devops
+  - harness dbops
+  - harness database
+  - harness devops
+  - continuous integration
+  - continuous delivery
+  - ci cd
+tags:
+  - troubleshooting
+  - database-devops
+  - db-devops
+  - harness-db-devops
+  - ci-cd
+  - dbops
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

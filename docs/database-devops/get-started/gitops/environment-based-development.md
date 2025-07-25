@@ -114,4 +114,4 @@ You can learn more about triggers in Harness Database DevOps [Learn how to confi
 
 Deploying by environment branches in Harness Database DevOps provides alignment with traditional application deployment strategies and gives teams clear separation of concerns. While it introduces more Git management overhead, it enables safer promotion paths and more isolated testing.
 
-Just ensure to manage drift carefully, use [contexts](../../../concepts-and-features/glossary/context.md) to limit dev-only changes, and maintain strong PR discipline when promoting between branches.
+Just ensure to manage drift carefully, use [contexts](../../concepts/glossary/context.md) to limit dev-only changes, and maintain strong PR discipline when promoting between branches.
