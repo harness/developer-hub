@@ -386,7 +386,52 @@ config:
 
 ## Troubleshoot Test Intelligence
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+### Troubleshooting
+
+#### Ignoring Build and Cache Intel Directories in Apache RAT Scans
+
+If you are using the Apache RAT plugin for license compliance, it may incorrectly mark Harness Build Intelligence or Cache Intelligence directories as invalid files. This can cause unnecessary failures in your build pipeline.
+
+To avoid this, explicitly exclude the following directories in your pom.xml file.
+
+**Directories to Ignore**
+- Build Intelligence:
+`/harness/.mvn`
+
+- Cache Intelligence:
+`/harness/.m2`
+`/harness/.mvn` (also applies to cache-related scans)
+
+**Example: Update to pom.xml**
+Add the following snippet under the `<build>` section to configure the apache-rat-plugin to ignore these paths:
+
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.rat</groupId>
+      <artifactId>apache-rat-plugin</artifactId>
+      <version>0.15</version> <!-- Or use the latest version -->
+      <configuration>
+        <excludes>
+          <exclude>/harness/.mvn</exclude>
+          <exclude>/harness/.m2</exclude> <!-- Optional, but recommended -->
+        </excludes>
+      </configuration>
+      <executions>
+        <execution>
+          <phase>verify</phase>
+          <goals>
+            <goal>check</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for more questions and issues related to Test Intelligence, including:
 
 * [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
 * [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
