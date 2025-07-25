@@ -24,6 +24,19 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## July 2025
 
+### Version v1.150.7
+
+<!-- 2025-07-25 -->
+
+#### New Features and Enhancements
+* [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz) step now recognizes exempted issues in Wiz and no longer lists them as active in STO. Previously exempted issues may now appear as **Remediated** after the next Wiz scan (STO-9229).
+
+#### Fixed Issues
+
+- Fixed an issue in the Vulnerabilities tab where filtering by Scanner in pipeline executions with multiple [Custom Scanners](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) did not work as expected. Previously, selecting one custom scanner would select all; this has been corrected, and single selection now works as intended (STO-9010, ZD-84685).
+- Fixed an issue in the Vulnerabilities tab where selecting an option from the scanner filter dropdown during a [Custom Scan](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step caused other dropdowns to fail to populate, preventing the target name and variant from rendering correctly (STO-9376, ZD-88728). 
+
+
 ### Version v1.148.4
 
 <!-- 2025-07-17 -->
