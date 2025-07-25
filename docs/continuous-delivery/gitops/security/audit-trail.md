@@ -73,7 +73,7 @@ For applications created and managed via **ApplicationSets**, only **Delete** an
 
 Delete events triggered by the **GitOps reconciler** are also tracked.
 
-For example, if a GitOps-managed resource (such as an Application or Agent) is deleted directly from the cluster (for instance, via Argo CD), Harness detects the change, reconciles the state, and records the corresponding delete event in the audit trail.
+For example, if a GitOps-managed resource (such as an Application or Repository) is deleted directly from the cluster (for instance, via Argo CD), Harness detects the change, reconciles the state, and records the corresponding delete event in the audit trail.
 
 ## Viewing YAML Differences
 
