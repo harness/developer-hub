@@ -178,9 +178,9 @@ Once a budget is deleted, it cannot be restored.
 
 ## FAQs
 
-### What is Forecast Cost and how is it calculated?
+### What is Forecasted Cost and how is it calculated?
 
-Harness CCM displays a *Forecast cost* for every budget. It estimates how much you will spend **by the end of the current period** if your current pace continues.
+Harness CCM displays a *Forecasted Cost* for every budget. It estimates how much you will spend **by the end of the current period** if your current pace continues.
 
 #### Calculation 
 
