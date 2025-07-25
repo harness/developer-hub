@@ -2105,7 +2105,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "html",
-          value: '<span style="color:#000000; font-weight:1000;"> New to IDP? </span>',
+          value: '<span style="color:#6B7280; font-weight:1000;"> New to IDP? </span>',
           className: "horizontal-bar",
         },
         "internal-developer-portal/overview",
