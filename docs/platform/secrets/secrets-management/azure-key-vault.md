@@ -96,6 +96,37 @@ New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName "Reader" -Scope /
 ```
 For details and examples, go to Microsoft Azure's [Add or remove role assignments](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell#application-at-a-subscription-scope) documentation.
 
+### Required Permissions for Azure Key Vault Connectors
+
+While the **Reader** role enables Harness to list available vaults, it does **not** provide sufficient permissions to **create or update secrets**, which is required during **Test Connection** and certain runtime operations.
+
+To ensure full functionality and a successful Test Connection, you must assign **additional roles** with write access to Key Vault secrets.
+
+| **Role**                   | **Purpose**                                | **Can List Vaults** | **Can Read Secrets** | **Can Write Secrets** | **Passes Test Connection** |
+|----------------------------|---------------------------------------------|----------------------|-----------------------|------------------------|-----------------------------|
+| Reader                     | Lists vaults only                           | ✅                   | ❌                    | ❌                     | ❌                          |
+| Key Vault Secrets User     | Read-only access to secrets                 | ✅ (with Reader)      | ✅                    | ❌                     | ❌                          |
+| Key Vault Secrets Officer  | Read + write access to secrets              | ✅                   | ✅                    | ✅                     | ✅                          |
+| Key Vault Administrator    | Full control (incl. policies and RBAC)      | ✅                   | ✅                    | ✅                     | ✅                          |
+
+#### Least-Privilege Option
+
+For a secure, least-privilege setup:
+- Assign **Key Vault Secrets Officer** to your App Registration or Service Principal at the **vault level**.
+- The **Reader** role is not required if Secrets Officer is already granted.
+
+#### About the Test Connection Behavior
+
+When you test the connector in Harness, it attempts to create a **temporary dummy secret** (e.g., `harnessazurevaultvalidation`) to validate permissions. This requires the **`setSecret`** action, which is not included in the Reader or Secrets User roles.
+
+If your organization prefers not to assign write permissions:
+- You can use a combination of **Key Vault Secrets User** and **Reader** roles.
+- In this case, the **connector test will fail**, but Harness will still be able to **read existing secrets** at runtime, and your pipelines can succeed.
+
+:::important
+If you choose the read-only approach, it's recommended to validate secret access manually after connector creation.
+:::
+
 ## Add an Azure Key Vault secret manager in Harness
 
 You can add an Azure Key Vault connector in account or org or project [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
