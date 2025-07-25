@@ -3,7 +3,29 @@ title: Metric details and trends
 sidebar_position: 20
 ---
 
-Validate your metric by understanding its value and impact over time, dispersion, and sample population.
+## Overview
+
+Validate your metric by understanding its value and impact over time, its variability and sample size, and how it differs across dimensions using the Impact snapshot chart.
+
+## Dimensional analysis for Experiment metrics
+
+The **Impact snapshot** chart in the Experiment Metric details dashboard supports [dimensional analysis](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/) in the same way as it does for feature flags. 
+
+To view dimensional analysis on a metric in an Experiment:
+
+1. Go to **Experiments** and open the desired experiment.
+1. Scroll to the **Metric details** section and click on a metric.
+1. On the **Impact snapshot** chart, select a dimension from the dropdown.
+1. The line chart updates to show values for each dimension.
+
+   ![](../../static/impact-dimensions.png)
+
+Before using dimensional analysis in Experiments:
+
+* You must send [event properties](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/#before-you-start) that match the dimension key.
+* An admin must [configure dimensions and values](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/#configuring-dimensions-and-values) to enable them for analysis.
+
+[Multiple comparison correction](/docs/feature-management-experimentation/experimentation/key-concepts/multiple-comparison-correction/) is not applied to dimensional analysis.
 
 ## Feature flag Metric impact tab
 
