@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="Generic" targetPage="/docs/artifact-registry/supported-formats" />
 
 Use a Generic repository to store raw files like `zip`, `war` and `tar` files, test reports and configuration files.
 While it is not necessarily used for binaries, you can store binaries as well.
@@ -33,5 +30,3 @@ Your registry name must start with a letter and can include `lowercase alphanume
 </Tabs>
 
 ---
-
-By following this guide, you can effectively set up and manage a Generic Artifact Registry within Harness, streamlining your file storage workflows.
