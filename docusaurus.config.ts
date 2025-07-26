@@ -561,7 +561,7 @@ const config: Config = {
         sidebarPath: require.resolve('./sidebars.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
-        exclude: ['**/shared/**', '**/static/**'],
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         routeBasePath: 'docs', //CHANGE HERE
         remarkPlugins: [
           [

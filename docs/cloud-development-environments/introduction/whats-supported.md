@@ -7,6 +7,48 @@ sidebar_position: 1
 
 Harness Gitspaces (CDEs) support several Git providers, IDEs, and deployment models to help you set up your development environment.
 
+## Deployment Models
+
+### Harness Hosted
+In Harness Hosted, all Gitspaces are hosted and managed completely by **Harness Control Plane**. 
+
+### Self Hosted
+We support the following cloud infrastructure providers for self-hosted Gitspaces:
+- [Google Cloud Platform (GCP)](https://cloud.google.com/docs)
+- [Amazon Web Services (AWS)](https://docs.aws.amazon.com/)
+
+Read more about the [Harness CDE Deployment Models](/docs/cloud-development-environments/introduction/self-hosted.md). 
+
+## Regions Available
+
+### Harness Hosted Regions
+
+We currently support the following regions for **Harness Hosted Gitspaces**:
+
+1. US West
+2. EU West
+
+If you need other regions, please contact us at **[cde-interest@harness.io](mailto:cde-interest@harness.io)**, and we can discuss more to meet your requirements.
+
+### Self Hosted Regions
+
+For Self Hosted Gitspaces, you can configure **regions of your choice** based on your infrastructure. For more details, refer to [Regions in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#configure-regions).
+
+## Machine Types
+
+### Harness Hosted Machines
+
+We currently support the following machine types for **Harness Hosted Gitspaces**:
+
+1. **Standard:** 2-core CPU, 8GB RAM, and 30GB disk size
+2. **Large:** 4-core CPU, 32GB RAM, and 30GB disk size
+
+If you need larger machines, please contact us at **[cde-interest@harness.io](mailto:cde-interest@harness.io)**, and we can discuss custom configurations to meet your requirements.
+
+### Self Hosted Machines
+
+For Self Hosted Gitspaces, you can configure **machine types of your choice** based on your infrastructure. For more details, refer to [Machines in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md#add-machines-in-gitspace-infrastructure).
+
 ## Git Providers
 
 Harness Gitspaces support two types of Git providers:
@@ -53,42 +95,3 @@ To pull your private Docker images, you need to connect Harness to your artifact
 2. [Docker Registry](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) (any Docker V2-compliant registry)
 3. [Amazon ECR](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-aws-connector)
 
-## Deployment Models
-
-### Harness Hosted
-In Harness Hosted, all Gitspaces are hosted and managed completely by **Harness Control Plane**. 
-
-### Self Hosted
-Currently, we only support [GCP Cloud VMs](https://cloud.google.com/products/compute?hl=en) as the infrastructure option for Self Hosted Gitspaces. Support for [AWS Cloud VMs](https://aws.amazon.com/products/compute/?nc2=h_prod_cp_hub) is in progress and will be available soon.
-
-Read more about the [Harness CDE Deployment Models](/docs/cloud-development-environments/introduction/self-hosted.md). 
-
-## Regions Available
-
-### Harness Hosted Regions
-
-We currently support the following regions for **Harness Hosted Gitspaces**:
-
-1. US West
-2. EU West
-
-If you need other regions, please contact us at **[cde-interest@harness.io](mailto:cde-interest@harness.io)**, and we can discuss more to meet your requirements.
-
-### Self Hosted Regions
-
-For Self Hosted Gitspaces, you can configure **regions of your choice** based on your infrastructure. For more details, refer to [Regions in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#configure-regions).
-
-## Machine Types
-
-### Harness Hosted Machines
-
-We currently support the following machine types for **Harness Hosted Gitspaces**:
-
-1. **Standard:** 2-core CPU, 8GB RAM, and 30GB disk size
-2. **Large:** 4-core CPU, 32GB RAM, and 30GB disk size
-
-If you need larger machines, please contact us at **[cde-interest@harness.io](mailto:cde-interest@harness.io)**, and we can discuss custom configurations to meet your requirements.
-
-### Self Hosted Machines
-
-For Self Hosted Gitspaces, you can configure **machine types of your choice** based on your infrastructure. For more details, refer to [Machines in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md#add-machines-in-gitspace-infrastructure).
