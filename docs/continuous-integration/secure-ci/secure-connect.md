@@ -35,6 +35,21 @@ You can [configure Secure Connect](#configure-secure-connect) in minutes. If you
 | ------ | --------- |
 | <ul><li>Extension of your existing private infrastructure</li><li>Dedicated infrastructure</li><li>Encryption at rest and in transit</li><li>No passwords stored using OIDC</li><li>No customer assets stored in CI Cloud</li></ul> | <ul><li>Enable Secure Connect in one click</li><li>Doesn't require admin approval</li><li>Multi-cloud/on-prem support</li></ul> |
 
+## Network Requirements for Secure Connect
+
+To use Secure Connect, ensure the following network ports are open for outbound connections from your environment:
+
+- **TCP port 7000**: Required for the control connection between the Secure Connect client (`frpc`) and the Harness Secure Connect server (`frps`). This port must be open for the client to establish and maintain the secure tunnel.
+- **TCP ports 30000-30099**: Each customer is assigned a specific port in this range, called the remote port. This port is used for forwarding traffic from Harness Cloud to your environment through the secure tunnel.
+
+**Sequence of events:**
+1. Harness Cloud sends traffic to your assigned remote port (300xx) on the Secure Connect server.
+2. The server (`frps`) uses the control connection (port 7000) to notify your client (`frpc`) to initiate a workpool TCP connection.
+3. The client (`frpc`) establishes the workpool connection outbound to the server.
+4. Once the tunnel is established, data flows securely between Harness Cloud and your private environment.
+
+> **Note:** Both port 7000 and your assigned remote port (300xx) must be open for Secure Connect to function properly.
+
 ## Configure Secure Connect
 
 :::note
@@ -150,14 +165,14 @@ docker run -it \
 
 ### Use Secure Connect environment variables to route other clients
 
-When you enable Secure Connect, Harness sets two environment variables: `HARNESS_HTTP_PROXY` and `HARNESS_HTTPS_PROXY`.
+When you enable Secure Connect and your pipeline uses a connector that is configured with Secure Connect (for example, a git clone step), Harness sets two environment variables: `HARNESS_HTTP_PROXY` and `HARNESS_HTTPS_PROXY`.
 
-You can use these environment variables in cURL commands to tunnel other clients through the established secure tunnel, for example:
+> **Note:** The Secure Connect proxy environment variables are only available after the pipeline uses Secure Connect at least once (such as by accessing a connector that has Secure Connect enabled). After this, all subsequent steps in the pipeline will have access to these variables.
 
+You can use these environment variables in cURL commands or other tools to tunnel requests through the established secure tunnel. For example, to access an internal or staging URL:
+
+```bash
+curl -x "$HARNESS_HTTPS_PROXY" https://example.com
 ```
-curl -x "$HARNESS_HTTPS_PROXY" YOUR_ENDPOINT_URL
-```
 
-Replace `YOUR_ENDPOINT_URL` with the URL that you want to route through the secure tunnel. For example, you could route a private Bitbucket domain like `https://bitbucket.myorg.com/`.
-
-
+Replace the example URL with the endpoint you want to route through the secure tunnel, such as a private Bitbucket domain (`https://bitbucket.myorg.com/`) or any internal/dev/QA resource accessible via the tunnel.
