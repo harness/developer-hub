@@ -1,84 +1,97 @@
 ---
-title: Centralised notification for Pipeline
-description: Configure pipeline notification rules at one place
+title: Centralised notification
+description: Configure notifications based on specific rules and conditions in pipelines, delegates, and other Harness components to keep teams informed of critical events.
 sidebar_position: 3
 ---
 
 import PipeEvents from './static/set_pipeline_events.png';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-:::note
-Currently, the Centralised Notification feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`, and Pipeline specific notifications are behind `PIPE_CENTRALISED_NOTIFICATION`. You will need both these flags turned on to use this feature. Contact [Harness Support](mailto:support@harness.io) to enable them.
+:::info Note
+Currently, the Centralised Notification feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable them.
 :::
 
-With notifications management, you can configure notifications for the following resource types:
+Harness Centralized Notifications enable you to send notifications based on rules and conditions across pipelines, delegates, and other Harness modules. With notifications management, you can easily configure and manage alerts to stay informed about critical events in your workflows.
 
-1. Pipeline
-2. Delegate
-3. Chaos Experiment 
+Centralized notifications can be configured for the following resource types:
 
-To receive notifications for specific events or conditions related to these resource types, you need to configure appropriate rules. While notifications can be set up for all the above resources, we will configure a centralised notification for Pipelines at a specific scope for now. 
+1. Pipeline 
+2. Delegate 
+3. Chaos Experiment
+4. Service Level Objectives
 
-You can set up notification for Pipeline at all the [scopes](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization** and **Project**. 
+This article explains how to configure notifications for Pipelines and Delegates in Harness across different [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes).
 
-### **Account Level**
+This guide uses the Account scope as an example, but the steps apply similarly to Organization and Project scopes. To configure notifications, follow the steps below.
 
-At account level, you will be able to configure notifications for pipelines across a **Specific Organization** or **All Organization**.
+1. Navigate to **Account Settings** → **General**, select **Notifications Management**. 
 
-![](./static/account_level_notification_management.png)
+        ![account-level-notification](./static/organization-setting-notification-management.png)
 
-### **Organization Level**
-
-At Organization level, you will be able to configure notifications for pipeline across a **Specific Project** or **All Projects**.
-
-![](./static/organization_level_notification_manage.png)
-
-### **Project Level**
-
-At the pipeline level, you can configure notifications for **All Pipelines**.
-
-![](./static/project_level_notification_manage.png)
-
-## Setting Up Notifications Management
-
-In this example, we are going to discuss setting up notification management of Pipeline resource at Organization Level:-
-
-1. In Harness, go to **Organization Settings**.
-2. Under **General**, select **Notifications Management**. 
-
-        ![](./static/Organization_setting_notification_management.png)
-
-3. Under **Overview**, provide **Notification Name** and **Continue** to select Resource type.
+2. In the **Overview** section, provide a **Notification Name** and click **Continue**. Then, select the appropriate **Resource Type**. Depending on your selection, proceed with either the **Pipeline** or **Delegate** tab.
 
         ![](./static/new-notification-setup.png)
 
-4. Under **Resources**, Select Resource Type as **Pipeline**. 
+## Centralized notification
+
+<Tabs>
+<TabItem queryString="pipeline" value="Pipeline" Label="pipeline" default>
+
+### Configure Notifications for Pipelines
+
+:::info Note
+  Pipeline specific notifications are behind `PIPE_CENTRALISED_NOTIFICATION`. 
+:::
+
+3. Select **Pipeline** as the **Resource Type** in the **Resources** section.
 
         ![](./static/resource_type.png)
 
-        Under **Select Project** you can either select **All Projects** under the organization or you can select **Specified Project** if you want to configure notification for specific projects within the organization. Click on **Continue** to set conditions for notification.
+   Next, choose the project scope: **All Projects** under the Organization, or **Specified Project** to target particular projects
+
+   Click **Continue** to move to the condition setup.
 
         ![](./static/pipeline-resource.png)
 
-5. Under **Condition** , select **+ Add Condition** to define pipeline events based on which you want to be notified.
-    
+4. Click **+ Add Condition** to define when notifications should be triggered based on pipeline events.
+
         ![](./static/resource-pipeline-condition.png)
 
-        Under events you can select the following **pipeline events**:-
+   :::info Note
+   Stage start, success, and failure events apply to all stages in a pipeline. For more granular control (such as specific stages), consider using [pipeline-level notifications](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
+   :::
 
-        1. Pipeline Start
-        2. Pipeline Success
-        3. Pipeline Failed
-        4. Stage Start
-        5. Stage Success
-        5. Stage Failed
+   Provide a **Condition Name**, select relevant **Pipeline Events**, and click **Continue** to choose the notification channel.
 
-        :::info note
-        Stage start/success/failed events will apply to all stages within a pipeline. There is no option to configure notifications for specific stages, if you want to do that you can configure it via [Pipeline level notification](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
-        :::
+   <img src={PipeEvents} width="500"/>
 
-        Under **Create Condition** provide, Condition Name and **Select Pipeline Events**. Click on **Continue** to set channel where you want to send the notification.
+</TabItem>
 
-        <img src={PipeEvents} width="500"/>
+<TabItem value="Delegate" label="Delegate">
+
+### Centralized Notifications for Delegates
+
+3. Choose **Delegate** as the **Resource Type**.
+
+   You can either notify: **All Delegates**, or Only Delegates that match specific **tags** (up to five supported)
+
+   ![delegate-resource-type](./static/delegate-resource-type.png)
+
+4. Click **+ Add Condition** to set up alerts based on delegate events.
+
+   ![delegate-condition](./static/delegate-condition.png)
+
+   Enter a **Condition Name**, and select from the following **Delegate Events**:
+
+        * Delegate Disconnected
+        * Delegate Expired
+        * Delegate Expiring in 1 to 4 Weeks
+
+   Proceed by clicking **Continue** to configure your notification channel.
+
+</TabItem>
+</Tabs>
 
 6. Optionally you can add **Notification Template** to get custom notifications based on the event. To learn more, go to [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template).
 
@@ -114,7 +127,6 @@ In this example, we are going to discuss setting up notification management of P
 
         ![](./static/submit-notification.png)
 
-You can set up notification at [Account](#account-level) and [Project Level](#project-level) following the same steps outlined above.
 
 
 
