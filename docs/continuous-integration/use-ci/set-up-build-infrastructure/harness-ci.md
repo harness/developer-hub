@@ -79,18 +79,54 @@ API key authentication is required. For more information about API keys, go to [
    {
     "status": "SUCCESS",
      "data": {
-       "addonTag": "harness/ci-addon:1.14.4",
-       "liteEngineTag": "harness/ci-lite-engine:1.14.4",
-       "gitCloneTag": "harness/drone-git:1.1.0-rootless",
-       "buildAndPushDockerRegistryTag": "plugins/kaniko:1.3.1",
-       "buildAndPushECRTag": "plugins/kaniko-ecr:1.3.1",
-       "buildAndPushGCRTag": "plugins/kaniko-gcr:1.3.1",
-       "gcsUploadTag": "plugins/gcs:1.2.6",
-       "s3UploadTag": "plugins/s3:1.0.5",
-       "artifactoryUploadTag": "plugins/artifactory:1.0.6",
-       "cacheGCSTag": "plugins/cache:1.3.8",
-       "cacheS3Tag": "plugins/cache:1.3.8",
-       "securityTag": "harness/sto-plugin:latest"
+       "addonTag": "harness/ci-addon:1.16.92",
+       "liteEngineTag": "harness/ci-lite-engine:1.16.92",
+       "addonTagRootless": "harness/ci-addon:rootless-1.16.92",
+       "liteEngineTagRootless": "harness/ci-lite-engine:rootless-1.16.92",
+       "gitCloneTag": "harness/drone-git:1.6.9-rootless",
+       "buildAndPushDockerRegistryTag": "plugins/kaniko:1.10.6",
+       "buildAndPushECRTag": "plugins/kaniko-ecr:1.11.0",
+       "buildAndPushACRTag": "plugins/kaniko-acr:1.11.2",
+       "buildAndPushGCRTag": "plugins/kaniko-gcr:1.10.1",
+       "buildAndPushGARTag": "plugins/kaniko-gar:1.11.1",
+       "buildAndPushBuildxDockerRegistryTag": "plugins/buildx:1.3.3",
+       "buildAndPushBuildxECRTag": "plugins/buildx-ecr:1.3.1",
+       "buildAndPushBuildxGARTag": "plugins/buildx-gar:1.3.1",
+       "buildAndPushBuildxACRTag": "plugins/buildx-acr:1.3.1",
+       "gcsUploadTag": "plugins/gcs:1.6.3",
+       "s3UploadTag": "plugins/s3:1.5.3",
+       "artifactoryUploadTag": "plugins/artifactory:1.7.6",
+       "cacheGCSTag": "plugins/cache:1.9.8",
+       "cacheS3Tag": "plugins/cache:1.9.8",
+       "cacheProxyImage": "harness/harness-cache-server:1.7.4",
+       "securityTag": "harness/sto-plugin:latest",
+       "sscaOrchestrationTag": "harness/ssca-plugin:0.39.0",
+       "sscaEnforcementTag": "harness/ssca-plugin:0.39.0",
+       "sscaArtifactSigningTag": "harness/ssca-artifact-signing-plugin:0.39.0",
+       "sscaArtifactVerificationTag": "harness/ssca-artifact-signing-plugin:0.39.0",
+       "sscaCdxgenOrchestrationTag": "harness/ssca-cdxgen-plugin:0.39.0",
+       "provenanceTag": "harness/slsa-plugin:0.39.0",
+       "slsaVerificationTag": "harness/slsa-plugin:0.39.0",
+       "sscaComplianceTag": "harness/ssca-compliance-plugin:0.39.0",
+       "iacmTerraform": "plugins/harness_terraform:dev",
+       "iacmTerragrunt": "plugins/harness_terraform:dev",
+       "iacmAnsible": "plugins/harness_terraform:dev",
+       "iacmOpenTofu": "plugins/harness_terraform:dev",
+       "iacmCheckov": "plugins/harness_checkov:dev",
+       "iacmTFCompliance": "plugins/harness_tf_compliance:dev",
+       "iacmTFLint": "plugins/harness_tf_lint:dev",
+       "iacmTFSec": "plugins/harness_tf_sec:dev",
+       "iacmModuleTest": "plugins/harness_terraform:dev",
+       "cookieCutter": "harness/cookiecutter:latest",
+       "createRepo": "harness/createrepo:latest",
+       "directPush": "harness/directpush:latest",
+       "registerCatalog": "harness/registercatalog:latest",
+       "createCatalog": "harness/createcatalog:latest",
+       "slackNotify": "harness/slacknotify:latest",
+       "createOrganisation": "harness/createorganisation:latest",
+       "createProject": "harness/createproject:latest",
+       "createResource": "harness/createresource:latest",
+       "updateCatalogProperty": "harness/updatecatalogproperty:latest"
      },
      "metaData": null,
      "correlationId": "08919155-a6d6-4bd3-8401-6b86318c85ca"
@@ -124,11 +160,11 @@ API key authentication is required. For more information about API keys, go to [
    --data-raw '[
        {
            "field": "gitCloneTag",
-           "value": "harness/drone-git:1.5.4-rootless" 
+           "value": "harness/drone-git:1.6.9-rootless" 
        },
        {
            "field": "gcsUploadTag",
-           "value": "plugins/gcs:1.3.0"
+           "value": "plugins/gcs:1.6.3"
        }
    ]'
    ```
@@ -160,9 +196,9 @@ Currently, the feature to download rootless **lite-engine**, **ci-addon**, and *
 :::
 
 Customers who are trying to utilize Windows Images with a rootless operation can do so by downloading the appropriate images.  The rootless Windows version is available as of the following version, or higher:
-* `harness/ci-addon:rootless-1.16.71`
-* `harness/ci-lite-engine:rootless-1.16.71`
-* `harness/drone-git:1.6.7-rootless`
+* `harness/ci-addon:rootless-1.16.92`
+* `harness/ci-lite-engine:rootless-1.16.92`
+* `harness/drone-git:1.6.9-rootless`
 
 ## Troubleshoot Harness images
 
