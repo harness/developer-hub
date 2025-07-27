@@ -58,3 +58,6 @@ When a Custom Secret Manager Template is updated, any Custom Secret Managers or 
     - Click Reconcile to open and edit the Secret. The same alert message appears. Click Reconcile again to view the YAML differences between the current and updated versions. Review the changes and reconcile as needed.
 
         ![](../static/reconcile-secret.gif)
+
+
+Reconciliation ensures that Custom Secret Managers and Secrets stay aligned with the latest Secret Manager template updates, preventing configuration mismatches and pipeline failures. By using the guided process in the UI, you can quickly apply changes and maintain consistent, error-free configurations.        
