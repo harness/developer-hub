@@ -6,45 +6,29 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness now allows you to create Service Accounts at the account level and use them at the project level without needing to create additional service accounts for each project. This feature simplifies Service Account management and ensures efficient pipeline execution across different projects.
+Harness lets you create a service account at a higher scope and use it in lower scopes. For example, an account-level service account can be used across organizations and projects, simplifying management and ensuring efficient pipeline execution.
 
-## Steps to Configure and Use Account-Level Service Accounts for Project-Level Pipelines
+In this example, an account-level service account is used at the project level. The same approach applies for the organization scope.
 
-1. Create a Service Account at the [Account Level](./add-and-manage-service-account.md#create-a-service-account)
+### Steps to Configure Hierarchical Service Accounts
 
-2. Generate an [API Key](./add-and-manage-service-account.md#manage-api-keys) for the Service Account
+1. Create a Service Account at the [Account Level](./add-and-manage-service-account.md#create-a-service-account). 
 
-3. Create a [Role](./add-manage-roles.md#create-a-role) with the necessary permissions at the Project Level
+2. Create a [Role](./add-manage-roles.md#create-a-role) with the necessary permissions at the Project Level.
 
-4. Create a [Resource Group](./add-resource-groups.md#create-a-resource-group) at the Project Level
+3. Create a [Resource Group](./add-resource-groups.md#create-a-resource-group) at the Project Level.
 
-5. Assign the Role and Resource Group to the Service Account at the Project Level
+4. Now that you’ve created a Service Account at the account scope and a Role and Resource Group at the project scope, you can assign the role and resource group to the Service Account at the project scope by inheriting the account-level Service Account.
 
-   - Using the [Role Assignment API](https://apidocs.harness.io/tag/Role-Assignments#operation/postRoleAssignments), assign the created role to the service account. You need to create the role assignment at the project level, granting the service account permission to execute the pipelines in the resource group.
+   - To Inherit a Service Account, Navigate to your **Project Settings** → **Access Control** → **Service Accounts**. Click on **Inherit Service Account & Assign Roles**.
 
-      Here’s an example payload for the role assignment:
-      ```json
-      {
-         "roleAssignments": [
-            {
-               "resourceGroupIdentifier": "resource_group_identifier",
-               "roleIdentifier": "role_identifier",
-               "principal": {
-                  "scopeLevel": "account",
-                  "identifier": "service_account_identifier",
-                  "type": "SERVICE_ACCOUNT"
-               }
-            }
-         ]
-      }
-      ```
-      `resourceGroupIdentifier`: The identifier for the resource group that includes the pipelines.
-      `roleIdentifier`: The identifier for the role that grants the "Pipeline Execute" permission.
-      `principal`: The service account at the account level to which you're assigning the role.
-      `scopeLevel`: The scope at which the principal exists. In this case, it's at the account level.
+      ![](./static/service-account.gif)
 
-6. Execute the Pipeline Using the Service Account.
-After assigning the role, you can now use the [Pipeline Execution API](https://apidocs.harness.io/tag/Pipeline-Execution#operation/execute-pipeline) to execute the pipelines in the specified resource group. Pass the service account’s `API key` as the `x-api-key` header in your API request.
+   -  Select the Service Account created at the account scope, choose the role and resource group at project scope to bind with it, and click **Apply** to save the changes. 
+
+      ![](./static/service-account-bind.gif) 
+
+5. Once the Service Account is assigned the role and resource group, you can use it to perform actions within the defined permissions. This includes executing pipelines or accessing resources as allowed by the assigned role and resource group.
 
 ## Benefits
 
