@@ -6,7 +6,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness lets you create a service account at a higher scope and use it in lower scopes. For example, an account-level service account can be used across organizations and projects, simplifying management and ensuring efficient pipeline execution.
+Harness lets you create a service account at a higher scope and use it in lower scopes. For example, an account-level service account can be used across organizations and projects, simplifying management and ensuring efficient execution of actions within the assigned permissions.
 
 In this example, an account-level service account is used at the project level. The same approach applies for the organization scope.
 
