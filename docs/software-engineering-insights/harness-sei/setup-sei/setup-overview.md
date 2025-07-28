@@ -78,7 +78,7 @@ With your org tree in place, configure Teams and begin tracking insights. You ca
 
 * [Set up integrations](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/overview)
 * [Set up profiles](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile)
-* [Upload the developer records](/docs/software-engineering-insights/harness-sei/setup-sei/upload-developer-records)
+* [Upload the developer records](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers)
 * [Set up Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree)
 * [Set up & define team settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams)
 * [View insights](/docs/software-engineering-insights/harness-sei/setup-sei/view-insights/insights)
