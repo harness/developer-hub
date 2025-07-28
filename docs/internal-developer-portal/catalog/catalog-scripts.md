@@ -5,9 +5,7 @@ sidebar_label: Service Onboarding Scripts
 sidebar_position: 11
 ---
 
-## [IDP 2.0 – GitHub Multi-Repo Catalog Population Script](https://github.com/harness-community/idp-samples/blob/main/IDP-2.0-Samples/catalog-scripts/idp-catalog-population-multirepo-github.py)
-
-
+## IDP 2.0 – Multi-Repo Catalog Population Script (GitHub)
 
 In large engineering organizations, service sprawl across hundreds or even thousands of GitHub repositories is common. Manually onboarding each service into the Harness Software Catalog — either by creating catalog-info YAMLs individually or configuring one catalog location per repository — quickly becomes unmanageable. Moreover, using the default discovery plugins to register each repository as a location can lead to fragility; a single failure during sync can prevent the entire catalog from updating correctly.
 
