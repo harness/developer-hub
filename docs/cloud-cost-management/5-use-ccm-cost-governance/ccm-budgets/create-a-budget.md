@@ -93,8 +93,14 @@ Harness will send an alert to the specified email addresses and Harness User Gro
 - Specify the **Percentage of Budget** based on the **Actual Cost** or **Forecasted Cost**. Harness sends alerts when the Actual Cost or Forecasted Cost exceeds the threshold.  
 - In **Send Alert To**, select one of the following options to receive budget notifications. 
   1. **Email**: Enter the email address (you can enter more than one email address or email groups).
-  2. **Slack Webhook URL**: Enter the webhook URL.!
+  2. **Slack Webhook URL**: Enter the webhook URL.
 - Click **Save**. Your budget is listed.
+
+:::info
+If your Budget Period is set to **Yearly** and the Budget Breakdown is **Monthly**, you can configure separate alerts for each month.
+
+<DocImage path={require('./static/monthly-alerts.png')} width="60%" height="60%" title="Click to view full-size image" />
+:::
 
 ------
 </TabItem>
@@ -162,7 +168,7 @@ Follow this interactive guide to understand how to navigate and use the Budget D
 
 -------
 
-## Edit/Delete Budgets
+## Edit / Delete Budgets
 
 To edit a budget:
 
@@ -188,7 +194,7 @@ Average Daily Spend = `(H + C) / Dₕ`
 
 **Forecasted Cost**
 - For Daily Budget: `(H + C) / Dₕ`
-- ForWeekly, Monthly, Quarterly, Yearly= `C + AverageDailySpend × R`
+- For Weekly, Monthly, Quarterly, Yearly: `C + AverageDailySpend × R`
 
 Where:
 - **H**: Sum of Actual Cost across all completed periods

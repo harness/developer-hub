@@ -13,9 +13,9 @@ import TabItem from '@theme/TabItem';
   margin: '20px 0'
 }}>
   <p style={{margin: 0}}>
-    <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behing a Feature Flag</strong>
+    <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behind a Feature Flag</strong>
 
-    Budget Groups is currently behind a feature flag `CCM_BUDGET_CASCADES`. Contact Harness Support to have the flag enabled for your account.
+    Budget Groups are currently behind a feature flag `CCM_BUDGET_CASCADES`. Contact Harness Support to have the flag enabled for your account.
   </p>
 </div>
 
@@ -31,7 +31,7 @@ Budget Groups aggregate related budgets and budget groups into one consolidated 
 
 ## Prerequisites
 
-* [Budgets](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget): Budget groups are collection of Budgets or collection of Budget Groups. 
+* [Budgets](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget): A Budget groups is a collection of Budgets or collection of Budget Groups. 
 
 ## Create a Budget Group
 
