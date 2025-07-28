@@ -22,6 +22,8 @@ Start by connecting SEI 2.0 to your engineering systems:
 
 These integrations power the insights you’ll see in SEI.
 
+![](../static/integrations.png)
+
 ### Step 2: Set up profiles
 
 **Profiles** control **what SEI 2.0 measures** and **how it measures it** by enabling or disabling specific metrics and defining which event types power those metrics. They provide a flexible way to customize SEI 2.0 insights to your organization’s goals and workflows.
@@ -45,6 +47,8 @@ SEI 2.0 supports three main types of Profiles, each optimized for different meas
 
 Developers are the foundational unit in SEI 2.0. Every insight, metric, and trend in the platform starts with accurate identification and attribution of developer activity across your toolchain.
 
+![](../static/developers-landing-page.png)
+
 #### Org Tree
 
 The Org Tree represents your organizational hierarchy and structure in SEI 2.0. It provides the foundation for grouping developers and replicating the org hierarchy into SEI 2.0.
@@ -53,6 +57,8 @@ At present, the Org Tree is powered by CSV-based imports from your HRIS system (
 :::tip
 You can download a sample CSV format directly from the UI before uploading your HRIS export.
 :::
+
+![](../static/org-tree-preview.png)
 
 #### Set up resources
 
@@ -66,6 +72,8 @@ With your org tree in place, configure Teams and begin tracking insights. You ca
 * Review & update the developers integration identifiers in the specific teams.
 * Customize & define the performance parameters using the [team settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams).
 * Once setup is complete, you can [view insights at the org tree level](./view-insights/insights) to understand how your organization is performing overall, or [view insights for a specific team](./view-insights/granular-insights) to dive deeper into team-level performance data.
+
+![](../static/efficiency.png)
 
 ### Next steps
 

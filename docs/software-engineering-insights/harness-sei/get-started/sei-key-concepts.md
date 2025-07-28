@@ -34,12 +34,16 @@ Developers are the foundational unit in SEI 2.0. Every insight, metric, and tren
 SEI automatically handles the complexity of identity mapping across systems like GitHub, GitLab, Jira, Bitbucket, PagerDuty, and more so you don’t have to based on developer email.
 Developers can belong to multiple teams across different Org Trees and Projects, based on the grouping logic defined in your Org Tree.
 
+![](../static/developers-landing-page.png)
+
 ### Org Tree
 
 The Org Tree represents your organizational hierarchy and structure in SEI 2.0. It provides the foundation for grouping developers and replicating the org hierarchy into SEI 2.0.
 At present, the Org Tree is powered by CSV-based imports from your HRIS system (e.g., Workday, BambooHR). The CSV must include a contributor attribute (such as ManagerEmail or ManagerID) that defines the reporting relationship between individuals.
 
 Using this structure, SEI 2.0 automatically builds a manager and reportee tree, allowing you to view and analyze metrics in the context of real-world teams and reporting lines.
+
+![](../static/org-tree-preview.png)
 
 :::note Coming Soon
 Multi-level groupings based on custom attributes (e.g., Department → Function → Team) will be supported in future iterations. This will allow organizations to model more complex hierarchies and operational structures, making it easier to analyze engineering performance across departments, locations, and lines of business.
@@ -50,6 +54,8 @@ Multi-level groupings based on custom attributes (e.g., Department → Function 
 Teams are the core unit of measurement in SEI 2.0. Every leaf node in the Org Tree is treated as a Team, making it the fundamental grouping for surfacing insights, applying goals, and driving accountability.
 
 Each Team represents a group of developers working together within the organizational hierarchy and is automatically derived from the Org Tree structure.
+
+![](../static/sei-teams.png)
 
 #### Key Characteristics
 
@@ -96,6 +102,8 @@ SEI 2.0 gives you immediate visibility into what matters most—with powerful, o
     * Lead Time for Changes
     * MTTR
     * Change Failure Rate
+
+![](../static/efficiency.png)
 
 * Productivity: Understand how developers are working across pull requests, reviews, commits, and collaboration. Built for visibility into the day-to-day collaboration and flow of your teams.
   * Metrics included:

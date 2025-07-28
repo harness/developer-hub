@@ -19,8 +19,8 @@ Before setting up your Org Tree, ensure the following:
 
 * You have uploaded your developer records via a CSV driven export from your HRIS system. The CSV is available with the required structure:
   * Each row represents a developer.
-  * Must include at least Email, Manager Email or Manager ID, and optionally Name, Title, Department.
-* You have created the relevant Efficiency and Productivity Profiles.
+  * Must include at least Name, Email & Manager Email, and optionally Title, Role, Department etc
+* You have created the relevant [Efficiency](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) and [Productivity Profiles](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile).
 * You have connected your integrations for:
   * Issue Management (e.g., Jira, Azure Boards)
   * Source Code Management (e.g., GitHub, GitLab)
@@ -33,7 +33,7 @@ The Org Tree in SEI 2.0 is automatically constructed using your organization's d
 To build the Org Tree, SEI reads two key fields from the uploaded developer records:
 
 * **Developer Identifier:** Usually the developer’s email address
-* **Reporting Field:** A reference to their manager (e.g., Manager Email or Manager ID)
+* **Reporting Field:** A reference to their manager (e.g., Manager Email)
 
 Using this data, SEI automatically builds your organizational hierarchy:
 
@@ -42,6 +42,8 @@ Using this data, SEI automatically builds your organizational hierarchy:
 * This hierarchy continues recursively up to the root of the organization.
 
 The result is a complete manager-reportee tree that mirrors your real-world structure.
+
+![](../static/org-tree-step1.png)
 
 #### What this enables
 
@@ -65,24 +67,35 @@ This enhancement will allow you to model complex org structures beyond the manag
 
 ## Set up an Org Tree
 
-1. From the left-hand navigation menu, select **Integration Mapping** and then click **Org Trees**.  
+1. In your Harness Account, go the SEI project and click on Org Tree tab.  
 2. Click the **+ Create Org Tree** button.  
-3. Enter a name for your Org Tree (for example, "SEI Org Tree v2").  
-4. Review the **Developer Records** preview to confirm that the data matches your expectations, especially the manager-reportee relationships.  
-5. Click **Next**.  
-6. A visual representation of your organization’s hierarchy will appear, based on the **Manager Email** field. Click any individual node to view their direct reports.  
-7. To switch to a detailed summary, click the **Table** tab. Here, you can see stats like total teams, root teams, total developers, and any missing or unmatched records.  
-8. Click **Next** to proceed to profile selection.  
-9. Select the relevant profiles that will power your insights:  
+3. Enter a name for your Org Tree.  
+
+![](../static/org-tree-step1.png)
+
+3. Review the **Developer Records** preview to confirm that the data matches your expectations.
+4. Click **Next**. A visual representation of your organization’s hierarchy will appear, based on the **Manager & Reportee** field. Click any individual node to view their direct reports.  
+
+![](../static/org-tree-step2.png)
+
+5. To switch to a detailed summary, click the **Table** tab. Here, you can see stats like total teams, root teams, total developers, and any missing or unmatched records.  
+6. Click **Next** to proceed to profile selection.  
+7.  Select the relevant profiles that will power your insights:  
    * Under **Efficiency Profiles**, choose the profile that you had configured previously for measuring software delivery performance metrics such as DORA.
    * Under **Productivity Profiles**, choose the profile that you had configured previously for measuring developer activity and output.
    * Under **Business Alignment Profiles**, choose the BA profile that you had configured for measuring Business Alignment metrics.
-10. Click **Next**.  
-11. Configure default integrations for all teams in this Org Tree. These can be customized later at the team level:  
+
+![](../static/org-tree-step3.png)
+
+8.  Click **Next**.  
+9.  Configure default integrations for all teams in this Org Tree. These can be customized later at the team level:  
     * Under **Issue Management**, select the default IM type integration that apply to all teams in your organization.  
     * Under **Source Code Management**, select the default SCM integration.
     * Under **Continuous Delivery**, select the default CD integration. 
-12. Click **Save Org Tree** to complete setup. You will see a confirmation message:  
+
+![](../static/org-tree-step4.png)
+
+10. Click **Save Org Tree** to complete setup. You will see a confirmation message:  
    **Org tree created successfully.**
 
 ## What happens next?

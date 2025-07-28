@@ -44,6 +44,8 @@ In this step, choose the integrations that is used by your team for issue manage
 
 The choice of integrations in this page is powered by the profile definition. For example: An Efficiency profile that is configured for using issue management system to measure LTTC & MTTR, CD system to measure deployment frequency & change failure rate will require the team manager to define the issue management system integration & CD system integration.
 
+![](../static/team-1.png)
+
 ### Step 2: Review & update developer identifiers
 
 To measure productivity metrics accurately (e.g., coding days, PR activity), SEI needs to know which developer performed which action in each tool.
@@ -56,6 +58,8 @@ The team managers must manually update their developer records and the respectiv
 * Bitbucket: Username
 
 This step is mandatory for productivity metrics.
+
+![](../static/team-2.png)
 
 :::note
 Developer identifier mapping is manual today, but will be automated in the future using email-based correlation to reduce setup time.
@@ -76,6 +80,8 @@ Use this section to define which tickets or work items are relevant to your team
 #### Configure Projects for your Team
 
 Define the scope of work items relevant to your team using a combination of filters (such as projects, code area etc)
+
+![](../static/team-3.png)
     
 :::info
 Impacts the following metrics if the profile was configured to use Issue Management as the source system:
@@ -96,6 +102,8 @@ To calculate Change Failure Rate and MTTR, SEI needs to know which work items re
 * Issue Type (e.g., Bug, Incident)
 * Labels (e.g., production-incident, sev1)
 
+![](../static/team-4.png)
+
 :::info
 Impacts the following metrics if the profile was configured to use Issue Management as the source system:
 
@@ -109,6 +117,8 @@ Impacts the following metrics if the profile was configured to use Issue Managem
 If your Org Tree includes Business Alignment, use this section to define how work items map to each category.
 
 Business Alignment categories (e.g., Strategic Work, Tech Debt, Customer Commitments) are centrally defined by the SEI Admin in the profile and apply across the organization. Teams configure how to filter work items into these categories using their own logic.
+
+![](../static/team-4.png)
 
 To set up these filters:
 
@@ -138,6 +148,9 @@ Specify which repositories your team uses for development work. Use filters such
 * Repository Name: Equals, Starts With, Contains
 * GitHub Teams: To auto-include all repos a team contributes
 
+![](../static/team-5.png)
+
+
 :::info
 
 Impacts the following metrics if the profile was configured to use Source Code Manager as the source system:
@@ -151,6 +164,7 @@ Impacts the following metrics if the profile was configured to use Source Code M
 
 Identify which branches are considered production or deployment targets. This is essential for accurately calculating Lead Time and Deployment Frequency.
 
+![](../static/team-6.png)
 
 :::info
 
