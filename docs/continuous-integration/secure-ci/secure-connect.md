@@ -39,16 +39,13 @@ You can [configure Secure Connect](#configure-secure-connect) in minutes. If you
 
 To use Secure Connect, ensure the following network ports are open for outbound connections from your environment:
 
-- **TCP port 7000**: Required for the control connection between the Secure Connect client (`frpc`) and the Harness Secure Connect server (`frps`). This port must be open for the client to establish and maintain the secure tunnel.
+- **TCP port 7000**: Required for the control connection between the Secure Connect client and the Secure Connect server. This port must be open for the client to establish and maintain the secure tunnel.
 - **TCP ports 30000-30099**: Each customer is assigned a specific port in this range, called the remote port. This port is used for forwarding traffic from Harness Cloud to your environment through the secure tunnel.
 
 **Sequence of events:**
-1. Harness Cloud sends traffic to your assigned remote port (300xx) on the Secure Connect server.
-2. The server (`frps`) uses the control connection (port 7000) to notify your client (`frpc`) to initiate a workpool TCP connection.
-3. The client (`frpc`) establishes the workpool connection outbound to the server.
-4. Once the tunnel is established, data flows securely between Harness Cloud and your private environment.
+The Secure Connect client contacts the server on port 7000 to request a dedicated port. Once established, any traffic sent to the Secure Connect server on that port will be forwarded to the appropriate client.
 
-> **Note:** Both port 7000 and your assigned remote port (300xx) must be open for Secure Connect to function properly.
+> **Note:** Port 7000 must be open for Secure Connect to function properly. The remote port (300xx) is managed by the Secure Connect server; customers do not need to configure it.
 
 ## Configure Secure Connect
 
