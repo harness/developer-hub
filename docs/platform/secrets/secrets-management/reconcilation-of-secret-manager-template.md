@@ -23,6 +23,10 @@ When a Custom Secret Manager Template is updated, any Custom Secret Managers or 
 
 ## Steps to Reconcile a Secret Manager Template
 
+:::note
+In this example, we’re updating the template from fixed values to runtime inputs, but the same process applies to any variable updates, including those that use expressions.
+:::
+
 1. Create a [Secret Manager Template](/docs/platform/templates/create-a-secret-manager-template) with [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/).
 
 2. Create a [Custom Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/custom-secret-manager/), select the Secret Manager template created in previous step, and complete the setup.
@@ -34,10 +38,6 @@ When a Custom Secret Manager Template is updated, any Custom Secret Managers or 
     :::
 
 4. **Update the Secret Manager Template**: Navigate to your Secret Manager Template, click the More options (three dots), and select Open/Edit Template. Go to the Configuration section and change the values from Fixed value to Runtime Input, as shown below. 
-
-    :::note 
-        In this example, we’re updating the template from fixed values to runtime inputs, but it could be any update related to variables, including those with expressions.
-    :::
 
     ![](../static/reconcile-update-template.gif)
 
