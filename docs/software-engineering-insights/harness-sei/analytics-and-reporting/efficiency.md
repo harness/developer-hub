@@ -52,6 +52,8 @@ Below is a brief overview of each widget on the **Efficiency** tab for SEI 2.0:
 
 ### Lead Time for Changes
 
+![Lead Time for Changes](../static/lead-time.png)
+
 This widget provides insights into how long it takes a code change to move from request to production, spanning all stages: development, review, testing, and deployment.
 
 * **Metrics Displayed**: Average time from request to production, segmented by stage (e.g. coding, review, deployment) over the selected period.
@@ -62,6 +64,8 @@ The following options are available for this widget:
 * **View Breakdown**: Provides a detailed breakdown of lead time by team.
 
 ### Deployment Frequency
+
+![Deployment Frequency](../static/deployment-frequency.png)
 
 This widget provides insights into how often software is successfully released to production, highlighting the cadence of software delivery.
 
@@ -74,6 +78,8 @@ The following options are available for this widget:
 
 ### Change Failure Rate
 
+![Change Failure Rate](../static/change-failure.png)
+
 This widget displays the percentage of deployments that result in a failure or incident in production.
 
 * **Metrics Displayed**: Failure rate, calculated as `(Deployments that caused a failure or incident in production / Total deployments) × 100`.
@@ -84,6 +90,8 @@ The following options are available for this widget:
   * **View Breakdown**: Provides a detailed breakdown of the percentage of deployments that caused a failure in production by team.
 
 ### Mean Time to Restore
+
+![MTTR](../static/mttr.png)
 
 This widget provides insights into how long it takes to recover from a failure or incident in production, helping teams assess responsiveness.
 
