@@ -341,6 +341,49 @@ curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache?accoun
 
 ## Troubleshoot caching
 
+### Ignoring Cache Intel Directories in Apache RAT Scans
+
+If you are using the Apache RAT plugin for license compliance, it may incorrectly mark Harness Cache Intelligence directories as invalid files. This can cause unnecessary failures in your build pipeline.
+
+To avoid this, explicitly exclude the following directories in your pom.xml file.
+
+**Directories to Ignore**
+- Build Intelligence:
+`/harness/.mvn`
+
+- Cache Intelligence:
+`/harness/.m2`
+`/harness/.mvn` (also applies to cache-related scans)
+
+**Example: Update to pom.xml**
+Add the following snippet under the `<build>` section to configure the apache-rat-plugin to ignore these paths:
+
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.rat</groupId>
+      <artifactId>apache-rat-plugin</artifactId>
+      <version>0.15</version> <!-- Or use the latest version -->
+      <configuration>
+        <excludes>
+          <exclude>/harness/.mvn</exclude>
+          <exclude>/harness/.m2</exclude> <!-- Optional, but recommended -->
+        </excludes>
+      </configuration>
+      <executions>
+        <execution>
+          <phase>verify</phase>
+          <goals>
+            <goal>check</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
 
 * [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)

@@ -19,6 +19,18 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 ## July 2025
 
+### Version: 1.36.0 , Plugin Version: 0.42.0
+
+#### New features and enhancements
+
+- Added support for AWS authentication - Assume IAM Role with delegate and IRSA, enabling compatibility with environments that restrict the use of AWS secret access keys.
+
+#### Fixed Issues
+
+- Fixed an issue where the [Delete Repos API on the repo listing page](https://apidocs.harness.io/tag/Delete-Repositories#operation/deleteRepositories) deleted all branches in the repository, even when a specific branch was provided. It now deletes only the specified branch. ([ZD-88336](https://harnesssupport.zendesk.com/agent/tickets/88336))
+
+- Fixed `unsupported manifest format` error by dynamically fetching the architecture from the stage infrastructure at runtime instead of using a hardcoded value. ([ZD-86959](https://harnesssupport.zendesk.com/agent/tickets/86959))
+
 ### Version: 1.34.5 , Plugin Version: 0.40.0
 
 #### New features and enhancements
@@ -29,12 +41,12 @@ These release notes describe recent changes to Harness Supply Chain Security.
    - [Component Violations for Artifacts and Code Repositories](/docs/software-supply-chain-assurance/open-source-management/dependencies/component-violations) to flag pipelines for SBOM violations across repositories in different projects.
    - [Component Summary for Artifacts and Code Repositories](/docs/software-supply-chain-assurance/open-source-management/dependencies/component-summary) to display all unique components across artifacts and repositories within your account
 - SBOM now uses the repository name as the default application name. To override this and use `/harness` as the application name, set the stage variable `SYFT_SBOM_NO_SOURCE_NAME=TRUE`. ([ZD-87366](https://harnesssupport.zendesk.com/agent/tickets/87366))
-- Fixed an issue where component searches returned incomplete results. Search is now consistent across all projects and organizations, improving visibility. ([ZD-84422](https://harnesssupport.zendesk.com/agent/tickets/84422))
 
 #### Fixed Issues
 
 - Fixed an issue where updating the integration to include all repositories still showed only the previously selected ones.
 - Fixed an issue where STO container scan results (e.g., JFrog Xray) were not mapped to Artifact SBOM vulnerabilities due to a case mismatch. Now it has been updated to ensure accurate vulnerability mapping. ([ZD-84700](https://harnesssupport.zendesk.com/agent/tickets/84700))
+- Fixed an issue where component searches returned incomplete results. Search is now consistent across all projects and organizations, improving visibility. ([ZD-84422](https://harnesssupport.zendesk.com/agent/tickets/84422))
 
 ## June 2025
 

@@ -233,7 +233,14 @@ Your connector is listed in the **Connectors**.
 ![](static/set-up-cost-visibility-for-azure-13.png)
 
 
-## Granular Permissions for AutoStopping
+## Individual Feature Permissions
+
+### Governance Permissions
+
+- Assign the [**Reader** role](https://docs.azure.cn/en-us/role-based-access-control/built-in-roles/general#reader) to let Harness view resources for governance analysis.
+- If you want Harness to execute automated governance actions, also assign the [**Contributor** role](https://docs.azure.cn/en-us/role-based-access-control/built-in-roles/privileged#contributor).
+
+### Granular Permissions for AutoStopping
 
 <DocImage path={require('./static/granular-azure-one.png')} width="90%" height="90%" title="Click to view full-size image" />
 

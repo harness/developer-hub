@@ -1,6 +1,6 @@
 ---
 title: Configure Command probe
-sidebar_position: 4
+sidebar_position: 2
 description: Guide to configure the command probe inline and with source parameter.
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/probes/cmd-probe-usage

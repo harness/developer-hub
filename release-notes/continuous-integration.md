@@ -43,6 +43,31 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 ## July 2025
 
+### Version 1.88
+
+<!-- 2025-07-21 -->
+
+#### New features and enhancements
+
+- You can now enable path-style addressing for S3 caching in self-hosted builds using DLC by setting the `PLUGIN_PATH_STYLE` environment variable. This allows compatibility with S3 providers that do not support virtual-hosted style URLs. (CI-18346)
+- In Kubernetes builds, CI Manager now retrieves the OIDC token and sets it in the `PLUGIN_OIDC_TOKEN_ID` environment variable. This allows the `aws-oidc` and `gcp-oidc` plugins to work seamlessly, similar to how they operate in Cloud builds. (CI-18317)
+
+#### Fixed issues
+- Resolved an issue where cache upload and restore steps on Windows could fail due to improper handling of backslashes in file paths. (CI-18106)
+- Fixed an issue where GitLab SHA builds failed due to missing host URL resolution. It will now go via delegate flow if selected. (CI-17996, ZD-83042, ZD-86364, ZD-87434)
+- Fixed an issue where missing Kubernetes connector details during capability check caused dry run deletion to fail. The required info is now passed to the delegate task. (CI-17994, ZD-86877, ZD-89248)
+- Fixed an issue with secret masking for JSON-formatted secrets. (CI-13780)
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `plugins/cache`    |  Resolved an issue where cache upload and restore steps on Windows could fail due to improper handling of backslashes in file paths. | 1.9.8              | 1.9.9       |
+| `plugins/docker`    |  The default Drone plugins used in out-of-the-box build steps now emit a step log warning when a Base Image Connector is not configured.  | 20.18.6              | 21.0.1       |
+| `plugins/buildx`    |  Support path-style addressing for S3 caching in self-hosted builds using DLC | 1.3.4              | 1.3.5       |
+| `plugins/buildx-ecr`    |  Support path-style addressing for S3 caching in self-hosted builds using DLC | 1.3.2              | 1.3.3       |
+| `plugins/buildx-acr`    |  Support path-style addressing for S3 caching in self-hosted builds using DLC | 1.3.2              | 1.3.3       |
+| `plugins/buildx-gar`    |  Support path-style addressing for S3 caching in self-hosted builds using DLC | 1.3.2              | 1.3.3       |
+
 ### Version 1.87
 
 <!-- 2025-07-14 -->

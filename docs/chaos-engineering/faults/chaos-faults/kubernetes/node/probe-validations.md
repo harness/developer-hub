@@ -1,6 +1,8 @@
 ---
 title: Best Practices for Probe Validation - Node Level Faults
 sidebar_position: 1
+redirect_from: 
+    - /docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/probe-validations
 ---
 
 This topic describes the best practices to use with resilience probes in Kubernetes node-level chaos faults.

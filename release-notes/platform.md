@@ -140,6 +140,12 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2025
 
+### Version 1.98.x <!--July 22, 2025-->
+
+#### New Feature and Enhancement
+
+- Enhanced the task broadcast mechanism to prevent sending tasks to non-eligible delegates. [PL-58722]
+
 ### Version 1.97.x <!--July 15, 2025-->
 
 #### Fixed issues

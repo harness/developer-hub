@@ -121,6 +121,13 @@ All Catalog and Workflow APIs are now delivered directly through Harness Platfor
 - Any automation or custom processes utilizing Backstage-related APIs will require updates to implement the newer CRUD APIs
 - Catalog Ingestion APIs remain functional as before, though RBAC will now be enforced on updated entities
 
+
+:::info
+As part of the transition to Harness Catalog APIs, API entity definitions currently require absolute URLs `(e.g., https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)`.
+
+Relative file paths `(e.g., ./openapi.yaml)` are not yet supported, but will be available in a future release. 
+:::
+
 We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
 
 ### Single Entity per YAML File

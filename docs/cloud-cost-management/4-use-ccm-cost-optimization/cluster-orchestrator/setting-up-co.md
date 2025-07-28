@@ -400,6 +400,12 @@ helm install harness-ccm-cluster-orchestrator --namespace kube-system harness-cc
 --set clusterOrchestrator.id="<cluster_orchestrator_id>"
 ```
 
+:::tip Advanced Helm options
+For a full list of configurable Helm values (for example, custom taints, tolerations, and extra annotations), review the **Harness CCM Cluster Orchestrator** chart in the Harness Helm repository.
+
+[View the Helm chart on Harness](https://app.harness.io/ng/account/6NTMT--yR7ORXKPqwLDioA/module/code/repos/Helm)
+:::
+
 :::info
 
 If your cluster does not have a OIDC provider arn, use this :-

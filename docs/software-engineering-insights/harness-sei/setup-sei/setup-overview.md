@@ -13,7 +13,7 @@ Follow these steps to get started and customize SEI 2.0 to your team's structure
 
 ### Step 1: Set up integrations
 
-Start by connecting SEI 2.0 to your engineering systems:
+To start using SEI 2.0, you can [configure integrations](./configure-integrations/overview) with your organization's source control, CI/CD, and ticketing tools. 
 
 * Source Control Management Systems (e.g., GitHub, GitLab, Bitbucket)
 * CI/CD Tools (e.g., Harness, GitHub Actions, Jenkins)
@@ -27,7 +27,6 @@ These integrations power the insights you’ll see in SEI.
 ### Step 2: Set up profiles
 
 **Profiles** control **what SEI 2.0 measures** and **how it measures it** by enabling or disabling specific metrics and defining which event types power those metrics. They provide a flexible way to customize SEI 2.0 insights to your organization’s goals and workflows.
-
 
 Each Profile includes which **metrics** are enabled or disabled (e.g., Deployment Frequency, Lead Time, Change Failure Rate) and the **events and signals** that power those metrics.
 
