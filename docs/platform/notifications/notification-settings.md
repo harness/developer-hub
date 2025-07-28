@@ -47,6 +47,32 @@ Learn how to notify users of different pipeline events using popular notificatio
 * You need a Harness pipeline with active delegates and connectors. You can follow the [tutorial to get started with Harness Continuous Delivery (CD)](/docs/continuous-delivery/get-started/cd-tutorials/manifest) to set up a sample pipeline.
 * These steps use [Harness user groups](/docs/platform/role-based-access-control/add-user-groups/) to manage user access. If you want to follow along, create a user group named `notification-demo` at the account level, and then add yourself as a user in that group.
 
+### Configure New Channels to sent notification
+
+A new channel can be configured across all scopes. To set up a channel, go to Settings for your desired scope → General → Notification Management, and click Channels as shown below:
+
+   ![](./static/notify-channel.gif)
+
+1. Click New Channel and enter a Channel Name.
+            
+   ![](./static/new-channel.png)
+
+2. Choose a Connectivity Mode — you can send notifications either directly through the Harness Platform or via a Harness Delegate.
+
+   ![connectivity-mode](./static/connectiviy-mode.png)
+
+   If you choose to send notifications through a Harness Delegate, select the appropriate delegate in the Delegate Setup window.
+
+   ![delegate-mode](./static/delegate-setup.png)
+
+3. Notification Method: Once the connectivity mode is configured, select the [**Channel Type**](#configure-pipeline-notifications) and add details related to the channel type to proceed.
+            
+   :::note
+   If you select the Connectivity Mode as "Connect through a Harness Delegate" and Channel Type as "Email", ensure to add an [SMTP configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration) to which the Harness delegate has access. If this is not done, then the Email notifications will fail.
+   :::
+
+  ![](./static/create-new-channel.png)
+
 ### Configure pipeline notifications
 
 <Tabs>
