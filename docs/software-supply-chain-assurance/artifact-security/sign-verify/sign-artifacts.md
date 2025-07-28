@@ -150,16 +150,6 @@ The following non-container artifact types are supported:
 
 - Web Application Archives (`.war`)
 
-- RPM Packages (`.rpm`)
-
-- Debian Packages (`.deb`)
-
-- Binaries (`.exe`, `.bin`, `.app`)
-
-- Terraform Files (`.tf`)
-
-- Executable Scripts (`.sh`, `.py`, `.bat`, `.ps1`)
-
 - Artifacts that are not listed above will be considered as `Unknown` types.
 
 Follow the instructions below to configure the Artifact Signing step for non-container images:
