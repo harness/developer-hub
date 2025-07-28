@@ -31,12 +31,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### New Features and Enhancements
 
 - Upgraded the [SonarQube step](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) CLI from version `4.7` to `7.1`, introducing security updates and enhancements (STO-9143).
-- [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz) step now recognizes exempted issues in Wiz and no longer lists them as active in STO. Previously exempted issues may now appear as **Remediated** after the next Wiz scan (STO-9229).
 - Improved error messaging for the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference). For example, clearer messages now appear when specifying a key field that does not exist in the JSON input (STO-6110).
 
 #### Fixed Issues
-
-- Fixed an issue in the Vulnerabilities tab where filtering by Scanner in pipeline executions with multiple [Custom Scanners](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) did not work as expected. Previously, selecting one custom scanner would select all; this has been corrected, and single selection now works as intended (STO-9010, ZD-84685).
 - Fixed an issue in the Vulnerabilities tab where selecting an option from the scanner filter dropdown during a [Custom Scan](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step caused other dropdowns to fail to populate, preventing the target name and variant from rendering correctly (STO-9376, ZD-88728). 
 
 
