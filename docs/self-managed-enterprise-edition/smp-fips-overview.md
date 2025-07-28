@@ -98,45 +98,6 @@ managedNodeGroups:
 
 This ensures the node boots with FIPS mode enabled.
 
-## Enable FIPS in Self-Managed Platform (SMP) 
-<!--
-- FIPS in harness 
-    - module supported and how 
-    - what features are supported.
-    -  tabular and descriptive - done
-    - what's supported vs upcoming 
--->
-After verifying that your Kubernetes cluster is FIPS-enabled, proceed with the installation of the latest Self-Managed Platform (SMP) version. Download and extract the Helm chart package.
-
-To enable FIPS mode in your Harness deployment, modify the `values.yaml` file by adding the following configuration under the `global` section:
-
-  ```yaml
-  global:
-    fips: true
-  ```
-
-This setting ensures that the Harness components are deployed in compliance with FIPS 140-2 requirements. Once the configuration is updated, install or upgrade your Helm release using the modified `values.yaml` to apply the changes.
-
-## What Is Supported When FIPS Is Enabled
-
-The following components are tested and supported on FIPS-enabled and enforced SMP environments, focusing on CI, CD, and STO functionalities.
-
-| Category                         | Supported Components                                                                       |
-|----------------------------------|--------------------------------------------------------------------------------------------|
-| Authentication & User Management | Self-managed (Username/Password)<br />SAML (Okta) <br /> SCIM (Okta)                       |
-| Secret Management Connectors     | HashiCorp Vault<br />AWS Secrets Manager                                                   |
-| Cloud Providers                  | AWS Cloud Provider<br />Kubernetes Cluster (via delegate IAM)                              |
-| Code Repositories                | GitHub                                                                                     |
-| Cloud Cost                       | AWS Cloud Cost                                                                             |
-| Artifact Repositories            | Docker Registry<br />Artifactory                                                           |
-| Notification Mechanisms          | SMTP<br />Slack<br />MS Teams                                                              |
-| Deployment                       | Kubernetes<br />Native Helm                                                                |
-| Build                            | Shell<br />Build and Push to ECR<br />Build and Push to Docker<br />Upload Artifacts to S3 |
-| Security Tests | [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference)<br />[Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)<br />[Gitleaks](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)<br />[Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference)<br />[OSV](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference)<br />[Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)<br />[SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) |
-| IACM                             | Supported                                                                                  |
-| SCS                              | Supported                                                                                  |
-
-
 ## Validate FIPS 
 
 To confirm FIPS is active on a node, SSH into the instance and run:
@@ -152,6 +113,48 @@ cat /proc/sys/crypto/fips_enabled
 ```
 
 An output of `1` confirms that the node is running in FIPS mode. Use Kubernetes probes or init containers to validate FIPS status per node.
+
+## Enable FIPS in Self-Managed Platform (SMP) 
+
+After verifying that your Kubernetes cluster is FIPS-enabled, proceed with the installation of the latest Self-Managed Platform (SMP) version. Download and extract the Helm chart package.
+
+To enable FIPS mode in your Harness deployment, modify the `values.yaml` file by adding the following configuration under the `global` section:
+
+  ```yaml
+  global:
+    fips: true
+  ```
+
+This setting ensures that the Harness components are deployed in compliance with FIPS 140-2 requirements. Once the configuration is updated, install or upgrade your Helm release using the modified `values.yaml` to apply the changes.
+
+### Delegates in FIPS Mode
+
+When SMP is running in FIPS mode, any delegate downloaded will automatically include the configuration parameter:
+
+```bash
+  FIPS_ENABLED=true
+```
+
+This setting ensures that the delegate runs in FIPS-compliant mode, aligning with the security requirements of the FIPS-enabled SMP environment.
+
+## What Is Supported When FIPS Is Enabled
+
+The following components are tested and supported on FIPS-enabled and enforced SMP environments, focusing on CI, CD, and STO functionalities.
+
+| Category                         | Supported Components                                                                       |
+|----------------------------------|--------------------------------------------------------------------------------------------|
+| Authentication & User Management | Self-managed (Username/Password)<br />SAML (Okta) <br /> SCIM (Okta)                       |
+| Secret Management Connectors     | HashiCorp Vault<br />AWS Secrets Manager                                                   |
+| Cloud Providers                  | AWS Cloud Provider<br />Kubernetes Cluster (via delegate IAM)                              |
+| Code Repositories                | GitHub                                                                                     |
+| Cloud Cost                       | AWS Cloud Cost                                                                             |
+| Artifact Repositories            | Docker Registry<br />Artifactory                                                           |
+| Notification Mechanisms          | SMTP<br />Slack<br />MS Teams                                                              |
+| Deployment                       | Kubernetes<br />Native Helm                                                                |
+| Build                            | Shell<br />Kaniko<br />Build and Push to ECR<br />Build and Push to Docker<br />Upload Artifacts to S3 |
+| Security Tests | [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference)<br />[Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)<br />[Gitleaks](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)<br />[Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference)<br />[OSV](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference)<br />[Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)<br />[SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) |
+| IACM                             | Supported                                                                                  |
+| SCS                              | Supported                                                                                  |
 
 ## Limitations
 
