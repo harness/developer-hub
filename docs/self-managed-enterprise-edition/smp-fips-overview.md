@@ -1,5 +1,5 @@
 ---
-title: FIPS Overiew
+title: FIPS Overview
 description: Learn about FIPS, why it matters, and how FIPS is supported in Harness.
 sidebar_label: FIPS Overview
 keywords:
@@ -38,6 +38,10 @@ For customers with regulatory requirements or internal security policies that ma
 
 ## FIPS Support in Harness
 
+:::info Feature Availability
+  FIPS is supported in SMP version 0.31.0 and later.
+:::
+
 Harness supports deployments that comply with FIPS 140-2 requirements for Self-Managed Platform in Harness. This enables customers in government, defense, and other regulated industries to use Harness while meeting their security and compliance obligations.
 
 The following steps provide practical guidance to help you prepare, configure, and validate your managed Kubernetes clusters for FIPS 140-2 compliance.
@@ -61,46 +65,107 @@ Before deploying a FIPS-compliant Kubernetes cluster, ensure the following prere
 
 ### Enabling FIPS on AWS Cluster
 
-AWS provides different options for enabling FIPS 140-2 compliance on worker nodes. This guide walks through enabling FIPS on Amazon EKS using a FIPS-enabled AMI, setting up FIPS mode at bootstrap (if using a custom AMI), and verifying the setup.
+AWS provides multiple options to enable FIPS 140-2 compliance for worker nodes in Amazon EKS. This guide focuses on enabling FIPS by using a FIPS-enabled Amazon EKS AMI. It also covers using Bottlerocket, which has dedicated FIPS-enabled AMIs available for EKS clusters. For details on Bottlerocket FIPS AMIs, refer to the AWS documentation.
 
-For Bottlerocket, AWS provides [FIPS-enabled AMIs](https://docs.aws.amazon.com/eks/latest/userguide/bottlerocket-fips-amis.html). You can retrieve the latest AMI ID using AWS CLI:
+The following steps explain how to create an EKS cluster and configure Bottlerocket nodes with FIPS-enabled AMIs.
 
-```bash
-aws ssm get-parameters-by-path \
-  --path /aws/service/bottlerocket/aws-k8s-<CLUSTER_K8s-VERSION>/x86_64/fips/latest/image_id \
-  --region <YOUR-AWS-REGION>
-```
+**Step 1: Create an EKS Cluster**
 
-Sample Output:
+1. Sign in to the [AWS Management Console](https://console.aws.amazon.com/).
 
-```json
-{
-  "Parameters": [
-    {
-      "Name": "/aws/service/bottlerocket/aws-k8s-<CLUSTER_K8s-VERSION>/x86_64/fips/latest/image_id",
-      "Type": "String",
-      "Value": "ami-0abcdef1234567890"
-    }
-  ]
-}
-```
+2. Navigate to Amazon EKS → Clusters.
 
-Replace the node group AMI in your configuration with the AMI ID returned. In your `eksctl` config file, use the following block to enable FIPS mode during node initialization:
+3. Click Create Cluster.
 
-```yaml
-managedNodeGroups:
-  - name: fips-nodes
-    ami: ami-xxxxxxxxxxxxxxxxx # Replace with your custom AMI ID
-    overrideBootstrapCommand: |
-      sudo fips-mode-setup --enable
-      sudo reboot
-```
+4. Provide the following details:
+   * Cluster name: Example: `<YOUR-ClUSTER-NAME>`
+   * Kubernetes version: Choose the latest supported version (for example, 1.32)
+   * Cluster Service Role: Select an existing IAM role with `AmazonEKSClusterPolicy` or create a new one.
 
-This ensures the node boots with FIPS mode enabled.
+5. Configure networking:
+   * Select an existing VPC.
+   * Choose at least two subnets in different Availability Zones.
+   * Select a security group that allows EKS communication.
+
+6. Configure cluster endpoint access:
+   * Public and Private for external access, or Private for internal access only.
+
+7. Click Create. 
+
+It may take several minutes for the cluster status to change to Active.
+
+**Step 2: Prepare User Data for Bottlerocket**
+
+Bottlerocket nodes need specific configuration data during initialization to connect to your EKS cluster. This configuration is passed through user data, which includes essential cluster details such as the API server endpoint, the cluster certificate authority (CA) data, and the cluster name. Without this information, the node cannot join the cluster or authenticate properly.
+
+The user data is typically provided in a TOML file format and injected during instance launch via the EC2 launch template. This ensures that Bottlerocket nodes automatically register with the correct EKS cluster upon boot.
+
+1. Open AWS CloudShell or your local terminal.
+
+2. Generate a user-data.toml file:
+
+   ```bash
+   eksctl get cluster --region <REGION> --name <YOUR-CLUSTER-NAME> -o json \
+   | jq --raw-output '.[] | "[settings.kubernetes]\napi-server = \"" + .Endpoint + "\"\ncluster-certificate =\"" + .CertificateAuthority.Data + "\"\ncluster-name = \"<YOUR-CLUSTER-NAME>\""' \
+   > user-data.toml
+   ```
+
+   Replace `<REGION>` and `<YOUR-CLUSTER-NAME>` with your cluster details.
+
+3. Verify the file content:
+
+   ```toml
+   [settings.kubernetes]
+   api-server = "https://<YOUR-CLUSTER-ENDPOINT>"
+   cluster-certificate = "BASE64_CERT_DATA"
+   cluster-name = "<YOUR-CLUSTER-NAME>"
+   ```
+
+**Step 3: Create a Launch Template**
+
+1. In the AWS console, go to EC2 → Launch Templates → Create launch template.
+
+2. Configure:
+   * Name: Example: bottlerocket-template
+   * AMI: Search for `bottlerocket-aws-k8s-<k8s-version>` and select the latest version.
+   * Instance type: Example: m5.large
+   * Key pair: Optional (for SSH access).
+
+3. Do not specify an IAM instance profile in the template. EKS will attach the correct profile automatically.
+
+4. Paste the contents of `user-data.toml` into the User data field.
+
+5. Select a VPC, subnets, and a security group.
+
+6. Click Create launch template.
+
+**Step 4: Add a Managed Node Group**
+
+1. Go to Amazon EKS → Clusters → Select your cluster → Compute tab.
+
+2. Click Add Node Group.
+
+3. Configure:
+   * Name: Example: bottlerocket-nodes
+   * Node IAM Role: Use a role with the following policies:
+     * `AmazonEKSWorkerNodePolicy`
+     * `AmazonEKS_CNI_Policy`
+     * `AmazonEC2ContainerRegistryReadOnly`
+     * `AmazonSSMManagedInstanceCore`
+
+4. In compute configuration:
+   * Choose Use an existing launch template.
+   * Select bottlerocket-template and the latest version.
+
+5. Configure scaling and networking:
+   * Choose the same VPC and subnets as the cluster.
+   * Assign security groups as needed.
+
+6. Click Create.
 
 ## Validate FIPS 
 
-To confirm FIPS is active on a node, SSH into the instance and run:
+Connect to the instance using AWS Session Manager. Once connected, run the following command to verify whether FIPS mode is enabled:
 
 ```bash
 cat /proc/sys/crypto/fips_enabled
@@ -164,6 +229,3 @@ FIPS mode is not backward compatible and is only supported on new installations.
 
 * [AWS Bottlerocket AMIs](https://docs.aws.amazon.com/eks/latest/userguide/bottlerocket-fips-amis.html)
 * [AWS FIPS Endpoints](https://docs.aws.amazon.com/general/latest/gr/fips.html)
-
-
-
