@@ -31,13 +31,13 @@ The table below outlines which resources are supported at each scope. Here's how
 
 The following table provides a detailed overview of each STO resource, its supported permissions, available scopes, and descriptions:
 
-| Resource          | Permissions                      | Project | Organization | Account | Description                                                                 |
+| Resource          | Permissions                      | Project Scope | Organization Scope | Account Scope | Description                                                                 |
 |-------------------|----------------------------------|:-------:|:------------:|:-------:|-----------------------------------------------------------------------------|
 | Issues            | <ul><li>View</li><li>Create / Edit</li><li>Delete</li></ul>        |   ✅    |      ✅      |   ✅    | Vulnerabilities identified by security scans. Tracked at project level and viewable at higher scopes. |
 | Test Targets      | <ul><li>View</li><li>Create / Edit</li></ul>                 |   ✅    |      ❌      |   ❌    | Artifacts or repositories configured for scanning within specific projects. |
 | Scans             | <ul><li>View</li></ul>                              |   ✅    |      ❌      |   ❌    | Security test executions within pipelines.                       |
 | Exemptions        | <ul><li>View</li><li>Create / Edit</li><li>Approve / Reject</li></ul>  (*Refer to [Exemption Permissions  Matrix](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#exemption-permissions-matrix) for more details.*)|   ✅    |      ✅      |   ✅    | Requests to ignore identified vulnerabilities from policy enforcement.    |
-| External Tickets (coming soon) | <ul><li>View</li><li>Create / Edit</li><li>Delete</li></ul>        | ✅ (planned) | ❌ (planned) | ❌ (planned) | External issue-tracker tickets linked to STO vulnerabilities (e.g., Jira).  |
+| External Tickets (*coming soon*) | <ul><li>View</li><li>Create / Edit</li><li>Delete</li></ul>        | ✅ (*planned*) | ❌ &nbsp; &nbsp; (*planned*) | ❌ (*planned*) | External issue-tracker tickets linked to STO vulnerabilities (e.g., Jira).  |
 
 <DocImage path={require('./use-sto/static/rbac-appsec-role.png')} width="80%" height="80%" title="Click to view full-size image" />
 
@@ -51,18 +51,20 @@ Permissions control the specific actions users can perform on STO resources:
 * **Approve/Reject (Exemptions only)**: Provides authority to approve or reject exemption requests.
 
 ## Built-in STO Roles (Default Roles)
-Harness includes two built-in roles specifically designed for STO use cases. **Security Testing Developer** and **Security Testing AppSec**. These roles come pre-configured with sets of permissions on STO resources to match typical developer and security team responsibilities.
+Harness includes two built-in roles specifically designed for STO use cases. **[Security Testing Developer](#security-testing-developer)** and **[Security Testing AppSec](#security-testing-appsec)**. These roles come pre-configured with sets of permissions on STO resources to match typical developer and security team responsibilities.
 
-**Security Testing Developer**: For development or DevOps engineering teams, this role allows full access except for "Delete" on external tickets and "Approve/Reject" on exemptions.
+### Security Testing Developer
+For development or DevOps engineering teams, this role allows full access except for "Delete" on external tickets and "Approve/Reject" on exemptions.
 
 <DocImage path={require('./use-sto/static/rbac-developer-role.png')} width="80%" height="80%" title="Click to view full-size image" />
 
-**Security Testing AppSec**: For security operations and application security teams, this role grants all available permissions including exemption approvals and ticket deletions.
+### Security Testing AppSec
+For security operations and application security teams, this role grants all available permissions including exemption approvals and ticket deletions.
 
 <DocImage path={require('./use-sto/static/rbac-appsec-role.png')} width="80%" height="80%" title="Click to view full-size image" />
 
 <details>
-<summary>Assign Security Testing roles: default workflow</summary>
+<summary>Assign Security Testing roles: Default workflow</summary>
 
 
 1. Select **Account/Organization/Project Settings** (left menu) > **Access Control**.
