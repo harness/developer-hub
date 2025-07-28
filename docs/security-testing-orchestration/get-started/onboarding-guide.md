@@ -284,7 +284,7 @@ Now that you've set up Harness, you're ready to start using STO.
 
 A good next step is to go through [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline). This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
 
-The [STO tutorials](./tutorials) also include a set of quickstarts and end-to-end workflows that show you how to create pipelines that you can apply to a wide variety of security-related use cases. 
+The [STO tutorials](/docs/security-testing-orchestration/get-started/tutorials) also include a set of quickstarts and end-to-end workflows that show you how to create pipelines that you can apply to a wide variety of security-related use cases. 
 
 Happy scanning! 
 
