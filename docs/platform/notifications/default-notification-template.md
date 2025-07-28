@@ -77,17 +77,101 @@ Harness follows this priority order when selecting a template for each event typ
 
 **4. Harness static template**: If no custom or default templates are found, Harness uses its built-in static template.
 
-For Example: You create a Notification rule at the Project scope for:
+Let’s walk through a few examples, starting from simple scenarios and progressing to more complex ones.
 
-    * **Event Type**: Pipeline Failed
-    * **Channel**: Slack
-    * No template selected in the rule
+<Tabs>
+  <TabItem value="simple" label="Simple" default>
+    For Example: You create a Notification rule at the Project scope for:
 
-In this scenario, Harness selects the template as follows:
+        * **Event Type**: Pipeline Failed
+        * **Channel**: Slack
+        * No template selected in the rule
 
-1. First, it checks if you selected a template in the rule. You didn’t, so it moves to the next option.
-2. Next, it checks if there’s a default template for Pipeline Failed + Slack at the Project scope. If it finds one, like Template B, it uses that. If not, it moves up.
-3. Then, it checks at the Organization scope for the same combination. If it finds one, like Template C, it uses that. If not, it moves up again.
-4. Finally, it checks at the Account scope. If it finds one, like Template D, it uses that.
-5. If none exist, Harness uses its static template.
+    In this scenario, Harness selects the template as follows:
+
+    1. First, it checks if you selected a template in the rule. You didn’t, so it moves to the next option.
+    2. Next, it checks if there’s a default template for Pipeline Failed + Slack at the Project scope. If it finds one, like Template B, it uses that. If not, it moves up.
+    3. Then, it checks at the Organization scope for the same combination. If it finds one, like Template C, it uses that. If not, it moves up again.
+    4. Finally, it checks at the Account scope. If it finds one, like Template D, it uses that.
+    5. If none exist, Harness uses its static template.
+  </TabItem>
+  <TabItem value="Intermediate" label="Intermediate">
+
+    Let's assume a scenario. We'll start with the first case: Project P1 under Organization O1 with default settings, where the event and channel use a specific template (e.g., Pipeline Success + Slack uses Template A). You can interpret the following cases similarly.
+
+        * **Project P1 (under Org O1)** → Defaults:
+            * **Pipeline Success + Slack** → TmpA
+            * **Pipeline Failed + Email** → TmpC
+
+        * **Project P2 (under Org O1)** → **No defaults**
+
+        * **Org O1** → Defaults for Email:
+            * **Pipeline Success + Email** → TmpC
+            * **Pipeline Failed + Email** → TmpD
+
+        * **Account scope** → Defaults for all combinations:
+            * **Pipeline Start (Email, Slack)** → TmpA
+            * **Pipeline Success (Email, Slack)** → TmpB
+            * **Pipeline Failed (Email, Slack)** → TmpB
+
+    **Scenario: Notification Rule at Proj P2**
+
+    This example assumes a notification rule is created for Pipeline Start, Pipeline Success, and Pipeline Failed events on Email and Slack, without any template selected. Harness then determines the template based on its priority order: Rule → Project → Org → Account → Static.
+
+        | **Event Type**   | **Channel** | **Template Used** | **Why This Template Was Picked**                      |
+        | ---------------- | ----------- | ----------------- | ----------------------------------------------------- |
+        | Pipeline Start   | Email       | TmpA (Account)    | No project/org defaults → fallback to Account default |
+        | Pipeline Start   | Slack       | TmpA (Account)    | No project/org defaults → fallback to Account default |
+        | Pipeline Success | Email       | TmpC (Org O1)     | Org O1 default overrides Account default              |
+        | Pipeline Success | Slack       | TmpB (Account)    | No project/org defaults → fallback to Account default |
+        | Pipeline Failed  | Email       | TmpD (Org O1)     | Org O1 default overrides Account default              |
+        | Pipeline Failed  | Slack       | TmpB (Account)    | No project/org defaults → fallback to Account default |
+
+  </TabItem>
+  <TabItem value="Complex" label="Complex">
+
+    Let's assume a scenario. We'll start with the first case: Project P1 under Organization O1 with default settings, where the event and channel use a specific template (e.g., Pipeline Success + Slack uses Template A). You can interpret the following cases similarly.
+
+        * **Project P1 (under Org O1)** → Defaults:
+            * **Pipeline Success + Slack** → TmpP1S
+            * **Pipeline Failed + Email** → TmpP1F
+
+        * **Project P2 (under Org O1)** → **No defaults**
+
+        * **Org O1** → Defaults:
+            * **Pipeline Start + MS Teams** → TmpO1T
+            * **Pipeline Failed + Email** → TmpO1F
+
+        * **Org O2** → **No defaults**, but...
+
+        * **Project P3 (under Org O2)** → Defaults:
+            * **Pipeline Start + Email** → TmpP3Start
+            * **Pipeline Success + Slack** → TmpP3Success
+
+        * **Account scope** → Defaults:
+            * **Pipeline Start (Email, Slack)** → TmpAccStart
+            * **Pipeline Success (Email, Slack)** → TmpAccSuccess
+            * **Pipeline Failed (Email, Slack)** → TmpAccFailed
+            * **No MS Teams defaults at Account level**
+
+    **Scenario: Notification Rule at Project P2**
+
+    Rule includes **Pipeline Start**, **Pipeline Success**, **Pipeline Failed** for **Email**, **Slack**, and **MS Teams**, with **no template selected**. Harness then determines the template based on its priority order: Rule → Project → Org → Account → Static
+
+
+        | **Event Type**   | **Channel** | **Template Used**   | **Why This Template Was Picked**                                     |
+        | ---------------- | ----------- | ------------------- | -------------------------------------------------------------------- |
+        | Pipeline Start   | Email       | TmpAccStart         | No defaults at Project/Org → fallback to Account default             |
+        | Pipeline Start   | Slack       | TmpAccStart         | No defaults at Project/Org → fallback to Account default             |
+        | Pipeline Start   | MS Teams    | TmpO1T              | Org O1 defines MS Teams default → overrides Account (which has none) |
+        | Pipeline Success | Email       | TmpAccSuccess       | No defaults at Project/Org → fallback to Account default             |
+        | Pipeline Success | Slack       | TmpP1S (Project P1) | *Wait, NOT APPLICABLE because rule is at P2 → fallback to Account*   |
+        | Pipeline Success | MS Teams    | TmpO1T              | Org O1 has MS Teams → fallback to Org (Account has none)             |
+        | Pipeline Failed  | Email       | TmpO1F              | Org O1 default overrides Account default                             |
+        | Pipeline Failed  | Slack       | TmpAccFailed        | No defaults at Project/Org → fallback to Account default             |
+        | Pipeline Failed  | MS Teams    | TmpO1T              | Org O1 default for MS Teams → fallback to Org                        |
+
+  </TabItem>
+</Tabs>
+
 
