@@ -17,7 +17,7 @@ helpdocs_is_published: true
 | **Setup Complexity** | Requires manual SQS Queue setup and maintenance | Works out-of-the-box with zero configuration |
 | **Interruption Handling** | Basic SQS-based monitoring | Sophisticated interruption handling |
 | **Node Selection** | Limited strategy options | Configurable strategies (cost-optimized, least-interrupted) |
-| **Fallback & Reverse Fallback** | Basic fallback: moves pods to On-Demand once Spot is interrupted; no automatic return | Intelligent fallback automatically launches an On-Demand instance when Spot capacity gets unavailable. If market is unavailable, it creates an On Demand instance. **And** reverse fallback seamlessly moves workloads back to Spot when capacity is healthy. |
+| **Fallback & Reverse Fallback** | Basic fallback: moves pods to On-Demand once Spot is interrupted; no automatic return | Intelligent fallback automatically launches an On-Demand instance when Spot capacity gets unavailable. If market is unavailable, it creates an On Demand instance. And **reverse fallback** seamlessly moves workloads back to Spot when capacity is healthy. |
 
 
 ### 2. Cost Visibility and Savings Analysis
@@ -32,14 +32,14 @@ helpdocs_is_published: true
 | Feature | Karpenter | Cluster Orchestrator |
 |---------|-----------|---------------------|
 | **Granular Thresholds** | Fixed consolidation logic; cannot tune under-utilisation levels | Customisable CPU & Memory thresholds that drive extra bin-packing on top of Karpenter’s consolidation |
-| **Pod Evictions** | Basic eviction | Evicts pods intelligently while honoring Pod Disruption Budgets |
+| **Pod Evictions** | Basic eviction | Evicts pods intelligently while honoring **Pod Disruption Budgets** |
 | **Resulting Utilisation** | Moderate | Maximised node utilisation and lower waste |
 
 ### 4. Dynamic Spot/On-Demand Split Configuration
 
 | Capability | Karpenter | Cluster Orchestrator |
 |------------|-----------|---------------------|
-| **Percentage-based Spot/On-Demand mix** | Not available | Specify exact Spot vs On-Demand percentages via WorkloadDistributionRules |
+| **Percentage-based Spot/On-Demand mix** | Not available | Specify exact Spot vs On-Demand percentages via `WorkloadDistributionRules` |
 | **Base capacity safeguards** | Not available | Ensure minimum On-Demand replicas for critical workloads |
 
 ### 5. Commitment Utilization Guarantee
@@ -54,5 +54,5 @@ helpdocs_is_published: true
 
 | Capability | Karpenter | Cluster Orchestrator |
 |------------|-----------|---------------------|
-| **Time-window control for disruptive ops** | Available (NodePool Disruption Budgets) | Replacement Windows let you pre-schedule disruptive operations such as Bin Packing, Harness pod eviction, consolidation, and reverse fallback so that they run outside critical business periods |
+| **Time-window control for disruptive ops** | Available (NodePool Disruption Budgets) | **Replacement Windows** let you pre-schedule disruptive operations such as Bin Packing, Harness pod eviction, consolidation, and reverse fallback so that they run outside critical business periods |
 
