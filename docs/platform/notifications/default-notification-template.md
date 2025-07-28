@@ -17,12 +17,12 @@ The Default Notification Template lets you set a template that automatically app
 You can configure default notification template at different scopes (Account, Organization, Project) and for specific event types and channel types (such as Email, Slack, and Microsoft Teams), giving you greater control over notification content.
 
 :::note Feature Availability
-   The Default Notification Template feature is controlled by the `PL_DEFAULT_NOTIFICATION_TEMPLATE_SET_SUPPORT` feature flag. Contact Harness Support to enable it.
+   The Default Notification Template feature is available behind the `PL_DEFAULT_NOTIFICATION_TEMPLATE_SET_SUPPORT` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
 ## **Steps to Configure Default Notification Template**
 
-### 1: Access the Default Templates Tab
+### 1: Access the Default Templates Sets
 
 - Go to **Settings** at your preferred scope (**Account, Organization, or Project**). Navigate to **General** → **Notification Management**.
         
@@ -56,7 +56,7 @@ You can configure default notification template at different scopes (Account, Or
 
         ![](./static/template-selection.gif)
 
-- Repeat the process for any additional event and channel combinations you want to configure as shown below.
+- Repeat the process for any additional event, channel and template combinations you want to configure as shown below.
 
         ![](./static/template-selection-add.gif)
 
@@ -67,36 +67,27 @@ You can configure default notification template at different scopes (Account, Or
 
 ### **How Harness Chooses the Final Notification Template**
 
-Harness follows this priority order when selecting a template for each **event type + channel type** combination:
+Harness follows this priority order when selecting a template for each event type and channel type combination:
 
-1. **Template selected in the notification rule**
-   If you choose a template while creating or editing the rule, Harness always uses it.
+**1. Template selected in the notification rule**:If you choose a template while creating or editing the rule, Harness always uses it.
 
-2. **Default template at the same scope**
-   If no template is selected, Harness checks for a default at the same scope (Project, Org, or Account).
+**2. Default template at the same scope**: If no template is selected, Harness checks for a default at the same scope (Project, Org, or Account).
 
-3. **Default template at a higher scope**
-   If none exists at the current scope, Harness checks the next higher level in this order:
-   **Project → Organization → Account**.
+**3. Default template at a higher scope**: If none exists at the current scope, Harness checks the next higher level in this order: Project → Organization → Account.
 
-4. **Harness static template**
-   If no custom or default templates are found, Harness uses its built-in static template.
+**4. Harness static template**: If no custom or default templates are found, Harness uses its built-in static template.
 
-For Example: You create a **notification rule at the Project scope** for:
+For Example: You create a Notification rule at the Project scope for:
 
     * **Event Type**: Pipeline Failed
     * **Channel**: Slack
     * No template selected in the rule
 
-Here’s how Harness decides which template to use:
+In this scenario, Harness selects the template as follows:
 
 1. First, it checks if you selected a template in the rule. You didn’t, so it moves to the next option.
-
-2. Next, it checks if there’s a **default template for Pipeline Failed + Slack at the Project scope**. If it finds one, like **Template B**, it uses that. If not, it moves up.
-
-3. Then, it checks at the **Organization scope** for the same combination. If it finds one, like **Template C**, it uses that. If not, it moves up again.
-
-4. Finally, it checks at the **Account scope**. If it finds one, like **Template D**, it uses that.
-
-5. If none exist, Harness uses its **static template**.
+2. Next, it checks if there’s a default template for Pipeline Failed + Slack at the Project scope. If it finds one, like Template B, it uses that. If not, it moves up.
+3. Then, it checks at the Organization scope for the same combination. If it finds one, like Template C, it uses that. If not, it moves up again.
+4. Finally, it checks at the Account scope. If it finds one, like Template D, it uses that.
+5. If none exist, Harness uses its static template.
 
