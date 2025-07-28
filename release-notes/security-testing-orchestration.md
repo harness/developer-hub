@@ -32,7 +32,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - Upgraded the [SonarQube step](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) CLI from version `4.7` to `7.1`, introducing security updates and enhancements (STO-9143).
 - [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz) step now recognizes exempted issues in Wiz and no longer lists them as active in STO. Previously exempted issues may now appear as **Remediated** after the next Wiz scan (STO-9229).
-- Improved error messaging for the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference). For example, clearer messages now appear when specifying a key field that does not exist in the JSON input (STO-9143).
+- Improved error messaging for the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference). For example, clearer messages now appear when specifying a key field that does not exist in the JSON input (STO-6110).
 
 #### Fixed Issues
 
