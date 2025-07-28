@@ -31,6 +31,24 @@ Listed below are the images to download to use [image registry with Harness Dele
 - harness/service-discovery-collector:0.43.1
 - harness/chaos-ddcr-faults:1.63.1
 
+#### New Features and Enhancements
+
+- Enhanced and simplified image registry support for experiment v1 and v1alpha1 images (CHAOS-9052)
+- Added support for "Complete with probe error" status on timeline view screen (CHAOS-9207)
+- Added recent execution details for both probes and actions in the database schema, allowing for better tracking and management of execution history (CHAOS-8953)
+- Added UI/UX support for windows command probe using windows infrastructure (CHAOS-9255)
+- Added support for "INTERRUPTED" status for probes in probes screen as well as timeline view screen (CHAOS-9208)
+- Enhanced experiment result display to show "CompletedWithProbeFailure" when probe failed (CHAOS-9205)
+- Added support for import probe as a reference in UI (CHAOS-9114)
+- Added targets support to the timeline view (CHAOS-9048)
+- Added support for running windows process kill fault on windows infrastructure using SYSTEM user (CHAOS-9013)
+- Added support for node faults on GKE Autopilot (CHAOS-8981)
+- Enhanced healthcheck support to pod-io-stress fault (CHAOS-8896)
+- Added name sorting support for Experiment list (CHAOS-8875)
+- Added ENV support to the inline command probe for both backend and UI (CHAOS-8850, CHAOS-8816, CHAOS-8814)
+- Added OOTB probes as inline command probes for kubernetes infrastructure (CHAOS-8815)
+- Enhanced UI to surface Common Kubernetes Errors (ImagePullBackOff, Evicted, OutOfCpu) for Kubernetes Infrastructure (CHAOS-8709)
+
 #### Fixed Issues
 
 - Fixed gameday execution error when trying to run a gameday with same ID as another gameday in different project due to missing identifiers in query filters (CHAOS-9247)
@@ -53,26 +71,6 @@ Listed below are the images to download to use [image registry with Harness Dele
 - Fixed target not showing in the timeline view representation of the fault by adding target details to the fault data structure (CHAOS-8796)
 - Fixed Actions "Stop on Failure" radio button not being applicable (CHAOS-9025)
 - Fixed empty cards for fixed inputs in the experiment inputsets page in Chaos Studio (CHAOS-9094)
-
-
-
-#### New Features and Enhancements
-
-- Enhanced and simplified image registry support for experiment v1 and v1alpha1 images (CHAOS-9052)
-- Added support for "Complete with probe error" status on timeline view screen (CHAOS-9207)
-- Added recent execution details for both probes and actions in the database schema, allowing for better tracking and management of execution history (CHAOS-8953)
-- Added UI/UX support for windows command probe using windows infrastructure (CHAOS-9255)
-- Added support for "INTERRUPTED" status for probes in probes screen as well as timeline view screen (CHAOS-9208)
-- Enhanced experiment result display to show "CompletedWithProbeFailure" when probe failed (CHAOS-9205)
-- Added support for import probe as a reference in UI (CHAOS-9114)
-- Added targets support to the timeline view (CHAOS-9048)
-- Added support for running windows process kill fault on windows infrastructure using SYSTEM user (CHAOS-9013)
-- Added support for node faults on GKE Autopilot (CHAOS-8981)
-- Enhanced healthcheck support to pod-io-stress fault (CHAOS-8896)
-- Added name sorting support for Experiment list (CHAOS-8875)
-- Added ENV support to the inline command probe for both backend and UI (CHAOS-8850, CHAOS-8816, CHAOS-8814)
-- Added OOTB probes as inline command probes for kubernetes infrastructure (CHAOS-8815)
-- Enhanced UI to surface Common Kubernetes Errors (ImagePullBackOff, Evicted, OutOfCpu) for Kubernetes Infrastructure (CHAOS-8709)
 
 ## June 2025
 
