@@ -1825,6 +1825,14 @@ const sidebars: SidebarsConfig = {
         },
         "chaos-engineering/resources/hce-vs-litmus",
         "chaos-engineering/resources/troubleshooting",
+        {
+          type: "category",
+          label: "API Reference",
+          items: [
+            "chaos-engineering/resources/api-reference/hce-cli",
+            "chaos-engineering/resources/api-reference/hce-onboarding-api",
+          ],
+        },
 
       ],
     },
