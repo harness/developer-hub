@@ -26,27 +26,37 @@ Before setting up your Org Tree, ensure the following:
   * Source Code Management (e.g., GitHub, GitLab)
   * CI/CD (e.g., Harness etc) (if applicable)
 
-### How It Works
+### How Org Trees work in SEI 2.0
 
-Currently, the Org Tree is built using a CSV file exported from your HRIS system (e.g., Workday, BambooHR). This CSV must include:
+The Org Tree in SEI 2.0 is automatically constructed using your organization's developer records (typically managed as a CSV driven export from your HRIS system like Workday or BambooHR)
 
-* A unique identifier for each contributor (e.g., Email)
-* A corresponding reporting field (e.g., Manager Email or ManagerID)
-* Using this structure, SEI 2.0 automatically creates a manager-reportee tree, where:
-  * Each manager appears as a node.
-  * Their direct reports are nested underneath.
-* The hierarchy continues recursively, all the way up to the root of the organization.
+To build the Org Tree, SEI reads two key fields from the uploaded developer records:
 
-This structure enables SEI to:
+* **Developer Identifier:** Usually the developer’s email address
+* **Reporting Field:** A reference to their manager (e.g., Manager Email or Manager ID)
 
-* Group developers into real-world teams.
-* Assign insights, metrics, and benchmarks at every node.
-* Allow flexible reporting by team, manager, or department.
+Using this data, SEI automatically builds your organizational hierarchy:
 
-You can visualize this hierarchy in two ways:
+* Each manager is represented as a node.
+* Their direct reports are placed underneath them.
+* This hierarchy continues recursively up to the root of the organization.
 
-* A tree view to explore relationships and reporting lines interactively.
-* A table view to see a summary of teams, developers, and any missing or unmapped records.
+The result is a complete manager-reportee tree that mirrors your real-world structure.
+
+#### What this enables
+
+The Org Tree powers many key capabilities in SEI:
+
+* Groups developers into actual teams without manual setup
+* Assigns metrics, insights, and goals at every team or manager level
+* Supports reporting by team, department, manager, or business unit
+
+#### Ways to view your Org Tree
+
+You can explore your Org Tree in two formats:
+
+* **Tree View:** Interactively navigate relationships and reporting lines
+* **Table View:** See summaries of total teams, team size, and any missing or unmapped data
 
 :::note Coming Soon
 In future releases, SEI will support multi-level groupings based on custom attributes like Department, Function, and Team.
