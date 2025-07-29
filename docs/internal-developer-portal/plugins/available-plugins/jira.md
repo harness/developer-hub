@@ -18,16 +18,17 @@ This plugin requires a backend proxy configuration to make calls to Jira with au
 
 ```yaml
 proxy:
-  "/jira/api":
-    target: "<your-jira-url>"
-    pathRewrite:
-      "api/proxy/jira/api/?": "/"
-    headers:
-      Authorization: ${JIRA_TOKEN}
-      Accept: "application/json"
-      Content-Type: "application/json"
-      X-Atlassian-Token: "nocheck"
-      User-Agent: "MY-UA-STRING"
+  endpoints:
+    /jira/api:
+      target: "<your-jira-url>"
+      headers:
+        Authorization: Basic ${JIRA_TOKEN}
+        Accept: application/json
+        Content-Type: application/json
+        X-Atlassian-Token: nocheck
+        User-Agent: Harness-IDP
+      pathRewrite:
+        api/proxy/jira/api/?: /
 ```
 
 ### Secrets
