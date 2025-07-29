@@ -1,7 +1,9 @@
 ---
 sidebar_position: 6
 title: Substituting Properties in Changelogs
-description: Automatic and Custom Rollbacks
+description: Learn how to substitute properties in Liquibase changelogs using built-in and custom configurations in Harness DB DevOps.
+keywords: [liquibase, changelog properties, property substitution, harness dbdevops, liquibase changelog, database configuration, db migration]
+tags: [changelog-properties, liquibase-integration, harness-db-devops, db-configuration, property-substitution]
 ---
 
 # Substituting Properties in Changelogs
@@ -14,10 +16,10 @@ deploying database changes far more efficient and scalable.
 
 :::important
 **Minimum versions required**
-- db-devops-service - 1.35.x
-- drone-liquibase - plugins/drone-liquibase:1.2.0-4.27
-- drone-liquibase-mongo - plugins/drone-liquibase:1.2.0-4.27-mongo
-- drone-liquibase-spanner - plugins/drone-liquibase:1.2.0-4.27-spanner
+- **db-devops-service** - `11.35.x`
+- **drone-liquibase** -  `plugins/drone-liquibase:1.2.0-4.27`
+- **drone-liquibase-mongo** - `plugins/drone-liquibase:1.2.0-4.27-mongo`
+- **drone-liquibase-spanner** - `plugins/drone-liquibase:1.2.0-4.27-spanner`
 :::
 
 :::info

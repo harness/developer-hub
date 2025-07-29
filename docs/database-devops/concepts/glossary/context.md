@@ -13,6 +13,12 @@ keywords:
   - Liquibase YAML example
   - Changelog context best practices
   - Database migration automation
+tags:
+  - liquibase-integration
+  - context-management
+  - harness-db-devops
+  - environment-specific-deployments
+  - changeset-filtering
 ---
 
 import Head from '@docusaurus/Head';

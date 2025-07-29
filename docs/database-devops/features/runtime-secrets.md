@@ -2,7 +2,13 @@
 title: Runtime Secrets for DBOps
 description: Securely inject and manage registry credentials, schema tokens, and DB passwords at runtime in Harness DBOps pipelines—no secrets are persisted.
 category: Database DevOps
-keywords: [dbops, runtime secrets, build pods, kubernetes, security, harness, DevSecOps, secrets manager, Cloud Secret Manager, database management, devops, database security, database devops, database secrets, secrets management, data governance, data compliance] 
+keywords: [dbops, runtime secrets, build pods, kubernetes, security, harness, DevSecOps, secrets manager, Cloud Secret Manager, database management, devops, database security, database devops, database secrets, secrets management, data governance, data compliance]
+tags:
+  - harness-db-devops
+  - runtime-secrets
+  - secrets-management
+  - devsecops
+  - database-security
 ---
 
 import Tabs from '@theme/Tabs';
@@ -53,7 +59,7 @@ To configure Provide step group registry credentials to execution container, fol
 2. Navigate to the Default setting and click on `Pipeline`.
 3. Select the value `False` for **Provide step group registry credentials to execution container**. (Default value is `True`)
 
-![StepGroup Registry Credentials](../static/db-devops-container-registry.png)
+![StepGroup Registry Credentials](../use-database-devops/static/db-devops-container-registry.png)
 
 To manually configure registry access in your cluster:
 
@@ -86,7 +92,7 @@ To enable runtime secret injection for database credentials, follow these steps:
 2. Navigate to the Default setting and click on `Database DevOps`.
 3. Select the value `True` for **Inject database secrets at runtime**.
 
-![Enabling Secrets on DB Module](../static/db-devops-runtime-db-secrets.png)
+![Enabling Secrets on DB Module](../use-database-devops/static/db-devops-runtime-db-secrets.png)
 
 </TabItem>
 
@@ -102,7 +108,7 @@ To enable runtime secret injection for database credentials, follow these steps:
 2. Navigate to the Default setting and click on `Database DevOps`.
 3. Select the value `True` for **Inject custom shell script secrets** at runtime.
 
-![Enabling Secrets on DB Module](../static/db-devops-runtime-custom-secrets.png)
+![Enabling Secrets on DB Module](../use-database-devops/static/db-devops-runtime-custom-secrets.png)
 
 Secrets are not retained after process execution. Even if someone runs `kubectl exec` into the pod, these values remain inaccessible.
 

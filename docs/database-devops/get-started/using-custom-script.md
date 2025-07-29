@@ -4,6 +4,20 @@ description: This document provides a guide on how to use custom scripts for Dat
 sidebar_label: Custom Script for Database DevOps
 sidebar_position: 5
 keywords: [database devops, custom script, database migration, database versioning, docker, docker registry, jfrog artifactory, github, gitlab, bitbucket]
+tags:
+  - database-devops
+  - custom-script
+  - database-migration
+  - database-versioning
+  - docker
+  - docker-registry
+  - jfrog-artifactory
+  - github
+  - gitlab
+  - bitbucket
+  - dbops
+  - harness-db-devops
+
 ---
 
 ## Overview
@@ -30,7 +44,7 @@ By following these steps, you can effectively manage your database changes and s
 ### Create a DB Schema
 1. Under `Database DevOps` in the Harness UI, navigate to `DB Schema`.
 2. Click on the `Add New DB Schema` button.
-![Create DB Schema with Custom Script](../static/custom-script/db-devops-custom-script.png)
+![Create DB Schema with Custom Script](../use-database-devops/static/custom-script/db-devops-custom-script.png)
 - **Connect to Data Schema**: Connect via Harness Connector or use a custom script to connect to the database schema stored in a remote repository.
 - **Schema Path**: The path to the schema file in the repository. This is where the custom scripts writes the changelog files that DB DevOps should use during pipeline execution. 
 - **Image**: The Docker image to be used for the custom script. This should be a base image that has the necessary tools and libraries installed to execute your script.
@@ -47,7 +61,7 @@ By following these steps, you can effectively manage your database changes and s
 3. Click on the `Save` button.
 4. The DB Schema will be created and you can see the details in the UI.
 5. Select the `DB Schema` and Click on the `Add New DB Instance` button.
-![Create DB Instance for DB Schema](../static/custom-script/db-devops-custom-database-instance.png)
+![Create DB Instance for DB Schema](../use-database-devops/static/custom-script/db-devops-custom-database-instance.png)
 - **Name of DB Instance**: The name of the DB Instance. This is the name that will be used in the pipeline to refer to this DB Instance.
 - **Tags (optional)**: Tags to be used for the DB Instance. This can be used to change which instances are shown on the migration state dashboard. If left blank, the tags will be automatically generated.
 - **Connector**: The JDBC Connector to be used for the DB Instance. This is the connector that will be used to connect to the database instance.
@@ -62,7 +76,7 @@ By following these steps, you can effectively manage your database changes and s
 Toggle on the "Enable container based execution".
 :::
 5. In the `Step Group` section, select `Add Step` as the step type. Under "DB DevOps", select `Apply Schema` as the step type.
-![Create DB DevOps Pipeline](../static/custom-script/db-devops-deploy-schema.png)
+![Create DB DevOps Pipeline](../use-database-devops/static/custom-script/db-devops-deploy-schema.png)
 - **Select DB Schema**: The DB Schema we created earlier.
 - **Select DB Instance**: The Name of the DB Instance, which was created earlier in our DB Schema.
 - **Tags (optional)**: Tags to be used for the DB Instance. This can be used to identify the DB Instance in the pipeline. If left blank, the tags will be automatically generated.
@@ -71,6 +85,6 @@ Toggle on the "Enable container based execution".
 7. The pipeline will be created and you can see the details in the UI.
 8. Click on the `Run` button to run the pipeline.
 
-![Run DB DevOps Pipeline](../static/custom-script/db-devops-custom-stage-pipeline.png)
+![Run DB DevOps Pipeline](../use-database-devops/static/custom-script/db-devops-custom-stage-pipeline.png)
 
 That's it! You have successfully created a DB Schema and deployed it using a custom script. You can now use this pipeline to deploy your DB Schema to the database instance.

@@ -1,11 +1,12 @@
 {
-    "label":"GitOps",
+    "label":"Get Started with Database DevOps",
     "collapsible":"true",
     "collapsed":"true",
     "link":{
        "type":"generated-index",
-       "title":"GitOps"
+       "title":"Get Started with Database DevOps"
     },
     "customProps":{
-    }
+    },
+   "position": 10
  }
