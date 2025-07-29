@@ -17,7 +17,8 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
     AWS: {
       path: "/cloud-development-environments/self-hosted-gitspaces/steps/content/infra/gitspace-terraform-aws.md",
       logo: "aws-logo.svg",
-      logoSize: 24
+      logoSize: 40,
+      iconOnly: true
     }
   }}
   toc = {toc}
