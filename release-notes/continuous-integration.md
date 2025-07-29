@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-07-07T10:00
+date: 2025-07-28T10:00
 sidebar_position: 10
 ---
 
@@ -42,6 +42,25 @@ This update is currently being rolled out to customers, and we expect the rollou
 :::
 
 ## July 2025
+
+### Version 1.89
+
+<!-- 2025-07-28 -->
+
+#### New features and enhancements
+- Added comprehensive glob pattern support for source paths (.txt, **/*.go, multiple comma-separated patterns) with full backward compatibility and enhanced ignore pattern functionality. (CI-18070)
+#### Fixed issues
+- Fixed an issue where Build Intelligence savings were not displayed for Gradle builds. The Gradle report glob path was updated to correctly read report files even when they are located inside subdirectories. (CI-18258, ZD-88421)
+- Fixed a security vulnerability affecting only the `drone-git-linux-AMD64` variants that used the RHEL UBI8 base image (`redhat/ubi8-minimal:8.8`). The image has been updated to use `redhat/ubi9-minimal:9.6`. (CI-17869, ZD-85646)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/drone-git`    |  Fixed a security vulnerability affecting the `drone-git-linux-AMD64` variants that used the RHEL UBI8 base image. | 1.7.1-rootless              | 1.7.2-rootless       |
+| `plugins/gcs`    |  Added comprehensive glob pattern support for source paths.  | 1.6.3              | 1.6.4       |
+| `harness/ci-addon`    |  Fixed an issue with secret masking for JSON-formatted secrets. | rootless-1.16.92              | rootless-1.16.97       |
+| `harness/ci-lite-engine`    |  Fixed an issue with secret masking for JSON-formatted secrets. | rootless-1.16.92              | rootless-1.16.97       |
 
 ### Version 1.88
 
