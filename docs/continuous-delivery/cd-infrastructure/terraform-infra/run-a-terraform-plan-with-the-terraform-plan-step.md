@@ -583,11 +583,13 @@ This option makes is useful only if you do not have a Terraform backed configure
 
 ## Create remote workspace with prefix
 
-delegate 
+:::note
+This setting is only available when the Configuration Type is **Inline**.
 
-When using a [remote backend](https://developer.hashicorp.com/terraform/docs/language/settings/backends/remote) with a workspace **prefix**, Terraform does not automatically create the workspace if it doesn’t already exist. This can cause pipeline failures with errors like:
+This option is available only on delegate version `86400` or later.
+:::
 
-This option only available for delegate version 
+When using a [remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a workspace **prefix**, Terraform does not automatically create the workspace if it doesn’t already exist. This can cause pipeline failures with errors like:
 
 `Error: Currently selected workspace "my-app-dev" does not exist`
 
@@ -608,20 +610,20 @@ If you prefer not to use this flag, you can manually configure the workspace usi
 
 
 ```yaml
-                - step:
-                    type: TerraformPlan
-                    name: TerraformPlan
-                    identifier: TerraformPlan
-                    timeout: 10m
-                    spec:
-                      provisionerIdentifier: <+input>
-                      configuration:
-                        command: Apply
-                        configFiles: {}
-                        secretManagerRef: <+input>
-                        skipStateStorage: false
-                        createRemoteWorkspaceWithPrefix: true
-                        skipRefreshCommand: false
+- step:
+    type: TerraformPlan
+    name: TerraformPlan
+    identifier: TerraformPlan
+    timeout: 10m
+    spec:
+      provisionerIdentifier: <+input>
+      configuration:
+        command: Apply
+        configFiles: {}
+        secretManagerRef: <+input>
+        skipStateStorage: false
+        createRemoteWorkspaceWithPrefix: true
+        skipRefreshCommand: false
 ```
 </details>
 

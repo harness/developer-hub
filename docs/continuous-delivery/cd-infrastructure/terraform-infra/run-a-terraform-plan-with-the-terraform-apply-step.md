@@ -576,12 +576,10 @@ If the Terraform Apply step is configured to skip state storage, and there is no
 :::note
 This setting is only available when the Configuration Type is **Inline**.
 
-This option only available for delegate version `86400` or later.
+This option is available only on delegate version `86400` or later.
 :::
 
-When using a [remote backend](https://developer.hashicorp.com/terraform/docs/language/settings/backends/remote) with a workspace **prefix**, Terraform does not automatically create the workspace if it doesn’t already exist. This can cause pipeline failures with errors like:
-
-This option only available for delegate version 
+When using a [remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a workspace **prefix**, Terraform does not automatically create the workspace if it doesn’t already exist. This can cause pipeline failures with errors like:
 
 `Error: Currently selected workspace "my-app-dev" does not exist`
 
@@ -602,18 +600,18 @@ If you prefer not to use this flag, you can manually configure the workspace usi
 
 
 ```yaml
-                - step:
-                    type: TerraformApply
-                    name: Terraform Apply
-                    identifier: Terraform_Apply
-                    timeout: 10m
-                    spec:
-                      provisionerIdentifier: test
-                      configuration:
-                        type: Inline
-                        createRemoteWorkspaceWithPrefix: true
-                        spec:
-                          configFiles: {}
+- step:
+    type: TerraformApply
+    name: Terraform Apply
+    identifier: Terraform_Apply
+    timeout: 10m
+    spec:
+      provisionerIdentifier: test
+      configuration:
+        type: Inline
+        createRemoteWorkspaceWithPrefix: true
+        spec:
+          configFiles: {}
 ```
 </details>
 

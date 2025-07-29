@@ -114,7 +114,7 @@ This option is available only on delegate version `86400` or later.
 
 Enable this option to automatically create or select a remote workspace when using a workspace **prefix** in your backend configuration.
 
-When using a [Terraform remote backend](https://developer.hashicorp.com/terraform/language/backend/remote#basic-configuration) with a prefix, Terraform does **not** create the workspace automatically if it doesn’t exist. This can lead to pipeline failures with errors like:
+When using a [Terraform remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a prefix, Terraform does **not** create the workspace automatically if it doesn’t exist. This can lead to pipeline failures with errors like:
 
 `Error: Currently selected workspace "my-app-dev" does not exist`
 
@@ -135,16 +135,16 @@ If you prefer not to use this flag, you can manually configure the workspace usi
 
 ```yaml
 - step:
-                  type: TerraformDestroy
-                  name: Terraform Destroy
-                  identifier: Terraform_Destroy
-                  spec:
-                    provisionerIdentifier: test
-                    configuration:
-                      type: Inline
-                      createRemoteWorkspaceWithPrefix: true
-                      spec:
-                        configFiles: {}
+    type: TerraformDestroy
+    name: Terraform Destroy
+    identifier: Terraform_Destroy
+    spec:
+      provisionerIdentifier: test
+      configuration:
+        type: Inline
+        createRemoteWorkspaceWithPrefix: true
+        spec:
+          configFiles: {}
 ```
 </details>
 
