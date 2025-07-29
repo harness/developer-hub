@@ -215,6 +215,89 @@ You can also create users and user groups directly in Harness, but any users or 
 
 :::
 
+### Split Create/Edit Permissions for Pipelines and Templates
+
+Harness has introduced a permission split for pipelines and templates, allowing you to manage **create** and **edit** actions independently. This RBAC enhancement gives you more granular control when assigning user roles—supporting stricter separation of duties and better alignment with enterprise access policies.
+
+#### Feature Flag Rollout Process
+
+This feature is being rolled out in two controlled phases. Flags must be enabled **in order**:
+
+- `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION`:  
+  Enables migration. Automatically adds `create` permissions to all roles that already have `edit`. New and updated roles will receive both permissions.  
+- `PIPE_CREATE_EDIT_PERMISSION_SPLIT`:  
+  Enables enforcement and UI changes. Access checks now rely on the split permissions, and “Create” and “Edit” are shown as separate checkboxes in the UI.
+
+:::note
+Reach out to [Harness Support](mailto:support@harness.io) to enable these feature flags. Onboarding is gated by customer approval per account.
+:::
+
+#### Pipeline Permissions
+
+You can now assign the following permissions independently:
+
+- `core_pipeline_create` — permission to create pipelines  
+- `core_pipeline_edit` — permission to edit pipelines  
+
+<details>
+<summary>View all pipeline permissions</summary>
+
+The following permissions are always available:
+
+- `core_pipeline_abort` — permission to abort an execution  
+- `core_pipeline_view` — permission to view pipelines  
+- `core_pipeline_execute` — permission to execute a pipeline  
+- `core_pipeline_delete` — permission to delete a pipeline  
+
+Create and edit permissions depend on feature flag status:
+
+**With feature flags enabled:**
+- `core_pipeline_create` — permission to create a pipeline  
+- `core_pipeline_edit` — permission to edit a pipeline  
+
+**Without feature flags:**
+- `core_pipeline_edit` — combined permission to create and edit pipelines  
+
+</details>
+
+#### Template Permissions
+
+Template permissions are also split into:
+
+- `core_template_create` — permission to create templates  
+- `core_template_edit` — permission to edit templates  
+
+<details>
+<summary>View all template permissions</summary>
+
+The following permissions are always available:
+
+- `core_template_copy` — permission to copy a template  
+- `core_template_view` — permission to view a template  
+- `core_template_delete` — permission to delete a template  
+- `core_template_access` — general access to the template resource  
+
+Create and edit permissions depend on feature flag status:
+
+**With feature flags enabled:**
+- `core_template_create` — permission to create a template  
+- `core_template_edit` — permission to edit a template  
+
+**Without feature flags:**
+- `core_template_edit` — combined permission to create and edit templates  
+
+</details>
+
+:::important
+**Key Behavior Notes After FF2 Is Enabled:**
+
+- **Create and edit are exclusive** — users must be explicitly assigned both permissions if needed.
+- **Terraform/API scripts** must include `core_pipeline_create` or `core_template_create` explicitly to perform create operations.
+- **Edit-only users cannot delete or execute** — these actions are governed by separate permissions.
+- **During FF1 migration**, `create` permissions are auto-added to roles with `edit`. Migration is customer-controlled and enabled per account.
+
+:::
+
 ### RBAC workflow examples
 
 These examples walk through two specific RBAC configuration scenarios.
