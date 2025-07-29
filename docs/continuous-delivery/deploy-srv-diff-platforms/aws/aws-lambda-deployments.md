@@ -812,15 +812,18 @@ The **AWS Canary Deploy** strategy enables gradual rollout of a new Lambda versi
 - **Lambda Traffic Shift (100%)**
 - **Canary Rollback Step**
 
-The **Lambda Traffic Shift** step is reused twice—once with 10% traffic routing and once with 100%—to support phased promotion of the new version.
+The **Lambda Traffic Shift** step is reused twice, once with 10% traffic routing and once with 100%, to support phased promotion of the new version.
 
+<div align="center">
+  <DocImage path={require('./static/lambda-canary.png')} width="80%" height="80%" title="Click to view full size image" />
+</div>
 
 #### Lambda Canary Deploy
 
 This step initiates the canary deployment by performing the following actions:
 
 - Fetches the manifest file for the Lambda function.
-- Captures the current function state and stores it for rollback.
+- Captures the current function state, including the latest published version, and stores it for rollback. This version is used to create or update the `harness-latest` alias.
 - Deploys the new version of the Lambda function without shifting any traffic.
 
 No alias changes or traffic updates occur at this stage.
@@ -838,9 +841,9 @@ You can include manual or automated **approval steps** between traffic shifts to
 
 If a failure is detected at any point during the canary rollout:
 
-- All traffic is redirected back to the stable (previous) version.
-- The `harness-canary` alias and the new version are removed.
-- The `harness-latest` alias continues to point to the original version.
+- All traffic is redirected back to the previously deployed stable version.
+- The newly deployed version is removed.
+- The `harness-latest` alias continues to point to the stable version.
 
 This rollback happens automatically, regardless of the number of traffic shift steps configured in the pipeline.
 
