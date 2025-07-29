@@ -65,7 +65,7 @@ Before deploying a FIPS-compliant Kubernetes cluster, ensure the following prere
 
 ### Enabling FIPS on AWS Cluster
 
-AWS provides multiple options to enable FIPS 140-2 compliance for worker nodes in Amazon EKS. This guide focuses on enabling FIPS by using a FIPS-enabled Amazon EKS AMI. It also covers using Bottlerocket, which has dedicated FIPS-enabled AMIs available for EKS clusters. For details on Bottlerocket FIPS AMIs, refer to the AWS documentation.
+AWS provides multiple options to enable FIPS 140-2 compliance for worker nodes in Amazon EKS. This guide focuses on enabling FIPS by using a FIPS-enabled Amazon EKS AMI. It also covers using Bottlerocket, which has dedicated FIPS-enabled AMIs available for EKS clusters. For details on Bottlerocket FIPS AMIs, refer to the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/bottlerocket-fips-amis.html).
 
 The following steps explain how to create an EKS cluster and configure Bottlerocket nodes with FIPS-enabled AMIs.
 
@@ -73,26 +73,24 @@ The following steps explain how to create an EKS cluster and configure Bottleroc
 
 1. Sign in to the [AWS Management Console](https://console.aws.amazon.com/).
 
-2. Navigate to Amazon EKS → Clusters.
+2. Navigate to Amazon EKS → Clusters. Click Create Cluster.
 
-3. Click Create Cluster.
-
-4. Provide the following details:
+3. Provide the following details:
    * Cluster name: Example: `<YOUR-ClUSTER-NAME>`
    * Kubernetes version: Choose the latest supported version (for example, 1.32)
    * Cluster Service Role: Select an existing IAM role with `AmazonEKSClusterPolicy` or create a new one.
 
-5. Configure networking:
+4. Configure networking:
    * Select an existing VPC.
    * Choose at least two subnets in different Availability Zones.
    * Select a security group that allows EKS communication.
 
-6. Configure cluster endpoint access:
+5. Configure cluster endpoint access:
    * Public and Private for external access, or Private for internal access only.
 
-7. Click Create. 
+6. Click Create. 
 
-It may take several minutes for the cluster status to change to Active.
+  It might take a few minutes for the cluster status to become Active.
 
 **Step 2: Prepare User Data for Bottlerocket**
 
@@ -102,7 +100,7 @@ The user data is typically provided in a TOML file format and injected during in
 
 1. Open AWS CloudShell or your local terminal.
 
-2. Generate a user-data.toml file:
+2. Generate a `user-data.toml` file:
 
    ```bash
    eksctl get cluster --region <REGION> --name <YOUR-CLUSTER-NAME> -o json \
@@ -125,17 +123,17 @@ The user data is typically provided in a TOML file format and injected during in
 
 1. In the AWS console, go to EC2 → Launch Templates → Create launch template.
 
-2. Configure:
+2. Configure your Launch template:
    * Name: Example: bottlerocket-template
    * AMI: Search for `bottlerocket-aws-k8s-<k8s-version>` and select the latest version.
-   * Instance type: Example: m5.large
+   * Instance type: Example: `m5.large`
    * Key pair: Optional (for SSH access).
 
 3. Do not specify an IAM instance profile in the template. EKS will attach the correct profile automatically.
 
 4. Paste the contents of `user-data.toml` into the User data field.
 
-5. Select a VPC, subnets, and a security group.
+5. Select a VPC, subnets, and a security group. 
 
 6. Click Create launch template.
 
@@ -181,16 +179,16 @@ An output of `1` confirms that the node is running in FIPS mode. Use Kubernetes 
 
 ## Enable FIPS in Self-Managed Platform (SMP) 
 
-After verifying that your Kubernetes cluster is FIPS-enabled, proceed with the installation of the latest Self-Managed Platform (SMP) version. Download and extract the Helm chart package.
+After verifying that your Kubernetes cluster is FIPS-enabled, proceed with the installation of the latest Self-Managed Platform (SMP) version. You can follow the [AWS installation guide](/docs/self-managed-enterprise-edition/cloud-providers/install-in-aws).
 
-To enable FIPS mode in your Harness deployment, modify the `values.yaml` file by adding the following configuration under the `global` section:
+To enable FIPS mode in your Harness SMP, modify the `values.yaml` (or `override.yaml`) file by adding the following configuration under the `global` section:
 
   ```yaml
   global:
     fips: true
   ```
 
-This setting ensures that the Harness components are deployed in compliance with FIPS 140-2 requirements. Once the configuration is updated, install or upgrade your Helm release using the modified `values.yaml` to apply the changes.
+This setting ensures that the Harness components are deployed in compliance with FIPS 140-2 requirements. Once the configuration is updated, install or upgrade your Helm release using the modified `values.yaml` (or `override.yaml`) to apply the changes.
 
 ### Delegates in FIPS Mode
 
