@@ -14,10 +14,16 @@ Barrier steps are only supported inside **Deploy** and **Custom** stage types.
 ## How Barriers Work
 
 - Barriers take effect only when **two or more stages or step groups use the same barrier name** (configured via the **Barrier Reference** field in the Barrier step) **and are executed in parallel**.
-- **Barriers are also supported across child pipelines.** A parent pipeline can define and use a barrier, and any child pipeline can reference and synchronize using the same barrier.
 - All stages or step groups referencing the same barrier must reach the barrier point. Only then do they all proceed simultaneously past that point.
 - If any one of the stages or step groups fails **before** reaching the barrier, the remaining ones are signaled to fail as well.
 - Each stage or step group will then follow its configured failure strategy.
+
+:::note
+
+Barriers are also supported across **child pipelines.** A parent pipeline can define and use a barrier, and any child pipeline can reference and synchronize using the same barrier.
+
+Currently, this feature is behind the feature flag `PIPE_BARRIERS_FOR_CHAINED_PIPELINES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 Barriers can also be used with looping strategies. However, additional constraints apply when using barriers in looped parallel executions. For details, refer to the [Important notes](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers/).
 
