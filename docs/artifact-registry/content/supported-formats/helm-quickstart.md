@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="Helm" targetPage="/docs/artifact-registry/supported-formats" />
 
 This guide will help you **create a Helm Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Helm packages**.
 
@@ -89,4 +86,3 @@ helm pull oci://pkg.harness.io/<account-id>/<helm-registry-name>/<IMAGE_NAME> --
 ```
 
 ---
-By following this guide, you can effectively set up and manage a Helm Artifact Registry within Harness, streamlining your container image workflows.
