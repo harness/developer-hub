@@ -10,10 +10,6 @@ import TabItem from '@theme/TabItem';
 
 The **Event Listener Step** introduces an event-driven mechanism to Harness pipelines, eliminating the need for polling and improving performance. Instead of continuously checking for status updates, this step reacts to **webhook events** in real time to determine whether a pipeline should resume or fail based on predefined conditions.
 
-:::note
-This feature is behind the feature flag: `CDS_EVENT_LISTENER_STEP`
-:::
-
 ## Key Features
 
 - **Webhook Event Handling**  
