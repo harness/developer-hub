@@ -39,7 +39,7 @@ For customers with regulatory requirements or internal security policies that ma
 ## FIPS Support in Harness
 
 :::info Feature Availability
-  FIPS is supported in SMP version 0.31.0 and later.
+  FIPS is supported starting from SMP version 0.31.0 and later.
 :::
 
 Harness supports deployments that comply with FIPS 140-2 requirements for Self-Managed Platform in Harness. This enables customers in government, defense, and other regulated industries to use Harness while meeting their security and compliance obligations.
@@ -65,7 +65,7 @@ Before deploying a FIPS-compliant Kubernetes cluster, ensure the following prere
 
 ### Enabling FIPS on AWS Cluster
 
-AWS provides multiple options to enable FIPS 140-2 compliance for worker nodes in Amazon EKS. This guide focuses on enabling FIPS by using a FIPS-enabled Amazon EKS AMI. It also covers using Bottlerocket, which has dedicated FIPS-enabled AMIs available for EKS clusters. For details on Bottlerocket FIPS AMIs, refer to the [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/bottlerocket-fips-amis.html).
+AWS provides multiple options to enable FIPS 140-2 compliance for worker nodes in Amazon EKS. This guide focuses on enabling FIPS by using a FIPS-enabled Amazon EKS AMI. It also covers using Bottlerocket, which has dedicated FIPS-enabled AMIs available for EKS clusters. For details on Bottlerocket FIPS AMIs, refer to the [Official AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/bottlerocket-fips-amis.html).
 
 The following steps explain how to create an EKS cluster and configure Bottlerocket nodes with FIPS-enabled AMIs.
 
