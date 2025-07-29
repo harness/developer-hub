@@ -122,7 +122,7 @@ kubectl get secret <MONGO-SECRET-NAME> -n <MONGO-NAMESPACE> -o yaml \
 
 ### 6. Update Helm Values for External MongoDB
 
-To connect Harness SMP with your deployed Percona MongoDB cluster, update the `values.yaml` file with the external MongoDB configuration as shown below.
+To connect Harness SMP with your deployed Percona MongoDB cluster, update your `override.yaml` file with the external MongoDB configuration as shown below.
 
 ```bash
 global:
