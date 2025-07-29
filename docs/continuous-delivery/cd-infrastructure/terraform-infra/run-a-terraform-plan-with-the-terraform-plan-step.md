@@ -584,8 +584,6 @@ This option makes is useful only if you do not have a Terraform backed configure
 ## Create remote workspace with prefix
 
 :::note
-This setting is only available when the Configuration Type is **Inline**.
-
 This option is available only on delegate version `86400` or later.
 :::
 
