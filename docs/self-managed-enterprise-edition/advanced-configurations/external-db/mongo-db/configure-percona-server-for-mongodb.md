@@ -66,7 +66,7 @@ Deploy a development-ready PSMDB cluster using the following command. This setup
 helm install <RELEASE-NAME> percona/psmdb-db \   
 --namespace <MONGO-NAMESPACE> \   
 --set runUid=1001 \   
---set "replsets.rs0.volumeSpec.pvc.resources.requests.storage=3Gi" \   
+--set "replsets.rs0.volumeSpec.pvc.resources.requests.storage=100Gi" \   
 --set backup.enabled=false \   
 --set sharding.enabled=false
 ```
