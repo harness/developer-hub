@@ -2,6 +2,7 @@
 title: Database DevOps Key Concepts
 sidebar_label: DB DevOps Key Concepts
 description: Basic terminology and concepts related to Harness Database DevOps
+slug: /database-devops/concepts-and-features/key-concepts/
 sidebar_position: 1
 keywords:
   - database devops
