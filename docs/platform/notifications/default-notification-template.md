@@ -19,7 +19,7 @@ import TabItem from '@theme/TabItem';
 The Default Notification Template feature requires the `PL_DEFAULT_NOTIFICATION_TEMPLATE_SET_SUPPORT` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
-The Default Notification Template feature allows you to define templates that automatically apply when no specific template is selected for a notification rule. This ensures consistent and complete information in all notifications without requiring manual template selection for each rule.
+The Default Notification Template feature allows you to define [Notification templates](/docs/platform/templates/customized-notification-template) that automatically apply when no specific template is selected for a notification rule. This ensures consistent and complete information in all notifications without requiring manual template selection for each rule.
 
 You can configure default notification templates at different scopes (Account, Organization, or Project) and for specific event types and channel types, providing granular control over notification content.
 
