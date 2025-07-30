@@ -32,7 +32,8 @@ export const DbdevopsData: Horizon = {
         description:
           "Allow the branch name that a DB Instance deploys from to come from a pipeline variable to simplify usage of feature branches.",
         tag: [{ value: "Orchestration" }, {value: "Q2"}],
-      },
+      }//,
+      /*
       {
         title: "Spanner for Google SQL",
         description: "Added support for the Google SQL version of the Google Spanner database as a supported database type.",
@@ -69,7 +70,7 @@ export const DbdevopsData: Horizon = {
           "Add option to pass secrets to build pods without going through a Kubernetes secret object",
         tag: [{ value: "Governance" }, {value: "Q1"}],
         link: "https://developer.harness.io/docs/database-devops/use-database-devops/get-started/runtime-secrets/"
-      }
+      }*/
     ],
   },
   "Now": {
@@ -86,12 +87,7 @@ export const DbdevopsData: Horizon = {
         description:
           "Implement a subscription UI for Harness Database DevOps",
         tag: [{ value: "Governance" }],
-      }
-    ],
-  },
-  "Next": {
-    description: "What we'll build next, next ~2 quarters",
-    feature: [
+      },
       {
         title: "Kerberos Auth",
         description:
@@ -109,18 +105,41 @@ export const DbdevopsData: Horizon = {
         description:
           "Add native support for using Flyway instead of liquibase",
         tag: [{ value: "Integrations" }],
-      }
-    ]
+      },      
+      {
+        title: "DynamoDB Support",
+        description:
+          "Support applying database changes to DynamoDB",
+        tag: [{ value: "Integrations" }],
+      },
+    ],
   },
-  "Future": {
-    description: "typically > 6 months out",
+  "Next": {
+    description: "What we'll build next, next ~2 quarters",
     feature: [
+      {
+        title: "Drift Detection",
+        description:
+          "Detect and surface schema differences between a database and its expected state",
+        tag: [{ value: "Core Features" }],
+      },
       {
         title: "Support for Snowflake",
         description: "Add support for Snowflake as a supported database type.",
         tag: [{ value: "Integrations" }],
         link:"https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/#setting-up-google-spanner"
       },
+      {
+        tag: [{ value: "Core Features" }],
+        title: "Query Console",
+        description:
+          "Allow developers to run ad-hoc read queries against DBs, with an ability to anonymize results",
+      },
+    ]
+  },
+  "Future": {
+    description: "typically > 6 months out",
+    feature: [
       {
         title: "Support for Spanner for postgresql",
         description: "Add support for the postgres version of the Google spanner database as a supported database type.",
@@ -158,21 +177,9 @@ export const DbdevopsData: Horizon = {
           "Ability to write rego policies when deploying to MongoDB",
       },
       {
-        tag: [{ value: "Core Features" }],
-        title: "Anonymized Queries",
-        description:
-          "Allow developers to run ad-hoc read queries against DBs, with an ability to anonymize results",
-      },
-      {
         title: "DB Provisioning",
         description:
           "integrate to Harness IACM to simplify DB provisioning and handling of ephemeral database environments.",
-        tag: [{ value: "Core Features" }],
-      },
-      {
-        title: "Drift Detection",
-        description:
-          "Detect and surface schema differences between a database and its expected state",
         tag: [{ value: "Core Features" }],
       },
       {
