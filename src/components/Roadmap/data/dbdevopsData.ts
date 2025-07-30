@@ -190,8 +190,8 @@ export const DbdevopsData: Horizon = {
         description: "Automatically lint changelogs and sql before application",
       },
       {
-        tag: [{ value: "Changelog Generation" }],
-        title: "Core Features",
+        tag: [{ value: "Core Features" }],
+        title: "Changelog Generation",
         description: "Automatically generate a baseline changelog from an existing database config without authoring a custom pipeline",
       },
       {
