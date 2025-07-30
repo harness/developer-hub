@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-07-18T18:00
+date: 2025-07-30T18:00
 sidebar_position: 6
 ---
 
@@ -24,7 +24,7 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 #### **Deployment Date:** July 28, 2025 (Prod-1)
 
 ### ⭐ [New Feature] Bulk Evaluation Export
-**[CCM-23906] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/aws/harness-concepts#evaluations)**
+**[CCM-23906]**
 
 CCM has introduced a new "Export" option in Cloud Asset Governance that lets you easily download results and logs from multiple evaluations run across different accounts and regions directly from the Test Terminal (for multi-target evaluations) or the Evaluations page.
 
