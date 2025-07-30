@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## July 2025
 
+### Version 25.07.86302 <!--Jul 30, 2025-->
+
+#### Fixed issues
+
+- Improved log-streaming performance while dispatching the logs. (CDS-111776)
+
 ### Version 25.07.86301 <!-- Jul 30, 2025 -->
 
 #### Fixed issues
