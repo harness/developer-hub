@@ -28,12 +28,6 @@ export const DbdevopsData: Horizon = {
           "Add an output on the apply step that outputs the list of change IDs that were applied.",
         tag: [{ value: "Orchestration" }, {value: "Q2"}],
         link:"https://developer.harness.io/docs/database-devops/features/access-applied-changesets"
-      },
-      {
-        title: "Variable Branch Override",
-        description:
-          "Allow the branch name that a DB Instance deploys from to come from a pipeline variable to simplify usage of feature branches.",
-        tag: [{ value: "Orchestration" }, {value: "Q2"}],
       }//,
       /*
       {
