@@ -61,9 +61,8 @@ To create a **Component** via the UI:
 > Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 
-:::caution
-For the owner field, the dropdown shows a limited set of groups by default. Once you begin typing, it searches for available user and user groups and lets you pick the one you want. Whatever you provide in the owner field must match an existing group or user (case-sensitive); otherwise, explicitly click on `Add _name_ as a new owner`:, or the system will mark it with a ❓ indicating unresolved ownership.
-
+:::note
+To set the owner identity, type a few characters in the Owner field to search and select a user or group from the dropdown; if no match appears, set yourself as the owner or enter any string and click `Add <arbitrary_string> as a new owner`.
 
 ![](./static/create-entity-2.png)
 :::
@@ -102,20 +101,33 @@ To create a Component using Catalog YAML:
 1. Navigate to **Create** in the sidebar, and select **Component**.
 2. In the **Visual View**, switch to **YAML View** via the toggle at the top.
    ![](./static/yaml-way.png)
-3. Paste your existing Backstage YAML if available. Harness will auto-convert it into the native format.
+3. Provide the YAML directly for the entity which you want to create in IDP. 
+<details>
+<summary>Example YAML</summary>
+```yaml
+apiVersion: harness.io/v1
+kind: component
+name: artist-web
+identifier: artistweb
+type: service
+owner: user:account/shibam.dhar@harness.io
+scope: ACCOUNT
+spec:
+  lifecycle: production
+metadata:
+  tags:
+    - java
+  description: place to be for artists
+```
+</details>
 
-   ![](./static/yaml-conversion.png)
+> You can even paste your existing Backstage YAML if available. Harness will auto-convert it into the native format.
+![](./static/yaml-conversion.png)
 
 > ⚠️ **Note:** Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
-:::caution
-When using the `owner` field in your entity YAML:
-
-* Any plain value (e.g., `backend-team`) is interpreted as a **group**. If the group does not exist, a ❓ icon will appear in the UI.
-* Use the format `user:<email>` or `user:<username>` to assign ownership to a **user**. If the user does not exist, one will be created.
-* Resolution is **case-sensitive** — make sure to match the exact casing of group or user identifiers to avoid unresolved references.
-
-
+:::note
+You can always set the owner identity using your email ID, a group name, or any custom string that fits. Just type the value directly in the owner field. If it’s a group name it will auto resolve to the group ID or it will assign an arbitrary string.
 ![](./static/create-entity-2.png)
 :::
 

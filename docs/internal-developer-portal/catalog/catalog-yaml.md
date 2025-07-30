@@ -200,6 +200,11 @@ While `owner` is not mandatory, it is **strongly recommended** to associate enti
 - At **Org scope**: assign Users/User Groups from Org or Account.  
 - At **Account scope**: assign from Account-level only.
 
+The owner identity can be defined using a plain value like `backend-team`, which will be treated as a group. If no matching group is found, the value is still accepted as an arbitrary string and displayed.
+
+To explicitly refer to a user or group, use the format `user:<scope>/<email-or-username> `or `group:<scope>/<group-name>`, also it uses case-sensitive matching to identify known groups, so make sure the casing exactly matches what's defined in your account.
+
+
 ---
 
 ### `metadata`

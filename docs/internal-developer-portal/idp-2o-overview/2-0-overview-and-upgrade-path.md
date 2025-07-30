@@ -190,7 +190,7 @@ These fields define the entity's scope. For project-scoped entities, both fields
 - `spec.type` becomes `type`
   - Relocated to root level as it is fundamental to entity definition. The `kind` and `type` fields define entity behavior and should appear together.
 - `spec.owner` is now `owner` 
-  - Moved to root level to emphasize its importance. IDP Catalog addresses ownership challenges, warranting prominent placement of this field. Harness IDP uses the `owner` field to resolve service ownership via existing groups and users, or explicitly defined users (e.g., `user:shibam_devrel`). Unresolved values show a ❓ indicator in the UI.
+  - Moved to root level to emphasize its significance. IDP Catalog addresses ownership challenges, warranting prominent placement of this field.
 
 
 #### ⊖ Removed fields
