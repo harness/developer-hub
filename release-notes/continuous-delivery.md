@@ -55,6 +55,30 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## July 2025
 
+### Version 1.99.0
+
+#### New Features and Enhancements
+
+- Harness now supports the [Canary Deployment Strategy for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments#lambda-canary-deployment-strategy), enabling phased traffic shifting and automated rollback for safer production rollouts. Currently, this feature is behind the feature flag `CDS_AWS_LAMBDA_CANARY_DEPLOY`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
+
+- Harness now supports automatically creating [remote Terraform workspaces](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step#create-remote-workspace-with-prefix) with a prefix if they don’t exist, preventing pipeline failures due to missing workspaces.
+
+- Users can now see the template version used during pipeline execution, allowing them to identify the exact versionLabel applied at runtime. Currently, this feature is behind the feature flag `PIPE_STORE_TEMPLATE_REFERENCE_SUMMARY_PER_EXECUTION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
+
+- Harness supports **barrier synchronization across parent and child pipelines**, enabling child pipelines to reference and utilize barriers defined in parent pipelines via runtime inputs for coordinated deployments and consistent roll-outs. Currently, this feature is behind the feature flag `PIPE_BARRIERS_FOR_CHAINED_PIPELINES`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
+
+#### Fixed Issues
+
+- Previously, YAML anchors were not preserved when using the **Update Release Repo** step in GitOps pipelines. Anchors like `<<: *common_values` were incorrectly converted to literal strings, breaking expected YAML behavior. The issue is resolved. YAML anchors are now correctly handled and preserved during the update process in the release repository. (**CDS-112575, ZD-89171**)
+- Previously, the Terragrunt step failed with the error `No results for path: $['WorkingDir']` when using the `RUN_MODULE` setting. This occurred because the newer Terragrunt binary outputs `terraform_binary` instead of `TerraformBinary`, which the system expected. The issue is resolved. The Terragrunt step now correctly handles the updated output structure. (**CDS-112401, ZD-88597**)
+- Previously, reconciling pipelines with updated templates resulted in an error related to `input object id`, blocking users from updating pipelines. This occurred due to internal handling of pipeline ID changes during reconciliation, especially when pipeline versions were bumped via Git. The issue is resolved. Reconciliation now correctly handles pipeline ID updates, and users can update pipelines without encountering blocking errors. (**PIPE-28478, ZD-88071**)
+- Previously, Azure Function deployments using ACR failed because the deployment client incorrectly appended `.azurecr.io` to an already complete image path, resulting in malformed image names like `acrname.azurecr.io.azurecr.io`. The issue is resolved. Image names are now constructed correctly during Azure Function deployments. (**CDS-112144, ZD-87409**)
+- Previously, AWS Connectors using OIDC authentication failed to validate in the `af-south-1` (Africa South 1) region, even though the same configuration worked in other regions. The issue is resolved and is behind the feature flag `CDS_AWS_STS_NON_DEFAULT_REGION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**CDS-112117, ZD-87564**)
+- Previously, triggers failed to execute when the pipeline and its input set were stored in different Git repositories with differing default branches. The trigger attempted to fetch the input set from the pipeline's default branch instead of the configured branch for the input set. The issue is resolved. (**PIPE-27923, ZD-86676,89044**)
+- Previously, the `.replace()` function in Harness expressions did not work as expected when the input variable was defined using another expression rather than as a runtime input. This caused failures in resolving the final value during execution. The issue is resolved. (**PIPE-27747, ZD-85847**)
+- Previously, barriers in parallel pipeline executions did not lift even when all participating stages reached the barrier. This occurred due to a `DuplicateKeyException` in the backend when writing to the `notifyResponses` collection, preventing the barrier state from updating. The issue is resolved. (**PIPE-26630, ZD-81158,88919**)
+- Previously, Step Group tooltips in the pipeline diagram remained visible even after the mouse was moved away, leading to overlapping tooltips and a cluttered interface. This was caused by redundant `event.stopPropagation()` calls in the mouse event handlers, which disrupted the hover detection logic. The issue is resolved. (**PIPE-28679**)
+
 ### Version 1.98.1
 
 #### New Features and Enhancements
@@ -94,8 +118,6 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 #### New Features and Enhancements
 
 - Harness now supports a **Native OIDC step to consume an OIDC connector and generate an OIDC token** for use in subsequent non-native scripted operations. (**CDS-110358**)
-
-- Harness supports **barrier synchronization across parent and child pipelines**, enabling child pipelines to reference and utilize barriers defined in parent pipelines via runtime inputs for coordinated deployments and consistent roll-outs. Currently, this feature is behind the feature flag `PIPE_BARRIERS_FOR_CHAINED_PIPELINES`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
 
 #### Fixed Issues
 
