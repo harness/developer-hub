@@ -15,13 +15,13 @@ keywords:
   - yaml diff secret manager
 ---
 
-Secret Manager Template reconciliation is the process of updating dependent Custom Secret Managers and Secrets when you modify their parent template. When you update a Secret Manager Template, all entities that use it need to be updated to match the new template settings.
+Secret Manager Template reconciliation is the process of updating dependent Custom Secret Managers and Secrets when you modify their associated template. When you update a Secret Manager Template, all entities that use it need to be updated to match the new template settings.
 
 **How it works:**
 - Harness automatically detects when a template has been modified
 - Alert banners appear on all dependent entities (Custom Secret Managers and Secrets)
 - You can review the configuration differences in a YAML diff view
-- Apply the changes to keep everything synchronized
+- Apply the changes to keep all the entities synchronized
 
 This article guides you through the reconciliation process for both Custom Secret Managers and their dependent Secrets.
 
@@ -29,7 +29,7 @@ This article guides you through the reconciliation process for both Custom Secre
 
 Before you can reconcile templates, ensure you have the following configured:
 
-- A [Secret Manager Template](/docs/platform/templates/create-a-secret-manager-template) with [fixed values](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/)
+- A [Secret Manager Template](/docs/platform/templates/create-a-secret-manager-template).
 - A [Custom Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/custom-secret-manager/) that references the Secret Manager Template
 - A [Secret](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) that uses the Custom Secret Manager
 
@@ -76,4 +76,14 @@ After reconciling the Secret Manager, update all dependent secrets:
 
 - Review the configuration changes, provide values for any runtime inputs, and click **Save** to apply
 
-   ![](../static/reconcile-secret.gif)     
+   ![](../static/reconcile-secret.gif) 
+
+:::note Important Note
+If you try to open a Secret that needs reconciliation, Harness will redirect you to the [Secret Manager page](#reconcile-the-secret-manager) to complete the reconciliation first.
+    <details>
+        <summary>Click to view</summary>
+        <p>
+        ![](../static/cst-reconcile.gif)
+        </p>
+    </details>
+:::   
