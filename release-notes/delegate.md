@@ -93,6 +93,18 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 - Fixed an issue where the Helm client added a duplicate --max flag. It now checks for existing flags before appending, ensuring the command runs correctly.[CDS-110151]
 - The Salesforce connector now uses `OkHttpClient` for validation, improving reliability. The unused `authFileRef` field has been removed. Support for specifying `loginUrl` has been added to the JWT authentication flow, enabling compatibility with sandbox environments. [CDS-112477]
 
+### Version 25.07.86302 <!--Jul 30, 2025-->
+
+#### Fixed issues
+
+- Improved log-streaming performance while dispatching the logs. (CDS-111776)
+
+### Version 25.07.86301 <!-- Jul 30, 2025 -->
+
+#### Fixed issues
+
+- Customers can now use Bitbucket Cloud API authentication in IDP 2.0, IDP 1.0, IDP Git Sync, and IDP Scorecards. (IDP-6077)
+
 ### Version 25.07.86300 <!--Jul 16 2025-->
 
 #### New features and improvements

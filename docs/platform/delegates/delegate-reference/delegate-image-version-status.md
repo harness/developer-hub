@@ -32,6 +32,18 @@ Supported versions EOS and EOL are based on when the delegate image was pushed t
 
 | Image version         | Release date       | EOS                | EOL                |
 |-----------------------|--------------------|--------------------|--------------------|
+| 25.07.86400           | July 31, 2025      | January 31, 2026   | March 31, 2026     |
+| 25.07.86301           | July 30, 2025      | January 30, 2026   | March 30, 2026     |
+| 25.07.86302           | July 30, 2025      | January 30, 2026   | March 30, 2026     |
+| 25.07.86300           | July 17, 2025      | January 17, 2026   | March 17, 2026     |
+| 25.06.86106           | July 15, 2025      | January 15, 2026   | March 15, 2026     |
+| 25.06.86203           | July 14, 2025      | January 14, 2026   | March 14, 2026     |
+| 25.06.86004           | July 12, 2025      | January 12, 2026   | March 12, 2026     |
+| 25.06.86202           | July 03, 2025      | January 03, 2026   | March 03, 2026     |
+| 25.06.86104           | July 01, 2025      | January 01, 2026   | March 01, 2026     |
+| 25.06.86102           | June 26, 2025      | December 26, 2025  | February 26, 2026  |
+| 25.06.86101           | June 19, 2025      | December 19, 2025  | February 19, 2026  |
+| 25.06.86100           | June 16, 2025      | December 16, 2025  | February 16, 2026  |
 | 25.05.85905           | June 03, 2025      | December 02, 2025  | February 01, 2026  |
 | 25.05.85904           | May 30, 2025       | November 28, 2025  | January 28, 2026   |
 | 25.05.85903           | May 23, 2025       | November 21, 2025  | January 21, 2026   |

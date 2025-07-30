@@ -581,7 +581,52 @@ With the **Skip state storage** option enabled, Harness allows you to skip the l
 
 This option makes is useful only if you do not have a Terraform backed configured in your Terraform config files. If you have a Terraform backed configured, then the Terraform CLI will not create any local state files.
 
+## Create remote workspace with prefix
 
+:::note
+This option is available only on delegate version `86400` or later.
+:::
+
+When using a [remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a workspace **prefix**, Terraform does not automatically create the workspace if it doesn’t already exist. This can cause pipeline failures with errors like:
+
+`Error: Currently selected workspace "my-app-dev" does not exist`
+
+To address this, Harness provides the **Create remote workspace with prefix** option. When this option is enabled:
+
+- If the remote workspace does **not** exist, Harness automatically creates it and continues the execution.
+- If the remote workspace **does** exist, Harness exports it to the `TF_WORKSPACE` environment variable so Terraform uses it.
+- If both the step configuration and environment variable specify a workspace, the **step configuration takes precedence**.
+
+:::info
+To enable automatic workspace selection when a workspace is configured in the step settings, this flag **must** be enabled.
+
+If you prefer not to use this flag, you can manually configure the workspace using the `TF_WORKSPACE` environment variable.
+
+**Rollback does not delete workspaces** created using this option. Workspace cleanup must be handled manually.
+
+:::
+
+<details>
+<summary>This is how the YAML would look like</summary>
+
+
+```yaml
+- step:
+    type: TerraformPlan
+    name: TerraformPlan
+    identifier: TerraformPlan
+    timeout: 10m
+    spec:
+      provisionerIdentifier: <+input>
+      configuration:
+        command: Apply
+        configFiles: {}
+        secretManagerRef: <+input>
+        skipStateStorage: false
+        createRemoteWorkspaceWithPrefix: true
+        skipRefreshCommand: false
+```
+</details>
 
 ## Command line options
 
