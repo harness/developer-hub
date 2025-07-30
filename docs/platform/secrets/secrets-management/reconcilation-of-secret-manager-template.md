@@ -29,7 +29,7 @@ This article guides you through the reconciliation process for both Custom Secre
 
 Before you can reconcile templates, ensure you have the following configured:
 
-- A [Secret Manager Template](/docs/platform/templates/create-a-secret-manager-template).
+- A [Secret Manager Template](/docs/platform/templates/create-a-secret-manager-template)
 - A [Custom Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/custom-secret-manager/) that references the Secret Manager Template
 - A [Secret](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) that uses the Custom Secret Manager
 
