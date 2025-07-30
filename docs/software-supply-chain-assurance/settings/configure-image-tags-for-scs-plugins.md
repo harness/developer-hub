@@ -14,7 +14,7 @@ When a Harness SCS pipeline starts, an initialize step runs automatically before
 By default, when SCS pipeline runs, the Harness Delegate uses a Docker connector to make an anonymous outbound connection to pull the Harness SCS images from the public container registry where they are stored.
 
 ### Configure Image Pulls from a Private Registry
-Harness CI images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can pull Harness images from your own private registry. For instructions on each of these options, go to Connect to the [Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
+Harness SCS images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can pull Harness SCS images from your own private registry.
 
 
 Below are the supported plugin images and their tags:
