@@ -15,7 +15,15 @@ keywords:
   - yaml diff secret manager
 ---
 
-When you update a Secret Manager Template, dependent Custom Secret Managers and Secrets become out of sync, potentially causing pipeline failures and can affect other entities. Harness provides reconciliation alerts to help you synchronize these entities.
+Secret Manager Template reconciliation is the process of updating dependent Custom Secret Managers and Secrets when you modify their parent template. When you update a Secret Manager Template, all entities that use it need to be updated to match the new template settings.
+
+**How it works:**
+- Harness automatically detects when a template has been modified
+- Alert banners appear on all dependent entities (Custom Secret Managers and Secrets)
+- You can review the configuration differences in a YAML diff view
+- Apply the changes to keep everything synchronized
+
+This article guides you through the reconciliation process for both Custom Secret Managers and their dependent Secrets.
 
 ## Prerequisites
 
