@@ -88,6 +88,11 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## July 2025
 
+### Version 25.07.86400 <!--Jul 30, 2025-->
+
+- Fixed an issue where the Helm client added a duplicate --max flag. It now checks for existing flags before appending, ensuring the command runs correctly.[CDS-110151]
+- The Salesforce connector now uses `OkHttpClient` for validation, improving reliability. The unused `authFileRef` field has been removed. Support for specifying `loginUrl` has been added to the JWT authentication flow, enabling compatibility with sandbox environments. [CDS-112477]
+
 ### Version 25.07.86300 <!--Jul 16 2025-->
 
 #### New features and improvements
