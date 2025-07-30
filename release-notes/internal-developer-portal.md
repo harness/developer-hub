@@ -24,10 +24,45 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| [2025.07.v2](/release-notes/internal-developer-portal#july---202507v2)                               | ✅        | ✅         | ✅         | ✅          | ⏳          | ⏳            |
 | [2025.07.v1](/release-notes/internal-developer-portal#july---202507v1)                               | ✅        | ✅         | ✅         | ✅          | ✅          | ✅            |
 | [2025.06.v1](/release-notes/internal-developer-portal#june---202506v1)  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
 | [2025.05.v1](/release-notes/internal-developer-portal#-releasing-harness-idp-20-beta---may-202505v1) | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
 
+
+## July - [2025.07.v2]
+
+### [New Feature] Support for Relative Paths in API Definitions
+
+You can now use **relative file paths** (e.g., `./openapi.yaml`, `../spec/api.json`) in the `definition.$text` field when creating `API` kind entities. This enhancement simplifies referencing OpenAPI specification files located within the same repository as your entity YAML.
+
+#### Sample YAML
+
+```yaml
+apiVersion: harness.io/v1
+kind: API
+type: openapi
+identifier: unknown
+name: unknown
+owner: Harness_Partners
+spec:
+  lifecycle: dev
+  definition:
+    $text: ./petstore.oas.yaml
+metadata:
+  description: The petstore API
+  annotations: {}
+  links:
+    - url: https://github.com/swagger-api/swagger-petstore
+      title: GitHub Repo
+      icon: github
+    - url: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
+      title: API Spec
+      icon: code
+  tags:
+    - store
+    - rest
+```
 
 ## July - [2025.07.v1]
 
