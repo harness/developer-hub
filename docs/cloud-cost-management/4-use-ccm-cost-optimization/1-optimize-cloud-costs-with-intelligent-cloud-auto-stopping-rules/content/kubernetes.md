@@ -20,6 +20,7 @@ Set up a proxy or load balancer that will intercept and manage traffic to your r
 | Auto Scaling Groups | ❌ | ✅ [Link](/docs/cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/content/aws-alb) |
 | Amazon RDS Instances | ✅ [Link](/docs/cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/content/aws-proxy) | ❌ |
 
+
 -------
 
 ## Step 2: Create AutoStopping Rule
@@ -31,3 +32,11 @@ Create an AutoStopping rule to define the conditions under which your resources 
 | EC2 | ✅ [Link](/docs/cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/content/aws-proxy) |
 | Auto Scaling Groups | ✅ [Link](/docs/cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/content/aws-alb) |
 | Amazon RDS Instances | ✅ [Link](/docs/cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/content/aws-proxy) |
+
+
+
+> **Note:**  
+> - There's **no limit** on the number of dependencies a rule can manage.  
+> - **RDS warm-up time** depends on cluster/instance size (~25 minutes).  
+> - Other resources warm up in under 2 minutes (max 5 minutes).
+
