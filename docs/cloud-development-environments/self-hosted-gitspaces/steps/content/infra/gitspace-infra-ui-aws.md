@@ -46,7 +46,7 @@ You can only be able to host Gitspaces in these defined regions.
 
 Click on **New Region** to add a new region. 
 For **AWS Cloud Infrastructure** for your Self Hosted Gitspaces, ensure that you have the following: 
-1. It's mandatory to add at least **two availability zones** for each region in your infrastructure. 
+1. At least **two availability zones** for each region in your infrastructure. 
 2. For every availability zone, you need to provide the **private subnet CIDR block** and **public subnet CIDR block**. 
 
 ![](../../static/aws-hybrid-2.png)
