@@ -78,7 +78,7 @@ After reconciling the Secret Manager, update all dependent secrets:
    ![](../static/reconcile-secret.gif) 
 
 :::note Important Note
-If you try to open a Secret that needs reconciliation, Harness will redirect you to the [Secret Manager page](#reconcile-the-secret-manager) to complete the reconciliation first.
+If a Secret is created in a Custom Secret Manager that needs reconciliation, Harness will redirect you to the [Secret Manager page](#reconcile-the-secret-manager) to complete the Custom Secret Manager reconciliation first.
     <details>
         <summary>Click to view</summary>
         <p>
