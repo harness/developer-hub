@@ -48,7 +48,7 @@ If you need larger machines, contact us at **[cde-interest@harness.io](mailto:cd
 
 ### Self Hosted Machines
 
-For Self Hosted Gitspaces, you can configure **machine types of your choice** based on your infrastructure. For more details, refer to [Machines in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md#add-machines-in-gitspace-infrastructure).
+Go to [Machines in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/manage-self-hosted.md#add-machines-in-gitspace-infrastructure) to configure **machine types of your choice** based on your infrastructure.
 
 ## Git Providers
 
