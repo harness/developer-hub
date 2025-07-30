@@ -6,6 +6,7 @@ The following sections describe the scanners supported by Harness STO, based on 
 - [Configuration scanners](#configuration-scanners)
 - [Other scanners](#other-scanners)
 
+In addition to the listed supported scanners, the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) allows the use of various other scanners. For a complete list of supported scanners, refer to [Scanners Supported with Custom Scan Step](/docs/security-testing-orchestration/whats-supported/scanners#scanners-supported-with-custom-scan-step).
 
 #### Code repo scanners
 
@@ -43,19 +44,13 @@ A code scanner can detect one or more of the following issue types in your sourc
         <td valign="top">
          <ul>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Extraction, Ingestion</li>
-            <li>
-                <a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference">Checkmarx</a>
-                 — The following workflows are supported:
-                <ul>
-                  <li>Ingestion workflows for all Checkmarx One services (including SAST and SCA) that can publish scan results in SARIF format</li>
-                  <li>Orchestration, Extraction, and Ingestion workflows for Checkmarx SAST and Checkmarx SCA scans</li>
-                </ul>
-              </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference">Checkmarx One</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference">CodeQL</a> Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-scanner-reference">Fortify Static Code Analyzer</a> Ingestion</li>
-              <li><a href="/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference">Fossa</a> Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference">Fossa</a> Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Extraction, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference">Nexus IQ</a> Orchestration, Extraction, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>

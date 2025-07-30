@@ -12,6 +12,7 @@ redirect_from:
 - /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives
 - /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective
 - /docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report
+- /docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws/
 
 ---
 

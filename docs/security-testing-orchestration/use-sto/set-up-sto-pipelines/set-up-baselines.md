@@ -1,7 +1,7 @@
 ---
-title: Target baselines in STO
+title: Set up target baselines in STO
 description: How to set up baselines. Every scanned target needs one.  
-sidebar_label: Target baselines
+sidebar_label: Set up Target baselines
 sidebar_position: 5
 ---
 

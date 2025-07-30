@@ -24,6 +24,19 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## July 2025
 
+### Version v1.150.7
+
+<!-- 2025-07-25 -->
+
+#### New Features and Enhancements
+
+- Upgraded the [SonarQube step](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) CLI from version `4.7` to `7.1`, introducing security updates and enhancements (STO-9143).
+- Improved error messaging for the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference). For example, clearer messages now appear when specifying a key field that does not exist in the JSON input (STO-6110).
+
+#### Fixed Issues
+- Fixed an issue in the Vulnerabilities tab where selecting an option from the scanner filter dropdown during a [Custom Scan](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step caused other dropdowns to fail to populate, preventing the target name and variant from rendering correctly (STO-9376, ZD-88728). 
+
+
 ### Version v1.148.4
 
 <!-- 2025-07-17 -->

@@ -23,7 +23,7 @@ Get started instantly with pre-built dashboards designed around industry-proven 
   * DORA
   * Sprint Insights (Coming soon)
 * Developer Productivity
-* Business Alignment (Coming soon)
+* Business Alignment
 
 ### Org Trees & Team Structures That Reflect Reality
 
@@ -34,6 +34,8 @@ Three ways to define your team structures:
 * **Integrate directly with your HRIS system (Coming Soon):** Automatically sync team structures from systems like Workday or BambooHR.
 * **Third-Party Imports (Coming Soon):** Bring in teams directly from tools you already use, like GitHub Teams or Jira Projects.
 
+![](./static/org-tree-preview.png)
+
 ### Integrations 2.0 — Easier. Smarter. More Resilient.
 
 SEI 2.0 introduces a redesigned integrations framework focused on reliability, observability, and ease of maintenance.
@@ -43,6 +45,8 @@ SEI 2.0 introduces a redesigned integrations framework focused on reliability, o
 * Advanced retry mechanisms ensure that transient failures or API limits don’t disrupt your insights pipeline.
 
 These enhancements significantly reduce integration maintenance overhead, giving teams confidence in the accuracy and completeness of their engineering data.
+
+![](./static/integrations.png)
 
 ### Decentralized Administration
 

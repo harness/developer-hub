@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-07-07T18:00
+date: 2025-07-18T18:00
 sidebar_position: 6
 ---
 
@@ -31,11 +31,14 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 - **GCP credits regex support:** Perspective queries now support regex-based matching for GCP discount types aligned with dashboard behavior. [CCM-24110]
 
+- **Tooltip enhancements:** The Group By Chart tooltip now shows the total daily cost plus individual data-point costs, with the selected point highlighted for easier analysis. [CCM-23888]
+
+<DocImage path={require('./static/tags.gif')} width="100%" height="100%" title="Click to view full size image" />
+
 #### Cost Categories
 
 - **Cluster Cost Category (CC) Stamping Support**: We now support Cost Category for Cluster data. Set **Billing Source** to **CLUSTER** to use Cost Category as a filter or dimension in Dashboards. This capability applies only to data generated after 10 July 2025 (submit a support ticket to backfill older data). You can also create **Cost Buckets** based on cluster-level rules. View cluster Cost Categories in **Unified Explore** rather than **Cluster Explore**. [CCM-22980]
 
-<DocImage path={require('./static/tags.gif')} width="100%" height="100%" title="Click to view full size image" />
 
 #### AutoStopping
 
@@ -51,10 +54,6 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 #### Asset Governance
 - **Enforcement evaluation cap increased:** The previous limit of 30 Rules or Rule Sets per enforcement has been removed. Each enforcement can now run up to **10,000 evaluations** (`Rules × Accounts × Regions`). [CCM-23953, CCM-21995]
-
-- **Tooltip enhancements:** The chart tooltip now shows the total daily cost plus individual data-point costs, with the selected point highlighted for easier analysis. [CCM-23888]
-
-<DocImage path={require('./static/tags.gif')} width="100%" height="100%" title="Click to view full size image" />
 
 #### Connectors
 - **AWS connector role retention:** When updating an AWS connector from the default authentication type to OIDC, the `Role` field is now preserved instead of being set to **undefined**. [CCM-23765]

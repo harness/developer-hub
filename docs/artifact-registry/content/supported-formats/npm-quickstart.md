@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="NPM" targetPage="/docs/artifact-registry/supported-formats" />
 
 This guide will help you **create a NPM Artifact Registry** in Harness, **configure an upstream proxy**, and **manage NPM packages**.
 
@@ -103,5 +100,3 @@ These commands upload or retrieve NPM packages between your local project and th
 :::
 
 ---
-
-By following this guide, you can effectively set up and manage a NPM Artifact Registry within Harness, streamlining your JavaScript package workflows.

@@ -3,6 +3,8 @@ title: Detect Anomalies using Harness CCM
 description: Harness Cloud Cost Management (CCM) detects cost anomalies for your Kubernetes clusters and cloud accounts. Cloud cost anomaly detection can be used as a tool to keep cloud costs under control.
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from: 
+- /docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm
 ---
 
 import Tabs from '@theme/Tabs';

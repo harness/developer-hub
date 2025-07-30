@@ -274,17 +274,33 @@ When Git Experience (GitX) is configured in Harness, a webhook is automatically 
   allowFullScreen
 /> 
 
-<!-- ### Manual Reload Support
+
+#### Workflow Execution Visibility and Webhook Requirement
+
+For Workflow entities, GitX relies on a webhook to keep both the YAML editor and the Workflow execution UI (visual representation, stages, steps) in sync. This webhook enables Harness to detect Git changes and apply them to the execution interface in addition to updating the YAML view.
+
+In most cases, this webhook is created automatically when Git Experience is configured. However, if you’re not seeing the latest changes from Git reflected in the Workflow execution UI, even though the YAML has updated; it likely means the webhook was not created. When the webhook is missing, updates to the default branch will not trigger score recalculations, which can result in outdated or missing score data.
+
+To resolve this, ensure that a webhook is configured on the Git connector (at the account, project, or org level) and is listening to relevant Git connectors.
+
+![Configure Webhooks](./static/webhook-idp.png)
+
+:::note
+This does not applicable for Harness Code repository. Know more about [Configure Webhooks](/docs/platform/git-experience/gitexp-bidir-sync-setup/#setup-via-webhooks-page).
+:::
+
+
+### Manual Reload Support
 
 In some cases, webhook integrations may fail to trigger or may not be configured properly. GitX provides a fallback mechanism in such scenarios.
 
-Users can trigger a manual reload of an entity by clicking the **“Reload from Git”** button available on the entity's View or Edit page.
+Users can trigger a manual reload of an entity by clicking the **“Reload”** button available on the entity's View or Edit page.
 
 This operation pulls the latest YAML from the configured Git path and updates the entity, ensuring it remains up-to-date even without active webhook triggers.
 
 Manual reload is particularly useful in debugging sync issues or in restricted environments where webhooks cannot be configured due to network/firewall constraints.
 
-![Manual Reload Support](./static/manual-reload.png) -->
+![Manual Reload Support](./static/manual-reload.png)
 
 ### Entity Sync Status & Version Drift
 

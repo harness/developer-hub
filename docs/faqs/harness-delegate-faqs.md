@@ -190,6 +190,23 @@ Yes. All of the delegate settings include proxy settings you can use to change h
 By default, the Harness Delegate uses HTTP and HTTPS in its `PROXY_SCHEME` settings. For more information, go to [Configure delegate proxy settings](../platform/delegates/manage-delegates/configure-delegate-proxy-settings.md).
 :::
 
+### How to Enable CPU Limit in the Delegate Helm Chart?
+
+The Harness Delegate Helm chart supports setting custom resource limits for CPU and memory. However, these configurations are commented out by default in the `values.yaml` file. 
+
+To enable them, simply uncomment the `resources` block and provide your desired values, as shown in the example below:
+
+```yaml
+resources:
+  limits:
+    cpu: 1 
+    memory: 2048Mi 
+  requests:
+    cpu: 1
+    memory: 2048Mi
+```
+This ensures the delegate pod is scheduled with the appropriate compute resources in your Kubernetes cluster.
+
 ## Delegate selection
 
 For an overview of delegate selection, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/).

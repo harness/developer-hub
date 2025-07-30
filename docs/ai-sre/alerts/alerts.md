@@ -3,7 +3,7 @@ title: Alerts Overview
 description: Learn how to manage and configure alerts in Harness AI SRE
 sidebar_label: Overview
 sidebar_position: 1
-redirects_from:
+redirect_from:
 - /docs/incident-response/alerts/alerts
 ---
 

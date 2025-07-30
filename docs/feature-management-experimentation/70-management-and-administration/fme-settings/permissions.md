@@ -20,7 +20,7 @@ An environment has the following three permission settings that you can set:
 
 To set up permissions, do the following:
 
-1. From the left navigation, click the **profile button** at the bottom and then **Admin settings**. The Projects page displays.
+1. From the left navigation, click **FME Settings**. The Projects page displays.
 2. In the desired project, click **View** in the Actions column. The project page with any associated environments appears.
 3. In the Environments tab, select the desired environment by clicking **Edit** in the Actions column. The Edit environment page appears. 
 
@@ -42,18 +42,14 @@ To set up permissions, do the following:
   
         When setting change permissions for a particular flag or segment in an environment, the owners and the user making the change are automatically added as editors, along with the account's administrators.
 
-        :::info[note]
-        The administrators group is always added as an editor when permissions are enabled, both at the environment level or at the feature flag, segment, and metric levels.
-        :::
-
      **Restrict who can edit**
 
      With this setting, you can select any groups or users to be editors for feature flags and segments in this environment. In an environment where change permissions are set to Restrict who can edit, only those added as editors can do the following:
 
-        * Add a feature to the environment.
+        * Add a feature flag definition to the environment.
         * Edit an existing flag definition (including the kill or restore functionality).
         * Delete a flag.
-        * Add a segment to the environment.
+        * Add a segment definition to the environment.
         * Edit an existing segment.
         * Delete a segment.
         * Add additional editors.
@@ -93,7 +89,3 @@ You can optionally specify if admins can skip an approval flow for specific envi
 3. In the Environments tab, click **Edit** in the Actions column on the environment you want to update. The Edit environment page appears.
 4. In the Change permissions section, select the **Allow Administrators to skip approval** checkbox.
 5. Click **Save**. The new setting is saved.
-
-:::info
-The administrators group is always added as an editor when permissions are enabled, both at the environment level or at the feature flag, segment, and metric level.
-:::

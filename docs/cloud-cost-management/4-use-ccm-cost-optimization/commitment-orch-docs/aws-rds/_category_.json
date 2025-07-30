@@ -1,5 +1,5 @@
 {
-    "label":"AWS RDS",
+    "label":"AWS RDS (Beta)",
     "position": 4,
     "collapsible":"true",
     "collapsed":"true",

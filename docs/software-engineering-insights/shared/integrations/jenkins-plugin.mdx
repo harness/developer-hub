@@ -1,0 +1,63 @@
+import jenkinsPlugin from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/jenkins-plugin.webp';
+
+The **Harness - SEI Jenkins Plugin** is a tool, written in Java, to send reports about builds to Harness SEI.
+
+:::info
+The SEI Jenkins integration provides basic CI/CD insights, but it doesn’t support lead time tracking out-of-the-box. To enable this metric, you’ll need to send artifact details using the Custom CI/CD API.
+
+For more information, see [DORA CI/CD Correlation](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/dora-metrics/dora-ci-cd-correlation).
+:::
+
+## Setup
+
+### Step 1: Configure the integration in the Harness platform
+
+1. Select **Integrations** under the **Data Settings**.
+2. Select **Available Integrations**, and locate the **Jenkins integration**, and select **Install**.
+3. Add a **Name** for the integration.
+4. The **Description** and **Tags** are optional.
+5. Click on **Next: Create and Add Nodes**. This will display all the available Jenkins instances.
+6. Click on **+Add Instance**. This will generate the **SEI API KEY** which will be used in the **Jenkins Plugin Configuration**.
+
+:::info
+Newly added instances will show up under the **Available Instances Tab**.
+:::
+
+### Step 2: Generate Jenkins User Credentials
+
+The SEI plugin requires authentication via a Jenkins API token. Ensure the user account has one of the following roles:
+
+* Admin
+* Overall Read and Job Read
+
+To generate the API token:
+
+1. In the Jenkins banner frame, click your username to open the user menu.
+1. Navigate to **Your Username** > **Configure** > **API Token**.
+1. Click **Add new Token**.
+1. Click **Generate**.
+1. Copy the generated API token for use in the plugin configuration.
+
+### Step 3: Install the plugin
+
+To install this plugin, follow the steps below.
+
+1. Sign-in to **Jenkins** and select **Manage Jenkins**.
+1. Select **Manage Plugins**.
+1. Select the **Available plugins** tab.
+1. In the **Search** plugin, type in **Harness - SEI Jenkins Plugin**.
+1. Install the **Harness - SEI Job Reporter Plugin** and click on **Install without restart**.
+1. Once the plugin installation is complete, the status will change to **Success**. If it doesn't change to Success, then a restart might be needed.
+1. Set the **Instance Name** and use the **API KEY** you generated earlier as the value for the **Manage Jenkins >> Harness - SEI Job Reporter >> SEI API KEY** field.
+1. Set the **Application Type** to the environment where you are configuring the **Plugin** (i.e. the environment where your Harness Account is hosted on).
+
+   <img src={jenkinsPlugin} alt="System Status" width="1000" />
+
+1. Add the [Jenkins Username](#step-1-configure-the-integration-in-the-harness-platform) and [Jenkins User Token (Jenkins API Token)](#step-1-configure-the-integration-in-the-harness-platform).
+1. Save the plugin settings.
+
+:::info
+If you have enabled an allowlist in your Jenkins account, certain Harness IP addresses must be added to it in order to allow communication between the Harness Platform and Jenkins. If the necessary IPs are not whitelisted, the integration may fail to authenticate or sync data properly.
+
+To ensure your integration can work correctly, refer to the list of [Harness Platform IPs](/docs/platform/references/allowlist-harness-domains-and-ips) that may need to be whitelisted in your firewall.
+:::

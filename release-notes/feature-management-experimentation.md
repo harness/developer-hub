@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-06-18T10:00:00
+date: 2025-07-25T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,9 +12,31 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: July 14, 2025
+#### Last updated: July 25, 2025
 
 ## July 2025
+
+### [New Enhancement] Dimensional Analysis
+----
+#### 2025-07-25
+
+You can now break down your experiment results by dimensions such as browser, device type, or region on the new experiment and metrics dashboards in Harness FME. While this capability was previously available on the Metrics impact tab, it’s now also available on the Experiments metric details dashboard, making it easier to uncover how different users respond to a treatment. This can reveal hidden patterns or regressions that might not be visible in the aggregate view of the **Current impact snapshot by treatment** chart.
+
+![Experiments dashboard](./static/fme/treatment-details.png)
+
+Select a dimension group from the dropdown menu to view the direction, impact, and metric value for each segment compared against the control group's performance. For example, your experiment may show an overall positive result, but drilling down into specific dimensions (like state, payment type, or browser) might reveal that certain groups experienced negative or neutral impact. 
+
+This gives you a more nuanced understanding of your results and another tool for refining your hypothesis or identifying follow-up experiments. 
+
+![Experiments dashboard](./static/fme/dimensions-menu.png)
+
+This is especially helpful for identifying how specific segments are impacted by changes, so you can make more informed experiment decisions based on deeper insights.
+
+#### Related documentation
+
+- [Metric details and trends](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/#use-ai-summarize)
+- [Analyzing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/#current-impact-snapshot-by-treatment)
+- [Dimensional analysis](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis)
 
 ### [New Feature] AI Summarize button for metrics and experiments
 ----

@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="Cargo" targetPage="/docs/artifact-registry/supported-formats" />
 
 Learn how to **create a Cargo Artifact Registry**, **configure an upstream proxy**, and **publish or install Cargo packages** using the CLI.
 
@@ -108,10 +105,3 @@ cargo add <ARTIFACT_NAME>@<VERSION> --registry harness-cargo-registry
 ```
 
 ---
-
-By following this guide, you can publish and install Cargo packages between your local environment and the Harness registry.
-
-## Next Steps
-- [Integrate with your CD pipelines](/docs/artifact-registry/platform-integrations/cd-ar-integrations)
-- [Learn about security integrations](/docs/artifact-registry/platform-integrations/security-integrations/ssd-ar-integrations)
-- [Automate actions with Webhooks](/docs/artifact-registry/ar-webhooks)

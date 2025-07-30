@@ -20,6 +20,58 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## July 2025
+### Version 1.63.7
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.63.3
+- harness/chaos-log-watcher:1.63.0
+- harness/service-discovery-collector:0.43.1
+- harness/chaos-ddcr-faults:1.63.3
+
+#### New Features and Enhancements
+
+- Enhanced and simplified image registry support for experiment v1 and v1alpha1 images (CHAOS-9052)
+- Added support for "Complete with probe error" status on timeline view screen (CHAOS-9207)
+- Added recent execution details for both probes and actions in the database schema, allowing for better tracking and management of execution history (CHAOS-8953)
+- Added UI/UX support for windows command probe using windows infrastructure (CHAOS-9255)
+- Added support for "INTERRUPTED" status for probes in probes screen as well as timeline view screen (CHAOS-9208)
+- Enhanced experiment result display to show "CompletedWithProbeFailure" when probe failed (CHAOS-9205)
+- Added support for import probe as a reference in UI (CHAOS-9114)
+- Added targets support to the timeline view (CHAOS-9048)
+- Added support for running windows process kill fault on windows infrastructure using SYSTEM user (CHAOS-9013)
+- Added support for node faults on GKE Autopilot (CHAOS-8981)
+- Enhanced healthcheck support to pod-io-stress fault (CHAOS-8896)
+- Added name sorting support for Experiment list (CHAOS-8875)
+- Added ENV support to the inline command probe for both backend and UI (CHAOS-8850, CHAOS-8816, CHAOS-8814)
+- Added OOTB probes as inline command probes for kubernetes infrastructure (CHAOS-8815)
+- Enhanced UI to surface Common Kubernetes Errors (ImagePullBackOff, Evicted, OutOfCpu) for Kubernetes Infrastructure (CHAOS-8709)
+
+#### Fixed Issues
+
+- Fixed gameday execution error when trying to run a gameday with same ID as another gameday in different project due to missing identifiers in query filters (CHAOS-9247)
+- Fixed chaos license page not being accessible in production environments where subscriptions page was crashing when refreshed (CHAOS-9215)
+- Fixed list probes API not working for older probes/experiments and panicking due to user details not being available by adding nil check for user details in recent probe execution details (CHAOS-9206)
+- Fixed multiple probes getting selected upon using import probe in Local Hub (CHAOS-9202)
+- Fixed error in CMD probe when Float data type is provided and value is a runtime input where selecting Runtime Input for Comparator Value was throwing a type validation error (CHAOS-9171)
+- Fixed inputs being duplicated for a given probe pulled at various points in an experiment by fixing the support for multiple probes/actions inside one experiment (CHAOS-9167)
+- Fixed not being able to abort experiments in production environments (CHAOS-9144)
+- Fixed action and probe search filtering not working in Chaos Studio by updating parameter names for clarity where actionType has been changed to entityType and infrastructureType has been simplified to infraType (CHAOS-8994)
+- Fixed Local Hub showing 0 faults and 0 actions although fault and action templates exist within the hub by updating the mongo query to fetch the count of chaos hub resources (CHAOS-8962)
+- Fixed Timeline View showing action name instead of the type (Delay/Custom Script) by adding a new field Type to the ActionData struct within the execution data (CHAOS-8951)
+- Fixed input validation issues in DataDog/Dynatrace probes in both linux/k8s when providing runtime inputs where support for runtime inputs in time frame and test type field was broken (CHAOS-8943)
+- Fixed V2 experiments showing status and type as empty strings and showing error in YAML UI by updating the hce-sdk to allow for optional fields in the experiment manifest (CHAOS-8931)
+- Fixed Resilience Score coming as 0 even though all probes passed by correcting the calculation of the resiliency score to ensure accurate scoring based on the status of chaos execution nodes (CHAOS-8930)
+- Fixed Custom Script Action argument being a mandatory field when it should be optional as commands may not have arguments necessarily (CHAOS-8874)
+- Fixed probe status being reported as failed on abort when it should be N/A or Pending by updating probe status to be Stopped or Skipped on experiment abort (CHAOS-8804)
+- Fixed Timeline View experiments keeping running indefinitely by ignoring the DDCR pod from the target pod selection (CHAOS-8801)
+- Fixed pod-delete fault being randomly reported as Error even though it succeeded by resolving the issue where the fault status was incorrectly reported (CHAOS-8800)
+- Fixed target not showing in the timeline view representation of the fault by adding target details to the fault data structure (CHAOS-8796)
+- Fixed Actions "Stop on Failure" radio button not being applicable (CHAOS-9025)
+- Fixed empty cards for fixed inputs in the experiment inputsets page in Chaos Studio (CHAOS-9094)
+
 ## June 2025
 
 ### Version 1.62.11

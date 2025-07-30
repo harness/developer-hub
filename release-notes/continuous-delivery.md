@@ -55,6 +55,40 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## July 2025
 
+### Version 1.98.1
+
+#### New Features and Enhancements
+
+- Harness now supports separate **Create** and **Edit** authorization grants for pipelines and templates, decoupling these permissions for more granular RBAC control. Currently, this feature is behind feature flags `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION` and `PIPE_CREATE_EDIT_PERMISSION_SPLIT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Enabling this feature requires migrating your existing resources; Harness Support will guide you through the process. (**PIPE-24649**)
+
+
+- Harness now supports [**Project-Level Pipeline Execution Concurrency**](/docs/platform/pipelines/pipeline-settings/#project-level-pipeline-execution-concurrency), where users can split their account-wide concurrency into High-Priority and Low-Priority partitions—reserving slots for critical projects. Currently, this feature is behind feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-15840**)
+
+- Harness now supports customizing Git status check data for Git-triggered pipelines, enabling control over check names and which statuses are reported via parameters at the step, stage, and pipeline levels; additionally, skipped stages now report **Success** to GitHub PRs so they don’t block pull request merges. (**PIPE-18844**, **PIPE-27210**)
+
+
+#### Behavior Changes
+
+- Harness now preserves **required** and **description** metadata for Service and Environment variables in Pipelines and Templates, ensuring that any variable marked `required: true` or given a description in a Service/Environment retains those attributes when used as a runtime input in a Pipeline run form or Input Set. Currently, this feature is behind the feature flag `PIPE_POPULATE_REQUIRED_AND_DESC_METADATA_INTO_REFERENCING_ENTITY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-13770, ZD-51392,55069,57312,62354,63051,63226,64057,65695,80110**)
+
+  With this feature:
+  - The **Required** flag and **Description** attribute appear in Service and Environment variables when referenced in Pipelines.
+  - **Impact:** All Pipelines and Templates that use Services or Environments with variables will require a save—since the new `description` and `required` fields show up on opening—which may be disruptive. We will not enable the feature flag immediately (dates to be announced). Contact Harness Support to turn it on right away if needed.
+ 
+
+#### Fixed Issues
+
+- Previously, pipeline rollbacks generated independent `PIPELINE_START` and `PIPELINE_SUCCESS` notifications before the main pipeline's `PIPELINE_FAILED` notification, causing confusion. The issue is resolved and is behind the feature flag `PIPE_DISABLE_PIPELINE_NOTIFICATIONS_ON_ROLLBACK`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-28097**)
+- Previously, the user who marked the ServiceNow approval step as failed was not displayed in the UI, even though the information was available in the network response. The issue is resolved. The UI now correctly shows the user details for failure actions on ServiceNow, Custom, and Jira Approval steps. (**PIPE-28474, ZD-87518**)
+- Previously, instance sync operations periodically failed due to timeout exceptions between the manager and ng-manager services. The issue is resolved. Improvements have been made to stabilize inter-service communication and prevent timeout-related instance sync failures. (**CDS-106142**)
+- Previously, output variable expressions used in the `AWSCdkSynth` or `AWSCdkDiff` steps were not resolving correctly when defined in the same containerized step group. Instead of being evaluated, the expressions were passed as literal strings. The issue is resolved. Expressions are now properly resolved when used within the same step group. (**CDS-111716. ZD-86484**)
+- Previously, users encountered a generic `Unexpected Error` when attempting to import a new pipeline from Git, even when the pipeline YAML was valid and previously functional. This was caused by discrepancies in property order and unexpected `gitBranch` fields in the new YAML. The issue is resolved. Pipeline import from Git now provides accurate schema validation and error feedback. (**PIPE-28193, ZD-87411**)
+- Previously, GitOps commits made through Harness pipelines used a default author name such as `Harness: AI-Native Software Delivery Platform`, which differed from the Git username provided in the connector. This caused issues with bypassing branch protection rules that rely on matching the author to the username. The issue is resolved. Harness now uses the actual Git username configured in the GitOps connector as the commit author name. (**CDS-112019, ZD-87673**)
+- Previously, Azure WebApp deployments could get stuck in a waiting state during pipeline execution, even after the deployment action completed successfully. The issue is resolved. Azure WebApp deployments now correctly detect and proceed after deployment completion. (**CDS-112234, ZD-88309**)
+- Previously, AWS CDK deployments failed with an error stating that no credentials were configured, even though the AWS access key, secret key, and session token were correctly set as environment variables. The issue is resolved. AWS CDK deployments now correctly read and use the configured AWS credentials during execution. (**CDS-112353, ZD-88589**)
+- Previously, when `chartVersions` were overridden using service inputs, the system did not correctly handle values defined as regular expressions, leading to unexpected behavior. The issue is resolved. The backend now properly receives and handles regex-based overrides for `chartVersions` from the UI. (**CDS-112355, ZD-86715**)
+
+
 ### Version 1.97.0
 
 #### New Features and Enhancements

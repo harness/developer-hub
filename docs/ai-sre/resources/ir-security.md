@@ -3,7 +3,7 @@ title: AI SRE Security
 description: Learn about security measures applied to Harness AI SRE.
 sidebar_position: 90
 sidebar_label: Security
-redirects_from:
+redirect_from:
 - /docs/incident-response/resources/ir-security
 ---
 
