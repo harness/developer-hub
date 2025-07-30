@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-07-18T18:00
+date: 2025-07-30T18:00
 sidebar_position: 6
 ---
 
@@ -14,51 +14,95 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 
 :::info
 
-Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. In the new UI, go to Account Settings, Account Details, General, Account Details, and then Platform Service Versions. This section displays the current version of Cloud Cost Management (CCM) running on your account.
+Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. 
+
+In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+## July 2025 - Version 1.58.3
+#### **Deployment Date:** July 28, 2025 (Prod-1)
+
+### ⭐ [New Feature] Bulk Evaluation Export
+**[CCM-23906]**
+
+CCM has introduced a new "Export" option in Cloud Asset Governance that lets you easily download results and logs from multiple evaluations run across different accounts and regions directly from the Test Terminal (for multi-target evaluations) or the Evaluations page.
+
+You can now export a ZIP archive containing:
+- `metadata.json`
+- `resources.json`
+- `custodian-run.log`
+- `actioned-resources.json`
+
+**Key Highlights:**
+
+- Export results and logs from multiple evaluations at once
+- Downloads as a **single ZIP file**
+- Available when all evaluations are in terminal states (Succeeded or Failed)
+- Supports up to **100 evaluations per export**
+
+<DocImage path={require('./static/bulk-export.png')} width="100%" height="100%" title="Click to view full size image" />
+
+### Feature Improvements
+
+- **Monthly alerts for Yearly Budgets**: Define a spend threshold for each month within an yearly budget and receive alerts as soon as that month’s spend approaches the limit. *[CCM-24187]*
+
+Available when: 
+- Budget Period: Yearly
+- Budget Breakdown: Monthly
+
+<DocImage path={require('./static/yearly-budgets.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- **GCP subscription-benefit credits now included** : We have added support for GCP subscription-benefit credits in Perspectives. This ensures that any credits applied through GCP subscription-based benefits are now accurately identified and included. *[CCM-24197]*
+
+### Bug Fixes
+
+- **Perspective search with parentheses:** Fixed an issue where Perspective searches containing parentheses would fail.  *[CCM-24027]*
+- **Perspective exports match the grid:** In the last release, we added support for aggregation in Perspective exports. However, this led to issues where the Perspective grid export displayed incorrect data. This has now been resolved to ensure the exported data matches the grid view accurately. *[CCM-24328]*
+- **Budget search works on every page:** In case Budget Cascades is not enabled, we use a paginated API. Previously, if the user navigated to a later page and then searched for a budget, the page number (offset) was not being reset, which caused the search to fail. This issue has now been fixed and the search will work correctly regardless of which page the user initiates it from.. *[CCM-24083]*
+- **Accurate budget alerts:** Fixed early triggers;alerts now fire only when spend truly exceeds your set threshold. *[CCM-24053]*
+
 ## July 2025 - Version 1.57.1
 **Deployment Date:** July 18, 2025 (Prod-1)
 
 ### Feature Improvements
 
 #### Perspectives
-- **Line chart view:** Perspectives now displays a Line chart instead of an Area chart, eliminating redundancy with the stacked bar view. [CCM-23889]
+- **Line chart view:** Perspectives now displays a Line chart instead of an Area chart, eliminating redundancy with the stacked bar view. *[CCM-23889]*
 
 <DocImage path={require('./static/line-chart.png')} width="100%" height="100%" title="Click to view full size image" />
 
-- **CSV aggregation fix:** CSV exports from Perspectives now respect the selected aggregation setting, matching the on-screen view. [CCM-20404]
+- **CSV aggregation fix:** CSV exports from Perspectives now respect the selected aggregation setting, matching the on-screen view. *[CCM-20404]*
 
-- **GCP credits regex support:** Perspective queries now support regex-based matching for GCP discount types aligned with dashboard behavior. [CCM-24110]
+- **GCP credits regex support:** Perspective queries now support regex-based matching for GCP discount types aligned with dashboard behavior. *[CCM-24110]*
 
-- **Tooltip enhancements:** The Group By Chart tooltip now shows the total daily cost plus individual data-point costs, with the selected point highlighted for easier analysis. [CCM-23888]
+- **Tooltip enhancements:** The Group By Chart tooltip now shows the total daily cost plus individual data-point costs, with the selected point highlighted for easier analysis. *[CCM-23888]*
 
 <DocImage path={require('./static/tags.gif')} width="100%" height="100%" title="Click to view full size image" />
 
 #### Cost Categories
 
-- **Cluster Cost Category (CC) Stamping Support**: We now support Cost Category for Cluster data. Set **Billing Source** to **CLUSTER** to use Cost Category as a filter or dimension in Dashboards. This capability applies only to data generated after 10 July 2025 (submit a support ticket to backfill older data). You can also create **Cost Buckets** based on cluster-level rules. View cluster Cost Categories in **Unified Explore** rather than **Cluster Explore**. [CCM-22980]
+- **Cluster Cost Category (CC) Stamping Support**: We now support Cost Category for Cluster data. Set **Billing Source** to **CLUSTER** to use Cost Category as a filter or dimension in Dashboards. This capability applies only to data generated after 10 July 2025 (submit a support ticket to backfill older data). You can also create **Cost Buckets** based on cluster-level rules. View cluster Cost Categories in **Unified Explore** rather than **Cluster Explore**. *[CCM-22980]*
 
 
 #### AutoStopping
 
-- **Connector permission checks:** The AutoStopping rule flow now validates that the selected connector already has the granular permissions required to create the target gateway resource (ALB, Azure Application Gateway, or Harness AutoStopping Proxy). For detailed permission requirements, see the granular-permissions sections for each cloud provider: [AWS](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#granular-permissions-for-autostopping), [Azure](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping), and [GCP](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping). [CCM-21579]
-
+- **Connector permission checks:** The AutoStopping rule flow now validates that the selected connector already has the granular permissions required to create the target gateway resource (ALB, Azure Application Gateway, or Harness AutoStopping Proxy). For detailed permission requirements, see the granular-permissions sections for each cloud provider: [AWS](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#granular-permissions-for-autostopping), [Azure](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping), and [GCP](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping). *[CCM-21579]*
 
 #### Recommendations
-- **Readable ServiceNow timestamps:** Applied recommendations linked to ServiceNow tickets now show human-readable date-time values, making audit trails easier to follow. [CCM-24082]
+- **Readable ServiceNow timestamps:** Applied recommendations linked to ServiceNow tickets now show human-readable date-time values, making audit trails easier to follow. *[CCM-24082]*
 
 <DocImage path={require('./static/rec-timestamps.png')} width="100%" height="100%" title="Click to view full size image" />
 
-- **Tag filter search:** Recommendation filters now list all available cloud tags and provide search to quickly find specific tags. [CCM-23792]
+- **Tag filter search:** Recommendation filters now list all available cloud tags and provide search to quickly find specific tags. *[CCM-23792]*
 
 #### Asset Governance
-- **Enforcement evaluation cap increased:** The previous limit of 30 Rules or Rule Sets per enforcement has been removed. Each enforcement can now run up to **10,000 evaluations** (`Rules × Accounts × Regions`). [CCM-23953, CCM-21995]
+- **Enforcement evaluation cap increased:** The previous limit of 30 Rules or Rule Sets per enforcement has been removed. Each enforcement can now run up to **10,000 evaluations** (`Rules × Accounts × Regions`). *[CCM-23953, CCM-21995  ]*
 
 #### Connectors
-- **AWS connector role retention:** When updating an AWS connector from the default authentication type to OIDC, the `Role` field is now preserved instead of being set to **undefined**. [CCM-23765]
+- **AWS connector role retention:** When updating an AWS connector from the default authentication type to OIDC, the `Role` field is now preserved instead of being set to **undefined**. *[CCM-23765]*
 
-- **Single CCM K8s connector per CD connector:** Each CD Kubernetes connector can now be linked to only **one** CCM Kubernetes connector; the UI enforces this limit during setup. [CCM-18900]
+- **Single CCM K8s connector per CD connector:** Each CD Kubernetes connector can now be linked to only **one** CCM Kubernetes connector; the UI enforces this limit during setup. *[CCM-18900]*
 
 ## July 2025 - Version 1.56.3
 **Deployment Date:** July 7, 2025 (Prod-1)
@@ -84,7 +128,7 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 ## June 2025 - Version 1.55.3
 
-### [New Feature] OIDC Authentication Support
+### ⭐ [New Feature] OIDC Authentication Support
 **[CCM-23638] | [AWS OIDC Documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#oidc-authentication) | [GCP OIDC Documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#step-4-authentication-conditional)**
 
 Harness CCM now supports OpenID Connect (OIDC) authentication for enhanced security and streamlined connector setup. This authentication method is available for the following cloud providers and features:
@@ -98,7 +142,7 @@ Harness CCM now supports OpenID Connect (OIDC) authentication for enhanced secur
 - Asset Governance
 - AutoStopping
 
-### [New Feature] Event Driven Anomaly Detection
+### ⭐ [New Feature] Event Driven Anomaly Detection
 **[CCM-22730] | [Docs](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-detection-process)**
 
 CCM now provides **event-driven anomaly detection** that triggers automatically when cost data is ingested, complementing the existing scheduled anomaly detection jobs.
@@ -113,7 +157,7 @@ This feature provides **immediate detection** by running anomaly analysis instan
 
 ## June 2025 - Version 1.54.5
 
-### [New Feature] Granular AutoStopping Permissions Support for Azure and GCP
+### ⭐ [New Feature] Granular AutoStopping Permissions Support for Azure and GCP
 **[CCM-21574, CCM-21575] | [Docs for Azure](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#granular-permissions-for-autostopping) | [Docs for GCP](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#granular-permissions-for-autostopping)**
 
 We have introduced **Granular permissions support for Azure and GCP Autostopping**. With this update, users can now **select the specific resource types they want to enable for Autostopping** such as virtual machines and instance groups. Based on the selected resource types, only the minimal required set of permissions will be requested. This feature simplifies onboarding, and aligns with security best practices.
@@ -169,7 +213,7 @@ We have introduced **Granular permissions support for Azure and GCP Autostopping
 
 ## May 2025 - Version 1.51.4
 
-### [New Feature] Replacement Schedules
+### ⭐ [New Feature] Replacement Schedules
 **[CCM-21859]**
 
 We have added support for replacement schedules with options: **Always, Never, or Custom**. Users can now define specific windows (e.g., Tuesdays and Fridays, 9 PM–11:59 PM IST) for bin packing operations. Currently this is only available for "Harness Pod Eviction". During these scheduled periods, node replacements and system updates may occur, temporarily affecting workload availability. So it is advisable to choose time windows that minimize impact on critical operations.
@@ -227,7 +271,7 @@ We have added support for replacement schedules with options: **Always, Never, o
 
 ## May 2025 - Version 1.50.2
 
-### [New Feature] Label V2
+### ⭐ [New Feature] Label V2
 **[CCM-22075]** | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#migration-from-label-to-label-v2)
 
 We're rolling out **Label V2**, a major enhancement to how labels (tags) are handled and displayed across the platform, delivering **better visibility**, **performance**, and **alignment with cloud-native formats**.
@@ -279,7 +323,7 @@ Users will need to manually **update their Perspectives, Cost Categories, and Da
 
 ## April 2025 - Version 1.48.1
 
-### [New Feature] Alerts for Governance Rule Evaluations
+### ⭐ [New Feature] Alerts for Governance Rule Evaluations
 **[CCM-21921] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#governance-alerts)**
 
 We’ve added Alerts in Cloud Assets Governance, allowing users to configure alerts based on Cloud Provider (AWS, GCP, Azure), Resource Type (Cloud Custodian-defined), Cloud Accounts, Minimum Number of Resources Found, Minimum Cost Impact, Email IDs, and the option to attach evaluation output as a .json file. 
@@ -298,7 +342,7 @@ We’ve added Alerts in Cloud Assets Governance, allowing users to configure ale
 
 ## April 2025 - Version 1.47.2
 
-### [New Feature] Granular permissions support for AWS Autostopping 
+### ⭐[New Feature] Granular permissions support for AWS Autostopping 
 **[CCM-21572]**
 
 We have introduced **Granular permissions support for AWS Autostopping**. With this update, users can now **select the specific AWS resource types they want to enable for Autostopping** such as EC2, ASG, or RDS. Based on the selected resource types, only the minimal required set of permissions will be requested. This feature simplifies onboarding, and aligns with security best practices.
@@ -339,7 +383,7 @@ We have introduced **Granular permissions support for AWS Autostopping**. With t
 
 ## April 2025 - Version 1.46.2
 
-### [New Feature] Recommendation Preferences
+### ⭐ [New Feature] Recommendation Preferences
 **[CCM-20954] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#recommendation-settings)**
 
 We have introduced a new feature to enhance the personalization of recommendations: **Recommendation Preferences**. This allows users to create, apply, and save custom tuning preferences to better suit their usage. Users can now also select a default preset preference. This ensures that the chosen tuning preferences are consistently applied across all future recommendations removing the need for repeated manual adjustments. 
@@ -360,7 +404,7 @@ We have introduced a new feature to enhance the personalization of recommendatio
 
 ## March 2025 - Version 1.45.7
 
-### [New Feature]  (Beta) External Cost Data Ingestion
+### ⭐ [New Feature]  (Beta) External Cost Data Ingestion
 **[CCM-20954] | [Docs](/docs/cloud-cost-management/get-started/onboarding-guide/external-data-ingestion)**
 Harness Cloud Cost Management now supports External Cost Data Ingestion, enabling you to bring in cost data from third-party vendors using a standardized CSV format.
 **Key Capabilities:**

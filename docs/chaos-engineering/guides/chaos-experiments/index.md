@@ -9,6 +9,7 @@ redirect_from:
 - /docs/category/chaos-experiments-/
 - /docs/chaos-engineering/technical-reference/experiments/
 - /docs/chaos-engineering/use-harness-ce/chaos-experiments
+- /docs/chaos-engineering/use-harness-ce/experiments
 ---
 
 This topic describes chaos experiments, why it is required, the permissions required to execute a chaos experiment, and how the resilience score is determined based on the chaos experiment's execution.

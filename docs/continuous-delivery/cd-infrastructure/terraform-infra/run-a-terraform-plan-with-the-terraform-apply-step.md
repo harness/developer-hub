@@ -571,6 +571,53 @@ This option makes is useful only if you do not have a Terraform backed configure
 If the Terraform Apply step is configured to skip state storage, and there is no backend configured in your Terraform files, you should not add a rollback step, as this is an invalid setup. Rollback is impossible if there is no state file.
 
 
+## Create remote workspace with prefix
+
+:::note
+This setting is only available when the Configuration Type is **Inline**.
+
+This option is available only on delegate version `86400` or later.
+:::
+
+When using a [remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a workspace **prefix**, Terraform does not automatically create the workspace if it doesn’t already exist. This can cause pipeline failures with errors like:
+
+`Error: Currently selected workspace "my-app-dev" does not exist`
+
+To address this, Harness provides the **Create remote workspace with prefix** option. When this option is enabled:
+
+- If the remote workspace does **not** exist, Harness automatically creates it and continues the execution.
+- If the remote workspace **does** exist, Harness exports it to the `TF_WORKSPACE` environment variable so Terraform uses it.
+- If both the step configuration and environment variable specify a workspace, the **step configuration takes precedence**.
+
+:::info
+To enable automatic workspace selection when a workspace is configured in the step settings, this flag **must** be enabled.
+
+If you prefer not to use this flag, you can manually configure the workspace using the `TF_WORKSPACE` environment variable.
+
+**Rollback does not delete workspaces** created using this option. Workspace cleanup must be handled manually.
+
+:::
+
+<details>
+<summary>This is how the YAML would look like</summary>
+
+
+```yaml
+- step:
+    type: TerraformApply
+    name: Terraform Apply
+    identifier: Terraform_Apply
+    timeout: 10m
+    spec:
+      provisionerIdentifier: test
+      configuration:
+        type: Inline
+        createRemoteWorkspaceWithPrefix: true
+        spec:
+          configFiles: {}
+```
+</details>
+
 ## Command line options
 
 This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
