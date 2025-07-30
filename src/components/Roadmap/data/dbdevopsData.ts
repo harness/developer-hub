@@ -20,12 +20,14 @@ export const DbdevopsData: Horizon = {
         description:
           "Visibility into database changes and the history of applying them across numerous Database DevOps screens",
         tag: [{ value: "Visibility" }, {value: "Q2"}],
+        link:"https://developer.harness.io/docs/database-devops/concepts-and-features/unified-environment-overview/#viewing-changesets-in-the-harness-database-devops-ui"
       },
       {
         title: "ChangeID Output",
         description:
           "Add an output on the apply step that outputs the list of change IDs that were applied.",
         tag: [{ value: "Orchestration" }, {value: "Q2"}],
+        link:"https://developer.harness.io/docs/database-devops/features/access-applied-changesets"
       },
       {
         title: "Variable Branch Override",
