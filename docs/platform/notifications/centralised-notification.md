@@ -8,63 +8,77 @@ import PipeEvents from './static/set_pipeline_events.png';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info Note
-Currently, the Centralised Notification feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable them.
+:::info Prerequisites
+
+Before you begin, ensure you have the following feature flags enabled:
+
+- **`PL_CENTRAL_NOTIFICATIONS`**: Required for centralised notification functionality
+- **`PIPE_CENTRALISED_NOTIFICATION`**: Required for pipeline-specific notifications
+
+Contact [Harness Support](mailto:support@harness.io) to enable these feature flags.
 :::
 
-Harness Centralized Notifications enable you to send notifications based on rules and conditions across pipelines, delegates, and other Harness entities. With notifications management, you can easily configure and manage alerts to stay informed about critical events.
+## Overview
 
-Centralized notifications can be configured for the following resource types:
+Harness Centralised Notifications allow you to send notifications based on rules and conditions across pipelines and delegates. You can configure and manage alerts to stay informed about critical events in your Harness environment.
 
-1. Pipeline 
-2. Delegate 
+You can configure centralised notifications for:
 
-This article explains how to configure notifications for Pipelines and Delegates in Harness across different [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes).
+- **Pipelines**: Get notified about pipeline events like success, failure, or stage completion
+- **Delegates**: Receive alerts when delegates disconnect, expire, or are about to expire
 
-This guide uses the Account scope as an example, but the steps apply similarly to Organization and Project scopes. To configure notifications, follow the steps below.
+This guide explains how to configure notifications across different [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) (Account, Organization, or Project).
 
-1. Navigate to **Account Settings** → **General**, select **Notifications Management**. 
+## Configuration Steps
 
-        ![account-level-notification](./static/organization-setting-notification-management.png)
+This guide uses the Account scope as an example, but the steps apply to Organization and Project scopes as well.
 
-2. In the **Overview** section, provide a **Notification Name** and click **Continue**. Then, select the appropriate **Resource Type**. Depending on your selection, proceed with either the **Pipeline** or **Delegate** tab.
+### Step 1: Access Notification Management
 
-        ![](./static/new-notification-setup.png)
+1. Navigate to **Account Settings** → **General** → **Notifications Management**
 
-## Centralized notification
+   ![account-level-notification](./static/organization-setting-notification-management.png)
+
+### Step 2: Create a New Notification
+
+1. In the **Overview** section, provide a **Notification Name** and click **Continue**.
+
+2. Select the appropriate **Resource Type** (Pipeline or Delegate). Proceed with the configuration based on your selected resource type.
+
+### Step 3: Configure Resource-Specific Settings
 
 <Tabs>
 <TabItem queryString="pipeline" value="Pipeline" Label="pipeline" default>
 
-### Configure Notifications for Pipelines
+### Pipeline Notifications
 
-:::info Note
-  Pipeline specific notifications are behind `PIPE_CENTRALISED_NOTIFICATION`. 
-:::
-
-3. Select **Pipeline** as the **Resource Type** in the **Resources** section.
+1. Select **Pipeline** as the **Resource Type** in the **Resources** section.
 
         ![](./static/resource_type.png)
 
-   Next, choose the project scope: **All Projects** under the Organization, or **Specified Project** to target particular projects
+2. Choose the project scope:
+   
+   - **All Projects** under the Organization
+   
+   - **Specified Project** to target particular projects
 
    Click **Continue** to move to the condition setup.
 
         ![](./static/pipeline-resource.png)
 
-4. Click **+ Add Condition** to define when notifications should be triggered based on pipeline events.
+3. Click **+ Add Condition** to define when notifications should be triggered based on pipeline events
 
-        ![](./static/resource-pipeline-condition.png)
+   ![](./static/resource-pipeline-condition.png)
 
    :::info Note
-   Stage start, success, and failure events apply to all stages in a pipeline. For more granular control (such as specific stages), consider using [pipeline-level notifications](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
+   Stage start, success, and failure events apply to all stages in a pipeline. For more granular control over specific stages, consider using [pipeline-level notifications](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
    :::
 
-   Provide a **Condition Name**, select relevant **Pipeline Events**, and click **Continue** to choose the notification channel.
+4. Provide a **Condition Name**, select relevant **Pipeline Events**, and click **Continue**
 
    <img src={PipeEvents} width="500"/>
 
-   - Optionally you can add **Notification Template** to get custom notifications based on the event. To learn more, go to [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template).
+5. (Optional) Add a **Notification Template** for custom notifications based on the event. Learn more about [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template)
 
         ![](./static/notification-template.png)   
 
@@ -72,38 +86,46 @@ This guide uses the Account scope as an example, but the steps apply similarly t
 
 <TabItem value="Delegate" label="Delegate">
 
-### Centralized Notifications for Delegates
+### Delegate Notifications
 
-3. Choose **Delegate** as the **Resource Type**.
+1. Choose **Delegate** as the **Resource Type**
 
-   You can either notify: **All Delegates**, or Only Delegates that match specific **tags** (up to five supported)
+2. Select the delegate scope:
+   
+   - **All Delegates**: Notify for all delegates
 
-   ![delegate-resource-type](./static/delegate-resource-type.png)
+   - **Specific Tags**: Notify only for delegates matching specific tags (up to five supported)
 
-4. Click **+ Add Condition** to set up alerts based on delegate events.
+        ![delegate-resource-type](./static/delegate-resource-type.png)
 
-   ![delegate-condition](./static/delegate-condition.png)
+3. Click **+ Add Condition** to set up alerts based on delegate events
 
-   Enter a **Condition Name**, and select from the following **Delegate Events**:
+4. Enter a **Condition Name** and select from the following **Delegate Events**:
+   
+   - **Delegate Disconnected**: Notification sent once when disconnection occur.
+   
+   - **Delegate Expired**: Notification sent once daily for expired delegates.
+   
+   - **Delegate Expires in [X] Weeks**: Notification sent once when the delegate is about to expire (you can select the specific timeframe from 1 to 4 weeks, where X represents your chosen timeframe).
 
-        * Delegate Disconnected
-        * Delegate Expired
-        * Delegate Expiring in 1 to 4 Weeks
+           ![delegate-condition](./static/delegate-condition.png)
 
-   Proceed by clicking **Continue** to configure your notification channel.
+5. Click **Continue** to proceed to channel configuration
 
 </TabItem>
 </Tabs>
 
-5. Under **Set Channels**, **Select Channels** where you want notification to be sent.
+### Step 4: Configure Notification Channels
 
-        ![](./static/select-channels.png)
+1. In the **Set Channels** section, select the channels where you want notifications to be sent
 
-        Navigate **Select Channel** you can choose the already created channel at that scope, or you can create a [**New Channel**](/docs/platform/notifications/notification-settings.md).
+   ![](./static/select-channels.png)
 
-6. Select **Submit** to save your notification configuration.
+2. Choose from existing channels at your current scope, or create a [new channel](/docs/platform/notifications/notification-settings.md)
 
-     ![](./static/submit-notification.png)
+3. Click **Submit** to save your notification configuration
+
+   ![](./static/submit-notification.png)
 
 
 
