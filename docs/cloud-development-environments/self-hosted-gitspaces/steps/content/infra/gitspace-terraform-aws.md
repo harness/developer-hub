@@ -13,6 +13,7 @@ Once you have added and configured the **AWS Cloud Infrastructure in your Harnes
 1. Ensure you've enabled the feature flag ``CDE_HYBRID_ENABLED`` in your Harness account since Self Hosted Gitspaces are currently available behind this feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
 2. Ensure you’ve read through the [Overview & Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) of Self Hosted Gitspaces. This will help you gain a deeper understanding of the basic concepts and setup steps.
 3. Make sure you have completed all the steps detailed out in [Configuring AWS Cloud Infrastructure in Harness UI](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#aws). This is a **mandatory prerequisite**, as the [Infra Config YAML](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui#download-the-infrastructure-config-yaml) generated from that step is a required input here.
+4. Only users with **powerUserAccess** permissions as an AWS user can configure self hosted Gitspaces in your AWS infrastructure. You should also have your AWS credentials (access key, secret key, session token) to setup this Terraform Module. Go to [Manage AWS Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) to learn more about the same.
 
 ---
 

@@ -31,7 +31,7 @@ You need to follow these prerequisites to get started with self-hosted Gitspaces
 | **Prerequisite**    | **Description** | **Documentation Guide** | 
 | -------- | ------- | ---------- | 
 | **Enable Feature Flag in Harness Account** | Enable the feature flag ``CDE_HYBRID_ENABLED`` in your Harness account. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag. | [Harness Support](mailto:support@harness.io) |
-| **AWS User Access** | You must have the following permissions and access as a AWS user required for configuring self hosted Gitspaces in your AWS infrastructure. |  |
+| **AWS User Access** | You must have the **powerUserAccess** permissions as an AWS user for configuring self hosted Gitspaces in your AWS infrastructure. | [Docs](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/PowerUserAccess.html) |
 | **AWS Credentials** | You must have the following AWS credentials to configure AWS Cloud infrastructure for Self Hosted Gitspaces: <ul><li>AWS Access Key</li><li>AWS Secret Key</li><li>AWS Session Token (optional)</li></ul> | [Docs](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) |
 | **Terraform/OpenTofu** | You must have Terraform/OpenTofu installed on your machine with internet access. | [Docs](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) |
 | **Domain Manager Access** | You must have access to the Domain Manager to delegate the domain or subdomain you use for Self Hosted Gitspaces. | [Docs](https://www.catchpoint.com/dns-monitoring/dns-delegation) | 

@@ -13,6 +13,7 @@ In order to get started with Self Hosted Gitspaces, you'll first need to **confi
 1. Enable the feature flag ``CDE_HYBRID_ENABLED`` in your Harness account since Self Hosted Gitspaces are currently available behind this feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
 2. Read [Selt Hosted Gitspaces Overview & Key Concepts](/docs/cloud-development-environments/self-hosted-gitspaces/fundamentals.md) to gain a deeper understanding of the basic concepts and setup steps.
 3. Only users with **Account-level access** can configure Gitspace infrastructure for now. Go to [Permissions Hierarchy](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) for more details.
+4. Only users with **powerUserAccess** permissions as an AWS user can configure self hosted Gitspaces in your AWS infrastructure. Go to [PowerUserAccess](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/PowerUserAccess.html) to learn more about the same.
 
 ---
 
