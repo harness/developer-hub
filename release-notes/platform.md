@@ -149,7 +149,7 @@ The following deprecated API endpoints are longer supported:
 #### New Feature and Enhancement
 
 - Introduced [Secret Manager template reconciliation](/docs/platform/secrets/secrets-management/reconcilation-of-secret-manager-template) to automatically review and update linked Secret Managers and Secrets when templates are modified, preventing misconfigurations. [PL-61310]
-- Added [Default Notification Templates](/docs/platform/notifications/default-notification-templates) that automatically apply when no custom template is selected, ensuring consistent notifications across scopes. [PL-61479]
+- Added [Default Notification Templates](/docs/platform/notifications/default-notification-template) that automatically apply when no custom template is selected, ensuring consistent notifications across scopes. [PL-61479]
 - Introduced [Centralised Delegate Notifications](/docs/platform/notifications/centralised-notification) for proactive delegate monitoring with immediate alerts for disconnection, expiration, and connectivity issues. [PL-31873]
 - AWS KMS connector now supports [plain text and encrypted ARNs](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager) across all authentication methods for enhanced security. [PL-62434]
 - Enhanced database operations during delegate registration to prevent duplicate entries in `delegateConfig`. [PL-64095]
