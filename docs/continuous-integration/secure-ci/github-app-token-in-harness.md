@@ -1,6 +1,6 @@
 ---
 title: Using GitHub App Tokens Securely in Harness CI Pipelines
-description: Learn how to securely authenticate GitHub API calls in Harness CI pipelines using GitHub App tokens and the community plugin for ephemeral token generation.
+description: Learn how to securely authenticate GitHub API calls in Harness CI pipelines using GitHub App tokens and the Drone plugin for ephemeral token generation.
 sidebar_position: 20
 ---
 
@@ -69,7 +69,6 @@ This plugin generates GitHub App installation tokens securely during pipeline ex
 <+execution.steps.Generate_GitHub_Token.output.outputVariables.GITHUB_APP_INSTALLATION_ID>
 <+execution.steps.Generate_GitHub_Token.output.outputVariables.GITHUB_APP_SLUG>
 ```
-* The JWT is used to authenticate as the GitHub App and generate the installation token. The JWT expires after 10 minutes by design, but the installation token — which grants actual repo access — lasts for 60 minutes.
 :::
 
 ## Best Practices

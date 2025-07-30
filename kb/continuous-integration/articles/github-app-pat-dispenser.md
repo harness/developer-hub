@@ -4,7 +4,7 @@ description: Use a GitHub App to push commits and interact with the GitHub API i
 sidebar_position: 80
 ---
 
-> **Note**: Looking for a cleaner solution that works in Harness Cloud?  
+> **Note**: Looking for a cleaner solution?  
 > See [Using GitHub App Tokens Securely in Harness CI Pipelines](/docs/continuous-integration/secure-ci/github-app-token-in-harness).
 
 Harness CI's [codebase configuration](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) uses a code repo connector to clone your code, push status updates to PRs, and create and use repo webhooks. If your code is stored in GitHub repos, you can [use a GitHub App in a Harness GitHub connector](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support) for authentication.
