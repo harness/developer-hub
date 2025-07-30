@@ -15,166 +15,150 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The Default Notification Template lets you set a template that automatically applies when no specific template is chosen for a notification rule. This ensures consistent, complete information in every notification—without requiring manual selection.
-
-You can configure default notification template at different scopes (Account, Organization, Project) and for specific event types and channel types (such as Email, Slack, and Microsoft Teams), giving you greater control over notification content.
-
 :::note Feature Availability
-   The Default Notification Template feature is available behind the `PL_DEFAULT_NOTIFICATION_TEMPLATE_SET_SUPPORT` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable it.
+The Default Notification Template feature requires the `PL_DEFAULT_NOTIFICATION_TEMPLATE_SET_SUPPORT` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
-## **Steps to Configure Default Notification Template**
+The Default Notification Template feature allows you to define templates that automatically apply when no specific template is selected for a notification rule. This ensures consistent and complete information in all notifications without requiring manual template selection for each rule.
 
-### 1: Access the Default Templates Sets
+You can configure default notification templates at different scopes (Account, Organization, or Project) and for specific event types and channel types, providing granular control over notification content.
 
-- Go to **Settings** at your preferred scope (**Account, Organization, or Project**). Navigate to **General** → **Notification Management**.
-        
-- Click the **Default Template Sets** tab.
+## **Configuration Steps**
+
+### Step 1: Navigate to the Default Templates Sets page
+
+- Navigate to **Settings** at your desired scope (Account, Organization, or Project).
+
+- Go to **General** → **Notification Management**.
+
+- Select the **Default Template Sets** tab.
 
     ![default-notification](./static/default-notification-template.gif)
 
-### 2: Create a New Default Template Set
+### Step 2: Create a Default Template Set
 
-- Click **+ Default Template Set**, and in the Overview section, enter the name and add an optional description and tags. Click Continue to proceed
+- Click **+ Default Template Set**
+
+- In the Overview section:
+        - Enter a name for the template set
+        - Add an optional description and tags
+
+- Click Continue
 
         ![d-nt-1](./static/default-nt-1.gif)
 
-### 3: Select Resource and Channel Type
+### Step 3: Configure Resource and Channel Type
 
 - **Resource Type**: Automatically set to **Pipeline** (currently the only supported resource).
 
         ![](./static/resource-notification-type.png)
 
-- **Channel Type**: Select one from the dropdown (Email, Microsoft Teams, Slack, PagerDuty, Webhook). Click Continue to proceed.
+- **Channel Type**: Select one from the dropdown. Click Continue to proceed.
 
         ![](./static/channel-notification-type.png)
 
 ### 4: Define Event-Template Combinations
 
-- Select one or more **Pipeline Event Types** from the list shown below.
+- Select one or more pipeline events from the **Select Pipeline Events** dropdown.
 
         ![](./static/select-pipeline-event.png)
 
-- Click **Select Template** and choose the template that will serve as the default for the selected event type. If the template includes runtime input variables, enter the required values.
+- Click **Select Template** and choose the template to serve as the default for the selected event type. If the template includes runtime input variables, provide the required values. Repeat this process for additional event and template combinations as needed.
 
         ![](./static/template-selection.gif)
 
-- Repeat the process for any additional event, channel and template combinations you want to configure as shown below.
-
-        ![](./static/template-selection-add.gif)
-
-- Click **Submit** to save the default template set. After saving, you can view the number of events and templates configured for this set on the Default Templates page.
+- Click **Submit** to save the default template set. Once saved, the template set appears on the Default Template Sets page with a summary showing the configured events and templates.
 
         ![](./static/default-template-set.png)
 
+## **Template Selection Priority**
 
-### **How Harness Chooses the Final Notification Template**
+The system follows a specific priority order when selecting a template for each event and channel type combination:
 
-Harness follows this priority order when selecting a template for each event type and channel type combination:
+**1. Template selected in notification rule**: If you specify a template when creating or editing a notification rule, that template is used.
 
-**1. Template selected in the notification rule**:If you choose a template while creating or editing the rule, Harness always uses it.
+**2. Default template by scope**: If no template is specified in the rule, the system searches for default templates starting at the current scope and moving up the hierarchy: Project → Organization → Account.
 
-**2. Default template at the same scope**: If no template is selected, Harness checks for a default at the same scope (Project, Org, or Account).
+**3. Built-in template**: If no custom or default templates are available, the built-in static template is used.
 
-**3. Default template at a higher scope**: If none exists at the current scope, Harness checks the next higher level in this order: Project → Organization → Account.
+This hierarchy ensures that notifications are always sent with appropriate content, even when no specific template is configured.        
 
-**4. Harness static template**: If no custom or default templates are found, Harness uses its built-in static template.
+### **Examples for Template Selection Priority**
 
-Let’s walk through a few examples, starting from simple scenarios and progressing to more complex ones.
+The following examples demonstrate how the template selection priority works in different scenarios, from basic to more advanced use cases.
 
-<Tabs>
-  <TabItem value="simple" label="Simple" default>
-    For Example: You create a Notification rule at the Project scope for:
+<details>
+    <summary>Case 1: Default Notification Template available at the Project scope</summary>
+    <div>
+        Consider the following setup across different scopes:
 
-        * **Event Type**: Pipeline Failed
-        * **Channel**: Slack
-        * No template selected in the rule
+        - **Project P**: Default template "Template A" configured for Pipeline Success + Email
+        - **Organization**: Default template "Template B" configured for Pipeline Success + Email
+        - **Account**: Default template "Template C" configured for Pipeline Success + Email
 
-    In this scenario, Harness selects the template as follows:
+        You create a notification rule at Project P for:
 
-    1. First, it checks if you selected a template in the rule. You didn’t, so it moves to the next option.
-    2. Next, it checks if there’s a default template for Pipeline Failed + Slack at the Project scope. If it finds one, like Template B, it uses that. If not, it moves up.
-    3. Then, it checks at the Organization scope for the same combination. If it finds one, like Template C, it uses that. If not, it moves up again.
-    4. Finally, it checks at the Account scope. If it finds one, like Template D, it uses that.
-    5. If none exist, Harness uses its static template.
-  </TabItem>
-  <TabItem value="Intermediate" label="Intermediate">
+        - **Event Type**: Pipeline Success
+        - **Channel**: Email
+        - **Template**: None selected in the notification rule
 
-    Let's assume a scenario. We'll start with the first case: Project P1 under Organization O1 with default settings, where the event and channel use a specific template (e.g., Pipeline Success + Slack uses Template A). You can interpret the following cases similarly.
+        In this scenario, the system selects the template using the following priority order:
 
-        * **Project P1 (under Org O1)** → Defaults:
-            * **Pipeline Success + Slack** → TmpA
-            * **Pipeline Failed + Email** → TmpC
+        1. **Rule-level template**: No template was specified in the notification rule, so the system proceeds to check for default templates.
+        2. **Project scope**: The system finds "Template A" configured for Pipeline Success + Email at Project P and uses it. The search stops here.
 
-        * **Project P2 (under Org O1)** → **No defaults**
+        **Result**: The notification uses "Template A" because it was found at the Project scope, which has the highest priority after rule-level templates. Templates at higher scopes ("Template B" and "Template C") are not considered since a match was found at the current scope.
+    </div>
+</details>
 
-        * **Org O1** → Defaults for Email:
-            * **Pipeline Success + Email** → TmpC
-            * **Pipeline Failed + Email** → TmpD
+<details>
+    <summary>Case 2: Default Notification Template available only at the Account scope</summary>
+    <div>
+        Consider the following setup across different scopes:
+        
+        - **Project P**: No default template configured for Pipeline Success + Email
+        - **Organization**: No default template configured for Pipeline Success + Email
+        - **Account**: Default template "Template C" configured for Pipeline Success + Email
 
-        * **Account scope** → Defaults for all combinations:
-            * **Pipeline Start (Email, Slack)** → TmpA
-            * **Pipeline Success (Email, Slack)** → TmpB
-            * **Pipeline Failed (Email, Slack)** → TmpB
+        You create a notification rule at Project P for:
 
-    **Scenario: Notification Rule at Proj P2**
+        - **Event Type**: Pipeline Success
+        - **Channel**: Email
+        - **Template**: None selected in the notification rule
 
-    This example assumes a notification rule is created for Pipeline Start, Pipeline Success, and Pipeline Failed events on Email and Slack, without any template selected. Harness then determines the template based on its priority order: Rule → Project → Org → Account → Static.
+        In this scenario, the system selects the template using the following priority order:
 
-        | **Event Type**   | **Channel** | **Template Used** | **Why This Template Was Picked**                      |
-        | ---------------- | ----------- | ----------------- | ----------------------------------------------------- |
-        | Pipeline Start   | Email       | TmpA (Account)    | No project/org defaults → fallback to Account default |
-        | Pipeline Start   | Slack       | TmpA (Account)    | No project/org defaults → fallback to Account default |
-        | Pipeline Success | Email       | TmpC (Org O1)     | Org O1 default overrides Account default              |
-        | Pipeline Success | Slack       | TmpB (Account)    | No project/org defaults → fallback to Account default |
-        | Pipeline Failed  | Email       | TmpD (Org O1)     | Org O1 default overrides Account default              |
-        | Pipeline Failed  | Slack       | TmpB (Account)    | No project/org defaults → fallback to Account default |
+        1. **Rule-level template**: No template was specified in the notification rule, so the system proceeds to check for default templates.
+        2. **Project scope**: No default template found for Pipeline Success + Email. The search continues to the next scope level.
+        3. **Organization scope**: No default template found for Pipeline Success + Email. The search continues to the next scope level.
+        4. **Account scope**: Default template "Template C" is found for Pipeline Success + Email. The search stops here.
 
-  </TabItem>
-  <TabItem value="Complex" label="Complex">
+        **Result**: The notification uses "Template C" because it was the only matching default template available at the Account level. If no template were available at any scope, the system would fall back to the built-in static template.
+    </div>
+</details>
 
-    Let's assume a scenario. We'll start with the first case: Project P1 under Organization O1 with default settings, where the event and channel use a specific template (e.g., Pipeline Success + Slack uses Template A). You can interpret the following cases similarly.
+<details>
+    <summary>Case 3: Template explicitly selected in the notification rule</summary>
+    <div>
+        Consider the following setup across different scopes:
+        
+        - **Project P**: Default template "Template A" configured for Pipeline Success + Email
+        - **Organization**: Default template "Template B" configured for Pipeline Success + Email
+        - **Account**: Default template "Template C" configured for Pipeline Success + Email
 
-        * **Project P1 (under Org O1)** → Defaults:
-            * **Pipeline Success + Slack** → TmpP1S
-            * **Pipeline Failed + Email** → TmpP1F
+        You create a notification rule at Project P for:
 
-        * **Project P2 (under Org O1)** → **No defaults**
+        - **Event Type**: Pipeline Success
+        - **Channel**: Email
+        - **Template**: "Custom Template X" explicitly selected in the notification rule
 
-        * **Org O1** → Defaults:
-            * **Pipeline Start + MS Teams** → TmpO1T
-            * **Pipeline Failed + Email** → TmpO1F
+        In this scenario:
 
-        * **Org O2** → **No defaults**, but...
+        1. **Rule-level template**: "Custom Template X" is specified in the notification rule, so it takes priority over all default templates.
 
-        * **Project P3 (under Org O2)** → Defaults:
-            * **Pipeline Start + Email** → TmpP3Start
-            * **Pipeline Success + Slack** → TmpP3Success
+        **Result**: The notification uses "Custom Template X" because it was explicitly selected in the notification rule, regardless of any default templates configured at any scope.
+    </div>
+</details>
 
-        * **Account scope** → Defaults:
-            * **Pipeline Start (Email, Slack)** → TmpAccStart
-            * **Pipeline Success (Email, Slack)** → TmpAccSuccess
-            * **Pipeline Failed (Email, Slack)** → TmpAccFailed
-            * **No MS Teams defaults at Account level**
-
-    **Scenario: Notification Rule at Project P2**
-
-    Rule includes **Pipeline Start**, **Pipeline Success**, **Pipeline Failed** for **Email**, **Slack**, and **MS Teams**, with **no template selected**. Harness then determines the template based on its priority order: Rule → Project → Org → Account → Static
-
-
-        | **Event Type**   | **Channel** | **Template Used**   | **Why This Template Was Picked**                                     |
-        | ---------------- | ----------- | ------------------- | -------------------------------------------------------------------- |
-        | Pipeline Start   | Email       | TmpAccStart         | No defaults at Project/Org → fallback to Account default             |
-        | Pipeline Start   | Slack       | TmpAccStart         | No defaults at Project/Org → fallback to Account default             |
-        | Pipeline Start   | MS Teams    | TmpO1T              | Org O1 defines MS Teams default → overrides Account (which has none) |
-        | Pipeline Success | Email       | TmpAccSuccess       | No defaults at Project/Org → fallback to Account default             |
-        | Pipeline Success | Slack       | TmpP1S (Project P1) | *Wait, NOT APPLICABLE because rule is at P2 → fallback to Account*   |
-        | Pipeline Success | MS Teams    | TmpO1T              | Org O1 has MS Teams → fallback to Org (Account has none)             |
-        | Pipeline Failed  | Email       | TmpO1F              | Org O1 default overrides Account default                             |
-        | Pipeline Failed  | Slack       | TmpAccFailed        | No defaults at Project/Org → fallback to Account default             |
-        | Pipeline Failed  | MS Teams    | TmpO1T              | Org O1 default for MS Teams → fallback to Org                        |
-
-  </TabItem>
-</Tabs>
 
 
