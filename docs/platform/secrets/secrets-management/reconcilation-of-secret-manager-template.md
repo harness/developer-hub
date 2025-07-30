@@ -41,7 +41,7 @@ To show how reconciliation works, let's update a Secret Manager Template. In thi
 
 2. Click the **More options** (⋮) menu and select **Open/Edit Template**
 
-3. In the **Configuration** section, change the values from **Fixed value** to **Runtime Input**
+3. In the **Configuration** section, change any value from **Fixed value** to **Runtime Input**
 
 4. Click **Save** to apply your template updates
 
