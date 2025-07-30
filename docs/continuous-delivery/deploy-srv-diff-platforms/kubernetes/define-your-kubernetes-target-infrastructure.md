@@ -368,6 +368,8 @@ Once enabled, do the following:
 3. In **CA Certification Data**, select the certificate associated with your cluster, if you have one.
 4. Select your **Cluster** and **Namespace** as described above. 
 
+This manual configuration will only work for EKS cluster and not for any other Kubernetes cluster.
+
 :::
 
 </TabItem>
