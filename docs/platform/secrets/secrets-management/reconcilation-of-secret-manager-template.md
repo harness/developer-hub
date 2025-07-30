@@ -15,49 +15,57 @@ keywords:
   - yaml diff secret manager
 ---
 
-:::note Permissions Required
-    You must have **Create/Edit** permissions for the relevant connector or secret to perform reconciliation.
+When you update a Secret Manager Template, dependent Custom Secret Managers and Secrets become out of sync, potentially causing pipeline failures and can affect other entities. Harness provides reconciliation alerts to help you synchronize these entities.
+
+## Prerequisites
+
+Before you can reconcile templates, ensure you have the following configured:
+
+- A [Secret Manager Template](/docs/platform/templates/create-a-secret-manager-template) with [fixed values](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/)
+- A [Custom Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/custom-secret-manager/) that references the Secret Manager Template
+- A [Secret](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) that uses the Custom Secret Manager
+
+
+## Update the Secret Manager Template
+
+To trigger the reconciliation process, you need to modify your Secret Manager Template. This example shows changing from fixed values to runtime inputs:
+
+1. Navigate to your Secret Manager Template in the Templates section
+
+2. Click the **More options** (⋮) menu and select **Open/Edit Template**
+
+3. In the **Configuration** section, change the values from **Fixed value** to **Runtime Input**
+
+4. Click **Save** to apply your template updates
+
+   ![](../static/reconcile-update-template.gif)
+
+:::info What happens next?
+After saving the template changes, Harness automatically identifies all dependent Custom Secret Managers and Secrets that need to be updated. Reconciliation alerts will appear on these entities to guide you through the update process.
 :::
 
-When a Custom Secret Manager Template is updated, any Custom Secret Managers or Secrets referencing it can become out of sync, which may cause pipeline failures. To prevent this, Harness provides alerts and a guided reconciliation process that helps you update affected entities.
+## Reconcile the Secret Manager
 
-## Steps to Reconcile a Secret Manager Template
+After updating the template, you need to reconcile each Custom Secret Manager that references it
 
-:::note
-In this example, we’re updating the template from fixed values to runtime inputs, but the same process applies to any variable updates, including those that use expressions.
-:::
+- Navigate to the Custom Secret Manager and click **Reconcile** in the alert banner
 
-1. Create a [Secret Manager Template](/docs/platform/templates/create-a-secret-manager-template) with [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/).
+   ![](../static/reconcile-sm.gif)
 
-2. Create a [Custom Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/custom-secret-manager/), select the Secret Manager template created in previous step, and complete the setup.
+- On the details page, click **Reconcile** again to view the YAML diff
 
-3. Create a [new secret](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) using the Custom Secret Manager from previous step, and click **Save** to apply the changes.
+- Review the configuration changes, provide values for any runtime inputs, and click **Continue** to apply
 
-    :::tip How Reconciliation Works?
-        If a Secret Manager template is linked to a Custom Secret Manager and a Secret, any changes to the template trigger a reconciliation option for both. For example, changing a template variable from a fixed value to a runtime input will display an alert with the option to reconcile.
-    :::
+   ![](../static/reconcile-sm-1.gif)
 
-4. **Update the Secret Manager Template**: Navigate to your Secret Manager Template, click the More options (three dots), and select Open/Edit Template. Go to the Configuration section and change the values from Fixed value to Runtime Input, as shown below. 
+## Reconcile the Secret
 
-    ![](../static/reconcile-update-template.gif)
+After reconciling the Secret Manager, update all dependent secrets:
 
-5. **Reconcile the Secret Manager**: After updating the template, an alert appears with the message 'The secret manager template referenced in this secret manager has been updated.' and a Reconcile button.
+- Navigate to each Secret that uses the Custom Secret Manager and click **Reconcile** in the alert banner
 
-    - Click Reconcile to open the Custom Secret Manager page. On the Details page, you’ll see the alert 'The secret manager template referenced in this secret manager has been updated.' Click Reconcile again to proceed.
+- On the Secret editing page, click **Reconcile** again to view the YAML diff
 
-        ![](../static/reconcile-sm.gif)
+- Review the configuration changes, provide values for any runtime inputs, and click **Save** to apply
 
-    - After clicking Reconcile on the Details page, a YAML difference appears showing the current and updated variables. Review the changes and reconcile as needed. Click Continue to proceed.
-
-        ![](../static/reconcile-sm-1.gif)
-
-    After reconciling the Secret Manager, update the secrets that reference it.
-
-6. **Reconcile the Secret**: Navigate to the Secret that references your Secret Manager. You’ll see an alert stating, 'The secret manager has been updated. Please update this secret to reflect the latest state of the secret manager to avoid potential failures.' Click Reconcile to proceed.
-
-    - Click Reconcile to open and edit the Secret. The same alert message appears. Click Reconcile again to view the YAML differences between the current and updated versions. Review the changes and reconcile as needed.
-
-        ![](../static/reconcile-secret.gif)
-
-
-Reconciliation ensures that Custom Secret Managers and Secrets stay aligned with the latest Secret Manager template updates, preventing configuration mismatches and pipeline failures. By using the guided process in the UI, you can quickly apply changes and maintain consistent, error-free configurations.        
+   ![](../static/reconcile-secret.gif)     
