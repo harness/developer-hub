@@ -32,7 +32,8 @@ If you need other regions, please contact us at **[cde-interest@harness.io](mail
 
 ### Self Hosted Regions
 
-For Self Hosted Gitspaces, you can configure **regions of your choice** based on your infrastructure. For more details, refer to [Regions in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#configure-regions).
+For Self Hosted Gitspaces, configure **regions of your choice** based on your infrastructure. 
+For more details, go to [Regions in Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui.md#configure-regions).
 
 ## Machine Types
 
