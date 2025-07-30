@@ -14,11 +14,11 @@ tags:
   - FIPS
 ---
 
-FIPS (Federal Information Processing Standards) is a set of standards published by the United States government to define security and interoperability requirements for federal systems and contractors. 
+FIPS (Federal Information Processing Standards) is a set of standards developed and published by [NIST (National Institute of Standards and Technology)](https://www.nist.gov/) to define security and interoperability requirements for federal systems and contractors. 
 
-The most relevant standard for software systems is **FIPS 140**, which sets the security requirements for cryptographic modules (the software and hardware performing encryption and related operations).
+The most relevant standard for software systems is [FIPS 140](https://en.wikipedia.org/wiki/FIPS_140), which sets the security requirements for cryptographic modules (the software and hardware performing encryption and related operations).
 
-FIPS 140-2 is the widely used and approved version, while FIPS 140-3 is its newer revision with improved testing, modern algorithms, and updated guidance. These standards ensure that cryptographic operations—including encryption, decryption, key generation, and random number generation—meet strict security requirements.
+[FIPS 140-2](https://csrc.nist.gov/pubs/fips/140-2/upd2/final) is the widely used and approved version, while [FIPS 140-3](https://csrc.nist.gov/projects/fips-140-3-development) is its newer revision with improved testing, modern algorithms, and updated guidance. These standards ensure that cryptographic operations—including encryption, decryption, key generation, and random number generation—meet strict security requirements.
 
 Systems using FIPS-validated cryptography help protect sensitive data and comply with regulatory requirements, especially in government, defense, and highly regulated industries.
 
@@ -42,55 +42,48 @@ For customers with regulatory requirements or internal security policies that ma
   FIPS is supported starting from SMP version 0.31.0 and later.
 :::
 
-Harness supports deployments that comply with FIPS 140-2 requirements for Self-Managed Platform in Harness. This enables customers in government, defense, and other regulated industries to use Harness while meeting their security and compliance obligations.
+Harness supports deployments that comply with FIPS 140-2 and 140-3 requirements for Self-Managed Platform. This enables customers in government, defense, and other regulated industries to use Harness while meeting their security and compliance obligations.
 
-The following steps provide practical guidance to help you prepare, configure, and validate your managed Kubernetes clusters for FIPS 140-2 compliance.
+### Supported modules in FIPS mode
+
+The following modules are tested and supported on FIPS-enabled SMP environments.
+
+| Module | Components |
+|--------|------------|
+| Platform     | **Authentication (OKTA)**<br />- [SAML](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-okta)<br />- [SCIM](/docs/platform/role-based-access-control/provision-users-with-okta-scim)<br /><br />**Notification**<br />- [SMTP](/docs/platform/notifications/add-smtp-configuration)<br />- [Slack](/docs/platform/notifications/notification-settings/#configure-pipeline-notifications)<br />- [MS Teams](/docs/platform/notifications/notification-settings/#configure-pipeline-notifications) |
+| Continuous Delivery     | **Artifact Repositories**<br />- Docker Registry<br />- Artifactory<br /><br />**Cloud Providers**<br />- AWS Cloud provider<br /><br />**Deployment**<br />- Kubernetes |
+| Cloud Cost Management    | **Cloud Providers**<br />- [Kubernetes cluster](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-for-kubernetes/) |
+| Continuous Integration     | **Security Tests**<br />- [Kaniko](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push/#kaniko) |
+| Code Repository   | **Code Repositories**<br />- GitHub |
+| Security Testing Orchestration    | **Security Tests**<br />- [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference)<br />- [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)<br />- [Gitleaks](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)<br />- [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference)<br />- [OSV](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference)<br />- [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)<br />- [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) |
+
+
+
 
 ### Infrastructure Prerequisites
 
-Before deploying a FIPS-compliant Kubernetes cluster, ensure the following prerequisites are met:
+Before deploying a self-managed platform (SMP) in a FIPS-compliant Kubernetes cluster, ensure the following prerequisites are met:
 
-1. **Cloud Provider FIPS Support**: The target environment must run on a cloud provider that supports FIPS 140-2 configurations. For AWS, use node OS images that include validated FIPS cryptographic modules. FIPS-specific endpoints may also be required for certain AWS services. Recommended FIPS-enabled OS options include:
+1. **Cloud Provider FIPS Support**: Use a cloud provider that supports FIPS configurations. For example, in AWS, FIPS-enabled OS images include:
 
    * [Bottlerocket AMIs](https://docs.aws.amazon.com/bottlerocket/latest/userguide/fips.html)
    * [Amazon Linux 2](https://docs.aws.amazon.com/linux/al2/fips.html)
 
-2. **Kubernetes Version Compatibility**: Ensure the Kubernetes version is compatible with the selected FIPS-enabled OS. For AWS EKS, FIPS-compliant AMIs (like Amazon Linux 2 FIPS) are generally supported from Kubernetes version **v1.23** onward.
+   Check your cloud provider's documentation for additional FIPS-enabled images and specific configuration requirements.
+
+2. **Kubernetes Version Compatibility**: Ensure the Kubernetes version is compatible with the selected FIPS-enabled OS.
 
 3. **System Requirements and Tools**: The deployment environment must have the following tools installed:
 
-   * [`kubectl`](https://kubernetes.io/docs/tasks/tools/) – for interacting with Kubernetes clusters
-   * [`eksctl`](https://eksctl.io/) – for provisioning and managing EKS clusters
+   * [**`kubectl`**](https://kubernetes.io/docs/tasks/tools/) – for interacting with Kubernetes clusters
+   * [**`eksctl`**](https://eksctl.io/) – for provisioning and managing EKS clusters
    * **Optional**: SSH access to worker nodes, if you need to perform FIPS validation or troubleshooting at the OS level
 
-### Enabling FIPS on AWS Cluster
+### Set Up FIPS-Compliant AWS EKS Cluster
 
-AWS provides multiple options to enable FIPS 140-2 compliance for worker nodes in Amazon EKS. This guide focuses on enabling FIPS by using a FIPS-enabled Amazon EKS AMI. It also covers using Bottlerocket, which has dedicated FIPS-enabled AMIs available for EKS clusters. For details on Bottlerocket FIPS AMIs, refer to the [Official AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/bottlerocket-fips-amis.html).
+AWS provides multiple FIPS-compliant options for EKS worker nodes. For example, we will be using FIPS-enabled [Bottlerocket AMIs](https://docs.aws.amazon.com/eks/latest/userguide/bottlerocket-fips-amis.html) to create an EKS cluster.
 
-The following steps explain how to create an EKS cluster and configure Bottlerocket nodes with FIPS-enabled AMIs.
-
-**Step 1: Create an EKS Cluster**
-
-1. Sign in to the [AWS Management Console](https://console.aws.amazon.com/).
-
-2. Navigate to Amazon EKS → Clusters. Click Create Cluster.
-
-3. Provide the following details:
-   * Cluster name: Example: `<YOUR-ClUSTER-NAME>`
-   * Kubernetes version: Choose the latest supported version (for example, 1.32)
-   * Cluster Service Role: Select an existing IAM role with `AmazonEKSClusterPolicy` or create a new one.
-
-4. Configure networking:
-   * Select an existing VPC.
-   * Choose at least two subnets in different Availability Zones.
-   * Select a security group that allows EKS communication.
-
-5. Configure cluster endpoint access:
-   * Public and Private for external access, or Private for internal access only.
-
-6. Click Create. 
-
-  It might take a few minutes for the cluster status to become Active.
+**Step 1: Create an [AWS EKS Cluster](/docs/self-managed-enterprise-edition/cloud-providers/install-in-aws)**
 
 **Step 2: Prepare User Data for Bottlerocket**
 
@@ -161,7 +154,7 @@ The user data is typically provided in a TOML file format and injected during in
 
 6. Click Create.
 
-## Validate FIPS 
+### Validate FIPS 
 
 Connect to the instance using AWS Session Manager. Once connected, run the following command to verify whether FIPS mode is enabled:
 
@@ -179,7 +172,7 @@ An output of `1` confirms that the node is running in FIPS mode. Use Kubernetes 
 
 ## Enable FIPS in Self-Managed Platform (SMP) 
 
-After verifying that your Kubernetes cluster is FIPS-enabled, proceed with the installation of the latest Self-Managed Platform (SMP) version. You can follow the [AWS installation guide](/docs/self-managed-enterprise-edition/cloud-providers/install-in-aws).
+After verifying that your Kubernetes cluster is FIPS-enabled, proceed with the installation of the latest Self-Managed Platformrm (SMP) version. You can follow the [AWS installation guide](/docs/self-managed-enterprise-edition/cloud-providers/install-in-aws).
 
 To enable FIPS mode in your Harness SMP, modify the `values.yaml` (or `override.yaml`) file by adding the following configuration under the `global` section:
 
@@ -188,7 +181,7 @@ To enable FIPS mode in your Harness SMP, modify the `values.yaml` (or `override.
     fips: true
   ```
 
-This setting ensures that the Harness components are deployed in compliance with FIPS 140-2 requirements. Once the configuration is updated, install or upgrade your Helm release using the modified `values.yaml` (or `override.yaml`) to apply the changes.
+This setting ensures that the Harness components are deployed in compliance with FIPS requirements. Once the configuration is updated, install or upgrade your Helm release using the modified `values.yaml` (or `override.yaml`) to apply the changes.
 
 ### Delegates in FIPS Mode
 
@@ -199,25 +192,6 @@ When SMP is running in FIPS mode, any delegate downloaded will automatically inc
 ```
 
 This setting ensures that the delegate runs in FIPS-compliant mode, aligning with the security requirements of the FIPS-enabled SMP environment.
-
-## What Is Supported When FIPS Is Enabled
-
-The following components are tested and supported on FIPS-enabled and enforced SMP environments, focusing on CI, CD, and STO functionalities.
-
-| Category                         | Supported Components                                                                       |
-|----------------------------------|--------------------------------------------------------------------------------------------|
-| Authentication & User Management | Self-managed (Username/Password)<br />SAML (Okta) <br /> SCIM (Okta)                       |
-| Secret Management Connectors     | HashiCorp Vault<br />AWS Secrets Manager                                                   |
-| Cloud Providers                  | AWS Cloud Provider<br />Kubernetes Cluster (via delegate IAM)                              |
-| Code Repositories                | GitHub                                                                                     |
-| Cloud Cost                       | AWS Cloud Cost                                                                             |
-| Artifact Repositories            | Docker Registry<br />Artifactory                                                           |
-| Notification Mechanisms          | SMTP<br />Slack<br />MS Teams                                                              |
-| Deployment                       | Kubernetes<br />Native Helm                                                                |
-| Build                            | Shell<br />Kaniko<br />Build and Push to ECR<br />Build and Push to Docker<br />Upload Artifacts to S3 |
-| Security Tests | [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference)<br />[Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)<br />[Gitleaks](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)<br />[Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference)<br />[OSV](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference)<br />[Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)<br />[SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) |
-| IACM                             | Supported                                                                                  |
-| SCS                              | Supported                                                                                  |
 
 ## Limitations
 
