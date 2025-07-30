@@ -593,6 +593,9 @@ To address this, Harness provides the **Create remote workspace with prefix** op
 To enable automatic workspace selection when a workspace is configured in the step settings, this flag **must** be enabled.
 
 If you prefer not to use this flag, you can manually configure the workspace using the `TF_WORKSPACE` environment variable.
+
+**Rollback does not delete workspaces** created using this option. Workspace cleanup must be handled manually.
+
 :::
 
 <details>
