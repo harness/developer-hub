@@ -40,7 +40,7 @@ When you open the Harness Database DevOps module, you will encounter a single-pa
   - **DB Schemas**: Located at the top-left under the overview tab, this section shows the number of database schemas you have created. 
   - **DB Instances**: This appears directly beneath the **DB Schemas** tab and indicates the number of database instances you have created. 
   - **Most Recent 5 Deployments**: This section displays the five most recent deployments, including the name of the **schema**, the **instance** it ran on, and the **last deployed** date. 
-  - **Last 30 Days Pipeline Executions**: TThis shows the number of pipeline executions in the last 30 days from the point of login, including both failed and successful executions. It will include both failed and successful executions. Users can toggle between a bar graph and a line graph for visualization. 
+  - **Last 30 Days Pipeline Executions**: This shows the number of pipeline executions in the last 30 days from the point of login, including both failed and successful executions. It will include both failed and successful executions. Users can toggle between a bar graph and a line graph for visualization. 
   - **Migration State**: This indicates the status of recent changesets. A key in the top right of this section helps identify the statuses displayed in the table.
 
 ## The Unified Environment Overview for Database Schemas
@@ -71,6 +71,22 @@ for understanding the status of the pipelines in your environments. Here's what 
  - **Last execution**: The name of the person who last ran the pipeline and the dates it was executed, displayed in an estimate of
  hours, days, months or years beneath the user's name. 
  - **Last modified**: The date of when the pipeline was last modified. 
+
+## Viewing ChangeSets in the Harness Database DevOps UI
+
+![A screenshot of the Harness Database DevOps ChangeSets UI](./static/dbops-changeset-view.png)
+Clicking on a ChangeSet opens the detail pane on the right-hand side of the UI. This panel provides two tabs:
+
+- **ChangeSets (YAML)**: Displays the structured YAML definition of the applied change, including metadata such as the ID, author, object strategy, and specific change operation (e.g., createIndex).
+- **SQL**: For script-based changes, this tab shows the actual SQL that was executed, ensuring transparency and auditability for database administrators and platform engineers.
+
+
+Within the Migration State tab of the Harness Database DevOps platform, users are provided with clear visibility into the applied ChangeSets across database environments. This view is instrumental in tracking schema-level changes and understanding the evolution of your data models over time. Here’s what you’ll find in the Migration State interface:
+
+- **Change ID**: A unique identifier for each ChangeSet, often scoped by team or environment for traceability (e.g., `devteam:2`).
+- **Author**: The email address of the individual or service account or author name responsible for creating the ChangeSet.
+- **Comment**: A descriptive message associated with the ChangeSet to indicate the purpose or context of the change.
+- **Changes**: A detailed list of schema-level actions applied in the ChangeSet, such as `createIndex`, `addColumn` or `dropTable`. This allows DB admins and developers to quickly assess what structural updates were made to the database without manually inspecting scripts.
 
 ## Database DevOps Executions Overview 
 
