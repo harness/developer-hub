@@ -140,6 +140,20 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2025
 
+### Version 1.99.x <!--July 30, 2025-->
+
+#### Fixed issues
+
+- Increased the item limit in scrollable lists beyond 100 to enhance usability and avoid display limitations. [PL-63813]
+
+#### New Feature and Enhancement
+
+- Enhanced database operations during delegate registration to prevent duplicate entries in `delegateConfig`. [PL-64095]
+- Improved visibility on the service accounts' details page at a higher scope; users can now see details of service accounts that are inherited at lower scopes. [PL-63634]
+- A new API has been introduced to delete the delegate token. [PL-63386]
+- Delegate tasks are now marked as completed instead of being deleted immediately. These completed tasks are automatically removed after a defined retention period using a TTL (Time-To-Live) index. [PL-61842]
+- ECS delegates are now deprecated. New ECS delegate registrations are no longer supported, and existing ECS delegates will gradually be disconnected. [PL-56291]
+
 ### Version 1.98.x <!--July 22, 2025-->
 
 #### New Feature and Enhancement
