@@ -33,10 +33,9 @@ Before you can reconcile templates, ensure you have the following configured:
 - A [Custom Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/custom-secret-manager/) that references the Secret Manager Template
 - A [Secret](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) that uses the Custom Secret Manager
 
+## Modify a Secret Manager Template
 
-## Update the Secret Manager Template
-
-To trigger the reconciliation process, you need to modify your Secret Manager Template. This example shows changing from fixed values to runtime inputs:
+To show how reconciliation works, let's update a Secret Manager Template. In this example, we'll change template values from fixed values to runtime inputs:
 
 1. Navigate to your Secret Manager Template in the Templates section
 
