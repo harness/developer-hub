@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## July 2025
 
+### Version 25.07.86301 <!-- Jul 30, 2025 -->
+
+#### Fixed issues
+
+- Customers can now use Bitbucket Cloud API authentication in IDP 2.0, IDP 1.0, IDP Git Sync, and IDP Scorecards. (IDP-6077)
+
 ### Version 25.07.86300 <!--Jul 16 2025-->
 
 #### New features and improvements
