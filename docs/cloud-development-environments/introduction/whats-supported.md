@@ -44,7 +44,7 @@ We currently support the following machine types for **Harness Hosted Gitspaces*
 1. **Standard:** 2-core CPU, 8GB RAM, and 30GB disk size
 2. **Large:** 4-core CPU, 32GB RAM, and 30GB disk size
 
-If you need larger machines, please contact us at **[cde-interest@harness.io](mailto:cde-interest@harness.io)**, and we can discuss custom configurations to meet your requirements.
+If you need larger machines, contact us at **[cde-interest@harness.io](mailto:cde-interest@harness.io)** to discuss custom configurations to meet your requirements.
 
 ### Self Hosted Machines
 
