@@ -188,6 +188,16 @@ export const DbdevopsData: Horizon = {
         tag: [{ value: "Core Features" }],
         title: "Linting",
         description: "Automatically lint changelogs and sql before application",
+      },
+      {
+        tag: [{ value: "Changelog Generation" }],
+        title: "Core Features",
+        description: "Automatically generate a baseline changelog from an existing database config without authoring a custom pipeline",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Support Percona for Liquibase",
+        description: "Enable customers to leverage Percona operations for zero-downtime database migrations",
       }
     ],
   }, 
