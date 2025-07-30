@@ -75,11 +75,11 @@ You can configure default notification templates at different scopes (Account, O
 
 The system follows a specific priority order when selecting a template for each event and channel type combination:
 
-**1. Template selected in notification rule**: If you specify a template when creating or editing a notification rule, that template is used.
+1. **Template selected in notification rule**: If you specify a template when creating or editing a notification rule, that template is used.
 
-**2. Default template by scope**: If no template is specified in the rule, the system searches for default templates starting at the current scope and moving up the hierarchy: Project → Organization → Account.
+2. **Default template by scope**: If no template is specified in the rule, the system searches for default templates starting at the current scope and moving up the hierarchy: Project → Organization → Account.
 
-**3. Built-in template**: If no custom or default templates are available, the built-in static template is used.
+3. **Built-in template**: If no custom or default templates are available, the built-in static template is used.
 
 This hierarchy ensures that notifications are always sent with appropriate content, even when no specific template is configured.        
 
