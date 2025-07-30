@@ -22,7 +22,7 @@ We support the following cloud infrastructure providers for self-hosted Gitspace
 ### Git Providers
 We support the following git providers for self-hosted Gitspaces:
 - **[Cloud-based Git Providers](/docs/cloud-development-environments/git-providers/cloud-providers)**
-- **[On-premises Git Providers](/docs/cloud-development-environments/git-providers/on-prem-providers.md)**
+- **[On-premises Git Providers](/docs/cloud-development-environments/git-providers/on-prem-providers)**
 
 To learn more about what's supported with self-hosted Gitspaces, visit [What's Supported](/docs/cloud-development-environments/introduction/whats-supported.md#deployment-models).
 
