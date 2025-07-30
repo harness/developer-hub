@@ -129,6 +129,10 @@ This feature is available behind the feature flag `PIPE_STORE_TEMPLATE_REFERENCE
 
 This helps you trace exactly which version of the template was used in a specific pipeline run, even if the template has changed afterward.
 
+<div align="center">
+  <DocImage path={require('./static/template-execution.png')} width="80%" height="80%" title="Click to view full size image" />
+</div>
+
 ## See also
 
 * [Create a step template](run-step-template-quickstart.md)
