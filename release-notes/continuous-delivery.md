@@ -612,7 +612,7 @@ This issue has been resolved. The Monitored Services page now supports opening v
 
 #### New Features and Enhancements
 
-- Improved log messages in ServiceNow Approval to enhance clarity and debugging. Currently, this feature is behind the feature flag `CDS_SNOW_IMPROVE_CONSOLE_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.(**CDS-97247**)
+- Improved log messages in ServiceNow Approval to enhance clarity and debugging. (**CDS-97247**)
 - Users can now access Output Variables in the ServiceNow Approval step, including Ticket Type, Ticket Number, Approval Criteria, Rejection Criteria, hasApprovalCriteriaMet, and hasRejectionCriteriaMet. This enhances visibility and debugging.(**CDS-103752**)
 - Users can now manage Deployment Freeze Windows with granularity based on Environment Types, allowing for more fine-tuned control over deployment windows. Currently, this feature is behind the feature flag `CDS_DEPLOYMENT_FREEZE_GRANULAR_RBAC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-98570**)
 
