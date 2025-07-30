@@ -21,7 +21,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 :::
 
 ## July 2025
-### Version 1.63.6
+### Version 1.63.7
 
 #### Images required
 Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
@@ -29,7 +29,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 - harness/chaos-ddcr:1.63.3
 - harness/chaos-log-watcher:1.63.0
 - harness/service-discovery-collector:0.43.1
-- harness/chaos-ddcr-faults:1.63.1
+- harness/chaos-ddcr-faults:1.63.3
 
 #### New Features and Enhancements
 
