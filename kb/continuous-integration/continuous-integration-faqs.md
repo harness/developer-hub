@@ -3197,7 +3197,7 @@ CI stage natively doesn't support the execution to be queued. However you could 
 
 ### I need to create image tag and that should be unique value. Is there a harness expression that generates random number?
 
-You could use the expression  <+pipeline.executionId> that generates a unique execution ID for each execution.
+You could use the expression  ```<+pipeline.executionId>``` that generates a unique execution ID for each execution.
 
 ## Matrix Executions and Strategy FAQs
 
