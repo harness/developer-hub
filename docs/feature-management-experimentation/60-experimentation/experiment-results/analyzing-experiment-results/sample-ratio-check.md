@@ -79,9 +79,18 @@ For example, imagine you have 2 separate rules for users on your Free and Paid p
 
 SRMs caused by these interaction effects can be seen by checking how many users appear in multiple rules. In the example above, if you had a metric measuring how many users upgraded from the Free plan to the Paid plan, this could directly indicate whether it is a likely cause. In order to avoid these kinds of interaction effects, it may be safer to run separate feature flags for the two different plan types, and if necessary include dependencies between the two feature flags in the targeting rules.
 
+Additionally, if users were previously exposed to an older version of the same flag, their behavior or allocation in that version can bias their likelihood of returning or being reallocated in the current version.
+
 #### Bucketing and Matching Keys
 
 If you are using bucketing keys, an SRM may indicate a misconfiguration or be due to users receiving a fallback bucketing key. In this case we recommend you contact the FME support team at [support@split.io](mailto:support@split.io) who can look at the distribution of the buckets and check for outliers. 
 
 #### Random Chance 
+
 Since we are dealing with randomness and probabilities, there is always a possibility, albeit very small, that you see an SRM warning due to random chance alone with no real underlying issue. We use a strict threshold in our SRM test to ensure this is a very rare situation, but there is still a 1 in 1000 chance that you see a false SRM warning. If you have exhausted other options and believe your SRM may be a false alert then we suggest rerunning the feature flag - there is an exceptionally small chance of seeing the same false alert twice.
+
+#### Depedencies Between Flags
+
+Dependencies can skew traffic by selectively evaluating upstream flags more frequently. For example, if `flagB` depends on `flagA`, and is only served when `flagA=on`, using `flagB` in a way that guarantees `flagA` is evaluated can skew `flagA`'s distribution and lead to SRM.
+
+To check whether dependencies are contributing to SRM, review which flags are evaluated together and whether downstream flags might be increasing the evaluation frequency of upstream flags.
