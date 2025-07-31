@@ -11,8 +11,9 @@ keywords:
   - access management
   - IAM analysis
   - security auditing
-sidebar_label: Access Policy Analyzer
-sidebar_position: 12
+sidebar_label: null
+sidebar_position: null
+unlisted: true
 ---
 
 <!--Importing images for resizing in docs-->
