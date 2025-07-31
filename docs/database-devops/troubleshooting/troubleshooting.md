@@ -3,6 +3,25 @@ title: Troubleshooting Guide
 description: Solutions to common pain points while using Harness Database DevOps.
 sidebar_label: Troubleshooting guide
 sidebar_position: 1
+keywords:
+  - troubleshooting
+  - database devops
+  - db devops
+  - harness db devops
+  - harness database devops
+  - harness dbops
+  - harness database
+  - harness devops
+  - continuous integration
+  - continuous delivery
+  - ci cd
+tags:
+  - troubleshooting
+  - database-devops
+  - db-devops
+  - harness-db-devops
+  - ci-cd
+  - dbops
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -135,4 +154,13 @@ git push -u origin main
 - Replace `my.email@gmail.com` with your Git account email (URL-encoded as %40 for @).
 - Replace `PAT_TOKEN` with the name of the Harness secret containing your GitLab PAT.
 - Make sure the secret is securely stored in Harness under **Project Settings → Secrets**.
+:::
+
+## 6. If I execute a dropTable or dropColumn and a rollback is triggered, will the data also be recovered? Or is only the schema structure restored?
+When a dropTable or dropColumn operation is executed and subsequently rolled back, only the schema structure can potentially be recreated—the original data will not be restored. While it is technically possible to instruct the rollback to recreate the table or column definition, the associated data is permanently lost unless a backup was taken beforehand.
+
+In scenarios involving destructive operations like DROP, the rollback cannot magically recover deleted data. The only viable recovery strategy would be to restore from a database backup taken prior to the drop operation—which still results in some level of data loss and operational risk.
+
+:::note warning
+Dropping tables or columns in production environments should be treated with extreme caution. It is highly recommended to adopt a backup-first approach and validate rollback strategies before applying such changes.
 :::

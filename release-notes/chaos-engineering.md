@@ -20,12 +20,64 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## July 2025
+### Version 1.63.7
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.63.3
+- harness/chaos-log-watcher:1.63.0
+- harness/service-discovery-collector:0.43.1
+- harness/chaos-ddcr-faults:1.63.3
+
+#### New Features and Enhancements
+
+- Enhanced and simplified image registry support for experiment v1 and v1alpha1 images (CHAOS-9052)
+- Added support for "Complete with probe error" status on timeline view screen (CHAOS-9207)
+- Added recent execution details for both probes and actions in the database schema, allowing for better tracking and management of execution history (CHAOS-8953)
+- Added UI/UX support for windows command probe using windows infrastructure (CHAOS-9255)
+- Added support for "INTERRUPTED" status for probes in probes screen as well as timeline view screen (CHAOS-9208)
+- Enhanced experiment result display to show "CompletedWithProbeFailure" when probe failed (CHAOS-9205)
+- Added support for import probe as a reference in UI (CHAOS-9114)
+- Added targets support to the timeline view (CHAOS-9048)
+- Added support for running windows process kill fault on windows infrastructure using SYSTEM user (CHAOS-9013)
+- Added support for node faults on GKE Autopilot (CHAOS-8981)
+- Enhanced healthcheck support to pod-io-stress fault (CHAOS-8896)
+- Added name sorting support for Experiment list (CHAOS-8875)
+- Added ENV support to the inline command probe for both backend and UI (CHAOS-8850, CHAOS-8816, CHAOS-8814)
+- Added OOTB probes as inline command probes for kubernetes infrastructure (CHAOS-8815)
+- Enhanced UI to surface Common Kubernetes Errors (ImagePullBackOff, Evicted, OutOfCpu) for Kubernetes Infrastructure (CHAOS-8709)
+
+#### Fixed Issues
+
+- Fixed gameday execution error when trying to run a gameday with same ID as another gameday in different project due to missing identifiers in query filters (CHAOS-9247)
+- Fixed chaos license page not being accessible in production environments where subscriptions page was crashing when refreshed (CHAOS-9215)
+- Fixed list probes API not working for older probes/experiments and panicking due to user details not being available by adding nil check for user details in recent probe execution details (CHAOS-9206)
+- Fixed multiple probes getting selected upon using import probe in Local Hub (CHAOS-9202)
+- Fixed error in CMD probe when Float data type is provided and value is a runtime input where selecting Runtime Input for Comparator Value was throwing a type validation error (CHAOS-9171)
+- Fixed inputs being duplicated for a given probe pulled at various points in an experiment by fixing the support for multiple probes/actions inside one experiment (CHAOS-9167)
+- Fixed not being able to abort experiments in production environments (CHAOS-9144)
+- Fixed action and probe search filtering not working in Chaos Studio by updating parameter names for clarity where actionType has been changed to entityType and infrastructureType has been simplified to infraType (CHAOS-8994)
+- Fixed Local Hub showing 0 faults and 0 actions although fault and action templates exist within the hub by updating the mongo query to fetch the count of chaos hub resources (CHAOS-8962)
+- Fixed Timeline View showing action name instead of the type (Delay/Custom Script) by adding a new field Type to the ActionData struct within the execution data (CHAOS-8951)
+- Fixed input validation issues in DataDog/Dynatrace probes in both linux/k8s when providing runtime inputs where support for runtime inputs in time frame and test type field was broken (CHAOS-8943)
+- Fixed V2 experiments showing status and type as empty strings and showing error in YAML UI by updating the hce-sdk to allow for optional fields in the experiment manifest (CHAOS-8931)
+- Fixed Resilience Score coming as 0 even though all probes passed by correcting the calculation of the resiliency score to ensure accurate scoring based on the status of chaos execution nodes (CHAOS-8930)
+- Fixed Custom Script Action argument being a mandatory field when it should be optional as commands may not have arguments necessarily (CHAOS-8874)
+- Fixed probe status being reported as failed on abort when it should be N/A or Pending by updating probe status to be Stopped or Skipped on experiment abort (CHAOS-8804)
+- Fixed Timeline View experiments keeping running indefinitely by ignoring the DDCR pod from the target pod selection (CHAOS-8801)
+- Fixed pod-delete fault being randomly reported as Error even though it succeeded by resolving the issue where the fault status was incorrectly reported (CHAOS-8800)
+- Fixed target not showing in the timeline view representation of the fault by adding target details to the fault data structure (CHAOS-8796)
+- Fixed Actions "Stop on Failure" radio button not being applicable (CHAOS-9025)
+- Fixed empty cards for fixed inputs in the experiment inputsets page in Chaos Studio (CHAOS-9094)
+
 ## June 2025
 
 ### Version 1.62.11
 
 #### Images required
-Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
 
 - harness/chaos-ddcr:1.62.4
 - harness/chaos-log-watcher:1.62.1
@@ -154,7 +206,7 @@ Listed below are the images to download to use image registry with Harness Deleg
 
 #### Images required
 
-Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
 
 - harness/chaos-ddcr:1.59.0
 - harness/chaos-log-watcher:1.59.0
@@ -185,7 +237,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 #### Images required
 
-Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
 
 - harness/chaos-ddcr:1.57.0
 - harness/chaos-log-watcher:1.57.0
@@ -196,7 +248,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 - Replaces the large text blocks in the pod details and probes tabs with concise tooltips and "Learn More" links, directing users to relevant content in the Harness Developer Hub for improved readability and navigation. (CHAOS-7621, CHAOS-7619)
 
-- Adds support for targeting multiple keys in the [Linux Redis Cache Expire](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/redis-cache-expire) and [Kubernetes Redis Cache Expire](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/redis-cache-expire) faults.(CHAOS-7283)
+- Adds support for targeting multiple keys in the [Linux Redis Cache Expire](/docs/chaos-engineering/faults/chaos-faults/linux/redis-cache-expire) and [Kubernetes Redis Cache Expire](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/redis-cache-expire) faults.(CHAOS-7283)
 
 #### Fixed issues
 
@@ -214,7 +266,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 #### Images required
 
-Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
 
 - harness/chaos-ddcr:1.56.0
 - harness/chaos-log-watcher:1.56.0
@@ -243,7 +295,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 #### Images required
 
-Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
 
 - harness/chaos-ddcr:1.55.0
 - harness/chaos-log-watcher:1.55.0
@@ -263,7 +315,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 #### Images required
 
-Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
 
 - harness/chaos-ddcr:1.54.0
 - harness/chaos-log-watcher:1.54.0
@@ -290,7 +342,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 #### Images required
 
-Listed below are the images to download to use [image registry with Harness Delegate](/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+Listed below are the images to download to use [image registry with Harness Delegate](/docs/chaos-engineering/guides/image-registry).
 
 - harness/chaos-ddcr:1.53.0
 - harness/chaos-log-watcher:1.53.0
@@ -324,7 +376,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 ##### New features and enhancements
 
-- Adds support for [configuring image registries at multiple scopes](/docs/chaos-engineering/use-harness-ce/image-registry#why-use-a-custom-image-registry), such as Project, Account, Organization, and Infrastructure levels. These settings can be automatically inherited by lower levels, but if the "override allowed" option is enabled at the parent level, lower levels can modify or override these configurations. It is behind the feature flag `CHAOS_IMAGEREGISTRY_DEV`. (CHAOS-6570)
+- Adds support for [configuring image registries at multiple scopes](/docs/chaos-engineering/guides/image-registry), such as Project, Account, Organization, and Infrastructure levels. These settings can be automatically inherited by lower levels, but if the "override allowed" option is enabled at the parent level, lower levels can modify or override these configurations. It is behind the feature flag `CHAOS_IMAGEREGISTRY_DEV`. (CHAOS-6570)
 
 ##### Fixed issues
 
@@ -463,7 +515,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 ##### New features and enhancements
 
-- Adds a new Kubernetes pod fault, [pod IO mistake](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-io-mistake) that causes files to read or write an incorrect value. (CHAOS-5916)
+- Adds a new Kubernetes pod fault, [pod IO mistake](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-io-mistake) that causes files to read or write an incorrect value. (CHAOS-5916)
 
 - Adds proxy support for Windows chaos infrastructure. (CHAOS-5859)
 
@@ -499,16 +551,16 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 - This release improves the advanced filter support for "headers", "methods", "queryParams", "destination_IPS", and "destination_Hosts" in the API faults. (CHAOS-5381)
 
-- Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-api-block) faults. (CHAOS-5378)
+- Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-block) faults. (CHAOS-5378)
 
 - Adds backend to GameDay. (CHAOS-5138)
 - Adds the following JVM chaos faults for Linux that target the JVM of a given Java process running on a Linux machine to inject faults.
-    - [JVM CPU stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-cpu-stress)
-    - [JVM memory stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-memory-stress)
-    - [JVM method latency](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-method-latency)
-    - [JVM method exception](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-method-exception)
-    - [JVM modify return](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-modify-return)
-    - [JVM trigger GC](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/linux-jvm-trigger-gc) (CHAOS-4675)
+    - [JVM CPU stress](/docs/chaos-engineering/faults/chaos-faults/linux/linux-jvm-cpu-stress)
+    - [JVM memory stress](/docs/chaos-engineering/faults/chaos-faults/linux/linux-jvm-memory-stress)
+    - [JVM method latency](/docs/chaos-engineering/faults/chaos-faults/linux/linux-jvm-method-latency)
+    - [JVM method exception](/docs/chaos-engineering/faults/chaos-faults/linux/linux-jvm-method-exception)
+    - [JVM modify return](/docs/chaos-engineering/faults/chaos-faults/linux/linux-jvm-modify-return)
+    - [JVM trigger GC](/docs/chaos-engineering/faults/chaos-faults/linux/linux-jvm-trigger-gc) (CHAOS-4675)
 
 :::danger important upgrade instructions for chaos infrastructure
 - [Video tutorial to upgrade your chaos infrastructure to 1.38.x or higher](https://youtu.be/fAnsGqkcdkc)
@@ -538,7 +590,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 - Fixed an issue where the user could not set up or create a Datadog probe. (CHAOS-5440)
 
-- Fixed an issue where the [pod IO stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
+- Fixed an issue where the [pod IO stress](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
 
 #### May 2024, Version 1.37.0
 
@@ -649,9 +701,9 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 * Appropriate environment variables are added at relevant places to ensure that the self-managed platform (SMP) can be used with feature flags (FF). (CHAOS-3865)
 
-* The [SSH chaos experiment](/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
+* The [SSH chaos experiment](/docs/chaos-engineering/faults/chaos-faults/ssh/ssh-chaos) now supports an extended termination grace period, allowing for longer execution of abort scripts. (CHAOS-3748)
 
-* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/#condition). (CHAOS-3254)
+* This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/guides/governance/governance-in-execution). (CHAOS-3254)
 
 ##### Fixed issues
 
@@ -717,9 +769,9 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 * This release deprecates the `ACCESS_KEY` invalidation after a chaos infrastructure is successfully connected. Users can use the same manifest to connect to the infrastructures. (CHAOS-3164)
 
-* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/#rule). (CHAOS-2982)
+* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](/docs/chaos-engineering/guides/governance/governance-in-execution). (CHAOS-2982)
 
-* Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware). (CHAOS-2750)
+* Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](/docs/chaos-engineering/faults/chaos-faults/vmware). (CHAOS-2750)
 
 * Adds support for encoding metrics queries in Dynatrace probes. These metrics are constructed and executed using the metrics (or data) explorer before the API call [POST]. (CHAOS-2852)
 
@@ -1180,9 +1232,9 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 ##### New features and enhancements
 
-* [GameDay](/docs/chaos-engineering/use-harness-ce/GameDay) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
+* [GameDay](/docs/chaos-engineering/guides/gamedays) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
-* The CE [integration](/docs/chaos-engineering/integrations/use-chaos-with-srm) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
+* The CE [integration](/docs/chaos-engineering/overview) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
 * While upgrading a namespace-scoped chaos infrastructure, users will now be shown the command for upgrading CRDs as well. (CHAOS-1846)
 
@@ -1286,7 +1338,7 @@ To upgrade chaos infrastructures and experiments:
 
 ##### Early access features
 
-* Introduction of [Chaos dashboards](/docs/chaos-engineering/use-harness-ce/dashboards/). (CHAOS-719)
+* Introduction of [Chaos dashboards](/docs/chaos-engineering/guides/dashboards/). (CHAOS-719)
     * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
     * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 
@@ -1307,7 +1359,7 @@ To upgrade chaos infrastructures and experiments:
 ##### New features and enhancements
 
 * Introduction of GameDays in HCE Module. (CHAOS-643)
-    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/use-harness-ce/GameDay).
+    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/guides/gamedays).
 
 * Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
     * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.
@@ -1605,7 +1657,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 
 ##### Early access features
 
-The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). [HCE documentation](/docs/chaos-engineering) is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](/docs/chaos-engineering/getting-started/saas/).
+The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). [HCE documentation](/docs/chaos-engineering) is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](/docs/chaos-engineering/quickstart).
 
 ##### Known issues
 

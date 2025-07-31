@@ -3,6 +3,8 @@ title: Configure Incident Templates
 description: Learn how to create and manage incident templates in Harness AI SRE.
 sidebar_label: Incident Templates
 sidebar_position: 4
+redirect_from:
+- /docs/incident-response/incidents/incident-templates
 ---
 
 # Configure Incident Templates

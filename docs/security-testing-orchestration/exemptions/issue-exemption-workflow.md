@@ -53,11 +53,11 @@ To configure these permissions:
 
 | Action                     | Permission      | Project | Org | Account | Notes                                                                                  |
 |-----------------------------|-----------------|---------|--------------|---------|----------------------------------------------------------------------------------------|
-| Create an Exemption Request         | Create/Edit     | ✅      | ❌           | ❌      | Can only be created at the project level.                                              |
-| View Exemptions Requests             | View            | ✅      | ❌           | ❌      | Viewing is based entirely on project-level View permissions. Org/Account level View permissions are not required.|
-| Approve or Reject Exemption Requests | View            | ✅      | ❌           | ❌      | Required to access exemption requests.                                                 |
-|                             | Approve/Reject  | ✅      | ✅           | ✅      | 	Can approve/reject at the requested or higher scope (Org/Account). Exemption applies to all orgs/projects within that scope, even those the reviewer can't access.|
-| Re-open an Exemption Request        | View, Create/Edit | ✅    | ❌           | ❌      | Reopening is only allowed if the exemption scope is Project, Target, or Pipeline. If approved at Org or Account scope and marked Rejected or Expired, it can’t be reopened—only directly approved again from the status tab.|
+| Create an Exemption Request         | **Create/Edit**     | ✅      | ❌           | ❌      | Can only be created at the project level.                                              |
+| View Exemptions Requests             | **View**            | ✅      | ❌           | ❌      | Viewing is based entirely on project-level View permissions. Org/Account level View permissions are not required.|
+| Approve or Reject Exemption Requests | **View**, and *'Approve/Reject' is required, see next row.* | ✅      | ❌           | ❌      | Required to access exemption requests.                                                 |
+| Approve or Reject Exemption Requests | **Approve/Reject**  | ✅      | ✅           | ✅      | 	Can approve/reject at the requested or higher scope (Org/Account). Exemption applies to all orgs/projects within that scope, even those the reviewer can't access.|
+| Re-open an Exemption Request        | **View**, **Create/Edit** | ✅    | ❌           | ❌      | Reopening is only allowed if the exemption scope is Project, Target, or Pipeline. If approved at Org or Account scope and marked Rejected or Expired, it can’t be reopened—only directly approved again from the status tab.|
 
 :::warning
 Assign `Approve/Reject` permissions carefully, especially at the **Organization** or **Account** level — since actions apply to all underlying scopes, even those the user may not directly manage.

@@ -203,6 +203,21 @@ To configure permissions for Cloud Governance features:
    - For automated actions, grant additional permissions as required by your governance policies
 3. Click **Save** to apply the changes.
 
+#### Enable required Google Cloud APIs for Governance
+
+Governance Recommendations rely on the following Google Cloud services. Make sure they are **enabled in every project** you want to monitor:
+
+- [**Cloud Run Admin API**](https://cloud.google.com/run/docs/reference/rest)
+- [**Cloud Memorystore for Redis API**](https://cloud.google.com/memorystore/docs/redis/reference/rest)
+- [**Cloud Functions API**](https://cloud.google.com/functions/docs/reference/rest)
+- [**Kubernetes Engine API**](https://cloud.google.com/kubernetes-engine/docs/reference/rest)
+
+You can enable the APIs via Google Cloud console:
+1. Open **[APIs & Services](https://console.cloud.google.com/apis/library)** for your project (https://console.cloud.google.com/apis/library).  
+2. Search for each API above and click **Enable**.
+
+For enabling through console, see the [GCP documentation](https://cloud.google.com/endpoints/docs/openapi/enable-api#enabling_an_api).
+
 ### AutoStopping Permissions
 
 To add AutoStopping permissions:

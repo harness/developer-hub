@@ -140,6 +140,23 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2025
 
+### Version 1.98.x <!--July 22, 2025-->
+
+#### New Feature and Enhancement
+
+- Enhanced the task broadcast mechanism to prevent sending tasks to non-eligible delegates. [PL-58722]
+
+### Version 1.97.x <!--July 15, 2025-->
+
+#### Fixed issues
+
+- Resolved a bug in the roll-up job by updating it to process documents one at a time, improving memory efficiency and preventing out-of-memory (OOM) errors. [PL-63838]
+- Updated User Details page where links under the RoleBindings tab now properly redirect to the correct scoped Roles and ResourceGroups. [PL-63651]
+
+#### New Feature and Enhancement
+
+- New audit event for Delegate token expiry: An audit event gets logged whenever a delegate token gets revoked. This enhancement improves visibility and traceability of delegate token lifecycle events, supporting stronger security auditing. [PL-63995]
+
 ### Version 1.96.x <!--July 08, 2025-->
 
 #### Fixed issues

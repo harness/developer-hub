@@ -679,10 +679,6 @@ Sometimes, this might happen due to an edge case. You can try to get to your acc
 
 `linkedSsoId` is the UUID of SSO setting creating in Harness.
 
-### What is the Harness hosted GitOps IP address?
-
-Access to Kubernetes clusters that are behind strict firewalls and not reachable from the public internet is restricted to authorized IP addresses only. To enable access to these clusters, Harness provides a list of IP addresses that must be configured on the clusters. For more information, go to [GitOps allowlist](https://developer.harness.io/docs/continuous-delivery/gitops/gitops-ref/gitops-allowlist/).
-
 ### Can I update an email address in a user account?
 
 If users are provisioned via SCIM, then you can update the email in the SSO provider, and it will be updated in Harness.

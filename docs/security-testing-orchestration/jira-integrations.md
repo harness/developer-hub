@@ -1,7 +1,7 @@
 ---
-title: Create Jira tickets
+title: Create Jira Tickets
 description: You can create Jira tickets for any issue detected during an STO pipeline execution.
-sidebar_label: Create Jira tickets
+sidebar_label: Create Jira Tickets
 sidebar_position: 85
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/jira-integrations

@@ -10,6 +10,11 @@ description: Easily view your Azure Pipelines within the Software Catalog.
 | **Source**     | [GitHub](https://github.com/backstage/community-plugins/tree/main/workspaces/azure-devops/plugins/azure-devops#azure-devops-plugin) |
 | **Type**       | Open-source plugin                                                            |
 
+
+## Prerequisites
+
+Make sure to add the azure integration under git integration section to have an error free experience with this plugin. Follow this [doc](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration/?Connector=azure-connector) to know more.
+
 ## Configuration
 
 ### Application configuration YAML
@@ -90,9 +95,7 @@ metadata:
 ```
 Let's break this down a little: `<project-name>` will be the name of your Team Project and `<repo-name>` will be the name of your repository which needs to be part of the Team Project you entered for `<project-name>`.
 
-### Git Integration
 
-Add the azure integration under git integration section. Follow this [doc](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration/?Connector=azure-connector)
 
 ### Mono repos
 

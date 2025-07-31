@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="Docker" targetPage="/docs/artifact-registry/supported-formats" />
 
 This guide will help you **create a Docker Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Docker images**.
 
@@ -40,21 +37,21 @@ An upstream proxy allows your registry to fetch Docker images from external sour
 <Tabs>
 <TabItem value="configure-upstream-interactive" label="Interactive Guides">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 <DocVideo src="https://app.tango.us/app/embed/f9437754-7cdf-4c19-9c94-9932c7e1a46a?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create Upstream Proxy Configuration" />
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 <DocVideo src="https://app.tango.us/app/embed/e228e016-f58c-4281-8f7f-39a7cb652f46?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Configure Upstream in Docker Registry" />
 
 </TabItem>
 <TabItem value="configure-upstream-step-by-step" label="Step-by-Step">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 1. In the Artifact Registry module, click the dropdown next to **New Artifact Registry** and select **Upstream Proxy**.
 2. Choose **Docker Registry** as the proxy type.
 3. Click **Create Proxy** to establish the connection.
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 1. In the Artifact Registry module, select an existing Artifact Registry.
 2. Select the **Configuration** tab.
 3. Under **Advanced (Optional)**, select **Configure Upstream**.
@@ -102,4 +99,3 @@ This command retrieves the Docker image from your Harness registry to your local
 :::
 
 ---
-By following this guide, you can effectively set up and manage a Docker Artifact Registry within Harness, streamlining your container image workflows.

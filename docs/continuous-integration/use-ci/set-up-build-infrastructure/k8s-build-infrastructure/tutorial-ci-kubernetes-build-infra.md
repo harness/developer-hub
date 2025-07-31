@@ -1,7 +1,7 @@
 ---
 title: Tutorial - Build and test on a Kubernetes cluster
 description: Learn how to create a pipeline that uses a Kubernetes cluster build infrastructure.
-sidebar_position: 11
+sidebar_position: 20
 redirect_from:
   - /tutorials/ci-pipelines/kubernetes-build-farm
 ---

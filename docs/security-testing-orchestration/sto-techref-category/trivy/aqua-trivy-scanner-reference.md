@@ -11,16 +11,18 @@ redirect_from:
   - /docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference
 ---
 
-<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
-<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Artifact scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#artifact-scanners"  />
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
-With Harness STO, you can use [Aqua Trivy](https://github.com/aquasecurity/trivy) to scan both:
-- **[Container images](https://trivy.dev/latest/docs/target/container_image/)**
-- **Code repositories** (via [Filesystem](https://trivy.dev/latest/docs/target/filesystem/) scanning)
+With Harness STO, you can use the [Aqua Trivy](https://github.com/aquasecurity/trivy) step to scan:
+
+- **[Container Images](https://trivy.dev/latest/docs/target/container_image/)**
+- **Code Repositories** (via [Filesystem](https://trivy.dev/latest/docs/target/filesystem/) scan)
+- **SBOM Files** (for both Container Images and Code Repositories)
 
 When scanning code repositories, Trivy performs:
 - **Secret Detection** – Identifies hardcoded secrets or sensitive information.
@@ -68,9 +70,12 @@ import StoSettingProductConfigName from '../shared/step-palette/scan/config-name
 
 <StoSettingProductConfigName />
 
-- **Default**: This option is used for container image scanning. It is automatically selected when you choose **Container Image** as the [Target Type](#target).
+- **Default**: Automatically selected when you choose **Container Image** as the [Target Type](#target). This configuration scans container images for vulnerabilities.
 
-- **Filesystem**: This option is used for scanning code repositories. It is automatically selected when you choose **Repository** as the [Target Type](#target). This scan configuration maps to Aqua Trivy’s [Filesystem](https://trivy.dev/latest/docs/target/filesystem/) scan.
+- **Filesystem**: Automatically selected when you choose **Repository** as the [Target Type](#target). This configuration maps to Aqua Trivy’s [Filesystem scan](https://trivy.dev/latest/docs/target/filesystem/) and scans code repositories for vulnerabilities.
+
+- **Trivy SBOM**: Scans an existing SBOM file for vulnerabilities. This configuration supports both **Container Image** and **Repository** as [Target Types](#target).
+
 
 ### Target
 
@@ -84,11 +89,6 @@ import StoSettingScanTypeRepo from '../shared/step-palette/target/type/repo.md';
 <StoSettingScanTypeCont />
 
 <StoSettingScanTypeRepo />
-
-:::info
-When you set the Target Type to **Repository**, the **[Scan Configuration](#scan-configuration)** field is automatically set to **Filesystem** and cannot be changed.
-In the future, we plan to add more scan configurations specific to each Target Type.
-:::
 
 #### Target and Variant Detection 
 
@@ -117,6 +117,15 @@ This field is visible only when you select **Repository** as the Target Type.
 
 Use this field to specify an individual folder or file to scan. For example, if you want to scan a specific file like `/tmp/example/test.py`, set the workspace path to:  
 `/harness/tmp/example/test.py`
+
+### Software Bill of Materials (SBOM)
+
+#### Generate SBOM
+This option is available only for **Default** and **Filesystem** scan configurations. Enable this field to generate an SBOM for the selected [Target](#target).
+
+#### SBOM Format
+Choose the format of the SBOM to generate for the selected [Target](#target): **SPDX** or **CycloneDX**.
+
 
 ### Container image
 
@@ -182,8 +191,20 @@ import StoSettingImageRegion from '../shared/step-palette/image/region.md';
 
 <StoSettingImageRegion />
 
+#### SBOM File
+This field appears only when the **Trivy SBOM** scan configuration is selected. Provide the file path to the SBOM file to scan its components for vulnerabilities.
 
+The following SBOM formats are supported for scanning:
 
+- CycloneDX
+- SPDX
+- SPDX JSON
+- CycloneDX-type attestation
+- KBOM (in CycloneDX format)
+
+:::note
+CycloneDX XML format is currently not supported.
+:::
 
 ### Ingestion
 

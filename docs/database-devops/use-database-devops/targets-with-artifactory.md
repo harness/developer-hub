@@ -1,8 +1,24 @@
 ---
 title: Using Artifactory Connector with Optional Archive Path Field
-sidebar_label: Using Artifactory Connector with Optional Archive Path Field
-description: Using Target Paths with Artifactory.
+sidebar_label: Artifactory Connector with Archive Path
+description: Learn how to configure the optional archive path field in an Artifactory connector for targeted artifact storage in Harness DB DevOps.
 sidebar_position: 10
+keywords:
+  - artifactory connector
+  - archive path
+  - optional archive path
+  - harness dbops
+  - dbops artifact storage
+  - artifact repository
+  - connector configuration
+  - database devops
+  - artifactory integration
+tags:
+  - harness-db-devops
+  - artifactory-integration
+  - connector-setup
+  - artifact-management
+  - archive-path
 ---
 
 This document outlines the process for utilizing the Artifactory connector to download a zip file containing change logs and how to specify the optional archive path field to point to the root change log inside that zip file.[2] This integration allows for a seamless transition from using a Git repository to an Artifactory instance for managing database change logs.

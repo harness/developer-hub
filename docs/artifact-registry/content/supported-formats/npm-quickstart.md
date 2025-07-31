@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="NPM" targetPage="/docs/artifact-registry/supported-formats" />
 
 This guide will help you **create a NPM Artifact Registry** in Harness, **configure an upstream proxy**, and **manage NPM packages**.
 
@@ -45,20 +42,20 @@ An upstream proxy allows your registry to fetch NPM packages from external sourc
 <Tabs>
 <TabItem value="interactive" label="Interactive Guides">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 <DocVideo src="https://app.tango.us/app/embed/4f4e38ae-c753-4228-861a-d0569d3a1df2?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create NPM Upstream Proxy in Harness" />
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 <DocVideo src="https://app.tango.us/app/embed/b22dde14-7ca6-4a39-a45f-306feabadb7e?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Configure NPM Upstream Proxy in Harness" />
 </TabItem>
 <TabItem value="step" label="Step-by-Step">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 1. In the Artifact Registry module, click the dropdown next to **New Artifact Registry** and select **Upstream Proxy**.
 2. Choose **NPM Registry** as the proxy type.
 3. Click **Create Proxy** to establish the connection.
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 1. In the Artifact Registry module, select an existing Artifact Registry.
 2. Select the **Configuration** tab.
 3. Under **Advanced (Optional)**, select **Configure Upstream**.
@@ -103,5 +100,3 @@ These commands upload or retrieve NPM packages between your local project and th
 :::
 
 ---
-
-By following this guide, you can effectively set up and manage a NPM Artifact Registry within Harness, streamlining your JavaScript package workflows.

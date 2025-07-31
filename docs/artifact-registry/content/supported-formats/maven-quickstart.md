@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="Maven" targetPage="/docs/artifact-registry/supported-formats" />
 
 This guide will help you **create a Maven Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Maven packages**.
 
@@ -45,20 +42,20 @@ An upstream proxy allows your registry to fetch Maven packages from external sou
 <Tabs>
 <TabItem value="interactive" label="Interactive Guides">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 <DocVideo src="https://app.tango.us/app/embed/38a8dc51-7c77-4507-b136-d02a06857bc3?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create Maven Upstream Proxy in Harness" />
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 <DocVideo src="https://app.tango.us/app/embed/088d658d-43cc-48b4-988c-4dca211fe78c?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Configure Maven Upstream Proxy" />
 </TabItem>
 <TabItem value="step" label="Step-by-Step">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 1. In the Artifact Registry module, click the dropdown next to **New Artifact Registry** and select **Upstream Proxy**.
 2. Choose **Maven Registry** as the proxy type.
 3. Click **Create Proxy** to establish the connection.
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 1. In the Artifact Registry module, select an existing Artifact Registry.
 2. Select the **Configuration** tab.
 3. Under **Advanced (Optional)**, select **Configure Upstream**.
@@ -165,5 +162,3 @@ These commands upload or retrieve Maven packages between your local project and 
 :::
 
 ---
-
-By following this guide, you can effectively set up and manage a Maven Artifact Registry within Harness, streamlining your Java package workflows.

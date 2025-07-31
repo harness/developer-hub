@@ -1,8 +1,10 @@
 ---
-title: Incident Response Security
+title: AI SRE Security
 description: Learn about security measures applied to Harness AI SRE.
 sidebar_position: 90
 sidebar_label: Security
+redirect_from:
+- /docs/incident-response/resources/ir-security
 ---
 
 import Tabs from '@theme/Tabs';

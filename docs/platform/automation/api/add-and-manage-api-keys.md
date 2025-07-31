@@ -91,7 +91,7 @@ Use these steps to create an API key and service account token (SAT) for a servi
 Use these steps to edit the name, description, or tags for an API key. To edit tokens under API keys, go to [edit tokens](#edit-tokens) and [rotate tokens](#rotate-tokens).
 
 
-<Tabs>
+<Tabs groupId="token-type" queryString="token">
   <TabItem value="pat" label="Edit personal API keys" default>
 
 
@@ -121,7 +121,7 @@ Use these steps to edit the name, description, or tags for an API key. To edit t
 Use these steps to edit the name, description, tags, and expiration dates of tokens under API keys. You can also [rotate tokens](#rotate-tokens).
 
 
-<Tabs>
+<Tabs groupId="token-type" queryString="token">
   <TabItem value="pat" label="Edit personal access tokens" default>
 
 
@@ -152,7 +152,7 @@ Use these steps to edit the name, description, tags, and expiration dates of tok
 As a security best practice, rotate tokens periodically. You can rotate tokens in Harness for symmetric encryption.
 
 
-<Tabs>
+<Tabs groupId="token-type" queryString="token">
   <TabItem value="pat" label="Rotate personal access tokens" default>
 
 
@@ -193,7 +193,7 @@ After rotating tokens make sure you always use the new token.
 Use these steps to delete an API key and all of its tokens. To delete individual tokens under API keys, go to [delete tokens](#delete-tokens).
 
 
-<Tabs>
+<Tabs groupId="token-type" queryString="token">
   <TabItem value="pat" label="Edit personal API keys" default>
 
 
@@ -217,7 +217,7 @@ Use these steps to delete an API key and all of its tokens. To delete individual
 ## Delete tokens
 
 
-<Tabs>
+<Tabs groupId="token-type" queryString="token">
   <TabItem value="pat" label="Delete personal access tokens" default>
 
 

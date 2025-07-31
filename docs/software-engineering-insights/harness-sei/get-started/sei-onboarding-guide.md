@@ -55,8 +55,8 @@ If you're switching over to Harness SEI 2.0 from the SEI 1.0 experience, review 
 
 | **Step** | **Purpose** | **Documentation** |
 |---------|-------------|-------------------|
-| [Prepare CSV Export](/docs/software-engineering-insights/harness-sei/setup-sei/upload-developer-records) | Export your developer records from HRIS systems like Workday as a CSV | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/upload-developer-records) |
-| [Upload Developer CSV](/docs/software-engineering-insights/harness-sei/setup-sei/upload-developer-records) | Upload your HRIS-based developer file to SEI | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/upload-developer-records) |
+| [Prepare CSV Export](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers) | Export your developer records from HRIS systems like Workday as a CSV | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers) |
+| [Upload Developer CSV](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers) | Upload your HRIS-based developer file to SEI | [View Setup Guide](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers) |
 
 ### Phase 6: Create the Org Tree
 

@@ -5,18 +5,34 @@ sidebar_position: 10
 
 ## Overview
 
-The Metrics impact tab shows the impact of your experiment or feature rollout on your customers. To make data-driven decisions on your features, review and interpret the data that you collect before deciding to roll out the functionality to more customers. The data on this tab allows you to ensure safe and reliable feature delivery while powering data-driven decisions. 
+You can view your experiment results from the **Experiments** page. This page provides a centralized view of all experiments and allows you to quickly access performance metrics, significance levels, and summary details for each treatment group.
 
-When you click in to a metric card from the metrics impact tab, you can see more in-depth details of the performance of the two selected treatments, as well as how these have changed over time. For more information about what is shown in the metrics details and trends, see [Metric Details and Trends](./metric-details-and-trends).
+Click into any experiment to view detailed results, including the following:
 
-We show the results, along with the output of our statistical analyses such as the p-value and the error margin, so that you can see how the results would have looked had you checked the impact at a particular point in the past. For example, you can check how the results would have looked at the end of a review period, even if the review period has now passed. 
+* Experiment metadata, such as:
+  
+  - Experiment name, owners, and tags
+  - Start and end dates
+  - Active targeting rule
+  - Total number of exposures
+  - Treatment group assignment counts and percentages
 
-Before getting started, review the following:
+* Treatment comparison, including:
 
-* Understand how your most important metrics (overall evaluation criteria) were both positively and negatively impacted to learn more about what your customers expect and how you should change your feature functionality.
-* Compare the actual impact with your team's preliminary hypothesis.
-* Ensure that you understand the impact and tradeoffs on your account's guardrail and performance metrics.
-* Share the impact with your team.
+  - The baseline treatment (e.g. `off`)
+  - One or more comparison treatments (e.g. `low`)
+
+## Use AI Summarize 
+
+For faster interpretation of experiment outcomes, the Experiments page includes an **AI Summarize** button. This analyzes key and guardrail metric results to generate a summary of your experiment, making it easier to share results and next steps with your team.
+
+![Experiment Summary](../../static/summarize.png)
+
+The summary is broken into three sections:
+
+* **Winner Analysis**: Highlights whether a clear winner emerged across key metrics and guardrails.
+* **Overall Impact Summary**: Summarizes how the treatment impacted user behavior or business outcomes.
+* **Next Steps Suggestion**: Recommends what to do next, whether to iterate, roll out, or revisit your setup.
 
 ## Viewing metrics 
 
@@ -53,6 +69,13 @@ To view the impact of your feature rollout on your account's metrics:
 1. In the **Guardrail metrics** section, the account-wide guardrail metrics display. Any metrics that changed in a statistically positive and negative way display first.
 
 1. In the **Supporting metrics** section, the supporting metrics that were added for the feature flag display. Any metrics that changed in a statistically positive and negative way display first.
+
+Before getting started, review the following:
+
+* Understand how your most important metrics (overall evaluation criteria) were both positively and negatively impacted to learn more about what your customers expect and how you should change your feature functionality.
+* Compare the actual impact with your team's preliminary hypothesis.
+* Ensure that you understand the impact and tradeoffs on your account's guardrail and performance metrics.
+* Share the impact with your team.
 
 The Metrics impact tab is described as follows:
 

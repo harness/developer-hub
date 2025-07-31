@@ -1550,7 +1550,7 @@ properties:
         mask: true
 ...
 ```
-[Example workflow.yaml](https://github.com/Debanitrkl/backstage-test/blob/main/upload-file-prod.yaml)
+[Example workflow.yaml](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/uploaded-files.yaml)
 
 ![](./static/file-upload-hide-content.png)
 
@@ -1565,7 +1565,7 @@ Files uploaded to workflows are automatically encoded in **base64** format. To u
 
 **Without decoding, the uploaded file contents cannot be directly used.** 
 
-Here's an [example](https://github.com/Debanitrkl/backstage-test/blob/main/pipeline-to-parse-json.yaml) harness pipeline that uses [PowerShell](https://github.com/Debanitrkl/backstage-test/blob/b420528f309ef2a84e5190689912a929d53bc90a/pipeline-to-parse-json.yaml#L29-L84) in run step to decode the content of the file uploaded to Workflows. 
+Here's an [example](https://github.com/harness-community/idp-samples/blob/main/idp-pipelines/parse-base64-file.yaml) harness pipeline that uses [PowerShell](https://github.com/harness-community/idp-samples/blob/32845bbeca9d5219c5a71622043a66652904ff7d/idp-pipelines/parse-base64-file.yaml#L27-L84) in run step to decode the content of the file uploaded to Workflows. 
 
 ![](./static/demo-pwsh-process-json.png)
 

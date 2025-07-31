@@ -18,9 +18,7 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 | [**Git Experience (YAML files in Git)**](/docs/internal-developer-portal/git-experience/gitx-journey) | ✅ (Ready to onboard) |
 | **New System Entity for grouping**                                                                    | ⏳ ETA July 31, 2025  |
 | **Project/Org filters in Scorecards**                                                                 | ⏳ ETA July 31, 2025  |
-
-<!-- | **Custom User Groups**                                                                                | ⏳ ETA July 31, 2025  | -->
-
+| **Custom User Groups**                                                                               | ⏳ ETA Pending       |
 
 :::
 
@@ -123,6 +121,13 @@ All Catalog and Workflow APIs are now delivered directly through Harness Platfor
 - Any automation or custom processes utilizing Backstage-related APIs will require updates to implement the newer CRUD APIs
 - Catalog Ingestion APIs remain functional as before, though RBAC will now be enforced on updated entities
 
+
+:::info
+As part of the transition to Harness Catalog APIs, API entity definitions currently require absolute URLs `(e.g., https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)`.
+
+Relative file paths `(e.g., ./openapi.yaml)` are not yet supported, but will be available in a future release. 
+:::
+
 We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
 
 ### Single Entity per YAML File
@@ -146,10 +151,10 @@ This approach is no longer supported in IDP 2.0. To align with the Harness platf
 
 This change ensures better alignment with GitX workflows and simplifies entity lifecycle management.
 
-> NOTE: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own entity YAML file.
+> NOTE: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own entity YAML file. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 :::note 
-Identifiers must use only letters, numbers, and underscores. Hyphens and special characters aren’t allowed.
+Identifiers must use only letters, numbers, and underscores. Hyphens and special characters aren’t allowed. 
 
 :::
 

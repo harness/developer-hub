@@ -98,7 +98,7 @@ For more details, [please refer to the documentation here](https://developer.har
 
 
 ## Verifying the Private Docker Image Setup
-Now, you can create a new Gitspace with the above configuration using the Harness UI. ([Refer these docs to learn how to create a new Gitspace.](/docs/cloud-development-environments/introduction/quickstart-guide.md))
+Now, you can create a new Gitspace with the above configuration using the Harness UI. ([Refer these docs to learn how to create a new Gitspace.](/docs/cloud-development-environments/introduction/quickstart-tutorial.md))
 
 Once the Gitspace is created, you can verify the setup by checking the **container logs** and **status stages**. If everything is set up correctly, your Gitspace will run using your private Docker image.
 

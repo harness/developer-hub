@@ -3,6 +3,8 @@ title: Configure Incident Workflows
 description: Learn how to configure automated workflows for incident management in Harness AI SRE.
 sidebar_label: Incident Workflows
 sidebar_position: 3
+redirect_from:
+- /docs/incident-response/incidents/incident-workflows
 ---
 
 # Configure Incident Workflows

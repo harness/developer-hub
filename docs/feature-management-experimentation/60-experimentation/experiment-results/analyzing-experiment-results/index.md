@@ -87,6 +87,9 @@ The Impact details chart provides metric impact results for data analysis. This 
 
 ### Current impact snapshot by treatment
 
-The Current impact snapshot chart is a visual representation of the Impact details chart. This chart summarizes the metric results, showing a bar for each treatment (compared with the baseline treatment) using a green, gray, or red bar for a desired, inconclusive, and undesired impact respectively.
+The Current impact snapshot chart visually represents how your metric is performing relative to the experiment’s baseline treatment.
 
-<img src="https://help.split.io/hc/article_attachments/35993641246733" alt="experiments_current_impact_snapshot_by_treatment.png" width="900" />
+This chart summarizes the metric results, showing a bar for each treatment (compared with the baseline treatment) using a green, gray, or red bar for a desired, inconclusive, and undesired impact respectively.
+
+![](../../static/impact-snapshot.png)
+

@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="Helm" targetPage="/docs/artifact-registry/supported-formats" />
 
 This guide will help you **create a Helm Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Helm packages**.
 
@@ -40,21 +37,21 @@ An upstream proxy allows your registry to fetch Helm packages from external sour
 <Tabs>
 <TabItem value="configure-upstream-interactive" label="Interactive Guides">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 <DocVideo src="https://app.tango.us/app/embed/5be881f8-d325-418d-92b4-e2563ff5b5d7?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create Helm Upstream Proxy in Harness" />
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 <DocVideo src="https://app.tango.us/app/embed/fa0a3442-ba11-4916-af84-35397822fecf?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Configure Helm Registry Upstream Proxy" />
 
 </TabItem>
 <TabItem value="configure-upstream-step-by-step" label="Step-by-Step">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 1. In the Artifact Registry module, click the dropdown next to **New Artifact Registry** and select **Upstream Proxy**.
 2. Choose **Helm Registry** as the proxy type.
 3. Click **Create Proxy** to establish the connection.
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 1. In the Artifact Registry module, select an existing Artifact Registry.
 2. Select the **Configuration** tab.
 3. Under **Advanced (Optional)**, select **Configure Upstream**.
@@ -89,4 +86,3 @@ helm pull oci://pkg.harness.io/<account-id>/<helm-registry-name>/<IMAGE_NAME> --
 ```
 
 ---
-By following this guide, you can effectively set up and manage a Helm Artifact Registry within Harness, streamlining your container image workflows.

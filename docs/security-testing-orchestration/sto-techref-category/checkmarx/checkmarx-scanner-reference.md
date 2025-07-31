@@ -7,7 +7,7 @@ redirect_from:
 - /docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference/
 ---
 
-<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans" />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
@@ -168,6 +168,11 @@ import StoSettingToolProjectName from '../shared/step-palette/tool/project/name.
 
 If the specified project does not exist, the step will create a new project using the provided Project Name.
 
+#### Use Raw Scanner Severity
+
+import ScannerProvidedSeverity from '../shared/use-scanner-provided-severity.md';
+
+<ScannerProvidedSeverity />
 
 ### Log Level
 

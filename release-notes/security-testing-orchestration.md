@@ -22,6 +22,38 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## July 2025
+
+### Version v1.150.7
+
+<!-- 2025-07-25 -->
+
+#### New Features and Enhancements
+
+- Upgraded the [SonarQube step](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) CLI from version `4.7` to `7.1`, introducing security updates and enhancements (STO-9143).
+- Improved error messaging for the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference). For example, clearer messages now appear when specifying a key field that does not exist in the JSON input (STO-6110).
+
+#### Fixed Issues
+- Fixed an issue in the Vulnerabilities tab where selecting an option from the scanner filter dropdown during a [Custom Scan](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step caused other dropdowns to fail to populate, preventing the target name and variant from rendering correctly (STO-9376, ZD-88728). 
+
+
+### Version v1.148.4
+
+<!-- 2025-07-17 -->
+
+#### New Features and Enhancements
+- [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference) step now supports the **Filesystem** scan configuration for scanning a repository or file using `trivy fs` (STO-8711, ZD-81541).  
+- [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference) step now supports the **Trivy SBOM** scan configuration for scanning SBOM files using `trivy sbom /path/to/cyclonex.json` (STO-8940).
+- [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz) step now recognizes exempted issues and no longer lists them as active. Previously exempted issues may now appear as **Remediated** after the next Wiz scan (STO-9229).
+- Added the checkbox field **Use Scanner Raw Severity** to the [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference) step to use the scanner-provided severity instead of CVSS-based severity. This is functionally equivalent to setting `ingest_tool_severity: true` (STO-8547).
+
+#### Fixed Issues
+- Fixed a bug in [Checkov](/docs/security-testing-orchestration/sto-techref-category/checkov-iac-scan) scan handling where multiple vulnerability types in one scan were not processed correctly (STO-9153, ZD-85529).
+- Enhanced the **Scanner** filter in the Vulnerabilities tab to support subproduct-based filtering, fixes the issue where custom scanners couldn’t be individually selected in the UI (STO-9010, ZD-84685).
+- Fixed a data consistency issue that caused some issues to be incorrectly marked as remediated in Custom Dashboards (STO-8997, ZD-84585).  
+- Fixed a data inconsistency where some older scans (over a year old) had no previous scan reference, which caused confusion in the Vulnerabilities tab of pipeline executions (STO-9216).  
+
+
 ## June 2025
 
 ### Version v1.142.1

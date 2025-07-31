@@ -103,7 +103,7 @@ Maintaining good epic hygiene is crucial for ensuring smooth project execution, 
 
 * **Lack of clarity:** Missing due dates make it hard to track deadlines.
 * **Poor planning:** Missing story points indicate unaccounted effort.
-* **Disorganizaed work:** Epics without child tickets make it difficult to measure work breakdown.
+* **Disorganized work:** Epics without child tickets make it difficult to measure work breakdown.
 
 #### What the Epic Hygiene widget tracks
 

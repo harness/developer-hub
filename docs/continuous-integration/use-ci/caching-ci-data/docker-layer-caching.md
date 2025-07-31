@@ -59,7 +59,8 @@ If your storage isn't S3-compatible or your don't want to use access key and sec
 We suggest that you consider setting bucket level retention policy for efficient cache management. 
 
 :::info
-Enabling DLC when running on Kubernetes requires *privileged mode* on the cluster where the builds run. 
+- Enabling DLC when running on Kubernetes requires *privileged mode* on the cluster where the builds run. 
+- To use path-style S3 addressing in self-hosted Build and Push steps with DLC, set `PLUGIN_PATH_STYLE: "true"` in envVariables. This allows compatibility with S3 providers that do not support virtual-hosted style URLs.
 :::
 
 

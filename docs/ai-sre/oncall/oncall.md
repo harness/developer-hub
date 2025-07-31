@@ -3,6 +3,8 @@ title: On-Call Overview
 description: On-Call Overview
 sidebar_label: On-Call Overview
 sidebar_position: 1
+redirect_from:
+- /docs/incident-response/oncall/oncall
 ---
 
 # On-Call Management

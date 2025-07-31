@@ -3,6 +3,8 @@ title: Configure Incident Fields for Runbooks
 sidebar_label: Configure Fields
 sidebar_position: 4
 description: Learn how to configure and use incident fields in your runbook workflows for dynamic, context-aware automation.
+redirect_from:
+- /docs/incident-response/runbooks/configure-incident-fields
 ---
 
 # Configure Incident Fields for Runbooks

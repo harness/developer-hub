@@ -65,7 +65,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ccm,
     icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
-    link: "docs/category/get-started-with-ccm",
+    link: "docs/cloud-cost-management/get-started",
   },
   {
     title: "Orchestrate Security Tests",
@@ -93,7 +93,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: <>Measure the resilience posture of applications.</>,
-    link: "docs/chaos-engineering/getting-started/",
+    link: "docs/chaos-engineering/overview",
   },
   {
     title: "Revolutionize Incident Management",

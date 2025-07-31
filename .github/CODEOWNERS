@@ -63,10 +63,10 @@ static/  @rohanmaharjan100 @wei-harness
 
 
 # Continuous Integration Docs
-/docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
-/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
-/src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
-/src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
+/docs/continuous-integration/ @nofarblue @dewan-ahmed @SushrutHarness @shivloka-harness
+/release-notes/continuous-integration.md @nofarblue @dewan-ahmed @SushrutHarness @shivloka-harness
+/src/components/Roadmap/data/ciData.ts @nofarblue @dewan-ahmed @SushrutHarness @shivloka-harness
+/src/components/Docs/data/continuousIntegrationData.ts @nofarblue @dewan-ahmed @SushrutHarness @shivloka-harness
 
 # CODE Docs
 /docs/code-repository/ @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
@@ -111,14 +111,14 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
 
 # Chaos Docs
-/docs/chaos-engineering/ @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
-/release-notes/chaos-engineering.md @neelanjan00 @Jonsy13 @Ashutosh-Bhadauriya
-/src/components/Roadmap/data/ceData.ts @neelanjan00 @SushrutHarness
-/src/components/Docs/data/chaosEngineeringData* @neelanjan00 @SushrutHarness
+/docs/chaos-engineering/ @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
+/release-notes/chaos-engineering.md @Jonsy13 @Ashutosh-Bhadauriya
+/src/components/Roadmap/data/ceData.ts @Ashutosh-Bhadauriya
+/src/components/Docs/data/chaosEngineeringData* @Ashutosh-Bhadauriya
 # Chaos FAQs
-/docs/faqs/chaos-engineering-faqs @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
-/docs/faqs/static @neelanjan00 @Jonsy13 @Adarshkumar14 @ksatchit @umamukkara @Ashutosh-Bhadauriya
-/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @ksatchit @umamukkara @Ashutosh-Bhadauriya
+/docs/faqs/chaos-engineering-faqs @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
+/docs/faqs/static @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
+/kb/chaos-engineering/chaos-engineering-faq @ksatchit @umamukkara @Ashutosh-Bhadauriya
 
 # Platform Docs
 /docs/platform/ @pratmit @GokulBansal0 @abhishekharness @ivikramsahu
@@ -157,10 +157,10 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
 
 # SCS Docs
-/docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
-/release-notes/software-supply-chain-assurance.md @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
-/src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
-/src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
+/docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
+/release-notes/software-supply-chain-assurance.md @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
+/src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
+/src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
 
 # IACM Docs
 /docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @nassergonzalez @Rohit-Kaliki
@@ -168,19 +168,18 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
 /src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
 
-# FF Docs
-/docs/feature-flags/ @HarnessTheChaos @laura-mannus
-/release-notes/feature-flags.md @HarnessTheChaos
-/src/components/Roadmap/data/ffData.ts @HarnessTheChaos
-/src/components/Docs/data/featureFlagsData.ts @HarnessTheChaos
-# FF FAQs
-/docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos
+# FF Classic Docs
+/docs/feature-flags/ @alai97 @animcdowell @laura-mannus @jcox250
+/docs/faqs/harness-feature-flag-faqs/ @alai97 @animcdowell @jcox250
+/release-notes/feature-flags.md @alai97 @animcdowell @jcox250
+/src/components/Roadmap/data/ffData.ts @alai97 @animcdowell
+/src/components/Docs/data/featureFlagsData.ts @alai97 @animcdowell
 
 # FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john
 /docs/feature-management-experimentation/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @sanzmauro @dtk-DaveKarow 
-/release-notes/feature-management-experimentation.md @alai97 @dtk-DaveKarow @animcdowell @harness-john @kleinjoshuaa @deej-split
-/release-notes/static/fme/ @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john 
+/release-notes/feature-management-experimentation.md @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
+/release-notes/static/fme/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
 
 # SEI Docs
 /docs/software-engineering-insights/ @alai97 @codewdhruv @batraprashant @santoshdodamani
@@ -212,8 +211,8 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
 
 # Open Source Docs
-/docs/open-source/ @dewan-ahmed @rustd @SushrutHarness
-/src/components/Docs/data/openSourceData.tsx @dewan-ahmed @rustd @SushrutHarness
+/docs/open-source/ @dewan-ahmed @SushrutHarness
+/src/components/Docs/data/openSourceData.tsx @dewan-ahmed @SushrutHarness
 
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @ankit-harness
@@ -221,11 +220,11 @@ static/  @rohanmaharjan100 @wei-harness
 # Knowledge Base ###
 
 # Overall KB
-/kb/ @deepanshuHarness @jimin-harness @guna-harness
-/src/components/KnowledgeBase/data/ @deepanshuHarness @jimin-harness @guna-harness
+/kb/ @deepanshuHarness @jimin-harness
+/src/components/KnowledgeBase/data/ @deepanshuHarness @jimin-harness
 
 #Armory KB
-/kb/armory @jimin-harness @deepanshuHarness @guna-harness
+/kb/armory @jimin-harness @deepanshuHarness
 
 # DB DevOps
 /kb/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h @hemanthbsridhar

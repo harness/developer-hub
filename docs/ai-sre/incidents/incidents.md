@@ -3,6 +3,8 @@ title: Incident Overview
 description: Learn about incident management in Harness AI SRE, including incident creation, workflows, and best practices.
 sidebar_label: Overview
 sidebar_position: 1
+redirect_from:
+- /docs/incident-response/incidents/incidents
 ---
 
 # Incident Management

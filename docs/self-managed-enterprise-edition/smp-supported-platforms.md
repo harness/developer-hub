@@ -18,7 +18,7 @@ This section provides a clear overview of the Supported features, integrations, 
 * [Custom Dashboards](/docs/platform/dashboards/cdb-whats-supported)
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported/sto-deployments)
 * [AI SRE (Beta)](/docs/ai-sre/get-started/overview)
-* [Supply Chain Security (Beta)](/docs/software-supply-chain-assurance/ssca-supported)
+* [Supply Chain Security](/docs/software-supply-chain-assurance/ssca-supported)
 * [Code Repository](/docs/code-repository)
 
 For more details on the supported features of other Harness modules, visit [Harness Supported platforms and technologies](/docs/platform/platform-whats-supported.md).

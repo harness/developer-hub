@@ -77,9 +77,6 @@ As mentioned previously, a Rule can have multiple policies. However, when there 
 
   <DocImage path={require('../static/rule-set.png')} width="90%" height="90%" title="Click to view full size image" />
   
-:::info
-A Rule Set can have upto 30 Rules in it.
-:::
 
 ### Create a new Rule Set
 
@@ -137,8 +134,6 @@ While setting up a new Enforcement, you can select the following:
 :::important note
 - Number of Targets in an Enforcement can be upto 200.
 - Number of Regions in Enforcement can be upto 30.
-- Number of Rule Sets in Enforcement can be upto 30.
-- Number of Rules in Enforcement can be upto 30.
 :::
 
 ### Create a new Enforcement
@@ -197,6 +192,9 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 
 <DocImage path={require('../static/evaluations-azure.png')} width="90%" height="90%" title="Click to view full size image" />
 
+:::info
+Each enforcement can now have up to **10,000 evaluations**. The cap is calculated as `Rules × Accounts × Regions` and replaces the earlier individual limits on rules, rule sets, accounts, or regions.
+:::
 ### View Evaluations
 
 1. In your **Harness** application, go to **Cloud Costs**.
