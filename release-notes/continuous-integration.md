@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-07-07T10:00
+date: 2025-07-28T10:00
 sidebar_position: 10
 ---
 
@@ -43,9 +43,81 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 ## July 2025
 
+### Version 1.89
+
+<!-- 2025-07-28 -->
+
+#### New features and enhancements
+- Added comprehensive glob pattern support for source paths (.txt, **/*.go, multiple comma-separated patterns) with full backward compatibility and enhanced ignore pattern functionality. (CI-18070)
+#### Fixed issues
+- Fixed an issue where Build Intelligence savings were not displayed for Gradle builds. The Gradle report glob path was updated to correctly read report files even when they are located inside subdirectories. (CI-18258, ZD-88421)
+- Fixed a security vulnerability affecting only the `drone-git-linux-AMD64` variants that used the RHEL UBI8 base image (`redhat/ubi8-minimal:8.8`). The image has been updated to use `redhat/ubi9-minimal:9.6`. (CI-17869, ZD-85646)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/drone-git`    |  Fixed a security vulnerability affecting the `drone-git-linux-AMD64` variants that used the RHEL UBI8 base image. | 1.7.1-rootless              | 1.7.2-rootless       |
+| `plugins/gcs`    |  Added comprehensive glob pattern support for source paths.  | 1.6.3              | 1.6.4       |
+| `harness/ci-addon`    |  Fixed an issue with secret masking for JSON-formatted secrets. | rootless-1.16.92              | rootless-1.16.97       |
+| `harness/ci-lite-engine`    |  Fixed an issue with secret masking for JSON-formatted secrets. | rootless-1.16.92              | rootless-1.16.97       |
+
+### Version 1.88
+
+<!-- 2025-07-21 -->
+
+#### New features and enhancements
+
+- You can now enable path-style addressing for S3 caching in self-hosted builds using DLC by setting the `PLUGIN_PATH_STYLE` environment variable. This allows compatibility with S3 providers that do not support virtual-hosted style URLs. (CI-18346)
+- In Kubernetes builds, CI Manager now retrieves the OIDC token and sets it in the `PLUGIN_OIDC_TOKEN_ID` environment variable. This allows the `aws-oidc` and `gcp-oidc` plugins to work seamlessly, similar to how they operate in Cloud builds. (CI-18317)
+
+#### Fixed issues
+- Resolved an issue where cache upload and restore steps on Windows could fail due to improper handling of backslashes in file paths. (CI-18106)
+- Fixed an issue where GitLab SHA builds failed due to missing host URL resolution. It will now go via delegate flow if selected. (CI-17996, ZD-83042, ZD-86364, ZD-87434)
+- Fixed an issue where missing Kubernetes connector details during capability check caused dry run deletion to fail. The required info is now passed to the delegate task. (CI-17994, ZD-86877, ZD-89248)
+- Fixed an issue with secret masking for JSON-formatted secrets. (CI-13780)
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `plugins/cache`    |  Resolved an issue where cache upload and restore steps on Windows could fail due to improper handling of backslashes in file paths. | 1.9.8              | 1.9.9       |
+| `plugins/docker`    |  The default Drone plugins used in out-of-the-box build steps now emit a step log warning when a Base Image Connector is not configured.  | 20.18.6              | 21.0.1       |
+| `plugins/buildx`    |  Support path-style addressing for S3 caching in self-hosted builds using DLC | 1.3.4              | 1.3.5       |
+| `plugins/buildx-ecr`    |  Support path-style addressing for S3 caching in self-hosted builds using DLC | 1.3.2              | 1.3.3       |
+| `plugins/buildx-acr`    |  Support path-style addressing for S3 caching in self-hosted builds using DLC | 1.3.2              | 1.3.3       |
+| `plugins/buildx-gar`    |  Support path-style addressing for S3 caching in self-hosted builds using DLC | 1.3.2              | 1.3.3       |
+
+### Version 1.87
+
+<!-- 2025-07-14 -->
+
+#### New features and enhancements
+
+- You can now provide an overlay YAML to override the pod spec in Kubernetes builds. This feature is behind the feature flag `CI_K8S_OVERLAY_YAML`. For details, check out [the documentation](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/customize-podspec). (CI-17391)
+- Added support for GitHub Actions and Bitrise steps on both VM and Local Runner infrastructures. Check out the following docs for specific step:
+  - [GitHub Actions step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step#support-for-github-actions-on-vm-and-local-runner-build-infrastructure)
+  - [Bitrise step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin#support-for-bitrise-steps-on-vm-and-local-runner-build-infrastructure)
+- Added support for increasing the Docker-based CI infrastructure timeout from the default 24 hours to up to 35 days. Default behavior remains unchanged. To enable this extended timeout, turn on the feature flag `CI_ENABLE_LONG_TIMEOUTS` and configure the desired timeout at the stage level. For details, check out the [stage timeout note](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#stage-timeout). (CI-18163)
+- The default Drone plugins used in out-of-the-box build steps now emit a step log warning when a Base Image Connector is not configured. Additionally, the Drone Kaniko images have been updated to use Chainguard’s maintained fork of Kaniko as the base. (CI-17953)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `plugins/kaniko`    |  Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base. | 1.10.6              | 1.11.4       |
+| `plugins/kaniko-ecr`    |  Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base. | 1.11.1              | 1.11.4       |
+| `plugins/kaniko-acr`    |  Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base. | 1.11.2              | 1.11.4       |
+| `plugins/docker`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.6              | 21.0.1       |
+| `plugins/ecr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.7              | 21.0.1       |
+| `plugins/acr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.8              | 21.0.1       |
+| `plugins/buildx`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.3              | 1.3.4      |
+| `plugins/buildx-ecr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.1              | 1.3.2      |
+| `plugins/buildx-acr`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.1              | 1.3.2      |
+| `plugins/buildx-gar`    |  The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.1              | 1.3.2      |
+
 ### Version 1.86
 
-<!-- 2025-06-07 -->
+<!-- 2025-07-07 -->
 
 #### New features and enhancements
 - Reduced the size of the Windows Artifactory plugin image by ~80%, improving build performance and resource usage. (CI-17716)

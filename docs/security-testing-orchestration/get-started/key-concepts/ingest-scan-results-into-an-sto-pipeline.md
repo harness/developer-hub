@@ -27,7 +27,7 @@ To ingest scan results from outside a Security step, you set up your pipeline as
 
 ![](./static/ingest-scan-results-into-an-sto-pipeline-00.png)
 
-For a complete list of supported scanners, go to [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support).
+For a complete list of supported scanners, go to [Harness STO scanner support](/docs/security-testing-orchestration/whats-supported/scanners).
 
 ## Example workflows
 
@@ -42,4 +42,4 @@ Here are some example ingestion-only workflows that target specific use cases:
 
 - [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data)
 - [Ingest Results from unsupported scanners](../../custom-scanning/ingesting-issues-from-other-scanners.md)
-- [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support)
+- [Harness STO scanner support](/docs/security-testing-orchestration/whats-supported/scanners)

@@ -138,7 +138,19 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 
 ### Non-Container Images
 
-Artifacts aren't limited to container images. With the Artifact Signing step, non-container images (such as Helm charts, JARs, WARs, and manifest files) can also be signed where each artifact is uniquely identified by its digest (SHA), which is used during the verification step to ensure integrity and authenticity.
+Artifacts aren't limited to container images. With the Artifact Signing step, you can also sign non-container images to ensure the integrity and authenticity. Each artifact is uniquely identified by its digest (SHA), which is later used during the verification step.
+
+The following non-container artifact types are supported:
+
+- Helm Charts (`.tgz`)
+
+- YAML Manifests (`.yaml`)
+
+- Java Archives (`.jar`)
+
+- Web Application Archives (`.war`)
+
+- Artifacts that are not listed above will be considered as `Unknown` types.
 
 Follow the instructions below to configure the Artifact Signing step for non-container images:
 

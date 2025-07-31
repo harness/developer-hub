@@ -2,7 +2,7 @@
 title: Harness AI SRE Overview and Key Concepts
 sidebar_position: 1
 redirect_from:
-- /docs/ai-sre/getting-started/
+- /docs/incident-response/getting-started/
 sidebar_label: Overview and Key Concepts
 description: Harness AI SRE Overview and Key Concepts
 ---

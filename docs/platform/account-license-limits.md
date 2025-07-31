@@ -14,19 +14,21 @@ Account limits define the maximum number of specific resources or entities that 
 
 Harness account limits are specfied below:
 
-| Resource Type       | Maximum Limit | Description                                                           |
-|---------------------|---------------|-----------------------------------------------------------------------|
-| Secrets             | 250,000       | Maximum number of secrets that can be created in an account.          |
-| Users               | 90,000        | Maximum number of users that can be added to an account.              |
-| User Groups         | 50,000        | Maximum number of user groups that can be created in an account.      | 
-| Variables           | 90,000        | Maximum number of variables that can be created in an account.        |
-| Projects            | 12,500        | Maximum number of projects that can be created in an account.         |
-| Organizations       | 5,000         | Maximum number of organizations that can be created in an account.    |
-| Connectors          | 75,000        | Maximum number of connectors that can be created in an account.       |
-| Service Accounts    | 6,000         | Maximum number of service accounts that can be created in an account. |
-| API Keys            | 6,000         | Maximum number of API keys that can be created in an account.         |
-| Tokens              | 6,000         | Maximum number of tokens that can be created in an account.           |
-| Roles               | 21,000        | Maximum number of Roles that can be created in an account.             |
+| Resource Type        | Maximum Limit | Description                                                           |
+|----------------------|---------------|-----------------------------------------------------------------------|
+| Organizations        | 5,000         | Maximum number of organizations that can be created in an account.    |
+| Service Accounts     | 6,000         | Maximum number of service accounts that can be created in an account. |
+| API Key Tokens       | 6,000         | Maximum number of API key tokens that can be created in an account.   |
+| Projects             | 12,500        | Maximum number of projects that can be created in an account.         |
+| Resource Groups      | 15,000        | Maximum number of resource groups that can be created in an account.  |
+| Secret Managers      | 16,000        | Maximum number of secret managers that can be created in an account.  |
+| Roles                | 21,000        | Maximum number of roles that can be created in an account.            |
+| User Groups          | 50,000        | Maximum number of user groups that can be created in an account.      |
+| Connectors           | 75,000        | Maximum number of connectors that can be created in an account.       |
+| Role Bindings        | 75,000        | Maximum number of role assignments that can be created in an account. |
+| Variables            | 90,000        | Maximum number of variables that can be created in an account.        |
+| Users                | 90,000        | Maximum number of users that can be added to an account.              |
+| Secrets              | 250,000       | Maximum number of secrets that can be created in an account.          |
 
 :::info important 
 Harness reserves the right to modify these limits at any time to ensure platform stability and resource management. 

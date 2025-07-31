@@ -3,6 +3,8 @@ title: Jira Integration for Runbooks
 sidebar_label: Jira
 sidebar_position: 4
 description: Learn how to integrate Jira with Harness AI SRE Runbooks using the Connector-based approach and enable bidirectional synchronization.
+redirect_from:
+- /docs/incident-response/runbooks/integrations/jira
 ---
 
 # Jira Integration for Runbooks

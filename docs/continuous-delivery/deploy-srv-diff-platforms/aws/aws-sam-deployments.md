@@ -85,9 +85,9 @@ We recommend you to use the new images that we have introduced with multiple run
 
 ### New SAM Images
 
-Harness support [multiple runtime images](https://hub.docker.com/r/harness/aws-sam-plugin/tags) for **nodejs20**, **nodejs18**, **python3.11**, **python3.12**, **ruby3.2**, **java8**, **go1.22**   and **java17**.. These are Linux AMD64 images. 
+Harness support [multiple runtime images](https://hub.docker.com/r/harness/aws-sam-plugin/tags) for **nodejs22**, **nodejs20**, **nodejs18**, **python3.11**, **python3.12**, **ruby3.2**, **java 21**,**java17**, **java8** and **go1.22**. These are Linux AMD64 images.
 
-Unlike old images, in new images a single image has the capabiliity of handling all the SAM steps.
+Unlike old images, in new images a single image has the capability of handling all the SAM steps.
 
  Runtimes | Images | Version
 | --- | --- | --- |

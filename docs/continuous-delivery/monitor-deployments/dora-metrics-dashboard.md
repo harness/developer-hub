@@ -60,6 +60,12 @@ To gain deeper insights, you can create queries in the dashboard to capture data
 
 ### Use reverted executions to capture mean time to restore
 
+:::note
+
+1. This only works for executions reverted using post production rollback feature.
+
+:::
+
 Currently, Harness does not measure regressions or failures that occur after a production deployment is complete. 
  
 During the pipeline deployment, if there is an issue that causes downtime, a reverted pipeline execution can restore the service.
@@ -68,32 +74,20 @@ You can mark a pipeline execution as a restored/reverted pipeline and link it to
 
 You can then use the difference between the end time of the parent execution and the end time of the reverted execution to capture mean time to restore.
 
-To have a failed pipeline execution revert automatically, when you create a new pipeline stage, create a custom variable, and add the following tag with an expression to call the variable.
-
-Here's a sample `revert_execution_id_var` variable :  
-
-```yaml
-  variables:
-    - name: revert_execution_id_var
-      type: String
-      description: ""
-      required: false
-      value: <+input>
-```
-In the pipeline YAML, you can add the following sample expression as a tag to call the variable:  
+In the pipeline YAML, you can add the following sample expression as a tag:  
 
 ```
-tags:
-  revert_execution_id: <+pipeline.variables.revert_execution_id_var>
+  tags:
+    reverted_execution_id: <+pipeline.originalExecution.executionId>
 ```
 
-Below is an example of a pipeline execution. The `revert_execution_id` tag represents the execution Id of the pipeline that caused the issue.
+Below is an example of a pipeline execution. The `reverted_execution_id` tag represents the execution Id of the pipeline that was reverted.
 
 ```
 pipeline:
   identifier: "DOra_pipeline"
   tags:
-    revert_execution_id: "Q0bizp0QTM6xtB1FZsR0zQ"
+    reverted_execution_id: "Q0bizp0QTM6xtB1FZsR0zQ"
   stages:
   - stage:
       identifier: "stage1"

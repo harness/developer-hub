@@ -92,7 +92,7 @@ This setting can only be edited in Team and Enterprise plans. You can set it at 
 ### Project-Level Pipeline Execution Concurrency
 
 :::note
-Currently, this feature is behind the feature flag `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 You can take fine-grained control of how many pipelines run concurrently in each of your projects. By splitting your account-wide concurrency limit into a **High-Priority** and **Low-Priority** partition, you guarantee reserved execution slots for critical projects while preventing any one project from consuming all available capacity.
@@ -142,6 +142,30 @@ You have two options for carving up your total concurrency:
   3. On dequeuing mixed queues:
      - **High** pipelines start on the first available slot in **High** or **Low**.  
      - **Low** pipelines wait for the next available **Low** slot.  
+
+### Stage/Step-Level Concurrency Limits
+
+In addition to the concurrent execution limit across pipelines, Harness also imposes a concurrency limit **within individual pipeline executions**.
+
+This limit defines the maximum number of **steps or stages that can run simultaneously** at runtime—especially relevant when using looping strategies like matrix or for-each with high parallelism.
+
+#### Default Concurrency Limits (per execution)
+
+| Plan Tier            | Max Concurrent Steps/Stages |
+|----------------------|-----------------------------|
+| Free                 | 2                           |
+| Team                 | 50                          |
+| DevOps Essentials    | 60                          |
+| Enterprise           | 100                         |
+
+:::info
+
+Even if your pipeline defines up to 256 parallel steps or stages, only the first `maxConcurrency` steps will execute concurrently. The rest are queued until slots become available.
+:::
+
+
+This limit exists to ensure fair usage and system stability. It is configurable internally based on your plan tier, but not editable by users via the UI.
+
 
 ### Pipeline Timeout and Stage Timeout (execution time limits)
 

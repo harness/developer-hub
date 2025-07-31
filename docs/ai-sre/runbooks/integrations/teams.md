@@ -3,6 +3,8 @@ title: Microsoft Teams Integration for Runbooks
 sidebar_label: Microsoft Teams
 sidebar_position: 2
 description: Learn how to integrate Microsoft Teams with Harness AI SRE Runbooks using the Connector-based approach.
+redirect_from:
+- /docs/incident-response/runbooks/integrations/teams
 ---
 
 # Microsoft Teams Integration for Runbooks

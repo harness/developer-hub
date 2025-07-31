@@ -1,8 +1,5 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
-
-<RedirectIfStandalone label="Python" targetPage="/docs/artifact-registry/supported-formats" />
 
 This guide will help you **create a Python Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Python packages**.
 
@@ -40,21 +37,21 @@ An upstream proxy allows your registry to fetch Python packages from external so
 <Tabs>
 <TabItem value="configure-upstream-interactive" label="Interactive Guides">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 <DocVideo src="https://app.tango.us/app/embed/c024c25d-4d6b-40d2-a8b5-903a7168b2af?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create a Python Upstream Proxy in Harness" />
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 <DocVideo src="https://app.tango.us/app/embed/bdc8b67c-b956-4a4f-8b46-7873720c7c78?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Configure your Python Upstream Proxy in Harness" />
 
 </TabItem>
 <TabItem value="configure-upstream-step-by-step" label="Step-by-Step">
 
-### Create an upstream proxy
+<h3> Create an upstream proxy </h3>
 1. In the Artifact Registry module, click the dropdown next to **New Artifact Registry** and select **Upstream Proxy**.
 2. Choose **Python Registry** as the proxy type.
 3. Click **Create Proxy** to establish the connection.
 
-### Configure the upstream proxy in your registry
+<h3> Configure the upstream proxy in your registry </h3>
 1. In the Artifact Registry module, select an existing Artifact Registry.
 2. Select the **Configuration** tab.
 3. Under **Advanced (Optional)**, select **Configure Upstream**.
@@ -90,4 +87,3 @@ pip install --index-url https://<address>:<identity-token>@pkg.harness.io/pkg/<a
 ```
 
 ---
-By following this guide, you can effectively set up and manage a Python Artifact Registry within Harness, streamlining your container image workflows.

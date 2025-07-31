@@ -1,6 +1,8 @@
 ---
 title: Harness Pipelines
 description: Integrate Harness AI SRE with Harness Pipelines for automated remediation and deployment control
+redirect_from:
+- /docs/incident-response/runbooks/integrations/harness-pipelines
 ---
 
 # Harness Pipelines Integration

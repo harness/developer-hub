@@ -3,6 +3,8 @@ title: Create a Runbook
 sidebar_label: Create a Runbook
 sidebar_position: 2
 description: Step-by-step guide on creating and configuring runbooks in Harness AI SRE.
+redirect_from:
+- /docs/incident-response/runbooks/create-runbook
 ---
 
 # Create a Runbook

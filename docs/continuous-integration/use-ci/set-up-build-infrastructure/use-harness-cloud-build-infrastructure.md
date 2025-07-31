@@ -25,7 +25,7 @@ When a build runs on Harness Cloud, Harness runs each CI stage in a new, ephemer
 
 ![Example pipeline on Harness Cloud](./static/hosted-builds-on-virtual-machines-quickstart-11.png)
 
-The steps in each stage execute on the stage's dedicated VM. This allows the stage's steps to share information through the underlying filesystem. You can run CI steps directly on the VM or in a Docker container. When the stage is complete, the VM automatically shuts down.
+The steps in each stage execute on the stage's dedicated VM. This allows the stage's steps to share information through the underlying filesystem. You can run CI steps directly on the VM or in a Docker container. When the stage is complete, the VM automatically terminates.
 
 :::
 

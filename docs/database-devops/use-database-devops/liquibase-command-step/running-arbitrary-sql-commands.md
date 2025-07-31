@@ -1,8 +1,24 @@
 ---
-title: Executing arbitrary sql commands
-sidebar_label: Executing arbitrary sql commands
-description: Explaining how to execute arbitrary sql commands in liquibase command step
+title: Execute Arbitrary SQL Commands
+sidebar_label: Executing SQL commands
+description: Learn how to execute arbitrary SQL commands using the Liquibase command step in Harness DB DevOps for flexible database operations.
 sidebar_position: 1
+keywords:
+  - liquibase sql command
+  - execute sql liquibase
+  - harness dbops
+  - run arbitrary sql
+  - database devops
+  - custom sql execution
+  - liquibase native command
+  - db automation
+  - sql script execution
+tags:
+  - harness-db-devops
+  - liquibase-integration
+  - sql-execution
+  - pipeline-steps
+  - database-automation
 ---
 
 ## Pre-requisites

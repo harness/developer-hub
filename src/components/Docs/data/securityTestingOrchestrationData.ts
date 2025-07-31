@@ -67,7 +67,7 @@ import { MODULES } from "@site/src/constants";
                 module: MODULES.sto,
                 description:
                   "STO includes integrations with over 30 external tools for scanning repositories, container images, applications, and configurations.",
-                link: "/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanners-supported-by-sto",
+                link: "/docs/security-testing-orchestration/whats-supported/scanners",
               },
               {
                 title: "Ingest SARIF scan results",

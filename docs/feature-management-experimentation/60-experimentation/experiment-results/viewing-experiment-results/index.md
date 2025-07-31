@@ -11,6 +11,39 @@ When you click in to a metric card from the metrics impact tab, you can see more
 
 We show the results, along with the output of our statistical analyses such as the p-value and the error margin, so that you can see how the results would have looked had you checked the impact at a particular point in the past. For example, you can check how the results would have looked at the end of a review period, even if the review period has now passed. 
 
+You can view your experiment results from the **Experiments** page. This page provides a centralized view of all experiments and allows you to quickly access performance metrics, significance levels, and summary details for each treatment group.
+
+Click into any experiment to view detailed results, including the following:
+
+* Experiment metadata, such as:
+  
+  - Experiment name, owners, and tags
+  - Start and end dates
+  - Active targeting rule
+  - Total number of exposures
+  - Treatment group assignment counts and percentages
+
+* Treatment comparison, including:
+
+  - The baseline treatment (e.g. `off`)
+  - One or more comparison treatments (e.g. `low`)
+
+## Use AI Summarize 
+
+For faster interpretation of experiment outcomes, the Experiments page includes an **AI Summarize** button. This analyzes key and guardrail metric results to generate a summary of your experiment, making it easier to share results and next steps with your team.
+
+![Experiment Summary](../../static/summarize.png)
+
+The summary is broken into three sections:
+
+* **Winner Analysis**: Highlights whether a clear winner emerged across key metrics and guardrails.
+* **Overall Impact Summary**: Summarizes how the treatment impacted user behavior or business outcomes.
+* **Next Steps Suggestion**: Recommends what to do next, whether to iterate, roll out, or revisit your setup.
+
+## Viewing metrics 
+
+To view the impact of your feature rollout on your account's metrics, from your selected feature flag, click the **Metrics impact** tab. The metric cards show how your account's metrics change when comparing treatments against your flag's baseline treatment.
+
 Before getting started, review the following:
 
 * Understand how your most important metrics (overall evaluation criteria) were both positively and negatively impacted to learn more about what your customers expect and how you should change your feature functionality.

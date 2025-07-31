@@ -347,6 +347,92 @@ The name is sanitized to comply with Kubernetes naming conventions. If the total
 3. To avoid potential failures in Kubernetes environments, ensure that all secret names are lowercase. Starting from **delegate release 825xx**, any uppercase characters in the secret name are automatically converted to lowercase to ensure compatibility with Kubernetes naming conventions.
 :::
 
+## Using Dockerfile builds with self-signed certificates (BuildKit-specific)
+
+When using the [Build and Push to Docker](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/) step (or any step that performs Dockerfile builds using BuildKit), mounting CA certificates to the Delegate is not enough. BuildKit must be explicitly configured to trust your private registry's certificate.
+
+This workaround is only required for **Build and Push to Docker** steps using Docker BuildKit. Steps using Kaniko, like most default Kubernetes builds in Harness, do not require this additional configuration if the certificate is already mounted using `DESTINATION_CA_PATH`.
+
+To make BuildKit trust your self-signed registry certs, you need to:
+
+1. Dynamically prepare the BuildKit config and cert path in a `Run` step.
+
+2. Share the cert and config path using `sharedPaths` and environment variables.
+
+3. Concatenate multiple PEM files (if applicable) into a single CA bundle used by both Docker and BuildKit.
+
+### Step-by-step example
+
+```yaml
+sharedPaths:
+  - /etc/buildkit/certs/your.registry.com
+
+envVariables:
+  PLUGIN_BUILDER_CONFIG: /harness/buildkit.toml
+```
+
+### Run step to prepare certs and BuildKit config
+
+Here is an example `Run` step that uses CA certs already mounted into the Delegate and build pod (e.g., via volume mounts to `/harness-shared-certs-path`), prepares the BuildKit config file, and builds a Dockerfile
+
+```yaml
+- step:
+    type: Run
+    name: Prepare BuildKit Config
+    identifier: buildkit_config
+    spec:
+      connectorRef: account.harnessImage
+      image: alpine
+      shell: Sh
+      command: |-
+        # Registry address (update this to match your use case)
+        REG="your.registry.com"
+        CERT_PATH_BUILDX="/etc/buildkit/certs/${REG}"
+        BUILDKIT_TOML="/harness/buildkit.toml"
+
+        # Create cert paths
+        mkdir -p "$CERT_PATH_BUILDX"
+
+        # Concatenate all mounted PEMs into a single CA bundle
+        for cert in /harness-shared-certs-path/*.pem; do
+          cat "$cert" >> "$CERT_PATH_BUILDX/ca.crt"
+          echo >> "$CERT_PATH_BUILDX/ca.crt"
+        done
+
+        # Write buildkit.toml
+        echo "Writing buildkit.toml..."
+        cat <<EOF > "$BUILDKIT_TOML"
+        [registry."$REG"]
+          ca = ["$CERT_PATH_BUILDX/ca.crt"]
+        EOF
+
+        ls -lr "$CERT_PATH_BUILDX"
+        cat "$BUILDKIT_TOML"
+```
+
+### Build step using the config
+
+```yaml
+- step:
+    type: BuildAndPushDockerRegistry
+    name: Docker Build
+    identifier: docker_build
+    spec:
+      ...
+      envVariables:
+        PLUGIN_BUILDER_CONFIG: /harness/buildkit.toml
+```
+
+:::note
+- Certs should be mounted ahead of time (e.g., through Harness secrets or volume mounts).
+
+- This approach supports multiple PEM files and ensures both Docker and BuildKit trust the self-signed certs.
+
+- You must ensure that the sharedPaths include both cert directories so that they persist across steps.
+:::
+
+This ensures that BuildKit inside your pipeline trusts the self-signed certificate used by your private registry.
+
 ## Troubleshoot Kubernetes cluster build infrastructures
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including use of self-signed certificates, such as:

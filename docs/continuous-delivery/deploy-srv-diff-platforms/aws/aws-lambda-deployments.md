@@ -203,6 +203,8 @@ The API takes a JSON object as input that defines the configuration settings for
 
 In Harness, you use a JSON configuration file to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
 
+Secrets are not supported for the `functionName` field in `function.json`. This value must be provided in plain text to enable traffic shifting and rollback. Using a secret may expose it in logs and cause deployment failures.
+
 **Harness Support for Tag Management**
 
 :::note
@@ -673,11 +675,11 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 <figcaption>Figure: Mapped outputs.</figcaption>
 </figure>
 
-## Lambda deployment steps
+## Lambda Execution steps
 
-Once you have created the Harness service and environment for your deployment, you can model your pipeline in **Pipelines**.
+Lambda execution currently supports the Basic and Canary deployment strategies.
 
-Simply create a new **Deploy** stage, select AWS Lambda as the deployment type, and then use the service and environment you created.
+### Lambda Basic Deployment Strategy
 
 Harness includes execution steps to deploy your function:
 
@@ -686,7 +688,7 @@ Harness includes execution steps to deploy your function:
 
 These steps are added to your pipeline stage **Execution** automatically when you model your pipeline.
 
-### AWS Lambda Deploy step
+#### AWS Lambda Deploy step
 
 The AWS Lambda Deploy step requires no configuration because Harness handles the logic to deploy the artifact to the proper AWS account and region.
 
@@ -779,8 +781,7 @@ Done
 
 </details>
 
-
-### AWS Lambda Rollback Step
+#### AWS Lambda Rollback Step
 
 When a pipeline deployment fails, Harness will automatically roll back your Lambda function to the previous version using the AWS Lambda Rollback step. Harness remembers the successful version of the AWS Lambda service deployed and rollback for you.
 
@@ -795,6 +796,109 @@ rollbackSteps:
       timeout: 10m
       spec: {}
 ```
+
+### Lambda Canary Deployment Strategy
+
+:::note
+Currently, the Canary Deployment Strategy is behind the feature flag `CDS_AWS_LAMBDA_CANARY_DEPLOY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Harness Delegate version `86200` or later is required for this feature.
+:::
+
+The **AWS Canary Deploy** strategy enables gradual rollout of a new Lambda version using traffic shifting. When you select the *Canary* strategy for your AWS Lambda deployment, Harness automatically adds the following execution steps to your pipeline:
+
+- **Lambda Canary Deploy**
+- **Lambda Traffic Shift (10%)**
+- **Lambda Traffic Shift (100%)**
+- **Canary Rollback Step**
+
+The **Lambda Traffic Shift** step is reused twice, once with 10% traffic routing and once with 100%, to support phased promotion of the new version.
+
+<div align="center">
+  <DocImage path={require('./static/lambda-canary.png')} width="80%" height="80%" title="Click to view full size image" />
+</div>
+
+#### Lambda Canary Deploy
+
+This step initiates the canary deployment by performing the following actions:
+
+- Fetches the manifest file for the Lambda function.
+- Captures the current function state, including the latest published version, and stores it for rollback. This version is used to create or update the `harness-latest` alias.
+- Deploys the new version of the Lambda function without shifting any traffic.
+
+No alias changes or traffic updates occur at this stage.
+
+#### Lambda Traffic Shift
+
+The **Lambda Traffic Shift** step allows you to incrementally direct live traffic to the new Lambda version.
+
+- In the first instance, you can configure a small percentage (e.g., 10%) of traffic to be routed to the new version.  
+- In the second instance, set the traffic to 100% to fully promote the new version to production.
+
+You can include manual or automated **approval steps** between traffic shifts to validate deployment health before continuing.
+
+#### Canary Rollback Step
+
+If a failure is detected at any point during the canary rollout:
+
+- All traffic is redirected back to the previously deployed stable version.
+- The newly deployed version is removed.
+- The `harness-latest` alias continues to point to the stable version.
+
+This rollback happens automatically, regardless of the number of traffic shift steps configured in the pipeline.
+
+<details>
+<summary>Sample Canary deployment YAML</summary>
+
+This sample shows the execution steps with approval between traffic shifts.
+
+```yaml
+          execution:
+            steps:
+              - step:
+                  name: Lambda Canary Deploy
+                  identifier: canaryDeployAwsLambda
+                  type: AwsLambdaCanaryDeploy
+                  timeout: 10m
+                  spec: {}
+              - step:
+                  name: Lambda Traffic Shift
+                  identifier: trafficShift10
+                  type: AwsLambdaTrafficShift
+                  timeout: 10m
+                  spec:
+                    trafficPercentage: 10
+              - step:
+                  type: HarnessApproval
+                  name: HarnessApproval_1
+                  identifier: HarnessApproval_1
+                  spec:
+                    approvalMessage: Please review the following information and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    isAutoRejectEnabled: false
+                    approvers:
+                      userGroups:
+                        - account.account_admins
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                    approverInputs: []
+                  timeout: 1d
+              - step:
+                  name: Lambda Traffic Shift
+                  identifier: trafficShift100
+                  type: AwsLambdaTrafficShift
+                  timeout: 10m
+                  spec:
+                    trafficPercentage: 100
+            rollbackSteps:
+              - step:
+                  name: Rollback Canary Deploy
+                  identifier: rollbackCanaryDeploy
+                  type: AwsLambdaCanaryRollback
+                  timeout: 10m
+                  spec: {}
+```
+</details>
 
 ### Rollback for Artifacts Larger Than 50 MB
 

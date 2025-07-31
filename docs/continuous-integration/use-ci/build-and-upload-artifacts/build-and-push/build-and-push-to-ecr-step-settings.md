@@ -12,6 +12,7 @@ redirect_from:
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
+import SshOps from '/docs/continuous-integration/shared/ssh-during-docker-build.md';
 
 [Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) is a fully managed service from AWS that you can use to store and manage Docker images securely and reliably. In addition, ECR provides a simple web-based interface for creating, managing, and sharing Docker images and integrating them with other AWS services. For more information, go to the AWS documentation on [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html).
 
@@ -247,6 +248,8 @@ You can find the following settings on the **Advanced** tab in the step settings
 - [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings): Set conditions to determine when/if the step should run.
 - [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps): Control what happens to your pipeline when a step fails.
 - [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism): Define a matrix, repeat, or parallelism strategy for an individual step.
+
+<SshOps/>
 
 ## Troubleshoot Build and Push steps
 

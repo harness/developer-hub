@@ -19,16 +19,9 @@ You can use any of the [integrated scanners](#supported-scanners-for-container-s
 
 Below is the list of supported scanners for Container Scanning in Harness STO:
 
-- **[Anchore](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference)**
-- **[Aqua Security](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference)**
-- **[Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference)**
-- **[AWS ECR Scan](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference)**
-- **[Black Duck](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference)**
-- **[Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference)**
-- **[Prisma Cloud](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference)**
-- **[Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference)**
-- **[Sysdig](/docs/security-testing-orchestration/sto-techref-category/sysdig-scanner-reference)**
-- **[Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz)**
+import ContainerScanners from '/docs/security-testing-orchestration/set-up-scans/shared/container-scanners.md';
+
+<ContainerScanners />
 
 If the scanner you use for container scanning is not listed, you can explore additional [scanners](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) that are compatible with the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference). If the Custom Scan step does not support the scanner you need, you can use the [Custom Ingestion](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference) step to ingest and process your scan results.
 

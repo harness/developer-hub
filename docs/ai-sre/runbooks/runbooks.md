@@ -3,6 +3,8 @@ title: Runbook Automation Overview
 sidebar_label: Overview
 sidebar_position: 1
 description: Learn about Harness AI SRE Runbook Automation - a powerful tool for automating incident response with integrations for communication, remediation, and monitoring.
+redirect_from:
+- /docs/incident-response/runbooks/runbooks
 ---
 
 # Runbook Automation Overview

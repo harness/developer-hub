@@ -79,9 +79,6 @@ As mentioned earlier, a Rule can have multiple policies. However, when there are
 
   <DocImage path={require('../static/rule-set-gcp.png')} width="90%" height="90%" title="Click to view full size image" />
   
-:::info
-A Rule Set can have upto 30 Rules in it.
-:::
 
 ### Create a new Rule Set
 
@@ -140,7 +137,6 @@ While setting up a new Enforcement, you can select the following:
 :::important note
 - Number of Targets in an Enforcement can be upto 6000.
 - Number of Rule Sets in Enforcement can be upto 30.
-- Number of Rules in Enforcement can be upto 30.
 :::
 
 ### Create a new Enforcement
@@ -196,6 +192,10 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 - Failure:  If the evaluation is not completed and has errors, the status of the evaluation is shown as "Failure".
 - Partial Success: If the evaluation is successful without any Harness errors but Cloud Custodian has additional logs and/or in case of multi-policy evaluations, if the evaluation was successful only for a subset of resources, the status is shown as "Partial Success".
 
+
+:::info
+Each enforcement can now have up to **10,000 evaluations**. The cap is calculated as `Rules × Accounts × Regions` and replaces the earlier individual limits on rules, rule sets, accounts, or regions.
+:::
 
 <DocImage path={require('../static/evaluation-gcp-one.png')} width="90%" height="90%" title="Click to view full size image" />
 

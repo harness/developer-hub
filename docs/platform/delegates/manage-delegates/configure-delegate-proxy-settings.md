@@ -1,6 +1,6 @@
 ---
-title: Configure delegate proxy settings
-description: All delegates include proxy settings you can use to change how the delegate connects to the Harness Manager. By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.…
+title: Proxy configuration guide
+description: Learn how to manage connectivity in environments where outbound traffic must go through a proxy. 
 sidebar_position: 1
 helpdocs_topic_id: 5ww21ewdt8
 helpdocs_category_id: m9iau0y3hv
@@ -8,15 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-All delegates include proxy settings you can use to change how the delegate connects to the Harness Manager.
+This article explains how to configure proxy settings to manage connectivity in environments where outbound traffic is restricted. 
 
-By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.
+By default, HTTP and HTTPS proxy schemes are supported.
 
-:::warning
+:::warning Important Note
 When using a HTTP Helm repositories, the [default setting](/docs/platform/settings/default-settings/) `Ignore status code for HTTP connections` must be set to `true` as socket connection tests conducted by Harness from the delegate do not account for proxy details.
 :::
 
-### Kubernetes delegate proxy settings
+## Proxy Settings for Delegate 
+
+### Kubernetes
 
 The proxy settings are in the `harness-delegate.yaml` file:
 
@@ -51,11 +53,11 @@ The `PROXY_MANAGER` setting determines whether the delegate bypasses proxy setti
 
 If an in-cluster Kubernetes delegate has a proxy configured, then `NO_PROXY` must contain the cluster master IP. This enables the delegate to skip the proxy for in-cluster connections.
 
-### Sample Docker delegate installation script with a proxy scheme
+### Docker 
 
 The following script installs a Docker delegate with an HTTP proxy scheme.
 
-```
+```bash
 docker run --cpus=1 --memory=2g \
   -e DELEGATE_NAME=docker-delegate \
   -e RUNNER_URL=https://<YOUR_RUNNER_URL> \
@@ -70,7 +72,65 @@ docker run --cpus=1 --memory=2g \
   -e MANAGER_HOST_AND_PORT=https://<YOUR_MANAGER_HOST_AND_PORT>/delegate:23.09.80505
 ```
 
-### Subnet masks not supported
+## Proxy Settings for Delegate Upgrader
+
+:::info Feature Availability 
+  This feature is available from Delegate Upgrader [1.7.0](/release-notes/delegate#version-170-) and later.
+:::
+
+### Kubernetes 
+
+To configure proxy for your Kubernetes Delegate Upgrader, add the proxy settings to the Delegate upgrader config in the manifest file. Below is an example for the same:
+
+```yaml
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: kubernetes-delegate-upgrader-config
+    namespace: harness-delegate-ng
+  data:
+    config.yaml: |
+      mode: Delegate
+      dryRun: false
+      workloadName: kubernetes-delegate
+      namespace: harness-delegate-ng
+      containerName: delegate
+      delegateConfig:
+        accountId: XXXX_XXXXXXX_XXXX
+        managerHost: https://<YOUR_VANITY_URL>
+      proxyHost: XX.XX.XX.XX
+      proxyPort: 3128
+      proxyManager: true
+      proxyUser: MYUSER
+      proxyPassword: ******
+```
+
+Once updated, apply the configuration using the command below.
+
+```bash
+kubectl apply -f harness-delegate.yaml
+```
+
+### Docker
+
+To run the Docker Delegate Upgrader with proxy settings, set the required environment variables in the Docker command as shown in the example below.
+
+```bash
+docker run  --cpus=0.1 --memory=100m \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -e ACCOUNT_ID=XXXX_XXXXXXX_XXXX \
+  -e MANAGER_HOST_AND_PORT=https://<YOUR_VANITY_URL> \
+  -e UPGRADER_WORKLOAD_NAME=docker-delegate \
+  -e PROXY_HOST=YOUR_PROXY_HOST_IP \
+  -e PROXY_PORT=YOUR_PROXY_PORT \
+  -e PROXY_USER=MYUSER \
+  -e PROXY_PASSWORD=****** \
+  -e UPGRADER_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXX \
+  -e CONTAINER_STOP_TIMEOUT=3600 \
+  -e SCHEDULE="0 */1 * * *" us-west1-docker.pkg.dev/gar-setup/docker/upgrader:1.7.0
+```
+
+## Subnet masks not supported
 
 You cannot use delegate proxy settings to specify the Cluster Service Network CIDR notation and make the delegate bypass the proxy to talk to the Kubernetes API.
 

@@ -623,6 +623,13 @@ List of dimensions:
 ### Reverted Deployments
 This view contains the data related to the pipeline executions which have been reverted.
 
+:::note
+
+1. This only works for deployments reverted using post production rollback feature.
+2. This requires pipeline yaml to have a `reverted_execution_id` tag. For more details please refer to [Use reverted executions to capture mean time to restore](/docs/continuous-delivery/monitor-deployments/dora-metrics-dashboard/#use-reverted-executions-to-capture-mean-time-to-restore)
+
+:::
+
 <div align="center">
   <DocImage path={require('./static/using-cd-custom-dashboards-15.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>

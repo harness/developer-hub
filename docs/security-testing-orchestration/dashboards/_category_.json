@@ -1,11 +1,11 @@
 {
-    "label": "Dashboards and reports",
+    "label": "Dashboards and Reports",
     "position": 95,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Dashboards and reports"
+        "title": "Dashboards and Reports"
     }
 }

@@ -1,120 +1,131 @@
 ---
-title: Centralised notification for Pipeline
-description: Configure pipeline notification rules at one place
+title: Centralised notification
+description: Configure notifications based on specific rules and conditions in pipelines, delegates, and other Harness components to keep teams informed of critical events.
 sidebar_position: 3
 ---
 
 import PipeEvents from './static/set_pipeline_events.png';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import React from 'react';
 
-:::note
-Currently, the Centralised Notification feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`, and Pipeline specific notifications are behind `PIPE_CENTRALISED_NOTIFICATION`. You will need both these flags turned on to use this feature. Contact [Harness Support](mailto:support@harness.io) to enable them.
+:::info Prerequisites
+Before you begin, ensure you have the **`PL_CENTRAL_NOTIFICATIONS`** feature flag enabled.
+Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
 :::
 
-With notifications management, you can configure notifications for the following resource types:
+## Overview
 
-1. Pipeline
-2. Delegate
-3. Chaos Experiment 
+Harness Centralised Notifications allow you to send notifications based on rules and conditions across pipelines and delegates. You can configure and manage alerts to stay informed about critical events in your Harness environment.
 
-To receive notifications for specific events or conditions related to these resource types, you need to configure appropriate rules. While notifications can be set up for all the above resources, we will configure a centralised notification for Pipelines at a specific scope for now. 
+You can configure centralised notifications for:
 
-You can set up notification for Pipeline at all the [scopes](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization** and **Project**. 
+- **Pipelines**: Get notified about pipeline events like success, failure, or stage completion
+- **Delegates**: Receive alerts when delegates disconnect, expire, or are about to expire
 
-### **Account Level**
+## Pipeline Notifications
 
-At account level, you will be able to configure notifications for pipelines across a **Specific Organization** or **All Organization**.
+:::info Prerequisites
+Before you begin, ensure you have the **`PIPE_CENTRALISED_NOTIFICATION`** feature flag enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+:::
 
-![](./static/account_level_notification_management.png)
+Centralised Notifications for pipelines allow you to configure notifications for multiple pipelines at once instead of setting them up individually. You can create rules at different scopes—Account, Organisation, or Project—with each scope providing appropriate targeting options for the pipelines within its hierarchy.
 
-### **Organization Level**
+These notifications are beneficial for tracking pipeline start, success, and failure events, as well as stage-level events (start, success, failure). This helps you monitor pipeline health and quickly identify issues across your deployment processes.
 
-At Organization level, you will be able to configure notifications for pipeline across a **Specific Project** or **All Projects**.
+### Configuration Steps
 
-![](./static/organization_level_notification_manage.png)
+<Tabs>
+<TabItem value="Interactive">
+        <iframe 
+        src="https://app.tango.us/app/embed/c90eaf8d-dfb7-48f1-9c61-761d985cd673" 
+        style={{ minHeight: "640px" }} 
+        sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+        title="Centralised Notification for Pipeline" 
+        width="100%" 
+        height="100%" 
+        referrerPolicy="strict-origin-when-cross-origin" 
+        frameBorder="0" 
+        allowFullScreen 
+        />
+</TabItem>
 
-### **Project Level**
+<TabItem value="Manual">
+1. **Access Notification Management**
+   - Navigate to **Account Settings** → **General** → **Notifications Management**
+   - Click **+ New Notification** to create a new rule
 
-At the pipeline level, you can configure notifications for **All Pipelines**.
+2. **Set up Pipeline Notification Rule**
+   - Provide a **Notification Name** and click **Continue**
+   - Select **Pipeline** as the **Resource Type**
+   - Choose your scope: **All Organizations** or **Specified Organizations**
+   - Click **Continue**
 
-![](./static/project_level_notification_manage.png)
+3. **Set Conditions**
+   - Click **+ Add Condition** to specify when notifications trigger
+   - Enter a **Condition Name**
+   - Select relevant **Pipeline Events** (start, success, failure, etc.)
+   - (Optional) Add a custom **Notification Template**
+   - Click **Continue**
 
-## Setting Up Notifications Management
+4. **Configure Channels**
+   - Select notification channels.
+   - Choose existing channels or [create new ones](/docs/platform/notifications/notification-settings#configure-new-channels-to-sent-notification)
+   - Click **Submit** to save your configuration
+</TabItem>
+</Tabs>
 
-In this example, we are going to discuss setting up notification management of Pipeline resource at Organization Level:-
+## Delegate Notifications
 
-1. In Harness, go to **Organization Settings**.
-2. Under **General**, select **Notifications Management**. 
+Central Delegate notifications provide proactive monitoring of Harness delegates, ensuring that you are immediately aware of connectivity issues and expiration. Rules configured at higher scopes automatically apply to delegates at lower scopes, based on your rule configuration.
 
-        ![](./static/Organization_setting_notification_management.png)
+These notifications help track delegate disconnection, expiration, and expiring soon events, allowing you to monitor delegate health and quickly identify connectivity issues that could impact your deployments.
 
-3. Under **Overview**, provide **Notification Name** and **Continue** to select Resource type.
+### Configuration Steps
 
-        ![](./static/new-notification-setup.png)
+<Tabs>
+<TabItem value="Interactive">
+        <iframe 
+        src="https://app.tango.us/app/embed/0e56b7e9-c812-48a0-b35c-0c3b5e9f1549" 
+        style={{ minHeight: "640px" }} 
+        sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+        title="Centralised Notification for Delegates" 
+        width="100%" 
+        height="100%" 
+        referrerPolicy="strict-origin-when-cross-origin" 
+        frameBorder="0" 
+        allowFullScreen 
+        />
+</TabItem>
 
-4. Under **Resources**, Select Resource Type as **Pipeline**. 
+<TabItem value="Manual">
+1. **Access Notification Management**
+   - Navigate to **Account Settings** → **General** → **Notifications Management**
+   - Click **+ New Notification** to create a new rule
 
-        ![](./static/resource_type.png)
+2. **Set up Delegate Notification Rule**
+   - Provide a **Notification Name** and click **Continue**
+   - Select **Delegate** as the **Resource Type**
+   - Choose your scope: **All Delegates** or **Specific Tags**
+   - If using tags, specify up to five delegate tags
+   - Click **Continue**
 
-        Under **Select Project** you can either select **All Projects** under the organization or you can select **Specified Project** if you want to configure notification for specific projects within the organization. Click on **Continue** to set conditions for notification.
+3. **Define Conditions**
+   - Click **+ Add Condition** to specify when notifications trigger
+   - Enter a **Condition Name**
+   - Select **Delegate Events**:
+     - **Delegate Disconnected**: Immediate notification when disconnection occurs
+     - **Delegate Expired**: Daily notification for expired delegates
+     - **Delegate Expires in [X] Weeks**: Advance warning (1-4 weeks)
+   - Click **Continue**
 
-        ![](./static/pipeline-resource.png)
+4. **Configure Channels**
+   - Select notification channels.
+   - Choose existing channels or [create new ones](/docs/platform/notifications/notification-settings#configure-new-channels-to-sent-notification)
+   - Click **Submit** to save your configuration.
+</TabItem>
+</Tabs>
 
-5. Under **Condition** , select **+ Add Condition** to define pipeline events based on which you want to be notified.
-    
-        ![](./static/resource-pipeline-condition.png)
-
-        Under events you can select the following **pipeline events**:-
-
-        1. Pipeline Start
-        2. Pipeline Success
-        3. Pipeline Failed
-        4. Stage Start
-        5. Stage Success
-        5. Stage Failed
-
-        :::info note
-        Stage start/success/failed events will apply to all stages within a pipeline. There is no option to configure notifications for specific stages, if you want to do that you can configure it via [Pipeline level notification](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
-        :::
-
-        Under **Create Condition** provide, Condition Name and **Select Pipeline Events**. Click on **Continue** to set channel where you want to send the notification.
-
-        <img src={PipeEvents} width="500"/>
-
-6. Optionally you can add **Notification Template** to get custom notifications based on the event. To learn more, go to [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template).
-
-        ![](./static/notification-template.png)
-
-7. Under **Set Channels**, **Select Channels** where you want notification to be sent.
-
-        ![](./static/select-channels.png)
-
-        Under **Select Channel** you can choose the already created channel at that scope or you can create a [**New Channel**](/docs/platform/notifications/notification-settings.md).
-
-        To configure a New Channel, click New Channel and enter a Channel Name.
-            
-            ![](./static/new-channel.png)
-
-            Next, choose a Connectivity Mode—you can send notifications either directly through the Harness Platform or via a Harness Delegate.
-
-                ![connectivity-mode](./static/connectiviy-mode.png)
-
-            If you choose to send notifications through a Harness Delegate, select the appropriate delegate in the Delegate Setup window.
-
-                ![delegate-mode](./static/delegate-setup.png)
-
-            Once the connectivity mode is configured, select the [**Channel Type**](/docs/platform/notifications/notification-settings#configure-pipeline-notifications) and add details related to the channel type to proceed.
-            
-            :::note
-            If you select the Connectivity Mode as "Connect through a Harness Delegate" and Channel Type as "Email", ensure to add an [SMTP configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration) to which the Harness delegate has access. If this is not done, then the Email notifications will fail.
-            :::
-
-                ![](./static/create-new-channel.png)
-
-8. Select **Submit** to save your notification configuration.
-
-        ![](./static/submit-notification.png)
-
-You can set up notification at [Account](#account-level) and [Project Level](#project-level) following the same steps outlined above.
 
 
 

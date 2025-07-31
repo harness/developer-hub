@@ -12,6 +12,7 @@ canonical_url: https://www.harness.io/blog/docker-multi-stage-build
 ---
 
 import Flags from '/docs/continuous-integration/shared/build-and-push-runtime-flags.md';
+import SshOps from '/docs/continuous-integration/shared/ssh-during-docker-build.md';
 
 This topic explains how to configure the **Build and Push an image to Docker Registry** step in a Harness CI pipeline. This step creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry. This is one of several options for [building and pushing artifacts in Harness CI](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
@@ -85,6 +86,11 @@ This step supports Docker connectors that use username and password authenticati
 The name of the repository where you want to store the image, for example, `<hub-user>/<repo-name>`.
 
 For private Docker registries, specify a fully qualified repo name.
+
+:::tip
+Using a private Docker registry with a self-signed certificate?  
+[Learn how to configure BuildKit to trust self-signed certs.](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
+:::
 
 ### Tags
 
@@ -200,10 +206,11 @@ You can find the following settings on the **Advanced** tab in the step settings
 - [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps): Control what happens to your pipeline when a step fails.
 - [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism): Define a matrix, repeat, or parallelism strategy for an individual step.
 
+<SshOps/>
+
 ## Troubleshoot Build and Push steps
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to building and pushing images, such as:
-
 
 - [Why do I encounter an authentication error when using V2 API](/kb/continuous-integration/continuous-integration-faqs/#why-build-and-push-steps-dont-support-v2-api-urls)
 - [What drives the Build and Push steps? What is kaniko?](/kb/continuous-integration/continuous-integration-faqs/#what-drives-the-build-and-push-steps-what-is-kaniko)

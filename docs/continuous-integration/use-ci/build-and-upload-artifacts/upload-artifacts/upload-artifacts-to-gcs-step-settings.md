@@ -62,6 +62,13 @@ The GCS destination bucket name.
 
 Path to the file or directory that you want to upload.
 
+You can also use glob patterns in the **Source Path** to match multiple files or file types. For example:
+
+```yaml
+sourcePath: dist/*.zip       # Upload all ZIP files in the dist directory
+ignore: "*.tmp"              # Exclude temporary files
+```
+
 If you want to upload a compressed file, you must use a [Run step](../../run-step-settings.md) to compress the artifact before uploading it.
 
 #### Target
@@ -201,7 +208,7 @@ pipeline:
                   spec:
                     connectorRef: YOUR_GCP_CONNECTOR_ID
                     bucket: YOUR_GCS_BUCKET
-                    sourcePath: target/surefire-reports
+                    sourcePath: dist/*.zip  # Supports glob patterns
                     target: <+pipeline.sequenceId>
               - step: ## Show artifact URL on the Artifacts tab.
                   type: Plugin
@@ -270,7 +277,7 @@ pipeline:
                   spec:
                     connectorRef: YOUR_GCP_CONNECTOR_ID
                     bucket: YOUR_GCS_BUCKET
-                    sourcePath: target/surefire-reports
+                    sourcePath: dist/*.zip  # Supports glob patterns
                     target: <+pipeline.sequenceId>
               - step: ## Show artifact URL on the Artifacts tab.
                   type: Plugin
@@ -362,9 +369,18 @@ The complete [Plugin step settings](../../use-drone-plugins/plugin-step-settings
 | `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). | `YOUR_IMAGE_REGISTRY_CONNECTOR` |
 | `image` | String | Enter `plugins/gcs`. | `plugins/gcs` |
 | `token` | String | Reference to a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a GCP service account token to connect and authenticate to GCS. | `<+secrets.getValue("gcpserviceaccounttoken")>` |
-| `source` | String | The directory to download from your GCS bucket, specified as `BUCKET_NAME/DIRECTORY`. | `my_cool_bucket/artifacts` |
+| `source` | String | The directory or glob pattern to upload/download from your GCS bucket, specified as `BUCKET_NAME/DIRECTORY` or a glob. | `my_cool_bucket/artifacts` |
 | `target` | String | Path to the location where you want to store the downloaded artifacts, relative to the build workspace. | `artifacts` (downloads to `/harness/artifacts`) |
+| `ignore` | String | Glob pattern of files to exclude from the upload/download. | `"*.tmp"` |
 | `download` | Boolean | Must be `true` to enable downloading. If omitted or `false`, the plugin attempts to upload artifacts instead. | `"true"` |
+
+The `source` and `ignore` fields support glob patterns. For example:
+
+```yaml
+source: dist/*.zip       # Upload all ZIP files in dist directory
+target: my-bucket/builds
+ignore: "*.tmp"          # Exclude temporary files
+```
 
 For example:
 
