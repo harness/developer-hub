@@ -146,20 +146,21 @@ The following deprecated API endpoints are longer supported:
 
 - Increased the item limit in scrollable lists beyond 100 to enhance usability and avoid display limitations. [PL-63813]
 
-#### New Feature and Enhancement
+#### New features and enhancements
 
 - Introduced [Secret Manager template reconciliation](/docs/platform/secrets/secrets-management/reconcilation-of-secret-manager-template) to automatically review and update linked Secret Managers and Secrets when templates are modified, preventing misconfigurations. [PL-61310]
-- Launched [Default Notification Templates](/docs/platform/notifications/default-notification-template) that automatically apply when no notification template is selected in a notification rule, providing the capability to define the notification template centrally. [PL-61479]
-- Introduced [Centralised Delegate Notifications](/docs/platform/notifications/centralised-notification) for proactive delegate monitoring with immediate alerts for disconnection, expiration, and near-expiration alerts. [PL-31873]
-- AWS KMS connector now supports adding [ARN as plain text](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager) across all authentication methods. [PL-62434]
+- Added [Default Notification Templates](/docs/platform/notifications/default-notification-template) that automatically apply when no custom template is selected, ensuring consistent notifications across scopes. [PL-61479]
+- Introduced [Centralised Delegate Notifications](/docs/platform/notifications/centralised-notification) for proactive delegate monitoring with immediate alerts for disconnection, expiration, and connectivity issues. [PL-31873]
+- AWS KMS connector now supports [plain text and encrypted ARNs](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager) across all authentication methods for enhanced security. [PL-62434]
 - Enhanced database operations during delegate registration to prevent duplicate entries in `delegateConfig`. [PL-64095]
 - Improved visibility on the service accounts' details page at a higher scope; users can now see details of service accounts that are inherited at lower scopes. [PL-63634]
+- A new API has been introduced to delete the delegate token. [PL-63386]
 - Delegate tasks are now marked as completed instead of being deleted immediately. These completed tasks are automatically removed after a defined retention period using a TTL (Time-To-Live) index. [PL-61842]
 - ECS delegates are now deprecated. New ECS delegate registrations are no longer supported, and existing ECS delegates will gradually be disconnected. [PL-56291]
 
 ### Version 1.98.x <!--July 22, 2025-->
 
-#### New Feature and Enhancement
+#### New features and enhancements
 
 - Enhanced the task broadcast mechanism to prevent sending tasks to non-eligible delegates. [PL-58722]
 
@@ -170,7 +171,7 @@ The following deprecated API endpoints are longer supported:
 - Resolved a bug in the roll-up job by updating it to process documents one at a time, improving memory efficiency and preventing out-of-memory (OOM) errors. [PL-63838]
 - Updated User Details page where links under the RoleBindings tab now properly redirect to the correct scoped Roles and ResourceGroups. [PL-63651]
 
-#### New Feature and Enhancement
+#### New features and enhancements
 
 - New audit event for Delegate token expiry: An audit event gets logged whenever a delegate token gets revoked. This enhancement improves visibility and traceability of delegate token lifecycle events, supporting stronger security auditing. [PL-63995]
 
@@ -181,7 +182,7 @@ The following deprecated API endpoints are longer supported:
 - SAML Authentication: Resolved time synchronization issues by introducing a 5-minute clock skew tolerance between the Identity Provider (IdP) and Harness Manager. [PL-63828]
 - Updated SMP license validation to avoid false email alerts. [PL-63554]
 
-#### New Feature and Enhancement 
+#### New features and enhancements 
 
 - Added the `FIPS_ENABLED` environment variable to the delegate YAML when the manager is deployed with FIPS enabled. [PL-63554]
 
@@ -191,7 +192,7 @@ The following deprecated API endpoints are longer supported:
 
 - Resolved an issue in the Create [IP Allowlist](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/) screen where pasting text into the Name field would duplicate the content. For example, pasting `ABC 1` would incorrectly result in `ABC 1ABC 1`. [PL-63331]
 
-#### New Feature and Enhancement 
+#### New features and enhancements 
 
 - Introduced `core_oidcIdToken_create` as an experimental permission to enable creation of OIDC ID Tokens. [PL-62926]
 - Delegates are now tagged with the appropriate scope (Account/Organization/Project) for all Assessment types in the Delegate selection logs in a pipeline. [PL-49165]
@@ -204,7 +205,7 @@ The following deprecated API endpoints are longer supported:
 
 - Previously, selecting a higher-level Secret Manager (like Account scope) without access to lower levels (like Organization scope) caused the Secret Manager screen to keep loading. This is now fixed, and users can select and use Secret Managers without issues. [PL-63165]
 
-#### New Feature and Enhancement 
+#### New features and enhancements 
 
 - Added support for managing access control for [connectors through tags](https://developer.harness.io/docs/platform/connectors/manage-access-control-for-connectors). This feature is currently behind the feature flag: `PL_TAG_BASED_ACCESS_TO_CONNECTORS`. [PL-43468]
 
@@ -216,7 +217,7 @@ The following deprecated API endpoints are longer supported:
 - Navigating to a role or resource group from user role bindings no longer leads to a blank page. [PL-63154]
 - Code Repository resource group now appears correctly in the resource group list. [PL-63120]
 
-#### New Feature and Enhancement 
+#### New features and enhancements 
 
 - Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance. [PL-62957]
 - Added support for [Custom Notifications](https://developer.harness.io/docs/platform/templates/customized-notification-template/) for all remaining channels: Email, Slack, Microsoft Teams, Datadog, PagerDuty.
@@ -242,7 +243,7 @@ The following deprecated API endpoints are longer supported:
 - Fixed an issue where updating users in an SCIM-managed group caused an error. This behavior was inconsistent with the Terraform provider. Now, instead of throwing an error, the system ignores the incoming user data and retains the existing users when saving the group. [PL-62492] 
 - Fixed an issue where the Terraform provider version is no longer hardcoded in the installation command. It will now be automatically selected based on the delegate's configuration. [PL-61735]
 
-#### New Feature and Enhancement 
+#### New features and enhancements 
 
 - SMP customers can now see the chart version in the Harness UI under Account Details. [PL-62579]
 - All SMP services now support a custom Istio gateway. [PL-61322]
