@@ -15,7 +15,7 @@ The share results functionality allows you to download a copy of your metrics im
 
 ## Sharing results
 
-When viewing the Metrics impact tab, under Results, you can find the **Share results** dropdown on the right side of the page, above the metric cards.
+When viewing the **Metrics impact** tab, under **Results**, you can find the **Share results** dropdown on the right side of the page, above the metric cards.
 
 ![](../../static/share-results.png)
 
