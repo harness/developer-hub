@@ -968,6 +968,36 @@ type SplitView = {
 }
 ```
 
+### Feature flag prerequisites
+
+Feature flag prerequisites allow you to define dependency relationships between flags in the React Native SDK. A flag is evaluated only if all its prerequisites return one of the specified treatments. If any prerequisite is not met, the flag serves its `defaultTreatment`.
+
+Prerequisites are checked before allowlists and targeting rules, letting you build advanced rollout strategies and conditional flag logic in your React Native apps.
+
+For example:
+
+```typescript
+const splitView: SplitView = {
+  name: "flagB",
+  trafficType: "user",
+  killed: false,
+  treatments: ["on", "off"],
+  changeNumber: 123456789,
+  configs: {},
+  sets: [],
+  defaultTreatment: "off",
+  impressionsDisabled: false,
+  prerequisites: [
+    {
+      flagName: "flagA",
+      treatments: ["on"]
+    }
+  ]
+};
+```
+
+In this example, the `flagB` flag will only be evaluated if the `flagA` flag returns the `"on"` treatment. Otherwise, `flagB` will serve its `defaultTreatment` `"off"`.
+
 ## Listener
  
 FME SDKs send impression data back to Harness servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*. For that purpose, the SDK's configurations have a parameter called `impressionListener` where an implementation of `ImpressionListener` could be added. This implementation **must** define the `logImpression` method and it receives data in the following schema.

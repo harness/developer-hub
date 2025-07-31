@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2025-07-25T10:00:00
+date: 2025-08-01T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -12,7 +12,30 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: July 25, 2025
+#### Last updated: August 1, 2025
+
+## August 2025
+
+### [New Feature] Support for feature flag prerequisites
+----
+#### 2025-08-01
+
+The following SDKs and customer-deployed components now support feature flag prerequisites. This feature allows you to define dependency relationships between flags, ensuring a given flag is only evaluated if its prerequisite flag returns one of the specified treatments. 
+
+Prerequisites are evaluated before allowlists and targeting rules, helping you implement complex rollout strategies and conditional flag logic. If any prerequisite is not met, the flag is not evaluated and its `defaultTreatment` is served.
+
+#### Related documentation
+
+- [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#feature-flag-prerequisites)
+- [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#feature-flag-prerequisites)
+- [Angular SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/angular-utilities#feature-flag-prerequisites)
+- [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#feature-flag-prerequisites)
+- [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#feature-flag-prerequisites)
+- [React Native SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk#feature-flag-prerequisites)
+- [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk#feature-flag-prerequisites)
+- [Browser Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite#feature-flag-prerequisites)
+- [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#feature-flag-prerequisites())
+- [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#feature-flag-prerequisites)
 
 ## July 2025
 

@@ -896,6 +896,38 @@ public class SplitView
 }
 ```
 
+### Feature flag prerequisites
+
+Feature flag prerequisites allow you to define dependency relationships between feature flags in the .NET SDK. A flag is only evaluated if all its prerequisites return one of the specified treatments. If any prerequisite is not met, the flag is not evaluated and its `defaultTreatment` is served.
+
+Prerequisites are evaluated before allowlists and targeting rules, enabling you to design complex rollout strategies and conditional flag logic.
+
+For example:
+
+```csharp
+var splitView = new SplitView
+{
+  name = "flagB",
+  trafficType = "user",
+  killed = false,
+  treatments = new List<string> { "on", "off" },
+  changeNumber = 123456789,
+  configs = new Dictionary<string, string>(),
+  sets = new List<string>(),
+  defaultTreatment = "off",
+  prerequisites = new List<PrerequisitesDto>
+  {
+    new PrerequisitesDto
+    {
+      flagName = "flagA",
+      treatments = new List<string> { "on" }
+    }
+  }
+};
+```
+
+In this example, the `flagB` flag will only be evaluated if the `flagA` flag returns the `"on"` treatment. Otherwise, `flagB` will serve its `defaultTreatment` `"off"`.
+
 ## Listener
 
 FME SDKs send impression data back to Harness servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an impression listener.

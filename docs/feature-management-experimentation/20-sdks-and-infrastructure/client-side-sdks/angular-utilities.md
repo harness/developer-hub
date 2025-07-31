@@ -375,9 +375,44 @@ type SplitView = {
     [treatmentName: string]: string
   },
   sets: Array<string>,
-  defaultTreatment: string
+  defaultTreatment: string,
+  impressionsDisabled: boolean,
+  prerequisites: Array<{
+    flagName: string,
+    treatments: string[]
+  }>
 }
 ```
+
+### Feature flag prerequisites
+
+Feature flag prerequisites allow you to define dependency relationships between flags. A flag is only evaluated if all of its prerequisites evaluate to one of the specified treatments. If any prerequisite is not met, the flag is not evaluated and its `defaultTreatment` is served.
+
+Prerequisites are evaluated before allowlists and targeting rules, enabling you to design complex rollout strategies and conditional flag logic.
+
+For example, in Angular:
+
+```typescript
+const splitView: SplitView = {
+  name: "flagB",
+  trafficType: "user",
+  killed: false,
+  treatments: ["on", "off"],
+  changeNumber: 123456789,
+  configs: {},
+  sets: [],
+  defaultTreatment: "off",
+  impressionsDisabled: false,
+  prerequisites: [
+    {
+      flagName: "flagA",
+      treatments: ["on"]
+    }
+  ]
+};
+```
+
+In this example, the `flagB` flag will only be evaluated if the `flagA` flag returns the `on` treatment. Otherwise, `flagB` will serve its `defaultTreatment` `"off"`.
 
 ## Listener
 

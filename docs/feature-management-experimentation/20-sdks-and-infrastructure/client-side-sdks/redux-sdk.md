@@ -908,6 +908,41 @@ function requestHandler(params) {
 
 For more details on about using the Manager, go to [JavaScript SDK Manager](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#manager).
 
+### Feature flag prerequisites
+
+Feature flag prerequisites allow you to define dependency relationships between feature flags when using the Redux SDK. A flag is only evaluated if all of its prerequisites return one of the specified treatments. If any prerequisite is not met, the flag is not evaluated and its `defaultTreatment` is served.
+
+Prerequisites are evaluated before allowlists and targeting rules, enabling you to design complex rollout strategies and conditional flag logic in your Redux-managed applications.
+
+For example: 
+
+```typescript
+const splitView = getSplit("flagB");
+
+console.log(splitView);
+/**
+{
+  name: "flagB",
+  trafficType: "user",
+  killed: false,
+  treatments: ["on", "off"],
+  changeNumber: 123456789,
+  configs: {},
+  sets: [],
+  defaultTreatment: "off",
+  impressionsDisabled: false,
+  prerequisites: [
+    {
+      flagName: "flagA",
+      treatments: ["on"]
+    }
+  ]
+}
+*/
+```
+
+In this example, the `flagB` flag will only be evaluated if the `flagA` flag returns the `"on"` treatment. Otherwise, `flagB` will serve its `defaultTreatment` `"off"`.
+
 ## Listener
  
 FME SDKs send impression data back to Harness servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*. For that purpose, the SDK's configurations have a parameter called `impressionListener` where an implementation of `ImpressionListener` could be added. This implementation **must** define the `logImpression` method and it receives data in the following schema.

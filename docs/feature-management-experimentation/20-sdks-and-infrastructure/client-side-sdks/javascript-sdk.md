@@ -960,6 +960,36 @@ type SplitView = {
 }
 ```
 
+### Feature flag prerequisites
+
+Feature flag prerequisites let you define dependency relationships between feature flags in the JavaScript SDK. A flag is only evaluated if all of its prerequisites return one of the specified treatments. If any prerequisite is unmet, the flag serves its `defaultTreatment` instead.
+
+Prerequisites are evaluated before allowlists and targeting rules, allowing you to design complex rollout strategies and conditional flag logic on the client side.
+
+For example: 
+
+```javascript
+const splitView = {
+  name: "flagB",
+  trafficType: "user",
+  killed: false,
+  treatments: ["on", "off"],
+  changeNumber: 123456789,
+  configs: {},
+  sets: [],
+  defaultTreatment: "off",
+  impressionsDisabled: false,
+  prerequisites: [
+    {
+      flagName: "flagA",
+      treatments: ["on"]
+    }
+  ]
+};
+```
+
+In this example, the `flagB` flag will only be evaluated if the `flagA` flag returns the `"on"` treatment. Otherwise, `flagB` serves its `defaultTreatment` `"off"`.
+
 ## Listener
  
 FME SDKs send impression data back to Harness servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*. For that purpose, the SDK's configurations have a parameter called `impressionListener` where an implementation of `ImpressionListener` could be added. This implementation **must** define the `logImpression` method and it receives data in the following schema.
