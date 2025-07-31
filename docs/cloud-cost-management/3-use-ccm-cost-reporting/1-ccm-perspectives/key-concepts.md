@@ -202,8 +202,12 @@ Analyze costs for your Kubernetes clusters and ECS environments with these group
 <DocImage  path={require('./static/cluster-cost.png')} width="100%" height="100%" title="Click to view full size image" />
 
 :::info
-
-Preferences on the perspective overview page are toggle only. They can't be saved at the perspective or account settings level.
+We've introduced automatic saving of Perspective preferences, eliminating the need to reconfigure each time. This includes (but not limited to):
+  - Group By selection
+  - Filters applied
+  - Cost preference 
+  - Cost granularity 
+When preferences are selected in a Perspective, those settings are saved automatically. Upon returning to the same Perspective, the previously selected preferences are reapplied. Once the user logs out, all view preferences stored in the cache will be cleared.
 :::
 
 #### Cloud-Based Preferences

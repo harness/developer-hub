@@ -55,6 +55,13 @@ Available when:
 
 - **GCP subscription-benefit credits now included** : We have added support for GCP subscription-benefit credits in Perspectives. This ensures that any credits applied through GCP subscription-based benefits are now accurately identified and included. *[CCM-24197]*
 
+- **Perspective Preferences Persistence**: We've introduced automatic saving of Perspective preferences, eliminating the need to reconfigure each time. This includes (but not limited to):
+  - Group By selection
+  - Filters applied
+  - Cost preference 
+  - Cost granularity 
+When preferences are selected in a Perspective, those settings are saved automatically. Upon returning to the same Perspective, the previously selected preferences are reapplied. Once the user logs out, all view preferences stored in the cache will be cleared. *[CCM-24210]*
+
 ### Bug Fixes
 
 - **Perspective search with parentheses:** Fixed an issue where Perspective searches containing parentheses would fail.  *[CCM-24027]*
