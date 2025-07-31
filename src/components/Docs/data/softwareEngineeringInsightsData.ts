@@ -17,7 +17,7 @@ import { MODULES } from "@site/src/constants";
             module: MODULES.sei,
             description:
               "Learn about the benefits and features of Harness Software Engineering Insights, as well as how to get started with SEI.",
-            link: "/docs/category/get-started-with-sei/",
+            link: "/docs/category/get-started-with-sei-20/",
           },
           {
             title: "What's supported",
@@ -26,63 +26,77 @@ import { MODULES } from "@site/src/constants";
               "SEI integrates with a number of third-party providers to provide a centralized visibility on engineering work.",
             link: "/docs/software-engineering-insights/sei-supported-platforms",
           },
+          {
+            title: "Key concepts",
+            module: MODULES.sei,
+            description:
+              "This topic outlines the core concepts that power SEI 2.0.",
+            link: "/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts",
+          },
         ],
       },
 
       {
-        name: "Configure",
+        name: "Set up SEI",
         description:
           "",
         list: [
           {
-            title: "Projects and Collections",
-            module: MODULES.sei,
-            description:
-              "Collections keep your data organized.",
-            link: "/docs/category/projects-and-collections",
-          },
-          {
-            title: "Integrations",
+            title: "Configure integrations",
             module: MODULES.sei,
             description:
               "SEI uses integrations to ingest data from your SDLC tools.",
-            link: "/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview",
+            link: "/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/overview",
           },
           {
-            title: "Profiles",
+            title: "Set up profiles",
             module: MODULES.sei,
             description:
-              "Profiles aggregate data for Trellis Scores, DORA metrics, and more.",
-            link: "/docs/category/profiles",
+              "Profiles aggregate data for Efficiency, Productivity metrics, and more.",
+            link: "/docs/category/set-up-profiles",
+          },
+          {
+            title: "Set up Org Trees",
+            module: MODULES.sei,
+            description:
+              "Setup the org tree to group developers for performance visibility.",
+            link: "/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree",
+          },
+          {
+            title: "Set up & Manage Teams",
+            module: MODULES.sei,
+            description:
+              "Setup Teams that represents a group of developers working together within the organizational hierarchy",
+            link: "/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams",
           },
         ],
       },
 
       {
-        name: "Analyze",
+        name: "Analytics & reporting",
         description:
           "",
         list: [
           {
-            title: "Insights",
+            title: "Measure team efficiency",
             module: MODULES.sei,
             description:
-              "Insights are dashboards that make it easy to visualize and interpret metrics that are captured by SEI.",
-            link: "/docs/software-engineering-insights/propelo-sei/setup-sei/create-and-manage-dashboards/sei-insights",
+              "Use the efficiency dashboard to measure the key DORA metrics for your team.",
+            link: "/docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency",
           },
           {
-            title: "Metrics and reports",
+            title: "Measure developer productivity",
             module: MODULES.sei,
             description:
-              "Reports are widgets that you add to your Insights. Reports present data synthesized from metrics ingested by SEI.",
-            link: "/docs/category/metrics-and-reports",
+              "Use the productivity dashboard to measure the key productivity metrics for your developers.",
+            link: "/docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity",
           },
           {
-            title: "Trellis Scores",
+            title: "Business Alignment",
             module: MODULES.sei,
             description:
-              "Trellis Scores are a proprietary scoring mechanism that helps you understand your team's productivity.",
-            link: "/docs/category/trellis-scores",
+              "Track and analyze how engineering initiatives contribute to business outcomes.",
+            link: "/docs/software-engineering-insights/harness-sei/analytics-and-reporting/business-alignment",
           },
         ],
       },
@@ -93,25 +107,18 @@ import { MODULES } from "@site/src/constants";
           "",
         list: [
           {
-            title: "Propels",
+            title: "Harness Support",
             module: MODULES.sei,
             description:
-              "Propels are a no-code/low-code way to use SEI to add human-in-the-loop automation to your SDLC.",
-            link: "/docs/software-engineering-insights/propelo-sei/setup-sei/sei-propels-scripts/propels-overview",
+              "If you believe you have found a bug in Harness Software Engineering Insights, please create a Zendesk Support ticket.",
+            link: "/docs/software-engineering-insights/sei-support",
           },
           {
             title: "Troubleshooting and FAQs",
             module: MODULES.sei,
             description:
-              "",
-            link: "/docs/software-engineering-insights/troubleshoot-sei/sei-troubleshooting-faqs",
-          },
-          {
-            title: "SEI Knowledge Base",
-            module: MODULES.ci,
-            description:
-              "",
-            link: "/kb/sei",
+              "Use this for troubleshooting guidelines on Harness Software Engineering Insights",
+            link: "/docs/category/sei-troubleshooting",
           },
         ],
       },
