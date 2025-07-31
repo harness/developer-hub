@@ -121,7 +121,7 @@ export const featureList: CardItem[] = [
     module: MODULES.sei,
     icon: "img/icon_sei.svg",
     description: <>Use data-led insights to remove SDLC bottlenecks.</>,
-    link: 'docs/category/get-started-with-sei',
+    link: 'docs/category/sei-recommended',
   },
   {
     title: 'Manage AI Test Automation',
