@@ -35,6 +35,10 @@ You can start using Harness-Hosted Gitspaces in either of the following ways:
 
 ### Self-Hosted Model
 
+:::info
+**Self Hosted Gitspaces** are currently available behind the Feature Flag ``CDE_HYBRID_ENABLED``. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+:::
+
 **Self-Hosted Gitspaces** are on-demand, remote development environments hosted within **your organization’s infrastructure**.
 
 With this deployment model:

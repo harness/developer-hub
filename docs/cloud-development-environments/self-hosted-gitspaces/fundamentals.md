@@ -5,14 +5,28 @@ sidebar_position: 1
 sidebar_label: Overview & Key Concepts
 ---
 
+:::info
+**Self Hosted Gitspaces** are currently available behind the Feature Flag ``CDE_HYBRID_ENABLED``. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+:::
+
 **Self-Hosted Gitspaces** are on-demand remote development environments hosted within your organization’s infrastructure. These environments come pre-configured for instant coding and provide an added layer of security by offering **full control** over infrastructure and data. This reduces the risk of external data exposure and prevents source code from being cached or accessed by third-party cloud services.
 
+---
+
 ## What’s Supported with Self Hosted Gitspaces?
-* Currently, we only support **GCP Cloud VMs** as the infrastructure option for self-hosted Gitspaces. Support for **AWS Cloud VMs** is in progress and will be available soon.
-* You can create and manage self-hosted Gitspaces using either [cloud-based](/docs/cloud-development-environments/git-providers/cloud-providers.md) or [on-premises Git providers](/docs/cloud-development-environments/git-providers/on-prem-providers.md), offering enhanced security and greater control over your source code.
+### Cloud Infrastructure Providers
+We support the following cloud infrastructure providers for self-hosted Gitspaces:
+- **[Google Cloud Platform (GCP)](https://cloud.google.com/docs)**
+- **[Amazon Web Services (AWS)](https://docs.aws.amazon.com/)**
+
+### Git Providers
+We support the following git providers for self-hosted Gitspaces:
+- **[Cloud-based Git Providers](/docs/cloud-development-environments/git-providers/cloud-providers)**
+- **[On-premises Git Providers](/docs/cloud-development-environments/git-providers/on-prem-providers)**
 
 To learn more about what's supported with self-hosted Gitspaces, visit [What's Supported](/docs/cloud-development-environments/introduction/whats-supported.md#deployment-models).
 
+---
 
 ## Key Concepts
 To understand how self-hosted Gitspaces work and explore the underlying architecture, go through the [Self-Hosted Gitspaces Architecture](/docs/cloud-development-environments/deep-dive-into-gitspaces/self-hosted-architecture.md) documentation. Refer to [Configuring Self-Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps) to get started with Self Hosted Gitspaces. 
@@ -41,6 +55,11 @@ To understand more about this step and its implementation, please refer to [Setu
 The **CDE Gateway** plays a key role in ensuring reliable connectivity, secure access, and controlled traffic flow. It is responsible for **routing** user requests to the appropriate Gitspaces. The CDE gateway also handles **authentication**, ensuring that only users with valid access tokens can access Gitspaces. From a **security** perspective, the CDE gateway ensures that all incoming traffic to a Gitspace VM originates from trusted components. This controlled entry point greatly reduces the surface area for potential attacks and enforces strict traffic policies.
 
 ### Terraform Module
-A **Terraform module** is a reusable package of Terraform configuration files designed to provision related infrastructure components together. The [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest) is used to provision and set up all the **necessary GCP infrastructure** required to run and use **Self-Hosted Gitspaces** in your own GCP project. It automates tasks like VPC creation, sub-network setup, IAM roles and policies configuration, and other supporting GCP services needed to run and use Self-Hosted Gitspaces.
+A **Terraform module** is a reusable package of Terraform configuration files designed to provision related infrastructure components together. The [Harness Gitspaces Terraform Module](https://registry.terraform.io/modules/harness/harness-gitspaces/gcp/latest) is used to provision and set up all the **necessary resources** required to run and use **Self-Hosted Gitspaces** in your own infrastructure. It automates tasks like VPC creation, sub-network setup, IAM roles and policies configuration, and other supporting services needed to run and use Self-Hosted Gitspaces.
 
 To understand more about this step and its implementation, please refer to [Configure and Use the Terraform Module](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md)
+
+---
+
+## Next Steps
+Get started with configuring Self Hosted Gitspaces by following the steps mentioned here: [Get Started with Self-Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/)
