@@ -14,6 +14,9 @@ tags:
   - FIPS
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem'
+
 FIPS (Federal Information Processing Standards) is a set of standards developed and published by [NIST (National Institute of Standards and Technology)](https://www.nist.gov/) to define security and interoperability requirements for federal systems and contractors. 
 
 The most relevant standard for software systems is [FIPS 140](https://en.wikipedia.org/wiki/FIPS_140), which sets the security requirements for cryptographic modules (the software and hardware performing encryption and related operations).
@@ -111,50 +114,91 @@ The user data is typically provided in a TOML file format and injected during in
 
 **Step 3: Create a Launch Template**
 
-1. In the AWS console, go to EC2 → Launch Templates → Create launch template.
+<Tabs>
+  <TabItem value="Interactive" label="Interactive">
+    <iframe
+      src="https://app.tango.us/app/embed/fe030636-28cd-4cdc-a330-fa4580152259"
+      style={{ minHeight: '640px' }}
+      sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+      security="restricted"
+      title="Create Launch Template"
+      width="100%"
+      height="100%"
+      referrerPolicy="strict-origin-when-cross-origin"
+      frameBorder="0"
+      webkitallowfullscreen="true"
+      mozallowfullscreen="true"
+      allowFullScreen
+    ></iframe>
+  </TabItem>
 
-2. Configure your Launch template:
+  <TabItem value="Manual" label="Manual">
+    1. In the AWS console, go to EC2 → Launch Templates → Create launch template.
 
-   * Name: Example: bottlerocket-template
-   * AMI: Search for `bottlerocket-aws-k8s-<k8s-version>` and select the latest version.
-   * Instance type: Example: `m5.large`
-   * Key pair: Optional (for SSH access).
+    2. Configure your Launch template:
+       - Launch template name: Example: `bottlerocket-template`  
+       - Application and OS Images (Amazon Machine Image): Search for `bottlerocket-aws-k8s-<k8s-version>` and select the latest version.  
+       - Instance type: Choose the option that best fits your needs. Example: `m5.large`  
+       - Key pair: Optional (for SSH access).
 
-3. Do not specify an IAM instance profile in the template. EKS will automatically attach the correct profile.
+    3. Do not specify an IAM instance profile in the template. EKS will automatically attach the correct profile.
 
-4. Paste the contents of `user-data.toml` into the User data field.
+    4. Paste the contents of `user-data.toml` into the User data field.
 
-5. Select a VPC, subnets, and a security group. 
+    5. Select a VPC, subnets, and a security group.
 
-6. Click Create launch template.
+    6. Click Create launch template.
+  </TabItem>
+</Tabs>
 
 **Step 4: Add a Managed Node Group**
 
-1. Go to Amazon EKS → Clusters → Select your cluster → Compute tab.
+<Tabs>
+   <TabItem value="Interactive" label="Interactive">
+   <iframe
+      src="https://app.tango.us/app/embed/fc97b5e4-08af-4466-90b9-87ddf9c5f5de"
+      style={{ minHeight: '640px' }}
+      sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+      security="restricted"
+      title="Create Launch Template"
+      width="100%"
+      height="100%"
+      referrerPolicy="strict-origin-when-cross-origin"
+      frameBorder="0"
+      webkitallowfullscreen="true"
+      mozallowfullscreen="true"
+      allowFullScreen
+    ></iframe>
+  </TabItem>
 
-2. Click Add Node Group.
+  <TabItem value="Manual" label="Manual">
+   1. Go to Amazon EKS → Clusters → Select your cluster → Compute tab.
 
-3. Configure:
-   * Name: Example: bottlerocket-nodes
-   * Node IAM Role: Use a role with the following policies:
-     * `AmazonEKSWorkerNodePolicy`
-     * `AmazonEKS_CNI_Policy`
-     * `AmazonEC2ContainerRegistryReadOnly`
-     * `AmazonSSMManagedInstanceCore`
+   2. Click Add Node Group.
 
-4. In compute configuration:
-   * Choose Use an existing launch template.
-   * Select bottlerocket-template and the latest version.
+   3. Configure:
+      * Name: Example: bottlerocket-nodes
+      * Node IAM Role: Use a role with the following policies:
+         * `AmazonEKSWorkerNodePolicy`
+         * `AmazonEKS_CNI_Policy`
+         * `AmazonEC2ContainerRegistryReadOnly`
+         * `AmazonSSMManagedInstanceCore`
 
-5. Configure scaling and networking:
-   * Choose the same VPC and subnets as the cluster.
-   * Assign security groups as needed.
+   4. In compute configuration:
+      * Choose Use an existing launch template.
+      * Select bottlerocket-template and the latest version.
 
-6. Click Create.
+   5. Configure scaling and networking:
+      * Choose the same VPC and subnets as the cluster.
+      * Assign security groups as needed.
+
+   6. Click Create.
+  </TabItem>
+</Tabs>
 
 ### Validate FIPS 
 
-Connect to the instance using AWS Session Manager. Once connected, run the following command to verify whether FIPS mode is enabled:
+Connect to the instance using AWS Session Manager. Once connectedted, run the following command to verify whether FIPS mode is enabled:
 
 ```bash
 cat /proc/sys/crypto/fips_enabled
