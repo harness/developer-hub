@@ -2280,6 +2280,12 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## July 2025
 
+### Version 1.0.27 <!--July 31, 2025-->   
+
+#### Fixed issues
+
+- Resolved an issue where the proxy configuration in the upgrader was incorrectly rendered when no proxy was provided. [PL-64515]
+
 ### Version 1.0.26 <!--July 20, 2025-->
 
 #### New features and enhancements
