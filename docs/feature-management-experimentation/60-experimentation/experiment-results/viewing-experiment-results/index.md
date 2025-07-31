@@ -5,12 +5,6 @@ sidebar_position: 10
 
 ## Overview
 
-The Metrics impact tab shows the impact of your experiment or feature rollout on your customers. To make data-driven decisions on your features, review and interpret the data that you collect before deciding to roll out the functionality to more customers. The data on this tab allows you to ensure safe and reliable feature delivery while powering data-driven decisions. 
-
-When you click in to a metric card from the metrics impact tab, you can see more in-depth details of the performance of the two selected treatments, as well as how these have changed over time. For more information about what is shown in the metrics details and trends, see [Metric Details and Trends](./metric-details-and-trends).
-
-We show the results, along with the output of our statistical analyses such as the p-value and the error margin, so that you can see how the results would have looked had you checked the impact at a particular point in the past. For example, you can check how the results would have looked at the end of a review period, even if the review period has now passed. 
-
 You can view your experiment results from the **Experiments** page. This page provides a centralized view of all experiments and allows you to quickly access performance metrics, significance levels, and summary details for each treatment group.
 
 Click into any experiment to view detailed results, including the following:
