@@ -147,9 +147,11 @@ Split has robust data pipelines and attribution logic. If you do find a mismatch
 Manage feature flag scheduling, flag sets, and flag lifecycles. Feature flags turn on features to specific users or segments. You can tailor access to beta testers and early adopters based on individual IDs, attributes, dependencies, or percentages. Gradually increase the rollout percentage to limit the blast radius of your releases.
 
 ### Release monitoring
+
 Release monitoring detects the impact of each feature on system performance and user behavior, starting with the earliest stage of a gradual rollout. With detection and triage done at the flag level, you can ship more often and with greater confidence.
 
 ### Experimentation
+
 Experimentation provides customizable, centralized, and self-serve A/B testing, empowering your team with actionable data to make rapid, trusted, data-driven decisions.
 
 ## Harness platform
