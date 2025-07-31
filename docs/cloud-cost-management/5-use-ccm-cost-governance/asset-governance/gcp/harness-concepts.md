@@ -234,6 +234,23 @@ You can create filters to view selected rules:
 Number of evaluations for which we can compute cost impact is 1,50,000/ Day.
 :::
 
+### Bulk Export Evaluations
+
+Use **Bulk Export** to download up to 100 evaluation results (AWS, GCP, or Azure) in a single ZIP file. Export is available when all selected evaluations are in a terminal state (Succeeded or Failed).
+
+**How to export**
+1. Click **Export**.
+2. Choose the artefacts to include:
+   - `metadata.json`: summary of each evaluation
+   - `resources.json`: resources identified
+   - `custodian-run.log`: execution log
+   - `actioned-resources.json`: resources acted on
+3. Click **Generate Report**.
+
+The ZIP file is organised by evaluation ID (or by policy sub-folders for multi-policy runs) so you can quickly locate results. You can also export from the **Test Terminal** when evaluating multiple targets.
+
+<DocImage path={require('../static/bulk-export.png')} width="100%" height="100%" title="Click to view full size image" />
+
 
 ## Testing Terminal
 
