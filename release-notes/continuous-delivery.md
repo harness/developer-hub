@@ -59,13 +59,13 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### New Features and Enhancements
 
-- Harness now supports the [Canary Deployment Strategy for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments#lambda-canary-deployment-strategy), enabling phased traffic shifting and automated rollback for safer production rollouts. Currently, this feature is behind the feature flag `CDS_AWS_LAMBDA_CANARY_DEPLOY`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
+- Harness now supports the [Canary Deployment Strategy for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments#lambda-canary-deployment-strategy), enabling phased traffic shifting and automated rollback for safer production rollouts. Currently, this feature is behind the feature flag `CDS_AWS_LAMBDA_CANARY_DEPLOY`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**CDS-107454**)
 
-- Harness now supports automatically creating [remote Terraform workspaces](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step#create-remote-workspace-with-prefix) with a prefix if they don’t exist, preventing pipeline failures due to missing workspaces.
+- Harness now supports automatically creating [remote Terraform workspaces](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step#create-remote-workspace-with-prefix) with a prefix if they don’t exist, preventing pipeline failures due to missing workspaces. (**CDS-108323**)
 
-- Users can now see the template version used during pipeline execution, allowing them to identify the exact versionLabel applied at runtime. Currently, this feature is behind the feature flag `PIPE_STORE_TEMPLATE_REFERENCE_SUMMARY_PER_EXECUTION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
+- Users can now see the [template version used during pipeline execution](/docs/platform/templates/use-a-template/#template-details-in-execution), allowing them to identify the exact version label applied at runtime. Currently, this feature is behind the feature flag `PIPE_STORE_TEMPLATE_REFERENCE_SUMMARY_PER_EXECUTION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
 
-- Harness supports **barrier synchronization across parent and child pipelines**, enabling child pipelines to reference and utilize barriers defined in parent pipelines via runtime inputs for coordinated deployments and consistent roll-outs. Currently, this feature is behind the feature flag `PIPE_BARRIERS_FOR_CHAINED_PIPELINES`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
+- Harness supports [barrier synchronization across parent and child pipelines](/docs/platform/pipelines/barriers/), enabling child pipelines to reference and utilize barriers defined in parent pipelines via runtime inputs for coordinated deployments and consistent roll-outs. Currently, this feature is behind the feature flag `PIPE_BARRIERS_FOR_CHAINED_PIPELINES`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-22508**)
 
 #### Fixed Issues
 
