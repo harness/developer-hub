@@ -2280,6 +2280,12 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## July 2025
 
+### Version 1.0.27 <!--July 31, 2025-->   
+
+#### Fixed issues
+
+- Resolved an issue in the upgrader config when proxy values were not provided during Helm deployment. [PL-64515]
+
 ### Version 1.0.26 <!--July 20, 2025-->
 
 #### New features and enhancements
