@@ -4,8 +4,10 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
-| Image type | Image tag | Image description |
-| --- | --- | --- |
-| DELEGATE | *`yy.mm.xxxxx`* | The release year, month, and version in dot-separated format. Supported on both NextGen and FirstGen Harness Platform. |
-| DELEGATE-MINIMAL | *`yy.mm.xxxxx.minimal`* | The minimal tag is appended to the release year, month, and version in dot-separated format. Supported on both NextGen and FirstGen Harness Platform. |
-| DELEGATE-LEGACY | *`latest`* | Delegate that auto upgrades with no flexibility to turn off auto upgrade (DEPRECATED) |
+| Image type            | Image tag                    | Image description                                                                                                                                                                                                                  |
+|-----------------------|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| DELEGATE              | *`yy.mm.xxxxx`*              | The release year, month, and version in dot-separated format. Supported on both NextGen and FirstGen Harness Platform.                                                                                                             |
+| DELEGATE-MINIMAL      | *`yy.mm.xxxxx.minimal`*      | The minimal tag is appended to the release year, month, and version in dot-separated format. Supported on both NextGen and FirstGen Harness Platform.                                                                              |
+| DELEGATE FIPS         | *`yy.mm.xxxxx-fips`*         | The release year, month, and version in dot-separated format. Supported only on [Self-Managed Platform (SMP)](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview).                                |
+| DELEGATE FIPS-MINIMAL | *`yy.mm.xxxxx.minimal-fips`* | The minimal tag is appended to the release year, month, and version in dot-separated format. Supported only on [Self-Managed Platform (SMP)](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview). |
+| DELEGATE-LEGACY       | *`latest`*                   | Delegate that auto upgrades with no flexibility to turn off auto upgrade (DEPRECATED)                                                                                                                                              |
