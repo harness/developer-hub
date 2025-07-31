@@ -14,13 +14,19 @@ Below are a few useful examples.
 
 ## Target specific app major version
 
-To target users with app version greater than or equal to 4.5 to get the `on` treatment, this regex could be used for matching the appVersion attribute:
+To target users with app version greater than or equal to 4.5 to get the `on` treatment, this regex could be used for matching the `appVersion` attribute:
 
+```
 (\[5-9\]\\.\[0-9\]|\[4\]\\.\[5-9\]).*
+```
 
 ![](https://help.split.io/hc/article_attachments/15726820984077)
 
-Example of passing the appVersion attribute for Javascript SDK:
+You can use the `matches` operator in the targeting rule editor within the Split user interface to match the value of a passed attribute (such as an app version) to a regular expression and specify treatment assignments for any versions that match the expression. 
+
+This approach also works when versions are formatted in `Major.Minor` and you want a specific treatment for versions below a certain threshold (for example, versions below `2.1.0`).
+
+Example of passing the `appVersion` attribute for the JavaScript SDK:
 
 ```javascript
 var attributes = {appVersion: "4.567.33"};
@@ -34,7 +40,7 @@ For this example, to serve the `on` treatment for all employees of split.io, we 
 
 ![](https://help.split.io/hc/article_attachments/15726851838093)
 
-Example of passing the email attribute for Javascript SDK:
+Example of passing the email attribute for the JavaScript SDK:
 
 ```javascript
 var attributes = {email: "bilal@split.io"};
@@ -48,7 +54,7 @@ Chrome\\/[2-9][0-9]\\.
 
 ![](https://help.split.io/hc/article_attachments/15726938445709)
 
-Example for Javascript SDK:
+Example for the JavaScript SDK:
 
 ```javascript
 var attributes = {userAgent: "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"};
@@ -61,7 +67,7 @@ en-.
 
 ![](https://help.split.io/hc/article_attachments/15726949310861)
 
-Example for Javascript SDK:
+Example for the JavaScript SDK:
 
 ```javascript
 var attributes = {navigatorLanguage: navigator.language};
@@ -75,7 +81,7 @@ http:\\/\\/mysite\\.com\\/my_url
 
 ![](https://help.split.io/hc/article_attachments/15727006393485)
 
-Example for Javascript SDK:
+Example for the JavaScript SDK:
 
 ```javascript
 var attributes = {url: window.location.href};

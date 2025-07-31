@@ -184,19 +184,64 @@ Harness FME supports the ability to identify multiple traffic types (for example
 }
 ```
 
-## FAQs
+## Troubleshooting
 
-#### What happens if the eventTypeId field has spaces in Segment?
+### What happens if the eventTypeId field has spaces in Segment?
 If the name has a space, Harness FME replaces the space with an underscore changing `sample event` to `sample_event` when it appears in the Harness FME user interface.
 
-#### What does Harness FME do if the eventTypeId field is not mapped correctly?
+### What does Harness FME do if the eventTypeId field is not mapped correctly?
 The `eventTypeId` field is required, so if name does not map correctly or does not match the configuration settings, the event is dropped.
 
-#### What does Harness FME do if the eventTypeId field is mapped correctly, but the value field is not?
+### What does Harness FME do if the eventTypeId field is mapped correctly, but the value field is not?
 The `value` field is optional. If `eventTypeId` is mapped correctly but the `value` field does not align with the configuration settings, the `value` field is null in Harness FME.
 
-#### What happens in Harness FME if we have traits.company in our identify call?
+### What happens in Harness FME if we have traits.company in our identify call?
 Passing `traits.company` is received as a string version of the object in FME as an attribute `company`. We recommend flattening the object if you want to see this data in Harness FME.
 
-#### What size limits does Harness FME have on trait values?
+### What size limits does Harness FME have on trait values?
 Trait values are limited to 255 characters. 
+
+### Why is the Segment integration not showing desired events?
+
+The Segment to Split integration is set up to enable tracking event "checkout". Under the eventTypeId field, we put "checkout". However, the checkout event never shows up under "Traffic Type" page.
+
+![](./static/track-identify-segment.png)
+
+It's possible that the `eventTypeId` field in the Segment integration page is incorrectly set. You should not put the actual event name here, only the property name that holds the event name.
+
+Review the JSON structure for the desired event in Segment, and based on the structure, determine the property's path and name, and add it to the Segment integration page in the Split user interface.
+
+For example, if the Segment JSON looks like the following:
+
+```json
+{
+   "event": "checkout"
+   "properties" : {
+     "environmentId" : "xxxxx"
+     "environmentName" : "xxxxx"
+     "key" : "zxcv"
+     "machineIP" : "x.x.x.x"
+     "page" : "eCommerce"
+   }
+}
+```
+
+The `eventTypeId` field should be set to `event`.
+
+If the Segment JSON looks like the following:
+
+```json
+{
+   "eventId": "231344"
+   "properties" : {
+     "eventName" : "checkout"
+     "environmentId" : "xxxxx"
+     "environmentName" : "xxxxx"
+     "key" : "zxcv"
+     "machineIP" : "x.x.x.x"
+     "page" : "eCommerce"
+   }
+}
+```
+
+The `eventTypeId` field should be set to `properties.eventName`.

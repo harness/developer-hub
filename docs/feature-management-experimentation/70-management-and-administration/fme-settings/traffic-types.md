@@ -3,19 +3,27 @@ title: Traffic types
 sidebar_position: 10
 ---
 
-When you create a feature flag, you must specify a traffic type. The traffic type denotes the nature of the keys that are passed to *getTreatment* for that feature flag. Does the key identify a known logged-in user? A device? Is the key a uuid generated for an anonymous visitor and stored in a cookie on the visitor’s browser?
+## Overview
 
-Customize traffic types to your particular use cases. You should have a traffic type for each type of key you plan to pass to *getTreatment*. The most commonly used traffic types are:
+When you create a feature flag, you must specify a traffic type. The traffic type denotes the nature of the keys that are passed to *getTreatment* for that feature flag. 
 
-* **user** - The key uniquely identifies a known, logged-in user. This is typically some numeric identifier that is the primary key in the table you use to store user information.
+A traffic type identifies the type of key you're using to split traffic. Does the key identify a known logged-in user? A device? Is the key a UUID generated for an anonymous visitor and stored in a cookie on the visitor’s browser?
 
-* **anonymous** - The key is a randomly generated identifier, like a uuid, that identifies a visitor using a particular mobile device or browser, where it is typically stored as a cookie.
+You can customize traffic types to your use cases. You should have a traffic type for each type of key you plan to pass to *getTreatment*. 
 
-* **customer** - The key identifies the customer group to which the (logged-in) user belongs. This traffic type is often used to maintain consistency of behavior for all visitors from a given company or group.
+### Common traffic types
+
+The most commonly used traffic types are:
+
+* **user**: The key uniquely identifies a known, logged-in user. This is typically some numeric identifier that is the primary key in the table you use to store user information.
+
+* **anonymous**: The key is a randomly generated identifier, like a UUID, that identifies a visitor using a particular mobile device or browser, where it is typically stored as a cookie.
+
+* **account/customer**: The key identifies the customer account or group to which the (logged-in) user belongs to. This traffic type maintains consistent behavior for all visitors from a given company or account.
 
 It is also possible, but much less common, for a traffic type to identify something other than a visitor. For instance, a realty site might use *listing* as a traffic type if they wanted to explore the possibility of having a single visitor see different appearances for different property listings. For that traffic type, the code passes to *getTreatment* the id of the listing being displayed.
 
-For some feature flags, you may want to randomize by sessionId rather than userId, so session is another possible traffic type. Because there will be more sessions than users, with this traffic type, you end up with a higher number of unique keys being sent to Harness.
+For some feature flags, you may want to randomize by `sessionId` rather than `userId`, so **session** is another possible traffic type. Because there will be more sessions than users, with this traffic type, you end up with a higher number of unique keys being sent to Harness.
 
 ## Traffic Types and Impressions
 
@@ -35,7 +43,9 @@ Client-side SDKs are typically tied to one or a handful of keys (typically keys 
 
 You can customize traffic types as needed at any time, but it is a best practice to do so during your initial account setup, taking into consideration your anticipated needs. Once a feature flag is created with a given traffic type, that traffic type cannot be changed, so it is important to get it right the first time.
 
-FME allows you to have up to 10 traffic types per project. All environments within a project share the same set of traffic types. By default, a project has one traffic type named user. You can customize your traffic types as needed during your account setup.
+FME allows you to have up to 10 traffic types per project. All environments within a project share the same set of traffic types. By default, a project has one traffic type named `user`. You can customize your traffic types as needed during your account setup.
+
+## Create a traffic type
 
 To create traffic types, do the following:
 
@@ -49,6 +59,8 @@ To create traffic types, do the following:
 Once a traffic type is created, it cannot be edited.
 :::
 
-You can delete a traffic type from this same location in the user interface with the Delete link in the Actions column but only if it is no longer in use by any feature flags or metrics.
+## Delete a traffic type
+
+You can delete a traffic type from this same location in the user interface with the **Delete** link in the **Actions** column but only if it is no longer in use by any feature flags or metrics.
 
 If you need assistance with traffic types, contact support at [support@split.io](mailto:support@split.io).

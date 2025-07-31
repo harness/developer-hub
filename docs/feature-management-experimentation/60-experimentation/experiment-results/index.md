@@ -26,3 +26,5 @@ For more information, see [Reallocating traffic](./reallocate-traffic).
 ## Share results
  
  You can download key metrics, trends, and impact summaries in CSV or JSON format for offline analysis or sharing with teammates. 
+
+ For more information, see [Sharing experiment results](./sharing-experiment-results/).

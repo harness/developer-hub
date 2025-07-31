@@ -46,3 +46,25 @@ The following limits apply to data exports:
 * 7 day data export retention window. Reports are available for 7 days before they are deleted and no longer accessible
 
 Contact [support@split.io](emailto:support@split.io) if you have any questions or concerns regarding your data export limits.
+
+## Troubleshooting
+
+### Opening downloaded `.gz` Files on MacOS
+
+If you are using MacOS and have downloaded a data export file from the Data hub that ends with `.gz`, you might find that the file does not open by default in your user interface. This is because some MacOS versions do not support `.gz` files natively.
+
+To successfully open and extract these files, the recommended approach is to install the **The Unarchiver** app from the Mac App Store, which reliably handles `.gz` files.
+
+Alternatively, you can use the Terminal application on your Mac to unzip the file manually with the following command:
+
+```bash
+gzip -d [file name]
+```
+
+### Events not appearing in Harness FME
+
+When [posting events](https://docs.split.io/reference/events-overview) using the Admin REST API, you may receive a successful `202` response code but not see the event in Split’s Data Hub. This can occur if any of the following issues are present:
+
+- The Epoch timestamp is invalid. Ensure the timestamp is in milliseconds, not seconds.
+- The traffic type is incorrect. Confirm that the traffic type used in the call exists in your Split organization.
+- The API key is incorrect. Use the SDK API Key when posting events, not the Admin API Key.

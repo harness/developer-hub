@@ -3,12 +3,14 @@ title: Understanding results
 sidebar_position: 10
 ---
 
+## Overview
+
 Your metrics cards show different states depending on your user selections on the feature flag's Metric impact tab, the traffic distribution, the data available, and whether a baseline is selected in the feature flag definition. This page provides a summary of the states of the metric impact card. 
 
-For more information about the Metric impact tab, refer to the [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/) documentation.
+For each metric, you can register whether you want the number to go up (e.g., revenue) or down (e.g., churn). For more information about the Metric impact tab, refer to the [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/) documentation.
 
 :::tip
-On a Desired, Undesired, or Inconclusive impact metric card, you can see the range that the _**impact lies between**_. The two values are the statistically calculated extreme values for your impact. The smaller the range between the extreme values, the higher the confidence in the predictability of the feature impact on the metric.
+On a **Desired**, **Undesired**, or **Inconclusive** impact metric card, you can see the range that the _**impact lies between**_. The two values are the statistically calculated extreme values for your impact. The smaller the range between the extreme values, the higher the confidence in the predictability of the feature impact on the metric.
 :::
 
 ## Metric card states
@@ -79,7 +81,7 @@ A metric card displays **No baseline** when you are viewing metrics for a single
 
 ### Variance is equal to zero
 
-<img src="https://splitsoftware.zendesk.com/guide-media/01J8Z6WMYPGGHGTRMX4M8X5J1S" alt="variance_equal_to_zero.png" width="600" />
+<img src="https://help.split.io/hc/article_attachments/30664937795469" alt="variance_equal_to_zero.png" width="600" />
 
 A metric card displays **The variance is equal to zero** when, for each treatment that you are comparing, all events have the same value. It is possible that there is a misconfiguration of your events, since all event values for a treatment are identical.
 
@@ -140,3 +142,21 @@ The **More actions** link button appears when you hover over a metric card. This
   * **Add to key metrics**: Add the metric to the feature flag's key metrics section.
   * **Remove from key metrics**: Remove the metric from the feature flag's Key metrics section.
   * **Manage alert policies**: Navigate to the metric's Alert policy page.
+
+## Troubleshooting
+
+### What happens with metric results when one treatment has no events?
+
+The system will test the difference between any mean values, even if one of them happens to be 0.  As a result, you can still get statistically significant results, a card that turns red or green.
+
+In this scenario we use the absolute change instead of the relative change. If one treatment is 0 and the other treatment isn't 0, as long as there is a relevant sample size and the appropriate variance in the data, the stats calculations are not impacted.
+
+In this case, the table on the Details and Trends page will show the appropriate data for the treatments.
+
+![](../../static/treatments-data.png)
+
+In addition to seeing no events in the table for one of the treatments, the chart for Impact over time will be blank, reinforcing that we are using the absolute change.
+
+![](../../static/treatment-impact-blank.png)
+
+But if you select Values over time, then you will see the means metric value for all of the treatments. A treatment that has no events will have the metric value zero.
