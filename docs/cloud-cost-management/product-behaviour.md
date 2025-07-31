@@ -114,9 +114,7 @@ Navigate to the **Account Settings** -> **Subscriptions**. Your subscription det
     - **Start Date**: When your current subscription period began
     - **Expiry Date**: When your subscription will need renewal
 
-- **Usage vs Subscribed Limit:** For each purchased SKU, you'll see your current usage metrics compared to your subscription limits. 
-
-
+- **Usage vs Subscribed Limit:** For each purchased SKU, you'll see your current usage metrics compared to your subscription limits on an yearly basis. 
 
 :::info
 Features that are not included in your current subscription will be clearly marked with a lock icon (🔒) in the UI. You can click on these locked features to learn more about their benefits and how to add them to your subscription.
