@@ -123,6 +123,8 @@ When a pipeline uses templates, you can view the **template version used** durin
 :::note
 This feature is available behind the feature flag `PIPE_STORE_TEMPLATE_REFERENCE_SUMMARY_PER_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
+This information is available only for executions that start *after* the feature flag is enabled.
+
 This is currently supported for pipeline, stage, step group, and step templates.
 :::
 
