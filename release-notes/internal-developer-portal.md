@@ -34,7 +34,17 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ### [New Feature] Support for Relative Paths in API Definitions
 
-You can now use **relative file paths** (e.g., `./openapi.yaml`, `../spec/api.json`) in the `definition.$text` field when creating `API` kind entities. This enhancement simplifies referencing OpenAPI specification files located within the same repository as your entity YAML.
+Harness IDP now supports using **relative file paths** in the `spec.definition.$text` field when creating `API` kind entities. This enhancement simplifies referencing OpenAPI specification files that reside within the same repository as the entity YAML.
+Examples:
+
+* `./openapi.yaml` (file in the same directory)
+* `spec/api.yaml` (file in a subdirectory)
+
+Relative paths are resolved based on the value of the `backstage.io/managed-by-location` annotation. This annotation typically reflects the location of the entity YAML file. If not explicitly defined, its value is auto-populated from the `backstage.io/source-location` annotation (which generally points to your source code repository). This fallback ensures compatibility in cases where entity YAMLs are centrally managed or even omitted (such as inline entity definitions).
+
+For inline entities or those managed outside the component’s source repo, you can **manually define** `backstage.io/managed-by-location` in your catalog YAML to ensure correct path resolution.
+
+
 
 #### Sample YAML
 
