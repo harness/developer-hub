@@ -111,7 +111,6 @@ name: artist-web
 identifier: artistweb
 type: service
 owner: user:account/shibam.dhar@harness.io
-scope: ACCOUNT
 spec:
   lifecycle: production
 metadata:

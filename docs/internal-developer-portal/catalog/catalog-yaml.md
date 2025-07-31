@@ -200,10 +200,24 @@ While `owner` is not mandatory, it is **strongly recommended** to associate enti
 - At **Org scope**: assign Users/User Groups from Org or Account.  
 - At **Account scope**: assign from Account-level only.
 
-The owner identity can be defined using a plain value like `backend-team`, which will be treated as a group. If no matching group is found, the value is still accepted as an arbitrary string and displayed.
+The `spec.owner` field supports multiple formats for defining ownership:
 
-To explicitly refer to a user or group, use the format `user:<scope>/<email-or-username> `or `group:<scope>/<group-name>`, also it uses case-sensitive matching to identify known groups, so make sure the casing exactly matches what's defined in your account.
+* You can use a plain value like `backend-team`. This is treated as a group by default. If no matching group is found, it is still accepted and displayed as an arbitrary string without validation.
 
+* For explicit user or group references, use one of the following formats:
+
+  * `user:<scope>/<email-or-username>`
+  * `group:<scope>/<group-name>`
+
+  Supported scope formats:
+
+  * `account`
+  * `account.<orgIdentifier>`
+  * `account.<orgIdentifier>.<projectIdentifier>`
+
+* Owner resolution is **case-sensitive**. Make sure the casing in your reference exactly matches the group names as defined in your account.
+
+> In cases where reliable resolution is critical, consider using the **user group ID** instead of just the name to avoid ambiguity.
 
 ---
 
