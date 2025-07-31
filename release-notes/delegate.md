@@ -79,6 +79,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+:::note **Delegate now supports FIPS**
+
+Harness Delegate now supports FIPS, which can only be used in [Self-Managed Platform (SMP)](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview) version [0.31.0](https://developer.harness.io/release-notes/self-managed-enterprise-edition/#july-31-2025-version-0310) and later.
+
+Delegate FIPS is available from version [25.07.86300-fips](#version-250786300-).
+:::
+
 ## Release Notes categories
 1. [Delegate image release notes](#delegate-image-release-notes)
 2. [Delegate Helm Chart release notes](#delegate-helm-chart-release-notes)
