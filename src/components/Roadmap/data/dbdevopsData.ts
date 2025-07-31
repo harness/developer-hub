@@ -28,6 +28,13 @@ export const DbdevopsData: Horizon = {
           "Add an output on the apply step that outputs the list of change IDs that were applied.",
         tag: [{ value: "Orchestration" }, {value: "Q2"}],
         link:"https://developer.harness.io/docs/database-devops/features/access-applied-changesets"
+      },
+      {
+        title: "CockroachDB Support",
+        description:
+          "support using DBDevOps against CockroachDB.",
+        tag: [{ value: "Integrations" }, {value: "Q2"}],
+        link:"https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors"
       }//,
       /*
       {
