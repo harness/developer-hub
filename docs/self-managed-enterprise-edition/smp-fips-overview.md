@@ -51,14 +51,11 @@ The following modules are tested and supported on FIPS-enabled SMP environments.
 | Module | Components |
 |--------|------------|
 | Platform     | **Authentication (OKTA)**<br />- [SAML](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-okta)<br />- [SCIM](/docs/platform/role-based-access-control/provision-users-with-okta-scim)<br /><br />**Notification**<br />- [SMTP](/docs/platform/notifications/add-smtp-configuration)<br />- [Slack](/docs/platform/notifications/notification-settings/#configure-pipeline-notifications)<br />- [MS Teams](/docs/platform/notifications/notification-settings/#configure-pipeline-notifications) |
-| Continuous Delivery     | **Artifact Repositories**<br />- Docker Registry<br />- Artifactory<br /><br />**Cloud Providers**<br />- AWS Cloud provider<br /><br />**Deployment**<br />- Kubernetes |
+| Continuous Delivery     | **Artifact Repositories**<br />- Docker Registry<br />- Artifactory<br /><br />**Cloud Providers**<br />- AWS<br /><br />**Deployment**<br />- Kubernetes |
 | Cloud Cost Management    | **Cloud Providers**<br />- [Kubernetes cluster](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-for-kubernetes/) |
 | Continuous Integration     | **Security Tests**<br />- [Kaniko](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push/#kaniko) |
 | Code Repository   | **Code Repositories**<br />- GitHub |
 | Security Testing Orchestration    | **Security Tests**<br />- [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference)<br />- [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)<br />- [Gitleaks](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)<br />- [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference)<br />- [OSV](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference)<br />- [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)<br />- [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) |
-
-
-
 
 ### Infrastructure Prerequisites
 
@@ -103,7 +100,7 @@ The user data is typically provided in a TOML file format and injected during in
 
    Replace `<REGION>` and `<YOUR-CLUSTER-NAME>` with your cluster details.
 
-3. Verify the file content:
+3. Confirm the file contains the following format:
 
    ```toml
    [settings.kubernetes]
@@ -117,12 +114,13 @@ The user data is typically provided in a TOML file format and injected during in
 1. In the AWS console, go to EC2 → Launch Templates → Create launch template.
 
 2. Configure your Launch template:
+
    * Name: Example: bottlerocket-template
    * AMI: Search for `bottlerocket-aws-k8s-<k8s-version>` and select the latest version.
    * Instance type: Example: `m5.large`
    * Key pair: Optional (for SSH access).
 
-3. Do not specify an IAM instance profile in the template. EKS will attach the correct profile automatically.
+3. Do not specify an IAM instance profile in the template. EKS will automatically attach the correct profile.
 
 4. Paste the contents of `user-data.toml` into the User data field.
 
