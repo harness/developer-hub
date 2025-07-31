@@ -116,6 +116,27 @@ When you create or edit a pipeline in Pipeline Studio by selecting a template, t
 Don’t overlook **Public access** and **Dynamic execution settings** – they’re the only editable controls in the Advanced tab when using a template.
 :::
 
+## Template Details in Execution
+
+When a pipeline uses templates, you can view the **template version used** during that particular execution directly in the **Execution view**.
+
+:::note
+This feature is available behind the feature flag `PIPE_STORE_TEMPLATE_REFERENCE_SUMMARY_PER_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+This information is available only for executions that start *after* the feature flag is enabled.
+
+This is currently supported for pipeline, stage, step group, and step templates.
+:::
+
+- In the **log view**, the **step-level details** display the template name and its `versionLabel`.
+- In the **console view**, hovering over each step that uses a template shows a tooltip with the **template name and version**.
+
+This helps you trace exactly which version of the template was used in a specific pipeline run, even if the template has changed afterward.
+
+<div align="center">
+  <DocImage path={require('./static/template-execution.png')} width="80%" height="80%" title="Click to view full size image" />
+</div>
+
 ## See also
 
 * [Create a step template](run-step-template-quickstart.md)
