@@ -88,6 +88,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## July 2025
 
+### Version 25.07.86401 <!--Jul 30, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where the Helm client added a duplicate --max flag. It now checks for existing flags before appending, ensuring the command runs correctly. [CDS-110151]
+- The Salesforce connector now uses `OkHttpClient` for validation, improving reliability. The unused `authFileRef` field has been removed. Support for specifying `loginUrl` has been added to the JWT authentication flow, enabling compatibility with sandbox environments. [CDS-112477]
+
 ### Version 25.07.86302 <!--Jul 30, 2025-->
 
 #### Fixed issues
@@ -102,7 +109,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 25.07.86300 <!--Jul 16 2025-->
 
-#### New features and improvements
+#### New features and enhancements
 
 - Delegate registration now makes sure FIPS delegates only register with a FIPS-enabled manager. [PL-63704]
 
@@ -150,7 +157,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Improved GitHub Enterprise support in GitOps pipelines by fixing hardcoded URLs and adding delegate access checks for PR merge steps. (CDS-111758)
 
-#### New features and improvements
+#### New features and enhancements
 
 - Added logging to capture Kubernetes events during delegate shutdown. This will help in better understanding and troubleshooting shutdown behaviour by providing more visibility into related cluster events. [PL-60516]
 
@@ -182,7 +189,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 25.06.86100 <!--June 16, 2025-->
 
-#### New features and improvements
+#### New features and enhancements
 
 - Enhanced system stability and regular checks implemented to ensure reliability.
 
@@ -210,7 +217,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 #### Fixed issues
 
 - Fixed an issue in the Kubernetes Rolling step where the steady state check was skipped if no managed workload was present. A new flow now allows hooks to run without this check, and the change is gated by the feature flag `CDS_ENABLE_STEADY_STATE_CHECK_WITHOUT_MANAGED_WORKLOADS`. [CDS-109379]
-- Fixed an issue where clicking the **Run** button in the UI triggered an unnecessary `onSave` OPA policy call. If this call failed, pipeline inputs wouldn't render. This has now been fixed by removing the `onSave` call from the `getPipelineByIdentifier` API. If needed, the old behavior can be restored by enabling the feature flag `PIPE_DISABLE_OPA_ON_SAVE_BLOCKING_FOR_PIPELINE_RUN`. [PIPE-26614]
+- Fixed an issue where clicking the **Run** button in the UI triggered an unnecessary `onSave` OPA policy call. If this call failed, pipeline inputs wouldn't render. This has now been fixed by removing the `onSave` call from the `getPipelineByIdentifier` API. If needed, the old behaviour can be restored by enabling the feature flag `PIPE_DISABLE_OPA_ON_SAVE_BLOCKING_FOR_PIPELINE_RUN`. [PIPE-26614]
 - Fixed an issue where the MergePR step failed when using GitHub account URLs without a repository name. The step now correctly handles these URLs. [CDS-107526]
 - Fixed an issue where the UI would crash when editing a newly created Manifest override using a Custom Remote Store. [CDS-107112] 
 - Improved error handling for the MergePR step to provide clearer feedback when a pull request merge fails. [CDS-109239]
@@ -280,7 +287,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 25.04.85601 <!-- April 10, 2025-->
 
-#### New features and improvements
+#### New features and enhancements
 
 - Enhanced system stability and regular checks implemented to ensure reliability.
 
@@ -327,7 +334,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Updated the error message for Google Cloud Function deployments that fail to reach a steady state. The message now reads: "Function couldn’t achieve steady state." instead of the previous wording. [CDS-102219]
 
-#### New features and improvements
+#### New features and enhancements
 
 - Updated tags in AWS Lambda and ECS deployments based on the provided configuration. [CDS-97430]
 
@@ -365,13 +372,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 25.02.85201 <!-- February 17, 2025 -->
 
-#### New features and improvements
+#### New features and enhancements
 
 - Enhanced system stability and regular checks implemented to ensure reliability.
 
 ### Version 24.12.84709 <!-- February 12, 2025 -->
 
-#### New features and improvements
+#### New features and enhancements
 
 - Enhanced system stability and regular checks implemented to ensure reliability.
 
@@ -385,7 +392,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 25.01.85000 <!-- January 28, 2025 -->
 
-#### New features and improvements
+#### New features and enhancements
 
 - Enhanced system stability and regular checks implemented to ensure reliability.
 
@@ -397,7 +404,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 25.01.84800 <!-- January 10, 2025 -->
 
-#### New features and improvements
+#### New features and enhancements
 
 :::info 
 Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` (PL-58376)
@@ -414,7 +421,7 @@ Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-min
 - Fixed an issue that prevented users from retrieving secrets from the HashiCorp Vault when the path contained special characters. The solution involved enhancing support for **"dots"** in dynamic secret reference expressions, ensuring seamless retrieval of such secrets.
 (PL-58771, ZD-73710, ZD-73724)
 
-#### New features and improvements
+#### New features and enhancements
 - Updated ```“org.bouncycastle:bcpkix-jdk18on”``` to version 1.78 and removed ```“org.bouncycastle:bcprov-jdk15on”``` (version 1.70) from the Delegate. (PL-58474)
 
 ### Version 24.11.84311 <!--  December 16, 2024 -->
@@ -2271,11 +2278,19 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## Delegate Helm Chart release notes
 
+## July 2025
+
+### Version 1.0.26 <!--July 20, 2025-->
+
+#### New features and enhancements
+
+- Added support for proxy settings in the Delegate Upgrader using environment variables. This allows the upgrader to work in environments that require proxy access. [PL-48062]
+
 ## June 2025
 
 ### Version 1.0.25 <!--June 20, 2025-->
 
-#### New features and improvements
+#### New features and enhancements
 
 - Updated the Delegate Helm chart to provide greater control over Horizontal Pod Autoscaling (HPA). If you prefer to skip the default CPU or memory-based autoscaling behavior, you can now disable it by setting the target utilization to `0`. [PL-63189]
 
@@ -2283,7 +2298,7 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ### Version 1.0.24
 
-#### New features and improvements
+#### New features and enhancements
 - Added option in helm chart to configure imagePullSecrets for Upgrader CronJob. The option is configured with `--set upgrader.imagePullSecret=<my_secret_name>` [PL-61783]
 
 ## Delegate Upgrader release notes
@@ -2292,7 +2307,7 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ### Version 1.7.0 <!--Jul 16, 2025--> 
 
-#### New features and improvements
+#### New features and enhancements
 
 - Added support for proxy settings in the Delegate Upgrader using environment variables. This allows the upgrader to work in environments that require proxy access. [PL-48062]
 
@@ -2303,6 +2318,6 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 #### Fixed issues
 - Fixed an issue where the delegate images were being pulled from GAR even though a registry mirror was configured. [PL-62342]
 
-#### New features and improvements
+#### New features and enhancements
 - Added support for [automatic upgrades](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#docker-delegate) for Docker delegates brought up using the `docker run` command. [PL-41879]
 
