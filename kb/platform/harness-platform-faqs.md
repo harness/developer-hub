@@ -3438,3 +3438,16 @@ Yes, Harness has an API to check the status of the deployment. You can check her
 
 ### How can user restart a delegate?
 User can restart the delegate by deleting the pod itself.
+
+
+### Is the CV feature available in the Harness SMP?
+Yes, CV is a part of CD module and it's available in Harness SMP.
+
+### Is the Test Intelligence feature available in the Harness SMP?
+Yes, Test Intelligence is a part of CI module and it's available in Harness SMP.
+
+### Can user able to list the projects the user is a member by API?
+Yes, you can use this API: https://apidocs.harness.io/tag/Project/#operation/getProjectList
+
+### Is user can able to view the yaml changes of all resources in Audit trail ?
+No, the user can only able to view the yaml changes as per the RBAC associated with the user.
