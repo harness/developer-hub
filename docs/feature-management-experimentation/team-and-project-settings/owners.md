@@ -8,7 +8,22 @@ sidebar_position: 4
 
 In addition to [tags](/docs/feature-management-experimentation/management-and-administration/tags/), use owners to organize and manage feature flags, segments, and metrics across the Split user interface. 
 
-Use owners to isolate feature flags, segments, and metrics in the browse panes to those owned by me and simplify permissions by providing owners with edit rights for a single feature flag across all environments by toggling permissions On. When toggled on, permissions inherit owners as editors.
+You can use owners to:
+
+- Filter feature flags, segments, and metrics in the browse panes to those **owned by me**.
+- Optionally, grant edit rights to owners for a specific feature flag by toggling permissions **On**.
+
+:::tip
+Ownership alone is for organization and filtering purposes. It does not grant edit rights unless **On** is toggled for a flag.
+:::
+
+When you add owners to a feature flag, owners are inehrited as editors for that specific flag across all environments. This allows you to simplify permissions without granting broad environment- or project-level editor rights.
+
+| Scenario                                 | Owner has edit rights?            |
+|------------------------------------------|------------------------------------|
+| Owner only, **Permissions Off**          | ❌ No (organizational only)         |
+| Owner only, **Permissions On**           | ✅ Yes for that flag in all environments |
+| Owner + environment-level editor rights  | ✅ Yes through environment permissions   |
 
 Harness recommends using groups where possible as owners. When you onboard new teammates, their Split instance includes several feature flags owned by their team.
 
