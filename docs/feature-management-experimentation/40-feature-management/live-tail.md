@@ -43,7 +43,7 @@ Learn more about [impressions](/docs/feature-management-experimentation/feature-
 
 ## Query events 
 
-After installing FME SDKs and calling track() or configuring a data integration, events are passed to Harness. To view these events in Live tail, do the following:
+After installing FME SDKs and calling `track()` or configuring a data integration, events are passed to Harness. To view these events in Live tail, do the following:
 
 1. From the navigation bar, click **Data hub**.
 2. Click the data type selector and click **Events**.
@@ -53,3 +53,15 @@ After installing FME SDKs and calling track() or configuring a data integration,
 6. Once selected, click the **Query** button again.
 
 Learn more about [events](/docs/feature-management-experimentation/release-monitoring/events/) in Harness.
+
+## Troubleshooting
+
+### No impressions are shown in the Live Tail tab during testing
+
+When testing impression generation using a Split SDK, you may notice that no impressions appear on the Live Tail tab, even though treatments are being calculated successfully from the SDK side.
+
+This behavior is expected ue to the impression de-duplication feature supported by all SDKs. To conserve the amount of impressions posted to Split cloud, the impressions that contain the same user id, feature flag name, and treatment value will not be posted if it they are generated within few minutes.
+
+This behavior is controlled by SDK config parameter `impressionsMode`. By default, the value is set to `OPTIMIZED`, which enables the impression de-duplication described above.
+
+To see all impressions generated, regardless of whether they are duplicates, set the `impressionsMode` parameter to `DEBUG`. This setting is useful when testing locally or validating feature flag behavior during development.

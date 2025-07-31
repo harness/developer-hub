@@ -8,136 +8,259 @@ sidebar_position: 3
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025918571-Troubleshooting </button>
 </p>
 
-When you integrate FME SDKs, consider the following to make sure that you have the correct set up depending on your use case, customers, security considerations, and architecture.
- 
-* **Understand Harness FME architecture**. FME SDKs were built to be scalable, reliable, fast, independent, and secure.
-* **Determine which SDK type**. Depending on your use case and your application stack, you may need a server-side or client-side SDK. 
-* **Understand security considerations**. Client- and server-side SDKs have different security considerations when managing and targeting using your customers' PII.
-* **Determine which API key**. There are three types of Harness FME authentication tokens with each providing different levels of access to Harness FME API. Understand what each key provides access to and when to use each API key.
-* **Determine which SDK language**. FME supports serveral SDKs across various languages. With FME, you can use multiple SDKs if your product is comprised of applications written in multiple languages.
-* **Determine if you need to use the Split Synchronizer & Proxy**. By default, Harness FME SDKs keep segment and feature flag definitions synchronized as users navigate across disparate systems, treatments, and conditions. However, some languages do not have a native capability to keep a shared local cache of this data to properly serve treatments. For these cases, we built the Split Synchronizer. To learn more, refer to the [Split Synchronizer guide](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer).
+## Overview
 
-## Streaming architecture overview
+Our SDKs have a standardized interface for inputs to every method. If you have issues getting up and running with any of our SDKs or aren't getting the expected return from any method or to the Split UI, you can find a detailed view of the types of validation that our SDK performs for each method below.
 
-Harness FME SDKs were built to be scalable, reliable, fast, independent, and secure.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-* **Scalable**. Harness FME is currently serving more than 50 billion feature flag evaluations per day. If you've shopped online, purchased an airline ticket, or received a text message from service provider, you've likely experienced FME.
-* **Reliable and fast**. Our scalable and flexible architecture uses a dual-layer CDN to serve feature flags anywhere in the world in less than 200 ms. In most instances, FME definition updates are streamed to FME SDKs, which takes a fraction of a second. In less than 10% of cases, for very large feature flag definitions (or large dynamic configs) or segment updates with a large number of key changes, a notification of the change is streamed and the changes are retrieved by an API fetch request. Our SDKs store the FME definition locally to serve feature flags without a network call and without interruption in the event of a network outage.
-* **Independent with no Harness FME dependency**. Harness FME ships the evaluation engine to each FME SDK creating a weak dependency with Harness FME backend and increasing both speed and reliability. There are no network calls to Harness to decide a user's treatment.
-* **Secure with no PII required**. No customer data needs to be sent through the cloud to Harness servers. Use customer data in your feature flag evaluations without exposing this data to third parties.
+<Tabs queryString="tab-number">
+<TabItem value="1" label="GetTreatment Method Validation">
 
-## Streaming versus polling
+Below are the expected input data types for the method `getTreatment(key, split_name, attributes)`:
 
-FME updates can be streamed to FME SDKs sub second or retrieved on configurable polling intervals.
+* key: `string` that is less than or equal to 250 characters
+* split_name: `string`
+* attributes: `dictionary`
 
-When streaming, Harness FME utilizes [server-sent events (SSE)](https://www.w3schools.com/html/html5_serversentevents.asp) to notify FME SDKs when a feature flag definition is updated, a segment definition is updated, or a feature flag is killed. For feature flag and segment definition updates, the FME SDK reacts to this notification and fetches the latest feature flag definition or segment definition. When a feature flag is killed, the notification triggers a kill event immediately. When the SDK is running with streaming enabled, your updates take effect in milliseconds.
-
-Enable streaming when it is important to:
-
-* Reduce network traffic caused by frequent polling
-* Propagate FME updates to every customer and/or service in real-time
-
-When polling, the SDK asks the server for updates on configurable polling intervals. Each request is optimized to fetch delta changes resulting in small payload sizes.
-
-Utilize polling when it is important to:
-
-* Maintain a lower memory footprint. Each streaming connection is treated as an independent request
-* Support environments with unreliable connectivity such as mobile networks. Mobile environments benefit from a low-frequency polling architecture
-* Maintain robust security practices. Maintaining an always-open streaming connection poses risk
-* Maintain control over frequency and when to initiate a network call
-
-:::warning[Streaming is currently supported for the below SDKs with the minimum version shown below.]
-
-* .NET 6.1.0
-* Android 2.6.0
-* Browser 0.1.0
-* Go 5.2.0
-* iOS 2.7.0
-* Java 4.0.0
-* JavaScript 10.12.0
-* Node.js 10.12.0
-* React 1.2.0
-* React Native 0.0.1
-* Redux 1.2.0
-* Ruby 7.1.0
-* Python: 8.3.0
+:::info
+For iOS, Android, and JavaScript, this method also has a signature of `getTreatment(split_name, attributes)`. If you are troubleshooting any of these SDKs, feel free to skip the Key Validations section below.
 :::
 
-## SDK types
+## Key Validations
 
-Our supported SDKs fall into two categories:
+key == null || key undefined (or similar for each language)
+SDK will return control
+SDK will log the following error to the console “getTreatment: you passed a null or undefined key, the key must be a non-empty string”
+no Impression will be logged back to Split servers
+key is longer than 250 characters
+SDK will return control
+SDK will log the error “getTreatment: key too long - must be 250 characters or less”
+no Impression will be logged back to Split servers
+key is of type number and is finite
+SDK will perform best effort to stringify the input and return a treatment for the converted response
+SDK will log the error “getTreatment: key too long - must be 250 characters or less”
+key is not of type string or finite number or object type
+SDK will return control
+SDK will log the error “getTreatment: you passed an invalid key type, key must be a non-empty string”
+no Impression will be logged back to Split servers
+key is an empty string
+SDK will return control
+SDK will log the error “getTreatment: you passed an empty string, key must be a non-empty string”
+no Impression will be logged back to Split servers
 
-| **Type** | **Overview** |
-| --- | --- | 
-| Client-side | <ul><li> Designed to be used by a single traffic type in the browser, mobile device, or mobile application </li><li>Intended to be used in a potentially less secure environment</li><li>This includes Harness FME's JavaScript, iOS, and Android SDKs </li></ul>  | 
-| Server-side | <ul><li> Designed to work for multiple traffic types, like users or customers (many of them per SDK) as opposed to client-side that are bound to one (typically a single user or account in session)</li><li>Intended to be used in a secure environment, such as your infrastructure </li></ul> |
+## Split Name Validations
 
-## Security considerations
+split_name == null || undefined
+SDK will return control
+SDK will log the error “getTreatment: you passed a null or undefined split name, split name must be a non-empty string”
+no Impression will be logged back to Split servers
+split_name is not of type string
+SDK will return control
+SDK will log the error “getTreatment: you passed an invalid split name, split name must be a non-empty string”
+no Impression will be logged back to Split servers
+split_name is an empty string
+SDK will return control
+SDK will log the error “getTreatment: you passed an invalid split name, split name must be a non-empty string”
+no Impression will be logged back to Split servers
+split_name has whitespace at the end or beginning of the string
+SDK will evaluate with the trimmed version of the split name.
+SDK will log the warning “getTreatment: split name “X” has extra whitespace, trimming”
+An Impression will be logged with the trimmed split_name.
 
-Client- and server-side SDKs have different security considerations:
- 
-| **Type** | **Security Considerations** |
-| --- | --- | 
-| Client-side | <ul><li> These SDKs run on the browser or in a mobile device, they can be compromised by users unpacking a mobile app or use the browser's developer tools to inspect the page </li><li>Client-side SDK APIs are more restricted in regards to what information they can access because it's a less secure environment <br />For example, client-side SDKs uses a specific endpoint (/mySegments) which only returns a list of segments in which the key used during instantiation is included. This provides for a much smaller amount of data, allowing for a smaller memory footprint in memory constrained environments of the browser and mobile apps </li></ul>| 
-| Server-side | <ul><li> These SDKs operate within your own infrastructure making them not accessible by end users </li><li>When targeting by private or sensitive data on the server-side, this information won't leave your infrastructure, keeping your sensitive data under your control </li></ul>|
+## Attributes Validations
 
-## API keys
+attributes is not of type dictionary
+SDK will return control
+SDK will log the error “getTreatment: attributes must be of type dictionary”
+no Impression will be logged back to Split servers
 
-Typically, you need one API key token per FME environment, and additionally, you may want to issue extra API keys per microservice of your product using Harness FME for better security isolation. You must identify which type of SDK you're using to ensure you select the appropriate API key type.
- 
-Within Harness FME, the following three types of keys each provide different levels of access to Harness FME's API: 
- 
-| **Type** | **Overview** |
-| --- | --- | 
-| Server-side | <ul><li> Configure server-side SDKs to use a server-side api key </li><li>Grants access to fetch feature flags and segments associated within the provided API key's environment </li><li>Never expose server-side keys in untrusted contexts </li><li>Do not put your server-side API keys in client-side SDKs </li><li>If you accidentally expose your server-side API key, you can revoke it in the API keys tab in Admin settings </li></ul>| 
-| Client-side | <ul><li> Configure client-side SDKs to use the client-side api key </li><li>Grants access to fetch featuer flags and segments for the provided key within the provided API key's environment </li></ul>|
-| Admin | <ul><li> Use for access to Harness FME's developer admin API </li><li>This key provides broader access to multiple environments unlike the other API keys that are scoped to a specific environment </li><li>Do not share this API key with your customers </li><li>If you accidentally expose your admin API key, you can revoke it in the API keys tab in Admin settings </li></ul>|
+</TabItem>
+<TabItem value="2" label="Track Method Validation">
 
-## Supported SDKs
+Below are the errors and expected behavior you can expect from the SDK on the `track(key, traffic_type_name, event_type, value)` method.
 
-Using Harness FME involves using one of our SDKs. The Harness FME team builds and maintains these SDKs for some of the most popular language libraries and are available under open source licenses. Go to our GitHub repository for more information.
+:::info
+For iOS, Android, and JavaScript, this method also has signatures without a `traffic_type_name` or `key`. If you are troubleshooting any of these SDKS, feel free to skip the Key and Traffic Type Validations sections below.
+:::
 
-| **SDK** | **API Key/Type** | **Links** |
-| --- | --- | --- | 
-| Android | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk) & [GitHub](https://github.com/splitio/android-client) | 
-| Angular utilities | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/angular-utilities) & [GitHub](https://github.com/splitio/angular-sdk-plugin) |
-| Browser | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk) & [GitHub](https://github.com/splitio/javascript-browser-client) |
-| Flutter plugin | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin) & [GitHub](https://github.com/splitio/flutter-sdk-plugin) |
-| iOS | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) & [GitHub](https://github.com/splitio/ios-client) | 
-| JavaScript | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) & [GitHub](https://github.com/splitio/javascript-client) | 
-| React | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk) & [GitHub](https://github.com/splitio/react-client) | 
-| React Native | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk) & [GitHub](https://github.com/splitio/react-native-client) |
-| Redux | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk) & [GitHub](https://github.com/splitio/redux-client) | 
-| Elixir Thin-Client | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/elixir-thin-client-sdk) & [GitHub](https://github.com/splitio/elixir-thin-client) |
-| GO | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk) & [GitHub](https://github.com/splitio/go-client) | 
-| Java | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk) & [GitHub](https://github.com/splitio/java-client) |
-| .NET | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk) & [GitHub](https://github.com/splitio/.net-core-client) | 
-| Node.js | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk) & [GitHub](https://github.com/splitio/javascript-client) | 
-| PHP | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-sdk) & [GitHub](https://github.com/splitio/php-client) | 
-| PHP Thin-Client | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk) & [GitHub](https://github.com/splitio/php-thin-client) |
-| Python | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk) & [GitHub](https://github.com/splitio/python-client) | 
-| Ruby | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk) & [GitHub](https://github.com/splitio/ruby-client) | 
+## Key Validations
 
-## Evaluator service
+key == null || undefined
+SDK will return false
+SDK will log the error “track: you passed a null or undefined key, key must be a non-empty string”
+no event will be logged back to Split servers
+key is of type number
 
-For languages with no native SDK support, Harness FME offers the Split Evaluator, a small service capable of evaluating all available features for a given customer via a REST endpoint. This service is available as a Docker container for ease of installation and is compatible with popular framework like Kubernetes when it comes to supporting standard health checks to achieve reliable uptimes. Learn more about the [Split evaluator](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator).
+Log warning “track: key X is not of type string, converting to string”
+Store key As String
 
-## Synchronizer service
+SDK will stringify the key.
+SDK will log the error warning “track: key X is not of type string, converting to string”
+key is not of type string or number
+SDK will return false
+SDK will log the error “track: you passed and invalid key, key must be a non-empty string”
+no event will be logged back to Split servers
+key is an empty string
+SDK will return false
+SDK will log the error “track: you passed an empty key, key must be a non-empty string”
+no event will be logged back to Split servers
+key is longer than 250 chars
+SDK will return false
+SDK will log the error “track: key too long - must be 250 characters or less”
+no event will be logged back to Split servers
 
-By default, Harness FME's SDKs keep segment and feature flag definitions synchronized in an in-memory cache for speed at evaluating feature flags. However, some languages do not have a native capability to keep a shared local cache of this data to properly serve treatments. For these cases, we built Split Synchronizer to maintain an external cache like Redis. To learn more, read about [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer).
+## Event Type Validations
 
-## Proxy service
+event_type is an empty string
+SDK will return false
+SDK will log the error “track: you passed an empty event_type, event_type must be a non-empty String”
+no event will be logged back to Split servers
+event_type == null
+SDK will return false
+SDK will log the error “track: you passed a null or undefined event_type, event_type must be a non-empty String”
+no event will be logged back to Split servers
+event_type not type string
+SDK will return false
+SDK will log the error “track: you passed an invalid event_type, event_type must be a non-empty String”
+no event will be logged back to Split servers
+event_type does not conform with reg exp
+Regular expression is: ^[a-zA-Z0-9][-_.:a-zA-Z0-9]{0,79}$
+SDK will return false
+SDK will log the error track: you passed “EVENT_TYPE_VALUE”, event name must adhere to the regular expression [a-zA-Z0-9][-_.:a-zA-Z0-9]{0,79}. This means an event name must be alphanumeric, cannot be more than 80 characters long, and can only include a dash, underscore, period, or colon as separators of alphanumeric characters”
+no event will be logged back to Split servers
 
-Split Proxy enables you to deploy a service in your own infrastructure that behaves like Harness servers and is used by both server-side and client-side SDKs to synchronize the flags without directly connecting the Harness backend.
+## Traffic Type Validations
 
-This tool reduces connection latencies between the SDKs and Harness servers, and can be used when a single connection is required from a private network to the outside for security reasons. To learn more, read about [Split Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy).
+traffic_type_name == null
+SDK will return false
+SDK will log the error “track: you passed a null or undefined traffic_type_name, traffic_type_name must be a non-empty string”
+no event will be logged back to Split servers
+traffic_type_name not type string
+SDK will return false
+SDK will log the error “track: you passed an invalid traffic_type_name”, traffic_type_name must be a non-empty string”
+no event will be logged back to Split servers
+traffic_type_name empty string
+SDK will return false
+SDK will log the error “track: you passed an empty traffic_type_name, traffic_type_name must be a non-empty string”
+no event will be logged back to Split servers
+traffic_type_name has capitalized letters
+SDK will log the warner “track: traffic_type_name should be all lowercase - converting string to lowercase"
+event will be logged back to Split servers with traffic_type_name lowercased
 
-## Supported agents
+## Value Validations
 
-Harness FME real user monitoring (RUM) agents collect detailed information about your users' experience when they visit your application. This information is used to analyze site impact, measure the degradation of performance metrics in relation to feature flag changes and alert the owner of the feature flag about such degradation.
+Value not null and not a finite number
+SDK will return false
+SDK will log the error “track: value must be a number”
+no event will be logged back to Split servers
 
-| **Agent** | **API Key/Type** | **Docs** |
-| --- | --- | --- | 
-| Android | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent) |
-| iOS | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent) |
-| Browser | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent) |
+</TabItem>
+<TabItem value="3" label="Factory Instantiation Validation">
+
+Below is a view of the validation to expect when instantiating the SDK factory
+
+## Validation for `SplitFactoryBuilder.build("YOUR_API_KEY", config);`
+
+api_key == empty string
+SDK will log the error “factory instantiation: you passed and empty api_key, api_key must be a non-empty string”
+api_key == null || key undefined
+SDK will log the error: “factory instantiation: you passed a null or undefined api_key, api_key must be a non-empty string”
+(Backend SDKs only) api_key == browser type
+SDK will log the error: “factory instantiation: you passed a browser type api_key, please grab an api key from the Split console that is of type sdk”
+
+If any of the above errors are encountered:
+
+Any calls to getTreatment and getTreatments will return control or map of controls
+Any calls to track will return false
+Any manager methods will return null or an empty collection
+
+## (JS and mobile SDKs only) Instantiation with a Key
+
+key == empty string
+SDK will log the error: “factory instantiation: you passed an empty key, key must be a non-empty string”
+key == null || key undefined
+SDK will log the error: “factory instantiation: you passed a null or undefined key, key must be a non-empty string”
+(JS only) key == empty string
+SDK will log the error: “client instantiation: you passed an empty key, key must be a non-empty string”
+(JS only) key == null || key undefined
+SDK will log the error: “client instantiation: you passed a null or undefined key, key must be a non-
+
+If any of the above errors are encountered:
+
+Any calls to getTreatment and getTreatments will return control or map of controls
+Any calls to track will return false
+Any manager methods will return null or an empty collection
+
+## Validations if ready config is not properly set
+
+Ready == null (Backend SDKs only)
+
+SDK will log the warning: “no ready parameter has been set - incorrect control treatments could be logged” if no ready config has been set when building factory
+
+(JS SDK only) Log warning if there are no proper callbacks for either the event or the ready promise.
+
+SDK will log the warning: “No listeners for SDK Readiness detected. Incorrect control treatments could be logged if you call getTreatment while the SDK is not yet ready”
+
+(JS SDK only) If the readiness events are subscribed to AFTER the SDK is ready:
+
+SDK will log the warning: `A listener was added for {event name} on the SDK, which has already fired and won’t be emitted again. The callback won’t be executed.`
+
+</TabItem>
+<TabItem value="4" label="GetTreatments Method Validation">
+
+Below are the expected input data types for the method getTreatments(key, split_names):
+
+key: string that is less than or equal to 250 characters
+split_names: array
+
+## Split Names Validations
+
+split_names == null || undefined || not an array
+SDK will return null
+SDK will log the error “getTreatments: split_names must be a non-empty array”
+no Impressions will be logged back to Split servers
+split_names == empty array
+SDK will return an empty object or collection
+SDK will log the error “getTreatments: split_names must be a non-empty array”
+no Impressions will be logged back to Split servers
+
+## Validations for each split name in split names Array
+
+All the same checks will be performed for split_name as defined in the get_treatment section above. Our SDK will validate each split name and log the corresponding error for each. It will also filter out any invalid inputs and only include the valid inputs in the returned dictionary.
+
+</TabItem>
+<TabItem value="5" label="Manager Interface Validation">
+
+Below are a set of validations for the manager.split(split_name) method:
+
+split_name == null || split_name == undefined
+SDK will return null
+SDK will log the error “split: you passed a null or undefined split name, split name must be a non-empty string”
+split_name == empty string
+SDK will return null
+SDK will log the error “split: you passed an empty split name, split name must be a non-empty string”
+split_name not type string
+SDK will return null
+SDK will log the error “split: you passed an invalid split name, split name must be a non-empty string”
+
+</TabItem>
+</Tabs>
+
+## Validation for a Destroyed Client
+
+Below is the behavior you can expect from the client if it is used after it has been destroyed:
+
+All methods will log the error “Client has already been destroyed - no calls possible”
+Any calls to getTreatment and getTreatments will return control or map of controls
+Any calls to track will return false
+Any manager methods will return null or an empty collection
+
+## Tracked events not showing
+
+Events sent via `client.track()` may not appear in the Harness FME UI even if the call succeeds. This usually happens because the FME Cloud silently rejects requests with invalid data.
+
+Common causes include event type names containing invalid characters, such as spaces (e.g., `client.track("userId", "client", "my conversion");`), or specifying a traffic type that doesn’t exist in your Split organization (e.g., `client.track("userId", "IncorrectTrafficType", "conversion");`).
+
+To resolve this, ensure event type names and traffic types follow the guidelines in the [SDK Overview documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/), and verify that the traffic types you use are defined in your organization.

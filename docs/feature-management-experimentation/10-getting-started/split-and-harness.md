@@ -1,7 +1,7 @@
 ---
 title: Split and Harness
 description: Split is now Harness FME
-sidebar_position: 18
+sidebar_position: 3
 ---
 
 In June 2024, Harness acquired Split, now called Harness Feature Management & Experimentation (FME). This page provides information to support you during the transition to Feature Management & Experimentation in the Harness platform.

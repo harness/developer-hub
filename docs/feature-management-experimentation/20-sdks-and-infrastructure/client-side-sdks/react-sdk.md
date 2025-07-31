@@ -1553,3 +1553,15 @@ The following are example applications showing how you can integrate the React S
 
 * [React](https://github.com/splitio/react-sdk-examples)
 * [React with TypeScript](https://github.com/splitio/react-typescript-sdk-examples)
+
+## Troubleshooting
+
+### Error: Integration not supported in current SDK version
+
+When using the Split React SDK version 1.1.0 or below and following the instructions to enable the Google Analytics plugin, the following error may appear when initializing the SDK factory:
+
+> This integration is currently supported in Split's JavaScript client side SDK version 10.11.1 and above
+
+This integration is only supported in Split’s JavaScript client-side SDK version **10.11.1 and above**. The React SDK version 1.1.0 and below depends on older versions of the JavaScript SDK that do not support this integration.
+
+Upgrade to the latest version of the Split React SDK, which uses JavaScript SDK version 10.11.1 or above under the hood.

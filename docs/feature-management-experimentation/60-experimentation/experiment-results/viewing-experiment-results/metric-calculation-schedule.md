@@ -25,4 +25,4 @@ Experimental review periods are a common practice for sophisticated growth and e
 
 As it’s an account setting, whatever you set may or may not be applicable for a specific experiment.  That’s why the warning says it MAY not be conclusive.  In other words, if it’s set at 14 days, in many cases the results on day 15 are probably as accurate as the results on day 14 (or 16 or 17 or….).  The exception would be if there is a very specific cadence to the results.
 
-This [article](https://help.split.io/hc/en-us/articles/360021867572-Reviewing-metrics-during-an-experiment) provides more information on reviewing your metrics cards.
+For more information on reviewing your metrics cards, see [Metric calculation schedule](/docs/feature-management-experimentation/experimentation/overview#review-metrics-during-an-experiment).
