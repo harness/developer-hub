@@ -154,7 +154,6 @@ The following deprecated API endpoints are longer supported:
 - AWS KMS connector now supports [plain text and encrypted ARNs](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager) across all authentication methods for enhanced security. [PL-62434]
 - Enhanced database operations during delegate registration to prevent duplicate entries in `delegateConfig`. [PL-64095]
 - Improved visibility on the service accounts' details page at a higher scope; users can now see details of service accounts that are inherited at lower scopes. [PL-63634]
-- A new API has been introduced to delete the delegate token. [PL-63386]
 - Delegate tasks are now marked as completed instead of being deleted immediately. These completed tasks are automatically removed after a defined retention period using a TTL (Time-To-Live) index. [PL-61842]
 - ECS delegates are now deprecated. New ECS delegate registrations are no longer supported, and existing ECS delegates will gradually be disconnected. [PL-56291]
 
