@@ -3127,7 +3127,9 @@ To add an artifact from Github Packages, do the following:
   :::
 15. Select **Submit**. The Artifact is added to the Service Definition.
 
+### GitHub Connectors Limitations
 
+Harness does not support **GitHub App connectors** for configuring GitHub Packages as an artifact source.
 
 ### Permissions
 
