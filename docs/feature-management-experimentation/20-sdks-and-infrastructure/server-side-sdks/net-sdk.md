@@ -15,9 +15,10 @@ This guide provides detailed information about our .NET SDK. All of our SDKs are
 ## Language Support
 
 This SDK supports the following .NET platform versions:
+
   - .NET Framework 4.5 and later
   - .NET Core 2.x and 3.x
-  - .NET 8, .NET 7, .NET 6 and .NET 5
+  - .NET 9 and earlier
 
 :::tip[Rule-based segments support]
 Rule-based segments are supported in SDK versions 7.11.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
@@ -36,7 +37,7 @@ We unified the source code for Splitio and Splitio-net-core packages in one repo
 Use NuGet in the command line or the Package Manager UI in Visual Studio.
 
 ```csharp title="NuGet"
-Install-Package Splitio -Version 7.11.0
+Install-Package Splitio -Version 7.11.2
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
@@ -575,7 +576,7 @@ First, import Splitio.Redis NuGet package into your project.
 Use NuGet in the command line or the Package Manager UI in Visual Studio.
 
 ```csharp title="NuGet"
-Install-Package Splitio.Redis -Version 7.11.0
+Install-Package Splitio.Redis -Version 7.11.2
 ```
 
 To initiate an SDK with support for Redis as consumer mode, use the following code snippet:

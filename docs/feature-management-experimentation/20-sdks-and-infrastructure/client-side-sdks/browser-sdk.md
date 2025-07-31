@@ -64,11 +64,11 @@ npm install --save @splitsoftware/splitio-browserjs
 <!-- Choose the preferred script tag, you don't need both -->
 
 <!-- Slim build, smaller footprint -->
-<script src="//cdn.split.io/sdk/split-browser-1.2.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.3.1.min.js"></script>
 
 <!-- Full build, bigger footprint but all modules are exposed and usable,
 including fetch polyfill -->
-<script src="//cdn.split.io/sdk/split-browser-1.2.0.full.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.3.1.full.min.js"></script>
 ```
 
 </TabItem>
@@ -785,7 +785,7 @@ If you define just a string as the value for a feature flag name, any config ret
 <TabItem value="JavaScript" label="JavaScript (using CDN bundle)">
 
 ```javascript
-<script src="//cdn.split.io/sdk/split-browser-1.2.0.full.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.3.1.full.min.js"></script>
 
 var sdk = splitio.SplitFactory({
   core: {
@@ -979,7 +979,8 @@ type SplitView = {
   },
   defaultTreatment: string,
   sets: Array<string>,
-  impressionsDisabled: boolean
+  impressionsDisabled: boolean,
+  prerequisites: Array<{ flagName: string, treatments: string[] }>
 }
 ```
 

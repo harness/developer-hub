@@ -49,7 +49,7 @@ npm install --save @splitsoftware/splitio
 <TabItem value="CDN bundle">
 
 ```html
-<script src="//cdn.split.io/sdk/split-11.2.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-11.4.0.min.js"></script>
 
 ```
 
@@ -955,7 +955,8 @@ type SplitView = {
   },
   defaultTreatment: string,
   sets: Array<string>,
-  impressionsDisabled: boolean
+  impressionsDisabled: boolean,
+  prerequisites: Array<{ flagName: string, treatments: string[] }>
 }
 ```
 

@@ -961,7 +961,8 @@ type SplitView = {
   },
   defaultTreatment: string,
   sets: Array<string>,
-  impressionsDisabled: boolean
+  impressionsDisabled: boolean,
+  prerequisites: Array<{ flagName: string, treatments: string[] }>
 }
 ```
 
