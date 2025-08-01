@@ -26,6 +26,12 @@ The FME SDK for React Native supports both React Native bare projects (using [Re
 
 It has been validated with React Native v0.59 and later, and Expo v36 and later, but should also work with older versions.
 
+## Rule-based segments support
+
+Rule-based segments are supported in SDK versions 1.2.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+
 ## Initialization
  
 Set up FME in your code base with two steps.
