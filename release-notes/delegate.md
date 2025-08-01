@@ -23,9 +23,9 @@ These release notes describe recent changes to Harness Delegate.
 
 ## Important feature change notice
 
-:::info Delegate FIPS-compliant images
+:::info Delegate FIPS-compliant images (Only for SMP)
 
-Harness delegate now offers FIPS (Federal Information Processing Standard) compliant images compatible only with [FIPS SMP](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview). This is available starting Delegate version: [25.07.86300](/release-notes/delegate#version-250786300-).
+Harness delegate now offers FIPS (Federal Information Processing Standard) compliant images compatible only with [FIPS Self-Managed Platform](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview). This is available starting Delegate version: [25.07.86300](/release-notes/delegate#version-250786300-).
 
 :::
 
