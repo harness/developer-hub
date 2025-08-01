@@ -21,6 +21,17 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
+## Important feature change notice
+
+:::info Delegate FIPS-compliant images
+
+Harness delegate now offers FIPS (Federal Information Processing Standard) compliant images compatible only with [FIPS SMP](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview). This is available starting Delegate version: [25.07.86300](/release-notes/delegate#version-250786300-).
+
+:::
+
+<details>
+<summary>Previous Highlights</summary>
+
 :::info Delegate Base Image Migration
 
 Harness is planning to update the base image for its Delegate from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4`, as UBI-8 reached end-of-life on May 31st, 2024. No further updates, patches, or fixes will be provided for UBI-8, so this migration ensures continued security and compatibility. This change will take effect starting **January 6, 2025**.
@@ -54,6 +65,16 @@ If you have blocked Stackdriver logs using firewall rules, upgrade your delegate
 
 :::
 
+:::danger Breaking change: Updated Delegate Expiration Policy
+
+Harness has updated the delegate expiration policy to 6 months with a 2-month EOL upgrade period.
+
+Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). Delegates expire if not upgraded 6 months after the image is released. If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
+
+For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
+
+:::
+
 <details>
 <summary>Deprecation notice</summary>
 
@@ -69,15 +90,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
-:::danger Breaking change: Updated Delegate Expiration Policy
-
-Harness has updated the delegate expiration policy to 6 months with a 2-month EOL upgrade period.
-
-Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). Delegates expire if not upgraded 6 months after the image is released. If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
-
-For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
-
-:::
+</details>
 
 ## Release Notes categories
 1. [Delegate image release notes](#delegate-image-release-notes)
@@ -87,16 +100,6 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 ## Delegate image release notes
 
 ## July 2025
-
-### Version 25.07.86300-fips <!--Jul 31, 2025-->
-
-#### New features and enhancements
-
-:::note **Delegate now supports FIPS**
-  Harness Delegate now supports FIPS, which can only be used in [Self-Managed Platform (SMP)](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview) version [0.31.0](https://developer.harness.io/release-notes/self-managed-enterprise-edition/#july-31-2025-version-0310) and later.
-:::
-
-- These delegates are downloaded with the `FIPS_ENABLED=true` parameter and run in FIPS-compliant mode, aligning with the security requirements of the FIPS-enabled SMP environment.
 
 ### Version 25.07.86401 <!--Jul 30, 2025-->
 
