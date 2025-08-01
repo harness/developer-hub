@@ -54,7 +54,7 @@ The following modules are tested and supported on FIPS-enabled SMP environments.
 | Module | Components |
 |--------|------------|
 | Platform     | **Authentication (OKTA)**<br />- [SAML](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-okta)<br />- [SCIM](/docs/platform/role-based-access-control/provision-users-with-okta-scim)<br /><br />**Notification**<br />- [SMTP](/docs/platform/notifications/add-smtp-configuration)<br />- [Slack](/docs/platform/notifications/notification-settings/#configure-pipeline-notifications)<br />- [MS Teams](/docs/platform/notifications/notification-settings/#configure-pipeline-notifications) |
-| Continuous Delivery     | **Artifact Repositories**<br />- Docker Registry<br />- Artifactory<br /><br />**Cloud Providers**<br />- AWS<br /><br />**Deployment**<br />- Kubernetes |
+| Continuous Delivery     | **Artifact Repositories**<br />- Docker Registry<br />- Artifactory<br /><br />**Cloud Providers**<br />- AWS<br /><br />**Deployment**<br />- Kubernetes <br />- GitOps|
 | Cloud Cost Management    | **Cloud Providers**<br />- [Kubernetes cluster](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-for-kubernetes/) |
 | Continuous Integration     | **Security Tests**<br />- [Kaniko](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push/#kaniko) |
 | Code Repository   | **Code Repositories**<br />- GitHub |
