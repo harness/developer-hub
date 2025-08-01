@@ -560,7 +560,7 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 | GitOps Agent version | Packaged Argo CD version | Supported Argo CD versions                    | Redis version       | Haproxy version |
 | -------------------- | ------------------------ | --------------------------------------------- | ------------------- | --------------- |
-| 0.97.0               | v2.14.13                 | 2.10.14, 2.13.2, 2.13.5, 2.14.9, 2.14.13      | redis:7.4.1-alpine  | 2.9.4-alpine    |
+| 0.97.0 - 0.98.0      | v2.14.13                 | 2.10.14, 2.13.2, 2.13.5, 2.14.9, 2.14.13      | redis:7.4.1-alpine  | 2.9.4-alpine    |
 | 0.94.0 - 0.96.0      | v2.14.9                  | 2.10.10, 2.10.14, 2.13.2, 2.13.5, 2.14.9      | redis:7.4.1-alpine  | 2.9.4-alpine    |
 | 0.86.2 - 0.93.0      | v2.13.5                  | 2.9.4, 2.10.10, 2.10.14, 2.13.2, 2.13.5       | redis:7.4.1-alpine  | 2.9.4-alpine    |
 | 0.84.2 - 0.85.0      | v2.13.2                  | 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14, 2.13.2 | redis:7.4.1-alpine  | 2.9.4-alpine    |

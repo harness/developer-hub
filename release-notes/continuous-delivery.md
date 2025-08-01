@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-7-15T10:00:00
+date: 2025-7-30T10:00:00
 sidebar_position: 8
 ---
 
@@ -54,6 +54,21 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 :::
 
 ## July 2025
+
+### GitOps Service 1.38.0, GitOps Agent 0.98.0
+
+#### Fixed Issues
+
+- Resolved a minor bug in the GitOps Agent that impacted reconciliation (drift detection) when managing more than 5,000 applications per agent. (**CDS-112008**) 
+- Fixed GitOps Agent panic when mapping Argo applications to Harness applications with multiple sources and a helm `valuesObject` in the spec. (**CDS-112309**)
+- Added a new `forceEnableInCluster` parameter under the `argocdSettings` query param when installing a namespaced GitOps Agent.
+  This forces the creation of an `in-cluster` entity during installation.
+  Additionally, manual configuration is required to scope the `in-cluster` down to the true namespaced mode in the created cluster.
+    - Set the `namespaces` field in the secret referring to the `in-cluster` in your agent's namespace.
+    - For guidance, refer to the [Argo CD declarative setup docs](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters). (**CDS-111595**)
+- Replaced the `error` icon with a `skip` icon for resources that don't exist during a project import. (**CDS-112504**)
+- Renamed a tab on the Bulk Refresh page from `Sync triggered` to `Refreshed`. (**CDS-112215**)
+- Fixed missing project mappings in the `api/v2/appprojectsmapping` endpoint. (**CDS-112080**)
 
 ### Version 1.99.0
 
@@ -130,7 +145,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Previously, nested expressions such as `<+pipeline.stages.test_<+pipeline.variables.app>...>` were not being resolved correctly in pipelines, resulting in unresolved or incorrect values during execution. The issue is resolved. (**PIPE-28354**)
 - Previously, attempting to configure a native Helm deployment using charts from an OCI registry resulted in a generic *Null Pointer Exception* error, even after successful chart publishing via pipeline execution. This prevented users from linking and deploying OCI-based Helm charts in Harness. The issue is resolved.(**CDS-112221, ZD-88256**)
 
-### GitOps Service 1.37.0, GitOps Agent 0.97.0
+### GitOps Service 1.37, GitOps Agent 0.97
 
 #### [Argo Upgrade] 2.14.13 (CDS-112038)
 
