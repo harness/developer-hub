@@ -1,3 +1,6 @@
+import attributeEvents from '@site/docs/feature-management-experimentation/50-release-monitoring/static/attribute-events.png';
+import attributeEventsRules from '@site/docs/feature-management-experimentation/50-release-monitoring/static/attribute-event-rule.png';
+
 Attribution is the process by which Harness FME measures the influence of a feature on a user metric and allows you to run accurate experiments. Attribution correlates events with one of the treatments of the Harness FME for which metrics are being calculated. 
 
 Harness FME combines event data you send to Harness FME with the assignment data collected by the getTreatment call of the FME SDK to determine whether the event was influenced by the feature. The correlation is done via the key (id) that is present in an [impression](https://help.split.io/hc/en-us/articles/360020585192) (a record of which treatment was assigned to a key) and the key in an event. 
@@ -16,7 +19,7 @@ The following example describes how Harness FME attributes events when a user's 
 
 FME identifies when a user first is assigned a treatment, and attributes all events after that first impression to the treatment assigned. The following is an illustration of this attribution following a single user's activity.
 
-<img src="https://help.split.io/hc/article_attachments/360021818792" alt="Attribution___exclusion_1_.png" width="1000" />
+<img src={attributeEvents} width="1000" />
 
 * **e** is an event, such as a click event. Events are represented below the timeline of the version.
 
@@ -44,7 +47,7 @@ In this case, Harness FME isolates the events and applies a 15-minute buffer to 
 
 This example illustrates how Harness FME attributes events when a user's rule changes.
 
-<img src="https://help.split.io/hc/article_attachments/360021818832" alt="attribution___exclusion_2.png" width="1000" />
+<img src={attributeEventsRules} width="1000" />
 
 * **e** is an event, such as a click event. Events are represented below the timeline of the version.
 

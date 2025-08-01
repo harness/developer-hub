@@ -53,7 +53,7 @@ For example, if the results were as shown in the image below, an alert would not
 
 The reason no alert fires in these earlier checks is because the error margin, or confidence interval, on the impact is too wide to be confident that the impact really is greater than your threshold. However for the fourth and fifth checks, an alert would fire.
 
-<img src="https://help.split.io/hc/article_attachments/360037042692" alt="alert_threshold.png" width="900" />
+![](../../static/degradation-threshold.png)
 
 For an alert to fire, the observed degradation will need to be a certain amount more extreme than the threshold you’ve chosen. Exactly how much more extreme it would need to be (sometimes called the Minimum Detectable Effect) depends on the sensitivity of the metric, which is influenced primarily by sample size and the variance in the metric values. 
 
@@ -85,7 +85,7 @@ The Sample size column is shown under the Sample population section of the data 
 
 For example, imagine you see the below table for a feature flag which ran for 48 hours, and you intend to run a similar feature flag with a monitoring window length of 24 hours. To get the estimated sample size during the 24 hour monitoring window, first sum the sample sizes across the two treatments, to get 2000, then divide by 2 to go from 48 hours to 24 hours - this will give you an estimated sample size during the monitoring window of 1000. 
 
-<img src="https://help.split.io/hc/article_attachments/360041949711" alt="sample_size_estimate.png" width="300" />
+![](../../static/sample-size-estimate.png)
 
 ### Baseline metric value
 
@@ -97,7 +97,7 @@ The standard deviation characterizes how much variation there is in your metric.
 
 You can find this value under the Stdev column in the Metric dispersion section of the data table.
 
-<img src="https://help.split.io/hc/article_attachments/360041949832" alt="mean_and_standard_deviation.png" width="500" />
+![](../../static/baseline-standard-deviation.png)
 
 ## Calculator for means
 

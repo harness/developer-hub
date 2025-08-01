@@ -47,7 +47,7 @@ To create the parent feature flag:
 
 1. Set the default treatment to be *not-in-experiments*.
    
-   <img src="https://help.split.io/hc/article_attachments/25919683357453" alt="default_treatment.png" width="900" /> 
+   ![](../static/default-treatment.png)
 
 1. In the Targeting section, in Targeting rules, select **Distribute treatments as follows**. Allocate the following user traffic percentages:
     
@@ -56,7 +56,7 @@ To create the parent feature flag:
    - `pdp-test-c` - 34%
    - `not-in-experiments` - 0%
 
-   <img src="https://help.split.io/hc/article_attachments/25920092761613" alt="distribute_treatments_as_follows.png" width="900" /> 
+   ![](../static/distribute-treatments.png)
 
 1. Set the **Alert baseline treatment** to be *not-in-experiments*.
 1. You may want to restrict who can edit this feature flag’s targeting rules in the selected Environment. To do this click the **Editing** button on the Details tab, select **Restrict who can edit**, add or remove an editor, and click **Apply**.
@@ -88,7 +88,7 @@ To create a dependent (child) feature flag:
 1. Select `is in flag` in the matcher dropdown, select *pdp_test_parent* from the attributes dropdown, and select *pdp-test-a* from the values dropdown.
 1. Select **Distribute treatments as follows** and allocate user traffic percentages to this dependent flag’s treatments. For fastest experimental results, you can set on to 50% and off to 50% (or you may enter a smaller percentage for on, to begin a gradual rollout of the *php-test-a* feature).
 
-   <img src="https://help.split.io/hc/article_attachments/15834380465933" alt="distribute_treatments_as_follows_for_dependent_flag.png" width="900" />
+   ![](../static/distribute-treatments-dependent.png)
 
 1. Set the **Alert baseline treatment** to be *off*.
 1. Repeat steps 1-11 to create two more dependent feature flags: `pdp-test-b` and `pdp-test-c`.
