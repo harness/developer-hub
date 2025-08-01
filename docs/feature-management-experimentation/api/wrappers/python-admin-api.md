@@ -45,6 +45,134 @@ When the library receives a 429 HTTP response because of a limit rate, it waits 
 
 ## Objects Reference
 
+### Harness Mode
+
+Starting with version 3.5.0, the Split API client supports operating in Harness Mode to interact with both Split and Harness APIs.
+
+#### Deprecated Endpoints in Harness Mode
+
+The following Split endpoints are deprecated and cannot be used in Harness Mode:
+
+- `/workspaces`: `POST`, `PATCH`, `DELETE`, and `PUT` verbs are deprecated
+- `/apiKeys`: `POST` verb for `apiKeyType == 'admin'` is deprecated
+- `/users`: all verbs are deprecated
+- `/groups`: all verbs are deprecated
+- `/restrictions`: all verbs are deprecated
+
+Non-deprecated endpoints will continue to function as before.
+
+#### Class
+
+**Harness Mode**
+
+* `Client` or (`HarnessClient`): the main client supporting Harness and Split APIs.
+* Micro-clients for Harness-specific resources:
+  
+  * `token`
+  * `harness_apikey`
+  * `service_account`
+  * `harness_user`
+  * `harness_group`
+  * `role`
+  * `resource_group`
+  * `role_assignment`
+  * `harness_project`
+
+```python
+schema = {
+  'name': 'string',
+  'identifier': 'string',
+  'email': 'string',
+  'accountIdentifier': 'string',
+  'description': 'string',
+  'tags': {'key': 'value'}
+}
+```
+
+#### Methods
+
+`token.list(account_id)`
+
+Fetches all tokens for the given Harness account.
+
+* Parameters: `account_id` as string
+* Return: List of `Token` objects
+
+```python
+tokens = client.token.list(account_id)
+for token in tokens:
+    print(f"Token: {token.name}, ID: {token.id}")
+```
+
+`service_account.list(account_id)`
+
+Fetches all service accounts for the given Harness account.
+
+* Parameters: `account_id` as string
+* Return: List of `ServiceAccount` objects
+
+```python
+service_accounts = client.service_account.list(account_id)
+for sa in service_accounts:
+    print(f"Service Account: {sa.name}, ID: {sa.id}")
+```
+
+`service_account.create(data, account_id)`
+
+Creates a new service account.
+
+* Parameters: 
+
+  - `data` as dict: service account definition
+  - `account_id` as string
+
+* Return: `ServiceAccount` instance
+
+```python
+sa_data = {
+    'name': sa_name,
+    'identifier': sa_identifier,
+    'email': "test@harness.io",
+    'accountIdentifier': account_id,
+    'description': 'Service account for test',
+    'tags': {'test': 'test tag'}
+}
+new_sa = client.service_account.create(sa_data, account_id)
+```
+
+`harness_user.add_user_to_groups(user_id, group_ids, account_id)`
+
+Adds a user to one or more Harness groups.
+
+* Parameters:
+
+  - `user_id` as string
+  - `group_ids` as list of strings
+  - `account_id` as string
+
+* Return: Boolean
+
+```python
+client.harness_user.add_user_to_groups(user.id, [group.id], account_id)
+```
+
+### Default Account Identifier
+
+To avoid specifying the `account_id` with every call, set the default when creating the client:
+
+```python
+client = get_client({
+    'harness_mode': True,
+    'harness_token': 'YOUR_HARNESS_TOKEN',
+    'account_identifier': 'YOUR_ACCOUNT_IDENTIFIER'
+})
+
+tokens = client.token.list()  
+projects = client.harness_project.list()
+```
+
+For more information about Harness Mode, including authentication options, base URLs, and examples, see the [README](https://github.com/splitio/python-api?tab=readme-ov-file#working-with-harness-specific-resources).
+
 ### Workspaces (now called Projects in Split UI)
 
 #### Class
@@ -2224,3 +2352,206 @@ env = client.environments.find("Production", ws.id)
 largeSegmentDef = client.large_segment_definitions.find('large_segment',env.id, ws.id)
 largeSegmentDef.remove_all_members('title', 'comment', [])
 ```
+
+### Rule-based Segments
+
+Rule-based segments allow you to define audience segments using complex rule structures and exclusion logic.
+
+#### Class
+
+**RuleBasedSegment**
+
+```bash
+schema = {
+'name': 'string',
+'description': 'string',
+'trafficType' : {
+'id': 'string',
+'name': 'string'
+},
+'creationTime' : 'number',
+'tags': [{'name': 'string'}]   
+}
+```
+
+#### Methods
+
+`rule_based_segments.list(workspace_id)`
+
+Fetch all rule-based segments in a workspace.
+
+* Parameters: `workspace_id` as string
+* Return: List of `RuleBasedSegment` objects
+
+```bash
+ws = client.workspaces.find("Defaults")
+for segment in client.rule_based_segments.list(ws.id):
+    print(f"Rule-Based Segment: {segment.name}, {segment.description}")
+```
+
+`workspaces.add_rule_based_segment(segment_data, traffic_type)`
+
+Adds a new rule-based segment to a workspace.
+
+* Parameters:
+
+  - `segment_data` as dict
+  - `traffic_type` as string
+
+* Return: `RuleBasedSegment` instance
+
+```python
+segment_data = {'name': 'advanced_users', 'description': 'Users who match advanced criteria'}
+rule_segment = ws.add_rule_based_segment(segment_data, "user")
+print(rule_segment.name)
+```
+
+`rule_based_segments.find(segment_name, workspace_id)`
+
+Finds a specific rule-based segment by name.
+
+* Parameters:
+
+  - `segment_name` as string
+  - `workspace_id` as string
+
+* Return: `RuleBasedSegment` instance
+
+```python
+segment = client.rule_based_segments.find("advanced_users", ws.id)
+```
+
+#### Class
+
+**RuleBasedSegmentDefinition**
+
+The segment definition is used when adding, updating, or making change requests to rule-based segments in specific environments.
+
+```bash
+schema = {
+  'name': 'string',
+  'environment': {
+    'id': 'string',
+    'name':'string'
+  },
+  'trafficType' : {
+    'id': 'string',
+    'name': 'string'
+  },
+  'creationTime' : 'number',
+  'rules': [ ... ],
+  'excludedKeys': ['string'],
+  'excludedSegments': [ { 'name': 'string', 'type': 'string' } ]
+}
+```
+
+#### Methods
+
+`rule_based_segment_definitions.add_to_environment(environment_id)`
+
+Adds a rule-based segment to an environment.
+
+* Parameters: `environment_id` as string
+
+* Return: `RuleBasedSegmentDefinition` instance
+
+```python
+env = client.environments.find("Production", ws.id)
+segdef = segment.add_to_environment(env.id)
+```
+
+`rule_based_segment_definitions.find(segment_name, environment_id, workspace_id)`
+
+Finds a rule-based segment definition in an environment.
+
+* Parameters:
+
+  - `segment_name` as string
+  - `environment_id` as string
+  - `workspace_id` as string
+
+* Return: `RuleBasedSegmentDefinition` instance
+
+```python
+segdef = client.rule_based_segment_definitions.find("advanced_users", env.id, ws.id)
+```
+
+`rule_based_segment_definitions.update(data)`
+
+Updates the rule-based segment definition with rules or exclusions.
+
+* Parameters: `data` as dict
+
+* Return: Updated `RuleBasedSegmentDefinition` instance
+
+```python
+update_data = {
+    'rules': [...],
+    'excludedKeys': ['user1', 'user2'],
+    'excludedSegments': [{'name': 'beta_testers', 'type': 'standard_segment'}]
+}
+updated_segdef = segdef.update(update_data)
+```
+
+`rule_based_segment_definitions.submit_change_request(...)`
+
+Submits a change request to update a rule-based segment definition.
+
+* Parameters:
+
+  - `rules` as list of dicts
+  - `excluded_keys` as list of strings
+  - `excluded_segments` as list of dicts
+  - `operation_type` as string
+  - `title` as string
+  - `comment` as string
+  - `approvers` as list of strings
+  - `workspace_id` as string
+
+* Return:Boolean
+
+```python
+segdef.submit_change_request(
+    rules=rules,
+    excluded_keys=excluded_keys,
+    excluded_segments=excluded_segments,
+    operation_type='UPDATE',
+    title='Lower age threshold to 25',
+    comment='Including more users in advanced segment',
+    approvers=['user@email.com'],
+    workspace_id=ws.id
+)
+```
+
+`change_requests.list()`
+
+List all change requests.
+
+* Return: List of `ChangeRequest` objects
+
+```python
+for cr in client.change_requests.list():
+    if cr._split:
+        print(f"{cr._id}, {cr._split['name']}, {cr._title}")
+    if cr._segment:
+        print(f"{cr._id}, {cr._segment['name']}, {cr._title}")
+```
+
+`change_requests.update_status(status, comment)`
+
+Approve or reject a change request.
+
+* Parameters:
+
+  - `status` as string (APPROVED or REJECTED)
+  - `comment` as string
+
+* Return: Boolean
+
+```python
+for cr in client.change_requests.list():
+    if cr._split['name'] == 'new_feature':
+        cr.update_status("APPROVED", "done")
+```
+
+For more information about rule-based segments, see the [README](https://github.com/splitio/python-api?tab=readme-ov-file#rule-based-segments).
