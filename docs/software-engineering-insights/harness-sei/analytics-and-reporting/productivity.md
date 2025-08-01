@@ -25,6 +25,8 @@ Below is a brief overview of each widget on the **Productivity** tab for SEI 2.0
 
 ### PR Velocity Per Dev
 
+![PR Velocity per Dev](../static/pr-velocity.png)
+
 This widget provides insights into the productivity of individual developers and teams by visualizing the rate at which pull requests (PRs) are completed over time.
 
 * **Metrics Displayed**: Average PRs merged per developer per week (e.g., 0.13 per week).
@@ -36,6 +38,8 @@ The following options are available for this widget:
   * **View Breakdown**: Provides a detailed breakdown of PR velocity by teams or individual developers, and offers a drill down to specific PRs.
 
 ### PR Cycle Time
+
+![PR Velocity per Dev](../static/pr-cycle.png)
 
 This widget visualizes the average time it takes for pull requests (PRs) to move through various stages from creation to merge. It helps identify bottlenecks in the PR review and merge process.
 
@@ -49,6 +53,8 @@ The following options are available for this widget:
 
 ### Work Completed Per Developer
 
+![PR Velocity per Dev](../static/work-completed.png)
+
 This widget tracks the amount of completed work (e.g., features, bugs) per developer over time, offering insights into the output generation.
 
 * **Metrics Displayed**: Average completed work units per developer per week (e.g., 0.23 per week).
@@ -61,6 +67,8 @@ The following options are available for this widget:
 
 ### Coding Days Per Developer
 
+![PR Velocity per Dev](../static/coding-days.png)
+
 This widget measures the average number of days developers actively contribute code, indicating consistent engagement and direct contribution volume.
 
 * **Metrics Displayed**: Average coding days per developer per week (e.g., 0.23 per week).
@@ -72,6 +80,8 @@ The following options are available for this widget:
 
 ### Number of Comments Per PR
 
+![PR Velocity per Dev](../static/comments.png)
+
 This widget gauges the level of collaboration and communication within PRs by tracking the average number of comments per pull request. More comments can indicate active discussion and thorough reviews.
 
 * **Metrics Displayed**: Average number of comments per PR (e.g., 2.5 comments).
@@ -82,6 +92,8 @@ The following options are available for this widget:
 * **View Breakdown**: Provides a detailed breakdown of comment activity by team.
 
 ### Average Time to First Comment
+
+![PR Velocity per Dev](../static/average-time.png)
 
 This widget measures the responsiveness of the team by calculating the average time it takes for a pull request to receive its first comment. Faster first comments can indicate efficient review processes.
 
