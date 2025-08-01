@@ -595,8 +595,39 @@ public class SplitView: NSObject, Codable {
     }
     @objc public var configs: [String: String]?
 
+    @objc public var prerequisites: [Prerequisite]?
+}
+
+public class Prerequisite: NSObject, Codable {
+    @objc public var flagName: String
+    @objc public var treatments: [String]
 }
 ```
+
+### Feature flag prerequisites
+
+Feature flag prerequisites allow you to define dependency relationships between feature flags in the iOS Suite SDK. A flag is only evaluated if all its prerequisites return one of the specified treatments. If any prerequisite is not met, the flag is not evaluated and its `defaultTreatment` is served.
+
+Prerequisites are evaluated before allowlists and targeting rules, enabling you to design advanced rollout strategies and conditional flag logic in your iOS applications.
+
+For example:
+
+```swift
+let prerequisite = Prerequisite(flagName: "flagA", treatments: ["on"])
+
+let splitView = SplitView()
+splitView.name = "flagB"
+splitView.trafficType = "user"
+splitView.killed = false
+splitView.treatments = ["on", "off"]
+splitView.changeNumber = 123456789
+splitView.configs = [:]
+splitView.sets = []
+splitView.defaultTreatment = "off"
+splitView.prerequisites = [prerequisite]
+```
+
+In this example, the `flagB` flag will only be evaluated if the `flagA` flag returns the `"on"` treatment. Otherwise, `flagB` will serve its `defaultTreatment` `"off"`.
 
 ## Listener
 

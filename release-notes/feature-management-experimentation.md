@@ -20,7 +20,7 @@ These release notes describe recent changes to Harness Feature Management & Expe
 ----
 #### 2025-08-01
 
-The following SDKs and customer-deployed components now support feature flag prerequisites. This feature allows you to define dependency relationships between flags, ensuring a given flag is only evaluated if its prerequisite flag returns one of the specified treatments. 
+The following SDKs now support feature flag prerequisites. This feature allows you to define dependency relationships between flags, ensuring a given flag is only evaluated if its prerequisite flag returns one of the specified treatments. 
 
 Prerequisites are evaluated before allowlists and targeting rules, helping you implement complex rollout strategies and conditional flag logic. If any prerequisite is not met, the flag is not evaluated and its `defaultTreatment` is served.
 
@@ -34,6 +34,10 @@ Prerequisites are evaluated before allowlists and targeting rules, helping you i
 - [React Native SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk#feature-flag-prerequisites)
 - [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk#feature-flag-prerequisites)
 - [Browser Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite#feature-flag-prerequisites)
+- [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#feature-flag-prerequisites)
+- [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#feature-flag-prerequisites)
+- [iOS Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#feature-flag-prerequisites)
+- [Android Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite#feature-flag-prerequisites)
 - [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#feature-flag-prerequisites())
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#feature-flag-prerequisites)
 
