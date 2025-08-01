@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const FmeData: Horizon = {
   Now: {
-    description: "Q2 2025, May-Jul 2025",
+    description: "Q3 2025, Aug-Oct 2025",
     feature: [
       {
         tag: [{ value: "Better Together" }],
@@ -23,7 +23,7 @@ export const FmeData: Horizon = {
     ],
   },
   Next: {
-    description: "Q3 2025, Aug-Oct 2025",
+    description: "Q4 2025, Nov 2025 - Jan 2026",
     feature: [
       {
         tag: [{ value: "Better Together" }],
@@ -55,7 +55,7 @@ export const FmeData: Horizon = {
     ],
   },
   Later: {
-    description: "Q4 2025+, Nov 2025 & beyond",
+    description: "Q1 2026+, Feb 2026 & beyond",
     feature: [
       {
         tag: [{ value: "Better Together" }],
