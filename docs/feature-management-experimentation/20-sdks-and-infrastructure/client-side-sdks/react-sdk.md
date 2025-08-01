@@ -982,7 +982,7 @@ Feature flag prerequisites allow you to define dependency relationships between 
 
 Prerequisites are evaluated before allowlists and targeting rules, enabling you to design complex rollout strategies and conditional flag logic.
 
-For example, using the React SDK and the `SplitView` type:
+For example:
 
 ```typescript
 const splitView: SplitView = {

@@ -390,7 +390,7 @@ Feature flag prerequisites allow you to define dependency relationships between 
 
 Prerequisites are evaluated before allowlists and targeting rules, enabling you to design complex rollout strategies and conditional flag logic.
 
-For example, in Angular:
+For example:
 
 ```typescript
 const splitView: SplitView = {
