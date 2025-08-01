@@ -216,6 +216,8 @@ In case you want to display the same information you have ingested on your Overv
 
 ![](./static/additional-info-card-new.png) -->
 
+> **Note:** For detailed instructions on adding an Additional Info Card to display custom information on your entity's Overview page, see the [Additional Info Card](/docs/internal-developer-portal/layout-and-appearance/catalog.md#additional-info-card) section in the Catalog Layout documentation.
+
 <!-- </TabItem>
 </Tabs> -->
 
