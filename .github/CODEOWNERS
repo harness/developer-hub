@@ -4,31 +4,31 @@
 # Learn more at: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Global Owners of the HDH Repository
-*       @pratmit @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
+*       @pratmit @wei-harness @ivikramsahu @SushrutHarness
 
 # Configuration Files in DS are JS.
-*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
-*.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
-*.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
-*.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
+*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
+*.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
+*.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
+*.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
 
 # Changes to Lock File
 *.lock  @wei-harness
 
 # Changes to Config Files
-*.ini  @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
-*.json  @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
-*.toml  @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
-*ignore @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
-/_server-redirect @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
+*.ini  @wei-harness @ivikramsahu @SushrutHarness
+*.json  @wei-harness @ivikramsahu @SushrutHarness
+*.toml  @wei-harness @ivikramsahu @SushrutHarness
+*ignore @wei-harness @ivikramsahu @SushrutHarness
+/_server-redirect @wei-harness @ivikramsahu @SushrutHarness
 
 # Changes to Netlify Files
 /netlify/ @wei-harness
 
 # Contributing
-CONTRIBUTING.md @pratmit @ivikramsahu @dewan-ahmed @SushrutHarness
-README.md @pratmit @ivikramsahu @dewan-ahmed @SushrutHarness
-/docs/hdh/ @pratmit @ivikramsahu @dewan-ahmed @SushrutHarness
+CONTRIBUTING.md @pratmit @ivikramsahu @SushrutHarness
+README.md @pratmit @ivikramsahu @SushrutHarness
+/docs/hdh/ @pratmit @ivikramsahu @SushrutHarness
 
 # University
 /university/ @ravilach
@@ -36,7 +36,7 @@ README.md @pratmit @ivikramsahu @dewan-ahmed @SushrutHarness
 /src/components/University/ @ravilach
 
 # Community
-/community/ @Ompragash
+/community/ @Ompragash @dewan-ahmed
 
 # Redirect Archives
 /archive/  @pratmit @wei-harness
