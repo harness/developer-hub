@@ -114,5 +114,11 @@ Here's the workflow for configuring RBAC in Harness CDE:
 5. Role Binding: [Assign roles and resource groups](/docs/platform/role-based-access-control/rbac-in-harness#role-binding) to users or user groups. 
 
 ### CDE RBAC Example
+Here's an example workflow of configuring RBAC for CDE resources: 
+
+1. Create a custom resource group, choose Gitspaces as the resource type and select the resource scope at which you want to configure RBAC for CDE resources. 
+2. Create a user group with all the users added in the group.
+3. Manage the user group's role binding by adding the "CDE User" role to the user group and assigning the resource group created in step 1. 
+
 
 
