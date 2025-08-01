@@ -1,10 +1,14 @@
 import applyingFilters from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/applying-filters-selecting-a-version.png';
 import viewImpact from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/view-impact-for-custom-dates.png';
 import generateResults from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/generate-results-button.png';
+import metricFilters from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/metric-filter.png';
+import metricSetup from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/metrics-setup.png';
 
 ## Overview
 
 Harness FME provides the ability to filter your metric results, so you can analyze impact with greater depth and precision. 
+
+Applying a filter can help you improve the sensitivity of your metric by refining the sample used in the analysis.  Filtering is most often used to provide deeper analysis of how customers progress through a particular flow in your product.
 
 There are three required filters for analysis:
 
@@ -13,6 +17,38 @@ There are three required filters for analysis:
 - **Treatments.** Select two treatments to compare, so you can understand how one treatment is performing against another. For example, you would select “on” as the treatment and “off” as the baseline for an on/off feature flag.
 
 Optionally, you can filter the metrics displayed by metric tag, metric owner, or metric result. For more information, see the [Metrics](.././#metric-list) documentation.
+
+An e-commerce company may seek to drive an increase in purchases, and while it is important to track that purchase rate globally, it is often valuable to see where in the process customers are dropping off. By filtering, you can see the behavior of customers who reach particular points in the funnel, such as abandonment by those who visited a product page, or those who added something to their cart.
+
+Filtering is also used to create metrics that target only users who engage in a particular behavior, for instance observing the support ticket rate of those users who experience an exception or of users who completed the on-boarding process, as shown below:
+
+<img src={metricFilters} alt="Applying Metric Filters" width="700" />
+
+## Applying a filter
+
+You can optionally apply filters and filter properties, and a cap to your metric value. Filters help you improve the sensitivity of your metric by refining the sample used in the analysis. Filtering provides deeper analysis of how customers progress through a particular flow in your product. 
+
+This allows you to see the behavior of customers who reach particular points in the funnel, such as abandonment by those who visited a product page, or those who added something to their cart. By filtering with events, it’s enforcing that the user has at some point seen both events of a particular version.
+
+Also, use filtering to create metrics that target only users who engage in a particular behavior, for example, observing the support ticket rate of those users who experience an exception or of users who completed the onboarding process. 
+
+To apply filters, do the following:
+
+1. Towards the bottom of the Metrics page, click the **Show advanced** link. The Advanced section displays.
+
+   <img src={metricSetup} alt="Advanced Section" width="700" />
+
+1. In the **Filter by** list, optionally apply a filter to these analyses.
+
+1. In the **Properties** field, optionally apply a property filter to the ‘has done’ event you’re filtering your metric by.
+
+1. In the **Cap at** field, apply a cap to your metric value. With metric capping, any outlier value in your metrics is capped and replaced with a fixed threshold value. This reduces the variance and increases the sensitivity of your metric. When a metric cap is set to a per user per day, this is 24 hours from a user’s first impression within a particular version of a feature flag. Refer to Metric capping for more information.
+
+1. Once finished, click **Create** to create your metric. Your new metric appears.
+
+:::info 
+To get access to alert policies, contact your customer success manager or support to enable your account. If you create a metric that is measured on a per traffic type basis, you can create an alert policy for this metric. For more information about alert policies, see [Alert policies](/docs/feature-management-experimentation/experimentation/metrics/alert-policies#creating-a-metric-alert-policy).
+:::
 
 ## Selecting a version
 

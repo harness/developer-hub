@@ -131,6 +131,28 @@ Using the track method requires that you call this function for each of the even
 
 If you are already using a system for tracking events and Harness FME has an events integration with that system, Harness FME would recommend that approach over using the track method. 
 
+### How events flow through the Harness FME pipeline
+
+This section describes the path an event takes from an instance of the Split SDK, where the `track` method is called, to the datastore used for calculating metric values from that event.
+
+In order to accurately attribute events to treatments, the timestamp in the event is captured and recorded when the `track` method is called, so independent of any latency in transmission, the event has an accurate timestamp for when it occurred. This is the timestamp that will be compared to a feature flag's versions and impressions to determine if the event can be attributed to a treatment.
+
+A variety of design factors were considered in the implementation of the Split pipeline—speed, stability, accuracy, and comprehensiveness. While Split aims to bring the fastest time to value possible in our pipeline, the platform prioritizes stability and accuracy, which are especially important in experimentation.
+
+Here's what happens after you call `track`:
+
+1. SDK to API: The API send events in batches, as configured by an SDK configuration parameter, (for instance, in the Java SDK, the parameter is `eventFlushIntervalInMillis`). The default value of this parameter is stated in the documentation for each SDK; for most SDKs it is 30 seconds. Another parameter sets the size of the events queue (in the Java SDK, the parameter is `eventsQueueSize` which defaults to 500). When the events queue is full, the SDK will flush its content and post the events to the Split cloud, regardless of the setting of the flush interval parameter.
+
+1. API to Queue: The API writes data to an ingestion queue, this typically takes only a few milliseconds.
+
+1. Queue to S3: Uses the shortest possible buffer time for AWS firehose, which is 60 seconds.
+
+1. S3 to Data Lake: A job retrieves the raw events data and processes it for storage in the Split data lake, ready for analysis. Typical run time for this job varies from 2 to 5 minutes depending on load.
+
+1. Data Lake to Calculated Result: Jobs are scheduled based on how long the experiment has been running, since older experiments have low variance over small windows of data. Once a job begins, it takes from 15 seconds to 5 minutes to process and save the results, depending on the data volumes involved.
+
+The last update time shown in a feature flag's metric impact tab is based on when the job completes. Typically, it's fair to estimate about 5 minutes of pipeline delay from the time the event is received to the time it is available for processing. In many cases, the pipeline is faster than that (both the SDK and firehose buffer times are trains leaving a station, if you get there just before the train departs you don't wait long). Spikes in data volumes can add delay to the pipeline.
+
 ## Using the events API
 
 You can post a JSON body to Harness FME's [Events API](https://docs.split.io/reference/events-overview) to ingest event data from existing sources. You can see the schema for sending an event in the following:

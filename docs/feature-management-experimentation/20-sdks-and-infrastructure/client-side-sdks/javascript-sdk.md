@@ -1323,6 +1323,32 @@ factory.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' t
 factory.UserConsent.getStatus() === factory.UserConsent.Status.DECLINED;
 ```
 
+### Integrate with `react-ga` (Google Analytics)
+
+To integrate the JavaScript SDK with the `react-ga` library, a common wrapper for Google Analytics in React applications, you can configure the JavaScript SDK with the `GOOGLE_ANALYTICS_TO_SPLIT` integration and use the `plugin.require` method from `react-ga` to load the Split plugin.
+
+For example:
+
+```js
+// Adding trafficType and integrations parameters in Split config:
+const sdkConfig = {
+   core: {
+      authorizationKey: 'SDK API KEY',
+      key: 'react-guy',
+      trafficType: 'account'
+   },
+   debug: true,
+   integrations: [{
+      type: 'GOOGLE_ANALYTICS_TO_SPLIT'
+   }]
+};
+
+// Initializing ReactGA
+ReactGA.initialize('UA-xxxxxxxx-1');
+ReactGA.plugin.require('splitTracker');
+ReactGA.pageview(window.location.pathname);
+```
+
 ## Example apps
 
 The following example applications detail how to configure and instantiate the JavaScript SDK on commonly used platforms:

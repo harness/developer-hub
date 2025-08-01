@@ -1,6 +1,6 @@
 ---
 title: Reallocating traffic
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 When targeting rules are defined for a feature flag, the rules are used to assign every customer to a treatment. This assignment is permanent until the targeting rules change. This permanence is useful because a customer should not see a different treatment in two back to back calls. 

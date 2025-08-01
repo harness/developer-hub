@@ -9,6 +9,8 @@ sidebar_position: 6
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment </button>
 </p>
 
+## Overview
+
 Segments are lists of user IDs that can you can create and share across your feature flags in an environment. You can segment your customer base and target these segments in your release process.
 
 A segment is a pre-defined list of user IDs (user keys) that a feature flag can target. Segments can:
@@ -171,8 +173,44 @@ A segment is a list of user IDs. For a Large segment you can append new user IDs
 When adding user keys to a segment by importing them from a file, use a CSV file (a file with .csv extension) that lists the user IDs in a single column with no header. User IDs containing commas, line breaks, or any other special character need to be wrapped in double quotes. Duplicate user IDs are ignored.
 
 Example CSV file content:
+
 ```
 id1
 id2
 id3
 ```
+
+## Checking if a user is in a segment
+
+The Admin API does not include an endpoint to check if a user ID (or key) exists in a specific segment. Instead, you can use the mobile and browser SDK's `mySegments` endpoint, which returns the list of segment names associated with a given user key.
+
+When calling this endpoint, use a Browser API key:
+
+```bash
+curl -H "Authorization: Bearer [Browser API Key]" \
+     -H "Accept: application/json" \
+     https://sdk.split.io/api/mySegments/[user_id]
+```
+
+For example:
+
+```bash
+curl -H "Authorization: Bearer ebj1kXXXXXXXXXXXXXXXXX" \
+     -H "Accept: application/json" \
+     https://sdk.split.io/api/mySegments/testing4321
+```
+
+The example response returns the following:
+
+```bash
+{
+  "mySegments": [
+    {
+      "id": "460f69f0-f426-11e8-92e6-0ed4073e2658",
+      "name": "First_Class_Users"
+    }
+  ]
+}
+```
+
+This approach is faster and more efficient than fetching all keys for all segments via the Admin API and looping through them.

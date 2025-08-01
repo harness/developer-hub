@@ -108,6 +108,31 @@ In the Targeting rules area, you can:
 If you have at least one targeting rule with ___percentage distribution___, then you can ___compare metric results between feature flag treatments___ (on the [Metrics impact tab](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/).
 :::
 
+## Timed releases for feature flags
+
+You can implement a feature toggle that switches between `on` and `off` automatically at a certain time using one of the following methods:
+
+1. Using the Admin REST API to [change feature flag definitions and rules](https://docs.split.io/reference#partial-update-split-definition-in-environment):
+
+   * For example, you can create the banner feature flag, set the default rule to on, then use the Admin API to change the default to off.
+   * You can run the Admin API using cURL and schedule the command with any host OS scheduler to run at a specific date-time.
+
+      ```bash
+      curl -v -X PATCH  \
+      -d '[{"op": "replace", "path": "/defaultRule", "value":[ { "treatment": "on", "size": 100 } ]}]' \
+      -H 'Content-Type:application/json'  \
+      -H 'Authorization: Bearer [ADMIN API KEY]'  \
+      https://api.split.io/internal/api/v2/splits/ws/[WORKSPACE ID]/[SPLIT NAME]/environments/Production
+      ```
+
+1. Using a targeting rule and passing the system time:
+
+   * You can turn the flag `on` or `off` at a specific time, for a subset of users or for all users.
+   * You can also configure it for a time window. For example, if you want to turn a message on alerting users during a maintenance window, you can set up the rule as shown in the following screenshot:
+
+   ![](./static/targeting-rule-pass-system-time.png)
+
+
 ## Setting the alert baseline treatment
 
 In the [Set alert baseline treatment](http://localhost:3000/docs/feature-management-experimentation/feature-management/set-the-alert-baseline-treatment) area, select a baseline treatment that will be used for your alert policies.

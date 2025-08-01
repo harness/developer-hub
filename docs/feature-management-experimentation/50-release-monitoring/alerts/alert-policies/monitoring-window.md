@@ -3,7 +3,9 @@ title: Monitoring window
 sidebar_position: 10
 ---
 
-Harness FME allows you to configure how long you want your metrics to be monitored for and alert you if a severe degradation occurs. By default, the monitoring window is set to 24 hours from a feature flag version change. You can select from a range of different monitoring windows, from 30 minutes to 28 days.
+## Overview
+
+Harness FME allows you to configure how long you want your metrics to be monitored for and alert you if a severe degradation occurs. By default, the monitoring window is set to 24 hours and the degradation threshold is set at 0 from a feature flag version change. You can select from a range of different monitoring windows, from 30 minutes to 28 days.
 
 With these monitoring windows, you can customize your alerting period based on your team's release strategy. Adjust your monitoring window to 24 hours if you are turning on a feature at night with low traffic volumes and you want to monitor through the morning when traffic begins to increase, or to 30 minutes if you are expecting high traffic volumes within the first 30 minutes of a new feature flag version. 
 
@@ -19,29 +21,61 @@ Although alert policies stop checking for new degradations after the monitoring 
 
 In cases like these, if the recalculation shows statistically significant degradation, even outside the monitoring window, Harness FME may still issue an alert. For example, if your monitoring window is 24 hours but a user recalculates results on Day 12, a new alert may trigger based on the updated analysis.
 
+## Choosing the monitoring window
+
+The monitoring window is the period of time during which we monitor your feature flag for any severe degradations. A longer window means your flag will have more time to accrue data, giving you additional power to detect degradations that might have been missed with a smaller sample. 
+
+However, a longer window also means that we will use stricter significance criteria for alerts due to the increased number of checks expected during a longer window.
+
+### Significance thresholds used for monitoring
+
+In order to control the false positive rate during the monitoring window we adjust the significance threshold that the p-value must meet before an alert is fired.
+
+Unavoidably, every statistical comparison has a chance of returning a false positive result. Hence, if this effect was unaccounted for, the more statistical comparisons we made the higher your chances of getting a false alert would be. Applying an adjustment to the significance threshold allows us to control the false positive rate and ensure that the likelihood of getting a false alert, across the whole of the monitoring window, is no higher than your chosen level (5% by default).
+
+The level of adjustment is directly dependent on how many times we intend to calculate your results during your chosen monitoring window. We divide the default significance threshold set for your account by the number of times we will check for degradations during the selected monitoring window.
+
+For example, if your monitoring window is 30 minutes, we expect to run 6 calculations during that time. In this case, if your significance threshold is set to 0.05 in your statistical settings, the p-value would need to be below 0.008 (0.05 / 6) for an alert to fire in this time window. If your window was instead set to 24 hours, we expect 52 calculations and hence a p-value would need to be below 0.001 (0.05 / 52) for an alert to fire. This adjustment means that a longer monitoring window will have slightly less ability to detect small degradations at the beginning of your release or rollout.
+
+If you expect high traffic volumes, a shorter window will enable you to detect smaller degradations faster. On the other hand, if you have lower traffic volumes then a longer window will allow more time for your feature flags to accrue data. Note that we require at least 355 samples in both treatments before we can confidently test for significance. Hence, in order to benefit from the monitoring functionality your window should be long enough to ensure you have reached that [minimum sample size](/docs/feature-management-experimentation/getting-started/statistical-approach#minimum-sample-size). 
+
 ## Choosing your degradation threshold for alerting
 
 For alert policies, rather than testing for statistically significant evidence of *any* impact as we do for our standard metric analyses, we test for significant evidence of an impact *larger* than your chosen degradation threshold, in the opposite direction to the metric’s desired direction.
 
-This means that, by design, if your observed impact is equal to the set threshold it will not fire an alert.  Instead, an alert only fires when the entire confidence interval - which represents the *range* of likely values - is above or below your set threshold. Hence, it is not unexpected for you to see a degradation in the metrics larger than your set threshold without an alert firing. This would just mean that the statistics suggest this result could just be due to noise in the data rather than a real degradation.
+By default, this threshold is set to 0. This is equivalent to our standard metric analyses, except for two differences: we use stricter significance thresholds, and the test is one-sided (we only test for degradations, not improvements).
 
-For example, if the results were as shown in the image below, an alert would not have fired for the first 3 checks, even though the observed impact is already above your set alert threshold after Check 2. The reason no alert fires in these earlier checks is because the error margin, or confidence interval, on the impact is too wide to be confident that the impact really is greater than your threshold. However for the fourth and fifth checks, an alert would fire.
+This means that, by design, if your observed impact is equal to the set threshold it will not fire an alert.  Instead, an alert only fires when the entire confidence interval (which represents the *range* of likely values) is above or below your set threshold. 
+
+Hence, it is not unexpected for you to see a degradation in the metrics larger than your set threshold without an alert firing. This would just mean that the statistics suggest this result could just be due to noise in the data rather than a real degradation.
+
+For example, if the results were as shown in the image below, an alert would not have fired for the first 3 checks, even though the observed impact is already above your set alert threshold after Check 2. 
+
+The reason no alert fires in these earlier checks is because the error margin, or confidence interval, on the impact is too wide to be confident that the impact really is greater than your threshold. However for the fourth and fifth checks, an alert would fire.
 
 <img src="https://help.split.io/hc/article_attachments/360037042692" alt="alert_threshold.png" width="900" />
 
-Hence, for an alert to fire, the observed degradation will need to be a certain amount more extreme than the threshold you’ve chosen. Exactly how much more extreme it would need to be (sometimes called the Minimum Detectable Effect) depends on the sensitivity of the metric, which is influenced primarily by sample size and the variance in the metric values. 
+For an alert to fire, the observed degradation will need to be a certain amount more extreme than the threshold you’ve chosen. Exactly how much more extreme it would need to be (sometimes called the Minimum Detectable Effect) depends on the sensitivity of the metric, which is influenced primarily by sample size and the variance in the metric values. 
 
-The calculators below can be used to help you calculate what range of degradations you can expect to detect for a given sample size and set of metric characteristics. If your metric is a count, sum, average or ratio metric, use the [first calculator](#calculator-for-means) for means metrics. Otherwise, if your metric is a percent of unique users metric, use the [second calculator](#calculator-for-proportions) for proportions. Note that these calculators assume your statistical settings are set at a significance threshold of 0.05 and a power threshold of 80%. We also assume that you are using the default monitoring window length of 24 hours, since we adjust the significance threshold according to your chosen monitoring window length, if you are using something other than 24 hours the minimum degradation to fire an alert will be slightly different to what is shown by this calculator.
+The calculators below can be used to help you calculate what range of degradations you can expect to detect for a given sample size and set of metric characteristics. If your metric is a count, sum, average or ratio metric, use the [first calculator](#calculator-for-means) for means metrics. Otherwise, if your metric is a percent of unique users metric, use the [second calculator](#calculator-for-proportions) for proportions. 
+
+These calculators assume your statistical settings are set at a significance threshold of 0.05 and a power threshold of 80%. We also assume that you are using the default monitoring window length of 24 hours, since we adjust the significance threshold according to your chosen monitoring window length, if you are using something other than 24 hours the minimum degradation to fire an alert will be slightly different to what is shown by this calculator.
 
 For example, imagine you have a *Percentage of unique users* metric which has a value of 60% in the baseline treatment, and you use a relative degradation threshold of 10%. If the desired direction of the metric is a decrease, then we would be testing for evidence that the Percentage of Unique Users in the comparison group is more than 66% (more than 10% higher than the baseline value). 
 
 Assuming a 50/50 percentage rollout of users between baseline and comparison treatments, and an Org wide significance level of 0.05, with 10,000 unique users you would only see an alert if the observed percentage for the comparison group increased by more than 16.2% and hence had a value higher than 69.7%. If instead you had 1000 or 100,000 unique users, the comparison group value would need to be higher than 77% and 67%, respectively, for an alert to be raised. 
 
-Hence, we recommend setting an alert threshold that is less extreme than any degradation which you would definitely want to be alerted for. Chose a threshold which is close to the boundary between a safe or acceptable degradation and a degradation which you would want to know about.
+We recommend setting an alert threshold that is less extreme than any degradation which you would definitely want to be alerted for. Chose a threshold which is close to the boundary between a safe or acceptable degradation and a degradation which you would want to know about.
+
+The following calculators allow you to see what range of degradations your policy is likely to detect based on your metric characteristics and alert policy settings.
 
 ## Using the calculators
 
-If you are unsure of any of the data required for the calculator we recommended looking at the metric results for a similar feature flag you have already ran, or running a "100% off" feature flag with your intended targeting rules. You can then find the sample size, metric value and standard deviation from the [Metric Details and Trends view](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends) reached by clicking into the metric card.
+Use these calculators to estimate the sensitivity of your alert policy based on your expected sample size and metric characteristics. 
+
+If you are unsure of any of the data required for the calculator, we recommended looking at the metric results for a similar feature flag you have already run, or running a "100% off" feature flag with your intended targeting rules.
+
+You can then find the sample size, metric value and standard deviation from the [Metric Details and Trends view](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends) reached by clicking into the metric card.
 
 ### Expected sample size during the monitoring window
 

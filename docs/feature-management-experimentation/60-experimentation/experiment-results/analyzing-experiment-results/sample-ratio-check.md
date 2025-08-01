@@ -85,12 +85,44 @@ Additionally, if users were previously exposed to an older version of the same f
 
 If you are using bucketing keys, an SRM may indicate a misconfiguration or be due to users receiving a fallback bucketing key. In this case we recommend you contact the FME support team at [support@split.io](mailto:support@split.io) who can look at the distribution of the buckets and check for outliers. 
 
+#### Harness FME's sample ratio check
+
+Harness FME's sample ratio check detects whether there is a sampling bias in your randomization. It ensure that the percentage of users assigned to each treatment by the targeting rules engine matches the configured percentages, within a reasonable confidence interval.
+
+Two of the most common reasons for sample ratio mismatches detected by this check include:
+
+* Customer exclusion: Users may be excluded from your metric impact analysis if they flip between targeting rules more than once. If more users are excluded from one treatment than another, a sample ratio mismatch may result. For more information, see [Attribution and exclusion](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/attribution-and-exclusion).
+* Dropped impressions: Spotty network coverage or communication issues may prevent SDK instances from transmitting impressions to Harness FME. If impressions are disproportionately dropped for one treatment over another, an SRM can occur. You can adjust the frequency with which the SDK flushes impressions with an initialization parameter.
+
+If you're concerned about a potential bias in your targeting setup, consider running an A/A test (i.e. a feature flag where both treatments are functionally identical) to validate the integrity of your randomization before launching an experiment.
+
 #### Random Chance 
 
 Since we are dealing with randomness and probabilities, there is always a possibility, albeit very small, that you see an SRM warning due to random chance alone with no real underlying issue. We use a strict threshold in our SRM test to ensure this is a very rare situation, but there is still a 1 in 1000 chance that you see a false SRM warning. If you have exhausted other options and believe your SRM may be a false alert then we suggest rerunning the feature flag - there is an exceptionally small chance of seeing the same false alert twice.
 
-#### Depedencies Between Flags
+#### Dependencies Between Flags
 
 Dependencies can skew traffic by selectively evaluating upstream flags more frequently. For example, if `flagB` depends on `flagA`, and is only served when `flagA=on`, using `flagB` in a way that guarantees `flagA` is evaluated can skew `flagA`'s distribution and lead to SRM.
 
 To check whether dependencies are contributing to SRM, review which flags are evaluated together and whether downstream flags might be increasing the evaluation frequency of upstream flags.
+
+## Sample ratio mismatch calculator
+
+When using a percentage based rollout, there will always be some randomness in how many visitors are assigned to each of your treatments. For example, when running an experiment with a 50%/50% rollout, you are unlikely to see exactly 50% of visitors assigned to each treatment. However you should see close to that number, and if you see something very different, this may indicate what is called a Sample Ratio Mismatch (SRM). 
+
+We automatically check for a statistically significant deviation from the expected sample sizes for every feature flag with a percentage based rollout. 
+ 
+The size of a deviation which should be cause for concern depends on the total sample size. Smaller samples are inherently noisier, and more subject to deviations from the expected ratios of samples in each treatment, whereas larger samples tend to more closely match expected ratios. 
+
+The calculator below can be used to help visualize the range of likely sample sizes when there are no underlying issues, and allow you to manually calculate a p-value for your sample size ratios.
+
+<iframe
+  src="https://split-srm-calc.herokuapp.com/"
+  width="100%"
+  height="900"
+  style={{
+    border: '1px solid #ccc',
+    borderRadius: '8px',
+  }}
+  loading="lazy"
+/>
