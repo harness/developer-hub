@@ -46,6 +46,8 @@ The **Run RBAC Validation before executing Inline Pipelines** setting is availab
 
 When this is set to true, pipeline executions history remains in the system even when the corresponding pipelines are deleted. You can view these executions in the Pipeline Executions list and open them to view details, but you cannot re-run them. When this is set to false, Harness deletes all executions of a pipeline when that pipeline is deleted.
 
+Please note that this does not retain execution details indefinitely.  Pipeline execution data will still be removed as a [part of the Harness data retention process](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/execution-history/#view-execution-history).
+
 ### Allow users to mark a running Step as failure
 
 Enable this setting to allow users to manually fail in-progress steps.
