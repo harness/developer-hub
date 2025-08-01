@@ -222,3 +222,37 @@ Example -
 
 - Component Not Rendering: Check for correct `props`.
 - Layout Issues: Adjust `gridProps` for responsive design.
+
+
+## Additional Info Card \{#additional-info-card}
+
+In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below.
+
+1. Go to the **Layout Page** and under **Admin** and select **Catalog Entities**.
+
+![](./static/navigate-catalog-entities.png)
+
+2. Now Select **Edit Layout** for component **Service** and add the following under Overview card.
+
+![](./static/navigate-component.png)
+
+```YAML
+        - component: EntityAdditionalInfoCard
+          specs:
+            props:
+              title: Additional Info Card
+              items:
+                - label: Code Coverage Score
+                  value: <+metadata.additionalInfo.codeCoverageScore>
+                  type: string
+                  style:
+                    bold: true
+            gridProps:
+              md: 6
+```
+
+![](./static/add-additional-info-card.png)
+
+3. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card)
+
+![](./static/additional-info-card-new.png)

@@ -157,8 +157,8 @@ pipeline:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs queryString="use-metadata-info">
-<TabItem value="scorecard" label="Code Coverage Scorecard">
+<!-- <Tabs queryString="use-metadata-info">
+<TabItem value="scorecard" label="Code Coverage Scorecard"> -->
 
 ## Code Coverage Scorecard \{#code-coverage-scorecard}
 
@@ -180,10 +180,10 @@ In case you want to track the information you have ingested using Scorecards, fo
 
 ![](./static/code-coverage-score-tab.png)
 
-</TabItem>
-<TabItem value="card" label="Additional Info Card">
+<!-- </TabItem>
+<TabItem value="card" label="Additional Info Card"> -->
 
-## Additional Info Card \{#additional-info-card}
+<!-- ## Additional Info Card \{#additional-info-card}
 
 In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below.
 
@@ -214,10 +214,10 @@ In case you want to display the same information you have ingested on your Overv
 
 2. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card)
 
-![](./static/additional-info-card-new.png)
+![](./static/additional-info-card-new.png) -->
 
-</TabItem>
-</Tabs>
+<!-- </TabItem>
+</Tabs> -->
 
 ## Conclusion
 
