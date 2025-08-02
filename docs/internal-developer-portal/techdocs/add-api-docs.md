@@ -95,8 +95,11 @@ Make sure the host or path for your OpenAPI spec is included in this list to all
 
 
 :::caution
-API entity creation in IDP 2.0 currently supports OpenAPI specifications referenced via **absolute URLs** (e.g., `https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml`) in the `definition.$text` field.
-Support for relative paths (e.g., `./openapi.yaml`, `../api.json`) is planned but not yet available. To ensure proper API documentation rendering, please ensure the domain is added to the **Backend URL Allow List** under *Configuration > URL Allow List*.
+In IDP 2.0, API entity creation now supports OpenAPI specifications referenced via both **absolute URLs** (e.g., `https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml`) and **relative paths** (e.g., `./openapi.yaml`) in the `spec.definition.$text` field. 
+These paths are interpreted relative to the location specified by the `backstage.io/managed-by-location` annotation. This typically aligns with the path of your entity YAML file. When not explicitly set, `managed-by-location` is automatically derived from the `backstage.io/source-location` annotation, ensuring correct resolution even for inline or centrally managed entities.
+
+For external URLs, ensure the domain is included in the **Backend URL Allow List** under *Configure > URL Allow List* to enable proper API documentation rendering.
+
 :::
 
 

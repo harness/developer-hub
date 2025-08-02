@@ -24,10 +24,55 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| [2025.07.v2](/release-notes/internal-developer-portal#july---202507v2)                               | ✅        | ✅         | ✅         | ✅          | ⏳          | ⏳            |
 | [2025.07.v1](/release-notes/internal-developer-portal#july---202507v1)                               | ✅        | ✅         | ✅         | ✅          | ✅          | ✅            |
 | [2025.06.v1](/release-notes/internal-developer-portal#june---202506v1)  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
 | [2025.05.v1](/release-notes/internal-developer-portal#-releasing-harness-idp-20-beta---may-202505v1) | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
 
+
+## July - [2025.07.v2]
+
+### [New Feature] Support for Relative Paths in API Definitions
+
+Harness IDP now supports using **relative file paths** in the `spec.definition.$text` field when creating `API` kind entities. This enhancement simplifies referencing OpenAPI specification files that reside within the same repository as the entity YAML.
+Examples:
+
+* `./openapi.yaml` (file in the same directory)
+* `spec/api.yaml` (file in a subdirectory)
+
+Relative paths are resolved based on the value of the `backstage.io/managed-by-location` annotation. This annotation typically reflects the location of the entity YAML file. If not explicitly defined, its value is auto-populated from the `backstage.io/source-location` annotation (which generally points to your source code repository). This fallback ensures compatibility in cases where entity YAMLs are centrally managed or even omitted (such as inline entity definitions).
+
+For inline entities or those managed outside the component’s source repo, you can **manually define** `backstage.io/managed-by-location` in your catalog YAML to ensure correct path resolution.
+
+
+
+#### Sample YAML
+
+```yaml
+apiVersion: harness.io/v1
+kind: API
+type: openapi
+identifier: unknown
+name: unknown
+owner: Harness_Partners
+spec:
+  lifecycle: dev
+  definition:
+    $text: ./petstore.oas.yaml
+metadata:
+  description: The petstore API
+  annotations: {}
+  links:
+    - url: https://github.com/swagger-api/swagger-petstore
+      title: GitHub Repo
+      icon: github
+    - url: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
+      title: API Spec
+      icon: code
+  tags:
+    - store
+    - rest
+```
 
 ## July - [2025.07.v1]
 
