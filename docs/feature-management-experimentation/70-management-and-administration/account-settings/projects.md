@@ -17,7 +17,7 @@ The following objects are also located in a project. Refer object model map belo
 
 When you onboard different business units to Harness FME, you can add up to 20 projects within your account to allow each team to have a separated space to manage their experiments and feature flags. You can manage your projects from your Admin Settings page. Here, you can add new projects or edit existing ones. 
 
-<img src="https://help.split.io/hc/article_attachments/30797526728845" alt="projects_diagram.png" width="800" />
+![](../static/projects.png)
 
 ## Creating projects
 
@@ -27,7 +27,7 @@ To create a project, do the following:
 2. Click **Admin settings**, then **Projects**. The Create a project appears.
 3. To create a project, click **Create project** at the top right. The Create project page appears.
    
-   <img src="https://help.split.io/hc/article_attachments/30797526730509" alt="projects_creating_projects.png" width="900" />
+   ![](../static/create-project.png)
  
 4. Enter a name for the project.
 5. On the Required comments checkbox, optionally check whether you’re requiring titles and comments for feature flags, segments, and metric changes.
@@ -74,7 +74,7 @@ When you are viewing a project, you can edit a project by doing the following:
 3. On the selected project you want to edit, click **View** in the Action column.
 4. Click the **Actions** button and then **Edit project** from the menu list. The Edit project page appears. 
    
-   <img src="https://help.split.io/hc/article_attachments/30797526732301" alt="projects_editing_a_project.png" width="900" />
+   ![](../static/edit-project.png)
 
 5. In the Name field, optionally change the name.
 6. On the Required comments checkbox, optionally check whether you’re requiring titles and comments for feature flags, segments, and metric changes.
@@ -96,7 +96,7 @@ To view projects, do the following:
 2. Click **Admin settings**, then **Projects**. A list of projects appears. 
 3. Select **View** on the desired project. From here, you can see the environment name, ID, type of project it is, permissions setting, and data export permission settings. 
 
-   <img src="https://help.split.io/hc/article_attachments/30797516907149" alt="projects_viewing_projects.png" width="900" />
+   ![](../static/view-project.png)
 
 ## Requesting access to projects
 

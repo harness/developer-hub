@@ -1,14 +1,17 @@
+import eventTypes from '@site/docs/feature-management-experimentation/50-release-monitoring/static/events/event-types.png';
+import dataHub from '@site/docs/feature-management-experimentation/50-release-monitoring/static/events/data-hub.png';
+
 :::info
 Harness FME's Integration Advisors are here to help with standing up your event integration pipelines. Contact your Customer Success Manager to set up a meeting and explore options.
 :::
 
 To power your analytics and experimentation, you need to send events to Harness FME. This enables you to measure the impact of your features on customer behavior, user experience, or application performance.
 
-For more information about sending event data to Harness FME, see the [Setup](/docs/feature-management-experimentation/50-release-monitoring/events/setup.md) documentation.
+For more information about sending event data to Harness FME, see the [Setup](/docs/feature-management-experimentation/50-release-monitoring/events/setup) documentation.
 
 The API and integration routes allow you to ingest event data from existing sources (i.e. take advantage of telemetry from existing instrumentation or analytics). The FME SDK Suite and RUM Agents will automatically collect event data when installed in a client side application. Use the `track` method if you want to explicitly add instrumentation code to your application to record events.
 
-Events received by Harness FME can then be aggregated to produce metrics. To learn more, review the [Metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) guide.
+Events received by Harness FME can then be aggregated to produce [metrics](/docs/feature-management-experimentation/release-monitoring/metrics/).
 
 ## Event fields
 
@@ -38,9 +41,9 @@ Below is a sample event `checkout.click` showing the event properties with Harne
 
 <pre>\{<br />  "eventTypeId": "checkout.click",<br />  "environmentName": "Production",<br />  "trafficTypeName": "user",<br />  "timestamp": 1557936519990,<br />  "value": 0,<br />  "source": "Segment",<br />  "foreignId": "ajs-85cb03f2f34af1426d9a2128146ab832",<br />  <strong>"properties": \{ <br />    "category": "guest",<br />    "packaging_fees": 25.08,<br />    "discount_saving": 4,<br />    "label": "necklace",<br />    "login_id": null,<br />    "page_version": "unit_page",<br />    "total_tax": 32.00,<br />    "total_cost": 945.69,<br />    "type": "button",<br />    "package": "luxury",<br />    "visitor_id": null<br />  \} </strong><br />}<br /></pre>
 
-You can view the event properties being sent for a given event type using the [Live tail functionality in Data hub](https://help.split.io/hc/en-us/articles/360044867032).
+You can view the event properties being sent for a given event type using the [Live tail functionality in the Data Hub](/docs/feature-management-experimentation/feature-management/live-tail).
 
-These event properties are also exposed in the metric definition builder so you can create more granular and flexible metrics. Event properties can be used as filters for your metric definition, or as values to be measured. Refer to the [Metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) guide for more information.
+These event properties are also exposed in the metric definition builder so you can create more granular and flexible metrics. Event properties can be used as filters for your [metric definition](/docs/feature-management-experimentation/release-monitoring/metrics/), or as values to be measured.
 
 Harness FME currently supports the following types of properties: strings, numbers, and booleans. Up to 300 properties can be captured per event type, and each property has a 256 character limit.
 
@@ -48,18 +51,16 @@ Harness FME currently supports the following types of properties: strings, numbe
  
 Harness FME supports multiple ways to explore your event data, allowing you to quickly understand and troubleshoot your event pipelines:
 
-1. In Admin settings, the Event types page lists all event types that have been received by Harness FME in the last 150 days. For a given event type, you can see the count of events received over the last 7 days, the timestamp of the last event received, and all metrics that have been created using that event type. 
+1. In **Admin settings**, the **Event types** page lists all event types that have been received by Harness FME in the last 150 days. For a given event type, you can see the count of events received over the last 7 days, the timestamp of the last event received, and all metrics that have been created using that event type. 
 
    :::note
-   These event types are automatically captured by Harness FME. Any event types manually entered in the [metric definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) will not be displayed on this page.
+   These event types are automatically captured by Harness FME. Any event types manually entered in the [metric definition](/docs/feature-management-experimentation/release-monitoring/metrics/) will not be displayed on this page.
    :::
 
-   <img src="https://help.split.io/hc/article_attachments/22002237207309" alt="event_type_view.png" width="1000" />
+   <img src={eventTypes} alt="Applying Metric Filters" width="700" />
 
+2. In the Data Hub, the **Explore** tab enables you to visualize the event volume trend for a selected event type over the last 7 days. To visualize your events, first select a traffic type and an event type on the form to the left. After this, click on the **Query** button to generate a graph of your results.
 
-2. In Data hub, Explore enables you to visualize the event volume trend for a selected event type over the last 7 days. To visualize your events, first select a traffic type and an event type on the form to the left. After this, click on the **Query** button to generate a graph of your results.
+   <img src={dataHub} alt="Applying Metric Filters" width="700" />
 
-   <img src="https://help.split.io/hc/article_attachments/22232144014861" alt="metric_definition.png" width="1000" />
-
-
-3. In Data hub, [Live tail](https://help.split.io/hc/en-us/articles/360044867032-Live-tail) enables you to run a live query of impressions and events, so you can understand your event stream in more detail, including which event properties are being sent with each event type.
+3. In the Data Hub, [Live tail](/docs/feature-management-experimentation/feature-management/live-tail) enables you to run a live query of impressions and events, so you can understand your event stream in more detail, including which event properties are being sent with each event type.

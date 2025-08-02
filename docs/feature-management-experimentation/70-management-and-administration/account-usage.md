@@ -30,7 +30,7 @@ An MTK count is the number of unique keys that were evaluated for treatments ove
 
 MTK, impression, and event counts are updated daily. Data is reported by month, so you can understand trends over time:
 
-<img src="https://help.split.io/hc/article_attachments/15873130151181" alt="usage_report.png" width="600" />
+![](./static/usage.png)
 
 Each of these reports is available as an exportable CSV, which can be downloaded by selecting the "Download CSV" link below each chart. For additional usage data, contact our Support team at [support@split.io](mailto:support@split.io). 
 
@@ -49,6 +49,6 @@ Under the Billing section, you can find data about your current plan, the expira
 
 Under the Service limits section, you can find your current service limits. Harness FME maintains service limits for each account to help guarantee the availability of the Harness FME service, as well as to minimize billing risks to customers. Harness FME service limits require that you request limit increases manually.
 
-<img src="https://help.split.io/hc/article_attachments/16022540784269" alt="service_limits.png" width="600" />
+![](./static/service-limit.png)
 
 Request limit increases by emailing [support@split.io](mailto:support@split.io).

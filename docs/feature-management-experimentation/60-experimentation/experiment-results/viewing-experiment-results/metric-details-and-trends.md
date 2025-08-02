@@ -92,14 +92,14 @@ To view impact over time:
 
 1. Select a baseline treatment on the Metrics impact tab.
 2. Select treatments for comparison in the underlying data table.
-
-   <img src="https://help.split.io/hc/article_attachments/360043113532" alt="underlying_data_treatments.png" width="700" />
+   
+   ![](../../static/underlying-data.png)
 
 #### Viewing value over time
 
 The Values over time chart allows you to visualize the average value of the metric for each treatment of your feature flag. You can also view how the estimated range of the metric value has changed over time.
 
-<img src="https://help.split.io/hc/article_attachments/360043113692" alt="values_over_time.png" width="750" />
+![](../../static/values-over-time.png)
 
 ### Metric tables
  

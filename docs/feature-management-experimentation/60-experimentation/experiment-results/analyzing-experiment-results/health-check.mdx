@@ -7,7 +7,7 @@ sidebar_position: 40
 
 The experiment health check provides an at-a-glance view of the integrity of your experiment's exposure data before you interpret the results. When all checks are passed (showing a green heart icon with a checkmark), you can be assured that your experiment has collected enough clean, reliable, and correctly attributed data and that the metric results are ready to review.
 
-<img src="https://help.split.io/hc/article_attachments/35737119980301" alt="experiment_health_check_popup.png" width="400" />
+![](../../static/health-check.png)
 
 The Health Check is found at the top left of an Experiment page, and shows how experiment data conforms to the following criteria:
 * **Seasonality effect completeness (for sequential testing):** Your experiment has run long enough to capture a full seasonality cycle, as defined by your organization, reducing the risk that results are influenced by short-term seasonal effects.
@@ -17,16 +17,19 @@ The Health Check is found at the top left of an Experiment page, and shows how e
 
 # Health check details
 
-You can drill into your experiment's health check to view detailed breakdowns of each check. These details clarify what each check evaluates, help you assess the severity of any issues, and guide your next steps for troubleshooting. Clicking the **See details** link in the Health check pop-up opens a slide-out panel with information on your experiment's duration (seasonality period for Sequential Testing and experimental review period for Fixed Horizon), sample ratio alignment, and exclusion rates. The possible values for these criteria and additional userful references are described in the sections below.
+You can drill into your experiment's health check to view detailed breakdowns of each check. These details clarify what each check evaluates, help you assess the severity of any issues, and guide your next steps for troubleshooting. 
+
+Clicking the **See details** link in the Health check pop-up opens a slide-out panel with information on your experiment's duration (seasonality period for Sequential Testing and experimental review period for Fixed Horizon), sample ratio alignment, and exclusion rates. The possible values for these criteria and additional userful references are described in the sections below.
 
 When you click the **See details** link on the Health Check popup, you will see a slide out modal with your seasonality effect / experimental review period, sample ratio, and sample exclusion details. The possible values for these criteria and additional useful references are described in the sections below.
 
 ## Seasonality effect completeness (for sequential testing)
 
 ### Possible values
- * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Seasonality effect complete
- * <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Seasonality effect incomplete
- * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period not started
+
+* Seasonality effect complete 
+* Seasonality effect incomplete  
+* Seasonality effect not started
  
 ### Importance of seasonality effect completeness
 
@@ -46,9 +49,10 @@ The seasonality effect is considered complete when the experiment has run for at
 ## Experimental review period completeness (for fixed horizon testing)
 
 ### Possible values
- * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period complete
- * <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period incomplete
- * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period not started
+
+* Experimental review period complete
+* Experimental review period incomplete
+* Experimental review period not started
 
 ### Importance of experimental review completeness
 
@@ -66,9 +70,10 @@ The experimental review period will be complete when the experiment has run to t
 ## Sample ratio
 
 ### Possible values
- * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Sample ratio is valid
- * <img src="https://help.split.io/hc/article_attachments/35759078118157" alt="experiment_health_check_error_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Sample ratio mismatch detected
- * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Sample ratio not applicable
+
+* Sample ratio is valid
+* Sample ratio mismatch detected
+* Sample ratio not applicable
 
 ### Importance of sample ratio
 
@@ -86,10 +91,10 @@ Look for a design flaw in the experiment that might be preventing random samplin
 ## Number of sample exclusions
 
 ### Possible values
-* <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> No exclusions made
-* <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> 2% of sample excluded
-* <img src="https://help.split.io/hc/article_attachments/35759078118157" alt="experiment_health_check_error_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> n% of sample excluded
-* <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Exclusions not applicable
+* No exclusions made
+* Less than 2% of sample excluded
+* n% of sample excluded
+* Exclusions not applicable
 
 ### Importance of the sample exclusions percentage
 

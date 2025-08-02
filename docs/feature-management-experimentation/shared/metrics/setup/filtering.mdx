@@ -3,6 +3,9 @@ import viewImpact from '@site/docs/feature-management-experimentation/50-release
 import generateResults from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/generate-results-button.png';
 import metricFilters from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/metric-filter.png';
 import metricSetup from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/metrics-setup.png';
+import targetingRule from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/targeting-rule.png';
+import baselineTreat from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/baseline-treatment.png';
+import filteredBy from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/filtered-by.png';
 
 ## Overview
 
@@ -121,13 +124,13 @@ To ensure statistical rigor and prevent issues that could arise due to unequal d
 
 To see a statistically significant comparison when comparing two treatments, select a label that you want to see your metrics results. If you select the **any** targeting rule, your metrics results still show up, but do not display statistical significance. 
 
-  <img src="https://help.split.io/hc/article_attachments/15859729852941" alt="metric-impact-targeting-rule.png" width="700" />
+  <img src={targetingRule} alt="Targeting Rule" width="700" />
 
 ## Selecting treatment and baseline
  
 View metrics cards for the customers exposed to a particular treatment as well as compared against customers exposed to two treatments. Select the treatment that you want to view metric results for and optionally add a baseline comparison if you want to see statistically significant comparisons.
 
-  <img src="https://help.split.io/hc/article_attachments/15859771931149" alt="metric-impact-treatment-and-baseline.png" width="700" />
+  <img src={baselineTreat} alt="Baseline Treatment" width="700" />
 
 ## Selecting tags and owners
  
@@ -137,7 +140,7 @@ To filter metrics, do the following:
 
 1. Select the desired feature flag and then click the **Metrics impact** tab. 
 
-   <img src="https://help.split.io/hc/article_attachments/15859822297869" alt="metric-impact-tags-and-owners.png" width="700" />
+   <img src={filteredBy} alt="Filtering Metrics" width="700" />
 
 2. In the Results area, click **0 more filters applied**. The Filtered by area appears. Fill in the fields as follows:
    * In the Metric tag field, enter the desired tag to filter down your metrics.

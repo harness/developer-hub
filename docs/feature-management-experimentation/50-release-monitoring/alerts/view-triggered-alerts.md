@@ -17,7 +17,7 @@ If an alert was fired for this flag, the following information is displayed in a
 
 Clicking on the Details pop-over icon shows additional information about the alert.
 
-<img src="https://help.split.io/hc/article_attachments/32241812102157" alt="monitoring_tab_alerts_table.png" width="700" />
+![](../static/alert-details.png)
 
 | **Field** | **Description** |
 | --- | --- | 

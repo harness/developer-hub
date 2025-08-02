@@ -17,7 +17,7 @@ On a **Desired**, **Undesired**, or **Inconclusive** impact metric card, you can
 
 ### Desired
 
-<img src="https://help.split.io/hc/article_attachments/11115840814221" alt="desired.png" width="600" />
+![](../../static/desired.png)
 
 When a metric card displays **Desired** and is green, it is because of the following:
 
@@ -27,7 +27,7 @@ When a metric card displays **Desired** and is green, it is because of the follo
 
 ### Undesired
 
-<img src="https://help.split.io/hc/article_attachments/11115616956941" alt="undesired.png" width="600" />
+![](../../static/undesired.png)
 
 When a metric card displays **Undesired** and is red, it is because of the following:
 
@@ -37,7 +37,7 @@ When a metric card displays **Undesired** and is red, it is because of the follo
 
 ### Inconclusive
 
-<img src="https://help.split.io/hc/article_attachments/11115610979469" alt="inconclusive.png" width="600" />
+![](../../static/inconclusive.png)
 
 A metric card displays **Inconclusive** if the metric impact is undecided. The card displays a yellow state if:
 
@@ -47,7 +47,7 @@ A metric card displays **Inconclusive** if the metric impact is undecided. The c
 
 ### Baseline value equals zero
 
-<img src="https://help.split.io/hc/article_attachments/11262320897037" alt="baseline_metric_value_zero.png" width="600" />
+![](../../static/baseline-value-zero.png)
 
 When the baseline treatment has a metric value of 0, the relative impact can’t be calculated and displays **Inconclusive** with a value of **N/A** on the card. Instead, the confidence interval is provided based on the absolute impact between the two treatments. The same information is provided as the statistically significant and statistically inconclusive cards but in absolute rather than relative terms.
 
@@ -57,13 +57,13 @@ This section details the results shown on gray metric cards. It also explains th
 
 ### Needs more data
 
-<img src="https://help.split.io/hc/article_attachments/11298119532557" alt="needs_more_data_355_sample_size.png" width="600" />
+![](../../static/more-data.png)
 
 A metric card displays **Needs more data** when the treatments being compared have not reached the minimum sample size. (The minimum sample size is set in Experiment settings). We require data from a specific number of unique users in each treatment before we calculate significance for your metrics. For more information, refer to the [Statistical significance](/docs/feature-management-experimentation/experimentation/key-concepts/statistical-significance/).
 
 ### Statistically not possible
 
-<img src="https://help.split.io/hc/article_attachments/11263454124557" alt="statistical_comp_not_possible.png" width="600" />
+![](../../static/not-possible.png)
 
 A metric card displays **Not possible** for one of the following reasons:
 
@@ -75,19 +75,19 @@ A metric card displays **Not possible** for one of the following reasons:
 
 ### No baseline
 
-<img src="https://help.split.io/hc/article_attachments/11262277177357" alt="no_baseline_metric_issue.png" width="600" />
+![](../../static/no-baseline.png)
 
 A metric card displays **No baseline** when you are viewing metrics for a single treatment. Select a baseline treatment to see a statistical comparison where available.
 
 ### Variance is equal to zero
 
-<img src="https://help.split.io/hc/article_attachments/30664937795469" alt="variance_equal_to_zero.png" width="600" />
+![](../../static/not-available.png)
 
 A metric card displays **The variance is equal to zero** when, for each treatment that you are comparing, all events have the same value. It is possible that there is a misconfiguration of your events, since all event values for a treatment are identical.
 
 ### Metric calculation is not available
 
-<img src="https://help.split.io/hc/article_attachments/11298345109389" alt="metric_calculation_not_available.png" width="600" />
+![](../../static/metric-not-available.png)
 
 A metric card displays **Not available** for the reasons given in the following table. If the troubleshooting tips don’t resolve your issue, and you continue to have problems with your metrics, contact [support@split.io](mailto:support@split.io).
   
@@ -113,7 +113,7 @@ When you hover over the question mark icon of a Desired, Undesired, or Inconclus
 * The metric values for both treatments
 * The p-value
 
-<img src="https://help.split.io/hc/article_attachments/11331822980621" alt="desired_info_message.png" width="600" />
+![](../../static/desired-tooltip.png)
 
 You will also see the following link buttons:
 
@@ -126,13 +126,13 @@ When you hover over the question mark icon of a metric card showing 'Needs more 
 
 * The input needed for each treatment to reach the minimum sample size
 
-  <img src="https://help.split.io/hc/article_attachments/11331929501709" alt="needs_more_data_message.png" width="600" />
+  ![](../../static/more-data-tooltip.png)
 
 ### Not available
 
 When you hover over the question mark icon of a metric card showing 'Not available', the message that appears provides the reason why the metric value is not available.
 
-<img src="https://help.split.io/hc/article_attachments/11332055670541" alt="not_available_message.png" width="600" />
+![](../../static/not-available-tooltip.png)
   
 ## Actions you can perform
 

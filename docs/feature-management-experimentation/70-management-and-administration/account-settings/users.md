@@ -193,7 +193,7 @@ If you lose your phone or no longer have access to the authentication app used d
 
 You can use any of these codes to access your account. **Note that each recovery code can only be used once.**
 
-<img src="https://help.split.io/hc/article_attachments/15734847198861" alt="recovery_codes.png" width="600" />
+![](../static/recovery-codes.png)
 
 :::note
 While the recovery codes allow you to access Harness FME in an emergency, you should contact your team's Administrator to disable two-factor authentication and then complete the setup process again. If you do not have access to the recovery codes, your team's administrator can disable two-factor authentication for your account.

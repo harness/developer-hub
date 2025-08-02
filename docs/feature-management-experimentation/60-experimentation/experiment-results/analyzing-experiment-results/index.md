@@ -9,7 +9,7 @@ After launching an experiment, you can view the results directly in the Experime
 
 Above the metric table, the **Exposures** bar visualizes the number of users exposed to each treatment group. This helps confirm that traffic was evenly distributed across variants, which is important for maintaining the validity of your experiment results. Monitoring exposures ensures that your experiment collected enough data and that assignment was properly balanced across variants.
 
-<img src="https://help.split.io/hc/article_attachments/36195168715277" alt="experiments_dashboard.png" width="900" />
+![](../../static/experiments.png)
 
 Each row displays the metric name, treatment group, observed direction of impact (such as `Desired`, `Undesired`, or `Inconclusive`), relative impact percentage with confidence intervals, p-value, and raw metric value.
 
@@ -31,7 +31,7 @@ You can click on a point or bar on one of the *over time* charts (bar graph or l
 
 The Cumulative sample size over time chart makes it easy to compare treatment sample growth. You can quickly tell if both treatments are growing at a similar rate or diverging.
 
-<img src="https://help.split.io/hc/article_attachments/35993655285133" alt="experiments_sample_size_over_time.png" width="900" />
+![](../../static/sample-size-over-time.png)
 
 If one line consistently lags, you may have a traffic allocation issue, even if it’s subtle.
 
@@ -43,7 +43,7 @@ A smooth, steadily rising cumulative trend is a great visual cue that data colle
 
 The Sample population details chart allows you to determine how close you are to reaching the required sample size for statistical significance.
 
-<img src="https://help.split.io/hc/article_attachments/36028275994253" alt="experiments_sample_population_details.png" width="900" />
+![](../../static/sample-population-details.png)
 
 ## Metric values charts
 
@@ -51,7 +51,7 @@ The Sample population details chart allows you to determine how close you are to
 
 The Values over time chart helps you see if a variant is consistently outperforming the others, or if there are fluctuations in performance that might need deeper investigation.
 
-<img src="https://help.split.io/hc/article_attachments/35993655285645" alt="experiments_values_over_time_overlay.png" width="900" />
+![](../../static/values-over-time-chart.png)
 
 The shaded area around each line is the confidence interval (CI). Seeing the CI bands over time tells you how confident you can be in the metric at any point during the test. If the confidence intervals for two treatments don’t overlap, that’s a strong visual cue that the difference might be statistically significant.
 
@@ -65,7 +65,7 @@ The cumulative values over time lines makes a clear visual case for which treatm
 
 The Metric dispersion chart provides full details of statistical results for data analysis. This chart summarizes the metric data for all treatments over the course of the experiment.
 
-<img src="https://help.split.io/hc/article_attachments/35993641266573" alt="experiments_metric_dispersion.png" width="900" />
+![](../../static/metric-dispersion.png)
 
 ## Metric impact charts
 
@@ -73,7 +73,7 @@ The Metric dispersion chart provides full details of statistical results for dat
 
 Seeing the impact over time visualization gives a clear sense of how fast the gains (or losses) are accumulating, and whether the treatment effect is growing, shrinking, or plateauing.
 
-<img src="https://help.split.io/hc/article_attachments/35993655286413" alt="experiments_impact_over_time.png" width="900" />
+![](../../static/impact-over-time.png)
 
 You can visualize the relative % impact of the treatments compared with the experiment's base treatment.
 
@@ -83,13 +83,10 @@ The shaded area is the confidence interval (CI) and gives you a range of values 
 
 The Impact details chart provides metric impact results for data analysis. This chart summarizes the metric results for all treatments (compared with the baseline treatment chosen in the experiment settings) over the course of the experiment.
 
-<img src="https://help.split.io/hc/article_attachments/35993655286541" alt="experiments_impact_details.png" width="900" />
+![](../../static/impact-details.png)
 
 ### Current impact snapshot by treatment
 
-The Current impact snapshot chart visually represents how your metric is performing relative to the experiment’s baseline treatment.
-
-This chart summarizes the metric results, showing a bar for each treatment (compared with the baseline treatment) using a green, gray, or red bar for a desired, inconclusive, and undesired impact respectively.
+The Current impact snapshot chart visually represents how your metric is performing relative to the experiment’s baseline treatment. This chart summarizes the metric results, showing a bar for each treatment (compared with the baseline treatment) using a green, gray, or red bar for a desired, inconclusive, and undesired impact respectively.
 
 ![](../../static/impact-snapshot.png)
-
