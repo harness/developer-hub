@@ -1137,6 +1137,12 @@ public class SplitView {
     public String defaultTreatment;
     public List<String> sets;
     public boolean impressionsDisabled;
+    public List<Prerequisite> prerequisites;
+}
+
+public class Prerequisite {
+    public String flagName;
+    public List<String> treatments;
 }
 ```
 
@@ -1152,12 +1158,70 @@ class SplitView(
     var changeNumber: Long
     var defaultTreatment: String?
     var sets: List<String>
-    var impressionsDisabled: Boolean
+    var impressionsDisabled: Boolean,
+    var prerequisites: List<Prerequisite>
+)
+
+class Prerequisite(
+    var flagName: String,
+    var treatments: List<String>
 )
 ```
 
 </TabItem>
 </Tabs>
+
+### Feature flag prerequisites
+
+Feature flag prerequisites allow you to define dependency relationships between feature flags in the Android SDK. A flag is only evaluated if all its prerequisites return one of the specified treatments. If any prerequisite is not met, the flag is not evaluated and its `defaultTreatment` is served.
+
+Prerequisites are evaluated before allowlists and targeting rules, enabling you to design advanced rollout strategies and conditional flag logic in your Android applications.
+
+For example:
+
+<Tabs groupId="java-kotlin-choice"> 
+<TabItem value="java" label="Java">
+
+```java
+SplitView splitView = new SplitView();
+splitView.name = "flagB";
+splitView.trafficType = "user";
+splitView.killed = false;
+splitView.treatments = Arrays.asList("on", "off");
+splitView.changeNumber = 123456789L;
+splitView.configs = new HashMap<>();
+splitView.sets = new ArrayList<>();
+splitView.defaultTreatment = "off";
+splitView.impressionsDisabled = false;
+splitView.prerequisites = Arrays.asList(
+    new Prerequisite("flagA", Arrays.asList("on"))
+);
+```
+
+</TabItem> 
+<TabItem value="kotlin" label="Kotlin">
+
+```kotlin
+val splitView = SplitView(
+    name = "flagB",
+    trafficType = "user",
+    killed = false,
+    treatments = listOf("on", "off"),
+    changeNumber = 123456789L,
+    configs = emptyMap(),
+    defaultTreatment = "off",
+    sets = emptyList(),
+    impressionsDisabled = false,
+    prerequisites = listOf(
+        Prerequisite("flagA", listOf("on"))
+    )
+)
+```
+
+</TabItem> 
+</Tabs>
+
+In this example, the `flagB` flag will only be evaluated if the `flagA` flag returns the `"on"` treatment. Otherwise, `flagB` will serve its `defaultTreatment` `"off"`.
 
 ## Listener
 
