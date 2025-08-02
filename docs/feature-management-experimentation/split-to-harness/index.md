@@ -3,8 +3,6 @@ title: Migrate from Split to Harness FME
 id: index
 slug: /feature-management-experimentation/split-to-harness
 description: Learn how to migrate from Split to Harness FME.
-sidebar_label: Overview
-sidebar_position: 1
 ---
 
 ## Overview
