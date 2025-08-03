@@ -111,6 +111,16 @@ Go to [Troubleshoot Yarn Audit Analyzer exceptions](/docs/security-testing-orche
 ### How do I add labels to a Prisma Cloud scan when my build infrastructure is Kubernetes or Docker?
 To add labels such as `JOB_NAME` to your Prisma Cloud scans, add key-value pairs to **Settings (optional)** in your Prisma Cloud scan step. These key-value pairs will be added as labels when you run the scan.
 
+### Can we push the Prisma scan report to a Git repository instead of sending it via email?
+Yes, if you'd like to push the execution report to a Git repository, you can add a Run Step with a custom script to do so. After the report is pushed, you can then share the link to the report using an email step.
+
+### How can I send Prisma scan results via email to the person who initiated the build?
+You can send an email by adding a Custom Stage in your pipeline immediately after the Build or Security stage where the Prisma scan runs. Then, add an Email step to this stage and configure it to notify the build initiator. The security step generates output variables capturing issues at different severity levels (CRITICAL, HIGH, MEDIUM, etc.), which can be included in the email.
+
+For more details, refer to Harness documentation on [Email Notifications](https://developer.harness.io/docs/security-testing-orchestration/notifications/email-notifications/)
+
+### Can I include the full Prisma scan report in the email notification?
+No, Harness currently does not support sending the entire Prisma scan report via email in the Security Testing Orchestration step. However, you can include summary details such as issue severity levels in the email notification.
 
 ## Sonar scans
 
@@ -119,13 +129,20 @@ Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techre
 - [Add the sonar.projectVersion to a Harness pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#add-the-sonarprojectversion-to-a-harness-pipeline)
 - [SonarQube doesn't scan the main branch and pull request branches in the same pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-doesnt-scan-the-main-branch-and-pull-request-branches-in-the-same-pipeline)
 
-#### Why am I getting the error Missing target_name for scan_type [repository] scan.
+### Why am I getting the error Missing target_name for scan_type [repository] scan.
 This error ocurrs if there's no scan target in the Scanner configuration. To fix this, please ensure that the Scan Step configuration properly selects a target.
 
-
-#### How does the SonarQube integration work when attempting to perform a branch scan with SonarQube Enterprise?
+### How does the SonarQube integration work when attempting to perform a branch scan with SonarQube Enterprise?
 
 An enhancement has been made to ensure the orchestration step always downloads results for the branch specified in the step, instead of downloading results only for main or master branches. For more information, go to the [STO 1.83.1 release notes](https://developer.harness.io/release-notes/security-testing-orchestration#version-1831).
+
+### How can I associate a policy set with my pipeline to enforce SonarQube quality gate checks?
+To enforce a project-level policy that checks the SonarQube quality gate status and fails the pipeline if the check fails, follow these steps:
+- Navigate to the SonarQube Scan step in your pipeline.
+- If you are using a template, open the SonarQube Scan template and click Advanced.
+- Under Policy Enforcement, select Add/Modify Policy Set and add the policy set you’ve created.
+- Click Apply Changes and save the updated pipeline.
+This ensures that your pipeline will fail if the SonarQube quality gate fails.
 
 
 
