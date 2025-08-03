@@ -2996,6 +2996,58 @@ strategy:
 ```
 This bypasses the default label generator logic that may be affected by unordered JSON keys.
 
+#### Can I clone a repository using a specific commit SHA?
+Yes, starting from v1.73, you can clone a codebase using a specific commit SHA. This supports both short (7-character) and long (40-character) SHAs.
+
+#### Do I need to configure anything special to use SHA-based cloning?
+No special configuration is required. Just provide the SHA value when triggering the pipeline, and the system will automatically fetch the exact commit.
+
+#### Is SHA-based cloning supported for all Git providers?
+It is supported for most Git-based repositories (e.g., GitHub, GitLab, Bitbucket). However, ensure your repository and connector setup support direct checkout via SHA.
+
+#### Can output variables contain multiple lines?
+Yes, with v1.72, multi-line output variables are supported when the CI_NEW_VERSION_GODOTENV flag is enabled.
+
+#### Will enabling this feature affect my existing pipelines?
+Existing single-line variables will continue to work. Multi-line support adds flexibility but may require downstream steps to correctly interpret the variable format.
+
+#### What is the Harness Build Minute Estimator?
+The Harness Build Minute Estimator is a CLI tool designed to help estimate how many Harness Cloud credits a customer may need. It does this by analyzing historical build data from their existing CI/CD systems.
+
+#### Why should I use this tool?
+If you're considering a move to Harness CI, the estimator helps you:
+Understand your team’s build usage patterns
+Accurately forecast credit consumption
+Make informed purchasing decisions based on real-world data
+
+####What systems does it support?
+The tool currently supports collecting build data from:
+Jenkins
+GitHub Actions
+CircleCI
+GitLab
+Drone
+
+#### What kind of data does the tool collect?
+The estimator gathers information such as:
+Number of builds
+Build duration
+Build frequency
+Concurrent build trends
+This data is used to estimate the number of build minutes you’d likely consume on Harness Cloud.
+
+#### Does the tool require access to our CI/CD systems?
+Yes. It may require:
+Read access to your CI/CD platform APIs
+Authentication tokens or credentials depending on the provider
+(Ensure that access is scoped appropriately for data analysis only.)
+
+#### How is the estimate calculated?
+Based on the historical build durations and frequency, the tool applies a mapping to Harness Cloud's build minute pricing model to estimate credit usage.
+
+#### Is this estimation accurate?
+The output is intended to provide a reasonable estimate based on historical usage. Actual credit consumption may vary depending on:
+
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 
 <!-- If a question applies to multiple categories, choose the one most relevant to the question. For example, "How do I run Windows builds on a K8s cluster build infra?" is most relevant to the "Windows builds" category. Although this question involves build infrastructure and kubernetes clusters, it specifically mentions Windows builds. If a user needs help running Windows builds, they will scan for "Windows" as a keyword before K8s (since K8s is broader than just Windows) -->
