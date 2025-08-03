@@ -159,6 +159,14 @@ This error could occur when there's a mismatch between the OS type of the local 
 
 No. You must upgrade the Harness Docker runner manually.
 
+### Can the runner be started in secure mode and use an HTTPS URL instead of HTTP?
+
+Runner can be started in secure mode with https but currently we don't have a way to pass the required certs into delegate, so the delegate to runner communication could be broken. The product team is already working on adding this feature in future release.
+
+### How can we use an override image connector on a CI stage configured to run on VM or local build infrastructure? 
+
+Override Image Connector option is currently only available in the builds running in kubernetes cluster. For all the other build infrastructure, it is currently not supported to change the default image connector.
+
 ## Self-managed VM build infrastructure
 
 ### Can I use the same build VM for multiple CI stages?
@@ -473,6 +481,10 @@ By default, a built-in step runs inside a container within the build VM.
 
 You could update the deafult docker connector `harnessImage` and point it to the Harness internal GAR/ECR as mentioned in the [doc](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
 
+### Can we use Harness Cloud build infrastructure only for Build stage? Can we not use it for Deploy and Custom Stage?
+
+The Harness cloud build infrastructure is only available for running CI build and it is not supported for CD/custom stages. Steps added in custom/CD stages need to be executed on the delegate running on your infrastructure.
+
 ## Kubernetes clusters
 
 ### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
@@ -765,6 +777,106 @@ Yes, we need to have one stage running on ARM and another stage running on AMD t
 ### Does Harness CI support AKS 1.28.3 version?
 
 Yes
+
+### Why does the CI pipeline run on kuberenetes cluster fail at the initialization step, rather than the run step, when a non-existent secret is referenced?
+
+We resolve all the secrets used in the stage at the init step as we need to create the corresponding kuberenets secret before the build starts.
+
+### During CI stage execution, are step logs sent directly from the build pod to Harness, or are they routed via the Delegate?
+
+The step logs will directly be sent to Harness from build pod.
+
+### Is it expected that the build pod is trying to connect to the endpoint "storage.googleapis.com" at runtime?
+
+Yes, it is expected. The build pod will connect to this endpoint to upload the step logs to GCS during the execution.
+
+### Override image connector is only supporting docker connector. Is there a way to configure the CI stage to pull the Harness image from ECR?
+
+You could create a docker connector pointing to ECR to pull the Harness internal images from ECR.
+
+### The token used in the docker connector pointing to ECR which is created using "aws ecr get-login-password" has validity only for 12 hours. Does Harness sutomatically renew this token?
+
+Currently Harness is not renewing the token automatically and you need to update the token manaually. However the product team is working on adding this feature in future release.
+
+### How to configure output varaiable through python script in run step?
+
+You can set the variable as environment variable within your script by using command ```os.environ[var_name] = "value"``` and then add this variable as the output variable in the step.
+
+### Why the ENV variables DRONE_NETRC_PASSWORD and DRONE_NETRC_USERNAME are missing in the step containers even though the codebase configuration is confifured with a git connector?
+
+It could happen when we run the pipeline to clone a public repo. These environment variables will not be present in the step container when the public repo is cloned.
+
+### Does Harness tracking the stale build pods resulting from the interruption in the infrastructure, restart of delegate after a build execution?
+
+The build Pod's YAML is configured with ```spec.activeDeadlineSecond```s set to 86400, which should automatically terminate any running Pod after 24 hours.
+
+### My connector used in a run step is pointing to an http registry endpoint however the build pod is trying to pull the image from the https endpoint? Is Harness automatically adding https in the registry endpoint?
+
+Harness doesn't add https when providing registry details to kubernetes cluster. However docker or containerd runtime uses https by default.
+
+### How can we configure the container runtime to pull the image from the http registry endpoint instead of https?
+
+You could whitelist insecure registries on nodes.
+
+### Does Harness has a native CI step to perform the maven release?
+
+Harness doesn't have a dedicated native step for Maven releases. You'll need to execute your custom commands for maven release within a Run step. We need to ensure the git binary is included in the image used in that Run step or install it at runtime, and Git authentication is properly configured.
+
+### Why the image pull from ECR is failing even after whitelisting the domain public.ecr.aws? 
+
+You would also need to whitelist the cloudfront endpoints along with the ECR endpoint ```public.ecr.aws```.
+
+### How do we configure the proxy details in the build pod?
+
+The proxy config used in the delegate that starts the build will be used in the build pod automatically.
+
+### Why the CI pipeline is still marked as success even after test failure in the run step?
+
+Harness decides wether the step needs to be marked as success or fail based on the exit code returned from your custom script. It is possible the command used to execute the test cases are returning zero exit code even if there are test failure.
+
+### During CI stage execution, does the build pod send step status directly to Harness, or is it sent through the Delegate?
+
+The step status is sent directly from build pod.
+
+### Im using an image in a run step which has gradle version 8.14.3. Why is it using gradle 8.5 at runtime?
+
+It could happen if you have a gradle wrapper in the codebase which is configured to fetch a specific version of gradle at runtime.
+
+### Why the build pod has few containers in terminates state while the build is running?
+
+It is expected behaviour. As soon as a specific step successfully finishes its execution, its corresponding container will terminate. 
+
+### Why the run step is failing with the time out error "java.net.SocketTimeoutException: timeout" before reaching the time out configured on the step?
+
+Currently the step will automatically time out after 40 hours. 
+
+### Are the build pod logs get written to any specific file which can be pushed to cloudwatch? 
+
+Build logs aren’t stored on local file but are uploaded to harness GCS buckets as part of step execution. We could download the logs from there and push it to any log aggregator.
+
+### How can we download test reports generated in the run test step?
+
+You would need to upload the files to an object store or artifactory during the build execution and download the files from the external storage once execution has been completed. You could also publish the link to download the files to the artifact tab as detailed in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab/)
+
+### Can we configure the CI step timeout in project,org or account level?
+
+Currently, you can set pipeline and stage timeouts at the project, organization, or account level. However, step timeout can't be configured globally and it must be set individually per step.
+
+### Why the CI stage execution is failing with the error "Environment variable PLUGIN_CACHE_KEY can't be empty or null"?
+
+This could happen if the cache key is missing in save/restore cache step.
+
+### Why the execution is failing with the error "Environment variable PLUGIN_TAGS can't be empty or null"?
+
+This can happen when the tags in the build step is configured with an expression and that expression is reolving to null or an empty value at runtime.
+
+### Can we upload test report directly onto the PR as comment?
+
+There is not a native step which can perform it however you could have a custom script in the run step to update the PR with the test result.
+
+### Does Harness offer a plugin to validate Docker image layer efficiency and provide optimization suggestions or import restrictions to developers within a CI/CD pipeline?
+
+Harness doesnt have a native step that can validate the docker layer. 
 
 ## Self-signed certificates
 
@@ -1303,6 +1415,22 @@ For manual tag builds, you need to enter the tag manually at runtime.
 Yes. Refer to the **Pre Fetch Command** under the
 [Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pre-fetch-command) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step#pre-fetch-command) documentation to specify any additional Git commands to run before fetching the code.
 
+### Why the run test step is failing with the error "remote url variable not set DRONE_REMOTE_URL"?
+
+The run test step will be expecting few ENV variables including DRONE_REMOTE_URL which will be set only if the clone codebase option is enabled. This error could happen when the clone option is disabled in the stage and the codebase configuration is not set at the pipeline level. 
+
+### Do we need to save the pipeline yaml in the same repository which is configured in the codebase configuration?
+
+No, The repository where the pipeline YAML stored and the repository configured as codebase can be different.
+
+### I have multiple CI stage in a pipeline which need to clone different repository? How can we configure different repository in the pipeline codebase configuration?
+
+For this scenario, you'll need to add an explicit Git Clone step within each CI stage, configuring a different repository.
+
+### How can I specify multiple branch names under branch condition in a github trigger?
+
+You could use "In" and "Not In" operators which allow multiple comma-separated values.
+
 ## SCM status updates and PR checks
 
 ### Does Harness supports Pull Request status updates?
@@ -1320,6 +1448,10 @@ Harness uses the pipeline's codebase connector, specified in the [pipeline's def
 ### Can I use the Git Clone step, instead of the built-in clone codebase step, to get build statues on my PRs?
 
 No. You must use the built-in clone codebase step (meaning, you must [configure a default codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase)) to get [pipeline links in PRs](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks#pipeline-links-in-prs).
+
+### Can we configure the git clone step to fetch all the branches in a repo insted of fetching one branch?
+
+Harness git clone step can only fetch one branch during branch build. If all the branches to be fetched, you could run the corresponding git command in a run step.
 
 ### Pipeline status updates aren't sent to PRs
 
@@ -1909,6 +2041,30 @@ Use this when:
 
 - You prefer policy-as-code to manage CI guardrails
 
+### kaniko is out of support now. Is Harness going to switch to another build tool or continue to support kaniko? 
+
+Harness will continue with kaniko by using a maintained kaniko fork.
+
+### We have custom steps to build and publish Docker images, and we are providing a connectorRef for the Docker connector. Are there any Harness expressions available that allow us to access the Docker username and password linked to the provided connectorRef?
+
+It is currently not supported to extract the creds used in the docker connector in the custom step. You would need to reference the Harness secrets used in the docker connector using the expression ```<+secrets.getValue("some_secret_identifier")>```[Ref] (https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier)
+
+### Does the native build step using buildx starts docker daemon when the build is running in kubernetes cluster?
+
+yes, the build step that uses buildx starts docker daemon as dind.
+
+### Why the build step that uses the buildx is failing with the error "could not connect to docker deamon"?
+
+Buildx plugin used by the native build step will start docker daemon during the build and this could happen if there is another dind running as a background step and it causes network race conditions resulting in this error.
+
+### Why the build step is failing with the error "BLOB_UPLOAD_INVALID: blob upload invalid; cannot be updated"?
+
+It can happen if you are trying to push the image with a tag that already exist in the registry.
+
+### Why the base image connector is not being used even after configuring a valid docker connector in the build step?
+
+The Feature Flag ```CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR``` needs to be enabled to utilize the defined Docker Connector for the Base Image Pull. You could contact Harness support to ensure that this feature flag is enabled on the account.
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -2155,7 +2311,13 @@ With this in mind, unless there are changes to [the relevant code or test](https
 This can be observed with the following log
 ![image](./static/testintelligence-blank.png)
 
+### Can test intelligence feature be dynamically enabled?
 
+The Intelligence Mode option in the test step can be configured to accept input at runtime or it can be configured with an expression. You could dynamically pass false if it needs to be disabled and true if it needs to be enabled.
+
+### Why the test results displayed on the test tab during the initial pipeline run, but the test tab is empty when rerunning the pipeline from a failed stage?
+
+This behavior is expected. Test results are not published to the test tab when a pipeline is rerun from a failed stage.
 
 ## Script execution
 
@@ -2537,6 +2699,68 @@ When the user clones a pipeline with caching steps, the cache keys generated by 
 ### How can user ensure correct cache handling when cloning pipelines with Save Cache to GCS?
 Enable separators (/) for GCS cache keys by setting `PLUGIN_ENABLE_SEPARATOR: true` in your pipeline's stage variables.
 
+### Is the cache saved in one pipeline can be reused in another pipeline?
+
+Yes, the cache saved by one pipeline can be used by other pipelines by using the same cache key.
+
+### Can we delete cache for a specific project?
+
+Cache is not scoped to a project and it is account scoped. Please refer the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/#cache-intelligence-api) to perform cache cleanup.
+
+### What is the difference between Harness cache intelligence and build intelligence?
+
+Cache Intelligence focuses on caching and restoring software dependencies (like libraries, packages, and modules) to speed up builds by avoiding repeated downloads and installations. Build Intelligence, on the other hand, caches the outputs of previous build tasks (such as compiled classes, test results, and generated artifacts) to prevent redundant recompilation when inputs haven't changed.
+
+### Why the cache intelligence plugin is unable to connect to the mino endpoint configured with IP?
+
+Cache plugin does not support minio endpoints with ip, currently only virtualhosting pathstyle is supported.
+
+### Can we use cache and build intelligence when the artifact is built while creating the image via native build and pish step?
+
+Cache and build Intelligence is currently setup to work with Run and Test steps only and it will not work with native build step.
+
+### When a custom path is used in cache intelligence, does it not work without providing a custom key?
+
+When specifying custom cache paths, you must also provide a custom cache key. If a path is specified without a key, Cache Intelligence will be disabled for that execution.
+
+### Is there any size limit for the cache when the build is running in Harness cloud?
+
+There is no such limit however Harness automatically cleanup older caches to save new ones. 
+
+## Build Intelligence
+
+### How the hash key calculation performed by the build intelligence?
+
+The hash key caclulation depends on the combination of source code, build tool args, build tool dependencies, pom.xml, build environment. any of these change would result in different hash key calculation for cache key.
+
+### Does the hash key calculation in build intelligence is controlled by Harness?
+
+No, the hash key calculation by the build intelligence is not controlled by Harness and it is based on the build tool used. You can see how maven does it in the [doc] (https://maven.apache.org/extensions/maven-build-cache-extension/remote-cache.html)
+
+### Does the build intelligence autoinject settings.yaml during the execution?
+
+Yes, build intelligence autoinject settings.yaml during the execution.
+
+### If we have a custom settings.yaml, does build intelligence overwrite it with a new one?
+
+No. Harness autoinjection will skip the settings.yaml if it detects any already existing one.
+
+### How can we track the build intelligence pushing or pulling the cache during the execution?
+
+The console log in the build intelligence step will show whenever there is a cache push or pull. 
+
+###  Why the build intelligence step is failing with the error "400 Bad Request Invalid JWT Signature" while pushing the cache to gcs bucket?
+
+The build intelligence step can fail with the above error due to lack of permission. The role should have storage admission permission or storage.objects.create, storage.objects.get and storage.objects.list.
+
+### Can we use build intelligence with onprem build infrastructure?
+
+Currently, build intelligence is not supported with the onprem VM build infrastructure However it will be supported in future release.
+
+### While trying to use build intelligence, there was an error in the step log indicates that the Build cache is disabled. What does this error mean, and does it impact Harness build intelligence?
+
+This indicates that the caching is disabled in the codebase. You'll need to check for "org.gradle.caching=true" in "gradle.properties" at both the project level (/harness/gradle.properties) and global level (e.g., $GRADLE_HOME/init.d/init.gradle or ~/.gradle/gradle.properties).
+
 ## Background steps and service dependencies
 
 ### What is the purpose of Background steps in a CI stage?
@@ -2796,6 +3020,14 @@ There are several [debug mode requirements](https://developer.harness.io/docs/co
 
 Debug mode is not available for a pipeline's first build. Run the pipeline again and, if it meets the [debug mode requirements](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/debug-mode#debug-mode-requirements), you should be able to trigger re-run in debug mode.
 
+### When rerunning the build on Harness cloud in debug mode and connect to the debug session, do we get connected to the step container corresponding to the failed step or the VM itself?
+
+We will get connected to teh step container corresponding to the failed step if that step was configured to run on a container.
+
+### Is it possible to extend the default remlote debug session timeout of 1 hour?
+
+Currently the timeout is limited to 1 hour and there’s no way to extend it.
+
 ## AIDA for CI
 
 For information about using AIDA to troubleshoot your Harness CI builds, go to [Troubleshoot builds with AIDA](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida/).
@@ -2958,6 +3190,14 @@ If it is operating as expected, the Kaniko CLI will show the following in the CL
 ```
 /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=destination/repo:1.0 --snapshotMode=redo --digest-file=/kaniko/digest-file --ignore-path=/opt/nodejs
 ```
+
+### How can we add concurrency control in CI pipeline?
+
+CI stage natively doesn't support the execution to be queued. However you could add a custom stage at the beginning of the CI pipeline and add a queue step as detailed in the below [doc](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps/).
+
+### I need to create image tag and that should be unique value. Is there a harness expression that generates random number?
+
+You could use the expression  ```<+pipeline.executionId>``` that generates a unique execution ID for each execution.
 
 ## Matrix Executions and Strategy FAQs
 
