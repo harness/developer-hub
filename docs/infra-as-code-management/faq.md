@@ -12,6 +12,15 @@ sidebar_label: FAQs
     No, a single stage is limited to one workspace. However, a pipeline can include multiple stages, and each stage can be configured to reference a different workspace. This allows you to structure your pipeline to handle multiple workspaces by chaining stages, each performing specific tasks on its assigned workspace. 
 </details>
 
+<details>
+    <summary>Is there a way to increase the session duration for the assumed role on the IACM pod??</summary>
+
+    Yes, there is an environment variable available that can be used to increase the session duration for the assumed role on the IACM pod. You can try setting the following environment variable in your Terraform workspace:
+    ```
+    PLUGIN_AWS_SESSION_DURATION=30m
+    ```
+</details>
+
 ## Cost-related questions
 <details>
     <summary>Can drift detection incur additional costs?</summary>
