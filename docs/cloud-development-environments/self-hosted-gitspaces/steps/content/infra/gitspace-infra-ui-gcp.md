@@ -42,9 +42,9 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 2. **GCP Project**: Enter the name of your **GCP project**. This is where the GCP VM Instance hosting your Gitspaces will reside.
 3. **Domain**: Provide the **domain** under which all Gitspaces created in this infrastructure will be accessible.
 4. **Gateway Machine Type**: Specify the **VM machine type** for your Gateway.
-5. **Gateway Machine Image Name**: Specify the **VM image name** for your Gateway. In case you don't have a custom image, you can use the default image provided by Harness.
+5. **Gateway Machine Image Name**: Specify the **VM image name** for your Gateway. In case you don't have a custom image, there's a default image (`projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20250213`) used by Harness automatically. 
 
-![](../../static/basic-details-infra-ui.png)
+![](../../static/gcp-infra-1.png)
 
 ### Configure Regions
 
@@ -66,13 +66,15 @@ Use the following **input parameters**:
 Here's how **all the added regions** will look for your infrastructure.
 ![](../../static/all-regions.png)
 
-### Configure Runner VM Region
-You'll have to configure the Runner VM region details to ensure that your GCP VM instance required for hosting the Runner and Delegate is provisioned as per these details. 
+### Configure VM for Runner & Delegate
+You'll have to configure the **VM for Runner & Delegate** to ensure that the GCP VM instance required for hosting the VM Runner and Delegate is provisioned as per these details. 
 
 Use the following **input parameters**: 
-1. **Region**: Choose the **VM runner region** from the added regions above. 
-2. **Availability Zone**: Choose the **availability zone** from the region selected above for your VM Runner instance. 
-3. **Machine Image Name**: Provide a **custom image** for your VM Runner instance or use the default image provided by Harness.
+1. **Region**: Choose the **region** from the list of regions added for your infrastructure to host your VM instance. 
+2. **Availability Zone**: Choose the **availability zone** from the region selected above for your VM instance. 
+3. **Machine Image Name**: Specify the **Machine image name** for your VM instance. In case you don't have a custom machine image, there's a default image (`projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20250213`) used by Harness automatically. 
+
+![](../../static/gcp-infra-2.png)
 
 ### Download the Infrastructure Config YAML
 

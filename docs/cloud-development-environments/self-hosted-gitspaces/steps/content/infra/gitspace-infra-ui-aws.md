@@ -36,7 +36,7 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 3. **Domain**: Provide the **domain** under which all Gitspaces created in this infrastructure will be accessible.
 4. **CDE Gateway Instance Type**: Specify the **instance type** for your CDE Gateway.
 
-![](../../static/aws-hybrid-1.png)
+![](../../static/aws-ui-2.png)
 
 ### Configure Regions
 Add and configure regions for Gitspaces. 
@@ -50,17 +50,29 @@ For **AWS Cloud Infrastructure** for your Self Hosted Gitspaces, ensure that you
 1. At least **two availability zones** for each region in your infrastructure. 
 2. For every availability zone, provide the **private subnet CIDR block** and **public subnet CIDR block**. 
 
-![](../../static/aws-hybrid-2.png)
+![](../../static/aws-ui-regions-1.png)
 
 Use the following **input parameters**:
 1. **AWS Region**: Select the **AWS region**. Refer to the [AWS documentation](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html) to view available regions.
-2. **Subdomain**: Provide the **subdomain** for the region. 
-3. **Zones**: It's mandatory to add at least **two availability zones** for each region in your infrastructure. Select the availability zones from this field. You can add more than two availability zones if needed using the **"New Zone"** button. 
-4. **IP Details**: Provide the **IP configuration** for each availability zone per region. 
+2. **Gateway AMI ID**: Specify the **AMI ID** for your Gateway (AWS Machine Image). **AMI ID** is configured for every region in AWS infrastructure.  
+3. **Subdomain**: Provide the **subdomain** for the region. 
+4. **Zones**: It's mandatory to add at least **two availability zones** for each region in your infrastructure. Select the availability zones from this field. You can add more than two availability zones if needed using the **"New Zone"** button. 
+5. **IP Details**: Provide the **IP configuration** for each availability zone per region. 
    - **Private Subnet CIDR Block**: This is the private IP range required for the subnet. Ensure this IP range is within the VPC CIDR block. 
    - **Public Subnet CIDR Block**: This is the corresponding public IP range required for the subnet. Ensure this IP range is within the VPC CIDR block. 
 
-![](../../static/aws-hybrid-region-details.png)
+![](../../static/aws-ui-regions-2.png)
+
+### Configure VM for Runner & Delegate
+You'll have to configure the **VM for Runner & Delegate** to ensure that the AWS VM instance required for hosting the VM Runner and Delegate is provisioned as per these details. 
+
+Use the following **input parameters**: 
+1. **Region**: Choose the **region** from the list of regions added for your infrastructure to host your VM instance. 
+2. **Availability Zone**: Choose the **availability zone** from the region selected above for your VM instance. 
+3. **AMI ID**: Specify the **AMI ID** for your VM instance. 
+
+![](../../static/vm-runner-aws.png)
+
 
 ### Download the Infrastructure Config YAML
 
