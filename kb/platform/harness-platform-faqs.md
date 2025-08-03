@@ -2202,6 +2202,9 @@ These approaches offer flexibility and reliability in ensuring that Harness dele
 
 The name of the upgrader job workload needs to follow the delegate naming convention, so can you check and confirm if you have changed that manually or using the default name as you get while downloading the manifest.
 
+### When will delegate ubi9 image will be GA?
+Its already update and GA now https://developer.harness.io/release-notes/delegate/#delegate-base-image-migration
+
 ## Dashboards
 
 ### Why isn't my project's Overview page showing deployments?
