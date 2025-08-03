@@ -3144,6 +3144,22 @@ Dashboards are a licensed functionality. If you don't have a current license, da
 
 Yes. For more information, go to [Install using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm) and [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/install/upgrade-helm-chart).
 
+### Does harness services have anti-affinity defined?
+Yes , Harness services already have anti-affinity defined.
+
+
+### How is the minReplicas count determined for Harness SMP services?
+The minReplicas count is determined based on the following factors:
+* Expected disruption in Spot VMs – To account for potential interruptions and maintain service availability.
+* Anticipated system load – To ensure the system can handle varying workloads efficiently.
+A recommended approach is to maintain n+1 replicas, where n is the usual load replica count. This provides an extra buffer to enhance reliability and minimize service disruptions.
+
+
+### What are the recommendations for using Spot VMs for Harness SMP?
+* StatefulSets and MinIO should not be placed on Spot VMs to ensure data consistency and avoid potential disruptions.
+* For deployments other than MinIO, autoscaling should be enabled with minReplicas set to 2 or 3, depending on the expected disruption of Spot instances. Refer to [Configure Autoscaling | Harness Developer Hub] for detailed guidance.
+* To distribute pods of the same ReplicaSet across different nodes, Harness already has podAntiAffinity configured, ensuring better availability and fault tolerance.
+
 ## Terraform
 
 ### Why is my Terraform plugin crashing when using the Harness provider?
