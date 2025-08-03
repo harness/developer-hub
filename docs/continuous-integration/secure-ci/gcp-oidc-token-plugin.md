@@ -92,3 +92,9 @@ gcloud config config-helper --format="json(credential)"
 ```
 
 The first line authenticates and the second line generates the access token.
+
+## Related Links
+
+[GCP OIDC plugin GitHub Repo](https://github.com/harness-community/drone-gcp-oidc)
+
+[AWS OIDC Token Plugin](/docs/continuous-integration/secure-ci/aws-oidc-token-plugin)
