@@ -23,6 +23,9 @@ tags:
   - database pipeline
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Harness Database DevOps supports **trunk-based development** for managing database schema changes. This strategy relies on a single Git branch (usually `main` or `trunk`) and leverages pipeline logic and contextual controls to manage environment-specific deployments. Trunk-based development simplifies Git workflows, reduces merge conflicts, and accelerates the flow of changes across your CI/CD pipeline.
 
 Trunk-based development in Harness Database DevOps revolves around a single Git branch serving as the source of truth for all schema changes. Here's a quick overview:
@@ -36,6 +39,8 @@ Trunk-based development in Harness Database DevOps revolves around a single Git 
 
 ## Steps to Implement Trunk-Based Development in Harness
 
+<Tabs>
+<TabItem value="tab1" label="Context-based Filtering">
 Harness supports Liquibase-style contexts to manage changes across environments from a single changelog file. In most cases, context-based filtering is applied at the **database instance level**—each instance (e.g., Dev, QA, Prod) is configured with a context label like `dev`, `qa`, or `prod`. When the pipeline executes a `DBSchemaApply` step, Harness applies only the changesets matching the context tied to that specific DB instance.
 
 This allows you to reuse the same changelog file, while ensuring each environment receives only the changes intended for it. Combined with a multi-stage pipeline structure, this forms a **hybrid deployment strategy**: context-based filtering with explicit promotion control.
@@ -69,7 +74,7 @@ Before we can deploy our Database Schema, we need to connect a database instance
 3. In each step
    - Select the appropriate database instance.
    - Ensure the instance is configured with the right `context` label (e.g., dev, qa, prod). Harness will automatically apply only those changesets tagged with this context.
-![Multiple Environments](../static/dbops-multiple-enviornment.png)
+![Multiple Environments](../static/dbops-multiple-environment.png)
 
 ### 5. **Configure Triggers**
    - Go to your pipeline settings
@@ -81,6 +86,73 @@ Before we can deploy our Database Schema, we need to connect a database instance
    - Insert **Approval steps** after lower environments (e.g. promote to QA only after Dev is verified)
    - Add **rollback steps** using `DBRollback` or manual SQL if needed
 
+</TabItem>
+<TabItem value="tab2" label="Trunk-Based Pipeline">
+Harness enables a declarative, pipeline-driven implementation of trunk-based development using **Liquibase contexts** and **multi-stage pipelines**. This strategy avoids environment-specific changelog files and instead applies a shared changelog selectively, based on the context configured in each pipeline stage.
+
+### How It Works
+
+1. All changes are committed to `main`
+2. Environment-specific changesets live in dedicated folders
+3. Harness triggers the pipeline when files change under `dev/`, `qa/`, or `prod/`.
+   - The pipeline stages are defined to apply changes based on the folder structure.
+   - Each stage corresponds to an environment (e.g., `dev`, `qa`, `prod`).
+   - The pipeline uses `DBSchemaApply` steps to apply changes from the respective folder.
+4. Each pipeline stage targets a specific folder path
+
+This approach avoids environment drift, improves auditability, and accelerates promotion cycles.
+
+### File Structure
+
+For teams migrating from legacy systems or preferring physical separation, Harness supports `changedFiles` triggers to detect and apply changes from specific folders.
+
+```tree
+main/
+  release/
+    dev/
+      2025-08-03-feature-x.yaml
+    qa/
+      2025-08-10-feature-x.yaml
+    prod/
+      2025-08-15-feature-x.yaml
+```
+### Example Changelog
+
+In the pipeline, you only need to specify the context value per environment, and Harness will filter the changesets accordingly.
+
+```yaml
+# 2025-08-03-feature-x.yaml
+databaseChangeLog:
+  - changeSet:
+      id: add-users-table
+      author: animesh
+      context: dev,qa
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+              - column:
+                  name: name
+                  type: varchar(255)
+```
+
+![Trunk-Based Pipeline Example](../static/dbops-trunk-based.png)
+
+### Why This Works as a Trunk-Based Pattern
+
+| Feature                    | Context-Based               | Folder-Based                            |
+| -------------------------- | --------------------------- | --------------------------------------- |
+| Single Git Branch (`main`) | ✅   Yes                     | ✅  Yes                                  |
+| Environment Filtering      | ✅ Via `context`             | ✅ Via folder path                       |
+| Sequential Promotion       | ✅ Native to pipeline stages | ✅ Controlled via triggers and approvals |
+| GitOps Friendly            | ✅ Strong integration        | ✅ Compatible                            |
+| Prevents Drift             | ✅ Enforced by context       | ⚠️ Requires process discipline          |
+
+</TabItem>
+</Tabs>
 
 ✅ Now, every time you commit to `main`, Harness will:
 > - Detect the change
@@ -102,7 +174,7 @@ Harness provides out-of-the-box support for Liquibase contexts, multi-environmen
 
 Yes. While trunk-based development centralizes changes in a single branch (`main`), Harness supports both trunk-based and environment-by-branch workflows. You can start transitioning incrementally by adopting context-based changelogs and defining pipelines that selectively apply changes by environment.
 
-### 2. What if I have multiple environments—how do I control where changes get applied?
+### 2. What if I have multiple environments, how do I control where changes get applied?
 
 Harness lets you define one pipeline with multiple stages, each targeting a specific environment. You can:
 
