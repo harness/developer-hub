@@ -2202,6 +2202,24 @@ These approaches offer flexibility and reliability in ensuring that Harness dele
 
 The name of the upgrader job workload needs to follow the delegate naming convention, so can you check and confirm if you have changed that manually or using the default name as you get while downloading the manifest.
 
+### How to  Obtain Delegate Status With Next Gen API's similar as CG
+We have the api to list delegate and you can filter on status (CONNECTED”/ "DISCONNECTED)
+https://apidocs.harness.io/tag/Delegate-Setup-Resource#operation/listDelegates
+
+### Can we Install Harness Delegate on Rodman
+Yes, Harness delegate can be installed using Podman by adding Podman commands to Dockerfile
+https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#install-docker-delegate-using-podman
+
+### My Delegate Version Is Updating to a Different Version Despite Using a Specific One
+If your delegate is running with Auto Upgrade enabled, the upgrade job will always attempt to update it to the latest version available for your account.
+
+
+###  How to Use a Specific Version of the Delegate Image, as I noticed that the delegate image gets updated from time to time.
+We recommend keeping Auto Upgrade enabled to ensure your delegate stays up to date. However, if you need to use a specific version and manage updates manually, you can disable the Auto Upgrade feature and specify the image tag in the manifest.
+
+### Is the Delegate Connection Type Required for Deployments Sourcing Manifests from GitHub Enterprise?
+No, it is not mandatory. You can use Harness platform unless you are using a self-hosted GitHub instance, in which case Harness may not be able to reach the endpoint.
+
 ## Dashboards
 
 ### Why isn't my project's Overview page showing deployments?
