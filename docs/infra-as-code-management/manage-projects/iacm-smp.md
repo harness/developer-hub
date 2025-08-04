@@ -60,4 +60,4 @@ To resolve this:
 	2.	Follow the steps in [custom images](/docs/infra-as-code-management/pipelines/plugin-images) to configure the `iacm-manager` to use your image.
 
 ## Next Steps
-Once your SMP deployment is configured, return to the [IaCM Get Started](/docs/infra-as-code-management/get-started/get-started) guide to connect a repo, create a workspace, and build your first pipelines.
+Once your SMP deployment is configured, return to the [IaCM Get Started](/docs/infra-as-code-management/get-started) guide to connect a repo, create a workspace, and build your first pipelines.
