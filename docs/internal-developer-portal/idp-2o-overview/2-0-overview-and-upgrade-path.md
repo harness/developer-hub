@@ -280,13 +280,39 @@ The "hidden" or "private" tags previously used to restrict entity visibility to 
 Entities should be created at the appropriate scope (Project, Organization, Account) with properly configured roles, users, and user groups to establish the required permissions.
 For example, to restrict a set of Components to a specific team, create them at a Project scope and assign only that team as Project Viewers.
 
-### System and Domain Entities Removed (new System coming soon)
+### Enhanced System Entity Support
 
+<!-- Original content about System and Domain entities
 `System` and `Domain` entities have been removed. These often duplicated Harness Project and Organization structures, respectively.
 
 We are working on introducing the System entity in IDP 2.0 as well.
 
 Meanwhile, to group entities within a project, you may create a Component with `type: system` (or another suitable type) and use `spec.subComponentOf` in child components to establish relationships in the Catalog. Ensure the Sub Components card is available in the "Dependencies" or "Overview" tab to visualize these relationships.
+-->
+
+IDP 2.0 introduces a powerful new **System** entity that provides flexible logical grouping of related software components, APIs, and infrastructure resources.
+
+**Key benefits of the new System entity:**
+
+- **Multi-scope support**: Systems can be created at Account, Organization, or Project scope
+- **Many-to-many relationships**: Components can belong to multiple Systems, and Systems can include multiple Components
+- **Improved visibility**: Systems appear as first-class entities in the Software Catalog
+- **Scorecard integration**: Run scorecards at the System level to assess health across related services
+
+Systems help organize entities beyond Project and Organization structures, allowing teams to:
+
+- Group services owned by the same team or module
+- Provide a top-down view of related entities
+- Assign team ownership and operational responsibility
+
+
+To associate an entity with a System, use the `system` field in the entity's YAML definition:
+
+```yaml
+spec:
+  system:
+    - system:account/paymentsystem
+```
 
 <!-- (TODO: Provide Layout YAML for customers who might have removed it) -->
 
@@ -317,6 +343,7 @@ However, we are currently working on introducing the concept of creating custom 
 | Feature                              | IDP 1.0 | IDP 2.0 | Notes                                                                                                                                                                                                          |
 | ------------------------------------ | ------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 📁 **Catalog**                       |         |         |                                                                                                                                                                                                                |
+| System Entity                        | ✅      | ✅      | Enhanced in IDP 2.0 with multi-scope support and many-to-many relationships                                                                                                                                |
 | Catalog Entity YAMLs                 | ✅      | ✅      | YAML structure has changed in IDP 2.0. See [Breaking Changes](#breaking-changes).                                                                                                                              |
 | UI-based Entity Creation             | ❌      | ✅      |                                                                                                                                                                                                                |
 | Edit Entities via UI                 | ❌      | ✅      |                                                                                                                                                                                                                |
