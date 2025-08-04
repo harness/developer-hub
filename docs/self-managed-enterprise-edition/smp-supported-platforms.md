@@ -20,6 +20,7 @@ This section provides a clear overview of the Supported features, integrations, 
 * [AI SRE (Beta)](/docs/ai-sre/get-started/overview)
 * [Supply Chain Security](/docs/software-supply-chain-assurance/ssca-supported)
 * [Code Repository](/docs/code-repository)
+* [Database DevOps](/docs/database-devops/dbdevops-supported-platforms.md)
 
 For more details on the supported features of other Harness modules, visit [Harness Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
