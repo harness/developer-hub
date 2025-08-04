@@ -204,7 +204,6 @@ Each enforcement can now have up to **10,000 evaluations**. The cap is calculate
 
 In the output window, users can see the resources identified in form of a Table or JSON. The table view supports all the filters and flattening of the table is supported as well. That essentially means, nested propoerties are flattened. By default, nested objects and arrays are collapsed and can be expanded upto two levels. Further nested properties are shown as formatted JSON.
 
-
 ### Filters in Evaluations List Page
 
 You can create filters to view selected rules:
@@ -229,6 +228,23 @@ You can create filters to view selected rules:
 :::important note
 Number of evaluations for which we can compute cost impact is 1,50,000/ Day.
 :::
+
+### Bulk Export Evaluations
+
+Use **Bulk Export** to download up to 100 evaluation results (AWS, GCP, or Azure) in a single ZIP file. Export is available when all selected evaluations are in a terminal state (Succeeded or Failed).
+
+**How to export**
+1. Click **Export**.
+2. Choose the files to include:
+   - `metadata.json`: summary of each evaluation
+   - `resources.json`: resources identified
+   - `custodian-run.log`: execution log
+   - `actioned-resources.json`: resources acted on
+3. Click **Generate Report**.
+
+The ZIP file is organised by evaluation ID (or by policy sub-folders for multi-policy runs) so you can quickly locate results. You can also export from the **Test Terminal** when evaluating multiple targets.
+
+<DocImage path={require('../static/bulk-export.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## Testing Terminal
 
