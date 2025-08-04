@@ -6,18 +6,29 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ## Prerequisite: Set Up Proxy and/or Load Balancer
 
-AutoStopping is designed to integrate seamlessly with native load-balancing solutions like AWS ALB. However, for use cases that fall outside of these integrations such as SSH, RDP, or RDS connections, AutoStopping offers an advanced reverse proxy solution: the AutoStopping Proxy.
+AutoStopping is designed to integrate seamlessly with native load-balancing solutions like **AWS ALB**. However, for use cases that fall outside of these integrations such as SSH, RDP, or RDS connections, AutoStopping offers an advanced reverse proxy solution: **AutoStopping Proxy**.
 
 
 <div className="component-comparison">
   <div className="lb-component">
     <h4>AWS Load Balancer</h4>
     <p>A cloud-native service that distributes incoming HTTP/HTTPS traffic across multiple targets. It monitors web traffic patterns and automatically starts your resources when traffic arrives.</p>
+    - SSH/RDP connections ❌
+    - Database connections (TCP) ❌
+    - HTTP/HTTPS traffic ✅
+    - Path-based routing ✅
+    - Direct port access ✅
+
   </div>
 
   <div className="proxy-component">
     <h4>AutoStopping Proxy</h4>
-    <p>A This proxy VM sits in front of your virtual machines and intelligently starts or stops them based on incoming network traffic. It supports both HTTP(S) and TCP connections. Built on the proven, open-source Envoy Proxy, the AutoStopping Proxy is highly reliable and scalable, capable of managing traffic for multiple AutoStopping-managed VMs from a single instance.</p>
+    <p>A This proxy VM sits in front of your virtual machines and intelligently starts or stops them based on incoming traffic. It supports both HTTP(S) and TCP connections. Built on the proven, open-source Envoy Proxy, the AutoStopping Proxy is capable of managing traffic for multiple AutoStopping-managed VMs from a single instance.</p>
+    - SSH/RDP connections ✅
+    - Database connections (TCP) ✅
+    - HTTP/HTTPS traffic ✅
+    - Path-based routing ❌
+    - Direct port access ✅ 
   </div>
 </div>
 
@@ -30,24 +41,24 @@ AutoStopping is designed to integrate seamlessly with native load-balancing solu
   }
   .lb-component {
     flex: 1;
-    background-color: #e6f3ff;
+    background-color: #f0f8ff;
     padding: 15px;
     border-radius: 8px;
-    border-left: 4px solid #0d6efd;
+    border-left: 4px solid #90c2ff;
   }
   .lb-component h4 {
-    color: #0d6efd;
+    color: #0b5ed7;
     margin-top: 0;
   }
   .proxy-component {
     flex: 1;
-    background-color: #e6fff0;
+    background-color: #f0fff7;
     padding: 15px;
     border-radius: 8px;
-    border-left: 4px solid #198754;
+    border-left: 4px solid #8ad3a8;
   }
   .proxy-component h4 {
-    color: #198754;
+    color: #157347;
     margin-top: 0;
   }
   .component-footer {
@@ -56,14 +67,6 @@ AutoStopping is designed to integrate seamlessly with native load-balancing solu
 `}</style>
 
 
-
-| Feature/Capability | AutoStopping Proxy | AWS Load Balancer |
-|-------------------|:------------------:|:------------------:|
-| SSH/RDP connections | ✅ | ❌ |
-| Database connections (TCP) | ✅ | ❌ |
-| HTTP/HTTPS traffic | ✅ | ✅ |
-| Path-based routing | ❌ | ✅ |
-| Direct port access | ✅ | ❌ |
 
 Below table shows the resources supported by AutoStopping and the appropriate traffic management you can use for each resource type.
 
@@ -137,11 +140,8 @@ Below table shows the resources supported by AutoStopping and the appropriate tr
 
 ## Create AutoStopping Rule
 
-Create an AutoStopping rule to define the conditions under which your resources should be started and stopped.
-
-- In Harness, navigate to Cloud Costs > AutoStopping Rules and click New AutoStopping Rule.
-- Select Cloud Provider: Choose AWS.
-- Choose Connector: Select an existing AWS connector or create a new one.
+- In Harness, navigate to **Cloud Costs** > **AutoStopping Rules** and click **New AutoStopping Rule**.
+- Select Cloud Provider as **AWS**. Select an existing AWS connector or create a new one.
 
 <Tabs>
 <TabItem value="Step1" label="Step 1: Configuration">
@@ -187,19 +187,19 @@ Create an AutoStopping rule to define the conditions under which your resources 
 
 ------------
 
-4. Advanced Configuration (Optional):
-    - Hide Progress Page: Toggle this to disable the display of a progress page during instance warm-up.
-    - Dry-Run: Toggle this button if you wish to evaluate the feature without terminating your cloud resources.
-    - Dependencies: Link your rule to other AutoStopping rules if resources depend on each other.
-    - Click add dependency and select a rule from the RULES drop-down list.
-    - In DELAY IN SECS, enter the number of seconds the dependent rule should wait after warming up before warming up this rule.
-    - Fixed Schedules: Create fixed uptime or downtime schedules for the resources managed by this rule. A fixed schedule takes precedence over the idle time logic.
-    - Click Add Fixed Schedule.
-    - Give the schedule a Name.
-    - Select the Type of schedule (Uptime or Downtime).
-    - Select the Time Zone.
-    - Set the schedule period with Begins on and Ends on dates and times. You can also select the Never ends checkbox.
-    - To set a recurring schedule, select the repeat frequency and the days of the week, and set the start and end times. You can also select All Day.
+4. **Advanced Configuration (Optional)**:
+    - **Hide Progress Page**: Toggle this to disable the display of a progress page during instance warm-up.
+    - **Dry-Run**: Toggle this button if you wish to evaluate the feature without terminating your cloud resources.
+    - **Dependencies**: Link your rule to other AutoStopping rules if resources depend on each other.
+      - Click **Add Dependency** and select a rule from the **RULES** drop-down list.
+      - In **DELAY IN SECS**, enter the number of seconds the dependent rule should wait after warming up before warming up this rule.
+    - **Fixed Schedules**: Create fixed uptime or downtime schedules for the resources managed by this rule. A fixed schedule takes precedence over the idle time logic.
+      - Click **Add Fixed Schedule**.
+      - Give the schedule a **Name**.
+      - Select the **Type** of schedule (**Uptime** or **Downtime**).
+      - Select the **Time Zone**.
+      - Set the schedule period with **Begins on** and **Ends on** dates and times. You can also select the **Never ends** checkbox.
+      - To set a recurring schedule, select the repeat frequency and the days of the week, and set the **Start** and **End** times. You can also select **All Day**.
 
 </TabItem>
 <TabItem value="setup-access" label="Step 2: Setup Access"> 
@@ -208,7 +208,7 @@ Create an AutoStopping rule to define the conditions under which your resources 
 <TabItem value="ec2-asg" label="EC2 & ASGs">
 
 
-### Set up access for TCP workload or SSH/RDP
+#### Set up access for TCP workload or SSH/RDP
 
 Setting up access for TCP workload or SSH/RDP allows AutoStopping to detect activity and idleness, and ensure that the database is up and running only when you need it. Use the AutoStopping Proxy URL (IP/Hostname of the Proxy and a unique autogenerated port number) for this AutoStopping Rule when you connect to the RDS database using any database client. The Proxy URL is generated when you save the AutoStopping Rule. If you need to access the resources managed by this AutoStopping rule using TCP or SSH/RDP HTTPS URL, you need to perform the following steps:
 

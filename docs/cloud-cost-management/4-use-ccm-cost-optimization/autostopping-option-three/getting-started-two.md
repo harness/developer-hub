@@ -1,16 +1,10 @@
 ---
-title: Setting Up AutoStopping Rules
+title: Set Up AutoStopping Rules
 description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
 sidebar_position: 2
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-> **Note:**  
-> - There's **no limit** on the number of dependencies a rule can manage.  
-> - **RDS warm-up time** depends on cluster/instance size (~25 minutes).  
-> - Other resources warm up in under 2 minutes (max 5 minutes).
-
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 

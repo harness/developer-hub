@@ -44,20 +44,13 @@ The AutoStopping process works in four key steps:
 3. **Seamless Restart**: When access is requested, resources are automatically restarted
 4. **Transparent Access**: Users continue to use the same access methods they always have (DNS, SSH, RDP)
 
-```mermaid
-flowchart TD
-    A[Resource Running] -->|User Accesses Resource| B[Resource Active]
-    B -->|No Activity for X Minutes| C[Resource Marked Idle]
-    C -->|Idle Timeout Reached| D[Resource Stopped]
-    D -->|User Attempts Access| E[AutoStopping Detects Req.]
-    E -->|Restarts Resource| A
-    E -->|Redirects User Request| B
-    style A fill:#c2f0c2,stroke:#0f5132
-    style B fill:#c2f0c2,stroke:#0f5132
-    style C fill:#fff3cd,stroke:#856404
-    style D fill:#f8d7da,stroke:#721c24
-    style E fill:#cce5ff,stroke:#004085
-```
+
+> **Note:**  
+> - There's **no limit** on the number of dependencies a rule can manage.  
+> - **RDS warm-up time** depends on cluster/instance size (~25 minutes).  
+> - Other resources warm up in under 2 minutes (max 5 minutes).
+
+
 
 ## Ready to Get Started?
 
