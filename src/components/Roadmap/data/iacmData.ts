@@ -48,7 +48,7 @@ export const IacmData: Horizon = {
         tag: [{ value: "Security" }],
         title: "RBAC",
         description: "IaCM supports granular RBAC operations, where admins can define the access privileges for different roles",
-        link: "/docs/infra-as-code-management/project-setup/workspace-rbac",
+        link: "/docs/infra-as-code-management/manage-projects/workspace-rbac",
       },
       {
         tag: [{ value: "Developer Experience" }],

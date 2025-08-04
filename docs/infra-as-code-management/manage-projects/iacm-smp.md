@@ -13,14 +13,14 @@ While generally available for certain use cases, IaCM on SMP has a few important
 :::
 
 ## Before You Begin
-Make sure your SMP deployment is installed with the latest version of the Helm chart. Follow the [SMP installation instructions](/docs/self-managed-enterprise-edition/install/upgrade-helm-chart.md).
+Make sure your SMP deployment is installed with the latest version of the Helm chart. Follow the [SMP installation instructions](/docs/self-managed-enterprise-edition/install/upgrade-helm-chart).
 
 You’ll also need:
 - A valid IaCM Enterprise or Trial license.
 - Access to your Harness deployment values.
 - Ability to set feature flags and override container images.
 
-Go to [SMP basic configuration](/docs/self-managed-enterprise-edition/smp-basic-configuration/) or contact [Harness Support](support@harness.io) for help retrieving your prerequisites.
+Go to [SMP basic configuration](/docs/self-managed-enterprise-edition/smp-basic-configuration/) or contact [Harness Support](mailto:support@harness.io) for help retrieving your prerequisites.
 
 ---
 

@@ -92,7 +92,7 @@ export const docsCards: CardSections = [
         module: MODULES.iacm,
         description:
           "Learn how to apply permissions and access controls on Workspaces",
-        link: "/docs/infra-as-code-management/project-setup/workspace-rbac",
+        link: "/docs/infra-as-code-management/manage-projects/workspace-rbac",
       }
     ]
   },
@@ -110,7 +110,7 @@ export const docsCards: CardSections = [
         title: "Use the Harness Delegate with IaCM",
         description: "Learn how the Harness Delegate works with IaCM.",
         module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/project-setup/use-delegates-with-iacm",
+        link: "/docs/infra-as-code-management/manage-projects/use-delegates-with-iacm",
       }
     ]
   }
