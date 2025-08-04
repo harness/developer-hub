@@ -235,7 +235,7 @@ Use **Bulk Export** to download up to 100 evaluation results (AWS, GCP, or Azure
 
 **How to export**
 1. Click **Export**.
-2. Choose the artefacts to include:
+2. Choose the files to include:
    - `metadata.json`: summary of each evaluation
    - `resources.json`: resources identified
    - `custodian-run.log`: execution log
