@@ -36,7 +36,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 **New features and enhancements**
 
-**Advanced Redis Configuration Support:** Added support for additional environment variables to enable advanced Redis configuration. These provide greater flexibility for fine-tuning your Redis setup with the Relay Proxy. For a full list and description of the available configuration options, refer to the [documentation](../docs/feature-flags/use-ff/relay-proxy/relay_proxy_v2.md#full-breakdown-of-configuration-options)
+**Advanced Redis Configuration Support:** Added support for additional environment variables to enable advanced Redis configuration. These provide greater flexibility for fine-tuning your Redis setup with the Relay Proxy. For a full list and description of the available configuration options, refer to the [documentation](/docs/feature-flags/use-ff/relay-proxy/relay_proxy_v2.md#full-breakdown-of-configuration-options)
 
 ```
 REDIS_MAX_RETRIES
