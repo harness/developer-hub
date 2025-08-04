@@ -215,12 +215,13 @@ An output of `1` confirms that the node is running in FIPS mode. Use Kubernetes 
 
 After verifying that your Kubernetes cluster is FIPS-enabled, proceed with the installation of the latest Self-Managed Platformrm (SMP) version. You can follow the [AWS installation guide](/docs/self-managed-enterprise-edition/cloud-providers/install-in-aws).
 
-### To enable FIPS mode in your Harness SMP, modify the `values.yaml` (or `override.yaml`) file by adding the following configuration under the `global` section:
+### Configure FIPS mode
+To enable FIPS mode in your Harness SMP, modify the `values.yaml` (or `override.yaml`) file by adding the following configuration under the `global` section:
     ```yaml
     global:
       fips: true
     ```
-### Set strong passwords for databases.
+### Configure passwords for databases.
 Database passwords must be atleast 14 characters long to be FIPS compliant.
 
 1. Create secrets to store database passwords
