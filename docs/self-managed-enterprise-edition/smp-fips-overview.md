@@ -215,12 +215,86 @@ An output of `1` confirms that the node is running in FIPS mode. Use Kubernetes 
 
 After verifying that your Kubernetes cluster is FIPS-enabled, proceed with the installation of the latest Self-Managed Platformrm (SMP) version. You can follow the [AWS installation guide](/docs/self-managed-enterprise-edition/cloud-providers/install-in-aws).
 
-To enable FIPS mode in your Harness SMP, modify the `values.yaml` (or `override.yaml`) file by adding the following configuration under the `global` section:
+### To enable FIPS mode in your Harness SMP, modify the `values.yaml` (or `override.yaml`) file by adding the following configuration under the `global` section:
+    ```yaml
+    global:
+      fips: true
+    ```
+### Set strong passwords for databases.
+Database passwords must be atleast 14 characters long to be FIPS compliant.
 
-  ```yaml
-  global:
-    fips: true
-  ```
+1. Create secrets to store database passwords
+    ```bash
+    kubectl create secret generic minio-secret \
+      --from-literal=S3_USER='minio_user_12345' \
+      --from-literal=S3_PASSWORD='minio_pass_12345'
+    
+    kubectl create secret generic mongo-secret \
+      --from-literal=MONGO_USER='mongo_user_12345' \
+      --from-literal=MONGO_PASSWORD='mongo_pass_12345' \
+      --from-literal=MONGO_REPLICA_SET_KEY='replica_key_12345'
+    
+    kubectl create secret generic postgres-secret \
+      --from-literal=POSTGRES_USER='postgres_user_1' \
+      --from-literal=POSTGRES_PASSWORD='postgres_pass_1'
+    
+    kubectl create secret generic timescaledb-secret \
+      --from-literal=TIMESCALEDB_USERNAME='tsdb_user_12345' \
+      --from-literal=TIMESCALEDB_PASSWORD='tsdb_pass_123456' \
+      --from-literal=TIMESCALEDB_SSL_ROOT_CERT='ssl_root_cert_12' \
+      --from-literal=TIMESCALEDB_REPLICATION_PASSWORD='replication_pwd_1' \
+      --from-literal=TIMESCALEDB_ADMIN_PASSWORD='admin_pass_tsdb1'
+    
+    kubectl create secret generic tsdbarchive-secret \
+      --from-literal=S3_USER='archive_user_123' \
+      --from-literal=S3_PASSWORD='archive_pass_12'
+
+    ```
+2. Configure the override.yaml to use those secrets
+   ```yaml
+    global:
+      database:
+        minio:
+          secrets:
+            kubernetesSecrets:
+              - secretName: "minio-secret"
+                keys:
+                  S3_USER: "S3_USER"
+                  S3_PASSWORD: "S3_PASSWORD"
+        mongo:
+          secrets:
+            kubernetesSecrets:
+              - secretName: "mongo-secret"
+                keys:
+                  MONGO_USER: "MONGO_USER"
+                  MONGO_PASSWORD: "MONGO_PASSWORD"
+                  MONGO_REPLICA_SET_KEY: "MONGO_REPLICA_SET_KEY"
+        postgres:
+          secrets:
+            kubernetesSecrets:
+              - secretName: "postgres-secret"
+                keys:
+                  POSTGRES_USER: "POSTGRES_USER"
+                  POSTGRES_PASSWORD: "POSTGRES_PASSWORD"
+        timescaledb:
+          secrets:
+            kubernetesSecrets:
+              - secretName: "timescaledb-secret"
+                keys:
+                  TIMESCALEDB_USERNAME: "TIMESCALEDB_USERNAME"
+                  TIMESCALEDB_PASSWORD: "TIMESCALEDB_PASSWORD"
+                  TIMESCALEDB_SSL_ROOT_CERT: "TIMESCALEDB_SSL_ROOT_CERT"
+                  TIMESCALEDB_REPLICATION_PASSWORD: "TIMESCALEDB_REPLICATION_PASSWORD"
+                  TIMESCALEDB_ADMIN_PASSWORD: "TIMESCALEDB_ADMIN_PASSWORD"
+          tsdbarchive:
+            secrets:
+              kubernetesSecrets:
+                - secretName: "tsdbarchive-secret"
+                  keys:
+                    S3_USER: "S3_USER"
+                    S3_PASSWORD: "S3_PASSWORD"
+   ```
+
 
 This setting ensures that the Harness components are deployed in compliance with FIPS requirements. Once the configuration is updated, install or upgrade your Helm release using the modified `values.yaml` (or `override.yaml`) to apply the changes.
 
