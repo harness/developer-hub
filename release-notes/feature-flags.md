@@ -26,7 +26,39 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 16, 2025
+#### Last updated: August 4, 2025
+
+## August 2025
+
+### Relay Proxy
+
+#### Version 2.0.14
+
+**New features and enhancements**
+
+**Advanced Redis Configuration Support:** Added support for additional environment variables to enable advanced Redis configuration. These provide greater flexibility for fine-tuning your Redis setup with the Relay Proxy. For a full list and description of the available configuration options, refer to the [documentation](../docs/feature-flags/use-ff/relay-proxy/relay_proxy_v2.md#full-breakdown-of-configuration-options)
+
+```
+REDIS_MAX_RETRIES
+REDIS_MIN_RETRY_BACKOFF_MILLIS
+REDIS_MAX_RETRY_BACKOFF_MILLIS
+REDIS_DIAL_TIMEOUT_SECONDS
+REDIS_READ_TIMEOUT_SECONDS
+REDIS_WRITE_TIMEOUT_SECONDS
+REDIS_POOL_SIZE
+REDIS_POOL_SIZE_LITERAL
+REDIS_POOL_TIMEOUT_SECONDS
+REDIS_MIN_IDLE_CONNS
+REDIS_MAX_IDLE_CONNS
+REDIS_MAX_ACTIVE_CONNS
+REDIS_CON_MAX_IDLE_TIME_MINUTES
+REDIS_CON_MAX_LIFETIME_MINUTES
+```
+
+**Maintenance**:
+
+- Upgrade from go-redis v9.5.5 -> v 9.11.0
+- Upgrades dependencies to resolve [oauth2 vulnerability](https://github.com/harness/ff-proxy/security/dependabot/25)
 
 ## July 2025
 
