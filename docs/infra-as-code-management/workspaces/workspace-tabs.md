@@ -49,7 +49,7 @@ Variables are used to inject configuration values into your infrastructure code.
 These values can be statically defined, prompted at runtime with `<+input>`, or injected from pipeline variables.
 
 :::info Learn more
-For setup instructions and YAML examples, see [Configure Connectors and Variables](/docs/infra-as-code-management/project-setup/connectors-variables).
+For setup instructions and YAML examples, see [Configure Connectors and Variables](/docs/infra-as-code-management/manage-projects/connectors-variables).
 
 Variables can be set in any of the following ways:
 - **Explicit variables:** You can state that exact value of the variable directly in your code.

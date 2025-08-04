@@ -80,7 +80,7 @@ Harness seamlessly integrates with third-party services like external code repos
 Harness IaCM provides multiple layers of approval mechanisms to ensure secure and controlled infrastructure changes. Here's an overview of the available approval options:
 
 ### Access Control (RBAC)
-Role-Based Access Control (RBAC) forms the foundation of approval processes in IaCM. Through workspace RBAC, you can **define who has permission to manage infrastructure resources** and **what actions they can perform**. This granular control ensures that only **authorized team members** can make changes to your infrastructure. Learn more about setting up access controls in our [Workspace RBAC configuration guide](/docs/infra-as-code-management/project-setup/workspace-rbac).
+Role-Based Access Control (RBAC) forms the foundation of approval processes in IaCM. Through workspace RBAC, you can **define who has permission to manage infrastructure resources** and **what actions they can perform**. This granular control ensures that only **authorized team members** can make changes to your infrastructure. Learn more about setting up access controls in our [Workspace RBAC configuration guide](/docs/infra-as-code-management/manage-projects/workspace-rbac).
 
 ### Pipeline Approval Steps
 When you need additional oversight for infrastructure changes, you can add **manual approval steps** to your pipelines. These approval gates allow **designated team members to review and approve changes** before they're applied to your infrastructure. You can **configure who needs to approve changes** and **how long the system should wait for approvals**. See our guide on [implementing approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step) to get started.
