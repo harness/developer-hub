@@ -20,6 +20,47 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## August 2025
+### 1.64.0
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.64.0
+- harness/chaos-log-watcher:1.64.0
+- harness/service-discovery-collector:0.44.0
+- harness/chaos-ddcr-faults:1.64.0
+
+#### New Features and Enhancements
+
+- Added changes for ddcr-faults-dual-binary support (CHAOS-9389)
+- Updated frontend nginx configuration (CHAOS-9360)
+- Upgraded AWS V2 SDK to support the V2 AWS faults with IRSA (CHAOS-9348)
+- Added Resilience tab fixes for v1beta1 experiments (CHAOS-9333)
+- Added hce-sdk changes to add environment variables in custom action scripts (CHAOS-9330)
+- Added dual (pod and daemonset) mode support in ddcr-faults (CHAOS-9315)
+- Enhanced mongo queries and added indexes for chaosFaults collections for better performance (CHAOS-9313)
+- Added permissions and links in chaosFaults and chaosFaultTemplates collections (CHAOS-9309)
+- Added support for generation of AI recommendations for the v1beta1 schema (CHAOS-9308)
+- Changed icon of AI related items from co-pilot to standard AI icon (CHAOS-9265)
+- Made the duration input for probes as FIXED VALUE until runtime support is implemented (CHAOS-9232)
+- Updated CHAOS_ECS_ENABLED flag to the new name CHAOS_CONTAINER_ENABLED in the CHAOS_MANAGER (CHAOS-9197)
+- Added support to run experiment with fault resource including v1alpha1 (CHAOS-9193)
+- Added infraType to path params for getMachineInfraDetails API and added infra name to the deleteMachineInfra API response (CHAOS-9187)
+- Added support for providing environment variables in custom script action in UI (CHAOS-9153)
+- Added support for generation of v1beta1 experiment manifests via Onboarding to support timeline view in execution (CHAOS-9098)
+- Enhanced chaos experiment DB schema to include reference of used faults (CHAOS-8905)
+
+#### Fixed Issues
+
+- Fixed cron scheduling for experiments not working where multiple experiments targeting same network map was causing write conflict errors by adding a retry mechanism (CHAOS-9296)
+- Fixed openSSL dependency for wkhtmltopdf binary in chaos-manager (CHAOS-9327)
+- Fixed empty args being allowed during action creation (CHAOS-9185)
+- Fixed not being able to run VMware experiments by passing vCenter credentials as secret (CHAOS-9174)
+- Fixed HTTP Probe summary text indicating success but actual probe execution reflecting error (connection refused) by adding http "connection refused" as a failure instead of an error for probes (CHAOS-9169)
+- Fixed not being able to delete tag filters from Probe list page filters where probe filter tags can now be deleted (CHAOS-9056)
+- Fixed SLO probe evaluation start and end time not getting saved by fixing the issue with evaluation window not showing up in SLO Probe (CHAOS-9055)
+
 ## July 2025
 ### Version 1.63.7
 
