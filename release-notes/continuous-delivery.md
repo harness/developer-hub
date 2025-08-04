@@ -83,7 +83,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### New Features and Enhancements
 
-- Harness now supports separate **Create** and **Edit** authorization grants for pipelines and templates, decoupling these permissions for more granular RBAC control. Currently, this feature is behind feature flags `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION` and `PIPE_CREATE_EDIT_PERMISSION_SPLIT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Enabling this feature requires migrating your existing resources; Harness Support will guide you through the process. (**PIPE-24649**)
+- Harness now supports separate **Create** and **Edit** authorization grants for pipelines and templates, decoupling these permissions for [more granular RBAC control](/docs/platform/role-based-access-control/rbac-in-harness#split-createedit-permissions-for-pipelines-and-templates). Currently, this feature is behind feature flags `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION` and `PIPE_CREATE_EDIT_PERMISSION_SPLIT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Enabling this feature requires migrating your existing resources; Harness Support will guide you through the process. (**PIPE-24649**)
 
 
 - Harness now supports [**Project-Level Pipeline Execution Concurrency**](/docs/platform/pipelines/pipeline-settings/#project-level-pipeline-execution-concurrency), where users can split their account-wide concurrency into High-Priority and Low-Priority partitions—reserving slots for critical projects. Currently, this feature is behind feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-15840**)
@@ -1278,7 +1278,7 @@ Currently, this feature is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEP
 
 - Harness now supports configuring CLI environment variables for Tanzu Application Service deployment in the Service and overrides. Currently, this feature is behind the feature flag `CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-93637, ZD-59417, ZD-61241, ZD-65736)
 
-- Users can now define allowed values in the **Select Hosts** settings under infrastructure. In the runtime view, a multi-select dropdown will be displayed, allowing users to choose from the predefined allowed values. Currently, this feature is behind the feature flag `CDS_ALLOWED_VALUES_DROPDOWN_PDC_HOSTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-99810)
+- Users can now define allowed values in the **Select Hosts** settings under infrastructure. In the runtime view, a multi-select dropdown will be displayed, allowing users to choose from the predefined allowed values. (CDS-99810)
 
 - Users can now successfully configure OAuth tokens for Git providers, including when using Vanity URLs. (PIPE-20617, ZD-64159)
 
