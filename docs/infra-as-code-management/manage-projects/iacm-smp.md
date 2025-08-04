@@ -56,8 +56,8 @@ platform:
 If your environment blocks external network access, the default pipeline step images may fail when trying to download your [OpenTofu](https://opentofu.org/) or Terraform binary.
 
 To resolve this:
-	1.	Build a custom version of the `plugins/harness_terraform` image with the required terraform binary embedded.
-	2.	Follow the steps in [custom images](/docs/infra-as-code-management/pipelines/plugin-images) to configure the `iacm-manager` to use your image.
+1. Build a custom version of the `plugins/harness_terraform` image with the required terraform binary embedded.
+2. Follow the steps in [custom images](/docs/infra-as-code-management/pipelines/plugin-images) to configure the `iacm-manager` to use your image.
 
 ## Next Steps
 Once your SMP deployment is configured, return to the [IaCM Get Started](/docs/infra-as-code-management/get-started) guide to connect a repo, create a workspace, and build your first pipelines.
