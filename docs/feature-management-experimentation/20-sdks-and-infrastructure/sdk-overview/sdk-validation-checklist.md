@@ -67,6 +67,10 @@ The following items are specific to the mobile SDKs.
 
 The following items are specific to all client-side SDKs. This includes mobile- and browser-based SDKs. 
 
+* **Log out and log back in to your app**   Ensure that when you log out and log back in to your app that you ensure that your application is using the proper `key` value for the SDK. On a related note it is also worth testing closing your app, deleting the cache and logging in fresh. Test to ensure that the factory is created correctly and (if using) you have both unauthenticated id split client and a logged in id split client for flags that use either traffic type. 
+
+
+
 * **Evaluate if you can take advantage of additional SDK emitted events.** In addition to SDK_READY, client side SDKs also emit the following additional events that may be useful: 
   * SDK_READY_FROM_CACHE. The SDK is ready to evaluate using cached data (which might be stale). If conditions are met, this event is emitted almost immediately since access to the cache is synchronous. Otherwise it won't fire.
   * SDK_READY_TIMED_OUT. When this event fires, it doesn't mean the SDK initialization is interrupted. SDK_READY may still fire at a later time if or when the SDK finishes downloading the necessary information from the servers. This may happen with slow connections or environments which have many feature flags, segments, or dynamic configurations. 
