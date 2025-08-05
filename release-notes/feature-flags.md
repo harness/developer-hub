@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-07-16T08:09:25
+date: 2025-07-8-05T10:00:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -26,9 +26,28 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 16, 2025
+#### Last updated: August 5, 2025
 
 ## July 2025
+
+### Java SDK
+
+#### Version 1.8.3
+
+**Bug fixes**:
+
+- Avoid logging disconnect errors on shutdown. A previous change (v1.8.0) unintentionally increased log noise by logging reset/cancel errors when the SDK was already shutting down. This fix ensures inflight requests aborted during shutdown are no longer logged, reducing misleading endpoint logs. (FFM-12506)
+
+**New feature and enhancements**:
+
+- Added stack traces in logs to improve diagnostics during SDK operation. (FFM-12506)
+- Improved polling log messages to make them more unique and easier to trace. (FFM-12506)
+
+#### Version 1.8.2
+
+**New features and enhancements**:
+
+- Adding experimental support for HTTP proxy configuration. The SDK now supports the following system properties for proxies: `http(s).proxyHost`, `http(s).proxyPort`, `http.proxyUser`, and `http.proxyPassword`. These are passed directly to OkHttp. (FFM-12489)
 
 ### Node.js SDK
 
