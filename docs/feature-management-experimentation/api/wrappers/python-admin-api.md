@@ -88,7 +88,7 @@ Harness Mode provides access to several Harness-specific resources through dedic
   * `role_assignment`
   * `harness_project`
 
-To work with Harness resources, initialize the Split client in Harness mode:
+To work with Harness resources, initialize the Split client in Harness Mode:
 
 ```python
 client = get_client({
@@ -111,7 +111,7 @@ schema = {
 }
 ```
 
-Each microclient supports standard methods such as `list`, `get`, `create`, `update`, and `delete`.
+Each microclient supports standard methods such as `list()`, `get(id)`, `create(data)`, `update(id, data)`, and `delete(id)`.
 
 For examples and API specifications, see the [Python API Client README](https://github.com/splitio/python-api?tab=readme-ov-file#working-with-harness-specific-resources).
 
