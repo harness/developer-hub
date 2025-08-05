@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-07-16T08:09:25
+date: 2025-08-05T08:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -26,7 +26,41 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 24, 2025
+#### Last updated: August 5, 2025
+
+## August 2025
+
+### Relay Proxy
+
+#### Version 2.0.14
+
+**New features and enhancements**:
+
+- Added support for additional environment variables to enable advanced Redis configuration. These provide greater flexibility for fine-tuning your Redis setup with the Relay Proxy. (FFM-12528)
+
+```
+REDIS_MAX_RETRIES
+REDIS_MIN_RETRY_BACKOFF_MILLIS
+REDIS_MAX_RETRY_BACKOFF_MILLIS
+REDIS_DIAL_TIMEOUT_SECONDS
+REDIS_READ_TIMEOUT_SECONDS
+REDIS_WRITE_TIMEOUT_SECONDS
+REDIS_POOL_SIZE
+REDIS_POOL_SIZE_LITERAL
+REDIS_POOL_TIMEOUT_SECONDS
+REDIS_MIN_IDLE_CONNS
+REDIS_MAX_IDLE_CONNS
+REDIS_MAX_ACTIVE_CONNS
+REDIS_CON_MAX_IDLE_TIME_MINUTES
+REDIS_CON_MAX_LIFETIME_MINUTES
+```
+
+For a full list and description of the available configuration options, see the [Feature Flags documentation](/docs/feature-flags/use-ff/relay-proxy/relay-proxy-v2#full-breakdown-of-configuration-options).
+
+**Maintenance**:
+
+- Upgrade the `go-redis` client library version from 9.5.5 to 9.11.0. (FFM-12528)
+- Upgrade dependencies to resolve an [OAuth2.0 vulnerability](https://github.com/harness/ff-proxy/security/dependabot/25). (FFM-12517)
 
 ## July 2025
 
