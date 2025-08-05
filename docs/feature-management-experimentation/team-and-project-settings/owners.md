@@ -11,13 +11,13 @@ In addition to [tags](/docs/feature-management-experimentation/management-and-ad
 You can use owners to:
 
 - Filter feature flags, segments, and metrics in the browse panes to those **owned by me**.
-- Optionally, grant edit rights to owners for a specific feature flag by toggling permissions **On**.
+- Restrict editing of a specific feature flag to its owners by toggling permissions **On**.
 
 :::tip
-Ownership alone is for organization and filtering purposes. It does not grant edit rights unless **On** is toggled for a flag.
+Ownership alone is for organization and filtering purposes. It does not grant edit rights. When Permissions is toggled **On** for a flag, only its owners (and anyone with broader environment-level rights) can edit it.
 :::
 
-When you add owners to a feature flag, owners are inehrited as editors for that specific flag across all environments. This allows you to simplify permissions without granting broad environment- or project-level editor rights.
+When you add owners to a feature flag and toggle Permissions **On**, owners are automatically included as editors for that specific flag in all environments. This helps you simplify permissions while preventing others without environment- or project-level edit rights from making changes to that flag.
 
 | Scenario                                 | Owner has edit rights?            |
 |------------------------------------------|------------------------------------|
