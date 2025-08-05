@@ -37,7 +37,7 @@ Import the SDK into your project using one of the following two methods:
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>java-client</artifactId>
-    <version>4.16.0</version>
+    <version>4.16.1</version>
 </dependency>
 ```
 
@@ -45,7 +45,7 @@ Import the SDK into your project using one of the following two methods:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:java-client:4.16.0'
+compile 'io.split.client:java-client:4.16.1'
 ```
 
 </TabItem>

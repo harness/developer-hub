@@ -69,6 +69,20 @@ We recommend setting an alert threshold that is less extreme than any degradatio
 
 The following calculators allow you to see what range of degradations your policy is likely to detect based on your metric characteristics and alert policy settings.
 
+## Alert policy sensitivity
+
+There are two configurable parameters for feature monitoring: the length of the monitoring window and the degradation threshold. These can be changed in the [Monitor and Experiment Settings](/docs/feature-management-experimentation/experimentation/setup/experiment-settings) section of your admin panel. By adjusting these parameters, you can tailor the coverage and sensitivity of feature monitoring alerts in the way that best suits your organization and metrics. 
+
+## Sensitivity calculators
+
+As with any statistical test in experimentation, we can't detect everything - each metric will only have the power to detect degradations larger than a given size. Smaller degradations will not be distinguishable from natural noise and variations in your data. 
+
+The calculators below can be used to help you calculate what range of degradations you can expect to be able to detect for a given sample size and set of metric characteristics. If your metric is a count, sum, average or ratio metric, use the [first calculator](#calculator-for-means) for means metrics. Otherwise, if your metric is a percent of unique users metric, use the [second calculator](#calculator-for-proportions) for proportions. Note that these calculators assume your statistical settings are set at a significance threshold of 0.05 and a power threshold of 80%. 
+
+For example, imagine you have a Percentage of Unique Users metric which has a value of 60% in the baseline treatment, and you use a relative degradation threshold of 10%. If the desired direction of the metric is a decrease, then we would be testing for evidence that the Percentage of Unique Users in the comparison group is more than 66% (more than 10% higher than the baseline value). 
+
+Assuming a 50/50 percentage rollout of users between baseline and comparison treatments, an Org wide significance level of 0.05, and a monitoring window of 24 hours, with 10,000 unique users you would only see an alert if the observed percentage for the comparison group increased by more than 16.2% and hence had a value higher than 69.7%. If instead you had 1000 or 100,000 unique users, the comparison group value would need to be higher than 77% and 67%, respectively, for an alert to be raised. 
+
 ## Using the calculators
 
 Use these calculators to estimate the sensitivity of your alert policy based on your expected sample size and metric characteristics. 
