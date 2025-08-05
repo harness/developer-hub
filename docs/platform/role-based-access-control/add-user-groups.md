@@ -80,9 +80,9 @@ At the organization and project scopes, you can quickly create groups by inherit
 
 :::danger Breaking Changes Notice
 
-When a user group is inherited from the Account scope into the Project scope, the system automatically assigns it the organization_viewer role. The system implicitly assigns this role and this assignment is visible in the Audit logs.
+When a user group is inherited from the Account scope to the Project scope, the system automatically assigns it the organization_viewer role, and the assignment is visible in the Audit logs.
 
-Deleting this role from the user group may result in loss of access to the Organization.
+If this role is removed, the user group may lose access to the Organization.
 :::
 To inherit user groups in Harness, you need the following [permissions](./permissions-reference.md):
 
