@@ -26,7 +26,7 @@ export const FmeData: Horizon = {
         description: "Ongoing support for the OpenFeature provider in the JavaScript, Node.js, and Browser SDKs is being developed and released.",
       },
       {
-        tag: [{ value: "Customer-deployed Component" }],
+        tag: [{ value: "SDK" }],
         title: "Forward proxy",
         description: "SDKs send their requests to a proxy within the customer's infrastructure. Traffic is securely relayed to and from the Harness FME backend.",
       },
