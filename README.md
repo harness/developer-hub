@@ -8,7 +8,7 @@
 ![AI SRE](static/img/icon-ir-s.svg)
 ![SRM](static/img/icon_srm_s.svg)
 ![FF](static/img/icon_ff_s.svg)
-![CCM](static/img/icon_ccm_s.svg)
+![CCM](static/img/icon_ccm_s.svg)d
 ![STO](static/img/icon_sto_s.svg)
 ![SSCA](static/img/icon_ssca_s.svg)
 ![SEI](static/img/icon_sei_s.svg)
