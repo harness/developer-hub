@@ -5,6 +5,41 @@ export const CcmData: Horizon = {
     description: "What has been released",
     feature: [
       {
+        tag: [{value: "AutoStopping"}],
+        title: "Granular RBAC",
+        description:
+          "Granular RBAC in Harness Autostopping introduces fine-grained control over Rules and Connectors as separate resources, enabling more precise permission management.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: " Integration with Cluster Orchestrator",
+        description:
+          "Enhancing Commitment Orchestrator with seamless Cluster Orchestrator integration.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Nodepools and Nodeclasses Configuration via Harness UI",
+        description:
+          "UI-based configuration management for Nodepools and Nodeclasses.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Reverse Fallback V2",
+        description:
+          " Improved failover and fallback mechanisms for Cluster Orchestrator.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Platform"}],
+        title: " External Data Ingestion (Beta) ",
+        description:
+          "Focus compliant external data ingestion to ingest SaaS (Ex. Snowflake, Databricks etc.)",
+        backgroundColor: "var(--green-100)",
+      },
+      {
         tag: [{value: "Visibility"}],
         title: "Cost Category Enhancements",
         description:
@@ -75,7 +110,7 @@ export const CcmData: Horizon = {
       },
       {
         tag: [{value: "Anomalies"}],
-        title: "Anomaly Detection 2.0",
+        title: "Anomaly Detection 2.0 (Beta)",
         description:
           "Enhanced anomaly detection capabilities with drill-down analysis. Includes support for cost category anomalies, customizable workflows, and preferences for setting percentage deviations and minimum cost thresholds.",
         backgroundColor: "var(--green-100)",
@@ -159,15 +194,8 @@ export const CcmData: Horizon = {
     ],
   },
  Now:{
-  description: "Q1 CY'25, Feb 2025 - Apr 2025",
+  description: "Q3 CY'25, Aug 2025 - Oct 2025",
     feature: [
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "Granular RBAC",
-        description:
-          "Granular RBAC in Harness Autostopping introduces fine-grained control over Rules and Connectors as separate resources, enabling more precise permission management.",
-        backgroundColor: "var(--yellow-100)",
-      },
       {
         tag: [{value: "AutoStopping"}],
         title: "Smart Advisor",
@@ -182,44 +210,17 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--yellow-100)",
       },
       {
-        tag: [{value: "Commitment Orchestrator"}],
-        title: " Integration with Cluster Orchestrator",
-        description:
-          "Enhancing Commitment Orchestrator with seamless Cluster Orchestrator integration.",
-        backgroundColor: "var(--yellow-100)",
-      },
-      {
-        tag: [{value: "Cluster Orchestrator"}],
-        title: "Nodepools and Nodeclasses Configuration via Harness UI",
-        description:
-          "UI-based configuration management for Nodepools and Nodeclasses.",
-        backgroundColor: "var(--yellow-100)",
-      },
-      {
-        tag: [{value: "Cluster Orchestrator"}],
-        title: "Reverse Fallback V2",
-        description:
-          " Improved failover and fallback mechanisms for Cluster Orchestrator.",
-        backgroundColor: "var(--yellow-100)",
-      },
-      {
         tag: [{value: "Cluster Orchestrator"}],
         title: "RBAC for Cluster Orchestrator",
         description:
           "Role-based access control to enhance security and governance in Cluster Orchestrator.",
         backgroundColor: "var(--yellow-100)",
       },
-      {
-        tag: [{value: "Platform"}],
-        title: " External Data Ingestion ",
-        description:
-          "Focus compliant external data ingestion to ingest SaaS (Ex. Snowflake, Databricks etc.)",
-        backgroundColor: "var(--yellow-100)",
-      },
+     
     ],
  },
 Later:{
-    description: "Q2 2025 and beyond",
+    description: "Q4 2025 and beyond",
     feature: [
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
