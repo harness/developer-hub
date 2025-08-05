@@ -4,10 +4,6 @@ sidebar_label: "React SDK: Error building app with webpack \"Entrypoint undefine
 sidebar_position: 11
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360047190132-React-SDK-Error-building-app-with-webpack-Entrypoint-undefined-ng-index-html </button>
-</p>
-
 ## Issue
 
 React App failed to build using Webpack after installing React SDK:

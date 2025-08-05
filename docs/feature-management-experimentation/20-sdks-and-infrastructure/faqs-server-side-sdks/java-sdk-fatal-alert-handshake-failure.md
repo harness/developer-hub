@@ -4,11 +4,6 @@ sidebar_label: "Java SDK error using JRE 6.x \"fatal alert: handshake_failure\""
 sidebar_position: 12
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025325672-Java-SDK-error-using-JRE-6-x-fatal-alert-handshake-failure </button>
-</p>
-
-
 ## Issue
 
 Using Java SDK and JDK 1.6 (JRE 6.x), the following connection error to split.io is thrown:

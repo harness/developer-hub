@@ -5,10 +5,6 @@ description: ""
 sidebar_position: 12
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360029566292-Set-the-alert-baseline-treatment </button>
-</p>
-
 <!-- can we add this paragraph here?
 
 The alert baseline treatment is used if an alert policy has been created. When there is an active alert policy, then the feature flag's alert baseline treatment is compared against all the other treatments when metrics are calculated.

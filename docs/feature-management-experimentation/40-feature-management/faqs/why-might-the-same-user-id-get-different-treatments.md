@@ -4,10 +4,6 @@ sidebar_label: Why might the same user id get different treatments?
 sidebar_position: 16
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360013215392-Why-might-the-same-user-id-get-different-treatments </button>
-</p>
-
 ### Question
 
 Why are impressions for the same user id showing different treatments? Shouldn't the same user id should always receive the same treatment throughout the same version of the experiment?

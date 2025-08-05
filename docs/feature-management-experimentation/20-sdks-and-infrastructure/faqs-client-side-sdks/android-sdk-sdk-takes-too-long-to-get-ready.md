@@ -4,10 +4,6 @@ sidebar_label: "Android SDK: SDK takes too long to get ready"
 sidebar_position: 16
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043275471-Android-SDK-SDK-takes-too-long-to-get-ready </button>
-</p>
-
 ## Issue
 
 When using Android SDK, the first time the App loads the SDK takes sometime to download definitions from Harness FME servers and cache them locally. However, when SDK starts afterwards, it still takes long time even though the cache is already downloaded to app file system.

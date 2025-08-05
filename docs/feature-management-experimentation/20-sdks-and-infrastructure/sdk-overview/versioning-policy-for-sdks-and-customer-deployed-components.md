@@ -6,10 +6,6 @@ redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/sdk-versioning-policy
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038143771-SDK-versioning-policy </button>
-</p>
-
 Harness FME versions its SDKs and customer-deployed components (such as the Split Proxy, Evaluator, Synchronizer, and Split Daemon) according to semantic versioning industry standards. FME actively supports major versions of these components for 12 months following their release.
 
 :::note

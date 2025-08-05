@@ -4,10 +4,6 @@ sidebar_label: Why are impressions not showing in Harness FME?
 sidebar_position: 12
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016299232-Configure-Split-Synchronizer-to-handle-high-impression-rate </button>
-</p>
-
 ## Issue
 
 When using any SDK and calling the get treatment method, the call returns a correct treatment value. However, the impression is not getting sent to Harness FME servers and does not show up on the Results page.

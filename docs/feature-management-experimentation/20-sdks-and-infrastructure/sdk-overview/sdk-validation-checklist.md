@@ -4,10 +4,6 @@ sidebar_label: SDK validation checklist
 sidebar_position: 2
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/13998631077901-SDK-validation-checklist </button>
-</p>
-
 The SDK validation checklist helps you ensure that the SDK is implemented according to FME best practices. This document describes the guidelines for incorporating the SDK into your software application in all supported languages. The main purpose is to define the general guidelines, checks, and validations that can be useful for developers and software architects to avoid common mistakes or oversights and to ensure optimal performance of the SDK. This guide covers recommendations in the following areas:
 
 * Architectural design principles
@@ -66,6 +62,8 @@ The following items are specific to the mobile SDKs.
 ## All Client-side SDKs (including iOS, React, JS, etc.)
 
 The following items are specific to all client-side SDKs. This includes mobile- and browser-based SDKs. 
+
+* **Log out and log back in to your app.** Ensure your application is using the proper `key` value for the SDK after logging out and logging back in. It's also helpful to test by fully closing the app, clearing the cache, and logging in fresh. Verify that the factory is created correctly, and—if you're using both—confirm that you have a Split client for both unauthenticated and logged-in user IDs for flags using different traffic types. 
 
 * **Evaluate if you can take advantage of additional SDK emitted events.** In addition to SDK_READY, client side SDKs also emit the following additional events that may be useful: 
   * SDK_READY_FROM_CACHE. The SDK is ready to evaluate using cached data (which might be stale). If conditions are met, this event is emitted almost immediately since access to the cache is synchronous. Otherwise it won't fire.

@@ -4,10 +4,6 @@ sidebar_label: "Redux SDK: Control treatment returned when SDK is initialized"
 sidebar_position: 1
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4584119025421-Redux-SDK-Control-treatment-returned-when-SDK-is-initialized </button>
-</p>
-
 ## Issue
 
 Implementing the Redux SDK using isReady prop should guarantee correct treatment, however, There's a split second where 'isReady' is true and the treatment is control right after the SDK factory is initialized. The treatment flips quickly to on quickly. What is causing this flickering? Example code below:

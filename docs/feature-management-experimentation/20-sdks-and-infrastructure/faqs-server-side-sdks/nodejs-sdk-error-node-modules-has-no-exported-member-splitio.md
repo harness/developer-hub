@@ -4,10 +4,6 @@ sidebar_label: "Node.js SDK error: \"/node_modules/@splitsoftware/splitio/types\
 sidebar_position: 5
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360006667012-Block-traffic-until-the-SDK-is-ready </button>
-</p>
-
 ## Issue
 
 Using Node.js SDK, when trying to import SplitIO as a namespace in Typescript:

@@ -4,10 +4,6 @@ sidebar_label: Split Proxy
 sidebar_position: 3
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy </button>
-</p>
-
 The Split Proxy enables you to deploy a service in your own infrastructure that behaves like Harness servers and is used by both server-side and client-side SDKs to synchronize the flags without connecting to Harness FME's actual backend directly.
 
 This tool reduces connection latencies between the SDKs and Harness FME servers, and when a single connection is required from a private network to the outside for security reasons.

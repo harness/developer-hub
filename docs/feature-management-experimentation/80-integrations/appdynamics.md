@@ -4,10 +4,6 @@ sidebar_label: AppDynamics
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020898371-AppDynamics </button>
-</p>
-
 AppDynamics allows users to proactively monitor, manage, and optimize the most complex software environments. Harness FME integrates with AppDynamics to provide custom events in AppDynamics highlighting Harness FME changes.
 
 If you have trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).

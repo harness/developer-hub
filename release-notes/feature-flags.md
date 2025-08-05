@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-07-8-05T10:00:00
+date: 2025-08-05T08:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -28,6 +28,40 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Last updated: August 5, 2025
 
+## August 2025
+
+### Relay Proxy
+
+#### Version 2.0.14
+
+**New features and enhancements**:
+
+- Added support for additional environment variables to enable advanced Redis configuration. These provide greater flexibility for fine-tuning your Redis setup with the Relay Proxy. (FFM-12528)
+
+```
+REDIS_MAX_RETRIES
+REDIS_MIN_RETRY_BACKOFF_MILLIS
+REDIS_MAX_RETRY_BACKOFF_MILLIS
+REDIS_DIAL_TIMEOUT_SECONDS
+REDIS_READ_TIMEOUT_SECONDS
+REDIS_WRITE_TIMEOUT_SECONDS
+REDIS_POOL_SIZE
+REDIS_POOL_SIZE_LITERAL
+REDIS_POOL_TIMEOUT_SECONDS
+REDIS_MIN_IDLE_CONNS
+REDIS_MAX_IDLE_CONNS
+REDIS_MAX_ACTIVE_CONNS
+REDIS_CON_MAX_IDLE_TIME_MINUTES
+REDIS_CON_MAX_LIFETIME_MINUTES
+```
+
+For a full list and description of the available configuration options, see the [Feature Flags documentation](/docs/feature-flags/use-ff/relay-proxy/relay-proxy-v2#full-breakdown-of-configuration-options).
+
+**Maintenance**:
+
+- Upgrade the `go-redis` client library version from 9.5.5 to 9.11.0. (FFM-12528)
+- Upgrade dependencies to resolve an [OAuth2.0 vulnerability](https://github.com/harness/ff-proxy/security/dependabot/25). (FFM-12517)
+
 ## July 2025
 
 ### Java SDK
@@ -48,6 +82,25 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 **New features and enhancements**:
 
 - Adding experimental support for HTTP proxy configuration. The SDK now supports the following system properties for proxies: `http(s).proxyHost`, `http(s).proxyPort`, `http.proxyUser`, and `http.proxyPassword`. These are passed directly to OkHttp. (FFM-12489)
+
+### Relay Proxy
+
+#### Version 2.0.13
+
+**New features and enhancements**:
+
+- Optimized SSE event handling for Primary Proxy restarts or disconnections from Harness SaaS. The Proxy now sends patch events only for resources that changed while it was disconnected, instead of patching all flags. This reduces unnecessary updates and improves efficiency. The change is backward compatible and includes an automatic data structure migration in Redis on startup. (FFM-12528)
+
+**Security and Maintenance**: 
+
+- Updated Redis data model to support more efficient resource tracking during disconnections. While upgrading from Proxy version 2.0.12 or earlier to 2.0.13 requires no manual action, reverting back to 2.0.12 after an upgrade requires setting a different `REDIS_DB` index to avoid data incompatibility. (FFM-12441)
+
+#### Version 2.0.12
+
+**Security and maintenance**:
+
+- Adds HOST & Remote IP to the request logging middleware. (FFM-12488)
+- Updates dependencies to resolve a vulnerability in the `github.com/golang-jwt/jwt` package. (FFM-12432)
 
 ### Node.js SDK
 
@@ -99,6 +152,14 @@ This minor release updates the build process to sign the NuGet package, improvin
 - Various streaming reliability improvements and fixes to enhance connection stability and reduce disconnections. (FFM-12477)
 
 ## May 2025
+
+### Relay Proxy
+
+#### Version 2.0.11
+
+**Security and maintenance**:
+
+- Updated third-party dependencies to address security vulnerabilities identified by scanners. (FFM-12432)
 
 ### Python SDK
 

@@ -4,10 +4,6 @@ sidebar_label: "iOS SDK runtime error: JFBCrypt.m left shift of [x] by [y] place
 sidebar_position: 13
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360045232172-iOS-SDK-runtime-error-JFBCrypt-m-left-shift-of-x-by-y-places-cannot-be-represented-in-type-SInt32 </button>
-</p>
-
 ## Issue
 
 Using Objective-C project with iOS SDK, the following runtime error shows as soon as the SDK factory object is initialized:

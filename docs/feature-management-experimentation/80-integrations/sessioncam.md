@@ -4,10 +4,6 @@ sidebar_label: SessionCam
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360039246411-SessionCam </button>
-</p>
-
 ### Example
 
 Basic code sample to use the Harness FME JavaScript SDK to attach feature flag names and treatments as SesisonCam Custom Variable and enable Session Search via Field filter.
