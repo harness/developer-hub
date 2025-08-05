@@ -4,10 +4,6 @@ sidebar_label: "JavaScript SDK Error: \"Shared Client not supported by the stora
 sidebar_position: 20
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360034151511-JavaScript-SDK-Error-Shared-Client-not-supported-by-the-storage-mechanism-Create-isolated-instances-instead </button>
-</p>
-
 ## Issue
 
 When testing JavaScript SDK browser mode using Jest, it fails with the following error:

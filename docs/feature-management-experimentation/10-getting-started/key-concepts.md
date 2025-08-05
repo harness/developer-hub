@@ -6,10 +6,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/9648555765133-Foundational-concepts </button>
-</p>
-
 Take 5 minutes to learn the foundational concepts of Harness Feature Management & Experimentation.
 
 ## What is a feature flag?

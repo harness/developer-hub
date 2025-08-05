@@ -4,10 +4,6 @@ sidebar_label: What is the difference between Default Rule and Default Treatment
 sidebar_position: 5
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360046839932-What-is-the-difference-between-Default-Rule-and-Default-Treatment </button>
-</p>
-
 ### Question
 
 Given the following scenario: A feature flag with a simple on and off feature flag. if I allocate 10% of my traffic through the traffic allocation feature, then I assume that only 10% of people will be presented with this feature flag, however, how does the 'set the default rule' and 'set the default treatment' options come into play?

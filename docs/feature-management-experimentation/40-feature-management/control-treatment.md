@@ -5,10 +5,6 @@ description: ""
 sidebar_position: 13
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020528072-Control-treatment </button>
-</p>
-
 The **control** treatment is a reserved treatment in FME. You cannot create a treatment named **control**. The **control** treatment is returned by the SDK in the following scenarios:
 
 * **The targeting rules for a feature flag are not defined.** If you place your code behind a feature flag and push your code to production without defining the targeting rules for that feature flag in the user interface, the SDK does not have any information on the rules or even the possible treatments of this feature flag. In this scenario, the SDK returns the **control** treatment.

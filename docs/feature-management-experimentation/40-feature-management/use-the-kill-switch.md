@@ -5,10 +5,6 @@ description: ""
 sidebar_position: 15
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020794271-Use-the-kill-switch </button>
-</p>
-
 If a feature flag negatively impacts performance or your user’s experience, you can kill it without changing targeting rules or performing a redeployment. When you kill a feature, all traffic is sent to the default treatment selected for that feature flag.
 
 To kill a feature, do the following:

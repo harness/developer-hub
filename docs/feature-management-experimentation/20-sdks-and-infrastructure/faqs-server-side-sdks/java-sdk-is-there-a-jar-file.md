@@ -4,10 +4,6 @@ sidebar_label: Is there a JAR file for Java SDK?
 sidebar_position: 9
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360032253871-Is-there-a-JAR-file-for-Split-Java-SDK </button>
-</p>
-
 ## Question
 
 Some Java Frameworks, like ColdFusion, allow third party JAR files to integrate with their code. How can we get a JAR file for Java SDK?

@@ -1,12 +1,12 @@
 ---
 title: Split and Harness
-description: Split is now Harness FME
+description: Learn about the Split acquisition.
 sidebar_position: 3
 ---
 
-In June 2024, Harness acquired Split, now called Harness Feature Management & Experimentation (FME). This page provides information to support you during the transition to Feature Management & Experimentation in the Harness platform.
+In June 2024, Harness acquired Split, now called Harness Feature Management & Experimentation (FME). This page provides information to support you during the transition to Feature Management & Experimentation (FME) in the Harness platform.
 
-If you are currently accessing Split via app.split.io, our customer success and support teams will be in contact with you to help you ensure a smooth transition into FME on app.harness.io.
+If you are currently accessing Split via `app.split.io`, our customer success and support teams will be in contact with you to help you ensure a smooth transition into FME on `app.harness.io`.
 
 For more information about the acquisition, go to the [Harness blog](https://www.harness.io/blog/harness-to-acquire-split).
 
@@ -27,4 +27,4 @@ Split administrators should read the [Before and After Guide: Administering a Mi
 
 ## Harness platform integrations coming soon
 
-We are moving rapidly to unlock integrations with Harness's innovative DevOps tools, DevEx improvements, Security features, and cloud optimizations, while also accelerating the roadmap of enhancements to the core of what you have previously known as Split. Please visit our [roadmap](https://developer.harness.io/roadmap/#fme) to learn more.
+We are moving rapidly to unlock integrations with Harness's innovative DevOps tools, DevEx improvements, Security features, and cloud optimizations, while also accelerating the roadmap of enhancements to the core of what you have previously known as Split. You can visit our [roadmap](https://developer.harness.io/roadmap/#fme) to learn more.

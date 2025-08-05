@@ -4,10 +4,6 @@ sidebar_label: "React SDK: Is it possible to get treatments outside the componen
 sidebar_position: 5
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020863412-General-SDK-Always-getting-control-treatments </button>
-</p>
-
 ## Question
 
 Using the React SDK, is it possible to get feature flag treatments through JavaScript code in addition to using the SDK React components? 

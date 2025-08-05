@@ -4,10 +4,6 @@ sidebar_label: Split Daemon (splitd)
 sidebar_position: 1
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd </button>
-</p>
-
 Splitd is a daemon that communicates with the Harness servers. It keeps an up-to-date snapshot of the FME definitions for a specific FME environment. The rollout plan is accessed by an FME Thin SDK instance (via splitd) to consume feature flags in your code.
 
 Splitd can be used if you are working in a language that does not have native capability to keep a shared local cache, such as PHP. You can use splitd in combination with an FME Thin SDK (see [Supported Thin SDKs](#supported-thin-sdks)) as an alternative to using Split Synchronizer and Redis with a non-thin FME SDK. Splitd easily scales to high traffic volumes.

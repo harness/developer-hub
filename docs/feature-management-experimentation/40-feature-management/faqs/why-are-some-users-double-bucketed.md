@@ -4,10 +4,6 @@ sidebar_label: Why are some user Ids double bucketed?
 sidebar_position: 14
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360007319391-Why-are-some-user-Ids-double-bucketed </button>
-</p>
-
 ### Issue
 
 Using Javascript SDK, some percentage of User Ids are double bucketed: the same User Id is processed in the Control block, and at a later call in an actual treatment block.

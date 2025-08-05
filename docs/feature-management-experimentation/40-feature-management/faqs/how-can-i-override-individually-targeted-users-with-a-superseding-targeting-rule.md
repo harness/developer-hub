@@ -4,10 +4,6 @@ sidebar_label: How can I override individually targeted users with a superseding
 sidebar_position: 12
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016253331-How-can-I-override-individually-targeted-users-with-a-superseding-targeting-rule </button>
-</p>
-
 ### Question
 
 I am using a segment in the set individual targets section to give an `on` treatment to users with a certain user IDs. However, if one of those users is on a very slow network (3G or below) I need to give that user the `off` treatment, even if they are in my segment of individually targeted users.  How can we get the treatment for network speed to override the treatment?

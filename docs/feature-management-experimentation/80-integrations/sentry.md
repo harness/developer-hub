@@ -4,10 +4,6 @@ sidebar_label: Sentry
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360029879431-Sentry </button>
-</p>
-
 :::info[Get access to the Sentry integration]
 Reach out to your customer success manager or [support](mailto:support@split.io) and we’ll enable in your account.
 :::

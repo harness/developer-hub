@@ -4,10 +4,6 @@ sidebar_label: Using multiple web components and a single SDK factory instance
 sidebar_position: 1
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/17187557200525-Using-Split-with-multiple-web-components-and-a-single-factory-instance </button>
-</p>
-
 ## Using FME SDK in a micro frontend environment
 This code example, contributed by Joshua Klein, shows how to employ a shared SDK module injected into each of multiple micro frontend JS files. This approach allows for independent development and tooling without having multiple SDK factory instances running the in the same browser.
 
