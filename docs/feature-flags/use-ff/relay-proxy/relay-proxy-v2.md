@@ -154,14 +154,14 @@ The below table outlines all of the configuration options that are available for
 | REDIS_DIAL_TIMEOUT_SECONDS     | 5   | Dial timeout for establishing new connections in seconds. Default is 5 seconds        | 5   |
 | REDIS_READ_TIMEOUT_SECONDS     | 3   | Timeout for socket reads in seconds. If reached, commands will fail with a timeout instead of blocking. Default is 3 seconds. | 3 |
 | REDIS_WRITE_TIMEOUT_SECONDS    | 3   | Timeout for socket writes in seconds. If reached, commands will fail with a timeout instead of blocking. Default is 3 seconds. | 3 |
-| REDIS_POOL_SIZE | 10 | DEPRECATED: Legacy setting that has been kept for backwards compatibility, you may want to use REDIS_POOL_SIZE_LITERAL going forward. This sets the redis connection pool size, to this value multiplied by the number of CPU available. E.g if this value is 10 and you've 2 CPU the connection pool size will be 20 | 10 |
-| REDIS_POOL_SIZE_LITERAL | 50 | Sets the maximum number of socket connections to the literal value passed e.g. setting this to 10 means the connection pool size will be 10. If not specified, this will be set to the default value of 10 per CPU | 0 |
-| REDIS_POOL_TIMEOUT_SECONDS | 4 | Amount of time in seconds that the client waits for connection if all connections are busy before returning an error.Default is 4 seconds (default ReadTimeout + 1 second)  | 4 |
-| REDIS_MIN_IDLE_CONNS | 0 | Minimum number of idle connections which is useful when establishing new connection is slow. | 0 |
-| REDIS_MAX_IDLE_CONNS | 0 | MaxIdleConns is the maximum number of idle connections. The idle connections are not closed by default. Default: 0 | 0 |
-| REDIS_MAX_ACTIVE_CONNS | 0 | MaxActiveConns is the maximum number of connections allocated by the pool at a given time. When zero, there is no limit on the number of connections in the pool. If the pool is full, the next call to Get() will block until a connection is released. | 0 |
-| REDIS_CON_MAX_IDLE_TIME_MINUTES | 30 | The maximum amount of time in minutes a connection may be idle. Should be less than server's timeout. Expired connections may be closed lazily before reuse. If 0, connections are not closed due to a connection's idle time. -1 disables idle timeout check. Default: 30 minutes | 30 |
-| REDIS_CON_MAX_LIFETIME_MINUTES | 0 | The maximum amount of time in minutes a connection may be reused. Expired connections may be closed lazily before reuse. If 0, connections are not closed due to a connection's age. Default: 0 | 0 |
+| REDIS_POOL_SIZE | 10 | DEPRECATED: Legacy setting that has been kept for backwards compatibility, you can use `REDIS_POOL_SIZE_LITERAL` moving forward. This sets the Redis connection pool size to this value, multiplied by the number of CPU available. For example, if this value is 10 and you've 2 CPUs, the connection pool size will be 20. | 10 |
+| REDIS_POOL_SIZE_LITERAL | 50 | Sets the maximum number of socket connections to the literal value passed. For example, setting this to 10 means the connection pool size will be 10. If not specified, this will be set to the default value of 10 per CPU. | 0 |
+| REDIS_POOL_TIMEOUT_SECONDS | 4 | Amount of time in seconds that the client waits for connection if all connections are busy before returning an error. Default is 4 seconds (default ReadTimeout + 1 second). | 4 |
+| REDIS_MIN_IDLE_CONNS | 0 | Minimum number of idle connections, which is useful when establishing that a new connection is slow. | 0 |
+| REDIS_MAX_IDLE_CONNS | 0 | `MaxIdleConns` is the maximum number of idle connections. The idle connections are not closed by default. Default: 0 | 0 |
+| REDIS_MAX_ACTIVE_CONNS | 0 | `MaxActiveConns` is the maximum number of connections allocated by the pool at a given time. When zero, there is no limit on the number of connections in the pool. If the pool is full, the next call to `Get()` will be blocked until a connection is released. | 0 |
+| REDIS_CON_MAX_IDLE_TIME_MINUTES | 30 | The maximum amount of time, in minutes, that a connection may be idle. Should be less than server's timeout. Expired connections may be closed lazily before reuse. If 0, connections are not closed due to a connection's idle time. -1 disables idle timeout check. Default: 30 minutes | 30 |
+| REDIS_CON_MAX_LIFETIME_MINUTES | 0 | The maximum amount of time, in minutes, that a connection may be reused. Expired connections may be closed lazily before reuse. If 0, connections are not closed due to a connection's age. Default: 0 | 0 |
 
 
 # The Proxy Key V2
