@@ -25,7 +25,7 @@ These release notes describe recent changes to Harness Database DevOps.
 ## July 2025
 
 ### Release 1.49.x
-The `1.49.x` release introduces key improvements across schema discovery, rollback tracking, and platform extensibility. With the new schema list API available via the ingress gateway, customers can now programmatically fetch available schemas for their database account. Rollback operations are now enhanced with richer metadata capture, helping teams trace rollback executions via the `changesetmetadata` model. Additionally, the platform now supports optional Primary DB `instanceId`, streamlining deployments across multi-instance environments. End-to-end sanity has passed across all major integrations, including plugin steps, OPA, and registry-based workflows.
+The `1.49.x` release introduces key improvements across schema discovery, rollback tracking, and platform extensibility. Rollback operations are now enhanced with richer metadata capture, helping teams trace rollback executions via the `changesetmetadata` model. Additionally, the platform now supports optional Primary DB `instanceId`, streamlining deployments across multi-instance environments. 
 
 #### Key Highlights:
 
@@ -33,13 +33,6 @@ The `1.49.x` release introduces key improvements across schema discovery, rollba
     - Ingress-exposed Schema List API for improved schema discovery
     - Rollback execution now records detailed metadata when using rollback-count
     - Added support for optional Primary DB Instance ID during pipeline execution
-
-* ✅ Verified support across all major pipeline configurations:
-    - Repo/Account connectivity
-    - Public/Private registries
-    - DB types: Postgres, MySQL, Oracle, Mongo (incl. TLS), SQL Server
-    - Policy enforcement with OPA and rollback
-    - Metadata, overrides, archive paths, and advanced plugin features
 
 **Minimum Supported Versions:**
 - `ngmanager` – 1.49.x
