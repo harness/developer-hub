@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const FmeData: Horizon = {
   Now: {
-    description: "Q2 2025, May-Jul 2025",
+    description: "Q3 2025, Aug-Oct 2025",
     feature: [
       {
         tag: [{ value: "Better Together" }],
@@ -18,18 +18,28 @@ export const FmeData: Horizon = {
       {
         tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
         title: "Flag impressions properties bag",
-        description: "Decorate impression records with properties to use in downstream processing. Ongoing support for additional SDKs being developed and released.",
+        description: "Decorate impression records with properties to use in downstream processing. Ongoing support for additional SDKs is being developed and released.",
+      },
+      {
+        tag: [{ value: "SDK" }],
+        title: "OpenFeature provider updates",
+        description: "Ongoing support for the OpenFeature provider in the JavaScript, Node.js, and Browser SDKs is being developed and released.",
+      },
+      {
+        tag: [{ value: "Customer-deployed Component" }],
+        title: "Forward proxy",
+        description: "SDKs send their requests to a proxy within the customer's infrastructure. Traffic is securely relayed to and from the Harness FME backend.",
       },
     ],
   },
   Next: {
-    description: "Q3 2025, Aug-Oct 2025",
+    description: "Q4 2025, Nov-Jan 2026",
     feature: [
       {
         tag: [{ value: "Better Together" }],
         title: "Granular permissions in RBAC",
         description:
-          "Migrate permission management for FME object and environment-level permissions to Harness RBAC. Previously titled: Split integration into Harness, Part 2",
+          "Migrate permission management for FME object and environment-level permissions to Harness RBAC. Previously titled, Split integration into Harness, Part 2.",
       },
       {
         tag: [{ value: "SDK" }],
@@ -55,7 +65,7 @@ export const FmeData: Horizon = {
     ],
   },
   Later: {
-    description: "Q4 2025+, Nov 2025 & beyond",
+    description: "Q1 2026+, Feb 2026 & beyond",
     feature: [
       {
         tag: [{ value: "Better Together" }],
@@ -114,6 +124,12 @@ export const FmeData: Horizon = {
         title: "Experiment sample population chart",
         description: "See accumulation of sample population over time. Identify unexpected assignment or traffic level changes.",
         link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-experiments-dashboard",
+      },
+      {
+        tag: [{ value: "SDK" }],
+        title: "Flag impressions properties bag",
+        description: "Decorate impression records with properties to use in downstream processing. Supported in Browser, Android, iOS, JavaScript, React, React Native, Redux, Node.js, and Java SDKs.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-append-impression-properties",
       },
       {
         tag: [{ value: "SDK" }],
