@@ -26,9 +26,29 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: July 16, 2025
+#### Last updated: July 24, 2025
 
 ## July 2025
+
+### Relay Proxy
+
+#### Version 2.0.13
+
+
+**New features and enhancements**:
+
+- Optimized SSE event handling for Primary Proxy restarts or disconnections from Harness SaaS. The Proxy now sends patch events only for resources that changed while it was disconnected, instead of patching all flags. This reduces unnecessary updates and improves efficiency. The change is backward compatible and includes an automatic data structure migration in Redis on startup. (FFM-12528)
+
+**Security and Maintenance**: 
+
+- Updated Redis data model to support more efficient resource tracking during disconnections. While upgrading from Proxy version 2.0.12 or earlier to 2.0.13 requires no manual action, reverting back to 2.0.12 after an upgrade requires setting a different `REDIS_DB` index to avoid data incompatibility. (FFM-12441)
+
+#### Version 2.0.12
+
+**Security and maintenance**:
+
+- Adds HOST & Remote IP to the request logging middleware. (FFM-12488)
+- Updates dependencies to resolve a vulnerability in the `github.com/golang-jwt/jwt` package. (FFM-12432)
 
 ### Node.js SDK
 
@@ -80,6 +100,14 @@ This minor release updates the build process to sign the NuGet package, improvin
 - Various streaming reliability improvements and fixes to enhance connection stability and reduce disconnections. (FFM-12477)
 
 ## May 2025
+
+### Relay Proxy
+
+#### Version 2.0.11
+
+**Security and maintenance**:
+
+- Updated third-party dependencies to address security vulnerabilities identified by scanners. (FFM-12432)
 
 ### Python SDK
 
