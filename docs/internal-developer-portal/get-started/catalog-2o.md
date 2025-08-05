@@ -68,13 +68,33 @@ To set the owner identity, type a few characters in the Owner field to search an
 :::
 4. Specify the **Entity Scope** (Account, Org, or Project). For this example, choose **Account scope**. [Read more about Catalog RBAC](/docs/internal-developer-portal/rbac/catalog-rbac.md).
 ![](./static/scope-entity.png)
-5. You now have two options for managing your Component configuration:
+5. **Associate with System Entities**
+   Systems in Harness IDP are high-level catalog entities used to logically group related components, APIs, and resources. Associating your component with one or more Systems helps organize the catalog and improves visibility.
+
+   ![](./static/system.png)
+
+   You can select one or more Systems from the dropdown. This creates a relationship between your component and the selected Systems, making it easier to discover related entities and understand your software ecosystem.
+
+   > If you don't see the System you need, you can [create a new System entity](/docs/internal-developer-portal/catalog/system-entity.md) first.
+
+6. **Link to Source Code Repository**
+   Configure the source code repository associated with this component. This link enables several key capabilities, such as:
+  
+   * Automatically configuring plugins like **Scorecards**, **TechDocs**, and **STO**
+   * Displaying the **View Source** option in the UI
+   * Enabling future features like **Git leak detection** and **entity auto-discovery**
+
+   ![](./static/source-code-link-ui.png)
+
+   This field is **optional**, but strongly recommended if your component is tied to a Git-based workflow or needs source-aware plugins.
+   > Harness IDP also auto-generates the legacy `backstage.io/source-location` annotation for backwards compatibility.
+6. You now have two options for managing your Component configuration:
     * **Inline (default):** Manage the Component YAML directly within Harness.
     * **Remote:** Choose to store your Component YAML in a Git repository for version control, collaboration, and change tracking.
     You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
     ![](./static/git-component.png)
     > The Git Experience is ideal for teams who prefer to manage Components as code, with full version control and Git-native workflows. The changes are reflected in both YAML and execution views, via a [webhook](/docs/internal-developer-portal/git-experience/gitx-journey#workflow-execution-visibility-and-webhook-requirement) which is automatically configured on the Git connector. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey).
-6. Click **“Review YAML”** to view the synchronized YAML. Changes in the Visual View reflect live in the YAML View.
+7. Click **“Review YAML”** to view the synchronized YAML. Changes in the Visual View reflect live in the YAML View.
 
 :::info
   **Note:** **YAML validation** is performed to ensure compatibility with the **Harness-native Catalog YAML** model. Any errors will be shown in the Validation logs.
@@ -82,11 +102,11 @@ To set the owner identity, type a few characters in the Owner field to search an
   ![](./static/yaml-validation.png)
   :::
 
-7. If applicable, configure a plugin by referring to its documentation and adding the necessary **annotations** in the Catalog YAML.
+8. If applicable, configure a plugin by referring to its documentation and adding the necessary **annotations** in the Catalog YAML.
 
 ![](./static/plugins-entity.png)
 
-8. Once completed, click **“Create Component”** to finalize and register the entity.
+9. Once completed, click **“Create Component”** to finalize and register the entity.
 
 ![](./static/yaml-view.png)
 
@@ -132,14 +152,58 @@ You can always set the owner identity using your email ID, a group name, or any 
 
 4. Define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
 ![](./static/scope-entity.png)
-5. You now have two options for managing your Component configuration:
+5. **Associate with System Entities** by adding references to one or more Systems in your component's YAML. This creates a logical grouping of related components, APIs, and resources, making it easier to navigate and understand your software ecosystem.
+
+   In YAML, this is represented as:
+
+   ```yaml
+   spec:
+     system:
+       - system:account/demo_system
+       - system:account/payment_gateway
+   ```
+
+   > Learn more about [System entities](/docs/internal-developer-portal/catalog/system-entity.md) and how they help organize your catalog.
+
+6. Define **Link to Source Code Repository** to configure the source code repository associated with this component. This link enables several key capabilities, such as, Automatically configuring plugins and Displaying the **View Source** option in the UI
+
+   This field is **optional**, but strongly recommended if your component is tied to a Git-based workflow or needs source-aware plugins.
+
+You can provide:
+
+* **Git Provider** (e.g., `Github`) using the `provider` field
+* **Git Connector Reference**, such as `account.ShibamDhar`, using the `connectorRef` field. This must be pre-configured in Harness
+* **Repository Name**, for example `idp-template`, using the `repoName` field
+* Whether the repository is a **mono-repo**, using the `monoRepo` flag
+* If mono-repo is enabled, specify the **subdirectory path** where the component source code resides using `monoReposubDirectoryPath`, for example `/harness`
+* Optionally, define the **default branch** (e.g., `main`) using the `branch` field
+* Indicate whether it is a **Harness Code Repository** with `isHarnessCodeRepo` (set to `false` for third-party providers)
+
+
+   In YAML, this is represented as:
+
+   ```yaml
+   spec:
+       sourceCode:
+        branch: main
+        monoRepo: true
+        isHarnessCodeRepo: false
+        provider: Github
+        repoName: idp-template
+        connectorRef: account.ShibamDhar
+        monoReposubDirectoryPath: /harness
+   ```
+
+   > Harness IDP also auto-generates the legacy `backstage.io/source-location` annotation for backwards compatibility.
+6. You have two options for managing your Component configuration:
     * **Inline (default):** Manage the Component YAML directly within Harness.
     * **Remote:** Choose to store your Component YAML in a Git repository for version control, collaboration, and change tracking.
     You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
     ![](./static/git-component.png)
     > The Git Experience is ideal for teams who prefer to manage Components as code, with full version control and Git-native workflows. The changes are reflected in both YAML and execution views, via a [webhook](/docs/internal-developer-portal/git-experience/gitx-journey#workflow-execution-visibility-and-webhook-requirement) which is automatically configured on the Git connector. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey).
-6. Add any plugin configurations by including the relevant **annotations**.
-7. Click **“Create Component”** to complete the process and register your entity.
+7. Add any plugin configurations by including the relevant **annotations**.
+8. Click **“Create Component”** to complete the process and register your entity.
+
 
   </TabItem>
 </Tabs>
