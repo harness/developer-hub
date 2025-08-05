@@ -58,31 +58,26 @@ projects = client.harness_project.list()
 
 When the library receives a 429 HTTP response because of a limit rate, it waits for five seconds and then retries the HTTP request.
 
-## Objects Reference
+## Using in Harness Mode
 
-### Harness Mode
-
-Starting with version 3.5.0, the Split API client supports operating in Harness Mode to interact with both Split and Harness APIs.
+Starting with version 3.5.0, the Split API client supports operating in Harness Mode to interact with both Split and Harness APIs. This allows you to work with Harness resources like tokens, service accounts, and roles using the same client.
 
 #### Deprecated Endpoints in Harness Mode
 
 The following Split endpoints are deprecated and cannot be used in Harness Mode:
 
-- `/workspaces`: `POST`, `PATCH`, `DELETE`, and `PUT` verbs are deprecated
-- `/apiKeys`: `POST` verb for `apiKeyType == 'admin'` is deprecated
-- `/users`: all verbs are deprecated
-- `/groups`: all verbs are deprecated
-- `/restrictions`: all verbs are deprecated
+- `/workspaces`: `POST`, `PATCH`, `DELETE`, and `PUT`
+- `/apiKeys`: `POST` for `apiKeyType == 'admin'`
+- `/users`: all methods
+- `/groups`: all methods
+- `/restrictions`: all methods
 
 Non-deprecated endpoints will continue to function as before.
 
-#### Class
+### Working with Harness Resources
 
-**Harness Mode**
+Harness Mode provides access to several Harness-specific resources through dedicated microclients.
 
-* `Client` or (`HarnessClient`): the main client supporting Harness and Split APIs.
-* Micro-clients for Harness-specific resources:
-  
   * `token`
   * `harness_apikey`
   * `service_account`
@@ -92,6 +87,8 @@ Non-deprecated endpoints will continue to function as before.
   * `resource_group`
   * `role_assignment`
   * `harness_project`
+
+Example schema for creating resources:
 
 ```python
 schema = {
@@ -104,74 +101,25 @@ schema = {
 }
 ```
 
-#### Methods
+Each microclient supports standard methods such as `list`, `get`, `create`, `update`, and `delete`.
 
-`token.list(account_id)`
+For examples and API specifications, see the [Python API Client README](https://github.com/splitio/python-api?tab=readme-ov-file#working-with-harness-specific-resources).
 
-Fetches all tokens for the given Harness account.
+### Common Microclient Methods
 
-* Parameters: `account_id` as string
-* Return: List of `Token` objects
+Most Harness microclients support the following standard methods:
 
-```python
-tokens = client.token.list(account_id)
-for token in tokens:
-    print(f"Token: {token.name}, ID: {token.id}")
-```
+- `list(account_identifier=None)`: Lists all resources of the specified type.
+- `get(id, account_identifier=None)`: Gets a specific resource by ID.
+- `create(data, account_identifier=None)`: Creates a new resource.
+- `update(id, data, account_identifier=None)`: Updates an existing resource.
+- `delete(id, account_identifier=None)`: Deletes a resource.
 
-`service_account.list(account_id)`
+:::tip
+The `account_identifier` parameter can be omitted if it was set during client initialization.
+:::
 
-Fetches all service accounts for the given Harness account.
-
-* Parameters: `account_id` as string
-* Return: List of `ServiceAccount` objects
-
-```python
-service_accounts = client.service_account.list(account_id)
-for sa in service_accounts:
-    print(f"Service Account: {sa.name}, ID: {sa.id}")
-```
-
-`service_account.create(data, account_id)`
-
-Creates a new service account.
-
-* Parameters: 
-
-  - `data` as dict: service account definition
-  - `account_id` as string
-
-* Return: `ServiceAccount` instance
-
-```python
-sa_data = {
-    'name': sa_name,
-    'identifier': sa_identifier,
-    'email': "test@harness.io",
-    'accountIdentifier': account_id,
-    'description': 'Service account for test',
-    'tags': {'test': 'test tag'}
-}
-new_sa = client.service_account.create(sa_data, account_id)
-```
-
-`harness_user.add_user_to_groups(user_id, group_ids, account_id)`
-
-Adds a user to one or more Harness groups.
-
-* Parameters:
-
-  - `user_id` as string
-  - `group_ids` as list of strings
-  - `account_id` as string
-
-* Return: Boolean
-
-```python
-client.harness_user.add_user_to_groups(user.id, [group.id], account_id)
-```
-
-For more information about Harness Mode, including authentication options, base URLs, and examples, see the [README](https://github.com/splitio/python-api?tab=readme-ov-file#working-with-harness-specific-resources).
+## Objects Reference
 
 ### Workspaces (now called Projects in Split UI)
 
@@ -2555,15 +2503,3 @@ for cr in client.change_requests.list():
 ```
 
 For more information about rule-based segments, see the [README](https://github.com/splitio/python-api?tab=readme-ov-file#rule-based-segments).
-
-## Common Microclient Methods
-
-Most Harness microclients support the following standard methods:
-
-- `list(account_identifier=None)`: Lists all resources of the specified type.
-- `get(id, account_identifier=None)`: Gets a specific resource by ID.
-- `create(data, account_identifier=None)`: Creates a new resource.
-- `update(id, data, account_identifier=None)`: Updates an existing resource.
-- `delete(id, account_identifier=None)`: Deletes a resource.
-
-The `account_identifier` parameter can be omitted if it was provided when creating the client.
