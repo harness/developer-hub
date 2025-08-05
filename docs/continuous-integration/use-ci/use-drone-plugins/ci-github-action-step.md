@@ -15,6 +15,8 @@ You can use the **GitHub Action plugin** step (also called the **GitHub Action**
 
 Currently, the **GitHub Action** step is supported for Harness Cloud build infrastructure only.
 
+**Node 20 support:** When running the Action step on Harness Cloud, Node 20 is supported behind the feature flag `CI_GHA_USE_NEKTOS_V2`. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag for your account.
+
 For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
 
 For more information about using plugins in CI pipelines, go to [Explore plugins](./explore-ci-plugins.md).
