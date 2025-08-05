@@ -879,7 +879,7 @@ Updating an application that contains a `valuesObject` while using an agent olde
 
 - **Slack Step Enhancements**: Users can now send event notifications directly to Slack channels. Supported formats include plain text and JSON Blocks. (**CDS-105984**)
 
-- Users can utilize the **ASG Steady State** step in a Harness pipeline to track the progress of launching and terminating instances in AWS during an ASG rolling deployment. Currently, this feature is behind the feature flag `CDS_ASG_SKIP_INSTANCE_TERMINATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-101393**)
+- Users can utilize the **ASG Steady State** step in a Harness pipeline to track the progress of launching and terminating instances in AWS during an ASG rolling deployment. (**CDS-101393**)
 
 - You can view YAML difference when updates are made to policy and policy set within [Audit Trail](/docs/platform/governance/audit-trail/). (**PIPE-20618**)
 
