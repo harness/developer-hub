@@ -3,10 +3,6 @@ title: Android Suite
 sidebar_label: Android Suite
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/22916666123277-Android-Suite </button>
-</p>
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

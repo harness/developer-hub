@@ -7,10 +7,6 @@ description: ""
 sidebar_position: 20
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360048120112-Export-data </button>
-</p>
-
 The data export functionality within the Data hub gives development teams the ability to query and export all impression and event data. With data export, development teams can:
 
 * Create new data exports and add query criteria to refine your exports

@@ -4,10 +4,6 @@ sidebar_label: How do I maintain the state of a user's treatment, even if the ro
 sidebar_position: 8
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360035011591-How-do-I-maintain-the-state-of-a-user-s-treatment-even-if-the-rollout-plan-changes </button>
-</p>
-
 How do I ensure that once a user (or any traffic key) is given a treatment, they always receive the same treatment, irrespective of any changes to the rollout plan?
 
 The goal is to maintain state so that a user is always exposed to the same thing they saw the first time they visited, even if a change to the rollout plan would otherwise flip the user to another treatment. A sample use case is an offering, such as a loan application or promotional discount, that needs to remain consistent.

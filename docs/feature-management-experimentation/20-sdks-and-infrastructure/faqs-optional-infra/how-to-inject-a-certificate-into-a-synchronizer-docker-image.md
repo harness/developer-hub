@@ -4,10 +4,6 @@ sidebar_label: How to inject a certificate into a Synchronizer Docker image?
 sidebar_position: 3
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360048788451-How-to-inject-a-certificate-into-Synchronizer-Docker-image </button>
-</p>
-
 ## Question
 
 If the Synchronizer Docker container is running in a network that has a proxy using SSL for all traffic, the Synchronizer docker might not be able to authenticate the root certification, which will result in the error below when Synchronizer tries to connect to Harness FME servers to fetch the feature flags definitions:

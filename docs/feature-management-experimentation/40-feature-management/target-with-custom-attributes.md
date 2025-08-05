@@ -7,10 +7,6 @@ redirect_from:
 - /docs/feature-management-experimentation/feature-management/faqs/does-my-sdk-version-support-semver
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes </button>
-</p>
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

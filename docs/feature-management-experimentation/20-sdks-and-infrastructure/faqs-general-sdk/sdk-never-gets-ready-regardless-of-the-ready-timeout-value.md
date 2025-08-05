@@ -4,10 +4,6 @@ sidebar_label: "General SDK: SDK never gets ready, regardless of the ready timeo
 sidebar_position: 9
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016299232-Configure-Split-Synchronizer-to-handle-high-impression-rate </button>
-</p>
-
 ## Issue
 
 The SDK never gets ready, regardless of how much the ready timeout value.

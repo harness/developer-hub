@@ -4,10 +4,6 @@ sidebar_label: Useful regex examples for targeting
 sidebar_position: 10
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360026231292-Useful-Regex-Examples-for-Targeting </button>
-</p>
-
 Split targeting rules support matching regex (regular expression) to serve specific treatment, Regex is a powerful tool to filter a wide spectrum of population with one line of text. We recommended that you test your regex on an external tool to verify it works correctly. Here is one [suggested site](https://regex101.com/).
 
 Below are a few useful examples.

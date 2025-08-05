@@ -4,10 +4,6 @@ sidebar_label: No Impressions sent from Python SDK 7.x and Synchronizer 1.x
 sidebar_position: 7
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360024851032-No-Impressions-sent-from-Synchronizer-1-x-and-Python-SDK-7-x </button>
-</p>
-
 ## Issue
 When using Synchronizer 1.x version and Python SDK 7.x version, the Python SDK is processing treatments correctly, Synchronizer does not report any errors, but no Impressions are sent to Harness FME servers.
 

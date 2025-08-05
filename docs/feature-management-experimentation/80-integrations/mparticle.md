@@ -4,10 +4,6 @@ sidebar_label: mParticle
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038306272-mParticle </button>
-</p>
-
 mParticle is a customer data platform that allows you to centralize, manage, and activate your customer and engagement data across any channel.
 
 Use this integration to: 

@@ -4,10 +4,6 @@ sidebar_label: "General SDK: SDK readiness always times out when running in Kube
 sidebar_position: 2
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4409917901837-General-SDK-SDK-Readiness-always-times-out-when-running-in-Kubernetes-and-Istio-proxy </button>
-</p>
-
 ## Issue
 
 Running an application that uses FME SDK in a Kubernetes container that is configured to use Istio proxy always results in SDK not ready exception.

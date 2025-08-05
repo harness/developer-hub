@@ -4,10 +4,6 @@ sidebar_label: Synchronizer compatibility matrix
 sidebar_position: 8
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360017812071-Synchronizer-Compatibility-Matrix </button>
-</p>
-
 | Language	| Split Sync | Support |
 | --- | --- | --- |
 | Java	| |	Not implemented |

@@ -4,10 +4,6 @@ sidebar_label: Dynamic configuration section does not show up
 sidebar_position: 2
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360058278392-Dynamic-configuration-section-does-not-show-up </button>
-</p>
-
 ### Issue:
 
 When clicking on any feature flag, the Dynamic configuration section does not show up, even though other users see the section from their browser.
