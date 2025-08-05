@@ -156,6 +156,7 @@ docker run -it \
    * [GCP connectors (GAR and GCS)](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp)
    * [AWS connectors](/docs/platform/connectors/cloud-providers/add-aws-connector)
    * [JFrog connectors (Artifactory)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference)
+   * [HashiCorp Vault connectors](/docs/platform/secrets/secrets-management/add-hashicorp-vault/)
 
 ### Use Secure Connect environment variables to route other clients
 
