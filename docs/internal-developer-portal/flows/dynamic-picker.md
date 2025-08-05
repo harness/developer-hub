@@ -276,7 +276,7 @@ Below is the YAML configuration for this setup:
 ## Updating Fields using Form Context
 
 :::info
-Please note that this feature flag is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/worflowyaml.md#workflows-playground). You won't be able to implement or test this feature in the playground.
+Please note that this feature is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/worflowyaml.md#workflows-playground). You won't be able to implement or test this feature in the playground.
 :::
 
 With conditional API requests in **Dynamic Pickers**, you can create a **Workflow** with dependent input fields. This also allows you to configure a **Workflow** with a **Dynamic Picker** to automatically update other data fields in your **Workflow's frontend** based on previous input. All relevant information in your **Workflow's frontend** can be auto-filled from third-party sources based on your selection/input.
@@ -443,7 +443,7 @@ parameters:
 ## Live User Validation using API Requests
 
 :::info
-Please note that this feature flag is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/worflowyaml.md#workflows-playground). You won't be able to implement or test this feature in the playground.
+Please note that this feature is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/worflowyaml.md#workflows-playground). You won't be able to implement or test this feature in the playground.
 :::
 
 You can configure Workflows to enable **user validation** for input form fields. If you want users to manually enter details and validate them instead of selecting from a drop-down, you can use this feature in your Workflow.
