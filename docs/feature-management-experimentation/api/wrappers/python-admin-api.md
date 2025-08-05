@@ -39,6 +39,21 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
 
+### Default Account Identifier
+
+To avoid specifying the `account_id` with every call, set the default when creating the client:
+
+```python
+client = get_client({
+    'harness_mode': True,
+    'harness_token': 'YOUR_HARNESS_TOKEN',
+    'account_identifier': 'YOUR_ACCOUNT_IDENTIFIER'
+})
+
+tokens = client.token.list()  
+projects = client.harness_project.list()
+```
+
 ## Handling Rate Limit
 
 When the library receives a 429 HTTP response because of a limit rate, it waits for five seconds and then retries the HTTP request.
@@ -154,21 +169,6 @@ Adds a user to one or more Harness groups.
 
 ```python
 client.harness_user.add_user_to_groups(user.id, [group.id], account_id)
-```
-
-### Default Account Identifier
-
-To avoid specifying the `account_id` with every call, set the default when creating the client:
-
-```python
-client = get_client({
-    'harness_mode': True,
-    'harness_token': 'YOUR_HARNESS_TOKEN',
-    'account_identifier': 'YOUR_ACCOUNT_IDENTIFIER'
-})
-
-tokens = client.token.list()  
-projects = client.harness_project.list()
 ```
 
 For more information about Harness Mode, including authentication options, base URLs, and examples, see the [README](https://github.com/splitio/python-api?tab=readme-ov-file#working-with-harness-specific-resources).
@@ -2555,3 +2555,15 @@ for cr in client.change_requests.list():
 ```
 
 For more information about rule-based segments, see the [README](https://github.com/splitio/python-api?tab=readme-ov-file#rule-based-segments).
+
+## Common Microclient Methods
+
+Most Harness microclients support the following standard methods:
+
+- `list(account_identifier=None)`: Lists all resources of the specified type.
+- `get(id, account_identifier=None)`: Gets a specific resource by ID.
+- `create(data, account_identifier=None)`: Creates a new resource.
+- `update(id, data, account_identifier=None)`: Updates an existing resource.
+- `delete(id, account_identifier=None)`: Deletes a resource.
+
+The `account_identifier` parameter can be omitted if it was provided when creating the client.
