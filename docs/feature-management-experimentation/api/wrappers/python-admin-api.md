@@ -88,6 +88,16 @@ Harness Mode provides access to several Harness-specific resources through dedic
   * `role_assignment`
   * `harness_project`
 
+To work with Harness resources, initialize the Split client in Harness mode:
+
+```python
+client = get_client({
+  'harness_mode': True,
+  'harness_token': 'YOUR_HARNESS_TOKEN',
+  'account_identifier': 'YOUR_ACCOUNT_ID'
+})
+```
+
 Example schema for creating resources:
 
 ```python
