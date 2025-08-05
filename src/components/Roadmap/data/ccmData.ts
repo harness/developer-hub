@@ -12,13 +12,6 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--green-100)",
       },
       {
-        tag: [{value: "Commitment Orchestrator"}],
-        title: " Integration with Cluster Orchestrator",
-        description:
-          "Enhancing Commitment Orchestrator with seamless Cluster Orchestrator integration.",
-        backgroundColor: "var(--green-100)",
-      },
-      {
         tag: [{value: "Cluster Orchestrator"}],
         title: "Nodepools and Nodeclasses Configuration via Harness UI",
         description:
@@ -37,6 +30,13 @@ export const CcmData: Horizon = {
         title: " External Data Ingestion (Beta) ",
         description:
           "Focus compliant external data ingestion to ingest SaaS (Ex. Snowflake, Databricks etc.)",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Asset Governance"}],
+        title: " Governance Notifications ",
+        description:
+          "Alert notifications on evaluations for prompt alerting.",
         backgroundColor: "var(--green-100)",
       },
       {
@@ -197,6 +197,13 @@ export const CcmData: Horizon = {
   description: "Q3 CY'25, Aug 2025 - Oct 2025",
     feature: [
       {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: " Integration with Cluster Orchestrator",
+        description:
+          "Enhancing Commitment Orchestrator with seamless Cluster Orchestrator integration.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
         tag: [{value: "AutoStopping"}],
         title: "Smart Advisor",
         description:
@@ -216,12 +223,6 @@ export const CcmData: Horizon = {
           "Role-based access control to enhance security and governance in Cluster Orchestrator.",
         backgroundColor: "var(--yellow-100)",
       },
-     
-    ],
- },
-Later:{
-    description: "Q4 2025 and beyond",
-    feature: [
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: " Budgets 2.0 ",
@@ -236,13 +237,13 @@ Later:{
           "General Availability of Commitment Orchestrator for Amazon RDS, enabling better cost-efficiency through commitment management for database services.",
         backgroundColor: "var(--yellow-100)",
       },
-      {
-        tag: [{value: "Asset Governance"}],
-        title: " Governance Notifications ",
-        description:
-          "Alert notifications on evaluations for prompt alerting.",
-        backgroundColor: "var(--yellow-100)",
-      },
+     
+    ],
+ },
+Later:{
+    description: "Q4 2025 and beyond",
+    feature: [
+
       {
         tag: [{value: "AutoStopping"}],
         title: "AutoStopping Onboarding Assistant for EKS",
