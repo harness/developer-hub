@@ -146,8 +146,11 @@ Custom certificates or self-signed certificates are only supported for linux nod
 
 :::important
 
-This workflow is applicable only if you're using a self-hosted registry to store your container images. For all other workflows, go to [Enable self-signed certificates](#enable-self-signed-certificates). 
-
+- This workflow is applicable only if you're using a self-hosted registry to store your container images. For all other workflows, go to [Enable self-signed certificates](#enable-self-signed-certificates). 
+- Starting with delegate release XXX, **self-signed certificates provided via `DESTINATION_CA_PATH` and `CI_MOUNT_VOLUMES` will now be _appended_ to the existing public certificates at the destination path**, rather than replacing them.
+- This change is controlled by the feature flag `CI_APPEND_CERTS`.
+  - Supported only on **Linux nodes**  
+  - **Windows nodes are not supported** — mounting certs this way will not work on Windows agents.
 :::
 
 1. Create a Kubernetes secret or config map with the required certificates in the same namespace used by the Harness delegate. For example:
