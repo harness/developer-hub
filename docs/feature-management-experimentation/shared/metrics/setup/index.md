@@ -56,7 +56,7 @@ An alert policy allows you to configure a degradation threshold for your metric.
 
 ## Manage alerts
 
-Any alerts which are triggered are displayed both on the Targeting and Alerts tab on the feature flag page. When you receive an alert, you can quickly rollback the feature flag by clicking kill or dismiss the alert. Learn more about [managing alerts](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting#metric-alert-summary-in-split-ui).
+Any alerts which are triggered are displayed both on the Targeting and Alerts tab on the feature flag page. When you receive an alert, you can quickly rollback the feature flag by clicking kill or dismiss the alert. Learn more about [managing alerts](/docs/feature-management-experimentation/release-monitoring/metrics/setup/metric-alert-policy/).
 
 ## Review metrics impact during a review period 
 
