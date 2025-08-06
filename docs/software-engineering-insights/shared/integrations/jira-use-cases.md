@@ -23,7 +23,10 @@ A measure of how effectively engineering efforts contribute to strategic busines
 Use these widgets to measure crucial sprint metrics, like Velocity and Predictability, providing insight into how consistently teams deliver within a sprint.
 
 * [Single Stats](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-single-stat)
-* [Trend Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-percentage-trend-report)
+* [Sprint Trend Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#jira-trend-reporting-sub-tasks)
+* [Sprint Metrics Precentage Trend Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-percentage-trend-report)
+
+Please note the following regarding [Sub-Tasks in Trend Reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports/#jira-trend-reporting-sub-tasks)
 
 ### Track hygiene
 
