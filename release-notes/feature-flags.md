@@ -118,7 +118,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 **Bug fixes**:
 
-- Fixed an issue where the Node SDK did not retry after initialization failure. (FFM-12484)
+- Fixed an issue where the Node.js SDK did not retry after initialization failure. (FFM-12484)
 - Fixed an uncaught exception occurring when fetching flags or segments fails on SSE events. (FFM-12499)
 
 ### .NET SDK
