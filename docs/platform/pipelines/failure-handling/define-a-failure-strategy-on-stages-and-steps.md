@@ -119,7 +119,7 @@ For example, a failure strategy set on a step doesn't impact the failure strateg
 
 Both step and stage failure strategies include the **Rollback Stage** action option. There is no rollback step option.
 
-### Failure strategy actions
+## Failure strategy actions
 
 The following table lists the failure strategy actions and how they work at the step, step group, and stage levels.
 
@@ -141,13 +141,47 @@ These actions can be applied to the failure strategy as primary action and timeo
 **Mark As Failure** as a Failure Strategy marks the stage/stepGroup/step as failed and moves the execution to next step/stage according to when conditions applied on the next step/stage.
 :::
 
-#### Manual interventions
+### Manual interventions
 
 Here is what a Manual Intervention action looks like when a failure occurs:
 
 ![](../static/define-a-failure-strategy-on-stages-and-steps-11.png)
 
 The user can select an **Action**. If the Manual Intervention exceeds the **Timeout** setting, Harness automatically selects the **Post Timeout Action**.
+
+### Customize Available Actions for Manual Intervention
+
+:::note
+Currently, this feature is behind the feature flag `CDS_MANUAL_INTERVENTION_CUSTOM_ACTIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can now **restrict the set of available actions shown to the pipeline executor** during a manual intervention. This applies when a **step** or **stage** fails and the configured **Failure Strategy** is **Manual Intervention**.
+
+By customizing the available actions, you can:
+
+- Prevent unsafe actions like **Retry** or **Pipeline Rollback**
+- Ensure consistency and control over failure handling
+- Tailor manual intervention choices based on stage or step specific requirements
+
+At pipeline design time, you can whitelist the allowed manual intervention actions using a new **Allowed Actions** dropdown.
+
+**Available Actions**
+
+- Retry Step  
+- Mark as Success  
+- Mark as Failure  
+- Ignore Failure  
+- Retry from Stage  
+- Rollback Pipeline
+
+After selecting the allowed actions, you **must** also configure the following:
+
+- **Timeout**: Duration to wait for manual intervention.
+- **Post-Timeout Action**: Action to take automatically if no manual decision is made within the timeout.
+
+<div align="center">
+  <DocImage path={require('./static/allowed-actions-manual-intervention.png')} width="100%" height="100%" title="Click to view full size image" />
+</div>
 
 ## Prioritization and handling
 
