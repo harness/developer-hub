@@ -17,28 +17,11 @@ You need to have **Create/Edit Delegate** permission to create and manage delega
 
 Harness uses delegate tokens to encrypt communication between Harness Delegates and the Harness Manager. By default, when a new Harness account is created, all Harness Delegates in that account share the same token.
 
-Delegate tokens act as secret keys to encrypt and decrypt JWT tokens, ensuring sensitive data remains protected during transmission. These tokens are never transmitted directly.
-
-You can enhance security by replacing the default delegate token with new tokens. This allows you to add and revoke tokens according to your governance policies, rotate tokens as needed, and store them in a secret manager.
+Delegate tokens can be managed according to your governance policies - you can add new tokens, revoke existing ones, rotate them as needed, and store them in a secret manager.
 
 ### Generate a new delegate token
 
 <Tabs>
-<TabItem value="Manual">
-To generate a new delegate token:
-
-1. Navigate to **Settings** of your scope (Account, organizations, or Project). We will use Account scope for this example.
-
-2. In **Account-level resources**, navigate to **Delegates**, then select **Tokens**.
-
-3. Select **New Token**.
-
-4. Enter a name for the new token and select **Apply**. The new token is created and appears in the list using the name you provided.
-
-5. Copy and save the token value. You can now update your delegates with the new token.
-
-6. To view more about a token, select the **More Options** (&vellip;) menu. Here you can view more information about the token or copy the token value.
-</TabItem>
 <TabItem value="Interactive">
   <iframe
     src="https://app.tango.us/app/embed/c30db2fd-2e31-4d21-bd59-a3cf50f86b70"
@@ -50,6 +33,21 @@ To generate a new delegate token:
     frameBorder="0"
     allowFullScreen
   />
+</TabItem>
+<TabItem value="Manual">
+To generate a new delegate token:
+
+1. Navigate to **Settings** of your scope (Account, Organizations, or Projects). We will use Account scope for this example.
+
+2. In **Account-level resources**, navigate to **Delegates**, then select **Tokens**.
+
+3. Select **New Token**.
+
+4. Enter a name for the new token and select **Apply**. The new token is created and appears in the list using the name you provided.
+
+5. Copy and save the token value. You can now update your delegates with the new token.
+
+6. To view more about a token, select the **More Options** (&vellip;) menu. Here you can view more information about the token or copy the token value.
 </TabItem>
 </Tabs>
 
@@ -75,17 +73,11 @@ To update a Kubernetes delegate with a new token:
 
 To update a Docker delegate with a new token:
 
-1. Stop the existing delegate containers:
-   ```bash
-   docker stop <delegate_container_id>
-   docker stop <upgrader_container_id>
-   ```
+1. Stop the existing delegate.
 
 2. Restart the delegate with the new token in the environment variable: `DELEGATE_TOKEN=<new_token>`
 
 3. Restart the upgrader with the new token in the environment variable: `UPGRADER_TOKEN=<new_token>`
-
-You can verify the token update using `docker exec <container_id> env`.
 
 ## Revoke Delegate tokens
 
@@ -107,16 +99,6 @@ To revoke tokens, do the following:
 You can only delete tokens that have been revoked. 
 :::
 <Tabs>
-<TabItem value="Manual">
-To delete a token, do the following:
-
-1. On the **Tokens** page, select **Revoked Tokens** next to the +New Token button. It will list all the revoked tokens.
-
-2. Select the token you want to delete and select **Delete**.
-
-3. Confirm by selecting **Delete**. The token is immediately deleted and will no longer appear in the list.
-
-</TabItem>
 <TabItem value="Interactive">
     <iframe 
     src="https://app.tango.us/app/embed/8ee400d8-d23c-419e-9029-a6e0f4a05683" 
@@ -128,6 +110,16 @@ To delete a token, do the following:
     frameborder="0" 
     allowfullscreen
     />
+</TabItem>
+<TabItem value="Manual">
+To delete a token, do the following:
+
+1. On the **Tokens** page, select **Revoked Tokens** next to the +New Token button. It will list all the revoked tokens.
+
+2. Select the token you want to delete and select **Delete**.
+
+3. Confirm by selecting **Delete**. The token is immediately deleted and will no longer appear in the list.
+
 </TabItem>
 </Tabs>
 
