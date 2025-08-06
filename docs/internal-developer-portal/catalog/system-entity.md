@@ -77,11 +77,7 @@ identifier: paymentsystem
 type: system
 owner: team-payment
 spec:
-  ownedBy:
-    - group:account/_account_all_users
-  hasPart:
-    - component:account/acclevel123
-    - api:account/agnivaaapi
+  lifecycle: ""
 metadata:
   description: This system groups services and libraries related to payment processing.
   tags:
