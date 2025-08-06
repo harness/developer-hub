@@ -9,7 +9,7 @@ This guide explains what you need to know to get started using Harness SEI 2.0.
 
 ## Complete Harness Platform onboarding
 
-If you're new to Harness, review the [Harness Platform onboarding guide](/docs/platform/get-started/onboarding-guide and [Harness Platform key concepts](/docs/platform/get-started/key-concepts) before onboarding to SEI 2.0.
+If you're new to Harness, review the [Harness Platform onboarding guide](/docs/platform/get-started/onboarding-guide) and [Harness Platform key concepts](/docs/platform/get-started/key-concepts) before onboarding to SEI 2.0.
 
 ## SEI 1.0 and SEI 2.0
 
