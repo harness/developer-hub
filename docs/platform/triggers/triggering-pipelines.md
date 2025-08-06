@@ -538,9 +538,8 @@ The skipping mechanism operates for both **push** and **pull request** events in
 Currently, this feature is behind the feature flag `PIPE_ENABLE_SEND_STATUS_TO_GIT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-
-Harness provides enhanced control over the stage execution status updates by giving you the freedom to enable **send status to git** option for individiual stages in the pipeline.
-When a Harness pipeline is triggered by a Git Pull Request event, During the execution Harness can send status updates for each pipeline stage back to the Git system (GitHub, GitLab, etc.). These updates appear as checks on the Pull Request which triggered the pipeline. 
+You can have enhanced control over the stage execution status updates by leveraging the **send status to git** option for individiual stages in the pipeline.
+When a pipeline is triggered by a Git Pull Request event, During the execution Harness can send status updates for each pipeline stage back to the Git system (GitHub, GitLab, etc.). These updates appear as checks on the Pull Request which triggered the pipeline. 
 
 ### Key Capabilities and Customization
 
@@ -549,16 +548,13 @@ With this feature, you gain the following capabilities:
 - **Stage-Level Control:** Choose to enable or disable send status to git for each pipeline stage.
 - **Customizable Status Check Names:** Set custom names for the these status checks associated with stages using fixed values or Harness expressions like `<+pipeline.variables.varStage>`. This allows for dynamic and descriptive status names.
 
-<ul style="list-style-type: none; ">
-  <p>
-  <img alt="Fixed Value Nomenclature for status check git" src="./static/send_status_to_git_fixed.png" width="40%" style="margin-right: 10px;"  />
-  <img alt="Expression Variable Nomenclature for status check git" src="./static/send_status_to_git_expression.png" width="40%" style="margin-right: 10px;" />
-  </p>
-</ul>
-
+![Expression Nomenclature for status check git](./static/send_status_to_git_expression.png)
 
 - **Status Updates for Skipped Stages:** If a stage is skipped during a pipeline run, it will be reported as a **Success** status in Git.
 - **Visibility on Pull Request:** Receiving status updates as checks directly on the Pull Request makes it easier for the developers to identify the execution status of each stage in the pipeline without having to navigate to the Harness pipeline run. 
+
+![Expression Nomenclature for status check git](./static/send_status_to_git_pr_checks.png)
+
 
 ### Enabling Send Status to Git
 
