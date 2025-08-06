@@ -152,6 +152,36 @@ export const platformData: Horizon = {
     description: "🪄 Q3 2025+, Nov 2025 & beyond",
     feature: [
       {
+        title: "mTLS support for Harness APIs",
+        description:
+          "Enhanced API security with mutual TLS authentication for enterprise-grade protection of API communications.",
+        tag: [{ value: "Access Control" }],
+      },
+      {
+        title: "Event Streaming of pipeline logs",
+        description:
+          "Real-time streaming of pipeline execution logs to external systems for enhanced monitoring and observability.",
+        tag: [{ value: "Pipeline" }],
+      },
+      {
+        title: "Automated moving of Dashboards across organizations",
+        description:
+          "",
+        tag: [{ value: "Dashboard" }],
+      },
+      {
+        title: "Alerting on platform limits",
+        description:
+          "Proactive notifications when approaching platform usage limits to prevent service disruptions and optimize resource planning.",
+        tag: [{ value: "Platform" }],
+      },
+      {
+        title: "Delegate support in Harness MCP Server",
+        description:
+          "Delegate support in Harness MCP Server",
+        tag: [{ value: "Delegate" }],
+      },
+      {
         title: "Advanced RBAC Permissions for User Groups",
         description:
           "Advanced permissions for User Groups to provide users enhanced granularity and control while creating roles.",
