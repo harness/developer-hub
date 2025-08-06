@@ -98,6 +98,13 @@ Note that if you have selected the checkbox for **Include all tickets committed 
 For example, let's say your team planned a sprint with 10 tickets. During the sprint, you decided to remove 2 tickets from the scope. If the **Include all tickets committed at the start of the sprint** option is selected, the sprint metrics calculation will still consider all 10 tickets, including the 2 that were removed.
 :::
 
+#### Jira Trend Reporting (Sub-Tasks)
+If you are using Harness Trend reports, you may notice that sub-tasks are seemingly omitted. This is by design to replicate the behavior of similar reports in Jira.  
+
+Jira's built-in reports (e.g., Control Chart, Cumulative Flow Diagram, Burnup/Burndown Charts) typically exclude sub-tasks by default. Filters and JQL in dashboards or reports usually focus on parent-level issues like Stories, Bugs, or Tasks.
+
+In Harness Sprint Reports, sub-tasks appear nested under their parent issues and are not top-level items. Their completion does not directly impact the sprint burndown unless time estimates or story points are tracked, or the board settings/estimation statistics are configured to include sub-task values.
+
 ## Sprint Metrics Percentage Trend Report 
 
 ### Definition
