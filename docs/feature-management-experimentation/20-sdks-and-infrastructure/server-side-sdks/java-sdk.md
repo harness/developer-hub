@@ -1381,8 +1381,8 @@ public class SplitView {
 
 ```java
 public class Prerequisites {
-    public String featureFlagName;
-    public List<String> treatments;
+    public String featureFlagName; // Name of the prerequisite flag
+    public List<String> treatments;  // Treatments required to satisfy the prerequisite
 }
 ```
 
@@ -1405,6 +1405,27 @@ class SplitView(
 
 </TabItem>
 </Tabs>
+
+### Feature flag prerequisites
+
+Feature flag prerequisites allow you to define dependency relationships between flags. A flag is only evaluated if all of its prerequisites evaluate to one of the specified treatments. If any prerequisite is not met, the flag is not evaluated and its `defaultTreatment` is served. 
+
+Prerequisites are evaluated before allowlists and targeting rules, enabling you to design complex rollout strategies and conditional flag logic.
+
+For example: 
+
+```java
+// Flag B will only be evaluated if Flag A returns "on"
+Prerequisites prereq = new Prerequisites();
+prereq.featureFlagName = "flagA";
+prereq.treatments = Arrays.asList("on");
+
+SplitView splitView = new SplitView();
+splitView.name = "flagB";
+splitView.prerequisites = Arrays.asList(prereq);
+```
+
+In this example, the `flagB` flag is only evaluated if the `flagA` flag returns the `on` treatment.
 
 ## Listener
 

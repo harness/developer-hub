@@ -45,7 +45,7 @@ npm install --save @splitsoftware/splitio
 <TabItem value="CDN bundle">
 
 ```html
-<script src="//cdn.split.io/sdk/split-11.2.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-11.4.0.min.js"></script>
 
 ```
 
@@ -951,9 +951,40 @@ type SplitView = {
   },
   defaultTreatment: string,
   sets: Array<string>,
-  impressionsDisabled: boolean
+  impressionsDisabled: boolean,
+  prerequisites: Array<{ flagName: string, treatments: string[] }>
 }
 ```
+
+### Feature flag prerequisites
+
+Feature flag prerequisites let you define dependency relationships between feature flags in the JavaScript SDK. A flag is only evaluated if all of its prerequisites return one of the specified treatments. If any prerequisite is unmet, the flag serves its `defaultTreatment` instead.
+
+Prerequisites are evaluated before allowlists and targeting rules, allowing you to design complex rollout strategies and conditional flag logic on the client side.
+
+For example: 
+
+```javascript
+const splitView = {
+  name: "flagB",
+  trafficType: "user",
+  killed: false,
+  treatments: ["on", "off"],
+  changeNumber: 123456789,
+  configs: {},
+  sets: [],
+  defaultTreatment: "off",
+  impressionsDisabled: false,
+  prerequisites: [
+    {
+      flagName: "flagA",
+      treatments: ["on"]
+    }
+  ]
+};
+```
+
+In this example, the `flagB` flag will only be evaluated if the `flagA` flag returns the `"on"` treatment. Otherwise, `flagB` serves its `defaultTreatment` `"off"`.
 
 ## Listener
  
