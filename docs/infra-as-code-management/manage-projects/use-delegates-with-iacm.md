@@ -1,7 +1,7 @@
 ---
 title: Harness Delegate 
 description: Learn how the Harness Delegate works with IaCM.
-sidebar_position: 40
+sidebar_position: 30
 ---
 
 Set up your build infrastructure just as you would for Harness CI. For details, go to [Set up build infrastructure](/docs/category/set-up-build-infrastructure). Harness Cloud, Kubernetes cluster, and local runner (Docker) build infrastructures are supported. A delegate is not required for Harness Cloud.
