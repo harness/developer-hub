@@ -14,6 +14,8 @@ Managing developer records in SEI 2.0 ensures accurate mapping of individuals to
 
 The **Developers** page includes the **Developer Data** tab, which is a read-only view of your developer records ingested from CSV uploads, and the **Developer Mappings** tab, which is a mapping interface that links raw data fields (such as `EMAIL` AND `MANAGER_EMAIL_ADDRESS`) to SEI-specific fields (such as `EMAIL`, `MANAGER_EMAIL`, `DISPLAYNAME`, and `ROLE`).
 
+To create an Org Tree Hierarchy based on reporting structure, Harness SEI requires four attributes: developer email, developer name, manager name, and manager email.
+
 ## Uploading developer records
 
 To add developer records:
