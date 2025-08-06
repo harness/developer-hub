@@ -2,7 +2,7 @@
 title: Manage developers
 description: Learn how to manage developers for your organization in SEI 2.0.
 sidebar_label: Manage developers
-sidebar_position: 7
+sidebar_position: 4
 redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/setup/developers
 - /docs/software-engineering-insights/harness-sei/setup-sei/add-developer-records
