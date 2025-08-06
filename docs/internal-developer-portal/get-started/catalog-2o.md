@@ -2,7 +2,7 @@
 title: Get Started with Catalog
 sidebar_position: 3
 sidebar_label: Get Started with Catalog
-redirect_from: /docs/internal-developer-portal/get-started/register-a-new-software-component.md
+redirect_from: /docs/internal-developer-portal/get-started/register-a-new-software-component
 ---
 
 import Tabs from '@theme/Tabs';
@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
 
 :::tip For IDP 2.0 Customers
-If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Overview guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md) and are familiar with the key steps for [upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md). To enable IDP 2.0, you must raise a support ticket to activate the `IDP_2_0` feature flag for your account.
+If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Overview guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path) and are familiar with the key steps for [upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o). To enable IDP 2.0, you must raise a support ticket to activate the `IDP_2_0` feature flag for your account.
 :::
 
 
@@ -32,9 +32,9 @@ Harness IDP 2.0 introduces a major upgrade to the Software Catalog. Built on a H
 ## Prerequisites (IDP 2.0)
 
 Before using the Software Catalog in IDP 2.0, ensure:
-* You have reviewed the **[IDP 2.0 Overview](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** and **[Upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)** guide. 
+* You have reviewed the **[IDP 2.0 Overview](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path)** and **[Upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o)** guide. 
 * **IDP 2.0** is enabled behind the `IDP_2_0` Feature Flag. Contact [Harness Support](https://support.harness.io) to enable it on your account.
-* You are familiar with the **[Catalog Data Model](/docs/internal-developer-portal/catalog/data-model.md)** and **[Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml.md)** structure.
+* You are familiar with the **[Catalog Data Model](/docs/internal-developer-portal/catalog/data-model)** and **[Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml)** structure.
 
 ## Create an Entity (IDP 2.0)
 
@@ -66,7 +66,7 @@ To set the owner identity, type a few characters in the Owner field to search an
 
 ![](./static/create-entity-2.png)
 :::
-4. Specify the **Entity Scope** (Account, Org, or Project). For this example, choose **Account scope**. [Read more about Catalog RBAC](/docs/internal-developer-portal/rbac/catalog-rbac.md).
+4. Specify the **Entity Scope** (Account, Org, or Project). For this example, choose **Account scope**. [Read more about Catalog RBAC](/docs/internal-developer-portal/rbac/catalog-rbac).
 ![](./static/scope-entity.png)
 5. **Associate with System Entities**
    Systems in Harness IDP are high-level catalog entities used to logically group related components, APIs, and resources. Associating your component with one or more Systems helps organize the catalog and improves visibility.
@@ -75,7 +75,7 @@ To set the owner identity, type a few characters in the Owner field to search an
 
    You can select one or more Systems from the dropdown. This creates a relationship between your component and the selected Systems, making it easier to discover related entities and understand your software ecosystem.
 
-   > If you don't see the System you need, you can [create a new System entity](/docs/internal-developer-portal/catalog/system-entity.md) first.
+   <!-- > If you don't see the System you need, you can [create a new System entity](/docs/internal-developer-portal/catalog/system-entity) first. -->
 
 6. **Link to Source Code Repository**
    Configure the source code repository associated with this component. This link enables several key capabilities, such as:
@@ -149,7 +149,7 @@ You can always set the owner identity using your email ID, a group name, or any 
 ![](./static/create-entity-2.png)
 :::
 
-4. Define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
+4. Define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#orgidentifier)** directly in the YAML to set the project or organization scope.
 ![](./static/scope-entity.png)
 5. **Associate with System Entities** by adding references to one or more Systems in your component's YAML. This creates a logical grouping of related components, APIs, and resources, making it easier to navigate and understand your software ecosystem.
 
@@ -162,7 +162,7 @@ You can always set the owner identity using your email ID, a group name, or any 
        - system:account/payment_gateway
    ```
 
-   > Learn more about [System entities](/docs/internal-developer-portal/catalog/system-entity.md) and how they help organize your catalog.
+   <!-- > Learn more about [System entities](/docs/internal-developer-portal/catalog/system-entity) and how they help organize your catalog. -->
 
 6. Define **Link to Source Code Repository** to configure the source code repository associated with this component. This link enables several key capabilities, such as, Automatically configuring plugins and Displaying the **View Source** option in the UI
 This field is **optional**, but strongly recommended if your component is tied to a Git-based workflow or needs source-aware plugins.
@@ -220,10 +220,10 @@ You can remove any entity from the Catalog using the steps below:
 
 Now that you've learned how to create, populate, and delete Catalog entities, here’s what to explore next:
 
-1. Deep dive into the **[Catalog Data Model](/docs/internal-developer-portal/catalog/data-model.md)** to understand entity types and relationships.
-2. Learn the structure of **[Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml.md)** and how to author compliant definitions.
-4. Customize and manage a **[custom Catalog UI](/docs/internal-developer-portal/catalog/catalog-ui.md)** for tailored workflows.
-5. Learn how to **[configure RBAC](/docs/internal-developer-portal/rbac/catalog-rbac.md)** for Catalog entities. 
+1. Deep dive into the **[Catalog Data Model](/docs/internal-developer-portal/catalog/data-model)** to understand entity types and relationships.
+2. Learn the structure of **[Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml)** and how to author compliant definitions.
+4. Customize and manage a **[custom Catalog UI](/docs/internal-developer-portal/catalog/catalog-ui)** for tailored workflows.
+5. Learn how to **[configure RBAC](/docs/internal-developer-portal/rbac/catalog-rbac)** for Catalog entities. 
 
 </TabItem>
 <TabItem value="IDP 1.0" label="IDP 1.0">
