@@ -37,7 +37,7 @@ Delegate tokens can be managed according to your governance policies - you can a
 <TabItem value="Manual">
 To generate a new delegate token:
 
-1. Navigate to **Settings** of your scope (Account, Organizations, or Projects). We will use Account scope for this example.
+1. Navigate to **Settings** of your scope (Account, Organization, or Project). We will use Account scope for this example.
 
 2. In **Account-level resources**, navigate to **Delegates**, then select **Tokens**.
 
@@ -79,7 +79,7 @@ To update a Docker delegate with a new token:
 
 3. Restart the upgrader with the new token in the environment variable: `UPGRADER_TOKEN=<new_token>`
 
-## Revoke Delegate tokens
+## Revoke a Delegate token
 
 Harness loads tokens during the delegate startup process as part of the connection heartbeat. When you change the delegate token, you must restart the delegate cycle process.
 
@@ -93,7 +93,7 @@ To revoke tokens, do the following:
 
 2. Confirm by selecting **Revoke**. The token is immediately revoked and will no longer appear in the list.
 
-## Delete Delegate tokens
+## Delete a Delegate token
 
 :::info Note
 You can only delete tokens that have been revoked. 
