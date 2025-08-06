@@ -50,7 +50,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       cat << EOF > /harness/id_ed25519
-                      <+secrets.getValue("SSH_KEY")>
+                      <+secrets.getValue("SSH_KEY")> # SSH_KEY is a file secret containing the private SSH key
                       EOF
                       chmod 400 /harness/id_ed25519
               - step:
@@ -62,7 +62,7 @@ pipeline:
                     repo: DOCKER_ORG/DOCKER_REPO
                     tags:
                       - multiarch
-                    caching: true
+                    caching: true # Required to enable BuildKit/buildx; without this, buildx will not be used
                     dockerfile: docker/Dockerfile
                     resources:
                       limits:
@@ -89,7 +89,7 @@ pipeline:
 
 - `--mount=type=ssh,id=sshkey` in the Dockerfile matches `--ssh=sshkey=/harness/id_ed25519` in `PLUGIN_BUILDX_OPTIONS`.
 
-- The SSH key comes from the Harness Secrets Manager and is mounted only during the build.
+- The SSH key comes from the Harness Secrets Manager, as shown in the **SSH Key Prep** step above where a file secret is used to create `/harness/id_ed25519`. It is mounted only during the build.
 
-- **cloneCodebase** is set to `false` because the repository is cloned directly in the Docker build.
+- In this example, **cloneCodebase** is set to `false` because the Dockerfile is created in the pipeline itself. In your own pipelines, set this to `true` if your Dockerfile (or other build context files) is stored in a repository that Harness needs to clone before the build.
 
