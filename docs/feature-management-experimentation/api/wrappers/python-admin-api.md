@@ -11,53 +11,6 @@ The Python library provides full support for Split REST Admin API. It allows you
 
 For more information, see the [Split Admin API](https://docs.split.io/reference/introduction) for more information. The library source is available on the [GitHub repository](https://github.com/splitio/python-api).
 
-## Language support
-
-The Python lib supports Python 3 (v3.3 or later).
-
-### Installation
-
-Install the `splitapiclient` package using the following command:
-
-```python
-pip install splitapiclient
-```
-
-### Initialization and Logging
-
-Import the client object and initializes a connection using an Admin API key:
-
-```python
-from splitapiclient.main import get_client  
-client = get_client({'apikey': 'ADMIN API KEY'})
-```
-
-### Enable optional logging
-
-```python
-import logging  
-logging.basicConfig(level=logging.DEBUG)
-```
-
-### Default Account Identifier
-
-To avoid specifying the `account_id` with every call, set the default when creating the client:
-
-```python
-client = get_client({
-    'harness_mode': True,
-    'harness_token': 'YOUR_HARNESS_TOKEN',
-    'account_identifier': 'YOUR_ACCOUNT_IDENTIFIER'
-})
-
-tokens = client.token.list()  
-projects = client.harness_project.list()
-```
-
-## Handling Rate Limit
-
-When the library receives a 429 HTTP response because of a limit rate, it waits for five seconds and then retries the HTTP request.
-
 ## Using in Harness Mode
 
 Starting with version 3.5.0, the Split API client supports operating in Harness Mode to interact with both Split and Harness APIs. This allows you to work with Harness resources like tokens, service accounts, and roles using the same client.
@@ -113,7 +66,7 @@ schema = {
 
 Each microclient supports standard methods such as `list()`, `get(id)`, `create(data)`, `update(id, data)`, and `delete(id)`.
 
-For examples and API specifications, see the [Python API Client README](https://github.com/splitio/python-api?tab=readme-ov-file#working-with-harness-specific-resources).
+To learn about specifications for the Harness APIs, see the [Harness API reference documentation](https://apidocs.harness.io/). For more examples of using Harness resources, see the [Python API README](https://github.com/splitio/python-api?tab=readme-ov-file#working-with-harness-specific-resources).
 
 ### Common Microclient Methods
 
@@ -128,6 +81,53 @@ Most Harness microclients support the following standard methods:
 :::tip
 The `account_identifier` parameter can be omitted if it was set during client initialization.
 :::
+
+## Language support
+
+The Python lib supports Python 3 (v3.3 or later).
+
+### Installation
+
+Install the `splitapiclient` package using the following command:
+
+```python
+pip install splitapiclient
+```
+
+### Initialization and Logging
+
+Import the client object and initializes a connection using an Admin API key:
+
+```python
+from splitapiclient.main import get_client  
+client = get_client({'apikey': 'ADMIN API KEY'})
+```
+
+### Enable optional logging
+
+```python
+import logging  
+logging.basicConfig(level=logging.DEBUG)
+```
+
+### Default Account Identifier
+
+To avoid specifying the `account_id` with every call, set the default when creating the client:
+
+```python
+client = get_client({
+    'harness_mode': True,
+    'harness_token': 'YOUR_HARNESS_TOKEN',
+    'account_identifier': 'YOUR_ACCOUNT_IDENTIFIER'
+})
+
+tokens = client.token.list()  
+projects = client.harness_project.list()
+```
+
+## Handling Rate Limit
+
+When the library receives a 429 HTTP response because of a limit rate, it waits for five seconds and then retries the HTTP request.
 
 ## Objects Reference
 
@@ -214,7 +214,7 @@ for ttype in client.traffic_types.list(ws.id):
 ws.delete()
 ```
 
-` Workspace add_rule_based_segment(segment_data, traffic_type)`
+` RuleBasedSegment add_rule_based_segment(segment_data, traffic_type)`
 
 Adds a new rule-based segment to a workspace.
 
@@ -329,6 +329,18 @@ Deletes an existing feature flag from the Workspace instance and returns True if
 ```python
 ws = client.workspaces.find("Defaults")  
 ws.delete_split('new-split')
+```
+
+`Boolean delete_rule_based_segment(segment_name)`
+
+Deletes an existing rule-based segment from the Workspace instance and returns True if it's successful.
+
+* Parameters: `segment_name` as string
+* Return: Boolean
+
+```python
+ws = client.workspaces.find("Defaults")
+success = ws.delete_rule_based_segment("advanced_users")
 ```
 
 ### Restrictions
