@@ -155,7 +155,7 @@ The following deprecated API endpoints are longer supported:
 #### New features and enhancements
 
 - Improved backend queries to optimize how tasks are fetched by delegates. No action is needed from users. [PL-64473]
-- Added support for [deleting Delegate tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens) — making it easy to clean up unused ones. [PL-63386]
+- Added support for [deleting Delegate tokens](https://developer.harness.io/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens#delete-delegate-tokens) — making it easy to clean up unused ones. [PL-63386]
 
 ## July 2025
 
