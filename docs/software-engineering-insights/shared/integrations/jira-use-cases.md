@@ -24,9 +24,9 @@ Use these widgets to measure crucial sprint metrics, like Velocity and Predictab
 
 * [Single Stats](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-single-stat)
 * [Sprint Trend Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#jira-trend-reporting-sub-tasks)
-* [Sprint Metrics Precentage Trend Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-percentage-trend-report)
+* [Sprint Metrics Percentage Trend Report](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports#sprint-metrics-percentage-trend-report)
 
-Please note the following regarding [Sub-Tasks in Trend Reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports/#jira-trend-reporting-sub-tasks)
+For more information about Jira trend reporting, see [Sub-Tasks in Trend Reports](/docs/software-engineering-insights/propelo-sei/analytics-and-reporting/efficiency/agile-metrics/sei-sprints-metrics-reports/#jira-trend-reporting-sub-tasks).
 
 ### Track hygiene
 
