@@ -99,11 +99,11 @@ For example, let's say your team planned a sprint with 10 tickets. During the sp
 :::
 
 #### Jira Trend Reporting (Sub-Tasks)
-Customers who are utilizing the Harness Trend reports may notice that Harness seemingly omits sub-tasks from reports.  This is done by design to replicate the behavior of such reports within Jira.  
+If you are using Harness Trend reports, you may notice that sub-tasks are seemingly omitted. This is by design to replicate the behavior of similar reports in Jira.  
 
-Jira's built-in reports (e.g., Control Chart, Cumulative Flow Diagram, Burnup/Burndown Charts) typically do not include sub-tasks by default.  Filters and JQL used in dashboards or reports usually focus on parent-level issues like Stories, Bugs, or Tasks.
+Jira's built-in reports (e.g., Control Chart, Cumulative Flow Diagram, Burnup/Burndown Charts) typically exclude sub-tasks by default. Filters and JQL in dashboards or reports usually focus on parent-level issues like Stories, Bugs, or Tasks.
 
-Regarding Harness Sprint Reports, Subtasks are nested under their parent issues and are not top-level items.  Their completion does not impact the sprint burndown directly, unless their time estimate and story points are tracked, or the board settings/estimation stats are configured to include sub-task values.
+In Harness Sprint Reports, sub-tasks appear nested under their parent issues and are not top-level items. Their completion does not directly impact the sprint burndown unless time estimates or story points are tracked, or the board settings/estimation statistics are configured to include sub-task values.
 
 ## Sprint Metrics Percentage Trend Report 
 
