@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-07-28T10:00
+date: 2025-08-04T10:00
 sidebar_position: 10
 ---
 
@@ -40,6 +40,15 @@ We’re excited to introduce an updated UI for managing your Harness Continuous 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
 :::
+
+## August 2025
+
+### Version 1.90
+
+<!-- 2025-08-04 -->
+
+#### Fixed issues
+- Added backend validation to detect any capitalized letters in the Docker Repository field for the **BuildAndPushDockerRegistry** step. This validation now occurs before execution, whereas previously it was only caught during pipeline runtime. (CI-8044)
 
 ## July 2025
 
