@@ -47,6 +47,8 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 <!-- 2025-08-04 -->
 
+#### New features and enhancements
+- Self-signed certificates provided via `DESTINATION_CA_PATH` and `CI_MOUNT_VOLUMES` are now appended to the existing public certificates in the same path, instead of replacing them, in CI build pods. This behavior is controlled by the feature flag `CI_APPEND_CERTS` and is supported only for Linux nodes. Windows is not supported. (CI-15527)
 #### Fixed issues
 - Added backend validation to detect any capitalized letters in the Docker Repository field for the **BuildAndPushDockerRegistry** step. This validation now occurs before execution, whereas previously it was only caught during pipeline runtime. (CI-8044)
 
