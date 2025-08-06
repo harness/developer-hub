@@ -548,12 +548,12 @@ With this feature, you gain the following capabilities:
 - **Stage-Level Control:** Choose to enable or disable send status to git for each pipeline stage.
 - **Customizable Status Check Names:** Set custom names for the these status checks associated with stages using fixed values or Harness expressions like `<+pipeline.variables.varStage>`. This allows for dynamic and descriptive status names.
 
-![Expression Nomenclature for status check git](./static/send_status_to_git_expression.png)
+![Expression Nomenclature for status check git](./static/send-status-to-git-expression.png)
 
 - **Status Updates for Skipped Stages:** If a stage is skipped during a pipeline run, it will be reported as a **Success** status in Git.
 - **Visibility on Pull Request:** Receiving status updates as checks directly on the Pull Request makes it easier for the developers to identify the execution status of each stage in the pipeline without having to navigate to the Harness pipeline run. 
 
-![Expression Nomenclature for status check git](./static/send_status_to_git_pr_checks.png)
+![Expression Nomenclature for status check git](./static/send-status-to-git-checks.png)
 
 
 ### Enabling Send Status to Git
