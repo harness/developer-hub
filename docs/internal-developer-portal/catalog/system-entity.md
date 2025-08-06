@@ -74,7 +74,7 @@ apiVersion: harness.io/v1
 kind: System
 name: Payment System
 identifier: paymentsystem
-type: domain
+type: system
 owner: team-payment
 spec:
   ownedBy:
@@ -151,6 +151,20 @@ Once a System is defined, you do not need to modify the System's YAML to reflect
 :::info 
 Only the systems created at the scope of the entity can be chosen.
 :::
+
+#### Entity part of Systems
+
+![Entity-System Relations](./static/entity-system-relations.png)
+
+When viewing an **Entity** (such as a Component, API, or Resource) in the Catalog, the UI highlights which System(s) this Entity is a part of. The diagram above shows this relationship: the Entity detail page features a section that lists all Systems the Entity belongs to. Each System is typically presented as a clickable link or chip, enabling users to quickly navigate to the System's overview. This helps users understand the broader context, governance, and ownership of the Entity within the organization's architecture.
+
+#### Systems part of Entities
+
+![System-Entity Relations](./static/system-entity-relations.png)
+
+When viewing a **System** in the Catalog, the UI displays all Entities (Components, APIs, Resources) that are part of that System. The diagram above illustrates this scenario: the System detail page includes a section or tab that lists all associated Entities, usually grouped by type and shown as cards and in a table. 
+![System-Entity Relations](./static/system-table.png)
+This allows users to see the complete scope of the System, explore its composition, and easily access each Entity's details. This view is valuable for understanding system boundaries, identifying missing or orphaned Entities, and managing ownership at scale.
 
 ## Auto-Conversion of Existing 1.0 System Entities
 
