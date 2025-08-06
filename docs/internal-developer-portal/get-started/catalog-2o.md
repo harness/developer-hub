@@ -82,7 +82,6 @@ To set the owner identity, type a few characters in the Owner field to search an
   
    * Automatically configuring plugins like **Scorecards**, **TechDocs**, and **STO**
    * Displaying the **View Source** option in the UI
-   * Enabling future features like **Git leak detection** and **entity auto-discovery**
 
    ![](./static/source-code-link-ui.png)
 
