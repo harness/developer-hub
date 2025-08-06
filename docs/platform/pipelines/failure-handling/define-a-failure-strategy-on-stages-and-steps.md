@@ -174,6 +174,10 @@ At pipeline design time, you can whitelist the allowed manual intervention actio
 - Retry from Stage  
 - Rollback Pipeline
 
+The list of available actions may vary slightly based on the **stage type** (e.g., Deploy, Approval, Custom stage, etc.).
+
+You can also use the checkbox **All Actions** to allow all available actions.
+
 After selecting the allowed actions, you **must** also configure the following:
 
 - **Timeout**: Duration to wait for manual intervention.
