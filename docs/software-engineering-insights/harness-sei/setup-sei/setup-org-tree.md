@@ -2,7 +2,7 @@
 title: Set up Org Tree
 description: Learn how to create organization trees for your team in SEI 2.0.
 sidebar_label: Set up Org Tree
-sidebar_position: 4
+sidebar_position: 6
 redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/setup/organizations
 ---
