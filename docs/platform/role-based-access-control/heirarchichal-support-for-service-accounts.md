@@ -6,46 +6,54 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness now allows you to create Service Accounts at the account level and use them at the project level without needing to create additional service accounts for each project. This feature simplifies Service Account management and ensures efficient pipeline execution across different projects.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-## Steps to Configure and Use Account-Level Service Accounts for Project-Level Pipelines
+Hierarchical service accounts allow you to create a service account once at a higher scope and reuse it across lower scopes with different permissions. This eliminates the need to create separate service accounts for each project.
 
-1. Create a Service Account at the [Account Level](./add-and-manage-service-account.md#create-a-service-account)
+The following example shows how to use an account-level service account in a project. You can apply the same process to use account-level service accounts in organizations.
 
-2. Generate an [API Key](./add-and-manage-service-account.md#manage-api-keys) for the Service Account
+<Tabs>
+<TabItem label="Manual" value="manual">
+### Step 1: Create account-level service account
 
-3. Create a [Role](./add-manage-roles.md#create-a-role) with the necessary permissions at the Project Level
+Create a [Service Account](./add-and-manage-service-account.md#create-a-service-account) at the account level. This service account will be shared across multiple projects.
 
-4. Create a [Resource Group](./add-resource-groups.md#create-a-resource-group) at the Project Level
+### Step 2: Create project-level permissions
 
-5. Assign the Role and Resource Group to the Service Account at the Project Level
+In your target project:
+   - Create a [Role](./add-manage-roles.md#create-a-role) with the required permissions
+   - Create a [Resource Group](./add-resource-groups.md#create-a-resource-group) defining what resources can be accessed
 
-   - Using the [Role Assignment API](https://apidocs.harness.io/tag/Role-Assignments#operation/postRoleAssignments), assign the created role to the service account. You need to create the role assignment at the project level, granting the service account permission to execute the pipelines in the resource group.
+### Step 3: Inherit and assign permissions
 
-      Here’s an example payload for the role assignment:
-      ```json
-      {
-         "roleAssignments": [
-            {
-               "resourceGroupIdentifier": "resource_group_identifier",
-               "roleIdentifier": "role_identifier",
-               "principal": {
-                  "scopeLevel": "account",
-                  "identifier": "service_account_identifier",
-                  "type": "SERVICE_ACCOUNT"
-               }
-            }
-         ]
-      }
-      ```
-      `resourceGroupIdentifier`: The identifier for the resource group that includes the pipelines.
-      `roleIdentifier`: The identifier for the role that grants the "Pipeline Execute" permission.
-      `principal`: The service account at the account level to which you're assigning the role.
-      `scopeLevel`: The scope at which the principal exists. In this case, it's at the account level.
+1. Navigate to **Project Settings** → **Access Control** → **Service Accounts**
 
-6. Execute the Pipeline Using the Service Account.
-After assigning the role, you can now use the [Pipeline Execution API](https://apidocs.harness.io/tag/Pipeline-Execution#operation/execute-pipeline) to execute the pipelines in the specified resource group. Pass the service account’s `API key` as the `x-api-key` header in your API request.
+2. Select **Inherit Service Account & Assign Roles**
 
+3. Choose your account-level service account
+
+4. Assign the project-level role and resource group
+
+5. Select **Apply**
+
+### Step 4: Use the service account
+
+Your service account can now perform actions in this project based on the assigned permissions, such as executing pipelines or accessing resources.
+
+</TabItem>
+<TabItem label="Interactive" value="interactive">
+   <iframe src="https://app.tango.us/app/embed/d998701a-487a-4dd3-b2f2-45869a797143" 
+           style={{ minHeight: '640px', width: '80%', height: '100%', border: 'none' }}
+        sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+        security="restricted"
+        title="Revoke Tokens in Harness"
+        referrerPolicy="strict-origin-when-cross-origin"
+        frameBorder="0"
+        allowFullScreen
+        />
+</TabItem>
+</Tabs>
 ## Benefits
 
 - **Centralized Service Account Management**: Reduce the need to create and manage multiple service accounts for each project.
