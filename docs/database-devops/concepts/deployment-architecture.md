@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: Deployment Architecture
 description: Understand the deployment architecture of Harness Database DevOps, including components, data flow, and integration points.
+slug: /database-devops/concepts-and-features/deployment-architecture
 keywords:
   - deployment architecture
   - harness database devops
