@@ -5,7 +5,6 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 <RedirectIfStandalone label="AWS" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
 
-
 ## AWS Recommendations
 
 <Tabs>
@@ -43,12 +42,6 @@ Harness CCM provides EC2 recommendations by integrating directly with AWS servic
 
 -------
 
-## Recommendation Drilldown
-
-<DocVideo src="https://app.tango.us/app/embed/89164540-a07f-4900-bca7-b303fbb37154?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" style="min-height:720px" title="Recommendation Drilldown in Harness CCM" />
-
---------
-
 ### Recommendation Summary
 
  <DocImage path={require('../static/ec-rec-one.mp4')} width="90%" height="90%" title="Click to view full size image" />
@@ -76,28 +69,8 @@ Harness CCM provides EC2 recommendations by integrating directly with AWS servic
   - **Across instance families**: When selected, recommendations can suggest any suitable instance type across all AWS instance families.
   These settings can be saved as presets for consistent application across your organization's recommendations. See [Manage Presets](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#added-functionalities)
 
--------
-
-## FAQs
-
-### Why aren't memory metrics displayed when using Datadog integration?
-
-If you ingest memory metrics using Datadog integration, EC2 recommendations do consider these metrics in their calculations; however, the memory utilization data is not displayed on the EC2 Recommendation page.
-
-This occurs because:
-
-- The CPU and memory metrics data we retrieve is typically sourced from CloudWatch
-- In this case, the metrics originate from an external source (Datadog)
-- These Datadog metrics are directly integrated with AWS Compute Optimizer and are utilized in generating the recommendations
-- According to AWS Compute Optimizer API documentation, they do not offer support for retrieving these external utilization metrics
-
-As a result, while the recommendations are accurately calculated using both CPU and memory data, the memory metrics themselves will not be visible in the recommendation interface.
-
-Read more: [External metrics ingestion](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html)
 </TabItem>
 <TabItem value="ecs" label="ECS Recommendations">
-
-## ECS Recommendations
 
 ### Resource Details and UtilizationTypes of ECS Recommendations
 
