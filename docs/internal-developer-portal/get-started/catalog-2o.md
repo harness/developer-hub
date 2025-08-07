@@ -7,6 +7,7 @@ redirect_from: /docs/internal-developer-portal/get-started/register-a-new-softwa
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocImage from '@site/src/components/DocImage';
 
 
 <Tabs queryString="version">
@@ -46,7 +47,7 @@ Use the **Harness UI** to create entities directly—no YAML required. This meth
 - **Create an entity using your catalog YAML**:
 You can still create entities using your **existing catalog YAML** files. Harness will automatically convert **legacy Backstage YAML** into the new Harness Catalog Entity Model and register the corresponding entity.
 
-![](./static/create-entity-1.png)
+<DocImage path={require('./static/create-entity-1.png')} />
 
 Let’s walk through both methods using a **Component** entity as an example:
 
@@ -64,14 +65,14 @@ To create a **Component** via the UI:
 :::note
 To set the owner identity, type a few characters in the Owner field to search and select a user or group from the dropdown; if no match appears, set yourself as the owner or enter any string and click `Add <arbitrary_string> as a new owner`.
 
-![](./static/create-entity-2.png)
+<DocImage path={require('./static/create-entity-2.png')} />
 :::
 4. Specify the **Entity Scope** (Account, Org, or Project). For this example, choose **Account scope**. [Read more about Catalog RBAC](/docs/internal-developer-portal/rbac/catalog-rbac).
-![](./static/scope-entity.png)
+<DocImage path={require('./static/scope-entity.png')} />
 5. **Associate with System Entities**
    Systems in Harness IDP are high-level catalog entities used to logically group related components, APIs, and resources. Associating your component with one or more Systems helps organize the catalog and improves visibility.
 
-   ![](./static/system.png)
+   <DocImage path={require('./static/system.png')} />
 
    You can select one or more Systems from the dropdown. This creates a relationship between your component and the selected Systems, making it easier to discover related entities and understand your software ecosystem.
 
@@ -82,8 +83,7 @@ To set the owner identity, type a few characters in the Owner field to search an
   
    * Automatically configuring plugins like **Scorecards**, **TechDocs**, and **STO**
    * Displaying the **View Source** option in the UI
-
-   ![](./static/source-code-link-ui.png)
+   <DocImage path={require('./static/source-code-link-ui.png')} />
 
    This field is **optional**, but strongly recommended if your component is tied to a Git-based workflow or needs source-aware plugins.
    > Harness IDP also auto-generates the legacy `backstage.io/source-location` annotation for backwards compatibility.
@@ -91,23 +91,23 @@ To set the owner identity, type a few characters in the Owner field to search an
     * **Inline (default):** Manage the Component YAML directly within Harness.
     * **Remote:** Choose to store your Component YAML in a Git repository for version control, collaboration, and change tracking.
     You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
-    ![](./static/git-component.png)
+    <DocImage path={require('./static/git-component.png')} />
     > The Git Experience is ideal for teams who prefer to manage Components as code, with full version control and Git-native workflows. The changes are reflected in both YAML and execution views, via a [webhook](/docs/internal-developer-portal/git-experience/gitx-journey#workflow-execution-visibility-and-webhook-requirement) which is automatically configured on the Git connector. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey).
 7. Click **“Review YAML”** to view the synchronized YAML. Changes in the Visual View reflect live in the YAML View.
 
 :::info
   **Note:** **YAML validation** is performed to ensure compatibility with the **Harness-native Catalog YAML** model. Any errors will be shown in the Validation logs.
 
-  ![](./static/yaml-validation.png)
+  <DocImage path={require('./static/yaml-validation.png')} />
   :::
 
 8. If applicable, configure a plugin by referring to its documentation and adding the necessary **annotations** in the Catalog YAML.
 
-![](./static/plugins-entity.png)
+<DocImage path={require('./static/plugins-entity.png')} />
 
 9. Once completed, click **“Create Component”** to finalize and register the entity.
 
-![](./static/yaml-view.png)
+<DocImage path={require('./static/yaml-view.png')} />
 
 > ⚠️ **Note:** Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
@@ -119,7 +119,7 @@ To create a Component using Catalog YAML:
 
 1. Navigate to **Create** in the sidebar, and select **Component**.
 2. In the **Visual View**, switch to **YAML View** via the toggle at the top.
-   ![](./static/yaml-way.png)
+   <DocImage path={require('./static/yaml-way.png')} />
 3. Provide the YAML directly for the entity which you want to create in IDP. 
 <details>
 <summary>Example YAML</summary>
@@ -140,17 +140,17 @@ metadata:
 </details>
 
 > You can even paste your existing Backstage YAML if available. Harness will auto-convert it into the native format.
-![](./static/yaml-conversion.png)
+<DocImage path={require('./static/yaml-conversion.png')} />
 
 > ⚠️ **Note:** Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 :::note
 You can always set the owner identity using your email ID, a group name, or any custom string that fits. Just type the value directly in the owner field. If it’s a group name it will auto resolve to the group ID or it will assign an arbitrary string.
-![](./static/create-entity-2.png)
+<DocImage path={require('./static/create-entity-2.png')} />
 :::
 
 4. Define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#orgidentifier)** directly in the YAML to set the project or organization scope.
-![](./static/scope-entity.png)
+<DocImage path={require('./static/scope-entity.png')} />
 5. **Associate with System Entities** by adding references to one or more Systems in your component's YAML. This creates a logical grouping of related components, APIs, and resources, making it easier to navigate and understand your software ecosystem.
 
    In YAML, this is represented as:
@@ -196,7 +196,7 @@ You can provide:
     * **Inline (default):** Manage the Component YAML directly within Harness.
     * **Remote:** Choose to store your Component YAML in a Git repository for version control, collaboration, and change tracking.
     You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
-    ![](./static/git-component.png)
+    <DocImage path={require('./static/git-component.png')} />
     > The Git Experience is ideal for teams who prefer to manage Components as code, with full version control and Git-native workflows. The changes are reflected in both YAML and execution views, via a [webhook](/docs/internal-developer-portal/git-experience/gitx-journey#workflow-execution-visibility-and-webhook-requirement) which is automatically configured on the Git connector. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey).
 8. Add any plugin configurations by including the relevant **annotations**.
 9. Click **“Create Component”** to complete the process and register your entity.
@@ -214,7 +214,7 @@ You can remove any entity from the Catalog using the steps below:
 2. Click the three-dot menu on the entity card or details view.
 3. Select **Delete** from the dropdown. The entity will be permanently removed.
 
-![](./static/delete-entity.png)
+<DocImage path={require('./static/delete-entity.png')} />
 
 ## Next Steps (IDP 2.0)
 
@@ -271,48 +271,48 @@ Following are the key fields that you must update:
 
 1. Next, navigate to your Harness IDP module, and from the left navigation menu, select **Register**.
 
-![](./static/register-url.png)
+<DocImage path={require('./static/register-url.png')} />
 
 <Tabs queryString="Git-Provider">
 <TabItem value="other-git-provider" label="Other Git Providers">
 
 2. Enter the URL to your new `catalog-info.yaml`.
 
-![](static/url-on-register-page.png)
+<DocImage path={require('./static/url-on-register-page.png')} />
 
 </TabItem>
 <TabItem value="harness-code-repo-enabled" label="Harness Code Repository">
 
 2. Copy the URL for `catalog-info.yaml` and paste it on the field to Register the component. 
 
-![](./static/register-software-component-hcr.gif)
+<DocImage path={require('./static/register-software-component-hcr.gif')} />
 
 </TabItem>
 </Tabs>
 
 3. Select **Import**.
 
-![](static/finished-state.png)
+<DocImage path={require('./static/finished-state.png')} />
 
 The new component will be available in your catalog.
 
-![](static/imported-entity.png)
+<DocImage path={require('./static/imported-entity.png')} />
  
 
 ## Delete/Unregister Software Components (IDP 1.0)
 
 1. Navigate to the Catalog page and select Component under Kind. Here, we will deregister the software component registered above.
 
-![](./static/navigate-componenet-new.png)
+<DocImage path={require('./static/navigate-componenet-new.png')} />
 
 2. Select the component name you want to Unregister from the list
 3. Now on the component overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
 
-![](./static/unregister-entity.png)
+<DocImage path={require('./static/unregister-entity.png')} />
 
 4. Now on the Dialog box select **Unregister Location**.
 
-![](./static/Unregister-location.png)
+<DocImage path={require('./static/Unregister-location.png')} />
 
 5. This will delete the software component.
 
@@ -322,13 +322,13 @@ The new component will be available in your catalog.
 
 If, after registering an entity, you're unable to find the same in your catalog, check the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab, wait a few minutes for registration to complete. If it's under the **Failed** tab. Try re-registering the entity.
 
-![](./static/devtools.png)
+<DocImage path={require('./static/devtools.png')} />
 
 #### Missing required fields/Invalid YAML schema.
 
 In case of a `InputError`, check for `missingProperty` details and add the required property to your `catalog-info.yaml`.
 
-![](./static/invalid-schema.png)
+<DocImage path={require('./static/invalid-schema.png')} />
 </TabItem>
 </Tabs>
 
