@@ -25,14 +25,12 @@ These release notes describe recent changes to Harness Database DevOps.
 ## July 2025
 
 ### Release 1.49.x
-The `1.49.x` release introduces key improvements across schema discovery, rollback tracking, and platform extensibility. Rollback operations are now enhanced with richer metadata capture, helping teams trace rollback executions via the `changesetmetadata` model. Additionally, the platform now supports optional Primary DB `instanceId`, streamlining deployments across multi-instance environments. 
+The `1.49.x` release introduces key improvements across schema discovery, rollback tracking, and platform extensibility. Rollback operations are now enhanced with richer metadata capture, helping teams trace rollback executions via the `changesetmetadata` model.
 
 #### Key Highlights:
 
-* **✅ New Features:**
-    - Ingress-exposed Schema List API for improved schema discovery
-    - Rollback execution now records detailed metadata when using rollback-count
-    - Added support for optional Primary DB Instance ID during pipeline execution
+* **✅ Feature Enhancements:**
+  - Rollbacks now generate detailed metadata entries, helping teams understand when and why a rollback occurred, especially when using `rollback-by-count`.
 
 **Minimum Supported Versions:**
 - `ngmanager` – 1.49.x
@@ -40,23 +38,18 @@ The `1.49.x` release introduces key improvements across schema discovery, rollba
 
 ### Release 1.48.x
 
-This release brings several critical feature enhancements and extended support across various database types and integrations. The response structure for deployed state APIs has been enriched with `changesetFQN` to improve traceability, and the `changesetDetailDrawer` is now accessible through the Core UI. In addition, DB schema and instance audit flows, plugin inputs, and system APIs have passed E2E sanity. Extensive coverage has also been added across pipeline step types, OPA policy enforcement (including rollback support), archive path handling, and metadata visibility.
+This release brings several critical feature enhancements and extended support across various database types and integrations.
 
 #### Key Highlights:
 
 * **✅ New Features:**
-  - `mark-next-changeset-ran` step and sync integration
   - Deployed state now includes changesetFQN
-  - Core UI exposes changesetDetailDrawer
-  - List schemas for an account API
+  - You can now view the changeset details by clicking on the change-id in the deployed state tab on the apply or rollback step.
 
-* ✅ Support matrix expanded for multiple DB types (Postgres, MySQL, Oracle, SQL Server, Mongo), including TLS support
-
-* ✅ OPA and OPA rollback support across key Databases
-
-* ✅ Private Registry support verified for MySQL
-
-* ✅ Metadata fields such as comments, labels, and authors now exposed
+* ✅ Added TLS support for the following databases: Postgres, MySQL, Oracle, SQL Server, MongoDB.
+* ✅ OPA and OPA rollback support across key Databases.
+* ✅ Private Registry support verified for MySQL.
+* ✅ Metadata fields such as comments, labels, and authors now visible.
 
 **Minimum Supported Versions:**
 - `ngmanager` – 1.48.0
