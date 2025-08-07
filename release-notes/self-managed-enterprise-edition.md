@@ -357,6 +357,10 @@ gsutil -m cp \
 
 - Fixed an issue where the deployToAll if set to true in template was causing a reconciliation loop. [CDS-112506]
 
+#### Cloud Cost Management
+
+- EDP Discount support. [CCM-24194]
+
 ## July 31, 2025, Version 0.31.0 <!-- Draft : Jul 31, 2025 -->
 
 :::note 🚀 **FIPS Compliance Now Available for Harness Self-Managed Platform**
