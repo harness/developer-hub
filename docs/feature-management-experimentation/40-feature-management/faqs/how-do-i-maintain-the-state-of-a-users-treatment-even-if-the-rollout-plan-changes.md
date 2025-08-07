@@ -6,7 +6,11 @@ sidebar_position: 8
 
 How do I ensure that once a user (or any traffic key) is given a treatment, they always receive the same treatment, irrespective of any changes to the rollout plan?
 
-The goal is to maintain state so that a user is always exposed to the same thing they saw the first time they visited, even if a change to the rollout plan would otherwise flip the user to another treatment. A sample use case is an offering, such as a loan application or promotional discount, that needs to remain consistent.
+At least some users will almost always change treatments when you update rules.  In the simplest case, if you go from 10/90 **on**/**off** to 20/80 **on**/**off**, the 10% of users in buckets 11-20 will go from off to on. While not a common requirement, this article describes a couple of techniques for ensuring a user maintains the same treatment despite a change to the rules.  
+
+For example, what if you make the change above, but want the users in buckets 11-20 to continue to get *off* if they've already received that treatment, and only new users in those buckets will get the *on* treatment. This article describes a couple of ways you can make treatments sticky even if the rules would dictate otherwise.
+
+The goal is to maintain state so that a user is always exposed to the same thing they saw the first time they visited, even if a change to the rollout plan would otherwise flip the user to another treatment. Another sample use case is an offering, such as a loan application or promotional discount, that needs to remain consistent.
 
 ## Split's targeting engine
 

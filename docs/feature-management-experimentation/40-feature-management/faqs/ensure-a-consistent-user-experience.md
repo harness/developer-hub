@@ -15,7 +15,7 @@ For example, user_1234 hits a getTreatment and the flag has the seed 123456.  Th
 
 As long as the user has the same ID, they get the same hash value, the seed will be the same, and the resulting Mod 100 value and bucket are consistent. If a feature is exposed to 10% of the users and the bucket for a hashed value is 26, that user is not assigned the feature. If the exposure rises to 30%, then the user gets the feature.
 
-Split doesn't know anything about user ahead of time. The evaluation described above happens every time for every user and the user is put in the same bucket. The seed for a feature flag is unique to the flag and the environment. If a customer has a staging and a production environment, the seed will have a unique value for each. 
+Split doesn't know anything about users ahead of serving a treatment. The evaluation described above happens every time for every user and the user is put in the same bucket. The seed for a feature flag is unique to the flag and the environment. If a customer has a staging and a production environment, the seed will have a unique value for each. 
 
 ## Limit exposure
 
