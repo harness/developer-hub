@@ -29,10 +29,10 @@ export const platformData: Horizon = {
         tag: [{ value: "UI" }],
       },
       {
-        title: "mTLS support for Harness APIs",
+        title: "Event Streaming",
         description:
-          "Enhanced API security with mutual TLS authentication for enterprise-grade protection of API communications.",
-        tag: [{ value: "Access Control" }],
+          "Real-time streaming of pipeline execution data to external systems to support advanced monitoring and observability.",
+        tag: [{ value: "Pipeline" }],
       },
       {
         title: "Granular Permissions for Secrets",
@@ -46,10 +46,10 @@ export const platformData: Horizon = {
     description: "🪄 Q4 2025, Nov 2025 - Jan 2026",
     feature: [
       {
-        title: "Event Streaming",
+        title: "mTLS support for Harness APIs",
         description:
-          "Real-time streaming of pipeline execution data to external systems to support advanced monitoring and observability.",
-        tag: [{ value: "Pipeline" }],
+          "Enhanced API security with mutual TLS authentication for enterprise-grade protection of API communications.",
+        tag: [{ value: "Access Control" }],
       },
       {
         title: "Support Kerberos authentication for proxy access to template images in Delegate",
