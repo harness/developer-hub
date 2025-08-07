@@ -67,7 +67,7 @@ If you have entities defined using legacy Backstage YAML (from IDP 1.0), you can
    Learn more in the **[Catalog YAML View documentation](/docs/internal-developer-portal/catalog/manage-catalog.md#catalog-yaml)**.
 
 2. **Using the YAML Conversion API:**
-   To streamline migration, we’ve also introduced an API that converts Backstage Catalog YAML to the Harness-native format. \[Read more here.]
+   To streamline migration, we've also introduced an API that converts Backstage Catalog YAML to the Harness-native format. [Read more in the IDP 2.0 migration guide.](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)
 
 All existing Catalog entities will be **automatically migrated** to IDP 2.0, and their associated YAML files will be deprecated. Additionally, a new Git Experience tool will soon be available, allowing you to **commit the converted definitions directly to YAML files in your Git repository**.
 
@@ -247,6 +247,7 @@ All the fields mentioned below are the mandatory parameters required to define a
 | `kind` | **Component** |
 | `type` | You can find out more about the `type` key here. |
 | `spec.lifecycle` | You can find out more about the `lifecycle` key here. |
+| `spec.system` | Optional. Reference to System entities this Component belongs to. |
 
 #### Example YAML
 ```yaml
@@ -258,6 +259,11 @@ name: artistweb
 owner: artist-relations-team
 spec:
   lifecycle: production
+  system:
+    - system:account/marketing_systems
+    - system:account/web_platform
+  partOf:
+    - system:account/customer_experience
 metadata:
   description: The place to be, for great artists
   annotations:
@@ -272,6 +278,45 @@ metadata:
   tags:
     - java
 ```
+
+---
+
+### Kind: System
+A **System** is a high-level catalog entity used to logically group related software components, APIs, and infrastructure resources. It represents a functional or domain-specific boundary such as a module, platform area, or business unit—enabling teams to organize and manage complex software ecosystems more effectively.
+
+#### Entity Structure  
+All the fields mentioned below are the mandatory parameters required to define a System:
+
+| **Field** | **Value** |
+| --------- | --------- |
+| `apiVersion` | **harness.io/v1** |
+| `kind` | **System** |
+| `type` | Common values include `domain`, `module`, or `platform` |
+| `owner` | The team or group responsible for the System |
+
+#### Example YAML
+```yaml
+apiVersion: harness.io/v1
+kind: System
+type: domain
+identifier: paymentsystem
+name: Payment System
+owner: team-payment
+spec:
+  ownedBy:
+    - group:account/_account_all_users
+  hasPart:
+    - component:account/payment-service
+    - api:account/payment-api
+metadata:
+  description: This system groups services and libraries related to payment processing.
+  tags:
+    - payments
+    - financial
+```
+
+#### `hasPart` Definition
+The `hasPart` field lists Components, APIs, or Resources that logically belong to this System. This grouping is independent of their location in Git or folder structure and helps in understanding functional or ownership-based boundaries.
 
 ---
 
