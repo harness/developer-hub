@@ -503,7 +503,7 @@ This updates the pipeline YAML to reference the latest template version and ensu
 ### Improved Reconciliation Flow (Feature Flag)
 
 :::note 
-This enhanced flow is available behind the feature flag `PIPELINE_NOTIFICATION_TEMPLATE_INPUT_RECONCILIATION`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+This enhanced flow is available behind the feature flag `PIPE_NOTIFICATION_TEMPLATE_INPUT_VARIABLE_PROMPT_UI`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
 When the feature flag is enabled, pipeline reconciliation for updated notification templates follows an improved, UI-driven flow.
