@@ -52,9 +52,9 @@ export const platformData: Horizon = {
         tag: [{ value: "Pipeline" }],
       },
       {
-        title: "Support Kerberos Authentication for Proxy in Delegate Templates",
+        title: "Support Kerberos authentication for proxy access to template images in Delegate",
         description:
-          "Enables secure proxy authentication using Kerberos for delegate template images, supporting enterprise environments with on-prem Kubernetes deployments.",
+          "Enables secure proxy authentication using Kerberos for template images in Delegate, supporting enterprise environments with on-prem Kubernetes deployments.",
         tag: [{ value: "Delegate" }],
       },
       {
