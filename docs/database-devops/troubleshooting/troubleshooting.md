@@ -187,3 +187,11 @@ Apply the workaround only if your environment uses logical replication and encou
 **Long-Term Fix (Planned):**
 
 We plan to update Harness DB DevOps to include a primary key on the databasechangelog table upon creation to ensure better compatibility with replication-enabled PostgreSQL environments. Until then, applying the above workaround will unblock affected users.
+
+## 8. Why do I see the error: "The DB Instance connector cannot be an expression"?
+This is expected behavior in Database DevOps Module. Unlike other CD modules in Harness where connectors can be passed as expressions, `DB Instances` require fixed connectors.
+This is by design—features like drift detection depend on resolving the database schema, instance, and connector outside of pipeline execution. To support such functionality, the connector must be fully defined and cannot be referenced as a runtime or expression value.
+
+:::note
+Use a fixed connector when defining your DB Instance in order to enable full DB DevOps capabilities.
+:::
