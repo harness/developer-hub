@@ -4,10 +4,6 @@ sidebar_label: Using FME SDK with Synchronizer docker, getTreatment is always re
 sidebar_position: 6
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360026249172-Using-SDK-with-Synchronizer-docker-getTreatment-is-always-returning-control </button>
-</p>
-
 ## Issue
 
 After installing the Split Synchronizer docker instance and running it successfully with Redis instance, then configuring SDK to use Redis, the getTreatment call is always returning 'control'.

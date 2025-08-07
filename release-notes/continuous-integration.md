@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-07-28T10:00
+date: 2025-08-04T10:00
 sidebar_position: 10
 ---
 
@@ -40,6 +40,18 @@ We’re excited to introduce an updated UI for managing your Harness Continuous 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
 :::
+
+## August 2025
+
+### Version 1.90
+
+<!-- 2025-08-04 -->
+
+#### New features and enhancements
+- Self-signed certificates provided via `DESTINATION_CA_PATH` and `CI_MOUNT_VOLUMES` are now appended to the existing public certificates in the same path, instead of replacing them, in CI build pods. This behavior is controlled by the feature flag `CI_APPEND_CERTS` and is supported only for Linux nodes. Windows is not supported. (CI-15527)
+#### Fixed issues
+- Added backend validation to detect any capitalized letters in the Docker Repository field for the **BuildAndPushDockerRegistry** step. This validation now occurs before execution, whereas previously it was only caught during pipeline runtime. (CI-8044)
+- Fixed an issue where CI Intelligence savings were incorrectly computed when a pipeline was terminated abnormally (aborted, errored, or expired). (CI-18450)
 
 ## July 2025
 

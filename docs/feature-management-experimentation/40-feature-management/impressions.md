@@ -3,11 +3,12 @@ title: Impressions
 sidebar_label: Impressions
 description: ""
 sidebar_position: 18
+redirect_from:
+- /docs/feature-management-experimentation/feature-management/faqs/is-the-feature-flag-impression-toggle-supported
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020585192-Impressions </button>
-</p>
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ## Overview
 
@@ -32,7 +33,7 @@ Each impression contains these fields.
 
 ## Tracking impressions
 
-Impressions are tracked by each Harnes FME SDK and periodically sent to Harness backend servers.
+Impressions are tracked by each Harness FME SDK and are periodically sent to Harness backend servers.
 
 ## Toggle impression tracking on or off
 
@@ -70,11 +71,56 @@ To turn impression tracking on or off:
 
 When impression tracking is off, you will see "Impression tracking off" at the top right of the feature flag definition page. The arrows will also be grayed out (shown with tooltip) on the the feature flag definition card.
 
-![](./static/impressions-tracking-visual-cues.png)
+![](static/impressions-tracking-visual-cues-1.png)
 
-:::info[Impression tracking toggle and SDK compatibility]
-See [this page](/docs/feature-management-experimentation/feature-management/faqs/is-the-feature-flag-impression-toggle-supported) to verify compatibility of FME SDK or optional infrastructure. Older SDK versions that do not support the **Impression tracking** toggle will not detect the toggle on/off setting and will send impressions to Harness servers.
+### Supported SDKs and customer-deployed components for impression tracking
+
+The impression tracking toggle only works with supported FME SDKs and customer-deployed components. If the SDK you are using does not support the toggle, impressions will still be sent to Harness servers—even if impression tracking is turned off for the feature flag definition.
+
+![](./static/impressions-tracking-visual-cues-1.png)
+
+:::info
+If you are using an older SDK or customer-deployed component version that does not support the toggle, Harness recommend upgrading to a supported version to ensure that impression tracking behavior aligns with your feature flag settings.
 :::
+
+Use the following tables to verify that your SDK or customer-deployed component version supports the impression tracking toggle.
+
+<Tabs queryString="impression-tracking">
+  <TabItem value="client-sdks" label="Client-side SDKs">
+  
+  | **Client-side SDK** | **Version that supports SemVer** |
+  |---------------------|----------------------------------|
+  | Android SDK         | 5.1.0 and later                  |
+  | Browser SDK         | 1.1.0 and later                  |
+  | iOS SDK             | 3.1.0 and later                  |
+  | JavaScript SDK      | 11.1.0 and later                 |
+  | React Native SDK    | 1.1.0 and later                  |
+  
+  </TabItem>
+
+  <TabItem value="server-sdks" label="Server-side SDKs">
+  
+  | **Server-side SDK**        | **Version that supports SemVer** |
+  |----------------------------|----------------------------------|
+  | Elixir Thin Client SDK     | See SplitD version               |
+  | Go SDK                     | 6.7.0 and later                  |
+  | Java SDK                   | 4.12.0 and later                 |
+  | Node.js SDK                | 11.1.0 and later                 |
+  | PHP Thin Client SDK        | See SplitD version               |
+  | Python SDK                 | 10.2.0 and later                 |
+  | Ruby SDK                   | 8.5.0 and later                  |
+  
+  </TabItem>
+
+  <TabItem value="infra" label="Customer-deployed Components">
+  
+  | **Component**       | **Version that supports SemVer** |
+  |---------------------|----------------------------------|
+  | Split Daemon        | 1.5.0 and later                  |
+  | Split Synchronizer  | 5.10.0 and later                 |
+  
+  </TabItem>
+</Tabs>
 
 ## Viewing impressions in Harness
 

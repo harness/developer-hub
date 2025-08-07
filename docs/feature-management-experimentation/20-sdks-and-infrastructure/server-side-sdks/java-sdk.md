@@ -3,10 +3,6 @@ title: Java SDK
 sidebar_label: Java SDK
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020405151-Java-SDK </button>
-</p>
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -37,7 +33,7 @@ Import the SDK into your project using one of the following two methods:
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>java-client</artifactId>
-    <version>4.16.0</version>
+    <version>4.16.1</version>
 </dependency>
 ```
 
@@ -45,7 +41,7 @@ Import the SDK into your project using one of the following two methods:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:java-client:4.16.0'
+compile 'io.split.client:java-client:4.16.1'
 ```
 
 </TabItem>

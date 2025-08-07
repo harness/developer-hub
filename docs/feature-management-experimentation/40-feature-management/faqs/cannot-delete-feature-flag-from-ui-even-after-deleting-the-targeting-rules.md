@@ -4,10 +4,6 @@ sidebar_label: Cannot delete feature flag from UI even after deleting the target
 sidebar_position: 7
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360041111652-Cannot-delete-feature-flag-from-UI-even-after-deleting-the-targeting-rules </button>
-</p>
-
 ### Issue
 
 When trying to delete a feature flag that exist in multiple Environments, The error below show up:

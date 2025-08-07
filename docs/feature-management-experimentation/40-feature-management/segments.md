@@ -1,13 +1,11 @@
 ---
 title: Create a segment
 sidebar_label: Create a segment
-description: ""
+description: "Learn how to create, delete, and manage segments in Harness FME."
 sidebar_position: 6
+redirect_from:
+- /docs/feature-management-experimentation/feature-management/faqs/how-to-delete-a-segment-with-all-its-keys
 ---
-
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment </button>
-</p>
 
 ## Overview
 
@@ -156,8 +154,9 @@ Replace `filename.csv` with the name of your CSV file.
 
    ![](./static/create-a-segment-search.png)
 
-:::info[How to append user IDs to a Large segment?]
-A segment is a list of user IDs. For a Large segment you can append new user IDs to the existing list, by following these steps:
+### Append user IDs to a Large segment
+
+A segment is a list of user IDs. To append new user IDs to an existing list for a Large segment:
 
 1. Export the user IDs in the Large segment.
 
@@ -166,7 +165,29 @@ A segment is a list of user IDs. For a Large segment you can append new user IDs
 2. Edit the exported CSV file and insert the new user IDs.
 
 3. Upload the edited CSV file using the **[File import for Large segments](#file-import-for-large-segments)** steps.
-:::
+
+## Deleting a segment
+
+You can delete a segment with all of its keys instead of deleting each segment key individually.
+
+Follow these steps to delete all keys from the segment and delete the segment:
+
+1. Locate the down arrow on top of the checkboxes column.
+1. Click on it to display two menu items.
+   
+   ![](https://help.split.io/hc/article_attachments/15726171868813)
+
+1. Select all records from there. The **Delete** button appears.
+
+   ![](https://help.split.io/hc/article_attachments/15726281778445)
+
+1. Once the keys are deleted, delete the segment definition by clicking on the Ellipses icon in the **Definition** section and selecting **Delete definition**.
+   
+   ![](https://help.split.io/hc/article_attachments/15726343693453)
+
+1. Click on the Ellipses icon above **Owners** and select **Delete**.
+   
+   ![](https://help.split.io/hc/article_attachments/15726349353613)
 
 ## CSV import file format
 

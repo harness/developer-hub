@@ -4,10 +4,6 @@ sidebar_label: "Why does the JavaScript URL \"https://sdk.split.io/api/mySegment
 sidebar_position: 28
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360019195211-Why-does-the-JavaScript-URL-https-sdk-split-io-api-mySegments-return-HTTP-404-error </button>
-</p>
-
 ## Problem
 Using JavaScript SDK, its generating URL below with 404 errors
 ```

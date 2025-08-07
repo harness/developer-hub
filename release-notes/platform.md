@@ -53,6 +53,9 @@ If your organization restricts access to Google Artifact Registry (GAR), conside
 
 ::: 
 
+<details>
+<summary>Previous Highlights</summary>
+
 :::danger Breaking Changes 
    **Introducing a new set of permissions, while marking existing DEPRECATED permissions as INACTIVE.**  
 
@@ -93,8 +96,6 @@ This is a notification for a feature change aimed at enhancing your experience w
 
 2. **Continuity Assured**: There is no impact on your existing pipelines. They remain compatible with the way secrets were referenced before this feature change. Note that this includes using an external secret manager other than the Harness Built-in Secret Manager to store the authentication secret.
 
-:::
-
 #### Why did Harness make this change?
 
 Our previous setup allowed configurations where credentials from one secret manager were stored within another, resulting in complexities that could be challenging to navigate. Moreover, these configurations might introduce vulnerabilities, posing potential security risks. For example, in a recent [incident](https://status.harness.io/incidents/w2w7btby70xs), our thread pool designated for secret manager resolution was exhausted.
@@ -131,12 +132,30 @@ Below is further explanation for each type of secret manager Harness currently s
 
 6. For **Custom Secrets Manager**, if any secret is needed in the template as a variable, then it can only be stored in the Harness Built-in Secret Manager.
 
+:::
+
+</details>
+
 ## Deprecation notice
 
 The following deprecated API endpoints are longer supported:
 - [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier}
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
+
+## August 2025
+
+### Version 1.100.x <!--August 06, 2025-->
+
+#### Fixed issues
+
+- Resolved a CSS-related issue that affected the readability of YAML diffs in the Audit Log view. The diff now renders correctly without visual glitches. [PL-64397]
+- Dashboards and Dashboard pages have been updated to support dynamic scaling, ensuring better viewing across all device sizes. [PL-64173]
+
+#### New features and enhancements
+
+- Improved backend queries to optimize how tasks are fetched by delegates. No action is needed from users. [PL-64473]
+- Added support for [deleting Delegate tokens](https://developer.harness.io/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens#delete-delegate-tokens) — making it easy to clean up unused ones. [PL-63386]
 
 ## July 2025
 

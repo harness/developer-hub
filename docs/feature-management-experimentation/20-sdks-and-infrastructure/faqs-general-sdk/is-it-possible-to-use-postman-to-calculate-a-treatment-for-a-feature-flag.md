@@ -4,11 +4,6 @@ sidebar_label: Is it possible to use Postman to calculate a treatment for a give
 sidebar_position: 5
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360050549392-Is-it-possible-to-use-Postman-to-calculate-a-treatment-for-a-given-feature-flag </button>
-</p>
-
-
 ## Question
 
 When using Postman in developing environment, and knowing the SDK HTTP calls, can Postman be used as an alternative to the SDK library to calculate a treatment for a given feature flag?

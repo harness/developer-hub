@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-7-15T10:00:00
+date: 2025-8-06T10:00:00
 sidebar_position: 8
 ---
 
@@ -53,7 +53,39 @@ Google Container Registry (GCR) is deprecated and scheduled to shut down on **Ma
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+## August 2025
+
+### Version 1.100.0
+
+#### New Features and Enhancements
+
+- Harness now supports customizing the available actions for [Manual Intervention failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps/#customize-available-actions-for-manual-intervention), allowing pipeline designers to restrict which options (e.g., Retry, Rollback) are shown to the executor. Currently, this feature is behind the feature flag `CDS_MANUAL_INTERVENTION_CUSTOM_ACTIONS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+
+#### Fixed Issues
+
+- Previously, Azure Web App deployments intermittently failed during the steady state check even though the deployment itself was successful. This issue is resolved. (**CDS-112865, ZD-89901**)
+- Previously, the Kubernetes Diff step failed on delegate version `25.06.86202` with an immutability error caused by the unintended addition of the `harness.io/track: stable` label, even when the account was not using Canary deployments. The issue is resolved. (**CDS-112822, ZD-89192**)
+- Previously, the AWS CDK step did not correctly consume AWS credentials passed as secret output variables from a prior containerized step group. The credentials were not resolved, resulting in an error indicating that no credentials were configured. This issue is resolved. (**CDS-112793, ZD-89643,89701**)
+- Previously, Git webhooks failed with the error *Failed to fetch the modified file paths* when using delegate-based connectors. This issue is resolved. (**PIPE-29072, ZD-88961,89658**)
+- Previously, services defined in child pipelines were frequently fetched using the parent pipeline's Git branch in chained pipeline setups, leading to resolution errors when the branches differed. The issue is resolved. (**PIPE-28919, ZD-89442**)
+- Previously, users were frequently unable to view v1 templates in the Harness UI, while v3 templates worked as expected. The issue is resolved. (**CDS-112748, ZD-89426**)
+
 ## July 2025
+
+### GitOps Service 1.38.0, GitOps Agent 0.98.0
+
+#### Fixed Issues
+
+- Resolved a minor bug in the GitOps Agent that impacted reconciliation (drift detection) when managing more than 5,000 applications per agent. (**CDS-112008**) 
+- Fixed GitOps Agent panic when mapping Argo applications to Harness applications with multiple sources and a helm `valuesObject` in the spec. (**CDS-112309**)
+- Added a new `forceEnableInCluster` parameter under the `argocdSettings` query param when installing a namespaced GitOps Agent.
+  This forces the creation of an `in-cluster` entity during installation.
+  Additionally, manual configuration is required to scope the `in-cluster` down to the true namespaced mode in the created cluster.
+    - Set the `namespaces` field in the secret referring to the `in-cluster` in your agent's namespace.
+    - For guidance, refer to the [Argo CD declarative setup docs](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters). (**CDS-111595**)
+- Replaced the `error` icon with a `skip` icon for resources that don't exist during a project import. (**CDS-112504**)
+- Renamed a tab on the Bulk Refresh page from `Sync triggered` to `Refreshed`. (**CDS-112215**)
+- Fixed missing project mappings in the `api/v2/appprojectsmapping` endpoint. (**CDS-112080**)
 
 ### Version 1.99.0
 
@@ -83,7 +115,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### New Features and Enhancements
 
-- Harness now supports separate **Create** and **Edit** authorization grants for pipelines and templates, decoupling these permissions for more granular RBAC control. Currently, this feature is behind feature flags `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION` and `PIPE_CREATE_EDIT_PERMISSION_SPLIT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Enabling this feature requires migrating your existing resources; Harness Support will guide you through the process. (**PIPE-24649**)
+- Harness now supports separate **Create** and **Edit** authorization grants for pipelines and templates, decoupling these permissions for [more granular RBAC control](/docs/platform/role-based-access-control/rbac-in-harness#split-createedit-permissions-for-pipelines-and-templates). Currently, this feature is behind feature flags `PIPE_CREATE_EDIT_PERMISSION_SPLIT_MIGRATION` and `PIPE_CREATE_EDIT_PERMISSION_SPLIT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Enabling this feature requires migrating your existing resources; Harness Support will guide you through the process. (**PIPE-24649**)
 
 
 - Harness now supports [**Project-Level Pipeline Execution Concurrency**](/docs/platform/pipelines/pipeline-settings/#project-level-pipeline-execution-concurrency), where users can split their account-wide concurrency into High-Priority and Low-Priority partitions—reserving slots for critical projects. Currently, this feature is behind feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-15840**)
@@ -130,7 +162,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Previously, nested expressions such as `<+pipeline.stages.test_<+pipeline.variables.app>...>` were not being resolved correctly in pipelines, resulting in unresolved or incorrect values during execution. The issue is resolved. (**PIPE-28354**)
 - Previously, attempting to configure a native Helm deployment using charts from an OCI registry resulted in a generic *Null Pointer Exception* error, even after successful chart publishing via pipeline execution. This prevented users from linking and deploying OCI-based Helm charts in Harness. The issue is resolved.(**CDS-112221, ZD-88256**)
 
-### GitOps Service 1.37.0, GitOps Agent 0.97.0
+### GitOps Service 1.37, GitOps Agent 0.97
 
 #### [Argo Upgrade] 2.14.13 (CDS-112038)
 
@@ -1278,7 +1310,7 @@ Currently, this feature is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEP
 
 - Harness now supports configuring CLI environment variables for Tanzu Application Service deployment in the Service and overrides. Currently, this feature is behind the feature flag `CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-93637, ZD-59417, ZD-61241, ZD-65736)
 
-- Users can now define allowed values in the **Select Hosts** settings under infrastructure. In the runtime view, a multi-select dropdown will be displayed, allowing users to choose from the predefined allowed values. Currently, this feature is behind the feature flag `CDS_ALLOWED_VALUES_DROPDOWN_PDC_HOSTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-99810)
+- Users can now define allowed values in the **Select Hosts** settings under infrastructure. In the runtime view, a multi-select dropdown will be displayed, allowing users to choose from the predefined allowed values. (CDS-99810)
 
 - Users can now successfully configure OAuth tokens for Git providers, including when using Vanity URLs. (PIPE-20617, ZD-64159)
 

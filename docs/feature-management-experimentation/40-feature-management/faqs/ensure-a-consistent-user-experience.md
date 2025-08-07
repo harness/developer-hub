@@ -4,10 +4,6 @@ sidebar_label: How does Harness FME ensure a consistent user experience?
 sidebar_position: 9
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360030024391-How-does-Split-ensure-a-consistent-user-experience </button>
-</p>
-
 ## Random and Deterministic
 
 Split SDKs use a deterministic hashing algorithm to decide what experience (treatment) to deliver for a feature flag. The algorithm takes two inputs:

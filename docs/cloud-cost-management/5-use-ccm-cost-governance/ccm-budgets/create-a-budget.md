@@ -1,5 +1,5 @@
 ---
-title: Create a budget
+title: Budgets
 description: This topic describes how to create a new budget.
 # sidebar_position: 2
 helpdocs_topic_id: 08r3t4z0jo
@@ -7,163 +7,207 @@ helpdocs_category_id: lpq8glhiyc
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
+Harness CCM Budgets provide comprehensive cost governance capabilities that help you proactively manage and control your cloud spending. 
 
-Harness CCM Budgets allow you to set custom budgets and receive alerts when your costs exceed (or are forecasted to exceed) your budget.
+**With Budgets, you can:**
 
-This topic describes how to create a new budget.
+- **Set Custom [Budget Limits](#step-2-set-budget-amount)**: Define spending thresholds for specific cloud resources, services, or entire projects based on your organizational needs
+- **Receive Proactive [Alerts](#optional-step-3-configure-alerts)**: Get notified when your actual costs exceed or are forecasted to exceed your predefined budget limits
+- **Monitor Multiple Time Periods**: Create budgets for various timeframes including monthly, quarterly, or yearly periods
+- **Track Actual vs. Forecasted Costs**: Compare real-time spending against predicted costs to make informed financial decisions
+- **Organize with [Budget Groups](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-budget-group)**: Combine multiple budgets into hierarchical groups for better organization and cascading budget management
 
-## Before You Begin
+## Prerequisites
 
-* [Set Up Cloud Cost Management for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
-* [Set Up Cloud Cost Management for GCP](../../get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
-* [Set Up Cloud Cost Management for Azure](../../get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
-* [Set Up Cloud Cost Management for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
-* [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective)
+* [Create CCM Connector](/docs/cloud-cost-management/get-started/#aws): Create a CCM connector to connect to your cloud provider.
+* [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective): Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. 
 
-## Create a New Budget
+## Create a Budget
 
+<Tabs groupId="budget-create">
+<TabItem value="step-by-step-guide" label="Step-by-Step Guide" default>
 
-:::note
+1. Navigate to the **Cloud Cost Management** module and click **Budgets.**
+2. Click **New Budget**.
+
+### Step 1: Define Target
+
+<DocImage path={require('./static/budget-stepone.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **Select Perspective**, select the Perspective for which you want to set a budget.  
+Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first [create a new Perspective](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective) and then proceed to set a budget. You can add multiple budgets for a single Perspective.
+
+- **Budget Name**: enter a name for your budget that will appear in the budget dashboard to identify this budget. 
+
+- Click **Continue**.
+
+---------
+
+### Step 2: Set Budget Amount
+
+:::info
 Budgets' start date cannot be later than the 28th of any month. 
 :::
-Perform the following steps to create a budget:
 
-1. Navigate to the **Cloud Cost Management** module and click **Budgets.**
-   
-     ![](./static/create-a-budget-00.png)
-2. In **All Budgets**, click **New Budget**.
+<DocImage path={require('./static/budget-steptwo.png')} width="90%" height="90%" title="Click to view full-size image" />
 
-### Define Target
+- **Budget Period**: Select the time period for your budget. Available options include:
+  * **Monthly**: Set a budget for each calendar month
+  * **Daily**: Set a daily budget
+  * **Weekly**: Set a weekly budget
+  * **Quarterly**: Set a budget for each quarter
+  * **Yearly**: Set an annual budget
 
-In **Define Target**, do the following:
+  When selecting **Yearly**, you can choose your budget breakdown as either:
+  * **Yearly**: One budget amount for the entire year
+  * **Monthly**: Individual budget amounts for each month of the year, with the option to override forecasted spend for each month.
 
-1. In **Select Perspective**, select the Perspective for which you want to set a budget.  
-Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. You can add multiple budgets for a single Perspective.
-   1. To create a new Perspective of the resources you would like to budget, click **Create a new Perspective**. Follow the steps in [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective) to create a Perspective.
-   2. In **Budget Name**, enter a name for your budget that will appear in the budget dashboard to identify this budget.
-   3. Click **Continue**.
-   
-     ![](./static/create-a-budget-01.png)
+<DocImage path={require('./static/monthly-yearly-breakdown.png')} width="90%" height="90%" title="Click to view full-size image" />
 
-### Set Budget Amount
-
-In **Set Budget Amount** you can specify the budget period, amount, type, etc. The **Set Budget Amount** window also displays the **Total cost last period** and **Projected cost end of this period**. For more information on how the projected cost is calculated, see **Projected Cost**.
-
-1. In **Budget Period**, select the period for which you want to set the budget. You can set the budget period to **Monthly**, **Daily**, **Weekly**, **Quarterly**, or **Yearly**.
-   
-     ![](./static/create-a-budget-02.png)
-2. Use the date picker to set the start date for your budget.
-   
-     ![](./static/create-a-budget-03.png)
-3. In **Budget Type**, select abudget type.  
-
+- **Period starts from**: Use the date picker to set the start date for your budget.
+- **Budget Type**: select a Budget Type:  
 	* **Specified Amount**: Enter the amount that you want to set as the budget limit.
 	* **Previous Month Spend**: Sets the previous month spent as your budget.
-4. To add growth rate to your budgeted amount, select the checkbox **Add growth rate to budget amount**. Growth rate refers to the percentage change of the budgeted amount within the specified time period. When you've decided to add growth rate to the budget amount, specify the growth rate percentage.  
 
-5. In **Specify Growth rate**, enter the percentage of the growth rate to the budget amount. You can select this option only if you have selected **Specified Amount** in the **Budget Type**.  
+- **Specify amount ($)**: Enter the amount that you want to set as the budget limit if you have selected **Specified Amount** in the **Budget Type**.
+
+- **[Optional] Add growth rate to budget amount**: Growth rate refers to the percentage change of the budgeted amount within the specified time period. When you've decided to add growth rate to the budget amount, specify the growth rate percentage.  
+     - **Specify Growth rate**: Enter the percentage of the growth rate to the budget amount. You can select this option only if you have selected **Specified Amount** in the **Budget Type**.  
 	  
-	You can view the increased amount of your budget in the graph. The graph displays the amount and budget period. The following example considers a 5% increase to the weekly budget amount.
+	You can view the increased amount of your budget in the graph. The graph displays the amount and budget period.
 	
-	  ![](./static/create-a-budget-04.png)
-6. Click **Continue**.
+- Click **Continue**.
 
-### Projected Cost
+---------
 
-Budget also displays the projected cost based on the actual spend, cost of the last 30 days, and remaining days in the budget period.
+### (Optional) Step 3: Configure Alerts 
 
-![](./static/create-a-budget-05.png)
+<DocImage path={require('./static/budget-stepthree.png')} width="90%" height="90%" title="Click to view full-size image" />
 
-The projected cost in budget is calculated as follows:
+Harness will send an alert to the specified email addresses and Harness User Groups when the actual or forecasted cost exceeds a percentage of your monthly budget
 
-`(Actual spend till date)`  +  `(cost of last 30 days) * ((remaining days in budget)/30)`
+- Click on **+Add New Alert**. 
+- Specify the **Percentage of Budget** based on the **Actual Cost** or **Forecasted Cost**. Harness sends alerts when the Actual Cost or Forecasted Cost exceeds the threshold.  
+- In **Send Alert To**, select one of the following options to receive budget notifications. 
+  1. **Email**: Enter the email address (you can enter more than one email address or email groups).
+  2. **Slack Webhook URL**: Enter the webhook URL.
+- Click **Save**. Your budget is listed.
 
-Let's try to understand this using the following examples:
+:::info
+If your Budget Period is set to **Yearly** and the Budget Breakdown is **Monthly**, you can configure separate alerts for each month.
 
-**Monthly Budget**: Suppose you have set a monthly budget for your Perspective and the current date is January 10. In this case, the projected cost of the budget is calculated as the following:
+<DocImage path={require('./static/monthly-alerts.png')} width="60%" height="60%" title="Click to view full-size image" />
+:::
 
-`(Actual spend till date (1-10 Jan))`  +  `(cost of last 30 days) * ((remaining days in budget (21))/30)`
+------
+</TabItem>
+<TabItem value="interactive-guide" label="Interactive Guide" default>
 
-**Weekly Budget**: Suppose you have set a weekly budget for your Perspective. The week starts from January 1 and the current date is January 6. In this case, the projected cost of the budget is calculated as the following:
+<DocVideo src="https://app.tango.us/app/embed/951ab084-1997-49aa-b854-a532dd972952?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
 
-`(Actual spend till date (1-6 Jan))`  +  `(cost of last 30 days) * ((remaining days in budget (1))/30)`
+</TabItem>
+</Tabs>
 
-**Daily Budget**: In the case of daily budget:
+## Tracking Budget
 
-`(Actual spend till date)`  +  `(cost of last 30 days) / 30`
+<Tabs>
+<TabItem value="dashboard-overview" label="Budget Insights" default>
 
-### Configure Alerts
+<DocImage path={require('./static/budget-dashboard.gif')} width="100%" height="100%" title="Click to view full-size image" />
 
-1. In **Configure Alerts**, set a threshold for the **Percentage of Budget** based on the **Actual Cost** or **Forecasted Cost**. Harness sends alerts when the Actual Cost or Forecasted Cost exceeds the threshold.  
-Harness will send an alert to the specified email addresses and Harness User Groups when the actual or forecasted cost exceeds a percentage of your monthly budget.
-2. In **Send Alert To**, select one of the following options to receive budget notifications.
-	1. **Email**: Enter the email address (you can enter more than one email address or email groups).
-	2. **Slack Webhook URL**: Enter the webhook URL.!
-   
-     [](./static/create-a-budget-06.png)
-3. Click **Save**. Your budget is listed.
+When you click on a specific budget, you'll see a detailed view containing:
 
-![](./static/create-a-budget-07.png)
+### Budget Overview Cards
 
-## Using the Budget Dashboard
+Each budget displays the following key metrics:
 
-The **All** **Budgets** dashboard shows a summary of your budgets. By default, all your budgets are sorted based on the time created.
+- **Budget Period**: The time frame for your budget (daily, weekly, monthly, quarterly, or yearly)
+- **Spend Till Date**: The actual amount spent from the budget start date to the current date
+- **Budget Amount**: The total budget limit you've set for the specified period
+- **[Forecasted Cost](#what-is-forecast-cost-and-how-is-it-calculated)**: Predicted spending based on current usage patterns and historical data.
+- **Alerts At**: The threshold percentages and notification settings you've configured
 
-![](./static/create-a-budget-08.png)
+### Budget History Graph and Table
 
-The dashboard includes the following information:
+Historical data for a budget is displayed through an interactive graph as well as a table.
 
-* **Name**: Name of the budget.
-* **Budget Amount**: The amount that you set as the budget limit.
-* **Spend Till Date & Forecasted Cost v/s Budget**: Your actual spend till date compared to your forecasted cost and budgeted cost.
-* **Alerts**: Alerts configured for the set threshold percentage for the budget. An alert is sent when the Actual and/or Forecasted cost exceeds the specified percentage of your budgeted amount.
+#### Budget History Graph 
 
-### Read Your Budget
+An interactive graph displaying:
+- **Forecasted Cost Trend**: Projected spending over the budget period
+- **Period-to-Date Cost**: Cumulative actual spending from the start of the latest budget period to current date where "Period" refers to the budget period. For example, if you have a monthly budget, the Month-to-Date Cost will show the cumulative cost from the start of the current month to the current date.
+- **Actual Cost**: Real-time comparison of spending against your budget limit
+- **Budget**: Visual indicators showing your alert thresholds
 
-The **Budgets** dashboard further shows you the details of your selected budget at a glance. You can also navigate to the Perspective on which the budget is created from the budget dashboard.
+#### Budget Details Table
+A detailed breakdown corresponding to the Budget History Graph:
 
-![](./static/create-a-budget-09.png)
+| Metric | Description |
+|--------|-------------|
+| **Budget Period** | The specific time frame (e.g., January 2024, Q1 2024) |
+| **Actual Cost** | Real spending incurred during the period |
+| **Budgeted Cost** | The allocated budget amount for the period |
+| **Budget Variance ($)** | Dollar difference between actual and budgeted costs |
+| **Budget Variance (%)** | Percentage variance showing over/under budget performance |
 
-Select a budget from the list to view the following information:
+</TabItem>
+<TabItem value="interactive-guide" label="Interactive Guide">
 
-* **Budget Status**: This is your budget period. For example, monthly, yearly, weekly, etc.
-* **Spend Till Date Cost**: The actual incurred cost.
-* **Budget Amount**: The amount that you set as the budget limit.
-* **Forecasted Cost**: Your forecasted cost compared to your budgeted cost. Forecasted costs are predictions based on your historical cost data. The Forecasted Cost is the actual cost plus the projected cost, based on the spend pattern of previous months.
-* **Alerts at**: Alerts configured for the set threshold percentage for the budget. An alert is sent when the Actual and/or Forecasted cost exceeds the specified percentage of your budgeted amount.
-* **Budget History**: The monthly history of your budget. The dashboard displays the data as a chart and table. You can view, understand, and analyze your budget using either of them.
-	+ **Actual Cost**: The actual incurred cost.
-	+ **Budgeted Cost**: The budgeted amount.
-	+ **Budget variance**: The difference between the budgeted and actual cost in percentage and dollars. The variance data is available only in the tabular format.
-  
-    ![](./static/create-a-budget-10.png)
+### Visual Walkthrough
 
-You can also **Edit** and **Delete** a budget from the dashboard.
+Follow this interactive guide to understand how to navigate and use the Budget Dashboard effectively:
 
-![](./static/create-a-budget-11.png)
+<DocVideo src="https://app.tango.us/app/embed/ea06db3f-b081-44b6-8f13-3aaa14bce1d1?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Budget Dashboard Navigation Guide" />
 
-## Edit a Budget
+
+</TabItem>
+</Tabs>
+
+-------
+
+## Edit / Delete Budgets
 
 To edit a budget:
 
 1. In **All Budgets**, select the budget that you want to edit.
-2. Click **Edit**.
+2. Click **Edit** to edit the budget. You cannot edit the **Budget Period**.
+3. To delete a budget, In **All Budgets**, select the budget that you want to delete and click on **Delete**.
    
-     ![](./static/create-a-budget-12.png)
-3. The Budget settings appear. Follow the steps in **Create a New Budget** to edit the details of the budget.  
-You cannot edit the **Budget Period**.
+<DocImage path={require('./static/budget-delete.png')} width="90%" height="90%" title="Click to view full-size image" />
 
-## Delete a Budget
-
+:::danger
 Once a budget is deleted, it cannot be restored.
+:::
 
-To delete a budget:
+## FAQs
 
-1. In **All Budgets**, select the budget that you want to delete.
-   
-     ![](./static/create-a-budget-13.png)
-2. Click **Delete**.
-   
-     ![](./static/create-a-budget-14.png)
+### What is Forecasted Cost and how is it calculated?
 
+Harness CCM displays a *Forecasted Cost* for every budget. It estimates how much you will spend **by the end of the current period** if your current pace continues.
+
+#### Calculation 
+
+Average Daily Spend = `(H + C) / Dₕ`
+
+**Forecasted Cost**
+- For Daily Budget: `(H + C) / Dₕ`
+- For Weekly, Monthly, Quarterly, Yearly: `C + AverageDailySpend × R`
+
+Where:
+- **H**: Sum of Actual Cost across all completed periods
+- **C**: Actual spend in the current period so far (start-day → yesterday)
+- **Dₕ**: Days from the first history day **through yesterday** (inclusive)
+- **R**: Calendar days remaining (today → last day of period)
+
+#### Examples:
+
+| Budget Period | Date Range | Today | H (Historical Spend) | Dₕ (Days of History) | C (Current Spend) | R (Days Remaining) | Average Daily Spend | Forecasted Cost |
+|---------------|------------|-------|----------------------|----------------------|-------------------|--------------------|---------------------|-----------------|
+| Weekly | Mon 8 Jan – Sun 14 Jan | Wed 10 Jan | $12,000 | 86 | $350 | 5 | $143 | $1,065 |
+| Monthly | 1 Jan – 31 Jan | 10 Jan | $48,000 | 101 | $8,600 | 21 | $560 | $20,360 |
+| Quarterly | 1 Apr – 30 Jun | 15 May | $400,000 | 409 | $160,000 | 46 | $1,369 | $222,974 |
+| Yearly | 1 Jan 2025 – 31 Dec 2025 | 1 Aug 2025 | $1,800,000 | 577 | $1,150,000 | 152 | $5,106 | $1,927,000 |
+ 

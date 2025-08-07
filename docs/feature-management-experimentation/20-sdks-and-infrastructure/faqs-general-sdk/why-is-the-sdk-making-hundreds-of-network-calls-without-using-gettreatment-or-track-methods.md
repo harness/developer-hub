@@ -4,10 +4,6 @@ sidebar_label: Why is the SDK making hundreds of network calls without using get
 sidebar_position: 13
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360018619031-Why-is-the-SDK-making-hundreds-of-network-calls-without-using-getTreatment-or-track-methods </button>
-</p>
-
 ## Problem
 
 Using any FME SDK library, the library is making hundreds of network calls to split.io without using getTreatment or track methods

@@ -4,10 +4,6 @@ sidebar_label: GO SDK Error flushing storage queue couldn't send message to task
 sidebar_position: 6
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360045620792-GO-SDK-Error-flushing-storage-queue-couldn-t-send-message-to-task-SubmitImpressions </button>
-</p>
-
 ## Issue
 
 Using GO SDK, by default a thread will flush all current stored impressions in its cache every 30 seconds. However, there is a limit to the impression queued in the SDK's cache. If the queue is full, event IMPRESSIONS_FULL is fired and the SDK will attempt to post the impressions to clear the cache. When the process tries to flush all impressions, the error is logged:

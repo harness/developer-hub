@@ -4,10 +4,6 @@ sidebar_label: "General SDK: How to use FME SDKs with Split Proxy?"
 sidebar_position: 3
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360053243551-General-SDK-How-to-use-Split-SDKs-with-Split-Proxy </button>
-</p>
-
 ## Question
 
 All FME SDKs support connecting to Split Proxy.

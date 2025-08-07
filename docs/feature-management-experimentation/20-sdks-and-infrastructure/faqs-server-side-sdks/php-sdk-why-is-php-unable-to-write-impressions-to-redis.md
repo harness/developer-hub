@@ -4,10 +4,6 @@ sidebar_label: "Why is PHP unable to write impressions to Redis throwing error \
 sidebar_position: 20
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360018635072-Why-is-PHP-unable-to-write-impressions-back-to-Redis-throwing-error-NOAUTH-Authentication-required </button>
-</p>
-
 ## Question
 
 Why is PHP unable to write impressions to Redis throwing error "NOAUTH Authentication required"?

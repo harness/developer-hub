@@ -122,12 +122,6 @@ All Catalog and Workflow APIs are now delivered directly through Harness Platfor
 - Catalog Ingestion APIs remain functional as before, though RBAC will now be enforced on updated entities
 
 
-:::info
-As part of the transition to Harness Catalog APIs, API entity definitions currently require absolute URLs `(e.g., https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)`.
-
-Relative file paths `(e.g., ./openapi.yaml)` are not yet supported, but will be available in a future release. 
-:::
-
 We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
 
 ### Single Entity per YAML File
@@ -189,8 +183,9 @@ These fields define the entity's scope. For project-scoped entities, both fields
   - Aligned with Harness Entity YAML definitions and moved to root level to reflect its critical importance.
 - `spec.type` becomes `type`
   - Relocated to root level as it is fundamental to entity definition. The `kind` and `type` fields define entity behavior and should appear together.
-- `spec.owner` becomes `owner`
+- `spec.owner` is now `owner` 
   - Moved to root level to emphasize its significance. IDP Catalog addresses ownership challenges, warranting prominent placement of this field.
+
 
 #### ⊖ Removed fields
 

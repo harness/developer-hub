@@ -4,10 +4,6 @@ sidebar_label: Troubleshooting
 sidebar_position: 3
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025918571-Troubleshooting </button>
-</p>
-
 ## Overview
 
 Our SDKs have a standardized interface for inputs to every method. If you have issues getting up and running with any of our SDKs or aren't getting the expected return from any method or to the Split UI, you can find a detailed view of the types of validation that our SDK performs for each method below.

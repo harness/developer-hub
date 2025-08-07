@@ -4,10 +4,6 @@ sidebar_label: "Android SDK: Using Kotlin, SDK always returns the control treatm
 sidebar_position: 17
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360042150571-Android-SDK-Using-Kotlin-SDK-always-returns-control-treatment </button>
-</p>
-
 ## Issue
 
 When using Android App with Kotlin language, the code below always returns the control treatment from the Android SDK:

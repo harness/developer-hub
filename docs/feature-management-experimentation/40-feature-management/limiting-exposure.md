@@ -5,10 +5,6 @@ description: ""
 sidebar_position: 8
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020525572-Limiting-exposure </button>
-</p>
-
 When you [create a feature flag](/docs/feature-management-experimentation/feature-management/create-a-feature-flag), you can limit the feature flag's exposure. Limiting exposure means limiting the percentage of traffic that is channeled through a feature flag, allowing the rest of the traffic _to be unaffected by_, or _to remain outside of_, the targeting rules. The users outside of the flag's targeting rules will be given the default treatment.
 
 To use this feature, do the following:

@@ -4,11 +4,6 @@ sidebar_label: "Ruby SDK: Why do CLOSE_WAIT TCP connections in Puma not go down 
 sidebar_position: 17
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360007501871-Ruby-Why-do-CLOSE-WAIT-TCP-connections-in-Puma-not-go-down-as-expected </button>
-</p>
-
-
 ## Issue
 
 Using Ruby SDK in Puma or Unicorn cluster mode, with multiple workers of one thread each, as the SDK is sending treatment events, CLOSE_WAIT TCP connections usually increase. This can be detected using the command:

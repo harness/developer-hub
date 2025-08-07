@@ -4,10 +4,6 @@ sidebar_label: Amplitude
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360046658932-Amplitude </button>
-</p>
-
 Amplitude is a product intelligence platform that helps teams convert, engage, and retain customers. Harness FME provides multiple integration options to send impression data from the FME as a data source to Amplitude, export Amplitude cohorts to be used in FME for targeting, or extract Amplitude events to be used as events in FME.
 
 ## Sending Harness FME impressions to Amplitude (Recommended)

@@ -4,10 +4,6 @@ sidebar_label: Calling client.Destroy does not post impressions in Android SDK
 sidebar_position: 10
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360049698832-Calling-client-Destroy-does-not-post-impressions-in-Android-SDK </button>
-</p>
-
 ## Issue
 
 When using Android SDK in an app, before the app exits, calling client.Destroy() is suppose to clear the SDK cache and post all impressions; however, the cached impressions are not showing up Live tail tab in Split user interface.

@@ -4,10 +4,6 @@ sidebar_label: How to upload CSV file that contains IDs with comma character to 
 sidebar_position: 1
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360042835732-How-to-upload-CSV-file-that-contain-IDs-with-comma-character-to-new-segment </button>
-</p>
-
 ### Question
 
 Using the CSV upload feature in segment page in Split user interface, is it possible to upload user IDs in the CSV file that contain comma? The standard escape for CSV comma values is encapsulating the column value with double quotes like the example below:

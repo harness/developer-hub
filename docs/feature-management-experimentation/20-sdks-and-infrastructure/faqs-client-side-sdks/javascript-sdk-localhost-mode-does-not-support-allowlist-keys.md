@@ -4,10 +4,6 @@ sidebar_label: "JavaScript SDK: Localhost mode does not support Allowlist keys"
 sidebar_position: 2
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020863412-General-SDK-Always-getting-control-treatments </button>
-</p>
-
 ## Question
 
 JavaScript, React, Redux, and Browser SDKs use features config parameter to set the feature flags and treatments names, however, it does not support adding Allowlist keys in the property.

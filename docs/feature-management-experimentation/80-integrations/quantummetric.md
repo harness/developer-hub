@@ -4,10 +4,6 @@ sidebar_label: Quantum Metric
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4423968122381-Quantum-Metric </button>
-</p>
-
 ## Harness FME + Quantum Metric
 
 Harness FME and Quantum Metric enable brands to identify what features to test, prioritize feature releases, validate results, and iterate quicker by combining real-time analysis and data-driven experimentation.

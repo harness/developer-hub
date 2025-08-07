@@ -5,10 +5,6 @@ description: ""
 sidebar_position: 2
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/11461143253517-Using-essential-scheduling </button>
-</p>
-
 Scheduling provides the capability to launch a feature on a certain date and time. This allows you to make changes to a feature flag and get approvals ahead of the release date which makes release planning and collaboration easier and more flexible while also increasing the likelihood to release on a target date.
 
 :::info[Note]

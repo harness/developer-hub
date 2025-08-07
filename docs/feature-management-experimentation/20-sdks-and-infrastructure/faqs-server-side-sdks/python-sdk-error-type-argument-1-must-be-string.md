@@ -4,10 +4,6 @@ sidebar_label: "What is  the Python SDK error: \"type() argument 1 must be strin
 sidebar_position: 18
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016742831-What-is-the-Python-SDK-error-type-argument-1-must-be-string-not-unicode </button>
-</p>
-
 ## Issue
 When initializing the SDK factory object in Python, this exception occurs:
 ```

@@ -4,10 +4,6 @@ sidebar_label: "General SDK error, getTreatment: you passed \"SPLIT NAME\" that 
 sidebar_position: 8
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360028363971-General-SDK-error-getTreatment-you-passed-SPLIT-NAME-that-does-not-exist-in-this-environment </button>
-</p>
-
 ## Problem
 
 When using an FME SDK and calling getTreatment for a list of feature flags names, there are lot of errors raised as below

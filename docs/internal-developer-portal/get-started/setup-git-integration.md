@@ -36,14 +36,10 @@ The software components in IDP are defined using YAML files, which are typically
 The following set of git providers are supported: 
 
   - [Harness Code Repository](https://www.harness.io/products/code-repository)
-  - [GitHub](https://github.com/)
-    - GitHub Enterprise
-    - GitHub App
-  - [GitLab](https://about.gitlab.com/)
-  - [Bitbucket](https://bitbucket.org/product/)
-    - Bitbucket Cloud
-    - Bitbucket Server
-  - [Azure Repository](https://azure.microsoft.com/en-us/products/devops/repos)
+  - GitHub ([Cloud](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) & [Enterprise](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server))
+  - [GitLab](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) (Cloud & Self Hosted)
+  - [Bitbucket](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket)
+  - [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
 
 :::warning
 

@@ -20,6 +20,7 @@ This section provides a clear overview of the Supported features, integrations, 
 * [AI SRE (Beta)](/docs/ai-sre/get-started/overview)
 * [Supply Chain Security](/docs/software-supply-chain-assurance/ssca-supported)
 * [Code Repository](/docs/code-repository)
+* [Database DevOps](/docs/database-devops/dbdevops-supported-platforms.md)
 
 For more details on the supported features of other Harness modules, visit [Harness Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
@@ -36,8 +37,8 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
     - [Prometheus](/docs/self-managed-enterprise-edition/monitoring/install-prometheus).
     - [Grafana](/docs/self-managed-enterprise-edition/monitoring/install-grafana)
 * [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
-* [External Database](./advanced-configurations/external-db/configure-external-databases)
-* [Disaster Recovery](./advanced-configurations/set-up-disaster-recovery)
+* [External Database](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-external-databases)
+* [Disaster Recovery](/docs/self-managed-enterprise-edition/advanced-configurations/set-up-disaster-recovery)
 
 ## Kubernetes Networking 
 

@@ -4,10 +4,6 @@ sidebar_label: Why does the JavaScript SDK return Not Ready status in slow netwo
 sidebar_position: 26
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360012551371-Why-does-the-JavaScript-SDK-return-Not-Ready-status-in-Slow-Networkslit.io/hc/en-us/articles/360020863412-General-SDK-Always-getting-control-treatments </button>
-</p>
-
 ## Issue
 
 When using JavaScript SDK in Browser, the SDK status will mostly return Not Ready when users are on a slow Network (for example 3G).

@@ -58,10 +58,23 @@ To create a **Component** via the UI:
 1. Navigate to the Harness IDP portal and click **“Create”** in the sidebar.
 2. Select **Component** from the available options.
 3. You’ll enter the **Visual View**, where you can fill out entity details interactively.
+> Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
+
+
+:::note
+To set the owner identity, type a few characters in the Owner field to search and select a user or group from the dropdown; if no match appears, set yourself as the owner or enter any string and click `Add <arbitrary_string> as a new owner`.
+
 ![](./static/create-entity-2.png)
+:::
 4. Specify the **Entity Scope** (Account, Org, or Project). For this example, choose **Account scope**. [Read more about Catalog RBAC](/docs/internal-developer-portal/rbac/catalog-rbac.md).
 ![](./static/scope-entity.png)
-5. Click **“Review YAML”** to view the synchronized YAML. Changes in the Visual View reflect live in the YAML View.
+5. You now have two options for managing your Component configuration:
+    * **Inline (default):** Manage the Component YAML directly within Harness.
+    * **Remote:** Choose to store your Component YAML in a Git repository for version control, collaboration, and change tracking.
+    You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
+    ![](./static/git-component.png)
+    > The Git Experience is ideal for teams who prefer to manage Components as code, with full version control and Git-native workflows. The changes are reflected in both YAML and execution views, via a [webhook](/docs/internal-developer-portal/git-experience/gitx-journey#workflow-execution-visibility-and-webhook-requirement) which is automatically configured on the Git connector. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey).
+6. Click **“Review YAML”** to view the synchronized YAML. Changes in the Visual View reflect live in the YAML View.
 
 :::info
   **Note:** **YAML validation** is performed to ensure compatibility with the **Harness-native Catalog YAML** model. Any errors will be shown in the Validation logs.
@@ -69,11 +82,11 @@ To create a **Component** via the UI:
   ![](./static/yaml-validation.png)
   :::
 
-6. If applicable, configure a plugin by referring to its documentation and adding the necessary **annotations** in the Catalog YAML.
+7. If applicable, configure a plugin by referring to its documentation and adding the necessary **annotations** in the Catalog YAML.
 
 ![](./static/plugins-entity.png)
 
-7. Once completed, click **“Create Component”** to finalize and register the entity.
+8. Once completed, click **“Create Component”** to finalize and register the entity.
 
 ![](./static/yaml-view.png)
 
@@ -88,16 +101,45 @@ To create a Component using Catalog YAML:
 1. Navigate to **Create** in the sidebar, and select **Component**.
 2. In the **Visual View**, switch to **YAML View** via the toggle at the top.
    ![](./static/yaml-way.png)
-3. Paste your existing Backstage YAML if available. Harness will auto-convert it into the native format.
+3. Provide the YAML directly for the entity which you want to create in IDP. 
+<details>
+<summary>Example YAML</summary>
+```yaml
+apiVersion: harness.io/v1
+kind: component
+name: artist-web
+identifier: artistweb
+type: service
+owner: user:account/shibam.dhar@harness.io
+spec:
+  lifecycle: production
+metadata:
+  tags:
+    - java
+  description: place to be for artists
+```
+</details>
 
-   ![](./static/yaml-conversion.png)
+> You can even paste your existing Backstage YAML if available. Harness will auto-convert it into the native format.
+![](./static/yaml-conversion.png)
 
 > ⚠️ **Note:** Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
+:::note
+You can always set the owner identity using your email ID, a group name, or any custom string that fits. Just type the value directly in the owner field. If it’s a group name it will auto resolve to the group ID or it will assign an arbitrary string.
+![](./static/create-entity-2.png)
+:::
+
 4. Define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
 ![](./static/scope-entity.png)
-5) Add any plugin configurations by including the relevant **annotations**.
-6) Click **“Create Component”** to complete the process and register your entity.
+5. You now have two options for managing your Component configuration:
+    * **Inline (default):** Manage the Component YAML directly within Harness.
+    * **Remote:** Choose to store your Component YAML in a Git repository for version control, collaboration, and change tracking.
+    You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
+    ![](./static/git-component.png)
+    > The Git Experience is ideal for teams who prefer to manage Components as code, with full version control and Git-native workflows. The changes are reflected in both YAML and execution views, via a [webhook](/docs/internal-developer-portal/git-experience/gitx-journey#workflow-execution-visibility-and-webhook-requirement) which is automatically configured on the Git connector. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey).
+6. Add any plugin configurations by including the relevant **annotations**.
+7. Click **“Create Component”** to complete the process and register your entity.
 
   </TabItem>
 </Tabs>
