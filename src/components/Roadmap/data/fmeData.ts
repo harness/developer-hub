@@ -18,17 +18,17 @@ export const FmeData: Horizon = {
       {
         tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
         title: "Flag impressions properties bag",
-        description: "Decorate impression records with properties to use in downstream processing. Additional SDKs coming this quarter in addition to those already released: Go, PHP-thin (via SplitD), Proxy/Synchronizer, .NET, Flutter.",
+        description: "Decorate impression records with properties to use in downstream processing. Additional support for the following SDKs and Split Proxy/Synchronizer is coming this quarter: Go, PHP Thin Client (via SplitD), .NET, and Flutter.",
       },
       {
         tag: [{ value: "SDK" }],
         title: "OpenFeature provider updates",
-        description: "Ongoing support for the OpenFeature providers for Java, Node.js, and Web SDKs is being developed and released.",
+        description: "Ongoing support for OpenFeature providers in Java, Node.js, and Browser SDKs is being developed and released.",
       },
       {
         tag: [{ value: "SDK" }],
         title: "Harness Forward proxy",
-        description: "Centralizes traffic that goes outside of a customer’s cloud. Simpler to maintain than current Split Proxy, because it needs no knowledge of environments. Supports multiple Harness modules as well, starting with DB DevOps.",
+        description: "Centralizes traffic that goes outside of a customer’s cloud. Easier to maintain than the current Split Proxy, as it doesn't require environment-specific configuration. Supports multiple Harness modules as well, starting with DB DevOps.",
       },
     ],
   },
