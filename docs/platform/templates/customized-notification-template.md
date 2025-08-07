@@ -500,6 +500,41 @@ To fully reconcile the rule with the latest version of the template, you need to
 
 This updates the pipeline YAML to reference the latest template version and ensures all required inputs are captured.
 
+### Improved Reconciliation Flow (Feature Flag)
+
+:::note 
+This enhanced flow is available behind the feature flag `PIPELINE_NOTIFICATION_TEMPLATE_INPUT_RECONCILIATION`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+When the feature flag is enabled, pipeline reconciliation for updated notification templates follows an improved, UI-driven flow.
+
+**What’s new:**
+
+1. After a notification template is updated, pipelines referencing it show an inline error:
+
+> **Some of the entities referenced in this pipeline have been updated.**
+
+![](./static/cnt-1.png)
+
+2. Click the **Reconcile** button shown in the pipeline editor.
+3. A diff view opens, allowing you to review the updated template inputs. Confirm and save the pipeline.
+4. A yellow banner appears:
+
+> **Notification inputs in this pipeline have been updated. Please click the Notify tab to review and update them.**
+
+![](./static/cnt-2.png)
+
+5. Go to the **Notify** tab. The affected template will display a red warning:
+
+> **Notification template inputs have been updated. Please update the notification template inputs.**
+
+![](./static/cnt-3.png)
+
+6. Click into the affected rule, navigate to the **Templates** tab, reselect the same notification template, and provide values for the new inputs.
+7. Save the notification rule and then save the pipeline.
+
+Once these steps are completed, the pipeline will be fully reconciled with the latest version of the notification template.
+
 ### Centralised Notifications
 
 In **Centralised Notification rules**, no warning appears when you update a template. However, if a template has changes or new input variables, you can view all the impacted references in the **Referenced By** section of the template.
