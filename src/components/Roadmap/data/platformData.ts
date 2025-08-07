@@ -1,6 +1,116 @@
 import { link } from "fs";
 import { Horizon } from "./roadmapData";
 export const platformData: Horizon = {
+  Now: {
+    description: "🚧 Q3 2025, Aug 2025 - Oct 2025",
+    feature: [
+      {
+        title: "Self Serve signup and payment flow",
+        description:
+          "Allow users to sign up and manage their subscriptions directly from the Harness UI.",
+        tag: [{ value: "Access Control" }],
+      },
+      {
+        title: "Audit log streaming in New Line Delimited (NDJSON) format",
+        description:
+          "Ability to stream audit logs in New Line Delimited (NDJSON) format.",
+        tag: [{ value: "Audit Trail" }],
+      },
+      {
+        title: "Hashicorp Vault: JWT enhanced claims",
+        description:
+          "Allows users to include an additional JWT claim for the environment ID. This enables fine-grained access control and stricter isolation of secrets across environments (e.g., dev, staging, prod), improving security and compliance.",
+        tag: [{ value: "Connectors" }],
+      },
+      {
+        title: "Customise your Login and update the Harness logo with your own.",
+        description:
+          "Allows users to customise the appearance of their login screen and replace the Harness logo in the left navigation bar with their own",
+        tag: [{ value: "UI" }],
+      },
+      {
+        title: "RBAC Secrets: Split `Create/Edit` into two separate permissions",
+        description:
+          "With this change, users will now have two separate permissions — 'Create' and 'Edit' — instead of a single combined 'Create/Edit' permission.",
+        tag: [{ value: "Secrets" }],
+      },
+    ],
+  },
+  Next: {
+    description: "🪄 Q4 2025, Nov 2025 - Jan 2026",
+    feature: [
+      {
+        title: "mTLS support for Harness APIs",
+        description:
+          "Enhanced API security with mutual TLS authentication for enterprise-grade protection of API communications.",
+        tag: [{ value: "Access Control" }],
+      },
+      {
+        title: "Event Streaming of pipeline logs",
+        description:
+          "Real-time streaming of pipeline execution logs to external systems for enhanced monitoring and observability.",
+        tag: [{ value: "Pipeline" }],
+      },
+      {
+        title: "Automated moving of Dashboards across organizations",
+        description:
+          "",
+        tag: [{ value: "Dashboard" }],
+      },
+      {
+        title: "Alerting on platform limits",
+        description:
+          "Proactive notifications when approaching platform usage limits to prevent service disruptions and optimize resource planning.",
+        tag: [{ value: "Platform" }],
+      },
+      {
+        title: "Delegate support in Harness MCP Server",
+        description:
+          "Delegate support in Harness MCP Server",
+        tag: [{ value: "Delegate" }],
+      },
+    ],
+  },
+  Later : {
+    description: "🔭 Q1 2026+, Feb 2026 & beyond",
+    feature: [
+      {
+        title: "Increased in Data Retention period",
+        description:
+          "Support for increased data retention for Audit logs & Pipeline logs.",
+        tag: [],
+      },
+      {
+        tag: [{ value: "Pipeline" }],
+        title: "DAG Support For Pipeline",
+        description:
+          "Enable complex flows such as parallel execution, stage grouping, etc.",
+      },
+      {
+        title: "Export audit trail as CSV",
+        description:
+          "Export audit trail as a CSV directly from Harness UI.",
+        tag: [{ value: "Audit Trail" }],
+      },
+      {
+        tag: [{ value: "Notify" }],
+        title: "Notification for Service Accounts expiration",
+        description:
+          "Add support for centralized notification system to configure service account notifications",
+      }, 
+      {
+        tag: [{ value: "Pipeline" }, { value: "Insights" }],
+        title: "Pipeline Analytics",
+        description: "",
+      },
+      {
+        title: "Move Project between Organizations",
+        description:
+          "Move a project from one org to another to support scenarios like ownership change.",
+        tag: [],
+      },
+    ],
+  },
   Released: {
     description: "✅ What has been released",
     feature: [
@@ -111,135 +221,6 @@ export const platformData: Horizon = {
         tag: [{ value: "SMP" }],
         link: "/docs/self-managed-enterprise-edition/advanced-configurations/configure-custom-signin-message"
       },
-    ],
-  },
-  Now: {
-    description: "🚧 Q3 2025, Aug 2025 - Oct 2025",
-    feature: [
-      {
-        title: "Self Serve signup and payment flow",
-        description:
-          "Allow users to sign up and manage their subscriptions directly from the Harness UI.",
-        tag: [{ value: "Access Control" }],
-      },
-      {
-        title: "Audit log streaming in New Line Delimited (NDJSON) format",
-        description:
-          "Ability to stream audit logs in New Line Delimited (NDJSON) format.",
-        tag: [{ value: "Audit Trail" }],
-      },
-      {
-        title: "Hashicorp Vault: JWT enhanced claims",
-        description:
-          "Allows users to include an additional JWT claim for the environment ID. This enables fine-grained access control and stricter isolation of secrets across environments (e.g., dev, staging, prod), improving security and compliance.",
-        tag: [{ value: "Connectors" }],
-      },
-      {
-        title: "Customise your Login and update the Harness logo with your own.",
-        description:
-          "Allows users to customise the appearance of their login screen and replace the Harness logo in the left navigation bar with their own",
-        tag: [{ value: "UI" }],
-      },
-      {
-        title: "RBAC Secrets: Split `Create/Edit` into two separate permissions",
-        description:
-          "With this change, users will now have two separate permissions — 'Create' and 'Edit' — instead of a single combined 'Create/Edit' permission.",
-        tag: [{ value: "Secrets" }],
-      },
-    ],
-  },
-  Later: {
-    description: "🪄 Q3 2025+, Nov 2025 & beyond",
-    feature: [
-      {
-        title: "mTLS support for Harness APIs",
-        description:
-          "Enhanced API security with mutual TLS authentication for enterprise-grade protection of API communications.",
-        tag: [{ value: "Access Control" }],
-      },
-      {
-        title: "Event Streaming of pipeline logs",
-        description:
-          "Real-time streaming of pipeline execution logs to external systems for enhanced monitoring and observability.",
-        tag: [{ value: "Pipeline" }],
-      },
-      {
-        title: "Automated moving of Dashboards across organizations",
-        description:
-          "",
-        tag: [{ value: "Dashboard" }],
-      },
-      {
-        title: "Alerting on platform limits",
-        description:
-          "Proactive notifications when approaching platform usage limits to prevent service disruptions and optimize resource planning.",
-        tag: [{ value: "Platform" }],
-      },
-      {
-        title: "Delegate support in Harness MCP Server",
-        description:
-          "Delegate support in Harness MCP Server",
-        tag: [{ value: "Delegate" }],
-      },
-      {
-        title: "Advanced RBAC Permissions for User Groups",
-        description:
-          "Advanced permissions for User Groups to provide users enhanced granularity and control while creating roles.",
-        tag: [{ value: "Access Control" }],
-      },
-      {
-        tag: [{value: "Access Control"}, { value: "Secure" }],
-        title: "Secret Create/Edit permission split",
-        description:
-          "Split Secret 'Create/Edit' permission into 'Create' and 'Edit' permissions",
-      },
-      {
-        title: "Export audit trail as CSV",
-        description:
-          "Export audit trail as a CSV directly from Harness UI.",
-        tag: [{ value: "Audit Trail" }],
-      },
-      {
-        tag: [{ value: "Notify" }],
-        title: "Notification for Service Accounts expiration",
-        description:
-          "Add support for centralized notification system to configure service account notifications",
-      },
-      {
-        tag: [{ value: "Policy" }],
-        title: "Policy to govern projects",
-        description:
-          "Support to allow policy to govern projects",
-      },
-      {
-        tag: [{ value: "SMP" }],
-        title: "Supported modules",
-        description:
-          "Internal Developer Portal",
-      },
-      {
-        title: "Move Project between Organizations",
-        description:
-          "Move a project from one org to another to support scenarios like ownership change.",
-        tag: [],
-      },
-      {
-        title: "Increased in Data Retention period",
-        description:
-          "Support for increased data retention for Audit logs & Pipeline logs.",
-        tag: [],
-      },
-      {
-        tag: [{ value: "Pipeline" }, { value: "Insights" }],
-        title: "Pipeline Analytics",
-        description: "",
-      },
-      {
-        tag: [{ value: "Pipeline" }],
-        title: "DAG Support For Pipeline",
-        description:
-          "Enable complex flows such as parallel execution, stage grouping, etc.",
-      },   
     ],
   }, 
 };
