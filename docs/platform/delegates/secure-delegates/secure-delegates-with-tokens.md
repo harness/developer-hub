@@ -8,120 +8,122 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness uses delegate tokens to encrypt communication between Harness Delegates and Harness Manager. By default, when a new Harness account is created, all Harness Delegates in that account include the same token.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-Delegate tokens aren't directly transmitted. They act as secret keys to encrypt and decrypt JWT tokens. Harness uses delegate tokens in the encryption process to ensure that sensitive data, such as JWT tokens, remains protected during transmission.
-
-You can further secure delegate-to-Harness communication by replacing the default delegate token with new tokens. You can add and revoke delegate tokens per your governance policies and replace revoked tokens with custom tokens when needed. You can also rotate your tokens and store them in a secret manager.
-
-:::info important
-
-You must have the Create Delegate permission to create delegate tokens. For more information, go to [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
-
+:::info Important note
+You need to have **Create/Edit Delegate** permission to create and manage delegate tokens. For more information, go to [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
 :::
 
-## Generate a new token
+Harness uses delegate tokens to encrypt communication between Harness Delegates and the Harness Manager. By default, when a new Harness account is created, all Harness Delegates in that account share the same token.
 
-You can generate a new token when you create a delegate or as a separate process.
+Delegate tokens can be managed according to your governance policies - you can add new tokens, revoke existing ones, rotate them as needed, and store them in a secret manager.
 
-### Generate a token when creating a delegate
+### Generate a new delegate token
 
-When you create a new delegate, you can generate a new token.
+<Tabs>
+<TabItem value="Interactive">
+  <iframe
+    src="https://app.tango.us/app/embed/c30db2fd-2e31-4d21-bd59-a3cf50f86b70"
+    style={{ minHeight: '640px', width: '80%', border: 'none' }}
+    sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+    security="restricted"
+    title="Create Delegate Token in Harness"
+    referrerPolicy="strict-origin-when-cross-origin"
+    frameBorder="0"
+    allowFullScreen
+  />
+</TabItem>
+<TabItem value="Manual">
+To generate a new delegate token:
 
-To generate a new token, do the following:
+1. Navigate to **Settings** of your scope (Account, Organization, or Project). We will use Account scope for this example.
 
-1. In Harness, select **Delegates**, then select **Tokens**.
-2. Select **New Token**.
-
-   ![](static/secure-delegates-with-tokens-02.png)
-
-3. Enter a name for the new token, and then select **Apply**.
-
-   The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
-
-4. Save the new token value. You cannot retrieve the token value after this.
-
-   Now you can update the delegate(s) with the new token.
-
-5. In **Delegate Tokens**, select the new token.
-
-### Generate a token without creating a delegate
-
-You can also generate a new token without creating a new delegate.
-
-To generate a new token, do the following:
-
-1. In Harness, select **Project Setup > Delegates** in a project or **Account Settings > Account Resources > Delegates** for the entire account.
-
-   Here's an Account Settings example:
-
-   ![](static/secure-delegates-with-tokens-03.png)
-
-2. Select **Tokens**. Here you can view, create, and revoke all delegate tokens. For each token, you can select the **More Options** (&vellip;) menu to view **More info** or **Copy token**. You must have the Create Delegate permission to copy a token.
-
-   ![](static/secure-delegates-with-tokens-07.png)
+2. In **Account-level resources**, navigate to **Delegates**, then select **Tokens**.
 
 3. Select **New Token**.
 
-4. Enter a name for the new token, and then select **Apply**.
+4. Enter a name for the new token and select **Apply**. The new token is created and appears in the list using the name you provided.
 
-   You can copy the token and save it somewhere safe, if needed.
+5. Copy and save the token value. You can now update your delegates with the new token.
 
-   ![](static/secure-delegates-with-tokens-04.png)
+6. To view more about a token, select the **More Options** (&vellip;) menu. Here you can view more information about the token or copy the token value.
+</TabItem>
+</Tabs>
 
-   The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
-
-5. Save the new token value. You cannot retrieve the token value after this.
-
-   When you install a new delegate, you can select the token to use.
-
-## Option: Update and restart existing delegate
+## Update existing delegates with new tokens
 
 You can update an existing delegate with a new token value and then restart the delegate.
 
 ### Kubernetes delegate
 
-The Kubernetes delegate is set up using the `harness-delegate.yaml` file you downloaded originally.
+To update a Kubernetes delegate with a new token:
 
-To update and restart an existing Kubernetes delegate, do the following:
+1. Open your `harness-delegate.yaml` file.
 
-1. Edit the `harness-delegate.yaml` file you downloaded originally.
+2. Update the `DELEGATE_TOKEN` and `UPGRADER_TOKEN` values with your new token.
 
-2. Update `DELEGATE_TOKEN` and `UPGRADER_TOKEN` fields with the new token..
-
-3. Run `kubectl apply -f harness-delegate.yaml`.
-
-   The delegate pods restart automatically with the updated settings.
+3. Apply the changes:
+   ```bash
+   kubectl apply -f harness-delegate.yaml
+   ```
+   The delegate pods will restart automatically with the new token.
 
 ### Docker delegate
 
-Destroy the existing docker containers for the delegate and upgarder using `docker stop <container_name_or_id>` command. 
+To update a Docker delegate with a new token:
 
-To update and restart an existing Docker delegate, do the following:
+1. Stop the existing delegate.
 
-1. Rerun the docker run command for the delegate with using the new token in the `DELEGATE_TOKEN` environment variable.
+2. Restart the delegate with the new token in the environment variable: `DELEGATE_TOKEN=<new_token>`
 
-2. Rerun the docker run command for the delegate upgrader with using the new token in the `UPGRADER_TOKEN` environment variable.
+3. Restart the upgrader with the new token in the environment variable: `UPGRADER_TOKEN=<new_token>`
 
-You can verify that the environment variable has the new token using `docker exec [container ID] env`.
-
-## Option: Revoke tokens
+## Revoke a Delegate token
 
 Harness loads tokens during the delegate startup process as part of the connection heartbeat. When you change the delegate token, you must restart the delegate cycle process.
 
-Delegates are immediately disconnected when you revoke a token. Harness sends `SELF_DESTRUCT` to all delegates using the revoked token.
+When you revoke a token, all delegates using that token are immediately disconnected and stopped.
 
 To revoke tokens, do the following:
 
-1. On the **Tokens** page, select **Revoke** to revoke any token.
+1. On the **Tokens** page, select **Revoke** next to the token you want to remove.
 
    ![](static/secure-delegates-with-tokens-06.png)
 
-2. Select **Revoke**. The token is revoked. The Harness Manager will not accept connections from any delegates using this revoked token.
+2. Confirm by selecting **Revoke**. The token is immediately revoked and will no longer appear in the list.
 
-3. Once revoked and expired, the delegate token will no longer appear in the delegate token list.
+## Delete a Delegate token
 
-## Option: Rotate tokens
+:::info Note
+You can only delete tokens that have been revoked. 
+:::
+<Tabs>
+<TabItem value="Interactive">
+    <iframe 
+    src="https://app.tango.us/app/embed/8ee400d8-d23c-419e-9029-a6e0f4a05683" 
+    style={{ minHeight: '640px', width: '80%', border: 'none' }}
+    sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+    security="restricted" 
+    title="Revoke Tokens in Harness" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    frameborder="0" 
+    allowfullscreen
+    />
+</TabItem>
+<TabItem value="Manual">
+To delete a token, do the following:
+
+1. On the **Tokens** page, select **Revoked Tokens** next to the +New Token button. It will list all the revoked tokens.
+
+2. Select the token you want to delete and select **Delete**.
+
+3. Confirm by selecting **Delete**. The token is immediately deleted and will no longer appear in the list.
+
+</TabItem>
+</Tabs>
+
+## Rotate Delegate tokens
 
 You can rotate and store your delegate tokens in a third-party secret manager and reference them as needed.
 
