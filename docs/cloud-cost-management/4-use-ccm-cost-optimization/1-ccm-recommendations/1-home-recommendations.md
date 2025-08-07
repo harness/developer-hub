@@ -4,80 +4,45 @@ description: Learn about the recommendations summary page and the various action
 # sidebar_position: 2
 ---
 import Tabs from '@theme/Tabs';
-
 import TabItem from '@theme/TabItem';
-
-
-
-## What are Recommendations?
-
-Harness CCM Recommendations are data-driven insights that help you optimize your cloud resources for cost efficiency without compromising performance. By analyzing historical usage patterns, resource configurations, and cloud provider pricing models, CCM identifies opportunities to right-size resources, eliminate waste, and implement best practices.
-### Benefits of CCM Recommendations
-
-- **Cost Optimization**: Identify underutilized resources and right-sizing opportunities that can reduce your cloud spend 
-- **Performance Balancing**: Maintain application performance while optimizing costs through intelligent resource allocation suggestions
-- **Governance Enforcement**: Ensure compliance with organizational policies and industry best practices
-- **Proactive Management**: Address inefficiencies before they impact your budget with regular recommendation updates
-- **Cross-Cloud Optimization**: Get unified recommendations across multiple cloud providers and resource types
-
-Below are the available recommendation types and what they represent:
-
-- Azure VM Recommendations: Identify underutilized virtual machines in your Azure environment and suggest rightsizing or termination to reduce spend.
-- AWS EC2 Recommendations: Analyze EC2 usage to detect idle or oversized instances, offering guidance to optimize instance types or stop them altogether.
-- AWS ECR Recommendations: Highlight unused container images in Amazon Elastic Container Registry and recommend cleanup actions.
-- Governance Recommendations: Provide cost governance insights based on tagging, business units, and spending patterns across AWS, GCP, and Azure.
-- Node Pool Recommendations: Recommend better node pool configurations for your Kubernetes clusters to balance cost and performance, with cloud-specific requirements.
-- Workload Recommendations: Target inefficient Kubernetes workloads by analyzing CPU/memory utilization and proposing updated resource requests/limits.
 
 :::info
 After you enable CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the service. 
 :::
 
+## What are Recommendations?
+
+Harness CCM Recommendations are data-driven insights that help you optimize your cloud resources for cost efficiency without compromising performance. By analyzing historical usage patterns, resource configurations, and cloud provider pricing models, CCM identifies opportunities to right-size resources, eliminate waste, and implement best practices.
+
+**Benefits of Using CCM Recommendations**
+
+- **Reduce Azure VM Costs**: Identify underutilized virtual machines and receive rightsizing or termination suggestions to significantly reduce Azure spending.
+
+- **Optimize AWS EC2 Instances**: Detect idle or oversized EC2 instances and get actionable guidance to select optimal instance types or eliminate unnecessary resources.
+
+- **Clean Up Container Registry**: Identify and remove unused container images in Amazon ECR, reducing storage costs and improving registry management.
+
+- **Enhance Cost Governance**: Implement best practices for tagging, business unit allocation, and spending patterns across AWS, GCP, and Azure to maintain financial control.
+
+- **Improve Kubernetes Node Efficiency**: Balance cost and performance with optimized node pool configurations for your Kubernetes clusters, tailored to each cloud provider's specific requirements.
+
+- **Right-Size Kubernetes Workloads**: Analyze CPU and memory utilization patterns to properly configure resource requests and limits, preventing waste while ensuring application performance.
+
 ## Recommendations Homepage
+
+<Tabs>
+<TabItem value="recommendations-info" label="Filter and Recommendation Details">
 
  <DocImage path={require('./static/output.gif')} width="90%" height="90%" title="Click to view full size image" />
 
-- Recommendation Type:
-- Cloud Provider: 
+- **Recommendation Type**: CCM has six types of recommendations: `AZURE_INSTANCE`, `EC2_INSTANCE`, `GOVERNANCE`, `NODE_POOL` and `WORKLOAD`. See details about all the types of recommendations [here](#recommendations-per-cloud-provider).
+- **Cloud Provider**: 
 - **+ Add Filter**
   - **Generic Filters**: Cloud Account ID, Cloud Account Name, Resource ID, Resource Name, Region, Cost Category, Cluster Labels, Cloud Tags, Potential Spend(USD), Savings (USD), Governance Rule Name
   - **AWS-Specific Filters**: Instance Type
   - **Azure-Specific Filters**: VM Size, Resource Group
   - **Container-Specific Filters**: Kubernetes Cluster Name, Kubernetes Namespace, ECS Cluster Name, ECS Launch Type
-
-
-:::info
-
-Harness provides filtering support for recommendations based on cloud account identifiers and Kubernetes attributes. This allows for better cost optimization insights while maintaining alignment with perspective-based RBAC settings.
-
-- **AWS EC2**: Filtering is supported on AWS Account ID. Nested Cost Categories are not supported.  
-
-- **AWS ECS**: Filtering is supported on AWS Account ID. Nested Cost Categories are not supported.  
-
-- **Azure VM**: Filtering is not supported.  
-
-- **Kubernetes**: Filtering is supported on Labels and Cluster Name. Nested Cost Categories are not supported.  
-
-- **Governance Recommendations**:
-
-  -   **AWS**: No filtering support.  
-  -   **Azure**: No filtering support.  
-  -   **GCP**: No filtering support.  
-
-Filtering support for recommendations extends to **RBAC configurations based on perspective folder access settings**, ensuring that cost-saving suggestions are appropriately scoped to the right teams. 
-
-:::
-
-
----------
-
-### Recommendations Info 
-
-
- <DocImage path={require('./static/outputthree.mp4')} width="90%" height="90%" title="Click to view full size image" />
-
-
-- Open Recommendations: List of recommendations that are not applied yet. You can view:
+- **Open Recommendations**: List of [recommendations](#recommendations-per-cloud-provider) that are not applied yet. [All the types of recommendations](#recommendations-per-cloud-provider) are listed here. You can view:
   - Potential Monthly Savings that can be achieved with the recommendation
   - Potential Monthly Spend without applying recommendations.
   - Table with columns: 
@@ -86,104 +51,134 @@ Filtering support for recommendations extends to **RBAC configurations based on 
     - Potential Monthly Spend
     - Recommended Action
     - Jira Ticket Status
-- Applied Recommendations: When you click on an individual recommendation, you’ll be able to view a detailed breakdown of the recommendation, including relevant insights, suggested actions, and any supporting information.
+- **Applied Recommendations:** When you click on an individual recommendation, you’ll be able to view a detailed breakdown of the recommendation, including relevant insights, suggested actions, and any supporting information. See how to apply recommendations [here](#apply-recommendations).
 
------------
+</TabItem>
+<TabItem value="export-ignore-settings" label="Export, Ignore List and Settings">
 
-### Added functionalities
 
  <DocImage path={require('./static/outputwo.gif')} width="90%" height="90%" title="Click to view full size image" />
 
 - **Export CSV:** Option to export your Recommendations as comma-separated values (CSV) files. Exporting allows you to use the data in other software. Export respects the filters applied by the user in the filter panel. Only comma-separated values files (CSV) are supported and the maximum number of rows allowed in one export is 10,000 rows.
 - **Manage Ignore List:** Adding resources to the Ignore list will stop Harness from displaying recommendations for those resources. You can view the Ignore list with details by clicking on "Manage Ignore List" on the overview page.
-- **Settings:** Recommendation settings allow users to customize how recommendations are generated and displayed within the platform. The recommendation settings are divided into two main sections: Preferences and Manage Presets:
-  - **Preferences:** 
+- **Settings:** Recommendation settings allow users to customize how recommendations are generated and displayed within the platform. The recommendation settings are divided into two main sections:
+
+<Tabs>
+  <TabItem value="preferences" label="Preferences">
     - **General Preferences:**
       - **Show Recommendations on Parent Resources** - Enables recommendations for parent-level resources such as Nodepool, EC2, and ECS Services. This ensures users receive optimization suggestions for high-level infrastructure components.
       - **Show Recommendations on Child Resources** - Displays recommendations for individual workloads, allowing users to optimize specific application components rather than just the underlying infrastructure.
       - **Show Recommendations on Resources Added to the Ignore List** - If enabled, recommendations will still be displayed for resources that have been manually marked as ignored. 
     - **Resource Specific Preferences:** Over here, users can select the presets for each resource type and also set the default time range. 
-  - **Manage Presets:** This helps users to create and save customized configurations for their recommendations. These presets capture specific user preferences, such as tuning parameters for resource types like workloads, nodepools, ECS, and EC2 instances.  
 
-  Users can fine-tune recommendations for different resource types by configuring specific tuning parameters and save presets. 
+    New Recommendation Preferences may take up to 24 hours to fully update across the platform. However, changes will be reflected immediately on the drill-down page, while the Overview page may take additional time to reflect updates.
+  </TabItem>
+  <TabItem value="manage-presets" label="Manage Presets">
+    This helps users to create and save customized configurations for their recommendations. These presets capture specific user preferences, such as tuning parameters for resource types like workloads, nodepools, ECS, and EC2 instances.  
 
-  <Tabs>
-    <TabItem value="workload" label="Workload">
-      <DocImage path={require('./static/workload-preset.png')} width="50%" height="50%" title="Click to view full size image" />
+    Users can fine-tune recommendations for different resource types by configuring specific tuning parameters and save presets. By default, Harness CCM has default presets for all resources but users can tune recommendations using custom values. To set custom values, click on the recommendation and expand the "Tune Recommendations" section to configure the tuning parameters. 
+    
+    <Tabs>
+      <TabItem value="workload" label="Workload">
+        <DocImage path={require('./static/workload-preset.png')} width="50%" height="50%" title="Click to view full size image" />
 
-      | Parameter | Description |
-      | --- | --- |
-      | **Quality of Service (QoS)** | Choose between Burstable or Guaranteed resource allocation for workloads. Burstable allows resources to exceed requests up to limits, while Guaranteed sets requests equal to limits for stable performance. |
-      | **Percentage Buffer for CPU/Memory** | Additional resource margin to handle unexpected spikes in usage. Higher buffer values provide more headroom for workload fluctuations but increase resource allocation. |
+        | Parameter | Description |
+        | --- | --- |
+        | **Quality of Service (QoS)** | Choose between Burstable or Guaranteed resource allocation for workloads. Burstable allows resources to exceed requests up to limits, while Guaranteed sets requests equal to limits for stable performance. |
+        | **Percentage Buffer for CPU/Memory** | Additional resource margin to handle unexpected spikes in usage. Higher buffer values provide more headroom for workload fluctuations but increase resource allocation. |
+      </TabItem>
+      <TabItem value="nodepool" label="Nodepool">
+        <DocImage path={require('./static/nodepool-preset.png')} width="50%" height="50%" title="Click to view full size image" />
 
-    </TabItem>
-    <TabItem value="nodepool" label="Nodepool">
+        | Parameter | Description |
+        | --- | --- |
+        | **Minimum Node Count** | Ensures high availability by maintaining a minimum number of nodes in the cluster. This prevents scaling down below a threshold that might impact application availability. |
+        | **Percentage Buffer for CPU/Memory** | Additional resource margin to handle unexpected spikes in usage. Helps prevent resource contention during peak loads while maintaining efficient resource utilization. |
+      </TabItem>
+      <TabItem value="ec2" label="AWS EC2">
+        <DocImage path={require('./static/ec-preset.png')} width="50%" height="50%" title="Click to view full size image" />
 
-      <DocImage path={require('./static/nodepool-preset.png')} width="50%" height="50%" title="Click to view full size image" />
+        | Parameter | Description |
+        | --- | --- |
+        | **Instance Family Selection** | <ul><li><strong>Within the Same Instance Family:</strong> Recommendations will suggest optimized instance types within the same instance family, ensuring workload compatibility and minimizing migration complexity.</li><li><strong>Across Instance Families:</strong> Recommendations can suggest optimized instance types across different instance families, potentially unlocking greater cost savings and efficiency improvements.</li></ul> |
+      </TabItem>
+      <TabItem value="ecs" label="AWS ECS">
+        <DocImage path={require('./static/ecs-preset.png')} width="50%" height="50%" title="Click to view full size image" />
 
-      | Parameter | Description |
-      | --- | --- |
-      | **Minimum Node Count** | Ensures high availability by maintaining a minimum number of nodes in the cluster. This prevents scaling down below a threshold that might impact application availability. |
-      | **Percentage Buffer for CPU/Memory** | Additional resource margin to handle unexpected spikes in usage. Helps prevent resource contention during peak loads while maintaining efficient resource utilization. |
+        | Parameter | Description |
+        | --- | --- |
+        | **Buffer Percentage** | Additional resource margin to ensure containers have sufficient resources during peak usage. Helps prevent throttling and performance issues while maintaining efficient resource allocation. |
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>
 
-    </TabItem>
-    <TabItem value="ec2" label="AWS EC2">
 
-      <DocImage path={require('./static/ec-preset.png')} width="50%" height="50%" title="Click to view full size image" />
 
-      | Parameter | Description |
-      | --- | --- |
-      | **Instance Family Selection** | <ul><li><strong>Within the Same Instance Family:</strong> Recommendations will suggest optimized instance types within the same instance family, ensuring workload compatibility and minimizing migration complexity.</li><li><strong>Across Instance Families:</strong> Recommendations can suggest optimized instance types across different instance families, potentially unlocking greater cost savings and efficiency improvements.</li></ul> |
+</TabItem>
+</Tabs>
 
-    </TabItem>
-    <TabItem value="ecs" label="AWS ECS">
-      <DocImage path={require('./static/ecs-preset.png')} width="50%" height="50%" title="Click to view full size image" />
 
-      | Parameter | Description |
-      | --- | --- |
-      | **Buffer Percentage** | Additional resource margin to ensure containers have sufficient resources during peak usage. Helps prevent throttling and performance issues while maintaining efficient resource allocation. |
+## Recommendations per Cloud Provider
 
-    </TabItem>
-  </Tabs>
 
-:::info
-- For Governance, we support [Granular Recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/aws/aws-recommendations#granular-recommendations). Owing to this, now, while adding a recommendation to Ignore List, users have the option to specify the scope at which the users want to ignore the recommendation. 
+import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
-- New Recommendation Preferences may take up to 24 hours to fully update across the platform. However, changes will be reflected immediately on the drill-down page, while the Overview page may take additional time to reflect updates.
-
-- By default, Harness CCM has default presets for all resources but users can tune recommendations using custom values. To set custom values, click on the recommendation and expand the "Tune Recommendations" section to configure the tuning parameters. 
-:::
-
------------
+<DynamicMarkdownSelector
+  options={{
+    Kubernetes: {
+      path: "/cloud-cost-management/content/recommendations/kubernetes-rec.md",
+      logo: "/cloud-providers/kubernetes-logo.svg",
+      logoSize: 32
+    },
+    AWS: {
+      path: "/cloud-cost-management/content/recommendations/aws-rec.md",
+      logo: "/cloud-providers/aws-logo.svg",
+      iconOnly: true,
+      logoSize: 40
+    },
+    GCP: {
+      path: "/cloud-cost-management/content/recommendations/gcp-rec.md",
+      logo: "/cloud-providers/gcp-logo.svg",
+      logoSize: 32
+    },
+    Azure: {
+      path: "/cloud-cost-management/content/recommendations/azure-rec.md",
+      logo: "/cloud-providers/azure-logo.svg",
+      logoSize: 32
+    }
+  }}
+/>
 
 ## Apply Recommendations
 
-To apply recommendations, you need to raise a ticket in the ticketing tool that your organization uses and manually apply the recommendation to the resource. You can create a Jira or ServiceNow ticket for your team to track the application status of recommendations.
+Applying recommendations is easy! You just need to:
 
-Before you can raise a ticket to apply recommendations, you need to create a Jira or ServiceNow connector.
-- Steps to create a Jira connector: [Create Jira Connector](/docs/platform/connectors/ticketing-systems/connect-to-jira)
-- Steps to create a ServiceNow connector: [Create ServiceNow Connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now)
+1. **Review Recommendations** - Analyze the suggested optimizations in the Recommendations dashboard
+2. **Tune Parameters** - Adjust recommendation settings to see how different configurations affect potential cost savings. See [Recommendations per Cloud Provider](#recommendations-per-cloud-provider) for a deeper drilldown into a particular type of recommendation to understand the action required, cost calculations and tuning.
+3. **Implement Changes and Track using Jira/ServiceNow** -  Apply the optimizations manually in your cloud environment. [Create and manage Jira or ServiceNow tickets](#managing-recommendations-via-jira-servicenow-tickets) to monitor implementation progress
+5. **Update Status** - Mark recommendations as applied in the CCM platform once implemented. Once applied, recommendations show up in the **Applied** tab.
 
-### Configure Ticketing Tool
-:::danger Reminder
- Switching your ticketing tool between Jira and ServiceNow results in the removal of the existing recommendation tickets. The status of the tickets changes to **Create a ticket**.
-:::
+-------
 
- To configure the ticketing tool setup, perform the following steps: 
+## Managing Recommendations via Jira/ServiceNow Tickets 
 
-1. Navigate to **Cloud Costs** > **Setup** > **Default Settings**.
-2. Expand **Cloud Cost Management**.
-3. Under **Ticketing preferences**, select the **Ticketing tool** and the **Ticketing tool connector**. If you do not have an existing connector, [create a new one](#create-a-jira-or-servicenow-connector). The default ticketing tool is **Jira**. You can choose **ServiceNow** if that's the tool used in your organization.
-4. Select **Save**.
+### Prerequisites
+
+1. Create a Jira or ServiceNow connector: 
+    - Steps to create a Jira connector: [Create Jira Connector](/docs/platform/connectors/ticketing-systems/connect-to-jira)
+    - Steps to create a ServiceNow connector: [Create ServiceNow Connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now)
+
+2. Configure ticketing tool settings: 
+    - Navigate to **Cloud Costs** > **Setup** > **Default Settings** > **Cloud Cost Management**.
+    - Under **Ticketing preferences**, select the **Ticketing tool** and the **Ticketing tool connector**. The default ticketing tool is **Jira**. You can choose **ServiceNow** if that's the tool used in your organization. Switching your ticketing tool between Jira and ServiceNow results in the removal of the existing recommendation tickets. 
 
 <DocImage path={require('./static/ticketing-tool-selector.png')} width="70%" height="70%" title="Click to view full size image" />
 
-### Raise a Ticket to Apply Recommendations
 
 Go to the **Recommendations** page and create tickets to apply recommendations.
 
 1. Select **Create a ticket**. In case you haven't set up your ticketing tool settings on the account level, you will see a prompt guiding you to access the **Default Settings** page to configure both the ticketing tool and the associated connector.
-
 
 2. Enter the following ticket details:
 
@@ -282,7 +277,48 @@ When the user clicks "Create Ticket," an API call is made to ServiceNow to creat
 </Tabs>
 
   
-The ticket is created. The status of the ticket changes to **To do**. You need to assign the ticket to apply the recommendations. After applying the recommendations, when the ticket status changes to **Done**, the recommendation is displayed in the **Applied Recommendations** tab. 
-If you have not changed the ticket status to **Done** after applying the recommendation, you could use the **More actions** icon (three vertical dots), and then select **Mark as applied** to move the recommendation to the **Applied Recommendations** tab.
-To view the recommendations that are applied, and the cost savings realized, select the **Applied Recommendations** tab.
+
+
+
+## FAQs
+
+
+<details>
+<summary>What filtering options are available for recommendations across different cloud providers?</summary>
+
+Harness provides filtering support for recommendations based on cloud account identifiers and Kubernetes attributes. This allows for better cost optimization insights while maintaining alignment with perspective-based RBAC settings.
+
+- **AWS EC2**: Filtering is supported on AWS Account ID. Nested Cost Categories are not supported.  
+
+- **AWS ECS**: Filtering is supported on AWS Account ID. Nested Cost Categories are not supported.  
+
+- **Azure VM**: Filtering is not supported.  
+
+- **Kubernetes**: Filtering is supported on Labels and Cluster Name. Nested Cost Categories are not supported.  
+
+- **Governance Recommendations**:
+
+  -   **AWS**: No filtering support.  
+  -   **Azure**: No filtering support.  
+  -   **GCP**: No filtering support.  
+
+Filtering support for recommendations extends to **RBAC configurations based on perspective folder access settings**, ensuring that cost-saving suggestions are appropriately scoped to the right teams.
+</details>
+
+<details>
+<summary>Why aren't memory metrics displayed when using Datadog integration?</summary>
+
+If you ingest memory metrics using Datadog integration, EC2 recommendations do consider these metrics in their calculations; however, the memory utilization data is not displayed on the EC2 Recommendation page.
+
+This occurs because:
+
+- The CPU and memory metrics data we retrieve is typically sourced from CloudWatch
+- In this case, the metrics originate from an external source (Datadog)
+- These Datadog metrics are directly integrated with AWS Compute Optimizer and are utilized in generating the recommendations
+- According to AWS Compute Optimizer API documentation, they do not offer support for retrieving these external utilization metrics
+
+As a result, while the recommendations are accurately calculated using both CPU and memory data, the memory metrics themselves will not be visible in the recommendation interface.
+
+Read more: [External metrics ingestion](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html)
+</details>
 
