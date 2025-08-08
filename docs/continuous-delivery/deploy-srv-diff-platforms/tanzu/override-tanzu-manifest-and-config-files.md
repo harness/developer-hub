@@ -135,6 +135,4 @@ Certain CF CLI environment variables, such as CF_HOME, CF_PLUGIN_HOME, CF_USERNA
 
    ![](static/overrides_cli_environment_variables.png)
 
-Currently, this feature is behind the feature flag `CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
-
 :::

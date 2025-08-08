@@ -111,7 +111,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_K8S_SANITIZE_COMPLETE_DRY_RUN_STEP_OUTPUT | Enables users to access Kubernetes service and job names in the exported manifest. <b> This feature is in Limited GA. </b> |
 | CDS_K8S_ASYNC_STEP_STRATEGY | Enables users to view log details in the UI when a pipeline with K8s async steps times out. <b> This feature is in Limited GA. </b>|
 | CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH | Enable this feature to eliminate downtime during the Auto Scaling Group (ASG) rollback instance refresh. <b> This feature is in Limited GA. </b>|
-| CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT | Enables users to configure CLI environment variables for Tanzu Application Service deployment in the Service and overrides. <b> This feature is in Limited GA. </b>|
 | CDS_OVERRIDES_GITX | Enables users to manage overrides using Git, with options to store them remotely or inline <b> This feature is in Limited GA. </b>|
 | CDS_MULTI_DEPLOYMENT_ON_FAILURE | Enables users to apply failure strategies during multi-service, multi-infrastructure, and matrix deployments. <b> This feature is in Limited GA. </b>|
 | CDS_SERVICE_INFRA_FAILURE_STRATEGY | Enables a failure strategy for the service, where the service step will, by default, inherit the failure strategy from the stage. <b> This feature is in Limited GA. </b>|
