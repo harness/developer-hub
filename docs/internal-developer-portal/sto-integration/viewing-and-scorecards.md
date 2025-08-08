@@ -31,7 +31,7 @@ In this document, we will explore how Harness Security Testing Orchestration (ST
 
 #### STO Pipeline Context – The Source of Truth
 
-We have a Security Test Orchestration (STO) pipeline that runs scans using Snyk and Aqua Trivy to detect vulnerabilities in our services. Once the scans are completed, the findings are processed and stored within STO and the pipelinehas some vulnerabilities which will bocome source of truth for us. With the integration of STO with IDP in place, these vulnerability insights we will view directly inside IDP. 
+We have a Security Test Orchestration (STO) pipeline that runs scans using Snyk and Aqua Trivy to detect vulnerabilities in our services. Once the scans are completed, the findings are processed and stored within STO, and the pipeline has some vulnerabilities, which will become the source of truth for us. With the integration of STO with IDP in place, these vulnerability insights will be viewed directly inside IDP.
 
 <DocImage path={require('./static/sto-pipeline-vul.png')} />
 
@@ -53,8 +53,8 @@ Clicking on a service in the Catalog which has STO integrated, and the entity ov
 Here, you will see:
 
 * A **summary card** showing vulnerability counts by severity (Critical, High, Medium, Low, Info).
-* Percentage of each vulnerabilities.
-* Quick-glance totals that make it easy to prioritise which issues need immediate attention
+* Percentage of each vulnerability type.
+* Quick-glance totals that make it easy to prioritize which issues need immediate attention
 
 This view bridges the gap between high-level visibility and actionable insight.
 

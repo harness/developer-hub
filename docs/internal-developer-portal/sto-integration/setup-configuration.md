@@ -178,4 +178,4 @@ sourceCode:
 Developers get a unified view of vulnerabilities, exposed secrets, and compliance findings **directly within IDP**, automatically linked to the exact service they own. This eliminates context switching, speeds up triage, and ensures security insights are always visible in the development workflow.
 
 
-This integration also enables richer UI elements in the Software Catalog, and many more which we will explore in the [Viewing STO Insights in IDP](/docs/internal-developer-portal/sto-integration/viewing-sto-insights-in-idp) documentation.
+This integration also enables richer UI elements in the Software Catalog, and, which we will explore in the [Viewing STO Insights in IDP](/docs/internal-developer-portal/sto-integration/viewing-and-scorecards) documentation.
