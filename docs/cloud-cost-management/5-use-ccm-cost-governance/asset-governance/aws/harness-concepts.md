@@ -27,10 +27,6 @@ So essentially, **a Rule is a file that includes logic defined by a policy that 
 
 <DocImage path={require('../static/rule_example_AWS.png')} width="80%" height="80%" title="Click to view full size image" />
 
-:::important note
-Number of Rules per Account[Custom + OOTB] can be 300.
-:::
-
 ### Create a new Rule
 
 1. In **Harness**, go to **Cloud Costs**.
@@ -115,6 +111,10 @@ We now have Terraform support for managing Governance RuleSets. Please see [here
 
 ## Enforcements
 
+:::info
+Each enforcement can now have up to **10,000 evaluations**. The cap is calculated as `Rules × Accounts × Regions` and replaces the earlier individual limits on rules, rule sets, accounts, or regions.
+:::
+
 Enforcements enable you to enforce a certain set of Rules or Rule Sets (also known as governance guardrails) against a specific set of targets (accounts, projects, or subscriptions) to run periodically. Sometimes, we need rules to run periodically, such as every day, week, or month. However, running these rules manually every day or week at a specified time creates extra overhead and is a slow process prone to manual errors. To solve this, Enforcements allow users to set up a timely schedule and choose the day, time, and frequency for their rules or rule sets.
 
 For example, a user can create an Enforcement to schedule the deletion of all unattached disks. This Enforcement will run on the **days specified by the user**, at the **specified time**, and with the **specified frequency (hourly, daily, monthly**). For instance, you could set it to run daily at 2:00 AM to ensure that unused RDS database is deleted. Alternatively, you might choose to run it hourly during peak usage times, or monthly for less critical cleanup tasks. 
@@ -129,10 +129,6 @@ While setting up a new Enforcement, you can select the following:
 
   <DocImage path={require('../static/enforcements-aws.png')} width="95%" height="95%" title="Click to view full size image" />
 
-:::info
-- Number of Targets in an Enforcement can be upto 200.
-- Number of Regions in Enforcement can be upto 30.
-:::
 
 ### Create a new Enforcement
 To create an Enforcement, perform the following steps:
@@ -188,9 +184,6 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 
 <DocImage path={require('../static/evaluation-aws-one.png')} width="90%" height="90%" title="Click to view full size image" />
 
-:::info
-Each enforcement can now have up to **10,000 evaluations**. The cap is calculated as `Rules × Accounts × Regions` and replaces the earlier individual limits on rules, rule sets, accounts, or regions.
-:::
 
 ### View Evaluations
 

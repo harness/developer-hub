@@ -120,6 +120,10 @@ We now have Terraform support for managing Governance RuleSets. Please see [here
 
 ## Enforcements
 
+:::info
+Each enforcement can now have up to **10,000 evaluations**. The cap is calculated as `Rules × Accounts × Regions` and replaces the earlier individual limits on rules, rule sets, accounts, or regions.
+:::
+
 Enforcements enable you to enforce a certain set of Rules or Rule Sets (also known as governance guardrails) against a specific set of targets (accounts, projects, or subscriptions) to run periodically. Sometimes, we need rules to run periodically, such as every day, week, or month. However, running these rules manually every day or week at a specified time creates extra overhead and is a slow process prone to manual errors. To solve this, you can use **Enforcements** that allow you to set up a timely schedule and choose the day, time, and frequency for their rules or rule sets.
 
 For example, a user can create an Enforcement to schedule the deletion of all GCP snapshots older than 14 days. This Enforcement will run on the **days specified by the user**, at the **specified time**, and with the **specified frequency (hourly, daily, monthly**). For instance, you could set it to run daily at 2:00 AM to ensure that any snapshots meeting the criteria are removed. Alternatively, you might choose to run it hourly during peak usage times, or monthly for less critical cleanup tasks. 
@@ -133,11 +137,6 @@ While setting up a new Enforcement, you can select the following:
 - **Dry Run Mode**: You can choose to run your Enforcement in Dry Run mode which will generate a simulation of the rule enforcement instead of performing actions.
 
   <DocImage path={require('../static/enforcements-gcp.png')} width="95%" height="95%" title="Click to view full size image" />
-
-:::important note
-- Number of Targets in an Enforcement can be upto 6000.
-- Number of Rule Sets in Enforcement can be upto 30.
-:::
 
 ### Create a new Enforcement
 To create an Enforcement, perform the following steps:
@@ -193,9 +192,6 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 - Partial Success: If the evaluation is successful without any Harness errors but Cloud Custodian has additional logs and/or in case of multi-policy evaluations, if the evaluation was successful only for a subset of resources, the status is shown as "Partial Success".
 
 
-:::info
-Each enforcement can now have up to **10,000 evaluations**. The cap is calculated as `Rules × Accounts × Regions` and replaces the earlier individual limits on rules, rule sets, accounts, or regions.
-:::
 
 <DocImage path={require('../static/evaluation-gcp-one.png')} width="90%" height="90%" title="Click to view full size image" />
 
