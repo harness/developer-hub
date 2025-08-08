@@ -5,6 +5,7 @@ description: Learn more about how to set up databases with SSL connection using 
 sidebar_position: 11
 keywords: [database ssl, secure connection, ssl configuration, db ssl, database security, harness dbdevops, ssl setup, ssl certificate, encrypted db connection, database encryption]
 tags: [ssl-support, secure-db-connection, database-security, harness-db-devops, ssl-configuration]
+slug: /database-devops/use-database-devops/ssl
 ---
 
 This document provides a comprehensive guide to configuring databases with SSL, including secret and delegate configurations, setting up for JDBC test connections, and pipeline permissions. It covers the necessary steps to set up and manage certificates for secure communication between database and other services.

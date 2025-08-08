@@ -1,6 +1,7 @@
 ---
 title: Working with SQL Files
-description: Working with SQL Files
+description: Working with SQL Files in Harness Database DevOps, including directory structure, changeset formatting, and rollback actions.
+slug: /database-devops/concepts-and-features/understanding-changelog-directories/organizing-sql-files
 keywords:
   - sql files
   - sql changelogs

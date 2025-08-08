@@ -5,6 +5,7 @@ sidebar_label: Access ChangeSets via Expressions
 sidebar_position: 6
 keywords: [database devops, changelog, liquibase, db schema, db instance, db migration, pipeline expressions]
 tags: [liquibase-integration, pipeline-expressions, db-schema-apply, database-changesets, harness-db-devops]
+slug: /database-devops/concepts-and-features/access-applied-changesets
 ---
 
 Harness Database DevOps enables users to retrieve the list of change sets applied during a pipeline execution. This is especially useful for audit trails, conditional logic, or notifications post deployment.
