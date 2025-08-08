@@ -10,6 +10,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocImage from '@site/src/components/DocImage';
 
 <Tabs queryString="version">
 <TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
@@ -123,53 +124,90 @@ With IDP 2.0, you can create resources at any scope: **Account**, **Org**, or **
 
 ## Relations [IDP 2.0]
 
+This section describes the key relationship types used in the Harness Internal Developer Portal (IDP) 2.0 data model. These relations define directional connections between entities — from a source entity that declares the relation to a target entity being referenced.
+
+In IDP YAML files, you only need to declare the primary relation from the source entity to the target entity. For example, if a Component (Entity A) `providesApi` an API (Entity B), this relation is declared only on Entity A’s YAML configuration.
+
+These relations are used to define how entities are connected, enabling various functions such as dependency tracking, ownership assignment, hierarchical structuring, and composition modeling. For instance:
+
+* **Entity A** (the source) can be a Component that provides or depends on another entity.
+* **Entity B** (the target) can be an API, User Group, System, or any other related entity.
+* The relation explicitly states how Entity A relates to Entity B, guiding navigation, impact analysis, and organizational clarity.
+
+In the portal UI, both Entity A and Entity B’s overview pages include a **Relation Graph card** that visually displays their connected entities and relationships. 
+
+<DocImage path={require('./static/relation-graph.png')} />
+
 The following is a non-exhaustive list of actively used relations.
 
-Each relation has a *source* (implicitly, the entity that holds the relation), a *target* (the entity it relates to), and a *type* that defines the nature of the relationship. Relations are directional. Typically, you'll find relation pairs where the reverse relation exists for the other entity (e.g., when querying A, you see `A.ownedBy.B`; when querying B, you see `B.ownerOf.A`).
 
-### 1. `ownedBy` and `ownerOf`
+### 1. Ownership Relation: `owner`
 
-An ownership relation where the owner is typically a [User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/).
+Ownership assigns responsibility and stewardship of an entity to a [User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/). This means the User Group is accountable for the entity’s maintenance, updates, and overall health.
 
-In IDP, the owner is the single entity (usually a User Group in Harness) responsible for the entity, with the authority and capability to maintain it. They act as the point of contact for issues or feature requests. This relation primarily serves display purposes in IDP, allowing users to understand ownership. It should not be used by automated systems for runtime authorization. While others may contribute to the entity, there is always one designated owner.
+* Declared via the `spec.owner` field on the owned entity.
+* Each entity can have a single owner, ensuring clear accountability and avoiding conflicts.
+* This relation is primarily used for organizational clarity, enabling users and teams to quickly identify who manages what within the system.
+* While it informs display and reporting in the portal, this relation is not directly tied to automated authorization or access control policies.
 
-This relation is typically generated based on the `spec.owner` field of the owned entity.
+### 2. API Provision: `providesApi`
 
-### 2. `providesApi` and `apiProvidedBy`
+This relation indicates that a [Component](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#4-component) exposes one or more [API](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#3-api) entities. It defines which APIs are offered by a given component, establishing clear ownership and interface boundaries.
 
-A relation involving an [API](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#3-api) entity, usually linked to a [Component](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#4-component).
+* Specified in the `spec.providesApis` field on the Component entity.
+* Helps document the APIs a component makes available, which is critical for service discovery, integration planning, and governance.
+* Facilitates impact analysis by showing which APIs a component is responsible for maintaining.
 
-This relation indicates that a component exposes an API, i.e., it hosts endpoints from which the API can be consumed.
 
-Typically generated from the `spec.providesApis` field.
 
-### 3. `consumesApi` and `apiConsumedBy`
+### 3. API Consumption: `consumesApi`
 
-A relation involving an [API](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#3-api) entity, usually from a [Component](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#4-component).
+This relation shows that a Component depends on and consumes one or more APIs exposed by other components or services. It maps the flow of communication and integration between different parts of the system.
 
-This expresses that a component depends on endpoints of the API.
+* Declared in the `spec.consumesApis` field on the Component.
+* Useful for understanding service interactions, tracing dependencies, and identifying potential points of failure.
+* Enables teams to visualize the ecosystem of API consumers and providers, supporting collaboration and dependency management.
 
-Typically generated from the `spec.consumesApis` field.
 
-### 4. `dependsOn` and `dependencyOf`
 
-A relation that expresses a general dependency on another entity.
+### 4. General Dependency: `dependsOn`
 
-This can indicate that, for example, a website component needs a library during its build process, or that a service uses a persistent storage resource.
+Represents a generic dependency relationship where one entity relies on another to function correctly. Examples include a service depending on a shared library, a database, or external storage.
 
-Typically generated from the `spec.dependsOn` field.
+* Specified via the `spec.dependsOn` field.
+* This relation helps model a wide range of dependencies beyond just APIs, giving a holistic view of service and component interdependencies.
+* Critical for impact analysis, failure domain mapping, and root cause investigations.
+* Supports risk assessment and resilience planning by clearly showing which entities would be affected by failures upstream.
 
-### 5. `parentOf` and `childOf`
 
-A parent-child relation used to construct trees, commonly for organizational structures among [User Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/).
 
-Typically based on the `spec.parent` and/or `spec.children` fields.
+### 5. Hierarchical Structure: `parentOf`
 
-### 6. `memberOf` and `hasMember`
+Defines organizational or structural hierarchies, commonly applied among [User Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/) or other entities that form nested groupings.
 
-A membership relation, usually for users in [User Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/).
+* Based on the `spec.parent` or `spec.children` fields.
+* Enables the construction of clear organizational trees or structural compositions within the portal.
+* Facilitates reporting lines, delegation, and inheritance of properties or responsibilities where applicable.
 
-Typically based on the `spec.memberOf` field.
+
+
+### 6. Membership: `memberOf`
+
+Indicates that a user is a member of a User Group or similar collective, supporting role assignments and collaborative workflows.
+
+* Expressed through the `spec.memberOf` field on the user entity.
+* Supports group membership management, including notifications, access control boundaries, and team collaboration.
+* Facilitates mapping of users to their groups for administrative and operational purposes.
+
+### 7. Composition: `partOf`
+
+A relation with a Domain, System or Component entity, typically from a Component, API, System, or Domain,
+
+* Declared via the `partOf` relation on the component or sub-entity.
+* Helps organize components within the broader context of systems or applications.
+* Supports modular design principles by clearly defining how smaller parts contribute to a larger whole.
+
+
 
 ### Example YAML
 
