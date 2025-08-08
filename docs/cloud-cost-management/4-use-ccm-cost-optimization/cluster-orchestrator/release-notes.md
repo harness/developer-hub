@@ -39,7 +39,8 @@ Link: https://hub.docker.com/r/harness/cluster-orchestrator/tags
 
 ## Helm Chart Releases
 
-Link: https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/cluster-orchestrator-helm-chart
+Link: https://app.harness.io/ng/account/6NTMT--yR7ORXKPqwLDioA/module/code/repos/Helm
+
 | Version | Release Date | Changes |
 |---------|-------------|----------|
 | <span style={{backgroundColor: '#28a745', color: 'white', padding: '2px 6px', borderRadius: '4px', fontSize: '0.8em', marginLeft: '8px'}}>LATEST</span> `0.1.1`  | Aug 7, 2025  | - Added validation for Node Expiry field<br/>- Defaulting Node Expiry to 720h |
