@@ -111,7 +111,7 @@ At the point in your pipeline where you want to build and upload an image, add a
                     name: buildah-docker
                     identifier: buildahdocker
                     spec:
-                      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+                      connectorRef: YOUR_DOCKER_CONNECTOR
                       image: plugins/buildah-docker:1.1.0-linux-amd64
                       privileged: true     # false for OpenShift with anyuid SCC
                       settings:
@@ -126,11 +126,7 @@ At the point in your pipeline where you want to build and upload an image, add a
 
 This step requires the following specifications:
 
-* `connectorRef`: Provide the ID of a connector corresponding to your push destination.
-   * Docker Hub: Docker connector
-   * ACR: Azure connector
-   * ECR: AWS connector
-   * GAR/GCR: GCP connector
+* `connectorRef`: Provide the ID of a Docker connector.
 * `image`: Specify the plugin image and tag to use, such as  `plugins/buildah-docker:1.1.0-linux-amd64`. If you don't specify a tag, the `latest` tag is used by default. Go to an image's Docker Hub page to browse available tags:
    * ACR: [buildah-acr](https://hub.docker.com/r/plugins/buildah-acr/tags)
    * ECR: [buildah-ecr](https://hub.docker.com/r/plugins/buildah-ecr/tags)
