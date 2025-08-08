@@ -500,7 +500,7 @@ To fully reconcile the rule with the latest version of the template, you need to
 
 This updates the pipeline YAML to reference the latest template version and ensures all required inputs are captured.
 
-### Improved Reconciliation Flow (Feature Flag)
+### Improved Reconciliation Flow
 
 :::note 
 This enhanced flow is available behind the feature flag `PIPE_NOTIFICATION_TEMPLATE_INPUT_VARIABLE_PROMPT_UI`. Contact [Harness Support](mailto:support@harness.io) to enable it.
