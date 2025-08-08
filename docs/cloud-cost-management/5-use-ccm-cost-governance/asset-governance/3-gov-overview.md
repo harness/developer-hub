@@ -59,7 +59,8 @@ You can see a list of all recommendations offered by Harness for each Cloud prov
 
 ## Rules Generating Recommendations
 
-### Customizing Governance Rules
+
+<DocImage path={require('./static/new-feature.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Harness CCM provides flexibility in how governance rules are applied across your organization. You can define custom default rules to enforce globally or for specific account subsets and control which accounts are subject to specific governance policies
 
@@ -130,7 +131,9 @@ You can create alerts by defining the following parameters:
 
 ## Cost Correlation
 
-### What’s supported
+Cost Correlation in Harness CCM connects governance with their actual cost impact, allowing you to quantify the financial implications. 
+
+### What's supported
 
 | Cloud | Cost Correlation                                                                                                                                                                                                                                                         | First Class Region Filter Support | Recommendations | Multi-Policy | Autostopping (EC2/VM/Instance) | Perspective Preferences |
 | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- | --------------- | ------------ | ------------------------------ | ----------------------- |
