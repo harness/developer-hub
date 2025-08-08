@@ -11,6 +11,77 @@ The Python library provides full support for Split REST Admin API. It allows you
 
 For more information, see the [Split Admin API](https://docs.split.io/reference/introduction) for more information. The library source is available on the [GitHub repository](https://github.com/splitio/python-api).
 
+## Using in Harness Mode
+
+Starting with version 3.5.0, the Split API client supports operating in Harness Mode to interact with both Split and Harness APIs. This allows you to work with Harness resources like tokens, service accounts, and roles using the same client.
+
+#### Deprecated Endpoints in Harness Mode
+
+The following Split endpoints are deprecated and cannot be used in Harness Mode:
+
+- `/workspaces`: `POST`, `PATCH`, `DELETE`, and `PUT`
+- `/apiKeys`: `POST` for `apiKeyType == 'admin'`
+- `/users`: all methods
+- `/groups`: all methods
+- `/restrictions`: all methods
+
+Non-deprecated endpoints will continue to function as before.
+
+### Working with Harness Resources
+
+Harness Mode provides access to several Harness-specific resources through dedicated microclients.
+
+  * `token`
+  * `harness_apikey`
+  * `service_account`
+  * `harness_user`
+  * `harness_group`
+  * `role`
+  * `resource_group`
+  * `role_assignment`
+  * `harness_project`
+
+To work with Harness resources, initialize the Split client in Harness Mode:
+
+```python
+client = get_client({
+  'harness_mode': True,
+  'harness_token': 'YOUR_HARNESS_TOKEN',
+  'account_identifier': 'YOUR_ACCOUNT_ID'
+})
+```
+
+Example schema for creating resources:
+
+```python
+schema = {
+  'name': 'string',
+  'identifier': 'string',
+  'email': 'string',
+  'accountIdentifier': 'string',
+  'description': 'string',
+  'tags': {'key': 'value'}
+}
+```
+
+Each microclient supports standard methods such as `list()`, `get(id)`, `create(data)`, `update(id, data)`, and `delete(id)`.
+
+To learn about specifications for the Harness APIs, see the [Harness API reference documentation](https://apidocs.harness.io/). For more examples of using Harness resources, see the [Python API README](https://github.com/splitio/python-api?tab=readme-ov-file#working-with-harness-specific-resources).
+
+### Common Microclient Methods
+
+Most Harness microclients support the following standard methods:
+
+- `list(account_identifier=None)`: Lists all resources of the specified type.
+- `get(id, account_identifier=None)`: Gets a specific resource by ID.
+- `create(data, account_identifier=None)`: Creates a new resource.
+- `update(id, data, account_identifier=None)`: Updates an existing resource.
+- `delete(id, account_identifier=None)`: Deletes a resource.
+
+:::tip
+The `account_identifier` parameter can be omitted if it was set during client initialization.
+:::
+
 ## Language support
 
 The Python lib supports Python 3 (v3.3 or later).
@@ -19,7 +90,7 @@ The Python lib supports Python 3 (v3.3 or later).
 
 Install the `splitapiclient` package using the following command:
 
-```bash
+```python
 pip install splitapiclient
 ```
 
@@ -27,16 +98,31 @@ pip install splitapiclient
 
 Import the client object and initializes a connection using an Admin API key:
 
-```bash
+```python
 from splitapiclient.main import get_client  
 client = get_client({'apikey': 'ADMIN API KEY'})
 ```
 
 ### Enable optional logging
 
-```bash
+```python
 import logging  
 logging.basicConfig(level=logging.DEBUG)
+```
+
+### Default Account Identifier
+
+To avoid specifying the `account_id` with every call, set the default when creating the client:
+
+```python
+client = get_client({
+    'harness_mode': True,
+    'harness_token': 'YOUR_HARNESS_TOKEN',
+    'account_identifier': 'YOUR_ACCOUNT_IDENTIFIER'
+})
+
+tokens = client.token.list()  
+projects = client.harness_project.list()
 ```
 
 ## Handling Rate Limit
@@ -51,7 +137,7 @@ When the library receives a 429 HTTP response because of a limit rate, it waits 
 
 **Workspace**
 
-```bash
+```python
 schema = {
     'id': 'string',
     'name': 'string',
@@ -68,7 +154,7 @@ Fetches all workspaces in an account and returns an array of Workspace instances
 * Parameters: None
 * Return: List of Workspace objects
 
-```bash
+```python
 for ws in client.workspaces.list():  
 print ("\nWorkspace:"+ws.name+", Id: "+ws.id)
 ```
@@ -80,7 +166,7 @@ Finds a workspace in a given workspace name.
 * Parameters: Workspace name as string
 * Return: Workspace instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 print ("\nWorkspace:"+ws.name+", Id: "+ws.id)
 ```
@@ -92,7 +178,7 @@ Adds a new workspace.
 * Parameters: Data as JSON with workspace info: `{'name': 'string', 'requiresTitleAndComments': boolean, 'type': 'workspace'}`
 * Return: Workspace instance
 
-```bash
+```python
 ws = client.workspaces.add({"requiresTitleAndComments" : True, "name" : "WS_From_API", "type" : "workspace"})  
 print ("\nWorkspace:"+ws.name+", Id: "+ws.id)
 ```
@@ -107,7 +193,7 @@ Updates a field in existing workspace.
   - `field_value` as string 
 * Return: Workspace instance
 
-```bash
+```python
 ws = client.workspaces.find("Default")
 ws2 = ws.update("requiresTitleAndComments", True)
 ```
@@ -119,13 +205,30 @@ Delete the current instance for an existing workspace and returns True if succes
 * Parameters: None
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("WS_From_API")
 print (ws.name)  
 # If the workspace was created from the Admin API, we need to delete the traffic type that was automatically created before deleting the workspace  
 for ttype in client.traffic_types.list(ws.id):  
     client.traffic_types.delete(ttype.id)  
 ws.delete()
+```
+
+` RuleBasedSegment add_rule_based_segment(segment_data, traffic_type)`
+
+Adds a new rule-based segment to a workspace.
+
+* Parameters:
+
+  - `segment_data` as dict
+  - `traffic_type` as string
+
+* Return: `RuleBasedSegment` instance
+
+```python
+segment_data = {'name': 'advanced_users', 'description': 'Users who match advanced criteria'}
+rule_segment = ws.add_rule_based_segment(segment_data, "user")
+print(rule_segment.name)
 ```
 
 `Segment add_segment(data, traffic_type_name)`
@@ -139,7 +242,7 @@ Adds a new segment to the Workspace instance.
 
 * Return: Segment instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 seg = ws.add_segment({'name':'new_seg', 'description':'some description'})  
 print(seg.name+", "+seg.production)
@@ -152,7 +255,7 @@ Deletes an existing segment from the Workspace instance and returns True if it's
 * Parameters: `segment_name` as string
 * Return: Boolean 
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 ws.delete_environment('new_seg')
 ```
@@ -168,7 +271,7 @@ Adds a new large segment to the Workspace instance.
 
 * Return: Segment instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 seg = ws.add_large_segment({'name':'new_seg', 'description':'some description'})  
 print(seg.name+", "+seg.production)
@@ -181,7 +284,7 @@ Deletes an existing large segment from the Workspace instance and returns True i
 * Parameters: `segment_name` as string
 * Return: Boolean 
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 ws.delete_large_segment('new_seg')
 ```
@@ -194,7 +297,7 @@ Adds a new feature flag to the Workspace instance.
 
   - Data as JSON with a feature flag name and production flag:
     
-    ```bash
+    ```python
     {
         'name': 'string',
         'description': 'string',
@@ -206,7 +309,7 @@ Adds a new feature flag to the Workspace instance.
 
 * Return: Split instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 gr = client.groups.find('Administrators')  
 print(gr._id)  
@@ -223,9 +326,21 @@ Deletes an existing feature flag from the Workspace instance and returns True if
 * Parameters: `split_name` as string
 * Return: Boolean 
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 ws.delete_split('new-split')
+```
+
+`Boolean delete_rule_based_segment(segment_name)`
+
+Deletes an existing rule-based segment from the Workspace instance and returns True if it's successful.
+
+* Parameters: `segment_name` as string
+* Return: Boolean
+
+```python
+ws = client.workspaces.find("Defaults")
+success = ws.delete_rule_based_segment("advanced_users")
 ```
 
 ### Restrictions
@@ -234,7 +349,7 @@ ws.delete_split('new-split')
 
 **Restriction**
 
-```bash
+```python
 schema = {
     "operations" : {
         "view" : True
@@ -269,7 +384,7 @@ Fetches all restrictions for a given resource type and id.
 
 * Return: List of Restriction objects
 
-```bash
+```python
 for ws in client.workspaces.list():  
     print (ws._name)  
     for res in client.restrictions.list("workspace", ws.id):  
@@ -285,7 +400,7 @@ Adds a new restriction or overwrite the existing one to a Workspace instance.
 * Parameters: Data as JSON: `[{'id': 'string', 'type': 'string'}]`
 * Return: Restriction instance
 
-```bash
+```python
 ws = client.workspaces.find("work-02")  
 # Administrator group is required for workspace permissions  
 gr = client.groups.find('Administrators')  
@@ -301,7 +416,7 @@ client.restrictions.add("workspace", ws.id, [{"id": gr._id, "type": "group"},{"i
 
 **Environment**
 
-```bash
+```python
 schema = {
     "creationTime" : number,
     "production": boolean,
@@ -356,7 +471,7 @@ Fetches all environments in a workspace and returns an array of Environment inst
 * Parameters: `workspace_id` as string
 * Return: List of environment objects
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 for env in client.environments.list(ws.id):  
     print (env.name+", "+env.production)
@@ -372,7 +487,7 @@ Finds an environment in a workspace that is given a name.
   - `workspace_id` as integer
 * Return: Environment instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 en = client.environments.find("Production", wd.id)  
 print (env.name+", "+env.production)
@@ -389,7 +504,7 @@ Adds a new environment to the Workspace instance.
 
 * Return: Environment instance
 
-```bash
+```python
 ws = client.workspaces.find("Default")  
 # Administrator group is required for environment permissions  
 gr = client.groups.find('Administrators')  
@@ -410,7 +525,7 @@ Deletes an existing environment from the Workspace instance and returns True if 
   - `workspace_id` as string
 * Return: Boolean 
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 client.environments.delete('newenv', ws.id)
 ```
@@ -424,7 +539,7 @@ Updates the current environment instance given filed name with the field value, 
   - `field_value` as string
 * Return: Environment JSON structure
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("new_env_third", ws.id)   
 # Update the data exporters permissions  
@@ -441,7 +556,7 @@ client.environments.update(env.id, ws.id, "changePermissions/allowKills", True)
 
 **TrafficType**
 
-```bash
+```python
 schema = {
     'id': 'string',
     'name': 'string',
@@ -458,7 +573,7 @@ Fetches all traffic types in a workspace and returns an array of `TrafficType` i
 * Parameters: `workspace_id` as string
 * Return: List of `TrafficType` objects
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 for tp in client.traffic_types.list(ws.id):  
     print (tp.name+", "+tp.id)
@@ -475,7 +590,7 @@ Finds a traffic type in a workspace by name.
 
 * Return: TrafficType object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 tp = client.traffic_types.find('user', ws.id)  
 print (tp.name+", "+tp.id)
@@ -488,7 +603,7 @@ Fetches all attributes of the current traffic type instance.
 * Parameters: None
 * Return: List of Attribute objects
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 tp = client.traffic_types.find('user', ws.id)  
 for at in tp.fetch_attributes():  
@@ -502,7 +617,7 @@ Adds a new attribute to the current traffic type instance.
 * Parameters: Data as JSON; `{ "id": "string", "displayName": "string", "description": "string", "dataType": "string", "isSearchable": "boolean", "suggestedValues": ["suggested", "values"]}`
 * Return: Attribute object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 tp = client.traffic_types.find('user', ws.id)  
 at = tp.add_attribute({"id": "attrib456", "displayName": "Street", "description": "St Address",  
@@ -516,7 +631,7 @@ Adds a new identity to the current traffic type instance.
 * Parameters: Data as JSON; `{ key: 'string', values: { 'attribute_id': 'string', … } }`
 * Return: Identity object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 tp = client.traffic_types.find('user', ws.id)  
 env = client.environments.find("Production", wd.id)  
@@ -530,7 +645,7 @@ Adds a new identities list to current traffic type instance and returns a tuple 
 * Parameters: Data as JSON; `[{ key: 'string', values: { 'attribute_id': 'string', … } }]`
 * Return: Tuple
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 tp = client.traffic_types.find('user', ws.id)  
 env = client.environments.find("Production", wd.id)  
@@ -544,7 +659,7 @@ Imports attributes directly from a JSON array of objects.
 * Parameters: Data as JSON Array. Minimum needed for each attribute is an `idproperty`. Other properties can be `displayName`, `description`, `dataType`, and an array of `suggestedValues`.  
 * Return: boolean, true if successfully imported
 
-```bash
+```python
 ws = client.workspaces.find(workspace_name='Default')
 tp = client.traffic_types.find('account', ws.id)
 newAttributeData=[ { "id": "anAttribute2", "displayName": "An Attribute2", "description": "my description here", "dataType": "string", "suggestedValues": ["suggested","values"] } ]
@@ -557,7 +672,7 @@ tp.import_attributes_from_json(newAttributeData)
 
 **Attribute**
 
-```bash
+```python
 schema = {
     'id': 'string',
     'trafficTypeId': 'string',
@@ -581,7 +696,7 @@ Fetches all attributes in a traffic type for a workspace and returns an array of
   - `traffic_type_id` as string
 * Return: List of Attribute objects
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 tp = client.traffic_types.find('user', ws.id)  
 for atr in client.attributes.list(tp.id, ws.id):  
@@ -598,7 +713,7 @@ Finds an attribute in a traffic type for a workspace.
   - `workspace_id` as string
 * Return: Attribute instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 tp = client.traffic_types.find('user', ws.id)  
 atr = client.attributes.find('attrib456', tp.id, ws.id)
@@ -611,7 +726,7 @@ Saves the current attribute and overwrite the existing one.
 * Parameters: None
 * Return: Attribute instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 tp = client.traffic_types.find('user', ws.id)  
 atr = client.attributes.find('Country', tp.id, ws.id)  
@@ -627,7 +742,7 @@ Deletes the current attribute and returns True if it's successful.
 * Parameters: None
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 tp = client.traffic_types.find('user', ws.id)  
 atr = client.attributes.find('Country', tp.id, ws.id)  
@@ -641,7 +756,7 @@ Deletes a given attribute and returns True if it's successful.
 * Parameters: None
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 tp = client.traffic_types.find('user', ws.id)  
 atr = client.attributes.find('Country', tp.id, ws.id)  
@@ -666,7 +781,7 @@ clients.attributes.delete_by_instance(atr)
 
 **Identity**
 
-```bash
+```python
 schema = {
     'key': 'string',
     'trafficTypeId': 'string',
@@ -684,7 +799,7 @@ Saves the current identity and overwrites an existing one if it exists.
 * Parameters: None
 * Return: Identity object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 tp = client.traffic_types.find('user', ws.id)  
@@ -700,7 +815,7 @@ Adds a new identities list to current traffic type instance and returns a tuple 
 * Parameters: Data as JSON; `[{ key: 'string', values: { 'attribute_id': 'string', … } , 'environmentId': 'string', 'trafficTypeId': 'string'}, …..]`
 * Return: Tuple
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 tp = client.traffic_types.find('user', ws.id)  
@@ -714,7 +829,7 @@ Saves the current identity and overwrite the existing one.
 * Parameters: None
 * Return: Identity object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 tp = client.traffic_types.find('user', ws.id)  
@@ -730,7 +845,7 @@ Deletes an identity object from a user key and returns True if it's successful.
 * Parameters: `traffic_type_id`, `environment_id`, `key` 
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 tp = client.traffic_types.find('user', ws.id)  
@@ -743,7 +858,7 @@ client.identities.delete(tp.id, env.id, 'user100')
 
 **Segment**
 
-```bash
+```python
 schema = {
     'name': 'string',
     'description': 'string',
@@ -767,7 +882,7 @@ Fetches all segments in a workspace and returns an array of Segment instances.
 * Parameters: `workspace_id` as string
 * Return: List of Segment objects
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 for seg in client.segments.list(ws.id):  
     print (seg.name+", "+str(seg.description))  
@@ -782,7 +897,7 @@ Finds a segment in a workspace given a name.
   - `workspace_id` as integer
 * Return: Segment instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 seg = client.segments.find("employees", ws.id)  
 print (seg.name+", "+str(seg.production))  
@@ -795,7 +910,7 @@ Adds a current segment object to an environment.
 * Parameters: `environment_id` as integer
 * Return: SegmentDefinition object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 seg = client.segments.find("employees", ws.id)  
@@ -809,7 +924,7 @@ Removes a current segment object to an environment and returns True if it's succ
 * Parameters: `environment_id` as integer
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 en = client.environments.find("Production", ws.id)  
 seg = client.segments.find("employees", ws.id)  
@@ -820,7 +935,7 @@ segDef = seg.remove_from_environment(env.id)
 
 **SegmentDefinition**
 
-```bash
+```python
 schema = {
     'name': 'string',
     'environment': {
@@ -846,7 +961,7 @@ Fetches all segment definitions in an environment and returns an array of Segmen
   - `workspace_id` as integer
 * Return: List of SegmentDefinition objects
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 for segDef in client.segment_definitions.list(env.id, ws.id):  
@@ -863,7 +978,7 @@ Finds a segment in an environment.
   - `workspace_id` as integer
 * Return: SegmentDefinition instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 segDef = client.segment_definitions.find("employees", env.id, ws.id)  
@@ -877,7 +992,7 @@ Fetches all keys of current segment definition object.
 * Parameters: None
 * Return: Array of string
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 segDef = client.segment_definitions.find("employees", env.id, ws.id)  
@@ -892,7 +1007,7 @@ Exports all segment keys in a current segment definition object to a csv file an
 * Parameters: `csv_file_name` as string
 * Return: Boolean 
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 en = client.environments.find("Production", ws.id)  
 segDef = client.segment_definitions.find("employees", env.id, ws.id)  
@@ -908,7 +1023,7 @@ Imports keys into the current segment definition object from JSON object, with a
   - `json_data` as JSON `{'keys':['key1, 'key2', 'key3'], 'comment':'a comment'}`
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 en = client.environments.find("Production", ws.id)  
 segDef = client.segment_definitions.find("employees", env.id, ws.id)  
@@ -922,7 +1037,7 @@ Removes keys from the current segment definition object stored in JSON object an
 * Parameters: `json_data` as JSON `{'keys':['key1, 'key2', 'key3'], 'comment':'a comment'}`
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 segDef = client.segment_definitions.find("employees", env.id, ws.id)  
@@ -935,7 +1050,7 @@ Submits adding keys request change for current segment definition object.
 
 * Parameters: Definition as JSON;
     
-    ```bash
+    ```python
     {
         'keys': '[string]',
     }
@@ -947,7 +1062,7 @@ Submits adding keys request change for current segment definition object.
   - `approvers` as string array
 * Return: ChangeRequest object
 
-```bash
+```python
 ws = client.workspaces.find('Default')  
 env = client.environments.find('Production', ws.id)  
 segmentDef = client.segment_definitions.find('employees', env.id, ws.id)  
@@ -961,7 +1076,7 @@ cr = segmentDef.submit_change_request(keys, 'CREATE', 'new def', 'comment', ['us
 
 **Split**
 
-```bash
+```python
 schema = {
     'name': 'string',
     'description': 'string',
@@ -998,7 +1113,7 @@ Fetches all feature flags in a workspace and returns an array of Split instances
   - `tags` as array(string) Optional.
 * Return: List of split objects
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 for sp in client.splits.list(ws.id, ["tag1", "tag2"]):  
     print (sp.name+", "+sp.description)  
@@ -1014,7 +1129,7 @@ Finds a feature flag in a workspace given a name.
   - `tags` as string (Optional)
 * Return: Split instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 sp = client.splits.find("new_feature", wd.id)  
 print (sp.name+", "+sp.description)  
@@ -1028,7 +1143,7 @@ Adds current Split object to an environment.
   - `environment_id` as integer
   - `json_data` as JSON; split definition structure:
     
-    ```bash
+    ```python
     {
         'comment': 'string',
         'treatments': [{
@@ -1073,7 +1188,7 @@ Adds current Split object to an environment.
 
 * Return: SplitDefinition object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 sp = client.splits.find("new_feature", ws.id)  
@@ -1088,7 +1203,7 @@ Removes a current split object to an environment and returns True if it's succes
 * Parameters: `environment_id`, `title` (optional), `comment` (optional)
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")
 en = client.environments.find("Production", ws.id)
 sp = client.splits.find("new_feature", ws.id)
@@ -1102,7 +1217,7 @@ Associates tags on current split object and overwrites existing ones, and return
 * Parameters: `tags` as string array 
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 en = client.environments.find("Production", ws.id)  
 sp = client.splits.find("new_feature", ws.id)  
@@ -1113,7 +1228,7 @@ sp.associate_tags(['my_new_tag', 'another_new_tag'])
 
 **SplitDefinition**
 
-```bash
+```python
 schema = {
     'name': 'string',
     'environment': {
@@ -1176,7 +1291,7 @@ Fetches all feature flag definitions in an environment and returns an array of S
   - `workspace_id` as integer
 * Return: List of SplitDefinition objects
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 for spDef in client.split_definitions.list(env.id, ws.id):  
@@ -1193,7 +1308,7 @@ Finds a feature flag in an environment.
   - `workspace_id` as integer
 * Return: SplitDefinition instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 spDef = client.split_definitions.find("new_feature", env.id, ws.id)  
@@ -1210,7 +1325,7 @@ Get a single split definition directly.
   - `workspace_id` as integer
 * Return: SplitDefinition instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 spDef = client.split_definitions.get_definition("new_feature", env.id, ws.id)  
@@ -1223,7 +1338,7 @@ Updates the full feature flag definition for the current SplitDefinition object.
 
 * Parameters: Data as JSON; Split Definition structure
   
-  ```bash
+  ```python
     {
         'comment': 'string',
         'treatments': [{
@@ -1264,7 +1379,7 @@ Updates the full feature flag definition for the current SplitDefinition object.
   ```
 * Return: SplitDefinition instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 spDef = client.split_definitions.find("new_feature", env.id, ws.id)  
@@ -1288,7 +1403,7 @@ Kills a current split object, and returns True if it's successful.
 * Parameters: None
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 spDef = client.split_definitions.find("new_feature", env.id, ws.id)  
@@ -1302,7 +1417,7 @@ Restores a current split object and returns True if it's successful.
 * Parameters: None
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 spDef = client.split_definitions.find("new_feature", env.id, ws.id)  
@@ -1315,7 +1430,7 @@ Submits a definition request change for current split definition object.
 
 * Parameters: Definition as JSON;
 
-  ```bash
+  ```python
     {
         'comment': 'string',
         'treatments': [{
@@ -1363,7 +1478,7 @@ Submits a definition request change for current split definition object.
   - `rollout_status_id` as string, optional, use None if not specified.
 * Return: ChangeRequest object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 spDef = client.split_definitions.find("new_feature", env.id, ws.id)  
@@ -1379,7 +1494,7 @@ cr = spDef.submit_change_request(definition, 'UPDATE', 'new def', 'comment', ['u
 
 **Bucket**
 
-```bash
+```python
 schema = {
     'treatment': 'string',
     'size': 'number'
@@ -1395,7 +1510,7 @@ Exports the current class structure as JSON.
 * Parameters: None
 * Return: JSON structure
 
-```bash
+```python
 from splitapiclient.resources import bucket  
 
 bk1 = bucket.Bucket({"treatment":"on","size":50})  
@@ -1406,7 +1521,7 @@ print(bk1.export_dict())
 
 **Condition**
 
-```bash
+```python
 schema = {
     'combiner': 'string',
     'matchers': [{
@@ -1433,7 +1548,7 @@ Exports the current class structure as JSON.
 * Parameters: None
 * Return: JSON structure
 
-```bash
+```python
 from splitapiclient.resources import condition  
 from splitapiclient.resources import matcher  
 
@@ -1446,7 +1561,7 @@ print(cond.export_dict())
 
 **DefaultRule**
 
-```bash
+```python
 schema = {
     'treatment': 'string',
     'size': 'number'
@@ -1462,7 +1577,7 @@ Exports the current class structure as JSON.
 * Parameters: None
 * Return: JSON structure
 
-```bash
+```python
 from splitapiclient.resources import default_rule  
 
 df = default_rule.DefaultRule({"treatment":"on","size":50})  
@@ -1473,7 +1588,7 @@ print(df.export_dict())
 
 **Matcher**
 
-```bash
+```python
 schema = {
     'negate': 'boolean',
     'type': 'string',
@@ -1503,7 +1618,7 @@ Exports the current class structure as JSON.
 * Parameters: None
 * Return: JSON structure
 
-```bash
+```python
 from splitapiclient.resources import matcher  
 
 match = matcher.Matcher({"attribute":"group","type":"IN_LIST_STRING","strings":["employees"]})  
@@ -1514,7 +1629,7 @@ print(match.export_dict())
 
 **Rule**
 
-```bash
+```python
 schema = {
     'condition': {
         'combiner': 'string',
@@ -1547,7 +1662,7 @@ Exports the current class structure as JSON.
 * Parameters: None
 * Return: JSON structure
 
-```bash
+```python
 from splitapiclient.resources import condition   
 from splitapiclient.resources import bucket   
 from splitapiclient.resources import matcher  
@@ -1565,7 +1680,7 @@ print(rl.export_dict())
 
 **Treatment**
 
-```bash
+```python
 schema = {
     'name': 'string',
     'configurations': 'string',
@@ -1584,7 +1699,7 @@ Exports the current class structure as JSON.
 * Parameters: None
 * Return: JSON structure
 
-```bash
+```python
 from splitapiclient.resources import treatment  
 
 tr1 = treatment.Treatment({"name":"on","configurations":""})  
@@ -1597,7 +1712,7 @@ print(tr1.export_dict())
 
 **ChangeRequest**
 
-```bash
+```python
 schema = {
     'split': {
         'id': 'string',
@@ -1681,7 +1796,7 @@ Fetches all change requests and returns array of ChangeRequest instances.
 * Parameters: None
 * Return: List of ChangeRequest objects
 
-```bash
+```python
 for cr in client.change_requests.list():  
     if cr._split is not None:  
         print (cr._id+", "+cr._split['name']+", "+cr._title+", "+str(cr._split['environment']['id']))   
@@ -1699,7 +1814,7 @@ Finds a change request in an environment.
   - `environment_id` as string
 * Return: Array of ChangeRequest instances
 
-```bash
+```python
 # Find all change requests in an environment  
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
@@ -1719,7 +1834,7 @@ Updates a status of the current change request instance.
   - `comment` as string
 * Return: ChangeRequest object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 cr = client.change_requests.find("new_feature", None, env.id):  
@@ -1732,7 +1847,7 @@ cr[0].update_status("APPROVED", "done")
 
 **User**
 
-```bash
+```python
 schema = {
     'id': 'string',
     'type': 'string',
@@ -1756,7 +1871,7 @@ Fetches all users in the current org for specific status and returns array of Us
 * Parameters: `status` as string
 * Return: List of User objects
 
-```bash
+```python
 for user in client.users.list('ACTIVE'):  
     print(user.email)  
 ```
@@ -1768,7 +1883,7 @@ Finds user in a workspace given email and returns User instances.
 * Parameters: `email` as string
 * Return: User object
 
-```bash
+```python
 user = client.users.find('user@mail.com')  
 print(user.email)  
 ```
@@ -1780,7 +1895,7 @@ Updates the current user object data.
 * Parameters: Data as JSON; `{'name':'string', 'email':'string', '2fa':Boolean, 'status':'string'}`
 * Return: User object
 
-```bash
+```python
 user = client.users.find('user@mail.com')  
 data = {'name':'bob', 'email':'user@mail.com', '2fa':False, 'status':'ACTIVE'}  
 user = user.update_user(data)
@@ -1793,7 +1908,7 @@ Updates the current user object group.
 * Parameters: Data as JSON; `[{'op': 'replace', 'path': '/groups/0', 'value': {'id': 'groupId', 'type':'group'}}]`
 * Return: User object
 
-```bash
+```python
 # Replace current user group  
 user = client.users.find('user@mail.com')  
 group = client.groups.find('Administrators')  
@@ -1813,7 +1928,7 @@ Sends an invite to an email and returns True if it's successful.
 * Parameters: Data as JSON; `{'email':'chillaq@gmail.com', "groups":[{"id":"group_id", "type":"group"}]}`
 * Return: Boolean 
 
-```bash
+```python
 client.users.invite_user({'email':'user@mail.com'})
 ```
 
@@ -1824,7 +1939,7 @@ Deletes an existing user and returns True if it's successful.
 * Parameters: `user_id` as string
 * Return: Boolean 
 
-```bash
+```python
 user = client.users.find('user@mail.com')  
 client.users.delete(user._id)
 ```
@@ -1835,7 +1950,7 @@ client.users.delete(user._id)
 
 **Group**
 
-```bash
+```python
 schema = {
     'id': 'string',
     'type': 'string',
@@ -1853,7 +1968,7 @@ Fetches all groups in current org and returns an array of Group instances.
 * Parameters: None
 * Return: List of Group objects
 
-```bash
+```python
 for group in client.groups.list():  
     print (group._id+", "+group._name)   
 ```
@@ -1865,7 +1980,7 @@ Finds a user in a workspace given email and returns User instances.
 * Parameters: `email` as string
 * Return: User object
 
-```bash
+```python
 gr = client.groups.find('Administrators')  
 print(gr._id)
 ```
@@ -1877,7 +1992,7 @@ Creates a new group in the org and returns a group instance.
 * Parameters: Data as JSON; `{'name':'string', 'description':'string'}`
 * Return: User object
 
-```bash
+```python
 gr = client.groups.create_group({'name':'QA', 'description':'QA group'})  
 print(gr._id)
 ```
@@ -1889,7 +2004,7 @@ Updates an existing group in the org and returns group instance.
 * Parameters: Data as JSON; `{'name':'string', 'description':'string'}`
 * Return: Group object
 
-```bash
+```python
 gr = client.groups.find('QA')  
 gr = client.groups.update_group(gr._id, {'name':'QA Team', 'description':'QA group'})  
 print(gr._name)
@@ -1902,7 +2017,7 @@ Deletes an existing group in the org and returns True if it's successful.
 * Parameters: `group_id` as string
 * Return: Boolean
 
-```bash
+```python
 gr = client.groups.find('QA')  
 client.groups.delete_group(gr._id)
 ```
@@ -1913,7 +2028,7 @@ client.groups.delete_group(gr._id)
 
 **APIKey**
 
-```bash
+```python
 schema = {
     'key': 'string',
     'name': 'string',
@@ -1956,7 +2071,7 @@ Creates a new API key in the org and returns an APIKey instance.
   - list of scopes (optional)
 * Return: APIKey object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 ak = client.apikeys.create_apikey('prod_api','server_side', [env.id], ws.id, ['API_FEATURE_FLAG_VIEWER'])  
@@ -1970,7 +2085,7 @@ Deletes an API key and returns True if it's successful.
 * Parameters: `apikey_id` as string
 * Return: Boolean
 
-```bash
+```python
 client.apikeys.delete_apikey('99go91flvm4h88d7baqh82l0e0u2pp3hldj5')
 ```
 
@@ -1980,7 +2095,7 @@ client.apikeys.delete_apikey('99go91flvm4h88d7baqh82l0e0u2pp3hldj5')
 
 **FlagSet**
 
-```bash
+```python
 schema = {
 "id" : "string",
 "name": "string",
@@ -2004,7 +2119,7 @@ Returns a list of flag sets.
   - `workspace_id` as string
 * Return: [FlagSet object]
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 for s in client.flag_sets.list( ws.id):
     print(s.name)
@@ -2019,7 +2134,7 @@ Find a flag set in a workspace by name.
   - `workspace_id` as string
 * Return: FlagSet object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")
 client.flag_sets.find('my_flagset', ws.id)
 ```
@@ -2033,7 +2148,7 @@ Add a flag set in a workspace.
   - `flag_set` as `flag_set` object
 * Return: FlagSet object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 client.flag_sets.add(flag_set={"name": "omgtest2", "description": "test_description"}, workspace_id=ws.id)
 ```
@@ -2045,7 +2160,7 @@ Delete a flag set by ID.
 * Parameters: `flag_set` ID as string
 * Return: boolean
 
-```bash
+```python
 client.flag_sets.delete(flag_set_id='39148e6e-63ba-4419-afeb-24683cf01e2b')
 ```
 
@@ -2055,7 +2170,7 @@ client.flag_sets.delete(flag_set_id='39148e6e-63ba-4419-afeb-24683cf01e2b')
 
 **Large Segment**
 
-```bash
+```python
 schema = {
 'name': 'string',
 'description': 'string',
@@ -2077,7 +2192,7 @@ Fetches all segments in a workspace and returns an array of Segment instances.
 * Parameters: `workspace_id` as string
 * Return: List of Segment objects
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 for seg in client.large_segments.list(ws.id):  
     print (seg.name+", "+str(seg.description))  
@@ -2092,7 +2207,7 @@ Finds a segment in a workspace given a name.
   - `workspace_id` as integer
 * Return: Segment instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 seg = client.large_segments.find("employees", ws.id)  
 print (seg.name+", "+str(seg.production))  
@@ -2105,7 +2220,7 @@ Adds a current segment object to an environment.
 * Parameters: `environment_id` as integer
 * Return: LargeSegmentDefinition object
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 seg = client.large_segments.find("employees", ws.id)  
@@ -2119,7 +2234,7 @@ Removes a current large segment object to an environment and returns True if it'
 * Parameters: `environment_id` as integer
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 en = client.environments.find("Production", ws.id)  
 seg = client.large_segments.find("employees", ws.id)  
@@ -2130,7 +2245,7 @@ segDef = seg.remove_from_environment(env.id)
 
 **LargeSegmentDefinition**
 
-```bash
+```python
 schema = {
     'name': 'string',
     'environment': {
@@ -2156,7 +2271,7 @@ Fetches all large segment definitions in an environment and returns an array of 
   - `workspace_id` as integer
 * Return: List of LargeSegmentDefinition objects
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 for segDef in client.large_segment_definitions.list(env.id, ws.id):  
@@ -2173,7 +2288,7 @@ Finds a large segment in an environment.
   - `workspace_id` as integer
 * Return: LargeSegmentDefinition instance
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 segDef = client.large_segment_definitions.find("employees", env.id, ws.id)  
@@ -2197,7 +2312,7 @@ This creates a change request and may not be fully automatable in environments w
 
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 en = client.environments.find("Production", ws.id)  
 largeSegmentDef = client.large_segment_definitions.find("employees", env.id, ws.id)  
@@ -2218,9 +2333,195 @@ This creates a change request and may not be fully automatable in environments w
   - `approvers` as [string]
 * Return: Boolean
 
-```bash
+```python
 ws = client.workspaces.find("Defaults")  
 env = client.environments.find("Production", ws.id)  
 largeSegmentDef = client.large_segment_definitions.find('large_segment',env.id, ws.id)
 largeSegmentDef.remove_all_members('title', 'comment', [])
 ```
+
+### Rule-based Segments
+
+Rule-based segments allow you to define audience segments using complex rule structures and exclusion logic.
+
+#### Class
+
+**RuleBasedSegment**
+
+```python
+schema = {
+'name': 'string',
+'description': 'string',
+'trafficType' : {
+'id': 'string',
+'name': 'string'
+},
+'creationTime' : 'number',
+'tags': [{'name': 'string'}]   
+}
+```
+
+#### Methods
+
+`rule_based_segments.list(workspace_id)`
+
+    Fetch all rule-based segments in a workspace.
+
+* Parameters: `workspace_id` as string
+* Return: List of `RuleBasedSegment` objects
+
+```python
+ws = client.workspaces.find("Defaults")
+for segment in client.rule_based_segments.list(ws.id):
+    print(f"Rule-Based Segment: {segment.name}, {segment.description}")
+```
+
+`rule_based_segments.find(segment_name, workspace_id)`
+
+Finds a specific rule-based segment by name.
+
+* Parameters:
+
+  - `segment_name` as string
+  - `workspace_id` as string
+
+* Return: `RuleBasedSegment` instance
+
+```python
+segment = client.rule_based_segments.find("advanced_users", ws.id)
+```
+
+#### Class
+
+**RuleBasedSegmentDefinition**
+
+The segment definition is used when adding, updating, or making change requests to rule-based segments in specific environments.
+
+```python
+schema = {
+  'name': 'string',
+  'environment': {
+    'id': 'string',
+    'name':'string'
+  },
+  'trafficType' : {
+    'id': 'string',
+    'name': 'string'
+  },
+  'creationTime' : 'number',
+  'rules': [ ... ],
+  'excludedKeys': ['string'],
+  'excludedSegments': [ { 'name': 'string', 'type': 'string' } ]
+}
+```
+
+#### Methods
+
+`rule_based_segment_definitions.add_to_environment(environment_id)`
+
+Adds a rule-based segment to an environment.
+
+* Parameters: `environment_id` as string
+
+* Return: `RuleBasedSegmentDefinition` instance
+
+```python
+env = client.environments.find("Production", ws.id)
+segdef = segment.add_to_environment(env.id)
+```
+
+`rule_based_segment_definitions.find(segment_name, environment_id, workspace_id)`
+
+Finds a rule-based segment definition in an environment.
+
+* Parameters:
+
+  - `segment_name` as string
+  - `environment_id` as string
+  - `workspace_id` as string
+
+* Return: `RuleBasedSegmentDefinition` instance
+
+```python
+segdef = client.rule_based_segment_definitions.find("advanced_users", env.id, ws.id)
+```
+
+`rule_based_segment_definitions.update(data)`
+
+Updates the rule-based segment definition with rules or exclusions.
+
+* Parameters: `data` as dict
+
+* Return: Updated `RuleBasedSegmentDefinition` instance
+
+```python
+update_data = {
+    'rules': [...],
+    'excludedKeys': ['user1', 'user2'],
+    'excludedSegments': [{'name': 'beta_testers', 'type': 'standard_segment'}]
+}
+updated_segdef = segdef.update(update_data)
+```
+
+`rule_based_segment_definitions.submit_change_request(...)`
+
+Submits a change request to update a rule-based segment definition.
+
+* Parameters:
+
+  - `rules` as list of dicts
+  - `excluded_keys` as list of strings
+  - `excluded_segments` as list of dicts
+  - `operation_type` as string
+  - `title` as string
+  - `comment` as string
+  - `approvers` as list of strings
+  - `workspace_id` as string
+
+* Return:Boolean
+
+```python
+segdef.submit_change_request(
+    rules=rules,
+    excluded_keys=excluded_keys,
+    excluded_segments=excluded_segments,
+    operation_type='UPDATE',
+    title='Lower age threshold to 25',
+    comment='Including more users in advanced segment',
+    approvers=['user@email.com'],
+    workspace_id=ws.id
+)
+```
+
+`change_requests.list()`
+
+List all change requests.
+
+* Return: List of `ChangeRequest` objects
+
+```python
+for cr in client.change_requests.list():
+    if cr._split:
+        print(f"{cr._id}, {cr._split['name']}, {cr._title}")
+    if cr._segment:
+        print(f"{cr._id}, {cr._segment['name']}, {cr._title}")
+```
+
+`change_requests.update_status(status, comment)`
+
+Approve or reject a change request.
+
+* Parameters:
+
+  - `status` as string (APPROVED or REJECTED)
+  - `comment` as string
+
+* Return: Boolean
+
+```python
+for cr in client.change_requests.list():
+    if cr._split['name'] == 'new_feature':
+        cr.update_status("APPROVED", "done")
+```
+
+For more information about rule-based segments, see the [README](https://github.com/splitio/python-api?tab=readme-ov-file#rule-based-segments).
