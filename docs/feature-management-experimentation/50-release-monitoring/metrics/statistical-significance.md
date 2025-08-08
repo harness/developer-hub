@@ -75,9 +75,8 @@ One of the first things to look out for when interpreting statistically inconclu
 
 Each metric for a given test will only have enough power to detect impacts greater than a given size -- this is the metric’s minimum likely detectable effect (MLDE). Getting an inconclusive result means it is unlikely that your test had an impact greater than this MLDE, in either direction, but there could be an impact smaller than this value that the test was not able to detect given the current number of experimental units. The current MLDE can be displayed by hovering over the question mark on your inconclusive metric card.
 
-<img src="https://help.split.io/hc/article_attachments/15789835486861" alt="metric_values.png" width="300" />
-<br />
-<img src="https://help.split.io/hc/article_attachments/15789835468429" alt="inconclusive_metric_card.png" width="400" />
+![](../static/metric-values.png)
+![](../static/inconclusive.png)
 
 For example, in the image above, the hover text indicates that your treatment didn’t impact the number of bookings per user by more than a relative change of 3.76%, but that there may be an impact smaller than that value. 
 
@@ -103,7 +102,7 @@ Finally, if you are seeing inconclusive results too often, it may be a sign that
 
 ### My metric showed statistical significance yesterday and now it doesn't. How can that be?
 
-<img src="https://help.split.io/hc/article_attachments/15804358062605" alt="metrics-question.png" width="900" />
+![](../static/metrics-question.png)
 
 When you use fixed horizon to calculate your metrics, it is possible that your metrics change from conclusive to inconclusive. You were so excited on Tuesday to see that your metric had a statistically significant uplift of almost 75% only to have your hopes dashed on Wednesday when the latest recalculation of that metric showed a statistically inconclusive and smaller increase over the baseline.
 
