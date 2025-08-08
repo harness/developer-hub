@@ -44,8 +44,8 @@ Here is an in-depth explanation of the Overview page and the information it disp
   - **Custom Recommendations**: All Custom Recommendations show up with a "Custom" badge after successful creation.
 
   :::important note
-- In case of AWS and Azure, Account/ Subscription and region combination with greater than 300$ of monthly spend are considered for recommendations.
-- In case of GCP, Project with greater than 300$ of monthly spend is considered for recommendations.
+  - In case of AWS and Azure, Account/ Subscription and region combination with greater than 300$ of monthly spend are considered for recommendations.
+  - In case of GCP, Project with greater than 300$ of monthly spend is considered for recommendations.
   :::
 
 To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/governance).
@@ -59,17 +59,19 @@ You can see a list of all recommendations offered by Harness for each Cloud prov
 
 ## Rules Generating Recommendations
 
-
 <DocImage path={require('./static/new-feature.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Harness CCM provides flexibility in how governance rules are applied across your organization. You can define custom default rules to enforce globally or for specific account subsets and control which accounts are subject to specific governance policies
 
 #### Adding Rules to Generate Recommendations
 
+:::info
+Each cloud provider (AWS, Azure, GCP) supports up to 50 rules for recommendation generation. This limit applies to the combined total of both out-of-the-box (OOTB) and custom rules.
+:::
 1. Click on "Rules Generating Recommendations" tab. Click the **+Include Rule** button to add an existing cost governance rule
 2. Select the scope for recommendation generation:
-   - **All Subscriptions**: Apply the rule across your entire environment
-   - **Only Specific Subscriptions**: Target the rule to selected accounts
+   - **All Accounts/Regions/Subscriptions**: Apply the rule across your entire environment
+   - **Only Specific Accounts/Regions/Subscriptions**: Target the rule to selected accounts
 
 ### Managing Governance Rules
 
