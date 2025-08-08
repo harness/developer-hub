@@ -1,0 +1,11 @@
+{
+  "label": "STO Integration with IDP",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 40,
+  "link": {
+    "type": "generated-index",
+    "title": "STO Integration with IDP"
+  },
+  "customProps": {}
+}
