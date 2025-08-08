@@ -22,6 +22,35 @@ These release notes describe recent changes to Harness Database DevOps.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
 
-#### Last updated: September 25, 2024
+## July 2025
 
-## September 2024
+### Release 1.49.x
+The `1.49.x` release introduces key improvements across schema discovery, rollback tracking, and platform extensibility. Rollback operations are now enhanced with richer metadata capture, helping teams trace rollback executions via the `changesetmetadata` model.
+
+#### Key Highlights:
+
+* **✅ Feature Enhancements:**
+  - Rollbacks now generate detailed metadata entries, helping teams understand when and why a rollback occurred, especially when using `rollback-by-count`.
+
+**Minimum Supported Versions:**
+- `ngmanager` – 1.49.x
+- `dbservice` – 1.49.x
+
+### Release 1.48.x
+
+This release brings several critical feature enhancements and extended support across various database types and integrations.
+
+#### Key Highlights:
+
+* **✅ New Features:**
+  - Deployed state now includes changesetFQN
+  - You can now view the changeset details by clicking on the change-id in the deployed state tab on the apply or rollback step.
+
+* ✅ Added TLS support for the following databases: Postgres, MySQL, Oracle, SQL Server, MongoDB.
+* ✅ OPA and OPA rollback support across key Databases.
+* ✅ Private Registry support verified for MySQL.
+* ✅ Metadata fields such as comments, labels, and authors now visible.
+
+**Minimum Supported Versions:**
+- `ngmanager` – 1.48.0
+- `dbservice` – 1.48.0
