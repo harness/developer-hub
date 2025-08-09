@@ -19,8 +19,6 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 :::
 
-<DocVideo src="https://youtu.be/lNf_P5sHTcE" />
-
 ## What Are AutoStopping Rules?
 
 **AutoStopping Rules** are intelligent orchestrators that automatically manage your non-production cloud resources. They:
