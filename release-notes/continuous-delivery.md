@@ -1131,7 +1131,7 @@ Harness now emits an Audit Event whenever the stable version of a template is up
 
 - **Support for OAuth Configuration with Self-Hosted GitLab Provider**
 
-Harness now supports configuring OAuth for self-hosted GitLab providers. This feature simplifies authentication and authorization by enabling seamless integration with GitLab's OAuth mechanism.  This change is behind FF `CDS_PROVIDERS` and `PIPE_ENABLE_GITLAB_ON_PREM_FLOW`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. This item requires Harness Delegate version 843xx or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+Harness now supports configuring OAuth for self-hosted GitLab providers. This feature simplifies authentication and authorization by enabling seamless integration with GitLab's OAuth mechanism.  This change is behind FF `PIPE_ENABLE_GITLAB_ON_PREM_FLOW`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. This item requires Harness Delegate version 843xx or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
 #### Fixed Issues
@@ -1160,7 +1160,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 
 - Harness now supports webhooks configured with **GitLab System Hooks** to trigger pipelines. For more information, go to Harness [GitLab System Hooks](/docs/platform/triggers/triggers-reference/#gitlab-system-hooks). (CDS-95423)
 
-- Harness now supports self-hosted Bitbucket OAuth tokens for the Git Experience. For more information, go to Harness [Bitbucket Configuration](/docs/platform/git-experience/oauth-integration/). This feature is behind a feature flag `CDS_PROVIDERS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-95417)
+- Harness now supports self-hosted Bitbucket OAuth tokens for the Git Experience. For more information, go to Harness [Bitbucket Configuration](/docs/platform/git-experience/oauth-integration/). (CDS-95417)
 
 - The Harness platform has been updated with the Kubernetes SDK (v18.0 to v21.0) and Helm SDK. (v3.12 to v3.13).
 
