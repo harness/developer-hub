@@ -5,6 +5,32 @@ export const codeData: Horizon = {
   Now: {
     description: "Q2 2025, May-July 2025",
     feature: [
+
+      {
+        tag: [{ value: "Code Quality" }],
+        title: "Code Coverage",
+        description: "Display a coverage overlay in the code view and show a PR status summary for overall and changed code coverage—helping teams track gaps, enforce thresholds, and improve test completeness..",
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Developer Experience" }],
+        title: "Automated Code Review",
+        description: "AI-powered code review suggestions to improve developer efficiency.",
+      },
+      {
+        tag: [{ value: "Governance" }],
+        title: "Enforce Signed-Commits",
+        description: "Ensure that all repository commits are signed by a known developer.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Compare Tags Page",
+        description: "Compare two release tags to see the delta in commits, PRs, artifacts, and deployments—helping validate changes and support audit traceability.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Support for Forked Repositories",
+        description: "Harness Code Repository will support repository forking, allowing developers to create isolated copies of repositories for experimentation, collaboration, or contributing back via pull requests — without impacting the main repository."
+      },
       {
         tag: [{ value: "Secure" }],
         title: "SSH Support",
@@ -16,19 +42,9 @@ export const codeData: Horizon = {
         description: "Support for AutoLink references will allow Harness Code to automatically hyperlink commit messages and PR titles to external issue trackers like Jira, improving traceability across tools."
       },
       {
-        tag: [{ value: "Developer Experience" }],
-        title: "Favorite Repositories Across the Account",
-        description: "Users will be able to mark repositories as favorites for quicker access and personalized navigation across the account."
-      },
-      {
         tag: [{ value: "Integrations" }],
         title: "Atlassian Jira Marketplace Application",
         description: "First-class support for Jira with Atlassian Marketplace application, allowing users to surface relevant commits and PRs in Jira issues.",
-      },
-      {
-        tag: [{ value: "Governance" }],
-        title: "Enforce Signed-Commits",
-        description: "Ensure that all repository commits are signed by a known developer.",
       },
       {
         tag: [{ value: "Governance" }],
@@ -48,10 +64,20 @@ export const codeData: Horizon = {
     feature: [
 
       {
-        tag: [{ value: "Developer Experience" }],
-        title: "Support for Forked Repositories",
-        description: "Harness Code Repository will support repository forking, allowing developers to create isolated copies of repositories for experimentation, collaboration, or contributing back via pull requests — without impacting the main repository."
+        tag: [{ value: "AI" }, { value: "Developer Experience" }],
+        title: "Auto-generated PR Summaries and Commit Messages",
+        description: "Automatically generate pull request summaries and commit messages to help reviewers quickly understand the scope and intent of changes.",
       },
+      {
+        tag: [{ value: "AI" }, { value: "Code Quality" }],
+        title: "AI-Generated Tests",
+        description: "Generate unit tests from repository code using AI, guided by coverage results to target untested areas and help improve overall code coverage.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Linked Repositories",
+        description: "Ability to connect code repositories hosted on external SCM providers and ." //todo
+      }, 
       {
         tag: [{ value: "Developer Experience" }, { value: "Reliability" }],
         title: "Merge Queue for Pull Requests",
@@ -67,20 +93,11 @@ export const codeData: Horizon = {
   Later: {
     description: "Q4 2025, November 2025 & beyond",
     feature: [
-      {
-        tag: [{ value: "Harness AI" }],
-        title: "Automated Code Review",
-        description: "AI-powered code review suggestions to improve developer efficiency.",
-      },
+
       {
         tag: [{ value: "Developer Experience" }],
         title: "Repo Insights",
         description: "Summary insights including PR and commit metrics and security scanning results.",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Cross-Project Cloning",
-        description: "Enable pipelines to clone repos across various repositories in different projects.",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -117,6 +134,11 @@ export const codeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Favorite Repositories Across the Account",
+        description: "Users will be able to mark repositories as favorites for quicker access and personalized navigation across the account."
+      },
       {
         tag: [{ value: "Scalable" }, { value: "Developer Experience" }],
         title: "Git LFS (Large File Storage) Support",

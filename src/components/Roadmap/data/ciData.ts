@@ -2,23 +2,38 @@ import { Horizon } from "./roadmapData";
 
 export const CiData: Horizon = {
   Now: {
-    description: "Q2 2025, May-July 2025",
+    description: "Q3 2025, August-October 2025",
     feature: [
       {
         tag: [{ value: "Fast" }],
-        title: "Build Intelligence for Maven",
-        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Support will be added for Maven build tool, for both Cloud and self-hosted builds.",
+        title: "Flaky tests management",
+        description: "Identify, track, and manage flaky tests to improve test reliability and build stability.",
       },
       {
         tag: [{ value: "Fast" }],
-        title: "Test Intelligence for JavaScript-based languages with Cypress",
-        description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related to the code changes made.",
+        title: "Test Intelligence for Integration Tests",
+        description: "Enable test selection and insights for integration tests, extending Test Intelligence beyond unit testing.",
       },
       {
-        tag: [{ value: "Kubernetes" }],
-        title: "Pod Spec Customization for Kubernetes Infrastructure",
-        description: "Harness will enhance the `podSpecOverlay` field to support full Kubernetes Pod YAML customization. This enables users to apply custom attributes such as security contexts, topology spread constraints and so on, offering fine-grained control for compliance, performance, and platform-specific requirements.",
-      }, 
+        tag: [{ value: "Fast" }],
+        title: "Simplify migration from Drone to Harness platform",
+        description: "Customers can run Drone pipelines on the Harness platform using runtime conversion and dynamic pipelines, simplifying the migration path.",
+      },
+      {
+        tag: [{ value: "Secure" }],
+        title: "OpenID Connect (OIDC) - Azure",
+        description: "Securely connect to Microsoft Azure through OIDC, for accessing public cloud resources without secrets or credentials.",
+      },
+      {
+        tag: [{ value: "Code Quality" }],
+        title: "Code Coverage",
+        description: "Upload code coverage reports to Harness. Visualize overall coverage and coverage for changed code to track gaps, enforce thresholds, and improve test completeness over time.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Upload and Display Build Artifacts",
+        description: "Preview build artifacts like HTML test coverage reports directly in the browser, or download them from Harness-managed storage for deeper inspection.",
+      },
       {
         tag: [{ "value": "Usability" }],
         title: "Run Git Commands Post-Clone Without Re-authentication",
@@ -37,45 +52,54 @@ export const CiData: Horizon = {
     ],
   },
   Next: {
-    description: "Q3 2025+, August-October 2025",
+    description: "Q4 2025, November 202 5- January 2026",
     feature: [
       {
-        tag: [{ value: "Developer Experience" }],
-        title: "Upload and Display Build Artifacts",
-        description: "Harness will support uploading build artifacts to Harness-managed storage, whether builds run in the cloud or on-prem. Users will be able to download artifacts from the Artifacts tab or view them directly in the browser if the file type is supported—enabling use cases like viewing HTML-based code coverage reports and other test results."
+        tag: [{ value: "Fast" }],
+        title: "Test Intelligence for JavaScript-based languages with Cypress",
+        description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related to the code changes made.",
       },
       {
         tag: [{ value: "Fast" }],
-        title: "Test Intelligence for all test types",
-        description: "ML-based Test Intelligence that applies smart test selection across all testing frameworks, reducing testing times and speeding up the feedback loop for developers. Test Intelligence currently supported for unit tests, and with this work we will make it available for other test types as well.",
+        title: "Build Intelligence for Go",
+        description: "Speed up Go builds by reusing outputs from previous runs and avoiding redundant compilation of unchanged code.",
       },
       {
-        tag: [{value: "Insights"}],
+        tag: [{ value: "Intelligence" }],
+        title: "Support for Code Coverage integration with Test Intelligence",
+        description: "Show accurate code coverage metrics even when only a subset of tests is executed through Test Intelligence, helping teams maintain visibility without running the full suite.",
+      },
+      {
+        tag: [{ value: "Self-hosted" }],
+        title: "Support Azure storage with Caching Intelligence features",
+        description: "Use Azure Blob Storage as a backend for Build Intelligence, Cache Intelligence, and Docker Layer Caching, when using self-hosted build infrastructure.",
+      },
+      {
+        tag: [{ value: "AI" }],
+        title: "AI-powered errors classification",
+        description: "AI-powered error classification to enable meaningful pipeline failure messages and dashboards, surfacing meaningful, human-readable insights on the root cause build and test failures.",
+      },
+      {
+        tag: [{ value: "Insights" }],
         title: "Test Insights",
-        description: "Harness can help users to visualize test results across success, failure, and other key metrics.",
+        description: "Visualize test metrics such as pass/fail rates, duration trends, and flake frequency across builds.",
       },
       {
-        tag: [{ value: "Secure" }],
-        title: "OpenID Connect (OIDC) - Azure",
-        description: "Securely connect to Microsoft Azure through OIDC, for accessing public cloud resources without secrets or credentials.",
+        tag: [{ value: "Cloud" }],
+        title: "Harness Cloud - GPU Enabled Machines",
+        description: "Run GPU-accelerated workloads such as machine learning training, simulation, or graphics-heavy builds directly on Harness Cloud infrastructure.",
+      },
+      {
+        tag: [{ value: "Cloud" }],
+        title: "Harness Cloud - support for larger Windows Machines",
+        description: "Access high-capacity Windows machines in Harness Cloud to support resource-intensive workloads.",
       },
     ],
   },
   Later: {
-    description: "Q4 2025, November 2025 & beyond",
-    feature: [
+    description: "Q1 2026, February 2026 & beyond",
+    feature: [      
 
-      {
-        tag: [{ value: "Fast" }],
-        title: "Build Intelligence for Go",
-        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
-      },
-      
-      {
-        tag: [{ value: "Fast" }],
-        title: "Flaky tests management",
-        description: "Identify, track, and manage flaky tests, improving test reliability and build stability.",
-      },
       {
         tag: [{ value: "Integrations" }, { value: "Mobile" }],
         title: "Native integration with Fastlane",
@@ -91,7 +115,18 @@ export const CiData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
- 
+
+      {
+        tag: [{ value: "Kubernetes" }],
+        title: "Pod Spec Customization for Kubernetes Infrastructure",
+        description: "Harness will enhance the `podSpecOverlay` field to support full Kubernetes Pod YAML customization. This enables users to apply custom attributes such as security contexts, topology spread constraints and so on, offering fine-grained control for compliance, performance, and platform-specific requirements.",
+      }, 
+       {
+        tag: [{ value: "Fast" }],
+        title: "Build Intelligence for Maven",
+        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Support will be added for Maven build tool, for both Cloud and self-hosted builds.",
+      },
+
       {
         tag: [{ value: "Fast" }, {value: "beta" }],
         title: "Test Intelligence for JavaScript-based languages with Jest",
@@ -117,34 +152,7 @@ export const CiData: Horizon = {
         tag: [{ value: "Integrations" }],
         title: "Improvements for Build and Push steps",
         description: "Enhancing the Build and Push steps with a 'build-only' and 'push-only' mode, allowing for local vulnerability scans. These improvements make it easier to accomplish the build-local scan-and-push flow, or building once and pushing to multiple Docker registries.",
-      },
-      {
-        tag: [{ value: "Cloud" }],
-        title: "Cloud Credits Breakdown report",
-        description: "Gain insights into how Harness Cloud build credits are consumed by different pipelines, helping you manage and optimize your CI resource allocation.",
-      },
-      {
-        tag: [{ value: "Fast" }],
-        title: "Build Intelligence for Gradle & Bazel - Cloud & Self Hosted",
-        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
-      },
-      {
-        tag: [{ value: "Fast" }],
-        title: "Simplify usage of Test Intelligence with new Test step",
-        description: "Simplify the configuration and usage of Test Intelligence, making it easier for teams to speed up their builds.",
-      },
-      {
-        tag: [{ value: "Fast" }],
-        title: "Test Intelligence for C# ",
-        description: "Accelerate testing cycles of C# (.NET Core 6.0+) applications with Test Intelligence, selectively running only tests that cover the code changes made.",
-      },  
-      {
-        tag: [{ value: "Secure" }, { value: "beta" }],
-        title: "Secure Connect",
-        description: "Enables an encrypted, secure tunnel between the Harness Cloud network and your private network, allowing you to safely use Harness Cloud infrastructure with privately-hosted assets such as internal artifact or code repositories."
-      ,
-      },
-
+      }
 
     ],
   },
