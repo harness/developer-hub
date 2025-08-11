@@ -68,9 +68,9 @@ resource "aws_instance" "example" {
 
 3. Validation
 After importing, run terraform plan to confirm the state matches the actual infrastructure.
-<!-- placeholder for Harness log snippets confirming planned changed -->
-
 Apply any necessary updates to the Terraform configuration.
+
+<DocVideo src="https://app.tango.us/app/embed/d60d5d52-ff6d-4e88-8759-b12bfe7da0fe?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Removed Resources in Harness IaCM" />
 
 ## Best Practices
 - Always back up your state file before making changes.
