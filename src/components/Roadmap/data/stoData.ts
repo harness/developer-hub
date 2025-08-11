@@ -2,13 +2,78 @@ import { Horizon } from "./roadmapData";
 
 export const StoData: Horizon = {
   Now: {
-    description: "Q2 2025, May 2025 - July 2025",
-    feature: [
+    description: "Q3 2025, Aug 2025 - Oct 2025",
+    feature: [    
       {
-        tag: [{ value: "Platform" }, { value: "Exemption"}],
-        title: "Exemption at Occurrence Level",
-        description: "Exempt specific occurrences of issues without exempting the entire STO issue.",
+        tag: [{ value: "Visibility" }, { value: "AppSec" }],
+        title: "Open and Remediated Sub-Tabs in Issues Page",
+        description: "Add 'Remediated' sub-tab alongside 'Open' in Issues page to track and manage remediated issues."
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "Platform" }],
+        title: "Stage-level Issue Counts in Executions",
+        description: "Show stage-based issue counts in Executions for CI and IaCM stages."
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Visibility" }],
+        title: "AppSec Agent Chatbot",
+        description: "AI chatbot to help with vulnerabilities, exemptions, policies, tickets, and more."
+      },
+      {
+        tag: [{ value: "Ticketing" }, { value: "Integration" }, { value: "Exemption" }],
+        title: "Auto Create Jira Ticket on Exemption Request",
+        description: "Automatically create a Jira ticket on exemption request using a configured templates."
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "Platform" }],
+        title: "Display Issue ID in UI",
+        description: "Show STO issue ID in issue details and make it searchable."
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "Platform" }],
+        title: "Combine Results Across Executions",
+        description: "Aggregate scan results from all stages/executions including resumed runs and child pipelines with deduplication."
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "Anchore" }],
+        title: "Anchore: Support non-os Scan",
+        description: "Present Anchore results to show only application (non-os) vulnerabilities in STO, excluding findings from base image."
+      },          
+      {
+        tag: [{ value: "Integration" }, { value: "Dastardly" }],
+        title: "Dastardly Integration",
+        description: "Support Dastardly with Orchestration, Extraction, and Ingestion modes, with Built-in scanner workflow step under DAST."
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "SonarQube" }],
+        title: "Treat SonarQube Code/Bug Smells as Vulnerabilities",
+        description: "Add setting to present SonarQube Code/Bug Smells as vulnerabilities with normalized severities."
+      },
+      {
+        tag: [{ value: "Vulnerability Prioritization" }, { value: "AppSec" }],
+        title: "Custom Severity for Vulnerabilities",
+        description: "Allow users to change vulnerability severity at Target, Pipeline, or Project level with audit and governance support."
       }, 
+      {
+        tag: [{ value: "Visibility" }, { value: "Platform" }],
+        title: "Deduplication Metrics at Pipeline Level",
+        description: "Show total scanner findings vs post-deduplication count at pipeline level, with future dashboard widget support."
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Remediation" }, { value: "SCA" }],
+        title: "Auto PRs for SCA Remediation",
+        description: "Create PRs for SCA issues using AI suggestions for direct dependency upgrades (JS/TS, Python, Java). Transitives excluded."
+      },
+      {
+        tag: [{ value: "Platform" }, { value: "RBAC" }],
+        title: "Download Issues Data as CSV from Vulnerabilities Tab",
+        description: "Enable RBAC-honoring download of issues CSV from Vulnerabilities Tab, add API, and deep-link to Pipeline Execution Summary Dashboard with execution ID."
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "ServiceNow" }],
+        title: "Exemption Management via ServiceNow",
+        description: "Add ServiceNow integration for the exemption management workflow.",
+      },
       {
         tag: [{ value: "Notifications" }, { value: "Platform" }],
         title: "Exemption Notifications",
@@ -23,6 +88,11 @@ export const StoData: Horizon = {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
         title: "Issues List - Project",
         description: "Centralized, prioritized vulnerability list for AppSec persona with ticket creation for tracking at Project scope.",
+      },
+      {
+        tag: [{ value: "UX" }],
+        title: "Pretty-Print Issue Raw Details data",
+        description: "Render raw JSON results from scanner in issue descriptions for easier reading."
       },
       {
         tag: [{ value: "Integration" }, { value: "GHAS"}],
@@ -45,11 +115,6 @@ export const StoData: Horizon = {
         description: "Native STO support via the Harness IDP module score-cards.",
       },
       {
-        tag: [{ value: "FIPS" }, { value: "Compliance" }],
-        title: "FIPS support for STO",
-        description: "Ability to leverage STO steps in Harness Pipeline within FIPS enabled SMP environment.",
-      },
-      {
         tag: [{ value: "Vulnerability" }, { value: "Governance" }],
         title: "Base image vs App layer vulnerability",
         description: "Ability to see base image Vs app layer vulnerability and govern pipelines.",
@@ -59,16 +124,11 @@ export const StoData: Horizon = {
         title: "STO support in Harness Resource Group",
         description: "Ability to configure granular access to security test results within the pipeline view via the Harness Resource Group.",
       },
-      {
-        tag: [{ value: "Exepmtion Management" }],
-        title: "Approval/Rejection comment",
-        description: "Enable AppSec users to add contextual comments when approving or rejecting an exemption request.",
-      },
 
     ],
   },
   Next: {
-    description: "Q3 2025, Aug 2025 - Oct 2025",
+    description: "Q4 2025, Nov 2025 - Jan 2026",
     feature: [
       {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
@@ -85,16 +145,11 @@ export const StoData: Horizon = {
         title: "Project level Security Dashboard",
         description: "Redesigned STO overview page to get security posture across the Project via graphs, trends, summary.",
       },
-      {
-        tag: [{ value: "Integration" }, { value: "ServiceNow" }],
-        title: "Exemption Management via ServiceNow",
-        description: "Add ServiceNow integration for the exemption management workflow.",
-      },
 
     ],
   },
   Later: {
-    description: "Q4 2025+, Nov 2025 & Beyond",
+    description: "Q1 2026, Feb 2026 & Beyond",
     feature: [
       {
         tag: [{ value: "Onboarding" }],
@@ -107,11 +162,6 @@ export const StoData: Horizon = {
         description: "Allows deletion of unwanted targets/artifacts vulnerability data to reduce noise.",
       },
       {
-        tag: [{ value: "AppSec" }],
-        title: "Custom Severity",
-        description: "Allow users to adjust vulnerability severity with justification.",
-      },
-      {
         tag: [{ value: "Integration" }, { value: "CrowdStrike"}],
         title: "CrowdStrike Integration",
         description: "Native integration with CrowdStrike.",
@@ -122,6 +172,21 @@ export const StoData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Exepmtion Management" }],
+        title: "Approval/Rejection comment",
+        description: "Enable AppSec users to add contextual comments when approving or rejecting an exemption request.",
+      },
+      {
+        tag: [{ value: "FIPS" }, { value: "Compliance" }],
+        title: "FIPS support for STO",
+        description: "Ability to leverage STO steps in Harness Pipeline within FIPS enabled SMP environment.",
+      },
+      {
+        tag: [{ value: "Platform" }, { value: "Exemption"}],
+        title: "Exemption at Occurrence Level",
+        description: "Exempt specific occurrences of issues without exempting the entire STO issue.",
+      },
       {
         tag: [{ value: "Integration"}],
         title: "Scanner Original Severity",
