@@ -33,7 +33,7 @@ global:
     enabled: true
 ```
 :::tip smp installation example
-Go to [SMP basic configuration](/docs/self-managed-enterprise-edition/smp-basic-configuration/#installation) for an example of a values.yaml file.
+Go to [SMP basic configuration](/docs/self-managed-enterprise-edition/smp-basic-configuration/#installation) for an example of a `values.yaml` file.
 :::
 
 ### Update Your License
