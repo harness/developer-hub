@@ -5,14 +5,9 @@ export const StoData: Horizon = {
     description: "Q3 2025, Aug 2025 - Oct 2025",
     feature: [  
       {
-        tag: [{ value: "RBAC" }],
-        title: "STO support in Harness Resource Group",
-        description: "Ability to configure granular access to security test results within the pipeline view via the Harness Resource Group.",
-      },
-      {
         tag: [{ value: "Notifications" }, { value: "Platform" }],
         title: "Exemption Notifications",
-        description: "Notify developers and AppSec teams via email or Slack about pending or expired exemption requests.",
+        description: "Notify developers and AppSec teams via email, Slack, MS teams, custom webhook about pending, approved and expired exemption requests.",
       },
       {
         tag: [{ value: "Vulnerability" }, { value: "Governance" }],
@@ -23,6 +18,11 @@ export const StoData: Horizon = {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
         title: "Issues List - Project",
         description: "Centralized, prioritized vulnerability list for AppSec persona with ticket creation for tracking at Project scope.",
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "Sonatype"}],
+        title: "Sonatype Integration",
+        description: "Native integration with Sonatype Nexus IQ Server and Nexus Repository.",
       },
       {
         tag: [{ value: "Integration" }, { value: "GHAS"}],
@@ -36,78 +36,53 @@ export const StoData: Horizon = {
       },
       {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
-        title: "Open and Remediated Sub-Tabs in Issues Page",
-        description: "Add 'Remediated' sub-tab alongside 'Open' in Issues page to track and manage remediated issues."
+        title: "Open and Remediated Issues at project Scope",
+        description: "Visibility into all Active Open and remediated issues across Targets and Pipelines at Prokject scope."
       },
       {
         tag: [{ value: "Visibility" }, { value: "Platform" }],
-        title: "Stage-level Issue Counts in Executions",
-        description: "Show stage-based issue counts in Executions for CI and IaCM stages."
+        title: "Vulnerability overview under pipeline execution page",
+        description: "Show vulnerability stats on the Pipeline execution at stage level."
       },
       {
         tag: [{ value: "AI" }, { value: "Visibility" }],
-        title: "AppSec Agent Chatbot",
-        description: "AI chatbot to help with vulnerabilities, exemptions, policies, tickets, and more."
-      },
-      {
-        tag: [{ value: "Ticketing" }, { value: "Integration" }, { value: "Exemption" }],
-        title: "Auto Create Jira Ticket on Exemption Request",
-        description: "Automatically create a Jira ticket on exemption request using a configured templates."
-      },
-      {
-        tag: [{ value: "Visibility" }, { value: "Platform" }],
-        title: "Display Issue ID in UI",
-        description: "Show STO issue ID in issue details and make it searchable."
-      },
-      {
-        tag: [{ value: "Visibility" }, { value: "Platform" }],
-        title: "Combine Results Across Executions",
-        description: "Aggregate scan results from all stages/executions including resumed runs and child pipelines with deduplication."
-      },
-      {
-        tag: [{ value: "Integration" }, { value: "Anchore" }],
-        title: "Anchore: Support non-os Scan",
-        description: "Present Anchore results to show only application (non-os) vulnerabilities in STO, excluding findings from base image."
-      },          
-      {
-        tag: [{ value: "Integration" }, { value: "Dastardly" }],
-        title: "Dastardly Integration",
-        description: "Support Dastardly with Orchestration, Extraction, and Ingestion modes, with Built-in scanner workflow step under DAST."
-      },
-      {
-        tag: [{ value: "Integration" }, { value: "SonarQube" }],
-        title: "Treat SonarQube Code/Bug Smells as Vulnerabilities",
-        description: "Add setting to present SonarQube Code/Bug Smells as vulnerabilities with normalized severities."
+        title: "AppSec Chatbot",
+        description: "AI chatbot to help with STO use cases."
       },
       {
         tag: [{ value: "Vulnerability Prioritization" }, { value: "AppSec" }],
-        title: "Custom Severity for Vulnerabilities",
-        description: "Allow users to change vulnerability severity at Target, Pipeline, or Project level with audit and governance support."
+        title: "Override Severity for Vulnerabilities",
+        description: "Allow appsec users to override vulnerability severity."
       }, 
       {
-        tag: [{ value: "Visibility" }, { value: "Platform" }],
-        title: "Deduplication Metrics at Pipeline Level",
-        description: "Show total scanner findings vs post-deduplication count at pipeline level, with future dashboard widget support."
+        tag: [{ value: "Ticketing" }, { value: "Integration" }, { value: "Exemption" }],
+        title: "Auto Create Jira Ticket on Exemption Request",
+        description: "Automatically create a Jira ticket on exemption request using a configured template."
       },
       {
-        tag: [{ value: "AI" }, { value: "Remediation" }, { value: "SCA" }],
-        title: "Auto PRs for SCA Remediation",
-        description: "Create PRs for SCA issues using AI suggestions for direct dependency upgrades (JS/TS, Python, Java). Transitives excluded."
+        tag: [{ value: "Visibility" }, { value: "Platform" }],
+        title: "Fix: Handle vulnerabilities for Aborted/Resume executions",
+        description: "Aggregate security scan results from all stages/executions including aborted, resumed pipeline executions."
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "Anchore" }],
+        title: "Anchore Enhacenments",
+        description: "Updated the Anchore runner to latest, add advanced configuration, etc."
+      },          
+      {
+        tag: [{ value: "Integration" }, { value: "SonarQube" }],
+        title: "SonarQube: Code/Bug Smells as Vulnerabilities",
+        description: "Treat SonarQube Code/Bug Smells as vulnerabilities instead of Info level issues"
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "Platform" }],
+        title: "Deduplication Stats",
+        description: "Show deduplication stats at pipeline level."
       },
       {
         tag: [{ value: "Integration" }, { value: "ServiceNow" }],
         title: "Exemption Management via ServiceNow",
-        description: "Add ServiceNow integration for the exemption management workflow.",
-      },
-      {
-        tag: [{ value: "Integration" }, { value: "Sonatype"}],
-        title: "Sonatype Integration",
-        description: "Native integration with Sonatype Nexus IQ Server and Nexus Repository.",
-      },
-      {
-        tag: [{ value: "UX" }],
-        title: "Pretty-Print Issue Raw Details data",
-        description: "Render raw JSON results from scanner in issue descriptions for easier reading."
+        description: "Native ServiceNow integration for exemption management.",
       },
       {
         tag: [{ value: "EPSS" }],
@@ -115,17 +90,15 @@ export const StoData: Horizon = {
         description: "Provide EPSS score additional to CVSS score for better vulnerability prioritization.",
       },
       {
-        tag: [{ value: "Integration" }, { value: "Aqua Sec"}],
-        title: "Aqua Security on-prem",
-        description: "Native integration with Aqua Security on-prem.",
-    
-      },
-      {
         tag: [{ value: "Cross Module" }],
         title: "Native support in IDP",
         description: "Native STO support via the Harness IDP module score-cards.",
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "Platform" }],
+        title: "Expose Internal Issue ID",
+        description: "Show STO internal issue ID under the issue details."
       }
-
     ],
   },
   Next: {
@@ -146,7 +119,21 @@ export const StoData: Horizon = {
         title: "Project level Security Dashboard",
         description: "Redesigned STO overview page to get security posture across the Project via graphs, trends, summary.",
       },
-
+          {
+        tag: [{ value: "Integration" }, { value: "Dastardly" }],
+        title: "Dastardly Integration",
+        description: "Support Dastardly with Orchestration, Extraction, and Ingestion modes, with Built-in scanner workflow step under DAST."
+      },
+        {
+        tag: [{ value: "AI" }, { value: "Remediation" }, { value: "SCA" }],
+        title: "Auto PRs for SCA Remediation",
+        description: "Create PRs for SCA issues using AI suggestions for direct dependency upgrades (JS/TS, Python, Java). Transitives excluded."
+      },
+        {
+        tag: [{ value: "Runtime" }, { value: "Visibility"}],
+        title: "Runtime Visibility",
+        description: "Ingest Runtime vulnerabilities via Traceable's Protection agent.",
+      }
     ],
   },
   Later: {
@@ -167,12 +154,30 @@ export const StoData: Horizon = {
         title: "CrowdStrike Integration",
         description: "Native integration with CrowdStrike.",
       },
+              {
+        tag: [{ value: "Runtime" }, { value: "Vulnerability Prioritization"}],
+        title: "Runtime Vulnerability Prioritization",
+        description: "Correlate runtime vulnerabilities with SAST/SCA issue findings for better vulnerability prioritization",
+      }
     ],
   },
 
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "RBAC" }],
+        title: "STO support in Harness Resource Group",
+        description: "Ability to configure granular access to security test results within the pipeline view via the Harness Resource Group.",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/rbac/"
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "Aqua Sec"}],
+        title: "Aqua Security on-prem",
+        description: "Native integration with Aqua Security on-prem.",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference#scan-configuration"
+    
+      },
       {
         tag: [{ value: "Exepmtion Management" }],
         title: "Approval/Rejection comment",
