@@ -4,9 +4,12 @@ sidebar_position: 10
 ---
 
 :::tip
-This page is about managing projects in Harness FME. The content on this page reflects legacy settings in FME (accessible through `app.split.io`) and is retained to support existing workflows.
+This page is about managing projects in Harness FME when accessing FME through `app.split.io`.
 
-To ease the transition to the Harness platform experience, FME Settings will include navigation to these items and direct you to the relevant screens in Harness. If you're using Harness Role-Based Access Control (RBAC), see [RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/).
+After migration to `app.harness.io`, most project-related functions are performed in the standard Harness platform Role Based Access Control (RBAC) screens instead of in the screens seen below. 
+To ease the transition to the Harness platform experience, FME Settings will direct you to the appropriate screen in Harness to create or delete projects. 
+
+The only setting below which is retained within the Edit Project screen in FME Settings is the **Require comments** toggle to enforce titles and comments for changes to feature flags, segments, and metrics.
 :::
 
 ## Overview
