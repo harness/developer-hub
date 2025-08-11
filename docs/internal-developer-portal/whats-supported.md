@@ -9,7 +9,13 @@ Harness Internal Developer Portal integrates with a number of third-party provid
 
 ## Plugins for IDP
 
-Harness IDP supports a number of plugins to integrate the software catalog with third-party providers. Please find the growing list of [supported plugins](/docs/category/available-plugins). This is a subset of the [Backstage plugin marketplace](https://backstage.io/plugins).
+Harness IDP supports a number of plugins to integrate the software catalog with third-party providers:
+
+* [Available Plugins](/docs/category/available-plugins) - Our curated collection including:
+  * [Harness Native Plugins](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins) - Official plugins that integrate seamlessly with other Harness modules like CI/CD, Feature Flags, Chaos Engineering, STO and more
+  * Third-party and community plugins from the Backstage ecosystem
+
+These are carefully selected from the broader [Backstage plugin marketplace](https://backstage.io/plugins).
 
 Any URLs behind any firewall or private URLs used in plugins should be accessed through [Harness Delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/). 
 

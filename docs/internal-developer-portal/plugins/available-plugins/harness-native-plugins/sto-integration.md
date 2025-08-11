@@ -1,14 +1,13 @@
 ---
-title: Harness STO Integration with IDP
+title: Harness Security Testing Orchestration Integration with IDP
 description: Complete guide to integrating Security Testing Orchestration (STO) with the Internal Developer Portal (IDP) - from setup to viewing vulnerabilities and creating security scorecards.
 sidebar_position: 1
-sidebar_label: STO Integration
+sidebar_label: Security Testing Orchestration Integration
 redirect_from: 
   - /docs/internal-developer-portal/sto-integration
   - /docs/internal-developer-portal/sto-integration/overview
   - /docs/internal-developer-portal/sto-integration/setup-configuration
   - /docs/internal-developer-portal/sto-integration/viewing-and-scorecards
-  - /docs/internal-developer-portal/sto-integration/sto-integration
 tags:
   - Security Testing
   - Developer Portal
@@ -48,7 +47,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DocImage from '@site/src/components/DocImage';
 
-# STO and IDP Integration
+# Harness Security Testing Orchestration (STO) and IDP Integration
 
 Harness Internal Developer Portal (IDP) integrates with Security Testing Orchestration (STO) to bring security insights directly into the developer workflow.
 

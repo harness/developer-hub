@@ -1,7 +1,9 @@
 ---
-title: Harness Infrastructure as Code Management
+title: Infrastructure as Code Management
 description: View the IACM workspaces and provisioned resources
+sidebar_label: Infrastructure as Code Management
 ---
+# Harness Infrastructure as Code Management
 
 | Plugin details |                                                        |
 | -------------- | ------------------------------------------------------ |

@@ -1,7 +1,9 @@
 ---
-title: Harness Service Reliability
+title: Service Reliability
 description: Track the SLOs and Error Budgets for Monitored Services
+sidebar_label: Service Reliability
 ---
+# Harness Service Reliability
 
 | Plugin details |                                                        |
 | -------------- | ------------------------------------------------------ |

@@ -1,7 +1,9 @@
 ---
-title: Harness CI/CD
+title: CI/CD
 description: View the executions of your Harness pipelines.
+sidebar_label: CI/CD
 ---
+# Harness CI/CD
 
 | Plugin details |                                                        |
 | -------------- | ------------------------------------------------------ |
@@ -9,6 +11,7 @@ description: View the executions of your Harness pipelines.
 | **Category**   | CI/CD                                                  |
 | **Source**     | [GitHub](https://github.com/harness/backstage-plugins) |
 | **Type**       | Open-source plugin                                     |
+
 
 ## Configuration
 

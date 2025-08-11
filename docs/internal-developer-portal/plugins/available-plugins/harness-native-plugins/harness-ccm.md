@@ -1,6 +1,7 @@
 ---
-title: Harness Cloud Cost Management
-description: Manage and Optimize Cloud Costs using Harness Cloud Cost Management
+title: Cloud Cost Management
+description: Manage and Optimize Cloud Costs using Cloud Cost Management
+sidebar_label: Cloud Cost Management
 ---
 
 | Plugin details |                                                        |
