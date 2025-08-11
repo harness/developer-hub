@@ -355,7 +355,7 @@ gsutil -m cp \
 
 #### Harness Platform
 
-- Optimized Helm chart size – Reduced from 3.4 MB to 1.4 MB, improving download speed and deployment efficiency. [PL-60919]
+- Optimized SMP Helm chart size – Reduced from 3.4 MB to 1.4 MB, improving download speed and deployment efficiency. [PL-60919]
 
 ## August 04, 2025, Version 0.31.1 <!-- Draft : Aug 04, 2025 -->
 
