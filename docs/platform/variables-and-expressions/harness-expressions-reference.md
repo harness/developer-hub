@@ -5,12 +5,15 @@ sidebar_position: 21
 redirect_from:
   - /docs/platform/variables-and-expressions/status-type-reference
 ---
+import ToString from '/docs/platform/shared/expression-tostring.md'
 
 Harness expressions are used to reference stored values in Harness. These can be YAML paths, JSON paths, user-defined variables, settings, secrets, and more.
 
 While you can reference all variables with expressions, not all expressions reference true variables. However, Harness expressions are interchangeably referred to as Harness variables because they references stored values in the same way variables do in code.
 
 This pages describe some [Harness expressions](./harness-variables.md) that you might find useful. Due to the way Harness generates expressions and the potential variations of pipeline, account, org, and project configurations, it is impossible to create an exhaustive list of all expressions.
+
+<ToString />
 
 ### Account, org, and project expressions
 
