@@ -3,7 +3,37 @@ import { Horizon } from "./roadmapData";
 export const StoData: Horizon = {
   Now: {
     description: "Q3 2025, Aug 2025 - Oct 2025",
-    feature: [    
+    feature: [  
+      {
+        tag: [{ value: "RBAC" }],
+        title: "STO support in Harness Resource Group",
+        description: "Ability to configure granular access to security test results within the pipeline view via the Harness Resource Group.",
+      },
+      {
+        tag: [{ value: "Notifications" }, { value: "Platform" }],
+        title: "Exemption Notifications",
+        description: "Notify developers and AppSec teams via email or Slack about pending or expired exemption requests.",
+      },
+      {
+        tag: [{ value: "Vulnerability" }, { value: "Governance" }],
+        title: "Base image vs App layer vulnerability",
+        description: "Ability to see base image Vs app layer vulnerability and govern pipelines.",
+      },
+      {
+        tag: [{ value: "Visibility" }, { value: "AppSec" }],
+        title: "Issues List - Project",
+        description: "Centralized, prioritized vulnerability list for AppSec persona with ticket creation for tracking at Project scope.",
+      },
+      {
+        tag: [{ value: "Integration" }, { value: "GHAS"}],
+        title: "GitHub Advanced Security Integration",
+        description: "Native integration with GitHub Advanced Security for CodeQL, SCA, and Secrets.",
+      },
+      {
+        tag: [{ value: "Platform" }, { value: "RBAC" }],
+        title: "Download Issues Data as CSV from Vulnerabilities Tab",
+        description: "Enable RBAC-honoring download of issues CSV from Vulnerabilities Tab, add API, and deep-link to Pipeline Execution Summary Dashboard with execution ID."
+      },
       {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
         title: "Open and Remediated Sub-Tabs in Issues Page",
@@ -65,19 +95,9 @@ export const StoData: Horizon = {
         description: "Create PRs for SCA issues using AI suggestions for direct dependency upgrades (JS/TS, Python, Java). Transitives excluded."
       },
       {
-        tag: [{ value: "Platform" }, { value: "RBAC" }],
-        title: "Download Issues Data as CSV from Vulnerabilities Tab",
-        description: "Enable RBAC-honoring download of issues CSV from Vulnerabilities Tab, add API, and deep-link to Pipeline Execution Summary Dashboard with execution ID."
-      },
-      {
         tag: [{ value: "Integration" }, { value: "ServiceNow" }],
         title: "Exemption Management via ServiceNow",
         description: "Add ServiceNow integration for the exemption management workflow.",
-      },
-      {
-        tag: [{ value: "Notifications" }, { value: "Platform" }],
-        title: "Exemption Notifications",
-        description: "Notify developers and AppSec teams via email or Slack about pending or expired exemption requests.",
       },
       {
         tag: [{ value: "Integration" }, { value: "Sonatype"}],
@@ -85,19 +105,9 @@ export const StoData: Horizon = {
         description: "Native integration with Sonatype Nexus IQ Server and Nexus Repository.",
       },
       {
-        tag: [{ value: "Visibility" }, { value: "AppSec" }],
-        title: "Issues List - Project",
-        description: "Centralized, prioritized vulnerability list for AppSec persona with ticket creation for tracking at Project scope.",
-      },
-      {
         tag: [{ value: "UX" }],
         title: "Pretty-Print Issue Raw Details data",
         description: "Render raw JSON results from scanner in issue descriptions for easier reading."
-      },
-      {
-        tag: [{ value: "Integration" }, { value: "GHAS"}],
-        title: "GitHub Advanced Security Integration",
-        description: "Native integration with GitHub Advanced Security for CodeQL, SCA, and Secrets.",
       },
       {
         tag: [{ value: "EPSS" }],
@@ -108,22 +118,13 @@ export const StoData: Horizon = {
         tag: [{ value: "Integration" }, { value: "Aqua Sec"}],
         title: "Aqua Security on-prem",
         description: "Native integration with Aqua Security on-prem.",
+    
       },
       {
         tag: [{ value: "Cross Module" }],
         title: "Native support in IDP",
         description: "Native STO support via the Harness IDP module score-cards.",
-      },
-      {
-        tag: [{ value: "Vulnerability" }, { value: "Governance" }],
-        title: "Base image vs App layer vulnerability",
-        description: "Ability to see base image Vs app layer vulnerability and govern pipelines.",
-      },
-      {
-        tag: [{ value: "RBAC" }],
-        title: "STO support in Harness Resource Group",
-        description: "Ability to configure granular access to security test results within the pipeline view via the Harness Resource Group.",
-      },
+      }
 
     ],
   },
@@ -176,41 +177,49 @@ export const StoData: Horizon = {
         tag: [{ value: "Exepmtion Management" }],
         title: "Approval/Rejection comment",
         description: "Enable AppSec users to add contextual comments when approving or rejecting an exemption request.",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/exemptions/manage-exemptions"
       },
       {
         tag: [{ value: "FIPS" }, { value: "Compliance" }],
         title: "FIPS support for STO",
         description: "Ability to leverage STO steps in Harness Pipeline within FIPS enabled SMP environment.",
+        link: "https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview/"
       },
       {
         tag: [{ value: "Platform" }, { value: "Exemption"}],
         title: "Exemption at Occurrence Level",
         description: "Exempt specific occurrences of issues without exempting the entire STO issue.",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/exemptions/exemption-workflows#create-exemption-request-for-occurrences-within-issue"
       },
       {
         tag: [{ value: "Integration"}],
         title: "Scanner Original Severity",
         description: "Use native scanner severity and scoring for prioritization (e.g., Prisma Cloud, SonarQube, Anchore, Checkmarx, Wiz).",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference/#use-raw-scanner-severity"
       },
       {
         tag: [{ value: "Integration" }, { value: "Checkmarx"}],
         title: "Checkmarx Integration",
         description: "Native integration with Checkmarx CxOne, SAST, SCA, and OSA.",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference"
       },
       {
         tag: [{ value: "AI" }, { value: "Remediation" }],
         title: "Auto Remediate Vulnerabilities with AI",
         description: "Detect and fix vulnerabilities at the source using AI-driven remediation and automated code patches.",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/remediations/ai-based-remediations"
       },
       {
         tag: [{ value: "Ticketing" }, { value: "Integration" }],
         title: "Jira Integration",
         description: "Sync updates bi-directionally for vulnerabilities found, remediated, or exempted.",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/jira-integrations"
       },
       {
         tag: [{ value: "Exemption Workflow" }, { value: "Early Access"}],
         title: "Global Exemption Management",
         description: "Manage vulnerability exemptions at account, organization, pipeline, and project levels.",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/exemptions/exemption-workflows#view-exemptions-at-the-account-level"
       }
 
     ],
