@@ -36,12 +36,7 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 <DocImage path={require('./static/forecast.png')} width="100%" height="100%" title="Click to view full size image" />
 
-- **Updated Cost Calculation**: We calculate cost using three distinct pricing sources:
-  - **CUR_REPORT**: Provides true-up costs using Cloud Usage Report data for accurate historical spending.
-  - **PUBLIC_PRICING**: Leverages cloud providers' public pricing APIs to retrieve current cost data 
-  - **HARDCODED**: Supplies predefined values for resources where public pricing and CUR data are unavailable, such as persistent volume costs and virtual node instances.
-
-  **New Feature Flag**: Introduced `CCM_USE_ONLY_CUR_FOR_COMPUTE` which, when enabled for specific accounts, will exclusively bypass any cost calculations using public pricing sources. Persistent volume costs and virtual node instances will continue to use hardcoded values when necessary. [CCM-22370]
+- **New Feature Flag**: Introduced `CCM_USE_ONLY_CUR_FOR_COMPUTE` which, when enabled for specific accounts, will exclusively bypass any cost calculations using public pricing sources. [CCM-22370]
 
 ### Bug Fixes
 
