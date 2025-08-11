@@ -39,16 +39,16 @@ Use the import command to bring the resource into the new state file managed by 
 
 Example command:
 ```hcl
-resource "aws_s3_bucket" "imported_bucket" {
+resource "aws_instance" "imported_instance" {
   # Values will be filled in after import
-  bucket = ""
-  acl    = ""
-  tags   = {}
+  ami           = ""
+  instance_type = ""
+  tags          = {}
 }
 
 import {
-  to = aws_s3_bucket.imported_bucket
-  id = "my-existing-s3-bucket-name"
+  to = aws_instance.imported_instance
+  id = "i-abcd1234"
 }
 ```
 
