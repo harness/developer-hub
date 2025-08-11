@@ -36,7 +36,7 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 <DocImage path={require('./static/forecast.png')} width="100%" height="100%" title="Click to view full size image" />
 
-- **New Feature Flag**: Introduced `CCM_USE_ONLY_CUR_FOR_COMPUTE` which, when enabled for specific accounts, will exclusively bypass any cost calculations using public pricing sources. [CCM-22370]
+- **New Feature Flag**: Introduced a new feature flag which, when enabled for specific accounts, will exclusively bypass any cost calculations using public pricing sources. To enable the feature flag, please contact Harness Support. [CCM-22370]
 
 ### Bug Fixes
 
