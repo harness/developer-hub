@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-08-08T18:00
+date: 2025-08-11T18:00
 sidebar_position: 6
 ---
 
@@ -21,7 +21,7 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 :::
 
 ## August 2025 - Version 1.59.1
-#### **Deployment Date:** August 8, 2025 (Prod-1)
+#### **Deployment Date:** August 11, 2025 (Prod-1)
 
 ### ⭐ [New Feature] Rules Generating Recommendations
 **[CCM-24188] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#rules-generating-recommendations)** 
@@ -51,6 +51,7 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 - **Connector Health Check**: Improved error messaging for storage bucket connectivity issues. When a bucket doesn't exist, users now receive a specific error message instead of the generic "Unknown error occurred" message. [CCM-20815]
 
+- **Perspective Bookmarks**: When a user accessed the perspective using a bookmarked URL containing filters, CCM wasn't prioritising the URL filters over those stored in local storage. We have fixed this issue. [CCM-24726]
 
 ## July 2025 - Version 1.58.3
 #### **Deployment Date:** July 28, 2025 (Prod-1)
