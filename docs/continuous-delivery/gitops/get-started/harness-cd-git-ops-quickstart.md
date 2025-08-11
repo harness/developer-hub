@@ -306,13 +306,13 @@ To create a cluster entity using IAM role in Amazon EKS, go to [Creating a GitOp
 Here's an example of a SA and ClusterRoleBinding with `cluster-admin`:
 
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1  
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ServiceAccount  
 metadata:  
   name: harness-service-account  
   namespace: default  
 ---  
-apiVersion: rbac.authorization.k8s.io/v1beta1  
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding  
 metadata:  
   name: harness-admin  
