@@ -267,14 +267,14 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
             ```
 :::
 
-## August 07, 2025, Version 0.31.2 <!-- Draft : Aug 04, 2025 -->
+## August 11, 2025, Version 0.31.2 <!-- Draft : Aug 04, 2025 -->
 
 This release includes the following Harness module and component versions.
 
 | **Name**                     | **Version**                                                                                  |
 |------------------------------|----------------------------------------------------------------------------------------------|
-| Helm Chart                   | [0.31.1](https://github.com/harness/helm-charts/releases/tag/harness-0.31.1)                 |
-| Air Gap Bundle               | [0.31.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.31.1) |
+| Helm Chart                   | [0.31.2](https://github.com/harness/helm-charts/releases/tag/harness-0.31.2)                 |
+| Air Gap Bundle               | [0.31.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.31.2) |
 | Access Control               | 1.95.1                                                                                       |
 | Anomaly Detection            | 1.11.0                                                                                       |
 | Audit Event Streaming        | 1.42.0                                                                                       |
@@ -355,7 +355,7 @@ gsutil -m cp \
 
 #### Harness Platform
 
-- Reduced Size of Harness Helm Charts to 1.6 mb from 3.4mb
+- Optimized Helm chart size – Reduced from 3.4 MB to 1.4 MB, improving download speed and deployment efficiency. [PL-60919]
 
 ## August 04, 2025, Version 0.31.1 <!-- Draft : Aug 04, 2025 -->
 
