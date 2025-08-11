@@ -48,22 +48,26 @@ To create a new entity, navigate to the Harness IDP portal and click on **“Cre
   3. Define the **entity scope** — choose whether the entity should reside at the Account, Project, or Organization level. Read more about Catalog RBAC.
   ![](./static/scope-entity.png)
   
-  4. **Associate with System Entities**
-     Systems in Harness IDP are high-level catalog entities used to logically group related components, APIs, and resources. Associating your component with one or more Systems helps organize the catalog and improves visibility.
-
-     ![](./static/system.png)
-
-     You can select one or more Systems from the dropdown. This creates a relationship between your component and the selected Systems, making it easier to discover related entities and understand your software ecosystem.
-
-     <!-- > If you don't see the System you need, you can [create a new System entity](/docs/internal-developer-portal/catalog/system-entity) first. -->
-  
-  5. **Link to Source Code Repository**
+  4. **Link to Source Code Repository**
      Configure the source code repository associated with this component. This link enables several key capabilities, such as:
      
      * Automatically configuring plugins like **Scorecards**, **TechDocs**, and **STO**
      * Displaying the **View Source** option in the UI
 
      ![](./static/source-code-link-ui.png)
+
+     You can connect repositories from multiple supported providers:
+     * **Harness Code Repository** – Native Harness Git management
+     * **GitHub** – Cloud or enterprise GitHub instances
+     * **GitLab** – Cloud or self-managed GitLab instances
+     * **Bitbucket** – Cloud or server-hosted Bitbucket repositories
+     * **Azure Repos** – Repositories from Azure DevOps Services or Server
+
+     You also get the option to connect mono repository (monorepo) is a single repository that contains multiple projects or services, often organized in subdirectories.
+     ![](./static/source-code-mono.png)
+     * **Yes** – Select this if the component's code is located inside a specific subdirectory of a larger repository. You must also provide the **Subdirectory Path** (for example `/harness/java-service`).
+     * **No** – Select this if the repository is dedicated to a single component or service.
+
 
      This field is **optional**, but strongly recommended if your component is tied to a Git-based workflow or needs source-aware plugins. Note that the source code repository link is scoped to the same level as the entity itself (Account, Organization, or Project).
      > Harness IDP also auto-generates the legacy `backstage.io/source-location` annotation for backwards compatibility.
@@ -126,51 +130,61 @@ Note: **YAML validation** is automatically performed to ensure compatibility wit
 3. You can define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#orgidentifier)** directly in the YAML to set the project or organization scope.
 ![](./static/scope-entity.png)
 
-4. To **associate your entity with System Entities** in YAML, add the `system` field to the `spec` section. You can specify multiple Systems by providing an array of System entity references:
-
-```yaml
-apiVersion: harness.io/v1
-kind: Component
-name: MyServiceComponent
-identifier: my-service-component
-type: service
-owner: team-backend
-projectIdentifier: myproject  # Set scope level as needed
-spec:
-  system:
-    - system:account/payment-system
-    - system:account/api-gateway-system
-  # Other spec fields...
-```
-
-This creates a relationship between your component and the specified Systems, making it easier to discover related entities and understand your software ecosystem. Each System reference follows the format `system:[scope]/[identifier]`.
-
-5. Define **Link to Source Code Repository** to configure the source code repository associated with this component. This link enables several key capabilities, such as, Automatically configuring plugins and Displaying the **View Source** option in the UI
+4. Define **Link to Source Code Repository** to configure the source code repository associated with this component. This link enables several key capabilities, such as, Automatically configuring plugins and Displaying the **View Source** option in the UI
 This field is **optional**, but strongly recommended if your component is tied to a Git-based workflow or needs source-aware plugins.
 
 ```yaml
-   spec:
-       sourceCode:
-        branch: main
-        monoRepo: true
-        isHarnessCodeRepo: false
-        provider: Github
-        repoName: idp-template
-        connectorRef: account.ShibamDhar
-        monoReposubDirectoryPath: /harness
+spec:
+  sourceCode:
+    monoRepo: false
+    provider: Github
+    repoName: java-service_svc
+    connectorRef: account.ShibamDhar
 ```
 
-   > Harness IDP also auto-generates the legacy `backstage.io/source-location` annotation for backwards compatibility.
+#### Supported Repository Providers in YAML
 
-6. Choose how you want to manage the entity:
+The `provider` field defines the Git-based source hosting service. Harness IDP supports:
+
+```yaml
+provider: Harness   # Harness Code Repository
+provider: Github    # GitHub Cloud or Enterprise
+provider: Gitlab    # GitLab Cloud or Self-Managed
+provider: Bitbucket # Bitbucket Cloud or Server
+provider: AzureRepo     # Azure DevOps Repositories
+```
+
+You should select the correct provider according to where your code is hosted. The `connectorRef` should point to a valid Harness Connector for that provider.
+#### Mono Repository Setup in YAML
+
+A **mono repository (monorepo)** contains multiple projects or services in separate subdirectories within the same repository. This is useful for organizations managing many services in a unified repository.
+
+When `monoRepo` is set to `true`, you must also define the `monoReposubDirectoryPath` to indicate the folder containing this component’s source code.
+
+Example for a **mono repository** setup:
+
+```yaml
+spec:
+  sourceCode:
+    monoRepo: true
+    provider: Github
+    repoName: java-service_svc
+    connectorRef: account.ShibamDhar
+    branch: main
+    monoReposubDirectoryPath: /harness
+```
+
+> Harness IDP also auto-generates the legacy `backstage.io/source-location` annotation for backwards compatibility.
+
+5. Choose how you want to manage the entity:
     * **Inline (default):** Manage the entity YAML directly within Harness.
     * **Remote:** Choose to store your entity YAML in a Git repository for version control, collaboration, and change tracking.
     You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
       ![](./static/catalog-git.png)
       > The Git Experience is ideal for teams who prefer to manage entities as code. Learn more in the [Git Experience Journey](/docs/internal-developer-portal/git-experience/gitx-journey).
 
-5. If needed, **configure a plugin** by referring to the plugin’s documentation and adding the appropriate **annotations** in the Catalog YAML.
-6. Once all details are complete, click **“Create Component”** to finalize and register your entity in the catalog.
+6. If needed, **configure a plugin** by referring to the plugin’s documentation and adding the required annotations in the Catalog YAML.
+7. Once all details are complete, click **“Create Component”** to finalize and register your entity in the catalog.
 
 ## Editing Entities [IDP 2.0]
 You can now modify your entities directly from the **Harness IDP UI**, removing the dependency on manually editing the Catalog YAML file in your Git repository. This streamlines the update process and makes entity management much easier.
