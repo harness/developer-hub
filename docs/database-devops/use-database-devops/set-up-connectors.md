@@ -59,19 +59,6 @@ The JDBC connector is used for connecting to your database instance.
 | **COCKROACHDB SSL**     | `jdbc:postgresql://{host}:{port}/{dbName}?sslmode=require`                                                                  |
 
 ---
-
-## Setting Up Google Spanner
-
-Google Spanner uses a unique JDBC URL format and does not require a password for authentication. Instead, authentication is handled via **Service Account (SA)** credentials.
-
-### Prerequisites for Google Spanner
-
-1. **Authentication**:  
-   - **Google Service Account (GSA)** json key 
-   - The GSA must have the following roles:  
-     - `roles/spanner.databaseAdmin`  
-     - `roles/spanner.databaseUser`
-
 ## Setting Up MongoDB
 
 MongoDB connections in Harness DB DevOps support both self-hosted and cloud-based MongoDB instances.
@@ -97,6 +84,17 @@ MongoDB connections in Harness DB DevOps support both self-hosted and cloud-base
 - The target `database` must be specified in the URL path
 - The database user must have appropriate read/write permissions on the target database
 
+## Setting Up Google Spanner
+
+Google Spanner uses a unique JDBC URL format and does not require a password for authentication. Instead, authentication is handled via **Service Account (SA)** credentials.
+
+### Prerequisites for Google Spanner
+
+1. **Authentication**:  
+   - **Google Service Account (GSA)** json key 
+   - The GSA must have the following roles:  
+     - `roles/spanner.databaseAdmin`  
+     - `roles/spanner.databaseUser`
 ---
 
 ## Connector FAQs
