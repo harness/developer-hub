@@ -1,5 +1,5 @@
 ---
-title: Creating Dynamic Pickers with Backend Proxy
+title: Get User Group with Backend Proxy
 description: Learn how to create dynamic form pickers in Harness IDP workflows that fetch options from external APIs using backend proxy
 sidebar_position: 5
 keywords:
@@ -23,7 +23,9 @@ tags:
   - API Integration
 ---
 
-# Creating Dynamic Pickers with Backend Proxy
+import DocImage from '@site/src/components/DocImage';
+
+# Get User Group with Backend Proxy
 
 ## Introduction
 
@@ -32,6 +34,8 @@ In this tutorial, you'll learn how to create a workflow form with a dynamic drop
 - A workflow form with a dynamic dropdown menu for selecting User Groups
 - A backend proxy configuration that securely connects to the Harness API
 - A dependent field relationship where the Organization is automatically selected based on the chosen Project
+
+<DocImage path={require('./static/all-user-group.png')} />
 
 This approach allows you to present users with real-time data from your systems, creating more dynamic and powerful self-service experiences in your Internal Developer Portal.
 
@@ -109,7 +113,7 @@ kind: Workflow
 name: Get User Groups
 identifier: get_user_groups
 type: harness_project
-owner: user:account/shibam.dhar@harness.io
+owner: backend-group
 metadata: {}
 spec:
   output:
@@ -136,7 +140,7 @@ spec:
           title: Org Identifier
           description: Harness Org Identifier
           type: string
-          ui:field: HarnessAutoOrgPicker
+          ui:field: HarnessAutoOrgPicker // works with only 'projectId' as dependency
 
         # highlight-start
         harness_group:
@@ -158,20 +162,16 @@ spec:
         url:
           - Harness Pipeline URL
         inputset:
-          service_name: ${{ parameters.service_name }}
+          projectId: ${{ parameters.projectId }}
+          orgId: ${{ parameters.orgId }}
+          harness_group: ${{ parameters.harness_group }}
         apikey: ${{ parameters.token }}
-
-  ownedBy:
-    - user:account/shibam.dhar@harness.io
 ```
 - `ui:field: SelectFieldFromApi`: This special field type tells Harness to create a dropdown that fetches options from an API endpoint.
 - `path: proxy/harness-user-groups/user-groups?...`: This points to the backend proxy we configured earlier, passing the selected org and project as query parameters using template variables (`{{parameters.orgId}}` and `{{parameters.projectId}}`).
 - `arraySelector: data.content`: This tells the picker where to find the array of items in the API response. In this case, the Harness API returns user groups inside a nested path `data.content`.
 - `valueSelector: identifier` and `labelSelector: name`: These define which properties from each user group object should be used as the dropdown's value (stored internally) and label (displayed to the user).
 
-![](./static/user-group-workflow.png)
+<!-- ![](./static/user-group-workflow.png) -->
 
 When you run this Workflow, the experience is fully dynamic. After selecting a project, the org field auto-fills, and the user group dropdown fetches data from your proxy in real-time. It displays the group names and passes their identifiers under the hood — exactly what you want for automation or pipeline inputs.
-
-
-
