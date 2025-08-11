@@ -136,7 +136,7 @@ removed {
 }
 ```
 
-In this example, `aws_instance.<instance_name>` is the resource name in your IaC configuration. The removed command removes the resource from your state file, without destroying it. 
+In this example, `aws_instance.<instance_name>` is the resource name in your IaC configuration. The `lifecycle { destroy = false }` block ensures that the resource is only removed from the state file and is not destroyed in your actual infrastructure. The removed command removes the resource from your state file, without destroying it. 
 
 ---
 
