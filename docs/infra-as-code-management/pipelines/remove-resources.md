@@ -78,4 +78,4 @@ Apply any necessary updates to the Terraform configuration.
 - Use version control to track changes to Terraform configuration files.
 
 ## Additional Resources
-Go to [OpenTofu resource syntax](https://opentofu.org/docs/language/resources/syntax/#removing-resources) for more information on resource types, behavior and removal. Also see [supported CLI commands](docs/infra-as-code-management/cli-commands/terraform-plugins#import).
+Go to [OpenTofu resource syntax](https://opentofu.org/docs/language/resources/syntax/#removing-resources) for more information on resources types, behavior and removal. Also see [supported CLI commands](/docs/infra-as-code-management/cli-commands/terraform-plugins#import).
