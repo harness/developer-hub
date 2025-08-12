@@ -244,9 +244,18 @@ This step triggers a sync for your existing or updated GitOps application.
 
 Optionally, click on the **Wait until healthy** checkbox, if you would like the step to run until the application reaches it's "Healthy" state.
 
-In **Advanced Configuration**, select the application you want to sync and configure the sync options. You can either can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter.
+In **Advanced Configuration**, select the application(s) you want to sync and configure the sync options. You can choose one of the following:
 
-![](../application/static/gitopssync-step.png)
+1. **Application name** – Select specific applications manually.  
+2. **Application regex** – Match up to 1000 applications using a regular expression.  
+3. **Application labels** – Filter applications by their labels.  
+   - **Key:value** filtering is supported.  
+   - You can search by **only the key** or **only the value**.  
+   - **Partial matches** are supported. For example, if a label key is `team` or a value is `payment-service`, searching for `pay` or `tea` will return that application.
+
+<div align="center">
+  <DocImage path={require('./static/gitopssync-step.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 The sync options provided are the same options you receive while syncing an application in GitOps directly.
 
