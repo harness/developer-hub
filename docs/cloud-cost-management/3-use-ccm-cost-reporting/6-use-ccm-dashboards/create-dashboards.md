@@ -25,7 +25,8 @@ import TabItem from '@theme/TabItem';
 
 Below is a comprehensive reference for AWS Bill fields.
 
-## Bill
+<details>
+<summary><strong>Bill</strong></summary>
 
 | Field Group | Label Short | Name | Description |
 |-------------|-------------|------|-------------|
@@ -48,14 +49,20 @@ Below is a comprehensive reference for AWS Bill fields.
 | Billing Period Start / Date | Billing Period Start / Week | aws.billingperiodstartdate_week | The start date of the billing period that is covered by this report. Note: the timezone is configurable in widget settings. |
 | Billing Period Start / Date | Billing Period Start / Year | aws.billingperiodstartdate_year | The start date of the billing period that is covered by this report. Note: the timezone is configurable in widget settings. |
 
-## Identity
+</details>
+
+<details>
+<summary><strong>Identity</strong></summary>
 
 | Field Group | Label Short | Name | Description |
 |-------------|-------------|------|-------------|
 | - | Line Item ID | aws.lineitemid | This field is generated for each line item and is unique in a given partition. This does not guarantee that the field will be unique across an entire delivery (that is, all partitions in an update) of the AWS CUR. The line item ID isn't consistent between different Cost and Usage Reports and can't be used to identify the same line item across different reports. |
 | - | Time Interval | aws.timeinterval | The time interval that this line item applies to, in the following format: YYYY-MM-DDTHH:mm:ssZ/YYYY-MM-DDTHH:mm:ssZ. The time interval is in UTC and can be either daily or hourly, depending on the granularity of the report. |
 
-## Line Item
+</details>
+
+<details>
+<summary><strong>Line Item</strong></summary>
 
 | Field Group | Label Short | Name | Description |
 |-------------|-------------|------|-------------|
@@ -86,8 +93,9 @@ Below is a comprehensive reference for AWS Bill fields.
 | Usage Start Time Period / Date | Usage Start Time Period / Week | aws.start_week | The start date and time for the line item in UTC, inclusive. The format is YYYY-MM-DDTHH:mm:ssZ. Note: the time zone can be configured in widget settings. |
 | Usage Start Time Period / Date | Usage Start Time Period / Year | aws.start_year | The start date and time for the line item in UTC, inclusive. The format is YYYY-MM-DDTHH:mm:ssZ. Note: the time zone can be configured in widget settings. |
 | - | Usage Type | aws.usagetype | The usage details of the line item. For example, USW2-BoxUsage:m2.2xlarge describes an M2 High Memory Double Extra Large instance in the US West (Oregon) Region. |
-
-## Pricing
+</details>
+<details>
+<summary><strong>Pricing</strong></summary>
 
 | Field Group | Label Short | Name | Description |
 |-------------|-------------|------|-------------|
@@ -98,8 +106,10 @@ Below is a comprehensive reference for AWS Bill fields.
 | - | Term | aws.term | Specifies the billing term for an AWS resource, such as On-Demand, Reserved, or Savings Plan, indicating the commitment level and pricing model |
 | - | Unit | aws.unit | The pricing unit that AWS used for calculating your usage cost. For example, the pricing unit for Amazon EC2 instance usage is in hours. |
 
+</details>
 
-## Product
+<details>
+<summary><strong>Billing & Cost Management</strong></summary>
 
 | Field Group | Label Short | Name | Description |
 |-------------|-------------|------|-------------|
@@ -121,6 +131,14 @@ Below is a comprehensive reference for AWS Bill fields.
 | Billing & Cost Management | Term Type | aws.termtype | The term type for a commitment, such as 'On-Demand' or 'Reserved'. |
 | Billing & Cost Management | Trial Product | aws.trialproduct | Indicates if the product usage is part of a trial period. |
 | Billing & Cost Management | Upfront Commitment | aws.upfrontcommitment | The upfront commitment made for a service or reservation (e.g., 'Yes', 'No'). |
+
+</details>
+
+<details>
+<summary><strong>Compute & Instance Specifications</strong></summary>
+
+| Field Group | Label Short | Name | Description |
+|-------------|-------------|------|-------------|
 | Compute & Instance Specifications | Accelerator Size | aws.awsacceleratorsize | The size or capacity of the hardware accelerator associated with the resource. |
 | Compute & Instance Specifications | Accelerator Type | aws.awsacceleratortype | The type of hardware accelerator used, such as GPU, FPGA, or AWS Inferentia. |
 | Compute & Instance Specifications | CPU Type | aws.awscputype | The manufacturer or architecture of the CPU, such as 'Intel', 'AMD', or 'AWS Graviton'. |
@@ -138,6 +156,14 @@ Below is a comprehensive reference for AWS Bill fields.
 | Compute & Instance Specifications | Instance Family | aws.instancefamily | The family of instance types (e.g., 'm' for general purpose, 'c' for compute optimized). |
 | Compute & Instance Specifications | Instance Function | aws.instancefunction | The role or purpose of an AWS instance (e.g., compute-optimized, storage-optimized, web server). |
 | Compute & Instance Specifications | Instance SKU | aws.instancesku | The Stock Keeping Unit identifier for a specific AWS instance configuration. |
+
+</details>
+
+<details>
+<summary><strong>Compute & Instance Specifications (continued)</strong></summary>
+
+| Field Group | Label Short | Name | Description |
+|-------------|-------------|------|-------------|
 | Compute & Instance Specifications | Instance Type | aws.instancetype | The type of instance used (e.g., t2.micro, m5.large). |
 | Compute & Instance Specifications | Instance Type Family | aws.instancetypefamily | The broader family grouping for AWS instance types. |
 | Compute & Instance Specifications | Intel AVX Available | aws.intelavxavailable | Indicates if Intel Advanced Vector Extensions (AVX) are available on the instance. |
@@ -154,6 +180,13 @@ Below is a comprehensive reference for AWS Bill fields.
 | Compute & Instance Specifications | Processor Features | aws.processorfeatures | Special features or capabilities of the processor. |
 | Compute & Instance Specifications | Tenancy | aws.tenancy | The tenancy option for an instance (e.g., 'Shared', 'Dedicated', 'Host'). |
 | Compute & Instance Specifications | vCPU | aws.vcpu | The number of virtual CPUs associated with the resource. |
+
+</details>
+<details>
+<summary><strong>Database & Analytics</strong></summary>
+
+| Field Group | Label Short | Name | Description |
+|-------------|-------------|------|-------------|
 | Database & Analytics | Broker Engine | aws.awsbrokerengine | The message broker engine type for a service like Amazon MQ (e.g., RabbitMQ, ActiveMQ). |
 | Database & Analytics | Cache Engine | aws.awscacheengine | The type of caching engine used (e.g., Redis, Memcached). |
 | Database & Analytics | CloudSearch Version | aws.awscloudsearchversion | The API version of the Amazon CloudSearch domain. |
@@ -166,6 +199,14 @@ Below is a comprehensive reference for AWS Bill fields.
 | Database & Analytics | Indexing Source | aws.awsindexingsource | The source for an indexing job, such as in Amazon Kendra. |
 | Database & Analytics | Real-Time Operation | aws.realtimeoperation | Indicates if an AWS operation is real-time (e.g., Yes/No for Kinesis, Lambda) in billing. |
 | Database & Analytics | Supported Modes | aws.supportedmodes | The operational modes supported by an AWS service (e.g., On-Demand, Provisioned for Lambda). |
+
+</details>
+
+<details>
+<summary><strong>Deployment & Architecture</strong></summary>
+
+| Field Group | Label Short | Name | Description |
+|-------------|-------------|------|-------------|
 | Deployment & Architecture | Architectural Review | aws.architecturalreview | Indicates whether an architectural review was conducted for an AWS resource or service. |
 | Deployment & Architecture | Architecture Support | aws.architecturesupport | Level of support provided for a specific AWS architecture (e.g., basic, premium). |
 | Deployment & Architecture | Availability Zone | aws.availabilityZone | Specifies the geographical location of the AWS resources, indicating the specific data center within a region where the resource is deployed (e.g., us-east-1a) |
@@ -176,6 +217,14 @@ Below is a comprehensive reference for AWS Bill fields.
 | Deployment & Architecture | Running Mode | aws.runningmode | The operational mode of an AWS resource (e.g., active, standby for RDS, ELB). |
 | Deployment & Architecture | Server Location | aws.awsserverlocation | The physical location of the server, often more specific than a region. |
 | Deployment & Architecture | Snowball Type | aws.awssnowballtype | The type of AWS Snowball device used (e.g., 'Snowball Edge', 'Snowcone'). |
+
+</details>
+
+<details>
+<summary><strong>Geographic & Location</strong></summary>
+
+| Field Group | Label Short | Name | Description |
+|-------------|-------------|------|-------------|
 | Geographic & Location | Country | aws.awscountry | The country where the resource or service is located or where usage originated. |
 | Geographic & Location | From Location | aws.fromlocation | The physical or virtual location from which an AWS service is accessed (e.g., region, edge location). |
 | Geographic & Location | From Location Type | aws.fromlocationtype | The type of location from which an AWS service is accessed (e.g., region, availability zone, edge location). |
@@ -186,6 +235,13 @@ Below is a comprehensive reference for AWS Bill fields.
 | Geographic & Location | To Location | aws.awstolocation | The destination location for data transfer, such as a specific AWS Region or 'Internet'. |
 | Geographic & Location | To Location Type | aws.awstolocationtype | The type of the destination location for data transfer, such as 'AWS Region' or 'AWS Edge Location'. |
 | Geographic & Location | Transfer Type | aws.transfertype | The direction or nature of data transfer, such as inbound or outbound. |
+
+</details>
+<details>
+<summary><strong>Instance Capacity</strong></summary>
+
+| Field Group | Label Short | Name | Description |
+|-------------|-------------|------|-------------|
 | Instance Capacity | Awsinstancecapacity10xlarge | aws.awsinstancecapacity10xlarge | The compute capacity status or allocation for 10xlarge instances. |
 | Instance Capacity | Awsinstancecapacity16xlarge | aws.awsinstancecapacity16xlarge | The compute capacity status or allocation for 16xlarge instances. |
 | Instance Capacity | Awsinstancecapacity18xlarge | aws.awsinstancecapacity18xlarge | The compute capacity status or allocation for 18xlarge instances. |
@@ -198,7 +254,7 @@ Below is a comprehensive reference for AWS Bill fields.
 | Instance Capacity | Instancecapacity4xlarge | aws.instancecapacity4xlarge | The compute capacity status or allocation for 4xlarge AWS instances (e.g., vCPUs, availability) for usage tracking. |
 | Instance Capacity | Instancecapacity8xlarge | aws.instancecapacity8xlarge | The compute capacity status or allocation for 8xlarge AWS instances (e.g., vCPUs, availability) for usage tracking. |
 | Instance Capacity | Instancecapacity9xlarge | aws.instancecapacity9xlarge | The compute capacity status or allocation for 9xlarge AWS instances (e.g., vCPUs, availability) for usage tracking. |
-|
+</details>
 
 </TabItem>
 
@@ -558,6 +614,7 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 Below is a concise, collapsible reference. Click a group to expand its table.
 
 
+<details>
 <summary><strong>Account</strong></summary>
 
 | Label Short | GCP Name | Description |
@@ -565,6 +622,9 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | Billing ID | billing_account_id | The unique identifier of the Cloud Billing account associated with the usage. |
 | Cloud Provider Entity ID | cloud_provider_entity_id | The identifier for the specific cloud provider entity. |
 
+</details>
+
+<details>
 <summary><strong>Adjustment Info</strong></summary>
 
 | Label Short | GCP Name | Description |
@@ -574,6 +634,9 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | Adjustment Mode | adjustment_info_mode | The mode of the adjustment (e.g., "MANUAL"). |
 | Adjustment Type | adjustment_info_type | The type of adjustment (e.g., "CORRECTION", "GOODWILL"). |
 
+</details>
+
+<details>
 <summary><strong>Currency</strong></summary>
 
 | Label Short | GCP Name | Description |
@@ -581,7 +644,10 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | Conversion Rate | currency_conversion_rate | The conversion rate used to translate the original cost into USD. |
 | Original Currency | currency | The currency used for the original cost, specified in ISO 4217 format. |
 
+</details>
 
+
+<details>
 <summary><strong>End Time Period / Date</strong></summary>
 
 | Label Short | GCP Name | Description |
@@ -595,8 +661,11 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | Week | end_week | End week. |
 | Year | end_year | End year. |
 
+</details>
 
 
+
+<details>
 <summary><strong>Export Time Period / Date</strong></summary>
 
 | Label Short | GCP Name | Description |
@@ -607,8 +676,11 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | Week | export_week | Export week. |
 | Year | export_year | Export year. |
 
+</details>
 
 
+
+<details>
 <summary><strong>Invoice</strong></summary>
 
 | Label Short | GCP Name | Description |
@@ -616,7 +688,10 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | Invoice Month | invoice_month | Invoice month (YYYYMM). |
 | Invoice Publisher Type | invoice_publisher_type | Indicates whether the publisher is Google or a third-party marketplace. |
 
+</details>
 
+
+<details>
 <summary><strong>Start Time Period / Date</strong></summary>
 
 | Label Short | GCP Name | Description |
@@ -631,6 +706,9 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | Year | start_year | Start year. |
 
 
+</details>
+
+<details>
 <summary><strong>Transaction</strong></summary>
 
 | Label Short | GCP Name | Description |
@@ -640,8 +718,13 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | Subscription Instance ID | subscription_instance_id | The unique Subscription Instance ID associated with the cost. |
 | Type | type | The transaction category, such as Usage, Credit, or Tax. |
 
+</details>
+
 
 ## Credits
+
+<details>
+<summary><strong>Credits</strong></summary>
 
 | Label Short | GCP Name | Description |
 |-------------|----------|-------------|
@@ -650,10 +733,15 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | Credit Name | gcp_credits.gcp_credit_name | Display name of the credit. |
 | Credit Type | gcp_credits.gcp_credit_type | Category of credit (e.g., PROMOTION, USAGE_DISCOUNT). |
 
+</details>
+
 
 
 
 ## Location
+
+<details>
+<summary><strong>Location</strong></summary>
 
 | Label Short | GCP Name | Description |
 |-------------|----------|-------------|
@@ -662,8 +750,13 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | Region | gcp.region | The geographic region where the resource is hosted (e.g., us-central1). |
 | Zone | gcp.zone | The zone where the resource is hosted (e.g., us-central1-a). Not all resources have a zone. |
 
+</details>
+
 
 ## Project
+
+<details>
+<summary><strong>Project</strong></summary>
 
 | Field Group | Label Short | GCP Name | Description |
 |-------------|-------------|----------|-------------|
@@ -674,7 +767,12 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | - | Project Name | gcp.gcp_project_name | The user-assigned display name of the Google Cloud project. |
 | - | Project Number | gcp.gcp_project_number | The unique, Google-assigned number of the Google Cloud project. |
 
+</details>
+
 ## Service & SKU
+
+<details>
+<summary><strong>Service & SKU</strong></summary>
 
 | Field Group | Label Short | GCP Name | Description |
 |-------------|-------------|----------|-------------|
@@ -698,13 +796,20 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 | SKU | SKU ID | gcp.gcp_sku_id | The unique identifier for the Stock Keeping Unit (SKU). |
 | - | Product | gcp.gcp_product | The Google Cloud service that generated the cost, such as Compute Engine or BigQuery. |
 
+</details>
+
 ## Usage
+
+<details>
+<summary><strong>Usage</strong></summary>
 
 | Field Group | Label Short | GCP Name | Description |
 |-------------|-------------|----------|-------------|
-gcp_usage_amount_in_pricing_units | The quantity of usage converted to the standard pricing unit. |
+| - | Usage Amount | gcp.gcp_usage_amount_in_pricing_units | The quantity of usage converted to the standard pricing unit. |
 | - | Usage Pricing Unit | gcp.gcp_usage_pricing_unit | The standard unit used for pricing this usage (e.g., 'gibibyte month'). |
 | - | Usage Unit | gcp.gcp_usage_unit | The unit in which usage is measured (e.g., 'gibibyte'). |
+
+</details>
 
 
 
@@ -712,7 +817,10 @@ gcp_usage_amount_in_pricing_units | The quantity of usage converted to the stand
 
 <TabItem value="unified" label="Unified">
 
-### Account:
+## Account
+
+<details>
+<summary><strong>Account</strong></summary>
 
 | Field | Description |
 |-------|-------------|
@@ -721,8 +829,13 @@ gcp_usage_amount_in_pricing_units | The quantity of usage converted to the stand
 | Sub-Account ID | Identifier for a sub-account or cloud project under the billing account. |
 | Sub-Account Name | Name of the sub-account or cloud project. |
 
+</details>
 
-### billing:
+
+## Billing
+
+<details>
+<summary><strong>Billing</strong></summary>
 
 **Dimensions**
 
@@ -744,158 +857,214 @@ gcp_usage_amount_in_pricing_units | The quantity of usage converted to the stand
 | Total Effective Cost | Net cost after discounts, credits, and amortization. |
 | Total List Cost | Public list-price cost before any discounts or credits. |
 
-DIMENSIONS
-Billing Currency
-Billing Source
-Consumed Unit
+</details>
 
+## Capacity Reservation
 
-MEASURES
-Consumed Quantity (Hours)
-Contracted Unit Price
-Total Billed Cost
-Total Consumed Quantity
-Total Contracted Cost
-Total Effective Cost
-Total List Cost
+<details>
+<summary><strong>Capacity Reservation</strong></summary>
 
+| Field | Description |
+|-------|-------------|
+| Capacity Reservation ID | Unique identifier for the capacity reservation. |
+| Capacity Reservation Status | Current status of the capacity reservation (e.g., active, expired). |
 
-### Capacity reservation:
-DIMENSIONS
-Capacity Reservation ID
-Capacity Reservation Status
+</details>
 
+## Charge
 
-### charge
-Charge Category
-Charge Class
-Charge Description
-Charge Frequency
-Invoice Issuer
-Provider
-Publisher
+<details>
+<summary><strong>Charge</strong></summary>
 
-### charge origination
+| Field | Description |
+|-------|-------------|
+| Charge Category | Classification of the charge (e.g., Usage, Tax, Credit). |
+| Charge Class | Further classification of the charge type. |
+| Charge Description | Detailed description of what the charge represents. |
+| Charge Frequency | How often the charge is applied (e.g., one-time, recurring). |
+| Invoice Issuer | Entity that issued the invoice containing this charge. |
+| Provider | Service provider responsible for the charge. |
+| Publisher | Entity that published the service or product. |
 
-Invoice ID
+</details>
 
+## Charge Origination
 
-### Cluster 
+<details>
+<summary><strong>Charge Origination</strong></summary>
 
-DIMENSIONS
-Application Name
-Cluster Entity Selection
-Cluster Name
-Cluster Type
-ECS service name
-Environment Name
-Instance Type filter [Node] (Yes / No)
-Instance Type filter [Pod] (Yes / No)
-Namespace
-Workload Name
+| Field | Description |
+|-------|-------------|
+| Invoice ID | Unique identifier for the invoice associated with the charge. |
 
+</details>
 
-MEASURES
-EfficiencyScore
-Idle Cost
-Network Cost
-System Cost
-Unallocated Cost
-Utilised Cost
+## Cluster
 
-### Commitment discount 
+<details>
+<summary><strong>Cluster</strong></summary>
 
-Commitment Discount Category
-Commitment Discount ID
-Commitment Discount Name
-Commitment Discount Type
+**Dimensions**
 
-### External data
+| Field | Description |
+|-------|-------------|
+| Application Name | Name of the application running in the cluster. |
+| Cluster Entity Selection | Type of entity selected for analysis. |
+| Cluster Name | Name of the Kubernetes or ECS cluster. |
+| Cluster Type | Type of cluster (e.g., Kubernetes, ECS). |
+| ECS service name | Name of the ECS service if applicable. |
+| Environment Name | Environment where the cluster is deployed (e.g., Production, Staging). |
+| Instance Type filter [Node] | Whether instance type filtering is applied at the node level. |
+| Instance Type filter [Pod] | Whether instance type filtering is applied at the pod level. |
+| Namespace | Kubernetes namespace. |
+| Workload Name | Name of the workload running in the cluster. |
 
-Billing Account Id
-Billing Account Name
-Charge Category
-Cloud Provider Entity Name
-Consumed Quantity
-Provider Name
-Resource Id
-Sku Id
+**Measures**
 
-### location
+| Measure | Description |
+|---------|-------------|
+| EfficiencyScore | Score indicating the resource utilization efficiency. |
+| Idle Cost | Cost of resources that are provisioned but not utilized. |
+| Network Cost | Cost associated with network traffic. |
+| System Cost | Cost of system components and overhead. |
+| Unallocated Cost | Cost that cannot be attributed to specific workloads. |
+| Utilised Cost | Cost of resources that are actively utilized. |
 
-Availability Zone
-Region ID
-Region Name
+</details>
 
-### pricing
+## Commitment Discount
 
-Pricing Category
-Pricing Quantity
-Pricing Unit
+<details>
+<summary><strong>Commitment Discount</strong></summary>
 
-### resource
+| Field | Description |
+|-------|-------------|
+| Commitment Discount Category | Category of the commitment discount (e.g., Reserved Instance, Savings Plan). |
+| Commitment Discount ID | Unique identifier for the commitment discount. |
+| Commitment Discount Name | Name of the commitment discount. |
+| Commitment Discount Type | Type of commitment discount (e.g., RI, SP, CUD). |
 
-Resource ID
-Resource Name
-Resource Type
+</details>
 
-### service
+## External Data
 
-Service Category
-Service Name
-Service Subcategory
+<details>
+<summary><strong>External Data</strong></summary>
 
-### sku
+| Field | Description |
+|-------|-------------|
+| Billing Account Id | Unique identifier for the billing account. |
+| Billing Account Name | Name of the billing account. |
+| Charge Category | Category of the charge (e.g., Usage, Tax). |
+| Cloud Provider Entity Name | Name of the cloud provider entity. |
+| Consumed Quantity | Amount of resource consumed. |
+| Provider Name | Name of the service provider. |
+| Resource Id | Unique identifier for the resource. |
+| Sku Id | Stock keeping unit identifier. |
 
-SKU ID
-SKU Meter
-SKU Price ID
+</details>
 
-### timeframe
-Billing Period End Date
-Date
-Month
-Month Name
-Quarter
-Time
-Week
-Year
+## Location
 
-Billing Period Start Date
-Date
-Month
-Month Name
-Quarter
-Time
-Week
-Year
+<details>
+<summary><strong>Location</strong></summary>
 
+| Field | Description |
+|-------|-------------|
+| Availability Zone | Specific availability zone where the resource is deployed. |
+| Region ID | Identifier for the geographic region. |
+| Region Name | Name of the geographic region. |
 
-Charge Period End Date
-Date
-Month
-Month Name
-Quarter
-Time
-Week
-Year
+</details>
 
+## Pricing
 
+<details>
+<summary><strong>Pricing</strong></summary>
 
+| Field | Description |
+|-------|-------------|
+| Pricing Category | Category of pricing (e.g., On-Demand, Reserved). |
+| Pricing Quantity | Quantity used for pricing calculations. |
+| Pricing Unit | Unit of measure for pricing (e.g., GB-month, hour). |
 
-charge period start date
+</details>
 
-Date
-Month
-Month Name
-Quarter
-Time
-Week
-Pivot data
-Filter by field
-Info
-More
-Year
+## Resource
+
+<details>
+<summary><strong>Resource</strong></summary>
+
+| Field | Description |
+|-------|-------------|
+| Resource ID | Unique identifier for the resource. |
+| Resource Name | Name of the resource. |
+| Resource Type | Type of the resource (e.g., VM, Storage, Database). |
+
+</details>
+
+## Service
+
+<details>
+<summary><strong>Service</strong></summary>
+
+| Field | Description |
+|-------|-------------|
+| Service Category | High-level category of the service (e.g., Compute, Storage, Database). |
+| Service Name | Name of the service (e.g., EC2, S3, RDS). |
+| Service Subcategory | Subcategory of the service for more specific classification. |
+
+</details>
+
+## SKU
+
+<details>
+<summary><strong>SKU</strong></summary>
+
+| Field | Description |
+|-------|-------------|
+| SKU ID | Unique identifier for the stock keeping unit. |
+| SKU Meter | Metering information for the SKU. |
+| SKU Price ID | Identifier for the price of the SKU. |
+
+</details>
+
+## Timeframe
+
+<details>
+<summary><strong>Timeframe</strong></summary>
+
+| Field | Description |
+|-------|-------------|
+| Billing Period End Date | End date of the billing period. |
+| Date | Specific date for the cost data. |
+| Month | Month number for the cost data. |
+| Month Name | Name of the month for the cost data. |
+| Quarter | Quarter of the year for the cost data. |
+| Time | Specific time for the cost data. |
+| Week | Week number for the cost data. |
+| Year | Year for the cost data. |
+
+</details>
+
+## Charge Period
+
+<details>
+<summary><strong>Charge Period</strong></summary>
+
+| Field | Description |
+|-------|-------------|
+| Charge Period End Date | End date of the charge period. |
+| Billing Period Start Date | Start date of the billing period. |
+| Date | Specific date for the charge data. |
+| Month | Month number for the charge data. |
+| Month Name | Name of the month for the charge data. |
+| Quarter | Quarter of the year for the charge data. |
+| Time | Specific time for the charge data. |
+| Week | Week number for the charge data. |
+| Year | Year for the charge data. |
+
+</details>
 
 </TabItem>
 </Tabs>
