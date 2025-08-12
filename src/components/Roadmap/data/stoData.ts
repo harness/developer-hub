@@ -7,12 +7,12 @@ export const StoData: Horizon = {
       {
         tag: [{ value: "Notifications" }, { value: "Platform" }],
         title: "Exemption Notifications",
-        description: "Notify developers and AppSec teams via email, Slack, MS teams, custom webhook about pending, approved and expired exemption requests.",
+        description: "Notify developers and AppSec teams via email, Slack, Microsoft Teams, or a custom webhook about pending, approved, and expired exemption requests.",
       },
       {
         tag: [{ value: "Vulnerability" }, { value: "Governance" }],
         title: "Base image vs App layer vulnerability",
-        description: "Ability to see base image Vs app layer vulnerability and govern pipelines.",
+        description: "Ability to see base image vs. app layer vulnerabilities and govern pipelines.",
       },
       {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
@@ -36,8 +36,8 @@ export const StoData: Horizon = {
       },
       {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
-        title: "Open and Remediated Issues at project Scope",
-        description: "Visibility into all Active Open and remediated issues across Targets and Pipelines at Prokject scope."
+        title: "Open and Remediated Issues at Project Scope",
+        description: "Visibility into all active open and remediated issues across Targets and Pipelines at the project scope."
       },
       {
         tag: [{ value: "Visibility" }, { value: "Platform" }],
@@ -52,7 +52,7 @@ export const StoData: Horizon = {
       {
         tag: [{ value: "Vulnerability Prioritization" }, { value: "AppSec" }],
         title: "Override Severity for Vulnerabilities",
-        description: "Allow appsec users to override vulnerability severity."
+        description: "Allow AppSec users to override vulnerability severity."
       }, 
       {
         tag: [{ value: "Ticketing" }, { value: "Integration" }, { value: "Exemption" }],
@@ -66,18 +66,18 @@ export const StoData: Horizon = {
       },
       {
         tag: [{ value: "Integration" }, { value: "Anchore" }],
-        title: "Anchore Enhacenments",
-        description: "Updated the Anchore runner to latest, add advanced configuration, etc."
+        title: "Anchore Enhancements",
+        description: "Update the Anchore runner to the latest version, add advanced configuration, and more."
       },          
       {
         tag: [{ value: "Integration" }, { value: "SonarQube" }],
         title: "SonarQube: Code/Bug Smells as Vulnerabilities",
-        description: "Treat SonarQube Code/Bug Smells as vulnerabilities instead of Info level issues"
+        description: "Treat SonarQube Code/Bug Smells as vulnerabilities instead of info-level issues."
       },
       {
         tag: [{ value: "Visibility" }, { value: "Platform" }],
         title: "Deduplication Stats",
-        description: "Show deduplication stats at pipeline level."
+        description: "Show deduplication stats at the pipeline level."
       },
       {
         tag: [{ value: "Integration" }, { value: "ServiceNow" }],
@@ -87,7 +87,7 @@ export const StoData: Horizon = {
       {
         tag: [{ value: "EPSS" }],
         title: "Exploit Protection Scoring System (EPSS)",
-        description: "Provide EPSS score additional to CVSS score for better vulnerability prioritization.",
+        description: "Provide EPSS score in addition to CVSS score for better vulnerability prioritization.",
       },
       {
         tag: [{ value: "Cross Module" }],
@@ -107,7 +107,7 @@ export const StoData: Horizon = {
       {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
         title: "Issues List - Org/Account",
-        description: "Centralized, prioritized vulnerability list for AppSec persona at Org/Account scope.",
+        description: "A centralized, prioritized vulnerability list for the AppSec persona at the Org/Account scope.",
       },
       {
         tag: [{ value: "Platform" }],
@@ -132,7 +132,7 @@ export const StoData: Horizon = {
         {
         tag: [{ value: "Runtime" }, { value: "Visibility"}],
         title: "Runtime Visibility",
-        description: "Ingest Runtime vulnerabilities via Traceable's Protection agent.",
+        description: "Ingest runtime vulnerabilities via Traceable's Protection agent.",
       }
     ],
   },
@@ -157,7 +157,7 @@ export const StoData: Horizon = {
               {
         tag: [{ value: "Runtime" }, { value: "Vulnerability Prioritization"}],
         title: "Runtime Vulnerability Prioritization",
-        description: "Correlate runtime vulnerabilities with SAST/SCA issue findings for better vulnerability prioritization",
+        description: "Correlate runtime vulnerabilities with SAST/SCA issue findings for better vulnerability prioritization.",
       }
     ],
   },
@@ -172,14 +172,14 @@ export const StoData: Horizon = {
         link: "https://developer.harness.io/docs/security-testing-orchestration/rbac/"
       },
       {
-        tag: [{ value: "Integration" }, { value: "Aqua Sec"}],
-        title: "Aqua Security on-prem",
+        tag: [{ value: "Integration" }, { value: "Aqua Security"}],
+        title: "Aqua Security On-Prem",
         description: "Native integration with Aqua Security on-prem.",
         link: "https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference#scan-configuration"
     
       },
       {
-        tag: [{ value: "Exepmtion Management" }],
+        tag: [{ value: "Exemption Management" }],
         title: "Approval/Rejection comment",
         description: "Enable AppSec users to add contextual comments when approving or rejecting an exemption request.",
         link: "https://developer.harness.io/docs/security-testing-orchestration/exemptions/manage-exemptions"
