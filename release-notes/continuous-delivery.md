@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-8-06T10:00:00
+date: 2025-8-14T10:00:00
 sidebar_position: 8
 ---
 
@@ -54,6 +54,18 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 :::
 
 ## August 2025
+
+### Version 1.101.0
+
+#### Fixed issues
+
+- Fixed an issue where pipeline rollback was not triggered when it was added as a post-retry action for the retry failure strategy. (**PIPE-29172, ZD-90429, ZD-90445**)
+- Fixed a UI overflow CSS issue and added a line clamp in the trigger info field. (**PIPE-28600**)
+- Fixed an issue where secrets configured at the account level could not be accessed by a generic webhook trigger with HMAC authentication. The webhook can now correctly identify and use secrets created at higher scope levels. (**CDS-113115, ZD-89938**)
+- Corrected the state handling of the standard template field in the ServiceNow Create step to prevent it from switching back to a fixed input field from an expression field. (**CDS-112945**)
+- Fixed an issue where clicking on a test host triggered an unnecessary state update, causing two analysis/metrics API calls—one with the correct test host and another with `undefined`, which returned data for all test hosts.
+- Fixed an issue where clicking between nodes in the UI caused an unnecessary state update, triggering two analysis/metrics API calls. One call had the correct test host and the other had `undefined`, which returned data for all test hosts. The redundant state update has been removed, ensuring the correct data is consistently displayed for the selected host. (**CDS-112403, ZD-88529**)
+
 
 ### Version 1.100.0
 
