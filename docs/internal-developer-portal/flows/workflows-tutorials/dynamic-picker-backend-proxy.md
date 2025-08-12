@@ -77,7 +77,7 @@ To safely expose this API to your Workflow UI, you need to define a backend prox
 proxy:
   endpoints:
     /harness-user-groups:
-      target: https://app.harness.io/ng/api
+      target: https://app.harness.io/ng/api/user-groups
       pathRewrite:
         /api/proxy/harness-user-groups/?: /
       headers:
@@ -148,7 +148,7 @@ spec:
           ui:field: SelectFieldFromApi
           ui:options:
             title: User groups
-            path: proxy/harness-user-groups/user-groups?orgIdentifier={{parameters.orgId}}&projectIdentifier={{parameters.projectId}}
+            path: proxy/harness-user-groups?orgIdentifier={{parameters.orgId}}&projectIdentifier={{parameters.projectId}}
             arraySelector: data.content
             valueSelector: identifier
             labelSelector: name
