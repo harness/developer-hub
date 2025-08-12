@@ -985,12 +985,12 @@ segDef = client.segment_definitions.find("employees", env.id, ws.id)
 print (segDef.name)
 ```
 
-`Array(string) get_key_count()`
+`int get_key_count()`
 
 Fetches key count of current segment definition object.
 
 * Parameters: None
-* Return: Array of string
+* Return: integer
 
 ```python
 ws = client.workspaces.find("Defaults")  
