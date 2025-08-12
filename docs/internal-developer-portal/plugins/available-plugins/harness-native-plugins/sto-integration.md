@@ -2,7 +2,7 @@
 title: Harness Security Testing Orchestration Integration with IDP
 description: Complete guide to integrating Security Testing Orchestration (STO) with the Internal Developer Portal (IDP) - from setup to viewing vulnerabilities and creating security scorecards.
 sidebar_position: 2
-sidebar_label: Security Testing Orchestration Integration
+sidebar_label: Security Testing Orchestration 
 tags:
   - Security Testing
   - Developer Portal
@@ -42,7 +42,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DocImage from '@site/src/components/DocImage';
 
-# Harness Security Testing Orchestration (STO) and IDP Integration
+# Harness Security Testing Orchestration (STO) and IDP 
 
 Harness Internal Developer Portal (IDP) integrates with Security Testing Orchestration (STO) to bring security insights directly into the developer workflow.
 
@@ -65,6 +65,12 @@ Harness IDP and STO must both be enabled on your account. Additionally, the STO 
 * **Harness IDP enabled** in your account
 * **STO module enabled**, with at least one pipeline or scanner configured
 * **STO-IDP integration feature flag** turned on (contact Harness Support)
+
+:::info
+
+This feature is available behind the feature flag IDP_STO_INTEGRATION. If you want to try out this feature, please reach out to the IDP team. We would love to work with you and take feedback.
+
+:::
 
 ## What this Integration enables
 
@@ -126,7 +132,7 @@ This section walks through the steps required to set up that integration, includ
 
 
 
-### Auto Import using Source Code 
+### 1. Auto Import using Source Code 
 
 The **Link to Source Code Repository** feature lets you associate a catalog component with its source code repository directly from the Harness IDP UI. This repository link is used to automatically configure several plugins, fetch repository metadata, and is also used in Scorecards.
 
@@ -153,9 +159,10 @@ spec:
 
 > This is essential if your STO pipeline includes Git scans like SAST, secret scanning, or license compliance, because the vulnerabilities will be mapped to specific files and lines in the repo.
 
-### STO Test Target Annotation 
+### 2. STO Test Target Annotation 
 
-The `harness.io/sto-test-target` annotation links an IDP component to the scan targets that Harness STO processes during its own, separate pipeline executions. These scan targets serve as the bridge between STO's test results and the corresponding IDP entity, ensuring that findings are accurately associated. 
+The `harness.io/sto-test-target` annotation links an IDP component to the scan targets that Harness STO processes during its own, separate pipeline executions. These scan targets serve as the bridge between STO's test results and the corresponding IDP entity, ensuring that findings are accurately associated. You can always know more about [Creating Test Targets in STO](https://developer.harness.io/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines/) from our docs.
+
 The targets can be of two types:
 1. **Source Code (Git-based)**
 2. **Deployed Artifact (Container Image)**
@@ -232,7 +239,7 @@ scope: account
 >  **Why this matters**:
 Incorrect or missing scopes will result in the IDP failing to fetch or render security insights. Make sure your test target's scope matches exactly with where it was defined in STO.
 
-### Multiple Test Targets
+### 2.1 Multiple Test Targets
 
 You can define **multiple STO test targets** for a single component. This is useful if:
 
