@@ -39,7 +39,7 @@ You can learn more about the [architecture of Delegate Proxy](./delegate-proxy.m
 
 Harness IDP supports the following categories of plugins:
 * [Available Plugins](/docs/category/available-plugins) - A curated set of plugins including:
-  * [Harness Native Plugins](/docs/category/harness-native-plugins) - Official plugins developed by Harness that integrate seamlessly with other Harness modules
+  * [Harness Native Plugins](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins) - Official plugins developed by Harness that integrate seamlessly with other Harness modules
   * Community and third-party plugins developed by the Backstage community
 
 **A plugin is available in the Backstage marketplace but not in Harness IDP. Can we file a request to add the plugin to IDP?**
