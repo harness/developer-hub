@@ -1,6 +1,13 @@
 ---
 title: Android SDK
 sidebar_label: Android SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-calling-client-destroy-does-not-post-impressions
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-duplicate-class-finalizablereferencequeue
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-sdk-takes-too-long-to-get-ready
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-using-kotlin-sdk-always-returns-control-treatment
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-http-exception-chain-validation-failed
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/android-sdk-does-the-sdk-use-sharedpreferences
 ---
 
 import Tabs from '@theme/Tabs';
@@ -944,6 +951,8 @@ val rolloutCacheConfig = RolloutCacheConfiguration.builder()
 - `expirationDays`: Number of days to keep cached data before it is considered expired. Default: 10 days.
 - `clearOnInit`: If set to `true`, clears previously stored rollout data when the SDK initializes. Default: `false`.
 
+The Android SDK does **not** use `SharedPreferences` to store the FME cache. It stores the cache directly on internal storage in the app’s context folder.
+
 ## Localhost mode
 
 For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, you can start the SDK in **localhost** mode (aka, off-the-grid mode). In this mode, the SDK neither polls or updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the feature flags. To use the SDK in localhost mode, replace the API Key with `localhost`, as shown in the example below:
@@ -1660,3 +1669,65 @@ val config = SplitClientConfig.builder()
 
 </TabItem>
 </Tabs>
+
+## Troubleshooting
+
+### Impressions not posted when using client.Destroy()
+
+When using the Android SDK, calling `client.Destroy()` before the app exits is intended to clear the SDK cache and post all impressions. 
+
+However, if the app process shuts down before or during the post request, the cached impressions may not appear in the Live Tail tab of the Split user interface because the request fails to reach Harness servers. 
+
+To resolve this, either add a call to the `client.Flush()` method in your app workflow (this is the recommended approach) to post cached impressions and events before shutdown, or add a short delay (2–3 seconds, adjusted for network speed) after calling `client.Destroy()` to allow enough time for the impressions to be sent before the app exits.
+
+### Duplicate class FinalizableReferenceQueue$DirectLoader error when compiling Android SDK app
+
+When compiling an Android app using the Android SDK, you may encounter the following build error:
+
+```
+Duplicate class com.google.common.base.FinalizableReferenceQueue$DirectLoader found in modules checkstyle-5.3-all.jar (checkstyle-5.3-all.jar) and guava-18.0.jar (com.google.guava:guava:18.0)
+```
+
+This error occurs because the Android SDK depends on the Google Guava 18.0 library, while Checkstyle 5.3 depends on an older library [`com.google.collections » google-collections 1.0`](https://mvnrepository.com/artifact/com.google.collections). These conflicting dependencies cause the duplicate class definition during compilation.
+
+Upgrade Checkstyle to version 7.0 or higher. Checkstyle 7.0 uses the Google Guava library, which resolves the duplication conflict and allows the project to compile successfully.
+
+### SDK takes too long to get ready on Android
+
+When using the Android SDK, the first time the app loads, the SDK takes some time to download feature definitions from Harness FME servers and cache them locally. However, on subsequent app launches, the SDK may still take a long time to get ready even though the cache already exists in the app file system.
+
+This issue occurs in Android SDK versions 2.4.2 and below, where the SDK factory still makes a full data request to Harness FME servers during initialization, regardless of existing cached data on the device.
+
+Upgrade to the latest Android SDK version, which fixes this behavior by properly utilizing the local cache. Additionally, to avoid your app waiting indefinitely on the SDK in case of network issues, listen for the `SDK_READY_TIMED_OUT` event with a configured timeout. This allows your app to continue functioning even if the SDK fails to become ready promptly.
+
+Another helpful event is `SDK_READY_FROM_CACHE`, which fires when the SDK uses cached data on initialization, allowing your app to proceed without waiting for network synchronization.
+
+### Using Kotlin, SDK always returns the control treatment
+
+When using the Android SDK in a Kotlin project, calling `getTreatment()` immediately inside the `SDK_READY` event listener returns the control treatment instead of the expected value. The code works as expected in Swift projects but not in Kotlin.
+
+In Kotlin, the `SDK_READY` event listener requires overriding the `onPostExecution` method inside `SplitEventTask` for the treatment call to work correctly. Using the event listener without this override causes the treatment to be fetched before the SDK is fully ready.
+
+Override the `onPostExecution` function inside the `SplitEventTask` to ensure the code runs only after the SDK is ready, as shown below:
+
+```kotlin
+splitClient.on(SplitEvent.SDK_READY, object : SplitEventTask() {
+    override fun onPostExecution(client: SplitClient) {
+        val treatment = splitClient.getTreatment("split-name")
+        // use treatment as needed
+    }
+})
+```
+
+### HTTP Exception: Chain validation failed
+
+When running the Android app in an emulator, the SDK shows the following error immediately after initialization:
+
+```javascript
+io.split.android.client.network.HttpException: HttpException: Error serializing request body: Chain validation failed
+```
+
+This error originates from the SSL handshake process during the SDK’s network call to https://sdk.split.io. A common cause is the device’s system time being incorrect or out of sync.
+
+Ensure the device’s Date and Time settings are synchronized with the current time. After correcting the time, restart the app to resolve the error.
+

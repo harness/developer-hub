@@ -1,6 +1,9 @@
 ---
 title: iOS SDK
 sidebar_label: iOS SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/ios-sdk-runtime-error-jfbcrypt-m-left-shift-of-x-by-y-places
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/ios-sdk-missing-track-method
 ---
 
 import Tabs from '@theme/Tabs';
@@ -942,3 +945,34 @@ config.certificatePinningConfig = certBuilder.build()
 
 ...
 ```
+
+## Troubleshooting
+
+### Runtime error in JFBCrypt.m: left shift cannot be represented in type 'SInt32'
+
+When using the iOS SDK in an Objective-C project, you might encounter a runtime error immediately after initializing the SDK factory, similar to: `runtime error: left shift of 16488694 by 8 places cannot be represented in type 'SInt32' (aka 'int')` reported in `JFBCrypt.m`.
+
+This error occurs if the Undefined Behavior Sanitizer (UBSan) flag is enabled for your build. UBSan detects undefined behaviors in code, and this particular bit shift triggers the sanitizer.
+
+![](../static/runtime-sanitization.png)
+
+To fix this issue:
+
+1. Disable the Undefined Behavior Sanitizer flag by navigating to your target’s **Edit Scheme** > **Diagnostics** tab and unchecking the **Undefined Behavior Sanitizer** option.
+1. Clean your project build.
+1. Delete the Derived Data folder to remove cached build artifacts.
+1. Rebuild your project.
+
+This will prevent the sanitizer from flagging the bit shift as an error and allow the SDK to initialize correctly.
+
+### Is the iOS SDK Split library missing the track method?
+
+When using the iOS SDK in an Xcode project, attempting to call the `track` method results in a build error:
+
+```
+Value of type 'SplitClientProtocol' has no member 'track'
+```
+
+This error usually occurs because the iOS SDK version used is older than 1.3.0, which did not include the `track` method.
+
+Update the iOS SDK to the latest version via CocoaPods.
