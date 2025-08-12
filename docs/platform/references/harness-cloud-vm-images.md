@@ -4,7 +4,8 @@ description: Reference for VM images on Harness Cloud Machines
 sidebar_position: 4
 ---
 
-Harness provides preconfigured virtual machine (VM) images to run your CI jobs in the cloud. These images come with common build tools and dependencies preinstalled, so you can focus on building and testing your code without worrying about setup.
+
+Harness provides preconfigured virtual machine (VM) images to run your CI jobs in Harness Cloud. These images come with common build tools and dependencies preinstalled, so you can focus on building and testing your code without worrying about setup.
 
 Every CI job runs on a fresh VM, ensuring clean, isolated builds.
 
@@ -12,12 +13,7 @@ To see what’s included in each image, visit the [Harness Cloud VM image reposi
 
 ## Cloud VM Images
 
-:::warning 
-By default, all CI pipelines running on Harness Cloud use the latest image for each operating system (e.g., ubuntu-latest).
-We’re gradually rolling out the ability to select specific VM images per or stage, functionality that is currently behind the feature flags `CI_ENABLE_HOSTED_IMAGE_MANAGEMENT`, `CI_ENABLE_HOSTED_BETA_IMAGES`.
-Once enabled, existing pipelines running on cloud (where the VM image in not set in the stage explicitly) will be executed on the `latest` vm image of the selected operating system. User then will be able to select wether to continue with `latest` as a default, or pin stages to specific versions to avoid image changes when `latest` version is updated to point to a new version.
-Planned releases of versions as well as updates to new `latest` images will be posted in advance to allow customer to prepare. 
-:::
+
 
 ### Available VM Images Image Tags
 
@@ -27,14 +23,27 @@ Harness provides VM images for multiple operating systems and architectures:
 | Virtual machine image | Image label | Notes | Rollout Status|
 |----------------------|-------------|-------|-----|
 | [Linux AMD Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux AMD | GA |
-| [Linux AMD Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux AMD | Deploying |
+| [Linux AMD Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux AMD | GA |
 | [Linux ARM Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux ARM | GA |
-| [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM | Deploying |
+| [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM | GA |
 | [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `macos-latest` or `macos-14` | Latest macOS | GA |
+| macOS 14 (Sonoma) with Xcode 16.3| `macos_sonoma_xcode_16.3` | macOS 14 (Sonoma) with Xcode 16.3 | GA |
 | [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-latest` or `windows-2022` | Latest Windows 2022 Server Image |GA |
+
+:::info
+**Currently, `ubuntu-latest` points to Ubuntu 22.04**.
+To switch latest to Ubuntu 24.04 ahead of the general rollout, contact Harness Support to enable the `CI_ENABLE_HOSTED_BETA_IMAGES` feature flag for your account.
+:::
 
 
 ### Choosing an image version 
+
+Harness VM images use a versioning system to help you balance between getting the latest updates and maintaining build stability.
+
+You can:
+- Pin to a specific version — e.g., `ubuntu-22.04`, to ensure a consistent environment across builds.
+- Use the latest tag — e.g., `ubuntu-latest`, to automatically get the newest tool versions and updates.
+
 To select an the image tag to use, simply provide it in the `imageName` property of the cloud infrastructure `runtime` section.
 
 ```yaml
@@ -45,18 +54,10 @@ To select an the image tag to use, simply provide it in the `imageName` property
         imageName: latest # specify image tag
 ```
 
-### Understanding Image Tags
-
-Harness VM images use a versioning system to help you balance between getting the latest updates and maintaining build stability:
-
-- **`latest`** - The most recent image with the newest tool versions and updates. For example, `ubuntu-latest`.
-- **`penultimate`** - The previous stable image version. For example, `ubuntu-penultimate`.
-
-For each of these, will also have a tag representing its version, as described in the above table. 
 
 ### Best Practice: Pin Image Versions in Production
 
-Since using the `latest` image may contain breaking changes or updated tool versions that could affect your build. Always test thoroughly before updating production pipelines.
+Since using the `latest` tag may contain breaking changes or updated tool versions that could affect your build. Always test thoroughly before updating production pipelines.
 
 To ensure stable production deployments while still benefiting from the latest updates, we recommend the following approach:
 
