@@ -1,7 +1,7 @@
 ---
 title: System Entity
 description: Learn how to define, manage, and use System entities in Harness Internal Developer Portal to group related Components, APIs, and Resources.
-sidebar_position: 4
+sidebar_position: 6
 keywords:
   - Harness Internal Developer Portal
   - System entity definition
@@ -135,6 +135,7 @@ page:
           specs:
             gridProps:
               md: 6
+        // highlight-start
         - component: EntityLinksCard
           specs:
             props:
@@ -143,6 +144,7 @@ page:
             gridProps:
               md: 6
               xs: 12
+        // highlight-end
         - component: CatalogTable
           specs:
             props:
@@ -151,11 +153,13 @@ page:
             gridProps:
               md: 12
               xs: 12
+    // highlight-start
     - name: Entities
       path: /entities
       title: Entities
       contents:
         - component: CatalogTable
+        // highlight-end
     - name: Scorecard
       path: /scorecard
       title: Scorecard
@@ -186,6 +190,30 @@ page:
 
 
 > Existing customers can update their System layout by applying the above YAML in the **System** section under **Catalog Entities - Layout**. This ensures the same structured layout and features available to new accounts.
+
+#### Understanding the Entities Tab in System Layout
+
+The **Entities** tab provides a comprehensive view of all components, APIs, resources, and other entities that belong to a System. This tab is configured in the layout as follows:
+
+```yaml
+- name: Entities
+  path: /entities
+  title: Entities
+  contents:
+    - component: CatalogTable
+```
+
+The **CatalogTable** component renders a filterable, sortable table showing all entities associated with the System. This powerful table offers several key features:
+
+![Entities Table](./static/entites-table-relation.png)
+
+- **Filtering**: Users can filter entities by type (Component, API, Resource), owner, lifecycle stage, and other metadata
+- **Custom columns**: Administrators can configure which columns appear in the table
+- **Search**: Full-text search across all entity metadata
+- **Pagination**: For Systems with many entities, the table automatically paginates results
+- **Quick access**: Direct links to each entity's detail page
+
+The Entities tab serves as the primary navigation hub for exploring all components that belong to a System. This view is particularly valuable for platform teams and system owners who need to maintain an overview of all services, APIs, and resources within their domain.
 
 
 
@@ -264,7 +292,7 @@ When viewing a **System** in the Catalog, the UI displays all Entities (Componen
 ![System-Entity Relations](./static/system-table.png)
 This allows users to see the complete scope of the System, explore its composition, and easily access each Entity's details. This view is valuable for understanding system boundaries, identifying missing or orphaned Entities, and managing ownership at scale.
 
-## Auto-Conversion of Existing 1.0 System Entities
+<!-- ## Auto-Conversion of Existing 1.0 System Entities
 
 To ensure a seamless transition, Harness IDP automatically converts System entities created in version 1.0 to the new System format introduced in version 2.0. This allows users to retain their existing logical groupings without needing to re-create them.
 
@@ -282,4 +310,4 @@ While System entities themselves are migrated automatically, associations betwee
 
 * Add the relevant `system` or `partOf` references manually in the YAML of each Component or API entity.
 
-This ensures that the Catalog relationships reflect your current architecture and ownership model under the new entity framework.
+This ensures that the Catalog relationships reflect your current architecture and ownership model under the new entity framework. -->

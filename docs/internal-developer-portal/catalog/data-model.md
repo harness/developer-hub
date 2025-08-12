@@ -33,22 +33,17 @@ Let's dive deeper into how entities and scopes come together in the Harness-nati
 
 There are different entities within our Harness IDP data model. However, software is modeled in the Harness IDP Catalog using four core entities:
 
-* **Systems**: High-level organizational units that group related components.
 * **Components**: Individual pieces of software.
 * **APIs**: Boundaries between different components.
 * **Resources**: Physical or virtual infrastructure needed to operate a component.
+* **Systems**: High-level organizational units that group related components.
+
 
 ![](static/intro-system.png)
 
-Let's explore these core entities and their usage in detail!
 
-### System
 
-A **System** is a high-level organizational unit that groups together related components, APIs, and resources. Systems help create logical boundaries around parts of your software ecosystem that work together to deliver specific business capabilities. They improve discoverability by providing a clear hierarchy and context for components, making it easier to navigate complex software landscapes and understand how different parts relate to each other.
 
-In Harness IDP 2.0, Systems play a crucial role in organizing your catalog. Components belong to Systems, and Systems can belong to Domains. This hierarchical structure makes it easier to manage large catalogs with many interconnected components.
-
-For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/system-entity.md) here.
 
 ### Component
 
@@ -75,6 +70,14 @@ Workflows enable developer self-service by automating manual tasks and processes
 A Workflow is divided into three key components: Frontend, Backend, and Outputs. **Frontend** defines the input fields required for the workflow. **Backend** configures the actions to be triggered and the orchestration pipelines to be executed. **Outputs** specify the output variables to be shown to developers after execution. You can configure your workflow's frontend and backend by defining specific inputs, actions, and orchestration pipelines.
 
 For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/flows/overview.md) here.
+
+### System
+
+A **System** is a high-level organizational unit that groups together related components, APIs, and resources. Systems help create logical boundaries around parts of your software ecosystem that work together to deliver specific business capabilities. They improve discoverability by providing a clear hierarchy and context for components, making it easier to navigate complex software landscapes and understand how different parts relate to each other.
+
+In Harness IDP 2.0, Systems play a crucial role in organizing your catalog. Components belong to Systems, and Systems can belong to Domains. This hierarchical structure makes it easier to manage large catalogs with many interconnected components.
+
+For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/system-entity.md) here.
 
 ## Harness Platform Entities [IDP 2.0]
 
