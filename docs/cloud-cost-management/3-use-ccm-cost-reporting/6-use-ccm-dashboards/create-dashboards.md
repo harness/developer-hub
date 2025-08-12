@@ -552,6 +552,162 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 
 <TabItem value="gcp" label="GCP">
 
+
+## Billing & Transaction
+
+Below is a concise, collapsible reference. Click a group to expand its table.
+
+
+<summary><strong>Account</strong></summary>
+
+| Label Short | GCP Name | Description |
+|-------------|----------|-------------|
+| Billing ID | billing_account_id | The unique identifier of the Cloud Billing account associated with the usage. |
+| Cloud Provider Entity ID | cloud_provider_entity_id | The identifier for the specific cloud provider entity. |
+
+<summary><strong>Adjustment Info</strong></summary>
+
+| Label Short | GCP Name | Description |
+|-------------|----------|-------------|
+| Adjustment Description | adjustment_info_description | A description of any billing adjustments, if applicable. |
+| Adjustment ID | adjustment_info_id | The unique ID for the billing adjustment. |
+| Adjustment Mode | adjustment_info_mode | The mode of the adjustment (e.g., "MANUAL"). |
+| Adjustment Type | adjustment_info_type | The type of adjustment (e.g., "CORRECTION", "GOODWILL"). |
+
+<summary><strong>Currency</strong></summary>
+
+| Label Short | GCP Name | Description |
+|-------------|----------|-------------|
+| Conversion Rate | currency_conversion_rate | The conversion rate used to translate the original cost into USD. |
+| Original Currency | currency | The currency used for the original cost, specified in ISO 4217 format. |
+
+
+<summary><strong>End Time Period / Date</strong></summary>
+
+| Label Short | GCP Name | Description |
+|-------------|----------|-------------|
+| Date | end_date | End of the usage window (date). |
+| Hour | end_hour | End time at hour granularity. |
+| Month | end_month | End month. |
+| Month Name | end_month_name | End month name. |
+| Quarter | end_quarter | End quarter. |
+| Time | end_time | End timestamp with time. |
+| Week | end_week | End week. |
+| Year | end_year | End year. |
+
+
+
+<summary><strong>Export Time Period / Date</strong></summary>
+
+| Label Short | GCP Name | Description |
+|-------------|----------|-------------|
+| Date | export_date | Export timestamp (date). |
+| Month | export_month | Export month. |
+| Time | export_time | Export time. |
+| Week | export_week | Export week. |
+| Year | export_year | Export year. |
+
+
+
+<summary><strong>Invoice</strong></summary>
+
+| Label Short | GCP Name | Description |
+|-------------|----------|-------------|
+| Invoice Month | invoice_month | Invoice month (YYYYMM). |
+| Invoice Publisher Type | invoice_publisher_type | Indicates whether the publisher is Google or a third-party marketplace. |
+
+
+<summary><strong>Start Time Period / Date</strong></summary>
+
+| Label Short | GCP Name | Description |
+|-------------|----------|-------------|
+| Date | start_date | Start of the usage window (date). |
+| Hour | start_hour | Start time at hour granularity. |
+| Time | start_time | Start timestamp with time. |
+| Month | start_month | Start month. |
+| Month Name | start_month_name | Start month name. |
+| Quarter | start_quarter | Start quarter. |
+| Week | start_week | Start week. |
+| Year | start_year | Start year. |
+
+
+<summary><strong>Transaction</strong></summary>
+
+| Label Short | GCP Name | Description |
+|-------------|----------|-------------|
+| Cost Type | cost_type | Indicates the type of cost (regular, tax, rounding_error, adjustment). |
+| Seller Name | seller_name | The seller of the service, for example, Google Cloud or a Marketplace seller. |
+| Subscription Instance ID | subscription_instance_id | The unique Subscription Instance ID associated with the cost. |
+| Type | type | The transaction category, such as Usage, Credit, or Tax. |
+
+
+## Credits
+
+| Label Short | GCP Name | Description |
+|-------------|----------|-------------|
+| Credit Full Name | gcp_credits.gcp_credit_full_name | The fully qualified resource name of the credit being applied. |
+| Credit ID | gcp_credits.gcp_credit_id | The unique identifier for the specific credit being applied. |
+| Credit Name | gcp_credits.gcp_credit_name | Display name of the credit. |
+| Credit Type | gcp_credits.gcp_credit_type | Category of credit (e.g., PROMOTION, USAGE_DISCOUNT). |
+
+
+
+
+## Location
+
+| Label Short | GCP Name | Description |
+|-------------|----------|-------------|
+| Country | gcp.country | The country where the resource is hosted, derived from the location. |
+| Location | gcp.location | The specific location of the service, which can be a region or multi-region (e.g., 'us'). |
+| Region | gcp.region | The geographic region where the resource is hosted (e.g., us-central1). |
+| Zone | gcp.zone | The zone where the resource is hosted (e.g., us-central1-a). Not all resources have a zone. |
+
+
+## Project
+
+| Field Group | Label Short | GCP Name | Description |
+|-------------|-------------|----------|-------------|
+| Ancestors | Ancestor Display Name | gcp_project_ancestors.display_name | The user-created name for the ancestor resource (e.g., 'My Production Folder'). |
+| Ancestors | Ancestor Resource Name | gcp_project_ancestors.resource_name | The relative resource name for each ancestor in the format 'resourceType/resourceNumber'. |
+| Ancestors | Project Ancestry Numbers | gcp.gcp_project_ancestry_numbers | The ancestors in the resource hierarchy for the project, shown as a path of numbers. |
+| - | Project ID | gcp.gcp_project_id | The ID of the Google Cloud project that generated the cost. |
+| - | Project Name | gcp.gcp_project_name | The user-assigned display name of the Google Cloud project. |
+| - | Project Number | gcp.gcp_project_number | The unique, Google-assigned number of the Google Cloud project. |
+
+## Service & SKU
+
+| Field Group | Label Short | GCP Name | Description |
+|-------------|-------------|----------|-------------|
+| Categorization | Usage Family | gcp.usage_family | A consolidated version of the GCP Product to align with the 'Usage Family' concept. |
+| Categorization | Usage Type | gcp.usage_type | A high-level category derived from the SKU Description to simplify reporting (e.g., Compute, Storage, Networking). |
+| Compute | Instance Category | gcp.instance_category | The functional category of the instance, derived from its family (e.g., General Purpose, Compute Optimized). |
+| Compute | Instance Family | gcp.instance_family | The family of the Compute Engine VM (e.g., E2, N2, C3), displayed in uppercase to match standard Google Cloud convention. |
+| Compute | Instance Size (Abstract) | gcp.instance_size_abstract | An abstract 'T-shirt' size (e.g., Micro, Small, Medium, Large) derived from the instance's vCPU count or name. |
+| Compute | Instance Type | gcp.gcp_instance_type | The machine type of the Compute Engine VM (e.g., n1-standard-32). |
+| Compute | Operating System | gcp.operating_system | Operating system, extracted from the SKU description. Best effort, may not apply to all services. |
+| Database | Database Engine | gcp.db_engine | Database engine, extracted from the SKU description for database services. |
+| Kubernetes | GKE Cluster Name | gcp.gke_cluster_name | The name of the GKE cluster, extracted from a prioritized list of common resource labels. |
+| Kubernetes | GKE Namespace | gcp.gke_namespace | The name of the GKE namespace. Translates special Google-provided values into human-readable categories. |
+| Pricing | Effective Price | gcp.gcp_price_effective_price | The effective price per pricing unit, after applying discounts. |
+| Pricing | Pricing Tier Start Amount | gcp.pricing_tier_start_amount | The usage tier at which this price becomes effective. |
+| Pricing | Pricing Unit | gcp.pricing_unit | The unit of measure for the price (e.g., 'gibibyte month'). |
+| Pricing | Pricing Unit Quantity | gcp.pricing_unit_quantity | The number of units that the price is based on. |
+| Resource | Global Resource Name | gcp.globalResourceName | The globally unique, persistent name of the resource. |
+| Resource | Resource Name | gcp.resourceName | The user-provided name of the resource. |
+| SKU | SKU Description | gcp.gcp_sku_description | A human-readable description of the Stock Keeping Unit (SKU). |
+| SKU | SKU ID | gcp.gcp_sku_id | The unique identifier for the Stock Keeping Unit (SKU). |
+| - | Product | gcp.gcp_product | The Google Cloud service that generated the cost, such as Compute Engine or BigQuery. |
+
+## Usage
+
+| Field Group | Label Short | GCP Name | Description |
+|-------------|-------------|----------|-------------|
+gcp_usage_amount_in_pricing_units | The quantity of usage converted to the standard pricing unit. |
+| - | Usage Pricing Unit | gcp.gcp_usage_pricing_unit | The standard unit used for pricing this usage (e.g., 'gibibyte month'). |
+| - | Usage Unit | gcp.gcp_usage_unit | The unit in which usage is measured (e.g., 'gibibyte'). |
+
+
+
 </TabItem>
 
 <TabItem value="unified" label="Unified">
