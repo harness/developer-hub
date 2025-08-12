@@ -52,7 +52,7 @@ export const CiData: Horizon = {
     ],
   },
   Next: {
-    description: "Q4 2025, November 202 5- January 2026",
+    description: "Q4 2025, November 2025 - January 2026",
     feature: [
       {
         tag: [{ value: "Fast" }],
@@ -157,4 +157,5 @@ export const CiData: Horizon = {
     ],
   },
 };
+
 

@@ -3,7 +3,7 @@ import { Horizon } from "./roadmapData";
 export const codeData: Horizon = {
   
   Now: {
-    description: "Q2 2025, May-July 2025",
+    description: "Q3 2025, August-October 2025",
     feature: [
 
       {
@@ -47,20 +47,21 @@ export const codeData: Horizon = {
         description: "First-class support for Jira with Atlassian Marketplace application, allowing users to surface relevant commits and PRs in Jira issues.",
       },
       {
+        tag: [{ value: "Integrations" }], //todo 
+        title: "Compare tags",
+        description: "First-class support for Jira with Atlassian Marketplace application, allowing users to surface relevant commits and PRs in Jira issues.",
+      },
+      {
         tag: [{ value: "Governance" }],
         title: "Push Rules",
         description: "Introduce push protection rules to enforce compliance and security standards.",
       },
-      {
-        tag: [{ value: "Governance" }],
-        title: "Tag Rules",
-        description: "Introduce tag protection rules to enforce compliance and security standards.",
-      },
+
  
     ],
   },
   Next: {
-    description: "Q3 2025+, August-October 2025",
+    description: "Q4 2025, November 2025 - January 2026",
     feature: [
 
       {
@@ -91,7 +92,7 @@ export const codeData: Horizon = {
     ],
   },
   Later: {
-    description: "Q4 2025, November 2025 & beyond",
+    description: "Q1 2026, February 2026 & beyond",
     feature: [
 
       {
@@ -140,6 +141,11 @@ export const codeData: Horizon = {
         description: "Users will be able to mark repositories as favorites for quicker access and personalized navigation across the account."
       },
       {
+        tag: [{ value: "Governance" }],
+        title: "Tag Rules",
+        description: "Introduce tag protection rules to enforce compliance and security standards.",
+      },
+      {
         tag: [{ value: "Scalable" }, { value: "Developer Experience" }],
         title: "Git LFS (Large File Storage) Support",
         description: "Harness Code Repository will support Git LFS, enabling efficient versioning and storage of large binary files such as media, datasets, and compiled assets within Git."
@@ -177,3 +183,4 @@ export const codeData: Horizon = {
     ],
   },
 };
+
