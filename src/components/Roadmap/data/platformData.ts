@@ -8,10 +8,10 @@ export const platformData: Horizon = {
         title: "Self Serve signup and payment flow",
         description:
           "Allow users to sign up and manage their subscriptions directly from the Harness UI.",
-        tag: [{ value: "Access Control" }],
+        tag: [],
       },
       {
-        title: "Audit log streaming in NDJSON format",
+        title: "Audit log streaming in NDJSON",
         description:
           "Ability to stream audit logs in New Line Delimited (NDJSON) format.",
         tag: [{ value: "Audit Trail" }],
@@ -25,20 +25,14 @@ export const platformData: Horizon = {
       {
         title: "Customize Harness UI",
         description:
-          "Users will be able to customize the login screen, navigation logo, and favicon.",
+          "Organisations can display their own logo, and favicon.",
         tag: [{ value: "UI" }],
-      },
-      {
-        title: "Event Streaming",
-        description:
-          "Real-time streaming of pipeline execution data to external systems to support advanced monitoring and observability.",
-        tag: [{ value: "Pipeline" }],
       },
       {
         title: "Granular Permissions for Secrets",
         description:
-          "Users will now have separate Create and Edit permissions for secrets, instead of a single combined 'Create/Edit' permission, enabling more granular access control and improved security alignment.",
-        tag: [{ value: "Secrets" }],
+          "Users will have separate Create and Edit permissions for secrets, instead of a single combined 'Create/Edit' permission, enabling more granular access control and improved security alignment.",
+        tag: [{ value: "Secrets" }, { value: "Access Control" }],
       },
     ],
   },
@@ -46,15 +40,9 @@ export const platformData: Horizon = {
     description: "🪄 Q4 2025, Nov 2025 - Jan 2026",
     feature: [
       {
-        title: "mTLS support for Harness APIs",
+        title: "Support Kerberos authentication for proxy in Delegate",
         description:
-          "Enhanced API security with mutual TLS authentication for enterprise-grade protection of API communications.",
-        tag: [{ value: "Access Control" }],
-      },
-      {
-        title: "Support Kerberos authentication for proxy access to template images in Delegate",
-        description:
-          "Enables secure proxy authentication using Kerberos for template images in Delegate, supporting enterprise environments with on-prem Kubernetes deployments.",
+          "Enables secure proxy authentication using Kerberos in Delegate, supporting enterprise environments with on-prem Kubernetes deployments.",
         tag: [{ value: "Delegate" }],
       },
       {
@@ -70,6 +58,12 @@ export const platformData: Horizon = {
         tag: [{ value: "Platform" }],
       },
       {
+        title: "Event Streaming",
+        description:
+          "Real-time streaming of data to external systems to support advanced monitoring and observability.",
+        tag: [{ value: "Insights" }],
+      },
+      {
         title: "Delegate support in Harness MCP Server",
         description:
           "Delegate support in Harness MCP Server",
@@ -81,9 +75,9 @@ export const platformData: Horizon = {
     description: "🔭 Q1 2026+, Feb 2026 & beyond",
     feature: [
       {
-        title: "Increased in Data Retention period",
+        title: "Increased Data Retention period",
         description:
-          "Support for increased data retention for Audit logs & Pipeline logs.",
+          "Extends the data retention period, allowing users to access and analyze historical data for a longer duration.",
         tag: [],
       },
       {
@@ -95,14 +89,14 @@ export const platformData: Horizon = {
       {
         title: "Export audit trail as CSV",
         description:
-          "Export audit trail as a CSV directly from Harness UI.",
+          "Allows users to export the audit trail in CSV format for easier analysis, sharing, and record-keeping.",
         tag: [{ value: "Audit Trail" }],
       },
       {
         tag: [{ value: "Notify" }],
         title: "Service account token expiration",
         description:
-          "Add support for centralized notification system to configure service account notifications",
+          "Configure service account token expiration notifications through the centralized notification system.",
       }, 
       {
         tag: [{ value: "Pipeline" }, { value: "Insights" }],
@@ -110,10 +104,10 @@ export const platformData: Horizon = {
         description: "",
       },
       {
-        title: "Move Project between Organizations",
+        title: "Move Project across Organizations",
         description:
-          "Move a project from one org to another to support scenarios like ownership change.",
-        tag: [],
+          "Move a project from one organization to another to support scenarios like ownership change.",
+        tag: [{ value: "Platform" }],
       },
     ],
   },
@@ -130,7 +124,7 @@ export const platformData: Horizon = {
       {
         title: "Support Access control using tags for connectors",
         description:
-          "Add support for adding connectors as a resource in resource group 'By tag', allowing the dynamic inclusion/exclusion of connectors as they are assigned tags" ,
+          "Add connectors as resources in a resource group “By Tag,” enabling dynamic inclusion or exclusion based on assigned tags." ,
         tag: [{ value: "Access Control" }],
         link: "/docs/platform/connectors/manage-access-control-for-connectors/#configure-roles"
       },
@@ -149,37 +143,37 @@ export const platformData: Horizon = {
         link: "/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings/#proxy-settings-for-delegate-upgrader"
       },
       {
-        tag: [{ value: "Notify" }],
-        title: "Centralized Notification for Delegate",
+        tag: [{ value: "Notify" }, { value: "Delegate" }],
+        title: "Centralized notification for Delegate",
         description:
-          "Centralized notification system to configure delegate notifications",
+          "Configure delegate notifications through the centralized notification system.",
         link: "/docs/platform/notifications/centralised-notification#delegate-notifications"
       },
       {
         tag: [{ value: "Notify" }, { value: "Pipeline" }],
         title: "Default notification template for notification rules",
         description:
-          "Add support for default notification templates for Pipeline notification rules.",
+          "Allows setting a default notification template that is automatically applied to notification rules when no specific template is selected.",
         link: "/docs/platform/notifications/default-notification-template/"
       },
       {
-        tag: [{value: "Pipeline"}],
+        tag: [{value: "Pipeline"}, { value: "Notify" }],
         title: "Support for all channels for Custom notifications",
         description:
-          "Add support for all remaining channels in Custom Pipeline notifications. Currently, only the Webhook channel is supported.",
+          "Expanding custom pipeline notifications to support all channels beyond Webhook.",
         link: "/docs/platform/templates/customized-notification-template/#how-to-attach-a-template"
       },
       {
         tag: [{ value: "Secure" }],
         title: "Reconciliation Secret Manager template changes",
-        description: "Add support for updating custom secret manager if the referenced secret manager template is updated",
+        description: "Ability to reconcile entities, such as custom secret managers or secrets, linked to a secret manager template when the referenced template is updated.",
         link: "/docs/platform/secrets/secrets-management/reconcilation-of-secret-manager-template"
       },
       {
         title: "Custom Login Message for SMP",
         description:
-          "Add a custom message on the login screen in SMP. Typically used for Legal disclaimers.",
-        tag: [{ value: "SMP" }],
+          "Allows organizations to display a custom prompt message on the login screen, typically used for legal disclaimers.",
+        tag: [{ value: "SMP" }, { value: "UI" }],
         link: "/docs/self-managed-enterprise-edition/advanced-configurations/configure-custom-signin-message"
       },
     ],
