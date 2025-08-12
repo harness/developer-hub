@@ -83,13 +83,6 @@ The attestation process in Harness SCS follows the [In-toto attestation framewor
 
 <DocImage path={require('./static/get-started-attestation-overview.png')} width="80%" height="80%" title="Click to view full size image" />
 
-
-## Artifact Signing and Verification
-
-The artifact signing process involves a container image or digest, or a non-container image, along with a private key from a key pair and a password. SCS uses Cosign to perform the signing and securely verify it. Once the signature is successfully generated, The signed artifact is then pushed to the container registry, where the digest of the image is set as the file name with a `.sig` extension.
-
-For verification, the signed artifact is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the artifact was signed using the private key.
-
 Here’s an example of what the signed attestation would look like
 
 ```
@@ -109,6 +102,27 @@ Here’s an example of what the signed attestation would look like
 You can perform Base64 decoding on the payload data to view your SBOM or SLSA Provenance.
 
 For verification, the signed attestation is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the attestation was signed using the private key.
+
+
+## Artifact Signing and Verification
+
+The artifact signing process involves a container image or digest, or a non-container image, along with a private key from a key pair and a password. SCS uses Cosign to perform the signing and securely verify it. Once the signature is successfully generated, The signed artifact is then pushed to the container registry, where the digest of the image is set as the file name with a `.sig` extension.
+
+For verification, the signed artifact is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the artifact was signed using the private key. />
+
+
+### Rekor log
+
+After you sign the artifacts, you can view the Rekor log which provides a public, immutable, and verifiable transparency log for signed software artifacts. This enables anyone to independently verify artifacts without relying on a central authority, simply by checking the log entry.
+
+- Each rekor log entry contains key metadata, such as the artifact hash, signature, and signing time which is useful for audits.
+- Rekor log entries are publicly recorded, signers cannot deny their signature and any tampering with the artifact or its signature is easily detected, as it would change the artifact’s hash.
+
+### Attestation vs Signing
+
+- Attestation is about proving how and where the artifact was created, essentially providing cryptographic proof of its origin. It captures metadata about the build environment and verifies the integrity of the artifact before it gets signed. Attestation serves as a trusted statement regarding the artifact’s provenance and the conditions under which it was produced.
+
+- Signing involves applying a cryptographic signature to the artifact to ensure that the artifact has not been altered or tampered with after it was created or attested.
 
 ## Harness Platform components
 
