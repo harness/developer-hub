@@ -1346,9 +1346,6 @@ Harness stores configurations of the ASG you are deploying twice:
 
 ### Steady State Step
 
-:::note
-
-Currently, Asg Steady State Step is behind the feature flag `CDS_ASG_SKIP_INSTANCE_TERMINATION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
 
 :::
 
