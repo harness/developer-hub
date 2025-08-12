@@ -97,11 +97,6 @@ export const platformData: Horizon = {
         title: "Service account token expiration",
         description:
           "Configure service account token expiration notifications through the centralized notification system.",
-      }, 
-      {
-        tag: [{ value: "Pipeline" }, { value: "Insights" }],
-        title: "Pipeline Analytics",
-        description: "",
       },
       {
         title: "Move Project across Organizations",
@@ -155,6 +150,19 @@ export const platformData: Horizon = {
         description:
           "Allows setting a default notification template that is automatically applied to notification rules when no specific template is selected.",
         link: "/docs/platform/notifications/default-notification-template/"
+      },
+      {
+        tag: [{ value: "Dashboard" }],
+        title: "Programatic Dashboard management",
+        description:
+          "Provides Dashboard APIs to manage folders and dashboards, along with a Terraform module that uses these APIs to enable automated dashboard management.",
+        link: "https://apidocs.harness.io/tag/dashboards"
+      },
+      {
+        tag: [{ value: "Dashboard" }],
+        title: "Step Data on Custom Dashboards",
+        description:
+          "Enables creation of custom dashboards using complete pipeline step execution data.",
       },
       {
         tag: [{value: "Pipeline"}, { value: "Notify" }],
