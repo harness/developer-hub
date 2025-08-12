@@ -87,6 +87,108 @@ metadata:
 
 Systems in Harness IDP are standalone entities visible in the Software Catalog, similar to services or APIs. Unlike traditional scopes that are tightly bound to Projects or Organizations, Systems can be defined at any level — Account, Org, or Project — giving teams flexibility based on how they work.
 
+
+### Configuring the System Layout in Catalog Entities
+
+After defining a **System Entity** in Harness IDP, you can configure how its details appear in the Software Catalog.
+
+![System Layout](./static/system-entity-page.png)
+
+
+
+For newly created accounts, the **default System layout** is automatically applied. This layout includes tabs such as **Overview**, **Entities**, **Scorecard**, and **Diagram**, along with a structured arrangement of key catalog components.
+
+
+We can edit the **System Layout** under `Admin → Layout → Catalog Entities → System`. The layout determines the tabs, cards, and views shown when viewing a System in the UI.
+
+![System Layout](./static/system-layout.png)
+
+
+
+The configuration is defined in YAML, for example:
+
+```yaml
+page:
+  name: EntityLayout
+  tabs:
+    - name: Overview
+      path: /
+      title: Overview
+      contents:
+        - component: EntityOrphanWarning
+        - component: EntityProcessingErrorsPanel
+        - component: EntityAboutCard
+          specs:
+            props:
+              variant: gridItem
+            gridProps:
+              md: 6
+        - component: EntityCatalogGraphCard
+          specs:
+            props:
+              variant: gridItem
+              height: 400
+            gridProps:
+              md: 6
+              xs: 12
+        - component: EntityScoreCard
+          specs:
+            gridProps:
+              md: 6
+        - component: EntityLinksCard
+          specs:
+            props:
+              variant: gridItem
+              item: 400
+            gridProps:
+              md: 6
+              xs: 12
+        - component: CatalogTable
+          specs:
+            props:
+              variant: gridItem
+              height: 600
+            gridProps:
+              md: 12
+              xs: 12
+    - name: Entities
+      path: /entities
+      title: Entities
+      contents:
+        - component: CatalogTable
+    - name: Scorecard
+      path: /scorecard
+      title: Scorecard
+      contents:
+        - component: EntityScorecardContent
+    - name: Diagram
+      path: /diagram
+      title: Diagram
+      contents:
+        - component: EntityCatalogGraphCard
+          specs:
+            props:
+              variant: gridItem
+              title: System Diagram
+              height: 700
+              unidirectional: false
+              relations:
+                - partOf
+                - hasPart
+                - apiConsumedBy
+                - apiProvidedBy
+                - consumesApi
+                - providesApi
+                - dependencyOf
+                - dependsOn
+```
+
+
+
+> Existing customers can update their System layout by applying the above YAML in the **System** section under **Catalog Entities - Layout**. This ensures the same structured layout and features available to new accounts.
+
+
+
 ## Associating Entities with a System
 
 In Harness IDP, once a System is defined, you can associate services, APIs, and other catalog entities with that System by updating their YAML definitions. This helps structure the catalog meaningfully and improves visibility, especially in large organizations with many components.
@@ -108,31 +210,31 @@ To associate an entity with a System:
 ```yaml
 apiVersion: harness.io/v1
 kind: Component
-name: testnew system component
-identifier: testnew_system_component
+name: Payment Processing Service
+identifier: payment_processing_service
 type: component
-owner: group:account/_account_all_users
+owner: group:account/platform_team
 spec:
-  lifecycle: experimental
+  lifecycle: production
   partOf:
-    - system:account/system_101dev
-    - system:account/system_101
-    - system:account/paymentgatewaysystem101
-    - system:account/testsystem
-    - system:account/paymentgatewaysystem
+    - system:account/payment_platform
+    - system:account/checkout_system
+    - system:account/financial_services
+    - system:account/customer_billing
+    - system:account/order_management
   system:
-    - system:account/testsystem
-    - system:account/paymentgatewaysystem
-    - system:account/paymentgatewaysystem101
-    - system:account/system_101
-    - system:account/system_101dev
+    - system:account/payment_platform
+    - system:account/checkout_system
+    - system:account/financial_services
+    - system:account/customer_billing
+    - system:account/order_management
   ownedBy:
-    - group:account/_account_all_users
+    - group:account/platform_team
 metadata:
   tags:
-    - app
+    - microservice
     - java
-    - rest
+    - payment
 ```
 
 To establish relationships between catalog entities and Systems in Harness IDP, core entities such as Components, APIs, or Resources can include the `spec.system` field in their YAML definitions. This allows a single entity to be associated with one or more Systems.

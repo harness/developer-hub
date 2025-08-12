@@ -102,6 +102,7 @@ With **IDP 2.0**, you can define the following `kind` types in your Catalog YAML
 * `kind: API`
 * `kind: Resource`
 * `kind: Workflow`
+* `kind: System`
 
 Each kind represents a different type of entity within the Harness-native data model.
 [Read more about the different entity kinds here.](/docs/internal-developer-portal/catalog/catalog-yaml.md#entity-kinds)
@@ -303,20 +304,13 @@ identifier: paymentsystem
 name: Payment System
 owner: team-payment
 spec:
-  ownedBy:
-    - group:account/_account_all_users
-  hasPart:
-    - component:account/payment-service
-    - api:account/payment-api
+  lifecycle: ""
 metadata:
   description: This system groups services and libraries related to payment processing.
   tags:
     - payments
     - financial
 ```
-
-#### `hasPart` Definition
-The `hasPart` field lists Components, APIs, or Resources that logically belong to this System. This grouping is independent of their location in Git or folder structure and helps in understanding functional or ownership-based boundaries.
 
 ---
 
