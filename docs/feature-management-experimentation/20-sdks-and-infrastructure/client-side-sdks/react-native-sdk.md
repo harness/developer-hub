@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our React Native SDK. This SDK is built on top of our JS SDK core modules but is optimized for React Native applications. This SDK also has a pluggable API you can use to include more functionality optionally and keep your bundle leaner. 
 
-If already using our isomorphic JavaScript SDK, consider this [migration guide](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/browser-sdk-migration-guide) to understand the changes of the new pluggable API.
+If already using our isomorphic JavaScript SDK, consider this [migration guide](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/browser-sdk-migration) to understand the changes of the new pluggable API.
 
 All of our SDKs are open source. Go to our [React Native SDK GitHub repository](https://github.com/splitio/react-native-client) to see the source code.
 

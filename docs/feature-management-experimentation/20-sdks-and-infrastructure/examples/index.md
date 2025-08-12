@@ -41,7 +41,7 @@ These sample examples demonstrate practical scenarios to integrate, automate, an
 - [Using Split in a Salesforce Lightning Web Component](https://github.com/kleinjoshuaa/Split-SFDX-Demo#readme)
 - [iOS Objective-C project using the FME SDK](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/iOS-Objective-C-SDK)
 - [React Native app using the FME Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/react-native-app)
-- [Redux SDK running on client side](redux-sdk-running-on-client-side)
+- [Redux SDK running on client side](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/Redux-Client-side-SDK)
 - [JavaScript SDK example using Next.js](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/JavasScript-with-NextJS)
 - [Isomorphic JavaScript wrapper example](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/isomorphic-javascript-wrapper)
 - [How to deploy the JavaScript SDK to a WordPress Site](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/javascript-wordpress-site)
