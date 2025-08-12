@@ -249,9 +249,14 @@ In **Advanced Configuration**, select the application(s) you want to sync and co
 1. **Application name** – Select specific applications manually.  
 2. **Application regex** – Match up to 1000 applications using a regular expression.  
 3. **Application labels** – Filter applications by their labels.  
-   - **Key:value** filtering is supported.  
-   - You can search by **only the key** or **only the value**.  
-   - **Partial matches** are supported. For example, if a label key is `team` or a value is `payment-service`, searching for `pay` or `tea` will return that application.
+  - **Exact match (Key:Value)**
+    - If you want to match specific applications, you can do an exact match using **Key:value** in the labels.
+    - You can add labels to an application in the **App Details** page.
+
+  - **Partial match (Key or Value)**
+    - Search using a **key** or **value**.
+    - Partial matches are supported. For example, if a label key is `team` or a value is `payment-service`, searching for `tea` or `pay` will return that application.
+    - The search also considers the **Service name** and **Environment name** associated with the GitOps application as labels, and will match them in partial searches. For example, if you have a service named `helm-service` and have 10 applications linked with it, all the 10 applications will be included in the sync.
 
 <div align="center">
   <DocImage path={require('./static/gitopssync-step.png')} width="50%" height="50%" title="Click to view full size image" />

@@ -70,11 +70,16 @@ You can then load the filter any time by clicking the filter icon to the right o
 
 #### Filter by Application Labels
 
-You can filter applications by their **labels**:
-- **Key:value** filtering is supported.
-- You can search by **only the key** or **only the value**.
-- **Partial matches** are supported. For example, if a label key is `team` or a value is `payment-service`, searching for `pay` or `tea` will return that application.
-- Labels include **Service name** and **Environment name** in the dashboard. Even if a Service or Environment has no labels, their names are treated as labels and can be searched.
+You can filter applications by their **labels**.
+
+- **Exact match (Key:Value)**
+  - If you want to match specific applications, you can do an exact match using **Key:value** in the labels.
+  - You can add labels to an application in the **App Details** page.
+
+- **Partial match (Key or Value)**
+  - Search using a **key** or **value**.
+  - Partial matches are supported. For example, if a label key is `team` or a value is `payment-service`, searching for `tea` or `pay`   will return that application.
+  - The search also considers the **Service name** and **Environment name** associated with the GitOps application as labels, and will match them in partial searches.
 
 ## Application Management Dashboard
 
