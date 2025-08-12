@@ -712,6 +712,191 @@ gcp_usage_amount_in_pricing_units | The quantity of usage converted to the stand
 
 <TabItem value="unified" label="Unified">
 
+### Account:
+
+| Field | Description |
+|-------|-------------|
+| Billing Account ID | Unique identifier for the billing account. |
+| Billing Account Name | Human-readable name of the billing account. |
+| Sub-Account ID | Identifier for a sub-account or cloud project under the billing account. |
+| Sub-Account Name | Name of the sub-account or cloud project. |
+
+
+### billing:
+
+**Dimensions**
+
+| Field | Description |
+|-------|-------------|
+| Billing Currency | Currency in which the bill is presented and paid. |
+| Billing Source | Cloud provider that generated the cost record (AWS, Azure, GCP, or Cluster). |
+| Consumed Unit | Unit of measure for the usage quantity (e.g., hours, GiB, requests). |
+
+**Measures**
+
+| Measure | Description |
+|---------|-------------|
+| Consumed Quantity (Hours) | Total resource usage measured in hours. |
+| Contracted Unit Price | Unit price agreed under a commitment (Reserved Instances, Savings Plans, etc.). |
+| Total Billed Cost | Cost actually billed on the invoice (post-discount). |
+| Total Consumed Quantity | Aggregate usage across all line items, expressed in the Consumed Unit. |
+| Total Contracted Cost | Cost associated with reserved or committed usage. |
+| Total Effective Cost | Net cost after discounts, credits, and amortization. |
+| Total List Cost | Public list-price cost before any discounts or credits. |
+
+DIMENSIONS
+Billing Currency
+Billing Source
+Consumed Unit
+
+
+MEASURES
+Consumed Quantity (Hours)
+Contracted Unit Price
+Total Billed Cost
+Total Consumed Quantity
+Total Contracted Cost
+Total Effective Cost
+Total List Cost
+
+
+### Capacity reservation:
+DIMENSIONS
+Capacity Reservation ID
+Capacity Reservation Status
+
+
+### charge
+Charge Category
+Charge Class
+Charge Description
+Charge Frequency
+Invoice Issuer
+Provider
+Publisher
+
+### charge origination
+
+Invoice ID
+
+
+### Cluster 
+
+DIMENSIONS
+Application Name
+Cluster Entity Selection
+Cluster Name
+Cluster Type
+ECS service name
+Environment Name
+Instance Type filter [Node] (Yes / No)
+Instance Type filter [Pod] (Yes / No)
+Namespace
+Workload Name
+
+
+MEASURES
+EfficiencyScore
+Idle Cost
+Network Cost
+System Cost
+Unallocated Cost
+Utilised Cost
+
+### Commitment discount 
+
+Commitment Discount Category
+Commitment Discount ID
+Commitment Discount Name
+Commitment Discount Type
+
+### External data
+
+Billing Account Id
+Billing Account Name
+Charge Category
+Cloud Provider Entity Name
+Consumed Quantity
+Provider Name
+Resource Id
+Sku Id
+
+### location
+
+Availability Zone
+Region ID
+Region Name
+
+### pricing
+
+Pricing Category
+Pricing Quantity
+Pricing Unit
+
+### resource
+
+Resource ID
+Resource Name
+Resource Type
+
+### service
+
+Service Category
+Service Name
+Service Subcategory
+
+### sku
+
+SKU ID
+SKU Meter
+SKU Price ID
+
+### timeframe
+Billing Period End Date
+Date
+Month
+Month Name
+Quarter
+Time
+Week
+Year
+
+Billing Period Start Date
+Date
+Month
+Month Name
+Quarter
+Time
+Week
+Year
+
+
+Charge Period End Date
+Date
+Month
+Month Name
+Quarter
+Time
+Week
+Year
+
+
+
+
+charge period start date
+
+Date
+Month
+Month Name
+Quarter
+Time
+Week
+Pivot data
+Filter by field
+Info
+More
+Year
+
 </TabItem>
 </Tabs>
 
