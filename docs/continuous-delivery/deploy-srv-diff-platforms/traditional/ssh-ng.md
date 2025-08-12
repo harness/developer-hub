@@ -153,10 +153,6 @@ Write down hosts as a comma separated list.
 
 This setting is available when you pick **Select preconfigured hosts from Physical Data Center** under **Select hosts** and select **Filter by host attributes**
 
-:::note
-Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 You can control whether multiple host‑attribute filters are combined with **OR (match any)** or **AND (match all)** logic.
 
 **Any (default)** – a host is selected if at least one filter condition matches (existing behavior).

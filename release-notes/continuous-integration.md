@@ -773,7 +773,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 
 #### New features and enhancements
 
-- [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) now supports self-hosted builds in Kubernetes. Customer that run builds on Kubernetes can now configure S3-compatible bucket for Build Intelligence caching. Authentication through AWS/GCP connector is currently supported with OIDC or Access Key/Secret Key.only. _Note_: This feature requires the following feature flags to be enabled: `CI_CACHE_ENABLED`, `CI_ENABLE_BUILD_CACHE_K8` and `PL_GCP_OIDC_AUTHENTICATION` for GCP or `CDS_AWS_OIDC_AUTHENTICATION` for AWS.
+- [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) now supports self-hosted builds in Kubernetes. Customer that run builds on Kubernetes can now configure S3-compatible bucket for Build Intelligence caching. Authentication through AWS/GCP connector is currently supported with OIDC or Access Key/Secret Key.only. _Note_: This feature requires the following feature flags to be enabled: `CI_CACHE_ENABLED`, `CI_ENABLE_BUILD_CACHE_K8` and `PL_GCP_OIDC_AUTHENTICATION` for GCP. There is no feature flag necessary for AWS.
 - Secure Connect is now supported with JFrog Artifactory connector (CI-15004).
 - Support for Docker Build Secrets in "Build and Push" Steps - You can now configure Docker build secrets in the Build and Push step using YAML. This feature allows specifying secrets via `envDockerSecrets` and/or `fileDockerSecrets` field, applicable when running build-and-push steps using Buildx (not Kaniko). Note that using Buildx in Kubernetes build infrastructure requires privileged access.  
   _Note_: This feature requires the feature flag `CI_USE_BUILDX_ON_K8` to be enabled when running builds in Kubernetes.
@@ -800,7 +800,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 #### New features and enhancements
 
 - Self-Hosted Cache Intelligence and Docker Layer Caching Enhancements - This release introduces enhancements for self-hosted builds, allowing seamless configuration of S3-compatible caching with AWS or GCP connectors using OIDC for authentication These options are behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` (for Docker layer caching) and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED` (for Cache Intelligence).
-- OIDC, previously available only for Harness Cloud, is now supported for self-hosted builds running on Kubernetes, enhancing security and simplifying authentication. OIDC is currently behind feature flags `PL_GCP_OIDC_AUTHENTICATION` for GCP and `CDS_AWS_OIDC_AUTHENTICATION` for AWS
+- OIDC, previously available only for Harness Cloud, is now supported for self-hosted builds running on Kubernetes, enhancing security and simplifying authentication. OIDC is currently behind feature flags `PL_GCP_OIDC_AUTHENTICATION` for GCP. There is no feature flag necessary for AWS.
 
 To enable feature flags, please contact [Harness Support](mailto:support@harness.io).
 
