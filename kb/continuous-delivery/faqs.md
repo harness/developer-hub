@@ -3271,3 +3271,80 @@ For frequently asked questions about Harness Continuous Verification, go to [Con
 ### GitOps FAQs
 
 For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/gitops-faqs).
+
+#### What is the dynamic branch selector?
+When enabled, it allows users to choose from active branches in the UI at runtime, instead of hardcoding a branch in the pipeline configuration.
+
+#### How do I enable the dynamic branch selector?
+Set the feature flag CI_DYNAMIC_BRANCH_SELECTOR=true. This will activate a dropdown in the Run Pipeline view showing the list of available branches.
+
+#### What version includes this feature?
+The dynamic branch selector is available starting in version 1.73.
+
+#### Does this work only if a codebase is configured?
+Yes, the feature works only when the pipeline is connected to a codebase.
+
+#### Is there a performance impact in listing branches dynamically?
+Minimal. The system fetches the branch list at runtime, which may introduce a slight delay depending on the repository size and provider response time.
+
+#### What is declarative rollback support for Kubernetes in Harness?
+Harness now supports **declarative rollbacks** by hashing `ConfigMap` and `Secret` manifests in Kubernetes workloads. This enables safer and more accurate rollbacks.
+📄 [Documentation link](#)
+
+#### How does Helm test flag support work in Helm deployments?
+You can now pass the `--test` flag in **Helm Deploy** steps. This runs chart-defined tests after the Helm deployment to validate success.
+📄 [Documentation link](#)
+
+#### Can I pass CLI flags in Helm Native deployments?
+Yes, Harness now supports Helm CLI flags like `--atomic` and `--timeout` at the **step level** for **Helm Native Deployments**.
+📄 [Documentation link](#)
+
+#### Does Harness refresh the EKS token automatically during deployments?
+Yes, Harness automatically refreshes **AWS EKS tokens** during deployments to avoid authentication errors during execution.
+📄 [Documentation link](#)
+
+#### Can I roll back multiple ASG deployments in parallel?
+Yes, Harness now supports **parallel rollback** of multiple **Auto Scaling Group (ASG)** deployments in a single Deploy stage.
+📄 [Documentation link](#)
+
+#### Is canary deployment supported for native AWS Lambda?
+Yes, **canary rollout strategies** are now supported for **AWS Lambda Native deployments**, allowing gradual traffic shifting and reduced risk.
+📄 [Documentation link](#)
+
+#### What happens if a Terraform Cloud workspace is missing?
+Harness will now **automatically create** the workspace when using remote backends with prefixes, preventing pipeline failures due to missing workspaces.
+📄 [Documentation link](#)
+
+
+#### Can GCP connectors access multiple projects?
+Yes, Harness now supports **cross-scope IAM roles** in GCP connectors, enabling access to multiple projects within a single connector.
+📄 [Documentation link](#)
+
+
+#### How do I access connector type dynamically in pipelines?
+You can now use the expression `<+connector.get("account.myConnector").type>` to dynamically fetch a connector’s type inside a pipeline.
+📄 [Documentation link](#)
+
+
+#### Can I generate OIDC tokens using a native step?
+Yes, Harness provides a **native OIDC step** that generates an OIDC token using a pre-configured connector, without scripting.
+📄 [Documentation link](#)
+
+
+#### Can I exclude the triggering user from approving the pipeline?
+Yes, you can now **exclude the pipeline triggerer** from being able to approve it, adding an extra layer of governance.
+📄 [Documentation link](#)
+
+
+#### Is there a manual refresh option for Jira and ServiceNow approvals?
+Yes, both **Jira and ServiceNow approval steps** now support an **adhoc refresh button** to fetch the latest approval status manually.
+📄 [Documentation link](#)
+
+#### Can I upload artifacts to S3 in the Deploy stage?
+Yes, Harness now supports a step to **upload artifacts to S3** during the **Deploy stage** of your pipeline.
+📄 [Documentation link](#)
+
+
+#### Do email notifications include service and environment details?
+Yes, **email notifications** now include the **service name** and **environment** in the subject line for better clarity and filtering.
+📄 [Documentation link](#)
