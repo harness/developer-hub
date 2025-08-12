@@ -99,6 +99,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## August 2025
+
+### Version 25.07.86402 <!--Aug 12, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where delegates would repeatedly send execution logs. The system now stops after a set retry limit, preventing excessive log entries. [PL-64803]
+
 ## July 2025
 
 ### Version 25.07.86401 <!--Jul 30, 2025-->

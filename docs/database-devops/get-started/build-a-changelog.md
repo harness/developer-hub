@@ -3,6 +3,7 @@ title: Building Changelog File
 description: Learn how to build a changelog file for your database using Harness DBOps.
 sidebar_label: Building Changelog
 sidebar_position: 1
+slug: /database-devops/use-database-devops/get-started/build-a-changelog
 keywords:
   - changelog
   - database changelog

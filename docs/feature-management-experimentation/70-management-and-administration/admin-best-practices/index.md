@@ -27,7 +27,7 @@ You could enforce names that are lower case only, camel case, or snake case (no 
 
 For example:
 
-<img src="https://help.split.io/hc/article_attachments/360038725131" alt="naming_convention.png" width="600" />
+![](../static/naming.png)
 
 ## Organizing feature flags
 

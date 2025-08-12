@@ -1,3 +1,6 @@
+import createMetric from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/create-metric.png';
+import measureAs from '@site/docs/feature-management-experimentation/50-release-monitoring/static/metrics/measure-as.png';
+
 ## Overview
 
 A metric is a measurement of success for your experiment on your website, application, backend performance, etc. It tells you if your experiments are improving, degrading, or are having no effect on your visitors’ experience, based on their behavior. 
@@ -72,7 +75,7 @@ To create a metric, do the following:
 
 1. From the left navigation panel, click **Metrics**. Then, click the **Create metric** button. The Create a metric panel appears:
 
-   <img src="https://help.split.io/hc/article_attachments/30833092104845" alt="metrics_create_a_metric.png" width="700" />
+   <img src={createMetric} alt="Applying Metric Filters" width="700" />
 
 2. Provide the following details about the metric:
 
@@ -88,7 +91,7 @@ To create a metric, do the following:
     * Select traffic type: Choose the traffic type of the event you would like to measure. This is the traffic type specified when sending the event to Harness FME. It is also the traffic type defined for the feature flags that will show the results of the metric on the Metrics impact tab. To learn more, see the [traffic type](https://help.split.io/hc/en-us/articles/360019916311) guide.
     * Measure as: Select the type of calculation to be performed on the event, event value, or event property. Learn more about metric types and their applications in the [Metric types](#metric-types) section.
 
-      <img src="https://help.split.io/hc/article_attachments/30833087396877" alt="metrics_measure_as.png" width="700" />
+      <img src={measureAs} alt="Applying Metric Filters" width="700" />
 
     * Event: Select an event type to use in the metric calculation. To select more than one event to be used in the metric, click the **Add event** button.
         * Click **Add new filter** to optionally apply a filter to the selected event using properties. For example, if you wanted to create a metric to count page views from California, you might select an event called `page.view` with a property filter of `state` matches `California`. [RE2 syntax](https://github.com/google/re2/wiki/Syntax) for regular expressions can be used in your filter.

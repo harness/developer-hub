@@ -48,7 +48,7 @@ To get started, set up FME in your code base with the following two steps.
 Import the SDK into your project using the following line:
 
 ```java title="Gradle"
-implementation 'io.split.client:android-client:5.3.0'
+implementation 'io.split.client:android-client:5.3.1'
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client

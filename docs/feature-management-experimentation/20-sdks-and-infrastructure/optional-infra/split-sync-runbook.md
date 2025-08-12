@@ -379,4 +379,4 @@ To upgrade the Synchronizer, do the following:
 
 - Start the service again
 
-- Watch the logs for a short period of time to make sure no warnings  arise.
+- Watch the logs for a short period of time to make sure no warnings arise.

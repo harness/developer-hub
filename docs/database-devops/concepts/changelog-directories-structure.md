@@ -2,6 +2,7 @@
 title: Working with Changelog Directory Structure
 description: Learn how to organize Liquibase changelogs in Harness DB DevOps for scalable, auditable, and rollback-friendly database deployments.
 sidebar_position: 2
+slug: /database-devops/concepts-and-features/understanding-changelog-directories/changelog-directories-structure
 keywords:
   - database changelog management
   - liquibase changelog structure

@@ -42,10 +42,55 @@ Before configuring Zoom integration:
 7. Complete the setup process
 
 ### Required Permissions
-- Meeting:Write
-- Recording:Read
-- User:Read
-- Group:Read
+
+The Zoom integration requires specific API scopes depending on the actions your runbooks will perform. Below are the required scopes organized by functionality:
+
+#### Basic Meeting Management
+- **`meeting:write`** - Create, update, and delete meetings
+- **`meeting:read`** - Read meeting details and settings
+- **`user:read`** - Read user information for meeting hosts and participants
+
+#### Advanced Meeting Actions
+- **`meeting:write:admin`** - **Required for ending meetings** and advanced meeting control
+- **`meeting:update:admin`** - Modify meeting settings for meetings you don't host
+- **`meeting:read:admin`** - Access detailed meeting information across the organization
+
+#### Recording Management
+- **`recording:read`** - Access meeting recordings
+- **`recording:write`** - Manage recording settings and permissions
+- **`cloud_recording:read`** - Read cloud recording details
+- **`cloud_recording:write`** - Manage cloud recordings
+
+#### Participant and User Management
+- **`user:read`** - Read basic user information
+- **`user:write`** - Manage user settings (for participant management)
+- **`group:read`** - Read group information for bulk participant management
+
+#### Webinar Support (if applicable)
+- **`webinar:write`** - Create and manage webinars
+- **`webinar:read`** - Read webinar information
+
+### Scope Requirements by Action
+
+| Action | Required Scopes | Notes |
+|--------|----------------|-------|
+| Create Meeting | `meeting:write`, `user:read` | Basic meeting creation |
+| End Meeting | `meeting:write:admin` | **Critical for meeting termination** |
+| Update Meeting Settings | `meeting:write`, `meeting:update:admin` | Admin scope needed for meetings you don't host |
+| Manage Participants | `meeting:write`, `user:read`, `user:write` | For adding/removing participants |
+| Access Recordings | `recording:read`, `cloud_recording:read` | For post-meeting analysis |
+| Schedule Recurring Meetings | `meeting:write`, `user:read` | For incident follow-ups |
+
+### Permission Troubleshooting
+
+If you encounter permission errors:
+
+1. **"Insufficient privileges" error**: Add `meeting:write:admin` scope
+2. **"Cannot end meeting" error**: Ensure `meeting:write:admin` is granted
+3. **"Recording access denied"**: Add `recording:read` and `cloud_recording:read` scopes
+4. **"User not found" errors**: Verify `user:read` scope is active
+
+For detailed information about Zoom API scopes, refer to the [official Zoom API documentation](https://developers.zoom.us/docs/api/rest/reference/).
 
 ## Using the Zoom Connector
 
