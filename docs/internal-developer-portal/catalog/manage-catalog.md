@@ -71,6 +71,9 @@ To create a new entity, navigate to the Harness IDP portal and click on **“Cre
 
      This field is **optional**, but strongly recommended if your component is tied to a Git-based workflow or needs source-aware plugins. 
      For Harness Code Repo, note that the source code repository link is scoped to the same level as the entity itself (Account, Organization, or Project).
+     :::info
+     When configuring Link to Source Code, ensure that the selected Git connector has permissions matching the scope at which the entity is created (Account, Organization, or Project). For example, if the entity is created at the Project level, the Git connector must have access to all three scopes. The same applies to the Harness Code Repository — it should be configured with access rights that align with the selected scope.
+     :::
      > Harness IDP also auto-generates the legacy `backstage.io/source-location` annotation for backwards compatibility.
   
   6. Choose how you want to manage the entity:
@@ -140,7 +143,7 @@ spec:
     monoRepo: false
     provider: Github
     repoName: java-service_svc
-    connectorRef: account.ShibamDhar
+    connectorRef: account.ShibamDhar // Empty in case of Harness Code Repository
 ```
 
 #### Supported Repository Providers in YAML
@@ -156,6 +159,10 @@ provider: AzureRepo     # Azure DevOps Repositories
 ```
 
 You should select the correct provider according to where your code is hosted. The `connectorRef` should point to a valid Harness Connector for that provider.
+
+:::info
+When configuring Link to Source Code, ensure that the selected Git connector has permissions matching the scope at which the entity is created (Account, Organization, or Project). For example, if the entity is created at the Project level, the Git connector must have access to all three scopes. The same applies to the Harness Code Repository — it should be configured with access rights that align with the selected scope.
+:::
 #### Mono Repository Setup in YAML
 
 A **mono repository (monorepo)** contains multiple projects or services in separate subdirectories within the same repository. This is useful for organizations managing many services in a unified repository.
@@ -171,11 +178,11 @@ spec:
     provider: Github
     repoName: java-service_svc
     connectorRef: account.ShibamDhar
-    branch: main
     monoReposubDirectoryPath: /harness
 ```
 
 > Harness IDP also auto-generates the legacy `backstage.io/source-location` annotation for backwards compatibility.
+> Currently, Scorecard computation uses the GitX connector and the Git Integration connector. An upcoming enhancement, available behind the `USE_LOCAL_GIT_CONNECTOR_FOR_SCORE_COMPUTATION` feature flag, will enable Scorecard computation to directly use the connector from Link to Source Code.
 
 5. Choose how you want to manage the entity:
     * **Inline (default):** Manage the entity YAML directly within Harness.
