@@ -5,6 +5,8 @@ description: CCM cost categories provide an understanding of where and how your 
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+import CostCategoriesVisual from './cost-categories-visual.md';
+
 
 import Tabs from '@theme/Tabs';
 
@@ -19,6 +21,58 @@ With Cost Categories, you can:
 - **Drill down into detailed cost analysis** - Examine specific cost buckets (e.g., the "Operations" team within a "Teams" category) to identify spending patterns
 - **Apply consistent cost attribution** - Use the same business contexts across different cloud providers and resource types
 - **Filter and group in CCM Perspectives** - Leverage your categories in reports and dashboards for comprehensive cost analysis
+
+<div style={{backgroundColor: '#f8fafc', padding: '20px', borderRadius: '8px', border: '1px solid #e2e8f0', marginBottom: '24px'}}>
+
+### <span style={{color: '#334155'}}>What is the difference between Cost Categories and Perspectives?</span>
+
+<p style={{fontSize: '16px', lineHeight: '1.6'}}>
+  <span style={{backgroundColor: '#e0f2fe', padding: '2px 6px', borderRadius: '4px', fontWeight: 'bold'}}>Cost Categories</span> label and organize your cloud spend into custom buckets, while <span style={{backgroundColor: '#dcfce7', padding: '2px 6px', borderRadius: '4px', fontWeight: 'bold'}}>Perspectives</span> let you view and analyze that categorized data using Cost Categories as filters or group-by dimensions.
+</p>
+
+<div style={{overflowX: 'auto'}}>
+  <table style={{width: '100%', borderCollapse: 'separate', borderSpacing: '0', marginTop: '16px'}}>
+    <thead>
+      <tr style={{backgroundColor: '#f1f5f9'}}>
+        <th style={{padding: '12px 16px', textAlign: 'left', fontWeight: '600', borderBottom: '2px solid #cbd5e1'}}>Aspect</th>
+        <th style={{padding: '12px 16px', textAlign: 'left', fontWeight: '600', borderBottom: '2px solid #0ea5e9', color: '#0284c7'}}>Cost Categories</th>
+        <th style={{padding: '12px 16px', textAlign: 'left', fontWeight: '600', borderBottom: '2px solid #10b981', color: '#059669'}}>Perspectives</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', fontWeight: '600'}}>What it is</td>
+        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0f9ff'}}>A <strong>classification system</strong> that assigns costs into custom buckets based on rules you define.</td>
+        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0fdf4'}}>A <strong>saved view</strong> of cost data with predefined filters, groupings, and time ranges.</td>
+      </tr>
+      <tr>
+        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', fontWeight: '600'}}>Purpose</td>
+        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0f9ff'}}>To <strong>label and organize</strong> costs into meaningful business groupings (e.g., Environment, Department, Project).</td>
+        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0fdf4'}}>To <strong>analyze and visualize</strong> costs through a consistent lens, making it easy to track trends or budgets over time.</td>
+      </tr>
+      <tr>
+        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', fontWeight: '600'}}>Scope</td>
+        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0f9ff'}}>Changes how cost line items are categorized across all reporting and dashboards.</td>
+        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0fdf4'}}>Controls <strong>how</strong> the categorized cost data is displayed and compared in reports.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style={{marginTop: '24px', backgroundColor: '#f1f5f9', padding: '16px', borderRadius: '6px', borderLeft: '4px solid #64748b'}}>
+  <h3 style={{margin: '0 0 12px 0', color: '#334155'}}>How They Work Together</h3>
+  <ul style={{marginBottom: '0', paddingLeft: '20px'}}>
+    <li><strong>Cost Categories</strong> define the labels for your costs.</li>
+    <li><strong>Perspectives</strong> decide how to look at those costs.</li>
+  </ul>
+  <p style={{marginTop: '12px', marginBottom: '0'}}><strong>You can:</strong></p>
+  <ul style={{marginBottom: '0', paddingLeft: '20px'}}>
+    <li>Use a Cost Category as a filter in a Perspective → see only costs for a specific category value.</li>
+    <li>Use it as a group-by dimension → break down total cost into category buckets.</li>
+  </ul>
+</div>
+
+</div>
 
 ## Prerequisites
 - CCM Connector
