@@ -38,25 +38,14 @@ spec:
 metadata:
   description: CCM anomaly detection backend service
   annotations:
-    harness.io/projects-stage: Operations,RELEASEBUILDS
-    harness.io/ci-pipelineIds: CEAnomalyDetectionUBIFeatureBuild
-    harness.io/cd-serviceId-stage: ce_anomaly_detection
-    harness.io/ci-pipelineIds-stage: CCMAnomalyDetection
-    harness.io/project-url-stage: https://stage.harness.io/ng/account/wFHXHD0RRQWoO8tIZT5YVw/cd/orgs/Harness/projects/Operations/deployments
     backstage.io/kubernetes-label-selector: app=anomaly-detection
     github.com/project-slug: wings-software/ce-anomalyDetection
-    harness.io/cd-serviceId: ""
-    harness.io/projects: FEATUREBUILDS
     pagerduty.com/service-id: PFVOX97
     jira/project-key: CCM
-    harness.io/project-url: https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/ci/orgs/default/projects/FEATUREBUILDS/dashboard
     backstage.io/source-location: url:https://github.com/wings-software/ce-anomalyDetection/tree/main
   links:
     - title: repo
       url: https://github.com/wings-software/ce-anomalyDetection
-  harnessData:
-    qa_version: "1.7"
-    prod_version: "1.5"
   tags:
     - python
 ```
@@ -68,52 +57,16 @@ metadata:
 ```yaml
 apiVersion: harness.io/v1
 kind: API
-name: lightwing
-identifier: lightwing
 type: openapi
-owner: group:ccmplayacc
+identifier: cenextgen
+name: cenextgen
+owner: johndoe
 spec:
   lifecycle: production
-  definition: |-
-    {
-      "openapi": "3.0.1",
-      "info": {
-        "title": "Lightwing APIs",
-        "description": "Lightwing API documentation",
-        "contact": {
-          "email": "navaneeth@lightwing.io"
-        },
-        "version": "1.0.0"
-      },
-      "servers": [
-        {
-          "url": "https://app.harness.io/gateway"
-        }
-      ],
-      "tags": [
-        {
-          "name": "Cloud Cost AutoStopping Rules",
-          "description": "APIs to create and manage AutoStopping Rules for cloud resources."
-        }
-      ],
-      "paths": {
-        "/accounts/{account_id}/autostopping/rules": {
-          "get": {
-            "tags": [
-              "Cloud Cost AutoStopping Rules"
-            ],
-            "summary": "List AutoStopping Rules",
-            "description": "Lists all the AutoStopping rules separated by comma-separated strings.",
-            "operationId": "ListAutoStoppingRules"
-          }
-        }
-      }
-    }
+  definition:
+    $text: https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v2.0/json/api-with-examples.json
 metadata:
-  description: Lightwing API documentation
-  tags:
-    - rest
-    - cloud
+  description: The official CE NEXTGEN service REST APIs
 ```
 </details>
 
@@ -127,12 +80,6 @@ name: Payment System
 identifier: paymentsystem
 type: domain
 owner: team-payment
-spec:
-  ownedBy:
-    - group:account/_account_all_users
-  hasPart:
-    - component:account/acclevel123
-    - api:account/agnivaaapi
 metadata:
   description: This system groups services and libraries related to payment processing.
   tags:

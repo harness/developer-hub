@@ -69,7 +69,8 @@ To create a new entity, navigate to the Harness IDP portal and click on **“Cre
      * **No** – Select this if the repository is dedicated to a single component or service.
 
 
-     This field is **optional**, but strongly recommended if your component is tied to a Git-based workflow or needs source-aware plugins. Note that the source code repository link is scoped to the same level as the entity itself (Account, Organization, or Project).
+     This field is **optional**, but strongly recommended if your component is tied to a Git-based workflow or needs source-aware plugins. 
+     For Harness Code Repo, note that the source code repository link is scoped to the same level as the entity itself (Account, Organization, or Project).
      > Harness IDP also auto-generates the legacy `backstage.io/source-location` annotation for backwards compatibility.
   
   6. Choose how you want to manage the entity:
