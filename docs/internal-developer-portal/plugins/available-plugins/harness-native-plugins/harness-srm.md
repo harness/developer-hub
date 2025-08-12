@@ -2,6 +2,9 @@
 title: Service Reliability
 description: Track the SLOs and Error Budgets for Monitored Services
 sidebar_label: Service Reliability
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/harness-srm
+  - /docs/internal-developer-portal/plugins/available-plugins/harness-srm/
 ---
 # Harness Service Reliability
 

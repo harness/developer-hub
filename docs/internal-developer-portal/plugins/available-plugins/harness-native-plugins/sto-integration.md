@@ -1,13 +1,8 @@
 ---
 title: Harness Security Testing Orchestration Integration with IDP
 description: Complete guide to integrating Security Testing Orchestration (STO) with the Internal Developer Portal (IDP) - from setup to viewing vulnerabilities and creating security scorecards.
-sidebar_position: 1
+sidebar_position: 2
 sidebar_label: Security Testing Orchestration Integration
-redirect_from: 
-  - /docs/internal-developer-portal/sto-integration
-  - /docs/internal-developer-portal/sto-integration/overview
-  - /docs/internal-developer-portal/sto-integration/setup-configuration
-  - /docs/internal-developer-portal/sto-integration/viewing-and-scorecards
 tags:
   - Security Testing
   - Developer Portal
@@ -123,30 +118,42 @@ When these targets are defined in STO and properly annotated in IDP, scan result
 
 
 
-# Setting up STO Integration in IDP
+## Setting up STO Integration in IDP
 
 The STO integration brings security test insights directly into the developer experience via the IDP Catalog. Once this integration is enabled, developers can view vulnerability summaries for their services alongside other component metadata.
 
 This section walks through the steps required to set up that integration, including linking STO test targets to Software Catalog entities, enabling insights in the UI, and understanding how vulnerability metadata is populated and rendered.
 
-## Source Code Annotation 
 
-This is a standard **annotation** that establishes the source code origin of your component. Harness IDP uses it to show STO scan vulnerability details linked to the repository along with other associated metadata from the repository.
+
+### Auto Import using Source Code 
+
+The **Link to Source Code Repository** feature lets you associate a catalog component with its source code repository directly from the Harness IDP UI. This repository link is used to automatically configure several plugins, fetch repository metadata, and is also used in Scorecards.
+
+<DocImage path={require('./static/source-code-link.png')} />
+
+When you select a Git provider from the dropdown and specify the repository, IDP stores the information in the component definition and uses it to power various integrations, including STO vulnerability correlation.
 
 ```yaml
-annotations:
-  backstage.io/source-location: url:https://github.com/vigneswara-propelo/Employee-Management-System
+spec:
+  sourceCode:
+    monoRepo: false
+    provider: Github
+    repoName: java-service_svc
+    connectorRef: account.ShibamDhar
 ```
 
 **What it does**
 
-* Tells IDP where the source code **lives** (URL).
-* Enables linking of code-level insights like SAST or software composition analysis (SCA).
-* IDP uses this to correlate findings from Git-based scans with STO-reported vulnerabilities.
+* Identifies the repository where the source code resides.
+* Enables linking of code-level insights such as SAST or software composition analysis (SCA) results.
+* Allows IDP to correlate Git-based scan findings with STO-reported vulnerabilities.
+* When set via the UI, IDP automatically updates this annotation without manual YAML editing.
+
 
 > This is essential if your STO pipeline includes Git scans like SAST, secret scanning, or license compliance, because the vulnerabilities will be mapped to specific files and lines in the repo.
 
-## STO Test Target Annotation 
+### STO Test Target Annotation 
 
 The `harness.io/sto-test-target` annotation links an IDP component to the scan targets that Harness STO processes during its own, separate pipeline executions. These scan targets serve as the bridge between STO's test results and the corresponding IDP entity, ensuring that findings are accurately associated. 
 The targets can be of two types:
@@ -164,7 +171,7 @@ metadata:
 **Purpose**
 This annotation ensures the component in the IDP is **mapped** to the right test target, so STO scan results are displayed correctly in the Security tab or card.
 
-#### **Types of Test Targets**
+#### Types of Test Targets
 
 1. **Source Repository Target**
 
@@ -243,7 +250,7 @@ annotations:
 
 This setup allows IDP to display **aggregated** insights from both sources under the same entity, enhancing observability.
 
-# Viewing Vulnerabilities in IDP
+## Viewing Vulnerabilities in IDP
 
 After configuring the STO integration, Harness IDP begins to surface security insights directly within the Software Catalog. This allows developers and security teams to view vulnerabilities, track remediation progress, and measure security posture without leaving the developer portal.
 
@@ -254,8 +261,6 @@ In this section, we will explore how Harness Security Testing Orchestration (STO
 We have a Security Test Orchestration (STO) pipeline that runs scans using Snyk and Aqua Trivy to detect vulnerabilities in our services. Once the scans are completed, the findings are processed and stored within STO, and the pipeline has some vulnerabilities, which will become the source of truth for us. With the integration of STO with IDP in place, these vulnerability insights will be viewed directly inside IDP.
 
 <DocImage path={require('./static/sto-pipeline-vul.png')} />
-
-## Vulnerability Visibility in IDP
 
 ### Catalog View – High-Level Visibility
 
