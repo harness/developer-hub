@@ -1,6 +1,8 @@
 ---
 title: JavaScript SDK
 sidebar_label: JavaScript SDK
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/faqs/why-are-some-users-double-bucketed/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -1351,3 +1353,66 @@ The following example applications detail how to configure and instantiate the J
 
 * [Basic HTML](https://github.com/splitio/example-javascript-client)
 * [AngularJS](https://github.com/splitio/angularjs-sdk-examples)
+
+## Troubleshooting
+
+### User IDs Being Double Bucketed (SDK_READY_TIMED_OUT Event Issue)
+
+Using the JavaScript SDK, some percentage of User IDs are double bucketed: the same User ID is processed in the Control block, and at a later call in an actual treatment block.
+
+One possible root cause is that the JavaScript SDK engine completes fetching treatments after the `requestTimeoutBeforeReady` or `readyTimeout` parameter expires, firing the browser event `SDK_READY_TIMED_OUT`.
+
+This tends to happen for mobile users with slow internet connections.
+
+If the JavaScript code does not properly handle this event—for example, if it only raises an error and exits:
+
+```javascript
+var client = SdkFactory.client();
+this.clientReady = new Promise(function(resolve, reject) {
+  client.once(client.Event.SDK_READY, function() {
+    resolve();
+  });
+  client.once(client.Event.SDK_READY_TIMED_OUT, function() {
+    reject(new Error("Client SDK Ready Timed Out"));
+  });
+});
+```
+
+There are two possible events:
+
+* If the `SDK_READY` event comes first, the promise resolves, and everything works as expected.
+* If the `SDK_READY_TIMED_OUT` event comes first, the promise rejects and remains rejected, meaning that any `.catch()` attached will always be called—even if the SDK eventually becomes ready later.
+
+If you add a `.catch()` that does not return or throw an error, the wrapper code might continue executing as if the SDK is ready, even when it is not. For example:
+
+```javascript
+this.clientReady.catch(() => {}).then(() => {
+});
+```
+
+Here, the `.catch()` swallows the error without returning or throwing, causing the promise chain to appear "recovered." This can cause code to run prematurely against an SDK that isn’t ready.
+
+Even if the `SDK_READY_TIMED_OUT` event fires, the SDK might become ready a few milliseconds later and emit the `SDK_READY` event. You should handle these events only when you actually want to respond to them.
+
+1. Allow the SDK to retry fetching treatments a couple of times before giving up, increasing the chance the SDK becomes ready within the timeout:
+
+   ```javascript
+   startup: {
+   requestTimeoutBeforeReady: 5,    // 5 seconds
+   readyTimeout: 5,                 // 5 seconds
+   retriesOnFailureBeforeReady: 2,  // 2 retries
+   }
+   ```
+
+1. Configure the SDK to store `Splits` and `mySegments` data in the browser’s `LOCALSTORAGE`. This caches data between page loads and reduces fetch time on subsequent page visits, making the SDK ready faster:
+
+   ```javascript
+   storage: {
+   type: 'LOCALSTORAGE',
+   prefix: 'MYPREFIX'
+   },
+   ```
+
+   Use a custom prefix to prevent data collision across projects.
+
+For more information, see the [API reference documentation](https://docs.split.io/docs/javascript-sdk-overview#section-configuration).

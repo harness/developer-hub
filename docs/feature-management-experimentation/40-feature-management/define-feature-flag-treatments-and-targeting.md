@@ -3,11 +3,14 @@ title: Define feature flag treatments and targeting
 sidebar_label: Define feature flag treatments and targeting
 description: ""
 sidebar_position: 3
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/best-practices/why-setting-the-order-of-treatments-matters
+  - /docs/feature-management-experimentation/feature-management/faqs/how-can-i-override-individually-targeted-users-with-a-superseding-targeting-rule
 ---
 
 ## Define feature flag treatments and targeting
 
-Afer you [create a feature flag](/docs/feature-management-experimentation/feature-management/create-a-feature-flag), you can define treatments, dynamic configurations, and targeting rules. 
+After you [create a feature flag](/docs/feature-management-experimentation/feature-management/create-a-feature-flag), you can define treatments, dynamic configurations, and targeting rules. 
 
 This allows you to deploy features for internal testing and beta releases. You can also progressively roll out features to your production environment.
 
@@ -104,6 +107,24 @@ In the Targeting rules area, you can:
 If you have at least one targeting rule with ___percentage distribution___, then you can ___compare metric results between feature flag treatments___ (on the [Metrics impact tab](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/).
 :::
 
+### Overriding individual targets with rules
+
+Targeting rules are evaluated from top to bottom, meaning that the higher a rule appears, the higher its priority. You can override individually targeted users by placing a more specific rule above the one that includes them.
+
+![](./static/rules-1.png)
+
+For example, if you have a rule that individually targets users by ID or segment, but you need to give certain users a different treatment based on an attribute (such as slow network speed), create a higher-priority rule for that attribute.
+
+In the **Set targeting rules** section:
+
+1. Add a rule that matches the overriding attribute (for example, _network speed ≤ 3G_).
+1. Specify the desired treatment (e.g., _Off_).
+1. In the **Else if** part of the rule, include your original segment or user IDs.
+
+![](./static/rules-2.png)
+
+This setup ensures that the overriding condition is applied before the individual targeting rule.
+
 ## Timed releases for feature flags
 
 You can implement a feature toggle that switches between `on` and `off` automatically at a certain time using one of the following methods:
@@ -151,3 +172,47 @@ Feature flag rules are evaluated in the following order:
 Individual targets are evaluated in order. For example, if **Bob** is a user ID in the **Internal_QA** segment, then **Bob** will get **on** even though you’ve specifically assigned that key **off**.
 
 ![](./static/feature-flag-rules-evaluation-order-example.png)
+
+### Treatment ordering and traffic distribution
+
+With Split, the order of treatments within the rules matters.
+
+Rules are evaluated top-down as described above, but within each rule, treatment order determines how traffic is distributed among treatments. For example, if you have three treatments — `status_quo`, `treatment1`, and `treatment2` — evenly split at roughly 33% each, and you want to move everyone out of `status_quo` and assign 67% to `treatment2`, the order of treatments affects user experience.
+
+If the order is `status_quo`, `treatment1`, `treatment2`, setting `status_quo` to 0% and `treatment2` to 67% will cause users to shift from `status_quo` to `treatment1`, and from `treatment1` to `treatment2`. This may not be the intended experience.
+
+If the order is `treatment1`, `status_quo`, `treatment2`, then adjusting percentages will move users from `status_quo` to `treatment2` only, keeping `treatment1` users unaffected.
+
+This is especially important when you have more than three treatments. For instance, if `status_quo` is your safe fallback and you want to move users from a problematic `treatment2` to `status_quo`, simply changing percentages can cause users in treatment1 to unexpectedly shift to `status_quo`.
+
+| Even Distribution | Buckets | After Moving T2 to status\_quo |
+| ----------------- | ------- | ------------------------------ |
+| status\_quo       | 0-19    | status\_quo                    |
+| treatment1        | 20-39   | status\_quo                    |
+| treatment2        | 40-59   | treatment1                     |
+| treatment3        | 60-79   | treatment3                     |
+| treatment4        | 80-99   | treatment4                     |
+
+One way to avoid bucket shifts while moving users between treatments is to use [Dynamic Configuration](/docs/feature-management-experimentation/feature-management/dynamic-configurations/). You keep bucket assignments the same, but change the configuration values of treatments.
+
+| Even Distribution | Buckets | Dynamic Configuration |
+| ----------------- | ------- | --------------------- |
+| status\_quo       | 0-19    | status\_quo           |
+| treatment1        | 20-39   | treatment1            |
+| treatment2        | 40-59   | status\_quo           |
+| treatment3        | 60-79   | treatment3            |
+| treatment4        | 80-99   | treatment4            |
+
+### Limiting traffic exposure
+
+Limit exposure allows you to exclude a percentage of users from your targeting rules. For example, setting exposure to 20% and distributing treatments as 0/50/50 for `status_quo`, `treatment1`, and `treatment2` means each treatment gets 10% of total traffic. Increasing exposure moves new users from the default `status_quo` to treatments without reshuffling users between treatments.
+
+This helps when you want to ramp participation across multiple complex rules simultaneously.
+
+### Including excluded traffic for experimentation
+
+If you want to see all impressions in the Metrics impact tab, including those from users in the excluded default (`status_quo`) treatment, order treatments so excluded users fall between treatments. This way, adding traffic won’t cause users to switch treatments unexpectedly.
+
+### Individual targets override all
+
+Individually targeted users always receive their assigned treatment first. For example, if user `12345` is individually targeted for `status_quo`, they will get that treatment even if they belong to a segment targeted for `treatment1`.

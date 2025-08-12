@@ -5,6 +5,7 @@ description: "Learn how to add custom attributes to create dynamic targeted feat
 sidebar_position: 9
 redirect_from:
 - /docs/feature-management-experimentation/feature-management/faqs/does-my-sdk-version-support-semver
+- /docs/feature-management-experimentation/feature-management/faqs/what-are-attributes-in-the-admin-api-vs-custom-attributes-in-targeting-rules/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -118,6 +119,18 @@ To create multiple custom attributes that will appear as User Attributes in your
    ```
 6. When the file upload is complete, click **Save**. The new attributes are created and displayed on the Attributes page.
 
+### Difference Between Admin API Attributes and Targeting Rule Custom Attributes
+
+When using the [Admin API](https://docs.split.io/reference#identities-overview) to create attributes that assign values (identities) to client IDs, is this the same attribute used in the feature flag targeting rules from the user interface?
+  
+No, these are two distinct concepts:
+
+- **Admin API Attributes:** These attributes are used to assign identities or additional information to user IDs in the Split Admin API. They appear in the Split UI (e.g., when hovering over a user ID in the Results tab) but do **not** influence feature flag targeting or treatment assignment.
+
+- **Targeting Rule Custom Attributes:** These are attributes defined and used specifically within feature flag targeting rules to determine treatment assignment. When the SDK calls `getTreatment`, you must pass the relevant custom attributes with their corresponding values for proper evaluation against the targeting rules.
+
+Understanding this distinction is important to avoid confusion when managing user data versus defining targeting logic.
+
 ### Creating custom attributes or writing custom attribute values using API endpoints
 
 You can create custom attributes for use in feature flag targeting rules by using the following Split API endpoints:
@@ -172,12 +185,102 @@ You can also directly click within the IF field, type a new custom attribute ID,
     Serve the `on` treatment for users with custom attribute `registered_date` on or after a specified date:
 
     ![](./static/target-with-custom-attributes-using-custom-attributes-04-date.png)
-  
+
+## Using regex with custom attributes
+
+Split targeting rules support matching values using regular expressions (regex), which provides a powerful way to filter a wide range of users with a single targeting rule.
+
+:::tip
+We recommend testing your regex patterns on external tools like [regex101.com](https://regex101.com/) to ensure they work as expected before applying them in Split.
+:::
+
+Below are some useful regex examples for targeting specific user attributes:
+
+### Target specific app major version
+
+To target users with app version greater than or equal to 4.5 to get the on treatment, this regex could be used for matching the `appVersion` attribute:
+
+```
+(\[5-9\]\\.\[0-9\]|\[4\]\\.\[5-9\]).*
+```
+
+![](./static/targeting-1.png)
+
+You can use the `matches` operator in the targeting rule editor within the Split user interface to match the value of a passed attribute (such as an app version) to a regular expression and specify treatment assignments for any versions that match the expression.
+
+This approach also works when versions are formatted in `Major.Minor` and you want a specific treatment for versions below a certain threshold (for example, versions below `2.1.0`).
+
+Example of passing the `appVersion` attribute for the JavaScript SDK:
+
+```javascript
+var attributes = {appVersion: "4.567.33"};
+```
+
+### Target all population of specific domain of user emails
+
+For this example, to serve the `on` treatment for all employees of split.io, we can use the Regex below for `email` attribute:
+
+```
+@split.io$
+```
+
+![](./static/targeting-2.png)
+
+Example of passing the email attribute for the JavaScript SDK:
+
+```
+var attributes = {email: "bilal@split.io"};
+```
+
+### Target users on Chrome version 20 and later
+
+This example we are serving the on treatment to Chrome users only. However, we want to only use Chrome versions 20 and later for compatibility reasons. The attribute passed is userAgent:
+
+```
+Chrome\/[2-9][0-9]\.
+```
+
+![](./static/targeting-3.png)
+
+Example for the JavaScript SDK:
+
+```
+var attributes = {userAgent: "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"};
+```
+
+### Target English speaking users world wide
+
+An experiment is designed for English speaking users in any country by detecting the default language setting in the browser, the attribute passed is `navigatorLanguage en-`.
+
+![](./static/targeting-4.png)
+
+Example for the JavaScript SDK:
+
+```javascript
+var attributes = {navigatorLanguage: navigator.language};
+```
+
+### Target specific URL
+
+To target an experiment that applies only to users that land on a specific URL, the extracted URL can be passed as an attribute to the targeting rule:
+
+```
+http:\/\/mysite\.com\/my_url
+```
+
+![](./static/targeting-5.png)
+
+Example for the JavaScript SDK:
+
+```javascript
+var attributes = {url: window.location.href};
+```
+
 ## How feature flag targeting rules with custom attributes are evaluated
 
 This section explains how a feature flag targeting rule with a custom attribute is evaluated in your source code, in the following cases:
 
-##### The custom attribute value is not provided
+### The custom attribute value is not provided
 
 The feature flag targeting rule containing the custom attribute does not result in a match.
 
@@ -190,7 +293,7 @@ else 100% : off
 
 If the value for the age attribute is not provided in code in the attributes map passed to the getTreatment call, the matcher in the first condition `age <= 20` evaluates to **false**. The `else` condition then evaluates to **true**, resulting in the `off` treatment.
 
-##### The custom attribute value is not the correct type
+### The custom attribute value is not the correct type
 
 The feature flag targeting rule containing the custom attribute does not result in a match.
 

@@ -1,11 +1,15 @@
 ---
 title: Dynamic configuration
 sidebar_label: Dynamic configuration
-description: ""
+description: "Learn how to use Dynamic Configuration in feature flags, enabling you to deliver flexible, fine-tuned experiences by configuring flag treatments with customizable parameters. Learn how to set up, manage, and troubleshoot dynamic configurations to optimize your feature rollouts."
 sidebar_position: 5
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/faqs/dynamic-configuration-section-does-not-show-up/
 ---
 
-You can attach configurations to any of your treatments on a feature flag's Definition tab to dynamically control components of your features, such as:
+## Overview
+
+You can attach configurations to any of your treatments on a feature flag's **Definition** tab to dynamically control components of your features, such as:
 
 * Color, size and other visual components of your application
 * The copy or text in different areas of your application
@@ -24,7 +28,7 @@ These configurations give you the ability to make modifications to your features
 To set up dynamic configuration, do the following:
 
 1. From the left navigation, select **Feature flags**, then select a feature flag. The Definition tab appears.
-2. In the Dynamic configuration area, select either the Key-value pairs or JSON format and fill out the following fields:
+2. In the **Dynamic configuration** area, select either the Key-value pairs or JSON format and fill out the following fields:
 
   * Key-value pairs
   * JSON
@@ -79,4 +83,20 @@ Additionally, you can switch between key-value and JSON editing when configuring
 
 ## Configuration size limit
 
-To make sure configurations are not too large, the configurations for each feature flag are limited at 1KB in size. If you need a larger set of configurations, contact support@split.io
+To make sure configurations are not too large, the configurations for each feature flag are limited at 1KB in size. If you need a larger set of configurations, contact support@split.io.
+
+## Troubleshooting
+
+### Dynamic configuration section does not show up
+
+When clicking on any feature flag, the Dynamic configuration section does not show up, even though other users see the section from their browser.
+
+This issue is typically caused by the Split UI loading an outdated cached version of the page from before dynamic configuration was available.
+
+Clear your browser cache to force the UI to load the latest content. To confirm, open an Incognito window and log in to `app.split.io`. If the dynamic config section appears there, clearing your cache will fix the issue.
+
+For example, in Google Chrome:
+
+1. Go to **Settings** → **Privacy and security** → **Clear browsing data**.
+1. Select **Cookies and other site data**.
+1. Click **Clear data**.

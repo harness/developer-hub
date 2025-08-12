@@ -2,7 +2,7 @@
 title: Build a Resilient Integration
 sidebar_label: Build a Resilient Integration
 description: Learn how to build a resilient integration with Harness FME.
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 ## Overview

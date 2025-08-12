@@ -5,6 +5,7 @@ description: "Learn how to create, delete, and manage segments in Harness FME."
 sidebar_position: 6
 redirect_from:
 - /docs/feature-management-experimentation/feature-management/faqs/how-to-delete-a-segment-with-all-its-keys
+- /docs/feature-management-experimentation/feature-management/best-practices/csv-file-comma
 ---
 
 ## Overview
@@ -175,19 +176,19 @@ Follow these steps to delete all keys from the segment and delete the segment:
 1. Locate the down arrow on top of the checkboxes column.
 1. Click on it to display two menu items.
    
-   ![](https://help.split.io/hc/article_attachments/15726171868813)
+   ![](./static/delete-1.png)
 
 1. Select all records from there. The **Delete** button appears.
 
-   ![](https://help.split.io/hc/article_attachments/15726281778445)
+   ![](./static/delete-2.png)
 
 1. Once the keys are deleted, delete the segment definition by clicking on the Ellipses icon in the **Definition** section and selecting **Delete definition**.
    
-   ![](https://help.split.io/hc/article_attachments/15726343693453)
+   ![](./static/delete-3.png)
 
 1. Click on the Ellipses icon above **Owners** and select **Delete**.
    
-   ![](https://help.split.io/hc/article_attachments/15726349353613)
+   ![](./static/delete-4.png)
 
 ## CSV import file format
 
@@ -200,6 +201,24 @@ id1
 id2
 id3
 ```
+
+## Uploading user IDs with commas in CSV files
+
+When uploading CSV files with user IDs that contain commas, do not manually add double quotes around the IDs. The CSV import automatically treats each line as a unique user ID and adds any necessary quotes during import. For example, instead of:
+
+```
+"user1, key1"
+"user2, key2"
+```
+
+use:
+
+```
+user1, key1
+user2, key2
+```
+
+This ensures the user IDs are imported correctly into the segment.
 
 ## Checking if a user is in a segment
 
