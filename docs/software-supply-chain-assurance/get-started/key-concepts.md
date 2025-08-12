@@ -120,7 +120,7 @@ After you sign the artifacts, you can view the Rekor log which provides a public
 
 ### Attestation vs Signing
 
-- Attestation is about proving how and where the artifact was created, essentially providing cryptographic proof of its origin. It captures metadata about the build environment and verifies the integrity of the artifact before it gets signed. Attestation serves as a trusted statement regarding the artifact’s provenance and the conditions under which it was produced.
+- Attestation provides cryptographic proof of an artifact’s origin based on how and where it was created. It captures metadata about the build environment and verifies the artifact’s integrity before it is signed. Attestation serves as a trusted statement regarding the artifact’s provenance and the conditions under which it was produced.
 
 - Signing involves applying a cryptographic signature to the artifact to ensure that the artifact has not been altered or tampered with after it was created or attested.
 
