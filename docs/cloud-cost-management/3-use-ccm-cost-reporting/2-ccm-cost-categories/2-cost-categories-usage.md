@@ -17,42 +17,49 @@ The cost categories can be used in perspectives in the following ways.
 
 ### Group By
 
-Consider the following scenario where the Perspective rule has a cost category:
+### Group By Behavior
 
-| **Cost category** | **Cost bucket** | **Shared Cost buckets** |
-| --- | --- | --- |
-| CC1 | <ul><li>B1 - AWS</li><li>B2- GCP</li></ul> | <ul><li>SB1 - AWS</li><li>SB2 - GCP</li></ul>|
+#### Cross-Cloud Provider Grouping
 
-In this setup, if you group the Perspective by `AWS > Account`, the cost of B1 and SB1 are displayed against the respective AWS accounts. However, the total cost of the cost bucket B2, and the shared cost bucket SB2 in GCP are displayed under **No Account**. 
+When you group by a dimension that is specific to a particular cloud provider (e.g., AWS Accounts, GCP Projects), the following behavior applies:
 
-   ![](./static/cost-category-group-by-csp.png)
+* **Matching Provider Resources**: Costs from resources that match both the cost category and the cloud provider will display under their respective accounts/projects.
 
-Consider the following scenario with two cost categories:
+* **Non-Matching Provider Resources**: Costs from resources in your cost category but from different cloud providers will appear under a "**No [Dimension]**" category (e.g., "No Account" when grouping by AWS accounts).
 
- **Cost category** | **Cost bucket** | **Shared cost buckets** |
-| --- | --- | --- |
-| CC1 | <ul><li> CB1 - AWS1 - $10, AWS7 - $20 </li><li> CB2- AWS2 - $20 </li></ul> | <ul><li> SB1 - AWS3 - $30 </li><li> SB2 - AWS4 - $40 </li></ul>|
-| CC2 | <ul><li> CB3 - AWS1 - $10 </li><li> CB4- AWS2 - $20 </li></ul> | <ul><li> SB3 - AWS5 - $30 </li><li> SB4 - AWS6 - $40 </li></ul>|
+* **Shared Costs**: Shared cost buckets follow the same pattern - they appear under their respective accounts/projects if they match the grouping dimension's cloud provider, otherwise they appear under "No [Dimension]".
 
-If you have added CC1 (CB1, CB2, and Unattributed) in your Perspective rule and grouped by the same cost category, then the Perspective displays the following costs:
+#### Cost Category Interactions
 
-|Name | Total Cost|
-| --- | --- |
-| CB1 | $30 + shared cost (SB1 and SB2) |
-| CB2 | $20 + shared cost (SB1 and SB2) |
-| Unattributed | The sum of all the other costs |
+When working with multiple cost categories in Perspectives, the system follows these rules:
 
-If you have added CC1 (CB1, CB2, and Unattributed) in your Perspective rule and grouped by the cost category CC2, then the Perspective displays the following costs:
+##### Using a Cost Category in Perspective Rules
 
-| Name|Total Cost |
-| --- | --- |
-| CB3 | $10 + shared cost (SB3 and SB4) |
-| CB4 | $20 + shared cost (SB3 and SB4) |
-| No CC2 | $20 + shared cost (SB1 and SB2) |
-| Unattributed | The sum of all the other cost |
+When you add a cost category to your Perspective rule:
 
+* The Perspective will only show costs that match the selected cost buckets within that category
+* Shared cost buckets associated with the selected cost buckets will be included and allocated according to your sharing strategy
+* Costs outside your selected buckets will not appear unless you include "Unattributed" in your selection
 
-Here, the _No CC2_ cost includes the costs that are not in CC2 but in CC1. 
+##### Grouping by a Cost Category
+
+When you group by a cost category:
+
+* Each cost bucket appears as a separate line item
+* Costs are distributed to their respective buckets based on the rules defined in the cost category
+* Shared costs are allocated proportionally to each cost bucket according to your sharing strategy
+* Resources that don't match any bucket rules appear under "Unattributed"
+
+##### Cross-Category Interactions
+
+When using one cost category in a rule and grouping by another cost category:
+
+* Only costs that match your rule's cost category will be included
+* These costs are then grouped according to the buckets in your group-by cost category
+* Resources that match your rule but don't belong to any bucket in your group-by category appear under "No [Category Name]"
+* Shared costs from both categories are allocated according to their respective sharing strategies
+
+> **Important:** When using multiple cost categories with overlapping resources, be careful with shared buckets. If both categories have shared buckets with overlapping rules, costs might be counted differently than expected.
 
 ### Filter
 
