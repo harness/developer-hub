@@ -160,7 +160,7 @@ export const platformData: Horizon = {
         tag: [{value: "Pipeline"}, { value: "Notify" }],
         title: "Support for all channels for Custom notifications",
         description:
-          "Expanding custom pipeline notifications to support all channels beyond Webhook.",
+          "Extends custom notifications to support all available channels, providing greater flexibility in how notifications are delivered.",
         link: "/docs/platform/templates/customized-notification-template/#how-to-attach-a-template"
       },
       {
