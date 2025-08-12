@@ -83,6 +83,13 @@ The attestation process in Harness SCS follows the [In-toto attestation framewor
 
 <DocImage path={require('./static/get-started-attestation-overview.png')} width="80%" height="80%" title="Click to view full size image" />
 
+
+## Artifact Signing and Verification
+
+The artifact signing process involves a container image or digest, or a non-container image, along with a private key from a key pair and a password. SCS uses Cosign to perform the signing and securely verify it. Once the signature is successfully generated, The signed artifact is then pushed to the container registry, where the digest of the image is set as the file name with a `.sig` extension.
+
+For verification, the signed artifact is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the artifact was signed using the private key.
+
 Here’s an example of what the signed attestation would look like
 
 ```
