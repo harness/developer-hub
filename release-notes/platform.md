@@ -143,6 +143,20 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## August 2025
+
+### Version 1.100.x <!--August 06, 2025-->
+
+#### Fixed issues
+
+- Resolved a CSS-related issue that affected the readability of YAML diffs in the Audit Log view. The diff now renders correctly without visual glitches. [PL-64397]
+- Dashboards and Dashboard pages have been updated to support dynamic scaling, ensuring better viewing across all device sizes. [PL-64173]
+
+#### New features and enhancements
+
+- Improved backend queries to optimize how tasks are fetched by delegates. No action is needed from users. [PL-64473]
+- Added support for [deleting Delegate tokens](https://developer.harness.io/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens#delete-delegate-tokens) — making it easy to clean up unused ones. [PL-63386]
+
 ## July 2025
 
 ### Version 1.99.x <!--July 30, 2025-->

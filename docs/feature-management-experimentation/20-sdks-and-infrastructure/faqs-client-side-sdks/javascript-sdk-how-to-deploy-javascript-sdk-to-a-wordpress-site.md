@@ -4,10 +4,6 @@ sidebar_label: How to deploy JavaScript SDK to a Wordpress site?
 sidebar_position: 14
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044738692-How-to-deploy-JavaScript-SDK-to-a-Wordpress-site </button>
-</p>
-
 ## Question
 
 How to deploy JavaScript SDK code in a Wordpress site?

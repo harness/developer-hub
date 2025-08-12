@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-7-30T10:00:00
+date: 2025-8-06T10:00:00
 sidebar_position: 8
 ---
 
@@ -52,6 +52,23 @@ Google Container Registry (GCR) is deprecated and scheduled to shut down on **Ma
 
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
+
+## August 2025
+
+### Version 1.100.0
+
+#### New Features and Enhancements
+
+- Harness now supports customizing the available actions for [Manual Intervention failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps/#customize-available-actions-for-manual-intervention), allowing pipeline designers to restrict which options (e.g., Retry, Rollback) are shown to the executor. Currently, this feature is behind the feature flag `CDS_MANUAL_INTERVENTION_CUSTOM_ACTIONS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+
+#### Fixed Issues
+
+- Previously, Azure Web App deployments intermittently failed during the steady state check even though the deployment itself was successful. This issue is resolved. (**CDS-112865, ZD-89901**)
+- Previously, the Kubernetes Diff step failed on delegate version `25.06.86202` with an immutability error caused by the unintended addition of the `harness.io/track: stable` label, even when the account was not using Canary deployments. The issue is resolved. (**CDS-112822, ZD-89192**)
+- Previously, the AWS CDK step did not correctly consume AWS credentials passed as secret output variables from a prior containerized step group. The credentials were not resolved, resulting in an error indicating that no credentials were configured. This issue is resolved. (**CDS-112793, ZD-89643,89701**)
+- Previously, Git webhooks failed with the error *Failed to fetch the modified file paths* when using delegate-based connectors. This issue is resolved. (**PIPE-29072, ZD-88961,89658**)
+- Previously, services defined in child pipelines were frequently fetched using the parent pipeline's Git branch in chained pipeline setups, leading to resolution errors when the branches differed. The issue is resolved. (**PIPE-28919, ZD-89442**)
+- Previously, users were frequently unable to view v1 templates in the Harness UI, while v3 templates worked as expected. The issue is resolved. (**CDS-112748, ZD-89426**)
 
 ## July 2025
 

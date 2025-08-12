@@ -23,8 +23,8 @@ To set up permissions, do the following:
 1. From the left navigation, click **FME Settings**. The Projects page displays.
 2. In the desired project, click **View** in the Actions column. The project page with any associated environments appears.
 3. In the Environments tab, select the desired environment by clicking **Edit** in the Actions column. The Edit environment page appears. 
-
-   <img src="https://help.split.io/hc/article_attachments/30801270751629" alt="permissions.png" width="800" />
+   
+   ![](../static/edit-env.png)
 
 4. Fill in the fields as follows:
     * In the Name field, enter a name.

@@ -4,10 +4,6 @@ sidebar_label: "JavaScript SDK: CORS Error in streaming call when running SDK in
 sidebar_position: 4
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4415278732429-JavaScript-SDK-CORS-Error-in-streaming-call-when-running-SDK-in-Service-Worker </button>
-</p>
-
 ## Issue
 
 When running the JavaScript SDK inside Service Worker, the SDK Streaming http call to streaming.split.io is blocked by CORS browser policy as shown below:

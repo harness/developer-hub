@@ -38,24 +38,24 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Added support for additional environment variables to enable advanced Redis configuration. These provide greater flexibility for fine-tuning your Redis setup with the Relay Proxy. (FFM-12528)
 
-```
-REDIS_MAX_RETRIES
-REDIS_MIN_RETRY_BACKOFF_MILLIS
-REDIS_MAX_RETRY_BACKOFF_MILLIS
-REDIS_DIAL_TIMEOUT_SECONDS
-REDIS_READ_TIMEOUT_SECONDS
-REDIS_WRITE_TIMEOUT_SECONDS
-REDIS_POOL_SIZE
-REDIS_POOL_SIZE_LITERAL
-REDIS_POOL_TIMEOUT_SECONDS
-REDIS_MIN_IDLE_CONNS
-REDIS_MAX_IDLE_CONNS
-REDIS_MAX_ACTIVE_CONNS
-REDIS_CON_MAX_IDLE_TIME_MINUTES
-REDIS_CON_MAX_LIFETIME_MINUTES
-```
+  ```
+  REDIS_MAX_RETRIES
+  REDIS_MIN_RETRY_BACKOFF_MILLIS
+  REDIS_MAX_RETRY_BACKOFF_MILLIS
+  REDIS_DIAL_TIMEOUT_SECONDS
+  REDIS_READ_TIMEOUT_SECONDS
+  REDIS_WRITE_TIMEOUT_SECONDS
+  REDIS_POOL_SIZE
+  REDIS_POOL_SIZE_LITERAL
+  REDIS_POOL_TIMEOUT_SECONDS
+  REDIS_MIN_IDLE_CONNS
+  REDIS_MAX_IDLE_CONNS
+  REDIS_MAX_ACTIVE_CONNS
+  REDIS_CON_MAX_IDLE_TIME_MINUTES
+  REDIS_CON_MAX_LIFETIME_MINUTES
+  ```
 
-For a full list and description of the available configuration options, see the [Feature Flags documentation](/docs/feature-flags/use-ff/relay-proxy/relay-proxy-v2#full-breakdown-of-configuration-options).
+   For a full list and description of the available configuration options, see the [Feature Flags documentation](/docs/feature-flags/use-ff/relay-proxy/relay-proxy-v2#full-breakdown-of-configuration-options).
 
 **Maintenance**:
 
@@ -64,10 +64,28 @@ For a full list and description of the available configuration options, see the 
 
 ## July 2025
 
+### Java SDK
+
+#### Version 1.8.3
+
+**Bug fixes**:
+
+- Avoid logging disconnect errors on shutdown. A previous change (v1.8.0) unintentionally increased log noise by logging reset/cancel errors when the SDK was already shutting down. This fix ensures inflight requests aborted during shutdown are no longer logged, reducing misleading endpoint logs. (FFM-12506)
+
+**New feature and enhancements**:
+
+- Added stack traces in logs to improve diagnostics during SDK operation. (FFM-12506)
+- Improved polling log messages to make them more unique and easier to trace. (FFM-12506)
+
+#### Version 1.8.2
+
+**New features and enhancements**:
+
+- Adding experimental support for HTTP proxy configuration. The SDK now supports the following system properties for proxies: `http(s).proxyHost`, `http(s).proxyPort`, `http.proxyUser`, and `http.proxyPassword`. These are passed directly to OkHttp. (FFM-12489)
+
 ### Relay Proxy
 
 #### Version 2.0.13
-
 
 **New features and enhancements**:
 
@@ -86,11 +104,21 @@ For a full list and description of the available configuration options, see the 
 
 ### Node.js SDK
 
+#### Version 1.8.8
+
+**New features and enhancements**:
+
+- Added support for providing `tlsTrustedCa`/`httpsCa` to `StreamProcessor`.
+
+**Maintenance**:
+
+- Bumped version to address technical debt. (FFM-12520)
+
 #### Version 1.8.7
 
 **Bug fixes**:
 
-- Fixed an issue where the Node SDK did not retry after initialization failure. (FFM-12484)
+- Fixed an issue where the Node.js SDK did not retry after initialization failure. (FFM-12484)
 - Fixed an uncaught exception occurring when fetching flags or segments fails on SSE events. (FFM-12499)
 
 ### .NET SDK
@@ -228,6 +256,14 @@ This minor release updates the build process to sign the NuGet package, improvin
 - Updated x/net dependency to latest version. (FFM-12359)
 - Resolved vulnerabilities related to infrastructure-as-code. (IAC-3407)
 
+### Python SDK
+
+#### Version 1.7.2
+
+**Bug fixes**:
+
+- Fixed an issue where string values were not correctly cast to booleans when evaluating a boolean equals clause (e.g. checking if a target with `premium: True` belongs to a group with the rule `premiums equals true`). Added error handling for failed type casts to prevent runtime errors and log the issue instead. (FFM-12349)
+
 ## February 2025
 
 ### Relay Proxy
@@ -255,6 +291,20 @@ This feature helps developers monitor when default variations are returned due t
 - Updated README documentation for clarity and to reflect recent SDK enhancements. 
 
 ### React Native Client SDK
+
+#### Version 3.2.0
+
+**New features and enhancements**:
+
+- Updated React SDK to latest version. (FFM-12322)
+
+#### Version 3.1.0
+
+**New features and enhancements**:
+
+- Updated React SDK to latest version. (FFM-12315)
+
+### React Client SDK
 
 #### Version 2.2.0
 

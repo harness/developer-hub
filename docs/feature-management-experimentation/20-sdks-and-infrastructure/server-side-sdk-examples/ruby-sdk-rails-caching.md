@@ -4,10 +4,6 @@ sidebar_label: Ruby SDK and Rails caching
 sidebar_position: 14
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360012238092-Ruby-SDK-and-Rails-caching </button>
-</p>
-
 ## Question
 How can the Ruby SDK integrate with a Rails application that works with full page caching?
 

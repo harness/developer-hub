@@ -5,10 +5,6 @@ description: ""
 sidebar_position: 18
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043245611-Review-customer-dashboard </button>
-</p>
-
 The customer dashboard provides feature flag, segment, and attribute information on a particular user key. This dashboard can be navigated to by clicking on a unique key when viewing impression data or using the search bar on the left navigation panel.
 
 ## Feature flags

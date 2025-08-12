@@ -4,10 +4,6 @@ sidebar_label: What are attributes in the Admin API vs custom attributes in targ
 sidebar_position: 15
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016744791-What-are-attributes-in-the-Admin-API-vs-custom-attributes-in-targeting-rules </button>
-</p>
-
 ### Question
 
 When using the [Admin API](https://docs.split.io/reference#identities-overview) that create attributes to assign a value (identity) to client IDs, is this the same attribute used in the feature flag definition from the user interface?

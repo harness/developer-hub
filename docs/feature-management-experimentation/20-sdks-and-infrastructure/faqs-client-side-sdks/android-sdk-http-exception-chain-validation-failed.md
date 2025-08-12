@@ -4,10 +4,6 @@ sidebar_label: "HTTP Exception: Chain validation failed"
 sidebar_position: 18
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360042140631-HTTP-Exception-Chain-validation-failed </button>
-</p>
-
 ## Issue
 
 When running Android app in Emulator, Android SDK shows the error below right after initialization:

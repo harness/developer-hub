@@ -4,10 +4,6 @@ sidebar_label: "General SDK: Always getting control treatments"
 sidebar_position: 10
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020863412-General-SDK-Always-getting-control-treatments </button>
-</p>
-
 ## Problem
 
 When using SDK, control treatment is either always or very often returned from `getTreatment` call.

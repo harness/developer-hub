@@ -20,19 +20,27 @@ There are five key components of Release Monitoring:
 
 1. **Harness FME ingests the performance and behavioral data**
 
-   This includes the impression data, which is already sent by the FME SDKs. This also includes performance and error event data. This [event](/docs/feature-management-experimentation/release-monitoring/events/) data can be sent from any source, though it is likely easiest to come from the [FME SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite) or [FME RUM agents](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent). The FME SDK Suite allows you to import both the SDK and the RUM agent together.  The RUM agents automatically send events that can be used for measuring performance, errors and can be extended with custom events and listeners that can be used to build any metric that matters to you.
+   This includes the impression data, which is already sent by the FME SDKs. This also includes performance and error event data. This [event](/docs/feature-management-experimentation/release-monitoring/events/) data can be sent from any source, though it is likely easiest to come from the [FME SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite) or [FME RUM agents](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent). 
+   
+   The FME SDK Suite allows you to import both the SDK and the RUM agent together. The RUM agents automatically send events that can be used for measuring performance, errors and can be extended with custom events and listeners that can be used to build any metric that matters to you.
 
 1. **Harness FME monitors your metrics**
 
-   Metrics are used to compute the impact of a feature. If you are using the FME SDK Suite or RUM agent, Harness FME will auto-create out-of-the-box metrics for events received by our platform. Review the help page for each individual agent to see the specific metrics its events will create. Metrics can also be manually created based upon what guardrails and other detected effects would be harmful (or helpful) to your business.  For more information on how to build metrics within Harness FME, please see this article from our help center: [Metrics](/docs/feature-management-experimentation/release-monitoring/metrics/). 
+   [Metrics](/docs/feature-management-experimentation/release-monitoring/metrics/) are used to compute the impact of a feature. If you are using the FME SDK Suite or RUM agent, Harness FME will create out-of-the-box metrics for events received by our platform. 
+   
+   Metrics can also be manually created based upon what guardrails and other detected effects would be harmful (or helpful) to your business. 
 
 1. **The flag uses a percentage based rollout**
 
-   In order for Harness FME to evaluate the Metrics properly, there needs to be a percentage based rollout - in other words, there has to be randomization for the treatments. This means that you can’t just have the feature on for a segment of users or users with certain attributes and off for everyone else and have Harness FME calculate the impact. Doing that means that the audience for each treatment won’t strictly be a random set. Of course, similar to something like a pharmaceutical trial, you can randomize the treatments received within a single segment. That is, within a segment of users (or within a group of users selected by certain attribute values) it can be randomly selected that some will get one treatment and some will get a different one. This allows you to have statistically valid experiment groupings while still ensuring that you don’t expose the new treatment outside of a selected population.
+   In order for Harness FME to evaluate metrics properly, there needs to be a percentage based rollout - in other words, there has to be randomization for the treatments. This means that you can’t just have the feature on for a segment of users or users with certain attributes and off for everyone else and have Harness FME calculate the impact. 
+   
+   Doing that means that the audience for each treatment won’t strictly be a random set. Of course, similar to something like a pharmaceutical trial, you can randomize the treatments received within a single segment. That is, within a segment of users (or within a group of users selected by certain attribute values) it can be randomly selected that some will get one treatment and some will get a different one. This allows you to have statistically valid experiment groupings while still ensuring that you don’t expose the new treatment outside of a selected population.
 
 1. **Feature Flag and Metric alerting are present**
 
-   All you need to do is check your metrics impact dashboard to see how your features are doing, but to get the most value from Release Monitoring it is highly recommended that you set up metric [alert policies](/docs/feature-management-experimentation/release-monitoring/alerts/alert-policies/) and [feature flag alerting](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/#setting-up-feature-flag-alerting). Feature flag alerting immediately notifies you when a feature flag key metric achieves significance, allowing you to have confidence in the impact of your new feature.  Alert policies will alert you immediately to a guardrail metric being hit, ensuring that service degradations can be acted upon swiftly. 
+   All you need to do is check your metrics impact dashboard to see how your features are doing, but to get the most value from Release Monitoring it is highly recommended that you set up metric [alert policies](/docs/feature-management-experimentation/release-monitoring/alerts/alert-policies/) and [feature flag alerting](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/#setting-up-feature-flag-alerting). 
+   
+   Feature flag alerting immediately notifies you when a feature flag key metric achieves significance, allowing you to have confidence in the impact of your new feature. Alert policies will alert you immediately to a guardrail metric being hit, ensuring that service degradations can be acted upon swiftly. 
 
 ### Release Monitoring components
 
@@ -64,9 +72,9 @@ When Harness FME receives an event for the first time from any FME SDK Suite (or
 
 Of course, using the events automatically generated by the agents you can also create your own metrics and send additional events of interest. 
 
-A metric using the default error event produced by the FME SDK Suite (or RUM agent) could be as straightforward as the below example:
+A metric using the default `error` event produced by the FME SDK Suite (or RUM agent) could be as straightforward as the below example:
 
-<img src="https://help.split.io/hc/article_attachments/26506002719501" alt="metric_error_event_example.png" width="400" />
+![](./static/error-metric.png)
 
 We would want to see fewer errors, so this metric will let us know the effect of a feature flag on the errors that we track with the `trackError` method. 
 
@@ -90,18 +98,16 @@ While agents do not exist yet for the server-side SDKs, it is entirely possible,
 
 Getting an alert when a metric reaches significance can be as easy as setting the metric as a key metric for a feature flag. This is done on the Metrics impact tab for the feature flag by clicking on the **More Actions** button and selecting **Add as key metric**.
 
-<img src="https://help.split.io/hc/article_attachments/26506008761997" alt="add_as_key_metric_action.png" width="300" />
-<p></p>
+![](./static/key-metric.png)
 
 Additionally, created metrics can be attached to an [Alert policy](/docs/feature-management-experimentation/release-monitoring/alerts/alert-policies/) — allowing you to be notified instantly via email under the situation of a metric degradation — allowing you to rollback or consider further analysis of the situation. This full end to end solution, from the feature toggle, to the statistical significance calculation, through to the alerting, gives enormous value for teams looking to move fast without breaking things. 
 
 Here is an example alert policy that could be combined with the metric shown above:
 
-<img src="https://help.split.io/hc/article_attachments/26506008763405" alt="alert_policy_example.png" width="800" />
-<p></p>
+![](./static/example-alert-policy.png)
 
 This alert will fire if there is a 5% or more difference between the baseline treatment and any of the other treatments in the undesired direction. This allows you to take fast action and rollback or kill the feature before rolling it out further. 
 
-:::note
+:::info
 You do not explicitly need to use the FME SDK Suite (or RUM Agents) if you have your own way of sending performance metric data to Harness FME. However, it has been our experience that performance metric data on a user-by-user basis is difficult to extract from common APM monitoring tools.
 :::

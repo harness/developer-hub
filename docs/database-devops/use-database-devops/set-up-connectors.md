@@ -49,6 +49,7 @@ The JDBC connector is used for connecting to your database instance.
 | **SQLSERVER**      | `jdbc:sqlserver://{host}:{port};trustServerCertificate=true;databaseName={dbName}`                                               |
 | **MYSQL**          | `jdbc:mysql://{host}:{port}/{dbName}`                                                                                            |
 | **MONGODB**        | `mongodb://{host}:{port}/{dbName}/?authSource=admin`                                                                             |
+| **MongoDB Atlas**  | `mongodb+srv://{username}:{password}@{cluster}/{dbName}/?authSource=admin`                                                       |
 | **GOOGLE SPANNER** | `jdbc:cloudspanner:/projects/{project-id}/instances/{instance-id}/databases/{database-name}?lenient=true`                        |
 | **MongoDB SSL**    | `mongodb://{host}:{port}/{dbName}/?tls=true&authSource=admin`                                                                    |
 | **POSTGRES SSL**   | `jdbc:postgresql://{host}:{port}/{dbName}?ssl=true`                                                                              |
@@ -58,6 +59,30 @@ The JDBC connector is used for connecting to your database instance.
 | **COCKROACHDB SSL**     | `jdbc:postgresql://{host}:{port}/{dbName}?sslmode=require`                                                                  |
 
 ---
+## Setting Up MongoDB
+
+MongoDB connections in Harness DB DevOps support both self-hosted and cloud-based MongoDB instances.
+
+### Prerequisites for MongoDB
+
+1. **Connection Format**:  
+   - Use `mongodb+srv://` for MongoDB Atlas and cloud instances.
+   - Use `mongodb://` for self-hosted instances.
+
+2. **Authentication**:  
+   - **Username/Password**: Database user credentials
+   - **authSource**: Must be specified (typically `admin`)
+   - **Database**: Target database name must be included in the URL
+
+3. **Network Access**:  
+   - Ensure the delegate has network connectivity to the MongoDB cluster
+   - For MongoDB Atlas, whitelist the delegate's IP address
+
+### MongoDB URL Requirements
+
+- The connection string **must** include `+srv` for cloud instances
+- The target `database` must be specified in the URL path
+- The database user must have appropriate read/write permissions on the target database
 
 ## Setting Up Google Spanner
 
@@ -70,7 +95,6 @@ Google Spanner uses a unique JDBC URL format and does not require a password for
    - The GSA must have the following roles:  
      - `roles/spanner.databaseAdmin`  
      - `roles/spanner.databaseUser`
-
 ---
 
 ## Connector FAQs

@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-07-30T18:00
+date: 2025-08-11T18:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,34 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+## August 2025 - Version 1.59.1
+#### **Deployment Date:** August 11, 2025 (Prod-1)
+
+### ⭐ [New Feature] Rules Generating Recommendations
+**[CCM-24188] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#rules-generating-recommendations)** 
+
+- Added support for Rule and Target Account Exclusions in Governance Recommendations, enabling you to define custom default rules that apply globally or to specific account subsets. This enhancement gives you precise control over which governance policies apply to specific accounts and which rules generate recommendations, streamlining compliance management across your organization.
+
+### Feature Improvements
+
+- **Governance Rule Operators**: Updated `op` operator type from less-than to greater-than for improved rule evaluation accuracy. [CCM-24446]
+
+- **Budget Forecasting Enhancement**: Added support for overriding forecast values in yearly budgets with monthly breakdown, providing more granular budget management capabilities. Also, improved the graph to show the forecasted values if override is enabled. [CCM-24440]
+
+<DocImage path={require('./static/forecast.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- **New Feature Flag**: Introduced a new feature flag which, when enabled for specific accounts, will exclusively bypass any cost calculations using public pricing sources. To enable the feature flag, please contact Harness Support. [CCM-22370]
+
+### Bug Fixes
+
+- **Anomaly Email Links**: Fixed an issue where the "Investigate" button in anomaly alert emails was resulting in a 404 error. The problem occurred with anomaly alerts based on all data that had no associated perspective, causing malformed redirection links. [CCM-24542]
+
+- **Anomaly Access Control**: Resolved an issue with anomaly visibility filtering where users with no access to specific anomalies could see all anomalies in the system ensuring proper access control enforcement. [CCM-24353]
+
+- **Connector Health Check**: Improved error messaging for storage bucket connectivity issues. When a bucket doesn't exist, users now receive a specific error message instead of the generic "Unknown error occurred" message. [CCM-20815]
+
+- **Perspective Bookmarks**: When a user accessed the perspective using a bookmarked URL containing filters, CCM wasn't prioritising the URL filters over those stored in local storage. We have fixed this issue. [CCM-24726]
 
 ## July 2025 - Version 1.58.3
 #### **Deployment Date:** July 28, 2025 (Prod-1)

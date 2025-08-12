@@ -4,10 +4,6 @@ sidebar_label: "Java SDK Time out Error: NoSuchMethodError: com.google.common.co
 sidebar_position: 10
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360031044932-Java-SDK-Time-out-Error-NoSuchMethodError-com-google-common-collect-Multisets-removeOccurrencesy </button>
-</p>
-
 ## Issue
 
 Using Java SDK within a framework, SDK always times out. Log shows the error below:

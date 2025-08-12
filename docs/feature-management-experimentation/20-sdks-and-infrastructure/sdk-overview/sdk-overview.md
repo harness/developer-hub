@@ -4,10 +4,6 @@ sidebar_label: SDK overview
 sidebar_position: 1
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033557092-SDK-overview </button>
-</p>
-
 When you integrate FME SDKs, consider the following to make sure that you have the correct set up depending on your use case, customers, security considerations, and architecture.
  
 * **Understand Harness FME architecture**. FME SDKs were built to be scalable, reliable, fast, independent, and secure.
