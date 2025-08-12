@@ -204,6 +204,350 @@ Below is a comprehensive reference for AWS Bill fields.
 
 <TabItem value="azure" label="Azure">
 
+
+## Azure Billing & Transaction Field Reference
+
+Below is a concise, collapsible reference. Click a group to expand its table.
+
+## Billing & Transaction
+
+<details>
+<summary><strong>Account</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Account ID | azure.account_id | The primary identifier for the account. Displays the EA Account ID if available, otherwise falls back to the Subscription ID. |
+| Account Name | azure.account_name | The primary name for the account. Displays the EA Account Name if available, otherwise falls back to the Subscription Name. |
+| Account Owner ID | azure.azure_account_owner_id | The email ID of the EA enrollment account owner. |
+| Azure Cloud Provider Entity Id | azure.azure_cloudprovider_entity_id |  |
+| Billing Account ID | azure.azure_billing_account_id | Unique identifier for the root billing account. |
+| Billing Account Name | azure.azure_billing_account_name | Name of the billing account. |
+| Billing Profile ID | azure.azure_billing_profile_id | Unique identifier of the EA enrollment, pay-as-you-go subscription or MCA billing profile. |
+| Billing Profile Name | azure.azure_billing_profile_name | Name of the EA enrollment, pay-as-you-go subscription or MCA billing profile. |
+
+</details>
+
+<details>
+<summary><strong>Billing Period End / Date</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Billing Period End / Date | azure.azure_billing_period_end_date | The end date of the billing period. |
+| Billing Period End / Month | azure.azure_billing_period_end_month | The end date of the billing period. |
+| Billing Period End / Month Name | azure.azure_billing_period_end_month_name | The end date of the billing period. |
+| Billing Period End / Quarter | azure.azure_billing_period_end_quarter | The end date of the billing period. |
+| Billing Period End / Time | azure.azure_billing_period_end_time | The end date of the billing period. |
+| Billing Period End / Week | azure.azure_billing_period_end_week | The end date of the billing period. |
+| Billing Period End / Year | azure.azure_billing_period_end_year | The end date of the billing period. |
+
+</details>
+
+<details>
+<summary><strong>Billing Period Start / Date</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Billing Period Start / Date | azure.azure_billing_period_start_date | The start date of the billing period. |
+| Billing Period Start / Month | azure.azure_billing_period_start_month | The start date of the billing period. |
+| Billing Period Start / Month Name | azure.azure_billing_period_start_month_name | The start date of the billing period. |
+| Billing Period Start / Quarter | azure.azure_billing_period_start_quarter | The start date of the billing period. |
+| Billing Period Start / Time | azure.azure_billing_period_start_time | The start date of the billing period. |
+| Billing Period Start / Week | azure.azure_billing_period_start_week | The start date of the billing period. |
+| Billing Period Start / Year | azure.azure_billing_period_start_year | The start date of the billing period. |
+
+</details>
+
+<details>
+<summary><strong>Commitments & Benefits</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Benefit ID | azure.azure_benefit_id | Unique identifier for the purchased savings plan instance. |
+| Benefit Name | azure.azure_benefit_name | Unique identifier for the purchased savings plan instance. |
+| Reservation ID | azure.azure_reservation_id | Unique identifier for the purchased reservation instance. |
+| Reservation Name | azure.azure_reservation_name | Name of the purchased reservation instance. |
+
+</details>
+
+
+
+<details>
+<summary><strong>Cost Allocation</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Cost Allocation Rule Name | azure.azure_cost_allocation_rule_name | Name of the Cost Allocation rule that's applicable to the record. |
+| Cost Center | azure.azure_cost_center | The cost center defined for the subscription for tracking costs. |
+
+</details>
+
+<details>
+<summary><strong>Currency</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Billing Currency Code | azure.azure_billing_currency_code | Currency associated with the billing account. |
+
+</details>
+
+<details>
+<summary><strong>Customer</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Customer Name | azure.azure_customer_name | Name of the Microsoft Entra tenant for the customer's subscription. |
+| Customer Tenant ID | azure.azure_customer_tenant_id | Identifier of the Microsoft Entra tenant of the customer's subscription. |
+
+</details>
+
+
+<details>
+<summary><strong>End Time Period / Date</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| End Time Period / Date | azure.end_date | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Month | azure.end_month | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Month Name | azure.end_month_name | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Quarter | azure.end_quarter | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Time | azure.end_time | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Week | azure.end_week | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Year | azure.end_year | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+
+</details>
+
+<details>
+<summary><strong>Invoice</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Invoice ID | azure.azure_invoice_id | The unique document ID listed on the invoice PDF. |
+| Invoice Section ID | azure.azure_invoice_section_id | Unique identifier for the EA department or MCA invoice section. |
+| Invoice Section Name | azure.azure_invoice_section_name | Name of the EA department or MCA invoice section. |
+| Previous Invoice ID | azure.azure_previous_invoice_id | Reference to an original invoice if the line item is a refund. |
+
+</details>
+
+
+
+<details>
+<summary><strong>Partner</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Reseller MPN ID | azure.azure_reseller_mpn_id | ID for the reseller associated with the subscription. |
+| Reseller Name | azure.azure_reseller_name | The name of the reseller associated with the subscription. |
+
+</details>
+
+
+
+<details>
+<summary><strong>Start Time Period / Date</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Start Time Period / Date | azure.start_date | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Month | azure.start_month | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Month Name | azure.start_month_name | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Quarter | azure.start_quarter | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Time | azure.start_time | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Week | azure.start_week | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Year | azure.start_year | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+
+</details>
+
+<details>
+<summary><strong>Subscription</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Subscription ID | azure.azure_subscription_id | Unique identifier for the Azure subscription. |
+| Subscription Name | azure.azure_subscription_name | Name of the Azure subscription. |
+
+</details>
+
+<details>
+<summary><strong>Transaction Details</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Frequency | azure.azure_frequency | Indicates whether a charge is expected to repeat. Charges can either happen once (OneTime), repeat on a monthly or yearly basis (Recurring), or be based on usage (UsageBased). |
+| Transaction Type | azure.azure_charge_type | Indicates whether the charge represents usage (Usage), a purchase (Purchase), or a refund (Refund). |
+
+</details>
+
+
+<details>
+<summary><strong>Usage  Date</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Usage  Date | azure.usage_date | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Month | azure.usage_month | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Month Name | azure.usage_month_name | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Quarter | azure.usage_quarter | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Time | azure.usage_time | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Week | azure.usage_week | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Year | azure.usage_year | The usage date of the charge in yyyy-mm-dd format. |
+
+</details>
+
+## Location
+
+<details>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Location (Normalized) | azure.azure_location | The normalized location used to resolve inconsistencies in region names. For example, US East. |
+| Meter Region | azure.azure_meter_region | The name of the Azure region associated with the meter. It generally aligns with the resource location, except for certain global meters. |
+| Region | azure.region | The geographic area where Azure hosts your resources. |
+| Keys | azure_tags.key | Master list of all keys. Tag Key that you can use to track costs associated with specific areas/entities within your business. |
+| Values | azure_tags.value | Master list of all values. Tag Value that you can use to track costs associated with specific areas/entities within your business. |
+
+</details>
+
+## Pricing & Usage
+
+<details>
+<summary><strong>Credit Eligibility</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Is Azure Credit Eligible (Yes / No) | azure.azure_is_azure_credit_eligible | Indicates if the charge is eligible to be paid for using Azure credits. |
+
+</details>
+
+
+<details>
+<summary><strong>Pricing</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Currency | azure.azure_pricing_currency | Currency associated with the pricing unit. |
+| Effective Price (Resource Rate) | azure.azure_resource_rate | The price for a given product or service that represents the actual rate that you end up paying per unit. |
+| Pay-As-You-Go Price | azure.azure_pay_g_price | The market price, also referred to as retail or list price, for a given product or service. |
+| Pricing Model | azure.azure_pricing_model | Identifier that indicates how the meter is priced. (Values: OnDemand, Reservation, Spot, and SavingsPlan) |
+| Term | azure.azure_term | Displays the term for the validity of the offer. For example: For reserved instances, it displays 12 months. Not applicable for Azure consumption. |
+| Unit Price | azure.azure_unit_price_hub | The price for a given Azure product or service inclusive of any negotiated discount on top of the market price. |
+
+</details>
+
+<details>
+<summary><strong>Usage</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Unit Of Measure | azure.azure_unit_of_measure | The unit of measure for billing for the service. For example, compute services are billed per hour. |
+
+</details>
+
+
+
+## Resource & Service Details
+
+<details>
+<summary><strong>Account</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Tenant ID | azure.azure_tenant_id | A globally unique identifier (GUID) that identifies your organization's instance of Azure Active Directory (Azure AD), also known as Microsoft Entra ID. |
+
+
+</details>
+
+
+<details>
+<summary><strong>Compute Instance</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Instance Category | azure.instance_category | The functional category of the instance (e.g., General Purpose), derived from its family. |
+| Instance Family | azure.instance_family | The family of the Compute Engine VM (e.g., Dv3 Series), extracted from the meter name. |
+| Instance Size | azure.instance_size | An abstract 'T-shirt' size (e.g., Small, Medium, Large) derived from the instance type's vCPU count. |
+| Instance Type | azure.instance_type | The specific VM size (e.g., Standard_D2s_v3), extracted from service metadata. |
+| Operating System | azure.operating_system | Operating system, extracted from the Meter Name. Best effort, may not apply to all services. |
+| VM Scale Set Name | azure.vm_scale_set_name | The name of the Virtual Machine Scale Set the resource belongs to, if applicable. |
+
+</details>
+
+<details>
+<summary><strong>Database</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| DB Engine | azure.db_engine | Database engine, extracted from the Meter Name for database services. |
+
+</details>
+
+<details>
+<summary><strong>Meter</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Meter Category | azure.azure_meter_category | Name of the classification category for the meter. For example, Cloud services and Networking. |
+| Meter ID | azure.azure_meter_id | The unique identifier for the meter. |
+| Meter Name | azure.azure_meter_name | The name of the meter. Meters are used to track a resource's usage for billing. |
+| Meter Sub-Category | azure.azure_meter_sub_category | Name of the meter subclassification category. |
+
+</details>
+
+
+<details>
+<summary><strong>Product</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Offer ID | azure.azure_offer_id | Name of the Azure offer, which is the type of Azure subscription that you have. |
+| Product Name | azure.azure_product_name | Name of the product. |
+| Product Order ID | azure.azure_product_order_id | Unique identifier for the product order. |
+| Product Order Name | azure.azure_product_order_name | Unique name for the product order. |
+
+</details>
+
+<details>
+<summary><strong>Publisher</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Plan Name | azure.azure_plan_name | Marketplace plan name. |
+| Publisher Name | azure.azure_publisher_name | The name of the publisher. For first-party services, this is typically 'Microsoft' or 'Microsoft Corporation'. |
+| Publisher Type | azure.azure_publisher_type | Supported values: Microsoft, Azure, Marketplace. |
+
+</details>
+
+<details>
+<summary><strong>Resource</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Instance ID (Resource ID) | azure.azure_instance_id | Unique identifier of the Azure Resource Manager resource. Formed using subscription ID, resource group, providers, resource name, etc. |
+| Item Description | azure.item_description | A cleaned-up, human-readable version of the Meter Name, with common clutter removed. |
+| Resource Group | azure.azure_resource_group | Name of the resource group the resource is in. A container that holds related resources for management. |
+| Resource Name (Friendly) | azure.resource_name_friendly | A user-friendly resource name, prioritized to use the 'Name' tag, then the parsed name from the ID, then the raw name. |
+| Resource Name (Raw) | azure.azure_resource_name | Name of the resource. Not all charges come from deployed resources. |
+| Resource Name (from ID) | azure.resource_name_from_id | The resource name parsed from the end of the full Resource ID path. |
+| Resource Type | azure.azure_resource_type | Type of resource instance, e.g., Microsoft.Compute/virtualMachines. Not all charges come from deployed resources. |
+
+</details>
+
+<details>
+<summary><strong>Service</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Additional Info | azure.azure_additional_info | Service-specific metadata. For example, an image type for a virtual machine. |
+| Consumed Service | azure.azure_consumed_service | Name of the service the charge is associated with. |
+| Operation | azure.operation | A standardized operation derived from the Meter Category to align with concepts from other cloud providers (e.g., Run Instance, Data Transfer, Storage). |
+| Product Family | azure.azure_product_family | Product family that the service belongs to. |
+| Service Family | azure.azure_service_family | Service family that the service belongs to. |
+| Service Name | azure.azure_service_name | The service family that the service belongs to (e.g., Virtual Machines, Storage). |
+| Service Tier | azure.azure_service_tier | Name of the service subclassification category. |
+| Usage Type | azure.usage_type | A high-level categorization of the usage (e.g., Compute, Storage, Networking). |
+
+</details>
+
+
 </TabItem>
 
 <TabItem value="gcp" label="GCP">
