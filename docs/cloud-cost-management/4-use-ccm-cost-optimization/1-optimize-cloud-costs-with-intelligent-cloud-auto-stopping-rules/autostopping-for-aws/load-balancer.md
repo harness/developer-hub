@@ -36,7 +36,6 @@ A Harness load balancer in AWS consists of two primary components:
 ### Prerequisites
 
 - An active AWS account with [appropriate permissions](/docs/cloud-cost-management/feature-permissions#autostopping-rules-permissions).
-- A domain name you can configure (either in Route 53 or another DNS provider)
 - [AWS CCM Connector](/docs/cloud-cost-management/get-started/#aws)
 
 ## Setup Process
