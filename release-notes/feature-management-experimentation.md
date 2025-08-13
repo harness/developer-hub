@@ -195,7 +195,7 @@ This feature allows you to streamline impressions sent to third party integratio
 ![Impression tracking toggle](./static/fme/impression-tracking-toggle.png)
 
 #### Related documentation
-- [Tracking impressions](/docs/feature-management-experimentation/feature-management/targeting/impressions/#tracking-impressions)
+- [Tracking impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/#tracking-impressions)
 
 ### [New Feature] AI settings
 ----
@@ -265,7 +265,7 @@ Effective immediately, Enterprise tier customers may create and use Large segmen
 ![Image](./static/fme/image-53.png)
 Learn more about Large segments and the ways they differ from Standard segments in the documentation:
 - [Create a segment](/docs/feature-management-experimentation/feature-management/targeting/segments)
-- [Target segments](/docs/feature-management-experimentation/feature-management/target-segments)
+- [Target segments](/docs/feature-management-experimentation/feature-management/targeting/target-segments)
 
 Note: The initial release of Large segments is focused on client-side SDK usage only. Server-side SDKs do not yet support Large segments, but soon will. Until they are supported, evaluations of feature flags that target Large segments will return control on server-side SDKs.
 
