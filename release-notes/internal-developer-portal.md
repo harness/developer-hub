@@ -24,6 +24,195 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         |           ⏳| ⏳          | ⏳            |
+
+## August - [2025.08.v1]
+
+### [New Feature] Harness IDP and Security Testing Orchestration (STO) Integration
+
+Harness Internal Developer Portal (IDP) now integrates with Harness Security Testing Orchestration (STO) to surface real-time vulnerability data directly inside the Software Catalog. Vulnerabilities such as CVEs from static and dynamic scans are displayed alongside services, projects, and components, minimizing context switching and enabling faster triage.
+
+![](./static/sto-integrated-idp.png)
+#### Prerequisites
+
+* IDP and STO modules enabled on the account.
+* At least one STO pipeline or scanner configured.
+* STO-IDP integration feature flag (`IDP_STO_INTEGRATION`) activated by Harness Support.
+
+#### Key Features
+
+##### Security Vulnerability Cards and Tabs
+STO findings are displayed in IDP using dedicated UI elements:
+
+* **Catalog View**: High-level vulnerability indicators for all services.
+![](./static/sto-catalog.png)
+* **Entity View**: Summary cards showing counts by severity and prioritization cues.
+* **Vulnerabilities Tab**: Detailed, filterable table of STO findings for each entity.
+
+##### Source Code Linkage
+The new Link to Source Code Repository feature correlates Git-based scan results with STO findings. This supports SAST, SCA, secret scanning, and license compliance scans. Configuration via the IDP UI eliminates manual YAML editing.
+
+##### STO Test Target Annotations
+The `harness.io/sto-test-target` annotation maps STO results to catalog entities, whether the target is a source repository, container image, or deployed artifact. Multiple targets per component are supported, with precise scoping to ensure correct data mapping.
+
+##### Scorecard Integration
+STO findings can now feed into IDP Scorecards, allowing automated tracking of security compliance across all services. Custom vulnerability checks, thresholds, and severity filters can be configured to reflect organization-wide security posture.
+![](./static/scorecard.png)
+
+### [New Feature] System Entity in Harness IDP
+
+Harness Internal Developer Portal (IDP) now supports System as a high-level catalog entity type, designed to logically group related Components, APIs, and Resources under a functional or domain boundary. This enhances catalog visibility, governance, and discoverability for complex architectures.
+
+![](./static/system-entity.png)
+
+#### Key Highlights
+
+* Systems can be created at Account, Organization, or Project scope.
+* Define Systems using the IDP UI, YAML, or the Create Entity API (`kind: System`).
+* New default System layout includes tabs for Overview, Entities, Scorecard, and Diagram. Existing customers can apply the provided YAML layout under **Admin → Layout → Catalog Entities → System**.
+![](./static/system-layout.png)
+* The Entities tab offers a searchable, filterable, and sortable table of all Components, APIs, and Resources within the System.
+* Many-to-many relationships are supported — an entity can belong to multiple Systems.
+![](./static/multiple-system.png)
+* Associations are made in the entity's YAML via the `spec.system` field and automatically reflected in the Catalog without updating the System YAML.
+
+
+#### Example: System Entity YAML
+
+```yaml
+apiVersion: harness.io/v1
+kind: System
+name: Payment System
+identifier: paymentsystem
+type: system
+owner: team-payment
+metadata:
+  description: Groups services and APIs related to payment processing.
+  tags:
+    - rest
+    - java
+spec:
+  lifecycle: production
+```
+
+#### Example: Associating a Component with Multiple Systems
+
+```yaml
+apiVersion: harness.io/v1
+kind: Component
+name: Payment Processing Service
+identifier: payment_processing_service
+type: service
+owner: group:account/platform_team
+spec:
+  lifecycle: production
+  system:
+    - system:account/payment_platform
+    - system:account/checkout_system
+metadata:
+  tags:
+    - microservice
+    - java
+```
+
+### [New Feature] Link to Source Code Repository
+
+Harness IDP now supports defining a Link to Source Code Repository for Components, APIs, and Resources in the Software Catalog. This optional field is strongly recommended for Git-based workflows and enables key capabilities such as:
+
+![Link to Source Code Repository](./static/source-code-link-ui.png)
+
+* Automatic configuration of plugins like Scorecards, TechDocs, and STO
+* A View Source option directly in the entity's UI
+* Automatic generation of the legacy `backstage.io/source-location` annotation for backwards compatibility
+
+#### Configuration Options
+
+* **Supported providers**: Harness, Github, Gitlab, Bitbucket, AzureRepo
+* The `connectorRef` must point to a valid Harness Connector for the selected provider
+* Supports both single-repo and mono repository setups (with `monoReposubDirectoryPath`)
+![Mono Repository Setup](./static/source-code-mono.png)
+* Git connector permissions must match the entity's scope (Account, Organization, or Project)
+
+#### Example YAML
+
+```yaml
+spec:
+  sourceCode:
+    provider: Github
+    connectorRef: account.ShibamDhar
+    repoName: java-service_svc
+    monoRepo: false
+```
+
+#### Example: Mono Repository Setup
+
+```yaml
+spec:
+  sourceCode:
+    monoRepo: true
+    provider: Github
+    repoName: java-service_svc
+    connectorRef: account.ShibamDhar
+    monoReposubDirectoryPath: /harness
+```
+### [Breaking Change] Visualization Components Consolidated
+
+This release introduces the `DxDataChart` component, a flexible visualization tool for displaying data from DX Data Studio queries as charts or tables. It supports multiple visualization types, custom metrics from DX datafeeds, optional variables, unit labels, automatic data transformation, and deep links to the underlying DX DataCloud queries.
+
+
+#### Replaced Components
+
+The following components have been removed because their functionality is now fully covered by `DxDataChart`:
+
+* `EntityChangeFailureRateCard`
+* `EntityDeploymentFrequencyCard`
+* `EntityDORAMetricsContent`
+* `EntityDXDashboardContent`
+* `EntityLeadTimeCard`
+* `EntityOpenToDeployCard`
+* `EntityTimeToRecoveryCard`
+* `EntityTopContributorsTable`
+
+#### Example Usage – Line Chart
+
+```jsx
+<DxDataChartCard
+  title="Deployment Frequency"
+  description="Weekly deployments over time"
+  datafeedToken="your-datafeed-token"
+  unit="deployments"
+  variables={{ teamId: entity.metadata.annotations?.["getdx.com/id"] }}
+  chartConfig={{
+    type: "line",
+    xAxis: "date",
+    yAxis: "count",
+  }}
+/>
+```
+
+With `DxDataChart`, you can create customizable visualizations, deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
+
+### Bug Fixes and Improvements
+
+* **New Catalog APIs** - Harness IDP now includes two new APIs to make it easier to find and display catalog entities:
+  * **Entity Filter Options API** ([API docs](https://apidocs.harness.io/tag/Entities/#operation/get-entities-filters-by-query)) – Returns available filters such as owner, tags, and lifecycle to help you show only valid filter choices in your UI.
+  * **Entity Retrieval by References API** ([API docs](https://apidocs.harness.io/tag/Entities#operation/get-entities-by-refs)) – Fetches one or more specific catalog entities, or a filtered list, with full details.
+  * You can use them together — for example, first retrieve filter options, then fetch the matching entities. Enables faster, more accurate, and user-friendly search experiences in the Entity Catalog. *[IDP-5969]*
+
+* **GitHub Actions Plugin Fix** – Resolved an issue where workflows failed to load when using GitHub Enterprise Server (GHES) instances that operate in an isolated environment without any connectivity to GitHub.com. The plugin now correctly supports fully private GHES setups. *[IDP-6086]*
+
+* **SonarQube Plugin Updates** – Upgraded the SonarQube plugin to v0.14 to support the latest SonarQube server capabilities. Improved authentication handling for SonarQube instances hosted behind reverse proxies or web servers, resolving prior connection and token validation issues. *[IDP-6044]* *[IDP-5862]*
+
+* **Empty Custom Plugin Creation Prevented** – Resolved an issue where clicking "+ New Custom Plugin" and exiting before completing configuration still created an empty entry labeled "by null" in the Custom Plugins list. Plugin creation now occurs only after a package is uploaded, ensuring no incomplete or null plugins are added. *[IDP-5016]*
+
+* **YAML Editor Field Visibility Update** – `project_name` and `org_name` will no longer be visible in the YAML editor as they are not necessary. Only `project_identifier` and `org_identifier` remain to define the scope of the entity. *[IDP-5968]*
+
+* **Lifecycle Field in Workflows Now Optional** – The lifecycle field is no longer required when creating workflows, preventing late-stage validation errors and allowing workflows to be created without unnecessary lifecycle values. *[IDP-6065]*
+
+<!-- Let's maintain last 3 here. -->
+
+| **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
+| ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
 | [2025.07.v2](/release-notes/internal-developer-portal#july---202507v2)                               | ✅        | ✅         | ✅         | ✅          | ⏳          | ⏳            |
 | [2025.07.v1](/release-notes/internal-developer-portal#july---202507v1)                               | ✅        | ✅         | ✅         | ✅          | ✅          | ✅            |
 | [2025.06.v1](/release-notes/internal-developer-portal#june---202506v1)  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
