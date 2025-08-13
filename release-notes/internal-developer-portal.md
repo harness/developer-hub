@@ -48,6 +48,7 @@ STO findings are displayed in IDP using dedicated UI elements:
 ![](./static/sto-catalog.png)
 * **Entity View**: Summary cards showing counts by severity and prioritization cues.
 * **Vulnerabilities Tab**: Detailed, filterable table of STO findings for each entity.
+![](./static/vulnerabilities.png)
 
 ##### Source Code Linkage
 The new Link to Source Code Repository feature correlates Git-based scan results with STO findings. This supports SAST, SCA, secret scanning, and license compliance scans. Configuration via the IDP UI eliminates manual YAML editing.
@@ -208,6 +209,10 @@ With `DxDataChart`, you can create customizable visualizations, deep-link to que
 * **YAML Editor Field Visibility Update** – `project_name` and `org_name` will no longer be visible in the YAML editor as they are not necessary. Only `project_identifier` and `org_identifier` remain to define the scope of the entity. *[IDP-5968]*
 
 * **Lifecycle Field in Workflows Now Optional** – The lifecycle field is no longer required when creating workflows, preventing late-stage validation errors and allowing workflows to be created without unnecessary lifecycle values. *[IDP-6065]*
+
+* **Automatic Reverse Relation Generation** – with this new improvemnet in the, relations defined in YAML are directional, and specifying a relation from a source to a target automatically generates the corresponding reverse relation in the backend.
+  For example, if a `Service` `dependsOn` a `Library`, the system creates the reverse `dependencyOf` relation from the `Library` to the `Service`. Both relations exist in the system and can be queried, but only the primary relation is shown in the Edit YAML UI. The reverse relation is visible in the raw YAML, ensuring consistency without requiring users to manually define both sides. 
+
 
 <!-- Let's maintain last 3 here. -->
 
