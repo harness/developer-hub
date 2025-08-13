@@ -129,7 +129,7 @@ Once this Cost Category is in place, you can use it in Perspectives to:
 
 To create and manage Cost Categories in Harness CCM, you need:
 
-**Active CCM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CCM Connectors](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-ccm-connectors).
+**Active CCM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CCM Connectors](/docs/cloud-cost-management/get-started#aws).
 
 **Required Permissions**: Your Harness user account must belong to a user group with the following role permissions:
 
