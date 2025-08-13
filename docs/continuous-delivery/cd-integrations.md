@@ -110,7 +110,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_K8S_SANITIZE_COMPLETE_DRY_RUN_STEP_OUTPUT | Enables users to access Kubernetes service and job names in the exported manifest. <b> This feature is in Limited GA. </b> |
 | CDS_K8S_ASYNC_STEP_STRATEGY | Enables users to view log details in the UI when a pipeline with K8s async steps times out. <b> This feature is in Limited GA. </b>|
 | CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH | Enable this feature to eliminate downtime during the Auto Scaling Group (ASG) rollback instance refresh. <b> This feature is in Limited GA. </b>|
-| CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT | Enables users to configure CLI environment variables for Tanzu Application Service deployment in the Service and overrides. <b> This feature is in Limited GA. </b>|
 | CDS_OVERRIDES_GITX | Enables users to manage overrides using Git, with options to store them remotely or inline <b> This feature is in Limited GA. </b>|
 | CDS_MULTI_DEPLOYMENT_ON_FAILURE | Enables users to apply failure strategies during multi-service, multi-infrastructure, and matrix deployments. <b> This feature is in Limited GA. </b>|
 | CDS_SERVICE_INFRA_FAILURE_STRATEGY | Enables a failure strategy for the service, where the service step will, by default, inherit the failure strategy from the stage. <b> This feature is in Limited GA. </b>|
@@ -122,8 +121,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | ENV_GROUP_DEPLOYMENTS_IN_SERIAL | Enables users to use the serial deployment of environment groups. <b> This feature is in Limited GA. </b>|
 | PIE_SHOW_ALL_EXECUTIONS_FILTER | Enables users to lists all pipeline executions including retired and child executions in the Executions page. <b> This feature is GA. </b>|
 | CDS_DISABLE_FALLBACK_EXPRESSION_ENGINE | Enables users to leverage the updated expression resolution fallback logic, which now calls the fallback more effectively. <b> This feature is in Limited GA. </b> |
-| GITOPS_AGENT_HELM_V2 | Enables you to download a helm-chart file for the Harness GitOps Agent. <b> This feature is GA. </b> |
-| CDS_GITOPS_LABELS_BASED_ACCESS_TO_APPS | Allow users to filter applications based on labels while creating a resource group for Gitops application. <b> This feature is in Limited GA. </b> |
 | GITOPS_MULTI_SOURCE_ENABLED | Enables users to support Multi-Source applications with ArgoCD in Harness GitOps. <b> This feature is in Limited GA. </b> |
 | GITOPS_GET_APP_DETAILS_STEP | Enables users to fetch the details and status of their application. <b> This feature is in Limited GA. </b> |
 | CDS_HELM_STEADY_STATE_CHECK_1_16 | Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments. <b> This feature is in Limited GA. </b> |
@@ -163,11 +160,9 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CD_MAKE_CD_LICENSE_USAGE_ASYNC | Enables CD License Usage dashboards to be asynchronous. <b>This feature is in Beta.</b> |
 | CDS_ENABLE_SHELL_SCRIPT_FILE_REFERENCE | Enables the Shell Script step to support scripts from Harness File Store. <b>This feature is in Beta.</b> |
 | CDS_DISABLE_EVALUATE_EXPORT_VARIABLES | Enables exporting variables without evaluating them in the Command step. <b>This feature is in Beta.</b> |
-| CD_CONTAINER_STEP_DELEGATE_SELECTOR | Makes the Container step to respect the delegate selector configured at the pipeline. <b>This feature is in Beta.</b> |
 | OPA_AIDA_WIDGET | Enables <a href="/docs/platform/governance/policy-as-code/aida-for-policies">AIDA for OPA</a>. <b>This feature is in Beta.</b> |
 | PIE_SIMPLIFY_LOG_BASE_KEY | Reduces the length of the log base key. <b>This feature is in Beta.</b><br/>This feature requires delegate version 23.10.81010 or later.<br/>After enabling this feature flag, you must re-run your pipelines to apply the change.<br/>For more information, go to <a href="/docs/platform/pipelines/executions-and-logs/download-logs">Download execution logs</a>. |
 | PIE_ASYNC_FILTER_CREATION | Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> |
-| CDS_AWS_OIDC_AUTHENTICATION | Enables the option to connect to AWS with OIDC. Currently, this option is only supported for Kubernetes, Helm, Terraform, ECS, and Cloudformation. <b>This is a Beta feature.</b> |
 | CV_NEWRELIC_NEW_API | Enable this feature if you want to use the NerdGraph API for the NewRelic Health Source. <b>This is a Beta feature.</b> |
 | CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX | Enable this feature if you want updated logic for permissions inheritance between steps and their step groups. To learn more go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step). <b>This is a Beta feature.</b> |
 | CV_MONITORED_SERVICE_TEMPLATIZATION | Enable this feature if you want to select a monitored service template as a runtime input. To learn more, go to [Select a monitored service template during runtime](/docs/continuous-delivery/verify/cv-getstarted/configure-first-cv#select-a-monitored-service-template-during-runtime). <b>This is a Beta feature.</b> |
