@@ -101,6 +101,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## August 2025
 
+### Version 25.08.86500 <!--Aug 13, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where selecting user groups to inherit with the “All” scope option only displayed groups from the current scope, excluding those from parent scopes. It now includes all accessible user groups from parent scopes as well. [PL-59566]
+
 ### Version 25.07.86402 <!--Aug 12, 2025-->
 
 #### Fixed issues
