@@ -1,56 +1,7 @@
 import { Horizon } from "./roadmapData";
 
 export const SscaData: Horizon = {
-  "Released": {
-    description: "What has been released",
-    feature: [
-      {
-         tag: [{value : "Risk & Compliance"}],
-         title: "OWASP OSS Top 10 Risks (Beta)",
-         description: "Visibility into outdated and unmaintained components using SBOMs"
-      },
-      {
-        tag: [{value : "Repo Security"}],
-        title: "Repo Security Posture Management for GitHub",
-        description: "Identify misconfigurations in source code repositories based on industry standards such as CIS v1.0 and OWASP Top 10 CI/CD Security Risks. Also, includes support for SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
-      },
-      {
-        tag: [{value : "Governance"}, {value: "Audit Trail"}],
-        title: "Artifact Chain of Custody",
-        description: "Auditors can now review an artifact chain of custody - a comprehensive audit trail for auditors that serves as a ledger for every artifact built and deployed in a CI/CD pipeline.",
-      },
-      // {
-      //   tag: [{value : "CI/CD Security"}],
-      //   title: "CI/CD Security Posture Management for GitHub Workflows & Harness Pipelines",
-      //   description: "Perform static analysis in GitHub workflows and Harness pipelines to detect risky actions and misconfigurations.",
-      // },
-      {
-        tag: [{value : "Risk & Compliance"}],
-        title: "Compliance Report Generation",
-        description: "Generate and download reports based on compliance standards such as CIS v1.0, and OWASP Top 10 CI/CD Security Risks.",
-      },
-      {
-        tag: [{value : "Artifact Security" }, {value : "GitHub Actions"}],
-        title: "SBOM & SLSA support with GitHub Actions",
-        description: "Generate SBOM and achieve SLSA compliance using GitHub Actions for artifacts built in GitHub.",
-      },
-      {
-        tag: [{value: "Artifact Security"}],
-        title: "Artifact Signing and Verification (Containers & Non-Containers)",
-        description: "Ensure built artifacts are not tampered before deployment.",
-      },
-      {
-        tag: [{value : "Risk & Compliance"}],
-        title: "Report Generation",
-        description: "Generate comprehensive license reports detailing the licenses associated with artifacts.",
-      },
-      {
-        tag: [{value: "API"}],
-        title: "API Support",
-        description: "Enable bulk onboarding of GitHub repos across orgs and accounts, and provide SBOM download APIs for repos and artifacts."
-      },
-    ],
-  },
+  
   "Now": {
     description: "Q3 2025, August 2025 - October 2025",
     feature: [
@@ -90,9 +41,9 @@ export const SscaData: Horizon = {
         description: "Account-wide views of repositories and artifacts, enabling unified visibility and oversight across all resources.",
       },
        {
-        tag: [{value : "AI"},{value: "Dependency Management"}],
-        title: "Automate OSS Dependency Updates with Harness AI",
-        description: "Leverage Harness AI to automatically generate PRs for updating outdated dependencies.",
+        tag: [{value: "Dependency Management"}],
+        title: "Automate OSS Dependency Updates",
+        description: "Automatically generate PRs for updating outdated dependencies.",
       },
     
     ],
@@ -180,6 +131,56 @@ export const SscaData: Horizon = {
         tag: [{value : "Risk & Compliance"}, {value : "AppSec"}],
         title: "Exemption Management",
         description: "Manage exemptions for risk and compliance issues across all targets (Artifacts, CI/CD, Repos).",
+      },
+    ],
+  },
+  "Released": {
+    description: "What has been released",
+    feature: [
+      {
+         tag: [{value : "Risk & Compliance"}],
+         title: "OWASP OSS Top 10 Risks (Beta)",
+         description: "Visibility into outdated and unmaintained components using SBOMs"
+      },
+      {
+        tag: [{value : "Repo Security"}],
+        title: "Repo Security Posture Management for GitHub",
+        description: "Identify misconfigurations in source code repositories based on industry standards such as CIS v1.0 and OWASP Top 10 CI/CD Security Risks. Also, includes support for SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
+      },
+      {
+        tag: [{value : "Governance"}, {value: "Audit Trail"}],
+        title: "Artifact Chain of Custody",
+        description: "Auditors can now review an artifact chain of custody - a comprehensive audit trail for auditors that serves as a ledger for every artifact built and deployed in a CI/CD pipeline.",
+      },
+      // {
+      //   tag: [{value : "CI/CD Security"}],
+      //   title: "CI/CD Security Posture Management for GitHub Workflows & Harness Pipelines",
+      //   description: "Perform static analysis in GitHub workflows and Harness pipelines to detect risky actions and misconfigurations.",
+      // },
+      {
+        tag: [{value : "Risk & Compliance"}],
+        title: "Compliance Report Generation",
+        description: "Generate and download reports based on compliance standards such as CIS v1.0, and OWASP Top 10 CI/CD Security Risks.",
+      },
+      {
+        tag: [{value : "Artifact Security" }, {value : "GitHub Actions"}],
+        title: "SBOM & SLSA support with GitHub Actions",
+        description: "Generate SBOM and achieve SLSA compliance using GitHub Actions for artifacts built in GitHub.",
+      },
+      {
+        tag: [{value: "Artifact Security"}],
+        title: "Artifact Signing and Verification (Containers & Non-Containers)",
+        description: "Ensure built artifacts are not tampered before deployment.",
+      },
+      {
+        tag: [{value : "Risk & Compliance"}],
+        title: "Report Generation",
+        description: "Generate comprehensive license reports detailing the licenses associated with artifacts.",
+      },
+      {
+        tag: [{value: "API"}],
+        title: "API Support",
+        description: "Enable bulk onboarding of GitHub repos across orgs and accounts, and provide SBOM download APIs for repos and artifacts."
       },
     ],
   },
