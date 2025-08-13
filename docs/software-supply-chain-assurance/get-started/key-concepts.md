@@ -110,13 +110,13 @@ The artifact signing process involves a container image or digest, or a non-cont
 
 For verification, the signed artifact is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the artifact was signed using the private key.
 
-### Attestation vs Signing
+## Attestation vs Signing
 
 - Attestation provides cryptographic proof of an artifact’s origin based on how and where it was created. It captures metadata about the build environment and verifies the artifact’s integrity before it is signed. Attestation serves as a trusted statement regarding the artifact’s provenance and the conditions under which it was produced.
 
 - Signing involves applying a cryptographic signature to the artifact to ensure that the artifact has not been altered or tampered with after it was created or attested.
 
-### Rekor
+## Rekor
 
 Rekor log provides a public, immutable, and verifiable transparency log for software artifacts when they are signed or attested. This enables anyone to independently verify the integrity and authenticity of the artifacts without relying on a central authority, simply by checking the log entry.
 
