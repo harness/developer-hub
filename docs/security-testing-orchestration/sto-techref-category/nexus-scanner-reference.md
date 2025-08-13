@@ -12,29 +12,177 @@ sidebar_position: 250
 <br/>
 <br/>
 
-You can scan your code repositories and ingest results from [Nexus IQ](https://docs.developer.tech.gov.sg/docs/ship-hats-docs/tools/nexus-iq/nexus-iq-overview).
 
-## Workflow descriptions
+You can use the **Nexus IQ** Scanner in Harness STO to scan your **Code Repositories** for **Software Composition Analysis (SCA)**. This document guides you through the configuration process, explaining each field and the information required to set up the scan step successfully.
 
-<details>
-<summary>Orchestration/extraction workflows</summary>
+:::info
+- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+- STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
-import CustomScanWorkflowRepo from './shared/custom-scan/workflow.md';
 
-<CustomScanWorkflowRepo />
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
-</details>
+<StoMoreInfo />
+:::
 
-<details>
-<summary>Ingestion workflows</summary>
+## Nexus IQ step settings
 
-import CustomScanWorkflowIngest from './shared/custom-scan/workflow-ingest-only.md';
+The recommended workflow is to add the step to a **Security** or **Build** stage and then configure it as described below. 
 
-<CustomScanWorkflowIngest />
+### Scan
 
-</details>
+#### Scan Mode
 
-## Custom Scan step settings for Nexus scans
+- **Orchestration mode**: In this mode, the step executes the scan, then processes the results by normalizing and deduplicating them.
+
+- **Ingestion mode**: In this mode, the step reads scan results from a data file, normalizes the data, and removes duplicates. It supports ingestion of results from scan results in [SARIF format](https://docs.oasis-open.org/sarif/sarif/v2.0/sarif-v2.0.html).
+
+- **Extraction mode**: In this mode, the step retrieves scan results from the Nexus IQ server/portal and stores them in STO
+
+
+#### Scan Configuration
+
+import StoSettingProductConfigName from './shared/step-palette/scan/config-name.md';
+
+<StoSettingProductConfigName />
+
+### Target
+
+#### Type
+
+import StoSettingScanTypeRepo     from './shared/step-palette/target/type/repo.md';
+
+<StoSettingScanTypeRepo />
+
+
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step-palette/target/auto-detect/note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
+
+#### Name 
+
+import StoSettingTargetName from './shared/step-palette/target/name.md';
+
+<StoSettingTargetName />
+
+
+#### Variant
+
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
+
+<StoSettingTargetVariant  />
+
+#### Workspace
+
+import StoSettingTargetWorkspace from './shared/step-palette/target/workspace.md';
+
+<StoSettingTargetWorkspace  />
+
+
+### Ingestion File
+
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
+
+<StoSettingIngestionFile  />
+
+### Authentication
+
+
+#### Domain
+
+import StoSettingAuthDomain from './shared/step-palette/auth/domain.md';
+
+<StoSettingAuthDomain />
+
+#### Access ID
+
+import StoSettingAuthAccessID from './shared/step-palette/auth/access-id.md';
+
+<StoSettingAuthAccessID />
+
+
+#### Access Token
+
+import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.md';
+
+<StoSettingAuthAccessToken />
+
+### Scan Tool
+
+#### Lookup Type
+Select how to identify the application in **Extraction** scan mode. You can specify the application by its **Public ID** or **Private ID**.
+
+#### Project Name
+The name of the scan project as defined in your scanner configuration. In Harness, this value is also used as the **Target Name** when the **Auto** option is selected under [Target and Variant Detection](#target-and-variant-detection).
+
+#### Organization ID
+The unique identifier of your organization in Nexus IQ Server. This ID is used to associate policies, applications, and scan results with the correct organizational context in Nexus IQ. If the application doesn't exist and automatic creation is enabled, it will be created under this organization.
+
+You can find the Organization ID in the URL of your Nexus IQ Server/Portal, e.g., for
+`https://your-nexus-server/#/management/view/organization/44a7583387054c2fb55aefeb7c618195`
+the Organization ID is `44a7583387054c2fb55aefeb7c618195`.
+
+
+#### Lookup ID
+The identifier for the specific application you are scanning in Nexus IQ, also known as the **Application ID**. This maps scan results to a known application profile in your Nexus IQ Server. When automatic creation is enabled and this ID hasn't been used before, a new application is created with this ID.
+
+- The **Public ID** is typically what you use for application lookups and can be found under the App Name in Nexus IQ UI.
+- The **Private ID** is an internal reference, mainly used in API calls or advanced scenarios.
+
+#### Exclude
+Define the exclusions to the scan's initial scope. The format should follow the Nexus IQ scanner requirements.
+
+
+### Log Level
+
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
+
+<StoSettingLogLevel />
+
+
+### Additional CLI flags
+
+Use this field to run the **Nexus** with flags.
+
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
+
+#### Fail on Severity
+
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
+
+<StoSettingFailOnSeverity />
+
+
+
+### Additional Configuration
+
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
+
+<ScannerRefAdditionalConfigs />
+
+
+### Advanced settings
+
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
+
+<ScannerRefAdvancedSettings />
+
+## Proxy settings
+
+import ProxySettings from './shared/proxy-settings.md';
+
+<ProxySettings />
+
+
+<!-- 
 
 ### Scanner settings
 
@@ -142,7 +290,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/target-variant.md';
 
 -->
 
-### Repository
+<!-- ### Repository
 
 import StoLegacyRepo from './shared/custom-scan/repo.md'; 
 
@@ -265,4 +413,6 @@ import StoLegacyIngest from './shared/custom-scan/ingestion-file.md';
 
 import StoSettingFailOnSeverity from './shared/custom-scan/fail-on-severity.md';
 
-<StoSettingFailOnSeverity />
+<StoSettingFailOnSeverity /> 
+
+-->
