@@ -125,7 +125,7 @@ Use the following tables to verify that your SDK or customer-deployed component 
 
 ## Viewing impressions in Harness
 
-You can view incoming impressions in [Live tail](/docs/feature-management-experimentation/feature-management/live-tail) within a feature flag's page or the Data hub, and export them based on query criteria in the Data hub's [Data export tab](/docs/feature-management-experimentation/feature-management/export-data). If you do not see impressions arriving in Harness, ensure that your SDK is installed and functioning as expected. Tips for this are included in the [Live tail](/docs/feature-management-experimentation/feature-management/live-tail) article. Contact us at [support@split.io](mailto:support@split.io) if you have any issues. 
+You can view incoming impressions in [Live tail](/docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail) within a feature flag's page or the Data hub, and export them based on query criteria in the Data hub's [Data export tab](/docs/feature-management-experimentation/feature-management/export-data). If you do not see impressions arriving in Harness, ensure that your SDK is installed and functioning as expected. Tips for this are included in the [Live tail](/docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail) article. Contact us at [support@split.io](mailto:support@split.io) if you have any issues. 
 
 :::important
 Harness retains impression data for 90 days. Contact the [team at Harness FME](mailto:support@split.io) to learn more.

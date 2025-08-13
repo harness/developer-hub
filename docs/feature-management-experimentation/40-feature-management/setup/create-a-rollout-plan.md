@@ -23,7 +23,7 @@ With a rollout plan, you can:
 
 ## Define treatment names and descriptions
 
-Define the [treatments](/docs/feature-management-experimentation/feature-management/edit-treatments) you want to serve your customer. ​​Every feature you release using Split has at least two treatments. By default these are **on** and **off**. You can edit the treatment's name and description as well as add additional treatments.
+Define the [treatments](/docs/feature-management-experimentation/feature-management/setup/edit-treatments) you want to serve your customer. ​​Every feature you release using Split has at least two treatments. By default these are **on** and **off**. You can edit the treatment's name and description as well as add additional treatments.
 
 To define a treatment name, do the following:
 
@@ -250,7 +250,7 @@ To select percentages, in the **Distribute treatment as follows** section, click
 
 ### Setting the default treatment
 
-Set the [default treatment](/docs/feature-management-experimentation/feature-management/set-the-default-treatment) if the feature flag is killed or the customer has been limited from exposure to the flag. The default treatment is always one of the treatments defined for any feature flag in the targeting rules. The default treatment is returned by the SDK in following scenarios:
+Set the [default treatment](/docs/feature-management-experimentation/feature-management/setup/default-treatment) if the feature flag is killed or the customer has been limited from exposure to the flag. The default treatment is always one of the treatments defined for any feature flag in the targeting rules. The default treatment is returned by the SDK in following scenarios:
 
 * Does not meet any defined conditions. The default treatment is shown to customers who are excluded from the targeting rules via the limit exposure functionality.
 * The feature flag is killed. If a particular feature flag is killed, the default treatment overrides the existing targeting rules and is returned for all customers.
@@ -265,7 +265,7 @@ You can set any of the treatments in your targeting rules as a default. We recom
 
 When you use a percentage based rollout or run an experiment using percentage-based targeting, Split can automatically monitor metric thresholds and alert you if they are exceeded. The alert baseline treatment is the status-quo or safe treatment that you want to compare other treatments to when deciding whether to alert. 
 
-For more information about selecting a valid baseline treatment, see [Select the alert baseline treatment](/docs/feature-management-experimentation/feature-management/set-the-alert-baseline-treatment).
+For more information about selecting a valid baseline treatment, see [Select the alert baseline treatment](/docs/feature-management-experimentation/feature-management/manage-flags/set-the-alert-baseline-treatment).
 
 ## Saving changes to a feature flag
 

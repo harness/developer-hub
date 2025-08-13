@@ -67,7 +67,7 @@ See the following documentation:
 
 - [Create a Feature Flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag#create-a-feature-flag)
 - [Create a Metric](/docs/feature-management-experimentation/release-monitoring/metrics/setup/#create-a-metric)
-- [Edit Treatments](/docs/feature-management-experimentation/feature-management/edit-treatments/)
+- [Edit Treatments](/docs/feature-management-experimentation/feature-management/setup/edit-treatments)
 - [Add Targeting Rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting#targeting-rules)
 - [Adjust Experiment Settings](/docs/feature-management-experimentation/experimentation/setup/experiment-settings)
 

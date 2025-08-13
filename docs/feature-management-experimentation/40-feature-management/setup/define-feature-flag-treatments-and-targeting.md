@@ -48,11 +48,11 @@ The next sections guide you through configuring your feature flag definition.
 
 Treatment names are strings that are returned when you evaluate the feature flag in your code.
 
-In the [Treatments](/docs/feature-management-experimentation/feature-management/edit-treatments) area, do the following:
+In the [Treatments](/docs/feature-management-experimentation/feature-management/setup/edit-treatments) area, do the following:
 
 1. Enter the name of each treatment and optionally enter a description.
 2. Optionally, click **Add treatment** to add additional treatments.
-3. Select the [default treatment](/docs/feature-management-experimentation/feature-management/default-treatment). This treatment will be served to everyone if the feature flag is [killed](/docs/feature-management-experimentation/feature-management/use-the-kill-switch). This treatment is also served to all traffic not exposed to the feature flag (if you _Limit exposure_ when [setting up targeting](#setting-up-targeting)).
+3. Select the [default treatment](/docs/feature-management-experimentation/feature-management/default-treatment). This treatment will be served to everyone if the feature flag is [killed](/docs/feature-management-experimentation/feature-management/manage-flags/use-the-kill-switch). This treatment is also served to all traffic not exposed to the feature flag (if you _Limit exposure_ when [setting up targeting](#setting-up-targeting)).
 
 ## Setting up dynamic configuration
 
@@ -90,7 +90,7 @@ Click the **Add new individual target** button to assign a selected treatment to
 
 In the Targeting rules area, you can:
 
-* Optionally click the **Limit exposure** button to limit [the traffic exposed](/docs/feature-management-experimentation/feature-management/limiting-exposure) to your attribute based targeting rules. For example, you can limit the customers exposed to your experiment to the percentage you choose. Users who are not exposed get the default treatment.
+* Optionally click the **Limit exposure** button to limit [the traffic exposed](/docs/feature-management-experimentation/feature-management/targeting/limiting-exposure) to your attribute based targeting rules. For example, you can limit the customers exposed to your experiment to the percentage you choose. Users who are not exposed get the default treatment.
 
 * Click **Add attribute based targeting rules** to assign individual users or segments to a selected treatment or percentage distribution.
 
@@ -98,7 +98,7 @@ In the Targeting rules area, you can:
 
     * [Target with custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes) to target specific subsets of your users based on a specific attribute (e.g., location or last-login date).
 
-    * [Target with dependencies](/docs/feature-management-experimentation/feature-management/target-with-dependencies) to target users based on the treatment they received from another flag. You can use flag dependencies to create mutually exclusive experiments. 
+    * [Target with dependencies](/docs/feature-management-experimentation/feature-management/targeting/target-with-dependencies) to target users based on the treatment they received from another flag. You can use flag dependencies to create mutually exclusive experiments. 
 
     * Optionally select **Distribute treatments as follows** and define a ___percentage distribution___ to [randomly distribute](/docs/feature-management-experimentation/feature-management/faqs/ensure-a-consistent-user-experience) users and segments between your feature flag treatments (variations) based on the percentages you decide. This is also called a _percentage rollout_, as shown below.
 
@@ -153,7 +153,7 @@ You can implement a feature toggle that switches between `on` and `off` automati
 
 ## Setting the alert baseline treatment
 
-In the [Set alert baseline treatment](http://localhost:3000/docs/feature-management-experimentation/feature-management/set-the-alert-baseline-treatment) area, select a baseline treatment that will be used for your alert policies.
+In the [Set alert baseline treatment](/docs/feature-management-experimentation/feature-management/manage-flags/set-the-alert-baseline-treatment) area, select a baseline treatment that will be used for your alert policies.
 
 :::tip[Tip: Set the alert baseline treatment to enable alerting]
 If you set the ___alert baseline treatment___ AND you have at least one targeting rule with ___percentage distribution___, then you can receive ___[feature flag alerts](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/#setting-up-feature-flag-alerting)___ and ___[metric alerts](/docs/feature-management-experimentation/experimentation/metrics/alert-policies/#create-a-metric-alert-policy)___.

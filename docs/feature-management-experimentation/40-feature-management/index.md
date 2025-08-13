@@ -69,7 +69,7 @@ Limit exposure controls participation in targeting rules:
 
 ### Treatment Order Matters
 
-The order in which treatments are defined can affect the consistency of user experience. [Learn more about treatment order](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting#treatment-ordering-and-traffic-distribution).
+The order in which treatments are defined can affect the consistency of user experience. [Learn more about treatment order](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting#treatment-ordering-and-traffic-distribution).
 
 ### Traffic Type and Targeting Granularity
 

@@ -39,7 +39,7 @@ To create a feature flag, do the following:
 
 ## Create a rollout plan
 
-After you have created your feature flag, you can [define treatments and set targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting) for your feature flag. This is also known as creating a rollout plan.
+After you have created your feature flag, you can [define treatments and set targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting) for your feature flag. This is also known as creating a rollout plan.
 
 :::info
 When you set up an account, two environments are automatically created. For more information, see [Environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments).

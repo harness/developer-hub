@@ -37,4 +37,4 @@ You can also use ___percentage distribution___ to randomly distribute treatments
 
 ![](../static/target-segments-percentage-distribution.png)
 
-See [Targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting#targeting-rules) for more information on feature flag targeting, percentage distribution, and rules' evaluation order.
+See [Targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting#targeting-rules) for more information on feature flag targeting, percentage distribution, and rules' evaluation order.

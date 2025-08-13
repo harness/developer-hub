@@ -95,7 +95,7 @@ To create a dependent (child) feature flag:
 
 In your source code, you should directly evaluate these dependent feature flags. Your source code should be agnostic to the parent feature flag (that has the sole purpose of dividing traffic among the dependent flags). 
 
-For more information about dependent feature flags, see the [Target with dependencies](/docs/feature-management-experimentation/feature-management/target-with-dependencies/) help page.
+For more information about dependent feature flags, see [Target with dependencies](/docs/feature-management-experimentation/feature-management/targeting/target-with-dependencies).
 
 ## Viewing mutually exclusive experiment results
 
