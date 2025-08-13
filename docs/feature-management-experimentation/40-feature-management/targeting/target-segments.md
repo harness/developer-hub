@@ -5,7 +5,7 @@ description: ""
 sidebar_position: 7
 ---
 
-Once you create a feature flag, you can [create feature flag targeting rules](/docs/feature-management-experimentation/40-feature-management/setup/define-feature-flag-treatments-and-targetingsetting-up-targeting) that target individual user IDs (user keys), but you can also use segments.
+Once you create a feature flag, you can [create feature flag targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targetingsetting-up-targeting) that target individual user IDs (user keys), but you can also use segments.
 
 [Segments](/docs/feature-management-experimentation/feature-management/targeting/segments) are lists of user IDs. On your feature flag Definition tab, you can create targeting rules that assign treatments to segments.
 

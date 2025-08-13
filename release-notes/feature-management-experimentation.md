@@ -64,8 +64,8 @@ This feature is especially useful when working with large user segments, as they
 
 #### Related documentation
 
-- [Create a segment](/docs/feature-management-experimentation/feature-management/segments/)
-- [Target segments](/docs/feature-management-experimentation/feature-management/target-segments/)
+- [Create a segment](/docs/feature-management-experimentation/feature-management/targeting/segments/)
+- [Target segments](/docs/feature-management-experimentation/feature-management/targeting/target-segments/)
 - [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk)
 - [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk)
 - [Browser Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite)
@@ -195,7 +195,7 @@ This feature allows you to streamline impressions sent to third party integratio
 ![Impression tracking toggle](./static/fme/impression-tracking-toggle.png)
 
 #### Related documentation
-- [Tracking impressions](/docs/feature-management-experimentation/feature-management/impressions/#tracking-impressions)
+- [Tracking impressions](/docs/feature-management-experimentation/feature-management/targeting/impressions/#tracking-impressions)
 
 ### [New Feature] AI settings
 ----
@@ -264,7 +264,7 @@ Effective immediately, Enterprise tier customers may create and use Large segmen
 
 ![Image](./static/fme/image-53.png)
 Learn more about Large segments and the ways they differ from Standard segments in the documentation:
-- [Create a segment](/docs/feature-management-experimentation/feature-management/segments)
+- [Create a segment](/docs/feature-management-experimentation/feature-management/targeting/segments)
 - [Target segments](/docs/feature-management-experimentation/feature-management/target-segments)
 
 Note: The initial release of Large segments is focused on client-side SDK usage only. Server-side SDKs do not yet support Large segments, but soon will. Until they are supported, evaluations of feature flags that target Large segments will return control on server-side SDKs.
@@ -273,13 +273,13 @@ Note: The initial release of Large segments is focused on client-side SDK usage 
 After familiarizing yourself with Large segments at the above links, you may find these UI and API equivalent documentation links handy for automating the steps via the Admin API:
 ###### Steps for creating and populating a Large segment using either UI or API
 1. Create a Large segment (just **metadata**, no Environment definition)
-- [UI steps](/docs/feature-management-experimentation/feature-management/segments#creating-a-segment) (select Large)
+- [UI steps](/docs/feature-management-experimentation/feature-management/targeting/segments#creating-a-segment) (select Large)
 - [API steps](https://docs.split.io/reference/createlargesegment)
 2. Create a **definition** for a Large segment in an Environment (no user IDs)
-- [UI steps](/docs/feature-management-experimentation/feature-management/segments#adding-user-ids-to-a-segment) (step 3)
+- [UI steps](/docs/feature-management-experimentation/feature-management/targeting/segments#adding-user-ids-to-a-segment) (step 3)
 - [API steps](https://docs.split.io/reference/createlargesegmentinenvironment)
 3. Add **user IDs** to a Large segment (to the definition created in step 2)
-- [UI steps](/docs/feature-management-experimentation/feature-management/segments#file-import-for-large-segments)
+- [UI steps](/docs/feature-management-experimentation/feature-management/targeting/segments#file-import-for-large-segments)
 - [API steps](https://docs.split.io/reference/create-change-request#open-change-request-to-add-members-to-a-large-segment)
 
 ###### Adding an approval step via Admin API
@@ -318,8 +318,8 @@ If "is in list" is chosen as the matcher type, suggested values are shown:
 ![Image](./static/fme/3-choose-a-suggsted-value-1920x890.png)
 
 ###### **Related Documentation:**
-- [Creating individual custom attributes in Admin settings](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#creating-individual-custom-attributes-in-admin-settings)
-- [Creating multiple custom attributes in Admin Settings](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#creating-multiple-custom-attributes-in-admin-settings) (CSV upload)
+- [Creating individual custom attributes in Admin settings](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/#creating-individual-custom-attributes-in-admin-settings)
+- [Creating multiple custom attributes in Admin Settings](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/#creating-multiple-custom-attributes-in-admin-settings) (CSV upload)
 
 ## November 2024
 ### 2024-11-27
@@ -423,7 +423,7 @@ Users can now categorize their organization’s most important metrics as  “g
 ### 2024-06-06
 #### SDK Enhancements
 ##### Semantic Versioning Targeting
-Using the latest Split SDKs, users can more easily define targeting rules for new features based on app, OS, and other versions using attribute-based targeting. The SDK then automatically serves the appropriate treatment to users without needing additional code configurations. Split’s native [Semantic Versioning Targeting](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#semver-attributes) removes the additional complexities and manual work that comes with targeting different application versions, allowing users to seamlessly deliver different experiences.
+Using the latest Split SDKs, users can more easily define targeting rules for new features based on app, OS, and other versions using attribute-based targeting. The SDK then automatically serves the appropriate treatment to users without needing additional code configurations. Split’s native [Semantic Versioning Targeting](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/#semver-attributes) removes the additional complexities and manual work that comes with targeting different application versions, allowing users to seamlessly deliver different experiences.
 
 ## May 2024
 ### 2024-05-31
@@ -509,7 +509,7 @@ Dynamic Configuration’s JSON input field now supports text wraps. This allows 
 ### 2023-12-12
 #### Feature Flag Management Console 
 ##### Flag Sets 
-With [Flag Sets](/docs/feature-management-experimentation/feature-management/using-flag-sets-to-boost-sdk-performance/), users can group flags that logically belong together, so that the SDK only retrieves relevant flag definitions when initialized. This reduces SDK latency, memory consumption, and CPU utilization.
+With [Flag Sets](/docs/feature-management-experimentation/feature-management/manage-flags/using-flag-sets-to-boost-sdk-performance/), users can group flags that logically belong together, so that the SDK only retrieves relevant flag definitions when initialized. This reduces SDK latency, memory consumption, and CPU utilization.
 
 ### 2023-12-11
 #### Monitoring
@@ -660,7 +660,7 @@ Developers can now [configure specific proxies](/docs/feature-management-experim
 ### 2023-04-06
 #### Feature Management Console
 ##### Essential Scheduling
-[Essential scheduling](/docs/feature-management-experimentation/feature-management/using-essential-scheduling/) provides the capability to launch a feature on a certain date and time, up to 90 days in advance. This enables users to get all the necessary rollout work done, like getting approvals, long before the release.
+[Essential scheduling](/docs/feature-management-experimentation/feature-management/manage-flags/using-essential-scheduling/) provides the capability to launch a feature on a certain date and time, up to 90 days in advance. This enables users to get all the necessary rollout work done, like getting approvals, long before the release.
 ##### Simplified Feature Flag Configurations: Split Environment Usability Updates (Release 1)
 There are new UI and UX updates to the feature flag editing experience that make the selection of [environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) and the editing of flag details more intuitive and easier. The updates include an environment pick list showcasing feature flag traffic per environment, production environment indicators, and upgraded headers to easily edit flag details.
 #### Security
@@ -724,7 +724,7 @@ Users can now [manage their alert policy](/docs/feature-management-experimentati
 #### 2022-12-22
 ##### Feature Management Console
 ###### Usability Updates on the Targeting Rules page
-The usability updates on the [Targeting Rules page](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting/#targeting-rules) include decluttering the tab, reducing confusion on default rule, and default targeting and starting the UI upgrade journey.
+The usability updates on the [Targeting Rules page](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting/#targeting-rules) include decluttering the tab, reducing confusion on default rule, and default targeting and starting the UI upgrade journey.
 #### 2022-12-15
 ##### Integrations
 ###### Split-ServiceNow Integrations
@@ -745,7 +745,7 @@ The **Metrics impact** tab now has [redesigned metric cards](/docs/feature-manag
 #### 2022-11-07
 ##### Feature Management Console
 ###### Attribute Dictionary Iteration
-Admins can now add up to 100 suggested values when creating [custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#creating-multiple-attributes) using the `string` type. This will give users more flexibility when creating targeting rules.
+Admins can now add up to 100 suggested values when creating [custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/#creating-multiple-attributes) using the `string` type. This will give users more flexibility when creating targeting rules.
 #### 2022-11-01
 ##### SDK Enhancements
 ###### Split Evaluator Update
@@ -780,11 +780,11 @@ The [Ready to clean up](https://help.split.io/hc/en-us/articles/4405016480269-Us
 #### 2022-08-19
 ##### Feature Management Console
 ###### Create Multiple Attributes
-Admins can now create [multiple custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#creating-multiple-attributes) by uploading them using a CSV file, helping to reduce time and errors.
+Admins can now create [multiple custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/#creating-multiple-attributes) by uploading them using a CSV file, helping to reduce time and errors.
 #### 2022-08-01
 ##### Feature Management Console
 ###### Attribute Dictionary
-With [Split's Attribute Dictionary](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/#adding-an-attribute), admins can now easily create custom attributes and suggested values. Users can then select from a list of predefined attributes and values to help decrease development time.
+With [Split's Attribute Dictionary](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/#adding-an-attribute), admins can now easily create custom attributes and suggested values. Users can then select from a list of predefined attributes and values to help decrease development time.
 ##### SDK Enhancements
 ###### LogLevel Configurations
 LogLevel Configuration gives developers more granularity when choosing what level of logs they want to capture within their [i](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#track)[OS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#configuration) and [Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#configuration) SDKs.
