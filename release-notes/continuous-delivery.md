@@ -55,6 +55,22 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## August 2025
 
+### GitOps Service 1.39.1, GitOps Agent 0.99.0
+
+#### New Features and Enhancements
+
+- Users can now benefit from enhanced performance when managing thousands of GitOps applications. Optimizations to ReconcileApplications improve scalability and reduce processing time for large-scale GitOps deployments. (**CDS-112480**)
+
+- Users can now select Git commit hashes directly in the GitOps sync options popup, app creation wizard, and app details screen. Commit information is displayed next to the ref field during sync operations, providing better visibility and control over deployment targets while aligning with ArgoCD's recommended tracking and deployment strategies. (**CDS-109965**)
+
+- Users can now deploy Harness Self-Managed Platform in FIPS-compliant environments. Harness supports FIPS 140-2 and 140-3 requirements for government, defense, and regulated industries that require validated cryptography for secure data encryption and transmission. For setup guidance, see [FIPS Overview](/docs/self-managed-enterprise-edition/smp-fips-overview/). (**CDS-112089**)
+
+- Users can now access an improved GitOps Cluster Detail Page with enhanced navigation and information display. The page now includes a dedicated pane listing all GitOps applications hosted on the cluster, clickable Agent name and ID links for quick navigation, detailed cluster credential information, and inline editing capabilities with save/update functionality that aligns with other Harness detail pages. (**CDS-108575**)
+
+#### Fixed Issues
+
+- Fixed an issue where ArgoCD failed to detect out-of-sync applications when the GitOps agent was managing more than 5,000 applications. This reconciliation bug was blocking deployments for customers relying on drift detection functionality. (**CDS-112008, ZD-87810, ZD-88688**)
+
 ### Version 1.100.0
 
 #### New Features and Enhancements
