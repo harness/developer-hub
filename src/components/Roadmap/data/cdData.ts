@@ -236,11 +236,6 @@ export const CdData: Horizon = {
         description: "Users can utilize OIDC authentication for AWS connectors.",
       },
       {
-        tag: [{ value: "Connectors" }],
-        title: "AWS Connector Support via SMP in Air-Gapped Environments",
-        description: "Enables AWS Connector communication through Self-Managed Platform (SMP) in air-gapped environments, improving connectivity and support for restricted networks.",
-      },
-      {
         tag: [{value: "K8s/Helm Deployment"}],
         title: "Declarative Rollback – Secrets and ConfigMap Versioning",
         description: "Improves declarative rollback by restoring support for secrets and configmaps versioning. Ensures workloads are redeployed when these resources change, preventing drift and runtime issues.",
@@ -266,7 +261,7 @@ export const CdData: Horizon = {
       },
       {
         tag: [{value: "Deployment"}],
-        title: "Support for ServiceNow releases Vancouver, Yokohama, Washington DC",
+        title: "Support for ServiceNow releases Vancouver, Yokohama, Washington DC and Xanadu",
         description: "Users can deploy ServiceNow releases using Harness.",
       },
       {
