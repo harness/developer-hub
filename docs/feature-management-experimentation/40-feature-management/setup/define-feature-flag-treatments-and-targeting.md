@@ -11,7 +11,7 @@ redirect_from:
 
 ## Define feature flag treatments and targeting
 
-After you [create a feature flag](/docs/feature-management-experimentation/feature-management/create-a-feature-flag), you can define treatments, dynamic configurations, and targeting rules. 
+After you [create a feature flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag), you can define treatments, dynamic configurations, and targeting rules. 
 
 This allows you to deploy features for internal testing and beta releases. You can also progressively roll out features to your production environment.
 
@@ -21,7 +21,7 @@ This article provides an overview of creating a feature flag definition for a gi
 
 ## Create a feature flag
 
-On the [Create a feature flag](/docs/feature-management-experimentation/feature-management/create-a-feature-flag) pane, create a feature flag by filling in metadata useful to your team.
+On the [Create a feature flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag) pane, create a feature flag by filling in metadata useful to your team.
 
 ## Initiate your feature flag definition for a given environment
 
@@ -56,7 +56,7 @@ In the [Treatments](/docs/feature-management-experimentation/feature-management/
 
 ## Setting up dynamic configuration
 
-In the [Dynamic configuration](/docs/feature-management-experimentation/feature-management/dynamic-configurations) area, optionally define custom JSON or Key-value pairs that you can retrieve in your code. This allows you to add dynamic configurations to your feature variations.
+In the [Dynamic configuration](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations) area, optionally define custom JSON or Key-value pairs that you can retrieve in your code. This allows you to add dynamic configurations to your feature variations.
 
 ## Setting up targeting
 
@@ -74,7 +74,7 @@ Here are a few examples:
 Be mindful of using random user IDs, as [overuse of random IDs](/docs/feature-management-experimentation/management-and-administration/admin-best-practices/mtk-efficiency#use-of-unstable-ids) can increase your MTK count (and [costs](/docs/feature-management-experimentation/management-and-administration/account-usage)) unnecessarily.
 :::
 
-Targeting rules have a limit of 500 user IDs, so we suggest [creating a segment](/docs/feature-management-experimentation/feature-management/segments) if you need to target a large number of user IDs.
+Targeting rules have a limit of 500 user IDs, so we suggest [creating a segment](/docs/feature-management-experimentation/feature-management/targeting/segments) if you need to target a large number of user IDs.
 
 To set up targeting, you can use the Individual targets area and/or the Targeting rules area. Both are described below.
 
@@ -96,7 +96,7 @@ In the Targeting rules area, you can:
 
   Within attribute based targeting rules, you can:
 
-    * [Target with custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes) to target specific subsets of your users based on a specific attribute (e.g., location or last-login date).
+    * [Target with custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes) to target specific subsets of your users based on a specific attribute (e.g., location or last-login date).
 
     * [Target with dependencies](/docs/feature-management-experimentation/feature-management/target-with-dependencies) to target users based on the treatment they received from another flag. You can use flag dependencies to create mutually exclusive experiments. 
 
@@ -194,7 +194,7 @@ This is especially important when you have more than three treatments. For insta
 | treatment3        | 60-79   | treatment3                     |
 | treatment4        | 80-99   | treatment4                     |
 
-One way to avoid bucket shifts while moving users between treatments is to use [Dynamic Configuration](/docs/feature-management-experimentation/feature-management/dynamic-configurations/). You keep bucket assignments the same, but change the configuration values of treatments.
+One way to avoid bucket shifts while moving users between treatments is to use [Dynamic Configuration](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations/). You keep bucket assignments the same, but change the configuration values of treatments.
 
 | Even Distribution | Buckets | Dynamic Configuration |
 | ----------------- | ------- | --------------------- |

@@ -51,5 +51,5 @@ To use flag sets you need to:
    | per feature flag definition * | Service | 3 | 3 | 5 | 5 | 5 |
    | filtered by a single SDK instance | Service | 10 | 10 | 10 | 10 | 10 |
 
-* An FME feature flag can have a definition for each Environment in your Project. For more information see [Create a feature flag](/docs/feature-management-experimentation/feature-management/create-a-feature-flag).
+* An FME feature flag can have a definition for each Environment in your Project. For more information see [Create a feature flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag).
 

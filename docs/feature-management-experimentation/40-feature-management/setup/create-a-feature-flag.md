@@ -5,7 +5,7 @@ description: Learn how to create a feature flag in Harness FME.
 sidebar_position: 1
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/faqs/cannot-delete-feature-flag-from-ui-even-after-deleting-the-targeting-rules
-  - /docs/feature-management-experimentation/feature-management/create-a-feature-flag
+  - /docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag
 ---
 
 ## Overview

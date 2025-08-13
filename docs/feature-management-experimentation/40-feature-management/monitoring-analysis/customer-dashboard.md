@@ -17,7 +17,7 @@ The first tab shows the treatments that are served to that customer for each fea
 
 ## Segments 
 
-The second tab shows the segments that a particular user belongs to or if that user is not part of any segments. Learn more about [creating segments](/docs/feature-management-experimentation/feature-management/segments). 
+The second tab shows the segments that a particular user belongs to or if that user is not part of any segments. Learn more about [creating segments](/docs/feature-management-experimentation/feature-management/targeting/segments). 
 
 ## Attributes
 

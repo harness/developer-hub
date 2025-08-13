@@ -5,7 +5,7 @@ description: ""
 sidebar_position: 8
 ---
 
-When you [create a feature flag](/docs/feature-management-experimentation/feature-management/create-a-feature-flag), you can limit the feature flag's exposure. Limiting exposure means limiting the percentage of traffic that is channeled through a feature flag, allowing the rest of the traffic _to be unaffected by_, or _to remain outside of_, the targeting rules. The users outside of the flag's targeting rules will be given the default treatment.
+When you [create a feature flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag), you can limit the feature flag's exposure. Limiting exposure means limiting the percentage of traffic that is channeled through a feature flag, allowing the rest of the traffic _to be unaffected by_, or _to remain outside of_, the targeting rules. The users outside of the flag's targeting rules will be given the default treatment.
 
 To use this feature, do the following:
 
@@ -22,4 +22,4 @@ The Limit exposure feature is particularly useful for experimentation, where you
 
 Note that the treatment assigned a user ID according to the feature flag's targeting rules will be "sticky", meaning that increasing the Limit exposure percentage will not reallocate an already assigned user to a different treatment.
 
-A user that is outside the exposed traffic is assigned the default treatment and the feature flag's [impression](/docs/feature-management-experimentation/feature-management/impressions) for that evaluation will include the _**targeting label**_ `not in split`.
+A user that is outside the exposed traffic is assigned the default treatment and the feature flag's [impression](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) for that evaluation will include the _**targeting label**_ `not in split`.

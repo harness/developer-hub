@@ -194,7 +194,7 @@ When deciding whether to use segments or attributes, segments are best when cust
 The instructions in this section explain the proper use of attributes when you create rollout plans in the Split user interface. To understand the proper syntax for using attributes with the SDK in your code base, refer to the relevant language-specific article in our SDK documentation.
 
 1. In the **Targeting** section, click the **attribute** field. A list of attributes displays.
-1. Select or add an attribute. Split requires you to customize the attributes you use in your treatment evaluation. When you define your targeting rules, you can base your rules on any [custom attribute](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/) you provide. To do this, add an attribute in the field provided. 
+1. Select or add an attribute. Split requires you to customize the attributes you use in your treatment evaluation. When you define your targeting rules, you can base your rules on any [custom attribute](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/) you provide. To do this, add an attribute in the field provided. 
 1. Select the matcher. When you have input a custom attribute, you are prompted to select a matcher. For more information about matchers, refer to the Types and matchers for custom attributes section below.
 1. Select the attribute values for the attribute that you want Split to match after you select a matcher. Below are some examples of usage for different types of attributes:
    
@@ -238,7 +238,7 @@ Parent feature flags know which child feature flags are using it in their evalua
 
 #### Serving treatments to a percentage using a segment
 
-Using [segments](/docs/feature-management-experimentation/feature-management/segments) in targeting rules, rather than individually targeting, serves a treatment to a percentage of that segment. Use segments for targeting relatively fixed or specific groups of users that you can identify, like a list of accounts. For example, you can gradually roll out a treatment to a segment of your beta users. 
+Using [segments](/docs/feature-management-experimentation/feature-management/targeting/segments) in targeting rules, rather than individually targeting, serves a treatment to a percentage of that segment. Use segments for targeting relatively fixed or specific groups of users that you can identify, like a list of accounts. For example, you can gradually roll out a treatment to a segment of your beta users. 
 
 ### Selecting treatment to serve 
 

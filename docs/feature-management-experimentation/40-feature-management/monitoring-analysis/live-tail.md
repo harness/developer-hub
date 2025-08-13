@@ -37,7 +37,7 @@ After installing Split’s SDKs and setting up a feature flag, impressions gener
 
 Live tail can also be accessed on the feature flag page under the Live tail tab, where impressions automatically filter down to that specific feature flag.
 
-Learn more about [impressions](/docs/feature-management-experimentation/feature-management/impressions) in FME.
+Learn more about [impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) in FME.
 
 ## Query events 
 

@@ -18,7 +18,7 @@ A segment is a pre-defined list of user IDs (user keys) that a feature flag can 
 * be created and edited via the Split API
 * [sync with any Amplitude Cohort](https://www.split.io/product/integrations/amplitude/)
 
-Segments are best for targeting relatively fixed or specific groups of users that you can easily identify, like individual accounts. If you would like to learn about more dynamic targeting, refer to the [Custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes) guide.
+Segments are best for targeting relatively fixed or specific groups of users that you can easily identify, like individual accounts. If you would like to learn about more dynamic targeting, refer to the [Custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes) guide.
 
 For feature releases, you can use segments to:
 
@@ -33,7 +33,7 @@ These are a few examples of using segments to deploy safe and successful feature
 Harness FME supports the following segment types:
   * **Standard segments** - can contain up to 100,000 user IDs
   * **Large segments** - can contain up to 1,000,000 user IDs (may be increased upon request)
-  * **Rule-based segments** - dynamically include user IDs based on [targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting/#targeting-rules) 
+  * **Rule-based segments** - dynamically include user IDs based on [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting#targeting-rules) 
 
 :::info
 **Large segments** are available on the [Enterprise](https://www.split.io/pricing/) plan.

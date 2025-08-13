@@ -5,7 +5,7 @@ description: ""
 sidebar_position: 18
 redirect_from:
 - /docs/feature-management-experimentation/feature-management/faqs/is-the-feature-flag-impression-toggle-supported
-- /docs/feature-management-experimentation/feature-management/impressions
+- /docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions
 ---
 
 import Tabs from '@theme/Tabs';
@@ -153,8 +153,8 @@ Usually, a treatment is served because the customer matched a particular rule. I
 | --- | --- | --- |
 | Feature flag was killed | [Default](/docs/feature-management-experimentation/feature-management/default-treatment) | `killed` |
 | No rule matched | [Default](/docs/feature-management-experimentation/feature-management/default-treatment) | `no rule matched` |
-| Feature flag was not found, for example, it may not have been downloaded by the SDK yet | [Control](/docs/feature-management-experimentation/feature-management/control-treatment) | `definition not found` |
-| There was an exception while evaluating treatment | [Control](/docs/feature-management-experimentation/feature-management/control-treatment) | `exception`  |
+| Feature flag was not found, for example, it may not have been downloaded by the SDK yet | [Control](/docs/feature-management-experimentation/feature-management/setup/control-treatment) | `definition not found` |
+| There was an exception while evaluating treatment | [Control](/docs/feature-management-experimentation/feature-management/setup/control-treatment) | `exception`  |
 
 If your impression tables are showing *not available*, consider upgrading your SDK and ensure that labels are enabled in the SDK configurations.
 

@@ -17,7 +17,7 @@ With custom attributes, you can create dynamic targeted feature rollout plans us
 * Sensitive information (e.g., customer purchase size or customer status)
 
 :::tip
-Consider using [segments](/docs/feature-management-experimentation/feature-management/segments) (instead of attributes) if the users in a segment would not change multiple times in a day or the grouping of users needs to be standardized across your Harness account (e.g., key accounts, internal or outsourced QA teams, or company employees).
+Consider using [segments](/docs/feature-management-experimentation/feature-management/targeting/segments) (instead of attributes) if the users in a segment would not change multiple times in a day or the grouping of users needs to be standardized across your Harness account (e.g., key accounts, internal or outsourced QA teams, or company employees).
 :::
 
 ## Creating custom attributes
@@ -142,7 +142,7 @@ As with attributes [created in Admin settings](#creating-custom-attributes-in-ad
 
 ## Using custom attributes in feature flag targeting
 
-After you [create a feature flag](/docs/feature-management-experimentation/feature-management/create-a-feature-flag) you can **use** (and also **create**) custom attributes in your [targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting). To add an attribute-based targeting rule to a feature flag:
+After you [create a feature flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag) you can **use** (and also **create**) custom attributes in your [targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting). To add an attribute-based targeting rule to a feature flag:
 
 1. In Harness FME, on the Definition tab of a feature flag, in the Targeting rules area, click the **Add attribute based targeting rules** button. The **IF** field/dropdown menu appears.
 

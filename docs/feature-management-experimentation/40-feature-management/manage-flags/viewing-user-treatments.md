@@ -22,7 +22,7 @@ In this image, you can see that the user will see the **'on'** treatment for the
 
 ### Caveats
 
-- This view only shows treatments for feature flags **not using [attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/)** for targeting.  
+- This view only shows treatments for feature flags **not using [attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/)** for targeting.  
 - For data privacy reasons, Split does **not copy attribute values** to the cloud, so it cannot know attribute values for a given user key (user ID).  
 - The key shown is typically a database ID or a cookie ID.
 

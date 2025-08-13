@@ -9,8 +9,8 @@ Projects allow you to separately manage your feature flags and experiments acros
 
 The following objects are also located in a project. Refer object model map below for reference:
 
-* [Feature flags](/docs/feature-management-experimentation/feature-management/create-a-feature-flag/)
-* [Segments](/docs/feature-management-experimentation/feature-management/segments)
+* [Feature flags](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag/)
+* [Segments](/docs/feature-management-experimentation/feature-management/targeting/segments)
 * [Metrics](/docs/feature-management-experimentation/release-monitoring/metrics/)
 * [Event types](/docs/feature-management-experimentation/release-monitoring/events/)
 * [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys)  
