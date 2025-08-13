@@ -295,7 +295,7 @@ IDP 2.0 introduces a powerful new **System** entity that provides flexible logic
 **Key benefits of the new System entity:**
 
 - **Multi-scope support**: Systems can be created at Account, Organization, or Project scope
-- **Many-to-many relationships**: Components can belong to multiple Systems, and Systems can include multiple Components
+- **Many-to-many relationships**: Components can belong to multiple Systems, and Systems can include multiple Components , APIs and Resources.
 - **Improved visibility**: Systems appear as first-class entities in the Software Catalog
 - **Scorecard integration**: Run scorecards at the System level to assess health across related services
 

@@ -36,7 +36,7 @@ There are different entities within our Harness IDP data model. However, softwar
 * **Components**: Individual pieces of software.
 * **APIs**: Boundaries between different components.
 * **Resources**: Physical or virtual infrastructure needed to operate a component.
-* **Systems**: High-level organizational units that group related components.
+* **Systems**: High-level organizational units that group related components, APIs and resources.
 
 
 ![](static/intro-system.png)
