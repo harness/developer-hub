@@ -1,12 +1,10 @@
 ---
-title: Cost Categories 
+title: Cost Categories - New
 description: CCM cost categories provide an understanding of where and how your money is being spent. Cost categories allow you to take data across multiple sources and attribute it to business contexts, such as…
 # sidebar_position: 1
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-import CostCategoriesVisual from './cost-categories-visual.md';
-
 
 import Tabs from '@theme/Tabs';
 
@@ -74,18 +72,85 @@ With Cost Categories, you can:
 
 </div>
 
-## Prerequisites
-- CCM Connector
-- Harness user account must belong to a user group with the following role permissions: Cloud Cost Management: Cost Categories: Create/Edit. For more details, go to CCM Roles and Permissions.
+<details>
+<summary>Example: Using Cost Categories with Perspectives</summary>
+<div style={{backgroundColor: '#f0f7ff', padding: '20px', borderRadius: '8px', border: '1px solid #cce3ff', marginBottom: '24px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)'}}>  
+
+Let's say your organization runs workloads in <span style={{backgroundColor: '#e6f2ff', padding: '2px 5px', borderRadius: '3px'}}>multiple AWS accounts</span>. Some accounts are for Production, some for Development, and others for Staging. 
+
+<div style={{backgroundColor: '#ffe6e6', padding: '10px', borderRadius: '5px', marginBottom: '15px', borderLeft: '3px solid #ff8080'}}>
+<span style={{fontWeight: 'bold'}}>Without Cost Categories:</span> Creating a Perspective to analyze costs by environment requires creating perspectives with multiple rules and any new account or tag variation means updating the Perspective again.
+</div>
+
+<div style={{backgroundColor: '#e6ffe6', padding: '10px', borderRadius: '5px', marginBottom: '15px', borderLeft: '3px solid #80c080'}}>
+<span style={{fontWeight: 'bold'}}>With Cost Categories:</span> You can define an Environment cost category that standardizes this classification by using three cost buckets (Production, Development, and Staging).
+</div>
+
+<table style={{width: '100%', borderCollapse: 'separate', borderSpacing: '0', marginBottom: '20px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)'}}>
+  <thead>
+    <tr style={{backgroundColor: '#f0f7ff'}}>
+      <th style={{padding: '12px', borderBottom: '2px solid #cce3ff', textAlign: 'left'}}>Rule</th>
+      <th style={{padding: '12px', borderBottom: '2px solid #cce3ff', textAlign: 'left'}}>Cost Bucket</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6'}}><span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Account, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the accounts related to production&#125;</td>
+      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6', backgroundColor: '#f9f9f9'}}><span style={{color: '#0066cc', fontWeight: 'bold'}}>Production</span></td>
+    </tr>
+    <tr>
+      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6'}}><span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Usage Type, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the usage types related to development&#125; <span style={{backgroundColor: '#fff2cc', padding: '1px 5px', borderRadius: '3px'}}>OR</span> <span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Service, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the services related to development&#125;</td>
+      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6', backgroundColor: '#f9f9f9'}}><span style={{color: '#0066cc', fontWeight: 'bold'}}>Development</span></td>
+    </tr>
+    <tr>
+      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6'}}><span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Service, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the services related to staging&#125;</td>
+      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6', backgroundColor: '#f9f9f9'}}><span style={{color: '#0066cc', fontWeight: 'bold'}}>Staging</span></td>
+    </tr>
+  </tbody>
+</table>
+<DocImage path={require('./static/environment.mp4')} width="100%" height="100%" title="Click to view full size image" />
+
+
+
+<div style={{backgroundColor: '#f0f7ff', padding: '12px', borderRadius: '5px', borderLeft: '3px solid #0066cc'}}>
+Once this Cost Category is in place, you can use it in Perspectives to:
+<ul style={{marginTop: '8px', marginBottom: '8px'}}>
+  <li><span style={{backgroundColor: '#cce3ff', padding: '2px 6px', borderRadius: '3px', fontWeight: 'bold'}}>Filter:</span> Filter by any cost bucket.</li>
+  <li><span style={{backgroundColor: '#cce3ff', padding: '2px 6px', borderRadius: '3px', fontWeight: 'bold'}}>Group By:</span> Break down total spend by your cost buckets.</li>
+</ul>
+</div>
+
+<DocImage path={require('./static/difference.mp4')} width="100%" height="100%" title="Click to view full size image" />
+
+</div>
+</details>
+
+### Before You Begin
+
+To create and manage Cost Categories in Harness CCM, you need:
+
+**Active CCM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CCM Connectors](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-ccm-connectors).
+
+**Required Permissions**: Your Harness user account must belong to a user group with the following role permissions:
+
+- **Cloud Cost Management: Cost Categories: Create/Edit**
+- **Cloud Cost Management: Cost Categories: View**
+
+For more details on CCM permissions, see [CCM Roles and Permissions](/docs/cloud-cost-management/access-control/ccm-roles-and-permissions).
 
 ------
 ## Creating Cost Categories
 
 <Tabs>
-  <TabItem value="Step-by-Step" label="Step-by-Step">
+<TabItem value="Step-by-Step" label="Step-by-Step">
 - In your Harness application, go to Cloud Cost Management > Cost Categories > New Cost Category.
 
+<Tabs>
+<TabItem value="Define Cost Bucket(s)" label="Define Cost Bucket(s)">
+
 ### Define your Cost Bucket(s)
+
+<DocImage path={require('./static/step-one.png')} width="100%" height="100%" title="Click to view full size image" />
 
 A cost category is composed of one or more buckets. Each bucket contains filters that collect data from specific sources.
    - Enter a descriptive name for the cost bucket (e.g., "Marketing Department")
@@ -146,7 +211,13 @@ After configuring all your cost buckets, click on "Continue"
 
 :::
 
+</TabItem>
+
+<TabItem value="Attribute Shared Costs" label="Attribute Shared Costs">
+
 ### [Optional] Attribute Shared Costs 
+
+<DocImage path={require('./static/step-two.png')} width="100%" height="100%" title="Click to view full size image" />
 
 **Shared buckets** allow you to distribute common costs across multiple cost buckets in a category. For example, database maintenance costs that benefit multiple departments can be shared among them using a shared bucket.  
 
@@ -163,7 +234,11 @@ After configuring all your cost buckets, click on "Continue"
    | **Fixed Percentage** | Distributes according to manually defined percentages | Manually assign 60% to Bucket A, 25% to Bucket B, 15% to Bucket C |
 
 4. Click on "Continue".
+</TabItem>
 
+<TabItem value="Manage Unallocated Costs" label="Manage Unallocated Costs">
+
+<DocImage path={require('./static/step-three.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ### Manage Unallocated Costs
 
@@ -176,9 +251,13 @@ In Manage Unallocated Costs, you can choose to show or ignore unallocated costs,
 - Share Default Costs among Cost Buckets (Coming Soon)
 
 </TabItem>
-<TabItem value="Visual Walkthrough" label="Visual Walkthrough">
+</Tabs>
+</TabItem>
+
+<TabItem value="Interactive Guide" label="Interactive Guide">
     <DocVideo src="https://app.tango.us/app/embed/89164540-a07f-4900-bca7-b303fbb37154?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" style="min-height:720px" title="Perspective Overview in Harness CCM" />
 </TabItem> 
+
 </Tabs>
  -------
 
@@ -283,8 +362,7 @@ You can visualize cost categories in your custom dashboard. **Cost Categories** 
 * **Shared Buckets:** **Important:** Shared cost buckets are **not included** when using cost categories in dashboards.
 
 
-<DocImage path={require('./static/cc-example.png')} width="100%" height="100%" title="Click to view full size image" /
->
+<DocImage path={require('./static/cc-example.png')} width="100%" height="100%" title="Click to view full size image" />
 
 :::info
 In AWS, you cannot use cost categories as a dimension in custom dashboards if you have selected any of the following fields in the explore:
@@ -324,7 +402,7 @@ To filter recommendations using cost categories:
 <DocImage path={require('./static/rec-filter.png')} width="100%" height="100%" title="Click to view full size image" /
 >
 
-### Examples
+## Examples
 
 <details>
 <summary><b>Example 1: Department Cost Category</b></summary>
