@@ -67,6 +67,10 @@ Corresponds to the Client APIs that is generating impressions and tracking event
  * get-all-treatments-with-config
  * track
 
+#### Attributes
+Internally, the evaluator uses the Javascript SDK - as such all [attributes](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#1-import-the-sdk-into-your-project) supported by the Javascript SDK are supported by the evaluator.
+
+
 #### /client/get-treatment
 Evaluates a single feature flag for a single key.
 
