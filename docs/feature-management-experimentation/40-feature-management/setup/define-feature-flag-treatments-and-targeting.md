@@ -52,7 +52,7 @@ In the [Treatments](/docs/feature-management-experimentation/feature-management/
 
 1. Enter the name of each treatment and optionally enter a description.
 2. Optionally, click **Add treatment** to add additional treatments.
-3. Select the [default treatment](/docs/feature-management-experimentation/feature-management/default-treatment). This treatment will be served to everyone if the feature flag is [killed](/docs/feature-management-experimentation/feature-management/manage-flags/use-the-kill-switch). This treatment is also served to all traffic not exposed to the feature flag (if you _Limit exposure_ when [setting up targeting](#setting-up-targeting)).
+3. Select the [default treatment](/docs/feature-management-experimentation/feature-management/setup/default-treatment). This treatment will be served to everyone if the feature flag is [killed](/docs/feature-management-experimentation/feature-management/manage-flags/use-the-kill-switch). This treatment is also served to all traffic not exposed to the feature flag (if you _Limit exposure_ when [setting up targeting](#setting-up-targeting)).
 
 ## Setting up dynamic configuration
 
@@ -100,7 +100,7 @@ In the Targeting rules area, you can:
 
     * [Target with dependencies](/docs/feature-management-experimentation/feature-management/targeting/target-with-dependencies) to target users based on the treatment they received from another flag. You can use flag dependencies to create mutually exclusive experiments. 
 
-    * Optionally select **Distribute treatments as follows** and define a ___percentage distribution___ to [randomly distribute](/docs/feature-management-experimentation/feature-management/faqs/ensure-a-consistent-user-experience) users and segments between your feature flag treatments (variations) based on the percentages you decide. This is also called a _percentage rollout_, as shown below.
+    * Optionally select **Distribute treatments as follows** and define a ___percentage distribution___ to [randomly distribute](/docs/feature-management-experimentation/feature-management) users and segments between your feature flag treatments (variations) based on the percentages you decide. This is also called a _percentage rollout_, as shown below.
 
    ![](../static/define-feature-flag-treatments-and-targeting-attribute-based.png)
 

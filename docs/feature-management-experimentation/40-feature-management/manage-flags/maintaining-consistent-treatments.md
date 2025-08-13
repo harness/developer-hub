@@ -18,7 +18,7 @@ The goal is to maintain state so that a user is always exposed to the same treat
 
 Split is designed for imperceptibly fast treatment computation. For example, in Java, treatments are computed in just a few hundred microseconds. To achieve this speed, Split does **not** retain state. After serving a treatment, it does not “remember” what was served.
 
-Instead, Split uses a deterministic hashing algorithm to assign treatments. This ensures a [“sticky” experience](/docs/feature-management-experimentation/feature-management/faqs/ensure-a-consistent-user-experience/) where, as long as the feature flag targeting definition remains unchanged, users receive the **same** treatment every time.
+Instead, Split uses a deterministic hashing algorithm to assign treatments. This ensures a [“sticky” experience](/docs/feature-management-experimentation/feature-management) where, as long as the feature flag targeting definition remains unchanged, users receive the **same** treatment every time.
 
 However, if the targeting rules or percentages change, some users may receive different treatments. This behavior is intentional and appropriate for most use cases, but not all.
 

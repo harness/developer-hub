@@ -75,7 +75,7 @@ The order in which treatments are defined can affect the consistency of user exp
 
 - **User-level targeting:** Use UUIDs (e.g., logged-in user IDs) for consistent user experiences.
 - **Anonymous users:** Use cookies, session IDs, or device IDs, but note that users might not receive consistent experiences if switching devices or clearing cookies.
-- **Account-level targeting:** Target by account ID so [all users in the same account get the same experience](/docs/feature-management-experimentation/feature-management/targeting-an-account).
+- **Account-level targeting:** Target by account ID so [all users in the same account get the same experience](/docs/feature-management-experimentation/feature-management/manage-flags/targeting-an-account).
 
 ### Important Consideration for Account Targeting
 

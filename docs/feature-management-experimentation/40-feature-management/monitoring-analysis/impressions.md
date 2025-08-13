@@ -125,7 +125,7 @@ Use the following tables to verify that your SDK or customer-deployed component 
 
 ## Viewing impressions in Harness
 
-You can view incoming impressions in [Live tail](/docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail) within a feature flag's page or the Data hub, and export them based on query criteria in the Data hub's [Data export tab](/docs/feature-management-experimentation/feature-management/export-data). If you do not see impressions arriving in Harness, ensure that your SDK is installed and functioning as expected. Tips for this are included in the [Live tail](/docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail) article. Contact us at [support@split.io](mailto:support@split.io) if you have any issues. 
+You can view incoming impressions in [Live tail](/docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail) within a feature flag's page or the Data hub, and export them based on query criteria in the Data hub's [Data export tab](/docs/feature-management-experimentation/feature-management/monitoring-analysis/export-data). If you do not see impressions arriving in Harness, ensure that your SDK is installed and functioning as expected. Tips for this are included in the [Live tail](/docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail) article. Contact us at [support@split.io](mailto:support@split.io) if you have any issues. 
 
 :::important
 Harness retains impression data for 90 days. Contact the [team at Harness FME](mailto:support@split.io) to learn more.
@@ -151,8 +151,8 @@ Usually, a treatment is served because the customer matched a particular rule. I
  
 | **Special case** | **Treatment served** | **Targeting rule label** |
 | --- | --- | --- |
-| Feature flag was killed | [Default](/docs/feature-management-experimentation/feature-management/default-treatment) | `killed` |
-| No rule matched | [Default](/docs/feature-management-experimentation/feature-management/default-treatment) | `no rule matched` |
+| Feature flag was killed | [Default](/docs/feature-management-experimentation/feature-management/setup/default-treatment) | `killed` |
+| No rule matched | [Default](/docs/feature-management-experimentation/feature-management/setup/default-treatment) | `no rule matched` |
 | Feature flag was not found, for example, it may not have been downloaded by the SDK yet | [Control](/docs/feature-management-experimentation/feature-management/setup/control-treatment) | `definition not found` |
 | There was an exception while evaluating treatment | [Control](/docs/feature-management-experimentation/feature-management/setup/control-treatment) | `exception`  |
 
