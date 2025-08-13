@@ -30,7 +30,7 @@ Ensure your [Harness delegate](/release-notes/delegate/) is version `25.07.86401
 
 1. **Enable the Transit Secrets Engine** on your HashiCorp Vault. This is essential for key management and cryptographic operations.
 2. Configure your HashiCorp Vault connector using the following authentication methods [**AppRole**](/docs/platform/secrets/secrets-management/add-hashicorp-vault/#option-app-role), [**Token**](/docs/platform/secrets/secrets-management/add-hashicorp-vault/#option-token), [**JWT Auth**](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/#option-jwtoidc-auth) or [**Vault Agent**](/docs/platform/secrets/secrets-management/add-hashicorp-vault/#option-vault-agent).  
-3. Create a Cosign key pair of type `ecdsa-p256` in the Transit Secrets Engine. You can do this in two ways:  
+3. Create a Cosign key pair of type `ecdsa-p256`,`rsa-2048`, or `rsa-4096` in the Transit Secrets Engine. You can do this in two ways:  
    - **CLI**: Run the command:  
      ```bash
      vault write -f <transit_name>/<key_name> type=ecdsa-p256
