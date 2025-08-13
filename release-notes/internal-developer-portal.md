@@ -155,7 +155,7 @@ spec:
     connectorRef: account.ShibamDhar
     monoReposubDirectoryPath: /harness
 ```
-### [Breaking Change] Visualization Components Consolidated
+### [Breaking Change] Dx Plugin : Visualization Components Consolidated
 
 This release introduces the `DxDataChart` component, a flexible visualization tool for displaying data from DX Data Studio queries as charts or tables. It supports multiple visualization types, custom metrics from DX datafeeds, optional variables, unit labels, automatic data transformation, and deep links to the underlying DX DataCloud queries.
 
