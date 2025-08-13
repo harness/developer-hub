@@ -5,35 +5,35 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
-// import AdminCertificationExamDetails from "./data/idp-certification-admin-exam-details.md";
-// import AdminCertificationReviewDetails from "./data/idp-certification-admin-review-guide.md";
-import DeveloperCertificationExamDetails from "./data/idp-certification-developer-exam-details.md";
-import DeveloperCertificationReviewGuide from "./data/idp-certification-developer-review-guide.md";
-// import ArchitectCertificationReviewDetails from "./data/idp-certification-architect-review-guide.md";
-// import ArchitectCertificationExamDetails from "./data/idp-certification-architect-exam-details.md";
+// import AdminCertificationExamDetails from "./data/dbdevops-certification-admin-exam-details.md";
+// import AdminCertificationReviewDetails from "./data/dbdevops-certification-admin-review-guide.md";
+//import DeveloperCertificationExamDetails from "./data/dbdevops-certification-developer-exam-details.md";
+//import DeveloperCertificationReviewGuide from "./data/dbdevops-certification-developer-review-guide.md";
+// import ArchitectCertificationReviewDetails from "./data/dbdevops-certification-architect-review-guide.md";
+// import ArchitectCertificationExamDetails from "./data/dbdevops-certification-architect-exam-details.md";
 import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_idp_badge.svg`,
+    img: `${url}img/cert_dev_badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.developer,
   },
   {
-    img: `${url}img/cert_adm_idp_badge.svg`,
+    img: `${url}img/cert_adm_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.administrator,
   },
   {
-    img: `${url}img/cert_arc_idp_badge.svg`,
+    img: `${url}img/cert_arc_badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.architect,
   },
 ];
 import { useColorMode } from "@docusaurus/theme-common";
-export default function CertificationsIDP() {
+export default function CertificationsDBDEVOPS() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   // React router provides the current component's route, even in SSR
@@ -89,15 +89,13 @@ export default function CertificationsIDP() {
 
   return (
     <div
-      className={`${styles.certificationsIDP} ${
-        activePage === ActivePage.SelfPacedTraning
-          ? styles.SelfPacedTrainingBg
-          : ""
-      } ${
-        activePage === ActivePage.InstructorLedTraining
+      className={`${styles.certificationsIDP} ${activePage === ActivePage.SelfPacedTraning
+        ? styles.SelfPacedTrainingBg
+        : ""
+        } ${activePage === ActivePage.InstructorLedTraining
           ? styles.InstructorLedTrainingBg
           : ""
-      }  `}
+        }  `}
     >
       <div className={styles.hero}>
         <div className={styles.left}>
@@ -106,22 +104,19 @@ export default function CertificationsIDP() {
               <i className="fa-solid fa-arrow-left"></i> Back to University Home
             </Link>
           </div>
-          <h1>Internal Developer Portal</h1>
+          <h1>Database DevOps</h1>
           <div>
-            Eliminate cognitive overload by letting developers self-service
-            their flows like new service onboarding.
+            Integrate database changes into your CI/CD pipeline and gain transparency across environments.
           </div>
         </div>
         <div
-          className={`${styles.right} ${
-            activePage === ActivePage.SelfPacedTraning
-              ? styles.SelfPacedTrainingBg
-              : ""
-          } ${
-            activePage === ActivePage.InstructorLedTraining
+          className={`${styles.right} ${activePage === ActivePage.SelfPacedTraning
+            ? styles.SelfPacedTrainingBg
+            : ""
+            } ${activePage === ActivePage.InstructorLedTraining
               ? styles.InstructorLedTrainingBg
               : ""
-          }  `}
+            }  `}
         >
           {activePage === ActivePage.SelfPacedTraning && (
             <img
@@ -150,9 +145,8 @@ export default function CertificationsIDP() {
               <img
                 src={badge.img}
                 alt={badge.alt}
-                className={`${
-                  badge.type === certType[tab] ? styles.active : ""
-                } ${styles.certimg}`}
+                className={`${badge.type === certType[tab] ? styles.active : ""
+                  } ${styles.certimg}`}
               />
             ))}
         </div>
@@ -160,17 +154,15 @@ export default function CertificationsIDP() {
       <div className={styles.btns}>
         <button
           onClick={handleSelfPacedTrainingClick}
-          className={`${
-            colorMode == "light"
-              ? styles.InstLedTrainBtnLight
-              : styles.InstLedTrainBtnDark
-          } ${
-            activePage === ActivePage.SelfPacedTraning
+          className={`${colorMode == "light"
+            ? styles.InstLedTrainBtnLight
+            : styles.InstLedTrainBtnDark
+            } ${activePage === ActivePage.SelfPacedTraning
               ? colorMode == "light"
                 ? styles.activeLight
                 : styles.activeDark
               : ""
-          }`}
+            }`}
         >
           {activePage == ActivePage.SelfPacedTraning ? (
             colorMode == "light" ? (
@@ -187,17 +179,15 @@ export default function CertificationsIDP() {
         </button>
         <button
           onClick={handleInstLedTrainClick}
-          className={`${
-            colorMode == "light"
-              ? styles.InstLedTrainBtnLight
-              : styles.InstLedTrainBtnDark
-          } ${
-            activePage === ActivePage.InstructorLedTraining
+          className={`${colorMode == "light"
+            ? styles.InstLedTrainBtnLight
+            : styles.InstLedTrainBtnDark
+            } ${activePage === ActivePage.InstructorLedTraining
               ? colorMode == "light"
                 ? styles.activeLight
                 : styles.activeDark
               : ""
-          }`}
+            }`}
         >
           {activePage == ActivePage.InstructorLedTraining ? (
             colorMode == "light" ? (
@@ -213,15 +203,13 @@ export default function CertificationsIDP() {
           Instructor-Led Training
         </button>
         <button
-          className={`${
-            colorMode == "light" ? styles.certBtnLight : styles.certBtnDark
-          } ${
-            activePage === ActivePage.Certifications
+          className={`${colorMode == "light" ? styles.certBtnLight : styles.certBtnDark
+            } ${activePage === ActivePage.Certifications
               ? colorMode == "light"
                 ? styles.activeLight
                 : styles.activeDark
               : ""
-          }`}
+            }`}
           onClick={handleCertficationClick}
         >
           {activePage == ActivePage.Certifications ? (
@@ -281,15 +269,15 @@ export default function CertificationsIDP() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Internal Developer Portal - Developer
+                      Database DevOps - Developer
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_dev_idp_badge.svg`}
-                      alt="Harness Certified Expert - IDP Developer"
+                      src={`${baseUrl}img/cert_dev_badge.svg`}
+                      alt="Harness Certified Expert - DBDevOps Developer"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Paid
+                      <strong>Product version: </strong> Harness DB DevOps Paid
                       Plans
                     </span>
                   </div>
@@ -297,17 +285,20 @@ export default function CertificationsIDP() {
                     <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
-                      applications with IDP projects.
+                      applications with DB DevOps projects.
                     </div>
+                    {/*
                     <DeveloperCertificationReviewGuide />
 
                     <div className={styles.btnContainer}>
-                      <Link href="https://university-registration.harness.io/certified-internal-developer-portal-developer">
+                      <Link href="https://university-registration.harness.io/database-devops-developer">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
                       </Link>
-                    </div>
+                    </div> 
+                    */}
+
                   </div>
                 </div>
               </div>
@@ -315,19 +306,23 @@ export default function CertificationsIDP() {
 
             {/* Developer Exam Details */}
 
+            {/*
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
+            
                 <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="https://university-registration.harness.io/certified-internal-developer-portal-developer">
+                  <Link href="https://university-registration.harness.io/database-devops-developer">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>
                   </Link>
                 </div>
+
               </div>
             </div>
+*/}
           </div>
 
           {/* Administrator Tab Content */}
@@ -352,16 +347,16 @@ export default function CertificationsIDP() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Internal Developer Portal - Administrator (BETA COMING
+                      Database DevOps  - Administrator (BETA COMING
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_adm_idp_badge.svg`}
-                      alt="Harness Certified Expert - IDP Administrator"
+                      src={`${baseUrl}img/cert_adm_badge.svg`}
+                      alt="Harness Certified Expert - DBDevOps Administrator"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Paid
+                      <strong>Product version: </strong> Harness DB DevOps Paid
                       Plans
                     </span>
                   </div>
@@ -371,19 +366,19 @@ export default function CertificationsIDP() {
                     Assesses the fundamental skills to implement chaos
                     in your projects and the overall Harness Platform. This
                     exam builds upon the{" "}
-                    <a href="/university/continuous-delivery?lvl=developer">
-                      Continuous Delivery Developer Certification
+                    <a href="/university/database-devops?lvl=developer">
+                      Database DevOps Certification
                     </a>
                     .
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university-registration.harness.io/continuous-delivery-gitops-administrator">
+                    <Link href="https://university-registration.harness.io/database-devops-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
                     </Link> */}
-                    {/* <Link href="/docs/continuous-delivery">
+                    {/* <Link href="/docs/database-devops">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -393,7 +388,7 @@ export default function CertificationsIDP() {
 
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
-                      Assesses the fundamental skills to deploy and maintain IDP
+                      Assesses the fundamental skills to deploy and maintain DB DevOps
                       projects and the overall Harness Platform.
                     </div>
                   </div>
@@ -407,7 +402,7 @@ export default function CertificationsIDP() {
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university-registration.harness.io/continuous-delivery-gitops-administrator">
+                <Link href="https://university-registration.harness.io/database-devops-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
@@ -440,16 +435,16 @@ export default function CertificationsIDP() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Internal Developer Portal - Architect (BETA COMING
+                      Database DevOps - Architect (BETA COMING
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_arc_idp_badge.svg`}
-                      alt="Harness Certified Expert - IDP Architect"
+                      src={`${baseUrl}img/cert_arc_badge.svg`}
+                      alt="Harness Certified Expert - DB DevOps Architect"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Paid
+                      <strong>Product version: </strong> Harness DB DevOps Paid
                       Plans
                     </span>
                   </div>
@@ -457,7 +452,7 @@ export default function CertificationsIDP() {
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
                       Assess key technical job functions and advanced skills in
-                      design, implementation and management of IDP.
+                      design, implementation and management of DB DevOps.
                     </div>
                   </div>
                 </div>
@@ -489,8 +484,8 @@ export default function CertificationsIDP() {
                 .filter((ilt) => {
                   return (
                     ilt.tileType === "pre requisite" ||
-                    ilt.module === "idp" ||
-                    (ilt.module === "idp" && ilt.tileType === "comming soon")
+                    ilt.module === "dbdevops" ||
+                    (ilt.module === "dbdevops" && ilt.tileType === "comming soon")
                   );
                 })
 
@@ -517,8 +512,8 @@ export default function CertificationsIDP() {
               {spt
                 .filter((spt) => {
                   return (
-                    (spt.module === "idp" && spt.cardType === "FREE") ||
-                    (spt.module === "idp" && spt.tileType === "comming soon")
+                    (spt.module === "dbdevops" && spt.cardType === "FREE") ||
+                    (spt.module === "dbdevops" && spt.tileType === "comming soon")
                   );
                 })
                 .map((spt) => (
