@@ -140,6 +140,8 @@ The **Link to Source Code Repository** feature lets you associate a catalog comp
 
 When you select a Git provider from the dropdown and specify the repository, IDP stores the information in the component definition and uses it to power various integrations, including STO vulnerability correlation.
 
+> Source code is valid only if the catalog entity lives at the project scope as that of the STO pipeline.
+
 ```yaml
 spec:
   sourceCode:
@@ -173,10 +175,16 @@ metadata:
     harness.io/sto-test-target:
       - name: vigneswara-propelo/Employee-Management-System
         scope: default.IDP_TEST
+        variant: develop
 ```
 
 **Purpose**
 This annotation ensures the component in the IDP is **mapped** to the right test target, so STO scan results are displayed correctly in the Security tab or card.
+
+> The `variant` property specifies which branch or variation of the target should be considered for results. For example:
+> - `variant: develop` will fetch results specifically for the develop branch.
+> - If no `variant` is specified, STO uses the default branch (baseline) for that target.
+
 
 #### Types of Test Targets
 
@@ -189,6 +197,7 @@ annotations:
   harness.io/sto-test-target:
     - name: vigneswara-propelo/Employee-Management-System
       scope: default.IDP_TEST
+      variant: develop
 ```
 
 2. **Image-Based Target**
