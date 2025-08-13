@@ -230,6 +230,7 @@ spec:
 </TabItem>
 
 <TabItem value="idp-2" label="IDP 2.0 (Harness YAML)" default>
+
   ```yaml
 apiVersion: harness.io/v1
 identifier: artist_service
