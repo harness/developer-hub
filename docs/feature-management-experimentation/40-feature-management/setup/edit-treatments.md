@@ -3,11 +3,13 @@ title: Edit treatments
 sidebar_label: Edit treatments
 description: ""
 sidebar_position: 4
+redirect_from:
+- /docs/feature-management-experimentation/feature-management/edit-treatments
 ---
 
 Every feature you want to release in FME has at least two treatments. In the simplest case, these are **on** and **off**. You can edit the treatment's name and description as well as add additional treatments at any time. 
 
-![](./static/edit-treatments.png)
+![](../static/edit-treatments.png)
 
 :::note
 You can only create a maximum of 20 treaments.

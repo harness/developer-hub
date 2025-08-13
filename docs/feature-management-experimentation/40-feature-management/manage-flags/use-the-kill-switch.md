@@ -3,6 +3,8 @@ title: Use the kill switch
 sidebar_label: Use the kill switch
 description: ""
 sidebar_position: 15
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/use-the-kill-switch
 ---
 
 If a feature flag negatively impacts performance or your user’s experience, you can kill it without changing targeting rules or performing a redeployment. When you kill a feature, all traffic is sent to the default treatment selected for that feature flag.

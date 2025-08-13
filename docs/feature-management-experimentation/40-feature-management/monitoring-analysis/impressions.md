@@ -5,6 +5,7 @@ description: ""
 sidebar_position: 18
 redirect_from:
 - /docs/feature-management-experimentation/feature-management/faqs/is-the-feature-flag-impression-toggle-supported
+- /docs/feature-management-experimentation/feature-management/impressions
 ---
 
 import Tabs from '@theme/Tabs';
@@ -61,23 +62,23 @@ To turn impression tracking on or off:
 
 1. Click the ellipses menu on a feature flag Definition tab, and select the **Track impressions** menu item.
 
-   ![](./static/impressions-track-impressions-menu.png)
+   ![](../static/impressions-track-impressions-menu.png)
 
 2. Click the **Impression tracking** toggle and click **Save**.
 
-   ![](./static/impressions-toggle.png)
+   ![](../static/impressions-toggle.png)
 
 3. On the feature flag Definition tab, click **Review changes** and click **Save**.
 
 When impression tracking is off, you will see "Impression tracking off" at the top right of the feature flag definition page. The arrows will also be grayed out (shown with tooltip) on the the feature flag definition card.
 
-![](static/impressions-tracking-visual-cues-1.png)
+![](../static/impressions-tracking-visual-cues-1.png)
 
 ### Supported SDKs and customer-deployed components for impression tracking
 
 The impression tracking toggle only works with supported FME SDKs and customer-deployed components. If the SDK you are using does not support the toggle, impressions will still be sent to Harness servers—even if impression tracking is turned off for the feature flag definition.
 
-![](./static/impressions-tracking-visual-cues-1.png)
+![](../static/impressions-tracking-visual-cues-1.png)
 
 :::info
 If you are using an older SDK or customer-deployed component version that does not support the toggle, Harness recommend upgrading to a supported version to ensure that impression tracking behavior aligns with your feature flag settings.

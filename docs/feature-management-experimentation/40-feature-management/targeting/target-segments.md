@@ -21,20 +21,20 @@ Server-side SDKs do not yet support Large segments, but soon will. Until they ar
 
 You can target segments in individual targeting rules. These rules assign a treatment to the segment. In the following example, the feature flag will serve **on** to all user IDs in the given segments.
 
-![](./static/target-segments-individual-targets.png)
+![](../static/target-segments-individual-targets.png)
 
 After you select a segment, you can see the segment type indicated by the input pill icon in the To segments field.
 
-![](./static/target-segments-to-segments-input.png)
+![](../static/target-segments-to-segments-input.png)
 
 ## Attribute based targeting rules
 
 You can also target Standard, Large, and Rule-based segments in attribute based targeting rules. The following example is equivalent to the individual targeting rule shown above.
 
-![](./static/target-segments-attribute-based-targeting.png)
+![](../static/target-segments-attribute-based-targeting.png)
 
 You can also use ___percentage distribution___ to randomly distribute treatments among the user IDs in a segment, as shown below.
 
-![](./static/target-segments-percentage-distribution.png)
+![](../static/target-segments-percentage-distribution.png)
 
 See [Targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting#targeting-rules) for more information on feature flag targeting, percentage distribution, and rules' evaluation order.

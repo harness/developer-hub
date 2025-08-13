@@ -3,6 +3,8 @@ title: Using flag sets to boost SDK performance
 sidebar_label: Using flag sets to boost SDK performance
 description: ""
 sidebar_position: 17
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/using-flag-sets-to-boost-sdk-performance
 ---
 
 Flag sets allow you to group FME feature flag definitions that logically belong together. You can configure FME SDK to download a flag set (the subset of your feature flag definitions that you need to evaluate on your client) rather than all of your flags defined in a Harness FME Environment. Flag sets allow you to minimize bandwidth and memory usage, boost app responsiveness, and effectively reduce latency and CPU demands.
@@ -19,7 +21,7 @@ To use flag sets you need to:
 
    For example, given three flags named `experiment_1`, `experiment_2` and `experiment_3`, the flag definition scoped to the Production environment for `experiment_1` can be associated with the flag set `backend`, while the definitions scoped to the Production environment for `experiment_2` and `experiment_3` can be associated with the flag set `frontend`.
 
-    ![](./static/using-flagsets-to-boost-sdk-performance.png)
+    ![](../static/using-flagsets-to-boost-sdk-performance.png)
 
 3. Configure your SDK to filter by flag set
 

@@ -2,6 +2,8 @@
 title: Create a rollout plan
 description: Learn how to create a rollout plan in Harness FME.
 sidebar_position: 3
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/create-a-rollout-plan
 ---
 
 ## Overview
@@ -100,7 +102,7 @@ To edit your configuration as key-value pairs, do the following:
 1. Enter values for each of your keys (e.g., green, size 16, Buy now!, /promo_images/svg/kermit.svg).
 1. Click the **Add new pair** button to add another pair or click the **Minus** icon to remove a pair for each treatment. You can attach as many key-value pairs as necessary for each of your treatments.
 
-   ![](./static/rollout-1.png)
+   ![](../static/rollout-1.png)
 
 :::tip
 All keys and values are interpreted as strings when configurations are saved in this format (e.g., 5 is stringified and sent as 5) so you need to convert your code from that format at runtime.
@@ -113,7 +115,7 @@ To edit your configuration using the JSON form, do the following:
 1. From the left navigation, click **Feature flags** and then your desired feature flag.
 1. In the **Format** field of the **Dynamic configuration** area, select **JSON** as your format. You get a JSON editor for each of your treatments.
 
-   ![](./static/rollout-2.png)
+   ![](../static/rollout-2.png)
 
 1. Insert valid JSON into the editor. Basic JSON linting is done. Nested JSON objects are permitted.
 1. Click **expand or collapse** if you have a large JSON object inserted as a configuration and you may need to expand or collapse it when editing.
@@ -138,7 +140,7 @@ After you have defined your treatments, the rest of the Definition tab controls 
 
 Evaluation order mirrors the order that the options appear on the Definition tab. Once a user matches one of the below sections, no further evaluation is performed for that user. When a flag is killed, the default treatment is served in all cases until the flag is made active again through a restore or update.
 
-![](./static/rollout-3.png)
+![](../static/rollout-3.png)
 
 Targeting is evaluated as follows:
 

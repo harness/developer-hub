@@ -55,11 +55,11 @@ This article shows how to work with Standard, Large, and Rule-based segments and
 
 The segment type is displayed at the top of each Segment page in Harness FME, as shown below.
 
-<div style={{maxWidth:600}}> ![](./static/create-a-segment-segment-type.png) </div>
+<div style={{maxWidth:600}}> ![](../static/create-a-segment-segment-type.png) </div>
 
 In Harness FME, you can filter the segments listed on the Segments pane by segment type.
 
-<div style={{maxWidth:400}}> ![](./static/create-a-segment-filter-1.png) </div>
+<div style={{maxWidth:400}}> ![](../static/create-a-segment-filter-1.png) </div>
 
 ## Creating a segment
 
@@ -69,7 +69,7 @@ To create a segment:
 
 1. From the navigation bar, click **Create segment**. The Create a segment page appears.
 
-   <div style={{maxWidth:700}}> ![](./static/create-a-segment-page-1.png) </div>
+   <div style={{maxWidth:700}}> ![](../static/create-a-segment-page-1.png) </div>
     
 2. Fill in the fields as follows:
   * **Name.** Give your segment an easily recognizable name.
@@ -93,7 +93,7 @@ You need to add a segment definition for a given environment (this creates an em
 
 1. Select a segment in the Segments pane to open the segment page.
 
-   ![](./static/create-a-segment-add-definition.png)
+   ![](../static/create-a-segment-add-definition.png)
 
 2. In the Environment dropdown, select a Harness FME environment where the segment will be defined.
 
@@ -101,7 +101,7 @@ You need to add a segment definition for a given environment (this creates an em
 
 4. In the User section, click **Add user**.
 
-   ![](./static/create-a-segment-add-user.png)
+   ![](../static/create-a-segment-add-user.png)
 
     ___For Standard segments___ you can choose to individually add user IDs or to add them via file import.
 
@@ -123,11 +123,11 @@ To import user IDs into a Large segment you need to prepare a [CSV import file](
 
 1. On the segment page, click **Add user** and select **Import via API**.
 
-   ![](./static/create-a-segment-import-via-api.png)
+   ![](../static/create-a-segment-import-via-api.png)
 
 2. On the Change summary page, click **Save** to generate an upload URL.
 
-   ![](./static/create-a-segment-upload-url.png)
+   ![](../static/create-a-segment-upload-url.png)
 
     The upload URL will time out after 5 minutes, and the Large segment change request will be automatically withdrawn if the upload URL was not used.
 
@@ -149,11 +149,11 @@ Replace `filename.csv` with the name of your CSV file.
 
 4. Run the curl command from the location of your CSV file. You may need to wait a moment for the command to complete. During this time, the segment will show pending changes in Harness.
 
-   ![](./static/create-a-segment-pending.png)
+   ![](../static/create-a-segment-pending.png)
 
 5. Refresh the Segment page to see the segment size updated. You can search for a user ID to confirm that it is in the Large segment.
 
-   ![](./static/create-a-segment-search.png)
+   ![](../static/create-a-segment-search.png)
 
 ### Append user IDs to a Large segment
 
@@ -176,19 +176,19 @@ Follow these steps to delete all keys from the segment and delete the segment:
 1. Locate the down arrow on top of the checkboxes column.
 1. Click on it to display two menu items.
    
-   ![](./static/delete-1.png)
+   ![](../static/delete-1.png)
 
 1. Select all records from there. The **Delete** button appears.
 
-   ![](./static/delete-2.png)
+   ![](../static/delete-2.png)
 
 1. Once the keys are deleted, delete the segment definition by clicking on the Ellipses icon in the **Definition** section and selecting **Delete definition**.
    
-   ![](./static/delete-3.png)
+   ![](../static/delete-3.png)
 
 1. Click on the Ellipses icon above **Owners** and select **Delete**.
    
-   ![](./static/delete-4.png)
+   ![](../static/delete-4.png)
 
 ## CSV import file format
 

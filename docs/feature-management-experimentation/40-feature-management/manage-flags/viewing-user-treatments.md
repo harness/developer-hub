@@ -16,7 +16,7 @@ There are three primary use cases for determining which treatment a user sees:
 
 This question is often asked to validate the rollout plan when a feature flag is changed. You can answer this by going to the **Key page**. Here's an example:
 
-![](./static/use-case-1.png)
+![](../static/use-case-1.png)
 
 In this image, you can see that the user will see the **'on'** treatment for the `admin_panel_access` flag every time they log in, based on the current rollout plan.
 
@@ -37,7 +37,7 @@ This question is common when debugging live customer experiences or when making 
 
 You can answer this by going to **Data hub**. Example:
 
-![](./static/use-case-2.png)
+![](../static/use-case-2.png)
 
 Here, you search for a specific key (e.g., user ID). Split fetches the live treatments currently assigned.
 

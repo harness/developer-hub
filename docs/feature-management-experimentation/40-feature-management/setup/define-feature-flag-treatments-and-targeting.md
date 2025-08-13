@@ -6,6 +6,7 @@ sidebar_position: 3
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/best-practices/why-setting-the-order-of-treatments-matters
   - /docs/feature-management-experimentation/feature-management/faqs/how-can-i-override-individually-targeted-users-with-a-superseding-targeting-rule
+  - /docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting
 ---
 
 ## Define feature flag treatments and targeting
@@ -28,7 +29,7 @@ Initiating your feature flag definition for a given environment will create an i
 
 If a feature flag definition is not initiated for an environment, the following page appears:
 
-![](./static/create-a-feature-flag-initiate-environment.png)
+![](../static/create-a-feature-flag-initiate-environment.png)
 
 To initiate your feature flag definition for an environment, do one of the following:
 
@@ -37,7 +38,7 @@ To initiate your feature flag definition for an environment, do one of the follo
 
 Once the feature flag definition exists for a given environment, the feature flag definition tab will show treatments and targeting rules similar to the following:
 
-![](./static/define-feature-flag-treatments-and-targeting-main-view.png)
+![](../static/define-feature-flag-treatments-and-targeting-main-view.png)
 
 You will be able to modify the feature flag treatments, dynamic configurations, and targeting rules before saving. This allows you to configure your feature flag for a given environment.
 
@@ -83,7 +84,7 @@ In the Individual targets area, you can:
 
 Click the **Add new individual target** button to assign a selected treatment to individual users or segments (e.g., a QA team, internal team, or a limited beta), as shown below.
 
-![](./static/define-feature-flag-treatments-and-targeting-individual.png)
+![](../static/define-feature-flag-treatments-and-targeting-individual.png)
 
 ### Targeting rules
 
@@ -101,7 +102,7 @@ In the Targeting rules area, you can:
 
     * Optionally select **Distribute treatments as follows** and define a ___percentage distribution___ to [randomly distribute](/docs/feature-management-experimentation/feature-management/faqs/ensure-a-consistent-user-experience) users and segments between your feature flag treatments (variations) based on the percentages you decide. This is also called a _percentage rollout_, as shown below.
 
-   ![](./static/define-feature-flag-treatments-and-targeting-attribute-based.png)
+   ![](../static/define-feature-flag-treatments-and-targeting-attribute-based.png)
 
 :::tip[Tip: Distribute treatments by percentage to enable experimentation]
 If you have at least one targeting rule with ___percentage distribution___, then you can ___compare metric results between feature flag treatments___ (on the [Metrics impact tab](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/).
@@ -111,7 +112,7 @@ If you have at least one targeting rule with ___percentage distribution___, then
 
 Targeting rules are evaluated from top to bottom, meaning that the higher a rule appears, the higher its priority. You can override individually targeted users by placing a more specific rule above the one that includes them.
 
-![](./static/rules-1.png)
+![](../static/rules-1.png)
 
 For example, if you have a rule that individually targets users by ID or segment, but you need to give certain users a different treatment based on an attribute (such as slow network speed), create a higher-priority rule for that attribute.
 
@@ -121,7 +122,7 @@ In the **Set targeting rules** section:
 1. Specify the desired treatment (e.g., _Off_).
 1. In the **Else if** part of the rule, include your original segment or user IDs.
 
-![](./static/rules-2.png)
+![](../static/rules-2.png)
 
 This setup ensures that the overriding condition is applied before the individual targeting rule.
 
@@ -147,7 +148,7 @@ You can implement a feature toggle that switches between `on` and `off` automati
    * You can turn the flag `on` or `off` at a specific time, for a subset of users or for all users.
    * You can also configure it for a time window. For example, if you want to turn a message on alerting users during a maintenance window, you can set up the rule as shown in the following screenshot:
 
-   ![](./static/targeting-rule-pass-system-time.png)
+   ![](../static/targeting-rule-pass-system-time.png)
 
 
 ## Setting the alert baseline treatment
@@ -171,7 +172,7 @@ Feature flag rules are evaluated in the following order:
 
 Individual targets are evaluated in order. For example, if **Bob** is a user ID in the **Internal_QA** segment, then **Bob** will get **on** even though you’ve specifically assigned that key **off**.
 
-![](./static/feature-flag-rules-evaluation-order-example.png)
+![](../static/feature-flag-rules-evaluation-order-example.png)
 
 ### Treatment ordering and traffic distribution
 

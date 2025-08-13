@@ -12,7 +12,7 @@ To use this feature, do the following:
 1. In your selected feature flag, go to the Targeting rules area.
 2. Click the **Limit exposure** button.
 
-    ![](./static/limiting-exposure.png)
+    ![](../static/limiting-exposure.png)
 
 3. In the Limit exposure field, enter the percentage of traffic that you want to go through the targeting rules. 
 

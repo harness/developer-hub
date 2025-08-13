@@ -3,13 +3,13 @@ title: Set the alert baseline treatment
 sidebar_label: Set the alert baseline treatment
 description: ""
 sidebar_position: 12
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/set-the-alert-baseline-treatment
 ---
 
-<!-- can we add this paragraph here?
+## Overview
 
 The alert baseline treatment is used if an alert policy has been created. When there is an active alert policy, then the feature flag's alert baseline treatment is compared against all the other treatments when metrics are calculated.
-
--->
 
 :::tip
 Get access to alert policies by contacting your customer success manager or [support@split.io](mailto:support@split.io) and we’ll enable in your account.

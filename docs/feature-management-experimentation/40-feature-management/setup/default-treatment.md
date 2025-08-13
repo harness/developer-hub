@@ -1,10 +1,11 @@
 ---
-title: Default treatment
-sidebar_label: Default treatment
+title: Set the default treatment
+sidebar_label: Set the default treatment
 description: "Learn about the default treatment in Harness FME."
 sidebar_position: 14
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/faqs/what-is-the-difference-between-default-rule-and-default-treatment
+  - /docs/feature-management-experimentation/feature-management/default-treatment
 ---
 
 ## Overview

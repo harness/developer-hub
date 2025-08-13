@@ -45,15 +45,15 @@ Example workflow:
 - **Day 1 (Nov 1):**  
   90% get `v1_application`, 10% get `v2_application`.  
   *(Targeting rule with date matcher for Nov 1)*  
-  ![Day 1 targeting rule example](./static/create-date-1.png)
+  ![Day 1 targeting rule example](../static/create-date-1.png)
 
 - **Day 5:**  
   Traffic split adjusted to 80% `v1_application` and 20% `v2_application`.  
-  ![Day 5 targeting rule example](./static/create-date-2.png)
+  ![Day 5 targeting rule example](../static/create-date-2.png)
 
 - **Day 14:**  
   `v1_application` set to 0%, `v2_application` set to 100%.  
-  ![Day 14 targeting rule example](./static/create-date-3.png)
+  ![Day 14 targeting rule example](../static/create-date-3.png)
 
 Existing applications continue to match their original date-based rule and maintain treatment. New applications fall into updated rules.
 
@@ -80,11 +80,11 @@ If you have fewer than ~10k users, you can also:
 - Assign user IDs to the appropriate segment based on stored treatment.
 - Use individual targeting rules with these segments.
 
-![Using segments for treatment targeting](./static/create-date-4.png)
+![Using segments for treatment targeting](../static/create-date-4.png)
 
 Or use segments as part of targeting rules for more flexibility:
 
-![Segment in targeting rule example](./static/create-date-5.png)
+![Segment in targeting rule example](../static/create-date-5.png)
 
 This method requires additional management and is less integrated with Split’s experimentation features. It’s better suited for simple rollouts rather than experiments.
 

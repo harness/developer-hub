@@ -1,10 +1,10 @@
 ---
 title: Export data
 sidebar_label: Export data
-helpdocs_is_private: false
-helpdocs_is_published: true
 description: ""
 sidebar_position: 20
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/export-data
 ---
 
 The data export functionality within the Data hub gives development teams the ability to query and export all impression and event data. With data export, development teams can:

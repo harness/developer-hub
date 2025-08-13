@@ -76,13 +76,13 @@ To create a custom attribute that will appear as a User Attribute in your featur
 7. In the Description field, optionally enter a description of the attribute.
 8. In the Type dropdown, select an attribute value type (e.g., String to represent text values, Boolean to represent true or false values, etc.).
 
-   ![](./static/target-with-custom-attributes-ios-version.png)
+   ![](../static/target-with-custom-attributes-ios-version.png)
 
    :::tip
    When you select the Semver or String attribute type, you can create a list of suggested values to match against. These suggested values will appear in Split UI when you are creating your feature flag attribute based targeting rules.
    :::
 
-   ![](./static/target-with-custom-attributes-semver-suggested.png)
+   ![](../static/target-with-custom-attributes-semver-suggested.png)
 
 9. Click the **Create** button. A new custom attribute is created and displayed on the Attributes page.
 
@@ -146,45 +146,45 @@ After you [create a feature flag](/docs/feature-management-experimentation/featu
 
 1. In Harness FME, on the Definition tab of a feature flag, in the Targeting rules area, click the **Add attribute based targeting rules** button. The **IF** field/dropdown menu appears.
 
-   ![](./static/target-with-custom-attributes-using-custom-attributes-01.png)
+   ![](../static/target-with-custom-attributes-using-custom-attributes-01.png)
 
 2. Choose a **User Attribute** (custom attribute):
   Choose a custom attribute from the **IF** dropdown menu’s **User Attributes** section.
 
-   ![](./static/target-with-custom-attributes-using-custom-attributes-02-new-attribute.png)
+   ![](../static/target-with-custom-attributes-using-custom-attributes-02-new-attribute.png)
     
     Or **create a new custom attribute**:
   You can also directly click within the **IF** field, type a new custom attribute ID, and click **New attribute “your new ID”** to create a new custom attribute.
 
-   ![](./static/target-with-custom-attributes-using-custom-attributes-02-user-attribute.png)
+   ![](../static/target-with-custom-attributes-using-custom-attributes-02-user-attribute.png)
 
 3. Select a matcher to evaluate the attribute values passed in from your source code. For more information about matchers and how they evaluate values, see the [Custom attribute types and matchers](#custom-attribute-types-and-matchers) section below.
 
-   ![](./static/target-with-custom-attributes-using-custom-attributes-03.png)
+   ![](../static/target-with-custom-attributes-using-custom-attributes-03.png)
 
 You can also directly click within the IF field, type a new custom attribute ID, and click New attribute “your new ID” to create a new custom attribute.
 
 4. Complete the targeting rule by filling in the values to match against and choosing the treatment(s) to serve.
 
-    ![](./static/target-with-custom-attributes-using-custom-attributes-04.png)
+    ![](../static/target-with-custom-attributes-using-custom-attributes-04.png)
 
    Additional examples:
 
     Serve the `on` treatment for users with custom attribute `app_version` greater than or equal to 16.0.0:
 
-    ![](./static/target-with-custom-attributes-using-custom-attributes-04-app-version.png)
+    ![](../static/target-with-custom-attributes-using-custom-attributes-04-app-version.png)
 
     Serve the `on` treatment for users with custom attribute `age` greater than or equal to 20:
 
-    ![](./static/target-with-custom-attributes-using-custom-attributes-04-age.png)
+    ![](../static/target-with-custom-attributes-using-custom-attributes-04-age.png)
  
     Serve the `on` treatment for users with custom attribute `deal_size` between 500,000 and 10,000,000:
 
-    ![](./static/target-with-custom-attributes-using-custom-attributes-04-deal-size.png)
+    ![](../static/target-with-custom-attributes-using-custom-attributes-04-deal-size.png)
   
     Serve the `on` treatment for users with custom attribute `registered_date` on or after a specified date:
 
-    ![](./static/target-with-custom-attributes-using-custom-attributes-04-date.png)
+    ![](../static/target-with-custom-attributes-using-custom-attributes-04-date.png)
 
 ## Using regex with custom attributes
 
@@ -204,7 +204,7 @@ To target users with app version greater than or equal to 4.5 to get the on trea
 (\[5-9\]\\.\[0-9\]|\[4\]\\.\[5-9\]).*
 ```
 
-![](./static/targeting-1.png)
+![](../static/targeting-1.png)
 
 You can use the `matches` operator in the targeting rule editor within the Split user interface to match the value of a passed attribute (such as an app version) to a regular expression and specify treatment assignments for any versions that match the expression.
 
@@ -224,7 +224,7 @@ For this example, to serve the `on` treatment for all employees of split.io, we 
 @split.io$
 ```
 
-![](./static/targeting-2.png)
+![](../static/targeting-2.png)
 
 Example of passing the email attribute for the JavaScript SDK:
 
@@ -240,7 +240,7 @@ This example we are serving the on treatment to Chrome users only. However, we w
 Chrome\/[2-9][0-9]\.
 ```
 
-![](./static/targeting-3.png)
+![](../static/targeting-3.png)
 
 Example for the JavaScript SDK:
 
@@ -252,7 +252,7 @@ var attributes = {userAgent: "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/53
 
 An experiment is designed for English speaking users in any country by detecting the default language setting in the browser, the attribute passed is `navigatorLanguage en-`.
 
-![](./static/targeting-4.png)
+![](../static/targeting-4.png)
 
 Example for the JavaScript SDK:
 
@@ -268,7 +268,7 @@ To target an experiment that applies only to users that land on a specific URL, 
 http:\/\/mysite\.com\/my_url
 ```
 
-![](./static/targeting-5.png)
+![](../static/targeting-5.png)
 
 Example for the JavaScript SDK:
 
