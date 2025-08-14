@@ -123,14 +123,14 @@ This plugin exports a UI tab that you can use as a new **Kubernetes** tab for a 
 
 There are several annotations supported by the Kubernetes plugin, and you can use them in your service's `catalog-info.yaml` descriptor file to link to a Kubernetes entity. For details, go to the [plugin docs](https://backstage.io/docs/features/kubernetes/configuration#surfacing-your-kubernetes-components-as-part-of-an-entity).
 
-<!-- ### Adding the entity annotation
+### Adding the entity annotation
 
 In order for IDP to detect that an entity has Kubernetes components, the following annotation should be added to the entity's `catalog-info.yaml`:
 
 ```YAML
 annotations:
   'backstage.io/kubernetes-id': dice-roller
-``` -->
+```
 ### Adding the namespace annotation
 Entities can have the `backstage.io/kubernetes-namespace` annotation, this will cause the entity's Kubernetes resources to by looked up via that namespace.
 
@@ -139,12 +139,12 @@ annotations:
   'backstage.io/kubernetes-namespace': dice-space
 ```
 
-### Labeling Kubernetes components
+<!-- ### Labeling Kubernetes components
 In order for Kubernetes components to show up in the software catalog as a part of an entity, Kubernetes components themselves can have the following label:
 
 ```YAML
 'backstage.io/kubernetes-id': <BACKSTAGE_ENTITY_NAME>
-```
+``` -->
 
 ### Label selector query annotation
 You can write your own custom label selector query that Backstage will use to lookup the objects (similar to `kubectl --selector="your query here"`). Review the labels and selectors Kubernetes documentation for more info.
