@@ -172,6 +172,30 @@ The following rules are supported by Harness to perform evaluations, and Harness
 | 1.2.17                    | Unrestricted usage of GitHub Actions allowed in the repository      | GitHub   | Code Repository    | HIGH     |
 | 2.4.2                     | Unpinned GitHub Actions                                           | GitHub   | CI/CD  | MEDIUM   |
 
+</details>
+
+
+### OSS Top 10 Risks
+
+The OWASP Top 10 Open Source Software (OSS) Risks provide a clear framework for understanding critical security threats in open source dependencies, including outdated components, unmaintained projects, supply chain attacks, and malicious packages. For more detailed information, refer to the official [OWASP documentation](https://owasp.org/www-project-open-source-software-top-10/).
+
+<details> 
+
+<summary> OSS Top 10 Risks </summary>
+
+| **Risk ID**    | **Name**                              | **Description** |
+|----------------|---------------------------------------|-----------------|
+| **OSS-RISK-1** | Known Vulnerabilities                 | Component contains publicly disclosed security flaws with available exploits. |
+| **OSS-RISK-2** | Compromise of Legitimate Package      | A trusted package is tampered with at the source or in the registry. |
+| **OSS-RISK-3** | Name Confusion Attacks (Typo-Squatting)| Malicious packages with similar names trick developers into installing them. |
+| **OSS-RISK-4** | Unmaintained Software                 | No updates or activity from maintainers for an extended period, leaving it insecure. |
+| **OSS-RISK-5** | Outdated Software                     | Version is behind the latest release, missing important security or stability fixes. |
+| **OSS-RISK-6** | Untracked Dependencies                | Components introduced without visibility in SBOM or dependency lists. |
+| **OSS-RISK-7** | License & Regulatory Risk              | Components with incompatible or non-compliant licensing terms. |
+| **OSS-RISK-8** | Immature Software                     | Early-stage projects lacking documentation, testing, or stable releases. |
+| **OSS-RISK-9** | Unapproved Change (Mutable)           | Package versions change without a new release, breaking integrity guarantees. |
+| **OSS-RISK-10**| Under or Over-sized Dependency       | Dependencies that are disproportionately large or too minimal, creating maintainability or attack surface issues. |
+
 
 </details>
 
