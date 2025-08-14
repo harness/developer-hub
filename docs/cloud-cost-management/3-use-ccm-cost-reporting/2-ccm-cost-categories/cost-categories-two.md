@@ -1,5 +1,5 @@
 ---
-title: Cost Categories - Option One
+title: Cost Categories - Option 2
 description: CCM cost categories provide an understanding of where and how your money is being spent. Cost categories allow you to take data across multiple sources and attribute it to business contexts, such as…
 # sidebar_position: 1
 helpdocs_is_private: false
@@ -19,8 +19,6 @@ With Cost Categories, you can:
 - **Drill down into detailed cost analysis** - Examine specific cost buckets (e.g., the "Operations" team within a "Teams" category) to identify spending patterns
 - **Apply consistent cost attribution** - Use the same business contexts across different cloud providers and resource types
 - **Filter and group in CCM Perspectives** - Leverage your categories in reports and dashboards for comprehensive cost analysis
-
-<DocImage path={require('./static/what-is.png')} width="100%" height="100%" title="Click to view full size image" />
 
 <div style={{backgroundColor: '#f8fafc', padding: '20px', borderRadius: '8px', border: '1px solid #e2e8f0', marginBottom: '24px'}}>
 
@@ -110,7 +108,7 @@ Let's say your organization runs workloads in <span style={{backgroundColor: '#e
     </tr>
   </tbody>
 </table>
-<DocImage path={require('./static/example.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/environment.mp4')} width="100%" height="100%" title="Click to view full size image" />
 
 
 
@@ -122,7 +120,7 @@ Once this Cost Category is in place, you can use it in Perspectives to:
 </ul>
 </div>
 
-<DocImage path={require('./static/example-static.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/difference.mp4')} width="100%" height="100%" title="Click to view full size image" />
 
 </div>
 </details>
@@ -157,9 +155,8 @@ For more details on CCM permissions, see [CCM Roles and Permissions](/docs/cloud
 A cost category is composed of one or more buckets. Each bucket contains filters that collect data from specific sources.
    - Enter a descriptive name for the cost bucket (e.g., "Marketing Department")
    - Each bucket collects costs from data sources that belong to that department
-   - **Define Rules:** Add multiple conditions to a rule using the **AND** operator (Use to filter data sources that include both criteria)/ **OR** operator (Use to filter data sources that include one of the criteria)
-
-#### What are Rules?
+   - Add multiple conditions to a rule using the **AND** operator (Use to filter data sources that include both criteria)
+   - Add multiple rules using the **OR** operator (Use to filter data sources that include one of the criteria)
 
 <div style={{marginBottom: '10px'}}>Rules help you define which cloud resources to include in your Cost Bucket using a simple "Operand-Operator-Value" structure.</div>
 
