@@ -257,7 +257,9 @@ There are two flavours of images available first with serverless installed and o
 
 For ECR users, you can access these images via the [ECR Image Repository for Serverless Plugin](https://gallery.ecr.aws/harness/harness/serverless-plugin).
 
-For GAR users, you can access these images via the [GAR Image Repository for Serverless Plugin](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fserverless-plugin?invt=Ab2GnQ&inv=1).
+For GAR users, you can access these images via:
+- US region: [GAR Image Repository for Serverless Plugin (US)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fserverless-plugin?invt=Ab2GnQ&inv=1)
+- Europe region: [GAR Image Repository for Serverless Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fserverless-plugin?inv=1&invt=Ab5cNA)
 
 Now, let's understand the runtime image one with serverless installed and one without serverless installed. 
 
@@ -1162,7 +1164,7 @@ frameworkVersion: '2 || 3'
 
 provider:
   name: aws
-  runtime: nodejs20.x
+  runtime: nodejs12.x
 functions:
   hello:
     handler: handler.hello
