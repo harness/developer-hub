@@ -42,7 +42,7 @@ Harness CCM provides EC2 recommendations by integrating directly with AWS servic
 
 -------
 
-### Recommendation Summary
+### Recommendation Drilldown
 
  <DocImage path={require('../static/ec-rec-one.mp4')} width="90%" height="90%" title="Click to view full size image" />
 
@@ -57,10 +57,7 @@ Harness CCM provides EC2 recommendations by integrating directly with AWS servic
     - **Region**: The AWS region where the EC2 instance is located.
     - **Potential Monthly Cost**: Calcuted on On-demand cost
 
-### Resource Details and Utilization
-
  <DocImage path={require('../static/ec-rec-two.mp4')} width="90%" height="90%" title="Click to view full size image" />
-
 
 - **EC2 Details**: Resource metadata including any associated tags
 - **CPU and Memory Utilization Graph**: Visual representation of historical resource usage
@@ -72,13 +69,53 @@ Harness CCM provides EC2 recommendations by integrating directly with AWS servic
 </TabItem>
 <TabItem value="ecs" label="ECS Recommendations">
 
-### Resource Details and UtilizationTypes of ECS Recommendations
+### Before You Begin
+- To obtain ECS recommendations, configure an AWS CCM Connector with the Inventory Management feature enabled.
 
-ECS recommendations have one primary type: **Service Resizing**
+- No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role. See [Set Up Cloud Cost Management for AWS](/docs/cloud-cost-management/get-started/#aws).
 
-### Resource Details and UtilizationRecommendation Options
+-----
 
-#### Resource Details and UtilizationCost Optimized
+## Types of ECS Recommendations
+
+ECS recommendations have one primary type: **Service Resizing**. This recommendation analyzes your ECS service's CPU and memory utilization patterns and suggests optimized resource configurations to eliminate waste while maintaining appropriate performance levels. Service Resizing helps you right-size your container definitions based on actual workload requirements, reducing costs without compromising reliability.
+
+-----
+
+## How are ECS Recommendations computed?
+
+Harness CCM computes ECS recommendations by analyzing historical CPU and memory utilization patterns of your services. Here's how the process works:
+
+- **Service Analysis**: Recommendations analyze past utilization metrics for ECS workloads (called services)
+- **Coverage**: Supports both AWS Fargate and EC2 spot instances
+- **Methodology**: Uses histogram-based statistical analysis for accurate recommendations
+- **Default Buffer**: Automatically adds a 15% safety buffer to recommended resources
+
+### Data Collection Process
+
+When you enable Cost Visibility for your ECS cluster:
+
+1. **Metric Collection**: Harness collects CPU and memory utilization metrics for every service in the cluster at one-minute intervals
+2. **Data Aggregation**: The Delegate aggregates this data over 20-minute windows before sending to Harness
+3. **Data Processing**:
+   - **CPU**: Partial histograms for each 20-minute window are sent and later merged
+   - **Memory**: Maximum value is sent as a single data point per window
+   - These data points are used to compute the complete histograms displayed in the UI
+
+### Recommendation Calculation
+
+- **Equal Weighting**: Each daily histogram receives equal weightage in the analysis (e.g., selecting 30 days of data means each day has equal importance)
+- **Customization**: You can tune recommendations by adjusting the percentage buffer for CPU and memory requests
+- **Fargate Compatibility**: For AWS Fargate, recommendations are rounded to the nearest available predefined configuration values. For more information, see [AWS Fargate Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
+
+## Categorization
+
+The recommendations are categorized as the following:
+
+- Cost Optimized
+- Performance Optimized
+
+### Cost Optimized
 
 The cost-optimized recommendations are computed as follows:
 
@@ -92,52 +129,42 @@ The cost-optimized recommendations are computed as follows:
 Since the recommendations are computed using the 50th percentile of the CPU samples and memory peaks, this may potentially lead to system performance issues. Before using cost-optimized recommendations, ensure that you evaluate the recommendation's impact thoroughly.
 :::
 
-#### Resource Details and UtilizationPerformance Optimized
+### Performance Optimized
 
 The performance-optimized recommendations are computed using the **95th percentile** of CPU samples and memory peaks. Because of this, the probability of having any effect on the performance is minimum. However, the cost may go high for the resources that are optimized using this method.
 
 The potential monthly spend and savings are calculated based on the **90th percentiles** of CPU samples and memory peaks.
 
-### Resource Details and UtilizationTune Recommendations
+### Recommendation Drilldown
 
-You can tune recommendations by changing the percentage of recommended CPU and memory requests buffer.
+ <DocImage path={require('../static/ecs-details.png')} width="90%" height="90%" title="Click to view full size image" />
 
-### Resource Details and UtilizationHow are Recommendations Computed?
+The recommendation details page provides comprehensive information about potential savings and resource changes:
 
-The recommendations are computed by analyzing the past utilization of CPU and memory of your service. ECS workloads are called services.
+- **Potential Monthly Spend**: Projected cost if the recommendation is applied to your ECS service
+- **Potential Monthly Savings**: Expected monthly cost reduction after implementing the recommendation
+- **Resource Changes**: 
+  - Displays comparison between **Current** CPU/Memory requests and **Recommended** (Cost-Optimized or Performance-Optimized) values
+  - Shows exactly what configuration changes need to be made to realize the projected savings
+- **Resource Utilization Histogram**: 
+  - Visual representation of CPU/Memory usage patterns analyzed over your selected timeframe (7 or 30 days)
+  - Helps validate recommendation accuracy by showing the actual distribution of resource usage
 
-- ECS recommendations are computed both for AWS Fargate and EC2 spot instances.
-- The implementation uses a histogram method to compute the recommendations.
-- The computation adds a **15% buffer** to the recommended resources by default.
-- CCM allows you to add any additional buffer using the Tune recommendations option.
+ <DocImage path={require('../static/ecs-tune.png')} width="90%" height="90%" title="Click to view full size image" />
 
-#### Resource Details and UtilizationData Collection Process
+The tuning section provides configuration details and customization options:
 
-When you enable Cost Visibility for your ECS cluster:
+- **ECS Service Details**:
+  - Displays your **Cluster** name, **Service** name, and **Launch Type** (Fargate or EC2)
+  - Provides context for the recommendation based on your specific ECS configuration
 
-1. Harness starts collecting CPU and memory resource utilization metrics for every service present in the cluster every minute.
-2. The utilization data is aggregated in the Delegate for a 20-minute window.
-3. The 20-minute aggregated data is then sent to Harness:
-   - **CPU**: For CPU values, a partial histogram for the last 20 minutes is sent.
-   - **Memory**: The maximum value of the memory is sent as a single data point.
-4. This data is used for further processing and to compute the complete histogram displayed in the UI.
+- **Tune Recommendations**:
+  - Customize resource allocations by adding a **buffer percentage** to CPU/Memory values
+  - Use the interactive slider to increase or decrease buffer percentage based on your risk tolerance
+  - Default buffer is set to 0% (recommendations use exact calculated values)
+  - All resource recommendations automatically adjust based on your selected buffer
 
-#### Resource Details and UtilizationEqual Weightage Approach
 
-Each of these daily histograms has an equal weightage for a given task. As a result, if you select the last 30 days of data to aggregate, we will assign equal weightage to each of the 30 days.
-
-#### Resource Details and UtilizationAWS Fargate Considerations
-
-The task definitions for AWS Fargate can only be set to predefined values. For more information, go to AWS Fargate Task Definitions. Therefore, the recommendations are rounded off to the nearest configuration available on ECS Fargate.
-
-### Resource Details and UtilizationWhy Histogram?
-
-A histogram is used to account for the seasonality of high resource utilization on certain days of the week. Assume your application receives a lot of traffic (and thus a lot of resource utilization) on weekends, and we are using a decaying histogram. In that case:
-
-- If you view service recommendation on Friday and selected the last seven days of utilization data, then Saturday will be given the least weightage, followed by Sunday, hence the recommended resources will be low.
-- If you view the service recommendation on Monday, Sunday will be given the most weightage, hence your recommended resources may be high.
-
-To avoid this, we use the histogram method and give equal weight to all previous days.
 
 </TabItem>
 <TabItem value="governance" label="Governance Recommendations">
@@ -146,19 +173,7 @@ To avoid this, we use the histogram method and give equal weight to all previous
 
 Governance recommendations help you implement best practices for managing your AWS resources according to your organization's policies and compliance requirements.
 
-### Resource Details and UtilizationAvailable Governance Recommendations
-
-Harness CCM provides various governance recommendations for AWS resources to help you maintain compliance and optimize costs.
-
-For a complete list of supported governance recommendations, see [Asset Governance](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/asset-governance).
-
-### Resource Details and UtilizationKey Benefits
-
-- Ensure compliance with organizational policies
-- Identify resources that don't adhere to best practices
-- Reduce security risks
-- Optimize resource utilization
-- Implement consistent tagging and resource management
+To see all AWS Governance recommendations, [See here](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/aws/aws-recommendations)
 
 </TabItem>
 </Tabs>
