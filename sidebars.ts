@@ -1364,7 +1364,7 @@ const sidebars: SidebarsConfig = {
       items: [ 
       {
         type: "html",
-        value: '<span style="color:#000000; font-weight:1000;">New to CCM?</span>',
+        value: 'New to CCM?',
         className: "horizontal-bar",
       },
       "cloud-cost-management/get-started/overview",
@@ -1372,7 +1372,7 @@ const sidebars: SidebarsConfig = {
       "cloud-cost-management/get-started/onboarding-guide/external-data-ingestion",
       {
         type: "html",
-        value: '<span style="color:#000000; font-weight:1000;"> Use CCM </span>',
+        value: 'Use CCM',
         className: "horizontal-bar",
       },
       "cloud-cost-management/get-started/key-concepts",
@@ -1483,7 +1483,7 @@ const sidebars: SidebarsConfig = {
       },
       {
         type: "html",
-        value: '<span style="color:#000000; font-weight:1000;">Troubleshooting & Resources</span>',
+        value: 'Troubleshooting & Resources',
         className: "horizontal-bar",
       },
       "cloud-cost-management/whats-supported",
@@ -1708,7 +1708,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "html",
-          value: '<span style="color:#000000; font-weight:1000;"> Getting Started </span>',
+          value: 'Getting Started',
           className: "horizontal-bar",
         },
         "chaos-engineering/overview",
@@ -1718,7 +1718,7 @@ const sidebars: SidebarsConfig = {
         "chaos-engineering/quickstart",
         {
           type: "html",
-          value: '<span style="color:#000000; font-weight:1000;"> Guides </span>',
+          value: 'Guides',
           className: "horizontal-bar",
         },
         {
@@ -1800,7 +1800,7 @@ const sidebars: SidebarsConfig = {
         "chaos-engineering/guides/license-consumption",
         {
           type: "html",
-          value: '<span style="color:#000000; font-weight:1000;"> Faults </span>',
+          value: 'Faults',
           className: "horizontal-bar",
         },
         "chaos-engineering/faults/chaos-faults",
@@ -1825,7 +1825,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "html",
-          value: '<span style="color:#000000; font-weight:1000;"> Integrations </span>',
+          value: 'Integrations',
           className: "horizontal-bar",
         },
         {
@@ -1850,7 +1850,7 @@ const sidebars: SidebarsConfig = {
 
         {
           type: "html",
-          value: '<span style="color:#000000; font-weight:1000;"> Security </span>',
+          value: 'Security',
           className: "horizontal-bar",
         },
         "chaos-engineering/security/index",
@@ -2215,7 +2215,7 @@ const sidebars: SidebarsConfig = {
       items: [ 
       {
         type: "html",
-        value: '<span style="color:#000000; font-weight:1000;"> New to CDE? </span>',
+        value: 'New to CDE?',
         className: "horizontal-bar",
       },
       "cloud-development-environments/overview",
@@ -2239,7 +2239,7 @@ const sidebars: SidebarsConfig = {
       },
       {
         type: "html",
-        value: '<span style="color:#000000; font-weight:1000;"> Use CDE </span>',
+        value: 'Use CDE',
         className: "horizontal-bar",
       },
       {
