@@ -1,11 +1,11 @@
 {
-    "label": "Custom Plugins",
+    "label": "Harness Modules",
     "collapsible": "true",
     "collapsed": "true",
-    "position": 5,
+    "position": 4,
     "link": {
       "type": "generated-index",
-      "title": "Custom Plugins"
+      "title": "Harness Native Plugins for IDP"
     },
     "customProps": {}
   }
