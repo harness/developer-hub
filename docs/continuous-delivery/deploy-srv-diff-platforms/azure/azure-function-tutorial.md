@@ -113,6 +113,8 @@ In the deploy steps under Container Configuration, specify the appropriate image
 
 1. [ECR Image for azure function plugin](https://gallery.ecr.aws/harness/harness/azure-function-plugin)
 2. [Docker Image for azure function plugin](https://hubgw.docker.com/r/harnessdev/azure-function-plugin)
+3. GAR Images for azure function plugin:
+   - Europe region: [GAR Image Repository for Azure Function Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fazure-function-plugin?inv=1&invt=Ab5cNA)
 
 :::
 
