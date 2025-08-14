@@ -222,10 +222,6 @@ Select the Terraform Cloud organization that includes the workspace you want to 
 
 Select the **Project** that includes the workspace you want to run. 
 
-:::note
-Currently, adding a project is behind the feature flag `CDS_TF_PROJECTS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 This field is **optional**. If you populate it, the list of workspaces in the dropdown will be filtered to show only those associated with the selected project. 
 
 If left blank, all workspaces within the specified organization will be displayed.
