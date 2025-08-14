@@ -322,3 +322,17 @@ As a result, while the recommendations are accurately calculated using both CPU 
 Read more: [External metrics ingestion](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html)
 </details>
 
+<details>
+<summary>Why should I evaluate recommendations before implementing them?</summary>
+
+Before using recommendations in your environment, ensure that you evaluate their impact thoroughly. The person reviewing the recommendations should be able to understand the impacts identified in the recommendations, as well as the impact on the infrastructure and business.
+
+Using recommendations without proper assessment could result in unexpected changes, such as:
+
+- Performance degradation for critical workloads
+- Reliability issues during peak usage periods
+- Incompatibility with specific application requirements
+- Business disruption if services become unavailable or slow
+
+</details>
+

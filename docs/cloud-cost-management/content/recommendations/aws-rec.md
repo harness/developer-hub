@@ -175,5 +175,16 @@ Governance recommendations help you implement best practices for managing your A
 
 To see all AWS Governance recommendations, [See here](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/aws/aws-recommendations)
 
+
+### AWS Resource Coverage (Examples)
+
+- EC2 instances
+- S3 buckets
+- Lambda functions
+- RDS (Relational Database Service) instances
+- CloudFormation stacks
+
+For a comprehensive list of all supported AWS resources, refer to the [AWS Resource Reference — Cloud Custodian documentation.](https://cloudcustodian.io/docs/aws/resources/index.html)
+
 </TabItem>
 </Tabs>
