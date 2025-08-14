@@ -6,10 +6,27 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ## Azure Recommendations
 
-Azure Cloud Cost Management provides three types of recommendations to help optimize your cloud costs:
+Azure Cloud Cost Management provides two types of recommendations to help optimize your cloud costs:
 
 <Tabs>
 <TabItem value="vm" label="Azure VM">
+
+
+### Before You Begin
+
+- Connect your Azure cloud account in Harness and [set up CCM for cost management](/docs/cloud-cost-management/get-started/#azure).
+- Cost Visibility and the Inventory Management features should be enabled on your Azure CCM connector.
+- Enabling the **Visibility** feature allows retrieving recommendations from the Azure Advisor. The **Inventory Management** feature allows you to fetch the CPU utilization data and display the corresponding recommendations. If the Inventory Management feature is not enabled, the graph and table may show a null state.
+- Connect to Azure Advisor to receive recommendations for cost optimization: 
+    - Sign in to the Azure portal > Advisor > Configuration.
+    - All resources are selected by default. However, you can deselect to exclude resources for which you do not wish to receive recommendations.
+    - Select the VM/VMSS right sizing tab.
+    - Select the subscriptions. This is required to receive VM rightsizing recommendations. The default CPU utilization is 100% and the default Look back period is 7 days.
+
+
+------
+
+## Types of Azure VM recommendations
 
 An effective way to reduce Azure VM costs is to optimize VM utilization. This involves resizing idle or underutilized VMs based on active tasks and shutting down unused VMs.
 
@@ -19,38 +36,21 @@ Virtual machines are considered low-utilization:
 
 * If the current workload can be accommodated by a smaller sized virtual machine.
 
-You can view the recommendations for your Azure VMs on the **Recommendations** page. 
-
-:::note
-Before using recommendations in your environment, ensure that you evaluate their impact thoroughly. The person reviewing the recommendations should be able to understand the impacts identified in the recommendations, as well as the impact on the infrastructure and business.
-
-Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
-:::
-
-:::note
-Enabling the **Visibility** feature allows retrieving recommendations from the Azure Advisor. The **Inventory Management** feature allows you to fetch the CPU utilization data and display the corresponding recommendations. If the Inventory Management feature is not enabled, the graph and table may show a null state.
-:::
-
-## How are Azure recommendations computed?
-
-The recommendations are computed by analyzing the past CPU utilization. Harness CCM leverages the Azure Advisor recommendations. CCM uses the Azure APIs to retrieve data from the Azure account.
-
-:::note
-Azure Advisor automatically runs in the background to find newly created resources. It can take up to 24 hours to provide recommendations on those resources as well as the newly created connectors for existing VMs.
-:::
-
-### Configure Azure Advisor
-
-You must configure Azure Advisor to receive recommendations for cost optimization. For more information, go to [Enable Azure recommendations](../../get-started/onboarding-guide/set-up-cost-visibility-for-azure.md#enable-azure-recommendations).
-
-## Types of Azure VM recommendations
-
 Harness CCM provides two types of recommendations to optimize your VMs:
 
 * **VM Rightsizing**: In this type of recommendation, CCM recommends resizing your VM based on usage. For information about the different types of Azure VMs, go to [Available instance types](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes). 
 
 * **Shutdown**: In this type of recommendation, the instance is terminated or shutdown if not in use for a long time.  
   
+------
+
+## How are Azure recommendations computed?
+
+The recommendations are computed by analyzing the past CPU utilization. Harness CCM leverages the Azure Advisor recommendations. CCM uses the Azure APIs to retrieve data from the Azure account.
+
+Azure Advisor automatically runs in the background to find newly created resources. It can take up to 24 hours to provide recommendations on those resources as well as the newly created connectors for existing VMs.
+
+-------
 
 ## How Pricing Works for Azure VM Recommendations
 
@@ -85,10 +85,40 @@ Here whatever Azure Advisor tells the savings is, we consider that cost of curre
 The savings number shown in recommendation directly comes from Azure Advisor, Harness does not change it. 
 :::
 
+------
+
+## Recommendation Drilldown
+
+When you click on an individual recommendation, the following details are shown:
+
+<DocImage path={require('../static/azure-drilldown.png')} width="90%" height="90%" title="Click to view full size image" />
+
+- **Potential Monthly Spend**: Projected cost with and without recommendations
+- **Potential Monthly Savings**: Expected monthly cost reduction
+- **Current and Recommended**:
+    - VM Size
+    - CPU (cores)
+    - Memory (MiB)
+    - CPU Utilization (avg)
+    - Memory Utilization (avg)
+    - Region
+    - Potential monthly cost (current and after recommendation)
+- **CPU and Memory Utilisation Graph**: Visual representation of historical CPU and memory usage (Maximum and Average)
 
 </TabItem>
 <TabItem value="governance" label="Governance">
 
-See details about Azure governance recommendations here: [Azure Governance Recommendations](./azure-governance-rec.md)
+To see all Azure Governance recommendations, [See here](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/azure/azure-recommendations)
+
+### Azure Resource Coverage (Examples)
+
+- Virtual Machines (VMs)
+- Storage accounts
+- App services
+- Cosmos DB accounts
+- Key Vaults
+
+For a comprehensive list of all supported Azure resources, refer to the [Azure Resource Reference — Cloud Custodian documentation.](https://cloudcustodian.io/docs/azure/resources/index.html)
+
 </TabItem>
 </Tabs>
