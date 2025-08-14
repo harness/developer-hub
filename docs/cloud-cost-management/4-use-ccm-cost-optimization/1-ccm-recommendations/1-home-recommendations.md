@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Recommendations in Harness CCM
 description: Learn about the recommendations summary page and the various actions that you can perform on this page.
 # sidebar_position: 2
 ---
