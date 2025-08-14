@@ -540,10 +540,8 @@ and found no differences, so no changes are needed.
 
 ## Store Terraform Plan on Harness Delegate
 
-:::important
-* This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-
-* This option requires Harness Delegate version 24.04.82705 or later.
+:::info
+This setting requires Harness Delegate version 24.04.82705 or later.
 :::
 
 Enable the **Store terraform plan on delegate** option on the Terraform Plan step to store the Terraform Plan on Harness Delegate temporarily. This is particularly useful if you don't want to save the Terraform Plan files on Secrets Manager or if there is a file size limit on Secrets Manager. 

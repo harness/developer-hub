@@ -726,7 +726,7 @@ This issue has been resolved. The Monitored Services page now supports opening v
 
 #### New Features and Enhancements
 
-- Users can now select the Project that includes the workspace you want to run inside **Terraform Cloud Run Step**. Currently, this feature is behind the feature flag `CDS_TF_PROJECTS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (**CDS-98549, ZD-63376**)
+- Users can now select the Project that includes the workspace you want to run inside **Terraform Cloud Run Step**. (**CDS-98549, ZD-63376**)
 
 - Users can now fetch Service Manifest source i.e Connector URL where manifest is stored using an expressions `<+manifests.MANIFEST_ID.store.connectorUrl>`. Currently, this feature is behind the feature flag `CDS_MANIFEST_CONNECTOR_URL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-107797**)
 
@@ -1175,7 +1175,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 
 #### New features and enhancements
 
-- Approval APIs now support Service Account tokens for approving or rejecting Harness Manual Approval steps. For more information, go to Harness [Using Approval API](/docs/platform/approvals/adding-harness-approval-stages#using-the-approvals-api-with-service-account-authentication). This feature is behind a feature flag `CDS_SERVICE_ACCOUNT_SUPPORT_IN_HARNESS_APPROVAL`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-97580, ZD-64388)
+- Approval APIs now support Service Account tokens for approving or rejecting Harness Manual Approval steps. For more information, go to Harness [Using Approval API](/docs/platform/approvals/adding-harness-approval-stages#using-the-approvals-api-with-service-account-authentication). (CDS-97580, ZD-64388)
 
 - Harness now supports webhooks configured with **GitLab System Hooks** to trigger pipelines. For more information, go to Harness [GitLab System Hooks](/docs/platform/triggers/triggers-reference/#gitlab-system-hooks). (CDS-95423)
 
@@ -1185,7 +1185,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 
 - Harness has introduced native supports for **Canary** and **Blue-Green** Deployment strategies with Helm Chart deployments. For more information, go to Harness [Helm Chart deployments](/docs/category/helm-step-reference/). This feature is behind a feature flag `CDS_HELM_BG_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-35715)
  
-- Harness now supports for enabling metrics in ASG deployments. For more information, go to Harness [ASG Additional Configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial/#asg-additional-configuration). This feature is behind a feature flag `CDS_ASG_ENABLE_METRICS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-99276)
+- Harness now supports for enabling metrics in ASG deployments. For more information, go to Harness [ASG Additional Configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial/#asg-additional-configuration). (CDS-99276)
 
 - Harness now detects the failure state of CRDs in the Kubernetes Apply step when CRDs behave like jobs. (CDS-98761)
 
@@ -1721,7 +1721,7 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 
 #### Early access
 
-- You can now store Terraform Plan files on Harness Delegate temporarily. This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. This feature requires Harness Delegate version 24.04.82705 or later. For more information, go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate). (CDS-85209)
+- You can now store Terraform Plan files on Harness Delegate temporarily. This feature requires Harness Delegate version 24.04.82705 or later. For more information, go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate). (CDS-85209)
 
 #### Fixed issues
 
