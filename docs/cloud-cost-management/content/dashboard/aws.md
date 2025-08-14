@@ -1,35 +1,12 @@
----
-title: AWS Cost Dashboard
-description: This topic describes how to view By Harness AWS Cost Dashboard and get more information about that data.
-# sidebar_position: 2
-helpdocs_topic_id: u3yxrebj6r
-helpdocs_category_id: v3h3y6pya6
-helpdocs_is_private: false
-helpdocs_is_published: true
----
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/RedirectIfStandalone';
 
-# View AWS Cost Dashboard
+<RedirectIfStandalone label="AWS" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
-Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS Cost Dashboard** you can:
+<Tabs>
 
-* Discover new analytical insights into your AWS cloud costs
-* Track various cloud cost indicators across different zones and time range
-* Explore the cloud cost data in a logical and structured manner
-* View your cloud costs at a glance, understand what is costing the most, and analyze cost trends
-  
-This topic describes how to view the **By Harness AWS Cost Dashboard** and get more information about that data.
-
-  ![](./static/aws-dashboard-00.png)
-
-## Prerequisites
-
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](/docs/cloud-cost-management/access-control/manage-access-control-for-ccm-dashboards.md).
-* Ensure that you have set up Cloud Cost Management (CCM) for the [AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md) cloud provider.
-* Ensure that you have added all the required permissions for your cloud provider. The data available in the Dashboard depends on the permissions you provided to the AWS cloud provider when setting up the CCM. For more information, see Select Features in [Set up cost visibility for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-access-permissions).
-
-## Data Ingestion for Dashboard
-
-After setting up cost visibility for the [AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md) cloud provider and the data is available in the Perspective, you can view **AWS Cost Dashboard**. The data in the Dashboard is updated dynamically.
+<TabItem value="aws-cost" label="AWS Cost Dashboard">
 
 ## View AWS Cost Dashboard
 
@@ -41,71 +18,50 @@ Perform the following steps to view AWS Cost Dashboard:
   
     The AWS Cost Dashboard is displayed.
   
-| **Dimensions** | **Description** | **Context and Visibility** |
-|---|---|---|
-| Total Cost | The total AWS cost with cost trend. | ![](./static/aws-dashboard-14.png) |
-| Forecasted Cost  |The forecasted cloud cost with cost trend. Forecasted cost is the prediction based on your historical cost data, and it is predicted for the same future time period as your selected time range.   | ![](./static/aws-dashboard-15.png)  |   
-| Top 20 AWS accounts | The cost of the top 20 AWS account you are using to connect Harness to AWS via a Harness AWS Cloud Provider. | ![](./static/aws-dashboard-03.png) |
-| Top Cost Trend by Services | The top AWS services by cost increase or decrease | ![](./static/aws-dashboard-17.png) |
-| Historical and Forecasted Cost | The historical and forecasted AWS cost. Forecasted cost is the prediction based on your historical cost data and it is predicted for the same future time period as your selected time range. | ![](./static/aws-dashboard-16.png) |
-| Current Period vs Last Period | The cost of the current and previous time range. | ![](./static/aws-dashboard-18.png) |
-| Most Expensive Services by Month | Top five services that incurred the maximum cost per month. | ![](./static/aws-dashboard-19.png) |
+| **Dimensions** | **Description** |
+|---|---|
+| Total Cost | The total AWS cost with cost trend. |
+| Forecasted Cost  |The forecasted cloud cost with cost trend. Forecasted cost is the prediction based on your historical cost data, and it is predicted for the same future time period as your selected time range. |
+| Top 20 AWS accounts | The cost of the top 20 AWS account you are using to connect Harness to AWS via a Harness AWS Cloud Provider. |
+| Top Cost Trend by Services | The top AWS services by cost increase or decrease |
+| Historical and Forecasted Cost | The historical and forecasted AWS cost. Forecasted cost is the prediction based on your historical cost data and it is predicted for the same future time period as your selected time range. |
+| Current Period vs Last Period | The cost of the current and previous time range. |
+| Most Expensive Services by Month | Top five services that incurred the maximum cost per month. |
 
 3. Select **Time Range** to filter the data based on pre-defined time range filters. The available filters are:
-	* Last 7 Days
-	* Last 30 Days
-	* Last 90 Days
-	* Last 12 months
-	* Last 24 months
+    * Last 7 Days
+    * Last 30 Days
+    * Last 90 Days
+    * Last 12 months
+    * Last 24 months
 4. After selecting the Time Range filter, click the **Refresh** icon. The data is refreshed with the latest data from the database.
    
 5. Hover on the chart to see the cost details.
    
-     ![](./static/aws-dashboard-03.png)
+
 6. In **Cost by AWS** **Account**, click the up or down arrow button to scroll up or down the list. The list shows the percentage of each AWS account with respect to the cost contribution.
-   
-     ![](./static/aws-dashboard-04.png)
+
 7. In **Historical and Forecasted Cost**, click on the chart to further drill into the cost details **by Time Period/Time**.
    
-     ![](./static/aws-dashboard-05.png)
-	 
-	 The cost for the selected Time period is displayed. You can toggle between the **Visualization** tab that displays the data in the form of a graph and the **Table** tab that displays the actual cost. You can download this data to your local system.
-	 
-	   ![](./static/aws-dashboard-06.png)
+
+     The cost for the selected Time period is displayed. You can toggle between the **Visualization** tab that displays the data in the form of a graph and the **Table** tab that displays the actual cost. You can download this data to your local system.
+     
+
 8. In **Most Expensive Services by Month**, click on the chart to further drill into the cost details:
   
-	
-	  	  	   ![](./static/aws-dashboard-07.png)
 
-	The cost data for the selected filter is displayed.
-
-	  	   ![](./static/aws-dashboard-08.png)
-
-		
-	![](./static/aws-dashboard-09.png)
-
-	  
+    The cost data for the selected filter is displayed.
 
 9.  You can further drill into **by Time Period/Time** cost details in the resulting dashboard.
-    
-	  ![](./static/aws-dashboard-11.png)
-	
-	  The cost data for the selected filter is displayed.
 
-    ![](./static/aws-dashboard-12.png)
+      The cost data for the selected filter is displayed.
+
+
 
 
 10. Click **Download** to download the Dashboard. See [Download Dashboard Data](../../../platform/dashboards/download-dashboard-data.md).
 11. Click the **Filter** icon to hide or show the filters.
     
-	  ![](./static/aws-dashboard-13.png)
-
-### See Also
-
-Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
-
-* [Create Dashboards](../../../platform/dashboards/create-dashboards.md)
-* [Create Visualizations and Graphs](../../../platform/dashboards/create-visualizations-and-graphs.md)
 
 ### SCAD-Related Columns for AWS
 
@@ -138,16 +94,13 @@ Along with the following labels:
  
 **Scenario:**
 - Usage in a single hour:
-	- One instance (m5.xlarge) shared by two namespaces and four pods, running for a full hour.
-	- Instance configuration: 4 vCPUs and 16 GB memory.
-	- Amortized cost of the instance: $1/hr.
+    - One instance (m5.xlarge) shared by two namespaces and four pods, running for a full hour.
+    - Instance configuration: 4 vCPUs and 16 GB memory.
+    - Amortized cost of the instance: $1/hr.
 
 **Step 1: Compute the unit cost for CPU and memory**
 
 - Unit-cost-per-resource: 
-![](./static/step1_scad.png) 
-
-![](./static/step2_scad.png) 
 
 :::note
 
@@ -285,10 +238,102 @@ The `eks_namespace` labels won’t display `netamortisedcost` and `amortisedcost
 
 The `kube-system` namespace is the only one that will reflect `netamortisedcost` and `amortisedcost` values. This is because AWS provides `blendedcost` and `unblendedcost` fields exclusively for this namespace, allowing us to calculate the amortised and net amortised cost values. These calculated values are stored in the `awscur_<<month_year>>` table and subsequently persisted in the `unifiedTable` as `awsAmortisedCost` and `awsNetAmortisedCost`.
 
-### Next Steps
+</TabItem>
 
-* [Use Dashboard Actions](../../../platform/dashboards/use-dashboard-actions.md)
-* [Download Dashboard Data](../../../platform/dashboards/download-dashboard-data.md)
-* [Create Conditional Alerts](../../../platform/dashboards/create-conditional-alerts.md)
-* [Schedule and Share Dashboards](../../../platform/dashboards/share-dashboards.md)
+<TabItem value="orphaned-resources" label="Orphaned EBS Volumes & Snapshots">
 
+## View Orphaned EBS Volumes and Snapshots Dashboard
+
+Perform the following steps to view Orphaned EBS Volumes and Snapshots Dashboard:
+
+1. In Harness, click **Dashboards**.
+2. Click **Orphaned EBS Volumes and Snapshots Dashboard**.
+3. In **EBS Volume Creation Date**, select the date. You can add multiple OR conditions.
+   
+4. In **EBS Volume Cost Date**, select the date range.  
+  
+     By default, **This Month** is selected.
+  * **Presets**: Select a Preset filter. For example, Today, Yesterday, etc.
+
+  
+  * **Custom**: Custom allows you to select the date range.
+
+5. In **Snapshot Creation Date**, select the date. You can add multiple OR conditions.
+6. Once you have selected all the filters, click **Update**.  
+  
+The **Orphaned EBS Volumes and Snapshots Dashboard** is displayed.
+
+</TabItem>
+
+<TabItem value="ec2-metrics" label="EC2 Instance Metrics">
+
+
+Perform the following steps to view AWS EC2 Instance Metrics Dashboard:
+
+1. In Harness, click **Dashboards**.
+2. Click **AWS EC2 Instance Metrics Dashboard**.
+3. Select **EC2 Instance Id** from the drop-down list for which you want to view the details. You can select multiple IDs.
+4. In **Metrics start time date**, select the time duration. You can select the preset value or use custom.  
+By default, the **Last 30 Days** is selected.
+   1. **Presets**: Select a Preset filter. For example, Today, Yesterday, etc.
+    2. **Custom**: Custom allows you to select the date range.
+   
+5. Select the Public IP Address.
+6. Once you have selected all the filters, click **Update**.  
+  
+The **EC2 Instance Metrics Dashboard** is displayed.
+
+</TabItem>
+
+<TabItem value="ec2-inventory" label="EC2 Inventory Cost">
+
+## AWS EC2 Inventory Cost Dashboard
+
+
+Perform the following steps to view AWS Cost Dashboard:
+
+1. In Harness, click **Dashboards**.
+2. Click **AWS EC2 Inventory Cost Dashboard**.
+3. Select the Current State.
+4. Select the **Region**.
+5. Select the **AWS Account**.
+6. Select **EC2 Last updated time Date**.  
+  
+    By default, the **Last 30 Days** is selected.
+      1. **Presets**: Select a Preset filter. For example, Today, Yesterday, etc.
+ 
+      2. **Custom**: Custom allows you to select the date range.
+   
+7. Drag the slider to define the **Current CPU Max (%)**.
+8. Select the value for **Public IP Address**.
+9. Once you have selected all the filters, click **Update**.  
+  
+The **AWS EC2 Inventory Cost Dashboard** is displayed.
+
+</TabItem>
+
+<TabItem value="resource-breakdown" label="Resource Breakdown">
+
+
+## View AWS Resource Breakdown Dashboard
+
+Perform the following steps to view AWS Resource Breakdown Dashboard:
+
+1. In Harness, click **Dashboards**.
+2. Select **By Harness** and click **AWS** **Resource Breakdown**.  
+  
+The **AWS Resource Breakdown Dashboard** is displayed:  
+
+| **Dimension** | **Description** |
+| --- | --- |
+| Monthly Cost Breakdown | Includes the monthly cost of all the AWS resources. |
+| Resource Level Cost Breakdown | Includes the resource level cost breakdown. |
+
+3. In **Reporting Timeframe**, select the time duration.
+4. In **Account**, select the account for which you want to view the cost. You can select multiple accounts.
+5. In **Service**, select the service for which you want to view the cost. You can select multiple Services.
+6. In **Region**, select the region. You can select multiple regions.
+7. Once you have made all the selections, click **Update**. The data is refreshed with the latest data from the database.
+</TabItem>
+
+</Tabs>
