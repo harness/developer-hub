@@ -25,12 +25,13 @@ These release notes describe recent changes to Harness Database DevOps.
 ## July 2025
 
 ### Release 1.49.x
-The `1.49.x` release introduces key improvements across schema discovery, rollback tracking, and platform extensibility. Rollback operations are now enhanced with richer metadata capture, helping teams trace rollback executions via the `changesetmetadata` model.
+The `1.49.x` release introduces key improvements across schema discovery, rollback tracking, and platform extensibility. Additionally, the platform now supports optional Primary DB instanceId, streamlining deployments across multi-instance environments.
 
 #### Key Highlights:
 
 * **✅ Feature Enhancements:**
   - Rollbacks now generate detailed metadata entries, helping teams understand when and why a rollback occurred, especially when using `rollback-by-count`.
+  - The platform now supports optional Primary DB instanceId, streamlining deployments across multi-instance environments.
 
 **Minimum Supported Versions:**
 - `ngmanager` – 1.49.x
