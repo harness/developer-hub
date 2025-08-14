@@ -184,7 +184,13 @@ Use traffic types to easily identify the customer traffic you are splitting. A t
 
 ### Testing with feature flags
 
-Feature flags can be integrated into a variety of testing strategies across the software development lifecycle. In quality assurance and engineering workflows, they support unit tests, end-to-end tests, smoke tests, lifecycle testing, A/B testing, and both shift-left and shift-right practices. Teams can also use localhost mode to validate flag behavior in isolation or as part of CI pipelines. 
+Feature flags can be integrated into a variety of testing strategies across the software development lifecycle. In quality assurance and engineering workflows, they support unit, smoke, regression, sanity, and end-to-end testing, along with lifecycle testing, usability testing (moderated, unmoderated, think-aloud, remote), A/B testing, benchmark testing, and accessibility checks. 
+
+* **[Smoke testing](https://www.harness.io/blog/differences-between-smoke-testing-and-sanity-testing)**: A quick validation that critical functionality works before deeper testing begins.
+* **[Regression testing](https://www.harness.io/blog/comparing-smoke-tests-to-regression-tests)**: Ensures recent changes haven’t broken existing functionality.
+* **[Sanity testing](https://www.harness.io/blog/differences-between-smoke-testing-and-sanity-testing)**: A fast check that recent fixes or updates didn’t disrupt core features.
+
+Teams can also use localhost mode to validate flag behavior in isolation or as part of CI pipelines, and apply flags in both shift-left and shift-right practices. 
 
 For guidance on incorporating feature flags into these workflows, see [Creating Unit Tests for Code Using FME SDKs](/docs/feature-management-experimentation/api/unit-tests) and [Using Test Automation in QA](/docs/feature-management-experimentation/api/test-automation).
 
@@ -236,12 +242,10 @@ This list may change in the event of a failover, so we recommend subscribing to 
 
 Split uses a third-party provider, SendGrid, to send user invitations. If your spam blocker prevents these from being delivered, allow the following IP address: `168.245.9.60`.
 
-### Additional topics
+## Further Reading
 
-* Integrate & automate: Understand Split’s API and connect Split with the solutions you use today.
+Additional documentation, blog blog links, and articles:
 
-* Working as a team: Functionality for teams that need more controls and additional organization.
-
-* Securing your data: Carry your security best practices through into Split.
-
-* Support: Understand support definitions and incident response times.
+- [Testing Redesigned Data Pipelines with Split](https://www.harness.io/blog/testing-pipelines-split)
+- [Understanding Different Types of Usability Testing](https://www.harness.io/blog/types-of-usability-testing)
+- [Differences Between Smoke Testing and Sanity Testing](https://www.harness.io/blog/differences-between-smoke-testing-and-sanity-testing#feature-flags-and-their-role-in-testing)

@@ -65,3 +65,9 @@ You can assign the following metric categories to your experiment any time after
 * Supporting metrics, which offer additional context, even if they’re not directly related to the experiment’s success criteria.
 
 For more information, see the [Metrics documentation](/docs/feature-management-experimentation/experimentation/metrics/).
+
+## Further Reading
+
+Additional documentation, blog links, and articles:
+
+- [A/B Testing For Feature Flags, What It Is And What It Shouldn’t Be](https://www.harness.io/blog/a-b-testing-for-feature-flags-what-it-is-and-what-it-shouldnt-be)

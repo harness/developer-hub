@@ -110,3 +110,10 @@ If your feature flag uses random percentage-based targeting, user bucketing will
 Rather than migrating flags, Harness recommends setting up workspaces in advance and having teams use their designated workspace for all net-new releases. 
 
 Existing feature flags should remain in the current (often “Default”) workspace until they are fully removed from code. This strategy avoids disruption and allows teams to incrementally adopt their own workspaces without impacting production traffic.
+
+## Further Reading
+
+Additional documentation, blog links, and articles:
+
+- [Parity Testing With Feature Flags](https://www.harness.io/blog/parity-testing-with-feature-flags)
+- [Comparing Smoke Tests to Regression Tests](https://www.harness.io/blog/comparing-smoke-tests-to-regression-tests)
