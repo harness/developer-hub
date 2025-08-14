@@ -23,13 +23,13 @@ With Cost Categories, you can:
 
 **The logic behind cost categories is simple: Create [Rules that bring in cost data](#what-are-rules) -> Rules combine to form [Cost Bucket](#define-your-cost-buckets) -> Cost Buckets combine to form Cost Category**
 
-**For example:** Tracking costs for a Marketing team:
+**For example:** Imagine your company has multiple departments. You want better visibility into marketing spend across various campaigns and cloud platforms. Currently, marketing costs are scattered across parts of AWS resources (for digital marketing), GCP resources (for YouTube marketing), and some kubernetes Clusters (for social media marketing tools):
 
 * **Create a Cost Category** called "Marketing"
 * **Add Cost Buckets** to this category:
-  * "Digital Marketing" - with rules for AWS resources
+  * "Digital Marketing" - with rules for AWS resources 
   * "YouTube Marketing" - with rules for GCP resources
-  * "Social Media Marketing" - with rules for Kubernetes clusters
+  * "Social Media Marketing" - with rules for Kubernetes clusters 
 * **Result:** A comprehensive view of all Marketing costs across multiple cloud platforms
 
 <DocImage path={require('./static/what-is.png')} width="100%" height="100%" title="Click to view full size image" />
