@@ -4,7 +4,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 <RedirectIfStandalone label="AWS" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
-# Azure Recommendations
+## Azure Recommendations
 
 Azure Cloud Cost Management provides three types of recommendations to help optimize your cloud costs:
 
