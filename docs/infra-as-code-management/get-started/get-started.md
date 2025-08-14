@@ -231,4 +231,4 @@ When using an Approval step, the underlying machine running the pipeline remains
 Go to [pipeline approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step) for more details about approval steps and how they work.
 
 ## Conclusion
-This guide introduced you to the core functionalities and setup of Harness IaCM, from creating workspaces to configuring pipelines. For further learning and performance analysis, explore the [Project Setup guides](/docs/category/project-settings) and [Reporting & Insights guides](/docs/category/reports--insights) to enhance your infrastructure management with Harness.
+This guide introduced you to the core functionalities and setup of Harness IaCM, from creating workspaces to configuring pipelines. For further learning and performance analysis, explore the [Project Setup guides](/docs/category/manage-projects) and [Reporting & Insights guides](/docs/category/reports--insights) to enhance your infrastructure management with Harness.

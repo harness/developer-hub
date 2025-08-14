@@ -3,10 +3,6 @@ title: iOS SDK
 sidebar_label: iOS SDK
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK </button>
-</p>
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -37,7 +33,7 @@ You can import the SDK in your project by using Swift Package Manager. This can 
 You can also import the SDK into your Xcode project using CocoaPods, adding it in your **Podfile**.
 
 ```swift title="Podfile"
-pod 'Split', '~> 3.3.0'
+pod 'Split', '~> 3.3.1'
 ```
 
 #### Carthage
@@ -45,7 +41,7 @@ pod 'Split', '~> 3.3.0'
 This is another option to import the SDK. Just add it in your **Cartfile**.
 
 ```swift title="Cartfile"
-github "splitio/ios-client" 3.3.0
+github "splitio/ios-client" 3.3.1
 ```
 
 Once added, follow the steps provided in the [Carthage Readme](https://github.com/Carthage/Carthage/blob/master/README.md#if-youre-building-for-ios-tvos-or-watchos).

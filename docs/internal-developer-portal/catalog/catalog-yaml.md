@@ -19,6 +19,108 @@ If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Ov
 
 Harness IDP 2.0 marks a significant evolution of the Internal Developer Portal, introducing a Harness-native data model tailored for enterprise-scale environments and strong access control. As we transition to this new model, **legacy Backstage YAML** will no longer be supported. Going forward, only the **Harness-native data model** schema will be used and referenced. This guide walks you through the new **Harness-native YAML schema** and outlines the key changes from the previous schema.
 
+## Quick Reference: Entity YAML Examples
+
+<details>
+<summary>Component YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: Component
+name: anomaly-detection
+identifier: anomaly-detection
+type: service
+owner: group:ccmplayacc
+spec:
+  lifecycle: production
+  dependsOn:
+    - component:ng-manager
+metadata:
+  description: CCM anomaly detection backend service
+  annotations:
+    backstage.io/kubernetes-label-selector: app=anomaly-detection
+    github.com/project-slug: wings-software/ce-anomalyDetection
+    pagerduty.com/service-id: PFVOX97
+    jira/project-key: CCM
+    backstage.io/source-location: url:https://github.com/wings-software/ce-anomalyDetection/tree/main
+  links:
+    - title: repo
+      url: https://github.com/wings-software/ce-anomalyDetection
+  tags:
+    - python
+```
+</details>
+
+<details>
+<summary>API YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: API
+type: openapi
+identifier: cenextgen
+name: cenextgen
+owner: johndoe
+spec:
+  lifecycle: production
+  definition:
+    $text: https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v2.0/json/api-with-examples.json
+metadata:
+  description: The official CE NEXTGEN service REST APIs
+```
+</details>
+
+<details>
+<summary>System YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: System
+name: Payment System
+identifier: paymentsystem
+type: domain
+owner: team-payment
+metadata:
+  description: This system groups services and libraries related to payment processing.
+  tags:
+    - rest
+    - java
+```
+</details>
+
+<details>
+<summary>Resource YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: Resource
+name: Payment Database
+identifier: payment-database
+type: database
+owner: group:ccmplayacc
+spec:
+  system:
+    - system:account/ccm_platform
+  dependsOn:
+    - resource:account/ccm-backup-storage
+metadata:
+  description: MongoDB database for CCM platform data storage
+  annotations:
+    harness.io/db-instance: mongodb-ccm-prod-01
+    harness.io/db-region: us-east-1
+    harness.io/backup-schedule: daily-2am-UTC
+  links:
+    - title: Database Dashboard
+      url: https://harness-monitoring.grafana.net/d/mongodb-ccm
+    - title: Backup Policy
+      url: https://harness.atlassian.net/wiki/spaces/CCM/pages/123456/Database+Backup+Policy
+  tags:
+    - mongodb
+    - database
+    - production
+```
+</details>
+
 :::info
 Please ensure that **no entity YAML files** are stored in **Git in IDP 2.0** until the [Git Experience](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#native-harness-git-experience) feature is released. You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** table
 :::

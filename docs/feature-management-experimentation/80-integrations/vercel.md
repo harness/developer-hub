@@ -4,10 +4,6 @@ sidebar_label: Vercel
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/16469873148173-Vercel </button>
-</p>
-
 [Vercel](https://vercel.com/) is an advanced hosting and deployment platform for modern web applications.
 
 Developers can incorporate serverless code that runs in the Edge Runtime on the Vercel platform using [Edge Functions](https://vercel.com/docs/concepts/functions/edge-functions) and [Middleware](https://vercel.com/docs/concepts/functions/edge-middleware). Vercel supports compute logic in Edge Functions and Middleware that is scalable, on-demand, and stateless with the [Edge Config](https://vercel.com/docs/storage/edge-config) low-latency data store. Harness FME provides out-of-the-box integration that wraps the Edge Config data store, allowing near-instant reads at the edge.

@@ -4,10 +4,6 @@ sidebar_label: "Ruby SDK: Upgrading from 4.x to 5.x and above"
 sidebar_position: 16
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360021480912-Ruby-SDK-Upgrading-from-4-x-to-5-x-and-above </button>
-</p>
-
 ## Issue
 
 Under the hood, Ruby SDK has a hashing algorithm that divides users across treatments. For example, given a 50/50 split between two treatments (e.g., on and off), the hashing algorithm decides which user is in the on treatment and which one is in the off treatment.

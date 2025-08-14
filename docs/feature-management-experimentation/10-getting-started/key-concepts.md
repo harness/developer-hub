@@ -2,15 +2,12 @@
 title: Key concepts
 sidebar_label: Key concepts
 sidebar_position: 3
-helpdocs_is_private: false
-helpdocs_is_published: true
+description: Understand the key components of Harness FME to help you start targeting users and releasing features with confidence.
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/9648555765133-Foundational-concepts </button>
-</p>
+## Overview
 
-Take 5 minutes to learn the foundational concepts of Harness Feature Management & Experimentation.
+Take 5 minutes to learn the foundational concepts of Harness Feature Management & Experimentation (FME).
 
 ## What is a feature flag?
 A feature flag wraps or gates a section of your code, allowing it to be selectively turned on or off remotely with precision, down to the level of an individual user, at any time, without a new code deployment.
@@ -92,12 +89,10 @@ Projects provide separation or partitioning of work to reduce clutter or to enfo
 Within each project, you may have multiple environments, such as development, staging, and production. Refer to the [Environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) guide for more information.
 
 ### Feature flags
-Feature flags are created at the project level where you specify the feature flag name, traffic type, owners, and description. Targeting rules are then created and managed at the environment level as part of the feature flag definition. Refer to the [Feature flag management](https://help.split.io/hc/en-us/articles/9650375859597-Feature-flag-management) guide for more information.
+Feature flags are created at the project level where you specify the feature flag name, traffic type, owners, and description. Targeting rules are then created and managed at the environment level as part of the feature flag definition. Refer to the [Feature flag management](/docs/feature-management-experimentation/feature-management/create-a-feature-flag) guide for more information.
 
 ### Targeting rule
 Targeting rules for each feature flag are created at the environment level. For example, this supports one set of rules in your staging environment and another in production. Rules may be based on user or device attributes, membership in a segment, a percentage of a randomly distributed population, a list of individually specified user or unique key targets, or any combination of the above.
-
-<!--  Refer to the [Creating a rollout plan](https://help.split.io/hc/en-us/articles/9805284145549-Creating-a-rollout-plan) guide for more information. -->
 
 ### Segment
 A segment is a list of users or unique keys for targeting purposes. Segments are created at the environment level. Refer to the [Segments](/docs/feature-management-experimentation/feature-management/segments) guide for more information.
@@ -111,13 +106,4 @@ For feature flags that make decisions or observe metrics at the userId level, th
 Use tags to organize and filter feature flags, segments, and metrics across the Harness user interface. Because they allow you to filter items in lists, they are a great way to filter by team, epic, layer of system (front-end vs back-end), or any other. Refer to the [Tags](/docs/feature-management-experimentation/management-and-administration/tags) guide for more information on how to use them.
 
 ### Statuses
-Statuses provide a way for teams to indicate which stage of a release or rollout a feature is in at any given moment, and as a way for teammates to filter their feature flags to see only features in a particular stage of the internal release process. There is a fixed list of status types. Refer to the [Use statuses](https://help.split.io/hc/en-us/articles/4405023981197-Use-statuses) guide for more information.
-
-<!-- asking Ani about the Creating a rollout plan link (private doc)
-## Additional essential guides
-Now that you have a grounding in our foundational concepts, the following links take you to our essential guides that walk you through:
-* [Creating and managing a feature flag](https://help.split.io/hc/en-us/articles/9650375859597)
-* [Creating a rollout plan](https://help.split.io/knowledge/articles/9805284145549/en-us?brand_id=4847928)
-* [Setting up and using metrics](https://help.split.io/hc/en-us/articles/9652327065485)
-
--->
+Statuses provide a way for teams to indicate which stage of a release or rollout a feature is in at any given moment, and as a way for teammates to filter their feature flags to see only features in a particular stage of the internal release process. There is a fixed list of status types. Refer to the [Use statuses](/docs/feature-management-experimentation/team-and-project-settings/statuses) guide for more information.

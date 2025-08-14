@@ -4,10 +4,6 @@ sidebar_label: Google Analytics 4 (GA4)
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360040838752-Google-Analytics </button>
-</p>
-
 You can send JavaScript impressions and events to Google Analytics and send Google analytics events to Harness FME. With this integration you can use the event data you already collect via Google Analytics to power analytics and experimentation within FME.
 
 ## Google Analytics 4 (GA4)

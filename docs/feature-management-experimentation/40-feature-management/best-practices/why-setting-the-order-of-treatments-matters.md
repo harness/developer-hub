@@ -4,10 +4,6 @@ sidebar_label: Why setting the order of treatments matters
 sidebar_position: 3
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360030117011-Why-setting-the-order-of-treatments-matters </button>
-</p>
-
 With Split, rules are evaluated from the top down. 
 
 1. Individually target - users you explicitly assign to a treatment

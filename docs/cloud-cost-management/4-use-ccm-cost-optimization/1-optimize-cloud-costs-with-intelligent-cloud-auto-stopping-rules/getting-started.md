@@ -34,7 +34,7 @@ First, you need to connect Harness to your cloud provider account by creating a 
 
 <Tabs>
   <TabItem value="aws" label="AWS">
-    <p>Create an <a href="/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws">AWS Connector</a> with the following permissions:</p>
+    <p>Create an <a href="/docs/cloud-cost-management/get-started/#aws">AWS Connector</a> with the following permissions:</p>
     <ul>
       <li>Amazon EC2 access</li>
       <li>AWS Cost and Usage Reports access</li>
@@ -44,7 +44,7 @@ First, you need to connect Harness to your cloud provider account by creating a 
     </ul>
   </TabItem>
   <TabItem value="azure" label="Azure">
-    <p>Create an <a href="/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure">Azure Connector</a> with:</p>
+    <p>Create an <a href="/docs/cloud-cost-management/get-started/#azure">Azure Connector</a> with:</p>
     <ul>
       <li>Azure Virtual Machine access</li>
       <li>Azure Cost Management access</li>
@@ -52,7 +52,7 @@ First, you need to connect Harness to your cloud provider account by creating a 
     </ul>
   </TabItem>
   <TabItem value="gcp" label="GCP">
-    <p>Create a <a href="/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp">Google Cloud Platform (GCP) Connector</a> with:</p>
+    <p>Create a <a href="/docs/cloud-cost-management/get-started/#gcp">Google Cloud Platform (GCP) Connector</a> with:</p>
     <ul>
       <li>Google Compute Engine access</li>
       <li>Google Cloud Billing access</li>
@@ -73,31 +73,31 @@ Next, you'll need to set up a proxy or load balancer that will intercept and man
     <h4>Option 1: AutoStopping Proxy</h4>
     <p>Best for: Amazon EC2, and Amazon RDS Instances</p>
     <p>The AutoStopping Proxy acts as an intermediary that forwards traffic to your resources and automatically starts them when needed.</p>
-    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb">Set up AWS AutoStopping Proxy →</a></p>
+    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/autostopping-proxy">Set up AWS AutoStopping Proxy →</a></p>
     
     <h4>Option 2: Load Balancer Integration</h4>
     <p>Best for: Amazon EC2, Auto Scaling Groups, and Amazon ECS Services</p>
     <p>Integrate with your existing AWS Load Balancers to enable AutoStopping functionality.</p>
-    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-load-balancer-aws"> Configure AWS Load Balancer for AutoStopping →</a></p>
+    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/load-balancer"> Configure AWS Load Balancer for AutoStopping →</a></p>
   </TabItem>
   
   <TabItem value="azure" label="Azure">
     <h4>Option 1: AutoStopping Proxy</h4>
     <p>Best for: Azure Virtual Machines</p>
     <p>Deploy an AutoStopping Proxy to manage traffic to your Azure VMs.</p>
-    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-azure-autoproxy-lb">Set up Azure AutoStopping Proxy →</a></p>
+    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/autostopping-proxy">Set up Azure AutoStopping Proxy →</a></p>
     
     <h4>Option 2: Azure Application Gateway</h4>
     <p>Best for: Azure Virtual Machines in production-like environments</p>
     <p>Integrate with Azure Application Gateway for enhanced routing capabilities.</p>
-    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-an-application-gateway-for-azure">Configure Azure Application Gateway →</a></p>
+    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/load-balancer">Configure Azure Application Gateway →</a></p>
   </TabItem>
   
   <TabItem value="gcp" label="GCP">
     <h4>AutoStopping Proxy</h4>
     <p>Best for: Google Compute Engine VMs and Google Cloud Instance Groups</p>
     <p>Deploy an AutoStopping Proxy to manage your GCP resources.</p>
-    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-gcp-lb">Set up GCP AutoStopping Proxy →</a></p>
+    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-gcp/autostopping-proxy">Set up GCP AutoStopping Proxy →</a></p>
     
     <p><em>Note: For GCP only Proxy is supported.</em></p>
   </TabItem>
@@ -119,7 +119,7 @@ You can create AutoStopping Rules with two methods:
       <li>Follow the guided setup to configure</li>
       <li>Review and activate your rule</li>
     </ol>
-    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws">Detailed AWS AutoStopping Configuration →</a></p>
+    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rules-ectwo">Detailed AWS AutoStopping Configuration →</a></p>
   </TabItem>
   
   <TabItem value="azure" label="Azure">
@@ -129,7 +129,7 @@ You can create AutoStopping Rules with two methods:
       <li>Follow the guided setup to configure</li>
       <li>Review and activate your rule</li>
     </ol>
-    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-azure">Detailed Azure AutoStopping Configuration →</a></p>
+    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-azure/create-rule-vm">Detailed Azure AutoStopping Configuration →</a></p>
   </TabItem>
   
   <TabItem value="gcp" label="GCP">
@@ -139,7 +139,7 @@ You can create AutoStopping Rules with two methods:
       <li>Follow the guided setup to configure</li>
       <li>Review and activate your rule</li>
     </ol>
-    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-gcp">Detailed GCP AutoStopping Configuration →</a></p>
+    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-gcp/create-rule-instance-groups">Detailed GCP AutoStopping Configuration →</a></p>
   </TabItem>
 </Tabs>
 

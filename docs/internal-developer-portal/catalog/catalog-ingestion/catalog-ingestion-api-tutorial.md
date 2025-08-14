@@ -157,8 +157,8 @@ pipeline:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs queryString="use-metadata-info">
-<TabItem value="scorecard" label="Code Coverage Scorecard">
+<!-- <Tabs queryString="use-metadata-info">
+<TabItem value="scorecard" label="Code Coverage Scorecard"> -->
 
 ## Code Coverage Scorecard \{#code-coverage-scorecard}
 
@@ -180,8 +180,8 @@ In case you want to track the information you have ingested using Scorecards, fo
 
 ![](./static/code-coverage-score-tab.png)
 
-</TabItem>
-<TabItem value="card" label="Additional Info Card">
+<!-- </TabItem>
+<TabItem value="card" label="Additional Info Card"> -->
 
 ## Additional Info Card \{#additional-info-card}
 
@@ -216,8 +216,10 @@ In case you want to display the same information you have ingested on your Overv
 
 ![](./static/additional-info-card-new.png)
 
-</TabItem>
-</Tabs>
+> **Note:** For detailed instructions on adding an Additional Info Card to display custom information on your entity's Overview page, see the [Additional Info Card](/docs/internal-developer-portal/layout-and-appearance/catalog.md#additional-info-card) section in the Catalog Layout documentation.
+
+<!-- </TabItem>
+</Tabs> -->
 
 ## Conclusion
 

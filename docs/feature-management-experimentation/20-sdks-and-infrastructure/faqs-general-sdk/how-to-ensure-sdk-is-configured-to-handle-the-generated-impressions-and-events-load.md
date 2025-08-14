@@ -4,10 +4,6 @@ sidebar_label: "General SDK: How to ensure SDK is configured to handle the gener
 sidebar_position: 7
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033238592-General-SDK-How-to-ensure-SDK-is-configured-to-handle-the-generated-impressions-and-events-load </button>
-</p>
-
 By default, all FME SDKs have default configuration that allows them to process a heavy load of generated Impressions and Events. These config parameters values are documented in the help section of each SDK.
 
 For example, if we take a look at the [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk), the Configuration section has the following parameters and their default values for posting impressions:

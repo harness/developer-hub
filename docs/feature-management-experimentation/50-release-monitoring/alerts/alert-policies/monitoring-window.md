@@ -53,7 +53,7 @@ For example, if the results were as shown in the image below, an alert would not
 
 The reason no alert fires in these earlier checks is because the error margin, or confidence interval, on the impact is too wide to be confident that the impact really is greater than your threshold. However for the fourth and fifth checks, an alert would fire.
 
-<img src="https://help.split.io/hc/article_attachments/360037042692" alt="alert_threshold.png" width="900" />
+![](../../static/degradation-threshold.png)
 
 For an alert to fire, the observed degradation will need to be a certain amount more extreme than the threshold you’ve chosen. Exactly how much more extreme it would need to be (sometimes called the Minimum Detectable Effect) depends on the sensitivity of the metric, which is influenced primarily by sample size and the variance in the metric values. 
 
@@ -68,6 +68,20 @@ Assuming a 50/50 percentage rollout of users between baseline and comparison tre
 We recommend setting an alert threshold that is less extreme than any degradation which you would definitely want to be alerted for. Chose a threshold which is close to the boundary between a safe or acceptable degradation and a degradation which you would want to know about.
 
 The following calculators allow you to see what range of degradations your policy is likely to detect based on your metric characteristics and alert policy settings.
+
+## Alert policy sensitivity
+
+There are two configurable parameters for feature monitoring: the length of the monitoring window and the degradation threshold. These can be changed in the [Monitor and Experiment Settings](/docs/feature-management-experimentation/experimentation/setup/experiment-settings) section of your admin panel. By adjusting these parameters, you can tailor the coverage and sensitivity of feature monitoring alerts in the way that best suits your organization and metrics. 
+
+## Sensitivity calculators
+
+As with any statistical test in experimentation, we can't detect everything - each metric will only have the power to detect degradations larger than a given size. Smaller degradations will not be distinguishable from natural noise and variations in your data. 
+
+The calculators below can be used to help you calculate what range of degradations you can expect to be able to detect for a given sample size and set of metric characteristics. If your metric is a count, sum, average or ratio metric, use the [first calculator](#calculator-for-means) for means metrics. Otherwise, if your metric is a percent of unique users metric, use the [second calculator](#calculator-for-proportions) for proportions. Note that these calculators assume your statistical settings are set at a significance threshold of 0.05 and a power threshold of 80%. 
+
+For example, imagine you have a Percentage of Unique Users metric which has a value of 60% in the baseline treatment, and you use a relative degradation threshold of 10%. If the desired direction of the metric is a decrease, then we would be testing for evidence that the Percentage of Unique Users in the comparison group is more than 66% (more than 10% higher than the baseline value). 
+
+Assuming a 50/50 percentage rollout of users between baseline and comparison treatments, an Org wide significance level of 0.05, and a monitoring window of 24 hours, with 10,000 unique users you would only see an alert if the observed percentage for the comparison group increased by more than 16.2% and hence had a value higher than 69.7%. If instead you had 1000 or 100,000 unique users, the comparison group value would need to be higher than 77% and 67%, respectively, for an alert to be raised. 
 
 ## Using the calculators
 
@@ -85,7 +99,7 @@ The Sample size column is shown under the Sample population section of the data 
 
 For example, imagine you see the below table for a feature flag which ran for 48 hours, and you intend to run a similar feature flag with a monitoring window length of 24 hours. To get the estimated sample size during the 24 hour monitoring window, first sum the sample sizes across the two treatments, to get 2000, then divide by 2 to go from 48 hours to 24 hours - this will give you an estimated sample size during the monitoring window of 1000. 
 
-<img src="https://help.split.io/hc/article_attachments/360041949711" alt="sample_size_estimate.png" width="300" />
+![](../../static/sample-size-estimate.png)
 
 ### Baseline metric value
 
@@ -97,7 +111,7 @@ The standard deviation characterizes how much variation there is in your metric.
 
 You can find this value under the Stdev column in the Metric dispersion section of the data table.
 
-<img src="https://help.split.io/hc/article_attachments/360041949832" alt="mean_and_standard_deviation.png" width="500" />
+![](../../static/baseline-standard-deviation.png)
 
 ## Calculator for means
 

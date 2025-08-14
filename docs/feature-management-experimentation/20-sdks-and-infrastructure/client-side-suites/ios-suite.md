@@ -3,10 +3,6 @@ title: iOS Suite
 sidebar_label: iOS Suite
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite </button>
-</p>
-
 This guide provides detailed information about our iOS Suite, an SDK designed to leverage the full power of FME. The iOS Suite is built on top of the [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) and the [iOS RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent), offering a unified solution, optimized for iOS development.
 
 The Suite provides the all-encompassing essential programming interface for working with your FME feature flags, as well as capabilities for automatically tracking performance measurements and user events. Code currently using iOS SDK or iOS RUM Agent can be easily upgraded to iOS Suite, which is designed as a drop-in replacement.
@@ -23,9 +19,9 @@ Set up FME in your code base with the following two steps:
 
 Add the Harness FME SDK, RUM agent, and Suite into your project using Swift Package Manager by adding the following package dependencies:
 
-- [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.3.0`
+- [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.3.1`
 - [iOS RUM](https://github.com/splitio/ios-rum), latest version `0.4.0`
-- [iOS Suite](https://github.com/splitio/ios-suite), latest version `2.2.0`
+- [iOS Suite](https://github.com/splitio/ios-suite), latest version `2.2.1`
 
 :::info[Important!]
 When not using the last version of the SDK Suite, it is important to take into account the compatibility matrix below.
@@ -41,6 +37,7 @@ When not using the last version of the SDK Suite, it is important to take into a
 | 2.0.1    | 3.0.0   | 0.4.0   |
 | 2.1.0    | 3.2.0   | 0.4.0   |
 | 2.2.0    | 3.3.0   | 0.4.0   |
+| 2.2.1    | 3.3.1   | 0.4.0   |
 
 Then import the Suite in your code.
 

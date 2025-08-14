@@ -29,7 +29,7 @@ This topic explains how to set up and use bidirectional sync.
 - Currently, only `.yaml` and `.yml` files are supported for bi-directional sync.
 - When configuring a webhook, you need to be the owner of the relevant git repository.
 - Bidirectional sync is not supported for Harness Code.
-
+- If a change is made to a Git-backed entity directly in the Git repository with bidirectional sync enabled, it will bypass `On Save` OPA policies. To ensure these entities comply with your OPA policies, define your policies as `On Run` for these entities.
 
 ## Bi-directional Sync
 

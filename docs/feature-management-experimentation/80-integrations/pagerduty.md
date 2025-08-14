@@ -4,10 +4,6 @@ sidebar_label: PagerDuty
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360046246631-PagerDuty </button>
-</p>
-
 ## Harness FME + PagerDuty
 
 PagerDuty is a leading provider of on-call management, incident response, and event intelligence. Harness FME is uniquely suited to detect degradations in key metrics when features are rolled out. Configuring alerts in FME, you can be notified when a rollout impacts the metrics your team cares about.

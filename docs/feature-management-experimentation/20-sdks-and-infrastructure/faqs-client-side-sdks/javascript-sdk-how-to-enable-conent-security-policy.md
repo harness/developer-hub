@@ -4,10 +4,6 @@ sidebar_label: "JavaScript SDK: How to enable Content Security Policy (CSP) to w
 sidebar_position: 21
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033200812-JavaScript-SDK-How-to-enable-Content-Security-Policy-CSP-to-work-with-JavaScript-SDK </button>
-</p>
-
 ## Question
 
 Is it possible to enable SCP (Content Security Policy) on a site that uses JavaScript SDK?

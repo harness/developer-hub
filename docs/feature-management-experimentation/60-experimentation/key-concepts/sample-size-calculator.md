@@ -100,7 +100,7 @@ The Sample size column is shown under the Sample population section of the data 
 
 For example, imagine you see the below table for a feature flag that ran for a full week, to get the estimated sample size per day, first sum the sample sizes across the two treatments, to get 2000, then divide by 7 to get an estimated daily value of 285 users. 
 
-<img src="https://help.split.io/hc/article_attachments/26908355583885" alt="sample-size-column.png" width="300" />
+![](../static/sample-size.png)
 
 ### Baseline Metric Value
 
@@ -112,7 +112,7 @@ The standard deviation characterizes how much variation there is in your metric.
 
 You can find this value under the Stdev column in the Metric Dispersion section of the data table.
 
-<img src="https://help.split.io/hc/article_attachments/26908355596685" alt="mean-and-standard-deviation-columns.png" width="500" />
+![](../static/baseline-standard-deviation.png)
 
 ### What size (relative%) change do you want to be able to detect? 
 

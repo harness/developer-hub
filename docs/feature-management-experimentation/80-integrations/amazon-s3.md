@@ -4,10 +4,6 @@ sidebar_label: Amazon S3
 description: ""
 ---
 
-<p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3 </button>
-</p>
-
 Amazon Simple Storage Service (Amazon S3) is an object storage service offered by Amazon as part of Amazon Web Services (AWS) that offers the ability to store and retrieve any amount of data, at any time, from anywhere on the web. With this integration you can easily and reliably send high volumes of event data to Harness FME, as well as export your impression data.
 
 ## Send events to Harness FME

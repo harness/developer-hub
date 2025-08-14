@@ -23,13 +23,13 @@ Be aware of the following:
 To tag feature flags, segments, metrics, or experiments: 
 
 1. Select the item you want to tag. 
-2. Click the gear icon next to the feature flag title and select Edit details. The Details view appears.
-
-   <img src="https://help.split.io/hc/article_attachments/15700952699277" alt="edit_details.png" width="600" />
+2. Click the Gear icon next to the feature flag title and select **Edit details**. The Details view appears.
+   
+   ![](./static/edit-details.png)
 
 3. In the Tags field, either click in the field to display a list of tags or start entering to select an existing tag from the menu list. You can also create a new tag.
 
-   <img src="https://help.split.io/hc/article_attachments/15629816804621" alt="details.png" width="800" />
+   ![](./static/details.png)
 
 4. Click the **Save** button.
 
@@ -38,7 +38,7 @@ To tag feature flags, segments, metrics, or experiments:
 To remove a tag, do the following:
 
 1. Select the item you want to remove the tag from.
-2. Click the gear icon next to the feature flag title and select **Edit details**. The Details view appears.
+2. Click the Gear icon next to the feature flag title and select **Edit details**. The Details view appears.
 3. In the Tags field, either delete the selected tag or click the X to delete all tags at once.
 4. Click the **Save** button.
 
@@ -49,7 +49,7 @@ Tags are most useful if they allow you to locate those items using a particular 
 1. Click **Filter** and hover over **Tag**. A list of tags appears.
 2. Use the list to select as many tags as you want to filter by.
 
-   <img src="https://help.split.io/hc/article_attachments/15667377072781" alt="search_tag.png" width="300" />
+   ![](./static/filter-by-tag.png)
 
 :::info
 All tags are clickable within FME, making it easy to filter for the tag that you care about most. 

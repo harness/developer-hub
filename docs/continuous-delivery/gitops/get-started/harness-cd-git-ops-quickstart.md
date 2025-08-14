@@ -172,12 +172,6 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
     ingress.networking.k8s.io/argocd-applicationset-controller created
    ```
 
-:::note
-
-This list will have slight differences on accounts where the feature flag `GITOPS_AGENT_HELM_V2` is not enabled. Contact [Harness Support](mailto:support@harness.io) to enable this.
-
-:::
-
 14. Back in Harness, select **Continue**.
 15. Harness indicates that the Harness GitOps Agents is registered.
    
@@ -306,13 +300,13 @@ To create a cluster entity using IAM role in Amazon EKS, go to [Creating a GitOp
 Here's an example of a SA and ClusterRoleBinding with `cluster-admin`:
 
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1  
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ServiceAccount  
 metadata:  
   name: harness-service-account  
   namespace: default  
 ---  
-apiVersion: rbac.authorization.k8s.io/v1beta1  
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding  
 metadata:  
   name: harness-admin  
