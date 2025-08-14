@@ -33,6 +33,8 @@ Review the notes below for details about recent changes to Harness Internal Deve
 Harness Internal Developer Portal (IDP) now integrates with Harness Security Testing Orchestration (STO) to surface real-time vulnerability data directly inside the Software Catalog. Vulnerabilities such as CVEs from static and dynamic scans are displayed alongside services, projects, and components, minimizing context switching and enabling faster triage.
 
 ![](./static/sto-integrated-idp.png)
+
+[Learn more about STO integration with IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/sto-integration)
 #### Prerequisites
 
 * IDP and STO modules enabled on the account.
@@ -122,6 +124,8 @@ Harness IDP now supports defining a Link to Source Code Repository for Component
 
 ![Link to Source Code Repository](./static/source-code-link-ui.png)
 
+[Learn more about Link to Source Code in IDP UI](https://developer.harness.io/docs/internal-developer-portal/catalog/manage-catalog#harness-idp-ui)
+
 * Automatic configuration of plugins like Scorecards, TechDocs, and STO
 * A View Source option directly in the entity's UI
 * Automatic generation of the legacy `backstage.io/source-location` annotation for backwards compatibility
@@ -135,6 +139,8 @@ Harness IDP now supports defining a Link to Source Code Repository for Component
 * Git connector permissions must match the entity's scope (Account, Organization, or Project)
 
 #### Example YAML
+
+[Learn more about configuring source code in YAML](https://developer.harness.io/docs/internal-developer-portal/catalog/manage-catalog#catalog-yaml)
 
 ```yaml
 spec:
