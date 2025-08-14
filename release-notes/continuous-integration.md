@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-08-04T10:00
+date: 2025-08-13T10:00
 sidebar_position: 10
 ---
 
@@ -41,7 +41,26 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 :::
 
+:::note
+Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) to learn how Harness provides preconfigured virtual machine (VM) images for running your CI jobs in Harness Cloud. 
+:::
 ## August 2025
+
+### Version 1.91
+
+<!-- 2025-08-11 -->
+
+#### Fixed issues
+- **Added repo name validation for dockerhub** -	**BuildAndPushToDockerRegistry** step should now validate and highlight errors for any capitalized letters in the repo name field. (CI-8044)
+- **GCSUpload plugin successfully uploads file to the right path** - GCSUpload plugin should now upload the file to the right path without filename duplication. (CI-18582)
+- **Run tests when Intelligence mode is off** - When Intelligence mode is OFF, the relevant tests should run in the test step. (CI-18566)
+- **Improved the experience in the Getting Started Wizard in CI** - Lag in populating repo list in Getting Started Wizard has now been resolved. (CI-18280)
+#### Harness images updates
+| **Image**          | **Change**                         | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/ci-lite-engine`     | Version upgrade for Jira for Lite Engine Addon . | 1.16.98.1       | 1.16.99   |
+| `harness/ci-addon`     | Version upgrade for Jira for Lite Engine Addon . | 1.16.98.1       | 1.16.99   |
+| `plugins/gcs`     | Single file uploads with complete target paths no longer result in filename duplication. | 1.6.4       | 1.6.5   |
 
 ### Version 1.90
 
