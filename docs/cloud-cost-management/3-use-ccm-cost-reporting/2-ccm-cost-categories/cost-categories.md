@@ -20,6 +20,18 @@ With Cost Categories, you can:
 - **Apply consistent cost attribution** - Use the same business contexts across different cloud providers and resource types
 - **Filter and group in CCM Perspectives** - Leverage your categories in reports and dashboards for comprehensive cost analysis
 
+
+**The logic behind cost categories is simple: Create [Rules that bring in cost data](#what-are-rules) -> Rules combine to form [Cost Bucket](#define-your-cost-buckets) -> Cost Buckets combine to form Cost Category**
+
+**For example:** Tracking costs for a Marketing team:
+
+* **Create a Cost Category** called "Marketing"
+* **Add Cost Buckets** to this category:
+  * "Digital Marketing" - with rules for AWS resources
+  * "YouTube Marketing" - with rules for GCP resources
+  * "Social Media Marketing" - with rules for Kubernetes clusters
+* **Result:** A comprehensive view of all Marketing costs across multiple cloud platforms
+
 <DocImage path={require('./static/what-is.png')} width="100%" height="100%" title="Click to view full size image" />
 
 <div style={{backgroundColor: '#f8fafc', padding: '20px', borderRadius: '8px', border: '1px solid #e2e8f0', marginBottom: '24px'}}>
