@@ -13,17 +13,22 @@ export const FmeData: Horizon = {
       {
         tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
         title: "Flag impressions properties bag",
-        description: "Decorate impression records with properties to use in downstream processing. Additional support for the following SDKs and Split Proxy/Synchronizer is coming this quarter: Go, PHP Thin Client (via SplitD), .NET, and Flutter.",
+        description: "Decorate impression records with properties to use in downstream processing. Support for the following SDKs and Split Proxy / Synchronizer is coming this quarter: Go, PHP Thin Client (via SplitD), .NET, Flutter.",
       },
       {
         tag: [{ value: "SDK" }],
         title: "OpenFeature provider updates",
-        description: "Ongoing support for OpenFeature providers in Java, Node.js, and Browser SDKs is being developed and released.",
+        description: "Ongoing support for OpenFeature providers in Java, Node.js, and Browser SDKs.",
       },
       {
         tag: [{ value: "SDK" }],
         title: "Harness Forward proxy",
-        description: "Centralizes traffic that goes outside of a customer’s cloud. Easier to maintain than the current Split Proxy, as it doesn't require environment-specific configuration. Supports multiple Harness modules as well, starting with DB DevOps.",
+        description: "Centralizes traffic going outside of a customer’s cloud. Unlike current Split Proxy, it does not require environment-specific configuration. Supports multiple Harness modules as well, starting with DB DevOps.",
+      },
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "Experiment entry event filter",
+        description: "Define an entry event at the experiment level to filter exposures, ensuring sample sizes only reflect users who were exposed to your experiment.",
       },
     ],
   },
