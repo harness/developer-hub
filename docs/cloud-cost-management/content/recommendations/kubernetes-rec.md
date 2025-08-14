@@ -7,9 +7,15 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 <Tabs>
 <TabItem value="nodepool" label="Nodepool Recommendations">
 
+:::caution Important to note
 
+- Node pool recommendations do not support node pools with autoscalers enabled.
+- These recommendations should be treated as a nudge, not a source of accurate cost data in such cases.
+- Please note: cost data might be incorrect for autoscaled node pools. To hide node pool recommendations for autoscaled pools, kindly reach out to [Harness Support](mailto:support@harness.io)
 
-## Prerequisites
+:::
+
+### Before You Begin
 
 Harness CCM uses labels to process node pool recommendations. Make sure to add one of the labels listed to the Kubernetes nodes in your cluster. The following table shows the labels for the respective cloud providers:
 
@@ -19,19 +25,13 @@ Harness CCM uses labels to process node pool recommendations. Make sure to add o
 | Google Cloud Platform (GCP) |  <ul><li>`cloud.google.com/gke-nodepool`</li><li> `nodegroup​`</li><li>`kops.k8s.io/instancegroup`</li></ul>|
 | Microsoft Azure | <ul><li> `Agentpool​`</li><li> `node-pool-name​` </li><li> `nodegroup​`</li><li>`kops.k8s.io/instancegroup`</li></ul>|
 
-## Types
+## Types of Nodepool Recommendations
 
-Only 1: nodepool rightsizing
+- **Node Pool Rightsizing**: Node Pool Rightsizing is a strategy that analyzes your Kubernetes infrastructure to identify opportunities for more efficient resource allocation. 
 
-## How are node pool recommendations computed?
+## How Are Nodepool Recommendations Computed?
 
-:::note
 
-- Node pool recommendations do not support node pools with autoscalers enabled.
-- These recommendations should be treated as a nudge, not a source of accurate cost data in such cases.
-- Please note: cost data might be incorrect for autoscaled node pools. To hide node pool recommendations for autoscaled pools, kindly reach out to [Harness Support](mailto:support@harness.io)
-
-:::
 
 The node pool recommendations are computed by analyzing historical utilization data and requests metrics of Pods. CCM recommends the optimal resource configurations for the Spot and On-demand instances. It uses the following parameters to determine the maximum node counts:
 
@@ -40,56 +40,71 @@ The node pool recommendations are computed by analyzing historical utilization 
 * Max CPUs
 * Max Memory
 
-The recommendations are calculated by aggregating the resource utilization and request across all pods running across nodes in the node pool. You can select the number of days to compute recommendations based on the utilization data. The available options are last 1 day, 7 days, and 30 days.
+The recommendations are calculated by aggregating the resource utilization and request across all pods running across nodes in the node pool. You can select the number of days to compute recommendations based on the utilization data. The available options are last 7, 30, 60, and 90 days.
 
 
-```
-CPU, Memory: Max at a given instant [Aggregated Max(resource Utilization, requests)]
-```
-Let's try to understand how the recommendations are computed using the following example. Assume there are two nodes in a node pool, each with two pods running.
-
+### Recommendation Calculation Formula
 
 ```
-Time Instant 1:  
-Node1:  
-  Pod1:  
-  Util → 2.1 vCPU, Request → 4 vCPU  
-  Pod2:  
-  Util → 1.4 vCPU, Request → 1 vCPU  
-  
-Node2:  
-  Pod1:  
-  Util → 1.1 vCPU, Request → 4 vCPU  
-  Pod2:  
-  Util → 0.9 vCPU, Request → 1 vCPU  
-  
-Time Instant 2:  
-Node1:  
-  Pod1:  
-  Util → 2.2 vCPU, Request → 4 vCPU  
-  Pod2:  
-  Util → 1.5vCPU, Request → 1 vCPU  
-Node2:  
-  Pod1:  
-  Util → 2.0 vCPU, Request → 4 vCPU  
-  Pod2:  
-  Util → 0.3 vCPU, Request → 1 vCPU
+Nodepool Recommendation = Max at a given instant [Aggregated Max(Resource Utilization, Resource Requests)]
 ```
-The recommendations are calculated as the following:
 
+### Detailed Example
 
+To illustrate how nodepool recommendations are computed, let's walk through a practical example with two nodes in a nodepool, each running two pods. We'll analyze CPU utilization and requests at two different time points.
+
+#### Time Instant 1
+
+<div class="recommendation-example">
+
+| Node | Pod | CPU Utilization | CPU Request |
+|------|-----|-----------------|-------------|
+| **Node 1** | Pod 1 | 2.1 vCPU | 4.0 vCPU |
+|      | Pod 2 | 1.4 vCPU | 1.0 vCPU |
+| **Node 2** | Pod 1 | 1.1 vCPU | 4.0 vCPU |
+|      | Pod 2 | 0.9 vCPU | 1.0 vCPU |
+
+</div>
+
+#### Time Instant 2
+
+<div class="recommendation-example">
+
+| Node | Pod | CPU Utilization | CPU Request |
+|------|-----|-----------------|-------------|
+| **Node 1** | Pod 1 | 2.2 vCPU | 4.0 vCPU |
+|      | Pod 2 | 1.5 vCPU | 1.0 vCPU |
+| **Node 2** | Pod 1 | 2.0 vCPU | 4.0 vCPU |
+|      | Pod 2 | 0.3 vCPU | 1.0 vCPU |
+
+</div>
+
+### Calculation Process
+
+For each pod, we take the maximum of its utilization and request, then sum these values for all pods at each time instant:
+
+#### Time Instant 1:
 ```
-Time Instant 1: [ Max (2.1, 4) + Max (1.4, 1)+ Max (1.1, 4)+ Max (0.9,1)] = [4 + 1.4 + 4 + 1] => 10.4  
-  
-Time Instant 2: [ Max (2.2, 4) + Max (1.5, 1)+ Max (2, 4)+ Max (0.3,1)] = [4 + 1.5 + 4 + 1] => 10.5  
-  
-So the Max CPU recommendation would be: Max (10.4, 10.5) = **10.5 vCPU**
+Total = Max(2.1, 4.0) + Max(1.4, 1.0) + Max(1.1, 4.0) + Max(0.9, 1.0)
+Total = 4.0 + 1.4 + 4.0 + 1.0 = 10.4 vCPU
 ```
-Similarly, for memory, nodes will be the max number of nodes in the observation interval.
 
-Node pool recommendations also offer the flexibility of tuning the recommendations by setting the resource configuration preferences. See **Tune Recommendations**.
+#### Time Instant 2:
+```
+Total = Max(2.2, 4.0) + Max(1.5, 1.0) + Max(2.0, 4.0) + Max(0.3, 1.0)
+Total = 4.0 + 1.5 + 4.0 + 1.0 = 10.5 vCPU
+```
 
-### Drilldown
+### Final Recommendation
+
+The final CPU recommendation is the maximum value across all time instants:
+```
+Recommended CPU = Max(10.4, 10.5) = 10.5 vCPU
+```
+
+## Recommendation Drilldown
+
+
 ### Tune Recommendations
 
 You can tune your recommendations by modifying the value of CPU, memory, node counts, and instances.
