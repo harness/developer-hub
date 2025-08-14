@@ -38,6 +38,8 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 - **New Feature Flag**: Introduced a new feature flag which, when enabled for specific accounts, will exclusively bypass any cost calculations using public pricing sources. To enable the feature flag, please contact Harness Support. [CCM-22370]
 
+- **Enhanced Node Pool Recommendations Display**: We've improved the Node Pool Recommendations listing page to show cloud account identifiers, providing better context for multi-account environments. For AWS, you'll see the Account ID; for GCP, the Project ID; and for Azure, the Subscription ID. This enhancement helps you quickly identify which cloud account each recommendation belongs to. [CCM-24291]
+
 ### Bug Fixes
 
 - **Anomaly Email Links**: Fixed an issue where the "Investigate" button in anomaly alert emails was resulting in a 404 error. The problem occurred with anomaly alerts based on all data that had no associated perspective, causing malformed redirection links. [CCM-24542]
