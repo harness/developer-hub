@@ -93,7 +93,7 @@ After applying the allowlist synchronizer, you need to enable GKE Autopilot comp
 
 ### Step 3: Start Running Chaos Experiments
 
-Your GKE Autopilot cluster is now ready for chaos engineering. To create and run your first experiment, follow the [Create Chaos Experiments](/docs/chaos-engineering/guides/chaos-experiments/create-chaos-experiments) guide and choose from any of the supported experiments listed below.
+Your GKE Autopilot cluster is now ready for chaos engineering. To create and run your first experiment, follow the [Create Experiments](/docs/chaos-engineering/guides/chaos-experiments/create-experiments) guide and choose from any of the supported experiments listed below.
 
 ## Supported Chaos Experiments
 
