@@ -9,7 +9,12 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Hierarchical service accounts allow you to create a service account once at a higher scope and reuse it across lower scopes with different permissions. This eliminates the need to create separate service accounts for each project.
+
+:::note Feature Availability
+This feature is behind the `PL_ENABLE_SERVICE_ACCOUNT_HIERARCHY` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+Service accounts can be created at a higher scope and inherited by lower scopes with the necessary permissions, eliminating the need to create separate accounts for each organization or project.
 
 The following example shows how to use an account-level service account in a project. You can apply the same process to use account-level service accounts in organizations.
 
@@ -17,13 +22,20 @@ The following example shows how to use an account-level service account in a pro
 <TabItem label="Manual" value="manual">
 ### Step 1: Create account-level service account
 
-Create a [Service Account](./add-and-manage-service-account.md#create-a-service-account) at the account level. This service account will be shared across multiple projects.
+Create a [Service Account](./add-and-manage-service-account.md#create-a-service-account) at the account level. This service account can then be inherited by organizations or projects.
 
 ### Step 2: Create project-level permissions
 
 In your target project:
    - Create a [Role](./add-manage-roles.md#create-a-role) with the required permissions
    - Create a [Resource Group](./add-resource-groups.md#create-a-resource-group) defining what resources can be accessed
+
+:::note 
+You can change the roles and resource groups that were assigned at the current scope only. You can't make cross-scope modifications.
+
+- Original scope: Manage role and resource group assignments for the original scope only. Can't edit role/resource groups for inherited scopes.
+- Inherited scope: Manage role and resource group assignments for the inherited scope only. Can't edit higher-level roles/resource groups or roles/resource groups in other inherited scopes.
+:::
 
 ### Step 3: Inherit and assign permissions
 
@@ -37,9 +49,7 @@ In your target project:
 
 5. Select **Apply**
 
-### Step 4: Use the service account
-
-Your service account can now perform actions in this project based on the assigned permissions, such as executing pipelines or accessing resources.
+The service account is now available for this project.
 
 </TabItem>
 <TabItem label="Interactive" value="interactive">
@@ -54,13 +64,14 @@ Your service account can now perform actions in this project based on the assign
         />
 </TabItem>
 </Tabs>
+
 ## Benefits
 
-- **Centralized Service Account Management**: Reduce the need to create and manage multiple service accounts for each project.
+- **Centralized Service Account Management**: Reduces the need to create and manage multiple service accounts for each project.
 
-- **Simplified Permissions**: Easily manage permissions at the project level by assigning roles to account-level service accounts.
+- **Simplified Permissions**: Easily manage permissions at the project level by assigning roles to service accounts created at the account or organization level.
 
-- **Seamless Pipeline Execution**: Service accounts can execute pipelines in any project without additional setup once permissions are in place.
+- **Seamless Pipeline Execution**: One or more service accounts can be given the necessary permissions, if required, to execute pipelines from multiple projects.
 
 ## Additional Resources
 For more information on how to manage service accounts, create roles, and assign permissions in Harness, refer to the following documentation on Harness Developer Hub:
