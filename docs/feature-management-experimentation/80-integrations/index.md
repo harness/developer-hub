@@ -10,7 +10,7 @@ description: Learn how to integrate Harness FME with third-party tools.
 Split integrates across several categories, including messaging, monitoring, issue management, customer data platforms, and analytics. In addition, the Split developer community has contributed numerous integrations that bring data from your feature delivery platform into the tools your team already uses, helping make all of your tools **feature-flag aware** and improving cross-team collaboration. 
 
 :::tip
-If you're not seeing a tool you need to be connected to Split, you can use Split’s [API](https://docs.split.io/) and [SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure) to connect with the tools your team uses. For assistance with Split’s SDK or API, contact [Harness Support](/docs/feature-management-experimentation/harness-support).
+If you're not seeing a tool you need to be connected to Split, you can use Split’s [API](https://docs.split.io/) and [SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure) to connect with the tools your team uses. For assistance with Split’s SDK or API, contact [Harness Support](/docs/feature-management-experimentation/fme-support).
 :::
 
 import { Section, supportedWorkflows, supportedDatasources, supportedAdminchanges, supportedCommunity } from '/src/components/Docs/data/fmeIntegrations';
