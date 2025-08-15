@@ -6,6 +6,7 @@ redirect_from: /docs/internal-developer-portal/catalog/register-software-compone
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocImage from '@site/src/components/DocImage';
 
 <Tabs queryString="version">
 <TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
@@ -35,7 +36,7 @@ Use the **Harness UI** to create entities directly—no YAML required. This meth
 - **Create an entity using your catalog YAML**:
 You can still create entities using your **existing catalog YAML** files. Harness will automatically convert **legacy Backstage YAML** into the new Harness Catalog Entity Model and register the corresponding entity.
 
-![](./static/create-entity-1.png)
+<DocImage path={require('./static/create-entity-1.png')} />
 
 
 ### Harness IDP UI
@@ -44,11 +45,17 @@ In **IDP 2.0**, you can now create new entities directly from the **Harness IDP 
 To create a new entity, navigate to the Harness IDP portal and click on **“Create”** from the side-bar menu. Choose the desired entity type, and follow these steps:
   1. You’ll be redirected to the **"Visual View"**, where you can input entity details and begin the creation process.
   2. Enter the required entity information. The **Visual view** is synced in real-time with the **YAML view** for full transparency.
-  ![](./static/create-entity-2.png)
+  <DocImage path={require('./static/create-entity-2.png')} />
   3. Define the **entity scope** — choose whether the entity should reside at the Account, Project, or Organization level. Read more about Catalog RBAC.
-  ![](./static/scope-entity.png)
+  <DocImage path={require('./static/scope-entity.png')} />
+  4. **Associate with System Entities**
+     Systems in Harness IDP are high-level catalog entities used to logically group related components, APIs, and resources. Associating your component with one or more Systems helps organize the catalog and improves visibility. [Learn more about System entities](/docs/internal-developer-portal/catalog/system-entity.md).
+
+     <DocImage path={require('./static/multiple-system.png')} />
+
+     You can select one or more Systems from the dropdown. This creates a relationship between your component and the selected Systems, making it easier to discover related entities and understand your software ecosystem.
   
-  4. **Link to Source Code Repository**
+  5. **Link to Source Code Repository**
      Configure the source code repository associated with this component. This link enables several key capabilities, such as:
      
      * Automatically configuring plugins like **Scorecards**, **TechDocs**, and **STO**
@@ -83,17 +90,16 @@ To create a new entity, navigate to the Harness IDP portal and click on **“Cre
       ![](./static/catalog-git.png)
       > The Git Experience is ideal for teams who prefer to manage entities as code. Learn more in the [Git Experience Journey](/docs/internal-developer-portal/git-experience/gitx-journey).
   7. Click on **“Review YAML”** to view the auto-generated YAML. Since there's a live sync between the Visual and YAML views, changes in one will reflect in the other.
-
     :::info
      **YAML validation** is performed to ensure compatibility with the **Harness-native Catalog YAML** model. Any errors will be shown in the Validation logs.
     Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
     ![](./static/yaml-validation.png)
     :::
-
   8. If needed, **configure a plugin** by referring to its documentation and adding the required annotations in the Catalog YAML.
-  ![](./static/plugins-entity.png)
+  <DocImage path={require('./static/plugins-entity.png')} />
   9. Once everything is set, click **“Create Component”** to finalize and create the entity.
-  ![](./static/yaml-view.png)
+  <DocImage path={require('./static/yaml-view.png')} />
+
 
 ### Catalog with Git Experience (GitX)
 
@@ -106,7 +112,7 @@ This adds advanced capabilities to your catalog experience, including:
 - **Real-time sync**: Changes made to the YAML file in Git (e.g., via PR or commit) are reflected in the IDP UI, and updates made via the UI are pushed to the Git repo.
 - **Pull request collaboration**: Git-backed entities enable auditability and team collaboration using version control workflows.
 
-![Branch Selector in Catalog View](./static/multi-branch.png)
+<DocImage path={require('./static/multi-branch.png')} />
 
 This makes it easy to track, version, and collaborate on entity definitions as code, while still leveraging the UI for updates and metadata insights.
 
@@ -122,19 +128,38 @@ You can also use the [Catalog YAML](/docs/internal-developer-portal/catalog/cata
   :::
 
 1. You’ll be redirected to the **Visual View**. You can switch to the **YAML View** using the toggle at the top of the screen. This allows you to directly edit the entity's YAML definition.
-![](./static/yaml-way.png)
+<DocImage path={require('./static/yaml-way.png')} />
 2. If you’re using a **legacy Backstage YAML**, paste it into the YAML view. Harness will convert it into the **Harness-native format** automatically. You can then proceed to finalize and create the entity. Since the Visual and YAML views are **live-synced**, changes made in one view will reflect in the other.
-![](./static/yaml-conversion.png)
+<DocImage path={require('./static/yaml-conversion.png')} />
 
 :::info
 Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
-![](./static/yaml-validation.png)
+<DocImage path={require('./static/yaml-validation.png')} />
 :::
 
-3. You can define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#orgidentifier)** directly in the YAML to set the project or organization scope.
-![](./static/scope-entity.png)
+3. You can define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
+<DocImage path={require('./static/scope-entity.png')} />
+4. To **associate your entity with System Entities** in YAML, add the `system` field to the `spec` section. You can specify multiple Systems by providing an array of System entity references:
 
-4. Define **Link to Source Code Repository** to configure the source code repository associated with this component. This link enables several key capabilities, such as, Automatically configuring plugins and Displaying the **View Source** option in the UI
+```yaml
+apiVersion: harness.io/v1
+kind: System
+name: Payment System
+identifier: paymentsystem
+type: system
+owner: team-payment
+spec:
+  lifecycle: ""
+metadata:
+  description: This system groups services and libraries related to payment processing.
+  tags:
+    - rest
+    - java
+```
+
+This creates a relationship between your component and the specified Systems, making it easier to discover related entities and understand your software ecosystem. Each System reference follows the format `system:[scope]/[identifier]`.
+
+5. Define **Link to Source Code Repository** to configure the source code repository associated with this component. This link enables several key capabilities, such as, Automatically configuring plugins and Displaying the **View Source** option in the UI
 This field is **optional**, but strongly recommended if your component is tied to a Git-based workflow or needs source-aware plugins.
 
 ```yaml
@@ -183,16 +208,15 @@ spec:
 
 > Harness IDP also auto-generates the legacy `backstage.io/source-location` annotation for backwards compatibility.
 > Currently, Scorecard computation uses the GitX connector and the Git Integration connector. An upcoming enhancement, available behind the `USE_LOCAL_GIT_CONNECTOR_FOR_SCORE_COMPUTATION` feature flag, will enable Scorecard computation to directly use the connector from Link to Source Code.
-
-5. Choose how you want to manage the entity:
+6. Choose how you want to manage the entity:
     * **Inline (default):** Manage the entity YAML directly within Harness.
     * **Remote:** Choose to store your entity YAML in a Git repository for version control, collaboration, and change tracking.
     You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
-      ![](./static/catalog-git.png)
-      > The Git Experience is ideal for teams who prefer to manage entities as code. Learn more in the [Git Experience Journey](/docs/internal-developer-portal/git-experience/gitx-journey).
+      <DocImage path={require('./static/catalog-git.png')} />
+      > The Git Experience is ideal for teams who prefer to manage entities as code. Learn more in the [Git Experience Journey](/docs/internal-developer-portal/git-experience/gitx-journey.md).
 
-6. If needed, **configure a plugin** by referring to the plugin’s documentation and adding the required annotations in the Catalog YAML.
-7. Once all details are complete, click **“Create Component”** to finalize and register your entity in the catalog.
+7. If needed, **configure a plugin** by referring to the plugin’s documentation and adding the appropriate **annotations** in the Catalog YAML.
+8. Once all details are complete, click **“Create Component”** to finalize and register your entity in the catalog.
 
 ## Editing Entities [IDP 2.0]
 You can now modify your entities directly from the **Harness IDP UI**, removing the dependency on manually editing the Catalog YAML file in your Git repository. This streamlines the update process and makes entity management much easier.
@@ -200,16 +224,16 @@ You can now modify your entities directly from the **Harness IDP UI**, removing 
 To edit an entity:
 1. Navigate to the **Catalog** and select the entity you want to modify.
 2. In the entity details view, click on **Edit** in the top-right corner.
-![](./static/edit-entity-1.png)
+<DocImage path={require('./static/edit-entity-1.png')} />
 3. You can update the entity using either the **Visual View** or the **YAML View**. Both views are live-synced—changes made in one will instantly reflect in the other.
 4. Click **Save Changes** to apply and save your updates.
 
 ### Entity Inspector
 You can also view the **entity’s YAML** by clicking **“View YAML”** from the entity details screen.
-![](./static/view-yaml.png)
+<DocImage path={require('./static/view-yaml.png')} />
 
 This opens the **Entity Inspector**, where you can review both the Raw YAML and Raw JSON representations.
-![](./static/entity-inspector.png)
+<DocImage path={require('./static/entity-inspector.png')} />
 
 
 ## Deleting Entities [IDP 2.0]
@@ -220,17 +244,17 @@ Here’s how to do it:
 2. In the entity details view, click the **three-dot menu** in the top-right corner.
 3. From the dropdown, select **Delete**. The entity will be removed from the catalog.
 
-![](./static/delete-entity.png)
+<DocImage path={require('./static/delete-entity.png')} />
 
 ## Sharing Entities [IDP 2.0]
 You can also copy the **entity URL** from the same dropdown menu and share it with others—provided they have the necessary access permissions.
 
-![](./static/copy-url.png)
+<DocImage path={require('./static/copy-url.png')} />
 
 ## Using Scopes & Filters [IDP 2.0]
 With the revamped **Catalog UI**, you can now use various scopes and filters to efficiently track all your applications, services, and other entities. It offers intuitive filtering and a streamlined way to access and manage everything within your Catalog. This update also introduces visibility into scorecard data and scope-level details—right within the Catalog—so you get deeper insights without navigating away.
 
-![](./static/catalog-ui.png)
+<DocImage path={require('./static/catalog-ui.png')} />
 
 </TabItem>
 <TabItem value="IDP 1.0" label="IDP 1.0">
@@ -290,19 +314,19 @@ Follow the steps below to register components in the Harness Platform UI:
 
 1. Once the file is created in your git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
 
-![](./static/create-page-sidebar.png)
+<DocImage path={require('./static/create-page-sidebar.png')} />
 
 2. In the left navigation, select **Create**, and then select **Register Software Component**.
 
-![](./static/create-page.png)
+<DocImage path={require('./static/create-page.png')} />
 
 3. Enter the URL to your new `idp.yaml`.
 
-![](./static/url-on-register-page.png)
+<DocImage path={require('./static/url-on-register-page.png')} />
 
 4. Click **Import**.
 
-![](./static/finished-state.png)
+<DocImage path={require('./static/finished-state.png')} />
 
 </TabItem>
 <TabItem value="API">
@@ -323,7 +347,7 @@ curl --location 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations' 
 
 The new component is available in your catalog.
 
-![](./static/imported-entity.png)
+<DocImage path={require('./static/imported-entity.png')} />
 
 ## Further Reading [IDP 1.0]
 

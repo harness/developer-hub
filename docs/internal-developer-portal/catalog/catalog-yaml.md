@@ -169,7 +169,7 @@ If you have entities defined using legacy Backstage YAML (from IDP 1.0), you can
    Learn more in the **[Catalog YAML View documentation](/docs/internal-developer-portal/catalog/manage-catalog.md#catalog-yaml)**.
 
 2. **Using the YAML Conversion API:**
-   To streamline migration, we’ve also introduced an API that converts Backstage Catalog YAML to the Harness-native format. \[Read more here.]
+   To streamline migration, we've also introduced an API that converts Backstage Catalog YAML to the Harness-native format. [Read more in the IDP 2.0 migration guide.](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)
 
 All existing Catalog entities will be **automatically migrated** to IDP 2.0, and their associated YAML files will be deprecated. Additionally, a new Git Experience tool will soon be available, allowing you to **commit the converted definitions directly to YAML files in your Git repository**.
 
@@ -204,6 +204,7 @@ With **IDP 2.0**, you can define the following `kind` types in your Catalog YAML
 * `kind: API`
 * `kind: Resource`
 * `kind: Workflow`
+* `kind: System`
 
 Each kind represents a different type of entity within the Harness-native data model.
 [Read more about the different entity kinds here.](/docs/internal-developer-portal/catalog/catalog-yaml.md#entity-kinds)
@@ -349,6 +350,7 @@ All the fields mentioned below are the mandatory parameters required to define a
 | `kind` | **Component** |
 | `type` | You can find out more about the `type` key here. |
 | `spec.lifecycle` | You can find out more about the `lifecycle` key here. |
+| `spec.system` | Optional. Reference to System entities this Component belongs to. |
 
 #### Example YAML
 ```yaml
@@ -360,6 +362,11 @@ name: artistweb
 owner: artist-relations-team
 spec:
   lifecycle: production
+  system:
+    - system:account/marketing_systems
+    - system:account/web_platform
+  partOf:
+    - system:account/customer_experience
 metadata:
   description: The place to be, for great artists
   annotations:
@@ -373,6 +380,38 @@ metadata:
     example.com/custom: custom_label_value
   tags:
     - java
+```
+
+---
+
+### Kind: System
+A **System** is a high-level catalog entity used to logically group related software components, APIs, and infrastructure resources. It represents a functional or domain-specific boundary such as a module, platform area, or business unit—enabling teams to organize and manage complex software ecosystems more effectively.
+
+#### Entity Structure  
+All the fields mentioned below are the mandatory parameters required to define a System:
+
+| **Field** | **Value** |
+| --------- | --------- |
+| `apiVersion` | **harness.io/v1** |
+| `kind` | **System** |
+| `type` | Common values include `domain`, `module`, or `platform` |
+| `owner` | The team or group responsible for the System |
+
+#### Example YAML
+```yaml
+apiVersion: harness.io/v1
+kind: System
+type: domain
+identifier: paymentsystem
+name: Payment System
+owner: team-payment
+spec:
+  lifecycle: ""
+metadata:
+  description: This system groups services and libraries related to payment processing.
+  tags:
+    - payments
+    - financial
 ```
 
 ---
