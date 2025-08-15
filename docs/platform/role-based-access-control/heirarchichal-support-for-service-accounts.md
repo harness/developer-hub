@@ -24,7 +24,7 @@ The following example shows how to use an account-level service account in a pro
 
 Create a [Service Account](./add-and-manage-service-account.md#create-a-service-account) at the account level. This service account can then be inherited by organizations or projects.
 
-### Step 2: Create project-level permissions
+### Step 2: Create project-level Role and Resource Group
 
 In your target project:
    - Create a [Role](./add-manage-roles.md#create-a-role) with the required permissions
