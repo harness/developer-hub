@@ -78,9 +78,9 @@ At the organization and project scopes, you can quickly create groups by inherit
 | Edit roles and resource groups | You can change the roles and resource groups that were assigned at the current scope only. You can't make cross-scope modifications.<br/><ul><li>Original scope: Manage role and resource group assignments for the original scope only. Can't edit role/resource groups for inherited scopes.</li><li>Inherited scope: Manage role and resource group assignments for the inherited scope only. Can't edit higher-level roles/resource groups or roles/resource groups in other inherited scopes.</li></ul> |
 | Delete group | Original scope only. If deleted, the group is also removed from all scopes where it was inherited. |
 
-:::danger Breaking Changes Notice
+:::danger Important Note
 
-When a user group is inherited from the Account scope to the Project scope, the system automatically assigns it the organization_viewer role, and the assignment is visible in the Audit logs.
+When a user group is inherited from the Account scope to the Project scope, the system automatically assigns it the Organization viewer role, and the assignment is visible in the Audit logs.
 
 If this role is removed, the user group may lose access to the Organization.
 :::
@@ -103,7 +103,7 @@ To inherit user groups in Harness, you need the following [permissions](./permis
 5. Select **Add** to [assign a role and resource group](#assign-roles-and-resource-groups) to the inherited group at the inherited scope. This determines the group's permissions and access at the inherited scope. If the group doesn't already have sufficient permissions/access from the original scope, you need to add the additional necessary permissions/access here.
 6. Select **Apply**.
 
-When viewing user groups at higher scopes, you can findnd a list of **Organizations and Projects Using This Group** in the group details. These are the organizations and projects where the group is inherited.
+When viewing user groups at higher scopes, you can find a list of **Organizations and Projects Using This Group** in the group details. These are the organizations and projects where the group is inherited.
 
 <!-- ![](./static/add-user-groups-55.png) -->
 
@@ -111,7 +111,7 @@ When viewing user groups at higher scopes, you can findnd a list of **Organizati
 
 ## Assign roles and resource groups
 
-Initially, user groups have no permissions or access. You assign [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to user groups, and then the permissions and access granted by the assigned rolesoles and resource groups are applied to all group members. For more informationion about assigning roles and resource groups, go to [RBAC in Harness: Role binding](./rbac-in-harness.md#role-binding).
+Initially, user groups have no permissions or access. You assign [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to user groups, and then the permissions and access granted by the assigned roles and resource groups are applied to all group members. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role binding](./rbac-in-harness.md#role-binding).
 
 :::warning Least privilege
 
