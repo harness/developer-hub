@@ -1,5 +1,13 @@
 import React from 'react';
 
+// Helper to chunk an array into rows
+function chunkArray(array, size) {
+  if (!Array.isArray(array) || array.length === 0) return [];
+  return array.reduce((acc, _, i) =>
+    i % size ? acc : [...acc, array.slice(i, i + size)], []
+  );
+}
+
 export const supportedWorkflows = [
   { name: "AppDynamics", img: "/provider-logos/fme-integrations/appdynamics-logo.png", link: "/docs/feature-management-experimentation/integrations/appdynamics" },
   { name: "Azure DevOps", img: "/provider-logos/fme-integrations/azure-devops-logo.png", link: "/docs/feature-management-experimentation/integrations/azure-devops" },
@@ -45,47 +53,40 @@ export const supportedCommunity = [
   { name: "Terraform Provider", img: "/provider-logos/fme-integrations/terraform-logo.png", link: "/docs/feature-management-experimentation/integrations/terraform" },
 ];
 
-// helper to chunk array
-function chunkArray(array, size) {
-  if (!Array.isArray(array) || array.length === 0) return [];
-  return array.reduce((acc, _, i) =>
-    (i % size ? acc : [...acc, array.slice(i, i + size)]), []);
-}
-
-export function Section({ title, description, items, perRow = 4 }) {
-  const colClass = Number.isInteger(12 / perRow) ? `col col--${12 / perRow}` : 'col col--custom';
+export const Section = ({ title, items, perRow = 6, rowSpacing = '32px', description }) => {
   const rows = chunkArray(items, perRow);
 
   return (
-    <section>
-      <h2>{title}</h2>
-      {description && <p>{description}</p>}
+    <section style={{ marginBottom: '64px' /* extra space after section */ }}>
+      <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{title}</h2>
+      {description && <p style={{ marginBottom: '16px' }}>{description}</p>}
 
       {rows.map((row, rowIdx) => (
-        <div key={rowIdx} className="row" style={{ marginBottom: '24px' }}>
+        <div key={rowIdx} style={{ display: 'flex', gap: '1rem', marginBottom: rowSpacing }}>
           {row.map(({ name, img, link }) => (
-            <div
+            <a
               key={name}
-              className={colClass}
+              href={link}
               style={{
                 display: 'flex',
-                justifyContent: 'center',
-                marginBottom: '16px',
                 flexDirection: 'column',
                 alignItems: 'center',
-                textAlign: 'center',
-                flex: colClass === 'col col--custom' ? `0 0 ${100 / perRow}%` : undefined,
-                maxWidth: colClass === 'col col--custom' ? `${100 / perRow}%` : undefined,
+                justifyContent: 'space-between',
+                textDecoration: 'none',
+                color: 'inherit',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                padding: '1rem',
+                width: '140px',
+                boxSizing: 'border-box',
               }}
             >
-              <a href={link} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textDecoration: 'none', color: 'inherit', height: '100%' }}>
-                <img src={img} alt={name} style={{ width: '80px', height: '60px', objectFit: 'contain', marginBottom: '8px' }} />
-                <span style={{ marginTop: 'auto' }}>{name}</span>
-              </a>
-            </div>
+              <img src={img} alt={name} style={{ width: '80px', height: '60px', objectFit: 'contain', marginBottom: '8px' }} />
+              <span style={{ textAlign: 'center', lineHeight: '1.2' }}>{name}</span>
+            </a>
           ))}
         </div>
       ))}
     </section>
   );
-}
+};

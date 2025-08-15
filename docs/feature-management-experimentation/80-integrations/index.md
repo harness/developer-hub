@@ -15,16 +15,39 @@ If you're not seeing a tool you need to be connected to Split, you can use Split
 
 import { Section, supportedWorkflows, supportedDatasources, supportedAdminchanges, supportedCommunity } from '/src/components/Docs/data/fmeIntegrations';
 
-<Section title="Split-supported Workflow Integrations" items={supportedWorkflows} perRow={5} description="Split-supported workflow integrations allow you to send feature flag changes directly to the tools your team relies on, helping your team act on flag updates in real time." />
+<Section 
+  title="Split-supported Workflow Integrations" 
+  items={supportedWorkflows} 
+  perRow={6} 
+  rowSpacing="20px" 
+  description="Split-supported workflow integrations allow you to send feature flag changes directly to the tools your team relies on, helping your team act on flag updates in real time." 
+/>
+
+<Section 
+  title="Split-supported Data Integrations" 
+  items={supportedDatasources} 
+  perRow={6} 
+  rowSpacing="20px" 
+  description="Split-supported data source integrations send event data to Split to power experiments, helping you measure the impact of features on metrics derived from your customer data. Split-supported data export integrations allow you to send impression data to analytics platforms, data warehouses, or CRM tools to enrich your business intelligence and reporting." 
+/>
+
+<Section 
+  title="Split-supported Admin Integrations" 
+  items={supportedAdminchanges} 
+  perRow={6} 
+  rowSpacing="20px" 
+  description="Split-supported admin integrations let you propagate administrative changes (such as user or configuration updates) to the tools your team uses, keeping your workflows consistent and up-to-date." 
+/>
+
+<Section 
+  title="Community-supported Integrations" 
+  items={supportedCommunity} 
+  perRow={6} 
+  rowSpacing="20px" 
+  description="In addition to native integrations, the Split community has contributed a wide variety of integrations, enabling you to bring feature flag data into additional tools not natively supported, from monitoring dashboards to analytics platforms." 
+/>
 
 <br />
-<Section title="Split-supported Data Integrations" items={supportedDatasources} perRow={5} description="Split-supported data source integrations send event data to Split to power experiments, helping you measure the impact of features on metrics derived from your customer data. Split-supported data export integrations allow you to send impression data to analytics platforms, data warehouses, or CRM tools to enrich your business intelligence and reporting." />
-
-<br />
-<Section title="Split-supported Admin Integrations" items={supportedAdminchanges} perRow={5} description="Split-supported admin integrations let you propagate administrative changes (such as user or configuration updates) to the tools your team uses, keeping your workflows consistent and up-to-date." />
-
-<br />
-<Section title="Community-supported Integrations" items={supportedCommunity} perRow={5} description="In addition to native integrations, the Split community has contributed a wide variety of integrations, enabling you to bring feature flag data into additional tools not natively supported, from monitoring dashboards to analytics platforms. " />
 
 :::info
 Already built out your own integration or want to request an integration? Contact [Harness Support](/docs/feature-management-experimentation/fme-support). We’d like to feature your work to the entire Split developer community.
