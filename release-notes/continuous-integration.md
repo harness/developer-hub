@@ -46,14 +46,11 @@ Harness Cloud now supports two new capabilities for VM images:
 
 - You can now choose a specific VM image version for your CI stages, instead of always using the default `latest`.
 - This feature is controlled by the `CI_ENABLE_HOSTED_IMAGE_MANAGEMENT` flag, which enables the ability to view and select from all available VM image versions in the UI or YAML.
-- We’re already in the process of rolling out this FF, as this one will not break anything and will not change the default behavior.
 
-2. **Upcoming Change to `latest` Tag**
+2. **Changes to `latest` Tag**
 
-- Currently, `ubuntu-latest` (Linux AMD & ARM) points to **Ubuntu 22.04**. All cloud stages where image name is not specified (which is the case for most cloud customers as we’re only now rolling to feature flag `CI_ENABLE_HOSTED_IMAGE_MANAGEMENT` are now going to Ubuntu **22.04**.
-- We will soon update `ubuntu-latest` to point to **Ubuntu 24.04**.
-- This update is gated by the `CI_ENABLE_HOSTED_BETA_IMAGES` flag. Until enabled, `ubuntu-latest` will continue to reference **Ubuntu 22.04**.
-- This could be a breaking change fo customer that are not prepared for it.
+- Currently Harness CI Cloud stages with unspecified image names point to **Ubuntu 22.04** (this is behind the feature flag `CI_ENABLE_HOSTED_IMAGE_MANAGEMENT`).
+- With this update gated by `CI_ENABLE_HOSTED_BETA_IMAGES` flag, Harness CI Cloud stages with unspecified image name will point to **Ubuntu 24.04**.
 
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
@@ -64,11 +61,14 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 <!-- 2025-08-11 -->
 
+#### New features and enhancements
+
+- **Authenticated Git operations are now available in all Run steps**: Pipelines can now reuse Git credentials across all Run steps without re-authentication. git plugin populates `.netrc` file. This file is stored in a shared `emptyDir` volume. This volume is mounted and available to every container, enabling seamless authenticated Git operations (such as **push** or **fetch**) throughout the pipeline. (CI-18088)
+
 #### Fixed issues
 
 - **Added repo name validation for dockerhub** - **BuildAndPushToDockerRegistry** step should now validate and highlight errors for any capitalized letters in the repo name field. (CI-8044)
 - **GCSUpload plugin successfully uploads file to the right path** - GCSUpload plugin should now upload the file to the right path without filename duplication. (CI-18582)
-- **Run tests when Intelligence mode is off** - When Intelligence mode is OFF, the relevant tests should run in the test step. (CI-18566)
 - **Improved the experience in the Getting Started Wizard in CI** - Lag in populating repo list in Getting Started Wizard has now been resolved. (CI-18280)
 
 #### Harness images updates
