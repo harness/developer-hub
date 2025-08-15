@@ -80,7 +80,7 @@ At the organization and project scopes, you can quickly create groups by inherit
 
 :::danger Important Note
 
-When a user group is inherited from the Account scope to the Project scope, the system automatically assigns it the Organization viewer role, and the assignment is visible in the Audit logs.
+When a user group is inherited from the account scope to a project scope, the system automatically assigns the Organization Viewer role to that group for the organization containing the project. The role assignment is also recorded in the Audit Logs.
 
 If this role is removed, the user group may lose access to the Organization.
 :::
