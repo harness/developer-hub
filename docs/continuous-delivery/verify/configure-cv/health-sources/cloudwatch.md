@@ -91,15 +91,9 @@ CloudWatch Logs is currently behind the feature flag `CDS_CV_CLOUDWATCH_LOGS_ENA
 
 :::info
 
-The oldest supported delegate version is 858xx. If you wish to use CloudWatch Logs, please ensure your delegate version is 858xx or newer. 
+For more information on the prerequisites, configuration steps, and permissions required for enabling cloudwatch logs, go to [Cloudwatch Logs](/docs/continuous-delivery/verify/configure-cv/health-sources/cloudwatch-aws.md)
 
 :::
-
-#### AWS Permissions
-
-The following AWS permissions are required:
-   - `ec2:DescribeRegions`. The AWS connector requires the AWS region.
-   - 
 
 1. Click **+ Add Query**.
 2. Enter a **Query Name**. 

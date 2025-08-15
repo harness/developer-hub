@@ -1,12 +1,16 @@
 ---
-title: CloudWatch Logs with AWS
+title: CloudWatch Logs
 description: Learn how to use CloudWatch Logs as a health source with AWS
 ---
 
-## Prerequisites
+With this article, you'll learn how to leverage CloudWatch Logs as a health source. You'll gain a clear understanding of the necessary prerequisites, configuration steps, and the specific IAM permissions required for seamless integration, including advanced setups for cross-account access and IRSA.
+
+:::note
 
 - Feature Flag needs to be enabled - CDS_CV_CLOUDWATCH_LOGS_ENABLED
 - Oldest supported delegate version - 858xx
+
+:::
 
 ## General Instructions [for each CV config]
 
@@ -235,4 +239,4 @@ Similar to Assume IAM role:
 
 Just enable the Dynamic ARN toggle, enter the dynamic role arn in the new textbox that appears followed by the region and log-group.
 
-![](./static/cw-aws-1.png)
+![](./static/cloudwatch-logs-1.png)
