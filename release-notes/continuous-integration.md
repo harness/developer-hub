@@ -56,7 +56,7 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 #### New features and enhancements
 
-- **Authenticated Git operations are now available in all Run steps**: Pipelines can now reuse Git credentials across all Run steps without re-authentication. git plugin populates `.netrc` file. This file is stored in a shared `emptyDir` volume. This volume is mounted and available to every container, enabling seamless authenticated Git operations (such as **push** or **fetch**) throughout the pipeline. (CI-18088)
+- **Authenticated Git operations are now available in all Run steps**: When enabled, pipelines can now reuse Git credentials across all Run steps without re-authentication. This enables seamless authenticated Git operations (such as **push** or **fetch**) throughout the pipeline.(CI-18088)
 
 #### Fixed issues
 
