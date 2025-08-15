@@ -264,6 +264,38 @@ In **Advanced Configuration**, select the application(s) you want to sync and co
 
 The sync options provided are the same options you receive while syncing an application in GitOps directly.
 
+#### Using Expressions with Application Labels
+
+When using `applicationLabels` as a pipeline variable, it represents a list of strings. Since this is not a native variable type in Harness expressions, you need to use specific methods to properly pass the list values.
+
+You can use one of the following approaches to handle application labels in expressions:
+
+**JSON List Functor**
+
+Use the JSON list functor to parse the labels:
+
+```
+<+json.list("$", <+pipeline.variables.labels>)>
+```
+
+Format your `labels` variable as:
+- Single value: `["cluster"]`
+- Multiple values: `["cluster", "list"]`
+
+For more information, go to [JSON and XML functors](/docs/platform/variables-and-expressions/harness-variables/#json-and-xml-functors).
+
+**Split Function**
+
+Use the split function for comma-separated values:
+
+```
+<+pipeline.variables.labels.split(",")>
+```
+
+Input examples:
+- `cluster` (single label)
+- `cluster,list` (multiple labels)
+
 ### GitOps Get App Details step
 
 This step fetches the details and status of your application.
