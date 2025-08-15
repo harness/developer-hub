@@ -18,9 +18,9 @@ Reallocation allows you to get an unbiased set of customers to give feedback on 
 
 To reallocate traffic, do the following:
 
-1. Click the ellipsis (...) button on the selected feature flag.
+1. Click the Ellipsis (...) icon on the selected feature flag.
 
-   <img src="https://help.split.io/hc/article_attachments/15592498353677" alt="reallocate.png" width="900" />
+   ![](../static/reallocate.png)
 
 2. Click **Reallocate**.
 3. Enter `REALLOCATE` in the warning modal.

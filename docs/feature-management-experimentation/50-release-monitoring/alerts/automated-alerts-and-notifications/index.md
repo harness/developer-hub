@@ -104,7 +104,7 @@ For troubleshooting an alert that did not fire as expected, refer to the [Troubl
 
 To understand the impact of your feature flags, you need to know when critical changes are occurring. Harness FME gives you the ability to create alerts that actively check for a degradation in your metrics. Alerts that fired are displayed both on the Targeting and Alerts tab on the feature flag page.
 
-<img src="https://help.split.io/hc/article_attachments/19832326547597" alt="managing-alerts.png" width="1000" />
+![](../../static/troubleshooting-alert.png)
 
 ## Alert notifications
 

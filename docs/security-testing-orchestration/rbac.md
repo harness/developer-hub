@@ -10,8 +10,10 @@ Harness STO offers granular Role-Based Access Control (RBAC) for all its resourc
 - [STO Resources and Role Permissions](#sto-resources-and-role-permissions)
 - [Built-in STO Roles (Default Roles)](#built-in-sto-roles-default-roles)
 
+<DocVideo src="https://youtu.be/c_JU141TGas" />
+
 :::info
-To assign Roles, you need Administrative privileges at the Account level (Account Admin role).
+To assign Roles, you need Administrative privileges at the **Account** level (**Account Admin** role).
 :::
 
 ## STO Resources and Role Permissions

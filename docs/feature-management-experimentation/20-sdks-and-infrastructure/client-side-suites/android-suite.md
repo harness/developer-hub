@@ -23,7 +23,7 @@ Set up FME in your code base with the following two steps:
 Import the SDK into your project including the dependency as follows:
 
 ```java title="Gradle"
-implementation 'io.split.client:android-suite:2.1.0'
+implementation 'io.split.client:android-suite:2.1.1'
 ```
 
 :::warning[Important]

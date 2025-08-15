@@ -152,19 +152,15 @@ const Roadmap = () => {
                   <div className={styles.section}>
                     <div className={styles.sectionDescription}>
                       <div className={styles.titleLine}>
-                        <h4>{key[index]}</h4>
+                        <h4>{k} <span className={styles.featureCount}>{selectedModule.horizon[k].feature.length}</span></h4>
                         <p>
                           {Object.keys(selectedModule.horizon).length > 0 &&
-                            selectedModule.horizon[
-                              Object.keys(selectedModule.horizon)[index]
-                            ].description}
+                            selectedModule.horizon[k].description}
                         </p>
                       </div>
                     </div>
                     {Object.keys(selectedModule.horizon).length > 0 &&
-                      selectedModule.horizon[
-                        Object.keys(selectedModule.horizon)[index]
-                      ].feature.map((feature, index) => (
+                      selectedModule.horizon[k].feature.map((feature, index) => (
                         <HorizonCard
                           module={selectedModule.module}
                           tag={feature.tag}
@@ -188,7 +184,7 @@ const Roadmap = () => {
                         }`}
                       onClick={() => handleSwitchTab(key)}
                     >
-                      <li key={index}>{key}</li>
+                      <li key={index}>{key} <span className={styles.featureCount}>{selectedModule.horizon[key].feature.length}</span></li>
                     </div>
                   ))}
               </ul>

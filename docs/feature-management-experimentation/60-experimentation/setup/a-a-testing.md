@@ -89,7 +89,7 @@ It’s not intuitively obvious, but the p-value calculated for any particular me
 
 Below is a chart of p-values calculated for eight metrics at nine different times over the course of an A/A test:
 
-![A/A Test P-values](https://help.split.io/hc/article_attachments/360061275992)
+![](../static/a-a-test-pvalue.png)
 
 Remember that checking the p-value multiple times increases the chance of seeing a p-value within the range of statistical significance.
 

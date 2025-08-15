@@ -164,3 +164,34 @@ In scenarios involving destructive operations like DROP, the rollback cannot mag
 :::note warning
 Dropping tables or columns in production environments should be treated with extreme caution. It is highly recommended to adopt a backup-first approach and validate rollback strategies before applying such changes.
 :::
+
+## 7.  I encountered an error during rollback. What does it mean and how can I fix it?
+
+This error occurs in PostgreSQL when replication is enabled, and the databasechangelog table (created by Liquibase) has no primary key or replica identity. PostgreSQL requires a replica identity to process DELETE operations during rollback.
+
+**Error Message**: `ERROR: cannot delete from table "databasechangelog" because it does not have a replica identity and publishes deletes.`
+
+**How to Solve**:
+
+Run the following SQL to allow deletes even without a primary key:
+
+```sql
+ALTER TABLE databasechangelog REPLICA IDENTITY FULL;
+```
+This tells PostgreSQL to use the full row for replication tracking. We're planning to update DB DevOps to add a primary key to this table automatically in future versions.
+
+:::important note
+Apply the workaround only if your environment uses logical replication and encounters this error. In non-replicated environments, this issue typically does not occur
+:::
+
+**Long-Term Fix (Planned):**
+
+We plan to update Harness DB DevOps to include a primary key on the databasechangelog table upon creation to ensure better compatibility with replication-enabled PostgreSQL environments. Until then, applying the above workaround will unblock affected users.
+
+## 8. Why do I see the error: "The DB Instance connector cannot be an expression"?
+This is expected behavior in Database DevOps Module. Unlike other CD modules in Harness where connectors can be passed as expressions, `DB Instances` require fixed connectors.
+This is by design—features like drift detection depend on resolving the database schema, instance, and connector outside of pipeline execution. To support such functionality, the connector must be fully defined and cannot be referenced as a runtime or expression value.
+
+:::note
+Use a fixed connector when defining your DB Instance in order to enable full DB DevOps capabilities.
+:::

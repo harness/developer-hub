@@ -13,7 +13,7 @@ This guide provides detailed information about our Python SDK. All of our SDKs a
 The Python SDK supports Python 3 (3.7.16 or later).
 
 :::tip[Rule-based segments support]
-Rule-based segments are supported in SDK versions 10.3.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
+Rule-based segments are supported in SDK versions 10.4.0 and above. No changes are required to your SDK implementation, but updating to a supported version is required to ensure compatibility.
 
 Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
 :::
@@ -39,7 +39,7 @@ Set up FME in your code base with two simple steps.
 ### 1. Import the SDK into your project using pip
 
 ```bash title="Shell"
-pip install 'splitio_client[cpphash]==10.3.0'
+pip install 'splitio_client[cpphash]==10.4.0'
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
@@ -83,7 +83,7 @@ Set up FME in your code base with two simple steps.
 ### 1. Import the SDK into your project using pip
 
 ```bash title="Shell"
-pip install 'splitio_client[cpphash,asyncio]==10.3.0'
+pip install 'splitio_client[cpphash,asyncio]==10.4.0'
 ```
 
 ### 2. Instantiate the SDK and create a new SDK factory client
@@ -149,14 +149,14 @@ Use `pip install` to install the SDK. Note that the package is different for sta
 <TabItem value="Multi-threaded">
 
 ```bash
-pip install 'splitio_client[redis,cpphash]==10.3.0'
+pip install 'splitio_client[redis,cpphash]==10.4.0'
 ```
 
 </TabItem>
 <TabItem value="asyncio">
 
 ```bash
-pip install 'splitio_client[redis,cpphash,asyncio]==10.3.0'
+pip install 'splitio_client[redis,cpphash,asyncio]==10.4.0'
 ```
 
 </TabItem>

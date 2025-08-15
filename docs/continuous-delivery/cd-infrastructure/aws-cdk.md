@@ -14,8 +14,7 @@ This topic provides steps on using Harness to provision a target AWS environment
 
 - You can add AWS CDK provisioning steps to Harness Deploy and Custom stage types.
 - You can perform ad hoc provisioning or provision the target environment for a deployment as part of the deployment stage.
-- AWS OIDC connectors are supported for CDK deployments starting with delegate version 859xx or later. To use OIDC for CDK steps, ensure the feature flag `CDS_ADD_AWS_CONNECTOR_FOR_CDK_STEPS` is enabled.
-
+- AWS OIDC connectors are supported for CDK deployments starting with delegate version 859xx or later.
 ## Demo Video
 
 <DocVideo src="https://www.loom.com/share/5a118a7ace3e49819c697b7131468990?sid=36ae85f0-0a39-4c5c-ba62-0e1a9d52c4de" />
@@ -208,7 +207,11 @@ The image you use should support the CDK operations you are running in your app.
 | linux                 | [`harness/aws-cdk-plugin:1.3.0-2.1019.2-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-2.1019.2-linux-arm64/images/sha256-87b2d35d22b87c2a59fd9d2e78dfe1f288f0bb93627e7fdbaa7470e07a430255)                     | [`harness/aws-cdk-plugin:1.3.0-2.1019.2-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-2.1019.2-linux-arm64-unified/images/sha256-1eea64de99d7f4f9759c4ad1231c169df92d5a23e1bdd3ef289fd73cba426d43) | 2.1019.2 |
 
 
-You can find all current tags on Docker Hub: [harness/aws-cdk-plugin - Docker Hub](https://hub.docker.com/r/harness/aws-cdk-plugin/tags)
+You can access the AWS CDK plugin images from the following repositories:
+
+- Docker Hub: [aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags)
+- GAR:
+  - Europe region: [GAR Image Repository for AWS CDK Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Faws-cdk-plugin?inv=1&invt=Ab5cNA)
 
 Harness also supports **`amd64`** architecture for these plugin images. You can find the corresponding tags (such as `harness/aws-cdk-plugin:1.3.0-2.1019.2-linux-amd64-unified`) on [Docker Hub](https://hub.docker.com/r/harness/aws-cdk-plugin/tags?name=amd64).
 

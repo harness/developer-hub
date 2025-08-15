@@ -148,7 +148,7 @@ A changelog is the backbone of database versioning in Harness Database DevOps. I
 A changelog is a text-based file that sequentially lists database changes in the form of changesets. It acts as a source of truth for versioning and deployment of database schema updates.
 
 ### 2. Can I include other changelogs inside a main changelog?
-Yes, using the [`include` or `includeAll`](../organizing-sql-files#include-and-includeall-tags) tags. This modular approach supports better collaboration, parallel development, and reusability of schema definitions.
+Yes, using the [`include` or `includeAll`](https://developer.harness.io/docs/database-devops/concepts-and-features/understanding-changelog-directories/organizing-sql-files#include-and-includeall-tags) tags. This modular approach supports better collaboration, parallel development, and reusability of schema definitions.
 
 ### 3. What Happens when I run the Harness Apply Step?
 Liquibase parses the changelog, evaluates global preconditions, and then applies new changesets to the target database. Previously applied changesets are skipped.
@@ -162,7 +162,7 @@ Harness's changelog is compatible to open source liquibase. Just point Harness a
 
 ### 6. What happens if I'm currently using Flyway, how can I convert my Flyway Changelog to a Harness Changelog?
 
-Flyway changelogs are typically directories of SQL files to run in alphabetical order. You can point your harness changelog at this directory by following [the tutorial](../../get-started/build-a-changelog). For example, if your Flyway changelog is in a directory called `sql`, you can use the `includeAll` tag, which can do this:
+Flyway changelogs are typically directories of SQL files to run in alphabetical order. You can point your harness changelog at this directory by following [the tutorial](https://developer.harness.io/docs/database-devops/get-started/build-a-changelog). For example, if your Flyway changelog is in a directory called `sql`, you can use the `includeAll` tag, which can do this:
 
 ```yaml
 databaseChangeLog:

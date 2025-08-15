@@ -22,7 +22,7 @@ The impressionsMaxSize and impressionsPerPost parameters are configured accordin
 
 Below is a full configuration setting for Synchronizer that can post 100,000 impressions per minute.
 
-Please make sure to update the JSON with the relevant API Key, Redis host, port and database number before applying it.
+Make sure to update the JSON with the relevant API Key, Redis host, port and database number before applying it.
 
 ```
 {
@@ -92,6 +92,6 @@ Please make sure to update the JSON with the relevant API Key, Redis host, port 
 }
 ```
 
-##See also
+## See also
 
 For more information on setup and configuration, see [Split Synchronizer runbook](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/split-sync-runbook).

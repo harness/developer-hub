@@ -487,12 +487,6 @@ However, the AWS CLI [create-auto-scaling-group](https://docs.aws.amazon.com/cli
 
 ### ASG Additional Configuration
 
-:::note
-
-Currently, ASG Additional Configuration is behind the feature flag `CDS_ASG_ENABLE_METRICS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
-
-:::
-
 ![](../static/asg-additional-configuration.png)
 
 **Enabling Metrics in ASG**
@@ -1346,9 +1340,6 @@ Harness stores configurations of the ASG you are deploying twice:
 
 ### Steady State Step
 
-:::note
-
-Currently, Asg Steady State Step is behind the feature flag `CDS_ASG_SKIP_INSTANCE_TERMINATION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
 
 :::
 
