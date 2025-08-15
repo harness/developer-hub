@@ -2,6 +2,8 @@
 title: Overview
 sidebar_label: Overview
 description: How to make Feature Management & Experimentation work for you
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/best-practices/o-reilly-book
 ---
 
 Harness Feature Management & Experimentation (FME) combines capabilities for feature delivery and control with built-in tools for measurement and learning. FME connects insightful data to every feature release and supports modern practices like continuous delivery and progressive delivery.
@@ -141,6 +143,8 @@ Split has robust data pipelines and attribution logic. If you do find a mismatch
 ### Feature management
 
 Manage feature flag scheduling, flag sets, and flag lifecycles. Feature flags turn on features to specific users or segments. You can tailor access to beta testers and early adopters based on individual IDs, attributes, dependencies, or percentages. Gradually increase the rollout percentage to limit the blast radius of your releases.
+
+In [this book](https://www.harness.io/resources/feature-flags-best-practices), Split CTO Pato Echague and Pete Hodgson explain how to implement feature-flagged software successfully, and offer some tips to developers on how to configure and manage a growing set of feature flags within your product, maintain them over time, manage infrastructure migrations, and more.
 
 ### Release monitoring
 

@@ -9,7 +9,7 @@ sidebar_label: Impressions
 
 Use this outgoing webhook to integrate Split impressions into the tools that your team already uses. You can use Split webhooks to enhance your tracking, and analytics tools to provide insights around the impact of feature changes.
 
-Whenever Split stores down an [impression](/docs/feature-management-experimentation/feature-management/impressions/) from an SDK, we send an HTTP POST payload to the webhook's configured URL in JSON format (`Content-Type: application/json`) in batches of impressions seen approximately every 10 seconds. The data sent has the following schema. Any response code other than 200 is marked as failure.
+Whenever Split stores down an [impression](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/) from an SDK, we send an HTTP POST payload to the webhook's configured URL in JSON format (`Content-Type: application/json`) in batches of impressions seen approximately every 10 seconds. The data sent has the following schema. Any response code other than 200 is marked as failure.
 
 To reduce latency, each HTTP POST is be gzipped unless the URL represents a Slack or [Fivetran](https://fivetran.com/) webhook.
 

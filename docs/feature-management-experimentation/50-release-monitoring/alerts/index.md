@@ -45,11 +45,11 @@ Compare metrics against a [baseline treatment](.././alerts/set-the-alert-baselin
 
 ## Manage alerts
 
-When an alert fires, you can access the [alert details](./view-triggered-alerts.md) and kill the flag directly from the flag page to stop traffic.
+When an alert fires, you can access the [alert details](./view-triggered-alerts) and kill the flag directly from the flag page to stop traffic.
 
 | **Action** | **Description** |
 | ---- | ---- | 
-| Kill feature flag | If you decide to kill a feature flag due to an alert, the [default treatment](/docs/feature-management-experimentation/feature-management/default-treatment/) overrides the existing targeting rules and is returned for all customers. |
+| Kill feature flag | If you decide to kill a feature flag due to an alert, the [default treatment](/docs/feature-management-experimentation/feature-management/setup/default-treatment) overrides the existing targeting rules and is returned for all customers. |
 
 ### Troubleshooting alerts
 

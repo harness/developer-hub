@@ -1,9 +1,11 @@
 ---
 title: Setup
 sidebar_position: 50
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/faqs/is-there-a-way-to-limit-the-number-of-users-in-an-experiment/
 ---
 
-## Create an experiment
+## Overview
 
 ### Interactive guide
 
@@ -55,6 +57,10 @@ Perhaps you want to only allow a portion of your users into an experiment, maybe
 The Default treatment could be the same as **off**, or it could be a third treatment, and as you increase the exposure limit, you increase the number of people participating in an experiment.
 
 ![](../static/users-exposure-limit.png)
+
+#### Capping the number of experiment participants
+
+While there's no direct "cap" feature within a feature flag definition, you can use limit exposure to approximate this. For example, if your experiment's total unique user population is around 1 million, setting the exposure limit to 15% would allow roughly 150,000 unique users to participate. This is useful for risk mitigation or staged rollouts where you want tighter control over the sample size.
 
 ### Using dependencies
 

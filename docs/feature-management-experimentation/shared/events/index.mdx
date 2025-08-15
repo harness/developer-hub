@@ -41,7 +41,7 @@ Below is a sample event `checkout.click` showing the event properties with Harne
 
 <pre>\{<br />  "eventTypeId": "checkout.click",<br />  "environmentName": "Production",<br />  "trafficTypeName": "user",<br />  "timestamp": 1557936519990,<br />  "value": 0,<br />  "source": "Segment",<br />  "foreignId": "ajs-85cb03f2f34af1426d9a2128146ab832",<br />  <strong>"properties": \{ <br />    "category": "guest",<br />    "packaging_fees": 25.08,<br />    "discount_saving": 4,<br />    "label": "necklace",<br />    "login_id": null,<br />    "page_version": "unit_page",<br />    "total_tax": 32.00,<br />    "total_cost": 945.69,<br />    "type": "button",<br />    "package": "luxury",<br />    "visitor_id": null<br />  \} </strong><br />}<br /></pre>
 
-You can view the event properties being sent for a given event type using the [Live tail functionality in the Data Hub](/docs/feature-management-experimentation/feature-management/live-tail).
+You can view the event properties being sent for a given event type using the [Live tail functionality in the Data Hub](/docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail).
 
 These event properties are also exposed in the metric definition builder so you can create more granular and flexible metrics. Event properties can be used as filters for your [metric definition](/docs/feature-management-experimentation/release-monitoring/metrics/), or as values to be measured.
 
@@ -63,4 +63,4 @@ Harness FME supports multiple ways to explore your event data, allowing you to q
 
    <img src={dataHub} alt="Applying Metric Filters" width="700" />
 
-3. In the Data Hub, [Live tail](/docs/feature-management-experimentation/feature-management/live-tail) enables you to run a live query of impressions and events, so you can understand your event stream in more detail, including which event properties are being sent with each event type.
+3. In the Data Hub, [Live tail](/docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail) enables you to run a live query of impressions and events, so you can understand your event stream in more detail, including which event properties are being sent with each event type.

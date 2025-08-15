@@ -21,7 +21,7 @@ For feature flags that use traffic allocation or percentage rollouts, FME uses a
 
 Of course, if you change the feature flag's targeting rules, some users may be moved from one treatment to another. This could happen if they fall under a different rule or if the percentages in a rule are changed. That is the intent for an overwhelming number of use cases but is not ideal in some scenarios.
 
-More information on how Harness FME deterministic hashing and targeting engine work can be found [here](https://help.split.io/hc/en-us/articles/360043397251-Split-and-consistent-assignment-of-treatments) and [here](/docs/feature-management-experimentation/feature-management/faqs/ensure-a-consistent-user-experience).
+More information on how Harness FME deterministic hashing and targeting engine work can be found [here](https://help.split.io/hc/en-us/articles/360043397251-Split-and-consistent-assignment-of-treatments) and [here](/docs/feature-management-experimentation/feature-management).
 
 ## Experiment implications
 

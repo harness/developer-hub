@@ -20,8 +20,8 @@ This project has two [environments](/docs/feature-management-experimentation/man
 
 The following objects are also located in a project: 
 
-* [Feature flags](/docs/feature-management-experimentation/feature-management/create-a-feature-flag/)
-* [Segments](/docs/feature-management-experimentation/feature-management/segments)
+* [Feature flags](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag/)
+* [Segments](/docs/feature-management-experimentation/feature-management/targeting/segments)
 * [Metrics](/docs/feature-management-experimentation/release-monitoring/metrics/)
 * [Event types](/docs/feature-management-experimentation/release-monitoring/events/)
 * [API keys](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys)  

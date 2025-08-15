@@ -2,7 +2,9 @@
 title: Create an Experiment
 sidebar_label: Create an Experiment
 description: Learn how to create an experiment in Harness FME.
-sidebar_position: 6
+sidebar_position: 7
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/faqs/is-there-a-way-to-limit-the-number-of-users-in-an-experiment
 ---
 
 ## Overview
@@ -32,6 +34,19 @@ To create an A/B test in Harness FME:
 1. In the **Owners** section, assign a user or team to manage the experiment and be notified of changes.
 1. Apply tags to help categorize your experiment (for example, by team, status, or feature area).
 1. Click **Save**. 
+
+### Limiting the number of users in an experiment
+
+You can't directly cap the total number of users who will participate in an experiment. However, you can use the **Limit exposure** option to control the percentage of eligible users who are exposed to the experiment at any given time.
+
+This approach lets you:
+
+- Reduce risk when rolling out changes.
+- Gather results from a smaller sample before expanding to all users.
+
+:::tip
+Start with a lower exposure percentage (for example, 10%) to validate results, then increase it gradually.
+:::
 
 ## View experiment results
 
