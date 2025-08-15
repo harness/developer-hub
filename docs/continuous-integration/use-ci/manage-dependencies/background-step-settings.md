@@ -95,7 +95,7 @@ Select the shell type for the commands defined in **Entry Point** or **Command**
 
 Supply a list of arguments in `exec` format. **Entry Point** arguments override the image `ENTRYPOINT` and any commands in the **Command** field. Enter each argument separately.
 
-If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, include both the image `ENTRYPOINT`, such as `docker-entrypoint.sh`, and your additional arguments in **Entry Point**.
+If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, include both the image `ENTRYPOINT`, such as `dockerd-entrypoint.sh`, and your additional arguments in **Entry Point**.
 
 
 <Tabs>
@@ -115,7 +115,7 @@ If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, inc
 
 ```yaml
                     entrypoint:
-                      - docker-entrypoint.sh
+                      - dockerd-entrypoint.sh
                       - "--mtu=1450"
 ```
 
