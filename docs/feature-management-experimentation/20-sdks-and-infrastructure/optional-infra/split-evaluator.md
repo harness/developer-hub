@@ -2,9 +2,17 @@
 title: Split Evaluator
 sidebar_label: Split Evaluator
 sidebar_position: 2
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/is-it-possible-to-use-postman-to-calculate-a-treatment-for-a-feature-flag
 ---
 
+## Overview
+
 Using Harness FME involves using one of our SDKs. The FME team builds and maintains these SDKs for some of the most popular language libraries and the SDKs are available under open source licenses. For languages where there is no native SDK support, Harness offers the [Split Evaluator](https://github.com/splitio/split-evaluator), a small service capable of evaluating some or all available features for a given customer via a REST endpoint.
+
+While tools like Postman can be used to make HTTP calls to download feature flag definitions from Harness FME servers, they cannot replace the SDK libraries for calculating treatments. This is because the SDKs perform a local evaluation that includes computing a Murmur hash to assign a bucket (from 1 to 100) for a given user ID, and then apply the feature flag rules and conditions based on that bucket. This evaluation process is not performed by the Harness FME servers, which means direct HTTP calls alone are insufficient for treatment calculation.
+
+As a workaround, the Split Evaluator can be installed in your environment, allowing tools like Postman to make HTTP GET requests to fetch treatments for a given feature flag and user ID. The Split Evaluator performs the treatment calculation and responds with the corresponding treatment.
 
 ## Setup
 The service is available via Docker or command line and its source code is available at [https://github.com/splitio/split-evaluator]( https://github.com/splitio/split-evaluator).

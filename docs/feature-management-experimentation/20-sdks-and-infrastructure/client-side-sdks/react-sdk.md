@@ -1,6 +1,11 @@
 ---
 title: React SDK
 sidebar_label: React SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/react-sdk-istimeout-prop-not-returning-true-when-react-sdk-times-out
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/react-sdk-is-it-possible-to-get-treatments-outside-the-components
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/react-sdk-error-building-app-with-webpack
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/react-sdk-lazy-initialization-of-split-client
 ---
 
 import Tabs from '@theme/Tabs';
@@ -1513,7 +1518,7 @@ export const MyComponentWithFeatureFlags = (props) => {
 </TabItem>
 </Tabs>
 
-### Usage with React Native SDK
+### Usage with the React Native SDK
 
 The React SDK can be used in React Native applications by combining it with the React Native SDK. For that, you need to instantiate a factory with the React Native SDK and pass it to the React SDK `SplitFactoryProvider` component. The React SDK will use the factory to create the client and evaluate the feature flags.
 
@@ -1543,6 +1548,27 @@ const App = () => (
 </TabItem>
 </Tabs>
 
+### Using the React SDK outside of components
+
+While the React SDK provides convenient React components and hooks, you can also access feature flag treatments directly through JavaScript code.
+
+Since the React SDK is built on top of the JavaScript SDK core, it supports all objects and functions provided by it.
+
+```javascript
+import { SplitSdk } from "@splitsoftware/splitio-react";
+
+const splitFactory = SplitSdk({
+  core: {
+    authorizationKey: 'YOUR_BROWSER_API_KEY',
+    key: 'key'
+  }
+});
+
+// Create a new client object
+const client = splitFactory.client("userId");
+const treatment = client.getTreatment("splitName");
+```
+
 ## Example apps
 
 The following are example applications showing how you can integrate the React SDK into your code.
@@ -1561,3 +1587,180 @@ When using the Split React SDK version 1.1.0 or below and following the instruct
 This integration is only supported in Split’s JavaScript client-side SDK version **10.11.1 and above**. The React SDK version 1.1.0 and below depends on older versions of the JavaScript SDK that do not support this integration.
 
 Upgrade to the latest version of the Split React SDK, which uses JavaScript SDK version 10.11.1 or above under the hood.
+
+### isTimedout prop not returning true when the React SDK times out
+
+When using the React SDK, it is recommended to check if the SDK has timed out within a specific timeout before it finishes downloading the cache and signaling readiness. 
+
+In the following example, the message does not display when the SDK has timed out:
+
+```javascript
+import { useContext } from 'react';
+import { SplitContext } from "@splitsoftware/splitio-react";
+
+const MyComponent = () => {
+  const { isReady, isTimedout } = useContext(SplitContext);
+  return isTimedout
+    ? <p>SDK has Timedout</p>
+    : <Loading />;
+}
+```
+
+When the SDK reaches the timeout specified by the startup.`readyTimeout` parameter (default is 10 seconds), the `SDK_READY_TIMED_OUT` event is fired only once. If your code checks the `isTimedout` prop after the event has already fired, it will not detect the timeout.
+
+Use the `updateOnSdkTimedout` prop in `<SplitClient>` to ensure that `isTimedout` reflects whether the timeout event occurred at any point in the past.
+
+```javascript
+<SplitClient updateOnSdkTimedout={true}>
+  <SplitTreatments names={['SPLIT_NAME', 'SPLIT_NAME_2']}>
+    {({ isReady, isTimedout, hasTimedout, lastUpdate, treatments }) => {
+      // Do something with the treatments
+    }}
+  </SplitTreatments>
+</SplitClient>
+```
+
+### Build error with Webpack: Entrypoint undefined = ng/index.html
+
+If a React app fails to build with Webpack after installing the React SDK and shows errors like:
+
+```
+Entrypoint undefined = ng/index.html
+...
+Failed to compile.
+```
+
+This usually happens because Webpack is trying to build the React SDK library for the server side, but the React SDK is designed to run only in the browser.
+
+To fix this, update your `webpack.config.js` file, locate the resolve section, and ensure the `mainFields` entry includes browser, for example:
+
+```javascript
+resolve: {
+  extensions: ['.js', '.json', '.ts', '.tsx'],
+  mainFields: ['browser', 'main', 'module']
+},
+```
+
+### Handling traffic keys that aren’t available at initial render
+
+On initial client-side render in React, the user traffic key (used for flag targeting) might not yet be available, for example, if the user hasn’t logged in yet. 
+
+The React SDK’s `SplitFactoryProvider` initializes the underlying JS SDK factory with a traffic key immediately, so you need a way to handle a missing or “dummy” key at first, and then update it once the user logs in.
+
+The React SDK supports multiple clients sharing the same factory but with different traffic keys. The recommended approach is to configure the SDK initially with a dummy key. Once the real traffic key becomes available (e.g., after login), initialize a second client object with the real key.
+
+Starting with React SDK v2.0.0, you can specify the `splitKey` prop in hooks (`useSplitTreatments`, `useTrack`, `useSplitClient`) and in the `<SplitClient>` component. If `splitKey` is omitted, it defaults to the key provided in the factory config.
+
+For example, passing down the `splitKey` prop:
+
+```javascript
+import { useState, useEffect } from 'react';
+import { SplitFactoryProvider, useSplitTreatments } from '@splitsoftware/splitio-react';
+
+const SDK_CONFIG = {
+   core: {
+      authorizationKey: 'YOUR-SDK-CLIENT-SIDE-KEY',
+      key: getAnonymousId(),
+   }
+}
+
+const FEATURE_FLAG_NAME = 'test_split';
+
+// Prop drilling `splitKey` to child components
+function MyComponent({ splitKey }) {
+  const { treatments, isReady } = useSplitTreatments({ names: [FEATURE_FLAG_NAME], splitKey });
+
+  return isReady ?
+    <p>Treatment for user '{splitKey}' in {FEATURE_FLAG_NAME} is: {treatments[FEATURE_FLAG_NAME].treatment}</p> :
+    <p>loading...</p>; // Render a spinner if the SDK client for `splitKey` is not ready yet
+}
+
+function App() {
+  // Using 'anonymous' as initial userId
+  const [userId, setUserId] = useState(SDK_CONFIG.core.key);
+
+  // Update userId to 'logged-in-user' after 3 seconds
+  useEffect(() => {
+    setTimeout(() => { setUserId('logged-in-user'); }, 3000);
+  }, [])
+
+  return (
+    <SplitFactoryProvider config={SDK_CONFIG}>
+      <MyComponent splitKey={userId} />
+    </SplitFactoryProvider> 
+  );
+}
+
+export default App;
+```
+
+Or preventing prop drilling of `splitKey`:
+
+```javascript
+import { useState, useEffect } from 'react';
+import { SplitFactoryProvider, SplitClient, useSplitTreatments } from '@splitsoftware/splitio-react';
+
+const SDK_CONFIG = {
+   core: {
+      authorizationKey: 'YOUR-CLIENT-SIDE-SDK-KEY',
+      key: getAnonymousId(),
+   }
+}
+
+const FEATURE_FLAG_NAME = 'test_split';
+
+function MyComponent() {
+  const { treatments, isReady, client } = useSplitTreatments({ names: [FEATURE_FLAG_NAME] });
+
+  return isReady ?
+    <p>Treatment for user '{client.key}' in {FEATURE_FLAG_NAME} is: {treatments[FEATURE_FLAG_NAME].treatment}</p> :
+    <p>loading...</p>; // Render a spinner if the SDK client for `userId` is not ready yet
+}
+
+function App() {
+  // Using 'anonymous' as initial userId
+  const [userId, setUserId] = useState(SDK_CONFIG.core.key);
+
+  // Update userId to 'logged-in-user' after 3 seconds
+  useEffect(() => {
+    setTimeout(() => { setUserId('logged-in-user'); }, 3000);
+  }, [])
+
+  return (
+    <SplitFactoryProvider config={SDK_CONFIG}>
+      <SplitClient splitKey={userId}>
+        <MyComponent />
+      </SplitClient>
+    </SplitFactoryProvider> 
+  );
+}
+
+export default App;
+```
+
+An equivalent JavaScript SDK example:
+
+```javascript
+import { SplitFactory } from '@splitsoftware/splitio';
+
+/* On initial load of a client-side application */
+const SDK_CONFIG = {
+   core: {
+      authorizationKey: 'YOUR-SDK-CLIENT-SIDE-KEY',
+      key: getAnonymousId()
+   }
+}
+
+const factory = SplitFactory(SDK_CONFIG);
+
+const client = factory.client();
+
+// Attach a callback to run when the client with 'anonymous' key is ready
+client.on(client.Events.SDK_READY, doSomething);
+
+// When you get a new user id, for instance, the id of a logged user
+const loggedClient = factory.client('logged-in-user');
+
+// Attach a callback to run when the client with 'logged-in-user' key is ready
+loggedClient.on(loggedClient.Events.SDK_READY, doSomething);
+```

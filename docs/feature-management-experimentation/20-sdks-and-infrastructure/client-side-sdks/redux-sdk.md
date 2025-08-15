@@ -1,6 +1,8 @@
 ---
 title: Redux SDK
 sidebar_label: Redux SDK
+redirect_from: 
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/redux-sdk-control-treatment-returned-when-sdk-is-initialized
 ---
 
 import Tabs from '@theme/Tabs';
@@ -522,6 +524,31 @@ const treatments = {
 
 </TabItem>
 </Tabs>
+
+### Handling control treatment flicker on SDK initialization
+
+When implementing the Redux SDK, using the `isReady` prop is intended to guarantee that treatments returned are accurate. However, there can be a brief moment right after the SDK factory initializes when `isReady` is `true` but the treatment returned is `control`. This treatment quickly flips to the expected value (e.g. `on`).
+
+This flickering occurs because when the SDK starts, it downloads the feature flag cache asynchronously from the Harness FME servers, and during that download phase, `isReady` may be set to `true` before the cache is fully loaded. If you fetch treatments too early, you receive the control treatment.
+
+To address this, instead of dispatching `getTreatments` inside the `onReady` callback, it’s recommended to dispatch the `getTreatments` action immediately after `initSplitSdk`. This action is an asynchronous (Thunk) call that evaluates feature flags once the SDK is ready and also on subsequent SDK updates if you enable the `evalOnUpdate` parameter (which is `false` by default). This approach updates the `isReady` flag and treatment values together in a single action, preventing flicker caused by separate updates. 
+
+For example:
+
+```javascript
+export default function initialise() {
+  store.dispatch(initSplitSdk({ config: sdkBrowserConfig, onReady: onReadyCallback, onUpdate: onUpdateCallback }));
+  store.dispatch(getTreatments({ splitNames: ['Show_league'], evalOnUpdate: true }));
+}
+function onReadyCallback() {
+  console.log("Split Ready...");
+  ...
+}
+function onUpdateCallback() {
+  console.log("Split updated...");
+  ...
+}
+```
 
 ### Get Treatments with Configurations
 

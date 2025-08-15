@@ -1,6 +1,8 @@
 ---
 title: Go SDK
 sidebar_label: Go SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/go-sdk-error-flushing-storage-queue/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -928,3 +930,27 @@ If you need to use a proxy, you can configure proxies by setting the environment
 $ export HTTP_PROXY="http://10.10.1.10:3128"
 $ export HTTPS_PROXY="http://10.10.1.10:1080"
 ```
+
+## Troubleshooting
+
+### Error flushing storage queue couldn't send message to task SubmitImpressions
+
+Using the Go SDK, by default a thread will flush all current stored impressions in its cache every 30 seconds. However, there is a limit to the impression queued in the SDK's cache. 
+
+If the queue is full, event `IMPRESSIONS_FULL` is fired and the SDK will attempt to post the impressions to clear the cache. When the process tries to flush all impressions, the error is logged:
+
+```
+Error flushing storage queue couldn't send message to task SubmitImpressions
+```
+
+The SDK is trying to send impressions at a higher rate than the posting thread is evicting them.
+
+To resolve the issue, follow these steps:
+
+1. Increase the size of the impressions queue by updating the `Advanced.ImpressionsQueueSize` parameter. Default is 10k, increasing it to 20k might improve results.
+1. Increase the bulk size of the impressions post to Harness servers by updating the `Advanced.ImpressionsBulkSize` parameter. Default is 5k. 10k would be a logical next step.
+1. Decrease the period at which the SDK sends impressions to the Harness servers by adjusting the `TaskPeriods.ImpressionSync` parameter. The default is 30 seconds which is on the low end if you're sending a huge number of impressions. Something along the lines of 5-10 seconds should help.
+
+:::info
+These changes will slightly increase the memory usage of the SDK as well as the network traffic.
+:::

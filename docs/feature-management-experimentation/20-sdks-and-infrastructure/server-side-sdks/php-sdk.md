@@ -1,6 +1,8 @@
 ---
 title: PHP SDK
 sidebar_label: PHP SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/php-sdk-why-is-php-unable-to-write-impressions-to-redis/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -676,3 +678,36 @@ $options = [
 /** Create the client instance. */
 $splitClient = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $options);
 ```
+
+## Troubleshooting
+
+### Why is PHP unable to write impressions to Redis throwing error "NOAUTH Authentication required"?
+
+Using the PHP SDK with Redis and Split Synchronizer, calling `getTreatment` causes an exception:
+
+```csharp
+Fetching item ** SPLITIO.split.test ** from cache getTreatment method is throwing exceptions NOAUTH Authentication required.
+```
+
+The Redis instance requires authentication, but the PHP SDK configuration is missing the password parameter.
+
+Add the Redis password to the configuration parameters passed to the PHP SDK:
+
+```php
+$options = [
+  'prefix' => '',
+  'parameters' => [
+      'password' => 'REDISPASSWORD'
+  ],
+];
+
+$sdkConfig = array(
+  'cache' => array(
+    'adapter' => 'predis', 
+    'parameters' => $parameters, 
+    'options' => $options
+  )
+);
+```
+
+This ensures the SDK authenticates properly with Redis.

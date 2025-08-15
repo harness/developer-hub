@@ -597,7 +597,7 @@ The feature flag definitions tab has added two minor UX updates to the editor fl
 ### 2023-08-01
 #### SDK Enhancements
 ##### **Instant Feature Flags**
-- To reduce the latency of updates and increase the [reliability of SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/#streaming-architecture-overview), feature flag update notices delivered via streaming will not require a subsequent network request to fetch the changes. Instead, changes will be contained in the streaming payload itself.
+- To reduce the latency of updates and increase the [reliability of SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure#streaming-architecture), feature flag update notices delivered via streaming will not require a subsequent network request to fetch the changes. Instead, changes will be contained in the streaming payload itself.
 
 ## July 2023
 ### 2023-07-26
@@ -679,7 +679,7 @@ The [individual target key limit](/docs/feature-management-experimentation/manag
 ### 2023-03-17
 #### Documentation
 ##### SDK Validation Checklist
-The [SDK validation checklist](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/sdk-validation-checklist) helps users ensure that SDKs are implemented keeping best practices in mind. This checklist defines the general guidelines, checks, and validations that can be useful for developers and software architects to avoid common mistakes or oversights and to ensure optimal performance of the Split SDK.
+The [SDK validation checklist](/docs/feature-management-experimentation/sdks-and-infrastructure/validate-sdk-setup) helps users ensure that SDKs are implemented keeping best practices in mind. This checklist defines the general guidelines, checks, and validations that can be useful for developers and software architects to avoid common mistakes or oversights and to ensure optimal performance of the Split SDK.
 ### 2023-03-08
 #### Experimentation
 ##### Experiment Review Period Notification
@@ -762,7 +762,7 @@ Users can now access the [change request ID](/docs/feature-management-experiment
 #### 2022-10-14
 ##### SDK Enhancements
 ###### Evaluate Without Sending Impressions
-Split as added a new impression mode, `NONE`. Which can now enable [all Split SDKS](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview#supported-sdks) to send only unique keys per Split rather than sending all impression data. This will help decrease network traffic from your system to Split, ultimately leading to lower resource consumption.
+Split as added a new impression mode, `NONE`. Which can now enable [all Split SDKS](/docs/feature-management-experimentation/sdks-and-infrastructure#overview) to send only unique keys per Split rather than sending all impression data. This will help decrease network traffic from your system to Split, ultimately leading to lower resource consumption.
 #### 2022-10-05
 ##### Learning and Onboarding
 ###### Split Arcade

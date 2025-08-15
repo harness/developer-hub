@@ -55,7 +55,9 @@ Targeting decisions are made locally, in memory, from within your own applicatio
 ### FME SDKs
 To use Harness FME, include and initialize one of FME SDKs in your application. Once the SDK is initialized, targeting rules are retrieved from a nearby content delivery network (CDN) node, cached inside your code, and updated in real-time in milliseconds using a streaming architecture. 
 
-As needed, your application makes a just-in-time call to the FME SDK in local memory, passing the feature flag name, the userId or unique key, and optionally, a map of user or session attributes. The response is returned instantly, with no need for a network call. After the evaluation is performed, the SDK asynchronously returns an impression record to Harness. Refer to our [SDK overview](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/) for more information.
+As needed, your application makes a just-in-time call to the FME SDK in local memory, passing the feature flag name, the userId or unique key, and optionally, a map of user or session attributes. The response is returned instantly, with no need for a network call. After the evaluation is performed, the SDK asynchronously returns an impression record to Harness. 
+
+For more information, see [SDKs and Customer-Deployed Components](/docs/feature-management-experimentation/sdks-and-infrastructure).
 
 ### Split Evaluator
 As an alternative to using FME SDKs, you can make REST API calls to a Split Evaluator hosted inside your own infrastructure. Like the SDK, this method never requires you to send private user data to the Harness network. The evaluator makes it possible to operate from within languages that do not yet have a published FME SDK and should only be used in that case. Refer to the [Split Evaluator](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator) guide for more information.

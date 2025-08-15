@@ -1,6 +1,9 @@
 ---
 title: .NET SDK
 sidebar_label: .NET SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/net-xamarin-which-api-key/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/net-sdk-build-error-strongly-named-assembly/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -1076,3 +1079,29 @@ var config = new ConfigurationOptions
 var factory = new SplitFactory("YOUR_SDK_KEY", config);
 var sdk = factory.Client();
 ```
+
+## Troubleshooting 
+
+### Which API Key to use with .NET Xamarin projects
+
+A .NET development environment provides a Xamarin project that allows .NET code to run on both iOS and Android platforms within a container app. Which API Key should be used with the FME .NET or .NET Core SDK when developing a Xamarin project? 
+
+Use a **server-side SDK API key**.
+
+### Build Error: "Split 3.4.2.0 cannot be loaded since it needs a strongly-named assembly"
+
+In a .NET project with assembly signing enabled, adding the FME .NET SDK and building the project produces this warning:
+
+```
+Referenced Assembly 'Splitio, Version=3.4.2.0, Culture=neutral, PublicKeyToken=null' does not have a strong name
+```
+
+At runtime, you may get this exception:
+
+```
+Could not load file or assembly 'Splitio, Version=3.4.2.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. A strongly-named assembly is required.
+```
+
+SDK versions earlier than 3.4.4 include dependencies packaged without strong naming (unsigned assemblies). To build a signed SDK DLL, all dependencies must also be strongly named.
+
+Upgrade to the latest version of the FME .NET SDK, which includes signed dependencies.

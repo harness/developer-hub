@@ -1,6 +1,8 @@
 ---
 title: Python SDK
 sidebar_label: Python SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/python-sdk-error-type-argument-1-must-be-string/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -1646,3 +1648,33 @@ You can configure proxies by setting the environment variables `HTTP_PROXY` and 
 $ export HTTP_PROXY="http://10.10.1.10:3128"
 $ export HTTPS_PROXY="http://10.10.1.10:1080"
 ```
+
+## Troubleshooting
+
+### Error: type() argument 1 must be string, not unicode
+
+When initializing the SDK factory object in Python, the following exception occurs:
+
+```
+TypeError: type() argument 1 must be string, not unicode
+```
+
+Full traceback excerpt:
+
+```
+from splitio import get_factory
+...
+File "/Library/Python/2.7/site-packages/enum/__init__.py", line 188, in __new__
+    enum_class = super(EnumMeta, metacls).__new__(metacls, cls, bases, classdict)
+TypeError: type() argument 1 must be string, not unicode
+```
+
+This error happens because the Python SDK requires the `enum34` library version 1.1.5 or above. If an older version (e.g., 1.0.x) is installed, or your environment is forcing an older version, this exception will be thrown during SDK initialization.
+
+Upgrade the `enum34` package to version 1.1.5 or higher. Run the following command:
+
+```bash
+sudo pip install enum34 --upgrade
+```
+
+As of this writing, the latest version is 1.1.6.
