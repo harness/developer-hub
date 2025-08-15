@@ -77,8 +77,17 @@ The order in which treatments are defined can affect the consistency of user exp
 - **Anonymous users:** Use cookies, session IDs, or device IDs, but note that users might not receive consistent experiences if switching devices or clearing cookies.
 - **Account-level targeting:** Target by account ID so [all users in the same account get the same experience](/docs/feature-management-experimentation/feature-management/manage-flags/targeting-an-account).
 
-### Important Consideration for Account Targeting
+### Account Targeting
 
 If you do a 50/50 split by account, large accounts with many users might unevenly skew the user count on one side of the experiment, potentially leading to an actual end-user distribution higher than 50%.
 
 Harness FME ensures a consistent user experience by combining deterministic hashing with seed-based bucketing and configurable limit exposure, enabling reliable and predictable feature rollouts across different users and environments.
+
+## Further Reading
+
+Additional documentation, blog links, and articles:
+
+- [Testing AI Models Using Split](https://www.harness.io/blog/testing-ai-models-using-split)
+- [Test-Driven or Feature Flag-Driven Development: What’s Best for Your Team?](https://www.harness.io/blog/test-driven-or-feature-flag-driven-development-whats-best-for-your-team)
+- [5 Best Practices for Testing in Production with Feature Flags](https://www.harness.io/blog/feature-flags-test-in-production)
+- [What Is Testing in Production & How to Avoid The Risks](https://www.harness.io/blog/testing-in-production)
