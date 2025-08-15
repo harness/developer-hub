@@ -253,7 +253,7 @@ Set the [default treatment](/docs/feature-management-experimentation/feature-man
 * Does not meet any defined conditions. The default treatment is shown to customers who are excluded from the targeting rules via the limit exposure functionality.
 * The feature flag is killed. If a particular feature flag is killed, the default treatment overrides the existing targeting rules and is returned for all customers.
 
-Your default treatment should always be one that exposes fully tested and safe code. In an **on**/**off** feature flag, the default treatment is typically the **off** state. In a multivariate feature, the default might be **off**, or it might be defined as the treatment that is currently used by 100% of traffic.
+Your default treatment should always be one that exposes fully tested and safe code. In an **on**/**off** feature flag, the default treatment is typically the **off** state. In a multivariant feature, the default might be **off**, or it might be defined as the treatment that is currently used by 100% of traffic.
 
 :::tip
 You can set any of the treatments in your targeting rules as a default. We recommend selecting the safest treatment for your customers as the default treatment (that is, off, old version) when beginning the rollout. However, when you complete the rollout, you may want to make the new experience the default in the case that feature is accidentally killed before being removed.
