@@ -40,17 +40,10 @@ This update is currently being rolled out to customers, and we expect the rollou
 :::
 
 :::note
-Harness Cloud now supports two new capabilities for VM images:
+**Harness Cloud – New VM Image Capabilities**:
 
-1. **Ability to Select a VM Image Version**
-
-- You can now choose a specific VM image version for your CI stages, instead of always using the default `latest`.
-- This feature is controlled by the `CI_ENABLE_HOSTED_IMAGE_MANAGEMENT` flag, which enables the ability to view and select from all available VM image versions in the UI or YAML.
-
-2. **Changes to `latest` Tag**
-
-- Currently Harness CI Cloud stages with unspecified image names point to **Ubuntu 22.04** (this is behind the feature flag `CI_ENABLE_HOSTED_IMAGE_MANAGEMENT`).
-- With this update gated by `CI_ENABLE_HOSTED_BETA_IMAGES` flag, Harness CI Cloud stages with unspecified image name will point to **Ubuntu 24.04**.
+- **Select VM Image Version** – Choose a specific VM image version for your CI stages via UI or YAML (requires `CI_ENABLE_HOSTED_IMAGE_MANAGEMENT` flag).
+- **Updated `latest` Tag** - Stages without a specified image will now default to **Ubuntu 24.04** (behind `CI_ENABLE_HOSTED_BETA_IMAGES flag`).
 
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
