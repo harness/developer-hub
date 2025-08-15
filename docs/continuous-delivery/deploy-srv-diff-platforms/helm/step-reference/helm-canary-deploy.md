@@ -8,6 +8,8 @@ This topic describes the configuration and settings for the Helm Canary Deploy s
 
 The Helm Canary Deploy step deploys using a canary based strategy. To learn more, go to [Harness canary deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment/#harness-canary-deployments).
 
+You may want to delete resources created by this step. To do so, use the [Helm Canary Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/step-reference/helm-canary-delete) step.
+
 :::note
 
 Harness Delegate version 84300 or later is required for this feature.
