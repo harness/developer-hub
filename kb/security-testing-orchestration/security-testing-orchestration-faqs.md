@@ -34,6 +34,68 @@ STO supports a generic JSON format for ingesting data from unsupported scanners 
 #### What is SARIF, and how does it relate to scanning tools and STO?
 SARIF (Static Analysis Results Interchange Format) is an open data format supported by many scanning tools. If your scanner supports SARIF, Harness recommends publishing your results in this format. For more information, go to [Ingest SARIF scan results](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data).
 
+#### How can a user set a baseline for comparison?
+
+Navigate to Security Test Orchestration > Test Targets.
+Select the target (e.g., branch: master) and set it as the baseline.
+
+
+
+#### How can user compare the baseline vs. downstream issues?
+If user is on a downstream branch (e.g., test-001) and want to compare its issues with the baseline (e.g., master):
+
+Run the pipeline again with DEMO-001 as the target variant.
+After the run completes, go to the Security Tests tab to compare issues.
+
+
+#### Can user automate these comparisons using input sets?
+Yes, user can save runtime settings as input sets with specific configurations, such as different target variants or baselines.
+
+
+#### What are "shift-left" and "shift-right" issues?
+"Shift-left" issues refer to vulnerabilities detected early in development or in downstream branches, while "shift-right" issues pertain to vulnerabilities found in production or main branches.
+
+#### What does "fail_on_severity"?
+It determines the severity level of vulnerabilities that will cause the pipeline to fail if detected.
+
+#### Can user customize fail_on_severity for different stages or branches?
+Yes, user can set different fail_on_severity levels for different scan steps, stages and branches.
+
+#### Is harness STO support codebase scan using semgrep?
+Yes, user can configure the Semgrep step running in orchestration mode.
+
+
+#### Is Harness support DAST scanning using ZAP?
+Yes, User can configure Zap step that scans the app and ingests the results into STO.
+
+
+#### Is DAST step supports Veracode amd ingestion for the scan?
+No, As per the current design DAST step doesn't support veracode and ingestion for the scan.
+
+#### Does STO supports veracode sandbox scans?
+No, As per the current design veracode sandbox scansnot supported, only policy scans are supported.
+
+#### Is user can set the image tag for STO scanner steps such as SonarQube, Twistlock?
+Yes, user can able to configure the image version in the Additional configuration of the step.
+
+#### Can user add the STO type step template in the CI build stage?
+No, the STO type step type can only be added in the STO type stage.
+
+#### What are targets in the scan process?
+Targets are user-defined labels for code repositories, containers, applications, or configurations that you want to scan.
+
+#### What is a variant in the context of a scan?
+A variant specifies the branch, tag, or version of the code that will be scanned during the operation.
+
+#### Where can I find detected issues related to targets with baselines?
+Detected issues for targets with baselines are displayed in the STO Overview and Security Testing Dashboard.
+
+#### How does STO assign severity scores to vulnerabilities?
+STO assigns severity scores based on the Common Vulnerability Scoring System (CVSS) version 3.1.
+
+#### What happens if a scanner detects a vulnerability without a CVSS score?
+In such cases, STO uses the score determined by the scanner that detected the vulnerability.
+
 ## Which scanners are supported natively with Harness STO?
 1. SAST (Static Application Security Testing) 
 1. SCA (Software Composition Analysis)
