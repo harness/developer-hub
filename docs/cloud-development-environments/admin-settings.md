@@ -127,4 +127,4 @@ This setting restricts Gitspaces to only specific image paths. You can add multi
 | Invalid Tag Characters     | `repo/image:!invalid`              | `!` not allowed in tags         | `repo/image:invalid`                |
 | Trailing Slash             | `mcr.microsoft.com/devcontainers/` | Incomplete expression           | `mcr.microsoft.com/devcontainers/*` |
 
-
+---

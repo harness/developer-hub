@@ -13,6 +13,8 @@ This document introduces the core RBAC concepts for CDE and explains how to conf
 To assign roles, you must have **administrative privileges** at the Account level (i.e., **Account Admin** role).
 :::
 
+---
+
 ## Harness RBAC Components 
 Harness CDEs utilize Platform Hierarchy and RBAC to provide fine-grained control over CDE resources. There are three [key components](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-components) for Harness RBAC:
 
@@ -133,4 +135,4 @@ Here’s an example of configuring RBAC for CDE resources:
 2. Create a **user group** and add all relevant users to it.
 3. Assign the **CDE User** role to the user group, and bind it to the resource group created in step 1.
 
-
+---
