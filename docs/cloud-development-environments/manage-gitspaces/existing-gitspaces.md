@@ -1,8 +1,8 @@
 ---
-title: Start/Stop Gitspaces
+title: Start or Stop Gitspaces
 description: Learn how to start/stop an existing Gitspace
 sidebar_position: 3
-sidebar_label: Start/Stop Gitspaces
+sidebar_label: Start or Stop Gitspaces
 ---
 
 To save on compute you can stop a Gitspace when not in use and start it again at a later time. You will **not lose any uncommitted changes** across Gitspace restarts. 
