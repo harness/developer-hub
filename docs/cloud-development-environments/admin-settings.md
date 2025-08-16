@@ -5,109 +5,126 @@ sidebar_position: 11
 sidebar_label: Gitspace Settings
 ---
 
-Gitspace Settings provide you some general settings to control the Gitspace behavior. With these settings, you can configure Gitspaces behavior to suit your organization standards and policies. This gives you access and grained control over different Gitspace requirements like controlling Gitspace git providers, code editors, image paths, etc. 
+Gitspace Settings provide general configuration options to control Gitspace behavior. With these settings, you can customize Gitspaces to align with your organization’s standards and policies. This gives you fine-grained control over aspects such as Git providers, code editors, image paths, and infrastructure regions & machine types.
 
-This document will take you through all the Gitspace settings available and how you can use them to customize your organization's Gitspaces behaviour. 
+This document walks you through all available Gitspace settings and how to use them to tailor your organization’s Gitspace experience.
 
 ---
 
 ## Before you begin
-Before you begin and start customizing your Gitspace settings, ensure you have the following prerequisites met: 
-1. You must have **account-level access** to configure Gitspace settings since these settings are only available at the account level. 
-2. You should either have the **CDE admin** role or **account admin** role permissions to be able to configure these settings. Go to [Access Control](/docs/cloud-development-environments/rbac.md) to learn more about configuring RBAC for Harness CDE. 
+
+Before customizing Gitspace settings, ensure the following prerequisites are met:
+
+1. You must have **account-level access** to configure Gitspace settings. These settings are only available at the account level.
+2. You must have either the **CDE Admin** role or **Account Admin** role permissions. Go to [Access Control](/docs/cloud-development-environments/rbac.md) to learn more about RBAC in Harness CDE.
 
 ---
 
 ## Gitspace Settings
-As an admin, you can configure the following Gitspace settings: 
-- **Git Providers**: Manage and control the git providers available for your account's Gitspaces. 
-- **Code Editors**: Manage the code editors available for your account's Gitspaces. 
-- **Cloud Regions & Machine Types**: Specify the cloud regions and machine types available for your account's Gitspaces. 
-- **Gitspace Images**: Specify the gitspace images available for your account's Gitspaces. 
 
-If you have all the prerequisites met, you can access the **Gitspace Settings** from the **Account Settings**. You'll be able to find it under the **General** tab. These Gitspace settings hold true for **all the Gitspaces created in your account**. Only CDE admins can manage and change these settings, CDE users can view these settings but they don't have edit access over the same. 
+As an admin, you can configure the following settings:
+
+* **Git Providers** – Manage which Git providers are available for creating Gitspaces.
+* **Code Editors** – Control which code editors are available to users.
+* **Cloud Regions & Machine Types** – Define the infrastructure regions and machine types available.
+* **Gitspace Images** – Restrict which container images can be used to spin up Gitspaces.
+
+These settings can be accessed from **Account Settings > General**. They apply to **all Gitspaces in the account**. Only **CDE admins** can modify these settings; other **CDE users** can view them but not make changes. Go to [Access Control](/docs/cloud-development-environments/rbac.md) to learn more about CDE roles. 
 
 ![](./static/admin-settings-1.png)
 
-Lets deep dive into the Gitspace settings and understand how you can use them to customize your organization's Gitspaces behaviour. 
+---
 
 ### Git Providers
-With this setting feature, you can **customize the git providers** available for your account's Gitspaces i.e. all CDE users can create Gitspaces only with these specific Git providers configured here. They won't be able to create any Gitspace with any other git provider. 
-Once you've added and customised this setting, hit **Save** to save your setting changes. 
+
+Use this setting to **restrict and manage which Git providers** are available for your account’s Gitspaces. Once configured, CDE users will only be able to create Gitspaces with the specified providers.
+Click **Save** to apply your changes.
 
 ![](./static/git-provider-admin-2.png)
 
+---
+
 ### Code Editors
-This setting allows you to **manage the code editors** available for your account's Gitspaces. This helps you control the code editor your CDE users can use to write and edit code. 
+
+This setting lets you **manage which code editors** are available. This ensures that developers work only with editors approved by your organization.
 
 ![](./static/code-editor-admin-2.png)
 
+---
+
 ### Cloud Regions & Machine Types
-With this setting feature, you can **control the cloud regions and machine types** for your account's Gitspaces. For all the available infrastructure providers, you can specify and select the cloud regions and machine types for that region. You can select either all the available machines in a region, or can just select a few to be available to your CDE users. 
+
+Use this setting to **control available cloud regions and machine types**. For each infrastructure provider, you can:
+
+* Enable all machines in a region.
+* Restrict availability to only selected machines.
 
 ![](./static/cloudregions-provider-admin3.png)
 
+---
+
 ### Gitspace Images
-This setting enables you to **manage and control the images** required to spin up the `devcontainer` for your Gitspaces. 
 
-Currently, you can setup the base for the development container by using either of the two following methods to specify the `image`:  
-1. You can add and customise the Gitspace container image by using the `image` property in your `devcontainer.json` file with any public image. Go to [Deep Dive into Gitspaces](/docs/cloud-development-environments/deep-dive-into-gitspaces/gitspace-configuration.md) to learn more about this. 
-2. For private Docker images, you can connect Harness to your Artifact Repository and can configure your Gitspace setup with the specific `image` and artifact repository details. Go to [Private Docker Images](/docs/cloud-development-environments/features-of-gitspaces/private-docker-images.md) to learn more about the same.  
+This setting controls the container images that can be used to spin up the Gitspace `devcontainer`.
 
-This Gitspace setting enables you to **add restrictions over the images that can be used to spin up Gitspaces**. 
+You can configure images in two ways:
+
+1. **Public Images** – Define the `image` property in `devcontainer.json` with any public image. Go to [Deep Dive into Gitspaces](/docs/cloud-development-environments/deep-dive-into-gitspaces/gitspace-configuration.md) for more details.
+2. **Private Images** – Connect Harness to your Artifact Repository and configure the private Docker image. Go to [Private Docker Images](/docs/cloud-development-environments/features-of-gitspaces/private-docker-images.md) for more details.
+
+This feature lets you **enforce restrictions** on which images can be used.
 
 ![](./static/gitspace-image.png)
 
+---
+
 #### Default Gitspace Image
-With this field, you can specify the **default Gitspace image** that will be used to spin up Gitspaces in the following cases: 
-- In case a Gitspace is being created with no `image` path specified in the `devcontainer.json` file.
-- In case a Gitspace is being created with a specific public `image` path but the image is not available or accessible. 
-- In case a Gitspace is being created with a private Docker image, and the private Docker image is not available in the Artifact Repository. 
-- In case a Gitspace is being created with a private Docker image, and the private Docker image is available in the Artifact Repository, but the Artifact Repository is not configured in the Gitspace setup. 
 
-For all the above cases, a default Gitspace image will be used to spin up and create a Gitspace. This default Gitspace image is specified by the **Default Gitspace Image** field. You can use and add any **public image** or **private image** to be used as the default Gitspace image. 
+You can define a **default Gitspace image**, which is used if:
 
-**Public Image**
+* No image is specified in `devcontainer.json`.
+* The specified public image is unavailable.
+* A private image is unavailable or not configured properly.
 
-You can add any **public image path** to be used as the default Gitspace image. 
+The default image can be a **public** or **private** Docker image.
+
+**Public Image Example:**
+Provide any public image path as the default.
 
 ![](./static/public-gitspace-image.jpg)
 
-**Private Image**
-
-You can also add any **private docker image** as the default Gitspace image by selecting the specific image registry connector and adding the private docker image path. To read more about the artifact registry connectors supported with Harness Gitspaces, go to [Private Docker Images](/docs/cloud-development-environments/features-of-gitspaces/private-docker-images.md).
+**Private Image Example:**
+Provide a private image by selecting the registry connector and specifying the path. See [Private Docker Images](/docs/cloud-development-environments/features-of-gitspaces/private-docker-images.md) for details.
 
 ![](./static/private-gitspace-image.jpg)
 
+---
+
 #### Allowed Image Paths
-This settings allows you to restrict users to be able to create Gitspaces with only specific allowed image paths. You can add and manage the list of all the allowed image paths from this setting field here. You can add as many image paths as required to be allowed. Here's a detailed breakdown of all the valid and invalid expressions for the image paths. 
 
-**Valid Expression Types**
+This setting restricts Gitspaces to only specific image paths. You can add multiple allowed paths with pattern matching.
 
-Here's a list of some common valid expression types that can be used in the allowed image paths list: 
-| Expression Type | Pattern Example | Description | Matches |
-|---|---|---|---|
-| Repository Only | `nginx` | Matches any image from the specified repository with any tag or digest | `nginx:latest`, `nginx:1.19`, `nginx@sha256:abc123` |
-| Exact Image Tag | `nginx:latest` | Matches only the exact image with specified tag | `nginx:latest` |
-| Exact Image Digest | `nginx@sha256:01eb582bca...` | Matches only the exact image with specified digest | `nginx@sha256:01eb582bca...` |
-| Wildcard Repository | `repo/*` | Matches any image within the repository namespace | `repo/app:tag`, `repo/sub/app:tag` |
-| Wildcard Tag | `repo/image:*` | Matches any tag for the specific image | `repo/image:latest`, `repo/image:v1.0` |
-| Wildcard Tag Prefix | `repo/image:dev*` | Matches tags starting with specified prefix | `repo/image:dev123`, `repo/image:dev` |
-| Wildcard Repository Prefix | `repo/image*` | Matches repository paths starting with prefix | `repo/image:tag`, `repo/image-extra:tag` |
+**Valid Expression Examples**:
 
+| Expression Type            | Example                   | Description                     | Matches                      |
+| -------------------------- | ------------------------- | ------------------------------- | ---------------------------- |
+| Repository Only            | `nginx`                   | Any tag/digest in repository    | `nginx:latest`, `nginx:1.19` |
+| Exact Image Tag            | `nginx:latest`            | Matches only that tag           | `nginx:latest`               |
+| Exact Digest               | `nginx@sha256:01eb582...` | Matches only that digest        | Same digest                  |
+| Wildcard Repository        | `repo/*`                  | Any image within repo namespace | `repo/app:tag`               |
+| Wildcard Tag               | `repo/image:*`            | Any tag for the image           | `repo/image:v1.0`            |
+| Tag Prefix Wildcard        | `repo/image:dev*`         | Tags starting with prefix       | `repo/image:dev123`          |
+| Repository Prefix Wildcard | `repo/image*`             | Paths starting with prefix      | `repo/image-extra:tag`       |
 
-**Invalid Expression Types**
+**Invalid Expression Examples**:
 
-Here's a list of some common invalid expression types: 
-
-| Invalid Pattern | Example | Reason | Correct Alternative |
-|---|---|---|---|
-| Multiple Wildcards in Tags | `nginx:*:latest` | Cannot have multiple colons with wildcards | `nginx:*` or `nginx:latest` |
-| Wildcard in Middle of Tag | `nginx:*latest`, `nginx:lat*est` | Wildcards must be at the end of expressions | `nginx:lat*` |
-| Wildcard at Repository Start | `*nginx:latest` | Wildcards cannot be at beginning of repository names | `*/nginx:latest` |
-| Malformed Expressions | `invalid@@@` | Invalid syntax with multiple @ symbols | `invalid@sha256:...` |
-| Invalid Characters in Tags | `repo/image:!invalid` | Special characters like `!` not allowed in tags | `repo/image:invalid` |
-| Trailing Slash Without Wildcard | `mcr.microsoft.com/devcontainers/` | Trailing slash creates invalid pattern | `mcr.microsoft.com/devcontainers/*` |
-
+| Invalid Pattern            | Example                            | Issue                           | Correct Alternative                 |
+| -------------------------- | ---------------------------------- | ------------------------------- | ----------------------------------- |
+| Multiple Wildcards in Tags | `nginx:*:latest`                   | Invalid colon placement         | `nginx:*`                           |
+| Wildcard in Middle of Tag  | `nginx:*latest`                    | Wildcards must be suffix only   | `nginx:lat*`                        |
+| Wildcard at Repo Start     | `*nginx:latest`                    | Repo name cannot start with `*` | `*/nginx:latest`                    |
+| Malformed Syntax           | `invalid@@@`                       | Invalid characters              | `invalid@sha256:...`                |
+| Invalid Tag Characters     | `repo/image:!invalid`              | `!` not allowed in tags         | `repo/image:invalid`                |
+| Trailing Slash             | `mcr.microsoft.com/devcontainers/` | Incomplete expression           | `mcr.microsoft.com/devcontainers/*` |
 
 
