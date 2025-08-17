@@ -18,6 +18,25 @@ Review the notes below for details about recent changes to **Harness Cloud Devel
 
 :::
 
+## August - [2025.08.v1]
+
+This release saw the introduction of some key new features for Harness Gitspaces. Let's dive into the details. 
+
+### ⭐️ [New Feature] AWS Support for Self-Hosted Gitspaces
+
+
+### ⭐️ [New Feature] Access Control - RBAC for CDE
+
+### ⭐️ [New Feature] Gitspace Admin Settings 
+
+### ⭐️ [New Feature] Reset Support in Gitspaces
+
+### ⭐️ [New Feature] Custom Machine Image Support for Self-Hosted Gitspaces
+
+### Feature Improvements
+
+### Bug Fixes
+
 ## 🚀 Releasing Self-Hosted Gitspaces — July \[2025.07.v1]
 
 ### Introducing Harness Self-Hosted Gitspaces
