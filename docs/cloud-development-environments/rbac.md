@@ -135,4 +135,8 @@ Here’s an example of configuring RBAC for CDE resources:
 2. Create a **user group** and add all relevant users to it.
 3. Assign the **CDE User** role to the user group, and bind it to the resource group created in step 1.
 
+<DocVideo src="https://app.tango.us/app/embed/ce9eb490-c256-4dc8-8ff4-a35b3e97c3fc" title="CDE RBAC Example" />
+
+
+
 ---

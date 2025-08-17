@@ -35,9 +35,17 @@ Follow the given steps to add Machines:
 3. Fill in the required machine details and click **Create**.
 <Tabs queryString="infra-provider">
 <TabItem value="GCP" label="GCP">
+:::info Custom Machine Image
+- For a custom machine image, only `ubuntu` image variants are currently supported.  
+- Run this command to get the list of compute engine images available in your GCP project: `gcloud compute images list`
+- You can only use images that are available in your GCP project. 
+:::
 ![](./static/gcp-create-machine.png)
 </TabItem>
 <TabItem value="AWS" label="AWS">
+:::info Custom AMI ID
+For a custom AMI ID, only `ubuntu` image variants are currently supported.  
+:::
 ![](./static/aws-create-machine.png)
 </TabItem>
 </Tabs>

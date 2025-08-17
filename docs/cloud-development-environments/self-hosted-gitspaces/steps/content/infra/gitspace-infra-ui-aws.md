@@ -52,6 +52,10 @@ For **AWS Cloud Infrastructure** for your Self Hosted Gitspaces, ensure that you
 
 ![](../../static/aws-ui-regions-1.png)
 
+:::info Custom Gateway AMI ID
+For a custom gateway AMI ID, only `ubuntu` image variants are currently supported.  
+:::
+
 Use the following **input parameters**:
 1. **AWS Region**: Select the **AWS region**. Refer to the [AWS documentation](https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html) to view available regions.
 2. **Gateway AMI ID**: Specify the **AMI ID** for your Gateway (AWS Machine Image). **AMI ID** is configured for every region in AWS infrastructure.  
@@ -65,6 +69,10 @@ Use the following **input parameters**:
 
 ### Configure VM for Runner & Delegate
 You'll have to configure the **VM for Runner & Delegate** to ensure that the AWS VM instance required for hosting the VM Runner and Delegate is provisioned as per these details. 
+
+:::info Custom AMI ID
+For a custom AMI ID, only `ubuntu` image variants are currently supported.  
+:::
 
 Use the following **input parameters**: 
 1. **Region**: Choose the **region** from the list of regions added for your infrastructure to host your VM instance. 

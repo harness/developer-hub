@@ -38,6 +38,12 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 
 ### Provide Basic Infrastructure Details
 
+:::info Custom Gateway Machine Image
+- For a custom gateway machine image, only `ubuntu` image variants are currently supported.  
+- Run this command to get the list of compute engine images available in your GCP project: `gcloud compute images list`
+- You can only use images that are available in your GCP project. 
+:::
+
 1. **Infrastructure Name**: Provide a **name** for your **Gitspace infrastructure**. This name will be used while referencing your infrastructure for creating Gitspaces.
 2. **GCP Project**: Enter the name of your **GCP project**. This is where the GCP VM Instance hosting your Gitspaces will reside.
 3. **Domain**: Provide the **domain** under which all Gitspaces created in this infrastructure will be accessible.
@@ -68,6 +74,12 @@ Here's how **all the added regions** will look for your infrastructure.
 
 ### Configure VM for Runner & Delegate
 You'll have to configure the **VM for Runner & Delegate** to ensure that the GCP VM instance required for hosting the VM Runner and Delegate is provisioned as per these details. 
+
+:::info Custom Machine Image
+- For a custom machine image, only `ubuntu` image variants are currently supported.  
+- Run this command to get the list of compute engine images available in your GCP project: `gcloud compute images list`
+- You can only use images that are available in your GCP project. 
+:::
 
 Use the following **input parameters**: 
 1. **Region**: Choose the **region** from the list of regions added for your infrastructure to host your VM instance. 
