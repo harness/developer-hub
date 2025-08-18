@@ -1,6 +1,14 @@
 ---
 title: Recommendations in Harness CCM
 description: Learn about the recommendations summary page and the various actions that you can perform on this page.
+redirect_from:
+  - /docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm
+  - /docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/ec2-recommendations
+  - /docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/ecs-recommendations
+  - /docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/governance
+  - /docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations
+  - /docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/workload-recommendations
+
 # sidebar_position: 2
 ---
 import Tabs from '@theme/Tabs';
