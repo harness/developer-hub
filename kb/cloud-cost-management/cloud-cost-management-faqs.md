@@ -227,6 +227,9 @@ You can set up perspectives/folders for each of those and then limit access to t
 
 ## Recommendations
 
+## How are recommendation savings calculated for each type of recommendation?
+Savings are calculated based on on-demand prices. All savings estimates are standardized on on-demand pricing to ensure consistency across recommendations.
+
 ### We have found that some AWS EC2 instances are still visible in recommendations list even they are stopped before 2-3 days ago. is it the usual behavior for stopped ec2s?
 
 Yes, this can happen if the stop action wasn't captured during the next sync cycle after the recommendation was made. In such cases, the recommendation disappears because the instance is no longer in a running state.
