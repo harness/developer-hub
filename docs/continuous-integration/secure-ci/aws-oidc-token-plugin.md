@@ -11,6 +11,7 @@ The [AWS OIDC plugin](https://github.com/harness-community/drone-aws-oidc) lets 
 - An AWS IAM Role configured with a federated identity provider using OIDC.
 - OIDC configured in your AWS account (e.g., via IAM Identity Provider).
 - The pipeline must be running in a context where Harness can issue an OIDC token (e.g., on a hosted delegate with OIDC enabled).
+- This setup is supported on both Harness Cloud and Self-managed Kubernetes Infrastructure.
 
 For more on configuring AWS for OIDC, refer to [AWS OIDC setup](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html).
 
@@ -25,7 +26,8 @@ For more on configuring AWS for OIDC, refer to [AWS OIDC setup](https://docs.aws
       image: harnesscommunity/drone-aws-oidc
       settings:
         role_arn: arn:aws:iam::123456789012:role/harness-ci-role
-        oidcTokenId: <+secrets.getValue("oidc_token")>
+        role_session_name: foo # defaults to harness-aws-oidc
+        duration: 3600 # in seconds
 ```       
 
 This step will use the injected OIDC token from Harness to authenticate with AWS and assume the specified role.
@@ -52,16 +54,24 @@ The plugin automatically sets the following environment variables for use in sub
 
 After this step, you can run AWS CLI or SDK-based commands in subsequent steps without having to manage access keys manually.
 
+:::note
+The AWS OIDC plugin does not export credentials as plain environment variables. Instead, it writes them as output secrets, which you can access in later steps using output variable expressions (for example, `<+steps.STEP_ID.output.outputVariables.AWS_ACCESS_KEY_ID>`). These secrets are automatically masked in logs for security.
+:::
 Example:
 
 ```yaml
 - step:
     type: Run
-    name: deploy-to-s3
+    name: Run AWS Command
+    identifier: runAwsCommand
     spec:
       image: amazon/aws-cli
-      command: aws s3 ls
       shell: sh
+      envVariables:
+        AWS_ACCESS_KEY_ID: <+steps.assume_role_with_oidc.output.outputVariables.AWS_ACCESS_KEY_ID>
+        AWS_SECRET_ACCESS_KEY: <+steps.assume_role_with_oidc.output.outputVariables.AWS_SECRET_ACCESS_KEY>
+        AWS_SESSION_TOKEN: <+steps.assume_role_with_oidc.output.outputVariables.AWS_SESSION_TOKEN>
+      command: aws s3 ls
 ```
 ## Related Links
 
