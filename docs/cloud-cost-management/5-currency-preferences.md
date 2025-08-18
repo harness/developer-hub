@@ -32,11 +32,7 @@ CCM allows you to choose from the following list of currencies and displays the 
 
 You must integrate your cloud accounts with Harness CCM. For more information, refer to the following topics:
 
-* [Set up cost visibility for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
-* [Set up cost visibility for Azure](../../get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
-* [Set up cost visibility for GCP](../../get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
-* [Set up cost visibility for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
-
+- [Create CCM Connector](/docs/cloud-cost-management/get-started#aws)
 
 ## Set up your preferred currency 
 

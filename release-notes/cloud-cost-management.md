@@ -1729,7 +1729,7 @@ Now, the API returns both account name and ID.
 
 - Introducing support to list the label keys that contain the string node-pool-name. (CCM-10203)
 
-  While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. See [Labels for node pool recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
+  While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. 
 
 ##### Fixed issues
 
