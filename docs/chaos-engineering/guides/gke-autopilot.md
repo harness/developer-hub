@@ -11,9 +11,9 @@ This guide explains how to set up and run chaos engineering experiments using Ha
 
 ## Overview
 
-GKE Autopilot is Google's fully managed Kubernetes service that provides a hands-off experience while maintaining security and compliance. However, Autopilot has specific restrictions compared to standard GKE clusters, including limited permissions and no direct access to nodes.
+[GKE Autopilot](https://cloud.google.com/blog/products/containers-kubernetes/introducing-gke-autopilot) is Google's fully managed Kubernetes service that provides a hands-off experience while maintaining security and compliance. However, Autopilot has specific restrictions compared to standard GKE clusters, including limited permissions and no direct access to nodes.
 
-Harness Chaos Engineering supports GKE Autopilot through a specialized configuration that works within Autopilot's security model while enabling comprehensive chaos experiments on your containerized applications.
+For additional information about running privileged workloads on GKE Autopilot, see [Google Partner Docs](https://cloud.google.com/kubernetes-engine/docs/resources/autopilot-partners) and [Run privileged workloads from GKE Autopilot partners](https://cloud.google.com/kubernetes-engine/docs/how-to/run-autopilot-partner-workloads).
 
 ## Prerequisites
 
@@ -29,6 +29,8 @@ Before you begin, ensure you have:
 ### Step 1: Configure GKE Autopilot Allowlist
 
 GKE Autopilot requires an allowlist that defines exemptions from security restrictions for specific workloads. Harness maintains an allowlist for chaos engineering operations that you need to apply to your cluster.
+
+**Required permissions:** You need cluster admin permissions and `kubectl` access to apply the allowlist synchronizer.
 
 Apply the allowlist synchronizer to your GKE Autopilot cluster:
 
@@ -62,6 +64,14 @@ The allowlist paths include version numbers (e.g., `v1.62`, `v0.42`) that may ch
 ### Step 2: Enable GKE Autopilot Compatibility
 
 After applying the allowlist synchronizer, you need to enable GKE Autopilot compatibility in your existing Harness infrastructure:
+
+:::note Alternative Setup Options
+You can also configure the **"Use static name for configmap and secret"** option for GKE Autopilot compatibility during:
+
+- [1-click chaos setup](/docs/chaos-engineering/quickstart#automated-onboarding)
+- New discovery agent creation
+- For existing discovery agents
+:::
 
 #### Configure Infrastructure for GKE Autopilot
 
