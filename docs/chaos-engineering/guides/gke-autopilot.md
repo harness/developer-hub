@@ -185,6 +185,18 @@ These experiments work seamlessly on GKE Autopilot as they operate within contai
 #### **System Time Manipulation**
 - **[Time Chaos](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/time-chaos)**: Introduces controlled time offsets to disrupt system time
 
+### Node-Level Chaos Experiments
+
+GKE Autopilot now supports select node-level chaos experiments that operate within the security constraints of the managed environment:
+
+#### **Node Network Chaos**
+- **[Node Network Loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-loss)**: Injects network packet loss at the node level
+- **[Node Network Latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-latency)**: Introduces network latency for node-level traffic
+
+#### **Node Service Management**
+- **[Kubelet Service Kill](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/kubelet-service-kill)**: Stops the kubelet service on target nodes
+- **[Node Restart](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-restart)**: Performs controlled restart of Kubernetes nodes
+
 ## Next Steps
 
 Now that you have Harness Chaos Engineering set up on your GKE Autopilot cluster:
