@@ -145,6 +145,13 @@ The following deprecated API endpoints are longer supported:
 
 ## August 2025
 
+### Version 1.101.x <!--August 13, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where, with the `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES` feature flag enabled, adding a new role assignment to an inherited principal failed if one already existed, due to incorrect scope information being passed. [PL-64180]
+- Improved the delegate registration process, making it more reliable and faster under heavy load, while reducing timeouts and failed attempts. [PL-61033]
+
 ### Version 1.100.x <!--August 06, 2025-->
 
 #### Fixed issues

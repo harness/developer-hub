@@ -1,9 +1,12 @@
 ---
-title: Harness Feature Flags
-# Hidden until the plugin has been released
-hidden: true
+title: Feature Flags
 description: View your project's feature flags and their statuses.
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/harness-feature-flags
+  - /docs/internal-developer-portal/plugins/available-plugins/harness-feature-flags/
+sidebar_label: Feature Flags
 ---
+# Harness Feature Flags
 
 | Plugin details |                                                        |
 | -------------- | ------------------------------------------------------ |

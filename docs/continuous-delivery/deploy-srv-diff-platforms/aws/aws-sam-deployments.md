@@ -107,7 +107,9 @@ Now, let's understand the runtime image:-
 
 For ECR users, you can access these images via the [ECR Image Repository for SAM Plugin](https://gallery.ecr.aws/harness/harness/aws-sam-plugin).
 
-For GAR users, you can access these images via the [GAR Image Repository for SAM Plugin](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Faws-sam-plugin?inv=1&invt=Ab2GmA).
+For GAR users, you can access these images via:
+- US region: [GAR Image Repository for SAM Plugin (US)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Faws-sam-plugin)
+- Europe region: [GAR Image Repository for SAM Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Faws-sam-plugin?inv=1&invt=Ab5cNA)
 
 :::important note
 These images can only be used in containerized step.

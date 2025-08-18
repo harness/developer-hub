@@ -187,6 +187,34 @@ nohup ./harness-runner server --env-file config.env > nohup-runner.out 2>&1 &
 ```
 
 </TabItem>
+<TabItem value="Windows - amd64">
+
+Installation of the delegate on Windows is done using Powershell.
+
+1. Download the binary for your system
+```powershell
+curl --output harness-runner.exe https://storage.googleapis.com/harness-qa-public/public/shared/runner/1.19.2/runner-windows-amd64.exe
+```
+
+2. Create a config.env file from the following code block. Ensure you replace the fields below with the data you retrieved while [getting the relevant information](#get-relevant-information) above.
+
+```
+@"
+NAME=[Name of the delegate]
+ACCOUNT_ID=[Your account ID]
+TOKEN=[Copy Delegate Token from Harness platform]
+URL=[MANAGER_HOST_AND_PORT]
+TAGS="windows-amd64"
+"@ | Set-Content -Path "config.env"
+```
+
+3. Start the delegate.
+
+```powershell
+.\harness-runner.exe server --env-file config.env
+```
+</TabItem>
+
 </Tabs>
 ---
 
@@ -210,7 +238,7 @@ Most importantly, ensure that you have set `Local` as the **Infrastructure** and
 
 Here is where the `config.env` file is located for each operating system:
 - **MacOS**: The `config.env` file is located in `~/.harness-runner/config.env` (after you run the `./harness-runner` install command).
-- **Linux**: The `config.env` file is created by the user during step 3 of linux [runner installation](#download-and-install-the-delegate). The file will be where you created it at that point in time.
+- **Linux** and **Windows**: The `config.env` file is created by the user during the linux and windows [runner installation](#download-and-install-the-delegate). The file will be where you created it at that point in time.
 
 ### Set Max Stage Capacity
 

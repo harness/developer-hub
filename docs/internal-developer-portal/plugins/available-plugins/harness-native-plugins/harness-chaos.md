@@ -1,7 +1,12 @@
 ---
 title: Harness Chaos Engineering
 description: View list of Chaos Experiments	for your applications.
+sidebar_label: Chaos Engineering
+redirect_from:
+  - /docs/internal-developer-portal/plugins/available-plugins/harness-chaos
+  - /docs/internal-developer-portal/plugins/available-plugins/harness-chaos/
 ---
+# Harness Chaos Engineering
 
 | Plugin details |                                                        |
 | -------------- | ------------------------------------------------------ |

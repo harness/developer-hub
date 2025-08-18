@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-8-06T10:00:00
+date: 2025-8-14T10:00:00
 sidebar_position: 8
 ---
 
@@ -54,6 +54,25 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 :::
 
 ## August 2025
+
+### Version 1.101.0
+
+#### Fixed issues
+
+- Fixed an issue where pipeline rollback was not triggered when it was added as a post-retry action for the retry failure strategy. (**PIPE-29172, ZD-90429, ZD-90445**)
+- Fixed a UI overflow CSS issue and added a line clamp in the trigger info field. (**PIPE-28600**)
+- Fixed an issue where secrets configured at the account level could not be accessed by a generic webhook trigger with HMAC authentication. The webhook can now correctly identify and use secrets created at higher scope levels. (**CDS-113115, ZD-89938**)
+- Corrected the state handling of the standard template field in the ServiceNow Create step to prevent it from switching back to a fixed input field from an expression field. (**CDS-112945**)
+- Fixed an issue where clicking on a test host triggered an unnecessary state update, causing two analysis/metrics API calls—one with the correct test host and another with `undefined`, which returned data for all test hosts.
+- Fixed an issue where clicking between nodes in the UI caused an unnecessary state update, triggering two analysis/metrics API calls. One call had the correct test host and the other had `undefined`, which returned data for all test hosts. The redundant state update has been removed, ensuring the correct data is consistently displayed for the selected host. (**CDS-112403, ZD-88529**)
+- Services created via Git push were permitted to include a hyphen (`-`) in their identifier—violating the required pattern `[a-zA-Z_][0-9a-zA-Z_$]{0,127}$`—which caused API calls to fail with a `400 Bad Request` error. Validation has now been added at a shared touchpoint for both the import and force-import flows to prevent creation of services with invalid identifiers. (**CDS-112941, ZD-89835**)
+- Pipelines referencing environment groups at the account level failed to run when the `CDS_CROSS_SCOPED_ENV_GROUPS` flag was enabled. The issue was caused by scoping not being resolved for `envRefs` from account-level environment groups. This has been fixed. (**CDS-112794, ZD-89659**)
+- In Helm rollbacks, a step timeout during the steady state check in a Helm canary deploy could cause a `ClassCastException` in the canary delete step. This occurred when `helmCanaryDeployOutcome` was not present and the fallback `helmCanaryExecutionOutput` was incorrectly cast to `HelmDeployOutcome` to retrieve the canary release name. The casting logic has been corrected to prevent this error. (**CDS-112634, ZD-89333**)
+- Fixed an issue where multiple resource restraints were created for a single queue step when the queue step was retried. The system now reuses the existing `resourceRestraintInstance` in such cases. This fix is controlled by the feature flag `PIPE_FIX_RESOURCE_RESTRAINTS_FOR_RETRY_STEPS`. To enable the feature flag, contact [Harness Support](mailto:support@harness.io). (**PIPE-28623**, **ZD-87652**)
+- Fixed a null pointer issue in the **Get Freeze List** API that caused requests without a request body to fail, despite the API documentation indicating that the body was not required. The API now works as expected without requiring a request body. (**CDS-111808**, **ZD-86755**)
+- Fixed an issue where the environment type was not displayed in the OPA Policy Tester when the environment was stored in Git on a non-default branch. This occurred because the environment could not be read during the JSON expansion handler, preventing OPA from evaluating its content. The environment type now appears correctly in this scenario. (**CDS-111741**, **ZD-85748**)
+- Addressed a potential memory leak in delegates running on PCF-related environments that could lead to high CPU and memory usage. An environment variable has been introduced to help mitigate this issue by pre-trusting the URL and port of the TAS cluster. (**CDS-109294, ZD-82873, ZD-88923**)
+- Corrected a UI issue where the platform incorrectly required optional variables in an Infrastructure Definition created from a Custom Deployment Template. Users can now successfully save the definition without needing to provide values for variables marked as `required: false` (**CDS-113010, ZD-89895**)
 
 ### Version 1.100.0
 
@@ -707,7 +726,7 @@ This issue has been resolved. The Monitored Services page now supports opening v
 
 #### New Features and Enhancements
 
-- Users can now select the Project that includes the workspace you want to run inside **Terraform Cloud Run Step**. Currently, this feature is behind the feature flag `CDS_TF_PROJECTS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (**CDS-98549, ZD-63376**)
+- Users can now select the Project that includes the workspace you want to run inside **Terraform Cloud Run Step**. (**CDS-98549, ZD-63376**)
 
 - Users can now fetch Service Manifest source i.e Connector URL where manifest is stored using an expressions `<+manifests.MANIFEST_ID.store.connectorUrl>`. Currently, this feature is behind the feature flag `CDS_MANIFEST_CONNECTOR_URL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-107797**)
 
@@ -1156,7 +1175,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 
 #### New features and enhancements
 
-- Approval APIs now support Service Account tokens for approving or rejecting Harness Manual Approval steps. For more information, go to Harness [Using Approval API](/docs/platform/approvals/adding-harness-approval-stages#using-the-approvals-api-with-service-account-authentication). This feature is behind a feature flag `CDS_SERVICE_ACCOUNT_SUPPORT_IN_HARNESS_APPROVAL`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-97580, ZD-64388)
+- Approval APIs now support Service Account tokens for approving or rejecting Harness Manual Approval steps. For more information, go to Harness [Using Approval API](/docs/platform/approvals/adding-harness-approval-stages#using-the-approvals-api-with-service-account-authentication). (CDS-97580, ZD-64388)
 
 - Harness now supports webhooks configured with **GitLab System Hooks** to trigger pipelines. For more information, go to Harness [GitLab System Hooks](/docs/platform/triggers/triggers-reference/#gitlab-system-hooks). (CDS-95423)
 
@@ -1166,7 +1185,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 
 - Harness has introduced native supports for **Canary** and **Blue-Green** Deployment strategies with Helm Chart deployments. For more information, go to Harness [Helm Chart deployments](/docs/category/helm-step-reference/). This feature is behind a feature flag `CDS_HELM_BG_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-35715)
  
-- Harness now supports for enabling metrics in ASG deployments. For more information, go to Harness [ASG Additional Configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial/#asg-additional-configuration). This feature is behind a feature flag `CDS_ASG_ENABLE_METRICS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-99276)
+- Harness now supports for enabling metrics in ASG deployments. For more information, go to Harness [ASG Additional Configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial/#asg-additional-configuration). (CDS-99276)
 
 - Harness now detects the failure state of CRDs in the Kubernetes Apply step when CRDs behave like jobs. (CDS-98761)
 
@@ -1702,7 +1721,7 @@ Refer to following doc for more details on new [repo listing](/docs/platform/git
 
 #### Early access
 
-- You can now store Terraform Plan files on Harness Delegate temporarily. This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. This feature requires Harness Delegate version 24.04.82705 or later. For more information, go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate). (CDS-85209)
+- You can now store Terraform Plan files on Harness Delegate temporarily. This feature requires Harness Delegate version 24.04.82705 or later. For more information, go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate). (CDS-85209)
 
 #### Fixed issues
 

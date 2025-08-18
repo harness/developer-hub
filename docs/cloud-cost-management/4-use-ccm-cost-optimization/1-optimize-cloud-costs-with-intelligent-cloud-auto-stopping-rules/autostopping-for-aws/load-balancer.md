@@ -8,6 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Setting Up AWS Application Load Balancer (ALB)
 
 ## Overview
@@ -30,22 +33,17 @@ A Harness load balancer in AWS consists of two primary components:
 - **Path-Based Routing**: Route different paths to different resource groups
 - **Seamless User Experience**: Users access resources through familiar URLs
 
-### DNS Configuration
+### Prerequisites
 
-Each load balancer requires a domain name (e.g., `*.autostopping.example.com`) that points to the load balancer. This is typically configured as:
-
-```
-*.autostopping.example.com → Load balancer DNS address
-```
+- An active AWS account with [appropriate permissions](/docs/cloud-cost-management/feature-permissions#autostopping-rules-permissions).
+- [AWS CCM Connector](/docs/cloud-cost-management/get-started/#aws)
 
 ## Setup Process
 
-### Prerequisites
+You can either create a load balancer from the CCM UI or import an [existing load balancer on your AWS account](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html).
 
-- An active AWS account with appropriate permissions
-- A domain name you can configure (either in Route 53 or another DNS provider)
-- [AWS Connector configured in Harness](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
-
+<Tabs>
+<TabItem value="Create Load Balancer">
 ### Creating a Load Balancer from the AutoStopping Homepage
 
 <DocImage path={require('./static/as-lb-aws.png')} width="100%" height="100%" title="Click to view full size image" />
@@ -62,55 +60,16 @@ Each load balancer requires a domain name (e.g., `*.autostopping.example.com`) t
 
 7. Click **Save Load Balancer**
 
-
 Your load balancer is now ready to use with AutoStopping rules.
 
-:::note DNS Configuration
-If using **Route 53**, Harness automatically creates the necessary DNS record:
-```
-A record: *.autostopping.yourdomain.com → [ALB DNS address]
-```
+</TabItem>
+<TabItem value="Import Load Balancer">
+1. If you [already have a load balancer on your AWS account](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html), you can import it into Harness CCM.
+2. In the AutoStopping Rules, in "Setup Access", click on "HTTP/HTTPS".
+3. From the "Specify Application Load Balancer (or AutoStopping Proxy)" dropdown, select the load balancer you want to import.
+4.  The field will be auto-populated with the load balancer information.
+5. Specify the URL used to access the resources (Optional). The URL should be accessible before configuration if it's been used to warm up the resources. Harness-generated auto URLs won't be able to warm up resources and won't have access to the underlying resources.
+6. Custom Exclusions / Inclusions: You can specify to exclude or include certain types of HTTP/HTTPS traffic from being considered as activity and consequently warm-up AutoStopping Rules
+</TabItem>
 
-If using **another DNS provider**, you'll need to manually create a CNAME record:
-1. Go to your DNS provider's management console
-2. Create a wildcard CNAME record: `*.autostopping.yourcompany.com → [ALB DNS address]`
-3. For detailed instructions, see [AWS DNS CNAME documentation](https://docs.aws.amazon.com/managedservices/latest/ctexguide/ex-dirserv-cname-record-add-col.html)
-:::
-
-## Updating the Lambda Function
-
-The AWS Load Balancer uses a Lambda function to manage traffic and handle resource warm-up. You may need to update this function to the latest version.
-
-```mermaid
-flowchart TD
-    A[Find Lambda Function] --> B[Download Latest Code]
-    B --> C[Upload to Lambda]
-    C --> D[Save Changes]
-    style A fill:#cce5ff,stroke:#004085
-    style B fill:#d4edda,stroke:#155724
-    style C fill:#c2f0c2,stroke:#0f5132
-    style D fill:#c2f0c2,stroke:#0f5132
-```
-
-### Step 1: Locate the Lambda Function
-
-1. Go to the AWS Console and navigate to the EC2 service
-2. Select **Load Balancers** and find your AutoStopping ALB
-3. Go to the **Listeners** tab
-4. Find the default rule and note the target group
-5. The target group contains the Lambda function that needs updating
-
-### Step 2: Update the Function Code
-
-:::important
-The current version is `aws-proxymanager-0.1.3.zip`
-:::
-
-1. [Download the latest code package](https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/aws-proxymanager-0.1.3.zip)
-2. In AWS Console, navigate to **Lambda** → **Functions** and find your function
-3. Select the **Code** tab
-
-   <DocImage path={require('./static/lambda-function-code.png')} width="50%" height="50%" title="Click to view full size image" />
-
-4. Click **Upload from** → **.zip file**
-5. Select the downloaded zip file and click **Save**
+</Tabs>

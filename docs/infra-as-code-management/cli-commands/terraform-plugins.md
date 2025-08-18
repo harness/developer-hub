@@ -21,8 +21,9 @@ The supported commands include:
 - [plan-refresh-only](#plan---refresh-only)
 - [apply-refresh-only](#apply---refresh-only)
 - [detect-drift](#detect-drift)
+- [import](#import)
+- [removed](#removed)
 - [validate](#validate)
-[import](#import)
 </TabItem>
 <TabItem value="Add a new command step">
 <DocVideo src="https://app.tango.us/app/embed/732528d2-2863-4c7c-8951-12459f301c6c" title="Harness IaCM: Add an OpenTofu or Terraform command step to your pipeline" />
@@ -99,11 +100,6 @@ Drift detection is typically used in scheduled pipelines or as a safeguard befor
 To learn more, including a full YAML example, visit the [Drift Detection documentation](/docs/infra-as-code-management/pipelines/operations/drift-detection).
 
 ---
-### Validate
-The `validate` command checks the configuration for errors:
-- **Syntax Checks**: Ensures all configuration files are syntactically correct.
-- **Consistency Checks**: Confirms all configurations are internally consistent with no unresolved references or missing mandatory arguments.
----
 
 ### Import
 The `import` command allows you to bring existing infrastructure under IaC control. This feature is now supported in Harness pipelines, similar to the `init` or `plan` commands. Key benefits include:
@@ -119,3 +115,34 @@ import aws_s3_bucket.my_bucket my-existing-bucket
 ```
 
 In this example, `aws_s3_bucket.my_bucket` is the resource name in your IaC configuration, and `my-existing-bucket` is the identifier of the existing S3 bucket in AWS. The import command associates the existing bucket with your IaC configuration, allowing you to manage it as part of your infrastructure code. This process effectively transitions the resource under IaC management without altering its current state.
+
+---
+
+### Removed
+The `removed` command allows you to remove resources from your state file, without necessarily destroying them. This feature is now supported in Harness pipelines, similar to the `init` or `plan` commands. Key benefits include:
+
+- **Seamless Integration:** Supports the `removed` command, so users don't need to execute it manually outside of Harness.
+- **Infrastructure Management:** Allows you to remove resources from your state file, without necessarily destroying them.
+
+#### Example Usage:
+Suppose you have an existing AWS EC2 instance that you want to remove from your state file. You can use the removed command as follows:
+
+```hcl
+removed {
+  from = aws_instance.<instance_name>
+  lifecycle {
+    destroy = false
+  }
+}
+```
+
+In this example, `aws_instance.<instance_name>` is the resource name in your IaC configuration. The `lifecycle { destroy = false }` block ensures that the resource is only removed from the state file and is not destroyed in your actual infrastructure. The removed command removes the resource from your state file, without destroying it. 
+
+---
+
+### Validate
+The `validate` command checks the configuration for errors:
+- **Syntax Checks**: Ensures all configuration files are syntactically correct.
+- **Consistency Checks**: Confirms all configurations are internally consistent with no unresolved references or missing mandatory arguments.
+---
+
