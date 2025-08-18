@@ -49,7 +49,7 @@ Artifact Signing step supports both [**container**](/docs/software-supply-chain-
 
 ### Container Images
 
-You can search for **Artifact Signing** and add it to either the **Build** or **Security** stage of a Harness pipeline
+You can search for **Artifact Signing** and add it to either the **Build** , **Deploy**, or **Security** stage of a Harness pipeline
 
 :::note
 
