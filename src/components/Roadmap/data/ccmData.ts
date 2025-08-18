@@ -17,6 +17,13 @@ export const CcmData: Horizon = {
         description:
           "UI-based configuration management for Nodepools and Nodeclasses.",
         backgroundColor: "var(--green-100)",
+      }, 
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Bin Packing Schedules",
+        description:
+          "Advanced scheduling capabilities for Cluster Orchestrator's bin-packing algorithm, allowing time-based optimization of workload placement. Schedule resource-intensive operations during off-peak hours while maintaining performance SLAs. Includes customizable time windows, workload prioritization, and integration with commitment utilization optimization.",
+        backgroundColor: "var(--green-100)",
       },
       {
         tag: [{value: "Cluster Orchestrator"}],
@@ -92,6 +99,13 @@ export const CcmData: Horizon = {
         title: "Tags support for Recommendations ",
         description:
           "Tags are supported for recommendations and filtering is allowed.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Event Driven Anomaly Detection ",
+        description:
+          "Real-time cost anomaly detection triggered by cloud billing events rather than scheduled jobs. Supports AWS, GCP, and Azure with parallel processing capabilities. ",
         backgroundColor: "var(--green-100)",
       },
       {
@@ -196,6 +210,18 @@ export const CcmData: Horizon = {
  Now:{
   description: "Q3 CY'25, Aug 2025 - Oct 2025",
     feature: [
+      {
+        tag: [{value: "Visibility"}],
+        title: "Cost Category V2",
+        description: "Cost Category V2 provides a more flexible and dynamic way to group and analyze costs based on your specific needs. It allows you to create custom cost categories, define rules for categorization, and apply them to your cost data.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Connector"}],
+        title: "CCM Connector Refactor",
+        description: "Refactoring of CCM Connectors to improve the user experience",
+        backgroundColor: "var(--yellow-100)",
+      },
       {
         tag: [{value: "Commitment Orchestrator"}],
         title: " Integration with Cluster Orchestrator",
