@@ -75,7 +75,7 @@ export const FmeData: Horizon = {
       {
         tag: [{ value: "SDK" }],
         title: "Extend SDK support",
-        description: "Support additional SDKs like Erlang.",
+        description: "Support additional SDKs.",
       },
       {
         tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
