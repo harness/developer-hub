@@ -120,6 +120,17 @@ Harness displays which Delegates performed each task in the Details of each step
 
 ![](./static/continuous-delivery-faqs-01.png)
 
+#### What does the FibonacciBackOff - SocketTimeoutException: Connect timed out error mean?
+This error means the Harness Delegate can't reach the Manager endpoint, likely due to:
+Wrong Manager URL in the delegate YAML
+Network/firewall blocking port 443
+DNS issues or manager downtime
+Fix:
+Verify MANAGER_HOST_AND_PORT is correct
+Run curl or telnet to check connectivity from the node
+Ensure port 443 is open and DNS resolves the manager URL
+The delegate retries using a Fibonacci delay. Fix the network/config and it’ll reconnect automatically.
+
 #### Can I restrict deployments to specific User Groups?
 
 Yes, you can enable the Role permission Pipeline Execute and then apply that Role to specific User Groups.
@@ -3236,6 +3247,112 @@ As per the current design, there's no native step for this but user can write a 
 
 The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
+#### What infrastructure setup is required to deploy Kustomize applications in Harness?
+You need a Kubernetes cluster with a Harness Delegate installed, and permissions to create resources in the target namespace. Additionally, outbound HTTPS access is required for GitHub, Docker Hub, and Harness platform connections. Once the infrastructure and connectors are configured, Harness can fetch Kustomize manifests from a Git repo and deploy them seamlessly.
+
+#### Can I use Harness variables in Kustomize manifests and does it support rollbacks and multiple strategies?
+Harness allows the use of its variables and secrets only in Kustomize Patch files added via the Harness UI—not in the base kustomization.yaml or manifest files. Regarding deployment strategies, Kustomize is supported in Rolling, Canary, Blue-Green, and Kubernetes Apply/Delete deployments. While Harness doesn't handle rollbacks using Kustomize directly, it leverages native Kubernetes rollbacks via the rendered templates passed to kubectl.
+
+#### How does Harness use patchesStrategicMerge in Kustomize and can I use variables in it?
+In Kustomize, the patchesStrategicMerge field in the kustomization.yaml defines override YAML files (patches) that modify base resources during rendering. In Harness, you can use variables like <+serviceConfig.serviceDefinition.spec.variables.image> and secrets such as <+secrets.getValue("mySecret")> within these patches. If the patchesStrategicMerge field is not defined in your base kustomization.yaml, Harness will automatically add it when you configure patches through the UI.
+
+#### Why is the Deployed By field showing AUTO_SCALED instead of a user email?
+The Deployed By field shows AUTO_SCALED when instances are scaled outside of Harness, such as manual scaling through your Kubernetes cluster or external automation not initiated via a Harness deployment.
+
+#### Why does drift detection show mismatches between environments in an environment group? 
+Drift detection highlights inconsistencies when different artifacts are deployed across environments within the same group. This can occur if a deployment fails in one environment, skipping artifact deployment, or if someone manually deploys a different artifact outside the pipeline process.
+
+#### Why are my configuration items not getting added to the ServiceNow change request?
+Ensure that the second ServiceNow Create step correctly references the sys_id from the first step using the expression <+pipeline.stages.stage.spec.execution.steps.<STEP_ID>.ticket.fields.sys_id>, and that a matrix looping strategy is defined with valid ci_item values. Missing or incorrect expressions or invalid config item IDs can cause the addition to fail silently.
+
+#### Why is my ServiceNow Update step failing with "ticketNumber not found" even though the ticket was created earlier in the pipeline?
+This usually happens when the ticketNumber in the ServiceNow Update step is not correctly referencing the output of the earlier ServiceNow Create step. Ensure that:
+The ServiceNow Create step runs before the Update step in the same stage or a previous stage.
+You are using the correct Harness expression to reference the ticket number. The format should be:
+<+execution.steps.STEP_ID.ticket.ticketNumber>
+Replace STEP_ID with the actual identifier of your ServiceNow Create step. For example:
+<+execution.steps.create.ticket.ticketNumber>
+If using runtime input or expressions, verify that the ticket number is resolved properly before the Update step runs (check in runtime input YAML or step output).
+Also, confirm that the ticketType used in the Update step matches the type used in the Create step.
+Incorrect referencing or sequencing is a common cause for this issue. Double-check the step order and expressions.
+
+#### I don’t see my custom fields in the Update Fields list.
+Use a fixed ticket number to enable Harness to fetch metadata from ServiceNow.
+Check that the feature flag CDS_SERVICENOW_FETCH_FIELDS is enabled.
+Click the refresh icon next to the fields to sync latest values from ServiceNow.
+
+#### How do I pass dynamic values into the JSON Body for SNOW import?
+Use Harness expressions or runtime variables:
+{"u_example": "<+stage.variables.importset>"}
+
+#### How can I use input variables and secret management in Terraform Var Files in Harness?
+You can specify input variables like access_key and secret_key in the Terraform configuration and pass them using a .tfvars file. In Harness, these variables can be set using Harness expressions to inject secrets or runtime variables.
+Example:
+variable "access_key" {}
+variable "secret_key" {}
+provider "aws" {
+  access_key = var.access_key
+  secret_key = var.secret_key
+  region = "us-east-1"
+}
+In Harness: Use variables from Harness secret manager to replace these values.
+- name: AWS_ACCESS_KEY
+  value: <+secrets.getValue("aws.access_key")>
+- name: AWS_SECRET_KEY
+  value: <+secrets.getValue("aws.secret_key")>
+
+#### How can I ensure that my Terraform execution logs are properly captured in Harness?
+Terraform execution logs, including stdout and stderr, are automatically captured in Harness pipeline execution logs. Logs from stderr will be printed in red by default. If you encounter issues with log colorization, you can enable the feature flag CDS_TF_TG_SKIP_ERROR_LOGS_COLORING to disable error log coloring.
+Note: Make sure that your Terraform CLI commands don’t suppress log output (e.g., avoid using -quiet or -no-color flags unless needed).
+
+#### How do I export a JSON representation of the Terragrunt Plan for use in subsequent steps?
+You can export the JSON representation of the Terragrunt Plan and reference it in subsequent steps using expressions. This is useful for running actions like rolling back or applying specific changes in later steps.
+cat "<+execution.steps.Plan_Step.plan.jsonFilePath>"
+
+#### How can I troubleshoot common issues with Terraform execution in Docker containers?
+When running Terraform in Docker, common issues may arise due to incorrect AWS credentials or network connectivity. Ensure the Docker container is configured correctly:
+Provide the necessary AWS credentials (access key, secret key).
+Verify the AWS_CONTAINER_CREDENTIALS_RELATIVE_URI environment variable is set if using ECS container credentials.
+Double-check proxy settings if using a proxy server.
+
+#### What happens if I don’t provide a Stack Name for a multi-stack CDK app?
+The CDK Deploy step fails when no stack name is provided in the multi-stack application. Always provide the correct stack names for a multi-stack application in the Stack Names field. This will ensure that the cdk deploy command has the correct stack context. For example:
+cdk deploy stack1 stack2 --parameters stack1:param1=value --parameters stack2:param2=value
+
+If you omit the stack name, the step may fail because it cannot find the correct context for each stack.
+
+#### What are the different scopes supported by Azure Blueprint provisioning in Harness?
+Harness supports the following scope types for Azure Blueprint provisioning:
+Tenant
+Management Group
+Subscription
+Resource Group
+
+#### Can I use Bicep templates with Azure Blueprint in Harness?
+No, currently only JSON-based Blueprint templates are supported. Bicep templates are not supported by Harness for Azure Blueprint provisioning.
+
+#### What Azure roles are required for using Azure Blueprint provisioning in Harness?
+You need the following Azure roles for Blueprint provisioning:
+Contributor role at the subscription or resource group level.
+Blueprint Operator or Owner role for the management of Azure Blueprints.
+
+#### Can I use Azure Blueprint provisioning without deploying artifacts?
+Yes, you can use Azure Blueprint provisioning without deploying artifacts. You simply need to set up an Azure Blueprint provisioner in the stage and configure the necessary blueprint template for resource provisioning.
+
+#### What happens if the same assignment name is used for multiple Blueprint assignments?
+The Assignment Name must be unique within the scope of the subscription. Using the same name for multiple assignments within a subscription will cause conflicts and might lead to provisioning failures.
+
+#### What is the purpose of the "Skip instances with the same artifact version already deployed" checkbox?
+The "Skip instances with the same artifact version already deployed" feature ensures that hosts where the deployment was successful and the artifact is already deployed are skipped in the next run. This feature reduces unnecessary redeployments, ensuring efficiency. You can enable it by navigating to the Advanced tab of the deployment stage and checking the box.
+
+#### Can I skip rollback on specific hosts?
+No, the rollback process in Harness applies uniformly based on the entire deployment's success criteria. Rollbacks cannot be applied selectively to specific hosts. However, if a rollback is necessary, it applies only to the hosts that were part of the previous successful execution.
+
+#### How can I customize deployment to AWS using SSH in Harness?
+For AWS deployments using SSH:
+Retrieve Instances at Runtime. Use the AWS Connector and DescribeInstances API call to retrieve instances during the infrastructure step.
+SSH to Instances: Utilize SSH credentials to connect to the target hosts.
+Looping and Deployment: Implement the Repeat Looping Strategy to loop over the target instances during the deployment, ensuring each host gets the deployment as per the selected strategy (Basic, Rolling, or Canary).
 
 ### Infrastructure provisioning FAQs
 
