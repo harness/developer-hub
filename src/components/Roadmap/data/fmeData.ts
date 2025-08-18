@@ -6,7 +6,7 @@ export const FmeData: Horizon = {
     feature: [
       {
         tag: [{ value: "Better Together" }],
-        title: "Split integration into Harness, Part 1",
+        title: "Split integration into Harness",
         description:
           "Incorporate Split as a fully native Harness module. Login, API scoping, and RBAC enhancements delivered by migration. Existing customers migrated.",
       },
