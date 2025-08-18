@@ -187,7 +187,7 @@ These experiments work seamlessly on GKE Autopilot as they operate within contai
 
 ### Node-Level Chaos Experiments
 
-GKE Autopilot now supports select node-level chaos experiments that operate within the security constraints of the managed environment:
+Harness Chaos now supports select node-level chaos experiments on GKE Autopilot that operate within the security constraints of the managed environment:
 
 #### **Node Network Chaos**
 - **[Node Network Loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-loss)**: Injects network packet loss at the node level
