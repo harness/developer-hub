@@ -22,8 +22,8 @@ export const FmeData: Horizon = {
       },
       {
         tag: [{ value: "SDK" }],
-        title: "Harness Forward proxy",
-        description: "Centralizes traffic going outside of a customer’s cloud. Unlike the current Split Proxy, it does not require environment-specific configuration. Supports multiple Harness modules as well, starting with DB DevOps.",
+        title: "Harness Forward proxy for FME",
+        description: "Centralizes traffic going outside of a customer’s cloud. Unlike the current Split Proxy, it does not require environment-specific configuration.",
       },
       {
         tag: [{ value: "Experimentation" }],
