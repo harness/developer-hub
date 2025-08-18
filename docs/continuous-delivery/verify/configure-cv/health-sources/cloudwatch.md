@@ -89,6 +89,12 @@ CloudWatch Logs is currently behind the feature flag `CDS_CV_CLOUDWATCH_LOGS_ENA
 
 :::
 
+:::info
+
+For more information on the prerequisites, configuration steps, and permissions required for enabling cloudwatch logs, go to [Cloudwatch Logs](/docs/continuous-delivery/verify/configure-cv/health-sources/cloudwatch-aws.md)
+
+:::
+
 1. Click **+ Add Query**.
 2. Enter a **Query Name**. 
 3. Click **Submit**.
