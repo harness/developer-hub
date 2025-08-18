@@ -63,9 +63,6 @@ Example:
       command: aws s3 ls
       shell: sh
 ```
-
-Because the `AWS_*` credentials are already set via the plugin, this `aws s3 ls` command will use those temporary credentials.
-
 ## Related Links
 
 [AWS OIDC plugin GitHub Repo](https://github.com/harness-community/drone-aws-oidc)
