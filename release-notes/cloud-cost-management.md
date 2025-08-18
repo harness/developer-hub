@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-08-11T18:00
+date: 2025-08-17T18:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,18 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+## August 2025 - Hotfix: Dashboard Cost Totals Issue
+#### **Deployment Date:** August 17, 2025 (Prod-1)
+
+**What Was Fixed**
+- We addressed an issue where cost totals in Dashboard reports did not always align with the detailed breakdowns. When viewing cluster costs by specific categories (such as namespace ), the “Total” row could sometimes differ from the sum of the detailed rows. This occurred because filters were applied differently to totals versus detailed costs.
+
+**What has changed now?**
+
+- The “Total” row now always matches the sum of the detailed rows.
+- Reports remain reliable across all views whether filtered by namespace, labels, or other categories.
+
+**Note**: This was due to a display issue. The actual cloud costs and allocations did not get affected.
 
 ## August 2025 - Version 1.59.1
 #### **Deployment Date:** August 11, 2025 (Prod-1)

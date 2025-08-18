@@ -30,7 +30,7 @@ The following steps show how to deploy a generic artifact to AWS Lambda using Ha
 <TabItem value="step" label="Step-by-Step">
 
 ### 1. Upload a Generic Artifact
-1. Go to your [Generic Artifact Registry](/docs/artifact-registry/supported-formats#generic).
+1. Go to your [Generic Artifact Registry](/docs/artifact-registry/get-started/quickstart#generic).
 2. Click **Upload Artifact**.
 3. Select your function file (e.g., ZIP or JAR) and upload it to the registry.
 4. Note the artifact name and version for later reference.

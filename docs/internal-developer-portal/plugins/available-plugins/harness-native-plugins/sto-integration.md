@@ -44,6 +44,12 @@ import DocImage from '@site/src/components/DocImage';
 
 # Harness Security Testing Orchestration (STO) and IDP 
 
+
+
+:::info
+This is a **Harness IDP native feature**. It is **not a Backstage plugin** and does not require any third-party extensions. All functionality described here is built directly into Harness IDP.
+:::
+
 Harness Internal Developer Portal (IDP) integrates with Security Testing Orchestration (STO) to bring security insights directly into the developer workflow.
 
 With this integration, vulnerabilities identified by STO scanners are surfaced inside the IDP Software Catalog. Developers can view issues such as CVEs from static or dynamic scans directly alongside their services, projects, and components.
