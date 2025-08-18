@@ -29,7 +29,7 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 ### Bug Fixes 
 
-- **Enterprise Folder Permission Enhancement:** We have fixed an issue where users with read-only access to enterprise-level perspective folders were incorrectly able to edit and move perspectives into product-specific folders if those destination folders allowed editing. With this fix, Read-only users can no longer move perspectives out of enterprise folders and correct permission handling is enforced. [CCM-24670]
+- **Permission Handling Improvement:** We have fixed an issue with folder permission enforcement. Previously, users with read-only access could sometimes edit and move perspectives from one folder to other provided the destination folder allows create/edit permissions. This update ensures proper permission validation across all folders. [CCM-24670]
 
 - **Container Cost Display Enhancement:** Previously, when a container's `lastDayCost` was unavailable, recommendations displayed 'NaN' (Not a Number) values in the UI. We've implemented fallback logic that automatically retrieves the `lastDayCost`, ensuring consistent cost visibility across all recommendations. [CCM-23235]
 
