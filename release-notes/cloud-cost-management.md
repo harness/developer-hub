@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-08-17T18:00
+date: 2025-08-18T18:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,40 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+### ⭐ [New Feature] Harness AI for Cloud Cost Management
+We’re excited to announce the integration of Harness AI with Cloud Cost Management (CCM) bringing a whole new way to analyze, optimize, and take control of your cloud spend.
+
+#### What’s New?
+With this release, you can now Create Perspectives with AI in just a few clicks:
+
+- **AI-powered Perspective Creation:** Simply choose “Create with AI” when building a cost perspective. AI will guide you through setup, check existing cost labels in your account, and recommend the best-fit rules and groupings.
+- **Granular Recommendations:** Harness AI helps you discover and apply the right labels, filters, and dimensions—removing the guesswork from manual configuration.
+- **Pre-Built Suggestions:** Get recommended cost perspectives tailored to your use case (e.g., top spenders by service, multi-cloud breakdowns, or business unit costs).
+- **Faster Cost Visibility:** Once your perspective is generated, you can immediately set up reports, budgets, and alerts—turning insights into action.
+
+#### Why It Matters
+Managing cloud spend can be complex, especially in multi-cloud environments. Harness AI makes it simple by:
+- Eliminating manual work in setting up perspectives
+- Providing actionable cost insights instantly
+- Helping you track your top spenders each month with an intelligent breakdown by service, account, or business unit
+
+With this release, Harness CCM is now more powerful than ever—bringing automation, intelligence, and simplicity to your cloud cost management journey.
+
+👉 Try creating your first AI-powered Perspective today: [Log in to your Harness account ](https://app.harness.io/auth/)
+
+**Note: This is behind a Feature Flag. Kindly contact Harness Support to enable it.**
+
+### Feature Improvements
+
+- Revamp Perspective Rule Builder UX: We’ve revamped the UX for the Perspective Rule builder. The time range selection in Perspective creation is now on the right side near the chart, and the Rule Name and Folder fields are moved into a separate modal. This updated rule builder is also used in Cost Categories. [CCM-24935]
+
+### Bug Fixes 
+
+- We have fixed an issue where users with read-only access to enterprise-level perspective folders were incorrectly able to edit and move perspectives into product-specific folders if those destination folders allowed editing. With this fix, Read-only users can no longer move perspectives out of enterprise folders and correct permission handling is enforced. [CCM-24670]
+
+- **Container Cost Display Enhancement**: Previously, when a container's `lastDayCost` was unavailable, recommendations displayed 'NaN' (Not a Number) values in the UI. We've implemented fallback logic that automatically retrieves the `lastDayCost`, ensuring consistent cost visibility across all recommendations. [CCM-23235]
+
 ## August 2025 - Hotfix: Dashboard Cost Totals Issue
 #### **Deployment Date:** August 17, 2025 (Prod-1)
 
