@@ -196,11 +196,11 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/faqs/db-devops-faqs/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
 
 # CDE Docs
-/docs/cloud-development-environments/ @manishas @khushisharmaharness 
-/src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness
-/release-notes/cloud-development-environments.md @manishas @khushisharmaharness
-/src/components/Roadmap/data/cdeData.ts @manishas @khushisharmaharness
-/release-notes/static/cde/ @manishas @khushisharmaharness
+/docs/cloud-development-environments/ @manishas @khushisharmaharness @Thewonderer
+/src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness @Thewonderer
+/release-notes/cloud-development-environments.md @manishas @khushisharmaharness @Thewonderer
+/src/components/Roadmap/data/cdeData.ts @manishas @khushisharmaharness @Thewonderer
+/release-notes/static/cde/ @manishas @khushisharmaharness @Thewonderer
 
 # AI SRE Docs
 /docs/ai-sre/ @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
