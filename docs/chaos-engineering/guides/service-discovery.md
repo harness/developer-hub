@@ -34,6 +34,14 @@ You can leverage all the [permissions mentioned](/docs/chaos-engineering/securit
 
 When you are onboarding, one of the steps involves discovering services. Harness CE creates the discovery agent that automatically discovers services for your application.
 
+:::note GKE Autopilot Compatibility
+For service discovery on GKE Autopilot clusters, enable the **"Use static name for configmap and secret"** option during:
+- New discovery agent creation
+- For existing discovery agents
+
+This ensures compatibility with GKE Autopilot's security restrictions. For complete GKE Autopilot setup including chaos engineering, see the [GKE Autopilot guide](/docs/chaos-engineering/guides/gke-autopilot).
+:::
+
 ## Next Steps
 
 - [Customize Discovery Agent](/docs/platform/service-discovery/#customize-discovery-agent)
