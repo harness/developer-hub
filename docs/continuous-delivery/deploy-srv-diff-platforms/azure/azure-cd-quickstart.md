@@ -32,7 +32,7 @@ Make sure you have the following set up before you begin modeling your pipeline 
   * **vCPUs, Memory, Disk Size:** 4vCPUs, 16GB memory, 100GB disk. In AKS, the **Standard DS2 v2** machine type is enough for this quickstart.
   * **Networking:** outbound HTTPS for the Harness connection to **app.harness.io**, **github.com**, and **hub.docker.com**. Allow TCP port 22 for SSH.
 
-* AKS deployments require a kubeconfig version that is >= 0.1.9.
+* AKS deployments require a kubeconfig version that is > 0.1.9.
 
 ## Create the AKS deploy stage
 
