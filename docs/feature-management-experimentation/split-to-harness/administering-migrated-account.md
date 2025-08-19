@@ -46,7 +46,7 @@ This section explains:
 * How RBAC applies to Harness users
 * How to add new users with the same privileges as your legacy Split users
 
-### Users for Harness FME
+#### Users for Harness FME
 
 When your Split account was migrated to Harness, a Harness user was created for each legacy Split user.
 
@@ -125,7 +125,7 @@ This section explains:
 * What Harness user groups were created when your legacy Split account was migrated to Harness, and what RBAC role bindings were assigned
 * How to use Harness user groups to grant new users the same privileges as your legacy Split users
 
-### User Groups for Harness FME
+#### User Groups for Harness FME
 
 When your Split account was migrated to Harness, a Harness user group was created for each legacy Split group.
 
@@ -135,15 +135,15 @@ Here’s how Harness user groups work with RBAC:
 
 User groups hold users. User groups have role bindings that apply to all the users within the user group.
 
-### Roles
+#### Roles
 
 Harness roles are sets of permissions to perform specific operations on a resource group. 
 
-### Resource Groups
+#### Resource Groups
 
 Harness resource groups define the resources (e.g. projects, pipelines, connectors, secrets, folders, users, etc.) that a user group (or user, or service account) can access.
 
-### Role Bindings
+#### Role Bindings
 
 Role bindings are roles assigned to a user, user group, or service account over a resource group.
 
@@ -161,7 +161,7 @@ The screenshot below shows a Harness user group that was created for a legacy Sp
 
 ![](./static/org-settings-user-group.png)
 
-### FME user groups
+#### FME user groups
 
 When your account was migrated to Harness, the migration script created new Harness FME user groups and assigned role bindings to replicate your legacy Split settings.
 
@@ -392,7 +392,7 @@ Harness recommends that you do not delete the All FME Admins, All FME Editors, a
 
 ## Admin API Keys
 
-### Legacy Split Admin API keys
+#### Legacy Split Admin API keys
 
 The Admin API Keys that you created before migration will continue to work after your account is migrated to Harness.
 
@@ -417,7 +417,7 @@ To revoke an Admin API key that was migrated from legacy Split:
 
 Post-migration, you can create new Admin API keys in Harness, as described in the following section.
 
-### Harness FME Admin API keys
+#### Harness FME Admin API keys
 
 This section explains:
 
@@ -460,9 +460,9 @@ To view service accounts in your Harness project settings, click **Project setti
 
 ![](./static/project-settings-service.png)
 
-You can use a service account to create a new Harness FME Admin API key and access token. The access token can be used in the same way as a legacy Split Admin API key except that service accounts with environment-scoped Admin API keys will not be available until the “Granular permissions in RBAC” [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered).
-
 ### Create an Admin API key
+
+You can use a service account to create a new Harness FME Admin API key and access token. The access token can be used in the same way as a legacy Split Admin API key (except that service accounts with environment-scoped Admin API keys will not be available until the “Granular permissions in RBAC” [roadmap item](https://developer.harness.io/roadmap/#fme) is delivered).
 
 <Tabs>
 <TabItem value="interactive" label="Interactive Guide">
@@ -489,7 +489,9 @@ To create an Admin API key with the same permissions as your legacy Split Admin 
 </TabItem>
 </Tabs>
 
+:::tip[To create an Admin API key when you don't have a service account:]
 If you don’t have a service account with role bindings set up, you can create a service account and role binding for Admin API keys scoped to all projects [(account or organization scope)](#account-or-organization-scope) or scoped to a specific project [(project scope)](#project-scope).
+:::
 
 #### Account or organization scope
 
@@ -608,7 +610,7 @@ If you prefer, you can instead create the service account at the Harness organiz
 If created at the project level, the API key would not be sharable (by inheriting) across multiple projects. You would only be able to use it in the project where it was created.
 :::
 
-### Environment Scope
+#### Environment Scope
 
 :::warning
 Creating a new Admin API key scoped to specific FME environments in the Harness FME module is not yet possible using Harness RBAC.
@@ -717,6 +719,22 @@ Until you grant access to your project using **Access Control** in your **Projec
 
 To grant access to your project, you can choose to follow the permission pattern of a legacy Split restricted project or unrestricted project. Initially, we recommend following one of these patterns. After some time, you may prefer to implement RBAC strategies aligned to your company policies and practices.
 
+<Tabs>
+<TabItem value="unrestricted" label="Unrestricted project">
+
+To implement permissions similar to the legacy Split unrestricted project:
+
+From your **Project Settings** inherit each of the [FME user groups](#fme-user-groups) and add the following project-level role bindings:
+   
+   - All FME Admins: **Split FME Administrator Role** - **All Project Level Resources**
+   - All FME Editors: **Split FME Manager Role** - **All Project Level Resources**
+   - All FME Viewers: **Project Viewer** - **All Project Level Resources**
+
+Role bindings added at the project level grant access to the given project.
+
+</TabItem>
+<TabItem value="restricted" label="Restricted project">
+
 To implement permissions similar to the legacy Split restricted project:
 
 1. From your **Project Settings**, add or inherit one or more of the following RBAC principals:
@@ -731,15 +749,8 @@ To implement permissions similar to the legacy Split restricted project:
    - **Split FME Manager Role** corresponds to the legacy Editor role
    - **Project Viewer** corresponds to the legacy Viewer role
 
-To implement permissions similar to the legacy Split unrestricted project:
-
-1. Inherit each of the [FME user groups](#fme-user-groups) at your project level and add the following project-level role bindings:
-   
-   - All FME Admins: **Split FME Administrator Role** - **All Project Level Resources**
-   - All FME Editors: **Split FME Manager Role** - **All Project Level Resources**
-   - All FME Viewers: **Project Viewer** - **All Project Level Resources**
-
-Role bindings added at the project level grant access to the specific project.
+</TabItem>
+</Tabs>
 
 ### Add an Admin API key (service account) to the project
 
@@ -897,17 +908,17 @@ To view SDK API keys for a project:
 
 ## Troubleshooting
 
-### My SDK feature flag evaluations work, but my FME project is not visible in Harness
+#### My SDK feature flag evaluations work, but my FME project is not visible in Harness
 
 Check with your Harness admin to be sure that the FME project does not exist in Harness. It could be that an admin somehow removed your view privileges.
 
 If your Harness admin does not see your FME project on the Projects page in FME Settings, then the project may have been deleted in Harness without first deleting all FME project resources. You can take the steps in the next section (below).
 
-### What can I do if I deleted a project without first deleting all FME project resources?
+#### What can I do if I deleted a project without first deleting all FME project resources?
 
 Contact support@split.io and provide us with the workspace ID of your orphaned FME project and the name of the deleted project in Harness. We will advise you on your next steps.
 
-### My legacy Split Admin API key stopped working
+#### My legacy Split Admin API key stopped working
 
 Check if the corresponding service account exists in Harness:
 
@@ -920,7 +931,7 @@ If you found the corresponding service account, you can investigate that its rol
 
 If you did not find the corresponding service account, you can take the steps in the next section (below).
 
-### What can I do if I mistakenly deleted a service account that was linked with my legacy Split Admin API key?
+#### What can I do if I mistakenly deleted a service account that was linked with my legacy Split Admin API key?
 
 Your legacy Split Admin API key will no longer authenticate your API requests.
 
