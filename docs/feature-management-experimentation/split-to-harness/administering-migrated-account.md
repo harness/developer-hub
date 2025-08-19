@@ -504,7 +504,7 @@ If you don’t have a service account with role bindings set up, you can create 
 
 This section provides steps to create a service account and role bindings for an Admin API key scoped to all existing projects in your Harness account or organization. You can follow these steps if you don’t have a service account created during migration or if you prefer not to use it.
 
-:::danger All Resources Including Child Scopes (resource group) is not recommended
+:::warning All Resources Including Child Scopes (resource group) is not recommended
 The steps in this section guide you to add an **Account Admin** role for **All Account Level Resources**, and then grant equivalent permissions at the organization and project levels.
 
 It is not recommended to use the **Account Admin** role for **All Resources Including Child Scopes**. This resource group includes all child resources at the organization and project levels.
@@ -635,11 +635,11 @@ While it is currently not possible post-migration to create Admin API keys scope
 
 Currently, for FME resources, resource groups in Harness define RBAC access to *all* entities of a given type. This means that access to specific environments within a project cannot be configured; only access to *all* environments within a project can be granted or revoked.
 
-:::info
-New API keys created in Harness cannot be scoped to specific FME environments of a project, even if you add the API key to a Harness service account linked to an environment-scoped legacy Split Admin API key.
-:::
+Note that new API keys created in Harness cannot be scoped to specific FME environments of a project, even if you add the API key to a Harness service account linked to an environment-scoped legacy Split Admin API key.
 
+:::info
 Your legacy Split Admin API key (created pre-migration) scoped to specific environments will continue to work that way. The legacy API key will be authorized by the back-end servers, as before migration.
+:::
 
 ### Delete an Admin API key
 
