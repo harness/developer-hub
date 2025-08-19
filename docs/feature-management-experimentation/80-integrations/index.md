@@ -50,8 +50,6 @@ import { Section, supportedWorkflows, supportedDatasources, supportedAdminchange
   description="In addition to native integrations, the Split community has contributed a wide variety of integrations, enabling you to bring feature flag data into additional tools not natively supported, from monitoring dashboards to analytics platforms." 
 />
 
-<br />
-
 :::info
 Already built out your own integration or want to request an integration? Contact [Harness Support](/docs/feature-management-experimentation/fme-support). We’d like to feature your work to the entire Split developer community.
 :::
