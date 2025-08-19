@@ -3,7 +3,11 @@ title: Overview
 sidebar_position: 1
 ---
 
-This topic introduces **Actions** and demonstrates how you can use them to perform specific operations during your chaos experiments.
+:::info Feature Availability
+This feature is available under the `CHAOS_NG_EXPERIENCE` feature flag. For new onboardings, this feature is enabled by default. 
+
+If you are an existing Harness Chaos customer and would like to access this feature, please contact your Harness support representative to have it enabled for your account.
+:::
 
 ## What are Actions?
 

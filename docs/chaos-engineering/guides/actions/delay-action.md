@@ -3,7 +3,11 @@ title: Delay Action
 sidebar_position: 2
 ---
 
-This topic describes the **Delay Action** and demonstrates how to use it to introduce time delays in your chaos experiments.
+:::info Feature Availability
+This feature is available under the `CHAOS_NG_EXPERIENCE` feature flag. For new onboardings, this feature is enabled by default. 
+
+If you are an existing Harness Chaos customer and would like to access this feature, please contact your Harness support representative to have it enabled for your account.
+:::
 
 ## What is a Delay Action?
 

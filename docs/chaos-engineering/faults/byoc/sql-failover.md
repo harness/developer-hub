@@ -5,7 +5,7 @@ title: Cross-Project Cloud SQL Failover Using BYOC Injector
 
 ## Overview
 
-This topic provides how to implement a cross-project failover for Google Cloud SQL instances using a Bring Your Own Chaos (BYOC) injector. The [BYOC injector](/docs/chaos-engineering/faults/custom-faults/byoc/) facilitates the simulation of failover scenarios to test the resilience and high availability of Cloud SQL instances across different projects.
+This topic provides how to implement a cross-project failover for Google Cloud SQL instances using a Bring Your Own Chaos (BYOC) injector. The [BYOC injector](/docs/chaos-engineering/faults/byoc/) facilitates the simulation of failover scenarios to test the resilience and high availability of Cloud SQL instances across different projects.
 
 ---
 

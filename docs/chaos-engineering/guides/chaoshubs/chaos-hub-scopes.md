@@ -8,6 +8,12 @@ title: Chaos Hub Scopes
 
 Harness Chaos supports Chaos Hubs at different organizational scopes, allowing you to manage and share chaos experiments and faults at various levels within your organization. This hierarchical approach provides flexibility in organizing and controlling access to your chaos engineering resources.
 
+:::info Feature Availability
+This feature is available under the `CHAOS_NG_EXPERIENCE` feature flag. For new onboardings, this feature is enabled by default. 
+
+If you are an existing Harness Chaos customer and would like to access this feature, please contact your Harness support representative to have it enabled for your account.
+:::
+
 ### Different available Scopes
 
 Chaos Hubs can be configured at three different scopes:
@@ -114,7 +120,7 @@ Chaos Hub access is controlled through Harness RBAC (Role-Based Access Control):
 
 - [Add a Chaos Hub](./add-chaos-hub) - Learn how to connect a new Chaos Hub
 - [Manage Chaos Hub](./manage-hub) - Understand how to manage existing Chaos Hubs
-- [Chaos Hub Overview](./chaoshubs) - Get an overview of Chaos Hub concepts
+- [Chaos Hub Overview](/docs/chaos-engineering/guides/chaoshubs/) - Get an overview of Chaos Hub concepts
 
 :::tip
 Start with Project-level Chaos Hubs for team-specific experiments, then gradually move to Account or Organization level as your chaos engineering practices mature and standardize.
