@@ -107,7 +107,7 @@ Follow the instructions below to ingest the SBOM for non-container images:
 
 :::note
 
-Attestation of ingested SBOM for non-container artifacts is currently not supported.
+SBOM ingestion for non-container artifacts does not currently support attestation, and the SBOM policy enforcement step.
 
 :::
 
