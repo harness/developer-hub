@@ -75,6 +75,10 @@ Corresponds to the Client APIs that is generating impressions and tracking event
  * get-all-treatments-with-config
  * track
 
+#### Attributes
+The evaluator runs on the JavaScript SDK, so it supports all [attributes](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk/#attribute-syntax) available in the SDK.
+
+
 #### /client/get-treatment
 Evaluates a single feature flag for a single key.
 

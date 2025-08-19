@@ -61,14 +61,25 @@ To create and save a filter, do the following:
 
 1. Create a filter by doing any of the following:
     - Add a custom search term
-    - Choose to filter by **Agents**, **Sync Status**, **Health Status**, etc.
+    - Choose to filter by **Agents**, **Sync Status**, **Health Status**, **Labels** etc.
     - Add an additional filter field by clicking the **+Add Filter** button.
 2. Click **Save**
 3. Enter a name for the filter, and choose if you want it visible to **Only me** or **Everyone** in the scope. 
 
-Then you're done!
+You can then load the filter any time by clicking the filter icon to the right of **Reset** and searching for your saved filter.
 
-You can then load the filter each subsequent time by clicking the filter icon to the right of **Reset** and searching for your filter there. 
+#### Filter by Application Labels
+
+You can filter applications by their **labels**.
+
+- **Exact match (Key:Value)**
+  - If you want to match specific applications, you can do an exact match using **Key:value** in the labels.
+  - You can add labels to an application in the **App Details** page.
+
+- **Partial match (Key or Value)**
+  - Search using a **key** or **value**.
+  - Partial matches are supported. For example, if a label key is `team` or a value is `payment-service`, searching for `tea` or `pay`   will return that application.
+  - The search also considers the **Service name** and **Environment name** associated with the GitOps application as labels, and will match them in partial searches.
 
 ## Application Management Dashboard
 

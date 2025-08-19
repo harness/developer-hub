@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-08-11T18:00
+date: 2025-08-18T18:00
 sidebar_position: 6
 ---
 
@@ -20,6 +20,34 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 :::
 
+## August 2025 - Version 1.60.1
+#### **Deployment Date:** August 18, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **Revamp Perspective Rule Builder UX:** We’ve revamped the UX for the Perspective Rule builder. The time range selection in Perspective creation is now on the right side near the chart, and the Rule Name and Folder fields are moved into a separate modal. This updated rule builder is also used in Cost Categories. [CCM-24935]
+
+<DocImage path={require('./static/release-new.png')} width="100%" height="100%" title="Click to view full size image" />
+
+### Bug Fixes 
+
+- **Permission Handling Improvement:** We have fixed an issue with folder permission enforcement. Previously, users with read-only access could sometimes edit and move perspectives from one folder to other provided the destination folder allows create/edit permissions. This update ensures proper permission validation across all folders. [CCM-24670]
+
+- **Container Cost Display Enhancement:** Previously, when a container's `lastDayCost` was unavailable, recommendations displayed 'NaN' (Not a Number) values in the UI. We've implemented fallback logic that automatically retrieves the `lastDayCost`, ensuring consistent cost visibility across all recommendations. [CCM-23235]
+
+## August 2025 - Hotfix: Dashboard Cost Totals Issue
+#### **Deployment Date:** August 17, 2025 (Prod-1)
+
+**What Was Fixed**
+- We addressed an issue where cost totals in Dashboard reports did not always align with the detailed breakdowns. When viewing cluster costs by specific categories (such as namespace ), the “Total” row could sometimes differ from the sum of the detailed rows. This occurred because filters were applied differently to totals versus detailed costs.
+
+**What has changed now?**
+
+- The “Total” row now always matches the sum of the detailed rows.
+- Reports remain reliable across all views whether filtered by namespace, labels, or other categories.
+
+**Note**: This was due to a display issue. The actual cloud costs and allocations did not get affected.
+
 ## August 2025 - Version 1.59.1
 #### **Deployment Date:** August 11, 2025 (Prod-1)
 
@@ -37,6 +65,8 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 <DocImage path={require('./static/forecast.png')} width="100%" height="100%" title="Click to view full size image" />
 
 - **New Feature Flag**: Introduced a new feature flag which, when enabled for specific accounts, will exclusively bypass any cost calculations using public pricing sources. To enable the feature flag, please contact Harness Support. [CCM-22370]
+
+- **Enhanced Node Pool Recommendations Display**: We've improved the Node Pool Recommendations listing page to show cloud account identifiers, providing better context for multi-account environments. For AWS, you'll see the Account ID; for GCP, the Project ID; and for Azure, the Subscription ID. This enhancement helps you quickly identify which cloud account each recommendation belongs to. [CCM-24291]
 
 ### Bug Fixes
 

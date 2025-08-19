@@ -103,6 +103,26 @@ You can perform Base64 decoding on the payload data to view your SBOM or SLSA Pr
 
 For verification, the signed attestation is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the attestation was signed using the private key.
 
+
+## Artifact Signing and Verification
+
+The artifact signing process involves a container image or digest, or a non-container image, along with a private key from a key pair and a password. SCS uses Cosign to perform the signing and securely verify it. Once the signature is successfully generated, The signed artifact is then pushed to the container registry, where the digest of the image is set as the file name with a `.sig` extension.
+
+For verification, the signed artifact is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the artifact was signed using the private key.
+
+## Attestation vs Signing
+
+- Attestation provides cryptographic proof of an artifact’s origin based on how and where it was created. It captures metadata about the build environment and verifies the artifact’s integrity before it is signed. Attestation serves as a trusted statement regarding the artifact’s provenance and the conditions under which it was produced.
+
+- Signing involves applying a cryptographic signature to the artifact to ensure that the artifact has not been altered or tampered with after it was created or attested.
+
+## Rekor
+
+Rekor log provides a public, immutable, and verifiable transparency log for software artifacts when they are signed or attested. This enables anyone to independently verify the integrity and authenticity of the artifacts without relying on a central authority, simply by checking the log entry.
+
+- Each Rekor log entry contains key metadata which is useful for audits.
+- Rekor log entries are publicly recorded, ensuring that signing and attestation actions cannot be denied, and any tampering with the artifact, its attestation, or its signature is immediately detectable through a changed hash.
+
 ## Harness Platform components
 
 The Harness SCS module integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness' key concepts](/docs/platform/get-started/key-concepts.md).

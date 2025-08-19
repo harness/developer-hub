@@ -4,7 +4,7 @@ description: Reference for the Helm Canary Delete step
 sidebar_position: 40
 ---
 
-This topic describes the configuration and settings for the Helm Canary Delete step.
+The Helm canary delete step only requires a name and a timeout in terms of configuration. This step will delete any resources created by the Helm canary deployment step automatically, you just have to add it to your pipeline!
 
 :::note
 

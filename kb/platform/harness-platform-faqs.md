@@ -2989,7 +2989,7 @@ We don't change IPs without 30 days notice to customers. If a security emergency
 
 Authorization is used for group mapping. It's optional and not required for SSO login to work.
 
-### Doe Harness support TLS 1.3?
+### Does Harness support TLS 1.3?
 
 Both the Harness Delegate & SaaS support TLS 1.3, the default TLS version. It is worth noting that each specific task implementation can create its own separate HTTP client, which can advertise any TLS version of its choice. The connector check uses the task-specific HTTP client rather than the delegate's HTTP client. Some tasks prefer to use TLSv1.2 in certain use cases, perhaps due to legacy reasons. However, it is possible that this might change in the future, and full TLS 1.3 support might eventually be rolled out. As of now, certain connectors still prefer TLS 1.2.
 

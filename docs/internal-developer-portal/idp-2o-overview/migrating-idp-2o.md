@@ -123,7 +123,8 @@ Once the feature flag is enabled, your account will undergo the following change
 
 - All entities will migrate to the **Account level** as **inline entities**.
 - Like workflows, existing `catalog-info.yaml` files will no longer be linked. These can be retained for reference or discarded.
-- Once the **Git Experience** is released, you’ll be able to commit these entities to a Git repository as YAML files.
+- Once the **Git Experience** is released, you'll be able to commit these entities to a Git repository as YAML files.
+- **Source code repository links** will be migrated from the legacy `backstage.io/source-location` annotation to the new Harness-native `sourceCode` field in the entity spec. IDP 2.0 will automatically generate the legacy annotation for backward compatibility with plugins.
 
 **Action Items:**
 
@@ -299,6 +300,7 @@ Upgrading to IDP 2.0 gives you access to powerful new capabilities, including:
 - **Harness-native Platform Hierarchy**
 - **Granular, platform-level RBAC**
 - **Bi-directional Git sync for entity YAML files**
+- **Enhanced source code repository linking**
 - **Simplified automation without manual YAML management**
 - **Redesigned Catalog & Workflow UI**
 - _...and many more exciting features!_

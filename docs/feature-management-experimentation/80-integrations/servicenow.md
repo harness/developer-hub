@@ -1,7 +1,7 @@
 ---
 title: ServiceNow
 sidebar_label: ServiceNow
-description: ""
+description: "Learn about the ServiceNow integration with Harness FME."
 ---
 
 The ServiceNow integration enables enterprise organizations to improve operational efficiencies by streamlining and automating change management processes. Specifically, it allows you to manage projects, teams and customer interactions by customizing approvals, which helps reduce errors and ensure compliance without slowing your release process. With this integration:
