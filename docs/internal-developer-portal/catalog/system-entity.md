@@ -43,8 +43,8 @@ Use Systems to:
 In Harness IDP, a **System** represents a logical grouping of related services, APIs, and resources. Systems help improve catalog visibility, support governance across scopes, and make it easier for teams to discover and manage what they own.
 
 Systems can be created through:
-- The **Harness UI/YAML** view
-- The **Create Entity API** by mentioning the `kind: System`
+- The **[Harness UI](/docs/internal-developer-portal/catalog/manage-catalog#harness-idp-ui)** or **[YAML](/docs/internal-developer-portal/catalog/manage-catalog#catalog-yaml)** view
+- The **[Create Entity API](https://apidocs.harness.io/tag/Entities#operation/create-entity)** by mentioning the `kind: System`
 
 They can exist at **Project**, **Organization**, or **Account** scope, based on how broadly you want to apply grouping logic.
 
@@ -105,7 +105,7 @@ We can edit the **System Layout** under `Admin → Layout → Catalog Entities �
 
 
 
-The configuration is defined in YAML, for example:
+#### The configuration is defined in YAML, for example:
 
 ```yaml
 page:
@@ -123,6 +123,7 @@ page:
               variant: gridItem
             gridProps:
               md: 6
+              // highlight-start
         - component: EntityCatalogGraphCard
           specs:
             props:
@@ -131,11 +132,11 @@ page:
             gridProps:
               md: 6
               xs: 12
+        // highlight-end
         - component: EntityScoreCard
           specs:
             gridProps:
               md: 6
-        // highlight-start
         - component: EntityLinksCard
           specs:
             props:
@@ -144,7 +145,6 @@ page:
             gridProps:
               md: 6
               xs: 12
-        // highlight-end
         - component: CatalogTable
           specs:
             props:
