@@ -25,14 +25,16 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 #### New features and enhancements
 
-- Added support to ingest SBOM for non-container artifacts.
-- Added support for the secure connect for all the SSCA plugins ([ZD-87724](https://harnesssupport.zendesk.com/agent/tickets/87724)).
+- Added support for [Ingestion of SBOM for non-container artifacts](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images).
+- Added support for secure connect for all the SCS plugins ([ZD-87724](https://harnesssupport.zendesk.com/agent/tickets/87724)).
+- SBOM score for an artifact can now be downloaded via API.
 
 #### Fixed Issues
 
-- Artifact signing step was not working in the air-gap mode, now we have added the support for the rekor in air-gap mode.
-- SBOM orchestration for the code repo via syft used to show the source type as `file` not it is `application`.
-- SBOM Orchestration step was failing because of large SBOM size which was consuming the CPU usage. We did a workaround to fix the issue.
+- Artifact signing step was not working in air-gap mode. Support for Rekor in `air-gapped` mode has been added.
+- SBOM orchestration for the code repos via syft used to show the source type as `file` not it is updated to `application`.
+
+
 
 ## July 2025
 
