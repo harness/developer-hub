@@ -11,7 +11,7 @@ This topic introduces **Timeline View** and demonstrates how you can use it to v
 - [Create Chaos Experiment](/docs/chaos-engineering/guides/chaos-experiments/create-experiments)
 
 :::info note
-This feature is currently behind the feature flag `NG_EXPERIENCE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+This feature is currently behind the feature flag `CHAOS_NG_EXPERIENCE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 ## What is Timeline View?
