@@ -4,8 +4,7 @@ description: Connect Harness GitOps (Argo CD) to Azure Kubernetes Service (AKS) 
 sidebar_position: 2
 ---
 
-In this guide, you’ll set up Harness GitOps (powered by Argo CD) to connect securely to an Azure Kubernetes Service (AKS) cluster without storing kubeconfigs or static credentials.
-
+In this guide, you'll set up Harness GitOps (powered by Argo CD) to connect securely to an Azure Kubernetes Service (AKS) cluster without storing kubeconfigs or static credentials.
 
 ## What is Azure WIF?
 
@@ -19,242 +18,384 @@ With WIF:
 
 **Learn more:** [Azure Workload Identity Federation documentation](https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview)
 
-## Let's Now Set Up the GitOps Cluster with Azure WIF
+## Prerequisites
 
-The following steps will guide you through configuring Azure Kubernetes Service (AKS) and Harness GitOps (Argo CD) to use Azure Workload Identity Federation.  
+Before setting up Azure WIF with GitOps, ensure you have:
 
-**By the end, you will:**
-- Create or use an existing AKS cluster
-- Enable OIDC + WIF on the cluster
-- Create an Azure AD application and federated credential
-- Grant RBAC permissions to the Azure app
-- Set up an annotated ServiceAccount for GitOps
-- Deploy the Harness GitOps Agent and connect the cluster
+- **Azure subscription** with appropriate permissions to:
+  - Create and manage Azure AD applications
+  - Create and manage Managed Identities
+  - Assign RBAC roles
+  - Manage AKS clusters
+- **AKS cluster** with specific authentication and authorization configuration
+- **Harness GitOps module** enabled in your account
 
+:::important Authentication and Authorization Requirements
+Your AKS cluster **must** be configured with one of these specific authentication and authorization combinations:
+- **Microsoft Entra ID authentication with Azure RBAC**, OR  
+- **Microsoft Entra ID authentication with Kubernetes RBAC**
 
-**Prerequisites:**
-- Azure CLI and kubectl installed
-- Azure subscription access (able to create AKS and assign RBAC)
-- Harness GitOps module enabled (you’ll install a GitOps Agent)
+Other authentication methods may cause connection failures.
+:::
 
-**Variables:**
+## Overview of the Setup Process
+
+The Azure WIF setup involves these key steps:
+
+1. **Configure AKS Security** - Set up proper authentication and authorization
+2. **Enable OIDC and Workload Identity** - Enable your AKS cluster to issue trusted tokens
+3. **Create Managed Identity** - Create an Azure managed identity for your GitOps agent
+4. **Download and Modify GitOps Agent YAML** - Download the agent YAML and add workload identity annotations
+5. **Configure Federated Credentials** - Link your Kubernetes ServiceAccount to the managed identity
+6. **Deploy GitOps Agent** - Install the modified agent
+7. **Create Cluster Secret** - Configure the cluster connection with workload identity authentication
+8. **Verify Setup** - Ensure the cluster appears healthy in Harness UI
+
+## Step 1: Configure AKS Security Settings
+
+Ensure your AKS cluster is configured with the correct authentication and authorization method.
+
+### Required Security Configuration
+
+Your cluster must use one of these configurations:
+
+**Option 1: Microsoft Entra ID authentication with Azure RBAC**
 ```bash
-RG="gitops-rg"
-LOC="eastus"                      # any supported region
-AKS="gitops-aks"
-APP_NAME="argo-cd-app"           # Azure AD application display name
-SA_NS="argocd"                   # namespace for GitOps Agent / Argo CD
-SA_NAME="argocd-manager"         # ServiceAccount used for WIF
+az aks update -g "$RESOURCE_GROUP" -n "$CLUSTER_NAME" \
+  --enable-aad \
+  --enable-azure-rbac
 ```
 
-### 1. Create or select your AKS cluster
-Create or Select an AKS Cluster
-If you don’t already have an AKS cluster, you’ll create one.
-If you already have one, you’ll just fetch its kubeconfig so you can interact with it.
-
-**Key points:**
-- The resource group (RG) groups your AKS resources in Azure.
-- The VM size and node count determine performance and cost — here we use a small example node pool.
-
+**Option 2: Microsoft Entra ID authentication with Kubernetes RBAC**
 ```bash
-az group create -n "$RG" -l "$LOC"
-
-az aks create \
-  -g "$RG" -n "$AKS" \
-  --node-count 1 \
-  --node-vm-size Standard_D4s_v6 \
-  --enable-managed-identity \
-  --generate-ssh-keys
-
-az aks get-credentials -g "$RG" -n "$AKS" --overwrite-existing
-kubectl get nodes
+az aks update -g "$RESOURCE_GROUP" -n "$CLUSTER_NAME" \
+  --enable-aad
 ```
 
-If you already have AKS, just fetch credentials:
+#### Using Azure Portal
+
+1. Navigate to the [Azure Portal](https://portal.azure.com)
+2. Go to **Kubernetes services** and select your AKS cluster
+3. In the left menu, click **Authentication and authorization**
+4. Under **Authentication method**, select **Microsoft Entra ID**
+5. Under **Authorization**, choose either:
+   - **Azure RBAC** (recommended for most scenarios)
+   - **Kubernetes RBAC** (if you prefer Kubernetes-native RBAC)
+6. Click **Save** to apply the changes
+
+## Step 2: Enable OIDC Provider and Workload Identity
+
+Enable the OIDC issuer and Workload Identity on your AKS cluster:
+
+#### Using Azure CLI
 
 ```bash
-az aks get-credentials -g "$RG" -n "$AKS" --overwrite-existing
-```
-
-### 2. Enable OIDC Issuer and Workload Identity
-Workload Identity requires your AKS cluster to have:
-- An OIDC issuer — a trusted identity provider URL that Azure uses to validate Kubernetes-issued tokens
-- Workload Identity enabled — the mechanism that links Kubernetes ServiceAccounts to Azure AD applications.
-
-This step ensures your cluster can issue tokens Azure will trust.
-
-```bash
-az aks update -g "$RG" -n "$AKS" \
+az aks update -g "$RESOURCE_GROUP" -n "$CLUSTER_NAME" \
   --enable-oidc-issuer \
   --enable-workload-identity
-
-OIDC_ISSUER_URL=$(az aks show -g "$RG" -n "$AKS" --query "oidcIssuerProfile.issuerUrl" -o tsv)
-echo "OIDC_ISSUER_URL=$OIDC_ISSUER_URL"
 ```
 
-### 3. Create an Azure AD Application and Service Principal
-The Azure AD application represents your cluster’s identity in Azure AD.
-The service principal is the **login** that AKS uses to act as that application.
+#### Using Azure Portal
 
-This identity will be linked to your Kubernetes ServiceAccount in later steps.
+1. In your AKS cluster page, go to **Settings** → **Security**
+2. Under **Workload Identity**, toggle **Enable workload identity** to **Enabled**
+3. Under **OIDC Issuer**, toggle **Enable OIDC issuer** to **Enabled**
+4. Click **Save** to apply the changes
+5. After saving, note down the **OIDC Issuer URL** displayed - you'll need this for federated credentials
+
+### Retrieve the OIDC Issuer URL
+
+Get the OIDC issuer URL, which you'll need for configuring federated credentials:
+
+#### Using Azure CLI
 
 ```bash
-AZURE_CLIENT_ID=$(az ad app create --display-name "$APP_NAME" --query appId -o tsv)
-echo "AZURE_CLIENT_ID=$AZURE_CLIENT_ID"
-
-# idempotent: create SP if missing
-az ad sp show --id "$AZURE_CLIENT_ID" >/dev/null 2>&1 || az ad sp create --id "$AZURE_CLIENT_ID"
+OIDC_ISSUER_URL=$(az aks show -g "$RESOURCE_GROUP" -n "$CLUSTER_NAME" --query "oidcIssuerProfile.issuerUrl" -o tsv)
+echo "OIDC Issuer URL: $OIDC_ISSUER_URL"
 ```
 
-(If reusing an app, set AZURE_CLIENT_ID=`<existing-app-id>` and skip the az ad app create.)
+#### Using Azure Portal
 
-### 4. Add a Federated Credential (WIF)
-A federated credential tells Azure:
-> **Tokens from this specific Kubernetes ServiceAccount in this cluster are trusted to act as this Azure AD application.**
+1. In your AKS cluster page, go to **Settings** → **Security**
+2. Under **OIDC Issuer**, copy the **Issuer URL** value
+3. Save this URL - you'll need it when configuring federated credentials
 
+## Step 3: Create Managed Identity
 
-This creates the trust link between:
-- **Your AKS OIDC issuer**
-- **Your Kubernetes ServiceAccount**
-- **Your Azure AD application**
-
-You will define:
-- **Issuer** — The AKS OIDC URL from Step&nbsp;2. Azure uses this to validate tokens from your cluster.
-- **Subject** — The Kubernetes ServiceAccount identity in `system:serviceaccount:<namespace>:<serviceaccount>` format. Must match the namespace and ServiceAccount you created.
-- **Audience** — For Azure WIF, keep `api://AzureADTokenExchange`. This defines who the token is intended for.
-- **azure.workload.identity/client-id** — The annotation you’ll add to your ServiceAccount later, pointing to the Azure AD application’s Client ID.
-
+Create an Azure managed identity that will be used by your GitOps agent:
 
 ```bash
-SUBJECT="system:serviceaccount:${SA_NS}:${SA_NAME}"
-
-# delete any previous cred named 'argo-cd' (safe if none exists)
-az ad app federated-credential delete \
-  --id "$AZURE_CLIENT_ID" \
-  --federated-credential-id "argo-cd" 2>/dev/null || true
-
-# create federated credential
-az ad app federated-credential create \
-  --id "$AZURE_CLIENT_ID" \
-  --parameters "{
-    \"name\": \"argo-cd\",
-    \"issuer\": \"${OIDC_ISSUER_URL}\",
-    \"subject\": \"${SUBJECT}\",
-    \"description\": \"WIF for ArgoCD ServiceAccount\",
-    \"audiences\": [\"api://AzureADTokenExchange\"]
-  }"
-
-# verify
-az ad app federated-credential list --id "$AZURE_CLIENT_ID" -o table
+IDENTITY_NAME="gitops-managed-identity"
+az identity create --name "$IDENTITY_NAME" --resource-group "$RESOURCE_GROUP"
 ```
 
-### 5. Grant RBAC Permissions on AKS
-Now that your Azure app can authenticate, you must give it permission to perform operations in the cluster.
+#### Using Azure Portal
 
-We start with the `Azure Kubernetes Service RBAC Cluster Admin role` for simplicity. You can scope this down later.
+1. In the Azure Portal, search for **Managed Identities** and select it
+2. Click **+ Create** to create a new managed identity
+3. Fill in the details:
+   - **Subscription**: Select your subscription
+   - **Resource group**: Select your resource group
+   - **Region**: Select the same region as your AKS cluster
+   - **Name**: Enter `gitops-managed-identity` (or your preferred name)
+4. Click **Review + create**, then **Create**
+5. Once created, click **Go to resource**
+
+### Get Client ID and Tenant ID
+
+Retrieve the client ID and tenant ID that you'll need for the service account annotations:
 
 ```bash
-AKS_SCOPE=$(az aks show -g "$RG" -n "$AKS" --query id -o tsv)
+# Get Client ID from the managed identity
+CLIENT_ID=$(az identity show --name "$IDENTITY_NAME" --resource-group "$RESOURCE_GROUP" --query clientId -o tsv)
+echo "Client ID: $CLIENT_ID"
 
-az role assignment create \
-  --assignee "$AZURE_CLIENT_ID" \
-  --role "Azure Kubernetes Service RBAC Cluster Admin" \
-  --scope "$AKS_SCOPE"
+# Get Tenant ID from your Azure subscription
+TENANT_ID=$(az account show --query tenantId -o tsv)
+echo "Tenant ID: $TENANT_ID"
 ```
 
-You can scope this down later.
+**Reference Documentation:**
+- [Get Client ID from Managed Identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity)
+- [Get Tenant ID](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id)
 
-### 6. Create the Namespace, ServiceAccount, and RBAC
+#### Getting Client ID and Tenant ID via Portal
 
-The Kubernetes ServiceAccount:
-- Lives in the namespace you’ll run GitOps in (e.g., argocd)
-- Is annotated with the Azure AD application’s Client ID
-- Is bound to the necessary Kubernetes RBAC roles
-This is the link between Kubernetes and Azure AD.
+**To get Client ID:**
+1. In your managed identity page, go to **Overview**
+2. Copy the **Client ID** value
+3. Save this value - you'll need it for service account annotations
 
-```bash
-kubectl create namespace "$SA_NS" 2>/dev/null || true
+**To get Tenant ID:**
+1. In the Azure Portal, click on your profile icon (top right)
+2. Click **Switch directory** or go to **Microsoft Entra ID**
+3. In the **Overview** page, copy the **Tenant ID** value
+4. Alternatively, you can find it in your subscription details
 
-cat <<EOF | kubectl apply -f -
+## Step 4: Download and Modify GitOps Agent YAML
+
+Before you can configure workload identity authentication, you need to download the GitOps agent YAML from Harness and make specific modifications to it.
+
+### Download GitOps Agent YAML from Harness
+
+First, let's get the agent YAML file from your Harness account:
+
+1. **Log in to your Harness account** and navigate to the GitOps module
+2. Go to **GitOps** → **Settings** → **GitOps Agents**
+3. Click **+ New GitOps Agent**
+4. Fill in the agent details:
+   - **Name**: Enter a descriptive name for your agent (e.g., `azure-wif-agent`)
+   - **Agent Type**: Select **Argo CD**
+   - **Namespace**: Enter `argocd` (this must match the namespace in your federated credentials)
+5. Click **Continue** or **Next**
+6. **Download the agent YAML file** - this will be a file named something like `gitops-agent.yaml`
+7. **Save the file locally** - you'll need to edit it before applying to your cluster
+
+:::important
+Do NOT apply the agent YAML to your cluster yet. You must first modify it with the workload identity annotations as described in the next steps.
+:::
+
+### Modify the Application Controller Service Account
+
+Now that you have the agent YAML file, you need to modify it to include workload identity annotations.
+
+**Step 1: Open the downloaded YAML file** in your preferred text editor.
+
+**Step 2: Find the Application Controller Service Account section.** Look for this section in the file:
+
+```yaml
+# Source: gitops-helm/charts/argo-cd/templates/argocd-application-controller/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
+automountServiceAccountToken: true
 metadata:
-  name: ${SA_NAME}
-  namespace: ${SA_NS}
   annotations:
-    azure.workload.identity/client-id: "${AZURE_CLIENT_ID}"
-EOF
-
-cat <<'EOF' | kubectl apply -f -
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: argocd-manager-binding
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: argocd-manager
+    azure.workload.identity/client-id: your-client-id
+    azure.workload.identity/tenant-id: your-tenant-id
+  name: argocd-application-controller
   namespace: argocd
-EOF
-
-# sanity: verify annotation
-kubectl -n "$SA_NS" get sa "$SA_NAME" -o yaml | grep -A2 azure.workload.identity/client-id
+  labels:
+    # ... existing labels
 ```
 
-### 7. Install the Harness GitOps Agent
+**Step 3: Add the required annotations** to the `metadata.annotations` section:
+- `azure.workload.identity/client-id`: Replace `your-client-id` with the Client ID from Step 3
+- `azure.workload.identity/tenant-id`: Replace `your-tenant-id` with the Tenant ID from Step 3
 
-The agent runs inside your cluster and manages the GitOps process.
-- Install it in the same namespace as your ServiceAccount.
-- Configure it to use your annotated ServiceAccount so it authenticates via WIF.
+### Add Workload Identity Label to Repo Server
 
-Go to [Installing a GitOps Agent](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent.md) for a tutorial on how to create a Harness GitOps Agent.
+**Step 4: Find the Repo Server Deployment section.** Look for this section in the same YAML file:
 
-Wait for the Agent to show Healthy in the Harness UI.
+```yaml
+# Source: gitops-helm/charts/argo-cd/templates/argocd-repo-server/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-repo-server
+  namespace: argocd
+  # ... other metadata
+spec:
+  template:
+    metadata:
+      annotations:
+        # ... existing annotations
+      labels:
+        azure.workload.identity/use: "true"
+        # ... existing labels
+```
 
-### 8. Register the Cluster in Harness
+**Step 5: Add the workload identity label** to the `spec.template.metadata.labels` section:
+- Add `azure.workload.identity/use: "true"`
 
-Finally, connect the cluster to Harness GitOps using the agent you just installed.
+This setting allows the repo server to use the workload identity.
 
-1. Go to GitOps → Settings → Clusters → New Cluster
-2. Add a **Name** to the cluster
-3. Select the healthy agent you previously created
-4. In Details tab, You can use the credentials created by the agent by selecting **Use the credentials of a specific Harness GitOps Agent**
-5. Click Save → status should become Connected
+### Verify Your Modifications
 
-Once connected, Harness can deploy workloads to AKS via Argo CD — all using **WIF authentication**.
+Before proceeding, double-check that you've made these changes:
+- Added `azure.workload.identity/client-id` annotation with your actual Client ID
+- Added `azure.workload.identity/tenant-id` annotation with your actual Tenant ID  
+- Added `azure.workload.identity/use: "true"` label to the repo server deployment
+- Saved the modified YAML file
 
-### Troubleshooting
-Cluster shows Not Connected
-- Ensure ServiceAccount annotation matches **AZURE_CLIENT_ID**:
-`kubectl -n "$SA_NS" get sa "$SA_NAME" -o yaml | grep -A2 azure.workload.identity/client-id`
-- Ensure federated credential matches AKS OIDC issuer + subject:
-`az ad app federated-credential list --id "$AZURE_CLIENT_ID" -o table`
-- Ensure Azure app has RBAC at correct scope:
-`az role assignment list --assignee "$AZURE_CLIENT_ID" --scope "$AKS_SCOPE" -o table`
+:::tip
+Keep the original downloaded file as a backup in case you need to start over with the modifications.
+:::
 
-If you were just granted access, refresh Azure CLI tokens:
-`az logout && az login`
+## Step 5: Configure Federated Credentials
 
+Create federated credentials to allow the service account to use the managed identity.
 
-### Cleanup
-Delete your AKS cluster along with the resource group (to stop costs):
+### Navigate to Managed Identity
+
+1. In the Azure portal, go to **Managed Identities**
+2. Select the identity you created earlier (`gitops-managed-identity`)
+3. Go to **Settings** → **Federated credentials**
+4. Click **Add credential**
+
+### Configure Federated Credential
+
+Fill in the following details:
+
+- **Federated credential scenario**: Select "Kubernetes accessing Azure resources"
+- **Cluster issuer URL**: Use the OIDC issuer URL from Step 2
+- **Namespace**: `argocd` (the namespace where you're deploying your GitOps application)
+- **Service account**: `argocd-application-controller` (must match the service account name in your agent YAML)
+- **Name**: `harness-gitops-federated-credential` (or any descriptive name)
+
+Alternatively, use the Azure CLI:
 
 ```bash
-# remove cluster + managed RG
-az aks delete -g "$RG" -n "$AKS" --yes
-MC_RG=$(az group list --query "[?starts_with(name, 'MC_${RG}_${AKS}_')].name" -o tsv)
-[ -n "$MC_RG" ] && az group delete -n "$MC_RG" --yes
-
-# remove the resource group (if used just for this)
-az group delete -n "$RG" --yes
-
-# (optional) remove app + SP + federated credential
-for F in $(az ad app federated-credential list --id "$AZURE_CLIENT_ID" --query "[].name" -o tsv); do
-  az ad app federated-credential delete --id "$AZURE_CLIENT_ID" --federated-credential-id "$F"
-done
-az ad sp delete --id "$AZURE_CLIENT_ID"
-az ad app delete --id "$AZURE_CLIENT_ID"
+az identity federated-credential create \
+  --name "harness-gitops-federated-credential" \
+  --identity-name "$IDENTITY_NAME" \
+  --resource-group "$RESOURCE_GROUP" \
+  --issuer "$OIDC_ISSUER_URL" \
+  --subject "system:serviceaccount:argocd:argocd-application-controller"
 ```
+
+## Step 6: Deploy the GitOps Agent
+
+Apply the modified GitOps agent YAML to your cluster:
+
+```bash
+kubectl apply -f gitops-agent.yaml
+```
+
+### Verify Agent Health
+
+Wait for the agent to become healthy:
+
+```bash
+kubectl get pods -n argocd
+```
+
+Check that all pods are running and the agent shows as **Healthy** in the Harness UI.
+
+## Step 7: Create Cluster Secret
+
+Create a Kubernetes secret that defines how to connect to your cluster using workload identity authentication.
+
+### Prepare Cluster Information
+
+Get your cluster's API server endpoint and CA certificate:
+
+```bash
+# Get cluster endpoint
+CLUSTER_ENDPOINT=$(az aks show -g "$RESOURCE_GROUP" -n "$CLUSTER_NAME" --query fqdn -o tsv)
+echo "Cluster endpoint: https://$CLUSTER_ENDPOINT"
+
+# Get CA certificate (base64 encoded)
+CA_CERT=$(az aks get-credentials -g "$RESOURCE_GROUP" -n "$CLUSTER_NAME" --file - | grep certificate-authority-data | awk '{print $2}')
+echo "CA Certificate: $CA_CERT"
+```
+
+### Create the Secret YAML
+
+Create a secret YAML file with the following content:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gitops-cluster-secret
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+type: Opaque
+stringData:
+  name: azure-wif-cluster
+  server: https://your-cluster-endpoint
+  config: |
+    {
+      "execProviderConfig": {
+        "command": "argocd-k8s-auth",
+        "env": {
+          "AAD_ENVIRONMENT_NAME": "AzurePublicCloud",
+          "AZURE_CLIENT_ID": "your-client-id",
+          "AAD_LOGIN_METHOD": "workloadidentity"
+        },
+        "args": ["azure"],
+        "apiVersion": "client.authentication.k8s.io/v1beta1"
+      },
+      "tlsClientConfig": {
+        "insecure": false,
+        "caData": "your-base64-encoded-ca-cert"
+      }
+    }
+```
+
+Replace the following values:
+- `your-cluster-endpoint`: Your cluster's API server endpoint
+- `your-client-id`: The client ID from your managed identity
+- `your-base64-encoded-ca-cert`: The base64-encoded CA certificate
+
+### Apply the Secret
+
+```bash
+kubectl apply -f cluster-secret.yaml
+```
+
+### Verify the Secret
+
+Check that the secret was created correctly:
+
+```bash
+kubectl get secret gitops-cluster-secret -n argocd -o yaml
+```
+
+## Step 8: Verify Setup in Harness UI
+
+### Check Cluster Status
+
+1. Navigate to **GitOps** → **Settings** → **Clusters** in your Harness account
+2. You should see your cluster listed with a **Healthy** status
+3. The cluster should show as **Connected**
+
+### Troubleshoot if Not Healthy
+
+If the cluster doesn't appear healthy:
+
+1. **Verify Agent Status**: Ensure all GitOps agent pods are running
+2. **Check Service Account Annotations**: Verify the client ID and tenant ID are correct
+3. **Validate Federated Credentials**: Ensure the issuer URL and subject match your configuration
+4. **Review Secret Configuration**: Check that the cluster secret has the correct endpoint and authentication details
