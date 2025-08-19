@@ -23,7 +23,7 @@ export const FmeData: Horizon = {
       {
         tag: [{ value: "SDK" }],
         title: "Harness Forward proxy for FME",
-        description: "Centralizes traffic going outside of a customer’s cloud. Unlike the current Split Proxy, it does not require environment-specific configuration.",
+        description: "Centralize traffic going outside of a customer’s cloud. Unlike the current Split Proxy, it does not require environment-specific configuration.",
       },
       {
         tag: [{ value: "Experimentation" }],
