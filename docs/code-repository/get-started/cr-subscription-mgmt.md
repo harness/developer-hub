@@ -6,7 +6,7 @@ sidebar_position: 6
 
 Harness Code Repository (CR) is available for all customers of the Harness Continuous Integration (CI) module. Your subscription for Harness CI determines the usage limits for Code Repository. Please refer to the documentation for [Harness Continous Integration](/docs/continuous-integration/get-started/ci-subscription-mgmt) to see your current subscription. 
 
-Code Repository access is not tied to CI licenses. Storage and bandwidth limits for Code Repository are determined by your subscription tier.
+The number of users who can access Code Repository is independent of your CI subscription. Storage and bandwidth limits for Code Repository are based on your subscription tier.
 
 ### Usage limits
 
