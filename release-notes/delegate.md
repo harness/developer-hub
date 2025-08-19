@@ -101,6 +101,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## August 2025
 
+### Version 25.08.86107 <!--Aug 19, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue related to cache eviction during connection context creation with pcf deployments. [CDS-112526]
+
 ### Version 25.08.86503 <!--Aug 13, 2025-->
 
 #### Fixed issues
