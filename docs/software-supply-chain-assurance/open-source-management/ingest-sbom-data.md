@@ -13,7 +13,7 @@ A [Software Bill of Materials (SBOM)](https://cyclonedx.org/capabilities/sbom/) 
 
 Configure the SBOM Orchestration step in SCS to seamlessly ingest SBOM. In this example, we will generate an SBOM using the Trivy CLI in a CI Run step, and then ingest it using the SBOM Orchestration step.
 
-You can ingest SBOM for both [container](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#containers[]) and [non-container](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images) images.
+You can ingest SBOM for both [container](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#container-images) and [non-container](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images) images.
 
 <!-- :::info
 
