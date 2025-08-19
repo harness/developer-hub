@@ -22,7 +22,7 @@ In this topic you'll learn how to:
 Make sure you have the following set up before you begin modeling your pipeline in Harness:
 
 * **Manifests:** You can use manifests stored in a Git repo or Harness.
-* **Azure ACR and AKS Permissions:**Ensure you have a Service Principal or Managed Identity you can use to connect Harness to your Azure App registration, and that it has the required permissions:
+* **Azure ACR and AKS Permissions:** Ensure you have a Service Principal or Managed Identity you can use to connect Harness to your Azure App registration, and that it has the required permissions:
 	+ **ACR:** the **Reader** role must be assigned.
 	+ **AKS:** the **Owner** role must be assigned.
 	+ For a custom role, see the permissions in [Add a Microsoft Azure Cloud connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
@@ -31,6 +31,8 @@ Make sure you have the following set up before you begin modeling your pipeline 
   * **Number of nodes:** 2.
   * **vCPUs, Memory, Disk Size:** 4vCPUs, 16GB memory, 100GB disk. In AKS, the **Standard DS2 v2** machine type is enough for this quickstart.
   * **Networking:** outbound HTTPS for the Harness connection to **app.harness.io**, **github.com**, and **hub.docker.com**. Allow TCP port 22 for SSH.
+
+* AKS deployments require a kubeconfig version that is > 0.1.9.
 
 ## Create the AKS deploy stage
 
