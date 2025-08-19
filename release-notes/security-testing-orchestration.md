@@ -22,6 +22,22 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## August 2025
+
+### Version v1.153.3
+
+<!-- 2025-08-15 -->
+
+#### New Features and Enhancements
+- Added support for **[Harness Resource Groups](/docs/platform/role-based-access-control/add-resource-groups/)** at the Project, Org, and Account scopes. See the [STO RBAC documentation](/docs/security-testing-orchestration/rbac) and [video on configuring STO RBAC](https://youtu.be/c_JU141TGas) for details (STO-9217).  
+- Added a tooltip to the **Create Pull Request** button in [Harness AI recommendations](/docs/security-testing-orchestration/remediations/ai-based-remediations), which displays the reason when the required conditions for opening a pull request are not met (STO-9014).  
+- External ticket badges now indicate when a linked ticket is broken or unclickable (STO-8479, ZD-84689).  
+
+#### Fixed Issues
+- Updated severity override logic in the **Vulnerabilities** tab to correctly reflect changes. For example, when a severity is overridden from *medium* to *low* by **Snyk**, the UI now displays the correct direction of the override (STO-9483).  
+- Fixed an issue in the **All Issues** page where applying filters or performing a search while on a higher pagination page could result in a misleading “No Issues Found” message. The page now resets to the first page automatically (STO-9413).
+
+
 ## July 2025
 
 ### Version v1.150.7
