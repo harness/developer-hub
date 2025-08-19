@@ -3,6 +3,9 @@ title: Integrations
 id: index
 slug: /feature-management-experimentation/integrations
 description: Learn how to integrate Harness FME with third-party tools.
+redirect_from:
+  - /docs/feature-management-experimentation/integrations/papertrail/
+  - /docs/feature-management-experimentation/integrations/librato/
 ---
 
 ## Overview

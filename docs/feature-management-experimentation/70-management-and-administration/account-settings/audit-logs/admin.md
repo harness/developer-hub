@@ -31,7 +31,6 @@ FME-specific Admin audit logs are captured every time an admin creates, changes,
 - New Relic integrations
 - Outgoing webhook (audit logs) integrations
 - Outgoing webhook (impressions) integrations
-- Papertrail integrations
 - Rollbar integrations
 - Segment integrations
 - Sentry integrations
@@ -67,7 +66,6 @@ Admin audit logs are captured every time an admin creates, changes, or deletes a
 - New Relic integrations
 - Outgoing webhook (audit logs) integrations
 - Outgoing webhook (impressions) integrations
-- Papertrail integrations
 - Rollbar integrations
 - Segment integrations
 - Sentry integrations
