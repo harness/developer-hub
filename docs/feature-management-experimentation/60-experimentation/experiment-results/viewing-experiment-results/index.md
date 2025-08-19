@@ -34,11 +34,11 @@ The summary is broken into three sections:
 * **Overall Impact Summary**: Summarizes how the treatment impacted user behavior or business outcomes.
 * **Next Steps Suggestion**: Recommends what to do next, whether to iterate, roll out, or revisit your setup.
 
-## Viewing metrics 
+## Understanding metrics impact
 
-To view the impact of your feature rollout on your account's metrics, from your selected feature flag, click the **Metrics impact** tab. The metric cards show how your account's metrics change when comparing treatments against your flag's baseline treatment.
+To see how a feature rollout affects your account's metrics, you can use the **Metrics impact** tab on after selecting on a feature flag. The metric cards show how your account's metrics change when comparing treatments against your flag's baseline treatment.
 
-Before getting started, review the following:
+This view helps you:
 
 * Understand how your most important metrics (overall evaluation criteria) were both positively and negatively impacted to learn more about what your customers expect and how you should change your feature functionality.
 * Compare the actual impact with your team's preliminary hypothesis.

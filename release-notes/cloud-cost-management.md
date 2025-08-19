@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-08-17T18:00
+date: 2025-08-18T18:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,22 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+## August 2025 - Version 1.60.1
+#### **Deployment Date:** August 18, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **Revamp Perspective Rule Builder UX:** We’ve revamped the UX for the Perspective Rule builder. The time range selection in Perspective creation is now on the right side near the chart, and the Rule Name and Folder fields are moved into a separate modal. This updated rule builder is also used in Cost Categories. [CCM-24935]
+
+<DocImage path={require('./static/release-new.png')} width="100%" height="100%" title="Click to view full size image" />
+
+### Bug Fixes 
+
+- **Permission Handling Improvement:** We have fixed an issue with folder permission enforcement. Previously, users with read-only access could sometimes edit and move perspectives from one folder to other provided the destination folder allows create/edit permissions. This update ensures proper permission validation across all folders. [CCM-24670]
+
+- **Container Cost Display Enhancement:** Previously, when a container's `lastDayCost` was unavailable, recommendations displayed 'NaN' (Not a Number) values in the UI. We've implemented fallback logic that automatically retrieves the `lastDayCost`, ensuring consistent cost visibility across all recommendations. [CCM-23235]
+
 ## August 2025 - Hotfix: Dashboard Cost Totals Issue
 #### **Deployment Date:** August 17, 2025 (Prod-1)
 
