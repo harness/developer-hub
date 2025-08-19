@@ -4,6 +4,7 @@ description: Optimize the utilization of your EC2 instances using Harness CCM re
 # sidebar_position: 2
 ---
 
+
 # Optimizing AWS EC2 costs with Recommendations
 
 An effective way to reduce AWS EC2 instance costs is to **optimize VM utilization**. This involves resizing instances based on active tasks and decommissioning unused instances.
@@ -23,16 +24,24 @@ Using Recommendations without proper assessment could result in unexpected chang
 
 * Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
 * To obtain EC2 recommendations, configure a Harness AWS CCM connector with the Inventory Management feature enabled.
-* Go to [Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
+* Go to [Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 
 
 ## How are EC2 recommendations computed?
+
+:::note
+- Source of Data: Harness does not compute EC2 recommendations natively. These are fetched directly from AWS Cost Explorer APIs.
+- Reference for savings calculations: [AWS EC2 Recommendations – Savings Calculation](https://docs.aws.amazon.com/cost-management/latest/userguide/understanding-rr-calc.html#savings-calc)
+- Harness does not factor in RI or SP discounts in the pulled recommendations.
+:::
+
 
 
 The recommendations are computed by analyzing the past utilization of the CPU and memory of your EC2 instance. Harness CCM leverages the AWS EC2 recommendations. CCM uses the AWS APIs and fetches the data from the AWS account.
 
 
 ### Types of EC2 recommendations
+
 
 Harness CCM provides two types of recommendations to optimize your EC2 instances:
 

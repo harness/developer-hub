@@ -54,11 +54,18 @@ export const featureList: CardItem[] = [
     link: "docs/category/get-started-with-feature-flags",
   },
   {
+    title: "Release with Feature Management & Experimentation",
+    module: MODULES.fme,
+    icon: "img/icon_fme.svg",
+    description: <>Switch on data-driven features and releases.</>,
+    link: "docs/feature-management-experimentation/getting-started",
+  },
+  {
     title: "Optimize Cloud Costs",
     module: MODULES.ccm,
     icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
-    link: "docs/cloud-cost-management",
+    link: "docs/cloud-cost-management/get-started",
   },
   {
     title: "Orchestrate Security Tests",
@@ -86,14 +93,14 @@ export const featureList: CardItem[] = [
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: <>Measure the resilience posture of applications.</>,
-    link: "docs/chaos-engineering/getting-started/",
+    link: "docs/chaos-engineering/overview",
   },
   {
     title: "Revolutionize Incident Management",
-    module: MODULES.ir,
+    module: MODULES.aisre,
     icon: "img/icon-ir.svg",
     description: <>Focus on proactive issue prevention and accelerated resolution.</>,
-    link: "docs/incident-response",
+    link: "docs/ai-sre",
   },
   {
     title: "Increase Developer Productivity",
@@ -114,7 +121,7 @@ export const featureList: CardItem[] = [
     module: MODULES.sei,
     icon: "img/icon_sei.svg",
     description: <>Use data-led insights to remove SDLC bottlenecks.</>,
-    link: 'docs/category/get-started-with-sei',
+    link: 'docs/category/sei-recommended',
   },
   {
     title: 'Manage AI Test Automation',
@@ -135,6 +142,6 @@ export const featureList: CardItem[] = [
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: <>Install Harness Platform on self-managed Kubernetes cluster.</>,
-    link: "docs/category/get-started-with-smp",
+    link: "docs/self-managed-enterprise-edition",
   },
 ];

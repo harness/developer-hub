@@ -297,7 +297,7 @@ For Harness CI Cloud machine specs, go to [Harness Cloud image specifications](h
 
 ### Can I use my own secrets manager with Harness Cloud build infrastructure?
 
-No. To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), you must use the built-in Harness secrets manager.
+Yes, Harness supports secret managers from various cloud providers, including HashiCorp Vault.
 
 ### Connector errors with Harness Cloud build infrastructure
 
@@ -356,6 +356,94 @@ Currently, [STO scan steps](https://developer.harness.io/docs/security-testing-o
 ### How do I configure OIDC with GCP WIF for Harness Cloud builds?
 
 Go to [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
+
+### GCP OIDC Connector keeps saying "OIDC Configuration Error: Error encountered while obtaining OIDC Access Token from STS" configuration is correct
+Harness obsfucates various information from GCP OIDC connections due to security and information concerns.  In order to keep customers safe even in the case of connection error, Harness obasfucates information that may help troubleshoot this kind of issue.  
+
+To start, please ensure that your Harness Environment and Google Cloud Environment are configured according to our documentation about [Configure OIDC with GCP WIF for Harness Cloud builds](https://developer.harness.io/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted)
+
+Next, please ensure that you have an [API key for an Harness account with at least **CREATE_OIDC_ID_TOKEN_PERMISSION** permissions in your Harness Environment](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/).
+
+#### Attain Your Harness JSON Web Token (JWT)
+In order to perform some of the tasks, you will need to attain your JSON Web Token (JWT), you will need to cURL against the Harness API endpoint with the following command:
+
+```
+curl --location 'https://app.harness.io/ng/api/oidc/id-token/gcp' \
+--header 'accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'x-api-key: YOUR_API_KEY' \
+--data-raw '{
+    "accountId": "YOUR_HARNESS_ACCOUNT_ID",
+    "workloadPoolId": "YOUR_CONNECTOR_WORKLOAD_POOL_ID",
+    "providerId": "YOUR_CONNECTOR_PROVIDER_ID",
+    "gcpProjectId": "YOUR_CONNECTOR_PROJECT#_ID",
+    "serviceAccountEmail": "YOUR_CONNECTOR_SVC_ACCOUNT_EMAIL_ID"
+  }'
+```
+You'll need to replace the values in capital letters with your information from the OIDC Connector/WIF Account and your Harness Environment.
+
+Once you run the command, Harness will return a successful JWT
+```
+{
+    "status": "SUCCESS",
+    "data": "aaa9aAAaAaAAAV9AaAAAhAaAaAaAAAAaA9AaAaAaAaAaAAaA9AaAAAAAAa9AAAaAaAaAaAaAAbAaAbAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAa999AaAaAaAaAaAa-aAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaA.aAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaAaA",
+    "metaData": null,
+    "correlationId": "00a000aa-a0000-0a00-000a-0a00a0a0a000"
+}
+```
+The data portion is the JWT
+
+#### Compare the issuer in the JSON Web Token with what is being supplied by Harness
+You can now decode your JWT token and ensure its values are correct.  You can decode the JWT using a tool of your choice (such as with Python) or visit a site like https://jwt.io/, and decode the values for the payload (please note that Harness does not endorse https://jwt.io).  The values should look somewhat like the following:
+```
+{
+  "sub": "YOUR_HARNESS_ACCOUNT_ID",
+  "iss": "https://app.harness.io/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>",
+  "aud": "https://iam.googleapis.com/projects/<YOUR_CONNECTOR_PROJECT#_ID>/locations/global/workloadIdentityPools/<YOUR_CONNECTOR_WORKLOAD_POOL_ID>/providers/<YOUR_CONNECTOR_PROVIDER_ID>",
+  "exp": 1750713017,
+  "iat": 1750711017,
+  "account_id": "YOUR_HARNESS_ACCOUNT_ID"
+}
+```
+
+Now perform a cURL from a local system to Harness, using the appropriate Hostname for your Harness Cluster.  Note that the source IP must be part of the allow-listed for the account.
+
+| Cluster      | HostName               |
+|--------------|------------------------|
+| Prod1/Prod2  | app.harness.io         |
+| Prod3        | app3.harness.io        |
+| Prod0/Prod4  | accounts.harness.io    |
+| EU clusters  | accounts.eu.harness.io |
+
+```
+curl https://<HOSTNAME>/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>/.well-known/openid-configuration
+```
+
+Compare the value for `iss` with the `issuer` value from the curl command.  They should match.
+
+#### Test your JSON Web Token for issues using GCP's STS Method: Token test
+GCP has a method to test a token's external identity within a pool.
+
+Customers will need to [visit the GCP site](https://cloud.google.com/iam/docs/reference/sts/rest/v1/TopLevel/token), and prepare a payload for testing.
+
+![](./static/jwt-gcptestsite.png)
+
+Using the **Try this Method** section, add the following request body, that follows the example outlined in the GCP documentation.  Take special note that the `audience` value for the test does **not** have the `https:` portion of the url.  Including it will result in an error.
+
+```
+{
+  "grantType": "urn:ietf:params:oauth:grant-type:token-exchange",
+  "audience": "//iam.googleapis.com/projects/<YOUR_CONNECTOR_PROJECT#_ID>/locations/global/workloadIdentityPools/<YOUR_CONNECTOR_WORKLOAD_POOL_ID>/providers/<YOUR_CONNECTOR_PROVIDER_ID>",
+  "scope": "https://www.googleapis.com/auth/cloud-platform",
+  "requestedTokenType": "urn:ietf:params:oauth:token-type:access_token",
+  "subjectToken": "<YOUR_JWT_FROM_ABOVE_STEPS>",
+  "subjectTokenType": "urn:ietf:params:oauth:token-type:id_token"
+  
+}
+```
+
+Click on the `Execute` button.  If you receive a `200` response, then your token should be set up correctly, and there should not be any issues.  If there is another response, this means there is an issue with how the GCP WIF was set up, and we recommend reviewing the information in the error to help troubleshoot the issue.  
+
 
 ### When I run a build on Harness cloud, which delegate is used? Do I need to install a delegate to use Harness Cloud?
 
@@ -716,8 +804,6 @@ environment:
   - ACCOUNT_ID=XXXX
   - DELEGATE_TOKEN=XXXX
   - MANAGER_HOST_AND_PORT=https://app.harness.io
-  - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
-  - DEPLOY_MODE=KUBERNETES
   - DELEGATE_NAME=test
   - NEXT_GEN=true
   - DELEGATE_TYPE=DOCKER
@@ -1180,7 +1266,7 @@ Yes. You can run any commands in a Run step. With respect to Git, for example, y
 
 You can store authentication credentials as [secrets](https://developer.harness.io/docs/category/secrets/) and use [expressions](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs#expressions), such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call them in your git commands.
 
-You could also [pull credentials from a git connector used elsewhere in the pipeline](./articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step).
+You could also [pull credentials from a git connector used elsewhere in the pipeline](/kb/continuous-integration/articles/use-git-credentials-from-codebase-connector-in-ci-pipelines-run-step).
 
 ### Can I use codebase variables when cloning a codebase in a Run step?
 
@@ -1422,6 +1508,13 @@ By default, Harness uses anonymous Docker access to pull Harness-required images
 
 No. Pipeline initialization isn't included in your build minutes.
 
+### How can I fix the issue where the Git clone is being treated as a submodule?
+You can resolve this by setting the Submodules Strategy to False. This will prevent the repository from being initialized as a submodule. 
+
+You can either:
+- Through the UI: Go to the GitClone step in the Harness UI and set Submodules Strategy to False.
+- Through the YAML: Update the pipeline YAML file by setting submoduleStrategy: "false" in the GitClone step configuration.
+
 ## Build and push images
 
 ### Where does a pipeline get code for a build?
@@ -1628,6 +1721,7 @@ When using the V2 Docker registry API, authentication issues can arise due to ho
 
 Here’s the key difference:
 
+
 - **Username/Password Authentication**: When using a username and password, the generated token often lacks the necessary scope details (e.g., actions like `push` and `pull`). This can cause issues when trying to authenticate with the registry during build and push steps.
   
 - **Personal Access Token (PAT) Authentication**: A PAT provides more detailed scope information in the authentication headers, ensuring the correct access levels for pushing and pulling images. With a PAT, the JWT scope is properly set, allowing seamless authentication for build and push operations.
@@ -1665,12 +1759,155 @@ In this example, the `actions` (pull, push) and the repository name are correctl
 
 To avoid authentication issues, it's recommended to either use a PAT when configuring build and push steps for Docker registries with the V2 API or, if using a username and password, switch to the V1 API.
 
+### Authentication issues (toomanyrequests: You have reached your unauthenticated pull rate limit.) 
+#### Harness Cloud Setup with Build and Push Steps
+If you are using Harness Cloud, please note that anonymous pulls will be tied to the IP pool assigned to the region for all Harness customers.  This means that all Harness customers would utilize the [same pool of "rate limit" as defined by Docker](https://docs.docker.com/docker-hub/usage/).
+
+In order to resolve these issues, customers should look to enable `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` feature with our support team to allow teams to select the `Base Image connector` that would be utilized to pull the image.  Please keep in mind the rules regarding Docker API versions for the Docker Registry URL (Please see the above [information that goes into detail about how and why this occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls))
+
+In **most cases** customer should set up a Docker Connector utilizing the `https://index.docker.io/v1` registry URL for Harness Cloud builds.
+
+Please also note that if you receive a "You have reached your **unauthenticated** pull rate limit." message even after setting up a `Base Image Connector`, this indicates a failure in resolving the JWT token, which causes the pull to default back to attempting an unauthenticated request.
+
+#### Docker Connector with Valid Credentials but using a Private Registry/Improper configuration
+Customers may encounter the `toomanyrequests: You have reached your unauthenticated pull rate limit.` error for their Build and Push steps (ECR, Docker, etc) despite having a valid Docker Connector set and credentials.  
+This is due to utilizing the v2 registry API for a private repository pull.  The fallback will be that Docker will attempt an unauthorized request, which results in the above response.  Please see the above [information that goes into detail about how and why this 
+occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls).
+
+Please note that the key is located in the **unauthenticated** part of the message.  If you are hitting a rate limit with your credentials, the message will not include a reference to an unauthenticated pull request.
+
 
 ### How can user access the secrets as files in a Docker build without writing them to layers?
 The **build and push** steps used to build Docker images have a context field. Users can use the context field in the build and push steps to mount the current directory at `/harness`. By copying your files to a specific directory and then mounting them, you can avoid writing secrets into the Docker image layers.
 
 ### Why do Build and Push steps fail with "Error while loading buildkit image: exit status 1" when /var/lib/docker is included in shared paths during DIND execution?
 **Build and Push** steps fail with the error "Error while loading buildkit image: exit status 1" when `/var/lib/docker` is included in the shared paths during Docker-in-Docker (DIND) execution because DIND creates a Docker daemon using this path, and sharing it across steps causes conflicts when multiple build steps try to create and access their own Docker daemons. To resolve this, remove `/var/lib/docker` from the shared paths configuration, which prevents conflicts and allows **Build and Push** steps to execute successfully.
+
+### How can I block or restrict image pulls in my Harness CI pipelines?
+
+To enforce stricter network control or restrict use of external registries during CI builds, here are two common approaches:
+
+Option 1: Use a Run Step to Dynamically Block a Website (e.g., a registry)
+
+You can block network access to specific domains like `example.com` by using a Run step in your pipeline that applies iptables rules before any potentially unsafe step runs.
+
+Here’s a sample Harness CI pipeline that blocks access to `example.com`:
+
+```yaml
+pipeline:
+  name: blockwebsiteexample
+  identifier: blockwebsiteexample
+  projectIdentifier: PROJECT_NAME
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Bash
+                    command: |-
+                      DOMAIN="example.com"
+                      IPS=$(dig +short $DOMAIN | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}')
+                      for IP in $IPS; do
+                        sudo iptables -A OUTPUT -d "$IP" -j REJECT
+                      done
+              - step:
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    shell: Sh
+                    command: curl -I https://example.com
+              - step:
+                  type: Run
+                  name: Run_3
+                  identifier: Run_3
+                  spec:
+                    shell: Bash
+                    command: |-
+                      DOMAIN="example.com"
+                      IPS=$(dig +short $DOMAIN | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}')
+                      for IP in $IPS; do
+                        sudo iptables -D OUTPUT -d "$IP" -j REJECT
+                      done
+                  when:
+                    stageStatus: All
+              - step:
+                  type: Run
+                  name: Run_4
+                  identifier: Run_4
+                  spec:
+                    shell: Sh
+                    command: curl -I https://example.com
+                  when:
+                    stageStatus: All
+```
+
+Use this when:
+
+- You want to restrict access to specific URLs during pipeline execution.
+
+- You need fine-grained, dynamic blocking based on domains or IPs.
+
+- You're running builds in Harness Cloud with Linux runners.
+
+Option 2: Use OPA Policy to Deny docker pull Commands
+
+For governance at scale, you can apply OPA policies to deny pipelines that contain docker pull or other blacklisted commands.
+
+Here’s a sample OPA policy:
+
+```yaml
+package pipeline
+
+# Deny build pipelines that don't push to "us.gcr.io"
+# NOTE: Try changing the expected host to see the policy fail
+deny[msg] {
+	# Find all stages ...
+	stage = input.pipeline.stages[_].stage
+
+	# ... that are used for CI
+	stage.type == "CI"
+
+	# ... that have steps
+	step = stage.spec.execution.steps[_].step
+
+	# ... that build and push to GCR steps
+	step.type == "Run"
+
+  contains_keyword := regex.match("\\bdocker pull\\b", step.spec.command) 
+  contains_keyword
+  # Generate a message indicating the forbidden keyword usage
+  msg := sprintf("Step '%s' in stage '%s' contains a docker pull command.", [step.name, stage.name])
+}
+```
+
+Use this when:
+
+- You want to enforce compliance across many teams or orgs
+
+- You don’t want to manually edit pipelines
+
+- You prefer policy-as-code to manage CI guardrails
 
 ## Upload artifacts
 
@@ -1778,6 +2015,33 @@ Yes, you can [split tests in Harness CI](https://developer.harness.io/docs/conti
 Test Intelligence doesn't split tests. Instead, Test Intelligence selects specific tests to run based on the changes made to your code. It can reduce the overall number of tests that run each time you make changes to your code.
 
 For additional time savings, you can [apply test splitting in addition to Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2). This can further reduce your test time by splitting the selected tests into parallel workloads.
+
+### How can I receive an execution report via email for our Test suite in Harness?
+In Harness, you can use the Email plugin in your CI pipeline to export reports and other artifacts via email. This allows you to send the execution report directly to your desired recipients without needing to push it to a Git repository.
+
+For more details on how to set up the email notifications, you can refer to these documents:
+[Using the Email Plugin in CI](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin/)
+[Exploring CI Plugins in Harness](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins/)
+
+## Build Intelligence
+
+### What affects hash key calculation in Build Intelligence?
+
+Build Intelligence uses a hash key to manage cache artifacts. This hash is derived from a combination of:
+
+- Source code contents
+
+- Build tool arguments
+
+- Build dependencies
+
+- Build configuration files (e.g., pom.xml)
+
+- The build environment
+
+Any change in these elements — even small ones — will result in a new hash key, and therefore a different cache entry.
+
+This behavior is driven by the build tool itself, not Harness. For more details, refer to the [official Apache Maven Build Cache Extension documentation](https://maven.apache.org/extensions/maven-build-cache-extension/remote-cache.html).
 
 ## Test Intelligence
 
@@ -2293,6 +2557,29 @@ When the user clones a pipeline with caching steps, the cache keys generated by 
 ### How can user ensure correct cache handling when cloning pipelines with Save Cache to GCS?
 Enable separators (/) for GCS cache keys by setting `PLUGIN_ENABLE_SEPARATOR: true` in your pipeline's stage variables.
 
+### Why didn’t my cache restore in a subsequent pipeline run?
+
+Cache restore depends on a hash key, and a mismatch in the hash key across runs will cause the cache to miss.
+Here’s what can cause differences in hash key calculation for cache intelligence:
+
+- **Build File Changes**: Any modification to files like pom.xml (for Maven) will change the hash.
+
+- **Multiple Matching Files**: If multiple pom.xml files are found, the one with the shortest path is selected.
+
+- **File Access Issues**: Permissions or file-read errors can disrupt hash calculation.
+
+- **Project Structure Changes**: Moving or renaming the build config file, or checking out the repo to a different location, can result in a new hash.
+
+- **Different Commits**: Even small code changes across builds can impact the hash key.
+
+As a result, a cache may not be restored if the system determines it is outdated or invalid for the current build context.
+
+### Why am I seeing 404 errors for certain cache blobs?
+
+A 404 response for cache blobs usually means the requested blob was not found in the cache store — often because it hasn’t been generated yet.
+
+This does not necessarily indicate a problem with the cache store or your setup.
+
 ## Background steps and service dependencies
 
 ### What is the purpose of Background steps in a CI stage?
@@ -2508,7 +2795,7 @@ If your builds time out with this error during stage initialization, and you're 
 
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 
-Yes. To do this, you can add a step that runs in parallel to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Use a parallel step to monitor failures](./articles/parallel-step-for-logging).
+Yes. To do this, you can add a step that runs in parallel to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Use a parallel step to monitor failures](/kb/continuous-integration/articles/parallel-step-for-logging).
 
 ### How to get the build ID of a pipeline execution?
 
@@ -2715,6 +3002,42 @@ If it is operating as expected, the Kaniko CLI will show the following in the CL
 /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=destination/repo:1.0 --snapshotMode=redo --digest-file=/kaniko/digest-file --ignore-path=/opt/nodejs
 ```
 
+## Matrix Executions and Strategy FAQs
+
+### Why am I seeing the error "should map to single port" when using JSON-based matrix executions?
+
+When using JSON input to define matrix combinations, you may encounter the following error during CI pipeline execution: **should map to single port**.
+
+This typically occurs when the matrix input is dynamically constructed from a JSON object — and the ordering of keys in the matrix input is not preserved during evaluation. This can lead to internal mismatches between matrix labels and execution steps.
+
+#### Root Cause
+The issue arises from non-deterministic key ordering in matrix inputs derived from JSON strings. Engines like Jackson or the default Java Map do not guarantee key order, which causes:
+
+- Inconsistent step identifiers between Initialize and Run steps
+
+- Internal parsing errors
+
+- Label mismatch during Kubernetes pod creation
+
+#### Workarounds
+
+Option 1: Disable Matrix Labels By Name
+- Go to Pipeline Settings
+- Uncheck the “Enable Matrix Labels By Name” option
+
+Disabling this option prevents Harness from generating Kubernetes labels based on matrix key values, avoiding the problem entirely.
+
+Option 2: Explicitly Define nodeName
+You can override the auto-generated node name by providing a stable, predictable naming pattern in your matrix config:
+
+```yaml
+strategy:
+  matrix:
+    service: [svc1, svc2, svc3]
+    env: [env1, env2]
+    nodeName: stage_<+matrix.service>_<+matrix.env>
+```
+This bypasses the default label generator logic that may be affected by unordered JSON keys.
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 

@@ -344,12 +344,20 @@ export default function University() {
                   <h5>Available Certifications</h5>
                   <div className={styles.availableCerts}>
                     <img
-                      src={`${baseUrl}img/cert_dev_cd_badge.svg`}
-                      alt="Developer Continuous Delivery Badge"
+                      src={`${baseUrl}img/cert-dev-cr-badge.svg`}
+                      alt="Developer CR Badge"
                     />
                     <img
                       src={`${baseUrl}img/cert_dev_ci_badge.svg`}
                       alt="Developer Continuous Integration Badge"
+                    />
+                    <img
+                      src={`${baseUrl}img/cert_dev_cd_badge.svg`}
+                      alt="Developer Continuous Delivery Badge"
+                    />
+                    <img
+                      src={`${baseUrl}img/cert-dev-iacm-badge.svg`}
+                      alt="Developer IaCM Badge"
                     />
                     <img
                       src={`${baseUrl}img/cert_dev_ff_badge.svg`}
@@ -364,6 +372,10 @@ export default function University() {
                       alt="Developer STO Badge"
                     />
                     <img
+                      src={`${baseUrl}img/cert-dev-scs-badge.svg`}
+                      alt="Developer SCS Badge"
+                    />
+                    <img
                       src={`${baseUrl}img/cert_dev_ce_badge.svg`}
                       alt="Developer Chaos Badge"
                     />
@@ -375,23 +387,12 @@ export default function University() {
                       src={`${baseUrl}img/cert_dev_sei_badge.svg`}
                       alt="Developer SEI Badge"
                     />
-                    <img
-                      src={`${baseUrl}img/cert-dev-iacm-badge.svg`}
-                      alt="Developer IaCM Badge"
-                    />
+
                   </div>
-                
-                <h5>Coming Soon</h5>
-                <div className={styles.unAvailableCerts}>
-                  <img
-                    src={`${baseUrl}img/cert-dev-cr-badge.svg`}
-                    alt="Developer CR Badge"
-                  /> 
-                  <img
-                    src={`${baseUrl}img/cert-dev-scs-badge.svg`}
-                    alt="Developer SCS Badge"
-                  /> 
-                </div> 
+
+                  {/* <h5>Coming Soon</h5> */}
+                  {/* <div className={styles.unAvailableCerts}>
+                </div> */}
 
                 </div>
               </div>
@@ -420,12 +421,12 @@ export default function University() {
                   <h5>Available Certifications</h5>
                   <div className={styles.availableCerts}>
                     <img
-                      src={`${baseUrl}img/cert_adm_cd_badge.svg`}
-                      alt="Administrator Continuous Delivery Badge"
-                    />
-                    <img
                       src={`${baseUrl}img/cert_adm_ci_badge.svg`}
                       alt="Administrator Continuous Integration Badge"
+                    />
+                    <img
+                      src={`${baseUrl}img/cert_adm_cd_badge.svg`}
+                      alt="Administrator Continuous Delivery Badge"
                     />
                     <img
                       src={`${baseUrl}img/cert_adm_ff_badge.svg`}
@@ -445,7 +446,7 @@ export default function University() {
                     />
                   </div>
 
-                    {/* <h5>Coming Soon</h5> */}
+                  {/* <h5>Coming Soon</h5> */}
                   {/* <div className={styles.unAvailableCerts}>
                 </div> */}
                 </div>
@@ -474,12 +475,12 @@ export default function University() {
                   <h5>Available Certifications</h5>
                   <div className={styles.availableCerts}>
                     <img
-                      src={`${baseUrl}img/cert_arc_cd_badge.svg`}
-                      alt="Architect Continuous Delivery Badge"
-                    />
-                    <img
                       src={`${baseUrl}img/cert_arc_ci_badge.svg`}
                       alt="Architect Continuous Integration Badge"
+                    />
+                    <img
+                      src={`${baseUrl}img/cert_arc_cd_badge.svg`}
+                      alt="Architect Continuous Delivery Badge"
                     />
                   </div>
 

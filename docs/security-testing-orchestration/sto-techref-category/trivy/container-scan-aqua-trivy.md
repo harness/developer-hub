@@ -22,7 +22,7 @@ In this tutorial, you'll set up a simple [orchestration workflow](/docs/security
 - This tutorial has the following prerequisites:
 
   - A Harness account and STO module license.
-  - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
+  - You must have a [Security Testing Developer or AppSec role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
   - A basic understanding of key STO concepts and good practices is highly recommended. Here are some good resources: 
     - [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline)
     - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
@@ -164,7 +164,7 @@ Here's an example:
 
    ![pipeline failed, critical issues found](./static/container-scan-trivy/execution-snyk-labs.png)
 
-3. Select **Security Tests** and examine any issues detected by your scan.
+3. Select **Vulnerabilities tab** and examine any issues detected by your scan.
 
    ![view scan results](./static/container-scan-trivy/scan-results-snyklabs-goof.png)
 

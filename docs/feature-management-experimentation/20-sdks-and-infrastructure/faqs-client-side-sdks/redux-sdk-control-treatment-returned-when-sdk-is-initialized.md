@@ -1,0 +1,47 @@
+---
+title: "Redux SDK: Control treatment returned when SDK is initialized"
+sidebar_label: "Redux SDK: Control treatment returned when SDK is initialized"
+sidebar_position: 1
+---
+
+## Issue
+
+Implementing the Redux SDK using isReady prop should guarantee correct treatment, however, There's a split second where 'isReady' is true and the treatment is control right after the SDK factory is initialized. The treatment flips quickly to on quickly. What is causing this flickering? Example code below:
+
+```
+export default function initialise() {
+  store.dispatch(initSplitSdk({ config: sdkBrowserConfig, onReady: onReadyCallback, onUpdate: onUpdateCallback }));
+} function onReadyCallback() {
+  console.log("Split Ready...");
+  store.dispatch(getTreatments({ splitNames: ['Show_league'] }));
+...
+} function onUpdateCallback() {
+  console.log("Split updated...");
+  store.dispatch(getTreatments({ splitNames: ['Show_league'] }));
+...
+}
+```
+
+## Root Cause
+
+When the SDK initializes, it starts downloading the cache from Harness FME servers, during this time isReady is false, if we try fetching treatments at that point, we will get control. We also need to evaluate updating isReady flag to true once the SDK is ready asynchronously.
+
+## Solution
+
+The solution is to dispatch `getTreatments` actions immediately after the `initSplitSdk` action. `getTreatments` creates an async (Thunk) action that will evaluate feature flags when the SDK is ready, and also on SDK updates if you set the `evalOnUpdate` param to true (it is false by default). This way the isReady flag will update together with the treatments values, in a single **action**.
+In the first approach (dispatching the `getTreatments` action in `onReadyCallback`), there are two separate updates: one of the isReady flag, and a second one of the treatments values (after dispatching `getTreatment` action in the callback).
+
+For more details, check our public documentation [here](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk#subscribe-to-events).
+
+```
+export default function initialise() {
+  store.dispatch(initSplitSdk({ config: sdkBrowserConfig, onReady: onReadyCallback, onUpdate: onUpdateCallback }));
+  store.dispatch(getTreatments({ splitNames: ['Show_league'], evalOnUpdate: true }));
+}function onReadyCallback() {
+  console.log("Split Ready...");
+  ...
+}function onUpdateCallback() {
+  console.log("Split updated...");
+  ...
+}
+```

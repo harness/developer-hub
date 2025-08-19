@@ -40,8 +40,13 @@ Below is a list of the default locations cached using Cache Intelligence:
 | `F# .Net` | *.fsproj | .nuget/packages
 
 
-For other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
+By default, Cache Intelligence searches for the exact filenames listed in the table above under the **Dependency Management file**.  
 
+Harness Cache Intelligence will explore the root directory as well as one directory depth below for the file to determine the tool that a customer is using in the repository.
+
+This then determines the **Default Path Cached** location that Harness will save and restore as a part of the Cache Intelligence process.  
+
+To make modifications for other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
 
 
 ## Cache storage
@@ -335,6 +340,49 @@ curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache?accoun
 ```
 
 ## Troubleshoot caching
+
+### Ignoring Cache Intel Directories in Apache RAT Scans
+
+If you are using the Apache RAT plugin for license compliance, it may incorrectly mark Harness Cache Intelligence directories as invalid files. This can cause unnecessary failures in your build pipeline.
+
+To avoid this, explicitly exclude the following directories in your pom.xml file.
+
+**Directories to Ignore**
+- Build Intelligence:
+`/harness/.mvn`
+
+- Cache Intelligence:
+`/harness/.m2`
+`/harness/.mvn` (also applies to cache-related scans)
+
+**Example: Update to pom.xml**
+Add the following snippet under the `<build>` section to configure the apache-rat-plugin to ignore these paths:
+
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.rat</groupId>
+      <artifactId>apache-rat-plugin</artifactId>
+      <version>0.15</version> <!-- Or use the latest version -->
+      <configuration>
+        <excludes>
+          <exclude>/harness/.mvn</exclude>
+          <exclude>/harness/.m2</exclude> <!-- Optional, but recommended -->
+        </excludes>
+      </configuration>
+      <executions>
+        <execution>
+          <phase>verify</phase>
+          <goals>
+            <goal>check</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
 

@@ -336,7 +336,7 @@ There are additional steps for self-signed certificates:
 
 1. [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
 2. [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
-3. [Configure GitOps Agent with self-signed certificates](/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates/)
+3. [Configure GitOps Agent with self-signed certificates](/docs/continuous-delivery/gitops/agents/harness-git-ops-agent-with-self-signed-certificates/)
 
 ## Next steps
 
@@ -347,5 +347,5 @@ To get started with the modules, review the following topics:
 * For Harness Continuous Integration, go to the [CI key concepts](../../continuous-integration/get-started/key-concepts.md).
 * For Harness Continuous Delivery & GitOps, go to the [CD key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
 * For Harness Security Testing Orchestration, go to the [STO overview](../../security-testing-orchestration/get-started/overview.md).
-* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/chaos-engineering/concepts/chaos101).
-* For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/ccm-on-harness-self-managed-enterprise-edition).
+* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/chaos-engineering/key-concepts).
+* For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/self-managed-enterprise-edition).

@@ -14,13 +14,23 @@ The delegate config file (for example, Kubernetes delegate YAML file) contains y
 
 ### Install and register delegates
 
-To install a delegate, follow the steps in the relevant delegate installation topic, such as [Install a Kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate.md) or [Install a Docker delegate](/docs/platform/delegates/install-delegates/overview.md).
+To install a delegate, follow the steps in the delegate installation topic, such as [Install a Docker delegate](/docs/platform/delegates/install-delegates/overview.md).
 
 Once you have installed the delegate in your environment, select **Verify** in the delegate wizard, and Harness will verify that it is receiving heartbeats from the delegate.
 
 ![](static/delegate-registration-01.png)
 
 This means Harness is waiting for the delegate you installed to register. Registration can take a few minutes. Once the delegate registers, the **Verify** screen will indicate that the delegate is running.
+
+:::danger Important Note
+
+After installation, if the delegate goes into a disconnected state, Harness applies a Time-To-Live (TTL) policy:
+
+- Delegate – 6 hours: If a delegate remains disconnected and does not send heartbeats for 6 hours, it is considered expired and will no longer appear on the Delegate page in Harness.
+
+- Delegate Group – 7 days: If no delegates in a group are active for 7 consecutive days, the entire group will be removed from the Delegate page in Harness.
+
+:::
 
 ### Verify delegate registration manually
 

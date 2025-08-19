@@ -1,0 +1,34 @@
+---
+title: "Java SDK Exception: PKIX path building failed: unable to find valid certification path to requested target"
+sidebar_label: "Java SDK Exception: PKIX path building failed: unable to find valid certification path to requested target"
+sidebar_position: 15
+---
+
+## Problem
+
+When Implementing Java SDK the exception below occurs initializing the SplitFactory object:
+```
+RefreshableSplitFetcher failed: 
+Problem fetching splitChanges:
+sun.security.validator.ValidatorException: 
+PKIX path building failed:
+sun.security.provider.certpath.SunCertPathBuilderException:
+unable to find valid certification path to requested target
+```
+
+## Root cause
+
+This exception means Java could not download the Split.io certificate, which will prevent the SSL connection to be established between the SDK and Harness FME servers.
+
+## Solution
+
+It's possible to install the Split.io certificate manually into any Java store the JVM is using.
+Here are the steps to download the Split.io certificate and add it:
+1. Run the command below to fetch the cert from sdk.split.io, re-run the command to fetch the cert from events.split.io
+  ```
+openssl s_client -showcerts -connect sdk.split.io:443 </dev/null 2>/dev/null|openssl x509 -outform PEM >splitsdkcert.pemopenssl s_client -showcerts -connect events.split.io:443 </dev/null 2>/dev/null|openssl x509 -outform PEM >spliteventscert.pem
+```
+2. Run the keytool to import both certs into Java cacerts store, or specify any other ket store:
+  ```
+keytool -importcert -file splitsdkcert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "splitsdkcert"keytool -importcert -file spliteventscert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "spliteventscert"
+```

@@ -1,7 +1,7 @@
 ---
 title: Set up a Kubernetes cluster build infrastructure
 description: You can use a Kubernetes cluster build infrastructure for a Harness CI pipeline.
-sidebar_position: 30
+sidebar_position: 10
 helpdocs_topic_id: ia5dwx5ya8
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false
@@ -28,7 +28,11 @@ The following diagram shows the architecture of a kubernetes cluster build infra
 
 ![](../static/ci-pipeline-quickstart-13.png)
 
-You must install the Harness Delegate in the same cluster you use for the build farm. The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
+:::note
+You must install the Harness Delegate in the same cluster you use for the build farm.
+::: 
+
+The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
 
 <details>
 <summary>Video summary</summary>
@@ -371,13 +375,16 @@ Keys are reserved keywords used to validate unique FQNs. If you have multiple to
         value: value2
 ```
 
-### Topology Spread Constraints
-A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. Currently, this field supports specifying `topologySpreadConstraint`, with plans to extend support for additional configurations in the future. 
+### Customize Build Pod Configuration
+
+The `podSpecOverlay` field in the Kubernetes infrastructure settings of the CI stage allows you to apply custom configurations to the build pod. 
 
 :::note
 * podSpecOverlay is currently supported via YAML only. Please use the YAML editor to modify.
 * This feature requires using delegate version 24.09.83900 or higher.
 :::
+
+By default, this field supports only `topologySpreadConstraints`. For advanced use cases like custom volumes, securityContext, or node selectors, broader `PodSpec` overrides are available behind a feature flag. For details, see [Customize the PodSpec in Kubernetes build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/customize-podspec).
 
 #### Usage example 
 

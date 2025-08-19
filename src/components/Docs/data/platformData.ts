@@ -46,13 +46,13 @@ export const docsCards: CardSections = [
         title: "CE",
         module: MODULES.ce,
         description: "Chaos Engineering onboarding guides",
-        link: "/docs/chaos-engineering/getting-started/onboarding/",
+        link: "/docs/chaos-engineering/get-started/",
       },
       {
         title: "CCM",
         module: MODULES.ccm,
         description: "Cloud Cost Management onboarding guides",
-        link: "/docs/category/onboarding",
+        link: "/docs/category/get-started",
       },
       {
         title: "CODE",
@@ -112,13 +112,13 @@ export const docsCards: CardSections = [
         title: "SCS",
         module: MODULES.ssca,
         description: "Supply Chain Security onboarding guide",
-        link: "/docs/software-supply-chain-assurance/get-started/onboarding-guide",
+        link: "/docs/software-supply-chain-assurance/get-started/",
       },
       {
         title: "SEI",
         module: MODULES.sei,
         description: "Software Engineering Insights onboarding guide",
-        link: "/docs/software-engineering-insights/get-started/sei-onboarding-guide",
+        link: "/docs/software-engineering-insights/propelo-sei/get-started/sei-onboarding-guide",
       },
     ],
   },
@@ -126,6 +126,12 @@ export const docsCards: CardSections = [
     name: "Platform feature highlights",
     description: "",
     list: [
+      {
+        title: "Pipelines",
+        module: MODULES.platform,
+        description: "Learn how to create and manage pipelines.",
+        link: "/docs/category/pipelines",
+      },
       {
         title: "Harness AI",
         module: MODULES.platform,

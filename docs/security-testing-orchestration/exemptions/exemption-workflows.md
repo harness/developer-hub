@@ -19,28 +19,26 @@ You can create exemption requests either for the entire issue or for specific oc
 
 Reviewers have the flexibility to approve exemption requests either at the requested scope or extend the scope to the **Organization** or **Account** level during the review process. For more details, refer to [Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions). To view submitted requests, refer to [View Issue Exemptions](#view-issue-exemptions).
 
-:::note
-Support for **Exemptions** at **Organization** and **Account** level is is controlled by the feature flag  `STO_GLOBAL_EXEMPTIONS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
+<DocVideo src="https://youtu.be/08OmKwva9DM" />
 
 <DocImage path={require('./static/request-exemption-overview.png')} width="80%" height="80%" title="Click to view full-size image" />
 
 :::note
-To create an exemption request, you must have the necessary permissions (**Exemptions: View, Create/Edit**) at the Project level, or you can have the **Security Testing Developer** or **Security Testing SecOps** roles assigned. Refer [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
+To create an exemption request, you must have the necessary permissions (**Exemptions: View, Create/Edit**) at the Project level, or you can have the **Security Testing Developer** or **Security Testing AppSec** roles assigned. Refer [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
 :::
 
 ## Create Exemption Request for an Issue
-To request an exemption for an entire issue, you can set the exemption scope at the [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Security Tests** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
+To request an exemption for an entire issue, you can set the exemption scope at the [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Vulnerabilities** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
 
-1. In the **Security Tests** tab, locate and select the specific issue for which you want to request an exemption. This action opens the **Issue Details** pane on the right.
+1. In the **Vulnerabilities** tab, locate and select the specific issue for which you want to request an exemption. This action opens the **Issue Details** pane on the right.
 
 2. In the **Issue Details** pane, click **Request Exemption**.
 
-<DocImage path={require('./static/request-exemption.png')} width="40%" height="40%" title="Click to view full-size image" />
+<DocImage path={require('./static/request-exemption.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 ### Submit Exemption Request
 
-Fill out the **Request Exemption for Issue** form with the following fields:  
+Fill out the **Request Exemption for Issue** form with the following fields:
 <DocImage path={require('./static/request-exemption-form.png')} width="40%" height="40%" title="Click to view full-size image" />
 
 #### Where do you want this issue to be exempted?
@@ -52,7 +50,8 @@ Specify where the exemption should apply:
 - **This Project**: Exempts the issue across all pipelines and targets within this project. Choose carefully, as the exemption applies broadly within the project.  
 
 :::info
-While requests can only be created with the scopes mentioned above, reviewers can approve and apply them at the requested scope or at a higher scope - **Organization** or **Account**.
+- While requests can only be created with the scopes mentioned above, reviewers can approve and apply them at the requested scope or at a higher scope - **Organization** or **Account**.
+- As you create exemption request at the issue level, all the future occurrences part of this issues will be automatically exempted. For exemptions at occurrences level, refer to [Create Exemption Request for Occurrences within Issue](#create-exemption-request-for-occurrences-within-issue)
 :::
 #### For how long?
 
@@ -77,23 +76,31 @@ Add any technical context, mitigations, or supporting information that will help
 
 Add a link to supporting documentation, source code, or any relevant resource that provides additional context.
 
-After completing the form, click **Create Request** to submit the exemption.
 
+After completing the form, click **Create Request** to submit the exemption.
 Once the exemption request is submitted:
-- Inform your **Security Testing SecOps** reviewer.  
+- Inform your **Security Testing AppSec** reviewer.  
 - Ensure they have enough context and links to make a well-informed decision.
 
-## Create Exemption Request for Occurrences within Issue
-To request an exemption for selected occurrences of an issue, the exemption scope can only be set to the [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Security Tests** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
+### Create Exemption Request for Occurrences within Issue
 
-1. In the **Security Tests** tab, locate and select the specific issue for which you want to request an exemption. This action opens the **Issue Details** pane on the right.
+To request an exemption for selected occurrences of an issue, the exemption scope must be set to the [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Vulnerabilities** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
+
+1. In the **Vulnerabilities** tab, locate and select the specific issue for which you want to request an exemption. This opens the **Issue Details** pane on the right.
 2. In the **Issue Details** pane, click the **Occurrences** tab.
 3. Select the occurrences for which you want to request the exemption.
-4. Review the selected occurrences and click the **Request Occurrence Exemption** button. This will open the **Request Exemption** dialog box.
 
 <DocImage path={require('./static/request-occurrence-exemption.png')} width="700%" height="70%" title="Click to view full-size image" />
 
-Follow the steps in the [Submit Exemption Request](#submit-exemption-request) section to complete and send your request.
+4. Review your selections and click the **Request Occurrence Exemption** button. This opens the **Request Exemption** dialog box.
+
+<DocImage path={require('./static/exemption-at-occurrence-level.png')} width="40%" height="40%" title="Click to view full-size image" />
+
+If you select **all** occurrences of the issue:
+    - The option **Exempt all future occurrences discovered for this issue** at the bottom becomes available. Checking this option converts the request from an occurrence-level exemption to an issue-level exemption. This ensures all future occurrences of the issue will automatically be exempted.
+    - If any occurrences in the list are already exempted, this option will be disabled to prevent conflicts. To enable it, cancel the existing exemption requests for those occurrences. Once done, select all occurrences again and recreate the exemption request, the option should now be available to check or uncheck.
+
+Follow the steps in the [Submit Exemption Request](#submit-exemption-request) section to complete and submit your request.
 
 ## View Issue Exemptions
 
@@ -107,7 +114,7 @@ You can view all exemption requests from the **Exemptions** section in the left 
 Exemption requests list you see at the **Organization** and **Account** views are still subject to your project-level view permissions. Refer to [Permissions for exemption requests](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) to learn more.
 :::
 
-In the **Exemptions** sections, the requests are displayed in tabs presenting their status, each request includes:
+In the **Exemptions** sections, the requests are displayed in tabs presenting their status, each request in the **Pending** tab includes:
 
 - **Severity**: e.g., High  
 - **Issue**: e.g., `json5@2.2.0: Prototype Pollution`  
@@ -115,7 +122,7 @@ In the **Exemptions** sections, the requests are displayed in tabs presenting th
 - **Reason**: e.g., False Positive, Acceptable Use  
 - **Exemption Duration**: e.g., Exempted for all time  
 - **Requested by**: User who submitted the request  
-- **Actions**: Based on your permissions and request status — Approve, Reject, Cancel, Reopen
+- **Actions**: Based on your permissions and request status - Approve, Reject, Cancel, Reopen
 
 <DocImage path={require('./static/view-exemptions.png')} width="100%" height="100%" title="Click to view full-size image" />
 
@@ -130,19 +137,21 @@ actions to *Reject* or *Cancel*.
 For details on exemption request statuses and actions, refer [Exemption Request Lifecycle](/docs/security-testing-orchestration/exemptions/manage-exemptions#issue-exemption-lifecycle). To learn how to manage requests, [refer Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions).
 :::
 
-Clicking on an exemption request opens the **Exemption Details** pane, which provides a detailed overview of the request along with available actions (based on your permissions).
+Clicking an exemption request opens the **Issue Details** pane. At the top right of the side panel, you'll see the **Exemption Status** button, which provides a complete overview of the request along with the actions available to you (based on your permissions).
 
-<DocImage path={require('./static/exemption-details-side-pane.png')} width="80%" height="80%" title="Click to view full-size image" />
+<DocImage path={require('./static/exemption-details-side-pane.png')} width="100%" height="100%" title="Click to view full-size image" />
 
-This pane includes the following details:
+Clicking on the **Exemption Status** button shows:
 
-- **Issue Details:** Displays the issue title, severity, description, and scanner details.
-- **Exemption Status and History:** Shows the current status of the exemption (e.g., Pending, Approved, Rejected, Expired) along with a history of events such as when it was requested, approved, or rejected, etc.
-- **Occurrences:** Lists all the occurrences of the issue across different scans, and targets where it was detected.
-- **Targets Impacted** Displays all targets affected by the issue and where the exemption would be applied if approved.
-- **Response Actions:** If you have the [required permissions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions), you will see options to **Approve**, **Reject**, **Cancel**, or **Re-open** the request, depending on its current state.
+- **Current Status:** Indicates the state of the request — `Pending`, `Approved`, `Rejected`.
+- **Requested By:** Displays the user who created the exemption request and the relative time since it was submitted (e.g., `David · 7 days ago`).
+- **Requested Duration:** Shows the time period for which the exemption is requested (e.g., `7 days`, `30 days`).
+- **Scope:** Indicates the exemption's intended application scope, such as Target-level, Pipeline-level, or Project-level.
+- **Reason:** Selected justification category provided during request creation (e.g., `Acceptable Risk`, `False Positive`, `Not Exploitable` etc.).
+- **Comments:** Displays the latest comment added by a reviewer during the approval or rejection process.
+- **Description:** Optional detailed context added by the requester.
+- **Response Actions:** If you have the [required permissions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions), available actions include **Approve**, **Reject**, **Cancel**, or **Re-open**, depending on the current request state.
 
-Use this view to fully assess the impact of the issue before taking action on the request.
 
 ### View exemptions at the Project level
 

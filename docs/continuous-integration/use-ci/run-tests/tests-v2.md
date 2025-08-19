@@ -13,13 +13,13 @@ import TabItem from '@theme/TabItem';
 
 You can use this **Test Intelligence** step, also known as the **Test** step, to run unit tests with **Python**, **Ruby**, **Java** , **C#** , **Scala** and **Kotlin** programming languages.
 
-:::info
-Test Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+
+:::tip Test Intelligence Beta
+Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in **beta**. If you're interested in joining the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
 :::
 
 
-:::note
+:::info
 
 * Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
 * To use TI for Python, the image for the step must have Python 3 installed and accessible. Additionally, Virtual Environments for Python (`venv`) are not supported by TI.
@@ -38,7 +38,7 @@ Add the **Test** step to the [Build stage](/docs/continuous-integration/use-ci/s
                   spec:
                     command: mvn test  # Required. All other settings are optional.
                     shell: sh # Optional shell type.
-                    connectorRef: account.harnessImage # Container registry connector.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR # Container registry connector.
                     image: repo/image # Container image to use to run the commands.
                     privileged: false
                     intelligenceMode: true # Enable Test Intelligence.
@@ -386,7 +386,7 @@ config:
 
 ## Troubleshoot Test Intelligence
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for more questions and issues related to Test Intelligence, including:
 
 * [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
 * [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)

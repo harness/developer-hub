@@ -35,7 +35,7 @@ helpdocs_is_published: true
 
 This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness.md). For API permissions, go to the [API permissions reference](/docs/platform/automation/api/api-permissions-reference).
 
-:::Note
+:::note
     **Types of Permission**:
 
         | **Status**       | **Description**                                               |
@@ -47,11 +47,22 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
         
 :::
 
+:::danger Important Note:
+    **About `core_oidcIdToken_create`**  
+
+    A new `core_oidcIdToken_create` permission is introduced to govern the creation of OIDC ID token. The permission is currently in the EXPERIMENTAL status. However, after August 8, the permission will change to ACTIVE status. If any automation makes use of the [OIDC ID token](https://apidocs.harness.io/tag/Oidc-ID-Token), we recommend updating it accordingly.
+
+      | Resource      | Permissions                                          | Status       |
+      |---------------|------------------------------------------------------|--------------|
+      | OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
+:::
+
 ## Administrative Functions
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
 | Resource Groups | <ul><li>View (`core_resourcegroup_view`)</li><li>Create/Edit (`core_resourcegroup_edit`)</li><li>Delete (`core_resourcegroup_delete`)</li></ul> | Active |
+| OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
 | Account Settings | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_setting_view`)</li><li>Edit (`core_setting_edit`)</li></ul> | Active |
 | Default Settings | <ul><li>Create/Edit</li></ul> | Active |
 | Projects | <ul><li>View (`core_project_view`)</li><li>Create (`core_project_create`)</li><li>Edit (`core_project_edit`)</li><li>Delete (`core_project_delete`)</li></ul> | Active |
@@ -129,13 +140,11 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | --- | --- | --- |
 | Network Map | <ul><li>View (`servicediscovery_networkmap_view`)</li><li>Create (`servicediscovery_networkmap_create`)</li><li>Edit (`servicediscovery_networkmap_edit`)</li><li>Delete (`servicediscovery_networkmap_delete`)</li></ul> | Active |
 
-## Supply Chain Assurance
+## Supply Chain Security
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
 | Remediation Tracker | <ul><li>View (`ssca_remediationtracker_view`)</li><li>Create/Edit (`ssca_remediationtracker_edit`)</li><li>Close (`ssca_remediationtracker_close`)</li></ul> | Active |
-| Exemption | <ul><li>Create (`sto_exemption_create`)</li></ul> | Active |
-| Enforcement Exemption | <ul><li>View (`ssca_enforcementexemption_view`)</li><li>Create/Edit (`ssca_enforcementexemption_edit`)</li><li>Delete (`ssca_enforcementexemption_delete`)</li><li>Review (`ssca_enforcementexemption_review`)</li></ul> | Inactive |
 
 ## Webhooks
 
@@ -218,6 +227,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | GnuPG Keys | <ul><li>View (`gitops_gpgkey_view`)</li><li>Create/Edit (`gitops_gpgkey_edit`)</li><li>Delete (`gitops_gpgkey_delete`)</li></ul> | Active |
 | Repository Certificates | <ul><li>View (`gitops_gpgkey_view`)</li><li>Create/Edit (`gitops_gpgkey_edit`)</li><li>Delete (`gitops_gpgkey_delete`)</li></ul> | Active |
 | Applications | <ul><li>View (`gitops_application_view`)</li><li>Create/Edit (`gitops_application_edit`)</li><li>Delete (`gitops_application_delete`)</li><li>Sync: Deploy applications (`gitops_application_sync`)</li></ul> | Active |
+| Application Sets | <ul><li>View (`gitops_applicationset_view`)</li><li>Create/Edit (`gitops_applicationset_edit`)</li><li>Delete (`gitops_applicationset_delete`)</li></ul> | Experimental |
 | Repositories | <ul><li>View (`gitops_repository_view`)</li><li>Create/Edit (`gitops_repository_edit`)</li><li>Delete (`gitops_repository_delete`)</li></ul> | Active |
 | Certificates | <ul><li>View (`gitops_cert_view`)</li><li>Create/Edit (`gitops_cert_edit`)</li><li>Delete (`gitops_cert_delete`)</li></ul> | Active |
 
@@ -244,7 +254,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Issues | <ul><li>View (`sto_issue_view`)</li></ul> | Active |
 | Scans | <ul><li>View (`sto_scan_view`)</li></ul> | Active |
 | Test Targets | <ul><li>View (`sto_testtarget_view`)</li><li>Create/Edit (`sto_testtarget_edit`)</li></ul> | Active |
-| Exemptions | <ul><li>View (`sto_exemption_view`)</li><li>Create/Edit (`sto_exemption_edit`)</li><li>Approve/Reject (`sto_exemption_approve`)</li></ul> | Active |
+| Exemptions | <ul><li>View (`sto_exemption_view`)</li><li>Create/Edit (`sto_exemption_create`)</li><li>Approve/Reject (`sto_exemption_approve`)</li></ul> | Active |
 | External Tickets | <ul><li>View (`sto_ticket_view`)</li><li>Create/Edit (`sto_ticket_edit`)</li><li>Delete (`sto_ticket_delete`)</li></ul> | Active |
 
 ### Internal Developer Portal

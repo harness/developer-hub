@@ -143,16 +143,12 @@ You add an artifact from your ACR repo to the Harness service. For example, we'l
 2. In **Artifact Repository Type**, select **ACR**, and then select **Continue**.
 3. In **ACR Repository**, select **New Azure Connector**.
 4. Enter a name for the Connector, such as **Azure Quickstart**, and select **Continue**.
-5. In **Details**, select **Specify credentials here**.
-6. Enter the credentials for the Azure App registration you want to use. Here's an example of how App registration settings map to the connector's **Details**:
-
-  <DocImage path={require('./static/azure-cd-quickstart-103.png')} width="60%" height="60%" title="Click to view full size image" />
-
-   + **Azure ACR and AKS Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector):
+5. In **Details**, select your authentication method, and follow the configuration instructions in [Add a Microsoft Azure Cloud Connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector#configure-credentials)
+  + **Azure ACR and AKS Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector):
      
-     + **ACR:** the **Reader** role must be assigned.
-     + **AKS:** the **Owner** role must be assigned.
-     + For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
+    + **ACR:** the **Reader** role must be assigned.
+    + **AKS:** the **Owner** role must be assigned.
+    + For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
   
 7. Select **Continue**.
 8. In **Delegates Setup**, select **Only use Delegates with all of the following tags**, and then select the delegate you used earlier.

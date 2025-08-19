@@ -41,7 +41,7 @@ If you don't want to change the behavior for your entire account, follow the ste
 4. Select **Continue** to go to the **Details** settings.
 5. For **Provider Type** and **URL**, do one of the following:
 
-   * To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup` for **Docker Registry URL**.
+   * To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup/harness-public` for **Docker Registry URL**.
    * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
 
    If you want to change the connector back to Docker Hub, select **Docker Hub** and enter `https://registry.hub.docker.com`.
@@ -74,7 +74,7 @@ If you don't want to change the behavior for your entire account, you can [Use c
 4. Select **Continue** to go to the **Details** settings.
 5. For **Provider Type** and **URL**, do one of the following:
 
-   * To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup` for **Docker Registry URL**.
+   * To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup/harness-public` for **Docker Registry URL**.
    * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
    * To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
 
@@ -112,7 +112,7 @@ If you want to change the behavior for your entire account, you can [configure H
 4. Select **Continue** to go to the **Details** settings.
 5. For **Provider Type** and **URL**, do one of the following:
 
-   * To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup` for **Docker Registry URL**.
+   * To pull [Harness images from GAR](https://us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://us-docker.pkg.dev/gar-prod-setup/harness-public` for **Docker Registry URL**.
    * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://public.ecr.aws/harness` for **Docker Registry URL**.
    * To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
 
@@ -180,6 +180,10 @@ Create a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-
    When the pipeline runs, Harness will use the specified connector to download images from your private registry.
 
    ![](../static/connect-to-harness-container-image-registry-using-docker-connector-49.png)
+
+### Authentication Considerations for Amazon ECR Private Repositories
+
+You can configure a Docker connector in Harness to authenticate and pull images from your private registry. You can either create your own Docker connector or use the built-in account-level Harness Docker connector (`harnessImage`). When configuring a Docker connector to access an Amazon ECR private repository, you must provide a username and password for authentication. According to [AWS documentation](https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html#registry-auth-token), the authentication token obtained via the `aws ecr get-login-password` command is valid for 12 hours. Therefore, to maintain uninterrupted access, you need to update the connector with a new token every 12 hours. This requirement applies only to private ECR repositories. For public ECR repositories, you can configure the connector to use anonymous access, which does not require token-based authentication.
 
 ## Connector selection hierarchy
 

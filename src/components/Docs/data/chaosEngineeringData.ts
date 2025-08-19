@@ -1,11 +1,11 @@
 import {
   CardSections
-} from '@site/src/components/TutorialCard/TutorialCard';
-import { MODULES } from '@site/src/constants';
+} from "@site/src/components/TutorialCard/TutorialCard";
+import { MODULES } from "@site/src/constants";
 
 /* Define the cards - start */
 
-// Docs
+  // Docs
   export const docsCards: CardSections = [
     {
       name: "Get started",
@@ -13,188 +13,157 @@ import { MODULES } from '@site/src/constants';
         "",
       list: [
         {
-          title: "Build resilient applications with chaos engineering",
+          title: "Get started with Chaos Engineering",
           module: MODULES.ce,
           description:
-            "Learn the basics of Harness Chaos Engineering.",
-          link: "/docs/chaos-engineering/concepts/chaos101",
+            "Learn about chaos engineering principles, benefits, and how to get started with your first experiments.",
+          link: "/docs/chaos-engineering/overview",
         },
         {
-          title: "Onboard with HCE",
+          title: "Core Concepts",
           module: MODULES.ce,
           description:
-            "Onboarding with Harness Chaos Engineering.",
-          link: "/docs/chaos-engineering/getting-started/onboarding/",
-        },
-  ],
-},
-//];
-// Feature highlights
-  //export const featureHighlights: CardSections = [
-{
-    name: "Chaos faults",
-      description:
-        "",
-        list: [
-        {
-          title: "AWS faults",
-          module: MODULES.ce,
-          description:
-            "Execute AWS chaos faults.",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/",
+            "Understand the fundamental concepts of Harness Chaos Engineering.",
+          link: "/docs/chaos-engineering/key-concepts",
         },
         {
-          title: "Kubernetes faults",
+          title: "Quick Start Guide",
           module: MODULES.ce,
           description:
-            "Execute Kubernetes chaos faults. ",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/",
+            "Run your first chaos experiment in minutes with our comprehensive quickstart guide.",
+          link: "/docs/chaos-engineering/quickstart",
         },
-        {
-          title: "Azure faults",
-          module: MODULES.ce,
-          description:
-            "Execute Azure chaos faults.",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/",
-        },
-        {
-          title: "GCP faults",
-          module: MODULES.ce,
-          description:
-            "Execute GCP chaos faults",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/",
-        },
-        {
-          title: "VMware faults",
-          module: MODULES.ce,
-          description:
-            "Execute VMware chaos faults.",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/",
-        },
-        {
-          title: "Windows faults",
-          module: MODULES.ce,
-          description:
-            "Execute Windows chaos faults.",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/",
-        },
-        {
-          title: "Load faults",
-          module: MODULES.ce,
-          description:
-            "Execute load chaos faults.",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/load/",
-        },
-        {
-          title: "Kube-resilience faults",
-          module: MODULES.ce,
-          description:
-            "Execute kube-resilience chaos faults.",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/kube-resilience/",
-        },
-        {
-          title: "Bring Your Own Chaos (BYOC) faults",
-          module: MODULES.ce,
-          description:
-            "Bring your own chaos faults and execute them.",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/byoc/",
-        },
-        {
-          title: "Cloud Foundry chaos faults",
-          module: MODULES.ce,
-          description:
-            "Execute kube-resilience chaos faults.",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/",
-        },
-        {
-          title: "SSH faults",
-          module: MODULES.ce,
-          description:
-            "Execute SSH chaos faults.",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/",
-        },
-        {
-          title: "Linux chaos faults",
-          module: MODULES.ce,
-          description:
-            "Execute Linux chaos faults.",
-          link: "/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/",
-        },
-    ],
-  },
-//];
+      ],
+    },
 
-{
-  name: "Key features",
-    description:
-      "",
-      list: [
-      {
-        title: "GameDay",
-        module: MODULES.ce,
-        description:
-          "Execute chaos experiments in the application during a specific period..",
-        link: "/docs/chaos-engineering/use-harness-ce/GameDay",
-      },
-      {
-        title: "ChaosGuard",
-        module: MODULES.ce,
-        description:
-          "Additional layer of security to minimize blast radius and mitigate potential security threats. ",
-        link: "/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/",
-      },
-      {
-        title: "Chaos dashboard",
-        module: MODULES.ce,
-        description:
-          "Visualize important metrics and data associated with your experiment runs.",
-        link: "/docs/chaos-engineering/use-harness-ce/dashboards/",
-      },
     {
-      title: "Resilience Probes",
-      module: MODULES.ce,
-      description:
-        "Monitor your application's health before, during, and after executing a chaos experiment.",
-      link: "/docs/chaos-engineering/use-harness-ce/probes/",
-    },
-    {
-      title: "Service Discovery",
-      module: MODULES.ce,
-      description:
-        "Determine connections made to and from your Kubernetes cluster. ",
-      link: "/docs/chaos-engineering/use-harness-ce/service-discovery",
-    },
-    {
-      title: "Application Maps",
-      module: MODULES.ce,
-      description:
-        "Bind multiple interacting discovered services into a single object.",
-      link: "/docs/chaos-engineering/use-harness-ce/application-map",
-    },
-  ],
-},
-
-  //export const helpandFAQs: CardSections = [
-    {
-      name: "Help and FAQs",
+      name: "Feature highlights",
       description:
         "",
       list: [
         {
-      title: "Troubleshoot HCE",
-      module: MODULES.ce,
-      description:
-        "Troubleshoot HCE.",
-      link: "/docs/chaos-engineering/troubleshooting/",
+          title: "Chaos Experiments",
+          module: MODULES.ce,
+          description:
+            "Create, run, and analyze chaos experiments with comprehensive experiment management.",
+          link: "/docs/chaos-engineering/guides/chaos-experiments",
+        },
+        {
+          title: "Chaos Faults",
+          module: MODULES.ce,
+          description:
+            "Comprehensive fault library for Kubernetes, AWS, Azure, GCP, and infrastructure chaos.",
+          link: "/docs/chaos-engineering/faults/chaos-faults",
+        },
+        {
+          title: "Resilience Probes",
+          module: MODULES.ce,
+          description:
+            "Monitor and validate system health during chaos experiments with various probe types.",
+          link: "/docs/chaos-engineering/guides/probes",
+        },
+      ],
     },
-    {
-      title: "HCE FAQs",
-      module: MODULES.ce,
-      description:
-        "HCE FAQs.",
-      link: "/kb/chaos-engineering/chaos-engineering-faq",
-    },
-   ],
- },
-];
 
+    {
+      name: "Guides & Management",
+      description:
+        "",
+      list: [
+        {
+          title: "Application Maps",
+          module: MODULES.ce,
+          description:
+            "Visualize and understand your application topology for targeted chaos experiments.",
+          link: "/docs/chaos-engineering/guides/application-maps",
+        },
+        {
+          title: "GameDays",
+          module: MODULES.ce,
+          description:
+            "Organize and run collaborative chaos engineering exercises with your team.",
+          link: "/docs/chaos-engineering/guides/gamedays",
+        },
+        {
+          title: "Infrastructure Management",
+          module: MODULES.ce,
+          description:
+            "Set up and manage chaos infrastructure for Kubernetes and on-premises environments.",
+          link: "/docs/chaos-engineering/guides/infrastructures",
+        },
+        {
+          title: "Custom Faults",
+          module: MODULES.ce,
+          description:
+            "Create custom chaos faults using BYOC, scripts, HTTP calls, and database operations.",
+          link: "/docs/chaos-engineering/faults/custom-faults",
+        },
+        {
+          title: "On-premises (SMP)",
+          module: MODULES.ce,
+          description:
+            "Deploy and manage Harness Chaos Engineering in self-managed platform environments.",
+          link: "/docs/chaos-engineering/guides/on-premises-smp",
+        },
+      ],
+    },
+
+    {
+      name: "Integrations & Advanced",
+      description:
+        "",
+      list: [
+        {
+          title: "CI/CD Integration",
+          module: MODULES.ce,
+          description:
+            "Integrate chaos testing into your CI/CD pipelines for continuous resilience validation.",
+          link: "/docs/chaos-engineering/integrations/cicd/jenkins",
+        },
+        {
+          title: "Performance Testing Tools",
+          module: MODULES.ce,
+          description:
+            "Integrate with JMeter, Gatling, K6, and other performance testing tools for comprehensive validation.",
+          link: "/docs/chaos-engineering/integrations/performance-testing/gatling",
+        },
+        {
+          title: "Security & Governance",
+          module: MODULES.ce,
+          description:
+            "Implement security best practices, RBAC, and governance policies for chaos engineering.",
+          link: "/docs/chaos-engineering/security",
+        },
+      ],
+    },
+
+    {
+      name: "Help and Resources",
+      description:
+        "",
+      list: [
+        {
+          title: "Troubleshooting Guide",
+          module: MODULES.ce,
+          description:
+            "Common issues and solutions for infrastructure, experiments, and platform troubleshooting.",
+          link: "/docs/chaos-engineering/resources/troubleshooting",
+        },
+        {
+          title: "AI Reliability Agent",
+          module: MODULES.ce,
+          description:
+            "Leverage AI-powered insights for intelligent experiment recommendations and analysis.",
+          link: "/docs/chaos-engineering/guides/ai/ai-reliability-agent",
+        },
+        {
+          title: "Chaos Engineering Knowledge Base",
+          module: MODULES.ce,
+          description:
+            "Comprehensive knowledge base with tutorials, examples, and troubleshooting guides.",
+          link: "/kb/chaos-engineering",
+        },
+      ],
+    },
+  ];
+  /* Define the cards - end */

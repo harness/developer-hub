@@ -136,6 +136,10 @@ const config: Config = {
               to: 'docs/feature-flags',
             },
             {
+              label: 'Feature Management & Experimentation',
+              to: 'docs/feature-management-experimentation',
+            },
+            {
               label: 'Cloud Cost Management',
               to: 'docs/cloud-cost-management',
             },
@@ -152,8 +156,8 @@ const config: Config = {
               to: 'docs/chaos-engineering',
             },
             {
-              label: 'Incident Response',
-              to: 'docs/incident-response',
+              label: 'AI SRE',
+              to: 'docs/ai-sre',
             },
             {
               label: 'Service Reliability Management',
@@ -244,7 +248,7 @@ const config: Config = {
               to: 'university/sto',
             },
             {
-              label: 'Software Supply Chain',
+              label: 'Supply Chain Security',
               to: 'university/scs',
             },
             {
@@ -363,8 +367,8 @@ const config: Config = {
               to: 'https://harness.io/products/chaos-engineering',
             },
             {
-              label: 'Incident Response',
-              to: 'https://harness.io/products/incident-response',
+              label: 'AI SRE',
+              to: 'https://harness.io/products/ai-sre',
             },
             {
               label: 'Service Reliability Management',
@@ -464,7 +468,7 @@ const config: Config = {
     prism: {
       theme: themes.github,
       darkTheme: themes.vsDark,
-      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git'],
+      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git', 'java', 'powershell'],
     },
     colorMode: {
       defaultMode: 'light',
@@ -557,7 +561,7 @@ const config: Config = {
         sidebarPath: require.resolve('./sidebars.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
-        exclude: ['**/shared/**', '**/static/**'],
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         routeBasePath: 'docs', //CHANGE HERE
         remarkPlugins: [
           [

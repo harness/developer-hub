@@ -7,7 +7,6 @@ import { CcmData } from "./ccmData";
 import { StoData } from "./stoData";
 import { SscaData } from "./sscaData";
 import { CeData } from "./ceData";
-import { SrmData } from "./srmData";
 import { IdpData } from "./idpData";
 import { SeiData } from "./seiData";
 import { IacmData } from "./iacmData";
@@ -16,6 +15,7 @@ import { aidaData } from "./aidaData";
 import { codeData } from "./codeData";
 import { CdeData } from "./cdeData"; 
 import { DbdevopsData } from "./dbdevopsData"; 
+import { AtaData } from "./ataData"; 
 
 
 export interface ModuleData {
@@ -66,6 +66,12 @@ const ModuleData: ModuleData[] = [
     horizon: DbdevopsData,
   },
   {
+    title: "AI Test Automation",
+    description: "SaaS release status: GA, SMP release status: Not yet planned",
+    module: MODULES.ata,
+    horizon: AtaData,
+  },
+  {
     title: "Continuous Integration",
     description: "SaaS release status: GA, SMP release status: GA",
     module: MODULES.ci,
@@ -107,12 +113,6 @@ const ModuleData: ModuleData[] = [
       "SaaS release status: GA, SMP release status: Limited GA",
     module: MODULES.ce,
     horizon: CeData,
-  },
-  {
-    title: "Service Reliability Management",
-    description: "SaaS release status: GA, SMP release status: GA",
-    module: MODULES.srm,
-    horizon: SrmData,
   },
   {
     title: "Internal Developer Portal",

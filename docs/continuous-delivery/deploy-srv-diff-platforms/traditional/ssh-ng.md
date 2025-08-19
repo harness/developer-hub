@@ -153,10 +153,6 @@ Write down hosts as a comma separated list.
 
 This setting is available when you pick **Select preconfigured hosts from Physical Data Center** under **Select hosts** and select **Filter by host attributes**
 
-:::note
-Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 You can control whether multiple host‑attribute filters are combined with **OR (match any)** or **AND (match all)** logic.
 
 **Any (default)** – a host is selected if at least one filter condition matches (existing behavior).
@@ -934,18 +930,28 @@ repeat:
 
 ### Reference hosts in steps using expressions
 
-You can use all of the `<+instance...>` expressions to reference your hosts.
+You can use the following [instance expressions](/docs/platform/variables-and-expressions/harness-variables) to reference your hosts:
 
-For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
+#### For Microsoft Azure or Physical Data Center (PDC):
 
-* `<+instance.hostName>`
-* `<+instance.host.hostName>`
-* `<+instance.name>`
+- `<+instance.hostName>`
+- `<+instance.host.hostName>`
+- `<+instance.name>`
 
-For Microsoft Azure or AWS:
+#### For Microsoft Azure and AWS:
 
-* `<+instance.host.privateIp>`
-* `<+instance.host.publicIp>`
+- `<+instance.host.privateIp>`
+- `<+instance.host.publicIp>`
+
+:::info
+- **For AWS with WinRM deployments:**  
+  Hostname-based expressions like `<+instance.hostName>` and `<+instance.host.hostName>` are **not supported**. Use `<+instance.host.privateIp>` or `<+instance.host.publicIp>` instead.
+
+- **For Azure with WinRM deployments:**  
+  Hostname-based expressions are supported if the hostname is available from the VM metadata.
+
+- `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+:::
 
 ### Rollback
 Harness restores the state of deployment to the pipeline's previous successful stage execution based on `serivce`, `enviroment` and `infrastucture` details.

@@ -19,7 +19,7 @@ Before beginning the walkthroughs in this guide, ensure you have:
 - Access to a Harness account.
 - Access to a Git provider with your [OpenTofu](https://opentofu.org/) or Terraform file.  
 - Access to a Cloud Provider such as AWS or Google Cloud Platform.
-- An [organization and project set up](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
+- An [organization and project set up](/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
 
 Go to [What's Supported in IaCM](/docs/infra-as-code-management/whats-supported) for more information on supported Cloud Providers and Code/Git providers.
 
@@ -61,7 +61,7 @@ Follow this [**OpenTofu migration guide**](https://opentofu.org/docs/intro/migra
 A workspace is a named environment for storing OpenTofu or Terraform configurations and resources. Connect your Cloud Provider and Code Repository through **Connectors** to manage infrastructure changes and updates with Harness IaCM pipelines.
 
 :::info
-Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](https://developer.harness.io/docs/infra-as-code-management/get-started/#add-a-new-workspace).
+Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](/docs/infra-as-code-management/get-started/#add-a-new-workspace).
 :::
 
 ### Add connectors
@@ -120,12 +120,12 @@ Using GitHub as an example, after following the initial five steps to reach the 
 12. Continue to the final step to confirm your GitHub connection is verified successfully.
 13. Select **Finish**.
 
-Go to [Connect your Code Repository](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo) for more information regarding connecting your Code Repository.
+Go to [Connect your Code Repository](/docs/platform/connectors/code-repositories/connect-to-code-repo) for more information regarding connecting your Code Repository.
 </TabItem>
 </Tabs>
 
 :::info OIDC Connectors
-For easier access and token management, use the **OIDC** (OpenID Connect) option in the Credentials panel. This allows your connector to assume roles with permissions set in your Cloud Provider, updated only by authorized users. For more details, visit [the Use OIDC tab](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials).
+For easier access and token management, use the **OIDC** (OpenID Connect) option in the Credentials panel. This allows your connector to assume roles with permissions set in your Cloud Provider, updated only by authorized users. For more details, visit [the Use OIDC tab](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials).
 :::
 
 ---
@@ -133,17 +133,14 @@ For easier access and token management, use the **OIDC** (OpenID Connect) option
 Once you have configured your connectors, you can create a Workspace and select them in the New Workspace panel:
 
 :::tip migrate existing projects
-For first-time use, use our [migration tool](https://developer.harness.io/docs/infra-as-code-management/remote-backends/state-migration) to create new workspaces and import your existing Terraform projects into the Harness Platform.
+For first-time use, use our [migration tool](/docs/infra-as-code-management/remote-backends/state-migration) to create new workspaces and import your existing Terraform projects into the Harness Platform.
 :::
 
 <Tabs>
 <TabItem value="Interactive guide">
-:::warning pending release
-The new workspace wizard is currently pending release and will be available soon!
-:::
 <DocVideo src="https://app.tango.us/app/embed/cfb68b54-eb46-42af-a622-5b76c9270598" title="Creating a New Workspace in Harness" />
 </TabItem>
-<TabItem value="Step-by-step" default>
+<TabItem value="Step-by-step">
 1. In the module pane, select **Infrastructure**.
 2. Select an existing project or create a new project.
 3. Select **Workspaces**, and then select **New Workspace**.
@@ -173,14 +170,10 @@ Harness IaCM currently supports integration with all **OpenTofu** versions<Harne
 </TabItem>
 </Tabs> 
 
-<details>
-<summary>Add connectors while creating a workspace</summary>
-<DocVideo src="https://app.tango.us/app/embed/d267f7c8-767f-4f14-b382-7b20c96a8e08" title="Add connector while create a workspace" />
-</details>  
 ---
 
 ### Add a pipeline
-A pipeline structures workflows to manage tasks like planning infrastructure changes, enforcing policies, and approvals. Learn more about [Harness Pipelines](https://developer.harness.io/docs/category/pipelines). You can also add pipelines through the Harness Platform or [use a code-first approach with YAML](https://developer.harness.io/docs/platform/pipelines/harness-yaml-quickstart).
+A pipeline structures workflows to manage tasks like planning infrastructure changes, enforcing policies, and approvals. Learn more about [Harness Pipelines](/docs/category/pipelines). You can also add pipelines through the Harness Platform or [use a code-first approach with YAML](/docs/platform/pipelines/harness-yaml-quickstart).
 
 #### Provision with Cost Estimation
 :::info
@@ -189,7 +182,7 @@ You can include **cost estimation** as part of the workspace setup and in conjun
 
 <Tabs>
   <TabItem value="Interactive guide">
-  <DocVideo src="https://app.tango.us/app/embed/ca925494-e35b-4ddc-af6f-a881197da980" title="Create an IaCM Provision Pipeline" />
+  <DocVideo src="https://app.tango.us/app/embed/ca925494-e35b-4ddc-af6f-a881197da980?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create an IaCM Provision Pipeline" />
   </TabItem>
   <TabItem value="Step-by-step">
   Start by adding the pipeline:
@@ -208,16 +201,20 @@ You can include **cost estimation** as part of the workspace setup and in conjun
   </TabItem>
 </Tabs>
   
-The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Tofu/Terraform Plugins](/docs/infra-as-code-management/pipelines/terraform-plugins) for more information about supported OpenTofu/Terraform commands.
+The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Tofu/Terraform Plugins](/docs/infra-as-code-management/cli-commands/terraform-plugins) for more information about supported OpenTofu/Terraform commands.
 
 ---
 
 ### Add an Approval step (optional)
 You can add the Approval step to prompt a review of the previous pipeline before proceeding to the next. The most common use case would be to add the Approval step between the `plan` and `apply` steps to ensure you are happy with the infrastructure changes and estimated costs (if `cost estimation` is enabled on your Workspace) that come with them before applying them.
 
+:::warning Approval steps hold resources
+When using an Approval step, the underlying machine running the pipeline remains active until the approval is resolved. This means it will continue consuming compute resources.
+:::
+
 <Tabs>
 <TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/3efdb37e-0d97-4875-a0b2-91fd4442cbe9" title="Add an IaCM Approval step to your provision pipeline" />
+<DocVideo src="https://app.tango.us/app/embed/3efdb37e-0d97-4875-a0b2-91fd4442cbe9?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add an IaCM Approval step to your provision pipeline" />
 </TabItem>
 <TabItem value="Step-by-step">
 1. From the Pipeline > **Execution** tab, click on **+** between `plan` and `apply`.  
@@ -234,4 +231,4 @@ You can add the Approval step to prompt a review of the previous pipeline before
 Go to [pipeline approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step) for more details about approval steps and how they work.
 
 ## Conclusion
-This guide introduced you to the core functionalities and setup of Harness IaCM, from creating workspaces to configuring pipelines. For further learning and performance analysis, explore the [Project Setup guides](https://developer.harness.io/docs/category/project-settings) and [Reporting & Insights guides](https://developer.harness.io/docs/category/reports--insights) to enhance your infrastructure management with Harness.
+This guide introduced you to the core functionalities and setup of Harness IaCM, from creating workspaces to configuring pipelines. For further learning and performance analysis, explore the [Project Setup guides](/docs/category/manage-projects) and [Reporting & Insights guides](/docs/category/reports--insights) to enhance your infrastructure management with Harness.

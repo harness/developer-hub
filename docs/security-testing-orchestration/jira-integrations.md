@@ -1,7 +1,7 @@
 ---
-title: Create Jira tickets
+title: Create Jira Tickets
 description: You can create Jira tickets for any issue detected during an STO pipeline execution.
-sidebar_label: Create Jira tickets
+sidebar_label: Create Jira Tickets
 sidebar_position: 85
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/jira-integrations
@@ -17,7 +17,7 @@ Harness STO allows you to create individual Jira tickets for security issues det
 
 :::note
 - This feature is **not supported** in Self-Managed Enterprise Edition.  
-- It is supported for both [Security Testing Developer](https://docs.platform/role-based-access-control/add-manage-roles/#module-specific-roles) and [Security Testing SecOps](https://docs.platform/role-based-access-control/add-manage-roles/#module-specific-roles) roles.  
+- It is supported for both [Security Testing Developer](https://docs.platform/role-based-access-control/add-manage-roles/#module-specific-roles) and [Security Testing AppSec](https://docs.platform/role-based-access-control/add-manage-roles/#module-specific-roles) roles.  
 
 This integration has a separate setup path that is unrelated to other Jira-related integrations in Harness pipelines. To open Jira tickets for security findings in STO, you must set up the integration as documented below. You cannot use other Jira workflows to create Jira tickets in STO. For example, you cannot integrate Jira with STO using Custom steps with Jira Create or other related steps.
 :::
@@ -32,7 +32,7 @@ Before you begin, you must complete a one-time setup to configure your Jira conn
 Jira tickets can only be created for targets that have baselines configured. For more information, see [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
 :::
 
-1. Go to the **Security Tests** tab from a pipeline execution or from the **Executions** section in the left navigation panel.
+1. Go to the **Vulnerabilities** tab from a pipeline execution or from the **Executions** section in the left navigation panel.
 
 2. Locate and select the issue for which you want to create a Jira ticket, then click **Create Ticket**.
 

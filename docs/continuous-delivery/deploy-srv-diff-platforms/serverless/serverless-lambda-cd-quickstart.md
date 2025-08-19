@@ -201,6 +201,7 @@ The `s3:GetBucketLocation` action is required for a custom S3 bucket only.
 
 </details>
 
+- AWS OIDC connectors are supported for Serverless V2 deployments starting with delegate version `857xx` or later.
 
 ## Use AWS IRSA for Harness AWS connector credentials
 
@@ -219,7 +220,7 @@ import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
 
 ### Containerized step images
 
-#### Old Images
+### Old Images
 
 Harness supports different images for Prepare, Package and deploy for sereverless deployment. 
 
@@ -234,25 +235,31 @@ Rollback:- [`harnessdev/serverless-rollback:LATEST_TAG`](https://hub.docker.com/
 
 We recommend you to use the new images that we have introduced with multiple runtime support.
 
-#### New Images
+### New Serverless Images
 
-Harness support [multiple runtime images](https://hub.docker.com/r/harness/serverless-plugin/tags) for **nodejs20**, **nodejs18**, **java17**, **java8**, **python3.11**, **python3.12** and **ruby3.2**. These are Linux AMD64 images. 
+Harness support [multiple runtime images](https://hub.docker.com/r/harness/serverless-plugin/tags) for **nodejs22**, **java21** , **nodejs20**, **nodejs18**, **java17**, **java8**, **python3.11**, **python3.12** and **ruby3.2**. These are Linux AMD64 images. 
 
-Unlike old images, in new images a single image has the capabiliity of handling all the serverless steps.
+Unlike old images, in new images a single image has the capability of handling all the serverless steps.
 
 There are two flavours of images available first with serverless installed and other without serverless installed that you can use.
 
- Runtimes | With Serverless Installed | Without Serverless Installed
-| --- | --- | --- |
-| nodejs 20 | harness/serverless-plugin:nodejs20.x-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:nodejs20.x-1.0.1-beta-linux-amd64 |
-| nodejs 18 | harness/serverless-plugin:nodejs18.x-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:nodejs18.x-1.0.1-beta-linux-amd64 |
-| java 17 | harness/serverless-plugin:java17-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:java17-1.0.1-beta-linux-amd64 |
-| java 8 | harness/serverless-plugin:java8.al2-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:java8.al2-1.0.1-beta-linux-amd64 |
-| python 3.11 | harness/serverless-plugin:python3.11-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:python3.11-1.0.1-beta-linux-amd64 |
-| python 3.12 | harness/serverless-plugin:python3.12-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:python3.12-1.0.1-beta-linux-amd64 |
-| ruby 3.2 | harness/serverless-plugin:ruby3.2-3.39.0-1.0.1-beta-linux-amd64 | harness/serverless-plugin:ruby3.2-1.0.1-beta-linux-amd64 |
+| **Runtimes** | **With Serverless Installed** | **Without Serverless Installed** | **Version** |
+| --- | --- | --- | --- |
+| **nodejs 22** | [harness/serverless-plugin:nodejs22.x-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs22.x-3.39.0-1.1.0-beta-linux-amd64/images/sha256-aea2e5f4bea0d55cc54f98530910a95ec056474de5fc4a3e4f993e43a351bcbf) | [harness/serverless-plugin:nodejs22.x-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs22.x-1.1.0-beta-linux-amd64/images/sha256-745550b16c387abd32d9d4db9c91170649ddb0632b2151c86a60ba7ad346a38a) | nodejs v22.14.0 |
+| **nodejs 20** | [harness/serverless-plugin:nodejs20.x-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs20.x-3.39.0-1.1.0-beta-linux-amd64/images/sha256-87c380c39159ee07fc96eb1544acd54f16c40c7fe05475921d56e4b0ca644517) | [harness/serverless-plugin:nodejs20.x-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs20.x-1.1.0-beta-linux-amd64/images/sha256-f4f5895d2a09b217f5e8a6f25991e9525b0e78756127af161bc195729fc103a2) | nodejs v20.19.0 |
+| **nodejs 18** | [harness/serverless-plugin:nodejs18.x-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs18.x-3.39.0-1.1.0-beta-linux-amd64/images/sha256-a6c80afa3cd0c2f1be0134d25b3c11704fb5d37dac4d487b6140d009eb90d1c6) | [harness/serverless-plugin:nodejs18.x-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs18.x-1.1.0-beta-linux-amd64/images/sha256-205eec0eeb5e8e41658c0d1ab02bd069a2cf757df9610bbcdc18fbb7ced89341) | nodejs v18.20.7 |
+| **java 21** | [harness/serverless-plugin:java21-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/java21-3.39.0-1.1.0-beta-linux-amd64/images/sha256-42d7a638fa133e5b24653bbd605ece67367ec4b4e610d24631631e7dd1e063d5) | [harness/serverless-plugin:java21-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/java21-1.1.0-beta-linux-amd64/images/sha256-d2d0c0dee723d18632c7cecc1e9dcafa4005942b733fa5830ddd21553dfc6255) | openjdk 21.0.6 |
+| **java 17** | [harness/serverless-plugin:java17-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/java17-3.39.0-1.1.0-beta-linux-amd64/images/sha256-017b10a289756c5bebfc082575c09ecfecd1dfa52ff8925ed30d6f3a11e01add) | [harness/serverless-plugin:java17-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/java17-1.1.0-beta-linux-amd64/images/sha256-d21899c9ac944e0d55ef2efe435137ff9c7b833aea6c9fcf88be818b3e248344) | openjdk 17.0.11 |
+| **java 8** | [harness/serverless-plugin:java8.al2-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/java8.al2-3.39.0-1.1.0-beta-linux-amd64/images/sha256-e7df6d9c8647a55944cdcb3101ac2e1f27a071f2562ee768cb36de373f990720) | [harness/serverless-plugin:java8.al2-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/java8.al2-1.1.0-beta-linux-amd64/images/sha256-501055e82063e660fd10c14da59212d77fad6586dc041d25bc740e8175dd5b8f) | openjdk 1.8.0_372 |
+| **python 3.12** | [harness/serverless-plugin:python3.12-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.12-3.39.0-1.1.0-beta-linux-amd64/images/sha256-617ccd746b0efde9e7ef65addb47e2a7c4845ffe142dd9cb4ca78f8976185c79) | [harness/serverless-plugin:python3.12-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.12-1.1.0-beta-linux-amd64/images/sha256-15888fc51e89a9b70ea36761d4f367a034e7629726d79e71a728d046ab1716b3) | Python 3.12.9 |
+| **python 3.11** | [harness/serverless-plugin:python3.11-3.39.0-1.0.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.11-3.39.0-1.0.0-beta-linux-amd64/images/sha256-47c1e7121d0b0163928c99480bcea106fb59b8c51921844eb5ee0326f3b5a3d2) | [harness/serverless-plugin:python3.11-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.11-1.1.0-beta-linux-amd64/images/sha256-7897343bb1a005b532df4f4204a6641199a89d1cb246a5a7100981d8c7172129) | Python 3.11.11 |
+| **ruby 3.2** | [harness/serverless-plugin:ruby3.2-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/ruby3.2-3.39.0-1.1.0-beta-linux-amd64/images/sha256-c9aa6fe805586b608dc377c747e9046d41825317e7eb7afcfacad3af05dd8f8b) | [harness/serverless-plugin:ruby3.2-1.0.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/ruby3.2-1.0.0-beta-linux-amd64/images/sha256-e564accd3315707dcbf6e04159a3202dba0f05b0484025354490abc1c71d48ba) | ruby 3.2.8 |
 
 For ECR users, you can access these images via the [ECR Image Repository for Serverless Plugin](https://gallery.ecr.aws/harness/harness/serverless-plugin).
+
+For GAR users, you can access these images via:
+- US region: [GAR Image Repository for Serverless Plugin (US)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fserverless-plugin?invt=Ab2GnQ&inv=1)
+- Europe region: [GAR Image Repository for Serverless Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fserverless-plugin?inv=1&invt=Ab5cNA)
 
 Now, let's understand the runtime image one with serverless installed and one without serverless installed. 
 
@@ -395,9 +402,6 @@ plugins:
   - serverless-deployment-bucket@latest
 ```
 
-:::info
-Currently, OIDC connectord are **not supported** for Serverless V2 Plugin
-:::
 
 Variables such as `{{.Values.serviceName}}` will be resolved by a corresponding `values.yaml` file that is added in the same place as the manifest. Follow the steps above to add a manifest, but at step 3 select **Values YAML** instead. Here is an example of a `values.yaml` file for the manifest:
 
@@ -415,7 +419,18 @@ By default, the values will be resolved for the manifest in each serverless step
 
 ## Add the artifact
 
-Currently, Harness supports ZIP file artifacts only. Harness doesn't support Docker images yet.Next, we'll add a publicly-available artifact to your Service. The artifact is a zip file with a JavaScript function hosted in Artifactory.
+Next, add your Serverless artifact. For this quickstart, we will add a publicly available artifact to your service using Artifactory. However, you have more options for your artifact source.
+
+### Artifact Sources
+
+Here is a full list of artifact sources available to you for Serverless deployments:
+- [**Artifactory**](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo#add-an-artifactory-repository). Harness supports ZIP files stored in Artifactory as your Serverless deployment artifacts.
+- [**AWS S3**](/docs/platform/connectors/cloud-providers/add-aws-connector). Harness supports ZIP files stored in an S3 bucket for your Serverless deployment artifacts.
+- [**ECR**](/docs/platform/connectors/cloud-providers/add-aws-connector). Harness supports docker images stored in ECR as your Serverless deployment artifacts.
+
+### Add the artifact with Artifactory
+
+For this guide, we'll add a publicly-available artifact to your Service. The artifact is a zip file with a JavaScript function hosted in Artifactory.
 
 We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate in a Kubernetes cluster. The delegate is a worker process that performs the deployment operations. The delegate will use the URL and credentials you provide in the Connector to connect to Artifactory and fetch the artifact at runtime.
 
@@ -1149,7 +1164,7 @@ frameworkVersion: '2 || 3'
 
 provider:
   name: aws
-  runtime: nodejs20.x
+  runtime: nodejs12.x
 functions:
   hello:
     handler: handler.hello

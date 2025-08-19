@@ -122,7 +122,7 @@ Now let's apply these features to common use cases:
 
 ## Scanner coverage
 
-For a list of supported scanners, see [Scanners supported by STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanners-supported-by-sto). 
+For a list of supported scanners, see [Scanners supported by STO](/docs/security-testing-orchestration/whats-supported/scanners). 
 
 
 ## Try Harness STO

@@ -59,7 +59,8 @@ If your storage isn't S3-compatible or your don't want to use access key and sec
 We suggest that you consider setting bucket level retention policy for efficient cache management. 
 
 :::info
-Enabling DLC when running on Kubernetes requires *privileged mode* on the cluster where the builds run. 
+- Enabling DLC when running on Kubernetes requires *privileged mode* on the cluster where the builds run. 
+- To use path-style S3 addressing in self-hosted Build and Push steps with DLC, set `PLUGIN_PATH_STYLE: "true"` in envVariables. This allows compatibility with S3 providers that do not support virtual-hosted style URLs.
 :::
 
 
@@ -95,6 +96,10 @@ Here is a YAML example of a  **Build and Push an image to Docker Registry** step
 ## Remote cache image
 
 Remote cache image is an alternative to Harness CI Intelligence Docker layer caching. 
+:::info
+
+Remote cache image support is currently available only for Kubernetes infrastructure.
+:::
 
 Remote caching leverages your existing Docker registry to pull previously built layers. Each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple Build and Push steps, enabling them to share the same remote cache.
 

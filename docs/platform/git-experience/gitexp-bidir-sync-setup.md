@@ -29,7 +29,7 @@ This topic explains how to set up and use bidirectional sync.
 - Currently, only `.yaml` and `.yml` files are supported for bi-directional sync.
 - When configuring a webhook, you need to be the owner of the relevant git repository.
 - Bidirectional sync is not supported for Harness Code.
-
+- If a change is made to a Git-backed entity directly in the Git repository with bidirectional sync enabled, it will bypass `On Save` OPA policies. To ensure these entities comply with your OPA policies, define your policies as `On Run` for these entities.
 
 ## Bi-directional Sync
 
@@ -51,6 +51,37 @@ Automatic webhook registration follows these principles:
   - A webhook is only registered if one doesn't already exist for the given entity.
 - Webhooks are registered at the **nearest matching scope**:
   - For example, if an entity is created at the **org level**, the webhook is registered at the **org level**.
+
+### Disable Automatic Webhook Registration
+
+By default, Harness attempts to register webhooks automatically for GitX entities using the associated Git connector. If your organization prefers to manage webhook registration externally, you can now disable webhook creation entirely from the Harness platform.
+
+
+#### Skip Git Webhook Registration Setting
+
+To disable automatic webhook registration:
+
+1. Go to **Account Settings** → **Git Experience Settings**.
+2. Enable the **Skip Git Webhook Registration** checkbox.
+3. Save your changes.
+
+When this setting is enabled:
+
+- Harness will not attempt to create or validate webhooks in your Git provider.
+- When creating Git triggers, you will see a message indicating that webhook registration is skipped.
+- You are responsible for manually creating and managing webhooks in your Git system.
+
+This is useful for organizations that:
+
+- Do not allow outbound connections or webhook creation from Harness.
+- Use Git systems like GitLab with restricted permissions or intermediaries.
+- Need full control over webhook behavior without triggering permission issues.
+
+Here is an example of the message displayed during Git Webhook creation when this setting is enabled.
+
+<div align="center">
+  <DocImage path={require('./static/manual-webhook.png')} width="60%" height="60%" title="Manual Webhook Registration" />
+</div>
 
 ## Manual Webhook Setup for Bi-directional Sync
 

@@ -21,11 +21,13 @@ Testing is an important part of Continuous Integration (CI). Testing safeguards 
 
 Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use parallelism (test splitting) with TI to further optimize your test times.
 
-You can used Test Intelligence with  **Python**, **Java** , **Ruby**, **C#**, **Kotlin**, or **Scala** programming languages
+You can used Test Intelligence with  **Python**, **Java** , **Ruby**, **C#**, **Kotlin**, or **Scala** programming languages.
+
+:::tip Test Intelligence Beta
+Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in **beta**. If you're interested in joining the beta program, please contact Harness support or your account representative.
+:::
 
 :::info
-- Test Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 
 - Test Intelligence applies to unit testing only. For other types of tests, [use Run steps](../run-step-settings.md).
 
@@ -69,13 +71,11 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **T
 
 :::tip
 
-We recommend using [**Test**](./tests-v2.md) Step (Test Intelligence v2) to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
+**We recommend using [**Test**](./tests-v2.md) Step (Test Intelligence v2)** to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
 
 :::
 
-
-
-For instructions on using the Test Intelligence (v2), go to: [Test Intelligence step](./tests-v2.md)
+**For instructions on using the Test Intelligence (v2), go to: [Test Intelligence step](./tests-v2.md)**
 
 For instructions on using the Test Intelligence (v1), go to:
 
@@ -83,6 +83,23 @@ For instructions on using the Test Intelligence (v1), go to:
 - [Enable TI with Run Tests step for Java, Kotlin, or Scala](./tests-v1/ti-for-java-kotlin-scala.md)
 - [Enable TI with Run Tests step for Python](./tests-v1/ti-for-python.md)
 - [Enable TI with Run Tests step for Ruby](./tests-v1/ti-for-ruby.md)
+
+### Handling report files with parallelism
+
+If you're using **parallelism** (test splitting) with the **Test** step, ensure that each parallel execution generates a **unique** JUnit result file. Otherwise, the aggregated test results might show duplicated or incorrect entries.
+
+In your test script, use one of the following variables to generate unique result files:
+- `junitxml="result_<+strategy.iteration>.xml"` (for matrix/strategy-based parallelism)
+- `junitxml="result_$HARNESS_NODE_INDEX.xml"` (for Harness node-based parallelism)
+
+Also, in the **Report Paths** field of the **Test** step, use a wildcard to capture all generated reports, for example:
+
+```yaml
+**/result_*.xml
+```
+<DocImage path={require('./static/parallelism-test-intelligence.png')} />
+
+This ensures that TI parses all test reports accurately and avoids duplication in the Tests tab.
 
 
 ## Ignore tests or files

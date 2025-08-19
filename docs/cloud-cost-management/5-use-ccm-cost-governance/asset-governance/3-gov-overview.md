@@ -44,8 +44,8 @@ Here is an in-depth explanation of the Overview page and the information it disp
   - **Custom Recommendations**: All Custom Recommendations show up with a "Custom" badge after successful creation.
 
   :::important note
-- In case of AWS and Azure, Account/ Subscription and region combination with greater than 300$ of monthly spend are considered for recommendations.
-- In case of GCP, Project with greater than 300$ of monthly spend is considered for recommendations.
+  - In case of AWS and Azure, Account/ Subscription and region combination with greater than 300$ of monthly spend are considered for recommendations.
+  - In case of GCP, Project with greater than 300$ of monthly spend is considered for recommendations.
   :::
 
 To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/governance).
@@ -56,26 +56,42 @@ You can see a list of all recommendations offered by Harness for each Cloud prov
 - [Asset Governance recommendations for Azure](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/azure/azure-recommendations)
 - [Asset Governance recommendations for GCP](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gcp/gcp-recommendations)
 
-### Governance Recommendation Insights
 
-Harness CCM's Cloud Asset Governance provides recommendations out of the box for management of cloud resources. Harness CCM now offers the ability to customize these recommendations.
+## Rules Generating Recommendations
 
-Custom recommendations allow users to create personalized policies that integrate with the existing CCM recommendation engine.
-These custom recommendations not only show up in the recommendation section but also leverage features like the Ignore list, state management, and ticketing integration.
+<DocImage path={require('./static/new-feature.png')} width="100%" height="100%" title="Click to view full size image" />
 
-By clicking on the new 'Recommendation Insights' tab, users can view all recommendations and their insights. These recommendations can be filtered based on out-of-the-box rules ('By Harness') or custom rules ('Custom').
+Harness CCM provides flexibility in how governance rules are applied across your organization. You can define custom default rules to enforce globally or for specific account subsets and control which accounts are subject to specific governance policies
 
-<DocImage path={require('./static/custom-rec.png')} width="120%" height="120%" title="Click to view full size image" />
+#### Adding Rules to Generate Recommendations
 
-:::note
-
-- Currently, per account, a maximum of 10 custom recommendations can be created.
-- Custom Recommendations can only be created for the resources supported for cost correlation as listed below. In addition to that, multi-policy rules cannot be converted into Custom Recommendations.
-- It can take up to 24 hours for a custom recommendation to appear.
-- In case of AWS and Azure, Account/ Subscription and region combination with greater than 300$ of monthly spend are considered for recommendations.
-- In case of GCP, Project with greater than 300$ of monthly spend is considered for recommendations.
-
+:::info
+Each cloud provider (AWS, Azure, GCP) supports up to 50 rules for recommendation generation. This limit applies to the combined total of both out-of-the-box (OOTB) and custom rules.
 :::
+1. Click on "Rules Generating Recommendations" tab. Click the **+Include Rule** button to add an existing cost governance rule
+2. Select the scope for recommendation generation:
+   - **All Accounts/Regions/Subscriptions**: Apply the rule across your entire environment
+   - **Only Specific Accounts/Regions/Subscriptions**: Target the rule to selected accounts
+
+### Managing Governance Rules
+
+Once rules are added, the governance dashboard displays the following information for each rule:
+
+| Column | Description |
+|--------|-------------|
+| Name | The name of the governance rule |
+| Target | Which accounts/subscriptions the rule applies to |
+| Last Evaluation | When the rule was last processed |
+| Recommendations | Number of recommendations generated |
+| Potential Savings | Estimated cost savings if recommendations are implemented |
+| Success Rate | Percentage of successful rule evaluations |
+
+For each rule, you can:
+- Modify target subscriptions
+- Remove the rule from generating recommendations
+- View detailed rule performance metrics
+
+> **Note**: Only users with appropriate permissions can define default rules for groups or modify global governance policies.
 
 ### Governance Alerts
 
@@ -117,7 +133,9 @@ You can create alerts by defining the following parameters:
 
 ## Cost Correlation
 
-### What’s supported
+Cost Correlation in Harness CCM connects governance with their actual cost impact, allowing you to quantify the financial implications. 
+
+### What's supported
 
 | Cloud | Cost Correlation                                                                                                                                                                                                                                                         | First Class Region Filter Support | Recommendations | Multi-Policy | Autostopping (EC2/VM/Instance) | Perspective Preferences |
 | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------- | --------------- | ------------ | ------------------------------ | ----------------------- |

@@ -241,8 +241,42 @@ When setting up your AWS Secrets Manager in Harness, you can choose one of the f
 
   Once the Test Connection succeeds, select **Finish**. You can now see the connector in **Connectors**.
 
+
+## Reference an AWS Secrets Manager Secret
+In order to reference your AWS Secrets Manager secret, customers have a few options to retrieve the secret 
+
+They can either retrieve the secret directly through a Referenced JSON secret, or they can utilize a "referenced secret" type.  The benefit to utlizing a referenced secret is that it allows for some more complicated conditions to be utilized, and customers can update the referenced secret at one location, instead at every reference point.  
+
 ### Reference JSON secrets
 
 import Refj from '/docs/platform/shared/reference-via-json.md';
 
 <Refj />
+
+### Referenced AWS Secrets Manager Secret
+Customers can create a referenced secret and establish a link to the secret within AWS and test that reference.  [The following are instructions about how to establish the connection, and how to refer to the secret](https://developer.harness.io/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/#option-aws-secrets-manager-secrets).
+
+If the key or secret reference need to updated in the future, this also provides a centralized location to make the change.
+
+### Cross Account AWS Secrets Manager Secrets
+Customers looking to reference Cross Account Secrets will need to use [Harness Secrets References](https://developer.harness.io/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/#option-aws-secrets-manager-secrets) to pull the secret from the correct account.
+ 
+This is because by default, any connector to an AWS secrets manager will utilize the role in the delegate, but the secret reference will default to the account that the role resides in.  In Cross Account references, the user needs to be able to definie the account to access.
+ 
+#### Example
+The Cross Account Role resides in `AWSAccountEast`, and the team has set up an AWS Secrets Manager Connector.  The team then needs to reference a key in `AWSAccountWest`.  
+ 
+If teams attempt to call a secret directly using the expression for JSON Reference,  `<+secrets.getValue("account.YOUR_SECRET_MANAGER://myVault/harness/testpath/example")>`, this will fail as there is no method to specify the account.  It will end up looking for the secret in `AWSAccountEast` instead of `AWSAccountWest`.
+ 
+To reference that secret, Harness users should utilize secret references to get keys that reside in a cross-account, and not a direct reference.
+ 
+1. Go to your Secrets, under your Harness Settings (Account/Org/Project level settings, depending on where the secret and AWS Secrets Manager Connector Reside)
+2. Create a new `secret`
+  ![](../static/secrets-reference-newsecret.png)
+3. Change the secrets manager to the `AWS Manager` that has been created already. (This should be residing in `AWSAccountEast` in our example) and click `Apply Selected
+  ![](../static/secrets-reference-secretman.png)
+4. Fill in all additional details such as the `Secrets Name`, `ID`, `Tags` and `Description`.
+5. Change the radiobutton to the `Referenced Secret` choice.
+  ![](../static/secrets-reference-referencesecret.png)
+6. In the field for the Reference Secret, enter the ARN and key that the team is accessing.  The format should mimic  `arn:aws:secretsmanager:REGION:ACCOUNT_ID:harness/testsecret#secrekey`, where the Region and Account match `AWSAccountWest` in our example.  This now allows you to refer to the account you want to access the secret from, while still using the role in the correct base account.
+7. Refer to the secret by its location and ID `<+secrets.getValue("account.secretname")>`

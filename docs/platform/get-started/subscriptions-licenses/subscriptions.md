@@ -40,7 +40,7 @@ The following Harness modules are integral to a **Developer's** daily workflow. 
 - **Continuous Integration (CI):** All users on the Harness Platform who have permission to access Harness CI module are considered as **CI Developers** and consume a license.
 - **Internal Developer Portal (IDP):** All users on the Harness Platform who have permission to access Harness IDP module are considered as **IDP Developers** and consume a license.
 - **Feature Flags (FF):** All users on the Harness Platform who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered as **FF Developers** and consume a license.
-- **Software Engineering Insights (SEI):** All users whose actions or artifacts are read from configured Source Code Management or Issue / Project Management tool(s) are considered as **SEI Developers** and consume a license.
+- **Software Engineering Insights (SEI):** SEI allows admins to explicitly define (import) the list of Developers for whom Insights must be generated. All Developers in this list, explicitly consume a Developer license. These Developers may never login to the Harness Platform, but consume a license by virtue of having Insights generated for their Engineering related work. Insights may often be accessed by management / engineering leadership.
 
 
 ### Modules with no direct developer tracking (consumption entitlements)
@@ -214,6 +214,9 @@ For more information about specific module subscriptions and licenses, go to:
 - [CD Service-based licensing and usage](/docs/continuous-delivery/get-started/service-licensing-for-cd)
 - [FF Subscriptions](/docs/feature-flags/subscribe-ff/subscriptions-overview.md)
 - [SRM subscriptions and licenses](/docs/service-reliability-management/get-started/srm-subscription-licensing)
+- [CE license consumption](/docs/chaos-engineering/guides/license-consumption)
+- [SEI subscriptions and licenses](/docs/software-engineering-insights/harness-sei/get-started/sei-subscription-and-licensing)
+- [CODE subscriptions and licenses](/docs/code-repository/get-started/cr-subscription-mgmt)
 
 ## Cloud Marketplace offerings
 

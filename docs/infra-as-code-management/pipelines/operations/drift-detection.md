@@ -95,3 +95,13 @@ Use `plan-refresh-only` if there are drifted resources in your environment, but 
 This pipeline shows how to handle drift without applying pending changes:
 
 ![plan-refresh-only](static/plan-refresh-only.png)
+
+:::info opentofu drift vs plan behavior
+OpenTofu and Terraform handle `drift` and `plan` operations differently.
+
+**For drift detection:** Harness runs `tofu plan -refresh-only` to find changes made outside of OpenTofu, including metadata like `updated_at` values.
+
+**For regular planning:** The `tofu plan` command (and corresponding Harness step) only reports differences between your configuration and infrastructure. If your config matches the current state, **OpenTofu will report no changes needed**, even if metadata values changed.
+
+In short: Drift detection finds all external changes, while planning only focuses on changes relevant to bringing your infrastructure in line with your configuration.
+:::

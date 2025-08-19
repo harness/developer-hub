@@ -3,6 +3,7 @@ title: Entity caching with Git Experience
 description: Improve load times for remote entities, with caching.
 sidebar_position: 4
 ---
+import GitXconnect from '/docs/platform/shared/gitx-connectivity.md'
 
 Entity caching reduces delays in loading your remote entities on the Harness UI. The Harness UI maintains a local cache to reduce delays in loading your remote entities. Caching is especially useful when there are multiple levels of nesting, such as those involving pipeline templates, stage templates, and step templates. Loading such nested entities can be time-consuming involving numerous network calls, thereby reducing the performance.
 
@@ -15,6 +16,16 @@ The Git cache is only used to render entities faster in the Harness UI, not to i
 :::
 
 You can reload the entities from Git and update the cache at any time. 
+
+## Setting Up Caching
+Caching occurs with git entities (GitHub, Bitbucket, etc) where a webhook has been established.  For example, setting up a webhook as a part of [the GitX Bi-directional sync](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/#setup-via-webhooks-page) or a webhook as a part of [Bitbucket Caching](https://developer.harness.io/kb/continuous-delivery/articles/bitbucket-api-limit/#setting-up-a-webhook-for-caching)
+
+Please note that caching occurs for each webhook created on a **per repo** basis.  Every repo that is storing entities needs its own webhook in order to establish caching.  
+
+## Caching entities saved on multiple branches
+
+To ensure isolation between caches for different entities for different branches, the cache for each entity is maintained separately for each branch. 
+For example, if you have a stage template saved in separate branches in Git, Harness maintains a separate cache corresponding to each branch for the stage template. When this stage template is encountered during your entity fetch, the cache corresponding to a unique key is requested from the server. The server then looks for a cache with this key and returns the cache (if available). 
 
 ## Entity cache life cycle 
 
@@ -48,10 +59,7 @@ Harness UI uses the following cache life cycle to render a remote entity:
 
    For example, if you open a remote pipeline whose cache has expired, the backend updates its cache based on the latest Git version.
    
-## Caching entities saved on multiple branches
-
-To ensure isolation between caches for different entities for different branches, the cache for each entity is maintained separately for each branch. 
-For example, if you have a stage template saved in separate branches in Git, Harness maintains a separate cache corresponding to each branch for the stage template. When this stage template is encountered during your entity fetch, the cache corresponding to a unique key is requested from the server. The server then looks for a cache with this key and returns the cache (if available). 
+<GitXconnect />
 
 ## Committing changes
 

@@ -53,6 +53,9 @@ If your organization restricts access to Google Artifact Registry (GAR), conside
 
 ::: 
 
+<details>
+<summary>Previous Highlights</summary>
+
 :::danger Breaking Changes 
    **Introducing a new set of permissions, while marking existing DEPRECATED permissions as INACTIVE.**  
 
@@ -76,14 +79,22 @@ If your organization restricts access to Google Artifact Registry (GAR), conside
     **Note:** The existing legacy notification permissions are DEPRECATED and will soon be moved to an INACTIVE state. The new permissions will be released in the ACTIVE state with RBAC enforced.
 :::
 
+:::danger Important Note:
+    **About `core_oidcIdToken_create`**  
+
+    A new `core_oidcIdToken_create` permission is introduced to govern the creation of OIDC ID token. The permission is currently in the EXPERIMENTAL status. However, after August 8, the permission will change to ACTIVE status. If any automation makes use of the [OIDC ID token](https://apidocs.harness.io/tag/Oidc-ID-Token), we recommend updating it accordingly.
+
+      | Resource      | Permissions                                          | Status       |
+      |---------------|------------------------------------------------------|--------------|
+      | OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
+:::
+
 :::info important
 This is a notification for a feature change aimed at enhancing your experience with Harness. Here's what you need to know:
 
 1. Harness uses connectors to external secret managers (e.g. Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. External secret manager connectors require configuration, including a means to authenticate to the external Secret Manager. On **December 11, 2023**, Harness added a restriction that users can **only use Harness Built-in Secret Manager to store authentication credentials** for access to the corresponding Secret Manager.
 
 2. **Continuity Assured**: There is no impact on your existing pipelines. They remain compatible with the way secrets were referenced before this feature change. Note that this includes using an external secret manager other than the Harness Built-in Secret Manager to store the authentication secret.
-
-:::
 
 #### Why did Harness make this change?
 
@@ -121,6 +132,10 @@ Below is further explanation for each type of secret manager Harness currently s
 
 6. For **Custom Secrets Manager**, if any secret is needed in the template as a variable, then it can only be stored in the Harness Built-in Secret Manager.
 
+:::
+
+</details>
+
 ## Deprecation notice
 
 The following deprecated API endpoints are longer supported:
@@ -128,7 +143,137 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## August 2025
+
+### Version 1.101.x <!--August 13, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where, with the `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES` feature flag enabled, adding a new role assignment to an inherited principal failed if one already existed, due to incorrect scope information being passed. [PL-64180]
+- Improved the delegate registration process, making it more reliable and faster under heavy load, while reducing timeouts and failed attempts. [PL-61033]
+
+### Version 1.100.x <!--August 06, 2025-->
+
+#### Fixed issues
+
+- Resolved a CSS-related issue that affected the readability of YAML diffs in the Audit Log view. The diff now renders correctly without visual glitches. [PL-64397]
+- Dashboards and Dashboard pages have been updated to support dynamic scaling, ensuring better viewing across all device sizes. [PL-64173]
+
+#### New features and enhancements
+
+- Improved backend queries to optimize how tasks are fetched by delegates. No action is needed from users. [PL-64473]
+- Added support for [deleting Delegate tokens](https://developer.harness.io/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens#delete-delegate-tokens) — making it easy to clean up unused ones. [PL-63386]
+
+## July 2025
+
+### Version 1.99.x <!--July 30, 2025-->
+
+#### Fixed issues
+
+- Increased the item limit in scrollable lists beyond 100 to enhance usability and avoid display limitations. [PL-63813]
+
+#### New features and enhancements
+
+- Introduced [Secret Manager template reconciliation](/docs/platform/secrets/secrets-management/reconcilation-of-secret-manager-template) to automatically review and update linked Secret Managers and Secrets when templates are modified, preventing misconfigurations. [PL-61310]
+- Launched [Default Notification Templates](/docs/platform/notifications/default-notification-template) that automatically apply when no notification template is selected in a notification rule, providing the capability to define the notification template centrally. [PL-61479]
+- Introduced [Centralised Delegate Notifications](/docs/platform/notifications/centralised-notification) for proactive delegate monitoring with immediate alerts for disconnection, expiration, and near-expiration alerts. [PL-31873]
+- AWS KMS connector now supports adding [ARN as plain text](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager) across all authentication methods. [PL-62434]
+- Enhanced database operations during delegate registration to prevent duplicate entries in `delegateConfig`. [PL-64095]
+- Improved visibility on the service accounts' details page at a higher scope; users can now see details of service accounts that are inherited at lower scopes. [PL-63634]
+- Delegate tasks are now marked as completed instead of being deleted immediately. These completed tasks are automatically removed after a defined retention period using a TTL (Time-To-Live) index. [PL-61842]
+- ECS delegates are now deprecated. New ECS delegate registrations are no longer supported, and existing ECS delegates will gradually be disconnected. [PL-56291]
+
+### Version 1.98.x <!--July 22, 2025-->
+
+#### New features and enhancements
+
+- Enhanced the task broadcast mechanism to prevent sending tasks to non-eligible delegates. [PL-58722]
+
+### Version 1.97.x <!--July 15, 2025-->
+
+#### Fixed issues
+
+- Resolved a bug in the roll-up job by updating it to process documents one at a time, improving memory efficiency and preventing out-of-memory (OOM) errors. [PL-63838]
+- Updated User Details page where links under the RoleBindings tab now properly redirect to the correct scoped Roles and ResourceGroups. [PL-63651]
+
+#### New features and enhancements
+
+- New audit event for Delegate token expiry: An audit event gets logged whenever a delegate token gets revoked. This enhancement improves visibility and traceability of delegate token lifecycle events, supporting stronger security auditing. [PL-63995]
+
+### Version 1.96.x <!--July 08, 2025-->
+
+#### Fixed issues
+
+- SAML Authentication: Resolved time synchronization issues by introducing a 5-minute clock skew tolerance between the Identity Provider (IdP) and Harness Manager. [PL-63828]
+- Updated SMP license validation to avoid false email alerts. [PL-63554]
+
+#### New features and enhancements 
+
+- Added the `FIPS_ENABLED` environment variable to the delegate YAML when the manager is deployed with FIPS enabled. [PL-63554]
+
+### Version 1.95.x <!--July 01, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue in the Create [IP Allowlist](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/) screen where pasting text into the Name field would duplicate the content. For example, pasting `ABC 1` would incorrectly result in `ABC 1ABC 1`. [PL-63331]
+
+#### New features and enhancements 
+
+- Introduced `core_oidcIdToken_create` as an experimental permission to enable creation of OIDC ID Tokens. [PL-62926]
+- Delegates are now tagged with the appropriate scope (Account/Organization/Project) for all Assessment types in the Delegate selection logs in a pipeline. [PL-49165]
+
+## June 2025
+
+### Version 1.94.x <!--June 17, 2025-->
+
+#### Fixed issues
+
+- Previously, selecting a higher-level Secret Manager (like Account scope) without access to lower levels (like Organization scope) caused the Secret Manager screen to keep loading. This is now fixed, and users can select and use Secret Managers without issues. [PL-63165]
+
+#### New features and enhancements 
+
+- Added support for managing access control for [connectors through tags](https://developer.harness.io/docs/platform/connectors/manage-access-control-for-connectors). This feature is currently behind the feature flag: `PL_TAG_BASED_ACCESS_TO_CONNECTORS`. [PL-43468]
+
+### Version 1.93.x <!--June 10, 2025-->
+
+#### Fixed issues
+
+- Resolved missing "Variable" option in the Audit Filter dropdown list. [PL-63195]
+- Navigating to a role or resource group from user role bindings no longer leads to a blank page. [PL-63154]
+- Code Repository resource group now appears correctly in the resource group list. [PL-63120]
+
+#### New features and enhancements 
+
+- Upgraded the Java UBI9 base image to version `17.0.10` to improve stability, security, and performance. [PL-62957]
+- Added support for [Custom Notifications](https://developer.harness.io/docs/platform/templates/customized-notification-template/) for all remaining channels: Email, Slack, Microsoft Teams, Datadog, PagerDuty.
+
 ## May 2025
+
+### Version 1.91.x <!-- May 27, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where direct navigation links did not trigger sign-in page when accessed without an active session. [PL-62933]
+- Fixed an issue where banner buttons displayed cut-off or missing text when multiple banners were created. The button rendering and styling logic have been updated for a consistent UI display. Additionally, validation has been added to the callToActions field in the Banner entity API to allow up to 2 entries, with each entry’s key limited to 15 characters to ensure consistency across platforms. [PL-62794]
+      
+      :::danger Breaking Changes 
+      Changes introduced in **[PL-62794]** may affect users who have built automation based on the previous behavior. If your workflows depend on the current implementation, please review and update your automation to align with the new changes.
+      :::
+
+### Version 1.90.x <!-- May 19, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where users couldn’t create, edit, or delete custom dashboards and folders due to incorrect permission checks. These actions now work as expected based on the assigned permissions. [PL-62667]
+- Fixed an issue where updating users in an SCIM-managed group caused an error. This behavior was inconsistent with the Terraform provider. Now, instead of throwing an error, the system ignores the incoming user data and retains the existing users when saving the group. [PL-62492] 
+- Fixed an issue where the Terraform provider version is no longer hardcoded in the installation command. It will now be automatically selected based on the delegate's configuration. [PL-61735]
+
+#### New features and enhancements 
+
+- SMP customers can now see the chart version in the Harness UI under Account Details. [PL-62579]
+- All SMP services now support a custom Istio gateway. [PL-61322]
+- All SMP services now support Istio and Virtual Services. [PL-59078]
+- **User Impersonation**: Account Administrators can now securely impersonate users to troubleshoot access issues and ensure the right permissions are in place. This eliminates guesswork and helps validate user experiences by allowing admins to temporarily access and perform actions on a user's behalf. This feature is currently behind the feature flag: `PL_ENABLE_USER_IMPERSONATION`. [PL-43425]
 
 ### Version 1.89.x <!--May 13, 2025-->
 
@@ -365,6 +510,8 @@ The following deprecated API endpoints are longer supported:
 - Upgraded the `org.asynchttpclient_async-http-client` to version 3.0.1. (PL-59246)
 
 - Upgraded the delegate base image from `ubi8-minimal:8.10` to `ubi9-minimal:9.4`. (PL-58376)
+
+- NG Delegates have been updated to exclude the use of delegate profiles and scopes when retrieving implicit selectors, ensuring more consistent behavior. (PL-55697)
 
 ## December 2024
 ### Version 1.69.x<!-- December 12, 2024 -->

@@ -22,7 +22,7 @@ The following pictorial highlights a typical SDLC process.
 ![](./static/sto-faqs-00.png)
 
 ### How many scanners does STO support?
-STO supports many popular scanners. For a list of all supported tools, go to the [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach).
+STO supports many popular scanners. For a list of all supported tools, go to the [Supported Security Scanners](/docs/security-testing-orchestration/whats-supported/scanners.md).
 
 ## Do similar category tools show identical issues?
 
@@ -119,7 +119,7 @@ Harness supports two RBAC roles specifically for STO users. You can customize th
 
 * **Developer** role — Permissions needed for developer workflows.
 
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions.
+* **AppSec** role — Permissions needed for Application Security or Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions.
 
 These workflows are covered in [Add Security Testing roles](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles).
 
@@ -155,7 +155,7 @@ The page (or tab) exists to grant and manage security exemptions. For more infor
 
 ## What open-source scanner integrations does STO support?
 
-For detailed information about supported scanners, both open-source and commercial, go to [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support).
+For detailed information about supported scanners, both open-source and commercial, go to [Harness STO scanner support](/docs/security-testing-orchestration/whats-supported/scanners).
 
 ## What is the difference between an STO pipeline, a CD pipeline, and a CI pipeline?
 

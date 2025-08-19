@@ -8,32 +8,33 @@ import TabItem from '@theme/TabItem';
 
 :::info note
 Currently this feature is behind Feature Flag: `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`
-However, since this is supported for centralised notification, we need `PL_CENTRAL_NOTIFICATIONS` and `PIPE_CENTRALISED_NOTIFICATION` to be enabled first. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
 :::
 
-Users can create custom notification templates, allowing them to customise notification content and reuse templates within **Centralised Pipeline Notifications**. Templates support Pipeline Expressions and RBAC controls, ensuring flexibility and security.
+You can create custom notification templates to customize notification content and reuse templates across **Centralized Pipeline Notifications**. These templates support Pipeline Expressions and RBAC controls, giving you both flexibility and security.
 
-This feature is especially useful when you want to:
+With this enhancement, you can **attach a custom notification template** to a notification rule and override the default message format with a custom webhook payload.
 
-- Include specific information such as pipeline variables, stage outputs, or build inputs in the notification.
-- Send trimmed-down notifications that contain only the most relevant information.
-- Format notifications to align with internal standards or predefined payload structures.
+Custom templates let you:
 
-This enhancement allows you to **attach a Custom Notification Template** to a notification rule and override the default message format with a custom webhook payload.
+- Control the structure and content of your notifications.
+- Use dynamic expressions (such as pipeline or stage variables).
+- Reuse templates across multiple pipelines and teams.
 
-Custom templates give you control over the structure and content of the notification, support dynamic expressions (like pipeline and stage variables), and enable reuse across multiple pipelines.
+In this section, you'll learn how to set up notifications for pipeline events using custom notification templates at a specific scope.
 
-We are going to discuss setting up a notification for Pipeline Events using Custom Notification Templates, at a certain scope.
+You can create custom notification templates at the following [scopes](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization**, and **Project**.
 
-You can set up custom notification template for Pipeline notification at following [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization** and **Project Level**. 
+There are two ways to use custom notification templates:
+
+- [**Centralized notifications for pipelines**](/docs/platform/notifications/centralised-notification)
+- [**Pipeline notifications**](/docs/platform/notifications/notification-settings/#get-started-with-notifications)
 
 ## Setting Up Notifications Template
 
 :::info note
-1. Custom Notification templates will work only for webhook notifications.
-2. Custom Notification templates support usage of template variables.
-3. Custom Notification templates will be an inline entity, meaning they cannot be stored in Git.
-4. All Pipeline and Stage-level variables are supported. If an expression cannot be resolved, it will return an empty string.
+- Custom Notification templates support usage of template variables.
+- Custom Notification templates will be an inline entity, meaning they cannot be stored in Git.
+- All Pipeline and Stage-level variables are supported. If an expression cannot be resolved, it will return an empty string.
 ```json
 {
   "pipeline name": "pipeline",
@@ -50,7 +51,7 @@ In this example, we are going to discuss setting up custom notification template
 
 <iframe 
   src="https://app.tango.us/app/embed/fc86f283-ef3a-4199-88a1-8de92b845754"
-  style={{ minHeight: '960px', maxWidth: '800px', width: '100%' }}
+  style={{ minHeight: '800px'}}
   sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
   security="restricted"
   title="Creating a Notification Template in Harness"
@@ -75,7 +76,7 @@ In this example, we are going to discuss setting up custom notification template
 5. (Optional) Select the pencil icon to enter a **Description**.
 6. (Optional) Select the pencil icon to add **Tags**.
 7. In **Version Label**, enter the version of the template, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
-8. In Text Type you can choose text type as **HTML**, **JSON**, **YAML** or **String** for content body.
+8. In Text Type you can choose text type as **HTML**, **JSON**, **YAML** or **String** for content body based on what notification method you are using.
 
 ![](./static/notification-template-1.png)
 
@@ -90,61 +91,6 @@ In this example, we are going to discuss setting up custom notification template
 
 10. Click on **Save**.
 
-Now, let's add this custom notification template to a notification rule at Project Level:
-
-:::info note
-A template created at the Account level can be used for notification rules at Account, Org, or Project levels. Similarly, Org-level templates can be used at Org and Project levels.
-:::
-
-1. In Harness, go to **Project Settings**.
-2. Under **General**, select **Notifications Management**. 
-3. Under **Overview**, provide **Notification Name** and **Continue** to select Resource type.
-4. Under **Resources**, Select Resource Type as **Pipeline**. 
-5. Under **Condition** , select **+ Add Condition** to define pipeline events based on which you want to be notified.
-
-Under events you can select the following **pipeline events**:-
-
-1. Pipeline Start
-2. Pipeline Success
-3. Pipeline Failed
-4. Stage Start
-5. Stage Success
-5. Stage Failed
-
-:::info note
-Stage start/success/failed events will apply to all stages within a pipeline. There is no option to configure notifications for specific stages. If you want stage-specific notifications, you can configure them via Pipeline-level notifications, but note that this does not support custom notification templates.
-:::
-
-Under **Create Condition** provide, Condition Name and **Select Pipeline Events**. Click on **Continue** to set channel where you want to send the notification.
-
-:::info
-Custom Notification Templates are currently supported **only for Webhook channels**. If you select any other channel type (e.g., Email, Slack, Teams, PagerDuty), the template option will not be available.
-:::
-
-6. Under **Notification Templates**, select your Notification template and select **Use Template** and click on **Continue**.
-
-7. Under **Set Channels**, **Select Channels** where you want notification to be sent.
-
-Under **Select Channel** you can chose the already created channel at that scope or you can create a [**New Channel**](/docs/platform/notifications/notification-settings.md).
-
-
-8. Select **Submit** to save your notification configuration.
-
-Once this is done, all notifications for the selected event will be sent in the selected template format for **all pipelines in that project**.
-
-If you want to apply the same template to notifications across **all pipelines in an Org or Account**, follow the same flow at the respective scope.
-
-
-You can also view **Referenced By** in your Custom Notification Template to see notification rule it is attached to.
-
-![](./static/notification-referenced-by.png)
-
-You can also check audit trail events for Custom Notification Template created. 
-
-Notification Templates support **versioning**, allowing you to maintain multiple iterations of a template. You can also mark a version as the **Stable Version**, enabling notification rules to automatically reference the most current approved version, similar to how other templates in Harness work.
-
-![](./static/notification-template-audit.png)
-
 
 </TabItem>
 </Tabs>
@@ -153,80 +99,333 @@ Notification Templates support **versioning**, allowing you to maintain multiple
 
 ## Attaching a Custom Notification Template to Pipeline Notifications
 
-Harness supports [adding notification rules to pipelines](/docs/platform/notifications/notification-settings/#add-a-notification-rule). With this enhancement, you can now **attach a Custom Notification Template** to a pipeline notification rule to override the default message format and send custom webhook-based notifications.
+Harness supports [adding notification rules to pipelines](/docs/platform/notifications/notification-settings/#add-a-notification-rule). With this enhancement, you can now **attach a custom notification template** to a pipeline notification rule to override the default message format and send custom webhook-based notifications.
 
-This lets you replace the default notification message with a tailored structure defined in your template, including any runtime variables or expressions you've configured.
+You can also attach templates in [**centralized notification for pipeline events**](/docs/platform/notifications/centralised-notification)
 
-### How to attach a template
+This allows you to replace the default notification message with a tailored structure defined in your template, including any runtime variables or expressions you've configured.
 
-When configuring a **pipeline-level notification rule**, click on **Notify** in the right panel of the Pipeline Studio, and follow the existing flow until you reach the **Notification Templates** step:
+### How to Attach a Template
 
-1. Under the **Notification Templates** tab:
-   - Select your custom notification template.
-   - If the template includes **runtime variables**, you’ll be prompted to provide values for those inputs.
+When configuring a **pipeline-level notification rule**, click **Notify** in the right panel of the Pipeline Studio. Then, follow the steps for [Configure pipeline notifications](/docs/platform/notifications/notification-settings/#get-started-with-notifications) until you reach the **Notification Template** step.
 
-   ![](./static/customised-notifiy-1.png)
+Under the **Notification Template** section:
 
-:::info
-Custom notification templates are supported **only for webhook notification methods**. Templates cannot be used with Email, Slack, Teams, or PagerDuty.
-:::
+- Select your custom notification template.
+- If the template includes **runtime variables**, you'll be prompted to provide values for those inputs.
 
-Once applied, the custom template overrides the default webhook payload sent during pipeline execution.
+  ![](./static/customised-notifiy-1.png)
 
-## Variables in the Notification Template
+Each notification method has a different payload format, so you’ll need to create a separate custom notification template for each method.
 
-Notification templates support **runtime inputs**, which must be provided when configuring a notification rule—whether at the **Centralised Notification Service (CNS)** level or the **pipeline** level.
+Here are the notification methods and their sample payload format:
 
-If a runtime variable is declared in the template, you will be prompted to **enter values or expressions** for it when selecting that template during notification rule configuration.
 
-Use the following expression format to reference these variables in your template body: `<+notification.variables.testVar>`
+<Tabs>
+  <TabItem value="email" label="Email" default>
 
-You can also access the event type that triggered the notification using: `<+notification.eventType>`
+Here is a sample template for Email notification:
 
-## Reconciliation of Notification Rules
+```yaml
+template:
+  name: email-template
+  type: Notification
+  projectIdentifier: samples
+  orgIdentifier: default
+  tags: {}
+  spec:
+    body:
+      content: |
+        subject: Harness Pipeline Notification
+        body: |
+          Hello,
 
-If you update a notification template by **adding new runtime variables** after it has already been attached to a notification rule, you may need to reconcile the rule to ensure those inputs are provided during execution.
+          Here's a summary of your pipeline execution:
 
-### Pipeline-level Notifications (via CNT tab)
+          Pipeline Name: <+pipeline.name>
+          Status: <+pipeline.status>
 
-When a template used in a **pipeline-level notification rule configured through the Notify (CNT) tab** is updated, a **warning message** will appear when you attempt to run the pipeline:
+          Stage Name: <+stage.name>
 
-- "Entities referenced in this pipeline have been updated. Please reconcile and save the pipeline to run the latest version."
+          View Execution:
+          <+pipeline.executionUrl>
 
-You can still proceed with the run, but any newly added variables will default to an **empty string** unless resolved.
 
-To fully reconcile the rule with the latest version of the template, you need to **reselect the template** and **provide values** for the new inputs:
+          Regards,
+          Harness CI/CD
+      type: YAML
+    variables: []
+  identifier: email-template
+  versionLabel: v0
+  ```
 
-1. Go to the **Notify** tab in the pipeline.
-2. Edit the notification rule.
-3. Navigate to the **Templates** tab.
-4. Reselect the **same notification template**.
-5. A prompt will appear asking you to **enter values** for the new runtime variables.
+  Here's how the notification would look like when the above template is used in the notification rule:
 
-This updates the pipeline YAML to reference the latest template version and ensures all required inputs are captured.
+  ![](./static/email-template.png)
 
-### Centralised Notifications (CNS)
+  </TabItem>
+  <TabItem value="datadog" label="Datadog">
 
-In **Centralised Notification rules**, no warning appears when you update a template. However, if a template has changes or new input variables, you can view all the impacted references in the **Referenced By** section of the template.
+Here is a sample template for Datadog notification:
 
-To fully reconcile the rule with the latest version of the template, you’ll still need to **reselect the template** and **provide values** for the new inputs.
+```yaml
+template:
+  name: datadog-template
+  identifier: datadog-template
+  type: Notification
+  projectIdentifier: samples
+  orgIdentifier: default
+  tags: {}
+  spec:
+    body:
+      content: |
+        {
+          "title": "Pipeline Event by Harness : <+pipeline.name>",
+          "text": "Pipeline **<+pipeline.name>** has **<+notification.eventType>**.\n\n• **Project:** `<+project.identifier>`\n• **Org:** `<+org.identifier>`\n• **Execution URL:** `<+pipeline.executionUrl>`\n• **Detail 1:** `<+notification.variables.var1>`\n• **Detail 2:** `<+notification.variables.var2>``\n• **Detail 3:** `<+notification.variables.var3>",
+          "tags": [
+            "pipeline:<+pipeline.name>",
+            "project:<+project.identifier>",
+            "org:<+org.identifier>",
+            "execution_url:<+pipeline.executionUrl>",
+            "event_type:<+notification.eventType>",
+            "detail1:<+notification.variables.var1>",
+            "detail2:<+notification.variables.var2>",
+            "detail3:<+notification.variables.var3>",
+            "image_status:<+notification.variables.imageStatus>",
+            "color:<+notification.variables.color>"
+          ],
+          "aggregation_key": "<+pipeline.name>",
+          "priority": "normal",
+          "alert_type": "info",
+          "source_type_name": "harness_notifications"
+        }
+      type: JSON
+    variables:
+      - name: var1
+        value: fixedinputPassed
+        type: string
+      - name: var2
+        value: <+input>
+        type: string
+      - name: var3
+        value: <+stage.name>
+        type: string
+  versionLabel: v2
+```
+Here's how the notification would look like when the above template is used in the notification rule:
 
-Steps:
+![](./static/datadog-template.png)
 
-1. Go to **Notification Management** under Project/Org/Account Settings.
-2. Edit the existing notification rule.
-3. In the **Notification Templates** step, reselect the same template.
-4. A prompt will appear for you to enter values for the newly added runtime variables.
+  </TabItem>
 
-This process ensures that all new inputs are captured and the rule remains valid.
+  <TabItem value="teams" label="Microsoft Teams">
 
----
+Here is a sample template for Microsoft Teams notification:
 
-By re-selecting the updated template in either case, you ensure your rule is aligned with the latest version and that all runtime inputs are explicitly provided.
+```yaml
+template:
+  name: MSteamTemplate
+  identifier: MSteamTemplate
+  versionLabel: v0
+  type: Notification
+  projectIdentifier: samples
+  orgIdentifier: default
+  tags: {}
+  spec:
+    body:
+      content: |
+        {
+          "type": "message",
+          "attachments": [
+            {
+              "contentType": "application/vnd.microsoft.card.adaptive",
+              "content": {
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                "type": "AdaptiveCard",
+                "version": "1.2",
+                "body": [
+                  {
+                    "type": "Image",
+                    "url": "https://s3.amazonaws.com/wings-assets/slackicons/${IMAGE_STATUS}.png",
+                    "size": "Small"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "size": "Medium",
+                    "weight": "Bolder",
+                    "text": "Pipeline [<+pipeline.name>](<+pipeline.executionUrl>) <+pipeline.status> by <+notification.variables.runtimeVar>",
+                    "wrap": true
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "In Project <+project.name> by <+notification.variables.runtimeVar>",
+                    "isSubtle": true,
+                    "wrap": true
+                  },
+                  {
+                    "type": "FactSet",
+                    "facts": [
+                      {
+                        "title": "Pipeline Name",
+                        "value": "<+pipeline.name>"
+                      },
+                      {
+                        "title": "Status",
+                        "value": "<+pipeline.status>"
+                      },
+                      {
+                        "title": "Stage Name",
+                        "value": "<+stage.name>"
+                      },
+                      {
+                        "title": "Execution URL",
+                        "value": "<+pipeline.executionUrl>"
+                      }
+                    ]
+                  }
+                ],
+                "actions": [
+                  {
+                    "type": "Action.OpenUrl",
+                    "title": "View Details",
+                    "url": "<+pipeline.executionUrl>"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      type: JSON
+    variables:
+      - name: var1
+        value: var1ValuePassed
+        type: string
+      - name: runtimeVar
+        value: <+input>
+        type: string
+  description: This is a perfect template all details are provided and the view details (msteams) button will work.
+```
 
-## YAML Structure
+Here's how the notification would look like when the above template is used in the notification rule:
 
-Below is an example of the YAML structure for a **Custom Notification Template** where the `type` of the content body is set to **YAML**
+![](./static/ms-template.png)
+
+  </TabItem>
+
+  <TabItem value="slack" label="Slack">
+
+Here is a sample template for Slack notification:
+
+```yaml
+template:
+  name: SlackTemplate
+  type: Notification
+  projectIdentifier: samples
+  orgIdentifier: default
+  tags: {}
+  spec:
+    body:
+      content: |2-
+              {
+                "text": "Hello, here's an update:",
+                "username": "HarnessBot",
+                "icon_emoji": ":robot_face:",
+                "attachments": [
+                  {
+                    "fallback": "Notification fallback text",
+                    "color": "#36a64f",
+                    "pretext": "Pipeline Update",
+                    "title": "Pipeline Execution Summary",
+                    "fields": [
+                      {
+                        "title": "Pipeline Name",
+                        "value": "<+pipeline.name>",
+                        "short": true
+                      },
+                      {
+                        "title": "Status",
+                        "value": "<+pipeline.status>",
+                        "short": true
+                      },
+                      {
+                        "title": "Stage Name",
+                        "value": "<+stage.name>",
+                        "short": true
+                      },
+                      {
+                        "title": "Execution URL",
+                        "value": "<+pipeline.executionUrl>",
+                        "short": false
+                      },
+                      {
+                        "title": "Variables Tested",
+                        "value": "var1: <+notification.variables.var1>\nvar2: <+notification.variables.var2>\nvar3: <+notification.variables.stageName>",
+                        "short": false
+                      }
+                    ],
+                    "footer": "Harness CI/CD"
+                  }
+                ]
+              }
+      type: JSON
+    variables:
+      - name: var1
+        value: var1Passed
+        type: string
+      - name: var2
+        value: <+input>
+        type: string
+      - name: stageName
+        value: <+stage.name>
+        type: string
+  identifier: SlackTempUpdated
+  versionLabel: v4
+  ```
+
+  Here's how the notification would look like when the above template is used in the notification rule:
+
+  ![](./static/slack-template.png)
+
+
+  </TabItem>
+  <TabItem value="pagerduty" label="PagerDuty">
+
+Here is a sample template for PagerDuty notification:
+
+```yaml
+template:
+  name: JsonPagerDuty
+  identifier: JsonPagerDuty
+  versionLabel: "1"
+  type: Notification
+  projectIdentifier: sample-project
+  orgIdentifier: default
+  tags: {}
+  spec:
+    body:
+      content: |-
+        {
+                "summary": "This is a Pipeline notification from Harness",
+                "link": {
+                  "href": "harness.io",
+                  "text": "Harness"
+                }
+              }
+      type: JSON
+    variables:
+      - name: var1
+        value: Harness
+        type: string
+```
+
+Here's how the notification would look like when the above template is used in the notification rule:
+
+![](./static/pagerduty-notification.png)
+
+  </TabItem>
+  <TabItem value="webhook" label="Webhook">
+
+Here is a sample template for Webhook notification:
 
 ```yaml
 template:
@@ -253,42 +452,111 @@ template:
         type: string
 ```
 
-Pipeline YAML Using the Notification Template
-
-You can reference this notification template from your pipeline YAML as follows: 
-
-```yaml
-notificationRules:
-    - name: notify_demo
-      identifier: notify_demo
-      pipelineEvents:
-        - type: PipelineStart
-        - type: PipelineEnd
-      notificationMethod:
-        type: Webhook
-        spec:
-          webhookUrl: https://your/webhook/url
-      enabled: true
-      template:
-        versionLabel: v1
-        templateRef: sample_notification_template
-        templateInputs:
-          variables:
-            - name: var1
-              type: string
-              value: test_val
-
-```
-
-## Sample JSON Response
-
-Below is an example of the JSON response received when this notification is triggered:
+Here's how the notification would look like when the above template is used in the notification rule:
 
 ![](./static/yaml-notification.png)
 
+  </TabItem>
+</Tabs>
+
+
+:::warning
+Each notification method has its own payload format. Ensure that your custom template matches the expected format for the notification method you are using. Any mismatch in the payload format will result in the notification sent in the default format.
+:::
+
+Once applied, the custom template overrides the default webhook payload sent during pipeline execution.
+
+## Variables in the Notification Template
+
+Notification templates support **runtime inputs**, which must be provided when configuring a notification rule—whether at the **Centralised Notification Service (CNS)** level or the **pipeline** level.
+
+If a runtime variable is declared in the template, you will be prompted to **enter values or expressions** for it when selecting that template during notification rule configuration.
+
+Use the following expression format to reference these variables in your template body: `<+notification.variables.testVar>`
+
+You can access the event type that triggered the notification using: `<+notification.eventType>`
+
+In case of failure, you can use the expression `<+notification.errorMessage>` to view failure information for the pipeline/stage/step.
+
+## Reconciliation of Notification Rules
+
+If you update a notification template by **adding new runtime variables** after it has already been attached to a notification rule, you may need to reconcile the rule to ensure those inputs are provided during execution.
+
+### Pipeline-level Notifications
+
+When a template used in a **pipeline-level notification rule configured through the Custom Notification tab** is updated, a **warning message** will appear when you attempt to run the pipeline:
+
+- "Entities referenced in this pipeline have been updated. Please reconcile and save the pipeline to run the latest version."
+
+You can still proceed with the run, but any newly added variables will default to an **empty string** unless resolved.
+
+To fully reconcile the rule with the latest version of the template, you need to **reselect the template** and **provide values** for the new inputs:
+
+1. Go to the **Notify** tab in the pipeline.
+2. Edit the notification rule.
+3. Navigate to the **Templates** tab.
+4. Reselect the **same notification template**.
+5. A prompt will appear asking you to **enter values** for the new runtime variables.
+
+This updates the pipeline YAML to reference the latest template version and ensures all required inputs are captured.
+
+### Improved Reconciliation Flow
+
+:::note 
+This enhanced flow is available behind the feature flag `PIPE_NOTIFICATION_TEMPLATE_INPUT_VARIABLE_PROMPT_UI`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+When the feature flag is enabled, pipeline reconciliation for updated notification templates follows an improved, UI-driven flow.
+
+**What’s new:**
+
+1. After a notification template is updated, pipelines referencing it show an inline error:
+
+> **Some of the entities referenced in this pipeline have been updated.**
+
+![](./static/cnt-1.png)
+
+2. Click the **Reconcile** button shown in the pipeline editor.
+3. A diff view opens, allowing you to review the updated template inputs. Confirm and save the pipeline.
+4. A yellow banner appears:
+
+> **Notification inputs in this pipeline have been updated. Please click the Notify tab to review and update them.**
+
+![](./static/cnt-2.png)
+
+5. Go to the **Notify** tab. The affected template will display a red warning:
+
+> **Notification template inputs have been updated. Please update the notification template inputs.**
+
+![](./static/cnt-3.png)
+
+6. Click into the affected rule, navigate to the **Templates** tab, reselect the same notification template, and provide values for the new inputs.
+7. Save the notification rule and then save the pipeline.
+
+Once these steps are completed, the pipeline will be fully reconciled with the latest version of the notification template.
+
+### Centralised Notifications
+
+In **Centralised Notification rules**, no warning appears when you update a template. However, if a template has changes or new input variables, you can view all the impacted references in the **Referenced By** section of the template.
+
+To fully reconcile the rule with the latest version of the template, you’ll still need to **reselect the template** and **provide values** for the new inputs.
+
+Steps:
+
+1. Go to **Notification Management** under Project/Org/Account Settings.
+2. Edit the existing notification rule.
+3. In the **Notification Templates** step, reselect the same template.
+4. A prompt will appear for you to enter values for the newly added runtime variables.
+
+This process ensures that all new inputs are captured and the rule remains valid.
+
+---
+
+By re-selecting the updated template in either case, you ensure your rule is aligned with the latest version and that all runtime inputs are explicitly provided.
+
 ## CD Events Schema
 
-To align with the [CDEvents](https://cdevents.dev/) standard, Harness has contributed several notification templates to the public CD Events schema repository based on our supported events.
+To align with the [CD Events](https://cdevents.dev/) standard, Harness has contributed several notification templates to the public CD Events schema repository based on our supported events.
 
 You can explore these templates here:  
 [CD Events Schema on GitHub](https://github.com/harness/harness-schema/tree/main/cdevents)

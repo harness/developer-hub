@@ -8,10 +8,6 @@ redirect_from:
 
 Issue Exemptions in STO provide developers and security teams a controlled method to handle security vulnerabilities detected in software delivery pipelines. When a security scan identifies a vulnerability that violates your pipeline's [OPA policies](/docs/security-testing-orchestration/policies/enforce-opa-policies), the pipeline will fail to prevent vulnerabilities from reaching production. In cases where immediate remediation isn't feasible or necessary, developers can [submit exemption requests](/docs/security-testing-orchestration/exemptions/exemption-workflows) for review. Exemptions can be applied at the **Project**, **Organization**, or **Account** level.
 
-:::note
-Support for **Exemptions** at **Organization** and **Account** level is controlled by the feature flag  `STO_GLOBAL_EXEMPTIONS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
-
 <DocImage path={require('./static/exemption-pipeline-status.png')} width="100%" height="100%" title="Click to view full size image" />
 
 The issue exemption workflow typically includes two stages:
@@ -22,7 +18,7 @@ The issue exemption workflow typically includes two stages:
 <DocImage path={require('./static/exemption-workflow.png')} width="70%" height="70%" title="Click to view full size image" />
 
 :::note 
-[Security Testing Developers](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#default-roles-and-permissions) and [Security Testing SecOps](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#default-roles-and-permissions) users can request exemptions, but only **Security Testing SecOps** users can approve them. Refer to [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
+[Security Testing Developers](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#default-roles-and-permissions) and [Security Testing AppSec](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#default-roles-and-permissions) users can request exemptions, but only **Security Testing AppSec** users can approve them. Refer to [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
 ::: 
 
 ## When exemptions are useful
@@ -57,11 +53,11 @@ To configure these permissions:
 
 | Action                     | Permission      | Project | Org | Account | Notes                                                                                  |
 |-----------------------------|-----------------|---------|--------------|---------|----------------------------------------------------------------------------------------|
-| Create an Exemption Request         | Create/Edit     | ✅      | ❌           | ❌      | Can only be created at the project level.                                              |
-| View Exemptions Requests             | View            | ✅      | ❌           | ❌      | Viewing is based entirely on project-level View permissions. Org/Account level View permissions are not required.|
-| Approve or Reject Exemption Requests | View            | ✅      | ❌           | ❌      | Required to access exemption requests.                                                 |
-|                             | Approve/Reject  | ✅      | ✅           | ✅      | 	Can approve/reject at the requested or higher scope (Org/Account). Exemption applies to all orgs/projects within that scope, even those the reviewer can't access.|
-| Re-open an Exemption Request        | View, Create/Edit | ✅    | ❌           | ❌      | Reopening is only allowed if the exemption scope is Project, Target, or Pipeline. If approved at Org or Account scope and marked Rejected or Expired, it can’t be reopened—only directly approved again from the status tab.|
+| Create an Exemption Request         | **Create/Edit**     | ✅      | ❌           | ❌      | Can only be created at the project level.                                              |
+| View Exemptions Requests             | **View**            | ✅      | ❌           | ❌      | Viewing is based entirely on project-level View permissions. Org/Account level View permissions are not required.|
+| Approve or Reject Exemption Requests | **View**, and *'Approve/Reject' is required, see next row.* | ✅      | ❌           | ❌      | Required to access exemption requests.                                                 |
+| Approve or Reject Exemption Requests | **Approve/Reject**  | ✅      | ✅           | ✅      | 	Can approve/reject at the requested or higher scope (Org/Account). Exemption applies to all orgs/projects within that scope, even those the reviewer can't access.|
+| Re-open an Exemption Request        | **View**, **Create/Edit** | ✅    | ❌           | ❌      | Reopening is only allowed if the exemption scope is Project, Target, or Pipeline. If approved at Org or Account scope and marked Rejected or Expired, it can’t be reopened—only directly approved again from the status tab.|
 
 :::warning
 Assign `Approve/Reject` permissions carefully, especially at the **Organization** or **Account** level — since actions apply to all underlying scopes, even those the user may not directly manage.
@@ -83,7 +79,7 @@ Assign `Approve/Reject` permissions carefully, especially at the **Organization*
 Harness provides two RBAC roles specifically for STO users. Here’s how their permissions are set up for Exemptions feature:
 
 - **Security Testing Developer**: Includes `View` and `Create/Edit`. Use this role for developers who need to raise exemption requests.
-- **Security Testing SecOps**: Includes `View`, `Create/Edit`, and `Approve/Reject`. Use this role for users who review, approve, or reject exemption requests across projects, orgs, or the full account.
+- **Security Testing AppSec**: Includes `View`, `Create/Edit`, and `Approve/Reject`. Use this role for users who review, approve, or reject exemption requests across projects, orgs, or the full account.
 
 <!-- ## Important notes for exemptions in STO
 
@@ -99,5 +95,5 @@ This topic assumes that you have the following:
    - [OPA policies](/docs/security-testing-orchestration/policies/create-opa-policies) You can use Harness Policy as Code to write and enforce policies based on severity, reference ID, title, CVE age, STO output variables, and number of occurrences.
 
 * At least one successful build with a set of detected security issues. 
-* Security Testing Developer or [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  user permissions are required to [request exemptions](#request-an-sto-exemption).
-* Only Security Testing SecOps users can [review, approve, reject,](#review-an-sto-exemption) and [update](#good-practice-review-and-update-sto-exemptions-periodically) exemptions.   -->
+* Security Testing Developer or [Security Testing AppSec](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  user permissions are required to [request exemptions](#request-an-sto-exemption).
+* Only Security Testing AppSec users can [review, approve, reject,](#review-an-sto-exemption) and [update](#good-practice-review-and-update-sto-exemptions-periodically) exemptions.   -->

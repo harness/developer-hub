@@ -470,9 +470,7 @@ For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add
 
 :::info
 
-Currently, OIDC authentication for AWS connectors is behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-Additionally, this option requires Harness Delegate version 24.03.836xx or later.
+This option requires Harness Delegate version 24.03.836xx or later.
 
 :::
 
@@ -521,6 +519,34 @@ If the feature flag `CDS_ENABLE_PIPELINE_SCOPED_OIDC_SUB` is enabled on top of `
 - For Project level resources - `"sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test"`
 - For Organization level resources - `"sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/"`
 - For Account level resources - `"sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/:project/"`
+
+### OIDC claims supported in Harness
+
+**Trusted Claims:**
+
+  - Harness validates the following claims internally to determine if the principal has the required permissions. When configuring trust on the Cloud Provider side, only these specific claims and their exact values should be accepted. Any claims outside this list must be rejected to avoid unauthorized access.
+    * `accountId`
+    * `organizationId`
+    * `projectIdentifier`
+    * `pipelineIdentifier`
+
+  - The following claims are validated for existence in Harness, but do not include an access check:
+    * `environmentIdentifier`
+    * `connectorIdentifier`
+    * `serviceIdentifier`
+
+**Non-Trusted Claims**
+
+  - The following claims are considered non-trusted. They are not validated for existence or access control and are used for informational context only:
+
+    * `environmentType`
+    * `connectorName`
+    * `serviceName`
+    * `triggeredByName`
+    * `triggerByEmail`
+    * `stageType`
+    * `stepType`
+    * `context`
 
 ### Custom Parameters 
 
@@ -733,38 +759,7 @@ For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.c
 
 ### Connector Limitations
 
-<table style={{ border: '1px solid black', borderCollapse: 'collapse', width: '100%' }}>
-  <thead>
-    <tr>
-      <th style={{ border: '1px solid black', padding: '8px' }}>Connectors</th>
-      <th style={{ border: '1px solid black', padding: '8px' }}>Limitations</th>
-    </tr>
-  </thead>
-  <tbody> 
-    <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Plugin-based Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following plugins are not supported using the OIDC connector:
-        <ul>
-          <li>Serverless V2</li>
-          <li>AWS SAM</li>
-          <li>AWS CDK</li>
-          <li>S3 Download Step</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Provisioner-based Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following provisioners are not supported using the OIDC connector:
-        <ul>
-          <li>CDK provisioner</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+Currently, the OIDC connector does not support the S3 Download step plugin.
 
 ## Connect to Elastic Kubernetes Service (EKS)
 
@@ -1073,8 +1068,6 @@ spec:
           value: YOUR_ACCOUNT_ID
         - name: MANAGER_HOST_AND_PORT
           value: https://app.harness.io
-        - name: DEPLOY_MODE
-          value: KUBERNETES_ONPREM
         - name: DELEGATE_NAME
           value: eks-test-new
         - name: DELEGATE_TYPE
@@ -1091,10 +1084,6 @@ spec:
           value: ""
         - name: NEXT_GEN
           value: "true"
-        - name: CLIENT_TOOLS_DOWNLOAD_DISABLED
-          value: "true"
-        - name: LOG_STREAMING_SERVICE_URL
-          value: "https://app.harness.io/log-service/"
         - name: DELEGATE_CPU_THRESHOLD
           value: "80"
 

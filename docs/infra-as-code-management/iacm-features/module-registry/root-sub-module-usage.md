@@ -18,7 +18,7 @@ Go to [Tags](/docs/code-repository/work-in-repos/tag/) for more information on t
 :::
 
 ## Authentication for Local Usage
-To authenticate with the Harness Module Registry when working locally, set the `TF_TOKEN_<subdomain>_harness_io` environment variable with your personal access token (PAT) before running [the `init` command](/docs/infra-as-code-management/pipelines/terraform-plugins#initialize). This allows Terraform to access private modules securely. For example, `TF_TOKEN_app_harness_io`.
+To authenticate with the Harness Module Registry when working locally, set the `TF_TOKEN_<subdomain>_harness_io` environment variable with your personal access token (PAT) before running [the `init` command](/docs/infra-as-code-management/cli-commands/terraform-plugins#initialize). This allows Terraform to access private modules securely. For example, `TF_TOKEN_app_harness_io`.
 
 
 ```bash

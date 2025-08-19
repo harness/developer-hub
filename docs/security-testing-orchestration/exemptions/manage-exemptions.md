@@ -14,9 +14,7 @@ This document details how issue exemption requests can be reviewed and processed
 
 The reviewer's role must include **Approve/Reject** permissions for Exemptions at the appropriate scope, whether at the **Project**, **Organization**, or **Account** level.   Refer to [Required permissions for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) and ensure you have the required privileges at the required scopes.
 
-:::note
-Support for **Exemptions** at **Organization** and **Account** level is controlled by the feature flag  `STO_GLOBAL_EXEMPTIONS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
+<DocVideo src="https://youtu.be/QP78FN-wNkI" />
 
 ## Issue Exemption lifecycle
 An Issue Exemption request in STO follows a defined lifecycle, with actions that can be taken at each stage. The actions to address exemption requests include **Approve**, **Reject**, **Cancel**, and **Re-open** (to re-open any expired, rejected requests).
@@ -33,7 +31,7 @@ The lifecycle stages are as follows:
 <DocImage path={require('./static/exemption-lifecycle-and-events.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::note
-Users with the **[Security Testing SecOps](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#default-roles-and-permissions)** role can approve or manage issue exemption requests. Refer to [Required permissions for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) to learn more.
+Users with the **[Security Testing AppSec](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#default-roles-and-permissions)** role can approve or manage issue exemption requests. Refer to [Required permissions for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) to learn more.
 :::
 
 ## Approve, Reject, or Cancel an Exemption Request
@@ -66,11 +64,18 @@ You can approve the exemption at the requested scope or a higher one:
 - **Approve for this organization** – Applies the exemption across all projects in the organization requires [`Approve/Reject`](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions)` permission at the Organization scope.
 - **Approve for this account** – Applies the exemption across all organizations and projects in the account requires [`Approve/Reject`](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) permission at the Account scope).
 
+When you click on an **Approve** action, a window appears displaying details such as the Issue Title, Requested Scope, and an optional **Comment** field. You can review the request details, add a comment if needed, and click **Submit** to proceed.
+
+Only the latest comment from an approval or rejection action is displayed in the exemption pane. Comments history is not shown. To view complete exemption details, refer to [View Issue Exemptions](/docs/security-testing-orchestration/exemptions/exemption-workflows#view-issue-exemptions) documentation.
+
+
 :::tip
 Always review the **Exemption Details** and consider the **Requested Duration** before approving. The exemption remains active only for the specified time window (e.g., 7 days from the approval date).
 :::
 
 <DocImage path={require('./static/approve-exemption-project-view.png')} width="100%" height="100%" title="Click to view full size image" />
+
+<DocImage path={require('./static/exemption-comment-approve.png')} width="70%" height="70%" title="Click to view full size image" />
 
 #### Users Can Approve Their Own Exemptions
 
@@ -80,6 +85,14 @@ You can control whether users are allowed to approve or reject their own exempti
 
 To reject an exemption request, you can either use the **Reject** action directly from the **Exemptions** section or click the request to open the **Exemption Details** pane, where you can review the request thoroughly before choosing to **Reject** it.
 
+When you click on the **Reject** action, a window appears displaying details such as the Issue Title, Requested Scope, and an optional **Comment** field. You can review the request details, add a comment if needed, and click **Submit** to proceed.
+
+Only the latest comment from an approval or rejection action is displayed in the exemption pane. Comments history is not shown. To view complete exemption details, refer to [View Issue Exemptions](/docs/security-testing-orchestration/exemptions/exemption-workflows#view-issue-exemptions) documentation.
+
+<DocImage path={require('./static/reject-exemption-project-view.png')} width="100%" height="100%" title="Click to view full size image" />
+
+<DocImage path={require('./static/exemption-comment-reject.png')} width="70%" height="70%" title="Click to view full size image" />
+
 Once rejected, the request moves to the **Rejected** tab. The associated issue remains active and may continue to block pipelines due to OPA policy enforcement failures. For more information, see the [**Issue Exemption Lifecycle**](#issue-exemption-lifecycle).
 
 ### Cancel an Exemption Request
@@ -88,7 +101,7 @@ Clicking **Cancel** on an exemption request immediately removes it from the syst
 
 ## Best Practices
 
-- A user with the [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) role should periodically review all exemptions and update their statuses as needed.
+- A user with the [Security Testing AppSec](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) role should periodically review all exemptions and update their statuses as needed.
   
 - Always [define a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#every-target-needs-a-baseline). If a target doesn’t have a baseline, exemption details won’t be visible. Instead, you’ll see a link prompting you to define the target’s baseline.  
   <img src={baseline_not_defined} alt="Can't view exemption details because the target has no baseline" height="50%" width="50%" />

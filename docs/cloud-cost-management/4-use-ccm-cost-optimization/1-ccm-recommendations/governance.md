@@ -37,7 +37,7 @@ To view all the AWS recommendations, please see [here](https://developer.harness
 - PostgreSQL servers
 - Key Vaults
 
-To view all the Azure recommendations, please see [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gcp/gcp-recommendations).
+To view all the Azure recommendations, please see [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/Azure/azure-recommendations).
 
 ### GCP Resource Coverage
 
@@ -47,7 +47,7 @@ To view all the Azure recommendations, please see [here](https://developer.harne
 - Cloud SQL instances
 - Cloud IAM policies
 
-To view all the GCP recommendations, please see [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/Azure/azure-recommendations).
+To view all the GCP recommendations, please see [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gcp/gcp-recommendations).
 
 ## Before you begin
 

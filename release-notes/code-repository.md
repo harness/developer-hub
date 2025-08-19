@@ -1,7 +1,7 @@
 ---
 title: Code Repository release notes
 sidebar_label: Code Repository
-date: 2024-04-02T10:00
+date: 2025-07-03T10:00
 sidebar_position: 7
 ---
 
@@ -20,6 +20,76 @@ These release notes describe recent changes to Harness Code Repository.
 
 :::
 
+
+## July 2025
+
+<!-- July 16, 2025 -->
+
+### Version 1.50.x
+
+#### New features and enhancements
+- Added support for tag rules in Harness Code Repository. Users can now restrict tag creation, deletion, and updates with pattern-based rules.
+- Added support for including user groups in the bypass list for branch rules and tag rules.
+
+<!-- July 03, 2025 -->
+
+### Version 1.48.x
+
+#### New features and enhancements
+
+- Added a [banner prompting users to **Create PR**](/docs/code-repository/pull-requests/create-pr#compare--pull-request-banner) when a new branch is recently pushed.
+- Added repository sort and scope filters to the repo list page. Users can now sort repositories and toggle between account, org, and project scopes to control visibility.
+
+## June 2025
+
+<!-- June 17, 2025 -->
+
+### Version 1.46.x
+
+#### New features and enhancements
+- Added the ability to set favorite repositories across the account.
+
+#### Fixed issues
+- Resolved an issue where Markdown in Harness Code did not render images.
+
+<!-- June 10, 2025 -->
+
+### Version 1.45.x
+
+#### New features and enhancements
+
+* Added Audit logs for force push to the default branch.
+* [PR dashboard](/docs/code-repository/pull-requests/prs-of-interest) enhancement.
+
+## May 2025
+
+<!-- May 27, 2025 -->
+
+### Version 1.43.x
+
+#### New features and enhancements
+
+* Added support for [Git Large File Storage (LFS)](/docs/code-repository/work-in-repos/git-lfs) to enable versioning of large binary files in repositories.
+* Added [Jira integration](/docs/code-repository/integrations/jira-integration) to enable visibility between code repository and issue tracking workflows.
+  
+<!-- May 20, 2025 -->
+
+### Version 1.42.x
+
+#### New features and enhancements 
+
+* Added support for partial and shallow Git clones to improve performance and reduce footprint when cloning large multi-service repositories.
+
+<!-- May 13, 2025 -->
+
+### Version 1.41.x
+
+#### New features and enhancements
+
+* Added support to display the merge method used when merging a pull request.
+
+* Added support to indicate if rules were bypassed during pull request merge.
+ 
 ## January 2025
 
 <!-- 24 Jan 24 -->

@@ -11,22 +11,16 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/continuous-efficiency-overview
 ---
 
-In today's world, it's pertinent to understand and manage costs associated with your cloud resources. Optimum utilization of cloud resources saves costs. As the complexity increases, it becomes challenging to keep track of cloud expenses.
+Understanding and managing cloud costs is essential, especially as environments grow more complex. While most tools offer insights by project, service, or tags, they fall short for DevOps teams who need visibility into namespaces, nodes, pods, and other granular resources.
 
-The cloud cost management tools available today provide insights only into costs at the project, service, instance type, or tag. This limited insight is insufficient for development and DevOps teams looking to view and forecast the costs of their deployments and active clusters' resources (namespaces, nodes, pods, and so on).
-
-Furthermore, typical cost management tools are designed to provide monthly billing for CFO/CIO/CTO audiences. But for the engineers and DevOps teams consuming resources, there's no access or ability to analyze their costs quickly.
-
-Harness Cloud Cost Management (formerly Continuous Efficiency) is a solution that provides engineers and DevOps granular detail of their resource consumption hourly. Harness Cloud Cost Management (CCM) is designed to bring cloud cost analysis and management into the hands of the engineers consuming cloud resources.
-
-![](./static/latest_overview.png)
+Traditional cost tools are built for monthly CFO-level reporting, not for the engineers actually using the resources. **Harness Cloud Cost Management (CCM)** puts cost visibility directly in the hands of engineers and DevOps, offering hourly insights into resource consumption across deployments and clusters.
 
 ### Visual Summary
-
 <DocVideo src="https://www.youtube.com/watch?v=xnbTUNet5gw" />
 
-### What is Cloud Cost Management?
+---
 
+### What is Cloud Cost Management?
 CCM provides insight and visibility into your cloud infrastructure costs. CCM provides the following benefits:
 
 - **Cost Visibility**: Insights into the costs of your Harness Applications and clusters. Provides granular cost details of your cluster namespaces, workloads, nodes, pods, and labels. Details of total cost versus utilized, idle, and unallocated cost. Forecasts future spend based on historical data.
@@ -35,8 +29,9 @@ CCM provides insight and visibility into your cloud infrastructure costs. CCM pr
 
 ![](./static/continuous-efficiency-overview-04.png)
 
-### Why Harness' Cloud Cost Management?
+---
 
+### Why Harness' Cloud Cost Management?
 The following illustration explains the different challenges that an engineering organization faces with cloud cost management and how Harness CCM can help you resolve them.
 
 Some of the unique challenges that CCM addresses are:
@@ -47,8 +42,9 @@ Some of the unique challenges that CCM addresses are:
 
 ![](./static/continuous-efficiency-overview-05.png)
 
-### Why is this Important?
+---
 
+### Why is this Important?
 Teams lack visibility into the cost drivers. CCM can help you gain visibility into your costs. The following table lists the needs and pain points of different teams, and how CCM resolves these issues and provides opportunities for improvement:
 
 |                                  | **Engineer**                                                                                                                                                                                      | **DevOps**                                                                                                                   | **CTO/CIO**                                                | **CFO**                                                                 |
@@ -126,3 +122,4 @@ Yes. CCM provides alerts, reports, and forecasts you can fine-tune.
 **I know my cloud platform is accurate, how do I know your tool is accurate?**
 
 CCM uses the same cost and usage report as your cloud platform.
+

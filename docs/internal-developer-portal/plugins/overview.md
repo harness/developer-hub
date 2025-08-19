@@ -2,7 +2,7 @@
 title: Overview of plugins in IDP
 sidebar_label: Overview
 description: Learn about plugins in Internal Developer Portal and how to use them to customize IDP.
-sidebar_position: 10
+sidebar_position: 1
 ---
 
 Harness IDP is built on top of the [Backstage plugin architecture](https://backstage.io/docs/plugins/) and supports a curated list of plugins. Plugins are often used to show additional metadata about a software component on the software catalog. For example, plugins show information about CI/CD pipelines, alerts, incidents, and project status. The curated list of plugins is a subset of publicly available [Backstage plugins](https://backstage.io/plugins). Along with this we support [custom plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview) as well which users can upload into IDP. Also, we are constantly adding new plugins from the marketplace and building new plugins of our own.
@@ -29,7 +29,7 @@ The secret variables in IDP must be globally unique across all plugins. This req
 
 ### (Optional) Delegate proxy
 
-Plugins that support publicly-accessible third-party providers can connect with the provider directly. However, some plugins, such as the Kubernetes plugin, require access to systems that are hosted in your private network. Such plugins require [Harness Delegates](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate), which serve as an HTTP proxy to connect to services running in your private network. In the configuration of the plugin, you can specify a host or IP address and choose which delegate to use when making requests.
+Plugins that support publicly-accessible third-party providers can connect with the provider directly. However, some plugins, such as the Kubernetes plugin, require access to systems that are hosted in your private network. Such plugins require [Harness Delegates](/docs/platform/delegates/install-delegates/overview.md), which serve as an HTTP proxy to connect to services running in your private network. In the configuration of the plugin, you can specify a host or IP address and choose which delegate to use when making requests.
 
 You can learn more about the [architecture of Delegate Proxy](./delegate-proxy.md).
 
@@ -37,7 +37,10 @@ You can learn more about the [architecture of Delegate Proxy](./delegate-proxy.m
 
 **What plugins are available in Harness IDP?**
 
-See the [list of curated plugins](/docs/category/available-plugins).
+Harness IDP supports the following categories of plugins:
+* [Available Plugins](/docs/category/available-plugins) - A curated set of plugins including:
+  * [Harness Native Plugins](/docs/category/harness-modules) - Official plugins developed by Harness that integrate seamlessly with other Harness modules
+  * Community and third-party plugins developed by the Backstage community
 
 **A plugin is available in the Backstage marketplace but not in Harness IDP. Can we file a request to add the plugin to IDP?**
 

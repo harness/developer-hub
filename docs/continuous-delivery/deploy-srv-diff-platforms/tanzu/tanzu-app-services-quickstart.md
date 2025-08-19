@@ -375,8 +375,6 @@ Certain CF CLI environment variables, such as CF_HOME, CF_PLUGIN_HOME, CF_USERNA
 
    ![](static/cli_environment_variables.png)
 
-Currently, this feature is behind the feature flag `CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
-
 :::
 
 :::note Overrides
@@ -779,6 +777,42 @@ The deployment was successful.
 
 In your project's **Deployments**, you can see the deployment listed.
 
+## TAS Autoscaler Integration
+
+Harness supports native integration with [TAS Autoscaler](https://techdocs.broadcom.com/us/en/vmware-tanzu/platform/tanzu-platform-for-cloud-foundry/6-0/tpcf/autoscaler-using-autoscaler.html) during Rolling Deployments.
+
+:::info Prerequisite
+Harness expects the Autoscaler service to be created and bound to the application **before** deployment.  
+Harness automatically runs the `configure-autoscaling` command to attach autoscaling policies to the application during deployment.
+:::
+
+1. Create the Autoscaler Service
+
+Use a TAS Command step in your pipeline to create the Autoscaler service instance:
+
+```bash
+cf create-service autoscaler autoscaler-plan harness-autoscaler
+```
+
+2. Reference the Service in the Manifest
+Update your manifest.yml file to include the Autoscaler under the services section. This ensures the service is bound to the application at deploy time.
+
+```yaml
+Copy
+Edit
+applications:
+  - name: dummy-app
+    memory: 256M
+    instances: 1
+    services:
+      - harness-autoscaler
+```
+This binding step is essential. Without it, Harness will not attach the Autoscaler service, and autoscaling policies will not be configured.
+
+Once these steps are complete, Harness will automatically:
+- Detect the bound Autoscaler service.
+- Execute the configure-autoscaling command during the Rolling Deploy step.
+This streamlines your workflow by eliminating the need for manual service binding or post-deploy configuration.
 
 ## Next steps
 

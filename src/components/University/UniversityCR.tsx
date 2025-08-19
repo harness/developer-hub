@@ -7,8 +7,8 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 // import AdminCertificationExamDetails from "./data/cr-certification-admin-exam-details.md";
 // import AdminCertificationReviewDetails from "./data/cr-certification-admin-review-guide.md";
-// import DeveloperCertificationExamDetails from "./data/cr-certification-developer-exam-details.md";
-// import DeveloperCertificationReviewGuide from "./data/cr-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/cr-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/cr-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/cr-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/cr-certification-architect-exam-details.md";
 import IltCard from "./Card";
@@ -90,8 +90,8 @@ export default function CertificationsCR() {
   return (
     <div
       className={`${styles.certificationsCR} ${activePage === ActivePage.SelfPacedTraning
-          ? styles.SelfPacedTrainingBg
-          : ""
+        ? styles.SelfPacedTrainingBg
+        : ""
         } ${activePage === ActivePage.InstructorLedTraining
           ? styles.InstructorLedTrainingBg
           : ""
@@ -106,14 +106,14 @@ export default function CertificationsCR() {
           </div>
           <h1>Code Repository</h1>
           <div>
-            Securly host Git repositories and collaborate with advanced access
+            Securely host Git repositories and collaborate with advanced access
             controls and governance.
           </div>
         </div>
         <div
           className={`${styles.right} ${activePage === ActivePage.SelfPacedTraning
-              ? styles.SelfPacedTrainingBg
-              : ""
+            ? styles.SelfPacedTrainingBg
+            : ""
             } ${activePage === ActivePage.InstructorLedTraining
               ? styles.InstructorLedTrainingBg
               : ""
@@ -156,8 +156,8 @@ export default function CertificationsCR() {
         <button
           onClick={handleSelfPacedTrainingClick}
           className={`${colorMode == "light"
-              ? styles.InstLedTrainBtnLight
-              : styles.InstLedTrainBtnDark
+            ? styles.InstLedTrainBtnLight
+            : styles.InstLedTrainBtnDark
             } ${activePage === ActivePage.SelfPacedTraning
               ? colorMode == "light"
                 ? styles.activeLight
@@ -181,8 +181,8 @@ export default function CertificationsCR() {
         <button
           onClick={handleInstLedTrainClick}
           className={`${colorMode == "light"
-              ? styles.InstLedTrainBtnLight
-              : styles.InstLedTrainBtnDark
+            ? styles.InstLedTrainBtnLight
+            : styles.InstLedTrainBtnDark
             } ${activePage === ActivePage.InstructorLedTraining
               ? colorMode == "light"
                 ? styles.activeLight
@@ -270,8 +270,7 @@ export default function CertificationsCR() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Code Repository - Developer (BETA COMING
-                      SOON)
+                      Code Repository - Developer 
                     </h2>
                     <img
                       src={`${baseUrl}img/cert-dev-cr-badge.svg`}
@@ -284,23 +283,23 @@ export default function CertificationsCR() {
                     </span>
                   </div>
                   <div className={styles.right}>
-                    <h3>Coming Soon...</h3>
+                    <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
                       applications with CR projects.
                     </div>
 
 
-                    {/*  <DeveloperCertificationReviewGuide /> */}
-                    {/*
+                    <DeveloperCertificationReviewGuide />
+
 
                     <div className={styles.btnContainer}>
-                      <Link href="https://university-registration.harness.io/certified-internal-developer-portal-developer">
+                      <Link href="https://university-registration.harness.io/code-repository-developer">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
                       </Link>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -308,20 +307,20 @@ export default function CertificationsCR() {
 
             {/* Developer Exam Details */}
 
-            {/*
+
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
-                  <DeveloperCertificationExamDetails />  
+                <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="https://university-registration.harness.io/certified-internal-developer-portal-developer">
+                  <Link href="https://university-registration.harness.io/code-repository-developer">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>
                   </Link>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
 
           {/* Administrator Tab Content */}
@@ -346,7 +345,7 @@ export default function CertificationsCR() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                     Code Repository - Administrator (BETA COMING
+                      Code Repository - Administrator (BETA COMING
                       SOON)
                     </h2>
                     <img

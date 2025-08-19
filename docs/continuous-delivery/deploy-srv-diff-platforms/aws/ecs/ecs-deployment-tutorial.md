@@ -144,10 +144,6 @@ The Harness Delegate is a software service you install in your environment. It c
          {
            "name": "MANAGER_HOST_AND_PORT",
            "value": "<MANAGER_HOST_AND_PORT>"
-         },
-         {
-           "name": "LOG_STREAMING_SERVICE_URL",
-           "value": "<LOG_STREAMING_SERVICE_URL>"
          },            
          {
            "name": "DELEGATE_NAME",
@@ -160,10 +156,6 @@ The Harness Delegate is a software service you install in your environment. It c
          {
            "name": "INIT_SCRIPT",
            "value": ""
-         },
-         {
-           "name": "DEPLOY_MODE",
-           "value": "KUBERNETES"
          },
          {
            "name": "DELEGATE_TYPE",

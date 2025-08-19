@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal Release Notes
 sidebar_label: Internal Developer Portal
-date: 2024-12-11T22:00
+date: 2025-08-16T22:00
 sidebar_position: 12
 ---
 
@@ -11,22 +11,443 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::info About Harness Release Notes
 
-- **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 - **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
-- **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
+- **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, and Self-Managed Enterprise Edition release notes.
 
 :::
 
 ## 📌 Release Deployment Status by Cluster
 
-| **Cluster** | **Deployment Status** | **Release Version** |
-| ----------- | --------------------- | ------------------- |
-| **prod0**   | ✅ Completed          | May - 2025.05.v1    |
-| **prod1**   | ✅ Completed          | May - 2025.05.v1    |
-| **prod2**   | ✅ Completed          | May - 2025.05.v1    |
-| **prod3**   | ✅ Completed          | May - 2025.05.v1    |
-| **prod4**   | ✅ Completed          | May - 2025.05.v1    |
-| **prodeu1** | ✅ Completed          | May - 2025.05.v1    |
+**Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+
+<!-- Let's maintain last 3 here. -->
+
+| **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
+| ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         |           ⏳| ⏳          | ⏳            |
+
+## August - [2025.08.v1]
+
+### [New Feature] Harness IDP and Security Testing Orchestration (STO) Integration
+
+Harness Internal Developer Portal (IDP) now integrates with Harness Security Testing Orchestration (STO) to surface real-time vulnerability data directly inside the Software Catalog. Vulnerabilities such as CVEs from static and dynamic scans are displayed alongside services, projects, and components, minimizing context switching and enabling faster triage.
+
+![](./static/sto-integrated-idp.png)
+
+[Learn more about STO integration with IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/sto-integration)
+#### Prerequisites
+
+* IDP and STO modules enabled on the account.
+* At least one STO pipeline or scanner configured.
+* STO-IDP integration feature flag (`IDP_STO_INTEGRATION`) activated by Harness Support.
+
+#### Key Features
+
+##### Security Vulnerability Cards and Tabs
+STO findings are displayed in IDP using dedicated UI elements:
+
+* **Catalog View**: High-level vulnerability indicators for all services.
+![](./static/sto-catalog.png)
+* **Entity View**: Summary cards showing counts by severity and prioritization cues.
+* **Vulnerabilities Tab**: Detailed, filterable table of STO findings for each entity.
+![](./static/vulnerabilities.png)
+
+##### Source Code Linkage
+The new Link to Source Code Repository feature correlates Git-based scan results with STO findings. This supports SAST, SCA, secret scanning, and license compliance scans. Configuration via the IDP UI eliminates manual YAML editing.
+
+##### STO Test Target Annotations
+The `harness.io/sto-test-target` annotation maps STO results to catalog entities, whether the target is a source repository, container image, or deployed artifact. Multiple targets per component are supported, with precise scoping to ensure correct data mapping.
+
+##### Scorecard Integration
+STO findings can now feed into IDP Scorecards, allowing automated tracking of security compliance across all services. Custom vulnerability checks, thresholds, and severity filters can be configured to reflect organization-wide security posture.
+![](./static/scorecard.png)
+
+### [New Feature] System Entity in Harness IDP
+
+Harness Internal Developer Portal (IDP) now supports System as a high-level catalog entity type, designed to logically group related Components, APIs, and Resources under a functional or domain boundary. This enhances catalog visibility, governance, and discoverability for complex architectures.
+
+![](./static/system-entity.png)
+
+#### Key Highlights
+
+* Systems can be created at Account, Organization, or Project scope.
+* Define Systems using the IDP UI, YAML, or the Create Entity API (`kind: System`).
+* New default System layout includes tabs for Overview, Entities, Scorecard, and Diagram. Existing customers can apply the provided YAML layout under **Admin → Layout → Catalog Entities → System**.
+![](./static/system-layout.png)
+* The Entities tab offers a searchable, filterable, and sortable table of all Components, APIs, and Resources within the System.
+* Many-to-many relationships are supported — an entity can belong to multiple Systems.
+![](./static/multiple-system.png)
+* Associations are made in the entity's YAML via the `spec.system` field and automatically reflected in the Catalog without updating the System YAML.
+
+
+#### Example: System Entity YAML
+
+```yaml
+apiVersion: harness.io/v1
+kind: System
+name: Payment System
+identifier: paymentsystem
+type: system
+owner: team-payment
+metadata:
+  description: Groups services and APIs related to payment processing.
+  tags:
+    - rest
+    - java
+spec:
+  lifecycle: production
+```
+
+#### Example: Associating a Component with Multiple Systems
+
+```yaml
+apiVersion: harness.io/v1
+kind: Component
+name: Payment Processing Service
+identifier: payment_processing_service
+type: service
+owner: group:account/platform_team
+spec:
+  lifecycle: production
+  system:
+    - system:account/payment_platform
+    - system:account/checkout_system
+metadata:
+  tags:
+    - microservice
+    - java
+```
+
+### [New Feature] Link to Source Code Repository
+
+Harness IDP now supports defining a Link to Source Code Repository for Components, APIs, and Resources in the Software Catalog. This optional field is strongly recommended for Git-based workflows and enables key capabilities such as:
+
+![Link to Source Code Repository](./static/source-code-link-ui.png)
+
+[Learn more about Link to Source Code in IDP UI](https://developer.harness.io/docs/internal-developer-portal/catalog/manage-catalog#harness-idp-ui)
+
+* Automatic configuration of plugins like Scorecards, TechDocs, and STO
+* A View Source option directly in the entity's UI
+* Automatic generation of the legacy `backstage.io/source-location` annotation for backwards compatibility
+
+#### Configuration Options
+
+* **Supported providers**: Harness, Github, Gitlab, Bitbucket, AzureRepo
+* The `connectorRef` must point to a valid Harness Connector for the selected provider
+* Supports both single-repo and mono repository setups (with `monoReposubDirectoryPath`)
+![Mono Repository Setup](./static/source-code-mono.png)
+* Git connector permissions must match the entity's scope (Account, Organization, or Project)
+
+#### Example YAML
+
+[Learn more about configuring source code in YAML](https://developer.harness.io/docs/internal-developer-portal/catalog/manage-catalog#catalog-yaml)
+
+```yaml
+spec:
+  sourceCode:
+    provider: Github
+    connectorRef: account.ShibamDhar
+    repoName: java-service_svc
+    monoRepo: false
+```
+
+#### Example: Mono Repository Setup
+
+```yaml
+spec:
+  sourceCode:
+    monoRepo: true
+    provider: Github
+    repoName: java-service_svc
+    connectorRef: account.ShibamDhar
+    monoReposubDirectoryPath: /harness
+```
+### [Breaking Change] Dx Plugin : Visualization Components Consolidated
+
+This release introduces the `DxDataChart` component, a flexible visualization tool for displaying data from DX Data Studio queries as charts or tables. It supports multiple visualization types, custom metrics from DX datafeeds, optional variables, unit labels, automatic data transformation, and deep links to the underlying DX DataCloud queries.
+
+
+#### Replaced Components
+
+The following components have been removed because their functionality is now fully covered by `DxDataChart`:
+
+* `EntityChangeFailureRateCard`
+* `EntityDeploymentFrequencyCard`
+* `EntityDORAMetricsContent`
+* `EntityDXDashboardContent`
+* `EntityLeadTimeCard`
+* `EntityOpenToDeployCard`
+* `EntityTimeToRecoveryCard`
+* `EntityTopContributorsTable`
+
+#### Example Usage – Line Chart
+
+```jsx
+<DxDataChartCard
+  title="Deployment Frequency"
+  description="Weekly deployments over time"
+  datafeedToken="your-datafeed-token"
+  unit="deployments"
+  variables={{ teamId: entity.metadata.annotations?.["getdx.com/id"] }}
+  chartConfig={{
+    type: "line",
+    xAxis: "date",
+    yAxis: "count",
+  }}
+/>
+```
+
+With `DxDataChart`, you can create customizable visualizations, deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
+
+### Bug Fixes and Improvements
+
+* **New Catalog APIs** - Harness IDP now includes two new APIs to make it easier to find and display catalog entities:
+  * **Entity Filter Options API** ([API docs](https://apidocs.harness.io/tag/Entities/#operation/get-entities-filters-by-query)) – Returns available filters such as owner, tags, and lifecycle to help you show only valid filter choices in your UI.
+  * **Entity Retrieval by References API** ([API docs](https://apidocs.harness.io/tag/Entities#operation/get-entities-by-refs)) – Fetches one or more specific catalog entities, or a filtered list, with full details.
+  * You can use them together — for example, first retrieve filter options, then fetch the matching entities. Enables faster, more accurate, and user-friendly search experiences in the Entity Catalog. *[IDP-5969]*
+
+* **GitHub Actions Plugin Fix** – Resolved an issue where workflows failed to load when using GitHub Enterprise Server (GHES) instances that operate in an isolated environment without any connectivity to GitHub.com. The plugin now correctly supports fully private GHES setups. *[IDP-6086]*
+
+* **SonarQube Plugin Updates** – Upgraded the SonarQube plugin to v0.14 to support the latest SonarQube server capabilities. Improved authentication handling for SonarQube instances hosted behind reverse proxies or web servers, resolving prior connection and token validation issues. *[IDP-6044]* *[IDP-5862]*
+
+* **Empty Custom Plugin Creation Prevented** – Resolved an issue where clicking "+ New Custom Plugin" and exiting before completing configuration still created an empty entry labeled "by null" in the Custom Plugins list. Plugin creation now occurs only after a package is uploaded, ensuring no incomplete or null plugins are added. *[IDP-5016]*
+
+* **YAML Editor Field Visibility Update** – `project_name` and `org_name` will no longer be visible in the YAML editor as they are not necessary. Only `project_identifier` and `org_identifier` remain to define the scope of the entity. *[IDP-5968]*
+
+* **Lifecycle Field in Workflows Now Optional** – The lifecycle field is no longer required when creating workflows, preventing late-stage validation errors and allowing workflows to be created without unnecessary lifecycle values. *[IDP-6065]*
+
+* **Automatic Reverse Relation Generation** – with this new improvemnet in the, relations defined in YAML are directional, and specifying a relation from a source to a target automatically generates the corresponding reverse relation in the backend.
+  For example, if a `Service` `dependsOn` a `Library`, the system creates the reverse `dependencyOf` relation from the `Library` to the `Service`. Both relations exist in the system and can be queried, but only the primary relation is shown in the Edit YAML UI. The reverse relation is visible in the raw YAML, ensuring consistency without requiring users to manually define both sides. 
+
+
+<!-- Let's maintain last 3 here. -->
+
+| **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
+| ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| [2025.07.v2](/release-notes/internal-developer-portal#july---202507v2)                               | ✅        | ✅         | ✅         | ✅          | ✅           | ✅            |
+| [2025.07.v1](/release-notes/internal-developer-portal#july---202507v1)                               | ✅        | ✅         | ✅         | ✅          | ✅           | ✅            |
+| [2025.06.v1](/release-notes/internal-developer-portal#june---202506v1)  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
+| [2025.05.v1](/release-notes/internal-developer-portal#-releasing-harness-idp-20-beta---may-202505v1) | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
+
+
+## July - [2025.07.v2]
+
+### [New Feature] Support for Relative Paths in API Definitions
+
+Harness IDP now supports using **relative file paths** in the `spec.definition.$text` field when creating `API` kind entities. This enhancement simplifies referencing OpenAPI specification files that reside within the same repository as the entity YAML.
+Examples:
+
+* `./openapi.yaml` (file in the same directory)
+* `spec/api.yaml` (file in a subdirectory)
+
+Relative paths are resolved based on the value of the `backstage.io/managed-by-location` annotation. This annotation typically reflects the location of the entity YAML file. If not explicitly defined, its value is auto-populated from the `backstage.io/source-location` annotation (which generally points to your source code repository). This fallback ensures compatibility in cases where entity YAMLs are centrally managed or even omitted (such as inline entity definitions).
+
+For inline entities or those managed outside the component’s source repo, you can **manually define** `backstage.io/managed-by-location` in your catalog YAML to ensure correct path resolution.
+
+
+
+#### Sample YAML
+
+```yaml
+apiVersion: harness.io/v1
+kind: API
+type: openapi
+identifier: unknown
+name: unknown
+owner: Harness_Partners
+spec:
+  lifecycle: dev
+  definition:
+    $text: ./petstore.oas.yaml
+metadata:
+  description: The petstore API
+  annotations: {}
+  links:
+    - url: https://github.com/swagger-api/swagger-petstore
+      title: GitHub Repo
+      icon: github
+    - url: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
+      title: API Spec
+      icon: code
+  tags:
+    - store
+    - rest
+```
+
+## July - [2025.07.v1]
+
+
+###  [New feature] Harness Git Experience (GitX) — Now Bi-Directional
+
+Harness IDP's Git Experience has been upgraded to offer full [**bi-directional sync**](https://developer.harness.io/docs/internal-developer-portal/git-experience/gitx-journey/#bi-directional-sync-between-harness-and-git). You can now manage **Catalog entities and Workflows** directly from your Git repository — while still retaining visibility and control within the IDP UI.
+
+Key highlights:
+
+**New features:**
+
+* When you configure a Git repository for use with GitX, a webhook is automatically added. This enables real-time sync from Git to IDP without requiring manual webhook setup.
+* From the Catalog page, you can now switch branches and preview configurations before they go live. This is useful for testing or working with feature branches.
+* Any changes made in Git will now be reflected in IDP, provided the webhook is enabled.
+
+**Recap of existing behavior:**
+
+* Changes made via the IDP UI can be pushed back to Git, if Git sync is enabled.
+* Only the default branch will be active and reflected in the IDP runtime.
+
+This unlocks GitOps-style workflows, where Git remains the source of truth, and IDP becomes the real-time visual dashboard.
+
+###  [New feature] Visualize Ingested Properties
+
+When you use Catalog Ingestion API to push custom metadata, it is not committed back to the YAML file but is part of the final entity metadata shown in IDP UI. You can now visualize all ingested properties in the entity YAML view.
+
+![](./static/internal-developer-portal/ingested.png)
+
+More details: [Visualizing Ingested Metadata](https://developer.harness.io/docs/internal-developer-portal/git-experience/ingested-metadata)
+
+###  [New feature] Increased Bitbucket API Rate Limits
+
+Bitbucket Git Connector in IDP now also supports API Key Authentication which allows for higher API rate limits when used in syncing files or Scorecards computation.
+
+If you are facing Bitbucket API rate limit issues, please update your Bitbucket connector with a new one using API Key authentication.
+
+You must also upgrade your Harness Delegate used in the Git connector to **version `25.06.86202` or newer**.
+
+### Bug Fixes and Improvements
+
+* **Enhancements to Git Experience (GitX) Entity Views and Behavior**
+  Several improvements have been made to streamline how Git-synced entities are displayed and managed within IDP:
+
+  * The **Edit Entity** page now features a refined Git details header for improved clarity.
+  * A **branch selector** has been added to the **Entity Details** view, allowing users to view configurations across branches while continuing to treat the default branch as the source of truth.
+  * Scorecard computations are now consistently based on the **default branch only**, aligning with runtime behavior.
+  * Fixed a bug where `connector_ref` was incorrectly passed as an empty string during **Harness Code Repo** setup; this is now handled safely.
+    *\[IDP-5579, IDP-5477, IDP-5493, IDP-5816]*
+
+* **New Default Role: `IDP Workflow Executor`**
+  A new out-of-the-box role called **`IDP Workflow Executor`** is now available at all scopes (Account, Org, and Project). This role includes `View` and `Execute` permissions for IDP Workflows and allows platform teams to grant workflow execution access without creating custom roles.
+  This change is part of a **Platform/Access Control service release**, not the core IDP module release.
+  *\[IDP-5542]*
+
+
+* **Error Handling for Entity Import from Harness Code Repo**
+  Fixed a backend issue that caused entity import to fail when using **Harness Code Repo** with Git Experience enabled by default. The system now gracefully handles this scenario without requiring manual configuration toggles.
+  *\[IDP-5855]*
+
+* **YAML Editor Now Shows Latest Saved State**
+  Resolved an issue where the UI YAML editor reverted to a stale version after clicking “Save Changes.” This could cause users to overwrite prior edits unintentionally. The editor now properly reflects the latest saved YAML after each update.
+  *\[IDP-5851]*
+
+* **Owner Field Display Flicker Resolved in Catalog Table**
+  Fixed a UI glitch where user group names in the "owner" field of the Catalog table would intermittently flicker between full text and ellipsis. Styling has been corrected for better consistency.
+  *\[IDP-5792]*
+
+
+
+## June - [2025.06.v1]
+
+<!-- June 20, 2025 -->
+
+Last month, Harness IDP announced a major **BETA release**: **Harness IDP 2.0**. This release wasn’t just an upgrade — it was a **complete rebuild** of the Internal Developer Portal (IDP), designed to support **enterprise-scale adoption**.
+
+We’re truly overwhelmed by the response we’ve received so far for IDP 2.0 and are incredibly grateful to all the customers and teammates who tried it out and shared valuable feedback.
+
+This month, we're taking it a step further by launching the **Harness IDP Git Experience** — a major feature update aimed at making your IDP 2.0 experience even better. Since the beta launch, we've been heads-down fixing bugs and polishing features based on your feedback.
+
+Let’s dive into what’s new!
+
+### \[New Feature] Introducing Harness IDP Git Experience with IDP 2.0
+
+**\[IDP-4596] | [Docs](/docs/internal-developer-portal/git-experience/gitx-journey)**
+
+---
+
+This release marks a major milestone for IDP 2.0 with the support for **Harness IDP Git Experience**.
+
+In IDP 1.0, users had to manually manage Catalog YAML files for each update. With IDP 2.0, we introduced **inline entities**, removing the hard dependency on YAML. Now, with the Git Experience, we’re bringing back YAML files in Git through **native Git Experience**.
+
+![](./static/internal-developer-portal/harness-idp-gitx.png)
+
+Here’s what you can do with the new Git Experience:
+
+| Feature                                                                            | Status                                          |
+| ---------------------------------------------------------------------------------- | ----------------------------------------------- |
+| **Store entity YAML in Git**                                                       | ✅ Available                                    |
+| **Import YAML from Git** and create a new entity                                   | ✅ Available                                    |
+| **IDP to Git changes**: Make changes in IDP and commit changes to YAML file in Git | ✅ Available                                    |
+| **Git to IDP changes**: Make changes to YAML file in Git and update entity in IDP  | 🚧 (Work in Progress) ETA: Week of July 4, 2025 |
+
+You can now also **convert existing inline entities to remote entities** and store their YAMLs in Git, unlocking advanced Git-native workflows. We have also provided a [script](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o#step-7-store-entity-yamls-in-git) for you to convert ALL inline entities to remote in bulk.
+
+Learn more about this feature [here](/docs/internal-developer-portal/git-experience/gitx-journey).
+
+---
+
+### \[New Plugin] GitHub Co-Pilot Plugin
+
+**\[IDP-5571] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/github-copilot)**
+
+We’re excited to introduce support for the **GitHub Co-Pilot** plugin in this release!
+
+The plugin brings **GitHub Copilot Enterprise** usage insights directly into Harness IDP, helping you visualize:
+
+- Suggestion acceptance rates
+- Language-wise usage distribution
+- Overall Copilot activity
+
+These insights empower engineering teams to evaluate and improve Copilot adoption across their organization.
+
+[Read the plugin guide here](/docs/internal-developer-portal/plugins/available-plugins/github-copilot).
+
+---
+
+### \[New Plugin] BuildKite Plugin
+
+**\[IDP-5531] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/buildkite)**
+
+We’re also launching the **BuildKite plugin**, which allows developers to **view and interact with BuildKite CI/CD pipelines** directly from the Harness IDP.
+
+Key highlights:
+
+- View real-time build statuses
+- Trigger rebuilds directly from the portal
+- Monitor pipelines entity-wise inside IDP
+
+Perfect for teams looking to bring CI/CD visibility right into their developer portal workflows.
+
+[Read the plugin guide here](/docs/internal-developer-portal/plugins/available-plugins/buildkite).
+
+<!-- Currently there is an issue with Delegate. Check with Sathish. Most likely will be out next week or so.
+- Bitbucket Cloud API Token Authentication in Git Integrations:
+  We now support API Token based Bitbucket connector in IDP Git Integrations. If you have been struggling with Bitbucket API Rate Limits, you can now update your global IDP git connector to use the API Token based authentication - which has higher rate limits.
+  \[IDP-5593] -->
+
+### Bug Fixes and Improvements
+
+- **`get-entities` API Returns Entities Across Scopes by Default:**
+  The `get-entities` API now returns entities across all scopes (account, org, and project) by default when no `scope` parameter is provided. Previously, it returned only account-level entities unless explicitly specified. This enhancement aligns the API behavior with that of the UI, ensuring consistent and complete entity listings across use cases. [IDP-5704]
+
+- **Output Variable Extraction now works with `apiKeySecret`:**
+  You can now successfully fetch output variables when using `apiKeySecret` as workflow authentication. Previously, this caused token validation failures during execution. The issue has been resolved, and output variables now work seamlessly with `apiKeySecret`.
+  \[IDP-5584]
+
+- **Fixed Catalog Crash Due to Unhandled API Errors:**
+  Resolved an issue where the Catalog page broke when an invalid `projectIdentifier` or `orgIdentifier` was present in the URL. This was caused by an unhandled 500/404 error response from the backend. A proper catch block has been added in the frontend to gracefully handle such server errors, ensuring the UI now shows a proper zero-state screen instead of failing silently. [IDP-5628]
+
+- **Resolved Entity Breakage When Adding Tags to Services:**
+  Fixed an issue where adding a tag to the `catalogapi` service in the demo account caused the entity to break. The backend now correctly processes tagged service updates, ensuring entity integrity is maintained in the catalog. [IDP-5632]
+
+- **Improved Sync Consistency for Entities:**
+  Fixed an issue where entities would sporadically disappear from the IDP catalog after updates via the UI. The system now ensures proper sync between the IDP database and the catalog, improving reliability during entity creation and updates.
+  \[IDP-5654]
+
+- **Entity Creation Filters Now Load Correctly:**
+  Resolved an issue where filters such as `type`, `owner`, etc., were not appearing during entity creation. The root cause was a broken filter endpoint that failed when user preferences or scope information (org/project) were invalid. A fail-safe mechanism has been added to gracefully handle such cases.\[IDP-5666]
+
+- **Tighter schema validation in Kubernetes plugin to prevent downtime:**
+  To avoid critical downtime scenarios, IDP now includes schema validation for `authProvider` configuration. Misconfigured values will now be caught early and flagged instead of breaking the deployment. \[IDP-5683]
+
+- **Visual Editor Lifecycle Update Stability**:
+  Resolved an issue where updating the Lifecycle field of an entity using the Visual editor caused unexpected errors and led to a broken catalog view. This happened due to `null` score entities returned during scorecard validation. The backend logic has now been updated to handle such cases gracefully, ensuring entity updates via the Visual editor no longer cause save failures or UI disruptions. [IDP-5700]
 
 ## 🚀 Releasing Harness IDP 2.0 BETA - May [2025.05.v1]
 
@@ -230,16 +651,6 @@ The DX Plugin is built to enhance the overall developer experience by streamlini
 ## February - Version 0.40.0
 
 <!-- February 26, 2025-->
-
-:::info
-Please note that the following features are behind a **Feature Flag**: `IDP_ENABLE_WORKFLOW_FORM_CONTEXT`.
-
-- [**Updating Fields using Form Context**](/release-notes/internal-developer-portal.md#new-feature-updating-fields-using-form-context)
-- [**Live User Validation using API Requests**](/release-notes/internal-developer-portal.md#new-feature-live-user-validation-using-api-requests)
-
-Ensure that it is **enabled in your account** before use. To enable this feature, contact [**Harness Support**](mailto:support@harness.io).
-:::
-
 ### [New Feature] Updating Fields using Form Context
 
 **[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
@@ -442,7 +853,9 @@ This feature enhances security by using dedicated API keys, eliminating the need
 
 👉 Read more about the feature [here](/docs/internal-developer-portal/flows/worflowyaml#authentication).
 
-### [New Feature] POST or PUT Method support for Dynamic Pickers
+### [New Feature] POST & PUT Method support for Dynamic Pickers
+
+[IDP-4292]
 
 Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests.
 This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST requests and handling APIs that require **large inputs via POST**.
@@ -711,7 +1124,7 @@ customPlugins:
 
 - You can now see an out of the box [**Adoption Dashboard**](/docs/internal-developer-portal/adoption/how-to-track-adoption) under the platform Dashboards showing a quick insight into the adoption of IDP across different areas. Executive Buyers can now subscribe to this and get a weekly/monthly report.
 - New plugins added to the marketplace
-  - [Harness Chaos Engineering](/docs/internal-developer-portal/plugins/available-plugins/harness-chaos)
+  - [Harness Chaos Engineering](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-chaos)
   - [Synk](https://github.com/snyk-tech-services/backstage-plugin-snyk/blob/main/README.md)
   - [New Relic](https://github.com/backstage/community-plugins/blob/main/workspaces/newrelic/plugins/newrelic-dashboard/README.md)
 - IDP Pipeline steps now support Harness Code as a git provider. [IDP-3232]
