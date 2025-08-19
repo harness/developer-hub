@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-08-05T08:09:25
+date: 2025-08-19T08:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -95,13 +95,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Updated Redis data model to support more efficient resource tracking during disconnections. While upgrading from Proxy version 2.0.12 or earlier to 2.0.13 requires no manual action, reverting back to 2.0.12 after an upgrade requires setting a different `REDIS_DB` index to avoid data incompatibility. (FFM-12441)
 
-#### Version 2.0.12
-
-**Security and maintenance**:
-
-- Adds HOST & Remote IP to the request logging middleware. (FFM-12488)
-- Updates dependencies to resolve a vulnerability in the `github.com/golang-jwt/jwt` package. (FFM-12432)
-
 ### Node.js SDK
 
 #### Version 1.8.8
@@ -136,6 +129,21 @@ This minor release updates the build process to sign the NuGet package, improvin
 - Signed NuGet package as part of the build process. (FFM-12415)
 
 ## June 2025
+
+### Relay Proxy
+
+#### Version 2.0.12
+
+**Security and maintenance**:
+
+- Adds HOST & Remote IP to the request logging middleware. (FFM-12488)
+- Updates dependencies to resolve a vulnerability in the `github.com/golang-jwt/jwt` package. (FFM-12432)
+
+#### Version 1.0.7
+
+**Bug fixes**:
+
+- Removed indirect dependency on `github.com/golang-jwt/jwt` version 3.2.2 or later which was incompatible for improved stability. (FFM-12443) 
 
 ### Java SDK
 
