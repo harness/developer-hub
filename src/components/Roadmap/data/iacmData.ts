@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const IacmData: Horizon = {
     Released: {
-    description: "What has been released",
+    description: "What has been released recently",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
@@ -38,58 +38,7 @@ export const IacmData: Horizon = {
         title: "OPA integration",
         description: "IaCM natively integrates with OPA, allowing you to define rules that can be enforced at design and runtime, eliminating policy violations and reducing the risks of security and unplanned cost",
         link: "/docs/infra-as-code-management/policies-governance/opa-workspace",
-      },
-      {
-        tag: [{ value: "Reports & Insights" }],
-        title: "Cost estimation",
-        description: "Using Infracost, IaCM provides cost estimation on resource changes, allowing you to understand how your cloud bill will be changed, based on resource changes",
-        link: "/docs/infra-as-code-management/workspaces/cost-estimation",
-      },
-      {
-        tag: [{ value: "Security" }],
-        title: "State management",
-        description: "IaCM supports hosted backend, allowing you to store state securely",
-      },
-      {
-        tag: [{ value: "Security" }],
-        title: "Drift Detection",
-        description: "IaCM supports detecting drifts between state file and the actual resources, preventing misconfiguration, and securely vulnerabilities",
-        link: "/docs/infra-as-code-management/pipelines/operations/drift-detection",
-      },
-      {
-        tag: [{ value: "Security" }],
-        title: "RBAC",
-        description: "IaCM supports granular RBAC operations, where admins can define the access privileges for different roles",
-        link: "/docs/infra-as-code-management/manage-projects/workspace-rbac",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "PR Automation",
-        description: "IaCM support PR Automation that populates plan and cost data to the PR process, helping you to reduce testing time on Terraform changes",
-        link: "/docs/infra-as-code-management/pipelines/operations/pr-automation",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Custom arguments support",
-        description: "Users will have the flexibility to modify which arguments will be used during execution, allowing additional customization",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Module Registry",
-        description: "Private Module Registry to test and publish approved modules",
-        link: "/docs/infra-as-code-management/iacm-features/module-registry",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "CLI Integration",
-        description: "Having the ability to run Workspace-related pipelines directly from CLI",
-        link: "/docs/infra-as-code-management/workspaces/cli-integration",
-      },
-      {
-        tag: [{ value: "Security" },{ value: "Enterprise" }],
-        title: "SMP (on-prem)",
-        description: "Supporting implementing IaCM in private environments",
-      },
+      }
     ],
   },
   Now: {
