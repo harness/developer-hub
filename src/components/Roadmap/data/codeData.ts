@@ -5,7 +5,6 @@ export const codeData: Horizon = {
   Now: {
     description: "Q3 2025, August-October 2025",
     feature: [
-
       {
         tag: [{ value: "Code Quality" }],
         title: "Code Coverage",
@@ -42,33 +41,17 @@ export const codeData: Horizon = {
         description: "Support for AutoLink references will allow Harness Code to automatically hyperlink commit messages and PR titles to external issue trackers like Jira, improving traceability across tools."
       },
       {
-        tag: [{ value: "Integrations" }],
-        title: "Atlassian Jira Marketplace Application",
-        description: "First-class support for Jira with Atlassian Marketplace application, allowing users to surface relevant commits and PRs in Jira issues.",
-      },
-      {
-        tag: [{ value: "Integrations" }], //todo 
-        title: "Compare tags",
-        description: "First-class support for Jira with Atlassian Marketplace application, allowing users to surface relevant commits and PRs in Jira issues.",
-      },
-      {
         tag: [{ value: "Governance" }],
         title: "Push Rules",
         description: "Introduce push protection rules to enforce compliance and security standards.",
       },
-
- 
     ],
   },
   Next: {
     description: "Q4 2025, November 2025 - January 2026",
     feature: [
 
-      {
-        tag: [{ value: "AI" }, { value: "Developer Experience" }],
-        title: "Auto-generated PR Summaries and Commit Messages",
-        description: "Automatically generate pull request summaries and commit messages to help reviewers quickly understand the scope and intent of changes.",
-      },
+
       {
         tag: [{ value: "AI" }, { value: "Code Quality" }],
         title: "AI-Generated Tests",
@@ -77,7 +60,7 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Developer Experience" }],
         title: "Linked Repositories",
-        description: "Ability to connect code repositories hosted on external SCM providers and ." //todo
+        description: "Interact directly with your external Git repositories from within the Harness platform — enabling native experiences like code coverage overlays, autonomous code maintenance, and in-context insights across builds and pull requests." 
       }, 
       {
         tag: [{ value: "Developer Experience" }, { value: "Reliability" }],
@@ -141,6 +124,11 @@ export const codeData: Horizon = {
         description: "Users will be able to mark repositories as favorites for quicker access and personalized navigation across the account."
       },
       {
+        tag: [{ value: "AI" }, { value: "Developer Experience" }],
+        title: "Auto-generated PR Summaries and Commit Messages",
+        description: "Automatically generate pull request summaries and commit messages to help reviewers quickly understand the scope and intent of changes.",
+      },
+      {
         tag: [{ value: "Governance" }],
         title: "Tag Rules",
         description: "Introduce tag protection rules to enforce compliance and security standards.",
@@ -149,6 +137,11 @@ export const codeData: Horizon = {
         tag: [{ value: "Scalable" }, { value: "Developer Experience" }],
         title: "Git LFS (Large File Storage) Support",
         description: "Harness Code Repository will support Git LFS, enabling efficient versioning and storage of large binary files such as media, datasets, and compiled assets within Git."
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Atlassian Jira Marketplace Application",
+        description: "First-class support for Jira with Atlassian Marketplace application, allowing users to surface relevant commits and PRs in Jira issues.",
       },
       {
         tag: [{ "value": "Secure" }],

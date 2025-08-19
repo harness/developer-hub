@@ -45,6 +45,11 @@ export const CiData: Horizon = {
         description: "We're expanding our Cloud offering to support multiple VM images for macOS and Linux, giving users the flexibility to choose from a predefined set of images. This allows teams to run builds on both the latest and previous stable OS versions, ensuring compatibility with different environments.",
       }, 
       {
+        tag: [{ value: "Fast" }],
+        title: "Build Intelligence for Go",
+        description: "Speed up Go builds by reusing outputs from previous runs and avoiding redundant compilation of unchanged code.",
+      },
+      {
         tag: [{ value: "Cloud" }],
         title: "Save/Restore Cache Steps with Harness Cloud Storage",
         description: "New Save and Restore Cache steps will be introduced to complement Cache Intelligence, giving users more control and flexibility over caching behavior, such as the ability to use a cache key calculated within the stage.",
@@ -59,11 +64,7 @@ export const CiData: Horizon = {
         title: "Test Intelligence for JavaScript-based languages with Cypress",
         description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related to the code changes made.",
       },
-      {
-        tag: [{ value: "Fast" }],
-        title: "Build Intelligence for Go",
-        description: "Speed up Go builds by reusing outputs from previous runs and avoiding redundant compilation of unchanged code.",
-      },
+
       {
         tag: [{ value: "Intelligence" }],
         title: "Support for Code Coverage integration with Test Intelligence",
