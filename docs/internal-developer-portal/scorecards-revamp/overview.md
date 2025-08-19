@@ -1,7 +1,7 @@
 ---
 title: Scorecards Overview
-description: Learn about the key components that make up a Scorecard in Harness IDP, including checks, data sources, and scoring logic.
-sidebar_position: 2
+description: Learn about Scorecards in Harness IDP, why they matter, how they work, and how they're used to measure and improve software quality.
+sidebar_position: 1
 keywords:
   - harness idp scorecards
   - scorecard data sources
@@ -12,6 +12,13 @@ keywords:
   - internal developer portal
   - harness idp metrics
   - scorecard rule engine
+  - software component evaluation
+  - platform engineering standards
+  - developer experience insights
+  - catalog integration prerequisites
+  - service quality metrics
+  - scorecard best practices
+  - scorecard usage roles
 tags:
   - Scorecards
   - Harness IDP
@@ -19,11 +26,29 @@ tags:
   - Data Sources
   - Software Catalog
   - Dev Standards
+  - DevEx
+  - Platform Standards
+  - Component Evaluation
 ---
 
 # Scorecards Overview
 
 This document covers the key building blocks of a Scorecard in Harness IDP. A Scorecard is made up of checks. Each check looks at a specific detail about a component—like whether a pipeline passes regularly, or whether required metadata exists. To do this, checks pull data from systems like GitHub, Jenkins, or the IDP Catalog.
+
+A **Scorecard** in Harness IDP is a set of automated checks applied to software components such as services, libraries, or infrastructure. These checks help teams:
+
+- Enforce engineering standards
+- Track maturity or readiness
+- Measure compliance and adoption
+- Surface gaps in critical areas (e.g., security, reliability, observability)
+
+Overall scorecards play a pivotal role in ensuring software components are developed and utilized while adhering to organizational and industry standards. They provide a quantifiable measure of software maturity and adherence to best practices, thereby aiding developers in enhancing quality and assisting teams in making informed decisions regarding software adoption.
+
+![scorecards](./static/scorecard-view.png)
+
+## How Scorecards Work
+
+A Scorecard is made up of checks. Each check looks at a specific detail about a component—like whether a pipeline passes regularly, or whether required metadata exists. To do this, checks pull data from systems like GitHub, Jenkins, or the IDP Catalog.
 
 The entire system depends on three things: **data sources**, **checks**, and **Scorecards**.
 A **data source** provides raw information about a component (such as tags, file paths, or pipeline metrics).
@@ -32,6 +57,29 @@ A **Scorecard** is just a group of these checks, used to track service quality, 
 
 Even though Scorecards and checks define *what* to evaluate, it’s the **data source** that determines *what's possible to evaluate*. If the right data isn’t available, the check won’t work. That’s why reliable, connected data sources are critical—without them, Scorecards can’t provide useful results.
 
+## Scorecard Usage Requirements
+
+Before creating or evaluating Scorecards, the following conditions must be met:
+
+### Component registration in the Software Catalog
+
+Scorecards only apply to components that are registered in the **Harness Software Catalog**. This means:
+
+* The component must have a valid `catalog-info.yaml` descriptor.
+* It must be ingested into the Catalog either via auto-discovery or manual registration.
+* The component should be of a supported entity type such as `Component`, `Service`, or `Resource`.
+
+Without catalog registration, the Scorecard system cannot associate checks or evaluations with the component.
+
+### Required permissions in IDP
+
+Access to Scorecard functionality is controlled by role-based permissions within Harness IDP. Depending on the user's responsibilities, the following permissions may be required:
+
+* **Create and edit Scorecards** – typically assigned to platform engineers or administrators responsible for governance and standards.
+* **View Scorecard results** – required for developers and team leads to monitor and improve their components.
+* **Access data sources** – necessary for defining or customizing checks that rely on external systems (e.g., Git repositories, CI/CD pipelines, monitoring tools).
+
+Lack of appropriate permissions may restrict a user's ability to create Scorecards, edit checks, or view evaluation results.
 
 ## Components of a Scorecard
 
