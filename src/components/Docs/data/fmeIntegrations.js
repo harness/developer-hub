@@ -14,7 +14,6 @@ export const supportedWorkflows = [
   { name: "Datadog", img: "/provider-logos/fme-integrations/datadog-logo.png", link: "/docs/feature-management-experimentation/integrations/datadog" },
   { name: "Jira Cloud", img: "/provider-logos/fme-integrations/jira-logo.png", link: "/docs/feature-management-experimentation/integrations/jira-cloud" },
   { name: "New Relic", img: "/provider-logos/fme-integrations/newrelic-logo.png", link: "/docs/feature-management-experimentation/integrations/new-relic" },
-  { name: "Papertrail", img: "/provider-logos/fme-integrations/papertrail-logo.png", link: "/docs/feature-management-experimentation/integrations/papertrail" },
   { name: "Rollbar", img: "/provider-logos/fme-integrations/rollbar-logo.png", link: "/docs/feature-management-experimentation/integrations/rollbar" },
   { name: "ServiceNow", img: "/provider-logos/fme-integrations/servicenow-logo.png", link: "/docs/feature-management-experimentation/integrations/servicenow" },
   { name: "Slack", img: "/provider-logos/fme-integrations/slack-logo.png", link: "/docs/feature-management-experimentation/integrations/slack" },
