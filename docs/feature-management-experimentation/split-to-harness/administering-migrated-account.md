@@ -5,6 +5,9 @@ sidebar_label: Administering a Migrated Split Account on Harness
 sidebar_position: 3
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Overview
 
 This guide is intended to be used as a reference shortly after your migration into Harness to guide you through administrative tasks. It will also help you understand permissions in Harness after your Split-to-Harness migration. It explains how legacy **Split access restrictions** map to **Harness RBAC (role-based access control) settings** in two ways:
@@ -77,15 +80,17 @@ This section shows you how to add new Harness users and set up RBAC permissions 
 
 When you add a user at the account level, you can also add the user to an [FME user group](#fme-user-groups). Once a user is added to the Harness platform, it is easy to add the same user to any organization or project.
 
-#### Interactive guide
+<Tabs>
+<TabItem value="interactive" label="Interactive Guide">
 
-This interactive guide shows how to add a user to Harness that will have access to your (unrestricted) migrated FME projects:
+To add a user to Harness that will have access to your (unrestricted) migrated FME projects, view the steps in the interactive guide:
 
 <DocVideo src="https://app.tango.us/app/embed/e9c155c2-1d2d-4fbf-b5d6-7b59591668b6" title="Add a User in Harness" />
 
-#### Step by step guide
+</TabItem>
+<TabItem value="step" label="Step-by-step">
 
-To add a user that will have access to your (unrestricted) migrated FME projects:
+To add a user to Harness that will have access to your (unrestricted) migrated FME projects:
 
 1. Begin adding the user at the Harness account level:
 
@@ -101,6 +106,9 @@ To add a user that will have access to your (unrestricted) migrated FME projects
      - **All FME Viewers** (equivalent to the legacy **Split Viewer** role)
 
 1. Click **Apply** to finish adding the new user. The user will receive an invitation email to join the Harness account.
+
+</TabItem>
+</Tabs>
 
 The RBAC permissions (that mimic legacy Split permissions) are set on the FME user group to which the new Harness user was added. You can learn more about these user group role bindings in the [User Groups](#user-groups) section.
 
@@ -456,13 +464,15 @@ You can use a service account to create a new Harness FME Admin API key and acce
 
 ### Create an Admin API key
 
-#### Interactive guide
+<Tabs>
+<TabItem value="interactive" label="Interactive Guide">
 
-This interactive guide shows how to create an Admin API key with the same permissions as your legacy Split Admin API key in your Harness account:
+To create an Admin API key with the same permissions as your legacy Split Admin API key in your Harness account, view the steps in the interactive guide:
 
 <DocVideo src="https://app.tango.us/app/embed/e76ab685-723c-4e39-964e-cff2c56df2d1" title="Generate an API Key and Token" />
 
-#### Step by step guide
+</TabItem>
+<TabItem value="step" label="Step-by-step">
 
 To create an Admin API key with the same permissions as your legacy Split Admin API key in your Harness account:
 
@@ -475,6 +485,9 @@ To create an Admin API key with the same permissions as your legacy Split Admin 
 1. Click **+ Token**.
 1. Enter a name for the new API key token, set an expiration, and click **Generate Token**.
 1. Copy the token somewhere safe.
+
+</TabItem>
+</Tabs>
 
 If you don’t have a service account with role bindings set up, you can create a service account and role binding for Admin API keys scoped to all projects [(account or organization scope)](#account-or-organization-scope) or scoped to a specific project [(project scope)](#project-scope).
 
@@ -673,11 +686,13 @@ When your Split account is migrated to Harness, an organization named `default` 
 
 ### Create a project
 
-#### Interactive guide
+<Tabs>
+<TabItem value="interactive" label="Interactive Guide">
 
 <DocVideo src="https://app.tango.us/app/embed/4c5d12d9-a82c-4a54-a54e-c0684ddc3475" title="Create a New Project" />
 
-#### Step by step guide
+</TabItem>
+<TabItem value="step" label="Step-by-step">
 
 To create a new project in Harness:
 
@@ -688,6 +703,9 @@ To create a new project in Harness:
 1. Click **+ New Project**.
 1. Enter a name for the project and click **Save and Continue**.
 1. Click **Save and Continue** again to close the modal. You can grant access to the project using **Access Control** in **Project Settings**.
+
+</TabItem>
+</Tabs>
 
 #### Unrestricted and restricted projects
 
@@ -740,8 +758,8 @@ If you do not delete the resources from within your project before deleting the 
 
 If you accidentally delete a project before deleting its resources, see the [Troubleshooting section](#troubleshooting).
 
-#### Interactive guide
-
+<Tabs>
+<TabItem value="interactive" label="Interactive Guide">
 
 To cleanly delete a project in your Harness account:
 
@@ -761,7 +779,8 @@ To cleanly delete a project in your Harness account:
 
 <DocVideo src="https://app.tango.us/app/embed/f046a6bd-4c56-414d-9398-f83ebbeb57d5" title="Delete a Project" />
 
-#### Step by step guide
+</TabItem>
+<TabItem value="step" label="Step-by-step">
 
 To cleanly delete a project in your Harness account:
 
@@ -786,6 +805,9 @@ To cleanly delete a project in your Harness account:
      :::
    * Click **Yes, I want to delete this project**.
    * Type the project’s name in the text field and click **Delete**.
+
+</TabItem>
+</Tabs>
 
 ## FAQs
 
