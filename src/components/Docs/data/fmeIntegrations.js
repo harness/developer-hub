@@ -8,6 +8,10 @@ function chunkArray(array, size) {
   );
 }
 
+export const supportedModules = [
+  { name: "Harness IDP", img: "/img/icon_idp.svg", link: "/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme" },
+];
+
 export const supportedWorkflows = [
   { name: "AppDynamics", img: "/provider-logos/fme-integrations/appdynamics-logo.png", link: "/docs/feature-management-experimentation/integrations/appdynamics" },
   { name: "Azure DevOps", img: "/provider-logos/fme-integrations/azure-devops-logo.png", link: "/docs/feature-management-experimentation/integrations/azure-devops" },
