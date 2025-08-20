@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: BI Dashboards
 description: Learn how to get started with CCM with your chosen cloud provider.
 sidebar_position: 20
 sidebar_label: Overview
@@ -7,30 +7,27 @@ sidebar_label: Overview
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
-Dashboards are a collection of charts and data tables with filters that you can use to get at the data you are interested. Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven, informed business decisions.
+BI Dashboards are a collection of charts and data tables with filters that you can use to get at the data you are interested. BI Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven, informed business decisions.
 
-Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) dashboards to visualize cloud cost data across clusters and cloud accounts.
+Harness provides pre-loaded **[By Harness](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/overview#bi-dashboards-by-harness)** (pre-defined) and **[Custom](/docs/platform/dashboards/create-dashboards)** (user-defined) dashboards to visualize cloud cost data across clusters and cloud accounts.
+
+
+## Before You Begin
+
+* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](/docs/cloud-cost-management/access-control/manage-access-control-for-ccm-dashboards.md).
+* Ensure that you have set up [Cloud Cost Management (CCM) for your cloud provider](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
+
+After setting up cost visibility for the cloud provider and the data is available in the Perspective, you can view the dashboard. The data in the Dashboard is updated dynamically.
 
 ## Access the CCM dashboards
 
 To access the dashboards from the CCM module, perform the following steps:
 
-1. In the **Harness** application, click **Cloud Costs**.
-2. Click **BI Dashboards**. 
-3. Select the cloud provider to view the dashboards available for the specific cloud provider.
-4. Click the required tile.
+1. In the **Harness** application, click **Cloud Costs** > **BI Dashboards** or select **Dashboards** directly.
+2. Click on **By Harness** to view the pre-defined dashboards available. The dashboards with "Cloud Costs" tags are pre-defined CCM dashboards.
 
-:::important note
-The data scan limit is 350 GB per query. Users can avoid hitting this limit by applying necessary filters to reduce the result-set as per their requirements.
-:::
 
-## Prerequisites
-
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](/docs/cloud-cost-management/access-control/manage-access-control-for-ccm-dashboards.md).
-* Ensure that you have set up Cloud Cost Management (CCM) (for your cloud provider) [Set up cost visibility for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
-* Ensure that you have added all the required permissions for your cloud provider. The data available in the Dashboard depends on the permissions you provided to the cloud provider when setting up the CCM. For more information, see [Select Features](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-access-permissions).
-
-After setting up cost visibility for the cloud provider and the data is available in the Perspective, you can view the dashboard. The data in the Dashboard is updated dynamically.
+## BI Dashboards by Harness
 
 <DynamicMarkdownSelector
   options={{

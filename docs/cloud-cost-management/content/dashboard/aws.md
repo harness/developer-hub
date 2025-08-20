@@ -8,38 +8,30 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 <TabItem value="aws-cost" label="AWS Cost Dashboard">
 
-## View AWS Cost Dashboard
+## AWS Cost Dashboard
 
-Perform the following steps to view AWS Cost Dashboard:
+<DocImage path={require('../static/dashboard-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
-1. In Harness, click **Dashboards**.
-2. Select **By Harness** and then, click **AWS Cost Dashboard**.
-      
-  
-    The AWS Cost Dashboard is displayed.
-  
+
 | **Dimensions** | **Description** |
 |---|---|
 | Total Cost | The total AWS cost with cost trend. |
 | Forecasted Cost  |The forecasted cloud cost with cost trend. Forecasted cost is the prediction based on your historical cost data, and it is predicted for the same future time period as your selected time range. |
 | Top 20 AWS accounts | The cost of the top 20 AWS account you are using to connect Harness to AWS via a Harness AWS Cloud Provider. |
-| Top Cost Trend by Services | The top AWS services by cost increase or decrease |
+| Top Trending Services | The top AWS services by cost increase or decrease |
 | Historical and Forecasted Cost | The historical and forecasted AWS cost. Forecasted cost is the prediction based on your historical cost data and it is predicted for the same future time period as your selected time range. |
 | Current Period vs Last Period | The cost of the current and previous time range. |
-| Most Expensive Services by Month | Top five services that incurred the maximum cost per month. |
+| Top 5 Most Expensive Services by Month | Top five services that incurred the maximum cost per month. |
 
-3. Select **Time Range** to filter the data based on pre-defined time range filters. The available filters are:
-    * Last 7 Days
-    * Last 30 Days
-    * Last 90 Days
-    * Last 12 months
-    * Last 24 months
-4. After selecting the Time Range filter, click the **Refresh** icon. The data is refreshed with the latest data from the database.
-   
-5. Hover on the chart to see the cost details.
-   
+### Interacting with the AWS Cost Dashboard
 
-6. In **Cost by AWS** **Account**, click the up or down arrow button to scroll up or down the list. The list shows the percentage of each AWS account with respect to the cost contribution.
+- **Time Filter**: Select **Time Range** to filter the data based on pre-defined time range filters. The available filters are for Last 7, Last 30, Last 90, Last 12 months, and Last 24 months. After selecting the Time Range filter, click the **Refresh** icon. The data is refreshed with the latest data from the database.
+
+- Options for Dashboard:
+    - Clear Cache and Refresh
+    - Download: Download AWS Cost Dashboard either as PDF or CSV. You can also set the page size and choose to expand tables to show all rows and/or arrange dashboard tiles in a single column
+
+- In **Cost by AWS** **Account**, click the up or down arrow button to scroll up or down the list. The list shows the percentage of each AWS account with respect to the cost contribution.
 
 7. In **Historical and Forecasted Cost**, click on the chart to further drill into the cost details **by Time Period/Time**.
    
