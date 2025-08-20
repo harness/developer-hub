@@ -1,7 +1,7 @@
 ---
 title: Features of Cluster Orchestrator
 description: Features of Cluster Orchestrator
-sidebar_position: 5
+sidebar_position: 4
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
@@ -20,23 +20,24 @@ When enabling Cluster Orchestrator, you can configure various settings under the
 <DocImage path={require('./static/cluster-one.png')} width="80%" height="80%" title="Click to view full size image" />
 - **Enable Commitment Context (Inegration with Commitment Orchestrator):** Checks existing commitments before provisioning spot instances to avoid duplicate coverage and maximize savings.
 - **Set the Time-To-Live (TTL) for Karpenter nodes:** Set the Time-To-Live (TTL) for Karpenter nodes to ensure that nodes are automatically terminated after a specified period of inactivity.
-- **[Optional] Bin-Packing:** Bin-packing is a resource optimization technique that Cluster Orchestrator uses to efficiently distribute workloads across your Kubernetes cluster. The goal is to maximize resource utilization by consolidating workloads onto fewer nodes, allowing underutilized nodes to be safely removed from the cluster.
+
+
+- **Bin-Packing:** Bin-packing is a resource optimization technique that Cluster Orchestrator uses to efficiently distribute workloads across your Kubernetes cluster. The goal is to maximize resource utilization by consolidating workloads onto fewer nodes, allowing underutilized nodes to be safely removed from the cluster.
     - **Pod Eviction By Harness:** To optimize resources, nodes may be evicted before consolidation. Enabling this ensures workloads are safely rescheduled to maintain performance and availability while freeing up underutilized resources.
         - **Single replica eviction of workload:** Can be set to On or Off
         - **Resource Utilization Thresholds:** Set minimum CPU and memory usage levels to determine when a node is considered underutilized. This helps balance cost savings and performance by ensuring nodes are consolidated only when their resources fall below the specified thresholds.
+        <DocImage path={require('./static/cluster-two.png')} width="80%" height="80%" title="Click to view full size image" />
 
-<DocImage path={require('./static/cluster-two.png')} width="80%" height="80%" title="Click to view full size image" />
-
-- **Node Disruption Using Karpenter:** Activate Karpenter's node disruption management to optimize resource utilization and maintain application stability. Toggalable Options:
+    - **Node Disruption Using Karpenter:** Activate Karpenter's node disruption management to optimize resource utilization and maintain application stability. Toggalable Options:
     - **Node Deletion Criteria:** Choose when nodes should be targeted for removal:
         - **Empty:** Only nodes with no running pods will be removed
         - **Underutilized:** Nodes that fall below your defined CPU and memory thresholds will be consolidated
     - **Node Deletion Delay:** This setting controls how long a node should remain in the cluster after becoming empty before it's deleted. You can specify a time period (e.g., 10 minutes) after which nodes with no pods will be deleted.
     - **Disruption Budgets:** Manage node consolidation by specifying limits on allowed disruptions as a percentage or a fixed number.Disruption budgets provide a safety mechanism to prevent excessive node terminations that could impact application availability. For each disruption budget, you can:
-        - Select reason: Drifted, Underutilized, Empty
-        - Allowed node disruptions: Specify percentage or number of nodes
-        - Budget scheduling: If enabled, you can set Budget activation frequency (Activation Frequency specifies when a budget begins being active. It can be set to be: hourly, midnight, daily, weekly, monthly or annually ) and Active duration (Specifies how long the budget remains active)
-    - Spot to Spot Consolidation: Automatically switch workloads between spot instance types when cheaper options become available to maximize cost savings while maintaining performance requirements for your cluster. 
+            - **Select reason:** Drifted, Underutilized, Empty
+            - **Allowed node disruptions:** Specify percentage or number of nodes
+            - **Budget scheduling:** When a budget begins being active. It can be set to be: (hourly, midnight, daily, weekly, monthly or annually) and Active duration (Specifies how long the budget remains active)
+- **Spot to Spot Consolidation:** Automatically switch workloads between spot instance types when cheaper options become available to maximize cost savings while maintaining performance requirements for your cluster. 
 
 </TabItem>
 <TabItem value="spot" label="Spot Preferences">

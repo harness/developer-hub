@@ -1,14 +1,14 @@
 ---
-title: Enabling Cluster Orchestrator using Helm
-description: Learn how to set up and configure Harness Cluster Orchestrator for AWS EKS using Helm
+title: Via Terraform and Helm 
+description: Learn how to set up and configure Harness Cluster Orchestrator for AWS EKS using Terraform and Helm
 sidebar_position: 5
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from: 
+    - /docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co
 ---
-
-# Enabling Cluster Orchestrator using Helm
 
 ## Before You Begin
 Make sure you have the following prerequisites in place:

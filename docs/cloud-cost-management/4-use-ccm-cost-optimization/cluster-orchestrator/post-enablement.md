@@ -1,7 +1,7 @@
 ---
 title: Monitoring Your Cluster After Enablement
 description: Learn how to interpret Cluster Orchestrator dashboards and metrics
-sidebar_position: 6
+sidebar_position: 8
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
