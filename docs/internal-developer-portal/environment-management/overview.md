@@ -45,6 +45,21 @@ Built as a core feature of Harness IDP, while leveraging the strengths of Harnes
 
 ## Key Concepts
 
+### Environment Blueprint
+An Environment Blueprint is a collection of infrastructure templates, services, their configurations and lifecycle management details of each. When a blueprint is orchestrated, it generates running instances of Environments. Blueprints are typically owned by the Platform Engineering team.
+
+### Environment
+An Environment is instantiated using an Environment Blueprint and represents the deployed infrastructure and services, as defined in the blueprint.
+
+### Environment Config 
+Environment Config is a collection of user-provided inputs that uniquely determine how the environment should be created. This Config is typically owned by the end-user Application Developers.
+
+### Service (IDP Component)
+A Component in IDP Catalog represents a service or any other type of software component. For Environment Management use-cases, an IDP Component represents the service being deployed using CD.
+
+### Workspace Templates
+With IaCM Workspace Templates, you can standardize workspace configurations across your projects by predefining essential variables, configuration settings, and other workspace options.
+
 
 
 
