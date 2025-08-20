@@ -3,62 +3,55 @@ title: Integrations
 id: index
 slug: /feature-management-experimentation/integrations
 description: Learn how to integrate Harness FME with third-party tools.
-hide_title: true
+redirect_from:
+  - /docs/feature-management-experimentation/integrations/papertrail/
+  - /docs/feature-management-experimentation/integrations/librato/
 ---
 
 ## Overview
 
-Split integrates across a number categories including messaging, monitoring, issue management, customer data platforms and analytics. The Split developer community has contributed a number of integrations, bringing data from your feature delivery platform into the tools your team uses to enhance collaboration, making all tools flag aware. 
+Split integrates across several categories, including messaging, monitoring, issue management, customer data platforms, and analytics. In addition, the Split developer community has contributed numerous integrations that bring data from your feature delivery platform into the tools your team already uses, helping make all of your tools **feature-flag aware** and improving cross-team collaboration. 
 
-:::info
-If you're not seeing a tool you need to be connected to Split, we encourage you to leverage Split’s API and SDK functionality to connect with the tools your team uses. If you need help leveraging Split’s SDK or API, contact support@split.io.
+:::tip
+If you're not seeing a tool you need to be connected to Split, you can use Split’s [API](https://docs.split.io/) and [SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure) to connect with the tools your team uses. For assistance with Split’s SDK or API, contact [Harness Support](/docs/feature-management-experimentation/fme-support).
 :::
 
-## Split-supported
+import { Section, supportedWorkflows, supportedDatasources, supportedAdminchanges, supportedCommunity } from '/src/components/Docs/data/fmeIntegrations';
 
-You can utilize Split-supported workflow integrations to send feature flag changes to the tools your team uses. Split supports the following integrations:
+<Section 
+  title="Split-supported Workflow Integrations" 
+  items={supportedWorkflows} 
+  perRow={6} 
+  rowSpacing="20px" 
+  description="Split-supported workflow integrations allow you to send feature flag changes directly to the tools your team relies on, helping your team act on flag updates in real time." 
+/>
 
-- [AppDynamics](/docs/feature-management-experimentation/integrations/appdynamics)
-- [Azure DevOps](/docs/feature-management-experimentation/integrations/azure-devops)
-- [Datadog](/docs/feature-management-experimentation/integrations/datadog)
-- [Jira Cloud](/docs/feature-management-experimentation/integrations/jira-cloud)
-- [New Relic](/docs/feature-management-experimentation/integrations/new-relic)
-- [Papertrail](/docs/feature-management-experimentation/integrations/papertrail)
-- [Rollbar](/docs/feature-management-experimentation/integrations/rollbar)
-- [ServiceNow](/docs/feature-management-experimentation/integrations/servicenow)
-- [Slack](/docs/feature-management-experimentation/integrations/slack)
-- [Sumo Logic](/docs/feature-management-experimentation/integrations/sumologic)
-- [VS Code extension](/docs/feature-management-experimentation/integrations/visual-studio-code-extension)
-- Webhook - audit log
+<Section 
+  title="Split-supported Data Integrations" 
+  items={supportedDatasources} 
+  perRow={6} 
+  rowSpacing="20px" 
+  description="Split-supported data source integrations send event data to Split to power experiments, helping you measure the impact of features on metrics derived from your customer data. Split-supported data export integrations allow you to send impression data to analytics platforms, data warehouses, or CRM tools to enrich your business intelligence and reporting." 
+/>
 
-You can utilize Split-supported data source integrations to send event data to Split to power experiments that measure feature impact on metrics defined by your customer data. You can also utilize Split-supported data export integrations to send impression data to the tools your team uses to enrich your data warehouse, product analytics solutions, or CRM tools. Split supports the following integrations:
+<Section 
+  title="Split-supported Admin Integrations" 
+  items={supportedAdminchanges} 
+  perRow={6} 
+  rowSpacing="20px" 
+  description="Split-supported admin integrations let you propagate administrative changes (such as user or configuration updates) to the tools your team uses, keeping your workflows consistent and up-to-date." 
+/>
 
-- [Amazon S3](/docs/feature-management-experimentation/integrations/amazon-s3)
-- [Amplitude](/docs/feature-management-experimentation/integrations/amplitude)
-- [Cloudflare Workers](/docs/feature-management-experimentation/integrations/cloudflare-workers)
-- [Google Analytics](/docs/feature-management-experimentation/integrations/google-analytics)
-- [Google Tag Manager](/docs/feature-management-experimentation/integrations/google-tag-manager)
-- [mParticle](/docs/feature-management-experimentation/integrations/mparticle)
-- [Segment](/docs/feature-management-experimentation/integrations/segment)
-- [Sentry](/docs/feature-management-experimentation/integrations/sentry)
-- Webhook - impressions
+<Section 
+  title="Community-supported Integrations" 
+  items={supportedCommunity} 
+  perRow={6} 
+  rowSpacing="20px" 
+  description="In addition to native integrations, the Split community has contributed a wide variety of integrations, enabling you to bring feature flag data into additional tools not natively supported, from monitoring dashboards to analytics platforms." 
+/>
 
-You can utilize Split-supported integrations to send admin changes to the tools your team uses. Split supports the following integration:
+<br />
 
-- Webhook - admin audit logs
-
-## Community-supported
-
-Leverage Split’s API and SDK functionality to connect Split with the tools your team uses. Below are a few of the community-supported ways you can integrate Split with the tools your team uses. Already built out your own integration or want to request an integration, contact support@split.io. We’d like to feature your work to the entire Split developer community.
-
-- [Bugsnag](/docs/feature-management-experimentation/integrations/bugsnag)
-- [Dynatrace](/docs/feature-management-experimentation/integrations/dynatrace)
-- [FullStory](/docs/feature-management-experimentation/integrations/fullstory)
-- [Grafana](/docs/feature-management-experimentation/integrations/grafana)
-- [Heap](/docs/feature-management-experimentation/integrations/heap)
-- [Jenkins](/docs/feature-management-experimentation/integrations/jenkins)
-- [Mixpanel](/docs/feature-management-experimentation/integrations/mixpanel)
-- [PagerDuty](/docs/feature-management-experimentation/integrations/pagerduty)
-- [Quantum Metric](/docs/feature-management-experimentation/integrations/quantummetric)
-- [SessionCam](/docs/feature-management-experimentation/integrations/sessioncam)
-- [Terraform provider](/docs/feature-management-experimentation/integrations/terraform)
+:::info
+Already built out your own integration or want to request an integration? Contact [Harness Support](/docs/feature-management-experimentation/fme-support). We’d like to feature your work to the entire Split developer community.
+:::

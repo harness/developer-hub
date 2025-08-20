@@ -19,6 +19,108 @@ If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Ov
 
 Harness IDP 2.0 marks a significant evolution of the Internal Developer Portal, introducing a Harness-native data model tailored for enterprise-scale environments and strong access control. As we transition to this new model, **legacy Backstage YAML** will no longer be supported. Going forward, only the **Harness-native data model** schema will be used and referenced. This guide walks you through the new **Harness-native YAML schema** and outlines the key changes from the previous schema.
 
+## Quick Reference: Entity YAML Examples
+
+<details>
+<summary>Component YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: Component
+name: anomaly-detection
+identifier: anomaly-detection
+type: service
+owner: group:ccmplayacc
+spec:
+  lifecycle: production
+  dependsOn:
+    - component:ng-manager
+metadata:
+  description: CCM anomaly detection backend service
+  annotations:
+    backstage.io/kubernetes-label-selector: app=anomaly-detection
+    github.com/project-slug: wings-software/ce-anomalyDetection
+    pagerduty.com/service-id: PFVOX97
+    jira/project-key: CCM
+    backstage.io/source-location: url:https://github.com/wings-software/ce-anomalyDetection/tree/main
+  links:
+    - title: repo
+      url: https://github.com/wings-software/ce-anomalyDetection
+  tags:
+    - python
+```
+</details>
+
+<details>
+<summary>API YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: API
+type: openapi
+identifier: cenextgen
+name: cenextgen
+owner: johndoe
+spec:
+  lifecycle: production
+  definition:
+    $text: https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v2.0/json/api-with-examples.json
+metadata:
+  description: The official CE NEXTGEN service REST APIs
+```
+</details>
+
+<details>
+<summary>System YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: System
+name: Payment System
+identifier: paymentsystem
+type: domain
+owner: team-payment
+metadata:
+  description: This system groups services and libraries related to payment processing.
+  tags:
+    - rest
+    - java
+```
+</details>
+
+<details>
+<summary>Resource YAML Example</summary>
+
+```yaml
+apiVersion: harness.io/v1
+kind: Resource
+name: Payment Database
+identifier: payment-database
+type: database
+owner: group:ccmplayacc
+spec:
+  system:
+    - system:account/ccm_platform
+  dependsOn:
+    - resource:account/ccm-backup-storage
+metadata:
+  description: MongoDB database for CCM platform data storage
+  annotations:
+    harness.io/db-instance: mongodb-ccm-prod-01
+    harness.io/db-region: us-east-1
+    harness.io/backup-schedule: daily-2am-UTC
+  links:
+    - title: Database Dashboard
+      url: https://harness-monitoring.grafana.net/d/mongodb-ccm
+    - title: Backup Policy
+      url: https://harness.atlassian.net/wiki/spaces/CCM/pages/123456/Database+Backup+Policy
+  tags:
+    - mongodb
+    - database
+    - production
+```
+</details>
+
 :::info
 Please ensure that **no entity YAML files** are stored in **Git in IDP 2.0** until the [Git Experience](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#native-harness-git-experience) feature is released. You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** table
 :::
@@ -67,7 +169,7 @@ If you have entities defined using legacy Backstage YAML (from IDP 1.0), you can
    Learn more in the **[Catalog YAML View documentation](/docs/internal-developer-portal/catalog/manage-catalog.md#catalog-yaml)**.
 
 2. **Using the YAML Conversion API:**
-   To streamline migration, we’ve also introduced an API that converts Backstage Catalog YAML to the Harness-native format. \[Read more here.]
+   To streamline migration, we've also introduced an API that converts Backstage Catalog YAML to the Harness-native format. [Read more in the IDP 2.0 migration guide.](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)
 
 All existing Catalog entities will be **automatically migrated** to IDP 2.0, and their associated YAML files will be deprecated. Additionally, a new Git Experience tool will soon be available, allowing you to **commit the converted definitions directly to YAML files in your Git repository**.
 
@@ -102,6 +204,7 @@ With **IDP 2.0**, you can define the following `kind` types in your Catalog YAML
 * `kind: API`
 * `kind: Resource`
 * `kind: Workflow`
+* `kind: System`
 
 Each kind represents a different type of entity within the Harness-native data model.
 [Read more about the different entity kinds here.](/docs/internal-developer-portal/catalog/catalog-yaml.md#entity-kinds)
@@ -247,6 +350,7 @@ All the fields mentioned below are the mandatory parameters required to define a
 | `kind` | **Component** |
 | `type` | You can find out more about the `type` key here. |
 | `spec.lifecycle` | You can find out more about the `lifecycle` key here. |
+| `spec.system` | Optional. Reference to System entities this Component belongs to. |
 
 #### Example YAML
 ```yaml
@@ -258,6 +362,11 @@ name: artistweb
 owner: artist-relations-team
 spec:
   lifecycle: production
+  system:
+    - system:account/marketing_systems
+    - system:account/web_platform
+  partOf:
+    - system:account/customer_experience
 metadata:
   description: The place to be, for great artists
   annotations:
@@ -271,6 +380,38 @@ metadata:
     example.com/custom: custom_label_value
   tags:
     - java
+```
+
+---
+
+### Kind: System
+A **System** is a high-level catalog entity used to logically group related software components, APIs, and infrastructure resources. It represents a functional or domain-specific boundary such as a module, platform area, or business unit—enabling teams to organize and manage complex software ecosystems more effectively.
+
+#### Entity Structure  
+All the fields mentioned below are the mandatory parameters required to define a System:
+
+| **Field** | **Value** |
+| --------- | --------- |
+| `apiVersion` | **harness.io/v1** |
+| `kind` | **System** |
+| `type` | Common values include `domain`, `module`, or `platform` |
+| `owner` | The team or group responsible for the System |
+
+#### Example YAML
+```yaml
+apiVersion: harness.io/v1
+kind: System
+type: domain
+identifier: paymentsystem
+name: Payment System
+owner: team-payment
+spec:
+  lifecycle: ""
+metadata:
+  description: This system groups services and libraries related to payment processing.
+  tags:
+    - payments
+    - financial
 ```
 
 ---

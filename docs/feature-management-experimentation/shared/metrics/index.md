@@ -41,7 +41,7 @@ For more information about metric categories, see [Metric categorization](./cate
 
 ## Configure an alert policy
 
-You can set an alert policy for a metric and Harness FME will notify you if a feature flag impacts the metric beyond a threshold you define. For more information, review the [Configuring metric alerting guide](https://help.split.io/hc/en-us/articles/19832312225293).
+You can set an alert policy for a metric and Harness FME will notify you if a feature flag impacts the metric beyond a threshold you define. For more information, review the [Configuring metric alerting guide](/docs/feature-management-experimentation/release-monitoring/metrics/setup/metric-alert-policy/).
 
 ## Audit logs
 

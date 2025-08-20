@@ -5,7 +5,7 @@ description: ""
 sidebar_position: 11
 ---
 
-If a feature flag is killed or the customer is not exposed to any targeting rules, the flag serves a treatment selected by you. This is also known as the default treatment. Your treatment should always be one that exposes fully tested and safe code. In an on/off feature flag, the default treatment is typically set to off. In a multivariate feature, the default might be off, or it might be defined as the treatment that is currently used by 100% of traffic. To set this treatment, refer to the [Target customers](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting) guide.
+If a feature flag is killed or the customer is not exposed to any targeting rules, the flag serves a treatment selected by you. This is also known as the default treatment. Your treatment should always be one that exposes fully tested and safe code. In an on/off feature flag, the default treatment is typically set to off. In a multivariant feature, the default might be off, or it might be defined as the treatment that is currently used by 100% of traffic. To set this treatment, refer to the [Target customers](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting) guide.
 
 <!-- future proposed rewrite, combining two articles (https://help.split.io/hc/en-us/articles/360020528192-Default-treatment, https://help.split.io/hc/en-us/articles/360020527672-Set-the-default-treatment) :
 

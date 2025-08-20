@@ -57,7 +57,7 @@ Let's say you have more than three treatments.  In this case, the `status_quo` w
   </tbody>
 </table>
 
-One way to 'move' users between multivariate treatments while only removing users from `treatment2` is to take advantage of [Dynamic Configuration](/docs/feature-management-experimentation/feature-management/dynamic-configurations), assuming you can represent the differences between treatments using a set of configured values.  In this case, you'd set the configuration of `treatment2` to the `status_quo` settings, which would give them the `status_quo` experience.
+One way to 'move' users between multivariant treatments while only removing users from `treatment2` is to take advantage of [Dynamic Configuration](/docs/feature-management-experimentation/feature-management/dynamic-configurations), assuming you can represent the differences between treatments using a set of configured values.  In this case, you'd set the configuration of `treatment2` to the `status_quo` settings, which would give them the `status_quo` experience.
 
 | Even Distribution |	Buckets |	Dynamic Config |
 | --- | --- | --- |

@@ -244,11 +244,57 @@ This step triggers a sync for your existing or updated GitOps application.
 
 Optionally, click on the **Wait until healthy** checkbox, if you would like the step to run until the application reaches it's "Healthy" state.
 
-In **Advanced Configuration**, select the application you want to sync and configure the sync options. You can either can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter.
+In **Advanced Configuration**, select the application(s) you want to sync and configure the sync options. You can choose one of the following:
 
-![](../application/static/gitopssync-step.png)
+1. **Application name** – Select specific applications manually.  
+2. **Application regex** – Match up to 1000 applications using a regular expression.  
+3. **Application labels** – Filter applications by their labels.  
+  - **Exact match (Key:Value)**
+    - If you want to match specific applications, you can do an exact match using **Key:value** in the labels.
+    - You can add labels to an application in the **App Details** page.
+
+  - **Partial match (Key or Value)**
+    - Search using a **key** or **value**.
+    - Partial matches are supported. For example, if a label key is `team` or a value is `payment-service`, searching for `tea` or `pay` will return that application.
+    - The search also considers the **Service name** and **Environment name** associated with the GitOps application as labels, and will match them in partial searches.
+
+<div align="center">
+  <DocImage path={require('./static/gitopssync-step.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 The sync options provided are the same options you receive while syncing an application in GitOps directly.
+
+#### Using Expressions with Application Labels
+
+When using `applicationLabels` as a pipeline variable, it represents a list of strings. Since this is not a native variable type in Harness expressions, you need to use specific methods to properly pass the list values.
+
+You can use one of the following approaches to handle application labels in expressions:
+
+**JSON List Functor**
+
+Use the JSON list functor to parse the labels:
+
+```
+<+json.list("$", <+pipeline.variables.labels>)>
+```
+
+Format your `labels` variable as:
+- Single value: `["cluster"]`
+- Multiple values: `["cluster", "list"]`
+
+For more information, go to [JSON and XML functors](/docs/platform/variables-and-expressions/harness-variables/#json-and-xml-functors).
+
+**Split Function**
+
+Use the split function for comma-separated values:
+
+```
+<+pipeline.variables.labels.split(",")>
+```
+
+Input examples:
+- `cluster` (single label)
+- `cluster,list` (multiple labels)
 
 ### GitOps Get App Details step
 
