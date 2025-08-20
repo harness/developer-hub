@@ -116,7 +116,7 @@ import { MODULES } from "@site/src/constants"
           title: "Migrate from Split to Harness FME",
           module: MODULES.fme,
           description:
-            "Step-by-step guidance to migrate your features from Split to Harness FME.",
+            "Step-by-step guidance to migrate your account from Split to Harness FME.",
           link: "/docs/feature-management-experimentation/split-to-harness",
         },
         {
