@@ -175,7 +175,7 @@ This minor release updates the build process to sign the NuGet package, improvin
 
 #### Version 1.0.7
 
-**Bug fixes**:
+**Security and maintenance**:
 
 - Removed indirect dependency on `github.com/golang-jwt/jwt` version 3.2.2 or later which was incompatible for improved stability. (FFM-12443) 
 
