@@ -1,7 +1,7 @@
 ---
 title: "View baseline issues - STO Overview"
 description: The STO Overview page enables you to see all detected issues in your target baselines.
-sidebar_position: 20
+sidebar_position: 30
 sidebar_label: "View baseline issues - STO Overview"
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview
