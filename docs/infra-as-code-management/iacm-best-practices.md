@@ -5,9 +5,11 @@ description: Learn about IaCM onboarding and best practices.
 
 import HarnessApiData from '/src/components/HarnessApiData/index.tsx';
 
-Harness Infrastructure as Code allows you to define, deploy, and manage infrastructure across environments, ensuring compliance and control. Key features include cost estimation, approval steps, PR automation, policy enforcement, and drift detection, which can integrate seamlessly with other Harness modules and third-party services, enhancing your DevOps lifecycle.
+Harness Infrastructure as Code allows you to **define**, **deploy**, and **manage infrastructure across environments**, ensuring compliance and control.  
 
-This document provides a set of best practices and guidelines aimed at helping teams implement and manage IaCM effectively. It serves as a reference to navigate the complexities of infrastructure management, offering clear, actionable recommendations to optimize performance, enhance security, and prevent common pitfalls.
+Key features include [cost estimation](/docs/infra-as-code-management/workspaces/cost-estimation), [approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step), [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation), [policy enforcement](/docs/infra-as-code-management/policies-governance/opa-workspace), and [drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection). These integrate seamlessly with other Harness modules and third-party services, enhancing your DevOps lifecycle.  
+
+This document provides best practices and guidelines to help you implement and manage IaCM effectively. It offers clear, actionable recommendations to optimize performance, strengthen security, and avoid common pitfalls.
 
 ## Workflow hierarchy
 
@@ -31,7 +33,7 @@ Harness IaCM currently supports integration with all **OpenTofu** versions<Harne
 :::
 
 ### Configuration Guidelines
-As a first step, we recommend configuring your Cloud Provider and Code repository **connectors** to streamline further configurations like workspace and pipeline creation so they can be easily selected.  
+As a first step, we recommend you [configure your Cloud Provider and Code repository connectors](/docs/infra-as-code-management/get-started/#add-connectors) to streamline further configurations like workspace and pipeline creation so they can be easily selected.  
 
 ### OpenTofu / Terraform Authentication
 To effectively authenticate OpenTofu or Terraform across different providers, it’s crucial to follow a consistent approach that aligns with the requirements of each provider while ensuring security and efficiency.
@@ -55,7 +57,7 @@ Some reusable options can be to:
 <!-- placeholder for workspace templates -->
 
 ### Trade-offs and considerations
-Harness seamlessly integrates with third-party services like external code repositories and secret managers, providing flexibility in tool choice. However, using Harness’s native services like [Harness Code Repository](https://developer.harness.io/docs/code-repository/) and [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) can offer key performance and operational benefits.
+Harness seamlessly integrates with third-party services like external code repositories and secret managers, providing flexibility in tool choice. However, using Harness’s native services like [Harness Code Repository](docs/code-repository/) and [Harness Secret Manager](docs/platform/secrets/secrets-management/harness-secret-manager-overview/) can offer key performance and operational benefits.
 
 - **Reduced Latency:** Avoids external API calls, leading to faster execution and reduced overhead.
 - **Simplified Authentication:** Minimizes multiple authentication mechanisms, reducing complexity and potential security risks.
@@ -63,10 +65,16 @@ Harness seamlessly integrates with third-party services like external code repos
 - **Enhanced Visibility:** Provides a single point of control for auditing and policy enforcement.
 - **Reduced Dependencies:** Lowers reliance on external services, increasing system resilience.
 
+## Limitations & Gotchas
+Be aware of the following when working with IaCM:
+- **AWS Connector via Delegates:** IAM role inheritance from delegates is not supported. If you need to assume roles, configure them directly in the connector.  
+- **Feature-flagged functionality:** Some features are released behind feature flags. Pages covering these features should include a **Pending Release** banner until the feature is fully available in production.  
+- **Delegate version requirements:** Certain features (such as module registry sync) may fail silently if your delegate is outdated. Always confirm you are running the latest delegate version to ensure support for new capabilities.  
+
 ## Security
-- **Access Controls:** [Role-based access control (RBAC)](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
-- **Secret Management:** Go to the [secret management page](https://developer.harness.io/docs/category/secrets-management) to see all supported secret management option available in the Harness Platform and determine what option is best suited for your needs. As mentioned above, Harness offer integration with multiple secret management options but recommend [Harness secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) to help offer optimal performance.
-- **OPA Policies:** Use [OPA policies](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/) to implement governance and trigger pipeline warnings or failures when policy conditions are not met. 
+- **Access Controls:** [Role-based access control (RBAC)](docs/platform/role-based-access-control/rbac-in-harness/) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
+- **Secret Management:** Go to the [secret management page](docs/category/secrets-management) to see all supported secret management option available in the Harness Platform and determine what option is best suited for your needs. As mentioned above, Harness offer integration with multiple secret management options but recommend [Harness secret manager](docs/platform/secrets/secrets-management/harness-secret-manager-overview/) to help offer optimal performance.
+- **OPA Policies:** Use [OPA policies](docs/platform/governance/policy-as-code/harness-governance-overview/) to implement governance and trigger pipeline warnings or failures when policy conditions are not met. 
 
 ### State Management
 - **Remote State Storage:** Use remote state backends like AWS S3, GCP Cloud Storage, or Azure Blob Storage for reliable and scalable state management. Ensure state files are stored securely and versioned to prevent accidental data loss or corruption. Go to [OpenTofu backend configuration](https://opentofu.org/docs/language/settings/backends/configuration/) for more information.
