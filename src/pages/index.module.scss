@@ -43,7 +43,7 @@
   height: auto;
   z-index: 1;
   position: absolute;
-  // right: 40px;
+  margin-top: -60px;
   left: 46%;
   top: 60px;
   overflow: hidden;
@@ -54,15 +54,13 @@
     width: 101%;
   }
 }
-.heroTitle{
-  font-size: 50px;
-  line-height: 58px;
-  font-weight: 700;
+.heroTitle {
+  font-size: 48px;
   text-align: left;
   margin-bottom: 24px;
   letter-spacing: -0.5px;
 }
-.heroSubTitle{
+.heroSubTitle {
   font-size: 18px;
   line-height: 26px;
   padding-right: 1em;
@@ -74,7 +72,7 @@
   justify-content: flex-start;
 }
 .heroButton {
-  background-color: #0278D5;
+  background-color: #0278d5;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -105,6 +103,8 @@
       width: 46%;
       position: unset;
       margin-bottom: -15%;
+      margin-top: 0px;
+      width: 100%;
     }
   }
 }

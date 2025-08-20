@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Geist:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
 @import 'fontawesome/css/fontawesome.min.css';
 @import 'fontawesome/css/solid.min.css';
 @import 'fontawesome/css/regular.min.css';
@@ -233,9 +236,9 @@
 
   /* Module Colors/Feature Management & Experimentation/300 */
   --mod-fme-300: #6938c0;
- /* Module Colors/Feature Management & Experimentation/300 */
+  /* Module Colors/Feature Management & Experimentation/300 */
   --mod-fme-200: #8b73ce;
- /* Module Colors/Feature Management & Experimentation/300 */
+  /* Module Colors/Feature Management & Experimentation/300 */
   --mod-fme-100: #f6f1ff;
 
   --mod-sto-300: #1947ec;
@@ -335,9 +338,14 @@
   --ifm-navbar-padding-vertical: calc(var(--ifm-spacing-vertical) * 0.75);
   --ifm-navbar-height: 4.25rem;
 
-  --harness-font-family: Inter, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  --harness-font-family: Geist, Inter, sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji' !important;
+
+  --ifm-heading-font-family: Cal sans, sans-serif, Inter;
+  --ifm-heading-font-weight: 600;
+  --ifm-heading-line-height: 120%;
+  --ifm-heading-color: var(--gray-800);
 
   /* here */
   --ifm-color-content-light: var(--gray-800);
@@ -358,6 +366,9 @@
   --coveo-card-bg: rgba(255, 255, 255);
   --link-color: #0278d5;
   --link-color-hover: #0059b3;
+}
+button {
+  font-family: Cal sans, sans-serif, Inter !important;
 }
 
 /* darkmode css */
@@ -461,18 +472,24 @@ html *:before,
 html *:after {
   box-sizing: inherit;
 }
+.footer__title {
+  font-family: 'Cal sans';
+  font-weight: 500;
+}
 
 body {
   font-family: var(--harness-font-family) !important;
   background-color: var(--background-color);
 }
-
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 500 !important;
+}
 a:hover {
   color: var(--ifm-color-primary-light);
-}
-h2 {
-  display: flex;
-  align-items: center;
 }
 
 .button--cta,
@@ -483,37 +500,41 @@ h2 {
   font-size: 16px;
   line-height: 24px;
   color: var(--white);
+  font-weight: 500;
 }
 
 .button--nav {
   background-color: var(--white);
   border: 1px solid var(--primary-7);
   color: var(--primary-7);
-  /* margin-right: -0.75rem; */
-  font-weight: 600;
   font-size: 16px;
   line-height: 24px;
+  font-weight: 500;
 }
 .btn-nav {
   margin: 8px 0px 8px 12px;
+  font-weight: 500;
 }
 
 .button--nav:hover {
   background-color: var(--primary-5);
   border-color: var(--primary-5);
   color: white;
+  font-weight: 500;
 }
 .button--cta:hover,
 .button--primary:hover {
   background-color: var(--primary-5);
   border-color: var(--primary-5);
   color: white;
+  font-weight: 500;
 }
 
 .button--primary {
   height: 48px;
   padding-left: 2em;
   padding-right: 2em;
+  font-weight: 500;
 }
 
 /* style overwriting temporarily for the beta icon */
@@ -759,6 +780,7 @@ aside nav.menu > ul > li > ul > li > a {
   font-size: 13px;
   line-height: 20px;
   font-weight: 600;
+  padding: 8;
 }
 
 aside nav.menu > ul > li > ul > li ul > li > div > a,
@@ -796,16 +818,16 @@ a.card p.text--truncate {
 .horizontal-bar {
   margin-top: 15px;
   padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
-  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
+  font-family: 'Cal sans';
 }
 
 html[data-theme='light'] .horizontal-bar {
   border-top: 1px solid #e0e0e0;
   border-right: 1px solid #e0e0e0;
   background-color: #effbff;
-  color: #b0b1c1;
+  color: var(--gray-600);
 }
 
 html[data-theme='dark'] .horizontal-bar {
@@ -1113,7 +1135,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1124,7 +1146,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_code.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1135,7 +1157,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_ci.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1146,7 +1168,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_artifact_registry.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1157,7 +1179,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/logo-ata.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1169,7 +1191,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_cd.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1181,7 +1203,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/cde_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1192,7 +1214,7 @@ figure p {
   display: inline-block;
   min-height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_iacm.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1203,7 +1225,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_ff.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1214,7 +1236,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_fme.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1225,7 +1247,7 @@ figure p {
   display: inline-block;
   min-height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_dbdevops.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1236,7 +1258,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_ccm.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1247,7 +1269,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_sto.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1258,7 +1280,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_ssca.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1269,7 +1291,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_ce.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1280,7 +1302,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon-ir.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1291,7 +1313,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_srm.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1302,7 +1324,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_cet.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1313,7 +1335,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_idp.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1324,7 +1346,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_sei.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1335,7 +1357,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1346,7 +1368,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/Harness_FirstGen_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1357,7 +1379,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/Troubleshooting_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1368,7 +1390,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/API_Reference_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1379,7 +1401,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/Release_Notes_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1390,7 +1412,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/Cloud_Operations_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1401,7 +1423,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/faqs_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1413,7 +1435,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/All_Docs_Logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1425,7 +1447,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/armory.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1437,7 +1459,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/reference_architectures_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1449,7 +1471,7 @@ figure p {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1469,7 +1491,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/roadmap_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1481,7 +1503,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/ilt_instructions_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1493,7 +1515,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/virtual_instructor_led_calendar_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1505,7 +1527,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/back_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1517,7 +1539,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/show_all_kb_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1529,7 +1551,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/university_icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -1541,7 +1563,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   display: inline-block;
   height: 24px;
   min-width: 24px;
-  margin-right: 16px;
+  margin-right: 8px;
   background-image: url('/img/icon_ce.svg');
   background-size: contain;
   background-repeat: no-repeat;
