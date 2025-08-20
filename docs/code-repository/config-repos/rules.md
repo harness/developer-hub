@@ -98,6 +98,8 @@ Check this box to activate the rule.
 
   * `v*` for all version tags,
   * `release/**` for nested release tags).
+* You can include or exclude repositories when creating tag rules at the account, org, or project level. This makes it possible to scope rules precisely — for example, apply tag restrictions to `prod-*` repos only, or exclude experimental repos from versioning rules.
+* Patterns can be inclusive or exclusive.
 
 #### Rules: Select all that apply
 
