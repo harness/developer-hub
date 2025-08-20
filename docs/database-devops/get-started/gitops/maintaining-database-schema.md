@@ -46,21 +46,7 @@ If you do not have your schema tracked in Git yet: Use the Harness UI to generat
 If you already have your changelog files:
 - Organize them following your chosen Harness DB DevOps repository structure (for example, one root changelog.yml including multiple changeset files).
 - Commit your current schema state to Git.
-For example: 
-    ```tree
-    ├── changelogs/
-    │   ├── master.yml          # Main changelog file (includes all others)
-    │   ├── changesets/
-    │   │   ├── 2025-08-10-add-user-table.yml
-    │   │   ├── 2025-08-11-add-email-index.yml
-    │   │   └── ...
-    │   ├── rollback/
-    │   │   ├── rollback-add-user-table.yml
-    │   │   ├── rollback-add-email-index.yml
-    │   |   └── ... 
-    ├── docs/                   # Optional – schema diagrams, design notes
-    └── README.md
-    ```
+
 ## 2. Commit and Push Changes
 In trunk-based development, database changes are committed directly to the shared main branch or short-lived branches that are merged the same day.
 1. Create or update the relevant .yml changeset in your changelog.
@@ -79,7 +65,6 @@ How it works:
 
 - **Contexts**: Instead of maintaining separate changelog files for each environment, you can annotate changesets with contexts (e.g., dev, staging, prod).
 - **Selective Deployment**: During pipeline execution, Harness applies only the changesets whose contexts match the target environment stage in the pipeline.
-- **Drift Detection**: Harness continuously checks for schema drift between Git and the actual database, so you can identify and fix discrepancies early.
 - **Rollback Support**: Pipelines can invoke rollback commands automatically if a deployment fails, reverting to the last known good state.
 
 For example,
