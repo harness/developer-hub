@@ -19,7 +19,7 @@ When enabling Cluster Orchestrator, you can configure various settings under the
 
 <DocImage path={require('./static/cluster-one.png')} width="80%" height="80%" title="Click to view full size image" />
 - **Enable Commitment Context (Inegration with Commitment Orchestrator):** Checks existing commitments before provisioning spot instances to avoid duplicate coverage and maximize savings.
-- **Set the Time-To-Live (TTL) for Karpenter nodes:** Set the Time-To-Live (TTL) for Karpenter nodes to ensure that nodes are automatically terminated after a specified period of inactivity.
+- **Set the Time-To-Live (TTL) for Karpenter nodes:** The Time-to-Live (TTL) setting for Karpenter nodes defines the maximum lifespan of a node before it is eligible for deletion, regardless of its resource utilization. By setting a TTL, users can ensure that idle or unnecessary nodes are automatically cleaned up after a specified time period, even if they are not underutilized or empty. This helps in avoiding resource sprawl, ensuring that unused nodes don’t linger indefinitely, and optimizing the overall cost and resource usage within the cluster.
 
 
 - **Bin-Packing:** Bin-packing is a resource optimization technique that Cluster Orchestrator uses to efficiently distribute workloads across your Kubernetes cluster. The goal is to maximize resource utilization by consolidating workloads onto fewer nodes, allowing underutilized nodes to be safely removed from the cluster.
