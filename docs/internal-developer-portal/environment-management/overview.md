@@ -6,15 +6,17 @@ sidebar_position: 1
 
 ## Overview
 
-Environment Management in Harness IDP is a feature that enables developers and platform engineers to create, configure and manage environments, all from a single point within Harness IDP. An environment is a collection of software services that are deployed using CD tools and run in a specific infrastructure configured using IaCM tools. This feature provides a self-service, automated and repeatable approach to configure and manage environments.
+Environment Management in Harness IDP enables developers and platform engineers to **create, configure, and manage environments from a single point of control**. An environment is a collection of software services deployed using CD tools and executed on infrastructure provisioned through IaCM tools. This feature provides a **self-service, automated, and repeatable** way to manage environments efficiently.
 
 ### Impact and Benefits
-In modern software delivery where environments sit at the very core of every developer's workflow, it is important to maintain a delicate balance between governance, consistency and accessibility across all the environments. Without environment management, setting up environments is slow, inconsistent, and hard to track, leaving developers dependent on other teams and increasing costs and risks. 
 
-Environment Management fixes this by making environments easy to create, consistent, and secure, while giving developers more autonomy and speeding up delivery. By adopting Environment Management, organizations gain the following benefits: 
-- **Improved Developer Experience**: Developers work independently without waiting on other teams, leading to faster iterations and quicker delivery. 
-- **Built-in Guardrails & Governance**: Security risks are minimized by ensuring proper guardrails and policies are baked in the environment lifecycle management and with proper access control using RBAC. 
-- **Improved Software Quality & Reliability**: Standardized, repeatable setups eliminate drift, making it easier to catch issues early and ship with better with confidence.
+In modern software delivery, environments sit at the very core of every developer’s workflow. Maintaining the right balance between **governance, consistency, and accessibility** is critical. Without environment management, setup becomes slow, inconsistent, and difficult to track - leaving developers dependent on other teams, while driving up costs and risks.
+
+Harness IDP Environment Management solves this by making environments **easy to create, consistent, and secure**, while giving developers autonomy and speeding up delivery. By adopting Environment Management, organizations gain the following benefits:
+
+* **Improved Developer Experience**: Developers can work independently without relying on other teams, enabling faster iterations and quicker delivery.
+* **Built-in Guardrails & Governance**: Security and compliance are enforced through guardrails and policies baked into the environment lifecycle, with access controlled via RBAC.
+* **Improved Software Quality & Reliability**: Standardized, repeatable setups eliminate drift, making it easier to catch issues early and ship with greater confidence.
 
 ### Environment Management Stack
 Environment Management is a core feature of Harness IDP. It gives developers a self-service way to create and manage environments, while platform engineers define the standards behind them.
@@ -49,13 +51,16 @@ Built as a core feature of Harness IDP, while leveraging the strengths of Harnes
 An Environment Blueprint is a collection of infrastructure templates, services, their configurations and lifecycle management details of each. When a blueprint is orchestrated, it generates running instances of Environments. Blueprints are typically owned by the Platform Engineering team.
 
 ### Environment
-An Environment is instantiated using an Environment Blueprint and represents the deployed infrastructure and services, as defined in the blueprint.
+An Environment is instantiated using an Environment Blueprint and represents the deployed infrastructure and services, as defined in the blueprint. It is a collection of software services deployed using CD tools and executed on infrastructure provisioned through IaCM tools.
 
 ### Environment Config 
 Environment Config is a collection of user-provided inputs that uniquely determine how the environment should be created. This Config is typically owned by the end-user Application Developers.
 
 ### Service (IDP Component)
 A Component in IDP Catalog represents a service or any other type of software component. For Environment Management use-cases, an IDP Component represents the service being deployed using CD.
+
+### Workspace
+IaCM Workspace is a container for your infrastructure resources. It integrates IaC code, variables, cloud provider connections, state files, and workflows. In Terraform, each workspace has its own state file, which tracks the status of its managed resources. 
 
 ### Workspace Templates
 With IaCM Workspace Templates, you can standardize workspace configurations across your projects by predefining essential variables, configuration settings, and other workspace options.
