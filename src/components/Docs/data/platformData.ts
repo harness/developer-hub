@@ -86,7 +86,7 @@ export const docsCards: CardSections = [
       },
       {
         title: "FME",
-        module: MODULES.ff,
+        module: MODULES.fme,
         description: "Feature Management & Experimentation overview",
         link: "/docs/feature-management-experimentation/getting-started/overview",
       },
