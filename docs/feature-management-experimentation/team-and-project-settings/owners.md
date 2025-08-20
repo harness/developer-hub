@@ -24,7 +24,7 @@ When you add owners and set **Restrict who can edit** to owners, those owners ar
 
 | Scenario                                 | Owner has edit rights?            |
 |------------------------------------------|------------------------------------|
-| Owner only, **Anyone can edit**          | ❌ No (organizational only)         |
+| Owner only          | ❌ No (organizational only)         |
 | Owner only, **Restrict who can edit** (Owners)   | ✅ Yes for that object in all environments |
 | Owner + environment-level editor rights  | ✅ Yes through environment permissions   |
 
