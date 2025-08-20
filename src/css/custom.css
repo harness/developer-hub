@@ -369,6 +369,7 @@
 }
 button {
   font-family: Cal sans, sans-serif, Inter !important;
+  letter-spacing: 0.5px;
 }
 
 /* darkmode css */
@@ -487,6 +488,7 @@ h3,
 h4,
 h5 {
   font-weight: 500 !important;
+  letter-spacing: 0.5px;
 }
 a:hover {
   color: var(--ifm-color-primary-light);
@@ -821,6 +823,7 @@ a.card p.text--truncate {
   font-size: 12px;
   font-weight: 500;
   font-family: 'Cal sans';
+  letter-spacing: 0.5px;
 }
 
 html[data-theme='light'] .horizontal-bar {
