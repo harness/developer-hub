@@ -10,14 +10,14 @@ export const CiData: Horizon = {
         description: "Identify, track, and manage flaky tests to improve test reliability and build stability.",
       },
       {
-        tag: [{ value: "Fast" }],
-        title: "Test Intelligence for Integration Tests",
-        description: "Enable test selection and insights for integration tests, extending Test Intelligence beyond unit testing.",
+        tag: [{ value: "Code Quality" }],
+        title: "Code Coverage",
+        description: "Upload code coverage reports to Harness. Visualize overall coverage and coverage for changed code to track gaps, enforce thresholds, and improve test completeness over time.",
       },
       {
-        tag: [{ value: "Fast" }],
-        title: "Simplify migration from Drone to Harness platform",
-        description: "Customers can run Drone pipelines on the Harness platform using runtime conversion and dynamic pipelines, simplifying the migration path.",
+        tag: [{ value: "Adoption" }],
+        title: "Seamless Migration from Drone to Harness",
+        description: "Run existing Drone pipelines natively on the Harness platform with automatic runtime conversion and dynamic pipelines—making migration frictionless and significantly faster."
       },
       {
         tag: [{ value: "Secure" }],
@@ -25,24 +25,19 @@ export const CiData: Horizon = {
         description: "Securely connect to Microsoft Azure through OIDC, for accessing public cloud resources without secrets or credentials.",
       },
       {
-        tag: [{ value: "Code Quality" }],
-        title: "Code Coverage",
-        description: "Upload code coverage reports to Harness. Visualize overall coverage and coverage for changed code to track gaps, enforce thresholds, and improve test completeness over time.",
-      },
-      {
         tag: [{ value: "Developer Experience" }],
         title: "Upload and Display Build Artifacts",
         description: "Preview build artifacts like HTML test coverage reports directly in the browser, or download them from Harness-managed storage for deeper inspection.",
       },
       {
-        tag: [{ "value": "Usability" }],
+        tag: [{ value: "Usability" }],
         title: "Run Git Commands Post-Clone Without Re-authentication",
         description: "Support for easily running Git commands in any Run step after the repository is cloned via Git Connector, removing the need to handle authentication explicitly."
       },
       {
         tag: [{ value: "Cloud" }],
-        title: "Additional VM images for macOS and Linux with Harness Cloud",
-        description: "We're expanding our Cloud offering to support multiple VM images for macOS and Linux, giving users the flexibility to choose from a predefined set of images. This allows teams to run builds on both the latest and previous stable OS versions, ensuring compatibility with different environments.",
+        title: "Additional VM images for macOS with Harness Cloud",
+        description: "We're expanding our Cloud offering to support multiple VM images for macOS, giving users the flexibility to choose from a predefined set of images. This allows teams to run builds on both the latest and previous stable OS versions, ensuring compatibility with different environments.",
       }, 
       {
         tag: [{ value: "Fast" }],
@@ -60,11 +55,20 @@ export const CiData: Horizon = {
     description: "Q4 2025, November 2025 - January 2026",
     feature: [
       {
+        tag: [{ value: "AI" }],
+        title: "CI Auto-Fix",
+        description: "Harness AI agents detect and remediate failing builds automatically. The system learns from code changes and CI failures, applies targeted fixes, and iterates until the pipeline passes—reducing manual intervention and accelerating developer velocity."
+      },
+      {
+        tag: [{ value: "Fast" }],
+        title: "Test Intelligence for Integration Tests",
+        description: "Enable test selection and insights for integration tests, extending Test Intelligence beyond unit testing.",
+      },
+      {
         tag: [{ value: "Fast" }],
         title: "Test Intelligence for JavaScript-based languages with Cypress",
         description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related to the code changes made.",
       },
-
       {
         tag: [{ value: "Intelligence" }],
         title: "Support for Code Coverage integration with Test Intelligence",
@@ -148,6 +152,11 @@ export const CiData: Horizon = {
         title: "Using external secret managers with Harness Cloud",
         description: "Enables an encrypted, secure tunnel between the Harness Cloud network and your private network, allowing you to safely use Harness Cloud infrastructure with privately-hosted assets such as internal artifact or code repositories."
       ,
+      }, 
+      {
+        tag: [{ value: "Cloud" }],
+        title: "Additional VM images for Linux with Harness Cloud",
+        description: "We're expanding our Cloud offering to support multiple VM images Linux, giving users the flexibility to choose from a predefined set of images. This allows teams to run builds on both the latest and previous stable OS versions, ensuring compatibility with different environments.",
       }, 
       {
         tag: [{ value: "Integrations" }],
