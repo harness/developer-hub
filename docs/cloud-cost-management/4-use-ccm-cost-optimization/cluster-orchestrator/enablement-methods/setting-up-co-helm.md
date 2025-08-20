@@ -1,39 +1,36 @@
 ---
-title: Setting up Cluster Orchestrator for AWS EKS clusters (Beta)
-description: This topic describes how to set up Cluster Orchestrator 
-# sidebar_position: 2
+title: Enabling Cluster Orchestrator using Helm
+description: Learn how to set up and configure Harness Cluster Orchestrator for AWS EKS using Helm
+sidebar_position: 5
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
 helpdocs_is_published: true
-redirect_from:
-  - /docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting_up_co/
-
 ---
 
-To enable Cluster Orchestrator for AWS EKS clusters associated with your account, follow these two simple steps:
+# Enabling Cluster Orchestrator using Helm
 
-### Step 1: Enable feature flag
+## Before You Begin
+Make sure you have the following prerequisites in place:
 
-Currently, this early access feature is behind a feature flag . Contact [Harness Support](mailto:support@harness.io) to enable the feature. After it is enabled, you can see it directly in the navigation bar.
+- **AWS Account** with permissions to create IAM roles and policies
+- **EKS Cluster** running and accessible via kubectl
+- **Helm 3.x or later** installed on your local machine
+- **Terraform 1.2.0 or later** installed on your local machine
+- **Harness Account** with CCM module enabled
+- **Kubernetes Connector** configured in your Harness account
 
-Currently Cluster Orchestrator can be set up using two methods:
-a. Helm Based installation
-b. Script based installation via CCM UI and kubectl
+## Implementation Steps
 
-## Helm-based Installation
+### Step 1: Set Up Required Infrastructure with Terraform
 
-### Prerequisites
+First, we'll use Terraform to set up the required infrastructure components:
+- AWS IAM roles and policies with proper permissions
+- Resource tagging for subnets, security groups, and AMIs
+- Harness service accounts and API tokens
 
-- **Helm 3.x installed**: Ensure Helm is installed on your local machine.
-- **Kubernetes access**: You should have access to the Kubernetes cluster where the orchestrator will be installed.
-- **Terraform setup**: Run the Terraform script (provided below) to generate the necessary output variables.
-
-### Step 1: Run the Terraform Script
-
-The Terraform script sets up the required infrastructure, including AWS IAM roles, subnets, security groups, and Harness service accounts, for the Harness CCM Cluster Orchestrator. Ensure you complete this step first before moving on to the Helm installation.
-
-#### Terraform Template
+<details>
+<summary><b>Click to expand the Terraform template</b></summary>
 
 ```hcl
 terraform {
@@ -203,6 +200,7 @@ resource "aws_iam_policy" "controller_role_policy" {
           "pricing:GetProducts",
           "ec2:DescribeSpotPriceHistory",
           "ec2:DescribeImages"
+          "ec2:GetSpotPlacementScores"
         ],
         "Resource" : "*",
         "Effect" : "Allow"
@@ -272,7 +270,7 @@ resource "aws_iam_role_policy" "harness_describe_permissions" {
           "ec2:DescribeImages",
           "ec2:DescribeInstanceTypeOfferings",
           "ec2:DescribeInstanceTypes",
-          "ec2:DescribeAvailabilityZones"
+          "ec2:DescribeAvailabilityZones",
           "ec2:DescribeLaunchTemplates",
           "ec2:CreateLaunchTemplate",
           "ec2:CreateTags",
@@ -353,175 +351,102 @@ output "harness_cluster_orchestrator_id" {
 }
 
 ```
+</details>
 
-#### Terraform Outputs
+#### How to Run the Terraform Script
 
-Once the script is executed, it will generate several outputs required for the Helm installation:
+1. Save the above template to a file named `cluster-orchestrator.tf`
+2. Update the placeholder values in the `default` blocks with your actual EKS cluster and Harness account information
+3. Initialize and apply the Terraform configuration:
 
-- **`harness_ccm_token`**: The Harness CCM token.
-- **`eks_cluster_controller_role_arn`**: The ARN for the EKS cluster controller role.
-- **`eks_cluster_default_instance_profile`**: The name of the default EC2 instance profile.
-- **`eks_cluster_node_role_arn`**: The ARN for the node IAM role.
-- **`harness_cluster_orchestrator_id`**: The Cluster Orchestrator ID.
+```bash
+terraform init
+terraform apply
+```
 
-### Step 2: Add the Harness CCM Cluster Orchestrator Helm Repository
+#### Important Terraform Outputs
 
-Add the Harness Helm chart repository:
+After successful execution, Terraform will generate several outputs required for the Helm installation:
+
+| Output | Description |
+|--------|-------------|
+| `harness_ccm_token` | The Harness CCM token (sensitive value) |
+| `eks_cluster_controller_role_arn` | The ARN for the EKS cluster controller role |
+| `eks_cluster_default_instance_profile` | The name of the default EC2 instance profile |
+| `eks_cluster_node_role_arn` | The ARN for the node IAM role |
+| `harness_cluster_orchestrator_id` | The Cluster Orchestrator ID |
+
+### Step 2: Configure Helm for Cluster Orchestrator Installation
+
+#### 1. Add the Harness CCM Cluster Orchestrator Helm Repository
+
 ```bash
 helm repo add harness-ccm-cluster-orchestrator https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/cluster-orchestrator-helm-chart
 ```
 
-### Step 3: Update the Helm Repository
+#### 2. Update the Helm Repository
 
-Ensure the Helm repository is up to date:
 ```bash
 helm repo update harness-ccm-cluster-orchestrator
 ```
 
-### Step 4: Install/Upgrade the Cluster Orchestrator
+### Step 3: Install the Cluster Orchestrator
 
-After running the Terraform script and gathering the required output values, use the following Helm command to install or upgrade the Cluster Orchestrator.
- 
-Please note, after running the Terraform script, the API key will not be printed since it is sensitive data. To retrieve the value, you need to run `terraform output harness_ccm_token`
+#### 1. Retrieve the Terraform Output Values
 
-Replace the placeholders in the command with values from the Terraform outputs and your specific configuration:
+To get the sensitive token value, run:
 
 ```bash
-helm install harness-ccm-cluster-orchestrator --namespace kube-system harness-ccm-cluster-orchestrator/harness-ccm-cluster-orchestrator \
---set harness.accountID="<harness_account_id>" \
---set harness.k8sConnectorID="<k8s_connector_id>" \
---set harness.ccm.secret.token="<harness_ccm_token>" \
---set eksCluster.name="<eks_cluster_name>" \
---set eksCluster.region="<eks_cluster_region>" \
---set eksCluster.controllerRoleARN="<eks_cluster_controller_role_arn>" \
---set eksCluster.endpoint="<eks_cluster_endpoint>" \
---set eksCluster.defaultInstanceProfile.name="<eks_cluster_default_instance_profile>" \
---set eksCluster.nodeRole.arn="<eks_cluster_node_role_arn>" \
---set clusterOrchestrator.id="<cluster_orchestrator_id>"
+terraform output harness_ccm_token
 ```
 
-:::tip Advanced Helm options
-For a full list of configurable Helm values (for example, custom taints, tolerations, and extra annotations), review the **Harness CCM Cluster Orchestrator** chart in the Harness Helm repository.
+For other values, you can run:
 
-[View the Helm chart on Harness](https://app.harness.io/ng/account/6NTMT--yR7ORXKPqwLDioA/module/code/repos/Helm)
-:::
-
-:::info
-
-If your cluster does not have a OIDC provider arn, use this :-
-
+```bash
+terraform output
 ```
+
+#### 2. Install the Helm Chart
+
+Use the following command to install the Cluster Orchestrator, replacing the placeholders with values from your Terraform outputs:
+
+```bash
+helm install harness-ccm-cluster-orchestrator --namespace kube-system \
+  harness-ccm-cluster-orchestrator/harness-ccm-cluster-orchestrator \
+  --set harness.accountID="<harness_account_id>" \
+  --set harness.k8sConnectorID="<k8s_connector_id>" \
+  --set harness.ccm.secret.token="<harness_ccm_token>" \
+  --set eksCluster.name="<eks_cluster_name>" \
+  --set eksCluster.region="<eks_cluster_region>" \
+  --set eksCluster.controllerRoleARN="<eks_cluster_controller_role_arn>" \
+  --set eksCluster.endpoint="<eks_cluster_endpoint>" \
+  --set eksCluster.defaultInstanceProfile.name="<eks_cluster_default_instance_profile>" \
+  --set eksCluster.nodeRole.arn="<eks_cluster_node_role_arn>" \
+  --set clusterOrchestrator.id="<cluster_orchestrator_id>"
+```
+
+## Troubleshooting
+
+### Missing OIDC Provider
+
+If your cluster doesn't have an OIDC provider ARN configured, you can create one with the following command:
+
+```bash
 eksctl utils associate-iam-oidc-provider --region <your_cluster_region> --cluster <your_cluster> --approve
 ```
-:::
 
-## Installation via kubectl
+### Verifying Installation
 
-### Step 1: Navigate to Cluster Orchestrator in the Cloud Costs Module
+Check if the Cluster Orchestrator pods are running correctly:
 
-Click on Cluster Orchestrator from the navigation bar. Once you click on it, you will be taken to the home page, where you can see all the clusters associated with your account. 
+```bash
+kubectl get pods -n kube-system | grep cluster-orchestrator
+```
 
-For each cluster, you can see the following information:
-- Name of the cluster
-- Region of the cluster
-- Number of nodes associated with the cluster
-- CPU
-- Memory
-- Potential spend of the cluster
-- Savings realized
-- Whether the Cluster Orchestrator is enabled for the particular cluster
+## Next Steps
 
-On this page, you can also see the total cost of the clusters and the spot savings.
-<DocImage path={require('./static/overview.png')} width="100%" height="100%" title="Click to view full size image" />
+After successful installation:
 
-### Step 2: Enable the Cluster Orchestrator for a Selected Cluster
-
-For a given cluster, click on the enable option, which will take you to the enablement screen. To enable the Cluster Orchestrator for the particular cluster, there are two steps to complete:
-
-#### Step A: Cluster Permissions
-
-You will be asked to run a shell script in your terminal and verify the connection. Upon successfully establishing the connection, click on the next step to configure.
-<DocImage path={require('./static/step-one.png')} width="90%" height="90%" title="Click to view full size image" />
-
-#### Step B: Orchestrator Configuration
-
-Cluster Orchestrator allows you to choose Cluster Preferences and Spot Preferences.
-
-**Cluster Preferences:**
-
-- Bin-Packing: 
-    -  Pod Eviction by Harness: To optimize resources, nodes may be evicted before consolidation. Enabling pod eviction ensures workloads are safely rescheduled to maintain performance and availability while freeing up underutilized resources. Users can set single replica eviction of workload as On or Off.
-
-    - Resource Utilization Thresholds: This is used to set minimum CPU and memory usage levels to determine when a node is considered underutilized. This helps balance cost savings and performance by ensuring nodes are consolidated only when their resources fall below the specified thresholds.
-
-- Node Disruption Using Karpenter: This option can be utilised to activate Karpenter's node disruption management to optimize resource utilization and maintain application stability. Cluster orchestrator provders three optional settings here:
-    - Node deletion criteria: The setting ensures that the nodes are deleted either when they are empty or under utilised as set by the user
-    - Node deletion delay: The setting ensures that the nodes with no pods are deleted after a specified time and the delay time can be set by the user
-    - Disruption Budgets: This feature allows users to define limits on the percentage of nodes that can be disrupted at any given time. This option comes with an added setting of selecting the reason and enabling or disabling budget scheduling
-
-- TTL for Karpenter Nodes: The Time-to-Live (TTL) setting for Karpenter nodes defines the maximum lifespan of a node before it is eligible for deletion, regardless of its resource utilization. By setting a TTL, users can ensure that idle or unnecessary nodes are automatically cleaned up after a specified time period, even if they are not underutilized or empty. This helps in avoiding resource sprawl, ensuring that unused nodes don’t linger indefinitely, and optimizing the overall cost and resource usage within the cluster.
-
-<DocImage path={require('./static/step-two.png')} width="110%" height="110%" title="Click to view full size image" />
-
-**Spot Preferences:**
-
-Cluster Orchestrator allows users to set **Base On-Demand Capacity**, which can be further split into percentages to determine how much should be used by Spot and On-Demand instances. You can also choose the distribution strategy between **Least-Interrupted** or **Cost-optimized** and can define spot-ready for all workloads or spot-ready workloads. 
-
-Users can also enable reverse fallback retry. When spot nodes are interrupted, they are automatically replaced with on-demand nodes to maintain application stability. Once spot capacity becomes available again, the system will perform a reverse fallback, replacing the on-demand node with a spot node. Users can select the retry interval to define how often the system checks for spot capacity and performs the reverse fallback.
-
-Once all the details are filled in, click on the **"Complete Enablement"** button to enable Cluster Orchestrator for the cluster.
-
-<DocImage path={require('./static/step-three.png')} width="110%" height="110%" title="Click to view full size image" />
-
- <!-- <iframe 
-     src="https://app.tango.us/app/embed/feb3c2ac-4897-49c7-84fa-e6c36bd1bcd4" 
-     title="Set up Commitment Orchestrator" 
-     style={{minHeight:'640px'}}
-     width="100%" 
-     height="100%" 
-     referrerpolicy="strict-origin-when-cross-origin" 
-     frameborder="0" 
-     webkitallowfullscreen="webkitallowfullscreen" 
-     mozallowfullscreen="mozallowfullscreen" 
-     allowfullscreen="allowfullscreen"></iframe> -->
-
-After the setup is complete, Cluster Orchestrator supports three screens to show information about your cluster:
-
-#### Overview Page for Cluster Orchestrator Enabled Clusters
-
-The overview page shows all the information about:
-- Cluster Spend
-- Cluster Details
-- Nodes Breakdown
-- Nodes
-- Pods
-- CPU Breakdown
-- Memory Breakdown
-
-<DocImage path={require('./static/overview-two.png')} width="90%" height="90%" title="Click to view full size image" />
-
-#### Overview of Workloads in the Cluster
-
-This page contains all the information about the workloads associated with the cluster including their:
-- Namespace
-- Replicas
-- Distribution of Replicas
-- Total Cost of each workload.
-
-<DocImage path={require('./static/workloads.png')} width="90%" height="90%" title="Click to view full size image" />
-
-#### Overview of Nodes in the Cluster
-
-This page contains all the information about the nodes associated with the cluster, including:
-- the Number of Workloads
-- Instance Types
-- Fulfillment
-- CPU
-- Memory
-- Age
-- Status
-
-Additionally, you can see the details of all nodes.
-<DocImage path={require('./static/nodes.png')} width="90%" height="90%" title="Click to view full size image" />
-
-
+1. Navigate to the Harness CCM module to verify the Cluster Orchestrator is connected
+2. Configure optimization policies in the Harness CCM UI
+3. Monitor your cluster for cost optimizations in the Harness dashboard
