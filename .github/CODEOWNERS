@@ -7,7 +7,7 @@
 *       @pratmit @wei-harness @ivikramsahu @SushrutHarness
 
 # Configuration Files in DS are JS.
-*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
+*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harnes
 *.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
 *.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
 *.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
