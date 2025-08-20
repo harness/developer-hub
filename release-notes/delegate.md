@@ -105,7 +105,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Fixed issues
 
-- Fixed an issue related to cache eviction during connection context creation with pcf deployments. [CDS-112526]
+- Did an optimisation to trust urls for pcf deployment early during context creation to reduce multiple trust calls in case of parallel calls. [CDS-112526]
 
 ### Version 25.08.86503 <!--Aug 13, 2025-->
 
