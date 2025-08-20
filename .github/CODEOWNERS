@@ -122,7 +122,7 @@ static/  @rohanmaharjan100 @wei-harness
 
 # Platform Docs
 /docs/platform/ @pratmit @GokulBansal0 @abhishekharness @ivikramsahu
-/release-notes/delegate.md @pratmit @abhishekharness @anshul-harness @ivikramsahu
+/release-notes/delegate.md @pratmit @abhishekharness @anshul-harness @ivikramsahu @SushrutHarness
 /release-notes/platform.md @pratmit @GokulBansal0 @abhishekharness @ivikramsahu
 /release-notes/self-managed-enterprise-edition.md @pratmit @abhishekharness @ivikramsahu @anshul-harness @raviyadalam 
 /src/components/Roadmap/data/platformData.ts @pratmit @abhishekharness @ivikramsahu
