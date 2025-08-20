@@ -529,6 +529,12 @@ The following **Data Points** are available for Harness Data Source.
 
 ![](./static/sto-harness.png)
 
+5. **Number of Active vulnerabilities STO**:
+- *Objective:* This data point can be used for creating a rule that will check the number of vulnerabilities of specified severity found by *scanner tools* in STO scans. You can set thresholds for critical, high, medium, or low severity vulnerabilities to ensure security standards are met.
+
+
+![](./static/vul-sto.png)
+
 :::info
 
 **Points to remember**:- 
