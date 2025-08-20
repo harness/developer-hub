@@ -29,7 +29,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Last updated: August 20, 2025
 
 ## August 2025
- 
+
+### React Native Client SDK
+
+#### Version 3.3.0
+
+**New features and enhancements**:
+
+- Update the React SDK to v2.3.0.
+
 ### Node.js SDK
 
 #### Version 1.8.9
