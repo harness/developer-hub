@@ -25,12 +25,14 @@ These are the currently supported registry types.
 
 ### Beta
 - **RPM:** Red Hat package management.
+- **Go:** Support for Go modules.
+- **Cargo:** Rust package management.
+- **Hugging Face:** Machine learning models and datasets.
 
 ### Coming Soon
 In addition to the registry types above, support for the following registries will be coming soon!
-- **Go:** Support for Go modules.
+
 - **Debian:** For Debian packages.
-- **Rust:** Rust package management.
 - **Ruby:** RubyGems support.
 - **Conan:** C/C++ package manager.
 - **Alpine:** For Alpine Linux packages.
