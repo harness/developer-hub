@@ -20,10 +20,12 @@ If you configure branch rules at multiple levels they are combined with an `AND`
 2. Select the **Rules** tab.
 3. Select **New Branch Rule**.
 4. Enter the rule **Name** and optional **Description**.
-5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). Patterns can be inclusive or exclusive.
-6. In **Bypass List**, you can specify users who can bypass this rule.
-7. For each of the [**Rules**](#available-rules), select the rule you want to enable and provide additional specifications, if necessary. For example, if you select **Require a minimum number of reviewers**, you must specify the minimum number of reviewers.
-8. Select **Create Rule**.
+5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). 
+You have the option to include or exclude repositories when setting rules at the account, org, or project level. This allows you to fine-tune which repositories the rule applies to without forcing the rule across every repo. For example, you might include only repositories under `service-*` or explicitly exclude experimental repos.
+Patterns can be inclusive or exclusive.
+1. In **Bypass List**, you can specify users who can bypass this rule.
+2. For each of the [**Rules**](#available-rules), select the rule you want to enable and provide additional specifications, if necessary. For example, if you select **Require a minimum number of reviewers**, you must specify the minimum number of reviewers.
+3. Select **Create Rule**.
 
 ### Available rules
 
