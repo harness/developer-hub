@@ -72,7 +72,7 @@ Harness Internal Developer Portal (IDP) now supports System as a high-level cata
 
 * Systems can be created at Account, Organization, or Project scope.
 * Define Systems using the IDP UI, YAML, or the Create Entity API (`kind: System`).
-* New default System layout includes tabs for Overview, Entities, Scorecard, and Diagram. Existing customers can apply the provided YAML layout under **Admin → Layout → Catalog Entities → System**.
+* New default System layout includes tabs for Overview, Entities, Scorecard, and Diagram. Existing customers can apply the provided [YAML layout](/docs/internal-developer-portal/catalog/system-entity#the-configuration-is-defined-in-yaml-for-example) under **Admin → Layout → Catalog Entities → System**.
 ![](./static/system-layout.png)
 * The Entities tab offers a searchable, filterable, and sortable table of all Components, APIs, and Resources within the System.
 * Many-to-many relationships are supported — an entity can belong to multiple Systems.
@@ -117,6 +117,8 @@ metadata:
     - microservice
     - java
 ```
+
+Learn more about [System Entity](/docs/internal-developer-portal/catalog/system-entity)
 
 ### [New Feature] Link to Source Code Repository
 
