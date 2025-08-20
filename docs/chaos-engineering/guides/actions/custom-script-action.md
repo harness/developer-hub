@@ -55,7 +55,7 @@ Custom Script Actions are particularly valuable in the following scenarios:
 1. Navigate to your **Probes & Actions**  and go to the **Actions** tab
 2. Click **New Action** and select **Custom Script** from the dropdown.
 
-        ![custom script action](./static/create-custom-script-action.png)
+                ![delay action](./static/create-delay-action.png)
 
 ### Step 2: Configure Script Parameters
 

@@ -3,10 +3,13 @@ title: Overview
 sidebar_position: 1
 ---
 
-:::info Feature Availability
-This feature is available under the `CHAOS_NG_EXPERIENCE` feature flag. For new onboardings, this feature is enabled by default. 
+:::info New Chaos Studio Feature
+**Actions** are part of the enhanced **New Chaos Studio** experience. The studio version you see depends on your onboarding date:
 
-If you are an existing Harness Chaos customer and would like to access this feature, please contact your Harness support representative to have it enabled for your account.
+- **New Chaos Studio**: Available for customers onboarded on or after August 24, 2025
+- **Old Chaos Studio**: Available for customers onboarded before August 24, 2025
+
+If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
 :::
 
 ## What are Actions?

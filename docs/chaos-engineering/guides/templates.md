@@ -3,10 +3,13 @@ title: Templates
 sidebar_position: 8
 ---
 
-:::info Feature Availability
-This feature is available under the `CHAOS_NG_EXPERIENCE` feature flag. For new onboardings, this feature is enabled by default. 
+:::info New Chaos Studio Feature
+**Templates** are part of the enhanced **New Chaos Studio** experience. The studio version you see depends on your onboarding date:
 
-If you are an existing Harness Chaos customer and would like to access this feature, please contact your Harness support representative to have it enabled for your account.
+- **New Chaos Studio**: Available for customers onboarded on or after August 24, 2025
+- **Old Chaos Studio**: Available for customers onboarded before August 24, 2025
+
+If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
 :::
 
 
@@ -48,19 +51,19 @@ Harness Chaos supports templates for three core components:
 ## Template Scopes
 
 Templates can be managed at different organizational levels:
-- **Project Level**: Available within a specific project
 - **Account Level**: Shared across projects within an account
 - **Organization Level**: Available across the entire organization
+- **Project Level**: Available within a specific project
 
 ## Getting Started with Templates
 
 ### Creating Templates
 
-1. Navigate to **Chaos Hubs** in your **Project Settings**
+1. Navigate to **ChaosHubs** in your **Project Settings**
 
     ![chaos hubs](./static/templates/chaos-hub.png)
 
-2. Choose the **Chaos Hub** you want to create templates in.
+2. Choose the **ChaosHub** you want to create templates in.
 
     ![chaos hub](./static/templates/click-on-chaoshub.png)
 
@@ -79,6 +82,6 @@ Templates can be managed at different organizational levels:
 ## Next Steps
 
 - [Create your first experiment using templates](/docs/chaos-engineering/guides/chaos-experiments/create-experiments)
-- [Learn about Chaos Hubs](/docs/chaos-engineering/guides/chaoshubs/)
+- [Learn about ChaosHubs](/docs/chaos-engineering/guides/chaoshubs/)
 - [Explore Fault Templates](/docs/chaos-engineering/faults/custom-faults/custom-fault-templates)
 - [Understand Actions](/docs/chaos-engineering/guides/actions/)

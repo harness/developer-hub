@@ -8,10 +8,13 @@ description: Learn how to create and implement custom chaos faults for your spec
 
 Custom faults allow you to extend Chaos beyond the built-in fault library to address specific testing scenarios unique to your applications and infrastructure.
 
-:::info Feature Availability
-This feature is available under the `CHAOS_NG_EXPERIENCE` feature flag. For new onboardings, this feature is enabled by default. 
+:::info New Chaos Studio Feature
+**Custom Faults** are part of the enhanced **New Chaos Studio** experience. The studio version you see depends on your onboarding date:
 
-If you are an existing Harness Chaos customer and would like to access this feature, please contact your Harness support representative to have it enabled for your account.
+- **New Chaos Studio**: Available for customers onboarded on or after August 24, 2025
+- **Old Chaos Studio**: Available for customers onboarded before August 24, 2025
+
+If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
 :::
 
 ## Overview
