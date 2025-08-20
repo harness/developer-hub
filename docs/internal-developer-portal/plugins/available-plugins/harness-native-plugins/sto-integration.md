@@ -396,6 +396,7 @@ page:
             gridProps:
               md: 6
               xs: 12
+// highlight-start
         - component: EntitySecurityIssueCard
           specs:
             props:
@@ -409,6 +410,7 @@ page:
       title: Vulnerabilities
       contents:
         - component: EntitySecurityIssueContent
+// highlight-end
 ```
 </details>
 
