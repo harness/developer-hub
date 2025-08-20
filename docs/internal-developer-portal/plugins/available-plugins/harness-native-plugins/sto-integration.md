@@ -396,7 +396,6 @@ page:
             gridProps:
               md: 6
               xs: 12
-              // highlight-start
         - component: EntitySecurityIssueCard
           specs:
             props:
@@ -405,53 +404,11 @@ page:
             gridProps:
               md: 6
               xs: 12
-              // highlight-end
-        - component: EntitySwitch
-          specs:
-            cases:
-              - if: isPagerDutyAvailable
-                content:
-                  component: EntityPagerDutyCard
-                  specs:
-                    props:
-                      variant: gridItem
-                    gridProps:
-                      md: 6
-        - component: EntityLinksCard
-          specs:
-            props:
-              variant: gridItem
-              item: 400
-            gridProps:
-              md: 4
-        - component: EntityGithubPullRequestsOverviewCard
-          specs:
-            props:
-              variant: gridItem
-              item: 400
-            gridProps:
-              md: 4
-        - component: EntityHasSubcomponentsCard
-          specs:
-            props:
-              variant: gridItem
-              height: 400
-            gridProps:
-              md: 8
-              xs: 12
-    - name: Scorecard
-      path: /scorecard
-      title: Scorecard
+    - name: EntitySecurityIssueContent
+      path: /security
+      title: Vulnerabilities
       contents:
-        - component: EntityScorecardContent
-      // highlight-start
         - component: EntitySecurityIssueContent
-    - name: Chaos Engineering
-      path: /chaos
-      title: Chaos Experiments
-      contents:
-        - component: EntityHarnessChaosContent
-      // highlight-end
 ```
 </details>
 
