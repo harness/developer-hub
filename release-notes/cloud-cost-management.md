@@ -20,6 +20,30 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 :::
 
+## August 2025 - Version 1.61.1
+#### **Deployment Date:** August 21, 2025 (Prod-1)
+
+### ⭐ [New Feature] Dynamic Perspective Reports
+**[CCM-23836] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-perspective-reports)**
+
+
+<DocImage path={require('./static/output-dynamic.gif')} width="100%" height="100%" title="Click to view full size image" />
+
+CCM is introducing a new capability **Dynamic Perspective Reports**, a powerful way to **generate**, **schedule**, and **manage** cost reports directly from your Perspectives. Create reports from your perspectives to **bookmark specific filter and grouping configurations**. No need to rebuild the same view repeatedly — just save it once and access it anytime.
+
+**Key Highlights**
+
+- **Create Reports from Perspectives** with custom grouping, filters, time periods, and columns.
+- **Flexible Delivery Options**: download instantly or schedule recurring deliveries to up to 50 recipients.
+- **Centralized Management**: access, edit, or delete all saved reports under **Cloud Costs > Perspectives > Saved Reports**.
+- **Email Subscriptions**: subscribe/unsubscribe from scheduled report deliveries anytime.
+
+This feature is rolled out behind a **Feature Flag**. If the flag is enabled for your account, report creation via the Perspective creation flow will be disabled.
+
+### Feature Improvements
+
+- **Account Name Filter for Governance Recommendations:** Governance recommendations now support filtering by Account Name, consistent with EC2 recommendations. This makes it easier to search, scope, and view governance recommendations for specific accounts. [CCM-23625]
+
 ## August 2025 - Version 1.60.1
 #### **Deployment Date:** August 18, 2025 (Prod-1)
 
