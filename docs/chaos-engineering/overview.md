@@ -9,7 +9,7 @@ redirect_from:
 # Chaos Engineering Overview 
 
 :::info New Chaos Studio Features
-Harness Chaos now offers an enhanced **New Chaos Studio** experience with advanced capabilities and enhanced UX. The studio version you see depends on your onboarding date:
+Harness Chaos Engineering now offers an enhanced **New Chaos Studio** experience with advanced capabilities and enhanced UX. The studio version you see depends on your onboarding date:
 
 - **New Chaos Studio**: Available for customers onboarded on or after August 21, 2025
 - **Old Chaos Studio**: Available for customers onboarded before August 21, 2025
