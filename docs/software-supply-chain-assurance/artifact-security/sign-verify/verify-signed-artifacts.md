@@ -146,6 +146,12 @@ Once the artifact is signed and verified, you will be able to see the Artifact I
 
 * If the verification fails, the status is displayed as Failed.
 
+:::note
+
+Rekor logs are disabled by default. To enable them, click on **Project Settings**, navigate to **Default Settings**, and disable Airgap mode in Supply Chain Security.
+
+:::
+
 <DocImage path={require('./static/artifact-verification-data.png')} width="100%" height="100%" />
 
 
