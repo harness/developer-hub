@@ -229,7 +229,10 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
                     className={`selector-card${
                       selected === label ? " selected" : ""
                     }`}
-                    onClick={() => setSelected(label)}
+                    onClick={() => {
+                      setSelected(label);
+                      setSectionId("");   
+                    }}
                     type="button"
                   >
                     {entry.logo ? (
