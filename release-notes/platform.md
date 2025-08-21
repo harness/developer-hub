@@ -150,6 +150,7 @@ The following deprecated API endpoints are longer supported:
 #### Fixed issues
 
 - Resolved an issue in Pipeline Studio where the "View Delegate Task Logs" link on the pipeline execution Details page redirected to a non-existent page. It now correctly redirects to the delegate URL. [PL-64747]
+- Resolved an issue where deleting a user at the Organization or Project scope also deleted their API keys and tokens from the Account. [PL-64793]
 
 #### New features and enhancements
 
