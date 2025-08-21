@@ -134,8 +134,7 @@ The identifier for the specific application you are scanning in Nexus IQ, also k
 - The **Private ID** is an internal reference, mainly used in API calls or advanced scenarios.
 
 #### Exclude
-Define the exclusions to the scan's initial scope. The format should follow the Nexus IQ scanner requirements.
-
+Define the exclusions to the scan's initial scope. The format should follow the Nexus IQ scanner requirements. You can exclude both files and folders, separated by commas. For example: `product_exclude="cmd,*/go.mod"`
 
 ### Log Level
 
