@@ -145,6 +145,16 @@ The following deprecated API endpoints are longer supported:
 
 ## August 2025
 
+### Version 1.102.x <!--August 19, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue in Pipeline Studio where the “View Delegate Task Logs” link on the pipeline execution Details page redirected to a non-existent page. It now correctly redirects to the delegate URL.[PL-64747]
+
+#### New features and enhancements
+
+- Added logging support for the polling mode delegate. Now, whenever a task is polled by the polling mode delegate, the action will be recorded in the selection log for better visibility and traceability. [PL-58880]
+
 ### Version 1.101.x <!--August 13, 2025-->
 
 #### Fixed issues
