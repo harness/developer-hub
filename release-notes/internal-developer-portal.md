@@ -201,6 +201,18 @@ The following components have been removed because their functionality is now fu
 
 With `DxDataChart`, you can create customizable visualizations, deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
 
+### [New Feature] Harness Feature Management & Experimentation Plugin
+
+Harness IDP now includes a native integration with Harness Feature Management & Experimentation (FME), allowing teams to view and manage feature flags directly in their service catalog.
+
+
+* Feature Flag Visualization - View all feature flags associated with a service, including their status and configurations
+* Split.io Integration - Connect to Split.io API for comprehensive feature flag management
+* Service Integration - Easily associate feature flags with catalog entities using simple annotations
+* Real-time Updates - Monitor feature flag status and changes directly from your developer portal
+
+[Learn more about the Harness FME Plugin](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme) 
+
 ### Bug Fixes and Improvements
 
 * **New Catalog APIs** - Harness IDP now includes two new APIs to make it easier to find and display catalog entities:
