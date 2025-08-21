@@ -82,7 +82,7 @@ At the organization and project scopes, you can quickly create groups by inherit
 
 When a user group or service account is inherited from the account scope to a project scope, the system automatically assigns the Organization Viewer role to that user group or service account for the organization containing the project. The role assignment is also recorded in the Audit Logs.
 
-If this role is removed, the user group or service account may lose access to the Organization.
+If this role assignment is removed, the user group or service account may lose access to the Organization.
 :::
 To inherit user groups in Harness, you need the following [permissions](./permissions-reference.md):
 
