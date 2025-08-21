@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-08-13T10:00
+date: 2025-08-19T10:00
 sidebar_position: 10
 ---
 
@@ -49,6 +49,25 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## August 2025
+
+
+### Version 1.92
+
+<!-- 2025-08-18 -->
+
+#### Fixed issues
+- Fixed an issue where long-running runner sessions (over 24 hours) could lose log access. (CI-18669)
+- Improved reliability of PR build status updates in pipelines. (ZD-88744, CI-18474)
+- Resolved an error that caused some API-triggered pipelines to fail when using Docker secrets. (ZD-89259, CI-18430)
+- Fixed a problem where logs were lost after UI refresh in certain **Build and Push** steps, ensuring better log persistence. (ZD-89263, CI-18417)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                                                               | **Previous version** | **New Version** |
+| ------------------------ | ---------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira for Lite Engine Addon .                                         | 1.16.99            | 1.17.00         |
+| `harness/ci-addon`       | Version upgrade for Jira for Lite Engine Addon .                                         | 1.16.99            | 1.17.00         |
+| `plugins/cache`            | Bzlmod cache support added. | 1.9.9                | 1.9.10           |
 
 ### Version 1.91
 
