@@ -107,11 +107,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - Did an optimisation to trust urls for pcf deployment early during context creation to reduce multiple trust calls in case of parallel calls. [CDS-112526]
 
-### Version 25.08.86503 <!--Aug 13, 2025-->
+### Version 25.08.86500 <!--Aug 15, 2025-->
 
 #### Fixed issues
 
-- Resolved an issue where selecting user groups to inherit with the “All” scope option only displayed groups from the current scope, excluding those from parent scopes. It now includes all accessible user groups from parent scopes as well. [PL-59566]
+- Did an optimisation to trust urls for pcf deployment early during context creation to reduce multiple trust calls in case of parallel calls. The user needs to set TRUST_EARLY and ENRICH_LOGS environment variables in the delegate. [CDS-109294]
 
 ### Version 25.07.86402 <!--Aug 12, 2025-->
 
