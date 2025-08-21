@@ -56,10 +56,10 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 <!-- 2025-08-18 -->
 
 #### Fixed issues
-- Resolved an issue where the log token was not generated correctly for the runner and local runner sessions lasting longer than 24 hours. (CI-18669)
-- Addressed an intermittent issue in certain pipelines where status updates were not occurring for PR builds. This was not a functional bug; the number of times git status is sent has been reduced to improve reliability. (ZD-88744, CI-18474)
-- Resolved a `NullPointerException` that occurred when running CI pipelines via API triggers due to missing handling for Docker secrets. (ZD-89259, CI-18430)
-- Fixed an issue where pipelines using `docker run` without the `-d` flag in **BuildAndPush** steps failed with exit code 1 and lost logs after UI refresh. Log persistence and error handling have been corrected. (ZD-89263, CI-18417)
+- Fixed an issue where long-running runner sessions (over 24 hours) could lose log access. (CI-18669)
+- Improved reliability of PR build status updates in pipelines. (ZD-88744, CI-18474)
+- Resolved an error that caused some API-triggered pipelines to fail when using Docker secrets. (ZD-89259, CI-18430)
+- Fixed a problem where logs were lost after UI refresh in certain **Build and Push** steps, ensuring better log persistence. (ZD-89263, CI-18417)
 
 #### Harness images updates
 
