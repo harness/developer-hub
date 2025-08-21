@@ -4,6 +4,10 @@ description: Overview & Key Concepts of Environment Management in the Internal D
 sidebar_position: 1
 ---
 
+:::info
+**Harness IDP Environment Management** feature is currently behind the feature flag `IDP_SSEM`. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+:::
+
 ## Overview
 
 Environment Management in Harness IDP enables developers and platform engineers to **create, configure, and manage environments from a single point of control**. An environment is a collection of software services deployed using CD tools and executed on infrastructure provisioned through IaCM tools. This feature provides a **self-service, automated, and repeatable** way to manage environments efficiently.
