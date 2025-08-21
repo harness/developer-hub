@@ -61,7 +61,7 @@ export default function ChaosEngineering() {
             <div>
               <Admonition type="info" title="New Chaos Studio Features">
               <p>
-                Harness Chaos now offers an enhanced <strong>New Chaos Studio</strong> experience with advanced capabilities and enhanced UX. The studio version you see depends on your onboarding date:
+                Harness Chaos Engineering now offers an enhanced <strong>New Chaos Studio</strong> experience with advanced capabilities and enhanced UX. The studio version you see depends on your onboarding date:
               </p>
               <ul>
                 <li><strong>New Chaos Studio</strong>: Available for customers onboarded on or after August 21, 2025</li>
