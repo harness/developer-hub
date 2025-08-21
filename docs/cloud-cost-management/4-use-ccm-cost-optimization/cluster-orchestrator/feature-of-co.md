@@ -10,6 +10,7 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+
 ## Orchestrator Configuration Features
 
 When enabling Cluster Orchestrator, you can configure various settings under the **Orchestrator Configuration** section:
@@ -18,8 +19,8 @@ When enabling Cluster Orchestrator, you can configure various settings under the
 <TabItem value="cluster" label="Cluster Preferences">
 
 <DocImage path={require('./static/cluster-one.png')} width="80%" height="80%" title="Click to view full size image" />
-- **Enable Commitment Context (Inegration with Commitment Orchestrator):** Checks existing commitments before provisioning spot instances to avoid duplicate coverage and maximize savings.
-- **Set the Time-To-Live (TTL) for Karpenter nodes:** The Time-to-Live (TTL) setting for Karpenter nodes defines the maximum lifespan of a node before it is eligible for deletion, regardless of its resource utilization. By setting a TTL, users can ensure that idle or unnecessary nodes are automatically cleaned up after a specified time period, even if they are not underutilized or empty. This helps in avoiding resource sprawl, ensuring that unused nodes don’t linger indefinitely, and optimizing the overall cost and resource usage within the cluster.
+- **Enable Commitment Context (Integration with Commitment Orchestrator):** Select the Master Account from your connector dropdown to leverage existing commitments. When enabled, Cluster Orchestrator intelligently checks for unused commitments and prioritizes them over spot instances, preventing duplicate coverage and maximizing your cloud investment. This integration ensures optimal utilization of pre-purchased compute capacity before provisioning additional resources.
+- **Set the Time-To-Live (TTL) for Karpenter nodes:** Set the Time-To-Live (TTL) for Karpenter nodes to ensure that nodes are automatically terminated after a specified period of inactivity.
 
 
 - **Bin-Packing:** Bin-packing is a resource optimization technique that Cluster Orchestrator uses to efficiently distribute workloads across your Kubernetes cluster. The goal is to maximize resource utilization by consolidating workloads onto fewer nodes, allowing underutilized nodes to be safely removed from the cluster.
@@ -73,9 +74,9 @@ Define precise time windows when cluster disruptions are acceptable for maintena
 
 #### Schedule Options:
 
-- **Custom Schedule**: Define specific days and time windows when maintenance can occur (e.g., weekends, off-hours, or maintenance windows aligned with your business cycle). This gives you complete control over when potentially disruptive operations take place.
+- **Custom**: Define specific days and time windows when maintenance can occur (e.g., weekends, off-hours, or maintenance windows aligned with your business cycle). This gives you complete control over when potentially disruptive operations take place.
 
-- **Always Available**: Maintenance operations can occur at any time, prioritizing cost savings and efficiency over potential disruption. Best for non-production environments or systems with built-in resilience.
+- **Always**: Maintenance operations can occur at any time, prioritizing cost savings and efficiency over potential disruption. Best for non-production environments or systems with built-in resilience.
 
 - **Never**: Disables automatic maintenance operations completely. All changes require manual intervention. Use this for highly sensitive production workloads where any disruption is unacceptable.
 
@@ -87,7 +88,6 @@ Define precise time windows when cluster disruptions are acceptable for maintena
 
 - **Spot Instance Management**:
   - **Reverse Fallback**: Schedules when on-demand instances can be replaced with spot instances after spot capacity becomes available again
-  - **Spot Preference Application**: Controls when spot instance preferences and distribution strategies are applied
-
+  
 </TabItem>
 </Tabs>
