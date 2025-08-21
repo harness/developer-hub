@@ -19,7 +19,7 @@ Refer to this [migration guide](https://github.com/splitio/javascript-browser-cl
 :::
 
 :::info[Migrating JavaScript SDK to JavaScript Browser SDK]
-Refer to the [**Browser SDK migration guide**](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/browser-sdk-migration-guide) if you are already using our [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) and want to migrate to JavaScript Browser SDK to take advantage of ES modules tree-shaking in your Web application project.
+Refer to the [**Browser SDK migration guide**](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/browser-sdk-migration) if you are already using our [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) and want to migrate to JavaScript Browser SDK to take advantage of ES modules tree-shaking in your Web application project.
 :::
 
 ## Language support

@@ -1,6 +1,8 @@
 ---
 title: React Native SDK
 sidebar_label: React Native SDK
+redirect_from: 
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-react-native
 ---
 
 import Tabs from '@theme/Tabs';
@@ -8,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 This guide provides detailed information about our React Native SDK. This SDK is built on top of our JS SDK core modules but is optimized for React Native applications. This SDK also has a pluggable API you can use to include more functionality optionally and keep your bundle leaner. 
 
-If already using our isomorphic JavaScript SDK, consider this [migration guide](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/browser-sdk-migration-guide) to understand the changes of the new pluggable API.
+If already using our isomorphic JavaScript SDK, consider this [migration guide](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/browser-sdk-migration) to understand the changes of the new pluggable API.
 
 All of our SDKs are open source. Go to our [React Native SDK GitHub repository](https://github.com/splitio/react-native-client) to see the source code.
 
@@ -1292,3 +1294,15 @@ The [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure
 Here is an example application detailing how to configure and instantiate the Split React Native SDK. 
 
 * [React Native & Expo examples](https://github.com/splitio/react-native-sdk-example)
+
+## Troubleshooting
+
+### Running bundle using React Native and JavaScript SDK causes an error: Unable to resolve module util
+
+When running the bundle, the error occurs: `bundling failed: Error: Unable to resolve module util from ... LoggerFactory.js: Module util does not exist in the Haste module map`.
+
+The JavaScript SDK depends on the `util` class, which is built-in for most npm environments but not included by default in React Native.
+
+Install the `util` package manually: `npm install util`.
+
+As of July 29, 2021, our dedicated React Native SDK is available, which should help avoid this issue.

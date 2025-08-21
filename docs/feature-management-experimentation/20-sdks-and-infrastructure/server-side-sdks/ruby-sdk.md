@@ -1,6 +1,10 @@
 ---
 title: Ruby SDK
 sidebar_label: Ruby SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/ruby-sdk-error-uninitialized-constant/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/ruby-sdk-upgrading-from-4-to-5-plus/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/ruby-sdk-close-wait-tcp-connections-in-puma/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -602,10 +606,65 @@ http_proxy=http://username:password@hostname:port
 
 ## Troubleshooting
 
-I am seeing the following certificate error: `OpenSSL::SSL::SSLError`
+### SSL Certificate Error: OpenSSL::SSL::SSLError on macOS
 
-On OSX, if you see an SSL issue that looks similar to the example below, refer to [this post](https://toadle.me/2015/04/16/fixing-failing-ssl-verification-with-rvm.html) for troubleshooting.
+I am seeing the following certificate error: `OpenSSL::SSL::SSLError`. On OSX, if you see an SSL issue that looks similar to the example below, refer to [this post](https://toadle.me/2015/04/16/fixing-failing-ssl-verification-with-rvm.html) for troubleshooting.
 
 ```ruby title="Error message"
 OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
 ```
+
+### Error: uninitialized constant caused by Process::RLIMIT_NOFILE in lib/net/http/persistent.rb
+
+When using Ruby SDK on Windows, initializing the SDK factory object causes the following error:
+
+```
+uninitialized constant error caused by 'Process::RLIMIT_NOFILE' in lib/net/http/persistent.rb
+```
+
+This issue is related to the `net-http-persistent` 3.0 library on Windows OS. This library is a dependency installed automatically with the SDK gem.
+
+Downgrade `net-http-persistent` to version 2.9.4, which is compatible with the Ruby SDK on Windows, by running:
+
+```bash
+gem uninstall net-http-persistent
+gem install net-http-persistent -v '2.9.4'
+```
+
+### Upgrading Ruby SDK from 4.x to 5.x and Above
+
+The Ruby SDK uses a hashing algorithm to divide users across treatments for feature flags (e.g., a 50/50 split between "on" and "off"). Historically, Split has used two hashing algorithms:
+
+* **Legacy Hash (Algorithm 1)**: A simple and fast implementation, but it produces uneven user distributions when user counts are below 100.
+* **Murmur Hash (Algorithm 2)**: An industry-standard hashing algorithm that is both fast and provides even distributions regardless of user count.
+
+In Ruby SDK versions 4.x and below, feature flags intended to use the Murmur Hash were incorrectly using the Legacy Hash. This caused inconsistent treatment assignments when compared with other language SDKs.
+
+Starting from Ruby SDK version 5.0.0 and above, this issue is fixed and the SDK correctly uses the Murmur Hash.
+
+When upgrading, if feature flags are in a ramping phase (i.e., partially rolled out), users may experience treatment shifts due to the change in hashing algorithm.
+
+* Ideally, upgrade the Ruby SDK when all experiments are at 100% distribution to avoid user treatment shifts.
+* If this is not possible, consider creating new versions of the active feature flags. This resets metric calculations and can lead to users receiving different treatments, but users won’t be excluded from metrics as no treatment changes are recorded within the same flag version.
+
+### Why do CLOSE_WAIT TCP connections in Puma not go down as expected?
+
+When using the Ruby SDK with Puma or Unicorn in cluster mode (multiple workers, single thread each), you may notice an increasing number of CLOSE_WAIT TCP connections when the SDK sends treatment events. Running the following command will confirm this:
+
+```bash
+lsof -l | grep CLOSE_WAIT | wc -l
+```
+
+If no SDK treatment calls are made, the number of `CLOSE_WAIT` connections does not decrease as expected.
+
+The SDK threads may not be terminating properly, leaving client connections hanging and waiting for the server’s final ACK signal.
+
+Puma spawns a new process for each group of incoming requests. To ensure all SDK threads are terminated before Puma closes the process, add the following to your `config/puma.rb` file:
+
+```ruby
+before_fork do
+  $split_factory.instance_variable_get(:@config).threads.each { |_, t| t.exit }
+end
+```
+
+This cleanly shuts down SDK threads, helping close the TCP connections properly.

@@ -116,7 +116,7 @@ Also, content blockers are becoming more common as users seek to avoid ads and m
 
 ### Server-side feature flags
 
-One way to mitigate the issues posed by the lack of control on the client side, and create greater consistency in the user experience, is to move feature flags to a back end service for evaluation. For more information, see [Moving feature flags to a service](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/moving-feature-flags-to-a-service/).
+One way to mitigate the issues posed by the lack of control on the client side, and create greater consistency in the user experience, is to move feature flags to a back end service for evaluation. For more information, see [Moving feature flags to a service](/docs/feature-management-experimentation/sdks-and-infrastructure#using-a-service-for-feature-flags).
 
 Moving feature flags to the back-end may exacerbate the difference in counts if content blockers come into play since client-side content blocking doesn't impact server-side flags. 
 
@@ -126,10 +126,10 @@ When using the JavaScript or mobile SDKs, configuration options (like in the [Ja
 
 If you notice that the number of visitors, impressions, or events in Split differs from other tools, or some impressions are missing, here are some common causes and how to address them:
 
-* [Block traffic until the SDK is ready](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/block-traffic-until-the-sdk-is-ready/): Ensure your application waits for the Split SDK to initialize before sending traffic, to avoid losing impression data.
-* [Impressions not showing in Split](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/why-are-impressions-not-showing-in-split/): Check your implementation for any issues that may prevent impressions from being recorded correctly.
-* [JavaScript SDK on slow networks](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-not-ready-status-in-slow-networks/): On slow network connections, the SDK may not send impressions in a timely manner. Consider strategies to mitigate network latency.
-* [Always getting control treatments](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/always-getting-control-treatments/): Receiving only control treatments can indicate targeting or configuration problems affecting impression counts.
+* [Block traffic until the SDK is ready](/docs/feature-management-experimentation/sdks-and-infrastructure#block-traffic-until-the-sdk-is-ready): Ensure your application waits for the Split SDK to initialize before sending traffic, to avoid losing impression data.
+* [Impressions not showing in Split](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#impressions-not-showing-in-harness-fme): Check your implementation for any issues that may prevent impressions from being recorded correctly.
+* [JavaScript SDK on slow networks](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#why-does-the-javascript-sdk-return-not-ready-status-on-slow-networks): On slow network connections, the SDK may not send impressions in a timely manner. Consider strategies to mitigate network latency.
+* [Always getting control treatments](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#always-getting-control-treatments-from-gettreatment): Receiving only control treatments can indicate targeting or configuration problems affecting impression counts.
 
 </TabItem>
 </Tabs>

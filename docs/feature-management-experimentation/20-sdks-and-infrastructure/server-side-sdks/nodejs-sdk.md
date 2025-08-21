@@ -1,6 +1,12 @@
 ---
 title: Node.js SDK
 sidebar_label: Node.js SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-dependency-on-old-version-of-package-url-parse
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-using-gettreatment-in-localhost-mode-does-not-work-with-then-and-catch-blocks/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-localhost-mode-error-cannot-find-name-path/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-error-node-modules-has-no-exported-member-splitio/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-how-to-deploy-in-aws-lambda/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -1256,3 +1262,149 @@ function thenable(val) {
 
 </TabItem>
 </Tabs>
+
+## Troubleshooting
+
+### Dependency on Old Version of Package url-parse
+
+Node.js SDK has a dependency on an old version of package `url-parse` (< 1.5.9), which is flagged as vulnerable in security scans.
+
+This package is part of a dependency chain in the `eventsource` package: `@splitsoftware/splitio > eventsource > original > url-parse`.
+
+To upgrade the `url-parse` package, you can use the following commands depending on your package manager:
+
+For npm environment:
+
+```bash
+npm audit fix
+```
+
+For yarn environment:
+
+```bash
+npm_config_yes=true npx yarn-audit-fix
+```
+
+Alternatively, you can add a resolutions field to your app’s `package.json` to force the use of a fixed version:
+
+```json
+"resolutions": { 
+  "url-parse": "1.5.10"
+}
+```
+
+Then run:
+
+```bash
+yarn upgrade
+```
+
+### Using getTreatment() in Localhost Mode Does Not Work with then() and catch() Blocks
+
+When implementing the Node.js SDK with Redis storage, the `getTreatment` method returns a Promise, so it works fine with `.then()` and `.catch()` blocks.
+
+However, when testing the SDK in localhost mode like this:
+
+```js
+client
+  .getTreatment('user_id', 'my-feature-comming-from-redis')
+  .then(treatment => {
+    // do something with the treatment
+  })
+  .catch(() => false)
+```
+
+It throws the error:
+
+```
+splitClient.getTreatment(...).then is not a function
+```
+
+In Redis storage mode, `getTreatment()` returns a Promise because it wraps a Redis fetch call. But in localhost mode, there is no Redis call, so `getTreatment()` does not return a Promise, causing `.then()` to fail.
+
+Wrap the SDK client creation and `getTreatment()` call inside an async function, and use `then()` and `catch()` on the returned Promise as shown below:
+
+```js
+const path = require('path');
+const SplitFactory = require('@splitsoftware/splitio').SplitFactory;
+
+async function createSplitClient() {
+    const SplitObj = SplitFactory({
+        core: {
+            authorizationKey: 'localhost'
+        },
+        startup: {
+            readyTimeout: 10
+        },
+        features: path.join(__dirname, 'first.yaml'),
+        debug: true
+    });
+    const client = SplitObj.client();
+    await client.ready();
+    console.log("SDK is ready");
+    return client;
+}
+
+async function getSplitTreatment(userKey, splitName) {
+    let splitClient = await createSplitClient();
+    return await splitClient.getTreatment(userKey, splitName);
+}
+
+getSplitTreatment("user", "first_split")
+  .then((treatment) => {
+    console.log("treatment: " + treatment);
+  })
+  .catch(() => {
+    console.log("SDK exception");
+  });
+```
+
+### While using Localhost mode, error generated: Cannot find name 'path'
+
+Using Node.js SDK, when trying to run the code below in Typescript file using Localhost mode:
+
+```typescript
+var factory = SplitFactory({
+    core: {
+         authorizationKey: 'localhost'
+    },
+    features: path.join(__dirname, '.split'),
+    scheduler: {
+        offlineRefreshRate: 15 // 15 sec
+    }
+});
+```
+
+The following error is thrown:
+
+```
+Cannot find name 'path'
+```
+
+This is a node issue. TypeScript needs typings for any module, except if that module is not written in TypeScript.
+
+You need to install the following package by running the command: `npm i @types/node -D`.
+
+### "/node_modules/@splitsoftware/splitio/types"' has no exported member 'SplitIO'
+
+Using Node.js SDK, when trying to import SplitIO as a namespace in TypeScript:
+
+```
+import { SplitIo } from '@splitsoftware/splitio';
+```
+
+The following error is thrown:
+
+```
+/node_modules/@splitsoftware/splitio/types"' has no exported member 'SplitIO'.
+```
+
+TypeScript implicitly imports SplitIO namespace when doing `import { SplitFactory } from '@splitsoftware/splitio';`, and even the “typeRoots” config is not affecting it because the declaration file is included in the SDK package and the “types” field is properly configured.
+
+You can explicitly import the SplitIO namespace (for example, on modules/files where SplitFactory is not being imported). To achieve this, include the line:
+
+```
+import SplitIO from '@splitsoftware/splitio/types/splitio';
+```
+
+This requires including `"allowSyntheticDefaultImports": true` in `tsconfig`.
