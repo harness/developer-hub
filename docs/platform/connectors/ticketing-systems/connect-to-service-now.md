@@ -59,7 +59,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="usernamepwd" label="Username and Password" default border-bottom-color="red">
 
-To use username and password (basic authentication) for authentication, do the following:
+To use basic authentication (username and password), do the following:
 
 1. Enter **Username**.
 2. In **Password**, add a password.
