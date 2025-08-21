@@ -148,7 +148,7 @@ Once the artifact is signed and verified, you will be able to see the Artifact I
 
 :::note
 
-To view Rekor logs, disable Airgap mode in Default Settings under Supply Chain Security.
+Rekor logs are disabled by default. To enable them, click on **Project Settings**, navigate to **Default Settings**, and disable Airgap mode in Supply Chain Security.
 
 :::
 
