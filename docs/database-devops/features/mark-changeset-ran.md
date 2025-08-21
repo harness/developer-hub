@@ -1,6 +1,6 @@
 ---
-title: Mark Changeset Ran | Apply Schema Step
-description: Learn how to use the mark-changeset-ran option in Harness Database DevOps pipelines. This option ensures failed changesets are marked as ran, enabling rollback execution for failed database changes.
+title: Mark Next Changeset Ran 
+description: Learn how to use the mark-next-changeset-ran option in Harness Database DevOps pipelines. This option ensures failed changeset are marked as ran, enabling rollback execution for failed database changes.
 tags: 
   - harness database devops
   - liquibase
@@ -18,7 +18,7 @@ keywords:
   - database devops ci/cd
 ---
 
-The **Mark Changeset Ran** option is available in the Apply Schema step under Harness Database DevOps. When enabled, it ensures that failed changesets are marked as **ran** in the database changelog table, even if they do not execute successfully. This feature provides more reliable rollback behavior and prevents broken changesets from being re-executed in future pipeline runs.
+The **Mark Changeset Ran** option is available in the Apply Schema step under Harness Database DevOps. When enabled, it gives you the option to mark failed changesets as ran in the database changelog table, even if they do not execute successfully. This feature helps align rollback execution with failed database changes, ensuring rollback scripts can be applied when needed
 
 ## How it works
 
@@ -26,7 +26,7 @@ By default, if **Mark Changeset Ran** is not selected, any changeset that fails 
 
 When you select **Mark Changeset Ran**, Harness marks failed changesets as **ran** in the database changelog table, even though they didn’t apply successfully. This prevents them from being retried in later runs. More importantly, if your pipeline has a rollback step that rolls back to the Apply Schema step’s pre-start tag, the rollback will now include rollback scripts for those failed changesets.
 
-This gives you a safer and more consistent rollback experience, since failed changesets won’t just sit in a “half-applied” state—they’ll be tracked and properly rolled back.
+This can be useful if you are deploying complex SQL scripts that perform multiple DML statements within a single script against databases that implicitly commit transactions on DML changes (for example, Oracle). In such cases, rollback scripts often need to handle partial rollbacks, which are more complicated to write but necessary for reliable recovery.
 
 ## Step-by-step: Enable Mark Changeset Ran
 
@@ -36,7 +36,7 @@ This gives you a safer and more consistent rollback experience, since failed cha
 3. Save your changes and run the pipeline.  
 4. If any changeset fails:
    - The failed changeset is marked as ran.  
-   - If a rollback step exists, it will roll back to the pre-start tag and include rollback scripts for the failed changeset.
+   - If a rollback step exists (and rollback scripts are defined), it can roll back to the pre-start tag and attempt to clean up the failed changeset.
 
 ![Apply Schema Mark Changeset Ran](./static/db-apply-mark-changeset-ran.png)
 
@@ -51,14 +51,14 @@ This gives you a safer and more consistent rollback experience, since failed cha
 - Harness marks it as ran in the changelog.  
 - Rollback step executes the rollback script for `001_add_users_table.sql`.  
 
-This ensures the rollback step cleans up failed changes automatically.
+This ensures rollback steps include failed changesets and allow cleanup where rollback scripts are defined.
 
 ## When to use Mark Changeset Ran
 
 Use this option when:
 
 * ✅ You want rollback steps to include failed changesets and automatically clean them up.
-* ✅ Database consistency and safety are more important than retrying failed changesets.
+* ✅ ou are deploying SQL scripts with multiple DML statements against databases that implicitly commit.
 * ✅ Your team follows GitOps practices and you need the pipeline state to stay aligned with the database state.
 * ✅ You want a complete audit trail where even failed changesets are tracked in the changelog table.
 
@@ -76,4 +76,4 @@ Yes, this option is Liquibase-compatible. Harness leverages the same mechanism b
 Failed changesets remain pending in the changelog and will retry on the next pipeline run. Rollback will not include them.  
 
 ### Does it affect audit and tracking?
-Yes. All failed changesets are still recorded in the changelog table, ensuring full auditability.  
+Yes. Failed changesets are recorded in the changelog table, which provides traceability even if they did not execute successfully.
