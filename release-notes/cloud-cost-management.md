@@ -40,9 +40,6 @@ CCM is introducing a new capability **Dynamic Perspective Reports**, a powerful 
 
 This feature is rolled out behind a **Feature Flag**. If the flag is enabled for your account, report creation via the Perspective creation flow will be disabled.
 
-### Feature Improvements
-
-- **Account Name Filter for Governance Recommendations:** Governance recommendations now support filtering by Account Name, consistent with EC2 recommendations. This makes it easier to search, scope, and view governance recommendations for specific accounts. [CCM-23625]
 
 ## August 2025 - Version 1.60.1
 #### **Deployment Date:** August 18, 2025 (Prod-1)
