@@ -16,7 +16,15 @@ Split integrates across several categories, including messaging, monitoring, iss
 If you're not seeing a tool you need to be connected to Split, you can use Split’s [API](https://docs.split.io/) and [SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure) to connect with the tools your team uses. For assistance with Split’s SDK or API, contact [Harness Support](/docs/feature-management-experimentation/fme-support).
 :::
 
-import { Section, supportedWorkflows, supportedDatasources, supportedAdminchanges, supportedCommunity } from '/src/components/Docs/data/fmeIntegrations';
+import { Section, supportedModules, supportedWorkflows, supportedDatasources, supportedAdminchanges, supportedCommunity } from '/src/components/Docs/data/fmeIntegrations';
+
+<Section 
+  title="Harness Module Integrations" 
+  items={supportedModules} 
+  perRow={6} 
+  rowSpacing="20px" 
+  description="Harness integrations allow you to access and manage your feature flags and experiments directly within the Harness modules your team already uses." 
+/>
 
 <Section 
   title="Split-supported Workflow Integrations" 
