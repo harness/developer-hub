@@ -75,11 +75,11 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Docs/data/codeRepositoryData.tsx @hitesharinga dewan.ahmed@harness.io @johannesHarness @nofarblue @atefehmohseni @rkapoor10
 
 # STO Docs
-/docs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
-/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
-/release-notes/security-testing-orchestration.md @tejakummarikuntla @priteshchandaliya
-/src/components/Roadmap/data/stoData.ts @tejakummarikuntla  @priteshchandaliya
-/src/components/Docs/data/securityTestingOrchestrationData.ts @tejakummarikuntla @priteshchandaliya
+/docs/security-testing-orchestration/ teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
+/docs/faqs/security-testing-orchestration/ teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
+/release-notes/security-testing-orchestration.md teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
+/src/components/Roadmap/data/stoData.ts teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
+/src/components/Docs/data/securityTestingOrchestrationData.ts teja.kummarikuntla@harness.io pritesh.chandaliya@harness.io
 # STO FAQs
 /docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
 
@@ -157,10 +157,10 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
 
 # SCS Docs
-/docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
-/release-notes/software-supply-chain-assurance.md @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
-/src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
-/src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
+/docs/software-supply-chain-assurance/  lavakush.biyani@harness.io pranay.shah@harness.io teja.kummarikuntla@harness.io sahil.jugiani@harness.io
+/release-notes/software-supply-chain-assurance.md  lavakush.biyani@harness.io pranay.shah@harness.io teja.kummarikuntla@harness.io sahil.jugiani@harness.io
+/src/components/Roadmap/data/sscaData.ts  lavakush.biyani@harness.io pranay.shah@harness.io teja.kummarikuntla@harness.io sahil.jugiani@harness.io
+/src/components/Docs/data/softwareSupplyChainAssuranceData.tsx  lavakush.biyani@harness.io pranay.shah@harness.io teja.kummarikuntla@harness.io sahil.jugiani@harness.io
 
 # IACM Docs
 /docs/infra-as-code-management/ richard.black@harness.io richard.craig@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io
