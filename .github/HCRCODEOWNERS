@@ -7,10 +7,10 @@
 *       @prateek.mittal@harness.io @wei.guo@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
 
 # Configuration Files in DS are JS.
-*.js    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
-*.ts    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
-*.jsx    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
-*.tsx    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+*.js    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io @richard.black@harness.io
+*.ts    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io @richard.black@harness.io
+*.jsx    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io @richard.black@harness.io
+*.tsx    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io @richard.black@harness.io
 
 # Changes to Lock File
 *.lock  @wei.guo@harness.io
@@ -88,7 +88,7 @@ static/  @rohan.maharjan@harness.io @wei.guo@harness.io
 /docs/cloud-cost-management/3-use-ccm-cost-reporting @joeyouss @sdsingh07 @rajarshee-harness @karanshetty53
 /docs/cloud-cost-management/4-use-ccm-cost-optimization @joeyouss @sandyydk @riyasyash @rajarshee-harness @josephdlopez @jyotiarora-harness @shalinlk @karanshetty53
 /docs/cloud-cost-management/5-use-ccm-cost-governance @joeyouss @iamanmolm @rajarshee-harness @josephdlopez @sdsingh07 @karanshetty53
-/docs/cloud-cost-management/ @joeyouss @josephdlopez @karanshetty53 @rajarshee-harness @jyotiarora-harness @richardblack-Harness
+/docs/cloud-cost-management/ @joeyouss @josephdlopez @karanshetty53 @rajarshee-harness @jyotiarora-harness @richard.black@harness.io
 /release-notes/cloud-cost-management.md @joeyouss @rajarshee-harness @josephdlopez  @karanshetty53
 /src/components/Roadmap/data/ccmData.ts @joeyouss @rajarshee-harness @karanshetty53
 /src/components/Docs/data/cloudCostManagementData.ts @joeyouss @rajarshee-harness @karanshetty53
@@ -163,10 +163,10 @@ static/  @rohan.maharjan@harness.io @wei.guo@harness.io
 /src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
 
 # IACM Docs
-/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @nassergonzalez @Rohit-Kaliki
-/release-notes/infrastructure-as-code-management.md @RickCraig @richardblack-Harness @Rohit-Kaliki
-/src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
-/src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
+/docs/infra-as-code-management/ @richard.black@harness.io @richard.craig@harness.io @roger.simms@harness.io @nasser.gonzalez@harness.io @rohit.reddy@harness.io
+/release-notes/infrastructure-as-code-management.md @richard.black@harness.io @richard.craig@harness.io @roger.simms@harness.io @nasser.gonzalez@harness.io @rohit.reddy@harness.io
+/src/components/Roadmap/data/iacmData.ts @richard.black@harness.io @richard.craig@harness.io @roger.simms@harness.io @nasser.gonzalez@harness.io @rohit.reddy@harness.io
+/src/components/Docs/data/iacmData.ts @richard.black@harness.io @richard.craig@harness.io @roger.simms@harness.io @nasser.gonzalez@harness.io @rohit.reddy@harness.io
 
 # FF Classic Docs
 /docs/feature-flags/ @alai97 @animcdowell @laura-mannus @jcox250
@@ -207,8 +207,10 @@ static/  @rohan.maharjan@harness.io @wei.guo@harness.io
 /docs/ai-qa-assistant/ 
 
 # Artifact Registry Docs
-/docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
-/src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
+/docs/artifact-registry/ @shankar.hariharan@harness.io @shivakumar.ningappa@harness.io @richard.black@harness.io @arvind.choudhary@harness.io
+/release-notes/artifact-registry.md @shankar.hariharan@harness.io @shivakumar.ningappa@harness.io @richard.black@harness.io @arvind.choudhary@harness.io
+/src/components/Docs/data/artifactRegistryData.ts @shankar.hariharan@harness.io @shivakumar.ningappa@harness.io @richard.black@harness.io @arvind.choudhary@harness.io
+/src/components/Roadmap/data/artifactRegistryData.ts @shankar.hariharan@harness.io @shivakumar.ningappa@harness.io @richard.black@harness.io @arvind.choudhary@harness.io
 
 # Open Source Docs
 /docs/open-source/ @dewan-ahmed @sushrut.athavale@harness.io
