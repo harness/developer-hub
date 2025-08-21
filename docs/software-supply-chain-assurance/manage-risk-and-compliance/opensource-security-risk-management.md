@@ -46,7 +46,17 @@ You can also filter out the components, based on the OWASP Top 10 Risks.
 
 ### Create Jira Ticket
 
-You can select unmaintained and outdated OSS components and create a Jira ticket to fix the issue. Once the ticket is created, its number and current status will be displayed. Any changes to the status of the ticket will automatically sync and be reflected in the side panel.
+As a prerequisite, configure a [Jira connector](/docs/platform/connectors/ticketing-systems/connect-to-jira/). Click on the module selector at the top left of the side bar, go to Unified View, and create the connector at the project level.
+
+- Select the outdated/unmaintained dependency, which will open a side panel. Click on Create Ticket.
+- **Create in Project:** Select the Jira project where the issue should be created. This list is populated based on your configured Jira connector.
+- **Issue Type:** Choose the type of Jira issue to create.
+- **Title:** The field will be auto-populated in the format below:
+    - **For outdated components** - Outdated Component Identified - Upgrade `<component_name>` from `<current_version>` to `<latest_version>`
+    - **For unmaintained components** - Unmaintained Component Identified - `<component_name>` version `<current_version>`
+- **Description:** Add the details that you want to include in the Jira ticket description.
+
+ Once the ticket is created, its number and current status will be displayed. Any changes to the status of the ticket will automatically synced and be reflected in the side panel.
 
 <DocImage path={require('./static/jira.png')} width="80%" height="80%" title="Click to view full size image" />
 
