@@ -166,7 +166,7 @@
             margin: 0;
             padding: 0;
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 600;
             line-height: 26px;
             letter-spacing: 0px;
             text-align: left;
@@ -241,7 +241,7 @@
       }
 
       &.active {
-        font-weight: 700;
+        font-weight: 600;
         cursor: default;
         background-color: var(--hover);
         // color: var(--background-color);
@@ -250,7 +250,7 @@
       li {
         margin: 0;
         font-size: 18px;
-        font-weight: 700;
+        font-weight: 600;
         display: flex;
         align-items: center;
         gap: 8px;
