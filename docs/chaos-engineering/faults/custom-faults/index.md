@@ -6,11 +6,20 @@ description: Learn how to create and implement custom chaos faults for your spec
 
 # Custom Faults Overview
 
-Custom faults allow you to extend Harness Chaos Engineering beyond the built-in fault library to address specific testing scenarios unique to your applications and infrastructure.
+Custom faults allow you to extend Chaos beyond the built-in fault library to address specific testing scenarios unique to your applications and infrastructure.
+
+:::info New Chaos Studio Feature
+**Custom Faults** are part of the enhanced **New Chaos Studio** experience. The studio version you see depends on your onboarding date:
+
+- **New Chaos Studio**: Available for customers onboarded on or after August 24, 2025
+- **Old Chaos Studio**: Available for customers onboarded before August 24, 2025
+
+If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
+:::
 
 ## Overview
 
-While Harness Chaos Engineering provides a comprehensive library of pre-built faults, you can create custom faults that go beyond the pre-defined fault types provided by Harness. Custom faults enable you to tailor chaos experiments to meet specific needs, configurations, or scenarios unique to your environment.
+While Harness Chaos provides a comprehensive library of pre-built faults, you can create custom faults that go beyond the pre-defined fault types provided by Chaos. Custom faults enable you to tailor chaos experiments to meet specific needs, configurations, or scenarios unique to your environment.
 
 Custom faults are ideal for:
 
@@ -19,13 +28,18 @@ Custom faults are ideal for:
 - **Complex scenarios**: Combine multiple failure modes in custom ways
 - **Domain-specific testing**: Address industry-specific reliability requirements
 
-## BYOC (Bring Your Own Chaos)
+## Ways to Create Custom Faults
 
-BYOC is the primary method for creating custom faults in Harness Chaos Engineering. It provides a flexible framework that allows you to define your own chaos experiments using simple YAML specifications.
+Harness Chaos Engineering provides two approaches for creating custom faults:
 
-### Key Features
+### 1. Create Custom Faults
 
-- **Custom Fault Logic**: Define your own chaos experiments with complete control over fault behavior
-- **Flexible Execution**: Execute custom faults using the Harness Chaos Engineering platform infrastructure
-- **Integration Ready**: Seamlessly integrate with existing Harness Chaos Engineering workflows and monitoring
-- **Simple Configuration**: Use familiar YAML specifications to define fault parameters
+Build custom faults from scratch with complete control over configuration and behavior. This approach gives you maximum flexibility to implement fault injection logic tailored to your specific requirements.
+
+[Learn more about creating custom faults →](./create-custom-faults)
+
+### 2. Custom Fault Templates
+
+Use pre-configured templates that can be customized for your specific needs. This approach provides a faster way to create faults using proven patterns and best practices.
+
+[Learn more about custom fault templates →](./custom-fault-templates)

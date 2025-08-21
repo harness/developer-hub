@@ -20,7 +20,7 @@ Create and manage your own custom chaos faults using BYOC (Bring Your Own Chaos)
 
 1. **Explore Available Faults**: Browse the [chaos faults](./chaos-faults) to see what's available
 2. **Understand Fault Tunables**: Learn about [common tunables](./chaos-faults/common-tunables-for-all-faults) that apply to all faults
-3. **Create Custom Faults**: Use [BYOC](./custom-faults/byoc) to create your own fault types
+3. **Create Custom Faults**: Use [BYOC](./byoc) to create your own fault types
 
 ## Next Steps
 

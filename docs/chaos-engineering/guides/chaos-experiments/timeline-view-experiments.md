@@ -5,13 +5,13 @@ sidebar_position: 6
 
 This topic introduces **Timeline View** and demonstrates how you can use it to visually analyze and track the progress of your chaos experiments.
 
-## Before you begin, review the following
+:::info New Chaos Studio Feature
+**Timeline View** are part of the enhanced **New Chaos Studio** experience. The studio version you see depends on your onboarding date:
 
-- [Chaos Experiment](/docs/chaos-engineering/guides/chaos-experiments/)
-- [Create Chaos Experiment](/docs/chaos-engineering/guides/chaos-experiments/create-experiments)
+- **New Chaos Studio**: Available for customers onboarded on or after August 24, 2025
+- **Old Chaos Studio**: Available for customers onboarded before August 24, 2025
 
-:::info note
-This feature is currently behind the feature flag `NG_EXPERIENCE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
 :::
 
 ## What is Timeline View?
@@ -30,10 +30,13 @@ The steps outlined below describe the process that occurs from the moment a chao
 - **Step 4:** Rollback/Cleanup occurs → Logged with metadata.
 - **Step 5:** Experiment completes → Entire sequence available for review.
 
-## Why Use Timeline View?
-- **Enhanced Visibility and Accurate Debugging** – Timeline view provides a clear view of all experiment-related actions in a chronological sequence and easily identify when and where failures occurred during the experiment.
-- **Event Metadata Access** – Clicking on events reveal detailed information about their execution, helping you pinpoint issues or failures.
-- **Better Experiment Analysis** – Helps in understanding the effect of chaos faults and probes over time.
+## Benefits of Timeline View
+
+- **Enhanced Visibility** – Provides a clear chronological view of all experiment-related actions
+- **Accurate Debugging** – Easily identify when and where failures occurred during the experiment
+- **Event Metadata Access** – Click on events to reveal detailed execution information
+- **Real-time Monitoring** – Track experiment progress as it happens
+- **Better Analysis** – Understand the effects of chaos faults and probes over time
 
 ## How Does Timeline View Work?
 
@@ -49,12 +52,14 @@ Clicking on an event displays the metadata, providing insights such as configura
 4. **Monitor the Experiment Flow** – The timeline continuously updates in real-time, providing an ongoing overview of the experiment's progress.
 5. **Analyze the Experiment Outcome** – Once the experiment completes, use the timeline to review and analyze the execution details.
 
-## How to View the Timeline?
-- Select the experiment you want to run or create one, and click **Run**. Once the experiment begins execution, you can see the **View Timeline View** on the screen. 
+## How to Access Timeline View
+
+1. Select the experiment you want to run or create one, and click **Run**.
+2. Once the experiment begins execution, you can see the **View Timeline** option on the screen. 
 
 	![timeline view](./static/timeline/view-timeline-1.png)
 
-- Clicking the expriment gives the experiment name, tunables, and status of the experiment.
+- Clicking the experiment gives the experiment name, tunables, and status of the experiment.
 
 	![experiment information view](./static/timeline/exp-info-4.png)
 
@@ -63,5 +68,8 @@ Clicking on an event displays the metadata, providing insights such as configura
 	![probe information view](./static/timeline/probe-info-3.png)
 
 
-## Conclusion
-**Timeline View** allows you to visually track and analyze the full scope of chaos experiments, helping pinpoint issues thereby contributing to improve the resilience of the application.
+## Next Steps
+
+- [Create and run chaos experiments](./create-experiments)
+- [Learn about Probes](/docs/chaos-engineering/guides/probes/)
+- [Explore Actions](/docs/chaos-engineering/guides/actions/)
