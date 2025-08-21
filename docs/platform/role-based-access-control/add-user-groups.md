@@ -78,11 +78,11 @@ At the organization and project scopes, you can quickly create groups by inherit
 | Edit roles and resource groups | You can change the roles and resource groups that were assigned at the current scope only. You can't make cross-scope modifications.<br/><ul><li>Original scope: Manage role and resource group assignments for the original scope only. Can't edit role/resource groups for inherited scopes.</li><li>Inherited scope: Manage role and resource group assignments for the inherited scope only. Can't edit higher-level roles/resource groups or roles/resource groups in other inherited scopes.</li></ul> |
 | Delete group | Original scope only. If deleted, the group is also removed from all scopes where it was inherited. |
 
-:::danger Important Note
+:::note
 
-When a user group is inherited from the account scope to a project scope, the system automatically assigns the Organization Viewer role to that user group for the organization containing the project. The role assignment is also recorded in the Audit Logs.
+When a user group or service account is inherited from the account scope to a project scope, the system automatically assigns the Organization Viewer role to that user group or service account for the organization containing the project. The role assignment is also recorded in the Audit Logs.
 
-If this role is removed, the user group may lose access to the Organization.
+If this role is removed, the user group or service account may lose access to the Organization.
 :::
 To inherit user groups in Harness, you need the following [permissions](./permissions-reference.md):
 
