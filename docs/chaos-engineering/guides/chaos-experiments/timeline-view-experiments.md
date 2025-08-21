@@ -6,12 +6,7 @@ sidebar_position: 6
 This topic introduces **Timeline View** and demonstrates how you can use it to visually analyze and track the progress of your chaos experiments.
 
 :::info New Chaos Studio Feature
-**Timeline View** are part of the enhanced **New Chaos Studio** experience. The studio version you see depends on your onboarding date:
-
-- **New Chaos Studio**: Available for customers onboarded on or after August 24, 2025
-- **Old Chaos Studio**: Available for customers onboarded before August 24, 2025
-
-If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
+**Timeline View** are part of the enhanced **New Chaos Studio** experience. If you're an existing customer and want access to new features, contact your Harness support representative. For more details, see [New Chaos Studio Features](/docs/chaos-engineering#new-chaos-studio-features).
 :::
 
 ## What is Timeline View?

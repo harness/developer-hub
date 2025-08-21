@@ -7,12 +7,7 @@ sidebar_position: 11
 Runtime variables provide flexibility in chaos experiments by allowing you to customize experiment parameters at execution time rather than hardcoding them during creation.
 
 :::info New Chaos Studio Feature
-**Runtime input variables** are part of the enhanced **New Chaos Studio** experience. The studio version you see depends on your onboarding date:
-
-- **New Chaos Studio**: Available for customers onboarded on or after August 24, 2025
-- **Old Chaos Studio**: Available for customers onboarded before August 24, 2025
-
-If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
+**Runtime input variables** are part of the enhanced **New Chaos Studio** experience. If you're an existing customer and want access to new features, contact your Harness support representative. For more details, see [New Chaos Studio Features](/docs/chaos-engineering#new-chaos-studio-features).
 :::
 
 ## Create and Run Experiments
