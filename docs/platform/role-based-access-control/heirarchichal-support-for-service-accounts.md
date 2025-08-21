@@ -41,6 +41,10 @@ In your target project:
    - Create a [Role](./add-manage-roles.md#create-a-role) with the required permissions
    - Create a [Resource Group](./add-resource-groups.md#create-a-resource-group) defining what resources can be accessed
 
+:::note
+Roles and resource groups can only be modified at the scope where they were originally assigned. Inherited roles and resource groups are visible at lower scopes but cannot be edited there.
+:::
+
 ### Step 3: Inherit and assign permissions
 
 1. Navigate to **Project Settings** → **Access Control** → **Service Accounts**
