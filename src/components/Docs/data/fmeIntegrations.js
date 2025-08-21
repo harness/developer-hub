@@ -8,10 +8,15 @@ function chunkArray(array, size) {
   );
 }
 
+export const supportedModules = [
+  { name: "Harness IDP", img: "/img/icon_idp.svg", link: "/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme" },
+];
+
 export const supportedWorkflows = [
   { name: "AppDynamics", img: "/provider-logos/fme-integrations/appdynamics-logo.png", link: "/docs/feature-management-experimentation/integrations/appdynamics" },
   { name: "Azure DevOps", img: "/provider-logos/fme-integrations/azure-devops-logo.png", link: "/docs/feature-management-experimentation/integrations/azure-devops" },
   { name: "Datadog", img: "/provider-logos/fme-integrations/datadog-logo.png", link: "/docs/feature-management-experimentation/integrations/datadog" },
+  { name: "Email", img: "/provider-logos/fme-integrations/email-logo.png", link: "/docs/feature-management-experimentation/integrations/email" },
   { name: "Jira Cloud", img: "/provider-logos/fme-integrations/jira-logo.png", link: "/docs/feature-management-experimentation/integrations/jira-cloud" },
   { name: "New Relic", img: "/provider-logos/fme-integrations/newrelic-logo.png", link: "/docs/feature-management-experimentation/integrations/new-relic" },
   { name: "Rollbar", img: "/provider-logos/fme-integrations/rollbar-logo.png", link: "/docs/feature-management-experimentation/integrations/rollbar" },

@@ -1,12 +1,22 @@
 ---
 title: Java SDK
 sidebar_label: Java SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-is-there-a-jar-file/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-time-out-error-nosuchmethoderror-google-common/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-how-to-change-log-level/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-fatal-alert-handshake-failure/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-exception-pkix-path-building-failed/
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+## Overview
+
 This guide provides detailed information about our Java SDK. All of our SDKs are open source. Go to our [Java SDK GitHub repository](https://github.com/splitio/java-client) to see the source code.
+
+If you prefer to use the SDK as a standalone JAR file, it’s available for download from the Maven Central Repository. For example, the JAR for version 4.2.1 can be downloaded [here](https://repo1.maven.org/maven2/io/split/client/java-client/4.2.1/java-client-4.2.1.jar). You can browse all available versions [here](https://repo1.maven.org/maven2/io/split/client/java-client/).
 
 ## Language support
 
@@ -1691,3 +1701,82 @@ Here is a sample of a **weblogic.xml** file that includes the previously mention
 
 </TabItem>
 </Tabs>
+
+## Troubleshooting
+
+### Timeout Error: NoSuchMethodError: com.google.common.collect.Multisets.removeOccurrences
+
+Using the Java SDK within certain frameworks, the SDK always times out. The logs show the following error:
+
+```swift
+2602 [split-splitFetcher-0] ERROR io.split.engine.experiments.RefreshableSplitFetcher  - RefreshableSplitFetcher failed: com.google.common.collect.Multisets.removeOccurrences(Lcom/google/common/collect/Multiset;Ljava/lang/Iterable;)Z
+...
+java.lang.NoSuchMethodError: com.google.common.collect.Multisets.removeOccurrences(Lcom/google/common/collect/Multiset;Ljava/lang/Iterable;)Z
+```
+
+This error happens because the Java SDK depends on the Google Guava library version 19.0 or higher. If your framework uses an older Guava version (< 19.0), this method will be missing, causing the error.
+
+Upgrade the Google Guava dependency in your project to version 19.0 or above to resolve this issue.
+
+### How to change log level in the Java SDK
+
+When integrating the Java SDK into a framework that uses Log4J, the SDK outputs many debug lines. Is it possible to change the log level?
+
+Yes. The Java SDK respects the `log4j.properties` configuration file used by your Java application. To reduce logging verbosity and set the log level to `ERROR`, add these lines to your `log4j.properties` file: 
+
+```
+log4j.logger.split.org.apache = ERROR
+log4j.logger.io.split = ERROR
+```
+
+This will suppress debug and info logs from the SDK, showing only error messages.
+
+### Error using JRE 6.x: "fatal alert: handshake_failure"
+
+Using the Java SDK with JDK 1.6 (JRE 6.x), you may encounter the following SSL connection error when trying to connect to split.io:
+
+```yaml
+.RECV TLSv1 ALERT: fatal, handshake_failure
+
+handling exception: javax.net.ssl.SSLHandshakeException: Received fatal alert: handshake_failure
+```
+
+Java 1.6 supports TLSv1 but does not support the high-strength ciphers required by split.io’s security protocol.
+
+To fix this issue, you have two options:
+
+1. Upgrade your JDK to version 1.7 or above. These versions include support for the stronger ciphers by default.
+1. If upgrading is not an option, install the Java Cryptography Extension (JCE) provided by your JVM vendor for Java 6 to enable support for high-strength ciphers.
+
+### Exception: PKIX path building failed — unable to find valid certification path to requested target
+
+When initializing the Java SDK `SplitFactory` object, you may see the following error:
+
+```yaml
+RefreshableSplitFetcher failed: 
+Problem fetching splitChanges:
+sun.security.validator.ValidatorException: 
+PKIX path building failed:
+sun.security.provider.certpath.SunCertPathBuilderException:
+unable to find valid certification path to requested target
+```
+
+This indicates that Java could not verify the SSL certificate from Split.io, preventing a secure connection between the SDK and Harness FME servers.
+
+Manually install the Split.io certificates into your JVM’s trust store:
+
+1. Download the certificates for both `sdk.split.io` and `events.split.io`:
+
+   ```bash
+   openssl s_client -showcerts -connect sdk.split.io:443 </dev/null 2>/dev/null | openssl x509 -outform PEM > splitsdkcert.pem
+   openssl s_client -showcerts -connect events.split.io:443 </dev/null 2>/dev/null | openssl x509 -outform PEM > spliteventscert.pem
+   ```
+
+1. Import the certificates into the Java cacerts keystore (replace [JAVA_HOME] with your Java installation path):
+
+   ```bash
+   keytool -importcert -file splitsdkcert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "splitsdkcert"
+   keytool -importcert -file spliteventscert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "spliteventscert"
+   ```
+
+1. Restart your Java application.

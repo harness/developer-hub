@@ -69,6 +69,10 @@ Follow the instructions below to configure the Artifact Verification step.
 
 * **Account ID:** The unique identifier associated with your AWS account.
 
+:::note
+OIDC Auth type is not supported.
+:::
+
 
 </TabItem>
 
@@ -81,6 +85,10 @@ Follow the instructions below to configure the Artifact Verification step.
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
+
+:::note
+OIDC Auth type is not supported.
+:::
 
 </TabItem>
 
@@ -95,6 +103,10 @@ Follow the instructions below to configure the Artifact Verification step.
 * **Host:** Enter your GAR Host name. The Host name is regional-based. For example, `us-east1-docker.pkg.dev`.
 
 * **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
+
+:::note
+OIDC Auth type is not supported.
+:::
 
 </TabItem>
 
@@ -133,6 +145,12 @@ Once the artifact is signed and verified, you will be able to see the Artifact I
 * If the signed artifact is successfully verified using the public key, the verification status is displayed as Passed, along with the links to the corresponding rekor log entry and the execution results.
 
 * If the verification fails, the status is displayed as Failed.
+
+:::note
+
+Rekor logs are disabled by default. To enable them, click on **Project Settings**, navigate to **Default Settings**, and disable Airgap mode in Supply Chain Security.
+
+:::
 
 <DocImage path={require('./static/artifact-verification-data.png')} width="100%" height="100%" />
 

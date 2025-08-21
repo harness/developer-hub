@@ -304,6 +304,25 @@ Here, you will see:
 
 This view bridges the gap between high-level visibility and actionable insight.
 
+#### How to Add or Remove the STO Vulnerabilities Card
+
+You can customize whether the STO Vulnerabilities card appears on the entity overview page by modifying the layout configuration in the IDP admin UI.
+
+Navigate to **Layout**, then select the appropriate entity kind (e.g., `component`) and entity type (e.g., `service`). Here, you can add or remove the STO Vulnerabilities card component for the overview tab.
+
+To **add** the STO Vulnerabilities card, include the following in your layout YAML:
+
+```yaml
+        - component: EntitySecurityIssueCard
+          specs:
+            props:
+              variant: gridItem
+              height: 400
+            gridProps:
+              md: 6
+              xs: 12
+```
+
 <DocImage path={require('./static/sto-vul-summary.png')} />
 
 ### Vulnerabilities Tab of Entity View
@@ -343,6 +362,57 @@ To **remove** the tab, simply delete or comment out this section from the layout
 <DocImage path={require('./static/vul-tab.png')} />
 
 The highlighted section in the image above shows the configuration for the Vulnerabilities tab. Once added, developers will see a dedicated tab for STO security findings directly on each service's entity page, making it easy to review and act on vulnerabilities in context.
+
+
+<details>
+<summary>Sample Catalog Layout YAML</summary>
+
+```yaml
+page:
+  name: EntityLayout
+  tabs:
+    - name: Overview
+      path: /
+      title: Overview
+      contents:
+        - component: EntityOrphanWarning
+        - component: EntityRelationWarning
+        - component: EntityProcessingErrorsPanel
+        - component: EntityAboutCard
+          specs:
+            props:
+              variant: gridItem
+            gridProps:
+              md: 6
+        - component: EntityScoreCard
+          specs:
+            gridProps:
+              md: 6
+        - component: EntityCatalogGraphCard
+          specs:
+            props:
+              variant: gridItem
+              height: 400
+            gridProps:
+              md: 6
+              xs: 12
+// highlight-start
+        - component: EntitySecurityIssueCard
+          specs:
+            props:
+              variant: gridItem
+              height: 400
+            gridProps:
+              md: 6
+              xs: 12
+    - name: EntitySecurityIssueContent
+      path: /security
+      title: Vulnerabilities
+      contents:
+        - component: EntitySecurityIssueContent
+// highlight-end
+```
+</details>
 
 ## Scorecards – Measuring Vulnerability
 

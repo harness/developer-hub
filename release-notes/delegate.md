@@ -101,6 +101,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## August 2025
 
+### Version 25.05.85807 <!--Aug 20, 2025-->
+
+#### Fixed issues
+
+- Did an optimisation to trust urls for pcf deployment early during context creation to reduce multiple trust calls in case of parallel calls. [CDS-112526]
+
 ### Version 25.08.86503 <!--Aug 13, 2025-->
 
 #### Fixed issues

@@ -36,7 +36,7 @@ This article refers to the **IF** dropdown menu in a feature flag’s attribute 
  No matter how attributes are created ([within attribute-based feature flag targeting rules](#creating-custom-attributes-within-feature-flag-targeting-rules), [in Admin Settings](#creating-custom-attributes-in-admin-settings), or [using the Split API](#creating-custom-attributes-or-writing-custom-attribute-values-using-api-endpoints)), for feature flags with targeting rules that use custom attributes, _the way attribute values are populated in your code and passed to the ‘getTreatment’ function call (to evaluate a feature flag) is the same_.
 :::
 
-To see how to pass attributes with feature flag evaluation requests in your code, refer to the relevant language-specific article in our [SDK Documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/).
+To see how to pass attributes with feature flag evaluation requests in your code, refer to the relevant [SDK documentation](/docs/feature-management-experimentation/sdks-and-infrastructure).
 
 ### Creating custom attributes within feature flag targeting rules
 

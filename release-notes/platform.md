@@ -145,6 +145,17 @@ The following deprecated API endpoints are longer supported:
 
 ## August 2025
 
+### Version 1.102.x <!--August 19, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue in Pipeline Studio where the "View Delegate Task Logs" link on the pipeline execution Details page redirected to a non-existent page. It now correctly redirects to the delegate URL. [PL-64747]
+- Resolved an issue where deleting a user at the Organization or Project scope also deleted their API keys and tokens from the Account. [PL-64793]
+
+#### New features and enhancements
+
+- Selection logs now also capture tasks acquired through polling, improving traceability. [PL-58880]
+
 ### Version 1.101.x <!--August 13, 2025-->
 
 #### Fixed issues

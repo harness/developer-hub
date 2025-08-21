@@ -3,6 +3,14 @@ title: JavaScript SDK
 sidebar_label: JavaScript SDK
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/faqs/why-are-some-users-double-bucketed/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-localhost-mode-does-not-support-allowlist-keys
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-cors-error-in-streaming-call-when-running-sdk-in-service-worker
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-does-sdk-ready-event-fire-only-once
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-error-shared-client-not-supported-by-the-storage-mechanism
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-how-to-enable-conent-security-policy
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-polimer-cli-enoent-error
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-not-ready-status-in-slow-networks/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-mysegments-endpoint/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -839,6 +847,45 @@ config.features = { 'reporting_v3': 'off' }; // Will not emit SDK_UPDATE
 </TabItem>
 </Tabs>
 
+### Localhost mode limitations and Allowlist workaround
+
+JavaScript, React, Redux, and Browser SDKs use the `features` configuration parameter to set feature flags and treatment names when running in localhost mode. However, this mode does not support adding Allowlist keys within the `features` property, unlike the YAML file structure used in server-side SDKs.
+
+To mimic the behavior of allowing specific keys to receive certain treatments, you can define multiple feature flag sets keyed by your user identifier and select the appropriate set dynamically. This approach lets you flip treatments based on the key, effectively simulating an Allowlist.
+
+For example:
+
+```javascript
+const myFeatures = {
+  agus: {
+    flag1: 'on',
+    flag2: 'off'
+  },
+  sanjay: {
+    flag1: 'off',
+    flag2: 'on'
+  },
+  default: {
+    flag1: 'off',
+    flag2: 'off'
+  }
+};
+
+const config = {
+  core: {
+    authorizationKey: 'localhost',
+    key: myKey
+  },
+  features: myFeatures[myKey] || myFeatures['default'],
+  startup: {
+    readyTimeout: 5, // 5 seconds
+    retriesOnFailureBeforeReady: 3 // 3 retries
+  }
+};
+```
+
+This approach provides a simple way to control feature flag treatments per user key while running your application locally.
+
 ## Manager
 
 Use the Split manager to get a list of features available to the SDK factory client. To instantiate a Manager in your code base, use the same factory that you used for your client.
@@ -1021,6 +1068,23 @@ const factory: SplitIO.IBrowserSDK = SplitFactory({
 An impression listener is called asynchronously from the corresponding evaluation, but is almost immediate. 
 
 Even though the SDK does not fail, if there is an exception in the listener, do not block the call stack.
+
+## Content Security Policy (CSP)
+
+The Content Security Policy (CSP) can be enabled on a site that uses the JavaScript SDK. CSP is a security standard to prevent cross-site scripting (XSS) and other code injection attacks.
+
+To allow the JavaScript SDK, you can use the `nonce` keyword to permit inline scripts securely:
+
+1. Configure your server to send a response header like this (with your own random nonce value): `Content-Security-Policy: script-src 'self' cdn.split.io 'nonce-swfT4W3546RtDw4';`.
+1. Add the matching nonce attribute to the script tag that uses the SDK:
+   
+   ```html
+   <script nonce="swfT4W3546RtDw4">
+   // Your SDK code here
+   </script>
+   ```
+   
+   Make sure the nonce value in the header and script tag match exactly. The nonce should be randomly generated per request for security.
 
 ## Logging
 
@@ -1416,3 +1480,249 @@ Even if the `SDK_READY_TIMED_OUT` event fires, the SDK might become ready a few 
    Use a custom prefix to prevent data collision across projects.
 
 For more information, see the [API reference documentation](https://docs.split.io/docs/javascript-sdk-overview#section-configuration).
+### CORS Error in streaming call when running the SDK in a Service Worker
+
+When running the JavaScript SDK inside a Service Worker, the SDK’s streaming HTTP call to `streaming.split.io` can be blocked by the browser’s CORS policy.
+
+A Service Worker acts as a proxy between the browser and the network, intercepting requests and optionally redirecting them to a cache. While this enables offline access, it also means requests (such as the SDK’s Server-Sent Events (SSE) stream) must be explicitly handled in the Service Worker.
+
+If SSE requests are not correctly handled (for example, when adding cache-control headers without accounting for SSE), the streaming connection between the SDK and Split’s backend can fail due to CORS restrictions.
+
+To properly handle SSE streaming connections, add logic to your Service Worker’s `fetch` event listener that detects SSE requests and allows them through.
+
+```javascript
+self.addEventListener('fetch', event => {
+  const { headers, url } = event.request;
+  const isSSERequest = headers.get('Accept') === 'text/event-stream';
+
+  // Only process SSE connections
+  if (!isSSERequest) return;
+
+  const sseHeaders = {
+    'content-type': 'text/event-stream',
+    'Transfer-Encoding': 'chunked',
+    'Connection': 'keep-alive',
+  };
+
+  const sseChunkData = (data, event, retry, id) =>
+    Object.entries({ event, id, data, retry })
+      .filter(([, value]) => ![undefined, null].includes(value))
+      .map(([key, value]) => `${key}: ${value}`)
+      .join('\n') + '\n\n';
+
+  const serverConnections = {};
+  const getServerConnection = url => {
+    if (!serverConnections[url]) serverConnections[url] = new EventSource(url);
+    return serverConnections[url];
+  };
+
+  const onServerMessage = (controller, { data, type, retry, lastEventId }) => {
+    const responseText = sseChunkData(data, type, retry, lastEventId);
+    const responseData = Uint8Array.from(responseText, x => x.charCodeAt(0));
+    controller.enqueue(responseData);
+  };
+
+  const stream = new ReadableStream({
+    start: controller => getServerConnection(url).onmessage = onServerMessage.bind(null, controller)
+  });
+
+  const response = new Response(stream, { headers: sseHeaders });
+  event.respondWith(response);
+});
+```
+
+:::tip
+If a default handler is set to `NetworkFirst` (`setDefaultHandler(new NetworkFirst());`), it can prevent the event listener from firing. Removing the default handler resolves this.
+:::
+
+Alternatively, you can explicitly bypass certain requests in your `fetch` event listener:
+
+```javascript
+self.addEventListener('fetch', event => {
+// no caching for chrome-extensions
+    if (event.request.url.startsWith('chrome-extension:')) {
+        return false;
+    }
+// prevent header striping errors from workbox strategies for EventSource types
+    if (event.request.url.includes('streaming.split.io')) {
+        return false;
+    }
+// prevent non-cacheable post requests
+    if (event.request.method != 'GET') {
+        return false;
+    }
+// all others, use NetworkFirst workbox strategies
+    if (strategies) {
+        const networkFirst = new strategies.NetworkFirst();
+        event.respondWith(networkFirst.handle({ request: event.request }));
+    }
+});
+```
+
+### SDK_READY event not triggering
+
+When using: 
+
+```javascript
+client.on(client.Event.SDK_READY, function() {
+    var treatment = client.getTreatment("SPLIT_NAME");
+    console.log("Treatment = " + treatment);
+});
+```
+
+sometimes, the code never runs, even though no errors are shown in the SDK error log.
+
+This is because the `SDK_READY` event fires only once. If your event listener is attached after the event has already fired, it will never trigger.
+
+Instead of relying solely on the event, use the built-in Promise:
+
+```js
+client.ready().then(() => {
+    var treatment = client.getTreatment("SPLIT_NAME");
+    console.log("Treatment = " + treatment);
+});
+```
+
+This works at any time after SDK initialization.
+
+### "Shared Client not supported by the storage mechanism. Create isolated instances instead" error
+
+When testing the JavaScript SDK browser mode using Jest, it fails with the following error:
+
+```
+Shared Client not supported by the storage mechanism. Create isolated instances in stead
+```
+
+When using Jest for testing applications, Jest runs in Node.js by default, and Node.js does not support shared clients, which is why it detects the storage does not have that function. It is not possible to overwrite that method from the outside.
+
+You can instruct Jest to explicitly resolve to browser by setting the config in Jest options. For example, when using the `package.json` file, we can add the flag:
+
+```json
+{
+   "name": "MYAPP",
+   "version": "X.X.X",
+   ....
+   "jest": {
+      "browser": true
+   }
+   ...
+}
+```
+
+For more information, see the [official Jest documentation](https://jestjs.io/docs/configuration#browser-boolean).
+
+### Building JavaScript SDK using polymer-cli causes error: ENOENT: no such file or directory
+
+Using the following environment:
+
+* `@polymer/polymer`: 3.1.0
+* `polymer-cli`: 1.9.6
+
+Steps to reproduce:
+
+1. Install the SDK: `npm i @splitsoftware/splitio@10.6.0`.
+1. Import via ES module: 
+   
+   ```js
+   import { SplitFactory } from '@splitsoftware/splitio';
+   ```
+
+1. Run `polymer build`.
+
+You encounter the following error: 
+
+```swift
+Error: ENOENT: no such file or directory, open '/Users/[USER_NAME]/projects/[PROJECT_NAME]/frontend/events'
+```
+
+Polymer's build process differs from bundlers like webpack. It attempts to load the Node.js path of the SDK, which requires the `events` module, a Node core module unavailable in browser environments.
+
+The SDK package contains both Node and browser versions with:
+
+```json
+{
+  "main": "./node.js",
+  "browser": "./browser.js"
+}
+```
+
+While Node.js uses the `main` field (`node.js`), bundlers are instructed to use the browser-specific code (`browser.js`). Polymer’s build does not respect this configuration, leading to the error.
+
+If you plan to implement the JavaScript SDK in both server and browser modes with Polymer, ensure your build configuration properly sets the `browser` and `main` fields to the corresponding JavaScript files to load the correct version.
+
+### Why does the JavaScript SDK return Not Ready status on slow networks?
+
+When using the JavaScript SDK in a browser, the SDK status often remains as **Not Ready** when users are on a slow network connection (e.g., 3G).
+
+The SDK takes longer to fetch feature flags and segment data from Harness FME servers over slow networks. This delay can cause the SDK to fall back to control treatments since it has not yet completed initialization.
+
+Increase the `startup.readyTimeout` and `startup.requestTimeoutBeforeReady` values to ensure they cover the time needed to fetch FME definitions on slower networks.
+
+1. Measure the fetch duration on a slow network (e.g., using Chrome DevTools to simulate 3G).
+1. Enable SDK debug logging in the browser console:
+   ```js
+   localStorage.splitio_debug = 'on';
+   ```
+
+1. Reload the page and look for the debug line:
+
+   ```
+   [TIME TRACKER]: [Fetching - Splits] took xxxx ms to finish
+   ```
+
+   Where `xxxx` is the fetch duration in milliseconds.
+
+1. Set the `requestTimeoutBeforeReady` and `readyTimeout` in your SDK initialization to a value higher than the fetch duration, for example:
+
+   ```js
+   const sdk = SplitFactory({
+      startup: {
+        requestTimeoutBeforeReady: 5000, // 5 seconds
+        readyTimeout: 5000
+      }
+    });
+   ```
+
+1. To reduce network usage, enable local caching of the FME definition by specifying storage when initializing the SDK:
+
+   ```js
+   const sdk = SplitFactory({
+      storage: {
+        type: 'LOCALSTORAGE',
+        prefix: 'MYPREFIX'
+      },
+      // other config ...
+    });
+   ```
+
+This configuration ensures the SDK does not have to fetch definitions on every page load, improving readiness on slow or unstable networks.
+
+### Why does the JavaScript URL return HTTP 404 error?
+
+When using the JavaScript SDK, the following URL request generates a 404 error:
+
+```perl
+GET https://sdk.split.io/api/mySegments/ 404
+```
+
+The URL is missing the required key ID (also known as customer ID). For example, if the key ID is 8879, the URL should be:
+
+```perl
+GET https://sdk.split.io/api/mySegments/8879
+```
+
+Ensure you specify the key or customer ID correctly in the SDK factory initialization and when fetching the client object, for example:
+
+```js
+var factory = splitio({ 
+  core: {
+    authorizationKey: 'YOUR_API_KEY',
+    key: 'CUSTOMER_ID',
+    trafficType: 'TRAFFIC_TYPE'
+  }
+});
+
+var user_client = factory.client('CUSTOMER_ID', 'TRAFFIC_TYPE');
+```
+
+This correctly appends the key ID to the URL and prevents the 404 error.

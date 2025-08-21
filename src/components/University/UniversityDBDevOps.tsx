@@ -89,7 +89,7 @@ export default function CertificationsDBDEVOPS() {
 
   return (
     <div
-      className={`${styles.certificationsIDP} ${activePage === ActivePage.SelfPacedTraning
+      className={`${styles.certificationsDBDO} ${activePage === ActivePage.SelfPacedTraning
         ? styles.SelfPacedTrainingBg
         : ""
         } ${activePage === ActivePage.InstructorLedTraining

@@ -72,7 +72,7 @@ Harness Internal Developer Portal (IDP) now supports System as a high-level cata
 
 * Systems can be created at Account, Organization, or Project scope.
 * Define Systems using the IDP UI, YAML, or the Create Entity API (`kind: System`).
-* New default System layout includes tabs for Overview, Entities, Scorecard, and Diagram. Existing customers can apply the provided YAML layout under **Admin → Layout → Catalog Entities → System**.
+* New default System layout includes tabs for Overview, Entities, Scorecard, and Diagram. Existing customers can apply the provided [YAML layout](/docs/internal-developer-portal/catalog/system-entity#the-configuration-is-defined-in-yaml-for-example) under **Admin → Layout → Catalog Entities → System**.
 ![](./static/system-layout.png)
 * The Entities tab offers a searchable, filterable, and sortable table of all Components, APIs, and Resources within the System.
 * Many-to-many relationships are supported — an entity can belong to multiple Systems.
@@ -117,6 +117,8 @@ metadata:
     - microservice
     - java
 ```
+
+Learn more about [System Entity](/docs/internal-developer-portal/catalog/system-entity)
 
 ### [New Feature] Link to Source Code Repository
 
@@ -198,6 +200,18 @@ The following components have been removed because their functionality is now fu
 ```
 
 With `DxDataChart`, you can create customizable visualizations, deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
+
+### [New Feature] Harness Feature Management & Experimentation Plugin
+
+Harness IDP now includes a native integration with Harness Feature Management & Experimentation (FME), allowing teams to view and manage feature flags directly in their service catalog.
+
+
+* Feature Flag Visualization - View all feature flags associated with a service, including their status and configurations
+* Split.io Integration - Connect to Split.io API for comprehensive feature flag management
+* Service Integration - Easily associate feature flags with catalog entities using simple annotations
+* Real-time Updates - Monitor feature flag status and changes directly from your developer portal
+
+[Learn more about the Harness FME Plugin](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme) 
 
 ### Bug Fixes and Improvements
 

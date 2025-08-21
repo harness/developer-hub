@@ -7,7 +7,7 @@ description: Learn how to use the Admin API to build custom integrations and dev
 
 ## Overview
 
-You can use the Split Admin API to:
+You can use the [Split Admin API](https://docs.split.io/reference/introduction) to:
 
 * Push data into Split
 * Get data out of Split
@@ -202,6 +202,8 @@ Webhook integrations are available to send real-time event payloads to Split. Ea
 - [Impressions](/docs/feature-management-experimentation/api/webhook/impressions) allow you to send impression data for treatments served to users.
 
 The standard webhook integration automatically compresses the POST body request using `gzip` when sending data to the target application server.
+
+## Troubleshooting
 
 When using Azure Logic Apps as the target, there is a compatibility issue between the way Split uses the `gzip` library and how Azure Logic Apps decodes the payload. 
 

@@ -61,6 +61,10 @@ When modifying the existing SLSA steps, you must manually remove the digest from
 
 * **Account ID:** The unique identifier associated with your AWS account.
 
+:::note
+OIDC Auth type is not supported.
+:::
+
 
 </TabItem>
 
@@ -74,6 +78,10 @@ When modifying the existing SLSA steps, you must manually remove the digest from
 
 * **Image Name:** Enter the name of your image with tag oe digest, example `repository-name/image:tag` or `repository-name@sha256:<digest>`.
 
+:::note
+OIDC Auth type is not supported.
+:::
+
 
 </TabItem>
 
@@ -84,6 +92,10 @@ When modifying the existing SLSA steps, you must manually remove the digest from
 * **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
+
+:::note
+OIDC Auth type is not supported.
+:::
 
 
 </TabItem>

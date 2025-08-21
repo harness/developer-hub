@@ -94,6 +94,10 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 * **Account ID:** The unique identifier associated with your AWS account.
 
+:::note
+OIDC Auth type is not supported.
+:::
+
 
 </TabItem>
 
@@ -106,6 +110,10 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
+
+:::note
+OIDC Auth type is not supported.
+:::
 
 </TabItem>
 
@@ -120,6 +128,10 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 * **Host:** Enter your GAR Host name. The Host name is regional-based. For example, `us-east1-docker.pkg.dev`.
 
 * **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
+
+:::note
+OIDC Auth type is not supported.
+:::
 
 </TabItem>
 
@@ -172,14 +184,20 @@ Non-container images can be signed using **Cosign** or **Cosign with Secret Mana
 
 ## View Signed Artifacts
 
-You can easily access the signed artifact details from the Artifacts Overview tab. This section shows the signature and who signed the artifact. Additionally, you can also find the artifact signing as an event in the Chain of Custody, where a new entry is logged every time you sign an artifact.This entry includes a link to the execution results and rekor log entry, allowing you to track the signing activity and cross-check the details.
+You can easily access the signed artifact details from the Artifacts Overview tab. This section shows the signature and who signed the artifact. Additionally, you can also find the artifact signing as an event in the Chain of Custody, where a new entry is logged every time you sign an artifact. This entry includes a link to the execution results and rekor log entry, allowing you to track the signing activity and cross-check the details.
+
+:::note
+
+Rekor logs are disabled by default. To enable them, click on **Project Settings**, navigate to **Default Settings**, and disable Airgap mode in Supply Chain Security.
+
+:::
 
 <DocImage path={require('./static/artifact-signing-data.png')} width="100%" height="100%" />
 
 
 
 
-:::note
+:::info
 You are allowed to re-sign the same image multiple times, with each new signing overwriting the previous one. The Artifacts Overview tab will always display the most up-to-date signing details, reflecting the latest signature information for the artifact.
 :::
 

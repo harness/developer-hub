@@ -6,6 +6,7 @@ import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/chaosEngineeringData';
+import Admonition from '@theme/Admonition';
 
 export default function ChaosEngineering() {
   const { colorMode } = useColorMode();
@@ -55,15 +56,32 @@ export default function ChaosEngineering() {
             <p>
               In addition, the Harness platform provides the required enterprise capabilities like RBACs, SSO, logs and auditing making the entire solution scalable and easy to implement.
             </p>
-            <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === 'light'
-                    ? `${baseUrl}img/ce.svg`
-                    : `${baseUrl}img/CE_Landing_Page_dark_mode.svg`
-                }
-              />{' '}
+            
+            <h3 id="new-chaos-studio-features">New Chaos Studio Features</h3>
+            <div>
+              <Admonition type="info" title="New Chaos Studio Features">
+              <p>
+                Harness Chaos Engineering now offers an enhanced <strong>New Chaos Studio</strong> experience with advanced capabilities and enhanced UX. The studio version you see depends on your onboarding date:
+              </p>
+              <ul>
+                <li><strong>New Chaos Studio</strong>: Available for customers onboarded on or after August 21, 2025</li>
+                <li><strong>Old Chaos Studio</strong>: Available for customers onboarded before August 21, 2025</li>
+              </ul>
+              <h4>New Chaos Studio Features</h4>
+              <p>The New Chaos Studio includes these enhanced capabilities:</p>
+              <ul>
+                <li><strong><Link href="/docs/chaos-engineering/guides/actions/">Actions</Link></strong>: Execute custom operations, delays, and scripts during experiments</li>
+                <li><strong><Link href="/docs/chaos-engineering/guides/templates/">Templates</Link></strong>: Reusable fault, probe, and action templates for standardized chaos engineering</li>
+                <li><strong><Link href="/docs/chaos-engineering/guides/chaoshubs/chaos-hub-scopes">Chaos Hubs Across Different Scopes</Link></strong>: Enhanced chaos hub management with flexible scoping options</li>
+                <li><strong><Link href="/docs/chaos-engineering/guides/probes/experiment-level-probes/">Experiment Level Probes</Link></strong>: Advanced probing capabilities at the experiment level</li>
+                <li><strong><Link href="/docs/category/custom-faults">Custom Faults</Link></strong>: Create and manage custom fault definitions for specific use cases</li>
+                <li><strong><Link href="/docs/chaos-engineering/guides/chaos-experiments/fault-template">Runtime Variable Support</Link></strong>: Dynamic variable handling during experiment execution</li>
+                <li><strong><Link href="/docs/chaos-engineering/guides/chaos-experiments/timeline-view-experiments">Timeline View</Link></strong>: Visual timeline representation of experiment execution and results</li>
+              </ul>
+              <p>
+                If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
+              </p>
+            </Admonition>
             </div>
           </div>
         </div>

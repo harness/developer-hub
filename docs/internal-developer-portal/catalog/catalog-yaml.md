@@ -299,6 +299,12 @@ The `owner` field indicates the owner of that entity and maps to Harness Users o
 
 While `owner` is not mandatory, it is **strongly recommended** to associate entities with logical owning teams.
 
+:::important
+**Important Note on Owner Field and Permissions**
+
+The `owner` field is only for indicating team ownership and organizational responsibility. It **does not** control catalog entity permissions or determine who can edit components. Actual access permissions are governed by platform-level RBAC (Role-Based Access Control), meaning users with the appropriate roles can edit entities regardless of this field's value.
+:::
+
 - At **Project scope**: any User/User Group from Project, Org, or Account can be assigned.  
 - At **Org scope**: assign Users/User Groups from Org or Account.  
 - At **Account scope**: assign from Account-level only.
