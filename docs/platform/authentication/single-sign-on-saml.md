@@ -42,7 +42,7 @@ For implementation details and further guidance on provisioning users with SCIM,
 
 If you provision users and groups via SCIM API, use the following settings for your SAML integration.
 
-- **SCIM connector base URL:** `https://app.harness.io/gateway/ng/api/scim/account/<YOUR_ACCOUNT_ID`. enter the appropriate URL for your cluster:
+- **SCIM connector base URL:** `https://app.harness.io/gateway/ng/api/scim/account/[YOUR_ACCOUNT_ID]`. enter the appropriate URL for your cluster:
 
 <SCIMurl />
 
