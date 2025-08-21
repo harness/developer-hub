@@ -77,7 +77,7 @@ disableCatalogSync: true
 ## Layout
 
 :::important Component Update
-In the [latest release](/release-notes/internal-developer-portal#breaking-change-dx-plugin--visualization-components-consolidated), all the individual component cards (EntityChangeFailureRateCard, EntityDeploymentFrequencyCard, EntityDORAMetricsContent, EntityDXDashboardContent, EntityLeadTimeCard, EntityOpenToDeployCard, EntityTimeToRecoveryCard, EntityTopContributorsTable) have been **replaced** by the more versatile `DxDataChart` component that now covers all this functionality.
+In the [latest update](/release-notes/internal-developer-portal#breaking-change-dx-plugin--visualization-components-consolidated) of this plugin, all the individual component cards (EntityChangeFailureRateCard, EntityDeploymentFrequencyCard, EntityDORAMetricsContent, EntityDXDashboardContent, EntityLeadTimeCard, EntityOpenToDeployCard, EntityTimeToRecoveryCard, EntityTopContributorsTable) have been **replaced** by the more versatile `DxDataChart` component that now covers all this functionality.
 :::
 
 The following configuration is the current recommended layout for this plugin:
