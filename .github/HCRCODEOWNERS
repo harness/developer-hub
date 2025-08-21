@@ -105,10 +105,10 @@ static/  @rohan.maharjan@harness.io @wei.guo@harness.io
 /src/components/Docs/ContinuousErrorTracking.tsx @M-Tsur
 
 # SRM Docs
-/docs/service-reliability-management/ @sunilgupta-harness @umamukkara @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
-/release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
-/src/components/Roadmap/data/srmData.ts @sunilgupta-harness @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
-/src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
+/docs/service-reliability-management/ @sunilgupta-harness @umamukkara @M-Tsur @vasundhara.shukla@harness.io @ryan.taylor@harness.io @tina.huang@harness.io
+/release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara @M-Tsur @vasundhara.shukla@harness.io @ryan.taylor@harness.io @tina.huang@harness.io
+/src/components/Roadmap/data/srmData.ts @sunilgupta-harness @M-Tsur @vasundhara.shukla@harness.io @ryan.taylor@harness.io @tina.huang@harness.io
+/src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur @vasundhara.shukla@harness.io @ryan.taylor@harness.io @tina.huang@harness.io
 
 # Chaos Docs
 /docs/chaos-engineering/ @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
@@ -200,8 +200,8 @@ static/  @rohan.maharjan@harness.io @wei.guo@harness.io
 /src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness
 
 # AI SRE Docs
-/docs/ai-sre/ @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
-/release-notes/ai-sre.md @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
+/docs/ai-sre/ @ryan.taylor@harness.io @tina.huang@harness.io @vasundhara.shukla@harness.io
+/release-notes/ai-sre.md @ryan.taylor@harness.io @tina.huang@harness.io @vasundhara.shukla@harness.io
 
 # AI QA Assistant Docs
 /docs/ai-qa-assistant/ 
