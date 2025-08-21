@@ -50,7 +50,7 @@ For general use cases to reduce unnecessary complexity and to optimize performan
 
 Some reusable options can be to:
 - Create reusable pipelines and set them as default pipelines to trigger quickly from any workspace within a project.
-- Use [pipeline variables](https://developer.harness.io/docs/infra-as-code-management/manage-projects/connectors-variables) to ensure consistency.
+- Use [pipeline variables](/docs/infra-as-code-management/manage-projects/connectors-variables) to ensure consistency.
 - Use built-in plugins such as [drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection), [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation) and [IaCM Approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step).
 - Utilize [built-in OPA policies](/docs/infra-as-code-management/policies-governance/terraform-plan-cost-policy) to add protection and ensure your pipelines warn or fail if certain conditions are not met, e.g. if your total monthly infrastructure costs exceed a specified amount.
 <!-- placeholder for module registry -->
@@ -72,9 +72,9 @@ Be aware of the following when working with IaCM:
 - **Delegate version requirements:** Certain features (such as module registry sync) may fail silently if your delegate is outdated. Always confirm you are running the latest delegate version to ensure support for new capabilities.  
 
 ## Security
-- **Access Controls:** [Role-based access control (RBAC)](docs/platform/role-based-access-control/rbac-in-harness/) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
-- **Secret Management:** Go to the [secret management page](docs/category/secrets-management) to see all supported secret management option available in the Harness Platform and determine what option is best suited for your needs. As mentioned above, Harness offer integration with multiple secret management options but recommend [Harness secret manager](docs/platform/secrets/secrets-management/harness-secret-manager-overview/) to help offer optimal performance.
-- **OPA Policies:** Use [OPA policies](docs/platform/governance/policy-as-code/harness-governance-overview/) to implement governance and trigger pipeline warnings or failures when policy conditions are not met. 
+- **Access Controls:** [Role-based access control (RBAC)](/docs/platform/role-based-access-control/rbac-in-harness/) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
+- **Secret Management:** Go to the [secret management page](/docs/category/secrets-management) to see all supported secret management option available in the Harness Platform and determine what option is best suited for your needs. As mentioned above, Harness offer integration with multiple secret management options but recommend [Harness secret manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) to help offer optimal performance.
+- **OPA Policies:** Use [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview/) to implement governance and trigger pipeline warnings or failures when policy conditions are not met. 
 
 ### State Management
 - **Remote State Storage:** Use remote state backends like AWS S3, GCP Cloud Storage, or Azure Blob Storage for reliable and scalable state management. Ensure state files are stored securely and versioned to prevent accidental data loss or corruption. Go to [OpenTofu backend configuration](https://opentofu.org/docs/language/settings/backends/configuration/) for more information.
