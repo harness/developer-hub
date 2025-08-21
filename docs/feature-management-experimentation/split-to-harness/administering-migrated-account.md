@@ -54,17 +54,17 @@ Here’s how Harness users work with RBAC:
 
 Users can have role bindings that each assign a role (a set of permissions) over a resource group. Users can be created at the Harness account, organization, or project level.
 
-When a user is created at the project level (in Project settings), this user is automatically added to the Harness built-in **All Organization Users** and **All Account Users** user groups in the parent organization and account.
+When a user is created at the project level (in **Project Settings**), this user is automatically added to the Harness built-in **All Organization Users** and **All Account Users** user groups in the parent organization and account.
 
-Likewise, a user created at the organization level (in **Organization settings**), is automatically added to the **All Account Users** user group in the parent account.
+Likewise, a user created at the organization level (in **Organization Settings**), is automatically added to the **All Account Users** user group in the parent account.
 
 ### View your users
 
-You can view your new Harness users (that correspond to your legacy Split users) in your Harness account settings (in the left navigation panel, click **Account settings**, click **Access Control** at the top of the page, and click the **Users** tile).
+You can view your new Harness users (that correspond to your legacy Split users) in your Harness account settings (in the left navigation panel, click **Account Settings**, click **Access Control** at the top of the page, and click the **Users** tile).
 
 ![](./static/account-settings.png)
 
-The same users were also added at the organization level, and can be seen in your Harness organization settings (in the left navigation panel, click **Organization settings**, click **Access Control** at the top of the page, and click the **Users** tile).
+The same users were also added at the organization level, and can be seen in your Harness organization settings (in the left navigation panel, click **Organization Settings**, click **Access Control** at the top of the page, and click the **Users** tile).
 
 ![](./static/org-settings.png)
 
@@ -92,7 +92,7 @@ To add a user to Harness that will have access to your (unrestricted) migrated F
 
 1. Begin adding the user at the Harness account level:
 
-   - In the left navigation panel, click **Account settings**, click **Access Control** at the top of the page, and click the **Users** tile.
+   - In the left navigation panel, click **Account Settings**, click **Access Control** at the top of the page, and click the **Users** tile.
    - Click **+ New User** to begin adding a new user.
    - Type the user email in the **Users (name or email)** textbox, and select **+ email you just typed** that appears below the textbox. (You can add multiple users at once by entering multiple email addresses.)
 1. Apply permissions to the user by adding the user to a user group:
@@ -155,7 +155,7 @@ The total expanse of a user's permissions and access is the **sum** of all the r
 
 ### View your user groups
 
-You can view legacy Split groups that were migrated to Harness in your Harness organization settings. In the left navigation panel, click **Organization settings**, click **Access Control** at the top of the page, and click the **User Groups** tile.
+You can view legacy Split groups that were migrated to Harness in your Harness organization settings. In the left navigation panel, click **Organization Settings**, click **Access Control** at the top of the page, and click the **User Groups** tile.
 
 The screenshot below shows a Harness user group that was created for a legacy Split group. This group is created and managed (meaning users can be added) at the organization level. Role bindings are created for this group (for specific projects) at the project level.
 
@@ -442,7 +442,7 @@ This association between your legacy Split Admin API keys and service accounts i
 :::tip To find which Harness service account is linked with a legacy Split Admin API key:
 You can look for the service account name that matches the name of your legacy Split Admin API key. This service account is internally linked to your Admin API key, and the role bindings of this service account are applied to your Admin API key.
 
-In the left navigation panel, click **Account settings** or **Organization settings**, and click the **Service accounts** tile. The name of the linked service account is the same as the name of your legacy Split Admin API key, with spaces removed.
+In the left navigation panel, click **Account Settings** or **Organization Settings**, and click the **Service accounts** tile. The name of the linked service account is the same as the name of your legacy Split Admin API key, with spaces removed.
 :::
 
 Here’s how Harness service accounts work:
@@ -455,15 +455,15 @@ Service accounts hold API keys. API keys hold tokens. Service accounts have role
 
 The service accounts were created at the Harness account scope (if no Harness account existed before the migration) or Harness organization scope (if you already had an existing Harness account that your legacy Split objects were merged into).
 
-To view service accounts in your Harness account settings, in the left navigation panel, click **Account settings**, click **Access Control** at the top of the page, and click the **Service accounts** tile. You will see all the service accounts and account-level role bindings.
+To view service accounts in your Harness account settings, in the left navigation panel, click **Account Settings**, click **Access Control** at the top of the page, and click the **Service accounts** tile. You will see all the service accounts and account-level role bindings.
 
 ![](./static/account-settings-service.png)
 
-You can also view service accounts in your Harness organization settings (in the left navigation panel, click **Organization settings**, click **Access Control** at the top of the page, and click the **Service accounts** tile). You will see the service accounts with organization-level role bindings.
+You can also view service accounts in your Harness organization settings (in the left navigation panel, click **Organization Settings**, click **Access Control** at the top of the page, and click the **Service accounts** tile). You will see the service accounts with organization-level role bindings.
 
 ![](./static/org-settings-service.png)
 
-To view service accounts in your Harness project settings, click **Project settings**, click **Access Control** at the top of the page, and click the **Service accounts** tile. You will see the service accounts with project-level role bindings.
+To view service accounts in your Harness project settings, click **Project Settings**, click **Access Control** at the top of the page, and click the **Service accounts** tile. You will see the service accounts with project-level role bindings.
 
 ![](./static/project-settings-service.png)
 
@@ -483,7 +483,7 @@ To create an Admin API key with the same permissions as your legacy Split Admin 
 
 To create an Admin API key with the same permissions as your legacy Split Admin API key in your Harness account:
 
-1. In the left navigation panel, click **Account settings** (or **Organization settings**, if you had a pre-existing Harness account before migration).
+1. In the left navigation panel, click **Account Settings** (or **Organization Settings**, if you had a pre-existing Harness account before migration).
 1. Click the **Access control** button at the top of the page.
 1. Click the **Service accounts** tile.
 1. Click on the service account that corresponds to your pre-migration Admin API key.
@@ -517,7 +517,7 @@ The **All Resources Including Child Scopes** is not recommended because it would
 To create an Admin API key scoped to all projects in your Harness account:
 
 1. At the account level, create the service account and assign roles:
-   - In the left navigation panel, click **Account settings**.
+   - In the left navigation panel, click **Account Settings**.
    - Click the **Access control** button at the top of the page.
    - Click the **Service accounts** tile.
    - Click the **+ New Service Account** button at the top of the page.
@@ -529,7 +529,7 @@ To create an Admin API key scoped to all projects in your Harness account:
 
 1. At the organization level, inherit the service account and assign roles:
    - In the left navigation panel, select the organization [where your Split legacy projects were migrated](#projects) (or where your FME objects are defined or will be defined).
-   - Click **Organization settings**.
+   - Click **Organization Settings**.
    - Click the **Access control** button at the top of the page.
    - Click the **Service accounts** tile.
    - Click the **Inherit Service Accounts and Assign Roles** button at the top of the page.
@@ -541,7 +541,7 @@ To create an Admin API key scoped to all projects in your Harness account:
 
 1. For each project: At the project level, inherit the service account and assign roles:
    - In the left navigation panel, select the project.
-   - Click **Project settings**.
+   - Click **Project Settings**.
    - Click the **Access control** button at the top of the page.
    - Click the **Service accounts** tile.
    - Click the **Inherit Service Accounts and Assign Roles** button at the top of the page.
@@ -552,7 +552,7 @@ To create an Admin API key scoped to all projects in your Harness account:
    - Click **Apply**. The service account and role binding is listed.
    
 1. Create the API key and token at the account level:
-   - In the left navigation panel, click **Account settings**.
+   - In the left navigation panel, click **Account Settings**.
    - Click the **Access control** button at the top of the page.
    - Click the **Service accounts** tile.
    - Click on the service account created in Step 1.
@@ -578,7 +578,7 @@ To create an Admin API key scoped to a specific project in your Harness account:
 
 1. At the account level, create the service account and assign roles:
    
-   - In the left navigation panel, click **Account settings**.
+   - In the left navigation panel, click **Account Settings**.
    - Click the **Access control** button at the top of the page.
    - Click the **Service accounts** tile.
    - Click the **+ New Service Account** button at the top of the page.
@@ -590,7 +590,7 @@ To create an Admin API key scoped to a specific project in your Harness account:
 
 1. At the project level, inherit the service account and assign roles:
    - In the left navigation panel, select the project.
-   - Click **Project settings**.
+   - Click **Project Settings**.
    - Click the **Access control** button at the top of the page.
    - Click the **Service accounts** tile.
    - Click the **Inherit Service Accounts and Assign Roles** button at the top of the page.
@@ -601,7 +601,7 @@ To create an Admin API key scoped to a specific project in your Harness account:
    - Click **Apply**. The service account and role binding is listed.
 
 1. Create the API key and token at the account level:
-   - In the left navigation panel, click **Account settings**.
+   - In the left navigation panel, click **Account Settings**.
    - Click the **Access control** button at the top of the page.
    - Click the **Service accounts** tile.
    - Click on the service account created in Step 1.
@@ -663,7 +663,7 @@ To create an SDK API key in your Harness account:
 
 1. In the left navigation panel, click the Grid icon and click **Feature Management & Experimentation**.
 1. Click **FME Settings**.
-1. Click **Projects** under **Project settings**.
+1. Click **Projects** under **Project Settings**.
 1. Find the row listing the project to which you’d like to scope the SDK API key and click **View** in the **Actions** column.
 1. Click the **Actions** button at the top right, and select **Create SDK API key**.
 1. Enter a name, select the type, and select the environment for the SDK API key.
@@ -676,7 +676,7 @@ To revoke an SDK API key in your Harness account:
 
 1. In the left navigation panel, click the Grid icon and click **Feature Management & Experimentation**.
 1. Click **FME Settings**.
-1. Click **Projects** under **Project settings**.
+1. Click **Projects** under **Project Settings**.
 1. Find the row listing the project for which you’d like to delete the SDK API key and click **View** in the **Actions** column.
 1. Select the **SDK API Keys** tab.
 1. Find the row listing the SDK API key that you’d like to delete and click **Revoke** in the **Actions** column.
@@ -688,7 +688,7 @@ To clone an SDK API key in your Harness account:
 
 1. In the left navigation panel, click the Grid icon and click **Feature Management & Experimentation**.
 1. Click **FME Settings**.
-1. Click **Projects** under **Project settings**.
+1. Click **Projects** under **Project Settings**.
 1. Find the row listing the project for which you’d like to clone the SDK API key and click **View** in the **Actions** column.
 1. Select the **SDK API Keys** tab.
 1. Find the row listing the SDK API key that you’d like to clone and click **Clone** in the **Actions** column.
@@ -728,7 +728,7 @@ To create a new project in Harness:
 
 A new project in Harness will be restricted.
 
-Until you grant access to your project using **Access Control** in your **Project settings**, your project will be restricted to you (the project creator). Only you will be able to view or edit the project in Harness (and in Harness FME).
+Until you grant access to your project using **Access Control** in your **Project Settings**, your project will be restricted to you (the project creator). Only you will be able to view or edit the project in Harness (and in Harness FME).
 
 ![](./static/project-setings-access.png)
 
@@ -855,9 +855,9 @@ An organization is a Harness entity that fits into the Harness structure as show
 
 The migration script created Harness projects that correspond to legacy Split projects. These Harness projects are created in the **default** organization (on the Free plan) or in an organization named <strong> *legacy Split account name* FME</strong> (on the Enterprise plan).
 
-#### What are Harness environments (resources) shown in Harness Project, Organization, or Account settings?
+#### What are Harness environments (resources) shown in Harness Project, Organization, or Account Settings?
 
-There is a Harness platform resource type called [environments](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/) found in Harness **Project settings**, **Organization settings**, and **Account settings** as well as on the project **Overview** page (shown below in Harness unified view).
+There is a Harness platform resource type called [environments](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/) found in Harness **Project Settings**, **Organization Settings**, and **Account Settings** as well as on the project **Overview** page (shown below in Harness unified view).
 
 ![](./static/harness-envs.png)
 
@@ -939,7 +939,7 @@ Contact support@split.io and provide us with the workspace ID of your orphaned F
 
 Check if the corresponding service account exists in Harness:
 
-1. In the left navigation panel, click **Account settings**.
+1. In the left navigation panel, click **Account Settings**.
 1. Click the **Access control** button at the top of the page.
 1. Click the **Service accounts** tile.
 1. Look for a service account that matches the name of your legacy Split Admin API key (with spaces removed).
