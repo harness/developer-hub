@@ -68,7 +68,7 @@ The same users were also added at the organization level, and can be seen in you
 
 ![](./static/org-settings.png)
 
-The users do not appear in the project-level Users lists (except for pre-migration restricted projects where users were individually granted access). Instead, users were added to user groups and it is these user groups that can be viewed in project settings.
+The users do not appear in the project-level Users lists (except for pre-migration restricted projects where users were individually granted access). Instead, users were added to user groups and it is these user groups that can be viewed in **Project Settings**.
 
 No role bindings were added to your individual Harness users at the account or organization levels. Instead, role bindings were added to user groups. For more details, go to the [User Groups](#user-groups) section.
 
@@ -157,7 +157,7 @@ The total expanse of a user's permissions and access is the **sum** of all the r
 
 You can view legacy Split groups that were migrated to Harness in your Harness organization settings. In the left navigation panel, click **Organization settings**, click **Access Control** at the top of the page, and click the **User Groups** tile.
 
-The screenshot below shows a Harness user group that was created for a legacy Split group. This group is created and managed (meaning users can be added) at the account level (when Split is migrated into a new Harness account) or organization level (when Split is migrated into an existing Harness account). Role bindings are created for this group (for specific projects) at the project level.
+The screenshot below shows a Harness user group that was created for a legacy Split group. This group is created and managed (meaning users can be added) at the organization level. Role bindings are created for this group (for specific projects) at the project level.
 
 ![](./static/org-settings-user-group.png)
 
@@ -173,15 +173,15 @@ When your account was migrated to Harness, the migration script created new Harn
 | Editors <br /> <span style={{fontFamily: 'Courier New'}}>Legacy Split role</span> | All FME Editors | Harness account |  Organization Viewer + All Organization Level Resources |
 | Viewers <br /> <span style={{fontFamily: 'Courier New'}}>Legacy Split role</span> | All FME Viewers | Harness account |  Organization Viewer + All Organization Level Resources |
 
-These FME user groups were created at the Harness account scope. The FME user groups for a new Harness account (no Harness account existed before migration) is shown in the screenshot below.
+The FME user groups were created at the Harness account scope (as shown in the screenshot below), and they are inherited at the organization scope and project scope.
 
 ![](./static/account-settings-user-group.png)
 
 :::info[Where are Role bindings assigned?]
 Role bindings are assigned at the scope where they apply. For example:
-  * The role binding **Account Admin + All Resources Including Child Scopes** is assigned in Account settings.
-  * The role binding **Organization Viewer + All Organization Level Resources** is assigned in Organization settings.
-  * Project-scoped role bindings are assigned in Project settings.
+  * The role binding **Account Admin + All Resources Including Child Scopes** is assigned in Account Settings.
+  * The role binding **Organization Viewer + All Organization Level Resources** is assigned in Organization Settings.
+  * Project-scoped role bindings are assigned in Project Settings.
 :::
 
 #### Role bindings at the project level
