@@ -157,6 +157,7 @@ Reports can send a cost report to specified users at the specified frequency. Yo
    * **Send Report To**: Enter an email ID of the recipients. Email IDs are separated by a comma. Up to 50 email IDs can be added for sharing the report schedule
 3. Click **Save**.
 
+
 ### Anomaly Alerts
 
 You can also set up alerts for all anomalies in the current perspective. The scope of the alerts set via this option will be for the current perspective, i.e., the alerts will be set only for anomalies detected on the current perspective data.
