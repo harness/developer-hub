@@ -1,7 +1,7 @@
 ---
 title: Release Notes
 description: Release notes for Cluster Orchestrator
-sidebar_position: 1
+sidebar_position: 9
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
