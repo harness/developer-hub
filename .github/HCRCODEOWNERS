@@ -7,10 +7,10 @@
 *       prateek.mittal@harness.io wei.guo@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io
 
 # Configuration Files in DS are JS.
-*.js    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io
-*.ts    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io
-*.jsx    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io
-*.tsx    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io
+*.js    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io austin.lai@harness.io
+*.ts    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io austin.lai@harness.io
+*.jsx    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io austin.lai@harness.io
+*.tsx    wei.guo@harness.io rohan.maharjan@harness.io vikram.sahu@harness.io sushrut.athavale@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Changes to Lock File
 *.lock  wei.guo@harness.io
@@ -169,23 +169,23 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Docs/data/iacmData.ts richard.black@harness.io richard.craig@harness.io roger.simms@harness.io nasser.gonzalez@harness.io rohit.reddy@harness.io
 
 # FF Classic Docs
-/docs/feature-flags/ @alai97 @animcdowell @laura-mannus @jcox250
-/docs/faqs/harness-feature-flag-faqs/ @alai97 @animcdowell @jcox250
-/release-notes/feature-flags.md @alai97 @animcdowell @jcox250
-/src/components/Roadmap/data/ffData.ts @alai97 @animcdowell
-/src/components/Docs/data/featureFlagsData.ts @alai97 @animcdowell
+/docs/feature-flags/ austin.lai@harness.io david.karow@harness.io conor.murray@harness.io james.cox@harness.io
+/docs/faqs/harness-feature-flag-faqs/ austin.lai@harness.io david.karow@harness.io james.cox@harness.io
+/release-notes/feature-flags.md austin.lai@harness.io david.karow@harness.io conor.murray@harness.io james.cox@harness.io
+/src/components/Roadmap/data/ffData.ts austin.lai@harness.io david.karow@harness.io
+/src/components/Docs/data/featureFlagsData.ts austin.lai@harness.io david.karow@harness.io
 
 # FME Docs
-/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john
-/docs/feature-management-experimentation/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @sanzmauro @dtk-DaveKarow 
-/release-notes/feature-management-experimentation.md @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
-/release-notes/static/fme/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
+/src/components/Roadmap/data/fmeData.ts austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io johannes.liegl@harness.io 
+/docs/feature-management-experimentation/ austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io johannes.liegl@harness.io mauro.sanz@harness.io
+/release-notes/feature-management-experimentation.md austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io johannes.liegl@harness.io  
+/release-notes/static/fme/ austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io johannes.liegl@harness.io 
 
 # SEI Docs
-/docs/software-engineering-insights/ @alai97 @codewdhruv @batraprashant @santoshdodamani
-/release-notes/software-engineering-insights.md @alai97 @codewdhruv @batraprashant @santoshdodamani
-/src/components/Roadmap/data/seiData.ts @alai97 @codewdhruv @batraprashant @santoshdodamani
-/src/components/Docs/data/softwareEngineeringInsightsData.ts @alai97 @codewdhruv @batraprashant @santoshdodamani
+/docs/software-engineering-insights/ austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
+/release-notes/software-engineering-insights.md austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
+/src/components/Roadmap/data/seiData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
+/src/components/Docs/data/softwareEngineeringInsightsData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
 
 # DB DevOps Docs
 /docs/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
