@@ -41,7 +41,7 @@ Perspectives in Harness CCM provide powerful cost analysis capabilities through 
   <p style={{margin: 0}}>
     <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behind a Feature Flag</strong>
 
-    Currently, this early access feature is behind a feature flag . Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+    Currently, this early access feature is behind a feature flag . Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
   </p>
 </div>
 
@@ -52,18 +52,21 @@ Dynamic Perspective Reports are a new capability that allows you to generate, sc
 <Tabs>
 <TabItem value="create-report" label="Create Reports">
 
+
+<DocVideo src="https://app.tango.us/app/embed/9d694765-9542-47a8-a2fd-a23a2c01e2ca" style="min-height:720px" title="Perspective Overview in Harness CCM" />
+
 1. Navigate to the specific Perspective you wish to create a report for.
 2. Click the **Download/Save as Report** button in the upper-right corner of the Perspective view
 
 **Report Details** 
-  - **Name**: Provide a descriptive name for your report |
-  - **Group By**: Select how data should be organized using [available grouping options](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#grouping-options-by-data-source) |
-  - **Time Period**: Choose from Last 7 Days, Last 30 Days, Last Month, or This Month |
-  - **Granularity**: Select Daily, Weekly, or Monthly data points |
-  - **Filters**: Apply specific [filters](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#group-by) to focus your report |
-  - **Data Columns**: Customize which metrics and dimensions appear in your report. The system automatically suggests relevant columns based on your Group By selection, but you can add or remove specific data points to tailor the report to your requirements. |
-  - **Export Rows up to**: Set maximum number of data rows to include |
-  - **Exclude rows with cost below**: Optionally exclude rows below a specified cost value |
+  - **Name**: Provide a name for your report 
+  - **Group By**: Select how data should be organized using [available grouping options](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#grouping-options-by-data-source) 
+  - **Time Period**: Choose from Last 7 Days, Last 30 Days, Last Month, or This Month 
+  - **Granularity**: Select Daily, Weekly, or Monthly data points 
+  - **Filters**: Apply specific [filters](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#group-by) to focus your report 
+  - **Data Columns**: Customize which metrics and dimensions appear in your report. The system automatically suggests relevant columns based on your Group By selection, but you can add or remove specific data points to tailor the report to your requirements. 
+  - **Export Rows up to**: Set maximum number of data rows to include 
+  - **Exclude rows with cost below**: Optionally exclude rows below a specified cost value
 
 **Delivery Options:**
   - **Scheduled Delivery:** Set specific date and time for automated delivery and frequency (Daily, Weekly, Monthly, Quarterly, Yearly). You can add up to 50 recipient email addresses (comma-separated)
@@ -71,16 +74,20 @@ Dynamic Perspective Reports are a new capability that allows you to generate, sc
 
 :::important 
 
-**Legacy Report Handling**: For previously created reports where Group By settings, time range, or granularity were not explicitly specified, the system automatically inherits these parameters from the source perspective configuration. In these cases, the maximum export row limit defaults to 10,000 rows.
+-  When the Dynamic Perspective Reports feature flag is enabled for your account, CCM will disable the legacy report creation method from the Perspective Creation workflow.
+
+<DocImage  path={require('./static/enabled-ff.png')} width="80%" height="80%" title="Click to view full size image" />
+
+- For previously created reports where **Group By settings, time range, or granularity were not available for reports,CCM utomatically takes these parameters from the perspective. In these cases, the maximum export row limit defaults to 10,000 rows.
 
 :::
 
 </TabItem>
 <TabItem value="view-report" label="View Saved Reports">
 
-To view and manage all your saved reports:
+<DocImage  path={require('./static/saved-reports.png')} width="100%" height="100%" title="Click to view full size image" />
 
-1. Navigate to **Cloud Costs** > **Perspectives** > **Saved Reports**
+To view and manage all your saved reports: Navigate to **Cloud Costs** > **Perspectives** > **Saved Reports**
 
 The Saved Reports page provides a comprehensive view of all your configured reports with the following options:
 

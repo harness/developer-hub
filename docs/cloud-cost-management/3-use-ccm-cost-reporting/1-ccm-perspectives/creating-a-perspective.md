@@ -158,6 +158,14 @@ Reports can send a cost report to specified users at the specified frequency. Yo
 3. Click **Save**.
 
 
+:::important 
+
+-  If the [Dynamic Perspective Reports](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-perspective-reports) feature is enabled for your account, CCM will disable the legacy report creation method from the Perspective Creation workflow.
+
+<DocImage  path={require('./static/enabled-ff.png')} width="80%" height="80%" title="Click to view full size image" />
+
+:::
+
 ### Anomaly Alerts
 
 You can also set up alerts for all anomalies in the current perspective. The scope of the alerts set via this option will be for the current perspective, i.e., the alerts will be set only for anomalies detected on the current perspective data.
