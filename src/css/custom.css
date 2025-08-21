@@ -1638,3 +1638,59 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 .sidebar-hidden {
   display: none !important;
 }
+
+/* ============ Reusable NEW Badge System ============ */
+/*
+ * HOW TO USE:
+ * Add `className: "sidebar-item-new"` to any sidebar item in sidebars.ts
+ * to automatically show a blue NEW badge with pulse animation.
+ * 
+ * Example:
+ * {
+ *   type: "category",
+ *   label: "Your Feature Name",
+ *   className: "sidebar-item-new",  // <-- Add this line
+ *   // ... rest of your config
+ * }
+ */
+/* Target only the main category link, not nested sub-items */
+.sidebar-item-new > .menu__list-item-collapsible > .menu__link {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.sidebar-item-new > .menu__list-item-collapsible > .menu__link::after {
+  content: "NEW";
+  background: linear-gradient(135deg, #0278d5, #00ade4);
+  color: white;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: auto;
+  box-shadow: 0 2px 4px rgba(2, 120, 213, 0.3);
+  animation: newBadgePulse 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* Subtle pulse animation for NEW badge */
+@keyframes newBadgePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+}
+
+/* Dark mode support */
+[data-theme='dark'] .sidebar-item-new > .menu__list-item-collapsible > .menu__link::after {
+  background: linear-gradient(135deg, #3dc7f6, #00ade4);
+  box-shadow: 0 2px 4px rgba(61, 199, 246, 0.4);
+}
