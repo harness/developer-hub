@@ -75,51 +75,43 @@ disableCatalogSync: true
 ```
 
 ## Layout
-The following configuration is the default config for **Layout** for this plugin: 
+
+:::important Component Update
+In the [latest release](/release-notes/internal-developer-portal#breaking-change-dx-plugin--visualization-components-consolidated), all the individual component cards (EntityChangeFailureRateCard, EntityDeploymentFrequencyCard, EntityDORAMetricsContent, EntityDXDashboardContent, EntityLeadTimeCard, EntityOpenToDeployCard, EntityTimeToRecoveryCard, EntityTopContributorsTable) have been **replaced** by the more versatile `DxDataChart` component that now covers all this functionality.
+:::
+
+The following configuration is the current recommended layout for this plugin:
+
 ```YAML
-       - component: EntityDORAMetricsContent
+       - component: DxDataChart
           specs:
             props:
               variant: gridItem
               item: 400
             gridProps:
               md: 6
-        - component: EntityDXDashboardContent
+        - component: EntityScorecardsCard
           specs:
             props:
               variant: gridItem
               item: 400
             gridProps:
               md: 6
-        - component: EntityChangeFailureRateCard
+        - component: EntityTasksCard
           specs:
             props:
               variant: gridItem
               item: 400
             gridProps:
               md: 6
-        - component: EntityDeploymentFrequencyCard
+        - component: EntityScorecardsPage
           specs:
             props:
               variant: gridItem
               item: 400
             gridProps:
               md: 6
-        - component: EntityOpenToDeployCard
-          specs:
-            props:
-              variant: gridItem
-              item: 400
-            gridProps:
-              md: 6
-        - component: EntityTimeToRecoveryCard
-          specs:
-            props:
-              variant: gridItem
-              item: 400
-            gridProps:
-              md: 6
-        - component: EntityTopContributorsTable
+        - component: EntityTasksPage
           specs:
             props:
               variant: gridItem
