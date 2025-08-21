@@ -1,0 +1,233 @@
+# HDH Codeowners file.
+# Created October 2023 - https://harness.atlassian.net/browse/HDH-189
+# Applies to Repository Structure, not URL per-se.
+# Learn more at: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global Owners of the HDH Repository
+*       @prateek.mittal@harness.io @wei.guo@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+
+# Configuration Files in DS are JS.
+*.js    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+*.ts    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+*.jsx    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+*.tsx    @wei.guo@harness.io @rohan.maharjan@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+
+# Changes to Lock File
+*.lock  @wei.guo@harness.io
+
+# Changes to Config Files
+*.ini  @wei.guo@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+*.json  @wei.guo@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+*.toml  @wei.guo@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+*ignore @wei.guo@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+/_server-redirect @wei.guo@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+
+# Changes to Netlify Files
+/netlify/ @wei.guo@harness.io
+
+# Contributing
+CONTRIBUTING.md @prateek.mittal@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+README.md @prateek.mittal@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+/docs/hdh/ @prateek.mittal@harness.io @vikram.sahu@harness.io @sushrut.athavale@harness.io
+
+# University
+/university/ @ravilach
+/src/components/HomepageUniversity/ @ravilach
+/src/components/University/ @ravilach
+
+# Community
+/community/ @Ompragash @dewan-ahmed
+
+# Redirect Archives
+/archive/  @prateek.mittal@harness.io @wei.guo@harness.io
+
+# Documentation ###
+
+# All Static files (images etc.)
+static/  @rohan.maharjan@harness.io @wei.guo@harness.io
+
+# All Data files - Please add global reviewers who are familiar with js/ts
+# data/*.ts @global-data-file-owners
+
+# Continuous Delivery Docs
+/docs/continuous-delivery/ @sushrut.athavale@harness.io @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit @siddhantdua
+/release-notes/continuous-delivery.md @sushrut.athavale@harness.io @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit @siddhantdua
+/src/components/Roadmap/data/cdData.ts @sushrut.athavale@harness.io @vishal-av @thisrohangupta @SudarshanPurohit @siddhantdua
+/src/components/Docs/data/continuousDeliveryData*  @sushrut.athavale@harness.io @vishal-av @thisrohangupta @SudarshanPurohit @siddhantdua
+# FirstGen CD Docs
+/docs/category/continuous-delivery/ @sushrut.athavale@harness.io @vishal-av @thisrohangupta @siddhantdua
+# CD FAQs
+/docs/faqs/continuous-delivery-faqs @sushrut.athavale@harness.io @vishal-av @SudarshanPurohit @siddhantdua
+# GitEx FAQs
+/docs/faqs/git-exp-vs-config-as-code/ @sushrut.athavale@harness.io @vishal-av @SudarshanPurohit @siddhantdua
+
+
+# Continuous Integration Docs
+/docs/continuous-integration/ @nofarblue @dewan-ahmed @sushrut.athavale@harness.io @shivloka-harness
+/release-notes/continuous-integration.md @nofarblue @dewan-ahmed @sushrut.athavale@harness.io @shivloka-harness
+/src/components/Roadmap/data/ciData.ts @nofarblue @dewan-ahmed @sushrut.athavale@harness.io @shivloka-harness
+/src/components/Docs/data/continuousIntegrationData.ts @nofarblue @dewan-ahmed @sushrut.athavale@harness.io @shivloka-harness
+
+# CODE Docs
+/docs/code-repository/ @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
+/release-notes/code-repository.md @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
+/src/components/Roadmap/data/codeData.ts @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
+/src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed @johannesHarness @nofarblue @atefehmohseni @rkapoor10
+
+# STO Docs
+/docs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
+/release-notes/security-testing-orchestration.md @tejakummarikuntla @priteshchandaliya
+/src/components/Roadmap/data/stoData.ts @tejakummarikuntla  @priteshchandaliya
+/src/components/Docs/data/securityTestingOrchestrationData.ts @tejakummarikuntla @priteshchandaliya
+# STO FAQs
+/docs/faqs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
+
+# CCM Docs
+
+/docs/cloud-cost-management/3-use-ccm-cost-reporting @joeyouss @sdsingh07 @rajarshee-harness @karanshetty53
+/docs/cloud-cost-management/4-use-ccm-cost-optimization @joeyouss @sandyydk @riyasyash @rajarshee-harness @josephdlopez @jyotiarora-harness @shalinlk @karanshetty53
+/docs/cloud-cost-management/5-use-ccm-cost-governance @joeyouss @iamanmolm @rajarshee-harness @josephdlopez @sdsingh07 @karanshetty53
+/docs/cloud-cost-management/ @joeyouss @josephdlopez @karanshetty53 @rajarshee-harness @jyotiarora-harness @richardblack-Harness
+/release-notes/cloud-cost-management.md @joeyouss @rajarshee-harness @josephdlopez  @karanshetty53
+/src/components/Roadmap/data/ccmData.ts @joeyouss @rajarshee-harness @karanshetty53
+/src/components/Docs/data/cloudCostManagementData.ts @joeyouss @rajarshee-harness @karanshetty53
+
+# FirstGen CCM Docs
+/docs/category/cloud-cost-management/ @josephdlopez @joeyouss
+# CCM FAQs
+/docs/faqs/cloud-cost-management-faqs/ @josephdlopez @joeyouss
+
+# CET Docs
+/docs/continuous-error-tracking/ @M-Tsur
+/release-notes/continuous-error-tracking.md @M-Tsur
+/src/components/Docs/data/continuousErrorTrackingData.ts @M-Tsur
+/src/components/Docs/ContinuousErrorTracking.tsx @M-Tsur
+
+# SRM Docs
+/docs/service-reliability-management/ @sunilgupta-harness @umamukkara @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
+/release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
+/src/components/Roadmap/data/srmData.ts @sunilgupta-harness @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
+/src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur @Vasundhara-Shukla @ryantaylor16 @Kmonkeyjam
+
+# Chaos Docs
+/docs/chaos-engineering/ @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
+/release-notes/chaos-engineering.md @Jonsy13 @Ashutosh-Bhadauriya
+/src/components/Roadmap/data/ceData.ts @Ashutosh-Bhadauriya
+/src/components/Docs/data/chaosEngineeringData* @Ashutosh-Bhadauriya
+# Chaos FAQs
+/docs/faqs/chaos-engineering-faqs @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
+/docs/faqs/static @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
+/kb/chaos-engineering/chaos-engineering-faq @ksatchit @umamukkara @Ashutosh-Bhadauriya
+
+# Platform Docs
+/docs/platform/ @prateek.mittal@harness.io @GokulBansal0 @abhishekharness @vikram.sahu@harness.io
+/release-notes/delegate.md @prateek.mittal@harness.io @abhishekharness @anshul-harness @vikram.sahu@harness.io @sushrut.athavale@harness.io
+/release-notes/platform.md @prateek.mittal@harness.io @GokulBansal0 @abhishekharness @vikram.sahu@harness.io
+/release-notes/self-managed-enterprise-edition.md @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io @anshul-harness @raviyadalam 
+/src/components/Roadmap/data/platformData.ts @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+/src/components/Docs/data/platformData.ts @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+# FirtGen Platform Docs
+/docs/category/platform-firstgen/ @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+# FirstGen SMP Docs
+/docs/category/self-managed-enterprise-edition-fg/ @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+/docs/self-managed-enterprise-edition/ @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+# Delegate FAQs
+/docs/faqs/harness-delegate-faqs/ @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+# SMP FAQs
+/docs/faqs/self-managed-ee-faq/ @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+
+# Pipeline Docs
+/docs/platform/pipelines/ @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
+/docs/platform/git-experience/ @vishal-av @prasadsatamharness @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
+/docs/platform/templates/ @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
+/docs/platform/variables-and-expressions/ @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
+/docs/platform/triggers/ @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
+/docs/platform/approvals/ @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
+/docs/platform/connectors/ @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
+
+# AI DevOps Docs
+/docs/platform/harness-aida/ @sushrut.athavale@harness.io @prateek.mittal@harness.io @thisrohangupta @vikram.sahu@harness.io @abhishekharness @vishal-av
+
+# IDP Docs
+/docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/release-notes/internal-developer-portal.md @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/release-notes/static/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/src/components/Roadmap/data/idpData.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
+
+# SCS Docs
+/docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
+/release-notes/software-supply-chain-assurance.md @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
+/src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
+/src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07 @udit910
+
+# IACM Docs
+/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @nassergonzalez @Rohit-Kaliki
+/release-notes/infrastructure-as-code-management.md @RickCraig @richardblack-Harness @Rohit-Kaliki
+/src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
+/src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
+
+# FF Classic Docs
+/docs/feature-flags/ @alai97 @animcdowell @laura-mannus @jcox250
+/docs/faqs/harness-feature-flag-faqs/ @alai97 @animcdowell @jcox250
+/release-notes/feature-flags.md @alai97 @animcdowell @jcox250
+/src/components/Roadmap/data/ffData.ts @alai97 @animcdowell
+/src/components/Docs/data/featureFlagsData.ts @alai97 @animcdowell
+
+# FME Docs
+/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john
+/docs/feature-management-experimentation/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @sanzmauro @dtk-DaveKarow 
+/release-notes/feature-management-experimentation.md @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
+/release-notes/static/fme/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
+
+# SEI Docs
+/docs/software-engineering-insights/ @alai97 @codewdhruv @batraprashant @santoshdodamani
+/release-notes/software-engineering-insights.md @alai97 @codewdhruv @batraprashant @santoshdodamani
+/src/components/Roadmap/data/seiData.ts @alai97 @codewdhruv @batraprashant @santoshdodamani
+/src/components/Docs/data/softwareEngineeringInsightsData.ts @alai97 @codewdhruv @batraprashant @santoshdodamani
+
+# DB DevOps Docs
+/docs/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
+/release-notes/database-devops.md @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
+/src/components/Docs/data/databaseDevOpsData.ts @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
+/src/components/Roadmap/data/dbdevopsData.ts @stephenatwell @archit-harness @sonichigo @rohitk-h @vikram.sahu@harness.io @wei.guo@harness.io
+# DB DevOps FAQs
+/docs/faqs/db-devops-faqs/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
+
+# CDE Docs
+/docs/cloud-development-environments/ @manishas @khushisharmaharness
+/src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness
+
+# AI SRE Docs
+/docs/ai-sre/ @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
+/release-notes/ai-sre.md @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
+
+# AI QA Assistant Docs
+/docs/ai-qa-assistant/ 
+
+# Artifact Registry Docs
+/docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
+/src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
+
+# Open Source Docs
+/docs/open-source/ @dewan-ahmed @sushrut.athavale@harness.io
+/src/components/Docs/data/openSourceData.tsx @dewan-ahmed @sushrut.athavale@harness.io
+
+# Cloud Operations Docs
+/docs/harness-cloud-operations/ @ankit-harness
+
+# Knowledge Base ###
+
+# Overall KB
+/kb/ @deepanshuHarness @jimin-harness
+/src/components/KnowledgeBase/data/ @deepanshuHarness @jimin-harness
+
+#Armory KB
+/kb/armory @jimin-harness @deepanshuHarness
+
+# DB DevOps
+/kb/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h @hemanthbsridhar
+
+#Reference Architectures
+/kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness
