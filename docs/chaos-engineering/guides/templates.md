@@ -4,12 +4,7 @@ sidebar_position: 8
 ---
 
 :::info New Chaos Studio Feature
-**Templates** are part of the enhanced **New Chaos Studio** experience. The studio version you see depends on your onboarding date:
-
-- **New Chaos Studio**: Available for customers onboarded on or after August 24, 2025
-- **Old Chaos Studio**: Available for customers onboarded before August 24, 2025
-
-If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
+**Templates** are part of the enhanced **New Chaos Studio** experience. If you're an existing customer and want access to new features, contact your Harness support representative. For more details, see [New Chaos Studio Features](/docs/chaos-engineering#new-chaos-studio-features).
 :::
 
 

@@ -56,13 +56,16 @@ export default function ChaosEngineering() {
             <p>
               In addition, the Harness platform provides the required enterprise capabilities like RBACs, SSO, logs and auditing making the entire solution scalable and easy to implement.
             </p>
-            <Admonition type="info" title="New Chaos Studio Features">
+            
+            <h3 id="new-chaos-studio-features">New Chaos Studio Features</h3>
+            <div>
+              <Admonition type="info" title="New Chaos Studio Features">
               <p>
-                Harness Chaos Engineering now offers an enhanced <strong>New Chaos Studio</strong> experience with advanced capabilities and enhanced UX. The studio version you see depends on your onboarding date:
+                Harness Chaos now offers an enhanced <strong>New Chaos Studio</strong> experience with advanced capabilities and enhanced UX. The studio version you see depends on your onboarding date:
               </p>
               <ul>
-                <li><strong>New Chaos Studio</strong>: Available for customers onboarded on or after August 24, 2025</li>
-                <li><strong>Old Chaos Studio</strong>: Available for customers onboarded before August 24, 2025</li>
+                <li><strong>New Chaos Studio</strong>: Available for customers onboarded on or after August 21, 2025</li>
+                <li><strong>Old Chaos Studio</strong>: Available for customers onboarded before August 21, 2025</li>
               </ul>
               <h4>New Chaos Studio Features</h4>
               <p>The New Chaos Studio includes these enhanced capabilities:</p>
@@ -79,15 +82,6 @@ export default function ChaosEngineering() {
                 If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
               </p>
             </Admonition>
-            <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === 'light'
-                    ? `${baseUrl}img/ce.svg`
-                    : `${baseUrl}img/CE_Landing_Page_dark_mode.svg`
-                }
-              />{' '}
             </div>
           </div>
         </div>
