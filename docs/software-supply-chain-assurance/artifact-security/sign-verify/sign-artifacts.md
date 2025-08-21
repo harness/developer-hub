@@ -184,14 +184,20 @@ Non-container images can be signed using **Cosign** or **Cosign with Secret Mana
 
 ## View Signed Artifacts
 
-You can easily access the signed artifact details from the Artifacts Overview tab. This section shows the signature and who signed the artifact. Additionally, you can also find the artifact signing as an event in the Chain of Custody, where a new entry is logged every time you sign an artifact.This entry includes a link to the execution results and rekor log entry, allowing you to track the signing activity and cross-check the details.
+You can easily access the signed artifact details from the Artifacts Overview tab. This section shows the signature and who signed the artifact. Additionally, you can also find the artifact signing as an event in the Chain of Custody, where a new entry is logged every time you sign an artifact. This entry includes a link to the execution results and rekor log entry, allowing you to track the signing activity and cross-check the details.
+
+:::note
+
+To view Rekor logs, disable Airgap mode in Default Settings under Supply Chain Security.
+
+:::
 
 <DocImage path={require('./static/artifact-signing-data.png')} width="100%" height="100%" />
 
 
 
 
-:::note
+:::info
 You are allowed to re-sign the same image multiple times, with each new signing overwriting the previous one. The Artifacts Overview tab will always display the most up-to-date signing details, reflecting the latest signature information for the artifact.
 :::
 
