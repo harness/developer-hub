@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-08-18T18:00
+date: 2025-08-22T18:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,27 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+## August 2025 - Version 1.61.1
+#### **Deployment Date:** August 22, 2025 (Prod-1)
+
+### ⭐ [New Feature] Dynamic Perspective Reports
+**[CCM-23836] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-perspective-reports)**
+
+
+<DocImage path={require('./static/output-dynamic.gif')} width="100%" height="100%" title="Click to view full size image" />
+
+CCM is introducing a new capability **Dynamic Perspective Reports**, a powerful way to **generate**, **schedule**, and **manage** cost reports directly from your Perspectives. Create reports from your perspectives to **bookmark specific filter and grouping configurations**. No need to rebuild the same view repeatedly — just save it once and access it anytime.
+
+**Key Highlights**
+
+- **Create Reports from Perspectives** with custom grouping, filters, time periods, and columns.
+- **Flexible Delivery Options**: download instantly or schedule recurring deliveries to up to 50 recipients.
+- **Centralized Management**: access, edit, or delete all saved reports under **Cloud Costs > Perspectives > Saved Reports**.
+- **Email Subscriptions**: subscribe/unsubscribe from scheduled report deliveries anytime.
+
+This feature is rolled out behind a **Feature Flag**. If the flag is enabled for your account, report creation via the Perspective creation flow will be disabled.
+
 
 ## August 2025 - Version 1.60.1
 #### **Deployment Date:** August 18, 2025 (Prod-1)
