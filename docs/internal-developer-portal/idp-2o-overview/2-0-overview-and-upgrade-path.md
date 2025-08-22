@@ -16,9 +16,9 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 | ----------------------------------------------------------------------------------------------------- | --------------------- |
 | [**RBAC and Project/Org Hierarchy**](/docs/internal-developer-portal/rbac/scopes)                     | ✅ (Ready to onboard) |
 | [**Git Experience (YAML files in Git)**](/docs/internal-developer-portal/git-experience/gitx-journey) | ✅ (Ready to onboard) |
-| **New System Entity for grouping**                                                                    | ⏳ ETA July 31, 2025  |
-| **Project/Org filters in Scorecards**                                                                 | ⏳ ETA July 31, 2025  |
-| **Custom User Groups**                                                                               | ⏳ ETA Pending       |
+| [**New System Entity for grouping**](/docs/internal-developer-portal/catalog/system-entity)           | ✅ (Ready to onboard)  |
+| **Project/Org filters in Scorecards**                                                                 | ⏳ ETA Oct 2025        |
+| **Custom User Groups**                                                                               | ⏳ ETA Oct 2025        |
 
 :::
 
@@ -147,8 +147,8 @@ This change ensures better alignment with GitX workflows and simplifies entity l
 
 > NOTE: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own entity YAML file. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
-:::note 
-Identifiers must use only letters, numbers, and underscores. Hyphens and special characters aren’t allowed. 
+:::note
+Identifiers must use only letters, numbers, and underscores. Hyphens and special characters aren’t allowed.
 
 :::
 
@@ -183,7 +183,7 @@ These fields define the entity's scope. For project-scoped entities, both fields
   - Aligned with Harness Entity YAML definitions and moved to root level to reflect its critical importance.
 - `spec.type` becomes `type`
   - Relocated to root level as it is fundamental to entity definition. The `kind` and `type` fields define entity behavior and should appear together.
-- `spec.owner` is now `owner` 
+- `spec.owner` is now `owner`
   - Moved to root level to emphasize its significance. IDP Catalog addresses ownership challenges, warranting prominent placement of this field.
 
 
