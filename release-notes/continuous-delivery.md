@@ -61,7 +61,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Users can now select your Azure Cloud Provider connector to connect to the Azure Container Registry (ACR) for your Azure Function Deploy steps. (**CDS-110657**, **ZD-85163**) 
 - Harness now supports GitHub Pull Request Review as an event in webhook triggers to initiate the execution of a pipeline. This enables automatic pipeline execution when a pull request review is         submitted, edited, or dismissed. For a list of all supported events and actions, check out the [webhook triggers reference](/docs/platform/triggers/triggers-reference/#event-and-actions). (**PIPE-25264**)
-- Harness now supports notifications for trigger failures, allowing users to receive alerts when a trigger fails to start pipeline execution. This improves the visibility of pipeline runs that could not start due to failed triggers. (**PIPE-27482**)
+- Harness now supports [notifications for trigger failures](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#select-events), allowing users to receive alerts when a trigger fails to start pipeline execution. This improves the visibility of pipeline runs that could not start due to failed triggers. This feature is currently behind feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`. Please, contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-27482**)
 
 #### Fixed Issues
 
