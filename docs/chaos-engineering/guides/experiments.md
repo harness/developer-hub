@@ -16,10 +16,10 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
 
 <DynamicMarkdownSelector
   options={{
-    "1. Old Chaos Studio": {
+    "Old Chaos Studio": {
       path: "/chaos-engineering/content/experiments/old-chaos-studio.md"
     },
-    "2. New Chaos Studio": {
+    "New Chaos Studio": {
       path: "/chaos-engineering/content/experiments/new-chaos-studio.md"
     }
   }}

@@ -70,14 +70,14 @@ export default function ChaosEngineering() {
               <h4>New Chaos Studio Features</h4>
               <p>The New Chaos Studio includes these enhanced capabilities:</p>
               <ul>
-                <li><strong><Link href="/docs/chaos-engineering/guides/chaoshubs/chaos-hub-scopes">Chaos Hubs Across Different Scopes</Link></strong>: Enhanced chaos hub management with flexible scoping options</li>
-                <li><strong><Link href="/docs/chaos-engineering/guides/experiments#2.newchaosstudio">New Chaos Studio</Link></strong>: Enhanced and streamlined approach to chaos experiment design.</li>
-                <li><strong><Link href="/docs/chaos-engineering/guides/templates/">Templates</Link></strong>: Reusable fault, probe, and action templates for standardized chaos engineering</li>
-                <li><strong><Link href="/docs/category/custom-faults">Custom Faults</Link></strong>: Create and manage custom fault definitions for specific use cases</li>
+                <li><strong><Link href="/docs/chaos-engineering/guides/experiments#2.newchaosstudio">New Chaos Studio</Link></strong>: Enhanced and streamlined approach to chaos experiment design</li>
+                <li><strong><Link href="/docs/chaos-engineering/guides/experiments#2.newchaosstudio">Timeline View</Link></strong>: Visual timeline representation of experiment execution and results</li>
                 <li><strong><Link href="/docs/chaos-engineering/guides/probes/experiment-level-probes/">Experiment Level Probes</Link></strong>: Advanced probing capabilities at the experiment level</li>
                 <li><strong><Link href="/docs/chaos-engineering/guides/actions/">Actions</Link></strong>: Execute custom operations, delays, and scripts during experiments</li>
-                <li><strong><Link href="/docs/chaos-engineering/guides/experiments#2.newchaosstudio">Timeline View</Link></strong>: Visual timeline representation of experiment execution and results</li>
+                <li><strong><Link href="/docs/chaos-engineering/guides/chaoshubs/chaos-hub-scopes">Chaos Hubs Across Different Scopes</Link></strong>: Enhanced chaos hub management with flexible scoping options</li>
                 <li><strong><Link href="/docs/chaos-engineering/guides/experiments#2.newchaosstudio">Runtime Variable Support</Link></strong>: Dynamic variable handling during experiment execution</li>
+                <li><strong><Link href="/docs/chaos-engineering/guides/templates/">Templates</Link></strong>: Reusable fault, probe, and action templates for standardized chaos engineering</li>
+                <li><strong><Link href="/docs/category/custom-faults">Custom Faults</Link></strong>: Create and manage custom fault definitions for specific use cases</li>
               </ul>
               <p>
                 If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
