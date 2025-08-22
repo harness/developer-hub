@@ -24,7 +24,7 @@ Video of your expected Harness Certification Hands-on Exam experience.
 
 1. After registering for the administrator or architect level exam, the final question will be the hands-on exam.
 
-2. Once you access the hands-on exam, you will see instructions to open the Instruqt Hands-On exam by copy and pasting the exam URL in a new tab.
+2. Once you access the hands-on exam, you will see instructions to open the Instruqt Hands-on exam by copy and pasting the exam URL in a new tab.
 
    ![New Tab](./static/new-tab.png)
 
