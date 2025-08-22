@@ -1046,7 +1046,7 @@ Updating an application that contains a `valuesObject` while using an agent olde
 
 #### New Features and enhancements
 
-- You can bypass artifact consumption checks for a service in a Deploy stage by checking the **Disable artifact in this stage** checkbox. This feature applies to primary and sidecar artifacts. For more information, go to Harness [Skip Artifact Consumption for the Stage](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#skip-artifact-consumption-for-the-stage). This feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-96644, ZD-68382)
+- You can bypass artifact consumption checks for a service in a Deploy stage by checking the **Disable artifact in this stage** checkbox. This feature applies to primary and sidecar artifacts. For more information, go to Harness [Skip Artifact Consumption for the Stage](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#skip-artifact-consumption-for-the-stage). (CDS-96644, ZD-68382)
 
 - You can now add environments created at the Project and Organization levels to the environment groups. For more information, go to Harness [Cross Scope Environment Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environment-groups#cross-scope-environment-groups). Currently, the Cross Scope Environment Groups feature is behind the feature flag `CDS_CROSS_SCOPED_ENV_GROUPS`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-93146)
 
