@@ -188,10 +188,12 @@ You can also directly click within the IF field, type a new custom attribute ID,
 
 ## Using regex with custom attributes
 
-Split targeting rules support matching values using regular expressions (regex), which provides a powerful way to filter a wide range of users with a single targeting rule.
+Split targeting rules support matching values using regular expressions (regex), which provides a powerful way to filter a wide range of users with a single targeting rule. 
+
+If your versioning follows [semantic versioning](#semver-attributes), you can use SemVer-based targeting instead of regex for cleaner and more maintainable rules. Regex examples are mainly useful for legacy scenarios or non-SemVer attributes.
 
 :::tip
-We recommend testing your regex patterns on external tools like [regex101.com](https://regex101.com/) to ensure they work as expected before applying them in Split.
+Harness recommends testing your regex patterns on external tools like [regex101.com](https://regex101.com/) to ensure they work as expected before applying them in Split.
 :::
 
 Below are some useful regex examples for targeting specific user attributes:
@@ -362,7 +364,7 @@ For example, use an attribute 'os_version' of type SemVer to give users that hav
 
 #### Supported SDKs and customer-deployed components for SemVer matcher
 
-The Semantic Version (SemVer) matcher is only supported in specific FME SDK and customer-deployed componenet versions. If you are using an older SDK version that does not support the SemVer matcher, feature flag evaluations will return the `control` treatment and a special impression will be created.
+The Semantic Version (SemVer) matcher is only supported in specific FME SDK and customer-deployed component versions. If you are using an older SDK version that does not support the SemVer matcher, feature flag evaluations will return the `control` treatment and a special impression will be created.
 
 :::info
 If you are using an older SDK or customer-deployed component version that does not support the SemVer matcher, Harness recommends upgrading to a supported version to ensure your target rules function as expected.
