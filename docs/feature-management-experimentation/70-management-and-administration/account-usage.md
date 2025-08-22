@@ -22,7 +22,7 @@ An MTK count is the number of unique keys that were evaluated for treatments ove
 
 ### Impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/impressions/) are a unique event record generated every time a monthly tracked key calls the FME SDK to get a treatment evaluation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/) are a unique event record generated every time a monthly tracked key calls the FME SDK to get a treatment evaluation.
 
 ### Events
 

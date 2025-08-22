@@ -19,10 +19,10 @@ You can use the [Split Admin API](https://docs.split.io/reference/introduction) 
 :::warning Not used for `targeting` and `getTreatment`
 Customer attributes stored using the methods discussed here aren't used for targeting your roll out definitions or as part of the standard usage of `getTreatment`. In order to target, you must pass the attribute with the `getTreatment` call. 
 
-Learn more about [targeting based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/).
+Learn more about [targeting based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/).
 :::
 
-You can use the [Identities REST API](https://docs.split.io/reference/identities-overview) to identify your keys in Split, making them available when writing targeting rules in the user interface and enriching autocomplete functionality throughout the user interface. Identifying your keys is useful if you want to pre-populate the user interface for your team and provide customer data when setting up your rollouts and analyzing [impression data](/docs/feature-management-experimentation/feature-management/impressions/).
+You can use the [Identities REST API](https://docs.split.io/reference/identities-overview) to identify your keys in Split, making them available when writing targeting rules in the user interface and enriching autocomplete functionality throughout the user interface. Identifying your keys is useful if you want to pre-populate the user interface for your team and provide customer data when setting up your rollouts and analyzing [impression data](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/).
 
 Split offers both an Identities API and [client-specific API wrappers](/docs/feature-management-experimentation/api/wrappers/python-admin-api) to use when sending to Split attributes on your keys. As an administrator in Split, you can see the attributes that your team is sending to Split and the last time an update is received.
 

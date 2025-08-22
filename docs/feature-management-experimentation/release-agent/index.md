@@ -103,3 +103,9 @@ Additional ways that your privacy is protected:
 For support inquiries or to report issues with Release Agent, submit a request via support@split.io. 
 
 Provide detailed descriptions and reproduction steps for issues to facilitate expedited troubleshooting. Your feedback is instrumental for the iterative enhancement of Release Agent.
+
+## Further Reading
+
+Additional documentation, blog links, and articles:
+
+- [AI-Native Software Delivery: Proven Practices to Produce High-Quality Software Faster](https://www.harness.io/resources/ai-native-software-delivery-proven-practices-to-produce-high-quality-software-faster)

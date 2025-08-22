@@ -41,7 +41,7 @@ The following validation considerations are relevant for all FME SDKs.
 
 * **Validate 24 hours of impressions (and events) from the Data hub.** Take a feature flag that has a known high activity and download all impressions for it from the previous 24 hour period. Ensure that the number of treatments and IDs all match with expectations. For events, take the previous full 24 hours of events, if applicable. With impressions, take note if you are seeing any ‘CONTROL’ treatments as those warrant further investigation to understand why those are happening.
 
-* **Evaluate if you can take advantage of Flag Sets**   You can use Flag Sets for limiting the flags downloaded by an SDK. [Flag Sets](/docs/feature-management-experimentation/feature-management/using-flag-sets-to-boost-sdk-performance) allow you to control from Harness FME which flags are downloaded by an SDK. This means you can ensure that only the flags needed for a frontend SDK or a backend SDK are downloaded. This reduces the time for the SDK to get ready while also saving memory and bandwidth. 
+* **Evaluate if you can take advantage of Flag Sets**   You can use Flag Sets for limiting the flags downloaded by an SDK. [Flag Sets](/docs/feature-management-experimentation/feature-management/manage-flags/using-flag-sets-to-boost-sdk-performance) allow you to control from Harness FME which flags are downloaded by an SDK. This means you can ensure that only the flags needed for a frontend SDK or a backend SDK are downloaded. This reduces the time for the SDK to get ready while also saving memory and bandwidth. 
 
 ## Browser SDKs (including Angular, React, etc.)
 

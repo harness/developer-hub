@@ -8,7 +8,7 @@ When targeting rules are defined for a feature flag, the rules are used to assig
 In some circumstances, it is useful to reassign customers to treatments without changing the targeting rules. This process is called *reallocate* in Harness FME. Here is an example.
 
 * Your team enables a particular treatment for 10% of customers.
-* During the release, a critical issue is found and the feature flag is immediately [killed](/docs/feature-management-experimentation/feature-management/use-the-kill-switch), sending all customers to the default treatment. 
+* During the release, a critical issue is found and the feature flag is immediately [killed](/docs/feature-management-experimentation/feature-management/manage-flags/use-the-kill-switch), sending all customers to the default treatment. 
 * Your team fixes the bug and wants to release again to 10% of customers.
 * Your team does not want the same 10% to see the same treatment again, because they were exposed to the original issue. In other words, those customers were *poisoned* with regards to this treatment. 
 

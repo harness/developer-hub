@@ -19,7 +19,7 @@ To use this feature, you must enable the experimentation package. Contact [suppo
 
 Before you start, you must be sending events with event properties. For more information about sending event properties, refer to the [Events](/docs/feature-management-experimentation/release-monitoring/events/) guide. For deeper analysis of events and properties you are currently sending, go to the Data hub, and from the Live tail tab, run your query for your events to get the right event properties. 
 
-For more information on how to run a query, refer to the [Query events section](/docs/feature-management-experimentation/feature-management/live-tail/#query-events) of the Live tail guide.
+For more information on how to run a query, refer to the [Query events section](/docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail/#query-events) of the Live tail guide.
 
 ## How it works
 
