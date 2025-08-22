@@ -19,6 +19,17 @@ Harness provides pre-loaded **[By Harness](/docs/cloud-cost-management/use-ccm-c
 
 After setting up cost visibility for the cloud provider and the data is available in the Perspective, you can view the dashboard. The data in the Dashboard is updated dynamically.
 
+## Creating Custom Dashboards
+
+Harness BI Dashboards are available across all Harness modules as a platform-wide capability. This guide descibes Dashboard available by Harness for Cloud Costs. To create and customize your own dashboards, refer to the following comprehensive resources:
+
+* [Create Dashboards](/docs/platform/dashboards/create-dashboards)
+* [Create Visualizations and Graphs](/docs/platform/dashboards/create-visualizations-and-graphs)
+* [Use Dashboard Actions](/docs/platform/dashboards/use-dashboard-actions)
+* [Download Dashboard Data](/docs/platform/dashboards/download-dashboard-data)
+* [Create Conditional Alerts](/docs/platform/dashboards/create-conditional-alerts)
+* [Schedule and Share Dashboards](/docs/platform/dashboards/share-dashboards)
+
 ## Access the CCM dashboards
 
 To access the dashboards from the CCM module, perform the following steps:
@@ -53,7 +64,6 @@ To access the dashboards from the CCM module, perform the following steps:
       logoSize: 32
     }
   }}
-  toc = {toc}
 />
 
 ### See Also
