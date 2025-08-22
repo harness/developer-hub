@@ -87,10 +87,6 @@ Harness Gitspaces now support **on-prem Git providers**. With this capability, y
 
 ---
 
-### Feature Improvements
-
-### Bug Fixes
-
 ## 🚀 Releasing Self-Hosted Gitspaces — July \[2025.07.v1]
 
 ### Introducing Harness Self-Hosted Gitspaces
