@@ -96,7 +96,7 @@ The **Timeline View** displays a visual representation of all events in your cha
 - **Actions execution** - Custom scripts and delay actions
 - **Rollback/Cleanup** - Recovery and cleanup processes
 
-![timeline view 2](./static/timeline/view-2.png)
+        ![timeline view 2](./static/timeline/view-2.png)
 
 In the example above, you can see how faults and probes run both serially and in parallel, with clear timestamps for each event.
 
@@ -116,11 +116,11 @@ Click on any event in the timeline to view detailed metadata:
 
 - **Experiment events** show name, tunables, and execution status
 
-![experiment information view](./static/timeline/exp-info-4.png)
+        ![experiment information view](./static/timeline/fault-view.png)
 
 - **Probe events** display details, logs, and validation results
 	
-![probe information view](./static/timeline/probe-info-3.png)
+        ![probe information view](./static/timeline/probe-view.png)
 
 This real-time monitoring helps you:
 - **Track progress** as your experiment executes
@@ -158,9 +158,9 @@ You can execute chaos experiments using either static values or dynamic runtime 
 
 When setting up an experiment, in the **Target Application** and **Tune Fault** modals, you can choose between **Fixed value** and **Runtime Input**. Once you choose the input type, **Save** the changes.
 
-![runtime variables](./static/runtime/sample.png)
+   ![runtime variables](./static/runtime/sample.png)
 
-![runtime variables](./static/runtime/sample-2.png)
+   ![runtime variables](./static/runtime/sample-2.png)
 
 :::tip Runtime Variable Tips
 - If you don't provide values for certain fields (which are not mandatory), the experiment executes with default values.
