@@ -11,7 +11,6 @@ keywords:
   - harness db devops
   - schema versioning
   - changelog generation
-  - gitops
   - ci/cd for databases
   - db schema automation
   - database change tracking
@@ -23,25 +22,22 @@ tags:
   - harness
   - liquibase
   - changelog
-  - gitops
   - ci/cd
 ---
-import CommitToGit from "../../snippets/commit-to-git.md";
+import CommitToGit from "./../snippets/commit-to-git.md";
 
-Harness Database DevOps enables teams to integrate database schema changes into Git-driven workflows.  
-When onboarding an existing **MongoDB** database, you can use the `MongoDB.py` Python script to extract the current schema and generate a **Liquibase-compatible changelog**.  
+Harness Database DevOps enables teams to integrate database schema changes into Git-driven workflows.
+When onboarding an existing **MongoDB** database, you can use the `MongoDB.py` Python script to extract the current schema and generate a **Liquibase-compatible changelog**.
 This changelog can then be versioned in Git and used in subsequent deployments, ensuring auditability and consistency across environments.
 
 By automating this process in a Harness pipeline, you can:
 - Avoid manual changelog creation for legacy or existing databases
 - Standardize schema tracking using Liquibase-compatible formats (JSON or YAML)
-- Keep your database changes **fully GitOps-compliant** with version control and peer review
-
----
+- Keep your database changes version-controlled with peer review
 
 ## Prerequisites
 
-Before implementing the pipeline, ensure the following:
+If you're unfamiliar with generating or structuring a changelog, you may want to explore our general [build a changelog](/docs/database-devops/get-started/build-a-changelog) guide first—it covers schema migration fundamentals, best practices, and format patterns. Before implementing the pipeline, ensure the following:
 
 - Pipeline execution environment can connect to your MongoDB instance  
 - The Git connector used in the pipeline has **commit** permissions  
@@ -56,10 +52,10 @@ Before implementing the pipeline, ensure the following:
 3. In the Stage, select "Custom" and then create a "Step Group".
 4. Add the **GitClone** step.
 5. Then a new add step, **Run**
-![MongoDB Changelog Generation](../static/dbops-mongo-changelog.png)
+![MongoDB Changelog Generation](./static/dbops-mongo-changelog.png)
 - **Container Registry**: used to pull images from private or public registries.
-- **Image**: "python:3.11-alpine"
-- **Shell**: "Python"
+- **Image**: "`python:3.11-alpine`"
+- **Shell**: "`Python`"
 - **Command**: Add the following script under the command palette:
 
 ```bash
@@ -148,7 +144,7 @@ In the above script:
 
 <CommitToGit />
 
-![Commit to Git](../static/dbops-mongo-diffchangelog.png)
+![Commit to Git](./static/dbops-mongo-diffchangelog.png)
 This step will ensure that the generated changelog file is committed to your Git repository, allowing you to track changes and maintain version control over your database schema changes.
 
 ## Best Practices
@@ -156,7 +152,7 @@ This step will ensure that the generated changelog file is committed to your Git
 - Validate changelog generation in a staging pipeline before committing to production branches
 - Parameterize connection details using Harness pipeline variables
 - Always use a read-only MongoDB user for schema extraction
-By integrating this process into Harness pipelines, you ensure repeatable, auditable, and version-controlled database schema onboarding—a cornerstone of GitOps-driven database delivery.
+By integrating this process into Harness pipelines, you ensure repeatable, auditable, and version-controlled database schema onboarding.
 
 ## FAQs
 ### 1. Can I change the changelog filename?
