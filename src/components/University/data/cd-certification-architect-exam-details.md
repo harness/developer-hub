@@ -89,6 +89,6 @@ The Continuous Delivery Architect exam can start immediately after registering. 
 
 1. Create an account in Harness University
 2. Register for an exam. There is a $50 fee for the exam
-3. Review the [instructions for the Hands-On Exam](/university/instructions)
+3. Review the [instructions for the Hands-on Exam](/university/instructions)
 4. Take the exams
     1. There will be a knowledge and hands-on portion.	

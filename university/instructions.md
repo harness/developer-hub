@@ -18,7 +18,7 @@ These instructions are in support of our Admin and Architect level certification
 
 Video of your expected Harness Certification Hands-on Exam experience.
 
-<DocVideo src="https://www.youtube.com/watch?v=v8kOnhNopkc" />
+<DocVideo src="https://www.youtube.com/watch?v=jU-K4ZmLurc" />
 
 ## Accessing your Hands-on Exam
 

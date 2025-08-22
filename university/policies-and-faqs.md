@@ -16,8 +16,8 @@ This FAQ page is designed to assist customers who are experiencing common issues
 
 - [Harness Exam, Testing, and Certification Policies](#harness-exam-testing-and-certification-policies)
 - [Exam gets "Stuck"](#exam-gets-stuck)
-- [Trouble with the Hands-On Exam](#trouble-with-the-hands-on-exam)
-- [Running out of time in Hands-On Exam](#running-out-of-time-in-hands-on-exam)
+- [Trouble with the Hands-on Exam](#trouble-with-the-hands-on-exam)
+- [Running out of time in Hands-on Exam](#running-out-of-time-in-hands-on-exam)
 - [Issues with Course Registration](#issues-with-course-registration)
 - [Requesting Accommodations for Exams ](#requesting-accommodations-for-exams)
 - [Retakes for Exams ](#paid-exam-retakes)
@@ -131,17 +131,17 @@ If you initially used a coupon code during your registration, you will need to r
 
 ---
 
-## Trouble with the Hands-On Exam
+## Trouble with the Hands-on Exam
 
-### I can't load/open the Hands-On portion of the exam, what should I do?
+### I can't load/open the Hands-on portion of the exam, what should I do?
 
-This usually occurs because right-click is not enabled on the exam. You can manually copy and paste the URL into a new tab to access the Hands-On portion. You can use `Command+C/Command+V` for Mac or `Ctrl+C/Ctrl+V` for Windows.
+This usually occurs because right-click is not enabled on the exam. You can manually copy and paste the URL into a new tab to access the Hands-on portion. You can use `Command+C/Command+V` for Mac or `Ctrl+C/Ctrl+V` for Windows.
 
 ---
 
-## Running Out of Time in Hands-On Exam
+## Running Out of Time in Hands-on Exam
 
-### What should I do if I'm running out of time or need to step away from the Hands-On exam?
+### What should I do if I'm running out of time or need to step away from the Hands-on exam?
 
 Two options are available:
 
