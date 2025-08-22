@@ -1,6 +1,6 @@
 ---
 title: Environment Blueprints in Harness IDP
-description: Environment Blueprints in Harness IDP. 
+description: Learn more about Environment Blueprints in Harness IDP. 
 sidebar_label: Environment Blueprints
 sidebar_position: 3
 toc_min_heading_level: 2

@@ -1,6 +1,6 @@
 ---
 title: Overview & Key Concepts
-description: Overview & Key Concepts of Environment Management in the Internal Developer Portal. 
+description: Overview & Key Concepts of Environment Management in the Harness IDP. 
 sidebar_position: 1
 ---
 
