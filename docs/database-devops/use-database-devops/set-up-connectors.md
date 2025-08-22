@@ -48,10 +48,10 @@ The JDBC connector is used for connecting to your database instance.
 | **COCKROACHDB**    | `jdbc:postgresql://{HOST}:{PORT}/{DBNAME}`                                                                                       |
 | **SQLSERVER**      | `jdbc:sqlserver://{host}:{port};trustServerCertificate=true;databaseName={dbName}`                                               |
 | **MYSQL**          | `jdbc:mysql://{host}:{port}/{dbName}`                                                                                            |
-| **MONGODB**        | `mongodb://{host}:{port}/{dbName}/?authSource=admin`                                                                             |
-| **MongoDB Atlas**  | `mongodb+srv://{username}:{password}@{cluster}/{dbName}/?authSource=admin`                                                       |
+| **MONGODB**        | `mongodb://{host}:{port}/{dbName}?authSource=admin`                                                                             |
+| **MongoDB Atlas**  | `mongodb+srv://{username}:{password}@{cluster}{dbName}/?authSource=admin`                                                       |
 | **GOOGLE SPANNER** | `jdbc:cloudspanner:/projects/{project-id}/instances/{instance-id}/databases/{database-name}?lenient=true`                        |
-| **MongoDB SSL**    | `mongodb://{host}:{port}/{dbName}/?tls=true&authSource=admin`                                                                    |
+| **MongoDB SSL**    | `mongodb://{host}:{port}/{dbName}?tls=true&authSource=admin`                                                                    |
 | **POSTGRES SSL**   | `jdbc:postgresql://{host}:{port}/{dbName}?ssl=true`                                                                              |
 | **SQLSERVER SSL**  | `jdbc:sqlserver://{host}:{port};databaseName={dbName};encrypt=true;trustServerCertificate=false;`                                |
 | **MYSQL SSL**      | `jdbc:mysql://{host}:{port}/{dbName}?useSSL=true`                                                                                |
