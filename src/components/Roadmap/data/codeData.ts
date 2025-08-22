@@ -8,7 +8,7 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Code Quality" }],
         title: "Code Coverage",
-        description: "Display a coverage overlay in the code view and show a PR status summary for overall and changed code coverage—helping teams track gaps, enforce thresholds, and improve test completeness..",
+        description: "Display a coverage overlay in the code view and show a PR status summary for overall and changed code coverage—helping teams track gaps, enforce thresholds, and improve test completeness.",
       },
       {
         tag: [{ value: "AI" }, { value: "Developer Experience" }],
@@ -21,6 +21,11 @@ export const codeData: Horizon = {
         description: "Ensure that all repository commits are signed by a known developer.",
       },
       {
+        tag: [{ "value": "Secure" }],
+        title: "Committer Identity Verification for Code Repositories",
+        description: "Harness now supports automatic verification of commit metadata to ensure that the Git committer matches the authenticated user. This helps prevent impersonation and enforces stronger commit authenticity within managed repositories."
+      },
+      {
         tag: [{ value: "Developer Experience" }],
         title: "Compare Tags Page",
         description: "Compare two release tags to see the delta in commits, PRs, artifacts, and deployments—helping validate changes and support audit traceability.",
@@ -31,14 +36,14 @@ export const codeData: Horizon = {
         description: "Harness Code Repository will support repository forking, allowing developers to create isolated copies of repositories for experimentation, collaboration, or contributing back via pull requests — without impacting the main repository."
       },
       {
-        tag: [{ value: "Secure" }],
-        title: "SSH Support",
-        description: "Support for Git operations via SSH.",
-      },
-      {
         tag: [{ value: "Integrations" }],
         title: "AutoLink References for External Issue Trackers",
         description: "Support for AutoLink references will allow Harness Code to automatically hyperlink commit messages and PR titles to external issue trackers like Jira, improving traceability across tools."
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "User Group Support",
+        description: "Use user groups wherever users are supported: mentions, reviews, code owners, etc.",
       },
       {
         tag: [{ value: "Governance" }],
@@ -50,8 +55,6 @@ export const codeData: Horizon = {
   Next: {
     description: "Q4 2025, November 2025 - January 2026",
     feature: [
-
-
       {
         tag: [{ value: "AI" }, { value: "Code Quality" }],
         title: "AI-Generated Tests",
@@ -94,11 +97,6 @@ export const codeData: Horizon = {
         description: "Plan and track all developer-related work across your projects in Harness Code.",
       },
       {
-        tag: [{ value: "Developer Experience" }],
-        title: "User Group Support",
-        description: "Use user groups wherever users are supported: mentions, reviews, code owners, etc.",
-      },
-      {
         tag: [{ value: "Governance" }],
         title: "Enhance Open Policy Agent (OPA) Integration",
         description: "Introduce additional events for OPA enforcement.",
@@ -139,14 +137,14 @@ export const codeData: Horizon = {
         description: "Harness Code Repository will support Git LFS, enabling efficient versioning and storage of large binary files such as media, datasets, and compiled assets within Git."
       },
       {
+        tag: [{ value: "Secure" }],
+        title: "SSH Support",
+        description: "Support for Git operations via SSH.",
+      },
+      {
         tag: [{ value: "Integrations" }],
         title: "Atlassian Jira Marketplace Application",
         description: "First-class support for Jira with Atlassian Marketplace application, allowing users to surface relevant commits and PRs in Jira issues.",
-      },
-      {
-        tag: [{ "value": "Secure" }],
-        title: "Committer Identity Verification for Code Repositories",
-        description: "Harness now supports automatic verification of commit metadata to ensure that the Git committer matches the authenticated user. This helps prevent impersonation and enforces stronger commit authenticity within managed repositories."
       },
       {
         tag: [{ "value": "Collaboration" }],
