@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-08-18T18:00
+date: 2025-08-22T18:00
 sidebar_position: 6
 ---
 
@@ -21,7 +21,7 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 :::
 
 ## August 2025 - Version 1.61.1
-#### **Deployment Date:** August 21, 2025 (Prod-1)
+#### **Deployment Date:** August 22, 2025 (Prod-1)
 
 ### ⭐ [New Feature] Dynamic Perspective Reports
 **[CCM-23836] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-perspective-reports)**
