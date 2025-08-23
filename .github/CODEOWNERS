@@ -7,20 +7,20 @@
 *       @pratmit @wei-harness @ivikramsahu @SushrutHarness
 
 # Configuration Files in DS are JS.
-*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
-*.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
-*.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
-*.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
+*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
+*.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
+*.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
+*.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
 
 # Changes to Lock File
 *.lock  @wei-harness
 
 # Changes to Config Files
-*.ini  @wei-harness @ivikramsahu @SushrutHarness
-*.json  @wei-harness @ivikramsahu @SushrutHarness
-*.toml  @wei-harness @ivikramsahu @SushrutHarness
-*ignore @wei-harness @ivikramsahu @SushrutHarness
-/_server-redirect @wei-harness @ivikramsahu @SushrutHarness
+*.ini  @wei-harness @ivikramsahu @SushrutHarness @richardblack-Harness
+*.json  @wei-harness @ivikramsahu @SushrutHarness @richardblack-Harness
+*.toml  @wei-harness @ivikramsahu @SushrutHarness @richardblack-Harness
+*ignore @wei-harness @ivikramsahu @SushrutHarness @richardblack-Harness
+/_server-redirect @wei-harness @ivikramsahu @SushrutHarness @richardblack-Harness
 
 # Changes to Netlify Files
 /netlify/ @wei-harness
