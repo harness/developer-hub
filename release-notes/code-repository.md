@@ -28,7 +28,7 @@ These release notes describe recent changes to Harness Code Repository.
 
 #### New features and enhancements
 
-- Added option to exclude or target specific repos by name or pattern in Account, Org, and Project Branch/Tag rules.
+- Added target selection to Account, Org, and Project Branch/Tag rules, allowing users to include or exclude specific repos by name or pattern.
 - Added audit log support for Tag Rules, Webhook CRUD operations, and bypassed tag actions.
 
 ## July 2025
