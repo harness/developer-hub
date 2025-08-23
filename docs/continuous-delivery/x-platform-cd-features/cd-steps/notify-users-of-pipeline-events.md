@@ -48,6 +48,13 @@ Select **Next**.
 
 In **Pipeline Events**, select the events that will trigger the notification.
 
+:::info note
+Currently, the Trigger Failed event is behind the feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`. 
+Please, contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
+![](./static/notification-strategy-list-of-all-events.png)
+
 You can select events for the pipeline or stages.
 
 If you select the stage events, you can select which stages to use.
@@ -225,6 +232,7 @@ notificationRules:
         - type: StageSuccess
         - type: StageStart
         - type: StepFailed
+        - type: TriggerFailed
       notificationMethod:
         type: Webhook
         spec:
@@ -486,40 +494,36 @@ The above JSON is for a specific stage, If you choose all stages three times the
 
 </TabItem>
 
-<TabItem value="Step Failed">
+<TabItem value="Trigger Failed">
+
+:::info note
+Currently, the Trigger Failed event is behind the feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`. 
+Please, contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
 
 ```json
 {
   "eventData": {
     "accountIdentifier": "ACCOUNT_ID",
     "orgIdentifier": "default",
-    "projectIdentifier": "PROJECT_NAME",
-    "pipelineIdentifier": "PIPELINE_NAME",
+    "projectIdentifier": "PROJECT_ID",
+    "pipelineIdentifier": "PIPELINE_ID",
     "pipelineName": "PIPELINE_NAME",
-    "planExecutionId": "OmbdztM2Qvqh7ZwM06FY4A",
-    "stageIdentifier": "qq",
-    "stepIdentifier": "ShellScript_1",
-    "executionUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/executions/OmbdztM2Qvqh7ZwM06FY4A/pipeline",
-    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_NAME/pipelines/PIPELINE_NAME/pipeline-studio",
-    "stepName": "ShellScript_1",
-    "eventType": "StepFailed",
-    "nodeStatus": "failed",
-    "triggeredBy": {
-      "triggerType": "MANUAL",
-      "name": "NAME",
-      "email": "EMAIL_ID"
-    },
-    "startTime": "Tue Aug 20 09:12:09 GMT 2024",
-    "startTs": 1724145129,
-    "endTime": "Tue Aug 20 09:12:10 GMT 2024",
-    "errorMessage": "Shell Script execution failed. Please check execution logs.",
-    "endTs": 1724145130
+    "pipelineUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_ID/pipelines/PIPELINE_ID/pipeline-studio/",
+    "triggerActivityUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_ID/pipelines/PIPELINE_ID/triggers/TRIGGER_ID/activity-history/",
+    "triggerUrl": "https://app.harness.io/ng/#/account/ACCOUNT_ID/cd/orgs/default/projects/PROJECT_ID/pipelines/PIPELINE_ID/triggers/TRIGGER_ID/detail/",
+    "triggerName": "TRIGGER_NAME",
+    "triggerIdentifier": "TRIGGER_ID",
+    "triggerType": "Webhook",
+    "triggerSubType": "CUSTOM",
+    "eventType": "TriggerFailed",
+    "startTime": "Wed Aug 20 13:21:11 GMT 2025",
+    "startTs": 1755868871597,
+    "errorMessage": "Failed while requesting Pipeline Execution through Trigger: Stage executions are not allowed for pipeline [PIPELINE_ID]"
   }
 }
+
 ```
-
-The above JSON is for a specific stage, If you choose all stages three times the webhook will be triggered. In this case we have two stages qq and qs and both stages started so two times the notification was triggered. 
-
 
 </TabItem>
 
