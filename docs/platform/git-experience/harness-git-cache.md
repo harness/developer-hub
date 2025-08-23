@@ -74,3 +74,5 @@ You can do one of the following when there are differences:
 
 ![](../git-experience/static/CacheDiff.png)
 
+## Changing Git Repo Name
+For information on the process a team should follow when renaming a Git Repo, please take a look at our [documentation on Repo Renaming and Git Experience Caching](https://developer.harness.io/docs/platform/git-experience/harness-git-cache-rename).
