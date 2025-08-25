@@ -146,8 +146,9 @@ This is especially useful in scenarios where direct commits to the main branch a
 
 ![Branch Selection in GitX](./static/multi-branch.png)
 
-> While you can inspect and preview YAMLs across different branches, only the **default branch** (as configured during entity creation) is actively used by Harness IDP for rendering and syncing entity definitions.
-
+:::info
+While you can inspect and preview YAMLs across different branches, only the **default branch** (as configured during entity creation) is actively used by Harness IDP for rendering and syncing entity definitions. As a result, IDP maintains a one-to-one mapping between a catalog entity and its YAML file path. This means that even if you have different branches with unique identifiers, names, or tags, entities defined at the same repository path cannot be imported as separate components. To represent versioned or variant components, changes must eventually be merged into the default branch.
+:::
 
 <iframe
   src="https://app.tango.us/app/embed/8dcee9d3-bde1-487d-8b8e-f6b9bbcf2e50?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=false"
