@@ -145,6 +145,13 @@ The following deprecated API endpoints are longer supported:
 
 ## August 2025
 
+### Version 1.102.x <!--August 25, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where the reconciliation banner was incorrectly displayed on the Secret Details page. [PL-64802]
+- Updated API key validation to return a 403 error (instead of 400) when a Service Account Token (SAT) is sent in place of a Personal Access Token (PAT) with `"apiKeyType": "USER"`. [PL-62520] 
+
 ### Version 1.102.x <!--August 19, 2025-->
 
 #### Fixed issues
