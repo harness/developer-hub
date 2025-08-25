@@ -128,7 +128,7 @@ The Azure function Deploy step has the following settings:
 
  * **Name:** Enter a name for the step.
  * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
- * **Azure Connector**: Specify the connector that connects to the azure infrastructure.
+ * **Container Registry**: Specify the connector that connects to the azure infrastructure and container registry you wish to use.
  * **Image**: Specify the artifact image you want to run. 
  * **Function app**: Specify the Azure Container to be used.
  * **Deployment Slot:** Enter the name of the Source slot for the deployment. This slot is where Harness deploys the new Azure Function version. Make sure the slot you enter is running.
