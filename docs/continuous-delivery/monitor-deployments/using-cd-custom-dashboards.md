@@ -691,6 +691,14 @@ This view contains the data related to the stage executions. Currently, it only 
   <DocImage path={require('./static/using-cd-custom-dashboards-17.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
+:::info Automatic Filtering
+- When you select CD-specific fields (for example, from **CD Stage Execution Helm Manifest Info**, **CD Stage Executions**, **Environments**, or **Services** views), the data displayed will only include CD stage–related executions.  
+This means that the **Stage Executions (Approvals/CD/Custom)** view will not contain data for Custom or Approval stages.  
+
+- Similarly, when you select fields from the **Custom Stage Executions** view, only custom stage data is displayed.
+- Using fields from **Harness Approval Step Execution** automatically filters the data to stages that contain a Harness approval step.  
+- Using fields from **Jira Step Execution** automatically filters the data to stages that contain Jira steps (Create, Update, Approval).  
+:::
 
 Filter-only Field:
 1. Current Aggregation Period: 
