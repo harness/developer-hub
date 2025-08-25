@@ -145,7 +145,7 @@ The following deprecated API endpoints are longer supported:
 
 ## August 2025
 
-### Version 1.102.x <!--August 25, 2025-->
+### Version 1.103.x <!--August 25, 2025-->
 
 #### Fixed issues
 
