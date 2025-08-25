@@ -37,7 +37,7 @@ By automating this process in a Harness pipeline, you can:
 
 ## Prerequisites
 
-If you're unfamiliar with generating or structuring a changelog, you may want to explore our general [build a changelog](/docs/database-devops/get-started/build-a-changelog) guide first—it covers schema migration fundamentals, best practices, and format patterns. Before implementing the pipeline, ensure the following:
+If you're unfamiliar with generating or structuring a changelog, you may want to explore our general [build a changelog](https://developer.harness.io/docs/database-devops/get-started/build-a-changelog) guide first—it covers schema migration fundamentals, best practices, and format patterns. Before implementing the pipeline, ensure the following:
 
 - Pipeline execution environment can connect to your MongoDB instance  
 - The Git connector used in the pipeline has **commit** permissions  
