@@ -166,12 +166,12 @@ spec:
 ```
 ### [Breaking Change] Dx Plugin : Visualization Components Consolidated
 
-This release introduces the `DxDataChart` component, a flexible visualization tool for displaying data from DX Data Studio queries as charts or tables. It supports multiple visualization types, custom metrics from DX datafeeds, optional variables, unit labels, automatic data transformation, and deep links to the underlying DX DataCloud queries.
+This release introduces the `DxDataChartCard` component, a flexible visualization tool for displaying data from DX Data Studio queries as charts or tables. It supports multiple visualization types, custom metrics from DX datafeeds, optional variables, unit labels, automatic data transformation, and deep links to the underlying DX DataCloud queries.
 
 
 #### Replaced Components
 
-The following components have been removed because their functionality is now fully covered by `DxDataChart`:
+The following components have been removed because their functionality is now fully covered by `DxDataChartCard`:
 
 * `EntityChangeFailureRateCard`
 * `EntityDeploymentFrequencyCard`
@@ -185,7 +185,7 @@ The following components have been removed because their functionality is now fu
 #### Example Usage – Line Chart
 
 ```jsx
-<DxDataChart
+<DxDataChartCard
   title="Deployment Frequency"
   description="Weekly deployments over time"
   datafeedToken="your-datafeed-token"
@@ -199,7 +199,7 @@ The following components have been removed because their functionality is now fu
 />
 ```
 
-With `DxDataChart`, you can create customizable visualizations, deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
+With `DxDataChartCard`, you can create customizable visualizations, deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
 
 ### [New Feature] Harness Feature Management & Experimentation Plugin
 
