@@ -473,7 +473,7 @@ You can use a service account to create a new Harness FME Admin API key. The ste
 
 :::info[How to use the Harness access token:]
 After your migration, use the Harness access token:
-* As the bearer token for legacy Split Admin API endpoints that are not deprecated. (The deprecated endpoints are replaced by Harness API endpoints for a migrated account.)
+* As the bearer token or x-api-key for legacy Split Admin API endpoints that are not deprecated. (The deprecated endpoints are replaced by Harness API endpoints for a migrated account.)
 * As the x-api-key for Harness API endpoints.
 
 For more information, go to [Authorization moves from Bearer Token to x-api-key](https://developer.harness.io/docs/feature-management-experimentation/split-to-harness/api-for-split-admins/#authorization-moves-from-bearer-token-to-x-api-key) in the FME documentation.
