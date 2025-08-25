@@ -55,7 +55,7 @@ Each entity in the blueprint is composed of **2 main parts**:
 
 **1. Backend** - Describes the lifecycle implementation of the entity
 - Defines **how** the entity is provisioned, deployed, or managed
-- Specifies the **backend type** (`HarnessIACM` for infrastructure, `Catalog` for services)
+- Specifies the **backend type** (`HarnessIACM` for infrastructure, `Catalog` for services). Go to [Backend Types](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md#backend-types) to learn more.
 - Contains configuration values and operational steps
 
 **2. Interface** - Defines how the entity relates to other entities specified in the blueprint

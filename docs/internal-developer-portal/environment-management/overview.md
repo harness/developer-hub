@@ -47,12 +47,12 @@ Environment Management in Harness IDP brings together various features to make e
 4. **Native to IDP:**
    Fully integrated with the **IDP Catalog**, providing developers with a unified and intuitive interface to **discover and provision environments**, while giving platform teams the ability to enforce organizational standards and guardrails.
 5. **Native to Harness:**
-   Built as a **core feature** of Harness IDP, leveraging the proven strengths of **Harness CD** and **IaCM** for infrastructure provisioning, service deployment, and governance.
+   Built as a **core feature** of Harness IDP, leveraging the proven strengths of **Harness CD** and **IaCM** for infrastructure provisioning, service deployment, and governance. **Built upon Harness Pipelines**, it can seamlessly onboard existing IaCM and CD templates and pipelines, enabling teams to adapt and modernize without starting from scratch.
 
 ## Key Concepts
 
 ### Environment Blueprint
-An Environment Blueprint is a collection of infrastructure templates, services, their configurations and lifecycle management details of each. When a blueprint is orchestrated, it generates running instances of Environments. Blueprints are typically owned by the Platform Engineering team. Go to [Environment Blueprints](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md) to learn more. 
+An Environment Blueprint is a collection of infrastructure templates, services, their configurations and lifecycle management details of each. When a blueprint is instantiated, it generates running instances of Environments. Blueprints are typically owned and maintained by the Platform Engineering team. Go to [Environment Blueprints](/docs/internal-developer-portal/environment-management/env-blueprint-yaml.md) to learn more. 
 
 ### Environment
 An Environment is instantiated using an Environment Blueprint and represents the deployed infrastructure and services, as defined in the blueprint. It is a collection of software services deployed using CD tools and executed on infrastructure provisioned through IaCM tools. Go to [Environments](/docs/internal-developer-portal/environment-management/environments.md) to learn more.

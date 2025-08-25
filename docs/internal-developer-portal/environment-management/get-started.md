@@ -23,7 +23,7 @@ Before you begin, ensure you have the following prerequisites setup:
 
 - CD, IaCM and IDP modules enabled in your account. Contact [Harness Support](mailto:support@harness.io) to enable the modules. 
 - Ensure you have a Kubernetes cluster setup. 
-- Harness Delegates installed on the cluster. In order to read outputs, the Harness Delegate must have `jq` installed. Go to [Install Delegates](/docs/platform/delegates/install-delegates/overview/) to read more. 
+- Harness Delegates installed on the cluster. Go to [Install Delegates](/docs/platform/delegates/install-delegates/overview/) to read more. 
 - Cloud and Kubernetes connectors created in Harness using the installed Delegates. Go to [Connectors References](/docs/category/cloud-providers) to learn more. 
 - Git Connector to read terraform files for IaCM. Ensure you check “Enable API Access” in the connector settings. Go to [Get Started with IaCM](/docs/infra-as-code-management/get-started/#add-connectors) to learn more. 
 - The following feature flags for your Harness account are required to be enabled (we can enable these for you). Contact [Harness Support](mailto:support@harness.io) to enable the feature flags.
@@ -39,6 +39,12 @@ Before you begin, ensure you have the following prerequisites setup:
 Using this guide, we will create new ephemeral environments using IDP environment management by leveraging CD for service deployment and IaCM for infrastructure management. Services will be deployed inside a namespace of an existing Kubernetes cluster. 
 
 For the purpose of this tutorial, we will create and use all Harness resources in a single sandbox project i.e. Environment Blueprint, Environments, Component, Service, Pipelines, etc. Connectors and Secrets can live at higher scopes.
+
+In this tutorial, we will setup the following resources: 
+- **IaCM Workspace Template & Default Pipelines**: To provision and destroy infrastructure (Kubernetes Namespace). 
+- **CD Service & Pipeline**: To deploy services inside the namespace. 
+- **Environment Blueprint**: To standardize environment configurations. 
+- **Environment**: To create a new environment. 
 
 ### Provision Infrastructure in IaCM
 In the following steps, we will create an IaCM Workspace template and default pipelines to provision and destroy infrastructure - in this case, a Kubernetes namespace.
