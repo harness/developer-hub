@@ -305,7 +305,13 @@ Customers can now define the UID to run all policies within the pod.  Please not
 
 ## Set Container Resources
 
-Maximum resource limits for containers that clone the codebase at runtime. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+Set the resource limits and requests for the container's CPU and memory. To learn more about this, go to [Manage Resource Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container).
+
+:::info
+The ability to set resource requests is behind the feature flag `CI_SUPPORT_RESOURCE_REQUESTS`. To enable it, contact [Harness Support](mailto:support@harness.io)
+:::
+
+Define the resource limits and requests by using the units defined by Kubernetes found here: [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 In the case of utilizing a Run Step in a Step Group, please note that if you are defining resources with variables, they must be at the Stage or Pipeline level.  Step Group variables will not be evaluated at the correct time when the resource is launched. 
 
