@@ -185,7 +185,7 @@ The following components have been removed because their functionality is now fu
 #### Example Usage – Line Chart
 
 ```jsx
-<DxDataChartCard
+<DxDataChart
   title="Deployment Frequency"
   description="Weekly deployments over time"
   datafeedToken="your-datafeed-token"
@@ -234,14 +234,6 @@ Harness IDP now includes a native integration with Harness Feature Management & 
   For example, if a `Service` `dependsOn` a `Library`, the system creates the reverse `dependencyOf` relation from the `Library` to the `Service`. Both relations exist in the system and can be queried, but only the primary relation is shown in the Edit YAML UI. The reverse relation is visible in the raw YAML, ensuring consistency without requiring users to manually define both sides. 
 
 
-<!-- Let's maintain last 3 here. -->
-
-| **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
-| ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2025.07.v2](/release-notes/internal-developer-portal#july---202507v2)                               | ✅        | ✅         | ✅         | ✅          | ✅           | ✅            |
-| [2025.07.v1](/release-notes/internal-developer-portal#july---202507v1)                               | ✅        | ✅         | ✅         | ✅          | ✅           | ✅            |
-| [2025.06.v1](/release-notes/internal-developer-portal#june---202506v1)  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
-| [2025.05.v1](/release-notes/internal-developer-portal#-releasing-harness-idp-20-beta---may-202505v1) | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
 
 
 ## July - [2025.07.v2]
