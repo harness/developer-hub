@@ -1,0 +1,73 @@
+---
+id: collections-edit-collection
+title: "Edit an existing collection"
+description: "This API endpoint allows you to edit an existing collection."
+sidebar_label: "Edit an existing collection"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1V1lv4zYQ/ivE9CEtIF+JN4dQFHB3XaybNmvECdDAMgJKGllMZFJLUnZcw/+9GEqOZcebdVFULxI5H+fiXFqB5VMD/hg+qizDyAolDUw8iNFEWuS0Bh/uUmFYbzhgKONcCWkZzzK1MGypCmYVw1hYxiXDF2GskFMWvXJrggcqR81pMYjBhy3N/EAHt5LBA41fCzT2VxUvwV9BpKRFaemT53kmIsem9WRIrRWYKMUZpy+7zBF84FrzJXggLM5MbV+FTxhZ8CDXpIwV6KgirmGM1UJO4a3tyDQmqFFGyAafmEqYTbFmInkgROcEjGHtgeQzPI6xxAUjNEuU3uMKHsgiy3iYIfhWF7j2QBWPEbc4VXr5eKzuNY2ro6TvIhVRum9HiJmSU3NIcs41SvuoMTla8CGnlWy+Y6XZxOH/eq89prmM1SxbsilKClCM2f394NPrXVR60I0KaXFaxvBB8TyOBRF5NtxR5H01S+oxviQE+bCmB/sRm9OmxwJ4EpoHQF9TYdMiLL+fUD4LaQL4iQxIRGZRH9RpV9pvJZCZHCORiIiChZxRl+w4rOuPBy+NSMU44rM8I+PGK8i4nFK639/+AR5kPMSMloXOwAOjCh1htWaNv9jw/o6dpNbmxm+1eJ43U64lGtMUquXkmpZB0eK5aM07LaWnrUIKa05YEASy8ZmdfCxLReNumaPP9qvFFtcrbKq0+NvRfKpq1/0H9vPn3u1NfzR6HPUHj73h4PG6//BLdShmJ+NAMsbYqnzRE4CIA/BZABfdALw6gRK6JN3ggt241Q5gN41LaPgh5FdtHjYinnQb3QSTxlU7jBtnl53z+PT0qvuhe7HHZicnSy5nZ3uYTS4Rebwl7Bnz1qizs/Zp96rbbuDF6WWj00FshOfn3cZFyMPzi6Tb5pedHVE1FrVcIWYH5JTAzjvUEkGBVupTxfh74CrEv8O0cp1WFP2VW2B4++X3/se7bgCTb59cHyYd2N7bqi0r9utATk4CCesJdTyTK2nKinDabtNrNyW/XLMNiLrpv+2J3yg+qLXSx9TYqixRkpsiitAcc8gFAWooiwO+uLpQFzue1NiNL7qTqo7M0KaKxoS8cDpzm4IPOzlP5QP13JWz8QqooPhwbOlwPjcYFVrYpTvfy8U1LqkskFZ18ohcWXqrDtoa7zbJerqmFHmMGjbtH2heuu4/vG08wwF7xiUThnFm1TNKlms1FzHG1JYzZDP+TEMUlV0CRzzLTJO5IUwYVhiMqSrzwqYoLd0/lp08E9RcuXUrfMkVITcjW5PdKAes6KP+gNVUiUXi2rVliVYzxtnn0olsmHGbKD0jYJM9qIJFXL62zDobw4R8ZT1TcZHhRpleFKlCWpbhHDMK/LUHFLC323Gvv4mRcdm/t+2w8ufren8K2lL2ppQtYTtSvOG+19rXaxcCQibK3bSwpBOMVGIXXCPry6mQiHSYDaQR09QF5O4Vj1DPRYTGjRIbR5JX/nReoSym8C3BnWa72aYenStjZ9wlcWVy/9tz9b7M2qz8X8f1KrotvthWnnHhJiCXZasqH8cw79BFaHJgmZMTD1JlLNFWq5AbvNfZek3bXwvUyzLh51yLctQbT9beJmPoTp5xCT7Uezj5iGdFmWd7ZW7tbU70oghz+y52Uisqw/s78CCs/i5mKqYjmi/oz4MvwAf3t/I65rm9cpIp+JSwJUt6/gFU8E0s
+sidebar_class_name: "put api-method"
+info_path: docs/api-references/software-engineering-insights
+custom_edit_url: null
+---
+
+
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Edit an existing collection"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/v1/org/units"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+This API endpoint allows you to edit an existing collection.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","description":"The reference ID of the collection to be edited"},"name":{"type":"string","description":"The new name for the collection","nullable":true},"ou_category_id":{"type":"string","description":"The ID of the category to which the collection belongs","nullable":true},"parent_ref_id":{"type":"string","description":"The reference ID of the parent collection","nullable":true},"sections":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","description":"A randomly generated UUID for the section"},"integrations":{"type":"object","additionalProperties":{"type":"object","properties":{"type":{"type":"string","description":"The type of integration (e.g., \"jira\", \"github\", \"jenkins\")"},"filters":{"type":"object","description":"Filters specific to the integration type"}}}}}}}}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK response.","content":{"application/json":{"schema":{"type":"object","properties":{"errors":{"type":"array","items":{"type":"string"}},"success":{"type":"array","items":{"type":"integer"}}}},"example":{"errors":[],"success":[74]}}}}}}
+>
+  
+</StatusCodes>
+
+
+

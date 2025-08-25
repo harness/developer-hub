@@ -1,0 +1,73 @@
+---
+id: dora-get-deployment-frequency
+title: "Retrieve deployment frequency data"
+description: "This endpoint is paginated and retrieves deployment frequency data."
+sidebar_label: "Retrieve deployment frequency data"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV0tv4kgQ/iut2ki5GLDJi1irldgddoMyO4lC5hABQo1d2D2xuz3dbRIW8d9X5UcwhGRymMP4Au56dHX1V1Wf12B5ZMAfw6ebuz5MHQjRBFpkVigJPtzHwjCUYaaEtEwYlvFISG4xZFyGTKPVApdoWIhZolYpSssWGr/nKIMVC7nlbXBAZag5eRyG4EOoNP8tQvvpxeTv2gIcKP4a+6cKV+Cvi1ehMQTf6hwdCJS0KC2JeJYlIij8dr4ZCncNJogx5fTPrjIEH9T8GwYWHMg0RWEFGpIuRGJR/1jPihRnmssIf6x7FNmGkpAWI9Swn9GR5doy8suEZJipIGYLpVNuYePAUfIRHwMZvuGBHgdUPhOhaTjiWnNKrrCYNteN1UJGUFrhM0+zBPfSs5OA4ojehds76V10XbeK17vw3N5lt+e6zc3HcOb1YFr6fm4FKsRRsQHJ1pBwGYEPwde7z+BAwueY0GuuE3DAqFwHWL2z49jazPidDs+ydsy1RGPaQnUiApXpGBQdnonO0usQtDpbKM5eoHjMJpOJZKx1xY7/KiHUohz4bB9FTc1+bmOlxX+F1Gf92+H14IH9ftW/+zIYjWajwXDWvx3OrgcPf7yYtQj0Lc2f2PGaFhibVOmcgM+qJVrcZnZHQKKjyNJaI9E70qSS1lmvhZvyz8ap9y2vgpTHE7qNCUxJtDmeSNhMqdZMpqQp4dt1XfrZRdrNNauVqJB/UvUVRzeo69d3lUO++gCS3zB+xNWBetrQSXJ5qNQ2DvAwFHQsnsx2zXeq5Qnx8VeMK1XSxr9eYBSasdx+IIRip1mGerZ79TJP541YCo29Wziksp+Qrc6cy/BAtA5YZXky2/aRQ8d+1TP3QF3EPq4S2myZVSLd13mDrttyu62u2z2FjdMwPb04OW+YeodMva3ptEbnzvau22v46B7w4V3u+KgS13ByfnF6thPIoUO43sFDXHbPvOb5vd4btid1BE3E7GHCbV+e7D6vQXHePntbpTpbt1ejAK6G/1zBoavv9mr8pmhjRbqZMgVsOfmAdwcPDTPUS9Tl1KPx5sNH51lxDQaDXAtboqmfiWtc0VwCfzxtikfUe0voNZW2faBYpEZAfT1GHhbEQvKUpP3bIbsePLxiGrT+iCtifpxZ9YiSZVotRYghe4pFgizlj0JGzMZI85EFPElMmxW8URiWGwyZVYznNkZpaWBgoRskgrgit8UbPmeKNGum2WZfVKFYyUeDIWuEEorFAnXJNVXKOLsqk8huE26JCpFimz2onAVcsggl8c8dN4a4U+06VWGeYB1MPyhwwhJcYkKTcuMATbi7LTMdfJAq1QxpjxhVnYYQLuRClcaW/MFILewT18gGMhISkRTZUBoRxda8JpOolyJAQ/zvJQl0on+LE9HIJuiVyl7bbbvU3gi+KS8mdnX9dxWPf5vG72+93nKBn/SRUOHU4rPtZAkXkkIt6mVdVdoYlh7FoXQZzoFqmzoQU3H6Y1iv59zgV51sNrT8PUdNNTR1YMm14HNK95iuoKqFl0YHNUG8p4hIPcnLCtpjPC/tDfpBgJl9V3fa6B+3N6N7cGBefeOkKiQbzZ/o+4c/gQ/FRxNZFwVdrJWUOecELyh90vM/uIyZuQ==
+sidebar_class_name: "post api-method"
+info_path: docs/api-references/software-engineering-insights
+custom_edit_url: null
+---
+
+
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Retrieve deployment frequency data"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dora/deployment_frequency"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+This endpoint is paginated and retrieves deployment frequency data.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"filter":{"type":"object","properties":{"time_range":{"type":"object","properties":{"$gt":{"type":"integer","description":"Start time in epoch format"},"$lt":{"type":"integer","description":"End time in epoch format"}}}}},"ou_ids":{"type":"array","items":{"type":"string"}}}},"example":{"filter":{"time_range":{"$gt":1708387200,"$lt":1710892800}},"ou_ids":["518"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK response.","content":{"application/json":{"schema":{"type":"object","properties":{"time_series":{"type":"object","properties":{"day":{"type":"array","items":{"type":"object","properties":{"key":{"type":"integer"},"count":{"type":"integer"},"additional_key":{"type":"string"}}}},"week":{"type":"array","items":{"type":"object","properties":{"key":{"type":"integer"},"count":{"type":"integer"},"additional_key":{"type":"string"}}}},"month":{"type":"array","items":{"type":"object","properties":{"key":{"type":"integer"},"count":{"type":"integer"},"additional_key":{"type":"string"}}}}}},"stats":{"type":"object","properties":{"count_per_day":{"type":"number"},"count_per_week":{"type":"number"},"count_per_month":{"type":"number"},"band":{"type":"string"},"total_deployment":{"type":"integer"}}}}},"example":{"time_series":{"day":[{"key":1708387200,"count":0,"additional_key":"20-02-2024"},{"key":1708473600,"count":1,"additional_key":"21-02-2024"}],"week":[{"key":1708300800,"count":2,"additional_key":"19-02-2024"}],"month":[{"key":1706745600,"count":10,"additional_key":"01-02-2024"},{"key":1709251200,"count":18,"additional_key":"01-03-2024"}]},"stats":{"count_per_day":0.9333333333333333,"count_per_week":6.533333333333333,"count_per_month":28,"band":"HIGH","total_deployment":28}}}}}}}
+>
+  
+</StatusCodes>
+
+
+

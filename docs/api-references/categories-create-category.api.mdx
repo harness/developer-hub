@@ -1,0 +1,73 @@
+---
+id: categories-create-category
+title: "Create a new Collection category"
+description: "Create a new collection category"
+sidebar_label: "Create a new Collection category"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVltv6zYM/isE99AXJ+llazFjGJB1GRp0a4OmxVY0RaHItK1TR/KR5KRZkP8+0JfESXrOKbb5JZFEUiL5fSRX6EXiMHzCS5NlJL0yGqTwlBiryOFzgBE5aVXOJxjipSXhCQRoWoA80FligCYnK3hzGGGIW2PfyVL3citp6XNBzv9ioiWGK5RGe9Ke/4o8z5QsrfQ+Ob55hU6mNBP8zy9zwhDN9BNJjwHmlu/0/OBwhdYYf1vciBm1ZJ23Sie47859SqDFjMDE4FMC1gVjE6HV3+XtIoNCK4/rABfGvrpcSGK/NoaV9pSQfdfy8NfG7kaXDel/9bQy4E3s1nvS3zLWh9a6sdi2ptxLbimiWGlquzc1JiOhDwz+mZJPye7YAeWgZWQdIGkxzf6TvcbCuvwCfOtIE9FYzPKMs/20wkzohHH2cPc7BpiJKWW8LGyGATpTWEn1Gjp/weh2fA9Hqfe5C3s9kefdVFhNznWV6SWMW9dzpHoiV735Sc/YpLdF8BFMJhPduYKjywqqnftlTiHso3Ur1y98amyNpRD6o+H14BF+uurf3QzG45fxYPjSHw1frgePP9dKERytJhpg0sLxBEOY4OCt9BruGKO3DxMMKrkWLlnw5Iez84v6SG+Uf1NaaEkbpVb0K4H7VDkOOCfAkTQ6Ak9iBnKjsgMRVopF5qg+rPPE294WNNHro4nG9TOT3OVGu4qbp8fH/LOb+9traIS6GPxfZUBFh7T4Ivm+xacPMOSrcGfoeuUz3msK4F3tc6lZ5bZ5N/4Y0/lpLM86ZydCdL6X8XFHnJ/GnfOLCxIUx2dn01NsnGmS+04JeT+nl3jgTpXLrQecxJpyM/Kp4UflxpVhFj7FEA/pwXwjOydbEZMZGOJHqVZixZEsrPLLUr+fq2taMoMwfHpuH48ZAlWW20KbqItyk53kKKQkorJA19Hqj4ZwPXg8rJGjIbxSWXUEePNKGnJr5iqiCBapyghm4lXppAwnC0uRZa4LTZQLRxF4A6LwKWnPuKWqnmWKtAfhyxW95YYlSUe5Udp34caUgvX5eDCE1lMiFcdkWT+2ZgYCrqogwigTPjZ2xoJdeDQFSKEhIc3dd8eMA6U3pmcmKjJqHtOX0hTaQ0ZzyiYVTplod9vOPNhCs91Zt51mpy8eb8L8hU602d4DIANuH3+cwNiUia25MzaxXwhLMNCJ0kRsC4baqST17uCuMdm5kuQgNnYTNw7CH2UQuNgwWivhk+5x95i5yDCfibII1K7sDD2Hg9Jy/+LWKPORgalGrac338szocpaUrJnVZPtCecnPFlZDtzueJYyKcMnXK2mwtGDzdZr3v5ckGUaPQc4F1ZxVEsWBQ0dmGGvtOQXtnoZR0RkRUWivdq7DhqNvpSU+6/KPrfqBvdcDHBaj3kzE7GOFQseAcUCQyynRtauBjjeqxp7IRKWrWzy9w/tdqsr
+sidebar_class_name: "post api-method"
+info_path: docs/api-references/software-engineering-insights
+custom_edit_url: null
+---
+
+
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a new Collection category"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/org/categories"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a new collection category
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"rootOuName":{"type":"string","description":"The name of the root organizational unit"},"workspaceId":{"type":"integer","description":"The ID of the workspace"},"name":{"type":"string","description":"The name of the new category"},"description":{"type":"string","description":"A description of the category"},"is_predefined":{"type":"boolean","description":"Whether the category is predefined"},"enabled":{"type":"boolean","description":"Whether the category is enabled"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK response.","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"},"description":{"type":"string"},"is_predefined":{"type":"boolean"},"enabled":{"type":"boolean"}},"title":"CategoryResponse"},"example":{"id":"9fe62fc3-31aa-4cf0-a62f-677eaeff33b2","name":"Finance","description":"This is the second team C","is_predefined":false,"enabled":true}}}}}}
+>
+  
+</StatusCodes>
+
+
+

@@ -1,0 +1,73 @@
+---
+id: contributors-get-active-versions
+title: "Retrieve the list of active versions"
+description: "This API endpoint retrieves the list of active versions."
+sidebar_label: "Retrieve the list of active versions"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVlFv2zYQ/iuH20O2QLXsAHmwsG4wNmMxsrVB3BYIksCgpZPEhiJVknLjGvrvw9FyIide0257Ekgej9/dfd+dNuhF4TC5xt+M9lYuG2+sw9sIM3KplbWXRmOC70rpYHIxA9JZbaT2YMlbSSty4EsCJZ0Hk4NIvVwRrMg6abQbYISmJivYzSzDBNPeMz8U5CfhwofOHiOshRUVebKMaoNaVIQJ1qKghZNfCCOUDOhTQ3aNz2ES6KZakmUwllJjMwfeMNrGaqjJArsawO+Ui0Z5kA608eBqSmUuKWPElj410lKGSS6UowhdWlIlMNmgX9cMR2pPBVls22gP4svo2GoHcYsrZHEP0BB+5Jzm0jofLvz0vahuI7x/lZqM5qKqFW1TqYQuuALvL//ECJVYkuJlYxVG6ExjU+rWcFR6X7skjkVdD0phNTk3kCYuuJIudiRjUct4NYqNLeLGkXXxrua/PtTq9Xg8PoKbmxsN8OoMjkSaUu0TEHWtZBo4EX90Rkfg6d7HtRJSR3AcH/cvTRpfGiu/BPOEOXg+vYKfzyaXb6bz+WI+nS0mF7PF+fTql6MbjRy6JVcb7TjsDZ4Mh/zZr8Tbc9gZcWqZlKQ92z3FxnvPEm2WHyn1TFbL7PZy+1THt56hsFYwD6Snyr3sQGY9G+et1AW2UUewAwddyg+ctW3LYTXboJ7yI8JFRV5kwn9DVI/SO+gp0P7gSSncQtN9H8HSGEVC86k3XqjFP0LcRkD3gb97yb3G+BgmnFjW+OnJCEJ24TjmttU5PD0ZPQmyF8Z4PN7hHvZhdrraQ3Z6Mmo7MBX50nAPKyhkSfgSEzwsAlYU2dWui7HGEvxWUQUSO0obK/063J/U8pzWLAVMrm/7x3Pm5rZQfaNHBobNXV8qSWRkcUcp5I5+Pr161ql4/47W3IwEeHNHGmprVjKjDD6XUhFU4k7qIvR+Nk6FUm4AYUxIB42jjNubaHxJ2rOgKNimSpL2IHxY0X1t2HI3VAbwxgTD7nw+nUEPSibznCzfz62pQMDZNolwoYTPja3YcABXpoFUaChI8+TZc+NA6gfXlckaRTswkzSUHBStSHEnaTlpuQnJlJ5ZiHOT+8/CEkx1ITURiw1m2smi9O5ZFudkVzIlB7mxD1j54b/Cw9x5HhSMo8FwMAyCMs5XIoi6q9JlNyS+NmmfPr55bGr/ZXh3LHrsz4wwsHnTCeAaVyOe8rbACIMIHsMKPxKlcZ7NNpulcPTeqrbl7e2IZHJn0oml6g22rwTyf4z3gzHd0frJb8ZKqIbtkGf892H890P+BWx7sG55YSXjCl0h2smbk7q9MwkTt3fr2XhjLw+N7Y/pO2zbvwH4MXPx
+sidebar_class_name: "get api-method"
+info_path: docs/api-references/software-engineering-insights
+custom_edit_url: null
+---
+
+
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Retrieve the list of active versions"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/org/users/versions"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+This API endpoint retrieves the list of active versions.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"page_size","in":"query","description":"The number of records to return per page. Default is not specified.","required":false,"schema":{"type":"integer"}},{"name":"page","in":"query","description":"The page number to retrieve. Default is 0 (the first page).","required":false,"schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK response.","content":{"application/json":{"schema":{"type":"object","properties":{"records":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"},"version":{"type":"string"}}}},"count":{"type":"integer"},"_metadata":{"type":"object","properties":{"page_size":{"type":"integer"},"page":{"type":"integer"},"has_next":{"type":"boolean"},"total_count":{"type":"integer"}}}}},"example":{"records":["/* Array of 521 items */"],"count":521,"_metadata":{"page_size":999,"page":0,"has_next":false,"total_count":521}}}}}}}
+>
+  
+</StatusCodes>
+
+
+
