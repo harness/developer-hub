@@ -1463,7 +1463,7 @@ When building a cost category, it is now possible to incorporate another cost ca
 
 **Azure VM recommendations**
 
-Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
+Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#azure).
 
 ##### Fixed issues
 
@@ -1791,7 +1791,7 @@ This release adds validation to ensure that the load balancer domain name specif
 
 ##### What's new
 
-You can now add labels to enable node pool recommendations. `kops cluster` node label has been added for node pool recommendations. See [Labels for node pool recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations#prerequisites) for more information. (CCM-9309)
+You can now add labels to enable node pool recommendations. `kops cluster` node label has been added for node pool recommendations. (CCM-9309)
 
 ##### Fixed issues
 
