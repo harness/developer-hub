@@ -178,6 +178,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 # FME Docs
 /src/components/Roadmap/data/fmeData.ts austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io johannes.liegl@harness.io 
 /docs/feature-management-experimentation/ austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io johannes.liegl@harness.io mauro.sanz@harness.io
+/docs/feature-management-experimentation/20-sdks-and-infrastructure/ austin.lai@harness.io nicolas.zelaya@harness.io mauro.sanz@harness.io emmanuel.zamora@harness.io gaston.thea@harness.io emiliano.sanchez@harness.io nadia.mayor@harness.io bilal.al-shahwany@harness.io martin.cardozo@harness.io
 /release-notes/feature-management-experimentation.md austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io johannes.liegl@harness.io  
 /release-notes/static/fme/ austin.lai@harness.io david.karow@harness.io audrey.do@harness.io nicolas.zelaya@harness.io yunan.wu@harness.io johannes.liegl@harness.io 
 
