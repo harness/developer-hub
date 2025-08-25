@@ -30,6 +30,12 @@ The **Vulnerabilities** tab provides two options for exporting scan results:
 | default           | STO          | twistlock with policy  | 0om495LeS-Wc9WD8HsoVQg     | zj8auAxKD-tNAh5EIFpW3c    | bson@1.0.4              | Critical  | 9.8            | 3                  | container   | 1njected/nodegoat  | latest  | Approved         | twistlock    | sarah.smith@company.com   | security-lead@company.com | no                   |
 | default           | STO          | twistlock with policy  | 0om495LeS-Wc9WD8HsoVQg     | YCJDZf9HbKQt5mNw9kzSTO    | deep-extend@0.4.1       | Critical  | 9.8            | 1                  | container   | 1njected/nodegoat  | latest  | Pending          | twistlock    | mike.johnson@company.com  | sec-admin@company.com     | no                   |
 
+- **Exemption Status**: The status of the issue's exemption request at the time of the scan.
+- **Severity**: The vulnerability's severity level. If a severity override exists, STO uses the scanner-provided severity. Otherwise, it uses the severity that STO provides.
+- **Only in Current Scan**:
+    - **Yes**: This indicates a new vulnerability. It is found in the most recent scan but was not present in the baseline or previous scan you are comparing against.
+    - **No**: This indicates a pre-existing or recurring vulnerability. It is found in the current scan and was also present in the baseline scan.
+
 </details>
 
 For the **View in Dashboard** option, click the button to open the [Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary). The dashboard automatically applies your pipeline execution ID as a filter, so you can view the results without additional filtering. From there, click the **Options** menu (top-right) and select **Download** (choose **PDF** or **CSV**).
