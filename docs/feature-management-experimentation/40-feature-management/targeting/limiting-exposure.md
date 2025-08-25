@@ -3,6 +3,8 @@ title: Limiting exposure
 sidebar_label: Limiting exposure
 description: ""
 sidebar_position: 8
+redirect_from:
+- /docs/feature-management-experimentation/feature-management/limiting-exposure
 ---
 
 When you [create a feature flag](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag), you can limit the feature flag's exposure. Limiting exposure means limiting the percentage of traffic that is channeled through a feature flag, allowing the rest of the traffic _to be unaffected by_, or _to remain outside of_, the targeting rules. The users outside of the flag's targeting rules will be given the default treatment.

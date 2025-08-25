@@ -4,7 +4,7 @@ sidebar_label: Live tail
 description: ""
 sidebar_position: 19
 redirect_from:
-  - /docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail
+  - /docs/feature-management-experimentation/feature-management/live-tail
 ---
 
 The Live tail functionality within Data hub gives development teams a single place to view and query all impression and event data. With Live tail, development teams can:

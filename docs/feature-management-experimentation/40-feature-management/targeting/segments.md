@@ -6,6 +6,7 @@ sidebar_position: 6
 redirect_from:
 - /docs/feature-management-experimentation/feature-management/faqs/how-to-delete-a-segment-with-all-its-keys
 - /docs/feature-management-experimentation/feature-management/best-practices/csv-file-comma
+- /docs/feature-management-experimentation/feature-management/segments
 ---
 
 ## Overview

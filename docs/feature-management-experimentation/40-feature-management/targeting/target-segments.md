@@ -3,6 +3,8 @@ title: Target segments
 sidebar_label: Target segments
 description: ""
 sidebar_position: 7
+redirect_from:
+- /docs/feature-management-experimentation/feature-management/target-segments
 ---
 
 Once you create a feature flag, you can [create feature flag targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting#setting-up-targeting) that target individual user IDs (user keys), but you can also use segments.

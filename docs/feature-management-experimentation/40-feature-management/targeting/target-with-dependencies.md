@@ -3,6 +3,8 @@ title: Target with dependencies
 sidebar_label: Target with dependencies
 description: ""
 sidebar_position: 10
+redirect_from:
+- /docs/feature-management-experimentation/feature-management/target-with-dependencies
 ---
 
 Use FME's dependency matcher when you want one feature flag to depend on the evaluation of another flag.

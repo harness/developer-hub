@@ -6,6 +6,7 @@ sidebar_position: 9
 redirect_from:
 - /docs/feature-management-experimentation/feature-management/faqs/does-my-sdk-version-support-semver
 - /docs/feature-management-experimentation/feature-management/faqs/what-are-attributes-in-the-admin-api-vs-custom-attributes-in-targeting-rules/
+- /docs/feature-management-experimentation/feature-management/target-with-custom-attributes
 ---
 
 import Tabs from '@theme/Tabs';
