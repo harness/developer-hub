@@ -496,6 +496,7 @@ public class SplitView: NSObject, Codable {
         return changeNumber as NSNumber?
     }
     @objc public var configs: [String: String]?
+    @objc public var prerequisites: [Prerequisite]
     @objc public var impressionsDisabled: Bool = false
 
 }

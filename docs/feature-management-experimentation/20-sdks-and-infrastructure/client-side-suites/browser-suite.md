@@ -1226,7 +1226,7 @@ client.once(client.Event.SDK_READY_TIMED_OUT, function () {
 });
 
 client.on(client.Event.SDK_UPDATE, function () {
-  // fired each time the client state changes.
+  // Fired each time the client state changes.
   // For example, when a feature flag or a segment changes.
   console.log('Feature flag or segment definitions have been updated!');
 });
@@ -1259,13 +1259,13 @@ function whenReady() {
 client.once(client.Event.SDK_READY, whenReady);
 
 client.once(client.Event.SDK_READY_TIMED_OUT, () => {
-  // this callback will be called after 1.5 seconds if and only if the client
-  // is not ready for that time. You can still call getTreatment()
-  // but it could return CONTROL.
+  // This callback will be called after `readyTimeout` seconds (10 seconds by default)
+  // if and only if the client is not ready for that time. 
+  // You can still call `getTreatment()` but it could return `CONTROL`.
 });
 
 client.on(client.Event.SDK_UPDATE, () => {
-  // fired each time the client state change.
+  // Fired each time the client state changes.
   // For example, when a feature flag or a segment changes.
   console.log('Feature flag or segment definitions have been updated!');
 });
