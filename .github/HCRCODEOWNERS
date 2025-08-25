@@ -105,10 +105,10 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Docs/ContinuousErrorTracking.tsx @M-Tsur
 
 # SRM Docs
-/docs/service-reliability-management/ @sunilgupta-harness @umamukkara @M-Tsur vasundhara.shukla@harness.io ryan.taylor@harness.io tina.huang@harness.io
-/release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara @M-Tsur vasundhara.shukla@harness.io ryan.taylor@harness.io tina.huang@harness.io
-/src/components/Roadmap/data/srmData.ts @sunilgupta-harness @M-Tsur vasundhara.shukla@harness.io ryan.taylor@harness.io tina.huang@harness.io
-/src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur vasundhara.shukla@harness.io ryan.taylor@harness.io tina.huang@harness.io
+/docs/service-reliability-management/ vasundhara.shukla@harness.io ryan.taylor@harness.io tina.huang@harness.io moshe.tsur@harness.io prasad.satam@harness.io anshul@harness.io
+/release-notes/service-reliability-management.md vasundhara.shukla@harness.io ryan.taylor@harness.io tina.huang@harness.io
+/src/components/Roadmap/data/srmData.ts vasundhara.shukla@harness.io ryan.taylor@harness.io tina.huang@harness.io
+/src/components/Docs/data/serviceReliabilityManagementData.ts vasundhara.shukla@harness.io ryan.taylor@harness.io tina.huang@harness.io
 
 # Chaos Docs
 /docs/chaos-engineering/ @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
