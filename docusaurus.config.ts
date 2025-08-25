@@ -4,6 +4,8 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import type * as Plugin from '@docusaurus/types/src/plugin';
+import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs';
 
 const BASE_URL = process.env.BASE_URL || '/';
 function hideIndexFromSidebarItems(items) {
@@ -32,7 +34,7 @@ const config: Config = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  // themes: ['@docusaurus/theme-mermaid'],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -166,7 +168,7 @@ const config: Config = {
             {
               label: 'Internal Developer Portal',
               to: 'docs/internal-developer-portal',
-            },           
+            },
             {
               label: 'Cloud Development Environments',
               to: 'docs/cloud-development-environments',
@@ -507,8 +509,7 @@ const config: Config = {
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
           const sidebarItems = await defaultSidebarItemsGenerator(args);
-          const sidebarItemsWithoutIndex =
-            hideIndexFromSidebarItems(sidebarItems);
+          const sidebarItemsWithoutIndex = hideIndexFromSidebarItems(sidebarItems);
           return sidebarItemsWithoutIndex;
         },
       },
@@ -563,6 +564,7 @@ const config: Config = {
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         routeBasePath: 'docs', //CHANGE HERE
+        docItemComponent: '@theme/ApiItem',
         remarkPlugins: [
           [
             remarkMath,
@@ -594,11 +596,35 @@ const config: Config = {
         routeBasePath: 'roadmap', //CHANGE HERE
       },
     ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'openapi',
+        docsPluginId: 'classic',
+        config: {
+          petstore: {
+            specPath: 'api-references/main.yaml',
+            outputDir: 'docs/api-references',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              categoryLinkSource: 'tag',
+            },
+            template: 'templates/api.mustache', // Customize API MDX with mustache template
+            infoTemplate: 'templates/info.mustache',
+            tagTemplate: 'templates/tag.mustache',
+            schemaTemplate: 'templates/schema.mustache',
+            hideSendButton: false,
+            showSchemas: true,
+          } satisfies OpenApiPlugin.Options,
+        } satisfies Plugin.PluginOptions,
+      },
+    ],
 
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
   ],
+  themes: ['docusaurus-theme-openapi-docs'],
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),
     path.join(__dirname, '/client-modules/iframeEmbed'),
@@ -608,8 +634,7 @@ const config: Config = {
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
       type: 'text/css',
-      integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      integrity: 'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous',
     },
   ],

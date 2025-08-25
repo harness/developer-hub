@@ -1,0 +1,1805 @@
+openapi: 3.0.3
+info:
+  title: Software Engineering Insights
+  description: Services for Harness SEI Module.
+  version: 1.0.0
+servers:
+  - url: https://app.harness.io/gratis/sei/api/v1
+paths:
+  /v1/org/workspaces/units/list:
+    post:
+      tags:
+        - Collection categories
+      summary: List all Collection categories
+      description: Retrieve a list of collection categories
+      operationId: categories#listCategories 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: integer
+                  description: The page number for pagination
+                  default: 0
+                pageSize:
+                  type: integer
+                  description: The number of items per page
+                  default: 20
+                filter:
+                  type: object
+                  properties:
+                    name:
+                      type: array
+                      items:
+                        type: string
+                      description: Filter by category names
+                    is_predefined:
+                      type: boolean
+                      description: Filter by predefined status
+                    enabled:
+                      type: boolean
+                      description: Filter by enabled status of the collection category
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl -X POST 'https://app.harness.io/gratis/sei/api/v1/org/workspaces/units/list' \
+            -H 'Content-Type: application/json' \
+            -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+            -d '{
+              "page": 0,
+              "pageSize": 20,
+              "filter": {
+                "name": [
+                  "string"
+                ],
+                "is_predefined": true,
+                "enabled": true
+              }
+            }'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageResponse'
+              example:
+                records:
+                  - id: 6cad073a-b7bf-4606-b706-302f19d8e133
+                    name: Organizing
+                    description: This is the first team c
+                    is_predefined: true
+                    enabled: true
+                    count_of_ous: 1
+                    created_at: 1654841196842
+                    updated_at: 1654841196842
+                  - id: 9fe62fc3-31aa-4cf0-a62f-677eaeff33b2
+                    name: Finance
+                    description: This is the second team c
+                    enabled: true
+                    count_of_ous: 0
+                    is_predefined: false
+                    created_at: 1654841375866
+                    updated_at: 1654841375866
+                  - id: 75504d25-4980-4952-a282-ab6933fdff8b
+                    name: Dev Team
+                    description: This is the thrid team c
+                    enabled: true
+                    count_of_ous: 1
+                    is_predefined: true
+                    created_at: 1654841422226
+                    updated_at: 1654841422226
+                  - id: 9a2c246b-4468-4888-8371-43fae8473296
+                    name: Testing Team
+                    description: This is the fourth team c
+                    enabled: true
+                    count_of_ous: 4
+                    is_predefined: true
+                    created_at: 1654841434865
+                    updated_at: 1654841434865
+                count: 4
+                _metadata:
+                  page_size: 1000
+                  page: 0
+                  has_next: false
+                  total_count: 4
+                  
+  /v1/org/categories:
+    post:
+      tags:
+        - Collection categories
+      summary: Create a new Collection category
+      description: Create a new collection category
+      operationId: categories#createCategory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rootOuName:
+                  type: string
+                  description: The name of the root organizational unit
+                workspaceId:
+                  type: integer
+                  description: The ID of the workspace
+                name:
+                  type: string
+                  description: The name of the new category
+                description:
+                  type: string
+                  description: A description of the category
+                is_predefined:
+                  type: boolean
+                  description: Whether the category is predefined
+                enabled:
+                  type: boolean
+                  description: Whether the category is enabled
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl -X POST 'https://app.harness.io/gratis/sei/api/v1/org/categories' \
+            -H 'Content-Type: application/json' \
+            -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+            -d '{
+              "rootOuName": "Example Root OU",
+              "workspaceId": 15367,
+              "name": "Finance",
+              "description": "This is the second team c",
+              "is_predefined": false,
+              "enabled": true
+            }'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+              example:
+                id: 9fe62fc3-31aa-4cf0-a62f-677eaeff33b2
+                name: Finance
+                description: This is the second team C
+                is_predefined: false
+                enabled: true
+
+    delete:
+      tags:
+        - Collection categories
+      summary: Delete multiple Collection categories
+      description: Delete multiple collection categories in a single request
+      operationId: categories#deleteCategories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl -X PUT 'https://app.harness.io/gratis/sei/api/v1/org/categories' \
+            -H 'Content-Type: application/json' \
+            -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+            -d '{
+              [
+                "9a1dc856-6e2d-4dbe-98cf-5416c5981bbc", "eafb1e30-4af8-480e-b7b5-487293659df3"
+                ]
+                }'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: The unique identifier of the category
+                        success:
+                          type: boolean
+                          description: Indicates whether the deletion was successful
+                  count:
+                    type: integer
+                    description: The total number of successfully deleted categories
+              example:
+                records:
+                  - id: "9a1dc856-6e2d-4dbe-98cf-5416c5981bbc"
+                    success: true
+                  - id: "eafb1e30-4af8-480e-b7b5-487293659df3"
+                    success: true
+                count: 2
+
+  /v1/org/categories/{id}:
+    put:
+      tags:
+        - Collection categories
+      summary: Update an existing Collection category
+      description: Use this API endpoint to update an existing collection category
+      operationId: categories#updateCategory
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique identifier of the collection category to be updated
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The updated name of the category
+                description:
+                  type: string
+                  description: The updated description of the category
+                is_predefined:
+                  type: boolean
+                  description: Whether the category is predefined
+                enabled:
+                  type: boolean
+                  description: Whether the category is enabled
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl -X PUT 'https://app.harness.io/gratis/sei/api/v1/org/categories/{id}' \
+            -H 'Content-Type: application/json' \
+            -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+            -d '{
+              "name": "TEST CATEGORY",
+              "description": "this is an updated description for the collection category",
+              "is_predefined": true,
+              "enabled": true
+            }'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+              example:
+                id: cb147922-a0c2-4563-b3fe-f1e67aa7eb4c
+                name: Testing Team
+                description: This is an updated description for the collection category
+                is_predefined: true
+                enabled: true
+
+    delete:
+      tags:
+        - Collection categories
+      summary: Delete a specific Collection category
+      description: Delete an existing collection category
+      operationId: categories#deleteCategory
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique identifier of the collection category to be deleted
+          schema:
+            type: string
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl -X DELETE 'https://app.harness.io/gratis/sei/api/v1/org/categories/{id}' \
+            -H 'Content-Type: application/json' \
+            -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        success:
+                          type: boolean
+                  count:
+                    type: integer
+              example:
+                records:
+                  - id: 9a2c246b-4468-4888-8371-43fae8473296
+                    success: true
+                count: 1
+
+  /v1/org/units/list:
+    post:
+      tags:
+        - Collections
+      summary: Retrieve a list of collections
+      description: This API endpoint allows you to retrieve a list of collections. The endpoint is paginated.
+      operationId: collections#listCollections
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: integer
+                  description: The page number for pagination
+                  default: 0
+                page_size:
+                  type: integer
+                  description: The number of items per page (default may vary)
+                filter:
+                  type: object
+                  properties:
+                    ou_category_id:
+                      type: array
+                      items:
+                        type: string
+                      description: Filter collections by category IDs
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl -X POST 'https://app.harness.io/gratis/sei/api/v1/org/units/list' \
+            -H 'Content-Type: application/json' \
+            -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+            -d '{
+              "page": 0,
+              "page_size": 100,
+              "filter": {
+                "ou_category_id": ["b5ba90ab-caf4-4fef-90bd-3816d2294547"]
+              }
+            }'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        ou_id:
+                          type: string
+                        name:
+                          type: string
+                        tags:
+                          type: array
+                          items:
+                            type: string
+                        managers:
+                          type: array
+                          items:
+                            type: string
+                        admins:
+                          type: array
+                          items:
+                            type: string
+                        sections:
+                          type: array
+                          items:
+                            type: string
+                        version:
+                          type: string
+                        no_of_dashboards:
+                          type: integer
+                        path:
+                          type: string
+                        ou_category_id:
+                          type: string
+                        default_dashboard_id:
+                          type: integer
+                        workspace_id:
+                          type: integer
+                        created_at:
+                          type: integer
+                        parent_ref_id:
+                          type: integer
+                          nullable: true
+                        workflow_profile_id:
+                          type: string
+                          nullable: true
+                        workflow_profile_name:
+                          type: string
+                          nullable: true
+                  count:
+                    type: integer
+                  _metadata:
+                    type: object
+                    properties:
+                      page_size:
+                        type: integer
+                      page:
+                        type: integer
+                      has_next:
+                        type: boolean
+                      total_count:
+                        type: integer
+              example:
+                records:
+                  - id: "76"
+                    ou_id: "8ffa98a4-c607-4d90-a333-b79bf095a7fb"
+                    name: "All Teams"
+                    tags: []
+                    managers: []
+                    admins: []
+                    sections: []
+                    version: "1"
+                    no_of_dashboards: 3
+                    path: "/All Teams"
+                    ou_category_id: "ffaea171-ba57-4222-81b0-d26d3284c065"
+                    default_dashboard_id: 0
+                    workspace_id: 34
+                    created_at: 1710173818740
+                    workflow_profile_id: "f1d1d2f2-bba6-4f19-92c2-fcd4e4fa8116"
+                    workflow_profile_name: "DORA profile"
+                  - id: "79"
+                    ou_id: "e1dc905b-0eca-4c4d-ad49-a3ce396fe0ff"
+                    name: "Frontend"
+                    tags: []
+                    managers: []
+                    admins: []
+                    sections: []
+                    parent_ref_id: 76
+                    version: "2"
+                    no_of_dashboards: 0
+                    path: "/All Teams/Frontend"
+                    ou_category_id: "ffaea171-ba57-4222-81b0-d26d3284c065"
+                    default_dashboard_id: 0
+                    workspace_id: 34
+                    created_at: 1710947467896
+                count: 2
+                _metadata:
+                  page_size: 100
+                  page: 0
+                  has_next: false
+                  total_count: 2
+
+  /v1/org/units:
+    post:
+      tags:
+        - Collections
+      summary: Create a new collection
+      description: This API endpoint allows you to create a new collection.
+      operationId: collections#createCollection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name of the new collection
+                  ou_category_id:
+                    type: string
+                    description: The ID of the category to which the collection belongs
+                  parent_ref_id:
+                    type: string
+                    description: The reference ID of the parent collection
+                  sections:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: A randomly generated UUID for the section
+                        integrations:
+                          type: object
+                          additionalProperties:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                description: The type of integration (e.g., "jira", "github", "jenkins")
+                              filters:
+                                type: object
+                                description: Filters specific to the integration type
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl -X POST 'https://app.harness.io/gratis/sei/api/v1/org/units' \
+            -H 'Content-Type: application/json' \
+            -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+            -d '[
+                {
+                    "name": "My Collection",
+                    "ou_category_id": "b5ba90ab-caf4-4fef-90bd-3816d2294547",
+                    "parent_ref_id": "33",
+                    "sections": [
+                        {
+                            "id": "96096840-e721-11ee-b664-7bab67f40a81",
+                            "integrations": {
+                                "1": {
+                                    "type": "jira",
+                                    "filters": {
+                                        "projects": ["PROJECT1", "PROJECT2", "PROJECT3"]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": "9cb8ae30-e721-11ee-b664-7bab67f40a81",
+                            "integrations": {
+                                "2": {
+                                    "type": "github",
+                                    "filters": {
+                                        "repo_ids": ["my-org/my-repo-1", "my-org/my-repo-2", "my-org/my-repo-3"]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "id": "9f1589f0-e721-11ee-b664-7bab67f40a81",
+                            "integrations": {
+                                "3": {
+                                    "type": "jenkins",
+                                    "filters": {
+                                        "job_names": ["Pipeline1", "Pipeline2", "Pipeline3"]
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                  success:
+                    type: array
+                    items:
+                      type: integer
+              example:
+                errors: []
+                success: [82]
+
+    put:
+      tags:
+        - Collections
+      summary: Edit an existing collection
+      description: This API endpoint allows you to edit an existing collection.
+      operationId: collections#editCollection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The reference ID of the collection to be edited
+                  name:
+                    type: string
+                    description: The new name for the collection
+                    nullable: true
+                  ou_category_id:
+                    type: string
+                    description: The ID of the category to which the collection belongs
+                    nullable: true
+                  parent_ref_id:
+                    type: string
+                    description: The reference ID of the parent collection
+                    nullable: true
+                  sections:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: A randomly generated UUID for the section
+                        integrations:
+                          type: object
+                          additionalProperties:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                description: The type of integration (e.g., "jira", "github", "jenkins")
+                              filters:
+                                type: object
+                                description: Filters specific to the integration type
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl -X PUT 'https://app.harness.io/gratis/sei/api/v1/org/units' \
+            -H 'Content-Type: application/json' \
+            -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+            -d '[
+                {
+                    "id": "74",
+                    "name": "New Name",
+                    "ou_category_id": "b5ba90ab-caf4-4fef-90bd-3816d2294547",
+                    "parent_ref_id": "33",
+                    "sections": [
+                        {
+                            "id": "33024940-e728-11ee-b664-7bab67f40a81",
+                            "integrations": {
+                                "1": {
+                                    "type": "jira",
+                                    "filters": {
+                                        "projects": ["PROJECT4"]
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                  success:
+                    type: array
+                    items:
+                      type: integer
+              example:
+                errors: []
+                success: [74]
+
+    delete:
+      tags:
+        - Collections
+      summary: Delete an existing collection
+      description: This API endpoint allows you to delete an existing collection.
+      operationId: collections#deleteCollection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+                description: The reference ID of the collection to be deleted. Multiple IDs can be included in the array to delete multiple collections in a single request.
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl -X DELETE 'https://app.harness.io/gratis/sei/api/v1/org/units' \
+            -H 'Content-type: application/json' \
+            -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+            -d '["<ou_ref_id>"]'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "The collection(s) were successfully deleted."
+              example:
+                message: "The collection(s) were successfully deleted."
+
+  /v1/org/users/versions:
+    get:
+      tags:
+        - Contributors
+      summary: Retrieve the list of active versions
+      description: This API endpoint retrieves the list of active versions.
+      operationId: contributors#getActiveVersions
+      parameters:
+        - name: page_size
+          in: query
+          description: The number of records to return per page. Default is not specified.
+          required: false
+          schema:
+            type: integer
+        - name: page
+          in: query
+          description: The page number to retrieve. Default is 0 (the first page).
+          required: false
+          schema:
+            type: integer
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl 'https://app.harness.io/gratis/sei/api/v1/org/users/versions?page_size=999' \
+              -H 'accept: application/json, text/plain, */*' \
+              -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        version:
+                          type: string
+                  count:
+                    type: integer
+                  _metadata:
+                    type: object
+                    properties:
+                      page_size:
+                        type: integer
+                      page:
+                        type: integer
+                      has_next:
+                        type: boolean
+                      total_count:
+                        type: integer
+              example:
+                records: [/* Array of 521 items */]
+                count: 521
+                _metadata:
+                  page_size: 999
+                  page: 0
+                  has_next: false
+                  total_count: 521
+
+  /v1/org/users/schema:
+    get:
+      tags:
+        - Contributors
+      summary: Retrieve the Ccontributor data schema
+      description: This API endpoint retrieves the schema used by the contributors, including any custom fields.
+      operationId: contributors#getSchema
+      parameters: []
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl 'https://app.harness.io/gratis/sei/api/v1/org/users/schema' \
+              -H 'accept: application/json, text/plain, */*' \
+              -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version:
+                    type: integer
+                  created_at:
+                    type: integer
+                  fields:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        index:
+                          type: integer
+                        key:
+                          type: string
+                        display_name:
+                          type: string
+                        description:
+                          type: string
+                        type:
+                          type: string
+                        system_field:
+                          type: boolean
+              example:
+                version: 190
+                created_at: 1710153327501
+                fields:
+                  - index: 3
+                    key: integration
+                    display_name: Integration
+                    description: Add a column for every integration
+                    type: string
+                    system_field: false
+                  - index: 1
+                    key: full_name
+                    display_name: Name
+                    description: Name
+                    type: string
+                    system_field: false
+                  - index: 2
+                    key: region
+                    display_name: Region
+                    description: Region
+                    type: string
+                    system_field: false
+                  - index: 2
+                    key: email
+                    display_name: Email
+                    description: Unique email address per member
+                    type: string
+                    system_field: false
+
+  /v1/org/users/list:
+    post:
+      tags:
+        - Contributors
+      summary: Retrieve the list of current active licensed contributors
+      description: This API endpoint retrieves the list of current active licensed contributors.
+      operationId: users#listActiveUsers
+      parameters:
+        - in: query
+          name: version
+          schema:
+            type: integer
+          required: false
+          description: The version of the schema to use for the list of contributors.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: integer
+                  description: The page number to retrieve.
+                  default: 0
+                page_size:
+                  type: integer
+                  description: The number of records to return per page.
+                  default: 50
+                filter:
+                  type: object
+                  description: Filter criteria for the list of contributors.
+                  properties: {}
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl 'https://app.harness.io/gratis/sei/api/v1/org/users/list?page=0&page_size=50' \
+              -X POST \
+              -H 'accept: application/json, text/plain, */*' \
+              -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+              -H 'Content-type: application/json' \
+              -d '{
+                "page": 0,
+                "page_size": 50,
+                "filter": {}
+              }'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        org_uuid:
+                          type: string
+                        full_name:
+                          type: string
+                        email:
+                          type: string
+                        integration_user_ids:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              integration_id:
+                                type: string
+                              user_id:
+                                type: string
+                        additional_fields:
+                          type: object
+                        version:
+                          type: string
+                        created_at:
+                          type: integer
+                        updated_at:
+                          type: integer
+                  _metadata:
+                    type: object
+                    properties:
+                      total_count:
+                        type: integer
+                      has_next:
+                        type: boolean
+                      page_size:
+                        type: integer
+                      next_page:
+                        type: integer
+                      page:
+                        type: integer
+                      non_users_count:
+                        type: integer
+              example:
+                records:
+                  - id: "3"
+                    org_uuid: "6a113eba-3e65-4344-ab24-a935c602eb7f"
+                    full_name: "Ashish Duthade"
+                    email: "ashish@harness.io"
+                    integration_user_ids: []
+                    additional_fields:
+                      region: "test"
+                    version: "512"
+                    created_at: 1710164128545
+                    updated_at: 1714968896813
+                  - id: "0"
+                    full_name: "External User766797748"
+                    email: ""
+                    integration_user_ids:
+                      - integration_id: "5322"
+                        user_id: "712020:c41c2f65-682b-4c77-91df-6cd9de138c63"
+                    additional_fields: {}
+                    version: "0"
+                    created_at: 1715126614000
+                    updated_at: 1715661535000
+                _metadata:
+                  total_count: 80715
+                  has_next: true
+                  page_size: 50
+                  next_page: 1
+                  page: 0
+                  non_users_count: 80710
+
+  /v1/org/users:
+    put:
+      tags:
+        - Contributors
+      summary: Update existing contributors
+      description: This API endpoint is used to update existing contributors (users) in the system.
+      operationId: contributors#updateContributors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique identifier of the contributor.
+                  org_uuid:
+                    type: string
+                    description: The UUID of the Collection the contributor belongs to.
+                  full_name:
+                    type: string
+                    description: The updated full name of the contributor.
+                  email:
+                    type: string
+                    description: The updated email address of the contributor.
+                  integration_user_ids:
+                    type: array
+                    items:
+                      type: object
+                    description: An array of objects representing the integration user IDs associated with the contributor.
+                  additional_fields:
+                    type: object
+                    description: An object containing additional fields for the contributor (based on the schema).
+                  version:
+                    type: string
+                    description: The version of the contributor record.
+                  created_at:
+                    type: integer
+                    description: The timestamp when the contributor record was created (in milliseconds).
+                  updated_at:
+                    type: integer
+                    description: The timestamp when the contributor record was last updated (in milliseconds).
+                  dynamic_column_aggs_region:
+                    type: string
+                    description: A dynamic field for region aggregation.
+              example:
+                - id: "3"
+                  org_uuid: "6a113eba-3e65-4344-ab24-a935c602eb7f"
+                  full_name: "Ashish Duthade"
+                  email: "ashish@harness.io"
+                  integration_user_ids: []
+                  additional_fields:
+                    region: "test 123"
+                  version: "512"
+                  created_at: 1710164128545
+                  updated_at: 1714968896813
+                  dynamic_column_aggs_region: "test 123"
+      responses:
+        '200':
+          description: Update successful.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Success message indicating the update was successful.
+              example:
+                message: Contributor with ID 3 updated successfully.
+        '400':
+          description: Bad request. Indicates an issue with the request payload.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message indicating the reason for the bad request.
+              example:
+                error: "Invalid JSON format in request body."
+        '404':
+          description: Not found. Indicates the contributor with the specified ID was not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message indicating the contributor was not found.
+              example:
+                error: "Contributor with ID 3 not found."
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl 'https://app.harness.io/gratis/sei/api/v1/org/users' \
+              -X 'PUT' \
+              -H 'accept: application/json, text/plain, */*' \
+              -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+              -H 'Content-type: application/json' \
+              --data-raw '[
+                {
+                  "id": "3",
+                  "org_uuid": "6a113eba-3e65-4344-ab24-a935c602eb7f",
+                  "full_name": "Ashish Duthade",
+                  "email": "ashish@harness.io",
+                  "integration_user_ids": [],
+                  "additional_fields": {
+                    "region": "test 123"
+                  },
+                  "version": "512",
+                  "created_at": 1710164128545,
+                  "updated_at": 1714968896813,
+                  "dynamic_column_aggs_region": "test 123"
+                }
+              ]'
+
+  /v1/sei_contributor/list:
+    post:
+      tags:
+        - Contributors
+      summary: Retrieve SEI contributors list
+      description: This API endpoint retrieves the list of licensed users for the given organization.
+      operationId: seiContributors#listContributors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl --location 'https://app.harness.io/gratis/sei/api/v1/sei_contributor/list' \
+              -H 'Content-type: application/json' \
+              -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+              --data '{}'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  org_user_count:
+                    type: integer
+                  integration_user_count:
+                    type: integer
+                  org_user_details:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        org_user_id:
+                          type: string
+                        org_user_ref_id:
+                          type: string
+                        full_name:
+                          type: string
+                        email:
+                          type: string
+                        integration_user_details:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              integration_id:
+                                type: integer
+                              integration_type:
+                                type: string
+                              integration_user_id:
+                                type: string
+                              cloud_id:
+                                type: string
+              example:
+                org_user_count: 27
+                integration_user_count: 86
+                org_user_details:
+                  - org_user_id: "8789d43f-a278-4250-8ec3-6e117400f3cc"
+                    org_user_ref_id: "550"
+                    full_name: "Meetrajsinh Solanki"
+                    email: "meetrajsinh.solanki@harness.io"
+                    integration_user_details:
+                      - integration_id: 2
+                        integration_type: "github"
+                        integration_user_id: "27f430e1-b2d9-4dc8-9b7f-d2b76206dc6e"
+                        cloud_id: "meetrajsinh-crest"
+                      - integration_id: 12
+                        integration_type: "github"
+                        integration_user_id: "119f6299-f4bb-4206-8228-e4178d9addfc"
+                        cloud_id: "meetrajsinh-crest"
+                      - integration_id: 49
+                        integration_type: "github"
+                        integration_user_id: "3b9cebed-f8a4-4d57-8811-ccd7718fa139"
+                        cloud_id: "meetrajsinh-crest"
+                  - org_user_id: "2e4299b6-3106-454a-9115-5c58c34c24db"
+                    org_user_ref_id: "551"
+                    full_name: "Esha Shah Crest"
+                    email: "esha.shah@harness.io"
+                    integration_user_details:
+                      - integration_id: 2
+                        integration_type: "github"
+                        integration_user_id: "cf44ed58-f742-4164-8905-9de782017002"
+                        cloud_id: "eshah-crest"
+                      - integration_id: 49
+                        integration_type: "github"
+                        integration_user_id: "14fc9b9d-3218-4441-bb8a-12403d8db443"
+                        cloud_id: "eshah-crest"
+                      - integration_id: 12
+                        integration_type: "github"
+                        integration_user_id: "3210b749-35f5-445a-a12d-fced73139ba0"
+                        cloud_id: "eshah-crest"
+
+  /v1/dora/lead-time:
+    post:
+      tags:
+        - DORA
+      summary: Retrieve lead time data
+      description: This endpoint is paginated and retrieves lead time data.
+      operationId: dora#getLeadTime
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filter:
+                  type: object
+                  properties:
+                    ratings:
+                      type: array
+                      items:
+                        type: string
+                    calculation:
+                      type: string
+                    work_items_type:
+                      type: string
+                    jira_issue_types:
+                      type: array
+                      items:
+                        type: string
+                    limit_to_only_applicable_data:
+                      type: boolean
+                    integration_ids:
+                      type: array
+                      items:
+                        type: string
+                    jira_issue_resolved_at:
+                      type: object
+                      properties:
+                        $gt:
+                          type: string
+                        $lt:
+                          type: string
+                ou_ids:
+                  type: array
+                  items:
+                    type: string
+                across:
+                  type: string
+            example:
+              filter:
+                ratings: ["good", "slow", "needs_attention"]
+                calculation: "ticket_velocity"
+                work_items_type: "jira"
+                jira_issue_types: ["<Jira-issue-types>"]
+                limit_to_only_applicable_data: true
+                integration_ids: ["<integration-ids>"]
+                jira_issue_resolved_at:
+                  $gt: "<epoch-time>"
+                  $lt: "<epoch-time>"
+              ou_ids: ["518"]
+              across: "velocity"
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl 'https://app.harness.io/gratis/sei/api/v1/dora/lead-time' \
+              -H 'Content-type: application/json' \
+              -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+              --data-raw '{
+                "filter": {
+                  "work_items_type": "jira",
+                  "integration_ids": ["<integration-id>"],
+                  "jira_issue_resolved_at": {
+                    "$gt": "<epoch-time>",
+                    "$lt": "<epoch-time>"
+                  }
+                },
+                "ou_ids": ["518"],
+                "across": "velocity"
+              }'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        lead_time:
+                          type: number
+                        work_item:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            resolved_at:
+                              type: string
+                  count:
+                    type: integer
+                  _metadata:
+                    type: object
+                    properties:
+                      page_size:
+                        type: integer
+                      page:
+                        type: integer
+                      has_next:
+                        type: boolean
+                      total_count:
+                        type: integer
+              example:
+                records:
+                  - id: "1"
+                    lead_time: 120
+                    work_item:
+                      type: "Jira"
+                      resolved_at: "2024-07-01T12:34:56Z"
+                count: 1
+                _metadata:
+                  page_size: 100
+                  page: 0
+                  has_next: false
+                  total_count: 1
+
+  /v1/dora/deployment_frequency:
+    post:
+      tags:
+        - DORA
+      summary: Retrieve deployment frequency data
+      description: This endpoint is paginated and retrieves deployment frequency data.
+      operationId: dora#getDeploymentFrequency
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filter:
+                  type: object
+                  properties:
+                    time_range:
+                      type: object
+                      properties:
+                        $gt:
+                          type: integer
+                          description: Start time in epoch format
+                        $lt:
+                          type: integer
+                          description: End time in epoch format
+                ou_ids:
+                  type: array
+                  items:
+                    type: string
+            example:
+              filter:
+                time_range:
+                  $gt: 1708387200
+                  $lt: 1710892800
+              ou_ids: ["518"]
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl 'https://app.harness.io/gratis/sei/api/v1/dora/deployment_frequency' \
+              -H 'Content-type: application/json' \
+              -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+              --data-raw '{
+                "filter": {
+                  "time_range": {
+                    "$gt": 1708387200,
+                    "$lt": 1710892800
+                  }
+                },
+                "ou_ids": ["518"]
+              }'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  time_series:
+                    type: object
+                    properties:
+                      day:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: integer
+                            count:
+                              type: integer
+                            additional_key:
+                              type: string
+                      week:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: integer
+                            count:
+                              type: integer
+                            additional_key:
+                              type: string
+                      month:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: integer
+                            count:
+                              type: integer
+                            additional_key:
+                              type: string
+                  stats:
+                    type: object
+                    properties:
+                      count_per_day:
+                        type: number
+                      count_per_week:
+                        type: number
+                      count_per_month:
+                        type: number
+                      band:
+                        type: string
+                      total_deployment:
+                        type: integer
+              example:
+                time_series:
+                  day:
+                    - key: 1708387200
+                      count: 0
+                      additional_key: "20-02-2024"
+                    - key: 1708473600
+                      count: 1
+                      additional_key: "21-02-2024"
+                  week:
+                    - key: 1708300800
+                      count: 2
+                      additional_key: "19-02-2024"
+                  month:
+                    - key: 1706745600
+                      count: 10
+                      additional_key: "01-02-2024"
+                    - key: 1709251200
+                      count: 18
+                      additional_key: "01-03-2024"
+                stats:
+                  count_per_day: 0.9333333333333333
+                  count_per_week: 6.533333333333333
+                  count_per_month: 28.0
+                  band: "HIGH"
+                  total_deployment: 28
+
+  /v1/dora/change_failure_rate:
+    post:
+      tags:
+        - DORA
+      summary: Retrieve change failure rate data
+      description: This endpoint is paginated and retrieves change failure rate data.
+      operationId: dora#getChangeFailureRate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filter:
+                  type: object
+                  properties:
+                    time_range:
+                      type: object
+                      properties:
+                        $gt:
+                          type: integer
+                          description: Start time in epoch format
+                        $lt:
+                          type: integer
+                          description: End time in epoch format
+                ou_ids:
+                  type: array
+                  items:
+                    type: string
+            example:
+              filter:
+                time_range:
+                  $gt: 1708387200
+                  $lt: 1710892800
+              ou_ids: ["518"]
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl 'https://app.harness.io/gratis/sei/api/v1/dora/change_failure_rate' \
+              -H 'Content-type: application/json' \
+              -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+              --data-raw '{
+                "filter": {
+                  "time_range": {
+                    "$gt": 1708387200,
+                    "$lt": 1710892800
+                  }
+                },
+                "ou_ids": ["518"]
+              }'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  time_series:
+                    type: object
+                    properties:
+                      day:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: integer
+                            count:
+                              type: integer
+                            additional_key:
+                              type: string
+                      week:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: integer
+                            count:
+                              type: integer
+                            additional_key:
+                              type: string
+                      month:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: integer
+                            count:
+                              type: integer
+                            additional_key:
+                              type: string
+                  stats:
+                    type: object
+                    properties:
+                      failure_rate:
+                        type: number
+                      band:
+                        type: string
+                      total_deployment:
+                        type: integer
+                      is_absolute:
+                        type: boolean
+              example:
+                time_series:
+                  day:
+                    - key: 1708387200
+                      count: 2
+                      additional_key: "20-02-2024"
+                    - key: 1708473600
+                      count: 2
+                      additional_key: "21-02-2024"
+                  week:
+                    - key: 1708300800
+                      count: 9
+                      additional_key: "19-02-2024"
+                  month:
+                    - key: 1706745600
+                      count: 18
+                      additional_key: "01-02-2024"
+                    - key: 1709251200
+                      count: 33
+                      additional_key: "01-03-2024"
+                stats:
+                  failure_rate: 51.0
+                  band: "LOW"
+                  total_deployment: 100
+                  is_absolute: false
+
+  /v1/dora/mean-time:
+    post:
+      tags:
+        - DORA
+      summary: Retrieve Mean Time to Restore (MTTR) data
+      description: This endpoint retrieves Mean Time to Restore (MTTR) data for DORA metrics.
+      operationId: dora#getMeanTimeToRestore
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filter:
+                  type: object
+                  properties:
+                    ratings:
+                      type: array
+                      items:
+                        type: string
+                      description: Array of rating categories
+                    calculation:
+                      type: string
+                      description: Type of calculation to perform
+                    work_items_type:
+                      type: string
+                      description: Type of work items to consider
+                    limit_to_only_applicable_data:
+                      type: boolean
+                      description: Whether to limit the data to only applicable items
+                    integration_ids:
+                      type: array
+                      items:
+                        type: string
+                      description: Array of integration IDs
+                ou_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of organizational unit IDs
+                across:
+                  type: string
+                  description: Dimension to calculate across
+                widget_id:
+                  type: string
+                  description: Unique identifier for the widget
+            example:
+              filter:
+                ratings: ["good", "slow", "needs_attention"]
+                calculation: "ticket_velocity"
+                work_items_type: "jira"
+                limit_to_only_applicable_data: true
+                integration_ids: ["<INTEGRATION_ID>"]
+              ou_ids: ["<OU_ID>"]
+              across: "velocity"
+              widget_id: "<WIDGET_ID>"
+      x-codeSamples:
+        - lang: 'cURL'
+          label: 'curl'
+          source: |
+            curl 'https://app.harness.io/gratis/sei/api/v1/dora/mean-time' \
+              -H 'Content-type: application/json' \
+              -H 'Authorization: APIKEY <HARNESS_SEI_API_KEY>' \
+              --data-raw '{
+                "filter": {
+                  "ratings": ["good", "slow", "needs_attention"],
+                  "calculation": "ticket_velocity",
+                  "work_items_type": "jira",
+                  "limit_to_only_applicable_data": true,
+                  "integration_ids": ["<INTEGRATION_ID>"]
+                },
+                "ou_ids": ["ADD_OU_ID"],
+                "across": "velocity",
+                "widget_id": "<WIDGET_ID>"
+              }'
+      responses:
+        '200':
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mean_time:
+                    type: number
+                    description: The calculated mean time to restore
+                  unit:
+                    type: string
+                    description: The unit of measurement for the mean time
+                  band:
+                    type: string
+                    description: Performance band classification
+                  total_incidents:
+                    type: integer
+                    description: Total number of incidents considered
+              example:
+                mean_time: 4.5
+                unit: "hours"
+                band: "MEDIUM"
+                total_incidents: 20
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        id:
+          type: string
+        message:
+          type: string
+        temporary:
+          type: boolean
+        timeout:
+          type: boolean
+        fault:
+          type: boolean
+    UsageResponse:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              description:
+                type: string
+              is_predefined:
+                type: boolean
+              enabled:
+                type: boolean
+              count_of_ous:
+                type: integer
+              created_at:
+                type: integer
+              updated_at:
+                type: integer
+        count:
+          type: integer
+        _metadata:
+          type: object
+          properties:
+            page_size:
+              type: integer
+            page:
+              type: integer
+            has_next:
+              type: boolean
+            total_count:
+              type: integer
+    CategoryResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        is_predefined:
+          type: boolean
+        enabled:
+          type: boolean
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: API KEY
+      description: >
+        API key is a token provided while making the API calls. This is used to authenticate the client at the exposed endpoint.
+        Note that the SEI API key is different from a Harness Platform key. You can generate SEI API keys in the SEI module at the Account level
+security:
+  - ApiKeyAuth: []
+
+tags:
+  - name: Collection categories
+    description: This contains APIs specific to the Collection categories
+  - name: Collections
+    description: This contains APIs specific to Collections
+  - name: Contributors
+    description: This contains APIs specific to the Contributors
+  - name: DORA
+    description: This contains APIs specific to the DORA reports

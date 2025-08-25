@@ -1,0 +1,73 @@
+---
+id: categories-delete-categories
+title: "Delete multiple Collection categories"
+description: "Delete multiple collection categories in a single request"
+sidebar_label: "Delete multiple Collection categories"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVllv4zYQ/iuD6UNe5CvXJkJRwM0aiJHtbhAnQAPbCChqJHFDkVqScuIa/u/FSPbaOVqkqB50kDPDOb5vRisMIvcYT/HCak0yKGtAikC5dYo8ziNMyUunKt7BGD+TpkBQ1jqoShPI99RAGRDglck1gaMfNfmAEdqKnGDRcYox7sR/SRujF7tjI9xo/W7TJcYrlNYEMoFfRVVpJRs7ve+enVqhlwWVgt/CsiKMUTgnlhihClT6vXUfnDI5rvmK8LkjbUoTUVaaOAkr1MLk7NvdzReMUIuENH/WTmOE3tZO0uYbOn/C9d0tHBQhVD7u9URVdQvhDHnfVbaXc6i+50n1RKV6i0HPury3C/oAZrOZ6VzCwUUbW+d2WVEMr8PbyQ3rUFin/mr2Yhhej69G9/Dr5fDm62gyeZiMxg/D6/HD1ej+t41SCgermQGY8g1ghudikMqzk9POKR2mneM0oc75mcw6J8eDU3lyfjZIEjnDCGZIIksGdNTvHIvsrHN81qdO8ik56RyffTo8Pzo9OU+zoxm2duftY30wM7iec+18ZY2nJvGH/T4/XqLo2xVshboY/efq2uQ7SUZU5RhTQbVHOZLWpf4DMPgHAyp9C5XXBLgtCGqjftQEKiUTVKbIgc0gFLSlwBLXEfpaSvL7pybWahLmjcmxSTlk8vBUUCjINbYaUjCvnoSHjbGs1thCV9q6TdjGtjKBcnLvuhtsEBpMXSatpztjetkeQ+k+6ZsD6LmhxYu8TtsUfQhGuJeB4GpaRxvljyDrjfL8Z8SHG+6WFArL9toAuJYiFBjjW6qxNXILcm0ITOYYP0rbBtGeZO1UWDb6w0pd0ZLZiPF0vr89YaC2UNoX2sGxWWQ8cmkKEmlTMSNK3h1ej+FqdP+mhLz+SEtQHgQE+0gGKmcXKqUUngqlCUrxqEzeoIaFpdDad+G2UJ6Vak8pBAuiDgUDlhPTolUrMgFEaL7oubIsSSatrDKhC19tI7jZn4zGsOdKqrKMHOtnzpYg4LJNIlxrETLrShbswr2tQQoDORlu/i/MNHNia7q0aa1p68xQNuUGTQvS3FbWEXI7uNmNhdEWoNMtVeec2Mw2CVeBt3Bis/AkHMHI5MoQsRyMjVd5EfybTE/ILZQkD5l1P+Nh5/5onONWxShqhQfdfrfPRK+sD6VoOtWmkq+H5Puz9dXpe0Puf03ZDdYCPYdepYUy7GOD+dWGIlNcDHgcO+5uL4d9YX1ggdUqEZ7unF6veflHTY7BP49wIZwSSZP3+Tragph58UhLjHF/mnG+hK5b6L/q69wPWo2hlFSFf5Wd7/H98+jL6HaEESabf4PSpqzlxBP/N4gnjLH52WD9di7wWjvba5GzbGuVr78B0kYPbQ==
+sidebar_class_name: "delete api-method"
+info_path: docs/api-references/software-engineering-insights
+custom_edit_url: null
+---
+
+
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete multiple Collection categories"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/org/categories"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete multiple collection categories in a single request
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"array","items":{"type":"string"}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK response.","content":{"application/json":{"schema":{"type":"object","properties":{"records":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","description":"The unique identifier of the category"},"success":{"type":"boolean","description":"Indicates whether the deletion was successful"}}}},"count":{"type":"integer","description":"The total number of successfully deleted categories"}}},"example":{"records":[{"id":"9a1dc856-6e2d-4dbe-98cf-5416c5981bbc","success":true},{"id":"eafb1e30-4af8-480e-b7b5-487293659df3","success":true}],"count":2}}}}}}
+>
+  
+</StatusCodes>
+
+
+

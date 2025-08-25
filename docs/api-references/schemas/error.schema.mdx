@@ -1,0 +1,35 @@
+---
+id: error
+title: "Error"
+description: ""
+sidebar_label: "Error"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":"string","message":"string","temporary":true,"timeout":true,"fault":true}
+custom_edit_url: null
+---
+
+
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Error"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"id":{"type":"string"},"message":{"type":"string"},"temporary":{"type":"boolean"},"timeout":{"type":"boolean"},"fault":{"type":"boolean"}},"title":"Error"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+

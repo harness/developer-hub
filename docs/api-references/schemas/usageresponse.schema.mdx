@@ -1,0 +1,35 @@
+---
+id: usageresponse
+title: "UsageResponse"
+description: ""
+sidebar_label: "UsageResponse"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"records":[{"id":"string","name":"string","description":"string","is_predefined":true,"enabled":true,"count_of_ous":0,"created_at":0,"updated_at":0}],"count":0,"_metadata":{"page_size":0,"page":0,"has_next":true,"total_count":0}}
+custom_edit_url: null
+---
+
+
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"UsageResponse"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"records":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"},"description":{"type":"string"},"is_predefined":{"type":"boolean"},"enabled":{"type":"boolean"},"count_of_ous":{"type":"integer"},"created_at":{"type":"integer"},"updated_at":{"type":"integer"}}}},"count":{"type":"integer"},"_metadata":{"type":"object","properties":{"page_size":{"type":"integer"},"page":{"type":"integer"},"has_next":{"type":"boolean"},"total_count":{"type":"integer"}}}},"title":"UsageResponse"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+

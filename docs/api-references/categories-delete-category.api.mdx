@@ -1,0 +1,73 @@
+---
+id: categories-delete-category
+title: "Delete a specific Collection category"
+description: "Delete an existing collection category"
+sidebar_label: "Delete a specific Collection category"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVW1rIzcQ/ivD9ENaWHvzYnK+pRRMzhCT612Ic9CQhCBrZ3d1kSVF0vrsmv3vZXbt2HkpPegne6XRzKNnnkezxijKgNktnlmtSUZlDUgRqbReUcD7BHMK0ivHO5jhJ9IUCYQBWqoQlSlBvjm5wgStIy94cZJjhruUv+RthrNdpBNezCmSZxxrNGJOmKHKMUHFJZ2IFSbo6alWnnLMoq/pNa7riqA26qkmUDmZqApFHmwBsaL3EEK0MCPowHCpICuaC8zWGFeOAYTolSmxae4TXPakzWkq5k5Th1ILU/K9vl19xgS1mJHmz9przmVrL2nzDb2/4NP48/h6DAdVjC5kaSqc61fCGwqhr2xaMlMhDaRS4VS6OEqtL9MdZ+la5c0B3N3dmd45HJxZE8nE3vXKUQbCOa1kS3X6PVizixvVsbJe/d3uZTC6nFyMb+D389HVl/F0+jAdTx5Gl5OHi/HNHwd3BvminoKzJvAl13h8eMg/L4n+egHboD4mKDssHPcaCK+9YdXOvpOM3HXPComqK+VJWp+HvUDhvWB1qEjz8N8JVP5O6xIMtZQU9s/PrNUkDDZN0zD8ugO/2VUmUkke201atg1/ge+2K4UfxbE8HpzOeoPB6bA3GA6HveHJh6Pe4KQQNBx8ODn+eIp79VmzTPCm4FHT1Z9TrCzn64TYuiFWmOG/iIBTkl9svcJyy/BnVdV2OJCsvYqr9vzIqQtasU4wu73f355y4zpq94N27WkXtxatSOTkMdmad3Q5gYvxDb52Ka8/0gpUAAHRPpIB5+1C5ZTDj0ppgrl45DeFXcvBUmgd+nBdqcCH6kA5O1fUsWKTMzudw7UiE0HE9ouWznIkmdxZZWIfvtg2cLM/HU9gD0quioI8ny+8nYOA845EuNQiFtbPObAPN7YGKQyUZPhpe5EmgDLPqec2rzVtwYxk23PQtCDNNmuYtMK2ZKrI+sKpLeIP4QnGplSGiOULExNUWcXwhsUp+YWSFKCw/hkrF/6zLcy2ZIV0wUf9w/4hW8HZEOeideWmS9u3HIIjqQol4e0QWL2uvt5Z/ueHwUY0kZYxdVoow4Ba8a43gr/FxRFPDV/yo7IbQAlmKucxVNkQOWy9nolA37xuGl5+qsmzlu8TXAivxIz5vF1jrgL/zzErhA6vx8X+JX692gyW3+B/D5F377l1jGEmFkLX/IUJPtKqm3PNfZNsLcTYu42RlOTi3pE37yv79fkB6UYMNs0/FresvQ==
+sidebar_class_name: "delete api-method"
+info_path: docs/api-references/software-engineering-insights
+custom_edit_url: null
+---
+
+
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete a specific Collection category"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/org/categories/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete an existing collection category
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"description":"The unique identifier of the collection category to be deleted","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK response.","content":{"application/json":{"schema":{"type":"object","properties":{"records":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"success":{"type":"boolean"}}}},"count":{"type":"integer"}}},"example":{"records":[{"id":"9a2c246b-4468-4888-8371-43fae8473296","success":true}],"count":1}}}}}}
+>
+  
+</StatusCodes>
+
+
+

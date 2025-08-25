@@ -1,0 +1,73 @@
+---
+id: collections-list-collections
+title: "Retrieve a list of collections"
+description: "This API endpoint allows you to retrieve a list of collections. The endpoint is paginated."
+sidebar_label: "Retrieve a list of collections"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: docs/api-references/software-engineering-insights
+custom_edit_url: null
+---
+
+
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Retrieve a list of collections"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/org/units/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+This API endpoint allows you to retrieve a list of collections. The endpoint is paginated.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"page":{"type":"integer","description":"The page number for pagination","default":0},"page_size":{"type":"integer","description":"The number of items per page (default may vary)"},"filter":{"type":"object","properties":{"ou_category_id":{"type":"array","items":{"type":"string"},"description":"Filter collections by category IDs"}}}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK response.","content":{"application/json":{"schema":{"type":"object","properties":{"records":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"ou_id":{"type":"string"},"name":{"type":"string"},"tags":{"type":"array","items":{"type":"string"}},"managers":{"type":"array","items":{"type":"string"}},"admins":{"type":"array","items":{"type":"string"}},"sections":{"type":"array","items":{"type":"string"}},"version":{"type":"string"},"no_of_dashboards":{"type":"integer"},"path":{"type":"string"},"ou_category_id":{"type":"string"},"default_dashboard_id":{"type":"integer"},"workspace_id":{"type":"integer"},"created_at":{"type":"integer"},"parent_ref_id":{"type":"integer","nullable":true},"workflow_profile_id":{"type":"string","nullable":true},"workflow_profile_name":{"type":"string","nullable":true}}}},"count":{"type":"integer"},"_metadata":{"type":"object","properties":{"page_size":{"type":"integer"},"page":{"type":"integer"},"has_next":{"type":"boolean"},"total_count":{"type":"integer"}}}}},"example":{"records":[{"id":"76","ou_id":"8ffa98a4-c607-4d90-a333-b79bf095a7fb","name":"All Teams","tags":[],"managers":[],"admins":[],"sections":[],"version":"1","no_of_dashboards":3,"path":"/All Teams","ou_category_id":"ffaea171-ba57-4222-81b0-d26d3284c065","default_dashboard_id":0,"workspace_id":34,"created_at":1710173818740,"workflow_profile_id":"f1d1d2f2-bba6-4f19-92c2-fcd4e4fa8116","workflow_profile_name":"DORA profile"},{"id":"79","ou_id":"e1dc905b-0eca-4c4d-ad49-a3ce396fe0ff","name":"Frontend","tags":[],"managers":[],"admins":[],"sections":[],"parent_ref_id":76,"version":"2","no_of_dashboards":0,"path":"/All Teams/Frontend","ou_category_id":"ffaea171-ba57-4222-81b0-d26d3284c065","default_dashboard_id":0,"workspace_id":34,"created_at":1710947467896}],"count":2,"_metadata":{"page_size":100,"page":0,"has_next":false,"total_count":2}}}}}}}
+>
+  
+</StatusCodes>
+
+
+

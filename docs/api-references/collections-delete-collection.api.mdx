@@ -1,0 +1,73 @@
+---
+id: collections-delete-collection
+title: "Delete an existing collection"
+description: "This API endpoint allows you to delete an existing collection."
+sidebar_label: "Delete an existing collection"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVW1v2zYQ/iuH2wdvgGIl+ygUBbxGQAy3XRCnwALbMGjqJLGhSJWk/DLD/304yo6ddChWTF9s8u7Ie3meh3sMovKYzfCD1ZpkUNZ4XCRYkJdOtbzGDB9r5WF0PwYyRWuVCSC0thsPO9tBsFCQpkAgDNBW+aBMBfLlvCEmaFtyghfjAjM82/wvfej5dkzQ0beOfPjDFjvM9iitCWQC/xVtq5WMB6VfPae2Ry9ragT/C7uWMEPhnNhhgipQ4y/2fXDKVPh9bQSOSnJkJMH4FmwJoaaLArjCFR2LLIbwqdNBtZqdPUhh2KiM1F1BBSgTo2MSF61pTjEXtbOvAK9MpTmFWPQQD/wluL2StqCpaFpNPKA9amEqbt6Xh4+YoBYr0rzsnMYEve2cpOMarv6C2/xj/pjDoA6h9VmairYd1sIZ8n6obFrxOHzqSaWiVen6JrWuSjujgh/AfD43V3cw+NB3/oobmMHb5p/9Rl2orVN/R1vGQJnkT/DubvTwOZ9Ol9N8vBzdj5eT/On9MaiAwWyO72y3dFQuVfF+jovB3OBhweP3rTWe4ux+v77mn9cj+3MCJycG188CxK6+kgyYYOsYl0H1VzXkvajo3xBD2ziHI1rOI/zV/wYbcgS+k5K8Lzutdy9AwTjIl9iLG376GD6ooVBbpk9v4PxFqDHDV9NjLJBbk+tBw+jI8L+CIPbfk+ycCrsYP2rVhHY8YMxmi0vzlNvad+7S6UzDuMk85JHVJApymKARDVtZTCb503ds5P1n2oHyICDYZzLQOrtWTK1NrTRBI55ZX5hk7CyF1n4IUaGUh85TwbQTXajJBMYC9XTWili3QlzRtrXsedKzIXy20fFon+ZjuEilUGUUiAClsw0IuOubCPdahNK6hh2H8GS7qAcVGZa7V8f4kzLwXmOLTtMpmZGUtjMBNK1JMwkOCTJ4H846mJ9ANDuBcsGNLW1suAoRm1Nbho1wBLmplCFiPxgbr6o64uJ1p6fk1kqSh9K6l3o4uU8xOSYWo6h3vhleD6/xkGBrfWhE5NVxkrc/0v63t16o+f9/VI5AC7QNaauFMpxgBPz+SI0Zrm/49XFM4p4eiwRr6wPb9vuV8PTF6cOBt7915Bj0iwTXwimxiv1eHJITeJkPz7TDDE/C+MgZsLvuesi/UZ9DcooYSUlt+KHv4oLivXpjgqvjI9jYgqOc2PADKTaYYXxW+wc72/d7/SPR9RrTn8rfPxOcugs=
+sidebar_class_name: "delete api-method"
+info_path: docs/api-references/software-engineering-insights
+custom_edit_url: null
+---
+
+
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete an existing collection"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/org/units"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+This API endpoint allows you to delete an existing collection.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"array","items":{"type":"string","description":"The reference ID of the collection to be deleted. Multiple IDs can be included in the array to delete multiple collections in a single request."}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK response.","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"The collection(s) were successfully deleted."}}},"example":{"message":"The collection(s) were successfully deleted."}}}}}}
+>
+  
+</StatusCodes>
+
+
+

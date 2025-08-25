@@ -1,0 +1,73 @@
+---
+id: dora-get-change-failure-rate
+title: "Retrieve change failure rate data"
+description: "This endpoint is paginated and retrieves change failure rate data."
+sidebar_label: "Retrieve change failure rate data"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV21v2kgQ/iuruUj5YsAmTUOs00lcj1NRek0UWp0iQGixB3ub9a67uybhEP/9NH5JDCVtPvRD/QW887Kzs8/MPN6C44mFcAp/Xd8OYe5BjDYyIndCKwjhUyosQxXnWijHhGU5T4TiDmPGVcwMOiNwjZZFKVcJshUXsjDIDHfIYu54FzzQORpODscxhBBrw39L0L0rLf6uDG65Q/DA4NcCrftTxxsIt+WrMBhD6EyBHkRaOVSORDzPpYhKr70vlmLdgo1SzDj9c5scIQS9/IKRAw9yQzE4gZakKyEdmh/rOZHhwlCUP9Y9SVxLSSiHCRo4TOfEceMY+WVCMcx1lLKVNhl3sPPgRL7Gx0jFL3igxwNdLERsW464MXwDHgiHWXvdOiNUApUVPvIsl3iQnr0ElEcMLvzB2eCi7/t1vMFF4A8u+wPfb28+hfNgAPPK92Mn0jFOyg1ItgXJVQIhRJ9vP4AHki9R0mthJHhgdWEirN/ZaepcbsNej+d5N+VGobVdoXsJQcr2LIoez0VvHfQIWL0Kh4sahwvC4SmbzWaKsc57dvquQlCHUhCyQxC1NYeFS7UR/5XSkA1vxlejO/b7++Htx9FkspiMxovhzXhxNbr748msQ4jvGP7ATre0wNiszuYMQlYv0eJzYvcEJDpJHK218rwnlbW0SXoj3FV/dl6zb3UTpDyd0WXMYE6i3elMwW5OpWZzrWyF3r7v088+0K6vWKNEVfyTiq88ukXTvH5XOeabVwD5BeN73Bwppx2dpFDHKm3nAY9jQcficrFvvlcsD4j3v2JcmVYu/fUCo9Cs4+4VIbTrtqWtimxZ7bfkKj6yiwdOOy4XMeZSbzJ8KVxhF3xptSz23C+1lshV00FbvfAArSUep3Wm2q2wzlD/24RA3+/4/U7f77+BndcyfXNx9vZHpsGz6byB3d72vj9o+bg84iO43PNRQ6Tl5O3Fm/N2IMHgiBc/OHqIy/550D7/2dkLtmdNBG0o7F/2edDcLny4/heO3WhAW+1d4YpLiw3GMnSpJvtc2xJanI4K35sNNG7QrNFUc4kGUAivnThlQi1GhRGuwsUwF1e4odEB4XTeFk+oPVYgais9l2q5SLVKrTdFHpejX/GMpMObMbsa3X3DBWj9HjdEzDhz+h4Vy41eixhj9pAKiSzj90IlzKVII4xFXErbZSWtE5YVFmPmNOOFS1E56ulY6kZSoHKMu/INH3NNmg0R7LKPulSs5ZPRmLVCicVqhYbsV0ZnjLP3VRLZjeSOyAopdtmdLljEFUtQYckXW24ssZvGdabjQmITzDAqwcYkrlHSMNt5QEPo9pk7jl5JZhoOc0Bd6qZCWBVqpStjR/5golfugRtkI5UIhUiKbKysSFJnv6V7aNYiQksM7SkJdKJ/yhPRVCXoVcpB1+/61KMIvRkvh2p9/bc1zX6RZR/uvH2e1j+HwtcodfjoernkQlGgZbVs6zKbwjqgMLShaI6V2tyDlAoznMJ2u+QWPxu529Hy1wINFdDcgzU3gi8p11PKf10IT/0KGgL3iQIidVlU5XPASJ66FAyjCHP3Xd15q3fcXE8+gQfL+hMk0zHZGP5Anyf8AUIov2jIuqzmcq1itAUnbEHlk57/Ab9Sd2M=
+sidebar_class_name: "post api-method"
+info_path: docs/api-references/software-engineering-insights
+custom_edit_url: null
+---
+
+
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Retrieve change failure rate data"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/dora/change_failure_rate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+This endpoint is paginated and retrieves change failure rate data.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"filter":{"type":"object","properties":{"time_range":{"type":"object","properties":{"$gt":{"type":"integer","description":"Start time in epoch format"},"$lt":{"type":"integer","description":"End time in epoch format"}}}}},"ou_ids":{"type":"array","items":{"type":"string"}}}},"example":{"filter":{"time_range":{"$gt":1708387200,"$lt":1710892800}},"ou_ids":["518"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"OK response.","content":{"application/json":{"schema":{"type":"object","properties":{"time_series":{"type":"object","properties":{"day":{"type":"array","items":{"type":"object","properties":{"key":{"type":"integer"},"count":{"type":"integer"},"additional_key":{"type":"string"}}}},"week":{"type":"array","items":{"type":"object","properties":{"key":{"type":"integer"},"count":{"type":"integer"},"additional_key":{"type":"string"}}}},"month":{"type":"array","items":{"type":"object","properties":{"key":{"type":"integer"},"count":{"type":"integer"},"additional_key":{"type":"string"}}}}}},"stats":{"type":"object","properties":{"failure_rate":{"type":"number"},"band":{"type":"string"},"total_deployment":{"type":"integer"},"is_absolute":{"type":"boolean"}}}}},"example":{"time_series":{"day":[{"key":1708387200,"count":2,"additional_key":"20-02-2024"},{"key":1708473600,"count":2,"additional_key":"21-02-2024"}],"week":[{"key":1708300800,"count":9,"additional_key":"19-02-2024"}],"month":[{"key":1706745600,"count":18,"additional_key":"01-02-2024"},{"key":1709251200,"count":33,"additional_key":"01-03-2024"}]},"stats":{"failure_rate":51,"band":"LOW","total_deployment":100,"is_absolute":false}}}}}}}
+>
+  
+</StatusCodes>
+
+
+
