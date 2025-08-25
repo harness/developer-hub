@@ -42,7 +42,7 @@ export const IacmData: Horizon = {
     ],
   },
   Now: {
-    description: "Q2 2025, August 2025-October 2025",
+    description: "Q3 2025, August 2025-October 2025",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
@@ -67,7 +67,7 @@ export const IacmData: Horizon = {
     ],
   },
   Next: {
-    description: "Q3 2025, November 2025-January 2026",
+    description: "Q4 2025, November 2025-January 2026",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
@@ -92,7 +92,7 @@ export const IacmData: Horizon = {
     ],
   },
   Later: {
-    description: "Q4 2025+ & beyond",
+    description: "Q1 2026+ & beyond",
     feature: [
       {
         tag: [{ value: "AI" }],
