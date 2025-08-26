@@ -103,7 +103,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Version 25.08.86600 <!--Aug 26, 2025-->
 
-- Resolved an issue where deployments could stuck if the skip instance termination flag was enabled and the instance refresh was canceled or failed. [PIPE-29083]
+- Resolved an issue where deployments could stuck if the skip instance termination flag was enabled and the instance refresh was canceled or failed. [CDS-113194]
 - Resolved trigger failures for GitHub push events with `changedFiles` condition when using merge queue. [PIPE-29083]
 
 ### Version 25.05.85807 <!--Aug 20, 2025-->
