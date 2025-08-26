@@ -283,7 +283,6 @@ Harness provides a base image that has the Serverless plugin binary. The pipelin
 
 For an in-depth explanation on how to build your own image, go to [Build your own image](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-image-build).
 
-
 ## Create the Deploy stage
 
 Pipelines are collections of stages. For this quickstart, we'll create a new Pipeline and add a single stage.
