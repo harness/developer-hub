@@ -278,6 +278,13 @@ namespace: ${{dependencies.namespace.output.name}}
 
 ---
 
+### Scope & Hierarchy
+Environment Blueprints live at the **account scope**, while environments can only be created at the **project scope**. 
+
+In an environment blueprint, all the entities, workspace templates, pipelines, etc. are also created at the **project scope**.  
+
+---
+
 ### Example Blueprint YAML
 
 ```yaml
