@@ -102,7 +102,7 @@ Since we are dealing with randomness and probabilities, there is always a possib
 
 #### Dependencies Between Flags
 
-Dependencies can skew traffic by selectively evaluating upstream flags more frequently. For example, if `flagB` depends on `flagA`, and is only served when `flagA=on`, using `flagB` in a way that guarantees `flagA` is evaluated can skew `flagA`'s distribution and lead to SRM.
+Dependencies can skew traffic by causing upstream flags to be evaluated more often than expected. For example, if `flagB` depends on `flagA`, then normally only `flagB` generates an impression. However, if `flagB` is used in a way that guarantees `flagA` is always evaluated, this can skew `flagA`'s distribution and lead to SRM.
 
 To check whether dependencies are contributing to SRM, review which flags are evaluated together and whether downstream flags might be increasing the evaluation frequency of upstream flags.
 
