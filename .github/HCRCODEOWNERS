@@ -50,16 +50,16 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 # data/*.ts @global-data-file-owners
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ sushrut.athavale@harness.io @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit @siddhantdua
-/release-notes/continuous-delivery.md sushrut.athavale@harness.io @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit @siddhantdua
-/src/components/Roadmap/data/cdData.ts sushrut.athavale@harness.io @vishal-av @thisrohangupta @SudarshanPurohit @siddhantdua
-/src/components/Docs/data/continuousDeliveryData* sushrut.athavale@harness.io @vishal-av @thisrohangupta @SudarshanPurohit @siddhantdua
+/docs/continuous-delivery/ sushrut.athavale@harness.io vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
+/release-notes/continuous-delivery.md sushrut.athavale@harness.io vishal.vishwaroop@harness.io @pranaykaikini @prasadsatamharness @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
+/src/components/Roadmap/data/cdData.ts sushrut.athavale@harness.io vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
+/src/components/Docs/data/continuousDeliveryData* sushrut.athavale@harness.io vishal.vishwaroop@harness.io @thisrohangupta @SudarshanPurohit siddhant.dua@harness.io
 # FirstGen CD Docs
-/docs/category/continuous-delivery/ sushrut.athavale@harness.io @vishal-av @thisrohangupta @siddhantdua
+/docs/category/continuous-delivery/ sushrut.athavale@harness.io vishal.vishwaroop@harness.io @thisrohangupta siddhant.dua@harness.io
 # CD FAQs
-/docs/faqs/continuous-delivery-faqs sushrut.athavale@harness.io @vishal-av @SudarshanPurohit @siddhantdua
+/docs/faqs/continuous-delivery-faqs sushrut.athavale@harness.io vishal.vishwaroop@harness.io @SudarshanPurohit siddhant.dua@harness.io
 # GitEx FAQs
-/docs/faqs/git-exp-vs-config-as-code/ sushrut.athavale@harness.io @vishal-av @SudarshanPurohit @siddhantdua
+/docs/faqs/git-exp-vs-config-as-code/ sushrut.athavale@harness.io vishal.vishwaroop@harness.io @SudarshanPurohit siddhant.dua@harness.io
 
 
 # Continuous Integration Docs
@@ -138,16 +138,16 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /docs/faqs/self-managed-ee-faq/ @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
 
 # Pipeline Docs
-/docs/platform/pipelines/ @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
-/docs/platform/git-experience/ @vishal-av @prasadsatamharness @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
-/docs/platform/templates/ @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
-/docs/platform/variables-and-expressions/ @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
-/docs/platform/triggers/ @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
-/docs/platform/approvals/ @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
-/docs/platform/connectors/ @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io @siddhantdua
+/docs/platform/pipelines/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/git-experience/ vishal.vishwaroop@harness.io @prasadsatamharness @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/templates/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/variables-and-expressions/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/triggers/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/approvals/ vishal.vishwaroop@harness.io @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/connectors/ vishal.vishwaroop@harness.io @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
 
 # AI DevOps Docs
-/docs/platform/harness-aida/ @sushrut.athavale@harness.io @prateek.mittal@harness.io @thisrohangupta @vikram.sahu@harness.io @abhishekharness @vishal-av
+/docs/platform/harness-aida/ @sushrut.athavale@harness.io @prateek.mittal@harness.io @thisrohangupta @vikram.sahu@harness.io @abhishekharness vishal.vishwaroop@harness.io
 
 # IDP Docs
 /docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness @ShibamD
