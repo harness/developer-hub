@@ -141,13 +141,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Fixed issues
 
-- Improved log-streaming performance while dispatching the logs. (CDS-111776)
+- Improved log-streaming performance while dispatching the logs. [CDS-111776]
 
 ### Version 25.07.86301 <!-- Jul 30, 2025 -->
 
 #### Fixed issues
 
-- Customers can now use Bitbucket Cloud API authentication in IDP 2.0, IDP 1.0, IDP Git Sync, and IDP Scorecards. (IDP-6077)
+- Customers can now use Bitbucket Cloud API authentication in IDP 2.0, IDP 1.0, IDP Git Sync, and IDP Scorecards. [IDP-6077]
 
 ### Version 25.07.86300 <!--Jul 16 2025-->
 
@@ -159,45 +159,45 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Fixed issues
 
-- Fix for Dynatrace connector URL validation for API Token flow. (CDS-112199)
+- Fix for Dynatrace connector URL validation for API Token flow. [CDS-112199]
 
 ### Version 25.06.86203 <!-- Jul 14, 2025 -->
 
 #### Fixed issues
 
-- Fix for IDP git integration and catalog flow not working with Github Enterprise GithubApp Authentication mode. (IDP-5945)
+- Fix for IDP git integration and catalog flow not working with Github Enterprise GithubApp Authentication mode. [IDP-5945]
 
 ### Version 25.06.86004 <!-- Jul 11, 2025 -->
 
 #### Fixed issues
 
-- Added debug logs to CI K8 pod cleanup flow (CI-17241)
+- Added debug logs to CI K8 pod cleanup flow [CI-17241]
 
 ### Version 25.04.85707 <!-- Jul 08, 2025 -->
 
 #### Fixed issues
 
-- Improved log-streaming performance while dispatching the logs. (CDS-111776)
+- Improved log-streaming performance while dispatching the logs. [CDS-111776]
   
 ### Version 25.06.86105 <!-- Jul 08, 2025 -->
 
 #### Fixed issues
 
-- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. (CDS-111916)
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. [CDS-111916]
 
 ### Version 25.06.86203 <!-- Jul 08, 2025 -->
 
 #### Fixed issues
 
-- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. (CDS-111916)
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. [CDS-111916]
 
 ### Version 25.06.86202 <!-- Jul 02, 2025 -->
 
 #### Fixed issues
 
-- Improved Kubernetes Manifest Logging: Large manifest YAMLs are now split into smaller chunks by individual resources to prevent log overload and improve readability. (CDS-111820)
+- Improved Kubernetes Manifest Logging: Large manifest YAMLs are now split into smaller chunks by individual resources to prevent log overload and improve readability. [CDS-111820]
 
-- Improved GitHub Enterprise support in GitOps pipelines by fixing hardcoded URLs and adding delegate access checks for PR merge steps. (CDS-111758)
+- Improved GitHub Enterprise support in GitOps pipelines by fixing hardcoded URLs and adding delegate access checks for PR merge steps. [CDS-111758]
 
 #### New features and enhancements
 
@@ -319,7 +319,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Added Nullchecks to handle errors for customers using API token for dynatrace connectors. (CDS-109040)
+- Added Nullchecks to handle errors for customers using API token for dynatrace connectors. [CDS-109040]
 
 ### Version 25.02.85306 <!-- April 10, 2025-->
 
@@ -430,7 +430,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Fixed a bug where socket files during git operations were not cleaned. (PIPE-24724)
+- Fixed a bug where socket files during git operations were not cleaned. [PIPE-24724]
 
 ### Version 25.01.85000 <!-- January 28, 2025 -->
 
@@ -442,14 +442,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Add support for Incomplete Responses from New Relic during verify step execution. (CDS-105146)
+- Add support for Incomplete Responses from New Relic during verify step execution. [CDS-105146]
 
 ### Version 25.01.84800 <!-- January 10, 2025 -->
 
 #### New features and enhancements
 
 :::info 
-Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` (PL-58376)
+Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` [PL-58376]
 :::
 
 - NG Immutable Delegates no longer send the profileId parameter in their requests. (PL-55697)
