@@ -57,7 +57,7 @@ Some reusable options can be to:
 <!-- placeholder for workspace templates -->
 
 ### Trade-offs and considerations
-Harness seamlessly integrates with third-party services like external code repositories and secret managers, providing flexibility in tool choice. However, using Harness’s native services like [Harness Code Repository](docs/code-repository/) and [Harness Secret Manager](docs/platform/secrets/secrets-management/harness-secret-manager-overview/) can offer key performance and operational benefits.
+Harness seamlessly integrates with third-party services like external code repositories and secret managers, providing flexibility in tool choice. However, using Harness’s native services like [Harness Code Repository](/docs/code-repository/) and [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) can offer key performance and operational benefits.
 
 - **Reduced Latency:** Avoids external API calls, leading to faster execution and reduced overhead.
 - **Simplified Authentication:** Minimizes multiple authentication mechanisms, reducing complexity and potential security risks.
