@@ -120,6 +120,34 @@ metadata:
 
 Learn more about [System Entity](/docs/internal-developer-portal/catalog/system-entity)
 
+### [New Feature] Environment Management in Harness IDP
+
+Harness IDP is excited to announce the launch of **Environment Management**, a major milestone in our journey to empower developers and platform engineers. This feature enables teams to **create, configure, and manage environments** from a single, centralized point of control. With a **self-service, automated, and repeatable** approach, Environment Management ensures that managing environments is faster, more reliable, and highly efficient.
+
+![](./static/internal-developer-portal/env-mgmt-rn.png)
+
+#### **Key Features:**
+
+Environment Management in Harness IDP combines powerful capabilities to make environment creation, management, and operation seamless:
+
+1. **Environment Blueprints:**
+   Templates that define how environments should be created (e.g., Infrastructure Workspace Templates, Service Deployment Pipelines). Blueprints standardize setup processes and ensure **consistency across teams**.
+
+2. **Lifecycle Management:**
+   Supports **Day 2 operations** such as creating, updating, and deleting infrastructure and services to keep environments up-to-date and optimized.
+
+3. **Platform Orchestrator:**
+   Orchestrates the provisioning and cleanup of infrastructure resources, even with complex interdependencies. It abstracts away deployment sequences and dependencies, ensuring environments run **reliably end-to-end**.
+
+4. **Native to IDP:**
+   Fully integrated with the **IDP Catalog**, providing developers with a unified and intuitive interface to **discover and provision environments**, while giving platform teams the ability to enforce organizational standards and guardrails.
+
+5. **Native to Harness:**
+   Built as a **core feature** of Harness IDP, leveraging the proven strengths of **Harness CD** and **IaCM** for infrastructure provisioning, service deployment, and governance.
+
+👉 [**Get started with Environment Management**](/docs/internal-developer-portal/environment-management/get-started)
+
+
 ### [New Feature] Link to Source Code Repository
 
 Harness IDP now supports defining a Link to Source Code Repository for Components, APIs, and Resources in the Software Catalog. This optional field is strongly recommended for Git-based workflows and enables key capabilities such as:
