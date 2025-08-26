@@ -11,7 +11,11 @@ description: Improve developer experience with the DX plugin.
 | **Type**       | Open-source plugin                                                            |
 
 ## Overview
-The **DX plugin** is designed to enhance the overall developer experience and streamline the development process by providing insights, tools, and integrations tailored to support your workflow. 
+The **DX plugin** is designed to enhance the overall developer experience and streamline the development process by providing insights, tools, and integrations tailored to support your workflow.
+
+:::info Deprecation Notice
+The DX backend plugin is deprecated.
+::: 
 
 ## Configuration
 
@@ -32,15 +36,7 @@ proxy:
       headers:
         Authorization: Bearer ${DX_API_TOKEN}
 dx: #optional
-  schedule:  #optional
-    frequency:
-      hours: 1
-    timeout:
-      minutes: 2
-    initialDelay:
-      seconds: 3
-  catalogSyncAllowedKinds: [API, Component, User, Group]  #optional
-  disableCatalogSync: true  #optional
+  appId: staging  #optional
 ```
 
 #### Application Configuration YAML Details:
@@ -127,6 +123,10 @@ metadata:
   annotations:
     github.com/project-slug: 'project-slug'
 ```
+
+:::note
+The Entity identifier of DX should match with the Identifier of IDP 2.0 or `/metadata.name` of IDP 1.0.
+:::
 
 ## Support
 The plugin is owned by **DX** and managed in this [repository](https://github.com/get-dx/backstage-plugin) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
