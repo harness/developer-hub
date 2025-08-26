@@ -112,6 +112,27 @@ If the step is within a step group, include the step group identifier in the exp
 <+execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
+#### Output secrets
+
+Plugin step can export output secrets, which can be used in subsequent steps or stages just like output variables. Output secrets are handled securely by Harness: their values are masked in logs and treated as secrets.
+
+To export an output secret, write to the file path provided by the `$HARNESS_OUTPUT_SECRET_FILE` environment variable. For example:
+
+```
+echo "SECRET_KEY=supersecretvalue" >> $HARNESS_OUTPUT_SECRET_FILE
+```
+At runtime, Harness automatically captures these values as secrets. They can be referenced in subsequent steps or stages the same way as output variables, using expression syntax:
+```
+<+steps.STEP_ID.output.outputVariables.SECRET_KEY>
+<+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.SECRET_KEY>
+```
+:::info Feature flags
+To use output secrets, the following feature flags must be enabled:
+- `CI_SKIP_NON_EXPRESSION_EVALUATION`
+- `CI_ENABLE_OUTPUT_SECRETS`
+For Harness Docker Runner, also enable:
+- `CI_ENABLE_PLUGIN_OUTPUT_SECRETS`
+:::
 
 #### Output Variables on Step Failure
 
