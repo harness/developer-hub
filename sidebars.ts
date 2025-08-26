@@ -2618,7 +2618,7 @@ const sidebars: SidebarsConfig = {
       },
       {
         type: "html",
-        value: '<span style="color:#000000; font-weight:1000;"> Configure CDE </span>',
+        value: 'Configure CDE',
         className: "horizontal-bar",
       },
       {
