@@ -79,7 +79,7 @@ For example, imagine you have 2 separate rules for users on your Free and Paid p
 
 SRMs caused by these interaction effects can be seen by checking how many users appear in multiple rules. In the example above, if you had a metric measuring how many users upgraded from the Free plan to the Paid plan, this could directly indicate whether it is a likely cause. In order to avoid these kinds of interaction effects, it may be safer to run separate feature flags for the two different plan types, and if necessary include dependencies between the two feature flags in the targeting rules.
 
-Additionally, if users were previously exposed to an older version of the same flag, their behavior or allocation in that version can bias their likelihood of returning or being reallocated in the current version.
+Additionally, if users were previously exposed to an older version of the same flag, their behavior or allocation in that version can bias their likelihood of returning or being reassigned in the current version.
 
 #### Bucketing and Matching Keys
 
