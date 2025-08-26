@@ -55,7 +55,7 @@ npm install --save @splitsoftware/splitio
 <TabItem value="CDN bundle">
 
 ```html
-<script src="//cdn.split.io/sdk/split-11.2.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-11.4.1.min.js"></script>
 
 ```
 
@@ -1324,19 +1324,19 @@ function whenReady() {
 client.once(client.Event.SDK_READY, whenReady);
  
 client.once(client.Event.SDK_READY_TIMED_OUT, () => {
-  // this callback is called after 1.5 seconds if and only if the client
-  // is not ready for that time. You can still call getTreatment() 
-  // but it could return CONTROL.
+  // This callback will be called after `readyTimeout` seconds (10 seconds by default)
+  // if and only if the client is not ready for that time.  
+  // You can still call `getTreatment()` but it could return `CONTROL`.
 });
  
 client.on(client.Event.SDK_UPDATE, () => {
-  // fired each time the client state change. 
-  // For example, when a feature flag or segment changes.
+  // Fired each time the client state changes. 
+  // For example, when a feature flag or a segment changes.
   console.log('The SDK has been updated!');
 });
 
 // This event only fires using the LocalStorage option and if there's FME data stored in the browser.
-client.once(client.Event.SDK_READY_FROM_CACHE, function () {
+client.once(client.Event.SDK_READY_FROM_CACHE, () => {
   // Fired after the SDK could confirm the presence of the FME data.
   // This event fires really quickly, since there's no actual fetching of information.
   // Keep in mind that data might be stale, this is NOT a replacement of SDK_READY.
