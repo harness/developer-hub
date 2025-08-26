@@ -7,7 +7,7 @@ import HarnessApiData from '/src/components/HarnessApiData/index.tsx';
 
 Harness Infrastructure as Code allows you to **define**, **deploy**, and **manage infrastructure across environments**, ensuring compliance and control.  
 
-Key features include [cost estimation](/docs/infra-as-code-management/workspaces/cost-estimation), [approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step), [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation), [policy enforcement](/docs/infra-as-code-management/policies-governance/opa-workspace), and [drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection). These integrate seamlessly with other Harness modules and third-party services, enhancing your DevOps lifecycle.  
+Key features include [cost estimation](/docs/infra-as-code-management/workspaces/cost-estimation), [approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step), [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation), [policy enforcement](/docs/infra-as-code-management/policies-governance/opa-workspace), and [drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection). These integrate seamlessly with other Harness modules and third-party services, enhancing your DevOps lifecycle.
 
 This document provides best practices and guidelines to help you implement and manage IaCM effectively. It offers clear, actionable recommendations to optimize performance, strengthen security, and avoid common pitfalls.
 
