@@ -189,12 +189,12 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Docs/data/softwareEngineeringInsightsData.ts austin.lai@harness.io dhrubajyoti.chakraborty@harness.io prashant.batra@harness.io santosh.dodamani@harness.io
 
 # DB DevOps Docs
-/docs/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
-/release-notes/database-devops.md @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
-/src/components/Docs/data/databaseDevOpsData.ts @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
-/src/components/Roadmap/data/dbdevopsData.ts @stephenatwell @archit-harness @sonichigo @rohitk-h @vikram.sahu@harness.io @wei.guo@harness.io
+/docs/database-devops/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
+/release-notes/database-devops.md stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
+/src/components/Docs/data/databaseDevOpsData.ts stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
+/src/components/Roadmap/data/dbdevopsData.ts stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io matthew.schillerstrom@harness.io @vikram.sahu@harness.io @wei.guo@harness.io
 # DB DevOps FAQs
-/docs/faqs/db-devops-faqs/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
+/docs/faqs/db-devops-faqs/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
 
 # CDE Docs
 /docs/cloud-development-environments/ @manishas @khushisharmaharness
@@ -230,7 +230,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /kb/armory @jimin-harness @deepanshuHarness
 
 # DB DevOps
-/kb/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h @hemanthbsridhar
+/kb/database-devops/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
 
 #Reference Architectures
 /kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness
