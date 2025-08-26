@@ -2344,6 +2344,14 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## Delegate Upgrader release notes
 
+## August 2025
+
+### Version 1.8.0 <!--Aug 26, 2025-->
+
+#### New features and enhancements
+
+- Upgraded the Delegate Upgrader image to Go 1.24.4 and added support for building a FIPS-compliant image. [PL-64773]
+
 ## July 2025
 
 ### Version 1.7.0 <!--Jul 16, 2025--> 
