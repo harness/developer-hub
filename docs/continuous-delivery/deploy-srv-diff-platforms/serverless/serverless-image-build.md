@@ -131,13 +131,21 @@ If they do not have the same version, you may need to use a different nodejs bas
 
 ### Recommended Compatible Combinations
 
-These combinations have been tested and confirmed compatible:
+Based on extensive testing, the following combinations of Node.js and runtime images are known to be compatible:
 
-| Runtime Image | Compatible Node.js Image |
-|---------------|--------------------------|
-| java21:1.140.0-* | nodejs18.x:1.120.0-* |
-| python3.11:1.140.0-* | nodejs18.x:1.120.0-* |
-| nodejs22.x:1.140.0-* | nodejs22.x:1.140.0-* (same image) |
+| Runtime | Node.js Base Image | Runtime Base Image |
+|---------|-------------------|-------------------|
+| nodejs18.x | nodejs18.x | nodejs18.x |
+| nodejs20.x | nodejs20.x | nodejs20.x |
+| nodejs22.x | nodejs22.x | nodejs22.x |
+| java17 | nodejs18.x | java17 |
+| java21 | nodejs22.x | java21 |
+| python3.11 | nodejs18.x | python3.11 |
+| python3.12 | nodejs20.x | python3.12 |
+| java8.al2 | nodejs18.x | java8.al2 |
+| ruby3.2 | nodejs18.x | ruby3.2 |
+
+These combinations have been verified to have compatible C++ library versions and work reliably in production environments. When using other combinations, always perform the compatibility check described above.
 
 # Pipeline Configuration
 
