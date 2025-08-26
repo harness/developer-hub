@@ -90,7 +90,8 @@ databaseChangeLog:
 In this example:
 - When deploying to dev or staging, the changeset is applied.
 - When deploying to prod, it is skipped until explicitly marked for that context.
-::: note important
+
+:::note
 Keep contexts environment-specific for controlled rollouts, but avoid creating too many context tags to prevent complexity.
 :::
 
