@@ -63,6 +63,14 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Harness now supports GitHub Pull Request Review as an event in webhook triggers to initiate the execution of a pipeline. This enables automatic pipeline execution when a pull request review is         submitted, edited, or dismissed. For a list of all supported events and actions, check out the [webhook triggers reference](/docs/platform/triggers/triggers-reference/#event-and-actions). (**PIPE-25264**)
 - Harness now supports [notifications for trigger failures](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#select-events), allowing users to receive alerts when a trigger fails to start pipeline execution. This improves the visibility of pipeline runs that could not start due to failed triggers. This feature is currently behind feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`. Please, contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-27482**)
 
+- We are soon introducing a new functor to enhance the [Multi Selection functionality](/docs/platform/variables-and-expressions/runtime-input-usage/#allow-multi-selection-and-single-selection) for runtime input. The new functor `.selectManyFrom()` will replace the `.allowedValues()` functor and change the pipeline runtime input behavior. (***PIPE-28993***)
+  - The soon-to-be-deprecated functor `.allowedValues()` displayed identical behavior to `.selectOneFrom()`, allowing users to select a single value for runtime input. 
+  - However, if the users enabled the Feature Flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, the `.allowedValues()` functor was mapped to multi-selection mode, thus allowing them to select     multiple values for runtime input.
+  - The upcoming feature update will enhance the capability of selecting runtime input by providing a dedicated method for each mode (Single Selection or Multi Selection). The Multi Selection mode will be mapped to the `.selectManyFrom()` functor, while the Single Selection mode will be mapped to the `.selectOneFrom()` functor, thus allowing users to select multiple values or a single value for runtime input, respectively.
+  - Please note that the update won't affect the old pipelines using the `.allowedValues()` functor. However, if a user decides to revisit and edit the runtime input selection mode on the old pipeline and switch it to a different mode, the existing functor will be replaced according to the new behavior.
+  - All the new pipelines created after the feature is released will reflect the new behavior. This feature will be introduced by the end of August.
+
+
 #### Fixed Issues
 
 - Fixed an issue where deployments could hang in the ASG Rolling Deploy step when the **skip instance termination** flag was enabled and the instance refresh was canceled or failed. An additional check has been added to handle this scenario properly. (**CDS-113194**)
