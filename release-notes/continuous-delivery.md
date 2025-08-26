@@ -67,7 +67,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
   - The soon-to-be-deprecated functor `.allowedValues()` displayed identical behavior to `.selectOneFrom()`, allowing users to select a single value for runtime input. 
   - However, if the users enabled the Feature Flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, the `.allowedValues()` functor was mapped to multi-selection mode, thus allowing them to select     multiple values for runtime input.
   - The upcoming feature update will enhance the capability of selecting runtime input by providing a dedicated method for each mode (Single Selection or Multi Selection). The Multi Selection mode will be mapped to the `.selectManyFrom()` functor, while the Single Selection mode will be mapped to the `.selectOneFrom()` functor, thus allowing users to select multiple values or a single value for runtime input, respectively.
-  - Please note that the update won't affect the old pipelines using the `.allowedValues()` functor. However, if a user decides to revisit and edit the runtime input selection mode on the old pipeline and switch it to a different mode, the existing functor will be replaced according to the new behavior.
+  - Please note that the existing functor `.allowedValues()` continues to work as before. Existing Pipelines will see no change in behavior. Editing the Runtime Inputs on these pipelines in Pipeline Studio, however, will replace the `.allowedValues()` functor with the newer functors as per selection. You will see this change in the Pipeline YAML.
   - All the new pipelines created after the feature is released will reflect the new behavior. This feature will be introduced by the end of August.
 
 
