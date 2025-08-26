@@ -1,7 +1,7 @@
 ---
 title: AI Test Automation Release Notes
 sidebar_label: AI Test Automation
-date: 2025-05-30T10:00:00
+date: 2025-08-22T10:00:00
 sidebar_position: 19
 ---
 
