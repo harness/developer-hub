@@ -19,6 +19,7 @@
 ![Armory](static/img/icon_armory_s.svg)
 
 
+
 Welcome to the Harness Developer Hub (HDH)!
 
 Learn intelligent software delivery skills at your own pace and in one place. Guides, videos, certifications, training, and reference docs help you create and deliver software.
