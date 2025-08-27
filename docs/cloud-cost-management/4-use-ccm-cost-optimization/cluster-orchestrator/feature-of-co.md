@@ -38,6 +38,14 @@ When enabling Cluster Orchestrator, you can configure various settings under the
             - **Select reason:** Drifted, Underutilized, Empty
             - **Allowed node disruptions:** Specify percentage or number of nodes
             - **Budget scheduling:** When a budget begins being active. It can be set to be: (hourly, midnight, daily, weekly, monthly or annually) and Active duration (Specifies how long the budget remains active)
+    - **Aggressive Distribution Mode**: **Aggressive Distribution Mode** is an optional enhancement to the default Cluster Orchestrator scheduling flow.
+    
+    In standard mode, the orchestrator schedules workloads according to the configured spot/on-demand distribution. However, pods that are already scheduled remain on their assigned nodes until they are naturally rescheduled. This can lead to temporary mismatches between your desired configuration and the actual placement of pods.
+    
+    Aggressive Distribution Mode addresses this gap by enabling pod eviction when a workload no longer matches the node taints. It uses the Kubernetes Descheduler’s policy (already in use for bin packing) to automatically evict pods from incompatible nodes. These pods are then rescheduled to nodes that align with the configured distribution.
+
+    **TO SET IT:**
+
 - **Spot to Spot Consolidation:** Automatically switch workloads between spot instance types when cheaper options become available to maximize cost savings while maintaining performance requirements for your cluster. 
 
 </TabItem>
@@ -91,3 +99,4 @@ Define precise time windows when cluster disruptions are acceptable for maintena
   
 </TabItem>
 </Tabs>
+
