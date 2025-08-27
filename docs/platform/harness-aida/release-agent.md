@@ -4,6 +4,6 @@ description: Learn how to release features confidently with data and feature ope
 sidebar_position: 9
 ---
 
-import Releaseagent from '../../feature-management-experimentation/release-agent/index.md';
+import Releaseagent from '/docs/feature-management-experimentation/release-agent/index.md';
 
 <Releaseagent />
