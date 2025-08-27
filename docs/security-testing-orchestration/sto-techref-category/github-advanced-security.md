@@ -19,8 +19,8 @@ The GitHub Advanced Security (GHAS) step in Harness STO enables you to scan your
 - **Secret Scanning:** Find exposed secrets like API keys or tokens. STO supports [**Extraction**](#scan-mode) and [**Ingestion**](#scan-mode) of GitHub alerts.  
 
 :::info
-- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](./docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
-- STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](./docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
+- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+- STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 import StoMoreInfo from './shared/more-information.md';
 
