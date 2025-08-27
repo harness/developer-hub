@@ -22,6 +22,16 @@ When enabling Cluster Orchestrator, you can configure various settings under the
 - **Enable Commitment Context (Integration with Commitment Orchestrator):** Select the Master Account from your connector dropdown to leverage existing commitments. When enabled, Cluster Orchestrator intelligently checks for unused commitments and prioritizes them over spot instances, preventing duplicate coverage and maximizing your cloud investment. This integration ensures optimal utilization of pre-purchased compute capacity before provisioning additional resources.
 - **Set the Time-To-Live (TTL) for Karpenter nodes:** Set the Time-To-Live (TTL) for Karpenter nodes to ensure that nodes are automatically terminated after a specified period of inactivity.
 
+- **Cluster Capacity Limits:** Cluster Capacity Limits restrict the maximum resources a cluster can scale up to. This prevents scenarios where configuration errors or unexpected behavior could result in uncontrolled node provisioning.
+
+When configured, Cluster Capacity Limits enforce limits on:
+- Maximum vCPUs (cores) – defines the total CPU capacity the cluster can scale up to.
+- Maximum Memory (GiB) – defines the total memory capacity the cluster can scale up to.
+
+How it works:
+- Guardrails are set in the Cluster Configuration.
+- For Karpenter Nodepools, the orchestrator checks configured limits before allowing a scale-up event.
+- If the cluster is at or above the configured maximum, additional nodes will not be provisioned.
 
 - **Bin-Packing:** Bin-packing is a resource optimization technique that Cluster Orchestrator uses to efficiently distribute workloads across your Kubernetes cluster. The goal is to maximize resource utilization by consolidating workloads onto fewer nodes, allowing underutilized nodes to be safely removed from the cluster.
     - **Pod Eviction By Harness:** To optimize resources, nodes may be evicted before consolidation. Enabling this ensures workloads are safely rescheduled to maintain performance and availability while freeing up underutilized resources.
