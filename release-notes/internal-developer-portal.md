@@ -213,7 +213,7 @@ The following components have been removed because their functionality is now fu
 #### Example Usage – Line Chart
 
 ```jsx
-<DxDataChartCard
+<DxDataChart
   title="Deployment Frequency"
   description="Weekly deployments over time"
   datafeedToken="your-datafeed-token"
@@ -240,6 +240,28 @@ Harness IDP now includes a native integration with Harness Feature Management & 
 * Real-time Updates - Monitor feature flag status and changes directly from your developer portal
 
 [Learn more about the Harness FME Plugin](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme) 
+
+### [New Feature] Iframe Embedding in Sidebar Navigation
+
+Harness IDP now supports embedding external web content directly into your sidebar navigation using iframes. This feature allows you to integrate essential resources, documentation, dashboards, and tools directly into your developer portal interface.
+
+* **External Content Integration** - Add documentation, dashboards, or any web content directly in your IDP navigation
+* **Simple YAML Configuration** - Easy to implement with standard sidebar navigation format
+
+#### Example Configuration
+
+```yaml
+- name: SidebarItem
+  type: iframe
+  props:
+    to: iframe/developer_docs
+    text: Developer docs
+    url: https://developer.harness.io/
+```
+
+![](./static/internal-developer-portal/iframe-embedd.png)
+
+[Learn more about embedding iframes in your sidebar](/docs/internal-developer-portal/layout-and-appearance/sidenav#embedding-an-iframe)
 
 ### Bug Fixes and Improvements
 

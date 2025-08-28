@@ -95,3 +95,31 @@ If you have built a [Custom Plugin](/docs/internal-developer-portal/plugins/cust
     to: EntityMyCustomPluginPage
     text: MyPlugin
 ```
+
+## Embedding an Iframe
+
+You can embed an iframe inside the sidenav layout to display external web content directly within your Harness IDP.
+
+![](./static/iframe-embedd.png)
+
+#### Steps to Add an Iframe
+
+1. Navigate to the sidenav layout page.
+2. Add a YAML block similar to the example below:
+
+```yaml
+- name: SidebarItem
+  type: iframe
+  props:
+    to: iframe/developer_docs
+    text: Developer docs
+    url: https://developer.harness.io/
+```
+
+When configuring the iframe SidebarItem:
+
+* Use `type: iframe` to specify an iframe element (case-insensitive, so `IfRAmE` also works)
+* Configure these properties under `props`:
+  * `to`: Must follow the format `iframe/${path}` where `${path}` is your custom path segment
+  * `text`: The label that appears in the sidebar navigation
+  * `url`: The external URL you want to display within the iframe
