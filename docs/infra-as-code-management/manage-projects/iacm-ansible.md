@@ -18,13 +18,12 @@ An inventory defines the machines and groups that your playbooks will target.
 ### Create a new inventory
 1. In the IaCM module, navigate to **Inventories** and click **New Inventory**. 
 2. Name your inventory and select either **Static** or **Dynamic**. 
-    - **Static** inventories define the machines and groups that your playbooks will target and are usually defined in a file (YAML/INI) with hostnames or IPs.
-    - **Dynamic** inventories use scripts or plugins that fetch hosts from a source (e.g., AWS, GCP, Kubernetes). Hosts can be grouped for organization (e.g. webservers or db) and have variables attached for configuration.
+   - **Static inventories** let you provide a list of host addresses directly in the UI. 
+   - **Dynamic inventories** automatically populate hosts from your Terraform/OpenTofu configuration in the selected workspace.
 
 ### Configure inventory
-
-:::info add groups and hosts
-From the new inventory page, you can create inventory groups, add hosts and variables and review activity history such as executions. 
+:::info Add groups and hosts
+From the new inventory page, you can create inventory groups, add hosts, and variables and review activity history such as executions. 
 There is no specific order to add groups and hosts, as you can add hosts to groups and groups to hosts at any time.
 :::
 
@@ -36,76 +35,28 @@ In the **Variables** tab:
 - **Add Variable** → Enter variable type (string/secret), key, and value.
 
 In the **Activity History** tab:
-- View activity history like executions.
+- View activity history, such as executions.
 
 ## Example inventories
 <Tabs>
 <TabItem value="static" label="Static">
 
-### Static inventory YAML
-```yaml
-all:
-  hosts:
-    web1.example.com:
-    db1.example.com:
-  children:
-    webservers:
-      hosts:
-        web1.example.com:
-    dbservers:
-      hosts:
-        db1.example.com:
-```
+### Static inventory example
+When you create a static inventory in the UI, you manually enter host addresses.
 
-### Expected output
-Expect the output from the above inventory when you run `ansible-inventory --list`.
+**Example hosts list:**
+- `web1.example.com`
+- `db1.example.com`
 
-```json
-{
-  "all": {
-    "children": ["dbservers", "webservers"],
-    "hosts": ["db1.example.com", "web1.example.com"]
-  },
-  "dbservers": {
-    "hosts": ["db1.example.com"]
-  },
-  "webservers": {
-    "hosts": ["web1.example.com"]
-  }
-}
-```
+The resulting inventory groups and hosts are visible in the **Hosts** tab.
+
 </TabItem>
 <TabItem value="dynamic" label="Dynamic">
 
-### Dynamic inventory YAML
-```yaml
-plugin: aws_ec2
-regions:
-  - us-east-1
-filters:
-  instance-state-name: running
-keyed_groups:
-  - key: tags.Name
-    prefix: instance
-```
+### Dynamic inventory example
+When you create a dynamic inventory, hosts are automatically pulled from the Terraform/OpenTofu configuration in your selected workspace.
 
-### Expected output
-Expect the output from the above inventory when you run `ansible-inventory --list`.
-
-```json
-{
-  "all": {
-    "children": ["aws_ec2"],
-    "hosts": []
-  },
-  "aws_ec2": {
-    "hosts": [
-      "i-0abcd1234efgh5678",
-      "i-09xyz9876lmn5432"
-    ]
-  }
-}
-```
+For example, if your Terraform config defines two EC2 instances, the dynamic inventory shows those instances as hosts in the **Hosts** tab.
 
 </TabItem>
 </Tabs>
@@ -127,7 +78,7 @@ A playbook describes the automation tasks to apply to your inventory.
 3. Select a Git provider source of **Harness Code Repository** or Third-party Git provider.
 4. Select your repository along with the Git fetch type, branch, and optional folder path.
 
-Once your new playbook is added, you can run it against your selected inventory to automate tasks across your infrastructure.
+Once your new playbook is added, you can run it against your selected inventory to automate tasks across your infrastructure. See the [example playbook](#example-playbook) below.
 </TabItem>
 </Tabs>
 
@@ -159,7 +110,7 @@ Once your new playbook is added, you can run it against your selected inventory 
 </TabItem>
 <TabItem value="expected-output" label="Expected output">
 
-Expect the output from the above playbook when you run it against the `webservers` group
+Expect the output from the above playbook when you run it against the `webservers` group.
 
 ```bash
 PLAY [Configure web server infrastructure] **************************************
@@ -203,12 +154,11 @@ Harness pipelines connect inventories and playbooks so you can run automation as
 ---
 
 ## Summary
-- [Inventories](#inventories) define where your automation runs.
-- [Playbooks](#playbooks) define what automation is applied.
-[Harness IaCM pipelines](#pipeline-integration)
+- [Inventories](#inventories) define where your automation runs.  
+- [Playbooks](#playbooks) define what automation is applied.  
+- [Harness IaCM pipelines](#pipeline-integration) bring these together, making Ansible a first-class citizen in your CI/CD workflows.  
 
 ## Next steps
 - Learn more about [IaCM best practices](/docs/infra-as-code-management/iacm-best-practices).
 - Create and use infrastructure modules with [IaCM Module Registry](/docs/category/module-registry).
 - Check out Harness IaCM [upcoming features](/roadmap/#iacm).
-
