@@ -18,7 +18,9 @@ import TabItem from '@theme/TabItem';
 This feature is available in Self-Managed Enterprise Edition 0.32.x and later. Admin access is required for "SMP Key Management" functionality.
 :::
 
-The Zendesk integration allows users to access Harness support tickets directly from your Self-Managed Platform. To enable this, your platform generates a unique key pair - you keep the private key secure locally while sharing the public key with Harness Support, who maps it to your account to activate the integration.
+The Zendesk integration enables access to Harness support tickets from Self-Managed Platform without having to login separately from Harness SAAS. 
+
+This integration requires generating a unique key pair where the private key remains secure on the local system while the public key is shared with Harness Support for account mapping and integration activation.
 
 ### Generate and register your SMP key
 
