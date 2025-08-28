@@ -50,6 +50,22 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 ## August 2025
 
+### Version 1.93
+
+<!-- 2025-08-25 -->
+#### Fixed issues
+- Fixed a bug that prevented Docker layer caching from working when the step was run inside a **Step Group**. (CI-18603, CI-18604)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira. | 1.17.00              | 1.17.1         |
+| `harness/ci-addon`       | Version upgrade for Jira. | 1.17.00              | 1.17.1         |
+| `plugins/buildx-ecr`          | Provide option to disable TLS verification in buildkit cache client.                      | 1.3.3                | 1.3.4          |
+| `plugins/buildx-acr`          | Provide option to disable TLS verification in buildkit cache client.                      | 1.3.3                | 1.3.4          |
+| `plugins/buildx-gar`          | Provide option to disable TLS verification in buildkit cache client.                      | 1.3.3                | 1.3.4          |
+
 ### Version 1.92
 
 <!-- 2025-08-18 -->
@@ -67,7 +83,6 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 - Fixed a problem where logs were lost after UI refresh in certain **Build and Push** steps, ensuring better log persistence. (ZD-89263, CI-18417)
 - Resolved DNS resolution problems when using Harness Cloud Secure Connect for Docker image pulls in native Build and Push steps. (CI-18459)
 - Previously, pipelines could fail in later steps if the environment variable `PLUGIN_CACHE_KEY` was empty or null. This issue has been resolved by surfacing the error earlier in the **Save Cache** step, allowing customers to identify and fix the problem sooner. (CI-18537)
-- Fixed a bug that prevented Docker layer caching from working when the step was run inside a **Step Group**. (CI-18604)
 
 #### Harness images updates
 
