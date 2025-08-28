@@ -22,6 +22,37 @@ These release notes describe recent changes to Harness Database DevOps.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
 
+## August 2025
+### Release 1.53.x
+The `1.53.x` release focuses on improving database schema management workflows and stabilizing the Liquibase integration. Customers editing schemas can now select a primary instance directly from the UI.
+#### Key Highlights:
+
+* **Feature Enhancements:**
+  - Select a primary instance directly while editing a DB schema with a new dropdown in the UI.
+* **Bug Fixes:**
+  - DB Test and Preview steps now return detailed messages that appear in the chat UI, improving debugging visibility.
+  - Downgraded Liquibase image to resolve issues introduced in version 4.33.
+
+### Release 1.52.x
+The `1.52.x` release expands the platform’s authoring and validation capabilities. Teams can now author database changesets directly from the UI with a built-in YAML renderer and execution status visibility. This reduces reliance on external editors and brings change management closer to the deployment workflow. At the same time, we’ve added support for the Liquibase validate command, helping teams catch invalid changes early in the pipeline.
+
+#### Key Highlights:
+
+* **Feature Enhancements:**
+  - A new YAML renderer and execution status plugin allow teams to create and review changesets directly from the UI.
+  - Added support for the Liquibase `validate` command, ensuring changes are verified before deployment.
+* **Bug Fixes:**
+  - Upgraded Liquibase from `4.27` → `4.33` to address vulnerabilities.
+  - Fixed execution URL display and added PR link support in the UI.
+
+### Release 1.51.x
+The `1.51.x` release strengthens rollback flexibility and control. For scenarios where teams need to customize how rollbacks are applied, this release introduces support for Custom Rollback SQL. Customers can now define custom rollback logic for complex cases where auto-generated SQL may not suffice. This includes onboarding and storing step outputs for UpdateSQL and RollbackSQL, along with a dedicated CustomUpdateSQL step for better pipeline integration.
+
+#### Key Highlights:
+
+* **Feature Enhancements:**
+  - Custom Rollback SQL: Teams can now onboard and store step outputs for UpdateSQL and RollbackSQL, with a dedicated CustomUpdateSQL step in dbops-service.
+
 ## July 2025
 
 ### Release 1.49.x
