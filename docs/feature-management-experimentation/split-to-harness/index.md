@@ -42,14 +42,14 @@ The integration will fulfill key promises:
 
 ## Next Steps for Administrators
 
-   - Watch 30 Seconds to Confidence: How Your Migration Will Work (to see why there will be no downtime for your applications).
+   - Watch [30 Seconds to Confidence: How Your Migration Will Work](/docs/feature-management-experimentation/split-to-harness/how-it-works/) (to see why there will be no downtime for your applications).
    - Identify which of the three scenarios below apply to you (and plan to take action if needed).
    - Keep an eye out for migration date updates by email.
 
 ### Scenario One: Do You Use Management Screens?
 
    - Task: Learn to use new screens for managing users, groups, projects, permissions, or API keys.
-   - Resource: Access the Before and After Guide: Administering a Migrated Split Account on Harness.
+   - Resource: Access the [Before and After Guide: Administering a Migrated Split Account on Harness](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account/).
 
      - Compare Split and Harness admin screens side-by-side.
      - Watch short interactive and written step-by-step guides designed to quickly get you up to speed with tasks such as adding users, creating and editing groups, etc.
@@ -59,7 +59,7 @@ The integration will fulfill key promises:
 ### Scenario Two: Do You Access Split via SSO?
 
    - Task: create a new SSO Connection at least one week before migration.
-   - Resource: Access the Before and After Guide: SSO for Split Admins.
+   - Resource: Access the [Before and After Guide: SSO for Split Admins](/docs/feature-management-experimentation/split-to-harness/sso-for-admins).
    - By April 4th, 2025: Harness account invites will be sent to Split Administrators
 
      - Task Detail: Accept your invite by resetting your password.
@@ -68,8 +68,8 @@ The integration will fulfill key promises:
 ### Scenario Three: Has Your Organization Automated Tasks With the Split Admin API?
 
    - Task: Update scripts if using one of the 5 impacted Split Admin API endpoints.
-   - Resource: Access the Before and After Guide: API for Split Admins. This guide includes ready-to-run API examples in Postman.  Updates are being made daily and videos will follow.
-   - Usage Data: To learn if your organization has recently used any of the 5 impacted endpoints, look for the emails below and read Migration: API-Updates. 
+   - Resource: Access the [Before and After Guide: API for Split Admins](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins). This guide includes ready-to-run API examples in Postman. Updates are being made daily and videos will follow.
+   - Usage Data: To learn if your organization has recently used any of the 5 impacted endpoints, look for the emails below and read [Migration: API-Updates](/docs/feature-management-experimentation/split-to-harness/api-updates). 
 
      - February 21st, 2025: "Follow-Up: Changes to Split Admin API Endpoints & Migration to Harness."
      - February 27th, 2025: "Updated 2/27/25: Follow-Up: Changes to Split Admin API Endpoints & Migration to Harness." 
