@@ -58,6 +58,7 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 - Allow users to run authenticated Git commands in any Run step after the codebase has been cloned via Git Connector, without manually passing credentials again. (CI-18611)
 - Improved handling of test failures in Test Intelligence with the CI_TI_RERUN_FAILED_TEST feature flag, which now enables an environment variable to control reruns of failed tests. (CI-18581)
+- Enabled the `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` feature flag for all macOS hosted customers. (CI-18494)
 
 #### Fixed issues
 
@@ -66,6 +67,8 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 - Resolved an error that caused some API-triggered pipelines to fail when using Docker secrets. (ZD-89259, CI-18430)
 - Fixed a problem where logs were lost after UI refresh in certain **Build and Push** steps, ensuring better log persistence. (ZD-89263, CI-18417)
 - Resolved DNS resolution problems when using Harness Cloud Secure Connect for Docker image pulls in native Build and Push steps. (CI-18459)
+- Previously, pipelines could fail in later steps if the environment variable `PLUGIN_CACHE_KEY` was empty or null. This issue has been resolved by surfacing the error earlier in the **Save Cache** step, allowing customers to identify and fix the problem sooner. (CI-18537)
+- Fixed a bug that prevented Docker layer caching from working when the step was run inside a **Step Group**. (CI-18604)
 
 #### Harness images updates
 
