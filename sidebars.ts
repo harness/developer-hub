@@ -1182,7 +1182,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "html",
-          value: "Features",
+          value: "Use FME",
           className: "horizontal-bar",
         },
         {
