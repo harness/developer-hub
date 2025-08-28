@@ -226,7 +226,9 @@ You can customize and configure your Harness MCP server with environment variabl
 
 [MCP Tools](https://modelcontextprotocol.io/docs/concepts/tools#overview) allow servers to expose executable functions that can be invoked by clients and used by LLMs to perform actions. 
 
-At Harness, we currently support the following set of tools under the `default` toolset:
+For a full list of tools and toolsets available, visit the [Harness MCP toolsets documentation](https://github.com/harness/mcp-server?tab=readme-ov-file#tools).
+
+By default, we currently support the following set of tools under the `default` toolset:
 
   - `get_connector_details`: Get details of a specific connector
   - `list_connector_catalogue`: List the Harness connector catalogue
@@ -238,8 +240,6 @@ At Harness, we currently support the following set of tools under the `default` 
   - `fetch_execution_url`: Fetch the execution URL for a pipeline execution
   - `list_dashboards`: Lists all available Harness dashboards
   - `get_dashboard_data`: Retrieves the data from a specific Harness dashboard
-
-For a full list of tools and toolsets available, visit the [Harness MCP toolsets documentation](https://github.com/harness/mcp-server?tab=readme-ov-file#tools).
 
 ## Use Cases
 
