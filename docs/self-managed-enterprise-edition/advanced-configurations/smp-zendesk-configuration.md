@@ -1,8 +1,8 @@
 ---
 id: zendesk-configuration
-title: Zendesk Configuration
-sidebar_label: Zendesk Configuration
-description: Learn how to configure direct Zendesk login to simplify user access without requiring login to your SaaS account first.
+title: Zendesk Integration for Support Tickets
+sidebar_label: Zendesk Integration
+description: Learn how to configure Zendesk integration to access support tickets directly from your Self-Managed Platform.
 keywords:
   - zendesk
   - login
@@ -11,12 +11,50 @@ keywords:
   - configuration
 ---
 
-Zendesk is a popular customer support platform that helps teams manage tickets, conversations, and customer interactions in one place. Integrating Zendesk with the Self-Managed Platform makes it easier to access support tools without extra steps, while keeping authentication secure.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-To set this up, a quick one-time configuration is required. Follow the steps below to complete the setup.
+:::note Feature availbility
+This feature is available in Self-Managed Enterprise Edition 0.32.x and later.
+:::
 
-### Steps to configure Zendesk
+The Zendesk integration allows users to access Harness support tickets directly from your Self-Managed Platform. To enable this, your platform generates a unique key pair - you keep the private key secure locally while sharing the public key with Harness Support, who maps it to your account to activate the integration.
 
-1. Navigate to Account Settings → General → SMP Key Management.
+### Generate and register your SMP key
 
-2. 
+<Tabs>
+<TabItem value="interactive" label="Interactive" default>
+<iframe 
+  src="https://app.tango.us/app/embed/b117a2ff-5f39-45c3-b08d-0a2e2415cdfa" 
+  style={{minHeight: '640px'}} 
+  sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+  title="SMP-Zendesk configuration" 
+  width="100%" 
+  height="100%" 
+  referrerPolicy="strict-origin-when-cross-origin" 
+  frameBorder="0" 
+  webkitAllowFullScreen 
+  mozAllowFullScreen 
+  allowFullScreen
+/>
+</TabItem>
+
+<TabItem value="manual" label="Manual">
+1. Navigate to **Account Settings** → **General** → **SMP Key Management**.
+
+2. Click **Generate SMP key** to create a unique public key for your account.
+
+3. Download the public key file and send it to [Harness Support](mailto:support@harness.io) for account mapping.
+
+:::note
+Harness does not have access to your private keys. Only the public key is shared with Harness Support to enable this functionality.
+:::
+
+4. **(Optional)** To rotate your key if compromised, click **Rotate SMP Key** and send the new public key to Harness Support.
+
+5. Once enabled, access your tickets by navigating to **Help** → **View my tickets**. 
+</TabItem>
+
+</Tabs>
+
+
