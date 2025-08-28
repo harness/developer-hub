@@ -14,8 +14,8 @@ keywords:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::note Feature availbility
-This feature is available in Self-Managed Enterprise Edition 0.32.x and later.
+:::info Feature availability
+This feature is available in Self-Managed Enterprise Edition 0.32.x and later. Admin access is required for "SMP Key Management" functionality.
 :::
 
 The Zendesk integration allows users to access Harness support tickets directly from your Self-Managed Platform. To enable this, your platform generates a unique key pair - you keep the private key secure locally while sharing the public key with Harness Support, who maps it to your account to activate the integration.
@@ -46,13 +46,17 @@ The Zendesk integration allows users to access Harness support tickets directly 
 
 3. Download the public key file and send it to [Harness Support](mailto:support@harness.io) for account mapping.
 
-:::note
-Harness does not have access to your private keys. Only the public key is shared with Harness Support to enable this functionality.
-:::
+    :::note
+    Harness does not have access to your private keys. Only the public key is shared with Harness Support to enable this functionality.
+    :::
 
-4. **(Optional)** To rotate your key if compromised, click **Rotate SMP Key** and send the new public key to Harness Support.
+4. **(Optional)** To rotate your key as a security best practice or if compromised, click **Rotate SMP Key** and confirm. Send the new public key to Harness Support. 
 
-5. Once enabled, access your tickets by navigating to **Help** → **View my tickets**. 
+    **Important**: After rotating your key, you must send the new public key to Harness Support for remapping. The Zendesk integration will stop working until the new key is mapped to your account.
+
+5. Once enabled, access your tickets by navigating to **Help** → **View my tickets**.
+
+    <DocImage path={require('./static/access-tickets.png')} width="600" />
 </TabItem>
 
 </Tabs>
