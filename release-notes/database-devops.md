@@ -23,8 +23,17 @@ These release notes describe recent changes to Harness Database DevOps.
 :::
 
 ## August 2025
+
+### Release 1.54.x
+The `1.54.x` release focuses on improving usability in the schema overview experience. Previously, the schema dropdown on the Overview page only displayed a limited subset of schemas, making it difficult to navigate in environments with many schemas. With this update, customers now get a searchable dropdown that scales better for large environments, simplifying schema selection and improving visibility into migration states.
+
+#### Key Highlights:
+**Bug Fixes**
+  - Added a searchable schema dropdown on the Overview page, resolving limitations with subset display and missing pagination/infinite scroll.
+
 ### Release 1.53.x
 The `1.53.x` release focuses on improving database schema management workflows and stabilizing the Liquibase integration. Customers editing schemas can now select a primary instance directly from the UI.
+
 #### Key Highlights:
 
 * **Feature Enhancements:**
