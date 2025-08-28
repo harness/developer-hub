@@ -123,3 +123,7 @@ When configuring the iframe SidebarItem:
   * `to`: Must follow the format `iframe/${path}` where `${path}` is your custom path segment
   * `text`: The label that appears in the sidebar navigation
   * `url`: The external URL you want to display within the iframe
+
+:::info
+iframes come with certain inherent limitations — for example, OAuth will not work and some websites put limits or block themselves from being rendered inside iframes.
+:::
