@@ -58,6 +58,8 @@ When a user is created at the project level (in **Project Settings**), this user
 
 Likewise, a user created at the organization level (in **Organization Settings**), is automatically added to the **All Account Users** user group in the parent account.
 
+By default, the **All Account Users** user group is assigned the role binding: **Account Viewer** over **All Account Level Resources**. If that role binding is removed, your users may encounter an error when attempting to access the FME module.
+
 ### View your users
 
 You can view your new Harness users (that correspond to your legacy Split users) in your Harness account settings (in the left navigation panel, click **Account Settings**, click **Access Control** at the top of the page, and click the **Users** tile).
@@ -788,7 +790,7 @@ If you do not delete the resources from within your project before deleting the 
 
 ![](./static/delete-project.png)
 
-If you accidentally delete a project before deleting its resources, see the [Troubleshooting section](#troubleshooting).
+If you accidentally delete a project before deleting its resources, see the [Troubleshooting](#fme-project-deletion) section.
 
 <Tabs>
 <TabItem value="interactive" label="Interactive Guide">
@@ -929,6 +931,8 @@ To view SDK API keys for a project:
 
 ## Troubleshooting
 
+### FME project deletion
+
 #### My SDK feature flag evaluations work, but my FME project is not visible in Harness
 
 Check with your Harness admin to be sure that the FME project does not exist in Harness. It could be that an admin somehow removed your view privileges.
@@ -938,6 +942,19 @@ If your Harness admin does not see your FME project on the Projects page in FME 
 #### What can I do if I deleted a project without first deleting all FME project resources?
 
 Contact support@split.io and provide us with the workspace ID of your orphaned FME project and the name of the deleted project in Harness. We will advise you on your next steps.
+
+### FME module
+
+#### Some of my users are seeing the error message "Unable to start the FME functionality" when navigating to an page within the Harness FME module
+
+Your users may be lacking the role binding: **Account Viewer** over **All Account Level Resources**. 
+
+To resolve the error, and restore these users' access to the FME module, assign this role binding in **Account Settings** using one of the following methods:
+
+* **Recommended:** Add this role binding to the **All Account Users** user group, by following the steps in [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups) in the Harness platform documentation.
+* Add this role binding to a group where the users are members (by following [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups)) or to the users directly (by following [Edit direct assignments](https://developer.harness.io/docs/platform/role-based-access-control/add-users#edit-direct-assignments)).
+
+### Legacy Split Admin API keys
 
 #### My legacy Split Admin API key stopped working
 
