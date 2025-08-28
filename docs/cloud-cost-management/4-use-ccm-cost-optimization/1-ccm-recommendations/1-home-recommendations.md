@@ -105,8 +105,8 @@ Recommendation settings allow users to customize how recommendations are generat
 
 Click on "Settings" to view/edit the preferences and presets.
 
-<Tabs>
-<TabItem value="Preferences">
+<Tabs queryString="recommendation-settings">
+<TabItem value="Preferences" label="Preferences">
 
 ### Preferences
 
@@ -122,11 +122,11 @@ Click on "Settings" to view/edit the preferences and presets.
 
 #### Resource Specific Preferences:
 
-Over here, users can select [the presets](#recommendation-settings) for each resource type and also set the default time range. 
+Over here, users can select [the presets](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations?recommendation-settings=Manage+Presets#recommendation-settings) for each resource type and also set the default time range. 
 
 </TabItem>
 
-<TabItem value="Manage Presets">
+<TabItem value="Manage Presets" label="Manage Presets">
 
 ### Manage Presets
 
@@ -192,7 +192,8 @@ For EC2 instances, users can choose how recommendations are displayed:
 
 <DocImage path={require('./static/ec-preset.png')} width="70%" height="70%" title="Click to view full size image" />
 </TabItem>
-<TabItem value="Resolution Status Mapping">
+<TabItem value="Resolution Status Mapping" label="Resolution Status Mapping">
+
 ### Resolution Status Mapping
 
 <DocImage path={require('./static/resolution-status.png')} width="70%" height="70%" title="Click to view full size image" />
