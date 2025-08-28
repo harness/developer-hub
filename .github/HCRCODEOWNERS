@@ -111,14 +111,14 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /src/components/Docs/data/serviceReliabilityManagementData.ts vasundhara.shukla@harness.io ryan.taylor@harness.io tina.huang@harness.io
 
 # Chaos Docs
-/docs/chaos-engineering/ @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
-/release-notes/chaos-engineering.md @Jonsy13 @Ashutosh-Bhadauriya
-/src/components/Roadmap/data/ceData.ts @Ashutosh-Bhadauriya
-/src/components/Docs/data/chaosEngineeringData* @Ashutosh-Bhadauriya
+/docs/chaos-engineering/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io
+/release-notes/chaos-engineering.md vedant.shrotria@harness.io @ashutosh.bhadauriya@harness.io
+/src/components/Roadmap/data/ceData.ts @ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io
+/src/components/Docs/data/chaosEngineeringData* @ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io
 # Chaos FAQs
-/docs/faqs/chaos-engineering-faqs @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
-/docs/faqs/static @Jonsy13 @ksatchit @umamukkara @Ashutosh-Bhadauriya
-/kb/chaos-engineering/chaos-engineering-faq @ksatchit @umamukkara @Ashutosh-Bhadauriya
+/docs/faqs/chaos-engineering-faqs vedant.shrotria@harness.io karthik.s@harness.io @umasankar.mukkara@harness.io @ashutosh.bhadauriya@harness.io
+/docs/faqs/static vedant.shrotria@harness.io karthik.s@harness.io @umasankar.mukkara@harness.io @ashutosh.bhadauriya@harness.io
+/kb/chaos-engineering/chaos-engineering-faq karthik.s@harness.io @umasankar.mukkara@harness.io @ashutosh.bhadauriya@harness.io
 
 # Platform Docs
 /docs/platform/ @prateek.mittal@harness.io @GokulBansal0 @abhishekharness @vikram.sahu@harness.io
