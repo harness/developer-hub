@@ -153,7 +153,7 @@ You can still manually request reviews from specific CODEOWNERS. If a CODEOWNER 
 
 ### CODEOWNERS syntax
 
-In your Harness Code CODEOWNERS file, you can assign code ownership to users <!--and user groups-->within your Harness account<!--, organizations, or projects:-->.
+In your Harness Code CODEOWNERS file, you can assign code ownership to users within your Harness account, organizations, or projects.
 
 <!--
 * Account: `@accountIdentifier/userOrGroupName`
@@ -180,7 +180,22 @@ You could then declare a CODEOWNER at the project level with `@accountID/my_cool
 You can get user and group names where you [manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) and [manage users](https://developer.harness.io/docs/platform/role-based-access-control/add-users).
 -->
 
-Declare CODEOWNERS by the email address associated with their Harness user profile.
+You can declare CODEOWNERS using:
+
+- The email address associated with a Harness user profile.
+- User groups at the **project**, **organization**, or **account** level.
+
+For user groups, use the following formats:
+
+* Project-level user group: `@my_project_group`
+* Org-level user group: `@org.my_org_group` or simply `@my_org_group`
+* Account-level user group: `@account.my_account_group`
+
+Both the long (`@org.my_org_group`) and short (`@my_org_group`) forms are supported.
+
+:::note
+When a CODEOWNERS rule includes a user group, any member of that group can provide the required approval.
+:::
 
 You can assign ownership to specific files, directories, or otherwise. Wildcards are allowed. For example, this CODEOWNERS file demonstrates different ways you can declare ownership.
 
@@ -196,6 +211,9 @@ Gemfile.lock @email1 @email2
 # Subdirectory owners
 /some_directory/ @email
 /some_directory_2/ @email1 @email2
+
+# User groups at different scopes
+** @project.dev-team @org.security-group @account.admins
 
 # Workspace owner
 WORKSPACE @email
