@@ -52,13 +52,13 @@ On the Open Recommendations Page, you can view:
 
 ### Applied Recommendations
 
-  ![](./static/recommendations-applied.png)
+<DocImage path={require('./static/output-hist.gif')} width="80%" height="80%" title="Click to view full size image" />
 
 The Applied Recommendations tab provides comprehensive visibility into your cost optimization efforts with the following key components:
 
 - **Savings Realized**: Displays the total financial impact of all implemented recommendations, helping you quantify the ROI of your cost optimization efforts.
 
-- **Recommendations vs. Savings Chart**: A visual trend analysis showing the correlation between applied recommendations and actual cost savings over time. This line chart helps teams track progress and demonstrate value to stakeholders.
+- **Recommendations vs. Savings Chart**: A visual trend analysis showing the correlation between applied recommendations and actual cost savings over time. The saving from applied recommendations is shown against the number of recommendations applied.
 
 - **Breakdown of Marked as Applied**: Shows the distribution of applied recommendations by number of recommendations and associated savings to identify which optimization strategies are most frequently implemented.
 
