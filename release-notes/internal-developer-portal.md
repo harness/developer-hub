@@ -182,21 +182,16 @@ The following components have been removed because their functionality is now fu
 * `EntityTimeToRecoveryCard`
 * `EntityTopContributorsTable`
 
-#### Example Usage – Line Chart
 
-```jsx
-<DxDataChartCard
-  title="Deployment Frequency"
-  description="Weekly deployments over time"
-  datafeedToken="your-datafeed-token"
-  unit="deployments"
-  variables={{ teamId: entity.metadata.annotations?.["getdx.com/id"] }}
-  chartConfig={{
-    type: "line",
-    xAxis: "date",
-    yAxis: "count",
-  }}
-/>
+Your new YAML would look like :
+```YAML
+       - component: DxDataChartCard
+          specs:
+            props:
+              variant: gridItem
+              item: 400
+            gridProps:
+              md: 6
 ```
 
 With `DxDataChartCard`, you can create customizable visualizations, deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*

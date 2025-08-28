@@ -116,17 +116,10 @@ The following configuration is the current recommended layout for this plugin:
               md: 6
 ```
 ## Annotations
-To configure the plugin for a service in the software catalog, add the following annotation to its ``catalog-info.yaml`` definition file:
 
-```YAML
-metadata:
-  annotations:
-    github.com/project-slug: 'project-slug'
-```
+As of now you don't really need annotations to configure the plugin.
 
-:::note
-The Entity identifier of DX should match with the Identifier of IDP 2.0 or `/metadata.name` of IDP 1.0.
-:::
+Although make sure that the Entity identifier of DX should match with the Identifier of IDP 2.0 or `/metadata.name` of IDP 1.0.
 
 ## Support
 The plugin is owned by **DX** and managed in this [repository](https://github.com/get-dx/backstage-plugin) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
