@@ -182,23 +182,17 @@ The following components have been removed because their functionality is now fu
 * `EntityTimeToRecoveryCard`
 * `EntityTopContributorsTable`
 
+> Along with this, the DX backend plugin is also deprecated.
 
-Your new YAML would look like :
-```YAML
-       - component: DxDataChartCard
-          specs:
-            props:
-              variant: gridItem
-              item: 400
-            gridProps:
-              md: 6
-```
+With `DxDataChartCard`, you can create [customizable visualizations](/docs/internal-developer-portal/plugins/available-plugins/dx#configuring-dxdatachartcard), deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
 
-With `DxDataChartCard`, you can create customizable visualizations, deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
 
 #### Configuration Simplification
 
 The [DX plugin configuration](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/dx#application-configuration-yaml) has been simplified. The `schedule`, `catalogSyncAllowedKinds`, and `disableCatalogSync` parameters have been removed, with only `appId` remaining as an optional parameter.
+
+
+
 
 ### [New Feature] Harness Feature Management & Experimentation Plugin
 
