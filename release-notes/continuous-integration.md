@@ -58,7 +58,6 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 - Allow users to run authenticated Git commands in any Run step after the codebase has been cloned via Git Connector, without manually passing credentials again. (CI-18611)
 - Improved handling of test failures in Test Intelligence with the CI_TI_RERUN_FAILED_TEST feature flag, which now enables an environment variable to control reruns of failed tests. (CI-18581)
-- Enabled the `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` feature flag for all macOS hosted customers. (CI-18494)
 
 #### Fixed issues
 
@@ -74,8 +73,8 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 | **Image**                | **Change**                                       | **Previous version** | **New Version** |
 | ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
-| `harness/ci-lite-engine` | Version upgrade for Jira for Lite Engine Addon . | 1.16.99              | 1.17.00         |
-| `harness/ci-addon`       | Version upgrade for Jira for Lite Engine Addon . | 1.16.99              | 1.17.00         |
+| `harness/ci-lite-engine` | Version upgrade for Jira. | 1.16.99              | 1.17.00         |
+| `harness/ci-addon`       | Version upgrade for Jira. | 1.16.99              | 1.17.00         |
 | `plugins/cache`          | Bzlmod cache support added.                      | 1.9.9                | 1.9.10          |
 
 ### Version 1.91
