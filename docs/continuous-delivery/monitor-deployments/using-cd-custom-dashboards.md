@@ -514,6 +514,10 @@ This will only show the pipelines, which had at least 1 pipeline execution. It w
 List of dimensions:
 1. Pipeline tag: The pipeline tag, it will be displayed as `key:value`. If there are let's say 5 tags in a pipeline, there will be 5 rows having 1 tag(`key:value` pair) in each row.
 
+You may want to see this dimension in all one column. To do this, right click on the dimension/column and select **Unpivot**.
+
+  ![](./static/custom_dashboard_unpivot.png)
+
 
 ### Service Tags
 Displays a list of tags associated with a service.
