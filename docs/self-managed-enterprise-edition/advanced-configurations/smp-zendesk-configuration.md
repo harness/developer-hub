@@ -2,7 +2,7 @@
 id: zendesk-configuration
 title: Zendesk Integration for Support Tickets
 sidebar_label: Zendesk Integration
-description: Learn how to configure Zendesk integration to access support tickets directly from your Self-Managed Platform.
+description: Learn how to configure Zendesk to access support tickets directly from your Self-Managed Platform.
 keywords:
   - zendesk
   - login
