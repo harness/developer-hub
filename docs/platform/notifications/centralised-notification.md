@@ -9,11 +9,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import React from 'react';
 
-:::info Prerequisites
-Before you begin, ensure you have the **`PL_CENTRAL_NOTIFICATIONS`** feature flag enabled.
-Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
-:::
-
 ## Overview
 
 Harness Centralised Notifications allow you to send notifications based on rules and conditions across pipelines and delegates. You can configure and manage alerts to stay informed about critical events in your Harness environment.
