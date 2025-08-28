@@ -155,7 +155,7 @@ Sometimes users might have mixed case email addresses in Okta. In these situatio
 Download the **Identity Provider metadata** XML from your Okta app and upload it into Harness.
 
 1. In your Harness Okta app, go to the **Sign On** tab, and then select **Edit**.
-2. Select **Actions** to download the SAML metadata file.
+2. Select **Actions** to view the SAML metadata, then copy that data into a file and save it with an .xml extension.
 
    ![](./static/single-sign-on-saml-60.png)
 
