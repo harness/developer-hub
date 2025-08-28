@@ -3,6 +3,21 @@ title:  Catalog Population from Bitbucket
 description: Documentation for Bitbucket catalog population scripts
 sidebar_label: Population from Bitbucket 
 sidebar_position: 12
+keywords:
+  - bitbucket repository discovery
+  - harness catalog population
+  - software catalog automation
+  - bitbucket integration scripts
+  - entity registration
+  - catalog population script
+  - catalog migration
+tags:
+  - bitbucket
+  - catalog
+  - automation
+  - idp
+  - migration
+  - population
 redirects:
   - /internal-developer-portal/catalog/bitbucket-scripts
 ---

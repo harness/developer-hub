@@ -3,6 +3,21 @@ title: Catalog Population from Kubernetes
 description: Documentation for Kubernetes catalog population scripts
 sidebar_label: Population from Kubernetes
 sidebar_position: 13
+keywords:
+  - kubernetes resource discovery
+  - harness catalog population
+  - software catalog automation
+  - kubernetes integration scripts
+  - dependency detection
+  - catalog population script
+  - catalog migration
+tags:
+  - kubernetes
+  - catalog
+  - automation
+  - idp
+  - migration
+  - population
 ---
 
 
@@ -85,15 +100,138 @@ Options:
 
 ### What the Script Does
 
-1. Connects to your Kubernetes cluster using kubeconfig.
-2. Discovers Deployments, Services (and optionally Pods).
-3. Generates Harness-compatible `idp.yaml` for each resource, with fields like:
+1. Connects to your Kubernetes cluster using kubeconfig
+2. Discovers Deployments, Services (and optionally Pods)
+3. Generates Harness-compatible `idp.yaml` for each resource
+4. Pushes each YAML file into a GitHub central repo at a structured path
+5. Registers the entity in Harness IDP via the Entities API
 
-   * `identifier` (deterministic, based on namespace, kind, and name)
-   * `metadata` (description, tags, annotations)
-   * `spec.dependsOn` for detected dependencies
-4. Pushes each YAML file into a GitHub central repo at a structured path.
-5. Registers the entity in Harness IDP via the **Entities API**, ensuring it appears in the Software Catalog.
+
+#### Resource Discovery Logic
+
+The script intelligently discovers Kubernetes resources using the official Kubernetes Python client:
+
+```python
+# Initialize API client
+v1 = client.CoreV1Api()
+apps_v1 = client.AppsV1Api()
+```
+
+It uses different API methods based on resource types and filters:
+
+- For Deployments: `apps_v1.list_namespaced_deployment()` or `apps_v1.list_deployment_for_all_namespaces()`
+- For Services: `v1.list_namespaced_service()` or `v1.list_service_for_all_namespaces()`
+
+Each resource is extracted with its complete metadata including:
+- Name, namespace, kind
+- Labels and selectors
+- Environment variables (for Deployments)
+
+#### Dependency Detection Mechanism
+
+The script employs two sophisticated methods to detect dependencies between resources:
+
+1. **Service-to-Deployment Mapping**:
+   ```python
+   # Check if deployment labels match service selector
+   if service_selector and all(deployment_labels.get(k) == v 
+      for k, v in service_selector.items() if k in deployment_labels):
+       implementing_deployments.append(resource["name"])
+   ```
+   This identifies which Deployments implement each Service by comparing Service selectors with Deployment labels.
+
+2. **Environment Variable Analysis**:
+   ```python
+   # Look for service name in environment variables
+   if service_name.lower() in env_value.lower():
+       dependencies.append({
+           "name": service_name,
+           "identifier": service_id,
+           "type": "Service"
+       })
+   ```
+   This detects when one resource references another via environment variables, revealing implicit dependencies.
+
+#### YAML Generation and Entity Creation
+
+The script dynamically generates Harness-compatible entity definitions with these key features:
+
+1. **Deterministic Identifiers**:
+   ```python
+   # Generate a unique Harness identifier based on resource metadata
+   name = f"{resource_namespace}_{resource_kind}_{resource_name}".lower()
+   ```
+   Creates stable, consistent identifiers using namespace, kind, and name.
+
+2. **Rich Metadata**:
+   ```python
+   metadata:
+     description: "Kubernetes {resource['kind']} {resource['name']} in namespace {resource['namespace']}"
+     tags:
+       - kubernetes
+       - auto-onboarded
+       - {resource['namespace']}
+       - {resource['kind'].lower()}
+   ```
+   Includes descriptive information and automatic tagging.
+
+3. **Dependency Relationships**:
+   ```python
+   # Add dependsOn section as a proper array
+   idp_yaml += '\n  dependsOn:'
+   for dep in dependencies:
+       idp_yaml += f'\n    - Component:{dep["name"]}'
+   ```
+   Maps the discovered dependencies into Harness relationship format.
+
+#### GitHub Integration
+
+The script interfaces with GitHub's API to store entity definitions:
+
+1. **Path Organization**:
+   ```python
+   file_path = f"{resource['namespace']}/{resource['kind'].lower()}/{resource['name']}/idp.yaml"
+   ```
+   Creates a logical folder structure based on Kubernetes hierarchy.
+
+2. **Smart File Operations**:
+   ```python
+   # Check if file exists and get its SHA
+   file_sha = None
+   try:
+       check_response = requests.get(url, headers=GITHUB_HEADERS)
+       if check_response.status_code == 200:
+           file_sha = check_response.json()["sha"]
+   ```
+   Checks if files already exist before creating or updating them.
+
+#### Harness Catalog Registration
+
+The script registers entities with Harness using the Entities API:
+
+1. **API Integration**:
+   ```python
+   harness_url = (
+       f"https://qa.harness.io/v1/entities"
+       f"?convert=false&dry_run=false"
+       f"&orgIdentifier={ORG_IDENTIFIER}&projectIdentifier={PROJECT_IDENTIFIER}"
+   )
+   ```
+
+2. **Intelligent Retries**:
+   ```python
+   # If entity already exists, try with operationMode=UPSERT
+   if response.status_code == 400 and ("already exists" in response.text.lower()):
+       print("Trying with UPSERT mode...")
+       
+       # Try with UPSERT mode
+       upsert_url = (
+           f"https://qa.harness.io/v1/entities"
+           f"?convert=false&dry_run=false&operationMode=UPSERT"
+           f"&orgIdentifier={ORG_IDENTIFIER}&projectIdentifier={PROJECT_IDENTIFIER}"
+       )
+   ```
+   The script automatically retries with UPSERT mode if entities already exist.
 
 ### Output Structure
 
