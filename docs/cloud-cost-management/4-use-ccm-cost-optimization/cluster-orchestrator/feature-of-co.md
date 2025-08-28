@@ -24,19 +24,23 @@ When enabling Cluster Orchestrator, you can configure various settings under the
 
 - **Cluster Capacity Limits:** Cluster Capacity Limits restrict the maximum resources a cluster can scale up to. This prevents scenarios where configuration errors or unexpected behavior could result in uncontrolled node provisioning.
 
-When configured, Cluster Capacity Limits enforce limits on:
-- Maximum vCPUs (cores) – defines the total CPU capacity the cluster can scale up to.
-- Maximum Memory (GiB) – defines the total memory capacity the cluster can scale up to.
+  When configured, Cluster Capacity Limits enforce limits on:
+    - Maximum vCPUs (cores) – defines the total CPU capacity the cluster can scale up to.
+    - Maximum Memory (GiB) – defines the total memory capacity the cluster can scale up to.
 
-How it works:
-- Guardrails are set in the Cluster Configuration.
-- For Karpenter Nodepools, the orchestrator checks configured limits before allowing a scale-up event.
-- If the cluster is at or above the configured maximum, additional nodes will not be provisioned.
+  If, Karpenter Nodepools Already have limits configured, when new nodepools (spot/ondemand) are created out of the existing karpenter nodepools, the limits configuration will be copied over. If the limits are configured on the cluster level, then the limits will be copied over to all nodepools which does not have a limit set explicitly in the default nodepool. If limits are not set on Cluster Config/Default Nodepool, then a default limit will be calculated by cluster orchestrator with the following equation and will be applied on all the nodepools managed by Harness:
+
+  ```
+  cpu = total cpu available in the cluster * 2
+  memory = total memory available in the cluster * 2
+  ```
 
 - **Bin-Packing:** Bin-packing is a resource optimization technique that Cluster Orchestrator uses to efficiently distribute workloads across your Kubernetes cluster. The goal is to maximize resource utilization by consolidating workloads onto fewer nodes, allowing underutilized nodes to be safely removed from the cluster.
     - **Pod Eviction By Harness:** To optimize resources, nodes may be evicted before consolidation. Enabling this ensures workloads are safely rescheduled to maintain performance and availability while freeing up underutilized resources.
         - **Single replica eviction of workload:** Can be set to On or Off
         - **Resource Utilization Thresholds:** Set minimum CPU and memory usage levels to determine when a node is considered underutilized. This helps balance cost savings and performance by ensuring nodes are consolidated only when their resources fall below the specified thresholds.
+      - **Bin Packing Supports Aggressive Distribution Mode from `0.5.1`:** **Aggressive Distribution Mode** is an enhancement to the default Cluster Orchestrator scheduling flow which gets automatically enabled when bin packing is enabled. With Bin Packing enabled, the orchestrator enforces the configured spot/on-demand distribution more effectively. It identifies pods that violate distribution rules due to configuration changes or missing tolerations. Using the Kubernetes Descheduler's policy `RemovePodsViolatingNodeTaints`, it automatically evicts pods from incompatible nodes and reschedules them to nodes that match your configured distribution.
+
         <DocImage path={require('./static/cluster-two.png')} width="80%" height="80%" title="Click to view full size image" />
 
     - **Node Disruption Using Karpenter:** Activate Karpenter's node disruption management to optimize resource utilization and maintain application stability. Toggalable Options:
@@ -48,13 +52,7 @@ How it works:
             - **Select reason:** Drifted, Underutilized, Empty
             - **Allowed node disruptions:** Specify percentage or number of nodes
             - **Budget scheduling:** When a budget begins being active. It can be set to be: (hourly, midnight, daily, weekly, monthly or annually) and Active duration (Specifies how long the budget remains active)
-    - **Aggressive Distribution Mode**: **Aggressive Distribution Mode** is an optional enhancement to the default Cluster Orchestrator scheduling flow.
     
-    In standard mode, the orchestrator schedules workloads according to the configured spot/on-demand distribution. However, pods that are already scheduled remain on their assigned nodes until they are naturally rescheduled. This can lead to temporary mismatches between your desired configuration and the actual placement of pods.
-    
-    Aggressive Distribution Mode addresses this gap by enabling pod eviction when a workload no longer matches the node taints. It uses the Kubernetes Descheduler’s policy (already in use for bin packing) to automatically evict pods from incompatible nodes. These pods are then rescheduled to nodes that align with the configured distribution.
-
-    **TO SET IT:**
 
 - **Spot to Spot Consolidation:** Automatically switch workloads between spot instance types when cheaper options become available to maximize cost savings while maintaining performance requirements for your cluster. 
 
