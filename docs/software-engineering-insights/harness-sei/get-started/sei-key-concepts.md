@@ -7,7 +7,7 @@ sidebar_position: 10
 
 Harness Software Engineering Insights (SEI) 2.0 is a complete re-imagination of how engineering organizations can understand, measure, and improve software delivery. It brings together signals across your software delivery lifecycle (SDLC), connects them with organizational context, and transforms them into actionable insights for teams, managers, and executives.
 
-This topic outlines the core concepts that power SEI 2.0.
+This topic outlines the core concepts that power SEI 20.
 
 ## Overview
 
