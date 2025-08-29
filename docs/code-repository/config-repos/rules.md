@@ -21,9 +21,20 @@ If you configure branch rules at multiple levels they are combined with an `AND`
 3. Select **New Branch Rule**.
 4. Enter the rule **Name** and optional **Description**.
 5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). 
-You have the option to include or exclude repositories when setting rules at the account, org, or project level. This allows you to fine-tune which repositories the rule applies to without forcing the rule across every repo. For example, you might include only repositories under `service-*` or explicitly exclude experimental repos.
-Patterns can be inclusive or exclusive.
-1. In **Bypass List**, you can specify users who can bypass this rule.
+
+You have the option to include or exclude repositories when setting rules at the account, org, or project level. This allows you to fine-tune which repositories the rule applies to without forcing the rule across every repo. You can do this in two ways:
+
+- **By selecting specific repositories** (for example, `billing-api`, `web-frontend`).
+- **By using name patterns** (for example, `service-*`, `exp-*`).
+
+Includes and excludes can be mixed, and excludes take precedence when there’s overlap.  
+Examples:
+- Include by pattern: `service-*`
+- Include specific repos: `billing-api`, `web-frontend`
+- Exclude by pattern: `exp-*`
+- Exclude a specific repo: `playground`
+
+1. In **Bypass List**, you can specify users, user groups, or service accounts who can bypass this rule.
 2. For each of the [**Rules**](#available-rules), select the rule you want to enable and provide additional specifications, if necessary. For example, if you select **Require a minimum number of reviewers**, you must specify the minimum number of reviewers.
 3. Select **Create Rule**.
 
@@ -98,8 +109,15 @@ Check this box to activate the rule.
 
   * `v*` for all version tags,
   * `release/**` for nested release tags).
-* You can include or exclude repositories when creating tag rules at the account, org, or project level. This makes it possible to scope rules precisely — for example, apply tag restrictions to `prod-*` repos only, or exclude experimental repos from versioning rules.
-* Patterns can be inclusive or exclusive.
+* You can include or exclude repositories when creating tag rules at the account, org, or project level. This makes it possible to scope rules precisely without forcing the rule across every repo. You can do this in two ways:
+  - **By selecting specific repositories** (for example, `billing-api`, `ui`).
+  - **By using name patterns** (for example, `prod-*`, `exp-*`).
+* Includes and excludes can be mixed, and excludes take precedence when they overlap.  
+  Examples:
+  - Include by pattern: `prod-*`
+  - Include specific repos: `billing-api`, `ui`
+  - Exclude by pattern: `exp-*`
+  - Exclude a specific repo: `playground`
 
 #### Rules: Select all that apply
 
