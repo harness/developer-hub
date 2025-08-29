@@ -63,6 +63,11 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
       path: "/artifact-registry/content/supported-formats/cargo-quickstart.md",
       logo: "rust-logo.png",
       logoSize: 24
+    },
+    "Hugging Face": {
+      path: "/artifact-registry/content/supported-formats/hugging-face-quickstart.md",
+      logo: "hugging-face-logo.svg",
+      logoSize: 24
     }
   }}
   toc = {toc}
