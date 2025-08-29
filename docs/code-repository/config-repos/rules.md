@@ -153,7 +153,7 @@ You can still manually request reviews from specific CODEOWNERS. If a CODEOWNER 
 
 ### CODEOWNERS syntax
 
-In your Harness Code CODEOWNERS file, you can assign code ownership to users within your Harness account, organizations, or projects.
+In your Harness Code CODEOWNERS file, you can assign code ownership to users and user groups within your Harness account, organizations, or projects.
 
 <!--
 * Account: `@accountIdentifier/userOrGroupName`
@@ -215,7 +215,7 @@ Gemfile.lock @email1 @email2
 /some_directory_2/ @email1 @email2
 
 # User groups at different scopes
-** @project.dev-team @org.security-group @account.admins
+** @dev-team @org.security-group @account.admins
 
 # Workspace owner
 WORKSPACE @email
