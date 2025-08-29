@@ -1852,7 +1852,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: "html",
-          value: 'Getting Started',
+          value: 'New to Chaos Engineering?',
           className: "horizontal-bar",
         },
         "chaos-engineering/overview",
@@ -1862,7 +1862,7 @@ const sidebars: SidebarsConfig = {
         "chaos-engineering/quickstart",
         {
           type: "html",
-          value: 'Guides',
+          value: 'Use Chaos Engineering',
           className: "horizontal-bar",
         },
         // {
@@ -2031,7 +2031,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "html",
-          value: '<span style="color:#4B5563; font-weight:600;"> Resources </span>',
+          value: '<span style="color:#4B5563; font-weight:600;"> Troubleshooting & Resources </span>',
           className: "horizontal-bar",
         },
         "chaos-engineering/resources/hce-vs-litmus",
