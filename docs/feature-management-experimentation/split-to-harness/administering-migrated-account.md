@@ -56,17 +56,17 @@ Users can have role bindings that each assign a role (a set of permissions) over
 
 When a user is created at the project level (in **Project Settings**), this user is automatically added to the Harness built-in **All Organization Users** and **All Account Users** user groups in the parent organization and account.
 
-Likewise, a user created at the organization level (in **Organization Settings**), is automatically added to the **All Account Users** user group in the parent account.
+Likewise, a user created at the organization level (in **Organization Settings**) is automatically added to the **All Account Users** user group in the parent account.
 
-By default, the **All Account Users** user group is assigned the role binding: **Account Viewer** over **All Account Level Resources**. If that role binding is removed, your users may encounter an error when attempting to access the FME module.
+By default, the **All Account Users** user group is assigned the role binding: **Account Viewer** role over **All Account Level Resources**. If that role binding is removed, your users may encounter an error when attempting to access the FME module.
 
 ### View your users
 
-You can view your new Harness users (that correspond to your legacy Split users) in your Harness account settings (in the left navigation panel, click **Account Settings**, click **Access Control** at the top of the page, and click the **Users** tile).
+You can view your new Harness users (that correspond to your legacy Split users) in your Harness account settings. In the left navigation panel, click **Account Settings**, click **Access Control** at the top of the page, and click the **Users** tile.
 
 ![](./static/account-settings.png)
 
-The same users were also added at the organization level, and can be seen in your Harness organization settings (in the left navigation panel, click **Organization Settings**, click **Access Control** at the top of the page, and click the **Users** tile).
+The same users were also added at the organization level, and can be seen in your Harness organization settings. In the left navigation panel, click **Organization Settings**, click **Access Control** at the top of the page, and click the **Users** tile.
 
 ![](./static/org-settings.png)
 
@@ -113,7 +113,7 @@ To add a user to Harness that will have access to your (unrestricted) migrated F
 The RBAC permissions (that mimic legacy Split permissions) are set on the FME user group to which the new Harness user was added. You can learn more about these user group role bindings in the [User Groups](#user-groups) section.
 
 :::tip
-If you want to grant the user access to a restricted project, you’ll need to add the user directly to the project (in the Project Settings) and assign the project-level role binding. Go to [Unrestricted and Restricted Projects](#unrestricted-and-restricted-projects) to learn more.
+If you want to grant the user access to a restricted project, you’ll need to add the user directly to the project (in Project Settings) and assign the project-level role binding. Go to [Unrestricted and Restricted Projects](#unrestricted-and-restricted-projects) to learn more.
 :::
 
 ### Delete a user
@@ -356,7 +356,7 @@ To grant similar permissions to your legacy Split settings, the new Harness FME 
 :::warning In legacy Split groups with both editors and viewers – Editors will lose permissions.
 If a group in legacy Split had both editors and viewers (legacy roles) and the group was given access to a restricted project, then post-migration the Harness group will be assigned only the **Project Viewer** role. (This prevents viewers from gaining broader permissions upon migration.) The users that were legacy Split editors will no longer have edit permissions for the project.
 
-Since RBAC is additive, you can assign edit permissions by adding the Harness user (with the legacy Editor role) at the project level and assigning the role binding: **Split FME Manager Role** role and **All Project Level Resources** (or **FME All Resources**) resource group.
+Since RBAC is additive, you can assign edit permissions by adding the Harness user (with the legacy Editor role) at the project level and assigning the role binding: **Split FME Manager Role** role over the **All Project Level Resources** (or **FME All Resources**) resource group.
 :::
 
 #### Examples showing user group inheritance and role bindings
@@ -365,7 +365,7 @@ For an unrestricted project:
 
 ![](./static/unrestricted-project.png)
 
-The Website project was an unrestricted project in legacy Split. After migration, the FME user groups (**All FME Admins**, **All FME Editors**, and **All FME Viewers**) are inherited and role bindings are assigned at the project level as shown below. (All role bindings are for the **All Project Level Resources** resource group, created on the Harness Free plan. On the Harness Enterprise plan, the **FME All Resources** resource group would be created and used instead.)
+The Website project was an unrestricted project in legacy Split. After migration, the FME user groups (**All FME Admins**, **All FME Editors**, and **All FME Viewers**) are inherited and role bindings are assigned at the project level as shown above. (All role bindings are for the **All Project Level Resources** resource group, created on the Harness Free plan. On the Harness Enterprise plan, the **FME All Resources** resource group would be created and used instead.)
 
 :::note[&nbsp;]
 The **All Project Users** is a Harness managed group that is created on project creation, and users are automatically added to this group when added to the project.
@@ -395,7 +395,7 @@ Refer to [Role bindings at the project level](#role-bindings-at-the-project-leve
 
 To delete a user group in Harness, see [Delete user groups](/docs/platform/role-based-access-control/add-user-groups/#delete-user-groups) in the Harness platform documentation. The users within the user group will not be deleted.
 
-:::danger Do not delete All FME Admins, All FME Editors, or All FME Viewers
+:::danger Do not delete `All FME Admins`, `All FME Editors`, or `All FME Viewers`
 Harness recommends that you do not delete the All FME Admins, All FME Editors, and All FME Viewers user groups, unless you fully understand the effect of the deletion: The role bindings associated with these user groups replicate your legacy Split user permissions and would be deleted and unassigned from your users.
 :::
 
@@ -455,13 +455,13 @@ Service accounts hold API keys. API keys hold tokens. Service accounts have role
 
 ### View your service accounts
 
-The service accounts were created at the Harness account scope (if no Harness account existed before the migration) or Harness organization scope (if you already had an existing Harness account that your legacy Split objects were merged into).
+The service accounts were created at the Harness account scope (if no Harness account existed before the migration) or Harness organization scope (if you already had an existing Harness account, into which your legacy Split objects were merged).
 
 To view service accounts in your Harness account settings, in the left navigation panel, click **Account Settings**, click **Access Control** at the top of the page, and click the **Service Accounts** tile. You will see all the service accounts and account-level role bindings.
 
 ![](./static/account-settings-service.png)
 
-You can also view service accounts in your Harness organization settings (in the left navigation panel, click **Organization Settings**, click **Access Control** at the top of the page, and click the **Service Accounts** tile). You will see the service accounts with organization-level role bindings.
+You can also view service accounts in your Harness organization settings. In the left navigation panel, click **Organization Settings**, click **Access Control** at the top of the page, and click the **Service Accounts** tile. You will see the service accounts with organization-level role bindings.
 
 ![](./static/org-settings-service.png)
 
@@ -532,7 +532,7 @@ To create an Admin API key scoped to all projects in your Harness account:
    - Click the **Service Accounts** tile.
    - Click the **+ New Service Account** button at the top of the page.
    - Enter a name for the new service account and click **Save**. The service account is listed.
-   - Click **Manage Role Bindings** to **manage role bindings** for the service account.
+   - Click **Manage Role Bindings** to manage role bindings for the service account.
    - Click **+ Add**.
    - Select the **Account Admin** role and the **All Account Level Resources** resource group.
    - Click **Apply**. The role binding is added to the service account.
@@ -626,7 +626,7 @@ To create an Admin API key scoped to a specific project in your Harness account:
 If you prefer, you can instead create the service account at the Harness organization or project level:
 
 - **Organization level**: Steps 1 and 3 would be done at the organization level.
-- **Project level**: Steps 1 and 3 would be done at the project level, and step 2 would be omitted. In step 1, you would apply the role binding: Project Admin role for All Project Level Resources (or FME All Resources).
+- **Project level**: Steps 1 and 3 would be done at the project level, and step 2 would be omitted. In step 1, you would apply the role binding: **Project Admin** role over **All Project Level Resources** (or **FME All Resources**).
 
 If created at the project level, the API key would not be sharable (by inheriting) across multiple projects. You would only be able to use it in the project where it was created.
 :::
@@ -780,17 +780,17 @@ To implement permissions similar to the legacy Split restricted project:
 To grant an Admin API key access to your project, we recommend you follow the steps in [Create an API key - Project scope](#project-scope):
 
 - Steps 1-3 guide you to create a service account and grant **Project Admin** permissions to **All Project Level Resources** (or **FME All Resources**) of your project.
-- You only need to do Step 2 if the service account is already created, and the API key and token are already added to it.
+- Step 2 is the only step needed in the situation where the service account, API key, and token are already created.
 
 ### Delete a project
 
 In the Harness FME module, you need to delete a project from the bottom-up. When all FME resources are deleted from the project, you can do a clean delete of the project from Harness.
 
-If you do not delete the resources from within your project before deleting the project itself, the resources will continue to exist and continue to function (i.e. SDK Keys remain active and flag evaluations will succeed) even after you delete the project itself. You'll see a warning about this in the second paragraph of the Delete Project dialog:
+If you do not delete the resources from within your project before deleting the project itself, the resources will continue to exist and continue to function (i.e. SDK keys remain active and flag evaluations will succeed) even after you delete the project itself. You'll see a warning about this in the second paragraph of the Delete Project dialog:
 
 ![](./static/delete-project.png)
 
-If you accidentally delete a project before deleting its resources, see the [Troubleshooting](#fme-project-deletion) section.
+If you accidentally delete a project before deleting its resources, see the [Troubleshooting - FME project deletion](#fme-project-deletion) section.
 
 <Tabs>
 <TabItem value="interactive" label="Interactive Guide">
@@ -931,6 +931,17 @@ To view SDK API keys for a project:
 
 ## Troubleshooting
 
+### FME module
+
+#### Some of my users are seeing the error message "Unable to start the FME functionality" when navigating to a page within the Harness FME module
+
+Your users may be lacking the role binding: **Account Viewer** role over **All Account Level Resources**. 
+
+To resolve the error, and restore these users' access to the FME module, assign this role binding in **Account Settings** using one of the following methods:
+
+* **Recommended:** Add this role binding to the **All Account Users** user group, by following the steps in [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups) in the Harness platform documentation.
+* Add this role binding to a group where the users are members (by following [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups)) or to the users directly (by following [Edit direct assignments](https://developer.harness.io/docs/platform/role-based-access-control/add-users#edit-direct-assignments)).
+
 ### FME project deletion
 
 #### My SDK feature flag evaluations work, but my FME project is not visible in Harness
@@ -942,17 +953,6 @@ If your Harness admin does not see your FME project on the Projects page in FME 
 #### What can I do if I deleted a project without first deleting all FME project resources?
 
 Contact support@split.io and provide us with the workspace ID of your orphaned FME project and the name of the deleted project in Harness. We will advise you on your next steps.
-
-### FME module
-
-#### Some of my users are seeing the error message "Unable to start the FME functionality" when navigating to an page within the Harness FME module
-
-Your users may be lacking the role binding: **Account Viewer** over **All Account Level Resources**. 
-
-To resolve the error, and restore these users' access to the FME module, assign this role binding in **Account Settings** using one of the following methods:
-
-* **Recommended:** Add this role binding to the **All Account Users** user group, by following the steps in [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups) in the Harness platform documentation.
-* Add this role binding to a group where the users are members (by following [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups)) or to the users directly (by following [Edit direct assignments](https://developer.harness.io/docs/platform/role-based-access-control/add-users#edit-direct-assignments)).
 
 ### Legacy Split Admin API keys
 
