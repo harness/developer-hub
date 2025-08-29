@@ -42,8 +42,8 @@ You will be asked to run a shell script in your terminal and verify the connecti
 - **Enable Commitment Context (Inegration with Commitment Orchestrator):** Checks existing commitments before provisioning spot instances to avoid duplicate coverage and maximize savings.
 
 - **Cluster Capacity Limits:** Cluster Capacity Limits restrict the maximum resources a cluster can scale up to. This prevents scenarios where configuration errors or unexpected behavior could result in uncontrolled node provisioning. When configured, Cluster Capacity Limits enforce limits on:
-    - Maximum vCPUs (cores) – defines the total CPU capacity the cluster can scale up to.
-    - Maximum Memory (GiB) – defines the total memory capacity the cluster can scale up to.
+    - Maximum vCPUs (cores) – defines the total CPU capacity the cluster Nodepool can scale up to.
+    - Maximum Memory (GiB) – defines the total memory capacity the cluster Nodepool can scale up to.
 
     If, Karpenter Nodepools Already have limits configured, when new nodepools (spot/ondemand) are created out of the existing karpenter nodepools, the limits configuration will be copied over. If the limits are configured on the cluster level, then the limits will be copied over to all nodepools which does not have a limit set explicitly in the default nodepool. If limits are not set on Cluster Config/Default Nodepool, then a default limit will be calculated by cluster orchestrator with the following equation and will be applied on all the nodepools managed by Harness:
 

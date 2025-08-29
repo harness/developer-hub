@@ -23,8 +23,8 @@ When enabling Cluster Orchestrator, you can configure various settings under the
 - **Set the Time-To-Live (TTL) for Karpenter nodes:** Set the Time-To-Live (TTL) for Karpenter nodes to ensure that nodes are automatically terminated after a specified period of inactivity.
 
 - **Cluster Capacity Limits:** Cluster Capacity Limits restrict the maximum resources a cluster per nodepool can scale up to. This prevents scenarios where configuration errors or unexpected behavior could result in uncontrolled node provisioning. When configured, Cluster Capacity Limits enforce limits on:
-    - Maximum vCPUs (cores) – defines the total CPU capacity the cluster can scale up to.
-    - Maximum Memory (GiB) – defines the total memory capacity the cluster can scale up to.
+    - Maximum vCPUs (cores) – defines the total CPU capacity the cluster Nodepool can scale up to.
+    - Maximum Memory (GiB) – defines the total memory capacity the cluster Nodepool can scale up to.
 
       If, Karpenter Nodepools Already have limits configured, when new nodepools (spot/ondemand) are created out of the existing karpenter nodepools, the limits configuration will be copied over. If the limits are configured on the cluster level, then the limits will be copied over to all nodepools which does not have a limit set explicitly in the default nodepool. If limits are not set on Cluster Config/Default Nodepool, then a default limit will be calculated by cluster orchestrator with the following equation and will be applied on all the nodepools managed by Harness:
 
@@ -55,7 +55,7 @@ When enabling Cluster Orchestrator, you can configure various settings under the
 - **Spot to Spot Consolidation:** Automatically switch workloads between spot instance types when cheaper options become available to maximize cost savings while maintaining performance requirements for your cluster. 
 
 :::important
-- If Node Deletion Delay and Bin Packing is not set, the cluster won't scale down. 
+- If Node Deletion Delay or Bin Packing is not set, the cluster won't scale down. 
 :::
 </TabItem>
 <TabItem value="spot" label="Spot Preferences">
