@@ -120,6 +120,34 @@ metadata:
 
 Learn more about [System Entity](/docs/internal-developer-portal/catalog/system-entity)
 
+### [New Feature] Environment Management in Harness IDP
+
+Harness IDP is excited to announce the launch of **Environment Management**, a major milestone in our journey to empower developers and platform engineers. This feature enables teams to **create, configure, and manage environments** from a single, centralized point of control. With a **self-service, automated, and repeatable** approach, Environment Management ensures that managing environments is faster, more reliable, and highly efficient.
+
+![](./static/internal-developer-portal/env-mgmt-rn.png)
+
+#### **Key Features:**
+
+Environment Management in Harness IDP combines powerful capabilities to make environment creation, management, and operation seamless:
+
+1. **Environment Blueprints:**
+   Templates that define how environments should be created (e.g., Infrastructure Workspace Templates, Service Deployment Pipelines). Blueprints standardize setup processes and ensure **consistency across teams**.
+
+2. **Lifecycle Management:**
+   Supports **Day 2 operations** such as creating, updating, and deleting infrastructure and services to keep environments up-to-date and optimized.
+
+3. **Platform Orchestrator:**
+   Orchestrates the provisioning and cleanup of infrastructure resources, even with complex interdependencies. It abstracts away deployment sequences and dependencies, ensuring environments run **reliably end-to-end**.
+
+4. **Native to IDP:**
+   Fully integrated with the **IDP Catalog**, providing developers with a unified and intuitive interface to **discover and provision environments**, while giving platform teams the ability to enforce organizational standards and guardrails.
+
+5. **Native to Harness:**
+   Built as a **core feature** of Harness IDP, leveraging the proven strengths of **Harness CD** and **IaCM** for infrastructure provisioning, service deployment, and governance.
+
+👉 [**Get started with Environment Management**](/docs/internal-developer-portal/environment-management/get-started)
+
+
 ### [New Feature] Link to Source Code Repository
 
 Harness IDP now supports defining a Link to Source Code Repository for Components, APIs, and Resources in the Software Catalog. This optional field is strongly recommended for Git-based workflows and enables key capabilities such as:
@@ -164,14 +192,14 @@ spec:
     connectorRef: account.ShibamDhar
     monoReposubDirectoryPath: /harness
 ```
-### [Breaking Change] Dx Plugin : Visualization Components Consolidated
+### [Breaking Change]  [Dx Plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/dx) : Visualization Components Consolidated
 
-This release introduces the `DxDataChart` component, a flexible visualization tool for displaying data from DX Data Studio queries as charts or tables. It supports multiple visualization types, custom metrics from DX datafeeds, optional variables, unit labels, automatic data transformation, and deep links to the underlying DX DataCloud queries.
+This release introduces the `DxDataChartCard` component, a flexible visualization tool for displaying data from DX Data Studio queries as charts or tables. It supports multiple visualization types, custom metrics from DX datafeeds, optional variables, unit labels, automatic data transformation, and deep links to the underlying DX DataCloud queries.
 
 
 #### Replaced Components
 
-The following components have been removed because their functionality is now fully covered by `DxDataChart`:
+The following components have been removed because their functionality is now fully covered by `DxDataChartCard`:
 
 * `EntityChangeFailureRateCard`
 * `EntityDeploymentFrequencyCard`
@@ -182,24 +210,29 @@ The following components have been removed because their functionality is now fu
 * `EntityTimeToRecoveryCard`
 * `EntityTopContributorsTable`
 
-#### Example Usage – Line Chart
+> Along with this, the DX backend plugin is also deprecated.
 
-```jsx
-<DxDataChartCard
-  title="Deployment Frequency"
-  description="Weekly deployments over time"
-  datafeedToken="your-datafeed-token"
-  unit="deployments"
-  variables={{ teamId: entity.metadata.annotations?.["getdx.com/id"] }}
-  chartConfig={{
-    type: "line",
-    xAxis: "date",
-    yAxis: "count",
-  }}
-/>
-```
+With `DxDataChartCard`, you can create [customizable visualizations](/docs/internal-developer-portal/plugins/available-plugins/dx#configuring-dxdatachartcard), deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
 
-With `DxDataChart`, you can create customizable visualizations, deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
+
+#### Configuration Simplification
+
+The [DX plugin configuration](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/dx#application-configuration-yaml) has been simplified. The `schedule`, `catalogSyncAllowedKinds`, and `disableCatalogSync` parameters have been removed, with only `appId` remaining as an optional parameter.
+
+
+
+
+### [New Feature] Harness Feature Management & Experimentation Plugin
+
+Harness IDP now includes a native integration with Harness Feature Management & Experimentation (FME), allowing teams to view and manage feature flags directly in their service catalog.
+
+
+* Feature Flag Visualization - View all feature flags associated with a service, including their status and configurations
+* Split.io Integration - Connect to Split.io API for comprehensive feature flag management
+* Service Integration - Easily associate feature flags with catalog entities using simple annotations
+* Real-time Updates - Monitor feature flag status and changes directly from your developer portal
+
+[Learn more about the Harness FME Plugin](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme) 
 
 ### Bug Fixes and Improvements
 
@@ -222,14 +255,6 @@ With `DxDataChart`, you can create customizable visualizations, deep-link to que
   For example, if a `Service` `dependsOn` a `Library`, the system creates the reverse `dependencyOf` relation from the `Library` to the `Service`. Both relations exist in the system and can be queried, but only the primary relation is shown in the Edit YAML UI. The reverse relation is visible in the raw YAML, ensuring consistency without requiring users to manually define both sides. 
 
 
-<!-- Let's maintain last 3 here. -->
-
-| **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
-| ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2025.07.v2](/release-notes/internal-developer-portal#july---202507v2)                               | ✅        | ✅         | ✅         | ✅          | ✅           | ✅            |
-| [2025.07.v1](/release-notes/internal-developer-portal#july---202507v1)                               | ✅        | ✅         | ✅         | ✅          | ✅           | ✅            |
-| [2025.06.v1](/release-notes/internal-developer-portal#june---202506v1)  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
-| [2025.05.v1](/release-notes/internal-developer-portal#-releasing-harness-idp-20-beta---may-202505v1) | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
 
 
 ## July - [2025.07.v2]

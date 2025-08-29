@@ -2,9 +2,17 @@
 title: Split Evaluator
 sidebar_label: Split Evaluator
 sidebar_position: 2
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/is-it-possible-to-use-postman-to-calculate-a-treatment-for-a-feature-flag
 ---
 
+## Overview
+
 Using Harness FME involves using one of our SDKs. The FME team builds and maintains these SDKs for some of the most popular language libraries and the SDKs are available under open source licenses. For languages where there is no native SDK support, Harness offers the [Split Evaluator](https://github.com/splitio/split-evaluator), a small service capable of evaluating some or all available features for a given customer via a REST endpoint.
+
+While tools like Postman can be used to make HTTP calls to download feature flag definitions from Harness FME servers, they cannot replace the SDK libraries for calculating treatments. This is because the SDKs perform a local evaluation that includes computing a Murmur hash to assign a bucket (from 1 to 100) for a given user ID, and then apply the feature flag rules and conditions based on that bucket. This evaluation process is not performed by the Harness FME servers, which means direct HTTP calls alone are insufficient for treatment calculation.
+
+As a workaround, the Split Evaluator can be installed in your environment, allowing tools like Postman to make HTTP GET requests to fetch treatments for a given feature flag and user ID. The Split Evaluator performs the treatment calculation and responds with the corresponding treatment.
 
 ## Setup
 The service is available via Docker or command line and its source code is available at [https://github.com/splitio/split-evaluator]( https://github.com/splitio/split-evaluator).
@@ -79,11 +87,12 @@ Evaluates a single feature flag for a single key.
  *  **split-name:** The name of the feature flag you want to include in the `getTreatment` call.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatment` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatment` call of the SDK.
+ *  **properties:** (*Optional*) A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-treatment?key=my-customer-key&split-name=FEATURE_FLAG_NAME_1&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-treatment?key=my-customer-key&split-name=FEATURE_FLAG_NAME_1&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -103,11 +112,12 @@ Provides a way of doing multiple evaluations at once.
  *  **split-names:** The names of the feature flags you want to include in the `getTreatments` call separated by commas.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatments` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatments` call of the SDK.
+ *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-treatments?key=my-customer-key&split-names=FEATURE_FLAG_NAME_1,FEATURE_FLAG_NAME_2&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-treatments?key=my-customer-key&split-names=FEATURE_FLAG_NAME_1,FEATURE_FLAG_NAME_2&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -131,11 +141,12 @@ Evaluates all flags that are part of the provided set names and are cached on th
  *  **flag-sets:** The names of the flag sets you want to include in the `getTreatmentsBySets` call separated by commas.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentsBySets` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentsBySets` call of the SDK.
+  *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-treatments-by-sets?key=my-customer-key&flag-sets=backend,server_side&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-treatments-by-sets?key=my-customer-key&flag-sets=backend,server_side&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -159,10 +170,11 @@ Evaluates a single feature flag for a single key and adds config in the result.
  *  **split-name:** The name of the feature flag you want to include in the `getTreatmentWithConfig` call.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentWithConfig` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentWithConfig` call of the SDK.
+ *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
 
 Example:
 
-```curl 'http://localhost:7548/client/get-treatment-with-config?key=my-customer-key&split-name=FEATURE_FLAG_NAME_1&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+```curl 'http://localhost:7548/client/get-treatment-with-config?key=my-customer-key&split-name=FEATURE_FLAG_NAME_1&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -182,10 +194,11 @@ Provides a way of doing multiple evaluations at once and attaches configs for ea
  *  **split-names:** The names of the feature flags you want to include in the `getTreatmentsWithConfig` call separated by commas.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentsWithConfig` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentsWithConfig` call of the SDK.
+ *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
 
 Example:
 ```bash
-curl 'http://localhost:7548/client/get-treatments-with-config?key=my-customer-key&split-names=FEATURE_FLAG_NAME_1,FEATURE_FLAG_NAME_2&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-treatments-with-config?key=my-customer-key&split-names=FEATURE_FLAG_NAME_1,FEATURE_FLAG_NAME_2&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -211,11 +224,12 @@ Provides a way of doing multiple evaluations at once and attaches configs for ea
  *  **flag-sets:** The names of the flag sets you want to include in the `getTreatmentsWithConfigBySets` call separated by commas.
  *  **bucketing-key:** (*Optional*) The bucketing key used in the `getTreatmentsWithConfigBySets` call.
  *  **attributes:** (*Optional*) A JSON string of the attributes to include in the `getTreatmentsWithConfigBySets` call of the SDK.
+ *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-treatments-with-config-by-sets?key=my-customer-key&flag-sets=backend,server_side&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-treatments-with-config-by-sets?key=my-customer-key&flag-sets=backend,server_side&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -239,11 +253,12 @@ Performs multiple evaluations at once. In this case it will match all the featur
 ##### Query params
  * **keys:** The array of keys to be used in the `getTreatments` call. Each key should specify `matchingKey` and `trafficType`. You can also specify `bucketingKey`.
  * **attributes:** (*optional*) A JSON string of the attributes to include in the `getTreatments` call of the SDK.
+ *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-all-treatments?keys=\[\{"matchingKey":"my-first-key","trafficType":"account"\},\{"matchingKey":"my-second-key","bucketingKey":"my-bucketing-key","trafficType":"user"\}\]&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-all-treatments?keys=\[\{"matchingKey":"my-first-key","trafficType":"account"\},\{"matchingKey":"my-second-key","bucketingKey":"my-bucketing-key","trafficType":"user"\}\]&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -272,11 +287,12 @@ Performs multiple evaluations at once. In this case it will match all the featur
 ##### Query params
  * **keys:** The array of keys to be used in the `getTreatmentsWithConfig` call. Each key should specify `matchingKey` and `trafficType`. You can also specify `bucketingKey`.
  * **attributes:** (*optional*) A JSON string of the attributes to include in the `getTreatmentsWithConfig` call of the SDK.
+ *  **properties:** (*Optional*)  A JSON string of the properties to include in the evaluation. Must be a flat object with up to 15 keys for GET requests. Values must be boolean, string, number, or null.
 
 Example:
 
 ```bash
-curl 'http://localhost:7548/client/get-all-treatments-with-config?keys=\[\{"matchingKey":"my-first-key","trafficType":"account"\},\{"matchingKey":"my-second-key","bucketingKey":"my-bucketing-key","trafficType":"user"\}\]&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
+curl 'http://localhost:7548/client/get-all-treatments-with-config?keys=\[\{"matchingKey":"my-first-key","trafficType":"account"\},\{"matchingKey":"my-second-key","bucketingKey":"my-bucketing-key","trafficType":"user"\}\]&attributes=\{"attribute1":"one","attribute2":2,"attribute3":true\}&properties=\{"package":"premium","admin":true,"discount":50\}' -H 'Authorization: {SPLIT_EVALUATOR_AUTH_TOKEN}'
 ```
 
 Response:
@@ -356,7 +372,9 @@ Response:
       "backend",
       "server_side"
     ],
-    "defaultTreatment": "off"
+    "defaultTreatment": "off",
+    "impressionsDisabled": false,
+    "prerequisites": []
   }
 ```
 
@@ -387,7 +405,9 @@ Response:
         "backend",
         "server_side"
       ],
-      "defaultTreatment": "off"
+      "defaultTreatment": "off",
+      "impressionsDisabled": false,
+      "prerequisites": []
   }
     }, {
       "name": "FEATURE_FLAG_NAME_2",
@@ -402,7 +422,9 @@ Response:
       "sets": [
         "backend"
       ],
-      "defaultTreatment": "on"
+      "defaultTreatment": "on",
+      "impressionsDisabled": false,
+      "prerequisites": []
   }
     }]
   }
@@ -489,9 +511,9 @@ Response:
 
 ```json
   {
-    "version": "1.0.2",
+    "version": "2.8.0",
     "sdk": "nodejs",
-    "sdkVersion": "9.3.4"
+    "sdkVersion": "11.4.1"
   }
 ```
 
@@ -542,9 +564,9 @@ Response:
   {
   "uptime": "10d 2h 1m 4s",
   "healthcheck": {
-    "version": "2.3.0",
+    "version": "2.8.0",
     "sdk": "nodejs",
-    "sdkVersion": "10.22.0"
+    "sdkVersion": "11.4.1"
   },
   "environments": {
     "######tkn1": {

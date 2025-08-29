@@ -18,6 +18,12 @@ Dart SDK v2.16.2 and greater, and Flutter v2.5.0 and greater.
 This plugin currently supports the Android and iOS platforms.
 :::
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in plugin versions 1.0.0 and above. No changes are required to your implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Initialization
 
 Set up FME in your code base with the following two steps:
@@ -26,7 +32,7 @@ Set up FME in your code base with the following two steps:
 
 ```yaml title="pubspec.yaml" 
 dependencies:
-  splitio: 0.2.0
+  splitio: 1.0.0
 ```
 
 ### 2. Instantiate the plugin
@@ -49,7 +55,7 @@ Configure the plugin with the SDK key for the FME environment that you would lik
 
 ### Basic use
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, wait until the SDK is ready, as shown below. You can use the `onReady` parameter when creating the client to get notified when this happens.
 
@@ -72,7 +78,7 @@ _split.client(onReady: (client) async {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), pass the client's `getTreatment` method as an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), pass the client's `getTreatment` method as an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account. The `getTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
@@ -195,7 +201,7 @@ _split.client(onReady: (client) async {
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), use the `getTreatmentWithConfig` method.
 
 This method returns an object containing the treatment and associated configuration:
 
@@ -360,6 +366,7 @@ The parameters available for configuration are shown below.
 | impressionsMode | This configuration defines how impressions (decisioning events) are queued. Supported modes are `ImpressionsMode.optimized`, `ImpressionsMode.none`, and `ImpressionsMode.debug`. In `ImpressionsMode.optimized` mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In `ImpressionsMode.none` mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use `ImpressionsMode.none` when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In `ImpressionsMode.debug` mode, ALL impressions are queued and sent to Harness. This is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `ImpressionsMode.optimized` |
 | readyTimeout | Maximum amount of time (in seconds) to wait until the `onTimeout` callback is fired or `whenTimeout` future is completed. A negative value means no timeout. | 10 seconds |
 | certificatePinningConfiguration | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |
+| rolloutCacheConfiguration | Specifies how long rollout data is kept in local storage before expiring. | null |
 
 ## Manager
 
@@ -388,6 +395,8 @@ class SplitView {
   Map<String, String> configs = {};
   List<String> sets = [];
   String defaultTreatment;
+  List<Prerequisite> prerequisites = [];
+  bool impressionsDisabled;
 }
 ```
 

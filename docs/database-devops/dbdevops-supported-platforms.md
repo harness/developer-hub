@@ -23,7 +23,7 @@ tags:
 
 This page describes supported platforms and technologies for Harness DB DevOps specifically.
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](https://developer.harness.io/docs/platform/platform-whats-supported).
 
 ## Harness DB DevOps supported platforms and technologies
 

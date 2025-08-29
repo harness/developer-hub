@@ -1,6 +1,11 @@
 ---
 title: React SDK
 sidebar_label: React SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/react-sdk-istimeout-prop-not-returning-true-when-react-sdk-times-out
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/react-sdk-is-it-possible-to-get-treatments-outside-the-components
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/react-sdk-error-building-app-with-webpack
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/react-sdk-lazy-initialization-of-split-client
 ---
 
 import Tabs from '@theme/Tabs';
@@ -203,11 +208,11 @@ Configure the SDK with the SDK key for the FME environment that you would like t
 
 ### Get treatments with configurations
 
-When the SDK is instantiated, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the SDK is instantiated, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready, as shown below. We provide the `isReady` boolean prop based on the client that will be used by the component. Internally we listen for the `SDK_READY` event triggered by given SDK factory client to set the value of `isReady`.
 
-After the `isReady` prop is set to true, you can use the SDK. The `useSplitTreatments` hook returns the proper treatments based on the `names` prop value passed to it and the `core.key` value you passed in the config when instantiating the SDK. Then use the `treatments` property to access the treatment values as well as the corresponding [dynamic configurations](/docs/feature-management-experimentation/feature-management/dynamic-configurations) that you defined in Harness FME. Remember to handle the client returning control as a safeguard.
+After the `isReady` prop is set to true, you can use the SDK. The `useSplitTreatments` hook returns the proper treatments based on the `names` prop value passed to it and the `core.key` value you passed in the config when instantiating the SDK. Then use the `treatments` property to access the treatment values as well as the corresponding [dynamic configurations](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations) that you defined in Harness FME. Remember to handle the client returning control as a safeguard.
 
 Similarly to the vanilla JS SDK, React SDK supports the ability to evaluate flags based on cached content when using [LOCALSTORAGE](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#configuration) as storage type. In this case, the `isReadyFromCache` prop will change to true almost instantly since access to the cache is synchronous, allowing you to consume flags earlier on components that are critical to your UI. Keep in mind that the data might be stale until `isReady` prop is true. Read more [below](#subscribe-to-events-and-changes).
 
@@ -379,7 +384,7 @@ export default class MyComponentToggle extends React.Component {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK needs to be passed an attribute map at runtime. In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the underlying `getTreatmentsWithConfig` or `getTreatmentsWithConfigByFlagSets` call, whether you are evaluating using the `names` or `flagSets` property respectively. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account. The SDK supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK needs to be passed an attribute map at runtime. In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the underlying `getTreatmentsWithConfig` or `getTreatmentsWithConfigByFlagSets` call, whether you are evaluating using the `names` or `flagSets` property respectively. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account. The SDK supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
 * **Strings:** Use type String.
 * **Numbers:** Use type Number.
@@ -607,7 +612,7 @@ class MyComponent extends React.Component {
 
 ### Append properties to impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time an evaluation is done using the `useSplitTreatments` hook. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time an evaluation is done using the `useSplitTreatments` hook. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
 
 You can append properties to an impression by passing an object of key-value pairs to the `useSplitTreatments` hook. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
 
@@ -759,7 +764,7 @@ For testing, a developer can put code behind feature flags on their development 
 
 When instantiating the SDK in localhost mode, your `authorizationKey` is `"localhost"`. Define the feature flags you want to use in the `features` object map. All `useSplitTreatments` calls for a feature flag return the treatment (and config, if defined) that you have defined in the map. You can then change the treatment as necessary for your testing. If you want to update a treatment or a config, or to add or remove feature flags from the mock cache, update the properties of the `features` object you've provided. The SDK simulates polling for changes and updates from the `features` object. Do not assign a new object to the `features` property because the SDK has a reference to the original object and will not detect the change.
 
-Any feature that is not provided in the `features` map returns the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them. Use the following additional configuration parameters when instantiating the SDK in `localhost` mode:
+Any feature that is not provided in the `features` map returns the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them. Use the following additional configuration parameters when instantiating the SDK in `localhost` mode:
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- | 
@@ -1513,7 +1518,7 @@ export const MyComponentWithFeatureFlags = (props) => {
 </TabItem>
 </Tabs>
 
-### Usage with React Native SDK
+### Usage with the React Native SDK
 
 The React SDK can be used in React Native applications by combining it with the React Native SDK. For that, you need to instantiate a factory with the React Native SDK and pass it to the React SDK `SplitFactoryProvider` component. The React SDK will use the factory to create the client and evaluate the feature flags.
 
@@ -1543,6 +1548,27 @@ const App = () => (
 </TabItem>
 </Tabs>
 
+### Using the React SDK outside of components
+
+While the React SDK provides convenient React components and hooks, you can also access feature flag treatments directly through JavaScript code.
+
+Since the React SDK is built on top of the JavaScript SDK core, it supports all objects and functions provided by it.
+
+```javascript
+import { SplitSdk } from "@splitsoftware/splitio-react";
+
+const splitFactory = SplitSdk({
+  core: {
+    authorizationKey: 'YOUR_BROWSER_API_KEY',
+    key: 'key'
+  }
+});
+
+// Create a new client object
+const client = splitFactory.client("userId");
+const treatment = client.getTreatment("splitName");
+```
+
 ## Example apps
 
 The following are example applications showing how you can integrate the React SDK into your code.
@@ -1561,3 +1587,180 @@ When using the Split React SDK version 1.1.0 or below and following the instruct
 This integration is only supported in Split’s JavaScript client-side SDK version **10.11.1 and above**. The React SDK version 1.1.0 and below depends on older versions of the JavaScript SDK that do not support this integration.
 
 Upgrade to the latest version of the Split React SDK, which uses JavaScript SDK version 10.11.1 or above under the hood.
+
+### isTimedout prop not returning true when the React SDK times out
+
+When using the React SDK, it is recommended to check if the SDK has timed out within a specific timeout before it finishes downloading the cache and signaling readiness. 
+
+In the following example, the message does not display when the SDK has timed out:
+
+```javascript
+import { useContext } from 'react';
+import { SplitContext } from "@splitsoftware/splitio-react";
+
+const MyComponent = () => {
+  const { isReady, isTimedout } = useContext(SplitContext);
+  return isTimedout
+    ? <p>SDK has Timedout</p>
+    : <Loading />;
+}
+```
+
+When the SDK reaches the timeout specified by the startup.`readyTimeout` parameter (default is 10 seconds), the `SDK_READY_TIMED_OUT` event is fired only once. If your code checks the `isTimedout` prop after the event has already fired, it will not detect the timeout.
+
+Use the `updateOnSdkTimedout` prop in `<SplitClient>` to ensure that `isTimedout` reflects whether the timeout event occurred at any point in the past.
+
+```javascript
+<SplitClient updateOnSdkTimedout={true}>
+  <SplitTreatments names={['SPLIT_NAME', 'SPLIT_NAME_2']}>
+    {({ isReady, isTimedout, hasTimedout, lastUpdate, treatments }) => {
+      // Do something with the treatments
+    }}
+  </SplitTreatments>
+</SplitClient>
+```
+
+### Build error with Webpack: Entrypoint undefined = ng/index.html
+
+If a React app fails to build with Webpack after installing the React SDK and shows errors like:
+
+```
+Entrypoint undefined = ng/index.html
+...
+Failed to compile.
+```
+
+This usually happens because Webpack is trying to build the React SDK library for the server side, but the React SDK is designed to run only in the browser.
+
+To fix this, update your `webpack.config.js` file, locate the resolve section, and ensure the `mainFields` entry includes browser, for example:
+
+```javascript
+resolve: {
+  extensions: ['.js', '.json', '.ts', '.tsx'],
+  mainFields: ['browser', 'main', 'module']
+},
+```
+
+### Handling traffic keys that aren’t available at initial render
+
+On initial client-side render in React, the user traffic key (used for flag targeting) might not yet be available, for example, if the user hasn’t logged in yet. 
+
+The React SDK’s `SplitFactoryProvider` initializes the underlying JS SDK factory with a traffic key immediately, so you need a way to handle a missing or “dummy” key at first, and then update it once the user logs in.
+
+The React SDK supports multiple clients sharing the same factory but with different traffic keys. The recommended approach is to configure the SDK initially with a dummy key. Once the real traffic key becomes available (e.g., after login), initialize a second client object with the real key.
+
+Starting with React SDK v2.0.0, you can specify the `splitKey` prop in hooks (`useSplitTreatments`, `useTrack`, `useSplitClient`) and in the `<SplitClient>` component. If `splitKey` is omitted, it defaults to the key provided in the factory config.
+
+For example, passing down the `splitKey` prop:
+
+```javascript
+import { useState, useEffect } from 'react';
+import { SplitFactoryProvider, useSplitTreatments } from '@splitsoftware/splitio-react';
+
+const SDK_CONFIG = {
+   core: {
+      authorizationKey: 'YOUR-SDK-CLIENT-SIDE-KEY',
+      key: getAnonymousId(),
+   }
+}
+
+const FEATURE_FLAG_NAME = 'test_split';
+
+// Prop drilling `splitKey` to child components
+function MyComponent({ splitKey }) {
+  const { treatments, isReady } = useSplitTreatments({ names: [FEATURE_FLAG_NAME], splitKey });
+
+  return isReady ?
+    <p>Treatment for user '{splitKey}' in {FEATURE_FLAG_NAME} is: {treatments[FEATURE_FLAG_NAME].treatment}</p> :
+    <p>loading...</p>; // Render a spinner if the SDK client for `splitKey` is not ready yet
+}
+
+function App() {
+  // Using 'anonymous' as initial userId
+  const [userId, setUserId] = useState(SDK_CONFIG.core.key);
+
+  // Update userId to 'logged-in-user' after 3 seconds
+  useEffect(() => {
+    setTimeout(() => { setUserId('logged-in-user'); }, 3000);
+  }, [])
+
+  return (
+    <SplitFactoryProvider config={SDK_CONFIG}>
+      <MyComponent splitKey={userId} />
+    </SplitFactoryProvider> 
+  );
+}
+
+export default App;
+```
+
+Or preventing prop drilling of `splitKey`:
+
+```javascript
+import { useState, useEffect } from 'react';
+import { SplitFactoryProvider, SplitClient, useSplitTreatments } from '@splitsoftware/splitio-react';
+
+const SDK_CONFIG = {
+   core: {
+      authorizationKey: 'YOUR-CLIENT-SIDE-SDK-KEY',
+      key: getAnonymousId(),
+   }
+}
+
+const FEATURE_FLAG_NAME = 'test_split';
+
+function MyComponent() {
+  const { treatments, isReady, client } = useSplitTreatments({ names: [FEATURE_FLAG_NAME] });
+
+  return isReady ?
+    <p>Treatment for user '{client.key}' in {FEATURE_FLAG_NAME} is: {treatments[FEATURE_FLAG_NAME].treatment}</p> :
+    <p>loading...</p>; // Render a spinner if the SDK client for `userId` is not ready yet
+}
+
+function App() {
+  // Using 'anonymous' as initial userId
+  const [userId, setUserId] = useState(SDK_CONFIG.core.key);
+
+  // Update userId to 'logged-in-user' after 3 seconds
+  useEffect(() => {
+    setTimeout(() => { setUserId('logged-in-user'); }, 3000);
+  }, [])
+
+  return (
+    <SplitFactoryProvider config={SDK_CONFIG}>
+      <SplitClient splitKey={userId}>
+        <MyComponent />
+      </SplitClient>
+    </SplitFactoryProvider> 
+  );
+}
+
+export default App;
+```
+
+An equivalent JavaScript SDK example:
+
+```javascript
+import { SplitFactory } from '@splitsoftware/splitio';
+
+/* On initial load of a client-side application */
+const SDK_CONFIG = {
+   core: {
+      authorizationKey: 'YOUR-SDK-CLIENT-SIDE-KEY',
+      key: getAnonymousId()
+   }
+}
+
+const factory = SplitFactory(SDK_CONFIG);
+
+const client = factory.client();
+
+// Attach a callback to run when the client with 'anonymous' key is ready
+client.on(client.Events.SDK_READY, doSomething);
+
+// When you get a new user id, for instance, the id of a logged user
+const loggedClient = factory.client('logged-in-user');
+
+// Attach a callback to run when the client with 'logged-in-user' key is ready
+loggedClient.on(loggedClient.Events.SDK_READY, doSomething);
+```

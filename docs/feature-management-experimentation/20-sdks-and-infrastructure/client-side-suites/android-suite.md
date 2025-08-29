@@ -98,7 +98,7 @@ Configure the Suite with the SDK key for the FME environment that you would like
 
 ### Basic use
 
-When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the Suite is properly loaded before asking it for a treatment, block until the Suite is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the Suite before asking for an evaluation.
 
@@ -163,7 +163,7 @@ client.on(SplitEvent.SDK_READY, object : SplitEventTask() {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -350,7 +350,7 @@ val treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets)
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
 
 This method will return an object with the structure below:
 
@@ -933,7 +933,9 @@ public class SplitView {
     public long changeNumber;
     public Map<String, String> configs;
     public String defaultTreatment;
-    public List<String> sets;
+    public 
+    public List<Prerequisite> prerequisites;
+    public boolean impressionsDisabled;
 }
 ```
 
@@ -949,6 +951,8 @@ class SplitView(
     var changeNumber: Long
     var defaultTreatment: String?
     var sets: List<String>
+    var prerequisites: List<Prerequisite>
+    var impressionsDisabled: Boolean
 )
 ```
 

@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-8-20T10:00:00
+date: 2025-8-27T10:00:00
 sidebar_position: 8
 ---
 
@@ -54,6 +54,56 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 :::
 
 ## August 2025
+
+### Version 1.103.XX
+
+#### New Features and Enhancements
+
+- Added a new account-level setting `enable_signed_commit_for_github` to control automatic commit signing when using GitHub App authentication. You can configure this setting under **Account Settings** → **Default Settings** → **Git Experience**.
+- You can now control the automatic cleanup behavior for failed first Helm releases with the new `skipCleanup` parameter. This will help you to:
+  - Preserve failed Helm releases for debugging and troubleshooting
+  - Retain container logs and deployment artifacts after failures
+  - Analyze root causes of deployment issues without losing critical information
+  - Improve onboarding experience for teams new to Helm deployments
+
+  Users should add the `skipCleanup: true` parameter to their Helm Deploy step configuration when they need to debug failed deployments. This parameter only affects first-time deployments (revision=1) that fail, and has no impact on successful deployments or upgrades. (**CDS-113186**)
+- Added the option to use an Access Token for API authentication in the Bitbucket Connector. **(PIPE-29237)**
+- Added a new feature to the Container step that allows users to configure resource requests (CPU and memory) directly from the UI. This provides greater flexibility for running resource-intensive tasks, such as performance tests, and ensures accurate and reliable results. **(CDS-110282)**
+- Added the ability to select user groups in email steps. (**CDS-109176**)
+
+#### Fixed Issues
+
+- Fixed an issue where webhooks displayed events from repositories belonging to other projects. This occurred because events were filtered only by the webhook identifier without considering scope information, allowing different projects with the same webhook identifier to receive each other’s events. Scope-based filtering has been added to ensure events are isolated per project. (**PIPE-29270**, **ZD-90896**)  
+- Fixed an issue where parallel rollback failures for ASG deployments (under the feature flag `CDS_ASG_MULTI_DEPLOY_ROLLBACK_SUPPORT`) were logged twice when matrix strategies were applied at the stage level. The problem was caused by sweeping outputs not being copied correctly during pipeline rollback. The logic has been updated to fetch the original execution sweeping outputs to ensure consistency. (**CDS-113180**, **ZD-90321**)
+- Previously, the environment variables option for the Terraform plan step only supported expression and input. We've fixed this to now include support for runtime input as well. **(CDS-113592)**
+- Fixed an issue where the pipeline would crash during the artifact tag loading step when a user selected a service and variables through an input set. Previously, an unstable dependency array in `useModalHook` caused a continuous re-render, leading to the crash. **(ZD-91140, ZD-91421, PIPE-29340)**
+
+
+
+### Version 1.102.XX
+
+#### New Features and Enhancements
+
+- Users can now select your Azure Cloud Provider connector to connect to the Azure Container Registry (ACR) for your Azure Function Deploy steps. (**CDS-110657**, **ZD-85163**) 
+- Harness now supports GitHub Pull Request Review as an event in webhook triggers to initiate the execution of a pipeline. This enables automatic pipeline execution when a pull request review is         submitted, edited, or dismissed. For a list of all supported events and actions, check out the [webhook triggers reference](/docs/platform/triggers/triggers-reference/#event-and-actions). (**PIPE-25264**)
+- Harness now supports [notifications for trigger failures](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#select-events), allowing users to receive alerts when a trigger fails to start pipeline execution. This improves the visibility of pipeline runs that could not start due to failed triggers. This feature is currently behind feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`. Please, contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-27482**)
+
+- We are soon introducing a new functor to enhance the [Multi Selection functionality](/docs/platform/variables-and-expressions/runtime-input-usage/#allow-multi-selection-and-single-selection) for runtime input. The new functor `.selectManyFrom()` will replace the `.allowedValues()` functor and change the pipeline runtime input behavior. (***PIPE-28993***)
+  - The soon-to-be-deprecated functor `.allowedValues()` displayed identical behavior to `.selectOneFrom()`, allowing users to select a single value for runtime input. 
+  - However, if the users enabled the Feature Flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, the `.allowedValues()` functor was mapped to multi-selection mode, thus allowing them to select     multiple values for runtime input.
+  - The upcoming feature update will enhance the capability of selecting runtime input by providing a dedicated method for each mode (Single Selection or Multi Selection). The Multi Selection mode will be mapped to the `.selectManyFrom()` functor, while the Single Selection mode will be mapped to the `.selectOneFrom()` functor, thus allowing users to select multiple values or a single value for runtime input, respectively.
+  - Please note that the existing functor `.allowedValues()` continues to work as before. Existing Pipelines will see no change in behavior. Editing the Runtime Inputs on these pipelines in Pipeline Studio, however, will replace the `.allowedValues()` functor with the newer functors as per selection. You will see this change in the Pipeline YAML.
+  - All the new pipelines created after the feature is released will reflect the new behavior. This feature will be introduced by the end of August.
+
+
+#### Fixed Issues
+
+- Fixed an issue where deployments could hang in the ASG Rolling Deploy step when the **skip instance termination** flag was enabled and the instance refresh was canceled or failed. An additional check has been added to handle this scenario properly. (**CDS-113194**)
+- Fixed an issue where GitHub webhook push events did not trigger pipelines when a PR was merged using the merge queue and the trigger had a `changedFiles` condition. This occurred because the commits array in the payload was empty. (**PIPE-29083**, **ZD-89513**)
+- Fixed an issue where the environment type was not displayed in the OPA Policy Tester when the environment was stored in Git on a non-default branch. This occurred because the `EnvironmentExpansionHandler` requested the environment with `loadFromFallbackBranch` set to `false`, preventing the environment from being found outside the default branch. The handler now controls this behavior, allowing environments stored on non-default branches to be resolved correctly so OPA can evaluate their content. (**CDS-111741**, **ZD-85748**)
+- Fixed an issue where the environment type was not displayed in the OPA Policy Tester when the environment was stored in Git on a non-default branch. Remote entities were not being loaded correctly from a statically linked branch, preventing OPA from evaluating the environment type or other details. Logic was introduced to read the branch name from the environment JSON node, ensuring the correct environment is retrieved from Git based on the specified branch. (**CDS-111741**, **ZD-85748**)
+- Fixed an issue on the pipeline execution page where applying a filter after navigating to page 2 or beyond could result in a blank page if the filtered results contained fewer than 10 records. The page number is now reset to 0 whenever filters are applied. (**CDS-112798**)  
+
 
 
 ### GitOps Service 1.39.1, GitOps Agent 0.99.0
@@ -1029,7 +1079,7 @@ Updating an application that contains a `valuesObject` while using an agent olde
 
 #### New Features and enhancements
 
-- You can bypass artifact consumption checks for a service in a Deploy stage by checking the **Disable artifact in this stage** checkbox. This feature applies to primary and sidecar artifacts. For more information, go to Harness [Skip Artifact Consumption for the Stage](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#skip-artifact-consumption-for-the-stage). This feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-96644, ZD-68382)
+- You can bypass artifact consumption checks for a service in a Deploy stage by checking the **Disable artifact in this stage** checkbox. This feature applies to primary and sidecar artifacts. For more information, go to Harness [Skip Artifact Consumption for the Stage](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#skip-artifact-consumption-for-the-stage). (CDS-96644, ZD-68382)
 
 - You can now add environments created at the Project and Organization levels to the environment groups. For more information, go to Harness [Cross Scope Environment Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environment-groups#cross-scope-environment-groups). Currently, the Cross Scope Environment Groups feature is behind the feature flag `CDS_CROSS_SCOPED_ENV_GROUPS`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-93146)
 

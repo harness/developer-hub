@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-08-13T10:00
+date: 2025-08-19T10:00
 sidebar_position: 10
 ---
 
@@ -49,6 +49,48 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## August 2025
+
+### Version 1.93
+
+<!-- 2025-08-25 -->
+#### Fixed issues
+- Fixed a bug that prevented Docker layer caching from working when the step was run inside a **Step Group**. (CI-18603, CI-18604)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira. | 1.17.00              | 1.17.1         |
+| `harness/ci-addon`       | Version upgrade for Jira. | 1.17.00              | 1.17.1         |
+| `plugins/buildx-ecr`          | Provide option to disable TLS verification in buildkit cache client.                      | 1.3.3                | 1.3.4          |
+| `plugins/buildx-acr`          | Provide option to disable TLS verification in buildkit cache client.                      | 1.3.3                | 1.3.4          |
+| `plugins/buildx-gar`          | Provide option to disable TLS verification in buildkit cache client.                      | 1.3.3                | 1.3.4          |
+
+### Version 1.92
+
+<!-- 2025-08-18 -->
+
+#### New features and enhancements
+
+- Allow users to run authenticated Git commands in any Run step after the codebase has been cloned via Git Connector, without manually passing credentials again. (CI-18611)
+- Improved handling of test failures in Test Intelligence with the CI_TI_RERUN_FAILED_TEST feature flag, which now enables an environment variable to control reruns of failed tests. (CI-18581)
+
+#### Fixed issues
+
+- Fixed an issue where long-running runner sessions (over 24 hours) could lose log access. (CI-18669)
+- Improved reliability of PR build status updates in pipelines. (ZD-88744, CI-18474)
+- Resolved an error that caused some API-triggered pipelines to fail when using Docker secrets. (ZD-89259, CI-18430)
+- Fixed a problem where logs were lost after UI refresh in certain **Build and Push** steps, ensuring better log persistence. (ZD-89263, CI-18417)
+- Resolved DNS resolution problems when using Harness Cloud Secure Connect for Docker image pulls in native Build and Push steps. (CI-18459)
+- Previously, pipelines could fail in later steps if the environment variable `PLUGIN_CACHE_KEY` was empty or null. This issue has been resolved by surfacing the error earlier in the **Save Cache** step, allowing customers to identify and fix the problem sooner. (CI-18537)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira. | 1.16.99              | 1.17.00         |
+| `harness/ci-addon`       | Version upgrade for Jira. | 1.16.99              | 1.17.00         |
+| `plugins/cache`          | Bzlmod cache support added.                      | 1.9.9                | 1.9.10          |
 
 ### Version 1.91
 

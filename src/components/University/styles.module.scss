@@ -262,7 +262,7 @@
           }
 
           &.active {
-            font-weight: 700;
+            font-weight: 600;
             color: var(--primary);
             border-bottom: 2px solid var(--primary);
             cursor: default;
@@ -351,7 +351,6 @@
       &.moduleCR {
         border-color: var(--mod-code-200);
       }
-      
 
       .certCardContainer {
         display: flex;
@@ -402,7 +401,6 @@
               font-size: 16px;
 
               :global {
-
                 .fa-solid,
                 .fa-regular {
                   margin-left: 4px;
@@ -450,8 +448,7 @@
           padding: 16px;
           margin-bottom: 16px;
           border-radius: 8px;
-          box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.08),
-            0px 0.5px 2px rgba(96, 97, 112, 0.16);
+          box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.08), 0px 0.5px 2px rgba(96, 97, 112, 0.16);
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -678,7 +675,6 @@
             font-size: 16px;
 
             :global {
-
               .fa-solid,
               .fa-regular {
                 margin-left: 4px;
@@ -792,7 +788,6 @@
               font-size: 16px;
 
               :global {
-
                 .fa-solid,
                 .fa-regular {
                   margin-left: 4px;
@@ -904,7 +899,6 @@
         font-size: 16px;
 
         :global {
-
           .fa-solid,
           .fa-regular {
             margin-left: 4px;
@@ -934,7 +928,6 @@
 }
 
 @media screen and (max-width: 1344px) {
-
   /* for small desktop */
   .certificationsCI,
   .certificationsCD,
@@ -965,7 +958,6 @@
 }
 
 @media screen and (max-width: 1199px) {
-
   /* for laptop */
   .university {
     .hero {
@@ -1110,11 +1102,11 @@
     background: none;
   }
 
-  html[data-theme="dark"] .SelfPacedTrainingBg {
+  html[data-theme='dark'] .SelfPacedTrainingBg {
     background: none;
   }
 
-  html[data-theme="dark"] .InstructorLedTrainingBg {
+  html[data-theme='dark'] .InstructorLedTrainingBg {
     background: none;
   }
 
@@ -1147,7 +1139,6 @@
 }
 
 @media screen and (max-width: 599px) {
-
   /* for mobile */
   .university,
   .certificationsCI,
@@ -1327,7 +1318,6 @@
 }
 
 @media screen and (max-width: 393px) {
-
   /* for mobile */
   .university,
   .certificationsCI,

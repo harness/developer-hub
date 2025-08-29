@@ -30,7 +30,7 @@ Running an A/A test is simple. First, decide for which traffic type you wish to 
 
 #### Step 2: Create a new feature flag
 
-Create the feature flag with [targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting) serving an equally distributed percentage-based rollout. For an A/A test, this would be 50/50.
+Create the feature flag with [targeting rules](/docs/feature-management-experimentation/feature-management/setup/define-feature-flag-treatments-and-targeting) serving an equally distributed percentage-based rollout. For an A/A test, this would be 50/50.
 
 The names of the treatments are inconsequential, so using the defaults of on and off is fine. You could also use an alternative like A1 and A2 to reinforce that the treatments for the A/A test should be identical.
 
@@ -110,7 +110,7 @@ If you need more support investigating your A/A test results, you can [file a su
 
 **Do I need to run an A/A test before every A/B test?**
 
-No, you do not need to run an A/A test before or with every experiment. Typically, you will want to run your A/A test between setup and execution of your first experiments. If you wish to set up a global holdout or holdback group for experiments, you can use [FME dependencies](/docs/feature-management-experimentation/feature-management/target-with-dependencies/).
+No, you do not need to run an A/A test before or with every experiment. Typically, you will want to run your A/A test between setup and execution of your first experiments. If you wish to set up a global holdout or holdback group for experiments, you can use [FME dependencies](/docs/feature-management-experimentation/feature-management/targeting/target-with-dependencies).
 
 An A/A test only needs to be run once per metric and per traffic type. As mentioned above, it’s a good practice to have a separate A/A test for every traffic type being used for experimentation, since randomization, event reporting, and available metrics differ for each.
 

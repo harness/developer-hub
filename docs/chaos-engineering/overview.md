@@ -6,7 +6,27 @@ redirect_from:
   - /docs/chaos-engineering
 ---
 
-# Chaos Engineering Overview
+# Chaos Engineering Overview 
+
+:::info New Chaos Studio Features
+Harness Chaos Engineering now offers an enhanced **New Chaos Studio** experience with advanced capabilities and enhanced UX. The studio version you see depends on your onboarding date:
+
+- **New Chaos Studio**: Available for customers onboarded on or after August 21, 2025
+- **Old Chaos Studio**: Available for customers onboarded before August 21, 2025
+
+### New Chaos Studio Features
+The New Chaos Studio includes these enhanced capabilities:
+- **[New Chaos Studio](/docs/chaos-engineering/guides/experiments#2.newchaosstudio)**: Enhanced and streamlined approach to chaos experiment design.
+- **[Timeline View](/docs/chaos-engineering/guides/experiments#2.newchaosstudio)**: Visual timeline representation of experiment execution and results
+- **[Experiment Level Probes](/docs/chaos-engineering/guides/probes/experiment-level-probes/)**: Advanced probing capabilities at the experiment level
+- **[Actions](/docs/chaos-engineering/guides/actions/)**: Execute custom operations, delays, and scripts during experiments
+- **[Chaos Hubs Across Different Scopes](/docs/chaos-engineering/guides/chaoshubs/chaos-hub-scopes)**: Enhanced chaos hub management with flexible scoping options
+- **[Runtime Variable Support](/docs/chaos-engineering/guides/experiments#2.newchaosstudio)**: Dynamic variable handling during experiment execution
+- **[Templates](/docs/chaos-engineering/guides/templates/)**: Reusable fault, probe, and action templates for standardized chaos engineering
+- **[Custom Faults](/docs/category/custom-faults)**: Create and manage custom fault definitions for specific use cases
+
+If you're an existing customer and want to access the New Chaos Studio features, contact your Harness support representative.
+:::
 
 Chaos Engineering is the practice of proactively introducing faults into your applications or infrastructure and test the resilience of business services. Developers, QA teams, Performance test teams and SREs run chaos experiments to measure the resilience of the systems and find the weaknesses in that process.
 

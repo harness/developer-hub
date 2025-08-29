@@ -175,7 +175,7 @@ Harness FME's [metric details and trends](/docs/feature-management-experimentati
 
 Implementation of Harness FME on the browser or mobile device can impact the collection of data. This is exacerbated by the relative lack of control over user interaction. Abruptly closing a browser window or a mobile app can impede or delay data being captured.
 
-Ad/content blockers are becoming more common as users seek to avoid ads and more attention is placed on privacy concerns. These blockers can impact a wide range of client-side trackers, not just ads, and not just Harness FME. Depending on what is blocked, the results computed by various analytic tools may differ. Some ways to resolve this issue with Harness FME include [moving Harness FME evaluation to the backend](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/moving-feature-flags-to-a-service), or using [Harness FME Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy/), where the proxy is hosted from the same DNS root as your site or application.
+Ad/content blockers are becoming more common as users seek to avoid ads and more attention is placed on privacy concerns. These blockers can impact a wide range of client-side trackers, not just ads, and not just Harness FME. Depending on what is blocked, the results computed by various analytic tools may differ. Some ways to resolve this issue with Harness FME include [moving Harness FME evaluation to the backend](/docs/feature-management-experimentation/sdks-and-infrastructure#using-a-service-for-feature-flags), or using [Harness FME Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy/), where the proxy is hosted from the same DNS root as your site or application.
 
 Be aware that moving feature flags to the backend may exacerbate the difference in counts if content blockers come into play and client-side flags still exist, because client-side content blocking doesn't impact server-side flags.
 
@@ -183,13 +183,13 @@ When using the JavaScript or mobile SDKs, configuration options (such as [these]
 
 A number of articles in the Help Center describe why you may be missing or getting improper impression counts in Harness FME, and how to avoid some of these issues:
 
-- [<span class="mark">Block traffic until the SDK is ready</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/block-traffic-until-the-sdk-is-ready/)
+- [<span class="mark">Block traffic until the SDK is ready</span>](/docs/feature-management-experimentation/sdks-and-infrastructure#using-a-service-for-feature-flags)
 
-- [<span class="mark">Why are Impressions not showing in Harness FME?</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/why-are-impressions-not-showing-in-split)
+- [<span class="mark">Why are Impressions not showing in Harness FME?</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#impressions-not-showing-in-harness-fme)
 
-- [<span class="mark">Javascript SDK on slow networks</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-not-ready-status-in-slow-networks/)
+- [<span class="mark">Javascript SDK on slow networks</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#why-does-the-javascript-sdk-return-not-ready-status-on-slow-networks)
 
-- [<span class="mark">Always getting 'Control' treatments</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/always-getting-control-treatments/)
+- [<span class="mark">Always getting 'Control' treatments</span>](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#always-getting-control-treatments-from-gettreatment)
 
 ### Bots or web crawlers
 

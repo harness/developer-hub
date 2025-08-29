@@ -1,6 +1,8 @@
 ---
 title: Go SDK
 sidebar_label: Go SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/go-sdk-error-flushing-storage-queue/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -69,7 +71,7 @@ Starting version 4.0.0, cfg.BlockUntilReady is deprecated and migrated to the fo
 
 When the SDK is instantiated in `inmemory-standalone` operation mode, it kicks off background tasks to update an in-memory or Redis cache.
 
-This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it is in this intermediate state, it may not have the data necessary to run the evaluation. In this circumstance, the SDK does not fail, but instead returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it is in this intermediate state, it may not have the data necessary to run the evaluation. In this circumstance, the SDK does not fail, but instead returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, you need to block until the SDK is ready. You can block by using the `BlockUntilReady(int)` method as part of the instantiation process of the SDK factory client as shown below. Do this as a part of the startup sequence of your application.
 
@@ -106,7 +108,7 @@ Now you can start asking the SDK to evaluate treatments for your customers.
 
 After you instantiate the SDK factory client, you can start using the client's `Treatment` method to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you are serving the feature flag to.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 ```go title="Go"
 // The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
@@ -128,7 +130,7 @@ The arguments for the `Treatment()` call are:
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `Treatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `Treatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `Treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or off` treatment to this account.
 
@@ -194,7 +196,7 @@ treatments := splitClient.TreatmentsByFlagSets("KEY", []string{"backend", "serve
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `TreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `TreatmentWithConfig` method.
 
 This method will return an object containing the treatment and associated configuration.
 
@@ -716,7 +718,7 @@ factory, err := client.NewSplitFactory("localhost", sdkConf)
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given flag, the treatment specified in the file is returned for every customer. 
 
-`getTreatment` calls for a feature flag and only returns the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `featureFlag` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
+`getTreatment` calls for a feature flag and only returns the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `featureFlag` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them.
 
 The format of this file is two columns separated by a whitespace. The left column is the feature flag name and the right column is the treatment name. The following is a sample `.split` file:
 
@@ -928,3 +930,27 @@ If you need to use a proxy, you can configure proxies by setting the environment
 $ export HTTP_PROXY="http://10.10.1.10:3128"
 $ export HTTPS_PROXY="http://10.10.1.10:1080"
 ```
+
+## Troubleshooting
+
+### Error flushing storage queue couldn't send message to task SubmitImpressions
+
+Using the Go SDK, by default a thread will flush all current stored impressions in its cache every 30 seconds. However, there is a limit to the impression queued in the SDK's cache. 
+
+If the queue is full, event `IMPRESSIONS_FULL` is fired and the SDK will attempt to post the impressions to clear the cache. When the process tries to flush all impressions, the error is logged:
+
+```
+Error flushing storage queue couldn't send message to task SubmitImpressions
+```
+
+The SDK is trying to send impressions at a higher rate than the posting thread is evicting them.
+
+To resolve the issue, follow these steps:
+
+1. Increase the size of the impressions queue by updating the `Advanced.ImpressionsQueueSize` parameter. Default is 10k, increasing it to 20k might improve results.
+1. Increase the bulk size of the impressions post to Harness servers by updating the `Advanced.ImpressionsBulkSize` parameter. Default is 5k. 10k would be a logical next step.
+1. Decrease the period at which the SDK sends impressions to the Harness servers by adjusting the `TaskPeriods.ImpressionSync` parameter. The default is 30 seconds which is on the low end if you're sending a huge number of impressions. Something along the lines of 5-10 seconds should help.
+
+:::info
+These changes will slightly increase the memory usage of the SDK as well as the network traffic.
+:::

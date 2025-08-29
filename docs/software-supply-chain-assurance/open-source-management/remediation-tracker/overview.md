@@ -56,5 +56,5 @@ With these features, the SCS Remediation Tracker provides essential tools and in
 
 ## Next Steps
 
-* [Create and Manage a Remediation tracker](./create-remediation-tracker)
-* [Track Remediation Progress](./track-remediation-progress)
+* [Create and Manage a Remediation tracker](/docs/software-supply-chain-assurance/open-source-management/remediation-tracker/create-remediation-tracker)
+* [Track Remediation Progress](/docs/software-supply-chain-assurance/open-source-management/remediation-tracker/track-remediation-progress)

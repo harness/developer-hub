@@ -4,6 +4,11 @@ description: Deep dive into how to create Machines and update Delegate Selector 
 sidebar_position: 5
 sidebar_label: Manage Machines & Update Delegate Selector
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 This is your **fourth step** in configuring **Self Hosted Gitspaces**. 
 
 Once you have configured your infrastructure and established a **healthy connection** between the **Harness Control Plane** and the **Harness Delegate**, you are all set to create and manage your **Self Hosted Gitspaces**.
@@ -28,7 +33,22 @@ Follow the given steps to add Machines:
 2. In the **Locations and Machines** section, click on **New Machine**.
 ![](./static/new-machine.png)
 3. Fill in the required machine details and click **Create**.
-![](./static/machine-details.jpg)
+<Tabs queryString="infra-provider">
+<TabItem value="GCP" label="GCP">
+:::info Custom Machine Image
+- For a custom machine image, only `ubuntu` image variants are currently supported.  
+- Run this command to get the list of compute engine images available in your GCP project: `gcloud compute images list`
+- You can only use images that are available in your GCP project. 
+:::
+![](./static/gcp-create-machine.png)
+</TabItem>
+<TabItem value="AWS" label="AWS">
+:::info Custom AMI ID
+For a custom AMI ID, only `ubuntu` image variants are currently supported.  
+:::
+![](./static/aws-create-machine.png)
+</TabItem>
+</Tabs>
 
 This action will register a new machine in your Gitspace Infrastructure, enabling it to host Self Hosted Gitspaces.
 

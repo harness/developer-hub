@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-08-05T08:09:25
+date: 2025-08-20T08:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -26,9 +26,43 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: August 5, 2025
+#### Last updated: August 20, 2025
 
 ## August 2025
+
+### React Native Client SDK
+
+#### Version 3.3.0
+
+**New features and enhancements**:
+
+- Update the React SDK to v2.3.0.
+
+### Node.js SDK
+
+#### Version 1.8.9
+
+**Bug fixes**:
+
+- The SDK now retries on certain recoverable network errors. 
+
+#### Version 1.8.8
+
+**New features and enhancements**:
+
+- Support for providing `tlsTrustedCa/httpsCa` to `StreamProcessor`.
+
+**Fixed issues**:
+
+- Internal version bump. (FFM-12520)
+
+### .NET SDK
+
+#### Version 1.7.4
+
+**New features and enhancements**:
+
+- Improved error logging: the SDK now catches `HttpRequestException` and logs detailed DNS resolution errors instead of a generic HTTP error message. (FFM-12553)
 
 ### Relay Proxy
 
@@ -95,13 +129,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Updated Redis data model to support more efficient resource tracking during disconnections. While upgrading from Proxy version 2.0.12 or earlier to 2.0.13 requires no manual action, reverting back to 2.0.12 after an upgrade requires setting a different `REDIS_DB` index to avoid data incompatibility. (FFM-12441)
 
-#### Version 2.0.12
-
-**Security and maintenance**:
-
-- Adds HOST & Remote IP to the request logging middleware. (FFM-12488)
-- Updates dependencies to resolve a vulnerability in the `github.com/golang-jwt/jwt` package. (FFM-12432)
-
 ### Node.js SDK
 
 #### Version 1.8.8
@@ -137,6 +164,21 @@ This minor release updates the build process to sign the NuGet package, improvin
 
 ## June 2025
 
+### Relay Proxy
+
+#### Version 2.0.12
+
+**Security and maintenance**:
+
+- Adds HOST & Remote IP to the request logging middleware. (FFM-12488)
+- Updates dependencies to resolve a vulnerability in the `github.com/golang-jwt/jwt` package. (FFM-12432)
+
+#### Version 1.0.7
+
+**Security and maintenance**:
+
+- Removed indirect dependency on `github.com/golang-jwt/jwt` version 3.2.2 or later which was incompatible for improved stability. (FFM-12443) 
+
 ### Java SDK
 
 #### Version 1.8.1
@@ -170,14 +212,6 @@ This minor release updates the build process to sign the NuGet package, improvin
 **Security and maintenance**:
 
 - Updated third-party dependencies to address security vulnerabilities identified by scanners. (FFM-12432)
-
-### Python SDK
-
-#### Version 1.7.2
-
-**Bug fixes**:
-
-- Fixed an issue with the boolean equals clause to ensure correct evaluation in feature flag rules. (FFM-12349)
 
 ## April 2025
 
@@ -528,7 +562,9 @@ This feature helps developers monitor when default variations are returned due t
  - Fixed an issue where a flag or target group change would not be stored with the `Outdated` error. 
 
 ### .NET SDK
+
 #### Version 1.7.2
+
 **New features and enhancements**:
  - Added .NET 8.0 TFM. (FFM-12057)
  - Upgraded `System.IdentityModel.Tokens.Jwt` for .NET 7.0 and 8.0

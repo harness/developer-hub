@@ -34,9 +34,9 @@ Examples:
 - Exclude by pattern: `exp-*`
 - Exclude a specific repo: `playground`
 
-1. In **Bypass List**, you can specify users, user groups, or service accounts who can bypass this rule.
-2. For each of the [**Rules**](#available-rules), select the rule you want to enable and provide additional specifications, if necessary. For example, if you select **Require a minimum number of reviewers**, you must specify the minimum number of reviewers.
-3. Select **Create Rule**.
+6. In **Bypass List**, you can specify users, user groups, or service accounts who can bypass this rule.
+7. For each of the [**Rules**](#available-rules), select the rule you want to enable and provide additional specifications, if necessary. For example, if you select **Require a minimum number of reviewers**, you must specify the minimum number of reviewers.
+8. Select **Create Rule**.
 
 ### Available rules
 
@@ -44,11 +44,11 @@ The following rules are available when adding branch rules. Some rules require a
 
 | Rule | Additional configuration |
 | ---- | ------------------------ |
-| **Block branch creation** | This rule doesn't block users in the **Bypass List**. |
-| **Block branch update** | This rule doesn't block users in the **Bypass List**. |
-| **Block branch deletion** | This rule doesn't block users in the **Bypass List**. |
-| **Block force push** | This rule doesn't block users in the **Bypass List**. |
-| **Require pull request** | This rule doesn't block users in the **Bypass List**. |
+| **Block branch creation** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Block branch update** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Block branch deletion** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Block force push** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Require pull request** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
 | **Enable default reviewers** | Automatically assigns default reviewers to new pull requests. Optionally, enforce a minimum number of approvals from default reviewers before merging. [Details](/docs/code-repository/config-repos/rules#default-reviewer). |
 | **Require a minimum number of reviewers** | You must specify the minimum number of reviewers. |
 | **Add Code Owners as reviewers** | This rule automatically adds relevant Code Owners as reviewers. |

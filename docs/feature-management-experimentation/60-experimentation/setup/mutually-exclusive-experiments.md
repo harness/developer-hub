@@ -95,7 +95,7 @@ To create a dependent (child) feature flag:
 
 In your source code, you should directly evaluate these dependent feature flags. Your source code should be agnostic to the parent feature flag (that has the sole purpose of dividing traffic among the dependent flags). 
 
-For more information about dependent feature flags, see the [Target with dependencies](/docs/feature-management-experimentation/feature-management/target-with-dependencies/) help page.
+For more information about dependent feature flags, see [Target with dependencies](/docs/feature-management-experimentation/feature-management/targeting/target-with-dependencies).
 
 ## Viewing mutually exclusive experiment results
 
@@ -107,7 +107,7 @@ Mutually exclusive experiments carry some inherent limitations. You should be aw
 
 ### Ending an experiment and reallocating users
 
-The Harness FME feature flag (parent flag) that divides traffic between mutually exclusive experiments uses a random and deterministic hashing algorithm to allocate traffic. Suppose you want to end one of the concurrent mutually exclusive experiments and reallocate the users to the other experiments (and you are sure this will not invalidate your results). To learn how your traffic would be reallocated, see [How does Harness FME ensure a consistent user experience?](/docs/feature-management-experimentation/feature-management/faqs/ensure-a-consistent-user-experience). You may also consider using [dynamic configuration](/docs/feature-management-experimentation/feature-management/dynamic-configurations/) in your flag definitions if you anticipate ending a mutually exclusive experiment early.
+The Harness FME feature flag (parent flag) that divides traffic between mutually exclusive experiments uses a random and deterministic hashing algorithm to allocate traffic. Suppose you want to end one of the concurrent mutually exclusive experiments and reallocate the users to the other experiments (and you are sure this will not invalidate your results). To learn how your traffic would be reallocated, see [How does Harness FME ensure a consistent user experience?](/docs/feature-management-experimentation/feature-management). You may also consider using [dynamic configuration](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations/) in your flag definitions if you anticipate ending a mutually exclusive experiment early.
 
 :::note 
 We generally do not recommend re-using the divisions created by the parent feature flag for new experiments, because you would be experimenting with the subset of your user population that was exposed to an earlier experiment. This subset may not be representative of your entire user population.

@@ -7,20 +7,20 @@
 *       @pratmit @wei-harness @ivikramsahu @SushrutHarness
 
 # Configuration Files in DS are JS.
-*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
-*.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
-*.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
-*.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness
+*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
+*.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
+*.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
+*.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @SushrutHarness @richardblack-Harness
 
 # Changes to Lock File
 *.lock  @wei-harness
 
 # Changes to Config Files
-*.ini  @wei-harness @ivikramsahu @SushrutHarness
-*.json  @wei-harness @ivikramsahu @SushrutHarness
-*.toml  @wei-harness @ivikramsahu @SushrutHarness
-*ignore @wei-harness @ivikramsahu @SushrutHarness
-/_server-redirect @wei-harness @ivikramsahu @SushrutHarness
+*.ini  @wei-harness @ivikramsahu @SushrutHarness @richardblack-Harness
+*.json  @wei-harness @ivikramsahu @SushrutHarness @richardblack-Harness
+*.toml  @wei-harness @ivikramsahu @SushrutHarness @richardblack-Harness
+*ignore @wei-harness @ivikramsahu @SushrutHarness @richardblack-Harness
+/_server-redirect @wei-harness @ivikramsahu @SushrutHarness @richardblack-Harness
 
 # Changes to Netlify Files
 /netlify/ @wei-harness
@@ -122,7 +122,7 @@ static/  @rohanmaharjan100 @wei-harness
 
 # Platform Docs
 /docs/platform/ @pratmit @GokulBansal0 @abhishekharness @ivikramsahu
-/release-notes/delegate.md @pratmit @abhishekharness @anshul-harness @ivikramsahu
+/release-notes/delegate.md @pratmit @abhishekharness @anshul-harness @ivikramsahu @SushrutHarness
 /release-notes/platform.md @pratmit @GokulBansal0 @abhishekharness @ivikramsahu
 /release-notes/self-managed-enterprise-edition.md @pratmit @abhishekharness @ivikramsahu @anshul-harness @raviyadalam 
 /src/components/Roadmap/data/platformData.ts @pratmit @abhishekharness @ivikramsahu
@@ -178,6 +178,7 @@ static/  @rohanmaharjan100 @wei-harness
 # FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john
 /docs/feature-management-experimentation/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @sanzmauro @dtk-DaveKarow 
+/docs/feature-management-experimentation/20-sdks-and-infrastructure/ @alai97 @NicoZelaya @sanzmauro @EmilianoSanchez @gthea @chillaq @MartinCardozo-SDK @nmayorsplit @ZamoraEmmanuel 
 /release-notes/feature-management-experimentation.md @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
 /release-notes/static/fme/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
 
@@ -196,8 +197,11 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/faqs/db-devops-faqs/ @stephenatwell @HarnessTheChaos @archit-harness @sonichigo @rohitk-h
 
 # CDE Docs
-/docs/cloud-development-environments/ @manishas @khushisharmaharness
-/src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness
+/docs/cloud-development-environments/ @manishas @khushisharmaharness @Thewonderer
+/src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness @Thewonderer
+/release-notes/cloud-development-environments.md @manishas @khushisharmaharness @Thewonderer
+/src/components/Roadmap/data/cdeData.ts @manishas @khushisharmaharness @Thewonderer
+/release-notes/static/cde/ @manishas @khushisharmaharness @Thewonderer
 
 # AI SRE Docs
 /docs/ai-sre/ @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla

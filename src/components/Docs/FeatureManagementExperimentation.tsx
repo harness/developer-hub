@@ -23,7 +23,7 @@ export default function FME() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Split Feature Management & Experimentation (FME) is a feature management solution that provides release monitoring and experimentation for data-driven development.
+              Harness Feature Management & Experimentation (FME) is a feature management platform that helps you manage feature releases, monitor performance, and run experiments for data-driven development.
             </p>
             <div className={styles.illustrationContainer}>
               <img

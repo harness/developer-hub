@@ -18,6 +18,75 @@ Review the notes below for details about recent changes to **Harness Cloud Devel
 
 :::
 
+## August - [2025.08.v1]
+
+With the last release, we introduced **Self-Hosted Gitspaces**. This release builds on that foundation with several key new features for Harness Gitspaces. Let’s dive into the details.
+
+---
+
+### ⭐️ [New Feature] AWS Support for Self-Hosted Gitspaces
+👉 [Read more about this feature](/docs/cloud-development-environments/self-hosted-gitspaces/steps)
+
+We’re excited to announce **AWS cloud infrastructure** support for Harness Self-Hosted Gitspaces. This milestone brings greater flexibility and control, enabling you to create and host Gitspaces within **your own AWS Cloud Infrastructure**. This not only provides you with greater control over your Gitspaces, but also provides an **extra layer of security** over your infrastructure and source code data.
+
+To [get started](/docs/cloud-development-environments/self-hosted-gitspaces/steps), configure your AWS cloud infrastructure in Harness, set up the Terraform module to provision required AWS resources, and install the VM Runner and Delegate on your AWS VM instance. You’ll then be able to create and manage Gitspaces within your own AWS infrastructure.
+
+![](./static/cde/aws-infra-release-notes.png)
+
+---
+
+### ⭐️ [New Feature] Access Control - RBAC for CDE
+👉 [Read more about this feature](/docs/cloud-development-environments/rbac)
+
+This release introduces **RBAC for CDE (Role-Based Access Control)**. RBAC lets you control who can view, access, and modify resources across different scopes. By defining roles and resource groups, you ensure that only authorized users can act on CDE resources, adding an additional layer of security and compliance.
+
+CDE RBAC supports the following resources: 
+| **Resource**   | **Permissions**                                                           | **Account Scope** | **Org Scope** | **Project Scope** | **Notes**                                                                                          |
+| -------------- | ------------------------------------------------------------------------- | ----------------- | ------------- | ----------------- | -------------------------------------------------------------------------------------------------- |
+| **Gitspaces**    | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Execute</li></ul>                 | ✅                 | ✅             | ✅                 | Created at **project scope**; managed across all scopes. |
+| **Infrastructure Providers**  | <ul><li>View</li><li>Edit</li><li>Delete</li></ul> | ✅                 | ✅             | ✅                 | Configured at **account scope**; accessible across all scopes.                                  |
+
+---
+
+### ⭐️ [New Feature] Gitspace Admin Settings 
+👉 [Read more about this feature](/docs/cloud-development-environments/admin-settings)
+
+We’re introducing **Gitspace Admin Settings**, which allow you to customize Gitspaces to align with your organization’s standards and policies. These settings provide fine-grained control over:
+
+- **Git Providers** – Manage which Git providers are available for creating Gitspaces.
+- **Code Editors** – Control which code editors are available to users.
+- **Cloud Regions & Machine Types** – Define the infrastructure regions and machine types available.
+- **Gitspace Images** – Restrict which container images can be used to spin up Gitspaces.
+
+---
+
+### ⭐️ [New Feature] Reset Support in Gitspaces
+👉 [Read more about this feature](/docs/cloud-development-environments/manage-gitspaces/reset-gitspaces)
+
+This feature enables you to **reset a Gitspace**, reverting it to the latest configuration from the source. Resetting ensures your Gitspace reflects the most recent configuration or infrastructure changes while preserving your home directory data.
+
+---
+
+### ⭐️ [New Feature] Custom Machine Image Support for Self-Hosted Gitspaces
+👉 [Read more about this feature](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui)
+
+You can now configure custom machine images for Self-Hosted Gitspaces. This feature allows you to:
+
+- Use a **custom machine image** for your **infrastructure gateway**.
+- Configure a **custom image** for the **VM Runner**.
+- Provide a **custom machine image** for your **Gitspaces machine**.
+
+When configuring infrastructure, you can directly specify a custom machine image (GCP) or custom AMI ID (AWS).
+
+---
+
+### ⭐️ [New Feature] On-Prem Git Providers Support
+👉 [Read more about this feature](/docs/cloud-development-environments/git-providers/on-prem-providers)
+
+Harness Gitspaces now support **on-prem Git providers**. With this capability, you can spin up Gitspaces using source code repositories hosted within your own infrastructure. This provides an added layer of security and control over your source code and metadata and ensures your data never leaves your server and infrastructure.
+
+---
+
 ## 🚀 Releasing Self-Hosted Gitspaces — July \[2025.07.v1]
 
 ### Introducing Harness Self-Hosted Gitspaces

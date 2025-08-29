@@ -30,7 +30,7 @@ Once your code is deployed, you can instantly turn on or off features for any in
 FME provides visibility into your controlled releases by comparing data about feature flag evaluations with data about what happened after those evaluations. The data points that feed those comparisons are impressions and events. The results of those comparisons are called metrics.
 
 ### Impressions
-An impression is a record of a targeting decision made. It is created automatically each time a feature flag is evaluated and contains details about the user or unique key for which the evaluation was performed, the targeting decision, the targeting rule that drove that decision, and a time stamp. Refer to the [Impressions](/docs/feature-management-experimentation/feature-management/impressions) guide for more information.
+An impression is a record of a targeting decision made. It is created automatically each time a feature flag is evaluated and contains details about the user or unique key for which the evaluation was performed, the targeting decision, the targeting rule that drove that decision, and a time stamp. Refer to the [Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) guide for more information.
 
 ### Events
 An event is a record of user or system behavior. Events can be as simple as a page visited, a button clicked, or response time observed, and as complex as a transaction record with a detailed list of properties. An event doesn’t refer to a feature flag. The association between flag evaluations and events is computed for you. An event, associated with a user (or other unique keys), arriving after a flag decision for that same unique key, is attributed to that evaluation by FME’s attribution engine.
@@ -55,7 +55,9 @@ Targeting decisions are made locally, in memory, from within your own applicatio
 ### FME SDKs
 To use Harness FME, include and initialize one of FME SDKs in your application. Once the SDK is initialized, targeting rules are retrieved from a nearby content delivery network (CDN) node, cached inside your code, and updated in real-time in milliseconds using a streaming architecture. 
 
-As needed, your application makes a just-in-time call to the FME SDK in local memory, passing the feature flag name, the userId or unique key, and optionally, a map of user or session attributes. The response is returned instantly, with no need for a network call. After the evaluation is performed, the SDK asynchronously returns an impression record to Harness. Refer to our [SDK overview](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/) for more information.
+As needed, your application makes a just-in-time call to the FME SDK in local memory, passing the feature flag name, the userId or unique key, and optionally, a map of user or session attributes. The response is returned instantly, with no need for a network call. After the evaluation is performed, the SDK asynchronously returns an impression record to Harness. 
+
+For more information, see [SDKs and Customer-Deployed Components](/docs/feature-management-experimentation/sdks-and-infrastructure).
 
 ### Split Evaluator
 As an alternative to using FME SDKs, you can make REST API calls to a Split Evaluator hosted inside your own infrastructure. Like the SDK, this method never requires you to send private user data to the Harness network. The evaluator makes it possible to operate from within languages that do not yet have a published FME SDK and should only be used in that case. Refer to the [Split Evaluator](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator) guide for more information.
@@ -89,13 +91,13 @@ Projects provide separation or partitioning of work to reduce clutter or to enfo
 Within each project, you may have multiple environments, such as development, staging, and production. Refer to the [Environments](/docs/feature-management-experimentation/management-and-administration/fme-settings/environments) guide for more information.
 
 ### Feature flags
-Feature flags are created at the project level where you specify the feature flag name, traffic type, owners, and description. Targeting rules are then created and managed at the environment level as part of the feature flag definition. Refer to the [Feature flag management](/docs/feature-management-experimentation/feature-management/create-a-feature-flag) guide for more information.
+Feature flags are created at the project level where you specify the feature flag name, traffic type, owners, and description. Targeting rules are then created and managed at the environment level as part of the feature flag definition. Refer to the [Feature flag management](/docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag) guide for more information.
 
 ### Targeting rule
 Targeting rules for each feature flag are created at the environment level. For example, this supports one set of rules in your staging environment and another in production. Rules may be based on user or device attributes, membership in a segment, a percentage of a randomly distributed population, a list of individually specified user or unique key targets, or any combination of the above.
 
 ### Segment
-A segment is a list of users or unique keys for targeting purposes. Segments are created at the environment level. Refer to the [Segments](/docs/feature-management-experimentation/feature-management/segments) guide for more information.
+A segment is a list of users or unique keys for targeting purposes. Segments are created at the environment level. Refer to the [Segments](/docs/feature-management-experimentation/feature-management/targeting/segments) guide for more information.
 
 ### Traffic type
 Targeting decisions are made on a per-user or per unique key basis, but what are the available types of unique keys you intend to target? These are your traffic types, and you can define up to ten unique key types at the project level.

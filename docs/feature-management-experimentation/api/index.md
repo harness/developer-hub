@@ -7,7 +7,7 @@ description: Learn how to use the Admin API to build custom integrations and dev
 
 ## Overview
 
-You can use the Split Admin API to:
+You can use the [Split Admin API](https://docs.split.io/reference/introduction) to:
 
 * Push data into Split
 * Get data out of Split
@@ -19,10 +19,10 @@ You can use the Split Admin API to:
 :::warning Not used for `targeting` and `getTreatment`
 Customer attributes stored using the methods discussed here aren't used for targeting your roll out definitions or as part of the standard usage of `getTreatment`. In order to target, you must pass the attribute with the `getTreatment` call. 
 
-Learn more about [targeting based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes/).
+Learn more about [targeting based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/).
 :::
 
-You can use the [Identities REST API](https://docs.split.io/reference/identities-overview) to identify your keys in Split, making them available when writing targeting rules in the user interface and enriching autocomplete functionality throughout the user interface. Identifying your keys is useful if you want to pre-populate the user interface for your team and provide customer data when setting up your rollouts and analyzing [impression data](/docs/feature-management-experimentation/feature-management/impressions/).
+You can use the [Identities REST API](https://docs.split.io/reference/identities-overview) to identify your keys in Split, making them available when writing targeting rules in the user interface and enriching autocomplete functionality throughout the user interface. Identifying your keys is useful if you want to pre-populate the user interface for your team and provide customer data when setting up your rollouts and analyzing [impression data](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/).
 
 Split offers both an Identities API and [client-specific API wrappers](/docs/feature-management-experimentation/api/wrappers/python-admin-api) to use when sending to Split attributes on your keys. As an administrator in Split, you can see the attributes that your team is sending to Split and the last time an update is received.
 
@@ -202,6 +202,8 @@ Webhook integrations are available to send real-time event payloads to Split. Ea
 - [Impressions](/docs/feature-management-experimentation/api/webhook/impressions) allow you to send impression data for treatments served to users.
 
 The standard webhook integration automatically compresses the POST body request using `gzip` when sending data to the target application server.
+
+## Troubleshooting
 
 When using Azure Logic Apps as the target, there is a compatibility issue between the way Split uses the `gzip` library and how Azure Logic Apps decodes the payload. 
 

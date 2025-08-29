@@ -64,10 +64,6 @@ Configuring dependent fields, such as the artifact tag, as runtime inputs when t
 
 ### Skip Artifact Consumption for the Stage
 
-:::note
-Currently, the disable artifact consumption check feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 You can bypass artifact consumption checks for a service in a **Deploy** stage by selecting the **Disable artifact in this stage** checkbox. When this option is enabled, the pipeline treats the service without artifact configuration, skips the artifact consumption check process.
 
 ![](static/disable-artifact.png)

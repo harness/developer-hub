@@ -1,7 +1,7 @@
 ---
 title: Cluster Orchestrator vs Karpenter
 description: Compare Harness Cluster Orchestrator with AWS Karpenter and discover unique advantages
-sidebar_position: 2
+sidebar_position: 6
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
