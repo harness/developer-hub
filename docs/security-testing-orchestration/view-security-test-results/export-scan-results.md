@@ -7,48 +7,63 @@ sidebar_label: "Export security test results"
 
 After a successful pipeline scan execution, you can view results in the **[Vulnerabilities](/docs/security-testing-orchestration/view-security-test-results/view-scan-results)** tab of the pipeline execution window.
 
-You can export scan results in two ways:
+You can export scan results in three ways:
 
-1. **[Export from the Vulnerabilities tab](#export-from-the-vulnerabilities-tab):** Download scan results directly as **CSV**, or open the [Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary) for **PDF/CSV** export.
-2. **[Automated export via pipeline](#automated-export-using-a-pipeline-run-step):** Configure a pipeline with a **Run** step to automatically generate and email reports.
+1. **[Export as CSV from the Vulnerabilities tab](#export-as-csv-from-the-vulnerabilities-tab):** Instantly download scan results in CSV format.
+2. **[Export as PDF or CSV from the Dashboard](#export-as-pdf-or-csv-from-the-dashboard):** Open the Pipeline Execution Summary Dashboard to download results in PDF or CSV format.
+3. **[Automated export via pipeline](#automated-export-using-a-pipeline-run-step):** Configure a pipeline with a **Run** step to automatically generate and email reports.
 
-## Export from the Vulnerabilities tab
+## Export as CSV from the Vulnerabilities tab
 
-The **Vulnerabilities** tab provides two options for exporting scan results:
-
-- **Download CSV**: Instantly export results in CSV format.  
-- **View in Dashboard**: Opens the **[Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary)**, where you can also export as **PDF** or **CSV**.
+In the **Vulnerabilities** tab of a pipeline execution, select **Download CSV** to instantly export the scan results in CSV format.
 
 <DocImage path={require('/docs/security-testing-orchestration/view-security-test-results/static/download-csv-vulnerability-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
 <details>
 <summary>Example CSV export</summary>
 
-| Organisation Name | Project Name | Pipeline Name          | Execution ID               | Issue ID                  | Issue Title             | Severity  | Severity Score | No. of Occurrences | Target Type | Target Name        | Variant | Exemption Status | Scanner Name | Exemption Requestor Email | Exemption Approver Email | Only in Current Scan |
-|-------------------|--------------|------------------------|----------------------------|---------------------------|-------------------------|-----------|----------------|--------------------|-------------|--------------------|---------|------------------|--------------|---------------------------|--------------------------|----------------------|
-| default           | STO          | twistlock with policy  | 0om495LeS-Wc9WD8HsoVQg     | gfPVsGE_X8j5Q6y4IqacdJ    | babel-traverse@6.11.4   | Critical  | 9.4            | 1                  | container   | 1njected/nodegoat  | latest  | Pending          | twistlock    | john.doe@company.com      | security-team@company.com | no                   |
-| default           | STO          | twistlock with policy  | 0om495LeS-Wc9WD8HsoVQg     | zj8auAxKD-tNAh5EIFpW3c    | bson@1.0.4              | Critical  | 9.8            | 3                  | container   | 1njected/nodegoat  | latest  | Approved         | twistlock    | sarah.smith@company.com   | security-lead@company.com | no                   |
-| default           | STO          | twistlock with policy  | 0om495LeS-Wc9WD8HsoVQg     | YCJDZf9HbKQt5mNw9kzSTO    | deep-extend@0.4.1       | Critical  | 9.8            | 1                  | container   | 1njected/nodegoat  | latest  | Pending          | twistlock    | mike.johnson@company.com  | sec-admin@company.com     | no                   |
+| Organisation name | Project Name | Pipeline Name | Execution ID | Issue ID | Issue Title | Severity | Severity Score | No. of Occurrences | Target Type | Target Name | Status | Exemption Status | Scanner Name | Exemption Requestor Email | Exemption Approver Email | Only in Current Scan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| default | WebApp-Frontend | CI-Gitleaks-Scan | exec-id-1 | issue-id-1 | Discord API Key Detected | High | 8.5 | 3 | repository | frontend-app | REMEDIATED | Approved | Aqua Trivy | requestor1@example.com | approver1@example.com | yes |
+| default | Backend-API | Dev-Bandit-Scan | exec-id-2 | issue-id-2 | Hardcoded Password | Critical | 9.2 | 1 | repository | user-service | NONE | Pending | Bandit | requestor2@example.com | | no |
+| default | WebApp-Frontend | Prod-Checkmarx-Scan | exec-id-3 | issue-id-3 | SQL Injection | High | 7.8 | 5 | container | payment-gateway | EXEMPTED | Rejected | Checkmarx | requestor3@example.com | approver2@example.com | yes |
+| default | Backend-API | QA-Snyk-Scan | exec-id-4 | issue-id-4 | Outdated Library | Medium | 6.1 | 2 | repository | auth-service | PARTIALLY_EXEMPTED | Expired | Snyk | requestor4@example.com | approver3@example.com | no |
 
-- **Exemption Status**: The status of the issue's exemption request at the time of the scan.
-- **Severity**: The vulnerability's severity level. If a severity override exists, STO uses the scanner-provided severity. Otherwise, it uses the severity that STO provides.
-- **Only in Current Scan**:
+* **Organisation name**: The name of the organisation (e.g., `default`).
+* **Project Name**: The name of the project (e.g., `WebApp-Frontend`).
+* **Pipeline Name**: The name of the pipeline (e.g., `CI-Gitleaks-Scan`).
+* **Execution ID**: The unique identifier for the execution (e.g., `iDtDn5tnTW2qg21iURaJWA`).
+* **Issue ID**: The unique identifier for the issue (e.g., `8-Yp-1vlRB6MIqa69DdtVj`).
+* **Issue Title**: A descriptive title for the issue (e.g., `Discord API Key Detected`).
+* **Severity**: The vulnerability's severity level. If a severity override exists, STO uses the scanner-provided severity. Otherwise, it uses the severity that STO provides. Possible values are `Critical`, `High`, `Medium`, `Low`, and `Info`.
+* **Severity Score**: A numeric representation of the severity (e.g., `6.5`, `7.0`, `8.5`).
+* **No. of Occurrences**: The total number of times an issue has been detected (e.g., `3`, `4`, `8`).
+* **Target Type**: The type of target scanned, such as `repository` or `container`.
+* **Target Name**: The specific name of the target that was scanned.
+* **Status**: The current status of the issue. Possible values include `EXEMPTED`, `PARTIALLY_EXEMPTED`, `REMEDIATED`, and `NONE`.
+* **Exemption Status**: The status of the issue's exemption request at the time of the scan. Values can be `Approved`, `Rejected`, `Pending`, or `Expired`.
+* **Scanner Name**: The name of the tool that performed the scan (e.g., `Aqua Trivy`).
+* **Exemption Requestor Email**: The email address of the user who requested the exemption.
+* **Exemption Approver Email**: The email address of the user who approved the exemption.
+* **Only in Current Scan**:
     - **Yes**: This indicates a new vulnerability. It is found in the most recent scan but was not present in the baseline or previous scan you are comparing against.
     - **No**: This indicates a pre-existing or recurring vulnerability. It is found in the current scan and was also present in the baseline scan.
 
 </details>
 
-For the **View in Dashboard** option, click the button to open the [Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary). The dashboard automatically applies your pipeline execution ID as a filter, so you can view the results without additional filtering. From there, click the **Options** menu (top-right) and select **Download** (choose **PDF** or **CSV**).
+## Export as PDF or CSV from the Dashboard
 
-You can also access the dashboard directly and set the filters manually. See [Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary) to learn more.
+In the **Vulnerabilities** tab, select **View in Dashboard** to open the [Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary). The dashboard automatically applies your pipeline execution ID as a filter, so you can view the results without additional filtering. 
 
-:::info
-You can find the **Execution ID** in your pipeline’s execution URL. For example:  
-```https://app.harness.io/ng/account/ACCOUNT_ID/module/MODULE/orgs/ORG/projects/PROJECT/pipelines/PIPELINE/executions/EXECUTION_ID/pipeline```  
-In this URL, the value after `/executions/` is the **Execution ID**.
-:::
+From there, click the **Options** menu (top-right) and select **Download** (choose **PDF** or **CSV**).
 
 <DocImage path={require('/docs/security-testing-orchestration/view-security-test-results/static/download-results-from-dashboard.png')} width="100%" height="100%" title="Click to view full size image" />
+
+:::tip
+If you want to view results for a different pipeline execution, you can find its **Execution ID** in the pipeline execution URL and apply it as a filter on the dashboard. For example, in the URL `https://app.harness.io/ng/account/ACCOUNT_ID/module/MODULE/orgs/ORG/projects/PROJECT/pipelines/PIPELINE/executions/EXECUTION_ID/pipeline`, the value after `/executions/` is the **Execution ID**.
+
+To learn more, go to the [Pipeline Execution Summary Dashboard](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary) documentation.
+:::
 
 ## Automated export using a pipeline Run step
 
