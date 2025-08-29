@@ -2,6 +2,9 @@
 title: Email step
 description: Send emails using pipelines
 sidebar_position: 5
+redirect_from:
+  - /docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/
+  - /docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/email_step/
 ---
 
 This topic describes the settings for the Email step available in Continuous Delivery (CD) and custom stages.

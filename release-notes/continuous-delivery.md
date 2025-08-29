@@ -4162,7 +4162,7 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
   To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
 
-  For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
+  For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email-step/).
 
   Harness Delegate version 23.06.79503 is required for this feature.
 
@@ -5997,7 +5997,7 @@ This release does not include new features.
 
   ![Deployment Type](static/adc95dc9af6b3beecc06149fc8045fd66f6ad514a37d2583addea35354643801.png)
 
-- The [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/) is sending an error even though the email is sent. (CDS-50952)
+- The [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email-step/) is sending an error even though the email is sent. (CDS-50952)
 
   In the **Email** step, when there is an invalid address in the **to** setting and a valid email in the **cc** setting, mail is sent to the cc address, but the step is marked as failed. This has been fixed. The Email step is marked as success if emails are sent to the cc address.
 
