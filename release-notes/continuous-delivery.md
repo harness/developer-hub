@@ -55,6 +55,13 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## August 2025
 
+### GitOps Service 1.40.0, GitOps Agent 0.100.0
+
+#### New Features and Enhancements
+
+- Enhanced GitOps Cluster Detail Page with improved UX features: application listing pane showing all hosted applications, clickable Agent name and ID links, additional cluster credential information, and inline editing capabilities aligned with other Harness detail pages. (**CDS-108575**)
+
+
 ### Version 1.102.XX
 
 ### New Features and Enhancements
