@@ -13,11 +13,9 @@ import TabItem from '@theme/TabItem';
 These release notes describe recent changes to Harness Software Engineering Insights.
 
 :::info About Harness Release Notes
-
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
-
 :::
 
 ## August 2025
@@ -44,6 +42,22 @@ Activity Logs provide admins and auditors a transparent view of who made changes
 #### Related documentation
 
 - [Activity Logs in SEI 2.0](/docs/software-engineering-insights/harness-sei/manage/activity-logs)
+
+## July 2025
+
+### [New Feature] SEI 2.0 is GA
+----
+#### 2025-07-31
+
+SEI 2.0 introduces a re-imagined engineering insights experience with near real-time access to efficiency, productivity, and business alignment metrics. Built on a modern, high-performance architecture, SEI 2.0 features enable automated developer and organization management, decentralized team administration, and data drill-down options to help organizations scale with ease.
+
+For customers using SEI 1.0, there is no in-place migration. SEI 2.0 must be set up separately in the same account, and Account Admins can roll it out to teams at their own pace.
+
+#### Related documentation
+
+- [SEI 2.0 Overview](/docs/software-engineering-insights/harness-sei/sei-overview)
+- [SEI 2.0 Developer Licensing](/docs/software-engineering-insights/harness-sei/get-started/sei-subscription-and-licensing/)
+- [SEI 1.0 to 2.0 Transition](/docs/software-engineering-insights/harness-sei/transition)
 
 ## May 2025
 
