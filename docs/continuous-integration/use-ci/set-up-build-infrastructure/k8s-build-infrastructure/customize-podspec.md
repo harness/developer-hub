@@ -16,7 +16,8 @@ Once the `CI_K8S_OVERLAY_YAML` flag is enabled, you can reuse the **Pod Spec Ove
 
 - The YAML must follow the standard Kubernetes PodSpec structure.
 - You only need to specify the fields you want to override.
-- Fields like `spec.containers` and `spec.initContainers` are **ignored** if passed — you can't override them.
+- `spec.containers` is supported (for existing containers only).
+- Fields like `spec.initContainers` are **ignored** if passed — you can't override them.
 
 ## Examples
 
@@ -39,6 +40,23 @@ spec:
 spec:
   securityContext:
     runAsGroup: 15
+```
+
+### Override container resources (ephemeral-storage) for an existing step
+
+```yaml
+spec:
+  containers:
+    - name: container-blah
+      image: nginx:1.14
+      ports:
+        - containerPort: 80
+    - name: step-1
+      resources:
+        requests:
+          ephemeral-storage: "400Mi"   
+        limits:
+          ephemeral-storage: "500Mi"
 ```
 
 ## Transition from legacy format
@@ -93,7 +111,9 @@ Best Practices
 
 - Always use the `spec:` wrapper if the feature flag is enabled.
 
-- Do not pass `spec.containers` or `spec.initContainers` — they are not overrideable.
+- You can override both pod-level and container-level fields. Non-existent container names are ignored.
+  
+- Do not pass `spec.initContainers` — this is not overrideable.
 
 - Invalid YAML or unsupported fields can cause your build to fail.
 
