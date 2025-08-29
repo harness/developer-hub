@@ -178,6 +178,7 @@ static/  @rohanmaharjan100 @wei-harness
 # FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @alai97 @animcdowell @kleinjoshuaa @deej-split @harness-john
 /docs/feature-management-experimentation/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @sanzmauro @dtk-DaveKarow 
+/docs/feature-management-experimentation/20-sdks-and-infrastructure/ @alai97 @NicoZelaya @sanzmauro @EmilianoSanchez @gthea @chillaq @MartinCardozo-SDK @nmayorsplit @ZamoraEmmanuel 
 /release-notes/feature-management-experimentation.md @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
 /release-notes/static/fme/ @alai97 @animcdowell @audreydo1 @NicoZelaya @charleswu01 @jliegl-harness @dtk-DaveKarow 
 
