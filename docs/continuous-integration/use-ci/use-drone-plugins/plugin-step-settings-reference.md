@@ -132,6 +132,7 @@ To use output secrets, the following feature flags must be enabled:
 - `CI_ENABLE_OUTPUT_SECRETS`
 For Harness Docker Runner, also enable:
 - `CI_ENABLE_PLUGIN_OUTPUT_SECRETS`
+To enable these flags, [contact Harness Support](mailto:support@harness.io).
 :::
 
 #### Output Variables on Step Failure

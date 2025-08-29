@@ -172,6 +172,7 @@ Make sure the following feature flags are enabled to use output secrets:
 - `CI_SKIP_NON_EXPRESSION_EVALUATION`
 - `CI_ENABLE_OUTPUT_SECRETS`
 - `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` (required for Docker Runner only)
+To enable these flags, [contact Harness Support](mailto:support@harness.io).
 :::
 
 ### Image Pull Policy
