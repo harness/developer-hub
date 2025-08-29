@@ -819,3 +819,35 @@ To create an annual budget with a monthly breakdown, you need to select the budg
 
 Yes, since budgets are based on Perspectives, we can also incorporate built-in cloud discounts.
 
+#### What is Labels V2 in Harness?
+Labels V2 is a major upgrade to how labels (tags) are managed and displayed across the platform, providing faster query performance, more accurate visibility of original labels, and alignment with native cloud label formats.
+
+#### Is any action required for users with Labels V2?
+Yes, users need to **manually update** their Perspectives and Cost Categories to adopt the new LabelsV2 format.
+
+#### Is Labels V2 feature enabled for all customers now?
+No, Labels V2 is currently behind the feature flag **CCM_JSON_LABELS** and is expected to go live soon.
+📄 [Documentation link](#)
+
+
+#### What new alert capabilities are available for Governance?
+Users can set up alerts based on cloud provider (AWS, GCP, Azure), resource type, cloud account, cost impact, and more. Alerts can be received with evaluation outputs downloadable as JSON files.
+📄 [Documentation link](#)
+
+
+#### Is there granular RBAC for Governance Alerts?
+Yes, there is improved role-based access control allowing assignment of permissions to specific resource groups and roles for precise governance management.
+📄 [Documentation link](#)
+
+#### Can recommendations be filtered by Cost Categories?
+Yes, users can now filter recommendations by Cost Categories.
+
+
+#### What are Recommendation Preferences?
+Users can create, apply, and save custom tuning preferences for recommendations, including selecting a default preset preference that applies consistently to future recommendations.
+📄 [Documentation link](#)
+
+
+#### What is External Cost Data Ingestion (Beta)?
+Harness Cloud Cost Management supports ingesting cost data from third-party vendors using standardized CSV files (FOCUS format, max 20MB per file), enabling analysis via Perspectives, Budgets, Dashboards, and Cost Categories.
+📄 [Documentation link](#)

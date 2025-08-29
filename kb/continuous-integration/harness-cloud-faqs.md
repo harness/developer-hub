@@ -118,3 +118,4 @@ Qrvey accelerated their builds by 8x and reduced their build times from 90 minut
 ### Do you have a list of all the features in Harness Cloud?
 
 ![Harness Cloud features](static/harness-cloud-faqs-3-features.png)
+
