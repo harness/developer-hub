@@ -516,7 +516,7 @@ List of dimensions:
 
 You may want to see this dimension in all one column. To do this, right click on the dimension/column and select **Unpivot**.
 
-  ![](./static/custom_dashboard_unpivot.png)
+  ![](./static/custom-dashboard-unpivot.png)
 
 
 ### Service Tags
