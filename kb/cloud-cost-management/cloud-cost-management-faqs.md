@@ -819,3 +819,81 @@ To create an annual budget with a monthly breakdown, you need to select the budg
 
 Yes, since budgets are based on Perspectives, we can also incorporate built-in cloud discounts.
 
+#### How does Harness CCM optimize Azure VM costs?
+Harness CCM uses Azure Advisor recommendations and Azure API data to generate cost optimization suggestions. It assesses CPU utilization, memory pressure, and network usage to identify underutilized VMs. Based on this analysis, it may recommend resizing or shutting down VMs to reduce costs.
+
+#### How are EC2 cost optimization recommendations generated in Harness CCM?
+Harness CCM generates EC2 recommendations using AWS Compute Optimizer and AWS API data to analyze CPU and memory utilization over time. Recommendations can include:
+Instance Resizing: Suggests moving to a more suitable instance type based on your usage patterns.
+Decommissioning: Identifies unused instances for termination, reducing unnecessary costs. For the most accurate results, ensure CloudWatch is enabled for CPU metrics, and integrate memory metrics through CloudWatch Agent or other integrations like Datadog.
+
+#### Why are memory metrics missing in EC2 recommendations?
+While Harness CCM considers memory metrics (if using Datadog integration), AWS Compute Optimizer does not expose memory data from external sources like Datadog for display. This is an API limitation from AWS, but rest assured, the recommendations are based on these metrics behind the scenes.
+
+#### How does Harness CCM optimize ECS service costs, and what optimization types are available?
+Harness CCM analyzes historical ECS service data, such as CPU and memory utilization, aggregated via a histogram method. It uses the following optimization types:
+Cost Optimized: Uses the 50th percentile of data, offering significant savings but potentially risking performance under heavy load.
+Performance Optimized: Uses the 95th percentile, balancing performance with potentially higher costs.
+
+#### Can I fine-tune and share ECS service recommendations in Harness CCM?
+Yes, Harness CCM allows you to adjust ECS recommendations by modifying the CPU/Memory buffer percentage using a slider (default is 0%). After tuning, the updated settings are included in a shareable URL, ensuring consistency when reviewing or implementing recommendations.
+
+#### What permissions and alerts are required to apply recommendations?
+To apply recommendations, specific AWS permissions are required (e.g., ec2:DeleteVolume, s3:PutLifecycleConfiguration). Additionally, you can set up alerts to be notified when recommendations are evaluated and ready for implementation.
+
+#### What happens after an anomaly is detected, and how can I investigate its cause?
+When an anomaly is detected, it enters one of these states:
+Active: New and unresolved.
+Resolved: Manually or automatically addressed.
+Ignored: Not acted upon.
+Archived: Automatically archived after 90 days.
+
+You can drill down into anomaly details, including start/end time, cost impact, expected vs. actual spend, and severity. Historical cost trends are provided for 30 or 90 days to visualize the deviation. Additionally, metadata (like cloud labels) and contributing resources are displayed, helping pinpoint the anomaly’s cause. Users can provide feedback to improve machine learning models.
+
+#### How do I set up AutoStopping for Traefik in Kubernetes?
+To set up AutoStopping for Traefik, ensure:
+
+Autostopping-controller version 1.0.5 or higher is installed.
+
+The Traefik IngressRoute is correctly configured.
+
+The --providers.kubernetescrd.allowexternalnameservices=true flag is set to allow external name services for AutoStopping.
+
+#### Why is the --providers.kubernetescrd.allowexternalnameservices=true flag necessary for AutoStopping?
+This flag is crucial because it enables the autostopping-router to interact with external services. Without it, traffic routing might not function properly, preventing AutoStopping from working as intended.
+
+#### How does Granular RBAC for AutoStopping work in Harness?
+Granular RBAC allows you to fine-tune user access to AutoStopping resources based on cloud connectors (AWS, Azure, GCP). For example:
+A CCM Viewer role can only view AutoStopping rules for specific cloud accounts.
+A CCM Admin role can manage AutoStopping resources.
+By using Resource Groups (RGs), admins can ensure that users have access to only the resources they are authorized to manage, thus minimizing security risks.
+
+#### How do I assign user access to AutoStopping resources with Granular RBAC?
+To assign access:
+Create a Resource Group under Account Settings > Resource Groups, specifying the cloud connectors (AWS, Azure, GCP) to be accessed.
+Assign the AutoStopping role (e.g., Viewer, Admin) to the user/group and specify the appropriate Resource Group.
+Ensure Connector:View permission is granted for users to view relevant AutoStopping rules.
+This setup ensures that users can only access and manage AutoStopping resources linked to their designated Resource Group and cloud connectors.
+
+#### Can I track historical volumes associated with EC2 instances?
+Yes, you can track volumes for active EC2 instances using the EC2 Inventory Dashboard. However, for terminated instances, historical volume data might not be available directly through the API.
+
+#### Why can’t I see volumes attached to terminated EC2 instances in the dashboard?
+The EC2 Inventory Dashboard only reflects volumes associated with active EC2 instances. Volumes attached to instances that have been terminated are not displayed due to the limitations of the dashboard's API.
+
+#### How can I track volumes attached to EC2 instances historically?
+You can adjust the Time Period filter on the EC2 Inventory Dashboard to view volumes attached to instances in the past. However, this will only work for recently terminated instances or those still active.
+
+#### Can I track EBS snapshots associated with EC2 volumes?
+Currently, tracking EBS snapshots directly associated with EC2 volumes isn't fully supported. You may need to use alternative methods or tools to track snapshots separately.
+
+#### What workaround can I use for tracking volumes and EC2 instances?
+You can create a custom dashboard that includes:
+EC2 Instance ID
+Attached Volumes
+EC2 Last Updated Time (Date)
+This will allow you to visualize volumes associated with active instances. For historical data, adjust the Time Period filter to examine past volume data.
+
+#### Can I get data for instances that have been terminated for a long time?
+The EC2 Inventory Dashboard may not show detailed data for instances terminated far in the past. The workaround focuses on using available data for active instances or recently terminated instances.
+
