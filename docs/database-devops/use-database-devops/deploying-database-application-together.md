@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 
 Modern applications are tightly coupled with the databases they rely on. Deploying a new version of an application often requires a corresponding schema update in the database. If these two changes are not coordinated properly, it can lead to application downtime, data inconsistencies, or failed deployments.
 
-Harness Database DevOps enables you to **orchestrate database and application changes in a single pipeline**, ensuring both layers evolve together in a controlled and reliable manner. In this guide, we'll walk through the process of creating a pipeline that coordinates both application and database changes.
+By combining Harness CD for application delivery and Harness Database DevOps for schema management, you can **orchestrate database and application changes** in a single pipeline in a single pipeline. In this guide, we'll walk through the process of creating a pipeline that coordinates both application and database changes.
 
 ## Why Coordinate App and DB Deployments?
 
@@ -34,8 +34,8 @@ Harness Database DevOps enables you to **orchestrate database and application ch
 When creating a pipeline that coordinates both application and database changes, consider the following steps:
 
 1. **Clone Application and Schema Repositories** – Fetch the application code and database migration scripts.  
-2. **Deploy the Application** – Roll out changes to Kubernetes or another runtime environment.  
-3. **Apply Database Schema Changes** – Execute schema migrations aligned with the application version.  
+2. **Apply Database Schema Changes** – Execute schema migrations aligned with the application version.  
+3. **Deploy the Application** – Roll out changes to Kubernetes or another runtime environment.  
 4. **Rollback Strategy** – Define how to roll back schema or application if issues occur.  
 
 ### Example Workflow
@@ -44,9 +44,11 @@ When creating a pipeline that coordinates both application and database changes,
   <TabItem value="Visual" label="Visual" default>    
   
   ![orchestrate database and application changes](./static/orchestrate-database-and-application.png)
+
   </TabItem>
   <TabItem value="Yaml" label="Yaml">
-
+  Harness Database DevOps introduces native steps like DBSchemaApply and DBSchemaRollback for executing and reversing schema migrations safely within a pipeline.
+  
   ```yaml
     pipeline:
     name: DB Orkes
@@ -129,6 +131,9 @@ When creating a pipeline that coordinates both application and database changes,
             serviceDependencies: []
           tags: {}
   ```
+  :::info
+  While some teams run schema and application deployments in parallel to save time, we recommend applying schema changes first to ensure backward compatibility and reduce deployment risks
+  :::
   </TabItem>
 </Tabs>
 
