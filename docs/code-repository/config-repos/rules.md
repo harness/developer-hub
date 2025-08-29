@@ -188,10 +188,12 @@ You can declare CODEOWNERS using:
 For user groups, use the following formats:
 
 * Project-level user group: `@my_project_group`
-* Org-level user group: `@org.my_org_group` or simply `@my_org_group`
+* Org-level user group:
+  * If the repo is at org level: `@org.my_org_group` or simply `@my_org_group`
+  * If the repo is at project level: you must use `@org.my_org_group`
 * Account-level user group: `@account.my_account_group`
 
-Both the long (`@org.my_org_group`) and short (`@my_org_group`) forms are supported.
+Both the long (`@org.my_org_group`) and short (`@my_org_group`) forms are supported, but the short form only works if the repo itself is at org level.
 
 :::note
 When a CODEOWNERS rule includes a user group, any member of that group can provide the required approval.
