@@ -101,6 +101,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## August 2025
 
+### Version 25.05.85808 <!--Aug 29, 2025-->
+
+#### Fixed issues
+
+- Support connecting to harness proxy for db devops deployments. Note that this is feature is in beta. [PL-65095]
+
 ### Version 25.08.86600 <!--Aug 26, 2025-->
 
 #### Fixed issues
