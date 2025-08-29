@@ -24,9 +24,9 @@ These release notes describe recent changes to Harness Software Engineering Insi
 ----
 #### 2025-07-31
 
-SEI 2.0 introduces a re-imagined engineering insights experience with real-time access to efficiency, productivity, and business alignment metrics. Built on a modern, high-performance architecture, SEI 2.0 features enable automated developer and organization management, decentralized team administration, and data drill-down options to help organizations scale with ease.
+SEI 2.0 introduces a re-imagined engineering insights experience with near real-time access to efficiency, productivity, and business alignment metrics. Built on a modern, high-performance architecture, SEI 2.0 features enable automated developer and organization management, decentralized team administration, and data drill-down options to help organizations scale with ease.
 
-For customers using SEI 1.0, there's no migration required—SEI 2.0 lives in the same account, and Account Admins can roll it out to teams at their own pace.
+For customers using SEI 1.0, there is no in-place migration. SEI 2.0 must be set up separately in the same account, and Account Admins can roll it out to teams at their own pace.
 
 #### Related documentation
 
