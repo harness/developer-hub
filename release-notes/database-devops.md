@@ -35,7 +35,7 @@ The `1.54.x` release focuses on improving usability in the schema overview exper
 - `dbservice` – 1.54.x
 
 ### Release 1.53.x
-The `1.53.x` release focuses on improving database schema management workflows and stabilizing the Liquibase integration. Customers editing schemas can now select a primary instance directly from the UI.
+The `1.53.x` release focuses on improving database schema management workflows and stabilizing the Liquibase integration. Customers editing schemas can now select a primary instance directly from the UI. Customers editing schemas can now select a primary instance directly from the UI. Certain upcoming features will use this instance for development and validation use cases.
 
 #### Key Highlights:
 
@@ -49,6 +49,11 @@ The `1.53.x` release focuses on improving database schema management workflows a
 
 ### Release 1.52.x
 The `1.52.x` release expands the platform’s authoring and validation capabilities. Teams can now author database changesets directly from the UI with a built-in YAML renderer and execution status visibility. This reduces reliance on external editors and brings change management closer to the deployment workflow. At the same time, we’ve added support for the Liquibase validate command, helping teams catch invalid changes early in the pipeline.
+
+:::note Beta Feature
+The YAML authoring and validation functionality is currently in **beta** and gated behind a non-GA feature flag.  
+Please contact [Harness Product Manager](https://support.harness.io) if you would like to be added to the beta for this functionality.
+:::
 
 #### Key Highlights:
 
