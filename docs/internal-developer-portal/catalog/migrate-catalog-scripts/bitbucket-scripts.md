@@ -1,7 +1,7 @@
 ---
-title:  Catalog Population from Bitbucket
+title:  Import from Bitbucket
 description: Documentation for Bitbucket catalog population scripts
-sidebar_label: Population from Bitbucket 
+sidebar_label: Import from Bitbucket 
 sidebar_position: 12
 keywords:
   - bitbucket repository discovery

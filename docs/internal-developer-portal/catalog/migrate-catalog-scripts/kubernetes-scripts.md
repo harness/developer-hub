@@ -1,7 +1,7 @@
 ---
-title: Catalog Population from Kubernetes
+title: Import from Kubernetes
 description: Documentation for Kubernetes catalog population scripts
-sidebar_label: Population from Kubernetes
+sidebar_label: Import from Kubernetes
 sidebar_position: 13
 keywords:
   - kubernetes resource discovery
