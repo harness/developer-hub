@@ -441,7 +441,7 @@ Following is a reference `build-only` YAML snippet using Buildah on **Kubernetes
         source_tar_path: image.tar
       imagePullPolicy: Always
 ```
-:::caution Kubernetes Requirement
+:::warning Kubernetes Requirement
 When running in Kubernetes, Buildah requires privileged mode.
 :::
 </TabItem>
