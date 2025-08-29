@@ -1,7 +1,7 @@
 ---
 title: AWS CDK provisioning
 description: Provision infra using familiar programming languages with AWS CDK.
-sidebar_position: 7
+sidebar_position: 1
 sidebar_label: AWS CDK
 canonical_url: https://www.harness.io/blog/ci-cd-pipelines-for-aws
 ---
@@ -214,6 +214,12 @@ You can access the AWS CDK plugin images from the following repositories:
   - Europe region: [GAR Image Repository for AWS CDK Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Faws-cdk-plugin?inv=1&invt=Ab5cNA)
 
 Harness also supports **`amd64`** architecture for these plugin images. You can find the corresponding tags (such as `harness/aws-cdk-plugin:1.3.0-2.1019.2-linux-amd64-unified`) on [Docker Hub](https://hub.docker.com/r/harness/aws-cdk-plugin/tags?name=amd64).
+
+### Build your own image
+
+You can also build your own image based on the base image provided by Harness and use it in a step. For example, if your CDK app uses a specific CDK version, you can use the base image provided by Harness and create your own image containing your dependencies. Here is the pipeline and explanation to build your own image: 
+
+For more information, go to [Build your own image](/docs/continuous-delivery/cd-infrastructure/aws-cdk/cdk-image-build).
 
 ## Git Clone step
 

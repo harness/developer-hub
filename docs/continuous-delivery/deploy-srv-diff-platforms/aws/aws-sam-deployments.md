@@ -115,6 +115,15 @@ For GAR users, you can access these images via:
 These images can only be used in containerized step.
 :::
 
+### Build your own image
+
+You can also build your own image based on the base image provided by Harness and use it in the SAM deployments. 
+
+**How this pipeline works:**
+
+Harness provide a base image that has the AWS SAM plugin binary. The pipeline takes a pre-built scratch image containing the AWS SAM plugin binary and creates a properly tagged final image that combines it with the appropriate SAM runtime.
+
+For more details, go to [SAM Plugin Image Builder](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/sam-image-build).
 
 ## Use AWS IRSA for Harness AWS connector credentials
 

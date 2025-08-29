@@ -273,6 +273,16 @@ These images can only be used in [containerized step](#containerized-steps).
 If you are using images that don't have serverless installed and you wish to install it during the execution, you need to provide us the path where you will be installing your serverless package. You can set the path using environment variable `PLUGIN_SERVERLESS_EXECUTABLE_PATH` in your serverless step.
 :::
 
+### Build your own image
+
+You can also build your own image based on the base image provided by Harness and use it in the Serverless deployments.
+
+**How this pipeline works:**
+
+Harness provides a base image that has the Serverless plugin binary. The pipeline takes a pre-built scratch image containing the Serverless plugin binary and creates a properly tagged final image that combines it with the appropriate runtime.
+
+For an in-depth explanation on how to build your own image, go to [Build your own image](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-image-build).
+
 ## Create the Deploy stage
 
 Pipelines are collections of stages. For this quickstart, we'll create a new Pipeline and add a single stage.
@@ -332,8 +342,8 @@ Next, we can add a `serverless.yaml` for our deployment. We'll use [the publicly
 
 5. Select **Connect through Harness Platform**.
 6. Click **Finish**.
-7. Back in **Specify Serverless Lambda Manifest Store**, click **Continue**.
-8. In **Manifest Details**, enter the following.
+7. Back in **Specify Serverless Lambda Manifest Store**, click **Continue**.
+8. In **Manifest Details**, enter the following.
    - **Manifest Identifier:** `serverless`.
    - **Git Fetch Type:** `Latest from Branch`.
    - **Branch:** `main`.
@@ -963,7 +973,6 @@ Serverless Package Command succeeded
 
 </details>
 
-
 ### Serverless Deploy step
 
 This step performs the Serverless [deploy command](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy).
@@ -1160,7 +1169,7 @@ Expression support lets you take advantage of runtime inputs and input sets in y
 
 ```yaml
 service: <+service.name>
-frameworkVersion: '2 || 3'
+frameworkVersion: "2 || 3"
 
 provider:
   name: aws
@@ -1171,7 +1180,7 @@ functions:
     events:
       - httpApi:
           path: /tello
-          method: get  
+          method: get
 package:
   artifact: <+artifact.path>          
 plugins:
@@ -1355,7 +1364,7 @@ functions:
           path: /tello
           method: get
 package:
-  artifact: <+artifact.path>
+  artifact: <+artifact.path>          
 plugins:
   - serverless-deployment-bucket@latest
 ```
