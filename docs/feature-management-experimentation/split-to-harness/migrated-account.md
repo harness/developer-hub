@@ -9,7 +9,7 @@ sidebar_position: 5
 
 If you see the following message when attempting to log in to Split, your account has been migrated to `app.harness.io`, and you need to access it from there going forward:
 
-![](./static/account-migrated.png)
+<img src={require('./static/account-migrated.png').default} alt="Account Migrated to Harness" height="400" width="400" />
 
 The migration has been designed to be as straightforward for you as possible. Day-to-day tasks for non-admin users are the same on `app.harness.io` as they were on Split. Admins have a few changes, but they also get some very handy new powers.
 
