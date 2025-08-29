@@ -2,6 +2,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 <RedirectIfStandalone label="GCP" targetPage="/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui" />
 
+
 This is your **first step** in configuring **Self Hosted Gitspaces** on **GCP Cloud Infrastructure**. 
 
 In order to get started with Self Hosted Gitspaces, you'll first need to **configure your infrastructure**. This infrastructure is where your Gitspaces will be hosted, so you must **define and configure it from Harness UI**. This guide will take you through the detailed steps to configure your infrastructure using the Harness UI.
