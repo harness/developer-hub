@@ -64,7 +64,7 @@ export HF_TOKEN="<token from step 2>"
 <TabItem value="models" label="Models">
 
 Upload a model to Artifact Registry using the huggingface_hub library:
-```bash
+```python
 from huggingface_hub import HfApi
 api = HfApi()
 api.upload_folder(
@@ -78,7 +78,7 @@ api.upload_folder(
 <TabItem value="datasets" label="Datasets">
 
 Upload a dataset to Artifact Registry using the huggingface_hub library:
-```bash
+```python
 from huggingface_hub import HfApi
 api = HfApi()
 api.upload_folder(
@@ -96,7 +96,7 @@ api.upload_folder(
 <TabItem value="models" label="Models">
 
 Download a model from Artifact Registry:
-```bash
+```python
 from huggingface_hub import snapshot_download
 snapshot_download(
     repo_id="<ARTIFACT_NAME>", revision="<VERSION>", etag_timeout=86400
