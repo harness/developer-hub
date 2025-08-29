@@ -41,7 +41,7 @@ Noted that you need to have a Jira connector configured successfully for this fe
 <DocImage path={require('./static/ccm/status-mapping.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ### ⭐ [New Feature] Cluster Capacity Limits
-**[CCM-24203] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/feature-of-cluster-orchestrator)**
+**[CCM-24203] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/feature-of-co)**
 
 We have added Cluster Capacity Limits in Cluster Orchestrator’s Cluster Configuration. For Karpenter Nodepools, users can now set maximum CPU (cores) and memory (bytes) limits as guardrails to prevent uncontrolled cluster scaling.
 
