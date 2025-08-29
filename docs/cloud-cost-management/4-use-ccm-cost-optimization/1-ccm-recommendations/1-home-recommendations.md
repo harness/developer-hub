@@ -405,6 +405,7 @@ Harness provides filtering support for recommendations based on cloud account id
 
 :::note
 
-Filtering support for recommendations extends to **RBAC configurations based on perspective folder access settings**, ensuring that cost-saving suggestions are appropriately scoped to the right teams. 
+- Filtering Recommendations by Cost Categories is not supported for payer accounts. 
+- Filtering support for recommendations extends to **RBAC configurations based on perspective folder access settings**, ensuring that cost-saving suggestions are appropriately scoped to the right teams. 
 
 :::
