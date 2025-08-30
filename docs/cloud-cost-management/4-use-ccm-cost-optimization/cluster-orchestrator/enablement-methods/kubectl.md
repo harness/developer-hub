@@ -40,10 +40,22 @@ You will be asked to run a shell script in your terminal and verify the connecti
 #### Cluster Preferences
 <DocImage path={require('../static/cluster-one.png')} width="80%" height="80%" title="Click to view full size image" />
 - **Enable Commitment Context (Inegration with Commitment Orchestrator):** Checks existing commitments before provisioning spot instances to avoid duplicate coverage and maximize savings.
+
+- **Cluster Capacity Limits:** Cluster Capacity Limits restrict the maximum resources a cluster can scale up to. This prevents scenarios where configuration errors or unexpected behavior could result in uncontrolled node provisioning. When configured, Cluster Capacity Limits enforce limits on:
+    - Maximum vCPUs (cores) – defines the total CPU capacity the cluster Nodepool can scale up to.
+    - Maximum Memory (GiB) – defines the total memory capacity the cluster Nodepool can scale up to.
+
+    If, Karpenter Nodepools Already have limits configured, when new nodepools (spot/ondemand) are created out of the existing karpenter nodepools, the limits configuration will be copied over. If the limits are configured on the cluster level, then the limits will be copied over to all nodepools which does not have a limit set explicitly in the default nodepool. If limits are not set on Cluster Config/Default Nodepool, then a default limit will be calculated by cluster orchestrator with the following equation and will be applied on all the nodepools managed by Harness:
+
+    ```
+    cpu = total cpu available in the cluster * 2
+    memory = total memory available in the cluster * 2
+    ```
+  
 - **Set the Time-To-Live (TTL) for Karpenter nodes:** The Time-to-Live (TTL) setting for Karpenter nodes defines the maximum lifespan of a node before it is eligible for deletion, regardless of its resource utilization. By setting a TTL, users can ensure that idle or unnecessary nodes are automatically cleaned up after a specified time period, even if they are not underutilized or empty. This helps in avoiding resource sprawl, ensuring that unused nodes don’t linger indefinitely, and optimizing the overall cost and resource usage within the cluster.
 
 - **Bin-Packing:** 
-    -  **Pod Eviction by Harness:** To optimize resources, nodes may be evicted before consolidation. Enabling pod eviction ensures workloads are safely rescheduled to maintain performance and availability while freeing up underutilized resources. Users can set single replica eviction of workload as On or Off.
+    -  **Pod Eviction by Harness:** To optimize resources, nodes may be evicted before consolidation. Enabling pod eviction ensures workloads are safely rescheduled to maintain performance and availability while freeing up underutilized resources. Users can set single replica eviction of workload as On or Off. Note that **Bin Packing Supports Robust Distribution Mode from `0.5.1`**
 
     - **Resource Utilization Thresholds:** This is used to set minimum CPU and memory usage levels to determine when a node is considered underutilized. This helps balance cost savings and performance by ensuring nodes are consolidated only when their resources fall below the specified thresholds.
 
