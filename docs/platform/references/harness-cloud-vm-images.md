@@ -23,9 +23,9 @@ Harness provides VM images for multiple operating systems and architectures:
 | Virtual machine image | Image label | Notes | Rollout Status|
 |----------------------|-------------|-------|-----|
 | [Linux AMD Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux AMD | GA |
-| [Linux AMD Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux AMD | GA |
+| [Linux AMD Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux AMD | GA |
 | [Linux ARM Ubuntu 22.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-latest` or `ubuntu-22.04` | Default Linux image for Linux ARM | GA |
-| [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM | GA |
+| [Linux ARM Ubuntu 24.04](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2404-Readme.md) | `ubuntu-24.04` | Default Linux image for Linux ARM | GA |
 | [macOS 14 (Sonoma)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-14-Readme.md) | `macos-latest` or `macos-14` | Latest macOS | GA |
 | macOS 14 (Sonoma) with Xcode 16.3| `macos_sonoma_xcode_16.3` | macOS 14 (Sonoma) with Xcode 16.3 | GA |
 | [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-latest` or `windows-2022` | Latest Windows 2022 Server Image |GA |
