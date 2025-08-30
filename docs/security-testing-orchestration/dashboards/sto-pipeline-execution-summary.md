@@ -47,3 +47,9 @@ The available filters include:
 - **Pipeline**: Filters results for a specific pipeline name.
 - **Execution ID**: Required. Filters the data for a specific STO step execution.
 - **Exempted**: Filters results based on exemption status
+
+:::info
+You can find the **Execution ID** in your pipeline’s execution URL. For example:
+```https://app.harness.io/ng/account/ACCOUNT_ID/module/MODULE/orgs/ORG/projects/PROJECT/pipelines/PIPELINE/executions/EXECUTION_ID/pipeline```  
+In this URL, the value after `/executions/` is the **Execution ID**.
+:::
