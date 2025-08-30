@@ -24,6 +24,20 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## August 2025
 
+### Version v1.155.2
+
+<!-- 2025-08-29 -->
+
+#### Fixed Issues
+
+- Fixed an issue where the **View Execution Results** option on the [Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions) page did not route correctly to the pipeline execution window. This is fixed by correcting the `projectId` and `orgId` to the URL (STO-9658, ZD-91336).  
+- Fixed a bug in the **[Vulnerabilities](/docs/security-testing-orchestration/view-security-test-results/view-scan-results)** tab where applying a filter by **Status** affected the overall severity counts incorrectly. Severity counts now reflect accurate data irrespective of applied filters (STO-9548).    
+- Fixed incorrect project details being shown in the **[Exemption Status](/docs/security-testing-orchestration/exemptions/manage-exemptions)** view inside the Issue Details pane, specifically for exemptions scoped at the project level (STO-9628).  
+- Fixed an issue where filtering by the **[Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions)** card in the **[Vulnerabilities](/docs/security-testing-orchestration/view-security-test-results/view-scan-results)** tab displayed exempted issues incorrectly. Also resolved a problem where the Dashboard view showed data, but the CSV download returned empty results (STO-9640).  
+- Fixed a bug where exemption requests did not appear in the **[Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions)** page despite the tab showing a pending count. This issue occurred intermittently and is now resolved (STO-, ZD-89459).  
+- Fixed an error (`414 URI Too Long`) caused when selecting a large number of options in the **Project** and **Organization** filters on the [**Exemptions**](/docs/security-testing-orchestration/exemptions/manage-exemptions) page. Filtering now works as expected without errors at both Organization and Account levels (STO-9516, STO-9562).
+
+
 ### Version v1.153.3
 
 <!-- 2025-08-15 -->
