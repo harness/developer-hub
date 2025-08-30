@@ -13,8 +13,6 @@ To see what’s included in each image, visit the [Harness Cloud VM image reposi
 
 ## Cloud VM Images
 
-
-
 ### Available VM Images Image Tags
 
 
@@ -182,6 +180,37 @@ The following YAML example demonstrates how a **Run** step can use a Docker imag
 ```
 
 </details>
+
+:::note Missing tools and environment configuration
+
+Some tools referenced in Harness Cloud VM images might not be preinstalled, or they might not be on `PATH` by default. If a tool isn’t available, install it in a step or run your step inside a container image that already includes it. If a tool is present but not auto-configured, **set the required environment variables** (for example, update `PATH`, set `JAVA_HOME`, etc.).
+
+**Install on-demand (example: Node via NVM)**
+
+```yaml
+- step:
+    type: Action
+    name: Setup Node Using NVM
+    identifier: Setup_Node_Using_NVM
+    spec:
+      uses: dcodeIO/setup-node-nvm@master
+      with:
+        node-version: 20.12.2
+```        
+**Alternative: run inside a container with all required dependencies**
+
+```yaml
+- step:
+    type: Run
+    name: Build with custom image
+    identifier: build_with_custom_image
+    spec:
+      connectorRef: my_docker_hub
+      image: YourCustomImage:tag
+      shell: Bash
+      command: your_build_command
+```
+:::
 
 ### Verifying software versions
 
