@@ -11,7 +11,7 @@ export default function ApplicationApiPostureManagement() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img width={64} src={`${baseUrl}img/icon_ADRA.svg`} />
+            <img width={64} src={`${baseUrl}img/icon-adra.svg`} />
             <h1>Application Api Posture Management </h1>
           </div>
           <div className={styles.btnContainer}>

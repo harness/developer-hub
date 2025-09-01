@@ -11,7 +11,7 @@ export default function ApplicationApiSecurityTesting() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img width={64} src={`${baseUrl}img/icon_AST.svg`} />
+            <img width={64} src={`${baseUrl}img/icon-ast.svg`} />
             <h1>Application & Api Security Testing </h1>
           </div>
           <div className={styles.btnContainer}>

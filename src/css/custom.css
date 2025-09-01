@@ -1578,7 +1578,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   height: 24px;
   min-width: 24px;
   margin-right: 8px;
-  background-image: url('/img/icon_ARP.svg');
+  background-image: url('/img/icon-arp.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1589,7 +1589,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   height: 24px;
   min-width: 24px;
   margin-right: 8px;
-  background-image: url('/img/icon_AST.svg');
+  background-image: url('/img/icon-ast.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1600,7 +1600,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   height: 24px;
   min-width: 24px;
   margin-right: 8px;
-  background-image: url('/img/icon_ADRA.svg');
+  background-image: url('/img/icon-adra.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
