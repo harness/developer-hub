@@ -26,14 +26,6 @@ Harness CCM currently supports these types of recommendations:
 - Workload
 - Governance
 
-:::tip [Latest Features Released in 1.47.0](/release-notes/cloud-cost-management#april-2025---version-1470)
-<Tabs>
-  <TabItem value="Improved Recommendation Tracking" label="Improved Recommendation Tracking">Users can now specify estimated savings when marking a recommendation as applied. Upon marking a recommendation as applied, users can now confirm whether the estimated savings matched the actual savings or enter the actual amount saved if different from the estimate. Additionally, after a recommendation has been applied, this savings data from the Applied Recommendations section can be edited. </TabItem>
-  <TabItem value="Cost Categories Integration" label="Cost Categories Integration">The Filter panel in the Recommendations view now includes the option to **filter by Cost Categories**. This update is especially valuable for large-scale organizations that manage thousands of recommendations and require structured views to take meaningful action. </TabItem>
-  <TabItem value="Recommendations Filter Revamp" label="Recommendations Filter Revamp">The Filter panel in the Recommendations view has been updated to provide a more streamlined experience.  </TabItem>
-</Tabs>
-:::
-
 ## View Recommendations
 
 To view recommendations, click on the **Recommendations** tab in the navigation bar, which will take you to the homepage. On the Recommendations page, there are two tabs: Open Recommendations and Applied Recommendations. The Open Recommendations tab displays all available recommendations that have yet to be applied, while the Applied Recommendations tab shows the recommendations that have already been implemented.
@@ -60,9 +52,23 @@ On the Open Recommendations Page, you can view:
 
 ### Applied Recommendations
 
-  ![](./static/recommendations-applied.png)
+<DocImage path={require('./static/output-hist.gif')} width="80%" height="80%" title="Click to view full size image" />
 
-When you click on an individual recommendation, you’ll be able to view a detailed breakdown of the recommendation, including relevant insights, suggested actions, and any supporting information.
+The Applied Recommendations tab provides comprehensive visibility into your cost optimization efforts with the following key components:
+
+- **Savings Realized**: Displays the total financial impact of all implemented recommendations, helping you quantify the ROI of your cost optimization efforts.
+
+- **Recommendations vs. Savings Chart**: A visual trend analysis showing the correlation between applied recommendations and actual cost savings over time. The saving from applied recommendations is shown against the number of recommendations applied.
+
+- **Breakdown of Marked as Applied**: Shows the distribution of applied recommendations by number of recommendations and associated savings to identify which optimization strategies are most frequently implemented.
+
+- **Details Table**: Provides a comprehensive view of each applied recommendation with the following information:
+  - Resource name
+  - Potential Monthly Savings
+  - Recommended Action 
+  - Associated ticket 
+  - Applied by which user and when.
+
 
 ### Azure VM Recommendations
 A highly effective way to reduce Azure VM costs is by optimizing VM utilization. By clicking on the Azure VM recommendation, you can view detailed information, as shown below:
@@ -99,6 +105,9 @@ Recommendation settings allow users to customize how recommendations are generat
 
 Click on "Settings" to view/edit the preferences and presets.
 
+<Tabs queryString="recommendation-settings">
+<TabItem value="Preferences" label="Preferences">
+
 ### Preferences
 
 <DocImage path={require('./static/preferences.png')} width="70%" height="70%" title="Click to view full size image" />
@@ -113,13 +122,18 @@ Click on "Settings" to view/edit the preferences and presets.
 
 #### Resource Specific Preferences:
 
-Over here, users can select the presets for each resource type and also set the default time range. 
+Over here, users can select [the presets](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations?recommendation-settings=Manage+Presets#recommendation-settings) for each resource type and also set the default time range. 
+
+</TabItem>
+
+<TabItem value="Manage Presets" label="Manage Presets">
 
 ### Manage Presets
 
 :::note
 By default, Harness CCM has default presets for all resources but users can tune recommendations using custom values. To set custom values, click on the recommendation and expand the "Tune Recommendations" section to configure the tuning parameters. 
 :::
+<DocImage path={require('./static/managepresets.png')} width="70%" height="70%" title="Click to view full size image" />
 
 
 This helps users to create and save customized configurations for their recommendations. These presets capture specific user preferences, such as tuning parameters for resource types like workloads, nodepools, ECS, and EC2 instances. 
@@ -132,7 +146,6 @@ This helps users to create and save customized configurations for their recommen
 
 - Simplified User Experience - Managing preferences through presets enhances usability, making it easier to navigate and control recommendation settings.
 
-<DocImage path={require('./static/managepresets.png')} width="70%" height="70%" title="Click to view full size image" />
 
 
 Users can fine-tune recommendations for different resource types by configuring specific tuning parameters and save presets. 
@@ -178,6 +191,29 @@ For EC2 instances, users can choose how recommendations are displayed:
 - Across Instance Families: Recommendations can suggest optimized instance types across different instance families, potentially unlocking greater cost savings and efficiency improvements.
 
 <DocImage path={require('./static/ec-preset.png')} width="70%" height="70%" title="Click to view full size image" />
+</TabItem>
+<TabItem value="Resolution Status Mapping" label="Resolution Status Mapping">
+
+### Resolution Status Mapping
+
+<DocImage path={require('./static/resolution-status.png')} width="70%" height="70%" title="Click to view full size image" />
+Recommendations supports Jira Status Mapping. This feature allows you to automatically align recommendation states with the statuses of your Jira issues.
+
+In Recommendation Settings, you can define which Jira statuses correspond to recommendations being **considered Applied** or **moved to the Ignore List**. When a linked Jira issue reaches a mapped status, the recommendation is automatically updated. 
+
+- Jira Statuses that move recommendation to **Applied** automatically: Choose from a list of Jira statuses. Within an hour, CCM checks if any open recommendation is linked to a Jira issue with a mapped status, the recommendation is automatically updated to **Applied**.
+
+- Jira Statuses that move recommendation to **Ignore List** automatically: Choose from a list of Jira statuses. Within an hour, CCM checks if any open recommendation is linked to a Jira issue with a mapped status, the recommendation is automatically updated to **Ignore List**.
+
+:::note
+- A Jira connector must be successfully configured for using the feature. This is not supported for ServiceNow.
+- Statuses not specified will follow the default recommendation flow.
+- Regardless of automatic status updates, users can still manually move recommendations to either the Applied or Ignore List at any time
+- Changes will apply to all future status updates.
+:::
+
+</TabItem>
+</Tabs>
 
 ## Ignore list
 You can put any EC2 instance, VM, Service, Nodepool, Workload, Governance recommendation in Ignored list. Adding resources to the Ignore list will stop Harness from displaying recommendations for those resources. You can view the Ignore list with details by clicking on "Manage Ignore List" on the overview page.
