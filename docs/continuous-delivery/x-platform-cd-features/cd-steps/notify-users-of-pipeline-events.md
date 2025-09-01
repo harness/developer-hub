@@ -603,7 +603,7 @@ Please, contact [Harness Support](mailto:support@harness.io) to enable this feat
 If you choose to reference the delegates through **Expressions**, please note that either the entire list of delegate selectors can be an expression or elements of delegate selectors can be expressions.
 
 
-Selecting the **Delegate Selection Expression List** option allows allows you to have the list of Delegate Selectors as an **Expression**.
+Selecting the **Delegate Selection Expression List** option allows you to have the list of Delegate Selectors as an **Expression**.
 
 ![](./static/pipeline-notifications-delegate-expressions-selection-expression-list.png)
 
