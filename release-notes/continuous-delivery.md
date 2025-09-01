@@ -71,6 +71,11 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Added a new feature to the Container step that allows users to configure resource requests (CPU and memory) directly from the UI. This provides greater flexibility for running resource-intensive tasks, such as performance tests, and ensures accurate and reliable results. **(CDS-110282)**
 - Added the ability to select user groups in email steps. (**CDS-109176**)
 
+- We will soon introduce a **feature update for Audit Trail** to ensure consistency across the audit logs.
+  - This update will **change how pipeline actions are identified**. Currently, we utilize the **Pipeline Name** to represent the **Create**, **Update**, **Delete**, and **Move Config** pipeline actions in the audit logs. In contrast, the **Pipeline Identifier** represents the **Start**, **End**, **Abort**, and **Timeout** actions.
+  - With this update, **Create**, **Update**, **Delete**, and **Move Config** actions will also be represented through the **Pipeline Identifier**. This change aligns the behavior across all the logs associated with pipeline actions in the Audit Trail, ensuring the use of a single and consistent identifier.
+  - This feature will be released behind a `feature flag` by the end of September. If you enable the `feature flag`, you must **update your integration points** to accommodate this change.
+
 #### Fixed Issues
 
 - Fixed an issue where webhooks displayed events from repositories belonging to other projects. This occurred because events were filtered only by the webhook identifier without considering scope information, allowing different projects with the same webhook identifier to receive each other’s events. Scope-based filtering has been added to ensure events are isolated per project. (**PIPE-29270**, **ZD-90896**)  
