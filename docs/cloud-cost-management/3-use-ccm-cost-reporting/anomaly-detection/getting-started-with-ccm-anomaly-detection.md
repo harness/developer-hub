@@ -235,3 +235,10 @@ When a sudden spike in spend occurs, it may be flagged as an anomaly because it 
 - Day 2 (still high, but after adjustment): The model now incorporates the spike into its forecast. If the next day’s spend falls within this new adjusted range, it may no longer be considered anomalous, even if it looks high compared to older baselines.
 
 </details>
+
+<details>
+<summary> I received an anomaly alert for a particular day, but not on that day, it came later in the month. Why?</summary>
+
+This can happen because anomaly alerts are triggered when the anomaly is detected, not when it occurred. There's no delay between detection and alerting. However, if the cost data available at the time didn't indicate an anomaly, the system wouldn't have flagged it initially. Later in the month, once cost data was refreshed and a spike became apparent, the anomaly was detected. To account for such cases, we rerun the anomaly detection job for the past 3 days — which is likely why the alert was sent at a later time.
+</details>
+
