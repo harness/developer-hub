@@ -119,33 +119,33 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /kb/chaos-engineering/chaos-engineering-faq karthik.s@harness.io @umasankar.mukkara@harness.io @ashutosh.bhadauriya@harness.io
 
 # Platform Docs
-/docs/platform/ @prateek.mittal@harness.io @GokulBansal0 @abhishekharness @vikram.sahu@harness.io
-/release-notes/delegate.md @prateek.mittal@harness.io @abhishekharness @anshul-harness @vikram.sahu@harness.io @sushrut.athavale@harness.io
-/release-notes/platform.md @prateek.mittal@harness.io @GokulBansal0 @abhishekharness @vikram.sahu@harness.io
-/release-notes/self-managed-enterprise-edition.md @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io @anshul-harness @raviyadalam 
-/src/components/Roadmap/data/platformData.ts @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
-/src/components/Docs/data/platformData.ts @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+/docs/platform/ prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
+/release-notes/delegate.md prateek.mittal@harness.io abhishek.thamman@harness.io @anshul-harness vikram.sahu@harness.io sushrut.athavale@harness.io
+/release-notes/platform.md prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
+/release-notes/self-managed-enterprise-edition.md prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io @anshul-harness @raviyadalam 
+/src/components/Roadmap/data/platformData.ts prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
+/src/components/Docs/data/platformData.ts prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
 # FirtGen Platform Docs
-/docs/category/platform-firstgen/ @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+/docs/category/platform-firstgen/ prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
 # FirstGen SMP Docs
-/docs/category/self-managed-enterprise-edition-fg/ @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
-/docs/self-managed-enterprise-edition/ @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+/docs/category/self-managed-enterprise-edition-fg/ prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
+/docs/self-managed-enterprise-edition/ prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
 # Delegate FAQs
-/docs/faqs/harness-delegate-faqs/ @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+/docs/faqs/harness-delegate-faqs/ prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
 # SMP FAQs
-/docs/faqs/self-managed-ee-faq/ @prateek.mittal@harness.io @abhishekharness @vikram.sahu@harness.io
+/docs/faqs/self-managed-ee-faq/ prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io
 
 # Pipeline Docs
-/docs/platform/pipelines/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/git-experience/ vishal.vishwaroop@harness.io @prasadsatamharness @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/templates/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/variables-and-expressions/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/triggers/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/approvals/ vishal.vishwaroop@harness.io @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
-/docs/platform/connectors/ vishal.vishwaroop@harness.io @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/pipelines/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/git-experience/ vishal.vishwaroop@harness.io @prasadsatamharness @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/templates/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/variables-and-expressions/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/triggers/ vishal.vishwaroop@harness.io @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/approvals/ vishal.vishwaroop@harness.io @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
+/docs/platform/connectors/ vishal.vishwaroop@harness.io @anshul-harness @rohitk-h @prasadsatamharness @navaneeth sushrut.athavale@harness.io siddhant.dua@harness.io
 
 # AI DevOps Docs
-/docs/platform/harness-aida/ @sushrut.athavale@harness.io @prateek.mittal@harness.io @thisrohangupta @vikram.sahu@harness.io @abhishekharness vishal.vishwaroop@harness.io
+/docs/platform/harness-aida/ sushrut.athavale@harness.io prateek.mittal@harness.io @thisrohangupta vikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io
 
 # IDP Docs
 /docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
