@@ -148,11 +148,11 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /docs/platform/harness-aida/ @sushrut.athavale@harness.io @prateek.mittal@harness.io @thisrohangupta @vikram.sahu@harness.io @abhishekharness vishal.vishwaroop@harness.io
 
 # IDP Docs
-/docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness @ShibamD
-/release-notes/internal-developer-portal.md @OrkoHunter @manishas @khushisharmaharness @ShibamD
-/release-notes/static/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness @ShibamD
-/src/components/Roadmap/data/idpData.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
-/src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness @ShibamD
+/docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
+/release-notes/internal-developer-portal.md @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
+/release-notes/static/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
+/src/components/Roadmap/data/idpData.ts @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
+/src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness shibam.dhar@harness.io
 
 # SCS Docs
 /docs/software-supply-chain-assurance/  lavakush.biyani@harness.io pranay.shah@harness.io teja.kummarikuntla@harness.io sahil.jugiani@harness.io
@@ -190,7 +190,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io
 /docs/database-devops/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
 /release-notes/database-devops.md stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
 /src/components/Docs/data/databaseDevOpsData.ts stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
-/src/components/Roadmap/data/dbdevopsData.ts stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io matthew.schillerstrom@harness.io @vikram.sahu@harness.io @wei.guo@harness.io
+/src/components/Roadmap/data/dbdevopsData.ts stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io matthew.schillerstrom@harness.io vikram.sahu@harness.io wei.guo@harness.io
 # DB DevOps FAQs
 /docs/faqs/db-devops-faqs/ stephen.atwell@harness.io archit.singla@harness.io animesh.pathak@harness.io rohit.karelia@harness.io
 
