@@ -171,18 +171,18 @@ const config: Config = {
               label: 'Cloud Development Environments',
               to: 'docs/cloud-development-environments',
             },
-            {
-              label: 'Application & Api Posture Management',
-              to: 'docs/application-api-posture-management',
-            },
-            {
-              label: 'Application & Api Security Testing',
-              to: 'docs/application-api-security-testing',
-            },
-            {
-              label: 'Application & Api Protection',
-              to: 'docs/application-api-protection',
-            },
+            // {
+            //   label: 'Application & Api Posture Management',
+            //   to: 'docs/application-api-posture-management',
+            // },
+            // {
+            //   label: 'Application & Api Security Testing',
+            //   to: 'docs/application-api-security-testing',
+            // },
+            // {
+            //   label: 'Application & Api Protection',
+            //   to: 'docs/application-api-protection',
+            // },
             {
               label: 'Software Engineering Insights',
               to: 'docs/software-engineering-insights',
