@@ -591,7 +591,7 @@ When you select **Connect through Harness Delegate**, and click on **Continue**,
 
 ![](./static/pipeline-notification-delegates-setup.png)
 
-You also get an option choose between **Fixed Value** and **Expression** while specifying the delegates that the connector should use. 
+You also get an option to choose between **Fixed Value** and **Expression** while specifying the delegates that the connector should use. 
 
 :::info note
 Currently, the feature that allows you to pass Expressions for selecting delegates in Pipeline Notifications is behind the feature flag `PIPE_SUPPORT_DELEGATE_EXPRESSIONS_FOR_PIPELINE_NOTIFICATIONS`. 
