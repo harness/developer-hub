@@ -17,7 +17,7 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.ff,
           description:
             "Learn the basics of Harness Feature Flags.",
-          link: "/docs/feature-flags/get-started",
+          link: "/docs/feature-flags/get-started/onboarding-guide",
         },
         {
           title: "Create, update, and view Flags",

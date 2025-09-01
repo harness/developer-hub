@@ -51,7 +51,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ff,
     icon: "img/icon_ff.svg",
     description: <>Roll out new features progressively.</>,
-    link: "docs/feature-flags/get-started",
+    link: "docs/feature-flags/get-started/onboarding-guide",
   },
   {
     title: "Release with Feature Management & Experimentation",
