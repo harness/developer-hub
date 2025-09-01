@@ -26,37 +26,46 @@ Getting started with CCM anomaly detection is straightforward and requires just 
 
 1. **Set up a Cloud Cost Connector** - Connect your cloud provider accounts (AWS, GCP, Azure) to Harness CCM using the appropriate connectors.
 
-2. **Allow Data Collection** - Once connected, Harness will automatically begin collecting cost data from your cloud environments. The system requires approximately 12 months of historical data for optimal anomaly detection.
+2. **Allow Data Collection** - Once connected, Harness will automatically begin collecting cost data from your cloud environments. The system requires approximately 42 days of historical data for optimal anomaly detection.
 
 3. **Automatic Anomaly Detection** - After data starts flowing in, the anomaly detection system will automatically begin analyzing your cost patterns and identifying potential anomalies. No additional configuration is required for basic anomaly detection.
 
 ## Anomaly Detection Process 
 
-CCM's anomaly detection process works through these key steps:
+:::info Important
 
-```mermaid
-flowchart LR
-    A["Data Collection (12 months history)"] --> B["Analysis (ML models)"] 
-    B --> C["Detection (Compare actual vs predicted)"] 
-    C --> D["Notification (Send alerts)"] 
-    D --> E["User Action (Review & respond)"]
-    style A fill:#d4f1f9,stroke:#05a4d2
-    style B fill:#d4f1f9,stroke:#05a4d2
-    style C fill:#d4f1f9,stroke:#05a4d2
-    style D fill:#d4f1f9,stroke:#05a4d2
-    style E fill:#ffd6a5,stroke:#ff9a3c
-```
+Harness CCM offers three sophisticated machine learning models for anomaly detection:
 
-1. **Data Collection**: CCM collects 12 months of historical cost data for each cluster and cloud account
-2. **Analysis and Detection**: The system processes this data using machine learning models to predict expected costs. CCM uses BigQuery ML (BQML) and Prophet for advanced anomaly detection and prediction. Anomalies are flagged when costs exceed expected ranges. CCM runs Anomaly Detection jobs everyday to detect new anomalies based on your configured [Preferences](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-preferences).
+* **Prophet Model (Default)** - Analyzes 42 days of historical data to establish baseline patterns and detect anomalies. This model is enabled by default for all customers.
 
-    In addition to scheduled jobs that CCM internally runs, CCM also supports event-driven anomaly detection for AWS, GCP, and Azure with the following behaviour:
+* **BQML and Seasonal Prophet Models** - These advanced models utilize 16 months of historical data for enhanced pattern recognition and seasonal trend analysis. These models are behind feature flags and are available upon request through [Harness Support](mailto:support@harness.io).
 
-    - If partial cost data is available, anomaly detection runs immediately on available data. If no anomalies are detected on partial data, regular job runs will catch them once complete data is available
-    - Detection is limited to the specific cloud account receiving the cost ingestion event.
-    - If an anomaly is detected on partial data and costs change when complete data arrives, the anomaly is updated accordingly.
+:::
+
+
+CCM's anomaly detection process works through a sophisticated two-stage verification system:
+
+1. **Data Collection**: CCM collects 42 days of historical cost data for each cluster and cloud account
+2. **Analysis and Detection**: 
+
+    - **Stage 1: Statistical Analysis Model**
+        The first stage employs a statistical model that establishes a baseline by analyzing historical spending patterns. Using 42 days of data with the default Prophet model, it calculates key metrics like mean costs, standard deviations, and seasonal patterns. This creates a "normal spending corridor" based on these historical patterns, accounting for typical day-to-day and week-to-week fluctuations in your cloud costs.
+        
+        The system then performs multi-dimensional evaluation of current costs against this baseline using three different methods. The absolute check examines the raw dollar difference between actual and expected costs. The relative check analyzes percentage deviations from expected costs. The probabilistic check calculates the statistical likelihood of the observed cost occurring naturally given your historical patterns. If costs exceed thresholds in any of these dimensions, the expense is flagged as a potential anomaly for further verification.
+
+    - **Stage 2: Time Series Forecasting Model**
+        Only expenses flagged in Stage 1 undergo this more rigorous analysis. The system applies sophisticated time series forecasting (using the Prophet model by default) to predict expected costs with higher precision. This advanced prediction considers seasonal patterns, trends, and cyclical behaviors in your spending history to create a more nuanced expectation of normal costs.
+
+        The model then tests if the actual cost falls outside the model's confidence intervals through confidence interval testing. This provides statistical certainty about whether the observed cost is truly unusual. Only costs confirmed as anomalous by both models are surfaced as actual anomalies requiring attention, ensuring you only receive alerts for genuinely unusual spending patterns.
+        <DocImage path={require('./static/process.png')} width="100%" height="100%" title="Click to view full size image" />
+        In addition to scheduled jobs that CCM internally runs, CCM also supports **Event-driven anomaly detection** for AWS, GCP, and Azure with the following behaviour:
+
+            - If partial cost data is available, anomaly detection runs immediately on available data. If no anomalies are detected on partial data, regular job runs will catch them once complete data is available
+            - Detection is limited to the specific cloud account receiving the cost ingestion event.
+            - If an anomaly is detected on partial data and costs change when complete data arrives, the anomaly is updated accordingly.
 
     **Example**: If today is November 1st and a cost ingestion event is received, anomaly detection runs immediately for November 1st data for that specific cloud account. If complete data becomes available the next day, regular jobs will still process it to ensure accuracy.
+
 
 3. **Notification**: When anomalies are detected, [alerts](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-alerts) are sent through configured channels
 
@@ -161,7 +170,8 @@ Configure system-wide anomaly detection settings to ensure only significant anom
 
 ## FAQs
 
-#### Q - What happens after CCM detects an anomaly and how does it help me identify the root cause?
+<details>
+<summary>What happens after CCM detects an anomaly and how does it help me identify the root cause?</summary>
 
 CCM queries the cloud provider's cost data and identifies resources that have experienced significant cost increases compared to previous periods. The system:
 
@@ -171,7 +181,10 @@ CCM queries the cloud provider's cost data and identifies resources that have ex
 - Stores anomalies in a time series database with metadata (reported cost, expected cost, anomaly score)
 - Flags anomalies for investigation and corrective action
 
-#### Q -  How can I filter anomalies by cloud provider?
+</details>
+
+<details>
+<summary> How can I filter anomalies by cloud provider?</summary>
 
 Harness provides filtering support for anomalies based on cloud account identifiers, ensuring alignment with perspective-based access control (RBAC) settings.
 
@@ -184,7 +197,10 @@ Harness provides filtering support for anomalies based on cloud account identifi
 | **Azure** | Azure Subscription ID | Nested Cost Categories not supported |
 
 
-#### Q - How are anomaly severity levels determined and what do they mean?
+</details>
+
+<details>
+<summary>How are anomaly severity levels determined and what do they mean?</summary>
 
 Anomalies are categorized by severity based on deviation from expected behaviour:
 
@@ -194,3 +210,28 @@ Anomalies are categorized by severity based on deviation from expected behaviour
 | **Medium** | Noticeable change, warrants review |
 | **High** | Significant impact or deviation |
 | **Critical** | Large cost jumps, requires immediate investigation |
+
+</details>
+<details>
+<summary>Why wasn’t my cost flagged as an anomaly even though it looked unusual?</summary>
+
+Harness Anomaly Detection uses a two-step process to identify anomalies in your cloud spend. At times, customers may notice that a cost spike is flagged on one day but not on the following day, even if the second day shows a higher spend. Here’s why this happens:
+
+**How anomaly detection works**
+
+- Statistical Model – We compute an expected cost range using historical time-series data. A cost data point is flagged as a potential anomaly if it lies outside this expected range with over 98% confidence.
+
+- Forecasting Model – If the statistical model flags a point, we then validate it against a time-series forecasting model. 
+
+**Only if both models agree do we confirm and surface it as an anomaly.**
+
+Historical Adjustment – To avoid false positives, the model adapts dynamically based on recent spending patterns. We typically use the past 42 days of data when making these adjustments.
+
+**Why one day was flagged but the next was not?**
+
+When a sudden spike in spend occurs, it may be flagged as an anomaly because it lies well outside the normal range. However, once the model detects such a spike, it adjusts its understanding of what “normal” looks like for subsequent days.
+
+- Day 1 (spike): Spend is much higher than the historical range → flagged as anomalous.
+- Day 2 (still high, but after adjustment): The model now incorporates the spike into its forecast. If the next day’s spend falls within this new adjusted range, it may no longer be considered anomalous, even if it looks high compared to older baselines.
+
+</details>
