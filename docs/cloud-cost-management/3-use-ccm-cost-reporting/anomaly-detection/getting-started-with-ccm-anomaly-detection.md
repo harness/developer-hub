@@ -56,18 +56,24 @@ CCM's anomaly detection process works through a sophisticated two-stage verifica
     - **Stage 2: Time Series Forecasting Model**
         Only expenses flagged in Stage 1 undergo this more rigorous analysis. The system applies sophisticated time series forecasting (using the Prophet model by default) to predict expected costs with higher precision. This advanced prediction considers seasonal patterns, trends, and cyclical behaviors in your spending history to create a more nuanced expectation of normal costs.
 
-        The model then tests if the actual cost falls outside the model's confidence intervals through confidence interval testing. This provides statistical certainty about whether the observed cost is truly unusual. Only costs confirmed as anomalous by both models are surfaced as actual anomalies requiring attention, ensuring you only receive alerts for genuinely unusual spending patterns.
+        The model then evaluates whether the actual cost falls outside its predicted confidence interval. This provides probabilistic evidence about whether the observed cost is truly unusual. Only costs confirmed as anomalous by both models are surfaced as actual anomalies requiring attention, ensuring you only receive alerts for genuinely unusual spending patterns.
         <DocImage path={require('./static/process.png')} width="100%" height="100%" title="Click to view full size image" />
-        In addition to scheduled jobs that CCM internally runs, CCM also supports **Event-driven anomaly detection** for AWS, GCP, and Azure with the following behaviour:
-
-            - If partial cost data is available, anomaly detection runs immediately on available data. If no anomalies are detected on partial data, regular job runs will catch them once complete data is available
-            - Detection is limited to the specific cloud account receiving the cost ingestion event.
-            - If an anomaly is detected on partial data and costs change when complete data arrives, the anomaly is updated accordingly.
-
-    **Example**: If today is November 1st and a cost ingestion event is received, anomaly detection runs immediately for November 1st data for that specific cloud account. If complete data becomes available the next day, regular jobs will still process it to ensure accuracy.
 
 
 3. **Notification**: When anomalies are detected, [alerts](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-alerts) are sent through configured channels
+
+
+:::info Event-Driven Anomaly Detection (Behind Feature Flag)
+        
+        CCM also offers an advanced feature under a feature flag for AWS, GCP, and Azure that enables real-time anomaly detection:
+        
+        - Anomaly detection runs immediately when cost data is ingested, without waiting for the next day
+        - Works with partial cost data as it becomes available throughout the day
+        - Detection is limited to the specific cloud account receiving the cost ingestion event
+        - If no anomalies are detected on partial data, standard day-1 jobs will still run to ensure complete analysis
+
+    **Example**: If today is November 1st and a cost ingestion event is received, anomaly detection runs immediately for November 1st data for that specific cloud account. If complete data becomes available the next day, regular jobs will still process it to ensure accuracy.
+:::
 
 ## Managing Anomalies
 
