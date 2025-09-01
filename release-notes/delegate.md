@@ -96,6 +96,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 1. [Delegate image release notes](#delegate-image-release-notes)
 2. [Delegate Helm Chart release notes](#delegate-helm-chart-release-notes)
 3. [Delegate Upgrader release notes](#delegate-upgrader-release-notes)
+4. [Delegate Terraform release notes](#delegate-terraform-release-notes)
 
 ## Delegate image release notes
 
@@ -2383,3 +2384,11 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 #### New features and enhancements
 - Added support for [automatic upgrades](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#docker-delegate) for Docker delegates brought up using the `docker run` command. [PL-41879]
 
+## Delegate Terraform release notes
+
+## August 2025
+
+### Version 0.38.6
+
+#### New features and enhancements
+- Introduced a new update method in Terraform to revoke delegate tokens. The recommended approach is to update the token_status field to "REVOKED", which will trigger the revocation process. [PL-64678]
