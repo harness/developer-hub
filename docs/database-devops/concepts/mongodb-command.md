@@ -209,6 +209,21 @@ databaseChangeLog:
                 }
               }
 ```
+## Admin Command
+Use `adminCommand` for database-level administrative operations such as retrieving server status, listing databases, or renaming collections. This change maps directly to the MongoDB [db.adminCommand](https://www.mongodb.com/docs/manual/reference/method/db.adminCommand/) method and is backed by `liquibase.ext.mongodb.change.AdminCommandChange`.
+Unlike `runCommand`, which executes in the current database context, **`db.adminCommand()` always runs against the `admin` database**, regardless of where it is invoked.
+```yml
+- changeSet:
+    id: admin-command-rename-collection
+    author: devteam@company.com
+    changes:
+      - adminCommand:
+          command: >
+            {
+              "renameCollection": "test.orders",
+              "to": "test.orders-2016"
+            }
+```
 
 ## Best Practices & Usage Notes
 1. **Rollback Considerations** - MongoDB operations like `insertOne` and `insertMany` are not automatically reversible. Always plan rollbacks explicitly e.g., by including a corresponding delete or drop changeset if needed.
