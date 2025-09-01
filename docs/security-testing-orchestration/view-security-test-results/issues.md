@@ -47,9 +47,9 @@ From the **Issue Details** pane, you can:
 
 ### Exemption status
 
-If an issue has an exemption status, the **Exemption Status** section will appear, showing the overall details of the exemption request. Depending on your permissions, you can take actions such as approving, rejecting, or reopening exemptions. See [Issue Exemption Workflow](/docs/security-testing-orchestration/exemptions/exemption-workflows).
+If an issue has an exemption status, the **Exemption Status** button will appear at the top of the pane. Here, you can click the button to view exemption details or take actions (**Approve**, **Reject**, **Re-open**) based on your permissions. Learn more in [Issue Exemption Workflow](/docs/security-testing-orchestration/exemptions/exemption-workflows).
 
-<DocImage path={require('./static/issues-exemption-status.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/issues-exemption-status.png')} width="80%" height="80%" title="Click to view full size image" />
 
 :::info
 The **Issues** section displays the overall exemption status. The exemption status at scan time is shown only in the [**Vulnerabilities** tab](./view-scan-results.md).
