@@ -1,6 +1,6 @@
 import React from 'react';
 
-const clientSideSDKs = [
+export const clientSideSDKs = [
   {
     name: 'Android',
     img: '/provider-logos/android-logo.svg',
@@ -48,7 +48,7 @@ const clientSideSDKs = [
   },
 ];
 
-const clientSideSuites = [
+export const clientSideSuites = [
   {
     name: 'Android Suite',
     img: '/provider-logos/android-logo.svg',
@@ -66,7 +66,7 @@ const clientSideSuites = [
   },
 ];
 
-const clientSideAgents = [
+export const clientSideAgents = [
   {
     name: 'Android Agents',
     img: '/provider-logos/android-logo.svg',
@@ -84,7 +84,7 @@ const clientSideAgents = [
   },
 ];
 
-const serverSideSDKs = [
+export const serverSideSDKs = [
   {
     name: 'Elixir Thin Client SDK',
     img: '/provider-logos/elixir-logo.png',
@@ -132,7 +132,7 @@ const serverSideSDKs = [
   },
 ];
 
-const optionalInfra = [
+export const optionalInfra = [
   {
     name: 'Split Daemon (splitd)',
     img: '/provider-logos/split-logo.png',
@@ -167,7 +167,7 @@ function chunkArray(array, size) {
 }
 
 // Component to render each section with heading and cards
-function Section({ title, items }) {
+export function Section({ title, items }) {
   const rows = chunkArray(items, 4);
   return (
     <>

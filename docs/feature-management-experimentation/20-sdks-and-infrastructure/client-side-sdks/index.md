@@ -50,18 +50,10 @@ Updates roll out gradually (some devices sync within the first day, with more de
 To ensure the latest changes are reflected, calculate treatments after the `SDK_READY` event fires, and update them if the value changes after initial load.
 :::
 
+import { Section, clientSideSDKs } from '@site/src/components/Docs/data/fmeSDKSData';
+
 ## Get started
 
 Select a platform to start integrating FME into your client application.
 
-| **SDK** | **API Key/Type** | **Links** |
-| --- | --- | --- | 
-| Android | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk), [GitHub](https://github.com/splitio/android-client) | 
-| Angular utilities | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/angular-utilities), [GitHub](https://github.com/splitio/angular-sdk-plugin) |
-| Browser | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk), [GitHub](https://github.com/splitio/javascript-browser-client) |
-| Flutter plugin | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin), [GitHub](https://github.com/splitio/flutter-sdk-plugin) |
-| iOS | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk), [GitHub](https://github.com/splitio/ios-client) | 
-| JavaScript | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk), [GitHub](https://github.com/splitio/javascript-client) | 
-| React Native | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk), [GitHub](https://github.com/splitio/react-native-client) |
-| React | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk), [GitHub](https://github.com/splitio/react-client) | 
-| Redux | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk), [GitHub](https://github.com/splitio/redux-client) | 
+<Section items={clientSideSDKs} />
