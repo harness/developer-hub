@@ -58,15 +58,15 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 - Cache Intelligence auto-injection now supports Gradle Kotlin DSL (`build.gradle.kts`).
 
 #### Fixed issues
-- Fixed Initialize step failures caused by large commit messages; `CI_COMMIT_MESSAGE` is now limited to 1000 characters. (ZD-90387, CI-18620)
-- Fixed incorrect tooltip for Cache Intelligence policy in the CI stage overview. (CI-18828)
+- Fixed **Initialize** step failures caused by large commit messages; `CI_COMMIT_MESSAGE` is now limited to 1000 characters. (ZD-90387, CI-18620)
+- Fixed incorrect tooltip for **Cache Intelligence** policy in the CI stage overview. (CI-18828)
 #### Harness images updates
 
 | **Image**                | **Change**                                       | **Previous version** | **New Version** |
 | ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
 | `harness/ci-lite-engine` | Version upgrade for Jira. | 1.17.1              | 1.17.2         |
 | `harness/ci-addon`       | Version upgrade for Jira. | 1.17.1              | 1.17.2         |
-| `plugins/cache`          | Cache Intelligence auto-injection support for Gradle Kotlin DSL.               | 1.3.3                | 1.3.4          |
+| `plugins/cache`          | Cache Intelligence auto-injection support for Gradle Kotlin DSL.               | 1.9.10                | 1.9.11          |
  
 
 ## August 2025
