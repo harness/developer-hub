@@ -24,15 +24,15 @@ To use the Artifact Metadata Publisher plugin, add a [Plugin step](/docs/continu
 For artifacts generated in the same pipeline, the Plugin step is usually placed after the step that [uploads the artifact](./build-and-upload-an-artifact.md#upload-artifacts) to cloud storage.
 
 ```yaml
-               - step:
-                  type: Plugin
-                  name: publish artifact metadata
-                  identifier: publish_artifact_metadata
-                  spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-                    image: plugins/artifact-metadata-publisher
-                    settings:
-                      file_urls: https://domain.com/path/to/artifact
+- step:
+    type: Plugin
+    name: publish artifact metadata
+    identifier: publish_artifact_metadata
+    spec:
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+      image: plugins/artifact-metadata-publisher
+      settings:
+        file_urls: https://domain.com/path/to/artifact
 ```
 
 ### Plugin step specifications
@@ -55,8 +55,8 @@ Provide the URL for the artifact you want to link on the **Artifacts** tab. In t
 
 For artifacts in cloud storage, use the appropriate URL format for your cloud storage provider, for example:
 
-* GCS: `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION`
-* S3: `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`
+- GCS: `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION`
+- S3: `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`
 
 For artifacts uploaded through [Upload Artifacts steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#upload-artifacts), use the **Bucket**, **Target**, and artifact name specified in the **Upload Artifacts** step.
 
@@ -65,20 +65,47 @@ For private S3 buckets, use the console view URL, such as `https://s3.console.aw
 If you uploaded multiple artifacts, you can provide a list of URLs, such as:
 
 ```yaml
-  file_urls:
-    - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
-    - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.pdf
+file_urls:
+  - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
+  - https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.pdf
 ```
 
+You can also set **display name** for each of the URLs set in the plugin, by using the format `name:::file_url`, where `:::` is the delimiter that separates the name and url. For example:
 
-You can also set **display name** for each of the URLs set in the plugin, by using the format `name:::file_url`, where `:::` is the delimiter that separates the name and url. For example: 
 ```yaml
-  file_urls:
-    - artifact1:::https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
-    - artifact2:::https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.pdf
+file_urls:
+  - artifact1:::https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact1.html
+  - artifact2:::https://BUCKET.s3.REGION.amazonaws.com/TARGET/artifact2.pdf
 ```
+
 For information about using Harness CI to upload artifacts, go to [Build and push artifacts and images](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
+## Artifact metadata publisher environment variables
+
+The artifact-metadata-publisher plugin looks for two environment variables:
+
+- `PLUGIN_ARTIFACT_FILE`: The file path where the plugin stores artifact metadata
+- `PLUGIN_FILE_URLS`: The URLs to be published to the Artifacts tab
+
+The URLs passed via `PLUGIN_FILE_URLS` are stored in `PLUGIN_ARTIFACT_FILE` in the following JSON format, which the CI manager expects to publish under the Artifacts tab:
+
+```json
+{
+  "kind": "fileUpload/v1",
+  "data": {
+    "fileArtifacts": [
+      {
+        "name": "file-0",
+        "url": "https://example.com/artifact"
+      }
+    ]
+  }
+}
+```
+
+### Kubernetes flow differences
+
+In Kubernetes flow, the CI manager doesn't automatically create the temporary file and pass it via `PLUGIN_ARTIFACT_FILE` (unlike cloud flow). You need to pass `artifact_file: somefile.txt` explicitly as input. The plugin then creates this file (`somefile.txt`) in the JSON format above, containing the URLs passed via `PLUGIN_FILE_URLS` input, which is then processed and displayed under the Artifacts tab in the pipeline.
 
 ## Build logs and artifact files
 
@@ -412,16 +439,16 @@ pipeline:
 
 ## See also
 
-* [View test reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/viewing-tests/#view-reports-on-the-artifacts-tab)
-* [View code coverage reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/code-coverage/#view-code-coverage-reports-on-the-artifacts-tab)
-* [View GCS artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings/#view-artifacts-on-the-artifacts-tab)
-* [View JFrog artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog/#view-artifacts-on-the-artifacts-tab)
-* [View Sonatype Nexus artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus/#view-artifacts-on-the-artifacts-tab)
-* [View S3 artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3#view-artifacts-on-the-artifacts-tab)
+- [View test reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/viewing-tests/#view-reports-on-the-artifacts-tab)
+- [View code coverage reports on the Artifacts tab](/docs/continuous-integration/use-ci/run-tests/code-coverage/#view-code-coverage-reports-on-the-artifacts-tab)
+- [View GCS artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings/#view-artifacts-on-the-artifacts-tab)
+- [View JFrog artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog/#view-artifacts-on-the-artifacts-tab)
+- [View Sonatype Nexus artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus/#view-artifacts-on-the-artifacts-tab)
+- [View S3 artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3#view-artifacts-on-the-artifacts-tab)
 
 ## Troubleshoot the Artifacts tab
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to the Artifacts tab, such as:
 
-* [Is it possible to publish custom data, such as outputs from variables or custom messages, to the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#is-it-possible-to-publish-custom-data-such-as-outputs-from-variables-or-custom-messages-to-the-artifacts-tab)
-* [Do Upload Artifacts steps compress files before uploading them?](/kb/continuous-integration/continuous-integration-faqs/#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)
+- [Is it possible to publish custom data, such as outputs from variables or custom messages, to the Artifacts tab?](/kb/continuous-integration/continuous-integration-faqs/#is-it-possible-to-publish-custom-data-such-as-outputs-from-variables-or-custom-messages-to-the-artifacts-tab)
+- [Do Upload Artifacts steps compress files before uploading them?](/kb/continuous-integration/continuous-integration-faqs/#does-the-upload-artifacts-to-s3-step-compress-files-before-uploading-them)
