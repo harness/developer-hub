@@ -118,6 +118,7 @@ In Kubernetes flow, the CI manager doesn't automatically create the temporary fi
       settings:
         file_urls: https://domain.com/path/to/artifact
         artifact_file: temp.txt
+```        
 ## Build logs and artifact files
 
 When you run the pipeline, you can observe the step logs on the [Build details page](../viewing-builds.md), and you can find the artifact URL on the [Artifacts tab](../viewing-builds.md).
