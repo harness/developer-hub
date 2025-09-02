@@ -15,11 +15,299 @@ helpdocs_is_published: true
 
 CCM provides different Explore options with dimensions and measures for each cloud provider. Below is a comprehensive list of available data fields for each provider.
 
+:::tip View Options
+You can toggle between two different views:
+- **Table View**: Shows all fields in a detailed table format
+- **Alphabetical View**: Groups fields alphabetically for easier navigation
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
-<Tabs>
-<TabItem value="aws" label="AWS">
+{/* Custom CSS for view toggle */}
+<style dangerouslySetInnerHTML={{__html: `
+  .view-toggle-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+  }
+  .view-toggle {
+    display: flex;
+    border: 1px solid var(--ifm-color-primary);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .view-toggle button {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .view-toggle button.active {
+    background-color: var(--ifm-color-primary);
+    color: white;
+  }
+  .alpha-group {
+    margin-bottom: 2rem;
+  }
+  .alpha-group h3 {
+    border-bottom: 2px solid var(--ifm-color-primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .alpha-group-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .field-card {
+    border: 1px solid var(--ifm-color-emphasis-300);
+    border-radius: 4px;
+    padding: 1rem;
+    background-color: var(--ifm-background-surface-color);
+    height: 100%;
+  }
+  .field-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  .field-card p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--ifm-color-emphasis-700);
+  }
+  .field-card .field-name {
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: var(--ifm-color-primary);
+    margin-bottom: 0.5rem;
+  }
+`}} />
+
+{/* View Toggle Component */}
+<BrowserOnly>
+{() => {
+  const React = require('react');
+  const [viewMode, setViewMode] = React.useState('table');
+  const [activeTab, setActiveTab] = React.useState('aws');
+  
+  // Function to render the alphabetical view for AWS
+  const renderAlphabeticalAWS = () => {
+    // Define the alphabetical groups
+    const groups = [
+      { name: 'A-E', range: /^[A-Ea-e]/ },
+      { name: 'F-J', range: /^[F-Jf-j]/ },
+      { name: 'K-O', range: /^[K-Ok-o]/ },
+      { name: 'P-T', range: /^[P-Tp-t]/ },
+      { name: 'U-Z', range: /^[U-Zu-z]/ }
+    ];
+    
+    // AWS fields organized by their first letter
+    const awsFields = [
+      { name: 'aws.billtype', label: 'Bill Type', description: 'The type of bill that this report covers.' },
+      { name: 'aws.billingentity', label: 'Billing Entity', description: 'Helps you identify whether your invoices or transactions are for AWS Marketplace or for purchases of other AWS services.' },
+      { name: 'aws.bill_invoice_id', label: 'Invoice ID', description: 'The ID associated with a specific line item.' },
+      { name: 'aws.awspayeraccountid', label: 'Payer Account ID', description: 'The account ID of the paying account.' },
+      { name: 'aws.billingperiodenddate_date', label: 'Billing Period End / Date', description: 'The end date of the billing period that is covered by this report.' },
+      { name: 'aws.billingperiodenddate_month', label: 'Billing Period End / Month', description: 'The end date of the billing period that is covered by this report.' },
+      { name: 'aws.billingperiodenddate_month_name', label: 'Billing Period End / Month Name', description: 'The end date of the billing period that is covered by this report.' },
+      { name: 'aws.billingperiodenddate_quarter', label: 'Billing Period End / Quarter', description: 'The end date of the billing period that is covered by this report.' },
+      { name: 'aws.billingperiodenddate_time', label: 'Billing Period End / Time', description: 'The end date of the billing period that is covered by this report.' },
+      { name: 'aws.billingperiodenddate_week', label: 'Billing Period End / Week', description: 'The end date of the billing period that is covered by this report.' },
+      { name: 'aws.billingperiodenddate_year', label: 'Billing Period End / Year', description: 'The end date of the billing period that is covered by this report.' },
+      { name: 'aws.billingperiodstartdate_date', label: 'Billing Period Start / Date', description: 'The start date of the billing period that is covered by this report.' },
+      { name: 'aws.lineitemid', label: 'Line Item ID', description: 'This field is generated for each line item and is unique in a given partition.' },
+      { name: 'aws.timeinterval', label: 'Time Interval', description: 'The time interval that this line item applies to.' },
+      { name: 'aws.blendedrate', label: 'Blended Rate', description: 'The average rate for each SKU across the entire organization.' },
+      { name: 'aws.currencycode', label: 'Currency Code', description: 'The ISO 4217 code for the currency used in AWS billing.' },
+      { name: 'aws.legalentity', label: 'Legal Entity', description: 'The Seller of Record of a specific product or service.' },
+      { name: 'aws.lineitemdescription', label: 'Line Item Description', description: 'The description of the line item type.' },
+      { name: 'aws.lineitemtype', label: 'Line Item Type', description: 'The type of charge covered by this line item.' },
+      { name: 'aws.normalizationfactor', label: 'Normalization Factor', description: 'A factor that normalizes different instance sizes within the same instance family for easier comparison.' },
+      { name: 'aws.productcode', label: 'Product Code', description: 'The code for the AWS product.' },
+      { name: 'aws.resourceid', label: 'Resource ID', description: 'Resource ID refers to a column that displays the unique identifier of a specific resource.' },
+      { name: 'aws.taxtype', label: 'Tax Type', description: 'The type of tax applied to AWS billing.' },
+      { name: 'aws.unblendedrate', label: 'Unblended Rate', description: 'The unblended rate is the rate associated with an individual account\'s service usage.' },
+      { name: 'aws.aws_usageaccountid_hidden', label: 'Usage Account ID', description: 'The account ID of the account that used this line item.' },
+      { name: 'aws.aws_usageaccountname', label: 'Usage Account Name', description: 'AWS account names.' },
+      { name: 'aws.end_date', label: 'Usage End Time Period / Date', description: 'The end date and time for the corresponding line item in UTC, exclusive.' },
+      { name: 'aws.start_date', label: 'Usage Start Time Period / Date', description: 'The start date and time for the line item in UTC, inclusive.' },
+      { name: 'aws.usagetype', label: 'Usage Type', description: 'The usage details of the line item.' },
+      { name: 'aws.leasecontractlength', label: 'Lease Contract Length', description: 'The duration of a lease contract for a reserved AWS resource.' },
+      { name: 'aws.publicondemandrate', label: 'Public On-Demand Rate', description: 'The public On-Demand Instance rate in this billing period for the specific line item of usage.' },
+      { name: 'aws.purchase_option', label: 'Purchase Option', description: 'How you chose to pay for this line item.' },
+      { name: 'aws.rateid', label: 'Rate ID', description: 'The unique identifier for an AWS pricing rate in billing.' },
+      { name: 'aws.term', label: 'Term', description: 'Specifies the billing term for an AWS resource.' },
+      { name: 'aws.unit', label: 'Unit', description: 'The pricing unit that AWS used for calculating your usage cost.' },
+      { name: 'aws.awscapacitystatus', label: 'Capacity Status', description: 'Current status of an AWS resource\'s capacity.' },
+      { name: 'aws.instancetype', label: 'Instance Type', description: 'The type of instance used.' },
+      { name: 'aws.memory', label: 'Memory', description: 'The amount of memory associated with the resource, typically measured in GB.' },
+      { name: 'aws.vcpu', label: 'vCPU', description: 'The number of virtual CPUs associated with the resource.' },
+      { name: 'aws.availabilityZone', label: 'Availability Zone', description: 'Specifies the geographical location of the AWS resources.' },
+      { name: 'aws.region', label: 'Region', description: 'The geographic area where Azure hosts your resources.' }
+      // This is a subset of fields for demonstration purposes
+    ];
+    
+    return (
+      <div className="alphabetical-view">
+        {groups.map(group => {
+          const fieldsInGroup = awsFields.filter(field => 
+            field.label.match(group.range)
+          );
+          
+          if (fieldsInGroup.length === 0) return null;
+          
+          return (
+            <div key={group.name} className="alpha-group">
+              <h3>{group.name}</h3>
+              <div className="alpha-group-content">
+                {fieldsInGroup.map(field => (
+                  <div key={field.name} className="field-card">
+                    <h4>{field.label}</h4>
+                    <div className="field-name">{field.name}</div>
+                    <p>{field.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+  
+  // Function to render the alphabetical view for Azure
+  const renderAlphabeticalAzure = () => {
+    // Define the alphabetical groups
+    const groups = [
+      { name: 'A-E', range: /^[A-Ea-e]/ },
+      { name: 'F-J', range: /^[F-Jf-j]/ },
+      { name: 'K-O', range: /^[K-Ok-o]/ },
+      { name: 'P-T', range: /^[P-Tp-t]/ },
+      { name: 'U-Z', range: /^[U-Zu-z]/ }
+    ];
+    
+    // Azure fields organized by their first letter
+    const azureFields = [
+      { name: 'azure.account_id', label: 'Account ID', description: 'The primary identifier for the account.' },
+      { name: 'azure.account_name', label: 'Account Name', description: 'The primary name for the account.' },
+      { name: 'azure.azure_account_owner_id', label: 'Account Owner ID', description: 'The email ID of the EA enrollment account owner.' },
+      { name: 'azure.azure_cloudprovider_entity_id', label: 'Azure Cloud Provider Entity Id', description: '' },
+      { name: 'azure.azure_billing_account_id', label: 'Billing Account ID', description: 'Unique identifier for the root billing account.' },
+      { name: 'azure.azure_billing_account_name', label: 'Billing Account Name', description: 'Name of the billing account.' },
+      { name: 'azure.azure_billing_period_end_date', label: 'Billing Period End / Date', description: 'The end date of the billing period.' },
+      { name: 'azure.azure_billing_period_start_date', label: 'Billing Period Start / Date', description: 'The start date of the billing period.' },
+      { name: 'azure.azure_benefit_id', label: 'Benefit ID', description: 'Unique identifier for the purchased savings plan instance.' },
+      { name: 'azure.azure_cost_center', label: 'Cost Center', description: 'The cost center defined for the subscription for tracking costs.' },
+      { name: 'azure.azure_billing_currency_code', label: 'Billing Currency Code', description: 'Currency associated with the billing account.' },
+      { name: 'azure.azure_customer_name', label: 'Customer Name', description: 'Name of the Microsoft Entra tenant for the customer\'s subscription.' },
+      { name: 'azure.end_date', label: 'End Time Period / Date', description: 'The usage or purchase date of the charge.' },
+      { name: 'azure.azure_invoice_id', label: 'Invoice ID', description: 'The unique document ID listed on the invoice PDF.' },
+      { name: 'azure.azure_reseller_mpn_id', label: 'Reseller MPN ID', description: 'ID for the reseller associated with the subscription.' },
+      { name: 'azure.start_date', label: 'Start Time Period / Date', description: 'The usage or purchase date of the charge.' },
+      { name: 'azure.azure_subscription_id', label: 'Subscription ID', description: 'Unique identifier for the Azure subscription.' },
+      { name: 'azure.azure_frequency', label: 'Frequency', description: 'Indicates whether a charge is expected to repeat.' },
+      { name: 'azure.usage_date', label: 'Usage Date', description: 'The usage date of the charge in yyyy-mm-dd format.' },
+      { name: 'azure.azure_location', label: 'Location (Normalized)', description: 'The normalized location used to resolve inconsistencies in region names.' },
+      { name: 'azure.region', label: 'Region', description: 'The geographic area where Azure hosts your resources.' },
+      { name: 'azure.azure_is_azure_credit_eligible', label: 'Is Azure Credit Eligible (Yes / No)', description: 'Indicates if the charge is eligible to be paid for using Azure credits.' },
+      { name: 'azure.azure_pricing_currency', label: 'Currency', description: 'Currency associated with the pricing unit.' },
+      { name: 'azure.azure_resource_rate', label: 'Effective Price (Resource Rate)', description: 'The price for a given product or service that represents the actual rate that you end up paying per unit.' },
+      { name: 'azure.azure_unit_of_measure', label: 'Unit Of Measure', description: 'The unit of measure for billing for the service.' }
+      // This is a subset of fields for demonstration purposes
+    ];
+    
+    return (
+      <div className="alphabetical-view">
+        {groups.map(group => {
+          const fieldsInGroup = azureFields.filter(field => 
+            field.label.match(group.range)
+          );
+          
+          if (fieldsInGroup.length === 0) return null;
+          
+          return (
+            <div key={group.name} className="alpha-group">
+              <h3>{group.name}</h3>
+              <div className="alpha-group-content">
+                {fieldsInGroup.map(field => (
+                  <div key={field.name} className="field-card">
+                    <h4>{field.label}</h4>
+                    <div className="field-name">{field.name}</div>
+                    <p>{field.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+  
+  // Render the appropriate view based on the selected view mode and tab
+  const renderContent = () => {
+    if (viewMode === 'alpha') {
+      if (activeTab === 'aws') {
+        return renderAlphabeticalAWS();
+      } else if (activeTab === 'azure') {
+        return renderAlphabeticalAzure();
+      }
+      // Add more conditions for other cloud providers as needed
+      return null;
+    }
+    return null; // Table view is handled by the existing Tabs component
+  };
+  
+  return (
+    <>
+      <div className="view-toggle-container">
+        <div className="view-toggle">
+          <button 
+            className={viewMode === 'table' ? 'active' : ''}
+            onClick={() => setViewMode('table')}
+          >
+            Table View
+          </button>
+          <button 
+            className={viewMode === 'alpha' ? 'active' : ''}
+            onClick={() => setViewMode('alpha')}
+          >
+            Alphabetical View
+          </button>
+        </div>
+      </div>
+      
+      {/* Show alphabetical view when selected */}
+      {viewMode === 'alpha' && (
+        <>
+          <Tabs
+            defaultValue="aws_alpha"
+            values={[
+              {label: 'AWS', value: 'aws_alpha'},
+              {label: 'Azure', value: 'azure_alpha'},
+              // Add more tabs as needed
+            ]}
+            onChange={(value) => setActiveTab(value.replace('_alpha', ''))}
+          >
+            <TabItem value="aws_alpha">
+              {renderAlphabeticalAWS()}
+            </TabItem>
+            <TabItem value="azure_alpha">
+              {renderAlphabeticalAzure()}
+            </TabItem>
+            {/* Add more TabItems for other cloud providers */}
+          </Tabs>
+        </>
+      )}
+      
+      {/* Show table view when selected */}
+      {viewMode === 'table' && (
+        <Tabs defaultValue="aws_table">
+        <TabItem value="aws_table" label="AWS">
 
 ## AWS Billing & Transaction Field Reference
 
@@ -258,7 +546,7 @@ Below is a comprehensive reference for AWS Bill fields.
 
 </TabItem>
 
-<TabItem value="azure" label="Azure">
+<TabItem value="azure_table" label="Azure">
 
 
 ## Azure Billing & Transaction Field Reference
@@ -1066,6 +1354,264 @@ Below is a concise, collapsible reference. Click a group to expand its table.
 
 </details>
 
-</TabItem>
-</Tabs>
+        </TabItem>
+        <TabItem value="azure_unified" label="Azure">
+
+## Azure Billing & Transaction Field Reference
+
+Below is a concise, collapsible reference. Click a group to expand its table.
+
+## Billing & Transaction
+
+<details>
+<summary><strong>Account</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Account ID | azure.account_id | The primary identifier for the account. Displays the EA Account ID if available, otherwise falls back to the Subscription ID. |
+| Account Name | azure.account_name | The primary name for the account. Displays the EA Account Name if available, otherwise falls back to the Subscription Name. |
+| Account Owner ID | azure.azure_account_owner_id | The email ID of the EA enrollment account owner. |
+| Azure Cloud Provider Entity Id | azure.azure_cloudprovider_entity_id |  |
+| Billing Account ID | azure.azure_billing_account_id | Unique identifier for the root billing account. |
+| Billing Account Name | azure.azure_billing_account_name | Name of the billing account. |
+| Billing Profile ID | azure.azure_billing_profile_id | Unique identifier of the EA enrollment, pay-as-you-go subscription or MCA billing profile. |
+| Billing Profile Name | azure.azure_billing_profile_name | Name of the EA enrollment, pay-as-you-go subscription or MCA billing profile. |
+
+</details>
+
+<details>
+<summary><strong>Billing Period End / Date</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Billing Period End / Date | azure.azure_billing_period_end_date | The end date of the billing period. |
+| Billing Period End / Month | azure.azure_billing_period_end_month | The end date of the billing period. |
+| Billing Period End / Month Name | azure.azure_billing_period_end_month_name | The end date of the billing period. |
+| Billing Period End / Quarter | azure.azure_billing_period_end_quarter | The end date of the billing period. |
+| Billing Period End / Time | azure.azure_billing_period_end_time | The end date of the billing period. |
+| Billing Period End / Week | azure.azure_billing_period_end_week | The end date of the billing period. |
+| Billing Period End / Year | azure.azure_billing_period_end_year | The end date of the billing period. |
+
+</details>
+
+<details>
+<summary><strong>Billing Period Start / Date</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Billing Period Start / Date | azure.azure_billing_period_start_date | The start date of the billing period. |
+| Billing Period Start / Month | azure.azure_billing_period_start_month | The start date of the billing period. |
+| Billing Period Start / Month Name | azure.azure_billing_period_start_month_name | The start date of the billing period. |
+| Billing Period Start / Quarter | azure.azure_billing_period_start_quarter | The start date of the billing period. |
+| Billing Period Start / Time | azure.azure_billing_period_start_time | The start date of the billing period. |
+| Billing Period Start / Week | azure.azure_billing_period_start_week | The start date of the billing period. |
+| Billing Period Start / Year | azure.azure_billing_period_start_year | The start date of the billing period. |
+
+</details>
+
+<details>
+<summary><strong>Commitments & Benefits</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Benefit ID | azure.azure_benefit_id | Unique identifier for the purchased savings plan instance. |
+| Benefit Name | azure.azure_benefit_name | Unique identifier for the purchased savings plan instance. |
+| Reservation ID | azure.azure_reservation_id | Unique identifier for the purchased reservation instance. |
+| Reservation Name | azure.azure_reservation_name | Name of the purchased reservation instance. |
+
+</details>
+
+
+
+<details>
+<summary><strong>Cost Allocation</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Cost Allocation Rule Name | azure.azure_cost_allocation_rule_name | Name of the Cost Allocation rule that's applicable to the record. |
+| Cost Center | azure.azure_cost_center | The cost center defined for the subscription for tracking costs. |
+
+</details>
+
+<details>
+<summary><strong>Currency</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Billing Currency Code | azure.azure_billing_currency_code | Currency associated with the billing account. |
+
+</details>
+
+<details>
+<summary><strong>Customer</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Customer Name | azure.azure_customer_name | Name of the Microsoft Entra tenant for the customer's subscription. |
+| Customer Tenant ID | azure.azure_customer_tenant_id | Identifier of the Microsoft Entra tenant of the customer's subscription. |
+
+</details>
+
+
+<details>
+<summary><strong>End Time Period / Date</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| End Time Period / Date | azure.end_date | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Month | azure.end_month | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Month Name | azure.end_month_name | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Quarter | azure.end_quarter | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Time | azure.end_time | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Week | azure.end_week | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| End Time Period / Year | azure.end_year | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+
+</details>
+
+<details>
+<summary><strong>Invoice</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Invoice ID | azure.azure_invoice_id | The unique document ID listed on the invoice PDF. |
+| Invoice Section ID | azure.azure_invoice_section_id | Unique identifier for the EA department or MCA invoice section. |
+| Invoice Section Name | azure.azure_invoice_section_name | Name of the EA department or MCA invoice section. |
+| Previous Invoice ID | azure.azure_previous_invoice_id | Reference to an original invoice if the line item is a refund. |
+
+</details>
+
+
+
+<details>
+<summary><strong>Partner</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Reseller MPN ID | azure.azure_reseller_mpn_id | ID for the reseller associated with the subscription. |
+| Reseller Name | azure.azure_reseller_name | The name of the reseller associated with the subscription. |
+
+</details>
+
+
+
+<details>
+<summary><strong>Start Time Period / Date</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Start Time Period / Date | azure.start_date | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Month | azure.start_month | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Month Name | azure.start_month_name | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Quarter | azure.start_quarter | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Time | azure.start_time | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Week | azure.start_week | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+| Start Time Period / Year | azure.start_year | The usage or purchase date of the charge. Specifies the unit of time for the visualizations. |
+
+</details>
+
+<details>
+<summary><strong>Subscription</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Subscription ID | azure.azure_subscription_id | Unique identifier for the Azure subscription. |
+| Subscription Name | azure.azure_subscription_name | Name of the Azure subscription. |
+
+</details>
+
+<details>
+<summary><strong>Transaction Details</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Frequency | azure.azure_frequency | Indicates whether a charge is expected to repeat. Charges can either happen once (OneTime), repeat on a monthly or yearly basis (Recurring), or be based on usage (UsageBased). |
+| Transaction Type | azure.azure_charge_type | Indicates whether the charge represents usage (Usage), a purchase (Purchase), or a refund (Refund). |
+
+</details>
+
+
+<details>
+<summary><strong>Usage  Date</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Usage  Date | azure.usage_date | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Month | azure.usage_month | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Month Name | azure.usage_month_name | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Quarter | azure.usage_quarter | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Time | azure.usage_time | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Week | azure.usage_week | The usage date of the charge in yyyy-mm-dd format. |
+| Usage  Year | azure.usage_year | The usage date of the charge in yyyy-mm-dd format. |
+
+</details>
+
+## Location
+
+<details>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Location (Normalized) | azure.azure_location | The normalized location used to resolve inconsistencies in region names. For example, US East. |
+| Meter Region | azure.azure_meter_region | The name of the Azure region associated with the meter. It generally aligns with the resource location, except for certain global meters. |
+| Region | azure.region | The geographic area where Azure hosts your resources. |
+| Keys | azure_tags.key | Master list of all keys. Tag Key that you can use to track costs associated with specific areas/entities within your business. |
+| Values | azure_tags.value | Master list of all values. Tag Value that you can use to track costs associated with specific areas/entities within your business. |
+
+</details>
+
+## Pricing & Usage
+
+<details>
+<summary><strong>Credit Eligibility</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Is Azure Credit Eligible (Yes / No) | azure.azure_is_azure_credit_eligible | Indicates if the charge is eligible to be paid for using Azure credits. |
+
+</details>
+
+
+<details>
+<summary><strong>Pricing</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Currency | azure.azure_pricing_currency | Currency associated with the pricing unit. |
+| Effective Price (Resource Rate) | azure.azure_resource_rate | The price for a given product or service that represents the actual rate that you end up paying per unit. |
+| Pay-As-You-Go Price | azure.azure_pay_g_price | The market price, also referred to as retail or list price, for a given product or service. |
+| Pricing Model | azure.azure_pricing_model | Identifier that indicates how the meter is priced. (Values: OnDemand, Reservation, Spot, and SavingsPlan) |
+| Term | azure.azure_term | Displays the term for the validity of the offer. For example: For reserved instances, it displays 12 months. Not applicable for Azure consumption. |
+| Unit Price | azure.azure_unit_price_hub | The price for a given Azure product or service inclusive of any negotiated discount on top of the market price. |
+
+</details>
+
+<details>
+<summary><strong>Usage</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Unit Of Measure | azure.azure_unit_of_measure | The unit of measure for billing for the service. For example, compute services are billed per hour. |
+
+</details>
+
+
+
+## Resource & Service Details
+
+<details>
+<summary><strong>Account</strong></summary>
+
+| Label Short | Azure Name | Description |
+|-------------|-----------|-------------|
+| Tenant ID | azure.azure_tenant_id | A globally unique identifier (GUID) that represents the Microsoft Entra tenant that the subscription is associated with. |
+
+</details>
+
+        </TabItem>
+        </Tabs>
+      )}
+    </>
+  );
+}}
+</BrowserOnly>
 
