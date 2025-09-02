@@ -392,7 +392,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "Collaborate and Develop",
+          label: "Collaborate & Develop",
           link: {
             type: "generated-index",
             slug: "/category/collaborate-and-develop",
