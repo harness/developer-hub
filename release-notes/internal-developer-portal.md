@@ -192,14 +192,14 @@ spec:
     connectorRef: account.ShibamDhar
     monoReposubDirectoryPath: /harness
 ```
-### [Breaking Change] Dx Plugin : Visualization Components Consolidated
+### [Breaking Change]  [Dx Plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/dx) : Visualization Components Consolidated
 
-This release introduces the `DxDataChart` component, a flexible visualization tool for displaying data from DX Data Studio queries as charts or tables. It supports multiple visualization types, custom metrics from DX datafeeds, optional variables, unit labels, automatic data transformation, and deep links to the underlying DX DataCloud queries.
+This release introduces the `DxDataChartCard` component, a flexible visualization tool for displaying data from DX Data Studio queries as charts or tables. It supports multiple visualization types, custom metrics from DX datafeeds, optional variables, unit labels, automatic data transformation, and deep links to the underlying DX DataCloud queries.
 
 
 #### Replaced Components
 
-The following components have been removed because their functionality is now fully covered by `DxDataChart`:
+The following components have been removed because their functionality is now fully covered by `DxDataChartCard`:
 
 * `EntityChangeFailureRateCard`
 * `EntityDeploymentFrequencyCard`
@@ -210,24 +210,16 @@ The following components have been removed because their functionality is now fu
 * `EntityTimeToRecoveryCard`
 * `EntityTopContributorsTable`
 
-#### Example Usage – Line Chart
+> Along with this, the DX backend plugin is also deprecated.
 
-```jsx
-<DxDataChart
-  title="Deployment Frequency"
-  description="Weekly deployments over time"
-  datafeedToken="your-datafeed-token"
-  unit="deployments"
-  variables={{ teamId: entity.metadata.annotations?.["getdx.com/id"] }}
-  chartConfig={{
-    type: "line",
-    xAxis: "date",
-    yAxis: "count",
-  }}
-/>
-```
+With `DxDataChartCard`, you can create [customizable visualizations](/docs/internal-developer-portal/plugins/available-plugins/dx#configuring-dxdatachartcard), deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
 
-With `DxDataChart`, you can create customizable visualizations, deep-link to queries in DX DataCloud, and benefit from automatic data transformation, error handling, and average calculations — all within a single reusable component. *[IDP-6096]*
+
+#### Configuration Simplification
+
+The [DX plugin configuration](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/dx#application-configuration-yaml) has been simplified. The `schedule`, `catalogSyncAllowedKinds`, and `disableCatalogSync` parameters have been removed, with only `appId` remaining as an optional parameter.
+
+
 
 ### [New Feature] Harness Feature Management & Experimentation Plugin
 
@@ -284,14 +276,6 @@ Harness IDP now supports embedding external web content directly into your sideb
   For example, if a `Service` `dependsOn` a `Library`, the system creates the reverse `dependencyOf` relation from the `Library` to the `Service`. Both relations exist in the system and can be queried, but only the primary relation is shown in the Edit YAML UI. The reverse relation is visible in the raw YAML, ensuring consistency without requiring users to manually define both sides. 
 
 
-<!-- Let's maintain last 3 here. -->
-
-| **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
-| ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2025.07.v2](/release-notes/internal-developer-portal#july---202507v2)                               | ✅        | ✅         | ✅         | ✅          | ✅           | ✅            |
-| [2025.07.v1](/release-notes/internal-developer-portal#july---202507v1)                               | ✅        | ✅         | ✅         | ✅          | ✅           | ✅            |
-| [2025.06.v1](/release-notes/internal-developer-portal#june---202506v1)  | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
-| [2025.05.v1](/release-notes/internal-developer-portal#-releasing-harness-idp-20-beta---may-202505v1) | ✅        | ✅        | ✅        | ✅        | ✅        | ✅          |
 
 
 ## July - [2025.07.v2]

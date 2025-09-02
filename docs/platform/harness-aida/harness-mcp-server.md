@@ -216,36 +216,30 @@ export HARNESS_API_KEY=<your_api_key>
 
 ## Command Line Arguments
 
-| Argument      | Description           |
-| ------------- | --------------------- |
-| `--toolsets`  | Enable tool groups    |
-| `--read-only` | Run in read-only mode |
-| `--log-file`  | Path to log file      |
-| `--version`   | Show version info     |
-| `--help`      | Show help             |
+Please refer to the [Harness MCP Server Command Line Arguments documentation](https://github.com/harness/mcp-server#command-line-arguments) for a full list of available command line arguments.
 
 ## Environment Variables
 
-| Variable             | Description      |
-| -------------------- | ---------------- |
-| `HARNESS_API_KEY`    | API key          |
-| `HARNESS_DEFAULT_ORG_ID`     | Org ID           |
-| `HARNESS_DEFAULT_PROJECT_ID` | Project ID       |
-| `HARNESS_TOOLSETS`   | Enabled toolsets |
-| `HARNESS_READ_ONLY`  | Read-only mode   |
-| `HARNESS_BASE_URL`   | Base URL         |
+You can customize and configure your Harness MCP server with environment variables. For a full list of options, visit the [MCP Environment Variables documentation](https://github.com/harness/mcp-server#environment-variables).
 
 ## MCP Server Tool Sets Overview
 
-[MCP Tools](https://modelcontextprotocol.io/docs/concepts/tools#overview) allow servers to expose executable functions that can be invoked by clients and used by LLMs to perform actions. At Harness, we have split our tools into the following tool sets:
+[MCP Tools](https://modelcontextprotocol.io/docs/concepts/tools#overview) allow servers to expose executable functions that can be invoked by clients and used by LLMs to perform actions. 
 
-  - Pipelines Tool Set
-  - Pull Requests Tool Set
-  - Repositories Tool Set
-  - Logs Tool Set
-  - Artifact Registries Tool Set
+For a full list of tools and toolsets available, visit the [Harness MCP toolsets documentation](https://github.com/harness/mcp-server?tab=readme-ov-file#tools).
 
-This list will be continuously changing and growing. For a full list of tools visit the MCP repo at [MCP Server](https://github.com/harness/mcp-server?tab=readme-ov-file#tools).
+By default, we currently support the following set of tools under the `default` toolset:
+
+  - `get_connector_details`: Get details of a specific connector
+  - `list_connector_catalogue`: List the Harness connector catalogue
+  - `list_connectors`: List connectors with filtering options
+  - `list_pipelines`: List pipelines in a repository
+  - `get_pipeline`: Get details of a specific pipeline
+  - `get_execution`: Get details of a specific pipeline execution
+  - `list_executions`: List pipeline executions
+  - `fetch_execution_url`: Fetch the execution URL for a pipeline execution
+  - `list_dashboards`: Lists all available Harness dashboards
+  - `get_dashboard_data`: Retrieves the data from a specific Harness dashboard
 
 ## Use Cases
 
