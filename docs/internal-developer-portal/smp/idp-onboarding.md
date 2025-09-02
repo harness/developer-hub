@@ -1,13 +1,13 @@
 ---
 title: IDP Onboarding to SMP Environments
-sidebar_position: 9
-sidebar_label: SMP Onboarding
-description: Guide for configuring and deploying Harness IDP in Service Management Platform environments
+sidebar_position: 1
+sidebar_label: Onboarding Guide
+description: Guide for configuring and deploying Harness IDP in Self Managed Platform environments
 ---
 
 # IDP Onboarding to SMP Environments
 
-This guide provides detailed instructions for deploying the Harness Internal Developer Portal (IDP) to your Service Management Platform (SMP) environment. Following these configuration steps will help you establish a properly functioning IDP implementation integrated with your SMP infrastructure.
+This guide provides detailed instructions for deploying the Harness Internal Developer Portal (IDP) to your Self Managed Platform (SMP) environment. Following these configuration steps will help you establish a properly functioning IDP implementation integrated with your SMP infrastructure.
 
 
 ## Infrastructure Requirements
@@ -21,7 +21,9 @@ Before proceeding with the IDP deployment to SMP, ensure the following prerequis
    Create a [Kubernetes Service Account](https://kubernetes.io/docs/concepts/security/service-accounts/) that will be linked to your Google Service Account. This account needs appropriate permissions for IDP operations. For GKE-specific guidance, see [Managing Service Accounts](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
 
 3. **Service Account token** for TechDocs integration
-   The TechDocs component requires a service account token to access and render documentation properly. 
+   The TechDocs component requires a service account token to access and render documentation properly.
+
+
    
 ### Identity Configuration
 
@@ -94,24 +96,24 @@ idp:
       # Example: https://smp.harness.io/smpairgap/ng/account/abc123xyz789acct/module/idp
     backend_base_url: https://harness-ingress-controller.<namespace>.svc.cluster.local/<account-id>/idp  
       # Example: https://harness-ingress-controller.smpairgap.svc.cluster.local/abc123xyz789acct/idp
-    backend_cors_origin: https://<dns-url>  
-      # Example: https://smp.harness.io
-    gcs_bucket_name: <gcs-bucket-name-for-techdocs>  
-      # Example: idp-techdocs-bucket
-    idp_account_id: <account-id>  
-      # Example: abc123xyz789acct
-    idp_namespace: <namespace>  
-      # Example: smpairgap
-    secrets:
-      fileSecret:
-        - keys:
-            - key: techdocs_gcs_sa
-              path: idp-play.json  
-                # Example: service account key file for GCS TechDocs backend
-          volumeMountPath: /app/gcs  
-            # Example: path inside container where file secret is mounted
-      secretManagement:
-        externalSecretsOperator:
+    frontend_url: https://<loadbalancer-ip>  
+      # Example: https://35.224.109.55
+    image:
+      registry: docker.io
+      repository: harness/idp-app-ui
+    node_tls_reject_unauthorized: "0"
+    idp_service:
+      url: "https://harness-ingress-controller.<namespace>.svc.cluster.local/<account-id>/idp"  
+        # Example: https://harness-ingress-controller.smpairgap.svc.cluster.local/abc123xyz789acct/idp
+    techdocs:
+      publisher:
+        type: googleGcs
+        googleGcs:
+          bucketName: "<bucket-name>"  
+            # Example: my-techdocs-bucket
+          bucketRootPath: "<root-path>/"  
+            # Example: techdocs/
+        remoteKeys:
           - remoteKeys:
               techdocs_gcs_sa:
                 name: <external-secret-name>  
@@ -172,6 +174,14 @@ After applying all configurations, you may need to address browser security warn
 This process establishes browser trust for the IDP microfrontend certificate. The browser will store this trust decision for subsequent visits.
 :::
 
+:::note Third-Party Integration Requirements
+If you need to integrate with third-party SaaS products such as PagerDuty, GitHub, or GitLab, their domains must be whitelisted in your firewall policies.
+
+**Example for PagerDuty integration:**
+- **FQDNs**: harness.pagerduty.com
+- **Protocol/Ports**: tcp:80, tcp:443
+:::
+
 ## Troubleshooting
 
 If you encounter issues during the deployment process, use these troubleshooting approaches to identify and resolve common problems.
@@ -213,4 +223,3 @@ Check the Master URL values in the `idp-service` logs:
 - Failover cluster: Master URL should be `dummy`
 
 If the Master URL appears as `null`, this indicates an infrastructure configuration issue, such as missing annotations, incorrect service account roles, or insufficient permissions.
-
