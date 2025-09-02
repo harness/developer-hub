@@ -79,7 +79,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ssca,
     icon: "img/icon_ssca.svg",
     description: <>Secure your software supply chain.</>,
-    link: "docs/category/get-started-with-scs",
+    link: "docs/software-supply-chain-assurance",
   },
   {
     title: "Manage Service Reliability",
