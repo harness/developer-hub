@@ -83,6 +83,7 @@ Cloud Asset Governance provides valuable recommendations, but when it comes to o
 
 <details>
 <summary>Recommendation: delete-unattached-aws-ebs</summary>
+
 **Description:** Delete all ebs volumes which are unattached
 
 **Policy Used:**
@@ -113,6 +114,7 @@ policies:
 
 <details>
 <summary>Recommendation: list-low-request-count-aws-elb</summary>
+
 **Description:** List ELBs with low request count
 
 **Policy Used:**
@@ -146,6 +148,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: migrate-gp2-to-gp3-aws-ebs</summary>
+
 **Description:** Migrate gp2 volumes to gp3
 
 **Policy Used:**
@@ -179,6 +182,7 @@ Ref: https://aws.amazon.com/blogs/storage/migrate-your-amazon-ebs-volumes-from-g
 </details>
 <details>
 <summary>Recommendation: delete-volume-absent-aws-ebs-snapshot</summary>
+
 **Description:** Delete snapshots with no volumes
 
 **Policy Used:**
@@ -208,6 +212,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: stop-unused-aws-rds</summary>
+
 **Description:** Stop unused RDS database
 
 **Policy Used:**
@@ -243,6 +248,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-unused-aws-elb</summary>
+
 **Description:** Delete unused ELB 
 
 **Policy Used:**
@@ -269,6 +275,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: release-unattached-aws-elastic-ip</summary>
+
 **Description:** Release unattached Elastic IPs
 
 **Policy Used:**
@@ -295,6 +302,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-underutilized-aws-cache-cluster</summary>
+
 **Description:** Delete underutilized cache cluster with CPU utilization less than 5% in the last 7 days.
 
 **Policy Used:**
@@ -330,6 +338,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: configure-lifecycle-aws-s3</summary>
+
 **Description:** Configure lifecycle for S3 buckets wherever it is absent which would help to reduce storage spend
 
 **Policy Used:**
@@ -469,6 +478,7 @@ If 20% of your data transitions to the Infrequent Access tier after 30 days, 20%
 </details>
 <details>
 <summary>Recommendation: delete-underutilized-aws-redshift</summary>
+
 **Description:** Delete any Amazon Redshift cluster where CPU Utilization has been less than 5% for the last 7 days
 
 **Policy Used:**
@@ -502,6 +512,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-old-manual-aws-redshift-snapshot</summary>
+
 **Description:** Delete all redshift snapshots older than 35 days with a lifetime retention period
 
 **Policy Used:**
@@ -533,6 +544,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-empty-aws-dynamodb-table</summary>
+
 **Description:** Delete DyanmoDB tables which are empty
 
 **Policy Used:**
@@ -553,6 +565,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-stale-aws-log-group</summary>
+
 **Description:** Delete stale cloud watch log groups
 
 **Policy Used:**
@@ -574,6 +587,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-stale-aws-rds-snapshot</summary>
+
 **Description:** Delete all stale(older than 28 days) RDS snapshots
 
 **Policy Used:**
@@ -596,6 +610,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-unencrypted-aws-firehose</summary>
+
 **Description:**  Delete Firehose which are not encrypted
 
 **Policy Used:**
@@ -616,6 +631,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-unencrypted-aws-sqs</summary>
+
 **Description:**  Delete SQS which are not encrypted
 
 **Policy Used:**
@@ -678,6 +694,7 @@ For a comprehensive list of all supported AWS resources, refer to the [AWS Resou
 
 <details>
 <summary>Recommendation: delete-idle-gcp-image</summary>
+
 **Description:** Delete GCP recommended idle images
 
 **Policy Used:**
@@ -706,6 +723,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-never-attached-gcp-disk</summary>
+
 **Description:** Delete GCP recommended idle persistent disks which were never attached to a VM and is blank
 
 **Policy Used:**
@@ -739,6 +757,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: stop-forever-running-gcp-instance</summary>
+
 **Description:** Stop the gcp instances that have an uptime greater than 30 days.
    
 **Policy Used:**
@@ -778,6 +797,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-old-gcp-snapshot</summary>
+
 **Description:** Delete gcp snapshots older than 14 days.
   
 **Policy Used:**
@@ -811,6 +831,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: stop-underutilized-gcp-instance</summary>
+
 **Description:** Stop underutilised instances with average CPU utilisation less than 5% in last 3 days.
 
 **Policy Used:**
@@ -851,6 +872,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: stop-underutilized-gcp-sql-instance</summary>
+
 **Description:** Stop underutilised sql instances with average CPU utilisation less than 5% in last 3 days
 
 **Policy Used:**
@@ -887,6 +909,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: snapshot-and-delete-unattached-gcp-disk</summary>
+
 **Description:** Snapshot and delete GCP recommended idle persistent disks which are unattached
 
 **Policy Used:** 
@@ -925,6 +948,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-idle-gcp-gke-cluster</summary>
+
 **Description:** List GCP Idle GKE Clusters Recommendations
 
 **Policy Used:** 
@@ -957,6 +981,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: list-cost-recommendations-gcp-cloud-run-service</summary>
+
 **Description:** 
 
 **Policy Used:** 
@@ -986,6 +1011,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: list-unused-gcp-bq-dataset</summary>
+
 **Description:** List BigQuery datasets that haven't been accessed in the last 7 days.
 
 **Policy Used:** 
@@ -1016,6 +1042,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-unused-gcp-function</summary>
+
 **Description:** Delete Cloud Functions that haven't been invoked in the last 7 days to reduce costs.
 
 **Policy Used:** 
@@ -1053,6 +1080,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: list-under-utilized-gcp-bucket</summary>
+
 **Description:** List low utilized gcp buckets in last 7 days.
 
 **Policy Used:** 
@@ -1094,6 +1122,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: list-hanged-gcp-dataflow-job</summary>
+
 **Description:** List Dataflow jobs that have been in an hanged state for more than 1 day.
 
 **Policy Used:** 
@@ -1130,6 +1159,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: delete-under-utilized-gcp-loadbalancer-address</summary>
+
 **Description:** Delete all load balancers with low utilizations, where packet count is less than 1000 in the last 72 hours.
 
 **Policy Used:** 
@@ -1169,6 +1199,7 @@ policies:
 </details>
 <details>
 <summary>Recommendation: list-under-utilized-gcp-redis</summary>
+
 **Description:** List Redis instances with less than 5% CPU utilization over the last 7 days.
 
 **Policy Used:** 
@@ -1217,6 +1248,7 @@ For a comprehensive list of all supported GCP resources, refer to the [GCP Resou
 
 <details>
 <summary>Recommendation: delete-low-utilized-azure-cosmodb</summary>
+
 **Description:** Delete low utilised CosmosDB based on total requests in last 72 hours.
 
 **Policy Used:**
