@@ -2,13 +2,18 @@
 title: Email step
 description: Send emails using pipelines
 sidebar_position: 5
+redirect_from:
+  - /docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step
+  - /docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/email_step
 ---
 
 This topic describes the settings for the Email step available in Continuous Delivery (CD) and custom stages.
 
 The Email step lets you easily send emails to users and teams during a pipeline execution.
 
-![picture 1](./static/email-step.png)
+<div align="center">
+  <DocImage path={require('./static/email-step.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 The Email step has the following features:
 
@@ -52,9 +57,18 @@ You can pass in the email as a Harness expression, such as `<+pipeline.triggered
 
 For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
-## CC
+## To User Groups
+
+You can select user groups to send the email to. For more information on how to add user groups, go to [User Groups](/docs/platform/role-based-access-control/add-user-groups/).
+
+
+## CC (Optional)
 
 You can add email addresses to the **CC** section to carbon copy addresses on the email that will be sent with the pipeline execution.
+
+## CC User Groups (Optional)
+
+You can select user groups to carbon copy addresses on the email that will be sent with the pipeline execution. 
 
 ## Subject
 
