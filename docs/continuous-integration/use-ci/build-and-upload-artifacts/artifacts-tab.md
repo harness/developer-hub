@@ -107,6 +107,17 @@ The URLs passed via `PLUGIN_FILE_URLS` are stored in `PLUGIN_ARTIFACT_FILE` in t
 
 In Kubernetes flow, the CI manager doesn't automatically create the temporary file and pass it via `PLUGIN_ARTIFACT_FILE` (unlike cloud flow). You need to pass `artifact_file: somefile.txt` explicitly as input. The plugin then creates this file (`somefile.txt`) in the JSON format above, containing the URLs passed via `PLUGIN_FILE_URLS` input, which is then processed and displayed under the Artifacts tab in the pipeline.
 
+```yaml
+- step:
+    type: Plugin
+    name: publish artifact metadata
+    identifier: publish_artifact_metadata
+    spec:
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+      image: plugins/artifact-metadata-publisher
+      settings:
+        file_urls: https://domain.com/path/to/artifact
+        artifact_file: temp.txt
 ## Build logs and artifact files
 
 When you run the pipeline, you can observe the step logs on the [Build details page](../viewing-builds.md), and you can find the artifact URL on the [Artifacts tab](../viewing-builds.md).
