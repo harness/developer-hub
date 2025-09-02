@@ -113,7 +113,7 @@ Best Practices
 
 - You can override both pod-level and container-level fields. Non-existent container names are ignored.
   
-- Do not pass `spec.initContainers` — this is not overrideable.
+- Do not pass `spec.initContainers` — this cannot be overridden.
 
 - Invalid YAML or unsupported fields can cause your build to fail.
 
