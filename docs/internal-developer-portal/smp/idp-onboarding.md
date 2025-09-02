@@ -14,13 +14,13 @@ This guide provides detailed instructions for deploying the Harness Internal Dev
 
 Before proceeding with the IDP deployment to SMP, ensure the following prerequisites are met:
 
-1. **Workload Identity** enabled on the target GKE cluster
+1. **Workload Identity** enabled on the target GKE cluster:
    Workload Identity allows your Kubernetes workloads to securely access Google Cloud services with fine-grained IAM permissions. [Configure Workload Identity in your GKE cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) following Google's [security best practices](https://cloud.google.com/blog/products/containers-kubernetes/introducing-workload-identity-better-authentication-for-your-gke-applications).
 
-2. **Kubernetes Service Account (KSA)** with developer-level permissions
-   Create a [Kubernetes Service Account](https://kubernetes.io/docs/concepts/security/service-accounts/) that will be linked to your Google Service Account. This account needs appropriate permissions for IDP operations. For GKE-specific guidance, see [Managing Service Accounts](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+2. **Kubernetes Service Account (KSA)** with developer-level permissions:
+   Create a [Kubernetes Service Account](https://kubernetes.io/docs/concepts/security/service-accounts/) that will be linked to your Google Service Account with the Kubernetes Engine Developer role. For GKE-specific guidance, see [Managing Service Accounts](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
 
-3. **Service Account token** for TechDocs integration
+3. **Service Account token** for TechDocs integration:
    The TechDocs component requires a service account token to access and render documentation properly.
 
 
@@ -118,6 +118,7 @@ idp:
               techdocs_gcs_sa:
                 name: <external-secret-name>  
                   # Example: TECH_DOCS_SECRET
+                  # This references the Service Account token from Infrastructure Requirement #3
             secretStore:
               kind: ClusterSecretStore  
                 # Example: ClusterSecretStore
@@ -142,6 +143,7 @@ idp-service:
       # Example: smpairgap
     ENVIRONMENT_BASE_URL: https://<dns-url>  
       # Example: https://smp.harness.io
+    # The following three settings reference the GKE cluster with Workload Identity enabled from Infrastructure Requirement #1
     IDP_APP_PRIMARY_WORKLOAD_IDENTITY_CLUSTER: <cluster-name>  
       # Example: smp-gke-cluster
     IDP_APP_PRIMARY_WORKLOAD_IDENTITY_LOCATION: <location>  
@@ -200,6 +202,8 @@ java.io.IOException: Unexpected Error code 403 trying to get security access tok
 
 Verify proper environment configuration by examining the `idp-service` logs for expected values:
 
+> Env: SMP, DeploymentType: SMP and DeploymentNamespace: `<namespace in idp-service configuration>`
+
 ```
 Env: SMP DevSpaceDefaultBackstageNamespace: envSpecific DevSpaceDefaultAccountId: envSpecific DeploymentType: SMP DeploymentNamespace: smpnamespace
 ```
@@ -208,10 +212,10 @@ These values should align with your intended configuration. Mismatches indicate 
 
 #### Database Configuration Validation
 
-Verify database entries to ensure proper configuration:
+In the idp-service database, confirm that:
 
-1. The `backstageNamespace` value should match the namespace specified in your `idp-service` configuration
-2. The `accountIdentifier` value should match your SMP environment's account ID
+1. The `backstageNamespace` collection mongoID matches the namespace provided in the `idp-service` config
+2. The `accountIdentifier` matches the account ID of the SMP environment
 
 Discrepancies in these values can cause operational issues with your IDP deployment.
 
