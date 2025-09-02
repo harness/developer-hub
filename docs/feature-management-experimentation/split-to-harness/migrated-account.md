@@ -18,10 +18,12 @@ The migration has been designed to be as straightforward for you as possible. Da
 ### If you usually log in with user/password
 
 1. Go to `app.harness.io`.
-1. Enter your Split login and enter `reset` as the password.
-1. After the login fails, click **Forgot password?** to reset your password.
-1. Follow the instructions on the screen and the email it sends.
-1. Log in to `app.harness.io`.
+1. Attempt to log in with your Split login and a random password.
+1. After the login fails, click **Forgot password?**
+1. Enter your Split login email and click **Reset password**.
+1. Find the email in your inbox with the subject, “Reset your Harness Platform password”
+1. Click the **Reset Password** button in the email and set your password in the page that appears.
+1. Log in to `app.harness.io` with your new password.
 
 ### If you usually log in with a single sign-on (SSO) tile
 
