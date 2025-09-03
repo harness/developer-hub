@@ -1,0 +1,11 @@
+{
+    "label": "Secrets, Security and Governance",
+    "position": "1000",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Secrets and Security"
+    }
+  }

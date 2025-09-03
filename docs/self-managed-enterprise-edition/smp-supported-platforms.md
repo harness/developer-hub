@@ -2,7 +2,7 @@
 title: What's supported
 description: Platforms and technologies supported by the on-prem Harness Self-Managed Enterprise Edition
 sidebar_label: What's supported
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 Self-Managed Enterprise Edition allows organizations to leverage nearly all Harness modules and features available on Harness SaaS, ensuring a powerful and flexible on-premises experience. 
@@ -16,11 +16,11 @@ This section provides a clear overview of the Supported features, integrations, 
 * [Continuous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
 * [Continuous Integration](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix)
 * [Custom Dashboards](/docs/platform/dashboards/cdb-whats-supported)
-* [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported)
-* [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
-* [Supply Chain Security (Beta)](/docs/software-supply-chain-assurance/ssca-supported)
-* [Infrastructure as Code Management](/docs/infrastructure-as-code-management)
+* [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported/sto-deployments)
+* [AI SRE (Beta)](/docs/ai-sre/get-started/overview)
+* [Supply Chain Security](/docs/software-supply-chain-assurance/ssca-supported)
 * [Code Repository](/docs/code-repository)
+* [Database DevOps](/docs/database-devops/dbdevops-supported-platforms.md)
 
 For more details on the supported features of other Harness modules, visit [Harness Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
@@ -33,10 +33,12 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 ## Supported functionality
 * [Self-signed certificates](/docs/self-managed-enterprise-edition/install/install-using-helm/#use-self-signed-certificates-with-helm-based-installations)
 * [Air-gap mode](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment)
-* [Infrastructure monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem)
+* Infrastructure monitoring
+    - [Prometheus](/docs/self-managed-enterprise-edition/monitoring/install-prometheus).
+    - [Grafana](/docs/self-managed-enterprise-edition/monitoring/install-grafana)
 * [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
-* [External Database](./advanced-configurations/external-db/configure-external-databases)
-* [Disaster Recovery](./advanced-configurations/set-up-disaster-recovery)
+* [External Database](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-external-databases)
+* [Disaster Recovery](/docs/self-managed-enterprise-edition/advanced-configurations/set-up-disaster-recovery)
 
 ## Kubernetes Networking 
 

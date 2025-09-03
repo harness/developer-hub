@@ -63,7 +63,7 @@ If the Background step runs directly on the host or in a Kubernetes cluster buil
 
 * **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
 * **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
+* **GAR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest`.
 
 <figure>
 
@@ -95,7 +95,7 @@ Select the shell type for the commands defined in **Entry Point** or **Command**
 
 Supply a list of arguments in `exec` format. **Entry Point** arguments override the image `ENTRYPOINT` and any commands in the **Command** field. Enter each argument separately.
 
-If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, include both the image `ENTRYPOINT`, such as `docker-entrypoint.sh`, and your additional arguments in **Entry Point**.
+If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, include both the image `ENTRYPOINT`, such as `dockerd-entrypoint.sh`, and your additional arguments in **Entry Point**.
 
 
 <Tabs>
@@ -115,7 +115,7 @@ If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, inc
 
 ```yaml
                     entrypoint:
-                      - docker-entrypoint.sh
+                      - dockerd-entrypoint.sh
                       - "--mtu=1450"
 ```
 
@@ -202,7 +202,7 @@ In this example, the pulls a `python` image and executes a shell script (`Sh`) t
               - step:
                   ...
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |-

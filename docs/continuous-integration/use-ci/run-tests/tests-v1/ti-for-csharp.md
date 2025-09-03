@@ -9,12 +9,10 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info
+:::warning
 This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
 
 While **Run Tests** step remains backwards compatible, Harness recommends using the newer [**Test** ](../tests-v2.md) step (Test Intelligence v2) for simplified user experience.
-
-Currently, TI (v1) for C# is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 ## Enable TI for C#
@@ -46,7 +44,7 @@ You must select **Run only selected tests** (`runOnlySelectedTests: true`) to en
                   identifier: runTestsWithIntelligence
                   name: runTestsWithIntelligence
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
                     language: Csharp
                     buildEnvironment: Core
@@ -217,7 +215,7 @@ pipeline:
                   identifier: runTestsWithIntelligence
                   name: runTestsWithIntelligence
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
                     language: Csharp
                     buildEnvironment: Core
@@ -283,7 +281,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 * **Docker Registry:** Enter the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
 * **ECR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
+* **GAR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest`.
 
 </details>
 

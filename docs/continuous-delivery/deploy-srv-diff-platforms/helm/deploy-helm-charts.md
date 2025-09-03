@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import ServiceHooks from '/docs/continuous-delivery/shared/service-hooks.md'
+
 This topic describes how to deploy Helm charts in standard Helm syntax in YAML from a remote Git repo, HTTP Helm Repository, or cloud storage service (Google Cloud Storage, AWS S3).
 
 This process is also covered in the [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
@@ -260,6 +262,50 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
   You can also select **Expression** and use [Harness expressions](/docs/platform/variables-and-expressions/harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
 
+### Manifest Optional Values
+
+You can now proceed with your Helm chart deployment without configuring a `values.yaml` file in the **manifest configuration** of a Helm service.
+
+:::note
+This feature is behind the feature flag `CDS_OPTIONAL_VALUES_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+To enable this option, go to the **Service Configuration**. Under the **Manifests** section, click **Add Manifest** or edit the existing Helm chart.
+
+Enable the **Optional** checkbox in the **Manifest Details** tab, below to the **Values.yaml** field.
+
+When this option is enabled, the **Values YAML** is no longer required. If the file is missing from the specified path, the deployment will still proceed without it.
+
+<div align="center">
+  <DocImage path={require('./static/helm-manifest-optional-values.png')} width="60%" height="60%" title="Optional values.yaml support" />
+</div>
+
+<details>
+<summary>Sample YAML</summary>
+
+Here is a sample of how the manifest would look when this checkbox is enabled. The `optionalValuesYaml` will be set to `true`.
+
+```yaml
+      manifests:
+        - manifest:
+            identifier: test
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: account.gitconnector
+                  gitFetchType: Branch
+                  paths:
+                    - path_to_manifest
+                  repoName: test
+                  branch: test
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+              optionalValuesYaml: true
+```
+</details>
+
 - **Skip Resource Versioning**: By default, Harness versions ConfigMaps and secrets deployed into Kubernetes clusters. In some cases, such as when using public manifests or Helm charts, you cannot add the annotation. When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and secrets for the resource. If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and secrets.
 - **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart. Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
 - **Command Type**: Select the Helm command type you want to use. For example:
@@ -409,6 +455,43 @@ All files contain the same key:value pair. The values3.yaml key:value pair overr
 Your values.yaml file can use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
+
+### Optional Override File
+
+You can also proceed with your Helm deployment without configuring an **override file** in the **manifest configuration**.
+
+To enable this, click **Add Additional Override File** or edit an existing override file in the **Manifest** section of the Helm service.
+
+Enable the **Optional** checkbox in the **Manifest Details** tab, below to the **File Path** field.
+
+When this option is enabled, the **override file** is no longer required. If the file is missing from the specified path, the deployment will still proceed without it.
+
+<div align="center">
+  <DocImage path={require('./static/helm-override-optional-value.png')} width="60%" height="60%" title="Optional override file support" />
+</div>
+
+<details>
+<summary>Sample YAML</summary>
+
+Here is a sample of how the Values config would look when this checkbox is enabled. The `optionalValuesYaml` will be set to `true`.
+
+```yaml
+
+- manifest:
+            identifier: values_test
+            type: Values
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: account.github_connector
+                  gitFetchType: Branch
+                  paths:
+                    - path_to_file
+                  branch: main
+              optionalValuesYaml: true
+```
+</details>
 
 ## Override chart values YAML in environment
 
@@ -567,6 +650,21 @@ You deployment is successful.
 
 Harness has two ways of performing Helm Steady State Checks for Native Helm Deployment types (Helm Deployments managed by Helm). Depending on your use case and needs you can opt into either option via the setting. By default, Harness will perform a Helm Steady State Check on the deployed resources however, the mechanism of how Harness' does it differs based on the setting.
 
+### Helm Test Support
+
+Harness now lets you run your chart’s built-in tests immediately after deployment. Charts that include `helm.sh/hook: test jobs` under templates can be validated with a single checkbox.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_ENABLE_RUN_HELM_CHART_TESTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+- Where to find it: In any Native Helm Deploy step, enable **Run Chart Tests**.
+- What it does: After `helm upgrade --install ...`, Harness will invoke `helm test <release-name>`.
+- Pass/fail: Your test containers must exit 0 for success. Failures will mark the step (and stage) as failed.
+- Skip logging: If you leave the box unchecked, Harness logs **Helm test skipped** and proceeds.
+
+For more information on Helm Chart Tests, go to the [Helm documentation](https://helm.sh/docs/topics/chart_tests/)
+
 #### Disabled Setting - Native Helm steady state for jobs - Default Mode
 
 Harness will check for the steady state of the deployed resources via the ConfigMap Harness generates to manage and track the deployment. The limitation of this method, is we do not track Kubernetes Jobs objects that are being created as part of the deployment and wait for them to reach a steady state.
@@ -599,6 +697,12 @@ Helm chart deployments support versioning and rollback in the same way as standa
 
 For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
 
+:::info
+**Deployment sequence**: Harness first runs a canary release, then a full release. Helm bumps the revision by 1 on each step, so together they advance it by 2 (e.g. `v1 → v2` [canary] then `v2 → v3` [full]).
+
+**Rollback**: To revert, Harness subtracts 2 from the current revision (e.g. `v3 – 2 = v1`), skipping the now-deleted canary revision (`v2`).
+:::
+
 ## Trigger the pipeline on a new chart version
 
 You can set up a Harness trigger to listen on the chart repo and execute the pipeline when a new chart version appears. For more information, go to [Trigger Pipelines on New Helm Chart](/docs/platform/triggers/trigger-pipelines-on-new-helm-chart).
@@ -625,81 +729,10 @@ All dependency repositories must be available and accessible from the Harness De
 
 ## Service hooks
 
-Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer to Git and other repositories, and install them with the main Helm Chart.
-
-Harness supports two types of service hooks: preHook and postHook. These are the service hook actions supported by Harness:
-
-- Fetch files: Service hooks can be triggered before or after the manifest files are fetched.
-- Manifest templates: Service hooks can be triggered before or after the manifest has been rendered.
-- Steady state check: Service hooks can be triggered before or after the steady state check.
-
-Each service hook has its own context variable:
-
-| **Action**         | **Context Variable and Description**                                                                                                                                                                                         |
-| :----------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Fetch files        | `$MANIFEST_FILES_DIRECTORY`: The path to the directory from where the manifest files can be downloaded.                                                                                                                      |
-| Manifest template  | `$MANIFEST_FILES_DIRECTORY`: The path to the directory where the original Kubernetes template is located. |
-| Steady state check | `$WORKLOADS_LIST`: The comma separated list of all workloads. <br />`$MANAGED_WORKLOADS`: The comma separated list of workloads managed by Harness. <br />`$CUSTOM_WORKLOADS`: The comma separated list of custom workloads. |
-
-You can use service hooks to run additional configurations when carrying out the actions above. For example, when you run a deployment, you must fetch files first. After fetching the files, you can resolve the secrets of those encrypted files using Helm secrets, SOPS, AGE keys, and so on. You can use the context variables above during deployment. For more details, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
-
-Here are some sample service hook YAMLs:
-
-```
-hooks:
-  - preHook:
-      identifier: sample
-      storeType: Inline
-      actions:
-        - FetchFiles
-        - TemplateManifest
-        - SteadyStateCheck
-      store:
-        content: echo "sample Hook for all action"
-```
-
-```
-hooks:
-  - postHook:
-      identifier: dependency
-      storeType: Inline
-      actions:
-        - FetchFiles
-      store:
-        content: |
-          cd $MANIFEST_FILES_DIRECTORY
-          helm repo add test-art-remote https://sample.jfrog.io/artifactory/sample-charts/ --username automationuser --password <+secrets.getValue("reposecret")>
-          helm dependency build
-          cd charts
-```
-
-```
-hooks:
-  - postHook:
-      identifier: cdasd
-      storeType: Inline
-      actions:
-        - FetchFiles
-      store:
-        content: |-
-          source $HOME/.profile
-          cd $MANIFEST_FILES_DIRECTORY
-          echo $MANIFEST_FILES_DIRECTORY
-          export SOPS_AGE_KEY=<+secrets.getValue("agesecret")>
-          helm secrets decrypt secrets.enc.yaml
-          helm secrets decrypt secrets.enc.yaml > secrets.yaml
-```
-
-For more information about Helm dependencies, go to [Helm dependency](https://helm.sh/docs/helm/helm_dependency/) and [Helm dependency update](https://helm.sh/docs/helm/helm_dependency_update/).
-
-:::warning
-Harness does not support **Helm hooks** for Helm **Blue-Green** and **Canary** deployments.
-:::
+<ServiceHooks />
 
 ### Video summary
 
-<!-- Video:
-https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
 <DocVideo src="https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537" />
 
 ### Use case: Add private repositories as a Helm Chart dependency

@@ -1,6 +1,6 @@
 ---
 title: Openshift
-sidebar_position: 15
+sidebar_position: 7
 description: Openshift Security Context Constraint to control permissions for pods in cluster
 redirect_from:
 - /docs/chaos-engineering/technical-reference/security/security-templates/openshift-scc
@@ -62,7 +62,7 @@ kind: SecurityContextConstraints
 # To mount the socket path directory in helper pod
 allowHostDirVolumePlugin: true
 allowHostIPC: false
-allowHostNetwork: false
+allowHostNetwork: true
 # To run fault injection on a target container using pid namespace.
 # It is used in stress, network, dns and http experiments.
 allowHostPID: true

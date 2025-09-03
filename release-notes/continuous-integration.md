@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-03-06T10:00
+date: 2025-08-19T10:00
 sidebar_position: 10
 ---
 
@@ -20,70 +20,13 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
-## March 2025
-
-
 :::warning
 
-**Action Required: Avoid Docker Hub Rate Limits**
+**Network Allowlisting Update for Cloud Linux/ARM**
 
-**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
-on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
+Harness supports allowlisting of its SaaS infrastructure IPs to enable secure access to private networks. This is helpful when you want to connect Harness to internal systems such as Kubernetes clusters, artifact repositories, SCMs, or other internal services.
 
-* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
-* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
-* **Private registry**: Pull images from your own private registry.
-
-[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
-
-:::
-
-
-:::warning
-
-**Action Required: Migration from GCR to GAR**
-
-Google Container Registry (GCR) is being decommissioned. 
-
-* As part of this change, support for the **Build and Push to GCR step in Harness CI will be discontinued**. Customers currently using this step need to **transition to the Build and Push to Google Artifact Registry (GAR)** step to continue building and pushing container images without interruption.
-* Customers that have configured HarnessImage Connector to pull [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) form GCR, need to update the connector configurations to the [new Google Artifact Registry URL](http://us-docker.pkg.dev/gar-prod-setup/harness-public)
-
-To ensure uninterrupted service, we recommend completing these updates by April 22, 2025.
-* After March 18, 2025, writing images to Google Container Registry (GCR) will no longer be possible.
-* After April 22, 2025, reading images from GCR will also be disabled.
-
-For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
-:::
-
-
-:::warning
-
-**Network allowlisting Update for Hosted (Cloud) Linux Infrastructure**
-
-Harness Cloud users utilizing hosted Linux infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration.
-
-To ensure uninterrupted connectivity and functionality for your CI builds, please add to allowlist the following IP range in your network settings by **March 15th, 2025**:
-
-CIDR Blocks:
-
-```
-15.204.17.0/24, 15.204.19.0/24, 15.204.23.0/24, 15.204.69.0/24, 15.204.70.0/24, 15.204.71.0/24, 51.81.128.0/24, 51.81.189.0/24
-```
-
-**Additional IPs to add to allowlist:**
-```
-34.94.194.45, 34.133.164.105, 35.184.10.123, 34.171.8.178, 34.172.44.211, 34.28.94.170, 34.75.255.154, 34.139.54.93, 35.231.172.154,  
-35.227.126.5, 35.231.234.224, 34.139.103.193, 34.139.148.112, 35.196.119.169, 34.73.226.43, 35.237.185.165, 34.162.90.200, 34.162.31.112,  
-34.162.177.5, 34.162.189.244, 34.162.184.1, 34.125.74.8, 34.125.80.89, 34.16.190.122, 34.125.82.12, 34.125.11.217, 35.197.35.30,  
-35.233.237.208, 34.83.94.29, 34.168.158.33, 34.168.20.8, 34.82.156.127, 34.83.1.152, 34.168.60.254, 34.82.65.138, 34.82.140.146,  
-34.127.6.209, 35.185.226.205, 35.247.24.71, 34.168.30.50, 35.233.132.196, 34.168.214.255, 34.102.103.7, 34.102.40.149, 34.102.16.205,  
-34.127.65.210, 35.233.172.173
-```
-
-**We will begin transitioning to the new IP range gradually from March 15th, 2025, to March 30th, 2025**. During this period, ensure both the old and new IP configurations are set to ensure a seamless transition.
-
-If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
-
+We recommend contacting [Harness Support](https://support.harness.io/) to receive the correct list of IPs and guidance based on your use case, region, and Harness modules in use.
 :::
 
 :::note
@@ -96,29 +39,595 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 :::
 
+:::note
+**Harness Cloud – New VM Image Capabilities**:
+
+- **Select VM Image Version** – Choose a specific VM image version for your CI stages via UI or YAML (requires `CI_ENABLE_HOSTED_IMAGE_MANAGEMENT` flag).
+- **Updated `latest` Tag** - Stages without a specified image will now default to **Ubuntu 24.04** (behind `CI_ENABLE_HOSTED_BETA_IMAGES flag`).
+
+Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
+:::
+
+## August 2025
+
+### Version 1.93
+
+<!-- 2025-08-25 -->
+#### Fixed issues
+- Fixed a bug that prevented Docker layer caching from working when the step was run inside a **Step Group**. (CI-18603, CI-18604)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira. | 1.17.00              | 1.17.1         |
+| `harness/ci-addon`       | Version upgrade for Jira. | 1.17.00              | 1.17.1         |
+| `plugins/buildx-ecr`          | Provide option to disable TLS verification in buildkit cache client.                      | 1.3.3                | 1.3.4          |
+| `plugins/buildx-acr`          | Provide option to disable TLS verification in buildkit cache client.                      | 1.3.3                | 1.3.4          |
+| `plugins/buildx-gar`          | Provide option to disable TLS verification in buildkit cache client.                      | 1.3.3                | 1.3.4          |
+
+### Version 1.92
+
+<!-- 2025-08-18 -->
+
+#### New features and enhancements
+
+- Allow users to run authenticated Git commands in any Run step after the codebase has been cloned via Git Connector, without manually passing credentials again. (CI-18611)
+- Improved handling of test failures in Test Intelligence with the CI_TI_RERUN_FAILED_TEST feature flag, which now enables an environment variable to control reruns of failed tests. (CI-18581)
+
+#### Fixed issues
+
+- Fixed an issue where long-running runner sessions (over 24 hours) could lose log access. (CI-18669)
+- Improved reliability of PR build status updates in pipelines. (ZD-88744, CI-18474)
+- Resolved an error that caused some API-triggered pipelines to fail when using Docker secrets. (ZD-89259, CI-18430)
+- Fixed a problem where logs were lost after UI refresh in certain **Build and Push** steps, ensuring better log persistence. (ZD-89263, CI-18417)
+- Resolved DNS resolution problems when using Harness Cloud Secure Connect for Docker image pulls in native Build and Push steps. (CI-18459)
+- Previously, pipelines could fail in later steps if the environment variable `PLUGIN_CACHE_KEY` was empty or null. This issue has been resolved by surfacing the error earlier in the **Save Cache** step, allowing customers to identify and fix the problem sooner. (CI-18537)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira. | 1.16.99              | 1.17.00         |
+| `harness/ci-addon`       | Version upgrade for Jira. | 1.16.99              | 1.17.00         |
+| `plugins/cache`          | Bzlmod cache support added.                      | 1.9.9                | 1.9.10          |
+
+### Version 1.91
+
+<!-- 2025-08-11 -->
+
+#### New features and enhancements
+
+- **Authenticated Git operations are now available in all Run steps**: When enabled, pipelines can now reuse Git credentials across all Run steps without re-authentication. This enables seamless authenticated Git operations (such as **push** or **fetch**) throughout the pipeline.(CI-18088)
+
+#### Fixed issues
+
+- **Added repo name validation for dockerhub** - **BuildAndPushToDockerRegistry** step should now validate and highlight errors for any capitalized letters in the repo name field. (CI-8044)
+- **GCSUpload plugin successfully uploads file to the right path** - GCSUpload plugin should now upload the file to the right path without filename duplication. (CI-18582)
+- **Improved the experience in the Getting Started Wizard in CI** - Lag in populating repo list in Getting Started Wizard has now been resolved. (CI-18280)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                                                               | **Previous version** | **New Version** |
+| ------------------------ | ---------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira for Lite Engine Addon .                                         | 1.16.98.1            | 1.16.99         |
+| `harness/ci-addon`       | Version upgrade for Jira for Lite Engine Addon .                                         | 1.16.98.1            | 1.16.99         |
+| `plugins/gcs`            | Single file uploads with complete target paths no longer result in filename duplication. | 1.6.4                | 1.6.5           |
+
+### Version 1.90
+
+<!-- 2025-08-04 -->
+
+#### New features and enhancements
+
+- Self-signed certificates provided via `DESTINATION_CA_PATH` and `CI_MOUNT_VOLUMES` are now appended to the existing public certificates in the same path, instead of replacing them, in CI build pods. This behavior is controlled by the feature flag `CI_APPEND_CERTS` and is supported only for Linux nodes. Windows is not supported. (CI-15527)
+
+#### Fixed issues
+
+- Added backend validation to detect any capitalized letters in the Docker Repository field for the **BuildAndPushDockerRegistry** step. This validation now occurs before execution, whereas previously it was only caught during pipeline runtime. (CI-8044)
+- Fixed an issue where CI Intelligence savings were incorrectly computed when a pipeline was terminated abnormally (aborted, errored, or expired). (CI-18450)
+
+## July 2025
+
+### Version 1.89
+
+<!-- 2025-07-28 -->
+
+#### New features and enhancements
+
+- Added comprehensive glob pattern support for source paths (.txt, \*_/_.go, multiple comma-separated patterns) with full backward compatibility and enhanced ignore pattern functionality. (CI-18070)
+
+#### Fixed issues
+
+- Fixed an issue where Build Intelligence savings were not displayed for Gradle builds. The Gradle report glob path was updated to correctly read report files even when they are located inside subdirectories. (CI-18258, ZD-88421)
+- Fixed a security vulnerability affecting only the `drone-git-linux-AMD64` variants that used the RHEL UBI8 base image (`redhat/ubi8-minimal:8.8`). The image has been updated to use `redhat/ubi9-minimal:9.6`. (CI-17869, ZD-85646)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                                                                                        | **Previous version** | **New Version**  |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------- | -------------------- | ---------------- |
+| `harness/drone-git`      | Fixed a security vulnerability affecting the `drone-git-linux-AMD64` variants that used the RHEL UBI8 base image. | 1.7.1-rootless       | 1.7.2-rootless   |
+| `plugins/gcs`            | Added comprehensive glob pattern support for source paths.                                                        | 1.6.3                | 1.6.4            |
+| `harness/ci-addon`       | Fixed an issue with secret masking for JSON-formatted secrets.                                                    | rootless-1.16.92     | rootless-1.16.97 |
+| `harness/ci-lite-engine` | Fixed an issue with secret masking for JSON-formatted secrets.                                                    | rootless-1.16.92     | rootless-1.16.97 |
+
+### Version 1.88
+
+<!-- 2025-07-21 -->
+
+#### New features and enhancements
+
+- You can now enable path-style addressing for S3 caching in self-hosted builds using DLC by setting the `PLUGIN_PATH_STYLE` environment variable. This allows compatibility with S3 providers that do not support virtual-hosted style URLs. (CI-18346)
+- In Kubernetes builds, CI Manager now retrieves the OIDC token and sets it in the `PLUGIN_OIDC_TOKEN_ID` environment variable. This allows the `aws-oidc` and `gcp-oidc` plugins to work seamlessly, similar to how they operate in Cloud builds. (CI-18317)
+
+#### Fixed issues
+
+- Resolved an issue where cache upload and restore steps on Windows could fail due to improper handling of backslashes in file paths. (CI-18106)
+- Fixed an issue where GitLab SHA builds failed due to missing host URL resolution. It will now go via delegate flow if selected. (CI-17996, ZD-83042, ZD-86364, ZD-87434)
+- Fixed an issue where missing Kubernetes connector details during capability check caused dry run deletion to fail. The required info is now passed to the delegate task. (CI-17994, ZD-86877, ZD-89248)
+- Fixed an issue with secret masking for JSON-formatted secrets. (CI-13780)
+
+#### Harness images updates
+
+| **Image**            | **Change**                                                                                                                              | **Previous version** | **New Version** |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `plugins/cache`      | Resolved an issue where cache upload and restore steps on Windows could fail due to improper handling of backslashes in file paths.     | 1.9.8                | 1.9.9           |
+| `plugins/docker`     | The default Drone plugins used in out-of-the-box build steps now emit a step log warning when a Base Image Connector is not configured. | 20.18.6              | 21.0.1          |
+| `plugins/buildx`     | Support path-style addressing for S3 caching in self-hosted builds using DLC                                                            | 1.3.4                | 1.3.5           |
+| `plugins/buildx-ecr` | Support path-style addressing for S3 caching in self-hosted builds using DLC                                                            | 1.3.2                | 1.3.3           |
+| `plugins/buildx-acr` | Support path-style addressing for S3 caching in self-hosted builds using DLC                                                            | 1.3.2                | 1.3.3           |
+| `plugins/buildx-gar` | Support path-style addressing for S3 caching in self-hosted builds using DLC                                                            | 1.3.2                | 1.3.3           |
+
+### Version 1.87
+
+<!-- 2025-07-14 -->
+
+#### New features and enhancements
+
+- You can now provide an overlay YAML to override the pod spec in Kubernetes builds. This feature is behind the feature flag `CI_K8S_OVERLAY_YAML`. For details, check out [the documentation](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/customize-podspec). (CI-17391)
+- Added support for GitHub Actions and Bitrise steps on both VM and Local Runner infrastructures. Check out the following docs for specific step:
+  - [GitHub Actions step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step#support-for-github-actions-on-vm-and-local-runner-build-infrastructure)
+  - [Bitrise step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin#support-for-bitrise-steps-on-vm-and-local-runner-build-infrastructure)
+- Added support for increasing the Docker-based CI infrastructure timeout from the default 24 hours to up to 35 days. Default behavior remains unchanged. To enable this extended timeout, turn on the feature flag `CI_ENABLE_LONG_TIMEOUTS` and configure the desired timeout at the stage level. For details, check out the [stage timeout note](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#stage-timeout). (CI-18163)
+- The default Drone plugins used in out-of-the-box build steps now emit a step log warning when a Base Image Connector is not configured. Additionally, the Drone Kaniko images have been updated to use Chainguard’s maintained fork of Kaniko as the base. (CI-17953)
+
+#### Harness images updates
+
+| **Image**            | **Change**                                                                                                                                    | **Previous version** | **New Version** |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `plugins/kaniko`     | Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base.                                                    | 1.10.6               | 1.11.4          |
+| `plugins/kaniko-ecr` | Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base.                                                    | 1.11.1               | 1.11.4          |
+| `plugins/kaniko-acr` | Updated the Drone Kaniko images to use Chainguard’s maintained fork of Kaniko as the base.                                                    | 1.11.2               | 1.11.4          |
+| `plugins/docker`     | The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.6              | 21.0.1          |
+| `plugins/ecr`        | The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.7              | 21.0.1          |
+| `plugins/acr`        | The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 20.18.8              | 21.0.1          |
+| `plugins/buildx`     | The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.3                | 1.3.4           |
+| `plugins/buildx-ecr` | The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.1                | 1.3.2           |
+| `plugins/buildx-acr` | The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.1                | 1.3.2           |
+| `plugins/buildx-gar` | The default Drone plugins used in out-of-the-box build steps now emit a warning in the step logs if a Base Image Connector is not configured. | 1.3.1                | 1.3.2           |
+
+### Version 1.86
+
+<!-- 2025-07-07 -->
+
+#### New features and enhancements
+
+- Reduced the size of the Windows Artifactory plugin image by ~80%, improving build performance and resource usage. (CI-17716)
+
+#### Fixed issues
+
+- Fixed an issue where `PLUGIN_SOURCE_IMAGE` values with registry URLs containing ports were incorrectly parsed, causing image lookup failures. (CI-18019, ZD-87175)
+- Fixed an issue where GitLab SHA builds did not route through the delegate even when the connector was configured to do so, causing certificate errors for some users. These requests now correctly go through the delegate. (CI-17996, ZD-83042, ZD-86364, ZD-87434)
+- Improved handling of empty Git-related fields in explicit **Git Clone** steps when using general Git connectors. These connectors now work reliably across a broader range of configurations. (CI-18006)
+
+#### Harness images updates
+
+| **Image**             | **Change**                                                                                                                                    | **Previous version** | **New Version** |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `plugins/buildx`      | Fixed an issue where `PLUGIN_SOURCE_IMAGE` values with registry URLs containing ports were incorrectly parsed, causing image lookup failures. | 1.3.1                | 1.3.3           |
+| `plugins/buildx-ecr`  | Fixed an issue where `PLUGIN_SOURCE_IMAGE` values with registry URLs containing ports were incorrectly parsed, causing image lookup failures. | 1.2.17               | 1.3.1           |
+| `plugins/buildx-acr`  | Fixed an issue where `PLUGIN_SOURCE_IMAGE` values with registry URLs containing ports were incorrectly parsed, causing image lookup failures. | 1.2.17               | 1.3.1           |
+| `plugins/buildx-gar`  | Fixed an issue where `PLUGIN_SOURCE_IMAGE` values with registry URLs containing ports were incorrectly parsed, causing image lookup failures. | 1.2.17               | 1.3.1           |
+| `plugins/artifactory` | Reduced the size of the Windows Artifactory plugin image by ~80%, improving build performance and resource usage.                             | 1.7.5                | 1.7.6           |
+
+## June 2025
+
+### Version 1.85
+
+<!-- 2025-06-30 -->
+
+#### New features and enhancements
+
+- Added support for **Clone Codebase** field as Harness expression. (CI-17024)
+
+#### Fixed issues
+
+- Fixed an issue where the codebase icon in the right sidebar of Pipeline Studio was incorrectly showing a failed state when the **repoName** in the codebase configuration was set as a runtime input. (ZD-84658, CI-17640)
+- Fixed an issue where expressions in environment variables for Build and Push steps were not evaluated if they depended on values (e.g., output variables) produced by earlier steps. This occurred because evaluation happened too early during stage initialization. Expressions are now evaluated just before step execution, ensuring correct resolution. (CI-17763, ZD-85822)
+- Resolved an issue where Docker connectors used as base image connectors in **Build and Push** steps failed to authenticate when the URL was set to `https://index.docker.io/v2/`. The backend now implicitly converts this to the correct v1 endpoint (`https://index.docker.io/v1/`) to ensure proper authentication. (CI-14112)
+- Fixed an issue where opening a pipeline from the Pipelines view and selecting a CI stage did not display the execution view as expected. (CI-17918)
+
+#### Harness images updates
+
+| **Image**                      | **Change**                                                                      | **Previous version** | **New Version** |
+| ------------------------------ | ------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `harness/harness-cache-server` | Fixed an issue with Build Intelligence communication to the cache proxy server. | 1.7.3                | 1.7.4           |
+
+### Version 1.84
+
+<!-- 2025-06-16 -->
+
+#### New features and enhancements
+
+- Added [**Secure Connect**](/docs/continuous-integration/secure-ci/secure-connect/) support for the Vault connector in the UI. (CI-17710, ZD-84099)
+
+#### Harness images updates
+
+| **Image**                      | **Change**                                                                                      | **Previous version** | **New Version** |
+| ------------------------------ | ----------------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `harness/harness-cache-server` | Fixed an issue with Amazon s3 bucket uploads with presigned URLs for Harness Build Intelligence | 1.7.2                | 1.7.3           |
+
+### Version 1.83
+
+<!-- 2025-06-09 -->
+
+#### New features and enhancements
+
+- Improved error handling in CI steps by adding null safety checks for Pod and PodStatus objects to prevent `NullPointerException`. (CI-17294)
+
+#### Fixes issues
+
+- Resolved compatibility issues with the `gradle-build-cache-plugin` for Java 8. After the update, the plugin was verified to work with JDK 8, JDK 11, and JDK 17. (CI-15707)
+
+#### Harness images updates
+
+| **Image**                      | **Change**                                                                            | **Previous version** | **New Version** |
+| ------------------------------ | ------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`             | Resolved addon connection errors in Delegate build pipeline.                          | 1.16.88              | 1.16.90         |
+| `harness/ci-lite-engine`       | Resolved addon connection errors in Delegate build pipeline.                          | 1.16.88              | 1.16.90         |
+| `plugins/kaniko-acr`           | Added push-only support to `kaniko-acr`.                                              | 1.10.7               | 1.11.2          |
+| `harness/harness-cache-server` | Moved build cache proxy server to containerless.                                      | 1.7.1                | 1.7.2           |
+| `plugins/cache`                | Changed cache restore behavior when multiple cache key entries share a common prefix. | 1.9.7                | 1.9.8           |
+
+### Version 1.82
+
+<!-- 2025-06-02 -->
+
+#### New features and enhancements
+
+- Changed cache restore behavior when multiple cache key entries share a common prefix. This ensures that partial key matches no longer result in incorrect path construction or unpredictable restore outcomes.
+
+  - Strict Mode (default): Only restores from exact key matches, preventing collisions and ensuring reliable behavior.
+
+  - Flexible Mode (PLUGIN_STRICT_KEY_MATCHING=false): Allows restoring all entries that match the prefix, but may result in multiple paths being restored and potential conflicts.
+
+This applies to both GCS and S3 cache storage backends. For details, check out the [docs](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs/#avoiding-prefix-collisions-during-restore).
+
+This feature is behind the feature flag `PLUGIN_STRICT_KEY_MATCHING`. (CI-17216, ZD-82800)
+
+#### Fixes issues
+
+- Fixed an issue where step identifiers in flexible templates included the stage name, which caused unexpected behavior during stage insertion. The stage name is now removed from the identifier to ensure consistent behavior. This fix was deployed as a hotfix in `ci-manager` version `1.81.3`. (CI-17711)
+- Fixed an issue where removing a non-CI stage resulted in the removal of CI codebase configuration. (CI-17661, ZD-85176)
+
+## May 2025
+
+### Version 1.81
+
+<!-- 2025-05-26 -->
+
+#### New features and enhancements
+
+- The following features are now available in beta:
+
+  - [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) for the Maven build tool (version 3.9+).
+
+  - [Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview) for JavaScript (Jest) and Kotest.
+
+  To join the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
+
+- Previously, CI stage timeouts for Kubernetes infrastructure were limited to a maximum of 24 hours. Some stages, however, require longer timeouts. Harness CI now supports stage timeouts of up to 35 days for Kubernetes-based CI stages. To enable this functionality, set the desired timeout value (greater than 24 hours) in the **Overview** section of the CI stage. (CI-15102, ZD-72737)
+
+  This feature is behind the feature flag `CI_ENABLE_LONG_TIMEOUTS`.
+
+#### Fixed issues
+
+- Fixed an issue where pod cleanup requests were sent to an incorrect delegate when multiple delegates across clusters shared the same selector tag. This occurred specifically when pipelines were aborted during the init step, preventing Harness from receiving Pod IP information required for capability checks. The fix bypasses the connectivity check when no IP is available and introduces a dry-run pod deletion as a capability check. (CI-17241, ZD-83069)
+
+### Version 1.80
+
+<!-- 2025-05-19 -->
+
+#### New features and enhancements
+
+- **Adjustable VM Pool initialization timeout for Windows deployments** - Virtual machines may have differing startup and initialization durations across operating systems, which can lead to timeout errors in VM Pools. You can now adjust the VM initialization timeout to ensure sufficient time to initialize. (CI-15143, ZD-70731)
+- Added support for [viewing all artifacts](/docs/continuous-integration/use-ci/viewing-builds#artifacts-tab) across stages in a grouped view, organized by the stage they were generated in. (CI-11987, ZD-61206)
+
+#### Fixed issues
+
+- Fixed an issue where build stages misinterpreted environment variables containing commas, causing incorrect parsing of buildx options. The `plugins/buildx:1.3.1` plugin now supports the `PLUGIN_BUILDX_OPTIONS_SEMICOLON` variable to allow semicolon-delimited input for options containing commas. (CI-17379, ZD-83477)
+
+#### Harness images updates
+
+| **Image**                      | **Change**                                                              | **Previous version** | **New Version** |
+| ------------------------------ | ----------------------------------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`             | Added support to parse Maven build cache metrics for savings reporting. | 1.16.87              | 1.16.88         |
+| `harness/ci-lite-engine`       | Added support to parse Maven build cache metrics for savings reporting. | 1.16.87              | 1.16.88         |
+| `harness/drone-git`            | Convert drone-git to binary to avoid cloning in containerless mode.     | 1.6.8                | 1.6.9           |
+| `harness/harness-cache-server` | Added support to parse Maven build cache metrics for savings reporting. | 1.7.0                | 1.7.1           |
+| `plugins/buildx`               | Updated buildx image version to support semi-colon delimited options.   | 1.3.0                | 1.3.1           |
+| `plugins/buildx-ecr`           | Updated buildx image version to support semi-colon delimited options.   | 1.2.16               | 1.2.17          |
+| `plugins/buildx-acr`           | Updated buildx image version to support semi-colon delimited options.   | 1.2.16               | 1.2.17          |
+| `plugins/buildx-gar`           | Updated buildx image version to support semi-colon delimited options.   | 1.2.16               | 1.2.17          |
+| `kaniko-gar`                   | drone-kaniko gar plugin now supports push-only operation on an image.   | 1.10.1               | 1.11.1          |
+
+### Version 1.79
+
+<!-- 2025-05-12 -->
+
+#### Fixed issues
+
+- Updated the error message in the Artifactory step to clarify when a connector lacks upload permissions. (CI-15073)
+  - Fix available in `drone-artifactory` plugin v1.7.5.
+
+#### Harness images updates
+
+| **Image**                | **Change**                                                                                                                | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`       | Improved plugin error handling - handle empty error_category and changed the delimiter from double colon (::) to pipe.    | 1.16.86              | 1.16.87         |
+| `harness/ci-lite-engine` | Improved plugin error handling - handle empty error_category and changed the delimiter from double colon (::) to pipe.    | 1.16.86              | 1.16.87         |
+| `harness/drone-git`      | Convert drone-git to binary to avoid cloning in containerless mode                                                        | 1.6.7                | 1.6.9           |
+| `plugins/artifactory`    | Updated the error message in the **Upload Artifacts to JFrog** step to clarify when a connector lacks upload permissions. | 1.7.4                | 1.7.5           |
+
+### Version 1.78
+
+<!-- 2025-05-05 -->
+
+#### Fixed issues
+
+- Fixed issues when using Test Intelligence step where multiple processes downloading or uploading data at the same time could cause errors, this step should now handle parallelism accurately and reliably. (CI-16502, CI-16277)
+
+- Fixed an issue where containerless steps had external download dependencies to, improve speed and reliability. This feature is available behind the feature flag `CI_REMOVE_PLUGIN_CLONE_DEPENDENCY_CONTAINERLESS`. (CI-17150)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                                  | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`       | Improved handling of file downloads when using parallelism. | 1.16.84              | 1.16.85.1       |
+| `harness/ci-lite-engine` | Improved handling of file downloads when using parallelism. | 1.16.84              | 1.16.85.1       |
+
+### Version 1.77
+
+<!-- 2025-04-28 -->
+
+#### New features and enhancements
+
+- **Build Intelligence and Cache Intelligence are now enabled by default for newly created CI stages**, with opt-out support.
+  Newly created CI stages will now have [Build Intelligence](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence/) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/) automatically enabled to improve build performance through caching. New [CI Default Settings](/docs/platform/settings/default-settings#continuous-integration) are now available, allowing customers to disable either feature if they prefer.
+
+- **Node20 is now supported when using `Action` step** for running GitHub Actions on Harness Cloud. This functionality is currently behind the feature flag `CI_GHA_USE_NEKTOS_V2`. Please reach out to support if you wish to enable it (CI-17217).
+
+- **Support was added to allow push-only mode in `Build and Push` steps** - customers can now push local Docker images created in previous steps using push-only mode. This includes support for re-tagging to simplify pushing a local image to multiple container registries. [Learn more](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push/) (CI-17211).
+
+- **Improved Multiline support for output variables and secrets** - Previously, certain multiline variables containing nested double quotes were not rendered correctly, resulting in unexpected escape characters. This has been fixed by encoding the output using Base64 for accurate restoration. Using output variables and secrets requires enabling `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS` feature flag. Please reach out to support if you wish to enable it (CI-17167, ZD-83514).
+
+- **AWS and GCP connectors used for default caching storage now fully supported on K8S** - When using cache-related Intelligence features (Build Intelligence, Cache Intelligence or Docker Layer Caching) with self-hosted builds on Kubernetes infrastructure, AWS and GCP connectors used for default storage now support all available authentication methods (CI-16581).
+
+#### Fixed issues
+
+- Fixed an issue where when using a template containing a Git Clone step, users were unable to set the repository or provider values (CI-17230, ZD-82967).
+
+- Fixed ECR login failure when using `PLUGIN_PUSH_ONLY` and `PLUGIN_SOURCE_TAR_PATH` to push and existing image. The `plugins/kaniko-ecr:1.11.0` plugin now correctly handles ECR authentication when pushing tarballs without rebuilding the Dockerfile. (CI-17122, ZD-82370)
+
+- Fixed an issue where where `<+codebase>` expressions (such as commitSha, repoUrl, branch) were incorrectly resolving to null
+  when using CommitSha as the build type (CI-17163, ZD-82770).
+
+- Resolved an issue where logs for certain steps were intermittently missing in CI pipelines, particularly in SMP environments Additional logging has been introduced in the ci-addon image to help with visibility and troubleshooting (CI-17262).
+
+#### Harness images updates
+
+| **Image**                         | **Change**                                                                               | **Previous version** | **New Version** |
+| --------------------------------- | ---------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`                | Improved handling of secrets used during clone script execution.                         | 1.16.80              | 1.16.81         |
+| `harness/ci-addon:rootless`       | Same as above for rootless variant.                                                      | 1.16.80              | 1.16.81         |
+| `harness/ci-lite-engine`          | Improved handling of secrets used during clone script execution.                         | 1.16.80              | 1.16.81         |
+| `harness/ci-lite-engine:rootless` | Same as above for rootless variant.                                                      | 1.16.80              | 1.16.81         |
+| `harness/harness-cache-server`    | Support for IAM authentication with GCS connectors on delegates for Build Intelligence.  | 1.6.0                | 1.7.0           |
+| `plugins/kaniko-ecr`              | Fix ECR login issue when using `PLUGIN_PUSH_ONLY` and `PLUGIN_SOURCE_TAR_PATH`.          | 1.10.9               | 1.11.0          |
+| `plugins/buildx`                  | Support for push-only mode with re-tagging and source image override across registries.  | 1.2.2                | 1.3.0           |
+| `plugins/buildx-ecr`              | Same as above, applied to ECR-specific plugin.                                           | 1.2.14               | 1.2.16          |
+| `plugins/buildx-gar`              | Same as above, applied to GAR-specific plugin.                                           | 1.2.14               | 1.2.16          |
+| `plugins/cache`                   | Improved S3 authentication with better handling of credential and role assumption logic. | 1.9.6                | 1.9.7           |
+
+## April 2025
+
+### Version 1.76
+
+<!-- 2025-04-21 -->
+
+#### New features and enhancements
+
+- [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect/) now supports the “Upload to GCS” and "Upload Artifacts to JFrog" out-of-the-box (OOTB) steps. (CI-17124)
+
+#### Fixed issues
+
+- We identified an issue where builds marked as **Ignore Failed** were incorrectly appearing under **Failed Builds** in the **Overview** page. This has now been fixed, and such builds will no longer be shown in the failed list. The **See All** page continues to work as expected, with filters applied correctly based on user selection. (ZD-79234, CI-16440)
+
+- Fixed pipeline execution failure when log service was unreachable by adding timeouts. (CI-16484, ZD-79557)
+
+### Version 1.75
+
+<!-- 2025-04-14 -->
+
+#### New features and enhancements
+
+- Enhanced the AWS authentication mechanism in the Drone S3 plugin (`plugins/s3:1.5.3`) to provide more reliable operation across diverse target environments. (CI-16855, ZD-81366)
+
+#### Fixed issues
+
+- Resolved an issue in Build Intelligence where an extra parenthesis was added in run steps for PowerShell containers. (CI-16922, ZD-81766)
+
+#### Harness images updates
+
+| **Image**             | **Change**                                                                               | **Previous version** | **New Version** |
+| --------------------- | ---------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `plugins/kaniko-ecr`  | Changes related to upcoming **Build and Push** step improvements.                        | 1.10.8               | 1.10.9          |
+| `plugins/s3`          | Fix S3 authentication to properly handle combined credential methods and role assumption | 1.5.2                | 1.5.3           |
+| `plugins/artifactory` | Enable containerless mode for artifactory plugin                                         | 1.7.3                | 1.7.4           |
+
+### Version 1.74
+
+<!-- 2025-04-07 -->
+
+#### New features and enhancements
+
+- Added support for resolving secrets within Harness expressions, enabling nested constructs like `<+<+variable.org.artifactory_username>-<+secrets.getValue("org.artifactory_token")>>` to be evaluated correctly. (CI-16604, ZD-79809)
+- Added support for remote debugging on macOS ARM64 systems when using Harness Cloud VM infrastructure. (CI-16771)
+- Added multipart upload and download support to Cache Intelligence’s save and restore cache steps, significantly improving performance and reliability for large cache files. This update now supports files over 5GB, up to a maximum of 10GB.
+
+- Introduced new configurable options to control multipart behavior (CI-16493):
+
+  - `PLUGIN_ENABLE_MULTIPART`: Enable or disable multipart handling with a default value of `false`.
+
+  - `PLUGIN_MULTIPART_CHUNK_SIZE_MB`: Set chunk size (in MB) for each upload segment.
+
+  - `PLUGIN_MULTIPART_MAX_UPLOAD_SIZE_MB`: Define maximum size (in MB) for a multipart upload.
+
+  - `PLUGIN_MULTIPART_THRESHOLD_SIZE_MB`: Trigger multipart uploads only for files exceeding this size (in MB).
+
+- Added an optional "Upload as Flat" configuration to the out-of-the-box JFrog Artifactory step. This allows users to explicitly set the `--flat` argument in the JFrog CLI by passing true or false as needed. (CI-15781)
+
+#### Fixed issues
+
+- Fixed an issue where the default Harness image connector still depended on DockerHub, even when using a private registry. The image is now fully self-contained, ensuring compatibility with air-gapped environments. (CI-15799, ZD-76651, ZD-76970, ZD-77190, ZD-78321, ZD-79529)
+
+#### Harness images updates
+
+| **Image**                      | **Change**                                                                                            | **Previous version** | **New Version**  |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------- | -------------------- | ---------------- |
+| `harness/ci-addon`             | Work related for upcoming support for JavaScript with Test Intelligence.                              | 1.16.79              | 1.16.80          |
+| `harness/ci-addon`             | Work related for upcoming support for JavaScript with Test Intelligence.                              | rootless-1.16.79     | rootless-1.16.80 |
+| `harness/ci-lite-engine`       | Work related for upcoming support for JavaScript with Test Intelligence.                              | 1.16.79              | 1.16.80          |
+| `harness/ci-lite-engine`       | Work related for upcoming support for JavaScript with Test Intelligence.                              | rootless-1.16.79     | rootless-1.16.80 |
+| `plugin/cache`                 | Support large cache blobs for Cache Intelligence                                                      | 1.9.5                | 1.9.6            |
+| `harness/harness-cache-server` | Resolved an issue with private registry configuration in the default Harness image connector CI-15799 | 1.2.1                | 1.6.0            |
+
+### Version 1.73
+
+<!-- 2025-04-01 -->
+
+#### New features and enhancements
+
+- Added support for codebase cloning using commit SHA, supporting both long and short commit SHAs. (CI-13445)
+
+- Added support for service principal authentication using both client secret and certificate.
+
+- Introduced OAuth token exchange for ACR and public URL support for artifacts.
+
+- Maintains backward compatibility with direct username/password authentication while providing more secure and flexible options for enterprise deployments.
+
+- Key improvements include Azure SDK integration, cross-platform certificate handling, and enhanced error management. This update significantly improves the plugin's capability to handle various authentication scenarios in enterprise environments.
+- `plugins/kaniko-ecr:1.10.8`: Added three new flags to enhance the `kaniko-ecr` plugin's image handling capabilities (CI-16588):
+
+  - `PLUGIN_PUSH_ONLY`: Enables pushing pre-built image tarball without running a build.
+
+  - `PLUGIN_SOURCE_TAR_PATH`: Used in conjunction with **push-only** mode.
+
+  - `PLUGIN_TAR_PATH`, `PLUGIN_DESTINATION_TAR_PATH`: Provides consistent naming with **source-tar-path**. These additions enable more flexible workflows by allowing separation of build and push operations.
+
+- `plugins/buildx:1.2.0`: Included support for the new `PLUGIN_BUILDX_OPTIONS` flag, allowing users to pass custom options directly to buildx. (CI-16595)
+- Updated the default Docker connector for new accounts to point to GAR instead of using the account-level connector (id: harnessImage). (CI-16845)
+
+#### Fixed issues
+
+- Resolved an issue where some Harness-generated files were being downloaded to the `/harness` directory, causing errors in git operations. These files have been moved to the `tmp` directory to prevent population of the `/harness` directory. (ZD-80915, 81193, CI-16782)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                                                             | **Previous version** | **New Version**  |
+| ------------------------ | -------------------------------------------------------------------------------------- | -------------------- | ---------------- |
+| `harness/ci-addon`       | Changes described under new features and enhancements                                  | 1.16.76              | 1.16.79          |
+| `harness/ci-addon`       | Changes described under new features and enhancements                                  | rootless-1.16.76     | rootless-1.16.79 |
+| `harness/ci-lite-engine` | Changes described under new features and enhancements                                  | 1.16.76              | 1.16.79          |
+| `harness/ci-lite-engine` | Changes described under new features and enhancements                                  | rootless-1.16.76     | rootless-1.16.79 |
+| `plugin/buildx`          | Add support for Assume from Delegate for DLC self-hosted for GCP Connector             | 1.2.12               | 1.2.13           |
+| `plugin/buildx-ecr`      | Added support for Assume from Delegate for DLC self-hosted for GCP Connector           | 1.2.0                | 1.2.1            |
+| `plugin/buildx-acr`      | Enhanced Azure Container Registry (ACR) authentication                                 | 20.18.6              | 20.18.8          |
+| `plugin/kaniko-ecr`      | Added three new flags to enhance the `kaniko-ecr` plugin's image handling capabilities | 1.10.7               | 1.10.8           |
+
+## March 2025
+
+### Version 1.72
+
+<!-- 2025-03-24 -->
+
+#### New features and enhancements
+
+- Git branches are now populated when the **Run Pipeline** action is triggered for pipelines with Git clone enabled at the pipeline level. This feature is behind the feature flag `CI_DYNAMIC_BRANCH_SELECTOR`. (CI-16132)
+
+#### Harness images updates
+
+| **Image**                | **Change**                               | **Previous version** | **New Version** |
+| ------------------------ | ---------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`       | Implement savings for Build Cache in K8s | 1.16.76              | 1.16.77         |
+| `harness/ci-lite-engine` | Implement savings for Build Cache in K8s | 1.16.76              | 1.16.77         |
+
+### Version 1.71
+
+<!-- 2025-03-17 -->
+
+#### New features and enhancements
+
+- Storing secrets in custom secret managers is now supported for the DLC self-hosted flow. This brings it in line with the rest of the CI Intelligence features, which already support this functionality. (CI-15039)
+- The AWS connector for Build Intelligence now supports IAM on Delegate and IRSA, in addition to the previously supported AccessKey/SecretKey flow. This enhancement provides more flexibility and security for AWS authentication. (CI-15257)
+- In **drone/drone-kaniko** plugin version `v1.10.7`, the image digest is now exported to the **digest** output variable. (CI-16330)
+- Cache Intelligence will no longer restore or save cache if only the cache path is provided without a cache key. This behavior is controlled by the feature flag `CI_CACHE_SKIP_IF_KEY_EMPTY`, which is disabled by default. Enabling this flag ensures proper cache handling and avoids unintended behavior. (ZD-79572, CI-16519, CI-16617)
+
+#### Fixed issues
+
+- Resolved an issue where the `DRONE_REPO` environment variable was incorrectly using the Git user ID as the owner name instead of the actual repository owner name. This fix is controlled by the feature flag `CI_DRONE_REPO_OWNER`. (ZD-79154, CI-16431)
+- Resolved an issue on the CI Overview page where the API did not consider the timestamp when returning active and failed builds information. (CI-15773)
+- Resolved an issue where Build and Push to GAR did not include artifact details in the output section, unlike other Build and Push steps. This was caused by the artifact metadata file path not being set, which has now been fixed. (CI-16303)
+
+#### Harness images updates
+
+| **Image**                      | **Change**                                            | **Previous version** | **New Version**  |
+| ------------------------------ | ----------------------------------------------------- | -------------------- | ---------------- |
+| `plugins/buildx`               | Changes described in fixed issues list                | 1.1.26               | 1.1.27           |
+| `harness/harness-cache-server` | Changes described under new features and enhancements | 1.4.0                | 1.6.0            |
+| `harness/ci-lite-engine`       | Adjust the k8s addon to support the JS agent          | 1.16.75              | 1.16.76          |
+| `harness/ci-lite-engine`       | Adjust the k8s addon to support the JS agent          | rootless-1.16.75     | rootless-1.16.76 |
+| `plugins/kaniko-acr`           | Changes described under new features and enhancements | 1.10.1               | 1.10.7           |
+| `plugins/kaniko-ecr`           | Changes described under new features and enhancements | 1.10.4               | 1.10.7           |
+| `harness/ci-addon`             | Adjust the k8s addon to support the JS agent          | 1.16.75              | 1.16.76          |
+| `harness/ci-addon`             | Adjust the k8s addon to support the JS agent          | rootless-1.16.75     | rootless-1.16.76 |
+| `plugins/artifactory`          | Add custom ca.cert for windows builds                 | 1.7.1                | 1.7.3            |
+| `plugins/cache`                | Changes described under new features and enhancements | 1.9.1                | 1.9.3            |
+
 ### Version 1.70
 
 <!-- 2025-03-03 -->
+
 #### New features and enhancements
 
 - Users can now set the stage variable `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` to skip the push step in the native **Build and Push to ECR** step if the tag already exists. (CI-10350)
-  
+
 #### Fixed issues
 
 - Resolved an issue with Azure Repos where cloning with a tag was not working. (CI-16298, ZD-78432)
-- Resolved an issue where Build Intelligence feature  couldn’t be configured via templates. With this fix, the property is now visible in templates, allowing users to configure CI stages regardless of the selected infrastructure. (CI-16342)
-  
+- Resolved an issue where Build Intelligence feature couldn’t be configured via templates. With this fix, the property is now visible in templates, allowing users to configure CI stages regardless of the selected infrastructure. (CI-16342)
+
 #### Harness images updates
 
-| **Image**                | **Change**                                      | **Previous version** | **New Version** |
-| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
-| `plugins/artifactory`      | Vulberability fixes  | 1.7.1                | 1.7.2          |
-| `plugins/ecr`      | New input `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` and published at `plugins/ecr:20.18.7` (CI-10350)                | 20.18.6          | 20.18.7          |
-| `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
-| `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
-| `harness/drone-git`      | Changes described in fixed issues list  | 1.6.5                | 1.6.7          |
-| `harness/ci-addon`      | Vulberability fixes  | rootless-1.16.74                | rootless-1.16.75          |
-| `harness/ci-addon`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
+| **Image**                | **Change**                                                                                   | **Previous version** | **New Version**  |
+| ------------------------ | -------------------------------------------------------------------------------------------- | -------------------- | ---------------- |
+| `plugins/artifactory`    | Vulberability fixes                                                                          | 1.7.1                | 1.7.2            |
+| `plugins/ecr`            | New input `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` and published at `plugins/ecr:20.18.7` (CI-10350) | 20.18.6              | 20.18.7          |
+| `harness/ci-lite-engine` | Vulberability fixes                                                                          | 1.16.73              | 1.16.75          |
+| `harness/ci-lite-engine` | Vulberability fixes                                                                          | 1.16.73              | 1.16.75          |
+| `harness/drone-git`      | Changes described in fixed issues list                                                       | 1.6.5                | 1.6.7            |
+| `harness/ci-addon`       | Vulberability fixes                                                                          | rootless-1.16.74     | rootless-1.16.75 |
+| `harness/ci-addon`       | Vulberability fixes                                                                          | 1.16.73              | 1.16.75          |
 
 ## February 2025
 
@@ -141,17 +650,17 @@ This update is currently being rolled out to customers, and we expect the rollou
 - Fixed issue with Azure Repos where cloning with tags was not working due to unsupported Azure content list API for tags. (ZD-78432, CI-16298)
 - Fixed an issue where Build Intelligence was enabled when running on Windows in Kubernetes, which is currently unsupported. Build Intelligence configuration will no longer be injected into Windows environments, preventing errors during execution. (ZD-78560, 78564, CI-16318)
 - Fixed issue with GCP connector under "Save cache to GCS" when used as a runtime input, where Docker connectors were incorrectly listed instead of GCP connectors. (CI-16347, ZD-78363)
- 
+
 #### Harness images updates
 
-| **Image**                | **Change**                                      | **Previous version** | **New Version** |
-| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
-| `plugins/drone-s3`      | Vulberability fixes  | 1.5.0                | 1.5.1          |
-| `harness/ci-addon`      | Changes described in fixed issues list  | 1.16.73                | 1.16.74.1          |
-| `harness/ci-lite-engine`      | Changes described in fixed issues list  | 1.16.73                | 1.16.74.1          |
-| `harness/drone-git`      | Changes described in fixed issues list  | 1.6.6-rootless                | 1.6.7-rootless          |
-| `cacheS3Config`      | Changes described in fixed issues list  | v1.9.0                | v1.9.1          |
-| `cacheGCSConfig`      | Changes described in fixed issues list  | v1.9.0                | v1.9.1          |
+| **Image**                | **Change**                             | **Previous version** | **New Version** |
+| ------------------------ | -------------------------------------- | -------------------- | --------------- |
+| `plugins/drone-s3`       | Vulberability fixes                    | 1.5.0                | 1.5.1           |
+| `harness/ci-addon`       | Changes described in fixed issues list | 1.16.73              | 1.16.74.1       |
+| `harness/ci-lite-engine` | Changes described in fixed issues list | 1.16.73              | 1.16.74.1       |
+| `harness/drone-git`      | Changes described in fixed issues list | 1.6.6-rootless       | 1.6.7-rootless  |
+| `cacheS3Config`          | Changes described in fixed issues list | v1.9.0               | v1.9.1          |
+| `cacheGCSConfig`         | Changes described in fixed issues list | v1.9.0               | v1.9.1          |
 
 ### Version 1.67
 
@@ -161,17 +670,17 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 - The Build Intelligence flag can now be toggled on and off based on an already resolved variable value, providing greater flexibility in pipeline configurations (CI-15706).
 - The new input `PLUGIN_IGNORE_PATHS` (available in `plugins/kaniko:1.10.6`) allows users to specify multiple paths to ignore during the build. Each path is trimmed and appended as a separate `--ignore-path` flag in the Kaniko build process. (CI-16193)
-  
+
 #### Fixed issues
 
 - Fixed an issue where enabling Build Intelligence caused Python shell executions to fail due to an extra newline being appended. The autoinjection script has been corrected for **run**, **runtest**, and **runtestv2** in Build Intelligence. (CI-15914, ZD-78087)
 
 #### Harness images updates
 
-| **Image**                | **Change**                                      | **Previous version** | **New Version** |
-| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
-| `plugins/buildx`      | Configuration Updates  | 1.1.25                | 1.1.26          |
-| `plugins/buildx-ecr`      | Configuration Updates                  | 1.2.9             | 1.2.10        |
+| **Image**            | **Change**            | **Previous version** | **New Version** |
+| -------------------- | --------------------- | -------------------- | --------------- |
+| `plugins/buildx`     | Configuration Updates | 1.1.25               | 1.1.26          |
+| `plugins/buildx-ecr` | Configuration Updates | 1.2.9                | 1.2.10          |
 
 ### Version 1.66
 
@@ -189,12 +698,10 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### Harness images updates
 
-
-| **Image**                | **Change**                                      | **Previous version** | **New Version** |
-| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
-| `harness/ci-addon`      | See update for CI-14868 above  | N/A                | rootless-1.16.61          |
-| `harness/ci-lite-engine`      | See update for CI-14868 above                  | N/A             | rootless-1.16.61        |
-
+| **Image**                | **Change**                    | **Previous version** | **New Version**  |
+| ------------------------ | ----------------------------- | -------------------- | ---------------- |
+| `harness/ci-addon`       | See update for CI-14868 above | N/A                  | rootless-1.16.61 |
+| `harness/ci-lite-engine` | See update for CI-14868 above | N/A                  | rootless-1.16.61 |
 
 ### Version 1.65
 
@@ -205,10 +712,8 @@ This update is currently being rolled out to customers, and we expect the rollou
 - Added logs for container resource allocation in Kubernetes-based CI stages, including background steps, parallel steps, sequential steps, and step groups. Note: Ensure that the Harness Delegate version is **25.02.85200** or higher for this fix to take effect. (CI-15534)
 - Fixed an issue where the ARM64 platform was incorrectly displayed for Windows OS under the Cloud Infra section in the Build Infrastructures tab of the CI module. (CI-15920, ZD-76620)
 - Fixed an issue where the CI stage was failing without any error message. (CI-15793)
- 
+
 ## January 2025
-
-
 
 ### Version 1.63
 
@@ -226,13 +731,13 @@ This update is currently being rolled out to customers, and we expect the rollou
 - Added support for SSH clone with passphrase in Git, GitHub, GitLab, Azure, and Bitbucket connectors. This feature is available on Linux and macOS infrastructure (Windows support is not yet available) and requires `drone-git` plugin version 1.6.5. For Kubernetes (k8s) infrastructure, this change is not supported in the current delegate version. Support will be added in a future update. (CI-15212)
 - Output variables from a plugin step are now visible in the Outputs tab even when the step fails. Only variables populated up until the failure point will be displayed. This feature is available in Lite Engine and Addon version 1.16.73 and can be enabled using the `CI_ENABLE_OUTPUTS_STEP_FAILURE` feature flag. (CI-15379)
 - The `CI` environment variable, which returns `true` to indicate a Continuous Integration environment, is now available. (CI-15304, ZD-73840)
-    
+
 #### Harness images updates
 
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
 | ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
-| `plugins/buildx`      | Updated dependencies to address vulnerabilities | 1.1.24                | 1.1.25           |
-| `harness/ci-addon`       | Changes described in fixed issues list                  | 1.16.71              | 1.16.73         |
+| `plugins/buildx`         | Updated dependencies to address vulnerabilities | 1.1.24               | 1.1.25          |
+| `harness/ci-addon`       | Changes described in fixed issues list          | 1.16.71              | 1.16.73         |
 | `harness/ci-lite-engine` | Minor updates and improvements                  | 1.16.71              | 1.16.73         |
 
 ### Version 1.62
@@ -244,16 +749,16 @@ This update is currently being rolled out to customers, and we expect the rollou
 - Fixed an issue where the resource class size option under Cloud Infra for the CI module was incorrectly interchanged between macOS and Linux. (CI-15587)
 - Fixed an issue where the security context of the last step in the stage was incorrectly applied to all steps, causing Kaniko to lack root permissions even when configured with runAsUser: 0. This issue resulted in Build and Push to DockerHub stage failures due to file permission errors. (CI-15732, ZD-76107, ZD-76178)
 - Resolved an issue where the build and push step would fail when configured to use Docker Layer Caching (DLC) and push to Harness Artifact Registry. (CI-15683, AH-879)
- 
+
 #### New features and enhancements
 
 - The UI editor for CI stages running on Cloud has been enhanced to allow setting machine size and enabling nested virtualization. Previously available only through YAML, these configurations can now be easily managed via the UI editor. (CI-15587)
-  
+
 #### Harness images updates
 
-| **Image**                | **Change**                                      | **Previous version** | **New Version** |
-| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
-| `harness/ssca-plugin`      | Updated dependencies to address vulnerabilities | 0.30.3                | 0.32.0           |
+| **Image**             | **Change**                                      | **Previous version** | **New Version** |
+| --------------------- | ----------------------------------------------- | -------------------- | --------------- |
+| `harness/ssca-plugin` | Updated dependencies to address vulnerabilities | 0.30.3               | 0.32.0          |
 
 ### Version 1.61
 
@@ -290,22 +795,6 @@ This update is currently being rolled out to customers, and we expect the rollou
 | `plugins/docker` | Addressed security vulnerabilities | 20.18.5              | 20.18.6         |
 
 ## December 2024
-
-:::note
-
-**Network allowlisting Update for Hosted macOS Infrastructure (M2 Machines)**
-
-Harness Cloud users utilizing hosted macOS infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration:
-
-To ensure uninterrupted connectivity and functionality for your CI builds, please add to allowlist the following IP range in your network settings by December 15th, 2024:
-
-IP Range: 207.254.53.128/25
-
-This update also includes a transition to M2 machines, offering improved performance and efficiency for your builds.
-
-If you have any questions or need assistance with the allowlisting process, please contact Harness Support.
-
-:::
 
 ### Version 1.58
 
@@ -372,7 +861,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 
 #### New features and enhancements
 
-- [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) now supports self-hosted builds in Kubernetes. Customer that run builds on Kubernetes can now configure S3-compatible bucket for Build Intelligence caching. Authentication through AWS/GCP connector is currently supported with OIDC or Access Key/Secret Key.only. _Note_: This feature requires the following feature flags to be enabled: `CI_CACHE_ENABLED`, `CI_ENABLE_BUILD_CACHE_K8` and `PL_GCP_OIDC_AUTHENTICATION` for GCP or `CDS_AWS_OIDC_AUTHENTICATION` for AWS.
+- [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) now supports self-hosted builds in Kubernetes. Customer that run builds on Kubernetes can now configure S3-compatible bucket for Build Intelligence caching. Authentication through AWS/GCP connector is currently supported with OIDC or Access Key/Secret Key.only. _Note_: This feature requires the following feature flags to be enabled: `CI_CACHE_ENABLED`, `CI_ENABLE_BUILD_CACHE_K8` and `PL_GCP_OIDC_AUTHENTICATION` for GCP. There is no feature flag necessary for AWS.
 - Secure Connect is now supported with JFrog Artifactory connector (CI-15004).
 - Support for Docker Build Secrets in "Build and Push" Steps - You can now configure Docker build secrets in the Build and Push step using YAML. This feature allows specifying secrets via `envDockerSecrets` and/or `fileDockerSecrets` field, applicable when running build-and-push steps using Buildx (not Kaniko). Note that using Buildx in Kubernetes build infrastructure requires privileged access.  
   _Note_: This feature requires the feature flag `CI_USE_BUILDX_ON_K8` to be enabled when running builds in Kubernetes.
@@ -389,7 +878,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 | **Image**                | **Change**                                                            | **Previous version** | **New Version** |
 | ------------------------ | --------------------------------------------------------------------- | -------------------- | --------------- |
 | `drone/buildx`           | Revert base64 support added to handle secrets with special characters | 1.1.16               | 1.1.19          |
-| `harness/ci-addon`       | Log Service - ability to increase limit for logs in K8S               | 1.16.59                 | 1.16.61            |
+| `harness/ci-addon`       | Log Service - ability to increase limit for logs in K8S               | 1.16.59              | 1.16.61         |
 | `harness/ci-lite-engine` | Log Service - ability to increase limit for logs in K8S               | 1.591.59             | 1.611.61        |
 
 ### Version 1.53
@@ -399,7 +888,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 #### New features and enhancements
 
 - Self-Hosted Cache Intelligence and Docker Layer Caching Enhancements - This release introduces enhancements for self-hosted builds, allowing seamless configuration of S3-compatible caching with AWS or GCP connectors using OIDC for authentication These options are behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` (for Docker layer caching) and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED` (for Cache Intelligence).
-- OIDC, previously available only for Harness Cloud, is now supported for self-hosted builds running on Kubernetes, enhancing security and simplifying authentication. OIDC is currently behind feature flags `PL_GCP_OIDC_AUTHENTICATION` for GCP and `CDS_AWS_OIDC_AUTHENTICATION` for AWS
+- OIDC, previously available only for Harness Cloud, is now supported for self-hosted builds running on Kubernetes, enhancing security and simplifying authentication. OIDC is currently behind feature flags `PL_GCP_OIDC_AUTHENTICATION` for GCP. There is no feature flag necessary for AWS.
 
 To enable feature flags, please contact [Harness Support](mailto:support@harness.io).
 
@@ -411,7 +900,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 - Improved "Copy to Clipboard" functionality for pipeline output logs. Previously, extra new lines were added when pasting the copied output, causing unnecessary spacing between lines. This issue has been fixed to ensure log output is pasted without additional line breaks. (CI-14200, ZD-68902)
 
 #### Harness images updates
- 
+
 | **Image**            | **Change**                                                                                                    | **Previous version** | **New Version** |
 | -------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------- | --------------- |
 | `harness/drone-git`  | Fixed an issue when using the GitHub SSH connector on Windows and cloning while fetching LFS files (CI-14592) | 1.61                 | 1.62            |

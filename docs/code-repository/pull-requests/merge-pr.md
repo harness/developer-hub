@@ -56,3 +56,7 @@ Merge requirements help prevent unapproved, inadequate, or erroneous code from b
    * Status checks can also be reported by [custom webhooks](../config-repos/webhooks.md).
    * Depending on the repository's [branch rules](../config-repos/rules.md), passing status checks might be required to merge the PR.
 * [**Branch rules**](../config-repos/rules.md)
+
+:::note
+Harness Code allows you to [revert a merged PR](/docs/code-repository/pull-requests/revert-pr).
+:::

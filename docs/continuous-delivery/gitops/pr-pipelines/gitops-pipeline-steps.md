@@ -207,6 +207,25 @@ If a parameter is specified both in the values file and as a parameter or file p
 
 Once your GitOps application is updated, you can use the GitOps Sync step to deploy your changes.
 
+#### Rollback for Update GitOps App Step
+
+:::note
+
+This feature is behind the feature flag `CDS_GITOPS_ENABLE_UPDATE_GITOPS_APP_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
+
+:::
+
+In order to rollback this step, you will need to add another **Update GitOps App Step** to the rollback phase of this stage.
+
+1. Click on the **Execution / Rollback** toggle in the top right of the studio.
+
+  ![](./static/toggle-rollback.png)
+
+2. Add a **Update GitOps App Step**. This step does not need to be configured and will not use step parameters; it will automatically call the last successful revision and update the manifest accordingly. 
+
+3. Add a [**GitOps Sync**](#gitops-sync-step) step. This will sync the application to match the manifest that was updated during the rollback in the previous step.
+
+
 #### Update GitOps App step for multi-source applications
 
 :::note
@@ -225,11 +244,57 @@ This step triggers a sync for your existing or updated GitOps application.
 
 Optionally, click on the **Wait until healthy** checkbox, if you would like the step to run until the application reaches it's "Healthy" state.
 
-In **Advanced Configuration**, select the application you want to sync and configure the sync options. You can either can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter.
+In **Advanced Configuration**, select the application(s) you want to sync and configure the sync options. You can choose one of the following:
 
-![](../use-gitops/static/gitopssync-step.png)
+1. **Application name** – Select specific applications manually.  
+2. **Application regex** – Match up to 1000 applications using a regular expression.  
+3. **Application labels** – Filter applications by their labels.  
+  - **Exact match (Key:Value)**
+    - If you want to match specific applications, you can do an exact match using **Key:value** in the labels.
+    - You can add labels to an application in the **App Details** page.
+
+  - **Partial match (Key or Value)**
+    - Search using a **key** or **value**.
+    - Partial matches are supported. For example, if a label key is `team` or a value is `payment-service`, searching for `tea` or `pay` will return that application.
+    - The search also considers the **Service name** and **Environment name** associated with the GitOps application as labels, and will match them in partial searches.
+
+<div align="center">
+  <DocImage path={require('./static/gitopssync-step.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 The sync options provided are the same options you receive while syncing an application in GitOps directly.
+
+#### Using Expressions with Application Labels
+
+When using `applicationLabels` as a pipeline variable, it represents a list of strings. Since this is not a native variable type in Harness expressions, you need to use specific methods to properly pass the list values.
+
+You can use one of the following approaches to handle application labels in expressions:
+
+**JSON List Functor**
+
+Use the JSON list functor to parse the labels:
+
+```
+<+json.list("$", <+pipeline.variables.labels>)>
+```
+
+Format your `labels` variable as:
+- Single value: `["cluster"]`
+- Multiple values: `["cluster", "list"]`
+
+For more information, go to [JSON and XML functors](/docs/platform/variables-and-expressions/harness-variables/#json-and-xml-functors).
+
+**Split Function**
+
+Use the split function for comma-separated values:
+
+```
+<+pipeline.variables.labels.split(",")>
+```
+
+Input examples:
+- `cluster` (single label)
+- `cluster,list` (multiple labels)
 
 ### GitOps Get App Details step
 

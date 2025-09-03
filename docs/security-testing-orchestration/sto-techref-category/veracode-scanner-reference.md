@@ -32,7 +32,7 @@ To understand the details of each field in the Veracode step, you can refer to [
 - STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
 :::
@@ -52,7 +52,7 @@ Search for and add the **Veracode** step to your pipeline. This step can be used
 
 <DocImage path={require('./static/veracode-orchestration.png')} width="40%" height="40%" title="Click to view full size image" />
 
-These are the essential settings required to perform an Orchestration scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Security Tests** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode step Settings](#veracode-step-settings) section.
+These are the essential settings required to perform an Orchestration scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Vulnerabilities** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode step Settings](#veracode-step-settings) section.
 
 ## Ingestion mode configuration
 With the Ingestion mode in the Veracode step, you can read scan results from a data file and import them into STO. To do this, you need the scan results saved in the XML format. Importantly, before you can ingest scan results, you must perform all the Veracode prerequisites for the repo that you're scanning. If you're scanning a Java repo, for example, the Veracode documentation outlines the specific packaging and compilation requirements for scanning your Java applications. For specific requirements, go to the [Veracode docs](https://docs.veracode.com/) and search for Veracode Packaging Requirements.
@@ -66,7 +66,7 @@ Here's how you can configure your Veracode step to Ingest the scan results from 
 
 <DocImage path={require('./static/veracode-ingestion.png')} width="40%" height="40%" title="Click to view full size image" />
 
-These are the essential settings required to perform an Ingestion scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Security Tests** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode Step Settings](#veracode-step-settings) section.
+These are the essential settings required to perform an Ingestion scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Vulnerabilities** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode Step Settings](#veracode-step-settings) section.
 
 ## Extraction mode configuration
 The Extraction mode in Veracode step allows you to retrieve the latest scan data of a specific Veracode Application and feed the results into STO. Here's how you can do it.
@@ -82,7 +82,7 @@ Search for and add the **Veracode** step to your pipeline. This step can be used
 
 <DocImage path={require('./static/veracode-extraction.png')} width="40%" height="40%" title="Click to view full size image" />
 
-These are the essential settings required to perform an Extraction scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Security Tests** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode Step Settings](#veracode-step-settings) section.
+These are the essential settings required to perform an Extraction scan using the Veracode step. The scan results, including any [Veracode policy failures](#view-veracode-policy-failures), can be viewed in the **Vulnerabilities** tab on the pipeline execution page. For additional features and configuration options, see the [Veracode Step Settings](#veracode-step-settings) section.
 
 ## Veracode step settings
 The following are the details of each field in the Veracode step.
@@ -112,7 +112,7 @@ Additionally, in Orchestration mode, the **Name** is used as part of the Veracod
 #### Workspace 
 
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from './shared/step-palette/target/workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -146,39 +146,39 @@ The **Sandbox Id** is `6899436`
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
 ### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
 ### Settings
 
-import StoSettingSettings from './shared/step_palette/all/_settings.md';
+import StoSettingSettings from './shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

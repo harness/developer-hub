@@ -29,7 +29,7 @@ Here are the main capabilities of SRM:
 
 ## Further reading
 
-- [Understand SRM concepts](./key-concepts)
+- [Understand SRM concepts](./key-concepts.md)
 - [Tutorial - Manage SLOs using Prometheus metrics](./slo-prometheus.md)
 - [Create your first SLO](./create-first-slo.md)
 - [Supported platforms and technologies](../srm-whats-supported.md)

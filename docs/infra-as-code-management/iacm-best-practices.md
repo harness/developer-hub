@@ -48,7 +48,7 @@ For general use cases to reduce unnecessary complexity and to optimize performan
 
 Some reusable options can be to:
 - Create reusable pipelines and set them as default pipelines to trigger quickly from any workspace within a project.
-- Use [pipeline variables](https://developer.harness.io/docs/infra-as-code-management/project-setup/input-variables) to ensure consistency.
+- Use [pipeline variables](https://developer.harness.io/docs/infra-as-code-management/manage-projects/connectors-variables) to ensure consistency.
 - Use built-in plugins such as [drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection), [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation) and [IaCM Approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step).
 - Utilize [built-in OPA policies](/docs/infra-as-code-management/policies-governance/terraform-plan-cost-policy) to add protection and ensure your pipelines warn or fail if certain conditions are not met, e.g. if your total monthly infrastructure costs exceed a specified amount.
 <!-- placeholder for module registry -->
@@ -75,3 +75,15 @@ Harness seamlessly integrates with third-party services like external code repos
 ### Error Handling and Debugging
 - **Common Errors:** Common IaCM errors include misconfigurations, authentication failures, and resource conflicts. To troubleshoot these, check the error messages in your pipeline execution logs, which provide detailed information about the cause and location of the issue.
 - **Pipeline Execution Logs:** Utilize pipeline execution history to view detailed logs for each pipeline run. These logs capture step-by-step execution details, making it easier to identify and resolve issues.
+
+## Approval Processes in IaCM
+Harness IaCM provides multiple layers of approval mechanisms to ensure secure and controlled infrastructure changes. Here's an overview of the available approval options:
+
+### Access Control (RBAC)
+Role-Based Access Control (RBAC) forms the foundation of approval processes in IaCM. Through workspace RBAC, you can **define who has permission to manage infrastructure resources** and **what actions they can perform**. This granular control ensures that only **authorized team members** can make changes to your infrastructure. Learn more about setting up access controls in our [Workspace RBAC configuration guide](/docs/infra-as-code-management/manage-projects/workspace-rbac).
+
+### Pipeline Approval Steps
+When you need additional oversight for infrastructure changes, you can add **manual approval steps** to your pipelines. These approval gates allow **designated team members to review and approve changes** before they're applied to your infrastructure. You can **configure who needs to approve changes** and **how long the system should wait for approvals**. See our guide on [implementing approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step) to get started.
+
+### PR Automation
+Streamline your infrastructure change process by **automating pull request workflows**. PR automation helps **standardize how changes are proposed, reviewed, and merged** into your infrastructure code. This ensures **consistent review processes** and maintains a **clear audit trail** of all infrastructure modifications. Check out our documentation on [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation) to learn how to set this up for your team.

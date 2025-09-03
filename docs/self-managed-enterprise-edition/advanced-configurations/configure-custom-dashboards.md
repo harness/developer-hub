@@ -16,26 +16,57 @@ Dashboards application uses [Looker](https://cloud.google.com/looker), a third-p
 
 To set it up:  
 1. Create a DNS CNAME entry for Looker.  
-2. Use **looker.your-domain.tld** as the domain name.  
+2. Configure this domain name in the parameter lookerPubDomain. This usually follows the format of `looker.<company-domain>`, example- looker.companydomain.com  
 3. Point the Looker CNAME to the existing A record for your installation.  
 
 ### Configuration 
 
 To enable dashboards the following is the minimum configuration required.
 
-You can find `lookerPubDomain` in your DNS settings and the Looker license key from [Harness support team](mailto:support@harness.io)
+Looker is required for custom dashboards but is not enabled by default. To enable this feature, you can find `lookerPubDomain` in your DNS settings and the Looker license key from [Harness support team](mailto:support@harness.io)
 
 ```yaml
-    global:
+  global:
+    # required if SMP is installed in airgapped mode
+    airgap: true
     ngcustomdashboard:
-        enabled: true
-    ng-custom-dashboards:
+      enabled: true
+  ng-custom-dashboards:
     config:
-        lookerPubDomain: 'looker.domain.tld'
-    looker:
+      lookerPubDomain: `looker.<company-domain>`
+  looker:
     secrets:
-        lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
+      lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
+      # required if SMP is installed in airgapped mode
+      lookerLicenseFile: |
+        XXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
+
+#### For Non-Air Gap Packages
+
+Harness will provide an access token to pull the Looker image from Docker Hub, along with a Looker license key and Docker Hub credentials to update your `override.yaml` file. You must replace your Looker license after deployment.
+
+Create a new secret and replace [YOUR-SECRET-NAME] in the YAML:
+
+```yaml
+  looker:
+    # -- replace looker license at runtime (after deployment)
+    image:
+      imagePullSecrets: [YOUR-SECRET-NAME]
+```
+For more details, refer to [documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) on pulling images from a private registry.
+
+#### For Air Gap Packages
+
+Harness no longer includes the Looker image in air gap bundles. You can still request onboarding for custom dashboards. Upon request, Harness will generate an access token for pulling the Looker image from Docker Hub. Following this, Harness will provide you with the Looker license key and Docker Hub credentials.
+
+Harness has updated the `harness-airgap-images.sh` script in the Helm chart repository to support pushing the Looker image to a private registry. The script will prompt:
+  - Whether you want to install custom dashboards (`ng-dashboard`).
+  - Your Docker Hub credentials and image details.
+
+To get DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD, contact [Harness Support](mailto:support@harness.io). When asked for RELEASE_VERSION, enter the desired Helm chart version (e.g., 0.17.0). The script will then push the Looker image to your private repository.
+
 
 ### Looker Ingress/Istio Configuration  
 
@@ -44,7 +75,7 @@ Looker requires a dedicated domain name, which makes its Ingress/Istio configura
 Key considerations:  
 - The examples provided include only the additional configuration required for this chart. Ensure to merge them with existing `values.yaml` overrides.  
 - Pay close attention when merging the global sections to prevent conflicts.  
-- All examples assume TLS is enabled. To ensure `looker.domain.tld` functions correctly, update TLS certificates to include this domain.  
+- All examples assume TLS is enabled. To ensure `looker.<company-domain>` functions correctly, update TLS certificates to include this domain.  
 - Alternatively, try to generate a separate certificate and reference it in the configuration.  
 
 #### Ingress 
@@ -56,12 +87,12 @@ Key considerations:
 
     ng-custom-dashboards:
         config:
-            lookerPubDomain: 'looker.domain.tld'
+            lookerPubDomain: 'looker.<company-domain>'
 
     looker:
         ingress:
             hosts:
-            - 'looker.domain.tld'
+            - 'looker.<company-domain>'
             tls:
             secretName: 'looker-tls'
 
@@ -79,7 +110,7 @@ There are three ways to configure Istio for Looker:
 
 #### Using a Customer-Managed Istio Gateway  
 
-If you are managing your own Istio gateway, you will need to update your gateway configuration to route traffic for `looker.domain.tld`.
+If you are managing your own Istio gateway, you will need to update your gateway configuration to route traffic for `looker.<company-domain>`.
 
     ```yaml
     global:
@@ -87,13 +118,6 @@ If you are managing your own Istio gateway, you will need to update your gateway
             virtualService:
                 gateways:
                 - istio-namespace/gateway-name
-        ngcustomdashboard:
-            enabled: true
-
-    ng-custom-dashboards:
-        config: 
-            lookerPubDomain: 'looker.domain.tld'
-
     looker:
         istio:  
             gateway:
@@ -101,10 +125,7 @@ If you are managing your own Istio gateway, you will need to update your gateway
             virtualService:
                 enabled: true
                 hosts:
-                - looker.domain.tld
-
-        secrets:
-            lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
+                - looker.<company-domain>
     ```
 
 ### Istio - Gateway Created by Harness  
@@ -119,12 +140,7 @@ global:
     gateway:
       create: true
     hosts:
-      - looker.domain.tld
-  ngcustomdashboard:
-    enabled: true
-ng-custom-dashboards:
-  config:
-    lookerPubDomain: 'looker.domain.tld'
+      - looker.<company-domain>
 looker:
   istio:
     gateway:
@@ -132,9 +148,7 @@ looker:
     virtualService:
       enabled: true
       hosts:
-        - looker.domain.tld
-  secrets:
-    lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
+        - looker.<company-domain>
 ```
 
 ### Istio - Gateway Created by This Chart  
@@ -144,12 +158,6 @@ If you prefer to configure the Istio gateway within this chart, you can define t
 #### Example Configuration:  
 
 ```yaml
-global:
-  ngcustomdashboard:
-    enabled: true
-ng-custom-dashboards:
-  config:
-    lookerPubDomain: 'looker.domain.tld'
 looker:
   istio:
     gateway:
@@ -157,63 +165,51 @@ looker:
       port: 443
       protocol: HTTPS
     hosts:
-      - looker.domain.tld
+      - looker.<company-domain>
     tls:
       mode: SIMPLE
       credentialName: 'looker-tls'
     virtualService:
       enabled: true
       hosts:
-        - looker.domain.tld
-  secrets:
-    lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
+        - looker.<company-domain>
 ```
 
 By selecting the appropriate method, you can ensure seamless integration of Looker with your existing Istio setup.
 
 ### Global Configuration
 
-| **Key**                                | **Type** | **Default** | **Description**                                                                      |
-|----------------------------------------|----------|-------------|--------------------------------------------------------------------------------------|
-| `global.airgap`                        | string   | `"false"`   | Indicates if the deployment is in an air-gapped environment with no internet access. |
-| `global.ha`                            | bool     | `false`     | Enables High Availability mode for distributed deployments.                          |
-| `global.imagePullSecrets`              | list     | `[]`        | List of Kubernetes secrets used to pull images from private registries.              |
-| `global.ingress.className`             | string   | `""`        | Specifies the Ingress class to use (e.g., `nginx`).                                  |
-| `global.ingress.enabled`               | bool     | `false`     | Enables ingress for external access.                                                 |
-| `global.ingress.hosts`                 | list     | `[]`        | List of hostnames for the ingress configuration.                                     |
-| `global.ingress.tls.enabled`           | bool     | `false`     | Enables TLS termination at the ingress level.                                        |
-| `global.ingress.tls.secretName`        | string   | `""`        | Kubernetes secret name containing the TLS certificate.                               |
-| `global.istio.enabled`                 | bool     | `false`     | Enables Istio service mesh integration.                                              |
-| `global.istio.gateway.create`          | bool     | `false`     | Creates an Istio Gateway for external access.                                        |
-| `global.istio.virtualService.gateways` | string   | `nil`       | Specifies Istio Gateway resources to attach to the VirtualService.                   |
-| `global.istio.virtualService.hosts`    | string   | `nil`       | Defines the hostnames for the Istio VirtualService.                                  |
-| `global.loadbalancerURL`               | string   | `""`        | URL of the external Load Balancer, if applicable.                                    |
+| **Key**         | **Type** | **Default** | **Description**                                                                      |
+| --------------- | -------- | ----------- | ------------------------------------------------------------------------------------ |
+| `global.airgap` | string   | `"false"`   | Indicates if the deployment is in an air-gapped environment with no internet access. |
 
 ### Looker Configuration
 
-| **Key**                                    | **Type** | **Default**                   | **Description**                                                          |
-|--------------------------------------------|----------|-------------------------------|--------------------------------------------------------------------------|
-| `looker.affinity`                          | object   | `{}`                          | Defines node/pod affinity rules for scheduling.                          |
-| `looker.clickhouseSecrets.password.key`    | string   | `"admin-password"`            | Secret key used to retrieve the ClickHouse admin password.               |
-| `looker.clickhouseSecrets.password.name`   | string   | `"clickhouse"`                | Name of the Kubernetes secret storing the ClickHouse password.           |
-| `looker.config.clickhouseConnectionName`   | string   | `"smp-clickhouse"`            | Connection name for ClickHouse used by Looker.                           |
-| `looker.config.clickhouseDatabase`         | string   | `"ccm"`                       | Name of the ClickHouse database used for CCM.                            |
-| `looker.config.clickhouseHost`             | string   | `"clickhouse"`                | Hostname of the ClickHouse database instance.                            |
-| `looker.config.clickhousePort`             | string   | `"8123"`                      | HTTP port for ClickHouse queries.                                        |
-| `looker.config.clickhouseUser`             | string   | `"default"`                   | Username for authenticating with ClickHouse.                             |
-| `looker.config.email`                      | string   | `"harnessSupport@harness.io"` | **Required.** Email address for Looker admin user.                       |
-| `looker.config.firstName`                  | string   | `"Harness"`                   | First name for the initial Looker admin user.                            |
-| `looker.config.lastName`                   | string   | `"Support"`                   | Last name for the initial Looker admin user.                             |
-| `looker.config.projectName`                | string   | `"Harness"`                   | Name of the Looker project being created.                                |
-| `looker.config.timescaleDatabase`          | string   | `"harness"`                   | Name of the TimescaleDB database used by Looker.                         |
-| `looker.ingress.hosts`                     | list     | `[]`                          | **Required if ingress is enabled.** Specifies the DNS domain for Looker. |
-| `looker.persistentVolume.storage.database` | string   | `"20Gi"`                      | Disk size allocated for Looker's internal database storage.              |
-| `looker.persistentVolume.storage.models`   | string   | `"2Gi"`                       | Disk size allocated for Looker model files.                              |
+| **Key**                                    | **Type** | **Default**                   | **Description**                                                                              |
+| ------------------------------------------ | -------- | ----------------------------- | -------------------------------------------------------------------------------------------- |
+| `looker.secrets.lookerLicenseKey`          | string   | `""`                          | **Required.** Defines looker license key.                                                    |
+| `looker.secrets.lookerLicenseFile`         | string   | `""`                          | Defines looker license file (**Required if** harness is installed in air-gapped environment) |
+| `looker.affinity`                          | object   | `{}`                          | Defines node/pod affinity rules for scheduling.                                              |
+| `looker.clickhouseSecrets.password.key`    | string   | `"admin-password"`            | Secret key used to retrieve the ClickHouse admin password.                                   |
+| `looker.clickhouseSecrets.password.name`   | string   | `"clickhouse"`                | Name of the Kubernetes secret storing the ClickHouse password.                               |
+| `looker.config.clickhouseConnectionName`   | string   | `"smp-clickhouse"`            | Connection name for ClickHouse used by Looker.                                               |
+| `looker.config.clickhouseDatabase`         | string   | `"ccm"`                       | Name of the ClickHouse database used for CCM.                                                |
+| `looker.config.clickhouseHost`             | string   | `"clickhouse"`                | Hostname of the ClickHouse database instance.                                                |
+| `looker.config.clickhousePort`             | string   | `"8123"`                      | HTTP port for ClickHouse queries.                                                            |
+| `looker.config.clickhouseUser`             | string   | `"default"`                   | Username for authenticating with ClickHouse.                                                 |
+| `looker.config.email`                      | string   | `"harnessSupport@harness.io"` | **Required.** Replace default value with the email address for Looker admin user within your org. This is critical for events like password reset.                                           |
+| `looker.config.firstName`                  | string   | `"Harness"`                   | First name for the initial Looker admin user.                                                |
+| `looker.config.lastName`                   | string   | `"Support"`                   | Last name for the initial Looker admin user.                                                 |
+| `looker.config.projectName`                | string   | `"Harness"`                   | Name of the Looker project being created.                                                    |
+| `looker.config.timescaleDatabase`          | string   | `"harness"`                   | Name of the TimescaleDB database used by Looker.                                             |
+| `looker.ingress.hosts`                     | list     | `[]`                          | **Required if ingress is enabled.** Specifies the DNS domain for Looker.                     |
+| `looker.persistentVolume.storage.database` | string   | `"20Gi"`                      | Disk size allocated for Looker's internal database storage.                                  |
+| `looker.persistentVolume.storage.models`   | string   | `"2Gi"`                       | Disk size allocated for Looker model files.                                                  |
 
 ### NG Custom Dashboard Configuration
 
 | **Key**                                               | **Type** | **Default**              | **Description**                                         |
-|-------------------------------------------------------|----------|--------------------------|---------------------------------------------------------|
+| ----------------------------------------------------- | -------- | ------------------------ | ------------------------------------------------------- |
 | `ng-custom-dashboards.config.lookerApiVersion`        | string   | `"4.0"`                  | Looker API version for compatibility with SDK.          |
 | `ng-custom-dashboards.config.lookerHost`              | string   | `"hrns-looker-api"`      | Internal hostname for Looker API.                       |
 | `ng-custom-dashboards.config.lookerPort`              | string   | `"19999"`                | Port number used by Looker API.                         |

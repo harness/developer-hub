@@ -1,7 +1,7 @@
 ---
 title: Set up a Kubernetes cluster build infrastructure
 description: You can use a Kubernetes cluster build infrastructure for a Harness CI pipeline.
-sidebar_position: 30
+sidebar_position: 10
 helpdocs_topic_id: ia5dwx5ya8
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false
@@ -22,16 +22,17 @@ You can use a Kubernetes cluster build infrastructure for **Build** stages in Ha
 2. [Create a Kubernetes cluster connector and install the Harness Delegate.](#create-a-kubernetes-cluster-connector-and-install-the-delegate)
 3. [Configure the build infrastructure in Harness.](#configure-the-build-infrastructure-in-harness)
 
-<details>
-<summary>Architecture diagram</summary>
+### Architecture diagram
 
 The following diagram shows the architecture of a kubernetes cluster build infrastructure. You interact with the Harness Platform through your browser. The Harness Delegate, which is installed in your Kubernetes cluster, manages communication between the Harness Platform and the Kubernetes pod where the pipeline's build farm is running. While the pipeline runs, the build farm communicates with your codebase, such as GitHub, and container registry, such as Docker Hub.
 
 ![](../static/ci-pipeline-quickstart-13.png)
 
-You must install the Harness Delegate in the same cluster you use for the build farm. The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
+:::note
+You must install the Harness Delegate in the same cluster you use for the build farm.
+::: 
 
-</details>
+The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
 
 <details>
 <summary>Video summary</summary>
@@ -374,13 +375,16 @@ Keys are reserved keywords used to validate unique FQNs. If you have multiple to
         value: value2
 ```
 
-### Topology Spread Constraints
-A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. Currently, this field supports specifying `topologySpreadConstraint`, with plans to extend support for additional configurations in the future. 
+### Customize Build Pod Configuration
+
+The `podSpecOverlay` field in the Kubernetes infrastructure settings of the CI stage allows you to apply custom configurations to the build pod. 
 
 :::note
 * podSpecOverlay is currently supported via YAML only. Please use the YAML editor to modify.
 * This feature requires using delegate version 24.09.83900 or higher.
 :::
+
+By default, this field supports only `topologySpreadConstraints`. For advanced use cases like custom volumes, securityContext, or node selectors, broader `PodSpec` overrides are available behind a feature flag. For details, see [Customize the PodSpec in Kubernetes build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/customize-podspec).
 
 #### Usage example 
 

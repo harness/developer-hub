@@ -46,6 +46,8 @@ The **Run RBAC Validation before executing Inline Pipelines** setting is availab
 
 When this is set to true, pipeline executions history remains in the system even when the corresponding pipelines are deleted. You can view these executions in the Pipeline Executions list and open them to view details, but you cannot re-run them. When this is set to false, Harness deletes all executions of a pipeline when that pipeline is deleted.
 
+Please note that this does not retain execution details indefinitely.  Pipeline execution data will still be removed as a [part of the Harness data retention process](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/execution-history/#view-execution-history).
+
 ### Allow users to mark a running Step as failure
 
 Enable this setting to allow users to manually fail in-progress steps.
@@ -89,11 +91,100 @@ These concurrency limits are *account wide* and NOT per pipeline.
 
 This setting can only be edited in Team and Enterprise plans. You can set it at the account scope only. You can configure the limit anywhere between 2 and the maximum. 
 
+### Project-Level Pipeline Execution Concurrency
+
+:::note
+Currently, this feature is behind feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can take fine-grained control of how many pipelines run concurrently in each of your projects. By splitting your account-wide concurrency limit into a **High-Priority** and **Low-Priority** partition, you guarantee reserved execution slots for critical projects while preventing any one project from consuming all available capacity.
+
+You can configure this at the account scope only. Navigate to **Account Settings** -> **General** -> **Default Settings** -> **Pipeline** -> **CONCURRENCY MANAGEMENT**.
+
+#### How to Configure
+
+1. **Concurrent Active Pipeline Executions**  
+   - Enter your account’s **total** concurrency limit (by default, it is `1000`).  
+   - Click **Restore to Default** to reset to the system default.
+
+2. **Pipeline Execution Priority**  
+   - Select the partition you’re defining: **High** or **Low**.  
+   - Click **Restore to Default** to revert.
+
+3. **Concurrency Limit**  
+   - Specify how many slots to reserve for the selected partition (must be less than your total).  
+   - Example: setting `200` reserves 200 slots for High (leaving 800 for Low).
+
+4. **Prioritised Projects**  
+   - Select one or more projects to belong to this partition. 
+   - All unselected projects automatically fall into the opposite partition.
+
+<div align="center">
+  <DocImage path={require('./static/project-concurrency.png')} width="100%" height="100%" title="Click to view full size image" />
+</div>
+
+#### How It Works
+
+**Partition Approaches**  
+You have two options for carving up your total concurrency:
+
+1. **High-Priority Partition (Whitelist)**  
+   - You define a **High** slot count and explicitly specify which projects belong there.  
+   - All remaining (and any newly created) projects automatically fall into Low-Priority.  
+   - **When to use**: reserve slots for a handful of critical projects (e.g. security fixes, patch releases), so they always start quickly.
+
+2. **Low-Priority Partition (Blacklist)**  
+   - You define a **Low** slot count and explicitly specify which projects belong there.  
+   - All remaining (and any newly created) projects automatically fall into High-Priority.  
+   - **When to use**: throttle noisy or build-heavy projects (e.g. CI pipelines) to free up capacity for everything else.
+
+- **Runtime behavior**  
+  1. When both **High** (200) and **Low** (800) are full, new **High** executions queue—but start immediately as soon as **either** partition frees a slot (allowing High to spill over up to the full 1000 over time).  
+  2. New **Low** executions consume only the Low partition; if those 800 are full, they queue until a Low slot opens.  
+  3. On dequeuing mixed queues:
+     - **High** pipelines start on the first available slot in **High** or **Low**.  
+     - **Low** pipelines wait for the next available **Low** slot.  
+
+### Stage/Step-Level Concurrency Limits
+
+In addition to the concurrent execution limit across pipelines, Harness also imposes a concurrency limit **within individual pipeline executions**.
+
+This limit defines the maximum number of **steps or stages that can run simultaneously** at runtime—especially relevant when using looping strategies like matrix or for-each with high parallelism.
+
+#### Default Concurrency Limits (per execution)
+
+| Plan Tier            | Max Concurrent Steps/Stages |
+|----------------------|-----------------------------|
+| Free                 | 2                           |
+| Team                 | 50                          |
+| DevOps Essentials    | 60                          |
+| Enterprise           | 100                         |
+
+:::info
+
+Even if your pipeline defines up to 256 parallel steps or stages, only the first `maxConcurrency` steps will execute concurrently. The rest are queued until slots become available.
+:::
+
+
+This limit exists to ensure fair usage and system stability. It is configurable internally based on your plan tier, but not editable by users via the UI.
+
+
 ### Pipeline Timeout and Stage Timeout (execution time limits)
 
 The timeout limit is the maximum allowable time a stage or pipeline can run.
 
 By default, the **Pipeline Timeout** and **Stage Timeout** settings are set to the maximum for your plan tier. You can edit these limits to anything less than the maximum for your plan tier. If needed, you can configure different timeout limits at the account, org, and project scopes.
+
+#### Precedence of Timeout Settings
+
+Priority order (highest to lowest):
+
+- Account-level timeout (highest priority)
+- Organization-level timeout
+- Project-level timeout
+- Pipeline-level timeout
+- Stage-level timeout
+- Step-level timeout (lowest priority)
 
 Manually configuring a pipeline or stage to have a longer timeout than the system limit, the system limit is still enforced.
 

@@ -69,14 +69,6 @@ The legacy delegate used `DELEGATE_GROUP_NAME` for group names. This environment
 
 You can install the Docker delegate into Amazon ECS Fargate. For more information, go to [Deploy a Docker delegate to Amazon ECS or AWS Fargate](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate.md).
 
-### Install a legacy Kubernetes delegate
-
-import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
-
-<Deleos />
-
-The legacy Kubernetes delegate, denoted `latest` container image tag, is used primarily in Harness FirstGen had the auto-upgrade setting ON by default and did not have the flexibility to turn OFF this setting if needed. This type of delegate is now deprecated for new Harness accounts. For more information, go to [Install a legacy Kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate.md).
-
 ### Install Docker delegate using Podman
 
 You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile.
@@ -102,7 +94,6 @@ To install the Docker delegate using Podman, do the following:
    -e DELEGATE_TYPE="DOCKER" \
    -e ACCOUNT_ID=<ACCOUNT_ID_COPIED_FROM_THE_UI_COMMAND> \
    -e DELEGATE_TOKEN=<DELEGATE_TOKEN_COPIED_FROM_THE_UI_COMMAND>= \
-   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
    -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
    ```
 

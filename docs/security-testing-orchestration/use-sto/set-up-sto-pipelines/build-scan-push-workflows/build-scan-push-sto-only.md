@@ -47,7 +47,7 @@ The following steps describe the workflow:
 - This workflow has the following prerequisites:
 
   - A Harness account and STO module license.
-  - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
+  - You must have a [Security Testing Developer or AppSec role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
   - A basic understanding of key STO concepts and good practices is recommended. This workflow builds on the [SAST code scans using Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep) and [Container image scans with Aqua Trivy](../../../sto-techref-category/trivy/container-scan-aqua-trivy) workflows.
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub.
   - GitHub requirements — This workflow assumes you have the following:
@@ -331,7 +331,7 @@ This is a good time to run your pipeline and verify that it can scan the repo an
    - `GITHUB_REPO` = **dvpwa**
    - `GITHUB_BRANCH`= **master**
 
-2. Click **Run Pipeline** and wait for the execution to finish. You can then view your scan results in [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
+2. Click **Run Pipeline** and wait for the execution to finish. You can then view your scan results in [**Vulnerabilities tab**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 ## Add the image build step
 
@@ -535,7 +535,7 @@ This is a good time to run your pipeline and verify that it can scan the repo an
 
    :::
 
-2. Click **Run Pipeline** and wait for the execution to finish. You can then view your scan results, for both the repo and the image, in [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
+2. Click **Run Pipeline** and wait for the execution to finish. You can then view your scan results, for both the repo and the image, in [**Vulnerabilities tab**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 ## Add the image push step
 

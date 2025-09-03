@@ -9,42 +9,52 @@ helpdocs_is_private: false
 helpdocs_is_published: truex
 ---
 
-<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
 
- You can run scans and ingest results from [SonarQube](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes. 
+Harness STO integrates with [SonarQube](https://docs.sonarqube.org/latest/) to scan your code repositories for vulnerabilities, enforce policies, and maintain code quality. The SonarQube step supports all the three STO scan modes: **Orchestration**, **Ingestion**, and **Extraction**.
 
-<DocVideo src="https://www.youtube.com/embed/qP0TUQuTSfI?si=yzQslx3sXdQjXWTi" /> 
+**Language Support**: All languages supported by SonarQube are compatible. Refer to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/) for prerequisites specific to your repository's language.
 
-## Important notes for running SonarQube scans in STO
+<DocVideo src="https://www.youtube.com/embed/qP0TUQuTSfI?si=yzQslx3sXdQjXWTi" />
 
-* STO supports repository scanning only for SonarQube.
-* STO supports all languages supported by SonarQube.
-* Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. <!-- Need to confirm this sentece per https://harness.atlassian.net/browse/DOC-3640 If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan. -->
-  For details about specific language requirements, go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/).
-* By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestration and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube step. 
-* You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
-* You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+### SonarQube Issue categorization in STO
 
-### Root access requirements 
+STO categorizes the SonarQube issues with severities: **Critical**, **High**, **Medium**, **Low**, and **Info**. The table below outlines how specific SonarQube issue types are classified in STO.
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
+| SonarQube Issue Type        | STO Categorization                                                        |
+|-----------------------------|-----------------------------------------------------------------------------------|
+| Vulnerabilities         | Imported, normalized, deduplicated and assigned [STO severity levels](/docs/security-testing-orchestration/get-started/key-concepts/severities)            |
+| Code Smells, Bug Smells, Maintainability issues| Imported and categorized under **Info** severity.                                   |
+| [Quality Gates (Policies)](#view-sonarqube-quality-gate-failures)| Imported and categorized as policy issues with **Info** severity.                   |
+| [Code Coverage](#view-sonarqube-code-coverage-results)           | Imported as both a step output variable and a policy issue with **Info** severity.  |
+| Hotspots                | Currently not supported by STO.                                                   |
 
-<StoRootRequirements />
+### Step configuration guidelines
+
+Use the following guidelines when configuring and running SonarQube scans in STO:
+
+#### Resource Allocation
+  - By default, STO allocates **500Mi memory** for SonarQube scans, suitable primarily for Ingestion scans.
+  - For Orchestration and Extraction scans, allocate at least **2GB memory**. Customize resource limits per [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources).
+
+#### Certificates and Root Access
+  - Run scans with root access if adding trusted certificates at runtime.
+  - Alternatively, configure STO images and pipelines to run as non-root users and manage self-signed certificates. For details, see [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+
+:::info
+STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates-in-sto).
 
 
-### For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
+:::
 
-## SonarQube step settings for STO scans
+## SonarQube step settings
 
 
 The recommended workflow is to add a SonarQube step to a Security or Build stage and then configure it as described below.
@@ -67,12 +77,12 @@ A Docker-in-Docker background step is not required for this workflow.
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanMode from './shared/step-palette/scan/type.md';
 
-import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeOrch  from './shared/step-palette/scan/mode/orchestration.md';
 
-import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeData from './shared/step-palette/scan/mode/extraction.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 
 
@@ -97,15 +107,15 @@ The predefined configuration to use for the scan.
 
 #### Type
 
-import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeRepo     from './shared/step-palette/target/type/repo.md';
 
 <StoSettingScanTypeRepo />
 
 
 #### Target and Variant Detection 
 
-import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from './shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectNote/>
@@ -113,7 +123,7 @@ import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from './shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
@@ -122,7 +132,7 @@ If you're running an Extraction scan, this field should match the code repositor
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -131,7 +141,7 @@ If you're running an Extraction scan, this field should match the branch or PR d
 #### Workspace
 
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from './shared/step-palette/target/workspace.md';
 
 
 
@@ -141,7 +151,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 ### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 
 
@@ -158,7 +168,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 The URL of the SonarQube server. This is required for Orchestration and Extraction scans. This value corresponds to the [`sonar.host.url`](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/analysis-parameters/#mandatory-parameters) setting in SonarQube.
 
 
-import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
+import StoSettingAuthDomain from './shared/step-palette/auth/domain.md';
 
 
 
@@ -170,7 +180,7 @@ import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
 #### Enforce SSL
 
 
-import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
+import StoSettingProductSSL from './shared/step-palette/auth/ssl.md';
 
 
 
@@ -181,7 +191,7 @@ import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
 
 
 
-import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.md';
 
 
 
@@ -214,7 +224,7 @@ A comma-separated list of paths to files with third-party libraries used by your
 
 <!-- 
 
-import StoSettingTooJavaLibraries from './shared/step_palette/tool/java/_libraries.md';
+import StoSettingTooJavaLibraries from './shared/step-palette/tool/java/libraries.md';
 
 
 
@@ -229,7 +239,7 @@ A comma-separated list of paths to the folders with the bytecode files you want 
 
 <!--
 
-import StoSettingToolJavaBinaries from './shared/step_palette/tool/java/_binaries.md';
+import StoSettingToolJavaBinaries from './shared/step-palette/tool/java/binaries.md';
 
 
 <StoSettingToolJavaBinaries  />
@@ -237,7 +247,7 @@ import StoSettingToolJavaBinaries from './shared/step_palette/tool/java/_binarie
 
 ### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 
 <StoSettingLogLevel />
@@ -270,14 +280,14 @@ You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.o
                         cli: "-Dsonar.projectVersion=1.2.3"
 ```
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 
 <StoSettingFailOnSeverity />
@@ -296,14 +306,14 @@ You can add a `tool_args` setting to run the [sonar-scanner binary](https://docs
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

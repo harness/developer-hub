@@ -7,7 +7,7 @@ redirect_from:
     - /docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry
 ---
 
-Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline pulls scan images from the [Harness DockerHub](https://hub.docker.com/u/harness).
+Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/whats-supported/scanners). By default, a Harness pipeline pulls scan images from the [Harness DockerHub](https://hub.docker.com/u/harness).
 
 This topic describes how to override the default image pull behavior and use your own private registry instead of pulling directly from the public Harness DockerHub. You can download the scan images you need, perform your own security checks on the images, upload them to a private registry, and then set up your STO steps to download images from your private registry.
 
@@ -140,7 +140,7 @@ The **Custom Scan** step uses the `sto-plugin` image to launch the appropriate s
 
 To override the scanner image in a **Custom Scan** step, add the following settings in the **Additional Configuration** section of the **Custom Scan** step:
 
-* <strong><code>runner_registry_domain</code></strong>: The URL of the registry where the images are stored. The supported format is `<_domain_>/<_directory_>` (such as, gcr.io/gcr-prod). Do not include the scheme (such as http:// or https://).
+* <strong><code>runner_registry_domain</code></strong>: The URL of the registry where the images are stored. The supported format is `<_domain_>/<_directory_>` (such as, public.ecr.aws/r7c1u4s0/harness). Do not include the scheme (such as http:// or https://).
 * <strong><code>runner_registry_image_prefix</code></strong>: set this to `harness` (Do not change this setting)
 * <strong><code>runner_registry_username</code></strong>: The username of your registry
 * <strong><code>runner_registry_token</code></strong>: The token to access your registry

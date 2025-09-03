@@ -18,13 +18,13 @@ These instructions are in support of our Admin and Architect level certification
 
 Video of your expected Harness Certification Hands-on Exam experience.
 
-<DocVideo src="https://www.youtube.com/watch?v=v8kOnhNopkc" />
+<DocVideo src="https://www.youtube.com/watch?v=jU-K4ZmLurc" />
 
 ## Accessing your Hands-on Exam
 
 1. After registering for the administrator or architect level exam, the final question will be the hands-on exam.
 
-2. Once you access the hands-on exam, you will see instructions to open the Instruqt Hands-On exam by copy and pasting the exam URL in a new tab.
+2. Once you access the hands-on exam, you will see instructions to open the Instruqt Hands-on exam by copy and pasting the exam URL in a new tab.
 
    ![New Tab](./static/new-tab.png)
 
@@ -50,7 +50,7 @@ Below is a picture of the cloud shell you will see during an exam.
 
 ## Troubleshooting
 
-Please see our [FAQ](/university/faqs) section for troubleshooting tips. You can also email our certification team at [certifications@harness.io](mailto:certifications@harness.io).
+Please see our [FAQ](/university/policies-and-faqs) section for troubleshooting tips. You can also email our certification team at [certifications@harness.io](mailto:certifications@harness.io).
 
 ## Video of Instructor-Led Training Experience
 

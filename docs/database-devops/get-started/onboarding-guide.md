@@ -1,149 +1,124 @@
 ---
 title: Database DevOps onboarding guide
 description: A self-service onboarding guide for Harness DB DevOps.
+slug: /database-devops/use-database-devops/get-started/onboarding-guide/
 sidebar_position: 4
 sidebar_label: Onboarding guide
+keywords:
+  - database devops
+  - db devops
+  - harness db devops
+  - harness database devops
+  - harness dbops
+  - harness database
+  - harness db
+  - harness devops
+  - continuous integration
+  - continuous delivery
+  - ci cd
+tags:
+  - database-devops
+  - db-devops
+  - harness-db-devops
+  - onboarding-guide
+  - getting-started
+  - dbops
 ---
 
 import BetaIcon from '/img/icon_beta.svg';
 
 <BetaIcon />
 
-# DB DevOps onboarding guide
+This guide introduces you to the robust capabilities of Harness DB DevOps, providing a streamlined approach to managing and securing your database operations.  When you define a pipeline in Harness DB DevOps, we dynamically orchestrate a series of jobs within your Kubernetes cluster. These jobs are responsible for cloning your Liquibase changelogs from Git, applying schema changes using Liquibase, and managing logs and cleanup post-execution. 
 
-Welcome to the Harness Database DevOps (DB DevOps) onboarding guide. This topic introduces you to the powerful capabilities of DB DevOps using Harness and guides you through key functionalities that streamline and secure your database management tasks.  
-
-### Prerequisites
+## Prerequisites
 
 Before beginning the walkthroughs in this guide, ensure you have:
-
- - Access to a Harness account. 
- - A Kubernetes cluster, connected via a Harness delegate. 
-    - You **must** ensure that your Kubernetes cluster has network access to the target database, as well as the Git repository containing your changelog. 
-    - Your cluster must be set us as [build infrastructure](https://developer.harness.io/docs/category/set-up-kubernetes-cluster-build-infrastructures/) which can be tested by running the `git clone` step of a custom stage. 
- - Credentials configured for your database:
-    - If you are using **Oracle** connecting as the user `sys`, be aware that this is not currently supported. 
-    - credentials need the ability to create/alter/query two tables named `DATABASECHANGELOG`, and `DATABASECHANGELOGLOCK` as well as the ability to update all data in these tables. Credentials also need the ability to execute whatever operations are in your SQL changelogs.
- - You must have an artifact repo configured that can pull these images: 
-    - [plugins/drone-liquibase](https://hub.docker.com/r/plugins/drone-liquibase/tags). The tags vary by database. For example:
-      - if you're deploying to MongoDB, opt to use [latest-mongo](https://hub.docker.com/r/plugins/drone-liquibase/tags)
-      - if you're deploying to any other database, opt to use [latest](https://hub.docker.com/r/plugins/drone-liquibase/tags?page=&page_size=&ordering=&name=latest)
-    - [harness/ci-addon](https://hub.docker.com/r/harness/ci-addon)
-    - [harness/ci-lite-engine](https://hub.docker.com/r/harness/ci-lite-engine)
-    - [harness/drone-git](https://hub.docker.com/r/harness/drone-git)
-    - [plugins/download-artifactory:latest](https://hub.docker.com/r/plugins/download-artifactory)
-
-:::warning
-When using DB DevOps, it is essential that you ensure that the `CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE` Feature Flag is enabled to avoid any impact to your Database DevOps environments. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io).
-:::
+| Item | Details / Link |
+| --- | --- |
+| Harness account | Database DevOps Feature flag enabled (see “[Enabling Feature Flags](https://developer.harness.io/docs/database-devops/dbdevops-supported-platforms/)”) |
+| Kubernetes cluster | Kubernetes Cluster ≥ v1.18, Harness Delegate installed ([Delegate setup guide](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/)) |
+| Database credentials | JDBC‑compatible database; user with DDL/DML privileges |
  
-## Create a Liquibase changelog
+## Setting Database DevOps
 
-Database DevOps currently supports deploying sql changes through [a liquibase changelog](https://docs.liquibase.com/concepts/changelogs/home.html). If you already use liquibase, you can skip to the section ‘Configuring Your DB Schema’. If you do not already use liquibase, we will walk you through creating a liquibase changelog. 
+### 1. Create a Liquibase changelog
 
- 1. Create a git repo in which to store your database schema definition.
- 2. Create a folder named ‘sql’.
- 3. Load all of your SQL files into this folder. Ensure their names are configured so that they are alphabetically in the order in which they should run.
- 4. Immediately outside the sql folder, create a file named ‘changelog.yml’ with the following content. This file will be your changelog. It will include all sql files in the sql folder.
+:::info Important Note
+If you're new to Liquibase, there are two main ways to create your initial changelog:
 
-```
+1. Use existing SQL files – Recommended if you already manage your schema through SQL scripts.
+2. Generate a changelog – Auto-generate a changelog by diffing an existing database.
+For more details on both options, refer to [How to Build a Changelog guide](https://developer.harness.io/docs/database-devops/use-database-devops/get-started/build-a-changelog/).
+
+If you already use liquibase, you can skip to the section [Configuring Your DB Schema](#2-configure-your-database-schema).
+:::
+
+1. Create Git Repo to store your DB schema files.
+2. Under repo, create folder sql/ and add ordered `*.sql` files
+3. Add changelog.yml at root with:
+
+```yml
 databaseChangeLog:
   - includeAll:
       path: sql
 ```
+Use semantic versioning in file names (e.g., "V1__init.sql", "V2__add_table.sql") for clarity and consistency.
+:::info tip
+Use semantic file names ("V1__init.sql", "V2__add_table.sql").
+:::
 
-## Configure your database schema
+### 2. Configure your Database Schema
 
 The database schema defines a set of SQL changes that can be deployed to one or more database instances. Here is how we will configure it:
 
- 1. Login to your Harness account. 
- 2. On the module picker, choose ‘DB DevOps’.
- 3. In the left hand nav, choose ‘DB Schemas’. 
- 4. Click ‘Add New DB Schema’:
- 5. Give your schema a logical name to identify the database configuration that it represents.
- 6. Under ‘Connector’ specify a connector for your Git repository, or create a new connector.
- 7. Specify the path in this connector under which the liquibase changelog for this schema can be reached.
- 8. If you also use Harness CD to deploy your services, you can optionally choose the name of the service that uses this database under ‘Associated Service'. This will allow you to easily see information about the database and its service side-by-side in reports in the future.
- 9. Click ‘Add Schema’.
+1. On the module picker, choose `DB DevOps` in your harness account.
+![dbops-module-picker](./static/dbops-module-picker.png)
+2. In the left hand nav, choose `DB Schemas` and Click `Add New DB Schema`.
+![dbops-schema-create](./static/dbops-schema-create.png)
+   - **Name** - A Schema Name to identify the database configuration.
+   - **Connector** - Code Repositories hosted on either GitHub, Azure, GitLab, BitBucket or etc.
 
 :::info
 To learn more about Git connectors settings, reference this [Harness Git connector settings](../../platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference.md) documentation for more.
 :::
 
-## Connect your Database Instance 
+### 3.Connect with Database Instance 
 
 Before we can deploy our Database Schema, we need to connect a database instance to which we can deploy it. Here’s how:
 
- 1. Starting on the **DB Schemas** screen, You should see a row for your database schema. In the **DB Instances** column, click **New** to add a new database instance.
- 2. For your selected branch, we recommend entering the name of your ‘main’ or ‘master’ branch. Some companies leverage GitOps practices where they use a different branch for each environment. If you are doing this for your application code, you can specify a different branch name here so that your database changes can follow the same workflow.
- 3. Configure your DB Connector. A DB Connector is a set of credentials used to talk to a running database server.
- 4. Click **Select Connector** followed by **New Connector**.
- 5. Enter a name for the database to which we will deploy. Click **Continue**. 
- 6. Enter a JDBC url that we can use to connect to the database. 
- 7. Enter a username and password for the database. The user *must* have the permissions covered in the [Prerequisites](#prerequisites) section. 
- 8. Click **Continue**.
- 9. Choose a [delegate](../../platform/delegates/delegate-concepts/delegate-overview.md) to connect to the database. This delegate must have network access to the database server. Click **Save and continue**.
- 10. Harness will now test your connection. If the test passes successfully, click **Finish**.
- 11. *Optional*: Configure context. [Context](https://docs.liquibase.com/concepts/changelogs/attributes/contexts.html) can be used to deploy a different set of changes to different environments from the same branch of git. Inside the changelog, any given change can be labelled with one or more contexts. If you specify a context here, then only changes marked with that context will be deployed to this database instance. If you leave this field blank, than all changes will be deployed to this DB Instance. For example, if you only want changes marked as **Production** to be deployed to your **Production** DB Instance, you could give it the context **Production**. To have a corresponding staging instance get all changes, you would leave the context blank for staging.
- 12. Click **Add Database Instance**.
+1. Under "DB Instances", click  “Add New DB Instance".
+2. Select main (or your environment branch).
+3. Click New JDBC Connector and Enter Name, JDBC URL & credentials, select the harness [delegate](../../platform/delegates/delegate-concepts/delegate-overview.md), then Save and Finish.
+   - **Name** - A name to identify the database instance.
+   - **JDBC URL** - The JDBC connection string for your database instance. Learn More about [JDBC connection strings](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/).
+   - **Username** - The username to connect to the database.
+   - **Password** - The password for the database user.
+   - **Delegate** - The Harness Delegate that will run the database operations.
+4. Click `Add Database Instance`.
 
-## Configure your Deployment Pipeline
+### 4. Configure your Deployment Pipeline
 
 A deployment pipeline deploys your database changes when it runs. In addition to deploying your database, it can also deploy application changes, and have other logic such as requiring a manual approval. Here are some steps on how to create a simple pipeline that deploys a schema change to a database instance anytime it changes in git:
 
- 1. Click **Pipelines**.
- 2. Click **Create a Pipeline**.
- 3. Enter a name for your pipeline, then click **Start**.
- 4. Click **Add Stage**.
- 5. Choose **Custom stage**.
- 6. Choose **Add step group**.
- 7. Click **Enable Containerized Stage**.
- 8. Choose the Kubernetes cluster you'd like to run on.
- 9. Click **Add Step**.
- 10. Choose the **DBSchemaApply** step under **DB DevOps**.
- 11. For the step name, enter ‘Deploy Database Schema’.
- 12. Specify the container registry from which to read the drone container images.
- 13. In the step configuration, choose the schema and Instance to update.
- 14. Click **Apply Changes**.
- 15. Click **Save**.
-
-To test your pipeline:
-
- 1. Click **Run**.
- 2. Wait for your pipeline to complete.
-
-## Configure your pipeline to automatically deploy when Git changes
-
- 1. Open the **Continuous Delivery & GitOps** module within Harness.
- 2. Open **Pipelines** then choose your pipeline.
- 3. Click **Triggers**, followed by **New Trigger**.
- 4. Choose the git connector to listen for. This git connector will match the configuration you provided in your DB Schema.
- 5. Under conditions, specify the branch name(s) that are used by DB Instance(s) updated by this pipeline.
- 6. Under **Changed Files**, enter the path to your changelog, and any other files it references. You can leverage regex to reference other changed files. 
- 7. Under the pipeline input, change **Tag** to **Expression**. After this step, enter the formula `<+trigger.commitSha>` which will read the `sha` from the triggering git commit.
-
-## Capacity Planning
-
-Capacity planning is critical for Harness Database DevOps because it ensures that the database infrastructure can handle current workloads while scaling efficiently to meet future demands. 
-
-During the execution, DB DevOps spins up pods on the specified kubernetes cluster in order to run various tasks, for example git clone, and liquibase commands. 
-
-In your pipeline, you can specify how many resources these pods use. Your cluster will need this many resources available per concurrent execution of the pipeline.
-
-Harness plans to increase the default values to 0.5 CPU, and 1 GB of RAM in the near future. Harness recommends setting this in the UI of Harness Database DevOps module.
-
-```
-spec:
-   connectorRef: account.harnessImage
-   dbSchema: db_devops_demo
-   dbInstance: ms_sql
-   tag: <+stage.variables.tag>
-   resources:
-      limits:
-         memory: 1Gi
-         cpu: "0.5"
-```
+1. Under Pipelines, Click Create a Pipeline.
+2. Click on Add Stage and Choose Custom stage.
+3. Choose Add step group and Turn on Enable Containerized Stage.
+4. Choose the Kubernetes cluster you'd like to run on.
+5. Click Add Step and Choose the Apply Database Schema step under DB DevOps.
+6. For the step name, enter "Deploy Database Schema".
+   ![dbops-step-apply-schema](./static/dbops-step-apply-schema.png)
+   - **Name**: Name of the step, by default the name is "DBSchemaApply_1". 
+   - **Timeout**: The timeout limit is the maximum allowable time a stage or pipeline can run.
+   - **Select DB Schema**: The DB Schema we created on Step 2.
+   - **Select DB Instance**: The Instance we created on Step 3.
+   - **Tag (Optional)**: You can add custom tags to each deployment. In case it is left empty, harness will add the tag during the deployment.
+7. Click `Apply Changes` and Save the Pipeline.
+8. Now, click on "Run" and wait for your pipeline to complete.
+![dbops-running](./static/dbops-running.png)
 
 ## Conclusion
 
-This onboarding guide has introduced you to the essential functionalities and initial setup processes of Harness Database DevOps (DB DevOps). Through this guide, you have explored the powerful capabilities of functionalities that streamline and secure your database management tasks, from connecting git connectors to configuring pipelines.
+This onboarding guide helped you get started with Harness Database DevOps onboarding by showing you how to configure your database schema, connect your database instances, create and run a deployment pipeline, and plan resources for scaling. By following these steps, you can deploy Liquibase changelogs from Git, apply schema changes automatically, and monitor your database DevOps processes in Kubernetes without downtime.
+
+If you need more support with database setup, pipeline troubleshooting, or common runtime errors, be sure to visit the [Database DevOps Troubleshooting Guide](https://developer.harness.io/docs/database-devops/troubleshooting/) or reach out to our support team. We're here to help you get the most out of Harness Database DevOps!

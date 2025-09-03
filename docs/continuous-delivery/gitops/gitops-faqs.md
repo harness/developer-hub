@@ -32,7 +32,7 @@ A: Yes, the Harness GitOps Agent supports High Availability and scalability by a
 
 ### Which versions of ArgoCd that the latest version of the GitOps agent support? 
 
-We currently support v2.10.14.
+You can find the latest supported ArgoCD versions in the [GitOps Agent Documentation](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent/#what-version-of-gitops-agent-supports-what-version-of-repo-server-and-redis-cache).
  
 
 ### The GitOps agent updater, can you advise that this will update the Agent, ArgoCD and Redis? Is this also true if use the option to bring our own ArgoCD?
@@ -49,11 +49,6 @@ Yes, using Terraform, it is possible to automate the provisioning of the GitOps 
 Yes. For more details, go to [Helm OCI repository documentation](https://developer.harness.io/docs/continuous-delivery/gitops/oci-support/helm-oci-repository-aws-ecr).
 
 
-### Can one manage Flux applications with Harness GitOps ?
-
-Yes  one can manage Flux applications with Harness GitOps. For more details, go to [Use Flux](/docs/continuous-delivery/gitops/connect-and-manage/use-flux/).
-
-
 ### Does Harness provides drift detection for Kubernetes non-GitOps pipelines ?
 
 No, this feature is still under development and not yet supported. We hope to deliver this soon!
@@ -65,7 +60,7 @@ The user needs to make the required changes in the config map (cluster.inCluster
 
 ### Do we have a way of adding certificate at project/org level to be consumed by GitOps Agent ?
 
-We do not have a way to add certificates at different scope for project/org/account level for GitOps Agent. This is an agent side configuration and need to be done at the agent itself. For more details, go to [Harness GitOps Agent with self-signed certificates](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates).
+We do not have a way to add certificates at different scope for project/org/account level for GitOps Agent. This is an agent side configuration and need to be done at the agent itself. For more details, go to [Harness GitOps Agent with self-signed certificates](https://developer.harness.io/docs/continuous-delivery/gitops/agents/harness-git-ops-agent-with-self-signed-certificates).
 
 
 ### Is there a method to configure the Harness GitOps agent auto updater to utilize our Artifactory proxy for Docker Hub, considering policy of not allowing Kubernetes clusters to access the public internet directly ?
@@ -130,7 +125,7 @@ This environment variable will tell the Agent to look at the file specified in t
 
 ### Can I pass sensitive data in a Harness GitOps deployment?
 
-You can use [Mozilla SOPS](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/sops), which enables you to securely manage sensitive data by encrypting it before storing it in your Git repository.
+You can use [Mozilla SOPS](https://developer.harness.io/docs/continuous-delivery/gitops/security/sops), which enables you to securely manage sensitive data by encrypting it before storing it in your Git repository.
 
 Once encrypted, SOPS decrypts the data during deployment using the keys stored as Kubernetes secrets, ensuring that your sensitive information remains protected.
 
@@ -281,10 +276,6 @@ Verify that the agent, cluster, and service are set up correctly. After linking 
 ### What steps should I take if the problem persists after linking the clusters?  
 Double-check the cluster, agent, and service configurations in both Harness and your GitOps setup. If the issue persists, reach out to your Harness support team with detailed logs or screenshots for further assistance.
 
-### What are the key differences in GitOps workflows when using Argo CD versus Flux?
-
-When implementing GitOps, Argo CD and Flux offer similar core functionalities but differ in their approach to deployment and reconciliation.  Argo CD uses a declarative approach, continuously comparing the desired state in Git with the live state and automatically syncing any discrepancies. Flux, on the other hand, employs an operator-based approach, reacting to changes in Git and applying them to the cluster.  The choice between them depends on specific project needs and preferences.  Further details on these tools can be found in relevant documentation from their respective projects.
-
 ### For GitOps Repos, does Bitbucket fall under the umbrella of a supported platform?
 
 Bitbucket is supported any git provider that Argo supports should be supported by us as well [Argo CD Access Token](https://argo-cd.readthedocs.io/en/release-1.8/user-guide/private-repositories/#access-token).
@@ -295,7 +286,7 @@ The insert call creates a new link, but there is an update call that updates as 
 
 ###  How can we address the user's report of a GitOps agent container with errors, specifically the inability to connect to the GitOps server, and the subsequent authentication failures?
 
-The GitOps agent's inability to connect to the server and subsequent authentication failures point to network connectivity or authentication configuration problems. Verify network connectivity between the agent and the server.  Check the agent's configuration for correct server address, port, and authentication credentials.  Review the server logs for any errors related to the agent's connection attempts.  Refer to [Harness Docs](https://developer.harness.io/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent/).
+The GitOps agent's inability to connect to the server and subsequent authentication failures point to network connectivity or authentication configuration problems. Verify network connectivity between the agent and the server.  Check the agent's configuration for correct server address, port, and authentication credentials.  Review the server logs for any errors related to the agent's connection attempts.  Refer to [Harness Docs](https://developer.harness.io/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent/).
 
 ### How can users set up GitOps correctly and avoid configuration errors?  
 Users should ensure:
@@ -323,4 +314,29 @@ Argo CD allows configuring Sync Windows to control when auto-sync occurs. This c
 Enhancement requests for GitOps RBAC improvements have been submitted, but currently, fine-grained GitOps RBAC controls are limited.
 
 ### How can a user manage Argo CD Application Sets using a single Argo CD Agent?
-Argo CD Application Sets are managed by a single Argo CD Agent, so a single AppSet cannot cover multiple clusters. Users can set up separate AppSets in different agents for different environments.
+ArgoCD ApplicationSets do not fully support project-scoped repositories. While you can create an ApplicationSet, the underlying applications may fail to fetch repository contents due to authentication issues.
+Workarounds:
+- Use an Organization-scoped or Account-scoped repository instead of a Project-scoped repository.
+- Configure repo-cred templates to manage authentication for project-level repositories.
+This is a known limitation in [ArgoCD](https://github.com/argoproj/argo-cd/issues/21016).
+
+### How are App Project IDs generated?
+
+Harness uses the following procedure to calculate the app project id:
+
+1. Concatenate the account id, org id, and project id. For example:
+2. Generate the `md5` hash for the string in step 1. For example, if the string was `proddefaulttest` then the hash might be `abcdefghijklmnopqrstuvwxyz`
+3. The first 8 characters of the hash is the app project id. For example, `abcdefgh`.
+
+##### Example: 
+  ```
+  accountid: prod
+  orgid: default
+  projectid: test
+
+  concatenated string: proddefaulttest
+
+  hash: abcdefghijklmnopqrstuvwxyz
+
+  app project id: `abcdefgh`
+  ```

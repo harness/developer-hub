@@ -1,0 +1,11 @@
+{
+    "label":"SonarQube",
+    "position": 2,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"SonarQube"
+    }
+ }

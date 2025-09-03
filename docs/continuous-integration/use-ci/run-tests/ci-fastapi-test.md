@@ -98,7 +98,7 @@ Optionally, you can build the project and test it locally before running tests i
 
 ## Prepare the pipeline
 
-1. Create a [Harnesss CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
+1. Create a [Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 2. Add a [Build stage](../set-up-build-infrastructure/ci-stage-settings), and select the GitHub connector you created in [Prepare the codebase](#prepare-the-codebase).
 3. You can use any [build infrastructure](/docs/category/set-up-build-infrastructure). To follow along with this tutorial,use either Harness Cloud build infrastructure or a Kubernetes cluster build infrastructure.
 
@@ -132,7 +132,7 @@ Add a [Run step](/docs/continuous-integration/use-ci/run-step-settings) to insta
     name: Install Dependencies
     identifier: Install_Dependencies
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: python:latest
       shell: Sh
       command: |-
@@ -177,7 +177,7 @@ This tutorial runs basic unit tests, but you can run all types of tests (such as
     name: Pytest
     identifier: Pytest
     spec:
-      connectorRef: account.harnessImage
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
       image: python:latest
       shell: Sh
       command: |-
@@ -302,7 +302,7 @@ pipeline:
                   name: Install Dependencies
                   identifier: Install_Dependencies
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |-
@@ -313,7 +313,7 @@ pipeline:
                   name: Pytest
                   identifier: Pytest
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: python:latest
                     shell: Sh
                     command: |

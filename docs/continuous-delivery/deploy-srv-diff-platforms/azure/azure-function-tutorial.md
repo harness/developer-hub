@@ -63,6 +63,14 @@ Under Artifact Location, specify the necessary details such as Artifact Source I
 
 You can also create and use a template for artifacts.
 
+:::info
+When you set **Artifact type = Other** for a private Docker registry, you will need to populate the PLUGIN_DOCKER_USERNAME and the full registry URL in the slot’s Full Image Name and Tag. To do so, add:
+- PLUGIN_DOCKER_USERNAME: `<+secrets.getValue("account.ARTIFACTORY_SAAS_PROD_USERNAME")>`
+- PLUGIN_DOCKER_CONTAINER_NAME: `https://<your-registry-url>/<repository>/<image>:<tag>`
+
+in the Azure Deployment step so that your function can authenticate and pull the correct image.
+:::
+
 ## Azure Function Environments 
 
 Define the environment you want to use to deploy the Azure function.
@@ -105,6 +113,8 @@ In the deploy steps under Container Configuration, specify the appropriate image
 
 1. [ECR Image for azure function plugin](https://gallery.ecr.aws/harness/harness/azure-function-plugin)
 2. [Docker Image for azure function plugin](https://hubgw.docker.com/r/harnessdev/azure-function-plugin)
+3. GAR Images for azure function plugin:
+   - Europe region: [GAR Image Repository for Azure Function Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fazure-function-plugin?inv=1&invt=Ab5cNA)
 
 :::
 
@@ -118,7 +128,7 @@ The Azure function Deploy step has the following settings:
 
  * **Name:** Enter a name for the step.
  * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
- * **Azure Connector**: Specify the connector that connects to the azure infrastructure.
+ * **Container Registry**: Specify the connector that connects to the azure infrastructure and container registry you wish to use.
  * **Image**: Specify the artifact image you want to run. 
  * **Function app**: Specify the Azure Container to be used.
  * **Deployment Slot:** Enter the name of the Source slot for the deployment. This slot is where Harness deploys the new Azure Function version. Make sure the slot you enter is running.

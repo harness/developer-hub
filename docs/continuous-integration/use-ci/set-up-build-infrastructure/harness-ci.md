@@ -49,18 +49,16 @@ Harness CI images are stored in a public container registry. If you don't want t
 
 ## Harness CI image updates
 
-Your organization has a one-month window to run security scans or other tests on new CI build images before you deploy them. Every two weeks, Harness publishes new versions of images required to run CI builds. Each image is backwards-compatible with the previous two releases.
+Every week, based on changes, CI images are updated and listed on the [CI release notes](https://developer.harness.io/release-notes/continuous-integration/) page. We recommend maintaining a one-month window to run security scans or other tests on new CI build images before deploying them.
 
 Harness updates `harness/ci-*` images, such as `harness/ci-addon` and `harness/ci-lite-engine`, according to the following release process:
 
-* Harness publishes updates for all CI images on the second and fourth Monday of each month.
-* Version numbers use an `x.y.z` format where `x` indicates the major release number, `y` indicates the minor release number, and `z` indicates a hotfix or patch release number.
-* All images are supported for the latest three releases: `latest`, `latest-1`, and `latest-2`. Each image release is backward-compatible with the previous two releases.
-* You can choose to deploy the latest containers immediately upon release, or you can download and scan them before deployment.
-* If your builds use containers that are more than two releases old, the Harness UI shows a warning that the image versions are no longer supported. Builds won't fail automatically.
-* If a hotfix or security fix is required for a specific image, Harness creates hotfixes for the latest three images and notifies customers when these hotfixes are available.
+- Harness publishes updates for all CI images weekly based on changes.
+- Version numbers follow the x.y.z format, where x represents the major release number, y represents the minor release number, and z represents a hotfix or patch release number.
+- You can choose to deploy the latest containers immediately upon release or download and scan them before deployment.
+- If issues are found, patches will be applied to the latest version.
 
-[Drone plugin images](https://console.cloud.google.com/gcr/images/gcr-prod/global/plugins) are updated as needed. All Drone image updates are backward-compatible. When you first deploy CI, Harness scans all `plugin` images you plan to use and addresses any vulnerabilities. After your initial deployment, Harness publishes updates to address new vulnerabilities based on our Service Level Agreement with your organization.
+[Harness plugin images](https://console.cloud.google.com/gcr/images/gcr-prod/global/plugins) for SMP are updated as needed. All Harness image updates are backward-compatible. When you first deploy CI, Harness scans all `plugin` images you plan to use and addresses any vulnerabilities. After your initial deployment, Harness publishes updates to address new vulnerabilities based on our Service Level Agreement with your organization.
 
 ## Specify the Harness CI images used in your pipelines
 
@@ -81,18 +79,54 @@ API key authentication is required. For more information about API keys, go to [
    {
     "status": "SUCCESS",
      "data": {
-       "addonTag": "harness/ci-addon:1.14.4",
-       "liteEngineTag": "harness/ci-lite-engine:1.14.4",
-       "gitCloneTag": "harness/drone-git:1.1.0-rootless",
-       "buildAndPushDockerRegistryTag": "plugins/kaniko:1.3.1",
-       "buildAndPushECRTag": "plugins/kaniko-ecr:1.3.1",
-       "buildAndPushGCRTag": "plugins/kaniko-gcr:1.3.1",
-       "gcsUploadTag": "plugins/gcs:1.2.6",
-       "s3UploadTag": "plugins/s3:1.0.5",
-       "artifactoryUploadTag": "plugins/artifactory:1.0.6",
-       "cacheGCSTag": "plugins/cache:1.3.8",
-       "cacheS3Tag": "plugins/cache:1.3.8",
-       "securityTag": "harness/sto-plugin:latest"
+       "addonTag": "harness/ci-addon:1.16.92",
+       "liteEngineTag": "harness/ci-lite-engine:1.16.92",
+       "addonTagRootless": "harness/ci-addon:rootless-1.16.92",
+       "liteEngineTagRootless": "harness/ci-lite-engine:rootless-1.16.92",
+       "gitCloneTag": "harness/drone-git:1.6.9-rootless",
+       "buildAndPushDockerRegistryTag": "plugins/kaniko:1.10.6",
+       "buildAndPushECRTag": "plugins/kaniko-ecr:1.11.0",
+       "buildAndPushACRTag": "plugins/kaniko-acr:1.11.2",
+       "buildAndPushGCRTag": "plugins/kaniko-gcr:1.10.1",
+       "buildAndPushGARTag": "plugins/kaniko-gar:1.11.1",
+       "buildAndPushBuildxDockerRegistryTag": "plugins/buildx:1.3.3",
+       "buildAndPushBuildxECRTag": "plugins/buildx-ecr:1.3.1",
+       "buildAndPushBuildxGARTag": "plugins/buildx-gar:1.3.1",
+       "buildAndPushBuildxACRTag": "plugins/buildx-acr:1.3.1",
+       "gcsUploadTag": "plugins/gcs:1.6.3",
+       "s3UploadTag": "plugins/s3:1.5.3",
+       "artifactoryUploadTag": "plugins/artifactory:1.7.6",
+       "cacheGCSTag": "plugins/cache:1.9.8",
+       "cacheS3Tag": "plugins/cache:1.9.8",
+       "cacheProxyImage": "harness/harness-cache-server:1.7.4",
+       "securityTag": "harness/sto-plugin:latest",
+       "sscaOrchestrationTag": "harness/ssca-plugin:0.39.0",
+       "sscaEnforcementTag": "harness/ssca-plugin:0.39.0",
+       "sscaArtifactSigningTag": "harness/ssca-artifact-signing-plugin:0.39.0",
+       "sscaArtifactVerificationTag": "harness/ssca-artifact-signing-plugin:0.39.0",
+       "sscaCdxgenOrchestrationTag": "harness/ssca-cdxgen-plugin:0.39.0",
+       "provenanceTag": "harness/slsa-plugin:0.39.0",
+       "slsaVerificationTag": "harness/slsa-plugin:0.39.0",
+       "sscaComplianceTag": "harness/ssca-compliance-plugin:0.39.0",
+       "iacmTerraform": "plugins/harness_terraform:dev",
+       "iacmTerragrunt": "plugins/harness_terraform:dev",
+       "iacmAnsible": "plugins/harness_terraform:dev",
+       "iacmOpenTofu": "plugins/harness_terraform:dev",
+       "iacmCheckov": "plugins/harness_checkov:dev",
+       "iacmTFCompliance": "plugins/harness_tf_compliance:dev",
+       "iacmTFLint": "plugins/harness_tf_lint:dev",
+       "iacmTFSec": "plugins/harness_tf_sec:dev",
+       "iacmModuleTest": "plugins/harness_terraform:dev",
+       "cookieCutter": "harness/cookiecutter:latest",
+       "createRepo": "harness/createrepo:latest",
+       "directPush": "harness/directpush:latest",
+       "registerCatalog": "harness/registercatalog:latest",
+       "createCatalog": "harness/createcatalog:latest",
+       "slackNotify": "harness/slacknotify:latest",
+       "createOrganisation": "harness/createorganisation:latest",
+       "createProject": "harness/createproject:latest",
+       "createResource": "harness/createresource:latest",
+       "updateCatalogProperty": "harness/updatecatalogproperty:latest"
      },
      "metaData": null,
      "correlationId": "08919155-a6d6-4bd3-8401-6b86318c85ca"
@@ -126,11 +160,11 @@ API key authentication is required. For more information about API keys, go to [
    --data-raw '[
        {
            "field": "gitCloneTag",
-           "value": "harness/drone-git:1.5.4-rootless" 
+           "value": "harness/drone-git:1.6.9-rootless" 
        },
        {
            "field": "gcsUploadTag",
-           "value": "plugins/gcs:1.3.0"
+           "value": "plugins/gcs:1.6.3"
        }
    ]'
    ```
@@ -162,9 +196,9 @@ Currently, the feature to download rootless **lite-engine**, **ci-addon**, and *
 :::
 
 Customers who are trying to utilize Windows Images with a rootless operation can do so by downloading the appropriate images.  The rootless Windows version is available as of the following version, or higher:
-* `harness/ci-addon:rootless-1.16.71`
-* `harness/ci-lite-engine:rootless-1.16.71`
-* `harness/drone-git:1.6.7-rootless`
+* `harness/ci-addon:rootless-1.16.92`
+* `harness/ci-lite-engine:rootless-1.16.92`
+* `harness/drone-git:1.6.9-rootless`
 
 ## Troubleshoot Harness images
 

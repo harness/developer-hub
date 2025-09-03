@@ -11,9 +11,11 @@ const Roadmap = () => {
   const modules = [
     { value: 'platform', name: 'Platform', icon: 'icon_platform.svg' },
     { value: 'aida', name: 'Harness AI', icon: 'icon_aida.svg' },
+    { value: 'ata', name: 'AI Test Automation', icon: 'logo-ata.svg' },
     { value: 'code', name: 'Code Repository', icon: 'icon_code.svg' },
     { value: 'ci', name: 'Continuous Integration', icon: 'icon_ci.svg' },
     { value: 'cd', name: 'Continuous Delivery & GitOps', icon: 'icon_cd.svg' },
+    { value: 'dbdevops', name: 'Database DevOps', icon: 'icon_dbdevops.svg' },
     {
       value: 'iacm',
       name: 'Infrastructure as Code Management',
@@ -22,7 +24,7 @@ const Roadmap = () => {
     { value: 'ff', name: 'Feature Flags', icon: 'icon_ff.svg' },
     {
       value: 'fme',
-      name: 'Feature Mgmt & Experimentation',
+      name: 'Feature Management & Experimentation',
       icon: 'icon_fme.svg',
     },
     { value: 'ccm', name: 'Cloud Cost Management', icon: 'icon_ccm.svg' },
@@ -33,11 +35,6 @@ const Roadmap = () => {
     },
     { value: 'ssca', name: 'Supply Chain Security', icon: 'icon_ssca.svg' },
     { value: 'ce', name: 'Chaos Engineering', icon: 'icon_ce.svg' },
-    {
-      value: 'srm',
-      name: 'Service Reliability Management',
-      icon: 'icon_srm.svg',
-    },
     { value: 'idp', name: 'Internal Developer Portal', icon: 'icon_idp.svg' },
     {
       value: 'sei',
@@ -155,19 +152,15 @@ const Roadmap = () => {
                   <div className={styles.section}>
                     <div className={styles.sectionDescription}>
                       <div className={styles.titleLine}>
-                        <h4>{key[index]}</h4>
+                        <h4>{k} <span className={styles.featureCount}>{selectedModule.horizon[k].feature.length}</span></h4>
                         <p>
                           {Object.keys(selectedModule.horizon).length > 0 &&
-                            selectedModule.horizon[
-                              Object.keys(selectedModule.horizon)[index]
-                            ].description}
+                            selectedModule.horizon[k].description}
                         </p>
                       </div>
                     </div>
                     {Object.keys(selectedModule.horizon).length > 0 &&
-                      selectedModule.horizon[
-                        Object.keys(selectedModule.horizon)[index]
-                      ].feature.map((feature, index) => (
+                      selectedModule.horizon[k].feature.map((feature, index) => (
                         <HorizonCard
                           module={selectedModule.module}
                           tag={feature.tag}
@@ -191,7 +184,7 @@ const Roadmap = () => {
                         }`}
                       onClick={() => handleSwitchTab(key)}
                     >
-                      <li key={index}>{key}</li>
+                      <li key={index}>{key} <span className={styles.featureCount}>{selectedModule.horizon[key].feature.length}</span></li>
                     </div>
                   ))}
               </ul>

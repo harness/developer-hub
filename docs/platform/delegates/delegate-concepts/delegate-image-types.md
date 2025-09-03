@@ -20,11 +20,13 @@ Harness rigorously scans delegate images for vulnerabilities. Harness cannot, ho
 
 The following table differentiates between delegate images based on key features and recommended use. For those images distributed with auto-upgrade enabled, Harness recommends accepting the auto-upgrade setting.
 
-| | Third-party client tools | Minimum CVEs | Auto-upgrade enabled | Disable auto-upgrade | Notes |
-| --- | :-: | :-: | :-: | :-: | --- |
-| DELEGATE <br /><br />**Base image**: Red Hat Universal Base Image (Red Hat/UBI8)<br />**Recommended use**: Quick deployment of a pipeline | &#x2713; | x | &#x2713;| &#x2713; | Installed as a Kubernetes Deployment resource.<br /><br />Renamed from "immutable delegate." |
-| DELEGATE-MINIMAL<br /><br />**Recommended use**: To minimize attack vectors, in the enterprise, or when you want to select and install different tools at build time or runtime | x | &#x2713; | x | &#x2713; | |
-| DELEGATE-LEGACY<br /><br />**Deprecated**: Not recommended for use in new Harness accounts | &#x2713; | x | &#x2713; | x | |
+|                                                                                                                                                                                                                             | Third-party client tools | Minimum CVEs | Auto-upgrade enabled | Disable auto-upgrade | Notes                                                                                        |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|------------|----------------------|----------------------|----------------------------------------------------------------------------------------------|
+| DELEGATE <br /><br />**Base image**: Red Hat Universal Base Image (Red Hat/UBI8)<br />**Recommended use**: Quick deployment of a pipeline                                                                                   | &#x2713;                 | x          | &#x2713;             | &#x2713;             | Installed as a Kubernetes Deployment resource.<br /><br />Renamed from "immutable delegate." |
+| DELEGATE-MINIMAL<br /><br />**Recommended use**: To minimize attack vectors, in the enterprise, or when you want to select and install different tools at build time or runtime                                             | x                        | &#x2713;     | x                    | &#x2713;             |                                                                                              |
+| DELEGATE FIPS<br /><br /> **Base Image:** Red Hat Universal Base Image (Red Hat UBI 9)<br/><br /> **Availability:** Only for [Self-Managed Platform (SMP) installations](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview)<br/>**SMP Version:** [0.31.0 and later](https://developer.harness.io/release-notes/self-managed-enterprise-edition/#july-31-2025-version-0310)<br/>**Delegate Version:** [25.07.86300-fips and later](https://developer.harness.io/docs/release-notes/delegate#version-250786300-fips) | &#x2713;                 | x          | &#x2713;             | &#x2713;             |                                                                                              |
+| DELEGATE FIPS-MINIMAL<br /><br />**Recommended use**: To minimize attack vectors, in the enterprise, or when you want to select and install different tools at build time or runtime                                        | x                        | &#x2713;     | x                    | &#x2713;             |                                                                                              |
+| DELEGATE-LEGACY<br /><br />**Deprecated**: Not recommended for use in new Harness accounts                                                                                                                                  | &#x2713;                 | x          | &#x2713;             | x                    |                                                                                              |
 
 :::info
 
@@ -61,7 +63,10 @@ Latest Delegate image version and their respective SCM versions are listed below
 
 The table below contains the pull commands for retrieving delegate images.
 
-| Delegate | Docker command |
-| --- | --- |
-| DELEGATE | `docker pull harness/delegate:` *`<yy.mm.xxxxx>`* |
-| DELEGATE-MINIMAL | `docker pull harness/delegate:` *`<yy.mm.xxxxx>.minimal`* |
+| Delegate              | Docker command                                                 |
+|-----------------------|----------------------------------------------------------------|
+| DELEGATE              | `docker pull harness/delegate:` *`<yy.mm.xxxxx>`*              |
+| DELEGATE-MINIMAL      | `docker pull harness/delegate:` *`<yy.mm.xxxxx>.minimal`*      |
+| DELEGATE FIPS         | `docker pull harness/delegate:` *`<yy.mm.xxxxx>-fips`*         |
+| DELEGATE FIPS-MINIMAL | `docker pull harness/delegate:` *`<yy.mm.xxxxx>.minimal-fips`* |
+

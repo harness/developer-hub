@@ -1,8 +1,25 @@
 ---
 title: Harness DB DevOps Images
-description: Harness DB DevOps images and how to configure updates.
-sidebar_label: DB Devops Images
+description: Learn about the container images used in Harness DB DevOps and how to configure image versions and updates securely and efficiently.
+sidebar_label: DB DevOps Images
 sidebar_position: 21
+keywords:
+  - db devops images
+  - harness container images
+  - image configuration
+  - docker images
+  - harness dbops
+  - update db devops image
+  - image versioning
+  - database devops container
+  - dbops deployment image
+  - dbops infrastructure
+tags:
+  - harness-db-devops
+  - container-images
+  - image-configuration
+  - devops-infrastructure
+  - dbops-deployment
 ---
 
 Harness publishes `plugins/drone-liquibase` with `x.y.z-{liquibaseVersion}`, where `x.y.z` follows Harness semantic versioning.
@@ -12,10 +29,10 @@ Harness publishes `plugins/drone-liquibase` with `x.y.z-{liquibaseVersion}`, whe
 Here are some examples of Harness DB Devops images and their purposes:
 
 * `plugins/download-artifactory`: Used for downloading artifacts from Artifactory.
-* `plugins/drone-liquibase:1.0.0-4.27`: Default Liquibase plugin for database operations.
+* `plugins/drone-liquibase:1.1.0-4.27`: Default Liquibase plugin for database operations.
 * `harness/drone-git`: Used to clone Git repositories.
-* `plugins/drone-liquibase:1.0.0-4.27-mongo`: Liquibase plugin for MongoDB.
-* `plugins/drone-liquibase:1.0.0-4.27-spanner`: Liquibase plugin for Google Spanner.
+* `plugins/drone-liquibase:1.1.0-4.27-mongo`: Liquibase plugin for MongoDB.
+* `plugins/drone-liquibase:1.1.0-4.27-spanner`: Liquibase plugin for Google Spanner.
 
 ## Configure Harness DB Devops Image Versions
 
@@ -35,10 +52,10 @@ Response:
 ```json
 {
     "artifactoryTag": "plugins/download-artifactory:1.0.0",
-    "defaultTag": "plugins/drone-liquibase:1.0.0-4.27",
+    "defaultTag": "plugins/drone-liquibase:1.1.0-4.27",
     "gitCloneTag": "harness/drone-git:1.6.4-rootless",
-    "mongoTag": "plugins/drone-liquibase:1.0.0-4.27-mongo",
-    "spannerTag": "plugins/drone-liquibase:1.0.0-4.27-spanner"
+    "mongoTag": "plugins/drone-liquibase:1.1.0-4.27-mongo",
+    "spannerTag": "plugins/drone-liquibase:1.1.0-4.27-spanner"
 }
 ```
 

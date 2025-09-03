@@ -14,9 +14,11 @@ With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integr
 
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
-:::note
-Cache Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+:::info
+* Cache Intelligence is now Generally Available (GA). 
+* Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
+* Cache Intelligence is enabled by default for newly created CI stages. This is configurable in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration)  
+- To enable Path Style support in Cache Intelligence S3 configuration, set `PLUGIN_PATH_STYLE: "true"` as a stage variable. This value will be passed to the environment variables of all steps. 
 :::
 
 
@@ -38,8 +40,13 @@ Below is a list of the default locations cached using Cache Intelligence:
 | `F# .Net` | *.fsproj | .nuget/packages
 
 
-For other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
+By default, Cache Intelligence searches for the exact filenames listed in the table above under the **Dependency Management file**.  
 
+Harness Cache Intelligence will explore the root directory as well as one directory depth below for the file to determine the tool that a customer is using in the repository.
+
+This then determines the **Default Path Cached** location that Harness will save and restore as a part of the Cache Intelligence process.  
+
+To make modifications for other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
 
 
 ## Cache storage
@@ -58,6 +65,8 @@ The cache storage limit depends on your subscription plan type. Please visit [Su
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
 
 The cache retention window is 15 days, which resets whenever a cache is updated.
+
+For blobs larger than 5 GB, multi-part upload (enabled via FF `CI_ENABLE_MULTIPART`) is used for caching to storage, while standard uploads are used for blobs up to 5 GB.
 
 </TabItem>
 <TabItem value="sm" label="Self-managed build infrastructures">
@@ -102,6 +111,10 @@ Cache Intelligence stores the data to be cached in the `/harness` directory by d
 - You're *not* using a [fully supported build tool](#supported-tools-and-paths).
 - You have customized cache locations, such as with `yarn config set cache-folder`.
 - You're using a Windows platform.
+
+:::warning
+When using custom paths, you must also provide a cache key. **If a cache path is specified without a key, Cache Intelligence will be disabled**, skipping cache operations.
+:::
 
 <Tabs>
 <TabItem value="Visual" label="Visual editor">
@@ -173,6 +186,10 @@ Cache paths outside the `/harness` directory must _also_ be declared in [shared 
 Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
 
 You can define custom cache keys if you don't want to use the default cache key naming behavior or you have a use case that requires defining custom cache keys, such as [caching in parallel stages](#cache-intelligence-in-parallel-stages).
+
+:::note
+When **Cache Intelligence** is enabled, the cache plugin automatically detects build tools and determines cache paths, unless custom paths are specified. Cache paths are stored under `<account_id>/default/path/to/directory`.  
+:::
 
 <Tabs>
 <TabItem value="Visual" label="Visual">
@@ -272,6 +289,11 @@ For example, here is a pipeline with two Build (`CI`) stages using Cache Intelli
 
 The cache override allows you to force push the cache even if the cache key hasn't changed.
 
+:::note
+By default, cache override is set to `true` regardless of cache changes. This is useful if you have infrequent builds and want to ensure your cache remains fresh. You can change the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
+:::
+
+
 To configure the cache override, add `override: true | false` to `stage.spec.caching`.
 
 * `override: true` - Always save the cache. Currently, this is the default setting.
@@ -318,6 +340,49 @@ curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache?accoun
 ```
 
 ## Troubleshoot caching
+
+### Ignoring Cache Intel Directories in Apache RAT Scans
+
+If you are using the Apache RAT plugin for license compliance, it may incorrectly mark Harness Cache Intelligence directories as invalid files. This can cause unnecessary failures in your build pipeline.
+
+To avoid this, explicitly exclude the following directories in your pom.xml file.
+
+**Directories to Ignore**
+- Build Intelligence:
+`/harness/.mvn`
+
+- Cache Intelligence:
+`/harness/.m2`
+`/harness/.mvn` (also applies to cache-related scans)
+
+**Example: Update to pom.xml**
+Add the following snippet under the `<build>` section to configure the apache-rat-plugin to ignore these paths:
+
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.rat</groupId>
+      <artifactId>apache-rat-plugin</artifactId>
+      <version>0.15</version> <!-- Or use the latest version -->
+      <configuration>
+        <excludes>
+          <exclude>/harness/.mvn</exclude>
+          <exclude>/harness/.m2</exclude> <!-- Optional, but recommended -->
+        </excludes>
+      </configuration>
+      <executions>
+        <execution>
+          <phase>verify</phase>
+          <goals>
+            <goal>check</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
 

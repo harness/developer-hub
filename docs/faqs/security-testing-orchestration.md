@@ -22,7 +22,7 @@ The following pictorial highlights a typical SDLC process.
 ![](./static/sto-faqs-00.png)
 
 ### How many scanners does STO support?
-STO supports many popular scanners. For a list of all supported tools, go to the [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach).
+STO supports many popular scanners. For a list of all supported tools, go to the [Supported Security Scanners](/docs/security-testing-orchestration/whats-supported/scanners.md).
 
 ## Do similar category tools show identical issues?
 
@@ -119,13 +119,13 @@ Harness supports two RBAC roles specifically for STO users. You can customize th
 
 * **Developer** role — Permissions needed for developer workflows.
 
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions.
+* **AppSec** role — Permissions needed for Application Security or Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions.
 
 These workflows are covered in [Add Security Testing roles](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles).
 
 ## How do I set up a CheckMarx scan step in YAML?
 
-Here's an example. See also the [Checkmarx scanner reference](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference).
+Here's an example. See also the [Checkmarx scanner reference](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference).
 
 ```yaml
 - step:
@@ -155,7 +155,7 @@ The page (or tab) exists to grant and manage security exemptions. For more infor
 
 ## What open-source scanner integrations does STO support?
 
-For detailed information about supported scanners, both open-source and commercial, go to [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support).
+For detailed information about supported scanners, both open-source and commercial, go to [Harness STO scanner support](/docs/security-testing-orchestration/whats-supported/scanners).
 
 ## What is the difference between an STO pipeline, a CD pipeline, and a CI pipeline?
 
@@ -175,7 +175,7 @@ No, you can run STO as a standalone product. STO supports integrations with exte
 
 STO supports running scans on Harness Cloud, Kubernetes, Docker, and VMs. STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me) to orchestrate scans and ingest issues.
 
-For more information, go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported#sto-support-by-ci-build-infrastructure-type) > Harness SaaS > Build Infrastructure.
+For more information, go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported/sto-deployments#sto-support-by-ci-build-infrastructure-type) > Harness SaaS > Build Infrastructure.
 
 ## How does STO deduplicate detected issues?
 

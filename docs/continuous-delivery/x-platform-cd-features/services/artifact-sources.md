@@ -64,10 +64,6 @@ Configuring dependent fields, such as the artifact tag, as runtime inputs when t
 
 ### Skip Artifact Consumption for the Stage
 
-:::note
-Currently, the disable artifact consumption check feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 You can bypass artifact consumption checks for a service in a **Deploy** stage by selecting the **Disable artifact in this stage** checkbox. When this option is enabled, the pipeline treats the service without artifact configuration, skips the artifact consumption check process.
 
 ![](static/disable-artifact.png)
@@ -1565,6 +1561,8 @@ You can reference artifact properties using the following expressions in a value
 
 You connect to ECR using a Harness AWS connector. For details on all the ECR requirements for the AWS connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
+AWS OIDC connectors are supported, starting with delegate version `849xx` or later.
+
 #### YAML
 
 
@@ -1860,6 +1858,8 @@ You can reference artifact properties using the following expressions in a value
 
 You connect to AWS using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
+AWS OIDC connectors also are supported, starting with delegate version `849xx` or later.
+
 <!-- AWS S3 -->
 
 #### YAML
@@ -2088,6 +2088,8 @@ Examples:
 ### Use Amazon EC2 AMI artifacts
 
 You connect to Amazon AWS account using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
+
+AWS OIDC connectors are supported, starting with delegate version `849xx` or later.
 
 For AWS AMI artifacts, a version number represents the name of AMI. You can filter names by using tags/filter values.
 
@@ -2749,7 +2751,7 @@ You can reference artifact properties using the following expressions in a value
 | `<+artifact.label.[PLACEHOLDER]>`                                       | This is the label set in the Docker image. Replace the placeholder with the appropriate label. Valid for `docker` only                 |                                                                           |
 | `<+artifact.metadata.SHAV2>`                                            | Docker tends to support v1 and v2 format. We list both formats when applicable. Valid for `docker` only                                | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
 | `<+artifact.metadata.SHA>`                                              | SHA of the Docker image. Valid for `docker` only                                                                                       | `sha256:b3ebe55062b76860c6c0c78f5cae81ec393a944bcc96c05b5f411d3560c9f1d8` |
-| `<+artifact.metadata.filename>`                                         | Name of the file. Valid for `generic` only.                                                                                            | `artifact.zip`                                                            |
+| `<+artifact.metadata.fileName>`                                         | Name of the file. Valid for `generic` only.                                                                                            | `artifact.zip`                                                            |
 | `<+artifact.metadata.url>`                                              | URL to the file. Valid for `generic` only.                                                                                             | `https://acme.jfrog.io/artifactory/todolist/artifact.zip`                 |
 
 
@@ -3121,7 +3123,9 @@ To add an artifact from Github Packages, do the following:
   :::
 15. Select **Submit**. The Artifact is added to the Service Definition.
 
+### GitHub Connectors Limitations
 
+Harness does not support **GitHub App connectors** for configuring GitHub Packages as an artifact source.
 
 ### Permissions
 

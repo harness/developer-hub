@@ -54,6 +54,7 @@ trigger:
 ```
 :::
 
+### Move Inline Pipeline
 
 This section explains steps to move an [inline pipeline](../pipelines/add-a-stage.md#step-1-create-a-pipeline) and its associated input sets to Git.
 
@@ -105,4 +106,14 @@ This section explains steps to move an [inline pipeline](../pipelines/add-a-stag
     Your pipeline now appears in the list as a remote entity with the repository details next to it.
 
     ![](../git-experience/static/inline-to-remote-pipeline.png)
+
+### Move Inline Input Sets
+
+After you move your pipeline to inline, you can move your input sets to inline as well.
+
+1. Go to **Input Sets** in your pipeline. 
+2. Click the 3 dots to the right of the set and click **Move to Git**
+3. Repeat steps 4-10 for [move inline pipeline](#move-inline-pipeline)
+
+
     

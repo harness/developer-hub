@@ -5,7 +5,7 @@ sidebar_label: ScoutSuite step configuration
 sidebar_position: 350
 ---
 
-<DocsTag   text="Configuration scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"   link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuration-scanners"  />
+<DocsTag   text="Configuration scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"   link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#configuration-scanners"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
@@ -14,7 +14,7 @@ You can ingest configuration scan results from [ScoutSuite](https://github.com/n
 
 ## Workflow description
 
-import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+import CustomScanWorkflowIngest from './shared/custom-scan/workflow-ingest-only.md';
 
 <CustomScanWorkflowIngest />
 
@@ -94,7 +94,7 @@ default
 
 ### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
@@ -109,7 +109,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 ### Configuration scan settings 
 
-import StoLegacyConfig from './shared/custom-scan/_config.md';
+import StoLegacyConfig from './shared/custom-scan/config.md';
 
 <StoLegacyConfig  />
 
@@ -117,14 +117,14 @@ import StoLegacyConfig from './shared/custom-scan/_config.md';
 
 ### Ingestion file
 
-import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
+import StoLegacyIngest from './shared/custom-scan/ingestion-file.md'; 
 
 <StoLegacyIngest />
 
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/custom-scan/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 

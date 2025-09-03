@@ -8,7 +8,7 @@ This topic addresses some frequently asked questions about Harness Self-Managed 
 
 ## How do I create my Harness account and my first project?
 
-You create your Harness account the first time you use Harness Self-Managed Enterprise Edition. You are automatically assigned the Harness user role, Account Admin. For more information, go to [Create your Harness account](/docs/self-managed-enterprise-edition/get-started/onboarding-guide#create-your-harness-account) and [Create your first project](/docs/self-managed-enterprise-edition/get-started/onboarding-guide#create-your-first-project) in the Onboarding guide.
+You create your Harness account the first time you use Harness Self-Managed Enterprise Edition. You are automatically assigned the Harness user role, Account Admin. For more information, check out the [Overview](/docs/self-managed-enterprise-edition/smp-overview) section.
 
 ## How do I deploy Harness modules?
 
@@ -37,7 +37,7 @@ For more information, go to [Deploy Harness modules](/docs/self-managed-enterpri
 - [Continuous Integration](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix)
 - [Custom Dashboards](/docs/platform/dashboards/cdb-whats-supported)
 - [Feature Flags](/docs/feature-flags/ff-supported-platforms)
-- [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported)
+- [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported/sto-deployments)
 - [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
 
 For more information on supported features, go to [What's supported in Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/smp-supported-platforms).
@@ -46,10 +46,10 @@ For more information on supported features, go to [What's supported in Self-Mana
 
 Yes, the following tutorials are available for self-managed external database setup.
 
-- [Configure an external self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb/)
-- [Configure an external self-managed TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb/)
-- [Configure an external self-managed Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database/)
-- [Configure an external self-managed PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database/)
+- [Configure an external self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-self-managed-mongodb/)
+- [Configure an external self-managed TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/timescaledb/use-an-external-sm-timescaledb/)
+- [Configure an external self-managed Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-an-external-redis-database/)
+- [Configure an external self-managed PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/postgresql/use-an-external-postgres-database/)
 
 For more information, go to [Configure Harness Self-Managed Enterprise Edition to use external databases](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-external-databases).
 

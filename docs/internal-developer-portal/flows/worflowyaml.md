@@ -1,6 +1,6 @@
 ---
 title: Understanding Workflow YAML
-description: Get started with creating your Workflows using the Workflow YAML configuration. 
+description: Get started with creating your Workflows using the Workflow YAML configuration.
 sidebar_position: 2
 sidebar_label: Understand YAML Syntax
 ---
@@ -25,11 +25,11 @@ The ```workflow.yaml``` has three main components:
 
 These components work together to facilitate workflow execution. Let’s dive deeper into each.
 
-### [Workflow Frontend](/docs/internal-developer-portal/flows/flows-input.md) 
+### [Workflow Frontend](/docs/internal-developer-portal/flows/flows-input.md)
 The frontend of Harness IDP workflows is customizable to accept different types of input fields based on custom requirements. This frontend serves as the entry point, where users fill in the necessary details to execute the workflow using the input parameters described.
 
 #### How to define the Workflow Frontend?
-- You can configure one or more pages of input fields in the frontend using the ```spec.parameters``` field in your YAML configuration. 
+- You can configure one or more pages of input fields in the frontend using the ```spec.parameters``` field in your YAML configuration.
 - You can define multiple input fields using the `properties` field in your YAML configuration.
 
 <Tabs>
@@ -90,13 +90,13 @@ Input fields can be made dynamic using ``anyOf`` or ``allOf``, making certain fi
 - **Required Fields:**
 Workflows allow developers to enforce mandatory fields to ensure critical data is collected. For example, fields like age or owner can be marked as required to prevent missing essential information during onboarding.
 
-Learn more about configuring inputs and frontend for your workflow [here](/docs/internal-developer-portal/flows/flows-input.md). 
+Learn more about configuring inputs and frontend for your workflow [here](/docs/internal-developer-portal/flows/flows-input.md).
 
 ### Workflow Backend
 The backend of Harness IDP workflows includes a library of steps and actions to define the workflow logic. These steps are core execution units used to trigger actions and orchestration pipelines. Input details from the frontend are passed to the backend for task execution.
 
 #### How to define the Workflow Backend?
-You can configure the backend using the ```spec.steps``` field in your YAML configuration. 
+You can configure the backend using the ```spec.steps``` field in your YAML configuration.
 
 **Example Syntax**:
 ```YAML
@@ -112,7 +112,7 @@ steps:
         github_org: ${{ parameters.github_org }}
         github_token: ${{ parameters.github_token }}
       apikey: ${{ parameters.token }}
-      
+
   - id: another-step
     name: Clean up  # Trigger another pipeline
     action: trigger:harness-custom-pipeline
@@ -125,10 +125,10 @@ steps:
 
 Workflow Actions are integration points with third-party tools, designed to take inputs from the workflow's frontend and execute specific tasks based on user input. Workflows include several built-in actions for fetching content, registering in the catalog, and performing key operations such as creating and publishing a Git repository.
 
-Here are some examples used in a workflow:  
+Here are some examples used in a workflow:
 
-- **Triggering Pipelines**: Using `trigger:harness-custom-pipeline` to trigger pipelines in Harness for various actions, such as creating a repository or onboarding a new service.  
-- **Creating Repositories**: Using `trigger:harness-custom-pipeline` to execute a pipeline with a `create-repo` stage, generating a new repository based on the provided input.  
+- **Triggering Pipelines**: Using `trigger:harness-custom-pipeline` to trigger pipelines in Harness for various actions, such as creating a repository or onboarding a new service.
+- **Creating Repositories**: Using `trigger:harness-custom-pipeline` to execute a pipeline with a `create-repo` stage, generating a new repository based on the provided input.
 - **Logging Data**: Using `debug:log` to capture and display specific input details in the IDP Workflows Logs UI.
 
 #### [Harness Pipeline](/docs/internal-developer-portal/flows/harness-pipeline.md)
@@ -151,14 +151,14 @@ output:
 ```
 ## Authentication
 
-There are two ways in which **Workflow to Harness Pipeline authentication** works in **Harness IDP Workflows**. You can trigger a Harness Pipeline in an IDP Workflow using the following modes:  
+There are two ways in which **Workflow to Harness Pipeline authentication** works in **Harness IDP Workflows**. You can trigger a Harness Pipeline in an IDP Workflow using the following modes:
 
 💾 **User Session Token**
-- The **user's session token** is used to trigger the Harness Pipeline.  
-- The user must have **execute permissions** for the underlying pipeline(s) to ensure successful execution.  
+- The **user's session token** is used to trigger the Harness Pipeline.
+- The user must have **execute permissions** for the underlying pipeline(s) to ensure successful execution.
 
 🔑 **Harness API Key Secret**
-- A pre-configured **Harness API Key Secret** is used to trigger the Harness Pipeline.  
+- A pre-configured **Harness API Key Secret** is used to trigger the Harness Pipeline.
 - The user does **not** need direct access to the underlying pipeline(s); however, the API key must have the **execute permissions** for the underlying pipeline(s).
 
 These authentication modes can be defined while using the following action: [**`trigger:harness-custom-pipeline`**](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline).
@@ -176,10 +176,10 @@ These authentication modes can be defined while using the following action: [**`
 
 ### 💾  Mode 1: User Session Token
 
-You can trigger a pipeline in Harness IDP Workflows using the **`user session token`** mode by specifying the **`token`** setup in your **`parameters.properties`** section of the **Workflow YAML**. 
+You can trigger a pipeline in Harness IDP Workflows using the **`user session token`** mode by specifying the **`token`** setup in your **`parameters.properties`** section of the **Workflow YAML**.
 
 #### 1. Defining the **`token`** setup:
-This is defined under the `parameter.properties` spec to extract the user session token. This token is then used to execute the pipeline. 
+This is defined under the `parameter.properties` spec to extract the user session token. This token is then used to execute the pipeline.
 
 :::warning
 The **`token`** property used to fetch the **Harness Auth Token** is hidden on the **Review Step** using **`ui:widget: password`**. However, for this to function correctly in a **multi-page workflow**, the token property must be included under the **first `page`**.
@@ -204,7 +204,7 @@ parameters:
         type: string
       property-2:
         title: title-2
-  - title: <PAGE-n TITLE>  
+  - title: <PAGE-n TITLE>
 ```
 :::
 
@@ -254,14 +254,14 @@ output:
 
 
 #### YAML Breakdown:
-- In the above example, the **`apikey`** parameter retrieves its value from **Harness Token**, which is defined in the **`parameters.properties`** section as a required input.  
-- Without the **`token`** parameter input, the pipeline won't be executed.  
+- In the above example, the **`apikey`** parameter retrieves its value from **Harness Token**, which is defined in the **`parameters.properties`** section as a required input.
+- Without the **`token`** parameter input, the pipeline won't be executed.
 - [Take a look at this example for further clarification.](https://github.com/harness-community/idp-samples/blob/eb9988020d3917c0bca7daccb354ba670626221b/tutorial-self-service-flow-template.yaml#L64-L68)
 
 ### 🔑 Mode 2: Harness API Key Secret
 You can also trigger a pipeline in an IDP Workflow using a **pre-configured Harness API Key**.  Here's how you can set this up:
-- Create a [Harness API Key Secret](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager#create-secrets). 
-- Store it in your [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview). 
+- Create a [Harness API Key Secret](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager#create-secrets).
+- Store it in your [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 - The secret must be stored in the [**Account Scope**](https://developer.harness.io/docs/platform/secrets/secrets-management/reference-secrets-in-custom-sm) to ensure accessibility for workflow execution.
 - The secret must have ```execute permissions``` to the underlying pipeline(s).
 
@@ -274,7 +274,7 @@ Other secret managers are **not supported** for storing secrets with this featur
 apiKeySecret: "secretId"
 ```
 
-Here, ```secretId``` refers to the identifier of the secret which stores the **Harness API Key**. You can retrieve this ``secretId`` from the **Harness Secret Manager**. 
+Here, ```secretId``` refers to the identifier of the secret which stores the **Harness API Key**. You can retrieve this ``secretId`` from the **Harness Secret Manager**.
 
 #### Example YAML:
 ```YAML {17}
@@ -301,14 +301,100 @@ output:
       url: ${{ steps.trigger.output.PipelineUrl }}
 ```
 
-The **`apiKeySecret`** field retrieves its value from **`secretId`**, which is the Harness secret identifier.  
+The **`apiKeySecret`** field retrieves its value from **`secretId`**, which is the Harness secret identifier.
 
 :::info
-Authentication using the user session token is **no longer required** in case you are using the Harness API Key Secret authentication mode. 
+Authentication using the user session token is **no longer required** in case you are using the Harness API Key Secret authentication mode.
 :::
 
 ## Example YAML
 Here's an example of a single-page workflow:
+<Tabs>
+
+<TabItem value="IDP 2.0 (New)">
+
+```YAML
+apiVersion: harness.io/v1
+kind: Workflow
+type: service
+identifier: reactapp
+name: Create a new service
+owner: d.p@harness.io
+spec:
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+  parameters:
+    - title: Service Details
+      required:
+        - project_name
+        - template_type
+        - public_template_url
+        - repository_type
+        - repository_description
+        - repository_default_branch
+        - direct_push_branch
+        - slack_id
+      properties:
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+        projectId:
+          title: Project Identifier
+          description: Harness Project Identifier
+          type: string
+          ui:field: HarnessProjectPicker
+        template_type:
+          title: Type of the Template
+          type: string
+          description: Type of the Template
+        public_template_url:
+          title: Give a Public template URL
+          type: string
+          description: Give a Public Cookiecutter Template
+        repository_type:
+          type: string
+          title: Repository Type
+          enum:
+            - public
+            - private
+          default: Public
+        repository_description:
+          type: string
+          title: Add a description to your repo
+          description: Auto-generated using Self-Service-Flow of Harness-IDP
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://app.harness.io/ng/account/account_id/module/idp/orgs/org_id/projects/project_id/pipelines/pipeline_id/pipeline-studio/?storeType=INLINE
+        inputset:
+          project_name: ${{ parameters.project_name }}
+          template_type: ${{ parameters.template_type }}
+          public_template_url: ${{ parameters.public_template_url }}
+        apikey: ${{ parameters.token }}
+metadata:
+  description: A Workflow to create a new service
+  tags:
+    - nextjs
+    - react
+    - javascript
+```
+</TabItem>
+
+<TabItem value="IDP 1.0">
+
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
@@ -393,21 +479,24 @@ spec:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
+</TabItem>
+</Tabs>
+
  ## Workflows Playground
 :::caution
-The Workflows Playground **does not render accurate previews** for **advanced user inputs** and **complex use cases** such as conditional fields or complex input formats. It is recommended to use the editor only for **lightweight input previews**. For accurate validation of **advanced inputs**, test the Workflow Form Inputs in an **actual Workflow execution**. 
+The Workflows Playground **does not render accurate previews** for **advanced user inputs** and **complex use cases** such as conditional fields or complex input formats. It is recommended to use the editor only for **lightweight input previews**. For accurate validation of **advanced inputs**, test the Workflow Form Inputs in an **actual Workflow execution**.
 
-Also, please note that the feature flag "`IDP_ENABLE_WORKFLOW_FORM_CONTEXT`" is not supported in your **Workflow Playground Editor**. You won't be able to implement or test these features ([Updating Fields using Form Context](/docs/internal-developer-portal/flows/dynamic-picker.md#updating-fields-using-form-context) and [Live User Validation](/docs/internal-developer-portal/flows/dynamic-picker.md#live-user-validation-using-api-requests)) in the playground.
+Also, please note that the features [Updating Fields using Form Context](/docs/internal-developer-portal/flows/dynamic-picker.md#updating-fields-using-form-context) and [Live User Validation](/docs/internal-developer-portal/flows/dynamic-picker.md#live-user-validation-using-api-requests) are not supported in your **Workflow Playground Editor**. You won't be able to implement or test these features in the playground.
 :::
 
 Harness IDP also provides a **built-in editor** to help you build your **Workflow's Frontend**. It offers a real-time preview of the corresponding UI based on the YAML definition. Here, you can create a new workflow or edit an existing one.  '
 
-**Note:** The editor is for **preview purposes** only; changes made here cannot be saved. Once you have tested the modifications, you must manually copy the updated YAML and add it to the Workflow definition YAML stored in your Git provider.  
+**Note:** The editor is for **preview purposes** only; changes made here cannot be saved. Once you have tested the modifications, you must manually copy the updated YAML and add it to the Workflow definition YAML stored in your Git provider.
 
-Here's how you can access the playground: 
+Here's how you can access the playground:
 1. Go to your **Workflows** page. Click on the **three dots** in the top right corner and select **Open Playground**.
 ![](./static/template-editor-1.png)
-2. Select **Edit Template Form**. 
+2. Select **Edit Template Form**.
 ![](./static/template-editoer-2.png)
 3. Choose an existing workflow or begin creating a new one.
 ![](./static/template-editor-3.png)
@@ -415,7 +504,7 @@ Here's how you can access the playground:
 ## Syntax Essentials
 
 ### Input Parameters
-The input fields in **parameters** can be structured sequentially. Since it accepts an array, you can either have all input fields on a single page or divide them into multiple pages, rendering them as different steps in the form.  
+The input fields in **parameters** can be structured sequentially. Since it accepts an array, you can either have all input fields on a single page or divide them into multiple pages, rendering them as different steps in the form.
 
 These fields are built using the [**React JSON Schema**](https://rjsf.netlify.app) library. The library includes many fields which can be used with the `ui:field` property of an input field. `ui:options` in the same field are used to customize the field behavior.
 
@@ -472,15 +561,15 @@ spec:
 </details>
 
 ### Templating Syntax
-Variables in **Workflow YAML** are wrapped in `${{ }}` and are used to connect different parts of the workflow. All form inputs from the **parameters** section can be accessed using this syntax.  
+Variables in **Workflow YAML** are wrapped in `${{ }}` and are used to connect different parts of the workflow. All form inputs from the **parameters** section can be accessed using this syntax.
 
-For example, `${{ parameters.project_name }}` inserts the value of `project_name` entered by the user in the UI. This allows seamless passing of values from the form into different workflow steps, making input variables reusable. These strings retain the type of the parameter.  
+For example, `${{ parameters.project_name }}` inserts the value of `project_name` entered by the user in the UI. This allows seamless passing of values from the form into different workflow steps, making input variables reusable. These strings retain the type of the parameter.
 
-The `${{ parameters.project_name }}` pattern is specifically used in **Workflow YAML** to pass parameters from the UI to the input of the `trigger:harness-custom-pipeline` step.  
+The `${{ parameters.project_name }}` pattern is specifically used in **Workflow YAML** to pass parameters from the UI to the input of the `trigger:harness-custom-pipeline` step.
 
 The templating engine used for this YAML is **[Nunjucks](https://mozilla.github.io/nunjucks/)**.
 
-**Important Note:**  
+**Important Note:**
 The `${{ parameters.x }}` syntax is supported only within the **steps** section when configuring the **Workflows Backend**. It **cannot** be used within the **properties** section to reference another parameter.
 
 <details>

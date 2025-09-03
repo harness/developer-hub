@@ -10,7 +10,7 @@ import { ActivePage, getCertLevel } from "./LandingPage";
 import DeveloperCertificationExamDetails from "./data/idp-certification-developer-exam-details.md";
 import DeveloperCertificationReviewGuide from "./data/idp-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/idp-certification-architect-review-guide.md";
-// import ArchitectCertificationExamDetails from "./data/id[-certification-architect-exam-details.md";
+// import ArchitectCertificationExamDetails from "./data/idp-certification-architect-exam-details.md";
 import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
@@ -289,8 +289,8 @@ export default function CertificationsIDP() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness IDP Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -361,8 +361,8 @@ export default function CertificationsIDP() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness IDP Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -440,7 +440,7 @@ export default function CertificationsIDP() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Software Engineering Insights - Architect (BETA COMING
+                      Internal Developer Portal - Architect (BETA COMING
                       SOON)
                     </h2>
                     <img
@@ -449,8 +449,8 @@ export default function CertificationsIDP() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness IDP Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>

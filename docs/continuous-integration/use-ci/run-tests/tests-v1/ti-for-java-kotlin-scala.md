@@ -9,7 +9,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info
+:::warning
 
 This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
 
@@ -41,7 +41,7 @@ You must select **Run only selected tests** (`runOnlySelectedTests: true`) to en
                   name: Run Tests
                   identifier: Run_Tests
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
                     language: Java ## Specify Java, Kotlin, or Scala.
                     buildTool: Maven ## Specify your build tool.
@@ -215,7 +215,7 @@ pipeline:
                   name: Run Tests
                   identifier: Run_Tests
                   spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
                     language: Java ## Specify Java, Kotlin, or Scala.
                     buildTool: Maven ## For Java or Kotlin, specify Bazel, Maven, or Gradle. For Scala, specify Bazel, Maven, Gradle, or Sbt.
@@ -272,7 +272,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 * **Docker Registry:** Enter the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
 * **ECR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
+* **GAR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/cache:latest`.
 
 </details>
 

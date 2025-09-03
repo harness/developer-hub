@@ -14,9 +14,8 @@ function Feature({ title, icon, description, type, module, link }: CardItem) {
     <Link href={link}>
       <div className={clsx(styles.getStartItem, styles[module])}>
         <div className="text--center">
-          {/* <icon className={styles.featureSvg} role="img" /> */}
           <img
-            src={baseUrl + (icon ? icon : `img/icon_${module}.svg`)}
+            src={baseUrl + (icon ? icon : `img/icon-${module}.svg`)}
             className={styles.featureSvg}
             alt={title}
           />

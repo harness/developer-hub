@@ -276,10 +276,7 @@ Below is the YAML configuration for this setup:
 ## Updating Fields using Form Context
 
 :::info
-Please note that the following feature **"Updating Fields using Form Context"** is behind a **Feature Flag**: `IDP_ENABLE_WORKFLOW_FORM_CONTEXT`. 
-Ensure that it is **enabled in your account** before use. To enable this feature, contact [**Harness Support**](mailto:support@harness.io). 
-
-Also, please note that this feature flag is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/worflowyaml.md#workflows-playground). You won't be able to implement or test this feature in the playground.
+Please note that this feature is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/worflowyaml.md#workflows-playground). You won't be able to implement or test this feature in the playground.
 :::
 
 With conditional API requests in **Dynamic Pickers**, you can create a **Workflow** with dependent input fields. This also allows you to configure a **Workflow** with a **Dynamic Picker** to automatically update other data fields in your **Workflow's frontend** based on previous input. All relevant information in your **Workflow's frontend** can be auto-filled from third-party sources based on your selection/input.
@@ -446,10 +443,7 @@ parameters:
 ## Live User Validation using API Requests
 
 :::info
-Please note that the following feature **"Live User Validation using API Requests"** is behind a **Feature Flag**: `IDP_ENABLE_WORKFLOW_FORM_CONTEXT`.
-Ensure that it is **enabled in your account** before use. To enable this feature, contact [**Harness Support**](mailto:support@harness.io). 
-
-Also, please note that this feature flag is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/worflowyaml.md#workflows-playground). You won't be able to implement or test this feature in the playground.
+Please note that this feature is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/worflowyaml.md#workflows-playground). You won't be able to implement or test this feature in the playground.
 :::
 
 You can configure Workflows to enable **user validation** for input form fields. If you want users to manually enter details and validate them instead of selecting from a drop-down, you can use this feature in your Workflow.
@@ -617,18 +611,23 @@ properties:
 
 You can find the detailed docs on the [project's README](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/scaffolder-field-extensions/scaffolder-frontend-module-http-request-field).
 
-### POST Method Support
+### POST and PUT Method Support
 
-The **POST method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc.
+The **POST/PUT method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc. 
+
+:::info
+Kindly note that there are no restrictions on **HTTP methods**, except for the **DELETE** method, which is currently unsupported.
+:::
 
 #### Key Elements:
-- **`method` field** - Used to specify the **POST** request method.
+- **`method` field** - Used to specify the **POST** or **PUT** request method. 
 - **`headers` field - `Content-Type`**: Specifies the request body's type.
   - In case of structured data (e.g., JSON) - `application/json` is used.
   - In case of plain text - `text/plain` is used.
 - **`body` field**: Contains the data sent to the API.
 
-Here's how the POST method is used to fetch and populate dynamic pickers within forms:
+#### POST Method Example: 
+Here's how the **POST method** is used to fetch and populate dynamic pickers within forms:
 
 ```YAML {10}
 custom1:
@@ -647,7 +646,31 @@ custom1:
         secret: "{{parameters.formdata}}"
 ```
 
-Using POST is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
+#### PUT Method Example: 
+```YAML {10}
+custom1:
+  title: Repository Topics
+  type: string
+  description: Select or update repository topics
+  ui:field: SelectFieldFromApi
+  ui:options:
+    path: proxy/github-api/repos/{{parameters.gitusername}}/{{parameters.repoName}}/topics
+    arraySelector: names
+    request:
+      method: PUT
+      headers:
+        Accept: application/vnd.github+json
+        Content-Type: application/json
+      body:
+        names:
+          - ci
+          - harness
+          - devops
+          - monitoring
+          - github
+```
+
+Using these methods is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
 
 ### Parsing API Response using filters
 

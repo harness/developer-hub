@@ -2,94 +2,114 @@ import { Horizon } from "./roadmapData";
 
 export const SeiData: Horizon = {
   Now: {
-    description: "Q1, Feb 2025 - Apr 2025",
+    description: "Q3, Aug 2025 - Oct 2025",
     feature: [
       {
-      tag: [{ value: "Enhanced Insigths" }],
-      title: "Epic Insights (GA)",
-      description: "Empowers Engineering Managers / Project Managers to actively track the progress and health of planned epics / initiatives / tactics."
+        tag: [{ value: "AI" }, { value: "Insights" }],
+        title: "AI Summaries and Recommendations",
+        description: "AI-first summarization of insights, including clear recommendations for managers and leaders to drive change.",
       },
       {
-      tag: [{ value: "AI" }, { value: "Enhanced Insigths" }],
-      title: "AI Productivity Insights (Beta)",
-      description: "Measure the impact of AI code assistant tools on developers' velocity and code quality."
+        tag: [{ value: "AI" }, { value: "Insights" }],
+        title: "AI Insights",
+        description: "Track usage, cost, and impact of AI agent(s) across Productivity and Efficiency dashboards, reported across organization and teams.",
       },
       {
         tag: [{ value: "Integrations" }],
         title: "ServiceNow Integration (GA)",
-        description: "ServiceNow Integration to tie incident and change request data with DORA metrics.",
+        description: "Plug ServiceNow into Harness SEI for computing MTTR and CFR.",
       },
       {
-        tag: [{ value: "Integrations" }],
-        title: "Granular scoping of Integrations",
-        description: "Improved ability to more granularly scope integrations such as GitGub, Harness CI/CD. E.g. GitHub Integration can be scoped down by org, repos, teams, etc.",
+        tag: [{ value: "Onboarding" }],
+        title: "Intelligent Teams Onboarding",
+        description: "Smooth onboarding of teams with team-level defaults and intelligent auto-inferring of team settings.",
       },
     ],
   },
 
   Next: {
-    description: "Q2, May 2025 - Jul 2025",
+    description: "Q4, Nov 2025 - Jan 2026",
     feature: [
       {
-        tag: [{ value: "User Experience" }, { value: "New Features" }],
-        title: "SEI 2.0",
-        description: "SEI 2.0 brings a modern UX to enable executive insights with team level actionability. SEI 2.0 will bring new collection tree navigation with support for Efficiency / Productivity / Business Alignment tracking for all teams (with Histoirical Trends).",
+        tag: [{ value: "AI" }, { value: "New Feature"}],
+        title: "AI Efficiency Agent",
+        description: "Daily or weekly developer briefs, focus zones, manager briefs, and planning assistance.",
       },
       {
-        tag: [{ value: "AI" }, { value: "Enhanced Insights" }],
-        title: "AI Productivity Insights (GA)",
-        description: "Measure the impact of AI code assistant tools on developers' velocity and code quality.",
+        tag: [{ value: "Actionability" }],
+        title: "Scoring, Goals, KPIs & Benchmarks",
+        description: "Drive accountability and transformation with scores, goals, and KPIs.",
       },
       {
-        tag: [{ value: "Integrations" }],
-        title: "Workday Integration (GA)",
-        description: "Workday Integration will enable seamless onboarding of teams to SEI 2.0.",
+        tag: [{ value: "Insights" }],
+        title: "Benchmarks",
+        description: "Help managers understand good and bad vs. industry benchmarks.",
+      },
+      {
+        tag: [{ value: "Insights" }],
+        title: "Surveys",
+        description: "Measure Developer Satisfaction with built-in surveys. Correlate developer sentiment with metrics to draw deep insights.",
       },
       {
         tag: [{ value: "Onboarding" }],
-        title: "New SEI 2.0 Onoarding",
-        description: "New SEI 2.0 onboarding will directly integrate with HRIS systems, to automate collection tree building, while making maintenance automated.",
-      },
-      {
-        tag: [{ value: "Harness Platform" }],
-        title: "Support for Harness Delegates",
-        description: "SEI integrations that require an agent can now leverage Harness Delegates, commonly deployed at all existing Harness customers.",
+        title: "Harness Delegate",
+        description: "Seamless and secure setup with Harness delegates for on-premises connectivity.",
       },
      ],
   },
   
   Later: {
-    description: "Aug 2025 & Beyond",
+    description: "Feb 2026 & Beyond",
     feature: [
       {
-        tag: [{ value: "Enhanced Insights" }, { value: "AIDA"}],
-        title: "Personalized Team Recommendations",
-        description: "Offer recommendations for improving productivity, removing bottlenecks, enhancing developer experience based on qualitative and quantitative insights, powered by Harness AIDA.",
+        tag: [{ value: "Insights" }, { value: "New Feature" }],
+        title: "Cohort Analysis",
+        description: "Ability to create dynamic cohorts and run experiments.",
       },
       {
-        tag: [{ value: "DX Survey" }],
-        title: "Advanced Developer Experience Survey Beta",
-        description: "Measure developer experience through customizable survey templates and benchmark the result across your organization and industry. The results, combined with quantitative insights generated from the SDLC tools, give leaders a comprehensive picture of developer productivity and delivery efficiency.",
+        tag: [{ value: "Insights" }, { value: "New Feature" }],
+        title: "Canvas",
+        description: "A customizable tab to carry over utilized metrics and widgets.",
       },
       {
-        tag: [{ value: "Enhanced Insights" }],
-        title: "Proactive Insights",
-        description: "Provide insight based on historical trends.",
+        tag: [{ value: "New Feature" }],
+        title: "Planning",
+        description: "Accurate forecasting and planning built on historical performance to prevent overcommitment and drive team satisfaction.",
       },
       {
-        tag: [{ value: "Easy Adoption" }],
-        title: "Fast Onboarding Mode",
-        description: "Initiate onboarding with partial data ingestion to accelerate the initial onboarding process. This new mode gives instant data feedback to admins, helps identify possible integration issues, and minimizes the time to generate the first insight.",
+        tag: [{ value: "New Feature" }],
+        title: "Capitalization",
+        description: "Automate R&D costs for quick and auditable software capitalization reporting.",
+      },
+    ],
+  },
+  Released: {
+    description: "What has been released",
+    feature: [
+      {
+        tag: [{ value: "User Experience" }, { value: "New Features" }],
+        title: "SEI 2.0",
+        description:
+          "Brand new SEI 2.0 implementation optimized for low latency and near real-time access. Comes with out-of-the-box Efficiency, Productivity and Business Alignment insights, consistently reported across the entire organization.",
+        link:"http://localhost:3000/docs/category/sei-recommended",
       },
       {
-        tag: [{ value: "Easy Adoption" }],
-        title: "Federated Team Configuration",
-        description: "Empower teams throughout your organization to design insights dashboard autonomously. This feature reduces onboarding time and enables teams to customize insights according to their specific needs independently.",
+        tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance" }],
+        title: "Automated Developer and Organization Management",
+        description:
+          "Build a completely automated Developer and Org Tree management system, which self-refreshes as the organization evolves.",
       },
       {
-        tag: [{ value: "Platform" }],
-        title: "BYOK support",
-        description: "Support Bring Your Own Key (BYOK).",
+        tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance" }],
+        title: "Decentralized Management",
+        description:
+          "SEI 2.0 provides a decentralized management experience that empowers SEI administrators to manage the organization and profiles, while delegating team management to team managers.",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Faster Integrations",
+        description:
+          "Integrations now work faster and in near real-time for accurate and actionable insights.",
       },
     ],
   },

@@ -19,7 +19,7 @@ Also, whenever new entities are created in the mapped Argo CD projects, they are
 
 With a standard Harness GitOps Agent installation (non-BYOA), Harness can install and manage Argo CD for you. This scenario is different from a BYOA where you are importing an existing Argo CD configuration into Harness GitOps.
 
-For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent).
+For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/agents/install-a-harness-git-ops-agent).
 
 ### Mapping existing Argo CD projects across different Harness scopes
 
@@ -44,10 +44,7 @@ The following steps show you how to install a GitOps Agent into an existing Argo
    ![](./static/multiple-argo-to-single-harness-65.png)
 
 5. In **Name**, enter a name for your agent, such as `byoa-agent`.
-6. In **GitOps Operator**, select one of the following:
-
-   * **Argo**. Uses Argo CD as the GitOps reconciler.
-   * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).
+6. In **GitOps Operator**, select **Argo**.
 
 7. In **Namespace**, enter the namespace where Argo CD is hosted. The default is `argocd`.
    
@@ -60,10 +57,8 @@ The following steps show you how to install a GitOps Agent into an existing Argo
 
    Alternatively, the **Helm Chart** option lets you download a `helm-chart` file for the Harness GitOps Agent. You can download this file and install it in your Harness GitOps Agent cluster if you prefer using Helm.
 
-   If your account is behind the feature flag `GITOPS_AGENT_HELM_V2`, you will be able to download an `override.yaml` file which will contain the Helm Value overrides to apply, and you can use the commands mentioned to install the agent using the [public Helm Repository](https://harness.github.io/gitops-helm/) for the GitOps Agent.
+   You can download an `override.yaml` file which will contain the Helm Value overrides to apply, and you can use the commands mentioned to install the agent using the [public Helm Repository](https://harness.github.io/gitops-helm/) for the GitOps Agent.
    
-   Contact [Harness Support](mailto:support@harness.io) to enable this.
-
    :::
 
 10. Log in to the cluster hosting Argo CD.
@@ -83,11 +78,6 @@ The following steps show you how to install a GitOps Agent into an existing Argo
     deployment.apps/gitops-agent created
     cronjob.batch/gitops-agent-upgrader created
     ```
-   :::note
-
-   This list will have slight differences on accounts where the feature flag `GITOPS_AGENT_HELM_V2` is not enabled.
-   
-   :::
 
 12. In the Harness GitOps Agent installer, select **Continue**.
    

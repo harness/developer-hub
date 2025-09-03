@@ -48,7 +48,7 @@ In this example, only the destination registry requires authentication. The sour
                   name: migrate_image
                   identifier: migrate_image
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/image-migration
                     settings:
                       source: some-registry/image:latest
@@ -65,7 +65,7 @@ In this example, both the source and destination registries require authenticati
                   name: migrate_image
                   identifier: migrate_image
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/image-migration
                     settings:
                       source: registry-1.example.com/image:latest
@@ -81,7 +81,7 @@ With basic authentication, the Image Migration plugin settings are as follows:
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
-| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). | `YOUR_IMAGE_REGISTRY_CONNECTOR` |
 | `image` | String | Enter `plugins/image-migration`. You can specify an optional architecture tag. For a list of available tags, go to the [Image Migration plugin README](https://github.com/harness-community/drone-docker-image-migration?tab=readme-ov-file#plugin-image). | `plugins/image-migration:linux-amd64` |
 | `source` | String | The registry, image name, and tag of the image to copy. The format depends on the registry provider. | `registry-1.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |
 | `destination` | String | The destination where the image will be copied along with the image name and tag. The format depends on the registry provider. | `registry-2.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |
@@ -105,7 +105,7 @@ In this example, the source registry is a non-GAR registry that uses basic authe
                   name: migrate_image
                   identifier: migrate_image
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/image-migration
                     settings:
                       source: registry-1.example.com/image:latest
@@ -121,7 +121,7 @@ With GAR, the Image Migration plugin settings are as follows:
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
-| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). | `YOUR_IMAGE_REGISTRY_CONNECTOR` |
 | `image` | String | Enter `plugins/image-migration`. You can specify an optional architecture tag. For a list of available tags, go to the [Image Migration plugin README](https://github.com/harness-community/drone-docker-image-migration?tab=readme-ov-file#plugin-image). | `plugins/image-migration:linux-amd64` |
 | `source` | String | The registry, image name, and tag of the image to copy. The format depends on the registry provider. The [full image name format for GAR](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling#tag) is `LOCATION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG`. | `registry-1.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |
 | `destination` | String | The destination where the image will be copied along with the image name and tag. The format depends on the registry provider. The [full image name format for GAR](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling#tag) is `LOCATION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG`. | `registry-2.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |
@@ -145,7 +145,7 @@ In this example, an image is copied between registries in the same AWS ECR accou
                   name: migrate_image
                   identifier: migrate_image
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/image-migration
                     settings:
                       source: aws_account_id.dkr.ecr.us-west-2.amazonaws.com/image-dev:1.2.3
@@ -165,7 +165,7 @@ In this example, only the destination registry is in AWS ECR.
                   name: migrate_image
                   identifier: migrate_image
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/image-migration
                     settings:
                       source: registry-2.example.com/image:latest
@@ -185,7 +185,7 @@ In this example, only the destination registry is in AWS ECR.
                   name: migrate_image
                   identifier: migrate_image
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/image-migration
                     settings:
                       source: aws_account_id.dkr.ecr.us-west-2.amazonaws.com/image:latest
@@ -204,7 +204,7 @@ With AWS ECR, the Image Migration plugin settings are as follows:
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
-| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). Harness uses this connector to pull the plugin `image`. | `account.harnessImage` |
+| `connectorRef` | String | Select a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). | `YOUR_IMAGE_REGISTRY_CONNECTOR` |
 | `image` | String | Enter `plugins/image-migration`. You can specify an optional architecture tag. For a list of available tags, go to the [Image Migration plugin README](https://github.com/harness-community/drone-docker-image-migration?tab=readme-ov-file#plugin-image). | `plugins/image-migration:linux-amd64` |
 | `source` | String | The registry, image name, and tag of the image to copy. The format depends on the registry provider. The format for AWS ECR is `AWS_ACCOUNT_ID.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`. | `registry-1.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |
 | `destination` | String | The destination where the image will be copied along with the image name and tag. The format depends on the registry provider. The format for AWS ECR is `AWS_ACCOUNT_ID.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`. | `registry-2.example.com/my-cool-image:latest`<br/>`some-registry/some-image:1.2.3` |

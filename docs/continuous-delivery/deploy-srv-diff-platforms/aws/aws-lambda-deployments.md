@@ -187,6 +187,12 @@ The artifact defined in the Harness service is the equivalent to the `Code:Image
 
 If you do use the `Code:ImageUri` in the definition, Harness ignores it and instead uses the artifact in **Artifacts**.
 
+**Lambda service with custom artifacts** 
+
+You can use AWS Lambda custom artifact sources only when they point to S3 resources in the same AWS account. When you specify `bucketName` and `key` for a Lambda Service, Harness treats the artifact as an S3 object, so you must upload or sync your ZIP file into that bucket before every run. 
+
+If you don’t, the first deployment succeeds but subsequent runs will fail with `Not Support ArtifactConfig Type`. To ensure repeatable Lambda deployments, include a pre-deployment step in your pipeline that copies or synchronizes your custom artifact into the designated S3 bucket. 
+
 ### Function definition
 
 In **AWS Lambda Function Definition**, you specify your function definition.
@@ -197,7 +203,13 @@ The API takes a JSON object as input that defines the configuration settings for
 
 In Harness, you use a JSON configuration file to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
 
+Secrets are not supported for the `functionName` field in `function.json`. This value must be provided in plain text to enable traffic shifting and rollback. Using a secret may expose it in logs and cause deployment failures.
+
 **Harness Support for Tag Management**
+
+:::note
+Currently, the tag management feature is behind the feature flag `CDS_AWS_LAMBDA_ECS_TAG_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 Harness supports managing AWS Lambda function tags, allowing users to create, update, and delete tags as part of their function definition. Tags help with resource organization, cost allocation, and security policies.
 
@@ -370,6 +382,29 @@ service:
 ```
 
 </details>
+
+### Setting up Aliases for the Lambda Function (Optional)
+As a part of the service definition, customers also have the opportunity to set up the Alias for their AWS Lambda function.  This is not required and wholly optional for customers.  Please note that the alias that is being set up should not use the name `harness-latest` or it may interfere with Harness' rollback process.
+
+Customer are present with an example within the Harness UI of how the Alias can be defined.  They can use this as a template and modify and then upload the template with the alias definitions for the deployment.  Although the template can be seen in the UI, it only exists as a sample
+![](./static/lambda-aliassample.png)
+
+The alias is required to include the `name` field and the `description` fields.  Customers can also include [`routingConfig` as per the example below](https://docs.aws.amazon.com/lambda/latest/api/API_AliasRoutingConfiguration.html), where the 12th version of the deployment will receive 60% of the traffic.
+
+
+```
+name: "TestAlias"
+description: "Testing for Hello World v01"
+routingConfig:
+    additionalVersionWeights:
+           "12": 0.6
+```
+
+Although customers can set the `routingConfig` upon initial creation, the updates for the routing requires deletion of the alias and re-creation, not an update.  
+
+The feature flag `CDS_AWS_LAMBDA_ROUTING_CONFIG_ADDITION_DURING_ALIAS_UPDATE` changes this behavior where updates to the Alias' definitions will now modify subsequent updates to the alias `routingConfig`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+
 
 ### Service configuration using Harness API
 
@@ -640,11 +675,11 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 <figcaption>Figure: Mapped outputs.</figcaption>
 </figure>
 
-## Lambda deployment steps
+## Lambda Execution steps
 
-Once you have created the Harness service and environment for your deployment, you can model your pipeline in **Pipelines**.
+Lambda execution currently supports the Basic and Canary deployment strategies.
 
-Simply create a new **Deploy** stage, select AWS Lambda as the deployment type, and then use the service and environment you created.
+### Lambda Basic Deployment Strategy
 
 Harness includes execution steps to deploy your function:
 
@@ -653,7 +688,7 @@ Harness includes execution steps to deploy your function:
 
 These steps are added to your pipeline stage **Execution** automatically when you model your pipeline.
 
-### AWS Lambda Deploy step
+#### AWS Lambda Deploy step
 
 The AWS Lambda Deploy step requires no configuration because Harness handles the logic to deploy the artifact to the proper AWS account and region.
 
@@ -746,8 +781,7 @@ Done
 
 </details>
 
-
-### AWS Lambda Rollback Step
+#### AWS Lambda Rollback Step
 
 When a pipeline deployment fails, Harness will automatically roll back your Lambda function to the previous version using the AWS Lambda Rollback step. Harness remembers the successful version of the AWS Lambda service deployed and rollback for you.
 
@@ -762,6 +796,160 @@ rollbackSteps:
       timeout: 10m
       spec: {}
 ```
+
+### Lambda Canary Deployment Strategy
+
+:::note
+Currently, the Canary Deployment Strategy is behind the feature flag `CDS_AWS_LAMBDA_CANARY_DEPLOY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Harness Delegate version `86200` or later is required for this feature.
+:::
+
+The **AWS Canary Deploy** strategy enables gradual rollout of a new Lambda version using traffic shifting. When you select the *Canary* strategy for your AWS Lambda deployment, Harness automatically adds the following execution steps to your pipeline:
+
+- **Lambda Canary Deploy**
+- **Lambda Traffic Shift (10%)**
+- **Lambda Traffic Shift (100%)**
+- **Canary Rollback Step**
+
+The **Lambda Traffic Shift** step is reused twice, once with 10% traffic routing and once with 100%, to support phased promotion of the new version.
+
+<div align="center">
+  <DocImage path={require('./static/lambda-canary.png')} width="80%" height="80%" title="Click to view full size image" />
+</div>
+
+#### Lambda Canary Deploy
+
+This step initiates the canary deployment by performing the following actions:
+
+- Fetches the manifest file for the Lambda function.
+- Captures the current function state, including the latest published version, and stores it for rollback. This version is used to create or update the `harness-latest` alias.
+- Deploys the new version of the Lambda function without shifting any traffic.
+
+No alias changes or traffic updates occur at this stage.
+
+#### Lambda Traffic Shift
+
+The **Lambda Traffic Shift** step allows you to incrementally direct live traffic to the new Lambda version.
+
+- In the first instance, you can configure a small percentage (e.g., 10%) of traffic to be routed to the new version.  
+- In the second instance, set the traffic to 100% to fully promote the new version to production.
+
+You can include manual or automated **approval steps** between traffic shifts to validate deployment health before continuing.
+
+#### Canary Rollback Step
+
+If a failure is detected at any point during the canary rollout:
+
+- All traffic is redirected back to the previously deployed stable version.
+- The newly deployed version is removed.
+- The `harness-latest` alias continues to point to the stable version.
+
+This rollback happens automatically, regardless of the number of traffic shift steps configured in the pipeline.
+
+<details>
+<summary>Sample Canary deployment YAML</summary>
+
+This sample shows the execution steps with approval between traffic shifts.
+
+```yaml
+          execution:
+            steps:
+              - step:
+                  name: Lambda Canary Deploy
+                  identifier: canaryDeployAwsLambda
+                  type: AwsLambdaCanaryDeploy
+                  timeout: 10m
+                  spec: {}
+              - step:
+                  name: Lambda Traffic Shift
+                  identifier: trafficShift10
+                  type: AwsLambdaTrafficShift
+                  timeout: 10m
+                  spec:
+                    trafficPercentage: 10
+              - step:
+                  type: HarnessApproval
+                  name: HarnessApproval_1
+                  identifier: HarnessApproval_1
+                  spec:
+                    approvalMessage: Please review the following information and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    isAutoRejectEnabled: false
+                    approvers:
+                      userGroups:
+                        - account.account_admins
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                    approverInputs: []
+                  timeout: 1d
+              - step:
+                  name: Lambda Traffic Shift
+                  identifier: trafficShift100
+                  type: AwsLambdaTrafficShift
+                  timeout: 10m
+                  spec:
+                    trafficPercentage: 100
+            rollbackSteps:
+              - step:
+                  name: Rollback Canary Deploy
+                  identifier: rollbackCanaryDeploy
+                  type: AwsLambdaCanaryRollback
+                  timeout: 10m
+                  spec: {}
+```
+</details>
+
+### Rollback for Artifacts Larger Than 50 MB
+
+:::note
+
+Rollback support for artifacts larger than 50 MB stored in S3 is currently behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This features requires delegate version `857xx` or later.
+:::
+
+#### Prerequisites
+
+Ensure that the IAM role or user associated with the deployment has the following **AWS Lambda permissions** to manage function aliases:
+
+- `lambda:CreateAlias` – Allows creation of a new alias.
+- `lambda:UpdateAlias` – Allows updating an existing alias to point to a different version.
+- `lambda:DeleteAlias` – Allows deletion of an alias.
+
+Harness uses **Lambda function aliases** to support rollback workflows. During deployment, Harness creates or updates an alias to point to the latest function version. If a rollback is triggered, the alias is redirected to the previously deployed version—restoring the last known good state.
+
+In this case, Harness will create an alias called `harness-latest`, which will facilitate the rollback process.  It is only created when the rollback function is used with the Feature Flag enabled. It is highly recommended that customers do not modify this alias, as it may disrupt the expected state.   Please note that even if you are not using Artifacts larger than 50MB, the Rollback process will remain the same and will utilize Aliases once the flag is enabled.
+
+Any customer-defined aliases should not conflict with this alias.
+
+The alias will appear within Lambda as per the example below:
+
+![](./static/alias-latest.png)
+
+![](./static/alias-version.png)
+
+:::info
+Harness manages aliases only for deployments performed through Harness. Creating the alias that points to the latest deployed version is also gated by the same feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. 
+
+Harness tracks only the versions deployed via Harness, and rollback is supported only for these deployments. These aliases are used exclusively for rollback operations.
+:::
+
+**Process and Function**
+
+- **Deploying without Feature Enabled**:  
+  If you deploy an artifact larger than 50 MB **without** enabling the feature flag, the deployment will succeed, but the rollback will **fail**. Harness cannot trace previous artifact versions in this mode.
+
+- **Initial Deployment Process**:  
+  If the feature flag is enabled and this is your **first deployment**, Harness creates new aliases. Since there’s no version history, a rollback will effectively do nothing.
+
+- **Subsequent Deployment Process**:  
+  If the feature flag is enabled and this is **not your first deployment**, Harness can track previous versions. On rollback, the alias is pointed to the previously deployed version, restoring the earlier state successfully.
+
+- **Enabling flag for Pre-Existing Lambda Deployments**:  
+  Customers can also enable this feature flag if they already have deployments enabled.  The next deployment will then be tagged with the alias, and then, the process will follow the same flow.
+
+With the feature flag enabled and the appropriate permissions in place, you can deploy Lambda artifacts of any size from S3, with Harness managing deployment and rollback reliably.
 
 ## Lambda Functions Deployment Sample 
 

@@ -28,6 +28,8 @@ Please note that the Docker Connector is platform-agnostic and can be used to co
 Please note that Harness Gitspaces currently supports **AWS Access Key** as the only credential type for connecting to your AWS account. Read more about the **AWS connector settings reference** [here](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials). 
 :::
 
+4. [**Nexus**](https://developer.harness.io/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference/): You can also configure **Nexus** as a connector to access private Docker images. Refer this guide on [adding a Nexus connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference/#nexus-artifact-details-settings). 
+
 ![](./static/private-docker-images-1.png)
 
 :::info 
@@ -77,10 +79,9 @@ Here’s what you need to add to your ```devcontainer.json``` file:
   | [**JFrog Artifactory**](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) | "Artifactory"    |
   | [**Docker Registry**](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) | "DockerRegistry" |
   | [**Amazon ECR**](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-aws-connector) | "Aws" |
+  | [**Nexus**](https://developer.harness.io/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference) | "Nexus" | 
 
 - The `identifier` field should include the connector identifier, adjusted based on its scope level.
-- We also provide **Nexus** support for private Docker images using the same Docker Registry connector.
-
 
 :::info 
 Currently, you can use only one connector per Gitspace to pull images from a private Repository.
@@ -98,7 +99,7 @@ For more details, [please refer to the documentation here](https://developer.har
 
 
 ## Verifying the Private Docker Image Setup
-Now, you can create a new Gitspace with the above configuration using the Harness UI. ([Refer these docs to learn how to create a new Gitspace.](/docs/cloud-development-environments/introduction/quickstart-guide.md))
+Now, you can create a new Gitspace with the above configuration using the Harness UI. ([Refer these docs to learn how to create a new Gitspace.](/docs/cloud-development-environments/introduction/quickstart-tutorial.md))
 
 Once the Gitspace is created, you can verify the setup by checking the **container logs** and **status stages**. If everything is set up correctly, your Gitspace will run using your private Docker image.
 

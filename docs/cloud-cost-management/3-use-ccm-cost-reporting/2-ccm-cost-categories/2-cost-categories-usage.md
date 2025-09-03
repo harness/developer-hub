@@ -164,7 +164,42 @@ Below is the table where we have outlined the contrasting behavior of cost categ
     </tr>
 </table>
 
-## See Also
+### Cost Category Priority and Overlapping
 
-* [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+When configuring Cost Categories using multiple Cost Buckets, it’s important to understand how priority and overlapping rules impact cost allocation.
+
+#### How Priority Works
+
+Cost Buckets are prioritized based on their order in the UI from top to bottom.
+The first bucket in the list has the highest priority, followed by the second, and so on.
+
+You can drag and reorder the cost buckets within a cost category to define your preferred priority.
+
+#### What Happens with Overlapping Rules?
+
+If multiple cost buckets have overlapping rules (e.g., same account ID or service), the first matching bucket (by priority) will capture all of the matching cost.
+Subsequent buckets will not receive any cost for those overlapping rules, even if the rule is also present there.
+
+**Example**
+
+Let’s say:
+
+Bucket 1 contains: Account A1
+Bucket 2 contains: Account A1 + Services S1–S5
+
+If Bucket 1 appears before Bucket 2 in the priority list:
+
+All cost for Account A1 will go to Bucket 1
+Bucket 2 will appear empty, even though it has valid rules because those rules were already matched in Bucket 1.
+
+If you switch the order, so Bucket 2 is above Bucket 1:
+
+The cost for Services S1–S5 will go to Bucket 2
+The remaining cost for Account A1 will go to Bucket 1
+
+**Important Notes:**
+
+- This ordering behavior helps you intentionally segment cost across buckets.
+- Ensure your rules are specific and mutually exclusive when needed, to avoid unintentional gaps or overrides.
+- If Bucket 2 rules don’t match the criteria, or due to overlapping rules the data doesn’t appear, then the same cost bucket will not be visible in the dashboard either.
 

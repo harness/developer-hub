@@ -76,6 +76,16 @@ For example, to write to the `DRONE_OUTPUT.env` file, the plugin must use a comm
 echo "VAR_NAME=somevalue" >> $DRONE_OUTPUT
 ```
 
+At runtime, the CI engine sets the `$DRONE_OUTPUT` environment variable to a temporary file path such as `/tmp/engine/xyz-output.env`. When a step appends `KEY=value` pairs to this file using `echo`, Harness CI automatically captures them as output variables. These can then be referenced in subsequent steps using expression syntax.
+
+To verify that `$DRONE_OUTPUT` is set, you can run:
+
+```
+echo $DRONE_OUTPUT
+```
+
+This should return a path like `/tmp/engine/xyz-output.env`.
+
 To reference the resulting output variable in another step in the same stage, use either of the following expressions:
 
 ```
@@ -102,6 +112,28 @@ If the step is within a step group, include the step group identifier in the exp
 <+execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
+#### Output secrets
+
+Plugin step can export output secrets, which can be used in subsequent steps or stages just like output variables. Output secrets are handled securely by Harness: their values are masked in logs and treated as secrets.
+
+To export an output secret, write to the file path provided by the `$HARNESS_OUTPUT_SECRET_FILE` environment variable. For example:
+
+```
+echo "SECRET_KEY=supersecretvalue" >> $HARNESS_OUTPUT_SECRET_FILE
+```
+At runtime, Harness automatically captures these values as secrets. They can be referenced in subsequent steps or stages the same way as output variables, using expression syntax:
+```
+<+steps.STEP_ID.output.outputVariables.SECRET_KEY>
+<+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.SECRET_KEY>
+```
+:::info Feature flags
+To use output secrets, the following feature flags must be enabled:
+- `CI_SKIP_NON_EXPRESSION_EVALUATION`
+- `CI_ENABLE_OUTPUT_SECRETS`
+For Harness Docker Runner, also enable:
+- `CI_ENABLE_PLUGIN_OUTPUT_SECRETS`
+To enable these flags, [contact Harness Support](mailto:support@harness.io).
+:::
 
 #### Output Variables on Step Failure
 

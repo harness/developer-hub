@@ -71,6 +71,18 @@ Set maximum resource limits for the resources used by the container at runtime:
 * **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
+#### Upload as flat
+
+A boolean value that determines the file structure and hierarchy when uploading to Artifactory. By default, this value is `true`.
+
+If set to:
+- `true`: Artifacts or files are uploaded to the exact target path specified and their hierarchy in the source repository is ignored.
+- `false`: Artifacts are uploaded to the target path in artifactory while maintaining the hierarchy of the source repository.
+
+:::note
+This setting is available only if the feature flag `CI_ENABLE_UPLOAD_AS_FLAT` is enabled. When enabled, you will see the Upload As Flat option under Optional Configuration in the step configuration UI. To enable the flag, contact [Harness Support](mailto:support@harness.io).
+:::
+
 ### Timeout
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
@@ -125,22 +137,54 @@ To enable the publication of build information, you must set the `publish_build_
 For example:
 
 ```yaml
-              - step:
-                  type: Plugin
-                  name: plugin
-                  identifier: plugin
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: plugins/artifactory
-                    settings:
-                      access_token: YOUR_JFROG_TOKEN
-                      url: YOUR_JFROG_ARTIFACTORY_URL
-                      source: /path/to/source
-                      target: /path/to/target
-                      build_name: <+pipeline.identifier> # You can use an expression or a fixed value.
-                      build_number: <+pipeline.sequenceId> # You can use an expression or a fixed value.
-                      publish_build_info: true
-                      targetProps: key1=123;projectName=ExampleApp # Optional metadata/properties
+- step:
+    type: Plugin
+    name: plugin
+    identifier: plugin
+    spec:
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+      image: plugins/artifactory
+      settings:
+        access_token: YOUR_JFROG_TOKEN
+        url: YOUR_JFROG_ARTIFACTORY_URL
+        source: /path/to/source
+        target: /path/to/target
+        build_name: <+pipeline.identifier> # You can use an expression or a fixed value.
+        build_number: <+pipeline.sequenceId> # You can use an expression or a fixed value.
+        publish_build_info: true
+        targetProps: key1=123;projectName=ExampleApp # Optional metadata/properties
+```
+
+## Add local files as build dependencies
+
+The built-in **Upload Artifacts to JFrog Artifactory** step uses the [Artifactory Drone plugin](https://github.com/harness/drone-artifactory). You can used the plugin directly in case there is some configuration or flags that are not supported natively in the built-in step.
+
+To add dependencies from the local file system to the build info, you must add the `add-build-dependencies` flag. This feature requires `build_name`, `build_number`, and `dependency` to be specified. 
+
+Other options include:
+- `exclusions`: Exclude files with the regex defined in this setting. 
+- `from_rt`: Boolean. If true, will add dependencies from Artifactory instead of the local file system.
+- `spec_path`: Add a dependency from a specific file path. 
+
+Example:
+
+```yaml
+- step:
+    type: Plugin
+    name: AddBuildDependencyStep
+    identifier: AddBuildDependencyStep
+    spec:
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+      image: plugins/artifactory
+      settings:
+        command: add-build-dependencies
+        access_token: YOUR_JFROG_TOKEN
+        url: YOUR_JFROG_ARTIFACTORY_URL
+        module: test_module
+        build_name: <+pipeline.identifier> # You can use an expression or a fixed value.
+        build_number: <+pipeline.sequenceId> # You can use an expression or a fixed value.
+        dependency: /harness/add_deps/\*\*/\*.jar
+        exclusions: /harness/add_deps/exclude_test/\*\*
 ```
 
 ## Post artifacts to the Artifacts tab
@@ -172,7 +216,7 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
                   name: publish artifact metadata
                   identifier: publish_artifact_metadata
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
                       file_urls: https://complete/url/to/artifact/on/jfrog

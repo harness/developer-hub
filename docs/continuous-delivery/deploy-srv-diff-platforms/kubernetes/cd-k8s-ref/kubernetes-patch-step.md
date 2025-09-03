@@ -245,6 +245,17 @@ Here's a video demo of how to add a Patch step:
 https://www.loom.com/share/492afdbb9cb8484980b6d1617830a399?sid=90c41fc9-a556-44e0-82e4-59206bbf493e-->
 <DocVideo src="https://www.loom.com/share/97465b4bcbe04f5dbc5f608279ef986f" />
 
+## Advanced Settings
+
+See the following:
+
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Command Flags](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/k8s-command-flags/)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
 ## See also
 
 - [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes)

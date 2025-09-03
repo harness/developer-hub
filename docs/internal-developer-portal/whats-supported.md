@@ -9,7 +9,13 @@ Harness Internal Developer Portal integrates with a number of third-party provid
 
 ## Plugins for IDP
 
-Harness IDP supports a number of plugins to integrate the software catalog with third-party providers. Please find the growing list of [supported plugins](/docs/category/available-plugins). This is a subset of the [Backstage plugin marketplace](https://backstage.io/plugins).
+Harness IDP supports a number of plugins to integrate the software catalog with third-party providers:
+
+* [Available Plugins](/docs/category/available-plugins) - Our curated collection including:
+  * [Harness Native Plugins](/docs/category/harness-modules) - Official plugins that integrate seamlessly with other Harness modules like CI/CD, Feature Flags, Chaos Engineering, STO and more
+  * Third-party and community plugins from the Backstage ecosystem
+
+These are carefully selected from the broader [Backstage plugin marketplace](https://backstage.io/plugins).
 
 Any URLs behind any firewall or private URLs used in plugins should be accessed through [Harness Delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/). 
 
@@ -17,11 +23,11 @@ Any URLs behind any firewall or private URLs used in plugins should be accessed 
 
 Any software component can be registered in the catalog by using a YAML file stored in the following Git providers:
 
-* [Harness Code Repository (Default)](https://www.harness.io/products/code-repository) 
-* GitHub
-* GitLab
-* Bitbucket
-* Azure Repos
+* [Harness Code Repository (Default)](https://developer.harness.io/docs/code-repository/get-started/overview/) 
+* GitHub ([Cloud](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) & [Enterprise](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server))
+* [GitLab](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) (Cloud & Self Hosted)
+* [Bitbucket](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket)
+* [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
 
 We support multiple connectors with different hostname for a single git provider to fetch `catalog-info.yaml` at once. E.g., Users can use connectors for both `github.com` and `github enterprise` and fetch entity YAML at the same time.
 
@@ -63,6 +69,17 @@ Workflows in IDP use Harness Pipelines as Orchestrator, so any secret requiremen
 You can use Harness Secret Manager as well for the above described function. 
 
 :::
+
+## Supported IDP Entities in Git Experience
+Harness IDP Git Experience supports the following Harness IDP entities for this feature: 
+
+| **IDP Entity** | **Git Experience Support** | **Notes** | 
+| ------- | -------- | -------- |
+| **Catalog Entities** | Supports Git Experience | IDP Catalog Entities like Component, API, Resource - all support Harness IDP Git Experience i.e. you can store Catalog entity YAMLs in Git. |
+| **Workflows** | Supports Git Experience | Workflows support Harness IDP Git Experience i.e. you can store and track Workflow YAMLs in Git. | 
+| **Scorecards** | Not Supported | At present, scorecards don't support Git Experience. | 
+| **Plugins** | Not Supported | At present, plugin configurations don't support Git Experience. | 
+| **Layouts** | Not Supported | At present, layouts don't support Git Experience. | 
 
 ## Miscellaneous
 

@@ -1,4 +1,4 @@
-import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   university: [
     // University Parent
@@ -13,6 +13,13 @@ const sidebars: SidebarsConfig = {
       },
       collapsed: false,
       items: [
+        // CR
+        {
+          type: "doc",
+          label: "Code Repository",
+          id: "cr",
+          className: "sidebar-cr",
+        },
         // CI
         {
           type: "doc",
@@ -27,7 +34,20 @@ const sidebars: SidebarsConfig = {
           id: "continuous-delivery",
           className: "sidebar-cd",
         },
-
+        // DB DevOps
+        {
+          type: "doc",
+          label: "Database DevOps",
+          id: "database-devops",
+          className: "sidebar-dbdevops",
+        },
+        //iacm
+        {
+          type: "doc",
+          label: "Infrastructure as Code Management",
+          id: "iacm",
+          className: "sidebar-iacm"
+        },
         //ff
         {
           type: "doc",
@@ -35,8 +55,8 @@ const sidebars: SidebarsConfig = {
           id: "feature-flags",
           className: "sidebar-ff",
         },
-         //fme
-         {
+        //fme
+        {
           type: "link",
           label: "Feature Management & Experimentation",
           href: "https://arcade.split.io/",
@@ -47,42 +67,42 @@ const sidebars: SidebarsConfig = {
           type: "doc",
           label: "Cloud Cost Management",
           id: "cloud-cost-management",
-           className:"sidebar-ccm"
+          className: "sidebar-ccm"
         },
         //sto
         {
           type: "doc",
           label: "Security Testing Orchestration",
           id: "sto",
-           className:"sidebar-sto"
+          className: "sidebar-sto"
         },
-        //sei
+        //SCS
         {
           type: "doc",
-          label: "Software Engineering Insights",
-          id: "sei",
-           className:"sidebar-sei"
+          label: "Supply Chain Security",
+          id: "scs",
+          className: "sidebar-ssca"
         },
         //ce
         {
           type: "doc",
           label: "Chaos Engineering",
           id: "chaos-engineering",
-           className:"sidebar-ce"
+          className: "sidebar-ce"
         },
         //idp
         {
           type: "doc",
           label: "Internal Developer Portal",
           id: "idp",
-           className:"sidebar-idp"
+          className: "sidebar-idp"
         },
-         //iacm
-         {
+        //sei
+        {
           type: "doc",
-          label: "Infrastructure as Code Management",
-          id: "iacm",
-           className:"sidebar-iacm"
+          label: "Software Engineering Insights",
+          id: "sei",
+          className: "sidebar-sei"
         },
         //vILT
         {
@@ -98,11 +118,11 @@ const sidebars: SidebarsConfig = {
           id: "instructions",
           className: "sidebar-ilt-instructions",
         },
-        // FAQs
+        // Policies and FAQs
         {
           type: "doc",
-          label: "FAQs",
-          id: "faqs",
+          label: "Policies & FAQs",
+          id: "policies-and-faqs",
           className: "sidebar-faqs",
         },
       ],

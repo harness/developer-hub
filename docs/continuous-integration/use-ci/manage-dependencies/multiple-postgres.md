@@ -126,7 +126,7 @@ In Harness, go to the pipeline where you want to run the PostgreSQL services. In
                       type: Background
                       name: Background_1
                       spec:
-                        connectorRef: account.harnessImage ## Use the built-in Docker connector or your own Docker connector.
+                        connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                         image: postgres ## Specify a PostgreSQL Docker image.
                         shell: Sh
                         entrypoint: ## Include both the image ENTRYPOINT and the additional port binding argument.
@@ -141,7 +141,7 @@ In Harness, go to the pipeline where you want to run the PostgreSQL services. In
                       type: Background
                       name: Background_2
                       spec:
-                        connectorRef: account.harnessImage
+                        connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                         image: postgres
                         shell: Sh
                         entrypoint:
@@ -286,7 +286,7 @@ psql -U POSTGRES_USER -d SECOND_DATABASE_NAME -h SECOND_BACKGROUND_STEP_ID -p SE
                   type: Run
                   name: Run_1
                   spec:
-                    connectorRef: account.harnessImage ## Use the built-in Docker connector or your own Docker connector.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: postgres:9-alpine ## Specify a PostgreSQL Docker image.
                     shell: Sh
                     command: |- ## Provide the user name, database name, and container port from each of your Background steps.
@@ -424,7 +424,7 @@ pipeline:
                       type: Background
                       name: Background_1
                       spec:
-                        connectorRef: account.harnessImage ## Use the built-in Docker connector or your own Docker connector.
+                        connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                         image: postgres ## Specify a PostgreSQL Docker image.
                         shell: Sh
                         entrypoint: ## Include both the image ENTRYPOINT and the additional port binding argument.
@@ -439,7 +439,7 @@ pipeline:
                       type: Background
                       name: Background_2
                       spec:
-                        connectorRef: account.harnessImage
+                        connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                         image: postgres
                         shell: Sh
                         entrypoint:
@@ -454,7 +454,7 @@ pipeline:
                   type: Run
                   name: Run_1
                   spec:
-                    connectorRef: account.harnessImage ## Use the built-in Docker connector or your own Docker connector.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR 
                     image: postgres:9-alpine ## Specify a PostgreSQL Docker image.
                     shell: Sh
                     command: |- ## Provide the user name, database name, and container port from each of your Background steps.
@@ -509,7 +509,7 @@ If you get a `failed to get image entrypoint` error when using a Kubernetes clus
                          type: Background
                          name: Background_1
                          spec:
-                           connectorRef: account.harnessImage
+                           connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                            image: postgres
                            shell: Sh
                            entrypoint:
@@ -525,7 +525,7 @@ If you get a `failed to get image entrypoint` error when using a Kubernetes clus
                          type: Background
                          name: Background_2
                          spec:
-                           connectorRef: account.harnessImage
+                           connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                            image: postgres
                            shell: Sh
                            entrypoint:
