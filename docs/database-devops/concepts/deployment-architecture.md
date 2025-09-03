@@ -40,7 +40,37 @@ The Harness delegate is crucial to [Harness Database DevOps](/docs/database-devo
 
 ## Communication Protocol between Services and Customer Infra
 
-![Harness DB DevOps architecture diagram](./static/detailed-architectural-diagram.png)
+![Harness DB DevOps architecture diagram](./static/dbdevops-architecture.png)
+
+Key Notes
+1. Outbound Control
+    - All the communications shown in the diagram operate as part of a single execution flow.
+    - It is not possible to selectively disable individual communications, as doing so would break the orchestration pipeline.
+2. Delegate Communication
+    - The Harness Delegate is the primary component responsible for initiating communication back to Harness SaaS.
+    - For more details on how the Delegate functions, see the [Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
+3. Log Shipping
+    - During task execution, outbound access to "`googleapis.com`" over port 443 is required to ship step logs.
+    - This can be avoided by changing the account-level setting:
+    **Account Settings** → **Default Settings** → **Continuous Integration** → **Upload Logs via Harness**. When enabled, logs are shipped directly to Harness SaaS, removing the dependency on googleapis.com.
+
+### Network Communication
+
+| **Initiator**          | **Protocol/Port**                                              | **Destination**                | **Harness URL / Endpoint**                     |
+| ---------------------- | -------------------------------------------------------------- | ------------------------------ | ---------------------------------------------- |
+| NextGen UI             | HTTPS :443                                                     | Gateway                        | `https://app.harness.io/gateway`               |
+| Gateway                | HTTPS :443                                                     | NG Core                        | `https://app.harness.io/ng/api/*`              |
+| Gateway                | HTTPS :443                                                     | Log Service                    | `https://app.harness.io/log-service/*`         |
+| Gateway                | HTTPS :443                                                     | Pipeline Service               | `https://app.harness.io/pipeline-service/*`    |
+| Pipeline Service       | HTTPS :443                                                     | NG Manager Service             | `https://app.harness.io/ng-manager/*`          |
+| NG Manager             | HTTPS :443                                                     | DB DevOps Service              | `https://app.harness.io/dbdevops/*`            |
+| NG Manager             | HTTPS :443                                                     | SCM Service                    | `https://app.harness.io/scm/*`                 |
+| Delegate               | WSS (WebSockets over HTTPS) :443                               | Delegate Service (CG Manager)  | `wss://app.harness.io/delegate-service/*`      |
+| Delegate               | gRPC :20001                                                    | Lite Engine                    | Internal (Pod)                                 |
+| Lite Engine            | gRPC :20001                                                    | Step Container (Pods)          | Internal (Pod)                                 |
+| Step Container         | DB Driver (Postgres :5432 / Mongo :27017 / MySQL :3306 / etc.) | Target Database                | Customer DB                                    |
+| Delegate               | HTTPS :443                                                     | Git / Artifact Repositories    | External URLs                                  |
+| Delegate / Lite Engine | HTTPS :443                                                     | `googleapis.com` (Log Uploads) | External (unless disabled via account setting) |
 
 ## Understanding How Secret's Info is Sent to Build Pods
 
