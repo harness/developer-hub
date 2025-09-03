@@ -2404,4 +2404,4 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 ### Version 0.38.6
 
 #### New features and enhancements
-- Introduced a new update method in Terraform to revoke delegate tokens. The recommended approach is to update the token_status field to "REVOKED", which will trigger the revocation process. [PL-64678]
+- Introduced a new update method in Terraform to revoke delegate tokens. The recommended approach is to update the `token_status` field to "REVOKED", which will trigger the revocation process. [PL-64678]
