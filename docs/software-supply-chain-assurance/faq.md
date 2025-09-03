@@ -32,7 +32,7 @@ sidebar_label: FAQs
 
 ### 5. What does Cosign do behind the scenes during the time of attestation and signing?
 
-- Behind the scenes, Cosign computes a digest (fingerprint) of the artifact, creates a digital signature or attestation using a private key, and then stores that signature/attestation as an OCI artifact in the registry. It also records the event in Rekor’s transparency log (for keyless signing), ensuring the artifact’s authenticity, integrity, and provenance can later be verified.
+- Behind the scenes, Cosign computes a digest (fingerprint) of the artifact, creates a digital signature or attestation using a private key, and then stores that signature/attestation as an OCI artifact in the registry. It also records the event in Rekor transparency log, ensuring the artifact’s authenticity, integrity, and provenance can later be verified.
 
 ### 6. How does the SLSA/SBOM verification steps identify the appropriate attestation file from the artifact registry?
 
@@ -65,7 +65,7 @@ sidebar_label: FAQs
 
 - First, you need to setup the minio: 
 
-- Then exec into minio pod `kubectl exec -it <minio-pod-name> -n <namespace>` -- /bin/sh
+- Then exec into minio pod `kubectl exec -it <minio-pod-name> -n <namespace> -- /bin/sh`
 
 - Then type `ls /data`, will show all the buckets created inside minio. `sbom-store`  should be one of them.
 if not then create it with these command
