@@ -31,12 +31,13 @@ Let's dive deeper into how entities and scopes come together in the Harness-nati
 
 ## Harness IDP Entities [IDP 2.0]
 
-There are different entities within our Harness IDP data model. However, software is modeled in the Harness IDP Catalog using four core entities:
+There are different entities within our Harness IDP data model. However, software is modeled in the Harness IDP Catalog using five core entities:
 
 * **Components**: Individual pieces of software.
 * **APIs**: Boundaries between different components.
 * **Resources**: Physical or virtual infrastructure needed to operate a component.
 * **Systems**: High-level organizational units that group related components, APIs and resources.
+* **Groups**: Custom user groups representing team structures, departments, or any organizational unit.
 
 
 ![](static/intro-system.png)
@@ -81,11 +82,29 @@ For more details on how to use this entity, please refer to the [detailed docs](
 
 ## Harness Platform Entities [IDP 2.0]
 
-We also support Harness Platform Entities - Users and User Groups.
+We support both Harness Platform Entities (Users and Platform User Groups) and Custom User Groups created directly within IDP.
 
 ### Users
 
-A **User** refers to a person who has been onboarded or has access to any part of Harness IDP. Across Harness, a user is any individual registered with a unique email address. Users can be associated with multiple Harness accounts and can belong to multiple user groups. Roles and resource groups can be assigned directly to users or inherited from user groups. Here's how you can [add users](https://developer.harness.io/docs/platform/role-based-access-control/add-users/) in Harness IDP.
+A **User** entity represents a person or an automated account which has authentication details stored. If you have an identity provider configured in your Harness platform, Users from that system would be automatically reflected in the IDP catalog.
+
+### Platform User Groups
+
+A **Platform User Group** entity represents a collection of related Users which have authentication details stored and are synchronized from an identity provider (LDAP, SCIM, SSO). These are typically used for role-based access control.
+
+### Custom User Groups
+
+New in IDP 2.0, **Custom User Groups** are created and managed entirely within IDP as first-class entities. Unlike platform user groups, custom groups can be enriched with additional metadata like team lead, region, or other organizational information. Custom groups support hierarchical relationships through parent-child connections and serve as a source of truth for organizational structure within IDP.
+
+Custom User Groups can:
+* Have members (users)
+* Be organized in hierarchies with parent-child relationships
+* Own components, systems, and other entities
+* Be enriched with metadata for better context
+
+For more details on Custom User Groups, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/user-group-entity.md) here.
+
+Roles and resource groups can be assigned directly to users or inherited from user groups. Here's how you can [add users](https://developer.harness.io/docs/platform/role-based-access-control/add-users/) in Harness IDP.
 
 You can [add users manually](https://developer.harness.io/docs/platform/role-based-access-control/add-users/#add-users-manually) or through [automated provisioning](https://developer.harness.io/docs/platform/role-based-access-control/add-users/#use-automated-provisioning). User groups can be created at all scopes.
 
@@ -131,6 +150,8 @@ With IDP 2.0, you can create resources at any scope: **Account**, **Org**, or **
 | **Scorecards** | ✅                 | ❌             | ❌                 | Only supported at the Account scope currently. Org/Project scope support is planned in the future roadmap. |
 | **Layouts**    | ✅                 | ❌             | ❌                 | Supported only at the Account scope currently. Org/Project scope support is planned.                       |
 | **Plugins**    | ✅                 | ❌             | ❌                 | Plugins can be created and configured only at the Account scope.                                           |
+| **Custom User Groups**    | ✅                 | ❌             | ❌                 | Custom User Groups can be created and managed only at the Account scope.                                   |
+
 
 
 ## Relations [IDP 2.0]
