@@ -127,10 +127,9 @@ metadata:
 ```yaml
 apiVersion: harness.io/v1
 kind: Group
-name: QA DevX
-identifier: QA_DevX
-type: custom
-scope: ACCOUNT
+type: engineering
+name: Cloud Infrastructure Team
+identifier: cloud_infrastructure_team
 spec:
   members:
     - user:account/jane.doe@harness.io
@@ -138,14 +137,14 @@ spec:
   lifecycle: active
   parent: group:account/idp_team
   profile:
-    email: idp_team@harness.io
+    email: cloud_infrastructure_team@techo.io
 metadata:
-  description: QA Team for Developer Experience initiatives
+  description: User Group responsible for building and maintaining the company’s core cloud infrastructure.
   teamLead: Jane Doe
   region: US West
   tags:
-    - qa
-    - developer-experience
+    - cloud
+    - engineering
 ```
 </details>
 
@@ -550,8 +549,7 @@ All the fields mentioned below are the parameters required to define a Group:
 | `kind` | **Group** |
 | `name` | Human-readable name for the group |
 | `identifier` | Unique identifier for the group |
-| `type` | Common values include `team`, `department`, `custom` |
-| `scope` | Currently only `ACCOUNT` scope is supported |
+| `type` | Common values include `api`, `department`, `engineering` |
 
 #### Special Spec Fields
 
@@ -566,10 +564,9 @@ All the fields mentioned below are the parameters required to define a Group:
 ```yaml
 apiVersion: harness.io/v1
 kind: Group
-name: QA DevX
-identifier: QA_DevX
-type: custom
-scope: ACCOUNT
+type: engineering
+name: Cloud Infrastructure Team
+identifier: cloud_infrastructure_team
 spec:
   members:
     - user:account/jane.doe@harness.io
@@ -579,12 +576,12 @@ spec:
   profile:
     email: idp_team@harness.io
 metadata:
-  description: QA Team for Developer Experience initiatives
+  description: Cloud Infrastructure Team for building and maintaining the company’s core cloud infrastructure.
   teamLead: Jane Doe
   region: US West
   tags:
-    - qa
-    - developer-experience
+    - cloud
+    - engineering
 ```
 
 ---
