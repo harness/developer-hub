@@ -17,8 +17,8 @@ You can use Cache Intelligence with any [build infrastructure](/docs/continuous-
 :::info
 * Cache Intelligence is now Generally Available (GA). 
 * Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
-* Cache Intelligence is enabled by default for newly created CI stages. This is configurable in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration) 
-
+* Cache Intelligence is enabled by default for newly created CI stages. This is configurable in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration)  
+- To enable Path Style support in Cache Intelligence S3 configuration, set `PLUGIN_PATH_STYLE: "true"` as a stage variable. This value will be passed to the environment variables of all steps. 
 :::
 
 
