@@ -18,7 +18,7 @@ If you configure branch rules at multiple levels they are combined with an `AND`
 
 1. Navigate to the level where you want to enable branch rules. For projects, orgs, or accounts, select **Manage Repositories**. For a repository, click **Settings**.
 2. Select the **Rules** tab.
-3. Click **Create Rule**.
+3. Click **+ Create Branch Rule**.
 4. Enter the rule **Name** and optional **Description**.
 :::info
 
@@ -92,11 +92,11 @@ To create a tag rule:
 1. Navigate to **Code Repository** → your repo.
 2. In the left sidebar, select **Manage Repository**.
 3. Go to the **Rules** tab.
-4. Click the **+ New branch rule** dropdown and select **New tag rule**.
+4. Click the **+ Create Branch Rule** dropdown and select **+ Create Tag Rule**.
 
 ### Create a Tag Rule
 
-After selecting **New tag rule**, the rule editor appears:
+After selecting **+ Create Tag Rule**, the rule editor appears:
 
 #### Enable
 

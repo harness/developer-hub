@@ -18,7 +18,7 @@ This topic explains how to work with tags in the Harness Code UI. For details ab
 4. Enter a **Description**. Descriptions are required for tags created in the Harness UI because they are annotated tags. If you want to create lightweight tags, use command line Git.
 5. Select **Create Tag**.
 
-Upon creating a tag, the **Tags** page shows the name, commit, and creation date of the tag.
+On the **Tags** page, you will see your **Tag**, and associated **Description**, **Commit**, **Tagger**, and **Creation date**. 
 
 ## Inspect a tag
 

@@ -10,7 +10,7 @@ Pull requests (PRs) foster collaboration within your team, ensuring code changes
 
 1. In your repository, go to **Pull Requests** and select **New Pull Request**.
 2. Select the *base branch* and the *compare branch*, which is the branch that you want to merge into the base branch.
-3. Edit the **Title**.
+3. Add the **Title** and **Description**.
 4. If this PR is ready for review, select **Create pull request**.
 
    To save a PR as a draft, select the dropdown next to **Create pull request**, and then select **Create draft pull request**.

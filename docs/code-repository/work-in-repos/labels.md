@@ -24,12 +24,12 @@ Labels, and their values, may be defined at various scopes within Harness Code. 
 ##### Create a repository scoped label
 1. Go to **Settings** inside your specified repository
 2. Click **Labels**
-3. Click **New Label**
+3. Click **+ Create Label**
 
 ##### Create a label at project, organization, or account scope
 1. In the Code Repository module, go to **Manage Repositories**.
 2. Click **Labels**
-3. Click **+New Label**
+3. Click **+ Create Label**
 
 :::tip 
 

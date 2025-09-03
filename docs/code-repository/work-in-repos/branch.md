@@ -12,21 +12,11 @@ This topic explains how to work with branches in the Harness Code UI. For inform
 
 ## Create a branch
 
-1. When viewing a repository in Harness Code, go to **Branches** and select **New Branch**.
+1. When viewing a repository in Harness Code, go to **Branches** and select **+ Create Branch**.
 2. Enter a branch **Name**.
 3. Select the branch or tag that you want to base your new branch on.
 4. Select **Create Branch**.
-5. In **Summary**, **Files**, **Commits**, or **Branches**, select your new branch to start working in it. You can work directly in the Harness Code UI or [clone your repo](./clone-repos.md) to work locally.
-
-<!-- :::tip
-
-You can also create branches from the **Files** page.
-
-On the repository's **Files** page, select the current branch name, type the name you want to give your new branch, and select **Create branch**.
-
-Make sure the current branch is the branch that you want to base your new branch on.
-
-::: -->
+5. In **Summary**, **Files**, **Commits**, or **Branches**, select your new branch to start working in it. You can work directly in the Harness Code UI or [clone your repo](/docs/code-repository/work-in-repos/clone-repos) to work locally.
 
 ## Protect a branch
 
@@ -43,13 +33,7 @@ When viewing a repository in Harness Code, most pages initially show the default
 
 ## Compare branches (create a PR)
 
-You can [create a pull request (PR)](../pull-requests/create-pr.md) to compare branches.
-<!-- 
-1. When viewing a repository in Harness Code, go to **Branches**.
-2. On the list of branches, locate your *compare branch*. This is the branch that you want to merge into your base branch (or another branch).
-3. Select **More options** (&vellip;) next to the compare branch, and select **Compare**.
-4. Enter a PR **Title** and optional **Description**. You can also change the target branch (the branch that you want to merge changes into).
-5. Select **Create pull request**. -->
+You can [create a pull request (PR)](/docs/code-repository/pull-requests/create-pr) to compare branches.
 
 For more information about creating and managing PRs, go to [pull requests](/docs/category/pull-requests).
 

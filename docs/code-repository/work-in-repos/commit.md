@@ -55,8 +55,6 @@ Select the **Settings** icon to select your preferred **Diff View** and **Line B
 
 Select **Browse files** to inspect files in that commit.
 
-<DocImage path={require('./static/inspect-commit.png')} />
-
 ## Revert a commit
 
 You can't directly revert commits in the Harness Code UI. Instead, you need to [create a commit](#create-a-commit) to overwrite the previous commit.
