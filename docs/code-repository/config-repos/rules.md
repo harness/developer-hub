@@ -20,8 +20,21 @@ If you configure branch rules at multiple levels they are combined with an `AND`
 2. Select the **Rules** tab.
 3. Select **New Branch Rule**.
 4. Enter the rule **Name** and optional **Description**.
-5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). Patterns can be inclusive or exclusive.
-6. In **Bypass List**, you can specify users who can bypass this rule.
+5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). 
+
+You have the option to include or exclude repositories when setting rules at the account, org, or project level. This allows you to fine-tune which repositories the rule applies to without forcing the rule across every repo. You can do this in two ways:
+
+- **By selecting specific repositories** (for example, `billing-api`, `web-frontend`).
+- **By using name patterns** (for example, `service-*`, `exp-*`).
+
+Includes and excludes can be mixed, and excludes take precedence when there’s overlap.  
+Examples:
+- Include by pattern: `service-*`
+- Include specific repos: `billing-api`, `web-frontend`
+- Exclude by pattern: `exp-*`
+- Exclude a specific repo: `playground`
+
+6. In **Bypass List**, you can specify users, user groups, or service accounts who can bypass this rule.
 7. For each of the [**Rules**](#available-rules), select the rule you want to enable and provide additional specifications, if necessary. For example, if you select **Require a minimum number of reviewers**, you must specify the minimum number of reviewers.
 8. Select **Create Rule**.
 
@@ -31,11 +44,11 @@ The following rules are available when adding branch rules. Some rules require a
 
 | Rule | Additional configuration |
 | ---- | ------------------------ |
-| **Block branch creation** | This rule doesn't block users in the **Bypass List**. |
-| **Block branch update** | This rule doesn't block users in the **Bypass List**. |
-| **Block branch deletion** | This rule doesn't block users in the **Bypass List**. |
-| **Block force push** | This rule doesn't block users in the **Bypass List**. |
-| **Require pull request** | This rule doesn't block users in the **Bypass List**. |
+| **Block branch creation** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Block branch update** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Block branch deletion** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Block force push** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
+| **Require pull request** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
 | **Enable default reviewers** | Automatically assigns default reviewers to new pull requests. Optionally, enforce a minimum number of approvals from default reviewers before merging. [Details](/docs/code-repository/config-repos/rules#default-reviewer). |
 | **Require a minimum number of reviewers** | You must specify the minimum number of reviewers. |
 | **Add Code Owners as reviewers** | This rule automatically adds relevant Code Owners as reviewers. |
@@ -96,6 +109,15 @@ Check this box to activate the rule.
 
   * `v*` for all version tags,
   * `release/**` for nested release tags).
+* You can include or exclude repositories when creating tag rules at the account, org, or project level. This makes it possible to scope rules precisely without forcing the rule across every repo. You can do this in two ways:
+  - **By selecting specific repositories** (for example, `billing-api`, `ui`).
+  - **By using name patterns** (for example, `prod-*`, `exp-*`).
+* Includes and excludes can be mixed, and excludes take precedence when they overlap.  
+  Examples:
+  - Include by pattern: `prod-*`
+  - Include specific repos: `billing-api`, `ui`
+  - Exclude by pattern: `exp-*`
+  - Exclude a specific repo: `playground`
 
 #### Rules: Select all that apply
 

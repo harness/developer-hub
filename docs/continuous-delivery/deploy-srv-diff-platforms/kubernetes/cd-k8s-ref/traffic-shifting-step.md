@@ -5,7 +5,7 @@ sidebar_position: 6
 ---
 
 
-This topic describes the Kubernetes Traffic Routing step. These configuration options can also be found as part of the Blue Green (BG) Deployment step as well as the Canary Deployment step. 
+This topic describes the Kubernetes Traffic Routing step parameters and use cases. These configuration options can also be found as part of the Blue Green (BG) Deployment step as well as the Canary Deployment step. 
 
 This feature allows you to perform east-west routing of traffic. You would select a routing service mesh provider (currently supported SMI and Istio) and then configure one or more routes which are essentially groups of destinations and optional rules that applies for them.   
 
@@ -13,26 +13,24 @@ Here is a video demo of traffic shifting in a Kubernetes deployments.
 
 <DocVideo src="https://www.loom.com/share/b1cf1db3300946b9b8fe48ae85bbfc26?sid=bef8f5d9-af26-4f24-a7ad-f244ac724572" />
 
-## Traffic Routing Step Parameters
-
-### Name
+## Name
  
 Name of the step.
 
-### Config Type
+## Config Type
 
 Specify your configuration type here. Currently there are two choices:
 
 * **New Config**: Select this option if you want to specify a new configuration for traffic routing in this step. If configuring this in a BlueGreen deployment step or a Canary step this option is implicitly assumed. This option will create a new resource(s).
 * **Inherit**: Select this option if you want the traffic routing step to inherit a configuration from a previous Blue Green, Canary, or Traffic Routing step. This option will patch existing resources. 
 
-### Provider
+## Provider
 
 Specify your service mesh provider. Harness currently supports Service Mesh Interface (SMI) and Istio. 
 
 Each provider will have some common configuration options and some provider specific ones. We have listed all configuration options for each provider. Please look at the one relevant for you.
 
-#### Service Mesh Interface (SMI) - New Config option
+### Service Mesh Interface (SMI) - New Config option
 
 Before you begin, make sure you have an understanding on what SMI is and how it works by [visiting their website](https://smi-spec.io/). 
 
@@ -77,13 +75,13 @@ Currently, we only support `specs.smi-spec.io/v1alpha3` and `specs.smi-spec.io/v
               If the total weights for all host destinations is not equal to 100, the weight values will be normalized into a percentage, and the pipeline will run with a warning.
               :::
 
-#### Istio - New Config option
+### Istio - New Config option
 
 Before you begin, make sure you have an understanding of Istio and how it works by referring to [their website](https://istio.io/latest/about/service-mesh/).
 
 * **Parameters**:
     * **Resource Name:** This name will be used to generate a kubernetes name for traffic resources. Hence the name needs to be kubernetes resource name compliant. 
-    * **Hosts:** Specify one or more host names. This is specific to Istio, please take a look [here](https://istio.io/latest/docs/concepts/traffic-management/#the-hosts-field).
+    * **Hosts:** Specify one or more host names. Hosts can be added individually using the **+Add** button or as a comma-separated list. This is specific to Istio, please take a look [here](https://istio.io/latest/docs/concepts/traffic-management/#the-hosts-field).
     * **Gateways:** Specify one or more gateway names. This is specific to Istio, please take a look [here](https://istio.io/latest/docs/reference/config/networking/gateway/).
     * **Routes**: Currently, Harness supports only the `http` route type.
         * **Route type**: Currently, Harness supports only the `http` route type - for http traffic.
@@ -204,9 +202,9 @@ Destination2 -> Host: svc2, Weight: 45
 Destination3 -> Host: svc3, Weight: 15
 ```
 
-### Configuration examples
+## Configuration examples
 
-#### Istio service mesh configuration
+### Istio service mesh configuration
 Here we have an example of an Istio service mesh traffic routing step which will take all the traffic that is coming from gateway `testgateway` and with host `test.com`.
 It will filter all incoming request that have URI `/login` with HTTP method `POST` and header `X-Request` with value `authxx`.
 This request will be split between PODs which are behind two service `svc1` and `svc2` in ratio 65 to 35, respectively.
@@ -256,8 +254,7 @@ The resource created would be a `Virtual Service` with name `istio-vs-k8s-res`
                         weight: 35
 ```
 
-
-#### SMI service mesh configuration
+### SMI service mesh configuration
 Here we have an example of an SMI service mesh traffic routing step which will take all the traffic that is coming into service `svc1`
 It will filter all incoming request that have URI `/login` with HTTP method `POST` and header `X-Request` with value `authxx`.
 This request will be split between PODs which are behind two service `svc1` and `svc2` in ratio 65 to 35, respectively.
@@ -305,7 +302,7 @@ The resource created would be a `TrafficSplit` with name `smi-traffic-split-res-
                         weight: 35
 ```
 
-### Advanced
+## Advanced
 
 See the following topics for advanced settings:
 

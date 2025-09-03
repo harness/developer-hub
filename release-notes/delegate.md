@@ -23,6 +23,19 @@ These release notes describe recent changes to Harness Delegate.
 
 ## Important feature change notice
 
+:::danger Delegate token revocation and deletion in Terraform  (Effective October 13, 2025 & Terraform version 0.38.7)
+
+We have introduced a new argument `token_status`, for managing Delegate tokens in Terraform:
+- **Now available**: Set `token_status = "REVOKED"` to revoke a Delegate token.
+- **Current behavior**: Removing the Delegate token resource revokes the token.
+- **From October 13, 2025 & Terraform version 0.38.7**:
+  - Use `token_status = "REVOKED"` to revoke tokens.
+  - Removing the resource will **delete** the token instead of revoking it.
+
+**Action Required**: Update your automation to use `token_status = "REVOKED"` for revoking Delegate tokens before the Terraform version 0.38.7 release on October 13, 2025.
+
+:::
+
 :::info Delegate FIPS-compliant images (Only for SMP)
 
 Harness delegate now offers FIPS (Federal Information Processing Standard) compliant images compatible only with [FIPS Self-Managed Platform](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview). This is available starting Delegate version: [25.07.86300](/release-notes/delegate#version-250786300-).
@@ -96,10 +109,32 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 1. [Delegate image release notes](#delegate-image-release-notes)
 2. [Delegate Helm Chart release notes](#delegate-helm-chart-release-notes)
 3. [Delegate Upgrader release notes](#delegate-upgrader-release-notes)
+4. [Delegate Terraform release notes](#delegate-terraform-release-notes)
 
 ## Delegate image release notes
 
+## September 2025
+
+### Version 25.08.86504 <!--September 03, 2025-->
+
+#### Fixed issues
+
+- Added Support for Proxy in data collection request for cv. [CDS-113510]
+
 ## August 2025
+
+### Version 25.05.85808 <!--Aug 29, 2025-->
+
+#### Fixed issues
+
+- Support connecting to harness proxy for db devops deployments. Note that this is feature is in beta. [PL-65095]
+
+### Version 25.08.86600 <!--Aug 26, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where deployments could stuck if the skip instance termination flag was enabled and the instance refresh was canceled or failed. [CDS-113194]
+- Resolved trigger failures for GitHub push events with `changedFiles` condition when using merge queue. [PIPE-29083]
 
 ### Version 25.05.85807 <!--Aug 20, 2025-->
 
@@ -134,13 +169,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Fixed issues
 
-- Improved log-streaming performance while dispatching the logs. (CDS-111776)
+- Improved log-streaming performance while dispatching the logs. [CDS-111776]
 
 ### Version 25.07.86301 <!-- Jul 30, 2025 -->
 
 #### Fixed issues
 
-- Customers can now use Bitbucket Cloud API authentication in IDP 2.0, IDP 1.0, IDP Git Sync, and IDP Scorecards. (IDP-6077)
+- Customers can now use Bitbucket Cloud API authentication in IDP 2.0, IDP 1.0, IDP Git Sync, and IDP Scorecards. [IDP-6077]
 
 ### Version 25.07.86300 <!--Jul 16 2025-->
 
@@ -152,45 +187,45 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Fixed issues
 
-- Fix for Dynatrace connector URL validation for API Token flow. (CDS-112199)
+- Fix for Dynatrace connector URL validation for API Token flow. [CDS-112199]
 
 ### Version 25.06.86203 <!-- Jul 14, 2025 -->
 
 #### Fixed issues
 
-- Fix for IDP git integration and catalog flow not working with Github Enterprise GithubApp Authentication mode. (IDP-5945)
+- Fix for IDP git integration and catalog flow not working with Github Enterprise GithubApp Authentication mode. [IDP-5945]
 
 ### Version 25.06.86004 <!-- Jul 11, 2025 -->
 
 #### Fixed issues
 
-- Added debug logs to CI K8 pod cleanup flow (CI-17241)
+- Added debug logs to CI K8 pod cleanup flow [CI-17241]
 
 ### Version 25.04.85707 <!-- Jul 08, 2025 -->
 
 #### Fixed issues
 
-- Improved log-streaming performance while dispatching the logs. (CDS-111776)
+- Improved log-streaming performance while dispatching the logs. [CDS-111776]
   
 ### Version 25.06.86105 <!-- Jul 08, 2025 -->
 
 #### Fixed issues
 
-- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. (CDS-111916)
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. [CDS-111916]
 
 ### Version 25.06.86203 <!-- Jul 08, 2025 -->
 
 #### Fixed issues
 
-- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. (CDS-111916)
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. [CDS-111916]
 
 ### Version 25.06.86202 <!-- Jul 02, 2025 -->
 
 #### Fixed issues
 
-- Improved Kubernetes Manifest Logging: Large manifest YAMLs are now split into smaller chunks by individual resources to prevent log overload and improve readability. (CDS-111820)
+- Improved Kubernetes Manifest Logging: Large manifest YAMLs are now split into smaller chunks by individual resources to prevent log overload and improve readability. [CDS-111820]
 
-- Improved GitHub Enterprise support in GitOps pipelines by fixing hardcoded URLs and adding delegate access checks for PR merge steps. (CDS-111758)
+- Improved GitHub Enterprise support in GitOps pipelines by fixing hardcoded URLs and adding delegate access checks for PR merge steps. [CDS-111758]
 
 #### New features and enhancements
 
@@ -312,7 +347,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Added Nullchecks to handle errors for customers using API token for dynatrace connectors. (CDS-109040)
+- Added Nullchecks to handle errors for customers using API token for dynatrace connectors. [CDS-109040]
 
 ### Version 25.02.85306 <!-- April 10, 2025-->
 
@@ -423,7 +458,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Fixed a bug where socket files during git operations were not cleaned. (PIPE-24724)
+- Fixed a bug where socket files during git operations were not cleaned. [PIPE-24724]
 
 ### Version 25.01.85000 <!-- January 28, 2025 -->
 
@@ -435,14 +470,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Add support for Incomplete Responses from New Relic during verify step execution. (CDS-105146)
+- Add support for Incomplete Responses from New Relic during verify step execution. [CDS-105146]
 
 ### Version 25.01.84800 <!-- January 10, 2025 -->
 
 #### New features and enhancements
 
 :::info 
-Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` (PL-58376)
+Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` [PL-58376]
 :::
 
 - NG Immutable Delegates no longer send the profileId parameter in their requests. (PL-55697)
@@ -1935,7 +1970,7 @@ Harness NextGen release 79516 includes the following changes for the Harness Del
 
   To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
 
-  For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
+  For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email-step/).
 
 - Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
 
@@ -2370,3 +2405,11 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 #### New features and enhancements
 - Added support for [automatic upgrades](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#docker-delegate) for Docker delegates brought up using the `docker run` command. [PL-41879]
 
+## Delegate Terraform release notes
+
+## August 2025
+
+### Version 0.38.6
+
+#### New features and enhancements
+- Introduced a new update method in Terraform to revoke delegate tokens. The recommended approach is to update the `token_status` field to "REVOKED", which will trigger the revocation process. [PL-64678]

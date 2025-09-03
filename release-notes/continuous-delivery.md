@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-8-20T10:00:00
+date: 2025-8-27T10:00:00
 sidebar_position: 8
 ---
 
@@ -55,9 +55,41 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## August 2025
 
+### Version 1.103.XX
+
+#### New Features and Enhancements
+
+- Added a new account-level setting `enable_signed_commit_for_github` to control automatic commit signing when using GitHub App authentication. You can configure this setting under **Account Settings** → **Default Settings** → **Git Experience**.
+- You can now control the automatic cleanup behavior for failed first Helm releases with the new `skipCleanup` parameter. This will help you to:
+  - Preserve failed Helm releases for debugging and troubleshooting
+  - Retain container logs and deployment artifacts after failures
+  - Analyze root causes of deployment issues without losing critical information
+  - Improve onboarding experience for teams new to Helm deployments
+
+  Users should add the `skipCleanup: true` parameter to their Helm Deploy step configuration when they need to debug failed deployments. This parameter only affects first-time deployments (revision=1) that fail, and has no impact on successful deployments or upgrades. (**CDS-113186**)
+- Added the option to use an Access Token for API authentication in the Bitbucket Connector. **(PIPE-29237)**
+- Added a new feature to the Container step that allows users to configure resource requests (CPU and memory) directly from the UI. This provides greater flexibility for running resource-intensive tasks, such as performance tests, and ensures accurate and reliable results. **(CDS-110282)**
+- Added the ability to select user groups in email steps. (**CDS-109176**)
+
+### Behavior Changes
+
+- We will soon introduce a **feature update for Audit Trail** to ensure consistency across the audit logs.
+  - This update will **change how pipeline actions are identified**. Currently, we utilize the **Pipeline Name** to represent the **Create**, **Update**, **Delete**, and **Move Config** pipeline actions in the audit logs. In contrast, the **Pipeline Identifier** represents the **Start**, **End**, **Abort**, and **Timeout** actions.
+  - With this update, **Create**, **Update**, **Delete**, and **Move Config** actions will also be represented through the **Pipeline Identifier**. This change aligns the behavior across all the logs associated with pipeline actions in the Audit Trail, ensuring the use of a single and consistent identifier.
+  - This feature will be released by the end of September behind the feature flag `PIPE_USE_PIPELINE_IDENTIFIER_IN_AUDIT_LOGS`. If you enable this feature flag, please make sure you **update your integration points** to accommodate this change. (***PIPE-28870***)
+
+#### Fixed Issues
+
+- Fixed an issue where webhooks displayed events from repositories belonging to other projects. This occurred because events were filtered only by the webhook identifier without considering scope information, allowing different projects with the same webhook identifier to receive each other’s events. Scope-based filtering has been added to ensure events are isolated per project. (**PIPE-29270**, **ZD-90896**)  
+- Fixed an issue where parallel rollback failures for ASG deployments (under the feature flag `CDS_ASG_MULTI_DEPLOY_ROLLBACK_SUPPORT`) were logged twice when matrix strategies were applied at the stage level. The problem was caused by sweeping outputs not being copied correctly during pipeline rollback. The logic has been updated to fetch the original execution sweeping outputs to ensure consistency. (**CDS-113180**, **ZD-90321**)
+- Previously, the environment variables option for the Terraform plan step only supported expression and input. We've fixed this to now include support for runtime input as well. **(CDS-113592)**
+- Fixed an issue where the pipeline would crash during the artifact tag loading step when a user selected a service and variables through an input set. Previously, an unstable dependency array in `useModalHook` caused a continuous re-render, leading to the crash. **(ZD-91140, ZD-91421, PIPE-29340)**
+
+
+
 ### Version 1.102.XX
 
-### New Features and Enhancements
+#### New Features and Enhancements
 
 - Users can now select your Azure Cloud Provider connector to connect to the Azure Container Registry (ACR) for your Azure Function Deploy steps. (**CDS-110657**, **ZD-85163**) 
 - Harness now supports GitHub Pull Request Review as an event in webhook triggers to initiate the execution of a pipeline. This enables automatic pipeline execution when a pull request review is         submitted, edited, or dismissed. For a list of all supported events and actions, check out the [webhook triggers reference](/docs/platform/triggers/triggers-reference/#event-and-actions). (**PIPE-25264**)
@@ -4162,7 +4194,7 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
   To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
 
-  For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
+  For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email-step/).
 
   Harness Delegate version 23.06.79503 is required for this feature.
 
@@ -5997,7 +6029,7 @@ This release does not include new features.
 
   ![Deployment Type](static/adc95dc9af6b3beecc06149fc8045fd66f6ad514a37d2583addea35354643801.png)
 
-- The [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/) is sending an error even though the email is sent. (CDS-50952)
+- The [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email-step/) is sending an error even though the email is sent. (CDS-50952)
 
   In the **Email** step, when there is an invalid address in the **to** setting and a valid email in the **cc** setting, mail is sent to the cc address, but the step is marked as failed. This has been fixed. The Email step is marked as success if emails are sent to the cc address.
 

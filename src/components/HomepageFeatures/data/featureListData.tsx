@@ -51,7 +51,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ff,
     icon: "img/icon_ff.svg",
     description: <>Roll out new features progressively.</>,
-    link: "docs/category/get-started-with-feature-flags",
+    link: "docs/feature-flags/get-started/onboarding-guide",
   },
   {
     title: "Release with Feature Management & Experimentation",
@@ -79,7 +79,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ssca,
     icon: "img/icon_ssca.svg",
     description: <>Secure your software supply chain.</>,
-    link: "docs/category/get-started-with-scs",
+    link: "docs/software-supply-chain-assurance",
   },
   {
     title: "Manage Service Reliability",

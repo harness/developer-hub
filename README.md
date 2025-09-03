@@ -7,7 +7,7 @@
 ![CE](static/img/icon_ce_s.svg)
 ![AI SRE](static/img/icon-ir-s.svg)
 ![SRM](static/img/icon_srm_s.svg)
-![FF](static/img/icon_ff_s.svg)
+![FME](static/img/icon-fme-s.svg)
 ![CCM](static/img/icon_ccm_s.svg)
 ![STO](static/img/icon_sto_s.svg)
 ![SSCA](static/img/icon_ssca_s.svg)

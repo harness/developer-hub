@@ -114,7 +114,7 @@ For verification, the signed artifact is retrieved from the container registry a
 
 - Attestation provides cryptographic proof of an artifact’s origin based on how and where it was created. It captures metadata about the build environment and verifies the artifact’s integrity before it is signed. Attestation serves as a trusted statement regarding the artifact’s provenance and the conditions under which it was produced.
 
-- Signing involves applying a cryptographic signature to the artifact to ensure that the artifact has not been altered or tampered with after it was created or attested.
+- Signing involves applying a cryptographic signature to the artifact to ensure that the artifact has not been altered or tampered with after it was created.
 
 ## Rekor
 
