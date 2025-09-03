@@ -44,19 +44,25 @@ flowchart LR
     G["**Integrations**<br><br>Issue Management, Source Code Management, CI/CD, and ITSM.<br><br>*Owner: SEI Admin*<br>*Scope: Account*"] --> A
     G --> B
     G --> C
-    G --> D
     G --> F
 
-    %% Style
-    classDef account fill:#D6EAF8,stroke:#1B4F72,stroke-width:1px;
-    classDef project fill:#D5F5E3,stroke:#196F3D,stroke-width:1px;
-    classDef profiles fill:#F3E5F5,stroke:#6C3483,stroke-width:1px;
-    classDef insights fill:#D6EAF8,stroke:#1B4F72,stroke-width:2px,stroke-dasharray: 4 2;
+    %% Style Definitions (toned-down pastels)
+    classDef csvImport fill:#EAF2F8,stroke:#1B4F72,stroke-width:1px;    %% Muted blue
+    classDef developers fill:#D6EAF8,stroke:#21618C,stroke-width:1px;    %% Softer medium blue
+    classDef orgTree fill:#E8F8F5,stroke:#117864,stroke-width:1px;      %% Light teal
+    classDef teamSettings fill:#FEF9E7,stroke:#B7950B,stroke-width:1px; %% Soft muted yellow
+    classDef insights fill:#EBF5FB,stroke:#2874A6,stroke-width:2px,stroke-dasharray: 4 2; %% Very light blue, dashed
+    classDef profiles fill:#F9EBF7,stroke:#7D3C98,stroke-width:1px;     %% Soft lavender
+    classDef integrations fill:#F4F6F6,stroke:#626567,stroke-width:1px; %% Light neutral grey
 
-    class A,B,G account
-    class C,D project
-    class F profiles
+    %% Apply Styles
+    class A csvImport
+    class B developers
+    class C orgTree
+    class D teamSettings
     class E insights
+    class F profiles
+    class G integrations
 ```
 
 ### Developers
