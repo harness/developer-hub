@@ -55,11 +55,11 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## September 2025
 
-### Version 1.104.XX
+### Version 1.105.XX
 
 #### New Features and Enhancements:
 
-- Added a new account-level setting `enable_signed_commit_for_github` to control automatic commit signing when using GitHub App authentication. You can configure this setting under **Account Settings** → **Default Settings** → **Git Experience**.
+- Harness now supports a new account-level setting `enable_signed_commit_for_github` to control automatic commit signing when using GitHub App authentication. You can configure this setting under **Account Settings** → **Default Settings** → **Git Experience**.
 
 - Introduced controlled license enforcement for pipeline chaining with feature flag protection to ensure smooth rollout.  
   - **Tier-based access:** Pipeline chaining is now restricted for FREE/DEVOPS_ESSENTIAL users and fully available for ENTERPRISE users.  
@@ -69,11 +69,13 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
   - **Improved error handling:** Error messages are clear and non-stacking, guiding users to upgrade when needed.  
   - **Validation coverage:** Comprehensive checks across YAML configurations, pipeline save/update operations, and direct API calls with supporting test cases. (**PIPE-29067**)
 
-- Enhanced Git Experience for remote pipelines. Step outputs now include Git details (such as branch, SHA, or commit ID) for remote entities (Service, Infrastructure, Environment).  (**PIPE-22359**)
+- Harness enhanced Git Experience for remote pipelines. Step outputs now include Git details (such as branch, SHA, or commit ID) for remote entities (Service, Infrastructure, Environment).  (**PIPE-22359**)
 
-- Added support for Azure connectors in Terraform steps (plan, apply, destroy, etc.). (**CDS-98865**)
+- Harness now supports Azure connectors in Terraform steps (plan, apply, destroy, etc.). (**CDS-98865**)
 
-- **[BEHAVIOR CHANGE]** Introducing a new functor to enhance the [Multi Selection functionality](/docs/platform/variables-and-expressions/runtime-input-usage/#allow-multi-selection-and-single-selection) for runtime input. The new functor `.selectManyFrom()` will replace the `.allowedValues()` functor and change the pipeline runtime input behavior. (**PIPE-28993**)
+#### Behavior Changes
+
+- Introducing a new functor to enhance the [Multi Selection functionality](/docs/platform/variables-and-expressions/runtime-input-usage/#allow-multi-selection-and-single-selection) for runtime input. The new functor `.selectManyFrom()` will replace the `.allowedValues()` functor and change the pipeline runtime input behavior. (**PIPE-28993**)
   - The soon-to-be-deprecated functor `.allowedValues()` displayed identical behavior to `.selectOneFrom()`, allowing users to select a single value for runtime input. 
   - However, if the users enabled the Feature Flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, the `.allowedValues()` functor was mapped to multi-selection mode, thus allowing them to select multiple values for runtime input.
   - The upcoming feature update will enhance the capability of selecting runtime input by providing a dedicated method for each mode (Single Selection or Multi Selection). The Multi Selection mode will be mapped to the `.selectManyFrom()` functor. In contrast, the Single Selection mode will be mapped to the `.selectOneFrom()` functor, thus allowing users to select multiple values or a single value for runtime input, respectively.
@@ -87,6 +89,12 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Added support for containerless Git Clone in the MacOS Runner. Git Clone now runs on the host machine instead of containers, which helps mitigate transient clone issues and resolves problems caused by case-sensitive file renames in virtualized file systems. (**PIPE-29369**, **ZD-90900**)  
 - Fixed an issue where OIDC tokens retrieved via `<+connectorInputs.get(<+infra.connectorRef>).oidcToken>` were exposed in plain text in Shell Script and Run steps. Tokens are now masked consistently across logs, inputs, and step details, and remain usable as variables across steps without exposure. (**CDS-113288**, **ZD-90819**)  
 - Fixed an issue in Pipeline Studio where users repeatedly saw the message `Template has been changed. Update Pipeline to enable editing`. After clicking **Update Pipeline**, there was no option to save the pipeline, causing the prompt to reappear on re-entry. Users are now correctly prompted to review unsaved changes and can save the pipeline after updating. (**PIPE-29382, ZD-77991**)
+
+:::info
+
+Wondering where version 1.104.XX is? That release was rolled into 1.105.XX and upgrades will skip directly from 1.103.XX to 1.105.XX. Don't worry, you're not missing a thing!
+
+:::
 
 ## August 2025
 
@@ -105,7 +113,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Added a new feature to the Container step that allows users to configure resource requests (CPU and memory) directly from the UI. This provides greater flexibility for running resource-intensive tasks, such as performance tests, and ensures accurate and reliable results. **(CDS-110282)**
 - Added the ability to select user groups in email steps. (**CDS-109176**)
 
-### Coming Soon, Behavior Changes
+#### Upcoming Behavior Changes
 
 - We will soon introduce a **feature update for Audit Trail** to ensure consistency across the audit logs.
   - This update will **change how pipeline actions are identified**. Currently, we utilize the **Pipeline Name** to represent the **Create**, **Update**, **Delete**, and **Move Config** pipeline actions in the audit logs. In contrast, the **Pipeline Identifier** represents the **Start**, **End**, **Abort**, and **Timeout** actions.
@@ -127,7 +135,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Harness now supports GitHub Pull Request Review as an event in webhook triggers to initiate the execution of a pipeline. This enables automatic pipeline execution when a pull request review is         submitted, edited, or dismissed. For a list of all supported events and actions, check out the [webhook triggers reference](/docs/platform/triggers/triggers-reference/#event-and-actions). (**PIPE-25264**)
 - Harness now supports [notifications for trigger failures](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#select-events), allowing users to receive alerts when a trigger fails to start pipeline execution. This improves the visibility of pipeline runs that could not start due to failed triggers. This feature is currently behind feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`. Please, contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-27482**)
 
-#### Coming Soon
+#### Upcoming Behavior Changes
 
 - We are soon introducing a new functor to enhance the [Multi Selection functionality](/docs/platform/variables-and-expressions/runtime-input-usage/#allow-multi-selection-and-single-selection) for runtime input. The new functor `.selectManyFrom()` will replace the `.allowedValues()` functor and change the pipeline runtime input behavior. (***PIPE-28993***)
   - The soon-to-be-deprecated functor `.allowedValues()` displayed identical behavior to `.selectOneFrom()`, allowing users to select a single value for runtime input. 
