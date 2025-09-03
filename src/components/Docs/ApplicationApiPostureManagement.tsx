@@ -3,19 +3,16 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
-// Define the cards in "***Data.ts"
-import { useColorMode } from '@docusaurus/theme-common';
-import { docsCards } from './data/aiTestAutomationData';
-export default function AR() {
-  const { colorMode } = useColorMode();
+import { docsCards } from './data/applicationApiPostureManagement';
+export default function ApplicationApiPostureManagement() {
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
     <div className="container">
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img width={64} src={`${baseUrl}img/logo-ata.svg`} />
-            <h1>AI Test Automation</h1>
+            <img width={64} src={`${baseUrl}img/icon-adra.svg`} />
+            <h1>Application Api Posture Management </h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/kb">
@@ -29,14 +26,14 @@ export default function AR() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness AI Test Automation is a cutting-edge Generative AI-powered platform that
-              revolutionizes software quality. By eliminating the complexity of traditional test
-              automation, it empowers teams to create, execute, and maintain tests effortlessly.
-              With AI-driven automation, it accelerates development cycles, reduces maintenance
-              overhead, and ensures higher-quality software releases.
+              Application Api Posture Management is a cutting-edge Generative AI-powered platform
+              that revolutionizes software quality. By eliminating the complexity of traditional
+              test automation, it empowers teams to create, execute, and maintain tests
+              effortlessly. With AI-driven automation, it accelerates development cycles, reduces
+              maintenance overhead, and ensures higher-quality software releases.
             </p>
             <p>
-              <b> How Harness AI Test Automation Transforms Software Testing: </b>
+              <b> How Harness Application Api Posture Management Software Testing: </b>
             </p>
             <ul>
               <li>
@@ -56,16 +53,7 @@ export default function AR() {
               </li>
             </ul>
 
-            <div className={styles.illustrationContainer}>
-              {/* <img
-                className={styles.illustration}
-                src={
-                  colorMode === "light"
-                    ? `${baseUrl}img/cde_illustration.svg`
-                    : `${baseUrl}img/cde_illustration_dark.svg`
-                }
-              />{" "} */}
-            </div>
+            <div className={styles.illustrationContainer}></div>
           </div>
         </div>
       </div>
