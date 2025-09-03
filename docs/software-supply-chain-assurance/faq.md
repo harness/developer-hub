@@ -19,19 +19,20 @@ sidebar_label: FAQs
 
 ### 3. After we sign or attest the artifacts, do the existing .sig or .att files get overridden?
 
-- During attestation, the existing `.att` file is overwritten, while in signing the artifact, a new `.att` file is generated for every pipeline run.
+- After you attest an artifact, the `.att` file is not overwritten; each new attestation is appended to the existing file.
 
+- After you sign an artifact, the `.sig` file is not overwritten; each new signature is appended to the existing file, but only if Attach Signature to Artifact Registry is enabled.
 
 ### 4. What is the difference between Attestation and Signing?
 
 - Attestation provides cryptographic proof of an artifact’s origin based on how and where it was created. It captures metadata about the build environment and verifies the artifact’s integrity before it is signed. Attestation serves as a trusted statement regarding the artifact’s provenance and the conditions under which it was produced.
 
-- Signing involves applying a cryptographic signature to the artifact to ensure that the artifact has not been altered or tampered with after it was created or attested.
+- Signing involves applying a cryptographic signature to the artifact to ensure that the artifact has not been altered or tampered with after it was created.
 
 
 ### 5. What does Cosign do behind the scenes during the time of attestation and signing?
 
-- Behind the scenes, Cosign computes a digest (fingerprint) of the artifact, creates a digital signature or attestation using a private key or keyless certificate, and then stores that signature/attestation as an OCI artifact in the registry. It also records the event in Rekor’s transparency log (for keyless signing), ensuring the artifact’s authenticity, integrity, and provenance can later be verified.
+- Behind the scenes, Cosign computes a digest (fingerprint) of the artifact, creates a digital signature or attestation using a private key, and then stores that signature/attestation as an OCI artifact in the registry. It also records the event in Rekor’s transparency log (for keyless signing), ensuring the artifact’s authenticity, integrity, and provenance can later be verified.
 
 ### 6. How does the SLSA/SBOM verification steps identify the appropriate attestation file from the artifact registry?
 
@@ -40,7 +41,7 @@ sidebar_label: FAQs
 
 ### 7. What are the cosign key types do you support?
 
-- Harness SCS supports Cosign key types `ecdsa-p256` and `rsa`.
+- Harness SCS supports Cosign key type `ecdsa-p256`.
 
 ### 8.  How to enable the rekor logs in the Artifact Signing step ?
 
@@ -55,28 +56,11 @@ sidebar_label: FAQs
 - Yes, Harness SCS supports SMP. Please refer the [docs](/docs/software-supply-chain-assurance/ssca-supported#scs-on-harness-self-managed-enterprise-edition-smp) to see all the features that SCS supports on SMP.
 
 
-### 2. Can we achieve SLSA Level 3 Compliance in SMP?
-
-- SLSA Level 3 requires a trusted, hosted build infrastructure. Harness provides this infrastructure in its Harness cloud SaaS environment, not in SMP. As a result, full SLSA level-3 compliance is not achievable on SMP unless if you follow the below requirements.
-
-### SLSA Level 3 Compliance Checklist (SMP)
-
-| Requirement                        | How SMP Addresses It |
-|-----------------------------------|-----------------------|
-| **Isolated build environment**    | Run delegate in dedicated, isolated cluster |
-| **Verified build inputs**         | Use signed and vulnerability-scanned delegate/images only |
-| **Least privilege access**        | Enforce RBAC and Pod Security Standards (no cluster-admin, no privileged pods) |
-| **Controlled network access**     | Apply network policies to restrict pod-to-pod and external traffic |
-| **Secure secrets management**     | Store secrets in Vault, KMS, or another secure store |
-| **Reproducible builds**           | Pin versions, avoid mutable tags like `latest` |
-| **Strong identity & access**      | Enforce SSO, MFA, and role-based access control |
-| **Immutable provenance**          | Capture and store build attestations for artifacts |
-
-### 3. How do I verify that all required SCS microservices are running on SMP?
+### 2. How do I verify that all required SCS microservices are running on SMP?
 
 - Once you run this command, `kubectl get pods -n <your-namespace>`.  You should see both the `ssca-manager` and `ssca-ui` pods running.
 
-### 4. Where are my uploaded SBOMs and artifact signing signatures stored?
+### 3. Where are my uploaded SBOMs and artifact signing signatures stored?
 
 
 - First, you need to setup the minio: 
@@ -92,7 +76,7 @@ if not then create it with these command
 
 - Once mc is installed, create the bucket using the command `mb myminio/sbom-store`
 
-### 5. Installed SMP via Harness Helm charts, How do I add other modules?
+### 4. Installed SMP via Harness Helm charts, How do I add other modules?
 
 - The Harness Helm chart installs only the core platform components. To add other modules (like SCS, STO, etc.), you need to edit the `override.yaml` file and enable them explicitly.
 
