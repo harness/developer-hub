@@ -1129,7 +1129,12 @@ The current set of well-known and common values for this field is:
 
 #### Spec owner
 
-In the Harness Internal Developer Portal, the owner of a component is identified by the [Harness User Group ID](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups). This User Group ID represents the collective entity that holds ultimate responsibility for the component and possesses the authority and capability to develop and maintain it. Should any issues arise or if there are requests for features, this User Group will serve as the primary point of contact. The primary purpose of this field in the Harness IDP is for display, ensuring that individuals accessing catalog items can easily identify the responsible User Group for a given component.
+In the Harness Internal Developer Portal, the owner of a component can be identified by either:
+
+* **Platform User Group ID**: The [Harness User Group ID](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) for groups synced from identity providers
+* **Custom User Group** [IDP 2.0]: A [Custom User Group](/docs/internal-developer-portal/catalog/user-group-entity.md) created directly within IDP as a first-class catalog entity
+
+In both cases, this User Group represents the collective entity that holds ultimate responsibility for the component and possesses the authority and capability to develop and maintain it. Should any issues arise or if there are requests for features, this User Group will serve as the primary point of contact. The primary purpose of this field in the Harness IDP is for display, ensuring that individuals accessing catalog items can easily identify the responsible User Group for a given component.
 
 <details>
 <summary>How to get the Harness User Group ID</summary>

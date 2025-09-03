@@ -21,50 +21,8 @@ tags:
   - Software Organization
   - Developer Experience
 ---
-<!-- Perfect 👌 Let’s lay down the section headings first, so you have a clear skeleton before we start fleshing things out. Based on your three inputs, here’s a curated doc structure that balances **conceptual + setup**:
 
----
-
-### Draft Headings for the Doc
-
-1. **Executive Summary**
-2. **Conceptual Overview**
-
-   * What Are Custom User Groups
-   * Why They Matter in IDP 2.0
-   * Key Differentiators from Platform User Groups
-3. **Architecture and Relationships**
-
-   * Entity YAML Definition
-   * Parent and Child Group Relationships
-   * Metadata and Profiles
-   * Conflict Resolution Model
-4. **Setup and Configuration**
-
-   * Creating a Custom User Group via UI
-   * Defining Groups via YAML
-   * Assigning Members and Parents
-   * Using Groups for Ownership
-5. **User Experience Notes**
-
-   * Catalog UI Behavior
-   * Graph Visualization
-   * Known UX Feedback and Planned Enhancements
-6. **Examples**
-
-   * Minimal Group Definition
-   * Nested Group Example
-   * Custom Metadata Example
-7. **Limitations and Out of Scope**
-8. **Future Considerations**
-9. **References and Links**
-
----
-
-👉 Does this outline feel right to you, or would you like me to adjust the flow (for example, merging “Examples” into “Setup” or moving “User Experience Notes” under “Conceptual Overview”)?
- -->
-
- # Custom User Group Entity
+# Custom User Group Entity
 
 Custom User Groups in Harness IDP extend the catalog model to include organizational teams and hierarchies as **first-class entities**. These groups allow companies to represent real-world structures such as teams, departments, or cross-functional squads, directly inside the developer portal.
 
@@ -97,11 +55,11 @@ insert image here of conceptual diagram showing platform user groups vs custom u
 * This ensures invested effort in creating and enriching groups inside IDP is preserved.
 
 <!-- insert image here of IDP catalog page showing a group profile card with metadata and members -->
-
+![user-group-overview](./static/user-group-overview.png)
 
 ## Creating Custom User Groups
 
-
+![create-usergroup](./static/create-usergroup.png)
 There are two ways to create a group:
 
 1. **Through the UI** – A guided creation page in the IDP Catalog allows platform engineers or admins to define groups with fields such as members, parent groups, and metadata. Members and parent groups can be added through searchable dropdowns that surface both users and groups.
@@ -134,6 +92,10 @@ metadata:
 
 This example defines a **QA DevX** team, scoped at the account level, with two members, a parent group (`idp_team`), and rich metadata including tags and a description.
 
+:::note 
+At present, the User Group entity can only be created at the account level.
+:::
+
 #### Key Attributes in Group YAML
 
 * **apiVersion / kind** – Always `harness.io/v1` and `Group`
@@ -148,6 +110,9 @@ This example defines a **QA DevX** team, scoped at the account level, with two m
 Groups can be created with **zero members**, making it possible to scaffold team structures first and populate them later.-
 
 ## Relationships and Hierarchies
+
+
+![child-parent](./static/child-parent.png)
 
 
 ### Parent and Child Groups
@@ -180,7 +145,6 @@ In this setup:
 
 This ensures that users see a **two-way relationship** in the Catalog Graph without having to manually declare `children`.
 
-<!-- * insert image here of catalog graph showing parent and child groups -->
 
 ### User Relationships
 
@@ -225,7 +189,6 @@ This results in:
 
 On the service’s Catalog page, the owner group is prominently displayed, making accountability clear.
 
-<!-- * insert image here of ownership card showing group owner -->
 :::info User Group Conflict Resolution
 Harness IDP allows two sources of User Groups to coexist in the catalog:
 
@@ -259,7 +222,7 @@ Opening a group shows a detailed **Overview** page:
   * For example, the **QA DevX** group shows its parent **IDP Team**, two members, and a child group **Dev 1 eng**.
 * **Members Section**: Lists all the individual users associated with the group, along with their identifiers and contact details.
 
-<!-- `insert image here of QA DevX Overview page with relations graph` -->
+![overview](./static/overview.png)
 
 This layout makes it easy for developers, platform engineers, and admins to understand the context of a group at a glance and explore connected entities with just a click.
 
@@ -303,14 +266,18 @@ This metadata can be surfaced in **catalog cards**, **dashboards**, and **report
 For example: a sales engineer could quickly find the right **geo-aligned team**, or a developer could identify the **team lead** directly from the group’s catalog page.
 
 
+
 ## Configuring the Custom Group Layout in Group Entities
 
 By default, IDP provides a standard view for all **Group entities**, showing the profile, members, and graph. However, administrators can customize the layout to highlight the metadata that matters most to their organization.
+
 
 You can configure layouts from:
 `Admin → Layout → Group Entities → Custom Group`
 
 This allows you to define what cards and panels appear on the group’s entity page. For example, you might want to show the **team lead** or **region** metadata prominently, alongside the member list and hierarchy graph.
+
+![layout-usergroup](./static/layout-usergroup.png)
 
 Example configuration:
 
