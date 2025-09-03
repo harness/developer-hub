@@ -1979,6 +1979,7 @@ const sidebars: SidebarsConfig = {
       className: "horizontal-bar",
     },
     "software-supply-chain-assurance/ssca-supported",
+    "software-supply-chain-assurance/faq",
      
     {
       type: "category",
