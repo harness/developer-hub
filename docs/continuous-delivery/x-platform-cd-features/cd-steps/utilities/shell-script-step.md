@@ -383,7 +383,7 @@ If you need quotes around the [Harness variable expressions](/docs/platform/vari
 
 If you use [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
 
-### Accessing AWS and GPC OIDC Tokens from Connectors in Shell Scripts
+### Accessing AWS and GCP OIDC Tokens from Connectors in Shell Scripts
 
 In cases where native CD steps do not support certain use cases (e.g., custom infrastructure provisioning, scripting-based deployments), you can programmatically retrieve an OIDC token from the Infrastructure connector or any scoped connector, and use it in your script to authenticate with **AWS** or **GCP**.
 

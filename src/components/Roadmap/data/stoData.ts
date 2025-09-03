@@ -15,11 +15,6 @@ export const StoData: Horizon = {
         description: "Ability to see base image vs. app layer vulnerabilities and govern pipelines.",
       },
       {
-        tag: [{ value: "Visibility" }, { value: "AppSec" }],
-        title: "Issues List - Project",
-        description: "Centralized, prioritized vulnerability list for AppSec persona with ticket creation for tracking at Project scope.",
-      },
-      {
         tag: [{ value: "Integration" }, { value: "Sonatype"}],
         title: "Sonatype Integration",
         description: "Native integration with Sonatype Nexus IQ Server and Nexus Repository.",
@@ -88,11 +83,6 @@ export const StoData: Horizon = {
         tag: [{ value: "EPSS" }],
         title: "Exploit Protection Scoring System (EPSS)",
         description: "Provide EPSS score in addition to CVSS score for better vulnerability prioritization.",
-      },
-      {
-        tag: [{ value: "Cross Module" }],
-        title: "Native support in IDP",
-        description: "Native STO support via the Harness IDP module score-cards.",
       },
       {
         tag: [{ value: "Visibility" }, { value: "Platform" }],
@@ -165,6 +155,18 @@ export const StoData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Visibility" }, { value: "AppSec" }],
+        title: "Issues List - Project",
+        description: "Centralized, prioritized vulnerability list for AppSec persona with ticket creation for tracking at Project scope.",
+        link: "https://developer.harness.io/docs/security-testing-orchestration/view-security-test-results/issues"
+      },
+      {
+        tag: [{ value: "Cross Module" }],
+        title: "Native support in IDP",
+        description: "Native STO support via the Harness IDP module score-cards.",
+        link: "https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/sto-integration/"
+      },
       {
         tag: [{ value: "RBAC" }],
         title: "STO support in Harness Resource Group",

@@ -10,8 +10,8 @@ The [Harness Code Repository module](/docs/code-repository/code-supported.md) (C
 
 ## Get started
 
-* [Supported features and functionality](../code-supported.md)
-* [Onboarding guide](./onboarding-guide.md)
+- [Supported features and functionality](../code-supported.md)
+- [Get Started with Harness Code](./onboarding-guide.md)
 
 ## Harness Code API reference
 
