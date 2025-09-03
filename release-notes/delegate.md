@@ -23,15 +23,16 @@ These release notes describe recent changes to Harness Delegate.
 
 ## Important feature change notice
 
-:::danger Delegate token revocation and deletion in Terraform  (Effective October 13, 2025)
+:::danger Delegate token revocation and deletion in Terraform  (Effective October 13, 2025 & Terraform version 0.38.7)
 
 We have introduced a new argument `token_status`, for managing Delegate tokens in Terraform:
 - **Now available**: Set `token_status = "REVOKED"` to revoke a Delegate token.
 - **Current behavior**: Removing the Delegate token resource revokes the token.
-- **From October 13, 2025**:
+- **From October 13, 2025 & Terraform version 0.38.7**:
   - Use `token_status = "REVOKED"` to revoke tokens.
   - Removing the resource will **delete** the token instead of revoking it.
-**Action Required**: Update your automation to use `token_status = "REVOKED"` for revoking Delegate tokens before **October 13, 2025**.
+
+**Action Required**: Update your automation to use `token_status = "REVOKED"` for revoking Delegate tokens before the Terraform version 0.38.7 release on October 13, 2025.
 
 :::
 
