@@ -74,7 +74,43 @@ Here is an example of an S3 cache bucket policy:
     ]
 }
 ```
+### Caching with Bucket Encryption Policies
 
+If your bucket enforces an encryption policy that denies uploads without a specific encryption type, you must add a stage variable named `PLUGIN_ENCRYPTION`. Set the value to match the encryption type required by your bucket policy.
+
+For example, if your bucket policy requires AES256, set:
+
+```yaml
+variables:
+  PLUGIN_ENCRYPTION: AES256
+```
+
+```yaml
+If your bucket requires KMS encryption, set:
+
+variables:
+  PLUGIN_ENCRYPTION: aws:kms
+```
+
+You must use the exact encryption value specified in your bucket policy (for example, AES256, aws:kms, or another custom value). Using an incorrect value causes Save Cache to S3 steps to fail with **AccessDenied** errors.
+
+Here’s an example bucket policy that requires encryption:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Deny",
+    "Action": "s3:PutObject",
+    "Resource": "arn:aws:s3:::your-bucket/*",
+    "Condition": {
+      "StringNotEquals": {
+        "s3:x-amz-server-side-encryption": ["AES256", "aws:kms"]
+      }
+    }
+  }]
+}
+```
 ### Caching with non-private ACL
 
 If your bucket's ACL is set to something other than `private` (such as blank, `bucket-owner-full-control`, or something else), then you must add a [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) named `PLUGIN_ACL`. Set the value to the relevant ACL value.
