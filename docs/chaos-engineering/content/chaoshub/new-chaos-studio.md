@@ -24,9 +24,22 @@ Project Level ChaosHubs are scoped to individual projects, providing teams with 
 
 ---
 
+## Organization Level ChaosHub
+
+Organization Level ChaosHubs are available across all projects within a specific Harness organization, providing standardization for teams within that organization.
+
+#### Creating an Organization Level ChaosHub
+
+1. Navigate to **Chaos Engineering** in your Harness account
+2. Go to **Organization Settings** → **ChaosHubs**
+3. Click **New ChaosHub**
+4. Enter the ChaosHub details and click **Create**
+
+---
+
 ## Account Level ChaosHub
 
-Account Level ChaosHubs are available across all projects within a specific Harness account, making them ideal for standardizing chaos engineering practices across multiple teams.
+Account Level ChaosHubs provide the highest scope, available across all organizations and projects within your Harness account, making them ideal for enterprise-wide chaos engineering governance and standardization.
 
 #### Creating an Account Level ChaosHub
 
@@ -40,19 +53,6 @@ Harness provides a default **Enterprise ChaosHub** at the account level, which c
 
 ![Enterprise ChaosHub](./static/new-chaos-studio/enterprise-chaos-hub.png)
 :::
-
----
-
-## Organization Level ChaosHub
-
-Organization Level ChaosHubs provide the broadest scope, available across all accounts within your Harness organization. These are perfect for enterprise-wide chaos engineering governance.
-
-#### Creating an Organization Level ChaosHub
-
-1. Navigate to **Chaos Engineering** in your Harness account
-2. Go to **Organization Settings** → **ChaosHubs**
-3. Click **New ChaosHub**
-4. Enter the ChaosHub details and click **Create**
 
 ---
 

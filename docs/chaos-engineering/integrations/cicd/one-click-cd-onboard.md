@@ -1,5 +1,5 @@
 ---
-title: One-Click Harness CD Onboarding
+title: Add Resilience Tests to Harness CD Pipeline
 sidebar_position: 8
 description: Easily add chaos engineering to your CD pipelines with auto-suggested experiments
 ---
@@ -8,7 +8,7 @@ description: Easily add chaos engineering to your CD pipelines with auto-suggest
 This feature is currently behind the `CHAOS_RESILIENCE_TESTS_TAB_ENABLED` feature flag. Contact your Harness support representative to enable this feature for your account.
 :::
 
-# One-Click Harness CD Onboarding
+# Add Resilience Tests to Harness CD Pipeline
 
 The One-Click Harness CD Onboarding feature makes it incredibly easy for Harness CD customers to add resilience testing to their existing pipelines with just one click. The system automatically analyzes your cluster, identifies deployed services, determines appropriate chaos experiments for each service, creates chaos steps with the exact parameters needed, and integrates them directly into your CD pipeline.
 
@@ -30,7 +30,7 @@ Before using One-Click CD Onboarding, ensure you have:
 
 ## Getting Started
 
-1. Navigate to **Harness CD module** and click on **Pipelines**
+<!-- 1. Navigate to **Harness CD module** and click on **Pipelines**
 
       ![Navigate to Pipelines](./static/one-click-cd/navigate-to-pipelines.png)
 
@@ -38,12 +38,15 @@ Before using One-Click CD Onboarding, ensure you have:
 
       ![Navigate to Pipelines](./static/one-click-cd/no-chaos-step.png)
 
-3. Click on **Run** to run that pipeline.
-4. Go to **Resilience Tests** tab and click on **Add Resilience Tests to this Pipeline**.
+3. Click on **Run** to run that pipeline. -->
+
+1. Navigate to **Execution History** of your pipeline.
+
+2. Go to **Resilience Tests** tab of your pipeline and click on **Add Resilience Tests to this Pipeline**.
 
       ![Add Resilience Tests to Pipeline](./static/one-click-cd/add-resilience-test.png)
 
-5. The system will automatically perform the following workflow:
+3. The system will automatically perform the following workflow:
    - **Check Infrastructure**: Verifies if chaos experiments are already available for your infrastructure
    - **Auto-Discovery**: If not chaos-enabled, the system discovers services and creates chaos experiments for the infrastructure
    - **Create Custom Stage**: Automatically creates a new "Resilience Tests" stage in your pipeline
@@ -51,7 +54,7 @@ Before using One-Click CD Onboarding, ensure you have:
 
       ![Add Resilience Tests to Pipeline](./static/one-click-cd/automatic-workflow.png)
 
-6. Review the **Resilience Tests Added** summary:
+4. Review the **Resilience Tests Added** summary:
    - **Pipeline**: Shows which pipeline the tests were added to (e.g., "cd-deployment - test")
    - **Resilience Tests**: Lists the specific chaos experiments created (e.g., "nginx-deployment-pod-delete-vhf7p")
    - **Targeted Service**: Shows the service being tested (e.g., "nginx-deployment")
@@ -60,7 +63,7 @@ Before using One-Click CD Onboarding, ensure you have:
 
       ![Resilience Tests Added](./static/one-click-cd/view-in-pipeline.png)
 
-7. **Run the Updated Pipeline**:
+5. **Run the Updated Pipeline**:
    - You'll now see your pipeline with the new **Resilience Testing** stage automatically added between your deployment stages
    - The pipeline shows the complete flow: deployment → resilience testing → additional stages
    - Click the **Run** button to execute the pipeline with chaos experiments included
@@ -71,9 +74,12 @@ Before using One-Click CD Onboarding, ensure you have:
 
 ## Next Steps
 
-After successful onboarding:
+After successful onboarding, enhance your chaos engineering practice:
 
-- [Configure Advanced Deployment Strategies](/docs/continuous-delivery/deploy-srv/deployment-concepts/deployment-types/deployment-concepts-overview)
-- [Set Up GitOps Workflows](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics)
-- [Implement Policy as Code](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview)
-- [Explore Infrastructure as Code](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-how-tos)
+### Chaos Engineering
+- [Create Custom Chaos Experiments](/docs/chaos-engineering/guides/experiments#newchaosstudio) - Build experiments tailored to your specific failure scenarios
+- [Explore Chaos Faults](/docs/chaos-engineering/faults/chaos-faults/) - Discover available fault types for your experiments
+- [Configure Chaos Probes](/docs/chaos-engineering/guides/probes/) - Add health checks and validation to your experiments
+- [Learn about Actions](/docs/chaos-engineering/guides/actions/) - Execute custom operations, delays, and scripts during experiments
+
+
