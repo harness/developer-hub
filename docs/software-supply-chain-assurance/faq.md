@@ -52,7 +52,7 @@ sidebar_label: FAQs
 
 ### 1. Does Harness SCS support SMP?
 
-- Yes, Harness SCS supports SMP. Please refer the [docs](docs/software-supply-chain-assurance/ssca-supported#scs-on-harness-self-managed-enterprise-edition-smp) to see all the features that SCS supports on SMP.
+- Yes, Harness SCS supports SMP. Please refer the [docs](/docs/software-supply-chain-assurance/ssca-supported#scs-on-harness-self-managed-enterprise-edition-smp) to see all the features that SCS supports on SMP.
 
 
 ### 2. Can we achieve SLSA Level 3 Compliance in SMP?
