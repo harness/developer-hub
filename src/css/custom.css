@@ -681,6 +681,21 @@ details summary::before {
 .color-opensource {
   color: var(--mod-opensource-200);
 }
+/* ========== ToC (Table of Contents) ========== */
+.table-of-contents {
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 0.05rem;
+  font-size: 0.80rem;
+  margin-bottom: 0.5rem;
+}
+
+.table-of-contents strong {
+  display: block;
+  margin-bottom: 0.05rem;
+  color: #111827;
+  font-weight: 600;
+}
 
 .table-of-contents ul li span[class*='color-'] {
   color: unset;
@@ -692,6 +707,21 @@ details summary::before {
 
 .theme-doc-markdown h3 > img {
   margin-right: 0.2em;
+}
+
+/* A Title to ToC */
+.theme-doc-toc-desktop {
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.theme-doc-toc-desktop:before {
+  content: "On this page";
+  font-weight: 600;
+  display: block;
+  color: #1f2937;
+  margin-bottom: 0.01rem;
 }
 
 /* hide the algolia logo
