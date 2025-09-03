@@ -2,31 +2,31 @@
   {
     "flagKey": "new-dashboard-ui",
     "description": "Enables the new dashboard user interface for all users.",
-    "gaDate": "2025-06-01",
+    "gaDate": "2024-06-01",
     "module": "Feature Flags"
   },
   {
     "flagKey": "beta-dark-mode",
     "description": "General Availability of dark mode for all environments.",
-    "gaDate": "2025-05-15",
+    "gaDate": "2024-05-15",
     "module": "Feature Flags"
   },
   {
     "flagKey": "performance-improvements",
     "description": "Performance improvements for flag evaluation.",
-    "gaDate": "2025-07-10",
+    "gaDate": "2024-04-10",
     "module": "Feature Flags"
   },
   {
     "flagKey": "deprecated-flag-cleanup",
     "description": "Automated cleanup of deprecated flags is now GA.",
-    "gaDate": "2025-05-01",
+    "gaDate": "2024-03-01",
     "module": "Feature Flags"
   },
   {
     "flagKey": "multi-var-support",
     "description": "Support for multiple variables in flag rules is now GA.",
-    "gaDate": "2025-06-20",
+    "gaDate": "2024-02-20",
     "module": "Feature Flags"
   }
 ] 

@@ -3,7 +3,7 @@ const path = require('path');
 const { Feed } = require('feed');
 
 const jsonPath = path.join(__dirname, '../feature-flags/static/ff-ga-feed.json');
-const outputPath = path.join(__dirname, '../build/feature-flags/rss.xml');
+const outputPath = path.join(__dirname, '../static/feature-flags/rss.xml');
 const siteUrl = 'https://developer.harness.io';
 const baseUrl = '/';
 
