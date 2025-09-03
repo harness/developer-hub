@@ -6,6 +6,11 @@ sidebar_position: 3
 redirect_from: 
 
 - /docs/software-supply-chain-assurance/remediation-tracker/track-remediation-progress
+
+tags:
+  - harness-scs 
+  - track-remediation
+  - open-source-management
 ---
 
 # Track Remediation Progress

@@ -2,6 +2,12 @@
 title: Create SLSA policies
 description: Create SLSA policies using OPA.
 sidebar_position: 40
+
+tags:
+  - harness-scs 
+  - create-slsa-policies
+  - artifact-security
+  - slsa 
 ---
 
 
