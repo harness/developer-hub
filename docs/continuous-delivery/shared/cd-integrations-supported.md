@@ -675,7 +675,7 @@ Harness also supports Terraform Cloud and Enterprise.
   - [Use the Command step to download or copy artifacts and configs, or run scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step)
   - [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances)
   - [Wait step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/wait-step)
-  - [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step)
+  - [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email-step)
   - [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors)
 - **Build:**
   - [Background step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step)

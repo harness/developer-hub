@@ -240,6 +240,10 @@ const config: Config = {
               to: 'university/continuous-delivery',
             },
             {
+              label: 'Database DevOps',
+              to: 'university/database-devops',
+            },
+            {
               label: 'Infrastructure as Code Management',
               to: 'university/iacm',
             },
