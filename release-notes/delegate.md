@@ -23,6 +23,19 @@ These release notes describe recent changes to Harness Delegate.
 
 ## Important feature change notice
 
+:::danger Delegate token revocation and deletion in Terraform  (Effective October 13, 2025 & Terraform version 0.38.7)
+
+We have introduced a new argument `token_status`, for managing Delegate tokens in Terraform:
+- **Now available**: Set `token_status = "REVOKED"` to revoke a Delegate token.
+- **Current behavior**: Removing the Delegate token resource revokes the token.
+- **From October 13, 2025 & Terraform version 0.38.7**:
+  - Use `token_status = "REVOKED"` to revoke tokens.
+  - Removing the resource will **delete** the token instead of revoking it.
+
+**Action Required**: Update your automation to use `token_status = "REVOKED"` for revoking Delegate tokens before the Terraform version 0.38.7 release on October 13, 2025.
+
+:::
+
 :::info Delegate FIPS-compliant images (Only for SMP)
 
 Harness delegate now offers FIPS (Federal Information Processing Standard) compliant images compatible only with [FIPS Self-Managed Platform](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview). This is available starting Delegate version: [25.07.86300](/release-notes/delegate#version-250786300-).
