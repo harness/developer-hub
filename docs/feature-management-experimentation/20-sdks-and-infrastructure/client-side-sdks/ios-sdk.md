@@ -976,4 +976,4 @@ Value of type 'SplitClientProtocol' has no member 'track'
 
 This error usually occurs because the iOS SDK version used is older than 1.3.0, which did not include the `track` method.
 
-Update the iOS SDK to the latest version via CocoaPods. 
+Update the iOS SDK to the latest version via CocoaPods.
