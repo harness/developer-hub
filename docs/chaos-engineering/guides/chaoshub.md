@@ -25,10 +25,3 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
   }}
   toc = {toc}
 />
-
-## Related Topics
-
-- [Connect to ChaosHub](/docs/chaos-engineering/guides/chaoshubs/add-chaos-hub) - Learn how to add custom ChaosHubs
-- [Manage ChaosHub](/docs/chaos-engineering/guides/chaoshubs/manage-hub) - Discover how to manage your ChaosHubs  
-- [Chaos Hub Scopes](/docs/chaos-engineering/guides/chaoshubs/chaos-hub-scopes) - Understand different scopes for ChaosHubs
-- [Chaos Experiments](/docs/chaos-engineering/guides/experiments) - Create and run chaos experiments using ChaosHub templates
