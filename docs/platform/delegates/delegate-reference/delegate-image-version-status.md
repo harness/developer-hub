@@ -4,61 +4,62 @@ description: This topic lists delegate image versions and their support status.
 sidebar_position: 1
 ---
 
-This topic lists supported delegate images and their status. Five months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). If delegates are past their EOS date, Harness does not support them. For more information, go to [Delegate expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-policy).
+This document provides delegate image version information and support lifecycle details. Delegate images have a defined support lifecycle: End of Support (EOS) occurs 5 months after release, and End of Life (EOL) occurs 8 months after release.
 
-## Delegate support status definitions
+:::warning
+Delegates past their EOS date are not supported by Harness. Upgrade your delegates before they reach EOS to avoid service disruptions.
+:::
 
-### End of support (EOS)
+For complete upgrade procedures, see [Delegate expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-policy).
 
-EOS means the following:
+## Support lifecycle definitions
 
-- Harness Support will no longer accept support requests for the delegate in both Harness FirstGen and Harness NextGen.
+### End of Support (EOS) - 5 months after release
 
-- Security fixes will still be addressed.
+When a delegate reaches EOS:
 
-- Product defects will not be addressed.
+- Harness Support no longer accepts support requests for the delegate
+- Security fixes are still provided
+- Product defects are not addressed
+- Expired delegates may not function correctly
+- Support will require delegate upgrades for any issues
 
-- If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
+### End of Life (EOL) - 8 months after release
 
-### End of life (EOL)
+When a delegate reaches EOL:
 
-An image reaches end of life 8 months after its version month. After this point, the image will no longer be available or maintained.
+- The image is no longer available or maintained
+- No support or fixes are provided
 
-## Image Lifecycle Policy
+## Version format and lifecycle calculation
 
-Each image version has a fixed lifecycle that determines how long it is supported. The lifecycle is based on the year and month encoded in the image version.
+Delegate versions follow the format: **YY.MM.XXXX**
 
-The version format is: YY.MM.XXXX
+- **YY** = Year (24 = 2024)
+- **MM** = Month (11 = November) 
+- **XXXX** = Build identifier
 
-    YY → Year (e.g., 24 = 2024) <br />
-    MM → Month (e.g., 11 = November) <br />
-    XXXX → Build identifier<br />
+### Example calculation
 
-**For Example:**
-If the image version is 24.11.84503:
+For delegate version **24.11.84503**:
 
-    Year = 2024<br />
-    Month = November<br />
-    EOS = November 2024 + 5 months → April 2025<br />
-    EOL = November 2024 + 8 months → July 2025<br />
+- **Release**: November 2024
+- **EOS**: April 2025 (November + 5 months)
+- **EOL**: July 2025 (November + 8 months)
 
-### Delegate Hotfixes
+### Hotfix policy
 
-Sometimes, a hotfix may be released within the lifecycle of an image (for example, to address a critical issue).
+Hotfixes may be released to address critical issues within an image's lifecycle.
 
-:::note Important
-Hotfixes do not extend the lifecycle of an image. The original EOS and EOL dates remain the same, regardless of when the hotfix is published.
-::: 
+:::note
+Hotfixes do not extend the original EOS and EOL dates. The lifecycle remains based on the original release month.
+:::
 
-Example:
-If the image version is 24.11.84503:
-Version month = November 2024
-    EOS = April 2025
-    EOL = July 2025
+**Example**: If version 24.11.84503 receives a hotfix in March 2025, the EOS (April 2025) and EOL (July 2025) dates remain unchanged.
 
-If a hotfix is released in March 2025, the EOS and EOL dates remain unchanged (EOS: April 2025, EOL: July 2025). This ensures lifecycle consistency across all images.    
+## Reference information
 
-Supported versions EOS and EOL are based on when the delegate image was pushed to [Harness Delegate Docker Hub](https://hub.docker.com/r/harness/delegate/tags).
+Support dates are calculated from when the delegate image was published to [Harness Delegate Docker Hub](https://hub.docker.com/r/harness/delegate/tags).
 
 | Image version | Release date      | EOS           | EOL           |
 |---------------|-------------------|---------------|---------------|
