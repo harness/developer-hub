@@ -26,6 +26,28 @@ Review the notes below for details about recent changes to Harness Internal Deve
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
 | [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         |           ⏳| ⏳          | ⏳            |
 
+### [New Feature] Iframe Embedding in Sidebar Navigation
+
+Harness IDP now supports embedding external web content directly into your sidebar navigation using iframes. This feature allows you to integrate essential resources, documentation, dashboards, and tools directly into your developer portal interface.
+
+* **External Content Integration** - Add documentation, dashboards, or any web content directly in your IDP navigation
+* **Simple YAML Configuration** - Easy to implement with standard sidebar navigation format
+
+#### Example Configuration
+
+```yaml
+- name: SidebarItem
+  type: iframe
+  props:
+    to: iframe/developer_docs
+    text: Developer docs
+    url: https://developer.harness.io/
+```
+
+![](./static/internal-developer-portal/iframe-embedd.png)
+
+[Learn more about embedding iframes in your sidebar](/docs/internal-developer-portal/layout-and-appearance/sidenav#embedding-an-iframe)
+
 ## August - [2025.08.v1]
 
 ### [New Feature] Harness IDP and Security Testing Orchestration (STO) Integration
@@ -233,27 +255,7 @@ Harness IDP now includes a native integration with Harness Feature Management & 
 
 [Learn more about the Harness FME Plugin](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme) 
 
-### [New Feature] Iframe Embedding in Sidebar Navigation
 
-Harness IDP now supports embedding external web content directly into your sidebar navigation using iframes. This feature allows you to integrate essential resources, documentation, dashboards, and tools directly into your developer portal interface.
-
-* **External Content Integration** - Add documentation, dashboards, or any web content directly in your IDP navigation
-* **Simple YAML Configuration** - Easy to implement with standard sidebar navigation format
-
-#### Example Configuration
-
-```yaml
-- name: SidebarItem
-  type: iframe
-  props:
-    to: iframe/developer_docs
-    text: Developer docs
-    url: https://developer.harness.io/
-```
-
-![](./static/internal-developer-portal/iframe-embedd.png)
-
-[Learn more about embedding iframes in your sidebar](/docs/internal-developer-portal/layout-and-appearance/sidenav#embedding-an-iframe)
 
 ### Bug Fixes and Improvements
 
