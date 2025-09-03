@@ -588,7 +588,7 @@ Known limitations
 - Cost Estimation is not yet supported in SMP.
 - Airgapped environments may require a custom step image with the Terraform binary embedded.
 
-Go to [IaCM SMP]([/docs/infra-as-code-management/manage-projects/iacm-smp](https://developer.harness.io/docs/infra-as-code-management/manage-projects/iacm-smp)) to get started.
+Go to [IaCM SMP](https://developer.harness.io/docs/infra-as-code-management/manage-projects/iacm-smp) to get started.
 
 ### Behavior Changes
 
