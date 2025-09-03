@@ -67,7 +67,7 @@ Key Notes
 | NG Manager             | HTTPS :443                                                     | SCM Service                    | `https://app.harness.io/scm/*`                 |
 | Delegate               | WSS (WebSockets over HTTPS) :443                               | Delegate Service (CG Manager)  | `wss://app.harness.io/delegate-service/*`      |
 | Delegate               | gRPC :20001                                                    | Lite Engine                    | Internal (Pod)                                 |
-| Lite Engine            | gRPC :20001                                                    | Step Container (Pods)          | Internal (Pod)                                 |
+| Lite Engine            | gRPC :20002-Range                                              | Step Container (Pods)          | Internal (Pod)                                 |
 | Step Container         | DB Driver (Postgres :5432 / Mongo :27017 / MySQL :3306 / etc.) | Target Database                | Customer DB                                    |
 | Delegate               | HTTPS :443                                                     | Git / Artifact Repositories    | External URLs                                  |
 | Delegate / Lite Engine | HTTPS :443                                                     | `googleapis.com` (Log Uploads) | External (unless disabled via account setting) |
