@@ -58,7 +58,6 @@ The video below shows how to install a delegate.
 For basic information on installing Harness Delegate, go to the following:
 
 - [Delegate installation overview](../install-delegates/overview.md)
-- [Install a legacy Kubernetes delegate](../install-delegates/install-a-kubernetes-delegate.md)
 
 For advanced installation topics, go to the following:
 

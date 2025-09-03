@@ -40,7 +40,9 @@ You can use any Docker image from any Docker registry, including Docker images f
   <figcaption>Configuring GCR Container Registry and Image settings.</figcaption>
   </figure>
 
-
+:::warning
+Google Container Registry (GCR) is being deprecated. For more details, refer to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+:::
 
 ## Shell and Command
 
@@ -303,9 +305,30 @@ Customers can now define the UID to run all policies within the pod.  Please not
 
 ## Set Container Resources
 
-Maximum resource limits for containers that clone the codebase at runtime. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+Set the resource limits and requests for the container's CPU and memory. To learn more about this, go to [Manage Resource Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container).
+
+:::info
+The ability to set resource requests is behind the feature flag `CI_SUPPORT_RESOURCE_REQUESTS`. To enable it, contact [Harness Support](mailto:support@harness.io)
+:::
+
+Define the resource limits and requests by using the units defined by Kubernetes found here: [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 In the case of utilizing a Run Step in a Step Group, please note that if you are defining resources with variables, they must be at the Stage or Pipeline level.  Step Group variables will not be evaluated at the correct time when the resource is launched. 
+
+## Hidden/Invisible Characters
+An issue customers may experience are unexplained phenomenon within their scripts due to hidden or invisible characters. These characters often appear when pasting from non-plain text resources, and can cause errors in how the script operates.   Harness has a function to display invisible characters which is enabled by default.
+
+End users should see a highlighted space within their scripts, if an invisible character is contained:
+![](./static/invisiblechr-01.png)
+
+They can then manage and see what character is contained by hovering over the highlight and selecting to `adjust settings`
+![](./static/invisiblechr-hover.png)
+
+If a selection was accidentally made, the person can then make adjustments by right-clicking within the script space and selecting the `Command Palette`.
+![](./static/invisiblechr-cmdplt.png)
+
+A dialog box will appear, allowing the user to search for the ability to toggle how the highlighting will be set.
+![](./static/invisiblechr-toggle.png)
 
 ## Advanced settings
 

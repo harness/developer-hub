@@ -5,7 +5,7 @@ sidebar_label: Prisma Cloud (formerly Twistlock) step configuration
 sidebar_position: 300
 ---
 
-<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Artifact scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#artifact-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/extraction-scans" />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
@@ -14,15 +14,15 @@ sidebar_position: 300
 
 You can scan container images and ingest results from [Prisma Cloud](https://docs.prismacloud.io/en) (formerly Twistlock).
 
-## Important notes for running Prisma Cloud scans in STO
-
+:::info
 - You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 - STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
+:::
 
 ## Prisma Cloud step settings for STO
 
@@ -37,12 +37,12 @@ The recommended workflow is to add a PrismaCloud step to a Security or Build sta
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanMode from './shared/step-palette/scan/type.md';
 
-import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeOrch  from './shared/step-palette/scan/mode/orchestration.md';
 
-import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeData from './shared/step-palette/scan/mode/extraction.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 
 
@@ -55,7 +55,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from './shared/step-palette/scan/config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -66,9 +66,9 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-import StoSettingScanType from './shared/step_palette/scan/_type.md';
-import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
-import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
+import StoSettingScanType from './shared/step-palette/scan/type.md';
+import StoSettingScanTypeRepo     from './shared/step-palette/target/type/repo.md';
+import StoSettingScanTypeCont from './shared/step-palette/target/type/image.md';
 
 
 <StoSettingScanType />
@@ -78,9 +78,9 @@ import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md'
 
 #### Target and variant detection 
 
-import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from './shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectContainer from './shared/step-palette/target/auto-detect/container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectContainer/>
@@ -89,13 +89,13 @@ import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from './shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -109,7 +109,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 #### Type 
 
 
-import StoSettingImageType from './shared/step_palette/image/_type.md';
+import StoSettingImageType from './shared/step-palette/image/type.md';
 
 
 
@@ -122,7 +122,7 @@ import StoSettingImageType from './shared/step_palette/image/_type.md';
 
 
 
-import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+import StoSettingImageDomain from './shared/step-palette/image/domain.md';
 
 
 
@@ -134,7 +134,7 @@ import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
 #### Name
 
 
-import StoSettingImageName from './shared/step_palette/image/_name.md';
+import StoSettingImageName from './shared/step-palette/image/name.md';
 
 
 
@@ -146,7 +146,7 @@ import StoSettingImageName from './shared/step_palette/image/_name.md';
 #### Tag
 
 
-import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+import StoSettingImageTag from './shared/step-palette/image/tag.md';
 
 
 
@@ -158,7 +158,7 @@ import StoSettingImageTag from './shared/step_palette/image/_tag.md';
 #### Access Id
 
 
-import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
+import StoSettingImageAccessID from './shared/step-palette/image/access-id.md';
 
 
 
@@ -170,7 +170,7 @@ import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
 #### Access Token 
 
 
-import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
+import StoSettingImageAccessToken from './shared/step-palette/image/access-token.md';
 
 
 
@@ -184,7 +184,7 @@ import StoSettingImageAccessToken from './shared/step_palette/image/_access-toke
 
 #### Domain 
 
-import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
+import StoSettingAuthDomain from './shared/step-palette/auth/domain.md';
 
 
 <StoSettingAuthDomain />
@@ -192,7 +192,7 @@ import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
 #### Access ID
 
 
-import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
+import StoSettingAuthAccessID from './shared/step-palette/auth/access-id.md';
 
 
 
@@ -203,15 +203,17 @@ import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
 
 #### Access Token
 
-
-import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
-
-
-
+import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.md';
 
 <StoSettingAuthAccessToken />
 
 ### Scan Tool
+
+#### Use Raw Scanner Severity
+
+import ScannerProvidedSeverity from './shared/use-scanner-provided-severity.md';
+
+<ScannerProvidedSeverity />
 
 #### Image Name
 
@@ -219,7 +221,7 @@ For Extraction scans, the name of the image that you want to extract from Prisma
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 
 <StoSettingIngestionFile  />
@@ -229,7 +231,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 ### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 
 
@@ -243,7 +245,7 @@ Use this field to run the [twistcli images scan binary](https://docs.paloaltonet
 
 For example, the following argument prevents the scan from publishing results to the Console:  `--publish FALSE`. 
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
@@ -251,7 +253,7 @@ import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 
 <StoSettingFailOnSeverity />
@@ -259,7 +261,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 ### Settings
 
-import StoSettingSettings from './shared/step_palette/all/_settings.md';
+import StoSettingSettings from './shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
@@ -267,14 +269,14 @@ To add labels such as `JOB_NAME` to your Prisma Cloud scans, add key-value pairs
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

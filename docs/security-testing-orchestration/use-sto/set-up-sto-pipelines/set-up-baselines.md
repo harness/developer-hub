@@ -1,7 +1,7 @@
 ---
-title: Target baselines in STO
+title: Set up target baselines in STO
 description: How to set up baselines. Every scanned target needs one.  
-sidebar_label: Target baselines
+sidebar_label: Set up Target baselines
 sidebar_position: 5
 ---
 
@@ -46,13 +46,13 @@ Every target needs a baseline to enable the full suite of STO features. Here's w
 
   - For developers, it’s critical to distinguish between security issues in the baseline vs. issues in the variant you’re working on. You want to detect and resolve issues in your downstream branch (the variant) before merging, so you don’t introduce them into the main branch (the baseline). 
 
-  - When your target has a baseline defined, the [Security Tests tab](/docs/security-testing-orchestration/dashboards/view-scan-results) divides your issues into two lists:
+  - When your target has a baseline defined, the [Vulnerabilities tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) divides your issues into two lists:
 
     - **Only in \<_target_>:\<_variant_>** Issues detected in the scanned variant only.
 
     - **Common to \<_target_>:\<_baseline_>** Issues also detected in the target baseline.
 
-  - While the **Security Tests** tab highlights downstream issues, the [STO Overview](/docs/security-testing-orchestration/dashboards/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/dashboards/security-testing-dashboard) only show baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
+  - While the **Vulnerabilities** tab highlights downstream issues, the [STO Overview](/docs/security-testing-orchestration/view-security-test-results/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/dashboards/security-testing-dashboard) only show baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
 
   - In short, baselines make it easy for developers to drill down into “shift-left” issues in the variants they're currently working on, and security personnel to monitor the security posture of production targets.
   

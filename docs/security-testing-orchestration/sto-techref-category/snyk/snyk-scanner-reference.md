@@ -7,12 +7,8 @@ redirect_from:
   - /docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
- 
-<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
+<DocsTag  text="Artifact scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#artifact-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
@@ -20,31 +16,18 @@ import TabItem from '@theme/TabItem';
 
 The Snyk step in Harness STO enables you to perform Snyk [Code](./snyk-code-scanning.md), [Open Source](./snyk-open-source.md), [Container](./snyk-open-source.md), and [IaC](./snyk-iac-scanning.md) scanning in both Orchestration and Ingestion modes of STO. This document will guide you through understanding the fields, configuring them, and providing any necessary information for setting up the step.
 
-## Important notes for running Snyk scans in STO
 
-<!--
-
-You can configure the Snyk step to [show the original CVSS score](#show-the-original-cvss-score-when-snyk-overrode-it) when a Snyk security policy overrode the score for an issue. 
-
--->
-
-### Root access requirements 
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
-
-<StoRootRequirements />
+:::info
+- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+- STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 
-### For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
+:::
 
-
-## Snyk step settings for STO
+## Snyk step settings
 
 It is recommended to add a Snyk step to the **Security** or **Build** stage and configure it as described below.
 
@@ -57,10 +40,10 @@ It is recommended to add a Snyk step to the **Security** or **Build** stage and 
 #### Scan Mode
 
 
-import StoSettingScanMode from '../shared/step_palette/scan/_type.md';
+import StoSettingScanMode from '../shared/step-palette/scan/type.md';
 
-import StoSettingScanModeOrch  from '../shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeOrch  from '../shared/step-palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from '../shared/step-palette/scan/mode/ingestion.md';
 
 
 <!-- StoSettingScanMode / -->
@@ -70,7 +53,7 @@ import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestio
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '../shared/step-palette/scan/config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -82,10 +65,10 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 
 #### Type
 
-import StoSettingScanType from '../shared/step_palette/scan/_type.md';
+import StoSettingScanType from '../shared/step-palette/scan/type.md';
 
-import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
-import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeRepo from '../shared/step-palette/target/type/repo.md';
+import StoSettingScanTypeCont from '../shared/step-palette/target/type/image.md';
 
 
 <a name="scan-type"></a>
@@ -95,9 +78,9 @@ import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md
 
 #### Target and variant detection 
 
-import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
-import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from '../shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectContainer from '../shared/step-palette/target/auto-detect/container-image.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectContainer/>
@@ -106,7 +89,7 @@ import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto
 
 #### Name 
 
-import StoSettingTargetName from '../shared/step_palette/target/_name.md';
+import StoSettingTargetName from '../shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
@@ -115,7 +98,7 @@ import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 #### Variant
 
 
-import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step-palette/target/variant.md';
 
 
 
@@ -124,7 +107,7 @@ import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 #### Workspace (_repository_)
 
 
-import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '../shared/step-palette/target/workspace.md';
 
 
 <StoSettingTargetWorkspace  />
@@ -134,28 +117,28 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 
 #### Type
 
-import StoSettingImageType from '../shared/step_palette/image/_type.md';
+import StoSettingImageType from '../shared/step-palette/image/type.md';
 
 <StoSettingImageType />
 
 
 #### Domain
 
-import StoSettingImageDomain from '../shared/step_palette/image/_domain.md';
+import StoSettingImageDomain from '../shared/step-palette/image/domain.md';
 
 <StoSettingImageDomain />
 
 
 #### Name
 
-import StoSettingImageName from '../shared/step_palette/image/_name.md';
+import StoSettingImageName from '../shared/step-palette/image/name.md';
 
 <StoSettingImageName />
 
 
 #### Tag
 
-import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
+import StoSettingImageTag from '../shared/step-palette/image/tag.md';
 
 <StoSettingImageTag />
 
@@ -165,20 +148,27 @@ import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
 
 #### Access Token (_Orchestration scans_)
 
-import StoSettingAuthAccessToken from '../shared/step_palette/auth/_access-token.md';
+import StoSettingAuthAccessToken from '../shared/step-palette/auth/access-token.md';
 
 <StoSettingAuthAccessToken />
 
+### Scan Tool
+
+#### Use Raw Scanner Severity
+
+import ScannerProvidedSeverity from '../shared/use-scanner-provided-severity.md';
+
+<ScannerProvidedSeverity />
 
 ### Ingestion File
 
-import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '../shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
 ### Log Level
 
-import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
@@ -205,16 +195,28 @@ With these flags, the Snyk step scans recursively down the repository tree to a 
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
 ### Settings
 
-import StoSettingSettings from '../shared/step_palette/all/_settings.md';
+import StoSettingSettings from '../shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
+### Additional Configuration
+
+import ScannerRefAdditionalConfigs from '../shared/additional-config.md';
+
+<ScannerRefAdditionalConfigs />
+
+
+### Advanced settings
+
+import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
+
+<ScannerRefAdvancedSettings />
 
 ## Show original issue severities overridden by Snyk security policies 
 
@@ -277,52 +279,6 @@ The formatting should contain the following:
     ]
  }
 ```
-
-
-### Enable Severity Override
-To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step or Custom Scan Step. With this setting enabled, the Snyk step processes the relevant data for issues with overridden severities. 
-
-<Tabs>
-    <TabItem value="Visual" label="Visual" default>
-      Add `ingest_tool_severity` to Snyk step keys
-      ![](../static/sto-7041-add-setting-in-visual-editor.png)
-      Add `ingest_tool_severity` to Custom Scan step keys
-      ![](./static/snyk-customstage-Ingesttoolseverity.png)
-      </TabItem>
-    <TabItem value="YAML" label="YAML">
-          **Snyk Step Declaration**
-          ``` yaml
-          - step:
-              type: Snyk
-              spec:
-                settings:
-                  ingest_tool_severity: "true"
-          ```
-          **Custom Scan Step Declaration**
-          ``` yaml
-          - step:
-              type: Security
-              spec:
-                settings:
-                  ingest_tool_severity: "true"
-          ```
-      </TabItem>
-</Tabs>
-
-
-### Additional Configuration
-
-import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
-
-<ScannerRefAdditionalConfigs />
-
-
-### Advanced settings
-
-import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
-
-<ScannerRefAdvancedSettings />
-
 
 ## Proxy settings
 

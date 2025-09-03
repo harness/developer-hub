@@ -5,7 +5,7 @@ sidebar_label: Docker Content Trust (DCT) step configuration
 sidebar_position: 150
 ---
 
-<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Artifact scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#artifact-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
@@ -18,7 +18,7 @@ You can run container image scans and ingest results from [Docker Content Trust 
 <details>
 <summary>Orchestration/extraction workflows</summary>
 
-import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+import CustomScanWorkflowRepo from './shared/custom-scan/workflow.md';
 
 <CustomScanWorkflowRepo />
 
@@ -27,7 +27,7 @@ import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
 <details>
 <summary>Ingestion workflows</summary>
 
-import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+import CustomScanWorkflowIngest from './shared/custom-scan/workflow-ingest-only.md';
 
 <CustomScanWorkflowIngest />
 
@@ -116,7 +116,7 @@ default
 ### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -136,21 +136,21 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 ### Container image
 
 
-import StoLegacyContainer  from './shared/custom-scan/_container.md';
+import StoLegacyContainer  from './shared/custom-scan/container.md';
 
 
 <StoLegacyContainer />
 
 ### Ingestion file
 
-import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
+import StoLegacyIngest from './shared/custom-scan/ingestion-file.md'; 
 
 <StoLegacyIngest />
 
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/custom-scan/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 

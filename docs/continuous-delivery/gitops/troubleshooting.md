@@ -136,6 +136,12 @@ This error occurs when an agent is unable to connect to a repo:
 
 - To manage rate limiting in GitHub, see [Enabling rate limits for Git](https://docs.github.com/en/enterprise-server@3.10/admin/configuration/configuring-user-applications-for-your-enterprise/configuring-rate-limits#enabling-rate-limits-for-git).
 
+### Error: "NOAUTH Authentication required" when the app controller is up before the redis-secret is created
+
+There is a known issue that is present in Argo when the app controller or other ArgoCD service pod is up before the redis-secret is created. Please see this Argo thread for more information: [Redis NOAUTH failures](https://github.com/argoproj/argo-helm/issues/2836#issuecomment-2636975946). This error is happening in particular when using a manifest deployment rather than a helm deployment since helm deployments have hooks to make sure that everything comes up in the right order. 
+
+The current workaround is to restart the appcontroller, agent, and any other ArgoCD service pod or agent that is failing with this error.
+
 ## Error: GitOps agent pod stuck in CrashLoopBackoff
 
 ### Issue: This is an unauthorized agent. Sleeping for 15 minutes and then shutting down, please check your settings on HarnessUI
@@ -170,3 +176,25 @@ To maintain access to the cluster secret across multiple projects, the project f
 
 2. Update Cluster Secrets to Support Multiple Projects
 - If you have cluster secrets that need to be accessed by applications across multiple projects, you will need to `unset` the **project field** in the cluster secret configuration. This ensures that the cluster secret is accessible by applications in different ArgoCD projects.
+
+## ArgoCD AppSet “Degraded” Status with Project-Scoped Repos
+
+**ArgoCD v2.x limitation**  
+This is a known, recurring issue (see GitHub issue [#21016](https://github.com/argoproj/argo-cd/issues/21016) and internal ticket **CDS-109542**). There’s no fix in ArgoCD v2.x—you’ll need to upgrade to v3.x later this quarter for the proper resolution.
+
+**Issue**  
+Your ApplicationSet stays **Degraded** and you see errors like:  
+`rpc error: code = Internal desc = unable to checkout git repo …`
+`fatal: could not read Username for 'https://github.com': terminal prompts disabled`
+
+**Details**  
+- **Expected:** Your GitOps Application should sync normally.  
+- **Observed:** Sync fails with `ApplicationGenerationFromParamsError` and authentication errors.  
+- **Impact:** You cannot deploy via GitOps.  
+- **Reproducibility:** Not a regression—this happens any time you use a project-scoped repo secret with an AppSet.  
+- **Root cause:** ArgoCD v2.x’s AppSet controller cannot authenticate when the Secret has a `data.project` field (project-scoped credentials).
+
+**Workaround**
+1. In the `harness-gitops` namespace, edit your Git repository Secret.  
+2. Remove the `data.project` key so the repo becomes cluster-scoped.  
+3. Save and allow ArgoCD to reconcile; your ApplicationSet will recover.

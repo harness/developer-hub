@@ -1,8 +1,8 @@
 ---
 title: Module Registry
 description: Learn how to register a module in Harness IaCM
-sidebar_position: 10
-sidebar_label: Register modules
+sidebar_position: 20
+sidebar_label: Register Modules
 ---
 
 import Tabs from '@theme/Tabs';
@@ -17,22 +17,18 @@ However, if you are connecting via a [delegate](https://developer.harness.io/doc
 :::
 
 ## Register a module
+
+:::important
+To register a module version, **your Git repository must have a release or tag associated with the desired module version**. Ensure you have created a tag in your Git repository before attempting to register the module in the Module Registry.
+
+Go to [Tags](/docs/code-repository/work-in-repos/tag/) for more information on tagging with Harness Code Repository.
+:::
+
 Follow the steps in the guide below to register a new module.
 
 <Tabs>
 <TabItem value="Interactive guide">
-<iframe 
-    src="https://app.tango.us/app/embed/5aa16720-f96c-44f3-9ad7-2e4dce4ad3b3" 
-    title="Register a module in Harness" 
-    style={{ minHeight: '640px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
+<DocVideo src="https://app.tango.us/app/embed/5aa16720-f96c-44f3-9ad7-2e4dce4ad3b3?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Register a module in Harness" />
 </TabItem>
 <TabItem value="Step-by-step">
     1. Login to [Harness](https://app.harness.io).
@@ -56,19 +52,8 @@ Follow the steps in the guide below to register a new module.
 
 ## Review module settings
 Harness pulls various details from your module and makes it easy to review them.
-<iframe 
-    src="https://app.tango.us/app/embed/f23cb280-5072-4622-a56b-7882cd01afff" 
-    title="Review your settings for a registered module" 
-    style={{ minHeight: '640px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
 
+<DocVideo src="https://app.tango.us/app/embed/f23cb280-5072-4622-a56b-7882cd01afff?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Review your settings for a registered module" />
 
 :::info syncing module versions
 The Sync button checks your registered module in Harness against the latest release in your repository and configured connector branch. If a newer version exists, it will sync it.

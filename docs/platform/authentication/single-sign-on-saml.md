@@ -9,10 +9,12 @@ helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
+import SCIMurl from '/docs/platform/shared/scimurl.md'
+
 Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. This document explains how to set up SAML authentication.
 
 :::info note
-If the [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/get-started/onboarding-guide) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
+If the [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/smp-overview) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
 :::
 
 ## Supported formats
@@ -40,9 +42,10 @@ For implementation details and further guidance on provisioning users with SCIM,
 
 If you provision users and groups via SCIM API, use the following settings for your SAML integration.
 
-- **SCIM connector base URL:** `https://app.harness.io/gateway/ng/api/scim/account/<YOUR_ACCOUNT_ID`
-   - Replace `YOUR_ACCOUNT_ID` with your Harness account ID.
-   The URL depends on the Harness production cluster you use: Prod1: `https://app.harness.io`, Prod2: `https://app.harness.io/gratis`, or Prod3: `https://app3.harness.io`.
+- **SCIM connector base URL:** `https://app.harness.io/gateway/ng/api/scim/account/[YOUR_ACCOUNT_ID]`. enter the appropriate URL for your cluster:
+
+<SCIMurl />
+
 - **Unique identifier:** `userName`
 - **Authentication Mode:** HTTP Header
 - **Authorization:** `<YOUR_SERVICE_ACCOUNT_TOKEN>`
@@ -120,7 +123,7 @@ Sometimes users might have mixed case email addresses in Okta. In these situatio
 
    ![](./static/single-sign-on-saml-55.png)
 
-4. On the **Configure SAML** tab, enter the Harness SAML endpoint URL in the **Single sing on URL** field. To get the SAML endpoint URL from Harness:
+4. On the **Configure SAML** tab, enter the Harness SAML endpoint URL in the **Single sign on URL** field. To get the SAML endpoint URL from Harness:
 	1. If you aren't already on the **Add SAML Provider** page in Harness, open a new browser tab and navigate there. Sign in to Harness, go to **Account Settings**, select **Authentication**, select **SAML Provider**, enter a **Name** for the SAML configuration, and then select **Okta**.
 
 	   ![](./static/single-sign-on-saml-56.png)
@@ -386,10 +389,10 @@ To set `User.Read.All` access for the application, do the following:
 
 The following App registration permissions are required to configure the optional `client-id` and `client-secret` for Harness SAML SSO with the Azure app:
 
-- `Directory.ReadWrite.All`
-- `Group.ReadWrite.All`
-- `GroupMember.ReadWrite.All`
-- `User.ReadWrite.All`
+- `Directory.Read.All`
+- `Group.Read.All`
+- `GroupMember.Read.All`
+- `User.Read.All`
 
 :::info note
 You must set the above for both Delegated permissions and Application permissions.
@@ -421,7 +424,7 @@ You must enter the **Harness SAML Endpoint URL** from Harness in your Azure app 
 Next, you will use the **SAML SSO Provider** settings in Harness to set up your Azure app **Single sign-on**.
 
 :::info note
-For [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/get-started/onboarding-guide), replace **app.harness.io** with your custom URL.
+For [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/smp-overview), replace **app.harness.io** with your custom URL.
 If you use a custom Harness subdomain in any Harness version, like **example.harness.io**, use that URL.
 :::
 
@@ -504,7 +507,7 @@ To test Azure SSO using Azure, do the following:
 
 To test Azure SSO using Harness, do the following:
 
-1. In **Harness**, in **ACCOUNT SETUP**->**Authentication**, select **Login via SAML**, to enable SAML SSO using the Azure provider.
+1. In **Harness**, in **Account Settings** → **Security and Governance** → **Authentication**, select **Login via SAML**, to enable SAML SSO using the Azure provider.
 2. Open a new Chrome Incognito window to test the SSO login using a Harness User account other than the one you are currently logged in with.
 3. Sign into Harness using one of the user account email addresses shared by Harness and Azure. When you sign into Harness, you are prompted with the Microsoft Sign in dialog.
 4. Enter the Azure user name for the user (most often, the email address), enter the Azure password, and click **Sign in**.

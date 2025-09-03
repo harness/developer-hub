@@ -5,7 +5,7 @@ sidebar_label: Nexus step configuration
 sidebar_position: 250
 ---
 
-<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview#extraction-scans-in-sto" />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
@@ -19,7 +19,7 @@ You can scan your code repositories and ingest results from [Nexus IQ](https://d
 <details>
 <summary>Orchestration/extraction workflows</summary>
 
-import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+import CustomScanWorkflowRepo from './shared/custom-scan/workflow.md';
 
 <CustomScanWorkflowRepo />
 
@@ -28,7 +28,7 @@ import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
 <details>
 <summary>Ingestion workflows</summary>
 
-import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+import CustomScanWorkflowIngest from './shared/custom-scan/workflow-ingest-only.md';
 
 <CustomScanWorkflowIngest />
 
@@ -113,7 +113,7 @@ default
 ### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -144,7 +144,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 ### Repository
 
-import StoLegacyRepo from './shared/custom-scan/_repo.md'; 
+import StoLegacyRepo from './shared/custom-scan/repo.md'; 
 
 <StoLegacyRepo />
 
@@ -254,7 +254,7 @@ product_public_id
 ### Ingestion file
 
 
-import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
+import StoLegacyIngest from './shared/custom-scan/ingestion-file.md'; 
 
 
 <StoLegacyIngest />
@@ -263,6 +263,6 @@ import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md';
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/custom-scan/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />

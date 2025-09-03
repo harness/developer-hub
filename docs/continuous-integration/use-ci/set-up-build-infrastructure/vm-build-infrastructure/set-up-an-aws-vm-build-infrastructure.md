@@ -15,7 +15,9 @@ import TabItem from '@theme/TabItem';
 
 :::warning
 
-This feature will be deprecated on May 1, 2025 and replaced with an improved VM cluster manager. If you have any questions, please contact your account representative or [Harness Support](mailto:support@harness.io).
+This feature will be deprecated on Jan 31, 2026 and replaced with an improved VM cluster manager. 
+We’ll share more information closer to launch, and customers will be given ample time and support to transition before the deprecation takes effect.
+If you have any questions, please contact your account representative or [Harness Support](mailto:support@harness.io).
 
 :::
 
@@ -61,10 +63,10 @@ AWS Spot instances, of any kind, are not supported to use as self-managed build 
 
 ### Configure authentication for the EC2 instance
 
-The recommended authentication method is an [IAM role](https://console.aws.amazon.com/iamv2/home#/users) with an access key and secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)). You can use an access key and secret without an IAM role, but this is not recommended for security reasons.
+The recommended authentication method is an [IAM role](https://console.aws.amazon.com/iamv2/home#/users) on the VM instance, but using IAM user and access key and secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)) is also supported. It is best practice to use an IAM role over an access key and secret for security reasons.
 
 1. Create or select an IAM role for the primary VM instance. This IAM role must have CRUD permissions on EC2. This role provides the runner with temporary security credentials to create VMs and manage the build pool. For details, go to the Amazon documentation on [AmazonEC2FullAccess Managed policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2FullAccess.html).
-2. If you plan to run Windows builds, go to the AWS documentation for [additional configuration for Windows IAM roles for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#windows_task_IAM_roles). This additional configuration is required because containers running on Windows can't directly access the IAM profile on the host. For example, you must add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret.
+2. If you plan to run Windows builds, You must add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret.
 3. If you haven't done so already, create an access key and secret for the IAM role.
 
 ### Launch the EC2 instance
@@ -82,7 +84,10 @@ The recommended authentication method is an [IAM role](https://console.aws.amazo
 2. In the Security Group's **Inbound Rules**, allow ingress on port 9079. This is required for security groups within the VPC.
 3. In the EC2 console, go to your EC2 VM instance's **Inbound Rules**, and allow ingress on port 22.
 4. If you want to run Windows builds and be able to RDP into your build VMs, you must also allow ingress on port 3389.
-5. Set up VPC firewall rules for the build instances on EC2.
+5. Allow ingress rules for port 3000 as well.
+6. Outbound access to githubusercontent.com over 443, which is allowed by default in a typical security group.
+7. Outbound access to googleapis.com over 443 to ship the task logs.  Can be avoided by using the account setting "Account Settings"->"Default Settings"->"Continuous Integration->"Upload Logs via Harness".
+8. Set up VPC firewall rules for the build instances on EC2.
 
 ### Install Docker and attach IAM role
 
@@ -98,6 +103,15 @@ If you plan to use a custom Windows AMI in your AWS VM build farm, you must dele
 In Windows, sysprep checks if `state.run-once` exists at `C:\ProgramData\Amazon\EC2Launch\state.run-once`. If the file exists, sysprep doesn't run post-boot scripts (such as `cloudinit`, which is required for Harness VM build infrastructure). Therefore, you must delete this file from your AMI so it doesn't block the VM init script.
 
 If you get an error about an unrecognized `refreshenv` command, you might need to [install Chocolatey](https://chocolatey.org/install) and add it to `$profile` to enable the `refreshenv` command.
+
+### Environment Variables
+
+Optionally set the following environment variables:
+
+| Variable Name | Description | Default |
+| ------------- | ----------- | ------- |
+| `HEALTH_CHECK_TIMEOUT` | Integer. Set a time out (in minutes) for the health check. Works only for Mac and Linux. For example, `HEALTH_CHECK_TIMEOUT=6` would set a 6 minute timeout. | 3 |
+| `HEALTH_CHECK_WINDOWS_TIMEOUT` | Integer. Set a time out (in minutes) for the health check. Works only for Windows. For example, `HEALTH_CHECK_WINDOWS_TIMEOUT=6` would set a 6 minute timeout. | 5 |
 
 ## Configure the Drone pool on the AWS VM
 
@@ -174,10 +188,10 @@ instances:
       account:
         region: us-east-2 ## To minimize latency, use the same region as the delegate VM.
         availability_zone: us-east-2c ## To minimize latency, use the same availability zone as the delegate VM.
-        access_key_id: XXXXXXXXXXXXXXXXX
-        access_key_secret: XXXXXXXXXXXXXXXXXXX
+        access_key_id: XXXXXXXXXXXXXXXXX # Optional if using an IAM role
+        access_key_secret: XXXXXXXXXXXXXXXXXXX # Optional if using an IAM role
         key_pair_name: XXXXX
-      ami: ami-051197ce9cbb023ea
+      ami: ami-xxx  ## Ubuntu Amd64 AMI must be passed
       size: t2.nano
       iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXXXX
       network:
@@ -197,9 +211,11 @@ instances:
         access_key_id: XXXXXXXXXXXXXXXXXXXXXX
         access_key_secret: XXXXXXXXXXXXXXXXXXXXXX
         key_pair_name: XXXXX
-      ami: ami-088d5094c0da312c0
-      size: t3.large
+      ami: ami-xxx  ## Windows AMI with Docker Installed should be passed
+      size: m5.large
       hibernate: true
+      disk:
+        size: 60  ## Min Size Generally Required for Windows based AMI with Docker Installed , The size mentioned is in GBs
       network:
         security_groups:
           - sg-XXXXXXXXXXXXXX
@@ -216,15 +232,15 @@ You can configure the following settings in your `pool.yml` file. You can also l
 | `limit`                         | Integer                  | `limit: 3`                                                                         | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize.                                                                                                                                                                                                                                                                             |
 | `platform`                      | Key-value pairs, strings | Go to [platform example](#platform-example).                                       | Specify VM platform operating system (`os: linux` or `os: windows`). `arch` and `variant` are optional. `os_name: amazon-linux` is required for AL2 AMIs. The default configuration is `os: linux` and `arch: amd64`.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | `spec`                          | Key-value pairs, various | Go to [Example pool.yml](#example-poolyml) and the examples in the following rows. | Configure settings for the build VMs and AWS instance. Contains a series of individual and mapped settings, including `account`, `tags`, `ami`, `size`, `hibernate`, `iam_profile_arn`, `network`, `user_data`, `user_data_path`, and `disk`. Details about these settings are provided below.                                                                                                                                                                                                                                                                                                                                                                         |
-| `account`                       | Key-value pairs, strings | Go to [account example](#account-example).                                         | AWS account configuration, including region and access key authentication.<br/><ul><li>`region`: AWS region. To minimize latency, use the same region as the delegate VM.</li><li>`availability_zone`: AWS region availability zone. To minimize latency, use the same availability zone as the delegate VM.</li><li>`access_key_id`: The AWS access key for authentication. If using an IAM role, this is the access key associated with the IAM role.</li><li>`access_key_secret`: The secret associated with the specified `access_key_id`.</li><li>`key_pair_name`: The key pair name specified when you set up the EC2 instance. Don't include `.pem`. </li></ul> |
-| `tags`                          | Key-vale pairs, strings  | Go to [tags example](#tags-example).                                               | Optional tags to apply to the instance.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `account`                       | Key-value pairs, strings | Go to [account example](#account-example).                                         | AWS account configuration, including region and access key authentication.<br/><ul><li>`region` (required): AWS region. To minimize latency, use the same region as the delegate VM.</li><li>`availability_zone` (optional): AWS region availability zone. To minimize latency, use the same availability zone as the delegate VM.</li><li>`access_key_id`: The AWS access key for authentication. If using an IAM role, this is the access key associated with the IAM role.</li><li>`access_key_secret`: The secret associated with the specified `access_key_id`.</li><li>`key_pair_name`: The key pair name specified when you set up the EC2 instance. Don't include `.pem`. </li></ul> |
+| `tags`                          | Key-value pairs, strings  | Go to [tags example](#tags-example).                                               | Optional tags to apply to the instance.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `ami`                           | String                   | `ami: ami-092f63f22143765a3`                                                       | The AMI ID. You can use the same AMI as your EC2 instance or [search for AMIs](https://cloud-images.ubuntu.com/locator/ec2/) in your Availability Zone for supported models (Ubuntu, AWS Linux, Windows 2019+). AMI IDs differ by Availability Zone.                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `size`                          | String                   | `size: t3.large`                                                                   | The AMI size, such as `t2.nano`, `t2.micro`, `m4.large`, and so on. Make sure the size is large enough to handle your builds.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `hibernate`                     | Boolean                  | `hibernate: true`                                                                  | When set to `true` (which is the default), VMs hibernate after startup. When `false`, VMs are always in a running state. This option is supported for AWS Linux and Windows VMs. Hibernation for Ubuntu VMs is not currently supported. For more information, go to the AWS documentation on [hibernating on-demand Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html).                                                                                                                                                                                                                                                              |
 | `iam_profile_arn`               | String                   | `iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXX`                          | If using IAM roles, this is the instance profile ARN of the IAM role to apply to the build instances.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | `network`                       | Key-value pairs, various | Go to [network example](#network-example).                                         | AWS network information, including security groups. For more information on these attributes, go to the AWS documentation on [creating security groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#create-a-base-security-group).<br/><ul><li>`security_groups`: List of security group IDs as strings.</li><li>`vpc`: If using VPC, this is the VPC ID as an integer.</li><li>`vpc_security_groups`: If using VPC, this is a list of VPC security group IDs as strings.</li><li>`private_ip`: Boolean.</li><li>`subnet_id`: The subnet ID as a string.</li></ul>                                                              |
-| `user_data` or `user_data_path` | Key-value pairs, strings | Go to [user data example](#user-data-example).                                     | Define custom user data to apply to the instance. Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) either directly in `user_data` or as a path to a file in `user_data_path`.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `disk`                          | Key-value pairs, various | Go to [disk example](#disk-example).                                               | Optional AWS block information.<br/><ul><li>`size`: Integer, size in GB.</li><li>`type`: `gp2`, `io1`, or `standard`.</li><li>`iops`: If `type: io1`, then `iops: iops`.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `user_data` or `user_data_path` | Key-value pairs, strings | Go to [user data example](#user-data-example).                                     | Define custom user data to apply to the instance. Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data` if you need custom configuration.       |
+| `disk`                          | Key-value pairs, various | Go to [disk example](#disk-example).                                               | Optional AWS block information.<br/><ul><li>`size`: Integer, size in GB.</li><li>`type`: `gp2`, `io1`, or `standard`.</li><li>`iops`: If `type: io1`, then `iops: iops`.</li><li>`kms_key_id`: Your [AWS KMS Key ID](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html)</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 #### platform example
 
@@ -268,42 +284,57 @@ network:
 
 #### user data example
 
-Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data`.
+Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data` if you need custom configuration. Refer to the [user data examples for supported runtime environments](https://github.com/drone-runners/drone-runner-aws/tree/master/app/cloudinit/user_data).
+
+Below is a sample `pool.yml` for GCP with `user_data` configuration:
 
 ```yaml
-user_data_path: /path/to/custom/user-data.yml
-```
-
-```yaml
-user_data: |
-  #cloud-config
-  apt:
-    sources:
-      docker.list:
-        source: deb [arch={{ .Architecture }}] https://download.docker.com/linux/ubuntu $RELEASE stable
-        keyid: KEY_TO_IMPORT
-  packages:
-  - wget
-  - docker-ce
-  write_files:
-  - path: {{ .CaCertPath }}
-    permissions: '0600'
-    encoding: b64
-    content: {{ .CACert | base64  }}
-  - path: {{ .CertPath }}
-    permissions: '0600'
-    encoding: b64
-    content: {{ .TLSCert | base64 }}
-  - path: {{ .KeyPath }}
-    permissions: '0600'
-    encoding: b64
-    content: {{ .TLSKey | base64 }}
-  runcmd:
-  - 'wget "{{ .LiteEnginePath }}/lite-engine-{{ .Platform }}-{{ .Architecture }}" -O /usr/bin/lite-engine'
-  - 'chmod 777 /usr/bin/lite-engine'
-  - 'touch /root/.env'
-  - 'touch /tmp/some_directory'
-  - '/usr/bin/lite-engine server --env-file /root/.env > /var/log/lite-engine.log 2>&1 &'
+version: "1"
+instances:
+  - name: linux-amd64
+    type: google
+    pool: 1
+    limit: 10
+    platform:
+      os: linux
+      arch: amd64
+    spec:
+      account:
+        project_id: YOUR_PROJECT_ID
+        json_path: PATH_TO_SERVICE_ACCOUNT_JSON
+      image: IMAGE_NAME_OR_PATH
+      machine_type: e2-medium
+      zones:
+        - YOUR_GCP_ZONE  # e.g., us-central1-a
+      disk:
+        size: 100
+      user_data: |
+        #cloud-config
+        {{ if and (.IsHosted) (eq .Platform.Arch "amd64") }}
+        packages: []
+        {{ else }}
+        apt:
+          sources:
+            docker.list:
+              source: deb [arch={{ .Platform.Arch }}] https://download.docker.com/linux/ubuntu $RELEASE stable
+              keyid: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+        packages: []
+        {{ end }}
+        write_files:
+          - path: {{ .CaCertPath }}
+            path: {{ .CertPath }}
+            permissions: '0600'
+            encoding: b64
+            content: {{ .TLSCert | base64 }}
+          - path: {{ .KeyPath }}
+        runcmd:
+          - 'set -x'
+          - |
+            if .ShouldUseGoogleDNS; then
+              echo "DNS=8.8.8.8 8.8.4.4\nFallbackDNS=1.1.1.1 1.0.0.1\nDomains=~." | sudo tee -a /etc/systemd/resolved.conf
+              systemctl restart systemd-resolved
+            fi
+          - ufw allow 9079
 ```
 
 #### disk example
@@ -313,7 +344,19 @@ disk:
   size: 16
   type: io1
   iops: iops
+  kms_key_id: arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
+  tags:
+    volumekey: volumeValue
+    key1: value1
 ```
+
+The [tags](#tags-example) property exemplified above follows a key/value pair format. This will add tags to the disk/volume directly.
+
+:::note Minimum Version
+
+In order to tag the disk, please ensure you are using drone runner version of `1.0.0-rc.190` or newer.
+
+:::
 
 ## Start the runner
 
@@ -328,7 +371,7 @@ This command mounts the volume to the Docker runner container and provides acces
 You might need to modify the command to use sudo and specify the runner directory path, for example:
 
 ```
-sudo docker run -v ./runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+sudo docker run --network host -v ./runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
 ```
 
 :::info What does the runner do?

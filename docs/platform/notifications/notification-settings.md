@@ -34,6 +34,7 @@ You can add domain filter to the following notification channels:
 - Microsoft Teams
 - Webhooks
 - PagerDuty
+- Datadog
 
 When a domain is added to a notification channel's domain allowlist, only recipients whose domains are present in the allowlist will receive notifications from that channel. This applies to both existing and new recipients until their domain is added to the channel's domain allowlist.
 
@@ -46,6 +47,32 @@ Learn how to notify users of different pipeline events using popular notificatio
 * You need a Harness pipeline with active delegates and connectors. You can follow the [tutorial to get started with Harness Continuous Delivery (CD)](/docs/continuous-delivery/get-started/cd-tutorials/manifest) to set up a sample pipeline.
 * These steps use [Harness user groups](/docs/platform/role-based-access-control/add-user-groups/) to manage user access. If you want to follow along, create a user group named `notification-demo` at the account level, and then add yourself as a user in that group.
 
+### Configure New Channels to sent notification
+
+A new channel can be configured across all scopes. To set up a channel, go to Settings for your desired scope → General → Notification Management, and click Channels as shown below:
+
+   ![](./static/notify-channel.gif)
+
+1. Click New Channel and enter a Channel Name.
+            
+   ![](./static/new-channel.png)
+
+2. Choose a Connectivity Mode — you can send notifications either directly through the Harness Platform or via a Harness Delegate.
+
+   ![connectivity-mode](./static/connectiviy-mode.png)
+
+   If you choose to send notifications through a Harness Delegate, select the appropriate delegate in the Delegate Setup window.
+
+   ![delegate-mode](./static/delegate-setup.png)
+
+3. Notification Method: Once the connectivity mode is configured, select the [**Channel Type**](#configure-pipeline-notifications) and add details related to the channel type to proceed.
+            
+   :::note
+   If you select the Connectivity Mode as "Connect through a Harness Delegate" and Channel Type as "Email", ensure to add an [SMTP configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration) to which the Harness delegate has access. If this is not done, then the Email notifications will fail.
+   :::
+
+  ![](./static/create-new-channel.png)
+
 ### Configure pipeline notifications
 
 <Tabs>
@@ -54,12 +81,18 @@ Learn how to notify users of different pipeline events using popular notificatio
 1. Select the **Notify** icon on the right side of the Harness pipeline studio.
 2. In **New Notification**, add a name for your notification.
 3. In **Pipeline Events**, select the events (pipeline or stages) that will trigger the notification.
-4. For stage-based events, select the stage name that you want to trigger the notification and click **Next**.
-5. In **Notification Method**, select `Email`.
-6. For email notifications, simply type in the email addresses that you want to notify.
+   - For stage-based events, select the stage name that you want to trigger the notification and click **Next**.
+4. In **Notification Method**, select `Email`. 
+For email notifications, simply type in the email addresses that you want to notify.
    - Enter multiple addresses as a comma-separated list. For example, `john.doe@example.io,qateam@example.io`.
-7. Additionally, use the user group that you created above to receive notifications.
-8. Select **Finish** and your notification is created.
+   - Additionally, use the user group that you created above to receive notifications.
+   - You can also use the user group that you created above to receive notifications.
+5. You can optionally add **notification templates** to get custom notifications based on the event. To learn more, go to [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template).
+6. Select the Connectivity Mode.
+   - Connect through Harness Platform to send notifications.
+   - Connect through Harness Delegate to send notifications.
+      - Select the delegate that you want to use to send notifications.
+8. Select **Submit** and your notification is created.
 
 </TabItem>
 <TabItem value="Slack">
@@ -69,11 +102,16 @@ To configure Slack notifications, you need to create a Slack webhook. For more i
 1. Select the **Notify** icon on the right side of the Harness pipeline studio.
 2. In **New Notification**, add a name for your notification.
 3. In **Pipeline Events**, select the events (pipeline or stages) that will trigger the notification.
-4. For stage-based events, select the stage name that you want to trigger the notification and click **Next**.
-5. In **Notification Method**, select `Slack`.
-6. Paste the webhook in **Slack Webhook URL**. Harness recommends that you add the webhook as an [encrypted text secret](/docs/platform/secrets/add-use-text-secrets) and reference it in **Slack Webhook URL** as an expression, such as `<+secrets.getValue("slackwebhookURL")>`.
-7. Now additionally you can use the **user-group** created above, if it is associated with the slack channels to send notifications, for more information on the same follow the instructions mentioned [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#notify-slack-channels-in-user-groups)
-8. Select **Finish** and your notification is created.
+   - For stage-based events, select the stage name that you want to trigger the notification and click **Next**.
+4. In **Notification Method**, select `Slack`.
+   - Paste the webhook in **Slack Webhook URL**. Harness recommends that you add the webhook as an [encrypted text secret](/docs/platform/secrets/add-use-text-secrets) and reference it in **Slack Webhook URL** as an expression, such as `<+secrets.getValue("slackwebhookURL")>`.
+   - Now additionally you can use the **user-group** created above, if it is associated with the slack channels to send notifications, for more information on the same follow the instructions mentioned [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#notify-slack-channels-in-user-groups)
+5. You can optionally add **notification templates** to get custom notifications based on the event. To learn more, go to [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template).
+6. Select the Connectivity Mode.
+   - Connect through Harness Platform to send notifications.
+   - Connect through Harness Delegate to send notifications.
+      - Select the delegate that you want to use to send notifications.
+7. Select **Submit** and your notification is created.
 
 </TabItem>
 <TabItem value="PagerDuty">
@@ -83,19 +121,39 @@ To configure PagerDuty notification, you need a PagerDuty [service key](https://
 1. Select the **Notify** icon on the right side of the Harness pipeline studio.
 2. In **New Notification**, add a name for your notification.
 3. In **Pipeline Events**, select the events (pipeline or stages) that will trigger the notification.
-4. For stage-based events, select the stage name that you want to trigger the notification and click **Next**.
-5. In **Notification Method**, select `Pagerduty`.
-6. Create an **[encrypted text](/docs/platform/secrets/add-use-text-secrets)** secret with the name `pagerdutykey` for the PagerDuty service you have created above, and reference it in **PagerDuty Key** using an expression. Harness will send notifications using this key.
-   - For example, you can reference a secret within the Org scope using an expression with `org`:
+   - For stage-based events, select the stage name that you want to trigger the notification and click **Next**.
+4. In **Notification Method**, select `Pagerduty`.
+   - Create an **[encrypted text](/docs/platform/secrets/add-use-text-secrets)** secret with the name `pagerdutykey` for the PagerDuty service you have created above, and reference it in **PagerDuty Key** using an expression. Harness will send notifications using this key.
+   
+   For example, you can reference a secret within the Org scope using an expression with `org`:
    ```
    <+secrets.getvalue("org.your-secret-Id")>
    ```
-7. Select **Finish** and your PagerDuty notification is created.
+5. You can optionally add **notification templates** to get custom notifications based on the event. To learn more, go to [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template).
+6. Select the Connectivity Mode.
+   - Connect through Harness Platform to send notifications.
+   - Connect through Harness Delegate to send notifications.
+      - Select the delegate that you want to use to send notifications.
+7. Select **Submit** and your notification is created.
 
 </TabItem>
 <TabItem value="Microsoft Teams">
 
-For steps on creating Microsoft Teams notifications, follow the detailed instructions [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#microsoft-teams-notifications).
+In Microsoft Teams, you can use webhook notifications to inform an external application of a pipeline/stage event.
+
+1. Select the **Notify** icon on the right side of the Harness pipeline studio.
+2. In **New Notification**, add a name for your notification.
+3. In **Pipeline Events**, select the events (pipeline or stages) that will trigger the notification.
+   - For stage-based events, select the stage name that you want to trigger the notification and click **Next**.
+4. In **Notification Method**, select `Microsoft Teams`.
+   In **Enter the Microsoft Teams Webhook URL**, paste the webhook URL for your Microsoft Teams channel.
+
+5. You can optionally add **notification templates** to get custom notifications based on the event. To learn more, go to [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template).
+6. Select the Connectivity Mode.
+   - Connect through Harness Platform to send notifications.
+   - Connect through Harness Delegate to send notifications.
+      - Select the delegate that you want to use to send notifications.
+7. Select **Submit** and your notification is created.
 
 </TabItem>
 <TabItem value="Webhook">
@@ -105,17 +163,45 @@ In Harness you can use webhook notifications to inform an external application o
 1. Select the **Notify** icon on the right side of the Harness pipeline studio.
 2. In **New Notification**, add a name for your notification.
 3. In **Pipeline Events**, select the events (pipeline or stages) that will trigger the notification.
-4. For stage-based events, select the stage name that you want to trigger the notification and click **Next**.
-5. In **Notification Method**, select `Webhook`.
-6. In **Enter the URL to be called**, use expressions to compose the URL to be called when the event occurs. For example, `https://companyurl.notify.com/execution=-<+pipeline.executionId>`.
+   - For stage-based events, select the stage name that you want to trigger the notification and click **Next**.
+4. In **Notification Method**, select `Webhook`.
+   In **Enter the URL to be called**, use expressions to compose the URL to be called when the event occurs. For example, `https://companyurl.notify.com/execution=-<+pipeline.executionId>`.
+   - The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
+   - The expression must be evaluated in the context of the event. For example, stage-related expressions might not be valid for pipeline start events.
 
-   The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
+5. You can optionally add **notification templates** to get custom notifications based on the event. To learn more, go to [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template).
+6. Select the Connectivity Mode.
+   - Connect through Harness Platform to send notifications.
+   - Connect through Harness Delegate to send notifications.
+      - Select the delegate that you want to use to send notifications.
+7. Select **Submit** and your notification is created.
 
-   The expression must be evaluated in the context of the event. For example, stage-related expressions might not be valid for pipeline start events.
+</TabItem>
+<TabItem value="Datadog">
 
-7. Select **Finish** and your Webhook notification is created.
+To configure Datadog notification, you need a Datadog [API key](https://docs.datadoghq.com/account_management/api_keys/) to integrate with Harness. Copy or store this key from Datadog's **Configuration** > **API Keys** > **API Key Details dialog** > **Integrations** tab.
+
+1. Select the **Notify** icon on the right side of the Harness pipeline studio.
+2. In **New Notification**, add a name for your notification.
+3. In **Pipeline Events**, select the events (pipeline or stages) that will trigger the notification.
+   - For stage-based events, select the stage name that you want to trigger the notification and click **Next**.
+4. In **Notification Method**, select `Datadog`.
+   Create an **[encrypted text](/docs/platform/secrets/add-use-text-secrets)** secret with the name `datadogkey` for the Datadog service you have created above, and reference it in **Datadog Key** using an expression. Harness will send notifications using this key.
+   - For example, you can reference a secret within the Org scope using an expression with `org`:
+   ```
+   <+secrets.getvalue("org.your-secret-Id")>
+   ```
+5. You can optionally add **notification templates** to get custom notifications based on the event. To learn more, go to [Custom Notification templates for Pipeline Notifications](/docs/platform/templates/customized-notification-template).
+6. Select the Connectivity Mode.
+   - Connect through Harness Platform to send notifications.
+   - Connect through Harness Delegate to send notifications.
+      - Select the delegate that you want to use to send notifications.
+7. Select **Submit** and your notification is created.
 
 </TabItem>
 </Tabs>
 
+More detailed information on how to configure the notification at the receiver end can be found [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/).
+
 When you run the pipeline, you'll receive notifications on the platform you set up.
+

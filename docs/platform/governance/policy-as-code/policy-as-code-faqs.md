@@ -1,7 +1,7 @@
 ---
 title: Policy as Code FAQs
 description: See sample policies and when to use them.
-sidebar_position: 80
+sidebar_position: 200
 ---
 
 This topic addresses some frequently asked questions about Policy as Code support in Harness.
@@ -39,6 +39,7 @@ You can now write policies against:
 - Secrets
 - Feature Flags
 - Custom
+- Service
  
 Support for the following entities is on our long-term roadmap:
 - Service
@@ -58,9 +59,38 @@ No, you cannot manage policy sets in Git.
    - Connectors
    - Secrets 
    - Templates
-   - Pipelines   
-- **On Run:** Policies can be applied when a pipeline is run and a value is computed.  The following object type is supported:
+   - Pipelines  
+   - Service 
+
+:::info note
+Policies applied to the Service entity during **On Run** and **On Save** events is currently behind the feature flag `CDS_ENABLE_SERVICE_ON_RUN_OPA_EVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+- **On Run:** Policies can be applied when a pipeline is running and a value is computed.  The following object type is supported:
    - Pipelines
+   - Service
+
+:::info note
+Policies applied to the Service entity during **On Run** and **On Save** events is currently behind the feature flag `CDS_ENABLE_SERVICE_ON_RUN_OPA_EVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 - **On Step:** When using the Governance Step, you can evaluate a policy against the JSON that is generated from the step. The following object type is supported:
    - Custom
-        
+
+### What version of the OPA library does Harness platform use?
+
+Harness platform uses the Open Policy Agent (OPA) library version **0.62.0**.
+
+For more details, you can refer to [OPA v0.62.0](https://github.com/open-policy-agent/opa/tree/v0.62.0).
+
+### How can I tell what policy sets are using my policy?
+
+Find a full list of your policies for your scope by going to the relevant settings page: **Project Settings**, **Organization Settings**, or **Account Settings**
+
+Then, go to the **Security and Governance** section > **Policies**.
+
+In the top right of this overview page, select **Policies**. 
+
+Here you'll see a full list of policies, along with the policy store and the number of referenced policy sets for each one. Click the **View** button to open a modal showing the complete list of referenced policy sets.
+
+![](./static/policy-as-code-faq-1.png)

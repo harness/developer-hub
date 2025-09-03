@@ -22,6 +22,8 @@ Harness can provision any resource that is supported by Terragrunt and the relat
 
 If you want to use Terraform without Terragrunt, Harness supports that, too. For more information, go to [Terraform how-tos](./terraform-infra/terraform-how-tos).
 
+We support using Terragrunt provisioning with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. For more information, refer to [AWS OIDC connector reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+
 ## Dynamic provisioning steps for different deployment types
 
 Each of the deployment types Harness supports (Kubernetes, AWS ECS, etc.) require that you map different Terragrunt script outputs to the Harness infrastructure settings in the pipeline stage.
@@ -33,7 +35,7 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
 - [Azure Web Apps](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
 - [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
-- [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
+- [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment)
 - [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions.md)
 - [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart)
 - [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
@@ -103,7 +105,7 @@ For the Terraform versions supported by Terragrunt, go to [Terraform Version Com
 
 The Harness Delegate requires permissions according to the deployment platform and the operations of the Terragrunt and Terraform scripts.
 
-In some cases, access keys, secrets, and SSH keys are needed. You can add these in [Harness secrets management](/docs/first-gen/firstgen-platform/security/secrets-management/secret-management). You can then select them in the Terragrunt Provisioner step.
+In some cases, access keys, secrets, and SSH keys are needed. You can add these in [Harness secrets management](/docs/category/secrets-management). You can then select them in the Terragrunt Provisioner step.
 
 
 
@@ -524,7 +526,7 @@ source = "git::https://github.com/your-organization/your-private-module.git"
 ```
 :::tip
 
-The ability to authenticate with HTTPS is new! Here is a demo on its functionality:
+The ability to authenticate with HTTPS is new! The Minimum required delegate version is: 83401. Here is a demo on its functionality:
 
 <DocVideo src="https://www.loom.com/share/bb8b9e4996f14bf0a16839849b0b72e4?sid=3befc405-7c4d-4f21-afe0-c36e2962b566" />
 
@@ -649,7 +651,7 @@ count_of_null_resources = "7"
 file_message = "testing tvar"
 ```
 
-You can Harness [variable](/docs/platform/variables-and-expressions/harness-variables) and [secret](/docs/first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets) expressions in the inputs also.
+You can Harness [variable](/docs/platform/variables-and-expressions/harness-variables) and [secret](/docs/category/secrets) expressions in the inputs also.
 
 
 ### Backend Configuration

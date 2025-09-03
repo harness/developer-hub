@@ -2,92 +2,70 @@ import { Horizon } from "./roadmapData";
 
 export const FmeData: Horizon = {
   Now: {
-    description: "Q1 2025, Feb-Apr 2025",
+    description: "Q3 2025, Aug-Oct 2025",
     feature: [
       {
         tag: [{ value: "Better Together" }],
         title: "Split integration into Harness, Part 1",
         description:
-          "Incorporate Split as a fully native Harness module. Existing customers migrated.",
+          "Incorporate Split as a fully native Harness module. Login, API scoping, and RBAC enhancements delivered by migration. Existing customers migrated.",
       },
       {
-        tag: [{ value: "Targeting" }],
-        title: "Flag impressions toggle",
-        description: "Disable the flow of impressions for individual flags.",
-      },
-      {
-        tag: [{ value: "Experimentation" }],
-        title: "Reimagined experimentation design",
-        description: "New workflow for designing experiments, decoupling experimentation analysis from flag monitoring use cases.",
-      },
-      {
-        tag: [{ value: "Experimentation" }],
-        title: "Reimagined experimentation dashboard",
-        description: "Tabular experiment results dashboard + new features like comparison of multiple treatments & sample size visualization.",
-      },
-      {
-        tag: [{ value: "Experimentation" }],
-        title: "Experiment sample population chart",
-        description: "See accumulation of sample population over time. Identify unexpected assignment or traffic level changes.",
+        tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
+        title: "Flag impressions properties bag",
+        description: "Decorate impression records with properties to use in downstream processing. Additional support for the following SDKs and Split Proxy/Synchronizer is coming this quarter: Go, PHP Thin Client (via SplitD), .NET, and Flutter.",
       },
       {
         tag: [{ value: "SDK" }],
-        title: "Elixir SDK",
-        description: "First of new SDKs to be added after joining Harness.",
+        title: "OpenFeature provider updates",
+        description: "Ongoing support for OpenFeature providers in Java, Node.js, and Browser SDKs is being developed and released.",
       },
       {
-        tag: [{ value: "Better Together" }],
-        title: "Authn and authz on Harness platform",
-        description: "Login, API scoping, and RBAC enhancements delivered by migration.",
+        tag: [{ value: "SDK" }],
+        title: "Harness Forward proxy",
+        description: "Centralizes traffic that goes outside of a customer’s cloud. Easier to maintain than the current Split Proxy, as it doesn't require environment-specific configuration. Supports multiple Harness modules as well, starting with DB DevOps.",
       },
     ],
   },
   Next: {
-    description: "Q2 2025, May-July 2025",
+    description: "Q4 2025, Nov-Jan 2026",
     feature: [
       {
         tag: [{ value: "Better Together" }],
-        title: "Split integration into Harness, Part 2",
+        title: "Granular permissions in RBAC",
         description:
-          "Migrate permission management to 100% Harness RBAC managed.",
-      },
-      {
-        tag: [{ value: "Targeting" }],
-        title: "Flag prerequisites",
-        description:
-          "Top level flag dependencies enforced (new) as well as within rules (existing).",
-      },
-      {
-        tag: [{value: "Targeting"}, {value: "Better Together"}],
-        title: "Rule-based segments",
-        description:
-          "Assign feature availability for user groups based on different conditions, with all the power of FME targeting.",
-      },
-      {        
-        tag: [{value: "AI Agents"}],
-        title: "Gemini Code Assist",
-        description:
-          "View feature flags and definitions directly within your IDE through an integrated agent in the code assist interface.",
+          "Migrate permission management for FME object and environment-level permissions to Harness RBAC. Previously titled, Split integration into Harness, Part 2.",
       },
       {
         tag: [{ value: "SDK" }],
         title: "Remote evaluation client-side SDKs",
         description: "No rules are exposed to client-side. Instead, these thin clients utilize a secure cloud service for flag evaluations.",
       },
-    ],
-  },
-  Later: {
-    description: "Q3 2025+, Aug 2025 & beyond",
-    feature: [
       {
-        tag: [{ value: "Better Together" }],
-        title: "Automated release pipelines with feature flag data checks",
-        description: "Leverage Harness pipelines with flags and built-in data checks to safely automate releases.",
+        tag: [{value: "Targeting"}, {value: "Better Together"}],
+        title: "Flag prerequisites",
+        description:
+          "Top level flag dependencies enforced (new) as well as within rules (existing).",
       },
       {
         tag: [{ value: "Experimentation" }],
         title: "Warehouse-native experimentation",
         description: "Experiment directly on impressions & events in your data warehouse.",
+      },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Automated release pipelines",
+        description: "Leverage Harness pipelines for feature flags to automate release processes.",
+      },
+    ],
+  },
+  Later: {
+    description: "Q1 2026+, Feb 2026 & beyond",
+    feature: [
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Data checks in automated release pipelines",
+        description: "Add built-in data checks to increase safety for feature flag driven releases.",
       },
       {
         tag: [{ value: "SDK" }],
@@ -104,18 +82,68 @@ export const FmeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{value: "Targeting"}, {value: "Better Together"}],
+        title: "Rule-based segments",
+        description:
+          "Assign feature availability for user groups based on different conditions, with all the power of FME targeting.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-support-for-rule-based-segments",
+      },
+      {
+        tag: [{ value: "Targeting" }],
+        title: "Client side SDKs cache expiration",
+        description:
+          "Control when local cache on device expires.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-control-cache-expiration-for-client-side-sdks"
+      },
+      {
+        tag: [{ value: "Targeting" }],
+        title: "Flag impressions toggle",
+        description: "Disable the flow of impressions for individual flags.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-feature-flag-impression-toggle",
+      },
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "Reimagined experimentation design",
+        description: "New workflow for designing experiments, decoupling experimentation analysis from flag monitoring use cases.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-experiments-dashboard",
+      },
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "Reimagined experimentation dashboard",
+        description: "Tabular experiment results dashboard + new features like comparison of multiple treatments & sample size visualization.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-experiments-dashboard",
+      },
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "Experiment sample population chart",
+        description: "See accumulation of sample population over time. Identify unexpected assignment or traffic level changes.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-experiments-dashboard",
+      },
+      {
+        tag: [{ value: "SDK" }],
+        title: "Flag impressions properties bag",
+        description: "Decorate impression records with properties to use in downstream processing. Supported in Browser, Android, iOS, JavaScript, React, React Native, Redux, Node.js, and Java SDKs.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-append-impression-properties",
+      },
+      {
+        tag: [{ value: "SDK" }],
+        title: "Elixir SDK",
+        description: "First of new SDKs to be added after joining Harness.",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-sdk-elixir-sdk",
+      },
       {        
         tag: [{value: "AI Agents"}],
         title: "AI results interpretation conversation",
         description:
           "AI-generated metric results summary can be asked follow-up questions.",
-        link:"https://www.split.io/releases/2025-01-08/",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-release-agent-ai-chatbot",
       },
       {
         tag: [{ value: "Targeting" }],
         title: "Large segments",
         description: "New segment type enabling large-scale audience targeting up to 1M keys. Even higher limits available by request.",
-        link:"https://www.split.io/releases/2025-01-07/",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-targeting---large-segments",
       },
       {
         tag: [{ value: "Better Together" }],
@@ -126,31 +154,31 @@ export const FmeData: Horizon = {
         tag: [{ value: "Targeting" }],
         title: "SemVer attribute dictionary support",
         description: "Support SemVer type attributes and suggested values in the attribute dictionary to streamline entry & reduce risk of errors.",
-        link:"https://www.split.io/releases/2024-12-06/",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-12-06",
       },
       {
         tag: [{ value: "Monitoring" }],
         title: "Feature flag alerts on Monitoring tab",
         description: "Show guardrail and key metric alerts on the monitoring tab, in addition to the threshold-based alerts shown prev.",
-        link:"https://www.split.io/releases/2024-11-27",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-11-27",
       },
       {
         tag: [{ value: "Measurement" }],
         title: "Monitoring tab: feature traffic insights",
         description: "Analyze flag traffic in real time to understand trends and ensure proper targeting configuration.",
-        link:"https://www.split.io/releases/2024-09-12",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-09-12",
       },
       {
         tag: [{ value: "Alerting" }, {value: "Experimentation"}],
         title: "Significance alerting for guardrail metrics",
         description: "Automatically receive alerts on any guardrail metric without manual configuration.",
-        link:"https://www.split.io/releases/2024-09-04/",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-09-04",
       },
       {
         tag: [{ value: "Targeting" }],
         title: "Semantic version targeting",
         description: "Easily define targeting rules for new features using the native semantic version matcher.",
-        link:"https://www.split.io/releases/2024-06-06",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-06-06",
       },
       {
         tag: [{ value: "Measurement" }, {value: "SDK"}],
@@ -162,7 +190,7 @@ export const FmeData: Horizon = {
         tag: [{ value: "Measurement" }, {value: "Experimentation"}],
         title: "Guardrail metrics",
         description: "A new category of metrics that can be used to protect every release and improve metric organization.",
-        link:"https://www.split.io/releases/2024-06-14/",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-06-14",
       },
       {
         tag: [{ value: "SDK" }, {value: "Security"}],

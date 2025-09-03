@@ -69,3 +69,59 @@ To enable Vulnerability Scanning:
 You can enable OPA policies for your Harness Code repos with Harness Policy As Code. You can configure policies for the **Repository** entity type to enforce those policies on your Harness Code repos.
 
 For more information and instructions, go to [Harness Policy as Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview.md).
+
+## Verify Committer and User Match
+
+This security setting in Harness Code Repository enforces commit email verification. This setting can be enabled under **Repository** → **Manage Repository** → **Security**.
+
+<DocImage path={require('/docs/code-repository/config-repos/assets/verify-committer-email.png')} />
+
+When enabled, users can only push new commits if the committer email matches their email on their Harness user account. If the committer email does not match, the push is blocked.
+
+:::note
+
+Users can still create and push a new branch with commits that were not authored by them, as long as those commits already exist in the repository.
+
+:::
+
+## Audit Logs for Repository Events
+
+Harness Code supports audit logging for key repository events, helping you track critical actions and enforce accountability across your codebase.
+
+### Events captured in audit logs
+
+Harness automatically logs the following repository events:
+
+- **Force push** to the default branch  
+- **Bypassing** security rules, such as secret or vulnerability scans  
+- **Repository creation**  
+- **Rule creation or modification** (for example, branch protection rules)
+
+These logs are useful for regulated teams and high-trust environments, where traceability is essential for compliance and incident response.
+
+### View audit logs
+
+To view audit logs:
+
+1. Go to **Account Settings**.
+2. Select **Security and Governance**.
+3. Select **Audit Trail**.
+4. Use `Resource Type = Repository` filter to narrow the results to the **Code Repository** module.
+5. Search by user, action, or repository to investigate specific events.
+
+<DocImage path={require('/docs/code-repository/config-repos/assets/audit-trail.png')} />
+
+Audit logs include details such as:
+
+- The user who performed the action
+- Timestamp of the event
+- Type of event (e.g., force push, rule bypass)
+- Affected repository and branch
+
+:::info
+
+Audit logs are visible to users with the appropriate access level. You can export logs for external analysis or incident review.
+
+:::
+
+

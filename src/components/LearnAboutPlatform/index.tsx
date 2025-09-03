@@ -23,7 +23,6 @@ export default function LearnAboutPlatform(): JSX.Element {
         <div className={styles.subSectionName}>
           <h3>Modules</h3>
         </div>
-        {/* <img src="img/harness-platform.svg" className={styles.platformIllustration} /> */}
         <ModuleTiles />
       </div>
 
@@ -228,15 +227,15 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
-            <a href="/release-notes/cloud-cost-management">
-              <h4>Cloud Cost Management</h4>
-              <p>New features and fixed issues for the CCM module</p>
+            <a href="/release-notes/feature-management-experimentation">
+              <h4>Feature Management & Experimentation</h4>
+              <p>New features and fixed issues for the FME module</p>
             </a>
           </li>
           <li>
-            <a href="/release-notes/security-testing-orchestration">
-              <h4>Security Testing Orchestration</h4>
-              <p>New features and fixed issues for the STO module</p>
+            <a href="/release-notes/cloud-cost-management">
+              <h4>Cloud Cost Management</h4>
+              <p>New features and fixed issues for the CCM module</p>
             </a>
           </li>
           <li>

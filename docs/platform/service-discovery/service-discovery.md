@@ -28,6 +28,8 @@ Harness performs the following steps to discover services in your cluster:
 2. Build a database of services that describes the relationship between the services.
 3. Provide APIs to group the discovered services into a map, wherein the map represents a topological view of an application.
 
+Service discovery leverages the standard Kubernetes API for workload identification and eBPF (extended Berkeley Packet Filter) to analyze real-time network traffic between workloads using kprobe hooks. These open-source technologies enable efficient monitoring and visualization of service-to-service communication within a Kubernetes cluster.
+
 ### How does Harness leverage discovered services?
 
 - Identify the various available services in the Kubernetes cluster that you can deploy using Harness or other means.

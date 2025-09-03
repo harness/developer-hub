@@ -1,0 +1,12 @@
+{
+   "label":"Remediation Tracker",
+   "position": 58,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"default",
+   "description": "Identify and track vulnerable artifacts using Remediation tracker",
+   "link":{
+      "type":"generated-index",
+      "title":"Get started with Remediation Tracker in Harness SCS"
+   }
+}

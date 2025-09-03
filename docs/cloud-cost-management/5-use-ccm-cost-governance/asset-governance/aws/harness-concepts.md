@@ -27,10 +27,6 @@ So essentially, **a Rule is a file that includes logic defined by a policy that 
 
 <DocImage path={require('../static/rule_example_AWS.png')} width="80%" height="80%" title="Click to view full size image" />
 
-:::important note
-Number of Rules per Account[Custom + OOTB] can be 300.
-:::
-
 ### Create a new Rule
 
 1. In **Harness**, go to **Cloud Costs**.
@@ -75,9 +71,7 @@ As mentioned previously, a Rule can have multiple policies. However, when there 
 
   <DocImage path={require('../static/rule-set-aws.png')} width="90%" height="90%" title="Click to view full size image" />
   
-:::info
-A Rule Set can have upto 30 Rules in it.
-:::
+
 
 ### Create a new Rule Set
 
@@ -117,6 +111,10 @@ We now have Terraform support for managing Governance RuleSets. Please see [here
 
 ## Enforcements
 
+:::info
+Each enforcement can now have up to **10,000 evaluations**. The cap is calculated as `Rules × Accounts × Regions` and replaces the earlier individual limits on rules, rule sets, accounts, or regions.
+:::
+
 Enforcements enable you to enforce a certain set of Rules or Rule Sets (also known as governance guardrails) against a specific set of targets (accounts, projects, or subscriptions) to run periodically. Sometimes, we need rules to run periodically, such as every day, week, or month. However, running these rules manually every day or week at a specified time creates extra overhead and is a slow process prone to manual errors. To solve this, Enforcements allow users to set up a timely schedule and choose the day, time, and frequency for their rules or rule sets.
 
 For example, a user can create an Enforcement to schedule the deletion of all unattached disks. This Enforcement will run on the **days specified by the user**, at the **specified time**, and with the **specified frequency (hourly, daily, monthly**). For instance, you could set it to run daily at 2:00 AM to ensure that unused RDS database is deleted. Alternatively, you might choose to run it hourly during peak usage times, or monthly for less critical cleanup tasks. 
@@ -131,12 +129,6 @@ While setting up a new Enforcement, you can select the following:
 
   <DocImage path={require('../static/enforcements-aws.png')} width="95%" height="95%" title="Click to view full size image" />
 
-:::info
-- Number of Targets in an Enforcement can be upto 200.
-- Number of Regions in Enforcement can be upto 30.
-- Number of Rule Sets in Enforcement can be upto 30.
-- Number of Rules in Enforcement can be upto 30.
-:::
 
 ### Create a new Enforcement
 To create an Enforcement, perform the following steps:
@@ -192,6 +184,7 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 
 <DocImage path={require('../static/evaluation-aws-one.png')} width="90%" height="90%" title="Click to view full size image" />
 
+
 ### View Evaluations
 
 1. In your **Harness** application, go to **Cloud Costs**.
@@ -203,8 +196,6 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 <DocImage path={require('../static/evaluations-aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 In the output window, users can see the resources identified in form of a Table or JSON. The table view supports all the filters and flattening of the table is supported as well. That essentially means, nested propoerties are flattened. By default, nested objects and arrays are collapsed and can be expanded upto two levels. Further nested properties are shown as formatted JSON.
-
-
 
 ### Filters in Evaluations List Page
 
@@ -231,6 +222,22 @@ You can create filters to view selected rules:
 Number of evaluations for which we can compute cost impact is 1,50,000/ Day.
 :::
 
+### Bulk Export Evaluations
+
+Use **Bulk Export** to download up to 100 evaluation results (AWS, GCP, or Azure) in a single ZIP file. Export is available when all selected evaluations are in a terminal state (Succeeded or Failed).
+
+**How to export**
+1. Click **Export**.
+2. Choose the files to include:
+   - `metadata.json`: summary of each evaluation
+   - `resources.json`: resources identified
+   - `custodian-run.log`: execution log
+   - `actioned-resources.json`: resources acted on
+3. Click **Generate Report**.
+
+The ZIP file is organised by evaluation ID (or by policy sub-folders for multi-policy runs) so you can quickly locate results. You can also export from the **Test Terminal** when evaluating multiple targets.
+
+<DocImage path={require('../static/bulk-export.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## Testing Terminal
 

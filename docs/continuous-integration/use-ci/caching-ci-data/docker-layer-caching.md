@@ -16,13 +16,15 @@ To maximize savings, consider modifying your Dockerfile to [use the cache effici
 
 ## Docker Layer Caching, an Intelligence Feature 
 
-With **Docker Layer Caching (DLC)** , a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, Harness seamlessly caches Docker layers between builds to  accelerate the time it takes to build Docker images.
+With **Docker Layer Caching (DLC)** , a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, Harness seamlessly caches Docker layers between builds to  accelerate the time it takes to build Docker images.
 
 You can use DLC with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md). When you use DLC with Harness CI Cloud, the cache is stored in the Harness-managed environment.
 
 :::info
 
-Docker Layer Caching is now Generally Available (GA). 
+* Docker Layer Caching is now Generally Available (GA). 
+* Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
+
 
 If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::
@@ -57,7 +59,8 @@ If your storage isn't S3-compatible or your don't want to use access key and sec
 We suggest that you consider setting bucket level retention policy for efficient cache management. 
 
 :::info
-Enabling DLC when running on Kubernetes requires *privileged mode* on the cluster where the builds run. 
+- Enabling DLC when running on Kubernetes requires *privileged mode* on the cluster where the builds run. 
+- To use path-style S3 addressing in self-hosted Build and Push steps with DLC, set `PLUGIN_PATH_STYLE: "true"` in envVariables. This allows compatibility with S3 providers that do not support virtual-hosted style URLs.
 :::
 
 
@@ -93,6 +96,10 @@ Here is a YAML example of a  **Build and Push an image to Docker Registry** step
 ## Remote cache image
 
 Remote cache image is an alternative to Harness CI Intelligence Docker layer caching. 
+:::info
+
+Remote cache image support is currently available only for Kubernetes infrastructure.
+:::
 
 Remote caching leverages your existing Docker registry to pull previously built layers. Each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple Build and Push steps, enabling them to share the same remote cache.
 
@@ -153,3 +160,10 @@ In addition to reducing build times, excluding unnecessary files and packages ma
 Distributed Layer Caching (DLC) provides caching benefits, but certain operations may not see significant improvements due to how caching works. For example, `FROM` statements never use cache, as base image layers are always pulled to ensure freshness. Additionally, external dependencies (like copying files from non-cached sources) may not be fully cached. DLC primarily caches self-contained operations, and checksum-based steps (like `COPY` or `ADD`) only reuse cache when source files remain unchanged. To maximize caching benefits, optimize Dockerfile instructions to reduce dependency on external sources.
 
 See [Optimize Docker images and Dockerfiles](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching/#optimize-docker-images-and-dockerfiles) to learn more.
+
+### Base Image Connector
+Customers utilizing Docker as a Base Image Connector will need to enable the Feature Flag `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR`, to use the defined Docker Connector for the Base Image Pull.  It is also necessary due to Docker rate limiting. When enabling this flag, the delegate version must be higher than 24.07.83503.
+
+:::note
+If the Feature Flag `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR` is not yet enabled on your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+:::

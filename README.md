@@ -5,9 +5,9 @@
 ![CD](static/img/icon_cd_s.svg)
 ![IACM](static/img/icon_iacm_s.svg)
 ![CE](static/img/icon_ce_s.svg)
-![IR](static/img/icon-ir-s.svg)
+![AI SRE](static/img/icon-ir-s.svg)
 ![SRM](static/img/icon_srm_s.svg)
-![FF](static/img/icon_ff_s.svg)
+![FME](static/img/icon-fme-s.svg)
 ![CCM](static/img/icon_ccm_s.svg)
 ![STO](static/img/icon_sto_s.svg)
 ![SSCA](static/img/icon_ssca_s.svg)
@@ -27,3 +27,7 @@ Learn intelligent software delivery skills at your own pace and in one place. Gu
 
 We welcome contributions. Check out the [Contributors Guide](CONTRIBUTING.md) for details
 on how to contribute.
+
+## Style Guide
+
+If you are contributing to HDH, please check out our [Style Guide](./docs/hdh/style-guide).

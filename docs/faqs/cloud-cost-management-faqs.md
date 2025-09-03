@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+
 This article addresses some frequently asked questions about Harness Cloud Cost Management (CCM).
 
 ### AWS connectors
@@ -596,4 +597,7 @@ It is a custom VM launched in the customer's cloud account which comes pre-insta
 #### How to provision or size the proxy VM?
 
 You can choose an instance type of your preference as the proxy from the different types of instances offered by each of the cloud provider based on the expected traffic. 
+=======
+# Cloud Cost Management FAQs
 
+This comprehensive guide answers frequently asked questions about Harness Cloud Cost Management (CCM), organized by topic to help you quickly find the information you need. Please see a detailed list of all CCM FAQs here: [Cloud Cost Management (CCM) FAQs](https://developer.harness.io/kb/cloud-cost-management/cloud-cost-management-faqs)

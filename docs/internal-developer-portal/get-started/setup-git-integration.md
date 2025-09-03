@@ -36,14 +36,10 @@ The software components in IDP are defined using YAML files, which are typically
 The following set of git providers are supported: 
 
   - [Harness Code Repository](https://www.harness.io/products/code-repository)
-  - [GitHub](https://github.com/)
-    - GitHub Enterprise
-    - GitHub App
-  - [GitLab](https://about.gitlab.com/)
-  - [Bitbucket](https://bitbucket.org/product/)
-    - Bitbucket Cloud
-    - Bitbucket Server
-  - [Azure Repository](https://azure.microsoft.com/en-us/products/devops/repos)
+  - GitHub ([Cloud](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) & [Enterprise](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server))
+  - [GitLab](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) (Cloud & Self Hosted)
+  - [Bitbucket](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket)
+  - [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
 
 :::warning
 
@@ -142,10 +138,14 @@ For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. For e
 - Configure the [GitHub connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference). You can configure connectors for both `github.com` and `GitHub Enterprise` and use them at once to fetch `catalog-info.yaml` from both the sources at same time.
 - After the connection test runs, select **Finish** to save the connector.
 
+:::caution Important
+Please note that using the **Client ID** instead of the **App ID** is not supported when configuring Git integrations with the **GitHub App connector**.
+
+Backstage only supports GitHub App connectors that are configured using the **App ID**.
+:::
+
 :::warning
-
 While using GitHub App, you need a **private key for your GitHub app** to configure your Harness GitHub connector, follow the instructions mentioned [here](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/#generate-a-private-key) **to convert the key file to the necessary format for the Harness GitHub connector**
-
 :::
 
 More instructions on [using GitHub app in GitHub connector](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support).

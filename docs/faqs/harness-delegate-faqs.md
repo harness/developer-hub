@@ -144,6 +144,14 @@ Developers often need to create delegates in multiple clusters in their environm
 
 For more information, go to [Automate delegate installation](../platform/delegates/install-delegates/automate-delegate-installation.md).
 
+### What happens when a delegate is disconnected?
+
+When a delegate is disconnected, Harness applies a Time-To-Live (TTL) policy:
+
+- Delegate – 6 hours: If a disconnected delegate doesn't reconnect within 6 hours, it is considered expired and will no longer appear on the Delegate page in the Harness UI.
+
+- Delegate Group – 7 days: If a delegate group has no active delegates for 7 consecutive days, the group is considered inactive and will be removed from the Harness UI.
+
 ## Delegate requirements
 
 ### What are the delegate system requirements?
@@ -170,6 +178,10 @@ For more information, go to [Build custom delegate images with third-party tools
 * The daily deployment limit is 100 deployments every 24 hours. The hourly limit is 40 deployments and is designed to detect any atypical upsurge of deployments. Contact [Harness Support](mailto:support@harness.io) to increase this limit.
 * You might need to install multiple delegates depending on how many Continuous Delivery tasks you do concurrently, and on the compute resources you are providing to each delegate. Typically, you will need one delegate for every 300-500 service instances across your applications.
 
+### Is there a limit on the number of tasks a Harness delegate can handle concurrently?
+
+Yes, by default, a Harness delegate can acquire up to 400 tasks concurrently. To allow the delegate to handle more than 400 concurrent tasks, set the environment variable [`DYNAMIC_REQUEST_HANDLING`](/docs/platform/delegates/delegate-reference/delegate-environment-variables/#dynamic_request_handling) to true. Also, ensure that the delegate has sufficient CPU and memory resources to support the increased load.
+
 ### Can I configure delegate proxy settings?
 
 Yes. All of the delegate settings include proxy settings you can use to change how the delegate connects to Harness Manager.
@@ -177,6 +189,23 @@ Yes. All of the delegate settings include proxy settings you can use to change h
 :::info note
 By default, the Harness Delegate uses HTTP and HTTPS in its `PROXY_SCHEME` settings. For more information, go to [Configure delegate proxy settings](../platform/delegates/manage-delegates/configure-delegate-proxy-settings.md).
 :::
+
+### How to Enable CPU Limit in the Delegate Helm Chart?
+
+The Harness Delegate Helm chart supports setting custom resource limits for CPU and memory. However, these configurations are commented out by default in the `values.yaml` file. 
+
+To enable them, simply uncomment the `resources` block and provide your desired values, as shown in the example below:
+
+```yaml
+resources:
+  limits:
+    cpu: 1 
+    memory: 2048Mi 
+  requests:
+    cpu: 1
+    memory: 2048Mi
+```
+This ensures the delegate pod is scheduled with the appropriate compute resources in your Kubernetes cluster.
 
 ## Delegate selection
 

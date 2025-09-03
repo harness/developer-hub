@@ -1,7 +1,8 @@
 ---
-title: Default pipelines
+title: Default Pipelines
 description: Learn how to use Harness IaCM default pipelines
 sidebar_position: 30
+redirect_from: /docs/infra-as-code-management/pipelines/operations/default-pipelines
 ---
 
 import Tabs from '@theme/Tabs';
@@ -25,7 +26,7 @@ A pipeline containing the `destroy` command will remove all saved infrastructure
 
 <Tabs>
 <TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/82d2b223-b468-4cdf-a311-be4fdf59ce6c" title="Harness IaCM: Default Pipelines" />
+<DocVideo src="https://app.tango.us/app/embed/82d2b223-b468-4cdf-a311-be4fdf59ce6c?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Harness IaCM: Default Pipelines" />
 </TabItem>
 <TabItem value="Step-by-step">
 

@@ -3,6 +3,7 @@ title: Variables and Expressions FAQ's
 description: Frequently asked questions about Harness variables and expressions.
 sidebar_position: 1000
 ---
+import ToString from '/docs/platform/shared/expression-tostring.md'
 
 This article addresses some frequently asked questions about Variables and Expressions.
 
@@ -46,3 +47,19 @@ The "Save Blank Fields as Empty String" checkbox determines whether blank fields
 ### How can a user enable/disable the use of `secrets.getValue()`?
 
 The user needs to enable/disable the use of `secrets.getValue()`. This setting can be configured at the account/org/project scope.  The user should check their account settings to enable or disable this functionality.  
+
+### Why is `<+manifestConfig.primaryManifestId>` resolving to `null` in my CI step?
+
+The expression `<+manifestConfig.primaryManifestId>` is **not supported in CI Execution (CIE) stages**. As a result, any dynamic references using this identifier—such as repository name, branch, or file paths in the manifest—will resolve to `null` when used inside a CI step.
+
+Example: These expressions will **not work** inside a CI stage:
+
+- `<+pipeline.stages.MyStage.spec.manifests.<+manifestConfig.primaryManifestId>.store.repoName>`
+- `<+pipeline.stages.MyStage.spec.manifests.<+manifestConfig.primaryManifestId>.store.branch>`
+- `<+pipeline.stages.MyStage.spec.manifests.<+manifestConfig.primaryManifestId>.store.paths>`
+
+**What you can do instead**
+
+Use explicitly defined pipeline variables or fixed values to pass manifest-related details (like branch, repo name, or file path) into your CI steps. Avoid using manifest context expressions in CIE stages.
+
+<ToString />

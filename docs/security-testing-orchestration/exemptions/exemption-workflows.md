@@ -1,181 +1,185 @@
 ---
-title: Exemptions to override STO failure policies
-description: Procedures and best practices for requesting and approving exemptions.
-sidebar_label: Exemptions to override STO failure policies
+title: Request Issue Exemption
+description: Steps to submit an issue exemption request
+sidebar_label: Request issue exemption
 sidebar_position: 60
 redirect_from: 
   - docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows
 ---
 
-STO’s exemption workflows help developers raise exemption windows with product security teams for shipping software with vulnerabilities. Developers can request exemptions for specific vulnerabilities to allow their build pipelines to proceed even if these vulnerabilities are detected.
-
-:::note 
-[Security Testing Developers](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) and [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) users can request exemptions, but only Security Testing SecOps users can approve them.
-::: 
-
-## When exemptions are useful
-
-Here are some reasons wny your organization might want to exempt an issue:
-
-- Your organization has practices in place to mitigate the security risks of the issue.
-- The issue is in compliance with your organization's acceptable use policies.
-- The security risk is low and remediation would require too much effort or expense.
-- The scanner detects an issue but it is, in fact, a false positive.
-- You need to exempt an issue so you can deploy a hotfix. In this case, you can request a temporary exemption that expires within your organization's SLA for fixing security issues.
-- There are currently no known fixes or remediation steps available for the detected vulnerability. You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/remediations/ai-based-remediations) to help you remediate your issues using AI.
-
-
 import request_exemption from '../use-sto/static/request-exemption.png'
 import open_exemption_details from '../use-sto/static/open-exemption-details.png'
 import baseline_not_defined from '../use-sto/static/exemption-workflows-no-baseline-defined.png'
 
-## What happens when an STO exemption gets approved
+Issue exemptions help unblock pipelines by allowing security teams to temporarily bypass specific security issues that would otherwise fail the build. To understand how exemptions fit into your security workflow, refer to the [issue exemptions workflow](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow).
 
-To see the list of pending exemptions, select **Exemptions** in the left menu. Each exemption corresponds to one vulnerability. If a scan detects a vulnerability with an active exemption, the pipeline proceeds even if the vulnerability matches the failure criteria for the step.
+You can create exemption requests either for the entire issue or for specific occurrences within an issue:
+- [**Create Exemption Request for an Issue**](#create-exemption-request-for-an-issue): When creating an exemption request for an entire issue, you can set the exemption scope at the [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted) level. Refer to this section for detailed instructions.
+- [**Create Exemption Request for Occurrences within Issue**](#create-exemption-request-for-occurrences-within-issue): When creating exemption request for selected occurrences of an issue, the exemption scope is limited to the [Target](#where-do-you-want-this-issue-to-be-exempted) level. Refer to this section for step-by-step guidance.
 
-## Important notes for exemptions in STO
+Reviewers have the flexibility to approve exemption requests either at the requested scope or extend the scope to the **Organization** or **Account** level during the review process. For more details, refer to [Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions). To view submitted requests, refer to [View Issue Exemptions](#view-issue-exemptions).
 
-This topic assumes that you have the following:
+<DocVideo src="https://youtu.be/08OmKwva9DM" />
 
-* An STO pipeline as described in [Set up Harness for STO](../get-started/onboarding-guide.md).
-* The scan step has failure criteria specified.
-
-  STO supports two methods for specifying failure criteria: 
-
-   - [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity)  Every scan step has a Fail on Severity setting that fails the step if the scan detects any issues with the specified severity or higher. 
-
-   - [OPA policies](/docs/security-testing-orchestration/policies/create-opa-policies) You can use Harness Policy as Code to write and enforce policies based on severity, reference ID, title, CVE age, STO output variables, and number of occurrences.
-
-* At least one successful build with a set of detected security issues. 
-* Security Testing Developer or [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  user permissions are required to [request exemptions](#request-an-sto-exemption).
-* Only Security Testing SecOps users can [review, approve, reject,](#review-an-sto-exemption) and [update](#good-practice-review-and-update-sto-exemptions-periodically) exemptions.  
-
-## Request an STO exemption
-
-1. Select **Executions** (left menu) and then go to a successful build.  
-
-2. Select **Security Tests** and then do the following:
-
-   1. Select the issue you want to exempt.  The **Issue Details** pane opens on the right. 
-   2. Select **Request Exemption**.
-
-
-      <img src={request_exemption} alt="Request Exemption button" height="50%" width="50%" />
-
-   3. In **Request Exemption for Issue**, specify:
-      1. **Where do you want this issue to be Exempted?** 
-
-         Select **This Pipeline** unless you know it's safe to exempt the issue everywhere in the project.
-
-      2. **For how long?** 
-
-         In general, you should select the shortest practical time window for your exemption. 
-
-      3. **Reason this issue should be exempted** 
-
-         Select one of the following reasons and provide any additional information for the [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  approver:
-
-         * **Compensating controls** — Your organization has infrastructure and policies in place to mitigate the security risks of this vulnerability. 
-
-           For example, suppose a scan detects a vulnerability with a specific service. This vulnerability might be mitigated because:
-
-           - The service is behind a firewall that requires authorized access, or
-
-           - The network may have host- or network-based intrusion prevention systems in place.
-
-         * **Acceptable use** — The scanner identified this practice as a vulnerability, but this practice is acceptable based on your organization's security guidelines. For example, anonymous FTP access may be a deliberate practice and not a vulnerability.
-
-         * **Acceptable risk** — The security risk of this vulnerability is low and remediation would require too much effort or expense: 
-
-           - Applying a specific patch for a vulnerability might prevent a service from functioning. 
-
-           - The vulnerability is minimal and the remediation would require too much time, money, or resources.
-
-         * **False positives** — The scanner identifies this as a vulnerability but it is, in fact, a false positive. Requesting an exemption based on approval from a Qualified Security Assessor (QSA) or Approved Scanning Vendor (ASV). 
-
-         * **Fix unavailable** — There are currently no known fixes or remediation steps available for the detected vulnerability. 
-
-         * **Other**
-
-      4. **Further description the reason this issue should be exempted** 
-
-         It is good practice to provide enough information for the reviewer to determine that this exemption is safe.
-
-      4. **URL Reference** 
-
-         Paste the link you copied in the previous request, or add a different link that provides information about the specific issue you want the pipeline to ignore. If your repo already addresses the issue, for example, you can include a link to the relevant code.
-
-   5. Click **Create Request**.
-
-      ![](../use-sto/static/exemption-click-create-request.png)
-
-3. Send an email or Slack to your [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  reviewer with the URL to the Security Tests page with the relevant issue selected.
-
-## Approve, reject, or cancel an STO exemption
+<DocImage path={require('./static/request-exemption-overview.png')} width="80%" height="80%" title="Click to view full-size image" />
 
 :::note
-
-This workflow requires [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  user permissions.
-
+To create an exemption request, you must have the necessary permissions (**Exemptions: View, Create/Edit**) at the Project level, or you can have the **Security Testing Developer** or **Security Testing AppSec** roles assigned. Refer [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
 :::
 
-1. You should receive an email or Slack from a developer that includes a URL to the relevant issue. Go to the URL provided.
- 
-   The URL should point to a Security Tests page in Harness with the issue selected in the **Issue Details** pane on the right. If the relevant issue isn't visible, notify the developer. 
+## Create Exemption Request for an Issue
+To request an exemption for an entire issue, you can set the exemption scope at the [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Vulnerabilities** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
 
-2. Select **Exemptions** (left menu) > **Pending** and then select the pending exemption to view the exemption details.
+1. In the **Vulnerabilities** tab, locate and select the specific issue for which you want to request an exemption. This action opens the **Issue Details** pane on the right.
 
-   ![](../use-sto/static/approve-exemption-00.png)
+2. In the **Issue Details** pane, click **Request Exemption**.
 
-3. Review the exemption request. The **Issue Details** pane includes a high-level summary of the issue, links to relevant documentation, and a list of all locations in the scanned object where the issue was detected. 
+<DocImage path={require('./static/request-exemption.png')} width="90%" height="90%" title="Click to view full-size image" />
 
-    :::note
+### Submit Exemption Request
 
-    - The **Issue Details** pane is comprehensive, but might not include all the information you need. You might want to research the issue further before you approve the request.
+Fill out the **Request Exemption for Issue** form with the following fields:
+<DocImage path={require('./static/request-exemption-form.png')} width="40%" height="40%" title="Click to view full-size image" />
 
-    - Consider the **Requested Duration** for the exemption request. When you approve a request, the exemption remains active only for the specified time window (for example, 7 days from the approval time). 
+#### Where do you want this issue to be exempted?
 
-    - It is good practice to [define a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#every-target-needs-a-baseline). If the target does not have a baseline defined, you won't see any exemption details. Instead, you will see a link to define the target baseline. 
+Specify where the exemption should apply:
 
-       <img src={baseline_not_defined} alt="Can't view exemption details because the target has no baseline" height="50%" width="50%" />
+- **This Target**: Exempts the issue only for the selected target. The issue remains reported in other targets or pipelines.  
+- **This Pipeline**: Exempts the issue only in the current pipeline. The issue is still reported in other pipelines or projects.  
+- **This Project**: Exempts the issue across all pipelines and targets within this project. Choose carefully, as the exemption applies broadly within the project.  
 
-    :::
+:::info
+- While requests can only be created with the scopes mentioned above, reviewers can approve and apply them at the requested scope or at a higher scope - **Organization** or **Account**.
+- As you create exemption request at the issue level, all the future occurrences part of this issues will be automatically exempted. For exemptions at occurrences level, refer to [Create Exemption Request for Occurrences within Issue](#create-exemption-request-for-occurrences-within-issue)
+:::
+#### For how long?
 
- 4. Select one of the following:
- 
-    - **Approve** The request is approved. This issue will not block future pipeline executions for the requested duration (see **Time Remaining** in the **Approved** table).
-    - **Reject** The request moves to the **Rejected** table, where a [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  user can approve it later if appropriate. 
-    - **Cancel** The request is cancelled and removed from the exemption list. If a user wants an exemption for the issue, they must file a new request. 
+Select the shortest practical time window for the exemption to limit the risk exposure.
 
-     ![](../use-sto/static/exemptions-approved.png)
+#### Reason
 
-      You can control whether users can approve or reject their own exemption requests. This setting can be managed by enabling or disabling the **Users can approve their own exemptions** option. Find this setting under **Exemption settings** on the **Default settings** page. This is available in the project, organization and account level settings.
-      :::note
-      This setting is behind the feature flag `STO_EXEMPTION_SETTING`. Contact [Harness Support](mailto:support@harness.io) to enable this setting.
-      :::
+Select one of the following reasons and provide relevant details:
 
- 
+- **Compensating controls**: Your organization has controls (e.g., firewall, IPS) in place that reduce the risk posed by this issue.  
+- **Acceptable use**: The flagged practice is acceptable based on internal security policies.  
+- **Acceptable risk**: The risk is low, and remediation would require significant resources or impact functionality.  
+- **False positives**: The scanner flagged a non-issue. Confirmed by a security assessor or internal review.  
+- **Fix unavailable**: No known fix or remediation steps currently exist for the issue.  
+- **Other**: Provide a detailed technical explanation for why the issue should be exempted.
 
-## Good practice: Review and update STO exemptions periodically
+#### Further Description
+
+Add any technical context, mitigations, or supporting information that will help the reviewer understand why the exemption is justified.
+
+#### URL Reference
+
+Add a link to supporting documentation, source code, or any relevant resource that provides additional context.
+
+
+After completing the form, click **Create Request** to submit the exemption.
+Once the exemption request is submitted:
+- Inform your **Security Testing AppSec** reviewer.  
+- Ensure they have enough context and links to make a well-informed decision.
+
+### Create Exemption Request for Occurrences within Issue
+
+To request an exemption for selected occurrences of an issue, the exemption scope must be set to the [Target](#where-do-you-want-this-issue-to-be-exempted) level. To begin, [navigate to the **Vulnerabilities** tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results).
+
+1. In the **Vulnerabilities** tab, locate and select the specific issue for which you want to request an exemption. This opens the **Issue Details** pane on the right.
+2. In the **Issue Details** pane, click the **Occurrences** tab.
+3. Select the occurrences for which you want to request the exemption.
+
+<DocImage path={require('./static/request-occurrence-exemption.png')} width="700%" height="70%" title="Click to view full-size image" />
+
+4. Review your selections and click the **Request Occurrence Exemption** button. This opens the **Request Exemption** dialog box.
+
+<DocImage path={require('./static/exemption-at-occurrence-level.png')} width="40%" height="40%" title="Click to view full-size image" />
+
+If you select **all** occurrences of the issue:
+    - The option **Exempt all future occurrences discovered for this issue** at the bottom becomes available. Checking this option converts the request from an occurrence-level exemption to an issue-level exemption. This ensures all future occurrences of the issue will automatically be exempted.
+    - If any occurrences in the list are already exempted, this option will be disabled to prevent conflicts. To enable it, cancel the existing exemption requests for those occurrences. Once done, select all occurrences again and recreate the exemption request, the option should now be available to check or uncheck.
+
+Follow the steps in the [Submit Exemption Request](#submit-exemption-request) section to complete and submit your request.
+
+## View Issue Exemptions
+
+You can view all exemption requests from the **Exemptions** section in the left navigation. This section is accessible from your **Project**, **Organization**, and **Account** views. Each scope displays exemption requests relevant to that level:
+
+- The **[Project-level Exemptions](#view-exemptions-at-the-project-level)** section shows requests submitted for that specific project.
+- The **[Organization-level Exemptions](#view-exemptions-at-the-organization-level)** section shows requests across all projects within the organization.
+- The **[Account-level Exemptions](#view-exemptions-at-the-account-level)** section lists requests across projects from multiple organizations under the account.
 
 :::note
-
-These workflows require [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) user permissions.
-
+Exemption requests list you see at the **Organization** and **Account** views are still subject to your project-level view permissions. Refer to [Permissions for exemption requests](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) to learn more.
 :::
 
-It is good practice for a [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) user in your organization to review all exemptions periodically and update the status of individual exemptions as needed. 
+In the **Exemptions** sections, the requests are displayed in tabs presenting their status, each request in the **Pending** tab includes:
 
-To review all exemptions, select **Security Testing Orchestration** > **Exemptions** in the left menu. This page shows the high-level information for all pending, approved, rejected, and expired exemptions. 
+- **Severity**: e.g., High  
+- **Issue**: e.g., `json5@2.2.0: Prototype Pollution`  
+- **Scope**: Requested exemption scope – Project, Pipeline, or Target  
+- **Reason**: e.g., False Positive, Acceptable Use  
+- **Exemption Duration**: e.g., Exempted for all time  
+- **Requested by**: User who submitted the request  
+- **Actions**: Based on your permissions and request status - Approve, Reject, Cancel, Reopen
 
-You can view the **Time Remaining** for approved exemptions and **Requested Duration** for pending, rejected, and expired exemptions. 
+<DocImage path={require('./static/view-exemptions.png')} width="100%" height="100%" title="Click to view full-size image" />
 
-SecOps users can do the following in this page:
+Here are the columns that are specific to status tab.
+- **Pending**: Displays severity, issue, scope, reason, exemption duration, requested by, and action buttons such as *Approve*, *Reject*, or *Cancel*.
+- **Approved**: Shows *Approved by*, *Time remaining*, *Approved at*, *Requested by*, with
+actions to *Reject* or *Cancel*.
+- **Rejected**: Displays *Requested by*, *Rejected by*, and options to *Reopen*, or *Approve* and *Cancel*.
+- **Expired**: Displays *Requested by*, with options to *Approve*, *Reopen*, or *Cancel*.
 
-* Reject pending and approved exemptions
-* Approve pending and rejected exemptions
-* Re-open expired exemptions
-* Cancel (delete) pending, approved, rejected, or expired exemptions
+:::tip
+For details on exemption request statuses and actions, refer [Exemption Request Lifecycle](/docs/security-testing-orchestration/exemptions/manage-exemptions#issue-exemption-lifecycle). To learn how to manage requests, [refer Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions).
+:::
+
+Clicking an exemption request opens the **Issue Details** pane. At the top right of the side panel, you'll see the **Exemption Status** button, which provides a complete overview of the request along with the actions available to you (based on your permissions).
+
+<DocImage path={require('./static/exemption-details-side-pane.png')} width="100%" height="100%" title="Click to view full-size image" />
+
+Clicking on the **Exemption Status** button shows:
+
+- **Current Status:** Indicates the state of the request — `Pending`, `Approved`, `Rejected`.
+- **Requested By:** Displays the user who created the exemption request and the relative time since it was submitted (e.g., `David · 7 days ago`).
+- **Requested Duration:** Shows the time period for which the exemption is requested (e.g., `7 days`, `30 days`).
+- **Scope:** Indicates the exemption's intended application scope, such as Target-level, Pipeline-level, or Project-level.
+- **Reason:** Selected justification category provided during request creation (e.g., `Acceptable Risk`, `False Positive`, `Not Exploitable` etc.).
+- **Comments:** Displays the latest comment added by a reviewer during the approval or rejection process.
+- **Description:** Optional detailed context added by the requester.
+- **Response Actions:** If you have the [required permissions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions), available actions include **Approve**, **Reject**, **Cancel**, or **Re-open**, depending on the current request state.
 
 
-   ![](../use-sto/static/exemption-security-review.png)
+### View exemptions at the Project level
+
+- Make sure you have the [required permissions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) to view the requests.
+- In your Harness project, go to the **left navigation** and click **Exemptions**.
+
+This page displays exemption requests from the selected project.
+
+### View exemptions at the Organization level
+
+To view all exemption requests across projects in an organization:
+
+- Make sure you have the [required permissions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) to view the requests.
+- In Harness, select the **Organization** from the top breadcrumb.
+- In the left navigation, click **Exemptions**.
+
+This page displays exemption requests from all projects within the selected organization that you have access to.
+
+<DocImage path={require('./static/view-exemptions-org.png')} width="100%" height="100%" title="Click to view full-size image" />
+
+### View exemptions at the Account level
+
+To view exemption requests across the entire account:
+
+- Make sure you have the [required permissions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) to view the requests.
+- In Harness, select the **Account** from the top breadcrumb.
+- In the left navigation, click **Exemptions**.
+
+This page displays exemption requests from all projects across the organizations you have access to.
+
+<DocImage path={require('./static/view-exemptions-account.png')} width="100%" height="100%" title="Click to view full-size image" />

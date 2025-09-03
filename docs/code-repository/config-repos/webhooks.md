@@ -50,3 +50,27 @@ You can also [edit the webhook](#edit-or-delete-a-webhook) and use the **Enabled
 2. Locate the webhook that you want to edit or delete, select **More options** (&vellip;), and then select **Edit** or **Delete**.
 
 You can also edit webhooks by selecting them directly on the webhooks list.
+
+## Viewing Webhook Executions
+
+After creating a webhook, you can monitor its activity and debug issues by viewing its execution history:
+
+1. Go to the repository in Harness Code Repository.
+
+2. Click on the **Webhooks** tab.
+
+3. Select the webhook (e.g., jira-webhook) you want to inspect.
+
+4. Switch to the **Executions** tab to view a log of triggered events, including:
+
+    - Timestamp of execution
+
+    - Event type (e.g., PR created, branch updated)
+
+    - Request payload and server response
+
+    - Status (Success or Failure)
+
+<DocImage path={require('./assets/webhook-execution.png')} />
+
+You can click **View** under **Request Payload** or **Server Response** to inspect the data exchanged for each event.

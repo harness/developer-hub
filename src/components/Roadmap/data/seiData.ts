@@ -2,85 +2,114 @@ import { Horizon } from "./roadmapData";
 
 export const SeiData: Horizon = {
   Now: {
-    description: "Q3, 2024, Aug - Oct 2024",
+    description: "Q3, Aug 2025 - Oct 2025",
     feature: [
       {
-      tag: [{ value: "Enhanced Insigths" }],
-      title: "Panorama Insight Dashboards (Beta)",
-      description: "Provide organization-wide and holistic insights for executives to have a comprehensive view of productivity, efficiency, and developer experience."
+        tag: [{ value: "AI" }, { value: "Insights" }],
+        title: "AI Summaries and Recommendations",
+        description: "AI-first summarization of insights, including clear recommendations for managers and leaders to drive change.",
       },
       {
-      tag: [{ value: "Enhanced Insigths" }],
-      title: "AI Productivity Insights (Beta)",
-      description: "Measure the impact of AI code assistant tools on developers' velocity and code quality."
+        tag: [{ value: "AI" }, { value: "Insights" }],
+        title: "AI Insights",
+        description: "Track usage, cost, and impact of AI agent(s) across Productivity and Efficiency dashboards, reported across organization and teams.",
       },
       {
-        tag: [{ value: "Data Accuracy" }],
-        title: "Built-in Data Ingestion Monitoring and Validation",
-        description: "Monitor and validate data ingestion inside the product, allowing customers to monitor the data ingestion, proactively notify potential issues, and run spot checks for specific data points.",
+        tag: [{ value: "Integrations" }],
+        title: "ServiceNow Integration (GA)",
+        description: "Plug ServiceNow into Harness SEI for computing MTTR and CFR.",
       },
       {
-        tag: [{ value: "Easy Adoption" }],
-        title: "Automated Identity Consolidation",
-        description: "Streamline management of identities from integrations and contributors in SEI. This new flow reduces the integration onboarding time and simplifies the complexity for customers to manage the identity to contributor matches.",
+        tag: [{ value: "Onboarding" }],
+        title: "Intelligent Teams Onboarding",
+        description: "Smooth onboarding of teams with team-level defaults and intelligent auto-inferring of team settings.",
       },
     ],
   },
 
   Next: {
-    description: "Q4, 2024, Nov 2024 - Jan 2025",
+    description: "Q4, Nov 2025 - Jan 2026",
     feature: [
       {
-        tag: [{ value: "Easy Adoption" }],
-        title: "Automated Collection Builder",
-        description: "Automate and accelerate collection creation and simplify collection maintenance.",
+        tag: [{ value: "AI" }, { value: "New Feature"}],
+        title: "AI Efficiency Agent",
+        description: "Daily or weekly developer briefs, focus zones, manager briefs, and planning assistance.",
       },
       {
-        tag: [{ value: "Enhanced Insights" }],
-        title: "Team Transformation and OKR Tracking",
-        description: "Track transformation and OKR for each team, providing a clear view of progress and identifying areas to improve.",
+        tag: [{ value: "Actionability" }],
+        title: "Scoring, Goals, KPIs & Benchmarks",
+        description: "Drive accountability and transformation with scores, goals, and KPIs.",
       },
       {
-        tag: [{ value: "Enhanced Insights" }],
-        title: "DORA Enhancement",
-        description: "Enhance the correlation in DORA.",
+        tag: [{ value: "Insights" }],
+        title: "Benchmarks",
+        description: "Help managers understand good and bad vs. industry benchmarks.",
       },
-	  
+      {
+        tag: [{ value: "Insights" }],
+        title: "Surveys",
+        description: "Measure Developer Satisfaction with built-in surveys. Correlate developer sentiment with metrics to draw deep insights.",
+      },
+      {
+        tag: [{ value: "Onboarding" }],
+        title: "Harness Delegate",
+        description: "Seamless and secure setup with Harness delegates for on-premises connectivity.",
+      },
      ],
   },
   
   Later: {
-    description: "Q1 2025+, Feb 2025 & beyond",
+    description: "Feb 2026 & Beyond",
     feature: [
       {
-        tag: [{ value: "Enhanced Insights" }, { value: "AIDA"}],
-        title: "Personalized Team Recommendations",
-        description: "Offer recommendations for improving productivity, removing bottlenecks, enhancing developer experience based on qualitative and quantitative insights, powered by Harness AIDA.",
+        tag: [{ value: "Insights" }, { value: "New Feature" }],
+        title: "Cohort Analysis",
+        description: "Ability to create dynamic cohorts and run experiments.",
       },
       {
-        tag: [{ value: "DX Survey" }],
-        title: "Advanced Developer Experience Survey Beta",
-        description: "Measure developer experience through customizable survey templates and benchmark the result across your organization and industry. The results, combined with quantitative insights generated from the SDLC tools, give leaders a comprehensive picture of developer productivity and delivery efficiency.",
+        tag: [{ value: "Insights" }, { value: "New Feature" }],
+        title: "Canvas",
+        description: "A customizable tab to carry over utilized metrics and widgets.",
       },
       {
-        tag: [{ value: "Enhanced Insights" }],
-        title: "Proactive Insights",
-        description: "Provide insight based on historical trends.",
+        tag: [{ value: "New Feature" }],
+        title: "Planning",
+        description: "Accurate forecasting and planning built on historical performance to prevent overcommitment and drive team satisfaction.",
       },
       {
-        tag: [{ value: "Easy Adoption" }],
-        title: "Fast Onboarding Mode",
-        description: "Initiate onboarding with partial data ingestion to accelerate the initial onboarding process. This new mode gives instant data feedback to admins, helps identify possible integration issues, and minimizes the time to generate the first insight.",
+        tag: [{ value: "New Feature" }],
+        title: "Capitalization",
+        description: "Automate R&D costs for quick and auditable software capitalization reporting.",
+      },
+    ],
+  },
+  Released: {
+    description: "What has been released",
+    feature: [
+      {
+        tag: [{ value: "User Experience" }, { value: "New Features" }],
+        title: "SEI 2.0",
+        description:
+          "Brand new SEI 2.0 implementation optimized for low latency and near real-time access. Comes with out-of-the-box Efficiency, Productivity and Business Alignment insights, consistently reported across the entire organization.",
+        link:"http://localhost:3000/docs/category/sei-recommended",
       },
       {
-        tag: [{ value: "Easy Adoption" }],
-        title: "Federated Team Configuration",
-        description: "Empower teams throughout your organization to design insights dashboard autonomously. This feature reduces onboarding time and enables teams to customize insights according to their specific needs independently.",
+        tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance" }],
+        title: "Automated Developer and Organization Management",
+        description:
+          "Build a completely automated Developer and Org Tree management system, which self-refreshes as the organization evolves.",
       },
       {
-        tag: [{ value: "Platform" }],
-        title: "BYOK support",
-        description: "Support Bring Your Own Key (BYOK).",
+        tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance" }],
+        title: "Decentralized Management",
+        description:
+          "SEI 2.0 provides a decentralized management experience that empowers SEI administrators to manage the organization and profiles, while delegating team management to team managers.",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Faster Integrations",
+        description:
+          "Integrations now work faster and in near real-time for accurate and actionable insights.",
       },
     ],
   },

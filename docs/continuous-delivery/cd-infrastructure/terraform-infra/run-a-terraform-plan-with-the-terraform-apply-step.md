@@ -219,7 +219,7 @@ source = "git::https://github.com/your-organization/your-private-module.git"
 
 :::tip
 
-The ability to authenticate with HTTPS is new! Here is a demo on its functionality:
+The ability to authenticate with HTTPS is new! The Minimum required delegate version is: 83401. Here is a demo on its functionality:
 
 <DocVideo src="https://www.loom.com/share/bb8b9e4996f14bf0a16839849b0b72e4?sid=3befc405-7c4d-4f21-afe0-c36e2962b566" />
 
@@ -515,22 +515,26 @@ Do not use the **Output Value**, for example `<+secrets.getValue("terraform_outp
 A secret is masked in Harness logs, but you can write it to a file like this:
 
 ```
-echo "<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>" > /path/to/file.txt
+cat <<EOF > apply_outputs.json
+<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>
+EOF
 ```
+
+Above example will pass the content of Terraform apply outputs as-is into the file including quotes, etc.
 
 Here's an example of decrypted Terraform JSON output:
 
 ```json
 {
-  test-output-name1: {
-    sensitive: false,
-    type: string,
-    value: test-output-value1
+  "test-output-name1": {
+    "sensitive": false,
+    "type": "string",
+    "value": "test-output-value1"
   },
-  test-output-name2: {
-    sensitive: false,
-    type: string,
-    value: test-output-value2
+  "test-output-name2": {
+    "sensitive": false,
+    "type": "string",
+    "value": "test-output-value2"
   }
 }
 ```
@@ -539,7 +543,7 @@ Here's an example of decrypted Terraform JSON output:
 
 To extract specific values from the encrypted Terraform output, users can use tools like jq to parse and retrieve individual values from the JSON output.
 
-To parse a file using the jq tool, its content must be in a valid JSON format.
+To parse a file using the jq tool, its content must be in a valid JSON format. jq binary should be installed on the delegate.
 
 For example, use the following command to extract the value for `test-output-name1`:
 ```
@@ -566,6 +570,53 @@ This option makes is useful only if you do not have a Terraform backed configure
 
 If the Terraform Apply step is configured to skip state storage, and there is no backend configured in your Terraform files, you should not add a rollback step, as this is an invalid setup. Rollback is impossible if there is no state file.
 
+
+## Create remote workspace with prefix
+
+:::note
+This setting is only available when the Configuration Type is **Inline**.
+
+This option is available only on delegate version `86400` or later.
+:::
+
+When using a [remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a workspace **prefix**, Terraform does not automatically create the workspace if it doesn’t already exist. This can cause pipeline failures with errors like:
+
+`Error: Currently selected workspace "my-app-dev" does not exist`
+
+To address this, Harness provides the **Create remote workspace with prefix** option. When this option is enabled:
+
+- If the remote workspace does **not** exist, Harness automatically creates it and continues the execution.
+- If the remote workspace **does** exist, Harness exports it to the `TF_WORKSPACE` environment variable so Terraform uses it.
+- If both the step configuration and environment variable specify a workspace, the **step configuration takes precedence**.
+
+:::info
+To enable automatic workspace selection when a workspace is configured in the step settings, this flag **must** be enabled.
+
+If you prefer not to use this flag, you can manually configure the workspace using the `TF_WORKSPACE` environment variable.
+
+**Rollback does not delete workspaces** created using this option. Workspace cleanup must be handled manually.
+
+:::
+
+<details>
+<summary>This is how the YAML would look like</summary>
+
+
+```yaml
+- step:
+    type: TerraformApply
+    name: Terraform Apply
+    identifier: Terraform_Apply
+    timeout: 10m
+    spec:
+      provisionerIdentifier: test
+      configuration:
+        type: Inline
+        createRemoteWorkspaceWithPrefix: true
+        spec:
+          configFiles: {}
+```
+</details>
 
 ## Command line options
 

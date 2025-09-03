@@ -15,7 +15,7 @@ export default function AR() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img width={64} src={`${baseUrl}img/icon_artifact_registry.svg`} />
-            <h1>Artifact Registry (BETA)</h1>
+            <h1>Artifact Registry</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/kb">

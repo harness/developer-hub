@@ -6,7 +6,7 @@ sidebar_position: 10
 ---
 
 :::info note
-This feature is currently behind two feature flags: `CHAOS_SRM_EVENT` and `SRM_INTERNAL_CHANGE_SOURCE_CE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature is currently behind `SRM_INTERNAL_CHANGE_SOURCE_CE` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 
@@ -15,7 +15,7 @@ For example, let's say you use SRM to monitor services and correlate change even
 
 ## Connect a fault to a monitored service
 
-For detailed instructions on connecting a chaos fault to a monitored service, go to [Connect a fault to a monitored service](/docs/chaos-engineering/integrations/use-chaos-with-srm#connect-a-fault-to-a-monitored-service).
+For detailed instructions on connecting a chaos fault to a monitored service, go to [Chaos Engineering Overview](/docs/chaos-engineering/overview).
 
 
 ## Check the impact of a fault on a monitored service

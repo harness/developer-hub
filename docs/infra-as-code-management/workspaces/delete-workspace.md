@@ -1,5 +1,5 @@
 ---
-title: Delete a workspace
+title: Delete Workspace
 description: Learn how to delete a workspace.
 sidebar_position: 90
 ---
@@ -10,7 +10,9 @@ import TabItem from '@theme/TabItem';
 In cases where your workspace has become redundant and you no longer need it, you can delete it from your Harness account. As a safeguard, Harness have several confirmation steps to ensure that workspaces aren't mistakenly deleted.
 
 :::warning
-Deleting a workspace will remove it from Harness along with all associated resources.
+Deleting a workspace will remove your workspace, along with it's associated state file from Harness, but will not remove any of your resources.
+
+Resources are only destroyed if you run your workspace through [a destroy pipeline](/docs/infra-as-code-management/workspaces/destroy-workspaces).
 :::
 
 ### Prerequisites
@@ -42,7 +44,7 @@ Deleting a workspace will remove it from Harness along with all associated resou
         ```
         ---
         :::info deactivate workspace
-        If your workspace is still active, deactivate it before calling the above endpoint with a [destroy-workspace pipeline](https://developer.harness.io/docs/infra-as-code-management/use-iacm/provision-workspace#destroy-a-workspace)
+        If your workspace is still active, deactivate it before calling the above endpoint with a [destroy-workspace pipeline](/docs/infra-as-code-management/workspaces/destroy-workspaces).
         :::
     </TabItem>
 </Tabs>

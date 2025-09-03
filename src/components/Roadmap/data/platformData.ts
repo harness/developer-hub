@@ -1,164 +1,84 @@
+import { link } from "fs";
 import { Horizon } from "./roadmapData";
 export const platformData: Horizon = {
-    Released: {
-    description: "What has been released",
-
-    feature: [
-      {
-        tag: [{ value: "Secure" }],
-        title: "OIDC Support for GCP",
-        description:
-          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your GCP resources without secrets or credentials",
-      },
-      {
-        tag: [{ value: "Secure" }],
-        title: "Encrypted SAML",
-        description:
-          "Enable encrypted SAML to allow Harness integration with your IDP",
-      },
-      {
-        tag: [],
-        title: "Gov cloud support for Azure Key Vault",
-        description:
-          "Support government cloud for Azure Key Vault connectors with username/password",
-      },
-      {
-        tag: [{ value: "Session Management" }],
-        title: "Absolute session timeout",
-        description:
-          "For enhanced security, users can be logged out of their account after the configured timeout, regardless of any activity",
-      },
-      {
-        tag: [{ value: "SMP" }],
-        title: "Supported modules",
-        description:
-          "Continuous Delivery and GitOps, Continuous Integration, Security Test Orchestration, Feature Flags, Service Reliability Management, Chaos Engineering, Cloud Cost Management - Beta (AWS Cost Visibility)",
-      },
-      {
-        tag: [{ value: "SMP" }],
-        title: "Backup and restore",
-        description:
-          "Use Velero to back up and restore Helm-based installations of Harness Self-Managed Enterprise Edition",
-      },
-      {
-        tag: [{ value: "SMP" }],
-        title: "Disaster Recovery",
-        description:
-          "Setup a disaster recovery (DR) cluster for better node failure tolerance",
-      },
-      {
-        tag: [{ value: "Secure" }],
-        title: "OIDC Support for AWS",
-        description:
-          "Use OpenID Connect (OIDC) to allow Harness to communicate directly with your AWS resources without secrets or credentials",
-      },
-      {
-        tag: [{ value: "Notify" }],
-        title: "Centralized Notification system",
-        description:
-          "Centralized notification system to configure delegate notifications",
-      },
-      {
-        tag: [],
-        title: "Audit Trails",
-        description: "Send audit events to Splunk and GCS bucket",
-      },
-      {
-        tag: [{ value: "Scale" }],
-        title: "Test Account Cluster",
-        description:
-          "Customers can be onboarded in a new cluster for their test accounts",
-      },
-      {
-        tag: [],
-        title: "Account Migration",
-        description:
-          "Customers can request to be migrated to a different SaaS cluster",
-      },
-      {
-        tag: [],
-        title: "Multi-tenant SaaS in EU",
-        description:
-          "Customers can request to be onboarded to a multi-tenant Harness SaaS cluster in the EU region",
-      },
-      {
-        tag: [{ value: "SMP" }],
-        title: "External Database",
-        description:
-          "Configure external databases as a self-managed solution",
-      },
-    ],
-  },
   Now: {
-    description: "Q4 2024, Nov 2024 - Jan 2025",
+    description: "🚧 Q3 2025, Aug 2025 - Oct 2025",
     feature: [
       {
-        title: "List UI Improvements",
+        title: "Self Serve signup and payment flow",
         description:
-          "Revamping and optimizing the list view feature in our application's user interface across all modules",
+          "Allow users to sign up and manage their subscriptions directly from the Harness UI.",
+        tag: [],
+      },
+      {
+        title: "Audit log streaming in NDJSON",
+        description:
+          "Ability to stream audit logs in New Line Delimited (NDJSON) format.",
+        tag: [{ value: "Audit Trail" }],
+      },
+      {
+        title: "Hashicorp Vault: JWT enhanced claims",
+        description:
+          "Allows users to include additional JWT claims (e.g., environment ID) for fine-grained access control and stricter secret isolation, improving security and compliance.",
+        tag: [{ value: "Connectors" }],
+      },
+      {
+        title: "Customize Harness UI",
+        description:
+          "Organisations can display their own logo, and favicon.",
         tag: [{ value: "UI" }],
       },
       {
-        tag: [{value: "Pipeline"}],
-        title: "Pipeline Data Retention",
+        title: "Granular Permissions for Secrets",
         description:
-          "Extended Data Retention, Data Archiving, and Compliance capabilities",
-      },
-      {
-        tag: [{ value: "Pipeline" }, { value: "Template" }],
-        title: "Template Library",
-        description: "Open Source repository for Pipeline Templates",
-      },
-      {
-        tag: [{value: "Pipeline"}],
-        title: "Flexible Templates that Support User-Injected Steps",
-        description: "Users can pull a template into their pipeline and inject a step into it.",
-      },
-      {
-        tag: [{value: "Pipeline"}],
-        title: "Bulk Reconciliation when a User Update a Template ",
-        description: "When a user updates a template, they can now bulk update each pipeline referring to the template.",
-      },
-      {
-        tag: [{ value: "Pipeline" }],
-        title: "Priority Queue for Pipeline Execution",
-        description: "",
-      },
-      {
-        tag: [],
-        title: "Custom banners",
-        description: "Display custom banners in the Harness UI",
-      },
-      {
-        tag: [{ value: "Delegate" }],
-        title: "UBI9 upgrade",
-        description: "Update the Delegate base image from redhat/ubi8-minimal:8.10 to redhat/ubi9-minimal:9.4",
-      },
-      {
-        tag: [{ value: "Secure" }],
-        title: "OIDC Support for secret managers",
-        description:
-          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider secret manager without secrets or credentials",
-      },
-      {
-        tag: [],
-        title: "Console log line limit",
-        description: "Ability to increase the console log line limits",
-      },
-      {
-        tag: [],
-        title: "Auto Discovery of Entities in Git",
-        description: "When an entity is created in Git it is created in Harness as well.",
+          "Users will have separate Create and Edit permissions for secrets, instead of a single combined 'Create/Edit' permission, enabling more granular access control and improved security alignment.",
+        tag: [{ value: "Secrets" }, { value: "Access Control" }],
       },
     ],
   },
-  Later: {
-    description: "Q1 2025+, Feb 2025 & beyond",
+  Next: {
+    description: "🪄 Q4 2025, Nov 2025 - Jan 2026",
     feature: [
       {
-        tag: [{ value: "Pipeline" }, { value: "Insights" }],
-        title: "Pipeline Analytics",
-        description: "",
+        title: "Support Kerberos authentication for proxy in Delegate",
+        description:
+          "Enables secure proxy authentication using Kerberos in Delegate, supporting enterprise environments with on-prem Kubernetes deployments.",
+        tag: [{ value: "Delegate" }],
+      },
+      {
+        title: "Automated moving of Dashboards across organizations",
+        description:
+          "Allows users to move dashboards across organizations or accounts—whether within the same production cluster or across different ones—to support collaboration and reuse.",
+        tag: [{ value: "Dashboard" }],
+      },
+      {
+        title: "Alerting on platform limits",
+        description:
+          "Proactive notifications when approaching platform usage limits to prevent service disruptions and optimize resource planning.",
+        tag: [{ value: "Platform" }],
+      },
+      {
+        title: "Event Streaming",
+        description:
+          "Real-time streaming of data to external systems to support advanced monitoring and observability.",
+        tag: [{ value: "Insights" }],
+      },
+      {
+        title: "Delegate support in Harness MCP Server",
+        description:
+          "Delegate support in Harness MCP Server",
+        tag: [{ value: "Delegate" }],
+      },
+    ],
+  },
+  Later : {
+    description: "🔭 Q1 2026+, Feb 2026 & beyond",
+    feature: [
+      {
+        title: "Increased Data Retention period",
+        description:
+          "Extends the data retention period, allowing users to access and analyze historical data for a longer duration.",
+        tag: [],
       },
       {
         tag: [{ value: "Pipeline" }],
@@ -167,29 +87,103 @@ export const platformData: Horizon = {
           "Enable complex flows such as parallel execution, stage grouping, etc.",
       },
       {
-        tag: [{ value: "Access Control" }],
-        title: "Centralized view of permissions on a resource",
+        title: "Export audit trail as CSV",
         description:
-          "Centralized visibility into which permissions have been granted to whom and on what resources",
-      },
-      {
-        tag: [{ value: "Policy" }],
-        title: "Policy to govern projects",
-        description:
-          "Support to allow policy to govern projects",
+          "Allows users to export the audit trail in CSV format for easier analysis, sharing, and record-keeping.",
+        tag: [{ value: "Audit Trail" }],
       },
       {
         tag: [{ value: "Notify" }],
-        title: "Customized notification body text",
+        title: "Service account token expiration",
         description:
-          "Create and manage customized notification body text",
-      },    
+          "Configure service account token expiration notifications through the centralized notification system.",
+      },
       {
-        tag: [{ value: "SMP" }],
-        title: "Supported modules",
+        title: "Move Project across Organizations",
         description:
-          "Infrastructure as Code Mgmt, Internal Developer Portal, Supply Chain Security, Code Repository",
+          "Move a project from one organization to another to support scenarios like ownership change.",
+        tag: [{ value: "Platform" }],
       },
     ],
   },
+  Released: {
+    description: "✅ What has been released",
+    feature: [
+      {
+        title: "Impersonate a user",
+        description:
+          "Ability to impersonate a user allowing an impersonator to perform actions on the user behalf. This helps admins ensure that all users have desired access to resources.",
+        tag: [{ value: "Access Control" }],
+        link: "/docs/platform/role-based-access-control/user-impersonation/"
+      },
+      {
+        title: "Support Access control using tags for connectors",
+        description:
+          "Add connectors as resources in a resource group “By Tag,” enabling dynamic inclusion or exclusion based on assigned tags." ,
+        tag: [{ value: "Access Control" }],
+        link: "/docs/platform/connectors/manage-access-control-for-connectors/#configure-roles"
+      },
+      {
+        tag: [{ value: "Access Control" }, {value: "Pipeline"}],
+        title: "Pipeline Create/Edit permission split",
+        description:
+          "Split Pipeline 'Create/Edit' permission into 'Create' and 'Edit' permissions",
+        link: "/docs/platform/role-based-access-control/rbac-in-harness/"
+      },
+      {
+        title: "Proxy support in Delegate auto upgrader",
+        description:
+          "Enhance the Delegate auto-upgrader to support proxy configuration through environment variables.",
+        tag: [{ value: "Delegate" }],
+        link: "/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings/#proxy-settings-for-delegate-upgrader"
+      },
+      {
+        tag: [{ value: "Notify" }, { value: "Delegate" }],
+        title: "Centralized notification for Delegate",
+        description:
+          "Configure delegate notifications through the centralized notification system.",
+        link: "/docs/platform/notifications/centralised-notification#delegate-notifications"
+      },
+      {
+        tag: [{ value: "Notify" }, { value: "Pipeline" }],
+        title: "Default notification template for notification rules",
+        description:
+          "Allows setting a default notification template that is automatically applied to notification rules when no specific template is selected.",
+        link: "/docs/platform/notifications/default-notification-template/"
+      },
+      {
+        tag: [{ value: "Dashboard" }],
+        title: "Programatic Dashboard management",
+        description:
+          "Provides Dashboard APIs to manage folders and dashboards, along with a Terraform module that uses these APIs to enable automated dashboard management.",
+        link: "https://apidocs.harness.io/tag/dashboards"
+      },
+      {
+        tag: [{ value: "Dashboard" }],
+        title: "Step Data on Custom Dashboards",
+        description:
+          "Enables creation of custom dashboards using complete pipeline step execution data.",
+      },
+      {
+        tag: [{value: "Pipeline"}, { value: "Notify" }],
+        title: "Support for all channels for Custom notifications",
+        description:
+          "Extends custom notifications to support all available channels, providing greater flexibility in how notifications are delivered.",
+        link: "/docs/platform/templates/customized-notification-template/#how-to-attach-a-template"
+      },
+      {
+        tag: [{ value: "Secure" }],
+        title: "Reconciliation Secret Manager template changes",
+        description: "Ability to reconcile entities, such as custom secret managers or secrets, linked to a secret manager template when the referenced template is updated.",
+        link: "/docs/platform/secrets/secrets-management/reconcilation-of-secret-manager-template"
+      },
+      {
+        title: "Custom Login Message for SMP",
+        description:
+          "Allows organizations to display a custom prompt message on the login screen, typically used for legal disclaimers.",
+        tag: [{ value: "SMP" }, { value: "UI" }],
+        link: "/docs/self-managed-enterprise-edition/advanced-configurations/configure-custom-signin-message"
+      },
+    ],
+  }, 
 };

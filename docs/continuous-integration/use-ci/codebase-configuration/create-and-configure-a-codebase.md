@@ -25,6 +25,9 @@ When you add a **Build** stage to a CI pipeline, you specify where your build co
 1. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
 2. Enter a **Stage Name**. **Description** and **Tags** are optional.
 3. Make sure **Clone Codebase** is enabled. This tells Harness to clone the codebase into the build environment before running the steps in the stage.
+:::tip
+In VM runners and cloud infrastructure, the step to clone your codebase runs in a container by default. Enable the `CI_GIT_CLONE_CONTAINERLESS` feature flag to run it on the host, which is recommended for faster cloning on Windows by eliminating image download time.
+:::
 4. Configure your codebase connection.
    * To clone a repo from the [Harness Code Repository module](/docs/code-repository), select **Harness Code Repository**, and then select the repo to clone.
    * To clone a repo from a third-party Git provider, select **Third-party Git provider**, select the relevant [code repo connector](/docs/category/code-repositories), and enter the name of the repo to clone, if **Repository Name** is not automatically populated.

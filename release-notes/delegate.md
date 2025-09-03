@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-12-03T22:00 
+date: 2025-02-25T22:00 
 sidebar_position: 4
 ---
 
@@ -21,9 +21,31 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
-### Delegate Base Image Migration
+## Important feature change notice
 
-:::info
+:::danger Delegate token revocation and deletion in Terraform  (Effective October 13, 2025 & Terraform version 0.38.7)
+
+We have introduced a new argument `token_status`, for managing Delegate tokens in Terraform:
+- **Now available**: Set `token_status = "REVOKED"` to revoke a Delegate token.
+- **Current behavior**: Removing the Delegate token resource revokes the token.
+- **From October 13, 2025 & Terraform version 0.38.7**:
+  - Use `token_status = "REVOKED"` to revoke tokens.
+  - Removing the resource will **delete** the token instead of revoking it.
+
+**Action Required**: Update your automation to use `token_status = "REVOKED"` for revoking Delegate tokens before the Terraform version 0.38.7 release on October 13, 2025.
+
+:::
+
+:::info Delegate FIPS-compliant images (Only for SMP)
+
+Harness delegate now offers FIPS (Federal Information Processing Standard) compliant images compatible only with [FIPS Self-Managed Platform](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-fips-overview). This is available starting Delegate version: [25.07.86300](/release-notes/delegate#version-250786300-).
+
+:::
+
+<details>
+<summary>Previous Highlights</summary>
+
+:::info Delegate Base Image Migration
 
 Harness is planning to update the base image for its Delegate from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4`, as UBI-8 reached end-of-life on May 31st, 2024. No further updates, patches, or fixes will be provided for UBI-8, so this migration ensures continued security and compatibility. This change will take effect starting **January 6, 2025**.
 
@@ -37,12 +59,6 @@ Harness is planning to update the base image for its Delegate from `redhat/ubi8-
 **Action Required**: If you use an `init_script` or a custom Dockerfile for your Delegate image, please incorporate these updates to avoid compatibility issues.
 
 For more details on UBI9, please refer to the [UBI9 Release Notes](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/9.0_release_notes/index).
-
-:::
-
-:::info **Delegate Security Update**
-Added a critical security fix in harness secret manager for handling identities with CD workflows.
-If you are running delegates version below 799xx and using Terraform/Terragrunt features, upgrade to delegate version 799x or above immediately. Go to the [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to update the delegates.
 
 :::
 
@@ -62,6 +78,16 @@ If you have blocked Stackdriver logs using firewall rules, upgrade your delegate
 
 :::
 
+:::danger Breaking change: Updated Delegate Expiration Policy
+
+Harness has updated the delegate expiration policy to 6 months with a 2-month EOL upgrade period.
+
+Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). Delegates expire if not upgraded 6 months after the image is released. If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
+
+For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
+
+:::
+
 <details>
 <summary>Deprecation notice</summary>
 
@@ -77,29 +103,346 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
-:::danger Breaking change: Updated Delegate Expiration Policy
+</details>
 
-Harness has updated the delegate expiration policy to 6 months with a 2-month EOL upgrade period.
+## Release Notes categories
+1. [Delegate image release notes](#delegate-image-release-notes)
+2. [Delegate Helm Chart release notes](#delegate-helm-chart-release-notes)
+3. [Delegate Upgrader release notes](#delegate-upgrader-release-notes)
+4. [Delegate Terraform release notes](#delegate-terraform-release-notes)
 
-Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). Delegates expire if not upgraded 6 months after the image is released. If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
+## Delegate image release notes
 
-For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
+## August 2025
 
-:::
+### Version 25.05.85808 <!--Aug 29, 2025-->
+
+#### Fixed issues
+
+- Support connecting to harness proxy for db devops deployments. Note that this is feature is in beta. [PL-65095]
+
+### Version 25.08.86600 <!--Aug 26, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where deployments could stuck if the skip instance termination flag was enabled and the instance refresh was canceled or failed. [CDS-113194]
+- Resolved trigger failures for GitHub push events with `changedFiles` condition when using merge queue. [PIPE-29083]
+
+### Version 25.05.85807 <!--Aug 20, 2025-->
+
+#### Fixed issues
+
+- Did an optimisation to trust urls for pcf deployment early during context creation to reduce multiple trust calls in case of parallel calls. [CDS-112526]
+
+### Version 25.08.86503 <!--Aug 13, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where selecting user groups to inherit with the “All” scope option only displayed groups from the current scope, excluding those from parent scopes. It now includes all accessible user groups from parent scopes as well. [PL-59566]
+
+- Did an optimisation to trust urls for pcf deployment early during context creation to reduce multiple trust calls in case of parallel calls. The user needs to set TRUST_EARLY and ENRICH_LOGS environment variables in the delegate. [CDS-109294]
+
+### Version 25.07.86402 <!--Aug 12, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where delegates would repeatedly send execution logs. The system now stops after a set retry limit, preventing excessive log entries. [PL-64803]
+
+## July 2025
+
+### Version 25.07.86401 <!--Jul 30, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where the Helm client added a duplicate --max flag. It now checks for existing flags before appending, ensuring the command runs correctly. [CDS-110151]
+- The Salesforce connector now uses `OkHttpClient` for validation, improving reliability. The unused `authFileRef` field has been removed. Support for specifying `loginUrl` has been added to the JWT authentication flow, enabling compatibility with sandbox environments. [CDS-112477]
+
+### Version 25.07.86302 <!--Jul 30, 2025-->
+
+#### Fixed issues
+
+- Improved log-streaming performance while dispatching the logs. [CDS-111776]
+
+### Version 25.07.86301 <!-- Jul 30, 2025 -->
+
+#### Fixed issues
+
+- Customers can now use Bitbucket Cloud API authentication in IDP 2.0, IDP 1.0, IDP Git Sync, and IDP Scorecards. [IDP-6077]
+
+### Version 25.07.86300 <!--Jul 16 2025-->
+
+#### New features and enhancements
+
+- Delegate registration now makes sure FIPS delegates only register with a FIPS-enabled manager. [PL-63704]
+
+### Version 25.06.86106 <!-- Jul 15, 2025 -->
+
+#### Fixed issues
+
+- Fix for Dynatrace connector URL validation for API Token flow. [CDS-112199]
+
+### Version 25.06.86203 <!-- Jul 14, 2025 -->
+
+#### Fixed issues
+
+- Fix for IDP git integration and catalog flow not working with Github Enterprise GithubApp Authentication mode. [IDP-5945]
+
+### Version 25.06.86004 <!-- Jul 11, 2025 -->
+
+#### Fixed issues
+
+- Added debug logs to CI K8 pod cleanup flow [CI-17241]
+
+### Version 25.04.85707 <!-- Jul 08, 2025 -->
+
+#### Fixed issues
+
+- Improved log-streaming performance while dispatching the logs. [CDS-111776]
+  
+### Version 25.06.86105 <!-- Jul 08, 2025 -->
+
+#### Fixed issues
+
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. [CDS-111916]
+
+### Version 25.06.86203 <!-- Jul 08, 2025 -->
+
+#### Fixed issues
+
+- Ensures that `VirtualService` and `Service` resources are no longer included in the set of resources deleted during the canary cleanup process. [CDS-111916]
+
+### Version 25.06.86202 <!-- Jul 02, 2025 -->
+
+#### Fixed issues
+
+- Improved Kubernetes Manifest Logging: Large manifest YAMLs are now split into smaller chunks by individual resources to prevent log overload and improve readability. [CDS-111820]
+
+- Improved GitHub Enterprise support in GitOps pipelines by fixing hardcoded URLs and adding delegate access checks for PR merge steps. [CDS-111758]
+
+#### New features and enhancements
+
+- Added logging to capture Kubernetes events during delegate shutdown. This will help in better understanding and troubleshooting shutdown behaviour by providing more visibility into related cluster events. [PL-60516]
+
+## June 2025
+
+### Version 25.06.86104 <!-- June 30, 2025 -->
+
+#### Fixed issues
+
+- Added support to handle the modification of Issue Type to Work Type introduced in the latest Jira SaaS release. [CDS-111788]
+
+### Version 25.06.86103 <!--June 27, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue when the log line exceeds the maximum length, it will split into multiple lines, causing the sanitization not to detect when content is present in different lines. [CDS-111820]
+
+### Version 25.06.86102 <!-- June 26, 2025 -->
+
+#### Fixed issues
+
+- Added support for an alternative method to fetch Jenkins job details when the queueItem API returns null. [CDS-109699]
+
+### Version 25.06.86101 <!-- June 19, 2025 -->
+
+#### Fixed issues
+
+- Resolved the watcher connectivity issue for CCM to ensure we are receiving all the events from the cluster. [CCM-22905]
+
+### Version 25.06.86100 <!--June 16, 2025-->
+
+#### New features and enhancements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
+
+### Version 25.05.85806 <!--June 27, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue when the log line exceeds the maximum length, it will split into multiple lines, causing the sanitization not to detect when content is present in different lines. [CDS-111820]
+
+### Version 25.05.85905 <!--June 03, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where the lambda deployments with custom artifacts were failing for second and subsequent deployments. [CDS-110885]
+
+## May 2025
+
+### Version 25.05.85904 <!--May 30, 2025-->
+
+#### Fixed issues
+- Resolved an issue where the AWS ASG Steady State step continued polling for the Instance Refresh status until timeout, even when the status returned was Failed or Cancelled. With this fix, polling will now stop immediately, and the step will fail as expected when a Failed or Cancelled status is detected. [CDS-110706]
+
+### Version 25.05.85903 <!--May 22, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue in the Kubernetes Rolling step where the steady state check was skipped if no managed workload was present. A new flow now allows hooks to run without this check, and the change is gated by the feature flag `CDS_ENABLE_STEADY_STATE_CHECK_WITHOUT_MANAGED_WORKLOADS`. [CDS-109379]
+- Fixed an issue where clicking the **Run** button in the UI triggered an unnecessary `onSave` OPA policy call. If this call failed, pipeline inputs wouldn't render. This has now been fixed by removing the `onSave` call from the `getPipelineByIdentifier` API. If needed, the old behaviour can be restored by enabling the feature flag `PIPE_DISABLE_OPA_ON_SAVE_BLOCKING_FOR_PIPELINE_RUN`. [PIPE-26614]
+- Fixed an issue where the MergePR step failed when using GitHub account URLs without a repository name. The step now correctly handles these URLs. [CDS-107526]
+- Fixed an issue where the UI would crash when editing a newly created Manifest override using a Custom Remote Store. [CDS-107112] 
+- Improved error handling for the MergePR step to provide clearer feedback when a pull request merge fails. [CDS-109239]
+
+### Version 25.05.85805 <!--May 21, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where fetch gitlab branch was not working if the branch name had a forward slash in it. [CI-17618]
+
+### Version 25.05.85804 <!--May 15, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where `RESOURCE_EXHAUSTED: Quota exceeded` errors were repeatedly logged; these entries are now skipped in delegate logs. [PL-61945]
+
+### Version 25.05.85803 <!--May 15, 2025-->
+
+#### Fixed issues
+
+- Introduces the Feature Flag: CDS_K8S_MASK_SECRETS_IN_WRAPUP_LOGS to mask secrets in wrap up logs by breaking describe command logs by their resource.
+
+### Version 25.05.85801 <!--May 5, 2025-->
+
+#### Fixed issues
+
+- Enabled support for AWS Secret Manager in GovCloud regions using region-specific STS endpoints. [PL-61526]
+- The secret-splitting logic has been reverted. Please use [regex-based masking](https://developer.harness.io/docs/platform/delegates/manage-delegates/hide-logs-using-regex/) to hide secrets in logs instead [CDS-108477]
+- The OIDC token used for connector validation now includes the connector's name and ID. [CDS-108066]
+
+### Version 25.04.85703 <!-- May 2, 2025 -->
+
+#### Hotfix
+
+- ASG steady state step will succeed if no instance refresh found.
+
+## April 2025
+
+### Version 25.04.85702 <!-- April 15, 2025 -->
+
+#### Hotfix
+
+- For ECS deployments, the system will now fetch all attached listeners, and the required listener is expected to be present among them.
+
+### Version 25.04.85701 <!--April 23, 2025-->
+
+#### Fixed issues
+
+- SSH command step now supports OIDC. [CDS-109225]  
+- Restored the skipping of Helm Canary delete step when namespace validation fails, and corrected namespace object handling to use the proper `name` field. [CDS-109155]  
+- Fixed the issue where readiness-related attributes were removed from the manifest by adding them to the allowlist to avoid unintended filtering. [CDS-109043]  
+- Fixed folder path issues by stripping leading and trailing slashes; this fix is controlled by the feature flag `CDS_SCM_FIX_FOLDER_PATH`. [CDS-108947]  
+- Introduced an optional environment variable `HOST_NAME_COMMAND` to control the delegate's host name during registration with the backend. [PL-61219]
+- Enabled task support for `CLOUDWATCH_LOGS_DATA_COLLECTION_TASK` to enhance CloudWatch Logs data collection. [CDS-109384]
+
+### Version 25.04.85602 <!-- April 15, 2025 -->
+
+#### Hotfix
+
+- Added Nullchecks to handle errors for customers using API token for dynatrace connectors. [CDS-109040]
+
+### Version 25.02.85306 <!-- April 10, 2025-->
+
+#### Fixed issues
+
+- Fixed the dynamicHandlingOfRequestEnabled feature for the delegate. [PL-61578]  
+
+### Version 25.04.85601 <!-- April 10, 2025-->
+
+#### New features and enhancements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
+
+## March 2025
+
+### Version 25.03.85504 <!-- March 27, 2025-->
+
+#### Fixed Issues
+
+- Fixed an issue where the Harness delegate incorrectly used local container credentials instead of the OIDC access token when listing GCP projects via an OIDC-authenticated connector. This is now resolved behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`, ensuring the delegate lists projects correctly based on its IAM principal. [CDS-108481]
+
+### Version 25.03.85503 <!-- March 27, 2025-->
+
+#### Fixed issues
+
+- Added a validation check to ensure the correct client is used for OC. [CDS-107476]
+- Added support for an optional values.yml file in Helm charts. [CDS-108183]
+- Added support for anonymous authentication in Helm OCI. [CDS-108311]  
+
+
+### Version 25.03.85405 <!--  March 21, 2025 -->
+
+#### Hotfix
+
+- Fixed the slot deployment timeout issue in azure deployments [CDS-108129]
+
+### Version 25.03.85403 <!-- March 19, 2025 -->
+
+#### Fixed issues
+
+- Fixed the repository check during the test connection for GitHub App-based connectors. Now, connectors with an invalid repository will not pass the test connection. Only valid repositories will be accepted. [PIPE-24905]
+
+- Fixed an issue where GCP credential configurations could fail to process correctly in certain scenarios. [CDS-107114]
+
+- Resolved a UI crash that occurred when editing a newly created Manifest override using a Custom Remote Store. [CDS-107112]
+
+- Added support for regex patterns in ECR artifact sources. [CDS-106566]
+
+- Added support for deploying Azure WebApps using Azure CLI. This feature is available behind the Feature Flag: `CDS_AZURE_CLI_WEBAPP_DEPLOYMENT`. [CDS-107533]
+
+- Improved the file extraction process to preserve file permissions and symlinks. Previously, these attributes were not retained. This change is controlled by the Feature Flag: `CDS_TAS_ARTIFACT_BUNDLE_PRESERVE_PERMISSION_ON_EXTRACTION`. [CDS-106309]
+
+- Fixed an issue where the load balancer’s forward stickiness configuration was being reset during ECS Blue-Green deployments. Now, all stickiness settings remain unchanged. [CDS-99881]
+
+- Updated the error message for Google Cloud Function deployments that fail to reach a steady state. The message now reads: "Function couldn’t achieve steady state." instead of the previous wording. [CDS-102219]
+
+#### New features and enhancements
+
+- Updated tags in AWS Lambda and ECS deployments based on the provided configuration. [CDS-97430]
+
+
+### Version 25.02.85305 <!--  March 21, 2025 -->
+
+#### Hotfix
+
+- Fixed the slot deployment timeout issue in azure deployments [CDS-108129]
+  
+- Fixed the runtime input regex filtering for ECR artifacts [CDS-106566]
+
+- Fix the aws library upgrade issue for AWS serverless lambda deployment [CDS-107585]
 
 ## February 2025
 
-### Version 24.10.84710 <!-- February 24, 2025 -->
+### Version 24.08.83706 <!--  Feb 26, 2025 -->
+
+#### Hotfix
+
+- Added support for downloading artifact with special characters in the URl for Nexus. [CDS-102807]
+  
+
+### Version 24.12.84710 <!-- February 24, 2025 -->
 
 #### Hotfix
 
 - Resolved an issue where WinRM passwords containing special characters were not working with WinRM Kerberos authentication. [CDS-107127]
 
-### Version 25.02.85301 <!-- February 24, 2025 -->
+### Version 25.02.85300 <!-- February 24, 2025 -->
 
 #### Fixed Issues
 
 - Added a new API to send Git details in requests, ensuring services are fetched from the correct branch. [CDS-106242]
+
+### Version 25.02.85201 <!-- February 17, 2025 -->
+
+#### New features and enhancements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
+
+### Version 24.12.84709 <!-- February 12, 2025 -->
+
+#### New features and enhancements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
 
 ## January 2025
 
@@ -107,22 +450,29 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 #### Hotfix
 
-- Fixed a bug where socket files during git operations were not cleaned. (PIPE-24724)
+- Fixed a bug where socket files during git operations were not cleaned. [PIPE-24724]
+
+### Version 25.01.85000 <!-- January 28, 2025 -->
+
+#### New features and enhancements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
 
 ### Version 24.12.84708 <!-- January 16, 2025 -->
 
 #### Hotfix
 
-- Add support for Incomplete Responses from New Relic during verify step execution. (CDS-105146)
+- Add support for Incomplete Responses from New Relic during verify step execution. [CDS-105146]
 
 ### Version 25.01.84800 <!-- January 10, 2025 -->
 
-#### New features and improvements
+#### New features and enhancements
 
 :::info 
-Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` (PL-58376)
+Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` [PL-58376]
 :::
 
+- NG Immutable Delegates no longer send the profileId parameter in their requests. (PL-55697)
 - Added a new metric on the delegate side to track the number of times the delegate WebSocket reconnects. This metric, `io_harness_custom_metric_delegate_reconnected_total`, can be used to set alerts for frequent reconnections, helping identify potential issues with the delegate and enabling you to seek further assistance from Harness if needed. (PL-48535)
 
 ## December 2024
@@ -133,7 +483,7 @@ Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-min
 - Fixed an issue that prevented users from retrieving secrets from the HashiCorp Vault when the path contained special characters. The solution involved enhancing support for **"dots"** in dynamic secret reference expressions, ensuring seamless retrieval of such secrets.
 (PL-58771, ZD-73710, ZD-73724)
 
-#### New features and improvements
+#### New features and enhancements
 - Updated ```“org.bouncycastle:bcpkix-jdk18on”``` to version 1.78 and removed ```“org.bouncycastle:bcprov-jdk15on”``` (version 1.70) from the Delegate. (PL-58474)
 
 ### Version 24.11.84311 <!--  December 16, 2024 -->
@@ -1612,7 +1962,7 @@ Harness NextGen release 79516 includes the following changes for the Harness Del
 
   To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
 
-  For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
+  For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email-step/).
 
 - Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
 
@@ -1987,3 +2337,71 @@ This release introduces the following security enhancements:
 Harness NextGen release 78214 includes no changed features or fixes for the Harness Delegate.
 
 </details>
+
+## Delegate Helm Chart release notes
+
+## July 2025
+
+### Version 1.0.27 <!--July 31, 2025-->   
+
+#### Fixed issues
+
+- Resolved an issue in the upgrader config when proxy values were not provided during Helm deployment. [PL-64515]
+
+### Version 1.0.26 <!--July 20, 2025-->
+
+#### New features and enhancements
+
+- Added support for proxy settings in the Delegate Upgrader using environment variables. This allows the upgrader to work in environments that require proxy access. [PL-48062]
+
+## June 2025
+
+### Version 1.0.25 <!--June 20, 2025-->
+
+#### New features and enhancements
+
+- Updated the Delegate Helm chart to provide greater control over Horizontal Pod Autoscaling (HPA). If you prefer to skip the default CPU or memory-based autoscaling behavior, you can now disable it by setting the target utilization to `0`. [PL-63189]
+
+## April 2025
+
+### Version 1.0.24
+
+#### New features and enhancements
+- Added option in helm chart to configure imagePullSecrets for Upgrader CronJob. The option is configured with `--set upgrader.imagePullSecret=<my_secret_name>` [PL-61783]
+
+## Delegate Upgrader release notes
+
+## August 2025
+
+### Version 1.8.0 <!--Aug 26, 2025-->
+
+#### New features and enhancements
+
+- Upgraded the Delegate Upgrader image to Go 1.24.4 and added support for building a FIPS-compliant image. [PL-64773]
+
+## July 2025
+
+### Version 1.7.0 <!--Jul 16, 2025--> 
+
+#### New features and enhancements
+
+- Added support for proxy settings in the Delegate Upgrader using environment variables. This allows the upgrader to work in environments that require proxy access. [PL-48062]
+
+## April 2025
+
+### Version 1.6.0
+
+#### Fixed issues
+- Fixed an issue where the delegate images were being pulled from GAR even though a registry mirror was configured. [PL-62342]
+
+#### New features and enhancements
+- Added support for [automatic upgrades](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#docker-delegate) for Docker delegates brought up using the `docker run` command. [PL-41879]
+
+## Delegate Terraform release notes
+
+## August 2025
+
+### Version 0.38.6
+
+#### New features and enhancements
+- Introduced a new update method in Terraform to revoke delegate tokens. The recommended approach is to update the token_status field to "REVOKED", which will trigger the revocation process. [PL-64678]

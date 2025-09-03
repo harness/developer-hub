@@ -125,6 +125,68 @@ For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria,
 
 `state` is a ticket field. You can use any ticket field.
 
+### Manual Refresh During Execution
+
+You can do a **manual status refresh** in the Pipeline Studio Execution view.
+
+When the step is waiting for a response from ServiceNow, you can use the **Refresh** button to immediately fetch the **latest status of the approval ticket** instead of waiting for the polling interval.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_REFRESH_IN_JIRA_SERVICENOW_APPROVALS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Use the refresh option when:
+- The approval condition in ServiceNow was updated after the step began execution.
+- You need quicker response handling for fast-track approvals such as incident mitigations or emergency changes.
+
+To use the refresh button:
+- Execute a pipeline with a ServiceNow Approval step.
+- In the Pipeline Studio Execution view, locate the approval step.
+- If the step is in a waiting state, click the Refresh button.
+- The step will re-evaluate the condition and proceed if the criteria are met.
+
+### Output
+
+Regardless of whether the step is approved or rejected, the **ServiceNow approval step** will provide outputs referencing the details of the step, such as:
+- `ticketType`
+- `ticketNumber`
+- `Approval Criteria`
+- `Rejection Criteria` 
+- `Conditions`
+- `hasApprovalCriteriaMet` 
+- `hasRejectionCriteriaMet`
+
+These outputs can be used as **output variables** and referenced in subsequent steps or stages.
+
+Here are a few expression examples that can be used to fetch the output values:
+
+- **ticketType**: `<+pipeline.stages.stage.spec.execution.steps.ServiceNowApproval_1.output.ticketType>`
+- **ticketNumber**: `<+pipeline.stages.stage.spec.execution.steps.ServiceNowApproval_1.output.ticketNumber>`
+- **approvalCriteria**: `<+pipeline.stages.stage.spec.execution.steps.ServiceNowApproval_1.output.approvalCriteria.type>`
+- **rejectionCriteria**: `<+pipeline.stages.stage.spec.execution.steps.ServiceNowApproval_1.output.rejectionCriteria.type>`
+
+<div align="center">
+<DocImage path={require('./static/snow-output-logs.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+### Logs
+
+You can also view detailed logs that describe why the validation **failed** or **succeeded** in the **ServiceNow approval step**.
+  
+Here are examples of logs for different scenarios:
+
+- **Log example for an approved step**:  
+   The logs will show the approval criteria on which the step was approved and the evaluating condition.  
+   ![](./static/snow-approval-logs.png)
+
+- **Log example for a rejected step**:  
+   The logs will show the rejection criteria on which the step was rejected and the evaluating condition.  
+   ![](./static/snow-rejection-logs.png)
+
+- **Log example for using JEXL expression in approval criteria**:  
+   The logs will show the JEXL expression on which the step will be approved or rejected and how the condition is evaluated.  
+   ![](./static/snow-approval-jexl-expression.png)
+
 ## Custom table support
 
 For details, go to **Custom table support** in [Create ServiceNow tickets in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages#custom-table-support).

@@ -174,14 +174,6 @@ environment:
 
 In case of multi-line secrets please try and re-direct the output to a temp file and use that for base64.
 
-### I am using AWS ASG template and would like to fetch "New ASG Name" while deployment/workflow/pipeline executes. Is it available in context? If yes then how can I get new asg name? 
-
-We support both old and new ASG names via variable, which should help you with this use case to run custom scripting if required on old ASG.
- 
-Both new and old ASG: $\{ami.newAsgName}, $\{ami.oldAsgName} documented here:
-https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/variables/built-in-variables-list#aws-amiasg-1
-
-
 ### Is there any way to increase task count of ECS service without ECS service deployment?
 
 Currently, the task count of ECS cannot be changed without doing any deployment in Harness but changes can be made to ECS deployment directly on AWS.
@@ -198,14 +190,6 @@ Yes, we do not need to create the kubeconfig file manually. We just need to have
 ### What is the time parameter for AWS back-off strategy?
 
 For AWS back-off strategy, parameters of time are in milliseconds. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-backoff-strategy/)
-
-
-### Is there is an ECS DNS Blue/Green deployment similar to First-Gen in the Next-Gen?
-
-In the next generation, we support the utilization of a `load balancer` with target groups for the switching between blue and green deployments.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-v2-summary/)
-For First-Gen reference read the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-blue-green-workflows/#ecs-bluegreen-using-dns)
-
 
 ### How to create an AWS connector using aws-iam-authenticator on EKS Cluster with webIdentityToken?
 
@@ -274,10 +258,6 @@ We support RSA for secret manager authentication. We can use Assume role using S
 
 No, this feature is yet to be supported. We suggest to use ssh key or user and password as datacenter as an alternative at the moment.
 
-### Is the design of Basic intended to incorporate that behavior, similar to what is done in first Gen, where Ecs revisions are not utilized in the same manner as ECS?
-
-Yes, the design of Basic includes that behavior because we manage the versions through the task name and handle versioning specifically for rollback purposes in first Gen, distinguishing it from the way Ecs revisions are managed. One needs to use rolling if they want harness to not perform the naming convention changes. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/)
-
 ### If we manually increase the task count in AWS directly? Or decrease as well, would it impact subsequent pipeline deployment?
 
 It shouldn't impact except the fact that if the subsequent deployment has a different task count, it would override the existing one
@@ -291,11 +271,6 @@ Delegate can be installed anywhere as long as it has access to the target Ecs cl
 While a functioning and stable delegate is imperative, it is advisable to prioritize its use. However, if there is a preference for connecting via platform, provided there is an external secrets manager in place and a streamlined process for automatic key updates within that system during rotations, integration through that avenue could be considered.
 **Note** 
 - Continuous Delivery cannot use the Platform based auth for all the connectors because the deployment jobs run on the delegate. Things like GitHub are feasible, but AWS, GCP, and Azure are not really possible because the credential exchange happens on the delegate
-
-
-### Is the design of Basic intended to incorporate that behavior, similar to what is done in first Gen, where Ecs revisions are not utilized in the same manner as ECS?
-
-Yes, the design of Basic includes that behavior because we manage the versions through the task name and handle versioning specifically for rollback purposes in first Gen, distinguishing it from the way Ecs revisions are managed. One needs to use rolling if they want harness to not perform the naming convention changes. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/)
 
 ### How can I reduce the number of AWS calls during deployment to mitigate issues?
 
@@ -325,8 +300,6 @@ Modifying the audience (aud) claim in a JWT means changing who the token is inte
 
 Users can now leverage the AWS connector to configure OIDC authentication.
 
-This feature is currently behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 This only leverages the account ID parameter when Harness sends the token payload to the AWS STS service. For more information, go to [Harness AWS connector settings](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#harness-aws-connector-settings).
 
 
@@ -348,19 +321,6 @@ This can happen in following cases:
 - Service is attached to both target groups
   
 Please read more on ECS Blue-Green Steps in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#visual-summary)
-
-
-### A pipeline of type ASG deployment has migrated from FirstGen to NextGen.  Is launch configuration not supported in NextGen?
-
-Users migrating to NextGen from FirstGen will need to replace Launch Configuration with Launch Template. AWS provides the steps here: https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html
-
-
-### A pipeline of type ASG deployment has migrated from FirstGen to NextGen.  In FirstGen, when providing the Base ASG, Harness could pick up the launch configuration from the base ASG and created a configuration for new ASG.  What needs to be changed to migrate the workflow to NextGen for ASG deployment which uses launch configuration instead of launch template?
-
-There has been a redesign in ASG deployments as new features like Instance Refresh have emerged, while some features like Classic Load Balancer and Launch Configuration are being deprecated.
-To address a migrated pipeline, users can take the following steps:
-1.Migrate the current Launch Configuration to Launch Template. AWS provides the steps here: [AWS Launch Templates Migration Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html).
-2. Once this is completed, everything should work seamlessly. However, the current pipeline will not function properly. To resolve this, we can create a new pipeline following the guidelines outlined here: [AWS ASG Tutorial for Canary Phased Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
 
 
 ### Are there guidelines or recommendations for scaling up VM build infrastructures, such as those hosted on EC2, for individuals managing and configuring their own infrastructure?
@@ -618,10 +578,6 @@ The pipeline includes rollback steps like ECS Canary Delete and ECS Rolling Roll
 
 ### Can I run the ECS task immediately after updating the task definition?
 Yes, the deploy_ecs stage includes the EcsRunTask step, which allows running the ECS task immediately using the updated ECS task definition file.
-
-### How can I deploy to ECS using only a task definition file, without a service definition?
-
-The AWS ECS Deploy step in Harness requires a service definition.  Workarounds include using a custom stage with a shell script step to invoke the RunTask API directly, or providing a minimal service definition.  More information on ECS deployments can be found in [Harness documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-v2-summary/).
 
 ### Why am I getting an error stating that `aws-iam-authenticator` is required for EKS deployments?
 

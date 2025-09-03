@@ -92,4 +92,77 @@
 
 /docs/platform/connectors/ref-source-repo-provider/http-helm-repo-connector-settings-reference /docs/platform/connectors/code-repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference
 
+# Added by ivikramsahu on 28-04-2025 fixing the missing url by redirecting to prometheus
+
+/docs/self-managed-enterprise-edition/monitor-harness-on-prem#set-up-prometheus-in-cluster /docs/self-managed-enterprise-edition/monitoring/install-prometheus
+docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the-grafana-dashboard /docs/self-managed-enterprise-edition/monitoring/install-grafana
+
+/docs/self-managed-enterprise-edition/monitor-harness-on-prem /docs/category/monitoring
+
+# Added by ravilach on 04-24-2025 for Broken CI Category
+/docs/category/troubleshoot-ci /docs/category/troubleshoot-harness-ci
+
+# Redirects generated from Front Matter [sytem generated goes below here]:
+
+
+
+
+# Added by Lavakush Biyani 
+
+/docs/category/comply-with-slsa /docs/category/slsa-compliance
+/docs/category/enforce-sbom-policies /docs/category/policies
+/docs/software-supply-chain-assurance/get-started/onboarding-guide /docs/software-supply-chain-assurance/get-started/
+/docs/software-supply-chain-assurance/sbom/generate-sbom /docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories
+
+=======
+# Added by ivikramsahu for self-managed enterprise edition documentation revamp.
+
+/docs/self-managed-enterprise-edition/get-started/onboarding-guide /docs/self-managed-enterprise-edition/smp-overview
+/docs/category/get-started-with-smp /docs/self-managed-enterprise-edition/get-started-with-smp
+
+# Added by ivikramsahu for self-managed enterprise edition documentation revamp 
+# advance configuration > External DB > MongoDB
+
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-mongodb-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-mongodb-database
+
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb /docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-self-managed-mongodb
+
+# advance configuration > External DB > MinIO
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-self-managed-minio-object-storage /docs/self-managed-enterprise-edition/advanced-configurations/external-db/minio/use-self-managed-minio-object-storage
+
+# Added by ashutosh on 09-01-2025 for chaos engineering documentation structure migration
+# Fault-specific redirects for old structure
+/docs/chaos-engineering/use-harness-ce/chaos-faults /docs/chaos-engineering/faults/chaos-faults
+/docs/chaos-engineering/use-harness-ce/chaos-faults/aws /docs/chaos-engineering/faults/chaos-faults/aws
+/docs/chaos-engineering/use-harness-ce/chaos-faults/azure /docs/chaos-engineering/faults/chaos-faults/azure
+/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp /docs/chaos-engineering/faults/chaos-faults/gcp
+/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes /docs/chaos-engineering/faults/chaos-faults/kubernetes
+/docs/chaos-engineering/use-harness-ce/chaos-faults/linux /docs/chaos-engineering/faults/chaos-faults/linux
+/docs/chaos-engineering/use-harness-ce/chaos-faults/windows /docs/chaos-engineering/faults/chaos-faults/windows
+/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware /docs/chaos-engineering/faults/chaos-faults/vmware
+/docs/chaos-engineering/use-harness-ce/chaos-faults/load /docs/chaos-engineering/faults/chaos-faults/load
+/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh /docs/chaos-engineering/faults/chaos-faults/ssh
+/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry /docs/chaos-engineering/faults/chaos-faults/cloud-foundry
+/docs/chaos-engineering/use-harness-ce/chaos-faults/kube-resilience /docs/chaos-engineering/faults/chaos-faults/kube-resilience
+/docs/chaos-engineering/use-harness-ce/chaos-faults/byoc /docs/chaos-engineering/faults/custom-faults/byoc
+
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-aws-s3-for-pipeline-logs /docs/self-managed-enterprise-edition/advanced-configurations/external-db/minio/configure-aws-s3-for-pipeline-logs
+
+# Added by vasundhara on 18-07-2025 for incident response to ai-sre rebranding
+# Incident Response redirects for old structure
+/docs/incident-response/get-started/overview /docs/ai-sre/get-started/overview
+/docs/incident-response/resources/whats-supported /docs/ai-sre/resources/whats-supported
+/docs/incident-response /docs/ai-sre
+
+# advance configuration > External DB > TimescaleDB
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb/ /docs/self-managed-enterprise-edition/advanced-configurations/external-db/timescaledb/use-an-external-sm-timescaledb/
+
+# advance configuration > External DB > postgreSQL
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/postgresql/use-an-external-postgres-database
+
+# advance configuration > External DB > redis
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-aws-elasticache /docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-aws-elasticache
+
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database /docs/self-managed-enterprise-edition/advanced-configurations/external-db/redis/use-an-external-redis-database
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

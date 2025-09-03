@@ -1,0 +1,14 @@
+{
+  "label": "Configure Self-Hosted Gitspaces",
+  "collapsible": "true",
+  "collapsed": "true",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "cloud-development-environments/self-hosted-gitspaces/steps/index"
+  },
+  "customProps": {
+    "title": "Configure Self-Hosted Gitspaces",
+    "description": "Learn how to configure and set up Self-Hosted Gitspaces in your own infrastructure."
+  }
+}

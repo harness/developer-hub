@@ -5,7 +5,7 @@ sidebar_label: Prowler step configuration
 sidebar_position: 310
 ---
 
-<DocsTag text="Configuration scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"   link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuration-scanners"  />
+<DocsTag text="Configuration scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"   link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#configuration-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
@@ -26,7 +26,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ### For more information
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 
 <StoMoreInfo />
@@ -39,11 +39,11 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanMode from './shared/step-palette/scan/type.md';
 
-import StoSettingScanModeOrchestration from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeOrchestration from './shared/step-palette/scan/mode/orchestration.md';
 
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 
 
@@ -58,7 +58,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 #### Scan Configuration
 
 <!-- >
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from './shared/step-palette/scan/config-name.md';
 
 <StoSettingProductConfigName />
 -->
@@ -80,7 +80,7 @@ Select the [compliance framework](https://github.com/prowler-cloud/prowler/blob/
 
 
 
-import StoSettingScanTypeConfig  from './shared/step_palette/target/type/_config.md';
+import StoSettingScanTypeConfig  from './shared/step-palette/target/type/config.md';
 
 
 <StoSettingScanTypeConfig />
@@ -92,7 +92,7 @@ import StoSettingScanTypeConfig  from './shared/step_palette/target/type/_config
 #### Name 
 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from './shared/step-palette/target/name.md';
 
 
 <StoSettingTargetName />
@@ -105,7 +105,7 @@ import StoSettingTargetName from './shared/step_palette/target/_name.md';
 #### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 
 
@@ -114,7 +114,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 #### Workspace 
 
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from './shared/step-palette/target/workspace.md';
 
 
 
@@ -129,7 +129,7 @@ Settings for the AWS account to use when running an orchestration scan.
 #### Access ID 
 
 
-import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
+import StoSettingAuthAccessID from './shared/step-palette/auth/access-id.md';
 
 
 
@@ -142,7 +142,7 @@ import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
 #### Access Token
 
 
-import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.md';
 
 
 
@@ -159,7 +159,7 @@ The AWS region of the configuration to scan.
 
 ### Ingestion file 
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 
 <StoSettingIngestionFile  />
@@ -167,7 +167,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 ### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 
 
@@ -183,33 +183,33 @@ You can use this field to run the [prowler scanner](https://github.com/prowler-c
 
 `-excluded-checks s3_bucket_public_access`
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
 ### Settings
 
-import StoSettingSettings from './shared/step_palette/all/_settings.md';
+import StoSettingSettings from './shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

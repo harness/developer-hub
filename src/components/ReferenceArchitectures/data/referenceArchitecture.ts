@@ -33,7 +33,7 @@ export const ReferenceArchitecturesCards: CardSections = [
         title: "Delegate Architecture Best Practices",
         module: MODULES.platform,
         description: "Design considerations for choosing the right Delegate Architecture",
-        link: "/kb/reference-architectures/platform/delegate_architecture_bestpractices",
+        link: "/kb/reference-architectures/platform/delegate-architecture-bestpractices",
       },
     ],
   },

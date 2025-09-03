@@ -28,8 +28,9 @@ For supported platforms and technologies by module, go to the module documentati
 * [What's supported in CV](/docs/continuous-delivery/verify/cv-whats-supported)
 * [What's supported in CI](/docs/continuous-integration/ci-supported-platforms)
 * [What's supported in FF](/docs/feature-flags/ff-supported-platforms)
+* [What's supported in FME](/docs/feature-management-experimentation/getting-started/whats-supported)
 * [What's supported in CCM](/docs/cloud-cost-management/whats-supported)
-* [What's supported in STO](/docs/security-testing-orchestration/whats-supported)
+* [What's supported in STO](/docs/security-testing-orchestration/whats-supported/sto-deployments)
 * [What's supported in SCS](/docs/software-supply-chain-assurance/ssca-supported)
 * [What's supported in CE](/docs/chaos-engineering/whats-supported)
 * [What's supported in SRM](/docs/service-reliability-management/srm-whats-supported)
@@ -222,7 +223,7 @@ Harness includes native TUF support via the following:
 - Deployment templates: [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-tutorial) use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
   - Deployment Templates can obtain the required metadata for native TUF support, and generate and validate signatures in the software lifecycle.
 - OCI image registry support:
-  - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](/docs/first-gen/firstgen-platform/account/manage-connectors/add-helm-repository-servers/#oci-registry).
+  - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart/#options-for-connecting-to-a-helm-chart-store).
 - Enforce the rotation of secrets and key management practices:
   - Harness provides [token key rotation natively](/docs/platform/automation/api/add-and-manage-api-keys#rotate-tokens).
 - Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).

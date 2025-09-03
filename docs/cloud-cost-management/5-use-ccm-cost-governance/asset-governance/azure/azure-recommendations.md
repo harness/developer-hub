@@ -71,13 +71,13 @@ Owing to this, now, while adding a recommendation to Ignore List, users have the
 
   <DocImage path={require('../static/azure-granular.png')} width="90%" height="90%" title="Click to view full size image" />
 
-### Recommendation: delete-low-utilised-cosmodb
+### Recommendation: delete-low-utilized-azure-cosmodb
 **Description:** Delete low utilised CosmosDB based on total requests in last 72 hours.
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-low-utilised-cosmodb
+  - name: delete-low-utilized-azure-cosmodb
     resource: azure.cosmosdb
     description: |
       Delete low utilised CosmosDB based on total requests in last 72 hours
@@ -97,13 +97,13 @@ policies:
 
 ---
 
-### Recommendation: delete-unattached-disk
+### Recommendation: delete-unattached-azure-disk
 **Description:** Delete all unattached disks. 
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-unattached-disk
+  - name: delete-unattached-azure-disk
     resource: azure.disk
     description: |
       Delete all unattached disks
@@ -121,13 +121,13 @@ policies:
 
 ---
 
-### Recommendation: delete-low-utilised-load-balancers
+### Recommendation: delete-low-utilized-azure-load-balancer
 **Description:** Delete all low utilised load balancers where packet count is less than 1000 in last 72 hours.  
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-low-utilised-load-balancers
+  - name: delete-low-utilized-azure-load-balancer
     resource: azure.loadbalancer
     description: |
       Delete all low utilised load balancers where packet count is less than 1000 in last 72 hours
@@ -148,13 +148,13 @@ policies:
 
 ---
 
-### Recommendation: delete-orphaned-network-interface
+### Recommendation: delete-orphaned-azure-networkinterface
 **Description:** Delete network interface which are not attached to virtual machine.
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-orphaned-network-interface
+  - name: delete-orphaned-azure-networkinterface
     resource: azure.networkinterface
     description: |
       Delete network interface which are not attached to virtual machine
@@ -172,13 +172,13 @@ policies:
 
 ---
 
-### Recommendation: stop-underutilized-vms
+### Recommendation: stop-underutilized-azure-vm
 **Description:** Stop underutilised virtual machines with average CPU utilisation less than 5% in last 72 hours.  
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: stop-underutilized-vms
+  - name: stop-underutilized-azure-vm
     resource: azure.vm
     description: |
       Stop underutilised virtual machines with average CPU utilisation less than 5% in last 72 hours
@@ -199,13 +199,13 @@ policies:
 
 ---
 
-### Recommendation: delete-low-utilised-keyvaults 
+### Recommendation: delete-low-utilized-azure-keyvault 
 **Description:** Delete KeyVaults with less than 10 API hits in last 72 hours.
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-low-utilised-keyvaults
+  - name: delete-low-utilized-azure-keyvault
     resource: azure.keyvault
     description: |
       Delete KeyVaults with less than 10 API hits in last 72 hours
@@ -226,13 +226,13 @@ policies:
 
 ---
 
-### Recommendation: delete-low-utilised-sql-server
+### Recommendation: delete-low-utilized-azure-sqlserver
 **Description:** Delete SQL servers with less than 10% average DTU consumption over last 72 hours.  
 
 **Policy Used:** 
 ```yaml
 policies:
-  - name: delete-low-utilised-sql-server
+  - name: delete-low-utilized-azure-sqlserver
     resource: azure.sqlserver
     description: |
       Delete SQL servers with less than 10% average DTU consumption over last 72 hours
@@ -254,13 +254,13 @@ policies:
 
 ---
 
-### Recommendation: delete-unattached-publicip
+### Recommendation: delete-unattached-azure-publicip
 **Description:** Delete public ip which are not attached to any network interface.  
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-unattached-publicip
+  - name: delete-unattached-azure-publicip
     resource: azure.publicip
     description: |
       Delete public ip which are not attached to any network interface
@@ -278,13 +278,13 @@ policies:
 
 ---
 
-### Recommendation: delete-low-utilised-datalake
+### Recommendation: delete-low-utilized-azure-datalake
 **Description:** Delete all Datalake Stores with less than 1000 read requests or 1000 write requests in the last 72 hours.
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-low-utilised-datalake
+  - name: delete-low-utilized-azure-datalake
     resource: azure.datalake
     description: |
       Delete all Datalake Stores with less than 1000 read requests or 1000 write requests in the last 72 hours
@@ -312,13 +312,13 @@ policies:
 
 ---
 
-### Recommendation: delete-unused-postgresql-servers 
+### Recommendation: delete-unused-azure-postgresql-server 
 **Description:** Delete PostgreSQL Servers that have had zero active connections in the last 72 hours. 
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-unused-postgresql-servers
+  - name: delete-unused-azure-postgresql-server
     resource: azure.postgresql-server
     description: |
       Delete PostgreSQL Servers that have had zero active connections in the last 72 hours

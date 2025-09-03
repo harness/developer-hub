@@ -159,6 +159,7 @@ See the following:
 * [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Command Flags](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/k8s-command-flags/)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## See also

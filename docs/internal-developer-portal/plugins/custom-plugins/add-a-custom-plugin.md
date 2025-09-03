@@ -194,6 +194,18 @@ new-plugin/
 
 9. If you require `app-config.yaml` for your plugin, then **enable configuration**. 
 
+:::info
+To add a custom config for a plugin you can add it inside ``customPlugins``.
+For example - if you want to add config for a custom plugin, you can add it in the following way:
+```YAML
+customPlugins:
+  pluginName:
+    key: value
+    key1:
+      key2: value2
+```
+:::
+
 10. Now add the proxy part here, as given below in the example,
 
 ```YAML

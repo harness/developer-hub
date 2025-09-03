@@ -1,10 +1,11 @@
 ---
-title: Test Intelligence step
+title: Test Intelligence™ step
 description: Use the Test step to leverage Test Intelligence.
 sidebar_position: 3
 ---
 
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
+import EnhancedOutVar from '/docs/continuous-integration/shared/enhanced-output-variables.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -12,18 +13,19 @@ import TabItem from '@theme/TabItem';
 
 You can use this **Test Intelligence** step, also known as the **Test** step, to run unit tests with **Python**, **Ruby**, **Java** , **C#** , **Scala** and **Kotlin** programming languages.
 
-:::info
-Test Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+
+:::tip Test Intelligence Beta
+Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in **beta**. If you're interested in joining the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
 :::
 
 
 :::info
 
-To use TI for Python, your codebase must be Python 3.
+* The test step requires downloading the agent. This download is supported only over **HTTPS**. For customers running in SMP or air-gapped environments, Harness Platform must be configured with HTTPS enabled.  
+* Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
+* To use TI for Python, the image for the step must have Python 3 installed and accessible. Additionally, Virtual Environments for Python (`venv`) are not supported by TI.
 
 :::
-
 
 ## Configure the Test step
 
@@ -37,7 +39,7 @@ Add the **Test** step to the [Build stage](/docs/continuous-integration/use-ci/s
                   spec:
                     command: mvn test  # Required. All other settings are optional.
                     shell: sh # Optional shell type.
-                    connectorRef: account.harnessImage # Container registry connector.
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR # Container registry connector.
                     image: repo/image # Container image to use to run the commands.
                     privileged: false
                     intelligenceMode: true # Enable Test Intelligence.
@@ -166,6 +168,8 @@ When using **.Net**, make sure to enable log reporting when running the tests, e
 ### Output Variables
 
 <OutVar />
+
+<EnhancedOutVar/>
 
 ### Environment Variables
 
@@ -327,43 +331,41 @@ All cloud available versions of Linux, Windows & Mac are supported.
 </TabItem>
 </Tabs>
 
-## Trigger test selection
+## Trigger Test Selection
+[Test Intelligence (TI)](/docs/continuous-integration/use-ci/run-tests/ti-overview) uses a baseline call graph to determine which tests to run. The process to establish this baseline differs for branch runs and pull request (PR) runs.
 
-If you enabled [Intelligence Mode](#intelligence-mode), **you must run your pipeline twice to trigger test selection**.
+### For Branch Runs (Manual or Triggered by Push)
 
-### Trigger test selection with a webhook trigger (Recommended)
+Branch runs do **not** require webhook triggers. 
 
-1. If your pipeline doesn't already have one, [add a webhook trigger](/docs/platform/triggers/triggering-pipelines/) that listens for **Pull Request** or **Push** events in your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md).
-2. Activate the trigger by opening a PR or pushing changes to your codebase, and then wait while the build runs. You can monitor the build's progress on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds.md).
+Required Steps:
+1. Push changes to the branch, or manually run the pipeline from the UI.
+2. Select Git Branch as the build type and enter the branch name.
+3. Wait for the build to complete. This run establishes the baseline.
+4. Push further changes to the same branch and rerun the pipeline.
+5. TI will apply test selection based on code differences from the baseline.
 
-   If you created a PR, merge the PR after the build runs. <!-- This is required to ensure that the baseline established by the call graph persists on the target branch. This is not required for push triggers.-->
+:::note 
+This method works regardless of whether the pipeline is triggered manually or automatically. Triggers are optional for branch-based runs.
+:::
 
-3. To trigger test selection, activate the trigger again (by opening a PR or pushing changes to your codebase).
+### For Pull Request (PR) Runs
+For PR-based pipelines, webhook triggers are **required** to make TI function correctly. Specifically:
+- A trigger for the **PR Opened** event is needed to capture the initial call graph.
+- A trigger for the **PR Closed (Merged)** event is required so that the platform can finalize the baseline. The merge event does not need to start a pipeline execution; it just needs to emit the event.
 
-   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
+Required Steps:
+1. Create a [webhook trigger](/docs/platform/triggers/triggers-reference/) that listens for:
+    - Pull Request Opened
+    - Pull Request Closed (Merged)
+2. Open a PR against the target branch. The PR trigger should automatically start a pipeline run using Git Pull Request as the build type.
+3. Merge the PR. The trigger listening for PR merge must fire. This event is used by Harness in the background to finalize the baseline for that branch. It does not need to execute any stage or pipeline.
+4. Once the baseline is established, new PRs targeting the same base branch will apply test selection during their pipeline runs.
+5. If a new PR is created against a different base branch, you must repeat steps 2 and 3 to establish a new baseline for that branch.
 
-4. Wait while the build runs, and then [review the test results and test selection](./viewing-tests.md). If you created a PR, merge the PR after the build runs.
-
-### Trigger test selection with a manual build
-
-1. Open a PR or push changes to your pipeline's [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md), and then run your pipeline.
-
-   If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
-
-   If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
-
-   <DocImage path={require('./static/set-up-test-intelligence-04.png')} />
-
-2. Wait while the build runs. You can monitor the build's progress on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds.md).
-
-   If you created a PR, merge the PR after the build runs. <!-- This is required to ensure that the baseline established by the call graph persists on the target branch. This is not required if you pushed changes without a PR.-->
-
-3. To trigger test selection, open a new PR (or push changes) to your codebase, and then run your pipeline again.
-
-   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
-
-4. Wait while the build runs, and then [review the test results and test selection](./viewing-tests.md). If you created a PR, merge the PR after the build runs.
-
+:::note
+Test selection will not apply to PRs unless the close/merge event trigger has fired for that base branch.
+:::
 ### Why do I have to run the pipeline twice?
 
 The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection _isn't_ applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after you have added the **Test** step.
@@ -385,7 +387,7 @@ config:
 
 ## Troubleshoot Test Intelligence
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for more questions and issues related to Test Intelligence, including:
 
 * [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
 * [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)

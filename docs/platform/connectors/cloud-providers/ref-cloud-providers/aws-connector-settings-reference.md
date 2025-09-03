@@ -470,15 +470,7 @@ For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add
 
 :::info
 
-Currently, OIDC authentication for AWS connectors is behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-Additionally, this option requires Harness Delegate version 24.03.836xx or later.
-
-:::
-
-:::warning
-
-If you are using OIDC for your connection, you will not be able to connect to AWS through the Harness Platform. Please connect through a Harness Delegate.
+This option requires Harness Delegate version 24.03.836xx or later.
 
 :::
 
@@ -491,16 +483,19 @@ Use the following Harness OIDC provider endpoint and OIDC audience settings to c
 * Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<ACCOUNT_ID>`
 * OIDC audience: `sts.amazonaws.com`
 
-### Supported Swimlanes
+#### Supported Swimlanes
 
 These are the current supported deployment swimlanes for AWS OIDC:
 
-- ECS
+- AWS ECS
+- AWS ASG
+- AWS EKS
+- AWS Lambda
 - Kubernetes
 - Terraform
 - CloudFormation
 
-### Enhanced Subject
+#### Enhanced Subject
 
 :::info
 
@@ -524,6 +519,34 @@ If the feature flag `CDS_ENABLE_PIPELINE_SCOPED_OIDC_SUB` is enabled on top of `
 - For Project level resources - `"sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test"`
 - For Organization level resources - `"sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/"`
 - For Account level resources - `"sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/:project/"`
+
+### OIDC claims supported in Harness
+
+**Trusted Claims:**
+
+  - Harness validates the following claims internally to determine if the principal has the required permissions. When configuring trust on the Cloud Provider side, only these specific claims and their exact values should be accepted. Any claims outside this list must be rejected to avoid unauthorized access.
+    * `accountId`
+    * `organizationId`
+    * `projectIdentifier`
+    * `pipelineIdentifier`
+
+  - The following claims are validated for existence in Harness, but do not include an access check:
+    * `environmentIdentifier`
+    * `connectorIdentifier`
+    * `serviceIdentifier`
+
+**Non-Trusted Claims**
+
+  - The following claims are considered non-trusted. They are not validated for existence or access control and are used for informational context only:
+
+    * `environmentType`
+    * `connectorName`
+    * `serviceName`
+    * `triggeredByName`
+    * `triggerByEmail`
+    * `stageType`
+    * `stepType`
+    * `context`
 
 ### Custom Parameters 
 
@@ -736,57 +759,86 @@ For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.c
 
 ### Connector Limitations
 
-<table style={{ border: '1px solid black', borderCollapse: 'collapse', width: '100%' }}>
-  <thead>
-    <tr>
-      <th style={{ border: '1px solid black', padding: '8px' }}>Connectors</th>
-      <th style={{ border: '1px solid black', padding: '8px' }}>Limitations</th>
-    </tr>
-  </thead>
-  <tbody> 
-    <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Plugin-based Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following plugins are not supported using the OIDC connector:
-        <ul>
-          <li>Serverless V2</li>
-          <li>AWS SAM</li>
-          <li>AWS CDK</li>
-          <li>S3 Download Step</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Delegate-based Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following Delegate-based connections are not supported using the OIDC connector:
-        <ul>
-          <li>SSH</li>
-          <li>WinRM</li>
-          <li>Spot</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Provisioner-based Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following provisioners are not supported using the OIDC connector:
-        <ul>
-          <li>CloudFormation provisioner</li>
-          <li>CDK provisioner</li>
-          <li>Terraform provisioner</li>
-          <li>Terraform Cloud provisioner</li>
-          <li>Terragrunt provisioner</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+Currently, the OIDC connector does not support the S3 Download step plugin.
 
 ## Connect to Elastic Kubernetes Service (EKS)
 
 To connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the [platform-agnostic Kubernetes cluster connector](./kubernetes-cluster-connector-settings-reference.md) or an AWS connector configured for EKS.
+
+### Required AWS Permissions
+
+The following minimum permissions are required to use the AWS Connector for EKS deployments:
+
+```yaml
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "eks:DescribeCluster",
+        "eks:ListClusters",
+        "eks:ListNodegroups",
+        "sts:GetCallerIdentity",
+        "ec2:DescribeRegions",
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+Additionally, ensure the following prerequisites are met: 
+
+1. You must map your [IAM role to a Kubernetes resource](https://docs.aws.amazon.com/eks/latest/userguide/auth-configmap.html).
+2. Create a ServiceAccount(SA) in your Kubernetes cluster with an appropriate RoleBinding and ClusterRoleBinding. 
+
+<details>
+<summary>Example: ServiceAccount YAML</summary>
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: harness-oidc-sa
+  namespace: harness-delegate-ng
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::479370281431:role/mayank-harness-oidc-test
+```
+
+</details>
+
+<details>
+<summary>Example: RoleBinding YAML</summary>
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: harness-oidc-role
+  namespace: cd-k8s-qa-sanity
+rules:
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs: ["*"]
+    
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: harness-oidc-binding
+  namespace: cd-k8s-qa-sanity
+subjects:
+  - kind: ServiceAccount
+    name: harness-oidc-sa
+    namespace: harness-delegate-ng   
+roleRef:
+  kind: Role
+  name: harness-oidc-role
+  apiGroup: rbac.authorization.k8s.io
+```
+
+</details>
 
 ### Configure EKS for use with Harness
 
@@ -853,7 +905,7 @@ kubectl describe pod test-new-xicobc-0 -n harness-delegate | grep AWS_WEB_IDENTI
 3. The IAM role of the EKS cluster's worker nodes have the [required permissions](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html).
 
    - Your IAM role needs permission to access the AWS EKS cluster. You can edit the `configmap/aws-auth` entry in the EKS cluster to enable the required permissions. For more information, go to the EKS documentation on [adding user roles](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html). You can also assume the IAM role used to create the AWS EKS cluster, which has the required `configmap/aws-auth` entries by default.
-   - Your IAM role needs the basic policies to access the AWS EKS cluster. For more information, go to [Amazon EKS identity-based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security_iam_id-based-policy-examples.html).
+   - Your IAM role needs the basic policies to access the AWS EKS cluster. For more information, go to [Amazon EKS identity-based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security_iam_id-based-policy-examples.html). 
    - If you deploy pods to Fargate nodes in an EKS cluster, and your nodes needs IAM credentials, you must configure IRSA in your AWS EKS configuration (and then select the **Use IRSA** option for your connector credentials in Harness). This is due to [Fargate limitations](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html#:~:text=The%20Amazon%20EC2%20instance%20metadata%20service%20(IMDS)%20isn%27t%20available%20to%20Pods%20that%20are%20deployed%20to%20Fargate%20nodes.).
 
 4. You have installed the `aws-iam-authenticator` plugin, which is used for `kubectl` authentication. For more information, go to [Create kubeconfig file manually](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html#create-kubeconfig-manually).
@@ -1016,8 +1068,6 @@ spec:
           value: YOUR_ACCOUNT_ID
         - name: MANAGER_HOST_AND_PORT
           value: https://app.harness.io
-        - name: DEPLOY_MODE
-          value: KUBERNETES_ONPREM
         - name: DELEGATE_NAME
           value: eks-test-new
         - name: DELEGATE_TYPE
@@ -1034,10 +1084,6 @@ spec:
           value: ""
         - name: NEXT_GEN
           value: "true"
-        - name: CLIENT_TOOLS_DOWNLOAD_DISABLED
-          value: "true"
-        - name: LOG_STREAMING_SERVICE_URL
-          value: "https://app.harness.io/log-service/"
         - name: DELEGATE_CPU_THRESHOLD
           value: "80"
 

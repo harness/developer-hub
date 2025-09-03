@@ -1,5 +1,5 @@
 ---
-title: Use OPA for IaC governance 
+title: OPA Policies
 description: Learn how to use OPA to add security and governance to your IaCM pipeline
 sidebar_position: 50
 ---

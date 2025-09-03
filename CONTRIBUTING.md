@@ -2,13 +2,14 @@
 
 ![CI](static/img/icon_ci.svg)
 ![CD](static/img/icon_cd.svg)
+![AR](static/img/icon_artifact_registry.svg)
 ![FF](static/img/icon_ff.svg)
 ![CCM](static/img/icon_ccm.svg)
 ![SRM](static/img/icon_srm.svg)
 ![STO](static/img/icon_sto.svg)
 ![IACM](static/img/icon_iacm.svg)
 ![CE](static/img/icon_ce.svg)
-![IR](static/img/icon-ir.svg)
+![AISRE](static/img/icon-ir.svg)
 ![SEI](static/img/icon_sei.svg)
 ![CET](static/img/icon_cet.svg)
 ![IDP](static/img/icon_idp.svg)
@@ -19,7 +20,9 @@ Thanks for considering to contribute to the Harness Developer Hub! Contributions
 
 ## Change process
 
-GitHub is the primary mechanism for changes. Pull requests are the mechanism to submit and approve changes.
+GitHub is the primary mechanism for changes. Pull requests are the mechanism to submit and approve changes. 
+
+Each pull request requires 1 approval per [CODEOWNER](/.github/CODEOWNERS) for EACH section that has changes. For example, if you've changed files in the CI and CD modules, you will require approvals from a CI codeowner AND a CD codeowner in order to merge your PR.
 
 ### Small changes
 
@@ -30,6 +33,26 @@ Small changes are items that do not require local testing and can be accomplishe
 ### Large changes
 
 Large changes are considered to be an entire document/tutorial or making UI/UX changes such as to the site structure, organization, or branding. These changes require a fork and local development/testing.
+
+Changes that touch multiple modules or sections of HDH tend to take longer to merge due to requiring approvals from many codeowners as well as taking longer to review. Try splitting apart larger PRs into smaller chunks and creating many smaller PRs. 
+
+### PR Merge Guidelines
+
+PRs should follow these guidelines in order to be merged successfully:
+
+- Each PR requires approval from codeowners and the build to pass in order to be merged. You are in charge of merging your own PRs! This means you need to fix any build failures, and track down and tag the codeowners in order to get your approvals. 
+
+- Your PRs will also need to follow the style guide, and need to be of high enough quality in spelling and grammar to be approved. Low quality PRs will be rejected/closed. 
+
+- Stale PRs will be closed after ~1 month. 
+
+- Please click **Enable auto-merge** on your PR to merge it automatically if it receives the required approvals and passes the builds. 
+
+- Please **Assign** a PR to yourself if you are its creator. 
+
+## Style Guide
+
+If you are contributing to HDH, make sure you are compliant with our [Style Guide](./docs/hdh/style-guide).
 
 ## Local development guide
 

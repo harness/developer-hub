@@ -2,25 +2,15 @@
 title: Create a Workspace Template 
 description: Learn how to create and manage workspace templates for standardized configurations.
 sidebar_position: 60
-sidebar_label: Workspace templates
+sidebar_label: Workspace Templates
 ---
 
-<CTABanner
-  buttonText="Learn More"
-  title="Pending release"
-  tagline="The IaCM Workspace Templates feature is currently pending release and will be available soon!"
-  link="https://developer.harness.io/roadmap/#iacm"
-  closable={true}
-  target="_self"
-/>
 
-import Tabs from '@theme/Tabs';  
-import TabItem from '@theme/TabItem';  
 
-:::warning pending release
-IaCM Workspace templates are currently pending release and will be available soon!
-:::
- 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 With workspace templates, you can standardize workspace configurations across your projects by predefining essential variables, configuration settings, and other workspace options. This helps streamline workspace setup, ensuring consistency and reducing manual configuration efforts. 
 
 <iframe  
@@ -56,46 +46,13 @@ To configure workspace templates and standardize your workspace setups, follow t
 
 <Tabs>  
 <TabItem value="Create workspace templates">  
-<iframe  
-   src="https://app.tango.us/app/embed/6686c1ea-fb9b-4a94-ad1e-021c34b8a19f"  
-   title="Create a Workspace Template"  
-   style={{ minHeight: '640px' }}  
-   width="100%"  
-   height="100%"  
-   referrerpolicy="strict-origin-when-cross-origin"  
-   frameborder="0"  
-   webkitallowfullscreen="true"  
-   mozallowfullscreen="true"  
-   allowfullscreen="true"  
-></iframe>  
+<DocVideo src="https://app.tango.us/app/embed/6686c1ea-fb9b-4a94-ad1e-021c34b8a19f?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Creating an IaCM workspace template in Harness" />
 </TabItem>
 <TabItem value="Add variables & edit templates"> 
-<iframe 
-   src="https://app.tango.us/app/embed/ceb4cbae-aae8-40d5-8b68-70e72cd4a7cf" 
-   title="Add variables to your Harness IaCM workspace template" 
-   style={{ minHeight: '640px' }}
-   width="100%" 
-   height="100%"
-   referrerpolicy="strict-origin-when-cross-origin"
-   frameborder="0"
-   webkitallowfullscreen="true"
-   mozallowfullscreen="true"
-   allowfullscreen="true"
-></iframe>
+<DocVideo src="https://app.tango.us/app/embed/ceb4cbae-aae8-40d5-8b68-70e72cd4a7cf?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Adding variables to your Harness IaCM workspace template" />
 </TabItem>
 <TabItem value="Apply templates"> 
-<iframe 
-   src="https://app.tango.us/app/embed/fb4819c2-3985-48da-90f4-1db8ae839fc5" 
-   title="Apply Harness IaCM workspace templates to your new workspace." 
-   style={{ minHeight: '640px' }}
-   width="100%" 
-   height="100%"
-   referrerpolicy="strict-origin-when-cross-origin"
-   frameborder="0"
-   webkitallowfullscreen="true"
-   mozallowfullscreen="true"
-   allowfullscreen="true"
-></iframe>
+<DocVideo src="https://app.tango.us/app/embed/fb4819c2-3985-48da-90f4-1db8ae839fc5?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Apply Harness IaCM workspace templates to your new workspace." />
 </TabItem> 
 <TabItem value="Step-by-step">
 Follow these steps to:

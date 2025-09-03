@@ -1,7 +1,7 @@
 ---
 title: Provision Infrastructure using IDP and IaCM
 description: Create a basic infrastructure provisioning pipeline using Harness IDP
-sidebar_position: 7
+sidebar_position: 8
 redirect_from:
   - /docs/internal-developer-portal/flows/provision-infrastructure-using-idp
 ---
@@ -438,7 +438,7 @@ That token is then used as part of `steps` as `apikey`
 
 ### Register the Workflow in IDP
 
-Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/catalog-2o.md).
 
 ## Use the Self Service Workflows
 

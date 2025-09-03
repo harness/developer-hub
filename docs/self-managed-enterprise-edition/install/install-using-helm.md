@@ -136,7 +136,7 @@ To an ingress ALB, do the following:
 
 ### Optional: Configure a vanity URL based on your load balancer
 
-You can use the script provided below to configure a vanity URL based on your load balancer. The script is available in the [Harness Helm chart](https://github.com/harness/helm-charts/blob/main/src/harness/configure-vality-url.sh) and also accessible at the following path within your Helm manifest: `harness/configure-vanity-url.sh`.
+You can use the script provided below to configure a vanity URL based on your load balancer. The script is available in the [Harness Helm chart](https://github.com/harness/helm-charts/blob/main/src/harness/configure-vanity-url.sh) and also accessible at the following path within your Helm manifest: `harness/configure-vanity-url.sh`.
 
 #### Prerequisites
 
@@ -183,6 +183,8 @@ EOF
 kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPECTED_HOSTNAME":"app.harness.io"}}'
 kubectl rollout restart -n $namespace deployment -l "app.kubernetes.io/name=ng-auth-ui"
 ```
+
+The `app.harness.io` value in the command, `kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPECTED_HOSTNAME":"app.harness.io"}}'` should NOT be replaced with your created subdomain value, it should be set to "app.harness.io" itself.
 
 ##### Example command
 
@@ -334,7 +336,7 @@ There are additional steps for self-signed certificates:
 
 1. [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
 2. [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
-3. [Configure GitOps Agent with self-signed certificates](/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates/)
+3. [Configure GitOps Agent with self-signed certificates](/docs/continuous-delivery/gitops/agents/harness-git-ops-agent-with-self-signed-certificates/)
 
 ## Next steps
 
@@ -345,5 +347,5 @@ To get started with the modules, review the following topics:
 * For Harness Continuous Integration, go to the [CI key concepts](../../continuous-integration/get-started/key-concepts.md).
 * For Harness Continuous Delivery & GitOps, go to the [CD key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
 * For Harness Security Testing Orchestration, go to the [STO overview](../../security-testing-orchestration/get-started/overview.md).
-* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/chaos-engineering/concepts/chaos101).
-* For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/ccm-on-harness-self-managed-enterprise-edition).
+* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/chaos-engineering/key-concepts).
+* For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/self-managed-enterprise-edition).

@@ -70,6 +70,10 @@ Users can choose between two models: **Flex** and **Custom**:
 
 * **Custom Model**: Users can select specific resource classes tailored to their needs, with defined cores allocations.
 
+:::note
+For Free plan users, builds always run on `flex` machines, which provide the maximum available resources based on current capacity in Harness Cloud.
+:::
+
 #### Rate Tables
 The following tables outline the minute multipliers for each model as of August 2023:
 
@@ -117,7 +121,7 @@ Cloud credits can be consumed by all users within the account registered to run 
 
 ### Usage limits
 
-The following sections describe limits for concurrent stage execution on Harness Cloud, Storage used by [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) features, and network transfers. You can request request to increase concurrency, network transfer, or storage limits. For more information, contact Harness Sales or your account manager.
+The following sections describe limits for concurrent stage execution on Harness Cloud, Storage used by [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) features, and network transfers. You can request request to increase concurrency, network transfer, or storage limits. For more information, contact Harness Sales or your account manager.
 
 #### Concurrency
 
@@ -133,7 +137,7 @@ The following table lists concurrency limits for each OS type and plan tier.
 
 #### Storage
 
-Harness stores cached data when using cache optimizing [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) features, in Harness managed storage. The maximum amount of cache data that you can store depends on the plan you are subscribed to:
+Harness stores cached data when using cache optimizing [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) features, in Harness managed storage. The maximum amount of cache data that you can store depends on the plan you are subscribed to:
 
 * Free: 2 GB
 * Startup: 5 GB

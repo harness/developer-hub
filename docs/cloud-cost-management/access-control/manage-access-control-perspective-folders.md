@@ -66,7 +66,6 @@ Similarly, on the **Anomalies** page, the visibility of the anomalies could be d
 | User does not have Anomalies View Permission but has Perspective View Permission | Anomalies would be filtered based on Perspective View Permission which uses perspective rules for filtering |
 | User do not have either Anomalies View Permission or Perspective View Permission | User won't be able to see any anomalies |
 
-For more information about Anomalies, go to [Detect Cloud Cost Anomalies](/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm).
 
 
 Similarly, on the **Recommendations** page, the visibility of the recommendations could be divided in four cases as explained in the table below:

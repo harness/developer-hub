@@ -20,7 +20,7 @@ Failed CI pipelines don't inherently block PR merges. Harness can [send pipeline
 
 With Harness CI, you can use the [Harness Supply Chain Security (SCS) module](/docs/software-supply-chain-assurance) to generate, manage, store, and enforce SBOM and SLSA Provenance.
 
-You can also [run scripts in Run steps](../use-ci/run-step-settings) to generate SBOM and SLSA Provenance, and then [upload those artifacts](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts).
+You can also [run scripts in Run steps](/docs/continuous-integration/use-ci/run-step-settings/) to generate SBOM and SLSA Provenance, and then [upload those artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts).
 
 ## Secrets
 
@@ -72,3 +72,4 @@ OIDC is also available in other areas of Harness, such as in the [platform-agnos
 
 * [Can I reference a secret type output variable exported from a CD custom stage in a CI stage?](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#can-i-reference-a-secret-type-output-variable-exported-from-a-cd-or-custom-stage-in-ci-stage)
 * [Secrets with line breaks and shell-interpreted characters](/kb/continuous-integration/continuous-integration-faqs/#secrets-with-line-breaks-and-shell-interpreted-special-characters)
+* [How to establish a VPN connection within a CI pipeline?](/kb/continuous-integration/continuous-integration-faqs#how-to-establish-a-vpn-connection-within-a-ci-pipeline)

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The permissions and ports listed in this topic are for all of the integrations Harness supports across its [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md) and Harness NextGen product suites.
+The permissions and ports listed in this topic are for all of the integrations Harness supports across its Harness FirstGen and Harness NextGen product suites.
 
 The following table lists the permissions and ports needed for the Harness Delegate to access Connectors such as artifact servers, cloud providers, verification, and security providers. You configure these settings in the Harness Manager.
 

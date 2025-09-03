@@ -1,0 +1,45 @@
+---
+title: New Relic
+sidebar_label: New Relic
+description: ""
+---
+
+New Relic provides real-time application performance management. Integrate Harness FME data into New Relic to monitor and measure the performance impact of FME changes.
+
+If you have trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
+
+## In New Relic
+ 
+1. Go to **New Relic One** and click your name.
+
+   <div style={{maxWidth:300}}> ![](./static/new-relic-step1.png) </div>
+
+2. Select the **API Keys** option.
+
+   <div style={{maxWidth:400}}> ![](./static/new-relic-step2.png) </div>
+
+3. Select **Create a key**.
+
+   ![](./static/new-relic-step3.png)
+
+4. Create an **Ingest - Licence** key. 
+
+   <div style={{maxWidth:400}}> ![](./static/new-relic-step4.png) </div>
+
+5. Ensure you have copied down your Account ID (the number next to "**Account:**") and the key for use in Harness FME.
+
+## In Harness FME
+
+1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
+2. Click **Integrations** and navigate to the Marketplace tab.
+
+   ![](./static/new-relic-splitadmin.png)
+
+3. Find New Relic in the integrations list, click **Add** and select the project for which you would like to configure the integration.
+
+   ![](./static/new-relic-integration.png)
+
+4. Paste the **Account ID** and **Key** you copied in step 5 of the New Relic instructions.
+5. Click **Save**.
+
+Harness FME notifications should now be flowing into New Relic. If you have any issues with this integration, contact [support@split.io](mailto:support@split.io).

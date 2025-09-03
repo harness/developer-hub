@@ -1,0 +1,3 @@
+This option allows you to configure the step to use the severity reported directly by the scanner. By default, STO assigns severity based on numeric scores (such as CVSS). When this option is enabled, STO bypasses its internal severity mapping and uses the severity levels reported by the scanner (e.g., Critical, High, Medium, Low).
+
+To enable this behavior, check the **Use Raw Scanner Severity** field (recommended), or add `ingest_tool_severity: true` setting in the **Settings** section.

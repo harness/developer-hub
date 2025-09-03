@@ -13,7 +13,7 @@ Modern continuous integration systems execute pipelines inside ephemeral environ
 In addition to loading dependencies faster, you can also use caching to share data across stages in your Harness CI pipelines. You need to use caching to share data across stages because each stage in a Harness CI pipeline has its own build infrastructure.
 
 :::tip
-Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, to automatically caches and restores software dependencies - hassle free.
+Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, to automatically caches and restores software dependencies - hassle free.
 :::
 
 This topic explains how you can use the **Save Cache to GCS** and **Restore Cache from GCS** steps in your CI pipelines to save and retrieve cached data from Google Cloud Storage (GCS) buckets. For more information about caching in GCS, go to the Google Cloud documentation on [caching](https://cloud.google.com/storage/docs/caching). In your pipelines, you can also [save and restore cached data from S3](saving-cache.md) or use Harness [Cache Intelligence](./cache-intelligence.md).
@@ -110,6 +110,24 @@ Here is an example of the YAML for a **Restore Cache from GCS** step.
 
 </TabItem>
 </Tabs>
+
+### Avoiding Prefix Collisions During Restore
+
+To prevent prefix collisions and ensure successful cache restoration, use the featue flag `PLUGIN_STRICT_KEY_MATCHING` (default: `true`).
+
+- Strict Mode (Default): Only restores from exact key matches, preventing unexpected collisions and ensuring accurate cache restoration.
+
+- Flexible Mode (PLUGIN_STRICT_KEY_MATCHING=false): Processes all entries that start with the specified prefix, which may result in multiple paths being restored.
+
+:::warning
+Using Flexible Mode (i.e., setting `PLUGIN_STRICT_KEY_MATCHING` to **false**) may result in unexpected behavior as multiple paths might be restored. The recommended setting is **true**.
+:::
+
+Additional Recommendations:
+
+**Key Naming**: Avoid using cache keys where one key is a prefix of another. Ensure cache key templates are distinct to prevent collisions.
+
+**Bucket Cleanup**: If collisions occur, clean up the problematic entries in the GCS bucket by removing folders with the duplicated key structure.
 
 ### GCS save and restore cache step settings
 

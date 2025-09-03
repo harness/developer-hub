@@ -51,12 +51,6 @@ You can delete access tokens you no longer need. Under **Access tokens for Git p
 
 ### Configure OAuth for Self-hosted Bitbucket provider
 
-:::note
-Currently, support for OAuth configuration with the self-hosted Bitbucket provider is behind the feature flag `CDS_PROVIDERS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
-
-Harness Delegate version 840xx or later is required for this feature.
-:::
-
 To configure your credentials for Self-hosted Bitbucket provide:
 
 1. Go to your user profile in Harness.
@@ -87,7 +81,7 @@ Under **Connect to a Provider**, click on **Select a Provider**, CLick on **On-P
 ### Configure OAuth for Self-hosted Gitlab provider
 
 :::note
-Currently, support for OAuth configuration with the self-hosted and onprem Gitlab provider is behind the feature flag `CDS_PROVIDERS` and `PIPE_ENABLE_GITLAB_ON_PREM_FLOW `. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+Currently, support for OAuth configuration with the self-hosted and onprem Gitlab provider is behind the feature flag and `PIPE_ENABLE_GITLAB_ON_PREM_FLOW `. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
 
 Harness Delegate version 843xx or later is required for this feature.
 :::
@@ -170,6 +164,22 @@ Invalid combinations include:
 1. `https://<YOUR_SUBDOMAIN_1>.<YOUR_SUBDOMAIN_2>.harness.io`
 2. `https://app.harness.io/<YOUR_SUBDOMAIN>`
 
+
+## Enforce OAuth for commits
+
+You can enforce OAuth for commits pushed from Harness to your Git provider.
+
+To enable this setting:-
+
+Navigate to **Account Settings** -> **General** -> **Default Setting** -> **Git Experience** -> **Enable OAuth for Commits**
+
+![](./static/enforce-auth-for-commit.png)
+
+If this setting is enabled but OAuth is not configured for your account, any attempt to commit changes from Harness to Git will fail, and you'll see an error like this:
+
+![](./static/oauth-error-setting.png)
+
+To resolve this, you must [Configure Oauth for your Git Provider](#configure-oauth-for-git-provider) before making any changes.
 
 
 

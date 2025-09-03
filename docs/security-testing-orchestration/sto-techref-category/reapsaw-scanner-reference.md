@@ -5,7 +5,7 @@ sidebar_label: Reapsaw step configuration step configuration
 sidebar_position: 340
 ---
 
-<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
@@ -14,7 +14,7 @@ You can ingest scan results for your code repositories from [Reapsaw](https://gi
 
 ## Workflow description
 
-import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+import CustomScanWorkflowIngest from './shared/custom-scan/workflow-ingest-only.md';
 
 <CustomScanWorkflowIngest />
 
@@ -97,13 +97,13 @@ default
 
 ### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
 ### Repository
 
-import StoLegacyRepo  from './shared/custom-scan/_repo.md';
+import StoLegacyRepo  from './shared/custom-scan/repo.md';
 
 <StoLegacyTargetAndVariant />
 
@@ -121,14 +121,14 @@ import StoLegacyRepo  from './shared/custom-scan/_repo.md';
 
 ### Ingestion file
 
-import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
+import StoLegacyIngest from './shared/custom-scan/ingestion-file.md'; 
 
 <StoLegacyIngest />
 
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/custom-scan/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 

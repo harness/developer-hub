@@ -210,6 +210,9 @@ With Harness, users and groups can be created automatically via SCIM. Permission
 
 No, there is no such option currently. To debug permission related issues, check the groups and roles assigned to user.
 
+### Why doesn’t Slack webhook URL work when referenced as a Harness secret in user group notification preferences?
+Harness recommends not using hyphens/dashes (-) or spaces in variable and property names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software. Spaces may also cause incorrect evaluation of expressions. For more details, refer to: [Harness Variables & Expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#hyphens-and-spaces-require-escaping)
+
 ## API/Integration
 
 ### How can you update a secret file using binary file content through an API request?
@@ -478,6 +481,12 @@ This error indicates that you've reached the maximum amount of API keys availabl
 
 There's no API to get an api-key value as Harness does not store the API token for future reference.
 
+### Can I update the organization for a Harness project?
+No, currently, Harness does not support moving projects from one organization to another.
+
+### Is there an API call that allows changing the organization for a project?
+No, there is no API functionality available to move a project from one organization to another.
+
 ## Authentication
 
 ### As I migrate from FirstGen to NextGen and use Okta for SCIM, I've noticed our user groups haven't migrated. Is there an additional step I need to take?
@@ -669,10 +678,6 @@ Sometimes, this might happen due to an edge case. You can try to get to your acc
 ### What is linkedSsId in SSO groups?
 
 `linkedSsoId` is the UUID of SSO setting creating in Harness.
-
-### What is the Harness hosted GitOps IP address?
-
-Access to Kubernetes clusters that are behind strict firewalls and not reachable from the public internet is restricted to authorized IP addresses only. To enable access to these clusters, Harness provides a list of IP addresses that must be configured on the clusters. For more information, go to [GitOps allowlist](https://developer.harness.io/docs/continuous-delivery/gitops/gitops-ref/gitops-allowlist/).
 
 ### Can I update an email address in a user account?
 
@@ -1249,10 +1254,6 @@ Harness doesn't have a regular upgrade schedule. For more information about dele
 
 You can also customize the kubectl binary version using `INIT_SCRIPT`.
 
-### Can we add a Custom Selector in the Harness Delegate chart for legacy delegates?
-
-For legacy delegates, Harness doesn't have a way to specify a delegate selector or delegate tags in the delegate Helm chart. There is an [API to get and update selectors for the delegates](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api).
-
 ### Why isn't the task_failed_total delegate metric reporting data despite step failure?
 
 The task failed is when something unhandled happens, like a NPE in a task or issue at framework level. A valid failure like shell script exited with error code is not a task failure. Prometheus only shows the metric which are at least once recorded.
@@ -1323,7 +1324,6 @@ docker run  --cpus=1 --memory=2g \
   -e ACCOUNT_ID=xxx \
   -e DELEGATE_TOKEN=xxx= \
   -e DELEGATE_TAGS="" \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.11.81406 -d
 ```
 
@@ -1835,6 +1835,16 @@ This identifier is required for Harness to link old and new pod life cycles prop
 
 Protection details are below for artifact sources related to SSH/WinRm in NextGen:
 
+### SSH Secrets Fails with Error `Failed to get session due to [Client: JSCH] - Encryption algorithms on the host are not compatible with algorithms on the delegate`
+The following error usually occurs with an encryption mismatch on the secret.  As an example, customers may be generating an incorrect encryption on their `ssh-keygen` command, or may be utilizing an encryption that is not compatible with their destination server.
+
+Customer should bash into their delegate, and attempt to run `ssh -vvv -i '/path/to/keyfileondelegate' username@server`, where the keyfile is saved onto the delegate and can be referenced as a path.
+
+If there is an incompatibility, the customer may see an error message similar to the following, which indicates an expecation of a SHA1 key.
+`Unable to negotiate with <ipaddress> port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1`
+
+Please note that our delegates JSCH are updated, and may not support legacy SHA keys that pose security hazards such as SHA1 keys.  
+
 #### Artifactory
 
 To download artifacts from Artifactory to the delegate, Harness uses `org.jfrog.artifactory.client:artifactory-java-client-api:jar:2.9.1`.
@@ -2041,8 +2051,6 @@ environment:
       - ACCOUNT_ID=XXXX
       - DELEGATE_TOKEN=XXXX
       - MANAGER_HOST_AND_PORT=https://app.harness.io
-      - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
-      - DEPLOY_MODE=KUBERNETES
       - DELEGATE_NAME=test
       - NEXT_GEN=true
       - DELEGATE_TYPE=DOCKER
@@ -2366,10 +2374,6 @@ For NextGen SCIM integration and to enable user groups, it is recommended to cre
 ### How events are generated on the Harness Platform?
 
 Audit Trail displays a record for each event of the Harness account, module, or entity. For more information, go to [Audit trail](/docs/platform/governance/audit-trail/).
-
-### How can we export all information related to FirstGen deployments, services, environment, etc.?
-
-Go to [Export deployment logs](/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/export-deployment-logs/) and [Use API audit trails](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-audit-trails-api/).
 
 ### Is any documentation available regarding Harness allowlists for Google GCP?
 
@@ -2871,6 +2875,36 @@ No, Harness doesn't use the customer secret manager to encrypt delegate tokens. 
 
 We do follow some rules for masking, like to mask any api key/token, we mask any string followed by Basic/Bearer, and that’s the reason if you try to print these will be masked.
 
+### How do I update the Custom Secret Manager connector after modifying a template?
+After modifying the Secret Manager template, you will need to edit the Custom Secret Manager configuration. In the connector settings, re-select the updated template to apply the changes.
+
+### Will changes to a Secret Manager template automatically update the Custom Secret Manager connector?
+No, changes to a Secret Manager template will not automatically update the connector. You will need to manually update the Custom Secret Manager configuration by re-selecting the updated template for the changes to take effect.
+
+### How can I correctly reference a Hashicorp Vault connector at the Organization level?
+To reference a Hashicorp Vault connector at the Organization level, you must prefix the connector name with `org.` in your script. For example, if your connector is named vault-connector, you should reference it as `org.vault-connector`.
+
+### Can I store multi-line text as a secret in Harness?
+Harness does not directly support multi-line secrets in the value section of a secret. When multi-line text is stored, it is automatically flattened into a single line, which removes line breaks.
+
+### How can I store a multi-line secret in Harness?
+As a workaround, you can Base64-encode the multi-line text before storing it as a secret. Here’s how:
+
+Encode your multi-line secret using the command:
+```
+echo -n "Line 1\nLine 2\nLine 3" | base64
+```
+This will generate an encoded string like:
+```
+bGluZSAxCmxpbmUgMgpsaW5lIDM=
+```
+Store this Base64-encoded value in Harness as a secret. During runtime, decode the secret using:
+```
+echo <+secrets.getValue("your-secret")> | base64 -d
+```
+
+This will restore the original multi-line format. For more details, refer to the [Documentations](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#sanitization)
+
 ## Security
 
 ### Does JIT provisioning still initiate an email to the user for confirmation or password creation?
@@ -2955,7 +2989,7 @@ We don't change IPs without 30 days notice to customers. If a security emergency
 
 Authorization is used for group mapping. It's optional and not required for SSO login to work.
 
-### Doe Harness support TLS 1.3?
+### Does Harness support TLS 1.3?
 
 Both the Harness Delegate & SaaS support TLS 1.3, the default TLS version. It is worth noting that each specific task implementation can create its own separate HTTP client, which can advertise any TLS version of its choice. The connector check uses the task-specific HTTP client rather than the delegate's HTTP client. Some tasks prefer to use TLSv1.2 in certain use cases, perhaps due to legacy reasons. However, it is possible that this might change in the future, and full TLS 1.3 support might eventually be rolled out. As of now, certain connectors still prefer TLS 1.2.
 
@@ -3279,14 +3313,6 @@ Harness allows organizations to manage an IP allow list, enabling approved IP ad
 
 Harness manages data retention for exiting customers by implementing a straightforward process. Upon the expiration or offboarding of a customer account, all associated data is promptly removed from the system.
 
-### Is there a timeline of when I need to upgrade to NextGen?
-
-Yes. For more information, go to [Timeline](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/#timeline).
-
-### Is there a tool to migrate from FirstGen to NextGen?
-
-Yes. You can use the [migrator tool](https://harness.github.io/migrator/).
-
 ### What is cron job in the Kubernetes manifest, and why is it needed?
 
 The Kubernetes manifest has a component called upgrader. The upgrader is a cron job that runs every hour. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The cron job is required for the auto upgrade flow.
@@ -3358,7 +3384,6 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
   -e DELEGATE_TOKEN=xxxx \
   -e JAVA_OPTS="-Dlogback.configurationFile=/opt/harness-delegate/custom-logback.xml" \
   -e DELEGATE_TAGS="" \
-  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
 ```
 

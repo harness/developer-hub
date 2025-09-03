@@ -2,6 +2,8 @@
 title: Cloud Cost Management (CCM) FAQs
 description: This article addresses some frequently asked questions about Harness Cloud Cost Management (CCM).
 # sidebar_position: 2
+redirect_from:
+- /docs/faqs/cloud-cost-management-faqs
 ---
 
 ## Connectors
@@ -174,7 +176,7 @@ Currently, it's not supported. However, you can leverage dashboard for the same.
 
 When we ingest cloud data, we make certain modifications to the tags/labels. However, with cluster data, we ingest the labels without any alterations.
 
-More information can be found [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws/#analyze-aws-cost).
+More information can be found [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/aws-dashboard/#analyze-aws-cost).
 
 ### Why does the dropdown in the GPU cost tracking perspective only show instance types that have already been used, and not all available GPU instance types across clouds?
 
@@ -238,15 +240,13 @@ You can set up perspectives/folders for each of those and then limit access to t
 
 ## Recommendations
 
-### We have found that some AWS EC2 instances are still visible in recommendations list even they are stopped before 2-3 days ago. is it the usual behavior for stopped ec2s?
-
-We display recommendations that are up to approximately four days old. Even if an instance is stopped within four days after generating the recommendation, we still show that recommendation.
-
-Once a recommendation is generated, it is not updated at a later time. So regardless of the instance's current state it will be visible for about four days.
+## How are recommendation savings calculated for each type of recommendation?
+For nodepool, ECS, workload recommendations, savings are calculated based on on-demand prices. All savings estimates are standardized on on-demand pricing to ensure consistency across recommendations.
 
 ### We have found that some AWS EC2 instances are still visible in recommendations list even they are stopped before 2-3 days ago. is it the usual behavior for stopped ec2s?
 
-If the instance is in a stopped state it takes ~2-3 days for the recommendation to disappear, same is the behavior for terminated instances too.
+Yes, this can happen if the stop action wasn't captured during the next sync cycle after the recommendation was made. In such cases, the recommendation disappears because the instance is no longer in a running state.
+However, if the recommendation is not marked as applied, the potential savings won’t be attributed.
 
 ### Do we support moving the recommendations from the Applied to Open recommendations section?
 
@@ -268,7 +268,7 @@ Yes. CCM supports the following features and functionalities in the SMP environm
 - Anomalies
 - Recommendations
 
-For more information, go to [CCM on Harness Self-Managed Enterprise Edition](https://developer.harness.io/docs/category/ccm-on-harness-self-managed-enterprise-edition).
+For more information, go to [CCM on Harness Self-Managed Enterprise Edition](/docs/category/self-managed-enterprise-edition).
 
 ### Why aren't there any actions for RDS recommendations?
 
@@ -592,6 +592,15 @@ The error is thrown as part of the periodic state sync job from Autostopping. Th
 ### How do you clone autostopping rules?
 
 To clone an autostopping rule, click on the three dots on the rule on the overview page, click Clone, select all the required elements to be cloned, and clone the rule.
+
+### Why is an RDS instance taking some time to start after being auto-stopped?
+This behavior is expected and stems from the nature of AWS's infrastructure. Starting and stopping certain RDS instances is inherently slower compared to EC2 instances, as confirmed in the AWS RDS documentation.
+
+To address this issue:
+- Increase the idle time duration: This ensures the database does not stop too frequently, allowing it to stay running for longer periods of inactivity, which reduces disruptions.
+- Implement an uptime schedule: For workloads with predictable usage patterns, scheduling instance availability can reduce startup delays while still maintaining cost savings.
+
+While these steps can improve the experience, the startup time itself cannot be reduced as it is dependent on AWS's underlying processes
 
 ## Dashboards
 

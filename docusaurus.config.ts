@@ -48,6 +48,7 @@ const config: Config = {
   },
 
   future: {
+    v4: true,
     experimental_faster: true,
   },
 
@@ -112,6 +113,10 @@ const config: Config = {
               to: 'docs/continuous-integration',
             },
             {
+              label: 'AI Test Automation',
+              to: 'docs/ai-test-automation',
+            },
+            {
               label: 'Artifact Registry',
               to: 'docs/artifact-registry',
             },
@@ -132,6 +137,10 @@ const config: Config = {
               to: 'docs/feature-flags',
             },
             {
+              label: 'Feature Management & Experimentation',
+              to: 'docs/feature-management-experimentation',
+            },
+            {
               label: 'Cloud Cost Management',
               to: 'docs/cloud-cost-management',
             },
@@ -148,8 +157,8 @@ const config: Config = {
               to: 'docs/chaos-engineering',
             },
             {
-              label: 'Incident Response',
-              to: 'docs/incident-response',
+              label: 'AI SRE',
+              to: 'docs/ai-sre',
             },
             {
               label: 'Service Reliability Management',
@@ -174,10 +183,6 @@ const config: Config = {
             {
               label: 'Open Source',
               to: 'docs/open-source',
-            },
-            {
-              label: 'FirstGen',
-              to: 'docs/first-gen',
             },
             {
               label: 'FAQs',
@@ -212,12 +217,24 @@ const config: Config = {
               to: 'university',
             },
             {
+              label: 'Code Repository',
+              to: 'university/cr',
+            },
+            {
               label: 'Continuous Integration',
               to: 'university/continuous-integration',
             },
             {
               label: 'Continuous Delivery & GitOps',
               to: 'university/continuous-delivery',
+            },
+            {
+              label: 'Database DevOps',
+              to: 'university/database-devops',
+            },
+            {
+              label: 'Infrastructure as Code Management',
+              to: 'university/iacm',
             },
             {
               label: 'Feature Flags',
@@ -236,8 +253,8 @@ const config: Config = {
               to: 'university/sto',
             },
             {
-              label: 'Software Engineering Insights',
-              to: 'university/sei',
+              label: 'Supply Chain Security',
+              to: 'university/scs',
             },
             {
               label: 'Chaos Engineering',
@@ -248,8 +265,8 @@ const config: Config = {
               to: 'university/idp',
             },
             {
-              label: 'Infrastructure as Code Management',
-              to: 'university/iacm',
+              label: 'Software Engineering Insights',
+              to: 'university/sei',
             },
             {
               label: 'Virtual Instructor-Led Calendar',
@@ -260,8 +277,8 @@ const config: Config = {
               to: 'university/instructions',
             },
             {
-              label: 'FAQs',
-              to: 'university/faqs',
+              label: 'Policies & FAQs',
+              to: 'university/policies-and-faqs',
             },
           ],
         },
@@ -355,8 +372,8 @@ const config: Config = {
               to: 'https://harness.io/products/chaos-engineering',
             },
             {
-              label: 'Incident Response',
-              to: 'https://harness.io/products/incident-response',
+              label: 'AI SRE',
+              to: 'https://harness.io/products/ai-sre',
             },
             {
               label: 'Service Reliability Management',
@@ -369,6 +386,10 @@ const config: Config = {
             {
               label: 'Software Engineering Insights',
               to: 'https://www.harness.io/products/software-engineering-insights',
+            },
+            {
+              label: 'AI Test Automation',
+              to: 'https://www.harness.io/products/ai-test-automation',
             },
           ],
         },
@@ -408,12 +429,20 @@ const config: Config = {
               to: 'https://ideas.harness.io',
             },
             {
+              label: 'Feature Flags GA List',
+              to: '/feature-flags',
+            },
+            {
               label: 'Instructor-Led Training',
               to: '/university?ilt',
             },
             {
               label: 'Partners',
               to: 'https://www.harness.io/partners',
+            },
+            {
+              label: 'Style Guide',
+              to: '/docs/hdh/style-guide',
             },
           ],
         },
@@ -448,7 +477,7 @@ const config: Config = {
     prism: {
       theme: themes.github,
       darkTheme: themes.vsDark,
-      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git'],
+      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git', 'java', 'powershell'],
     },
     colorMode: {
       defaultMode: 'light',
@@ -460,27 +489,6 @@ const config: Config = {
         hideable: true,
         autoCollapseCategories: true,
       },
-    },
-    announcementBar: {
-      id: 'announcementBar_cd_announcement',
-      content:
-        "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>FirstGen Harness CD will be EOL on 12/30/2023 and EOS on 3/30/2024.</span> Learn more in our <a href='/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a>. Contact  <a href='https://support.harness.io' target='_self'>Harness Support</a> with questions or concerns.",
-      backgroundColor: '#FFF5ED',
-      textColor: '#000000',
-      isCloseable: true,
-    },
-    announcementBarByPath: {
-      // list all pathnames in Regular expressions format
-      pathRegExp: [
-        // paths for md-doc pages / global patterns
-        '^/docs/first-gen/continuous-delivery.*',
-        '^/docs/first-gen/first-gen-quickstarts.*',
-        '-fg.*',
-        'fg-.*',
-        'firstgen-.*',
-        'first-gen.*',
-        '-firstgen.*',
-      ],
     },
     utmCookie: {
       prefix: 'utm_',
@@ -503,7 +511,7 @@ const config: Config = {
         id: 'release-notes',
         path: 'release-notes',
         routeBasePath: 'release-notes',
-        exclude: ['**/shared/**', '**/static/**'],
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         sidebarPath: require.resolve('./sidebars-release-notes.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
@@ -512,6 +520,16 @@ const config: Config = {
             hideIndexFromSidebarItems(sidebarItems);
           return sidebarItemsWithoutIndex;
         },
+      },
+    ],
+    [
+      path.resolve(__dirname, './plugins/docs-rss-plugin'),
+      {
+        id: 'feature-flags',
+        path: 'feature-flags',
+        routeBasePath: 'feature-flags',
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
+        editUrl: 'https://github.com/harness/developer-hub/tree/main',
       },
     ],
     // redirect plugin start
@@ -562,7 +580,7 @@ const config: Config = {
         sidebarPath: require.resolve('./sidebars.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
-        exclude: ['**/shared/**', '**/static/**'],
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         routeBasePath: 'docs', //CHANGE HERE
         remarkPlugins: [
           [
@@ -599,6 +617,7 @@ const config: Config = {
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
+    path.join(__dirname, '/plugins/feature-flags-rss-plugin'),
   ],
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),

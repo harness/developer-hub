@@ -19,19 +19,23 @@ These are the currently supported registry types.
 - **Maven:** Essential for Java projects.
 - **Gradle:** Streamline your build automation.
 - **SBT (Scala Build Tool):** Tailored for Scala and Java projects.
+- **Python:** For all your Python packages.
+- **NPM:** JavaScript package management.
+- **NuGet:** .NET package manager.
 
+### Beta
+- **RPM:** Red Hat package management.
+- **Go:** Support for Go modules.
+- **Cargo:** Rust package management.
+- **Hugging Face:** Machine learning models and datasets.
 
 ### Coming Soon
 In addition to the registry types above, support for the following registries will be coming soon!
-- **NPM:** JavaScript package management.
-- **Python:** For all your Python packages.
-- **Go:** Support for Go modules.
-- **NuGet:** .NET package manager.
+
 - **Debian:** For Debian packages.
-- **Rust:** Rust package management.
-- **RPM:** Red Hat package management.
 - **Ruby:** RubyGems support.
 - **Conan:** C/C++ package manager.
+- **Alpine:** For Alpine Linux packages.
 
 ## Platform Support
 Harness Artifact Registry (HAR) is seamlessly integrated with the Harness Platform, offering you robust features and capabilities.

@@ -243,14 +243,40 @@
       &.sei:hover {
         border-color: var(--mod-sei-200);
       }
+
       &.gitness:hover {
         border-color: var(--mod-gitness-200);
+      }
+
+      &.ssca:hover {
+        border-color: var(--mod-ssca-200);
+      }
+
+      &.ata:hover {
+        border-color: var(--mod-aida-200);
+      }
+
+      &.aisre:hover {
+        border-color: var(--mod-aisre-200);
+      }
+
+      &.fme:hover {
+        border-color: var(--mod-fme-200);
+      }
+
+      &.opensource:hover {
+        border-color: var(--mod-opensource-200);
+      }
+
+      &.dbdevops:hover {
+        border-color: var(--mod-dbdevops-200);
       }
     }
   }
 }
 
 @media screen and (max-width: 996px) {
+
   // @media screen and (max-width: 768px) {
   .learnAboutPlatform {
     ul.platformListMore {
@@ -274,6 +300,7 @@
 }
 
 @media screen and (max-width: 393px) {
+
   /* for mobile */
   .learnAboutPlatform {
     h2 {

@@ -11,7 +11,7 @@ redirect_from:
 
 ### Important notes for ingesting SARIF data into STO
 
-- This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [Scanners supported by STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanners-supported-by-sto).
+- This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [Scanners supported by STO](/docs/security-testing-orchestration/whats-supported/scanners).
 
 - Harness STO also supports an STO Custom JSON format for unsupported scanners that can't publish to SARIF. For more information, go to [Ingest Results from Unsupported Scanners](/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners.md).  
 
@@ -72,7 +72,7 @@ The following topics describe end-to-end example pipelines for ingesting SARIF d
 
 - [Custom Ingest settings reference](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference)
 
-- [Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)
+- [Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference)
 
 - [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/run-scans-using-github-actions)
 

@@ -9,7 +9,7 @@ Contact [Harness Support](mailto:support@harness.io) to request a personalized, 
 
 ## Step 1: Use integrations to fetch contributors data from your SDLC tools
 
-SEI can automatically detect user identities and create contributor profiles by integrating with your existing SDLC tools such as [Jira](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration), [Github](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration) etc. For detailed information on available integrations and setup instructions, go to [SEI Integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview).
+SEI can automatically detect user identities and create contributor profiles by integrating with your existing SDLC tools such as [Jira](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/jira/sei-jira-integration), [Github](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration) etc. For detailed information on available integrations and setup instructions, go to [SEI Integrations](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/sei-integrations-overview).
 
 :::info
 Please note that after adding or updating an integration, it may take up to 24 hours for the data to be fully reflected in SEI. The contributor list, reports and insights will update once synchronization is complete.
@@ -152,6 +152,14 @@ sequenceDiagram
     Propel->>User: Result
 ```
 
+## Access Control for SEI
+SEI allows for control utilizing Harness' [RBAC infrastructure](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/).  Controls specific to SEI are available from both a scoping and role standpoint.  There are a couple of notes to RBAC for SEI that teams should be aware of
+
+- Teams looking to provide access for a person to perform changes to the people-based collection settings will also need to ensure the person has enough permissions to view the users that they wish to add to the collection.  For example, to add users that exist on an the account level, the administrator also needs viewing permissions for those users to be able to add them.  Otherwise, they may see a blank section as per the image below.
+![RBAC Collections](../static/sei-rbac-collections.png)
+- Customers looking to provide Resource Group control to SEI configuration settings will need to provide that access at the account level, using an `Account Only` Resource Scope.  This cannot be added through other scope levels, as the settings will refuse to be saved. 
+
+
 :::info License Utilization
-A Contributor is counted as a licensing unit if they have at least one user account associated with an integrated Source Code Management (SCM) tool, such as GitHub, GitLab, Bitbucket or any other. For more information, go to [SEI Subscriptions and Licenses](/docs/software-engineering-insights/get-started/sei-subscription-and-licensing)
+A Contributor is counted as a licensing unit if they have at least one user account associated with an integrated Source Code Management (SCM) tool, such as GitHub, GitLab, Bitbucket or any other. For more information, go to [SEI Subscriptions and Licenses](/docs/software-engineering-insights/propelo-sei/get-started/sei-subscription-and-licensing)
 :::

@@ -62,7 +62,7 @@ This example runs tests with Maven and Test Intelligence, and it produces a test
                       mvn test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
                       mvn package -DskipTests
                     shell: Sh
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: maven:3.8-jdk-11
                     intelligenceMode: true
                     reports:

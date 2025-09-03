@@ -219,8 +219,12 @@ The Git Clone step uses a containerized step group. For more information, refer 
 2. **Connector**: You can select a connector for the source control provider hosting the code repository that you want to clone.
 
 :::info
-- The connection type ``ssh`` is currently not supported for Connectors.
-- For credentials, only Username and Password types are supported.
+For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
+
+You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+This setup is only supported for **organization accounts**, not personal GitHub accounts.
 :::
 
 You can refer to the following resources for more information on creating code repo connectors:
@@ -405,11 +409,14 @@ Select the repository type you want to create, which could be public or private.
 #### Connector
 
 :::info
+For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
 
-![](./static/details-git-conector.png)
-![](./static/creds-git-connector.png)
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+This setup is only supported for **organization accounts**, not personal GitHub accounts.
+
+![](./static/github-app-1.png)
 
 ::: 
 
@@ -505,6 +512,7 @@ spec:
   owner: test
   lifecycle: experimental
 ```
+> Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
@@ -562,10 +570,14 @@ In the example provided for this step, we have used pipeline variables as input 
 
 :::info
 
-Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-![](./static/details-git-conector.png)
-![](./static/creds-git-connector.png)
+You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+This setup is only supported for **organization accounts**, not personal GitHub accounts.
+
+![](./static/github-app-1.png)
 
 ::: 
 
@@ -632,12 +644,14 @@ In the example provided for this step we have used pipeline variables as input f
 #### Connector
 
 :::info
+For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
 
-![](./static/details-git-conector.png)
-![](./static/creds-git-connector.png)
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+This setup is only supported for **organization accounts**, not personal GitHub accounts.
 
+![](./static/github-app-1.png)
 ::: 
 
 Select a connector for the git provider where your `catalog-info.yaml` is stored. 
@@ -678,6 +692,19 @@ Add the Org, Repo Name, Branch and the File path relative to the root of the rep
 
 </TabItem>
 </Tabs>
+
+#### API Key Support
+Harness IDP now supports the use of a **Harness API Key** in the **Register Catalog** step.
+
+With this feature, users can configure the **API Key** by selecting the **"API Token"** field in the Harness UI. This option is available under **Advanced Settings** in the **Pipelines** tab. Enabling this ensures that the API Key is utilized for catalog registration in IDP.
+
+By integrating the API Key, the pipeline execution remains seamless, ensuring it functions correctly when triggered from another pipeline or through a trigger.
+
+![](./static/api-key-ngui.png)
+
+This step is optional. You can proceed with executing your pipeline without an API key. In that case, the user context will be used for catalog registration.
+
+#### Output Variable
 
 Following is the output variable of this step.
 
@@ -863,10 +890,21 @@ This step is used to update the catalog metadata for your entities. For example,
 </TabItem>
 </Tabs>
 
+### 10. Run Step
+You can use the **Run step** to to run commands or scripts in your Harness Pipeline. 
+
+In order for the Run step to execute your commands, the build environment must have the necessary binaries for those commands. Depending on the stage's build infrastructure, Run steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries.
+
+Please refer to detailed steps and settings here to understand this step in detail: [Run Step Settings](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#run-step-settings)
+
+### 11. Plugin Step
+You can use the **Plugin step** to run different plugins in your Harness Pipeline. 
+
+Please refer to detailed steps and settings here to understand this step in detail: [Plugin Step Settings](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference/)
+
 ## Example Pipeline
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
-
 
 ```YAML
 pipeline:
@@ -1030,7 +1068,7 @@ pipeline:
 </TabItem>
 </Tabs>
 
-## Specify the Harness IDP images used in your pipelines
+## Specify the Harness IDP Images used in your Pipeline
 
 You can use the Harness IDP `execution-config` API to specify or update the Harness IDP images used in your infrastructure by specifying image tags.
 
@@ -1039,6 +1077,19 @@ You can use the Harness IDP `execution-config` API to specify or update the Harn
 Certain steps are common across different stages in Harness Pipeline, but the images used in each of them is specific to the stage they are part of, like `Run Step`.
 
 :::
+
+Here's a list of Harness IDP images used in the IDP stage: 
+1. [``cookieCutter``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/cookiecutter): Used to take inputs for the cookiecutter template.
+2. [``createRepo``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createrepo): Used to create the repository in your git provider
+3. [``directPush``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/directpush): Used to push the service/application created using Cookiecutter step along with the catalog-info.yaml in the repo you created in previous step.
+4. [``registerCatalog``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/registercatalog?project=gcr-prod): Used to register the software component created in the Harness IDP Catalog. 
+5. [``slackNotify``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/slacknotify): Used to notify individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog.
+6. [``createResource``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createresource): Used to create Harness entities like projects, users, connectors, pipelines, secrets, etc.
+7. [``updateCatalogProperty``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/updatecatalogproperty): Used to update the catalog metadata for your entities
+8. [``createOrganisation``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createorganisation)
+9. [``createProject``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createproject)
+10. [``createCatalog``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createcatalog)
+
 
 API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
 

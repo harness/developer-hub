@@ -5,7 +5,7 @@ sidebar_label: Jfrog Xray step configuration
 sidebar_position: 420
 ---
 
-<DocsTag   text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag   text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#artifact-scanners"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
@@ -15,7 +15,7 @@ You can ingest scan results for your container images from [JFrog Xray](https://
 
 ## Workflow descriptions
 
-import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+import CustomScanWorkflowIngest from './shared/custom-scan/workflow-ingest-only.md';
 
 <CustomScanWorkflowIngest />
 
@@ -108,19 +108,19 @@ default
 
 ### Target and variant
 
-import CustomScanTargetVariant from './shared/custom-scan/_target-variant.md';
+import CustomScanTargetVariant from './shared/custom-scan/target-variant.md';
 
 <CustomScanTargetVariant />
 
 ### Ingestion file
 
-import CustomScanIngest from './shared/custom-scan/_ingestion-file.md';
+import CustomScanIngest from './shared/custom-scan/ingestion-file.md';
 
 <CustomScanIngest />
 
 ### Fail on severity
 
-import CustomScanFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
+import CustomScanFailOnSeverity from './shared/custom-scan/fail-on-severity.md';
 
 <CustomScanFailOnSeverity />
 

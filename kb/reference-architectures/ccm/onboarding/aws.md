@@ -15,7 +15,7 @@ The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onbo
 
 ![](../../static/aws-cur.png)
 
-There is a CloudFormation template or Terraform module to provision this role. [The CloudFormation stack is located here](https://github.com/harness/harness-core/blob/develop/ce-nextgen/awstemplate/prod/HarnessAWSTemplate.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
+There is a CloudFormation template or Terraform module to provision this role. [The CloudFormation stack is located here](https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate_V2.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
 
 For both the template and the module there are inputs you must specify for your setup:
 
@@ -27,9 +27,9 @@ For both the template and the module there are inputs you must specify for your 
 - Role name: The name of the AWS IAM role provisioned that will be granted access to the S3 bucket, and allow assumption from Harness
 - Enable billing: This provisions a policy that allows the role to access the S3 bucket given for the CUR data
   - See the `HarnessBillingMonitoringPolicy` in the template for the exact permissions included and modify as necessary.
-- (beta) Enable commitment read: (required for commitment orchestrator) This provisions a policy that gives access to read RI and savings plan data
+- Enable commitment read: (required for commitment orchestrator) This provisions a policy that gives access to read RI and savings plan data
   - See the `HarnessCommitmentReadPolicy` in the template for the exact permissions included and modify as necessary.
-- (beta) Enable commitment write: (required for commitment orchestrator to make purchases) This provisions a policy that gives access to purchase RI and savings plans
+- Enable commitment write: (required for commitment orchestrator to make purchases) This provisions a policy that gives access to purchase RI and savings plans
   - See the `HarnessCommitmentWritePolicy` in the template for the exact permissions included and modify as necessary.
 
 For the rest of the feature enablement inputs you should set these as false (disabled) in your payer account, because it is unlikely that you will have workloads running inside the payer account.
@@ -91,7 +91,7 @@ Enabling CCM for your payer account gets your cost data into Harness and enabled
 
 You should leverage the same template/module that you did for the payer account but with different inputs for the features you want to enable. You will be deploying the template/role into every non-payer account where you want to utilize the other CCM features.
 
-[The CloudFormation stack is located here](https://github.com/harness/harness-core/blob/develop/ce-nextgen/awstemplate/prod/HarnessAWSTemplate.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
+[The CloudFormation stack is located here](https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate_V2.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
 
 For both the template and the module there are inputs you must specify for your setup:
 
@@ -103,28 +103,31 @@ For both the template and the module there are inputs you must specify for your 
 - Role name: The name of the AWS IAM role provisioned that will be granted access to the S3 bucket, and allow assumption from Harness
   - You should use the same role name in every non-payer account
 - Enable billing: This should be set to false for non-payer accounts
-- (beta) Enable commitment read: This should be set to false for non-payer accounts
-- (beta) Enable commitment write: This should be set to false for non-payer accounts
+- Enable commitment read: This should be set to false for non-payer accounts
+- commitment write: This should be set to false for non-payer accounts
 - Enable events: This enables read access in the account for inventory management
   - This will enable EC2 and ECS recommendation gathering as well as compute metadata around EC2, ECS, and RDS
-    - Skip this for all member acounts that are opt in for Compute Optimizer.  [Opt in member accounts for Compute Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/viewing-accounts.html). 
+    - Be sure and [enable Compute Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/viewing-accounts.html) in these accounts. 
   - See the `HarnessEventsMonitoringPolicy` in the template for the exact permissions included and modify as necessary
-- Enable optimization: This enables access that is necessary to auto stop workloads in your account
-  - See the `HarnessOptimisationPolicy` and `HarnessOptimsationLambdaPolicy` in the template for the exact permissions included and modify as necessary
+- Enable autostopping: This enables access that is necessary to auto stop workloads in your account
+  - There are specific inputs to enable the precise permissions needed for different types of autostopping
   - There is also an input for the `LambdaExecutionRoleName` which is a role used for the lambda function that is used when auto stopping using an ALB, unless you have specific naming schemes this can be left as the default
-- Enable governance: This provisions a policy that has some read and write access to resource types that are used in asset governance example rules in your Harness account
+- Enable governance: This provisions a policy that has read access to the AWS account to enable running rules in dry run and generating custom recommendations 
   - When you create a custom asset governance role, you may need to attach additional policies to the role to allow you to do the actions your policy is attempting to make
 
 ```terraform
-module "ccm" {
-  source  = "harness-community/harness-ccm/aws"
-  version = "0.1.1"
+module "ccm-member" {
+  source                = "harness-community/harness-ccm/aws"
+  version               = "1.0.0"
+  
+  external_id             = "harness:891928451355:wlgELJ0TTre5aZhzpt8gVA"
 
-  external_id             = "harness:012345678901:wlgELJ0TTre5aZhzpt8gVA"
   enable_events           = true
-  enable_optimization     = true
-  enable_governance       = true
 
+  autostopping_loadbalancers = ["alb", "proxy"]
+  autostopping_resources     = ["ec2", "ec2-spot", "asg", "rds", "ecs"]
+
+  enable_governance      = true
   governance_policy_arns = [
     "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
   ]
@@ -145,7 +148,7 @@ To configure the connector you will need the following information:
 - Features enabled: The CCM features that you want to use in this account
   - You should not set `BILLING` for non-payer accounts
   - You should set the other features based on what you enabled in the template/module
-    - `OPTIMIZATION`, `VISIBILITY`
+    - `OPTIMIZATION` (autostopping), `VISIBILITY` (events; inventory/recommendations), `GOVERNANCE`
 
 ```terraform
 resource "harness_platform_connector_awscc" "member" {
@@ -155,7 +158,8 @@ resource "harness_platform_connector_awscc" "member" {
   account_id  = "012345678902"
   features_enabled = [
     "OPTIMIZATION",
-    "VISIBILITY"
+    "VISIBILITY",
+    "GOVERNANCE"
   ]
   cross_account_access {
     role_arn    = "arn:aws:iam::012345678902:role/HarnessCERole"

@@ -11,6 +11,10 @@ const Facet: React.FC<FacetProps> = (props) => {
   const { controller, toggleClicked } = props;
   const [state, setState] = useState(controller.state);
   const [open, setOpen] = useState(true);
+
+  if (!controller) {
+    return null;
+  }
   useEffect(() => {
     const unsubscribe = controller.subscribe(() => {
       setState(controller.state);
@@ -57,10 +61,12 @@ const Facet: React.FC<FacetProps> = (props) => {
         });
       });
     }
+    let existingFacets = JSON.parse(localStorage.getItem('coveo-facet') || '[]');
     if (
       !QueryCategoryname &&
       !QueryCommonsource &&
       !QueryCommonmodule &&
+      existingFacets.length == 0 &&
       controller.state.facetId == 'commonsource'
     ) {
       controller.toggleSelect({
@@ -69,6 +75,34 @@ const Facet: React.FC<FacetProps> = (props) => {
         value: 'Developer Hub',
       });
     }
+    setTimeout(() => {
+      if (existingFacets.length > 1) {
+        existingFacets.forEach((facet) => {
+          if (controller.state.facetId == 'commonsource' && facet.facetId == 'commonsource') {
+            controller.toggleSelect({
+              numberOfResults: 0,
+              state: 'selected',
+              value: facet.value,
+            });
+          }
+          if (controller.state.facetId == 'commonmodule' && facet.facetId == 'commonmodule') {
+            controller.toggleSelect({
+              numberOfResults: 0,
+              state: 'selected',
+              value: facet.value,
+            });
+          }
+          if (controller.state.facetId == 'categoryname' && facet.facetId == 'categoryname') {
+            controller.toggleSelect({
+              numberOfResults: 0,
+              state: 'selected',
+              value: facet.value,
+            });
+          }
+        });
+      }
+    }, 1000);
+
     controller.sortBy('alphanumeric');
     controller.showMoreValues();
   }, []);
@@ -88,6 +122,33 @@ const Facet: React.FC<FacetProps> = (props) => {
   const showLess = () => {
     controller.showLessValues();
   };
+
+  function handleFacetSelect(value, facetId) {
+    const newFacet = {
+      facetId: facetId,
+      value: value.value,
+    };
+
+    let existingFacets = JSON.parse(localStorage.getItem('coveo-facet') || '[]');
+
+    if (existingFacets.length === 0) {
+      existingFacets = [
+        {
+          facetId: 'commonsource',
+          value: 'Developer Hub',
+        },
+      ];
+    }
+
+    if (value.state != 'selected') {
+      existingFacets.push(newFacet);
+    } else {
+      existingFacets = existingFacets.filter(
+        (facet) => !(facet.facetId === newFacet.facetId && facet.value === newFacet.value),
+      );
+    }
+    localStorage.setItem('coveo-facet', JSON.stringify(existingFacets));
+  }
 
   return (
     <div className={styles.facet}>
@@ -111,6 +172,7 @@ const Facet: React.FC<FacetProps> = (props) => {
                 onChange={() => {
                   controller.toggleSelect(value);
                   toggleClicked();
+                  handleFacetSelect(value, controller.state.facetId);
                 }}
                 disabled={state.isLoading}
               />
@@ -127,9 +189,7 @@ const Facet: React.FC<FacetProps> = (props) => {
                 )}
                 <p
                   style={{
-                    fontWeight: controller.isValueSelected(value)
-                      ? 'bold'
-                      : 'normal',
+                    fontWeight: controller.isValueSelected(value) ? 'bold' : 'normal',
                   }}
                 >
                   {value.value}

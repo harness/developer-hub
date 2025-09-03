@@ -10,6 +10,14 @@ To add an artifact source, you add a Harness connector to the artifact platform 
 
 This topic lists the artifact sources you can use in your Harness services. 
 
+:::warning
+**Google Container Registry Deprecation Notice 📢**
+
+Google Container Registry (GCR) is deprecated and scheduled to shut down on **March 18, 2025**. It is recommended to migrate to Google Artifact Registry (GAR). For migration guidance, refer to [Google's official transition documentation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr).
+
+For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
+:::
+
 ## Using artifacts in manifests
 
 You have two options when referencing the artifacts you want to deploy:
@@ -55,10 +63,6 @@ Configuring dependent fields, such as the artifact tag, as runtime inputs when t
 :::
 
 ### Skip Artifact Consumption for the Stage
-
-:::note
-Currently, the disable artifact consumption check feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 You can bypass artifact consumption checks for a service in a **Deploy** stage by selecting the **Disable artifact in this stage** checkbox. When this option is enabled, the pipeline treats the service without artifact configuration, skips the artifact consumption check process.
 
@@ -326,6 +330,10 @@ You can reference artifact properties using the following expressions in a value
 
 
 ## Google Container Registry (GCR)
+
+:::warning
+​Google Container Registry (GCR) is deprecated and scheduled for shutdown on **March 18, 2025**. It is recommended to migrate your container images and workflows to Google Artifact Registry (GAR) before this date. For detailed guidance, refer to [Google's official transition documentation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr).
+:::
 
 ### Use GCR artifacts
 
@@ -1129,7 +1137,7 @@ service:
                 connectorRef: azure
                 scope: org
                 feed: universaltest68137
-                packageType: upack
+                packageType: maven
                 package: my-first-package
                 version: 0.0.1
               type: AzureArtifacts
@@ -1169,8 +1177,8 @@ You can reference artifact properties using the following expressions in a value
 | `<+artifact.project>`             | Name of the projects in Azure Artifacts                                                                                  | `acme-project`        |
 | `<+artifact.feed>`                | Name of the feed in Azure artifacts                                                                                      | `acme-feed-universal` |
 | `<+artifact.scope>`               | It will be one of `org` or `project`                                                                                     | `project`             |
-| `<+artifact.packageType>`         | Package type. It is one of `upack`, `maven`                                                                              | `upack`               |
-| `<+artifact.packageName>`         | Name of the package in the feed                                                                                          | `acme-upacks`         |
+| `<+artifact.packageType>`         | Package type. It is one of `NuGet`, `maven`                                                                              | `maven`               |
+| `<+artifact.packageName>`         | Name of the package in the feed                                                                                          | `acme-maven`          |
 | `<+artifact.version>`             | Version of the artifact                                                                                                  | `0.0.1`               |
 | `<+artifact.metadata.get([KEY])>` | This is the metadata attached with the file in Azure Devops. Popular keys include `publishDate`, `versionId`, `version`. |                       |
 
@@ -1553,6 +1561,8 @@ You can reference artifact properties using the following expressions in a value
 
 You connect to ECR using a Harness AWS connector. For details on all the ECR requirements for the AWS connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
+AWS OIDC connectors are supported, starting with delegate version `849xx` or later.
+
 #### YAML
 
 
@@ -1848,6 +1858,8 @@ You can reference artifact properties using the following expressions in a value
 
 You connect to AWS using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
+AWS OIDC connectors also are supported, starting with delegate version `849xx` or later.
+
 <!-- AWS S3 -->
 
 #### YAML
@@ -2076,6 +2088,8 @@ Examples:
 ### Use Amazon EC2 AMI artifacts
 
 You connect to Amazon AWS account using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-aws-connector).
+
+AWS OIDC connectors are supported, starting with delegate version `849xx` or later.
 
 For AWS AMI artifacts, a version number represents the name of AMI. You can filter names by using tags/filter values.
 
@@ -2737,7 +2751,7 @@ You can reference artifact properties using the following expressions in a value
 | `<+artifact.label.[PLACEHOLDER]>`                                       | This is the label set in the Docker image. Replace the placeholder with the appropriate label. Valid for `docker` only                 |                                                                           |
 | `<+artifact.metadata.SHAV2>`                                            | Docker tends to support v1 and v2 format. We list both formats when applicable. Valid for `docker` only                                | `sha256:6d001fb3022161cdcb5f4df6cca5b5705e064ce873cd16144c3e4de8d2653d0b` |
 | `<+artifact.metadata.SHA>`                                              | SHA of the Docker image. Valid for `docker` only                                                                                       | `sha256:b3ebe55062b76860c6c0c78f5cae81ec393a944bcc96c05b5f411d3560c9f1d8` |
-| `<+artifact.metadata.filename>`                                         | Name of the file. Valid for `generic` only.                                                                                            | `artifact.zip`                                                            |
+| `<+artifact.metadata.fileName>`                                         | Name of the file. Valid for `generic` only.                                                                                            | `artifact.zip`                                                            |
 | `<+artifact.metadata.url>`                                              | URL to the file. Valid for `generic` only.                                                                                             | `https://acme.jfrog.io/artifactory/todolist/artifact.zip`                 |
 
 
@@ -3109,7 +3123,9 @@ To add an artifact from Github Packages, do the following:
   :::
 15. Select **Submit**. The Artifact is added to the Service Definition.
 
+### GitHub Connectors Limitations
 
+Harness does not support **GitHub App connectors** for configuring GitHub Packages as an artifact source.
 
 ### Permissions
 

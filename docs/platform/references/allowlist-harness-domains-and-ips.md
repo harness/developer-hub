@@ -1,5 +1,5 @@
 ---
-title: Allowlist Harness domains and IPs
+title: Allowlist Harness Platform IPs and CIDR
 description: Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, app.harness.io) and, optionally, to logging.googleapis.com.
 sidebar_position: 1
 helpdocs_topic_id: ooelo06uy5
@@ -12,99 +12,37 @@ redirect_from:
   - /docs/continuous-delivery/gitops/gitops-allowlist
 ---
 
-Harness SaaS delegates only need outbound access to the Harness domain name (typically **app.harness.io**) and, optionally, to **logging.googleapis.com** (used to provide logs to Harness support).
+Harness supports allowlisting of its SaaS infrastructure IPs to enable secure access to private networks. This is helpful when you want to connect Harness to internal systems such as Kubernetes clusters, artifact repositories, SCMs, or other internal services.
 
-The URL `logging.googleapis.com` is used to send log files to Harness support. Use the environment variable `STACK_DRIVER_LOGGING_ENABLED` to disable this functionality.
+We recommend [contacting Harness Support](https://support.harness.io/) to receive the correct list of IPs and guidance based on your use case, region, and Harness modules in use.
 
-For more information, go to [Delegate environment variables](/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled).
+## Outbound Access Requirements
 
-## Harness Manager
+Harness Delegates typically only require outbound access to the following domains:
 
-Users of the Harness Manager browser client need access to **app.harness.io** and **static.harness.io**. This is not a Harness Delegate requirement. It's simply for users to use the browser-based Harness Manager.
+- `app.harness.io` – Primary Harness platform endpoint.
 
-## Vanity URL
+- `logging.googleapis.com` – (Optional) Used to send logs to Harness Support. This can be disabled using the `STACK_DRIVER_LOGGING_ENABLED` environment variable. [Learn more](/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled).
 
-If you are using a Harness vanity URL, like **mycompany.harness.io**, you can allowlist it also.
+## Allowlisting Harness IPs
 
-## Allowlist Harness SaaS IPs
+To connect securely from Harness to your internal infrastructure — such as for:
 
-The following list is optional. You can allowlist these IPs if needed.
+- Pipeline execution using Harness Cloud
 
-```
-35.201.91.229
-34.120.225.85
-34.110.203.189
-34.149.33.161
-34.160.153.7
-34.82.155.149
-34.168.179.66
-```
+- Deployments via GitOps agents
 
-:::warning
-Harness will not change IPs without 30 days notice to all customers. If a security emergency requires a change, all customers are notified.
+- Feature Flags
+
+- Hosted builds (Linux/macOS)
+
+- Internal APIs or SCM access
+
+You may need to allowlist specific IP ranges based on the Harness services you're using.
+
+:::note
+Harness provides region- and service-specific IPs for allowlisting. These are not publicly listed to avoid misuse. Please reach out to [Harness Support](https://support.harness.io/) to obtain the accurate IPs required for your setup.
 :::
-
-## Add Harness hosted IPs to the allowlist
-
-Access to Kubernetes clusters that are behind strict firewalls and are not accessible from the public internet is controlled through authorized IP addresses. To allow access to these clusters, Harness provides a list of IP addresses that need to be configured on the clusters.
-
-### Harness hosted GitOps IPs
-
-If you are using hosted GitOps agents to deploy on managed clusters, you must configure these clusters with a specific set of IP addresses to authorize access.
-
-All the IPs are cloud NAT gateways and need to enable specific IPs instead of ranges.
-
-```bash
-34.168.25.119/32
-35.247.93.45/32
-34.82.210.106/32
-34.83.159.16/32
-```
-
-### Harness Platform IPs
-
-All the IPs are cloud NAT gateways and need to enable specific IPs instead of ranges.
-
-```bash
-35.237.119.232/32
-34.82.155.149/32
-34.83.51.28/32
-35.230.70.231/32
-34.105.92.100/32
-35.233.187.42/32
-35.247.6.7/32
-34.83.106.43/32
-34.168.179.66/32
-34.145.10.183/32
-35.197.78.109/32
-35.247.11.84/32
-34.168.91.26/32
-35.230.82.250/32
-35.247.57.139/32
-34.83.191.187/32
-34.127.8.91/32
-35.247.40.237/32
-35.236.117.224/32
-35.236.112.238/32
-34.94.29.95/32
-34.94.190.229/32
-```
-
-### Harness hosted Feature Flags IPs
-
-With Feature Flags, the following IP can be added to the allowlist as needed.
-
-```bash
-35.244.167.62
-```
-
-For Flutter Web users only, you can use the following IP address:
-
-```bash
-35.190.29.75
-```
-
-If you'd like to install the JavaScript SDK needed for the Flutter Web IP, you can refer to the [Feature Flags Javascript SDK Documentation](../../feature-flags/use-ff/ff-sdks/client-sdks/java-script-sdk-references.md) or the [Flutter GitHub repo](https://github.com/harness/ff-flutter-client-sdk#sdk-installation-for-flutter-web).
 
 ### Configure clusters
 
