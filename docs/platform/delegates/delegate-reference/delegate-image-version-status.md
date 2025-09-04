@@ -28,7 +28,7 @@ When a delegate reaches EOS:
 
 ### End of Life (EOL)
 
-EOL occurs 8 months after the delegate is released. The EOL month is calculated based on the month encoded in the version number (MM in YY.MM.XXXX).
+The EOL month is calculated based on the month encoded in the version number (MM in YY.MM.XXXX). EOL occurs at the end of the eighth month from the month mentioned in the delegate version.
 
 When a delegate reaches EOL:
 
