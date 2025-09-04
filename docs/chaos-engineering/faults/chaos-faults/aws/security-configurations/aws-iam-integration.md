@@ -103,27 +103,11 @@ To create an OIDC provider for your EKS cluster:
 * For more information, go to [AWS IAM documentation](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html).
 :::
 
-### Step 2: Associate the IAM role with the experiment service account
+### Step 2: Configure the trust relationship of the IAM role in the source account
 
-Associate the IAM role you created in the previous step by annotating the experiment service account (usually `litmus-admin`). This will give it the required access to AWS resources.
+Configure the trust relationship in the IAM role associated with your experiment service account in the AWS source account. This step is required for both single-account and cross-account IRSA configurations.
 
-To associate the IAM role to the experiment service account, run this command:
-
-```bash
-kubectl annotate serviceaccount -n <experiment_service_account_namespace> <experiment_service_account_name> \
-eks.amazonaws.com/role-arn=arn:aws:iam::<account_ID>:role/<IAM_role_name>
-```
-
-:::note
-- The default name for the experiment service account is `litmus-admin` and the namespace for chaos infrastructure is `HCE`, however, you can use different names.
-- For the cluster autoscaler experiment, annotate the experiment service account in the `kube-system` namespace.
-:::
-
-### Step 3: Configure AWS source account for cross-account access
-
-Before verifying the setup, you need to configure the AWS source account (where your EKS cluster resides) to enable cross-account access.
-
-Edit the trust relationship in the IAM role associated with your experiment service account in the AWS source account.
+Edit the trust relationship in the IAM role you created in Step 1.
 
 You can find the JSON for the trust relationship in **AWS IAM > *ROLE_NAME* > Trust relationship** tab.
 
@@ -141,6 +125,27 @@ You can find the JSON for the trust relationship in **AWS IAM > *ROLE_NAME* > Tr
     ]
 }
 ```
+
+Where:
+- `<SOURCE_ACCOUNT_ID>`: Your AWS source account ID
+- `<REGION>`: The AWS region of your EKS cluster  
+- `<OIDC_PROVIDER_ID>`: The OIDC provider ID from your EKS cluster
+
+### Step 3: Associate the IAM role with the experiment service account
+
+Associate the IAM role you created in Step 1 by annotating the experiment service account (usually `litmus-admin`). This will give it the required access to AWS resources.
+
+To associate the IAM role to the experiment service account, run this command:
+
+```bash
+kubectl annotate serviceaccount -n <experiment_service_account_namespace> <experiment_service_account_name> \
+eks.amazonaws.com/role-arn=arn:aws:iam::<account_ID>:role/<IAM_role_name>
+```
+
+:::note
+- The default name for the experiment service account is `litmus-admin` and the namespace for chaos infrastructure is `HCE`, however, you can use different names.
+- For the cluster autoscaler experiment, annotate the experiment service account in the `kube-system` namespace.
+:::
 
 ### Step 4: Verify the association of the IAM role with the experiment service account
 
