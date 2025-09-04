@@ -72,7 +72,7 @@ export const featureList: CardItem[] = [
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: <>Shift left scanning of code, containers, & live apps.</>,
-    link: "docs/security-testing-orchestration",
+    link: "docs/category/get-started-with-sto",
   },
   {
     title: "Secure Supply Chain",
