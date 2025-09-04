@@ -161,6 +161,15 @@ Harness pipelines connect inventories and playbooks so you can run automation as
 
 ---
 
+## Troubleshooting
+If you don’t see the expected results, try these quick checks:
+- **Hosts missing from dynamic inventory:** Verify your workspace has been refreshed and that filter criteria match the attributes in your Terraform/OpenTofu configuration.
+- **Playbook variables not resolving:** Check the host variables in the Variables tab and confirm the names you reference in your playbook match exactly.
+- **Playbook not found in pipeline:** Ensure the repository, branch, and path are correct and that your connector has valid access.
+- **Connection issues with hosts:** Confirm that credentials and network access (for example, SSH keys and security groups) are properly configured.
+
+---
+
 ## Summary
 - [Inventories](#inventories) define where your automation runs.  
 - [Playbooks](#playbooks) define what automation is applied.  
