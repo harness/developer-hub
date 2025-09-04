@@ -19,7 +19,7 @@ You can use Cache Intelligence with any [build infrastructure](/docs/continuous-
 * Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
 * Cache Intelligence is enabled by default for newly created CI stages. This is configurable in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration)  
 - To enable Path Style support in Cache Intelligence S3 configuration, set `PLUGIN_PATH_STYLE: "true"` as a stage variable. This value will be passed to the environment variables of all steps. 
-- If your cache bucket requires encryption (for example, AES256), see [Caching with bucket encryption policies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-with-bucket-encryption-policies).
+- To learn about S3 encryption support for uploading cache dependency packages to an S3 bucket in a CI pipeline, see [Caching with bucket encryption policies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-with-bucket-encryption-policies).
 :::
 
 
