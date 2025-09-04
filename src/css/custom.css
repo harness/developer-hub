@@ -710,9 +710,10 @@ details summary::before {
 }
 
 /* A Title to ToC */
+/* ================= Light Mode ================= */
 .theme-doc-toc-desktop {
   padding: 1rem;
-  background: #f9fafb;
+  background: #f9fafb; /* light gray */
   border-radius: 8px;
 }
 
@@ -720,8 +721,43 @@ details summary::before {
   content: "On this page";
   font-weight: 600;
   display: block;
-  color: #1f2937;
-  margin-bottom: 0.01rem;
+  color: #1f2937; /* gray-900 */
+  margin-bottom: 0.5rem;
+}
+
+.table-of-contents {
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.table-of-contents li,
+.table-of-contents li a {
+  color: #1f2937; /* dark text */
+}
+
+/* ================= Dark Mode ================= */
+html[data-theme='dark'] .theme-doc-toc-desktop {
+  background: #111827; /* near-black background */
+}
+
+html[data-theme='dark'] .theme-doc-toc-desktop:before {
+  color: #f9fafb; /* white title */
+}
+
+html[data-theme='dark'] .table-of-contents {
+  background-color: #1f2937; /* dark gray background */
+}
+
+html[data-theme='dark'] .table-of-contents li,
+html[data-theme='dark'] .table-of-contents li a {
+  color: #e5e7eb; /* light gray text */
+}
+
+html[data-theme='dark'] .table-of-contents li a:hover {
+  color: #38bdf8; /* optional: sky-400 for hover */
 }
 
 /* hide the algolia logo
