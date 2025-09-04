@@ -1,4 +1,4 @@
-# Custom User Group Entity
+## Custom User Group Entity
 
 Custom User Groups in Harness IDP extend the catalog model to include organizational teams and hierarchies as **first-class entities**. These groups allow companies to represent real-world structures such as teams, departments, or cross-functional squads, directly inside the developer portal.
 
@@ -219,8 +219,8 @@ spec:
   lifecycle: ""
   parent: group:account/idp_team
   members:
-    - user:account/shibam.dhar@harness.io
-    - user:account/vigneswara.mh@harness.io
+    - user:account/mabihs.rahd@techco.io
+    - user:account/arawsengiv.mh@techco.io
   profile:
     email: cloud-platform@techco.com
 metadata:

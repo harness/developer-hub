@@ -12,21 +12,25 @@ keywords:
   - Team Organization
   - Group Hierarchy
 redirects:
+  - /internal-developer-portal/catalog/add-user-groups-in-catalog#idp1.0
+  - /internal-developer-portal/catalog/user-group-entity#idp2.0
+  - /internal-developer-portal/catalog/user-group
+  - /internal-developer-portal/catalog/user-group#idp1.0
   - /internal-developer-portal/catalog/add-user-groups-in-catalog
-  - /internal-developer-portal/catalog/user-group-entity
 ---
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
 <DynamicMarkdownSelector
   options={{
-    "IDP 1.0": {
-      path: "/internal-developer-portal/catalog/content/user-group/user-group-idp-1.md"
-    },
     "IDP 2.0": {
       path: "/internal-developer-portal/catalog/content/user-group/user-group-idp-2.md"
+    },
+    "IDP 1.0": {
+      path: "/internal-developer-portal/catalog/content/user-group/user-group-idp-1.md"
     }
   }}
   toc={toc}
   defaultSelection="IDP 2.0"
+  disableSort={true}
 />
