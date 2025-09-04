@@ -135,10 +135,10 @@ Support dates are calculated from when the delegate image was published to [Harn
     | 24.10.84104           | October 21, 2024   | March 31, 2025   | May 31, 2025     |
     | 24.09.83909           | October 11, 2024   | March 31, 2025   | May 31, 2025     |
     | 24.09.83906           | October 02, 2024   | March 31, 2025   | May 31, 2025     |
-    | 24.09.83905           | September 30, 2024 | March 31, 2025   | May 31, 2025     |
+    | 24.09.83905           | September 30, 2024 | February 28, 2025| April 30, 2025   |
     | 24.08.83803           | September 20, 2024 | January 31, 2025 | March 31, 2025   |
     | 24.08.83804           | September 20, 2024 | January 31, 2025 | March 31, 2025   |
-    | 24.09.83900           | September 20, 2024 | March 31, 2025   | May 31, 2025     |
+    | 24.09.83900           | September 20, 2024 | February 28, 2025| April 30, 2025   |
     | 24.08.83802           | September 03, 2024 | January 31, 2025 | March 31, 2025   |
     | 24.08.83705           | August 31, 2024    | January 31, 2025 | March 31, 2025   |
     | 24.07.83611           | August 31, 2024    | December 31, 2024| February 28, 2025|
@@ -180,15 +180,15 @@ Support dates are calculated from when the delegate image was published to [Harn
     | 24.03.82502           | March 14, 2024     | August 31, 2024  | October 31, 2024 |
     | 24.03.82408           | March 8, 2024      | August 31, 2024  | October 31, 2024 |
     | 24.02.82406           | March 1, 2024      | July 31, 2024    | September 30, 2024|
-    | 24.02.82404           | February 29, 2024  | August 31, 2024  | October 31, 2024 |
-    | 24.02.82309           | February 28, 2024  | August 31, 2024  | October 31, 2024 |
-    | 24.02.82402           | February 27, 2024  | August 31, 2024  | October 31, 2024 |
-    | 24.02.82308           | February 21, 2024  | August 31, 2024  | October 31, 2024 |
-    | 24.02.82306           | February 15, 2024  | August 31, 2024  | October 31, 2024 |
-    | 24.02.82305           | February 15, 2024  | August 31, 2024  | October 31, 2024 |
-    | 24.02.82302           | February 13, 2024  | August 31, 2024  | October 31, 2024 |
-    | 24.02.82304           | February 12, 2024  | August 31, 2024  | October 31, 2024 |
-    | 24.02.82203           | February 2, 2024   | August 31, 2024  | October 31, 2024 |
+    | 24.02.82404           | February 29, 2024  | July 31, 2024    | September 30, 2024|
+    | 24.02.82309           | February 28, 2024  | July 31, 2024    | September 30, 2024|
+    | 24.02.82402           | February 27, 2024  | July 31, 2024    | September 30, 2024|
+    | 24.02.82308           | February 21, 2024  | July 31, 2024    | September 30, 2024|
+    | 24.02.82306           | February 15, 2024  | July 31, 2024    | September 30, 2024|
+    | 24.02.82305           | February 15, 2024  | July 31, 2024    | September 30, 2024|
+    | 24.02.82302           | February 13, 2024  | July 31, 2024    | September 30, 2024|
+    | 24.02.82304           | February 12, 2024  | July 31, 2024    | September 30, 2024|
+    | 24.02.82203           | February 2, 2024   | July 31, 2024    | September 30, 2024|
     | 24.01.82202           | January 30, 2024   | June 30, 2024    | August 31, 2024  |
     | 24.01.82110           | January 29, 2024   | June 30, 2024    | August 31, 2024  |
     | 24.01.82109           | January 23, 2024   | June 30, 2024    | August 31, 2024  |
