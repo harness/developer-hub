@@ -64,7 +64,7 @@ Common examples:
 - **Role filter:** Exclude hosts where the `tags` field does not contain `webserver`.
 - **Region filter:** Only include hosts with `availability_zone` containing `us-east-1`.
 
-#### Using Variables with Dynamic Inventory
+#### Use Variables with Dynamic Inventory
 When you add or select a host, add new custom variables to the **Variables** tab. You can reference these variables directly in your playbooks or task definitions. For instance, you might use variables like `ansible_host`, `public_ip`, or any custom attribute defined in your infrastructure configuration. This allows you to dynamically configure your playbooks based on the actual resources provisioned by OpenTofu or Terraform.
 </TabItem>
 </Tabs>
