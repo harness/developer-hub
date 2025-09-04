@@ -4,6 +4,9 @@ description: CCM cost categories provide an understanding of where and how your 
 # sidebar_position: 1
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from: 
+  - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories
+  - /docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/cost-categories-usage
 ---
 
 import Tabs from '@theme/Tabs';
