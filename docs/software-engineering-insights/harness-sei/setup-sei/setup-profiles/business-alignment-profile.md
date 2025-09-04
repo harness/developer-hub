@@ -34,8 +34,6 @@ To create a business alignment profile:
 1. Under **Profiles**, select **Business Alignment**.
 
 1. To create a profile, click **Create**. To edit an existing profile, click the **Edit Profile** icon in the profiles list.
-   
-   ![](../../static/ba-profile.png)
 
 1. Enter a name and add an optional description for the profile.
 

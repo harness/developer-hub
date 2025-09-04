@@ -38,14 +38,13 @@ To create an efficiency profile:
 
 1. In your **Harness project**, navigate to **Software Engineering Insights** and click **Account Management**.
 1. Under **Profiles**, select **Efficiency**.
-   
-   ![](../../static/efficiency-profile-1.png)
 
 1. To create a profile, click **Create**. To edit an existing profile, click the **Edit Profile** icon in the profiles list.
-   
-   ![](../../static/efficiency-profile.png)
 
 1. Enter a name and add an optional description for the profile.
+
+   ![](../../static/efficiency-profile-1.png)
+   
 1. Click **Next** to configure event sources for DORA metrics. To disable a DORA metric for the profile, click the toggle next to the DORA metric under **Configuration**.
 
    ![](../../static/efficiency-profile-2.png)
