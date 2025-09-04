@@ -2092,7 +2092,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "html",
-          value: "Resources & Troubleshooting",
+          value: "Troubleshooting & Resources",
           className: "horizontal-bar",
         },
         {
