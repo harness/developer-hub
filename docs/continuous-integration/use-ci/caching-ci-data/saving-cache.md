@@ -16,7 +16,7 @@ You can use caching to share data cross stages or run pipelines faster by reusin
 
 :::tip
 - Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, to automatically caches and restores software dependencies - hassle free.
-- If your cache bucket requires encryption (for example, AES256), see [Caching with bucket encryption policies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-with-bucket-encryption-policies).
+- For Cache Intelligence with encrypted buckets (for example, AES256), see [Caching with bucket encryption policies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-with-bucket-encryption-policies).
 :::
 
 You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3** step, and restore it in the same stage or a following stage using the **Restore Cache From S3** step. You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
@@ -115,10 +115,6 @@ If your bucket policy requires AES256, set the stage variable `PLUGIN_ENCRYPTION
             type: String
             description: Encryption type for plugin
             value: AES256
-          - name: S3_ENCRYPTION_ENABLED
-            type: String
-            description: Enable S3 bucket encryption
-            value: "true"
 ```
 
 ```yaml
