@@ -117,7 +117,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Version 25.05.85809 <!--September 04, 2025-->
 
-#### Fixed issues
+#### New features and enhancements
 
 - Added `NO_PROXY` support, ensuring compatibility and verified with Kubernetes (K8S), Vault, and DB DevOps. [PL-65142]
 
