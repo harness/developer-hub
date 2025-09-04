@@ -1,5 +1,5 @@
 ---
-title: Cost Categories - Option Two
+title: Cost Categories
 description: CCM cost categories provide an understanding of where and how your money is being spent. Cost categories allow you to take data across multiple sources and attribute it to business contexts, such as…
 # sidebar_position: 1
 helpdocs_is_private: false
@@ -278,7 +278,7 @@ In Manage Unallocated Costs, you can choose to show or ignore unallocated costs,
 
 ## Overview Page
 
-<DocImage path={require('./static/overview.mov')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/output-overview.gif')} width="100%" height="100%" title="Click to view full size image" />
 
 The Cost Categories overview page provides a centralized view of all your defined categories. From this dashboard, you can:
 
