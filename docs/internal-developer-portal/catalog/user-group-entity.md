@@ -1,7 +1,7 @@
 ---
 title: Custom User Group Entity
 description: Learn how to define, manage, and use Custom User Group entities in Harness Internal Developer Portal to group related Components, APIs, and Resources.
-sidebar_label: Custom User Group Entity - 2.0
+sidebar_label: Custom User Group - 2.0
 sidebar_position: 6
 keywords:
   - Harness Internal Developer Portal
