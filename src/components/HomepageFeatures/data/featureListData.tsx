@@ -86,7 +86,7 @@ export const featureList: CardItem[] = [
     module: MODULES.srm,
     icon: "img/icon_srm.svg",
     description: <>Monitor SLOs, track error budgets, and analyze impact of changes.</>,
-    link: "docs/category/get-started-with-srm",
+    link: "docs/service-reliability-management",
   },
   {
     title: "Resilience Testing",
