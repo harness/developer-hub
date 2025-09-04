@@ -37,14 +37,14 @@ The integration will fulfill key promises:
 
 ## Next Steps for Users
 
-   - Know Your Migration Date: Log in to `app.harness.io` on migration day.
-   - (Optional) Watch Video Preview (coming soon): Preview the similar user experience, with new read-only admin settings screens.
+   - Know Your Migration Window: Your administrator will know which week your migration will take place in. Watch for in-app banner updates as well.
+   - [Watch Video Preview](https://youtu.be/Mx4nux9hd2A) Preview the similar user experience, with new read-only settings screens for non-admins.
 
 ## Next Steps for Administrators
 
    - Watch [30 Seconds to Confidence: How Your Migration Will Work](/docs/feature-management-experimentation/split-to-harness/how-it-works/) (to see why there will be no downtime for your applications).
    - Identify which of the three scenarios below apply to you (and plan to take action if needed).
-   - Keep an eye out for migration date updates by email.
+   - Keep an eye out for migration date updates by email an in-app banner notifications.
 
 ### Scenario One: Do You Use Management Screens?
 
@@ -54,13 +54,13 @@ The integration will fulfill key promises:
      - Compare Split and Harness admin screens side-by-side.
      - Watch short interactive and written step-by-step guides designed to quickly get you up to speed with tasks such as adding users, creating and editing groups, etc.
    
-   - Future Update: Environment-level Permissions will move to Harness RBAC management during Phase Two, Part Two, which will take place several months after all accounts have been migrated. We will update the Before and After Guides at that time.
+   - Future Update: Environment-level Permissions will move to Harness RBAC management and out of the environment settings screens in the future. We will update the Before and After Guides at that time.
 
 ### Scenario Two: Do You Access Split via SSO?
 
    - Task: create a new SSO Connection at least one week before migration.
    - Resource: Access the [Before and After Guide: SSO for Split Admins](/docs/feature-management-experimentation/split-to-harness/sso-for-admins).
-   - By April 4th, 2025: Harness account invites will be sent to Split Administrators
+   - By April 4th, 2025: Harness account invites were sent to all Split Administrators
 
      - Task Detail: Accept your invite by resetting your password.
      - Task Detail: Coordinate with your IT team to configure SSO.
@@ -68,7 +68,7 @@ The integration will fulfill key promises:
 ### Scenario Three: Has Your Organization Automated Tasks With the Split Admin API?
 
    - Task: Update scripts if using one of the 5 impacted Split Admin API endpoints.
-   - Resource: Access the [Before and After Guide: API for Split Admins](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins). This guide includes ready-to-run API examples in Postman. Updates are being made daily and videos will follow.
+   - Resource: Access the [Before and After Guide: API for Split Admins](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins). This guide includes ready-to-run API examples in Postman.
    - Usage Data: To learn if your organization has recently used any of the 5 impacted endpoints, look for the emails below and read [Migration: API-Updates](/docs/feature-management-experimentation/split-to-harness/api-updates). 
 
      - February 21st, 2025: "Follow-Up: Changes to Split Admin API Endpoints & Migration to Harness."
