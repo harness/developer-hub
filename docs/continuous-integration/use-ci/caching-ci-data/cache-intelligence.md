@@ -15,13 +15,14 @@ With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integr
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 :::info
-* Cache Intelligence is now Generally Available (GA). 
-* Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
-* Cache Intelligence is enabled by default for newly created CI stages. This is configurable in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration)  
-- To enable Path Style support in Cache Intelligence S3 configuration, set `PLUGIN_PATH_STYLE: "true"` as a stage variable. This value will be passed to the environment variables of all steps. 
-- To learn about S3 encryption support for uploading cache dependency packages to an S3 bucket in a CI pipeline, see [Caching with bucket encryption policies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-with-bucket-encryption-policies).
-:::
+* Cache Intelligence is GA.
+* Supported on Cloud and Kubernetes build infrastructure.
+* Cache Intelligence is enabled by default for newly created CI stages (configurable in [CI Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/).
 
+**S3 options via stage variables (applies to both Cache Intelligence _and_ S3 cache steps):**
+- **Path Style**: Set `PLUGIN_PATH_STYLE: "true"` as a **stage variable**. This is injected into all steps and used by Cache Intelligence and S3 cache steps.
+- **Encryption**: To enable server-side encryption for cache artifacts uploaded to S3, set the **encryption stage variables** described in [Caching with bucket encryption policies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-with-bucket-encryption-policies). These variables are **stage-scoped** and affect **both** Cache Intelligence and S3 cache steps.
+:::
 
 ## Supported tools and paths
 
@@ -189,7 +190,7 @@ Harness generates a cache key from a hash of the build lock file (such as `pom.x
 You can define custom cache keys if you don't want to use the default cache key naming behavior or you have a use case that requires defining custom cache keys, such as [caching in parallel stages](#cache-intelligence-in-parallel-stages).
 
 :::note
-When **Cache Intelligence** is enabled, the cache plugin automatically detects build tools and determines cache paths, unless custom paths are specified. Cache paths are stored under `<account_id>/default/path/to/directory`.  
+When **Cache Intelligence** is enabled, the cache plugin automatically detects build tools and determines cache paths, unless custom paths are specified. Cache paths are stored under `<account_id>/default/path/to/directory`.
 :::
 
 <Tabs>

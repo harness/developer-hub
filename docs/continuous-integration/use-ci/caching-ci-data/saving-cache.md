@@ -15,8 +15,9 @@ import TabItem from '@theme/TabItem';
 You can use caching to share data cross stages or run pipelines faster by reusing the expensive fetch operation data from previous builds.
 
 :::tip
-- Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, to automatically caches and restores software dependencies - hassle free.
-- For Cache Intelligence with encrypted buckets (for example, AES256), see [Caching with bucket encryption policies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-with-bucket-encryption-policies).
+- Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, to automatically cache and restore software dependencies — hassle free.
+- For S3 options (path-style access or encrypted buckets such as AES256/KMS), configure **stage variables**. These variables are injected into all steps and therefore apply to **both Cache Intelligence and explicit S3 cache steps**.  
+  See [Caching with bucket encryption policies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-with-bucket-encryption-policies) for details and examples.
 :::
 
 You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3** step, and restore it in the same stage or a following stage using the **Restore Cache From S3** step. You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
