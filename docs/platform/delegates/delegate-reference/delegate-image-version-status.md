@@ -14,7 +14,9 @@ For complete upgrade procedures, see [Delegate expiration policy](/docs/platform
 
 ## Support lifecycle definitions
 
-### End of Support (EOS) - 6 months after release
+### End of Support (EOS)
+
+EOS occurs 6 months after the delegate is released. The EOS month is calculated based on the month encoded in the version number (MM in YY.MM.XXXX).
 
 When a delegate reaches EOS:
 
@@ -24,7 +26,9 @@ When a delegate reaches EOS:
 - Expired delegates may not function correctly
 - Support will require delegate upgrades for any issues
 
-### End of Life (EOL) - 8 months after release
+### End of Life (EOL)
+
+EOL occurs 8 months after the delegate is released. The EOL month is calculated based on the month encoded in the version number (MM in YY.MM.XXXX).
 
 When a delegate reaches EOL:
 
@@ -48,7 +52,7 @@ For delegate version **24.07.84503**:
 - **EOL Date**: February 28, 2025 (end of 8th month)
 
 :::note
-EOS and EOL dates are always set to the last day of the respective month, regardless of the specific release date within the month.
+EOS and EOL dates are always set to the last day of the sixth and eighth months, respectively, from the month specified in the release version.
 ::: 
 
 ### Hotfix policy
@@ -59,7 +63,7 @@ Hotfixes may be released to address critical issues within an image's lifecycle.
 Hotfixes do not extend the original EOS and EOL dates. The lifecycle remains based on the original release month.
 :::
 
-**Example**: If version 24.07.84503 receives a hotfix in November 2024, the EOS (December 2024) and EOL (February 2025) dates remain unchanged.
+**Example**: If version 24.07.84503 receives a hotfix in November 2024, the EOS (December 31, 2024) and EOL (February 28, 2025) dates remain unchanged.
 
 ## Reference information
 
@@ -103,13 +107,13 @@ Support dates are calculated from when the delegate image was published to [Harn
 | 25.02.85305   | March 21, 2025    | July 31, 2025    | September 30, 2025|
 | 24.08.83706   | February 26, 2025 | January 31, 2025 | March 31, 2025   |
 | 25.02.85300   | February 26, 2025 | July 31, 2025    | September 30, 2025|
-| 24.12.84710   | February 25, 2025 | June 30, 2025    | August 31, 2025  |
-| 24.12.84709   | February 12, 2025 | June 30, 2025    | August 31, 2025  |
-| 24.10.84107   | January 31, 2025  | April 30, 2025   | June 30, 2025    |
+| 24.12.84710   | February 25, 2025 | May 31, 2025     | July 31, 2025    |
+| 24.12.84709   | February 12, 2025 | May 31, 2025     | July 31, 2025    |
+| 24.10.84107   | January 31, 2025  | March 31, 2025   | May 31, 2025     |
 | 25.01.85000   | January 28, 2025  | June 30, 2025    | August 31, 2025  |
-| 24.12.84708   | January 16, 2025  | June 30, 2025    | August 31, 2025  |
+| 24.12.84708   | January 16, 2025  | May 31, 2025     | July 31, 2025    |
 | 25.01.84800   | January 13, 2025  | June 30, 2025    | August 31, 2025  |
-| 24.12.84704   | January 06, 2025  | June 30, 2025    | August 31, 2025  |
+| 24.12.84704   | January 06, 2025  | May 31, 2025     | July 31, 2025    |
 | 24.11.84311   | December 19, 2024 | April 30, 2025   | June 30, 2025    |
 | 24.12.84702   | December 17, 2024 | May 31, 2025     | July 31, 2025    |
 
@@ -133,8 +137,8 @@ Support dates are calculated from when the delegate image was published to [Harn
     | 24.10.84200           | November 04, 2024  | March 31, 2025   | May 31, 2025     |
     | 24.10.84105           | November 01, 2024  | March 31, 2025   | May 31, 2025     |
     | 24.10.84104           | October 21, 2024   | March 31, 2025   | May 31, 2025     |
-    | 24.09.83909           | October 11, 2024   | March 31, 2025   | May 31, 2025     |
-    | 24.09.83906           | October 02, 2024   | March 31, 2025   | May 31, 2025     |
+    | 24.09.83909           | October 11, 2024   | February 28, 2025| April 30, 2025   |
+    | 24.09.83906           | October 02, 2024   | February 28, 2025| April 30, 2025   |
     | 24.09.83905           | September 30, 2024 | February 28, 2025| April 30, 2025   |
     | 24.08.83803           | September 20, 2024 | January 31, 2025 | March 31, 2025   |
     | 24.08.83804           | September 20, 2024 | January 31, 2025 | March 31, 2025   |
