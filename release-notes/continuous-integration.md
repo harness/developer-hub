@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-08-19T10:00
+date: 2025-09-02T10:00
 sidebar_position: 10
 ---
 
@@ -48,11 +48,33 @@ This update is currently being rolled out to customers, and we expect the rollou
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
 
+## September 2025
+
+### Version 1.95
+
+<!-- 2025-09-01 -->
+#### New features and enhancements
+- Build Intelligence auto-injection now supports Gradle Kotlin DSL (`build.gradle.kts`). (CI-18842)
+- Cache Intelligence auto-injection now supports Gradle Kotlin DSL (`build.gradle.kts`).
+
+#### Fixed issues
+- Fixed **Initialize** step failures caused by large commit messages; `CI_COMMIT_MESSAGE` is now limited to 1000 characters. (ZD-90387, CI-18620)
+- Fixed incorrect tooltip for **Cache Intelligence** policy in the CI stage overview. (CI-18828)
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira. | 1.17.1              | 1.17.2         |
+| `harness/ci-addon`       | Version upgrade for Jira. | 1.17.1              | 1.17.2         |
+| `plugins/cache`          | Cache Intelligence auto-injection support for Gradle Kotlin DSL.               | 1.9.10                | 1.9.11          |
+ 
+
 ## August 2025
 
 ### Version 1.93
 
 <!-- 2025-08-25 -->
+
 #### Fixed issues
 - Fixed a bug that prevented Docker layer caching from working when the step was run inside a **Step Group**. (CI-18603, CI-18604)
 
