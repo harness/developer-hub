@@ -44,7 +44,7 @@ The integration will fulfill key promises:
 
    - Watch [30 Seconds to Confidence: How Your Migration Will Work](/docs/feature-management-experimentation/split-to-harness/how-it-works/) (to see why there will be no downtime for your applications).
    - Identify which of the three scenarios below apply to you (and plan to take action if needed).
-   - Keep an eye out for migration date updates by email an in-app banner notifications.
+   - Keep an eye out for migration date updates by email and in-app banner notifications.
 
 ### Scenario One: Do You Use Management Screens?
 
