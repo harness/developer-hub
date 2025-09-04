@@ -54,28 +54,18 @@ The resulting inventory groups and hosts are visible in the **Hosts** tab.
 <TabItem value="dynamic" label="Dynamic">
 
 ### Dynamic inventory example
-When you create a dynamic inventory, hosts are automatically pulled from the Terraform/OpenTofu configuration in your selected workspace.
+When your dynamic inventory is created, each host automatically includes variables pulled from your Terraform/OpenTofu configuration. For example, if your EC2 instances have tags or specific attributes (such as `public_ip`, `instance_type`, or custom variables), these are available as host variables in your Ansible tasks.
 
-For example, if your Terraform config defines two EC2 instances, the dynamic inventory shows those instances as hosts in the **Hosts** tab.
+#### Filter Hosts in Dynamic Inventory
+When you add or select a host, the **Configuration** tab shows the host address, the associated workspace, and filter options. Filters let you include or exclude hosts by checking whether a text field contains or does not contain specific values.
+
+Common examples:
+- **Environment filter:** Only include hosts where the Name contains `prod` (for example, `prod-web1` or `prod-db1`).
+- **Role filter:** Exclude hosts where the `tags` field does not contain `webserver`.
+- **Region filter:** Only include hosts with `availability_zone` containing `us-east-1`.
 
 #### Using Variables with Dynamic Inventory
-When your dynamic inventory is created, each host automatically includes variables pulled from your Terraform/OpenTofu configuration. For example, if your EC2 instances have tags or specific attributes (such as public_ip, instance_type, or custom variables), these are available as host variables in your Ansible tasks.
-
-You can reference these variables directly in your playbooks or task definitions. For instance, you might use variables like ansible_host, public_ip, or any custom attribute defined in your infrastructure configuration. This allows you to dynamically configure your playbooks based on the actual resources provisioned by Terraform/OpenTofu.
-
-::: EXAMPLE USAGE
-- Use a host’s `public_ip` variable to connect or deploy software.
-- Reference tags or labels to apply different configurations based on environment or role.
-:::
-
-#### Filtering Hosts in Dynamic Inventory
-Dynamic inventory supports filtering to help you target specific hosts for your Ansible tasks. Common filters include:
-**By Tag or Label:** Filter hosts by specific tags or labels defined in your Terraform/OpenTofu configuration. For example, you might filter for all hosts with the tag role=webserver or environment=production.
-**By Resource Type:** If your configuration provisions multiple types of resources (e.g., EC2, GCP Compute, Azure VMs), you can filter to only show hosts of a specific type.
-By Group: Hosts can be grouped automatically based on attributes, such as region, environment, or custom grouping logic. You can then target or exclude entire groups in your Ansible runs.
-**By Attribute:** Filter hosts based on any attribute available in the dynamic inventory, such as instance_state, availability_zone, or custom variables.
-These filters make it easy to run targeted automation, such as updating only production servers, or deploying to a specific environment.
-
+When you add or select a host, add new custom variables to the **Variables** tab. You can reference these variables directly in your playbooks or task definitions. For instance, you might use variables like `ansible_host`, `public_ip`, or any custom attribute defined in your infrastructure configuration. This allows you to dynamically configure your playbooks based on the actual resources provisioned by OpenTofu or Terraform.
 </TabItem>
 </Tabs>
 
