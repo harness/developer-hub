@@ -248,3 +248,8 @@ When a sudden spike in spend occurs, it may be flagged as an anomaly because it 
 This can happen because anomaly alerts are triggered when the anomaly is detected, not when it occurred. There's no delay between detection and alerting. However, if the cost data available at the time didn't indicate an anomaly, the system wouldn't have flagged it initially. Later in the month, once cost data was refreshed and a spike became apparent, the anomaly was detected. To account for such cases, we rerun the anomaly detection job for the past 3 days — which is likely why the alert was sent at a later time.
 </details>
 
+<details>
+<summary> Does our anomaly detection just look at cost, or can it also look at usage?</summary>
+
+Currently, anomaly detection only monitors cost.
+</details>
