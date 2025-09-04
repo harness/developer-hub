@@ -4,7 +4,7 @@ description: This topic lists delegate image versions and their support status.
 sidebar_position: 1
 ---
 
-This document provides delegate image version information and support lifecycle details. Delegate images have a defined support lifecycle: End of Support (EOS) occurs 5 months after release, and End of Life (EOL) occurs 8 months after release.
+This document provides delegate image version information and support lifecycle details. Delegate images have a defined support lifecycle: End of Support (EOS) occurs up to 6 months after release, and End of Life (EOL) occurs up to 8 months after release.
 
 :::warning
 Delegates past their EOS date are not supported by Harness. Upgrade your delegates before they reach EOS to avoid service disruptions.
@@ -14,7 +14,7 @@ For complete upgrade procedures, see [Delegate expiration policy](/docs/platform
 
 ## Support lifecycle definitions
 
-### End of Support (EOS) - 5 months after release
+### End of Support (EOS) - Up to 6 months after release
 
 When a delegate reaches EOS:
 
@@ -24,7 +24,7 @@ When a delegate reaches EOS:
 - Expired delegates may not function correctly
 - Support will require delegate upgrades for any issues
 
-### End of Life (EOL) - 8 months after release
+### End of Life (EOL) - Up to 8 months after release
 
 When a delegate reaches EOL:
 
@@ -41,11 +41,11 @@ Delegate versions follow the format: **YY.MM.XXXX**
 
 ### Example calculation
 
-For delegate version **24.11.84503**:
+For delegate version **24.07.84503** (released in July 2024):
 
-- **Release**: November 2024
-- **EOS**: April 2025 (November + 5 months)
-- **EOL**: July 2025 (November + 8 months)
+- **Release**: July 2024
+- **EOS**: December 2024 (support ends before January 2025)
+- **EOL**: February 2025 (image unavailable from March 2025)
 
 ### Hotfix policy
 
@@ -55,7 +55,7 @@ Hotfixes may be released to address critical issues within an image's lifecycle.
 Hotfixes do not extend the original EOS and EOL dates. The lifecycle remains based on the original release month.
 :::
 
-**Example**: If version 24.11.84503 receives a hotfix in March 2025, the EOS (April 2025) and EOL (July 2025) dates remain unchanged.
+**Example**: If version 24.07.84503 receives a hotfix in November 2024, the EOS (December 2024) and EOL (February 2025) dates remain unchanged.
 
 ## Reference information
 
