@@ -19,17 +19,7 @@ SEI 2.0 is built around a set of flexible building blocks that help you answer c
 ## Core Concepts
 
 
-To answer these questions, SEI 2.0 introduces a simplified and extensible data model. This data model diagram walks through how SEI handles organizational data and insights, including:
-
-* [Developers](#developers): Imported from HR systems via CSV and managed at the account level.
-* [Org Tree(s)](#org-tree): Developers are grouped based on attributes like `Manager`, `Location`, `Role`, `Employment Type`, or `Project`. Leaf nods of the Org Tree becomes Teams.
-* [Team](#teams): Team Managers are assigned by the SEI Admin at the project level and configure team-specific settings (e.g. Jira projects, Git repos, production services, and pipelines) influenced by associated Profiles.
-* [Profiles](#profiles): Define which insights to enable and how they are computed, and are associated with one or more Org Trees to guide all insights calculations.
-* [Dashboards/Insights](#dashboards--insights): Generated using data filtered by Profiles, Teams, and Org Tree context.
-
-:::tip
-The foundation of Harness SEI is the account-level [Integrations setup](/docs/category/configure-integrations) by the SEI Admin. These integrations must be configured before importing developers or creating Org Trees.
-:::
+To answer these questions, SEI 2.0 introduces a simplified and extensible data model. 
 
 ```mermaid
 flowchart LR
@@ -64,6 +54,20 @@ flowchart LR
     class F profiles
     class G integrations
 ```
+
+<br />
+
+This data model diagram walks through how SEI handles organizational data and insights, including:
+
+* [Developers](#developers): Imported from HR systems via CSV and managed at the account level.
+* [Org Tree(s)](#org-tree): Developers are grouped based on attributes like `Manager`, `Location`, `Role`, `Employment Type`, or `Project`. Leaf nods of the Org Tree becomes Teams.
+* [Team](#teams): Team Managers are assigned by the SEI Admin at the project level and configure team-specific settings (e.g. Jira projects, Git repos, production services, and pipelines) influenced by associated Profiles.
+* [Profiles](#profiles): Define which insights to enable and how they are computed, and are associated with one or more Org Trees to guide all insights calculations.
+* [Dashboards/Insights](#dashboards--insights): Generated using data filtered by Profiles, Teams, and Org Tree context.
+
+:::tip
+The foundation of Harness SEI is the account-level [Integrations setup](/docs/category/configure-integrations) by the SEI Admin. These integrations must be configured before importing developers or creating Org Trees.
+:::
 
 ### Developers
 
