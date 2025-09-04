@@ -16,7 +16,7 @@ For complete upgrade procedures, see [Delegate expiration policy](/docs/platform
 
 ### End of Support (EOS)
 
-EOS occurs 6 months after the delegate is released. The EOS month is calculated based on the month encoded in the version number (MM in YY.MM.XXXX).
+The EOS month is calculated based on the month encoded in the version number (MM in YY.MM.XXXX). EOS occurs at the end of the sixth month from the month mentioned in the delegate version.
 
 When a delegate reaches EOS:
 
