@@ -54,7 +54,7 @@ The integration will fulfill key promises:
      - Compare Split and Harness admin screens side-by-side.
      - Watch short interactive and written step-by-step guides designed to quickly get you up to speed with tasks such as adding users, creating and editing groups, etc.
    
-   - Future Update: Environment-level Permissions will move to Harness RBAC management and out of the environment settings screens in the future. We will update the Before and After Guides at that time.
+   - Future Update: Environment-level Permissions will move out of FME Settings and into Harness RBAC management. We will update the Before and After Guides at that time.
 
 ### Scenario Two: Do You Access Split via SSO?
 
