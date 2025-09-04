@@ -8,8 +8,8 @@ After [creating a repository](../config-repos/create-repo.md), you can work dire
 
 ## Clone over HTTPS
 
-1. When viewing a repository in Harness Code, go to **Files** and select **Clone**.
-2. If this is the first time you've cloned this repository, select **Generate Clone Credentials**, and then copy the **Password (API Token)** and store it somewhere secure. Clone credentials are only shown once.
+1. When viewing a repository in Harness Code, go to **Summary** and select **Clone repository**.
+2. If this is the first time you've cloned this repository, select **Generate Clone Credentials**, and then copy the **Token** and store it somewhere secure. Clone credentials are only shown once.
 
    When you select **Generate Clone Credentials**, Harness Code automatically creates an [API token](/docs/platform/automation/api/add-and-manage-api-keys) in your user profile.
 
