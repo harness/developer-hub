@@ -115,6 +115,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## September 2025
 
+### Version 25.05.85809 <!--September 04, 2025-->
+
+#### New features and enhancements
+
+- Added NO_PROXY support when delegate has PROXY_TLS_CONNECT enabled. If PROXY_TLS_CONNECT is enabled, delegate will not try to force HTTP CONNECT via TLS for destinations that are in NO_PROXY list. [PL-65142]
+
 ### Version 25.08.86504 <!--September 03, 2025-->
 
 #### Fixed issues
