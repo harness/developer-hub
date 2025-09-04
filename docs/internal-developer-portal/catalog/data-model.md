@@ -102,7 +102,7 @@ Custom User Groups can:
 * Own components, systems, and other entities
 * Be enriched with metadata for better context
 
-For more details on Custom User Groups, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/user-group-entity.md) here.
+For more details on Custom User Groups, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/user-group) here.
 
 Roles and resource groups can be assigned directly to users or inherited from user groups. Here's how you can [add users](https://developer.harness.io/docs/platform/role-based-access-control/add-users/) in Harness IDP.
 

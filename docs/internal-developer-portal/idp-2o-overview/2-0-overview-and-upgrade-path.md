@@ -17,7 +17,7 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 | [**RBAC and Project/Org Hierarchy**](/docs/internal-developer-portal/rbac/scopes)                     | ✅ (Ready to onboard) |
 | [**Git Experience (YAML files in Git)**](/docs/internal-developer-portal/git-experience/gitx-journey) | ✅ (Ready to onboard) |
 | [**New System Entity for grouping**](/docs/internal-developer-portal/catalog/system-entity)           | ✅ (Ready to onboard)  |
-| [**Custom User Groups**](/docs/internal-developer-portal/catalog/user-group-entity)                   | ✅ (Ready to onboard)  |
+| [**Custom User Groups**](/docs/internal-developer-portal/catalog/user-group)                   | ✅ (Ready to onboard)  |
 | **Project/Org filters in Scorecards**                                                                 | ⏳ ETA Oct 2025        |
 
 :::
@@ -343,7 +343,7 @@ Harness IDP 2.0 supports Custom User Groups as first-class catalog entities! The
 * Assign ownership of components, systems, and other catalog entities to custom groups
 * Make IDP your source of truth for team modeling and organizational structure
 
-Custom User Groups are created at the account level and coexist with platform user groups. [Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group-entity).
+Custom User Groups are created at the account level and coexist with platform user groups. [Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group).
 
 ## Feature Compatibility Matrix (1.0 vs 2.0)
 

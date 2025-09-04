@@ -1,4 +1,4 @@
-# User Groups in IDP 1.0
+# Add User Groups Directly in the Catalog
 
 The Catalog in Harness IDP also supports addition of [organizational entities](https://backstage.io/docs/features/software-catalog/system-model#organizational-entities) like **user groups** directly, independent of their presence on the Harness Platform. These entities can be registered as `kind: Group` in the catalog as an YAML. Note that our recommendation is to use the [Harness Platform Access Control](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/) for ingesting Users and User Groups into Harness IDP.
 
@@ -48,7 +48,7 @@ In case there's a user-group already present with the same `metadata.name` while
 
 ![](./static/team.png)
 
-### When to ingest groups directly into the Catalog rather than creating a Harness Platform User Group at the account level?
+#### When to ingest groups directly into the Catalog rather than creating a Harness Platform User Group at the account level?
 
 - If you need to represent a Group of Groups kind of hierarchy e.g. Org -> Department -> Team
 - If you would like the Groups definition to support annotations and tags to be consumed by plugins on the Groups page in Catalog.

@@ -28,4 +28,5 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
     }
   }}
   toc={toc}
+  defaultSelection="IDP 2.0"
 />

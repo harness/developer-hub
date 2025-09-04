@@ -43,7 +43,7 @@ Take control of your organizational structure with IDP 2.0's powerful new Custom
 * **Intuitive hierarchical relationships** - Build parent-child connections between teams and departments with automatic bi-directional linking
 * **Complete UI and YAML support** - Create groups through the intuitive UI or via standard YAML definitions
 
-[Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group-entity)
+[Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group#idp2.0)
 
 ## August - [2025.08.v1]
 
