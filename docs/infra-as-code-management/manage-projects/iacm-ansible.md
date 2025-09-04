@@ -58,6 +58,24 @@ When you create a dynamic inventory, hosts are automatically pulled from the Ter
 
 For example, if your Terraform config defines two EC2 instances, the dynamic inventory shows those instances as hosts in the **Hosts** tab.
 
+#### Using Variables with Dynamic Inventory
+When your dynamic inventory is created, each host automatically includes variables pulled from your Terraform/OpenTofu configuration. For example, if your EC2 instances have tags or specific attributes (such as public_ip, instance_type, or custom variables), these are available as host variables in your Ansible tasks.
+
+You can reference these variables directly in your playbooks or task definitions. For instance, you might use variables like ansible_host, public_ip, or any custom attribute defined in your infrastructure configuration. This allows you to dynamically configure your playbooks based on the actual resources provisioned by Terraform/OpenTofu.
+
+::: EXAMPLE USAGE
+- Use a host’s `public_ip` variable to connect or deploy software.
+- Reference tags or labels to apply different configurations based on environment or role.
+:::
+
+#### Filtering Hosts in Dynamic Inventory
+Dynamic inventory supports filtering to help you target specific hosts for your Ansible tasks. Common filters include:
+**By Tag or Label:** Filter hosts by specific tags or labels defined in your Terraform/OpenTofu configuration. For example, you might filter for all hosts with the tag role=webserver or environment=production.
+**By Resource Type:** If your configuration provisions multiple types of resources (e.g., EC2, GCP Compute, Azure VMs), you can filter to only show hosts of a specific type.
+By Group: Hosts can be grouped automatically based on attributes, such as region, environment, or custom grouping logic. You can then target or exclude entire groups in your Ansible runs.
+**By Attribute:** Filter hosts based on any attribute available in the dynamic inventory, such as instance_state, availability_zone, or custom variables.
+These filters make it easy to run targeted automation, such as updating only production servers, or deploying to a specific environment.
+
 </TabItem>
 </Tabs>
 
