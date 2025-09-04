@@ -34,7 +34,7 @@ Perspectives in Harness CCM provide powerful cost analysis capabilities through 
 
 You can create a Perspective for your resources using rules and filters. The filters are used to group the resources. The following are the supported filters:
 
-* **Cost Categories**: You can create a perspective by filtering based on the cost categories you have created. To create cost categories, see [Use Cost Categories](../2-ccm-cost-categories/1-ccm-cost-categories.md).
+* **Cost Categories**: You can create a perspective by filtering based on the cost categories you have created. To create cost categories, see [Use Cost Categories](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/cost-categories).
 * **Region**: Each AWS, GCP, or Azure region you're currently running services in.
 * **Product**: Each of your active products with its cloud costs.
 * **Cloud Provider**: Filter and group costs by the cloud service provider (AWS, GCP, Azure, or Kubernetes clusters) to analyze spending across different cloud platforms.
