@@ -38,7 +38,7 @@ The integration will fulfill key promises:
 ## Next Steps for Users
 
    - Know Your Migration Window: Your administrator will know which week your migration will take place in. Watch for in-app banner updates as well.
-   - [Watch Video Preview](https://youtu.be/Mx4nux9hd2A) Preview the similar user experience, with new read-only settings screens for non-admins.
+   - [Watch the Video Preview](https://youtu.be/Mx4nux9hd2A): Preview the similar user experience, with new read-only settings screens for non-admins.
 
 ## Next Steps for Administrators
 
