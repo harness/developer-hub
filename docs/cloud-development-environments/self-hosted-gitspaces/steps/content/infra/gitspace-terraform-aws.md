@@ -71,7 +71,7 @@ To apply the Terraform module, you need the following mandatory input parameters
 - **`access_key`**: This is the AWS Access Key required to authenticate into your AWS account. You can find this in the AWS console, refer to [Manage Access Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) to learn more about the same. 
 - **`secret_key`**: This is the AWS Secret Key required to authenticate into your account. 
 - **Infra Config YAML File**: Contains all infrastructure details for setting up the Terraform module. Learn how to [retrieve it here](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform.md#retrieve-the-infra-config-yaml).
-- **`default_region`**: This field is used to specify the region as your **default workspace**. This is the region where all the global resources will be created. Learn more about the same by referring to [Deafult Workspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/content/gitspace-terraform-aws.md#default-workspace)
+- **`default_region`**: This field is used to specify the region as your **default workspace**. This is the region where all the global resources will be created. Learn more about the same by referring to [Default Workspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-terraform#aws--default-workspace).
 
 #### Optional Input Variables
 These have default values and are not mandatory:
