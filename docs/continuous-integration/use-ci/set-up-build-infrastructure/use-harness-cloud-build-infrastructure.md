@@ -44,7 +44,7 @@ Harness Cloud offers Linux, macOS, and Windows platforms. To enable Windows and 
 
 For detailed information about image components and preinstalled software, check out [this page](/docs/platform/references/harness-cloud-vm-images).
 
-**You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
+**You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](/docs/platform/references/harness-cloud-vm-images#specify-versions), ensure that a step [uses a specific version every time](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools), or [install additional tools and versions](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
 
 :::info
 
