@@ -52,11 +52,13 @@ This integration requires generating a unique key pair where the private key rem
     Harness does not have access to your private keys. Only the public key is shared with Harness Support to enable this functionality.
     :::
 
-4. **(Optional)** To rotate your key as a security best practice or if compromised, click **Rotate SMP Key** and confirm. Send the new public key to Harness Support. 
+    :::info Important Note  
+    To rotate your key (either as a security best practice or if it has been compromised), click **Rotate SMP Key** and confirm.  
 
-    **Important**: After rotating your key, you must send the new public key to Harness Support for remapping. The Zendesk integration will stop working until the new key is mapped to your account.
+    After rotation, you must send the new public key to Harness Support for remapping. Until the new key is mapped, the Zendesk integration will not work.  
+    :::
 
-5. Once enabled, access your tickets by navigating to **Help** → **View my tickets**.
+4. Once enabled, access your tickets by navigating to **Help** → **View my tickets**.
 
     <DocImage path={require('./static/access-tickets.png')} width="600" />
 </TabItem>
