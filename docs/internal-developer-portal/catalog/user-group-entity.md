@@ -76,8 +76,8 @@ name: Cloud Infrastructure Team
 identifier: cloud_infrastructure_team
 spec:
   members:
-    - alice.chen@techco.com
-    - bob.smith@techco.com
+    - user:account/alice.chen@techco.com
+    - user:account/bob.smith@techco.com
   parent: group:account/techco
   profile:
     email: cloud-platform@techco.com
@@ -90,6 +90,8 @@ metadata:
 ```
 
 This example defines a **Cloud Infrastructure Team** team, scoped at the account level, with two members, a parent group (`techco`), and rich metadata including tags and a description.
+
+3. **Through the API** – Groups can be created and managed programmatically by crafting YAML definitions with the `kind` set as `Group` and utilizing the [Entity API](https://developer.harness.io/docs/platform/api/entity-api) for creating and updating Group entities.
 
 :::note 
 At present, the User Group entity can only be created at the account level.
@@ -176,13 +178,13 @@ identifier: payments_service
 name: Payments Service
 spec:
   type: service
-  owner: group:account/QA_DevX
+  owner: group:account/cloud_infrastructure_team
 ```
 
 This results in:
 
-* `payments_service → ownedBy → QA_DevX`
-* `QA_DevX → ownerOf → payments_service`
+* `payments_service → ownedBy → cloud_infrastructure_team`
+* `cloud_infrastructure_team → ownerOf → payments_service`
 
 On the service’s Catalog page, the owner group is prominently displayed, making accountability clear.
 
@@ -208,7 +210,7 @@ Information about conflicts may be available in the audit trail. Platform user g
 
 ## Find User Groups in the Catalog
 
-Once created, User Groups are fully discoverable inside the IDP Catalog. You can look them up directly by name or identifier using the catalog search bar. For example, searching for **QA DevX** quickly brings up the corresponding group entity.
+Once created, User Groups are fully discoverable inside the IDP Catalog. You can look them up directly by name or identifier using the catalog search bar. For example, searching for **Cloud Infrastructure Team** quickly brings up the corresponding group entity.
 
 ![overview](./static/overview.png)
 
@@ -220,7 +222,7 @@ Opening a group shows a detailed **Overview** page:
 ![user-group-overview](./static/user-group-overview.png)
 
   * You can click into related entities (parent group, child group, or member) to navigate further in the catalog.
-  * For example, the **QA DevX** group shows its parent **IDP Team**, two members, and a child group **Dev 1 eng**.
+  * For example, the **Cloud Infrastructure Team** group shows its parent **Techo Cloud Team**, two members, and owner of entity **member-service**.
 * **Members Section**: Lists all the individual users associated with the group, along with their identifiers and contact details.
 
 
@@ -240,41 +242,96 @@ Example:
 
 ```yaml
 apiVersion: harness.io/v1
-kind: group
-name: QA DevX
-identifier: QA_DevX
-type: custom
-metadata:
-  description: IDP Harness specific custom User Group
-  teamLead: Monkey D Luffy
-  region: East Blue
-  tags:
-    - engineering
-    - cloud
+kind: Group
+type: engineering
+name: Cloud Infrastructure Team
+identifier: cloud_infrastructure_team
 spec:
-  members:
-    - user:account/user1@harness.io
-    - user:account/user2@harness.io
-  lifecycle: active
+  lifecycle: ""
   parent: group:account/idp_team
+  members:
+    - user:account/shibam.dhar@harness.io
+    - user:account/vigneswara.mh@harness.io
   profile:
-    email: cloud_infrastructure_team@techco.io
+    email: cloud-platform@techco.com
+metadata:
+  description: " User Group responsible for building and maintaining the company’s core cloud infrastructure."
+  role: Engineer Manager
+  region: East Blue
+  focusarea: Platform
+  teamlead: Monkey D Luffy
+  tags:
+    - cloud
+    - platform
+    - engineering
 ```
 
 This metadata can be surfaced in **catalog cards**, **dashboards**, and **reporting views**, giving platform engineers and leadership more context about each group.
 For example: a sales engineer could quickly find the right **geo-aligned team**, or a developer could identify the **team lead** directly from the group’s catalog page.
 
+### Additional Infocard
+
+The `EntityAdditionalInfoCard` component provides a powerful way to surface important metadata from your Custom User Groups directly on their entity pages. This component allows you to selectively display key information about the group in a structured, visually appealing card format.
+
+Here's how to configure an Additional Infocard that displays leadership and organizational information:
+
+```yaml
+- component: EntityAdditionalInfoCard
+  specs:
+    props:
+      title: Leader Information
+      items:
+        - label: Team Leader
+          value: <+metadata.teamlead>
+          type: string
+          style:
+            bold: true
+        - label: Focus Area
+          value: <+metadata.focusarea>
+          type: string
+          style:
+            bold: false
+        - label: Role
+          value: <+metadata.role>
+          type: string
+          style:
+            bold: false
+        - label: Region
+          value: <+metadata.region>
+          type: string
+          style:
+            bold: false
+    gridProps:
+      xs: 12
+      md: 6
+```
+
+Key features of the `EntityAdditionalInfoCard`:
+
+- **Custom Title**: Set a meaningful title like "Leader Information" or "Team Details"
+- **Dynamic Value Binding**: Use the `<+metadata.fieldname>` syntax to pull values directly from the group's metadata
+- **Visual Styling**: Control typography with options like bold text for emphasis on important fields
+- **Flexible Layout**: Configure the card's placement and size with grid properties
+- **Multiple Cards**: Add several info cards to group related metadata together
+
+![additionalinfocard](./static/additionalinfocard.png)
+
+This approach makes important information about the group immediately visible without requiring users to dig through raw YAML or metadata fields. For example, a developer looking at a group page can quickly see who leads the team and what region they operate in, facilitating better communication and collaboration.
 
 
 ## Configuring the Custom Group Layout in Group Entities
 
-By default, IDP provides a standard view for all **Group entities**, showing the profile, members, and graph. However, administrators can customize the layout to highlight the metadata that matters most to their organization.
+By default, you won't see any layout for the  Custom Group entities, but you can duplicate the layout of the Group entities, IDP provides a standard view for all **Group entities**, showing the profile, members, and graph. However, administrators can customize the layout to highlight the metadata that matters most to their organization.
 
 
 You can configure layouts from:
-`Admin → Layout → Group Entities → Custom Group`
+`Admin → Layout → Group Entities`
 
-This allows you to define what cards and panels appear on the group’s entity page. For example, you might want to show the **team lead** or **region** metadata prominently, alongside the member list and hierarchy graph.
+Then duplicate an existing laypuit of kind `Group` and you will be asked to providethe type for it. Make sure top provide the type same as for the user group entity you want the layout for. 
+
+![duplicate](./static/duplicate.gif)
+
+After that you can define what cards and panels appear on the group’s entity page. For example, you might want to show the **team lead** or **region** metadata prominently, alongside the member list and hierarchy graph.
 
 ![layout-usergroup](./static/layout-usergroup.png)
 
@@ -288,6 +345,8 @@ page:
       path: /
       title: Overview
       contents:
+        - component: EntityOrphanWarning
+        - component: EntityProcessingErrorsPanel
         - component: EntityGroupProfileCard
           specs:
             gridProps:
@@ -301,16 +360,28 @@ page:
         - component: EntityAdditionalInfoCard
           specs:
             props:
-              title: Additional Info
+              title: Leader Information
               items:
-                - label: Team Lead
-                  value: <+metadata.teamLead>
+                - label: Team Leader
+                  value: <+metadata.teamlead>
                   type: string
                   style:
                     bold: true
+                - label: Focus Area
+                  value: <+metadata.focusarea>
+                  type: string
+                  style:
+                    bold: false
+                - label: Role
+                  value: <+metadata.role>
+                  type: string
+                  style:
+                    bold: false
                 - label: Region
                   value: <+metadata.region>
                   type: string
+                  style:
+                    bold: false
             gridProps:
               xs: 12
               md: 6
@@ -324,7 +395,7 @@ page:
 In this example:
 
 * The **Group Profile** and **Graph** remain visible for structure and relationships.
-* An **Additional Info Card** surfaces metadata fields (`teamLead`, `region`).
+* An **Additional Info Card** surfaces metadata fields (`teamlead`, `region`).
 * The **Members List** card continues to show assigned users.
 
 <!-- 👉 insert image here of **Admin configuring layout for Custom Group entities**
