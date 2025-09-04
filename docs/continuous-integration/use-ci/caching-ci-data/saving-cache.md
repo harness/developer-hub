@@ -76,21 +76,20 @@ Here is an example of an S3 cache bucket policy:
 ```
 ### Caching with Bucket Encryption Policies
 
-If your bucket enforces an encryption policy that denies uploads without a specific encryption type, you must add a stage variable named `PLUGIN_ENCRYPTION`. Set the value to match the encryption type required by your bucket policy.
+If your bucket enforces an encryption policy that denies uploads without a specific encryption type, you must add a **stage variable** named `PLUGIN_ENCRYPTION`. Set the value to match the encryption type required by your bucket policy.
 
 If your bucket policy requires AES256, set the stage variable `PLUGIN_ENCRYPTION` to `AES256`, as shown below:
 
 ```yaml
-pipeline:
-  name: Upload to Encrypted S3
-  identifier: upload_encrypted_s3
   stages:
     - stage:
         identifier: upload_encrypted_s3
         name: Upload to Encrypted S3
         type: CI
         spec:
-          cloneCodebase: false
+          cloneCodebase: true
+          caching:
+            enabled: true
           platform:
             os: Linux
             arch: Amd64
@@ -103,42 +102,22 @@ pipeline:
                   identifier: save_cache_s3
                   name: Save Cache to S3
                   type: SaveCacheS3
-                  timeout: 10m
                   spec:
                     connectorRef: YOUR_AWS_CONNECTOR
-                    bucket: <+pipeline.stages.upload_encrypted_s3.variables.S3_BUCKET_NAME>
-                    region: <+pipeline.stages.upload_encrypted_s3.variables.S3_REGION>
-                    key: cache-${GITHUB_SHA}
+                    bucket: <your_bucket>
+                    region: <your_region>
+                    key: <your_cache_key>
                     sourcePaths:
                       - node_modules/
-                      - .npm/
-                      - vendor/
-                    archiveFormat: Gzip
-                    override: true
         variables:
           - name: PLUGIN_ENCRYPTION
             type: String
             description: Encryption type for plugin
-            required: false
             value: AES256
-          - name: S3_BUCKET_NAME
-            type: String
-            description: S3 bucket name for cache storage
-            required: true
-            value: YOUR_BUCKET_NAME
-          - name: S3_REGION
-            type: String
-            description: AWS region for S3 bucket
-            required: true
-            value: us-east-1
           - name: S3_ENCRYPTION_ENABLED
             type: String
             description: Enable S3 bucket encryption
-            required: false
             value: "true"
-        description: ""
-  projectIdentifier: YOUR_PROJECT_IDENTIFIER
-  orgIdentifier: YOUR_ORG_IDENTIFIER
 ```
 
 ```yaml
