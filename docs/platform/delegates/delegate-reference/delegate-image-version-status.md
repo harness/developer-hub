@@ -4,7 +4,7 @@ description: This topic lists delegate image versions and their support status.
 sidebar_position: 1
 ---
 
-This document provides delegate image version information and support lifecycle details. Delegate images have a defined support lifecycle: End of Support (EOS) occurs 6 months after release, and End of Life (EOL) occurs 8 months after release.
+This document outlines the version information for delegate images and details their support lifecycle. Delegate images have a specific support lifecycle: End of Support (EOS) occurs at the end of the sixth month, while End of Life (EOL) takes place at the end of the eighth month, starting from the month indicated in the delegate version.
 
 :::warning
 Delegates past their EOS date are not supported by Harness. Upgrade your delegates before they reach EOS to avoid service disruptions.
