@@ -37,7 +37,7 @@ Watch the 30-second animation below.  Note the order of steps and the way your u
 
 ### If Your Split Account Uses SSO Only
 
-1. Logging into Harness and your IdP in separate windows, add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
+1. Log into Harness and your IdP in separate windows and add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
 1. Assign all of your current Split users to the SSO application for app.harness.io.
 1. Notify your Harness CSM or support@split.io when the SSO steps are complete.
 
@@ -47,7 +47,7 @@ Do not create users or groups in `app.harness.io` ahead of time. The migration p
 
 ### If Your Split Account Uses SSO + SCIM
 
-1. Logging into Harness and your IdP in separate windows, add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
+1. Log into Harness and your IdP in separate windows and add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
 1. Configure SCIM to provision users and groups in app.harness.io. See Configure SCIM below.
 1. Notify your Harness CSM or support@split.io when the SSO and SCIM steps are complete.
 
