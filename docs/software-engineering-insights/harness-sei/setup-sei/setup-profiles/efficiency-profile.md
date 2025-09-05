@@ -25,10 +25,10 @@ The Efficiency profile will also support defining your sprint settings across th
 Before you set up an Efficiency Profile in SEI 2.0, make sure the following are in place:
 
 * The SEI 2.0 module is enabled for your Harness account.
-* You've connected at least one integration - either an Issue Management system (like Jira or Azure Boards) or a Source Code Management system (like GitHub or GitLab etc).
-* You have the right permissions to create & manage profiles i.e. the SEI Admin role.
+* You must have the SEI Admin role to create or manage Efficiency Profiles.
+* At least one Issue Management (like Jira or Azure Boards) or a Source Code Management (like GitHub or GitLab) integration should be present in the account.
 
-:::note
+:::info
 If you’re not sure about your access or integration status, check with your Account Admin or reach out to [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
@@ -36,11 +36,18 @@ If you’re not sure about your access or integration status, check with your Ac
 
 To create an efficiency profile:
 
-1. In your **Harness project**, go to the SEI module.
-2. Select **Account Management**.
-3. Select **Efficiency** under **Profiles**.
-4. To create a profile, select **+New Efficiency Profile**. To edit an existing profile, select the profile's name in the profiles list.
-5. Configure basic information for the Efficiency profile, such as a Name and an optional Description.
+1. In your **Harness project**, navigate to **Software Engineering Insights** and click **Account Management**.
+1. Under **Profiles**, select **Efficiency**.
+
+1. To create a profile, click **Create**. To edit an existing profile, click the **Edit Profile** icon in the profiles list.
+
+1. Enter a name and add an optional description for the profile.
+
+   ![](../../static/efficiency-profile-1.png)
+   
+1. Click **Next** to configure event sources for DORA metrics. To disable a DORA metric for the profile, click the toggle next to the DORA metric under **Configuration**.
+
+   ![](../../static/efficiency-profile-2.png)
 
 ### Set up Lead Time for Changes
 
@@ -54,7 +61,7 @@ Here's what you need to know before setting up LTTC:
 * Each phase is marked by a Start Event and an End Event, pulled from real signals in your tools. Event Sources include:
   * Issue Management System
   * Source Code Manager
-  * Continuos Integration
+  * Continuous Integration
   * Continuous Delivery
   * ITSM
 * **Start event source:** This is the tool or system where the signal that starts the phase originates.
@@ -67,17 +74,19 @@ Here's what you need to know before setting up LTTC:
   * First commit created
   * Last pull request merged
   * Time to complete the first CI build etc
-* SEI 2.0 comes with five default phases: Planning, Coding, Review, Build & Deploy.
+* SEI 2.0 comes with five default phases: **Planning**, **Coding**, **Review**, **Build**, and **Deployment**.
 * These phases are sequential i.e. the end of one phase automatically becomes the start of the next. You can enable or disable these as needed.
 
 #### Configuration steps
 
+![](../../static/efficiency-profile-3.png)
+
 For each enabled phase, you’ll:
 
-* Select a Start Event Source: The system where the phase begins (e.g., Jira).
-* Select a Start Event: The trigger that signals the phase has started (e.g., ticket status changes to In Progress).
-* Select an End Event Source: The system where the phase ends (can be different).
-* Select an End Event: The trigger that indicates the phase has ended (e.g., first commit created).
+* **Choose Start Event Source**: The system where the phase begins (e.g., Jira).
+* **Select Start Event Status Category**: The trigger that signals the phase has started (e.g., ticket status changes to `In Progress`).
+* **Choose End Event Source**: The system where the phase ends (can be different).
+* **Select End Event**: The trigger that indicates the phase has ended (e.g., `first commit created`).
 
 #### Default Phases
 
@@ -86,12 +95,12 @@ SEI 2.0 provides the following default phase structure for LTTC. These reflect c
    <Tabs queryString="phase">
     <TabItem value="planning" label="Planning">
 
-    Used to track how long it takes to move work from the idea stage to active development.
+    Tracks how long it takes to move work from the idea stage to active development.
 
-    * Start Event Source: Issue Management (e.g., Jira)
-    * Start Event: Ticket transitions to To Do or Proposed
-    * End Event Source: Issue Management
-    * End Event: Ticket transitions to In Progress
+    * **Start Event Source**: Issue Management (e.g., Jira)
+    * **Start Event**: Ticket transitions to To Do or Proposed
+    * **End Event Source**: Issue Management
+    * **End Event**: Ticket transitions to In Progress
 
     </TabItem>
 
@@ -99,10 +108,10 @@ SEI 2.0 provides the following default phase structure for LTTC. These reflect c
 
     Captures the time taken to start actual development work and make the code changes.
     
-    * Start Event Source: Issue Management
-    * Start Event: Ticket transitions to In Progress
-    * End Event Source: Source Code Management
-    * End Event: First commit pushed to a repository
+    * **Start Event Source**: Issue Management
+    * **Start Event**: Ticket transitions to In Progress
+    * **End Event Source**: Source Code Management
+    * **End Event**: First commit pushed to a repository
 
     </TabItem>
 
@@ -110,10 +119,10 @@ SEI 2.0 provides the following default phase structure for LTTC. These reflect c
 
     Tracks the time between first code being committed and the code being approved and merged.
     
-    * Start Event Source: Source Code Management
-    * Start Event: First commit created
-    * End Event Source: Source Code Management
-    * End Event: Last pull request merged
+    * **Start Event Source**: Source Code Management
+    * **Start Event**: First commit created
+    * **End Event Source**: Source Code Management
+    * **End Event**: Last pull request merged
 
     </TabItem>
 
@@ -121,10 +130,10 @@ SEI 2.0 provides the following default phase structure for LTTC. These reflect c
 
     Measures the time between PR merge and a successful CI build.
     
-    * Start Event Source: Source Code Management
-    * Start Event: Last pull request merged
-    * End Event Source: Continuous Integration
-    * End Event: Last CI pipeline execution completed
+    * **Start Event Source**: Source Code Management
+    * **Start Event**: Last pull request merged
+    * **End Event Source**: Continuous Integration
+    * **End Event**: Last CI pipeline execution completed
 
     </TabItem>
 
@@ -132,16 +141,16 @@ SEI 2.0 provides the following default phase structure for LTTC. These reflect c
 
     Captures time between successful build and deployment to production.
     
-    * Start Event Source: Continuous Integration
-    * Start Event: First CI build completed
-    * End Event Source: Continuous Deployment
-    * End Event: Last CD pipeline execution to production
+    * **Start Event Source**: Continuous Integration
+    * **Start Event**: First CI build completed
+    * **End Event Source**: Continuous Deployment
+    * **End Event**: Last CD pipeline execution to production
 
     </TabItem>
     </Tabs>
 
 :::info 
-Note that the event correlation such as linking tickets to commits or builds is automatically inferred and derived by the SEI Correlation Engine.
+Event correlation such as linking tickets to commits or builds is automatically inferred and derived by the SEI Correlation Engine.
 :::
 
 ### Set up Deployment Frequency
@@ -150,17 +159,19 @@ Deployment Frequency measures how often code changes are successfully deployed t
 
 #### Select a deployment source
 
+![](../../static/efficiency-profile-4.png)
+
 Choose where deployment signals will come from. You can measure deployments using one of the following systems:
 
-* Continuous Deployment Tool
-* Issue Management System
-* Source Code Manager
+* **Continuous Deployment**
+* **Issue Management**
+* **Source Code Management**
 
 #### Event Detection & Success Criteria
 
 SEI automatically detects deployment events from your selected source. The definition of what counts as a successful deployment is configured at the team level, giving each team flexibility to reflect their actual deployment processes. Here’s how it works across sources:
 
-* **Continuous Deployment Tools**
+* **Continuous Deployment**
   * **What SEI detects:** All completed pipeline executions.
   * **How success is defined:** In Team Settings > CD settings, each team specifies:
     * Pipeline identifiers or names
@@ -183,11 +194,13 @@ Change Failure Rate measures the percentage of deployments that result in a fail
 
 #### Select a Failure Detection Source
 
+![](../../static/efficiency-profile-5.png)
+
 Choose the system from which SEI will detect failure events related to deployments. You can measure change failures using one of the following sources:
 
-* Continuous Deployment Tools
-* Issue Management Systems (e.g., Jira)
-* Incident Management / ITSM Systems (Coming soon)
+* **Continuous Deployment**
+* **Issue Management** (e.g., Jira)
+* **Incident Management/ITSM** (Coming soon)
 
 #### Event Detection & Failure Criteria
 
@@ -195,7 +208,7 @@ SEI automatically detects failure events from your selected source. The definiti
 
 Here’s how it works across sources:
 
-* **Continuous Deployment Tools**
+* **Continuous Deployment**
   * **What SEI detects:** All pipeline executions.
   * **How failure is defined:** In Team Settings > CD settings, each team specifies:
     * Pipeline identifiers or names
@@ -213,10 +226,12 @@ Mean Time to Restore (MTTR) measures the average time it takes for your teams to
 
 #### Select an Incident/Failure Detection Source
 
+![](../../static/efficiency-profile-6.png)
+
 Harness SEI supports MTTR measurement using:
 
-* Issue Management Systems (e.g., Jira)
-* Coming soon: Support for Incident Management / ITSM systems (e.g., PagerDuty, ServiceNow).
+* **Issue Management** (e.g., Jira)
+* **Incident Management/ITSM** (Coming soon)
 
 #### Event Detection & Recovery Criteria
 
@@ -224,6 +239,6 @@ SEI automatically detects recovery events from your selected source. The definit
 
 * Incident creation marks the start of the downtime.
 * Only the incident resolution event is considered the recovery point — no other status or transition counts as resolution.
-* Teams specify relevant Jira projects, issue types, and a combination of various other filter criteria under Team Settings to ensure accurate MTTR calculation.
+* Teams specify relevant Jira projects, issue types, and a combination of various other filter criteria under **Team Settings** to ensure accurate MTTR calculation.
 
 Once you have completed the profile configuration, click the **Save** button in the top right corner. A new **Efficiency profile created successfully** message will appear.
