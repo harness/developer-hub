@@ -133,6 +133,14 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## September 2025 
+
+### Version 1.105.x <!--September 03, 2025-->
+
+#### New features and enhancements
+
+- Added the ability for customers to see the task response status in delegate selection logs. [PL-58972] 
+
 ## August 2025
 
 ### Version 1.103.x <!--August 25, 2025-->
