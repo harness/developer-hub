@@ -5452,7 +5452,7 @@ gsutil -m cp \
 
 #### Continuous Delivery
 
-- Harness UI will permanently switch to the new navigation experience, Nav 2.0 on June 03, 2024. Users will not be able to switch back to the old UI after that. This feature is behind the feature flag `CDS_NAV_PREFS`. Contact [Harness Support](mailto:support@harness.io) to enable it. (CDS-96833)
+- Harness UI will permanently switch to the new navigation experience, Nav 2.0 on June 03, 2024. Users will not be able to switch back to the old UI after that. (CDS-96833)
 
 #### Continuous Integration
 
@@ -7008,8 +7008,6 @@ gsutil -m cp \
 - The [codebase expressions](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) `<+codebase.sourceBranch>` and `<+codebase.targetBranch>` are now always `null` for branch and tag builds. These expressions are primarily for differentiating the target and source branches for PR builds. For branch and tag builds, use `<+codebase.branch>` and `<+codebase.tag>`. (CI-10743, ZD-55284)
 
 #### Harness Platform
-
-- You can now toggle between the legacy UI navigation and the new navigation by enabling the feature flag `CDS_NAV_PREFS` for your account. (PL-43772)
 
 - Configure an absolute session timeout for your account (PL-43587)
 

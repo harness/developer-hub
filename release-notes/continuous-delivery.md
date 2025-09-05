@@ -812,7 +812,7 @@ This issue has been resolved. The Monitored Services page now supports opening v
 
 - Harness now supports the latest Google Cloud APIs, ensuring your deployments stay up-to-date with GCP changes. (**CDS-102860, ZD-72653**)
 
-- Users can now add a native **K8s diff** step in CD pipelines, allowing them to preview changes before deployment. Currently, this feature is behind the feature flag `CDS_K8S_DIFF_STEP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-91752**)
+- Users can now add a native **K8s diff** step in CD pipelines, allowing them to preview changes before deployment. (**CDS-91752**)
 
 #### Fixed Issues
 
@@ -1191,7 +1191,7 @@ For example, `account.agentId` for Account-level agents, `org.agentId` for Organ
 
 - You can now deploy your artifacts to Google Cloud Run. For more information, go to Harness [Google Cloud Run Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-cloud-run/). This feature is behind a feature flag `CDS_GOOGLE_CLOUD_RUN`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-36357)
 
-- You can now deploy using Azure Functions enabling you to automate and manage serverless function deployments to Azure with ease. For more information, go to Harness [Azure Functions deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-function-tutorial/). This feature is behind a feature flag `CDS_AZURE_FUNCTION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-51900)
+- You can now deploy using Azure Functions enabling you to automate and manage serverless function deployments to Azure with ease. For more information, go to Harness [Azure Functions deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-function-tutorial/). (CDS-51900)
 
 - Previously, GitOps steps like UpdateReleaseRepo, MergePR, and RevertPR were delayed due to locking on the tokenRef to prevent GitHub rate limits. A new Disable `Git Restraint` option now allows users to bypass this locking for faster execution. (CDS-101882, ZD-71430,72936)
 
