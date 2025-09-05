@@ -1571,6 +1571,39 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-application-api-protection > div > a::before,
+.sidebar-application-api-protection > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-arp.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-application-api-security-testing > div > a::before,
+.sidebar-application-api-security-testing > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-ast.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sidebar-application-api-posture-management > div > a::before,
+.sidebar-application-api-posture-management > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/icon-adra.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 /*******************sidebar logo css end*******************/
 
@@ -1641,6 +1674,15 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 .supply-chain-security:hover {
   border-color: var(--mod-ssca-200) !important;
 }
+.application-api-posture-management:hover {
+  border-color: var(--mod-sto-200) !important;
+}
+.application-api-security-testing:hover {
+  border-color: var(--mod-sto-200) !important;
+}
+.application-api-protection:hover {
+  border-color: var(--mod-sto-200) !important;
+}
 
 /*** /docs  cards css end ****/
 
@@ -1687,7 +1729,7 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 }
 
 .sidebar-item-new > .menu__list-item-collapsible > .menu__link::after {
-  content: "NEW";
+  content: 'NEW';
   background: linear-gradient(135deg, #0278d5, #00ade4);
   color: white;
   font-size: 8px;
@@ -1704,7 +1746,8 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 
 /* Subtle pulse animation for NEW badge */
 @keyframes newBadgePulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }

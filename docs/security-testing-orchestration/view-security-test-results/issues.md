@@ -1,29 +1,25 @@
 ---
-title: "View and manage security Issues" 
-description: View and manage issues across all scans in the project
+title: "View and manage baseline issues" 
+description: View and manage issues across all baseline scans in your project.
 sidebar_position: 10
-sidebar_label: "View and manage issues"
+sidebar_label: "View and manage baseline issues"
 ---
 
-After performing security scans in your pipelines, you can review the identified issues from the **[Issues](#navigate-to-issues-section)** section at the **Project** level. This section provides a consolidated view of all security issues affecting your configured baselines, providing a comprehensive list of issue identified across scans in the selected **Project**. **Issues** section is currently available only at the **Project** level. Support for **Organization** and **Account** levels will be available soon.
+The **[Issues](#navigate-to-issues-section)** section at the **Project** level provides a consolidated view of all security issues affecting your baseline targets, providing a comprehensive list of issues identified across scans in the selected **Project**. **Issues** section is currently available only at the **Project** level. Support for **Organization** and **Account** levels will be available soon. From the **Issues** section, you can:
 
-:::note
-This is a new feature currently behind the feature flag `STO_ALL_ISSUES_PAGE` and will be generally available soon. If you’d like to try it before general availability, please contact [Harness Support](mailto:support@harness.io) to enable it for your account.
-
-Please note that, as this feature is still in early access, you may encounter occasional issues. If you do, we kindly request that you report them to your support representative.
-:::
-
-From the **Issues** section, you can:
-
-- [View all project issues](#navigate-to-issues-section)
+- [View all baseline issues](#navigate-to-issues-section)
 - [Review issue details](#issue-details)
 - [Identify impacted targets](#target-details)
 - [Inspect occurrences of issues](#occurrence-details)
-- [Create Jira tickets from issues](/docs/security-testing-orchestration/jira-integrations)
-- [Request issue exemptions](/docs/security-testing-orchestration/exemptions/exemption-workflows)
+- [Create Jira tickets at Issues and Target level](/docs/security-testing-orchestration/jira-integrations)
+- [Create Issue Exemption Request with Project and Target scope](/docs/security-testing-orchestration/exemptions/exemption-workflows)
+- [Approve/Reject Exemption Requests](#exemption-status)
+
+<DocVideo src="https://youtu.be/CLqFqmZh2YM" title="Navigating the Issues section" />
 
 :::info
-The **Issues** section displays only the issues impacting your project's [baselines](https://developer.harness.io/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines/). If your project has no targets or baselines configured, this page will not present the issues, even if scans have been executed against non-baseline targets.
+- The **Issues** section displays only the issues impacting your project's [baselines](https://developer.harness.io/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines/). If your project has no targets or baselines configured, this page will not present the issues, even if scans have been executed against non-baseline targets.
+- To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Vulnerabilities tab**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 :::
 
 ## Navigate to Issues section
@@ -47,9 +43,9 @@ From the **Issue Details** pane, you can:
 
 ### Exemption status
 
-If an issue has an exemption status, the **Exemption Status** section will appear, showing the overall details of the exemption request. Depending on your permissions, you can take actions such as approving, rejecting, or reopening exemptions. See [Issue Exemption Workflow](/docs/security-testing-orchestration/exemptions/exemption-workflows).
+If an issue has an exemption status, the **Exemption Status** button will appear at the top of the pane. Here, you can click the button to view exemption details or take actions (**Approve**, **Reject**, **Re-open**) based on your permissions. Learn more in [Issue Exemption Workflow](/docs/security-testing-orchestration/exemptions/exemption-workflows).
 
-<DocImage path={require('./static/issues-exemption-status.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/issues-exemption-status.png')} width="80%" height="80%" title="Click to view full size image" />
 
 :::info
 The **Issues** section displays the overall exemption status. The exemption status at scan time is shown only in the [**Vulnerabilities** tab](./view-scan-results.md).

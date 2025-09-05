@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2025-09-02T10:00:10
+date: 2025-09-05T10:00:10
 sidebar_position: 15
 ---
 
@@ -42,6 +42,24 @@ Activity Logs provide admins and auditors a transparent view of who made changes
 #### Related documentation
 
 - [Activity Logs in SEI 2.0](/docs/software-engineering-insights/harness-sei/manage/activity-logs)
+
+### [New Enhancement] Multiple Org Trees, multi-level hierarchies, and data filters in SEI 2.0
+---
+#### 2025-08-28
+
+SEI 2.0 provides additional flexibility in modeling your engineering organization:
+
+* **Multiple Org Trees**: Create and manage multiple Org Trees per account to represent different business units, geographies, or alternative organizational views.  
+* **Multi-Level Hierarchies**: Go beyond manager-reportee relationships by grouping developers across attributes such as `Email`, `Role`, `Site`, and `Team`.  
+* **Data Filters**: Apply filters with `AND` logic to include or exclude specific roles, teams, or locations within your Org Tree.
+
+![](./static/sei/multi-level-org.png)
+
+These enhancements make it easier to align insights with the way your organization actually operates, supporting more accurate reporting and cross-team analysis.
+
+#### Related documentation
+
+- [Set up Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree/)
 
 ## July 2025
 

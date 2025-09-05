@@ -54,7 +54,20 @@ These are the requirements to configure an Azure VM application, Entra ID app re
 
 5. [Create a VM application](https://learn.microsoft.com/en-us/azure/virtual-machines/vm-applications-how-to?tabs=portal#create-the-vm-application), and assign your VM app to the **Contributor** role for your Azure subscription.
 
-   For information about role assignment, go to the Microsoft documentation on [Assigning Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition).
+:::tip Uploading VM Application package to Azure Storage
+
+When creating a VM application in Azure (Step 5), Azure expects a source application package to be uploaded to a Storage Account. This package must be a ZIP file containing your install scripts or other assets required for VM provisioning.
+
+To do this:
+
+1. Prepare a ZIP archive with your required install script(s). For example, you might include a PowerShell script that installs the Drone runner.
+2. Upload this ZIP file to a Blob container in your Azure Storage Account.
+3. In the Azure portal, during the VM application creation process, you can either browse to the ZIP in your container or paste a Shared Access Signature (SAS) URL to reference it.
+
+For reference, see [Azure’s guide on creating VM applications](https://learn.microsoft.com/en-us/azure/virtual-machines/vm-applications-how-to#create-the-vm-application).
+
+For information about role assignment, go to the Microsoft documentation on [Assigning Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition).
+:::
 
 6. Go to [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/) and [register your VM application](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app).
 7. Assign your Azure VM to the **Owner** role for your VM application.
