@@ -20,7 +20,7 @@ Configure the trust relationship in the target account's IAM role to allow the s
 
 1. **In each target account**: Edit the trust relationship for the IAM role you created in Step 1.
 
-   Navigate to **AWS IAM > *ROLE_NAME* > Trust relationships** tab and update the trust policy:
+   Navigate to **AWS IAM** > **ROLE_NAME** > **Trust relationships** tab and update the trust policy:
 
    ```json
    {

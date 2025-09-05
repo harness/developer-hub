@@ -8,7 +8,7 @@ This step lets you grant permissions for Harness CE to inject chaos targeting va
 
 Create an IAM role and policy in each target account to provide the required permissions to access the desired resources in that account. You have the flexibility to define the level of permissions you wish to assign to Harness CE. For instructions, go to [Create an IAM role and policy](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html) in the AWS documentation.
 
-### Step 2: Set up the OIDC provider in all target accounts
+### Step 2: Add the OIDC provider in all target accounts
 
 Follow this procedure for each one of your target accounts.
 
@@ -49,7 +49,7 @@ Configure the trust relationship for each IAM role you created in a target accou
 
   You can find the JSON for the trust relationship in **AWS IAM > *ROLE_NAME* > Trust relationship** tab.
 
-  In this example `2222222222` is the target account ID, and `1111111111` is the experiment service account ID:
+  In this example `2222222222` is the target account ID.
 
   ```
   {
@@ -81,7 +81,7 @@ For example, if the target account has a role named `chaos-role`, you must annot
     Where:
 
     * `<chaos-namespace>` is the namespace where the chaos infrastructure is installed (usually `HCE`).
-    * `<experiment-service-account-name>` is the name of your experiment service account (usually `litmus-admin`).
+    * `<experiment-service-account-name>` is the name of your experiment service account (usually `litmus`).
     * `<role-arn>` is the ARN of the role in the target account.
 
 1. Repeat the above step for the chaos role in each target account.
