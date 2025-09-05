@@ -38,16 +38,7 @@ gitlab:
 
 ### Step 2: Managing authentication
 
-You'll need to provide authentication credentials for GitLab. You have two options:
-
-1. **Using built-in Harness Secret Manager**: 
-   - Create a GitLab access token with appropriate permissions
-   - Store it as a secret in Harness
-   - Reference it in your configuration using `${SECRET_NAME}`
-
-2. **Using external secret managers**:
-   - You can use your cloud provider's secret manager, HashiCorp Vault, or other custom solutions
-   - Make sure your Harness delegate has access to these secret managers
+You'll need to set up a GitLab connector in Harness to authenticate with your GitLab instance. This connector allows secure communication between Harness IDP and your GitLab repositories. You can configure it with a Personal Access Token (recommended), basic authentication, or OAuth. For detailed setup instructions, see the [GitLab connector documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo/#connect-to-gitlab).
 
 ### Step 3: Network access setup
 
