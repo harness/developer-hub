@@ -269,7 +269,13 @@ This allows you to specify a different workspace name each time the Pipeline is 
 
 You can even set a Harness Trigger where you can set the workspace name used in **Workspace**.
 
-## AWS Connector Provider Credential Authentication for Terraform Plan and Apply Steps
+## Connector Credentials
+
+You can use a connector to authenticate with the target cloud provider. This is an optional configuration that takes the connector reference. The Terraform step uses this connector to authenticate with the cloud provider targeted for infrastructure provisioning.
+
+This connector configuration is available in the **Terraform Apply** step when the **Configuration Type** is set to **Inline**.
+
+### AWS Connector 
 
 :::note
 This feature requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -280,6 +286,9 @@ You can use an AWS connector to have the Terraform Plan and Apply step assume a 
 By default, AWS assumes the role session duration as 900 seconds. To increase the AWS role session duration, a  built-in environment variable, `HARNESS_AWS_ASSUME_ROLE_DURATION` is introduced, which can be used to override the assume role session duration. `HARNESS_AWS_ASSUME_ROLE_DURATION` is designed for use in Terraform steps in the environment variable section. The value must be set in seconds. This new environment variable requires Harness Delegate version 82700.
 
 When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression
+
+<details>
+<summary>Sample YAML</summary>
 
 ```YAML
 - step:
@@ -301,6 +310,7 @@ When configured the optional configuration for AWS Connector these fields can be
               roleArn: <+input>
     timeout: 10m
 ```
+</details>
 
 #### Terraform variable files
 
@@ -337,6 +347,56 @@ In **File Paths**, add one or more file paths from the root of the bucket to the
    ![](./static/provision-infra-dynamically-with-terraform-10.png)
 
 Click **Submit**. The remote file(s) are added.
+
+## Azure Connector
+
+Harness Terraform steps now support authenticating with Azure using Azure connectors for target provisioning. This enables seamless integration with Azure infrastructure when running Terraform Plan, Apply, and Destroy steps with inline Terraform configuration.
+
+### Key Features
+
+- **Azure Connector support:** Authenticate Terraform operations using Azure connectors configured in Harness.
+- **Authentication methods:**
+  - Manual credentials (Application ID, Tenant ID, Secret Key, Certificate Secret)
+  - Delegate-based credentials:
+    - System Assigned Managed Identity
+    - User Assigned Managed Identity
+  - OIDC token-based authentication
+- **Environment variables:** Harness exports Azure-specific environment variables (e.g., ARM_SUBSCRIPTION_ID, ARM_CLIENT_ID, ARM_TENANT_ID, ARM_CLIENT_SECRET, ARM_CLIENT_CERTIFICATE_PATH, ARM_OIDC_TOKEN) based on the Azure connector configuration.
+- **Terraform provider credential configuration:** YAML `providerCredential` block references an Azure connector and subscription ID to authenticate during Terraform execution.
+- **Additional options:** Support for environment variable overrides like ARM_TENANT_ID and ARM_MSI_ENDPOINT for advanced scenarios.
+
+For more information on how to setup an Azure connector, go to [Azure Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
+
+### YAML Configuration Example
+
+<details>
+<summary>Sample YAML</summary>
+
+```yaml
+- step:
+    type: TerraformPlan
+    name: TerraformPlan_1
+    identifier: TerraformPlan_1
+    spec:
+      provisionerIdentifier: planoidc
+      configuration:
+        command: Apply
+        configFiles:
+          store:
+            spec:
+              connectorRef: githubConnector
+              repoName: play
+              gitFetchType: Branch
+              branch: main
+              folderPath: tf/azure
+            type: Github
+        providerCredential:
+          type: Azure
+          spec:
+            connectorRef: AzureConnector
+            subscriptionId: 20xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+</details>
 
 ## Backend configuration
 

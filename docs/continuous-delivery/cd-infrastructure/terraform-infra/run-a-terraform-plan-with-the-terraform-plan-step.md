@@ -274,7 +274,7 @@ You can even set a Harness Trigger where you can set the workspace name used in 
 
 ## Connector Credentials
 
-You can use a connector to authenticate with the target cloud provider. This is an optional configuration that takes the connector reference, region, and Role ARN (for AWS). The Terraform step uses these parameters to authenticate with the cloud provider targeted for infrastructure provisioning.
+You can use a connector to authenticate with the target cloud provider. This is an optional configuration that takes the connector reference. The Terraform step uses this connector to authenticate with the cloud provider targeted for infrastructure provisioning.
 
 This connector configuration is available in the **Terraform Plan** step. It also appears in the **Terraform Apply** and **Terraform Destroy** steps when the **Configuration Type** is set to **Inline**.
 
@@ -288,9 +288,12 @@ You can use an AWS connector to have the Terraform Plan and Apply step assume a 
 
 By default, AWS assumes the role session duration as 900 seconds. To increase the AWS role session duration, a  built-in environment variable, `HARNESS_AWS_ASSUME_ROLE_DURATION` is introduced, which can be used to override the assume role session duration. `HARNESS_AWS_ASSUME_ROLE_DURATION` is designed for use in Terraform steps in the environment variable section. The value must be set in seconds. This new environment variable requires Harness Delegate version 82700.
 
-When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression
+When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression.
 
-```YAML
+<details>
+<summary>Sample YAML</summary>
+
+```yaml
 - step:
     type: TerraformApply
     name: Apply
@@ -310,6 +313,7 @@ When configured the optional configuration for AWS Connector these fields can be
               roleArn: <+input>
     timeout: 10m
 ```
+</details>
 
 #### Terraform variable files
 
@@ -351,6 +355,9 @@ For more information on how to setup an Azure connector, go to [Azure Connector 
 
 ### YAML Configuration Example
 
+<details>
+<summary>Sample YAML</summary>
+
 ```yaml
 - step:
     type: TerraformPlan
@@ -375,6 +382,7 @@ For more information on how to setup an Azure connector, go to [Azure Connector 
             connectorRef: AzureConnector
             subscriptionId: 20xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
+</details>
 
 ## Backend Configuration
 
