@@ -204,6 +204,10 @@ You can get user and group names where you [manage user groups](https://develope
 
 Declare CODEOWNERS by the email address associated with their Harness user profile.
 
+:::note Rule Precedence
+If there are multiple rules with the same pattern, the last matching rule takes precedence — only the final one is applied.
+:::
+
 You can assign ownership to specific files, directories, or otherwise. Wildcards are allowed. For example, this CODEOWNERS file demonstrates different ways you can declare ownership.
 
 ```
