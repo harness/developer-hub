@@ -126,6 +126,20 @@ Below is further explanation for each type of secret manager Harness currently s
 
 </details>
 
+:::danger Breaking Change: Delete API Response Codes for Notification Rules and Channels (Effective October 20, 2025)
+We have aligned the delete APIs for Notification Rules and Channels with Harness API documentation and standard REST practices.
+
+**Previous behavior**:
+  - Successful deletion → `200 OK` with a string response body (`application/json`).
+  - Identifier not found/already deleted → `500 Internal Server Error`.
+
+**New behavior (effective October 20, 2025)**:
+  - Successful deletion → `204 No Content` (no response body).
+  - Identifier not found/already deleted → `404 Not Found`.
+
+**Action Required**: Please review and update any automation, scripts, or integrations that depend on the old response codes before October 20, 2025.
+:::
+
 ## Deprecation notice
 
 The following deprecated API endpoints are longer supported:
