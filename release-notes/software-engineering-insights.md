@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2025-08-21T10:00:10
+date: 2025-08-28T10:00:10
 sidebar_position: 15
 ---
 
@@ -17,6 +17,26 @@ These release notes describe recent changes to Harness Software Engineering Insi
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
+
+## August 2025
+
+### [New Enhancement] Multiple Org Trees, multi-level hierarchies, and data filters in SEI 2.0
+---
+#### 2025-08-28
+
+SEI 2.0 provides additional flexibility in modeling your engineering organization:
+
+* **Multiple Org Trees**: Create and manage multiple Org Trees per account to represent different business units, geographies, or alternative organizational views.  
+* **Multi-Level Hierarchies**: Go beyond manager-reportee relationships by grouping developers across attributes such as `Email`, `Role`, `Site`, and `Team`.  
+* **Data Filters**: Apply filters with `AND` logic to include or exclude specific roles, teams, or locations within your Org Tree.
+
+![](./static/sei/multi-level-org.png)
+
+These enhancements make it easier to align insights with the way your organization actually operates, supporting more accurate reporting and cross-team analysis.
+
+#### Related documentation
+
+- [Set up Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree/)
 
 ## July 2025
 
