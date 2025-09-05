@@ -28,7 +28,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ### [New Feature] GitLab Integration Plugin
 
-Harness IDP now supports integration with GitLab through our new plugin. This integration enables teams to connect their GitLab repositories directly to the Software Catalog, providing seamless access to project information, merge requests, and issue tracking without leaving the developer portal.
+Harness IDP now supports integration with [GitLab](/docs/internal-developer-portal/plugins/available-plugins/gitlab) through our new plugin. This integration enables teams to connect their GitLab repositories directly to the Software Catalog, providing seamless access to project information, merge requests, and issue tracking without leaving the developer portal.
 
 ![](../docs/internal-developer-portal/plugins/available-plugins/static/gitlab-plugin-layout.png)
 
