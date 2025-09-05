@@ -1,9 +1,11 @@
 ---
 title: AWS CDK provisioning
 description: Provision infra using familiar programming languages with AWS CDK.
-sidebar_position: 7
+sidebar_position: 1
 sidebar_label: AWS CDK
 canonical_url: https://www.harness.io/blog/ci-cd-pipelines-for-aws
+redirect_from:
+  - /docs/continuous-delivery/cd-infrastructure/aws-cdk
 ---
 
 AWS Cloud Development Kit (AWS CDK), is an open-source software development framework that allows developers to provision AWS infrastructure resources using familiar programming languages, such as Go, Python, Java, C#, etc. CDK simplifies infrastructure as code (IaC) by abstracting away many of the low-level details and providing a higher-level, programmatic approach.
@@ -200,11 +202,11 @@ The image you use should support the CDK operations you are running in your app.
 
 | **Runtime**    | **Latest base image**                 | **Latest unified pipeline image**     | **CDK version**    |
 |----------------|---------------------------------------|---------------------------------------|--------------------|
-| dotnet         | [`harness/aws-cdk-plugin:1.3.0-2.1019.2-dotnet-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-2.1019.2-dotnet-linux-arm64/images/sha256-1ab17a50674ff0c2c012033817deafe763aa12c133c66437e1f23a1977f1efd3) | [`harness/aws-cdk-plugin:1.3.0-2.1019.2-dotnet-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-2.1019.2-dotnet-linux-arm64-unified/images/sha256-a6c0b15384f41b5c7af54d8ea4c14bab15af931065f6b527ca61e295365fbc27) | 2.1019.2 | 
-| python         | [`harness/aws-cdk-plugin:1.3.0-2.1019.2-python-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-2.1019.2-python-linux-arm64/images/sha256-22efc16ffe68fee2bea8aec24f226b300ba4358a01b623ffb16841f259ee868f) | [`harness/aws-cdk-plugin:1.3.0-2.1019.2-python-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-2.1019.2-python-linux-arm64-unified/images/sha256-bc8edeada722be18b31ba5c272045e508f374767f2b86cb520ed13612d28250b) | 2.1019.2 | 
+| dotnet         | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-dotnet-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-dotnet-linux-arm64/images/sha256-6fc6bc95619746bb5e61b7351baf7e984b4fff2f971742944598b022003f1545) | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-dotnet-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-dotnet-linux-arm64-unified/images/sha256-649411a67e39f127736a262b5d97bbcf8928ba78815cc85ef5dbcda3c481be55) | 2.1027.0 | 
+| python         | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-python-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-python-linux-arm64/images/sha256-0b4ee6e368b27adb0f2a1daa1d7c7adb4f7a20cc1bd1ab7b637075b302d07336) | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-python-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-python-linux-arm64-unified/images/sha256-9176098ce5f9d9c8ba05ed47ed220191a3be48624eb083b451712ea07ecd7c74) | 2.1027.0 | 
 | java           | [`harness/aws-cdk-plugin:1.3.0-java-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-java-linux-arm64/images/sha256-bdec2192e5655939cb084a991339dac7251546e50fe811918cc347cda55d37b7)   | [`harness/aws-cdk-plugin:1.3.0-java-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-java-linux-arm64-unified/images/sha256-dc6fddeadd4d640e905ae4e557fe3b998138cc640014c7e4e9c019c74b19b026) | 2.1016.1 |
-| go | [`harness/aws-cdk-plugin:1.3.0-2.1019.2-go-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-2.1019.2-go-linux-arm64/images/sha256-7b1628f0af58f9f7461459a5c7a41d0680dacabebf3ee51a35f8a9b7d36de02d)                     | [`harness/aws-cdk-plugin:1.3.0-2.1019.2-go-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-2.1019.2-go-linux-arm64-unified/images/sha256-d2790e99b06fa34a105062c593215d6f2ac8b5430fa9b892536c08037569b0f3) | 2.1019.2 |
-| linux                 | [`harness/aws-cdk-plugin:1.3.0-2.1019.2-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-2.1019.2-linux-arm64/images/sha256-87b2d35d22b87c2a59fd9d2e78dfe1f288f0bb93627e7fdbaa7470e07a430255)                     | [`harness/aws-cdk-plugin:1.3.0-2.1019.2-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.3.0-2.1019.2-linux-arm64-unified/images/sha256-1eea64de99d7f4f9759c4ad1231c169df92d5a23e1bdd3ef289fd73cba426d43) | 2.1019.2 |
+| go | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-go-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-go-linux-arm64/images/sha256-fc54740abfb1fcfeef649ae133ba42f8709f4cc8578868c12575a59ed5b02d3b)                     | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-go-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-go-linux-arm64-unified/images/sha256-4f95dcec76ab0037d6ea7b986adcf7fb4ac9329b23ef86de6fa19ded463630d4) | 2.1027.0 |
+| linux                 | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-linux-arm64`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-linux-arm64/images/sha256-7a3b4136519eebf5dd112ab755bb58b2e8fe2fec7a349e47d94b8727a4e5c1ba)                     | [`harness/aws-cdk-plugin:1.4.0-2.1027.0-linux-arm64-unified`](https://hub.docker.com/layers/harness/aws-cdk-plugin/1.4.0-2.1027.0-linux-arm64-unified/images/sha256-386370b163d75e05909d7a632bb859494f70c3ba469d363f7e8fc5ce29cf3a07) | 2.1027.0 |
 
 
 You can access the AWS CDK plugin images from the following repositories:
