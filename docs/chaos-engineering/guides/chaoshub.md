@@ -1,7 +1,16 @@
 ---
-title: ChaosHub
+title: ChaosHubs
 sidebar_position: 2
 description: Centralized repository for chaos experiment templates and faults with dynamic content selection
+redirect_from:
+- /docs/chaos-engineering/features/chaos-hubs/introduction
+- /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/introduction
+- /docs/category/chaoshub
+- /docs/category/chaos-hubs
+- /docs/chaos-engineering/guides/chaoshubs/chaoshubs
+- /docs/chaos-engineering/guides/chaoshubs/add-chaos-hub
+- /docs/chaos-engineering/guides/chaoshubs/manage-hub
+- /docs/chaos-engineering/guides/chaoshubs/chaoshub-scopes
 ---
 
 :::info Chaos Studio Versions
