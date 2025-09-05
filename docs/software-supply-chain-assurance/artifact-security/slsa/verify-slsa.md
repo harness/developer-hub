@@ -5,6 +5,13 @@ sidebar_position: 20
 redirect_from:
 
 - /docs/software-supply-chain-assurance/slsa/verify-slsa
+
+
+tags:
+  -  artifact-security
+  -  slsa
+  - harness-scs
+  - verify-slsa 
 ---
 
 import Tabs from '@theme/Tabs';

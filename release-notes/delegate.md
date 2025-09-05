@@ -113,6 +113,20 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## September 2025
+
+### Version 25.05.85809 <!--September 04, 2025-->
+
+#### New features and enhancements
+
+- Added NO_PROXY support when delegate has PROXY_TLS_CONNECT enabled. If PROXY_TLS_CONNECT is enabled, delegate will not try to force HTTP CONNECT via TLS for destinations that are in NO_PROXY list. [PL-65142]
+
+### Version 25.08.86504 <!--September 03, 2025-->
+
+#### Fixed issues
+
+- Added Support for Proxy in data collection request for cv. [CDS-113510]
+
 ## August 2025
 
 ### Version 25.05.85808 <!--Aug 29, 2025-->
@@ -2404,4 +2418,4 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 ### Version 0.38.6
 
 #### New features and enhancements
-- Introduced a new update method in Terraform to revoke delegate tokens. The recommended approach is to update the token_status field to "REVOKED", which will trigger the revocation process. [PL-64678]
+- Introduced a new update method in Terraform to revoke delegate tokens. The recommended approach is to update the `token_status` field to "REVOKED", which will trigger the revocation process. [PL-64678]

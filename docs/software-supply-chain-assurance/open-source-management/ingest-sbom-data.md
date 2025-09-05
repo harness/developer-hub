@@ -6,6 +6,12 @@ sidebar_position: 20
 redirect_from:
 
 - /docs/software-supply-chain-assurance/sbom/ingest-sbom-data
+
+tags:
+  - harness-scs 
+  - ingest-sbom
+  - open-source-management
+  - sbom 
 ---
 
 
