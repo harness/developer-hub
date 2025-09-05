@@ -100,8 +100,11 @@ This component uses the `jira/all-issues-jql` annotation from the entity's metad
 
 The JQL query is specified in the entity's annotations.
 
-You can also make any of these cards appear conditionally for services (only if Jira is configured for the service) by replacing the card with a switch case, as follows:
+### Conditional Display
 
+You can make these cards appear conditionally based on whether the required annotations are present. Each card type has its own condition:
+
+**For EntityJiraOverviewCard:**
 ```yaml
 - component: EntitySwitch
   specs:
@@ -110,6 +113,28 @@ You can also make any of these cards appear conditionally for services (only if 
         content:
           component: EntityJiraOverviewCard
 ```
+
+**For EntityJiraQueryCard:**
+```yaml
+- component: EntitySwitch
+  specs:
+    cases:
+      - if: hasJiraQuery
+        content:
+          component: EntityJiraQueryCard
+```
+
+**For EntityJiraActivityStreamCard:**
+```yaml
+- component: EntitySwitch
+  specs:
+    cases:
+      - if: isJiraAvailable
+        content:
+          component: EntityJiraActivityStreamCard
+```
+
+This ensures that the components only appear when the necessary Jira data is available for that entity.
 
 ![](./static/jira-card.png)
 
