@@ -31,38 +31,68 @@ When you build your own image using the Harness pipeline, you're combining the H
 - Extracts runtime and version information from the base image name
 - Final image format: `aws-sam-plugin:${VERSION}-${SAM_RUNTIME}-${SAM_VERSION}-linux-amd64`
 
+## Pipeline Runner Permissions and Privileged Settings
+
+Certain steps in the pipeline require the Kubernetes pod to run in privileged mode. This is necessary for starting Docker daemons (DinD), building container images inside pipeline steps, and granting the permissions Docker needs at runtime.
+
+**Why privileged mode is required:**
+
+- Enables Docker-in-Docker (DinD) support for building and pushing images.
+- Allows installation and execution of docker CLI and manipulation of containers within the build step.
+- Required for root access and mounting Docker volumes.
+
+To enable privileged execution, set privileged: true in the step group or step-level security context. Example:
+
+```yaml
+stepGroup:
+  privileged: true
+  name: k8s-step-group
+  sharedPaths:
+    - /var/run
+    - /var/lib/docker
+```
+
+For individual steps:
+```
+step:
+  name: dinD
+  privileged: true
+  ...
+```
+Without this setting, Docker builds and image pushes may fail due to insufficient permissions inside the container.
+
 ## Quick Start
 
-1. Copy the pipeline yaml provided and paste it in your Harness Project.
-2. Add an empty/do nothing service to the pipeline.
-3. Add a kubernetes environment to the pipeline.
-4. In the execution section, Enable container based execution and add the kubernetes cluster connector to the pipeline. Save the pipeline.
-5. Click **Run Pipeline**
+1. Copy the provided pipeline yaml and paste it in your Harness Project.
+2. Add an empty/do-nothing service to the pipeline.
+3. Add a Kubernetes environment to the pipeline.
+4. In the execution section, enable container-based execution and add the Kubernetes cluster connector to the pipeline. Save the pipeline.
+5. Click **Run Pipeline**.
 6. Enter the required parameters:
-   - **VERSION**: Version number for your plugin (e.g., `1.1.2`). VERSION represent specific code changes in the repository. With each new code change, we push a new tag and publish new Docker images with these tags, allowing users to access specific versions of the plugin. The VERSION variable corresponds to these tags.
-   - **SAM_BASE_IMAGE**: SAM base image from AWS ECR Gallery (e.g., `public.ecr.aws/sam/build-nodejs18.x:1.138.0-20250502200316-x86_64`)
+   - **VERSION**: Version number for your plugin (e.g., `1.1.2`). With each new code change, a new tag and Docker image are published, letting users access specific plugin versions.
+   . You can find the Harness base image from [Harness DockerHub](https://hub.docker.com/r/harness/aws-sam-plugin/tags)
+   - **SAM_BASE_IMAGE**: SAM base image from AWS ECR Gallery (e.g., `public.ecr.aws/sam/build-nodejs18.x:1.143.0-20250502200316-x86_64`).
 
-# Base Image Requirements
+## Base Image Requirements
 
-## SAM Base Image Format
+**SAM Base Image Format**
 
 The pipeline supports only full formats for the SAM base image:
 
-- **Full Format**: `public.ecr.aws/sam/build-nodejs18.x:1.138.0-20250502200316-x86_64`
+Full Format: `public.ecr.aws/sam/build-nodejs18.x:1.143.0-20250502200316-x86_64`
 
-## SAM Base Image Requirements
+**SAM Base Image Requirements**
 
-> **IMPORTANT**: Only official AWS SAM build images from the AWS ECR Public Gallery are supported.
+:::warning
+Only official AWS SAM build images from the [AWS ECR Public Gallery](https://gallery.ecr.aws/sam?page=1) are supported.
+:::
 
-- Only use SAM base images from: [AWS ECR Gallery - SAM](https://gallery.ecr.aws/sam?page=1)
-- Only x86_64 architecture images are supported
+- Only use SAM base images from: AWS ECR Gallery - SAM
+- Only `x86_64` architecture images are supported
 - Using different base images may cause library dependency issues
 - Non-standard base images may cause the plugin to not function as required
 
-Example of supported base image:
-```
-public.ecr.aws/sam/build-nodejs18.x:1.138.0-20250502200316-x86_64
-```
+Example of supported base image: `public.ecr.aws/sam/build-nodejs18.x:1.143.0-20250502200316-x86_64`
 
 # Image Configuration
 
@@ -81,38 +111,40 @@ aws-sam-plugin:1.1.2-nodejs18.x-1.138.0-linux-amd64
 Where:
 - `VERSION`: Your plugin version (e.g., `1.1.2`)
 - `SAM_RUNTIME`: Runtime extracted from SAM base image (e.g., `nodejs18.x`)
-- `SAM_VERSION`: Version extracted from SAM base image (e.g., `1.138.0`)
+- `SAM_VERSION`: Version extracted from SAM base image (e.g., `1.143.0`)
 
-## Pipeline Variables
+## Variables Used in Privileged Steps
 
-### Required Variables
+These variables are actively used in the privileged steps of your pipeline for building and pushing the image that you need to con:
 
-| Variable | Description | Example | Required |
-|----------|-------------|---------|----------|
-| `VERSION` | Version number for your plugin | `1.1.2` | Yes |
-| `SAM_BASE_IMAGE` | SAM base image from AWS ECR | `public.ecr.aws/sam/build-nodejs18.x:1.138.0-20250502200316-x86_64` | Yes |
+| Variable        | Description                                 | Example                                                    | Required |
+|-----------------|---------------------------------------------|------------------------------------------------------------|----------|
+| VERSION         | Plugin image/version tag                    | `1.1.2`                                                    | Yes      |
+| BASE_IMAGE      | Reference to your built base image       | `harness/aws-sam-plugin:1.1.2-beta-base-image`              | Yes      |
+| SAM_BASE_IMAGE  | AWS SAM base image from ECR                 | `public.ecr.aws/sam/build-python3.12:1.143.0-20250822194415-x86_64` | Yes      |
+| TARGET_REPO     | Target Docker repository                    | `your_account/aws-sam-plugin`                            | Yes      |
+| DOCKER_USERNAME | Docker registry username                    | `your_dockerhub_username`                                               | Yes      |
+| DOCKER_PASSWORD | Docker registry password/token              | `your_dockerhub_pat`                                           | Yes      |
 
-### Optional Variables (Pre-configured)
+TARGET_REPO, DOCKER_USERNAME and DOCKER_PASSWORD are the variables that you set one time in the pipeline. VERSION, BASE_IMAGE and SAM_BASE_IMAGE are the variables that you set every time you run the pipeline.
 
-| Variable | Description | Default Value |
-|----------|-------------|---------------|
-| `SOURCE_REGISTRY` | Source registry for scratch image | `<source_registry>` |
-| `TARGET_REGISTRY` | Target registry for final image | `<target_registry>` |
-| `SOURCE_REGISTRY_HOST` | Source registry host for login | `<source_registry_host>` |
-| `TARGET_REGISTRY_HOST` | Target registry host for login | `<target_registry_host>` |
-| `DOCKER_USERNAME` | Docker username for source registry | `<docker_username>` |
-| `DOCKER_TOKEN` | Docker token for source registry | `<docker_token>` |
-| `TARGET_DOCKER_USERNAME` | Docker username for target registry | `<target_docker_username>` |
-| `TARGET_DOCKER_TOKEN` | Docker token for target registry | `<target_docker_token>` |
-
-# Pipeline Configuration
+## Pipeline Configuration
 
 <details>
-<summary>Pipeline YAML</summary>
+  <summary>Pipeline YAML</summary>
+
+Additional parameters you need to change:
+
+- `projectIdentifier`: Your Harness project identifier
+- `orgIdentifier`: Your Harness organization identifier
+- `connectorRef`: Your Kubernetes cluster connector identifier
+- `your_k8s_connector`: Your Kubernetes cluster connector identifier
 
 ```yaml
 pipeline:
-  projectIdentifier: <project_identifier>
+  name: sam-image-build
+  identifier: sam-image-build
+  projectIdentifier: your_project
   orgIdentifier: default
   tags: {}
   stages:
@@ -124,45 +156,146 @@ pipeline:
         spec:
           deploymentType: Kubernetes
           service:
-            serviceRef: <service_identifier>
+            serviceRef: service
           environment:
-            environmentRef: <environment_identifier>
+            environmentRef: k8s
             deployToAll: false
             infrastructureDefinitions:
-              - identifier: <infrastructure_identifier>
+              - identifier: your_k8s_infra
           execution:
             steps:
               - stepGroup:
+                  privileged: true
                   name: k8s-step-group
                   identifier: k8sstepgroup
+                  sharedPaths:
+                    - /var/run
+                    - /var/lib/docker
                   steps:
+                    - step:
+                        type: Background
+                        name: dinD
+                        identifier: Background
+                        spec:
+                          connectorRef: account.dockerhub
+                          image: docker:24-dind
+                          shell: Sh
+                          privileged: true
                     - step:
                         identifier: generateTimestamp
                         type: Run
-                        name: generateTimestamp
+                        name: sam-prepare-build
                         spec:
-                          connectorRef: <connector_identifier>
-                          image: ubuntu:20.04
-                          shell: Bash
+                          connectorRef: account.dockerhub
+                          image: docker:24
+                          shell: Sh
                           command: |-
-                            # Generate timestamp dynamically (no git operations)
-                            TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-                            VCS_REF="scratch-build"  # Hardcoded since no git access
+                            #!/bin/bash
+                            set -e
 
-                            echo "Generated TIMESTAMP: ${TIMESTAMP}"
-                            echo "Using VCS_REF: ${VCS_REF}"
-                            echo "Input VERSION: ${VERSION}"
-                            echo "Input SAM_BASE_IMAGE: ${SAM_BASE_IMAGE}"
-                            echo "Source Registry: ${SOURCE_REGISTRY}"
-                            echo "Target Registry: ${TARGET_REGISTRY}"
+                            echo "Waiting for Docker daemon"
+                            ls -l /var/run/docker.sock
+                            until docker info; do sleep 1; done
 
-                            # Extract SAM runtime and version from base image
-                            # Example: build-nodejs18.x:1.138.0-20250502200316 -> nodejs18.x and 1.138.0
-                            SAM_RUNTIME=$(echo "${SAM_BASE_IMAGE}" | sed 's/build-//' | sed 's/:.*$//')
-                            SAM_VERSION=$(echo "${SAM_BASE_IMAGE}" | sed 's/.*://' | sed 's/-.*$//')
+                            export DEBIAN_FRONTEND=noninteractive
+                            export TZ=UTC
 
-                            echo "Extracted SAM_RUNTIME: ${SAM_RUNTIME}"
-                            echo "Extracted SAM_VERSION: ${SAM_VERSION}"
+                            VERSION="${VERSION:-<+pipeline.variables.VERSION>}"
+                            SCRATCH_IMAGE="${SCRATCH_IMAGE:-<+pipeline.variables.SCRATCH_IMAGE>}"
+                            SAM_BASE_IMAGE="${SAM_BASE_IMAGE:-<+pipeline.variables.SAM_BASE_IMAGE>}"
+                            TARGET_REPO="${TARGET_REPO:-<+pipeline.variables.TARGET_REPO>}"
+                            DOCKER_USERNAME="<+pipeline.variables.DOCKER_USERNAME>"
+                            DOCKER_PASSWORD="<+pipeline.variables.DOCKER_PASSWORD>"
+
+                            TIMESTAMP=$(date -u +"%Y%m%d%H%M%S")
+
+                            SAM_RUNTIME=$(echo "${SAM_BASE_IMAGE}" | sed 's|.*build-\([^:]*\):.*|\1|')
+                            SAM_VERSION=$(echo "${SAM_BASE_IMAGE}" | sed 's|.*:\([0-9]*\.[0-9]*\.[0-9]*\).*|\1|')
+                            if [ -z "$SAM_RUNTIME" ] || [ -z "$SAM_VERSION" ]; then
+                                echo "ERROR: Could not parse SAM base image format"
+                                exit 1
+                            fi
+
+                            FINAL_IMAGE="${TARGET_REPO}:${VERSION}-${SAM_RUNTIME}-${SAM_VERSION}-linux-amd64-${TIMESTAMP}"
+
+                            if ! command -v docker >/dev/null 2>&1; then
+                              apt-get update && apt-get install -y docker.io
+                            fi
+
+                            echo "=== Waiting for Docker daemon ==="
+                            until docker info >/dev/null 2>&1; do
+                              sleep 2
+                            done
+
+                            echo "=== Docker login ==="
+                            echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+
+                            echo "=== Creating build context ==="
+                            mkdir -p /tmp/sam-build
+                            cd /tmp/sam-build
+
+                            cat > Dockerfile << EOF
+                            FROM ${SAM_BASE_IMAGE}
+                            ENV HARNESS_GO_PLUGIN_VERSION=v0.4.5
+                            ENV DOCKER_VERSION=26.0.1
+                            ENV INSTALL_GO_TEMPLATE_BINARY=true
+                            ENV UNIFIED_PIPELINE=false
+
+                            # Install Docker CLI
+                            # RUN apt-get update && \\
+                            #     apt-get install -y docker.io && \\
+                            #     rm -rf /var/lib/apt/lists/*
+
+                            RUN if command -v apt-get >/dev/null 2>&1; then \
+                                  apt-get update && apt-get install -y docker.io && rm -rf /var/lib/apt/lists/*; \
+                                elif command -v yum >/dev/null 2>&1; then \
+                                  yum install -y yum-utils && \
+                                  echo "[docker-ce]" > /etc/yum.repos.d/docker-ce.repo && \
+                                  echo "name=Docker CE Repository" >> /etc/yum.repos.d/docker-ce.repo && \
+                                  echo "baseurl=https://download.docker.com/linux/centos/7/x86_64/stable" >> /etc/yum.repos.d/docker-ce.repo && \
+                                  echo "enabled=1" >> /etc/yum.repos.d/docker-ce.repo && \
+                                  echo "gpgcheck=1" >> /etc/yum.repos.d/docker-ce.repo && \
+                                  echo "gpgkey=https://download.docker.com/linux/centos/gpg" >> /etc/yum.repos.d/docker-ce.repo && \
+                                  yum install -y docker-ce-cli; \
+                                elif command -v microdnf >/dev/null 2>&1; then \
+                                  echo "[docker-ce]" > /etc/yum.repos.d/docker-ce.repo && \
+                                  echo "name=Docker CE Repository" >> /etc/yum.repos.d/docker-ce.repo && \
+                                  echo "baseurl=https://download.docker.com/linux/centos/7/x86_64/stable" >> /etc/yum.repos.d/docker-ce.repo && \
+                                  echo "enabled=1" >> /etc/yum.repos.d/docker-ce.repo && \
+                                  echo "gpgcheck=1" >> /etc/yum.repos.d/docker-ce.repo && \
+                                  echo "gpgkey=https://download.docker.com/linux/centos/gpg" >> /etc/yum.repos.d/docker-ce.repo && \
+                                  microdnf install -y docker-ce-cli; \
+                                elif command -v apk >/dev/null 2>&1; then \
+                                  apk add --no-cache docker-cli; \
+                                else \
+                                  echo "Package manager not found, skipping docker CLI install"; \
+                                fi
+
+                            RUN mkdir -m 777 -p /opt/harness/bin/ && \\
+                                mkdir -m 777 -p /opt/harness/scripts/ && \\
+                                mkdir -m 777 -p /opt/harness/client-tools/
+
+                            COPY --from=${SCRATCH_IMAGE} /opt/harness/bin/harness-sam-plugin /opt/harness/bin/harness-sam-plugin
+                            COPY --from=${SCRATCH_IMAGE} /opt/harness/scripts/ /opt/harness/scripts/
+
+                            RUN chmod +x /opt/harness/bin/harness-sam-plugin && \\
+                                chmod +x /opt/harness/scripts/sam-plugin.sh
+
+                            RUN if [ "\$INSTALL_GO_TEMPLATE_BINARY" = "true" ] && [ "\$UNIFIED_PIPELINE" != "true" ]; then \\
+                                curl -s -L -o /opt/harness/client-tools/go-template https://app.harness.io/public/shared/tools/go-template/release/\${HARNESS_GO_PLUGIN_VERSION}/bin/linux/amd64/go-template && \\
+                                chmod +x /opt/harness/client-tools/go-template; \\
+                              else \\
+                                echo "Skipping go-template binary."; \\
+                              fi
+
+                            ENTRYPOINT ["/opt/harness/scripts/sam-plugin.sh"]
+                            EOF
+
+                            echo "=== Building and pushing image ==="
+                            docker build -t ${FINAL_IMAGE} .
+                            docker push ${FINAL_IMAGE}
+
+                            echo "✓ SUCCESS: ${FINAL_IMAGE}"
                           envVariables:
                             VERSION: <+pipeline.variables.VERSION>
                             SAM_BASE_IMAGE: <+pipeline.variables.SAM_BASE_IMAGE>
@@ -181,203 +314,66 @@ pipeline:
                             - name: SAM_VERSION
                               type: String
                               value: SAM_VERSION
+                          resources:
+                            limits:
+                              memory: 4Gi
+                              cpu: 2000m
+                        description: SAM Prepare Build
+                        timeout: 30m
                     - step:
                         identifier: buildAndPushFinal
                         type: Run
                         name: buildAndPushFinal
                         spec:
-                          connectorRef: <connector_identifier>
-                          image: quay.io/buildah/stable:latest
+                          connectorRef: account.dockerhub
+                          image: ubuntu:20.04
                           shell: Bash
                           command: |-
                             #!/bin/bash
                             set -e
 
-                            # Detect package manager and install dependencies
-                            echo "=== Installing dependencies ==="
-                            if command -v dnf >/dev/null 2>&1; then
-                                dnf update -y
-                                dnf install -y curl ca-certificates wget skopeo
-                            elif command -v apt-get >/dev/null 2>&1; then
-                                export DEBIAN_FRONTEND=noninteractive
-                                apt-get update -y
-                                apt-get install -y curl ca-certificates wget skopeo
-                            elif command -v apk >/dev/null 2>&1; then
-                                apk update
-                                apk add --no-cache curl ca-certificates wget skopeo
-                            else
-                                echo "Installing skopeo manually..."
-                                curl -L https://github.com/containers/skopeo/releases/download/v1.13.3/skopeo-linux-amd64 -o /usr/local/bin/skopeo
-                                chmod +x /usr/local/bin/skopeo
-                            fi
 
-                            # Parse SAM base image to extract runtime and version
-                            echo "=== Parsing SAM base image ==="
-                            echo "SAM_BASE_IMAGE: ${SAM_BASE_IMAGE}"
+                            # Set non-interactive mode
+                            export DEBIAN_FRONTEND=noninteractive
+                            export TZ=UTC
 
-                            # Extract runtime and version from SAM base image
-                            # Example: public.ecr.aws/sam/build-nodejs18.x:1.138.0-20250502200316-x86_64
-                            # Extract: runtime=nodejs18.x, version=1.138.0
+                            # Set non-interactive mode
+                            export DEBIAN_FRONTEND=noninteractive
+                            export TZ=UTC
 
-                            if [[ "${SAM_BASE_IMAGE}" =~ build-([^:]+):([0-9]+\.[0-9]+\.[0-9]+) ]]; then
-                                SAM_RUNTIME="${BASH_REMATCH[1]}"
-                                SAM_VERSION="${BASH_REMATCH[2]}"
-                                echo "Extracted SAM_RUNTIME: ${SAM_RUNTIME}"
-                                echo "Extracted SAM_VERSION: ${SAM_VERSION}"
-                            else
-                                echo "ERROR: Could not parse SAM base image format"
-                                echo "Expected format: public.ecr.aws/sam/build-{runtime}:{version}-{timestamp}-{arch}"
-                                echo "Got: ${SAM_BASE_IMAGE}"
-                                exit 1
-                            fi
+                            # Define variables from pipeline variables
+                            VERSION="<+pipeline.variables.VERSION>"
+                            SCRATCH_IMAGE="<+pipeline.variables.SCRATCH_IMAGE>"
+                            SAM_BASE_IMAGE="<+pipeline.variables.SAM_BASE_IMAGE>"
+                            TIMESTAMP="<+pipeline.variables.TIMESTAMP>"
 
-                            # Generate final image name
-                            FINAL_IMAGE="${TARGET_REGISTRY}/aws-sam-plugin:${VERSION}-${SAM_RUNTIME}-${SAM_VERSION}-linux-amd64"
-                            echo "Target image: ${FINAL_IMAGE}"
+                            # Print all variables for debugging
+                            echo "VERSION: $VERSION"
+                            echo "SCRATCH_IMAGE: $SCRATCH_IMAGE"
+                            echo "SAM_BASE_IMAGE: $SAM_BASE_IMAGE"
+                            echo "TIMESTAMP: $TIMESTAMP"
+                            apt-get update && apt-get install -y docker.io
 
-                            # Set up authentication for private registries only (ECR public doesn't need auth)
-                            mkdir -p ~/.docker
-                            cat > ~/.docker/config.json << AUTHEOF
-                            {
-                              "auths": {
-                                "${SOURCE_REGISTRY_HOST}": {
-                                  "auth": "$(echo -n "${DOCKER_USERNAME}:${DOCKER_TOKEN}" | base64 -w 0 2>/dev/null || echo -n "${DOCKER_USERNAME}:${DOCKER_TOKEN}" | base64)"
-                                },
-                                "${TARGET_REGISTRY_HOST}": {
-                                  "auth": "$(echo -n "${TARGET_DOCKER_USERNAME}:${TARGET_DOCKER_TOKEN}" | base64 -w 0 2>/dev/null || echo -n "${TARGET_DOCKER_USERNAME}:${TARGET_DOCKER_TOKEN}" | base64)"
-                                }
-                              }
-                            }
-                            AUTHEOF
+                            # Start Docker daemon
+                            dockerd &
+                            sleep 10
 
-                            echo "=== Testing registry connectivity ==="
+                            # Wait for Docker
+                            until docker info >/dev/null 2>&1; do sleep 1; done
 
-                            # Test source registry (scratch image)
-                            echo "Testing source registry..."
-                            if skopeo inspect docker://${SOURCE_REGISTRY}/aws-sam-plugin:${VERSION}-beta-scratch-test --authfile ~/.docker/config.json; then
-                                echo "✓ Source registry accessible"
-                            else
-                                echo "✗ Cannot access source registry"
-                                exit 1
-                            fi
+                            # Login to Docker
+                            echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 
-                            # Test SAM base image (no auth needed for ECR public)
-                            echo "Testing SAM base image..."
-                            if skopeo inspect docker://${SAM_BASE_IMAGE}; then
-                                echo "✓ SAM base image accessible"
-                            else
-                                echo "✗ Cannot access SAM base image"
-                                exit 1
-                            fi
+                            # Go to build context (created by Step 1)
+                            cd /harness/sam-build
 
-                            # Strategy 1: Try buildah with rootless mode
-                            echo "=== Attempting Strategy 1: Buildah (rootless) ==="
-                            if command -v buildah >/dev/null 2>&1 || { 
-                                echo "Installing buildah..."
-                                if command -v dnf >/dev/null 2>&1; then
-                                    dnf install -y buildah
-                                elif command -v apt-get >/dev/null 2>&1; then
-                                    apt-get install -y buildah
-                                fi
-                            }; then
-                                echo "Buildah available - attempting rootless build"
-                                
-                                # Create Dockerfile
-                                cat > /tmp/Dockerfile << DOCKEREOF
-                            FROM ${SAM_BASE_IMAGE}
+                            # Build and push (exactly like your local script)
+                            echo "=== Building and pushing image ==="
+                            docker build -t ${FINAL_IMAGE} .
+                            docker push ${FINAL_IMAGE}
 
-                            # Install Docker (hardcoded version)
-                            ARG DOCKER_VERSION=26.0.1
-                            RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-\${DOCKER_VERSION}.tgz | tar -xzv --strip-components=1 -C /usr/local/bin docker/docker
-
-                            # Set environment variables for go-template
-
-                            ARG HARNESS_GO_PLUGIN_VERSION=v0.4.5
-
-                            # Copy the SAM plugin binary and scripts from scratch image
-                            COPY --from=${SOURCE_REGISTRY}/aws-sam-plugin:${VERSION}-beta-scratch-test /bin/aws-sam-plugin /usr/local/bin/aws-sam-plugin
-                            COPY --from=${SOURCE_REGISTRY}/aws-sam-plugin:${VERSION}-beta-scratch-test /scripts/ /scripts/
-
-                            # Set permissions
-                            RUN chmod +x /usr/local/bin/aws-sam-plugin
-
-
-                            # Install go-template binary 
-
-                            RUN mkdir -m 777 -p /opt/harness/client-tools/ \
-
-                                && curl -s -L -o /opt/harness/client-tools/go-template https://app.harness.io/public/shared/tools/go-template/release/\${HARNESS_GO_PLUGIN_VERSION}/bin/linux/amd64/go-template \
-
-                                && chmod +x /opt/harness/client-tools/go-template
-
-                            # Labels
-                            LABEL org.label-schema.build-date="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-                            LABEL org.label-schema.vcs-ref="scratch-build"
-                            LABEL org.label-schema.harness-go-template-plugin-version="v0.4.5"
-                            LABEL org.label-schema.sam-base-image="${SAM_BASE_IMAGE}"
-                            LABEL org.label-schema.docker-base-image="docker:26.0.1"
-
-                            # Set working directory
-                            WORKDIR /harness
-
-                            # Default entrypoint
-                            ENTRYPOINT ["/usr/local/bin/aws-sam-plugin"]
-                            DOCKEREOF
-                                
-                                # Set up buildah for rootless operation
-                                export BUILDAH_ISOLATION=chroot
-                                export STORAGE_DRIVER=vfs
-                                
-                                # Login to registries
-                                echo "${DOCKER_TOKEN}" | buildah login --username "${DOCKER_USERNAME}" --password-stdin "${SOURCE_REGISTRY_HOST}" || echo "Source login failed"
-                                echo "${TARGET_DOCKER_TOKEN}" | buildah login --username "${TARGET_DOCKER_USERNAME}" --password-stdin "${TARGET_REGISTRY_HOST}" || echo "Target login failed"
-                                
-                                if buildah build --isolation=chroot --storage-driver=vfs --file /tmp/Dockerfile --build-arg DOCKER_VERSION="26.0.1" --build-arg HARNESS_GO_PLUGIN_VERSION="v0.4.5" --tag "${FINAL_IMAGE}" /tmp 2>/dev/null; then
-                                    if buildah push "${FINAL_IMAGE}" 2>/dev/null; then
-                                        echo "Successfully built and pushed with buildah"
-                                        exit 0
-                                    else
-                                        echo "Buildah push failed"
-                                    fi
-                                else
-                                    echo "Buildah build failed"
-                                fi
-                            fi
-
-                            # Strategy 2: Use skopeo to create a simple combined approach
-                            echo "=== Attempting Strategy 2: Skopeo-based workaround ==="
-
-                            if command -v skopeo >/dev/null 2>&1; then
-                                echo "Creating a temporary workaround using skopeo..."
-                                
-                                # For now, copy the scratch image as the final image
-                                # This gives us the plugin binary, but not the full SAM environment
-                                echo "Copying scratch image as temporary solution..."
-                                if skopeo copy \
-                                    docker://${SOURCE_REGISTRY}/aws-sam-plugin:${VERSION}-beta-scratch-test \
-                                    docker://${FINAL_IMAGE} \
-                                    --authfile ~/.docker/config.json; then
-                                    
-                                    echo " Successfully copied image using skopeo"
-                                    echo ""
-                                    echo "Final image pushed: ${FINAL_IMAGE}"
-                                    exit 0
-                                else
-                                    echo "Skopeo copy failed"
-                                fi
-                            fi
-
-                            echo "=== All strategies failed ==="
-                            echo ""
-                            echo "SUMMARY:"
-                            echo " Source registry accessible: ${SOURCE_REGISTRY}/aws-sam-plugin:${VERSION}-beta-scratch-test"
-                            echo " SAM base image accessible: ${SAM_BASE_IMAGE}"
-                            echo " Extracted SAM runtime: ${SAM_RUNTIME}"
-                            echo " Extracted SAM version: ${SAM_VERSION}"
-                            echo " Target image name: ${FINAL_IMAGE}"
-
-
-                            exit 1
+                            echo "✓ SUCCESS: ${FINAL_IMAGE}"
+                          privileged: true
                           envVariables:
                             VERSION: <+pipeline.variables.VERSION>
                             SAM_BASE_IMAGE: <+pipeline.variables.SAM_BASE_IMAGE>
@@ -395,12 +391,16 @@ pipeline:
                             SAM_VERSION: <+steps.generateTimestamp.output.outputVariables.SAM_VERSION>
                           resources:
                             limits:
-                              memory: 2G
-                              cpu: "2"
+                              memory: 8Gi
+                              cpu: 4000m
+                        timeout: 30m
+                        when:
+                          stageStatus: Success
+                          condition: "false"
                   stepGroupInfra:
                     type: KubernetesDirect
                     spec:
-                      connectorRef: cdcluster
+                      connectorRef: your_k8s_connector
             rollbackSteps: []
         tags: {}
         failureStrategies:
@@ -413,69 +413,54 @@ pipeline:
   variables:
     - name: VERSION
       type: String
-      description: Version to fetch scratch image and tag final image
+      description: Plugin version (e.g., 1.1.2-beta)
+      required: true
+      value: <+input>
+    - name: SCRATCH_IMAGE
+      type: String
+      description: Scratch image from Pipeline 1
       required: true
       value: <+input>
     - name: SAM_BASE_IMAGE
       type: String
-      description: SAM base image (e.g., build-nodejs18.x:1.138.0-20250502200316)
+      description: SAM base image (e.g., public.ecr.aws/sam/build-python3.12:1.143.0-20250822194415-x86_64)
       required: true
       value: <+input>
-    - name: SOURCE_REGISTRY
-      type: String
-      description: Source registry for scratch image
-      required: false
-      value: <source_registry>
-    - name: TARGET_REGISTRY
-      type: String
-      description: Target registry for final image
-      required: false
-      value: <target_registry>
-    - name: SOURCE_REGISTRY_HOST
-      type: String
-      description: Source registry host for login
-      required: false
-      value: pkg.qa.harness.io
-    - name: TARGET_REGISTRY_HOST
-      type: String
-      description: Target registry host for login
-      required: false
-      value: pkg.qa.harness.io
     - name: DOCKER_USERNAME
       type: String
-      description: Docker username for source registry
+      description: Docker Hub username
       required: false
-      value: vishal.vishwaroop@harness.io
-    - name: DOCKER_TOKEN
+      value: your_dockerhub_username
+    - name: DOCKER_PASSWORD
       type: String
-      description: Docker token for source registry
+      description: Docker Hub PAT
       required: false
-      value: <source_registry_token>
-    - name: TARGET_DOCKER_USERNAME
+      value: <+secrets.getValue("dockerhub_pat")>
+    - name: TARGET_REPO
       type: String
-      description: Docker username for target registry
+      description: Target repository
       required: false
-      value: <target_registry_token>
-    - name: TARGET_DOCKER_TOKEN
+      value: vishalav95/plugin-test-vishal
+    - name: TIMESTAMP
       type: String
-      description: Docker token for target registry
+      description: Build timestamp
       required: false
-      value: <target_registry_token>
-  identifier: sambuild2_Clone
-  description: Pipeline to combine scratch image with SAM base image and push to Docker
-  name: samCombineAndPush - Clone
+      value: <+execution.steps.k8sstepgroup.steps.sampreparebuild.output.outputVariables.TIMESTAMP>
 ```
+
 </details>
 
-# How Pipeline Works
+---
 
-## Pipeline Stages
+## How Pipeline Works
 
-1. **Generate Timestamp**:
-   - Creates a timestamp for image labels
-   - Extracts SAM runtime and version from the base image name
+### Pipeline Stages
 
-2. **Build and Push Final Image**:
-   - Attempts multiple strategies to build the final image in order of preference:
-     - **Strategy 1**: Buildah (rootless) - Tries to build a container without privileged access
-     - **Strategy 2**: Skopeo - Falls back to copying the scratch image as the final solution
+- **Generate Timestamp:**
+  - Creates a timestamp for image labels
+  - Extracts SAM runtime and version from the base image name
+
+- **Build and Push Final Image:**
+  - Attempts multiple strategies to build the final image in order of preference:
+    - **Strategy 1:** Buildah (rootless) - Tries to build a container without privileged access
+    - **Strategy 2:** Skopeo - Falls back to copying the scratch image as the final solution
