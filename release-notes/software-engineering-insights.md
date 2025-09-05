@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2025-08-28T10:00:10
+date: 2025-09-05T10:00:10
 sidebar_position: 15
 ---
 
@@ -19,6 +19,29 @@ These release notes describe recent changes to Harness Software Engineering Insi
 :::
 
 ## August 2025
+
+### [New Feature] Activity Logs in SEI 2.0
+---
+#### 2025-08-29
+
+SEI 2.0 includes Activity Logs to provide compliance coverage across critical operations. 
+
+![](./static/sei/activity-logs.png)
+
+Audit logging is supported for the following objects, ensuring full CRUD tracking and historical visibility for key changes:
+
+* Org Trees
+* Teams
+* Developers
+* Efficiency Profiles
+* Productivity Profiles
+* Business Alignment Profiles
+
+Activity Logs provide admins and auditors a transparent view of who made changes, when they occurred, and what was modified, helping teams maintain compliance while managing their engineering insights at scale.
+
+#### Related documentation
+
+- [Activity Logs in SEI 2.0](/docs/software-engineering-insights/harness-sei/manage/activity-logs)
 
 ### [New Enhancement] Multiple Org Trees, multi-level hierarchies, and data filters in SEI 2.0
 ---
@@ -60,7 +83,11 @@ For customers using SEI 1.0, there is no in-place migration. SEI 2.0 must be set
 ----
 #### 2025-05-29
 
-You can now export insights from the SEI 2.0 platform in both PDF and CSV formats. This feature makes it easier to share key performance metrics across teams and stakeholders, supporting better decision-making and performance tracking.
+You can now export insights from the SEI 2.0 platform in both PDF and CSV formats. 
+
+![](./static/sei/export-insights.png)
+
+This feature makes it easier to share key performance metrics across teams and stakeholders, supporting better decision-making and performance tracking.
 
 #### Related documentation
 
