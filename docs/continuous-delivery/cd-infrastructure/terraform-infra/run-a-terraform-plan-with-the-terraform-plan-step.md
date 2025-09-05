@@ -278,6 +278,10 @@ You can use a connector to authenticate with the target cloud provider. This is 
 
 This connector configuration is available in the **Terraform Plan** step. It also appears in the **Terraform Apply** and **Terraform Destroy** steps when the **Configuration Type** is set to **Inline**.
 
+<div align="center">
+  <DocImage path={require('./static/connector-credentials.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
 ### AWS Connector 
 
 :::note
@@ -334,26 +338,19 @@ See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-p
 
 Click **Submit**. The remote file(s) are added.
 
-## Azure Connector
+### Azure Connector
 
 Harness Terraform steps now support authenticating with Azure using Azure connectors for target provisioning. This enables seamless integration with Azure infrastructure when running Terraform Plan, Apply, and Destroy steps with inline Terraform configuration.
 
-### Key Features
+#### Key Features
 
 - **Azure Connector support:** Authenticate Terraform operations using Azure connectors configured in Harness.
-- **Authentication methods:**
-  - Manual credentials (Application ID, Tenant ID, Secret Key, Certificate Secret)
-  - Delegate-based credentials:
-    - System Assigned Managed Identity
-    - User Assigned Managed Identity
-  - OIDC token-based authentication
-- **Environment variables:** Harness exports Azure-specific environment variables (e.g., ARM_SUBSCRIPTION_ID, ARM_CLIENT_ID, ARM_TENANT_ID, ARM_CLIENT_SECRET, ARM_CLIENT_CERTIFICATE_PATH, ARM_OIDC_TOKEN) based on the Azure connector configuration.
-- **Terraform provider credential configuration:** YAML `providerCredential` block references an Azure connector and subscription ID to authenticate during Terraform execution.
-- **Additional options:** Support for environment variable overrides like ARM_TENANT_ID and ARM_MSI_ENDPOINT for advanced scenarios.
+- **Authentication methods:** Manual credentials, Delegate-based credentials, OIDC token-based authentication are supported. Certificate-based authentication is **not supported** yet.
+- **Additional options:** Default configuration can be overridden with environment variables like ARM_TENANT_ID and ARM_MSI_ENDPOINT for advanced scenarios.
 
 For more information on how to setup an Azure connector, go to [Azure Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
 
-### YAML Configuration Example
+#### YAML Configuration Example
 
 <details>
 <summary>Sample YAML</summary>
