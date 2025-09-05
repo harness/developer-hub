@@ -288,6 +288,19 @@ Depending on the Build stage's **Infrastructure**, some steps might run directly
 * `myloginservice:container_port` for containerized steps, such as those running in self-managed VM build infrastructures or running Docker images.
 * `localhost:host_post` for steps running in a Kubernetes cluster build infrastructure or directly on the build machine (such as a service running from a binary already installed on the host machine). For steps running MySQL in a Kubernetes cluster build infrastructure, you must use `127.0.0.1:host_port`.
 
+:::note Service Binding Inside the Container
+If your application binds only to `127.0.0.1` inside the container, it will not be reachable from outside the container — even if you configure Port Bindings in Harness.  
+To make the service accessible, ensure the application listens on `0.0.0.0`. This binds the service to all available network interfaces inside the container, allowing Docker’s `-p` port mapping (or Harness Port Bindings) to expose it.
+
+For example, in a Node.js service:  
+
+```js
+app.listen(8080, '0.0.0.0', () => {
+  console.log('Listening...');
+});
+```
+:::
+
 :::info
 
 If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify **Port Bindings** if you want to reference that Background step in a later step in the pipeline (such as in a cURL command in a Run step). More more information about referencing background services in other steps, go to [Name and Id](#name-and-id).
