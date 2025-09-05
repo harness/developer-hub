@@ -272,12 +272,17 @@ This allows you to specify a different workspace name each time the Pipeline is 
 
 You can even set a Harness Trigger where you can set the workspace name used in **Workspace**.
 
-## AWS Connector Provider Credential Authentication for Terraform Plan and Apply Steps
+## Connector Credentials
+
+You can use a connector to authenticate with the target cloud provider. This is an optional configuration that takes the connector reference, region, and Role ARN (for AWS). The Terraform step uses these parameters to authenticate with the cloud provider targeted for infrastructure provisioning.
+
+This connector configuration is available in the **Terraform Plan** step. It also appears in the **Terraform Apply** and **Terraform Destroy** steps when the **Configuration Type** is set to **Inline**.
+
+### AWS Connector 
 
 :::note
 This feature requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
-
 
 You can use an AWS connector to have the Terraform Plan and Apply step assume a role to perform infrastructure provisioning. It's an optional configuration that takes the AWS connector, a region and Role ARN. The Terraform step uses these parameters to authenticate the AWS account targeted for infrastructure provisioning.
 
@@ -324,6 +329,52 @@ See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-p
    ![](./static/provision-infra-dynamically-with-terraform-10.png)
 
 Click **Submit**. The remote file(s) are added.
+
+## Azure Connector
+
+Harness Terraform steps now support authenticating with Azure using Azure connectors for target provisioning. This enables seamless integration with Azure infrastructure when running Terraform Plan, Apply, and Destroy steps with inline Terraform configuration.
+
+### Key Features
+
+- **Azure Connector support:** Authenticate Terraform operations using Azure connectors configured in Harness.
+- **Authentication methods:**
+  - Manual credentials (Application ID, Tenant ID, Secret Key, Certificate Secret)
+  - Delegate-based credentials:
+    - System Assigned Managed Identity
+    - User Assigned Managed Identity
+  - OIDC token-based authentication
+- **Environment variables:** Harness exports Azure-specific environment variables (e.g., ARM_SUBSCRIPTION_ID, ARM_CLIENT_ID, ARM_TENANT_ID, ARM_CLIENT_SECRET, ARM_CLIENT_CERTIFICATE_PATH, ARM_OIDC_TOKEN) based on the Azure connector configuration.
+- **Terraform provider credential configuration:** YAML `providerCredential` block references an Azure connector and subscription ID to authenticate during Terraform execution.
+- **Additional options:** Support for environment variable overrides like ARM_TENANT_ID and ARM_MSI_ENDPOINT for advanced scenarios.
+
+For more information on how to setup an Azure connector, go to [Azure Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
+
+### YAML Configuration Example
+
+```yaml
+- step:
+    type: TerraformPlan
+    name: TerraformPlan_1
+    identifier: TerraformPlan_1
+    spec:
+      provisionerIdentifier: planoidc
+      configuration:
+        command: Apply
+        configFiles:
+          store:
+            spec:
+              connectorRef: githubConnector
+              repoName: play
+              gitFetchType: Branch
+              branch: main
+              folderPath: tf/azure
+            type: Github
+        providerCredential:
+          type: Azure
+          spec:
+            connectorRef: AzureConnector
+            subscriptionId: 20xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
 
 ## Backend Configuration
 
