@@ -141,6 +141,10 @@ The following deprecated API endpoints are longer supported:
 
 - Added the ability for customers to see the task response status in delegate selection logs. [PL-58972] 
 
+### Version 1.104.x <!--No release-->  
+
+_No release was made for this version._  
+
 ## August 2025
 
 ### Version 1.103.x <!--August 25, 2025-->
