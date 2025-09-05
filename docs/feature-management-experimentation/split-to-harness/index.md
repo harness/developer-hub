@@ -40,7 +40,7 @@ The integration will fulfill key promises:
    - Know Your Migration Window: Your administrator will know which week your migration will take place in. Watch for in-app banner updates as well.
    - Watch the [Video Preview](https://youtu.be/Mx4nux9hd2A): Preview the similar user experience, with new read-only settings screens for non-admins.
      
-    <iframe src="https://www.youtube.com/embed/Mx4nux9hd2A?si=I6DGX4QCxVBufndG?embed=true" title="Split Users Migrated to Harness" height="300" width="470"></iframe>
+     <iframe src="https://www.youtube.com/embed/Mx4nux9hd2A?si=I6DGX4QCxVBufndG?embed=true" title="Split Users Migrated to Harness" height="300" width="470"></iframe>
 
 ## Next Steps for Administrators
 
