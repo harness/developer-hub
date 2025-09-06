@@ -1,6 +1,9 @@
 ---
 title: Serverless Plugin Image Builder
 description: Build your serverless plugin image using Harness.
+tags: 
+  - serverless-plugin
+  - plugin-builder
 sidebar_position: 5
 ---
 
@@ -61,6 +64,7 @@ The pipeline supports only full formats for the base images:
 - Only x86_64 architecture images are supported
 - Using different base images may cause library dependency issues
 - Non-standard base images may cause the plugin to not function as required
+- You will have to use the final image at the sep level of your serverless deployment. This plugin cannot be used in [Plugin info](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) at service level as, this setting at service level fetches only from Harness official Dockerhub repository.
 
 ### Image Configuration
 

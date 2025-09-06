@@ -217,6 +217,15 @@ You can access the AWS CDK plugin images from the following repositories:
 
 Harness also supports **`amd64`** architecture for these plugin images. You can find the corresponding tags (such as `harness/aws-cdk-plugin:1.3.0-2.1019.2-linux-amd64-unified`) on [Docker Hub](https://hub.docker.com/r/harness/aws-cdk-plugin/tags?name=amd64).
 
+Harness releases new AWS CDK Plugin images once every 3 months. If you want to use the latest AWS CDK Plugin images, you can build your own image using the [AWS CDK Plugin Image Builder](/docs/continuous-delivery/cd-infrastructure/aws-cdk/cdk-image-build).
+
+
+### Build your own image
+
+You can also build your own image based on the base image provided by Harness and use it in a step. For example, if your CDK app uses a specific CDK version, you can use the base image provided by Harness and create your own image containing your dependencies. Here is the pipeline and explanation to build your own image: 
+
+For more information, go to [Build your own image](/docs/continuous-delivery/cd-infrastructure/aws-cdk/cdk-image-build).
+
 ## Git Clone step
 
 The Git Clone step is the first stage **Execution** step added to the containerized step group for Harness CDK.
