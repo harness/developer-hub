@@ -1595,7 +1595,7 @@ The issue is resolved now.
 
   ![](./static/cost-category-builder-2.png)
 
-  For more information, go to [Use Cost Categories](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/cost-categories-usage).
+  For more information, go to [Use Cost Categories](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/cost-categories).
 
 ##### Fixed issues
 
