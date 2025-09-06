@@ -1,6 +1,8 @@
 ---
 title: SAM Plugin Image Builder
 description: Build your AWS SAM plugin image using Harness.
+  - sam-plugin
+  - plugin-builder
 sidebar_position: 4
 ---
 
