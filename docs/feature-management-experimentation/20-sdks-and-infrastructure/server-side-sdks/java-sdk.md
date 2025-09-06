@@ -1748,7 +1748,7 @@ To fix this issue, you have two options:
 1. Upgrade your JDK to version 1.7 or above. These versions include support for the stronger ciphers by default.
 1. If upgrading is not an option, install the Java Cryptography Extension (JCE) provided by your JVM vendor for Java 6 to enable support for high-strength ciphers.
 
-### Exception: PKIX path building failed — unable to find valid certification path to requested target
+### Exception: PKIX path building failed
 
 When initializing the Java SDK `SplitFactory` object, you may see the following error:
 
@@ -1763,7 +1763,7 @@ unable to find valid certification path to requested target
 
 This indicates that Java could not verify the SSL certificate from Split.io, preventing a secure connection between the SDK and Harness FME servers.
 
-Manually install the Split.io certificates into your JVM’s trust store:
+Manually install Split.io's certificates into your JVM’s trust store:
 
 1. Download the certificates for both `sdk.split.io` and `events.split.io`:
 
@@ -1772,7 +1772,7 @@ Manually install the Split.io certificates into your JVM’s trust store:
    openssl s_client -showcerts -connect events.split.io:443 </dev/null 2>/dev/null | openssl x509 -outform PEM > spliteventscert.pem
    ```
 
-1. Import the certificates into the Java cacerts keystore (replace [JAVA_HOME] with your Java installation path):
+1. Import the certificates into the Java `cacerts` keystore (replace `[JAVA_HOME]` with your Java installation path):
 
    ```bash
    keytool -importcert -file splitsdkcert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "splitsdkcert"
@@ -1780,3 +1780,33 @@ Manually install the Split.io certificates into your JVM’s trust store:
    ```
 
 1. Restart your Java application.
+
+#### Certificate renewals
+
+Harness FME relies on Split.io's managed certificates for secure SDK communication. When Split.io rotates or renews its certificates, your application should continue working if:
+
+* Your JVM's default trust store already contains the required certificate authorities (most modern JDKs do).
+* Or, you've installed the intermediate/root certificates instead of the short-lived leaf certificates.
+
+However, if you manually imported specific leaf certificates, you'll need to repeat the steps above when Split.io updates them. To avoid manual updates, consider updating your JDK to the latest version so its default trust store includes up-to-date CAs.
+
+#### Check certificate expiry proactively
+
+To see when Split.io's certificates expire, run:
+
+```bash
+echo | openssl s_client -connect sdk.split.io:443 -servername sdk.split.io 2>/dev/null \
+    | openssl x509 -noout -dates
+
+echo | openssl s_client -connect events.split.io:443 -servername events.split.io 2>/dev/null \
+    | openssl x509 -noout -dates
+```
+
+This outputs something like the following:
+
+```
+notBefore=Mar  1 00:00:00 2025 GMT
+notAfter=May 30 23:59:59 2025 GMT
+```
+
+If the `notAfter` date is approaching and you manually imported certificates, repeat the installation steps above.
