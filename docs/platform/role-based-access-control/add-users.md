@@ -107,9 +107,17 @@ The next time the user logs in, they will be redirected to the updated URL.
 
 ### Invitation emails
 
-When you add a user, Harness checks your [authentication method](/docs/platform/authentication/authentication-overview) and email invite preferences to determine if an email invitation should be sent:
+When you add a user, Harness checks your [authentication method](/docs/platform/authentication/authentication-overview) and email invite preferences to determine if an email invitation should be sent
 
 * **Login via a Harness Account or Public OAuth Providers:** The invited user gets an email invitation. The user is listed on **Pending Users** until the user accepts the invitation.
+
+If an email is not received, and is expected to be received, please check the following:
+- Customer Email filters may block or quarantine emails from Harness.  This can happen locally (on the email applciation) or at the server/security level.  For example, security software such as Microsoft Intune, Proofpoint, and Mimecast are examples of software that may potentially block these emails
+- Harness also respects any settings customers may have made to their notification filters.  These filters can be found under Account Settings -> Default Settings -> Notification Section -> Email Filter.  
+   ![](./static/emailfilter.png)
+- Certain configurations for Authentication will also not send out emails.  Please see below
+
+#### Instances where an Email will not be sent
 * **SAML**, **LDAP**, or **OAuth** *and* you have enabled the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness *doesn't* send an email to the user.
 * **SAML**, **LDAP**, or **OAuth** *and* you have enabled the feature flag `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness sends a notification email to the user.
 * **SAML**, **LDAP**, or **OAuth** *and* you have enabled both feature flags: `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` takes precedence over `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`. Harness adds users directly to the **Active Users** list, and Harness *doesn't* send invitation emails.
