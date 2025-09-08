@@ -18,7 +18,7 @@ To know how these recommendations are computed, see the following topics:
 * [Optimize Kubernetes Costs with Node Pool Recommendations](../1-ccm-recommendations/node-pool-recommendations.md)
 * [Optimize Kubernetes Costs with Workload Recommendations](../1-ccm-recommendations/workload-recommendations.md) -->
 
-Harness CCM currently supports these types of recommendations:
+Harness CCM currently supports these types of OOTB recommendations:
 - Azure VM
 - AWS EC2 instances
 - AWS ECS services
