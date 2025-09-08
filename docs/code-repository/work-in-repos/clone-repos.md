@@ -28,7 +28,9 @@ After [creating a repository](../config-repos/create-repo.md), you can work dire
 ## Clone over SSH
 
 You can clone any Harness Code Repository using SSH if you prefer key-based authentication.
-
+:::info
+This feature is behind the `CODE_SSH_ENABLED` feature flag. To enable it, contact [Harness Support](mailto:support@harness.io).
+:::
 ### Prerequisites
 
 1. You must have an SSH key pair on your local machine. To check:
