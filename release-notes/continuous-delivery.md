@@ -64,12 +64,8 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 #### Fixed Issues
 
 - Fixed an issue where promote options were missing in GitOps application rollouts. Promote and restart options are now correctly displayed in the GitOps application interface. (**CDS-113725, ZD-91678**)
-
 - Fixed an issue where GitOps applications created through reconciler operations (such as those created by ApplicationSets) were not showing up in the "Referenced By" tab of linked services. These applications now properly appear in the service references, ensuring visibility of service-to-application relationships. (**CDS-113560, ZD-91232**)
-
 - Fixed an issue where GitOps sync was failing with "no space left on device" errors, and the App diff tab was not clickable for some applications. GitOps sync now properly handles storage resources and the App diff tab functionality has been restored. (**CDS-113506, ZD-91129**)
-
-
 
 ### Version 1.105.XX
 
