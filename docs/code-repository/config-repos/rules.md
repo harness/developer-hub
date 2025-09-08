@@ -205,23 +205,22 @@ You can assign ownership to specific files, directories, or otherwise. Wildcards
 Harness ---
 
 # Global owner
-* @email
-
-# Specific file with multiple owners
-Gemfile.lock @email1 @email2
-
-# Subdirectory owners
-/some_directory/ @email
-/some_directory_2/ @email1 @email2
-
+* email
 # User groups at different scopes
 ** @dev-team @org.security-group @account.admins
 
+# Specific file with multiple owners
+Gemfile.lock email1 email2
+
+# Subdirectory owners
+/some_directory/ email
+/some_directory_2/ email1 email2
+
 # Workspace owner
-WORKSPACE @email
+WORKSPACE email
 
 # Wildcards
-**/src/** @email
-*.lock @email
+**/src/** email
+*.lock email
 
 ```
