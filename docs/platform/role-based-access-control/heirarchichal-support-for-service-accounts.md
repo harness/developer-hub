@@ -61,6 +61,13 @@ The service account is now available for this project.
 </TabItem>
 </Tabs>
 
+:::note
+
+When a service account is inherited from the account scope to a project scope, the system automatically assigns the Organization Viewer role to that service account for the organization containing the project. The role assignment is also recorded in the Audit Logs.
+
+If this role assignment is removed, the service account may lose access to the Organization.
+:::
+
 ## Benefits
 
 - **Centralized Service Account Management**: Reduces the need to create and manage multiple service accounts for each project.
