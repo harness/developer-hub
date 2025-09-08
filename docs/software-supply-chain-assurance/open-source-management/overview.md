@@ -6,6 +6,12 @@ sidebar_label:  SBOM Overview
 redirect_from:
 
 - /docs/software-supply-chain-assurance/sbom/overview
+
+tags:
+  - harness-scs 
+  - sbom-overview
+  - open-source-management
+  - sbom 
 ---
 
 import Tabs from '@theme/Tabs';

@@ -2,7 +2,7 @@
 title: Harness Plugins Marketplace
 sidebar_label: Harness Plugins Marketplace
 description: Learn about available plugins in Internal Developer Portal and request for Backstage Community Plugins to be added in Harness IDP.
-sidebar_position: 20
+sidebar_position: 2
 ---
 
 Harness plugins marketplace provides you a single pane of glass view of all the plugins that are available in Harness IDP, and the other available Backstage Community Plugins, that you can have support for in your Developer Portal. 

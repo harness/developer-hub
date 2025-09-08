@@ -48,11 +48,11 @@ export default function FF() {
               <img
                 className={styles.illustration}
                 src={
-                  colorMode === 'light'
+                  colorMode === "light"
                     ? `${baseUrl}img/ff.svg`
                     : `${baseUrl}img/FF_Landing_Page_dark_mode.svg`
                 }
-              />{' '}
+              />{" "}
             </div>
           </div>
         </div>

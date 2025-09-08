@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import SCIMurl from '/docs/platform/shared/scimurl.md'
+
 System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automated user provisioning. In Harness, automated provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automated provisioning also edits and removes users and user groups as and when required.
 
 If Microsoft Entra ID is your identity provider, you can efficiently provision and manage users in your Harness account. Using [Microsoft Entra ID's SCIM integration](https://learn.microsoft.com/en-us/azure/active-directory/architecture/sync-scim) with Harness enables Microsoft Entra ID to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
@@ -47,7 +49,10 @@ In Microsoft Entra ID, add Harness to your list of managed SaaS applications fro
 5. For **Provisioning Mode**, select **Automatic**.
 6. Configure the **Admin Credentials** as follows:
 
-   1. For **Tenant URL**, enter `https://app.harness.io/gateway/ng/api/scim/account/ACCOUNT_ID`. Replace `ACCOUNT_ID` with your Harness account ID. You can get your account ID from any Harness URL or by navigating to **Account Settings** and **Overview** in Harness.
+   1. For **Tenant URL**, enter the appropriate URL for your cluster:
+
+<SCIMurl />
+
    2. For **Secret Token**, enter your Harness [Harness API key's token](#requirements) as the SCIM Authentication Token value.
    3. Select **Test Connection** to ensure that Microsoft Entra ID can connect to Harness. If the connection fails, make sure your API key has admin permissions, and then try again.
 

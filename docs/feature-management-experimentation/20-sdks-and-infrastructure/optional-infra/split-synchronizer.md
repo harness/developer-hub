@@ -2,6 +2,15 @@
 title: Split Synchronizer
 sidebar_label: Split Synchronizer
 sidebar_position: 4
+redirect_from:
+ - /docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/configure-fme-synchronizer-to-handle-high-impression-rate
+ - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-optional-infra/http-error-when-using-proxy-mode/
+ - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-optional-infra/how-to-inject-a-certificate-into-a-synchronizer-docker-image/
+ - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-optional-infra/how-to-deploy-synchronizer-docker-container-in-heroku/
+ - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-optional-infra/using-sdk-sync-gettreatment-control/
+ - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-optional-infra/no-impressions-sent-from-python-sdk-7/
+ - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-optional-infra/sync-compatibility-matrix/
+ - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-optional-infra/post-method-404/
 ---
 
 import Tabs from "@theme/Tabs";
@@ -39,6 +48,26 @@ The Split Synchronizer works with most of the languages that FME supports.
 * [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk)
 * [Go SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk)
 * [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk)
+
+### Synchronizer Compatibility Matrix
+
+| Language       | Supported Synchronizer Versions | Supported SDK Versions                      |
+|----------------|---------------------------------|---------------------------------------------|
+| **Java**       | Not implemented                 | —                                           |
+| **JavaScript** | 1.x, 2.x                       | JavaScript SDK 9.x, 10.x                     |
+| **Ruby**       | 1.6, 1.7, 1.8, 2.x            | Ruby SDK 4.x, 5.x, 6.x (required for 2.x features) |
+| **PHP**        | 1.6, 1.7, 1.8, 2.x            | PHP SDK 5.x                                  |
+| **Python**     | 1.6, 1.7, 1.8, 2.x            | Python SDK 5.x                               |
+| **.NET/.NET Core** | 1.6, 1.7, 1.8, 2.x         | .NET/Core 2.1+, 3.x                          |
+| **Go Lang**    | 1.x, 2.x                      | GoLang SDK 1.x                               |
+| **iOS**        | N/A                           | —                                           |
+| **Android**    | N/A                           | —                                           |
+
+**Notes**: 
+
+> - *“Not implemented”* means no Synchronizer support for that language.  
+> - *“N/A”* means not applicable. The Synchronizer is not used for those platforms.  
+> - SDK versions noted are minimum or recommended versions tested with each Synchronizer version.
 
 If you are looking for a language that is not listed here, contact the support team at [support@split.io](mailto:support@split.io) to discuss your options.
 
@@ -127,6 +156,8 @@ Sometimes, when building POCs or testing the synchronizer locally, you might wan
 
 :::info[Docker configuration]
 The [Advanced configuration section](#advanced-configuration) includes additional Docker information in the column **Docker environment variable**.
+
+See [Deploy Synchronizer Docker Container in AWS ECS](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/synchronizer-docker-ecs) for a full step-by-step AWS deployment guide.
 :::
 
 ### Command line
@@ -536,6 +567,92 @@ All config values are set with a default value that you can see in the example *
 split-sync -config "/etc/splitio.config.json" -log-level "debug" -redis-pass "somePass" 
 ```
 
+#### Handling High Impression Rates with Synchronizer
+
+When using a server-side SDK with the Split Synchronizer and Redis, it is important to properly configure the Synchronizer to handle a high load of incoming impressions efficiently.
+
+##### Key Configuration Parameters
+
+The Split Synchronizer (version 1.6.0 and above) exposes several parameters that control impression processing performance:
+
+- `impressionsMaxSize`: Maximum size for the impressions queue.
+- `impressionsRefreshRate`: How often impressions are processed and sent (in seconds).
+- `impressionsThreads`: Number of threads handling impressions processing.
+- `impressionsPerPost`: Number of impressions sent per post request.
+
+Adjust these parameters according to your expected impression volume. Because the Synchronizer uses multithreading, increasing `impressionsThreads` can reduce latency in posting impressions.
+
+Below is an example JSON configuration designed to handle approximately 100,000 impressions per minute. Update the API Key, Redis host, port, and database number to match your environment before applying.
+
+```json
+{
+  "apiKey": "YOUR_API_KEY",
+  "proxy": {
+    "port": 3000,
+    "adminPort": 3010,
+    "adminUsername": "",
+    "adminPassword": "",
+    "dashboardTitle": "",
+    "persistInFilePath": "",
+    "impressionsMaxSize": 10485760,
+    "eventsMaxSize": 10485760,
+    "auth": {
+      "sdkAPIKeys": [
+        "SDK_API_KEY"
+      ]
+    }
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379,
+    "db": 0,
+    "password": "",
+    "prefix": "",
+    "network": "tcp",
+    "maxRetries": 0,
+    "dialTimeout": 5,
+    "readTimeout": 10,
+    "writeTimeout": 5,
+    "poolSize": 10,
+    "sentinelReplication": false,
+    "sentinelAddresses": "",
+    "sentinelMaster": ""
+  },
+  "sync": {
+    "admin": {
+      "adminPort": 3010,
+      "adminUsername": "",
+      "adminPassword": "",
+      "dashboardTitle": ""
+    }
+  },
+  "log": {
+    "verbose": false,
+    "debug": false,
+    "stdout": false,
+    "file": "/tmp/split-agent.log",
+    "fileMaxSizeBytes": 2000000,
+    "fileBackupCount": 3,
+    "slackChannel": "",
+    "slackWebhookURL": ""
+  },
+  "impressionListener": {
+    "endpoint": ""
+  },
+  "splitsRefreshRate": 60,
+  "segmentsRefreshRate": 60,
+  "impressionsRefreshRate": 20,
+  "impressionsPerPost": 10000,
+  "impressionsThreads": 5,
+  "eventsPushRate": 60,
+  "eventsConsumerReadSize": 10000,
+  "eventsConsumerThreads": 1,
+  "metricsRefreshRate": 60,
+  "httpTimeout": 60
+}
+```
+
+
 ### CLI Configuration options and its equivalents in JSON & Environment variables
 
 :::warning[Split Synchronizer version 5.0 boolean options change]
@@ -618,6 +735,150 @@ In order to reduce the issues because of typos and confusion due to "multiple wo
 | storage-check-rate-ms | storageCheckRateMs | SPLIT_SYNC_STORAGE_CHECK_RATE_MS | How often to check storage health |
 | flag-sets-filter | flagSetsFilter | SPLIT_SYNC_FLAG_SETS_FILTER | This setting allows the Split Synchronizer to only synchronize the feature flags in the specified flag sets, avoiding unused or unwanted flags from being synced on the Split Synchronizer instance, bringing all the benefits from a reduced payload. |
 
+## Deploying Synchronizer on Heroku
+
+Follow these steps to deploy the Synchronizer container on Heroku:
+
+1. Clone the [GitHub repository](https://github.com/splitio/split-synchronizer) or download the source code and unzip it to a new folder (e.g., `mysync`).  
+1. Open a terminal and `cd` to that folder.
+1. Run this command to create a Heroku app:
+
+   ```bash
+   heroku create
+   ```
+
+1. You should see a response like: 
+
+   ```bash
+   Creating app... done, ⬢ secret-anchorage-16496
+   https://secret-anchorage-16496.herokuapp.com/ | https://git.heroku.com/secret-anchorage-16496.git
+   ```
+
+1. Set the stack to container and add the Go language buildpack:
+
+   ```bash
+   heroku stack:set container
+   heroku buildpacks:set heroku/go
+   ```
+
+1. Open the existing `Dockerfile` and replace the last line:
+
+   ```bash
+   ENTRYPOINT ["sh", "./entrypoint.sh"]
+   ```
+
+   with:
+
+   ```bash
+   CMD ["sh", "./entrypoint.sh"]
+   ```
+   
+   Heroku only supports CMD for containers.
+
+1. Add the following content to a `heroku.yml` file:
+
+   ```yaml
+   build:
+    docker:
+      web: Dockerfile
+      worker:
+        dockerfile: Dockerfile
+   ```
+
+1. Add a `Procfile` with the content:
+
+   ```makefile
+   worker: sh entrypoint.sh
+   ```
+
+1. On the Heroku dashboard, open your app, go to the **Settings** tab, and add the following environment variables:
+
+   * `SPLIT_SYNC_API_KEY`
+   * `SPLIT_SYNC_REDIS_HOST`
+   * `SPLIT_SYNC_REDIS_PORT`
+   * `SPLIT_SYNC_REDIS_DB`
+   * `SPLIT_SYNC_REDIS_PASS`
+
+1. Modify `entrypoint.sh` to map the admin dashboard to Heroku's `$PORT` environment variable.
+   
+   Replace the last line:
+
+   ```bash
+   exec split-sync ${PARAMETERS}
+   ```
+
+   with:
+
+   ```bash
+   exec split-sync ${PARAMETERS} -sync-admin-port $PORT
+   ```
+
+1. Run these git commands to deploy to Heroku:
+
+   ```bash
+   git init
+   git add .
+   git commit -m "Deploy Synchronizer to Heroku"
+   git push heroku master
+   ```
+
+1. Check logs using `heroku logs`.
+1. You should see output similar to:
+
+   ```
+   2019-09-11T19:53:06.954882+00:00 app[worker.1]: __      ____        _ _ _
+   2019-09-11T19:53:06.954887+00:00 app[worker.1]: / /__   / ___| _ __ | (_) |_
+   2019-09-11T19:53:06.954890+00:00 app[worker.1]: / / \ \  \___ \| '_ \| | | __|
+   2019-09-11T19:53:06.954891+00:00 app[worker.1]: \ \  \ \  ___) | |_) | | | |_
+   2019-09-11T19:53:06.954893+00:00 app[worker.1]: \_\ / / |____/| .__/|_|_|\__|
+   2019-09-11T19:53:06.954895+00:00 app[worker.1]: /_/        |_|
+   2019-09-11T19:53:06.954897+00:00 app[worker.1]: 
+   2019-09-11T19:53:06.954899+00:00 app[worker.1]: 
+   2019-09-11T19:53:06.954922+00:00 app[worker.1]: 
+   2019-09-11T19:53:06.954924+00:00 app[worker.1]: Split Synchronizer - Version: 2.5.1 (2178c61)
+   2019-09-11T19:53:06.955154+00:00 app[worker.1]: Log file: /tmp/split-agent.log
+   ```
+
+1. Access the Admin Dashboard by visiting `https://[heroku-app-name].herokuapp.com/admin/dashboard`.
+
+## Using the Synchronizer as a proxy service on Heroku
+
+Since Heroku maps only one port, you need to assign the proxy listener port to the `$PORT` environment variable.
+
+1. Update `entrypoint.sh` by replacing `exec split-sync ${PARAMETERS}` with `exec split-sync ${PARAMETERS} -proxy-port $PORT`.
+1. Modify `Procfile` by changing its content to `web: sh entrypoint.sh`.
+1. Add the following environment variables in the Heroku UI:
+
+   - `SPLIT_SYNC_PROXY` (value: `on`)
+   - `SPLIT_SYNC_PROXY_SDK_APIKEYS` (value: your customer API key)
+
+1. Deploy changes:
+
+   ```bash
+   git add .
+   git commit -m "Enable proxy mode on Heroku"
+   git push heroku master
+   ```
+
+1. Configure SDKs. An example Java SDK configuration:
+
+   ```java
+   SplitClientConfig config = SplitClientConfig.builder()
+    .setBlockUntilReadyTimeout(5000)
+    .endpoint("http://[heroku-app-name].herokuapp.com", "http://[heroku-app-name].herokuapp.com")
+    .build();
+
+   try {
+       splitFactory = SplitFactoryBuilder.build("custom api key", config);
+       client = splitFactory.client();
+       client.blockUntilReady();
+   } catch (Exception e) {
+       System.out.print("Exception: " + e.getMessage());
+   }
+   ```
+
+  Since Heroku maps only a single port, the Admin Dashboard will not be accessible when running in proxy mode.
+
 ## Listener
 
 The Split Synchronizer provides an impression listener that bulks post impressions to a user-defined HTTP endpoint.
@@ -663,6 +924,68 @@ If you need to use a network proxy, configure proxies by setting the environment
 $ export HTTP_PROXY="http://10.10.1.10:3128"
 $ export HTTPS_PROXY="http://10.10.1.10:1080"
 ```
+
+## Inject a certificate into a Synchronizer Docker image
+
+If the Synchronizer Docker container is running in a network that uses an SSL proxy, the Synchronizer may fail to authenticate the root certificate. This causes errors like the following when trying to connect to Harness FME servers to fetch feature flag definitions:
+
+```perl
+SPLITIO-AGENT | ERROR: 2020/08/19 14:42:51 fetchdataforproxy.go:209: Error fetching split changes  
+Get https://sdk.split.io/api/splitChanges?since=-1: x509: certificate signed by unknown authority
+```
+
+To resolve this, you need to inject the root certificate into the Synchronizer Docker image by rebuilding it with the proxy certificates included.
+
+1. Clone the Synchronizer public repository:
+
+   ```bash
+   git clone https://github.com/splitio/split-synchronizer
+   ```
+
+1. Change to the cloned directory:
+
+   ```bash
+   cd split-synchronizer
+   ```
+
+1. Copy your proxy certificates (root, intermediate, and proxy certs) into this folder. For example:
+
+   ```bash
+   cp /path/to/certs/root.crt .
+   cp /path/to/certs/intermediate.crt .
+   cp /path/to/certs/proxy.pem .
+   ```
+
+1. Open the `Dockerfile` in the `split-synchronizer` folder with a text editor, and just before the line containing `EXPOSE 3000 3010`, add:
+
+   ```docker
+   COPY root.crt /etc/ssl/certs/root.crt
+   COPY intermediate.crt /etc/ssl/certs/intermediate.crt
+   COPY proxy.pem /etc/ssl/certs/proxy.pem
+   RUN cat /etc/ssl/certs/root.crt >> /etc/ssl/certs/ca-certificates.crt
+   ```
+
+1. Save and close the Dockerfile.
+1. Build the new Docker image:
+   
+   ```bash
+   docker build --tag split-sync:latest .
+   ```
+
+1. Run the new image to verify it works (replace environment variables as needed). The `http_proxy` and `https_proxy` variables are optional based on your setup:
+
+   ```bash
+   docker run --rm --name split-sync -p 3010:3010 --net="host" \
+    -e SPLIT_SYNC_API_KEY="SDK API KEY" \
+    -e SPLIT_SYNC_LOG_STDOUT="on" \
+    -e SPLIT_SYNC_LOG_DEBUG="true" \
+    -e SPLIT_SYNC_LOG_VERBOSE="true" \
+    -e SPLIT_SYNC_REDIS_HOST="Redis Host" \
+    -e SPLIT_SYNC_REDIS_PORT=6379 \
+    -e http_proxy="https://[internal proxy host]" \
+    -e https_proxy="https://[internal proxy host]" \
+    split-sync
+   ```
 
 ## Admin tools
 
@@ -903,3 +1226,109 @@ The `split-sync` service can catch a `kill sig` command and start a graceful shu
 If you have configured a Slack channel and the Slack Webhook URL, an alert is sent to the channel when and initialization or shutdown is performed.
 
 ![](./static/split-synchronizer-slack.png)
+
+## Troubleshooting
+
+### Synchronizer returns 500 HTTP error when used in proxy mode
+
+When using Synchronizer in proxy mode, initializing an FME SDK factory that connects to the Synchronizer instance never completes. The SDK never becomes ready and receives a 500 HTTP error.
+
+Synchronizer’s debug logs show successful calls to the Harness FME servers, but the JSON response contains an empty list of feature flags:
+
+```go
+SPLITIO-AGENT  - DEBUG - 2020/10/12 21:41:51 logger.go:35: GET |500| 285.71µs | 10.10.6.249 | /api/splitChanges
+SPLITIO-AGENT  - DEBUG - 2020/10/12 21:41:52 client.go:60: Authorization [ApiKey]:  1c9s...e19o
+SPLITIO-AGENT  - DEBUG - 2020/10/12 21:41:52 client.go:56: [GET]  https://sdk.split.io/api/splitChanges?since=-1
+SPLITIO-AGENT  - DEBUG - 2020/10/12 21:41:52 client.go:64: Headers: map[Accept-Encoding:[gzip] Content-Type:[application/json]]
+SPLITIO-AGENT  - VERBOSE - 2020/10/12 21:41:52 client.go:95: [RESPONSE_BODY] {"splits":[],"since":-1,"till":-1} [END_RESPONSE_BODY]
+```
+
+This indicates that no feature flags are present in the environment associated with the SDK API key used by the Synchronizer. Although the upstream HTTP call succeeds, Synchronizer returns a 500 error to the SDK because it cannot compute any treatments without any feature flags
+
+* Ensure that the environment linked to the SDK API key used by Synchronizer has active feature flags configured.
+* Alternatively, verify that you are using the correct SDK API key for the intended environment with feature flags.
+
+### SDK getTreatment Always Returning 'control' When Using Synchronizer Docker
+
+After installing and running the Split Synchronizer Docker instance with a Redis instance, and configuring an SDK to use Redis, the `getTreatment` call always returns `'control'`.
+
+By default, the Synchronizer Docker instance uses a **prefix** for Redis keys. If the SDK does not specify the same prefix in its Redis configuration, it cannot read the data stored by Synchronizer.
+
+1. Check if the Synchronizer is using a prefix by running:
+
+   ```bash
+   redis-cli
+   keys *
+   ```
+
+   Look for text before `"SPLITIO"` in the keys.
+
+   Example output showing the prefix `myprefix`:
+
+   ```
+   127.0.0.1:6379> keys *
+   1) "myprefix.SPLITIO.split.Split1"
+   2) "myprefix.SPLITIO.splits.till"
+   3) "myprefix.SPLITIO.split.Split2"
+   4) "myprefix.SPLITIO.split.nico_test"
+   5) "myprefix.SPLITIO.split.coach_matching_v1"
+   6) "myprefix.SPLITIO.split.clients_on"
+   7) "myprefix.SPLITIO.split.Split3"
+   8) "myprefix.SPLITIO.split.sample_feature"
+   9) "myprefix.SPLITIO.segments.registered"
+   10) "myprefix.SPLITIO.split.Demo_split"
+   11) "myprefix.SPLITIO.split.clients"
+   ```
+
+1. Update your SDK configuration. Specify the `redisPrefix` parameter in your SDK configuration so it matches the Synchronizer prefix.
+
+   For example, in the Python SDK:
+
+   ```python
+   from splitio import get_factory
+
+   config = {
+       'redisHost': 'localhost',
+       'redisPort': 6379,
+       'redisDb': 0,
+       'redisPassword': 'somePassword',
+       'redisPrefix': 'myprefix'
+   }
+   ```
+
+### No Impressions Sent from Python SDK 7.x and Synchronizer 1.x
+
+When using Synchronizer 1.x with Python SDK 7.x, the Python SDK processes treatments correctly and Synchronizer does not report any errors. However, no impressions are sent to the Harness FME servers.
+
+Starting in Python SDK 7.0.0, design changes were made to align with the enhancements introduced in Synchronizer 2.0. Therefore, when using Python SDK 7.x, you must upgrade to Synchronizer 2.x.
+
+### Why do I see a "POST method: Status Code: 404 - 404 Not Found" Synchronizer error?
+
+After starting the Split Synchronizer process (version 1.6.0 and above), the Synchronizer debug log and the Synchronizer admin dashboard show the error below on all its network POST calls: `POST method: Status Code: 404 - 404 Not Found`.
+
+![](../static/post-1.png)
+
+This error occurs because an incorrect API key is passed to the Synchronizer, causing the Synchronizer to be unable to find the Account in the Harness FME servers.
+
+1. Verify the API key used by Synchronizer is correct. Synchronizer API key must be of SDK type. API keys can be viewed from Admin settings on the API keys page: `https://app.split.io/org/[Your Account ID]/admin/apis`.
+
+   ![](../static/post-2.png)
+
+1. Ensure the API key is properly passed to Synchronizer. 
+
+   Common ways include:
+
+    * Command line argument: `-api-key <APIKEY>`
+    * JSON configuration file: The `apiKey` property is used to issue requests against Harness FME servers.
+
+      ![](../static/post-3.png)
+
+    * Proxy mode usage: When Synchronizer is used in proxy mode (not Redis), the "auth" section and "sdkAPIKeys" allow setting custom API keys for internal use, enabling SDKs to use the internal custom API key.
+
+      ![](../static/post-4.png)
+
+    * Docker environment variable: If running Synchronizer within the packaged Docker image, use:
+
+      ```
+      -e SPLIT_SYNC_API_KEY=<APIKEY>
+      ```

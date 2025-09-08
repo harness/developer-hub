@@ -113,6 +113,8 @@ In the deploy steps under Container Configuration, specify the appropriate image
 
 1. [ECR Image for azure function plugin](https://gallery.ecr.aws/harness/harness/azure-function-plugin)
 2. [Docker Image for azure function plugin](https://hubgw.docker.com/r/harnessdev/azure-function-plugin)
+3. GAR Images for azure function plugin:
+   - Europe region: [GAR Image Repository for Azure Function Plugin (Europe)](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/europe/harness-public/harness%2Fazure-function-plugin?inv=1&invt=Ab5cNA)
 
 :::
 
@@ -126,7 +128,7 @@ The Azure function Deploy step has the following settings:
 
  * **Name:** Enter a name for the step.
  * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
- * **Azure Connector**: Specify the connector that connects to the azure infrastructure.
+ * **Container Registry**: Specify the connector that connects to the azure infrastructure and container registry you wish to use.
  * **Image**: Specify the artifact image you want to run. 
  * **Function app**: Specify the Azure Container to be used.
  * **Deployment Slot:** Enter the name of the Source slot for the deployment. This slot is where Harness deploys the new Azure Function version. Make sure the slot you enter is running.

@@ -1,7 +1,7 @@
 ---
 title: AI Test Automation Release Notes
 sidebar_label: AI Test Automation
-date: 2025-05-30T10:00:00
+date: 2025-08-22T10:00:00
 sidebar_position: 19
 ---
 
@@ -19,6 +19,49 @@ The release notes describe recent changes to Harness AI Test Automation.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## August 2025
+
+### New Features
+- **Binary File Upload**: Added support for uploading files during test execution
+- **Sequential Tasks**: Create multi-step workflows that execute in sequence
+- **LLM Test Naming**: Tests now automatically generate descriptive names using AI
+- **Smart Popup Handling**: Improved popup management - blocks unwanted popups while allowing user-triggered ones
+- **Data-Driven Testing**: Upload JSON files via CLI to run tests with multiple data sets
+
+### Enhancements
+- **AI Models**: Added support for Claude 4 and GPT-5 for better test generation
+- **Test Import**: Email notifications now sent when importing test suites
+- **Certificate Generation**: Added UI tool for generating test certificates
+- **Performance**: Improved screencast recording performance
+
+### Bug Fixes
+- Fixed test suite run history filters not working properly
+- Resolved issues with automatic file upload detection
+- Fixed date selection problems in Google Flights testing
+- Corrected step ordering issues when importing test cases
+
+## July 2025
+
+### New Features
+- **Test Suite Export/Import**: Export and import complete test suites with email notifications
+- **Database Testing**: Added support for MongoDB and PostgreSQL database queries with secure tunnel connections
+- **AI Token Usage**: View AI token consumption on test run pages with sorting capabilities
+- **Smart Date Selector**: New AI command for intelligent date selection
+- **Environment Export**: Export test environments along with tests
+
+### Enhancements
+- **Shadow DOM Support**: Tests can now interact with elements inside shadow DOM structures
+- **Parameter Management**: Improved parameter creation and editing experience
+- **UI Updates**: Updated branding from "CoPilot" to "Harness AI" throughout the interface
+- **Error Explanations**: Added detailed explanations when AI tasks fail
+- **Date Handling**: Better timezone support when working with dates
+
+### Bug Fixes
+- Fixed Slack notification channel selection issues
+- Resolved UI styling problems with input fields and buttons
+- Fixed replay functionality not showing latest changes
+- Corrected AWS Batch test execution reliability issues
+- Fixed table alignment and severity text display issues
 
 ## May 2025
 

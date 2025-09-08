@@ -4,6 +4,12 @@ sidebar_label: Component Summary
 description: View component summary dashboard across Artifacts and Code Repositories
 sidebar_position: 5
 
+tags:
+  - harness-scs 
+  - component-summary
+  - open-source-management
+  - dashboards
+
 ---
 
 

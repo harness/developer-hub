@@ -5,7 +5,7 @@ sidebar_position: 40
 ---
 
 :::info beta status
-IaCM is available on the Self-Managed Platform (SMP) as an **early Beta** feature.
+IaCM is available on the Self-Managed Platform (SMP) as a **Beta** feature.
 While generally available for certain use cases, IaCM on SMP has a few important caveats:
 
 - **Cost estimation is not currently supported**.
@@ -32,6 +32,9 @@ global:
   iacm:
     enabled: true
 ```
+:::tip smp installation example
+Go to [SMP basic configuration](/docs/self-managed-enterprise-edition/smp-basic-configuration/#installation) for an example of a `values.yaml` file.
+:::
 
 ### Update Your License
 Replace your existing license with one that includes IaCM (Enterprise or Trial). Update this block in your values.yaml:

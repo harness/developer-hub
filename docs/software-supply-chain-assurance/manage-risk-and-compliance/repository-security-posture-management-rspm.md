@@ -4,6 +4,11 @@ description: Security, risk and compliance posture of your code repositories.
 sidebar_position: 1
 redirect_from:
   - /docs/software-supply-chain-assurance/code-repositories-view
+
+tags:
+  - harness-scs 
+  - rspm
+  - risk-and-compliance
 ---
 
 # Repository Security Posture Management - RSPM with Harness SCS

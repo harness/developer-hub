@@ -59,6 +59,8 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="Git providers" label="Git providers" default>
 
+You can use any Git provider or [Harness Code Repository](/docs/code-repository) as your GitOps repository.
+
 
 1. In **Specify Repository Type**, select **Git**.
 2. In **Repository Name**, enter a name.

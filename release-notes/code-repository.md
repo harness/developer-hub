@@ -1,7 +1,7 @@
 ---
 title: Code Repository release notes
 sidebar_label: Code Repository
-date: 2025-07-03T10:00
+date: 2025-08-21T10:00
 sidebar_position: 7
 ---
 
@@ -20,6 +20,16 @@ These release notes describe recent changes to Harness Code Repository.
 
 :::
 
+## August 2025
+
+<!-- August 18, 2025 -->
+
+### Version 1.54.x
+
+#### New features and enhancements
+
+- Added target selection to Account, Org, and Project Branch/Tag rules, allowing users to include or exclude specific repos by name or pattern.
+- Added audit log support for Tag Rules, Webhook CRUD operations, and bypassed tag actions.
 
 ## July 2025
 

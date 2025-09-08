@@ -88,8 +88,6 @@ Click **Add**
 Add a label. Follow the labeling strategy you established in step 1. For example, a production application would have the label `harness.io/env-type: [prod|staging|dev]`.
 Click **Add Application Labels**.
 
-Currently, filtering by labels is behind the feature flag `CDS_GITOPS_LABELS_BASED_ACCESS_TO_APPS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
-
 :::
 
 

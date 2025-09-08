@@ -3,7 +3,9 @@ title: API keys
 sidebar_position: 40
 ---
 
-FME [SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/) and [Admin API](https://docs.split.io/reference) both require API keys for authentication.
+## Overview
+
+FME [SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure) and [Admin API](https://docs.split.io/reference) both require API keys for authentication.
 
 In Harness FME, there are three types of keys:
 

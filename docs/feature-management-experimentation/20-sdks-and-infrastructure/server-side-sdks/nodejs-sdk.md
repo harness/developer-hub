@@ -1,6 +1,12 @@
 ---
 title: Node.js SDK
 sidebar_label: Node.js SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-dependency-on-old-version-of-package-url-parse
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-using-gettreatment-in-localhost-mode-does-not-work-with-then-and-catch-blocks/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-localhost-mode-error-cannot-find-name-path/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-error-node-modules-has-no-exported-member-splitio/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-how-to-deploy-in-aws-lambda/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -99,13 +105,13 @@ Use the SDK factory client to evaluate treatments.
 
 ### Basic use
 
-When the SDK is instantiated, it kicks off background jobs to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds. While the SDK is in this intermediate state, if it is asked to evaluate which treatment to show to the logged in customer for a specific feature flag, it may not have data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the SDK is instantiated, it kicks off background jobs to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds. While the SDK is in this intermediate state, if it is asked to evaluate which treatment to show to the logged in customer for a specific feature flag, it may not have data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready (as shown below). We set the client to listen for the `SDK_READY` event triggered by the SDK before asking for an evaluation.
 
 When the `SDK_READY` event fires, you can use the `getTreatment` method to return the proper treatment based on the `key` and `FEATURE_FLAG_NAME` attributes you provided.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
@@ -149,7 +155,7 @@ client.on(client.Event.SDK_READY, () => {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -283,7 +289,7 @@ If your code runs with both types of storage, read [Working with both sync and a
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
 
 This method will return an object containing the treatment and associated configuration.
 
@@ -367,7 +373,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets('user_id', flagSets)
 
 ### Append properties to impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
 
 You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
 
@@ -835,7 +841,7 @@ client.on(client.Event.SDK_READY, function() {
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given feature flag, the treatment specified in the file is returned for every customer. Should you want to use another file, you just need to set the `features` key in the configuration object passed at instantiation time, to the full path of the desired file.
 
-`getTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
+`getTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them.
 
 Here is a sample `.split` file. The format of this file is two columns separated by a whitespace. The left column is the feature flag name, and the right column is the treatment name.
 
@@ -1256,3 +1262,149 @@ function thenable(val) {
 
 </TabItem>
 </Tabs>
+
+## Troubleshooting
+
+### Dependency on Old Version of Package url-parse
+
+Node.js SDK has a dependency on an old version of package `url-parse` (< 1.5.9), which is flagged as vulnerable in security scans.
+
+This package is part of a dependency chain in the `eventsource` package: `@splitsoftware/splitio > eventsource > original > url-parse`.
+
+To upgrade the `url-parse` package, you can use the following commands depending on your package manager:
+
+For npm environment:
+
+```bash
+npm audit fix
+```
+
+For yarn environment:
+
+```bash
+npm_config_yes=true npx yarn-audit-fix
+```
+
+Alternatively, you can add a resolutions field to your app’s `package.json` to force the use of a fixed version:
+
+```json
+"resolutions": { 
+  "url-parse": "1.5.10"
+}
+```
+
+Then run:
+
+```bash
+yarn upgrade
+```
+
+### Using getTreatment() in Localhost Mode Does Not Work with then() and catch() Blocks
+
+When implementing the Node.js SDK with Redis storage, the `getTreatment` method returns a Promise, so it works fine with `.then()` and `.catch()` blocks.
+
+However, when testing the SDK in localhost mode like this:
+
+```js
+client
+  .getTreatment('user_id', 'my-feature-comming-from-redis')
+  .then(treatment => {
+    // do something with the treatment
+  })
+  .catch(() => false)
+```
+
+It throws the error:
+
+```
+splitClient.getTreatment(...).then is not a function
+```
+
+In Redis storage mode, `getTreatment()` returns a Promise because it wraps a Redis fetch call. But in localhost mode, there is no Redis call, so `getTreatment()` does not return a Promise, causing `.then()` to fail.
+
+Wrap the SDK client creation and `getTreatment()` call inside an async function, and use `then()` and `catch()` on the returned Promise as shown below:
+
+```js
+const path = require('path');
+const SplitFactory = require('@splitsoftware/splitio').SplitFactory;
+
+async function createSplitClient() {
+    const SplitObj = SplitFactory({
+        core: {
+            authorizationKey: 'localhost'
+        },
+        startup: {
+            readyTimeout: 10
+        },
+        features: path.join(__dirname, 'first.yaml'),
+        debug: true
+    });
+    const client = SplitObj.client();
+    await client.ready();
+    console.log("SDK is ready");
+    return client;
+}
+
+async function getSplitTreatment(userKey, splitName) {
+    let splitClient = await createSplitClient();
+    return await splitClient.getTreatment(userKey, splitName);
+}
+
+getSplitTreatment("user", "first_split")
+  .then((treatment) => {
+    console.log("treatment: " + treatment);
+  })
+  .catch(() => {
+    console.log("SDK exception");
+  });
+```
+
+### While using Localhost mode, error generated: Cannot find name 'path'
+
+Using Node.js SDK, when trying to run the code below in Typescript file using Localhost mode:
+
+```typescript
+var factory = SplitFactory({
+    core: {
+         authorizationKey: 'localhost'
+    },
+    features: path.join(__dirname, '.split'),
+    scheduler: {
+        offlineRefreshRate: 15 // 15 sec
+    }
+});
+```
+
+The following error is thrown:
+
+```
+Cannot find name 'path'
+```
+
+This is a node issue. TypeScript needs typings for any module, except if that module is not written in TypeScript.
+
+You need to install the following package by running the command: `npm i @types/node -D`.
+
+### "/node_modules/@splitsoftware/splitio/types"' has no exported member 'SplitIO'
+
+Using Node.js SDK, when trying to import SplitIO as a namespace in TypeScript:
+
+```
+import { SplitIo } from '@splitsoftware/splitio';
+```
+
+The following error is thrown:
+
+```
+/node_modules/@splitsoftware/splitio/types"' has no exported member 'SplitIO'.
+```
+
+TypeScript implicitly imports SplitIO namespace when doing `import { SplitFactory } from '@splitsoftware/splitio';`, and even the “typeRoots” config is not affecting it because the declaration file is included in the SDK package and the “types” field is properly configured.
+
+You can explicitly import the SplitIO namespace (for example, on modules/files where SplitFactory is not being imported). To achieve this, include the line:
+
+```
+import SplitIO from '@splitsoftware/splitio/types/splitio';
+```
+
+This requires including `"allowSyntheticDefaultImports": true` in `tsconfig`.

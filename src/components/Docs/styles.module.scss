@@ -16,7 +16,6 @@
     }
   }
   p {
-    font-family: "Inter";
     font-weight: 400;
     font-size: 18px;
     line-height: 26px;
@@ -44,7 +43,6 @@
     // Grayscale 300
     border: 1px solid var(--gray-300);
     border-radius: 4px;
-    font-weight: 600;
     font-size: 16px;
     line-height: 24px;
     color: var(--gray-600);
@@ -77,7 +75,6 @@
   background: transparent;
   border: none;
   color: #0278d5;
-  font-weight: 600;
   font-size: 16px;
   line-height: 24px;
   margin-left: 32px;
@@ -102,8 +99,6 @@
     align-items: center;
     margin-bottom: 30px;
     h3 {
-      font-family: "Inter";
-      font-weight: 500;
       font-size: 18px;
       line-height: 14px;
       letter-spacing: 4px;
@@ -117,7 +112,6 @@
     }
   }
   h3 {
-    font-weight: 600;
     font-size: 20px;
     line-height: 28px;
     color: var(--ifm-heading-color);

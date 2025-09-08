@@ -3,6 +3,12 @@ title: Component Violations
 sidebar_label: Component Violations
 description: View Component Violations for Artifacts and Code Repositories
 sidebar_position: 4
+
+tags:
+  - harness-scs 
+  - component-violations
+  - open-source-management
+  - dashboards
 ---
 
 The Component Violations Dashboard for Artifacts and Repositories displays pipelines flagged for SBOM policy violations. It provides a centralized view across organizations and projects.

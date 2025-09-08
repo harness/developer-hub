@@ -470,9 +470,7 @@ For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add
 
 :::info
 
-Currently, OIDC authentication for AWS connectors is behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-Additionally, this option requires Harness Delegate version 24.03.836xx or later.
+This option requires Harness Delegate version 24.03.836xx or later.
 
 :::
 

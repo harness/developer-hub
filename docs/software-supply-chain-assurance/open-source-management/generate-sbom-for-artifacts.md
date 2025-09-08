@@ -8,6 +8,12 @@ redirect_from:
   - /tutorials/secure-supply-chain/generate-sbom
   - /docs/software-supply-chain-assurance/sbom/sbom-drift
   - /docs/software-supply-chain-assurance/sbom/sbom-score
+
+tags:
+  - harness-scs 
+  - generate-sbom
+  - open-source-management
+  - sbom   
 ---
 
 import Tabs from '@theme/Tabs';

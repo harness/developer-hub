@@ -7,6 +7,8 @@ sidebar_label: Create Gitspaces
 
 This document will guide you to understand in detail on how to create a new Gitspace. Follow the instructions below to start creating a new Gitspace. 
 
+---
+
 ### Select Your Deployment Model
 
 Based on the deployment model you choose - **Harness Hosted** or **Self Hosted** - you can proceed accordingly with this tutorial.
@@ -22,6 +24,8 @@ For Harness Hosted Gitspaces, no infrastructure configuration is required. All y
 For Self Hosted Gitspaces, you need to ensure your infrastructure is configured and set up beforehand. Read more about [Self Hosted Gitspaces](/docs/cloud-development-environments/introduction/self-hosted.md#self-hosted-model). All the configuration steps are mandatory before creating any Self Hosted Gitspace.
 
 **🔗 Follow the instructions here to configure Self Hosted Gitspaces: [Get Started with Self Hosted Gitspaces](/docs/cloud-development-environments/self-hosted-gitspaces/steps)**
+
+---
 
 ### Select Your Git Provider
 
@@ -50,6 +54,8 @@ If you plan to use any of the following On-Prem Git Providers, you must configur
 * [Bitbucket Data Center](https://www.atlassian.com/enterprise/data-center/bitbucket)
 
 **🔗 Follow the instructions here to configure On-Prem Git Providers: [Get Started with On-Prem Git Providers](/docs/cloud-development-environments/git-providers/on-prem-providers.md).**
+
+---
 
 ## Create Gitspaces
 Follow the instructions below to create a new Gitspace, based on your deployment model:
@@ -83,6 +89,8 @@ Follow the instructions below to create a new Gitspace, based on your deployment
 
 ![](./static/create-github-2.png)
 
+---
+
 ### Self Hosted Gitspaces
 
 1. Open the Harness UI and go to **Gitspaces** from the left sidebar.
@@ -112,3 +120,4 @@ Follow the instructions below to create a new Gitspace, based on your deployment
 
 Once your Gitspace is active, you're ready to begin development!
 
+---

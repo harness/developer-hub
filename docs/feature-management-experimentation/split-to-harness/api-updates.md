@@ -95,12 +95,12 @@ No, only with teammates who write or maintain admin automation code for managing
 
 ### Will I need a Harness API Key to use the new Harness endpoints?
 
-Yes.  This diagram shows which endpoints would need a Harness API Key. 
+Yes. This diagram shows which endpoints would need a Harness API Key. 
 
 ![](./static/api-key-diagram.png)
 
 ### Where can I learn more?
 
-Start with the Before and After Guide: API for Split Admins. Also have a look at the [Split to Harness Migration Overview](/docs/feature-management-experimentation/split-to-harness) and [30 Seconds to Confidence: How Your Migration Will Work](/docs/feature-management-experimentation/split-to-harness/how-it-works). 
+Start with the [Before and After Guide: API for Split Admins](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins). Also have a look at the [Split to Harness Migration Overview](/docs/feature-management-experimentation/split-to-harness) and [30 Seconds to Confidence: How Your Migration Will Work](/docs/feature-management-experimentation/split-to-harness/how-it-works). 
 
 Still have questions? Contact your CSM or support@split.io.

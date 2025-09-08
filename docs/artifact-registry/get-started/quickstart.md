@@ -3,6 +3,8 @@ title: Get started with Artifact Registry
 description: Build a Registry with Harness
 sidebar_position: 20
 sidebar_label: Get Started
+redirect_from:
+  - /docs/artifact-registry/supported-formats
 ---
 
 import Tabs from '@theme/Tabs';

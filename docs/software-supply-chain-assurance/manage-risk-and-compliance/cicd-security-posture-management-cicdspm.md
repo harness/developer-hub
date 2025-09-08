@@ -5,6 +5,11 @@ sidebar_position: 2
 redirect_from:
 
 - /docs/software-supply-chain-assurance/cicd-security-posture-management-cicdspm
+
+tags:
+  - harness-scs 
+  - risk-and-compliance
+  - ci-cd-spm
 ---
 
 # CI/CD Security Posture Management with Harness SCS

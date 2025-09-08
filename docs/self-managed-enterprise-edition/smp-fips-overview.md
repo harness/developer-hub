@@ -25,6 +25,8 @@ The most relevant standard for software systems is [FIPS 140](https://en.wikiped
 
 Systems using FIPS-validated cryptography help protect sensitive data and comply with regulatory requirements, especially in government, defense, and highly regulated industries.
 
+**Note** FIPS mode is not backward compatible and is only supported on new installations.
+
 ## Why FIPS Matters
 
 Many organizations—including federal agencies, government contractors, and companies in regulated industries—are required to use FIPS-validated cryptography to protect sensitive information.  

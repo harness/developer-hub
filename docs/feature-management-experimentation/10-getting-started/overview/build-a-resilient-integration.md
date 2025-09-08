@@ -2,7 +2,7 @@
 title: Build a Resilient Integration
 sidebar_label: Build a Resilient Integration
 description: Learn how to build a resilient integration with Harness FME.
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 ## Overview
@@ -70,7 +70,7 @@ For client-side SDKs, you can set up a listener for the `SDK_READY_TIMED_OUT` ev
 
 ### Account for the control treatment
 
-In case Split is unreachable and the SDK is unable to fetch feature flag definitions‚ and there is no cache available in the case of client side SDKs‚ any evaluations will return the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment). 
+In case Split is unreachable and the SDK is unable to fetch feature flag definitions‚ and there is no cache available in the case of client side SDKs‚ any evaluations will return the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment). 
 
 Make sure you code your application so that it is able to safely handle this situation. This may mean falling back to a safe behavior, such as turning an experimental feature off.
 
@@ -83,7 +83,7 @@ In the status page, you will see the status for Split's various components:
 * **SDK API**: This API serves rollout plans for our SDKs. A service disruption could prevent new SDK instances from initializing if your rollout plans aren't yet cached in Split's CDN as a result of previous requests by other SDK instances, and running SDK instances would not be able to fetch rollout plan changes.
 * **API**: Split's public API.
 * **Web console**: A web console outage means users can't log into Split's web application to modify rollout plans. Existing rollouts plans will continue to be served to Split SDKs in your applications and you end users' experience will be unaffected.
-* **Data processing**: Issues in this component will impact Split's ability to ingest [impression](/docs/feature-management-experimentation/feature-management/impressions) and [event data](/docs/feature-management-experimentation/release-monitoring/events/). This will also affect Live tail, alerts, experimentation, and impression webhooks. SDKs mitigate issues in our data processing pipeline by following a retry mechanism when they fail to post data back to Split. Data processing issues are usually temporal, delaying ingestion and rarely resulting in data loss. 
+* **Data processing**: Issues in this component will impact Split's ability to ingest [impression](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) and [event data](/docs/feature-management-experimentation/release-monitoring/events/). This will also affect Live tail, alerts, experimentation, and impression webhooks. SDKs mitigate issues in our data processing pipeline by following a retry mechanism when they fail to post data back to Split. Data processing issues are usually temporal, delaying ingestion and rarely resulting in data loss. 
 * **Integrations**: This component will reflect issues with any of Split's various [integrations](/docs/feature-management-experimentation/integrations). The integrations affected will be noted in the status page update and if the issue lies with an integration partner it will be noted and tracked.
 * **CDN**: Issues with our CDN may prevent new SDK instances from fetching rollout plans during initialization. For server-side SDKs, this will result in treatment evaluations returning control treatments. For client-side SDKs, evaluations will return treatments according to the rollout plans already cached in the device, if a cache is available.
 * **Streaming Authentication Service**: Issues in this component will prevent SDKs from receiving rollout plan updates via push notifications. In this scenario, all SDKs will fall back to polling to fetch updates with no impact to your end users.

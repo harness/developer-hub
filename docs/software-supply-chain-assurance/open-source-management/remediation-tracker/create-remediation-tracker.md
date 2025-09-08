@@ -5,6 +5,11 @@ description: Learn to create and manage your remediation tracker
 sidebar_position: 2
 redirect_from:
 - /docs/software-supply-chain-assurance/remediation-tracker/create-remediation-tracker
+
+tags:
+  - harness-scs 
+  - create-remediation-tracker
+  - open-source-management
 ---
 
 The instructions provided in this document will guide you through the process of creating a remediation tracker in the SCS Module. Please follow these steps to set up your tracker.

@@ -53,4 +53,6 @@ The Chaos Engineering Developer exam can start immediately after registering. Pl
 
 1. Create an account in Harness University
 2. Register for the exam
-3. Take the exam
+3. Review the instructions for the [Hands On Exam](https://developer.harness.io/university/instructions)
+4. Complete the multiple choice portion of the exam.
+5. Complete the Hands On portion of the exam in the Harness Platform. 

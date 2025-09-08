@@ -2,7 +2,7 @@
     "label": "Custom Plugins",
     "collapsible": "true",
     "collapsed": "true",
-    "position": 30,
+    "position": 5,
     "link": {
       "type": "generated-index",
       "title": "Custom Plugins"

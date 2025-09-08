@@ -65,12 +65,6 @@ If using a Kubernetes Manifest,
 
 1. Open the `gitops-agent.yml` file in your editor.
 2. In the `{ GitopsAgentName }-agent` ConfigMap, set the value of `GITOPS_SERVICE_HTTP_TLS_ENABLED` config to `true`.
-
-   :::note
-
-   For accounts with the `GITOPS_AGENT_HELM_V2` feature flag enabled, the ConfigMap name would be `gitops-agent`. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
-
-   :::
 3. Save and apply the modified manifest:
 
    ```

@@ -56,10 +56,10 @@ This topic describes the permissions required to execute chaos experiments on th
   </tr>
 <tr>
 	<th> Chaos deployment and architecture details </th>
-	<td><ul><li> Go to <a href="/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/cf%20chaos%20components%20and%20their%20deployment%20architecture/#run-lci-in-diego-cells-hosting-the-app-instances"> HCE CF chaos approach and deployment architecture> for more information. </a></li>
-<li>Go to <a href="https://hce-docs.github.io/platform-wise-chaos-info/PCF/pcf-chaos-faqs.html"> FAQ </a> to understand how this model compares with the other deployment models and why the agent runs with root user.</li></ul></td>
-<td>Go to <a href="/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-cf-infrastructure-as-native-cf-app-interacting-with-chaos-sidecars"> CF chaos approach and deployment architecture.</a> </td>
-<td>Go to <a href="/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-with-tanzu-ops-manager"> CF chaos approach and deployment architecture.</a> </td>
+	<td><ul><li> Go to <a href="/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/cf-chaos-components-and-their-deployment-architecture/#run-lci-in-diego-cells-hosting-the-app-instances">HCE CF chaos approach and deployment architecture</a> for more information.</li>
+<li>Go to <a href="https://hce-docs.github.io/platform-wise-chaos-info/PCF/pcf-chaos-faqs.html">FAQ</a> to understand how this model compares with the other deployment models and why the agent runs with root user.</li></ul></td>
+<td>Go to <a href="/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/cf-chaos-components-and-their-deployment-architecture#run-cf-infrastructure-as-native-cf-app-interacting-with-chaos-sidecars">CF chaos approach and deployment architecture</a>.</td>
+<td>Go to <a href="/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/cf-chaos-components-and-their-deployment-architecture#run-lci-with-tanzu-ops-manager">CF chaos approach and deployment architecture</a>.</td>
 </tr>
 <tr>
 	<th> Supported chaos faults	</th>

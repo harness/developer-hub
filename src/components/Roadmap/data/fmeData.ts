@@ -8,12 +8,7 @@ export const FmeData: Horizon = {
         tag: [{ value: "Better Together" }],
         title: "Split integration into Harness, Part 1",
         description:
-          "Incorporate Split as a fully native Harness module. Existing customers migrated.",
-      },
-      {
-        tag: [{ value: "Better Together" }],
-        title: "Authn and authz on Harness platform",
-        description: "Login, API scoping, and RBAC enhancements delivered by migration.",
+          "Incorporate Split as a fully native Harness module. Login, API scoping, and RBAC enhancements delivered by migration. Existing customers migrated.",
       },
       {
         tag: [{ value: "Monitoring" }, {value: "Experimentation"}],

@@ -160,3 +160,69 @@ In addition to seeing no events in the table for one of the treatments, the char
 ![](../../static/treatment-impact-blank.png)
 
 But if you select Values over time, then you will see the means metric value for all of the treatments. A treatment that has no events will have the metric value zero.
+
+### Experiment data mismatches
+
+This section outlines common reasons for discrepancies between FME experiment data and what you might observe in third-party data tools.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="In-treatment or Sample Size Mismatches">
+
+**`getTreatment` placement**: Call `getTreatment` as close to the experiment entry point as possible. This call signifies that a key/user has entered the experiment.
+
+Calling it too early (e.g., on a landing page when your experiment is on a search results page) may include users who never actually entered the experiment, inflating your sample size and adding noise.
+
+If you can’t follow best practice, define a “has done” metric for each experiment entry point, but this requires per-metric configuration. Addressing the root cause is recommended.
+
+**Metric types**: Some metric types use a “reduced” sample size (only counting users with a conversion event in the denominator), while others use the full sample size. For more information, see [Metric details and trends](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/#sample-population).
+
+**Filter alignment**: Make sure your third-party tool’s filters match the experiment filters.
+
+  * Using only a date range may cause over-counting. 
+  * Always include the rule filter, especially if using traffic allocation.
+
+For example: 
+
+```bash
+Total users: 10,000  
+Allocated to experiment: 10% (1,000 users)  
+  - 50% “on” → 500 users  
+  - 50% “off” → 500 users  
+Not allocated: 90% (9,000 users, default “off”)  
+```
+
+A generic third-party query might show 9,500 “off” users, but only 500 were actually part of the experiment.
+
+If mismatch persists, export the impression data using Data Export to identify mismatches and share keys/users that were misclassified with [Harness Support](/docs/feature-management-experimentation/fme-support) for further investigation.
+
+</TabItem>
+<TabItem value="Conversion Event or Key Mismatches">
+
+**Raw data gaps**: Use Explore or Data Export to confirm FME is receiving the expected event volume. If the count is lower than expected, there may be an integration or data flow issue
+
+**Filter alignment**: If raw data volume is correct, ensure the third-party query incorporates full experiment attribution logic.
+
+ * Treatment and rule assignment: The user must be allocated to the experiment. Conversion events from unallocated users (even if they got the default treatment) are excluded.
+   
+   For example: 
+
+    ```bash
+    Total users: 10,000  
+    Allocated to experiment: 10% (1,000 users)  
+      - 50% “on” → 500 users  
+      - 50% “off” → 500 users  
+    Not allocated: 90% (9,000 users, default “off”)  
+    ```
+
+   Using the example above, 9,000 users in default “off” outside of the experiment are excluded from metrics.
+
+ * If you want these counted, adjust experiment design (e.g., default rule of 5% “on” / 95% “off” instead of traffic allocation).
+
+**Conversion event timing**: The event must occur after treatment assignment. A date-only filter may incorrectly attribute pre-treatment events to the experiment.
+
+If mismatch persists, share a list of affected keys/users, plus a link to the metric details and definition, with [Harness Support](/docs/feature-management-experimentation/fme-support) for further investigation.
+</TabItem>
+</Tabs>

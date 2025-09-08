@@ -14,7 +14,6 @@ Secure Connect for Harness Cloud is currently in Limited GA. Its functionality a
 
 To enable Secure Connect for Harness Cloud, ensure the feature flag `CI_SECURE_TUNNEL` is active. Please contact Harness Support for assistance with enabling this feature.
 
-For macOS users, the additional feature flag `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` is required for compatibility.
 :::
 
 [Harness CI Cloud (Harness-managed build infrastructure)](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) addresses common challenges you might face when implementing a continuous integration tool in your infrastructure:
@@ -156,6 +155,7 @@ docker run -it \
    * [GCP connectors (GAR and GCS)](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp)
    * [AWS connectors](/docs/platform/connectors/cloud-providers/add-aws-connector)
    * [JFrog connectors (Artifactory)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference)
+   * [HashiCorp Vault connectors](/docs/platform/secrets/secrets-management/add-hashicorp-vault/)
 
 ### Use Secure Connect environment variables to route other clients
 

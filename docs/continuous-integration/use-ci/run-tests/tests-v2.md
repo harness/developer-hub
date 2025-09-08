@@ -21,6 +21,7 @@ Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in *
 
 :::info
 
+* The test step requires downloading the agent. This download is supported only over **HTTPS**. For customers running in SMP or air-gapped environments, Harness Platform must be configured with HTTPS enabled.  
 * Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
 * To use TI for Python, the image for the step must have Python 3 installed and accessible. Additionally, Virtual Environments for Python (`venv`) are not supported by TI.
 

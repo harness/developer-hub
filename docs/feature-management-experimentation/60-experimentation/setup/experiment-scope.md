@@ -52,3 +52,9 @@ This approach has a number of advantages for our customers:
 * Uniform experience across devices, versions and viewports: Since the web app can query the same service, our customers can be confident that their users will see a feature as on or off, regardless of whether they access the product via mobile or web. Thus, calling home is portable.
 * Update your platform without touching the app: Split is a core piece of our customers’ infrastructure and is always improving. By hosting Split on the server-side, our customers can confidently upgrade their server-side Split library without worrying about older, possibly conflicting, versions of Split being used in older mobile apps. Thus, calling home avoids versioning headaches.
 * No impact to File Size: By hosting the library on the server side, our customers need never worry about increasing the footprint of their mobile app by adding Split’s library. Thus, calling home is safe.
+
+## Further Reading
+
+Additional documentation, blog links, and articles:
+
+- [Don’t Be Left In the Dark: Try Trigger Testing](https://www.harness.io/blog/trigger-testing-with-lights-on)

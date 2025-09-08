@@ -34,6 +34,13 @@ const sidebars: SidebarsConfig = {
           id: "continuous-delivery",
           className: "sidebar-cd",
         },
+        // DB DevOps
+        {
+          type: "doc",
+          label: "Database DevOps",
+          id: "database-devops",
+          className: "sidebar-dbdevops",
+        },
         //iacm
         {
           type: "doc",

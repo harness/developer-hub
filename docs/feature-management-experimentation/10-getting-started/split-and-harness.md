@@ -12,7 +12,7 @@ For more information about the acquisition, go to the [Harness blog](https://www
 
 ## Get started with Harness
 
-If you're new to Harness, go to [Get started with Harness](/docs/category/get-started-with-harness) for a jumpstart into the Harness software delivery platform.
+If you're new to Harness, go to [Get started with Harness](/docs/category/get-started-with-harness) and learn about the Harness software delivery platform.
 
 ## Authentication, access, and user management
 
@@ -23,8 +23,14 @@ Authentication, access, and user management are part of the Harness platform. Pe
 
 ## Administering a Migrated Split Account on Harness
 
-Split administrators should read the [Before and After Guide: Administering a Migrated Split Account on Harness](https://help.split.io/hc/en-us/articles/37936926294541-Before-and-After-Guide-Administering-a-Migrated-Split-Account-on-Harness) published in the [Split to Harness Migration section of the Split by Harness Help Center](https://help.split.io/hc/en-us/sections/34618781681933-Split-to-Harness-Migration). The guide will walk you through administrative tasks which change to standard Harness platform features after your migration into Harness.
+Split administrators should read the [Before and After Guide: Administering a Migrated Split Account on Harness](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account/). The guide will walk you through administrative tasks which change to standard Harness platform features after your migration into Harness.
 
-## Harness platform integrations coming soon
+## Harness platform integrations
 
-We are moving rapidly to unlock integrations with Harness's innovative DevOps tools, DevEx improvements, Security features, and cloud optimizations, while also accelerating the roadmap of enhancements to the core of what you have previously known as Split. You can visit our [roadmap](https://developer.harness.io/roadmap/#fme) to learn more.
+We are moving rapidly to unlock integrations with Harness's innovative DevOps tools, developer experience improvements, security features, and cloud optimizations, while continuing to enhance the core of what you've previously known as Split. 
+
+You can use Harness FME directly within the [Harness Internal Developer Portal (IDP)](/docs/internal-developer-portal). This integration allows you to view and manage your feature flags and experiments directly from your developer portal, alongside other Harness tools. 
+
+For setup instructions and configuration details, see the [Harness IDP documentation](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme).
+
+Visit our [roadmap](https://developer.harness.io/roadmap/#fme) to learn more about upcoming integrations and planned enhancements.

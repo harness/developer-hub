@@ -2,6 +2,8 @@
 title: Overview
 sidebar_label: Overview
 description: How to make Feature Management & Experimentation work for you
+redirect_from:
+  - /docs/feature-management-experimentation/feature-management/best-practices/o-reilly-book
 ---
 
 Harness Feature Management & Experimentation (FME) combines capabilities for feature delivery and control with built-in tools for measurement and learning. FME connects insightful data to every feature release and supports modern practices like continuous delivery and progressive delivery.
@@ -116,7 +118,7 @@ Also, content blockers are becoming more common as users seek to avoid ads and m
 
 ### Server-side feature flags
 
-One way to mitigate the issues posed by the lack of control on the client side, and create greater consistency in the user experience, is to move feature flags to a back end service for evaluation. For more information, see [Moving feature flags to a service](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/moving-feature-flags-to-a-service/).
+One way to mitigate the issues posed by the lack of control on the client side, and create greater consistency in the user experience, is to move feature flags to a back end service for evaluation. For more information, see [Moving feature flags to a service](/docs/feature-management-experimentation/sdks-and-infrastructure#using-a-service-for-feature-flags).
 
 Moving feature flags to the back-end may exacerbate the difference in counts if content blockers come into play since client-side content blocking doesn't impact server-side flags. 
 
@@ -126,10 +128,10 @@ When using the JavaScript or mobile SDKs, configuration options (like in the [Ja
 
 If you notice that the number of visitors, impressions, or events in Split differs from other tools, or some impressions are missing, here are some common causes and how to address them:
 
-* [Block traffic until the SDK is ready](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/block-traffic-until-the-sdk-is-ready/): Ensure your application waits for the Split SDK to initialize before sending traffic, to avoid losing impression data.
-* [Impressions not showing in Split](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/why-are-impressions-not-showing-in-split/): Check your implementation for any issues that may prevent impressions from being recorded correctly.
-* [JavaScript SDK on slow networks](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/javascript-sdk-not-ready-status-in-slow-networks/): On slow network connections, the SDK may not send impressions in a timely manner. Consider strategies to mitigate network latency.
-* [Always getting control treatments](/docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/always-getting-control-treatments/): Receiving only control treatments can indicate targeting or configuration problems affecting impression counts.
+* [Block traffic until the SDK is ready](/docs/feature-management-experimentation/sdks-and-infrastructure#block-traffic-until-the-sdk-is-ready): Ensure your application waits for the Split SDK to initialize before sending traffic, to avoid losing impression data.
+* [Impressions not showing in Split](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#impressions-not-showing-in-harness-fme): Check your implementation for any issues that may prevent impressions from being recorded correctly.
+* [JavaScript SDK on slow networks](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#why-does-the-javascript-sdk-return-not-ready-status-on-slow-networks): On slow network connections, the SDK may not send impressions in a timely manner. Consider strategies to mitigate network latency.
+* [Always getting control treatments](/docs/feature-management-experimentation/sdks-and-infrastructure/troubleshooting#always-getting-control-treatments-from-gettreatment): Receiving only control treatments can indicate targeting or configuration problems affecting impression counts.
 
 </TabItem>
 </Tabs>
@@ -141,6 +143,8 @@ Split has robust data pipelines and attribution logic. If you do find a mismatch
 ### Feature management
 
 Manage feature flag scheduling, flag sets, and flag lifecycles. Feature flags turn on features to specific users or segments. You can tailor access to beta testers and early adopters based on individual IDs, attributes, dependencies, or percentages. Gradually increase the rollout percentage to limit the blast radius of your releases.
+
+In [this book](https://www.harness.io/resources/feature-flags-best-practices), Split CTO Pato Echague and Pete Hodgson explain how to implement feature-flagged software successfully, and offer some tips to developers on how to configure and manage a growing set of feature flags within your product, maintain them over time, manage infrastructure migrations, and more.
 
 ### Release monitoring
 
@@ -180,7 +184,13 @@ Use traffic types to easily identify the customer traffic you are splitting. A t
 
 ### Testing with feature flags
 
-Feature flags can be integrated into a variety of testing strategies across the software development lifecycle. In quality assurance and engineering workflows, they support unit tests, end-to-end tests, smoke tests, lifecycle testing, A/B testing, and both shift-left and shift-right practices. Teams can also use localhost mode to validate flag behavior in isolation or as part of CI pipelines. 
+Feature flags can be integrated into a variety of testing strategies across the software development lifecycle. In quality assurance and engineering workflows, they support unit, smoke, regression, sanity, and end-to-end testing, along with lifecycle testing, usability testing (moderated, unmoderated, think-aloud, remote), A/B testing, benchmark testing, and accessibility checks. 
+
+* **[Smoke testing](https://www.harness.io/blog/differences-between-smoke-testing-and-sanity-testing)**: A quick validation that critical functionality works before deeper testing begins.
+* **[Regression testing](https://www.harness.io/blog/comparing-smoke-tests-to-regression-tests)**: Ensures recent changes haven’t broken existing functionality.
+* **[Sanity testing](https://www.harness.io/blog/differences-between-smoke-testing-and-sanity-testing)**: A fast check that recent fixes or updates didn’t disrupt core features.
+
+Teams can also use localhost mode to validate flag behavior in isolation or as part of CI pipelines, and apply flags in both shift-left and shift-right practices. 
 
 For guidance on incorporating feature flags into these workflows, see [Creating Unit Tests for Code Using FME SDKs](/docs/feature-management-experimentation/api/unit-tests) and [Using Test Automation in QA](/docs/feature-management-experimentation/api/test-automation).
 
@@ -232,12 +242,10 @@ This list may change in the event of a failover, so we recommend subscribing to 
 
 Split uses a third-party provider, SendGrid, to send user invitations. If your spam blocker prevents these from being delivered, allow the following IP address: `168.245.9.60`.
 
-### Additional topics
+## Further Reading
 
-* Integrate & automate: Understand Split’s API and connect Split with the solutions you use today.
+Additional documentation, blog blog links, and articles:
 
-* Working as a team: Functionality for teams that need more controls and additional organization.
-
-* Securing your data: Carry your security best practices through into Split.
-
-* Support: Understand support definitions and incident response times.
+- [Testing Redesigned Data Pipelines with Split](https://www.harness.io/blog/testing-pipelines-split)
+- [Understanding Different Types of Usability Testing](https://www.harness.io/blog/types-of-usability-testing)
+- [Differences Between Smoke Testing and Sanity Testing](https://www.harness.io/blog/differences-between-smoke-testing-and-sanity-testing#feature-flags-and-their-role-in-testing)

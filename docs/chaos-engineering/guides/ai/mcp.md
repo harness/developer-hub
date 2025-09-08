@@ -5,7 +5,7 @@ description: Introduction to the AI Reliability Agent in Harness Chaos Engineeri
 sidebar_position: 2
 ---
 
-The Harness Chaos Engineering MCP (Model Context Protocol) tools enable users to test application resilience through natural language prompts in Claude Desktop. This integration allows DevOps, QA, and SRE teams to discover, learn about, and execute chaos experiments with minimal learning curve.
+The Harness Chaos Engineering MCP (Model Context Protocol) tools enable users to test application resilience through natural language prompts in AI-powered IDEs and tools. This integration allows DevOps, QA, and SRE teams to discover, learn about, and execute chaos experiments with minimal learning curve across multiple platforms including Claude Desktop, Windsurf, Cursor, and VS Code.
 
 ## Video Tutorial
 
@@ -22,7 +22,7 @@ For a detailed guide on how to setup Harness MCP server, refer to [Harness MCP S
 ### Prerequisites
 
 - Access to Harness Platform with Chaos Engineering enabled
-- Claude Desktop (paid version)
+- Claude Desktop (paid version) or other MCP-compatible AI tools
 - Harness API key
 
 ### Step 1: Build the MCP Server Binary
@@ -55,10 +55,14 @@ For a detailed guide on how to setup Harness MCP server, refer to [Harness MCP S
 
 3. Restart Claude Desktop
 
+:::info Other AI Tools
+For configuration with other MCP-compatible AI tools like **Windsurf**, **Cursor**, or **VS Code**, refer to the comprehensive [Harness MCP Server](/docs/platform/harness-aida/harness-mcp-server/) documentation which includes detailed setup instructions for all supported platforms.
+:::
+
 ### Step 3: Verify Installation
 
-1. Open Claude Desktop
-2. Navigate to Tools section
+1. Open Claude Desktop (or your configured AI tool)
+2. Navigate to the Tools/MCP section
 3. Verify Harness tools are available
 
     ![Verify Harness tools](./static/mcp/verify-harness-tool.png)
@@ -133,3 +137,8 @@ Here are practical examples of how to interact with the Harness Chaos Engineerin
 
 *Output:* Comprehensive resilience report with trends and actionable insights.
 
+## Next Steps
+
+- Start by asking "What chaos experiments are available for my services?"
+- Run your first experiment and analyze the results
+- For detailed configuration with other AI tools, see [Harness MCP Server Documentation](/docs/platform/harness-aida/harness-mcp-server/)

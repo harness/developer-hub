@@ -59,10 +59,10 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="usernamepwd" label="Username and Password" default border-bottom-color="red">
 
-To use a username and password for authentication, do the following:
+To use basic authentication (username and password), do the following:
 
 1. Enter **Username**.
-2. In **Password/API Key**, create a new password or API key or enter an existing one. For **API Key**, use a [Harness Text Secret](/docs/platform/secrets/add-use-text-secrets).
+2. In **Password**, add a password.
 3. Select **Continue**.
 
 

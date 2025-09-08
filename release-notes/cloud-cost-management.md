@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-08-11T18:00
+date: 2025-08-29T18:00
 sidebar_position: 6
 ---
 
@@ -20,6 +20,98 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 :::
 
+## August 2025 - Version 1.62.3
+#### **Deployment Date:** August 29, 2025 (Prod-1)
+
+### ⭐ [New Feature] Historical Recommendations Widgets
+**[CCM-24185] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#applied-recommendations)**
+
+In the Applied Recommendations tab, we’ve added two new widgets: one shows Recommendations vs. Savings, highlighting the savings from applied recommendations, and the other shows Recommendations Marked as Applied, along with a detailed breakdown of those marked as applied. We have also introduced “BY/ON” column to show which user applied the recommendation and when.
+
+<DocImage path={require('./static/ccm/historical-rec.png')} width="100%" height="100%" title="Click to view full size image" />
+
+
+### ⭐ [New Feature] Jira Status Mapping in Recommendations
+**[CCM-23844] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#recommendation-settings)**
+
+We’ve added support for Jira Status Mapping in Recommendation Settings. Users can now map Jira statuses so that recommendations are automatically moved to either the Applied section or the Ignore List, based on their selection.
+
+Noted that you need to have a Jira connector configured successfully for this feature to show up in UI and it takes about an hour for the changes to reflect.
+
+<DocImage path={require('./static/ccm/status-mapping.png')} width="60%" height="60%" title="Click to view full size image" />
+
+### ⭐ [New Feature] Cluster Capacity Limits
+**[CCM-24203] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/feature-of-co)**
+
+We have added Cluster Capacity Limits in Cluster Orchestrator’s Cluster Configuration. For Karpenter Nodepools, users can now set maximum CPU (cores) and memory (bytes) limits as guardrails to prevent uncontrolled cluster scaling.
+
+<DocImage path={require('./static/ccm/cluster-limits.png')} width="60%" height="60%" title="Click to view full size image" />
+
+### Feature Improvements
+
+- **Draft Indicator for Perspective Creation**: All Perspectives created from now will have a "Draft" prefix to their name in the Perspective Builder to indicate that the Perspective creation is still in process.
+
+- **Enhanced Policy Evaluation Transparency** We have added an Evaluated Rule tab in the Evaluation Output to display the policy YAML used for evaluation. An option "Include custodian-metadata.json" has been included in the bulk export functionality to export the metadata of the policies evaluated.
+
+<DocImage path={require('./static/ccm/evaluated-rule.png')} width="90%" height="90%" title="Click to view full size image" />
+
+### Bug Fixes
+
+- **Chart Visualization Improvement**: We recently switched the chart's Y-axis from logarithmic to linear based on feedback. However, this made it difficult for users to view both cluster and cloud costs together, as one would get overshadowed unless the other was deselected. We've reverted the change for now while we work on a better solution to visualize both.
+
+- **Azure VM Recommendations Field Mapping**: In the Azure VM recommendations, the namespace and clusterName fields were mistakenly mapped in reverse. This mismatch caused the unique combination to fail to align with the ignore list, resulting in items remaining unexcluded.
+
+- **GCP Connector Command Fixes**: Previously, for Cloud Costs GCP connector, the command to create a custom role for AutoStopping did not have backslashes for new lines, which caused the command to fail. We have also added `compute.snapshots.list` and `compute.disks.list` permissions by default as they are used for visibility.
+
+## August 2025 - Version 1.61.1
+#### **Deployment Date:** August 22, 2025 (Prod-1)
+
+### ⭐ [New Feature] Dynamic Perspective Reports
+**[CCM-23836] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-perspective-reports)**
+
+
+<DocImage path={require('./static/output-dynamic.gif')} width="100%" height="100%" title="Click to view full size image" />
+
+CCM is introducing a new capability **Dynamic Perspective Reports**, a powerful way to **generate**, **schedule**, and **manage** cost reports directly from your Perspectives. Create reports from your perspectives to **bookmark specific filter and grouping configurations**. No need to rebuild the same view repeatedly — just save it once and access it anytime.
+
+**Key Highlights**
+
+- **Create Reports from Perspectives** with custom grouping, filters, time periods, and columns.
+- **Flexible Delivery Options**: download instantly or schedule recurring deliveries to up to 50 recipients.
+- **Centralized Management**: access, edit, or delete all saved reports under **Cloud Costs > Perspectives > Saved Reports**.
+- **Email Subscriptions**: subscribe/unsubscribe from scheduled report deliveries anytime.
+
+This feature is rolled out behind a **Feature Flag**. If the flag is enabled for your account, report creation via the Perspective creation flow will be disabled.
+
+
+## August 2025 - Version 1.60.1
+#### **Deployment Date:** August 18, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **Revamp Perspective Rule Builder UX:** We’ve revamped the UX for the Perspective Rule builder. The time range selection in Perspective creation is now on the right side near the chart, and the Rule Name and Folder fields are moved into a separate modal. This updated rule builder is also used in Cost Categories. [CCM-24935]
+
+<DocImage path={require('./static/release-new.png')} width="100%" height="100%" title="Click to view full size image" />
+
+### Bug Fixes 
+
+- **Permission Handling Improvement:** We have fixed an issue with folder permission enforcement. Previously, users with read-only access could sometimes edit and move perspectives from one folder to other provided the destination folder allows create/edit permissions. This update ensures proper permission validation across all folders. [CCM-24670]
+
+- **Container Cost Display Enhancement:** Previously, when a container's `lastDayCost` was unavailable, recommendations displayed 'NaN' (Not a Number) values in the UI. We've implemented fallback logic that automatically retrieves the `lastDayCost`, ensuring consistent cost visibility across all recommendations. [CCM-23235]
+
+## August 2025 - Hotfix: Dashboard Cost Totals Issue
+#### **Deployment Date:** August 17, 2025 (Prod-1)
+
+**What Was Fixed**
+- We addressed an issue where cost totals in Dashboard reports did not always align with the detailed breakdowns. When viewing cluster costs by specific categories (such as namespace ), the “Total” row could sometimes differ from the sum of the detailed rows. This occurred because filters were applied differently to totals versus detailed costs.
+
+**What has changed now?**
+
+- The “Total” row now always matches the sum of the detailed rows.
+- Reports remain reliable across all views whether filtered by namespace, labels, or other categories.
+
+**Note**: This was due to a display issue. The actual cloud costs and allocations did not get affected.
+
 ## August 2025 - Version 1.59.1
 #### **Deployment Date:** August 11, 2025 (Prod-1)
 
@@ -37,6 +129,8 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 <DocImage path={require('./static/forecast.png')} width="100%" height="100%" title="Click to view full size image" />
 
 - **New Feature Flag**: Introduced a new feature flag which, when enabled for specific accounts, will exclusively bypass any cost calculations using public pricing sources. To enable the feature flag, please contact Harness Support. [CCM-22370]
+
+- **Enhanced Node Pool Recommendations Display**: We've improved the Node Pool Recommendations listing page to show cloud account identifiers, providing better context for multi-account environments. For AWS, you'll see the Account ID; for GCP, the Project ID; and for Azure, the Subscription ID. This enhancement helps you quickly identify which cloud account each recommendation belongs to. [CCM-24291]
 
 ### Bug Fixes
 
@@ -1369,7 +1463,7 @@ When building a cost category, it is now possible to incorporate another cost ca
 
 **Azure VM recommendations**
 
-Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
+Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#azure).
 
 ##### Fixed issues
 
@@ -1635,7 +1729,7 @@ Now, the API returns both account name and ID.
 
 - Introducing support to list the label keys that contain the string node-pool-name. (CCM-10203)
 
-  While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. See [Labels for node pool recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
+  While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. 
 
 ##### Fixed issues
 
@@ -1697,7 +1791,7 @@ This release adds validation to ensure that the load balancer domain name specif
 
 ##### What's new
 
-You can now add labels to enable node pool recommendations. `kops cluster` node label has been added for node pool recommendations. See [Labels for node pool recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations#prerequisites) for more information. (CCM-9309)
+You can now add labels to enable node pool recommendations. `kops cluster` node label has been added for node pool recommendations. (CCM-9309)
 
 ##### Fixed issues
 

@@ -420,7 +420,7 @@ To retrieve encrypted Terraform Output data, find the `TF_JSON_OUTPUT_ENCRYPTED`
 ### Does Harness support storing the Terraform Plan on the Harness Delegate temporarily?
 
 Yes, users can now store the Terraform plan on the delegate and leverage it in the apply step. This now bypasses the restriction to store the plan in a secrets manager and let users store it locally.
-This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Harness Delegate version 827xx or later is required for this feature.
+Harness Delegate version 827xx or later is required for this feature.
 Go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/Terraform-infra/run-a-Terraform-plan-with-the-Terraform-plan-step/#store-Terraform-plan-on-harness-delegate) and [Demo Video](https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=b9fac5c3-c11b-4f50-acff-f4fd2b3cc83a) for more information.
 
 

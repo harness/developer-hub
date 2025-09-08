@@ -245,12 +245,6 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
-            <a href="/release-notes/security-testing-orchestration">
-              <h4>Security Testing Orchestration</h4>
-              <p>New features and fixed issues for the STO module</p>
-            </a>
-          </li>
-          <li>
             <a href="/release-notes/software-supply-chain-assurance">
               <h4>Supply Chain Security</h4>
               <p>New features and fixed issues for the SCS module</p>

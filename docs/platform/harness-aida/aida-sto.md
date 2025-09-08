@@ -1,7 +1,7 @@
 ---
-title: Fix security vulnerabilities using AI
-description: Enhanced remediation using Harness AI
-sidebar_position: 40
+title: Fix security vulnerabilities using Harness AI
+description: Enhanced remediation using Harness AI.
+sidebar_position: 4
 ---
 
 

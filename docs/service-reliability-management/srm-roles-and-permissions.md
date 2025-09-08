@@ -1,5 +1,5 @@
 ---
-title: Access control
+title: Access Control
 description: Learn how to add and manage access control for Service Reliability Management.
 sidebar_position: 100
 ---

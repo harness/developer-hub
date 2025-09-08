@@ -7,7 +7,11 @@ redirect_from:
 
 - /docs/software-supply-chain-assurance/sbom/automate-sbom-drift-detection
 
-
+tags:
+  - harness-scs 
+  - generate-sbom
+  - open-source-management
+  - sbom 
 
 ---
 

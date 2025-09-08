@@ -593,8 +593,8 @@ There are two primary ways for the Harness connector to authenticate with Azure:
 * Select **Specify credentials here** to use an Application (client) and Tenant (directory) Id.
 * Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its credentials from the Harness Delegate that is running in your Azure subscription or AKS cluster.
 
-<details>
-<summary>Specify credentials</summary>
+<Tabs>
+<TabItem value="Specify Credentials">
 
 If you select **Specify credentials here**, you must provide Microsoft Azure app registration details.
 
@@ -628,10 +628,47 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 
 6. Select **Continue**.
 
-</details>
+</TabItem>
 
-<details>
-<summary>Inherit credentials from the delegate</summary>
+<TabItem value="OIDC (Beta)">
+
+:::warning
+
+Currently, the Azure OIDC connector is enables:
+- Deployment to the Azure Container Registry (ACR)
+- Deployment to Azure Kubernetes Service (AKS)
+
+:::
+
+:::info
+
+Currently, the Azure OIDC connector is behind the feature flag `CDS_AZURE_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+1. In Microsoft Azure, go to the App registration **Overview** or **Managed Identity** page and make note of the **Application (client) ID** and **Directory (tenant) ID**.
+
+   The **Application (client) ID** is the application Id for the app registration you want to use the Harness connector. To access resources in your Azure subscription, you must assign the Azure App registration using this Application Id to a role in that subscription. For more information, go to the following Microsoft documentation:
+
+   * [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+   * [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)
+   * [Use the portal to create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+
+   The **Directory (tenant) ID** is the Id for the Microsoft Entra ID that exists in your app. For more information, go to the following Microsoft Entra documentation:
+
+   * [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
+   * [Use the portal to create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+
+   ![Microsoft Azure app registration Overview page.](../static/add-a-microsoft-azure-connector-68.png)
+
+2. In the Harness Azure Cloud Provider settings, select the **Environment**: Either **Azure Global** or **US Government**.
+3. Input the **Application (client) ID** from Azure in the connector's **Application Id** field.
+4. Input the **Directory (tenant) ID** from Azure in the connector's **Tenant Id** field.
+5. Optionally, change the **Audience**. By default, this value is `api://AzureADTokenExchange`, and is the recommended value. 
+
+</TabItem>
+
+<TabItem value="Inherit Credentials from the delegate">
 
 If you have [installed a Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) in your Azure subscription (preferably in your target AKS cluster), select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit authentication credentials from the delegate.
 
@@ -653,7 +690,8 @@ If you have [installed a Harness Delegate](/docs/platform/delegates/delegate-con
 
 4. Select **Continue**
 
-</details>
+</TabItem>
+</Tabs>
 
 ## Select connectivity mode
 

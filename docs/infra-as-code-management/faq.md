@@ -25,3 +25,12 @@ sidebar_label: FAQs
 
     Yes, modules are agnostic and can be used with either an OpenTofu or Terraform provisioner.
 </details>
+
+## Drift detection questions
+<details>
+    <summary>Does drift detection behave the same for OpenTofu and Terraform?</summary>
+
+    No, drift detection behaves differently for OpenTofu and Terraform.
+
+    Harness uses OpenTofu's `tofu plan -refresh-only` for drift detection, which is more sensitive to any changes outside of OpenTofu—including metadata like `updated_at`—and treats all such changes as drift. This is by design in OpenTofu. In contrast, a normal `tofu plan` (and its Harness Step) only reports changes that affect your actual infrastructure, ignoring irrelevant differences. This means drift detection with OpenTofu may show more changes than you might expect, but these are set by OpenTofu’s approach.
+</details>

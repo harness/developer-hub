@@ -1,7 +1,7 @@
 ---
 title: Optimize cloud costs using Harness AI
 description: Learn how to use Harness AI for cloud asset governance.
-sidebar_position: 30
+sidebar_position: 3
 canonical_url: https://www.harness.io/blog/elevating-aida-harness-unveils-7-new-innovative-capabilities
 ---
 

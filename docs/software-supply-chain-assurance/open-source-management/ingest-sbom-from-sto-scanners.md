@@ -8,6 +8,12 @@ redirect_from:
 - /docs/software-supply-chain-assurance/sbom/generate-sbom-aqua-trivy
 - /docs/software-supply-chain-assurance/sbom/generate-sbom-blackduck
 - /docs/software-supply-chain-assurance/sbom/generate-sbom-snyk
+
+tags:
+  - harness-scs 
+  - ingest-sbom-from-scanners
+  - open-source-management
+  - sbom 
 ---
 
 

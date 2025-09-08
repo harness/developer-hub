@@ -75,7 +75,7 @@ The Self-Managed Enterprise Edition allows you to run Harness Chaos Engineering 
 ### Limitations Compared to SaaS
 - **Enterprise ChaosHub**: Not connected by default
   - Contact [Harness Support](mailto:support@harness.io) for access
-  - Can be added as a [custom ChaosHub](/docs/chaos-engineering/guides/chaoshubs/)
+  - Can be added as a [custom ChaosHub](/docs/chaos-engineering/guides/chaoshub)
 - **Harness AIDA**: AI Development Assistant not available
 - **Updates**: Manual deployment of platform updates required
 - **Maintenance**: Customer responsibility for platform operations

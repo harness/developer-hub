@@ -24,6 +24,20 @@ These release notes describe recent changes to Harness Platform.
 :::
 ## Important feature change notice
 
+:::danger Breaking Change: Delete API Response Codes for Notification Rules and Channels (Effective October 20, 2025)
+We have aligned the delete APIs for Notification Rules and Channels with Harness API documentation and standard REST practices.
+
+**Previous behaviour**:
+  - Successful deletion → `200 OK` with a string response body (`application/json`).
+  - Identifier not found/already deleted → `500 Internal Server Error`.
+
+**New behaviour (effective October 20, 2025)**:
+  - Successful deletion → `204 No Content` (no response body).
+  - Identifier not found/already deleted → `404 Not Found`.
+
+**Action Required**: Please review and update any automation, scripts, or integrations that depend on the old response codes before October 20, 2025.
+:::
+
 :::warning Important Update: Change in Default Container Registry for Harness Images
 
 **Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
@@ -77,16 +91,6 @@ If your organization restricts access to Google Artifact Registry (GAR), conside
     If any automation relies on these `core_notification_view/edit/delete` permissions, we recommend updating them accordingly.
 
     **Note:** The existing legacy notification permissions are DEPRECATED and will soon be moved to an INACTIVE state. The new permissions will be released in the ACTIVE state with RBAC enforced.
-:::
-
-:::danger Important Note:
-    **About `core_oidcIdToken_create`**  
-
-    A new `core_oidcIdToken_create` permission is introduced to govern the creation of OIDC ID token. The permission is currently in the EXPERIMENTAL status. However, after August 8, the permission will change to ACTIVE status. If any automation makes use of the [OIDC ID token](https://apidocs.harness.io/tag/Oidc-ID-Token), we recommend updating it accordingly.
-
-      | Resource      | Permissions                                          | Status       |
-      |---------------|------------------------------------------------------|--------------|
-      | OIDC ID Token | <ul><li>Create (`core_oidcIdToken_create`)</li></ul> | Experimental |
 :::
 
 :::info important
@@ -143,7 +147,40 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## September 2025 
+
+### Version 1.105.x <!--September 03, 2025-->
+
+#### New features and enhancements
+
+- Added the ability for customers to see the task response status in delegate selection logs. [PL-58972] 
+
 ## August 2025
+
+### Version 1.103.x <!--August 25, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where the reconciliation banner was incorrectly displayed on the Secret Details page. [PL-64802]
+- Updated API key validation to return a 403 error (instead of 400) when a Service Account Token (SAT) is sent in place of a Personal Access Token (PAT) with `"apiKeyType": "USER"`. [PL-62520] 
+
+### Version 1.102.x <!--August 19, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue in Pipeline Studio where the "View Delegate Task Logs" link on the pipeline execution Details page redirected to a non-existent page. It now correctly redirects to the delegate URL. [PL-64747]
+- Resolved an issue where deleting a user at the Organization or Project scope also deleted their API keys and tokens from the Account. [PL-64793]
+
+#### New features and enhancements
+
+- Selection logs now also capture tasks acquired through polling, improving traceability. [PL-58880]
+
+### Version 1.101.x <!--August 13, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where, with the `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES` feature flag enabled, adding a new role assignment to an inherited principal failed if one already existed, due to incorrect scope information being passed. [PL-64180]
+- Improved the delegate registration process, making it more reliable and faster under heavy load, while reducing timeouts and failed attempts. [PL-61033]
 
 ### Version 1.100.x <!--August 06, 2025-->
 
@@ -212,7 +249,6 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements 
 
-- Introduced `core_oidcIdToken_create` as an experimental permission to enable creation of OIDC ID Tokens. [PL-62926]
 - Delegates are now tagged with the appropriate scope (Account/Organization/Project) for all Assessment types in the Delegate selection logs in a pipeline. [PL-49165]
 
 ## June 2025

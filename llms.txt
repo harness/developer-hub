@@ -443,7 +443,6 @@ No-LLM-Training: /docs/continuous-integration/private/**
   - [Heap](https://developer.harness.io/docs/feature-management-experimentation/integrations/heap): This topic provides detailed information about the FME Heap integration.
   - [Jenkins](https://developer.harness.io/docs/feature-management-experimentation/integrations/jenkins): This topic provides detailed information about the FME Jenkins integration.
   - [Jira Cloud](https://developer.harness.io/docs/feature-management-experimentation/integrations/jira-cloud): This topic provides detailed information about the FME Jira Cloud integration.
-  - [Librato](https://developer.harness.io/docs/feature-management-experimentation/integrations/librato): This topic provides detailed information about the FME Librato integration.
   - [Mixpanel](https://developer.harness.io/docs/feature-management-experimentation/integrations/mixpanel): This topic provides detailed information about the FME Mixpanel integration.
   - [mParticle](https://developer.harness.io/docs/feature-management-experimentation/integrations/mparticle): This topic provides detailed information about the FME mParticle integration.
   - [New Relic](https://developer.harness.io/docs/feature-management-experimentation/integrations/new-relic): This topic provides detailed information about the FME New Relic integration.

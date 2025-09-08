@@ -2,6 +2,11 @@
 title: Configure Harness SCS Plugins
 description: Configure how SCS pipelines pull plugin images, including using a private registry instead of the default public source.
 sidebar_position: 91
+
+tags:
+  - harness-scs 
+  - settings
+  - image-tags-for-scs-plugins 
 ---
 
 When a Harness SCS pipeline starts, an **Initialize** step runs automatically before any other steps in the stage. This step sets up the environment and pulls the required Harness SCS images. By default, images are pulled from Docker Hub, but you can configure your pipeline to use images from the [Harness project on Google Artifact Registry](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public?invt=Ab4G7w&inv=1) or the [Harness ECR public gallery](https://gallery.ecr.aws/harness), depending on how you configure your accounts and pipelines to connect to the [Harness container registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).

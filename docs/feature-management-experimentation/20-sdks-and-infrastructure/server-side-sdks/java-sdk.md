@@ -1,12 +1,22 @@
 ---
 title: Java SDK
 sidebar_label: Java SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-is-there-a-jar-file/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-time-out-error-nosuchmethoderror-google-common/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-how-to-change-log-level/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-fatal-alert-handshake-failure/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-exception-pkix-path-building-failed/
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+## Overview
+
 This guide provides detailed information about our Java SDK. All of our SDKs are open source. Go to our [Java SDK GitHub repository](https://github.com/splitio/java-client) to see the source code.
+
+If you prefer to use the SDK as a standalone JAR file, it’s available for download from the Maven Central Repository. For example, the JAR for version 4.2.1 can be downloaded [here](https://repo1.maven.org/maven2/io/split/client/java-client/4.2.1/java-client-4.2.1.jar). You can browse all available versions [here](https://repo1.maven.org/maven2/io/split/client/java-client/).
 
 ## Language support
 
@@ -33,7 +43,7 @@ Import the SDK into your project using one of the following two methods:
 <dependency>
     <groupId>io.split.client</groupId>
     <artifactId>java-client</artifactId>
-    <version>4.16.1</version>
+    <version>4.17.0</version>
 </dependency>
 ```
 
@@ -41,7 +51,7 @@ Import the SDK into your project using one of the following two methods:
 <TabItem value="Gradle">
 
 ```java
-compile 'io.split.client:java-client:4.16.1'
+compile 'io.split.client:java-client:4.17.0'
 ```
 
 </TabItem>
@@ -72,7 +82,7 @@ Starting version 3.0.1, SplitClientConfig#ready(int) is deprecated and migrated 
 * Call `SplitClient#blockUntilReady()` or `SplitManager#blockUntilReady()`.
 :::
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready. Do this by setting the desired wait using `.setBlockUntilReadyTimeout()` in the configuration and calling `blockUntilReady()` on the client. Do this all as a part of the startup sequence of your application.
 
@@ -134,7 +144,7 @@ Now you can start asking the SDK to evaluate treatments for your customers.
 
 After you instantiate the SDK factory client, you can start using the `getTreatment` method of the SDK factory client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you are serving the feature to.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
@@ -177,7 +187,7 @@ when (treatment) {
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -303,7 +313,7 @@ val treatmentsBySets = client.getTreatmentsByFlagSets("KEY", flagSetNames)
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
 
 The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
 
@@ -371,7 +381,7 @@ val treatmentsBySets: Map<String, SplitResult> = client.getTreatmentsWithConfigB
 
 ### Append properties to impressions
 
-[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
+[Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Harness servers for feature monitoring and experimentation.
 
 You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
 
@@ -1031,7 +1041,7 @@ val client: SplitClient = splitFactory.client()
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given flag, the treatment specified in the file is returned for every customer.
 
-`getTreatment` calls for a feature flag and only returns the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
+`getTreatment` calls for a feature flag and only returns the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them.
 
 The format of this file is two columns separated by a whitespace. The left column is the feature flag name and the right column is the treatment name. The following is a sample `.split` file:
 
@@ -1691,3 +1701,82 @@ Here is a sample of a **weblogic.xml** file that includes the previously mention
 
 </TabItem>
 </Tabs>
+
+## Troubleshooting
+
+### Timeout Error: NoSuchMethodError: com.google.common.collect.Multisets.removeOccurrences
+
+Using the Java SDK within certain frameworks, the SDK always times out. The logs show the following error:
+
+```swift
+2602 [split-splitFetcher-0] ERROR io.split.engine.experiments.RefreshableSplitFetcher  - RefreshableSplitFetcher failed: com.google.common.collect.Multisets.removeOccurrences(Lcom/google/common/collect/Multiset;Ljava/lang/Iterable;)Z
+...
+java.lang.NoSuchMethodError: com.google.common.collect.Multisets.removeOccurrences(Lcom/google/common/collect/Multiset;Ljava/lang/Iterable;)Z
+```
+
+This error happens because the Java SDK depends on the Google Guava library version 19.0 or higher. If your framework uses an older Guava version (< 19.0), this method will be missing, causing the error.
+
+Upgrade the Google Guava dependency in your project to version 19.0 or above to resolve this issue.
+
+### How to change log level in the Java SDK
+
+When integrating the Java SDK into a framework that uses Log4J, the SDK outputs many debug lines. Is it possible to change the log level?
+
+Yes. The Java SDK respects the `log4j.properties` configuration file used by your Java application. To reduce logging verbosity and set the log level to `ERROR`, add these lines to your `log4j.properties` file: 
+
+```
+log4j.logger.split.org.apache = ERROR
+log4j.logger.io.split = ERROR
+```
+
+This will suppress debug and info logs from the SDK, showing only error messages.
+
+### Error using JRE 6.x: "fatal alert: handshake_failure"
+
+Using the Java SDK with JDK 1.6 (JRE 6.x), you may encounter the following SSL connection error when trying to connect to split.io:
+
+```yaml
+.RECV TLSv1 ALERT: fatal, handshake_failure
+
+handling exception: javax.net.ssl.SSLHandshakeException: Received fatal alert: handshake_failure
+```
+
+Java 1.6 supports TLSv1 but does not support the high-strength ciphers required by split.io’s security protocol.
+
+To fix this issue, you have two options:
+
+1. Upgrade your JDK to version 1.7 or above. These versions include support for the stronger ciphers by default.
+1. If upgrading is not an option, install the Java Cryptography Extension (JCE) provided by your JVM vendor for Java 6 to enable support for high-strength ciphers.
+
+### Exception: PKIX path building failed — unable to find valid certification path to requested target
+
+When initializing the Java SDK `SplitFactory` object, you may see the following error:
+
+```yaml
+RefreshableSplitFetcher failed: 
+Problem fetching splitChanges:
+sun.security.validator.ValidatorException: 
+PKIX path building failed:
+sun.security.provider.certpath.SunCertPathBuilderException:
+unable to find valid certification path to requested target
+```
+
+This indicates that Java could not verify the SSL certificate from Split.io, preventing a secure connection between the SDK and Harness FME servers.
+
+Manually install the Split.io certificates into your JVM’s trust store:
+
+1. Download the certificates for both `sdk.split.io` and `events.split.io`:
+
+   ```bash
+   openssl s_client -showcerts -connect sdk.split.io:443 </dev/null 2>/dev/null | openssl x509 -outform PEM > splitsdkcert.pem
+   openssl s_client -showcerts -connect events.split.io:443 </dev/null 2>/dev/null | openssl x509 -outform PEM > spliteventscert.pem
+   ```
+
+1. Import the certificates into the Java cacerts keystore (replace [JAVA_HOME] with your Java installation path):
+
+   ```bash
+   keytool -importcert -file splitsdkcert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "splitsdkcert"
+   keytool -importcert -file spliteventscert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "spliteventscert"
+   ```
+
+1. Restart your Java application.

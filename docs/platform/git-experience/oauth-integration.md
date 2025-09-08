@@ -51,12 +51,6 @@ You can delete access tokens you no longer need. Under **Access tokens for Git p
 
 ### Configure OAuth for Self-hosted Bitbucket provider
 
-:::note
-Currently, support for OAuth configuration with the self-hosted Bitbucket provider is behind the feature flag `CDS_PROVIDERS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
-
-Harness Delegate version 840xx or later is required for this feature.
-:::
-
 To configure your credentials for Self-hosted Bitbucket provide:
 
 1. Go to your user profile in Harness.
@@ -87,7 +81,7 @@ Under **Connect to a Provider**, click on **Select a Provider**, CLick on **On-P
 ### Configure OAuth for Self-hosted Gitlab provider
 
 :::note
-Currently, support for OAuth configuration with the self-hosted and onprem Gitlab provider is behind the feature flag `CDS_PROVIDERS` and `PIPE_ENABLE_GITLAB_ON_PREM_FLOW `. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+Currently, support for OAuth configuration with the self-hosted and onprem Gitlab provider is behind the feature flag and `PIPE_ENABLE_GITLAB_ON_PREM_FLOW `. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
 
 Harness Delegate version 843xx or later is required for this feature.
 :::

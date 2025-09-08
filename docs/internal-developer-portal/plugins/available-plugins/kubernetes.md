@@ -139,12 +139,12 @@ annotations:
   'backstage.io/kubernetes-namespace': dice-space
 ```
 
-### Labeling Kubernetes components
+<!-- ### Labeling Kubernetes components
 In order for Kubernetes components to show up in the software catalog as a part of an entity, Kubernetes components themselves can have the following label:
 
 ```YAML
 'backstage.io/kubernetes-id': <BACKSTAGE_ENTITY_NAME>
-```
+``` -->
 
 ### Label selector query annotation
 You can write your own custom label selector query that Backstage will use to lookup the objects (similar to `kubectl --selector="your query here"`). Review the labels and selectors Kubernetes documentation for more info.

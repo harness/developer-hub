@@ -22,6 +22,7 @@ description: Components to display code quality metrics from SonarCloud and Sona
 ### Secrets
 
 - Go to SonarQube, "eg: `https://sonar.your-comapny-name.io/account/security`", for generating a new token, **Enter Token Name** and choose **User Token** in **Select Token Type**. 
+- Please ensure the secret is *not* encoded.  Harness will handle the encoding of the secret and passing it to the destination.
 
 :::info
 
@@ -80,13 +81,9 @@ The `instance-name` is optional if there is only one SonarQube instance, as the 
 
 - We need to use the `project_id`, **not** the project name. The `project_id` can be found in the URL, where it appears as `?id=project-id`
 
-- The SonarQube token configured in the Harness secret **must be Base64 encoded**. Using a raw, non-encoded token will result in authentication failures or missing project data when using the SonarQube plugin.
+- The SonarQube token configured in the Harness secret no longer needs to be encoded as of IDP service 1.29.
 
-  To encode your token, use the following command:
-
-  ```bash
-  echo -n 'your-raw-token-here' | base64
-  ```
+Previous versions required a **base64** encoded token.
 
 - Ensure that the user token you have used has the permission to view the project mentioned in the annotation.
 - The `sonarqube.org/project-key` annotation is of the correct format `<instance-name>/<project-key>`. 

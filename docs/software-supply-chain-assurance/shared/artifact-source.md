@@ -38,6 +38,12 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 * **Account ID:** The unique identifier associated with your AWS account.
 
+:::note
+
+OIDC Auth type is not supported.
+
+:::
+
 </TabItem>
 
 <TabItem value="gar" label="GAR" default>
@@ -50,6 +56,12 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 
 * **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
 
+:::note
+
+OIDC Auth type is not supported.
+
+:::
+
 </TabItem>
 
 <TabItem value="acr" label="ACR" default>
@@ -59,6 +71,12 @@ Unlike other artifact sources, JFrog Artifactory requires additional permissions
 * **Image:** Enter your image details with a tag or digest in the format `<registry-login-server>/<repository>:<tag>` or `<registry-login-server>/<repository>@sha256:<digest>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/acr:test`
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
+
+:::note
+
+OIDC Auth type is not supported.
+
+:::
 
 </TabItem>
 </Tabs>

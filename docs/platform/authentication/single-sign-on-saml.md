@@ -9,6 +9,8 @@ helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
+import SCIMurl from '/docs/platform/shared/scimurl.md'
+
 Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. This document explains how to set up SAML authentication.
 
 :::info note
@@ -40,9 +42,10 @@ For implementation details and further guidance on provisioning users with SCIM,
 
 If you provision users and groups via SCIM API, use the following settings for your SAML integration.
 
-- **SCIM connector base URL:** `https://app.harness.io/gateway/ng/api/scim/account/<YOUR_ACCOUNT_ID`
-   - Replace `YOUR_ACCOUNT_ID` with your Harness account ID.
-   The URL depends on the Harness production cluster you use: Prod1: `https://app.harness.io`, Prod2: `https://app.harness.io/gratis`, or Prod3: `https://app3.harness.io`.
+- **SCIM connector base URL:** `https://app.harness.io/gateway/ng/api/scim/account/[YOUR_ACCOUNT_ID]`. enter the appropriate URL for your cluster:
+
+<SCIMurl />
+
 - **Unique identifier:** `userName`
 - **Authentication Mode:** HTTP Header
 - **Authorization:** `<YOUR_SERVICE_ACCOUNT_TOKEN>`

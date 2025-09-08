@@ -214,6 +214,9 @@ For more information about specific module subscriptions and licenses, go to:
 - [CD Service-based licensing and usage](/docs/continuous-delivery/get-started/service-licensing-for-cd)
 - [FF Subscriptions](/docs/feature-flags/subscribe-ff/subscriptions-overview.md)
 - [SRM subscriptions and licenses](/docs/service-reliability-management/get-started/srm-subscription-licensing)
+- [CE license consumption](/docs/chaos-engineering/guides/license-consumption)
+- [SEI subscriptions and licenses](/docs/software-engineering-insights/harness-sei/get-started/sei-subscription-and-licensing)
+- [CODE subscriptions and licenses](/docs/code-repository/get-started/cr-subscription-mgmt)
 
 ## Cloud Marketplace offerings
 

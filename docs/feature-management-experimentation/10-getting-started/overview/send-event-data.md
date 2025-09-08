@@ -2,7 +2,7 @@
 title: Send Event Data
 sidebar_label: Send Event Data
 description: Learn how to send event data to Harness FME.
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 ## Overview

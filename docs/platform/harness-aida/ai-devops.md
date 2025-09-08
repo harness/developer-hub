@@ -1,7 +1,7 @@
 ---
 title: Harness AI DevOps Agent
 description: Harness AI DevOps Agent unlocks your pipeline productivity.
-sidebar_position: 53
+sidebar_position: 8
 ---
 # Harness AI DevOps Agent
 

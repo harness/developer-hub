@@ -2,6 +2,8 @@
 title: Split Proxy
 sidebar_label: Split Proxy
 sidebar_position: 3
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/how-to-use-split-sdks-with-split-proxy
 ---
 
 The Split Proxy enables you to deploy a service in your own infrastructure that behaves like Harness servers and is used by both server-side and client-side SDKs to synchronize the flags without connecting to Harness FME's actual backend directly.
@@ -302,16 +304,136 @@ The endpoint should expect a POST request that contains a JSON body using the fo
 }
 ```
 
-The configuration options are available in the `integrations.impressionListener` section of the JSON configuration file detailed in [Advanced configuration](#advanced-configuration) section.
+The configuration options are available in the `integrations.impressionListener` section of the JSON configuration file detailed in the [Advanced configuration](#advanced-configuration) section.
 
 ## Using a network proxy
 
-If you need to use a network proxy, configure the proxies by setting the environment variables as HTTP_PROXY and HTTPS_PROXY. The internal HTTP client reads those variables and uses them to perform a server request.
+If you need to use a network proxy, configure the proxies by setting the environment variables as `HTTP_PROXY` and `HTTPS_PROXY`. The internal HTTP client reads those variables and uses them to perform a server request.
 
+For example: 
 ```bash title="Example: Environment variables"
 $ export HTTP_PROXY="http://10.10.1.10:3128"
 $ export HTTPS_PROXY="http://10.10.1.10:1080"
 ```
+
+## Using FME SDKs with the Split Proxy
+
+All FME SDKs can connect to a Split Proxy instance instead of making requests directly to Split's cloud services. This is useful for environments that require controlled network access, reduced latency, or caching through the proxy.
+
+To enable this connection, first obtain the full Split Proxy URL from your administrator. Then, update your SDK configuration to point to this URL. 
+
+Each SDK requires you to specify the proxy endpoints explicitly by setting configuration parameters corresponding to the SDK, events, authentication, and telemetry service URLs. For examples, the JavaScript SDK expects these URLs in the `urls` config object and the Python SDK accepts parameters such as `sdk_api_base_url` and `events_api_base_url`. See the SDK-specific documentation for the exact parameter names and how to set them.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="sdk-examples">
+<TabItem value="javascript" label="JavaScript SDK">
+
+```javascript
+core: { ... },
+urls: {
+    sdk: 'http://ProxyServerName:Port/api',
+    events: 'http://ProxyServerName:Port/api',
+    auth: 'https://ProxyServerName:Port/api',
+},
+```
+
+</TabItem>
+
+<TabItem value="android" label="Android SDK">
+
+```java
+final ServiceEndpoints serviceEndpoints = ServiceEndpoints.builder()
+    .apiEndpoint("http://ProxyServerName:Port/api")
+    .eventsEndpoint("http://ProxyServerName:Port/api")
+    .sseAuthServiceEndpoint("http://ProxyServerName:Port/api")
+    .streamingServiceEndpoint("http://ProxyServerName:Port/api")
+    .telemetryServiceEndpoint("http://ProxyServerName:Port/api")
+    .build();
+
+SplitClientConfig config = SplitClientConfig.builder()
+    .serviceEndpoints(serviceEndpoints)
+    .build();
+```
+
+</TabItem>
+
+<TabItem value="ios" label="iOS SDK">
+
+```swift
+let endpoints: ServiceEndpoints = ServiceEndpoints.builder()
+    .set(sdkEndpoint: "http://ProxyServerName:Port/api")
+    .set(eventsEndpoint: "http://ProxyServerName:Port/api")
+    .set(authServiceEndpoint: "http://ProxyServerName:Port/api")
+    .set(telemetryServiceEndpoint: "http://ProxyServerName:Port/api")
+    .build()
+
+let config = SplitClientConfig()
+config.serviceEndpoints = endpoints
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java SDK">
+
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+    .endpoint("http://ProxyServerName:Port", "http://ProxyServerName:Port")
+    .authServiceURL("http://ProxyServerName:Port")
+    .telemetryURL("http://ProxyServerName:Port")
+    .build();
+```
+
+</TabItem>
+
+<TabItem value="ruby" label="Ruby SDK">
+
+```ruby
+options = {
+    base_uri: "http://ProxyServerName:Port/api"
+    events_uri: "http://ProxyServerName:Port/api"
+    auth_service_url: "http://ProxyServerName:Port/api"
+    telemetry_service_url: 'http://ProxyServerName:Port/api',
+    streaming_service_url: 'http://ProxyServerName:Port/api'
+}
+```
+
+</TabItem>
+
+<TabItem value="python" label="Python SDK">
+
+```python
+config = {}
+factory = get_factory('YOUR_API_KEY', config=config, sdk_api_base_url = 'http://ProxyServerName:Port/api', events_api_base_url = 'http://ProxyServerName:Port/api')
+GO SDK
+
+cfg := conf.Default()
+cfg.Advanced.AuthServiceURL = "http://ProxyServerName:Port/api"
+cfg.Advanced.SdkURL = "http://ProxyServerName:Port/api"
+cfg.Advanced.EventsURL = "http://ProxyServerName:Port/api"
+cfg.Advanced.TelemetryServiceURL = "http://ProxyServerName:Port/api"
+```
+
+</TabItem>
+
+<TabItem value="dotnet" label=".NET SDK">
+
+```csharp
+var config = new ConfigurationOptions
+{
+    Endpoint = "http://ProxyServerName:Port",
+    EventsEndpoint = "http://ProxyServerName:Port",
+    AuthServiceURL = "http://ProxyServerName:Port/api/v2/auth",",
+    StreamingServiceURL = "http://ProxyServerName:Port/sse",
+    TelemetryServiceURL = "http://ProxyServerName:Port/api/v1"
+};
+```
+
+</TabItem>
+</Tabs>
+
+Once configured, the SDK routes all traffic through the Split Proxy, allowing it to serve requests locally without needing direct internet access to Split's public endpoints.
 
 ## Admin tools
 

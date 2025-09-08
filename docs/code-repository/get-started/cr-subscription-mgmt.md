@@ -1,12 +1,12 @@
 ---
-title: Subscriptions and licenses
+title: Subscriptions & Licenses
 description: CR subscription usage limits.
 sidebar_position: 6
 ---
 
-Harness Code Repository (CR) is available for all customers of the Harness Continuous Integration (CI) module. Your subscription for Harness CI determines the usage limits for Code Repository. Please refer to the documentation for [Harness Continous Integration](/docs/continuous-integration/get-started/ci-subscription-mgmt) to see your current subscription. 
+Harness Code Repository (CR) is available for all customers of the Harness Continuous Integration (CI) module. Your subscription for Harness CI determines the usage limits for Code Repository. Please refer to the documentation for [Harness Continuous Integration](/docs/continuous-integration/get-started/ci-subscription-mgmt) to see your current subscription.
 
-The number of users for CR is determined by your CI subscription, however there are additional limits on Code Repository for storage and bandwidth based on your subscription tier.
+The number of users who can access Code Repository is independent of your CI subscription. Storage and bandwidth limits for Code Repository are based on your subscription tier.
 
 ### Usage limits
 
@@ -14,19 +14,21 @@ The following sections describe limits for storage and network transfer used by 
 
 #### Storage
 
-Harness stores data for git repositories and large file storage (LFS) in Harness-managed storage. The aggregate size of all repositories on disk must not exceed the defined storage limit. If an account exceeds the storage limit, the system will block git push operations until resolved. 
+Harness stores data for git repositories and large file storage (LFS) in Harness-managed storage. The aggregate size of all repositories on disk must not exceed the defined storage limit. If an account exceeds the storage limit, the system will block git push operations until resolved.
 
 The maximum amount of data that you can store depends on the plan you are subscribed to:
-* Free: 10 GB
-* Paid: 250 GB
+
+- Free: 10 GB
+- Paid: 250 GB
 
 Additionally, each repository is subject to default storage limits based on your plan:
-* Free: 4 GB
-* Paid: 10 GB
+
+- Free: 4 GB
+- Paid: 10 GB
 
 :::info
 
-All files stored in git are limited to 100 MB in size by default, regardless of plan. This file-size limitation can be modified per repository via the [API](https://apidocs.harness.io/tag/repository#operation/updateGeneralSettings).  
+All files stored in git are limited to 100 MB in size by default, regardless of plan. This file-size limitation can be modified per repository via the [API](https://apidocs.harness.io/tag/repository#operation/updateGeneralSettings).
 
 :::
 
@@ -35,8 +37,9 @@ All files stored in git are limited to 100 MB in size by default, regardless of 
 The network transfer limit applies to the data transferred from Harness Cloud to customer managed storage. The aggregate inbound and outbound network traffic must not exceed the defined bandwidth limit for the given calendar month. If an account exceeds the bandwidth limit, their network requests will be blocked and return a “429 Too Many Requests" HTTP error code.
 
 The bandwidth limit depends on the plan you are subscribed to:
-* Free: 50 GB
-* Paid: 250 GB
+
+- Free: 50 GB
+- Paid: 250 GB
 
 :::warning
 

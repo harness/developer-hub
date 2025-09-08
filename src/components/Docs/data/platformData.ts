@@ -85,6 +85,12 @@ export const docsCards: CardSections = [
         link: "/docs/feature-flags/get-started/onboarding-guide",
       },
       {
+        title: "FME",
+        module: MODULES.fme,
+        description: "Feature Management & Experimentation overview",
+        link: "/docs/feature-management-experimentation/getting-started/overview",
+      },
+      {
         title: "IaCM",
         module: MODULES.iacm,
         description: "Infrastructure as Code Management overview",

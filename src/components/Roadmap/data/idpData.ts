@@ -11,14 +11,14 @@ import { Horizon } from "./roadmapData";
 // 8. Environment Management
 
 /** Copy this for a new item
-{
-  tag: [{ value: "" }],
-  title: "",
-  description: "",
-  link: ""
-  // color for "NOW"
-  // backgroundColor: "#E6F4EA",
-},
+      {
+        tag: [{ value: "" }],
+        title: "",
+        description: "",
+        link: ""
+        // color for "NOW"
+        // backgroundColor: "#E6F4EA",
+      },
  */
 
 export const IdpData: Horizon = {
@@ -27,7 +27,7 @@ export const IdpData: Horizon = {
    */
 
   Now: {
-    description: "⏳ Q2 2025 (May - July)",
+    description: "⏳ Q3 2025 (August - October)",
     feature: [
       {
         tag: [{ value: "Platform" }],
@@ -45,17 +45,16 @@ export const IdpData: Horizon = {
         backgroundColor: "#E6F4EA",
       },
       {
+        tag: [{ value: "AI" }],
+        title: "Launch AI powered Knowledge Agent",
+        description: "LLM-powered search across Catalog, Scorecards, and TechDocs along with actions via Workflows.",
+        backgroundColor: "#E6F4EA",
+      },
+      {
         tag: [{ value: "Catalog" }],
         title: "Catalog Auto-Discovery with Harness CD",
         description:
           "Services deployed using Harness CD will auto-magically appear in IDP and will be easier to manage for end-users.",
-        backgroundColor: "#E6F4EA",
-      },
-      {
-        tag: [{ value: "Platform" }],
-        title: "Self Managed Platform (SMP) BETA",
-        description:
-          "Release and support a self-managed version of IDP that can be hosted on a customer's infrastructure and environment.",
         backgroundColor: "#E6F4EA",
       },
       {
@@ -66,10 +65,55 @@ export const IdpData: Horizon = {
         backgroundColor: "#E6F4EA",
       },
       {
+        tag: [{ value: "Catalog" }],
+        title: "IDP Catalog Data in Platform Dashboards",
+        description: "Export all IDP Catalog data with its entire metadata (including ingested properties) into Platform dashboards for enhanced dashboarding.",
+        backgroundColor: "#E6F4EA",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Historical IDP Catalog Data in Platform Dashboards",
+        description: "Keep historical IDP Catalog data in Platform dashboards for building trends on certain properties.",
+        backgroundColor: "#E6F4EA",
+      },
+      {
         tag: [{ value: "Scorecards" }],
-        title: "IDP - STO integration",
+        title: "Raw expression support in Scorecard checks",
+        description: "Allow users to write raw expressions when creating Scorecard checks to leverage complex JEXL rules, AND, OR, etc.",
+        backgroundColor: "#E6F4EA",
+      },
+      {
+        tag: [{ value: "Workflows" }],
+        title: "Enhanced Workflow UX - Live Execution View",
         description:
-          "Integrate IDP with Harness Software Testing Orchestration (STO) to view vulnerabilities for each software component in the Catalog and measure them using Scorecards.",
+          "A more intuitive live execution view for workflows, making it easier to track pipeline progress and logs.",
+        backgroundColor: "#E6F4EA",
+      },
+      {
+        tag: [{ value: "Catalog" }, { value: "Customizability" }],
+        title: "Flexible Catalog Table",
+        description:
+          "Enhance the Catalog table to have user-customizable columns and custom columns using entity metadata.",
+        backgroundColor: "#E6F4EA",
+      },
+      {
+        tag: [{ value: "Platform" }],
+        title: "IDP on Harness MCP Server",
+        description: "Include IDP in Harness' MCP server for data retrieval and actions.",
+        link: "https://github.com/harness/mcp-server/",
+        backgroundColor: "#E6F4EA",
+      },
+      {
+        tag: [{ value: "Plugins" }],
+        title: "New Integrations framework",
+        description: "Launch MVP of the Integrations framework to support data-first integrations with popular tools unlike existing UI-only Backstage plugins.",
+        backgroundColor: "#E6F4EA",
+      },
+      {
+        tag: [{ value: "Platform" }],
+        title: "Self Managed Platform (SMP) BETA",
+        description:
+          "Release and support a self-managed version of IDP that can be hosted on a customer's infrastructure and environment.",
         backgroundColor: "#E6F4EA",
       },
     ],
@@ -94,18 +138,18 @@ export const IdpData: Horizon = {
    */
 
   Later: {
-    description: "🔮 Aug 2025 and later",
+    description: "🔮 Nov 2025 and later",
     feature: [
+      {
+        tag: [{ value: "Plugins" }],
+        title: "Re-work Kubernetes plugin",
+        description:
+          "Improve the Kubernetes plugin’s authentication mode to use Delegates. Simplify setup for existing Harness customers using the Kubernetes connector. Enhance the plugin’s performance and scalability for thousands of pods.",
+      },
       {
         tag: [{ value: "Catalog" }, { value: "Platform" }],
         title: "Launch AI-native Search",
         description: "AI-powered global search for smarter discovery in IDP",
-      },
-      {
-        tag: [{ value: "Workflows" }],
-        title: "Enhanced Workflow UX - Live Execution View",
-        description:
-          "A more intuitive live execution view for workflows, making it easier to track pipeline progress and logs.",
       },
       {
         tag: [{ value: "Catalog" }, { value: "Workflows" }],
@@ -123,12 +167,6 @@ export const IdpData: Horizon = {
         tag: [{ value: "Workflows" }],
         title: "Workflow Input Sets",
         description: "Create and Share input sets for Workflows",
-      },
-      {
-        tag: [{ value: "Catalog" }, { value: "Customizability" }],
-        title: "Flexible Catalog Table",
-        description:
-          "Enhance the Catalog table to have user-customizable columns and filters.",
       },
       {
         tag: [{ value: "Workflows" }],
@@ -166,12 +204,7 @@ export const IdpData: Horizon = {
         description:
           "Integrate with Harness SEI to show developers their team's DORA metrics and Productivity Insights in IDP Homepage.",
       },
-      {
-        tag: [{ value: "Plugins" }],
-        title: "Re-work Kubernetes plugin",
-        description:
-          "Improve the Kubernetes plugin’s authentication mode to use Delegates. Simplify setup for existing Harness customers using the Kubernetes connector. Enhance the plugin’s performance and scalability for thousands of pods.",
-      },
+
       {
         tag: [{ value: "Catalog" }],
         title: "Catalog Auto-Discovery with Kubernetes",
@@ -228,6 +261,13 @@ export const IdpData: Horizon = {
   Released: {
     description: "✅ What has been released recently",
     feature: [
+      {
+        tag: [{ value: "Scorecards" }],
+        title: "IDP - STO integration",
+        description:
+          "Integrate IDP with Harness Software Testing Orchestration (STO) to view vulnerabilities for each software component in the Catalog and measure them using Scorecards.",
+        link: "https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/sto-integration"
+      },
       {
         tag: [],
         title: "IDP 2.0 BETA Launch",

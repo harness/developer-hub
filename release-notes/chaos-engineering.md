@@ -20,6 +20,82 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## August 2025
+### 1.64.14
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.64.1
+- harness/chaos-log-watcher:1.64.1
+- harness/service-discovery-collector:0.44.0
+- harness/chaos-ddcr-faults:1.64.3
+
+#### New Features and Enhancements
+
+- Added in-house logic for windows memory stress and removed Testlimit dependency for better performance and reliability (CHAOS-9597)
+- Added resource access restrict support to 1.64 with cherry-pick changes (CHAOS-9577)
+- Added UI changes to migrate recommendation into separate tab for better organization (CHAOS-9567)
+- Added support for outbound traffic in resource access restrict functionality (CHAOS-9566)
+- Enhanced probes to execute in parallel mode even if duration is provided (CHAOS-9424)
+- Added logic to derive autopilot enabled or disabled from helper pod ownerRef (CHAOS-9395)
+- Added packaging of all dependencies and binaries into a single installable archive for online and offline installation (CHAOS-9365)
+- Added auto pilot support for chaos infra and onboarding from frontend (CHAOS-9310)
+- Added ability to clear inputs for a fault once provided in Chaos Studio (CHAOS-9003)
+- Added changes for ddcr-faults-dual-binary support (CHAOS-9389)
+- Updated frontend nginx configuration (CHAOS-9360)
+- Upgraded AWS V2 SDK to support the V2 AWS faults with IRSA (CHAOS-9348)
+- Added Resilience tab fixes for v1beta1 experiments (CHAOS-9333)
+- Added hce-sdk changes to add environment variables in custom action scripts (CHAOS-9330)
+- Added dual (pod and daemonset) mode support in ddcr-faults (CHAOS-9315)
+- Enhanced mongo queries and added indexes for chaosFaults collections for better performance (CHAOS-9313)
+- Added permissions and links in chaosFaults and chaosFaultTemplates collections (CHAOS-9309)
+- Added support for generation of AI recommendations for the v1beta1 schema (CHAOS-9308)
+- Changed icon of AI related items from co-pilot to standard AI icon (CHAOS-9265)
+- Made the duration input for probes as FIXED VALUE until runtime support is implemented (CHAOS-9232)
+- Updated `CHAOS_ECS_ENABLED` flag to the new name `CHAOS_CONTAINER_ENABLED` in the `CHAOS_MANAGER` (CHAOS-9197)
+- Added support to run experiment with fault resource including v1alpha1 (CHAOS-9193)
+- Added infraType to path params for getMachineInfraDetails API and added infra name to the deleteMachineInfra API response (CHAOS-9187)
+- Added support for providing environment variables in custom script action in UI (CHAOS-9153)
+- Added support for generation of v1beta1 experiment manifests via Onboarding to support timeline view in execution (CHAOS-9098)
+- Enhanced chaos experiment DB schema to include reference of used faults (CHAOS-8905)
+
+#### Fixed Issues
+
+- Fixed AI recommendation banner having padding issue when Experiment_list feature flag is enabled where left-right padding will be present for recommendation banner on new list page (CHAOS-9591)
+- Fixed source filter not working in recommendations API (CHAOS-9587)
+- Fixed execution details being blank on blocked chaos experiment (CHAOS-9370)
+- Fixed audit event for Run recommendations API (CHAOS-9491)
+- Fixed status under executionData of V1Beta1 experiments remaining always Queued by enhancing the execution data management for version v1beta1 and updating the status within the execution data structure (CHAOS-9529)
+- Fixed openSSL dependency for wkhtmltopdf binary in chaos-manager (CHAOS-9327)
+- Fixed chaos v2 experiment configured as cron returning wrong workflowType as "experiment_v2" instead of cron by correcting the handling of cron scheduling types during experiment updates (CHAOS-9528)
+- Fixed probe search not listing probes imported as reference by fixing the probe name filtering logic to ensure it correctly matches the intended probe names (CHAOS-9520)
+- Fixed update conflicts when adding multiple entities (fault/probes/actions) in parallel in an experiment by implementing a new RetryTransaction function to encapsulate MongoDB transactions with automatic retries for write conflicts (CHAOS-9507)
+- Fixed step duration showing end time even though the step is still in progress where the shown value remained constant (same as start time) while running (CHAOS-9506)
+- Fixed not being able to scroll YAML editor of Spec under Timeline View (CHAOS-9504)
+- Fixed Target Application Details being visible for faults which don't have target details in Timeline View (CHAOS-9503)
+- Fixed activity usage not getting updated for v1beta1 related services/experiments by adding logic to capture target services for beta1 experiments (CHAOS-9460)
+- Fixed cmd probes not importing environment variables for linux and windows type of http probe (CHAOS-9443)
+- Fixed probe or action imported as reference returning empty manifest API by adding manifest details while fetching data from template reference (CHAOS-9441)
+- Fixed probe/action import not getting description from the referred template by adding description from template during import if not provided by user (CHAOS-9440)
+- Fixed apiTokenSecretName coming as empty string for linux dynatrace probe under YAML (CHAOS-9437)
+- Fixed not being able to scroll to env values while configuring k8s cmd probe template when source is enabled (CHAOS-9433)
+- Fixed error when creating a probe template under a chaoshub having same identity as other probe in different chaoshub by updating the create operation to consider hub reference (CHAOS-9426)
+- Fixed error when creating an action having same identity as any other action but in a different chaoshub by updating the create operation to consider hub reference (CHAOS-9425)
+- Fixed fault selection drawer and modal for custom fault creation using "agent" terminology by adding agent type name in the fault Selection subtitle for clarity (CHAOS-9417)
+- Fixed input validations not working on fault template creation modal where empty array/array elements will not be allowed from the UI (CHAOS-9397)
+- Fixed fault template under chaoshub keeping loading and giving "internal server error" by defaulting api revision to v1 (CHAOS-9396)
+- Fixed ProbeTemplates template creation succeeding with non-existent hub ref by adding `validateActionTemplateCreation` and `validateProbeTemplateCreation` methods to ensure that the specified hub exists and that the template identity is unique (CHAOS-9386)
+- Fixed cron scheduling for experiments not working where multiple experiments targeting same network map was causing write conflict errors by adding a retry mechanism (CHAOS-9296)
+- Fixed empty args being allowed during action creation (CHAOS-9185)
+- Fixed not being able to run VMware experiments by passing vCenter credentials as secret (CHAOS-9174)
+- Fixed "Completed with probe Error" status not coming when a probe failed due to genuine reason by updating status logic for execution data (CHAOS-9173)
+- Fixed HTTP Probe summary text indicating success but actual probe execution reflecting error (connection refused) by adding http "connection refused" as a failure instead of an error for probes (CHAOS-9169)
+- Fixed creating a probe or action with a duplicate name resulting in "Internal Server Error" by updating error messages to provide clearer feedback instead of generic internal server error messages (CHAOS-9060)
+- Fixed creating an action with an existing id or name failing with "Internal Server Error" by updating error messages to provide clearer feedback instead of generic internal server error messages (CHAOS-9059)
+- Fixed not being able to delete tag filters from Probe list page filters where probe filter tags can now be deleted (CHAOS-9056)
+- Fixed SLO probe evaluation start and end time not getting saved by fixing the issue with evaluation window not showing up in SLO Probe (CHAOS-9055)
+
 ## July 2025
 ### Version 1.63.7
 

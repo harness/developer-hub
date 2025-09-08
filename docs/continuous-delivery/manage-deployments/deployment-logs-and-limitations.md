@@ -21,4 +21,4 @@ Harness deployment logging has the following limitations:
 If you need logs more than 5000 lines, contact [Harness Support](mailto:support@harness.io)
 :::
 
-* Steps exceeding a 5-hour runtime may experience log visibility issues. We are working to address this limitation.
+* Steps exceeding a 24-hour runtime may experience log visibility issues. We are working to address this limitation.

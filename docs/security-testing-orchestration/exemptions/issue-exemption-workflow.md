@@ -15,6 +15,8 @@ The issue exemption workflow typically includes two stages:
 - **Requesting an Exemption**: Developers initiate exemption requests by providing relevant details, including justification and intended exemption duration. Refer to [Request Issue Exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows).
 - **Managing Exemptions(Approve/Reject)**: Security teams review exemption requests and choose to approve or reject. Refer to [Manage Issue Exemption](/docs/security-testing-orchestration/exemptions/manage-exemptions).
 
+To stay informed about these events, you can [set up notifications](/docs/security-testing-orchestration/notifications/exemption-notifications) for exemption requests and status changes.
+
 <DocImage path={require('./static/exemption-workflow.png')} width="70%" height="70%" title="Click to view full size image" />
 
 :::note 

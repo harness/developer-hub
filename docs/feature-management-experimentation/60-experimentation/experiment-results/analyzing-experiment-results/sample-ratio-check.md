@@ -79,6 +79,8 @@ For example, imagine you have 2 separate rules for users on your Free and Paid p
 
 SRMs caused by these interaction effects can be seen by checking how many users appear in multiple rules. In the example above, if you had a metric measuring how many users upgraded from the Free plan to the Paid plan, this could directly indicate whether it is a likely cause. In order to avoid these kinds of interaction effects, it may be safer to run separate feature flags for the two different plan types, and if necessary include dependencies between the two feature flags in the targeting rules.
 
+Additionally, if users were previously exposed to an older version of the same flag, their behavior or allocation in that version can bias their likelihood of returning or being reassigned in the current version.
+
 #### Bucketing and Matching Keys
 
 If you are using bucketing keys, an SRM may indicate a misconfiguration or be due to users receiving a fallback bucketing key. In this case we recommend you contact the FME support team at [support@split.io](mailto:support@split.io) who can look at the distribution of the buckets and check for outliers. 
@@ -95,13 +97,19 @@ Two of the most common reasons for sample ratio mismatches detected by this chec
 If you're concerned about a potential bias in your targeting setup, consider running an A/A test (i.e. a feature flag where both treatments are functionally identical) to validate the integrity of your randomization before launching an experiment.
 
 #### Random Chance 
+
 Since we are dealing with randomness and probabilities, there is always a possibility, albeit very small, that you see an SRM warning due to random chance alone with no real underlying issue. We use a strict threshold in our SRM test to ensure this is a very rare situation, but there is still a 1 in 1000 chance that you see a false SRM warning. If you have exhausted other options and believe your SRM may be a false alert then we suggest rerunning the feature flag - there is an exceptionally small chance of seeing the same false alert twice.
+
+#### Dependencies Between Flags
+
+Dependencies can skew traffic by causing upstream flags to be evaluated more often than expected. For example, if `flagB` depends on `flagA`, then normally only `flagB` generates an impression. However, if `flagB` is used in a way that guarantees `flagA` is always evaluated, this can skew `flagA`'s distribution and lead to SRM.
+
+To check whether dependencies are contributing to SRM, review which flags are evaluated together and whether downstream flags might be increasing the evaluation frequency of upstream flags.
 
 ## Sample ratio mismatch calculator
 
 When using a percentage based rollout, there will always be some randomness in how many visitors are assigned to each of your treatments. For example, when running an experiment with a 50%/50% rollout, you are unlikely to see exactly 50% of visitors assigned to each treatment. However you should see close to that number, and if you see something very different, this may indicate what is called a Sample Ratio Mismatch (SRM). 
 
- 
 We automatically check for a statistically significant deviation from the expected sample sizes for every feature flag with a percentage based rollout. 
  
 The size of a deviation which should be cause for concern depends on the total sample size. Smaller samples are inherently noisier, and more subject to deviations from the expected ratios of samples in each treatment, whereas larger samples tend to more closely match expected ratios. 

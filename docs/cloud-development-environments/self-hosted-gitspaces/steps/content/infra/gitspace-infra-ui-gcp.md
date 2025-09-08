@@ -2,6 +2,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 <RedirectIfStandalone label="GCP" targetPage="/docs/cloud-development-environments/self-hosted-gitspaces/steps/gitspace-infra-ui" />
 
+
 This is your **first step** in configuring **Self Hosted Gitspaces** on **GCP Cloud Infrastructure**. 
 
 In order to get started with Self Hosted Gitspaces, you'll first need to **configure your infrastructure**. This infrastructure is where your Gitspaces will be hosted, so you must **define and configure it from Harness UI**. This guide will take you through the detailed steps to configure your infrastructure using the Harness UI.
@@ -38,12 +39,19 @@ Configuring your Gitspace Infrastructure involves adding your infrastructure det
 
 ### Provide Basic Infrastructure Details
 
+:::info Custom Gateway Machine Image
+- For a custom gateway machine image, only `ubuntu` image variants are currently supported.  
+- Run this command to get the list of compute engine images available in your GCP project: `gcloud compute images list`
+- You can only use images that are available in your GCP project. 
+:::
+
 1. **Infrastructure Name**: Provide a **name** for your **Gitspace infrastructure**. This name will be used while referencing your infrastructure for creating Gitspaces.
 2. **GCP Project**: Enter the name of your **GCP project**. This is where the GCP VM Instance hosting your Gitspaces will reside.
 3. **Domain**: Provide the **domain** under which all Gitspaces created in this infrastructure will be accessible.
 4. **Gateway Machine Type**: Specify the **VM machine type** for your Gateway.
+5. **Gateway Machine Image Name**: Specify the **VM image name** for your Gateway. In case you don't have a custom image, there's a default image (`projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20250213`) used by Harness automatically. 
 
-![](../../static/basic-details-infra-ui.png)
+![](../../static/gcp-infra-1.png)
 
 ### Configure Regions
 
@@ -64,6 +72,22 @@ Use the following **input parameters**:
 
 Here's how **all the added regions** will look for your infrastructure.
 ![](../../static/all-regions.png)
+
+### Configure VM for Runner & Delegate
+You'll have to configure the **VM for Runner & Delegate** to ensure that the GCP VM instance required for hosting the VM Runner and Delegate is provisioned as per these details. 
+
+:::info Custom Machine Image
+- For a custom machine image, only `ubuntu` image variants are currently supported.  
+- Run this command to get the list of compute engine images available in your GCP project: `gcloud compute images list`
+- You can only use images that are available in your GCP project. 
+:::
+
+Use the following **input parameters**: 
+1. **Region**: Choose the **region** from the list of regions added for your infrastructure to host your VM instance. 
+2. **Availability Zone**: Choose the **availability zone** from the region selected above for your VM instance. 
+3. **Machine Image Name**: Specify the **Machine image name** for your VM instance. In case you don't have a custom machine image, there's a default image (`projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20250213`) used by Harness automatically. 
+
+![](../../static/gcp-infra-2.png)
 
 ### Download the Infrastructure Config YAML
 

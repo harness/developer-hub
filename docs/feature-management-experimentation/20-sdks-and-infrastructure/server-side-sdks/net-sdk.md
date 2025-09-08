@@ -1,6 +1,9 @@
 ---
 title: .NET SDK
 sidebar_label: .NET SDK
+redirect_from:
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/net-xamarin-which-api-key/
+  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/net-sdk-build-error-strongly-named-assembly/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -42,7 +45,7 @@ Starting version 5.0.0, .Ready is deprecated and migrated to the following imple
 Call `SplitClient.BlockUntilReady(int milliseconds)` or `SplitManager.BlockUntilReady(int milliseconds)`.
 :::
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready. This is done by using `.BlockUntilReady(int milliseconds)` method as part of the instantiation process of the SDK factory client as shown below. Do this all as a part of the startup sequence of your application. If SDK is not ready after the specified time, the SDK fails to initialize and throws a `TimeoutException` error.
 
@@ -76,7 +79,7 @@ Now you can start asking the SDK to evaluate treatments for your customers.
 
 After you instantiate the SDK factory client, you can use the `GetTreatment` method of the SDK factory client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you are serving the feature to.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment).
 
 <Tabs>
 <TabItem value="GetTreatment">
@@ -125,7 +128,7 @@ else
 
 ### Attribute syntax
 
-To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `GetTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes), the SDK's `GetTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `GetTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -290,7 +293,7 @@ You can also use the [Split Manager](#manager) to get all of your treatments at 
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `GetTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/setup/dynamic-configurations), you should use the `GetTreatmentWithConfig` method.
 
 This method returns an object containing the treatment and associated configuration.
 
@@ -792,7 +795,7 @@ catch (Exception ex)
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given feature flag, the treatment specified in the file is returned for every customer.
 
-`GetTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
+`GetTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them.
 
 The format of this file is two columns separated by a whitespace. The left column is the feature flag name, and the right column is the treatment name. Here is a sample `.split` file.
 
@@ -1076,3 +1079,29 @@ var config = new ConfigurationOptions
 var factory = new SplitFactory("YOUR_SDK_KEY", config);
 var sdk = factory.Client();
 ```
+
+## Troubleshooting 
+
+### Which API Key to use with .NET Xamarin projects
+
+A .NET development environment provides a Xamarin project that allows .NET code to run on both iOS and Android platforms within a container app. Which API Key should be used with the FME .NET or .NET Core SDK when developing a Xamarin project? 
+
+Use a **server-side SDK API key**.
+
+### Build Error: "Split 3.4.2.0 cannot be loaded since it needs a strongly-named assembly"
+
+In a .NET project with assembly signing enabled, adding the FME .NET SDK and building the project produces this warning:
+
+```
+Referenced Assembly 'Splitio, Version=3.4.2.0, Culture=neutral, PublicKeyToken=null' does not have a strong name
+```
+
+At runtime, you may get this exception:
+
+```
+Could not load file or assembly 'Splitio, Version=3.4.2.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. A strongly-named assembly is required.
+```
+
+SDK versions earlier than 3.4.4 include dependencies packaged without strong naming (unsigned assemblies). To build a signed SDK DLL, all dependencies must also be strongly named.
+
+Upgrade to the latest version of the FME .NET SDK, which includes signed dependencies.
