@@ -6,6 +6,10 @@ Learn how to **create a Hugging Face Artifact Registry**, **configure the client
 
 ## Prerequisites
 - Install the **Hugging Face CLI** (`pip install -U huggingface_hub` gives you the `hf` command).  
+:::info additional information
+Depending on your environment, you may need to run addition command, go to [Hugging Face installation](https://huggingface.co/docs/huggingface_hub/en/installation) for more information.
+:::
+
 - Access to a Harness account with permissions to create registries and generate identity tokens.
 
 ---
@@ -131,6 +135,5 @@ Artifact Registry fully caches only datasets hosted directly on Hugging Face, no
 </Tabs>
 
 ## Troubleshooting
-- 401 or auth prompts. Re-run `hf login --token "$HF_TOKEN"` and verify **HF_ENDPOINT** is set in the current shell.
 - Slow downloads or timeouts. Increase **HF_HUB_ETAG_TIMEOUT** and **HF_HUB_DOWNLOAD_TIMEOUT**. Verify network egress to the Harness endpoint.
 - File too large. Ensure Git LFS is used automatically by the CLI; confirm the LFS filter in your repo and re-try the upload.
