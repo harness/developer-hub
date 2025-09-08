@@ -1,7 +1,7 @@
 ---
 title: Overview of Harness AI 
 description: Learn about how AI improves your experience on the Harness platform.
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 The Harness Platform leverages Harness AI to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software delivery lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empower teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
@@ -30,20 +30,21 @@ For more information about navigation 2.0, go to [Harness navigation 2.0](https:
 
 ## Harness AI features
 
-| Module   | Feature                                                                                         | Description                                                                                                                                                                                                               | Availability        |
-|----------|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| Platform | Harness Support                                                                                 | Harness AI can answer questions and suggest relevant documentation to help you browse and discover Harness features and documentation.                                                                                          | Generally available |
-| Platform | Harness Support                                                                                 | Harness AI provides content recommendations when you create a support ticket.                                                                                                                                                   | Generally available |
-| Platform | [Dashboard Intelligence](/docs/platform/dashboards/use-dashboard-intelligence-by-aida)          | Harness AI empowers you to craft customized dashboards with widget-level control through interactive prompts.                                                                                                                   | Generally available |
-| Platform | [Code Generation](/docs/platform/harness-aida/code-agent)                                    | With the Harness AI Code Agent IDE extension, you can increase productivity by generating multi-line code updates through comments in your IDE, eliminating the need to manually write common functions or look up unknown syntax. | Beta         |
-| CCM      | [Generate governance rules](/docs/category/harness-aida-for-asset-governance)                   | Generate rules for asset governance accompanied with detailed descriptions to optimize your cloud spend.                                                                                                                  | Generally available |
-| CD       | Troubleshoot CD deployments                                                                     | Resolve your deployment failures with AI's root cause analysis (RCA).                                                                                                                                                   | Generally available |
-| CD       | Policy As Code Assistant                                                                        | Generate and integrate Open Policy Agent (OPA) Rego policies to meet your compliance standards with the Harness AI DevOps Agent.                                                                                                                           | Generally available         |
-| CE       | [ChaosGuard](/docs/chaos-engineering/guides/governance/governance-in-execution/)        | Generate conditions for your chaos experiments with ChaosGuard.                                                                                                                                                           | Generally available |
-| CODE     | [Semantic Search](/docs/code-repository/work-in-repos/semantic-search)                          | Search code repositories to provide accurate and context-aware results in Harness Code.                                                                                                                                   | Generally available |
-| CODE     | [Pull Request Summaries](/docs/code-repository/pull-requests/aida-code-pr)                      | Automatically generate comprehensive and informative PR descriptions.                                                                                                                                                     | Generally available |
-| CI       | [Troubleshoot CI builds](/docs/continuous-integration/troubleshoot-ci/aida)                     | Resolve your build failures with Harness AI DevOps Agent's RCA.                                                                                                                                                                              | Generally available |
-| STO      | [Security remediation](/docs/security-testing-orchestration/remediations/ai-based-remediations) | Leverage AI to quickly analyze vulnerabilities and secure applications.                                                                                                                                                 | Generally available |
+| Module | Feature | Description | Availability |
+|---|---|---|---|
+| Platform | Harness Support | Harness AI can answer questions and suggest relevant documentation to help you browse and discover Harness features and documentation. | Generally available |
+| Platform | Harness Support | Harness AI provides content recommendations when you create a support ticket. | Generally available |
+| Platform | [Dashboard Intelligence](/docs/platform/dashboards/use-dashboard-intelligence-by-aida) | Harness AI empowers you to craft customized dashboards with widget-level control through interactive prompts. | Generally available |
+| Platform | [Code Generation](/docs/platform/harness-aida/code-agent) | With the Harness AI Code Agent IDE extension, you can increase productivity by generating multi-line code updates through comments in your IDE, eliminating the need to manually write common functions or look up unknown syntax. | Beta |
+| CCM | [Generate governance rules](/docs/category/harness-aida-for-asset-governance) | Generate rules for asset governance accompanied with detailed descriptions to optimize your cloud spend. | Generally available |
+| CD | Troubleshoot CD deployments | Resolve your deployment failures with AI's root cause analysis (RCA). | Generally available |
+| CD | Policy As Code Assistant | Generate and integrate Open Policy Agent (OPA) Rego policies to meet your compliance standards with the Harness AI DevOps Agent. | Generally available |
+| CE | [ChaosGuard](/docs/chaos-engineering/guides/governance/governance-in-execution/) | Generate conditions for your chaos experiments with ChaosGuard. | Generally available |
+| CODE | [Semantic Search](/docs/code-repository/work-in-repos/semantic-search) | Search code repositories to provide accurate and context-aware results in Harness Code. | Generally available |
+| CODE | [Pull Request Summaries](/docs/code-repository/pull-requests/aida-code-pr) | Automatically generate comprehensive and informative PR descriptions. | Generally available |
+| CI | [Troubleshoot CI builds](/docs/continuous-integration/troubleshoot-ci/aida) | Resolve your build failures with Harness AI DevOps Agent's RCA. | Generally available |
+| FME | [AI Summarize](/docs/platform/harness-aida/release-agent#ai-summarize) | Delivers answers from Harness FME documentation and blogs while summarizing experiment and metric results on their dashboards. | Generally available |
+| STO | [Security remediation](/docs/security-testing-orchestration/remediations/ai-based-remediations) | Leverage AI to quickly analyze vulnerabilities and secure applications. | Generally available |
 
 ## Harness AI terms and data privacy information
 

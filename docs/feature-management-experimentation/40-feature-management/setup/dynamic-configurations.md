@@ -5,7 +5,7 @@ description: "Learn how to use Dynamic Configuration in feature flags, enabling 
 sidebar_position: 5
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/faqs/dynamic-configuration-section-does-not-show-up/
-  - /docs/feature-management-experimentation/feature-management/setup/dynamic-configurations
+  - /docs/feature-management-experimentation/feature-management/dynamic-configurations
 ---
 
 ## Overview

@@ -18,6 +18,12 @@ Dart SDK v2.16.2 and greater, and Flutter v2.5.0 and greater.
 This plugin currently supports the Android and iOS platforms.
 :::
 
+:::tip[Rule-based segments support]
+Rule-based segments are supported in plugin versions 1.0.0 and above. No changes are required to your implementation, but updating to a supported version is required to ensure compatibility.
+
+Older SDK versions will return the control treatment for flags using rule-based segments and log an impression with a special label for unsupported targeting rules.
+:::
+
 ## Initialization
 
 Set up FME in your code base with the following two steps:
@@ -26,7 +32,7 @@ Set up FME in your code base with the following two steps:
 
 ```yaml title="pubspec.yaml" 
 dependencies:
-  splitio: 0.2.0
+  splitio: 1.0.0
 ```
 
 ### 2. Instantiate the plugin
@@ -360,6 +366,7 @@ The parameters available for configuration are shown below.
 | impressionsMode | This configuration defines how impressions (decisioning events) are queued. Supported modes are `ImpressionsMode.optimized`, `ImpressionsMode.none`, and `ImpressionsMode.debug`. In `ImpressionsMode.optimized` mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In `ImpressionsMode.none` mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use `ImpressionsMode.none` when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In `ImpressionsMode.debug` mode, ALL impressions are queued and sent to Harness. This is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `ImpressionsMode.optimized` |
 | readyTimeout | Maximum amount of time (in seconds) to wait until the `onTimeout` callback is fired or `whenTimeout` future is completed. A negative value means no timeout. | 10 seconds |
 | certificatePinningConfiguration | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |
+| rolloutCacheConfiguration | Specifies how long rollout data is kept in local storage before expiring. | null |
 
 ## Manager
 
@@ -388,6 +395,8 @@ class SplitView {
   Map<String, String> configs = {};
   List<String> sets = [];
   String defaultTreatment;
+  List<Prerequisite> prerequisites = [];
+  bool impressionsDisabled;
 }
 ```
 

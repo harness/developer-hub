@@ -23,7 +23,7 @@ Set up FME in your code base with the following two steps:
 Import the SDK into your project including the dependency as follows:
 
 ```java title="Gradle"
-implementation 'io.split.client:android-suite:2.1.1'
+implementation 'io.split.client:android-suite:2.1.2'
 ```
 
 :::warning[Important]
@@ -933,7 +933,9 @@ public class SplitView {
     public long changeNumber;
     public Map<String, String> configs;
     public String defaultTreatment;
-    public List<String> sets;
+    public 
+    public List<Prerequisite> prerequisites;
+    public boolean impressionsDisabled;
 }
 ```
 
@@ -949,6 +951,8 @@ class SplitView(
     var changeNumber: Long
     var defaultTreatment: String?
     var sets: List<String>
+    var prerequisites: List<Prerequisite>
+    var impressionsDisabled: Boolean
 )
 ```
 

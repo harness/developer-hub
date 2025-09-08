@@ -26,7 +26,7 @@ Follow these steps to view the scan results:
 2. Select the specific execution that performed the security scan.
 3. Click the **Vulnerabilities** tab.
 
-The **Vulnerabilities** tab provides a comprehensive view of all issues detected during the scan.
+The **Vulnerabilities** tab provides a detailed view of all issues identified during a scan. From this tab, you can also export the scan results in **CSV** format. For more information, see [Export security test results](/docs/security-testing-orchestration/view-security-test-results/export-scan-results).
 
 <DocImage path={require('./static/security-tests-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -81,7 +81,7 @@ Click an issue to open the **Issue Details** pane. This pane contains two tabs: 
 
 <DocImage path={require('./static/issue-details-side-pane.png')} width="100%" height="100%" title="Click to view full size image" />
 
-If an exemption applies or was requested for an issue, the **Exemption Status at Scan** section appears at the top of the pane. Here, you can view exemption details or take actions (**Approve**, **Reject**, **Re-open**) based on your permissions. Learn more in [Issue Exemption Workflow](/docs/security-testing-orchestration/exemptions/exemption-workflows).
+If an exemption applies or was requested for an issue, the **Exemption Status** button appears at the top of the pane. Here, you can click the button to view exemption details or take actions (**Approve**, **Reject**, **Re-open**) based on your permissions. Learn more in [Issue Exemption Workflow](/docs/security-testing-orchestration/exemptions/exemption-workflows).
 
 <DocImage path={require('./static/exemption-details-in-issue-details.png')} width="100%" height="100%" title="Click to view full size image" />
 

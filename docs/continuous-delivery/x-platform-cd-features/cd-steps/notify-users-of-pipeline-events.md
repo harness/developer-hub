@@ -589,7 +589,28 @@ Under **Select the Connectivity Mode**, you can choose to **Connect through Harn
 
 When you select **Connect through Harness Delegate**, and click on **Continue**, you will be asked to select the Delegate that this pipeline notification rule will use, in **Delegate Setup**.
 
-![](./static/delegate-routing-setup.png)
+![](./static/pipeline-notification-delegates-setup.png)
+
+You also get an option to choose between **Fixed Value** and **Expression** while specifying the delegates that the connector should use. 
+
+:::info note
+Currently, the feature that allows you to pass Expressions for selecting delegates in Pipeline Notifications is behind the feature flag `PIPE_SUPPORT_DELEGATE_EXPRESSIONS_FOR_PIPELINE_NOTIFICATIONS`. 
+Please, contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
+![](./static//pipeline-notification-delegates-expressions.png) 
+
+If you choose to reference the delegates through **Expressions**, please note that either the entire list of delegate selectors can be an expression or elements of delegate selectors can be expressions.
+
+
+Selecting the **Delegate Selection Expression List** option allows you to have the list of Delegate Selectors as an **Expression**.
+
+![](./static/pipeline-notifications-delegate-expressions-selection-expression-list.png)
+
+
+However, if you select the **Delegate Selector** option, it allows you to have elements of Delegate Selectors as **Expressions**
+
+![](./static/pipeline-notifications-delegate-expressions-selector.png)
 
 ## Enable or disable notification rules
 

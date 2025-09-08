@@ -11,7 +11,9 @@ description: Improve developer experience with the DX plugin.
 | **Type**       | Open-source plugin                                                            |
 
 ## Overview
-The **DX plugin** is designed to enhance the overall developer experience and streamline the development process by providing insights, tools, and integrations tailored to support your workflow. 
+The **DX plugin** is designed to enhance the overall developer experience and streamline the development process by providing insights, tools, and integrations tailored to support your workflow.
+
+
 
 ## Configuration
 
@@ -27,69 +29,37 @@ You can use the following ``YAML`` snippet as the application configuration for 
 ```YAML
 proxy:
   endpoints:
-    "/dx":
-      target: <DX_HOST_URL>
+    "/dx-web-api":
+      target: https://api.getdx.com
+      pathRewrite:
+        '/api/proxy/dx-web-api/?': '/'  
       headers:
         Authorization: Bearer ${DX_API_TOKEN}
+      allowedHeaders:
+        - X-Client-Type
+        - X-Client-Version
+        
 dx: #optional
-  schedule:  #optional
-    frequency:
-      hours: 1
-    timeout:
-      minutes: 2
-    initialDelay:
-      seconds: 3
-  catalogSyncAllowedKinds: [API, Component, User, Group]  #optional
-  disableCatalogSync: true  #optional
-```
-
-#### Application Configuration YAML Details:
-The following``proxy`` snippet in the YAML configures a proxy endpoint with your **DX Host** and **Token**:
-```YAML
-proxy:
-  endpoints:
-    "/dx":
-      target: <DX_HOST_URL>
-      headers:
-        Authorization: Bearer ${DX_API_TOKEN}
-```
-
-**Optional Parameters**:
-1. **Schedule**: You can optionally configure schedule for the tasks using the following format and definition: 
-```YAML
-schedule:  
-    frequency:
-      hours: 1
-    timeout:
-      minutes: 2
-    initialDelay:
-      seconds: 3
-```
-2. **Entity Filter**: You can optionally set ``catalogSyncAllowedKinds`` to only send specific kinds of entities to DX using the following definition:
-```YAML
-catalogSyncAllowedKinds: [API, Component, User, Group]
-```
-3. **Disable Catalog Sync**: You can optionally set ``disableCatalogSync`` to disable running the software catalog sync scheduled task.
-```YAML
-disableCatalogSync: true
+  appId: staging  #optional
 ```
 
 ## Layout
 
 :::important Component Update
-In the [latest update](/release-notes/internal-developer-portal#breaking-change-dx-plugin--visualization-components-consolidated) of this plugin, all the individual component cards (EntityChangeFailureRateCard, EntityDeploymentFrequencyCard, EntityDORAMetricsContent, EntityDXDashboardContent, EntityLeadTimeCard, EntityOpenToDeployCard, EntityTimeToRecoveryCard, EntityTopContributorsTable) have been **replaced** by the more versatile `DxDataChart` component that now covers all this functionality.
+In the [latest update](/release-notes/internal-developer-portal#breaking-change-dx-plugin--visualization-components-consolidated) of this plugin, all the individual component cards (EntityChangeFailureRateCard, EntityDeploymentFrequencyCard, EntityDORAMetricsContent, EntityDXDashboardContent, EntityLeadTimeCard, EntityOpenToDeployCard, EntityTimeToRecoveryCard, EntityTopContributorsTable) have been **replaced** by the more versatile `DxDataChartCard` component that now covers all this functionality.
 :::
 
-The following configuration is the current recommended layout for this plugin:
+This plugin exports:
+
+- ❌ 0 Page
+- ✅ 3 Cards
+- ✅ 2 Tabs
+
+
+**The following cards can be added to your overview screen**
+
 
 ```YAML
-       - component: DxDataChart
-          specs:
-            props:
-              variant: gridItem
-              item: 400
-            gridProps:
-              md: 6
         - component: EntityScorecardsCard
           specs:
             props:
@@ -97,6 +67,7 @@ The following configuration is the current recommended layout for this plugin:
               item: 400
             gridProps:
               md: 6
+
         - component: EntityTasksCard
           specs:
             props:
@@ -104,29 +75,65 @@ The following configuration is the current recommended layout for this plugin:
               item: 400
             gridProps:
               md: 6
-        - component: EntityScorecardsPage
+
+```
+
+#### Configuring DxDataChartCard
+
+- Example of Table chart
+
+```yaml
+        - component: DxDataChartCard
           specs:
             props:
-              variant: gridItem
-              item: 400
-            gridProps:
-              md: 6
-        - component: EntityTasksPage
-          specs:
-            props:
-              variant: gridItem
-              item: 400
+              title: Recent Deployments
+              description: Last 10 deployments
+              datafeedToken: your-datafeed-token
+              unit: deployments
+              chartConfig:
+                type: table
             gridProps:
               md: 6
 ```
-## Annotations
-To configure the plugin for a service in the software catalog, add the following annotation to its ``catalog-info.yaml`` definition file:
+- Example of Line chart
+
+
+```yaml
+       - component: DxDataChartCard
+          specs:
+            props:
+              title: Deployment Frequency
+              description: Weekly deployments over time
+              datafeedToken: your-datafeed-token
+              unit: deployments
+              chartConfig:
+                type: line
+                xAxis: date
+                yAxis: count
+            gridProps:
+              md: 6
+```
+
+**Similary the following tabs can be added to your entity:**
 
 ```YAML
-metadata:
-  annotations:
-    github.com/project-slug: 'project-slug'
+    - name: EntityScorecardsPage
+      path: /dx-scorecards
+      title: Scorecards
+      contents:
+        - component: EntityScorecardsPage
+
+    - name: EntityTasksPage
+      path: /dx-tasks
+      title: Tasks
+      contents:
+        - component: EntityTasksPage
 ```
+## Annotations
+
+As of now you don't really need annotations to configure the plugin.
+
+Although make sure that the Entity identifier of DX should match with the `Identifier of IDP 2.0` or `metadata.name` of IDP 1.0.
 
 ## Support
 The plugin is owned by **DX** and managed in this [repository](https://github.com/get-dx/backstage-plugin) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

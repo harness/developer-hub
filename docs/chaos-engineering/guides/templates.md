@@ -77,6 +77,6 @@ Templates can be managed at different organizational levels:
 ## Next Steps
 
 - [Create your first experiment using templates](/docs/chaos-engineering/guides/chaos-experiments/create-experiments)
-- [Learn about ChaosHubs](/docs/chaos-engineering/guides/chaoshubs/)
+- [Learn about ChaosHubs](/docs/chaos-engineering/guides/chaoshub)
 - [Explore Fault Templates](/docs/chaos-engineering/faults/custom-faults/custom-fault-templates)
 - [Understand Actions](/docs/chaos-engineering/guides/actions/)

@@ -5,7 +5,7 @@ description: ""
 sidebar_position: 18
 redirect_from:
 - /docs/feature-management-experimentation/feature-management/faqs/is-the-feature-flag-impression-toggle-supported
-- /docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions
+- /docs/feature-management-experimentation/feature-management/impressions
 ---
 
 import Tabs from '@theme/Tabs';

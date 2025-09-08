@@ -4,7 +4,7 @@ sidebar_label: Control treatment
 description: ""
 sidebar_position: 13
 redirect_from:
-  - /docs/feature-management-experimentation/feature-management/setup/control-treatment
+  - /docs/feature-management-experimentation/feature-management/control-treatment
 ---
 
 The **control** treatment is a reserved treatment in FME. You cannot create a treatment named **control**. The **control** treatment is returned by the SDK in the following scenarios:

@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-8-20T10:00:00
+date: 2025-09-04T10:00:00
 sidebar_position: 8
 ---
 
@@ -48,27 +48,108 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 :::warning Announcement 
 **Google Container Registry Deprecation Notice 📢**
 
-Google Container Registry (GCR) is deprecated and scheduled to shut down on **March 18, 2025**. It is recommended to migrate to Google Artifact Registry (GAR). For migration guidance, refer to [Google's official transition documentation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr).
+Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recommended to migrate to Google Artifact Registry (GAR). For migration guidance, refer to [Google's official transition documentation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr).
 
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
-## August 2025
+## September 2025
+
+### Version 1.105.XX
+
+#### New Features and Enhancements:
+
+- Harness now supports a new account-level setting `enable_signed_commit_for_github` to control automatic commit signing when using GitHub App authentication. You can configure this setting under **Account Settings** → **Default Settings** → **Git Experience**.
+
+- Introduced controlled license enforcement for pipeline chaining with feature flag protection to ensure smooth rollout.  
+  - **Tier-based access:** Pipeline chaining is now restricted for FREE/DEVOPS_ESSENTIAL users and fully available for ENTERPRISE users.  
+  - **Backend validation:** Extended validation prevents Free/Essentials users from saving pipeline configurations with chaining, including blocking direct API calls.  
+  - **API-level restrictions:** Pipeline save/update endpoints now enforce license tier checks to stop unauthorized chaining.  
+  - **Feature flag protection:** The new `PIPE_DISABLE_PIPELINE_CHAINING_FOR_FREE_TIER` flag allows gradual enforcement without disrupting existing pipelines.  
+  - **Improved error handling:** Error messages are clear and non-stacking, guiding users to upgrade when needed.  
+  - **Validation coverage:** Comprehensive checks across YAML configurations, pipeline save/update operations, and direct API calls with supporting test cases. (**PIPE-29067**)
+
+- Harness enhanced Git Experience for remote pipelines. Step outputs now include Git details (such as branch, SHA, or commit ID) for remote entities (Service, Infrastructure, Environment).  (**PIPE-22359**)
+
+- Harness now supports Azure connectors in Terraform steps (plan, apply, destroy, etc.). (**CDS-98865**)
+
+#### Behavior Changes
+
+- Introducing a new functor to enhance the [Multi Selection functionality](/docs/platform/variables-and-expressions/runtime-input-usage/#allow-multi-selection-and-single-selection) for runtime input. The new functor `.selectManyFrom()` will replace the `.allowedValues()` functor and change the pipeline runtime input behavior. (**PIPE-28993**)
+  - The soon-to-be-deprecated functor `.allowedValues()` displayed identical behavior to `.selectOneFrom()`, allowing users to select a single value for runtime input. 
+  - However, if the users enabled the Feature Flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, the `.allowedValues()` functor was mapped to multi-selection mode, thus allowing them to select multiple values for runtime input.
+  - The upcoming feature update will enhance the capability of selecting runtime input by providing a dedicated method for each mode (Single Selection or Multi Selection). The Multi Selection mode will be mapped to the `.selectManyFrom()` functor. In contrast, the Single Selection mode will be mapped to the `.selectOneFrom()` functor, thus allowing users to select multiple values or a single value for runtime input, respectively.
+  - Please note that the existing functor `.allowedValues()` continues to work as before. Existing Pipelines will see no change in behavior. However, editing the Runtime Inputs on these pipelines in Pipeline Studio will replace the `.allowedValues()` function with the newer functions as per selection. You will see this change in the Pipeline YAML, and this may affect some customers automation and testing.
+  - All new pipelines created will reflect the new behavior. 
+
+
+#### Fixed Issues
+
+- Fixed an issue where the `skipCleanup` parameter in the Helm Deploy Step API was incorrectly documented as a string instead of a boolean. The API documentation now correctly reflects its boolean type. (**CDS-113817**)  
+- Added support for containerless Git Clone in the MacOS Runner. Git Clone now runs on the host machine instead of containers, which helps mitigate transient clone issues and resolves problems caused by case-sensitive file renames in virtualized file systems. (**PIPE-29369**, **ZD-90900**)  
+- Fixed an issue where OIDC tokens retrieved via `<+connectorInputs.get(<+infra.connectorRef>).oidcToken>` were exposed in plain text in Shell Script and Run steps. Tokens are now masked consistently across logs, inputs, and step details, and remain usable as variables across steps without exposure. (**CDS-113288**, **ZD-90819**)  
+- Fixed an issue in Pipeline Studio where users repeatedly saw the message `Template has been changed. Update Pipeline to enable editing`. After clicking **Update Pipeline**, there was no option to save the pipeline, causing the prompt to reappear on re-entry. Users are now correctly prompted to review unsaved changes and can save the pipeline after updating. (**PIPE-29382, ZD-77991**)
+
+:::info
+
+Wondering where version 1.104.XX is? That release was rolled into 1.105.XX and upgrades will skip directly from 1.103.XX to 1.105.XX. Don't worry, you're not missing a thing!
+
+:::
 
 ### GitOps Service 1.40.0, GitOps Agent 0.100.0
 
 #### New Features and Enhancements
 
-- Enhanced GitOps Cluster Detail Page with improved UX features: application listing pane showing all hosted applications, clickable Agent name and ID links, additional cluster credential information, and inline editing capabilities aligned with other Harness detail pages. (**CDS-108575**)
+- Harness has enhanced the GitOps Cluster Detail Page with improved UX features: application listing pane showing all hosted applications, clickable Agent name and ID links, additional cluster credential information, and inline editing capabilities aligned with other Harness detail pages. (**CDS-108575**)
 
+## August 2025
+
+### Version 1.103.XX
+
+#### New Features and Enhancements
+
+- You can now control the automatic cleanup behavior for failed first Helm releases with the new `skipCleanup` parameter. This will help you to:
+  - Preserve failed Helm releases for debugging and troubleshooting
+  - Retain container logs and deployment artifacts after failures
+  - Analyze root causes of deployment issues without losing critical information
+  - Improve onboarding experience for teams new to Helm deployments
+
+  Users should add the `skipCleanup: true` parameter to their Helm Deploy step configuration when they need to debug failed deployments. This parameter only affects first-time deployments (revision=1) that fail, and has no impact on successful deployments or upgrades. (**CDS-113186**)
+- Added the option to use an Access Token for API authentication in the Bitbucket Connector. **(PIPE-29237)**
+- Added a new feature to the Container step that allows users to configure resource requests (CPU and memory) directly from the UI. This provides greater flexibility for running resource-intensive tasks, such as performance tests, and ensures accurate and reliable results. **(CDS-110282)**
+- Added the ability to select user groups in email steps. (**CDS-109176**)
+
+#### Upcoming Behavior Changes
+
+- We will soon introduce a **feature update for Audit Trail** to ensure consistency across the audit logs.
+  - This update will **change how pipeline actions are identified**. Currently, we utilize the **Pipeline Name** to represent the **Create**, **Update**, **Delete**, and **Move Config** pipeline actions in the audit logs. In contrast, the **Pipeline Identifier** represents the **Start**, **End**, **Abort**, and **Timeout** actions.
+  - With this update, **Create**, **Update**, **Delete**, and **Move Config** actions will also be represented through the **Pipeline Identifier**. This change aligns the behavior across all the logs associated with pipeline actions in the Audit Trail, ensuring the use of a single and consistent identifier.
+  - This feature will be released by the end of September behind the feature flag `PIPE_USE_PIPELINE_IDENTIFIER_IN_AUDIT_LOGS`. If you enable this feature flag, please make sure you **update your integration points** to accommodate this change. (***PIPE-28870***)
+
+#### Fixed Issues
+
+- Fixed an issue where webhooks displayed events from repositories belonging to other projects. This occurred because events were filtered only by the webhook identifier without considering scope information, allowing different projects with the same webhook identifier to receive each other’s events. Scope-based filtering has been added to ensure events are isolated per project. (**PIPE-29270**, **ZD-90896**)  
+- Fixed an issue where parallel rollback failures for ASG deployments (under the feature flag `CDS_ASG_MULTI_DEPLOY_ROLLBACK_SUPPORT`) were logged twice when matrix strategies were applied at the stage level. The problem was caused by sweeping outputs not being copied correctly during pipeline rollback. The logic has been updated to fetch the original execution sweeping outputs to ensure consistency. (**CDS-113180**, **ZD-90321**)
+- Previously, the environment variables option for the Terraform plan step only supported expression and input. We've fixed this to now include support for runtime input as well. **(CDS-113592)**
+- Fixed an issue where the pipeline would crash during the artifact tag loading step when a user selected a service and variables through an input set. Previously, an unstable dependency array in `useModalHook` caused a continuous re-render, leading to the crash. **(ZD-91140, ZD-91421, PIPE-29340)**
 
 ### Version 1.102.XX
 
-### New Features and Enhancements
+#### New Features and Enhancements
 
 - Users can now select your Azure Cloud Provider connector to connect to the Azure Container Registry (ACR) for your Azure Function Deploy steps. (**CDS-110657**, **ZD-85163**) 
 - Harness now supports GitHub Pull Request Review as an event in webhook triggers to initiate the execution of a pipeline. This enables automatic pipeline execution when a pull request review is         submitted, edited, or dismissed. For a list of all supported events and actions, check out the [webhook triggers reference](/docs/platform/triggers/triggers-reference/#event-and-actions). (**PIPE-25264**)
 - Harness now supports [notifications for trigger failures](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#select-events), allowing users to receive alerts when a trigger fails to start pipeline execution. This improves the visibility of pipeline runs that could not start due to failed triggers. This feature is currently behind feature flag `PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION`. Please, contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-27482**)
+
+#### Upcoming Behavior Changes
+
+- We are soon introducing a new functor to enhance the [Multi Selection functionality](/docs/platform/variables-and-expressions/runtime-input-usage/#allow-multi-selection-and-single-selection) for runtime input. The new functor `.selectManyFrom()` will replace the `.allowedValues()` functor and change the pipeline runtime input behavior. (***PIPE-28993***)
+  - The soon-to-be-deprecated functor `.allowedValues()` displayed identical behavior to `.selectOneFrom()`, allowing users to select a single value for runtime input. 
+  - However, if the users enabled the Feature Flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`, the `.allowedValues()` functor was mapped to multi-selection mode, thus allowing them to select multiple values for runtime input.
+  - The upcoming feature update will enhance the capability of selecting runtime input by providing a dedicated method for each mode (Single Selection or Multi Selection). The Multi Selection mode will be mapped to the `.selectManyFrom()` functor, while the Single Selection mode will be mapped to the `.selectOneFrom()` functor, thus allowing users to select multiple values or a single value for runtime input, respectively.
+  - Please note that the existing functor `.allowedValues()` continues to work as before. Existing Pipelines will see no change in behavior. Editing the Runtime Inputs on these pipelines in Pipeline Studio, however, will replace the `.allowedValues()` functor with the newer functors as per selection. You will see this change in the Pipeline YAML.
+  - All the new pipelines created after the feature is released will reflect the new behavior. This feature will be introduced by the end of August.
+
 
 #### Fixed Issues
 
@@ -4161,7 +4242,7 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
   To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
 
-  For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
+  For more information on how to send emails to non-Harness users, go to [Email step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email-step/).
 
   Harness Delegate version 23.06.79503 is required for this feature.
 
@@ -5996,7 +6077,7 @@ This release does not include new features.
 
   ![Deployment Type](static/adc95dc9af6b3beecc06149fc8045fd66f6ad514a37d2583addea35354643801.png)
 
-- The [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/) is sending an error even though the email is sent. (CDS-50952)
+- The [Email step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email-step/) is sending an error even though the email is sent. (CDS-50952)
 
   In the **Email** step, when there is an invalid address in the **to** setting and a valid email in the **cc** setting, mail is sent to the cc address, but the step is marked as failed. This has been fixed. The Email step is marked as success if emails are sent to the cc address.
 
