@@ -379,7 +379,7 @@ To connect your AWS S3 bucket to Harness FME, you need:
 * An S3 bucket destination already created.
 * An AWS account with the ability to grant Harness FME permission to read, put, and remove data in the bucket. **Note: We only remove transactional files created during the transfer.**
 
-**File restrictions**:
+**File specifications**:
 
 * Compression examples: gzip, bzip2, snappy, or LZO
 * File format: *Parquet only*
