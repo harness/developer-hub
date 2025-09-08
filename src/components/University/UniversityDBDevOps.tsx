@@ -17,17 +17,17 @@ import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_badge.svg`,
+    img: `${url}img/cert_dev_dbdo_badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.developer,
   },
   {
-    img: `${url}img/cert_adm_badge.svg`,
+    img: `${url}img/cert_adm_dbdo_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.administrator,
   },
   {
-    img: `${url}img/cert_arc_badge.svg`,
+    img: `${url}img/cert_arc_dbdo_badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.architect,
   },
@@ -272,7 +272,7 @@ export default function CertificationsDBDEVOPS() {
                       Database DevOps - Developer
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_dev_badge.svg`}
+                      src={`${baseUrl}img/cert_dev_dbdo_badge.svg`}
                       alt="Harness Certified Expert - DBDevOps Developer"
                       className={styles.badge}
                     />
@@ -351,7 +351,7 @@ export default function CertificationsDBDEVOPS() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_adm_badge.svg`}
+                      src={`${baseUrl}img/cert_adm_dbdo_badge.svg`}
                       alt="Harness Certified Expert - DBDevOps Administrator"
                       className={styles.badge}
                     />
@@ -439,7 +439,7 @@ export default function CertificationsDBDEVOPS() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_arc_badge.svg`}
+                      src={`${baseUrl}img/cert_arc_dbdo_badge.svg`}
                       alt="Harness Certified Expert - DB DevOps Architect"
                       className={styles.badge}
                     />

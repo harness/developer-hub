@@ -9,12 +9,10 @@ Harness FME provides client-side SDK suites which bundle core Harness FME functi
 
 They provide a faster path to production by packaging pre-built configurations, dependency integrations, and performance optimizations for your chosen tech stack.
 
+import { Section, clientSideSuites } from '@site/src/components/Docs/data/fmeSDKSData';
+
 ## Get started
 
 Choose a suite to enable feature flagging and experimentation in your frontend application.
 
-| **SDK** | **API Key/Type** | **Links** |
-| --- | --- | --- | 
-| Android | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite), [GitHub](https://github.com/splitio/android-suite) | 
-| Browser | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite), [GitHub](https://github.com/splitio/browser-suite) |
-| iOS | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite), [GitHub](https://github.com/splitio/ios-suite) | 
+<Section items={clientSideSuites} />

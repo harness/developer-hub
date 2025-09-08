@@ -401,6 +401,7 @@
               font-size: 16px;
 
               :global {
+
                 .fa-solid,
                 .fa-regular {
                   margin-left: 4px;
@@ -675,6 +676,7 @@
             font-size: 16px;
 
             :global {
+
               .fa-solid,
               .fa-regular {
                 margin-left: 4px;
@@ -788,6 +790,7 @@
               font-size: 16px;
 
               :global {
+
                 .fa-solid,
                 .fa-regular {
                   margin-left: 4px;
@@ -813,22 +816,32 @@
 
 .certificationsCI {
   background-image: url(/img/cert_ci_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 .certificationsCD {
   background-image: url(/img/cert_cd_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 .certificationsFF {
   background-image: url(/img/cert_ff_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 .certificationsCCM {
   background-image: url(/img/cert_ccm_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 .certificationsSTO {
   background-image: url(/img/cert_sto_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 .certificationsSEI {
@@ -863,6 +876,14 @@
 
 .certificationsCE {
   background-image: url(/img/cert_ce_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
+}
+
+.certificationsDBDO {
+  background-image: url(/img/cert_dbdo_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 // .certificationsPlatfrom {
@@ -899,6 +920,7 @@
         font-size: 16px;
 
         :global {
+
           .fa-solid,
           .fa-regular {
             margin-left: 4px;
@@ -928,6 +950,7 @@
 }
 
 @media screen and (max-width: 1344px) {
+
   /* for small desktop */
   .certificationsCI,
   .certificationsCD,
@@ -941,6 +964,7 @@
   .certificationsIACM,
   .certificationsSCS,
   .certificationsCR,
+  .certificationsDBDO,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -958,6 +982,7 @@
 }
 
 @media screen and (max-width: 1199px) {
+
   /* for laptop */
   .university {
     .hero {
@@ -982,6 +1007,7 @@
   .certificationsIACM,
   .certificationsSCS,
   .certificationsCR,
+  .certificationsDBDO,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -1139,6 +1165,7 @@
 }
 
 @media screen and (max-width: 599px) {
+
   /* for mobile */
   .university,
   .certificationsCI,
@@ -1304,6 +1331,16 @@
         background-image: url(/img/cert_cr_bg.svg);
       }
     }
+
+  }
+
+  .certificationsDBDO {
+    .hero {
+      .right {
+        background-image: url(/img/cert_dbdo_bg.svg);
+      }
+    }
+
   }
 
   .hero {
@@ -1318,6 +1355,7 @@
 }
 
 @media screen and (max-width: 393px) {
+
   /* for mobile */
   .university,
   .certificationsCI,
@@ -1500,6 +1538,14 @@
     .hero {
       .right {
         background-image: url(/img/cert_cr_bg.svg);
+      }
+    }
+  }
+
+  .certificationsDBDO {
+    .hero {
+      .right {
+        background-image: url(/img/cert_dbdo_bg.svg);
       }
     }
   }

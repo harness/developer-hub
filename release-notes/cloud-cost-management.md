@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-08-22T18:00
+date: 2025-08-29T18:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,49 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+## August 2025 - Version 1.62.3
+#### **Deployment Date:** August 29, 2025 (Prod-1)
+
+### ⭐ [New Feature] Historical Recommendations Widgets
+**[CCM-24185] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#applied-recommendations)**
+
+In the Applied Recommendations tab, we’ve added two new widgets: one shows Recommendations vs. Savings, highlighting the savings from applied recommendations, and the other shows Recommendations Marked as Applied, along with a detailed breakdown of those marked as applied. We have also introduced “BY/ON” column to show which user applied the recommendation and when.
+
+<DocImage path={require('./static/ccm/historical-rec.png')} width="100%" height="100%" title="Click to view full size image" />
+
+
+### ⭐ [New Feature] Jira Status Mapping in Recommendations
+**[CCM-23844] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#recommendation-settings)**
+
+We’ve added support for Jira Status Mapping in Recommendation Settings. Users can now map Jira statuses so that recommendations are automatically moved to either the Applied section or the Ignore List, based on their selection.
+
+Noted that you need to have a Jira connector configured successfully for this feature to show up in UI and it takes about an hour for the changes to reflect.
+
+<DocImage path={require('./static/ccm/status-mapping.png')} width="60%" height="60%" title="Click to view full size image" />
+
+### ⭐ [New Feature] Cluster Capacity Limits
+**[CCM-24203] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/feature-of-co)**
+
+We have added Cluster Capacity Limits in Cluster Orchestrator’s Cluster Configuration. For Karpenter Nodepools, users can now set maximum CPU (cores) and memory (bytes) limits as guardrails to prevent uncontrolled cluster scaling.
+
+<DocImage path={require('./static/ccm/cluster-limits.png')} width="60%" height="60%" title="Click to view full size image" />
+
+### Feature Improvements
+
+- **Draft Indicator for Perspective Creation**: All Perspectives created from now will have a "Draft" prefix to their name in the Perspective Builder to indicate that the Perspective creation is still in process.
+
+- **Enhanced Policy Evaluation Transparency** We have added an Evaluated Rule tab in the Evaluation Output to display the policy YAML used for evaluation. An option "Include custodian-metadata.json" has been included in the bulk export functionality to export the metadata of the policies evaluated.
+
+<DocImage path={require('./static/ccm/evaluated-rule.png')} width="90%" height="90%" title="Click to view full size image" />
+
+### Bug Fixes
+
+- **Chart Visualization Improvement**: We recently switched the chart's Y-axis from logarithmic to linear based on feedback. However, this made it difficult for users to view both cluster and cloud costs together, as one would get overshadowed unless the other was deselected. We've reverted the change for now while we work on a better solution to visualize both.
+
+- **Azure VM Recommendations Field Mapping**: In the Azure VM recommendations, the namespace and clusterName fields were mistakenly mapped in reverse. This mismatch caused the unique combination to fail to align with the ignore list, resulting in items remaining unexcluded.
+
+- **GCP Connector Command Fixes**: Previously, for Cloud Costs GCP connector, the command to create a custom role for AutoStopping did not have backslashes for new lines, which caused the command to fail. We have also added `compute.snapshots.list` and `compute.disks.list` permissions by default as they are used for visibility.
 
 ## August 2025 - Version 1.61.1
 #### **Deployment Date:** August 22, 2025 (Prod-1)

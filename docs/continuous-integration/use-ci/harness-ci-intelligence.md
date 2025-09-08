@@ -18,7 +18,7 @@ Build Intelligence in Harness CI is currently available for **Gradle** and **Baz
 
 Testing is an important part of Continuous Integration. Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests, and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build.
 
-Harness Test Intelligence (TI) helps your test cycle move faster without compromising quality. TI can dramatically improve test times by running only the unit tests required to confirm the quality of the code changes that triggered the build.Instead of always running all unit tests, TI selects the subset of relevant unit tests and skips the rest. You can also configure Harness TI to automatically split tests and run them in parallel.
+Harness Test Intelligence (TI) helps your test cycle move faster without compromising quality. Harness TI speeds up builds by running only the unit tests that matter for the specific code changes made, instead of executing the entire test suite every time. It automatically identifies and selects the relevant tests, skipping the rest. You can also configure TI to split tests across multiple jobs and run them in parallel, further reducing test time.
 
 Test Intelligence gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. Using TI doesn't require you to change your build and test processes.
 
@@ -75,7 +75,7 @@ When you use DLC with Harness CI Cloud, the cache is stored in the Harness-manag
 |-----------------------|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------|------------------------------|-------------------------------------------------------------------------------------------------------|
 | **Docker Layer Caching (DLC)**   | Reuses previously built Docker image layers, building only what’s necessary.                               | Speeds up Docker image build and push steps     | Docker images                | Can be used with any build infrastructure; cache stored in Harness cloud environment or S3-compatible storage. |
 | **Cache Intelligence**     | Caches software dependencies (e.g., plugins) downloaded at the start of the build in a specific directory. | Caches dependencies to save download time       | Software dependencies         | Automatically caches and restores dependencies; works with any build infrastructure; stored in Harness cloud or S3-compatible storage. |
-| **Build Intelligence**            | Caches outputs of cacheable build tasks as identified by the build tool (e.g., Gradle tasks).            | Speeds up overall build process by reusing task outputs | Build outputs                | Available in Harness Cloud only, with support for self-hosted coming soon. Available for Gradle and Bazel, with Maven support coming soon.   |
+| **Build Intelligence**            | Caches outputs of cacheable build tasks as identified by the build tool (e.g., Gradle tasks).            | Speeds up overall build process by reusing task outputs | Build outputs                | Available in Harness Cloud and Kubernetes infrastructure, with support for local runner and VM runner coming soon. Available for Gradle and Bazel, with Maven support in Beta.   |
 
 ## Intelligence Savings 
 

@@ -28,7 +28,7 @@ To view the permissions you have, go to **Project Settings**-> **Access Control*
 
 Harness allows users to exercise fine-grained control, which is sufficient for environments that are local to a team or group. You can perform the following operations:
 
-1. View/Add (by connecting to the relevant Git repo)/Edit (the access information, refresh durations, etc.)/Delete the **chaos artifact sources** ([ChaosHub](/docs/chaos-engineering/guides/chaoshubs/add-chaos-hub)).
+1. View/Add (by connecting to the relevant Git repo)/Edit (the access information, refresh durations, etc.)/Delete the **chaos artifact sources** ([ChaosHub](/docs/chaos-engineering/guides/chaoshub)).
 
 2. View/Add (by installing the chaos agent)/Edit/Delete the target infrastructure, where the chaos experiments are carried out ([Chaos infrastructure](/docs/chaos-engineering/guides/infrastructures/types/)).
 

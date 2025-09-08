@@ -15,12 +15,10 @@ Use a client-side agent when:
 - You want to minimize network traffic to the FME service
 - You require offline evaluation for certain use cases
 
+import { Section, clientSideAgents } from '@site/src/components/Docs/data/fmeSDKSData';
+
 ## Get started
 
-Select an agent for your platform.
+Select a client-side agent for your platform.
 
-| **SDK** | **API Key/Type** | **Links** |
-| --- | --- | --- | 
-| Android | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent), [GitHub](https://github.com/splitio/android-rum-agent-examples) | 
-| Browser | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent), [GitHub](https://github.com/splitio/browser-rum-agent-examples) |
-| iOS | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent), [GitHub](https://github.com/splitio/ios-rum) | 
+<Section items={clientSideAgents} />
