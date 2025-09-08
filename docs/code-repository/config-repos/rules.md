@@ -175,34 +175,16 @@ You can still manually request reviews from specific CODEOWNERS. If a CODEOWNER 
 
 ### CODEOWNERS syntax
 
-In your Harness Code CODEOWNERS file, you can assign code ownership to users <!--and user groups-->within your Harness account<!--, organizations, or projects:-->.
+In your Harness Code CODEOWNERS file, you can assign code ownership to users and user groups within your Harness account, organizations, or project.
 
-<!--
-* Account: `@accountIdentifier/userOrGroupName`
-* Organization: `@accountIdentifier/orgIdentifier/userOrGroupName`
-* Project: `@accountIdentifier/orgIdentifier/projectIdentifier/userOrGroupName`
+* Account: `@account.userGroupName`
+* Organization: `@org.userGroupName`
+* Project: `@userGroupName`
 
-`accountIdentifier` is your Harness account ID, `orgIdentifier` is the Harness organization ID, and `projectIdentifier` is the Harness project ID.
 
-You can get your account ID from any Harness URL, such as `https://app.harness.io/ng/#/account/ACCOUNT_ID/home/get-started`.
+You can get user group names where you [manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups).
 
-To quickly get both the org ID and project ID, create or edit a pipeline in the project where you want to assign code ownership, and then check the `projectIdentifier` and `orgIdentifier` in the YAML editor. For example:
-
-```yaml
-pipeline:
-  name: sample_pipeline
-  identifier: sample_pipeline
-  projectIdentifier: my_cool_project
-  orgIdentifier: my_cool_org
-  tags: {}
-```
-
-You could then declare a CODEOWNER at the project level with `@accountID/my_cool_org/my_cool_project/userOrGroupName`.
-
-You can get user and group names where you [manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) and [manage users](https://developer.harness.io/docs/platform/role-based-access-control/add-users).
--->
-
-Declare CODEOWNERS by the email address associated with their Harness user profile.
+Declare CODEOWNERS by the email address associated with their Harness user profile for adding a user as an CODEOWNER. 
 
 You can assign ownership to specific files, directories, or otherwise. Wildcards are allowed. For example, this CODEOWNERS file demonstrates different ways you can declare ownership.
 
@@ -210,20 +192,21 @@ You can assign ownership to specific files, directories, or otherwise. Wildcards
 Harness ---
 
 # Global owner
-* @email
+** email
+** @account._all_account_users
 
 # Specific file with multiple owners
-Gemfile.lock @email1 @email2
+Gemfile.lock email1 email2
 
 # Subdirectory owners
-/some_directory/ @email
-/some_directory_2/ @email1 @email2
+/some_directory/ email @_all_project_users
+/some_directory_2/ email1 email2
 
 # Workspace owner
-WORKSPACE @email
+WORKSPACE email
 
 # Wildcards
-**/src/** @email
-*.lock @email
+**/src/** email
+*.lock email @code_usergroup
 
 ```
