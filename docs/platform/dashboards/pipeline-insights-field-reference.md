@@ -1,7 +1,7 @@
 ---
 title: Pipeline Insights Field Reference
 description: Complete catalog of data fields available in Harness Pipeline Analytics for building dashboards, reports, and analytics queries.
-sidebar_position: 1
+sidebar_position: 5
 sidebar_label: Pipeline Insights
 tags:
   - pipeline analytics
@@ -20,7 +20,7 @@ keywords:
   - step executions
 ---
 
-This documentation provides a complete catalog of data fields available within Harness Pipeline Insights. These fields enable organizations to construct sophisticated dashboards, generate detailed reports, and perform advanced analytics on their continuous integration and deployment pipeline metrics.
+Pipeline Insights offers a comprehensive set of data fields that organizations can use to construct sophisticated dashboards, generate detailed reports, and perform advanced analytics on their CI/CD pipeline metrics.
 
 ## Overview
 
