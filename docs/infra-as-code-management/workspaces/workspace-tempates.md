@@ -44,17 +44,17 @@ The difference between these options is as follows:
 ## Configure Workspace Templates
 To configure workspace templates and standardize your workspace setups, follow this interactive guide:
 
-<Tabs>  
-<TabItem value="Create workspace templates">  
+<Tabs groupId="step" queryString>  
+<TabItem value="1. Create workspace templates">  
 <DocVideo src="https://app.tango.us/app/embed/6686c1ea-fb9b-4a94-ad1e-021c34b8a19f?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Creating an IaCM workspace template in Harness" />
 </TabItem>
-<TabItem value="Add variables & edit templates"> 
+<TabItem value="2. Add variables & edit templates"> 
 <DocVideo src="https://app.tango.us/app/embed/ceb4cbae-aae8-40d5-8b68-70e72cd4a7cf?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Adding variables to your Harness IaCM workspace template" />
 </TabItem>
-<TabItem value="Apply templates"> 
+<TabItem value="3. Apply templates"> 
 <DocVideo src="https://app.tango.us/app/embed/fb4819c2-3985-48da-90f4-1db8ae839fc5?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Apply Harness IaCM workspace templates to your new workspace." />
 </TabItem> 
-<TabItem value="Step-by-step">
+<TabItem value="Full step-by-step">
 Follow these steps to:
 
 - Create and review a new workspace template.
