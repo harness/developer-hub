@@ -376,7 +376,7 @@ The following describes how to send Harness FME impressions to S3. Impressions a
 
 To connect your AWS S3 bucket to Harness FME, you need:
 
-* An S3 bucket destination that contains files with supported compression.
+* An S3 bucket destination already created.
 * An AWS account with the ability to grant Harness FME permission to read, put, and remove data in the bucket. **Note: We only remove transactional files created during the transfer.**
 
 **File restrictions**:
@@ -388,16 +388,16 @@ To connect your AWS S3 bucket to Harness FME, you need:
   * key: [String] Identifier for the user or system triggering or associated with the impression
   * label: [String] Label associated with the impression
   * treatment: [String] The treatment shown for this impression
-  * testName AS splitName: [String] Name of the feature flag
-  * changeNumber AS splitVersion: [Long] Version of the feature flag
-  * properties: [Map<String,String>, Nullable] Properties data providing context to the impression
+  * splitName: [String] Name of the feature flag
+  * splitVersion: [Long] Version of the feature flag
+  * properties: [String] Arbitrary properties data providing context to the impression
   * environmentId: [String] Identifier for the environment in Harness FME
   * trafficTypeId: [String] Identifier for the traffic type in Harness FME
   * sdk: [String] Name of the SDK sending the impression
   * sdkVersion: [String] Version of the SDK
   * machineName: [String, Nullable] Name of the machine sending the impression
   * machineIp: [String, Nullable] IP of the machine sending the impression
-  * time AS timestamp: [Long] The time when the impression occurred, in milliseconds past epoch
+  * timestamp: [Long] The time when the impression occurred, in milliseconds past epoch
   * receptionTimestamp: [Long] Timestamp when the impression was received by Harness FME
 
 ### Configure integration in Harness FME (outbound)
