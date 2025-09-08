@@ -1,6 +1,8 @@
 ---
 title: Add a pipeline notification strategy
 description: Notify users of different pipeline events.
+redirect_from:
+  - /docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint
 sidebar_position: 3
 ---
 

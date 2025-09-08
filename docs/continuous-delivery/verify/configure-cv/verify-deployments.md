@@ -2,6 +2,10 @@
 title: Configure the Verify Step
 description: Learn how to verify deployments.
 sidebar_position: 1
+redirect_from:
+  - /docs/first-gen/continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/24-7-service-guard-overview/
+  - /docs/first-gen/continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/instana-verification-overview/
+  - /docs/first-gen/continuous-delivery/continuous-verification/instana-verification/instana-service-guard/
 ---
 
 Harness Continuous Verification (CV) integrates with [various health sources](/docs/category/health-sources) to:
