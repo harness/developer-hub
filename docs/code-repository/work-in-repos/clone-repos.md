@@ -31,7 +31,7 @@ You can clone any Harness Code Repository using SSH if you prefer key-based auth
 
 ### Prerequisites
 
-- Ensure you’ve [added your SSH key in Harness](https://developer.harness.io/docs/platform/secrets/add-use-ssh-secrets).
+- Ensure you’ve [added your SSH key in Harness](/docs/platform/secrets/add-use-ssh-secrets).
 
 ### Steps to Clone
 
