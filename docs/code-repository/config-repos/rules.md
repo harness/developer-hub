@@ -177,14 +177,14 @@ You can still manually request reviews from specific CODEOWNERS. If a CODEOWNER 
 
 In your Harness Code CODEOWNERS file, you can assign code ownership to users and user groups within your Harness account, organizations, or project.
 
-* Account: `@account.userGroupName`
-* Organization: `@org.userGroupName`
-* Project: `@userGroupName`
+* Account: `@account.userGroupIdentifier`
+* Organization: `@org.userGroupIdentifier`
+* Project: `@userGroupIdentifier`
 
 
-You can get user group names where you [manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups).
+You can get the user group identifier where you [manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups).
 
-Declare CODEOWNERS by the email address associated with their Harness user profile for adding a user as an CODEOWNER. 
+Declare CODEOWNERS by the email address associated with their Harness user profile for adding a user as a CODEOWNER. 
 
 You can assign ownership to specific files, directories, or otherwise. Wildcards are allowed. For example, this CODEOWNERS file demonstrates different ways you can declare ownership.
 
