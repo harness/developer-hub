@@ -31,7 +31,28 @@ You can clone any Harness Code Repository using SSH if you prefer key-based auth
 
 ### Prerequisites
 
-- Ensure you’ve [added your SSH key in Harness](/docs/platform/secrets/add-use-ssh-secrets).
+1. You must have an SSH key pair on your local machine. To check:
+```bash
+ls ~/.ssh/id_rsa.pub
+```
+
+If it does not exist, generate one:
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+Press **Enter** to accept the defaults.
+
+2. Add Your SSH Key to Harness
+
+  - In the bottom-left corner of the Harness UI, click your Profile icon.
+
+  - Select **+ SSH Key**.
+
+  - Enter a name for the key and paste your public SSH key.
+
+  - Click **Save**.
+<DocImage path={require('./static/add-ssh-key.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 ### Steps to Clone
 
