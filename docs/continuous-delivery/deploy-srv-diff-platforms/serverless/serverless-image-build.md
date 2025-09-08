@@ -8,11 +8,13 @@ sidebar_position: 5
 
 ## Overview
 
-This guide walks you through the process of building custom serverless plugin images that can be used for Serverless Lambda Deployments. By following these instructions, you can create compatible Docker images that combine the Harness Serverless plugin with specific AWS Lambda runtime environments.
+This guide walks you through building custom serverless plugin images that can be used for Serverless Lambda Deployments. Following these instructions, you can create compatible Docker images that combine the Harness Serverless plugin with specific AWS Lambda runtime environments.
 
-These custom images enable you to deploy serverless applications written in your preferred programming language (Node.js, Python, Java, Ruby) while leveraging Harness deployment capabilities.
+Harness does not frequently release new versions of the Serverless plugin image. This pipeline enables you to build your own images based on the Harness base image, allowing you to use newer runtime versions or customize images as needed.
 
-Serverless runtimes refer to the programming language environments that AWS Lambda supports for function development. Each runtime provides the necessary language-specific libraries, tools, and dependencies needed to build, test, and deploy serverless applications.
+These custom images enable you to deploy Serverless applications in your preferred programming language (Node.js, Python, Java, Ruby) while leveraging Harness deployment capabilities.
+
+Serverless runtimes refer to the programming language environments that AWS Lambda supports for function development. Each runtime provides the language-specific libraries, tools, and dependencies to build, test, and deploy serverless applications.
 
 Common Serverless runtimes include:
 
@@ -21,53 +23,95 @@ Common Serverless runtimes include:
 - **Java**: Versions like java8, java17, java21
 - **Ruby**: Version like ruby2.7, ruby3.2
 
-When you build your own image using the Harness pipeline, you're combining the Harness Serverless plugin (which provides the integration with Harness CD) with a specific runtime image from AWS. This allows you to deploy serverless applications written in your preferred programming language while leveraging Harness deployment capabilities.
+When you build your image using the Harness pipeline, you combine the Harness Serverless plugin (which provides the integration with Harness CD) with a specific runtime image from AWS. This allows you to deploy serverless applications written in your preferred programming language while leveraging Harness deployment capabilities.
 
-## Key Components
+## Key Components and pre-requisites
 
-- Uses a Deployment stage with Kubernetes infrastructure
-- Runs in a step group with KubernetesDirect infrastructure
-- Takes SAM base image from AWS ECR public gallery
-- Extracts runtime and version information from the base image name
-- Final image format: `serverless-plugin:${VERSION}-${RUNTIME}-${VERSION}-linux-amd64`
+This pipeline helps you build **custom serverless plugin images** using Harness, enabling integration of the Harness plugin with supported AWS Lambda runtimes. Below are the key details you should know about the pipeline:
+
+- **Deployment Stage with Kubernetes Infrastructure**
+  - Utilizes a Deployment stage configured to run on Kubernetes.
+  
+- **Kubernetes Cluster Requirement and Privileged Mode**
+  - Requires a Kubernetes cluster set up by the user.
+  - The pipeline’s step group runs with privileged: true mode enabled to allow Docker-in-Docker and image build operations.
+  - This privileged mode requires the Kubernetes cluster nodes to permit privileged containers.
+  - For example, if using Google Kubernetes Engine (GKE), do not use Autopilot clusters, as they restrict privileged containers. Instead, use a standard GKE cluster with node pools configured to allow privileged pods.
+  - Connect the Kubernetes cluster to Harness via a Kubernetes Cluster connector.
+  
+- **Use of Official AWS SAM Images**
+  - Pulls SAM base images from the [AWS ECR public gallery](https://gallery.ecr.aws/sam?page=1) for compatibility.
+  
+- **Automatic Extraction of Runtime and Version**
+  - Extracts runtime name and version details directly from the SAM base image name.
+  
+- **Final Image Naming Convention**
+  - Images are named following the format:  
+    `serverless-plugin:{VERSION}-{RUNTIME_NAME}-{VERSION}-linux-amd64`  
+    Example: `serverless-plugin:1.1.0-beta-python3.12-1.1.0-beta-linux-amd64`
+
+### Pipeline Runner Privileged Mode Requirement
+
+Certain steps in the pipeline require the Kubernetes pod to run in privileged mode. This is necessary for starting Docker daemons (DinD), building container images inside pipeline steps, and granting the permissions Docker needs at runtime.
+
+**Why privileged mode is required:**
+
+- Enables Docker-in-Docker (DinD) support for building and pushing images.
+- Allows installation and execution of docker CLI and manipulation of containers within the build step.
+- Required for root access and mounting Docker volumes.
+
+To enable privileged execution, set privileged: true in the step group or step-level security context. Example:
+
+```yaml
+stepGroup:
+  privileged: true
+  name: k8s-step-group
+  sharedPaths:
+    - /var/run
+    - /var/lib/docker
+```
+
+For individual steps:
+```
+step:
+  name: dinD
+  privileged: true
+  ...
+```
+Without this setting, Docker builds and image pushes may fail due to insufficient permissions inside the container.
 
 ## Quick Start
 
-1. Copy the pipeline yaml provided and paste it in your Harness Project.
+1. Copy and paste the [pipeline YAML](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-image-build#pipeline-yaml) provided into your Harness Project.
 2. Add an empty/do nothing service to the pipeline.
 3. Add a Kubernetes environment to the pipeline.
-4. In the execution section, enable container based execution and add the Kubernetes cluster connector to the pipeline. Save the pipeline.
+4. In the execution section, enable container-based execution. Add the Kubernetes cluster connector inside the container step group of the pipeline stage. Save the pipeline.
 5. Click **Run Pipeline**
 6. Enter the required parameters:
-   - **VERSION**: Version number of Harness base image (e.g., `1.1.0-beta`). VERSION represents specific code changes in the Harness repository. With each new code change, we push a new tag and publish new Docker images with these tags, allowing users to access specific versions of the plugin.
-   - **Harness_base_image**: Harness base image from AWS ECR Gallery (e.g., `harness/serverless-plugin:1.1.0-beta-base-image
-`). You can find the Harness base image from [Harness DockerHub]https://hub.docker.com/r/harness/serverless-plugin/tags)
+   - **VERSION**: The version number of the Harness base image (e.g., `1.1.0-beta`). VERSION represents specific code changes in the Harness repository. With each new code change, we push a new tag and publish new Docker images with these tags, allowing users to access specific versions of the plugin.
+   - **Harness_base_image**: You can find the Harness base image with the specific release versions from [Harness DockerHub](https://hub.docker.com/r/harness/serverless-plugin/tags).
    - **RUNTIME_BASE_IMAGE_VERSION**: Runtime base image from AWS ECR (e.g., `public.ecr.aws/sam/build-python3.12:1.142.1-20250701194731-x86_64`)
    - **NODEJS_BASE_IMAGE_VERSION**: Node.js base image from AWS ECR (e.g., `public.ecr.aws/sam/build-nodejs20.x:1.142.1-20250701194712-x86_64`)
    - **SERVERLESS_VERSION**: Serverless Framework version (e.g., `3.39.0`)
 
-## Base Image Requirements
+### Serverless Plugin Image Pre-requisites
 
-### Serverless Base Image Format
-
-The pipeline supports only full formats for the base images:
+The pipeline supports only complete formats for the base images:
 
 - `public.ecr.aws/sam/build-java21:1.140.0-20250605234711-x86_64`
 - `public.ecr.aws/sam/build-nodejs18.x:1.120.0-20240626164104-x86_64`
 
-### Serverless Base Image Requirements
+#### Serverless Base Image Pre-requisites
 
 > **IMPORTANT**: Only official AWS SAM build images from the AWS ECR Public Gallery are supported.
 
 - Use SAM base images only from: [AWS ECR Gallery - SAM](https://gallery.ecr.aws/sam?page=1)
 - Only x86_64 architecture images are supported
 - Using different base images may cause library dependency issues
-- Non-standard base images may cause the plugin to not function as required
-- You will have to use the final image at the sep level of your serverless deployment. This plugin cannot be used in [Plugin info](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) at service level as, this setting at service level fetches only from Harness official Dockerhub repository.
+- Non-standard base images may cause the plugin not to function as required
+- You must use the final image at the sep level of your serverless deployment. This plugin cannot be used in [Plugin info](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) at the service level, as this setting at the service level fetches only from the Harness official Dockerhub repository.
 
-### Image Configuration
-
-#### Final Image Naming
+#### Image Configuration
 
 The pipeline produces two types of images with the following naming patterns:
 
@@ -89,9 +133,9 @@ Where:
 - `SERVERLESS_VERSION`: Serverless Framework version (e.g., `3.39.0`)  
 - `VERSION`: Harness plugin version (e.g., `1.1.0-beta`)
 
-## Variables Used in Privileged Steps
+### Variables Used in Pipeline
 
-These variables are actively used in the privileged steps of your Serverless plugin image build and push pipeline. They must be configured properly to build and push your serverless plugin images successfully.
+These variables are actively used in your Serverless plugin image build and push pipeline. They must be appropriately configured to build and make your serverless plugin images successfully.
 
 | Variable                   | Description                                                    | Example                                                               | Required |
 |----------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|----------|
@@ -106,37 +150,38 @@ These variables are actively used in the privileged steps of your Serverless plu
 | DOCKER_PASSWORD            | Docker registry password or Personal Access Token (PAT)       | `<your_dockerhub_pat>`                                              | Yes      |
 
 - **TARGET_REPO**, **DOCKER_USERNAME**, and **DOCKER_PASSWORD** are typically set once as pipeline-level variables.
-- **VERSION**, **RUNTIME_BASE_IMAGE_VERSION**, **NODEJS_BASE_IMAGE_VERSION**, **HARNESS_BASE_IMAGE**, and **SERVERLESS_VERSION** are user inputs set each pipeline run to specify exact versions for the builds.
+- **VERSION**, **RUNTIME_BASE_IMAGE_VERSION**, **NODEJS_BASE_IMAGE_VERSION**, **HARNESS_BASE_IMAGE**, and **SERVERLESS_VERSION** are user inputs set for each pipeline run to specify exact versions for the builds.
 
 
-## Compatibility Validation
+### Compatibility Validation
 
-- **Runtime Compatibility**: Always verify compatibility between runtime and Node.js images before building. The Serverless Framework requires Node.js to function properly.
+- **Runtime Compatibility**: Always verify compatibility between runtime and Node.js images before building. The Serverless Framework requires Node.js to function correctly.
 - **Library Dependencies**: Check that both images share the same C++ libraries (especially `libstdc++.so`) to ensure proper operation.
 
 ### Validating Image Compatibility
 
-To ensure the runtime and Node.js base images are compatible, verify they share the same system libraries and dependencies. This is crucial because the Serverless Framework (which requires Node.js) must run properly on your chosen runtime image.
+Verify that the runtime and Node.js base images are compatible by sharing the same system libraries and dependencies. This is crucial because the Serverless Framework (which requires Node.js) must run properly on your chosen runtime image.
 
 #### Step 1: Pull and Inspect Both Images
 
 First, pull both images locally:
 
+```
 docker pull public.ecr.aws/sam/build-java21:1.140.0-20250605234711-x86_64
 docker pull public.ecr.aws/sam/build-nodejs22.x:1.140.0-20250605234713-x86_64
-
+```
 text
 
 #### Step 2: Check C++ Library Compatibility
 
 Check that both images have the same version of `libstdc++.so`:
-
+```
 docker run --rm public.ecr.aws/sam/build-java21:1.140.0-20250605234711-x86_64 ls -l /lib64/libstdc++.so.6*
 docker run --rm public.ecr.aws/sam/build-nodejs22.x:1.140.0-20250605234713-x86_64 ls -l /lib64/libstdc++.so.6*
-
+```
 text
 
-If both images show the same version (e.g., `libstdc++.so.6.0.33`), they are compatible.
+They are compatible if both images show the same version (e.g., `libstdc++.so.6.0.33`).
 
 #### Recommended Compatible Combinations
 
@@ -154,10 +199,19 @@ If both images show the same version (e.g., `libstdc++.so.6.0.33`), they are com
 
 ---
 
-## Pipeline YAML
+### Pipeline YAML
+
+This pipeline helps you build custom serverless plugin images using Harness, enabling integration of the Harness plugin with supported AWS Lambda runtimes. The pipeline YAML is available below.
 
 <details>
 <summary>Pipeline YAML</summary>
+
+Additional parameters you need to change:
+
+- `projectIdentifier`: Your Harness project identifier
+- `orgIdentifier`: Your Harness organization identifier
+- `connectorRef`: Your Kubernetes cluster connector identifier
+- `your_k8s_connector`: Your Kubernetes cluster connector identifier
 
 ```yaml
 pipeline:

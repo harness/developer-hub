@@ -6,9 +6,11 @@ description: Build your AWS SAM plugin image using Harness.
 sidebar_position: 4
 ---
 
-# Overview
+## Overview
 
 This guide walks you through the process of building custom AWS SAM plugin images for use with Harness Continuous Delivery. By following these instructions, you can create compatible Docker images that combine the Harness SAM plugin with specific AWS Lambda runtime environments.
+
+Harness does not frequently release new versions of the SAM plugin image. This pipeline enables you to build your own images based on the Harness base image, allowing you to use newer runtime versions or customize images as needed.
 
 These custom images enable you to deploy serverless applications written in your preferred programming language while leveraging Harness deployment capabilities.
 
@@ -25,15 +27,41 @@ Common SAM runtimes include:
 
 When you build your own image using the Harness pipeline, you're combining the Harness SAM plugin (which provides the integration with Harness CD) with a specific SAM runtime image from AWS. This allows you to deploy serverless applications written in your preferred programming language while leveraging Harness deployment capabilities.
 
-## Key Components
+## Key Components and Pre-requisites
 
-- Uses a Deployment stage with Kubernetes infrastructure
-- Runs in a step group with KubernetesDirect infrastructure
-- Takes SAM base image from AWS ECR public gallery
-- Extracts runtime and version information from the base image name
-- Final image format: `aws-sam-plugin:${VERSION}-${SAM_RUNTIME}-${SAM_VERSION}-linux-amd64`
+This pipeline helps you build **custom AWS SAM plugin images** using Harness, integrating the Harness SAM plugin with supported AWS Lambda runtimes. Key details about the pipeline include:
 
-## Pipeline Runner Permissions and Privileged Settings
+- **Deployment Stage with Kubernetes Infrastructure**
+  - Uses a Deployment stage configured to run on Kubernetes.
+
+- **Privileged Mode and Kubernetes Cluster Setup**
+  - The pipeline requires privileged mode enabled on the Kubernetes step group to support Docker-in-Docker (DinD) for building and pushing images.
+  - This mode grants necessary permissions to install and run Docker CLI commands and access the Docker daemon inside pipeline containers.
+  - When using managed Kubernetes services like GKE, **do not use Autopilot clusters**, which restrict privileged containers.
+  - Instead, use standard clusters with node pools configured to permit privileged pods.
+  - Connect your Kubernetes cluster to Harness via a Kubernetes Cluster connector with appropriate permissions.
+
+- **Use of Official AWS SAM Images**
+  - Pulls SAM base images exclusively from the [AWS ECR public gallery](https://gallery.ecr.aws/sam?page=1) for compatibility.
+
+- **Automatic Extraction of Runtime and Version**
+  - The pipeline extracts runtime and version details directly from the SAM base image name.
+
+- **Final Image Naming Convention**
+  - The final built images follow the pattern:  
+    `aws-sam-plugin:{VERSION}-{SAM_RUNTIME}-{SAM_VERSION}-linux-amd64`  
+    Example: `aws-sam-plugin:1.1.2-nodejs18.x-1.143.0-linux-amd64`
+
+### SAM Base Image Requirements
+
+Only official AWS SAM build images from the [AWS ECR Public Gallery](https://gallery.ecr.aws/sam?page=1) are supported.
+
+- Only use SAM base images from: AWS ECR Gallery - SAM
+- Only `x86_64` architecture images are supported
+- Using different base images may cause library dependency issues
+- Non-standard base images may cause the plugin to not function as required
+
+### Pipeline Runner Privileged Mode Requirement
 
 Certain steps in the pipeline require the Kubernetes pod to run in privileged mode. This is necessary for starting Docker daemons (DinD), building container images inside pipeline steps, and granting the permissions Docker needs at runtime.
 
@@ -65,36 +93,26 @@ Without this setting, Docker builds and image pushes may fail due to insufficien
 
 ## Quick Start
 
-1. Copy the provided pipeline yaml and paste it in your Harness Project.
+1. Copy the provided [pipeline YAML](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/sam-image-build#pipeline-yaml) and paste it in your Harness Project.
 2. Add an empty/do-nothing service to the pipeline.
 3. Add a Kubernetes environment to the pipeline.
-4. In the execution section, enable container-based execution and add the Kubernetes cluster connector to the pipeline. Save the pipeline.
+4. In the execution section, enable container-based execution. Add the Kubernetes cluster connector inside the container step group of the pipeline stage. Save the pipeline.
 5. Click **Run Pipeline**.
 6. Enter the required parameters:
    - **VERSION**: Version number for your plugin (e.g., `1.1.2`). With each new code change, a new tag and Docker image are published, letting users access specific plugin versions.
-   . You can find the Harness base image from [Harness DockerHub](https://hub.docker.com/r/harness/aws-sam-plugin/tags)
+   . You can find the Harness base image on [Harness DockerHub](https://hub.docker.com/r/harness/aws-sam-plugin/tags)
    - **SAM_BASE_IMAGE**: SAM base image from AWS ECR Gallery (e.g., `public.ecr.aws/sam/build-nodejs18.x:1.143.0-20250502200316-x86_64`).
 
-## Base Image Requirements
+
+### Base Image Requirements
+
+Only specific official AWS SAM base images in the required format are supported to ensure compatibility and successful image builds.
 
 **SAM Base Image Format**
 
 The pipeline supports only full formats for the SAM base image:
 
 Full Format: `public.ecr.aws/sam/build-nodejs18.x:1.143.0-20250502200316-x86_64`
-
-**SAM Base Image Requirements**
-
-:::warning
-Only official AWS SAM build images from the [AWS ECR Public Gallery](https://gallery.ecr.aws/sam?page=1) are supported.
-:::
-
-- Only use SAM base images from: AWS ECR Gallery - SAM
-- Only `x86_64` architecture images are supported
-- Using different base images may cause library dependency issues
-- Non-standard base images may cause the plugin to not function as required
-
-Example of supported base image: `public.ecr.aws/sam/build-nodejs18.x:1.143.0-20250502200316-x86_64`
 
 # Image Configuration
 
@@ -115,7 +133,7 @@ Where:
 - `SAM_RUNTIME`: Runtime extracted from SAM base image (e.g., `nodejs18.x`)
 - `SAM_VERSION`: Version extracted from SAM base image (e.g., `1.143.0`)
 
-## Variables Used in Privileged Steps
+### Variables Used in Privileged Steps
 
 These variables are actively used in the privileged steps of your pipeline for building and pushing the image that you need to con:
 
@@ -130,7 +148,9 @@ These variables are actively used in the privileged steps of your pipeline for b
 
 TARGET_REPO, DOCKER_USERNAME and DOCKER_PASSWORD are the variables that you set one time in the pipeline. VERSION, BASE_IMAGE and SAM_BASE_IMAGE are the variables that you set every time you run the pipeline.
 
-## Pipeline Configuration
+### Pipeline YAML
+
+This pipeline helps you build custom serverless plugin images using Harness, enabling integration of the Harness plugin with supported AWS Lambda runtimes. The pipeline YAML is available below.
 
 <details>
   <summary>Pipeline YAML</summary>
@@ -454,9 +474,7 @@ pipeline:
 
 ---
 
-## How Pipeline Works
-
-### Pipeline Stages
+### How Pipeline Works
 
 - **Generate Timestamp:**
   - Creates a timestamp for image labels
