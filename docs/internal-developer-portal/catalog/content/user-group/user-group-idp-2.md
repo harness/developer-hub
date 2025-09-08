@@ -9,7 +9,7 @@ Unlike **[platform user groups](https://developer.harness.io/docs/platform/role-
 **1. Group Entity**
 
 * Each group is represented as an IDP entity with its own YAML definition.
-* A group can include members, a parent relationship, lifecycle state, and optional metadata.
+* A group can include members, a parent relationship,and optional metadata.
 * Groups can serve as owners of services, systems, and other catalog entities.
 
 **2. Parent–Child Hierarchies**
@@ -77,7 +77,6 @@ At present, the User Group entity can only be created at the account level.
 * **type** – Arbitrary classification, e.g., `engineering` or `api`
 * **spec.members** – List of users belonging to the group
 * **spec.parent** – Reference to a parent group, enabling hierarchy
-* **spec.profile** – Optional metadata like email, profile picture
 * **metadata** – Arbitrary tags and description for discoverability
 
 Groups can be created with **zero members**, making it possible to scaffold team structures first and populate them later.-
