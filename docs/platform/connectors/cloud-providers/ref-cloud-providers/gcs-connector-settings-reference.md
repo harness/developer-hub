@@ -43,7 +43,7 @@ For Google Cloud Storage (GCS) and Google Container Registry (GCR), the followin
 
 For more information, go to the GCP [Artifact registry roles reference](https://cloud.google.com/iam/docs/understanding-roles#artifact-registry-roles).
 
-Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host, for example `gcr.io`. Registry host name is declared in your step settings. For example, you can declare it in the **Host** field in the [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr.md).
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host, for example `gcr.io`. Registry host name is declared in your step settings. For example, you can declare it in the **Host** field in the [Build and Push to GAR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md).
 
 ### GAR role requirements
 
