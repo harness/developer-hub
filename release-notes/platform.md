@@ -129,7 +129,7 @@ Below is further explanation for each type of secret manager Harness currently s
 :::danger Breaking Change: Delete API Response Codes for Notification Rules and Channels (Effective October 20, 2025)
 We have aligned the delete APIs for Notification Rules and Channels with Harness API documentation and standard REST practices.
 
-**Previous behavior**:
+**Previous behaviour**:
   - Successful deletion → `200 OK` with a string response body (`application/json`).
   - Identifier not found/already deleted → `500 Internal Server Error`.
 
