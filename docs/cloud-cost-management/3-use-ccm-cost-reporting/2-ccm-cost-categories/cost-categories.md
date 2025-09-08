@@ -369,7 +369,7 @@ When you add a cost category to your Perspective rule:
 
 ### In Dashboards
 
-You can visualize cost categories in your custom dashboard. **Cost Categories** is available in the **Unified** explore on the **Dashboards** page. 
+You can visualize cost categories in your custom dashboard. Cost Categories is available in AWS, GCP, Azure, Unified and External Data Explores
 
 * **Update Delay:** Changes to cost categories may take **up to 24 hours** to appear in dashboard data.
 
@@ -381,17 +381,6 @@ You can visualize cost categories in your custom dashboard. **Cost Categories** 
 
 
 <DocImage path={require('./static/cc-example.png')} width="100%" height="100%" title="Click to view full size image" />
-
-:::info
-In AWS, you cannot use cost categories as a dimension in custom dashboards if you have selected any of the following fields in the explore:
-
-- Resource ID 
-- Line Item Type 
-- Market Type 
-- Amortised Cost 
-- Net Amortised Cost 
-
-:::
 
 ------
 
