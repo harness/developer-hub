@@ -43,7 +43,7 @@ Here is an in-depth explanation of the Overview page and the information it disp
   - In case of GCP, Project with greater than 300$ of monthly spend is considered for recommendations.
   :::
 
-To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/governance).
+To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to Governance recommendations.
 
 You can see a list of all recommendations offered by Harness for each Cloud provider here:
 
