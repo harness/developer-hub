@@ -48,7 +48,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 :::warning Announcement 
 **Google Container Registry Deprecation Notice 📢**
 
-Google Container Registry (GCR) is deprecated shut down on **March 18, 2025**. It is recommended to migrate to Google Artifact Registry (GAR). For migration guidance, refer to [Google's official transition documentation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr).
+Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recommended to migrate to Google Artifact Registry (GAR). For migration guidance, refer to [Google's official transition documentation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr).
 
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
@@ -95,6 +95,12 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 Wondering where version 1.104.XX is? That release was rolled into 1.105.XX and upgrades will skip directly from 1.103.XX to 1.105.XX. Don't worry, you're not missing a thing!
 
 :::
+
+### GitOps Service 1.40.0, GitOps Agent 0.100.0
+
+#### New Features and Enhancements
+
+- Harness has enhanced the GitOps Cluster Detail Page with improved UX features: application listing pane showing all hosted applications, clickable Agent name and ID links, additional cluster credential information, and inline editing capabilities aligned with other Harness detail pages. (**CDS-108575**)
 
 ## August 2025
 
