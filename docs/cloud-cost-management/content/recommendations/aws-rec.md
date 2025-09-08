@@ -44,7 +44,7 @@ Harness CCM provides EC2 recommendations by integrating directly with AWS servic
 
 ### Recommendation Drilldown
 
- <DocImage path={require('../static/ec-rec-one.mp4')} width="90%" height="90%" title="Click to view full size image" />
+ <DocImage path={require('../static/ec-rec-one.gif')} width="90%" height="90%" title="Click to view full size image" />
 
 - **Potential Monthly Spend**: Projected cost if recommendation is applied
 - **Potential Monthly Savings**: Expected monthly cost reduction
@@ -57,7 +57,7 @@ Harness CCM provides EC2 recommendations by integrating directly with AWS servic
     - **Region**: The AWS region where the EC2 instance is located.
     - **Potential Monthly Cost**: Calcuted on On-demand cost
 
- <DocImage path={require('../static/ec-rec-two.mp4')} width="90%" height="90%" title="Click to view full size image" />
+ <DocImage path={require('../static/ec-rec-two.gif')} width="90%" height="90%" title="Click to view full size image" />
 
 - **EC2 Details**: Resource metadata including any associated tags
 - **CPU and Memory Utilization Graph**: Visual representation of historical resource usage
