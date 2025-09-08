@@ -152,7 +152,6 @@ These variables are actively used in your Serverless plugin image build and push
 - **TARGET_REPO**, **DOCKER_USERNAME**, and **DOCKER_PASSWORD** are typically set once as pipeline-level variables.
 - **VERSION**, **RUNTIME_BASE_IMAGE_VERSION**, **NODEJS_BASE_IMAGE_VERSION**, **HARNESS_BASE_IMAGE**, and **SERVERLESS_VERSION** are user inputs set for each pipeline run to specify exact versions for the builds.
 
-
 ### Compatibility Validation
 
 - **Runtime Compatibility**: Always verify compatibility between runtime and Node.js images before building. The Serverless Framework requires Node.js to function correctly.
@@ -206,7 +205,7 @@ This pipeline helps you build custom serverless plugin images using Harness, ena
 <details>
 <summary>Pipeline YAML</summary>
 
-Additional parameters you need to change:
+Parameters you need to change:
 
 - `projectIdentifier`: Your Harness project identifier
 - `orgIdentifier`: Your Harness organization identifier

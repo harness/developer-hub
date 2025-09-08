@@ -155,7 +155,7 @@ This pipeline helps you build custom serverless plugin images using Harness, ena
 <details>
   <summary>Pipeline YAML</summary>
 
-Additional parameters you need to change:
+Parameters you need to change:
 
 - `projectIdentifier`: Your Harness project identifier
 - `orgIdentifier`: Your Harness organization identifier
