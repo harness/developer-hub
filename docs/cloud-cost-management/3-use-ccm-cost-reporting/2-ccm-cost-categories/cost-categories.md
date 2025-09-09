@@ -306,7 +306,7 @@ Cost Categories can be used across multiple Harness CCM features. The table belo
 
 | Feature | Perspectives | Dashboards | Recommendations |
 |---------|-------------|------------|----------------|
-| **Usage Methods** | • Rules for filtering<br/>• Group By dimension<br/>• Filter panel selection | • Dimension for analysis<br/>• Filter for data selection | • Filter for recommendations<br/>• **Important:** Governance Recommendations do not support labels hence, the cost categories using labels will not work. |
+| **Usage Methods** | • Rules for filtering<br/>• Group By dimension<br/>• Filter panel selection | • Dimension for analysis<br/>• Filter for data selection | • Filter for recommendations<br/>• **Important:** Governance Recommendations do not support labels. Therefore, cost categories that use labels will not work with this feature. |
 | **Shared Cost Buckets** | ✅ **Supported**<br/>Costs allocated per sharing strategy | ❌ **Not Supported** | ❌ **Not Supported** |
 | **Nested Categories** | ✅ **Supported** | ✅ **Supported** | ✅ **Supported** |
 | **Cluster Data** | ✅ **Supported**<br/>Can create categories with cluster rules | ✅ **Supported** | ✅ **Supported** |
@@ -410,7 +410,7 @@ You can filter CCM Recommendations using Cost Categories to focus on specific bu
 :::info 
 - Since recommendations operate at the resource level, all resources included in your selected cost buckets will appear in the filtered recommendations view. 
 
-- **Important:** Governance Recommendations do not support labels hence, the cost categories using labels will not work.
+- **Important:** Governance Recommendations do not support labels. Therefore, cost categories that use labels will not work with this feature.
 :::
 
 To filter recommendations using cost categories:
