@@ -14,7 +14,7 @@ SSH credentials provide secure authentication to remote servers and Git reposito
 
 Before creating SSH credentials, ensure you have:
 
-- **Account permissions**: Create/Edit permissions for Secrets at the account, organization, or project level
+- **Permissions**: [Create/Edit](/docs/platform/role-based-access-control/permissions-reference#shared-resources) permissions for Secrets at the account, organization, or project level
 - **SSH key pair**: A valid SSH private key
 - **Harness Delegate**: A running delegate in your environment
 
