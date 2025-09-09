@@ -247,8 +247,8 @@ After configuring all your cost buckets, click on "Continue"
 
    | Strategy | Description | Example |
    |----------|-------------|--------|
-   | **Equal Split** | Divides costs equally among all buckets | USD100 shared across 4 buckets = USD25 each |
-   | **Proportional Split** | Allocates based on each bucket's existing costs | If Bucket A has 70% of direct costs and Bucket B has 30%:<br/><ul><li>For USD100 shared cost</li><li> Bucket A receives USD70 </li><li>Bucket B receives USD30</li></ul> |
+   | **Equal Split** | Divides costs equally among all buckets | \$100 shared across 4 buckets = \$25 each |
+   | **Proportional Split** | Allocates based on each bucket's existing costs | If Bucket A has 70% of direct costs and Bucket B has 30%:<br/><ul><li>For \$100 shared cost</li><li> Bucket A receives \$70 </li><li>Bucket B receives \$30</li></ul> |
    | **Fixed Percentage** | Distributes according to manually defined percentages | Manually assign 60% to Bucket A, 25% to Bucket B, 15% to Bucket C |
 
 4. Click on "Continue".
@@ -306,7 +306,7 @@ Cost Categories can be used across multiple Harness CCM features. The table belo
 
 | Feature | Perspectives | Dashboards | Recommendations |
 |---------|-------------|------------|----------------|
-| **Usage Methods** | • Rules for filtering<br/>• Group By dimension<br/>• Filter panel selection | • Dimension for analysis<br/>• Filter for data selection | • Filter for recommendations<br/>• **Important:** Governance Recommendations do not support label hence, the cost categories using labels will not work. |
+| **Usage Methods** | • Rules for filtering<br/>• Group By dimension<br/>• Filter panel selection | • Dimension for analysis<br/>• Filter for data selection | • Filter for recommendations<br/>• **Important:** Governance Recommendations do not support labels hence, the cost categories using labels will not work. |
 | **Shared Cost Buckets** | ✅ **Supported**<br/>Costs allocated per sharing strategy | ❌ **Not Supported** | ❌ **Not Supported** |
 | **Nested Categories** | ✅ **Supported** | ✅ **Supported** | ✅ **Supported** |
 | **Cluster Data** | ✅ **Supported**<br/>Can create categories with cluster rules | ✅ **Supported** | ✅ **Supported** |
@@ -410,7 +410,7 @@ You can filter CCM Recommendations using Cost Categories to focus on specific bu
 :::info 
 - Since recommendations operate at the resource level, all resources included in your selected cost buckets will appear in the filtered recommendations view. 
 
-- **Important:** Governance Recommendations do not support label hence, the cost categories using labels will not work.
+- **Important:** Governance Recommendations do not support labels hence, the cost categories using labels will not work.
 :::
 
 To filter recommendations using cost categories:
