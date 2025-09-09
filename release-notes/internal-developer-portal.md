@@ -24,7 +24,26 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         |           ⏳| ⏳          | ⏳            |
+| [2025.09.v1](/release-notes/internal-developer-portal#september---202509v1) | ✅        | ✅         | ✅           |           ⏳| ⏳          | ⏳            |
+| [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         | ✅         | ✅          | ✅            |
+
+## September - [2025.09.v1]
+
+### [New Feature] Custom User Groups Entity
+
+Take control of your organizational structure with IDP 2.0's powerful new Custom User Groups! This game-changing feature transforms how teams are represented in your developer portal, bringing your real-world organizational structure into IDP as first-class catalog entities.
+
+![](./static/internal-developer-portal/user-group-overview.png)
+
+**What's in it for you:**
+
+* **True organizational modeling** - Create and manage custom team structures directly in IDP without depending on your identity provider
+* **Powerful ownership attribution** - Make ownership crystal clear across your entire catalog with direct group assignments
+* **Rich contextual metadata** - Add team leads, regions, and critical contact information to each group
+* **Intuitive hierarchical relationships** - Build parent-child connections between teams and departments with automatic bi-directional linking
+* **Complete UI and YAML support** - Create groups through the intuitive UI or via standard YAML definitions
+
+[Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group#idp2.0)
 
 
 ### Bug Fixes and Improvements 
