@@ -3,8 +3,6 @@ title: GitLab
 description: View project summaries and latest activities in your GitLab projects
 ---
 
-![GitLab Plugin Interface](./static/gitlab-plugin.png)
-
 | Plugin details |                                                    |
 | -------------- | -------------------------------------------------- |
 | **Created by** | [ImmobiliareLabs](https://github.com/immobiliare)        |
@@ -20,6 +18,7 @@ The GitLab plugin connects your Internal Developer Portal to your GitLab reposit
 - View merge requests and commits
 - Access project documentation directly from your catalog
 - Track project issues and milestones
+- View Pipeline status for a project
 
 ## Setting up the plugin
 
@@ -33,12 +32,23 @@ gitlab:
   defaultReadmePath: .gitlab/README.md       # Path to your README file
   allowedKinds: ['Component', 'Resource']    # Catalog types that can use this plugin
   proxySecure: false                         # Set to true if using HTTPS
-  useOAuth: false                           # Set to true if using GitLab OAuth
 ```
 
 ### Step 2: Managing authentication
 
-You'll need to set up a GitLab connector in Harness to authenticate with your GitLab instance. This connector allows secure communication between Harness IDP and your GitLab repositories. You can configure it with a Personal Access Token (recommended), basic authentication, or OAuth. For detailed setup instructions, see the [GitLab connector documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo/#connect-to-gitlab).
+You'll need to set up a GitLab connector in Harness to authenticate with your GitLab instance. This connector allows secure communication between Harness IDP and your GitLab repositories. You can configure it with a Personal Access Token (recommended), basic authentication, or OAuth. 
+
+Go to **Harness IDP** -> **Configure** -> **Git Integrations** and add a new GitLab connector integration. 
+
+For detailed setup instructions, see the [GitLab connector documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo/#connect-to-gitlab).
+
+This connector is used to authenticate with your GitLab instance and retrieve data about your projects, including their pipelines, issues, and merge requests. Once your connector integration status is verified, the following connection setup will be automatically added to your `app-config.yaml`: 
+```YAML
+integrations:
+    gitlab:
+        - host: gitlab.com
+          token: ${GITLAB_TOKEN} # Automatically setup with your connector integration
+```
 
 ### Step 3: Network access setup
 
@@ -56,13 +66,26 @@ If your GitLab instance isn't directly accessible from Harness:
 
 ### Available components
 
-This plugin provides:
-- 7 UI cards for displaying GitLab data
-- 1 tab for detailed views
+This plugin provides 7 UI components for displaying GitLab data and 1 tab layout structure for detailed views. 
 
-These components are automatically added to "service" and "website" layouts in your catalog. You can customize their placement through Layout management.
+The UI components are: 
+- **Pipelines Table**: Lists recent pipelines for the project
+- **Merge Requests Table**: Lists recent merge requests 
+- **README Card**: Renders the project README
+- **People Card**: Lists the owners and contributors of a project
+- **Languages Card**: Lists the languages used for a project
+- **Merge Requests Stats Card**: Shows the merge requests statistics overview
+- **Releases Card**: List the last releases 
 
-![GitLab Plugin Layout Options](./static/gitlab-plugin-layout.png)
+#### Layout Options
+This plugin exposes a default tab layout structure for the GitLab plugin using the ``EntityGitlabContent`` component. This adds a default GitLab tab to the plugin layout. 
+You can also customise the plugin layout for your Catalog entities using the **Layout Editor**. Go to **Configure** -> **Layout** -> **Catalog Entities**. Select the entity type for which you want to customise the layout structure and add the plugin components in the layout editor. 
+
+:::info
+It's recommended to have the ``EntityGitlabPipelinesTable`` component as the default top component in your plugin layout. To learn more about these components, go to [GitLab Plugin Documentation](https://github.com/immobiliare/backstage-plugin-gitlab). 
+:::
+
+![GitLab Plugin Layout Options](./static/gitlabplugin2.png)
 
 ### Linking catalog entities to GitLab projects
 
