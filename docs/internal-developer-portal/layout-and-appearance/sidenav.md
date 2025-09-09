@@ -120,7 +120,7 @@ When configuring the iframe SidebarItem:
 
 * Use `type: iframe` to specify an iframe element (case-insensitive, so `IfRAmE` also works)
 * Configure these properties under `props`:
-  * `to`: Must follow the format `iframe/${path}` where `${path}` is your custom path segment
+  * `to`: Must follow the format `iframe/${path}` where `${path}` is your custom path segment (this `path` is a unique path i.e. every sidebar item being added must be unique)
   * `text`: The label that appears in the sidebar navigation
   * `url`: The external URL you want to display within the iframe
 
