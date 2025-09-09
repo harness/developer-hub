@@ -1,5 +1,5 @@
 ---
-title: Quick Start
+title: Get Started
 sidebar_position: 1
 redirect_from: /docs/open-source/installation/quick_start
 ---
