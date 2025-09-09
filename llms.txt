@@ -107,7 +107,6 @@ No-LLM-Training: /docs/continuous-integration/private/**
   - [Build and Push to Docker](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md): Use a CI pipeline to build and push an image to a Docker registry.
   - [Build and Push to ECR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings.md): Learn how to use the Build and Push to ECR step.
   - [Build and Push to GAR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md): Use a CI pipeline to build and push an image to GAR.
-  - [Build and Push to GCR (Pending deprecation)](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr.md): Use a CI pipeline to build and push an image to GCR.
   - [Build and Push to GHCR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ghcr.md): Use a CI pipeline to build and push an image to GitHub Container Registry.
 - Use Ci/Build And Upload Artifacts/Upload Artifacts
   - [Upload Artifacts to GCS](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md): Add a step to upload artifacts to Google Cloud Storage.
