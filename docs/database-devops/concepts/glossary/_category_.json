@@ -7,7 +7,8 @@
        "title":"Glossary",
        "description": "This section contains definitions and simplified explanations of key terms used in Harness Database DevOps. Click on any term to explore in more detail."
     },
-    "customProps":{
+   "customProps":{
+       "description": "This section contains definitions and simplified explanations of key terms used in Harness Database DevOps. Click on any term to explore in more detail."
     },
    "position": 21
  }

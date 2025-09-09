@@ -26,6 +26,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
 | [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         |           ⏳| ⏳          | ⏳            |
 
+
 ### [New Feature] Iframe Embedding in Sidebar Navigation
 
 Harness IDP now supports embedding external web content directly into your sidebar navigation using iframes. This feature allows you to integrate essential resources, documentation, dashboards, and tools directly into your developer portal interface.
@@ -47,6 +48,13 @@ Harness IDP now supports embedding external web content directly into your sideb
 ![](./static/internal-developer-portal/iframe-embedd.png)
 
 [Learn more about embedding iframes in your sidebar](/docs/internal-developer-portal/layout-and-appearance/sidenav#embedding-an-iframe)
+
+### Bug Fixes and Improvements 
+
+* **Jira Plugin Enhancements** - We've made several improvements to the Jira plugin:
+  * **New Components** - Added `EntityJiraActivityStreamCard` for viewing real-time activity streams and `EntityJiraQueryCard` for displaying customized Jira issues based on JQL queries
+  * **Enhanced Annotations** - Added support for `jira/label` to filter issues by specific labels and `jira/all-issues-jql` to define custom JQL queries
+  * Updated conditional display guides with specific conditions for each component type (`isJiraAvailable`, `hasJiraQuery`)
 
 ## August - [2025.08.v1]
 

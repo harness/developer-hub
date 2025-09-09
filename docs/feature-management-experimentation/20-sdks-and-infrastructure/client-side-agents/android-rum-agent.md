@@ -26,14 +26,14 @@ Import the Agent into your project with the following line:
 <TabItem value="Gradle Groovy">
 
 ```groovy
-implementation 'io.split.client:android-rum-agent:0.4.0'
+implementation 'io.split.client:android-rum-agent:0.4.1'
 ```
 
 </TabItem>
 <TabItem value="Gradle Kotlin DSL">
 
 ```kotlin
-implementation("io.split.client:android-rum-agent:0.4.0")
+implementation("io.split.client:android-rum-agent:0.4.1")
 ```
 
 </TabItem>

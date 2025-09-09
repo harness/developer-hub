@@ -100,6 +100,47 @@ Variables make your runbooks dynamic and reusable across different scenarios.
 
 <DocImage path={require('./static/workflow-variables.png')} width="90%" height="90%" title="Defining Workflow Variables" />
 
+#### Dynamic Parameter Selection
+
+When configuring actions, you can use dynamic parameters from various sources to make your runbooks more flexible and powerful.
+
+1. **Select an Action**: After adding an action to your workflow, configure its parameters.
+2. **Choose Dynamic Parameter Source**: For applicable fields, click the data picker icon to access dynamic data sources:
+   - **Runbook Inputs**: Variables defined in the Input/Output section.
+   - **Action Outputs**: Results from previously executed actions.
+   - **Pipeline Outputs**: Data from Harness pipeline executions.
+   - **Global Variables**: System-wide variables available to all runbooks.
+   - **Key Events**: Event-driven data that can trigger specific behaviors.
+
+<DocImage path={require('./static/dynamic-parameter-selection.png')} width="90%" height="90%" title="Selecting Dynamic Parameter Sources" />
+
+#### Key Event Integration
+
+Key Events provide a powerful way to create event-driven runbooks that respond to specific triggers.
+
+1. **Select Key Event as Source**: When configuring an action parameter, choose "Key Event" as the data source.
+2. **Create Input and Set Value**: Instead of navigating to the Input/Output section, you can create inputs directly:
+   - Click "Create Input and Set Value".
+   - Provide a Display Name, Type, and Default Value.
+   - Save the new input variable.
+   - Select the Key Event text from the input dropdown.
+
+<DocImage path={require('./static/key-event-integration.png')} width="90%" height="90%" title="Key Event Integration" />
+
+<DocImage path={require('./static/key-event-dynamic-input.png')} width="90%" height="90%" title="Key Event Dynamic Input" />
+
+#### Trigger Configuration with Key Events
+
+Once Key Events are configured in your action parameters:
+
+1. **Set Trigger Condition**: In the Triggers section, set the condition to "Key Event Created".
+2. **Map Event to Input**: The input field that was configured with the Key Event text can now be automatically populated when the trigger fires.
+3. **Dynamic Execution**: When the specified Key Event occurs, the runbook will execute with the event data automatically mapped to your configured inputs.
+
+<DocImage path={require('./static/key-event-trigger.png')} width="90%" height="90%" title="Configuring Key Event Triggers" />
+
+This approach allows for seamless integration between event detection and automated response, without requiring manual configuration of input variables for each execution.
+
 ## Step 2: Available Actions and Integrations
 
 Harness AI SRE provides a comprehensive library of pre-built actions across multiple categories. Choose the right combination of actions to build effective automation workflows.
