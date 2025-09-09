@@ -42,13 +42,7 @@ Go to **Harness IDP** -> **Configure** -> **Git Integrations** and add a new Git
 
 For detailed setup instructions, see the [GitLab connector documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo/#connect-to-gitlab).
 
-This connector is used to authenticate with your GitLab instance and retrieve data about your projects, including their pipelines, issues, and merge requests. Once your connector integration status is verified, the following connection setup will be automatically added to your `app-config.yaml`: 
-```YAML
-integrations:
-    gitlab:
-        - host: gitlab.com
-          token: ${GITLAB_TOKEN} # Automatically setup with your connector integration
-```
+This connector is used to authenticate with your GitLab instance and retrieve data about your projects, including their pipelines, issues, and merge requests. 
 
 ### Step 3: Network access setup
 
