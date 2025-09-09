@@ -134,7 +134,6 @@ spec:
   members:
     - user:account/jane.doe@harness.io
     - user:account/john.smith@harness.io
-  lifecycle: active
   parent: group:account/idp_team
   profile:
     email: cloud_infrastructure_team@techo.io
