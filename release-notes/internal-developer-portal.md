@@ -46,6 +46,12 @@ Take control of your organizational structure with IDP 2.0's powerful new Custom
 [Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group#idp2.0)
 
 
+### [New Feature] GitLab Integration Plugin
+
+Harness IDP now supports integration with [GitLab](/docs/internal-developer-portal/plugins/available-plugins/gitlab) through our new plugin. This integration enables teams to connect their GitLab repositories directly to the Software Catalog, providing seamless access to project information, merge requests, and issue tracking without leaving the developer portal.
+
+![](../docs/internal-developer-portal/plugins/available-plugins/static/gitlabplugin2.png)
+
 ### Bug Fixes and Improvements 
 
 * **Jira Plugin Enhancements** - We've made several improvements to the Jira plugin:
@@ -60,6 +66,7 @@ Take control of your organizational structure with IDP 2.0's powerful new Custom
 Harness Internal Developer Portal (IDP) now integrates with Harness Security Testing Orchestration (STO) to surface real-time vulnerability data directly inside the Software Catalog. Vulnerabilities such as CVEs from static and dynamic scans are displayed alongside services, projects, and components, minimizing context switching and enabling faster triage.
 
 ![](./static/sto-integrated-idp.png)
+
 
 [Learn more about STO integration with IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/sto-integration)
 #### Prerequisites
