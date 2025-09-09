@@ -10,11 +10,32 @@ Amplitude is a product intelligence platform that helps teams convert, engage, a
 
 This integration will send impressions to Amplitude as events, mapped according to the configuration settings. It gives you the ability to connect Harness FME to Amplitude and easily run deeper analysis on A/B and beta tests.
 
-Each call to **getTreatment** in an FME SDK is passed to Amplitude as a separate event.
+Each call to `getTreatment` in an FME SDK is passed to Amplitude as a separate event. Harness FME also sends impression properties to Amplitude along with each `getTreatment` event. If you define a custom property with the same name as one of the [built-in properties](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions#impression-fields) that Harness FME adds by default, your custom value will overwrite the built-in value in Amplitude.
+
+In this example, the following impression in Amplitude includes the `key` property: 
+
+```json
+{
+    "key": "value"
+}
+```
+![](./static/amplitude-impression-1.png)
+
+In this example, the following impression includes three custom properties:
+
+```json
+{
+    "customProperty1": "value1",
+    "customProperty2": "value2",
+    "customProperty3": "value3",
+}
+```
+
+![](./static/amplitude-impression-2.png)
 
 ### In Amplitude
 
-Within your Amplitude account, set up Harness FME as a data source. Copy your Amplitude project's API Key to be used in FME.
+Within your Amplitude account, set up Harness FME as a data source. Copy your Amplitude project's API Key to be used in Harness FME.
 
 ### In Harness FME
 
@@ -25,9 +46,9 @@ Within your Amplitude account, set up Harness FME as a data source. Copy your Am
     ![Amplitude](./static/amplitude-for-default.png)
 
 4. Select the environment from where you want data sent and then select how you want to map Harness FME traffic types to Amplitude identities. You can select either:
-    * user_id
-    * device_id 
-5. FME impressions are shown as ‘get_treatment’ events in Amplitude by default. You can customize this event name, with a maximum of 1,024 characters.
+    * `user_id`
+    * `device_id` 
+5. FME impressions are shown as `get_treatment` events in Amplitude by default. You can customize this event name, with a maximum of 1,024 characters.
 6. Paste the API key and secret from your Amplitude account, copied above, and click **Save**.
 7. Select your Amplitude region. The default region is Standard.
 8. Once you save the configuration, send a test event from Harness FME into Amplitude.
@@ -38,9 +59,11 @@ You can repeat this process depending on how many environments and traffic types
 
 There are some situations where the recommended approach to send FME impressions to Amplitude is not preferred. One example is when the same impression is expected to be sent frequently. Amplitude bills by event volume so each impression counts against your organization's event quota.
 
-Using Amplitude’s Identify API, you can leverage a **User Property** in Amplitude to store which FME feature flag treatments a user receives. If you have already instrumented your application with Amplitude, this approach should be seamless to configure, and the user properties can then be used in Amplitude for further analysis. This integration does not send events to Amplitude. This use case is discussed further in [Amplitude's documentation](https://help.amplitude.com/hc/en-us/articles/115001580108-Analyze-A-B-test-results-in-Amplitude) under **2) Identify API**. As Amplitude notes, be cautious that:
+Using Amplitude’s Identify API, you can leverage a **User Property** in Amplitude to store which FME feature flag treatments a user receives. If you have already instrumented your application with Amplitude, this approach should be seamless to configure, and the user properties can then be used in Amplitude for further analysis. This integration does not send events to Amplitude. This use case is discussed further in [Amplitude's documentation](https://help.amplitude.com/hc/en-us/articles/115001580108-Analyze-A-B-test-results-in-Amplitude) under **2) Identify API**. 
 
-*The user property will not take effect until the user takes an action.*
+As Amplitude notes, be cautious that:
+
+> *The user property will not take effect until the user takes an action.*
 
 ### How to implement
 
@@ -48,7 +71,7 @@ If you have an existing Amplitude integration with Harness FME, you will need to
 
 ![Integrations Amplitude for Harness FME](./static/amplitude-for-default.png)
 
-#### Step 1: Rationalize the Harness FME traffic type with the Amplitude id
+#### Step 1: Rationalize the Harness FME traffic type with the Amplitude ID
 
 If you are using an id in Amplitude other than that of a known user, you should not call the identity API to set a user_id with that id. The device_id may be an appropriate alternative in that scenario. If using the SDK, this may be already handled, but it is important to keep in mind which Amplitude id you are using and to which traffic type it maps to in Harness FME.
 
