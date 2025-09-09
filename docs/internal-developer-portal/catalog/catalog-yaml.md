@@ -548,7 +548,7 @@ All the fields mentioned below are the parameters required to define a Group:
 | `kind` | **Group** |
 | `name` | Human-readable name for the group |
 | `identifier` | Unique identifier for the group |
-| `type` | Common values include `api`, `department`, `engineering` |
+| `type` | Common values include `department`, `engineering` |
 
 #### Special Spec Fields
 
@@ -556,7 +556,6 @@ All the fields mentioned below are the parameters required to define a Group:
 | --------- | --------------- |
 | `spec.members` | List of users belonging to the group |
 | `spec.parent` | Reference to a parent group, enabling hierarchy |
-| `spec.lifecycle` | Lifecycle state of the group, e.g., `active` |
 | `spec.profile` | Additional profile information like email |
 
 #### Example YAML
