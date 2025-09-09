@@ -5,11 +5,11 @@ This guide will help you **create a Go Artifact Registry** in Harness, **configu
 
 ## Prerequisites
 - Ensure you have **Go** installed and configured on your local machine.
-- Ensure you have access to a Harness account with the appropriate permissions to create registries and connectors.
-
 :::info additional information
 Depending on your environment, you may need to run additional commands. Go to the [Go installation](https://go.dev/doc/install) guide for more information.
 :::
+
+- Ensure you have access to a Harness account with the appropriate permissions to create registries and connectors.
 
 ---
 ## Create a Go Artifact Registry
@@ -75,21 +75,23 @@ If a Go module isn’t found in your Harness registry, the upstream proxy fetche
 ## Publish & Install Go modules
 ### Authenticate the Go client
 1. In your Harness Go Artifact Registry, click **Setup Client**.
-2. Copy the provided `go env -w` command.
-3. Execute the command in your terminal to authenticate your Go client with the Harness registry.
-
-### Publish a Go module
-- Push your module to the Harness Go Artifact Registry using standard `git` commands once the client is configured. Example:
-
+2. Click **Generate Token** to generate an identity token.
+3. Export your token with the following command:
 ```bash
-GOPROXY=https://pkg.harness.io/pkg/<account-id>/<go-registry-name>/go \
-go get <MODULE_NAME>@<VERSION>
+export GOPROXY="https://<email_address>:<TOKEN>@pkg.app.harness.io/pkg/<harness_account_id>/<go-registry-name>/go"
 ```
 
-### Install a Go module
-- Install your module using `go get`:
+### Publish a Go package
+- Push your package to the Harness Go Artifact Registry using standard `git` commands once the client is configured. Example:
+
 ```bash
-go get <MODULE_NAME>@<VERSION>
+hns ar push go go-aregistry <ARTIFACT_VERSION> --pkg-url pkg.app.harness.io
+```
+
+### Install a Go package
+- Install your package using `go get`:
+```bash
+go get <ARTIFACT_NAME>@<VERSION>
 ```
 
 ---
@@ -97,4 +99,4 @@ go get <MODULE_NAME>@<VERSION>
 ## Troubleshooting
 - Slow downloads or timeouts. Verify network egress to the Harness endpoint. If needed, configure `GOPROXY` explicitly and ensure your client respects it.
 - Authentication errors. Ensure your `go env -w GOPRIVATE` and token setup are correctly applied.
-- Module not found. Confirm the module was published to the correct Harness registry and that the version tag exists in the repository.
+- Package not found. Confirm the package was published to the correct Harness registry and that the version tag exists in the repository.
