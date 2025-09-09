@@ -117,9 +117,9 @@ If an email is not received, and is expected to be received, please check the fo
    ![](./static/emailfilter.png)
 - Certain configurations for Authentication will also not send out emails.  Please see below
 
-#### Instances where an Email will not be sent
+#### Instances where the invitation behavior changes:
 * **SAML**, **LDAP**, or **OAuth** *and* you have enabled the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness *doesn't* send an email to the user.
-* **SAML**, **LDAP**, or **OAuth** *and* you have enabled the feature flag `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness sends a notification email to the user.
+* **SAML**, **LDAP**, or **OAuth** *and* you have enabled the feature flag `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness sends an account access notification email to the user.
 * **SAML**, **LDAP**, or **OAuth** *and* you have enabled both feature flags: `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` takes precedence over `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`. Harness adds users directly to the **Active Users** list, and Harness *doesn't* send invitation emails.
 
 ## Assign roles and resource groups
