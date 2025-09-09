@@ -9,97 +9,101 @@ sidebar_position: 2
 
 ## Overview
 
-The AWS CDK Plugin Image Builder is a Harness CI/CD pipeline designed to create production-ready Docker images for the AWS CDK plugin across multiple runtime environments. This pipeline combines pre-built CDK plugin binaries with runtime-specific base images to produce optimized container images for Python, Java, .NET, and Go environments.
+The AWS CDK Plugin Image Builder provides a Harness CI/CD pipeline to create production-ready Docker images for the AWS CDK plugin across multiple runtime environments (Python, Java, .NET, and Go).  
+Harness does not frequently release new versions of the CDK base image. This pipeline allows you to build your own images using the Harness base, so you can adopt newer AWS CDK versions or customize runtime environments as needed.
 
-## Runtime Image Build and Push
+## What This Pipeline Does
 
-- Pulls base plugin image from [Harness CDK repo](https://hub.docker.com/r/harness/aws-cdk-plugin/tags)
-- Builds runtime images per language with:
-  - OS base: `node:20-alpine3.16` for supported Node.js version.
-  - Copy plugin binary and scripts from base image.
-  - Install language runtimes, `git`, and AWS CDK CLI.
-  - Set executable permissions and entrypoint script.
-- Tags runtime images as:  
-  `harness/aws-cdk-plugin:<VERSION>-<RUNTIME>-<AWS_CDK_VERSION>-linux-<ARCH>`
+This pipeline automates building AWS CDK plugin images for different programming languages using Harness. It enables you to keep up with the latest CDK runtimes and apply customizations as required for your projects.  
+You can find the full pipeline YAML in the [Pipeline YAML](#pipeline-yaml) section below.
 
-**Runtime Images Include:**
+## Key Pre-requisites
 
-| Runtime | Key Components Installed                          |
-| ------- | ------------------------------------------------ |
-| Python  | Python3, pip, bash, curl, git, Node.js 20, CDK CLI |
-| Java    | OpenJDK 11, Maven 3.9.11, bash, curl, git, Node.js 20, CDK CLI |
-| Dotnet  | .NET dependencies, bash, icu-libs, git, Node.js 20, CDK CLI |
-| Go      | Bash, curl, git, Node.js 20, CDK CLI             |
+- **Kubernetes Cluster & Connector:** You must have a Kubernetes cluster set up (using `KubernetesDirect` infrastructure). The cluster must allow privileged containers.  
+  - *Managed K8s (such as GKE):* Do **not** use GKE Autopilot clusters—use a standard node pool that allows privileged mode.
+  - Set up a Kubernetes Cluster connector in Harness referencing your cluster.
+- **Docker Registry & Git Connectors:** Properly configure connectors for Docker registries (`account.dockerhub` or your own) and any required Git repos.
+- **Secrets & Variables:** Store Docker registry credentials and secret variables in Harness secrets management.
+- **Pipeline Variables:** Be ready to set variables like `VERSION`, `AWS_CDK_VERSION`, `ARCH`, and `TARGET_REPO` at runtime or with defaults.
 
+## Supported Runtimes and Base Images
 
-## Initial Pipeline Configuration
+The pipeline builds images for the following runtime environments:
 
-Before running the pipeline for the first time, ensure the following configuration is in place:
+- **Python:** Python3, pip, bash, curl, git, Node.js 20, AWS CDK CLI
+- **Java:** OpenJDK 11, Maven 3.9.11, bash, curl, git, Node.js 20, AWS CDK CLI
+- **DotNet:** .NET runtime and dependencies, bash, icu-libs, git, Node.js 20, AWS CDK CLI
+- **Go:** Bash, curl, git, Node.js 20, AWS CDK CLI
 
-- **Service and Environment**: Create and configure the Kubernetes service and environment in Harness, specifying correct references.
-- **Connectors**: Define and configure connector references for Docker registries (`account.dockerhub` or your own), Kubernetes clusters, and Git repositories.
-- **Step Group Connector**: Set up step group connectors for executing pipeline steps with appropriate permissions.
-- **Secrets and Variables**: Populate required secret variables such as Docker registry credentials and Git tokens securely in Harness secrets management.
-- **Pipeline Variables**: Set pipeline variables like `VERSION`, `AWS_CDK_VERSION`, `ARCH`, and `TARGET_REPO` with appropriate default values or CI/CD inputs.
+All runtime images derive from the supported Harness [base plugin images](https://hub.docker.com/r/harness/aws-cdk-plugin/tags) and runtime-specific Node.js OS base images.
 
+**Example image tag format**:  
+`harness/aws-cdk-plugin:<VERSION>-<RUNTIME>-<AWS_CDK_VERSION>-linux-<ARCH>`
 
-### Checking and Using the Latest AWS CDK CLI Version
+## Pipeline Steps and Execution Flow
 
-The pipeline installs the AWS CDK CLI version specified by the variable `AWS_CDK_VERSION`. To use the latest stable version, check the official npm page:
+1. **Authentication Setup:** Creates Docker config for registry authentication.
+2. **Dockerfile Generation:** Dynamically generates Dockerfiles per runtime:
+    - Multi-stage (scratch + runtime image)
+    - Plugin and scripts copied from scratch image
+    - Installs language runtimes and AWS CDK
+    - Configures Node.js, metadata, and entrypoint
+3. **Image Build and Push:** Uses Docker to build and push tagged runtime images.
 
-- [AWS CDK Toolkit CLI - NPM](https://www.npmjs.com/package/aws-cdk)
+## Privileged Mode Requirement
+
+Certain pipeline steps (such as Docker-in-Docker for image build and push) require privileged execution.  
+**Privileged steps** are not standard pipeline steps—they run with escalated permissions and must be explicitly enabled with `privileged: true` in the pipeline YAML.
+
+**How to enable privileged mode:**  
+Set `privileged: true` in your step group or individual step under `spec`.  
+Your Kubernetes cluster must be configured to allow privileged containers.
+
+```yaml
+stepGroup:
+  privileged: true
+  name: k8s-step-group
+  sharedPaths:
+    - /var/run
+    - /var/lib/docker
+```
+
+For individual steps:
+```
+step:
+  name: dinD
+  privileged: true
+  ...
+```
+Without this setting, Docker builds and image pushes may fail due to insufficient permissions inside the container.
 
 ## Quick Start
 
-1. Copy the pipeline yaml provided and paste it in your Harness Project.
-2. Add an empty/do nothing service to the pipeline.
-3. Add a kubernetes environment to the pipeline.
-4. In the execution section, Enable container based execution and add the kubernetes cluster connector to the pipeline. Save the pipeline.
-5. Click **Run Pipeline**
-6. Enter the required parameters:
-   - **VERSION**:  Version number of Harness base image (e.g., `1.4.0`). VERSION represent specific code changes in the Harness repository. With each new code change, we push a new tag and publish new Docker images with these tags, allowing users to access specific versions of the plugin. The VERSION variable corresponds to these tags.
-   - **AWS_CDK_VERSION**: AWS CDK version to install (default: `2.1016.1`)
-   - **ARCH**: Target architecture (`amd64` or `arm64`)
+1. Copy the [pipeline YAML](/docs/continuous-delivery/cd-infrastructure/aws-cdk/cdk-image-build#pipeline-yaml) into your Harness Project.
+2. Add an empty/do-nothing service to the pipeline.
+3. Configure a Kubernetes environment in Harness.
+4. In the **Execution section**, enable **container-based execution** in the **step group**. Add the Kubernetes cluster connector inside the container step group. Save the pipeline.
+5. Click **Run Pipeline**.
+6. Fill in all required variables (see [Pipeline Variables](#pipeline-variables)).
 
-### Environment Variables
+## Pipeline Variables
 
 | Variable         | Description                        | Example                   |
-| ---------------- | -------------------------------- | ------------------------- |
-| `VERSION`        | Plugin version without prefix     | `1.4.0`                   |
-| `AWS_CDK_VERSION`| AWS CDK CLI version to install    | `2.1016.1`                |
-| `ARCH`           | Architecture for image build      | `amd64` or `arm64`        |
-| `TARGET_REPO`    | Docker repository                 | `harness/aws-cdk-plugin`  |
-| `DOCKER_USERNAME`| Docker registry username          | `vishalav95`              |
-| `DOCKER_PASSWORD`| Docker registry token/password    | *(kept secret)*           |
+| ---------------- | ---------------------------------- | ------------------------- |
+| `VERSION`        | Plugin version (no prefix)         | `1.4.0`                   |
+| `AWS_CDK_VERSION`| AWS CDK CLI version                | `2.1016.1`                |
+| `ARCH`           | Image build architecture           | `amd64` or `arm64`        |
+| `TARGET_REPO`    | Docker repository                  | `harness/aws-cdk-plugin`  |
+| `DOCKER_USERNAME`| Docker registry username           | `your-dockerhub-username` |
+| `DOCKER_PASSWORD`| Docker registry password/token     | *(from secrets)*          |
 
-### Build Process
-
-The pipeline performs the following steps for each runtime:
-
-1. **Authentication Setup**: Creates Docker config for registry authentication
-2. **Dockerfile Generation**: Dynamically creates a Dockerfile with:
-   - Multi-stage build starting with the scratch image
-   - Runtime-specific base image
-   - CDK plugin binary copied from scratch image
-   - Runtime-specific package installations
-   - Node.js and npm installation
-   - AWS CDK installation
-   - Metadata labels and entrypoint configuration
-3. **Image Build and Push**: Uses Docker to build and push the final image
-
-### Pipeline YAML 
-
-This pipeline helps you build custom serverless plugin images using Harness, enabling integration of the Harness plugin with supported AWS Lambda runtimes. The pipeline YAML is available below.
+## Pipeline YAML
 
 <details>
 <summary>Pipeline YAML</summary>
 
-Parameters you need to change:
-
-- `projectIdentifier`: Your Harness project identifier
-- `orgIdentifier`: Your Harness organization identifier
-- `connectorRef`: Your Kubernetes cluster connector identifier
-- `your_k8s_connector`: Your Kubernetes cluster connector identifier
+Parameters to change:
+- `projectIdentifier`, `orgIdentifier`, `connectorRef`, `your_k8s_connector`
 
 ```yaml
 pipeline:
@@ -300,18 +304,16 @@ pipeline:
       value: <+secrets.getValue("your-docker-pat")>
   identifier: cdk-build-push
   name: cdkbuildandpush
-
-
 ```
-
 </details>
-
 
 ## Output Images
 
-The pipeline produces four runtime-specific images:
+After a successful build, you will have four tagged images in your target Docker repository:  
 
-1. **Python Runtime**: `{Target_REGISTRY_URL}/harness-cdk-plugin:python-{VERSION}-linux-{ARCH}`
-2. **Java Runtime**: `{Target_REGISTRY_URL}/harness-cdk-plugin:java-{VERSION}-linux-{ARCH}`
-3. **DotNet Runtime**: `{Target_REGISTRY_URL}/harness-cdk-plugin:dotnet-{VERSION}-linux-{ARCH}`
-4. **Go Runtime**: `{Target_REGISTRY_URL}/harness-cdk-plugin:go-{VERSION}-linux-{ARCH}`
+- **Python:** `{TARGET_REPO}/harness-cdk-plugin:python-{VERSION}-{AWS_CDK_VERSION}-linux-{ARCH}`
+- **Java:** `{TARGET_REPO}/harness-cdk-plugin:java-{VERSION}-{AWS_CDK_VERSION}-linux-{ARCH}`
+- **DotNet:** `{TARGET_REPO}/harness-cdk-plugin:dotnet-{VERSION}-{AWS_CDK_VERSION}-linux-{ARCH}`
+- **Go:** `{TARGET_REPO}/harness-cdk-plugin:go-{VERSION}-{AWS_CDK_VERSION}-linux-{ARCH}`
+
+Each image will include the required runtime, the AWS CDK CLI, and the Harness plugin—ready for production use.

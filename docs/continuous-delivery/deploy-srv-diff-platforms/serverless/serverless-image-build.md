@@ -14,6 +14,8 @@ Harness does not frequently release new versions of the Serverless plugin image.
 
 These custom images enable you to deploy Serverless applications in your preferred programming language (Node.js, Python, Java, Ruby) while leveraging Harness deployment capabilities.
 
+## Understanding Serverless Runtimes
+
 Serverless runtimes refer to the programming language environments that AWS Lambda supports for function development. Each runtime provides the language-specific libraries, tools, and dependencies to build, test, and deploy serverless applications.
 
 Common Serverless runtimes include:
@@ -85,7 +87,7 @@ Without this setting, Docker builds and image pushes may fail due to insufficien
 1. Copy and paste the [pipeline YAML](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-image-build#pipeline-yaml) provided into your Harness Project.
 2. Add an empty/do nothing service to the pipeline.
 3. Add a Kubernetes environment to the pipeline.
-4. In the execution section, enable container-based execution. Add the Kubernetes cluster connector inside the container step group of the pipeline stage. Save the pipeline.
+4. In the **Execution section**, enable **container-based execution** in the **step group**. Add the Kubernetes cluster connector inside the container step group. Save the pipeline.
 5. Click **Run Pipeline**
 6. Enter the required parameters:
    - **VERSION**: The version number of the Harness base image (e.g., `1.1.0-beta`). VERSION represents specific code changes in the Harness repository. With each new code change, we push a new tag and publish new Docker images with these tags, allowing users to access specific versions of the plugin.
@@ -103,7 +105,7 @@ The pipeline supports only complete formats for the base images:
 
 #### Serverless Base Image Pre-requisites
 
-> **IMPORTANT**: Only official AWS SAM build images from the AWS ECR Public Gallery are supported.
+Only official AWS SAM build images from the [AWS ECR Public Gallery](https://gallery.ecr.aws/sam?page=1) are supported.
 
 - Use SAM base images only from: [AWS ECR Gallery - SAM](https://gallery.ecr.aws/sam?page=1)
 - Only x86_64 architecture images are supported
@@ -195,8 +197,6 @@ They are compatible if both images show the same version (e.g., `libstdc++.so.6.
 | python3.12 | nodejs20.x         | python3.12                           |
 | java8.al2  | nodejs18.x         | java8.al2                            |
 | ruby3.2    | nodejs18.x         | ruby3.2                             |
-
----
 
 ### Pipeline YAML
 

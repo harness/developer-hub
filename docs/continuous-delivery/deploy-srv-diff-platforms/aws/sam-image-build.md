@@ -27,7 +27,7 @@ Common SAM runtimes include:
 
 When you build your own image using the Harness pipeline, you're combining the Harness SAM plugin (which provides the integration with Harness CD) with a specific SAM runtime image from AWS. This allows you to deploy serverless applications written in your preferred programming language while leveraging Harness deployment capabilities.
 
-## Key Components and Pre-requisites
+## Key Components and pre-requisites
 
 This pipeline helps you build **custom AWS SAM plugin images** using Harness, integrating the Harness SAM plugin with supported AWS Lambda runtimes. Key details about the pipeline include:
 
@@ -52,14 +52,6 @@ This pipeline helps you build **custom AWS SAM plugin images** using Harness, in
     `aws-sam-plugin:{VERSION}-{SAM_RUNTIME}-{SAM_VERSION}-linux-amd64`  
     Example: `aws-sam-plugin:1.1.2-nodejs18.x-1.143.0-linux-amd64`
 
-### SAM Base Image Requirements
-
-Only official AWS SAM build images from the [AWS ECR Public Gallery](https://gallery.ecr.aws/sam?page=1) are supported.
-
-- Only use SAM base images from: AWS ECR Gallery - SAM
-- Only `x86_64` architecture images are supported
-- Using different base images may cause library dependency issues
-- Non-standard base images may cause the plugin to not function as required
 
 ### Pipeline Runner Privileged Mode Requirement
 
@@ -94,19 +86,23 @@ Without this setting, Docker builds and image pushes may fail due to insufficien
 ## Quick Start
 
 1. Copy the provided [pipeline YAML](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/sam-image-build#pipeline-yaml) and paste it in your Harness Project.
-2. Add an empty/do-nothing service to the pipeline.
-3. Add a Kubernetes environment to the pipeline.
-4. In the execution section, enable container-based execution. Add the Kubernetes cluster connector inside the container step group of the pipeline stage. Save the pipeline.
+2. Add an **empty/do-nothing service** to the pipeline.
+3. Add a **Kubernetes environment** to the pipeline.
+4. In the **Execution section**, enable **container-based execution** in the **step group**. Add the Kubernetes cluster connector inside the container step group. Save the pipeline.
 5. Click **Run Pipeline**.
 6. Enter the required parameters:
    - **VERSION**: Version number for your plugin (e.g., `1.1.2`). With each new code change, a new tag and Docker image are published, letting users access specific plugin versions.
    . You can find the Harness base image on [Harness DockerHub](https://hub.docker.com/r/harness/aws-sam-plugin/tags)
    - **SAM_BASE_IMAGE**: SAM base image from AWS ECR Gallery (e.g., `public.ecr.aws/sam/build-nodejs18.x:1.143.0-20250502200316-x86_64`).
 
-
 ### Base Image Requirements
 
-Only specific official AWS SAM base images in the required format are supported to ensure compatibility and successful image builds.
+Only official AWS SAM build images from the [AWS ECR Public Gallery](https://gallery.ecr.aws/sam?page=1) are supported.
+
+- Only use SAM base images from: AWS ECR Gallery - SAM
+- Only `x86_64` architecture images are supported
+- Using different base images may cause library dependency issues
+- Non-standard base images may cause the plugin to not function as required
 
 **SAM Base Image Format**
 
@@ -114,9 +110,7 @@ The pipeline supports only full formats for the SAM base image:
 
 Full Format: `public.ecr.aws/sam/build-nodejs18.x:1.143.0-20250502200316-x86_64`
 
-# Image Configuration
-
-## Final Image Naming
+#### Image Configuration
 
 The final image follows this naming pattern:
 ```
@@ -133,7 +127,7 @@ Where:
 - `SAM_RUNTIME`: Runtime extracted from SAM base image (e.g., `nodejs18.x`)
 - `SAM_VERSION`: Version extracted from SAM base image (e.g., `1.143.0`)
 
-### Variables Used in Privileged Steps
+### Variables Used in Pipeline
 
 These variables are actively used in the privileged steps of your pipeline for building and pushing the image that you need to con:
 
@@ -471,16 +465,3 @@ pipeline:
 ```
 
 </details>
-
----
-
-### How Pipeline Works
-
-- **Generate Timestamp:**
-  - Creates a timestamp for image labels
-  - Extracts SAM runtime and version from the base image name
-
-- **Build and Push Final Image:**
-  - Attempts multiple strategies to build the final image in order of preference:
-    - **Strategy 1:** Buildah (rootless) - Tries to build a container without privileged access
-    - **Strategy 2:** Skopeo - Falls back to copying the scratch image as the final solution
