@@ -70,17 +70,13 @@ To provision new infrastructures and enable Chaos Engineering in a single workfl
 
 ```hcl
 resource "harness_chaos_infrastructure_v2" "this" {
-  depends_on = [
-    harness_platform_infrastructure.this
-  ]
-
   // Required fields
-  org_id         = local.org_id
-  project_id     = local.project_id
-  environment_id = harness_platform_environment.this.id
-  infra_id       = harness_platform_infrastructure.this.id
-  name           = var.chaos_infra_name
-  description    = var.chaos_infra_description
+  org_id         = "your_org_id"
+  project_id     = "your_project_id"
+  environment_id = "your_environment_id"
+  infra_id       = "your_infrastructure_id"
+  name           = "chaos-infra"
+  description    = "Chaos Engineering Infrastructure"
 }
 ```
 
@@ -93,20 +89,17 @@ Configure service discovery to automatically detect services for chaos experimen
 
 ```hcl
 resource "harness_service_discovery_agent" "this" {
-  depends_on = [
-    harness_chaos_infrastructure_v2.this
-  ]
-
-  name                   = var.service_discovery_agent_name
-  org_identifier        = local.org_id
-  project_identifier    = local.project_id
-  environment_identifier = harness_platform_environment.this.id
-  infra_identifier      = harness_platform_infrastructure.this.id
-  installation_type     = var.sd_installation_type
+  // Required fields
+  name                   = "service-discovery-agent"
+  org_identifier        = "your_org_id"
+  project_identifier    = "your_project_id"
+  environment_identifier = "your_environment_id"
+  infra_identifier      = "your_infrastructure_id"
+  installation_type     = "kubernetes"
 
   config {
     kubernetes {
-      namespace = var.sd_namespace
+      namespace = "harness-delegate-ng"
     }
   }
 }
@@ -122,11 +115,11 @@ Configure custom image registries for chaos experiments.
 ```hcl
 resource "harness_chaos_image_registry" "project_level" {
   // Required fields
-  org_id     = local.org_id
-  project_id = local.project_id
+  org_id     = "your_org_id"
+  project_id = "your_project_id"
 
-  registry_server  = var.registry_server
-  registry_account = var.registry_account
+  registry_server  = "docker.io"
+  registry_account = "your_registry_account"
 }
 ```
 
@@ -141,21 +134,18 @@ Define security governance rules and conditions for chaos experiments to ensure 
 ```hcl
 resource "harness_chaos_security_governance_condition" "this" {
   // Required fields
-  name        = var.security_governance_condition_name
+  name        = "block-destructive-faults"
   description = "Condition to block destructive experiments"
-  org_id      = local.org_id
-  project_id  = local.project_id
-  infra_type  = var.security_governance_condition_infra_type
+  org_id      = "your_org_id"
+  project_id  = "your_project_id"
+  infra_type  = "kubernetes"
 
   fault_spec {
-    operator = var.security_governance_condition_operator
+    operator = "EQUAL"
     
-    dynamic "faults" {
-      for_each = var.security_governance_condition_faults
-      content {
-        fault_type = faults.value.fault_type
-        name       = faults.value.name
-      }
+    faults {
+      fault_type = "pod-delete"
+      name       = "pod-delete"
     }
   }
 }
@@ -168,12 +158,12 @@ resource "harness_chaos_security_governance_condition" "this" {
 ```hcl
 resource "harness_chaos_security_governance_rule" "this" {
   // Required fields
-  name           = var.security_governance_rule_name
-  description    = var.security_governance_rule_description
-  org_id         = local.org_id
-  project_id     = local.project_id
+  name           = "production-safety-rule"
+  description    = "Block destructive experiments in production"
+  org_id         = "your_org_id"
+  project_id     = "your_project_id"
   condition_ids  = [harness_chaos_security_governance_condition.this.id]
-  user_group_ids = var.security_governance_rule_user_group_ids
+  user_group_ids = ["your_user_group_id"]
 }
 ```
 
@@ -188,14 +178,14 @@ Manage custom ChaosHubs to provide organization, account or project level fault,
 ```hcl
 resource "harness_chaos_hub" "this" {
   // Required fields
-  org_id      = local.org_id
-  project_id  = local.project_id
-  name        = var.chaos_hub_name
-  description = var.chaos_hub_description
+  org_id      = "your_org_id"
+  project_id  = "your_project_id"
+  name        = "custom-chaos-hub"
+  description = "Custom ChaosHub for organization experiments"
 
-  connector_id = var.chaos_hub_connector_id
-  repo_branch  = var.chaos_hub_repo_branch
-  repo_name    = var.chaos_hub_repo_name
+  connector_id = "your_git_connector_id"
+  repo_branch  = "main"
+  repo_name    = "chaos-experiments"
 }
 ```
 
