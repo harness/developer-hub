@@ -81,16 +81,6 @@ resource "harness_chaos_infrastructure_v2" "this" {
   infra_id       = harness_platform_infrastructure.this.id
   name           = var.chaos_infra_name
   description    = var.chaos_infra_description
-
-  // Optional fields
-  namespace    = var.chaos_infra_namespace
-  infra_type   = var.chaos_infra_type
-
-  ai_enabled  = var.chaos_ai_enabled
-  insecure_skip_verify = var.chaos_insecure_skip_verify
-
-  service_account = var.service_account_name
-  tags = local.tags_set
 }
 ```
 
@@ -130,38 +120,13 @@ Configure custom image registries for chaos experiments.
 **Documentation**: [harness_chaos_image_registry](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/chaos_image_registry)
 
 ```hcl
-// Setup Chaos Image Registry at Project Level (if private registry)
 resource "harness_chaos_image_registry" "project_level" {
-  depends_on = [
-    harness_chaos_image_registry.org_level
-  ]
-
-  count = var.setup_custom_registry ? 1 : 0
-
+  // Required fields
   org_id     = local.org_id
   project_id = local.project_id
 
-  // Registry details
-  registry_server = var.registry_server
+  registry_server  = var.registry_server
   registry_account = var.registry_account
-
-  // Authentication
-  is_default = var.is_default_registry
-  is_override_allowed = var.is_override_allowed
-  is_private = var.is_private_registry
-  secret_name = var.registry_secret_name != "" ? var.registry_secret_name : null
-
-  // Custom images if needed
-  use_custom_images = var.use_custom_images
-  dynamic "custom_images" {
-    for_each = var.use_custom_images ? [1] : []
-    content {
-      log_watcher = var.log_watcher_image != "" ? var.log_watcher_image : null
-      ddcr        = var.ddcr_image != "" ? var.ddcr_image : null
-      ddcr_lib    = var.ddcr_lib_image != "" ? var.ddcr_lib_image : null
-      ddcr_fault  = var.ddcr_fault_image != "" ? var.ddcr_fault_image : null
-    }
-  }
 }
 ```
 
@@ -175,21 +140,13 @@ Define security governance rules and conditions for chaos experiments to ensure 
 
 ```hcl
 resource "harness_chaos_security_governance_condition" "this" {
-  depends_on = [
-    harness_platform_environment.this,
-    harness_platform_infrastructure.this,
-    harness_chaos_infrastructure_v2.this,
-  ]
-
+  // Required fields
   name        = var.security_governance_condition_name
   description = "Condition to block destructive experiments"
   org_id      = local.org_id
   project_id  = local.project_id
+  infra_type  = var.security_governance_condition_infra_type
 
-  // Required fields - Set the appropriate infra_type based on your needs
-  infra_type = var.security_governance_condition_infra_type
-
-  // Fault specifications
   fault_spec {
     operator = var.security_governance_condition_operator
     
@@ -201,6 +158,7 @@ resource "harness_chaos_security_governance_condition" "this" {
       }
     }
   }
+}
 ```
 
 **Governance Rules**: Apply conditions to specific environments and define actions (block, warn, etc.)  
@@ -209,38 +167,14 @@ resource "harness_chaos_security_governance_condition" "this" {
 
 ```hcl
 resource "harness_chaos_security_governance_rule" "this" {
-  depends_on = [
-    harness_chaos_security_governance_condition.this
-  ]
-
-  name          = var.security_governance_rule_name
-  description   = var.security_governance_rule_description
-  org_id        = local.org_id
-  project_id    = local.project_id
-  is_enabled    = var.security_governance_rule_is_enabled
-
   // Required fields
+  name           = var.security_governance_rule_name
+  description    = var.security_governance_rule_description
+  org_id         = local.org_id
+  project_id     = local.project_id
   condition_ids  = [harness_chaos_security_governance_condition.this.id]
   user_group_ids = var.security_governance_rule_user_group_ids
-
-  // Time window configuration
-  dynamic "time_windows" {
-    for_each = var.security_governance_rule_time_windows
-    content {
-      time_zone  = time_windows.value.time_zone
-      start_time = time_windows.value.start_time
-      duration   = time_windows.value.duration
-
-      dynamic "recurrence" {
-        for_each = time_windows.value.recurrence != null ? [time_windows.value.recurrence] : []
-        content {
-          type  = recurrence.value.type
-          until = recurrence.value.until
-        }
-      }
-    }
-  }
-
+}
 ```
 
 ### ChaosHub Management
@@ -253,33 +187,15 @@ Manage custom ChaosHubs to provide organization, account or project level fault,
 
 ```hcl
 resource "harness_chaos_hub" "this" {
-  depends_on = [
-    harness_platform_connector_git.chaos_hub
-  ]
-
-  count = var.create_chaos_hub ? 1 : 0
-
+  // Required fields
   org_id      = local.org_id
   project_id  = local.project_id
   name        = var.chaos_hub_name
   description = var.chaos_hub_description
 
-  // Use the created connector ID or the provided one
-  connector_id = var.create_git_connector ? one(harness_platform_connector_git.chaos_hub[*].id) : var.chaos_hub_connector_id
+  connector_id = var.chaos_hub_connector_id
   repo_branch  = var.chaos_hub_repo_branch
   repo_name    = var.chaos_hub_repo_name
-  is_default   = var.chaos_hub_is_default
-  connector_scope = var.chaos_hub_connector_scope
-
-  tags = var.chaos_hub_tags
-
-  // Add common tags to the resource
-  lifecycle {
-    ignore_changes = [
-      // Ignore changes to tags as they may be modified outside of Terraform
-      tags,
-    ]
-  }
 }
 ```
 
