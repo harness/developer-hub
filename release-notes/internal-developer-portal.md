@@ -52,6 +52,28 @@ Harness IDP now supports integration with [GitLab](/docs/internal-developer-port
 
 ![](../docs/internal-developer-portal/plugins/available-plugins/static/gitlabplugin2.png)
 
+### [New Feature] Iframe Embedding in Sidebar Navigation
+
+Harness IDP now supports embedding external web content directly into your sidebar navigation using iframes. This feature allows you to integrate essential resources, documentation, dashboards, and tools directly into your developer portal interface.
+
+* **External Content Integration** - Add documentation, dashboards, or any web content directly in your IDP navigation
+* **Simple YAML Configuration** - Easy to implement with standard sidebar navigation format
+
+#### Example Configuration
+
+```yaml
+- name: SidebarItem
+  type: iframe
+  props:
+    to: iframe/developer_docs
+    text: Developer docs
+    url: https://developer.harness.io/
+```
+
+![](./static/internal-developer-portal/iframe-embedd.png)
+
+[Learn more about embedding iframes in your sidebar](/docs/internal-developer-portal/layout-and-appearance/sidenav#embedding-an-iframe)
+
 ### Bug Fixes and Improvements 
 
 * **Jira Plugin Enhancements** - We've made several improvements to the Jira plugin:
@@ -255,7 +277,6 @@ The [DX plugin configuration](https://developer.harness.io/docs/internal-develop
 
 
 
-
 ### [New Feature] Harness Feature Management & Experimentation Plugin
 
 Harness IDP now includes a native integration with Harness Feature Management & Experimentation (FME), allowing teams to view and manage feature flags directly in their service catalog.
@@ -267,6 +288,8 @@ Harness IDP now includes a native integration with Harness Feature Management & 
 * Real-time Updates - Monitor feature flag status and changes directly from your developer portal
 
 [Learn more about the Harness FME Plugin](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-fme) 
+
+
 
 ### Bug Fixes and Improvements
 
