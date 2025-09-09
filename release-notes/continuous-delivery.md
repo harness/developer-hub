@@ -57,15 +57,13 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ### GitOps Service 1.41.1, GitOps Agent 0.101.0
 
-#### New Features and Enhancements
-
-- Users can now view specific artifact versions and chart versions when deploying GitOps Apps in the Service Summary, replacing the previous "artifact_version_unspecified" for artifacts and "-" for chart versions. This improvement provides better tracking and visibility of deployed artifacts and charts in your GitOps deployments.
-
 #### Fixed Issues
 
 - Fixed an issue where promote options were missing in GitOps application rollouts. Promote and restart options are now correctly displayed in the GitOps application interface. (**CDS-113725, ZD-91678**)
 - Fixed an issue where GitOps applications created through reconciler operations (such as those created by ApplicationSets) were not showing up in the "Referenced By" tab of linked services. These applications now properly appear in the service references, ensuring visibility of service-to-application relationships. (**CDS-113560, ZD-91232**)
 - Fixed an issue where GitOps sync was failing with "no space left on device" errors, and the App diff tab was not clickable for some applications. GitOps sync now properly handles storage resources and the App diff tab functionality has been restored. (**CDS-113506, ZD-91129**)
+- Fixed an issue where artifact and chart versions were not displayed in the GitOps Service Summary, showing as **artifact_version_unspecified** for artifacts and `-` for chart versions. Users can now see specific artifact and chart versions during deployment, improving tracking and visibility. 
+
 
 ### Version 1.105.XX
 
