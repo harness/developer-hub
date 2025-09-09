@@ -20,7 +20,7 @@ The New Chaos Studio includes these enhanced capabilities:
 - **[Timeline View](/docs/chaos-engineering/guides/experiments#2.newchaosstudio)**: Visual timeline representation of experiment execution and results
 - **[Experiment Level Probes](/docs/chaos-engineering/guides/probes/experiment-level-probes/)**: Advanced probing capabilities at the experiment level
 - **[Actions](/docs/chaos-engineering/guides/actions/)**: Execute custom operations, delays, and scripts during experiments
-- **[Chaos Hubs Across Different Scopes](/docs/chaos-engineering/guides/chaoshubs/chaos-hub-scopes)**: Enhanced chaos hub management with flexible scoping options
+- **[Chaos Hubs Across Different Scopes](/docs/chaos-engineering/guides/chaoshub)**: Enhanced chaos hub management with flexible scoping options
 - **[Runtime Variable Support](/docs/chaos-engineering/guides/experiments#2.newchaosstudio)**: Dynamic variable handling during experiment execution
 - **[Templates](/docs/chaos-engineering/guides/templates/)**: Reusable fault, probe, and action templates for standardized chaos engineering
 - **[Custom Faults](/docs/category/custom-faults)**: Create and manage custom fault definitions for specific use cases

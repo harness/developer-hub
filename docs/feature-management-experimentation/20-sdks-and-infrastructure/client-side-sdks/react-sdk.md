@@ -17,7 +17,7 @@ This guide provides detailed information about our React SDK. This library is bu
 Refer to the [migration guide](https://github.com/splitio/react-client/blob/development/MIGRATION-GUIDE.md) for information on upgrading to v2.x.
 :::
 
-:::info[Deprecated HOCs & components] 
+:::info[Deprecated HOCs & components]
 High-Order-Components (`withSplitFactory`, `withSplitClient`, and `withSplitTreatments`) and components that accept a render function as child component (`SplitTreatments` and `SplitClient`) have been deprecated and might be removed in a future major release.
 
 The deprecation is intended to simplify the API and discourage using old patterns (HOCs and render props) in favor of the *hook* alternatives, to take advantage of React optimizations.
@@ -88,8 +88,8 @@ const { SplitFactoryProvider } = window.splitio;
 const sdkConfig = {
   core: {
     authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
-    // key represents your internal user id, or the account id that 
-    // the user belongs to. 
+    // key represents your internal user id, or the account id that
+    // the user belongs to.
     // This could also be a cookie you generate for anonymous users.
     key: 'key'
   }
@@ -114,8 +114,8 @@ const { SplitFactoryProvider } = require('@splitsoftware/splitio-react');
 const sdkConfig = {
   core: {
     authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
-    // key represents your internal user id, or the account id that 
-    // the user belongs to. 
+    // key represents your internal user id, or the account id that
+    // the user belongs to.
     // This could also be a cookie you generate for anonymous users.
     key: 'key'
   }
@@ -140,8 +140,8 @@ import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
 const sdkConfig: SplitIO.IBrowserSettings = {
   core: {
     authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
-    // key represents your internal user id, or the account id that 
-    // the user belongs to. 
+    // key represents your internal user id, or the account id that
+    // the user belongs to.
     // This could also be a cookie you generate for anonymous users.
     key: 'key'
   }
@@ -335,7 +335,7 @@ function MyComponentToggle (props) {
   return isReady ?
     // If your flag sets are not properly configured, `treatments` might be an empty object
     // or it might not contain the feature flags you expect.
-    renderContent(treatments[featureName] || { treatment: 'control' }, props) : 
+    renderContent(treatments[featureName] || { treatment: 'control' }, props) :
     <Spinner />;
 }
 
@@ -415,8 +415,8 @@ const ComponentWithTreatments = () => {
   const treatment = treatments[featureName].treatment;
 
   return isReady ?
-    treatment === 'on' ? 
-      <OnComponent /> : 
+    treatment === 'on' ?
+      <OnComponent /> :
       <OffComponent />:
     <LoadingComponent />
 };
@@ -445,8 +445,8 @@ const ComponentWithTreatments = () => {
   const treatment: SplitIO.Treatment = treatments[featureName].treatment;
 
   return isReady ?
-    treatment === 'on' ? 
-      <OnComponent /> : 
+    treatment === 'on' ?
+      <OnComponent /> :
       <OffComponent />:
     <LoadingComponent />
 };
@@ -573,7 +573,7 @@ class MyComponent extends React.Component {
       <div>
         {
          /*
-          * Using SplitTreatments as a descendant of the SplitFactoryProvider with no SplitClient wrapping it, uses the main client 
+          * Using SplitTreatments as a descendant of the SplitFactoryProvider with no SplitClient wrapping it, uses the main client
           * bound to the key passed in the config for evaluations and the attributes received on SplitFactoryProvider attributes prop.
           */
         }
@@ -622,10 +622,10 @@ Three types of properties are supported: strings, numbers, and booleans.
 <TabItem value="JavaScript">
 
 ```javascript
-const properties = { 
-  package: "premium", 
-  admin: true, 
-  discount: 50 
+const properties = {
+  package: "premium",
+  admin: true,
+  discount: 50
 };
 
 const MyComponent = () => {
@@ -639,10 +639,10 @@ const MyComponent = () => {
 <TabItem value="TypeScript">
 
 ```typescript
-const properties: SplitIO.Properties = { 
-  package: "premium", 
-  admin: true, 
-  discount: 50 
+const properties: SplitIO.Properties = {
+  package: "premium",
+  admin: true,
+  discount: 50
 };
 
 const MyComponent = () => {
@@ -760,14 +760,14 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 
 ## Localhost mode
 
-For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To do this, start the SDK in **localhost** mode (also called off-the-grid mode). In this mode, the SDK neither polls or updates from Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. 
+For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To do this, start the SDK in **localhost** mode (also called off-the-grid mode). In this mode, the SDK neither polls or updates from Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features.
 
 When instantiating the SDK in localhost mode, your `authorizationKey` is `"localhost"`. Define the feature flags you want to use in the `features` object map. All `useSplitTreatments` calls for a feature flag return the treatment (and config, if defined) that you have defined in the map. You can then change the treatment as necessary for your testing. If you want to update a treatment or a config, or to add or remove feature flags from the mock cache, update the properties of the `features` object you've provided. The SDK simulates polling for changes and updates from the `features` object. Do not assign a new object to the `features` property because the SDK has a reference to the original object and will not detect the change.
 
 Any feature that is not provided in the `features` map returns the [control treatment](/docs/feature-management-experimentation/feature-management/setup/control-treatment) if the SDK is asked to evaluate them. Use the following additional configuration parameters when instantiating the SDK in `localhost` mode:
 
 | **Configuration** | **Description** | **Default value** |
-| --- | --- | --- | 
+| --- | --- | --- |
 | scheduler.offlineRefreshRate | The refresh interval for the mocked features treatments. | 15 |
 | features | A fixed mapping of which treatment to show for our mocked features. | {} <br />By default we have no mocked features. |
 
@@ -936,7 +936,7 @@ describe('MyApp', () => {
 ```
 
 </TabItem>
-</Tabs> 
+</Tabs>
 
 ## Manager
 
@@ -1146,8 +1146,8 @@ const sdkConfig = {
 };
 
 const App = () => (
-  <SplitFactoryProvider config={sdkConfig} > 
-    <MyComponentWithFlags accountId='nicolas@account' /> 
+  <SplitFactoryProvider config={sdkConfig} >
+    <MyComponentWithFlags accountId='nicolas@account' />
   </SplitFactoryProvider>
 );
 
@@ -1208,7 +1208,7 @@ The underlying JavaScript SDK has four different events:
 While you could potentially access the JavaScript SDK factory client from the Split context and track this yourself, this is not trivial. The `useSplitClient` and `useSplitTreatments` hooks accept four optional boolean parameters to trigger the re-render of the component. If the parameters are set to `true` (which is the default), the component re-renders when an `SDK_READY`, `SDK_READY_FROM_CACHE`, `SDK_UPDATE` or `SDK_READY_TIMED_OUT` event fires, and you can take action if you desire to do so.
 
 * For `SDK_READY`, you can set the `updateOnSdkReady` parameter.
-* For `SDK_READY_FROM_CACHE`, you can set the `updateOnSdkReadyFromCache` parameter. 
+* For `SDK_READY_FROM_CACHE`, you can set the `updateOnSdkReadyFromCache` parameter.
 * For `SDK_READY_TIMED_OUT`, you can set the `updateOnSdkTimedout` parameter.
 * For `SDK_UPDATE`, you can set the `updateOnSdkUpdate` parameter.
 
@@ -1234,7 +1234,7 @@ function MyApp() {
   // Evaluates feature flags for the main client bound to the key passed in the factory config.
   const { treatments, isReady, isReadyFromCache, hasTimedout, lastUpdate } = useSplitTreatments({ names: ['USER_FEATURE_FLAG_NAME'] });
 
-  // But we can evaluate at a per client basis, and choose when to trigger a re-render. 
+  // But we can evaluate at a per client basis, and choose when to trigger a re-render.
   // For example, the accountId we only want to update on SDK_READY and SDK_READY_TIMED_OUT. Not on SDK_READY_FROM_CACHE or SDK_UPDATE.
   const { treatments: accountTreatments, isReady: isReadyAccount, hasTimedout: hasTimedoutAccount } = useSplitTreatments({
     names: ['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2'],
@@ -1244,7 +1244,7 @@ function MyApp() {
   });
 
   return (
-    <div> 
+    <div>
       {
         // Do something with the treatments for the main key
       }
@@ -1278,7 +1278,7 @@ function MyApp({ isReady, isReadyFromCache, isTimedout, hasTimedout, lastUpdate,
       { /* But we can override that setup at a per client basis, so the account one we only want to
          * update on SDK_READY and SDK_READY_TIMED_OUT */ }
       <SplitClient splitKey={accountId} updateOnSdkReadyFromCache={false} updateOnSdkUpdate={false} >
-        <SplitTreatments 
+        <SplitTreatments
           names={['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2']}
           updateOnSdkReadyFromCache={false} updateOnSdkUpdate={false}
         >
@@ -1312,9 +1312,9 @@ Default values for `updateOnSdk<Event>` options can be overwritten at the `Split
 
 ```javascript title="Hooks"
 const App = () => (
-  <SplitFactoryProvider 
-    config={sdkConfig} 
-    updateOnSdkUpdate={false} // overwrite default value for `updateOnSdkUpdate` option to `false` for all child components 
+  <SplitFactoryProvider
+    config={sdkConfig}
+    updateOnSdkUpdate={false} // overwrite default value for `updateOnSdkUpdate` option to `false` for all child components
   >
     <MyApp />
   </SplitFactoryProvider>
@@ -1440,7 +1440,7 @@ export const getServerSideProps = (async () => {
   const myConfig = { ... } // SDK configuration object
   return { props: { myConfig, ... } }
 });
- 
+
 export default function Page(props) {
   return (
     <SplitFactoryProvider config={props.myConfig} >
@@ -1454,7 +1454,7 @@ export default function Page(props) {
 <TabItem value="Next.js using App Router (v13+)">
 
 ```javascript
-// SDK components are traditional "Client" components, so you need to use the 'use client' directive to nest with Server components 
+// SDK components are traditional "Client" components, so you need to use the 'use client' directive to nest with Server components
 // https://nextjs.org/docs/app/building-your-application/rendering/client-components
 
 // app/providers.jsx
@@ -1578,72 +1578,9 @@ The following are example applications showing how you can integrate the React S
 
 ## Troubleshooting
 
-### Error: Integration not supported in current SDK version
-
-When using the Split React SDK version 1.1.0 or below and following the instructions to enable the Google Analytics plugin, the following error may appear when initializing the SDK factory:
-
-> This integration is currently supported in Split's JavaScript client side SDK version 10.11.1 and above
-
-This integration is only supported in Split’s JavaScript client-side SDK version **10.11.1 and above**. The React SDK version 1.1.0 and below depends on older versions of the JavaScript SDK that do not support this integration.
-
-Upgrade to the latest version of the Split React SDK, which uses JavaScript SDK version 10.11.1 or above under the hood.
-
-### isTimedout prop not returning true when the React SDK times out
-
-When using the React SDK, it is recommended to check if the SDK has timed out within a specific timeout before it finishes downloading the cache and signaling readiness. 
-
-In the following example, the message does not display when the SDK has timed out:
-
-```javascript
-import { useContext } from 'react';
-import { SplitContext } from "@splitsoftware/splitio-react";
-
-const MyComponent = () => {
-  const { isReady, isTimedout } = useContext(SplitContext);
-  return isTimedout
-    ? <p>SDK has Timedout</p>
-    : <Loading />;
-}
-```
-
-When the SDK reaches the timeout specified by the startup.`readyTimeout` parameter (default is 10 seconds), the `SDK_READY_TIMED_OUT` event is fired only once. If your code checks the `isTimedout` prop after the event has already fired, it will not detect the timeout.
-
-Use the `updateOnSdkTimedout` prop in `<SplitClient>` to ensure that `isTimedout` reflects whether the timeout event occurred at any point in the past.
-
-```javascript
-<SplitClient updateOnSdkTimedout={true}>
-  <SplitTreatments names={['SPLIT_NAME', 'SPLIT_NAME_2']}>
-    {({ isReady, isTimedout, hasTimedout, lastUpdate, treatments }) => {
-      // Do something with the treatments
-    }}
-  </SplitTreatments>
-</SplitClient>
-```
-
-### Build error with Webpack: Entrypoint undefined = ng/index.html
-
-If a React app fails to build with Webpack after installing the React SDK and shows errors like:
-
-```
-Entrypoint undefined = ng/index.html
-...
-Failed to compile.
-```
-
-This usually happens because Webpack is trying to build the React SDK library for the server side, but the React SDK is designed to run only in the browser.
-
-To fix this, update your `webpack.config.js` file, locate the resolve section, and ensure the `mainFields` entry includes browser, for example:
-
-```javascript
-resolve: {
-  extensions: ['.js', '.json', '.ts', '.tsx'],
-  mainFields: ['browser', 'main', 'module']
-},
-```
-
 ### Handling traffic keys that aren’t available at initial render
 
-On initial client-side render in React, the user traffic key (used for flag targeting) might not yet be available, for example, if the user hasn’t logged in yet. 
+On initial client-side render in React, the user traffic key (used for flag targeting) might not yet be available, for example, if the user hasn’t logged in yet.
 
 The React SDK’s `SplitFactoryProvider` initializes the underlying JS SDK factory with a traffic key immediately, so you need a way to handle a missing or “dummy” key at first, and then update it once the user logs in.
 
@@ -1687,7 +1624,7 @@ function App() {
   return (
     <SplitFactoryProvider config={SDK_CONFIG}>
       <MyComponent splitKey={userId} />
-    </SplitFactoryProvider> 
+    </SplitFactoryProvider>
   );
 }
 
@@ -1731,7 +1668,7 @@ function App() {
       <SplitClient splitKey={userId}>
         <MyComponent />
       </SplitClient>
-    </SplitFactoryProvider> 
+    </SplitFactoryProvider>
   );
 }
 

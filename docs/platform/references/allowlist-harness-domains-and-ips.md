@@ -20,7 +20,14 @@ We recommend [contacting Harness Support](https://support.harness.io/) to receiv
 
 Harness Delegates typically only require outbound access to the following domains:
 
-- `app.harness.io` – Primary Harness platform endpoint.
+- `app.harness.io` is the Primary Harness platform endpoint.  You may need to include one additional endpoint depending on the cluster for your account. You can verify this by going to your Account Settings -> Account Details, in the Harness Cluster field.
+    | Cluster      | URL Format               |
+    |--------------|--------------------------|
+    | Prod1        | `app.harness.io`         |
+    | Prod2        | `app.harness.io`         |
+    | Prod3        | `app3.harness.io`        |
+    | Prod0/Prod4  | `accounts.harness.io`    |
+    | EU clusters  | `accounts.eu.harness.io` |
 
 - `logging.googleapis.com` – (Optional) Used to send logs to Harness Support. This can be disabled using the `STACK_DRIVER_LOGGING_ENABLED` environment variable. [Learn more](/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled).
 
@@ -32,7 +39,7 @@ To connect securely from Harness to your internal infrastructure — such as for
 
 - Deployments via GitOps agents
 
-- Feature Flags
+- Feature Flags / Feature Management & Experimentation .  Customers may also want to consider setting up a Feature Flag Proxy.
 
 - Hosted builds (Linux/macOS)
 
@@ -40,11 +47,31 @@ To connect securely from Harness to your internal infrastructure — such as for
 
 You may need to allowlist specific IP ranges based on the Harness services you're using.
 
+### Sign up for access to the Harness Security Trust Center
+Customers can access the IP allowlist by signing up to an account on our `trust.harness.io` website.
+1. Go to [the Harness Security Trust Center](https://trust.harness.io/).
+2. Click on `Get Access` in the upper right corner to set up a sign in
+   ![](./static/trust-signup.png)
+3. Enter your email address and click `continue`.  Agree to the NDA.  
+4. An email will be sent to your email address with sign-in instructions
+
+### Locating the IP Allowlist
+The IP allowlist is located in the Product Security section of the Trust Center. Harness provides region- and service-specific IPs for allowlisting. These are not publicly listed to avoid misuse.
+
+1. Click on the `Product Security` section
+2. Search for the `Harness IPs` document
+
 :::note
-Harness provides region- and service-specific IPs for allowlisting. These are not publicly listed to avoid misuse. Please reach out to [Harness Support](https://support.harness.io/) to obtain the accurate IPs required for your setup.
+If after signing up for an account on `trust.harness.io` you do not see the IP Allowlist, please reach out to [Harness Support](https://support.harness.io/) and we will be glad to provide the correct security for access.
 :::
 
-### Configure clusters
+### Keeping Updated on changes to the IP Documentation
+Harness provides a method to subscribe to all updates in the Harness Trust Center.  
+1. Click on the Notification Bell on the right side of the website
+2. Subscribe to updates for the Harness Security Trust Center by adding your email and clicking `Subscribe`
+   ![](./static/ipallowlist-subscribe.png)
+
+## Configure clusters
 
 To ensure proper functionality, configure your clusters with API access to the authorized Harness IP addresses.
 

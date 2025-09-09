@@ -10,7 +10,7 @@ redirect_from:
 <CTABanner
   buttonText="View API Docs"
   title="The API documentation for the SEI Services is now available"
-  link="https://apidocs.harness.io/tag/Collection-categories/"
+  link="https://apidocs.harness.io/openapi-merged/collection-categories"
   closable={true}
   target="_self"
 />

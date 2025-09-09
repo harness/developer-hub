@@ -37,7 +37,7 @@ Watch the 30-second animation below.  Note the order of steps and the way your u
 
 ### If Your Split Account Uses SSO Only
 
-1. Add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
+1. Log into Harness and your IdP in separate windows to add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
 1. Assign all of your current Split users to the SSO application for app.harness.io.
 1. Notify your Harness CSM or support@split.io when the SSO steps are complete.
 
@@ -47,7 +47,7 @@ Do not create users or groups in `app.harness.io` ahead of time. The migration p
 
 ### If Your Split Account Uses SSO + SCIM
 
-1. Add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
+1. Log into Harness and your IdP in separate windows to add a new SSO application for app.harness.io to your IdP. See Configure SSO below.
 1. Configure SCIM to provision users and groups in app.harness.io. See Configure SCIM below.
 1. Notify your Harness CSM or support@split.io when the SSO and SCIM steps are complete.
 
@@ -71,7 +71,7 @@ Follow the directions and tips below instead of using web search to jump into th
 Be sure to start in **Account Settings** (not **Organization Settings** or **Project Settings**) in Harness.
 :::
 
-1. Create an [app integration in Okta](/docs/platform/authentication/single-sign-on-saml/#create-app-integration-in-okta) (opens a new tab).
+1. Create an [app integration in Okta](/docs/platform/authentication/single-sign-on-saml/#create-app-integration-in-okta).
 1. Keep the [tips](#sso-with-okta-tips) below handy as you go through the steps.
 1. Perform all steps up to and including: [Enable and test SSO with Okta](/docs/platform/authentication/single-sign-on-saml/#enable-and-test-sso-with-okta).
 1. Do not perform the last step: [SAML authorization with Okta](/docs/platform/authentication/single-sign-on-saml/#saml-authorization-with-okta).
@@ -233,7 +233,7 @@ In the SSO section above, you configured an Okta application for Harness.
 
 Now, we will revisit that configuration and add SCIM to it. 
 
-Start by opening [Create an Okta app integration](/docs/platform/role-based-access-control/provision-users-with-okta-scim/#create-an-okta-app-integration) in the Harness documentation (opens in a new tab).
+Start by opening [Create an Okta app integration](/docs/platform/role-based-access-control/provision-users-with-okta-scim/#create-an-okta-app-integration) in the Harness documentation.
 
 1. Skip ahead to Step 11: In your newly created app, select the **General** tab, and then under **App Settings**, select **Edit**.
 1. Perform Steps 11 and 12.
@@ -285,7 +285,7 @@ If you run into any issues, let us know and we'll be happy to help!
 
 #### Follow Provisioning Steps in Harness Documentation
 
-Start by referencing [Enable Microsoft Entra ID provisioning for Harness](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/#enable-microsoft-entra-id-provisioning-for-harness) (opens in a new tab).
+Start by referencing [Enable Microsoft Entra ID provisioning for Harness](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/#enable-microsoft-entra-id-provisioning-for-harness).
 
 Continue through to the steps up to, but not including the last line, where it says, `"After enabling Microsoft Entra ID provisioning for Harness, you must assign permissions to user groups in Harness."` The migration process has already assigned the appropriate permissions to the **All FME Admins** group. Wait to explore assigning roles to other User Groups until after your account has been migrated.
 

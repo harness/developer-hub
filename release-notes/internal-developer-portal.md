@@ -26,11 +26,19 @@ Review the notes below for details about recent changes to Harness Internal Deve
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
 | [2025.08.v1](/release-notes/internal-developer-portal#august---202508v1) | ✅        | ✅         | ✅         |           ⏳| ⏳          | ⏳            |
 
+
 ### [New Feature] GitLab Integration Plugin
 
 Harness IDP now supports integration with [GitLab](/docs/internal-developer-portal/plugins/available-plugins/gitlab) through our new plugin. This integration enables teams to connect their GitLab repositories directly to the Software Catalog, providing seamless access to project information, merge requests, and issue tracking without leaving the developer portal.
 
 ![](../docs/internal-developer-portal/plugins/available-plugins/static/gitlabplugin2.png)
+
+### Bug Fixes and Improvements 
+
+* **Jira Plugin Enhancements** - We've made several improvements to the Jira plugin:
+  * **New Components** - Added `EntityJiraActivityStreamCard` for viewing real-time activity streams and `EntityJiraQueryCard` for displaying customized Jira issues based on JQL queries
+  * **Enhanced Annotations** - Added support for `jira/label` to filter issues by specific labels and `jira/all-issues-jql` to define custom JQL queries
+  * Updated conditional display guides with specific conditions for each component type (`isJiraAvailable`, `hasJiraQuery`)
 
 ## August - [2025.08.v1]
 
