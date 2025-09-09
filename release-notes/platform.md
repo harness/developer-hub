@@ -153,7 +153,8 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-- Added the ability for customers to see the task response status in delegate selection logs. [PL-58972] 
+- Added the ability for customers to see the task response status in delegate selection logs. [PL-58972]
+- Dashboard Intelligence feature has been disabled until further notice. If you need this feature please reach out to you account team or raise a support ticket.
 
 ## August 2025
 
