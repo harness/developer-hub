@@ -356,7 +356,9 @@ The Dynamic toggle on the Perspective page gives you control over how cost categ
 <DocImage  path={require('./static/updation-in-process.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::note
-**Historical Data**: CCM updates cost category rules **daily for the current month only**. For previous months with Dynamic OFF, Perspectives use the rules that existed when that month's data was ingested. To apply new rules to historical data, contact support to request a backfill.
+- **Historical Data**: CCM updates cost category rules **daily for the current month only**. For previous months with Dynamic OFF, Perspectives use the rules that existed when that month's data was ingested. To apply new rules to historical data, contact support to request a backfill.
+
+- **New Cost Categories**: When you create a new cost category and use it in a Perspective with Dynamic OFF (stored data mode), no data will be displayed initially. This occurs because the new cost category hasn't been processed by CCM's daily job yet. You'll need to either switch to Dynamic ON temporarily or wait for upto 24 hours for the new cost category data to appear.
 :::
 
 <details>
