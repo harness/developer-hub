@@ -107,7 +107,7 @@ const sidebars: SidebarsConfig = {
          //tbh
         {
           type: "doc",
-          label: "Traeceable by Harness",
+          label: "Traceable by Harness",
           id: "traceable-by-harness",
           className: "sidebar-tbh"
         },
