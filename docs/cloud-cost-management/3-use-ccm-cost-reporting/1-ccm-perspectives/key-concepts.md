@@ -328,8 +328,9 @@ The Saved Reports page provides a comprehensive view of all your configured repo
 -----
 
 ### Dynamic Cost Categories Toggle
+**Feature Flag Name: `CCM_COST_CATEGORY_STAMPED_DATA`**
 
-<DocImage  path={require('./static/dynamic-toggle.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage  path={require('./static/dynamic-toggle.png')} width="100%" height="100%" title="Click to view full size image" />
 
 The Dynamic toggle on the Perspective page gives you control over how cost category rules are applied to your cost data. It lets you balance real-time accuracy with faster performance.
 
