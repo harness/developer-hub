@@ -19,7 +19,7 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
-## September 2025 - Hotfix: Dynamic Toggle in Perspectives
+## September 2025 - Hotfix: Dynamic Cost Categories Toggle in Perspectives
 #### **Deployment Date:** September 10, 2025
 
 ### ⭐ [New Feature] Dynamic Cost Categories Toggle in Perspectives
