@@ -5,35 +5,35 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
-// import AdminCertificationExamDetails from "./data/dbdevops-certification-admin-exam-details.md";
-// import AdminCertificationReviewDetails from "./data/dbdevops-certification-admin-review-guide.md";
-//import DeveloperCertificationExamDetails from "./data/dbdevops-certification-developer-exam-details.md";
-//import DeveloperCertificationReviewGuide from "./data/dbdevops-certification-developer-review-guide.md";
-// import ArchitectCertificationReviewDetails from "./data/dbdevops-certification-architect-review-guide.md";
-// import ArchitectCertificationExamDetails from "./data/dbdevops-certification-architect-exam-details.md";
+// import AdminCertificationExamDetails from "./data/tbh-certification-admin-exam-details.md";
+// import AdminCertificationReviewDetails from "./data/tbh-certification-admin-review-guide.md";
+// import DeveloperCertificationExamDetails from "./data/tbh-certification-developer-exam-details.md";
+// import DeveloperCertificationReviewGuide from "./data/tbh-certification-developer-review-guide.md";
+// import ArchitectCertificationReviewDetails from "./data/tbh-certification-architect-review-guide.md";
+// import ArchitectCertificationExamDetails from "./data/tbh-certification-architect-exam-details.md";
 import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_dbdo_badge.svg`,
+    img: `${url}img/cert_dev_tbh_badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.developer,
   },
   {
-    img: `${url}img/cert_adm_dbdo_badge.svg`,
+    img: `${url}img/cert_adm_tbh_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.administrator,
   },
   {
-    img: `${url}img/cert_arc_dbdo_badge.svg`,
+    img: `${url}img/cert_arc_tbh_badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.architect,
   },
 ];
 import { useColorMode } from "@docusaurus/theme-common";
-export default function CertificationsDBDEVOPS() {
+export default function CertificationsTBH() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   // React router provides the current component's route, even in SSR
@@ -89,7 +89,7 @@ export default function CertificationsDBDEVOPS() {
 
   return (
     <div
-      className={`${styles.certificationsDBDO} ${activePage === ActivePage.SelfPacedTraning
+      className={`${styles.certificationsTBH} ${activePage === ActivePage.SelfPacedTraning
         ? styles.SelfPacedTrainingBg
         : ""
         } ${activePage === ActivePage.InstructorLedTraining
@@ -104,9 +104,9 @@ export default function CertificationsDBDEVOPS() {
               <i className="fa-solid fa-arrow-left"></i> Back to University Home
             </Link>
           </div>
-          <h1>Database DevOps</h1>
+          <h1>Traceable by Harness</h1>
           <div>
-            Integrate database changes into your CI/CD pipeline and gain transparency across environments.
+            Capture, correlate and analyze all app and API-related activity over time, across your entire app and API ecosystem.
           </div>
         </div>
         <div
@@ -269,16 +269,15 @@ export default function CertificationsDBDEVOPS() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Database DevOps - Developer (BETA COMING
-                      SOON)
+                      Traceable by Harness - Developer
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_dev_dbdo_badge.svg`}
-                      alt="Harness Certified Expert - DBDevOps Developer"
+                      src={`${baseUrl}img/cert_dev_tbh_badge.svg`}
+                      alt="Harness Certified Expert - Traceable by Harness Developer"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness DB DevOps Paid
+                      <strong>Product version: </strong> Traceable by Harness Paid
                       Plans
                     </span>
                   </div>
@@ -286,13 +285,13 @@ export default function CertificationsDBDEVOPS() {
                     <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
-                      applications with DB DevOps projects.
+                      posture with Traceable by Harness projects.
                     </div>
                     {/*
                     <DeveloperCertificationReviewGuide />
 
                     <div className={styles.btnContainer}>
-                      <Link href="https://university-registration.harness.io/database-devops-developer">
+                      <Link href="https://university-registration.harness.io/traceable-by-harness-developer">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
@@ -314,7 +313,7 @@ export default function CertificationsDBDEVOPS() {
             
                 <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
-                  <Link href="https://university-registration.harness.io/database-devops-developer">
+                  <Link href="https://university-registration.harness.io/traceable-by-harness-developer">
                     <button className={styles.moreDetails}>
                       Register for Exam
                     </button>
@@ -348,33 +347,33 @@ export default function CertificationsDBDEVOPS() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Database DevOps  - Administrator (BETA COMING
+                      Traceable by Harness - Administrator (BETA COMING
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_adm_dbdo_badge.svg`}
-                      alt="Harness Certified Expert - DBDevOps Administrator"
+                      src={`${baseUrl}img/cert_adm_tbh_badge.svg`}
+                      alt="Harness Certified Expert - Traceable by Harness Administrator"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness DB DevOps Paid
+                      <strong>Product version: </strong> Traceable by Harness Paid
                       Plans
                     </span>
                   </div>
                   <div className={styles.right}>
                     {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to implement chaos
+                    Assesses the fundamental skills to implement Traceable by Harness
                     in your projects and the overall Harness Platform. This
                     exam builds upon the{" "}
-                    <a href="/university/database-devops?lvl=developer">
-                      Database DevOps Certification
+                    <a href="/university/traceable-by-harness?lvl=developer">
+                      Traceable by Harness - Developer Certification
                     </a>
                     .
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university-registration.harness.io/database-devops-administrator">
+                    <Link href="https://university-registration.harness.io/traceable-by-harness-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -389,7 +388,7 @@ export default function CertificationsDBDEVOPS() {
 
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
-                      Assesses the fundamental skills to deploy and maintain DB DevOps
+                      Assesses the fundamental skills to deploy and maintain Traceable by Harness
                       projects and the overall Harness Platform.
                     </div>
                   </div>
@@ -403,7 +402,7 @@ export default function CertificationsDBDEVOPS() {
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university-registration.harness.io/database-devops-administrator">
+                <Link href="https://university-registration.harness.io/tbh-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
@@ -436,16 +435,16 @@ export default function CertificationsDBDEVOPS() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Database DevOps - Architect (BETA COMING
+                     Traceable by Harness - Architect (BETA COMING
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_arc_dbdo_badge.svg`}
-                      alt="Harness Certified Expert - DB DevOps Architect"
+                      src={`${baseUrl}img/cert_arc_tbh_badge.svg`}
+                      alt="Harness Certified Expert - Traceable by Harness Architect"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness DB DevOps Paid
+                      <strong>Product version: </strong> Traceable by Harness Paid
                       Plans
                     </span>
                   </div>
@@ -453,7 +452,7 @@ export default function CertificationsDBDEVOPS() {
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
                       Assess key technical job functions and advanced skills in
-                      design, implementation and management of DB DevOps.
+                      design, implementation and management of Traceable by Harness.
                     </div>
                   </div>
                 </div>
@@ -485,8 +484,8 @@ export default function CertificationsDBDEVOPS() {
                 .filter((ilt) => {
                   return (
                     ilt.tileType === "pre requisite" ||
-                    ilt.module === "dbdevops" ||
-                    (ilt.module === "dbdevops" && ilt.tileType === "comming soon")
+                    ilt.module === "tbh" ||
+                    (ilt.module === "tbh" && ilt.tileType === "comming soon")
                   );
                 })
 
