@@ -1609,6 +1609,17 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-tbh > div > a::before,
+.sidebar-tbh > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 8px;
+  background-image: url('/img/logo-traceable-by-harness-light.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 /*******************sidebar logo css end*******************/
 

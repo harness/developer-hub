@@ -28,6 +28,7 @@ export enum MODULES {
   adra = 'adra',
   arp = 'arp',
   ast = 'ast',
+  tbh = 'tbh'
 }
 
 export const MODULE_DISPLAY_NAME = {
@@ -59,6 +60,7 @@ export const MODULE_DISPLAY_NAME = {
   [MODULES.adra]: 'Application Api Posture Management',
   [MODULES.ast]: 'Application & Api Security Testing',
   [MODULES.arp]: 'Application & Api Protection',
+  [MODULES.tbh]: 'Traceable by Harness',
 };
 
 export const MODULE_ICON = {
@@ -89,4 +91,5 @@ export const MODULE_ICON = {
   [MODULES.adra]: 'img/logo-adra.svg',
   [MODULES.ast]: 'img/logo-ast.svg',
   [MODULES.arp]: 'img/logo-arp.svg',
+  [MODULES.tbh]: 'img/logo-traceable-by-harness-light.svg',
 };
