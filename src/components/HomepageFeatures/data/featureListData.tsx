@@ -30,7 +30,7 @@ export const featureList: CardItem[] = [
     icon: "img/icon_cd.svg",
     description:
       "More efficient and reliable deployments.",
-    link: "docs/category/get-started-with-cd",
+    link: "docs/continuous-delivery",
   },
     {
     title: "Deploy Database Changes",
