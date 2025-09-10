@@ -33,6 +33,8 @@ In this example, the following impression includes three custom properties:
 
 ![](./static/amplitude-impression-2.png)
 
+For more information about impression properties, see the [Impressions documentation](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions#impression-properties).
+
 ### In Amplitude
 
 Within your Amplitude account, set up Harness FME as a data source. Copy your Amplitude project's API Key to be used in Harness FME.
@@ -112,7 +114,7 @@ function amplitudeIdentify(amplitudeApiKey, userId, splitName, treatment) {
 
 </ul>
 
-2. Running as an impression listener should only be used for calling the identify API with additional properties that are available from the frontend that you need. The next option we will go over is a more robust approach. The code below outlines the creation of a service that can utilize Harness FME's [impressions webhook](https://help.split.io/hc/en-us/articles/360020700232-Webhook-impressions) using a Node.js script.
+2. Running as an impression listener should only be used for calling the identify API with additional properties that are available from the frontend that you need. The next option we will go over is a more robust approach. The code below outlines the creation of a service that can utilize Harness FME's [impressions webhook](/docs/feature-management-experimentation/api/webhook/impressions/) using a Node.js script.
 
    The piece of Node.js code below requires the express and axios libraries.
 
