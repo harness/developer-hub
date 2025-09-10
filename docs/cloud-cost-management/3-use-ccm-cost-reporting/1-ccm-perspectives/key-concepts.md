@@ -379,7 +379,7 @@ At 10:06 AM, you open your Perspective.
 **Dynamic OFF (Stored/Stamped Data)**
 At 10:06 AM (Before Backfill Completes):
 - You open your Perspective.
-- Since database hasn’t completed yet, the system falls back to runtime calculation.
+- Since database updation hasn’t completed yet, the system falls back to runtime calculation.
 - You still see costs categorized under Engineering (just like with Dynamic ON).
 - ⏱️ Performance is similar to Dynamic ON at this point.
 

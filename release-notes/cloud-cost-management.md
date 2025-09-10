@@ -28,11 +28,12 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 <DocImage path={require('./static/ccm/dynamic-toggle.png')} width="100%" height="100%" title="Click to view full size image" />
 
 We’ve added a new Dynamic toggle on the Perspective page that gives you control over how cost category rules are applied:
-- **Dynamic ON** → Perspectives load cost category rules at runtime, ensuring your latest rule changes are reflected immediately. (Best for getting latest data, but may increase load time.)
-- **Dynamic OFF** → Perspectives use stored cost category rules, updated daily by CCM’s background job. (Best for faster performance with slightly delayed updates.)
-- When the background job is running, Perspectives temporarily fall back to **Dynamic mode**, and you’ll see a banner indicating that cost category rules are being processed.
+- **Dynamic ON** → Perspectives load cost category rules at runtime, ensuring your latest rule changes are reflected immediately. The performance may vary based on the volume of your cost data and the selected time range, and in some cases evaluations may be slower.
+- **Dynamic OFF** → Perspectives use stored cost category rules, updated daily by CCM’s background job. Since CCM ingests cost data **once per day**, cost category rules are evaluated during the ingestion and then stored in the database. 
 
-**By default, Perspectives will have Dynamic OFF.**
+CCM ensures that the data displayed in both cases is consistent and accurate. But, if data ingestion is in progress and the **Dynamic OFF** option is selected, queries will temporarily fall back to the **Dynamic ON** mode.
+
+**By default, Perspectives will have Dynamic Toggle as OFF.**
 
 **Note**: This feature is behind a Feature Flag. If you wish to enable this feature for your account, please contact [Harness Support](mailto:harness-support@harness.io).
 
