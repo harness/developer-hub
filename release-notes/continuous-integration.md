@@ -60,6 +60,13 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 - Fixed a regression in the CD container step group where secrets (such as LDAP passwords and OIDC tokens) were exposed in logs and container executions. Masking now works correctly across all log occurrences when the `CI_ENABLE_EXTRA_CHARACTERS_SECRETS_MASKING` feature flag is enabled. (CI-18814, ZD-91214, ZD-91245) 
 - Fixed an issue where the feature flag `CI_DYNAMIC_BRANCH_SELECTOR` could not be enabled on SMP. The backend has been updated to support enabling this flag. (ZD-91773, CI-18921)
 
+#### Harness images updates
+
+| **Image**                | **Change**                                       | **Previous version** | **New Version** |
+| ------------------------ | ------------------------------------------------ | -------------------- | --------------- |
+| `harness/ci-lite-engine` | Version upgrade for Jira. | 1.17.2              | 1.17.3         |
+| `harness/ci-addon`       | Version upgrade for Jira. | 1.17.2              | 1.17.3         |
+ 
 ### Version 1.95
 
 <!-- 2025-09-01 -->
