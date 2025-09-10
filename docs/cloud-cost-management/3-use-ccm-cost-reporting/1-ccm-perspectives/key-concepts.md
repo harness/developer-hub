@@ -336,8 +336,8 @@ The Dynamic toggle on the Perspective page gives you control over how cost categ
 
 | Mode | Data Source | Update Frequency | Performance | Behavior |
 | --- | --- | --- | --- | --- |
-| **Dynamic ON** | Runtime cost category rules | Immediate | ⏱️ Slower | Always applies the latest rules instantly |
-| **Dynamic OFF** | Stored cost category rules in datasets | Daily | ⚡ Faster | Uses stored rules if daily backfill job is complete.<br/>⚠️ If job is running, stored data is unavailable → Perspective switches to runtime (Dynamic ON) |
+| **Dynamic ON** | Perspectives load cost category rules at runtime | Immediate |  May vary based on the volume of cost data and the selected time range, and in some cases evaluations may be slower. | Always applies the latest rules instantly |
+| **Dynamic OFF** | Stored cost category rules in datasets | Daily during CCM's data ingestion process | ⚡ Faster since stored data is used without any computations at runtime | Uses stored rules if data ingestion job is complete.<br/> If data ingestion is in progress and the **Dynamic OFF** option is selected, queries will temporarily fall back to the **Dynamic ON** mode. |
 
 #### Internal Working:
 
@@ -349,7 +349,7 @@ The Dynamic toggle on the Perspective page gives you control over how cost categ
 - ⏱️ Load times may be slower since rules are processed at runtime.
 
 **If Dynamic OFF (Stored Data Mode):**
-- Harness CCM stores cost category rules in a dataset. This dataset is updated daily and updates the cost category rules for the current month. 
+- Harness CCM evaluates cost category rules during the daily data ingestion process and persists the results in a dedicated dataset. This optimized dataset contains pre-computed rule evaluations for the current month's cost data. 
 - When Dynamic Toggle is OFF, Perspectives use **cost category rules from the stored dataset**.
 - This ensures ⚡ **faster performance** since stored data is used without any computations at runtime.
 - Note that if in case, CCM's daily process of updating the dataset is still running, **stored data is not available and only Dynamic ON (runtime calculation) is available** and a message will be displayed on the UI to inform.
