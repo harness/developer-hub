@@ -1767,3 +1767,16 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   background: linear-gradient(135deg, #3dc7f6, #00ade4);
   box-shadow: 0 2px 4px rgba(61, 199, 246, 0.4);
 }
+
+[data-testid="last-updated-top"] {
+  display: block;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.theme-last-updated {
+  display: none !important;
+}

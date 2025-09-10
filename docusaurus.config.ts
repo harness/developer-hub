@@ -13,6 +13,8 @@ function hideIndexFromSidebarItems(items) {
   return result;
 }
 
+const injectLastUpdated = require('./plugins/remark-inject-last-updated.cjs');
+
 const config: Config = {
   title: 'Harness Developer Hub',
   tagline:
@@ -538,7 +540,7 @@ const config: Config = {
         routeBasePath: 'university',
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-university.js'),
-        editUrl: 'https://github.com/harness/developer-hub/tree/main',
+          editUrl: 'https://github.com/harness/developer-hub/tree/main',
         // ... other options
       },
     ],
@@ -577,8 +579,11 @@ const config: Config = {
         editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ['**/shared/**', '**/static/**', '**/content/**'],
+        showLastUpdateTime: true,
+        showLastUpdateAuthor: false,
         routeBasePath: 'docs', //CHANGE HERE
         remarkPlugins: [
+          injectLastUpdated,
           [
             remarkMath,
             {

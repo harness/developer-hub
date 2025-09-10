@@ -9,6 +9,7 @@ import DocsButton from "../components/DocsButton";
 import DocsTag from "../components/DocsTag";
 import Telemetry from "../components/Telemetry";
 import HarnessApiData from "../components/HarnessApiData";
+import LastUpdatedTop from "../components/LastUpdatedTop";
 
 export default {
   // Re-use the default mapping
@@ -23,4 +24,5 @@ export default {
   DocsTag: DocsTag,
   Telemetry: Telemetry,
   HarnessApiData: HarnessApiData,
+  LastUpdatedTop: LastUpdatedTop,
 };
