@@ -212,11 +212,25 @@ import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
 ## Serverless framework support
 
 - Harness supports Serverless framework 1.82 and later.
-- Harness supports Serverless framework CLI versions 2.x.x and 3.x.x.
+- Harness supports Serverless framework CLI versions 2.x.x, 3.x.x, and 4.18.0.
 - Harness supports all language runtimes that Serverless supports.
 - Harness supports ZIP files and Docker image artifacts only.
   - ZIP files are supported with JFrog Artifactory.
   - Docker images are supported with AWS ECR.
+
+### Serverless V4 Support
+
+:::warning Breaking Change
+Serverless V4 CLI requires authentication. This means that any CLI based scripts are processes will require an extra input. This means upgrading to V4 could be a breaking change for your pipeline.
+:::
+
+**Features:**
+- Authenticate using the environment variable `SERVERLESS_ACCESS_KEY`.
+- You can rollback from V4 back to V3 in case something goes wrong. 
+- Supports the use of the Node.js 22 runtime.
+- To set the new serverless version, navigate to your Serverless service, go to **Configuration** -> **Plugin Info** and set the **Serverless Version** to your desired v4 version. 
+
+It is not recommended to switch to Serverless V4 for existing deployments using Serverless V3.
 
 ### Containerized step images
 
@@ -245,6 +259,7 @@ There are two flavours of images available first with serverless installed and o
 
 | **Runtimes** | **With Serverless Installed** | **Without Serverless Installed** | **Version** |
 | --- | --- | --- | --- |
+| **nodejs 22** | [harness/serverless-plugin:nodejs22.x-4.18.0-1.2.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs22.x-4.18.0-1.2.0-beta-linux-amd64/images/sha256-2bd10a0834c9b05f15e99f95cafda1cae27697d9d917a81dd41aedf03ac98c78) | [harness/serverless-plugin:nodejs22.x-1.2.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs22.x-1.2.0-beta-linux-amd64/images/sha256-d971db057ff3cdca07baff9fad550945c819bc4f867193c0665e4f3254355e19) | nodejs v22.14.0 |
 | **nodejs 22** | [harness/serverless-plugin:nodejs22.x-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs22.x-3.39.0-1.1.0-beta-linux-amd64/images/sha256-aea2e5f4bea0d55cc54f98530910a95ec056474de5fc4a3e4f993e43a351bcbf) | [harness/serverless-plugin:nodejs22.x-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs22.x-1.1.0-beta-linux-amd64/images/sha256-745550b16c387abd32d9d4db9c91170649ddb0632b2151c86a60ba7ad346a38a) | nodejs v22.14.0 |
 | **nodejs 20** | [harness/serverless-plugin:nodejs20.x-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs20.x-3.39.0-1.1.0-beta-linux-amd64/images/sha256-87c380c39159ee07fc96eb1544acd54f16c40c7fe05475921d56e4b0ca644517) | [harness/serverless-plugin:nodejs20.x-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs20.x-1.1.0-beta-linux-amd64/images/sha256-f4f5895d2a09b217f5e8a6f25991e9525b0e78756127af161bc195729fc103a2) | nodejs v20.19.0 |
 | **nodejs 18** | [harness/serverless-plugin:nodejs18.x-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs18.x-3.39.0-1.1.0-beta-linux-amd64/images/sha256-a6c80afa3cd0c2f1be0134d25b3c11704fb5d37dac4d487b6140d009eb90d1c6) | [harness/serverless-plugin:nodejs18.x-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/nodejs18.x-1.1.0-beta-linux-amd64/images/sha256-205eec0eeb5e8e41658c0d1ab02bd069a2cf757df9610bbcdc18fbb7ced89341) | nodejs v18.20.7 |
