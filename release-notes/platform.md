@@ -153,7 +153,11 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-- Added the ability for customers to see the task response status in delegate selection logs. [PL-58972] 
+- Added the ability for customers to see the task response status in delegate selection logs. [PL-58972]
+
+:::warning Important Note:
+The Dashboard Intelligence feature has been temporarily disabled until further notice. If you require access to this feature, please contact your account team or submit a [support ticket](mailto:support@harness.io).
+:::
 
 ## August 2025
 
