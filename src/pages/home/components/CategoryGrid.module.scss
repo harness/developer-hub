@@ -1,0 +1,163 @@
+/* spacing around the block */
+.wrapper { padding: 3rem 0; }
+
+/* ---------- Mobile (accordion) ---------- */
+.categoryDetails {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ifm-card-background-color);
+  & + & { margin-top: 1rem; }
+}
+.categorySummary {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  summary::-webkit-details-marker { display: none; }
+}
+.categoryTitle {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.2vw + 1rem, 1.35rem);
+}
+.categoryBlurb { margin: .25rem 0 0 0; opacity: .8; }
+
+/* simple vertical list on mobile */
+.tileList { list-style: none; margin: 0; padding: 0 1rem 1rem; }
+.tileListItem + .tileListItem { margin-top: .5rem; }
+
+.tileRow {
+  display: flex;
+  align-items: flex-start;   /* align top for multiline titles */
+  gap: 12px;
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: .75rem .9rem;
+  text-decoration: none;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-1px);
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    outline: none;
+  }
+}
+
+/* ---------- Desktop: expanding columns ---------- */
+.categoryColumns {
+  display: flex;
+  gap: 16px;
+}
+
+/* base column look */
+.categoryCol {
+  --radius: 16px;
+  flex: 1 1 0px;
+  display: flex;
+  flex-direction: column;
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--radius);
+  padding: 14px;
+  transition:
+    flex-basis 220ms ease,
+    flex-grow 220ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+  min-width: 0;
+}
+
+/* Hover container effect: slightly compress others, expand hovered */
+.categoryColumns:hover .categoryCol { flex: .95 1 0px; }
+.categoryCol:hover,
+.categoryCol.isFocused {
+  flex: 1.35 1 0px;
+  transform: translateY(-2px);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 12px 28px rgba(0,0,0,.06);
+}
+
+/* column header */
+.colHeader { margin-bottom: .5rem; }
+.colHeader .categoryTitle { font-size: 1.15rem; }
+.colHeader .categoryBlurb { font-size: .95rem; opacity: .8; }
+
+/* vertical tiles inside each column */
+.colTiles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.colTileItem { min-width: 0; }
+
+.colTile {
+  display: flex;
+  align-items: flex-start;   /* align top for multiline titles */
+  gap: 12px;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-decoration: none;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease, background 150ms ease;
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-1px);
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    outline: none;
+    background: var(--ifm-card-background-color);
+  }
+}
+
+.iconWrap img.featureSvg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.colTileText {
+  display: flex;          /* allow title + badge */
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-wrap: wrap;        /* allow wrapping when tight */
+}
+
+.tileTitle {
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: normal;     /* allow wrapping */
+  overflow: visible;
+  text-overflow: clip;
+  word-break: keep-all;
+}
+
+/* badges */
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  opacity: .9;
+}
+.badge_NEW { color: var(--ifm-color-success); }
+.badge_EA  { color: var(--ifm-color-warning); }
+.badge_GA  { color: var(--ifm-color-primary); }
+
+/* responsive: fall back to mobile when narrow */
+@media (max-width: 900px) {
+  .categoryColumns { display: none; }
+}
