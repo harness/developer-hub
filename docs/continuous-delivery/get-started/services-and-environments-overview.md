@@ -8,6 +8,21 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics
+tags:
+  - services
+  - creating-services
+  - creating-environments
+  - service-overrides
+  - override-priority
+  - infrastructure-definitions
+  - infrastructure-tags
+  - values-yaml-overrides
+  - merging-values-yaml
+  - fully-overriding-values
+  - config-files
+  - runtime-inputs-and-expressions
+  - services-and-environments-rbac
+  - environment-groups
 ---
 
 This topic describes Harness Continuous Delivery (CD) services and environments.

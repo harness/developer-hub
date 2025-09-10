@@ -1,6 +1,31 @@
 ---
 title: Shell Script step
 description: Execute scripts in the shell session of the stage.
+tags: 
+  - shell-script-step
+  - harness-shell-script
+  - shell-script-steps-output-variables
+  - shell-script-input-variables
+  - shell-script-inline
+  - shell-script-file-store
+  - shell-script-powershell
+  - shell-script-bash
+  - shell-script-delegate-execution
+  - shell-script-target-host
+  - shell-script-output-alias
+  - shell-script-secret-variables
+  - shell-script-error-handling
+  - shell-script-realtime-logging
+  - shell-script-ignore-failure
+  - shell-script-kubernetes
+  - shell-script-include-infra-selectors
+  - shell-script-advanced-settings
+  - shell-script-escaping-characters
+  - shell-script-oidc
+  - shell-script-mdm
+  - shell-script-uem
+  - shell-script-iot
+  - shell-script-edge
 sidebar_position: 3
 ---
 
@@ -202,7 +227,7 @@ If you select **Bash**, Harness will use `sh` because it is standardized and por
 
 If you are running the script on a remote VM via ssh, Harness will use the default shell of that machine. Importantly, shebangs in the script such as `#!/bin/sh` or `#!bin/bash` will not override the default setting.
 
-In case of PowerShell, if the script executes on Delegate it requires the powershell binary to be installed as it is not shipped with delegate tools, see the [Install PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.3) for installation instructions.
+In case of PowerShell, if the script executes on Delegate, it requires the PowerShell binary to be installed, as it is not shipped withith delegate tools, see the [Install PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.3) for installation instructions.
 
 :::info note
 PowerShell version 7.5.0 and above are not supported. Users will encounter errors when using version 7.5.0 or later in the Harness delegate.
