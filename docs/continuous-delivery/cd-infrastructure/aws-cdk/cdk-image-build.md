@@ -44,8 +44,8 @@ All runtime images derive from the supported Harness [base plugin images](https:
 
 1. **Authentication Setup:** Creates Docker config for registry authentication.
 2. **Dockerfile Generation:** Dynamically generates Dockerfiles per runtime:
-    - Multi-stage (scratch + runtime image)
-    - Plugin and scripts copied from scratch image
+    - Multi-stage (base + runtime image)
+    - Plugin and scripts copied from base image
     - Installs language runtimes and AWS CDK
     - Configures Node.js, metadata, and entrypoint
 3. **Image Build and Push:** Uses Docker to build and push tagged runtime images.

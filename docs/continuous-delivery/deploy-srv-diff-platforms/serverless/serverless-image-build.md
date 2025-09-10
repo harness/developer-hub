@@ -144,7 +144,7 @@ These variables are actively used in your Serverless plugin image build and push
 | VERSION                    | Plugin image/version tag                                       | `1.1.2`                                                              | Yes      |
 | RUNTIME_BASE_IMAGE_VERSION | AWS SAM runtime base image from ECR                           | `public.ecr.aws/sam/build-python3.12:1.143.0-20250822194415-x86_64`  | Yes      |
 | NODEJS_BASE_IMAGE_VERSION  | AWS SAM Node.js base image from ECR                           | `public.ecr.aws/sam/build-nodejs22.x:1.143.0-20250822194415-x86_64`  | Yes      |
-| HARNESS_BASE_IMAGE         | Harness base scratch image used in build                      | `harness/serverless-plugin:1.1.0-beta-base-image
+| HARNESS_BASE_IMAGE         | Harness base image used in build                      | `harness/serverless-plugin:1.1.0-beta-base-image
 `                | Yes      |
 | SERVERLESS_VERSION         | Serverless Framework version to install                       | `3.39.0`                                                            | Yes      |
 | TARGET_REPO                | Target Docker repository to push built plugin images          | `your_account/serverless-plugin`                                     | Yes      |
@@ -221,7 +221,7 @@ pipeline:
     - stage:
         name: combineImages
         identifier: combineImages
-        description: Combine scratch image with SAM base image and push to Docker
+        description: Combine Harness base image with SAM base image and push to Docker
         type: Deployment
         spec:
           deploymentType: Kubernetes

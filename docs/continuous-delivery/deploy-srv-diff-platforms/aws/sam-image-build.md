@@ -167,7 +167,7 @@ pipeline:
     - stage:
         name: combineImages
         identifier: combineImages
-        description: Combine scratch image with SAM base image and push to Docker
+        description: Combine Harness base image with SAM base image and push to Docker
         type: Deployment
         spec:
           deploymentType: Kubernetes
