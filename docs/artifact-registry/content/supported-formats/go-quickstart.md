@@ -10,6 +10,7 @@ Depending on your environment, you may need to run additional commands. Go to th
 :::
 
 - Ensure you have access to a Harness account with the appropriate permissions to create registries and connectors.
+- Ensure you have [Harness CLI](/docs/platform/automation/cli/install/) installed and running in your local machine.
 
 ---
 ## Create a Go Artifact Registry
@@ -85,7 +86,7 @@ export GOPROXY="https://<email_address>:<TOKEN>@pkg.app.harness.io/pkg/<harness_
 - Push your package to the Harness Go Artifact Registry using standard `git` commands once the client is configured. Example:
 
 ```bash
-hns ar push go go-aregistry <ARTIFACT_VERSION> --pkg-url pkg.app.harness.io
+hns ar push go <REGISTRY_NAME> <ARTIFACT_VERSION> --pkg-url pkg.app.harness.io
 ```
 
 ### Install a Go package
