@@ -227,8 +227,7 @@ Serverless V4 CLI requires authentication. This means that any CLI based scripts
 **Features:**
 - Authenticate using the environment variable `SERVERLESS_ACCESS_KEY`.
 - You can rollback from V4 back to V3 in case something goes wrong. 
-- Supports the use of the Node.js 22 runtime.
-- To set the new serverless version, navigate to your Serverless service, go to **Configuration** -> **Plugin Info** and set the **Serverless Version** to your desired v4 version. 
+- Supports the use of the Node.js 22 runtime. 
 
 It is not recommended to switch to Serverless V4 for existing deployments using Serverless V3.
 
@@ -269,6 +268,19 @@ There are two flavours of images available first with serverless installed and o
 | **python 3.12** | [harness/serverless-plugin:python3.12-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.12-3.39.0-1.1.0-beta-linux-amd64/images/sha256-617ccd746b0efde9e7ef65addb47e2a7c4845ffe142dd9cb4ca78f8976185c79) | [harness/serverless-plugin:python3.12-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.12-1.1.0-beta-linux-amd64/images/sha256-15888fc51e89a9b70ea36761d4f367a034e7629726d79e71a728d046ab1716b3) | Python 3.12.9 |
 | **python 3.11** | [harness/serverless-plugin:python3.11-3.39.0-1.0.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.11-3.39.0-1.0.0-beta-linux-amd64/images/sha256-47c1e7121d0b0163928c99480bcea106fb59b8c51921844eb5ee0326f3b5a3d2) | [harness/serverless-plugin:python3.11-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/python3.11-1.1.0-beta-linux-amd64/images/sha256-7897343bb1a005b532df4f4204a6641199a89d1cb246a5a7100981d8c7172129) | Python 3.11.11 |
 | **ruby 3.2** | [harness/serverless-plugin:ruby3.2-3.39.0-1.1.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/ruby3.2-3.39.0-1.1.0-beta-linux-amd64/images/sha256-c9aa6fe805586b608dc377c747e9046d41825317e7eb7afcfacad3af05dd8f8b) | [harness/serverless-plugin:ruby3.2-1.0.0-beta-linux-amd64](https://hub.docker.com/layers/harness/serverless-plugin/ruby3.2-1.0.0-beta-linux-amd64/images/sha256-e564accd3315707dcbf6e04159a3202dba0f05b0484025354490abc1c71d48ba) | ruby 3.2.8 |
+
+:::info Serverless v4 Images
+
+Serverless V4 images are supported for the following types:
+- NodeJS22
+- NodeJS18
+- Python 
+- Ruby 
+- Java
+
+For a full list of the images, go to [serverless plugin repo in Docker Hub](https://hub.docker.com/r/harness/serverless-plugin/tags)
+
+:::
 
 For ECR users, you can access these images via the [ECR Image Repository for Serverless Plugin](https://gallery.ecr.aws/harness/harness/serverless-plugin).
 
