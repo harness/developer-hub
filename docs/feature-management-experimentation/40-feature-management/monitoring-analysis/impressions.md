@@ -74,7 +74,7 @@ The following SDKs support appending custom properties for each `getTreatment` c
   | **Client-side SDK Suite** | **Version that supports impression properties** |
   |----------------------|-----------------------------------------------|
   | [Browser Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite#append-properties-to-impressions)     | 2.1.0 and later                                  |
-  | [iOS Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#append-properties-to-impressions)         | 2.10 and later                                   |
+  | [iOS Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#append-properties-to-impressions)         | 2.1.0 and later                                   |
   
   </TabItem>
   <TabItem value="server-sdks" label="Server-side SDKs">
