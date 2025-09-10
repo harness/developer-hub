@@ -83,7 +83,7 @@ export GOPROXY="https://<email_address>:<TOKEN>@pkg.app.harness.io/pkg/<harness_
 ```
 
 ### Publish a Go package
-- Push your package to the Harness Go Artifact Registry using standard `git` commands once the client is configured. Example:
+- Run the following command (using [Harness CLI](/docs/platform/automation/cli/install/)) from your project’s root directory to publish your Go package into your Harness Registry:
 
 ```bash
 hns ar push go <REGISTRY_NAME> <ARTIFACT_VERSION> --pkg-url pkg.app.harness.io
