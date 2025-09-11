@@ -88,8 +88,8 @@ Below is an example AWS policy to execute the fault.
 ```
 
 :::info note
-- Go to the [common tunables](/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults) to tune the common tunables for all the faults.
-- Go to [AWS named profile for chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go to the [common tunables](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults) to tune the common tunables for all the faults.
+- Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
 ### Mandatory tunables
@@ -103,12 +103,12 @@ Below is an example AWS policy to execute the fault.
   <tr>
     <td> EC2_INSTANCE_ID / EC2_INSTANCE_TAG </td>
     <td>ID or tag of the target EC2 instance(s).</td>
-    <td>For example, <code>i-044d3cb4b03b8af1f</code> or a tag key-value. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances">EC2 instance ID</a>.</td>
+    <td>For example, <code>i-044d3cb4b03b8af1f</code> or a tag key-value. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances">EC2 instance ID</a>.</td>
   </tr>
   <tr>
     <td> REGION </td>
     <td>The AWS region ID where the EC2 instance has been created.</td>
-    <td>For example, <code>us-east-1</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/aws-fault-tunables">region</a>.</td>
+    <td>For example, <code>us-east-1</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables">region</a>.</td>
   </tr>
   <tr>
     <td> PROCESS_IDS / PROCESS_NAMES </td>
@@ -128,12 +128,12 @@ Below is an example AWS policy to execute the fault.
   <tr>
     <td> TOTAL_CHAOS_DURATION </td>
     <td>Duration for which chaos is injected (in seconds).</td>
-    <td>Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
+    <td>Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
   </tr>
   <tr>
     <td> INSTANCE_AFFECTED_PERC </td>
     <td>Percentage of instances to target (if using tags).</td>
-    <td>Optional. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/aws-fault-tunables">instance affected perc</a>.</td>
+    <td>Optional. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables">instance affected perc</a>.</td>
   </tr>
   <tr>
     <td> FORCE </td>
@@ -143,22 +143,22 @@ Below is an example AWS policy to execute the fault.
   <tr>
     <td> INSTALL_DEPENDENCIES </td>
     <td>Install dependencies on the target instance.</td>
-    <td>Default: true. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/aws-fault-tunables">install dependencies</a>.</td>
+    <td>Default: true. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables">install dependencies</a>.</td>
   </tr>
   <tr>
     <td> AWS_SHARED_CREDENTIALS_FILE </td>
     <td>Path to the AWS secret credentials.</td>
-    <td>Default: <code>/tmp/cloud_config.yml</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/aws-fault-tunables">AWS shared credentials file</a>.</td>
+    <td>Default: <code>/tmp/cloud_config.yml</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables">AWS shared credentials file</a>.</td>
   </tr>
   <tr>
     <td> SEQUENCE </td>
     <td>Sequence of chaos execution for multiple instances.</td>
-    <td>Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
+    <td>Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
   </tr>
   <tr>
     <td> RAMP_TIME </td>
     <td>Period to wait before and after injecting chaos (in seconds).</td>
-    <td>Optional. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
+    <td>Optional. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
   </tr>
 
 </table>
