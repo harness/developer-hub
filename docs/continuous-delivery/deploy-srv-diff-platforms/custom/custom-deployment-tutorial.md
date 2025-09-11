@@ -6,7 +6,9 @@ helpdocs_topic_id: 6k9t49p6mn
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
 helpdocs_is_published: true
-redirect_from: /docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial
+redirect_from: 
+  - /docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial
+  - /docs/first-gen/first-gen-quickstarts/aws-code-deploy-quickstart
 canonical_url: https://www.harness.io/blog/blue-green-canary-deployment-strategies
 ---
 

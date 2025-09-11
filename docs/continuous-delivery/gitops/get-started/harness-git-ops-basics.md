@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/get-started/harness-git-ops-basics
+  - /docs/category/use-gitops
 ---
 
 ## Introduction

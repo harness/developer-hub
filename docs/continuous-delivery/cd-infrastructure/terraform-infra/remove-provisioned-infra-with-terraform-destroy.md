@@ -6,6 +6,8 @@ helpdocs_topic_id: j75xc704c8
 helpdocs_category_id: jcu7twh2t6
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/first-gen/continuous-delivery/terraform-category/terraform-destroy/
 ---
 
 This topic describes how to add a Terraform Destroy step to remove any provisioned infrastructure, just like running the `terraform destroy` command. See [destroy](https://www.terraform.io/docs/commands/destroy.html) from Terraform.
