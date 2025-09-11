@@ -65,18 +65,6 @@ export const IdpData: Horizon = {
         backgroundColor: "#E6F4EA",
       },
       {
-        tag: [{ value: "Catalog" }],
-        title: "IDP Catalog Data in Platform Dashboards",
-        description: "Export all IDP Catalog data with its entire metadata (including ingested properties) into Platform dashboards for enhanced dashboarding.",
-        backgroundColor: "#E6F4EA",
-      },
-      {
-        tag: [{ value: "Catalog" }],
-        title: "Historical IDP Catalog Data in Platform Dashboards",
-        description: "Keep historical IDP Catalog data in Platform dashboards for building trends on certain properties.",
-        backgroundColor: "#E6F4EA",
-      },
-      {
         tag: [{ value: "Scorecards" }],
         title: "Raw expression support in Scorecard checks",
         description: "Allow users to write raw expressions when creating Scorecard checks to leverage complex JEXL rules, AND, OR, etc.",
@@ -174,6 +162,19 @@ export const IdpData: Horizon = {
         description:
           "Enhance the workflows execution history page to add support for filters like executions per workflow, my executions, outputs, download as CSV, ongoing executions, etc.",
       },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "IDP Catalog Data in Platform Dashboards",
+        description: "Export all IDP Catalog data with its entire metadata (including ingested properties) into Platform dashboards for enhanced dashboarding.",
+        backgroundColor: "#E6F4EA",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "Historical IDP Catalog Data in Platform Dashboards",
+        description: "Keep historical IDP Catalog data in Platform dashboards for building trends on certain properties.",
+        backgroundColor: "#E6F4EA",
+      },
+
       {
         tag: [{ value: "Plugins" }],
         title: "UI driven plugin configuration for Components",
