@@ -334,11 +334,6 @@ The Saved Reports page provides a comprehensive view of all your configured repo
 
 The Dynamic toggle on the Perspective page gives you control over how cost category rules are applied to your cost data. It lets you balance real-time accuracy with faster performance.
 
-| Mode | Data Source | Update Frequency | Performance | Behavior |
-| --- | --- | --- | --- | --- |
-| **Dynamic ON** | Perspectives load cost category rules at runtime | Immediate |  May vary based on the volume of cost data and the selected time range, and in some cases evaluations may be slower. | Always applies the latest rules instantly |
-| **Dynamic OFF** | Stored cost category rules in datasets | Daily during CCM's data ingestion process | ⚡ Faster since stored data is used without any computations at runtime | Uses stored rules if data ingestion job is complete.<br/> If data ingestion is in progress and the **Dynamic OFF** option is selected, queries will temporarily fall back to the **Dynamic ON** mode. |
-
 #### Internal Working:
 
 <DocImage  path={require('./static/dynamic-toggle.gif')} width="100%" height="100%" title="Click to view full size image" />
@@ -360,36 +355,6 @@ The Dynamic toggle on the Perspective page gives you control over how cost categ
 
 - **New Cost Categories**: When you create a new cost category and use it in a Perspective with Dynamic OFF (stored data mode), no data will be displayed initially. This occurs because the new cost category hasn't been processed by CCM's daily job yet. You'll need to either switch to Dynamic ON temporarily or wait for upto 24 hours for the new cost category data to appear.
 :::
-
-<details>
-<summary>Example explaining Dynamic Toggle</summary>
-
-Suppose you have a Cost Category called "Environment" with the following rules:
-Rule 1 → If the label = prod, assign to Production Cost Bucket
-Rule 2 → If the label = dev, assign to Development Cost Bucket
-
-At 10:05 AM, you update Rule 2 to assign dev → Engineering instead of Development.
-
-**Dynamic ON (Runtime Calculation)**
-At 10:06 AM, you open your Perspective.
-- The Perspective immediately applies the new rule, and you see costs categorized under Engineering.
-- ⏱️ It may take a bit longer to load since the rules are processed at runtime.
-- ✅ Provides immediate visibility but with potential performance impact.
-
-**Dynamic OFF (Stored/Stamped Data)**
-At 10:06 AM (Before Backfill Completes):
-- You open your Perspective.
-- Since database updation hasn’t completed yet, the system falls back to runtime calculation.
-- You still see costs categorized under Engineering (just like with Dynamic ON).
-- ⏱️ Performance is similar to Dynamic ON at this point.
-
-At 2:30 PM (After Backfill Completes):
-- The database updation process has now completed.
-- The Perspective uses the pre-stored cost categories that now include the Engineering rule.
-- ⚡ Loads much faster since it uses stored data.
-- ✅ Data is consistent across all historical periods.
-
-</details>
 
 -----
 

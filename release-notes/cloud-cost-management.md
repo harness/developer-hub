@@ -23,15 +23,14 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 #### **Deployment Date:** September 10, 2025
 
 ### ⭐ [New Feature] Dynamic Cost Categories Toggle in Perspectives
-**[CCM-24072] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-cost-categories-toggles)**
+**[CCM-24072] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-cost-categories-toggle)**
 
 <DocImage path={require('./static/ccm/dynamic-toggle.png')} width="100%" height="100%" title="Click to view full size image" />
 
 We’ve added a new Dynamic toggle on the Perspective page that gives you control over how cost category rules are applied:
-- **Dynamic ON** → Perspectives load cost category rules at runtime, ensuring your latest rule changes are reflected immediately. The performance may vary based on the volume of your cost data and the selected time range, and in some cases evaluations may be slower.
-- **Dynamic OFF** → Perspectives use stored cost category rules, updated daily by CCM’s background job. Since CCM ingests cost data **once per day**, cost category rules are evaluated during the ingestion and then stored in the database. 
 
-CCM ensures that the data displayed in both cases is consistent and accurate. But, if data ingestion is in progress and the **Dynamic OFF** option is selected, queries will temporarily fall back to the **Dynamic ON** mode.
+- **Dynamic ON** → The system evaluates cost category rules dynamically at query time. This approach is best suited for testing scenarios where you want to understand how changes in rule definitions impact cost attribution. Please note that performance may vary based on the volume of cost data and the selected time range; in some cases, evaluations may be slower.
+- **Dynamic OFF** → Perspectives use pre-computed cost category rules for cost attribution. Since CCM ingests cost data once per day, cost category rules are evaluated during ingestion and then persisted in the database. This approach significantly improves load times compared to the Dynamic ON option. The system also ensures that the data displayed is consistent and accurate across both modes. When data ingestion is in progress and the Dynamic OFF option is selected, queries will temporarily fall back to the dynamic mode to maintain continuity.
 
 **By default, Perspectives will have Dynamic Toggle as OFF.**
 
