@@ -85,7 +85,7 @@ When you add a user at the account level, you can also add the user to an [FME u
 
 To add a user to Harness that will have access to your (unrestricted) migrated FME projects, view the steps in the interactive guide:
 
-<DocVideo src="https://app.tango.us/app/embed/e9c155c2-1d2d-4fbf-b5d6-7b59591668b6" title="Add a User in Harness" />
+<DocVideo src="https://app.tango.us/app/embed/e9c155c2-1d2d-4fbf-b5d6-7b59591668b6?hideAuthorAndDetails=true" title="Add a User in Harness" />
 
 </TabItem>
 <TabItem value="step" label="Step-by-step">
@@ -492,7 +492,7 @@ For more information, go to [Authorization moves from Bearer Token to x-api-key]
 
 To create an Admin API key with the same permissions as your legacy Split Admin API key in your Harness account, view the steps in the interactive guide:
 
-<DocVideo src="https://app.tango.us/app/embed/e76ab685-723c-4e39-964e-cff2c56df2d1" title="Generate an API Key and Token" />
+<DocVideo src="https://app.tango.us/app/embed/e76ab685-723c-4e39-964e-cff2c56df2d1?hideAuthorAndDetails=true" title="Generate an API Key and Token" />
 
 </TabItem>
 <TabItem value="step" label="Step-by-step">
@@ -718,7 +718,7 @@ If your Split account is migrated to a Harness account on the Enterprise plan, a
 <Tabs>
 <TabItem value="interactive" label="Interactive Guide">
 
-<DocVideo src="https://app.tango.us/app/embed/4c5d12d9-a82c-4a54-a54e-c0684ddc3475" title="Create a New Project" />
+<DocVideo src="https://app.tango.us/app/embed/4c5d12d9-a82c-4a54-a54e-c0684ddc3475?hideAuthorAndDetails=true" title="Create a New Project" />
 
 </TabItem>
 <TabItem value="step" label="Step-by-step">
@@ -817,7 +817,7 @@ To cleanly delete a project in your Harness account:
 
 2. **When all FME resources are deleted from your project**, you can cleanly delete a project from the Harness Projects page:
 
-<DocVideo src="https://app.tango.us/app/embed/f046a6bd-4c56-414d-9398-f83ebbeb57d5" title="Delete a Project" />
+<DocVideo src="https://app.tango.us/app/embed/f046a6bd-4c56-414d-9398-f83ebbeb57d5?hideAuthorAndDetails=true" title="Delete a Project" />
 
 </TabItem>
 <TabItem value="step" label="Step-by-step">
