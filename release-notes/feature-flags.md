@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-08-20T08:09:25
+date: 2025-09-11T08:09:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -26,7 +26,17 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: August 20, 2025
+#### Last updated: September 11, 2025
+
+## September 2025
+
+### Relay Proxy
+
+#### Version 2.0.15
+
+**Bug Fixes**
+
+- Fixes a bug where the Proxy could incorrectly believe there was a delta between the Target Group/Flag config in its cache and Saas during a stream disconnect or on startup. This would have caused the Proxy to send an SSE event to SDKs indicating there had been a change to these Target Groups/Flags when there had been no change.
 
 ## August 2025
 
