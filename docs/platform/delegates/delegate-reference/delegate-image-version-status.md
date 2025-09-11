@@ -71,6 +71,7 @@ Support dates are calculated from when the delegate image was published to [Harn
 
 | Image version | Release date      | EOS              | EOL              |
 |---------------|-------------------|------------------|------------------|
+| 25.09.86700   | September 11, 2025| January 31, 2026 | March 31, 2026   |
 | 25.05.85809   | September 04, 2025| October 31, 2025 | December 31, 2025|
 | 25.08.86600   | August 27, 2025   | January 31, 2026 | March 31, 2026   |
 | 25.07.86503   | August 13, 2025   | December 31, 2025| February 28, 2026|
@@ -108,20 +109,21 @@ Support dates are calculated from when the delegate image was published to [Harn
 | 25.02.85305   | March 21, 2025    | July 31, 2025    | September 30, 2025|
 | 24.08.83706   | February 26, 2025 | January 31, 2025 | March 31, 2025   |
 | 25.02.85300   | February 26, 2025 | July 31, 2025    | September 30, 2025|
-| 24.12.84710   | February 25, 2025 | May 31, 2025     | July 31, 2025    |
-| 24.12.84709   | February 12, 2025 | May 31, 2025     | July 31, 2025    |
-| 24.10.84107   | January 31, 2025  | March 31, 2025   | May 31, 2025     |
-| 25.01.85000   | January 28, 2025  | June 30, 2025    | August 31, 2025  |
-| 24.12.84708   | January 16, 2025  | May 31, 2025     | July 31, 2025    |
-| 25.01.84800   | January 13, 2025  | June 30, 2025    | August 31, 2025  |
-| 24.12.84704   | January 06, 2025  | May 31, 2025     | July 31, 2025    |
-| 24.11.84311   | December 19, 2024 | April 30, 2025   | June 30, 2025    |
-| 24.12.84702   | December 17, 2024 | May 31, 2025     | July 31, 2025    |
+
 
 <details>
     <summary>EOL Delegates</summary>
     | Image version         | Release date       | EOS              | EOL              |
     |-----------------------|--------------------|------------------|------------------|
+    | 24.12.84710           | February 25, 2025  | May 31, 2025     | July 31, 2025    |
+    | 24.12.84709           | February 12, 2025  | May 31, 2025     | July 31, 2025    |
+    | 24.10.84107           | January 31, 2025   | March 31, 2025   | May 31, 2025     |
+    | 25.01.85000           | January 28, 2025   | June 30, 2025    | August 31, 2025  |
+    | 24.12.84708           | January 16, 2025   | May 31, 2025     | July 31, 2025    |
+    | 25.01.84800           | January 13, 2025   | June 30, 2025    | August 31, 2025  |
+    | 24.12.84704           | January 06, 2025   | May 31, 2025     | July 31, 2025    |
+    | 24.11.84311           | December 19, 2024  | April 30, 2025   | June 30, 2025    |
+    | 24.12.84702           | December 17, 2024  | May 31, 2025     | July 31, 2025    |
     | 24.11.84503           | December 09, 2024  | April 30, 2025   | June 30, 2025    |
     | 24.11.84310           | December 05, 2024  | April 30, 2025   | June 30, 2025    |
     | 24.11.84502           | December 05, 2024  | April 30, 2025   | June 30, 2025    |
