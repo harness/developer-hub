@@ -17,7 +17,7 @@
 ![DBDO](static/img/icon_dbdevops_s.svg)
 ![AR](static/img/icon_artifact_registry_s.svg)
 ![Armory](static/img/icon_armory_s.svg)
-![Traceable](static/img/icon_armory_s.svg)
+![Traceable](static/img/icon_tbh_s.svg)
 
 
 Welcome to the Harness Developer Hub (HDH)!
