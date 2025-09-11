@@ -55,7 +55,27 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## September 2025
 
-### Version 1.105.XX
+### Version 1.107.3
+
+#### New Features and Enhancements:
+
+- Users can now include and run the Security Testing Orchestration (STO) Ingest Step inside Container Step Groups within Deploy stages. This enables teams to perform native security scanning as part of containerized deployment workflows, providing greater flexibility and integration for security scans during deployment.
+
+#### Breaking Changes:
+
+- Users can now perform basic deployments using Serverless Framework V4, which requires authentication via the SERVERLESS_ACCESS_KEY environment variable. This update adds support for the Node.js 22 runtime and includes a rollback option back to V3 if needed. Note that this introduces a breaking change for CLI scripts requiring authentication, so users should test existing pipelines before upgrading. 
+
+#### Fixed Issues:
+
+- Fixed an issue where the list execution API documentation did not describe the timeframe filter or other UI-supported filter options. (**PIPE-29599**)
+- Fixed an issue where, with the feature flag `PIPE_STORE_TEMPLATE_REFERENCE_SUMMARY_PER_EXECUTION` enabled, the Execution view did not display template version information for all steps using templates. Now, all such steps consistently show the template version to improve traceability throughout pipeline executions. (**PIPE-29372, ZD-91321**)
+- Fixed a case sensitivity issue with YAML keys in ECS deployment configurations. Harness requires all keys to begin with lowercase letters to successfully process and register scaling policies and targets, whereas the AWS CLI and Boto3 expect uppercase keys. This fix clarifies and enforces consistent lowercase key usage in YAML to prevent build failures during ES rolling deployments. (**CDS-113523, ZD-91165**)
+- Fixed an issue where notification templates were not respected in pipeline templates, causing notifications to default to the generic format. Now, custom notification templates are correctly applied and rendered in executions of pipeline templates, consistent with direct pipeline runs. (**PIPE-29306, ZD-91210**)
+- Fixed an issue where users were unable to delete service overrides if the service identifiers in the overrides no longer matched existing services due to casing differences or renaming. This fix ensures that overrides referencing outdated or mismatched service identifiers can be deleted successfully. (**CDS-113242, ZD-90809**)
+- Fixed an intermittent timeout issue in the ECS Service Setup step where the step continued waiting for pending tasks even after the service reached steady state and deployment completed. This resolves confusion and ensures accurate task state tracking during ECS deployments. (**CDS-113170, ZD-90575**)
+- Fixed an issue where the `dockerConfigJsonSecret` generated for services using Google Artifact Registry (GAR) artifacts incorrectly included the image tag in the image path. The GAR Docker config secret now correctly excludes the image tag, using only the registry hostname, project, and package fields to format the registry URL. (**CDS-108114**)
+
+### Version 1.105.3
 
 #### New Features and Enhancements:
 
@@ -100,11 +120,11 @@ Wondering where version 1.104.XX is? That release was rolled into 1.105.XX and u
 
 #### New Features and Enhancements
 
-- Harness has enhanced the GitOps Cluster Detail Page with improved UX features: application listing pane showing all hosted applications, clickable Agent name and ID links, additional cluster credential information, and inline editing capabilities aligned with other Harness detail pages. (**CDS-108575**)
+- Harness has enhanced the GitOps Cluster Detail Page withh improved UX features: application listing pane showing all hosted applications, clickable Agent name and ID links, additional cluster credential information, and inline editing capabilities aligned with other Harness detail pages. (**CDS-108575**)
 
 ## August 2025
 
-### Version 1.103.XX
+### Version 1.103.1
 
 #### New Features and Enhancements
 
@@ -133,7 +153,7 @@ Wondering where version 1.104.XX is? That release was rolled into 1.105.XX and u
 - Previously, the environment variables option for the Terraform plan step only supported expression and input. We've fixed this to now include support for runtime input as well. **(CDS-113592)**
 - Fixed an issue where the pipeline would crash during the artifact tag loading step when a user selected a service and variables through an input set. Previously, an unstable dependency array in `useModalHook` caused a continuous re-render, leading to the crash. **(ZD-91140, ZD-91421, PIPE-29340)**
 
-### Version 1.102.XX
+### Version 1.102.1
 
 #### New Features and Enhancements
 
