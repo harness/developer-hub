@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/chaosEngineeringData';
 import Admonition from '@theme/Admonition';
+import DocVideo from '@site/src/components/DocVideo';
 
 export default function ChaosEngineering() {
   const { colorMode } = useColorMode();
@@ -84,6 +85,15 @@ export default function ChaosEngineering() {
               </p>
             </Admonition>
             </div>
+            
+            <br />
+            <h3>Getting Started with Chaos Engineering</h3>
+            <p>
+              Watch this overview video to understand how Harness Chaos Engineering helps you build resilient systems through systematic fault injection and testing:
+            </p>
+            
+            <DocVideo src="https://www.youtube.com/watch?v=dk8WPek1P-w" />
+            
           </div>
         </div>
       </div>
