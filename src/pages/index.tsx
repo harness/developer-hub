@@ -13,8 +13,8 @@ import styles from './index.module.scss';
 import { useColorMode } from '@docusaurus/theme-common';
 
 // NEW: category layout replacing the old "Get Started / Learn More" surface
-import CategoryGrid from '@site/src/pages/home/components/CategoryGrid';
-import { categories } from '@site/src/pages/home/components/categories.data';
+import CategoryGrid from '@site/src/components/CategoryGrid/CategoryGrid';
+import { categories } from '@site/src/components/CategoryGrid/categories.data';
 
 function HomePageAnimation() {
   const { colorMode } = useColorMode();

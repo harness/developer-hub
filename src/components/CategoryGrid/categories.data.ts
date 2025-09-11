@@ -17,13 +17,13 @@ export type ModuleLink = {
   
   export const categories: Category[] = [
     {
-      title: "CI/CD & DevOps",
+      title: "AI for DevOps & Automation",
       blurb: "Ship faster with modern delivery pipelines.",
       items: [
         { name: "Continuous Delivery & GitOps", href: "/docs/continuous-delivery", module: "cd" },
         { name: "Continuous Integration", href: "/docs/continuous-integration", module: "ci" },
         { name: "Internal Developer Portal", href: "/docs/internal-developer-portal", module: "idp" },
-        { name: "Infrastructure as Code Management", href: "/docs/infra-as-code-management", module: "iacm", badge: "NEW" },
+        { name: "Infrastructure as Code Management", href: "/docs/infrastructure-as-code-management", module: "iacm" },
         { name: "Database DevOps", href: "/docs/database-devops", module: "dbd", badge: "NEW" },
         { name: "Artifact Registry", href: "/docs/artifact-registry", module: "ar", badge: "NEW" },
         { name: "Cloud Development Environments", href: "/docs/cloud-development-environments", module: "cde", badge: "NEW" },
@@ -44,10 +44,10 @@ export type ModuleLink = {
       blurb: "Protect apps from design to runtime.",
       items: [
         { name: "Security Testing Orchestration", href: "/docs/security-testing-orchestration", module: "sto" },
-        { name: "Application & API Posture Management", href: "/docs/aapm", module: "aapm" },
-        { name: "Application & API Security Testing", href: "/docs/aast", module: "aast" },
-        { name: "Supply Chain Security", href: "/docs/supply-chain-security", module: "ssca" },
-        { name: "Application & API Protection", href: "/docs/aap", module: "aap" },
+        { name: "Application & API Posture Management", href: "https://www.traceable.ai/application-discovery-and-risk-assessment", module: "adra" },
+        { name: "Application & API Security Testing", href: "https://www.traceable.ai/application-security-testing", module: "ast" },
+        { name: "Supply Chain Security", href: "/docs/software-supply-chain-assurance", module: "ssca" },
+        { name: "Application & API Protection", href: "https://www.traceable.ai/application-runtime-protection", module: "arp" },
       ],
     },
     {
