@@ -26,6 +26,10 @@ const config: Config = {
   customFields: {
     SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
     HARNESS_GENERIC_READ_ONLY_KEY: process.env.HARNESS_GENERIC_READ_ONLY_KEY,
+    future: {
+      v4: true,
+      experimental_faster: true,
+    },
   },
 
   //Mermaid Diagram Functionality
@@ -45,11 +49,6 @@ const config: Config = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
-  },
-
-  future: {
-    v4: true,
-    experimental_faster: true,
   },
 
   presets: [
