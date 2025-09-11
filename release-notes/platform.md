@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Platform.
 :::
 ## Important feature change notice
 
-:::danger OIDC ID Token API Access Update (Effective October 20, 2025)
+:::danger OIDC ID Token API Access Update (Effective October 24, 2025)
 To strengthen security and reduce potential risks, the [OIDC ID token–related APIs](https://apidocs.harness.io/openapi-merged/oidc-id-token) will be made **internal to Harness** and will no longer be available for direct access.
 
 - **Previous behaviour**: OIDC ID token APIs can be directly accessed.
