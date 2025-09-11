@@ -405,6 +405,12 @@ Harness recommends that you do not delete the All FME Admins, All FME Editors, a
 
 The Admin API Keys that you created before migration will continue to work after your account is migrated to Harness.
 
+:::info
+If you create a **new project in Harness** post-migration, your legacy Split Admin API keys will not be automatically granted access to the new project. To grant access, you can follow the steps to [Grant legacy Split Admin API key access to a new project](#grant-legacy-split-admin-api-key-access-to-a-new-project) in the Troubleshooting section.
+
+*Concept: This is a difference in the legacy Split permissioning model and the Harness RBAC model (least privilege model). In Harness, new projects are restricted upon creation and all access permissions need to be granted manually at the project level. (The exception is if you use the All Resources Including Child Scopes resource group in your Account or Organization level role bindings, but this is not recommended.)*
+:::
+
 Post-migration, your legacy Split Admin API keys are listed in **FME Settings**.
 
 ![](./static/fme-settings-api-keys.png)
@@ -976,3 +982,27 @@ Your legacy Split Admin API key will no longer authenticate your API requests.
 Use the Split Admin API to [delete the Admin API key](https://docs.split.io/reference/delete-an-api-key) that no longer works, or contact support@split.io.
 
 You can follow the steps to create an Admin API key with [organization or account scope](#account-or-organization-scope) or create an Admin API key with [project scope](#project-scope) to create a new Admin API key.
+
+#### I created a new project, but my legacy Split Admin API key doesn't work for my new project
+
+When you create a new project in Harness post-migration, you'll need to manually grant access to the service account that is linked with your legacy Split Admin API key.
+
+##### Grant legacy Split Admin API key access to a new project
+
+At the project level, grant access to the service account by assigning roles:
+
+1. In the left navigation panel, click **Project Settings**.
+1. Click the **Access Control** button at the top of the page.
+1. Click the **Service Accounts** tile.
+1. Click the **Inherit Service Accounts and Assign Roles** button at the top of the page.
+1. Under the  **Account** or **Organization** tab\*, click on the Harness service account corresponding to the legacy Split Admin API key (the name will match the name of the legacy key, shown in FME Settings, but without spaces).
+1. Click **Apply Selected**.
+1. Select the **Project Admin** role.
+1. Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*\*).
+1. Click **Save** or **Apply**. The service account and role binding are listed.
+
+
+<span style={{fontSize: '0.8em'}}>
+<p>\* *The service account is listed on the **Organization** tab if you were migrated into an existing Harness account. If you were migrated to a new Harness account created during migration, the service account is shown on the **Account** tab.*</p>
+<p>\*\* *The **FME All Resources** resource group was created if you were migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.*</p>
+</span>
