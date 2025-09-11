@@ -7,8 +7,8 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 // import AdminCertificationExamDetails from "./data/dbdevops-certification-admin-exam-details.md";
 // import AdminCertificationReviewDetails from "./data/dbdevops-certification-admin-review-guide.md";
-//import DeveloperCertificationExamDetails from "./data/dbdevops-certification-developer-exam-details.md";
-//import DeveloperCertificationReviewGuide from "./data/dbdevops-certification-developer-review-guide.md";
+// import DeveloperCertificationExamDetails from "./data/dbdevops-certification-developer-exam-details.md";
+// import DeveloperCertificationReviewGuide from "./data/dbdevops-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/dbdevops-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/dbdevops-certification-architect-exam-details.md";
 import IltCard from "./Card";
@@ -365,7 +365,7 @@ export default function CertificationsDBDEVOPS() {
                     {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to implement chaos
-                    in your projects and the overall Harness Platform. This
+                    in your projects and the overall DB DevOps. This
                     exam builds upon the{" "}
                     <a href="/university/database-devops?lvl=developer">
                       Database DevOps Certification

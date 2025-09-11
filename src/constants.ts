@@ -91,5 +91,5 @@ export const MODULE_ICON = {
   [MODULES.adra]: 'img/logo-adra.svg',
   [MODULES.ast]: 'img/logo-ast.svg',
   [MODULES.arp]: 'img/logo-arp.svg',
-  [MODULES.tbh]: 'img/logo-traceable-by-harness-light.svg',
+  [MODULES.tbh]: 'img/icon_tbh.svg',
 };
