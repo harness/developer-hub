@@ -507,7 +507,7 @@ To create an Admin API key with the same permissions as your legacy Split Admin 
 1. Enter a name for the new API key and click **Save**.
 1. Click **+ Token**.
 1. Enter a name for the new API key token, set an expiration, and click **Generate Token**.
-1. Copy the token somewhere safe.
+1. Copy the token value somewhere safe.
 
 </TabItem>
 </Tabs>
@@ -536,7 +536,7 @@ To create an Admin API key scoped to all projects in your Harness account:
    - In the left navigation panel, click **Account Settings**.
    - Click the **Access Control** button at the top of the page.
    - Click the **Service Accounts** tile.
-   - Click the **+ New Service Account** button at the top of the page.
+   - Click the **+ New Service Account** button.
    - Enter a name for the new service account and click **Save**. The service account is listed.
    - Click **Manage Role Bindings** to manage role bindings for the service account.
    - Click **+ Add**.
@@ -548,24 +548,24 @@ To create an Admin API key scoped to all projects in your Harness account:
    - Click **Organization Settings**.
    - Click the **Access Control** button at the top of the page.
    - Click the **Service Accounts** tile.
-   - Click the **Inherit Service Accounts and Assign Roles** button at the top of the page.
-   - Click **Select Service Accounts**.
-   - Select the **Account** tab and select the service account created in Step 1.
+   - Click the **Inherit Service Accounts &amp; Assign Roles** button.
+   - Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
    - Click **Apply Selected**.
-   - In the **Manage Role Bindings** modal, select the **Organization Admin** role and leave the **All Organization Level Resources** resource group unchanged.
-   - Click **Apply**. The service account and role binding is listed.
+   - Select the **Organization Admin** role.
+   - Leave the **All Organization Level Resources** resource group selected.
+   - Click **Save** or **Apply**. The service account and role binding are listed.
 
 1. For each project: At the project level, inherit the service account and assign roles:
    - In the left navigation panel, select the project.
    - Click **Project Settings**.
    - Click the **Access Control** button at the top of the page.
    - Click the **Service Accounts** tile.
-   - Click the **Inherit Service Accounts and Assign Roles** button at the top of the page.
-   - Click **Select Service Accounts**.
-   - Select the **Account** tab and select the service account created in Step 1.
+   - Click the **Inherit Service Accounts &amp; Assign Roles** button.
+   - Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
    - Click **Apply Selected**.
-   - In the **Manage Role Bindings** modal, select the **Project Admin** role and leave the **All Project Level Resources** resource group unchanged (or select **FME All Resources**\*).
-   - Click **Apply**. The service account and role binding is listed.
+   - Select the **Project Admin** role.
+   - Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
+   - Click **Save** or **Apply**. The service account and role binding are listed.
    
 1. Create the API key and token at the account level:
    - In the left navigation panel, click **Account Settings**.
@@ -576,7 +576,7 @@ To create an Admin API key scoped to all projects in your Harness account:
    - Enter a name for the new API key and click **Save**.
    - Click **+ Token**.
    - Enter a name for the new API key token, set an expiration, and click **Generate Token**.
-   - Copy the token somewhere safe.
+   - Copy the token value somewhere safe.
 
 <span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if you were migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
 
@@ -588,7 +588,7 @@ If you prefer, you can instead create the service account at the Harness organiz
 
 #### Project scope
 
-This section provides steps to create a service account and role bindings for an Admin API key scoped to specific projects in your Harness account. You can follow these steps if you don’t have a service account created during migration or if you prefer not to use it.
+This section provides steps to create a service account and role bindings for an Admin API key scoped to specific projects in your Harness account. You can follow these steps if you don’t have a service account created during migration or prefer not to use it.
 
 To create an Admin API key scoped to a specific project in your Harness account:
 
@@ -597,7 +597,7 @@ To create an Admin API key scoped to a specific project in your Harness account:
    - In the left navigation panel, click **Account Settings**.
    - Click the **Access Control** button at the top of the page.
    - Click the **Service Accounts** tile.
-   - Click the **+ New Service Account** button at the top of the page.
+   - Click the **+ New Service Account** button.
    - Enter a name for the new service account and click **Save**. The service account is listed.
 
 1. At the project level, inherit the service account and assign roles:
@@ -605,12 +605,12 @@ To create an Admin API key scoped to a specific project in your Harness account:
    - Click **Project Settings**.
    - Click the **Access Control** button at the top of the page.
    - Click the **Service Accounts** tile.
-   - Click the **Inherit Service Accounts and Assign Roles** button at the top of the page.
-   - Click **Select Service Accounts**.
-   - Select the **Account** tab and select the service account created in Step 1.
+   - Click the **Inherit Service Accounts &amp; Assign Roles** button.
+   - Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
    - Click **Apply Selected**.
-   - In the **Manage Role Bindings** modal, select the **Project Admin** role and leave the **All Project Level Resources** resource group unchanged (or select **FME All Resources**\*).
-   - Click **Apply**. The service account and role binding is listed.
+   - Select the **Project Admin** role.
+   - Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
+   - Click **Save** or **Apply**. The service account and role binding are listed.
 
 1. Create the API key and token at the account level:
    - In the left navigation panel, click **Account Settings**.
@@ -621,7 +621,7 @@ To create an Admin API key scoped to a specific project in your Harness account:
    - Enter a name for the new API key and click **Save**.
    - Click **+ Token**.
    - Enter a name for the new API key token, set an expiration, and click **Generate Token**.
-   - Copy the token somewhere safe.
+   - Copy the token value somewhere safe.
 
 <span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if you were migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
 
@@ -994,7 +994,7 @@ At the project level, grant access to the service account by assigning roles:
 1. In the left navigation panel, click **Project Settings**.
 1. Click the **Access Control** button at the top of the page.
 1. Click the **Service Accounts** tile.
-1. Click the **Inherit Service Accounts and Assign Roles** button at the top of the page.
+1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
 1. Under the  **Account** or **Organization** tab\*, click on the Harness service account corresponding to the legacy Split Admin API key (the name will match the name of the legacy key, shown in FME Settings, but without spaces).
 1. Click **Apply Selected**.
 1. Select the **Project Admin** role.
