@@ -1,6 +1,6 @@
 ---
 title: JetBrains Gateway Plugin
-sidebar_position: 3
+sidebar_position: 5
 description: Connect and manage your Gitspaces with JetBrains IDEs using the JetBrains Gateway Plugin. 
 sidebar_label: JetBrains Gateway Plugin
 ---
