@@ -120,7 +120,7 @@ Wondering where version 1.104.XX is? That release was rolled into 1.105.XX and u
 
 #### New Features and Enhancements
 
-- Harness has enhanced the GitOps Cluster Detail Page withh improved UX features: application listing pane showing all hosted applications, clickable Agent name and ID links, additional cluster credential information, and inline editing capabilities aligned with other Harness detail pages. (**CDS-108575**)
+- Harness has enhanced the GitOps Cluster Detail Page with improved UX features: application listing pane showing all hosted applications, clickable Agent name and ID links, additional cluster credential information, and inline editing capabilities aligned with other Harness detail pages. (**CDS-108575**)
 
 ## August 2025
 
