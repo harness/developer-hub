@@ -30,7 +30,7 @@ To strengthen security and reduce potential risks, the [OIDC ID token–related 
 - **Previous behaviour**: OIDC ID token APIs can be directly accessed.
 - **New behaviour**: These APIs can only be used **through the Harness Connector** for OIDC-based authentication with external platforms (e.g., HashiCorp Vault, AWS).
 
-**Action Required**: If you are directly invoking OIDC ID token APIs, update your automation to use the connector before this change takes effect on **October 20, 2025**.
+**Action Required**: If you are directly invoking OIDC ID token APIs, update your automation to use the connector before this change takes effect on **October 24, 2025**.
 :::
 
 
