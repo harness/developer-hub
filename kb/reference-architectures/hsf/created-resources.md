@@ -35,8 +35,11 @@ The Solutions Factory project includes eight pipelines, each designed to perform
 - The `Rotate HSF Token` pipeline handles secure token rotation for the harness-platform-manager service account. 
 - The `Manage Pilot Light` pipeline applies updates and changes to the core HSF framework. It is used to maintain and evolve the foundational infrastructure that supports the overall platform.
 - The `Create and Manage IACM Workspaces` pipeline is invoked at the start of each workflow execution. It provisions and manages IACM workspaces, ensuring that the required infrastructure is in place before any resource provisioning begins.
-- The `Provision Workspace` pipeline will be used for apply only executions and will be one of the pipelines that is separated out from Execute IACM Workspaces. 
+- The `Provision Workspace` pipeline plans and applies workflows (with built-in approvals).
 - The `Execute IACM Workspaces` pipeline is responsible for executing the IACM workspace by applying the selected templates and provisioning the actual Harness resources defined within the workflow.
+- The `Plan and Validate` pipeline verifies Terraform code.
+- The `Drift Analysis` pipeline identifies configuration drift from source code.
+- The `Teardown` pipeline removes workspaces (with built-in approvals).
 
 ### Workspaces 
 Two IACM workspaces are created as part of the HSF framework:
@@ -48,3 +51,4 @@ There are three repositories included in the deployment and exist under the orga
 - The `harness-solutions-factory` repository houses all of the source code that is required to standup and run Harness Solutions Factory.
 - The `harness-template-library` repository houses all of the scaffold and templates for how to manage Harness resources.
 - The `harness-delegate-setup` repository serves as an example of how to build a custom Harness Delegate and automate the addition of tools into the delegate.
+- The `custom-harness-template-library` repository houses customized templates created to support Harness entity management and provisioning.

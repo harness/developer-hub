@@ -5,9 +5,9 @@ sidebar_position: 1
 ---
 
 ## What is Harness Solutions Factory?
-Harness Solutions Factory (HSF) is a value-added service provided by the Harness team. It's a scalable automation framework to manage Harness resources. HSF provides Terraform templates for managing the Harness Platform. It creates all resources needed to deploy the Harness Solutions Factory, along with example and best practice templates for platform usage.
+Harness Solutions Factory (HSF) is a value delivery service provided by Harness. It's a scalable automation framework to manage Harness resources. HSF provides you with self-service workflows that have a baseline of industry standards and best practices while delivering day-one value.
 
-Currently, HSF leverages three key Harness components: Code Repository for code storage, Infrastructure as Code Management for Terraform administration, and Internal Developer Portal to host automated workflows.
+HSF is an opinionated framework for automating and scaling Harness Platform onboarding and adoption, offering pre-built templates, pipelines, best practices, and workflows powered by Harness Code Repositories, IaC Management, and the Internal Developer Portal.
 
-## How to get started with Harness Solutions Factory?
+## How do I get started with Harness Solutions Factory?
 Please reach out to your account team to get started with HSF! While there is no cost associated with HSF, we would like to understand your use case and make sure we enable the appropriate modules in order to get HSF deployed into your account. 
