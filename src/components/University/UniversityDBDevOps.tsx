@@ -364,8 +364,8 @@ export default function CertificationsDBDEVOPS() {
                   <div className={styles.right}>
                     {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to implement chaos
-                    in your projects and the overall DB DevOps. This
+                    Assesses the fundamental skills to implement DB DevOps
+                    in your projects and the overall Harness Platform. This
                     exam builds upon the{" "}
                     <a href="/university/database-devops?lvl=developer">
                       Database DevOps Certification
