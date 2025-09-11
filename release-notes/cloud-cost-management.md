@@ -19,17 +19,28 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+## September 2025 - Hotfix: Dynamic Cost Categories Toggle in Perspectives
+#### **Deployment Date:** September 10, 2025
+
+### ⭐ [New Feature] Dynamic Cost Categories Toggle in Perspectives
+**[CCM-24072] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-cost-categories-toggle)**
+
+<DocImage path={require('./static/ccm/dynamic-toggle.png')} width="100%" height="100%" title="Click to view full size image" />
+
+We’ve added a new Dynamic toggle on the Perspective page that gives you control over how cost category rules are applied:
+
+- **Dynamic ON** → The system evaluates cost category rules dynamically at query time. This approach is best suited for testing scenarios where you want to understand how changes in rule definitions impact cost attribution. Please note that performance may vary based on the volume of cost data and the selected time range; in some cases, evaluations may be slower.
+- **Dynamic OFF** → Perspectives use pre-computed cost category rules for cost attribution. Since CCM ingests cost data once per day, cost category rules are evaluated during ingestion and then persisted in the database. This approach significantly improves load times compared to the Dynamic ON option. The system also ensures that the data displayed is consistent and accurate across both modes. When data ingestion is in progress and the Dynamic OFF option is selected, queries will temporarily fall back to the dynamic mode to maintain continuity.
+
+**By default, Perspectives will have Dynamic Toggle as OFF.**
+
+**Note**: This feature is behind a Feature Flag. If you wish to enable this feature for your account, please contact [Harness Support](mailto:harness-support@harness.io).
+
+--------
 
 ## August 2025 - Version 1.62.3
-#### **Deployment Date:** August 29, 2025 (Prod-1)
 
-### ⭐ [New Feature] Historical Recommendations Widgets
-**[CCM-24185] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#applied-recommendations)**
-
-In the Applied Recommendations tab, we’ve added two new widgets: one shows Recommendations vs. Savings, highlighting the savings from applied recommendations, and the other shows Recommendations Marked as Applied, along with a detailed breakdown of those marked as applied. We have also introduced “BY/ON” column to show which user applied the recommendation and when.
-
-<DocImage path={require('./static/ccm/historical-rec.png')} width="100%" height="100%" title="Click to view full size image" />
-
+#### Deployment Date: August 29, 2025 (Prod-1)
 
 ### ⭐ [New Feature] Jira Status Mapping in Recommendations
 **[CCM-23844] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#recommendation-settings)**
