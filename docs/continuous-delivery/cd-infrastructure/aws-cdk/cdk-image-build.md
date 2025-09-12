@@ -1,20 +1,20 @@
 ---
-title: AWS CDK Image Builder
-description: Build production-ready Docker images for the AWS CDK plugin across multiple runtime environments.
+title: Building AWS CDK Runtime Images
+description: A reusable Harness pipeline to help you build customized AWS CDK plugin images.
 tags: 
-  - aws-cdk-plugin
+  - aws-cdk-image
   - plugin-builder
 sidebar_position: 2
 ---
 
-## Overview
+This page provides a Harness CD pipeline designed to help you build your own Docker images for the AWS CDK plugin.  
 
-The AWS CDK Plugin Image Builder provides a Harness CI/CD pipeline to create production-ready Docker images for the AWS CDK plugin across multiple runtime environments (Python, Java, .NET, and Go).  
-Harness does not frequently release new versions of the CDK base image. This pipeline allows you to build your own images using the Harness base, so you can adopt newer AWS CDK versions or customize runtime environments as needed.
+The purpose of this pipeline is to give you flexibility—so you can adopt newer AWS CDK versions or tailor runtime environments to your needs.
 
 ## What This Pipeline Does
 
-This pipeline automates building AWS CDK plugin images for different programming languages using Harness. It enables you to keep up with the latest CDK runtimes and apply customizations as required for your projects.  
+This pipeline automates building AWS CDK images for different programming languages using Harness. It enables you to keep up with the latest CDK runtimes and apply customizations as required for your projects.  
+
 You can find the full pipeline YAML in the [Pipeline YAML](#pipeline-yaml) section below.
 
 ## Key Pre-requisites
@@ -25,6 +25,8 @@ You can find the full pipeline YAML in the [Pipeline YAML](#pipeline-yaml) secti
 - **Docker Registry & Git Connectors:** Properly configure connectors for Docker registries (`account.dockerhub` or your own) and any required Git repos.
 - **Secrets & Variables:** Store Docker registry credentials and secret variables in Harness secrets management.
 - **Pipeline Variables:** Be ready to set variables like `VERSION`, `AWS_CDK_VERSION`, `ARCH`, and `TARGET_REPO` at runtime or with defaults.
+
+You can get the latest CDK version from the [AWS CDK NPM page](https://www.npmjs.com/package/aws-cdk).
 
 ## Supported Runtimes and Base Images
 
@@ -86,24 +88,46 @@ Without this setting, Docker builds and image pushes may fail due to insufficien
 5. Click **Run Pipeline**.
 6. Fill in all required variables (see [Pipeline Variables](#pipeline-variables)).
 
-## Pipeline Variables
+## Pipeline Variables and Runtime Inputs
+
+Here are the variables that you have to set in the pipeline YAML and at runtime.
+
+### Pipeline variables
 
 | Variable         | Description                        | Example                   |
 | ---------------- | ---------------------------------- | ------------------------- |
-| `VERSION`        | Plugin version (no prefix)         | `1.4.0`                   |
-| `AWS_CDK_VERSION`| AWS CDK CLI version                | `2.1016.1`                |
-| `ARCH`           | Image build architecture           | `amd64` or `arm64`        |
 | `TARGET_REPO`    | Docker repository                  | `harness/aws-cdk-plugin`  |
 | `DOCKER_USERNAME`| Docker registry username           | `your-dockerhub-username` |
 | `DOCKER_PASSWORD`| Docker registry password/token     | *(from secrets)*          |
 
+### Runtime inputs
+
+| Variable         | Description                        | Example                   |
+| ---------------- | ---------------------------------- | ------------------------- |
+| `VERSION`        | Harness base image version         | `1.4.0`                   |
+| `AWS_CDK_VERSION`| AWS CDK CLI version                | `2.1029.1`                |
+| `ARCH`           | Image build architecture           | `amd64` or `arm64`        |
+
+
+<div align="center">
+  <DocImage path={require('./static/cdk-image-pipeline.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
 ## Pipeline YAML
+
+This is the YAML for the AWS CDK image build pipeline. You can copy and paste it into your Harness Project.
+
+This is how the stage would look in the UI:
+
+<div align="center">
+  <DocImage path={require('./static/cdk-build-push-2.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 <details>
 <summary>Pipeline YAML</summary>
 
-Parameters to change:
-- `projectIdentifier`, `orgIdentifier`, `connectorRef`, `your_k8s_connector`
+Parameters to change after you copy the pipeline YAML and paste it in your Harness Project:
+- `projectIdentifier`, `orgIdentifier`, `environmentRef`, `infrastructureDefinitions`, `connectorRef` - docker-connector, `connectorRef` - k8s-connector.
 
 ```yaml
 pipeline:
@@ -281,7 +305,7 @@ pipeline:
       type: String
       description: AWS CDK version to install
       required: true
-      value: <+input>.default(2.1016.1)
+      value: <+input>.default(2.1029.1)
     - name: ARCH
       type: String
       description: Architecture to build for

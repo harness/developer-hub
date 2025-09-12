@@ -1,22 +1,25 @@
 ---
-title: Serverless Plugin Image Builder
-description: Build your serverless plugin image using Harness.
-  - serverless-plugin
-  - plugin-builder
+title: Building Serverless Framework Images
+description: A reusable Harness pipeline to build customized Serverless images.
+tags: 
+  - serverless
+  - image-builder
 sidebar_position: 5
 ---
 
-## Overview
+This page provides a Harness CD pipeline to help you build your own Docker images for the Serverless framework.  
 
-This guide walks you through building custom serverless plugin images that can be used for Serverless Lambda Deployments. Following these instructions, you can create compatible Docker images that combine the Harness Serverless plugin with specific AWS Lambda runtime environments.
+The purpose of this pipeline is to give you flexibility—so you can adopt newer AWS Lambda runtimes or tailor the image to your specific serverless application needs.
 
-Harness does not frequently release new versions of the Serverless plugin image. This pipeline enables you to build your own images based on the Harness base image, allowing you to use newer runtime versions or customize images as needed.
+## What This Pipeline Does
 
-These custom images enable you to deploy Serverless applications in your preferred programming language (Node.js, Python, Java, Ruby) while leveraging Harness deployment capabilities.
+This pipeline automates building Serverless images for different programming languages using Harness. It enables you to keep up with the latest Serverless versions and apply customizations as required for your projects. 
+
+You can find the full pipeline YAML in the [Pipeline YAML](#pipeline-yaml) section below.
 
 ## Understanding Serverless Runtimes
 
-Serverless runtimes refer to the programming language environments that AWS Lambda supports for function development. Each runtime provides the language-specific libraries, tools, and dependencies to build, test, and deploy serverless applications.
+Serverless runtimes refer to the programming language environments that the Serverless framework supports for function development. Each runtime provides the language-specific libraries, tools, and dependencies to build, test, and deploy serverless applications.
 
 Common Serverless runtimes include:
 
@@ -137,22 +140,27 @@ Where:
 
 ### Variables Used in Pipeline
 
-These variables are actively used in your Serverless plugin image build and push pipeline. They must be appropriately configured to build and make your serverless plugin images successfully.
+These variables are actively used in the pipeline for building and pushing the image that you need to configure:
+
+**Pipeline variables:** - **TARGET_REPO**, **DOCKER_USERNAME**, and **DOCKER_PASSWORD** are set once as pipeline-level variables.
+
+| Variable                   | Description                                                    | Example                                                               | Required |
+|----------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|----------|
+| TARGET_REPO                | Target Docker repository to push built plugin images          | `your_account/serverless-plugin`                                     | Yes      |
+| DOCKER_USERNAME            | Docker registry username                                       | `dockerhub_username`                                                        | Yes      |
+| DOCKER_PASSWORD            | Docker registry password or Personal Access Token (PAT)       | `<your_dockerhub_pat>`                                              | Yes      |
+
+**Runtime inputs:** - **VERSION**, **RUNTIME_BASE_IMAGE_VERSION**, **NODEJS_BASE_IMAGE_VERSION**, **HARNESS_BASE_IMAGE**, and **SERVERLESS_VERSION** are user inputs set for each pipeline run to specify exact versions for the builds.
+
 
 | Variable                   | Description                                                    | Example                                                               | Required |
 |----------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|----------|
 | VERSION                    | Plugin image/version tag                                       | `1.1.2`                                                              | Yes      |
 | RUNTIME_BASE_IMAGE_VERSION | AWS SAM runtime base image from ECR                           | `public.ecr.aws/sam/build-python3.12:1.143.0-20250822194415-x86_64`  | Yes      |
 | NODEJS_BASE_IMAGE_VERSION  | AWS SAM Node.js base image from ECR                           | `public.ecr.aws/sam/build-nodejs22.x:1.143.0-20250822194415-x86_64`  | Yes      |
-| HARNESS_BASE_IMAGE         | Harness base image used in build                      | `harness/serverless-plugin:1.1.0-beta-base-image
-`                | Yes      |
+| HARNESS_BASE_IMAGE         | Harness base image used in build                      | `harness/serverless-plugin:1.1.0-beta-base-image`                | Yes      |
 | SERVERLESS_VERSION         | Serverless Framework version to install                       | `3.39.0`                                                            | Yes      |
-| TARGET_REPO                | Target Docker repository to push built plugin images          | `your_account/serverless-plugin`                                     | Yes      |
-| DOCKER_USERNAME            | Docker registry username                                       | `dockerhub_username`                                                        | Yes      |
-| DOCKER_PASSWORD            | Docker registry password or Personal Access Token (PAT)       | `<your_dockerhub_pat>`                                              | Yes      |
 
-- **TARGET_REPO**, **DOCKER_USERNAME**, and **DOCKER_PASSWORD** are typically set once as pipeline-level variables.
-- **VERSION**, **RUNTIME_BASE_IMAGE_VERSION**, **NODEJS_BASE_IMAGE_VERSION**, **HARNESS_BASE_IMAGE**, and **SERVERLESS_VERSION** are user inputs set for each pipeline run to specify exact versions for the builds.
 
 ### Compatibility Validation
 
@@ -200,7 +208,13 @@ They are compatible if both images show the same version (e.g., `libstdc++.so.6.
 
 ### Pipeline YAML
 
-This pipeline helps you build custom serverless plugin images using Harness, enabling integration of the Harness plugin with supported AWS Lambda runtimes. The pipeline YAML is available below.
+This is the YAML for the AWS CDK image build pipeline. You can copy and paste it into your Harness Project.
+
+This is how the stage would look in the UI:
+
+<div align="center">
+  <DocImage path={require('./static/serverless-build-push.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 <details>
 <summary>Pipeline YAML</summary>
@@ -254,7 +268,7 @@ pipeline:
                     - step:
                         identifier: generateTimestamp
                         type: Run
-                        name: serverless-prepare-build
+                        name: serverless-build-push
                         spec:
                           connectorRef: account.your_dockerhub_connector
                           image: docker:24
@@ -291,7 +305,7 @@ pipeline:
                             export TZ=UTC
 
                             VERSION="${VERSION:-<+pipeline.variables.VERSION>}"
-                            SCRATCH_IMAGE="${SCRATCH_IMAGE:-<+pipeline.variables.SCRATCH_IMAGE>}"
+                            HARNESS_BASE_IMAGE="${HARNESS_BASE_IMAGE:-<+pipeline.variables.HARNESS_BASE_IMAGE>}"
                             RUNTIME_BASE_IMAGE_VERSION="${RUNTIME_BASE_IMAGE_VERSION:-<+pipeline.variables.RUNTIME_BASE_IMAGE_VERSION>}"
                             NODEJS_BASE_IMAGE_VERSION="${NODEJS_BASE_IMAGE_VERSION:-<+pipeline.variables.NODEJS_BASE_IMAGE_VERSION>}"
                             SERVERLESS_VERSION="${SERVERLESS_VERSION:-<+pipeline.variables.SERVERLESS_VERSION>}"
@@ -328,7 +342,7 @@ pipeline:
                             fi
 
                             # Compose final image tag
-                            local FINAL_IMAGE="vishalav95/plugin-test-vishal:${RUNTIME_NAME}-${SERVERLESS_TAG_PART}${VERSION}-linux-amd64"
+                            local FINAL_IMAGE="${TARGET_REPO}/serverless-plugin:${RUNTIME_NAME}-${SERVERLESS_TAG_PART}${VERSION}-linux-amd64"
 
                                 echo "Building ${IMAGE_TYPE} image: ${FINAL_IMAGE}"
 
@@ -383,8 +397,8 @@ pipeline:
                             EOF
 
                                 cat >> Dockerfile << EOF
-                            COPY --from=${SCRATCH_IMAGE} /opt/harness/bin/harness-serverless-plugin /opt/harness/bin/harness-serverless-plugin
-                            COPY --from=${SCRATCH_IMAGE} /opt/harness/scripts/ /opt/harness/scripts/
+                            COPY --from=${HARNESS_BASE_IMAGE} /opt/harness/bin/harness-serverless-plugin /opt/harness/bin/harness-serverless-plugin
+                            COPY --from=${HARNESS_BASE_IMAGE} /opt/harness/scripts/ /opt/harness/scripts/
                             EOF
 
                                 cat >> Dockerfile << 'EOF'
@@ -440,7 +454,7 @@ pipeline:
                             fi
 
                             echo "SUMMARY:"
-                            echo " Source scratch image: ${SCRATCH_IMAGE}"
+                            echo " Source scratch image: ${HARNESS_BASE_IMAGE}"
                             echo " Runtime base: public.ecr.aws/sam/build-${RUNTIME_BASE_IMAGE_VERSION}-x86_64"
                             echo " Node.js base: public.ecr.aws/sam/build-${NODEJS_BASE_IMAGE_VERSION}-x86_64"
                             echo " Built images with Serverless framework and go-template"
@@ -477,7 +491,7 @@ pipeline:
       description: Plugin version (e.g., 1.1.0-beta)
       required: true
       value: <+input>
-    - name: SCRATCH_IMAGE
+    - name: HARNESS_BASE_IMAGE
       type: String
       description: Scratch image from Pipeline 1
       required: true
@@ -517,7 +531,7 @@ pipeline:
       description: Serverless Version
       required: true
       value: <+input>.selectOneFrom(3.39.0)
-  identifier: serverless-image-build
+  identifier: serverlessimagebuild
   name: serverless-image-build
 ```
 
