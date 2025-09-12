@@ -88,7 +88,7 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.ce,
           description:
             "Integrate with APM tools to monitor and validate system health during chaos experiments.",
-          link: "/docs/chaos-engineering/integrations/apm",
+          link: "/docs/chaos-engineering/guides/probes/apm-probes/",
         },
       ],
     } 
