@@ -1,6 +1,6 @@
 ---
 title: PyCharm
-sidebar_position: 4
+sidebar_position: 7
 description: Connect to your Gitspaces within PyCharm IDE.
 sidebar_label: PyCharm
 ---
