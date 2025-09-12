@@ -3,10 +3,11 @@ title: Templates
 sidebar_position: 8
 ---
 
+import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
+
 :::info New Chaos Studio Feature
 **Templates** are part of the enhanced **New Chaos Studio** experience. If you're an existing customer and want access to new features, contact your Harness support representative. For more details, see [New Chaos Studio Features](/docs/chaos-engineering#new-chaos-studio-features).
 :::
-
 
 **Templates** are reusable, pre-configured components that help you standardize and accelerate your chaos engineering practices. Templates provide a foundation for creating consistent experiments across your organization while maintaining flexibility for customization.
 
@@ -21,28 +22,6 @@ Templates allow you to:
 - Share proven patterns across projects and environments
 - Maintain version control for your chaos engineering assets
 
-## Types of Templates
-
-Harness Chaos supports templates for three core components:
-
-### 1. Fault Templates
-
-**Fault Templates** provide pre-configured chaos faults that can be reused across experiments.
-
-    ![fault templates](./static/templates/fault-template.png)
-
-### 2. Probe Templates
-
-**Probe Templates** offer reusable validation and monitoring configurations.
-
-    ![probe templates](./static/templates/probe-template.png)
-
-### 3. Action Templates
-
-**Action Templates** provide reusable workflow actions for experiment orchestration.
-
-    ![action templates](./static/templates/action-template.png)
-
 ## Template Scopes
 
 Templates can be managed at different organizational levels:
@@ -50,29 +29,24 @@ Templates can be managed at different organizational levels:
 - **Organization Level**: Available across the entire organization
 - **Project Level**: Available within a specific project
 
-## Getting Started with Templates
-
-### Creating Templates
-
-1. Navigate to **ChaosHubs** in your **Project Settings**
-
-    ![chaos hubs](./static/templates/chaos-hub.png)
-
-2. Choose the **ChaosHub** you want to create templates in.
-
-    ![chaos hub](./static/templates/click-on-chaoshub.png)
-
-3. Start creating **Faults**, **Probes** or **Actions** templates.
-
-    ![create templates](./static/templates/probe-template.png)
-
-4. Import the templates into your project to make them available for use
-
-    ![import templates](./static/templates/import-template.png)
-
-5. Start using the templates in your experiments
-
-    ![use templates](./static/templates/start-using.png)
+<DynamicMarkdownSelector
+  options={{
+    "Experiment Template": {
+      path: "/chaos-engineering/content/templates/experiment-template.md"
+    },
+    "Fault Template": {
+      path: "/chaos-engineering/content/templates/fault-template.md"
+    },
+    "Probe Template": {
+      path: "/chaos-engineering/content/templates/probe-template.md"
+    },
+    "Action Template": {
+      path: "/chaos-engineering/content/templates/action-template.md"
+    }
+  }}
+  toc={toc}
+  disableSort={true}
+/>
 
 ## Next Steps
 
