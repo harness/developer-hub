@@ -8,7 +8,7 @@ These tutorials and guides showcase some use cases of Harness CD and GitOps.
 
 ## Onboarding guides
 
-Whether you're new to Harness CD or you're an experienced user, check out the [CD onboarding guides](https://developer.harness.io/docs/category/cd-onboarding-guide) for useful guides and step-by-step onboarding journeys.
+Whether you're new to Harness CD or you're an experienced user, check out the [CD onboarding guides](https://developer.harness.io/docs/category/cd-onboarding) for useful guides and step-by-step onboarding journeys.
 
 ## Deployment tutorials
 
