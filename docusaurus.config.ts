@@ -26,6 +26,10 @@ const config: Config = {
   customFields: {
     SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
     HARNESS_GENERIC_READ_ONLY_KEY: process.env.HARNESS_GENERIC_READ_ONLY_KEY,
+    future: {
+      v4: true,
+      experimental_faster: true,
+    },
   },
 
   //Mermaid Diagram Functionality
@@ -45,10 +49,6 @@ const config: Config = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
-  },
-
-  future: {
-    experimental_faster: true,
   },
 
   presets: [
@@ -444,6 +444,10 @@ const config: Config = {
               to: 'https://ideas.harness.io',
             },
             {
+              label: 'Feature Flags GA List',
+              to: '/feature-flags',
+            },
+            {
               label: 'Instructor-Led Training',
               to: '/university?ilt',
             },
@@ -532,6 +536,16 @@ const config: Config = {
         },
       },
     ],
+    [
+      path.resolve(__dirname, './plugins/docs-rss-plugin'),
+      {
+        id: 'feature-flags',
+        path: 'feature-flags',
+        routeBasePath: 'feature-flags',
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
+        editUrl: 'https://github.com/harness/developer-hub/tree/main',
+      },
+    ],
     // redirect plugin start
     [
       path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
@@ -617,6 +631,7 @@ const config: Config = {
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
+    path.join(__dirname, '/plugins/feature-flags-rss-plugin'),
   ],
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),
