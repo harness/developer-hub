@@ -435,4 +435,18 @@ export const experiments: ExperimentDetails[] = [
     tags: ['memory', 'stress', 'windows'],
     category: "aws",
   },
+  {
+    name: "Windows EC2 Process Kill",
+    description:
+      "Windows EC2 Process Kill fault kills the target processes running on a Windows EC2 instance. This fault disrupts application-critical processes such as databases or message queues running on the instance by killing their underlying processes or threads.",
+    tags: ['process', 'kill', 'windows', 'ec2'],
+    category: "aws",
+  },
+  {
+    name: "Lambda Block TCP Connection",
+    description:
+      "Lambda Block TCP Connection is an AWS fault that simulates network blocks for TCP connections of a Lambda function. This fault helps you evaluate how your application responds when outbound TCP connections from a Lambda function are blocked.",
+    tags: ['lambda', 'tcp', 'network', 'block'],
+    category: "aws",
+  },
 ];
