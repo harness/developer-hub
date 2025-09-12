@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2025-08-29T18:00
+date: 2025-09-12T18:00
 sidebar_position: 6
 ---
 
@@ -19,6 +19,25 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 In the new UI, go to **Account Settings, Account Details, General, Account Details,** and then **Platform Service Versions**. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+## September 2025 - Version 1.63.3
+
+#### Deployment Date: Septeber 12, 2025 (Prod-1)
+
+### Feature Improvements
+
+- **Enhanced Cluster Configuration UI** — Added informative tooltips for disabled fields in the Cluster Orchestrator Enablement flow. These tooltips clearly explain prerequisites and requirements needed to enable each configuration option, improving user experience and reducing confusion during setup. [CCM-25141]
+
+<DocImage path={require('./static/ccm/release-tooltip.png')} width="80%" height="80%" title="Click to view full size image" />
+
+- **Consolidated CSV Export** — Consolidated CSV export functionality on the Perspective Details page. Users now have access to a single, comprehensive CSV format that includes all relevant data in a well-structured format. If you wish to use the older CSV format, please do so using Perspective API. [CCM-24475]
+
+<DocImage path={require('./static/ccm/release-report.png')} width="50%" height="50%" title="Click to view full size image" />
+
+### Bug Fixes
+
+- **Fixed LIKE Operator** — With the recent revamp of the Perspective Rule Builder UX, the LIKE operator was not always working as expected. This issue has now been fixed, and the Perspective Preview will correctly display data when available. [CCM-25271]
+
 ## September 2025 - Hotfix: Dynamic Cost Categories Toggle in Perspectives
 #### **Deployment Date:** September 10, 2025
 
