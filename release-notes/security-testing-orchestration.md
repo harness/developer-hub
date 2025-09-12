@@ -26,7 +26,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 ### Version 1.158.0
 
 #### New Features and Enhancements
-- STO now supports **Notifications for Exemption Management**. You can configure notifications for exemption-related events such as when an exemption request is created or when its status changes. [View the Documentation on Notifications for Exemptions](https://developer.harness.io/docs/security-testing-orchestration/notifications/exemption-notifications/) and the [Video on Set up Notifications for Exemption Requests](https://youtu.be/f5JyySFQG4E)
+- STO now supports **Notifications for Exemption Management**. You can configure notifications for exemption-related events such as when an exemption request is created or when its status changes. [View the Documentation on Notifications for Exemptions](https://developer.harness.io/docs/security-testing-orchestration/notifications/exemption-notifications/) and the [Video on Set up Notifications for Exemption Requests](https://youtu.be/f5JyySFQG4E) (currently behind the feature flag `PL_CENTRAL_NOTIFICATIONS`)
   <DocImage path={require('./static/sto-notification-events.png')} width="100%" height="100%" title="Click to view full size image" />
 
   <DocVideo src="https://youtu.be/f5JyySFQG4E" title="Set up Notifications for Exemption Requests" />
@@ -47,7 +47,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - For exemptions without a configured baseline target, the **Set in target** button (previously leading to a 404) has been removed. Instead, a direct link to the relevant target on the **Test Targets** page is now provided (STO-9715, STO-9556).  
   
   <DocImage path={require('./static/sto-link-to-baseline.png')} width="70%" height="70%" title="Click to view full size image" />
-  
+
 - Fixed an issue where the CSV downloaded from the **Vulnerabilities** tab had empty entries. The CSV data is now correctly populated (STO-9646, STO-9645).  
 - Fixed an error when configuring the **port** in the **ZAP** step’s *Scan Tool* section. Previously, the port had to be entered as a string, causing a save error. The visual editor now correctly treats the port value as an integer or runtime input, and saves without errors (STO-9316).
 
