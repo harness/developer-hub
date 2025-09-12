@@ -26,6 +26,14 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 ### Version 1.158.0
 
 #### New Features and Enhancements
+
+- STO now integrates with **[GitHub Advanced Security (GHAS)](/docs/security-testing-orchestration/sto-techref-category/github-advanced-security)**. This integration supports the following GHAS products and scan modes:
+  - **CodeQL (SAST):** Identify vulnerabilities in code. Supported in **Orchestration**, **Extraction**, and **Ingestion** scan modes.
+  - **Dependabot (SCA):** Detect vulnerable open-source dependencies. Supported in **Orchestration**, **Extraction**, and **Ingestion** scan modes.
+  - **Secret Scanning:** Detect exposed secrets. Supported in **Extraction** and **Ingestion** scan modes.
+
+  Refer to [GitHub Advanced Security Documentation](/docs/security-testing-orchestration/sto-techref-category/github-advanced-security) for more information.
+
 - STO now supports **Notifications for Exemption Management**. You can configure notifications for exemption-related events such as when an exemption request is created or when its status changes. [View the Documentation on Notifications for Exemptions](https://developer.harness.io/docs/security-testing-orchestration/notifications/exemption-notifications/) and the [Video on Set up Notifications for Exemption Requests](https://youtu.be/f5JyySFQG4E) (currently behind the feature flag `PL_CENTRAL_NOTIFICATIONS`)
   <DocImage path={require('./static/sto-notification-events.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -33,8 +41,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - You can now **export scan results from the Vulnerabilities tab**. (currently behind the feature flag `STO_DOWNLOAD_SCAN_SUMMARY`)
   - Download results in **CSV format** directly from the **Vulnerabilities** tab.  
-  - Navigate to the **Pipeline Execution Summary Dashboard** from the same tab to export results in **CSV or PDF**.  
-  Refer to [Export Scan Results Documentation](https://developer.harness.io/docs/security-testing-orchestration/view-security-test-results/export-scan-results/) for more details.  
+  - Navigate to the **Pipeline Execution Summary Dashboard** from the same tab to export results in **CSV or PDF**. Refer to [Export Scan Results Documentation](https://developer.harness.io/docs/security-testing-orchestration/view-security-test-results/export-scan-results/) for more details.  
   <DocImage path={require('./static/sto-export-csv.png')} width="100%" height="100%" title="Click to view full size image" />
 
 - Issue descriptions in the **Issue Details** view will now render as a formatted JSON tree when the description is in JSON format. The JSON can be expanded or collapsed for easier viewing (STO-8885, ZD-83369).
