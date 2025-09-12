@@ -28,11 +28,11 @@ In the new UI, go to **Account Settings, Account Details, General, Account Detai
 
 - **Enhanced Cluster Configuration UI** — Added informative tooltips for disabled fields in the Cluster Orchestrator Enablement flow. These tooltips clearly explain prerequisites and requirements needed to enable each configuration option, improving user experience and reducing confusion during setup. [CCM-25141]
 
-<DocImage path={require('./static/ccm/release-1.63.3-tooltip.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/ccm/release-tooltip.png')} width="80%" height="80%" title="Click to view full size image" />
 
 - **Consolidated CSV Export** — Consolidated CSV export functionality on the Perspective Details page. Users now have access to a single, comprehensive CSV format that includes all relevant data in a well-structured format. If you wish to use the older CSV format, please do so using Perspective API. [CCM-24475]
 
-<DocImage path={require('./static/ccm/release-1.63.3-report.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/ccm/release-report.png')} width="50%" height="50%" title="Click to view full size image" />
 
 ### Bug Fixes
 
