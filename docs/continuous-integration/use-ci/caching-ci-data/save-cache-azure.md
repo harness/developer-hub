@@ -4,6 +4,8 @@ description: Caching improves build times and enables you to share data across s
 sidebar_position: 41
 ---
 
+import PreserveMetadata from '/docs/continuous-integration/shared/preserve-metadata.md';
+
 You can use the [Cache plugin](https://github.com/drone-plugins/drone-meltwater-cache) in your CI pipelines to save and retrieve cached data from Azure storage.
 
 :::warning
@@ -117,6 +119,8 @@ When using the `cache` plugin to save an Azure cache, the `cache_key` is the Azu
 ```
 <+pipeline.variables.AZURE_CONTAINER>/<+pipeline.identifier>/{{ .Commit.Branch }}-{{ checksum "<+pipeline.variables.BUILD_PATH>/build.gradle" }}
 ```
+
+<PreserveMetadata/>
 
 ### Set shared paths for cache locations outside the stage workspace
 
