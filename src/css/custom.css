@@ -351,6 +351,7 @@
   --ifm-color-content-light: var(--gray-800);
   --background-color: white;
 
+  
   --card-border: 2px solid transparent;
   --img-border: 1px solid var(--gray-400);
   --ifm-alert-background-color: var(--primary-1);
