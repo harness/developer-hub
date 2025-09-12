@@ -5,7 +5,7 @@ import DocVideo from "@site/src/components/DocVideo";
 import CTABanner from "@site/src/components/CTABanner";
 import DocImage from "@site/src/components/DocImage";
 import Accordion from "@site/src/components/ChaosEngineering/Accordion";
-import DocsButton from "../components/DocsButton/NOT_KEBAB_CASE";
+import DocsButton from "../components/DocsButton";
 import DocsTag from "../components/DocsTag";
 import Telemetry from "../components/Telemetry";
 import HarnessApiData from "../components/HarnessApiData";
