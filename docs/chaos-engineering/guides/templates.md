@@ -11,9 +11,9 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
 
 **Templates** are reusable, pre-configured components that help you standardize and accelerate your chaos engineering practices. Templates provide a foundation for creating consistent experiments across your organization while maintaining flexibility for customization.
 
-You can create faults, probes, and actions in two ways:
-- **Direct Creation**: Create components directly through their specific sections (Faults, Probes, Actions) for one-time use
-- **Template-Based Creation**: Create components from templates when you need reusable, standardized configurations across multiple experiments
+You can create experiments, faults, probes, and actions in two ways:
+- **Direct Creation**: Create them directly through their specific sections for one-time use
+- **Template-Based Creation**: Create them from templates when you need reusable, standardized configurations across multiple experiments
 
 Templates allow you to:
 - Standardize chaos engineering practices across teams
@@ -25,9 +25,9 @@ Templates allow you to:
 ## Template Scopes
 
 Templates can be managed at different organizational levels:
-- **Account Level**: Shared across projects within an account
-- **Organization Level**: Available across the entire organization
-- **Project Level**: Available within a specific project
+- **Account Level**: Highest scope - accessible across all accounts, organizations, and projects
+- **Organization Level**: Available across organizations and their projects
+- **Project Level**: Available within a specific project only
 
 <DynamicMarkdownSelector
   options={{
