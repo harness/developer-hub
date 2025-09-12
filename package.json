@@ -89,7 +89,6 @@
     "@module-federation/webpack-bundler-runtime": "0.18.0",
     "@netlify/functions": "^2.7.0",
     "@rspack/binding": "1.5.3",
-    "@rspack/binding-darwin-arm64": "1.5.3",
     "@rspack/core": "1.5.3",
     "@segment/analytics-next": "^1.70.0",
     "algoliasearch": "5.37.0",
