@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-06-27T10:00
+date: 2025-09-12T10:00
 sidebar_position: 13
 ---
 
@@ -24,6 +24,8 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 ## September 2025
 
 ### Version 1.158.0
+
+<!-- 2025-09-12 -->
 
 #### New Features and Enhancements
 
