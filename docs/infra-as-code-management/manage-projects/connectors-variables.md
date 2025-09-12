@@ -2,6 +2,7 @@
 title: Connectors and Variables
 description: Learn how to configure connectors, environment variables, OpenTofu/Terraform variables, and variable files in your IaCM workspace.
 sidebar_position: 10
+redirect_from: "/docs/infra-as-code-management/project-setup/input-variables"
 ---
 
 import Tabs from "@theme/Tabs";

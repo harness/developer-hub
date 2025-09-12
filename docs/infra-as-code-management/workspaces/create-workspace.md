@@ -12,7 +12,7 @@ A workspace is a named environment that stores Terraform configurations, variabl
 
 Users can define a Terraform configuration with multiple workspaces to enforce the same desired configuration. Each workspace creates a different state with its own independent lifecycle.
 
-For example, you can have a single configuration of a Kubernetes cluster and create multiple workspaces out of it, each leading to different clusters. The configuration is unique to each workspace and can be managed through environment or Terraform variables.
+For example, you can have a single configuration of a Kubernetes cluster and create multiple workspaces out of it, each leading to different clusters. The configuration is unique to each workspace and can be managed through environment or OpenTofu/Terraform variables.
 
 ## Workspace statuses
 A workspace can have one of the following statuses:
@@ -102,4 +102,8 @@ Harness supports workspace cloning for quick setup of new workspaces with the sa
 </TabItem>
 </Tabs>
 
-Go to [provision workspace](/docs/infra-as-code-management/workspaces/provision-workspace) to learn how to provision workspaces.
+## Workspace templates
+Create reuseable workspace templates to standardize your workspace configurations across projects. Go to [workspace templates](/docs/infra-as-code-management/workspaces/workspace-templates) to learn how to create and manage workspace templates.
+
+## Next step
+Once you have created your workspace, by creating a new workspace from scratch, cloning, or using a template, you can [provision](/docs/infra-as-code-management/workspaces/provision-workspace) it to apply your OpenTofu or Terraform state.

@@ -14,7 +14,7 @@ export const IacmData: Horizon = {
         tag: [{ value: "Simplify Onboarding" }],
         title: "Workspace templates",
         description: "Users will be able to create Workspaces that will inherit cost, OPA, and other configurations from templates, simplifying onboarding and enforcing best practices",
-        link: "/docs/infra-as-code-management/workspaces/workspace-tempates",
+        link: "/docs/infra-as-code-management/workspaces/workspace-templates",
       },  
       {
         tag: [{ value: "Reports & Insights" }],
