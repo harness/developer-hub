@@ -1,0 +1,187 @@
+:root {
+  /* tweak this if needed after a quick eyeball check */
+  --col-header-min: 96px; /* works well for title + up to 2 blurb lines */
+}
+
+/* spacing around the block */
+.wrapper { padding: 3rem 0; }
+
+/* ---------- Mobile (accordion) ---------- */
+.categoryDetails {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ifm-card-background-color);
+  & + & { margin-top: 1rem; }
+}
+.categorySummary {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  summary::-webkit-details-marker { display: none; }
+}
+.categoryTitle {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.2vw + 1rem, 1.35rem);
+}
+.categoryBlurb { margin: .25rem 0 0 0; opacity: .8; }
+
+/* simple vertical list on mobile */
+.tileList { list-style: none; margin: 0; padding: 0 1rem 1rem; }
+.tileListItem + .tileListItem { margin-top: .5rem; }
+
+.tileRow {
+  display: flex;
+  align-items: flex-start;   /* align top for multiline titles */
+  gap: 12px;
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: .75rem .9rem;
+  text-decoration: none;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-1px);
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    outline: none;
+  }
+}
+
+/* ---------- Desktop: expanding columns ---------- */
+.categoryColumns {
+  display: flex;
+  gap: 16px;
+}
+
+/* base column look */
+.categoryCol {
+  --radius: 16px;
+  flex: 1 1 0px;
+  display: flex;
+  flex-direction: column;
+  background: var(--ifm-background-surface-color);
+  border-radius: var(--radius);
+  padding: 16px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);   /* subtle shadow */
+}
+
+/* Hover container effect: slightly compress others, expand hovered */
+//.categoryColumns:hover .categoryCol { flex: .95 1 0px; }
+.categoryCol:hover,
+.categoryCol.isFocused {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+/* column header */
+.colHeader {
+  /* reserve consistent space for title + blurb across all columns */
+  min-height: var(--col-header-min);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 4px; /* keep your existing spacing */
+}
+
+.colHeader .categoryTitle {
+  font-size: 1rem;       
+  font-weight: 600;
+  line-height: 1.3;      
+  margin: 0 0 0.25rem 0;
+}
+.colHeader .categoryBlurb {
+  font-size: 0.95rem;
+  line-height: 1.4;       
+  opacity: 0.8;
+  margin: 0;
+  max-width: 90%; 
+}
+
+/* vertical tiles inside each column */
+.colTiles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.colTileItem { min-width: 0; }
+
+.colTile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 150ms ease;
+}
+
+.colTile:hover,
+.colTile:focus-visible {
+  background: rgba(0,0,0,0.04); /* subtle hover bg */
+  outline: none;
+}
+
+.colTile,
+.tileRow {
+  align-items: center; /* ensure icon + text share the same vertical center */
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;   /* keep the icon centered even if text wraps */
+  height: 22px;         /* = icon size */
+}
+
+.iconWrap img.featureSvg {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Column tile text container */
+.colTileText {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.tileTitle {
+  font-size: 0.85rem; 
+  font-weight: 500;
+  line-height: 1.3;       
+  white-space: normal;
+}
+
+/* badges */
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  line-height: 1;
+}
+.badge_NEW { color: var(--ifm-color-success); }
+.badge_EA  { color: var(--ifm-color-warning); }
+.badge_GA  { color: var(--ifm-color-primary); }
+
+/* responsive: fall back to mobile when narrow */
+@media (max-width: 900px) {
+  .categoryColumns { display: none; }
+}
