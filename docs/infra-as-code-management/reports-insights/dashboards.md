@@ -12,7 +12,7 @@ Harness Custom Dashboards provide a fully integrated BI experience powered by Ia
 The IaCM Dashboard is designed to help you:
 
 - Visualize the **count of workspaces** by organization and project.
-- List **modules in use** and identify how many workspaces are using them. [Learn more about Harness module registry](/docs/infra-as-code-management/iacm-features/module-registry/module-registry-code-structure)
+- List **modules in use** and identify how many workspaces are using them. [Learn more about Harness module registry](/docs/infra-as-code-management/registry/module-registry/module-registry-code-structure)
 - Create visualizations based on **workspace tags** (e.g., "team:europe") to better understand resource allocation.
 - **Monitor provider compliance** across your infrastructure:
   - Track what percentage of workspaces are using [**OpenTofu**](https://opentofu.org/) or Terraform.

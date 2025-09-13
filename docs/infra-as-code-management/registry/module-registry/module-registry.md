@@ -3,6 +3,7 @@ title: Module Registry
 description: Learn how to register a module in Harness IaCM
 sidebar_position: 20
 sidebar_label: Register Modules
+redirect_from: /docs/infra-as-code-management/iacm-features/module-registry/module-registry
 ---
 
 import Tabs from '@theme/Tabs';
