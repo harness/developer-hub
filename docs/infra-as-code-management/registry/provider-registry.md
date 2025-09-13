@@ -192,4 +192,4 @@ When you run `tofu init`, Terraform will automatically pull the correct binary f
 ## Next Steps
 Explore other reusable features in IaCM:
 - [**Module Registry**](/docs/infra-as-code-management/registry/module-registry): publish and share Terraform/OpenTofu modules.
-- [**Workspace Templates**](/docs/infra-as-code-management/workspaces/workspace-tempates): standardize workspace configurations across teams.
+- [**Workspace Templates**](/docs/infra-as-code-management/workspaces/workspace-templates): standardize workspace configurations across teams.
