@@ -13,7 +13,7 @@ function hideIndexFromSidebarItems(items) {
   return result;
 }
 
-const injectLastUpdated = require('./plugins/remark-inject-last-updated.cjs');
+const injectDocStats = require('./plugins/remark-inject-doc-stats.cjs');
 
 const config: Config = {
   title: 'Harness Developer Hub',
@@ -583,7 +583,7 @@ const config: Config = {
         showLastUpdateAuthor: false,
         routeBasePath: 'docs', //CHANGE HERE
         remarkPlugins: [
-          injectLastUpdated,
+          injectDocStats,
           [
             remarkMath,
             {
