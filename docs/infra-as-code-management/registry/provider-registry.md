@@ -20,32 +20,25 @@ By publishing it in the Provider Registry, developers across macOS, Linux, and W
 ---
 
 ## Prerequisites
-Before using the Provider Registry, ensure you have:
-
-- A **GPG key** with:
-  - Name
-  - Key ID
-  - ASCII armor format
-- Installed **GPG tooling** to generate, list, and export keys.
-- **Compiled binaries** for supported OS/architectures:
-  - Darwin/macOS (arm64, amd64)
-  - Linux (amd64)
-  - Windows (amd64)
-- A **checksum file** with SHA-256 hashes of all binaries.
-- A **signature file** (`.sig`) created by signing the checksum file.
+Before you begin, make sure you have:
+1. **Access and permissions** to IaCM and the **Registry** area in your Harness project.
+2. A local build environment to **compile your provider** into platform-specific binaries (for example, Go or Java toolchains).
+3. **GPG tooling installed** on your machine.
+4. Network access to upload files from your workstation to the Provider Registry.
 
 ---
 
-## GPG Key Setup
+## Provider Preparation
+Before registering your provider, you must prepare the necessary cryptographic keys and supporting files.
 
+### GPG Key Setup
 GPG keys are required to sign provider binaries before publishing.
 
 :::note Required values
-
 - **Name**
 - **Key ID**
 - **ASCII armored public key**
-  :::
+:::
 
 **[Insert GitHub link with detailed steps once available.]**
 
@@ -74,8 +67,30 @@ gpg --armor --export <KEY_ID>
 
 ---
 
-## Provider Registration
+### File Requirements
+Each provider version requires the following artifacts:
+- Compiled binaries for each supported OS/architecture.
+- A SHA256SUMS checksum file.
+- A SHA256SUMS.sig signature file.
 
+<Tabs queryString="file-requirements">
+<TabItem value="create-checksum" label="1. Create CHECKSUM file">
+
+```bash
+shasum -a 256 * > SHA256SUMS
+```
+</TabItem>
+<TabItem value="sign-checksum" label="2. Sign the CHECKSUM file:">
+
+```bash
+gpg --default-key <KEY_ID> --output SHA256SUMS.sig --detach-sign SHA256SUMS
+```
+</TabItem>
+</Tabs>
+
+---
+
+## Provider Registration
 <Tabs queryString="provider-registration">
 <TabItem value="Interactive guide" label="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/5aa16720-f96c-44f3-9ad7-2e4dce4ad3b3?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Register a module in Harness" />
@@ -177,4 +192,4 @@ When you run `tofu init`, Terraform will automatically pull the correct binary f
 ## Next Steps
 Explore other reusable features in IaCM:
 - [**Module Registry**](/docs/infra-as-code-management/registry/module-registry): publish and share Terraform/OpenTofu modules.
-- [**Workspace Templates**](/docs/infra-as-code-management/workspace-templates): standardize workspace configurations across teams.
+- [**Workspace Templates**](/docs/infra-as-code-management/workspaces/workspace-tempates): standardize workspace configurations across teams.
