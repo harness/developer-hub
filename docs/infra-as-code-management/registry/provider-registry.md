@@ -7,16 +7,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-The **Provider Registry** in IaCM allows you to securely publish and distribute custom providers.  
-Providers are signed with GPG keys, compiled as binaries for multiple platforms, and made available for use in Terraform/OpenTofu configurations.  
+The Harness IaCM **Provider Registry** allows you to securely publish and distribute <Tooltip text="A OpenTofu or Terraform provider built and maintained by your organization, usually for internal APIs or services not available in the public registry.">custom providers</Tooltip>. Providers are signed with <Tooltip text="A cryptographic key used to verify the authenticity and integrity of files. In this case, it ensures provider binaries have not been tampered with.">GPG keys</Tooltip>, compiled as <Tooltip text="Executable program files produced after compiling source code (for example, Go or Java). Terraform/OpenTofu uses these binaries to interact with your infrastructure.">binary files</Tooltip> for <Tooltip text="Supported platforms include Darwin/macOS (arm64, amd64), Linux (amd64), and Windows (amd64).">multiple platforms</Tooltip>, and made available for use in [OpenTofu](https://opentofu.org/) or Terraform configurations.
 
 - Found under **IaCM > Registry** (alongside Module Registry and GPG Keys).  
-- Providers are published as **compiled binaries** for supported operating systems.  
+- Providers are published as **compiled binaries** for supported operating systems like macOS, Linux, or Windows.  
 - **GPG keys** are required to sign provider binaries for verification.  
 
 :::tip Example use case  
-A DevOps team creates a **custom provider** to integrate Terraform with their internal APIs.  
-By publishing it in the Provider Registry, developers across macOS, Linux, and Windows can seamlessly consume the provider during `terraform init` without manually managing binaries.  
+A DevOps team creates a **custom provider** to integrate OpenTofu with their internal APIs.  
+By publishing it in the Provider Registry, developers across macOS, Linux, and Windows can seamlessly consume the provider during `tofu init` without manually managing binaries.  
 :::
 
 ---
