@@ -108,7 +108,7 @@ Derived from the initial setup steps of your workspace, including cost estimatio
 #### Advanced options
 Workspaces configuration advanced options offer the ability to configure additional settings for your workspace, including:
 - **Submodules:** Use submodules from your repository's `modules/` folder. 
-  Go to [Submodule Usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage) for more information.
+  Go to [Submodule Usage](/docs/infra-as-code-management/registry/module-registry/root-sub-module-usage) for more information.
 - **Sparse checkout:** Provide paths to directories to do a sparse checkout on given patterns to clone specific directories from the repository.  
   Refer to [git documentation](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) for more details.
 ---

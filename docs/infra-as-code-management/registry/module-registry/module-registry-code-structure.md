@@ -13,7 +13,7 @@ All OpenTofu or Terraform configurations consist of at least one module, known a
 
 :::info modules folder
 When using submodules, note that they are only recognized if they are placed within the `modules` folder at the root directory. 
-Go to [submodule usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage) for more information.
+Go to [submodule usage](/docs/infra-as-code-management/registry/module-registry/root-sub-module-usage) for more information.
 :::
 
 :::important
@@ -140,5 +140,5 @@ To ensure your modules are well-structured and maintainable, follow these best p
 A well-structured IaC module enhances reusability, maintainability, and collaboration. By following these guidelines, you can create reliable and scalable modules for your infrastructure needs.
 
 For more details, refer to the following documentation:
-- [Register a Module](/docs/infra-as-code-management/iacm-features/module-registry/)  
-- [Root and Submodule Usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage)
+- [Register a Module](/docs/infra-as-code-management/registry/module-registry/)  
+- [Root and Submodule Usage](/docs/infra-as-code-management/registry/module-registry/root-sub-module-usage)

@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Prerequisites
-- A registered *tf* modules, to register a new module, go to [Register a module](https://developer.harness.io/docs/infra-as-code-management/iacm-features/module-registry#register-a-module)
+- A registered *tf* modules, to register a new module, go to [Register a module](/docs/infra-as-code-management/registry/module-registry#register-a-module)
 
 Once your have registered your *tf* modules, Harness automatically parses the metadata from your connected repository, so your module information is readily available for re-use. 
 

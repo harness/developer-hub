@@ -1,9 +1,11 @@
 ---
-title: Provider Registry Walkthrough
+title: Provider Registry
 description: Learn how to publish and manage custom providers with Harness IaCM's Provider Registry.
 ---
 
-## Overview  
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 
 The **Provider Registry** in IaCM allows you to securely publish and distribute custom providers.  
 Providers are signed with GPG keys, compiled as binaries for multiple platforms, and made available for use in Terraform/OpenTofu configurations.  
@@ -20,7 +22,6 @@ By publishing it in the Provider Registry, developers across macOS, Linux, and W
 ---
 
 ## Prerequisites  
-
 Before using the Provider Registry, ensure you have:  
 
 - A **GPG key** with:  
@@ -38,7 +39,6 @@ Before using the Provider Registry, ensure you have:
 ---
 
 ## GPG Key Setup  
-
 GPG keys are required to sign provider binaries before publishing.  
 
 :::note Required values
@@ -47,28 +47,34 @@ GPG keys are required to sign provider binaries before publishing.
 - **ASCII armored public key**  
 :::
 
+**[Insert GitHub link with detailed steps once available.]**
+
+<Tabs queryString="gpg-key-setup">
+<TabItem value="1. Generate a GPG key" label="1. Generate a GPG key">
 ### Generate a GPG key  
 ```bash
 gpg --full-generate-key
 ```
+</TabItem>
+<TabItem value="2. List GPG keys" label="2. List GPG keys">
 
-### List GPG keys  
 ```bash
 gpg --list-keys --keyid-format LONG
 ```
-
-### Export GPG key (in ASCII armor format)  
+</TabItem>
+<TabItem value="3. Export GPG key" label="3. Export GPG key">
+Export GPG key (in ASCII armor format)  
 ```bash
 gpg --armor --export <KEY_ID>
 ```
+</TabItem>
+</Tabs>
 
-**[Insert GitHub link with detailed steps once available.]**
 
 ---
 
 ## Provider Registration
-
-<Tabs>
+<Tabs queryString="provider-registration">
 <TabItem value="step-by-step" label="Step-by-Step">
 1.	Go to IaCM > Registry > Provider Registry.
 	2.	Click New Provider and enter a provider name.
@@ -107,7 +113,7 @@ provider:
 </TabItem>
 </Tabs>
 
-Binary Files Requirements
+### Binary Files Requirements
 
 Each provider version requires the following:
 	•	Compiled binaries for each supported OS/architecture.
@@ -124,8 +130,9 @@ Example: Sign checksum file
 gpg --default-key <KEY_ID> --output SHA256SUMS.sig --detach-sign SHA256SUMS
 ```
 
-## Use Published Providers
+---
 
+## Use Published Providers
 Once published, providers can be consumed directly in Terraform/OpenTofu configs:
 
 ```hcl
