@@ -83,7 +83,7 @@ The Workspace Wizard UI has been updated to improve usability and streamline the
 - The prepare exec flow and default pipeline feature flags have been removed to simplify your workflows. (IAC-3295)
 
 ### Fixed Issues
-**[Module Registry](../docs/infra-as-code-management/iacm-features/module-registry):** Sparse Checkout and submodule options are now hidden for repositories in the Module Registry, improving clarity and usability. (IAC-3277)
+**[Module Registry](../docs/infra-as-code-management/registry/module-registry):** Sparse Checkout and submodule options are now hidden for repositories in the Module Registry, improving clarity and usability. (IAC-3277)
 
 **Sensitive Data Handling:** We’ve resolved an issue where non-sensitive data was incorrectly marked as sensitive in plans and state files, as well as during sensitive data pruning. (IAC-3261)
 
