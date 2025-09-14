@@ -10,7 +10,7 @@ import IngestStep from '/docs/security-testing-orchestration/custom-scanning/cus
 
 ## Sample Pipeline
 
-Here is a sample pipeline for custom ingest step:
+Here is a sample pipeline for a custom ingest step:
 
 <details>
 <summary>Sample YAML</summary>
