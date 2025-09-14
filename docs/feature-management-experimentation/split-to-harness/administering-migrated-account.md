@@ -533,50 +533,50 @@ The **All Resources Including Child Scopes** is not recommended because it would
 To create an Admin API key scoped to all projects in your Harness account:
 
 1. At the account level, create the service account and assign roles:
-   - In the left navigation panel, click **Account Settings**.
-   - Click the **Access Control** button at the top of the page.
-   - Click the **Service Accounts** tile.
-   - Click the **+ New Service Account** button.
-   - Enter a name for the new service account and click **Save**. The service account is listed.
-   - Click **Manage Role Bindings** to manage role bindings for the service account.
-   - Click **+ Add**.
-   - Select the **Account Admin** role and the **All Account Level Resources** resource group.
-   - Click **Apply**. The role binding is added to the service account.
+   1. In the left navigation panel, click **Account Settings**.
+   1. Click the **Access Control** button at the top of the page.
+   1. Click the **Service Accounts** tile.
+   1. Click the **+ New Service Account** button.
+   1. Enter a name for the new service account and click **Save**. The service account is listed.
+   1. Click **Manage Role Bindings** to manage role bindings for the service account.
+   1. Click **+ Add**.
+   1. Select the **Account Admin** role and the **All Account Level Resources** resource group.
+   1. Click **Apply**. The role binding is added to the service account.
 
 1. At the organization level, inherit the service account and assign roles:
-   - In the left navigation panel, select the organization [where your Split legacy projects were migrated](#projects) (or where your FME objects are defined or will be defined).
-   - Click **Organization Settings**.
-   - Click the **Access Control** button at the top of the page.
-   - Click the **Service Accounts** tile.
-   - Click the **Inherit Service Accounts &amp; Assign Roles** button.
-   - Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
-   - Click **Apply Selected**.
-   - Select the **Organization Admin** role.
-   - Leave the **All Organization Level Resources** resource group selected.
-   - Click **Save** or **Apply**. The service account and role binding are listed.
+   1. In the left navigation panel, select the organization [where your Split legacy projects were migrated](#projects) (or where your FME objects are defined or will be defined).
+   1. Click **Organization Settings**.
+   1. Click the **Access Control** button at the top of the page.
+   1. Click the **Service Accounts** tile.
+   1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
+   1. Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
+   1. Click **Apply Selected**.
+   1. Select the **Organization Admin** role.
+   1. Leave the **All Organization Level Resources** resource group selected.
+   1. Click **Save** or **Apply**. The service account and role binding are listed.
 
 1. For each project: At the project level, inherit the service account and assign roles:
-   - In the left navigation panel, select the project.
-   - Click **Project Settings**.
-   - Click the **Access Control** button at the top of the page.
-   - Click the **Service Accounts** tile.
-   - Click the **Inherit Service Accounts &amp; Assign Roles** button.
-   - Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
-   - Click **Apply Selected**.
-   - Select the **Project Admin** role.
-   - Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
-   - Click **Save** or **Apply**. The service account and role binding are listed.
+   1. In the left navigation panel, select the project.
+   1. Click **Project Settings**.
+   1. Click the **Access Control** button at the top of the page.
+   1. Click the **Service Accounts** tile.
+   1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
+   1. Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
+   1. Click **Apply Selected**.
+   1. Select the **Project Admin** role.
+   1. Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
+   1. Click **Save** or **Apply**. The service account and role binding are listed.
    
 1. Create the API key and token at the account level:
-   - In the left navigation panel, click **Account Settings**.
-   - Click the **Access Control** button at the top of the page.
-   - Click the **Service Accounts** tile.
-   - Click on the service account created in Step 1.
-   - Click **+ API Key**.
-   - Enter a name for the new API key and click **Save**.
-   - Click **+ Token**.
-   - Enter a name for the new API key token, set an expiration, and click **Generate Token**.
-   - Copy the token value somewhere safe.
+   1. In the left navigation panel, click **Account Settings**.
+   1. Click the **Access Control** button at the top of the page.
+   1. Click the **Service Accounts** tile.
+   1. Click on the service account created in Step 1.
+   1. Click **+ API Key**.
+   1. Enter a name for the new API key and click **Save**.
+   1. Click **+ Token**.
+   1. Enter a name for the new API key token, set an expiration, and click **Generate Token**.
+   1. Copy the token value somewhere safe.
 
 <span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if you were migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
 
@@ -594,34 +594,34 @@ To create an Admin API key scoped to a specific project in your Harness account:
 
 1. At the account level, create the service account and assign roles:
    
-   - In the left navigation panel, click **Account Settings**.
-   - Click the **Access Control** button at the top of the page.
-   - Click the **Service Accounts** tile.
-   - Click the **+ New Service Account** button.
-   - Enter a name for the new service account and click **Save**. The service account is listed.
+   1. In the left navigation panel, click **Account Settings**.
+   1. Click the **Access Control** button at the top of the page.
+   1. Click the **Service Accounts** tile.
+   1. Click the **+ New Service Account** button.
+   1. Enter a name for the new service account and click **Save**. The service account is listed.
 
 1. At the project level, inherit the service account and assign roles:
-   - In the left navigation panel, select the project.
-   - Click **Project Settings**.
-   - Click the **Access Control** button at the top of the page.
-   - Click the **Service Accounts** tile.
-   - Click the **Inherit Service Accounts &amp; Assign Roles** button.
-   - Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
-   - Click **Apply Selected**.
-   - Select the **Project Admin** role.
-   - Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
-   - Click **Save** or **Apply**. The service account and role binding are listed.
+   1. In the left navigation panel, select the project.
+   1. Click **Project Settings**.
+   1. Click the **Access Control** button at the top of the page.
+   1. Click the **Service Accounts** tile.
+   1. Click the **Inherit Service Accounts &amp; Assign Roles** button.
+   1. Select the service account created in Step 1. (When created at the account level, the service account is listed on the **Account** tab.)
+   1. Click **Apply Selected**.
+   1. Select the **Project Admin** role.
+   1. Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*).
+   1. Click **Save** or **Apply**. The service account and role binding are listed.
 
 1. Create the API key and token at the account level:
-   - In the left navigation panel, click **Account Settings**.
-   - Click the **Access Control** button at the top of the page.
-   - Click the **Service Accounts** tile.
-   - Click on the service account created in Step 1.
-   - Click **+ API Key**.
-   - Enter a name for the new API key and click **Save**.
-   - Click **+ Token**.
-   - Enter a name for the new API key token, set an expiration, and click **Generate Token**.
-   - Copy the token value somewhere safe.
+   1. In the left navigation panel, click **Account Settings**.
+   1. Click the **Access Control** button at the top of the page.
+   1. Click the **Service Accounts** tile.
+   1. Click on the service account created in Step 1.
+   1. Click **+ API Key**.
+   1. Enter a name for the new API key and click **Save**.
+   1. Click **+ Token**.
+   1. Enter a name for the new API key token, set an expiration, and click **Generate Token**.
+   1. Copy the token value somewhere safe.
 
 <span style={{fontSize: '0.8em'}}>\* *The **FME All Resources** resource group was created if you were migrated to a Harness account on the Enterprise plan. If you were migrated to a Harness account on the Free plan, you should use the **All Project Level Resources** resource group.* </span>
 
