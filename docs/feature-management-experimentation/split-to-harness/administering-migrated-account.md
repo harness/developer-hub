@@ -948,6 +948,45 @@ To resolve the error, and restore these users' access to the FME module, assign 
 * **Recommended:** Add this role binding to the **All Account Users** user group, by following the steps in [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups) in the Harness platform documentation.
 * Add this role binding to a group where the users are members (by following [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#assign-roles-and-resource-groups)) or to the users directly (by following [Edit direct assignments](https://developer.harness.io/docs/platform/role-based-access-control/add-users#edit-direct-assignments)).
 
+
+### FME object creation
+
+#### The <strong>Owners</strong> dropdown is not populated with project users or user groups when creating a feature flag, metric, segment, or experiment
+
+A user lacking **Users** and **User Groups** View permissions will experience the following UI behavior when creating objects in a project:
+
+On the **Create a feature flag** pane:
+* The **Create a feature flag** pane displays concurrently with two toast notifications: "Something went wrong with the request"
+* The **Owners** dropdown is not populated 
+* The **Create** button is disabled
+
+On the **Create a metric** pane:
+* The **Owners** dropdown is not populated 
+* The **Create** button is disabled
+
+On the **Create a segment** modal:
+* The **Create a segment** modal displays concurrently with two toast notifications: "Something went wrong with the request"
+* The **Owners** dropdown is not populated 
+* Clicking the **Create** button does not close the **Create a segment** modal, and the server responds with code 400 (shown in Developer Tools).
+
+On the **Create experiment** pane:
+* The **Owners** dropdown is not populated 
+* The **Create** button is disabled
+
+If the same user clicks the **Users** or **User Groups** tiles in **Project Settings**, errors will be shown on the page. Clicking **Users** will display the error "You are not authorized to view users," and clicking **User Groups** will display "Current principal is not authorized to view the role assignments" (403 - Access Denied error).
+
+To resolve this issue, grant a user **Users** and **User Groups** View permissions using one of the following methods:
+
+* **Recommended**: Use the **FME Editors** user group and the role binding: **Project Admin** role over **Project Level Resources**:
+
+<div style={{marginLeft: "1em"}}>
+1. Navigate to the project where the permissions are lacking, and click **Project Settings** in the left navigation panel.
+2. Click the **User Groups** tile. Ensure the **FME Editors** group is listed, the user is a member of this group, and this group is assigned the **Project Admin** role over **Project Level Resources**.
+3. Click the **Project Admin** role link under Role Bindings. Look in the Administrative Functions section to ensure the **View** checkbox for **Users** and the **View** checkbox for **User Groups** are both checked.
+</div>
+
+* Alternatively, you can grant the **Users** and **User Groups** View permissions to another role and assign that role to the user (or a user group where the user is a member) over a resource group that includes the project. See [Manage Roles](/docs/platform/role-based-access-control/add-manage-roles/) for details.
+
 ### FME project deletion
 
 #### My SDK feature flag evaluations work, but my FME project is not visible in Harness
@@ -1000,7 +1039,6 @@ At the project level, grant access to the service account by assigning roles:
 1. Select the **Project Admin** role.
 1. Leave the **All Project Level Resources** resource group selected (or select **FME All Resources**\*\*).
 1. Click **Save** or **Apply**. The service account and role binding are listed.
-
 
 <span style={{fontSize: '0.8em'}}>
 <p>\* *The service account is listed on the **Organization** tab if you were migrated into an existing Harness account. If you were migrated to a new Harness account created during migration, the service account is shown on the **Account** tab.*</p>
