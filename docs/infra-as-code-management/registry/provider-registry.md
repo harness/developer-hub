@@ -23,8 +23,7 @@ By publishing it in the Provider Registry, developers across macOS, Linux, and W
 Before you begin, make sure you have:
 1. **Access and permissions** to IaCM and the **Registry** area in your Harness project.
 2. A local build environment to **compile your provider** into platform-specific binaries (for example, Go or Java toolchains).
-3. **GPG tooling installed** on your machine.
-4. Network access to upload files from your workstation to the Provider Registry.
+3. [**GPG tooling installed**](https://www.gnupg.org/download/) on your machine.
 
 ---
 
@@ -34,13 +33,13 @@ Before registering your provider, you must prepare the necessary cryptographic k
 ### GPG Key Setup
 GPG keys are required to sign provider binaries before publishing.
 
-:::note Required values
+:::info Required values
 - **Name**
 - **Key ID**
 - **ASCII armored public key**
 :::
 
-**[Insert GitHub link with detailed steps once available.]**
+Follow the three steps below to generate a GPG key:
 
 <Tabs queryString="gpg-key-setup">
 <TabItem value="1. Generate a GPG key" label="1. Generate a GPG key">
@@ -64,6 +63,14 @@ gpg --armor --export <KEY_ID>
 ```
 </TabItem>
 </Tabs>
+
+If you need more information on how to generate GPG Keys, go to [Generating a new GPG key for full instructions](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key).
+
+### Add your GPG key to IaCM
+1. Go to **IaCM > Registry > GPG Keys**
+2. Click **New GPG Key**
+3. Enter the **Name**, **Key ID**, and **ASCII armored public key** as generated in the previous steps above.
+4. Click **Save**
 
 ---
 
@@ -93,7 +100,7 @@ gpg --default-key <KEY_ID> --output SHA256SUMS.sig --detach-sign SHA256SUMS
 ## Provider Registration
 <Tabs queryString="provider-registration">
 <TabItem value="Interactive guide" label="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/5aa16720-f96c-44f3-9ad7-2e4dce4ad3b3?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Register a module in Harness" />
+<DocVideo src="https://app.tango.us/app/embed/c6beb8f1-75df-4c1d-bbab-3d87209ef6fd?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Registry a Provider in Harness IaCM" />
 </TabItem>
 <TabItem value="step-by-step" label="Step-by-Step">
 
@@ -114,8 +121,8 @@ Selecting multiple provider protocol versions allows your provider to be compati
 - SHA256SUMS checksum file.
 - SHA256SUMS.sig signature file.
 
-7. Verify that all files are uploaded.
-8. Click Publish. The system will validate the upload and publish the provider version.
+7. Verify that ALL registry files are uploaded.
+8. Click **Publish**. The system will validate the upload and publish the provider version.
 
 :::warning Publishing will fail if:
 - Any required file is missing.
@@ -144,42 +151,27 @@ provider:
 </TabItem>
 </Tabs>
 
-### Binary Files Requirements
-Each provider version requires the following:
-
-- Compiled binaries for each supported OS/architecture.
-- A checksum file containing SHA-256 hashes of the binaries.
-- A signature file (.sig) created by signing the checksum file.
-
-Example: Create checksum file
-
-```bash
-shasum -a 256 * > SHA256SUMS
-```
-
-Example: Sign checksum file
-
-```bash
-gpg --default-key <KEY_ID> --output SHA256SUMS.sig --detach-sign SHA256SUMS
-```
-
 ---
 
 ## Use Published Providers
-Once published, providers can be consumed directly in Terraform/OpenTofu configs:
+Once published, providers can be consumed directly in Tofu/Terraform configuration:
 
+For example:
 ```hcl
 terraform {
   required_providers {
-    myprovider = {
-      source  = "example.com/org/myprovider"
+    <provider-name> = {
+      source = "<provider-name>.app.harness.io/account/<harness-account-id>/<provider-name>"
       version = "1.0.0"
     }
   }
 }
+provider "<provider-name>" {
+ # Configuration options 
+}
 ```
 
-When you run `tofu init`, Terraform will automatically pull the correct binary for your operating system.
+When you run <Tooltip text="OpenTofu or Terraform command-line tool used to initialize a new or existing Terraform configuration. It downloads and configures providers, modules, and other dependencies." />`init`</Tooltip> command, OpenTofu/Terraform will automatically pull the correct binary for your operating system.
 
 ---
 
