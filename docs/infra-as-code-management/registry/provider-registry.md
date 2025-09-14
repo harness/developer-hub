@@ -171,7 +171,7 @@ provider "<provider-name>" {
 }
 ```
 
-When you run <Tooltip text="OpenTofu or Terraform command-line tool used to initialize a new or existing Terraform configuration. It downloads and configures providers, modules, and other dependencies." />`init`</Tooltip> command, OpenTofu/Terraform will automatically pull the correct binary for your operating system.
+When you run <Tooltip text="OpenTofu or Terraform command-line tool used to initialize a new or existing Terraform configuration. It downloads and configures providers, modules, and other dependencies.">`init`</Tooltip> command, OpenTofu/Terraform will automatically pull the correct binary for your operating system.
 
 ---
 
