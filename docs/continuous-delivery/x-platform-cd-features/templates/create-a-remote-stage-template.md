@@ -1,6 +1,13 @@
 ---
 title: Create a remote stage template
 description: This topic explains how to add a remote stage template in Harness.
+tags:
+  - remote-stage-template
+  - templates
+  - pipeline-templates
+  - harness-templates
+  - project-templates
+  - template-library
 sidebar_position: 4
 ---
 
