@@ -956,7 +956,6 @@ To resolve the error, and restore these users' access to the FME module, assign 
 A user lacking **Users** and **User Groups** View permissions will experience the following UI behavior when creating objects in a project:
 
 On the **Create a feature flag** pane:
-* The **Create a feature flag** pane displays concurrently with two toast notifications: "Something went wrong with the request"
 * The **Owners** dropdown is not populated 
 * The **Create** button is disabled
 
@@ -965,9 +964,8 @@ On the **Create a metric** pane:
 * The **Create** button is disabled
 
 On the **Create a segment** modal:
-* The **Create a segment** modal displays concurrently with two toast notifications: "Something went wrong with the request"
 * The **Owners** dropdown is not populated 
-* Clicking the **Create** button does not close the **Create a segment** modal, and the server responds with code 400 (shown in Developer Tools).
+* Clicking the **Create** button does not close the **Create a segment** modal.
 
 On the **Create experiment** pane:
 * The **Owners** dropdown is not populated 
@@ -977,12 +975,12 @@ If the same user clicks the **Users** or **User Groups** tiles in **Project Sett
 
 To resolve this issue, grant a user **Users** and **User Groups** View permissions using one of the following methods:
 
-* **Recommended**: Use the **FME Editors** user group and the role binding: **Project Admin** role over **Project Level Resources**:
+* **Recommended**: Use the **All FME Editors** user group and the role binding: **Project Viewer** role over **Project Level Resources**:
 
 <div style={{marginLeft: "1em"}}>
 1. Navigate to the project where the permissions are lacking, and click **Project Settings** in the left navigation panel.
-2. Click the **User Groups** tile. Ensure the **FME Editors** group is listed, the user is a member of this group, and this group is assigned the **Project Admin** role over **Project Level Resources**.
-3. Click the **Project Admin** role link under Role Bindings. Look in the Administrative Functions section to ensure the **View** checkbox for **Users** and the **View** checkbox for **User Groups** are both checked.
+2. Click the **User Groups** tile. Ensure the **All FME Editors** group is listed, the user is a member of this group, and this group is assigned the **Project Viewer** role over **Project Level Resources**.
+3. Click the **Project Viewer** role link under Role Bindings. Look in the Administrative Functions section to ensure the **View** checkbox for **Users** and the **View** checkbox for **User Groups** are both checked.
 </div>
 
 * Alternatively, you can grant the **Users** and **User Groups** View permissions to another role and assign that role to the user (or a user group where the user is a member) over a resource group that includes the project. See [Manage Roles](/docs/platform/role-based-access-control/add-manage-roles/) for details.
