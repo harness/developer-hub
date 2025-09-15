@@ -45,6 +45,25 @@ Take control of your organizational structure with IDP 2.0's powerful new Custom
 
 [Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/user-group#idp2.0)
 
+### [New Feature] Support for Bitbucket Access Token Authentication Mode
+
+Harness IDP now supports the **[Access Token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/)** authentication mode for the [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings). This mode not only provides a secure way to access Bitbucket repositories but also enables **higher API rate limits**, which is a critical use case for Harness IDP. This authentication mode is supported across the following IDP features:
+
+* **IDP 1.0 and 2.0**: Available wherever the Bitbucket connector is used
+* **Git Experience**: Fetches repository details from Bitbucket for Git Experience
+* **Source Code Repo Links**: Fetches repository details from Bitbucket for source code repo linking
+* **Scorecards**: Runs automated checks and computations against repositories fetched from Bitbucket
+
+:::info Bitbucket Connector Limitation
+The Bitbucket connector with **Access Token** authentication does not work with the **[Create Repo](/docs/internal-developer-portal/flows/harness-pipeline#3-create-repo)** step in the [IDP stage](/docs/internal-developer-portal/flows/harness-pipeline.md#idp-stage-1). This is due to a known [Bitbucket bug](https://jira.atlassian.com/browse/BCLOUD-22568) where repository creation is not supported with access tokens.
+
+**Workaround**: Use a separate Bitbucket connector with the **[API Token](https://support.atlassian.com/bitbucket-cloud/docs/api-tokens/)** authentication mode for repository creation through Harness Pipelines.
+:::
+
+**How to enable this feature:**
+
+* [Upgrade your Harness delegate](https://developer.harness.io/docs/platform/get-started/tutorials/install-delegate/?utm_source=chatgpt.com) to version `25.08.86600` or later
+* Update your [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) with a new **[Access Token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/)** and use it across Harness IDP
 
 ### [New Feature] GitLab Integration Plugin
 
