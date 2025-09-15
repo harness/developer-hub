@@ -1400,7 +1400,7 @@ This way, there are two options for server-side rendering:
 
 #### SDK not ready on initial render
 
-If you don't provide an `initialRolloutPlan` in the configuration, the SDK clients start in an unready state during the initial component render. In this state, status properties like `isReady` are `false`, and `useSplitTreatments` returns `'control'`. 
+If you don't provide an `initialRolloutPlan` in the configuration, the SDK clients start in an unready state during the initial component render. In this state, status properties like `isReady` are `false`, and `useSplitTreatments` returns `'control'`.
 
 Afterwards, the `SplitFactoryProvider` effect initializes the SDK factory. This factory becomes ready on the client side in a subsequent render but does not initialize on the server side.
 
@@ -1558,9 +1558,9 @@ In this state, the `isReadyFromCache` status property is `true` and `useSplitTre
 To get the rollout plan snapshot and pass it to the SDK via `initialRolloutPlan`, follow these steps:
 
 1. Extract the rollout plan snapshot using the Node.js SDK factory's `getRolloutPlan` method.
-1. Create the SDK configuration object with the `initialRolloutPlan` option.
-1. Serialize and inject the SDK configuration object into the rendered HTML. You can do this manually (see the "Vanilla SSR" example below) or use framework-specific methods, like Next.js's `getServerSideProps` function (see the "Next.js using Pages Router" example below).
-1. Pass the SDK configuration object to the `SplitFactoryProvider` component.
+2. Create the SDK configuration object with the `initialRolloutPlan` option.
+3. Serialize and inject the SDK configuration object into the rendered HTML. You can do this manually (see the "Vanilla SSR" example below) or use framework-specific methods, like Next.js's `getServerSideProps` function (see the "Next.js using Pages Router" example below).
+4. Pass the SDK configuration object to the `SplitFactoryProvider` component.
 
 Code examples:
 
@@ -1796,7 +1796,7 @@ import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
 const reactNativeFactory = SplitFactory({
   core: {
     authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
-    key: 'YOUR_TRAFFIC_KEY'
+    key: 'key'
   },
   ...
 });
@@ -1819,9 +1819,9 @@ While the React SDK provides convenient React components and hooks, you can also
 Since the React SDK is built on top of the JavaScript SDK core, it supports all objects and functions provided by it.
 
 ```javascript
-import { SplitSdk } from "@splitsoftware/splitio-react";
+import { SplitFactory } from "@splitsoftware/splitio-react";
 
-const splitFactory = SplitSdk({
+const splitFactory = SplitFactory({
   core: {
     authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
     key: 'key'
