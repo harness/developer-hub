@@ -1396,7 +1396,7 @@ This way, there are two options for server-side rendering:
 - With the SDK not ready on the initial render (default behavior)
 - With the SDK ready on the initial render (using the `initialRolloutPlan` option)
 
-![alt text](./static/react-sdk-rendering-modes.png)
+![](./static/react-sdk-rendering-modes.png)
 
 #### SDK not ready on initial render
 
