@@ -19,6 +19,10 @@ keywords:
   - security hardening
 ---
 
+:::tip Feature availability
+  This feature is available in Harness SMP 0.32.1 and later.
+:::
+
 Security contexts define privilege and access control settings for containers. This document covers the `readOnlyRootFilesystem` security context field. Additional security context configurations will be added as they become available.
 
 ### Why enable read-only root filesystems
@@ -33,10 +37,6 @@ Read-only root filesystems provide essential security hardening:
 The implementation automatically provisions writable volumes at `/tmp`, `/var/log`, and service-specific directories to maintain full functionality.
 
 ### Supported services
-
-:::note Feature availability
-  This feature is available in Harness SMP 0.32.1 and later.
-:::
 
 Read-only root filesystem configuration is supported for these Harness services:
 
