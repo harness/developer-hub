@@ -9,6 +9,8 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-delivery/gitops/add-harness-git-ops-repository-credentials-template
   - /docs/continuous-delivery/gitops/use-gitops/add-harness-git-ops-repository-credentials-template
+  - /docs/continuous-delivery/gitops/repositories/add-harness-git-ops-repository-credentials-template
+  - 
 ---
 
 This topic describes how to set up a GitOps Repository Credentials Template.

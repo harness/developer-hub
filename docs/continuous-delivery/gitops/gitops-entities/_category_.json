@@ -1,0 +1,12 @@
+{
+    "label": "GitOps Entities",
+    "position": "150",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "description": "Learn how to create, manage, and use Harness GitOps entities",
+    "link": {
+        "type": "generated-index",
+        "title": "GitOps Entities"
+    }
+  }

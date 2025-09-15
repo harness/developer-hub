@@ -1,7 +1,7 @@
 ---
 title: GitOps FAQs
 description: Frequently asked questions about Harness GitOps.
-sidebar_position: 1000
+sidebar_position: 1100
 ---
 
 This article addresses some frequently asked questions about Harness GitOps.

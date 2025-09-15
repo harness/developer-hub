@@ -5,6 +5,7 @@ sidebar_position: 50
 redirect_from:
   - /docs/continuous-delivery/gitops/harness-git-ops-agent-with-self-signed-certificates
   - /docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates
+  - /docs/continuous-delivery/gitops/agents/harness-git-ops-agent-with-self-signed-certificates
 ---
 
 Harness supports self-signed certificates. This topic describes how to install and configure a Harness GitOps Agent to connect to Harness using self-signed certificates.
