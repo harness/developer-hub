@@ -15,11 +15,11 @@ Open source software plays a critical role in the software landscape, with studi
 
 After completing the SBOM Orchestration step for your [artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts) or [repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories), the [SBOM tab](/docs/software-supply-chain-assurance/artifact-security/overview#sbom-tab) will display the below components marked with specific icons that indicate their current status.
 
-- Outdated Components ⚠️
-
-- Unmaintained Components ❌
-
 - Vulnerabilities in SBOM Components 
+
+- Outdated Components 
+
+- Unmaintained Components 
 
 - Close to End Of Life Components
 
@@ -27,16 +27,10 @@ After completing the SBOM Orchestration step for your [artifacts](/docs/software
 
 :::note
 
-We set the refresh interval for OSS component data to every 2 days. After you run the SBOM Orchestration step, the data is updated asynchronously within 5 – 10 minutes.
+- We set the refresh interval for OSS component data to every 2 days. After you run the SBOM Orchestration step, the data is updated asynchronously within 5 – 10 minutes.
 
+- Detection of EOL and Close to EOL components is currently supported for npm, Maven, and PyPI. Support for additional package managers will be added in the future.
 :::
-
-
-### Outdated Components (OSS Risk - 5):
-
-A component is considered outdated when its current version is lower than the latest available version. In the SBOM tab, outdated components are indicated by a warning symbol next to their version. Create a [Jira ticket](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#create-jira-ticket) to update the component version to the latest available version.
-
-<DocImage path={require('./static/outdated.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ### Vulnerabilities in SBOM Components (OSS Risk - 1):
 
@@ -46,6 +40,15 @@ After you run the SBOM orchestration step followed by the STO Snyk scan, the SBO
 You can also filter out the components, based on the OWASP Top 10 Risks.
 
 <DocImage path={require('./static/snyk.png')} width="80%" height="80%" title="Click to view full size image" />
+
+
+### Outdated Components (OSS Risk - 5):
+
+A component is considered outdated when its current version is lower than the latest available version. In the SBOM tab, outdated components are indicated by a warning symbol next to their version. Create a [Jira ticket](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#create-jira-ticket) to update the component version to the latest available version.
+
+<DocImage path={require('./static/outdated.png')} width="80%" height="80%" title="Click to view full size image" />
+
+
 
 
 ### Unmaintained Components (OSS Risk - 4):
