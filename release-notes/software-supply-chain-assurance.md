@@ -24,17 +24,19 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 #### New Features and Enhancements
 
-- Enhanced bulk ingestion of non-container artifacts: the workspace path will now be used as the artifact name in case of [non-container SBOM ingestion](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images).
+- [SBOM ingestion of non-container artifacts](/docs/software-supply-chain-assurance/open-source-management/ingest-sbom-data#non-container-images), the artifact path is now optional, allowing ingestion to be performed directly from the provided SBOM file. This makes it easier to manage artifact paths at scale.
 
-- Added support for OWASP Top 10 risks: you can now easily identify outdated, unmaintained, and end-of-life components, and create Jira tickets to update package versions.
+- Added support to manage the [OWASP Top 10 risks](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management), enables you to easily identify outdated, unmaintained, close to end of life, and end of life components, and create Jira ticket to update package version.
+
+<DocImage path={require('./static/scs/releasenotes.png')} width="90%" height="60%" title="Click to view full size image" />
 
 #### Fixed Issues
 
-- Search filters for code repositories and the license filter on the SBOM page were not working accurately—this is now fixed.
+- Fixed the search filters for code repositories and licenses on the SBOM page, which were previously not working accurately.
 
-- The total vulnerabilities count on the code repository page is now the correct sum of critical, high, medium, and low severity levels (previously, info level issue were also included).
+- The total vulnerabilities count on the code repository page is now the exact sum of critical, high, medium, and low severity issues (previously, info-level issues were also included).
 
-- Fixed Go-GitHub package parsing issue in GitHub Enterprise URL ([ZD-92576](https://harnesssupport.zendesk.com/agent/tickets/92576))
+- Fixed a Go-GitHub package parsing issue in GitHub Enterprise URLs ([ZD-92576](https://harnesssupport.zendesk.com/agent/tickets/92576)).
 
 
 ## August 2025
