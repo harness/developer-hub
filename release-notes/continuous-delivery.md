@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-09-04T10:00:00
+date: 2025-09-15T10:00:00
 sidebar_position: 8
 ---
 
@@ -55,6 +55,15 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## September 2025
 
+### GitOps Service 1.41.1, GitOps Agent 0.101.0
+
+#### Fixed Issues
+
+- Fixed an issue where promote options were missing in GitOps application rollouts. Promote and restart options are now correctly displayed in the GitOps application interface. (**CDS-113725, ZD-91678**)
+- Fixed an issue where GitOps applications created through reconciler operations (such as those created by ApplicationSets) were not showing up in the "Referenced By" tab of linked services. These applications now properly appear in the service references, ensuring visibility of service-to-application relationships. (**CDS-113560, ZD-91232**)
+- Fixed an issue where GitOps sync was failing with "no space left on device" errors, and the App diff tab was not clickable for some applications. GitOps sync now properly handles storage resources and the App diff tab functionality has been restored. (**CDS-113506, ZD-91129**)
+- Fixed an issue where artifact and chart versions were not displayed in the GitOps Service Summary, showing as **artifact_version_unspecified** for artifacts and `-` for chart versions. Users can now see specific artifact and chart versions during deployment, improving tracking and visibility. 
+
 ### Version 1.107.3
 
 #### New Features and Enhancements:
@@ -77,7 +86,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ### Version 1.105.3
 
-#### New Features and Enhancements:
+#### New Features and Enhancements
 
 - Harness now supports a new account-level setting `enable_signed_commit_for_github` to control automatic commit signing when using GitHub App authentication. You can configure this setting under **Account Settings** → **Default Settings** → **Git Experience**.
 
