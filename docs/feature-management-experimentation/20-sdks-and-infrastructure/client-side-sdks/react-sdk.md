@@ -1387,7 +1387,7 @@ The SDK factory allows you to disable the tracking of events and impressions unt
 
 The SDK follows the rules of React and supports running its components on the server side.
 
-When running server side, use the `config` prop of the `SplitFactoryProvider` and leave the `factory` prop unassigned. This way, the HTML rendered on the server side will match the initial render on the client side, and there will not be memory leaks on the server side since it will not synchronize a new SDK instance per request.
+When running the SDK server side, use the `config` prop of the `SplitFactoryProvider` and leave the `factory` prop unassigned. This ensures the HTML rendered on the server matches the initial client render and prevents memory leaks by avoiding a new SDK instance per request.
 
 By default, the underlying SDK instance created by the `SplitFactoryProvider` will not be ready on the initial render, but the SDK configuration object accepts an optional `initialRolloutPlan` object to initialize it with a predefined rollout plan.
 
