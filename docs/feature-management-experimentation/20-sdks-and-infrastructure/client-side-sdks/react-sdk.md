@@ -1555,7 +1555,7 @@ When you provide an `initialRolloutPlan` in the configuration, the SDK clients b
 
 In this state, the `isReadyFromCache` status property is `true` and `useSplitTreatments` returns treatments based on the feature flag definitions in the `initialRolloutPlan`.
 
-The flow to get the rollout plan snapshot and pass it down to the SDK via the `initialRolloutPlan` configuration option consists on the following steps:
+To get the rollout plan snapshot and pass it to the SDK via `initialRolloutPlan`, follow these steps:
 
 1) Extract the rollout plan snapshot using the `getRolloutPlan` method of the Node.js SDK factory.
 2) Create the SDK configuration object with the `initialRolloutPlan` option.
