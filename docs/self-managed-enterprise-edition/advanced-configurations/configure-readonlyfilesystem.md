@@ -1,36 +1,44 @@
 ---
-title: Configure read-only root filesystem
-description: Configure read-only root filesystems for individual services to improve security and stability
+title: Security Context Configuration
+description: Configure security contexts for Harness services to enhance container security and compliance
 sidebar_position: 3
 tags:
   - security
-  - filesystem
   - containers
   - helm
   - configuration
+  - security-context
 keywords:
-  - read-only filesystem
-  - root filesystem
-  - container security
-  - helm charts
-  - writable volumes
   - security context
+  - container security
+  - runAsUser
+  - runAsNonRoot
+  - read-only filesystem
+  - capabilities
+  - helm charts
+  - security hardening
 ---
 
-Read-only root filesystems strengthen container security by preventing unauthorized modifications to the root filesystem while maintaining full service functionality through dedicated writable volumes.
+Security contexts define privilege and access control settings for containers. This document covers the `readOnlyRootFilesystem` security context field. Additional security context configurations will be added as they become available.
 
-## Why enable read-only root filesystems
+### Why enable read-only root filesystems
 
-Implementing read-only root filesystems provides critical benefits for enterprise environments:
+Read-only root filesystems provide essential security hardening:
 
-- **Attack Surface Reduction**: Prevents attackers from modifying system files if they compromise a container
-- **Operational Integrity**: Ensures consistent container behavior across deployments
+- **Prevent malware persistence**: Attackers cannot install backdoors or modify system binaries, limiting damage from successful breaches
+- **Ensure deployment consistency**: Containers remain identical to their original image, eliminating configuration drift and unexpected behavior
+- **Meet compliance requirements**: Satisfies regulatory frameworks like SOC 2 and PCI DSS that mandate immutable infrastructure controls
+- **Block privilege escalation**: Prevents exploitation of vulnerabilities that rely on writing to system directories
 
-The implementation automatically creates writable volumes for legitimate write operations (logs, temporary files, caches) at specific mount points like `/tmp` and `/var/log`.
+The implementation automatically provisions writable volumes at `/tmp`, `/var/log`, and service-specific directories to maintain full functionality.
 
-## Supported services
+### Supported services
 
-Read-only root filesystems are supported for these Harness services:
+:::note Feature availability
+  This feature is available in Harness SMP 0.32.1 and later.
+:::
+
+Read-only root filesystem configuration is supported for these Harness services:
 
 * **Chaos module:**
 
@@ -56,9 +64,9 @@ Read-only root filesystems are supported for these Harness services:
   * `harness-manager`
   * `next-gen-ui`
 
-## Configuration methods
+### Configuration methods
 
-### Individual service configuration
+#### Individual service configuration
 
 Enable read-only root filesystem for specific services using Helm overrides:
 
@@ -71,7 +79,7 @@ Enable read-only root filesystem for specific services using Helm overrides:
 
 Replace `<module_name>` with either `chaos` or `platform` depending on the service, and `<service_name>` with one of the services listed above.
 
-Example:
+Example for gateway service:
 
 ```yaml
 platform:
@@ -80,7 +88,7 @@ platform:
       readOnlyRootFilesystem: true
 ```
 
-### Complete configuration
+#### Complete configuration
 
 To enable read-only root filesystems for all supported services, create an override file named `readonly-filesystem-override.yaml` and add the following configuration:
 
@@ -153,7 +161,10 @@ Apply the read-only filesystem configuration during your Harness deployment:
 helm upgrade <HARNESS_RELEASE_NAME> harness/harness-prod -n <HARNESS_NAMESPACE> \
   -f readonly-filesystem-override.yaml
 ```
+
 This command upgrades your existing Harness installation with read-only root filesystem security enabled for all configured services.
+
+
 
 
 
