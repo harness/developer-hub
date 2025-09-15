@@ -1551,7 +1551,7 @@ export const MyComponentWithFeatureFlags = (props) => {
 
 #### SDK ready from cache on initial render
 
-If the configuration object is provided with an `initialRolloutPlan` option, the SDK clients will be **ready from cache** immediately, including the initial component tree render.
+When you provide an `initialRolloutPlan` in the configuration, the SDK clients becomes **ready from cache** immediately, including the initial component tree render.
 
 At this point, the `isReadyFromCache` status property is `true` and the treatments retrieved using `useSplitTreatments` are based on the feature flag definitions provided in the `initialRolloutPlan` option.
 
