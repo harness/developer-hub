@@ -4,6 +4,12 @@ description: Frequently asked questions related to Propels and Tables on SEI
 sidebar_position: 100
 ---
 
+This page includes FAQs and troubleshooting information for SEI propels and tables.
+
+:::danger SEI Version Notice
+The following FAQs reflect SEI 1.0 behavior. If you are using SEI 2.0, see the [SEI 2.0 documentation](/docs/category/sei-recommended/).
+:::
+
 ### How can I delete all rows in a table?
 
 To delete all rows in a table within SEI, you can follow these steps:
